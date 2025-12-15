@@ -1,6 +1,11 @@
-id: chemical-stains-contamination
-name: chemical_stains-contamination
+name: Chemical Stains / Acid Etching
 slug: chemical-stains-contamination
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,21 +42,35 @@ _metadata:
     author_country: Indonesia
     voice_applied: true
     content_type: contaminant
+title: Chemical Stains / Acid Etching Contamination
+contamination_description: Chemical-stains contamination, it arises from exposure
+  to acids, bases, or solvents, causing discoloration and etching on surfaces. This
+  pattern, it differs from rust or dust by its chemical bonding and uneven penetration,
+  thus resists mechanical wiping. On metals like steel and aluminum, stains embed
+  deeply and corrode, while on plastics such as acrylic and ABS, they cause cracking.
+  Removal challenges include substrate damage risk, so laser cleaning works effectively
+  by vaporizing stains selectively and preserving material integrity.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Chemical Stains / Acid Etching
+  href: /contamination/contamination/chemical-stains-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/chemical-stains-contamination-hero.jpg
+    alt: Chemical Stains / Acid Etching contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/chemical-stains-contamination-micro.jpg
+    alt: Chemical Stains / Acid Etching contamination microscopic detail
 micro:
   after: Post-cleaning reveals restored surface with chemical stains / acid etching
     successfully removed through precise laser ablation.
   before: Surface shows contamination from chemical stains / acid etching affecting
     material appearance and properties.
-category: contamination
-description: Discoloration or etching from chemical exposure (acids, bases, solvents)
-eeat:
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
-  reviewedBy: Z-Beam Quality Assurance Team
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -170,6 +189,14 @@ laser_properties:
     thermal_conductivity: 0.15
     thermal_diffusivity: 0.12
     vaporization_temperature: 280
+eeat:
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+  reviewedBy: Z-Beam Quality Assurance Team
 valid_materials:
 - Concrete
 - Aluminum
@@ -201,4 +228,3 @@ valid_materials:
 - Boron Carbide
 - Boron Nitride
 - Silicon Nitride
-title: Chemical Stains

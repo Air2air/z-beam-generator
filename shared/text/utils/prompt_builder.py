@@ -499,7 +499,8 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
                 'description': item_data.get('description', ''),
                 'machine_settings': item_data.get('machine_settings', ''),
                 'challenges': item_data.get('challenges', ''),
-                'existing_content': item_data.get('existing_content', '')  # For postprocess templates
+                'existing_content': item_data.get('existing_content', ''),  # For postprocess templates
+                'valid_materials': ', '.join(item_data.get('valid_materials', []))  # For contaminants cross-linking
             }
             
             # FAIL-FAST: No try/except fallback. If template requires a placeholder not in

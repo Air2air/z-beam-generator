@@ -1554,7 +1554,66 @@ See `docs/08-development/VOICE_INSTRUCTION_CENTRALIZATION_POLICY.md` for complet
 
 See `VOICE_COMPLIANCE_IMPLEMENTATION_DEC13_2025.md` for implementation details.
 
-### 15. **Prompt Chaining & Orchestration Policy** 🔥 **NEW (Nov 27, 2025) - CRITICAL**
+### 15. **Postprocessing Retry-Until-Requirements-Met Policy** 🔥 **NEW (Dec 14, 2025) - MANDATORY**
+**Postprocessing system MUST retry regeneration until quality requirements are met.**
+
+**Problem Solved**: Previous implementation tried once, saw no improvement, gave up. Content stayed low-quality despite multiple attempts being available.
+
+**MANDATORY Requirements**:
+1. ✅ **Maximum attempts**: `MAX_REGENERATION_ATTEMPTS = 5`
+2. ✅ **Retry loop**: Keep trying until requirements met OR max attempts exhausted
+3. ✅ **Best version tracking**: Return highest quality version, not last attempt
+4. ✅ **Attempt reporting**: Result includes `attempts` field
+5. ✅ **Stop conditions**: Requirements met (readability pass + 0 AI patterns + score ≥ 60) OR max attempts
+
+**Quality Requirements (all must pass)**:
+- Readability: `status == 'pass'`
+- AI Patterns: `len(patterns) == 0`
+- Quality Score: `score >= 60/100`
+
+**Implementation**:
+```python
+# CORRECT: Retry until requirements met
+best_quality_score = 0
+best_content = None
+
+for attempt in range(1, MAX_REGENERATION_ATTEMPTS + 1):
+    result = generator.generate(item_name, component_type)
+    quality_score = evaluate_quality(result.content)
+    
+    if quality_score > best_quality_score:
+        best_quality_score = quality_score
+        best_content = result.content
+    
+    if meets_all_requirements(result.content, quality_score):
+        print(f"✅ REQUIREMENTS MET on attempt {attempt}!")
+        break
+
+return {
+    'attempts': attempt,
+    'best_quality_score': best_quality_score,
+    'improved': True
+}
+```
+
+**Anti-Pattern (Grade F violation)**:
+```python
+# ❌ WRONG: Single attempt then give up
+result = generator.generate(...)
+if result.quality < threshold:
+    return keep_original()  # NO RETRY!
+```
+
+**Enforcement**:
+- Automated tests: `tests/test_postprocessing_retry_policy.py` (4 tests)
+- Module docstring: Must mention "MANDATORY RETRY POLICY"
+- Result dict: Must include `attempts` and `best_quality_score` fields
+
+**Grade**: Mandatory compliance - violations = Grade F
+
+See `docs/08-development/POSTPROCESSING_RETRY_POLICY.md` for complete policy.
+
+### 16. **Prompt Chaining & Orchestration Policy** 🔥 **NEW (Nov 27, 2025) - CRITICAL**
 **Maximum use of prompt chaining and orchestration to preserve separation of concerns and specificity.**
 
 **Core Principle**: Break generation into specialized prompts instead of one monolithic prompt.

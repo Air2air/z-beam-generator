@@ -57,7 +57,7 @@ Copilot will automatically:
 prompts/
 ├── subtitle.txt        ← 21-63 word subtitle instructions
 ├── micro.txt         ← 25-word caption instructions
-├── description.txt     ← 150-word description instructions
+├── description.txt     ← 60-word base target (actual: ~120-180 words)
 ├── faq.txt            ← FAQ generation instructions
 └── troubleshooter.txt ← Troubleshooting guide instructions
 ```

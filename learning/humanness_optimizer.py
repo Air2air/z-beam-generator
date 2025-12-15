@@ -179,7 +179,8 @@ class HumannessOptimizer:
     
     def generate_humanness_instructions(
         self,
-        component_type: str
+        component_type: str,
+        length_target: int = None
     ) -> str:
         """
         Generate dynamic humanness instructions from learned patterns.
@@ -193,6 +194,7 @@ class HumannessOptimizer:
         
         Args:
             component_type: Type of component (micro, subtitle, description, etc.)
+            length_target: Base word count target from generation config (e.g., 50)
         
         Returns:
             Formatted humanness instructions ready for prompt injection
@@ -231,7 +233,8 @@ class HumannessOptimizer:
             subjective_patterns=subjective_patterns,
             structural_patterns=structural_patterns,
             validation_feedback=validation_feedback,
-            component_type=component_type
+            component_type=component_type,
+            length_target=length_target
         )
         
         logger.info(f"   ✅ Generated {len(instructions)} character instruction block")
@@ -241,7 +244,8 @@ class HumannessOptimizer:
     
     def generate_compressed_humanness(
         self,
-        component_type: str
+        component_type: str,
+        length_target: int = None
     ) -> str:
         """
         Generate COMPRESSED humanness instructions (10-20% of full size).
@@ -253,12 +257,16 @@ class HumannessOptimizer:
         
         Args:
             component_type: Type of component
+            length_target: Base word count target from generation config
         
         Returns:
             Compressed humanness instructions from template file
         """
         # Delegate to main method - it handles compact vs full template selection
-        return self.generate_humanness_instructions(component_type=component_type)
+        return self.generate_humanness_instructions(
+            component_type=component_type,
+            length_target=length_target
+        )
     
     def _extract_winston_patterns(self) -> WinstonPatterns:
         """
@@ -512,7 +520,8 @@ class HumannessOptimizer:
         subjective_patterns: SubjectivePatterns,
         structural_patterns: StructuralPatterns,
         validation_feedback: Dict[str, Any],
-        component_type: str
+        component_type: str,
+        length_target: int = None
     ) -> str:
         """
         Combine patterns into dynamic humanness instructions.
@@ -557,7 +566,7 @@ class HumannessOptimizer:
         # 🎲 RANDOMIZE WORD COUNT VARIATION (NEW - Dec 12, 2025)
         # NOTE: This generates the INSTRUCTION text for the humanness layer ONLY
         # Actual length multiplication happens in prompt_builder.py (single source of truth)
-        # This layer tells LLM "aim for ±X% variation" to encourage flexibility
+        # Calculate actual numeric length target with variation
         # Base variation from config, then add randomization for each generation
         # This creates unpredictable variation percentages (not just fixed ±50%)
         base_variation = self.config.get('word_count_variation', 0.80)  # ±80% default
@@ -570,9 +579,20 @@ class HumannessOptimizer:
         # Clamp to reasonable bounds (20% to 100%)
         randomized_variation = max(0.20, min(1.0, randomized_variation))
         
-        variation_pct = int(randomized_variation * 100)
-        selected_length_key = "RANDOMIZED"
-        selected_length = f"±{variation_pct}% variation (base: ±{int(base_variation*100)}%, adjusted: {variation_adjustment:+.2f})"
+        # Calculate actual numeric target from base (e.g., 50 ± 70% = 15-85 range)
+        if length_target:
+            # Apply randomized variation to base target
+            min_length = int(length_target * (1 - randomized_variation))
+            max_length = int(length_target * (1 + randomized_variation))
+            # Select a random target within the range
+            selected_length_value = random.randint(min_length, max_length)
+            selected_length_key = "RANDOMIZED"
+            selected_length = selected_length_value
+        else:
+            # Fallback if no length_target provided
+            variation_pct = int(randomized_variation * 100)
+            selected_length_key = "RANDOMIZED"
+            selected_length = f"±{variation_pct}% variation (base: ±{int(base_variation*100)}%, adjusted: {variation_adjustment:+.2f})"
         
         # Store randomized variation for prompt_builder to use
         self._current_variation = randomized_variation
@@ -678,7 +698,9 @@ class HumannessOptimizer:
 🎲 **YOUR RANDOMIZED TARGETS FOR THIS GENERATION** 🎲
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📏 **LENGTH TARGET**: {selected_length}
+📏 **LENGTH GUIDELINE**: ~{selected_length} words (approximate target)
+    Note: This is a guideline, not a strict requirement
+    Write naturally until the content is complete
 
 🏗️ **STRUCTURAL APPROACH**: {selected_structure}
 

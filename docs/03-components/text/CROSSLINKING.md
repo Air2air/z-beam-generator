@@ -1,24 +1,27 @@
 # Cross-Linking System Documentation
-**Version**: 2.0 (December 14, 2025)  
-**Status**: ✅ Production Ready - All Domains
+**Version**: 2.1 (December 14, 2025)  
+**Status**: ✅ Production Ready - All Domains  
+⚠️ **OPTIONAL ONLY** - Links are automatically added when natural, but NOT a content requirement
 
 ---
 
 ## 📖 Overview
 
-The cross-linking system automatically inserts markdown links in generated text to connect related content across the Z-Beam documentation. It works across all domains (materials, contaminants, settings) and all text field types (strings, dicts, lists).
+The cross-linking system **optionally** inserts markdown links in generated text to connect related content across the Z-Beam documentation. It works across all domains (materials, contaminants, settings) and all text field types (strings, dicts, lists).
+
+**🚨 CRITICAL**: Cross-links are COMPLETELY OPTIONAL. Content should NEVER be generated just to add links. Natural, quality content is the priority.
 
 ---
 
 ## 🎯 Purpose
 
-**User Goal**: When reading about "Steel", automatically link to mentioned materials (e.g., "Aluminum") and contaminants (e.g., "rust") without manual intervention.
+**User Goal**: When reading about "Steel", automatically link to mentioned materials (e.g., "Aluminum") and contaminants (e.g., "rust") IF they are naturally mentioned in the content.
 
 **System Behavior**:
-1. **Detect** mentions of materials/contaminants in generated text
+1. **Detect** mentions of materials/contaminants in generated text (if present)
 2. **Verify** against data files (Materials.yaml, Contaminants.yaml)
-3. **Insert** markdown links using correct slug format
-4. **Limit** density (max 1-2 links per 150 words)
+3. **Insert** markdown links using correct slug format (when found)
+4. **Limit** density (guideline: ~1-2 links per 150 words maximum)
 
 ---
 
@@ -56,7 +59,7 @@ domains/contaminants/modules/
 **Step 1: Content Generation**
 ```python
 # Generator creates text
-content = "Aluminum oxidation forms thin layer on Steel surfaces"
+content = "Aluminum oxidation forms thin layer on steel surfaces"
 ```
 
 **Step 2: Cross-Link Detection**
@@ -73,14 +76,19 @@ link_builder.add_links(
 ```python
 # Loads Materials.yaml
 materials = self._load_materials()['materials']
-# Searches: "Aluminum" in materials.keys() → FOUND
-# Searches: "Steel" in materials.keys() → FOUND
+# Searches: "Aluminum" in materials.keys() → FOUND (case-insensitive)
+# Searches: "steel" in materials.keys() → FOUND (case-insensitive)
 ```
 
-**Step 4: URL Generation**
+**Step 4: URL Generation with Case Preservation**
 ```python
-# Material: "Aluminum" → slug: "aluminum" → URL: ../materials/aluminum.md
-# Material: "Steel" → slug: "steel" → URL: ../materials/steel.md
+# Material: "Aluminum" (capitalized in text) → slug: "aluminum" → URL: ../materials/aluminum.md
+# Material: "steel" (lowercase in text) → slug: "steel" → URL: ../materials/steel.md
+
+# 🚨 MANDATORY: Preserve original case from text
+# - "steel" in mid-sentence → [steel](../materials/steel.md)
+# - "Steel" at sentence start → [Steel](../materials/steel.md)
+# - Never auto-capitalize: [Steel] when text says "steel"
 
 # Contaminant: pattern_id "adhesive-residue" → URL: ../contaminants/adhesive-residue-contamination.md
 # (Note: -contamination suffix added to match frontmatter slug)
@@ -88,14 +96,16 @@ materials = self._load_materials()['materials']
 
 **Step 5: Link Insertion**
 ```python
-# Result:
-# "[Aluminum](../materials/aluminum.md) oxidation forms thin layer on [Steel](../materials/steel.md) surfaces"
+# Result (preserving original case):
+# "[Aluminum](../materials/aluminum.md) oxidation forms thin layer on [steel](../materials/steel.md) surfaces"
 ```
 
 ### URL Format Verification
 
 **Materials**:
 - Data file key: `"Aluminum"` (from Materials.yaml)
+- Text match: Case-insensitive search finds "aluminum", "Aluminum", "ALUMINUM"
+- Display text: Uses **exact case from original text** (preserves mid-sentence lowercase)
 - Generated slug: `"aluminum"` (lowercase, hyphenated)
 - Link URL: `../materials/aluminum.md`
 - Frontmatter file: `frontmatter/materials/aluminum-laser-cleaning.yaml`
@@ -171,19 +181,20 @@ Output: "[Aluminum](../materials/aluminum.md) oxidation contamination forms thin
 
 ## ⚙️ Configuration
 
-### Rules & Limits
+### Guidelines (NOT Requirements)
 
-**Link Density**:
-- Maximum: 1-2 links per 150 words
+**Link Density Guidelines**:
+- Typical: ~1-2 links per 150 words (if materials naturally mentioned)
 - Minimum text length: 50 characters
 - First occurrence only (no duplicate linking)
+- **ZERO links is perfectly acceptable** - content quality matters more
 
 **Exclusions**:
 - Self-linking prevented (current_item excluded)
 - Case-insensitive matching
 - Word boundary detection (exact term matching)
 
-**Priority**:
+**Priority** (when links are found):
 - Materials searched first
 - Contaminants searched second
 - Links added in order of text appearance
@@ -242,12 +253,14 @@ python3 test_crosslinking_implementation.py
 
 ### Expected Results
 
-**✅ PASS Criteria**:
+**✅ PASS Criteria** (when links are present):
 - URLs match data file keys
 - Slugs are lowercase with hyphens
 - Links only inserted when term exists in data files
 - Self-linking prevented
-- Link density < 2 per 150 words
+- Link density typically < 2 per 150 words
+
+**✅ ALSO PASS**: Zero links (if content doesn't naturally mention other materials/contaminants)
 
 ---
 
@@ -255,7 +268,7 @@ python3 test_crosslinking_implementation.py
 
 ### Automatic Application
 
-**No action required** - Cross-linking happens automatically during generation:
+**No action required** - Cross-linking happens automatically during generation IF materials/contaminants are naturally mentioned in the content. The system will NOT add links if they don't naturally fit:
 
 ```bash
 # Generate material description

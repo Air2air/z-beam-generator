@@ -1,6 +1,11 @@
-id: annealing-scale-contamination
-name: annealing-scale-contamination
+name: Heat Treatment Scale
 slug: annealing-scale-contamination
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 4
   name: Todd Dunning
@@ -36,12 +41,31 @@ _metadata:
     author_country: United States
     voice_applied: true
     content_type: contaminant
-description: In practice, annealing-scale forms a thick oxide layer on steels and
-  alloys during heat treatment, digging in deeper than surface rust or mill scale
-  ever does. It clings tenaciously, resisting mild cleaners that handle those lighter
-  contaminants easily. Blasting removes it effectively, but pickling drags without
-  etching the base. Turns out, this beast alters surface conductivity uniquely, ramping
-  up cleaning headaches overall.
+title: Heat Treatment Scale Contamination
+contamination_description: Annealing-scale builds up as a thick oxide layer during
+  slow heating in controlled atmospheres, ramping up deeper than surface rust and
+  clinging tight to shift conductivity far beyond lighter contaminants. On steel,
+  it grips firm and alters properties sharply, stainless steel holds it even tighter,
+  and titanium shows looser attachment overall, posing significant challenges since
+  mild acids drag slowly without etching underneath while blasting scatters debris
+  widely. Turns out, laser cleaning lines up best, vaporizing the buildup precisely
+  to achieve a clean finish and keep the base material intact.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Heat Treatment Scale
+  href: /contamination/contamination/annealing-scale-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/annealing-scale-contamination-hero.jpg
+    alt: Heat Treatment Scale contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/annealing-scale-contamination-micro.jpg
+    alt: Heat Treatment Scale contamination microscopic detail
 laser_properties:
   laser_parameters:
     beam_profile: flat_top

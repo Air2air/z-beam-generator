@@ -205,10 +205,11 @@ Contaminant: "aluminum-oxidation" (pattern ID)
 → URL: ../contaminants/aluminum-oxidation.md
 ```
 
-### Link Rules
-- Maximum: 1-2 links per 150 words
+### Link Guidelines (OPTIONAL - NOT Requirements)
+- Typical: ~1-2 links per 150 words (when materials naturally mentioned)
 - Minimum text: 50 characters
 - First occurrence only (no duplicate linking)
+- **Zero links is acceptable** - quality content matters more
 - Self-linking prevented (current_item excluded)
 - Case-insensitive matching
 - Word boundary detection (exact term matching)

@@ -1,6 +1,11 @@
-id: wood-rot-contamination
-name: wood_rot-contamination
+name: Wood Rot / Fungal Biodegradation
 slug: wood-rot-contamination
+category: biodegradation
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,22 +41,34 @@ _metadata:
     author_country: Taiwan
     voice_applied: true
     content_type: contaminant
+title: Wood Rot / Fungal Biodegradation Contamination
+contamination_description: Wood rot forms through fungal biodegradation of wood fibers,
+  so discoloration appears and softening occurs with structural weakening over time.
+  This contamination penetrates deeply into material unlike surface dust or chemical
+  stains, and behaves faster on softwoods like pine while slower on hardwoods like
+  oak. Removal challenges arise because rot makes wood brittle, yet laser cleaning
+  succeeds by selectively ablating decayed layers without damaging healthy substrate.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Biodegradation
+  href: /contamination/biodegradation
+- label: Wood Rot / Fungal Biodegradation
+  href: /contamination/biodegradation/wood-rot-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/wood-rot-contamination-hero.jpg
+    alt: Wood Rot / Fungal Biodegradation contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/wood-rot-contamination-micro.jpg
+    alt: Wood Rot / Fungal Biodegradation contamination microscopic detail
 micro:
   after: Post-cleaning reveals restored surface with wood rot / fungal biodegradation
     successfully removed through precise laser ablation.
   before: Surface shows contamination from wood rot / fungal biodegradation affecting
     material appearance and properties.
-category: biodegradation
-description: Fungal breakdown of wood fibers causing discoloration, softening, and
-  structural weakening
-eeat:
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
-  reviewedBy: Z-Beam Quality Assurance Team
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -182,6 +199,14 @@ laser_properties:
     thermal_conductivity: 0.15
     thermal_diffusivity: 0.1
     vaporization_temperature: 450
+eeat:
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+  reviewedBy: Z-Beam Quality Assurance Team
 valid_materials:
 - Oak
 - Pine
@@ -192,4 +217,3 @@ valid_materials:
 - Plywood
 - MDF
 - Redwood
-title: Wood Rot

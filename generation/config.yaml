@@ -106,14 +106,25 @@ component_extraction:
   faq:
     extraction_strategy: json_list      # Parse as JSON array
 
-# Component Token Targets - REMOVED (Dec 13, 2025)
-# Token limits removed to allow natural length variation across authors
-# Length is now controlled by:
-#   1. Prompt instructions (domain prompts define style/structure)
-#   2. word_count_variation setting (±70% variation)
-#   3. Author voice patterns (persona-specific preferences)
-# NO max_tokens limits - LLM determines natural stopping point
-component_lengths: {}
+# Component Token Targets - UPDATED (Dec 14, 2025)
+# Word count targets used by length calculation system
+# These are BASE targets - word_count_variation (±70%) applies on top
+# Domain prompts receive calculated range, NOT these exact numbers
+# 
+# SEPARATION OF CONCERNS:
+# - generation/config.yaml: Defines base word count targets (technical config)
+# - Domain prompts: Describe WHAT to say (content requirements)
+# - Voice profiles: Describe HOW to say it (voice characteristics)
+# - Humanness layer: Provides structural variation (rhythm, openings)
+#
+# Flow: base_target → ±70% variation → prompt receives range → voice applied → humanness variation
+# MANDATORY: Keep targets SMALL - LLMs generate 2-3x over target consistently
+component_lengths:
+  description: 60                 # Contaminant descriptions (±70% = 18-102 range) → actual ~120-180 words
+  material_description: 30        # Material subtitles (±70% = 9-51 range)
+  settings_description: 30        # Settings subtitles (±70% = 9-51 range)
+  micro: 80                       # Before/after captions (±70% = 24-136 range)
+  faq: 50                         # FAQ answers (±70% = 15-85 range)
 
 # Dynamic Calculation Parameters
 # Zero hardcoded values policy: All calculation factors configured here

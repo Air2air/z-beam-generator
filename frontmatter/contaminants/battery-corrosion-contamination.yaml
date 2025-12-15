@@ -1,6 +1,11 @@
-id: battery-corrosion-contamination
-name: battery-corrosion-contamination
+name: Battery Leakage Corrosion
 slug: battery-corrosion-contamination
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,12 +42,29 @@ _metadata:
     author_country: Indonesia
     voice_applied: true
     content_type: contaminant
-description: Battery-corrosion contamination forms via electrolyte reactions in devices.
-  This pattern, it penetrates electrodes deeply and accelerates under electrical stress.
-  Unlike atmospheric rust on steels, battery type resists oxidation reversal and clings
-  to alloys tightly. On metals like [Copper](../materials/copper.md), it builds insulating
-  films; on polymers, it induces cracking. Challenges in removal follow, thus demands
-  careful dissolution methods.
+title: Battery Leakage Corrosion Contamination
+contamination_description: Battery-corrosion contamination forms through electrolyte
+  reactions in devices. This pattern penetrates deeply and accelerates under electrical
+  stress, thus distinguishes from atmospheric rust by resisting reversal and clinging
+  tightly to alloys. On copper, it builds insulating films; on steel and brass, cracking
+  induces. Removal challenges demand careful dissolution, but laser cleaning ablates
+  layers precisely, so surface restores conductivity effectively.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Battery Leakage Corrosion
+  href: /contamination/contamination/battery-corrosion-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/battery-corrosion-contamination-hero.jpg
+    alt: Battery Leakage Corrosion contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/battery-corrosion-contamination-micro.jpg
+    alt: Battery Leakage Corrosion contamination microscopic detail
 laser_properties:
   laser_parameters:
     beam_profile: flat_top

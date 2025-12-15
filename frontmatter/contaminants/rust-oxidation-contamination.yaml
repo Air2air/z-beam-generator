@@ -1,6 +1,11 @@
-id: rust-oxidation-contamination
-name: rust-oxidation-contamination
+name: Rust / Iron Oxide Formation
 slug: rust-oxidation-contamination
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,13 +41,49 @@ _metadata:
     author_country: Taiwan
     voice_applied: true
     content_type: contaminant
-description: Rust-oxidation contamination forms through exposure to moisture and oxygen
-  on [Iron](../materials/iron.md)-containing surfaces, creating a flaky, reddish layer
-  that differs from uniform deposits like dust or oils by its progressive expansion
-  and adhesion. On reactive metals such as steel, it penetrates deeply and weakens
-  structure, while on inert non-metals like ceramics, it remains superficial and less
-  adherent. Formation occurs gradually at joints and scratches, so cleaning targets
-  these patterns to restore integrity without further degradation.
+title: Rust / Iron Oxide Formation Contamination
+contamination_description: 'Rust forms on iron through moisture and oxygen exposure.
+  It creates reddish flaky layer over time. Before protection, reaction starts at
+  scratches, so contamination develops gradually.
+
+
+  After exposure, rust expands progressively and adheres strongly. Dust settles loosely
+  and brushes away easily, but rust penetrates deeper and weakens base material. Oils
+  form uniform films without expansion, while rust causes ongoing degradation, as
+  observations indicate.
+
+
+  On steel, rust behaves aggressively and burrows into structure, leading to brittleness.
+  In contrast, on wrought iron, it stays more superficial and peels off with less
+  resistance. This difference highlights how material reactivity influences penetration
+  depth and overall impact.
+
+
+  Removal challenges arise because rust clings tightly and recurs if moisture persists.
+  Mechanical scraping risks further surface damage, and incomplete removal allows
+  regrowth, so careful methods are needed.
+
+
+  Laser cleaning proves effective for rust because it targets layer precisely without
+  contacting surface. Heat vaporizes oxide, so underlying material remains intact.
+  After treatment, surface exhibits cleanliness and uniformity, preventing weakening
+  over time.'
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Rust / Iron Oxide Formation
+  href: /contamination/contamination/rust-oxidation-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/rust-oxidation-contamination-hero.jpg
+    alt: Rust / Iron Oxide Formation contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/rust-oxidation-contamination-micro.jpg
+    alt: Rust / Iron Oxide Formation contamination microscopic detail
 laser_properties:
   laser_parameters:
     beam_profile: flat_top

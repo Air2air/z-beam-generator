@@ -84,6 +84,8 @@ class WinstonFeedbackDatabase:
                     failure_type TEXT,
                     composite_quality_score REAL,
                     subjective_evaluation_id INTEGER,
+                    retry_session_id TEXT,
+                    is_retry BOOLEAN DEFAULT 0,
                     FOREIGN KEY (subjective_evaluation_id) REFERENCES subjective_evaluations(id)
                 );
                 
@@ -348,7 +350,9 @@ class WinstonFeedbackDatabase:
         attempt: int,
         success: bool,
         failure_analysis: Optional[Dict] = None,
-        composite_quality_score: Optional[float] = None
+        composite_quality_score: Optional[float] = None,
+        retry_session_id: Optional[str] = None,
+        is_retry: bool = False
     ) -> int:
         """
         Log a Winston detection result.
@@ -363,6 +367,8 @@ class WinstonFeedbackDatabase:
             success: Whether it passed AI detection threshold
             failure_analysis: Optional WinstonFeedbackAnalyzer results
             composite_quality_score: Composite score (Winston + Subjective + Readability)
+            retry_session_id: Optional session ID to group retries together
+            is_retry: Whether this is a retry attempt (not first generation)
             
         Returns:
             detection_result_id for linking corrections
@@ -400,8 +406,9 @@ class WinstonFeedbackDatabase:
                 INSERT INTO detection_results 
                 (timestamp, material, component_type, generated_text, 
                  human_score, ai_score, readability_score, credits_used,
-                 attempt_number, temperature, success, failure_type, composite_quality_score)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                 attempt_number, temperature, success, failure_type, composite_quality_score,
+                 retry_session_id, is_retry)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 timestamp,
                 material,
@@ -415,7 +422,9 @@ class WinstonFeedbackDatabase:
                 temperature,
                 success,
                 failure_analysis.get('failure_type') if failure_analysis else None,
-                composite_quality_score
+                composite_quality_score,
+                retry_session_id,
+                is_retry
             ))
             
             result_id = cursor.lastrowid

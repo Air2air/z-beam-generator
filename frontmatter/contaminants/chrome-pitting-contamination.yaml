@@ -1,8 +1,72 @@
-id: chrome-pitting-contamination
-name: chrome-pitting-contamination
+name: Chromium Oxide Pitting
 slug: chrome-pitting-contamination
-description: Localized chromium oxide layer breakdown causing surface degradation
-  on plated surfaces
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: contaminant
+title: Chromium Oxide Pitting Contamination
+contamination_description: Chrome-pitting forms when localized chromium oxide layer
+  breaks down on plated surfaces because of environmental exposure and corrosion,
+  so surface degradation happens in small pits. This contamination shows unique pitting
+  patterns distinct from uniform rust or scaling, where isolated spots appear without
+  spreading widely, and it behaves differently on chrome-plated steel by deepening
+  quickly during cleaning, while on stainless steel, pits resist less but still challenge
+  uniformity. Key removal issues arise from substrate damage risk, yet laser cleaning
+  works effectively because precise pulses target oxide breakdown so contaminants
+  ablate cleanly without affecting base material.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Chromium Oxide Pitting
+  href: /contamination/contamination/chrome-pitting-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/chrome-pitting-contamination-hero.jpg
+    alt: Chromium Oxide Pitting contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/chrome-pitting-contamination-micro.jpg
+    alt: Chromium Oxide Pitting contamination microscopic detail
 laser_properties:
   laser_parameters:
     beam_profile: flat_top

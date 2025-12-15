@@ -1,7 +1,75 @@
-id: nickel-plating-contamination
-name: nickel-plating-contamination
+name: Electroless Nickel Plating
 slug: nickel-plating-contamination
-description: Nickel-phosphorus coating for selective removal or repair
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+    Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: contaminant
+title: Electroless Nickel Plating Contamination
+contamination_description: 'Nickel-plating contamination, it manifests as thin metallic
+  deposits from electrochemical processes, where nickel ions adhere tenaciously to
+  substrates during plating operations gone awry. This layer, distinct from oxide
+  scales or organic residues by its uniform conductivity and corrosion resistance,
+  behaves differently across metals: on steel, it bonds strongly, enhancing durability
+  yet complicating separation, whereas on aluminum it induces galvanic corrosion that
+  weakens the base, and on copper it merges seamlessly, promoting heat transfer but
+  risking delamination. Removal challenges arise from its persistent adhesion, influenced
+  from environmental factors like humidity, yet laser cleaning proves effective, as
+  the beam selectively ablates the nickel through precise vaporization, preserving
+  underlying integrity without mechanical stress.'
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Electroless Nickel Plating
+  href: /contamination/contamination/nickel-plating-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/nickel-plating-contamination-hero.jpg
+    alt: Electroless Nickel Plating contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/nickel-plating-contamination-micro.jpg
+    alt: Electroless Nickel Plating contamination microscopic detail
 laser_properties:
   laser_parameters:
     beam_profile: gaussian

@@ -1,6 +1,11 @@
-id: copper-patina-contamination
-name: copper_patina-contamination
+name: Copper Patina / Verdigris
 slug: copper-patina-contamination
+category: oxidation
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 4
   name: Todd Dunning
@@ -36,27 +41,36 @@ _metadata:
     author_country: United States
     voice_applied: true
     content_type: contaminant
+title: Copper Patina / Verdigris Contamination
+contamination_description: Copper patina builds up as a stubborn green layer on exposed
+  surfaces through long-term reaction with air and moisture, standing out from typical
+  oxidations with its rock-solid adhesion that speeds up hidden corrosion below. It
+  clings unevenly to reactive metals like copper, brass, and bronze, embedding deeply
+  into the substrate and creating patchy films on nearby inert spots. Removing it
+  poses a real challenge, as traditional methods often scratch or leave residue, but
+  laser cleaning works out effectively by vaporizing the layer precisely to reveal
+  a clean, original shine.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Oxidation
+  href: /contamination/oxidation
+- label: Copper Patina / Verdigris
+  href: /contamination/oxidation/copper-patina-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/copper-patina-contamination-hero.jpg
+    alt: Copper Patina / Verdigris contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/copper-patina-contamination-micro.jpg
+    alt: Copper Patina / Verdigris contamination microscopic detail
 micro:
   after: Post-cleaning reveals restored surface with copper patina / verdigris successfully
     removed through precise laser ablation.
   before: Surface shows contamination from copper patina / verdigris affecting material
     appearance and properties.
-category: oxidation
-description: '[Copper](../materials/copper.md) patina stands out from other oxidations
-  by forming a distinctive green layer on copper surfaces through prolonged air and
-  moisture exposure. This adherent film clings tightly to reactive metals, accelerating
-  corrosion beneath, while it spreads unevenly on inert non-metals, creating patchy
-  buildup. It resists simple removal, embedding into substrates and complicating cleaning
-  on delicate alloys without scratching or residue. Laser methods strip it cleanly,
-  restoring original luster.'
-eeat:
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
-  reviewedBy: Z-Beam Quality Assurance Team
 laser_properties:
   laser_parameters:
     beam_profile: gaussian
@@ -170,8 +184,15 @@ laser_properties:
     thermal_conductivity: 0.5
     thermal_diffusivity: 0.7
     vaporization_temperature: 950
+eeat:
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+  reviewedBy: Z-Beam Quality Assurance Team
 valid_materials:
 - Copper
 - Brass
 - Bronze
-title: Copper Patina

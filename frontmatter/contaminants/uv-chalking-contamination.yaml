@@ -1,6 +1,11 @@
-id: uv-chalking-contamination
-name: uv_chalking-contamination
+name: UV Photodegradation / Polymer Chalking
 slug: uv-chalking-contamination
+category: photodegradation
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,22 +42,41 @@ _metadata:
     author_country: Indonesia
     voice_applied: true
     content_type: contaminant
+title: UV Photodegradation / Polymer Chalking Contamination
+contamination_description: UV-chalking contamination, it arises from photodegradation
+  under ultraviolet exposure, where polymer chains fragment on the surface and thus
+  form a white chalky residue that scatters and adheres as a powdery film. This residue
+  distinguishes itself from dust or oxidation marks through its brittle texture that
+  flakes easily under touch and pure white matte color, contrasting with sticky grime
+  or yellowish patina, while on materials like ABS and polycarbonate it builds thickly
+  and cracks during flexing, yet on nylon and polypropylene it develops sparse spots
+  that roughen texture over time, so removal challenges include embedding into pores
+  that worsens coverage with mechanical wiping or chemical dissolution damaging the
+  base. Laser cleaning addresses these issues effectively, as pulses target the residue
+  selectively and vaporize it without heat spread to the substrate, thus restoring
+  surface uniformity already on delicate layers like acrylic or redwood.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Photodegradation
+  href: /contamination/photodegradation
+- label: UV Photodegradation / Polymer Chalking
+  href: /contamination/photodegradation/uv-chalking-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/uv-chalking-contamination-hero.jpg
+    alt: UV Photodegradation / Polymer Chalking contamination on surface before laser
+      cleaning
+  micro:
+    url: /images/contamination/uv-chalking-contamination-micro.jpg
+    alt: UV Photodegradation / Polymer Chalking contamination microscopic detail
 micro:
   after: Post-cleaning reveals restored surface with uv photodegradation / polymer
     chalking successfully removed through precise laser ablation.
   before: Surface shows contamination from uv photodegradation / polymer chalking
     affecting material appearance and properties.
-category: photodegradation
-description: White chalky residue from UV-induced breakdown of polymer chains at the
-  surface
-eeat:
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
-  reviewedBy: Z-Beam Quality Assurance Team
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -175,6 +199,14 @@ laser_properties:
     thermal_conductivity: 0.2
     thermal_diffusivity: 0.08
     vaporization_temperature: 450
+eeat:
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+  reviewedBy: Z-Beam Quality Assurance Team
 valid_materials:
 - ABS
 - Acrylic (PMMA)
@@ -184,4 +216,3 @@ valid_materials:
 - Polyethylene
 - Polypropylene
 - Redwood
-title: Uv Chalking

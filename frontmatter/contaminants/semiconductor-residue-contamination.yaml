@@ -1,7 +1,71 @@
-id: semiconductor-residue-contamination
-name: semiconductor-residue-contamination
+name: Semiconductor Processing Residue
 slug: semiconductor-residue-contamination
-description: Chemical vapor deposition and etching residues from chip manufacturing
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  country_display: United States
+  title: MA
+  sex: m
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
+  image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: contaminant
+title: Semiconductor Processing Residue Contamination
+contamination_description: Semiconductor residues form as stubborn thin films during
+  chip production, where chemical vapor deposition and etching deposit unwanted layers
+  that bond chemically to surfaces. These contaminants stand out from looser particles
+  due to their tight nanoscale adhesion and heat sensitivity, gripping firmly on silicon
+  wafers and alumina while holding less securely on quartz or silicon nitride, which
+  ramps up removal challenges for delicate substrates. Laser cleaning tackles this
+  effectively by precisely vaporizing the residues, leaving base materials intact
+  and delivering a clean finish without damage.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Semiconductor Processing Residue
+  href: /contamination/contamination/semiconductor-residue-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/semiconductor-residue-contamination-hero.jpg
+    alt: Semiconductor Processing Residue contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/semiconductor-residue-contamination-micro.jpg
+    alt: Semiconductor Processing Residue contamination microscopic detail
 laser_properties:
   laser_parameters:
     beam_profile: flat_top

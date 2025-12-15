@@ -56,7 +56,7 @@ z-beam-generator/
 │   │   component_lengths:
 │   │     micro: 25
 │   │     subtitle: 15
-│   │     description: 150
+│   │     description: 60
 │   │
 │   └── generation/
 │       └── component_specs.py  # NO hardcoded components!

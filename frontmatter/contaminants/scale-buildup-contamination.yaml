@@ -1,6 +1,11 @@
-id: scale-buildup-contamination
-name: scale_buildup-contamination
+name: Mineral Scale / Hard Water Deposits
 slug: scale-buildup-contamination
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,30 +41,38 @@ _metadata:
     author_country: Taiwan
     voice_applied: true
     content_type: contaminant
+title: Mineral Scale / Hard Water Deposits Contamination
+contamination_description: After prolonged heat exposure in water-prone areas, scale-buildup
+  forms as adherent oxide layers through oxidation process. This contamination exhibits
+  tenacious bonding to surfaces and rough porous structure, so it differs from loose
+  particulates or oily residues that detach easily. On reactive metals like steel,
+  thick coatings insulate and promote corrosion underneath, while on inert non-metals
+  such as alumina, thinner layers invite less cracking; removal challenges strong
+  adhesion, so laser cleaning ablates precisely without substrate damage.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Mineral Scale / Hard Water Deposits
+  href: /contamination/contamination/scale-buildup-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/scale-buildup-contamination-hero.jpg
+    alt: Mineral Scale / Hard Water Deposits contamination on surface before laser
+      cleaning
+  micro:
+    url: /images/contamination/scale-buildup-contamination-micro.jpg
+    alt: Mineral Scale / Hard Water Deposits contamination microscopic detail
 micro:
   after: Post-cleaning reveals restored surface with mineral scale / hard water deposits
     successfully removed through precise laser ablation.
   before: Surface shows contamination from mineral scale / hard water deposits affecting
     material appearance and properties.
-category: contamination
 context_notes: Common in plumbing, boilers, heat exchangers, and areas with water
   exposure
-description: Scale-buildup forms as adherent oxide layers from prolonged heat exposure,
-  differing from loose particulates or oily residues by its tenacious bonding to surfaces.
-  On reactive metals like [Iron](../materials/iron.md), it creates thick, insulating
-  coatings that promote further corrosion underneath, while on inert non-metals such
-  as ceramics, layers remain thinner and less disruptive. Formation occurs gradually
-  through oxidation, resulting in rough, porous structures. This contamination hinders
-  heat transfer on metals and invites cracking on non-metals, so laser cleaning ablates
-  it precisely without substrate damage.
-eeat:
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
-  reviewedBy: Z-Beam Quality Assurance Team
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -171,6 +184,14 @@ laser_properties:
     thermal_conductivity: 2.2
     thermal_diffusivity: 1.1
     vaporization_temperature: 2850
+eeat:
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+  reviewedBy: Z-Beam Quality Assurance Team
 valid_materials:
 - Concrete
 - Aluminum
@@ -211,4 +232,3 @@ valid_materials:
 - Travertine
 - Bluestone
 - Soapstone
-title: Scale Buildup

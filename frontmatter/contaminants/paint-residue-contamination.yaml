@@ -1,6 +1,11 @@
-id: paint-residue-contamination
-name: paint_residue-contamination
+name: Paint Residue / Coating Failure
 slug: paint-residue-contamination
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,21 +42,39 @@ _metadata:
     author_country: Indonesia
     voice_applied: true
     content_type: contaminant
+title: Paint Residue / Coating Failure Contamination
+contamination_description: Paint-residue contamination, it arises from flaking, peeling,
+  or degraded paint and coating materials. This pattern forms when environmental exposure
+  causes binders in paint to break down, thus layers detach and scatter as residue.
+  Unique characteristics distinguish it, such as irregular flakes with color remnants
+  and adhesive stickiness, unlike dust or rust that lacks organic binders. On metals,
+  residue adheres tightly and traps moisture, while on stone or wood, it embeds into
+  pores and promotes further degradation. Removal challenges persist, because residue
+  resists solvents due to its polymeric nature, and mechanical scraping risks surface
+  damage. Laser cleaning proves effective here, as precise energy pulses ablate residue
+  layers without affecting substrates, thus surface already regains uniformity following
+  treatment.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Paint Residue / Coating Failure
+  href: /contamination/contamination/paint-residue-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/paint-residue-contamination-hero.jpg
+    alt: Paint Residue / Coating Failure contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/paint-residue-contamination-micro.jpg
+    alt: Paint Residue / Coating Failure contamination microscopic detail
 micro:
   after: Post-cleaning reveals restored surface with paint residue / coating failure
     successfully removed through precise laser ablation.
   before: Surface shows contamination from paint residue / coating failure affecting
     material appearance and properties.
-category: contamination
-description: Flaking, peeling, or degraded paint/coating material
-eeat:
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
-  reviewedBy: Z-Beam Quality Assurance Team
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -178,6 +201,14 @@ laser_properties:
     thermal_conductivity: 0.2
     thermal_diffusivity: 0.08
     vaporization_temperature: 250
+eeat:
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+  reviewedBy: Z-Beam Quality Assurance Team
 valid_materials:
 - Concrete
 - Aluminum
@@ -214,4 +245,3 @@ valid_materials:
 - PVC
 - Nylon
 - PTFE
-title: Paint Residue

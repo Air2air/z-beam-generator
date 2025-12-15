@@ -59,19 +59,41 @@ class TrivialContaminantsExporter:
             self.logger.error(f"❌ Failed to load Contaminants.yaml: {e}")
             return {}
     
-    def _create_slug(self, name: str) -> str:
+    def _create_slug(self, pattern_id: str) -> str:
         """
-        Create URL-friendly slug from contamination pattern name.
+        Create URL-friendly slug from contamination pattern ID.
         
-        Removes parentheses for consistency with material slugs.
-        Appends '-contamination' suffix for clarity.
+        MANDATORY SUFFIX: All contaminant slugs MUST end with '-contamination'
+        for SEO clarity and URL structure consistency.
+        
+        Normalization:
+        - Convert to lowercase
+        - Replace underscores with hyphens
+        - Remove parentheses and special characters
+        - Remove consecutive hyphens
+        
+        Examples:
+        - "industrial-oil" → "industrial-oil-contamination"
+        - "rust_formation" → "rust-formation-contamination"
+        
+        This suffix is intentional and required for:
+        - Clear URL semantics (/contamination/industrial-oil-contamination)
+        - SEO optimization (explicit contamination context)
+        - Avoiding slug conflicts with materials/settings domains
         """
-        slug = name.lower().replace(' ', '-').replace('_', '-')
+        # Normalize: lowercase, replace underscores with hyphens
+        slug = pattern_id.lower().replace('_', '-')
         slug = slug.replace('(', '').replace(')', '')
         # Remove consecutive hyphens
         while '--' in slug:
             slug = slug.replace('--', '-')
-        return slug.strip('-')
+        slug = slug.strip('-')
+        
+        # MANDATORY: Append -contamination suffix (if not already present)
+        if not slug.endswith('-contamination'):
+            slug = f"{slug}-contamination"
+        
+        return slug
     
     def _strip_generation_metadata(self, data: Any) -> Any:
         """
@@ -89,6 +111,41 @@ class TrivialContaminantsExporter:
             return [self._strip_generation_metadata(item) for item in data]
         else:
             return data
+    
+    def _build_breadcrumb(self, pattern_data: Dict, slug: str) -> list:
+        """
+        Build breadcrumb navigation for contamination pattern.
+        
+        Structure: Home > Contamination > [Category] > [Pattern Name]
+        """
+        category = pattern_data.get('category', 'contamination').title()
+        name = pattern_data.get('name', slug.replace('-', ' ').replace('_', ' ').title())
+        
+        return [
+            {'label': 'Home', 'href': '/'},
+            {'label': 'Contamination', 'href': '/contamination'},
+            {'label': category, 'href': f'/contamination/{category.lower()}'},
+            {'label': name, 'href': f'/contamination/{category.lower()}/{slug}-contamination'}
+        ]
+    
+    def _build_images_structure(self, pattern_data: Dict, slug: str) -> Dict:
+        """
+        Build images structure for contamination pattern.
+        
+        Phase 1: Add placeholder structure matching materials/settings format
+        """
+        name = pattern_data.get('name', slug.replace('-', ' ').replace('_', ' ').title())
+        
+        return {
+            'hero': {
+                'url': f'/images/contamination/{slug}-hero.jpg',
+                'alt': f'{name} contamination on surface before laser cleaning'
+            },
+            'micro': {
+                'url': f'/images/contamination/{slug}-micro.jpg',
+                'alt': f'{name} contamination microscopic detail'
+            }
+        }
     
     def export_all(self) -> Dict[str, bool]:
         """
@@ -128,14 +185,34 @@ class TrivialContaminantsExporter:
         # Create slug for URL (with -contamination suffix)
         slug = self._create_slug(pattern_id)
         
-        # Start with pattern ID, name, and slug (all with -contamination suffix for URL consistency)
-        frontmatter = {
-            'id': f"{pattern_id}-contamination",
-            'name': f"{pattern_data.get('id', pattern_id)}-contamination",
-            'slug': f"{slug}-contamination"
-        }
+        # Build frontmatter in CANONICAL ORDER (matching materials/settings)
+        # Order: name, slug, category, subcategory, content_type, schema_version,
+        #        datePublished, dateModified, author, _metadata, title, 
+        #        {domain}_description, breadcrumb, images, [domain-specific fields]
         
-        # Enrich author data from registry
+        frontmatter = {}
+        
+        # 1-3: Identification (name, slug, category)
+        # Use 'name' field from source data (properly formatted with spaces)
+        # Fallback to pattern_id converted to title case if name not present
+        source_name = pattern_data.get('name', pattern_id.replace('-', ' ').replace('_', ' ').title())
+        frontmatter['name'] = source_name
+        # Note: slug already has -contamination suffix from _create_slug()
+        frontmatter['slug'] = slug
+        frontmatter['category'] = pattern_data.get('category', 'contamination')
+        
+        # 4: Subcategory (Phase 1: Add subcategory field)
+        frontmatter['subcategory'] = pattern_data.get('subcategory', 'contamination')
+        
+        # 5-6: Content Type & Schema (Phase 1: Add metadata fields)
+        frontmatter['content_type'] = 'unified_contamination'
+        frontmatter['schema_version'] = '4.0.0'
+        
+        # 7-8: Publishing Dates (Phase 1: Add date fields)
+        frontmatter['datePublished'] = pattern_data.get('datePublished', None)
+        frontmatter['dateModified'] = pattern_data.get('dateModified', None)
+        
+        # 9: Author (Phase 1: Add FULL author block from registry)
         author_field = pattern_data.get('author', {})
         author_id = author_field.get('id') if isinstance(author_field, dict) else author_field
         
@@ -144,41 +221,64 @@ class TrivialContaminantsExporter:
             from data.authors.registry import get_author
             try:
                 author_data = get_author(author_id)
+                # Use full author data with all 17 fields
                 frontmatter['author'] = author_data.copy()
-                
-                # Add _metadata for voice tracking
-                frontmatter['_metadata'] = {
-                    'voice': {
-                        'author_name': author_data.get('name', 'Unknown'),
-                        'author_country': author_data.get('country', 'Unknown'),
-                        'voice_applied': True,
-                        'content_type': 'contaminant'
-                    }
-                }
             except KeyError:
                 self.logger.warning(f"⚠️  Invalid author ID {author_id} for pattern {pattern_id}")
+                # Fallback to minimal author with just ID
+                frontmatter['author'] = {'id': author_id}
+        else:
+            # No author - set to None
+            frontmatter['author'] = None
         
-        # Define fields to export (exclude internal/debug fields)
-        EXPORTABLE_FIELDS = {
-            'category', 'context_notes', 'description', 'micro',
-            'laser_properties', 'eeat', 'valid_materials',
-            'appearance', 'commonality_score'
-        }
+        # 10: Metadata (voice tracking)
+        if author_id and 'author' in frontmatter and frontmatter['author']:
+            frontmatter['_metadata'] = {
+                'voice': {
+                    'author_name': frontmatter['author'].get('name', 'Unknown'),
+                    'author_country': frontmatter['author'].get('country', 'Unknown'),
+                    'voice_applied': True,
+                    'content_type': 'contaminant'
+                }
+            }
         
-        # Copy exportable fields
-        for key, value in pattern_data.items():
-            if key in EXPORTABLE_FIELDS:
-                # Strip generation metadata
-                frontmatter[key] = self._strip_generation_metadata(value)
+        # 11: Title
+        frontmatter['title'] = source_name + ' Contamination'
         
-        # Add title (human-readable version)
-        if 'id' in pattern_data:
-            # Convert ID to title (e.g., 'adhesive_residue' → 'Adhesive Residue')
-            title = pattern_data['id'].replace('_', ' ').title()
-            frontmatter['title'] = title
+        # 12: Main Content (contamination_description - note naming consistency)
+        if 'description' in pattern_data:
+            frontmatter['contamination_description'] = self._strip_generation_metadata(pattern_data['description'])
+        
+        # 13: Breadcrumb (Phase 1: Add navigation structure)
+        frontmatter['breadcrumb'] = self._build_breadcrumb(pattern_data, slug)
+        
+        # 14: Images (Phase 1: Add images structure)
+        frontmatter['images'] = self._build_images_structure(pattern_data, slug)
+        
+        # Domain-specific fields (in logical order)
+        if 'micro' in pattern_data:
+            frontmatter['micro'] = self._strip_generation_metadata(pattern_data['micro'])
+        
+        if 'context_notes' in pattern_data:
+            frontmatter['context_notes'] = pattern_data['context_notes']
+        
+        if 'laser_properties' in pattern_data:
+            frontmatter['laser_properties'] = self._strip_generation_metadata(pattern_data['laser_properties'])
+        
+        if 'eeat' in pattern_data:
+            frontmatter['eeat'] = self._strip_generation_metadata(pattern_data['eeat'])
+        
+        if 'valid_materials' in pattern_data:
+            frontmatter['valid_materials'] = pattern_data['valid_materials']
+        
+        if 'appearance' in pattern_data:
+            frontmatter['appearance'] = self._strip_generation_metadata(pattern_data['appearance'])
+        
+        if 'commonality_score' in pattern_data:
+            frontmatter['commonality_score'] = pattern_data['commonality_score']
         
         # Write to file with -contamination suffix
-        filename = f"{slug}-contamination.yaml"
+        filename = f"{slug}.yaml"
         output_path = self.output_dir / filename
         
         with open(output_path, 'w', encoding='utf-8') as f:

@@ -81,12 +81,16 @@ class CrossLinkBuilder:
         """
         Find material names mentioned in text.
         
+        Returns the actual text found (preserving case), not the YAML key.
+        This ensures we don't capitalize cross-links unless they're naturally
+        capitalized in the sentence.
+        
         Args:
             text: Content to search
             exclude: Current item to exclude
             
         Returns:
-            List of (material_name, first_position) tuples
+            List of (matched_text, first_position) tuples
         """
         materials = self._load_materials().get('materials', {})
         mentions = []
@@ -100,7 +104,9 @@ class CrossLinkBuilder:
             match = pattern.search(text)
             
             if match:
-                mentions.append((material_name, match.start()))
+                # Return the ACTUAL text found (preserving case), not the YAML key
+                matched_text = match.group(0)
+                mentions.append((matched_text, match.start()))
         
         # Sort by first occurrence
         mentions.sort(key=lambda x: x[1])
@@ -146,7 +152,8 @@ class CrossLinkBuilder:
         content: str,
         current_item: str,
         domain: str,
-        related_items: List[str] = None
+        related_items: List[str] = None,
+        valid_materials: List[str] = None
     ) -> str:
         """
         Add sparse cross-links to content.
@@ -156,6 +163,7 @@ class CrossLinkBuilder:
             current_item: Current material/contaminant/setting (to exclude)
             domain: Current domain (materials/contaminants/settings)
             related_items: Optional list of items to prioritize for linking
+            valid_materials: For contaminants - ONLY link materials in this list
             
         Returns:
             Content with markdown links added
@@ -165,6 +173,7 @@ class CrossLinkBuilder:
             - Natural placement (term must exist in text)
             - Link first occurrence only
             - No circular references (no linking to current_item)
+            - For contaminants: ONLY link materials in valid_materials list
         """
         max_links = self._calculate_max_links(content)
         
@@ -183,24 +192,48 @@ class CrossLinkBuilder:
         # Find material mentions (allow all domains, exclude current item only)
         material_mentions = self._find_material_mentions(content, exclude=current_item)
         
-        for material_name, position in material_mentions[:max_links]:
+        # Build lookup for material name → YAML key (case-insensitive)
+        materials = self._load_materials().get('materials', {})
+        material_lookup = {name.lower(): name for name in materials.keys()}
+        
+        for matched_text, position in material_mentions[:max_links]:
             if links_added >= max_links:
                 break
             
-            if material_name in linked_items:
+            if matched_text.lower() in [item.lower() for item in linked_items]:
                 continue
             
-            # Create link
-            slug = self._make_slug(material_name)
+            # FILTER: For contaminants, only link materials in valid_materials list
+            if valid_materials is not None:
+                # Lookup the canonical YAML key for validation
+                yaml_key = material_lookup.get(matched_text.lower())
+                if yaml_key:
+                    is_valid = any(
+                        yaml_key.lower() == vm.lower() or 
+                        vm.lower() in yaml_key.lower() or
+                        yaml_key.lower() in vm.lower()
+                        for vm in valid_materials
+                    )
+                    if not is_valid:
+                        logger.debug(f"Skipped link: {matched_text} (not in valid_materials: {valid_materials})")
+                        continue
+                else:
+                    continue
+            
+            # Create link using YAML key for slug, but matched_text for display
+            yaml_key = material_lookup.get(matched_text.lower())
+            if not yaml_key:
+                continue
+            slug = self._make_slug(yaml_key)
             link_path = f"../materials/{slug}.md"
             
-            # Replace first occurrence only
-            pattern = re.compile(r'\b' + re.escape(material_name) + r'\b', re.IGNORECASE)
-            modified_content = pattern.sub(f"[{material_name}]({link_path})", modified_content, count=1)
+            # Replace first occurrence with EXACT case match
+            pattern = re.compile(r'\b' + re.escape(matched_text) + r'\b')
+            modified_content = pattern.sub(f"[{matched_text}]({link_path})", modified_content, count=1)
             
-            linked_items.add(material_name)
+            linked_items.add(matched_text)
             links_added += 1
-            logger.debug(f"Added link: {material_name} → {link_path}")
+            logger.debug(f"Added link: {matched_text} → {link_path}")
         
         # Find contaminant mentions (allow all domains, exclude current item only)
         if links_added < max_links:

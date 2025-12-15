@@ -119,6 +119,8 @@ class QualityEvaluatedGenerator:
         self,
         material_name: str,
         component_type: str,
+        retry_session_id: Optional[str] = None,
+        is_retry: bool = False,
         **kwargs
     ) -> QualityEvaluatedResult:
         """
@@ -127,6 +129,8 @@ class QualityEvaluatedGenerator:
         Args:
             material_name: Name of material
             component_type: Type of component (micro, material_description, faq)
+            retry_session_id: Optional session ID to group retry attempts together
+            is_retry: Whether this is a retry attempt (enables proper learning tracking)
             **kwargs: Additional parameters (e.g., faq_count)
             
         Returns:
@@ -136,7 +140,7 @@ class QualityEvaluatedGenerator:
             1. Generate content with humanness layer
             2. Save to YAML immediately
             3. Run quality evaluations (for learning only)
-            4. Log all data to learning database
+            4. Log all data to learning database (with retry context if provided)
             5. Return success with quality scores
         """
         logger.info(f"\n{'='*80}")
@@ -371,7 +375,9 @@ class QualityEvaluatedGenerator:
                     winston_result=winston_result,
                     structural_analysis=structural_analysis,
                     attempt=1,
-                    passed_all_gates=True  # Always "passed" - no gating
+                    passed_all_gates=True,  # Always "passed" - no gating
+                    retry_session_id=retry_session_id,
+                    is_retry=is_retry
                 )
                 evaluation_logged = True
             except Exception as e:
@@ -784,16 +790,26 @@ class QualityEvaluatedGenerator:
         winston_result: Dict[str, Any],
         structural_analysis: Any,
         attempt: int,
-        passed_all_gates: bool
+        passed_all_gates: bool,
+        retry_session_id: Optional[str] = None,
+        is_retry: bool = False
     ):
         """
         Log EVERY generation attempt to database for learning, not just successes.
         
-        This is the KEY fix for learning system - we need data from failures to:
+        NOW WITH RETRY TRACKING: Groups retry attempts together via retry_session_id
+        to enable retry-specific learning analysis:
+        - Parameter drift across attempts
+        - Quality progression patterns  
+        - Success rate by attempt number
+        - Optimal retry strategies
+        
+        This is the KEY fix for learning system - we need data from ALL attempts to:
         1. Learn what parameters correlate negatively with success
         2. Understand realistic threshold distributions
         3. Identify structural patterns that fail vs succeed
         4. Build sufficient corpus for sweet spot analysis
+        5. **NEW**: Analyze retry effectiveness and parameter adjustments
         
         Args:
             material_name: Material being generated
@@ -805,6 +821,8 @@ class QualityEvaluatedGenerator:
             structural_analysis: StructuralAnalysis result
             attempt: Attempt number (1-5)
             passed_all_gates: Whether all quality gates passed
+            retry_session_id: Session ID grouping retry attempts together
+            is_retry: Whether this is a retry (not first generation)
         """
         try:
             # Only log if we have Winston database available
@@ -854,7 +872,9 @@ class QualityEvaluatedGenerator:
                     'structural_passed': structural_analysis.passes if structural_analysis else True,
                     'ai_tendencies': evaluation.ai_tendencies or []
                 },
-                composite_quality_score=composite_score
+                composite_quality_score=composite_score,
+                retry_session_id=retry_session_id,
+                is_retry=is_retry
             )
             
             # Log generation parameters (enables correlation analysis)

@@ -1,0 +1,390 @@
+# Contamination Pattern Frontmatter Example
+# This file shows the complete structure for contamination pattern pages
+# Based on: adhesive-residue pattern from Contaminants.yaml
+
+name: Adhesive Residue
+slug: adhesive-residue
+pattern_id: adhesive_residue
+category: contamination
+content_type: contamination_pattern
+schema_version: 1.0.0
+datePublished: null
+dateModified: null
+
+# Author information (from Contaminants.yaml author field)
+author:
+  id: 4
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: f
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+    - Laser-Matter Interaction Physics
+    - Contamination Removal Mechanisms
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+    - "Ph.D. Laser Physics, Bandung Institute of Technology, 2021"
+    - "3+ years laser cleaning research"
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+    - https://linkedin.com/in/ikmanda-roswati-physicist
+    - https://www.academia.edu/profile/IkmandaRoswati
+
+# Page metadata
+title: Adhesive Residue Laser Cleaning
+meta_description: Complete guide to laser cleaning adhesive residue and tape marks from various surfaces using precise ablation techniques
+
+# Content sections (from Contaminants.yaml)
+contamination_description: Sticky residue from labels, tapes, or adhesives
+
+context_notes: Common on manufactured items, shipped goods, or items with labels/tape
+
+# Breadcrumb navigation
+breadcrumb:
+  - label: Home
+    href: /
+  - label: Contamination Patterns
+    href: /contamination
+  - label: Contamination Type
+    href: /contamination/contamination
+  - label: Adhesive Residue
+    href: /contamination/contamination/adhesive-residue
+
+# Hero images (from Contaminants.yaml micro field)
+images:
+  hero:
+    before:
+      url: /images/contamination/adhesive-residue-before.jpg
+      alt: Surface shows contamination from adhesive residue affecting material appearance
+    after:
+      url: /images/contamination/adhesive-residue-after.jpg
+      alt: Post-cleaning reveals restored surface with adhesive residue successfully removed
+
+# Micro text (from Contaminants.yaml micro.before/after)
+micro:
+  before: Surface shows contamination from adhesive residue / tape marks affecting material appearance and properties.
+  after: Post-cleaning reveals restored surface with adhesive residue / tape marks successfully removed through precise laser ablation.
+
+# Visual characteristics by material category
+# Source: Contaminants.yaml -> visual_characteristics.appearance_on_categories
+appearance_by_category:
+  ceramic:
+    appearance: Adhesive residue manifests as a sticky, often translucent layer that may appear whitish or yellowish, contrasting with the ceramic's smooth, glazed finish.
+    coverage: Coverage ranges from small, isolated spots to larger sections, with variation due to surface smoothness and adhesive type.
+    pattern: It usually forms defined patches or streaks, frequently following the shape of the tape and potentially collecting in grout lines or textured areas.
+  
+  composite:
+    appearance: Adhesive residue shows as a sticky film that may be translucent or colored, adhering to the varied textures of composite materials and possibly highlighting fibers or layers.
+    coverage: Coverage is typically partial and variable, depending on the composite's composition and how well the adhesive bonded.
+    pattern: It tends to form uneven patches or streaks, influenced by the composite's heterogeneous surface, such as along fiber directions or laminate edges.
+  
+  concrete:
+    appearance: Residue appears as a dark, sticky film that can be gray or brownish, often filling the rough pores and contrasting with the concrete's dull surface.
+    coverage: Coverage is sparse to moderate, highly variable due to concrete's roughness and adhesive absorption into pores.
+    pattern: It commonly forms irregular patches or smears, concentrated in surface imperfections or along former tape lines, with possible dust adherence.
+  
+  glass:
+    appearance: Residue appears as a hazy, sticky film that can be clear or slightly cloudy, often with a glossy sheen that obscures the glass's transparency.
+    coverage: Coverage is often extensive and uniform if tape was applied broadly, but can vary with application technique.
+    pattern: It typically forms distinct outlines matching the shape of the removed tape or label, with edges that may be more pronounced than the center.
+  
+  metal:
+    appearance: Adhesive residue appears as a sticky, sometimes discolored film on the metal surface, ranging from translucent to yellowish or brownish depending on the adhesive type and aging.
+    coverage: Coverage varies from isolated spots to extensive areas, influenced by the metal's finish and how firmly the adhesive bonded.
+    pattern: It forms irregular patches or defined shapes following tape application, often with visible edges and potential accumulation in scratches or surface irregularities.
+  
+  plastic:
+    appearance: Residue shows as a sticky layer that may be clear, yellowed, or colored, sometimes causing slight surface dulling on the plastic.
+    coverage: Coverage can be spotty or uniform, with variation due to plastic type and adhesive interaction.
+    pattern: It typically forms defined patches or streaks, following the adhesive application pattern and potentially highlighting surface texture.
+  
+  stone:
+    appearance: Adhesive residue appears as a dark, sticky film that can be brown or grayish, often contrasting with the stone's natural color and filling porous areas.
+    coverage: Coverage is variable and often uneven due to the stone's rough, porous texture and uneven adhesive absorption.
+    pattern: It forms irregular patches or smears, concentrated in surface depressions and along former tape lines, with possible dirt accumulation.
+  
+  wood:
+    appearance: Residue appears as a sticky, often darkened area that can be translucent to brownish, sometimes highlighting the wood grain or causing discoloration.
+    coverage: Coverage is usually localized and uneven, with variation based on wood porosity and how much adhesive penetrated the grain.
+    pattern: It typically forms defined spots or patches, following the wood grain direction if the adhesive seeped in, and may appear more concentrated in softer grain areas.
+
+# Affected materials list (from Contaminants.yaml valid_materials)
+affected_materials:
+  categories:
+    - ceramic
+    - composite
+    - concrete
+    - fabric
+    - glass
+    - metal
+    - plastic
+    - stone
+    - wood
+  
+  specific_materials:
+    - Acrylic (PMMA)
+    - Alabaster
+    - Alumina
+    - Aluminum
+    - Ash
+    - Bamboo
+    - Basalt
+    - Beech
+    - Birch
+    - Bluestone
+    - Boron Carbide
+    - Boron Nitride
+    - Brass
+    - Breccia
+    - Brick
+    - Bronze
+    - Cedar
+    - Cement
+    - Cherry
+    - Concrete
+    - Copper
+    - Dolomite
+    - Ebony
+    - Fiberglass
+    - Fir
+    - Glass
+    - Gneiss
+    - Gold
+    - Granite
+    - Hickory
+    - Iron
+    - Limestone
+    - Mahogany
+    - Maple
+    - Marble
+    - MDF
+    - Mortar
+    - Nickel
+    - Nylon
+    - Oak
+    - Onyx
+    - PET
+    - Pine
+    - Plaster
+    - Platinum
+    - Plywood
+    - Polycarbonate
+    - Polyethylene
+    - Polypropylene
+    - Polystyrene
+    - Polyvinyl Chloride
+    - Poplar
+    - Porcelain
+    - Porphyry
+    - Quartzite
+    - Redwood
+    - Rosewood
+    - Rubber
+    - Sandstone
+    - Schist
+    - Serpentine
+    - Shale
+    - Silver
+    - Slate
+    - Soapstone
+    - Stainless Steel 304
+    - Stainless Steel 316
+    - Steel
+    - Stoneware
+    - Stucco
+    - Teak
+    - Terracotta
+    - Tin
+    - Titanium
+    - Travertine
+    - Walnut
+    - Pine
+    - Cedar
+    - Ash
+    - Birch
+    - Mahogany
+    - Teak
+    - Bamboo
+    - Fir
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
+    - Redwood
+
+# Laser removal parameters (from Contaminants.yaml laser_properties.laser_parameters)
+laser_parameters:
+  beam_profile: flat_top
+  fluence_range:
+    min_j_cm2: 0.3
+    max_j_cm2: 1.2
+    recommended_j_cm2: 0.8
+  pulse_duration_range:
+    min_ns: 10
+    max_ns: 100
+    recommended_ns: 30
+  repetition_rate_khz:
+    min: 20
+    max: 200
+    recommended: 50
+  wavelength_preference:
+    - 1064
+    - 532
+  scan_speed_mm_s:
+    min: 500
+    max: 2000
+    recommended: 1000
+  spot_size_mm:
+    min: 0.02
+    max: 0.1
+    recommended: 0.05
+  overlap_percentage: 50
+  safety_margin_factor: 0.7
+  polarization: circular
+
+# Optical properties (from Contaminants.yaml laser_properties.optical_properties)
+optical_properties:
+  absorption_coefficient:
+    wavelength_1064nm: 850
+    wavelength_532nm: 4200
+    wavelength_355nm: 18500
+  reflectivity:
+    wavelength_1064nm: 0.15
+    wavelength_532nm: 0.08
+    wavelength_355nm: 0.04
+  refractive_index:
+    real_part: 1.52
+    imaginary_part: 0.023
+  transmission_depth: 11.8
+
+# Removal characteristics (from Contaminants.yaml laser_properties.removal_characteristics)
+removal_characteristics:
+  primary_mechanism: thermal_ablation
+  secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+  removal_efficiency:
+    single_pass: 0.7
+    optimal_passes: 3
+    diminishing_returns_after: 5
+  process_speed:
+    typical_scan_speed_mm_s: 800
+    area_coverage_rate_cm2_min: 240
+  damage_risk_to_substrate: low
+  surface_quality_after_removal:
+    roughness_increase: minimal
+    color_change: no
+    residual_stress: compressive
+  byproducts:
+    - compound: CO2
+      phase: gas
+      hazard_level: low
+    - compound: H2O
+      phase: gas
+      hazard_level: low
+    - compound: carbon_particulates
+      phase: solid
+      hazard_level: moderate
+    - compound: volatile_organic_compounds
+      phase: gas
+      hazard_level: moderate
+
+# Safety data (from Contaminants.yaml laser_properties.safety_data)
+safety_data:
+  toxic_gas_risk: moderate
+  fire_explosion_risk: low
+  particulate_generation:
+    size_range_um:
+      - 0.1
+      - 10
+    respirable_fraction: 0.7
+  fumes_generated:
+    - compound: Acetaldehyde
+      concentration_mg_m3: "5-25"
+      exposure_limit_mg_m3: 25
+      hazard_class: irritant
+    - compound: Formaldehyde
+      concentration_mg_m3: "1-10"
+      exposure_limit_mg_m3: 0.3
+      hazard_class: carcinogenic
+    - compound: Benzene
+      concentration_mg_m3: "0.5-5"
+      exposure_limit_mg_m3: 0.5
+      hazard_class: carcinogenic
+    - compound: Toluene
+      concentration_mg_m3: "2-15"
+      exposure_limit_mg_m3: 20
+      hazard_class: toxic
+    - compound: Styrene
+      concentration_mg_m3: "3-20"
+      exposure_limit_mg_m3: 50
+      hazard_class: irritant
+    - compound: Carbon Monoxide
+      concentration_mg_m3: "10-50"
+      exposure_limit_mg_m3: 29
+      hazard_class: toxic
+  ppe_requirements:
+    eye_protection: goggles
+    respiratory: full_face
+    skin_protection: gloves
+  ventilation_requirements:
+    minimum_air_changes_per_hour: 12
+    exhaust_velocity_m_s: 0.5
+    filtration_type: carbon
+  substrate_compatibility_warnings:
+    - May cause surface discoloration on painted surfaces
+    - Can damage thin coatings or plated surfaces
+    - Potential for substrate heating on thermally sensitive materials
+
+# Regulatory standards (from Contaminants.yaml eeat.citations)
+regulatoryStandards:
+  - name: IEC
+    longName: International Electrotechnical Commission
+    description: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+    image: /images/logo/logo-org-iec.png
+  - name: OSHA
+    longName: Occupational Safety and Health Administration
+    description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+    image: /images/logo/logo-org-osha.png
+
+# E-E-A-T (from Contaminants.yaml eeat field)
+eeat:
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+  citations:
+    - IEC 60825 - Safety of Laser Products
+    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  reviewedBy: Z-Beam Quality Assurance Team
+
+# FAQ section (AI-generated, similar to materials/settings domains)
+faq:
+  - question: What types of surfaces can adhesive residue contamination affect?
+    answer: |-
+      **Affects most material categories**. Adhesive residue commonly appears on manufactured items, shipped goods, and labeled products across ceramic, metal, glass, plastic, and wood surfaces. The sticky layer varies in appearance from translucent on glass to darker on porous materials like concrete.
+      
+      Ikmanda Roswati, Ph.D.
+  
+  - question: How does laser cleaning remove adhesive residue safely?
+    answer: |-
+      **Thermal ablation breaks down adhesive bonds**. The laser uses 0.8 J/cm² fluence at 1064nm wavelength to vaporize the residue without damaging the substrate. Short 30ns pulses at 50 kHz minimize heat transfer, achieving 70% removal in a single pass and near-complete removal in 3 passes.
+      
+      Ikmanda Roswati, Ph.D.
+  
+  - question: What safety precautions are needed when removing adhesive residue?
+    answer: |-
+      **Ventilation and PPE are critical**. The process generates VOCs, formaldehyde, and benzene—both carcinogenic. Use full-face respiratory protection, maintain 12 air changes per hour, and use carbon filtration. Eye protection and gloves are mandatory. Monitor for substrate heating on thermally sensitive materials.
+      
+      Ikmanda Roswati, Ph.D.

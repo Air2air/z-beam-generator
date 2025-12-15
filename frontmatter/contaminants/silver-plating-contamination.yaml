@@ -1,7 +1,75 @@
-id: silver-plating-contamination
-name: silver-plating-contamination
+name: Silver Plating Residue
 slug: silver-plating-contamination
-description: Silver coating and tarnish on electrical contacts and tableware
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: contaminant
+title: Silver Plating Residue Contamination
+contamination_description: Tarnish forms as contamination on silver-plating when exposure
+  to air and moisture reacts with sulfur compounds, so layer builds up slowly over
+  time and darkens surface unevenly while losing shine. This contamination exhibits
+  soft and adhesive nature that clings tightly to surface, so it distinguishes from
+  harder oxide scales on other contaminants because flaking occurs less during handling,
+  and on copper tarnish spreads quickly to turn greenish, on brass it mats golden
+  tone without deep penetration, while on bronze patchy blackening appears due to
+  alloy differences. Key challenges arise for removal since scrubbing risks scratching
+  thin plating and chemicals etch underlying layers, so traditional methods fail to
+  preserve shine, but laser cleaning works effectively because pulses vaporize tarnish
+  precisely without heat damage to base and clean surfaces restore uniformly after
+  treatment.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Silver Plating Residue
+  href: /contamination/contamination/silver-plating-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/silver-plating-contamination-hero.jpg
+    alt: Silver Plating Residue contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/silver-plating-contamination-micro.jpg
+    alt: Silver Plating Residue contamination microscopic detail
 laser_properties:
   laser_parameters:
     beam_profile: flat_top

@@ -1,7 +1,70 @@
-id: anti-seize-contamination
-name: anti-seize-contamination
+name: Anti-Seize Compound
 slug: anti-seize-contamination
-description: Metallic and graphite-based thread lubricant deposits
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: contaminant
+title: Anti-Seize Compound Contamination
+contamination_description: During assembly, anti-seize contamination forms as sticky
+  metallic and graphite-based deposits so tenacious adhesion builds up over time from
+  heat and friction on surfaces. This contamination exhibits heat-resistant properties
+  and strong bonding on steel, stainless steel, and aluminum, which distinguishes
+  it from rust or oils because mechanical removal damages substrates during process.
+  Key challenges occur in removal due to that bonding, so laser cleaning ablates layers
+  precisely and base materials remain unharmed after treatment.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Anti-Seize Compound
+  href: /contamination/contamination/anti-seize-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/anti-seize-contamination-hero.jpg
+    alt: Anti-Seize Compound contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/anti-seize-contamination-micro.jpg
+    alt: Anti-Seize Compound contamination microscopic detail
 laser_properties:
   laser_parameters:
     beam_profile: flat_top

@@ -1,7 +1,71 @@
-id: diamond-coating-contamination
-name: diamond-coating-contamination
+name: Diamond-Like Carbon Removal
 slug: diamond-coating-contamination
-description: DLC coating removal for re-coating or repair operations
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: contaminant
+title: Diamond-Like Carbon Removal Contamination
+contamination_description: Diamond-coating contamination arises from residues during
+  deposition processes, so layer forms on surfaces and adheres strongly because of
+  carbon bonding. This contamination shows unique hardness and low friction unlike
+  softer oxide types, and behaves differently on steel where it bonds tightly, on
+  titanium with even spreading, and on tungsten carbide showing partial resistance
+  during exposure. Removal challenges include high thermal stability that resists
+  mild methods, so laser cleaning applies effectively by ablating layer selectively
+  without damaging substrate underneath.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Diamond-Like Carbon Removal
+  href: /contamination/contamination/diamond-coating-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/diamond-coating-contamination-hero.jpg
+    alt: Diamond-Like Carbon Removal contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/diamond-coating-contamination-micro.jpg
+    alt: Diamond-Like Carbon Removal contamination microscopic detail
 laser_properties:
   laser_parameters:
     beam_profile: gaussian

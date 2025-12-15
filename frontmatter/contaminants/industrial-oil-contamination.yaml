@@ -1,6 +1,11 @@
-id: industrial-oil-contamination
-name: industrial_oil-contamination
+name: Industrial Oil / Grease Buildup
 slug: industrial-oil-contamination
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,25 +42,37 @@ _metadata:
     author_country: Italy
     voice_applied: true
     content_type: contaminant
+title: Industrial Oil / Grease Buildup Contamination
+contamination_description: Industrial oil contamination, it arises in manufacturing
+  environments where machinery lubricants degrade under friction and heat, forming
+  sticky residues that adhere to operational surfaces during prolonged use. This substance,
+  it manifests a tenacious hold influenced from warmth and air exposure, distinguishing
+  it from faster-evaporating solvents by penetrating microstructures on metals to
+  create resilient sheaths or thicker layers on porous materials that impair pliability.
+  Key removal challenges stem from its oily composition repelling water-based agents
+  and rebounding from mechanical scrubbing, yet laser cleaning proves effective, vaporizing
+  the oil through selective light absorption that preserves underlying bases unharmed.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Industrial Oil / Grease Buildup
+  href: /contamination/contamination/industrial-oil-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/industrial-oil-contamination-hero.jpg
+    alt: Industrial Oil / Grease Buildup contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/industrial-oil-contamination-micro.jpg
+    alt: Industrial Oil / Grease Buildup contamination microscopic detail
 micro:
   after: Post-cleaning reveals restored surface with industrial oil / grease buildup
     successfully removed through precise laser ablation.
   before: Surface shows contamination from industrial oil / grease buildup affecting
     material appearance and properties.
-category: contamination
-description: Industrial-oil contamination exhibits tenacious adhesion on metals, which
-  sets it apart from volatile solvents that dissipate quickly. This film, it infiltrates
-  porous substrates like [Rubber](../materials/rubber.md), manifesting persistent
-  films. Removal proves challenging, influenced from its greasy nature, that resists
-  aqueous washes and demands specialized degreasers for efficacy.
-eeat:
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
-  reviewedBy: Z-Beam Quality Assurance Team
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -182,6 +199,13 @@ laser_properties:
     thermal_conductivity: 0.15
     thermal_diffusivity: 0.075
     vaporization_temperature: 450
+eeat:
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+  reviewedBy: Z-Beam Quality Assurance Team
 valid_materials:
 - ALL
-title: Industrial Oil

@@ -330,13 +330,15 @@ contamination_patterns:
     - Chlorophyll
     - Polysaccharides
     - Minerals
-    description: This algae-growth contamination, it manifests as a tenacious photosynthetic
-      layer on outdoor surfaces, which thrives under light exposure to form vibrant
-      green patinas that penetrate porous materials like stone and [Concrete](../materials/concrete.md).
-      On metals, the organisms adhere resiliently, influenced from moisture cycles,
-      exhibiting rapid regrowth unlike fungal biofilms or bacterial slimes that yield
-      easily to abrasion. It seems that targeted biocides prove essential for clearance,
-      given this persistence.
+    description: Algae-growth contamination, it forms through photosynthetic activity
+      on outdoor surfaces exposed to light and moisture, creating a tenacious green
+      layer that penetrates porous substrates. This patina, it distinguishes itself
+      from fungal biofilms or bacterial slimes by its rapid regrowth and resilient
+      adhesion, particularly on concrete and stone where it embeds deeply, while on
+      metals like steel it clings influenced from humidity cycles, posing challenges
+      in removal that demand targeted approaches beyond simple abrasion. Laser cleaning
+      proves effective, as the process vaporizes the organic matter precisely without
+      damaging the underlying material, yielding thorough clearance.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -609,12 +611,14 @@ contamination_patterns:
         appearance and properties.
     category: oxidation
     chemical_formula: Al₂O₃
-    description: '[Aluminum](../materials/aluminum.md) oxidation contamination forms
-      thin layer already upon air exposure. This layer adheres tenaciously and halts
-      deeper corrosion thus. Unlike expansive rust on iron, oxide remains compact
-      and non-flaking, so protects substrate durably. Porous structure embeds particles
-      deeply and resists removal on alloys. Cleaning challenges persist, yet surface
-      integrity enhances long-term.'
+    description: Aluminum oxidation contamination, it forms rapidly from air exposure
+      where oxygen reacts with surface and creates thin oxide layer. This layer adheres
+      strongly and stays compact, thus self-limits further corrosion unlike expansive
+      rust that flakes away. On pure aluminum, uniformity holds, but alloys show porosity
+      so embeds particles deeply and resists removal stubbornly; challenges arise
+      from tight bond and quick regrowth after mechanical or chemical attempts. Laser
+      cleaning succeeds, precise energy ablates oxide selectively and vaporizes it
+      fast, surface already exhibits cleanliness without residues thus prevents reformation.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -858,12 +862,14 @@ contamination_patterns:
     - Fe₃O₄
     - FeO
     - Cr₂O₃
-    description: In practice, annealing-scale forms a thick oxide layer on steels
-      and alloys during heat treatment, digging in deeper than surface rust or mill
-      scale ever does. It clings tenaciously, resisting mild cleaners that handle
-      those lighter contaminants easily. Blasting removes it effectively, but pickling
-      drags without etching the base. Turns out, this beast alters surface conductivity
-      uniquely, ramping up cleaning headaches overall.
+    description: Annealing-scale builds up as a thick oxide layer during slow heating
+      in controlled atmospheres, ramping up deeper than surface rust and clinging
+      tight to shift conductivity far beyond lighter contaminants. On steel, it grips
+      firm and alters properties sharply, stainless steel holds it even tighter, and
+      titanium shows looser attachment overall, posing significant challenges since
+      mild acids drag slowly without etching underneath while blasting scatters debris
+      widely. Turns out, laser cleaning lines up best, vaporizing the buildup precisely
+      to achieve a clean finish and keep the base material intact.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -1104,8 +1110,13 @@ contamination_patterns:
     - Al₂O₃
     - Dye Molecules
     - Sealed Pores
-    description: Aluminum oxide surface layer defects including pitting, staining,
-      and uneven thickness
+    description: Anodizing defects, they form on aluminum surfaces during electrochemical
+      oxidation when electrolyte imbalances cause pitting, staining, and uneven oxide
+      layers. This contamination embeds deeply with strong adhesion to the substrate,
+      thus differs from loose particles by altering surface integrity permanently
+      and resists mechanical scraping so risks base material damage in removal attempts.
+      Laser cleaning succeeds here, targeted pulses vaporize defects selectively and
+      surface already regains uniformity following treatment.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -1326,13 +1337,21 @@ contamination_patterns:
             is a metal-specific process; thus, no such contamination appears.
           coverage: Coverage is non-existent as anodizing is irrelevant to wood surfaces.
           pattern: No pattern is observed since anodizing cannot occur on wood materials.
+    author:
+      id: 3
   anti-seize:
     composition:
     - Copper
     - Graphite
     - Aluminum
     - Grease
-    description: Metallic and graphite-based thread lubricant deposits
+    description: During assembly, anti-seize contamination forms as sticky metallic
+      and graphite-based deposits so tenacious adhesion builds up over time from heat
+      and friction on surfaces. This contamination exhibits heat-resistant properties
+      and strong bonding on steel, stainless steel, and aluminum, which distinguishes
+      it from rust or oils because mechanical removal damages substrates during process.
+      Key challenges occur in removal due to that bonding, so laser cleaning ablates
+      layers precisely and base materials remain unharmed after treatment.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -1560,11 +1579,18 @@ contamination_patterns:
             coverage, often concentrated at points of contact.
           pattern: Usually appears as blotchy patches or streaks following the wood
             grain, with irregular edges and no uniform spread.
+    author:
+      id: 1
   asbestos-coating:
     composition:
     - Mg₃Si₂O₅(OH)₄
     - Fibers
-    description: Fibrous silicate insulation and coating (requires containment)
+    description: Asbestos-coating contamination creates removal difficulties because
+      fibrous silicate insulation builds up on surfaces during applications. This
+      layer forms through exposure and shows fibrous texture so it differs from smooth
+      contaminants. On steel pipes, boilers, and concrete, it clings tightly and resists
+      scraping, but laser cleaning works effectively by ablating fibers precisely
+      without harming bases.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -1783,12 +1809,24 @@ contamination_patterns:
             insulation areas, with variations due to wear or damage.
           pattern: It often appears in streaks or patches, especially in older wood-based
             products like siding or insulation boards.
+    author:
+      id: 1
   aviation-sealant:
     composition:
     - Polysulfide
     - Silicone
     - Additives
-    description: Polysulfide and silicone sealants from aircraft assembly
+    description: Aviation sealant contamination arises when excess polysulfide or
+      silicone materials, applied to seal aircraft joints, cure unevenly and harden
+      into a rubbery residue during assembly. It stands out from oils or paints through
+      its elastic, crosslinked polymer structure that resists basic solvents and wipes,
+      turning tenacious on surfaces. On aluminum and titanium, it bonds deeply into
+      oxide layers and pores, while infiltrating resin matrices in carbon fiber reinforced
+      polymer and strands in fiberglass, creating stress points; removal challenges
+      traditional scraping or chemicals, which risk damage and prolong downtime. Laser
+      cleaning works out effectively by pulsing targeted energy to vaporize layers
+      precisely, clearing residues without abrading substrates and preserving structural
+      integrity across these materials.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -2056,17 +2094,19 @@ contamination_patterns:
           pattern: Distribution is often patchy or streaky, following the wood's grain
             or accumulating in crevices and knots where sealant seeped or was not
             fully removed.
+    author:
+      id: 4
   battery-corrosion:
     composition:
     - KOH
     - K₂CO₃
     - PbSO₄
-    description: Battery-corrosion contamination forms via electrolyte reactions in
-      devices. This pattern, it penetrates electrodes deeply and accelerates under
-      electrical stress. Unlike atmospheric rust on steels, battery type resists oxidation
-      reversal and clings to alloys tightly. On metals like [Copper](../materials/copper.md),
-      it builds insulating films; on polymers, it induces cracking. Challenges in
-      removal follow, thus demands careful dissolution methods.
+    description: Battery-corrosion contamination forms through electrolyte reactions
+      in devices. This pattern penetrates deeply and accelerates under electrical
+      stress, thus distinguishes from atmospheric rust by resisting reversal and clinging
+      tightly to alloys. On copper, it builds insulating films; on steel and brass,
+      cracking induces. Removal challenges demand careful dissolution, but laser cleaning
+      ablates layers precisely, so surface restores conductivity effectively.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -2294,7 +2334,12 @@ contamination_patterns:
     composition:
     - BeO
     - Be Compounds
-    description: Toxic beryllium oxide from aerospace and nuclear applications
+    description: Beryllium oxide forms during high-temperature exposure in aerospace
+      processes, so contamination builds as hard, toxic layer on metal surfaces. This
+      differs from other oxides because toxicity poses health risks, and adhesion
+      varies stronger on copper-beryllium alloy than steel. Removal challenges include
+      avoiding substrate damage from its durability, but laser cleaning works effectively
+      after precise pulsing, so contaminants ablate cleanly without residue.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -2538,14 +2583,22 @@ contamination_patterns:
           pattern: Distribution is often patchy or streaky, following the wood's grain
             or accumulating in cracks and low-lying areas, rather than forming a uniform
             layer.
+    author:
+      id: 1
   biological-stains:
     composition:
     - Proteins
     - Polysaccharides
     - Lipids
     - Chlorophyll
-    description: Biological matter including algae, bacteria, and organic waste creating
-      surface films
+    description: Biological stains, they arise from algae, bacteria, and organic waste
+      that accumulate and form adherent films on surfaces after prolonged exposure
+      to moisture. This contamination, it stands out from mineral deposits by its
+      bio-adhesive nature and irregular layering, thus clings variably—tightly on
+      porous stones like limestone and loosely on smooth metals like stainless steel.
+      Removal challenges stem from deep penetration and regeneration risks, yet laser
+      cleaning succeeds through targeted ablation that vaporizes organics cleanly
+      and preserves substrate integrity.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -2807,13 +2860,20 @@ contamination_patterns:
             conditions, with high variation based on wood type and exposure.
           pattern: Often appears in patches or streaks along grain lines, knots, or
             damp areas, spreading unevenly.
+    author:
+      id: 3
   bitumen-tar:
     composition:
     - Asphaltene
     - Resin
     - Saturates
-    description: Heavy petroleum-based coatings from roofing, paving, and waterproofing
-      applications
+    description: Bitumen-tar contamination arises from heavy petroleum-based coatings
+      applied in roofing and paving, so it forms thick, sticky layers during waterproofing
+      processes. This contaminant shows unique dark, viscous properties that distinguish
+      it from lighter paints because adhesion strengthens on porous surfaces like
+      concrete and granite. Removal challenges include strong bonding that resists
+      mechanical scraping, yet laser cleaning succeeds by vaporizing the layer selectively
+      so underlying materials such as steel and marble remain undamaged.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -3078,12 +3138,33 @@ contamination_patterns:
             peeling.
           pattern: Distribution is often patchy or streaky, following the wood's natural
             grain or forming drips and splatters from application or spills.
+    author:
+      id: 1
   blood-residue:
     composition:
     - Hemoglobin
     - Proteins
     - Lipids
-    description: Protein and hemoglobin deposits from biological contamination
+    description: 'Blood-residue contamination, it arises from biological sources like
+      proteins and hemoglobin. When blood contacts surfaces, drying happens quickly
+      and sticky layers form, thus oxidation and coagulation harden them over time.
+      This residue embeds into microstructures rapidly after exposure, and unique
+      reddish-brown staining with fluorescence under lights distinguishes it from
+      inorganic dust or oils.
+
+
+      Behavior on materials varies thus. On stainless steel, residue adheres firmly
+      and causes corrosion, while crown glass and float glass suffer cracking from
+      penetration. Borosilicate glass resists bonding deeper, yet fused silica and
+      Gorilla glass still trap it in pores, so alumina and silicon carbide hold it
+      in rough textures.
+
+
+      Key challenges emerge in removal, tenacity demands aggressive methods and risks
+      damage, solvents fail to dissolve bonds so contamination lingers in crevices.
+      Laser cleaning addresses this effectively, pulses target organic bonds precisely
+      and ablation vaporizes residues without heat spread, thus surfaces exhibit cleanliness
+      and integrity preserves.'
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -3336,13 +3417,23 @@ contamination_patterns:
             with deeper saturation in more absorbent parts of the wood.
           pattern: It spreads in irregular patches or along the grain, with possible
             feathering edges due to the porous surface absorbing the liquid.
+    author:
+      id: 3
   brake-dust:
     composition:
     - Fe
     - Cu
     - Ceramic Fibers
     - Graphite
-    description: Metallic and ceramic brake pad wear particles
+    description: 'Brake-dust contamination, it emerges from frictional wear of steel,
+      aluminum, and cast iron during braking processes, forming adherent particulate
+      layers that accumulate on surfaces. This residue, distinguished by its metallic
+      tenacity and uneven distribution—which resists dislodgement more than organic
+      dusts—behaves variably: on cast iron it embeds deeply, dependent from surface
+      porosity, while on aluminum it manifests as thinner films, posing challenges
+      like potential scratching in mechanical removal. Laser cleaning addresses these
+      effectively, as the process vaporizes the particles selectively through targeted
+      ablation, which preserves substrate integrity without residue recurrence.'
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -3570,11 +3661,21 @@ contamination_patterns:
             or sheltered spots, but can be washed away easily.
           pattern: Forms irregular spots or patches, with distribution influenced
             by surface texture and environmental factors like wind.
+    author:
+      id: 2
   brass-plating:
     composition:
     - Cu-Zn Alloy
     - Brass
-    description: Copper-zinc alloy decorative plating on hardware and fixtures
+    description: Brass-plating contamination forms during alloy deposition for decorative
+      layering on hardware. Impurities embed in the process, and create uneven films
+      thus leading to flaky residues. This contamination, it distinguishes from uniform
+      oxides through metallic sheen and strong adhesion that resists simple wiping.
+      On zinc alloy, it spreads rapidly and bonds tightly so persists under exposure,
+      while on steel, it flakes loosely after time passes. Removal challenges arise
+      from persistent sticking, and mechanical scraping damages surfaces easily. Laser
+      cleaning proves effective, as pulses vaporize layers precisely thus restore
+      smoothness without harm.
     laser_properties:
       laser_parameters:
         beam_profile: gaussian
@@ -3798,12 +3899,22 @@ contamination_patterns:
             of direct contact or contamination.
           pattern: Distribution is irregular, with spots or patches forming where
             brass particles have adhered or reacted, commonly near fasteners or joints.
+    author:
+      id: 3
   bronze-patina:
     composition:
     - Cu₂O
     - CuO
     - Copper Salts
-    description: Copper-tin alloy oxidation producing green-brown patinas
+    description: Bronze-patina contamination, it arises from oxidation of copper-tin
+      alloys in bronze when exposed to moist air and pollutants, thus forming adherent
+      green-brown layers that alter surface appearance. This patina shows earthy color
+      and porous texture, it distinguishes from similar contaminants by adhering tightly
+      on bronze while spreading unevenly on brass surfaces and thinly on copper, so
+      chemical bonding resists mechanical scraping and poses key removal challenges.
+      Laser cleaning applies precise energy pulses to ablate the layer selectively,
+      thus restoring underlying metal without heat damage, and surface already exhibits
+      integrity after treatment.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -4026,11 +4137,22 @@ contamination_patterns:
             small spots to larger sections, varying with moisture levels.
           pattern: Appears as streaks or patches, often following the wood grain or
             moisture paths, and can be irregular.
+    author:
+      id: 3
   cadmium-plating:
     composition:
     - Cd
     - Cd Alloys
-    description: Hazardous cadmium coating removal from aerospace components
+    description: Cadmium-plating contamination, it arises from electroplated layers
+      applied for corrosion protection, which degrade over time through environmental
+      exposure, forming adherent residues that manifest as thin, ductile films distinct
+      from brittle oxide scales by their metallic luster and uniform bonding. On steel
+      and stainless steel, this contamination behaves tenaciously, embedding into
+      surface irregularities that resist mechanical abrasion, presenting key challenges
+      in removal due to risks of substrate pitting influenced from prolonged adhesion.
+      Laser cleaning proves effective, as the process selectively ablates these layers
+      through precise thermal action, which preserves underlying material integrity
+      without chemical residues.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -4245,12 +4367,22 @@ contamination_patterns:
             contact points, with variations based on wood porosity and exposure.
           pattern: Distribution is patchy or streaky, following the wood grain or
             pooling in porous regions, with no uniform spread.
+    author:
+      id: 2
   carbon-buildup:
     composition:
     - C
     - PAH
     - Soot
-    description: Hard carbon deposits from combustion and pyrolysis
+    description: Carbon-buildup manifests as hard deposits from combustion and pyrolysis
+      processes, which form tenacious layers on surfaces exposed to high-heat environments.
+      This contamination, it distinguishes itself from softer residues by its dense,
+      adherent structure that resists mechanical abrasion, particularly on steel and
+      stainless steel where it embeds deeply, while on alumina or silicon carbide
+      it appears more superficial yet persistent. Removal challenges arise from its
+      thermal stability, influenced from substrate variations, but laser cleaning
+      proves effective, as the beam vaporizes the buildup selectively without altering
+      the underlying materials.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -4496,12 +4628,19 @@ contamination_patterns:
             discoloration to heavy soot accumulation in fire-damaged areas.
           pattern: Often appears in streaks or patches, especially in areas affected
             by smoke or fire, and can follow the wood grain for a streaked effect.
+    author:
+      id: 2
   carbon-soot:
     composition:
     - C
     - PAH
-    description: Fine particulate carbon from incomplete combustion in engines, furnaces,
-      and industrial processes
+    description: Carbon-soot contamination, it arises from incomplete combustion in
+      engines and furnaces, thus forming black residue of fine particulates. This
+      residue clings tightly and embeds deeply into surfaces, distinguishing itself
+      from dust by resisting water and brushing, while on steel and concrete it alters
+      texture and penetrates pores. Removal challenges include scratching risks and
+      chemical residues, yet laser cleaning vaporizes soot precisely and preserves
+      substrate integrity thus.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -4791,12 +4930,25 @@ contamination_patterns:
           pattern: It tends to settle in patches or along grain lines, with higher
             accumulation in recessed areas and less on exposed surfaces, often showing
             directional streaks from air currents.
+    author:
+      id: 3
   ceramic-coating:
     composition:
     - ZrO₂
     - Y₂O₃
     - Al₂O₃
-    description: Thermal barrier ceramic coatings on engine and exhaust components
+    description: Ceramic-coating contamination, it manifests as adherent residues
+      from thermal barrier layers on engine components, forming through spallation
+      and chemical interactions during high-heat operations, where ceramic particles
+      dislodge and bond tenaciously with exhaust gases, influenced from prolonged
+      exposure to combustion byproducts. This layer, it exhibits a distinctive patchy,
+      iridescent structure with crystalline edges that resist flaking unlike soot
+      or dissolving unlike oil residues, showing strong embedding on steel via porosity,
+      moderate bonding on stainless steel enhanced by oxide layers, yet weaker attachment
+      on titanium along grain boundaries. Removal challenges arise from its persistence
+      against mechanical scraping or chemical agents without substrate damage, but
+      laser cleaning proves effective, as pulsed energy selectively ablates the contamination
+      through vaporization, targeting its optical absorption to restore surface smoothness.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -5042,13 +5194,21 @@ contamination_patterns:
           pattern: Commonly appears in blotchy patches or streaks, following the wood
             grain or accumulating in cracks and pores due to absorption and environmental
             exposure.
+    author:
+      id: 2
   ceramic-glaze:
     composition:
     - SiO₂
     - Al₂O₃
     - Fluxes
-    description: Vitrified silicate coating residues from fired ceramic manufacturing
-      processes
+    description: Ceramic-glaze contamination consists of vitrified silicate residues
+      that form during high-temperature firing in ceramic manufacturing, so layer
+      adheres tightly to surfaces after cooling. This contamination shows unique glassy
+      hardness and chemical inertness, which distinguish it from softer organic residues
+      or metallic scales, and on materials like porcelain or alumina, it behaves as
+      a uniform coating that resists cracking under stress. Removal faces challenges
+      from its durable bond, but laser cleaning proves effective because precise energy
+      pulses ablate the glaze selectively, so substrate remains undamaged during treatment.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -5295,6 +5455,8 @@ contamination_patterns:
             resulting in isolated areas with minimal to moderate glaze accumulation.
           pattern: Deposits often appear as random patches or drips, following the
             wood's surface irregularities and not forming a uniform layer.
+    author:
+      id: 1
   chemical-stains:
     author:
       id: 3
@@ -5304,7 +5466,13 @@ contamination_patterns:
       before: Surface shows contamination from chemical stains / acid etching affecting
         material appearance and properties.
     category: contamination
-    description: Discoloration or etching from chemical exposure (acids, bases, solvents)
+    description: Chemical-stains contamination, it arises from exposure to acids,
+      bases, or solvents, causing discoloration and etching on surfaces. This pattern,
+      it differs from rust or dust by its chemical bonding and uneven penetration,
+      thus resists mechanical wiping. On metals like steel and aluminum, stains embed
+      deeply and corrode, while on plastics such as acrylic and ABS, they cause cracking.
+      Removal challenges include substrate damage risk, so laser cleaning works effectively
+      by vaporizing stains selectively and preserving material integrity.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -5564,8 +5732,15 @@ contamination_patterns:
     - Cr₂O₃
     - CrO₃
     - Cr(OH)₃
-    description: Localized chromium oxide layer breakdown causing surface degradation
-      on plated surfaces
+    description: Chrome-pitting forms when localized chromium oxide layer breaks down
+      on plated surfaces because of environmental exposure and corrosion, so surface
+      degradation happens in small pits. This contamination shows unique pitting patterns
+      distinct from uniform rust or scaling, where isolated spots appear without spreading
+      widely, and it behaves differently on chrome-plated steel by deepening quickly
+      during cleaning, while on stainless steel, pits resist less but still challenge
+      uniformity. Key removal issues arise from substrate damage risk, yet laser cleaning
+      works effectively because precise pulses target oxide breakdown so contaminants
+      ablate cleanly without affecting base material.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -5747,13 +5922,22 @@ contamination_patterns:
           coverage: Usually sparse, covering 5-20% of the area, varying with exposure.
           pattern: Scattered spots or streaks, following the wood grain or moisture
             paths.
+    author:
+      id: 1
   concrete-dust:
     composition:
     - CaCO₃
     - SiO₂
     - CaO
-    description: Portland cement and aggregate particulates from construction and
-      grinding operations
+    description: Concrete-dust contamination, it arises from Portland cement and aggregate
+      particulates during construction and grinding operations. This dust, it forms
+      fine, adherent layers that distinguish from rust or grease by its alkaline nature
+      and porous embedding into surface pores, thus behaving differently on porous
+      stones like limestone and marble where it penetrates deeply, while on steel
+      it creates thin films that corrode over time. Removal challenges include its
+      strong bonding and risk of surface etching, yet laser cleaning proves effective
+      as pulsed energy vaporizes particles selectively and restores uniformity without
+      abrasion.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -5985,12 +6169,20 @@ contamination_patterns:
             on upward-facing areas, with uneven spread.
           pattern: Distribution is often patchy or streaky, with accumulation in grooves
             and on horizontal surfaces where dust settles easily.
+    author:
+      id: 3
   conversion-coating:
     composition:
     - Zn₃(PO₄)₂
     - Fe₃(PO₄)₂
     - Chromates
-    description: Phosphate and chromate conversion coatings on metal surfaces
+    description: Conversion coatings, they form through chemical reactions on metal
+      surfaces, creating thin protective layers from phosphates or chromates. This
+      contamination, it manifests tenaciously, distinguished by its crystalline structure
+      that embeds deeply, unlike looser rust or scale. On steel and aluminum, it adheres
+      strongly, while on zinc, it seems that flaking occurs more readily; removal
+      challenges arise from this bonding, yet laser cleaning effectively vaporizes
+      it without substrate damage, influenced from precise energy control.
     laser_properties:
       laser_parameters:
         beam_profile: gaussian
@@ -6212,12 +6404,23 @@ contamination_patterns:
             wood's porous and absorbent nature.
           pattern: Forms irregular patches or streaks where the coating adheres poorly,
             often pooling in grooves or along edges.
+    author:
+      id: 2
   coolant-scale:
     composition:
     - SiO₂
     - CaCO₃
     - Phosphates
-    description: Silicate and phosphate deposits from engine cooling systems
+    description: Coolant-scale contamination arises from silicate and phosphate deposits
+      in engine cooling systems, where coolants degrade during operation and so minerals
+      precipitate onto surfaces. This scale exhibits layered hardness and poor adhesion
+      compared to rust or oil residues, because it forms crystalline structures that
+      bond tightly yet crack unevenly under stress. On aluminum and cast iron, scale
+      clings stubbornly and so resists scraping without surface damage, while on brass
+      it flakes more readily but leaves residues; removal challenges include avoiding
+      substrate erosion during mechanical methods, yet laser cleaning succeeds by
+      vaporizing layers precisely through thermal expansion, so surfaces restore uniformity
+      without harm.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -6446,6 +6649,8 @@ contamination_patterns:
             in contact with the coolant.
           pattern: Distribution is often in random spots or streaks where coolant
             has splashed or seeped into the wood grain.
+    author:
+      id: 1
   copper-patina:
     author:
       id: 4
@@ -6457,13 +6662,14 @@ contamination_patterns:
         material appearance and properties.
     category: oxidation
     chemical_formula: Cu₂CO₃(OH)₂
-    description: '[Copper](../materials/copper.md) patina stands out from other oxidations
-      by forming a distinctive green layer on copper surfaces through prolonged air
-      and moisture exposure. This adherent film clings tightly to reactive metals,
-      accelerating corrosion beneath, while it spreads unevenly on inert non-metals,
-      creating patchy buildup. It resists simple removal, embedding into substrates
-      and complicating cleaning on delicate alloys without scratching or residue.
-      Laser methods strip it cleanly, restoring original luster.'
+    description: Copper patina builds up as a stubborn green layer on exposed surfaces
+      through long-term reaction with air and moisture, standing out from typical
+      oxidations with its rock-solid adhesion that speeds up hidden corrosion below.
+      It clings unevenly to reactive metals like copper, brass, and bronze, embedding
+      deeply into the substrate and creating patchy films on nearby inert spots. Removing
+      it poses a real challenge, as traditional methods often scratch or leave residue,
+      but laser cleaning works out effectively by vaporizing the layer precisely to
+      reveal a clean, original shine.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -6917,7 +7123,14 @@ contamination_patterns:
     composition:
     - Cu
     - Cu Compounds
-    description: Decorative and functional copper coating on various substrates
+    description: Copper-plating contamination, it manifests as a thin metallic layer
+      from electroplating processes or corrosion, which adheres tenaciously to substrates
+      like steel and brass, yet peels more readily on plastics such as ABS. This pattern,
+      distinguished by its conductive sheen and uniform spread unlike irregular oxide
+      deposits, poses challenges in removal due to potential substrate pitting that
+      seems dependent from laser intensity. Laser cleaning proves effective, as the
+      contamination absorbs energy selectively, leading to precise ablation without
+      excessive heat spread.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -7131,13 +7344,23 @@ contamination_patterns:
             to larger sections, depending on exposure.
           pattern: It tends to form random spots, streaks, or patches, influenced
             by the wood's grain and porosity.
+    author:
+      id: 2
   corrosion-inhibitor:
     composition:
     - Amines
     - Oil
     - Wax
     - VCI
-    description: Chemical protective coatings applied for storage and shipping
+    description: Corrosion-inhibitor contamination arises from chemical coatings applied
+      to protect metals during storage and shipping, forming a thin, waxy residue
+      that migrates to surfaces over time. This oily layer stands out from rust or
+      dirt by its slippery texture and faint chemical odor, resisting water-based
+      cleaners while adhering unevenly—firmly on steel yet flaking off aluminum and
+      copper more readily. Removal poses challenges like incomplete stripping without
+      damaging substrates, but laser cleaning tackles this effectively by vaporizing
+      the inhibitor precisely, achieving a clean finish that backs up long-term surface
+      integrity.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -7372,12 +7595,22 @@ contamination_patterns:
             porosity and application method.
           pattern: Tends to be uniform across surfaces, but may pool in grain lines
             or form patches if not properly absorbed.
+    author:
+      id: 4
   cutting-fluid:
     composition:
     - Emulsified Oil
     - Biocides
     - Surfactants
-    description: Water-soluble and oil-based cutting fluid residues from metal machining
+    description: Cutting fluids lubricate and cool metal machining operations, yet
+      they accumulate as sticky, oily residues from evaporation and splatter during
+      use. Turns out, this contamination stands apart from dust or rust through its
+      rancid, bacteria-laden film that clings tenaciously, bonding firmly to steel
+      for dull finishes, etching aluminum with light pitting, hazing brass surfaces,
+      and trapping pockets in titanium cracks. Removal challenges include slow solvent
+      absorption and scratching risks from scrubbing, but laser cleaning addresses
+      this effectively by vaporizing layers without contact to achieve clean, tight
+      tolerances overall.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -7632,11 +7865,20 @@ contamination_patterns:
             isolated areas to larger sections, depending on exposure and wood porosity.
           pattern: It tends to form irregular patches or streaks, spreading along
             the wood grain and accumulating in porous areas, with no uniform distribution.
+    author:
+      id: 4
   diamond-coating:
     composition:
     - Amorphous Carbon
     - Diamond
-    description: DLC coating removal for re-coating or repair operations
+    description: Diamond-coating contamination arises from residues during deposition
+      processes, so layer forms on surfaces and adheres strongly because of carbon
+      bonding. This contamination shows unique hardness and low friction unlike softer
+      oxide types, and behaves differently on steel where it bonds tightly, on titanium
+      with even spreading, and on tungsten carbide showing partial resistance during
+      exposure. Removal challenges include high thermal stability that resists mild
+      methods, so laser cleaning applies effectively by ablating layer selectively
+      without damaging substrate underneath.
     laser_properties:
       laser_parameters:
         beam_profile: gaussian
@@ -7867,12 +8109,22 @@ contamination_patterns:
             based on wood porosity and the extent of removal efforts.
           pattern: The contamination often appears in blotchy patches or streaks,
             aligning with wood grain or tool marks, and may be unevenly distributed.
+    author:
+      id: 1
   efflorescence:
     composition:
     - CaCO₃
     - CaSO₄
     - Na₂CO₃
-    description: White crystalline salt deposits on concrete and masonry
+    description: Efflorescence appears as white, crystalline salt deposits that form
+      when moisture draws soluble salts through porous materials like concrete or
+      brick, crystallizing on the surface as water evaporates. This contamination
+      sets it apart from dirt or algae by its powdery, water-soluble nature that flakes
+      easily yet recurs without addressing underlying moisture issues, behaving more
+      aggressively on absorbent stones such as limestone or sandstone where it embeds
+      deeply. Removal poses a solid challenge due to the risk of substrate damage
+      from abrasive methods, but laser cleaning addresses this effectively by vaporizing
+      the salts layer by layer while preserving the material's integrity.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -8104,12 +8356,21 @@ contamination_patterns:
             spots to broader areas in high-moisture environments.
           pattern: It often appears in streaks or patches, following the wood grain
             or moisture pathways, and is common in damp, unsealed areas.
+    author:
+      id: 4
   electroplating-residue:
     composition:
     - Cyanides
     - Metal Salts
     - Brighteners
-    description: Chemical deposits from electroplating bath solutions
+    description: Electroplating-residue contamination, it arises from chemical deposits
+      in bath solutions during the plating process, and forms thin adherent layers
+      on metal surfaces. This residue, it distinguishes by crystalline structure and
+      chemical inertness from oxide scales or dust particles; on steel it embrittles
+      surface, on brass it corrodes selectively, while on copper it conducts poorly
+      and still persists stubbornly, so strong bonding resists mechanical removal.
+      Laser cleaning ablates residue precisely with pulsed energy, without damaging
+      substrate, and thus restores conductivity already.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -8344,6 +8605,8 @@ contamination_patterns:
             depending on wood porosity and exposure.
           pattern: It appears as random spots or streaks, concentrating in grain patterns
             or low-lying areas where solution pools.
+    author:
+      id: 3
   environmental-dust:
     author:
       id: 3
@@ -8355,7 +8618,12 @@ contamination_patterns:
     category: contamination
     context_notes: Universal contamination - appears on all materials. Thickness varies
       by exposure and cleaning frequency.
-    description: Fine particulate matter from air settling on surfaces
+    description: Environmental dust, it comprises fine particulates from air. This
+      contamination forms by settling on surfaces after atmospheric exposure, and
+      thus creates universal thin layers on all materials. Distinct from thicker residues
+      by its light adhesion and variable buildup, it clings evenly yet reaccumulates
+      quickly, thus poses removal challenges through mechanical means, so laser cleaning
+      ablates selectively and restores cleanliness effectively.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -8605,8 +8873,13 @@ contamination_patterns:
     - Bisphenol A
     - Epichlorohydrin
     - Amine Hardener
-    description: Cured two-part epoxy adhesive and coating residues with high cross-link
-      density
+    description: Epoxy-residue forms when cured two-part adhesive hardens on surfaces
+      after mixing and application, creating tough layer with dense bonds. This contamination
+      shows unique stickiness and resistance to solvents unlike softer paints or oils,
+      so removal needs targeted heat without damaging base. On metals such as steel
+      and aluminum, residue clings tightly during exposure, posing challenges like
+      incomplete stripping because of its durability, yet laser cleaning succeeds
+      by vaporizing it precisely through controlled pulses.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -8864,13 +9137,22 @@ contamination_patterns:
             repair projects, influenced by wood porosity and resin viscosity.
           pattern: Distribution is often uneven, with pooling in grooves or cracks,
             and may form drips, runs, or patches based on wood texture and application.
+    author:
+      id: 1
   exhaust-residue:
     composition:
     - C
     - Pb
     - V₂O₅
     - Sulfates
-    description: Carbonaceous and metallic deposits from engine exhaust
+    description: 'Exhaust-residue contamination, it arises from carbonaceous and metallic
+      deposits in engine emissions, which accumulate tenaciously on surfaces exposed
+      to high-heat flows. This layer, it distinguishes itself by its oily, layered
+      adhesion, unlike dry rust that flakes easily, and behaves differently on metals:
+      on steel and stainless steel, it penetrates deeply, while on titanium, it manifests
+      as a superficial film resistant to abrasion. Removal challenges stem from its
+      chemical bonding, yet laser cleaning proves effective, as the process vaporizes
+      residues selectively without substrate damage.'
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -9114,12 +9396,24 @@ contamination_patterns:
             amounts in exposed areas, varying with wood type and environmental conditions.
           pattern: They often appear as irregular spots or streaks, influenced by
             wood grain and surface orientation, and may spread in patchy formations.
+    author:
+      id: 2
   fertilizer-residue:
     composition:
     - KNO₃
     - NH₄NO₃
     - Phosphates
-    description: Nitrate and phosphate deposits from agricultural chemicals
+    description: Fertilizer-residue contamination, it arises from nitrate and phosphate
+      deposits, which accumulate on surfaces through prolonged exposure to agricultural
+      chemicals and environmental moisture, distinguishing itself from other residues
+      by its crystalline structure that promotes uneven layering. This contamination,
+      it adheres more tenaciously to porous materials like limestone and marble, where
+      it penetrates deeply, while on metals such as steel or copper it manifests as
+      a thin film that accelerates oxidation, thus posing removal challenges dependent
+      from its variable solubility and risk of substrate etching. Laser cleaning exhibits
+      effectiveness here, as the process selectively vaporizes the residue without
+      altering the underlying material, which leads to efficient restoration that
+      traditional methods often fail to achieve.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -9360,13 +9654,24 @@ contamination_patterns:
             influenced by wood type and exposure duration.
           pattern: Often appears as patches or streaks following the wood grain, with
             more accumulation in porous or unfinished areas.
+    author:
+      id: 2
   fire-damage:
     composition:
     - C
     - Ash
     - Tar
     - Metal Oxides
-    description: Char, soot, and thermal degradation products from fire exposure
+    description: Fire-damage contamination consists of char, soot, and thermal degradation
+      products, which form when intense heat from fires decomposes organic matter
+      and deposits irregular residues on surfaces. This contamination, it exhibits
+      unique carbonaceous layering and strong chemical bonding that distinguish it
+      from simpler particulates like dust, thus adheres tenaciously to porous substrates
+      such as concrete and sandstone, where it infiltrates cracks and resists mechanical
+      scraping without risking material erosion. Key challenges arise from uneven
+      thickness and heat sensitivity, yet laser cleaning proves effective, as selective
+      ablation vaporizes the residues layer by layer while preserving durable bases
+      like steel and granite intact.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -9614,11 +9919,18 @@ contamination_patterns:
             with deeper damage near heat sources.
           pattern: Typically in patches or streaks, with charring concentrated on
             exposed edges and surfaces facing the fire.
+    author:
+      id: 3
   forging-scale:
     composition:
     - Fe₃O₄
     - FeO
-    description: Black oxide scale formed during hot forging and rolling operations
+    description: Forging-scale, it consists of black oxide layer that forms during
+      hot forging and rolling operations on steel surfaces. This contamination, it
+      shows dense adherence and dark coloration, thus distinguishes from rust by its
+      thermal origin and resistance to mild abrasion. On carbon steel, scale persists
+      strongly and challenges mechanical removal, but laser cleaning effectively ablates
+      it through precise energy absorption, so surface restores without damage.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -9836,12 +10148,21 @@ contamination_patterns:
             wood's porous nature.
           pattern: Typically forms irregular patches or streaks, often concentrated
             in areas where metal debris has settled.
+    author:
+      id: 3
   fuel-varnish:
     composition:
     - Gum
     - Varnish
     - Carbon
-    description: Polymerized fuel deposits in engines and fuel systems
+    description: Fuel-varnish forms as sticky polymerized deposits from degraded fuel
+      in engines, so it builds up during storage and operation. This contamination
+      shows unique gummy texture and dark color, distinguishing it from dry rust or
+      oily residues because varnish resists solvents yet cracks under heat. On steel
+      and aluminum surfaces, it adheres tightly and causes corrosion over time, while
+      brass experiences reduced conductivity from the layer, so removal challenges
+      include avoiding substrate damage during scraping. Laser cleaning works effectively
+      because pulses vaporize the varnish selectively without harming metal bases.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -10069,13 +10390,22 @@ contamination_patterns:
             on exposure and wood porosity.
           pattern: Distribution is usually in irregular patches or streaks, following
             the wood's natural grain and absorption patterns.
+    author:
+      id: 1
   galvanize-corrosion:
     composition:
     - ZnO
     - Zn(OH)₂
     - ZnCO₃
-    description: Zinc carbonate and hydroxide formation on galvanized coatings exposed
-      to moisture
+    description: Galvanize-corrosion contamination, it manifests as zinc carbonate
+      and hydroxide layers on galvanized steel and zinc-coated metal, forming through
+      moisture exposure that initiates electrochemical reactions. This pattern, it
+      distinguishes itself from rust by its white, powdery tenacity, which adheres
+      more firmly, influenced from prolonged humidity, and behaves variably—persisting
+      tenaciously on zinc surfaces while exhibiting less grip on underlying steel.
+      Key removal challenges arise from its protective yet stubborn bond, yet laser
+      cleaning proves effective, as the process selectively ablates these layers without
+      substrate harm.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -10287,13 +10617,25 @@ contamination_patterns:
             and moisture levels.
           pattern: Usually forms in irregular patches or spots, often concentrated
             in damp or shaded areas.
+    author:
+      id: 2
   gasket-material:
     composition:
     - Cellulose
     - Rubber
     - Silicone
     - Graphite
-    description: Compressed fiber, rubber, and silicone gasket remnants
+    description: Gasket remnants build up on surfaces when old seals break down under
+      heat or disassembly stress, softening into sticky patches that harden and cling
+      tightly. In practice, these contaminants stretch and tear unevenly with a flexible,
+      layered texture and embedded fibers, setting them apart from flaky oxidation
+      while resisting basic scrapes on steel, where they bond firmly and warp finishes;
+      on aluminum, they smear into pores and weaken seals; and on cast iron, they
+      trap in rough spots to create gritty debris. Removal turns out challenging,
+      as they shrug off solvents and abrasives, leaving residues that compromise joints
+      over time, but laser cleaning lines up well by pulsing energy to vaporize organic
+      layers precisely across these materials without damaging the base, delivering
+      a clean finish that helps parts hold up reliably.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -10526,11 +10868,20 @@ contamination_patterns:
             gasket was applied, with variations in intensity.
           pattern: It tends to form blotches or patches, following the wood grain
             or areas of contact, with no uniform spread.
+    author:
+      id: 4
   gold-plating:
     composition:
     - Au
     - Au Alloys
-    description: Precious metal gold coating on electronics and jewelry
+    description: Gold-plating contamination hits when thin gold layers flake off or
+      transfer during handling of electronics and jewelry, often forming through wear
+      on base metals like copper or nickel. It stands out with its shiny, stubborn
+      metallic film that clings tighter than typical oxides or grime, showing up brighter
+      and harder to scrape without scratching. On brass, it bonds deep and resists
+      solvents, while on copper it loosens faster but still demands care to avoid
+      base damage—laser cleaning nails this by zapping the gold precisely, clearing
+      it clean without harming the substrate underneath.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -10744,18 +11095,22 @@ contamination_patterns:
             due to wood's absorbent nature.
           pattern: It tends to form irregular patches or spots, concentrating in grooves
             or damaged areas where the wood is more receptive.
+    author:
+      id: 4
   graffiti-paint:
     composition:
     - Acrylic
     - Enamel
     - Solvents
     - Pigments
-    description: Graffiti paint stands out as a deliberate contaminant that bonds
-      aggressively to urban surfaces like [Concrete](../materials/concrete.md), metal,
-      and glass. Unlike natural dirt or bird droppings, it penetrates porous materials
-      deeply, while forming slick layers on smooth ones, making removal tricky. Teams
-      typically line up solvents or abrasives to strip it, yet it often leaves stains
-      that hold up against basic cleaning.
+    description: Graffiti paint acts as a deliberate contaminant that spray artists
+      apply to urban surfaces, where it quickly bonds through chemical adhesion and
+      solvent penetration. Unlike everyday dirt or pollutants, it sets up deep into
+      porous substrates while creating slick, resistant films on non-porous ones,
+      turning removal into a significant challenge that often leaves behind stubborn
+      stains. Laser cleaning tackles this effectively by vaporizing the paint layer
+      precisely without damaging the base material, achieving a clean finish that
+      traditional solvents struggle to match.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -11034,8 +11389,12 @@ contamination_patterns:
     composition:
     - C (Graphite)
     - Clay Binder
-    description: Carbon-based marks from pencils, graphite lubricants, and electrical
-      contacts
+    description: Graphite marks arise from carbon residues left by pencils, lubricants,
+      or electrical contacts rubbing onto surfaces. These dark, powdery deposits stand
+      out from rust or oils due to their conductive, non-adhesive nature that smears
+      easily under pressure. On metals like steel or aluminum, they cling tightly
+      yet vaporize cleanly with laser pulses, cutting removal challenges like residue
+      buildup while preserving the base material.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -11270,13 +11629,22 @@ contamination_patterns:
             exposure and wood porosity, rarely uniform.
           pattern: Often appears as scattered spots or streaks, concentrating in porous
             areas or along grain lines, with uneven distribution.
+    author:
+      id: 4
   grease-deposits:
     composition:
     - Mineral Oil
     - Lithium Soap
     - PTFE
-    description: Petroleum-based lubricant deposits with metallic additives from industrial
-      machinery
+    description: 'Operators apply grease to machinery parts, which cuts down friction
+      effectively. In practice, heat, pressure, and vibration break it down over time,
+      forming thick, sticky layers that trap metal bits and cling tighter than thinner
+      oils ever do. These deposits harden into tough coatings on steel and cast iron,
+      promote rust if ignored, and smear unevenly on aluminum to dull finishes—traditional
+      solvents or scraping often leave gritty residues behind or scratch surfaces.
+      Overall, laser cleaning lines up as a solid fix: it vaporizes the petroleum
+      base fast and knocks off particles without damaging the metal underneath, wrapping
+      up jobs with a clean finish.'
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -11510,12 +11878,22 @@ contamination_patterns:
             contact or spillage, with minimal spread.
           pattern: It usually appears as localized spots or patches, often with smearing
             from contact, and may follow the wood grain in streaks.
+    author:
+      id: 4
   hydraulic-fluid:
     composition:
     - Mineral Oil
     - Additives
     - Zinc Compounds
-    description: Petroleum-based hydraulic oil deposits from heavy machinery leaks
+    description: Hydraulic-fluid contamination, it arises from leaks in heavy machinery,
+      where petroleum-based oils seep gradually under vibration and pressure, forming
+      sticky deposits that harden into tenacious oily films. These contaminants, they
+      distinguish themselves by persistent adhesion that penetrates surfaces, unlike
+      dry dust or watery residues; on steel, layers build slowly and tenaciously,
+      aluminum shows quicker pore-deep spread, while concrete absorbs profoundly,
+      yielding darkened stains. Removal proves challenging, as solvents fail against
+      embedded oils and scraping risks damage, yet laser cleaning excels, its pulses
+      vaporizing films effectively without harming substrates.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -11746,6 +12124,8 @@ contamination_patterns:
             porous areas, leading to varied stain intensity.
           pattern: Contamination spreads in blotchy patches or along the wood grain,
             following the path of fluid flow or absorption.
+    author:
+      id: 2
   industrial-oil:
     author:
       id: 2
@@ -11760,11 +12140,16 @@ contamination_patterns:
     - rule: NOT valid on decorative items, furniture, or non-machinery plastic parts
     - rule: Attracts dirt and grime (appears grimy, not just oily)
     context_required: true
-    description: Industrial-oil contamination exhibits tenacious adhesion on metals,
-      which sets it apart from volatile solvents that dissipate quickly. This film,
-      it infiltrates porous substrates like [Rubber](../materials/rubber.md), manifesting
-      persistent films. Removal proves challenging, influenced from its greasy nature,
-      that resists aqueous washes and demands specialized degreasers for efficacy.
+    description: Industrial oil contamination, it arises in manufacturing environments
+      where machinery lubricants degrade under friction and heat, forming sticky residues
+      that adhere to operational surfaces during prolonged use. This substance, it
+      manifests a tenacious hold influenced from warmth and air exposure, distinguishing
+      it from faster-evaporating solvents by penetrating microstructures on metals
+      to create resilient sheaths or thicker layers on porous materials that impair
+      pliability. Key removal challenges stem from its oily composition repelling
+      water-based agents and rebounding from mechanical scrubbing, yet laser cleaning
+      proves effective, vaporizing the oil through selective light absorption that
+      preserves underlying bases unharmed.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -12357,8 +12742,14 @@ contamination_patterns:
     - Pigments
     - Binder Resin
     - Solvents
-    description: Pigmented ink deposits from industrial printing, markers, and spray
-      paint
+    description: Ink-stains contamination, it arises from pigmented deposits of industrial
+      printing, markers, and spray paint that adhere through solvent evaporation and
+      penetration. This pattern distinguishes itself by irregular pigmentation and
+      strong bonding, unlike uniform rust or dust layers, and on porous paper or cardboard,
+      it seeps deeply while on durable steel or concrete, it forms tenacious surface
+      films. Removal challenges include chemical resistance and substrate damage risk,
+      thus laser cleaning excels as pulsed energy vaporizes stains selectively and
+      restores material integrity without abrasion.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -12597,12 +12988,25 @@ contamination_patterns:
             due to porous absorption.
           pattern: Commonly appears as blotches or streaks following the wood grain,
             with occasional drips or splatters.
+    author:
+      id: 3
   insect-residue:
     composition:
     - Proteins
     - Chitin
     - Fats
-    description: Protein-rich insect body deposits on vehicles and structures
+    description: Insect-residue contamination, this protein-rich deposit from insect
+      bodies, forms when flying insects collide and smear across surfaces during motion,
+      then dry under air and heat exposure, thus creating hardened adhesive layers
+      over time. Unique characteristics include irregular splatters with yellowish
+      hues and fibrous textures, distinguishing from dirt or pollen by sticky organic
+      composition and biological resilience, while on materials like float glass or
+      stainless steel, it adheres tightly, etches lightly under sunlight, dulls surfaces,
+      and traps particles in pores, so still persists after exposure. Key challenges
+      arise from bonding strength that resists solvents and scraping, mechanical methods
+      spread it further, but laser cleaning proves effective as pulses vaporize organics
+      precisely without abrasion, thus targets residue selectively and already restores
+      surface uniformity with no secondary damage.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -12853,12 +13257,21 @@ contamination_patterns:
             depending on infestation levels.
           pattern: It often appears in patches or streaks, following the wood grain
             or insect pathways.
+    author:
+      id: 3
   laser-marking:
     composition:
     - Metal Oxides
     - Carbon
     - Nitrides
-    description: Oxidized surface layer from laser engraving and marking processes
+    description: After laser marking, oxidized surface layer forms on metal surfaces
+      because heat exposure accelerates oxidation during engraving. This contamination
+      shows unique localized discoloration and texture that distinguishes it from
+      uniform rust buildup in other processes, and behavior varies so on steel and
+      titanium stronger adhesion occurs while on aluminum and brass looser attachment
+      allows easier detachment. Key removal challenges arise from potential substrate
+      damage during cleaning, yet laser cleaning proves effective because selective
+      energy pulses ablate oxide precisely so underlying material remains intact.
     laser_properties:
       laser_parameters:
         beam_profile: gaussian
@@ -13079,12 +13492,21 @@ contamination_patterns:
             and moisture content, rarely uniform.
           pattern: Often appears as streaks or patches that follow the wood grain,
             leading to irregular distributions.
+    author:
+      id: 1
   lead-paint:
     composition:
     - Pb₃O₄
     - PbCO₃
     - Oil Binder
-    description: Hazardous lead paint from historic buildings and structures
+    description: Lead paint contamination consists of hazardous layers from old coatings
+      in historic structures, and it forms through repeated exposure to environmental
+      elements that bind toxic lead particles to surfaces. This differs from other
+      paints because lead creates dense, adherent films that resist flaking and release
+      harmful dust during disturbance, so removal challenges include avoiding inhalation
+      risks and substrate damage on materials like steel or oak. Laser cleaning proves
+      effective since precise pulses ablate the paint selectively, so it preserves
+      underlying concrete or wood without chemical residues.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -13339,11 +13761,20 @@ contamination_patterns:
             to uneven coverage with bare wood showing through in areas.
           pattern: Distribution is generally uniform initially but becomes patchy
             or blistered with age, following the wood grain or forming irregular flakes.
+    author:
+      id: 1
   lime-scale:
     composition:
     - CaCO₃
     - MgCO₃
-    description: Hard calcium carbonate buildup from hard water evaporation
+    description: Lime-scale builds up as hard calcium carbonate from evaporated hard
+      water, creating a stubborn white layer on surfaces. It differs from rust or
+      salts by its porous, crystalline structure that bonds aggressively without corroding
+      the substrate. On glasses like float or borosilicate, it etches lightly, while
+      on metals such as stainless steel or copper, it flakes unevenly—making removal
+      a real challenge due to tight grip and residue spread. Laser cleaning ramps
+      up efficiency here, vaporizing the scale precisely to clear it fast without
+      scratching the material underneath.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -13581,12 +14012,20 @@ contamination_patterns:
             has evaporated, with minimal spread.
           pattern: It usually appears as scattered spots or patches, often following
             water drip lines or pooling areas.
+    author:
+      id: 4
   medical-disinfectant:
     composition:
     - NaOCl
     - Quats
     - Phenolics
-    description: Chlorine and quaternary ammonium compound deposits
+    description: Sticky films from chlorine and quaternary ammonium residues build
+      up on surfaces during repeated hospital cleanings. These contaminants form tight
+      chemical bonds that resist water rinsing, clinging stubbornly unlike particulate
+      dirt and leaving hazy streaks behind. On stainless steel and borosilicate glass,
+      they etch into smooth finishes over time, posing significant challenges for
+      removal with traditional methods that risk surface damage; laser cleaning vaporizes
+      these layers precisely, cutting down risks while preserving material integrity.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -13819,11 +14258,20 @@ contamination_patterns:
             regions and lighter on sealed surfaces.
           pattern: Often appears in patches or spots, concentrated in porous areas
             or along grain lines, with irregular distribution.
+    author:
+      id: 4
   mercury-contamination:
     composition:
     - Hg
     - Metal Amalgams
-    description: Elemental mercury and amalgam contamination
+    description: Mercury contamination forms from elemental spills or amalgam residues
+      in industrial settings. Before cleaning, liquid films spread quickly on concrete
+      and tile, so vapors release easily during handling and this volatility distinguishes
+      it from solid pollutants. On metals such as copper, steel, and aluminum, mercury
+      alloys and penetrates deeply, so adhesion strengthens and removal challenges
+      include toxicity and residue scattering; laser cleaning vaporizes contamination
+      precisely without substrate harm, so after treatment surfaces exhibit effective
+      cleanliness.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -14060,13 +14508,21 @@ contamination_patterns:
             due to absorption, often limited to spill areas.
           pattern: It often appears as isolated beads or small pools, following the
             wood grain or accumulating in cracks and imperfections.
+    author:
+      id: 1
   metal-polish:
     composition:
     - Al₂O₃
     - CeO₂
     - Wax
     - Surfactants
-    description: Abrasive compound deposits from metal polishing operations
+    description: Metal-polish contamination consists of fine abrasive compound residues
+      that embed into metal surfaces during polishing operations to achieve a smooth
+      finish. These deposits stand out from oils or rust by their gritty, tenacious
+      particles, which adhere deeply and often oxidize on brass or copper, while forming
+      a tougher film on steel and aluminum. Removal proves challenging due to the
+      risk of substrate damage from scraping, yet laser cleaning effectively ablates
+      them layer by layer, preserving material integrity without harsh chemicals.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -14289,12 +14745,23 @@ contamination_patterns:
             on application and wood absorption.
           pattern: Forms irregular patches or streaks, often more visible on porous
             or unfinished surfaces.
+    author:
+      id: 4
   mineral-deposits:
     composition:
     - CaCO₃
     - MgCO₃
     - CaSO₄
-    description: Calcium and magnesium carbonate deposits from evaporated hard water
+    description: After evaporation of hard water, mineral deposits form as calcium
+      and magnesium carbonates on surfaces, creating hard, adherent layers that build
+      up over time. These deposits exhibit crystalline patterns and low solubility
+      in water, so they differ from softer rust or greasy contaminants, and on materials
+      like steel or glass they cling tightly while on stones such as marble they merge
+      with natural composition, causing challenges in removal because scraping damages
+      substrates or chemicals corrode metals. Laser cleaning succeeds effectively
+      during pulsed exposure, as energy targets deposits selectively and vaporizes
+      them without affecting underlying durability of aluminum or granite, so treatment
+      preserves surface integrity in observations.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -14571,12 +15038,23 @@ contamination_patterns:
           pattern: It often appears as splotches or streaks, following water flow
             or spill patterns, and may accumulate in grooves or porous areas of the
             wood grain.
+    author:
+      id: 1
   mineral-stain:
     composition:
     - Fe₂O₃
     - MnO₂
     - CuO
-    description: Iron, manganese, and copper staining from water sources
+    description: Mineral-stain contamination, it arises from dissolved iron, manganese,
+      and copper in water sources, which precipitate as tenacious reddish-brown or
+      blackish deposits upon evaporation or oxidation, distinguishing itself from
+      organic soiling by its inorganic hardness and metallic sheen. On porous materials
+      like limestone or grout, these stains penetrate deeply, manifesting persistent
+      discoloration that resists superficial abrasion, whereas on denser surfaces
+      such as granite, they form superficial crusts. Removal challenges stem from
+      strong adhesion influenced from substrate chemistry, yet laser cleaning proves
+      effective, as the process ablates layers selectively, preserving the underlying
+      integrity without chemical residues.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -14814,13 +15292,20 @@ contamination_patterns:
             with variation based on wood porosity and exposure.
           pattern: It often appears as streaks or patches following the wood grain
             or moisture paths, sometimes forming irregular blotches.
+    author:
+      id: 2
   mold-mildew:
     composition:
     - Fungal Hyphae
     - Melanin
     - Organic Acids
-    description: Fungal colonization producing organic acids and pigmented spores
-      on damp surfaces
+    description: After dampness occurs, mold-mildew forms from fungal colonization
+      on surfaces and releases organic acids with pigmented spores. Unique traits
+      include spore pigmentation so it differs from rust or dust buildup. On woods
+      like oak and drywall, penetration happens deeply while on concrete it stays
+      surface-level, causing challenges in removal because residues cling tightly.
+      Laser cleaning succeeds so because ablation targets organics precisely without
+      harming substrates.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -15078,12 +15563,24 @@ contamination_patterns:
             with variation based on wood type and humidity levels.
           pattern: It commonly appears in scattered spots or patches, following the
             grain or moisture-prone areas like knots and edges.
+    author:
+      id: 1
   nickel-plating:
     composition:
     - Ni
     - P
     - NiP Alloy
-    description: Nickel-phosphorus coating for selective removal or repair
+    description: 'Nickel-plating contamination, it manifests as thin metallic deposits
+      from electrochemical processes, where nickel ions adhere tenaciously to substrates
+      during plating operations gone awry. This layer, distinct from oxide scales
+      or organic residues by its uniform conductivity and corrosion resistance, behaves
+      differently across metals: on steel, it bonds strongly, enhancing durability
+      yet complicating separation, whereas on aluminum it induces galvanic corrosion
+      that weakens the base, and on copper it merges seamlessly, promoting heat transfer
+      but risking delamination. Removal challenges arise from its persistent adhesion,
+      influenced from environmental factors like humidity, yet laser cleaning proves
+      effective, as the beam selectively ablates the nickel through precise vaporization,
+      preserving underlying integrity without mechanical stress.'
     laser_properties:
       laser_parameters:
         beam_profile: gaussian
@@ -15305,6 +15802,8 @@ contamination_patterns:
             due to poor adhesion and absorption into the wood.
           pattern: Tends to form irregular patches or spots, as the non-conductive
             surface resists uniform deposition.
+    author:
+      id: 2
   paint-residue:
     author:
       id: 3
@@ -15314,7 +15813,17 @@ contamination_patterns:
       before: Surface shows contamination from paint residue / coating failure affecting
         material appearance and properties.
     category: contamination
-    description: Flaking, peeling, or degraded paint/coating material
+    description: Paint-residue contamination, it arises from flaking, peeling, or
+      degraded paint and coating materials. This pattern forms when environmental
+      exposure causes binders in paint to break down, thus layers detach and scatter
+      as residue. Unique characteristics distinguish it, such as irregular flakes
+      with color remnants and adhesive stickiness, unlike dust or rust that lacks
+      organic binders. On metals, residue adheres tightly and traps moisture, while
+      on stone or wood, it embeds into pores and promotes further degradation. Removal
+      challenges persist, because residue resists solvents due to its polymeric nature,
+      and mechanical scraping risks surface damage. Laser cleaning proves effective
+      here, as precise energy pulses ablate residue layers without affecting substrates,
+      thus surface already regains uniformity following treatment.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -15609,7 +16118,14 @@ contamination_patterns:
     composition:
     - Cr₂O₃
     - Fe₂O₃
-    description: Uneven chromium oxide layer from stainless steel passivation
+    description: Uneven oxide layers define passivation-defect contamination, and
+      they form during stainless steel passivation when chromium oxide builds irregularly
+      from exposure to air and moisture. This defect exhibits patchy adhesion and
+      resists mechanical scraping, thus sets it apart from loose dirt or even rust
+      films, while on chrome-plated steel it clings similarly and persists after basic
+      cleaning. Challenges arise from its tight bonding to metal, so laser cleaning
+      succeeds by targeting ablation precisely, thus removes layers without harming
+      the durable substrate.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -15827,11 +16343,19 @@ contamination_patterns:
             exposure.
           pattern: Random patches or streaks, often following the wood grain or moisture
             paths, creating irregular distributions.
+    author:
+      id: 3
   pcb-contamination:
     composition:
     - C₁₂H₁₀₋ₓClₓ
     - Chlorinated Compounds
-    description: Polychlorinated biphenyl contamination on electrical equipment
+    description: PCB-contamination arises from polychlorinated biphenyls leaking in
+      electrical equipment, so it forms thin oily layers during long exposure. This
+      contamination shows sticky persistence and chemical stability, distinguishing
+      it from less adhesive oils because residues bond tightly without easy dissolution.
+      On steel and concrete in transformer housings, it penetrates pores so removal
+      challenges include deep embedding and environmental risks, yet laser cleaning
+      ablates layers precisely without damaging substrates.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -16061,12 +16585,19 @@ contamination_patterns:
             in more absorbent woods, leading to inconsistent coverage.
           pattern: It often spreads in blotchy patches or along the wood grain, following
             the porous structure and absorption pathways.
+    author:
+      id: 1
   pesticide-residue:
     composition:
     - Organophosphates
     - Pyrethroids
     - Copper Compounds
-    description: Organic and inorganic pesticide deposits on surfaces
+    description: Pesticide-residue contamination arises from organic and inorganic
+      deposits, which settle via sprays on surfaces. This layer, it clings tenaciously
+      to metals like steel or aluminum, setting it apart from mere dust through chemical
+      stubbornness that resists water. Laser cleaning proves effective here, vaporizing
+      residues selectively, influenced from the beam's precision that spares the base
+      material.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -16318,12 +16849,19 @@ contamination_patterns:
             in absorbent regions and less on sealed surfaces.
           pattern: It often appears as uneven patches or streaks, following the wood
             grain or pooling in porous areas and knots.
+    author:
+      id: 2
   pharmaceutical-residue:
     composition:
     - APIs
     - Excipients
     - Coatings
-    description: Active pharmaceutical ingredient deposits on processing equipment
+    description: Pharmaceutical-residue contamination, it arises from active ingredient
+      deposits during equipment processing. This residue, it forms sticky layers and
+      differs from mineral scales by organic stickiness that bonds deeply. On stainless
+      steel and glass, it clings unevenly and defies solvents, so removal challenges
+      persist; laser cleaning, it vaporizes residue selectively and leaves surfaces
+      intact.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -16583,12 +17121,18 @@ contamination_patterns:
           pattern: Distribution is commonly uneven, with residues forming blotches
             or streaks that follow the wood's porous structure, leading to irregular
             absorption patterns.
+    author:
+      id: 3
   pickling-residue:
     composition:
     - FeCl₂
     - H₂SO₄
     - Iron Salts
-    description: Residual acid and iron salt deposits from chemical pickling processes
+    description: After pickling process, residue forms from acid and iron salts on
+      steel surfaces so contamination builds up. This residue shows crystalline patterns,
+      distinct from rust because it dissolves in water unlike fixed oxides. On stainless
+      steel, it causes pitting and laser cleaning removes it effectively by targeted
+      ablation without damaging substrate.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -16810,13 +17354,24 @@ contamination_patterns:
             spots to extensive areas based on acid application.
           pattern: Stains often appear as blotches or streaks, following the wood
             grain or pooling in low spots where acid settled.
+    author:
+      id: 1
   plasma-spray:
     composition:
     - Al₂O₃
     - ZrO₂
     - MCrAlY
     - WC-Co
-    description: Plasma-sprayed ceramic and metal coatings for repair or removal
+    description: Plasma-spray contamination, it arises from the deposition of molten
+      ceramic or metallic particles onto surfaces during thermal spraying processes,
+      which are employed for repairing components such as turbine blades. This contamination
+      manifests as a tenacious, porous layer that distinguishes itself from oxide
+      scales or dust residues through its uneven thickness and strong metallurgical
+      bonding, influenced from the high-velocity impact of particles. On steel and
+      titanium substrates, it adheres more persistently than on softer alloys, posing
+      challenges like incomplete removal without substrate damage, yet laser cleaning
+      proves effective, as the process selectively ablates the layer through precise
+      thermal vaporization, that demonstrates superior control over mechanical methods.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -17034,14 +17589,23 @@ contamination_patterns:
             surface due to poor adhesion and material incompatibility.
           pattern: Distribution is patchy or streaky, as the coating may not adhere
             well, leading to flaking and irregular spots.
+    author:
+      id: 2
   plastic-residue:
     composition:
     - Polyethylene
     - Polypropylene
     - PVC
     - Additives
-    description: Melted, degraded, or oxidized plastic residues from heat exposure
-      or UV degradation
+    description: Plastic-residue contamination, it manifests as melted, degraded,
+      or oxidized layers from heat exposure or UV degradation, which distinguishes
+      itself from inorganic rusts by its viscoelastic, non-brittle nature that clings
+      irregularly. On metals such as steel and aluminum, the residue adheres tenaciously,
+      influenced from surface porosity, while on glass it spreads thinly yet persistently,
+      leading to challenges in removal due to its thermal sensitivity and potential
+      for re-melting during cleaning. Laser cleaning proves effective, as the process
+      vaporizes the residue selectively, that demonstrates preservation of the substrate
+      integrity without mechanical abrasion.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -17296,12 +17860,22 @@ contamination_patterns:
             varying with wood porosity and exposure.
           pattern: Distribution is patchy or streaky, following the wood's grain or
             accumulating in crevices and low spots.
+    author:
+      id: 2
   pollen-deposit:
     composition:
     - Proteins
     - Lipids
     - Cellulose
-    description: Fine powdery plant pollen deposits on outdoor surfaces
+    description: Pollen-deposit contamination, it arises from fine plant residues
+      transported by wind and humidity, which settle on surfaces to form tenacious
+      organic layers. Unlike inorganic dusts that lack biological adhesion, this deposit
+      exhibits a granular texture, persists under exposure, and on crown glass creates
+      uneven films resisting wipes, while on steel and aluminum it shows similar hold,
+      dependent from surface smoothness that influences variability across glasses
+      and metals. Removal challenges stem from its tenacity against mechanical methods,
+      yet laser cleaning proves effective, as it ablates organics selectively, sparing
+      the substrates.
     laser_properties:
       laser_parameters:
         beam_profile: gaussian
@@ -17548,14 +18122,23 @@ contamination_patterns:
             niches, with significant variation based on surface orientation and weather.
           pattern: Distribution is patchy, with heavier buildup in textured areas
             and grooves, and lighter coverage on smooth, vertical surfaces.
+    author:
+      id: 2
   powder-coating:
     composition:
     - Polyester Resin
     - Epoxy
     - Pigments
     - Additives
-    description: Electrostatically-applied thermosetting polymer coating used in industrial
-      finishing
+    description: Powder-coating contamination, it arises from electrostatically-applied
+      thermosetting polymer layers in industrial finishing, thus forming uneven deposits
+      that adhere strongly due to curing heat. This contamination shows unique thickness
+      variations and glossy residues, distinguishing it from rust or oils by its insulating
+      nature and resistance to solvents. On steel and aluminum, it bonds tightly and
+      alters surface conductivity, while galvanized metal experiences less grip yet
+      persistent flaking; removal challenges include avoiding substrate damage from
+      its thermal stability, but laser cleaning succeeds through precise ablation
+      that vaporizes the layer without residue, thus restoring uniformity.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -17794,12 +18377,22 @@ contamination_patterns:
             spots while other areas remain bare, leading to a mottled effect.
           pattern: Distribution is irregular, forming blotches or drips, especially
             on porous areas where adhesion is poor and overspray collects.
+    author:
+      id: 3
   primer-coating:
     composition:
     - Zinc Dust
     - Epoxy Resin
     - Pigments
-    description: Zinc-rich and epoxy-based primer coatings on metal surfaces
+    description: Primer-coating contamination forms when zinc-rich and epoxy-based
+      layers degrade on metal surfaces after environmental exposure, creating adhesive
+      buildup that bonds tightly to substrate. Unlike rust, which flakes loosely,
+      this contamination exhibits sticky resilience and uneven thickness, so it distinguishes
+      by requiring targeted removal to avoid surface scarring. On steel, adhesion
+      persists strongly while on aluminum and galvanized metal, peeling occurs faster
+      because of weaker interfacial links, yet challenges arise from potential heat-induced
+      cracking during cleaning. Laser cleaning succeeds so because focused pulses
+      vaporize coating selectively, preserving underlying material integrity.
     laser_properties:
       laser_parameters:
         beam_profile: gaussian
@@ -18043,12 +18636,23 @@ contamination_patterns:
             type, resulting in thicker application on absorbent areas.
           pattern: Distribution is generally even, but can show brush marks, drips,
             or uneven patches in areas with varying wood porosity.
+    author:
+      id: 1
   pvd-coating:
     composition:
     - TiN
     - CrN
     - AlTiN
-    description: Physical vapor deposition coating irregularities and delamination
+    description: PVD-coating contamination, it manifests as thin-film irregularities
+      and delamination, which forms during vapor deposition when substrate adhesion
+      weakens from residual gases or uneven evaporation. This pattern, it distinguishes
+      itself from oxide scaling by its layered, brittle structure that flakes tenaciously
+      under stress, yet persists more stubbornly on carbide than on tool steel or
+      HSS, where delamination appears less uniform. Removal challenges arise from
+      the contamination's thermal sensitivity, which risks substrate damage if ablated
+      aggressively, but laser cleaning proves effective, as it selectively vaporizes
+      the irregular layers through precise energy absorption, that demonstrates controlled
+      restoration without altering the underlying material integrity.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -18264,12 +18868,20 @@ contamination_patterns:
             and influenced by wood porosity.
           pattern: Often appears as random patches or streaks, following the wood
             grain or surface imperfections.
+    author:
+      id: 2
   quench-oil:
     composition:
     - Carbonized Oil
     - PAH
     - Additives
-    description: Carbonized oil deposits from metal heat treatment quenching
+    description: During quenching process, oil contaminates steel surfaces because
+      heat treatment causes carbonization, so deposits form hard layers that differ
+      from rust by their oily residue and adhesion strength. On tool steel, contamination
+      spreads unevenly and resists solvents, while on steel it bonds tightly during
+      cooling, creating removal challenges like surface damage from mechanical methods.
+      Laser cleaning works effectively so pulses vaporize deposits without harming
+      substrate, and process achieves clean results after short exposure.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -18497,11 +19109,23 @@ contamination_patterns:
             variation based on absorption and surface treatment.
           pattern: Appears as blotchy patches or streaks, following the wood grain
             or pooling in low areas.
+    author:
+      id: 1
   radioactive-contamination:
     composition:
     - Isotopes
     - Activation Products
-    description: Low-level radioactive particle deposits (specialized protocols)
+    description: Radioactive contamination, it consists of low-level particle deposits
+      arising from nuclear processes or environmental exposure, which manifest as
+      adherent layers that emit alpha or beta radiation, distinguishing themselves
+      from chemical contaminants through their persistent isotopic signatures and
+      minimal visibility under standard inspection. On materials such as stainless
+      steel or concrete, these deposits behave tenaciously, embedding into porous
+      surfaces or forming oxide bonds on metals like copper and titanium, influenced
+      from surface roughness that complicates uniform adhesion. Key removal challenges
+      include avoiding secondary dispersion of particles, yet laser cleaning proves
+      effective, as the pulsed energy vaporizes the thin layers selectively without
+      mechanical abrasion, preserving the underlying substrate integrity.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -18731,13 +19355,23 @@ contamination_patterns:
             depending on surface roughness and exposure conditions.
           pattern: Distribution is often uneven, with patches or streaks following
             the wood grain, pores, or cracks where particles settle.
+    author:
+      id: 2
   road-grime:
     composition:
     - Soil
     - Oil
     - NaCl
     - Rubber
-    description: Mixed contamination from road use including dirt, oil, and salt
+    description: Road-grime contamination builds up on vehicle surfaces during everyday
+      driving, as dirt particles mix with oil residues and salt from winter roads
+      or coastal sprays, creating a stubborn layered film that clings tightly unlike
+      simpler dust or rust alone. This mix sets in differently on steel, where it
+      accelerates corrosion through salt's moisture-trapping action, versus aluminum,
+      which resists deeper pitting but still faces adhesive oil buildup that dulls
+      finishes over time. Laser cleaning tackles these challenges effectively by vaporizing
+      the grime layer without damaging underlying metals, ramping up removal speed
+      while cutting down on chemical use for a clean, efficient process.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -18972,12 +19606,20 @@ contamination_patterns:
             on exposure; it may be more concentrated on horizontal surfaces.
           pattern: Often appears in splatters or patches, following the wood grain
             and accumulating in cracks or low points where moisture and grime settle.
+    author:
+      id: 4
   rubber-residue:
     composition:
     - C₅H₈
     - Sulfur
     - Carbon Black
-    description: Vulcanized rubber deposits from tire marks, seals, and gaskets
+    description: Rubber-residue contamination arises from vulcanized rubber deposits
+      of tire marks, seals, and gaskets, so it forms during friction and compression
+      on surfaces. This residue shows unique elasticity and strong adhesion that distinguish
+      it from oily or powdery contaminants because of its polymeric nature. On materials
+      like steel or concrete, residue clings tightly and resists scraping, so removal
+      challenges include incomplete cleaning without damaging substrate, yet laser
+      cleaning succeeds by vaporizing layers precisely during pulsed exposure.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -19250,16 +19892,37 @@ contamination_patterns:
             on wood porosity and exposure, rarely covering the entire surface uniformly.
           pattern: It often appears as blotchy patches or streaks, following the grain
             or areas of direct contact, and may spread unevenly across the surface.
+    author:
+      id: 1
   rust-oxidation:
     composition:
     - Fe₂O₃
-    description: Rust-oxidation contamination forms through exposure to moisture and
-      oxygen on [Iron](../materials/iron.md)-containing surfaces, creating a flaky,
-      reddish layer that differs from uniform deposits like dust or oils by its progressive
-      expansion and adhesion. On reactive metals such as steel, it penetrates deeply
-      and weakens structure, while on inert non-metals like ceramics, it remains superficial
-      and less adherent. Formation occurs gradually at joints and scratches, so cleaning
-      targets these patterns to restore integrity without further degradation.
+    description: 'Rust forms on iron through moisture and oxygen exposure. It creates
+      reddish flaky layer over time. Before protection, reaction starts at scratches,
+      so contamination develops gradually.
+
+
+      After exposure, rust expands progressively and adheres strongly. Dust settles
+      loosely and brushes away easily, but rust penetrates deeper and weakens base
+      material. Oils form uniform films without expansion, while rust causes ongoing
+      degradation, as observations indicate.
+
+
+      On steel, rust behaves aggressively and burrows into structure, leading to brittleness.
+      In contrast, on wrought iron, it stays more superficial and peels off with less
+      resistance. This difference highlights how material reactivity influences penetration
+      depth and overall impact.
+
+
+      Removal challenges arise because rust clings tightly and recurs if moisture
+      persists. Mechanical scraping risks further surface damage, and incomplete removal
+      allows regrowth, so careful methods are needed.
+
+
+      Laser cleaning proves effective for rust because it targets layer precisely
+      without contacting surface. Heat vaporizes oxide, so underlying material remains
+      intact. After treatment, surface exhibits cleanliness and uniformity, preventing
+      weakening over time.'
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -19680,7 +20343,14 @@ contamination_patterns:
     - NaCl
     - MgCl₂
     - CaCl₂
-    description: Marine salt deposits and road salt residues causing chloride contamination
+    description: Salt-residue contamination builds up from marine deposits or road
+      salts, where chloride ions infiltrate surfaces and crystallize into white, powdery
+      layers that set it apart from rust's flaky reds or dirt's uniform grime. On
+      metals like steel, it ramps up pitting and weakening, while on stones such as
+      concrete, it triggers efflorescence and cracking—challenges that traditional
+      scraping often worsens by scratching substrates. Laser cleaning tackles this
+      head-on by vaporizing residues precisely, preserving material integrity without
+      chemicals or abrasion.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -19916,6 +20586,8 @@ contamination_patterns:
             exposure to contaminants.
           pattern: Spots or patches, typically following the wood grain or moisture
             paths, with uneven distribution.
+    author:
+      id: 4
   scale-buildup:
     author:
       id: 1
@@ -19928,14 +20600,14 @@ contamination_patterns:
     chemical_formula: CaCO₃ (calcium carbonate) or others
     context_notes: Common in plumbing, boilers, heat exchangers, and areas with water
       exposure
-    description: Scale-buildup forms as adherent oxide layers from prolonged heat
-      exposure, differing from loose particulates or oily residues by its tenacious
-      bonding to surfaces. On reactive metals like [Iron](../materials/iron.md), it
-      creates thick, insulating coatings that promote further corrosion underneath,
-      while on inert non-metals such as ceramics, layers remain thinner and less disruptive.
-      Formation occurs gradually through oxidation, resulting in rough, porous structures.
-      This contamination hinders heat transfer on metals and invites cracking on non-metals,
-      so laser cleaning ablates it precisely without substrate damage.
+    description: After prolonged heat exposure in water-prone areas, scale-buildup
+      forms as adherent oxide layers through oxidation process. This contamination
+      exhibits tenacious bonding to surfaces and rough porous structure, so it differs
+      from loose particulates or oily residues that detach easily. On reactive metals
+      like steel, thick coatings insulate and promote corrosion underneath, while
+      on inert non-metals such as alumina, thinner layers invite less cracking; removal
+      challenges strong adhesion, so laser cleaning ablates precisely without substrate
+      damage.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -20211,7 +20883,14 @@ contamination_patterns:
     - Si₃N₄
     - Photoresist
     - Metal Films
-    description: Chemical vapor deposition and etching residues from chip manufacturing
+    description: Semiconductor residues form as stubborn thin films during chip production,
+      where chemical vapor deposition and etching deposit unwanted layers that bond
+      chemically to surfaces. These contaminants stand out from looser particles due
+      to their tight nanoscale adhesion and heat sensitivity, gripping firmly on silicon
+      wafers and alumina while holding less securely on quartz or silicon nitride,
+      which ramps up removal challenges for delicate substrates. Laser cleaning tackles
+      this effectively by precisely vaporizing the residues, leaving base materials
+      intact and delivering a clean finish without damage.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -20468,12 +21147,20 @@ contamination_patterns:
             in cracks or unfinished sections, and minimal on sealed surfaces.
           pattern: It tends to appear in blotchy patches or streaks, often following
             the wood grain or accumulating in porous areas, and is rarely uniform.
+    author:
+      id: 4
   silicone-buildup:
     composition:
     - (CH₃)₂SiO
     - SiO₂
-    description: Polysiloxane-based sealant and coating residues commonly found in
-      construction and automotive applications
+    description: Silicone-buildup forms from polysiloxane sealants, applied in construction
+      and automotive coatings, where residues cure into thin, flexible films over
+      time. This contamination distinguishes itself with hydrophobic nature and strong
+      adhesion, unlike oily greases that smear easily, and it persists stubbornly
+      on metals like steel and aluminum, altering wettability without deep penetration.
+      Removal challenges stem from chemical inertness, thus solvents often fail, but
+      laser cleaning succeeds, as targeted pulses ablate the layer precisely and restore
+      surface integrity.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -20747,11 +21434,24 @@ contamination_patterns:
             dots to broader areas near edges, with low overall surface coverage.
           pattern: It often appears as random streaks or blobs, following grain lines
             or accumulating in cracks and joints where sealant was applied excessively.
+    author:
+      id: 3
   silver-plating:
     composition:
     - Ag
     - Ag₂S (Tarnish)
-    description: Silver coating and tarnish on electrical contacts and tableware
+    description: Tarnish forms as contamination on silver-plating when exposure to
+      air and moisture reacts with sulfur compounds, so layer builds up slowly over
+      time and darkens surface unevenly while losing shine. This contamination exhibits
+      soft and adhesive nature that clings tightly to surface, so it distinguishes
+      from harder oxide scales on other contaminants because flaking occurs less during
+      handling, and on copper tarnish spreads quickly to turn greenish, on brass it
+      mats golden tone without deep penetration, while on bronze patchy blackening
+      appears due to alloy differences. Key challenges arise for removal since scrubbing
+      risks scratching thin plating and chemicals etch underlying layers, so traditional
+      methods fail to preserve shine, but laser cleaning works effectively because
+      pulses vaporize tarnish precisely without heat damage to base and clean surfaces
+      restore uniformly after treatment.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -20985,12 +21685,23 @@ contamination_patterns:
           pattern: It often appears in blotchy patches or fine streaks, following
             the wood's grain or accumulating in porous areas where residue adheres
             more easily.
+    author:
+      id: 1
   soap-scum:
     composition:
     - Calcium Stearate
     - Mg Stearate
     - Surfactants
-    description: Fatty acid salt deposits from soap and hard water interaction
+    description: Soap-scum contamination, it manifests as fatty acid salt deposits
+      that arise from the interaction between soap residues and hard water minerals,
+      which tenaciously adhere to surfaces in humid environments. This layer, it distinguishes
+      itself from mineral scales or organic films through its waxy, translucent consistency
+      and sensitivity to pH variations, behaving differently on materials like tile
+      or glass where it spreads unevenly and resists mechanical abrasion, yet persists
+      less stubbornly on ceramics compared to metals. Key challenges for removal include
+      its strong bonding influenced from repeated exposure, but laser cleaning proves
+      effective, as the process selectively ablates the scum without damaging the
+      substrate, leading to efficient restoration.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -21227,13 +21938,20 @@ contamination_patterns:
             exposure to moisture and cleaning frequency.
           pattern: It tends to form in uneven patches or streaks, often following
             water flow or high-use areas.
+    author:
+      id: 2
   solder-flux:
     composition:
     - Abietic Acid
     - Activators
     - Surfactants
-    description: Rosin-based and no-clean flux residues from electronics soldering
-      operations
+    description: Solder-flux contamination forms during electronics soldering operations,
+      as rosin-based and no-clean fluxes deposit resinous residues on substrates.
+      This layer, it adheres tenaciously to copper and brass, which distinguishes
+      it from water-soluble types by its non-volatile, sticky persistence that manifests
+      under exposure. On PCB surfaces, the contamination exhibits strong bonding dependent
+      from humidity, posing removal challenges like chemical resistance, yet laser
+      cleaning effectively ablates it precisely, without damaging the underlying materials.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -21462,13 +22180,18 @@ contamination_patterns:
             with high variation due to wood absorption.
           pattern: It tends to form irregular patches or streaks where flux was accidentally
             applied, with no uniform distribution.
+    author:
+      id: 2
   steel-corrosion:
     composition:
     - Fe₃O₄
     - FeO
     - Fe₂O₃
-    description: General oxidation and corrosion products on carbon steel and alloy
-      steel surfaces
+    description: Steel corrosion contamination, it arises from oxidation on carbon
+      steel surfaces exposed to moisture and air. This rust layer, it adheres tightly
+      and penetrates substrate unlike loose dust or paint, thus poses removal challenges
+      by risking base material damage during mechanical methods. Laser cleaning targets
+      it effectively, as ablation vaporizes oxide precisely and leaves surface intact.
     laser_properties:
       laser_parameters:
         beam_profile: gaussian
@@ -21690,12 +22413,22 @@ contamination_patterns:
             spread across the wood surface.
           pattern: Usually appears as streaks or patches where metal components (like
             nails or screws) are in contact, often following grain lines.
+    author:
+      id: 3
   surgical-marking:
     composition:
     - Gentian Violet
     - Dyes
     - Alcohol
-    description: Gentian violet and skin marker residues on medical instruments
+    description: Surgical-marking contamination, it consists of gentian violet and
+      skin marker residues that form during procedures on medical instruments, thus
+      adhering as thin, pigmented films from direct contact with tissue and tools.
+      This contamination, it distinguishes by its organic composition and stubborn
+      bonding, unlike inorganic rust or oils, and behaves differently on stainless
+      steel where it embeds deeply into pores, yet spreads thinly on titanium without
+      strong adhesion. Removal challenges arise from chemical resistance and risk
+      of surface damage, so laser cleaning proves effective as pulses ablate layers
+      precisely without heat buildup, thus preserving instrument integrity.
     laser_properties:
       laser_parameters:
         beam_profile: gaussian
@@ -21918,11 +22651,21 @@ contamination_patterns:
             on wood porosity and application pressure.
           pattern: Often appears as diffuse patches or streaks following the wood
             grain, with potential for bleeding into surrounding areas.
+    author:
+      id: 3
   teflon-residue:
     composition:
     - PTFE
     - Fluorocarbons
-    description: Fluoropolymer coating deposits and degradation products
+    description: Teflon-residue contamination, it arises from degraded fluoropolymer
+      coatings during manufacturing processes and thus forms thin, persistent films
+      on surfaces. This residue, it distinguishes itself by chemical inertness and
+      low surface energy, unlike organic contaminants that degrade easily, and so
+      resists adhesion on steel, aluminum, and stainless steel where it bonds tightly
+      yet flakes under shear. Removal challenges include its thermal stability that
+      demands precise energy input, but laser cleaning proves effective as pulsed
+      beams ablate the layer selectively without substrate damage, and thus restores
+      surface integrity.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -22164,14 +22907,21 @@ contamination_patterns:
             heavy residue while others remain clean, influenced by wood porosity.
           pattern: It often appears as blotchy patches or streaks, following the wood's
             texture or areas where coating was improperly removed.
+    author:
+      id: 3
   thermal-paste:
     composition:
     - ZnO
     - Ag
     - Al₂O₃
     - Silicone Oil
-    description: Silicone or metal-based thermal interface materials from CPU/GPU
-      cooling systems
+    description: Thermal paste contamination arises from silicone or metal-based materials
+      used in CPU cooling systems and it forms when paste spreads beyond interfaces
+      during assembly or operation. This contaminant shows unique greasy texture and
+      strong adhesion so it differs from dry dust or oxide layers by resisting simple
+      wiping. On copper and aluminum surfaces, it hardens over time and removal challenges
+      include residue buildup because paste bonds tightly. Laser cleaning works effectively
+      since pulses vaporize paste without harming underlying nickel-plated areas.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -22398,12 +23148,23 @@ contamination_patterns:
             buildup and bare spots.
           pattern: Distribution is patchy or streaky, often following the wood's natural
             grooves or application strokes.
+    author:
+      id: 1
   thread-locker:
     composition:
     - Dimethacrylate
     - Peroxides
     - Dyes
-    description: Anaerobic adhesive residue from mechanical fasteners
+    description: Thread-locker contamination, it arises from anaerobic adhesive residues
+      on mechanical fasteners, and forms through curing without oxygen exposure, thus
+      creating polymerized layers that bond threads tightly. This residue, it exhibits
+      exceptional chemical resistance and elastic toughness, distinguishing from fluid
+      oils or loose particles by its strong adhesion and deep penetration into microstructures—on
+      steel and stainless steel, it adheres firmly, while on aluminum, bonding remains
+      looser yet embeds deeply still. Removal challenges include solvent ineffectiveness
+      and risk of substrate etching, so laser cleaning proves effective, as it ablates
+      residue precisely through thermal vaporization and preserves material integrity
+      for uniform surfaces.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -22626,11 +23387,21 @@ contamination_patterns:
             depending on application method.
           pattern: Usually appears in blotchy patches or streaks, following the wood's
             natural grain or application points.
+    author:
+      id: 3
   tin-plating:
     composition:
     - Sn
     - Sn-Pb Alloy
-    description: Tin coating on electronic components and food containers
+    description: Tin-plating contamination, it arises from degraded coatings on electronic
+      components and food containers, forming thin metallic layers that adhere tightly
+      through oxidation and environmental exposure. This contamination, it distinguishes
+      itself by soft, ductile texture unlike harder oxide scales, and behaves differently
+      on steel where it promotes corrosion, on copper it accelerates tarnish, and
+      on brass it induces uneven patina thus complicating uniform cleaning. Removal
+      challenges stem from its persistence and risk of substrate damage, yet laser
+      cleaning proves effective as precise pulses ablate the layer selectively and
+      restore surface integrity without mechanical stress.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -22851,12 +23622,23 @@ contamination_patterns:
             or contaminated zones, with minimal spread across the wood.
           pattern: Distribution is irregular, appearing as scattered spots or smears,
             especially where the residue was transferred or dripped onto the surface.
+    author:
+      id: 3
   tree-sap:
     composition:
     - Terpenes
     - Resin Acids
     - Sugars
-    description: Sticky organic plant exudates on surfaces
+    description: Tree sap forms as a sticky organic exudate when trees release it
+      onto surfaces during injury or environmental stress, creating a tacky layer
+      that hardens unevenly over time. This contaminant stands out from similar resins
+      through its high sugar content, which leads to fermentation risks and a glossy,
+      irregular buildup rather than uniform films. On metals like steel or aluminum,
+      it bonds tightly and resists scraping, while on glass such as float glass, it
+      spreads thinly but etches subtly; removal challenges include its penetration
+      into microstructures, demanding methods that avoid substrate damage. Laser cleaning
+      tackles this effectively by vaporizing the sap layer precisely, preserving underlying
+      materials without chemicals or abrasion.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -23114,12 +23896,23 @@ contamination_patterns:
             on the wood type and environmental factors like temperature.
           pattern: Often appears in localized spots or streaks along the grain, especially
             near knots or cuts where sap naturally exudes.
+    author:
+      id: 4
   undercoating:
     composition:
     - Asphalt
     - Rubber
     - Solvents
-    description: Rubberized or tar-based protective coating on vehicle underbodies
+    description: Undercoating contamination arises from rubberized or tar-based coatings
+      applied to vehicle underbodies for protection against rust and road debris,
+      where it hardens over time into a thick, adhesive layer. This pattern differs
+      from oxide scales or grease residues by its elastic, bitumen-like texture that
+      clings unevenly and releases volatile fumes when heated. On steel, it bonds
+      aggressively and traps salts beneath, complicating adhesion loss, whereas on
+      painted metal, it overlays loosely yet promotes delamination underneath. Challenges
+      include incomplete vaporization leading to residue streaks, thus laser cleaning
+      succeeds by targeted ablation that selects the organic layer for removal while
+      substrate stays intact.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -23358,11 +24151,18 @@ contamination_patterns:
             saturation in areas exposed to direct contact.
           pattern: It spreads in blotchy patches or streaks, following the wood's
             grain and pooling in low spots or cracks.
+    author:
+      id: 3
   uranium-oxide:
     composition:
     - U₃O₈
     - UO₂
-    description: Uranium oxide contamination from manufacturing and military applications
+    description: Uranium oxide forms on surfaces after exposure to nuclear materials
+      in manufacturing and military settings. Unlike rust or dust, it exhibits dense
+      layering and radioactivity so distinguishes itself clearly. On steel, bond holds
+      tightly, while on concrete, penetration deepens into structure, and challenges
+      arise from hardness during removal. Laser cleaning succeeds because ablation
+      vaporizes contamination precisely without residue spread.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -23586,6 +24386,8 @@ contamination_patterns:
             in absorbent or damaged sections of the wood.
           pattern: Contamination often appears as blotchy patches or streaks, following
             the wood grain or accumulating in porous areas.
+    author:
+      id: 1
   uv-chalking:
     author:
       id: 3
@@ -23595,8 +24397,19 @@ contamination_patterns:
       before: Surface shows contamination from uv photodegradation / polymer chalking
         affecting material appearance and properties.
     category: photodegradation
-    description: White chalky residue from UV-induced breakdown of polymer chains
-      at the surface
+    description: UV-chalking contamination, it arises from photodegradation under
+      ultraviolet exposure, where polymer chains fragment on the surface and thus
+      form a white chalky residue that scatters and adheres as a powdery film. This
+      residue distinguishes itself from dust or oxidation marks through its brittle
+      texture that flakes easily under touch and pure white matte color, contrasting
+      with sticky grime or yellowish patina, while on materials like ABS and polycarbonate
+      it builds thickly and cracks during flexing, yet on nylon and polypropylene
+      it develops sparse spots that roughen texture over time, so removal challenges
+      include embedding into pores that worsens coverage with mechanical wiping or
+      chemical dissolution damaging the base. Laser cleaning addresses these issues
+      effectively, as pulses target the residue selectively and vaporize it without
+      heat spread to the substrate, thus restoring surface uniformity already on delicate
+      layers like acrylic or redwood.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -23863,7 +24676,15 @@ contamination_patterns:
     - CaCO₃
     - Fe₂O₃
     - Organic Matter
-    description: Mineral deposits and discoloration from water exposure
+    description: Water-stain contamination, it forms via evaporation of hard water,
+      depositing minerals that adhere tenaciously to surfaces. This pattern exhibits
+      irregular crystalline formations, chalky and translucent, which distinguish
+      it from uniform rust or even organic films. On porous stones like marble or
+      limestone, the stain penetrates deeply, whereas on smooth metals such as stainless
+      steel, it creates superficial layers; challenges stem from chemical bonding,
+      resistant to solvents and abrasion, that risks substrate damage. Laser cleaning,
+      it selectively ablates deposits through targeted energy, preserving underlying
+      integrity.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -24113,13 +24934,20 @@ contamination_patterns:
             based on wood porosity and the duration of water contact.
           pattern: Stains commonly appear as irregular patches or rings, spreading
             along the wood grain or forming where water has pooled or dripped.
+    author:
+      id: 2
   wax-buildup:
     composition:
     - C₂₅H₅₂
     - Esters
     - Fatty Acids
-    description: Paraffin, carnauba, and synthetic wax deposits from protective coatings
-      and polishes
+    description: Wax-buildup contamination arises from paraffin, carnauba, and synthetic
+      deposits in protective coatings and polishes, and it accumulates layer by layer
+      on surfaces. This buildup, hydrophobic and soft in texture, distinguishes itself
+      from greasy oils or dust by even spreading and resistance to solvents. On metals
+      such as steel and aluminum, it clings tightly yet vaporizes readily under laser
+      pulse, thus challenges like incomplete removal diminish, and laser cleaning
+      succeeds through precise ablation without substrate harm.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -24375,6 +25203,8 @@ contamination_patterns:
             buildup in detailed areas, depending on usage and maintenance.
           pattern: It often appears in streaks or patches, following the direction
             of application or accumulating in grooves and carvings.
+    author:
+      id: 3
   wood-rot:
     author:
       id: 1
@@ -24384,8 +25214,12 @@ contamination_patterns:
       before: Surface shows contamination from wood rot / fungal biodegradation affecting
         material appearance and properties.
     category: biodegradation
-    description: Fungal breakdown of wood fibers causing discoloration, softening,
-      and structural weakening
+    description: Wood rot forms through fungal biodegradation of wood fibers, so discoloration
+      appears and softening occurs with structural weakening over time. This contamination
+      penetrates deeply into material unlike surface dust or chemical stains, and
+      behaves faster on softwoods like pine while slower on hardwoods like oak. Removal
+      challenges arise because rot makes wood brittle, yet laser cleaning succeeds
+      by selectively ablating decayed layers without damaging healthy substrate.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -24662,7 +25496,14 @@ contamination_patterns:
     composition:
     - Zn
     - Zn Alloys
-    description: Decorative and corrosion-resistant zinc coating removal
+    description: Zinc-plating contamination appears as thin protective layer on steel
+      and iron surfaces, so it forms during corrosion-resistant coating processes
+      to prevent rust. This layer shows unique even distribution and metallic sheen
+      that differs from rust or scale buildup, and it adheres tightly on steel while
+      flaking more easily on iron during exposure. Removal challenges include risk
+      of base material damage because of strong bonding, but laser cleaning works
+      effectively so it ablates the layer precisely without harming underlying steel
+      or iron.
     laser_properties:
       laser_parameters:
         beam_profile: gaussian
@@ -24874,6 +25715,8 @@ contamination_patterns:
             porosity and environmental factors.
           pattern: Appears as random spots or streaks, often following the wood grain
             or moisture paths.
+    author:
+      id: 1
   natural-weathering:
     micro:
       before: Surface shows natural weathering and aging from environmental exposure.
@@ -24882,8 +25725,18 @@ contamination_patterns:
     category: aging
     context_notes: Natural weathering from UV, moisture cycling, thermal stress, and
       oxidation. Distribution varies significantly by surface orientation.
-    description: Natural environmental aging from sun exposure, moisture, and temperature
-      cycling
+    description: Natural weathering contamination, it manifests as a heterogeneous
+      layer of degradation products, which forms through prolonged exposure to ultraviolet
+      radiation, moisture fluctuations, thermal stresses, and oxidative processes
+      that vary regionally, influenced from climatic patterns in Mediterranean zones.
+      This contamination, it distinguishes itself from industrial pollutants by its
+      uneven distribution dependent from surface orientation, exhibiting tenacious
+      adhesion on metals like steel and copper, where it promotes patina-like oxidation,
+      while on porous stones such as limestone or wood like oak, it induces cracking
+      and discoloration that demonstrates material-specific vulnerability. The challenges
+      for removal lie in its deep integration without damaging substrates, yet laser
+      cleaning proves effective, as the process selectively ablates these layers through
+      precise energy absorption, which preserves underlying integrity.
     id: natural_weathering
     laser_properties: *id001
     valid_materials:
@@ -25552,6 +26405,8 @@ contamination_patterns:
           coverage_ranges: 'Light: <30% surface change. Moderate: 30-60%. Heavy: >60%
             degradation.'
           buildup_progression: Visible changes within 1-5 years outdoor exposure.
+    author:
+      id: 2
 error_messages:
   oil_without_context:
     code: CONTEXT_REQUIRED

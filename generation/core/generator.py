@@ -165,8 +165,17 @@ class Generator:
         # Generate humanness layer (structural variation only - voice comes from persona)
         from learning.humanness_optimizer import HumannessOptimizer
         humanness_optimizer = HumannessOptimizer()
+        
+        # Get base word count target from config
+        component_lengths = self.config.get('component_lengths', {})
+        if isinstance(component_lengths.get(component_type), dict):
+            length_target = component_lengths[component_type].get('default')
+        else:
+            length_target = component_lengths.get(component_type)
+        
         humanness_layer = humanness_optimizer.generate_humanness_instructions(
-            component_type=component_type
+            component_type=component_type,
+            length_target=length_target
         )
         self.logger.info(f"🧠 Generated humanness layer ({len(humanness_layer)} chars)")
         
@@ -289,8 +298,17 @@ class Generator:
             # Generate compressed version (10-15% of normal size, learning-optimized)
             from learning.humanness_optimizer import HumannessOptimizer
             optimizer = HumannessOptimizer(winston_db_path='z-beam.db')
+            
+            # Get base word count target from config
+            component_lengths = self.config.get('component_lengths', {})
+            if isinstance(component_lengths.get(component_type), dict):
+                length_target = component_lengths[component_type].get('default')
+            else:
+                length_target = component_lengths.get(component_type)
+            
             final_humanness = optimizer.generate_compressed_humanness(
-                component_type=component_type
+                component_type=component_type,
+                length_target=length_target
             )
         else:
             # Base prompt small - use FULL humanness layer
@@ -545,43 +563,48 @@ class Generator:
         except Exception as e:
             raise ValueError(f"Content extraction failed: {e}")
         
-        # Add sparse cross-links (UPDATED - Dec 14, 2025)
+        # Add sparse cross-links (DISABLED - Dec 14, 2025)
         # Documentation: docs/03-components/text/CROSSLINKING.md
         # Apply to all text fields: strings, dicts (micro), and lists (FAQ)
         # Automatically links materials/contaminants mentioned in generated text
-        try:
-            self.logger.info("🔗 Adding cross-links...")
-            
-            if isinstance(content, str) and len(content) > 50:
-                # String content (material_description, description, etc.)
-                content = self.link_builder.add_links(
-                    content=content,
-                    current_item=identifier,
-                    domain=self.domain
-                )
-            elif isinstance(content, dict):
-                # Dict content (micro with before/after)
-                for key, value in content.items():
-                    if isinstance(value, str) and len(value) > 50:
-                        content[key] = self.link_builder.add_links(
-                            content=value,
-                            current_item=identifier,
-                            domain=self.domain
-                        )
-            elif isinstance(content, list):
-                # List content (FAQ with Q&A pairs)
-                for item in content:
-                    if isinstance(item, dict) and 'answer' in item:
-                        if isinstance(item['answer'], str) and len(item['answer']) > 50:
-                            item['answer'] = self.link_builder.add_links(
-                                content=item['answer'],
+        # DISABLED: Crosslinking temporarily disabled due to URL issues
+        if False:  # Disabled crosslinking
+            try:
+                self.logger.info("🔗 Adding cross-links...")
+                
+                if isinstance(content, str) and len(content) > 50:
+                    # String content (material_description, description, etc.)
+                    content = self.link_builder.add_links(
+                        content=content,
+                        current_item=identifier,
+                        domain=self.domain,
+                        valid_materials=item_data.get('valid_materials')  # Any domain can use filtering
+                    )
+                elif isinstance(content, dict):
+                    # Dict content (micro with before/after)
+                    for key, value in content.items():
+                        if isinstance(value, str) and len(value) > 50:
+                            content[key] = self.link_builder.add_links(
+                                content=value,
                                 current_item=identifier,
-                                domain=self.domain
+                                domain=self.domain,
+                                valid_materials=item_data.get('valid_materials')  # Any domain can use filtering
                             )
-            
-            self.logger.info("✅ Cross-linking complete")
-        except Exception as e:
-            self.logger.warning(f"⚠️  Cross-linking failed: {e} (continuing without links)")
+                elif isinstance(content, list):
+                    # List content (FAQ with Q&A pairs)
+                    for item in content:
+                        if isinstance(item, dict) and 'answer' in item:
+                            if isinstance(item['answer'], str) and len(item['answer']) > 50:
+                                item['answer'] = self.link_builder.add_links(
+                                    content=item['answer'],
+                                    current_item=identifier,
+                                    domain=self.domain,
+                                    valid_materials=item_data.get('valid_materials')  # Any domain can use filtering
+                                )
+                
+                self.logger.info("✅ Cross-linking complete")
+            except Exception as e:
+                self.logger.warning(f"⚠️  Cross-linking failed: {e} (continuing without links)")
         
         # Calculate word count (handle both string and dict content)
         if isinstance(content, dict):

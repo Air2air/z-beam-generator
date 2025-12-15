@@ -1,6 +1,11 @@
-id: adhesive-residue-contamination
-name: adhesive_residue-contamination
+name: Adhesive Residue / Tape Marks
 slug: adhesive-residue-contamination
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,27 +41,35 @@ _metadata:
     author_country: Taiwan
     voice_applied: true
     content_type: contaminant
+title: Adhesive Residue / Tape Marks Contamination
+contamination_description: Adhesive-residue contamination forms during shipping or
+  labeling processes, and clings tenaciously to metals and plastics. Unlike dust that
+  brushes away easily or oils that evaporate quickly, layer hardens over time so tackiness
+  persists after exposure. During cleaning, bonds resist solvents, so gentle methods
+  apply to prevent surface damage. Buildup is observed as sticky films, distinct because
+  it demands careful removal without scratching.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: Adhesive Residue / Tape Marks
+  href: /contamination/contamination/adhesive-residue-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/adhesive-residue-contamination-hero.jpg
+    alt: Adhesive Residue / Tape Marks contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/adhesive-residue-contamination-micro.jpg
+    alt: Adhesive Residue / Tape Marks contamination microscopic detail
 micro:
   after: Post-cleaning reveals restored surface with adhesive residue / tape marks
     successfully removed through precise laser ablation.
   before: Surface shows contamination from adhesive residue / tape marks affecting
     material appearance and properties.
-category: contamination
 context_notes: Common on manufactured items, shipped goods, or items with labels/tape
-description: Adhesive-residue contamination forms during shipping or labeling processes,
-  and clings tenaciously to metals and plastics. Unlike dust that brushes away easily
-  or oils that evaporate quickly, layer hardens over time so tackiness persists after
-  exposure. During cleaning, bonds resist solvents, so gentle methods apply to prevent
-  surface damage. Buildup is observed as sticky films, distinct because it demands
-  careful removal without scratching.
-eeat:
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
-  reviewedBy: Z-Beam Quality Assurance Team
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -187,6 +200,14 @@ laser_properties:
     thermal_conductivity: 0.15
     thermal_diffusivity: 0.1
     vaporization_temperature: 450
+eeat:
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+  reviewedBy: Z-Beam Quality Assurance Team
 valid_materials:
 - Aluminum
 - Steel
@@ -237,4 +258,3 @@ valid_materials:
 - Boron Nitride
 - Silicon Nitride
 - Redwood
-title: Adhesive Residue

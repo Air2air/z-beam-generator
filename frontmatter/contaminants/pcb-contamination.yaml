@@ -1,7 +1,70 @@
-id: pcb-contamination-contamination
-name: pcb-contamination-contamination
-slug: pcb-contamination-contamination
-description: Polychlorinated biphenyl contamination on electrical equipment
+name: PCB Oil Contamination
+slug: pcb-contamination
+category: contamination
+subcategory: contamination
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: contaminant
+title: PCB Oil Contamination Contamination
+contamination_description: PCB-contamination arises from polychlorinated biphenyls
+  leaking in electrical equipment, so it forms thin oily layers during long exposure.
+  This contamination shows sticky persistence and chemical stability, distinguishing
+  it from less adhesive oils because residues bond tightly without easy dissolution.
+  On steel and concrete in transformer housings, it penetrates pores so removal challenges
+  include deep embedding and environmental risks, yet laser cleaning ablates layers
+  precisely without damaging substrates.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contamination
+  href: /contamination
+- label: Contamination
+  href: /contamination/contamination
+- label: PCB Oil Contamination
+  href: /contamination/contamination/pcb-contamination-contamination
+images:
+  hero:
+    url: /images/contamination/pcb-contamination-hero.jpg
+    alt: PCB Oil Contamination contamination on surface before laser cleaning
+  micro:
+    url: /images/contamination/pcb-contamination-micro.jpg
+    alt: PCB Oil Contamination contamination microscopic detail
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
