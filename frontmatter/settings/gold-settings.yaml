@@ -1,181 +1,182 @@
-name: Gold
-slug: gold
-category: metal
-subcategory: non-ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-title: Gold Laser Cleaning Settings
-settings_description: When laser cleaning gold, unlike copper or silver, its extreme reflectivity bounces most energy away. We typically switch to shorter wavelengths for better absorption. This lets you remove contaminants without melting the surface. Watch out mid-process for uneven heating—dial down power if spots heat up. We've found multiple light passes restore that pristine finish safely. Adjust overlap to avoid warping delicate pieces.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Non Ferrous
-  href: /materials/metal/non-ferrous
-- label: Gold
-  href: /materials/gold
-images:
-  hero:
-    alt: Gold surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/gold-laser-cleaning-hero.jpg
-  micro:
-    alt: Gold microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/gold-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 15
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 532
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 0.8
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 8
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-thermalProperties:
-  thermalDiffusivity:
-    value: 127.0
-    unit: mm²/s
-  thermalConductivity:
-    value: 317.0
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1337.33
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 0.45
-    unit: J/cm²
-  ablationThreshold:
-    value: 0.42
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.8
-    unit: K
-  reflectivity:
-    value: 0.98
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: High thermal conductivity and heat spread
-    severity: medium
-    property_value: 4-400 W/(m·K) depending on metal
-    impact: Heat spreads rapidly causing large heat-affected zones
-    solutions:
-    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-    - Increase scan speed to minimize dwell time
-    - Apply cooling between passes for thick sections
-  - challenge: Melting and heat-affected zone formation
-    severity: high
-    threshold_range: 660°C (Al) to 3422°C (W)
-    impact: Substrate melting or microstructural changes in heat-affected zone
-    solutions:
-    - Stay below 70% of melting temperature
-    - Use pulse mode with adequate cooling time
-    - Monitor for surface discoloration indicating oxidation
-  surface_characteristics:
-  - challenge: High reflectivity
-    severity: high
-    reflectivity_range: 60-95% at 1064nm for polished metals
-    impact: Most laser energy reflected, requiring higher power; safety hazard
-    solutions:
-    - Use shorter wavelengths (355nm UV) for better absorption
-    - Increase power density but monitor for thermal damage
-    - Ensure proper beam containment and safety measures
-    - Surface oxidation/roughness improves absorption
-  - challenge: Surface finish variations
-    severity: medium
-    impact: Polished surfaces reflect more, rough surfaces absorb better
-    solutions:
-    - Adjust power based on surface condition
-    - Test parameters on similar finish samples
-    - Polished surfaces need 20-40% more power
-  contamination_challenges:
-  - challenge: Rust and oxide layer removal
-    severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
-    solutions:
-    - First pass at higher power (100-120W) to remove bulk oxide
-    - Second pass at lower power (60-80W) for final cleaning
-    - Monitor for base metal exposure to avoid over-processing
-  - challenge: Oil and grease removal
-    severity: low
-    impact: Organic contaminants vaporize easily but can redeposit
-    solutions:
-    - Use fume extraction to prevent redeposition
-    - Higher scan speeds (3000-5000 mm/s) for thin films
-    - Chemical pre-cleaning for heavy contamination
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:03.105604'
+metadata:
+  name: Gold
+  slug: gold
+  category: metal
+  subcategory: non-ferrous
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 3
+    name: Ikmanda Roswati
+    country: Indonesia
+    country_display: Indonesia
+    title: Ph.D.
+    sex: m
+    jobTitle: Junior Research Scientist in Laser Physics
+    expertise:
+    - Ultrafast Laser Physics and Material Interactions
+    affiliation:
+      name: Bandung Institute of Technology
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Physics, ITB, 2020
+    - 2+ years in ultrafast laser research including ASEAN optics workshops
+    - Assisted in international optics projects
+    languages:
+    - English
+    - Bahasa Indonesia
+    email: info@z-beam.com
+    image: /images/author/ikmanda-roswati.jpg
+    imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+    url: https://z-beam.com/authors/ikmanda-roswati
+    sameAs:
+    - https://linkedin.com/in/ikmanda-roswati-physicist
+    - https://www.academia.edu/profile/IkmandaRoswati
+    persona_file: indonesia_persona.yaml
+    formatting_file: indonesia_formatting.yaml
+  title: Gold Laser Cleaning Settings
+  settings_description: When laser cleaning gold, unlike copper or silver, its extreme reflectivity bounces most energy away. We typically switch to shorter wavelengths for better absorption. This lets you remove contaminants without melting the surface. Watch out mid-process for uneven heating—dial down power if spots heat up. We've found multiple light passes restore that pristine finish safely. Adjust overlap to avoid warping delicate pieces.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Metal
+    href: /materials/metal
+  - label: Non Ferrous
+    href: /materials/metal/non-ferrous
+  - label: Gold
+    href: /materials/gold
+  images:
+    hero:
+      alt: Gold surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/gold-laser-cleaning-hero.jpg
+    micro:
+      alt: Gold microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/gold-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 15
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 532
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 50
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    fluenceThreshold:
+      unit: J/cm²
+      value: 0.8
+      min: 0.3
+      max: 4.5
+    pulseWidth:
+      unit: ns
+      value: 8
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 3
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+  thermalProperties:
+    thermalDiffusivity:
+      value: 127.0
+      unit: mm²/s
+    thermalConductivity:
+      value: 317.0
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 1337.33
+      unit: K
+      type: melting
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 0.45
+      unit: J/cm²
+    ablationThreshold:
+      value: 0.42
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.8
+      unit: K
+    reflectivity:
+      value: 0.98
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: High thermal conductivity and heat spread
+      severity: medium
+      property_value: 4-400 W/(m·K) depending on metal
+      impact: Heat spreads rapidly causing large heat-affected zones
+      solutions:
+      - Use shorter pulse durations (picosecond/femtosecond) for localized heating
+      - Increase scan speed to minimize dwell time
+      - Apply cooling between passes for thick sections
+    - challenge: Melting and heat-affected zone formation
+      severity: high
+      threshold_range: 660°C (Al) to 3422°C (W)
+      impact: Substrate melting or microstructural changes in heat-affected zone
+      solutions:
+      - Stay below 70% of melting temperature
+      - Use pulse mode with adequate cooling time
+      - Monitor for surface discoloration indicating oxidation
+    surface_characteristics:
+    - challenge: High reflectivity
+      severity: high
+      reflectivity_range: 60-95% at 1064nm for polished metals
+      impact: Most laser energy reflected, requiring higher power; safety hazard
+      solutions:
+      - Use shorter wavelengths (355nm UV) for better absorption
+      - Increase power density but monitor for thermal damage
+      - Ensure proper beam containment and safety measures
+      - Surface oxidation/roughness improves absorption
+    - challenge: Surface finish variations
+      severity: medium
+      impact: Polished surfaces reflect more, rough surfaces absorb better
+      solutions:
+      - Adjust power based on surface condition
+      - Test parameters on similar finish samples
+      - Polished surfaces need 20-40% more power
+    contamination_challenges:
+    - challenge: Rust and oxide layer removal
+      severity: medium
+      impact: Requires multiple passes; rust/oxide has different absorption than base metal
+      solutions:
+      - First pass at higher power (100-120W) to remove bulk oxide
+      - Second pass at lower power (60-80W) for final cleaning
+      - Monitor for base metal exposure to avoid over-processing
+    - challenge: Oil and grease removal
+      severity: low
+      impact: Organic contaminants vaporize easily but can redeposit
+      solutions:
+      - Use fume extraction to prevent redeposition
+      - Higher scan speeds (3000-5000 mm/s) for thin films
+      - Chemical pre-cleaning for heavy contamination
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:30.250704'

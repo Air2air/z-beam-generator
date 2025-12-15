@@ -1,200 +1,201 @@
-name: Concrete Efflorescence
-slug: efflorescence-contamination
-category: inorganic_coating
-subcategory: mineral
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: contaminant
-title: Concrete Efflorescence Contamination
-contamination_description: Efflorescence appears as white, crystalline salt deposits
-  that form when moisture draws soluble salts through porous materials like concrete
-  or brick, crystallizing on the surface as water evaporates. This contamination sets
-  it apart from dirt or algae by its powdery, water-soluble nature that flakes easily
-  yet recurs without addressing underlying moisture issues, behaving more aggressively
-  on absorbent stones such as limestone or sandstone where it embeds deeply. Removal
-  poses a solid challenge due to the risk of substrate damage from abrasive methods,
-  but laser cleaning addresses this effectively by vaporizing the salts layer by layer
-  while preserving the material's integrity.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contamination
-  href: /contamination
-- label: Inorganic_Coating
-  href: /contamination/inorganic_coating
-- label: Concrete Efflorescence
-  href: /contamination/inorganic_coating/efflorescence-contamination-contamination
-images:
-  hero:
-    url: /images/contamination/efflorescence-contamination-hero.jpg
-    alt: Concrete Efflorescence contamination on surface before laser cleaning
-  micro:
-    url: /images/contamination/efflorescence-contamination-micro.jpg
-    alt: Concrete Efflorescence contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.2
-      min_j_cm2: 0.3
-      recommended_j_cm2: 0.8
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 100
-      min_ns: 10
-      recommended_ns: 30
-    repetition_rate_khz:
-      max: 100
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 2000
-      min: 500
-      recommended: 1000
-    spot_size_mm:
-      max: 0.2
-      min: 0.05
-      recommended: 0.1
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 120
-      wavelength_355nm: 2800
-      wavelength_532nm: 450
-    reflectivity:
-      wavelength_1064nm: 0.65
-      wavelength_355nm: 0.08
-      wavelength_532nm: 0.35
-    refractive_index:
-      imaginary_part: 0.012
-      real_part: 1.48
-    transmission_depth: 83
-  removal_characteristics:
-    byproducts:
-    - compound: CaCO₃
-      hazard_level: low
-      phase: solid
-    - compound: CO₂
-      hazard_level: low
-      phase: gas
-    - compound: H₂O
-      hazard_level: low
-      phase: gas
-    - compound: CaO
-      hazard_level: moderate
-      phase: solid
-    damage_risk_to_substrate: medium
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 2400
-      typical_scan_speed_mm_s: 800
-    removal_efficiency:
-      diminishing_returns_after: 3
-      optimal_passes: 2
-      single_pass: 0.7
-    secondary_mechanisms:
-    - mechanical_spallation
-    - photochemical_decomposition
-    surface_quality_after_removal:
-      color_change: 'yes'
-      residual_stress: compressive
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Crystalline Silica (as respirable dust)
-      concentration_mg_m3: 5-50
-      exposure_limit_mg_m3: 0.025
-      hazard_class: carcinogenic
-    - compound: Carbon Dioxide
-      concentration_mg_m3: 900-1800
-      exposure_limit_mg_m3: 9000
-      hazard_class: toxic
-    - compound: Calcium Oxide dust
-      concentration_mg_m3: 2-20
-      exposure_limit_mg_m3: 2
-      hazard_class: irritant
-    particulate_generation:
-      respirable_fraction: 0.3
-      size_range_um:
-      - 0.1
-      - 100
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: PAPR
-      skin_protection: full_suit
-    substrate_compatibility_warnings:
-    - Laser cleaning may alter concrete surface chemistry and increase porosity
-    - Thermal stress may cause micro-cracking in concrete substrate
-    - Efflorescence salts may vaporize and redeposit on adjacent surfaces
-    toxic_gas_risk: low
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: HEPA
-      minimum_air_changes_per_hour: 10
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 1.2
-      pulse_duration_10ns: 0.6
-      wavelength_1064nm: 0.8
-    decomposition_temperature: 120
-    heat_affected_zone_depth: 15
-    melting_point: N/A
-    specific_heat: 900
-    thermal_conductivity: 0.8
-    thermal_diffusivity: 0.3
-    vaporization_temperature: 285
-valid_materials:
-- Concrete
-- Brick
-- Granite
-- Marble
-- Limestone
-- Sandstone
-- Basalt
-- Slate
-- Quartzite
-- Travertine
-- Bluestone
-- Soapstone
+metadata:
+  name: Concrete Efflorescence
+  slug: efflorescence-contamination
+  category: inorganic-coating
+  subcategory: mineral
+  content_type: unified_contamination
+  schema_version: 4.0.0
+  datePublished: null
+  dateModified: null
+  author:
+    id: 4
+    name: Todd Dunning
+    country: United States
+    country_display: United States
+    title: MA
+    sex: m
+    jobTitle: Junior Optical Materials Specialist
+    expertise:
+    - Optical Materials for Laser Systems
+    affiliation:
+      name: Coherent Inc.
+      type: Organization
+    credentials:
+    - BA Physics, UC Irvine, 2017
+    - Hands-on at JPL optics internship, 2018
+    - MA Optics and Photonics, UC Irvine, 2019
+    - 3+ years in laser systems development
+    - Hands-on experience with optical fabrication
+    email: info@z-beam.com
+    image: /images/author/todd-dunning.jpg
+    imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+      with precision optics tools
+    url: https://z-beam.com/authors/todd-dunning
+    sameAs:
+    - https://linkedin.com/in/todd-dunning-optics
+    - https://spie.org/profile/Todd.Dunning
+    persona_file: usa_persona.yaml
+    formatting_file: usa_formatting.yaml
+  _metadata:
+    voice:
+      author_name: Todd Dunning
+      author_country: United States
+      voice_applied: true
+      content_type: contaminant
+  title: Concrete Efflorescence Contamination
+  contamination_description: Efflorescence appears as white, crystalline salt deposits
+    that form when moisture draws soluble salts through porous materials like concrete
+    or brick, crystallizing on the surface as water evaporates. This contamination
+    sets it apart from dirt or algae by its powdery, water-soluble nature that flakes
+    easily yet recurs without addressing underlying moisture issues, behaving more
+    aggressively on absorbent stones such as limestone or sandstone where it embeds
+    deeply. Removal poses a solid challenge due to the risk of substrate damage from
+    abrasive methods, but laser cleaning addresses this effectively by vaporizing
+    the salts layer by layer while preserving the material's integrity.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Contamination
+    href: /contamination
+  - label: Inorganic-Coating
+    href: /contamination/inorganic-coating
+  - label: Concrete Efflorescence
+    href: /contamination/inorganic-coating/efflorescence-contamination-contamination
+  images:
+    hero:
+      url: /images/contamination/efflorescence-contamination-hero.jpg
+      alt: Concrete Efflorescence contamination on surface before laser cleaning
+    micro:
+      url: /images/contamination/efflorescence-contamination-micro.jpg
+      alt: Concrete Efflorescence contamination microscopic detail
+  laser_properties:
+    laser_parameters:
+      beam_profile: flat_top
+      fluence_range:
+        max_j_cm2: 1.2
+        min_j_cm2: 0.3
+        recommended_j_cm2: 0.8
+      overlap_percentage: 50
+      polarization: circular
+      pulse_duration_range:
+        max_ns: 100
+        min_ns: 10
+        recommended_ns: 30
+      repetition_rate_khz:
+        max: 100
+        min: 20
+        recommended: 50
+      safety_margin_factor: 0.7
+      scan_speed_mm_s:
+        max: 2000
+        min: 500
+        recommended: 1000
+      spot_size_mm:
+        max: 0.2
+        min: 0.05
+        recommended: 0.1
+      wavelength_preference:
+      - 1064
+      - 532
+    optical_properties:
+      absorption_coefficient:
+        wavelength_1064nm: 120
+        wavelength_355nm: 2800
+        wavelength_532nm: 450
+      reflectivity:
+        wavelength_1064nm: 0.65
+        wavelength_355nm: 0.08
+        wavelength_532nm: 0.35
+      refractive_index:
+        imaginary_part: 0.012
+        real_part: 1.48
+      transmission_depth: 83
+    removal_characteristics:
+      byproducts:
+      - compound: CaCO₃
+        hazard_level: low
+        phase: solid
+      - compound: CO₂
+        hazard_level: low
+        phase: gas
+      - compound: H₂O
+        hazard_level: low
+        phase: gas
+      - compound: CaO
+        hazard_level: moderate
+        phase: solid
+      damage_risk_to_substrate: medium
+      primary_mechanism: thermal_ablation
+      process_speed:
+        area_coverage_rate_cm2_min: 2400
+        typical_scan_speed_mm_s: 800
+      removal_efficiency:
+        diminishing_returns_after: 3
+        optimal_passes: 2
+        single_pass: 0.7
+      secondary_mechanisms:
+      - mechanical_spallation
+      - photochemical_decomposition
+      surface_quality_after_removal:
+        color_change: 'yes'
+        residual_stress: compressive
+        roughness_increase: minimal
+    safety_data:
+      fire_explosion_risk: low
+      fumes_generated:
+      - compound: Crystalline Silica (as respirable dust)
+        concentration_mg_m3: 5-50
+        exposure_limit_mg_m3: 0.025
+        hazard_class: carcinogenic
+      - compound: Carbon Dioxide
+        concentration_mg_m3: 900-1800
+        exposure_limit_mg_m3: 9000
+        hazard_class: toxic
+      - compound: Calcium Oxide dust
+        concentration_mg_m3: 2-20
+        exposure_limit_mg_m3: 2
+        hazard_class: irritant
+      particulate_generation:
+        respirable_fraction: 0.3
+        size_range_um:
+        - 0.1
+        - 100
+      ppe_requirements:
+        eye_protection: goggles
+        respiratory: PAPR
+        skin_protection: full_suit
+      substrate_compatibility_warnings:
+      - Laser cleaning may alter concrete surface chemistry and increase porosity
+      - Thermal stress may cause micro-cracking in concrete substrate
+      - Efflorescence salts may vaporize and redeposit on adjacent surfaces
+      toxic_gas_risk: low
+      ventilation_requirements:
+        exhaust_velocity_m_s: 0.5
+        filtration_type: HEPA
+        minimum_air_changes_per_hour: 10
+      visibility_hazard: moderate
+    thermal_properties:
+      ablation_threshold:
+        pulse_duration_100ns: 1.2
+        pulse_duration_10ns: 0.6
+        wavelength_1064nm: 0.8
+      decomposition_temperature: 120
+      heat_affected_zone_depth: 15
+      melting_point: N/A
+      specific_heat: 900
+      thermal_conductivity: 0.8
+      thermal_diffusivity: 0.3
+      vaporization_temperature: 285
+  valid_materials:
+  - Concrete
+  - Brick
+  - Granite
+  - Marble
+  - Limestone
+  - Sandstone
+  - Basalt
+  - Slate
+  - Quartzite
+  - Travertine
+  - Bluestone
+  - Soapstone

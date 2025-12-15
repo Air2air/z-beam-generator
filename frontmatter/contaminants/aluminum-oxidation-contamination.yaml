@@ -1,195 +1,196 @@
-name: Aluminum Oxidation
-slug: aluminum-oxidation-contamination
-category: oxidation
-subcategory: non-ferrous
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: contaminant
-title: Aluminum Oxidation Contamination
-contamination_description: Aluminum oxidation contamination, it forms rapidly from
-  air exposure where oxygen reacts with surface and creates thin oxide layer. This
-  layer adheres strongly and stays compact, thus self-limits further corrosion unlike
-  expansive rust that flakes away. On pure aluminum, uniformity holds, but alloys
-  show porosity so embeds particles deeply and resists removal stubbornly; challenges
-  arise from tight bond and quick regrowth after mechanical or chemical attempts.
-  Laser cleaning succeeds, precise energy ablates oxide selectively and vaporizes
-  it fast, surface already exhibits cleanliness without residues thus prevents reformation.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contamination
-  href: /contamination
-- label: Oxidation
-  href: /contamination/oxidation
-- label: Aluminum Oxidation
-  href: /contamination/oxidation/aluminum-oxidation-contamination-contamination
-images:
-  hero:
-    url: /images/contamination/aluminum-oxidation-contamination-hero.jpg
-    alt: Aluminum Oxidation contamination on surface before laser cleaning
+metadata:
+  name: Aluminum Oxidation
+  slug: aluminum-oxidation-contamination
+  category: oxidation
+  subcategory: non-ferrous
+  content_type: unified_contamination
+  schema_version: 4.0.0
+  datePublished: null
+  dateModified: null
+  author:
+    id: 3
+    name: Ikmanda Roswati
+    country: Indonesia
+    country_display: Indonesia
+    title: Ph.D.
+    sex: m
+    jobTitle: Junior Research Scientist in Laser Physics
+    expertise:
+    - Ultrafast Laser Physics and Material Interactions
+    affiliation:
+      name: Bandung Institute of Technology
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Physics, ITB, 2020
+    - 2+ years in ultrafast laser research including ASEAN optics workshops
+    - Assisted in international optics projects
+    languages:
+    - English
+    - Bahasa Indonesia
+    email: info@z-beam.com
+    image: /images/author/ikmanda-roswati.jpg
+    imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+      Bandung Institute of Technology, fieldwork optics setup
+    url: https://z-beam.com/authors/ikmanda-roswati
+    sameAs:
+    - https://linkedin.com/in/ikmanda-roswati-physicist
+    - https://www.academia.edu/profile/IkmandaRoswati
+    persona_file: indonesia_persona.yaml
+    formatting_file: indonesia_formatting.yaml
+  _metadata:
+    voice:
+      author_name: Ikmanda Roswati
+      author_country: Indonesia
+      voice_applied: true
+      content_type: contaminant
+  title: Aluminum Oxidation Contamination
+  contamination_description: Aluminum oxidation contamination, it forms rapidly from
+    air exposure where oxygen reacts with surface and creates thin oxide layer. This
+    layer adheres strongly and stays compact, thus self-limits further corrosion unlike
+    expansive rust that flakes away. On pure aluminum, uniformity holds, but alloys
+    show porosity so embeds particles deeply and resists removal stubbornly; challenges
+    arise from tight bond and quick regrowth after mechanical or chemical attempts.
+    Laser cleaning succeeds, precise energy ablates oxide selectively and vaporizes
+    it fast, surface already exhibits cleanliness without residues thus prevents reformation.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Contamination
+    href: /contamination
+  - label: Oxidation
+    href: /contamination/oxidation
+  - label: Aluminum Oxidation
+    href: /contamination/oxidation/aluminum-oxidation-contamination-contamination
+  images:
+    hero:
+      url: /images/contamination/aluminum-oxidation-contamination-hero.jpg
+      alt: Aluminum Oxidation contamination on surface before laser cleaning
+    micro:
+      url: /images/contamination/aluminum-oxidation-contamination-micro.jpg
+      alt: Aluminum Oxidation contamination microscopic detail
   micro:
-    url: /images/contamination/aluminum-oxidation-contamination-micro.jpg
-    alt: Aluminum Oxidation contamination microscopic detail
-micro:
-  after: Post-cleaning reveals restored surface with aluminum oxidation successfully
-    removed through precise laser ablation.
-  before: Surface shows contamination from aluminum oxidation affecting material appearance
-    and properties.
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.2
-      min_j_cm2: 0.3
-      recommended_j_cm2: 0.8
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 100
-      min_ns: 10
-      recommended_ns: 30
-    repetition_rate_khz:
-      max: 200
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 2000
-      min: 500
-      recommended: 1000
-    spot_size_mm:
-      max: 0.1
-      min: 0.02
-      recommended: 0.05
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 150
-      wavelength_355nm: 4200
-      wavelength_532nm: 850
-    reflectivity:
-      wavelength_1064nm: 0.82
-      wavelength_355nm: 0.25
-      wavelength_532nm: 0.65
-    refractive_index:
-      imaginary_part: 0.008
-      real_part: 1.76
-    transmission_depth: 66.7
-  removal_characteristics:
-    byproducts:
-    - compound: Al₂O₃ nanoparticles
-      hazard_level: moderate
-      phase: solid
-    - compound: Al vapor
-      hazard_level: low
-      phase: gas
-    - compound: O₂
-      hazard_level: low
-      phase: gas
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 240
-      typical_scan_speed_mm_s: 800
-    removal_efficiency:
-      diminishing_returns_after: 3
-      optimal_passes: 2
-      single_pass: 0.85
-    secondary_mechanisms:
-    - photochemical
-    - mechanical_spallation
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: compressive
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Aluminum Oxide Fume
-      concentration_mg_m3: 5.0
-      exposure_limit_mg_m3: 5.0
-      hazard_class: irritant
-    - compound: Aluminum Metal Fume
-      concentration_mg_m3: 2.0
-      exposure_limit_mg_m3: 5.0
-      hazard_class: irritant
-    particulate_generation:
-      respirable_fraction: 0.7
-      size_range_um:
-      - 0.1
-      - 10.0
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: half_mask
-      skin_protection: gloves
-    substrate_compatibility_warnings:
-    - Laser parameters must be controlled to prevent base metal damage
-    - Thermal stress may cause micro-cracking in thin aluminum substrates
-    - Reflective surfaces require appropriate laser wavelength selection
-    toxic_gas_risk: none
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: HEPA
-      minimum_air_changes_per_hour: 10
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 4.5
-      pulse_duration_10ns: 2.8
-      wavelength_1064nm: 3.2
-    decomposition_temperature: 2980
-    heat_affected_zone_depth: 15
-    melting_point: 2072
-    specific_heat: 880
-    thermal_conductivity: 30
-    thermal_diffusivity: 11.6
-    vaporization_temperature: 2980
-eeat:
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
-  reviewedBy: Z-Beam Quality Assurance Team
-valid_materials:
-- Aluminum
+    after: Post-cleaning reveals restored surface with aluminum oxidation successfully
+      removed through precise laser ablation.
+    before: Surface shows contamination from aluminum oxidation affecting material
+      appearance and properties.
+  laser_properties:
+    laser_parameters:
+      beam_profile: flat_top
+      fluence_range:
+        max_j_cm2: 1.2
+        min_j_cm2: 0.3
+        recommended_j_cm2: 0.8
+      overlap_percentage: 50
+      polarization: circular
+      pulse_duration_range:
+        max_ns: 100
+        min_ns: 10
+        recommended_ns: 30
+      repetition_rate_khz:
+        max: 200
+        min: 20
+        recommended: 50
+      safety_margin_factor: 0.7
+      scan_speed_mm_s:
+        max: 2000
+        min: 500
+        recommended: 1000
+      spot_size_mm:
+        max: 0.1
+        min: 0.02
+        recommended: 0.05
+      wavelength_preference:
+      - 1064
+      - 532
+    optical_properties:
+      absorption_coefficient:
+        wavelength_1064nm: 150
+        wavelength_355nm: 4200
+        wavelength_532nm: 850
+      reflectivity:
+        wavelength_1064nm: 0.82
+        wavelength_355nm: 0.25
+        wavelength_532nm: 0.65
+      refractive_index:
+        imaginary_part: 0.008
+        real_part: 1.76
+      transmission_depth: 66.7
+    removal_characteristics:
+      byproducts:
+      - compound: Al₂O₃ nanoparticles
+        hazard_level: moderate
+        phase: solid
+      - compound: Al vapor
+        hazard_level: low
+        phase: gas
+      - compound: O₂
+        hazard_level: low
+        phase: gas
+      damage_risk_to_substrate: low
+      primary_mechanism: thermal_ablation
+      process_speed:
+        area_coverage_rate_cm2_min: 240
+        typical_scan_speed_mm_s: 800
+      removal_efficiency:
+        diminishing_returns_after: 3
+        optimal_passes: 2
+        single_pass: 0.85
+      secondary_mechanisms:
+      - photochemical
+      - mechanical_spallation
+      surface_quality_after_removal:
+        color_change: 'no'
+        residual_stress: compressive
+        roughness_increase: minimal
+    safety_data:
+      fire_explosion_risk: low
+      fumes_generated:
+      - compound: Aluminum Oxide Fume
+        concentration_mg_m3: 5.0
+        exposure_limit_mg_m3: 5.0
+        hazard_class: irritant
+      - compound: Aluminum Metal Fume
+        concentration_mg_m3: 2.0
+        exposure_limit_mg_m3: 5.0
+        hazard_class: irritant
+      particulate_generation:
+        respirable_fraction: 0.7
+        size_range_um:
+        - 0.1
+        - 10.0
+      ppe_requirements:
+        eye_protection: goggles
+        respiratory: half_mask
+        skin_protection: gloves
+      substrate_compatibility_warnings:
+      - Laser parameters must be controlled to prevent base metal damage
+      - Thermal stress may cause micro-cracking in thin aluminum substrates
+      - Reflective surfaces require appropriate laser wavelength selection
+      toxic_gas_risk: none
+      ventilation_requirements:
+        exhaust_velocity_m_s: 0.5
+        filtration_type: HEPA
+        minimum_air_changes_per_hour: 10
+      visibility_hazard: moderate
+    thermal_properties:
+      ablation_threshold:
+        pulse_duration_100ns: 4.5
+        pulse_duration_10ns: 2.8
+        wavelength_1064nm: 3.2
+      decomposition_temperature: 2980
+      heat_affected_zone_depth: 15
+      melting_point: 2072
+      specific_heat: 880
+      thermal_conductivity: 30
+      thermal_diffusivity: 11.6
+      vaporization_temperature: 2980
+  eeat:
+    citations:
+    - IEC 60825 - Safety of Laser Products
+    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    isBasedOn:
+      name: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+    reviewedBy: Z-Beam Quality Assurance Team
+  valid_materials:
+  - Aluminum

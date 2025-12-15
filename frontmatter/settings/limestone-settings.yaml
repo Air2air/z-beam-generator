@@ -1,191 +1,192 @@
-name: Limestone
-slug: limestone
-category: stone
-subcategory: sedimentary
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-title: Limestone Laser Cleaning Settings
-settings_description: 'When laser cleaning limestone, watch its porosity first. It soaks up dirt and moisture more than denser stones like granite. This traps contaminants deep, so you risk incomplete removal or surface damage if you blast too hard.
+metadata:
+  name: Limestone
+  slug: limestone
+  category: stone
+  subcategory: sedimentary
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 1
+    name: Yi-Chun Lin
+    country: Taiwan
+    country_display: Taiwan
+    title: Ph.D.
+    sex: f
+    jobTitle: Laser Processing Engineer
+    expertise:
+    - Laser Materials Processing
+    affiliation:
+      name: National Taiwan University
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Engineering, National Taiwan University, 2018
+    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+    - 3+ years in laser processing R&D
+    - Assisted in projects on ultrafast laser applications
+    email: info@z-beam.com
+    image: /images/author/yi-chun-lin.jpg
+    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+    url: https://z-beam.com/authors/yi-chun-lin
+    sameAs:
+    - https://scholar.google.com/citations?user=ghi789
+    - https://linkedin.com/in/yi-chun-lin-engineer
+    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+    persona_file: taiwan_persona.yaml
+    formatting_file: taiwan_formatting.yaml
+  title: Limestone Laser Cleaning Settings
+  settings_description: 'When laser cleaning limestone, watch its porosity first. It soaks up dirt and moisture more than denser stones like granite. This traps contaminants deep, so you risk incomplete removal or surface damage if you blast too hard.
 
 
-  I''ve seen heat build up quickly because limestone conducts it poorly, unlike metals that spread it out. Start slow with gentle pulses to avoid cracking the stone.
+    I''ve seen heat build up quickly because limestone conducts it poorly, unlike metals that spread it out. Start slow with gentle pulses to avoid cracking the stone.
 
 
-  Tends to absorb laser energy moderately, better than reflective marbles. Keep passes light and overlap them a bit. This clears buildup without etching the texture. Adjust if you spot whitening—dial back power right away.'
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Sedimentary
-  href: /materials/stone/sedimentary
-- label: Limestone
-  href: /materials/limestone
-images:
-  hero:
-    alt: Limestone surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/limestone-laser-cleaning-hero.jpg
-  micro:
-    alt: Limestone microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/limestone-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 12
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-thermalProperties:
-  thermalDiffusivity:
-    value: 1.05
-    unit: mm²/s
-  thermalConductivity:
-    value: 2.15
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1100
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 5.0
-    unit: J/cm²
-  ablationThreshold:
-    value: 0.9
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.08
-    max: 4.0
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.2
-    unit: K
-  reflectivity:
-    value: 0.35
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Thermal shock and microcracking
-    severity: critical
-    threshold_temperature: ΔT > 50-150°C rapid cooling (stone-dependent)
-    impact: Natural stone contains microfissures that propagate under thermal stress
-    solutions:
-    - Use pulse mode with 8-12 second cooling between passes
-    - Reduce power by 40-50% for weathered or damaged stone
-    - Preheat substrate if possible to reduce thermal gradients
-    - Granite more resistant than marble; sandstone most vulnerable
-    - Monitor for surface crazing; stop immediately if cracks appear
-  - challenge: Moisture-induced spalling
-    severity: high
-    threshold_temperature: Steam formation >100°C with trapped moisture
-    impact: Porous stone traps moisture that explosively converts to steam
-    solutions:
-    - Test moisture content before cleaning (>3% requires drying)
-    - Allow 48-72 hours drying after rain before laser cleaning
-    - Reduce power by 50% for damp stone
-    - Use pulse mode with extended cooling (15-20 seconds)
-    - Heritage stone requires especially gentle approach
-  surface_characteristics:
-  - challenge: Weathering and surface degradation
-    severity: high
-    impact: Aged stone has weaker surface layer more susceptible to damage
-    solutions:
-    - Reduce power 40-60% for weathered stone vs fresh stone
-    - Test on inconspicuous area first
-    - Multiple gentle passes (4-6 at 40-60W) preferred
-    - Monitor for powdering or flaking; adjust power immediately
-    - Heritage conservation requires documentation and testing
-  - challenge: Mineral composition heterogeneity
-    severity: medium
-    impact: Mixed minerals have different absorption and damage thresholds
-    solutions:
-    - Use moderate power (60-80W) suitable for both light and dark minerals
-    - Crosshatch scan pattern for uniform coverage
-    - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
-    - Quartzite and marble more homogeneous than granite
-  contamination_challenges:
-  - challenge: Biological growth and deep staining
-    severity: medium
-    porosity_range: 0.5-25% (sandstone highly porous)
-    impact: Algae, lichen, and pollution penetrate deep into porous structure
-    solutions:
-    - First pass 80W fast (1200 mm/s) for surface growth
-    - Second pass 60W slow (700 mm/s) for roots and stains
-    - Third pass 40W very slow (400 mm/s) for deep staining
-    - Chemical biocide pre-treatment kills roots and reduces laser exposure
-    - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:03.525117'
+    Tends to absorb laser energy moderately, better than reflective marbles. Keep passes light and overlap them a bit. This clears buildup without etching the texture. Adjust if you spot whitening—dial back power right away.'
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Stone
+    href: /materials/stone
+  - label: Sedimentary
+    href: /materials/stone/sedimentary
+  - label: Limestone
+    href: /materials/limestone
+  images:
+    hero:
+      alt: Limestone surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/limestone-laser-cleaning-hero.jpg
+    micro:
+      alt: Limestone microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/limestone-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 100
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 100
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    energyDensity:
+      unit: J/cm²
+      value: 12
+      min: 0.1
+      max: 20
+    pulseWidth:
+      unit: ns
+      value: 10
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 3
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+  thermalProperties:
+    thermalDiffusivity:
+      value: 1.05
+      unit: mm²/s
+    thermalConductivity:
+      value: 2.15
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 1100
+      unit: K
+      type: melting
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 5.0
+      unit: J/cm²
+    ablationThreshold:
+      value: 0.9
+      unit: J/cm²
+    optimalFluenceRange:
+      min: 1.08
+      max: 4.0
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.2
+      unit: K
+    reflectivity:
+      value: 0.35
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Thermal shock and microcracking
+      severity: critical
+      threshold_temperature: ΔT > 50-150°C rapid cooling (stone-dependent)
+      impact: Natural stone contains microfissures that propagate under thermal stress
+      solutions:
+      - Use pulse mode with 8-12 second cooling between passes
+      - Reduce power by 40-50% for weathered or damaged stone
+      - Preheat substrate if possible to reduce thermal gradients
+      - Granite more resistant than marble; sandstone most vulnerable
+      - Monitor for surface crazing; stop immediately if cracks appear
+    - challenge: Moisture-induced spalling
+      severity: high
+      threshold_temperature: Steam formation >100°C with trapped moisture
+      impact: Porous stone traps moisture that explosively converts to steam
+      solutions:
+      - Test moisture content before cleaning (>3% requires drying)
+      - Allow 48-72 hours drying after rain before laser cleaning
+      - Reduce power by 50% for damp stone
+      - Use pulse mode with extended cooling (15-20 seconds)
+      - Heritage stone requires especially gentle approach
+    surface_characteristics:
+    - challenge: Weathering and surface degradation
+      severity: high
+      impact: Aged stone has weaker surface layer more susceptible to damage
+      solutions:
+      - Reduce power 40-60% for weathered stone vs fresh stone
+      - Test on inconspicuous area first
+      - Multiple gentle passes (4-6 at 40-60W) preferred
+      - Monitor for powdering or flaking; adjust power immediately
+      - Heritage conservation requires documentation and testing
+    - challenge: Mineral composition heterogeneity
+      severity: medium
+      impact: Mixed minerals have different absorption and damage thresholds
+      solutions:
+      - Use moderate power (60-80W) suitable for both light and dark minerals
+      - Crosshatch scan pattern for uniform coverage
+      - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
+      - Quartzite and marble more homogeneous than granite
+    contamination_challenges:
+    - challenge: Biological growth and deep staining
+      severity: medium
+      porosity_range: 0.5-25% (sandstone highly porous)
+      impact: Algae, lichen, and pollution penetrate deep into porous structure
+      solutions:
+      - First pass 80W fast (1200 mm/s) for surface growth
+      - Second pass 60W slow (700 mm/s) for roots and stains
+      - Third pass 40W very slow (400 mm/s) for deep staining
+      - Chemical biocide pre-treatment kills roots and reduces laser exposure
+      - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:30.833930'

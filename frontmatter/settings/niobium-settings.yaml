@@ -1,182 +1,183 @@
-name: Niobium
-slug: niobium
-category: metal
-subcategory: non-ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-title: Niobium Laser Cleaning Settings
-settings_description: When laser cleaning niobium, you must first watch its high reflectivity, which scatters more laser energy than you'd see with iron-based metals, so start with lower power settings to prevent wasted shots and uneven cleaning. Make sure you adjust the fluence just above its ablation threshold right away, avoiding the pitfall of underpowering that leaves stubborn contaminants behind while risking surface pitting if you overshoot. Begin your setup by selecting a near-infrared wavelength that niobium absorbs better than shorter ones, unlike aluminum's picky response. You'll then dial in a moderate pulse width to handle its dense structure without building excess heat, contrasting with lighter non-ferrous metals that cool faster. Scan at a steady speed, overlapping passes by half to clear oxides thoroughly, since niobium's corrosion resistance means buildup clings tighter than on copper. This approach brings back its smooth finish for aerospace or medical uses, minimizing
-  thermal shock that could crack it under rapid heating. Keep passes to a few, and always test on a scrap piece first—niobium forgives minor errors better than brittle alloys but demands precision to avoid dulling its natural luster.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Non Ferrous
-  href: /materials/metal/non-ferrous
-- label: Niobium
-  href: /materials/niobium
-images:
-  hero:
-    alt: Niobium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/niobium-laser-cleaning-hero.jpg
-  micro:
-    alt: Niobium microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/niobium-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-thermalProperties:
-  thermalDiffusivity:
-    value: 23.64
-    unit: mm²/s
-  thermalConductivity:
-    value: 53.7
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 2741.0
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 0.45
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.05
-    unit: J/cm²
-  thermalShockResistance:
-    value: 380.0
-    unit: K
-  reflectivity:
-    value: 0.7
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: High thermal conductivity and heat spread
-    severity: medium
-    property_value: 4-400 W/(m·K) depending on metal
-    impact: Heat spreads rapidly causing large heat-affected zones
-    solutions:
-    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-    - Increase scan speed to minimize dwell time
-    - Apply cooling between passes for thick sections
-  - challenge: Melting and heat-affected zone formation
-    severity: high
-    threshold_range: 660°C (Al) to 3422°C (W)
-    impact: Substrate melting or microstructural changes in heat-affected zone
-    solutions:
-    - Stay below 70% of melting temperature
-    - Use pulse mode with adequate cooling time
-    - Monitor for surface discoloration indicating oxidation
-  surface_characteristics:
-  - challenge: High reflectivity
-    severity: high
-    reflectivity_range: 60-95% at 1064nm for polished metals
-    impact: Most laser energy reflected, requiring higher power; safety hazard
-    solutions:
-    - Use shorter wavelengths (355nm UV) for better absorption
-    - Increase power density but monitor for thermal damage
-    - Ensure proper beam containment and safety measures
-    - Surface oxidation/roughness improves absorption
-  - challenge: Surface finish variations
-    severity: medium
-    impact: Polished surfaces reflect more, rough surfaces absorb better
-    solutions:
-    - Adjust power based on surface condition
-    - Test parameters on similar finish samples
-    - Polished surfaces need 20-40% more power
-  contamination_challenges:
-  - challenge: Rust and oxide layer removal
-    severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
-    solutions:
-    - First pass at higher power (100-120W) to remove bulk oxide
-    - Second pass at lower power (60-80W) for final cleaning
-    - Monitor for base metal exposure to avoid over-processing
-  - challenge: Oil and grease removal
-    severity: low
-    impact: Organic contaminants vaporize easily but can redeposit
-    solutions:
-    - Use fume extraction to prevent redeposition
-    - Higher scan speeds (3000-5000 mm/s) for thin films
-    - Chemical pre-cleaning for heavy contamination
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:03.863417'
+metadata:
+  name: Niobium
+  slug: niobium
+  category: metal
+  subcategory: non-ferrous
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 2
+    name: Alessandro Moretti
+    country: Italy
+    country_display: Italy
+    title: Ph.D.
+    sex: m
+    jobTitle: Materials Engineer
+    expertise:
+    - Laser-Based Additive Manufacturing
+    affiliation:
+      name: Politecnico di Milano's Materials Dept.
+      type: EducationalOrganization
+    alumniOf:
+      name: University of Bologna
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Science, TU Milano, 2015
+    - 5+ years industrial ceramics experience
+    - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+    email: info@z-beam.com
+    image: /images/author/alessandro-moretti.jpg
+    imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+    url: https://z-beam.com/authors/alessandro-moretti-phd
+    sameAs:
+    - https://scholar.google.com/citations?user=def456
+    - https://linkedin.com/in/alessandro-moretti-engineer
+    persona_file: italy_persona.yaml
+    formatting_file: italy_formatting.yaml
+  title: Niobium Laser Cleaning Settings
+  settings_description: When laser cleaning niobium, you must first watch its high reflectivity, which scatters more laser energy than you'd see with iron-based metals, so start with lower power settings to prevent wasted shots and uneven cleaning. Make sure you adjust the fluence just above its ablation threshold right away, avoiding the pitfall of underpowering that leaves stubborn contaminants behind while risking surface pitting if you overshoot. Begin your setup by selecting a near-infrared wavelength that niobium absorbs better than shorter ones, unlike aluminum's picky response. You'll then dial in a moderate pulse width to handle its dense structure without building excess heat, contrasting with lighter non-ferrous metals that cool faster. Scan at a steady speed, overlapping passes by half to clear oxides thoroughly, since niobium's corrosion resistance means buildup clings tighter than on copper. This approach brings back its smooth finish for aerospace or medical uses, minimizing
+    thermal shock that could crack it under rapid heating. Keep passes to a few, and always test on a scrap piece first—niobium forgives minor errors better than brittle alloys but demands precision to avoid dulling its natural luster.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Metal
+    href: /materials/metal
+  - label: Non Ferrous
+    href: /materials/metal/non-ferrous
+  - label: Niobium
+    href: /materials/niobium
+  images:
+    hero:
+      alt: Niobium surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/niobium-laser-cleaning-hero.jpg
+    micro:
+      alt: Niobium microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/niobium-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 100
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 50
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    fluenceThreshold:
+      unit: J/cm²
+      value: 2.5
+      min: 0.3
+      max: 4.5
+    pulseWidth:
+      unit: ns
+      value: 10
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 3
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+  thermalProperties:
+    thermalDiffusivity:
+      value: 23.64
+      unit: mm²/s
+    thermalConductivity:
+      value: 53.7
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 2741.0
+      unit: K
+      type: melting
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 0.45
+      unit: J/cm²
+    ablationThreshold:
+      value: 1.05
+      unit: J/cm²
+    thermalShockResistance:
+      value: 380.0
+      unit: K
+    reflectivity:
+      value: 0.7
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: High thermal conductivity and heat spread
+      severity: medium
+      property_value: 4-400 W/(m·K) depending on metal
+      impact: Heat spreads rapidly causing large heat-affected zones
+      solutions:
+      - Use shorter pulse durations (picosecond/femtosecond) for localized heating
+      - Increase scan speed to minimize dwell time
+      - Apply cooling between passes for thick sections
+    - challenge: Melting and heat-affected zone formation
+      severity: high
+      threshold_range: 660°C (Al) to 3422°C (W)
+      impact: Substrate melting or microstructural changes in heat-affected zone
+      solutions:
+      - Stay below 70% of melting temperature
+      - Use pulse mode with adequate cooling time
+      - Monitor for surface discoloration indicating oxidation
+    surface_characteristics:
+    - challenge: High reflectivity
+      severity: high
+      reflectivity_range: 60-95% at 1064nm for polished metals
+      impact: Most laser energy reflected, requiring higher power; safety hazard
+      solutions:
+      - Use shorter wavelengths (355nm UV) for better absorption
+      - Increase power density but monitor for thermal damage
+      - Ensure proper beam containment and safety measures
+      - Surface oxidation/roughness improves absorption
+    - challenge: Surface finish variations
+      severity: medium
+      impact: Polished surfaces reflect more, rough surfaces absorb better
+      solutions:
+      - Adjust power based on surface condition
+      - Test parameters on similar finish samples
+      - Polished surfaces need 20-40% more power
+    contamination_challenges:
+    - challenge: Rust and oxide layer removal
+      severity: medium
+      impact: Requires multiple passes; rust/oxide has different absorption than base metal
+      solutions:
+      - First pass at higher power (100-120W) to remove bulk oxide
+      - Second pass at lower power (60-80W) for final cleaning
+      - Monitor for base metal exposure to avoid over-processing
+    - challenge: Oil and grease removal
+      severity: low
+      impact: Organic contaminants vaporize easily but can redeposit
+      solutions:
+      - Use fume extraction to prevent redeposition
+      - Higher scan speeds (3000-5000 mm/s) for thin films
+      - Chemical pre-cleaning for heavy contamination
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:31.259483'

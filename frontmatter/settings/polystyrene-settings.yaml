@@ -1,167 +1,168 @@
-name: Polystyrene
-slug: polystyrene
-category: plastic
-subcategory: thermoplastic
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-title: Polystyrene Laser Cleaning Settings
-settings_description: "When laser cleaning Polystyrene, watch its tendency to soften under heat—I've seen it deform quickly if you push the power too high right away. This plastic heats unevenly compared to tougher thermoplastics like acrylic, so start slow to avoid melting the surface. \n\nFirst, lower the energy input to let the laser gently lift dirt without penetrating deep. Polystyrene's lightweight nature makes it less forgiving than metals, which shrug off minor overheating, but it cleans up nicely once you control the beam. \n\nScan at a steady pace, overlapping passes lightly to build even coverage. I've found this works best when you keep the spot focused, preventing hot spots that could warp the material. Unlike denser plastics, its poor heat spread means you must pause between passes to cool down. \n\nFinish by checking for residue—Polystyrene holds onto grime stubbornly, but a second gentle run brings back its smooth finish without yellowing. Tends to shine up well for packaging\
-  \ or electronics jobs."
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Plastic
-  href: /materials/plastic
-- label: Thermoplastic
-  href: /materials/plastic/thermoplastic
-- label: Polystyrene
-  href: /materials/polystyrene
-images:
-  hero:
-    alt: Polystyrene surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/polystyrene-laser-cleaning-hero.jpg
-  micro:
-    alt: Polystyrene microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/polystyrene-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 25
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 20
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 2.5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 100
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.102
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.12
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 620
-    unit: K
-    type: softening
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 2.0
-    unit: J/cm²
-  ablationThreshold:
-    value: 0.25
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 0.3
-    max: 1.6
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.0
-    unit: K
-  reflectivity:
-    value: 0.052
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Low melting/degradation temperatures
-    severity: high
-    threshold_range: 80-300°C depending on polymer type
-    impact: Melting, warping, or chemical degradation at low temperatures
-    solutions:
-    - Use lowest power settings (20-40W)
-    - Fast scan speeds (2000-4000 mm/s)
-    - Pulse mode with extended cooling (5-10 seconds between passes)
-  - challenge: Outgassing and fume generation
-    severity: high
-    impact: Toxic fumes, smoke, and potential fire hazard
-    solutions:
-    - Mandatory fume extraction system
-    - Work in well-ventilated areas
-    - Monitor for smoke/discoloration
-  surface_characteristics:
-  - challenge: Variable absorption by color and additives
-    severity: medium
-    impact: Black plastics absorb 80-90%, white plastics absorb 10-30%
-    solutions:
-    - Adjust power based on plastic color (dark = lower, light = higher)
-    - Test on sample pieces first
-  contamination_challenges:
-  - challenge: Coating and label removal
-    severity: medium
-    impact: Adhesives melt and smear rather than ablate cleanly
-    solutions:
-    - Use UV wavelength (355nm) for better photochemical ablation
-    - Multiple gentle passes instead of single high-power pass
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:04.218241'
+metadata:
+  name: Polystyrene
+  slug: polystyrene
+  category: plastic
+  subcategory: thermoplastic
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 2
+    name: Alessandro Moretti
+    country: Italy
+    country_display: Italy
+    title: Ph.D.
+    sex: m
+    jobTitle: Materials Engineer
+    expertise:
+    - Laser-Based Additive Manufacturing
+    affiliation:
+      name: Politecnico di Milano's Materials Dept.
+      type: EducationalOrganization
+    alumniOf:
+      name: University of Bologna
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Science, TU Milano, 2015
+    - 5+ years industrial ceramics experience
+    - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+    email: info@z-beam.com
+    image: /images/author/alessandro-moretti.jpg
+    imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+    url: https://z-beam.com/authors/alessandro-moretti-phd
+    sameAs:
+    - https://scholar.google.com/citations?user=def456
+    - https://linkedin.com/in/alessandro-moretti-engineer
+    persona_file: italy_persona.yaml
+    formatting_file: italy_formatting.yaml
+  title: Polystyrene Laser Cleaning Settings
+  settings_description: "When laser cleaning Polystyrene, watch its tendency to soften under heat—I've seen it deform quickly if you push the power too high right away. This plastic heats unevenly compared to tougher thermoplastics like acrylic, so start slow to avoid melting the surface. \n\nFirst, lower the energy input to let the laser gently lift dirt without penetrating deep. Polystyrene's lightweight nature makes it less forgiving than metals, which shrug off minor overheating, but it cleans up nicely once you control the beam. \n\nScan at a steady pace, overlapping passes lightly to build even coverage. I've found this works best when you keep the spot focused, preventing hot spots that could warp the material. Unlike denser plastics, its poor heat spread means you must pause between passes to cool down. \n\nFinish by checking for residue—Polystyrene holds onto grime stubbornly, but a second gentle run brings back its smooth finish without yellowing. Tends to shine up well for packaging\
+    \ or electronics jobs."
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Plastic
+    href: /materials/plastic
+  - label: Thermoplastic
+    href: /materials/plastic/thermoplastic
+  - label: Polystyrene
+    href: /materials/polystyrene
+  images:
+    hero:
+      alt: Polystyrene surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/polystyrene-laser-cleaning-hero.jpg
+    micro:
+      alt: Polystyrene microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/polystyrene-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 25
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 100
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 20
+      min: 1
+      max: 200
+    energyDensity:
+      unit: J/cm²
+      value: 2.5
+      min: 0.1
+      max: 20
+    pulseWidth:
+      unit: ns
+      value: 100
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 2
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+  thermalProperties:
+    thermalDiffusivity:
+      value: 0.102
+      unit: mm²/s
+    thermalConductivity:
+      value: 0.12
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 620
+      unit: K
+      type: softening
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 2.0
+      unit: J/cm²
+    ablationThreshold:
+      value: 0.25
+      unit: J/cm²
+    optimalFluenceRange:
+      min: 0.3
+      max: 1.6
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.0
+      unit: K
+    reflectivity:
+      value: 0.052
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Low melting/degradation temperatures
+      severity: high
+      threshold_range: 80-300°C depending on polymer type
+      impact: Melting, warping, or chemical degradation at low temperatures
+      solutions:
+      - Use lowest power settings (20-40W)
+      - Fast scan speeds (2000-4000 mm/s)
+      - Pulse mode with extended cooling (5-10 seconds between passes)
+    - challenge: Outgassing and fume generation
+      severity: high
+      impact: Toxic fumes, smoke, and potential fire hazard
+      solutions:
+      - Mandatory fume extraction system
+      - Work in well-ventilated areas
+      - Monitor for smoke/discoloration
+    surface_characteristics:
+    - challenge: Variable absorption by color and additives
+      severity: medium
+      impact: Black plastics absorb 80-90%, white plastics absorb 10-30%
+      solutions:
+      - Adjust power based on plastic color (dark = lower, light = higher)
+      - Test on sample pieces first
+    contamination_challenges:
+    - challenge: Coating and label removal
+      severity: medium
+      impact: Adhesives melt and smear rather than ablate cleanly
+      solutions:
+      - Use UV wavelength (355nm) for better photochemical ablation
+      - Multiple gentle passes instead of single high-power pass
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:31.778158'

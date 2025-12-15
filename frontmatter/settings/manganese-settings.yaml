@@ -1,181 +1,182 @@
-name: Manganese
-slug: manganese
-category: metal
-subcategory: non-ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-title: Manganese Laser Cleaning Settings
-settings_description: When laser cleaning manganese, the main challenge lies in its low thermal conductivity, which causes heat to build up quickly in targeted areas. This buildup can lead to uneven ablation if not managed, potentially damaging the underlying structure before contaminants fully remove. I've seen this happen when initial passes use too much power, so start with reduced settings to allow controlled energy delivery that exposes clean surfaces without excess stress. Its moderate reflectivity helps by absorbing enough laser energy for effective cleaning, unlike highly reflective metals that scatter light and demand higher fluences. This property lets you restore manganese components in aerospace or marine applications reliably, as long as you adjust for its brittleness by incorporating overlap in scans to avoid micro-cracks. Tends to work best with shorter pulses that minimize thermal diffusion. Watch out for prolonged exposure at the end, which might compromise its corrosion
-  resistance—always verify surface integrity after the final pass.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Non Ferrous
-  href: /materials/metal/non-ferrous
-- label: Manganese
-  href: /materials/manganese
-images:
-  hero:
-    alt: Manganese surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/manganese-laser-cleaning-hero.jpg
-  micro:
-    alt: Manganese microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/manganese-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-thermalProperties:
-  thermalDiffusivity:
-    value: 2.19
-    unit: mm²/s
-  thermalConductivity:
-    value: 7.82
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1519.0
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 0.15
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.05
-    unit: J/cm²
-  thermalShockResistance:
-    value: 0.8
-    unit: K
-  reflectivity:
-    value: 0.62
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: High thermal conductivity and heat spread
-    severity: medium
-    property_value: 4-400 W/(m·K) depending on metal
-    impact: Heat spreads rapidly causing large heat-affected zones
-    solutions:
-    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-    - Increase scan speed to minimize dwell time
-    - Apply cooling between passes for thick sections
-  - challenge: Melting and heat-affected zone formation
-    severity: high
-    threshold_range: 660°C (Al) to 3422°C (W)
-    impact: Substrate melting or microstructural changes in heat-affected zone
-    solutions:
-    - Stay below 70% of melting temperature
-    - Use pulse mode with adequate cooling time
-    - Monitor for surface discoloration indicating oxidation
-  surface_characteristics:
-  - challenge: High reflectivity
-    severity: high
-    reflectivity_range: 60-95% at 1064nm for polished metals
-    impact: Most laser energy reflected, requiring higher power; safety hazard
-    solutions:
-    - Use shorter wavelengths (355nm UV) for better absorption
-    - Increase power density but monitor for thermal damage
-    - Ensure proper beam containment and safety measures
-    - Surface oxidation/roughness improves absorption
-  - challenge: Surface finish variations
-    severity: medium
-    impact: Polished surfaces reflect more, rough surfaces absorb better
-    solutions:
-    - Adjust power based on surface condition
-    - Test parameters on similar finish samples
-    - Polished surfaces need 20-40% more power
-  contamination_challenges:
-  - challenge: Rust and oxide layer removal
-    severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
-    solutions:
-    - First pass at higher power (100-120W) to remove bulk oxide
-    - Second pass at lower power (60-80W) for final cleaning
-    - Monitor for base metal exposure to avoid over-processing
-  - challenge: Oil and grease removal
-    severity: low
-    impact: Organic contaminants vaporize easily but can redeposit
-    solutions:
-    - Use fume extraction to prevent redeposition
-    - Higher scan speeds (3000-5000 mm/s) for thin films
-    - Chemical pre-cleaning for heavy contamination
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:03.639166'
+metadata:
+  name: Manganese
+  slug: manganese
+  category: metal
+  subcategory: non-ferrous
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 4
+    name: Todd Dunning
+    country: United States
+    country_display: United States
+    title: MA
+    sex: m
+    jobTitle: Junior Optical Materials Specialist
+    expertise:
+    - Optical Materials for Laser Systems
+    affiliation:
+      name: Coherent Inc.
+      type: Organization
+    credentials:
+    - BA Physics, UC Irvine, 2017
+    - Hands-on at JPL optics internship, 2018
+    - MA Optics and Photonics, UC Irvine, 2019
+    - 3+ years in laser systems development
+    - Hands-on experience with optical fabrication
+    email: info@z-beam.com
+    image: /images/author/todd-dunning.jpg
+    imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+    url: https://z-beam.com/authors/todd-dunning
+    sameAs:
+    - https://linkedin.com/in/todd-dunning-optics
+    - https://spie.org/profile/Todd.Dunning
+    persona_file: usa_persona.yaml
+    formatting_file: usa_formatting.yaml
+  title: Manganese Laser Cleaning Settings
+  settings_description: When laser cleaning manganese, the main challenge lies in its low thermal conductivity, which causes heat to build up quickly in targeted areas. This buildup can lead to uneven ablation if not managed, potentially damaging the underlying structure before contaminants fully remove. I've seen this happen when initial passes use too much power, so start with reduced settings to allow controlled energy delivery that exposes clean surfaces without excess stress. Its moderate reflectivity helps by absorbing enough laser energy for effective cleaning, unlike highly reflective metals that scatter light and demand higher fluences. This property lets you restore manganese components in aerospace or marine applications reliably, as long as you adjust for its brittleness by incorporating overlap in scans to avoid micro-cracks. Tends to work best with shorter pulses that minimize thermal diffusion. Watch out for prolonged exposure at the end, which might compromise its corrosion
+    resistance—always verify surface integrity after the final pass.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Metal
+    href: /materials/metal
+  - label: Non Ferrous
+    href: /materials/metal/non-ferrous
+  - label: Manganese
+    href: /materials/manganese
+  images:
+    hero:
+      alt: Manganese surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/manganese-laser-cleaning-hero.jpg
+    micro:
+      alt: Manganese microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/manganese-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 100
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 50
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    fluenceThreshold:
+      unit: J/cm²
+      value: 2.5
+      min: 0.3
+      max: 4.5
+    pulseWidth:
+      unit: ns
+      value: 10
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 3
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+  thermalProperties:
+    thermalDiffusivity:
+      value: 2.19
+      unit: mm²/s
+    thermalConductivity:
+      value: 7.82
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 1519.0
+      unit: K
+      type: melting
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 0.15
+      unit: J/cm²
+    ablationThreshold:
+      value: 1.05
+      unit: J/cm²
+    thermalShockResistance:
+      value: 0.8
+      unit: K
+    reflectivity:
+      value: 0.62
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: High thermal conductivity and heat spread
+      severity: medium
+      property_value: 4-400 W/(m·K) depending on metal
+      impact: Heat spreads rapidly causing large heat-affected zones
+      solutions:
+      - Use shorter pulse durations (picosecond/femtosecond) for localized heating
+      - Increase scan speed to minimize dwell time
+      - Apply cooling between passes for thick sections
+    - challenge: Melting and heat-affected zone formation
+      severity: high
+      threshold_range: 660°C (Al) to 3422°C (W)
+      impact: Substrate melting or microstructural changes in heat-affected zone
+      solutions:
+      - Stay below 70% of melting temperature
+      - Use pulse mode with adequate cooling time
+      - Monitor for surface discoloration indicating oxidation
+    surface_characteristics:
+    - challenge: High reflectivity
+      severity: high
+      reflectivity_range: 60-95% at 1064nm for polished metals
+      impact: Most laser energy reflected, requiring higher power; safety hazard
+      solutions:
+      - Use shorter wavelengths (355nm UV) for better absorption
+      - Increase power density but monitor for thermal damage
+      - Ensure proper beam containment and safety measures
+      - Surface oxidation/roughness improves absorption
+    - challenge: Surface finish variations
+      severity: medium
+      impact: Polished surfaces reflect more, rough surfaces absorb better
+      solutions:
+      - Adjust power based on surface condition
+      - Test parameters on similar finish samples
+      - Polished surfaces need 20-40% more power
+    contamination_challenges:
+    - challenge: Rust and oxide layer removal
+      severity: medium
+      impact: Requires multiple passes; rust/oxide has different absorption than base metal
+      solutions:
+      - First pass at higher power (100-120W) to remove bulk oxide
+      - Second pass at lower power (60-80W) for final cleaning
+      - Monitor for base metal exposure to avoid over-processing
+    - challenge: Oil and grease removal
+      severity: low
+      impact: Organic contaminants vaporize easily but can redeposit
+      solutions:
+      - Use fume extraction to prevent redeposition
+      - Higher scan speeds (3000-5000 mm/s) for thin films
+      - Chemical pre-cleaning for heavy contamination
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:30.957158'

@@ -1,189 +1,190 @@
-name: Terracotta
-slug: terracotta
-category: masonry
-subcategory: concrete
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-title: Terracotta Laser Cleaning Settings
-settings_description: 'When laser cleaning terracotta, watch out for its porous nature right from the start—it can trap heat unevenly and lead to cracks if you''re not careful. I''ve seen this happen when folks push too hard too soon, so begin by testing a small area with gentle pulses to gauge how the surface responds. This material tends to absorb laser energy moderately well, which helps remove dirt and grime without much effort, but its low heat spreading means you should keep dwell times short to avoid localized overheating.
+metadata:
+  name: Terracotta
+  slug: terracotta
+  category: masonry
+  subcategory: concrete
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 1
+    name: Yi-Chun Lin
+    country: Taiwan
+    country_display: Taiwan
+    title: Ph.D.
+    sex: f
+    jobTitle: Laser Processing Engineer
+    expertise:
+    - Laser Materials Processing
+    affiliation:
+      name: National Taiwan University
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Engineering, National Taiwan University, 2018
+    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+    - 3+ years in laser processing R&D
+    - Assisted in projects on ultrafast laser applications
+    email: info@z-beam.com
+    image: /images/author/yi-chun-lin.jpg
+    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+    url: https://z-beam.com/authors/yi-chun-lin
+    sameAs:
+    - https://scholar.google.com/citations?user=ghi789
+    - https://linkedin.com/in/yi-chun-lin-engineer
+    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+    persona_file: taiwan_persona.yaml
+    formatting_file: taiwan_formatting.yaml
+  title: Terracotta Laser Cleaning Settings
+  settings_description: 'When laser cleaning terracotta, watch out for its porous nature right from the start—it can trap heat unevenly and lead to cracks if you''re not careful. I''ve seen this happen when folks push too hard too soon, so begin by testing a small area with gentle pulses to gauge how the surface responds. This material tends to absorb laser energy moderately well, which helps remove dirt and grime without much effort, but its low heat spreading means you should keep dwell times short to avoid localized overheating.
 
 
-  Move to a multi-pass approach next, starting low on power and building up only as needed. Terracotta''s relative fragility compared to denser stones calls for wider scan overlaps, ensuring even coverage without stressing the structure. What sets it apart is that baked-clay makeup, so it cleans up beautifully for heritage pieces but demands you pause between passes to let it cool. Avoid high speeds early on; slower ones prevent surface pitting. In my experience, this setup preserves the earthy texture while stripping away years of buildup safely.'
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Masonry
-  href: /materials/masonry
-- label: Concrete
-  href: /materials/masonry/concrete
-- label: Terracotta
-  href: /materials/terracotta
-images:
-  hero:
-    alt: Terracotta surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/terracotta-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed surface structure
-    url: /images/material/terracotta-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 2.5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    unit: μs
-    value: 100
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.408
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.93
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1473
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 3
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.45
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.74
-    max: 2.4
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.5
-    unit: K
-  reflectivity:
-    value: 0.24
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Moisture-induced spalling and explosive failure
-    severity: critical
-    threshold_temperature: Steam formation >100°C with trapped moisture
-    impact: Trapped moisture converts to steam causing explosive surface spalling
-    solutions:
-    - Test moisture content before cleaning (>5% moisture requires drying)
-    - Use pulse mode with 10-15 second cooling for wet materials
-    - Reduce power by 50-60% for damp masonry
-    - Allow 24-48 hours drying after rain before laser cleaning
-    - Monitor for popping sounds or surface lifting; stop immediately
-  - challenge: Low thermal diffusivity and heat accumulation
-    severity: high
-    property_value: 0.1-1.0 mm²/s (3-10x slower than metals)
-    impact: Heat concentrates in surface layer causing thermal stress
-    solutions:
-    - Increase cooling time between passes (8-12 seconds)
-    - Use low repetition rates (<20 kHz)
-    - Defocused beam reduces peak intensity
-    - Multiple gentle passes preferred over aggressive single pass
-  surface_characteristics:
-  - challenge: High porosity and deep contamination
-    severity: high
-    porosity_range: 10-25% (brick and concrete highly porous)
-    impact: Contaminants penetrate deep into porous structure
-    solutions:
-    - Multiple progressive passes with power increase (50W → 80W → 100W)
-    - Reduce scan speed for deeper penetration (400-600 mm/s)
-    - Chemical pre-treatment for biological growth (algae, lichen)
-    - Expect 3-5 passes for complete cleaning vs 1-2 for dense materials
-  - challenge: Surface heterogeneity and aggregate exposure
-    severity: medium
-    impact: Mixed composition (cement matrix, aggregates, voids) causes variable absorption
-    solutions:
-    - Use moderate power (70-90W) suitable for both matrix and aggregates
-    - Crosshatch scan pattern for uniform coverage
-    - Monitor for differential ablation; adjust power if aggregates become prominent
-    - Aged masonry more challenging than new construction
-  contamination_challenges:
-  - challenge: Paint and coating removal from porous substrate
-    severity: medium
-    impact: Paint penetrates into pores requiring deep cleaning without substrate damage
-    solutions:
-    - First pass 100W fast (1500 mm/s) for surface paint layer
-    - Second pass 70W slow (800 mm/s) for paint in pores
-    - Third pass 50W very slow (500 mm/s) for residual staining
-    - Chemical stripping pre-treatment reduces laser exposure
-    - Heritage masonry requires gentler approach (max 60W)
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:05.223335'
+    Move to a multi-pass approach next, starting low on power and building up only as needed. Terracotta''s relative fragility compared to denser stones calls for wider scan overlaps, ensuring even coverage without stressing the structure. What sets it apart is that baked-clay makeup, so it cleans up beautifully for heritage pieces but demands you pause between passes to let it cool. Avoid high speeds early on; slower ones prevent surface pitting. In my experience, this setup preserves the earthy texture while stripping away years of buildup safely.'
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Masonry
+    href: /materials/masonry
+  - label: Concrete
+    href: /materials/masonry/concrete
+  - label: Terracotta
+    href: /materials/terracotta
+  images:
+    hero:
+      alt: Terracotta surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/terracotta-laser-cleaning-hero.jpg
+    micro:
+      alt: Microscopic view of Terracotta surface after laser cleaning showing detailed surface structure
+      url: /images/material/terracotta-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 100
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 100
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    energyDensity:
+      unit: J/cm²
+      value: 2.5
+      min: 0.1
+      max: 20
+    pulseWidth:
+      unit: ns
+      value: 10
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 2
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+    dwellTime:
+      unit: μs
+      value: 100
+  thermalProperties:
+    thermalDiffusivity:
+      value: 0.408
+      unit: mm²/s
+    thermalConductivity:
+      value: 0.93
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 1473
+      unit: K
+      type: melting
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 3
+      unit: J/cm²
+    ablationThreshold:
+      value: 1.45
+      unit: J/cm²
+    optimalFluenceRange:
+      min: 1.74
+      max: 2.4
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.5
+      unit: K
+    reflectivity:
+      value: 0.24
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Moisture-induced spalling and explosive failure
+      severity: critical
+      threshold_temperature: Steam formation >100°C with trapped moisture
+      impact: Trapped moisture converts to steam causing explosive surface spalling
+      solutions:
+      - Test moisture content before cleaning (>5% moisture requires drying)
+      - Use pulse mode with 10-15 second cooling for wet materials
+      - Reduce power by 50-60% for damp masonry
+      - Allow 24-48 hours drying after rain before laser cleaning
+      - Monitor for popping sounds or surface lifting; stop immediately
+    - challenge: Low thermal diffusivity and heat accumulation
+      severity: high
+      property_value: 0.1-1.0 mm²/s (3-10x slower than metals)
+      impact: Heat concentrates in surface layer causing thermal stress
+      solutions:
+      - Increase cooling time between passes (8-12 seconds)
+      - Use low repetition rates (<20 kHz)
+      - Defocused beam reduces peak intensity
+      - Multiple gentle passes preferred over aggressive single pass
+    surface_characteristics:
+    - challenge: High porosity and deep contamination
+      severity: high
+      porosity_range: 10-25% (brick and concrete highly porous)
+      impact: Contaminants penetrate deep into porous structure
+      solutions:
+      - Multiple progressive passes with power increase (50W → 80W → 100W)
+      - Reduce scan speed for deeper penetration (400-600 mm/s)
+      - Chemical pre-treatment for biological growth (algae, lichen)
+      - Expect 3-5 passes for complete cleaning vs 1-2 for dense materials
+    - challenge: Surface heterogeneity and aggregate exposure
+      severity: medium
+      impact: Mixed composition (cement matrix, aggregates, voids) causes variable absorption
+      solutions:
+      - Use moderate power (70-90W) suitable for both matrix and aggregates
+      - Crosshatch scan pattern for uniform coverage
+      - Monitor for differential ablation; adjust power if aggregates become prominent
+      - Aged masonry more challenging than new construction
+    contamination_challenges:
+    - challenge: Paint and coating removal from porous substrate
+      severity: medium
+      impact: Paint penetrates into pores requiring deep cleaning without substrate damage
+      solutions:
+      - First pass 100W fast (1500 mm/s) for surface paint layer
+      - Second pass 70W slow (800 mm/s) for paint in pores
+      - Third pass 50W very slow (500 mm/s) for residual staining
+      - Chemical stripping pre-treatment reduces laser exposure
+      - Heritage masonry requires gentler approach (max 60W)
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:32.855143'

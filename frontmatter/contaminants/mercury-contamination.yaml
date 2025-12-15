@@ -1,196 +1,197 @@
-name: Mercury Spill Residue
-slug: mercury-contamination
-category: chemical_residue
-subcategory: hazardous
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: contaminant
-title: Mercury Spill Residue Contamination
-contamination_description: Mercury contamination forms from elemental spills or amalgam
-  residues in industrial settings. Before cleaning, liquid films spread quickly on
-  concrete and tile, so vapors release easily during handling and this volatility
-  distinguishes it from solid pollutants. On metals such as copper, steel, and aluminum,
-  mercury alloys and penetrates deeply, so adhesion strengthens and removal challenges
-  include toxicity and residue scattering; laser cleaning vaporizes contamination
-  precisely without substrate harm, so after treatment surfaces exhibit effective
-  cleanliness.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contamination
-  href: /contamination
-- label: Chemical_Residue
-  href: /contamination/chemical_residue
-- label: Mercury Spill Residue
-  href: /contamination/chemical_residue/mercury-contamination-contamination
-images:
-  hero:
-    url: /images/contamination/mercury-contamination-hero.jpg
-    alt: Mercury Spill Residue contamination on surface before laser cleaning
-  micro:
-    url: /images/contamination/mercury-contamination-micro.jpg
-    alt: Mercury Spill Residue contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.2
-      min_j_cm2: 0.3
-      recommended_j_cm2: 0.6
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 50
-      min_ns: 5
-      recommended_ns: 20
-    repetition_rate_khz:
-      max: 100
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 2000
-      min: 500
-      recommended: 1000
-    spot_size_mm:
-      max: 0.2
-      min: 0.05
-      recommended: 0.1
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 85000
-      wavelength_355nm: 180000
-      wavelength_532nm: 120000
-    reflectivity:
-      wavelength_1064nm: 0.75
-      wavelength_355nm: 0.15
-      wavelength_532nm: 0.65
-    refractive_index:
-      imaginary_part: 4.12
-      real_part: 1.73
-    transmission_depth: 0.12
-  removal_characteristics:
-    byproducts:
-    - compound: Hg
-      hazard_level: high
-      phase: gas
-    - compound: HgO
-      hazard_level: high
-      phase: gas
-    - compound: carbon_soot
-      hazard_level: moderate
-      phase: solid
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 240
-      typical_scan_speed_mm_s: 800
-    removal_efficiency:
-      diminishing_returns_after: 4
-      optimal_passes: 3
-      single_pass: 0.85
-    secondary_mechanisms:
-    - photochemical
-    - vaporization
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: none
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: none
-    fumes_generated:
-    - compound: Elemental Mercury Vapor
-      concentration_mg_m3: 0.5
-      exposure_limit_mg_m3: 0.025
-      hazard_class: toxic
-    - compound: Mercury Oxide
-      concentration_mg_m3: 0.1
-      exposure_limit_mg_m3: 0.05
-      hazard_class: toxic
-    particulate_generation:
-      respirable_fraction: 0.8
-      size_range_um:
-      - 0.1
-      - 10
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: PAPR
-      skin_protection: full_suit
-    substrate_compatibility_warnings:
-    - Laser cleaning may vaporize mercury from porous surfaces
-    - Heating may increase mercury vaporization rate significantly
-    - Residual mercury can be redistributed as fine particulate
-    toxic_gas_risk: high
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: HEPA
-      minimum_air_changes_per_hour: 15
-    visibility_hazard: low
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 0.4
-      pulse_duration_10ns: 0.6
-      wavelength_1064nm: 0.8
-    decomposition_temperature: 357
-    heat_affected_zone_depth: 15
-    melting_point: -39
-    specific_heat: 140
-    thermal_conductivity: 8.3
-    thermal_diffusivity: 8.5
-    vaporization_temperature: 357
-valid_materials:
-- Concrete
-- Tile
-- Aluminum
-- Steel
-- Stainless Steel
-- Cast Iron
-- Copper
-- Bronze
-- Brass
-- Titanium
-- Zinc
-- Nickel
-- Lead
-- Tin
-- Cobalt
-- Chromium
+metadata:
+  name: Mercury Spill Residue
+  slug: mercury-contamination
+  category: chemical-residue
+  subcategory: hazardous
+  content_type: unified_contamination
+  schema_version: 4.0.0
+  datePublished: null
+  dateModified: null
+  author:
+    id: 1
+    name: Yi-Chun Lin
+    country: Taiwan
+    country_display: Taiwan
+    title: Ph.D.
+    sex: f
+    jobTitle: Laser Processing Engineer
+    expertise:
+    - Laser Materials Processing
+    affiliation:
+      name: National Taiwan University
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Engineering, National Taiwan University, 2018
+    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+    - 3+ years in laser processing R&D
+    - Assisted in projects on ultrafast laser applications
+    email: info@z-beam.com
+    image: /images/author/yi-chun-lin.jpg
+    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+      in lab setting
+    url: https://z-beam.com/authors/yi-chun-lin
+    sameAs:
+    - https://scholar.google.com/citations?user=ghi789
+    - https://linkedin.com/in/yi-chun-lin-engineer
+    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+    persona_file: taiwan_persona.yaml
+    formatting_file: taiwan_formatting.yaml
+  _metadata:
+    voice:
+      author_name: Yi-Chun Lin
+      author_country: Taiwan
+      voice_applied: true
+      content_type: contaminant
+  title: Mercury Spill Residue Contamination
+  contamination_description: Mercury contamination forms from elemental spills or
+    amalgam residues in industrial settings. Before cleaning, liquid films spread
+    quickly on concrete and tile, so vapors release easily during handling and this
+    volatility distinguishes it from solid pollutants. On metals such as copper, steel,
+    and aluminum, mercury alloys and penetrates deeply, so adhesion strengthens and
+    removal challenges include toxicity and residue scattering; laser cleaning vaporizes
+    contamination precisely without substrate harm, so after treatment surfaces exhibit
+    effective cleanliness.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Contamination
+    href: /contamination
+  - label: Chemical-Residue
+    href: /contamination/chemical-residue
+  - label: Mercury Spill Residue
+    href: /contamination/chemical-residue/mercury-contamination-contamination
+  images:
+    hero:
+      url: /images/contamination/mercury-contamination-hero.jpg
+      alt: Mercury Spill Residue contamination on surface before laser cleaning
+    micro:
+      url: /images/contamination/mercury-contamination-micro.jpg
+      alt: Mercury Spill Residue contamination microscopic detail
+  laser_properties:
+    laser_parameters:
+      beam_profile: flat_top
+      fluence_range:
+        max_j_cm2: 1.2
+        min_j_cm2: 0.3
+        recommended_j_cm2: 0.6
+      overlap_percentage: 50
+      polarization: circular
+      pulse_duration_range:
+        max_ns: 50
+        min_ns: 5
+        recommended_ns: 20
+      repetition_rate_khz:
+        max: 100
+        min: 20
+        recommended: 50
+      safety_margin_factor: 0.7
+      scan_speed_mm_s:
+        max: 2000
+        min: 500
+        recommended: 1000
+      spot_size_mm:
+        max: 0.2
+        min: 0.05
+        recommended: 0.1
+      wavelength_preference:
+      - 1064
+      - 532
+    optical_properties:
+      absorption_coefficient:
+        wavelength_1064nm: 85000
+        wavelength_355nm: 180000
+        wavelength_532nm: 120000
+      reflectivity:
+        wavelength_1064nm: 0.75
+        wavelength_355nm: 0.15
+        wavelength_532nm: 0.65
+      refractive_index:
+        imaginary_part: 4.12
+        real_part: 1.73
+      transmission_depth: 0.12
+    removal_characteristics:
+      byproducts:
+      - compound: Hg
+        hazard_level: high
+        phase: gas
+      - compound: HgO
+        hazard_level: high
+        phase: gas
+      - compound: carbon_soot
+        hazard_level: moderate
+        phase: solid
+      damage_risk_to_substrate: low
+      primary_mechanism: thermal_ablation
+      process_speed:
+        area_coverage_rate_cm2_min: 240
+        typical_scan_speed_mm_s: 800
+      removal_efficiency:
+        diminishing_returns_after: 4
+        optimal_passes: 3
+        single_pass: 0.85
+      secondary_mechanisms:
+      - photochemical
+      - vaporization
+      surface_quality_after_removal:
+        color_change: 'no'
+        residual_stress: none
+        roughness_increase: minimal
+    safety_data:
+      fire_explosion_risk: none
+      fumes_generated:
+      - compound: Elemental Mercury Vapor
+        concentration_mg_m3: 0.5
+        exposure_limit_mg_m3: 0.025
+        hazard_class: toxic
+      - compound: Mercury Oxide
+        concentration_mg_m3: 0.1
+        exposure_limit_mg_m3: 0.05
+        hazard_class: toxic
+      particulate_generation:
+        respirable_fraction: 0.8
+        size_range_um:
+        - 0.1
+        - 10
+      ppe_requirements:
+        eye_protection: goggles
+        respiratory: PAPR
+        skin_protection: full_suit
+      substrate_compatibility_warnings:
+      - Laser cleaning may vaporize mercury from porous surfaces
+      - Heating may increase mercury vaporization rate significantly
+      - Residual mercury can be redistributed as fine particulate
+      toxic_gas_risk: high
+      ventilation_requirements:
+        exhaust_velocity_m_s: 0.5
+        filtration_type: HEPA
+        minimum_air_changes_per_hour: 15
+      visibility_hazard: low
+    thermal_properties:
+      ablation_threshold:
+        pulse_duration_100ns: 0.4
+        pulse_duration_10ns: 0.6
+        wavelength_1064nm: 0.8
+      decomposition_temperature: 357
+      heat_affected_zone_depth: 15
+      melting_point: -39
+      specific_heat: 140
+      thermal_conductivity: 8.3
+      thermal_diffusivity: 8.5
+      vaporization_temperature: 357
+  valid_materials:
+  - Concrete
+  - Tile
+  - Aluminum
+  - Steel
+  - Stainless Steel
+  - Cast Iron
+  - Copper
+  - Bronze
+  - Brass
+  - Titanium
+  - Zinc
+  - Nickel
+  - Lead
+  - Tin
+  - Cobalt
+  - Chromium

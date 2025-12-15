@@ -1,197 +1,198 @@
-name: PCB Oil Contamination
-slug: pcb-contamination
-category: chemical_residue
-subcategory: industrial
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: contaminant
-title: PCB Oil Contamination Contamination
-contamination_description: PCB-contamination arises from polychlorinated biphenyls
-  leaking in electrical equipment, so it forms thin oily layers during long exposure.
-  This contamination shows sticky persistence and chemical stability, distinguishing
-  it from less adhesive oils because residues bond tightly without easy dissolution.
-  On steel and concrete in transformer housings, it penetrates pores so removal challenges
-  include deep embedding and environmental risks, yet laser cleaning ablates layers
-  precisely without damaging substrates.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contamination
-  href: /contamination
-- label: Chemical_Residue
-  href: /contamination/chemical_residue
-- label: PCB Oil Contamination
-  href: /contamination/chemical_residue/pcb-contamination-contamination
-images:
-  hero:
-    url: /images/contamination/pcb-contamination-hero.jpg
-    alt: PCB Oil Contamination contamination on surface before laser cleaning
-  micro:
-    url: /images/contamination/pcb-contamination-micro.jpg
-    alt: PCB Oil Contamination contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.2
-      min_j_cm2: 0.3
-      recommended_j_cm2: 0.8
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 100
-      min_ns: 10
-      recommended_ns: 30
-    repetition_rate_khz:
-      max: 100
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 2000
-      min: 500
-      recommended: 1000
-    spot_size_mm:
-      max: 0.2
-      min: 0.05
-      recommended: 0.1
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 850
-      wavelength_355nm: 18500
-      wavelength_532nm: 4200
-    reflectivity:
-      wavelength_1064nm: 0.08
-      wavelength_355nm: 0.03
-      wavelength_532nm: 0.05
-    refractive_index:
-      imaginary_part: 0.015
-      real_part: 1.48
-    transmission_depth: 11.8
-  removal_characteristics:
-    byproducts:
-    - compound: CO2
-      hazard_level: low
-      phase: gas
-    - compound: H2O
-      hazard_level: low
-      phase: gas
-    - compound: CO
-      hazard_level: moderate
-      phase: gas
-    - compound: VOCs
-      hazard_level: moderate
-      phase: gas
-    - compound: carbon_particulates
-      hazard_level: moderate
-      phase: solid
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 240
-      typical_scan_speed_mm_s: 800
-    removal_efficiency:
-      diminishing_returns_after: 4
-      optimal_passes: 3
-      single_pass: 0.75
-    secondary_mechanisms:
-    - photochemical
-    - mechanical_spallation
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: none
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
-      concentration_mg_m3: 2.5
-      exposure_limit_mg_m3: 0.2
-      hazard_class: carcinogenic
-    - compound: Aldehydes (formaldehyde)
-      concentration_mg_m3: 1.8
-      exposure_limit_mg_m3: 0.3
-      hazard_class: carcinogenic
-    - compound: Carbon monoxide
-      concentration_mg_m3: 15.0
-      exposure_limit_mg_m3: 29.0
-      hazard_class: toxic
-    - compound: Particulate organics
-      concentration_mg_m3: 8.5
-      exposure_limit_mg_m3: 3.0
-      hazard_class: toxic
-    particulate_generation:
-      respirable_fraction: 0.7
-      size_range_um:
-      - 0.1
-      - 10.0
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: PAPR
-      skin_protection: full_suit
-    substrate_compatibility_warnings:
-    - Laser parameters must be optimized to minimize substrate damage and excessive
-      fume generation
-    - Incomplete combustion may increase PAH formation - ensure proper ventilation
-    - Oil residues may create reflective surfaces requiring laser safety considerations
-    toxic_gas_risk: moderate
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: carbon
-      minimum_air_changes_per_hour: 12
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 1.2
-      pulse_duration_10ns: 0.6
-      wavelength_1064nm: 0.8
-    decomposition_temperature: 400
-    heat_affected_zone_depth: 15
-    melting_point: null
-    specific_heat: 2000
-    thermal_conductivity: 0.15
-    thermal_diffusivity: 0.08
-    vaporization_temperature: 500
-valid_materials:
-- Steel
-- Concrete
-- Transformer Housings
+metadata:
+  name: PCB Oil Contamination
+  slug: pcb-contamination
+  category: chemical-residue
+  subcategory: industrial
+  content_type: unified_contamination
+  schema_version: 4.0.0
+  datePublished: null
+  dateModified: null
+  author:
+    id: 1
+    name: Yi-Chun Lin
+    country: Taiwan
+    country_display: Taiwan
+    title: Ph.D.
+    sex: f
+    jobTitle: Laser Processing Engineer
+    expertise:
+    - Laser Materials Processing
+    affiliation:
+      name: National Taiwan University
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Engineering, National Taiwan University, 2018
+    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+    - 3+ years in laser processing R&D
+    - Assisted in projects on ultrafast laser applications
+    email: info@z-beam.com
+    image: /images/author/yi-chun-lin.jpg
+    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+      in lab setting
+    url: https://z-beam.com/authors/yi-chun-lin
+    sameAs:
+    - https://scholar.google.com/citations?user=ghi789
+    - https://linkedin.com/in/yi-chun-lin-engineer
+    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+    persona_file: taiwan_persona.yaml
+    formatting_file: taiwan_formatting.yaml
+  _metadata:
+    voice:
+      author_name: Yi-Chun Lin
+      author_country: Taiwan
+      voice_applied: true
+      content_type: contaminant
+  title: PCB Oil Contamination Contamination
+  contamination_description: PCB-contamination arises from polychlorinated biphenyls
+    leaking in electrical equipment, so it forms thin oily layers during long exposure.
+    This contamination shows sticky persistence and chemical stability, distinguishing
+    it from less adhesive oils because residues bond tightly without easy dissolution.
+    On steel and concrete in transformer housings, it penetrates pores so removal
+    challenges include deep embedding and environmental risks, yet laser cleaning
+    ablates layers precisely without damaging substrates.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Contamination
+    href: /contamination
+  - label: Chemical-Residue
+    href: /contamination/chemical-residue
+  - label: PCB Oil Contamination
+    href: /contamination/chemical-residue/pcb-contamination-contamination
+  images:
+    hero:
+      url: /images/contamination/pcb-contamination-hero.jpg
+      alt: PCB Oil Contamination contamination on surface before laser cleaning
+    micro:
+      url: /images/contamination/pcb-contamination-micro.jpg
+      alt: PCB Oil Contamination contamination microscopic detail
+  laser_properties:
+    laser_parameters:
+      beam_profile: flat_top
+      fluence_range:
+        max_j_cm2: 1.2
+        min_j_cm2: 0.3
+        recommended_j_cm2: 0.8
+      overlap_percentage: 50
+      polarization: circular
+      pulse_duration_range:
+        max_ns: 100
+        min_ns: 10
+        recommended_ns: 30
+      repetition_rate_khz:
+        max: 100
+        min: 20
+        recommended: 50
+      safety_margin_factor: 0.7
+      scan_speed_mm_s:
+        max: 2000
+        min: 500
+        recommended: 1000
+      spot_size_mm:
+        max: 0.2
+        min: 0.05
+        recommended: 0.1
+      wavelength_preference:
+      - 1064
+      - 532
+    optical_properties:
+      absorption_coefficient:
+        wavelength_1064nm: 850
+        wavelength_355nm: 18500
+        wavelength_532nm: 4200
+      reflectivity:
+        wavelength_1064nm: 0.08
+        wavelength_355nm: 0.03
+        wavelength_532nm: 0.05
+      refractive_index:
+        imaginary_part: 0.015
+        real_part: 1.48
+      transmission_depth: 11.8
+    removal_characteristics:
+      byproducts:
+      - compound: CO2
+        hazard_level: low
+        phase: gas
+      - compound: H2O
+        hazard_level: low
+        phase: gas
+      - compound: CO
+        hazard_level: moderate
+        phase: gas
+      - compound: VOCs
+        hazard_level: moderate
+        phase: gas
+      - compound: carbon_particulates
+        hazard_level: moderate
+        phase: solid
+      damage_risk_to_substrate: low
+      primary_mechanism: thermal_ablation
+      process_speed:
+        area_coverage_rate_cm2_min: 240
+        typical_scan_speed_mm_s: 800
+      removal_efficiency:
+        diminishing_returns_after: 4
+        optimal_passes: 3
+        single_pass: 0.75
+      secondary_mechanisms:
+      - photochemical
+      - mechanical_spallation
+      surface_quality_after_removal:
+        color_change: 'no'
+        residual_stress: none
+        roughness_increase: minimal
+    safety_data:
+      fire_explosion_risk: low
+      fumes_generated:
+      - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
+        concentration_mg_m3: 2.5
+        exposure_limit_mg_m3: 0.2
+        hazard_class: carcinogenic
+      - compound: Aldehydes (formaldehyde)
+        concentration_mg_m3: 1.8
+        exposure_limit_mg_m3: 0.3
+        hazard_class: carcinogenic
+      - compound: Carbon monoxide
+        concentration_mg_m3: 15.0
+        exposure_limit_mg_m3: 29.0
+        hazard_class: toxic
+      - compound: Particulate organics
+        concentration_mg_m3: 8.5
+        exposure_limit_mg_m3: 3.0
+        hazard_class: toxic
+      particulate_generation:
+        respirable_fraction: 0.7
+        size_range_um:
+        - 0.1
+        - 10.0
+      ppe_requirements:
+        eye_protection: goggles
+        respiratory: PAPR
+        skin_protection: full_suit
+      substrate_compatibility_warnings:
+      - Laser parameters must be optimized to minimize substrate damage and excessive
+        fume generation
+      - Incomplete combustion may increase PAH formation - ensure proper ventilation
+      - Oil residues may create reflective surfaces requiring laser safety considerations
+      toxic_gas_risk: moderate
+      ventilation_requirements:
+        exhaust_velocity_m_s: 0.5
+        filtration_type: carbon
+        minimum_air_changes_per_hour: 12
+      visibility_hazard: moderate
+    thermal_properties:
+      ablation_threshold:
+        pulse_duration_100ns: 1.2
+        pulse_duration_10ns: 0.6
+        wavelength_1064nm: 0.8
+      decomposition_temperature: 400
+      heat_affected_zone_depth: 15
+      melting_point: null
+      specific_heat: 2000
+      thermal_conductivity: 0.15
+      thermal_diffusivity: 0.08
+      vaporization_temperature: 500
+  valid_materials:
+  - Steel
+  - Concrete
+  - Transformer Housings

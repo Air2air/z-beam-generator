@@ -1,178 +1,179 @@
-name: Silicon
-slug: silicon
-category: semiconductor
-subcategory: elemental
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-title: Silicon Laser Cleaning Settings
-settings_description: When laser cleaning silicon, start with low power settings to leverage its strong thermal conductivity. This property lets heat spread quickly, unlike brittle ceramics that trap it locally. You must keep pulse durations short to avoid microcracks, since silicon's stiffness makes it prone to fracturing under sudden stress. We've found that moderate scan speeds work best, revealing contaminants without altering the surface. Adjust overlap ratios carefully to ensure even coverage, as silicon's moderate reflectivity absorbs energy steadily compared to shiny metals. This approach restores semiconductor wafers effectively for electronics use. Make sure you monitor for thermal buildup at the end, or you risk subsurface damage that compromises device performance.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Semiconductor
-  href: /materials/semiconductor
-- label: Elemental
-  href: /materials/semiconductor/elemental
-- label: Silicon
-  href: /materials/silicon
-images:
-  hero:
-    alt: Silicon surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/silicon-laser-cleaning-hero.jpg
-  micro:
-    alt: Silicon microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/silicon-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 25
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 100
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-thermalProperties:
-  thermalDiffusivity:
-    value: 88.0
-    unit: mm²/s
-  thermalConductivity:
-    value: 148.0
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1687
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 1.0
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.5
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.2
-    unit: K
-  reflectivity:
-    value: 0.36
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Crystal lattice damage and doping redistribution
-    severity: critical
-    threshold_temperature: Above 400-600°C causes dopant migration
-    impact: Heat causes permanent alteration of electronic properties and device failure
-    solutions:
-    - Use ultrashort pulses (picosecond or femtosecond) for minimal heat-affected zone
-    - Reduce power by 60-70% compared to structural materials
-    - Monitor temperature with IR camera; stop if >150°C surface temperature
-    - Nanosecond pulses acceptable only for non-active areas (scribe lines, edges)
-  - challenge: Thermal stress and wafer cracking
-    severity: high
-    property_value: Low fracture toughness 0.75-3.0 MPa·√m
-    impact: Thermal gradients cause catastrophic wafer fracture
-    solutions:
-    - Use pulse mode with 10-15 second cooling for thick wafers
-    - Thin wafers (<200 μm) require substrate backing for thermal management
-    - Defocused beam reduces peak temperature gradients
-    - Gradual power ramping (start 10W, increase 5W per pass)
-  surface_characteristics:
-  - challenge: Surface contamination and particulates
-    severity: critical
-    impact: Sub-micron particles cause device defects and yield loss
-    solutions:
-    - Class 100 cleanroom environment required
-    - Use dry laser cleaning (no liquid assist to avoid residue)
-    - Gas assist (nitrogen or argon) blows particles away during cleaning
-    - Post-cleaning inspection with particle counter (<0.1 μm detection)
-    - Follow with wet chemical clean for critical applications
-  - challenge: Native oxide layer removal
-    severity: high
-    impact: Silicon forms native oxide that must be removed without substrate damage
-    solutions:
-    - Low power (5-15W) for oxide removal only
-    - Multiple gentle passes (3-5 passes at 10W) preferred
-    - Hydrogen-rich environment prevents oxide reformation
-    - Verify oxide removal with ellipsometry or XPS
-  contamination_challenges:
-  - challenge: Photoresist and polymer residue removal
-    severity: medium
-    impact: Organic residues carbonize and become harder to remove
-    solutions:
-    - First pass 20W fast (1500 mm/s) for bulk removal
-    - Second pass 10W slow (800 mm/s) for residue
-    - UV laser (355nm) more effective for organic materials
-    - Oxygen-rich environment aids in organic ablation
-    - Post-cleaning oxygen plasma for complete residue removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:04.791463'
+metadata:
+  name: Silicon
+  slug: silicon
+  category: semiconductor
+  subcategory: elemental
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 4
+    name: Todd Dunning
+    country: United States
+    country_display: United States
+    title: MA
+    sex: m
+    jobTitle: Junior Optical Materials Specialist
+    expertise:
+    - Optical Materials for Laser Systems
+    affiliation:
+      name: Coherent Inc.
+      type: Organization
+    credentials:
+    - BA Physics, UC Irvine, 2017
+    - Hands-on at JPL optics internship, 2018
+    - MA Optics and Photonics, UC Irvine, 2019
+    - 3+ years in laser systems development
+    - Hands-on experience with optical fabrication
+    email: info@z-beam.com
+    image: /images/author/todd-dunning.jpg
+    imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+    url: https://z-beam.com/authors/todd-dunning
+    sameAs:
+    - https://linkedin.com/in/todd-dunning-optics
+    - https://spie.org/profile/Todd.Dunning
+    persona_file: usa_persona.yaml
+    formatting_file: usa_formatting.yaml
+  title: Silicon Laser Cleaning Settings
+  settings_description: When laser cleaning silicon, start with low power settings to leverage its strong thermal conductivity. This property lets heat spread quickly, unlike brittle ceramics that trap it locally. You must keep pulse durations short to avoid microcracks, since silicon's stiffness makes it prone to fracturing under sudden stress. We've found that moderate scan speeds work best, revealing contaminants without altering the surface. Adjust overlap ratios carefully to ensure even coverage, as silicon's moderate reflectivity absorbs energy steadily compared to shiny metals. This approach restores semiconductor wafers effectively for electronics use. Make sure you monitor for thermal buildup at the end, or you risk subsurface damage that compromises device performance.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Semiconductor
+    href: /materials/semiconductor
+  - label: Elemental
+    href: /materials/semiconductor/elemental
+  - label: Silicon
+    href: /materials/silicon
+  images:
+    hero:
+      alt: Silicon surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/silicon-laser-cleaning-hero.jpg
+    micro:
+      alt: Silicon microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/silicon-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 25
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 50
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    fluenceThreshold:
+      unit: J/cm²
+      value: 2.5
+      min: 0.3
+      max: 4.5
+    pulseWidth:
+      unit: ns
+      value: 100
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 2
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+  thermalProperties:
+    thermalDiffusivity:
+      value: 88.0
+      unit: mm²/s
+    thermalConductivity:
+      value: 148.0
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 1687
+      unit: K
+      type: melting
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 1.0
+      unit: J/cm²
+    ablationThreshold:
+      value: 2.5
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.2
+      unit: K
+    reflectivity:
+      value: 0.36
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Crystal lattice damage and doping redistribution
+      severity: critical
+      threshold_temperature: Above 400-600°C causes dopant migration
+      impact: Heat causes permanent alteration of electronic properties and device failure
+      solutions:
+      - Use ultrashort pulses (picosecond or femtosecond) for minimal heat-affected zone
+      - Reduce power by 60-70% compared to structural materials
+      - Monitor temperature with IR camera; stop if >150°C surface temperature
+      - Nanosecond pulses acceptable only for non-active areas (scribe lines, edges)
+    - challenge: Thermal stress and wafer cracking
+      severity: high
+      property_value: Low fracture toughness 0.75-3.0 MPa·√m
+      impact: Thermal gradients cause catastrophic wafer fracture
+      solutions:
+      - Use pulse mode with 10-15 second cooling for thick wafers
+      - Thin wafers (<200 μm) require substrate backing for thermal management
+      - Defocused beam reduces peak temperature gradients
+      - Gradual power ramping (start 10W, increase 5W per pass)
+    surface_characteristics:
+    - challenge: Surface contamination and particulates
+      severity: critical
+      impact: Sub-micron particles cause device defects and yield loss
+      solutions:
+      - Class 100 cleanroom environment required
+      - Use dry laser cleaning (no liquid assist to avoid residue)
+      - Gas assist (nitrogen or argon) blows particles away during cleaning
+      - Post-cleaning inspection with particle counter (<0.1 μm detection)
+      - Follow with wet chemical clean for critical applications
+    - challenge: Native oxide layer removal
+      severity: high
+      impact: Silicon forms native oxide that must be removed without substrate damage
+      solutions:
+      - Low power (5-15W) for oxide removal only
+      - Multiple gentle passes (3-5 passes at 10W) preferred
+      - Hydrogen-rich environment prevents oxide reformation
+      - Verify oxide removal with ellipsometry or XPS
+    contamination_challenges:
+    - challenge: Photoresist and polymer residue removal
+      severity: medium
+      impact: Organic residues carbonize and become harder to remove
+      solutions:
+      - First pass 20W fast (1500 mm/s) for bulk removal
+      - Second pass 10W slow (800 mm/s) for residue
+      - UV laser (355nm) more effective for organic materials
+      - Oxygen-rich environment aids in organic ablation
+      - Post-cleaning oxygen plasma for complete residue removal
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:32.393449'

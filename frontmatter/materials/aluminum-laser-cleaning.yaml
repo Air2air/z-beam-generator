@@ -7,46 +7,41 @@ schema_version: 4.0.0
 datePublished: null
 dateModified: null
 author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
   expertise:
-  - Optical Materials for Laser Systems
+  - Laser Materials Processing
   affiliation:
-    name: Coherent Inc.
-    type: Organization
+    name: National Taiwan University
+    type: EducationalOrganization
   credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
 _metadata:
   voice:
-    author_name: Todd Dunning
-    author_country: United States
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
     voice_applied: true
     content_type: material
 title: Aluminum Laser Cleaning
-material_description: Aluminum, as non-ferrous metal, stands out from ferrous types
-  because it reflects laser energy highly and conducts heat rapidly, so cleaning process
-  removes contaminants like oxides without heating base material much. After treatment,
-  surface exhibits smoothness and corrosion resistance improves, making it suitable
-  for applications in aerospace and automotive where precision matters.
+material_description: Aluminum, as non-ferrous metal, stands out from ferrous types because it reflects laser energy highly and conducts heat rapidly, so cleaning process removes contaminants like oxides without heating base material much. After treatment, surface exhibits smoothness and corrosion resistance improves, making it suitable for applications in aerospace and automotive where precision matters.
 breadcrumb:
 - label: Home
   href: /
@@ -60,35 +55,21 @@ breadcrumb:
   href: /materials/metal/non-ferrous/aluminum
 images:
   hero:
-    alt: Aluminum surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Aluminum surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/aluminum-laser-cleaning-hero.jpg
   micro:
-    alt: Aluminum microscopic view of laser cleaning showing detailed precise contamination
-      removal
+    alt: Aluminum microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/aluminum-laser-cleaning-micro.jpg
 micro:
-  before: At 1000x magnification, the contaminated aluminum surface appears rough
-    and cluttered. Particles and residues cling tightly, dulling the metal's natural
-    sheen and hindering its smooth conductivity. This buildup often plagues parts
-    in aerospace and automotive uses, where clean finishes matter for durability.
-  after: Laser cleaning changes that quickly. The process blasts away contaminants
-    without
+  before: When laser cleaning aluminum, you'll want to check it at 1000x magnification first. You'll see gritty oxide layers and embedded dirt particles clinging tight, roughening that 0.8 μm surface and hiding the metal's smooth potential. It's like a dusty film that dulls the low-density 2.7 g/cm³ structure we've all dealt with.
+  after: After treatment, the surface gleams clean—zero porosity means no traps for residue. We've found the laser blasts away contaminants without scratching, leaving a pristine finish that boosts that 90 MPa tensile strength shine. Smooth sailing now.
 faq:
 - question: What makes aluminum **suitable for industrial** laser cleaning?
-  answer: "**Lightweight with low density**. Aluminum weighs around 2.7 grams per\
-    \ cubic centimeter. That low density helps in applications like aerospace parts.\
-    \ Its near-zero porosity means surfaces stay smooth, without hidden contaminants.\
-    \  \n\nAlessandro Moretti, Ph.D."
+  answer: "**Lightweight with low density**. Aluminum weighs around 2.7 grams per cubic centimeter. That low density helps in applications like aerospace parts. Its near-zero porosity means surfaces stay smooth, without hidden contaminants.  \n\nAlessandro Moretti, Ph.D."
 - question: How do you **set up laser cleaning** for aluminum?
-  answer: "**100-watt power range removes oxides**. We use a 100-watt power range\
-    \ to strip away oxides or paints. The laser clears buildup gently, bringing back\
-    \ the original finish without damaging the base metal. It works well on automotive\
-    \ components or heat sinks. Just adjust the pulse to avoid overheating—aluminum\
-    \ conducts heat fast.  \n\nAlessandro Moretti, Ph.D."
+  answer: "**100-watt power range removes oxides**. We use a 100-watt power range to strip away oxides or paints. The laser clears buildup gently, bringing back the original finish without damaging the base metal. It works well on automotive components or heat sinks. Just adjust the pulse to avoid overheating—aluminum conducts heat fast.  \n\nAlessandro Moretti, Ph.D."
 - question: Any **tips from field experience** with aluminum laser cleaning?
-  answer: "**Start with short bursts**. This fixes surface issues quickly, yet keeps\
-    \ the material intact.  \n\nAlessandro Moretti, Ph.D."
+  answer: "**Start with short bursts**. This fixes surface issues quickly, yet keeps the material intact.  \n\nAlessandro Moretti, Ph.D."
 regulatoryStandards:
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
@@ -344,4 +325,4 @@ serviceOffering:
     notes: Lower power settings recommended due to high reflectivity
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-04T19:10:01.990155'
+    generated_date: '2025-12-14T22:41:29.077327'

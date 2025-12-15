@@ -1,176 +1,177 @@
-name: Maple
-slug: maple
-category: wood
-subcategory: hardwood
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-title: Maple Laser Cleaning Settings
-settings_description: When laser cleaning Maple, I've found gentle pulses work best. This hardwood's tight grain absorbs energy evenly, unlike looser woods that char fast. It brings back finishes on furniture or instruments without splintering. Tends to heat slowly due to low conductivity compared to denser hardwoods. So, keep passes light. Watch for overexposure at the end—it can dull the natural luster if you push too hard.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/wood
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: Maple
-  href: /materials/maple
-images:
-  hero:
-    alt: Maple surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/maple-laser-cleaning-hero.jpg
-  micro:
-    alt: Maple microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/maple-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 45
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 2.8
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 12
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.13
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.17
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 673
-    unit: K
-    type: charring
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 1.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.2
-    unit: K
-  reflectivity:
-    value: 0.072
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Charring and carbonization
-    severity: high
-    threshold_temperature: 250-300°C
-    impact: Wood chars at low temperatures leaving black marks and structural damage
-    solutions:
-    - Use pulse mode with 2-5 second cooling between passes
-    - Reduce power by 30-40% compared to metals
-    - Increase scan speed to reduce dwell time
-    - Monitor surface for discoloration; stop if browning occurs
-  - challenge: Slow thermal diffusivity
-    severity: medium
-    property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
-    impact: Heat accumulates rapidly causing thermal damage zones
-    solutions:
-    - Increase cooling time between passes
-    - Use lower repetition rates (<20 kHz)
-    - Apply crosshatch patterns to distribute heat
-  surface_characteristics:
-  - challenge: Grain direction sensitivity
-    severity: medium
-    variation: 20-40% absorption variation by grain orientation
-    impact: Laser absorption varies significantly with grain direction
-    solutions:
-    - Scan parallel to grain for consistent results
-    - Use crosshatch pattern (0° and 90°) for uniform cleaning
-    - Test on scrap to determine optimal scan direction
-  - challenge: Porous structure with deep contamination
-    severity: medium
-    porosity_range: 12-65% (softwoods highest)
-    impact: Contaminants penetrate deep into wood structure
-    solutions:
-    - Multiple passes with progressive power increase
-    - Reduce scan speed for deeper penetration (600 mm/s)
-    - Chemical pre-treatment for deep-seated contamination
-  contamination_challenges:
-  - challenge: Varnish and coating removal
-    severity: medium
-    impact: Thick coatings require multiple passes and generate smoke/fumes
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 60W slow (800 mm/s) for residue
-    - Use fume extraction to prevent redeposition
-    - Limit to 2-3 passes maximum to avoid substrate damage
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:03.667279'
+metadata:
+  name: Maple
+  slug: maple
+  category: wood
+  subcategory: hardwood
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 2
+    name: Alessandro Moretti
+    country: Italy
+    country_display: Italy
+    title: Ph.D.
+    sex: m
+    jobTitle: Materials Engineer
+    expertise:
+    - Laser-Based Additive Manufacturing
+    affiliation:
+      name: Politecnico di Milano's Materials Dept.
+      type: EducationalOrganization
+    alumniOf:
+      name: University of Bologna
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Science, TU Milano, 2015
+    - 5+ years industrial ceramics experience
+    - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+    email: info@z-beam.com
+    image: /images/author/alessandro-moretti.jpg
+    imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+    url: https://z-beam.com/authors/alessandro-moretti-phd
+    sameAs:
+    - https://scholar.google.com/citations?user=def456
+    - https://linkedin.com/in/alessandro-moretti-engineer
+    persona_file: italy_persona.yaml
+    formatting_file: italy_formatting.yaml
+  title: Maple Laser Cleaning Settings
+  settings_description: When laser cleaning Maple, I've found gentle pulses work best. This hardwood's tight grain absorbs energy evenly, unlike looser woods that char fast. It brings back finishes on furniture or instruments without splintering. Tends to heat slowly due to low conductivity compared to denser hardwoods. So, keep passes light. Watch for overexposure at the end—it can dull the natural luster if you push too hard.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Wood
+    href: /materials/wood
+  - label: Hardwood
+    href: /materials/wood/hardwood
+  - label: Maple
+    href: /materials/maple
+  images:
+    hero:
+      alt: Maple surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/maple-laser-cleaning-hero.jpg
+    micro:
+      alt: Maple microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/maple-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 45
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 80
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    energyDensity:
+      unit: J/cm²
+      value: 2.8
+      min: 0.1
+      max: 20
+    pulseWidth:
+      unit: ns
+      value: 12
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 2
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+  thermalProperties:
+    thermalDiffusivity:
+      value: 0.13
+      unit: mm²/s
+    thermalConductivity:
+      value: 0.17
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 673
+      unit: K
+      type: charring
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 1.5
+      unit: J/cm²
+    ablationThreshold:
+      value: 2.8
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.2
+      unit: K
+    reflectivity:
+      value: 0.072
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Charring and carbonization
+      severity: high
+      threshold_temperature: 250-300°C
+      impact: Wood chars at low temperatures leaving black marks and structural damage
+      solutions:
+      - Use pulse mode with 2-5 second cooling between passes
+      - Reduce power by 30-40% compared to metals
+      - Increase scan speed to reduce dwell time
+      - Monitor surface for discoloration; stop if browning occurs
+    - challenge: Slow thermal diffusivity
+      severity: medium
+      property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
+      impact: Heat accumulates rapidly causing thermal damage zones
+      solutions:
+      - Increase cooling time between passes
+      - Use lower repetition rates (<20 kHz)
+      - Apply crosshatch patterns to distribute heat
+    surface_characteristics:
+    - challenge: Grain direction sensitivity
+      severity: medium
+      variation: 20-40% absorption variation by grain orientation
+      impact: Laser absorption varies significantly with grain direction
+      solutions:
+      - Scan parallel to grain for consistent results
+      - Use crosshatch pattern (0° and 90°) for uniform cleaning
+      - Test on scrap to determine optimal scan direction
+    - challenge: Porous structure with deep contamination
+      severity: medium
+      porosity_range: 12-65% (softwoods highest)
+      impact: Contaminants penetrate deep into wood structure
+      solutions:
+      - Multiple passes with progressive power increase
+      - Reduce scan speed for deeper penetration (600 mm/s)
+      - Chemical pre-treatment for deep-seated contamination
+    contamination_challenges:
+    - challenge: Varnish and coating removal
+      severity: medium
+      impact: Thick coatings require multiple passes and generate smoke/fumes
+      solutions:
+      - First pass 80W fast (1500 mm/s) for bulk removal
+      - Second pass 60W slow (800 mm/s) for residue
+      - Use fume extraction to prevent redeposition
+      - Limit to 2-3 passes maximum to avoid substrate damage
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:30.987155'

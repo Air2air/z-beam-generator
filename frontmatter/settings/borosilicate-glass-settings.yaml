@@ -1,182 +1,183 @@
-name: Borosilicate Glass
-slug: borosilicate-glass
-category: glass
-subcategory: soda-lime
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-title: Borosilicate Glass Laser Cleaning Settings
-settings_description: We've found that when laser cleaning borosilicate glass, you need to start with gentle power levels right away, since its brittle nature compared to tougher metals can lead to cracks if heat builds up too fast. Begin by scanning slowly to let its superior heat resistance—unlike everyday soda-lime glass—absorb energy without shocking the surface. Then, increase passes gradually, overlapping beams to clear contaminants evenly while preserving the glass's clarity and strength for lab or medical uses.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Glass
-  href: /materials/glass
-- label: Soda Lime
-  href: /materials/glass/soda-lime
-- label: Borosilicate Glass
-  href: /materials/borosilicate-glass
-images:
-  hero:
-    alt: Borosilicate Glass surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/borosilicate-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Borosilicate Glass microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/borosilicate-glass-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 25
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 100
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.62
-    unit: mm²/s
-  thermalConductivity:
-    value: 1.14
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1400
-    unit: K
-    type: softening
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 15
-    unit: J/cm²
-  ablationThreshold:
-    value: 3.8
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 4.56
-    max: 12.0
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.5
-    unit: K
-  reflectivity:
-    value: 0.04
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Thermal shock and catastrophic failure
-    severity: critical
-    threshold_temperature: ΔT > 40-100°C rapid cooling (glass-dependent)
-    impact: Glass shatters from thermal gradients due to low thermal expansion and brittleness
-    solutions:
-    - Use pulse mode with 5-8 second cooling between passes
-    - Preheat substrate to room temperature before cleaning
-    - Avoid cold spots (air vents, cold backing) during processing
-    - Tempered glass more resistant but still susceptible to thermal shock
-    - Monitor for stress fractures; stop immediately if cracks appear
-  - challenge: Low thermal diffusivity
-    severity: high
-    property_value: 0.01-15 mm²/s (most glasses 0.5-1.0 mm²/s)
-    impact: Heat accumulates in localized zones creating thermal gradients
-    solutions:
-    - Reduce power by 30-40% compared to metals
-    - Increase scan speed to distribute heat (1000-2000 mm/s)
-    - Use defocused beam to spread energy over larger area
-    - Optical-grade glass (fused silica) tolerates higher power
-  surface_characteristics:
-  - challenge: Surface defects and stress concentrators
-    severity: high
-    impact: Scratches, chips, and inclusions dramatically lower damage threshold
-    solutions:
-    - Inspect surface with magnification before cleaning
-    - Reduce power 40-50% for scratched or damaged glass
-    - Clean around defects with extreme caution
-    - Polished optical glass requires different parameters than rough architectural glass
-  - challenge: Coating and film removal
-    severity: medium
-    impact: Thin films, anti-reflective coatings, and tints have different damage thresholds than substrate
-    solutions:
-    - Test on edge first to determine coating removal threshold
-    - Coated glass may require 40-60W initial pass
-    - Bare glass requires 20-30% lower power after coating removal
-    - AR coatings very sensitive - use 30-40W maximum
-  contamination_challenges:
-  - challenge: Adhesive and paint removal
-    severity: medium
-    impact: Thick coatings require multiple passes and generate debris that can scratch glass
-    solutions:
-    - First pass 60W fast (1800 mm/s) for bulk removal
-    - Second pass 40W slow (1000 mm/s) for residue
-    - Use air assist to blow debris away from surface
-    - Chemical pre-treatment reduces laser exposure time
-    - Avoid dragging ablated material across clean areas
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:02.200697'
+metadata:
+  name: Borosilicate Glass
+  slug: borosilicate-glass
+  category: glass
+  subcategory: soda-lime
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 1
+    name: Yi-Chun Lin
+    country: Taiwan
+    country_display: Taiwan
+    title: Ph.D.
+    sex: f
+    jobTitle: Laser Processing Engineer
+    expertise:
+    - Laser Materials Processing
+    affiliation:
+      name: National Taiwan University
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Engineering, National Taiwan University, 2018
+    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+    - 3+ years in laser processing R&D
+    - Assisted in projects on ultrafast laser applications
+    email: info@z-beam.com
+    image: /images/author/yi-chun-lin.jpg
+    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+    url: https://z-beam.com/authors/yi-chun-lin
+    sameAs:
+    - https://scholar.google.com/citations?user=ghi789
+    - https://linkedin.com/in/yi-chun-lin-engineer
+    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+    persona_file: taiwan_persona.yaml
+    formatting_file: taiwan_formatting.yaml
+  title: Borosilicate Glass Laser Cleaning Settings
+  settings_description: We've found that when laser cleaning borosilicate glass, you need to start with gentle power levels right away, since its brittle nature compared to tougher metals can lead to cracks if heat builds up too fast. Begin by scanning slowly to let its superior heat resistance—unlike everyday soda-lime glass—absorb energy without shocking the surface. Then, increase passes gradually, overlapping beams to clear contaminants evenly while preserving the glass's clarity and strength for lab or medical uses.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Glass
+    href: /materials/glass
+  - label: Soda Lime
+    href: /materials/glass/soda-lime
+  - label: Borosilicate Glass
+    href: /materials/borosilicate-glass
+  images:
+    hero:
+      alt: Borosilicate Glass surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/borosilicate-glass-laser-cleaning-hero.jpg
+    micro:
+      alt: Borosilicate Glass microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/borosilicate-glass-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 25
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 100
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    fluenceThreshold:
+      unit: J/cm²
+      value: 2.5
+      min: 0.3
+      max: 4.5
+    pulseWidth:
+      unit: ns
+      value: 100
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 3
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+  thermalProperties:
+    thermalDiffusivity:
+      value: 0.62
+      unit: mm²/s
+    thermalConductivity:
+      value: 1.14
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 1400
+      unit: K
+      type: softening
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 15
+      unit: J/cm²
+    ablationThreshold:
+      value: 3.8
+      unit: J/cm²
+    optimalFluenceRange:
+      min: 4.56
+      max: 12.0
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.5
+      unit: K
+    reflectivity:
+      value: 0.04
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Thermal shock and catastrophic failure
+      severity: critical
+      threshold_temperature: ΔT > 40-100°C rapid cooling (glass-dependent)
+      impact: Glass shatters from thermal gradients due to low thermal expansion and brittleness
+      solutions:
+      - Use pulse mode with 5-8 second cooling between passes
+      - Preheat substrate to room temperature before cleaning
+      - Avoid cold spots (air vents, cold backing) during processing
+      - Tempered glass more resistant but still susceptible to thermal shock
+      - Monitor for stress fractures; stop immediately if cracks appear
+    - challenge: Low thermal diffusivity
+      severity: high
+      property_value: 0.01-15 mm²/s (most glasses 0.5-1.0 mm²/s)
+      impact: Heat accumulates in localized zones creating thermal gradients
+      solutions:
+      - Reduce power by 30-40% compared to metals
+      - Increase scan speed to distribute heat (1000-2000 mm/s)
+      - Use defocused beam to spread energy over larger area
+      - Optical-grade glass (fused silica) tolerates higher power
+    surface_characteristics:
+    - challenge: Surface defects and stress concentrators
+      severity: high
+      impact: Scratches, chips, and inclusions dramatically lower damage threshold
+      solutions:
+      - Inspect surface with magnification before cleaning
+      - Reduce power 40-50% for scratched or damaged glass
+      - Clean around defects with extreme caution
+      - Polished optical glass requires different parameters than rough architectural glass
+    - challenge: Coating and film removal
+      severity: medium
+      impact: Thin films, anti-reflective coatings, and tints have different damage thresholds than substrate
+      solutions:
+      - Test on edge first to determine coating removal threshold
+      - Coated glass may require 40-60W initial pass
+      - Bare glass requires 20-30% lower power after coating removal
+      - AR coatings very sensitive - use 30-40W maximum
+    contamination_challenges:
+    - challenge: Adhesive and paint removal
+      severity: medium
+      impact: Thick coatings require multiple passes and generate debris that can scratch glass
+      solutions:
+      - First pass 60W fast (1800 mm/s) for bulk removal
+      - Second pass 40W slow (1000 mm/s) for residue
+      - Use air assist to blow debris away from surface
+      - Chemical pre-treatment reduces laser exposure time
+      - Avoid dragging ablated material across clean areas
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:29.304072'

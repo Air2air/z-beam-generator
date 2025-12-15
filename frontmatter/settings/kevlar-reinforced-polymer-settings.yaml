@@ -1,181 +1,182 @@
-name: Kevlar-Reinforced Polymer
-slug: kevlar-reinforced-polymer
-category: composite
-subcategory: fiber-reinforced
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-title: Kevlar-Reinforced Polymer Laser Cleaning Settings
-settings_description: When laser cleaning Kevlar-reinforced polymer, watch its low heat conduction first—it traps warmth unevenly and risks fiber damage if you push too hard. I've found starting with gentle pulses works best, spreading energy slowly to avoid delamination. This tough composite shines in aerospace parts, where its strength holds up without warping. Just keep scans steady; overtreatment weakens the reinforcement bonds.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composite
-- label: Fiber Reinforced
-  href: /materials/composite/fiber-reinforced
-- label: Kevlar-Reinforced Polymer
-  href: /materials/kevlar-reinforced-polymer
-images:
-  hero:
-    alt: Kevlar-Reinforced Polymer surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/kevlar-reinforced-polymer-laser-cleaning-hero.jpg
-  micro:
-    alt: Kevlar-Reinforced Polymer microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/kevlar-reinforced-polymer-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 45
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 4.5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 15
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 40
-    min: 10
-    max: 90
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.165
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.3
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 773
-    unit: K
-    type: decomposition
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 3.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.3
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 2.76
-    max: 2.8
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.2
-    unit: K
-  reflectivity:
-    value: 0.12
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Matrix degradation and delamination
-    severity: critical
-    threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
-    impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
-    solutions:
-    - Use pulse mode with 5-10 second cooling for polymer-matrix composites
-    - Reduce power by 40-50% compared to monolithic materials
-    - Monitor for discoloration, bubbling, or layer lifting
-    - Ceramic and metal-matrix composites tolerate higher power
-  - challenge: Anisotropic thermal properties
-    severity: high
-    property_value: 10-100x variation parallel vs perpendicular to fibers
-    impact: Heat conducts rapidly along fibers but poorly across layers
-    solutions:
-    - Scan parallel to fiber direction for best heat dissipation
-    - Use crosshatch pattern (0° and 90°) to identify fiber orientation
-    - Increase cooling time 2-3x when scanning perpendicular to fibers
-    - Carbon fiber composites require special attention due to electrical conductivity
-  surface_characteristics:
-  - challenge: Fiber exposure and damage
-    severity: high
-    impact: Aggressive cleaning exposes or damages reinforcing fibers
-    solutions:
-    - Use low energy density (0.5-2 J/cm²) to protect matrix
-    - Multiple gentle passes preferred over single aggressive pass
-    - Stop immediately if fibers become visible
-    - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
-  - challenge: Surface finish variability
-    severity: medium
-    impact: Gel coat, paint, or protective layers alter absorption and damage threshold
-    solutions:
-    - Test on edge or hidden area first
-    - Coated surfaces may require 50-100W initial pass for coating removal
-    - Bare composite requires 30-50% lower power
-    - Adjust parameters when transitioning between coated and uncoated areas
-  contamination_challenges:
-  - challenge: Resin-based contaminant removal
-    severity: medium
-    impact: Adhesives, sealants, and coatings chemically bond to matrix
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 50W slow (800 mm/s) for residue
-    - Chemical pre-treatment improves results for stubborn adhesives
-    - Monitor for matrix damage; stop if surface texture changes
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:03.383971'
+metadata:
+  name: Kevlar-Reinforced Polymer
+  slug: kevlar-reinforced-polymer
+  category: composite
+  subcategory: fiber-reinforced
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 2
+    name: Alessandro Moretti
+    country: Italy
+    country_display: Italy
+    title: Ph.D.
+    sex: m
+    jobTitle: Materials Engineer
+    expertise:
+    - Laser-Based Additive Manufacturing
+    affiliation:
+      name: Politecnico di Milano's Materials Dept.
+      type: EducationalOrganization
+    alumniOf:
+      name: University of Bologna
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Science, TU Milano, 2015
+    - 5+ years industrial ceramics experience
+    - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+    email: info@z-beam.com
+    image: /images/author/alessandro-moretti.jpg
+    imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+    url: https://z-beam.com/authors/alessandro-moretti-phd
+    sameAs:
+    - https://scholar.google.com/citations?user=def456
+    - https://linkedin.com/in/alessandro-moretti-engineer
+    persona_file: italy_persona.yaml
+    formatting_file: italy_formatting.yaml
+  title: Kevlar-Reinforced Polymer Laser Cleaning Settings
+  settings_description: When laser cleaning Kevlar-reinforced polymer, watch its low heat conduction first—it traps warmth unevenly and risks fiber damage if you push too hard. I've found starting with gentle pulses works best, spreading energy slowly to avoid delamination. This tough composite shines in aerospace parts, where its strength holds up without warping. Just keep scans steady; overtreatment weakens the reinforcement bonds.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Composite
+    href: /materials/composite
+  - label: Fiber Reinforced
+    href: /materials/composite/fiber-reinforced
+  - label: Kevlar-Reinforced Polymer
+    href: /materials/kevlar-reinforced-polymer
+  images:
+    hero:
+      alt: Kevlar-Reinforced Polymer surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/kevlar-reinforced-polymer-laser-cleaning-hero.jpg
+    micro:
+      alt: Kevlar-Reinforced Polymer microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/kevlar-reinforced-polymer-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 45
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 80
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    energyDensity:
+      unit: J/cm²
+      value: 4.5
+      min: 0.1
+      max: 20
+    pulseWidth:
+      unit: ns
+      value: 15
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 2
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 40
+      min: 10
+      max: 90
+  thermalProperties:
+    thermalDiffusivity:
+      value: 0.165
+      unit: mm²/s
+    thermalConductivity:
+      value: 0.3
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 773
+      unit: K
+      type: decomposition
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 3.5
+      unit: J/cm²
+    ablationThreshold:
+      value: 2.3
+      unit: J/cm²
+    optimalFluenceRange:
+      min: 2.76
+      max: 2.8
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.2
+      unit: K
+    reflectivity:
+      value: 0.12
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Matrix degradation and delamination
+      severity: critical
+      threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
+      impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
+      solutions:
+      - Use pulse mode with 5-10 second cooling for polymer-matrix composites
+      - Reduce power by 40-50% compared to monolithic materials
+      - Monitor for discoloration, bubbling, or layer lifting
+      - Ceramic and metal-matrix composites tolerate higher power
+    - challenge: Anisotropic thermal properties
+      severity: high
+      property_value: 10-100x variation parallel vs perpendicular to fibers
+      impact: Heat conducts rapidly along fibers but poorly across layers
+      solutions:
+      - Scan parallel to fiber direction for best heat dissipation
+      - Use crosshatch pattern (0° and 90°) to identify fiber orientation
+      - Increase cooling time 2-3x when scanning perpendicular to fibers
+      - Carbon fiber composites require special attention due to electrical conductivity
+    surface_characteristics:
+    - challenge: Fiber exposure and damage
+      severity: high
+      impact: Aggressive cleaning exposes or damages reinforcing fibers
+      solutions:
+      - Use low energy density (0.5-2 J/cm²) to protect matrix
+      - Multiple gentle passes preferred over single aggressive pass
+      - Stop immediately if fibers become visible
+      - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
+    - challenge: Surface finish variability
+      severity: medium
+      impact: Gel coat, paint, or protective layers alter absorption and damage threshold
+      solutions:
+      - Test on edge or hidden area first
+      - Coated surfaces may require 50-100W initial pass for coating removal
+      - Bare composite requires 30-50% lower power
+      - Adjust parameters when transitioning between coated and uncoated areas
+    contamination_challenges:
+    - challenge: Resin-based contaminant removal
+      severity: medium
+      impact: Adhesives, sealants, and coatings chemically bond to matrix
+      solutions:
+      - First pass 80W fast (1500 mm/s) for bulk removal
+      - Second pass 50W slow (800 mm/s) for residue
+      - Chemical pre-treatment improves results for stubborn adhesives
+      - Monitor for matrix damage; stop if surface texture changes
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:30.714725'

@@ -1,179 +1,180 @@
-name: Polyester Resin Composites
-slug: polyester-resin-composites
-category: composite
-subcategory: fiber-reinforced
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-title: Polyester Resin Composites Laser Cleaning Settings
-settings_description: When laser cleaning polyester resin composites, I've found starting with a gentle pass works best. These fiber-reinforced materials differ from plain plastics because they're layered for strength, so the laser clears surface grime without delaminating fibers. You'll notice their low heat spread compared to metals—keeps the base intact. Adjust the beam to skim lightly at first. This tends to restore the smooth finish nicely, especially in aerospace or marine parts where corrosion hides underneath. I've seen it shine up wind turbine blades effectively. Move the scan steadily across the surface. Unlike denser composites, these expand little under heat, avoiding cracks. But watch the edges. End with a final check—too much dwell can yellow the resin, so pull back power if you spot any haze.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composite
-- label: Fiber Reinforced
-  href: /materials/composite/fiber-reinforced
-- label: Polyester Resin Composites
-  href: /materials/polyester-resin-composites
-images:
-  hero:
-    alt: Polyester Resin Composites surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/polyester-resin-composites-laser-cleaning-hero.jpg
-  micro:
-    alt: Polyester Resin Composites microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/polyester-resin-composites-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 90
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  pulseWidth:
-    unit: ns
-    value: 15
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 800
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  fluence:
-    unit: J/cm²
-    value: 3
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.11
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.35
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 673
-    unit: K
-    type: decomposition
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 3.0
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.2
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.44
-    max: 2.4
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.5
-    unit: K
-  reflectivity:
-    value: 0.06
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Matrix degradation and delamination
-    severity: critical
-    threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
-    impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
-    solutions:
-    - Use pulse mode with 5-10 second cooling for polymer-matrix composites
-    - Reduce power by 40-50% compared to monolithic materials
-    - Monitor for discoloration, bubbling, or layer lifting
-    - Ceramic and metal-matrix composites tolerate higher power
-  - challenge: Anisotropic thermal properties
-    severity: high
-    property_value: 10-100x variation parallel vs perpendicular to fibers
-    impact: Heat conducts rapidly along fibers but poorly across layers
-    solutions:
-    - Scan parallel to fiber direction for best heat dissipation
-    - Use crosshatch pattern (0° and 90°) to identify fiber orientation
-    - Increase cooling time 2-3x when scanning perpendicular to fibers
-    - Carbon fiber composites require special attention due to electrical conductivity
-  surface_characteristics:
-  - challenge: Fiber exposure and damage
-    severity: high
-    impact: Aggressive cleaning exposes or damages reinforcing fibers
-    solutions:
-    - Use low energy density (0.5-2 J/cm²) to protect matrix
-    - Multiple gentle passes preferred over single aggressive pass
-    - Stop immediately if fibers become visible
-    - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
-  - challenge: Surface finish variability
-    severity: medium
-    impact: Gel coat, paint, or protective layers alter absorption and damage threshold
-    solutions:
-    - Test on edge or hidden area first
-    - Coated surfaces may require 50-100W initial pass for coating removal
-    - Bare composite requires 30-50% lower power
-    - Adjust parameters when transitioning between coated and uncoated areas
-  contamination_challenges:
-  - challenge: Resin-based contaminant removal
-    severity: medium
-    impact: Adhesives, sealants, and coatings chemically bond to matrix
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 50W slow (800 mm/s) for residue
-    - Chemical pre-treatment improves results for stubborn adhesives
-    - Monitor for matrix damage; stop if surface texture changes
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:04.137502'
+metadata:
+  name: Polyester Resin Composites
+  slug: polyester-resin-composites
+  category: composite
+  subcategory: fiber-reinforced
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 3
+    name: Ikmanda Roswati
+    country: Indonesia
+    country_display: Indonesia
+    title: Ph.D.
+    sex: m
+    jobTitle: Junior Research Scientist in Laser Physics
+    expertise:
+    - Ultrafast Laser Physics and Material Interactions
+    affiliation:
+      name: Bandung Institute of Technology
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Physics, ITB, 2020
+    - 2+ years in ultrafast laser research including ASEAN optics workshops
+    - Assisted in international optics projects
+    languages:
+    - English
+    - Bahasa Indonesia
+    email: info@z-beam.com
+    image: /images/author/ikmanda-roswati.jpg
+    imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+    url: https://z-beam.com/authors/ikmanda-roswati
+    sameAs:
+    - https://linkedin.com/in/ikmanda-roswati-physicist
+    - https://www.academia.edu/profile/IkmandaRoswati
+    persona_file: indonesia_persona.yaml
+    formatting_file: indonesia_formatting.yaml
+  title: Polyester Resin Composites Laser Cleaning Settings
+  settings_description: When laser cleaning polyester resin composites, I've found starting with a gentle pass works best. These fiber-reinforced materials differ from plain plastics because they're layered for strength, so the laser clears surface grime without delaminating fibers. You'll notice their low heat spread compared to metals—keeps the base intact. Adjust the beam to skim lightly at first. This tends to restore the smooth finish nicely, especially in aerospace or marine parts where corrosion hides underneath. I've seen it shine up wind turbine blades effectively. Move the scan steadily across the surface. Unlike denser composites, these expand little under heat, avoiding cracks. But watch the edges. End with a final check—too much dwell can yellow the resin, so pull back power if you spot any haze.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Composite
+    href: /materials/composite
+  - label: Fiber Reinforced
+    href: /materials/composite/fiber-reinforced
+  - label: Polyester Resin Composites
+    href: /materials/polyester-resin-composites
+  images:
+    hero:
+      alt: Polyester Resin Composites surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/polyester-resin-composites-laser-cleaning-hero.jpg
+    micro:
+      alt: Polyester Resin Composites microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/polyester-resin-composites-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 90
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 80
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    pulseWidth:
+      unit: ns
+      value: 15
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 800
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 3
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+    fluence:
+      unit: J/cm²
+      value: 3
+  thermalProperties:
+    thermalDiffusivity:
+      value: 0.11
+      unit: mm²/s
+    thermalConductivity:
+      value: 0.35
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 673
+      unit: K
+      type: decomposition
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 3.0
+      unit: J/cm²
+    ablationThreshold:
+      value: 1.2
+      unit: J/cm²
+    optimalFluenceRange:
+      min: 1.44
+      max: 2.4
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.5
+      unit: K
+    reflectivity:
+      value: 0.06
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Matrix degradation and delamination
+      severity: critical
+      threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
+      impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
+      solutions:
+      - Use pulse mode with 5-10 second cooling for polymer-matrix composites
+      - Reduce power by 40-50% compared to monolithic materials
+      - Monitor for discoloration, bubbling, or layer lifting
+      - Ceramic and metal-matrix composites tolerate higher power
+    - challenge: Anisotropic thermal properties
+      severity: high
+      property_value: 10-100x variation parallel vs perpendicular to fibers
+      impact: Heat conducts rapidly along fibers but poorly across layers
+      solutions:
+      - Scan parallel to fiber direction for best heat dissipation
+      - Use crosshatch pattern (0° and 90°) to identify fiber orientation
+      - Increase cooling time 2-3x when scanning perpendicular to fibers
+      - Carbon fiber composites require special attention due to electrical conductivity
+    surface_characteristics:
+    - challenge: Fiber exposure and damage
+      severity: high
+      impact: Aggressive cleaning exposes or damages reinforcing fibers
+      solutions:
+      - Use low energy density (0.5-2 J/cm²) to protect matrix
+      - Multiple gentle passes preferred over single aggressive pass
+      - Stop immediately if fibers become visible
+      - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
+    - challenge: Surface finish variability
+      severity: medium
+      impact: Gel coat, paint, or protective layers alter absorption and damage threshold
+      solutions:
+      - Test on edge or hidden area first
+      - Coated surfaces may require 50-100W initial pass for coating removal
+      - Bare composite requires 30-50% lower power
+      - Adjust parameters when transitioning between coated and uncoated areas
+    contamination_challenges:
+    - challenge: Resin-based contaminant removal
+      severity: medium
+      impact: Adhesives, sealants, and coatings chemically bond to matrix
+      solutions:
+      - First pass 80W fast (1500 mm/s) for bulk removal
+      - Second pass 50W slow (800 mm/s) for residue
+      - Chemical pre-treatment improves results for stubborn adhesives
+      - Monitor for matrix damage; stop if surface texture changes
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:31.675690'

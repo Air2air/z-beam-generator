@@ -1,176 +1,177 @@
-name: Phenolic Resin Composites
-slug: phenolic-resin-composites
-category: composite
-subcategory: fiber-reinforced
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-title: Phenolic Resin Composites Laser Cleaning Settings
-settings_description: When laser cleaning phenolic resin composites, we typically begin by addressing their tendency to retain heat due to poor thermal conductivity. This buildup risks damaging the resin matrix if power levels rise too quickly, so we recommend starting with conservative settings to allow gradual contaminant removal. Unlike metals that dissipate heat evenly, these fiber-reinforced materials absorb laser energy efficiently but unevenly, which can expose underlying fibers to thermal stress. We've found that multiple low-intensity passes restore surface integrity without delamination. To avoid charring pitfalls, monitor for localized discoloration and adjust scan speeds accordingly, ensuring the composite's compressive strength remains intact for applications in aerospace and automotive sectors.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composite
-- label: Fiber Reinforced
-  href: /materials/composite/fiber-reinforced
-- label: Phenolic Resin Composites
-  href: /materials/phenolic-resin-composites
-images:
-  hero:
-    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/phenolic-resin-composites-laser-cleaning-hero.jpg
-  micro:
-    alt: Phenolic Resin Composites microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/phenolic-resin-composites-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5.1
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.153
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.28
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 723
-    unit: K
-    type: decomposition
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 2.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.3
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.5
-    unit: K
-  reflectivity:
-    value: 0.12
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Matrix degradation and delamination
-    severity: critical
-    threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
-    impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
-    solutions:
-    - Use pulse mode with 5-10 second cooling for polymer-matrix composites
-    - Reduce power by 40-50% compared to monolithic materials
-    - Monitor for discoloration, bubbling, or layer lifting
-    - Ceramic and metal-matrix composites tolerate higher power
-  - challenge: Anisotropic thermal properties
-    severity: high
-    property_value: 10-100x variation parallel vs perpendicular to fibers
-    impact: Heat conducts rapidly along fibers but poorly across layers
-    solutions:
-    - Scan parallel to fiber direction for best heat dissipation
-    - Use crosshatch pattern (0° and 90°) to identify fiber orientation
-    - Increase cooling time 2-3x when scanning perpendicular to fibers
-    - Carbon fiber composites require special attention due to electrical conductivity
-  surface_characteristics:
-  - challenge: Fiber exposure and damage
-    severity: high
-    impact: Aggressive cleaning exposes or damages reinforcing fibers
-    solutions:
-    - Use low energy density (0.5-2 J/cm²) to protect matrix
-    - Multiple gentle passes preferred over single aggressive pass
-    - Stop immediately if fibers become visible
-    - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
-  - challenge: Surface finish variability
-    severity: medium
-    impact: Gel coat, paint, or protective layers alter absorption and damage threshold
-    solutions:
-    - Test on edge or hidden area first
-    - Coated surfaces may require 50-100W initial pass for coating removal
-    - Bare composite requires 30-50% lower power
-    - Adjust parameters when transitioning between coated and uncoated areas
-  contamination_challenges:
-  - challenge: Resin-based contaminant removal
-    severity: medium
-    impact: Adhesives, sealants, and coatings chemically bond to matrix
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 50W slow (800 mm/s) for residue
-    - Chemical pre-treatment improves results for stubborn adhesives
-    - Monitor for matrix damage; stop if surface texture changes
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:03.974125'
+metadata:
+  name: Phenolic Resin Composites
+  slug: phenolic-resin-composites
+  category: composite
+  subcategory: fiber-reinforced
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 4
+    name: Todd Dunning
+    country: United States
+    country_display: United States
+    title: MA
+    sex: m
+    jobTitle: Junior Optical Materials Specialist
+    expertise:
+    - Optical Materials for Laser Systems
+    affiliation:
+      name: Coherent Inc.
+      type: Organization
+    credentials:
+    - BA Physics, UC Irvine, 2017
+    - Hands-on at JPL optics internship, 2018
+    - MA Optics and Photonics, UC Irvine, 2019
+    - 3+ years in laser systems development
+    - Hands-on experience with optical fabrication
+    email: info@z-beam.com
+    image: /images/author/todd-dunning.jpg
+    imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+    url: https://z-beam.com/authors/todd-dunning
+    sameAs:
+    - https://linkedin.com/in/todd-dunning-optics
+    - https://spie.org/profile/Todd.Dunning
+    persona_file: usa_persona.yaml
+    formatting_file: usa_formatting.yaml
+  title: Phenolic Resin Composites Laser Cleaning Settings
+  settings_description: When laser cleaning phenolic resin composites, we typically begin by addressing their tendency to retain heat due to poor thermal conductivity. This buildup risks damaging the resin matrix if power levels rise too quickly, so we recommend starting with conservative settings to allow gradual contaminant removal. Unlike metals that dissipate heat evenly, these fiber-reinforced materials absorb laser energy efficiently but unevenly, which can expose underlying fibers to thermal stress. We've found that multiple low-intensity passes restore surface integrity without delamination. To avoid charring pitfalls, monitor for localized discoloration and adjust scan speeds accordingly, ensuring the composite's compressive strength remains intact for applications in aerospace and automotive sectors.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Composite
+    href: /materials/composite
+  - label: Fiber Reinforced
+    href: /materials/composite/fiber-reinforced
+  - label: Phenolic Resin Composites
+    href: /materials/phenolic-resin-composites
+  images:
+    hero:
+      alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/phenolic-resin-composites-laser-cleaning-hero.jpg
+    micro:
+      alt: Phenolic Resin Composites microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/phenolic-resin-composites-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 100
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 50
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    energyDensity:
+      unit: J/cm²
+      value: 5.1
+      min: 0.1
+      max: 20
+    pulseWidth:
+      unit: ns
+      value: 10
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 3
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+  thermalProperties:
+    thermalDiffusivity:
+      value: 0.153
+      unit: mm²/s
+    thermalConductivity:
+      value: 0.28
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 723
+      unit: K
+      type: decomposition
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 2.5
+      unit: J/cm²
+    ablationThreshold:
+      value: 2.3
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.5
+      unit: K
+    reflectivity:
+      value: 0.12
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Matrix degradation and delamination
+      severity: critical
+      threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
+      impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
+      solutions:
+      - Use pulse mode with 5-10 second cooling for polymer-matrix composites
+      - Reduce power by 40-50% compared to monolithic materials
+      - Monitor for discoloration, bubbling, or layer lifting
+      - Ceramic and metal-matrix composites tolerate higher power
+    - challenge: Anisotropic thermal properties
+      severity: high
+      property_value: 10-100x variation parallel vs perpendicular to fibers
+      impact: Heat conducts rapidly along fibers but poorly across layers
+      solutions:
+      - Scan parallel to fiber direction for best heat dissipation
+      - Use crosshatch pattern (0° and 90°) to identify fiber orientation
+      - Increase cooling time 2-3x when scanning perpendicular to fibers
+      - Carbon fiber composites require special attention due to electrical conductivity
+    surface_characteristics:
+    - challenge: Fiber exposure and damage
+      severity: high
+      impact: Aggressive cleaning exposes or damages reinforcing fibers
+      solutions:
+      - Use low energy density (0.5-2 J/cm²) to protect matrix
+      - Multiple gentle passes preferred over single aggressive pass
+      - Stop immediately if fibers become visible
+      - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
+    - challenge: Surface finish variability
+      severity: medium
+      impact: Gel coat, paint, or protective layers alter absorption and damage threshold
+      solutions:
+      - Test on edge or hidden area first
+      - Coated surfaces may require 50-100W initial pass for coating removal
+      - Bare composite requires 30-50% lower power
+      - Adjust parameters when transitioning between coated and uncoated areas
+    contamination_challenges:
+    - challenge: Resin-based contaminant removal
+      severity: medium
+      impact: Adhesives, sealants, and coatings chemically bond to matrix
+      solutions:
+      - First pass 80W fast (1500 mm/s) for bulk removal
+      - Second pass 50W slow (800 mm/s) for residue
+      - Chemical pre-treatment improves results for stubborn adhesives
+      - Monitor for matrix damage; stop if surface texture changes
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:31.380545'

@@ -1,183 +1,184 @@
-name: Thermoplastic Elastomer
-slug: thermoplastic-elastomer
-category: composite
-subcategory: structural
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-title: Thermoplastic Elastomer Laser Cleaning Settings
-settings_description: We've found that laser cleaning Thermoplastic Elastomer works best when we start with conservative power levels to leverage its good absorption of laser energy, which removes surface contaminants effectively without immediate heat buildup. This approach restores the material's flexibility and surface integrity quickly, as its low thermal conductivity keeps heat localized and prevents widespread softening. In our experience, the elastomer's rubber-like resilience sets it apart from rigid plastics, allowing multiple passes that expose clean layers beneath residues from automotive or medical applications. We adjust scan speeds to be moderate, ensuring the process reduces oxidation risks while maintaining the material's shape. However, always monitor for excessive dwell time at the end, as prolonged exposure can cause deformation in this sensitive composite.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composite
-- label: Structural
-  href: /materials/composite/structural
-- label: Thermoplastic Elastomer
-  href: /materials/thermoplastic-elastomer
-images:
-  hero:
-    alt: Thermoplastic Elastomer surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/thermoplastic-elastomer-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Thermoplastic Elastomer surface after laser cleaning showing detailed surface structure
-    url: /images/material/thermoplastic-elastomer-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 1.2
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    unit: μs
-    value: 100
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.105
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.2
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 523
-    unit: K
-    type: decomposition
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 2.0
-    unit: J/cm²
-  ablationThreshold:
-    value: 0.75
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 0.9
-    max: 1.6
-    unit: J/cm²
-  thermalShockResistance:
-    value: 0.8
-    unit: K
-  reflectivity:
-    value: 0.06
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Matrix degradation and delamination
-    severity: critical
-    threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
-    impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
-    solutions:
-    - Use pulse mode with 5-10 second cooling for polymer-matrix composites
-    - Reduce power by 40-50% compared to monolithic materials
-    - Monitor for discoloration, bubbling, or layer lifting
-    - Ceramic and metal-matrix composites tolerate higher power
-  - challenge: Anisotropic thermal properties
-    severity: high
-    property_value: 10-100x variation parallel vs perpendicular to fibers
-    impact: Heat conducts rapidly along fibers but poorly across layers
-    solutions:
-    - Scan parallel to fiber direction for best heat dissipation
-    - Use crosshatch pattern (0° and 90°) to identify fiber orientation
-    - Increase cooling time 2-3x when scanning perpendicular to fibers
-    - Carbon fiber composites require special attention due to electrical conductivity
-  surface_characteristics:
-  - challenge: Fiber exposure and damage
-    severity: high
-    impact: Aggressive cleaning exposes or damages reinforcing fibers
-    solutions:
-    - Use low energy density (0.5-2 J/cm²) to protect matrix
-    - Multiple gentle passes preferred over single aggressive pass
-    - Stop immediately if fibers become visible
-    - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
-  - challenge: Surface finish variability
-    severity: medium
-    impact: Gel coat, paint, or protective layers alter absorption and damage threshold
-    solutions:
-    - Test on edge or hidden area first
-    - Coated surfaces may require 50-100W initial pass for coating removal
-    - Bare composite requires 30-50% lower power
-    - Adjust parameters when transitioning between coated and uncoated areas
-  contamination_challenges:
-  - challenge: Resin-based contaminant removal
-    severity: medium
-    impact: Adhesives, sealants, and coatings chemically bond to matrix
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 50W slow (800 mm/s) for residue
-    - Chemical pre-treatment improves results for stubborn adhesives
-    - Monitor for matrix damage; stop if surface texture changes
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:05.249372'
+metadata:
+  name: Thermoplastic Elastomer
+  slug: thermoplastic-elastomer
+  category: composite
+  subcategory: structural
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 4
+    name: Todd Dunning
+    country: United States
+    country_display: United States
+    title: MA
+    sex: m
+    jobTitle: Junior Optical Materials Specialist
+    expertise:
+    - Optical Materials for Laser Systems
+    affiliation:
+      name: Coherent Inc.
+      type: Organization
+    credentials:
+    - BA Physics, UC Irvine, 2017
+    - Hands-on at JPL optics internship, 2018
+    - MA Optics and Photonics, UC Irvine, 2019
+    - 3+ years in laser systems development
+    - Hands-on experience with optical fabrication
+    email: info@z-beam.com
+    image: /images/author/todd-dunning.jpg
+    imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+    url: https://z-beam.com/authors/todd-dunning
+    sameAs:
+    - https://linkedin.com/in/todd-dunning-optics
+    - https://spie.org/profile/Todd.Dunning
+    persona_file: usa_persona.yaml
+    formatting_file: usa_formatting.yaml
+  title: Thermoplastic Elastomer Laser Cleaning Settings
+  settings_description: We've found that laser cleaning Thermoplastic Elastomer works best when we start with conservative power levels to leverage its good absorption of laser energy, which removes surface contaminants effectively without immediate heat buildup. This approach restores the material's flexibility and surface integrity quickly, as its low thermal conductivity keeps heat localized and prevents widespread softening. In our experience, the elastomer's rubber-like resilience sets it apart from rigid plastics, allowing multiple passes that expose clean layers beneath residues from automotive or medical applications. We adjust scan speeds to be moderate, ensuring the process reduces oxidation risks while maintaining the material's shape. However, always monitor for excessive dwell time at the end, as prolonged exposure can cause deformation in this sensitive composite.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Composite
+    href: /materials/composite
+  - label: Structural
+    href: /materials/composite/structural
+  - label: Thermoplastic Elastomer
+    href: /materials/thermoplastic-elastomer
+  images:
+    hero:
+      alt: Thermoplastic Elastomer surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/thermoplastic-elastomer-laser-cleaning-hero.jpg
+    micro:
+      alt: Microscopic view of Thermoplastic Elastomer surface after laser cleaning showing detailed surface structure
+      url: /images/material/thermoplastic-elastomer-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 100
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 100
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    energyDensity:
+      unit: J/cm²
+      value: 1.2
+      min: 0.1
+      max: 20
+    pulseWidth:
+      unit: ns
+      value: 10
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 2
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+    dwellTime:
+      unit: μs
+      value: 100
+  thermalProperties:
+    thermalDiffusivity:
+      value: 0.105
+      unit: mm²/s
+    thermalConductivity:
+      value: 0.2
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 523
+      unit: K
+      type: decomposition
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 2.0
+      unit: J/cm²
+    ablationThreshold:
+      value: 0.75
+      unit: J/cm²
+    optimalFluenceRange:
+      min: 0.9
+      max: 1.6
+      unit: J/cm²
+    thermalShockResistance:
+      value: 0.8
+      unit: K
+    reflectivity:
+      value: 0.06
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Matrix degradation and delamination
+      severity: critical
+      threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
+      impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
+      solutions:
+      - Use pulse mode with 5-10 second cooling for polymer-matrix composites
+      - Reduce power by 40-50% compared to monolithic materials
+      - Monitor for discoloration, bubbling, or layer lifting
+      - Ceramic and metal-matrix composites tolerate higher power
+    - challenge: Anisotropic thermal properties
+      severity: high
+      property_value: 10-100x variation parallel vs perpendicular to fibers
+      impact: Heat conducts rapidly along fibers but poorly across layers
+      solutions:
+      - Scan parallel to fiber direction for best heat dissipation
+      - Use crosshatch pattern (0° and 90°) to identify fiber orientation
+      - Increase cooling time 2-3x when scanning perpendicular to fibers
+      - Carbon fiber composites require special attention due to electrical conductivity
+    surface_characteristics:
+    - challenge: Fiber exposure and damage
+      severity: high
+      impact: Aggressive cleaning exposes or damages reinforcing fibers
+      solutions:
+      - Use low energy density (0.5-2 J/cm²) to protect matrix
+      - Multiple gentle passes preferred over single aggressive pass
+      - Stop immediately if fibers become visible
+      - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
+    - challenge: Surface finish variability
+      severity: medium
+      impact: Gel coat, paint, or protective layers alter absorption and damage threshold
+      solutions:
+      - Test on edge or hidden area first
+      - Coated surfaces may require 50-100W initial pass for coating removal
+      - Bare composite requires 30-50% lower power
+      - Adjust parameters when transitioning between coated and uncoated areas
+    contamination_challenges:
+    - challenge: Resin-based contaminant removal
+      severity: medium
+      impact: Adhesives, sealants, and coatings chemically bond to matrix
+      solutions:
+      - First pass 80W fast (1500 mm/s) for bulk removal
+      - Second pass 50W slow (800 mm/s) for residue
+      - Chemical pre-treatment improves results for stubborn adhesives
+      - Monitor for matrix damage; stop if surface texture changes
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:32.885424'

@@ -1,178 +1,179 @@
-name: Teak
-slug: teak
-category: wood
-subcategory: hardwood
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-title: Teak Laser Cleaning Settings
-settings_description: When laser cleaning teak, you'll want to start by focusing on its distinctive oil-rich structure, which sets it apart from drier hardwoods like oak by enhancing laser absorption without rapid heat buildup. This property allows the process to remove surface contaminants effectively while preserving the wood's natural grain and color. Make sure you maintain a steady, controlled scan to avoid uneven charring, as teak's moderate density can lead to localized overheating if speeds vary. Compared to softer woods, teak restores well under gentle passes that expose underlying layers cleanly, reducing the risk of splintering. Adjust dwell times longer than for less absorbent materials to ensure thorough cleaning without compromising its inherent durability.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/wood
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: Teak
-  href: /materials/teak
-images:
-  hero:
-    alt: Teak surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/teak-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Teak surface after laser cleaning showing detailed surface structure
-    url: /images/material/teak-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 45
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 2.8
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 12
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 40
-    min: 10
-    max: 90
-  dwellTime:
-    unit: μs
-    value: 120
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.143
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.15
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 673
-    unit: K
-    type: charring
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 2.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.5
-    unit: K
-  reflectivity:
-    value: 0.12
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Charring and carbonization
-    severity: high
-    threshold_temperature: 250-300°C
-    impact: Wood chars at low temperatures leaving black marks and structural damage
-    solutions:
-    - Use pulse mode with 2-5 second cooling between passes
-    - Reduce power by 30-40% compared to metals
-    - Increase scan speed to reduce dwell time
-    - Monitor surface for discoloration; stop if browning occurs
-  - challenge: Slow thermal diffusivity
-    severity: medium
-    property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
-    impact: Heat accumulates rapidly causing thermal damage zones
-    solutions:
-    - Increase cooling time between passes
-    - Use lower repetition rates (<20 kHz)
-    - Apply crosshatch patterns to distribute heat
-  surface_characteristics:
-  - challenge: Grain direction sensitivity
-    severity: medium
-    variation: 20-40% absorption variation by grain orientation
-    impact: Laser absorption varies significantly with grain direction
-    solutions:
-    - Scan parallel to grain for consistent results
-    - Use crosshatch pattern (0° and 90°) for uniform cleaning
-    - Test on scrap to determine optimal scan direction
-  - challenge: Porous structure with deep contamination
-    severity: medium
-    porosity_range: 12-65% (softwoods highest)
-    impact: Contaminants penetrate deep into wood structure
-    solutions:
-    - Multiple passes with progressive power increase
-    - Reduce scan speed for deeper penetration (600 mm/s)
-    - Chemical pre-treatment for deep-seated contamination
-  contamination_challenges:
-  - challenge: Varnish and coating removal
-    severity: medium
-    impact: Thick coatings require multiple passes and generate smoke/fumes
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 60W slow (800 mm/s) for residue
-    - Use fume extraction to prevent redeposition
-    - Limit to 2-3 passes maximum to avoid substrate damage
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:05.140708'
+metadata:
+  name: Teak
+  slug: teak
+  category: wood
+  subcategory: hardwood
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 4
+    name: Todd Dunning
+    country: United States
+    country_display: United States
+    title: MA
+    sex: m
+    jobTitle: Junior Optical Materials Specialist
+    expertise:
+    - Optical Materials for Laser Systems
+    affiliation:
+      name: Coherent Inc.
+      type: Organization
+    credentials:
+    - BA Physics, UC Irvine, 2017
+    - Hands-on at JPL optics internship, 2018
+    - MA Optics and Photonics, UC Irvine, 2019
+    - 3+ years in laser systems development
+    - Hands-on experience with optical fabrication
+    email: info@z-beam.com
+    image: /images/author/todd-dunning.jpg
+    imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+    url: https://z-beam.com/authors/todd-dunning
+    sameAs:
+    - https://linkedin.com/in/todd-dunning-optics
+    - https://spie.org/profile/Todd.Dunning
+    persona_file: usa_persona.yaml
+    formatting_file: usa_formatting.yaml
+  title: Teak Laser Cleaning Settings
+  settings_description: When laser cleaning teak, you'll want to start by focusing on its distinctive oil-rich structure, which sets it apart from drier hardwoods like oak by enhancing laser absorption without rapid heat buildup. This property allows the process to remove surface contaminants effectively while preserving the wood's natural grain and color. Make sure you maintain a steady, controlled scan to avoid uneven charring, as teak's moderate density can lead to localized overheating if speeds vary. Compared to softer woods, teak restores well under gentle passes that expose underlying layers cleanly, reducing the risk of splintering. Adjust dwell times longer than for less absorbent materials to ensure thorough cleaning without compromising its inherent durability.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Wood
+    href: /materials/wood
+  - label: Hardwood
+    href: /materials/wood/hardwood
+  - label: Teak
+    href: /materials/teak
+  images:
+    hero:
+      alt: Teak surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/teak-laser-cleaning-hero.jpg
+    micro:
+      alt: Microscopic view of Teak surface after laser cleaning showing detailed surface structure
+      url: /images/material/teak-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 45
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 80
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    energyDensity:
+      unit: J/cm²
+      value: 2.8
+      min: 0.1
+      max: 20
+    pulseWidth:
+      unit: ns
+      value: 12
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 2
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 40
+      min: 10
+      max: 90
+    dwellTime:
+      unit: μs
+      value: 120
+  thermalProperties:
+    thermalDiffusivity:
+      value: 0.143
+      unit: mm²/s
+    thermalConductivity:
+      value: 0.15
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 673
+      unit: K
+      type: charring
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 2.5
+      unit: J/cm²
+    ablationThreshold:
+      value: 2.8
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.5
+      unit: K
+    reflectivity:
+      value: 0.12
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Charring and carbonization
+      severity: high
+      threshold_temperature: 250-300°C
+      impact: Wood chars at low temperatures leaving black marks and structural damage
+      solutions:
+      - Use pulse mode with 2-5 second cooling between passes
+      - Reduce power by 30-40% compared to metals
+      - Increase scan speed to reduce dwell time
+      - Monitor surface for discoloration; stop if browning occurs
+    - challenge: Slow thermal diffusivity
+      severity: medium
+      property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
+      impact: Heat accumulates rapidly causing thermal damage zones
+      solutions:
+      - Increase cooling time between passes
+      - Use lower repetition rates (<20 kHz)
+      - Apply crosshatch patterns to distribute heat
+    surface_characteristics:
+    - challenge: Grain direction sensitivity
+      severity: medium
+      variation: 20-40% absorption variation by grain orientation
+      impact: Laser absorption varies significantly with grain direction
+      solutions:
+      - Scan parallel to grain for consistent results
+      - Use crosshatch pattern (0° and 90°) for uniform cleaning
+      - Test on scrap to determine optimal scan direction
+    - challenge: Porous structure with deep contamination
+      severity: medium
+      porosity_range: 12-65% (softwoods highest)
+      impact: Contaminants penetrate deep into wood structure
+      solutions:
+      - Multiple passes with progressive power increase
+      - Reduce scan speed for deeper penetration (600 mm/s)
+      - Chemical pre-treatment for deep-seated contamination
+    contamination_challenges:
+    - challenge: Varnish and coating removal
+      severity: medium
+      impact: Thick coatings require multiple passes and generate smoke/fumes
+      solutions:
+      - First pass 80W fast (1500 mm/s) for bulk removal
+      - Second pass 60W slow (800 mm/s) for residue
+      - Use fume extraction to prevent redeposition
+      - Limit to 2-3 passes maximum to avoid substrate damage
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:32.768129'

@@ -1104,6 +1104,9 @@ class TrivialFrontmatterExporter:
             }
         }
         
+        # NORMALIZATION: Wrap all fields in metadata property to match materials structure
+        output_data = {'metadata': settings_page}
+        
         # Write settings page YAML
         # POLICY: Strip parentheses from all filenames for clean URLs and consistency
         material_slug = create_material_slug(material_name)
@@ -1111,7 +1114,7 @@ class TrivialFrontmatterExporter:
         output_path = self.settings_output_dir / filename
         
         with open(output_path, 'w', encoding='utf-8') as f:
-            yaml.dump(settings_page, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
+            yaml.dump(output_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
         
         self.logger.info(f"✅ Exported settings page: {material_name} → {filename}")
     

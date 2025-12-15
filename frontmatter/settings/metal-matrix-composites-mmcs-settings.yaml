@@ -1,180 +1,181 @@
-name: Metal Matrix Composites MMCs
-slug: metal-matrix-composites-mmcs
-category: composite
-subcategory: fiber-reinforced
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-title: Metal Matrix Composites MMCs Laser Cleaning Settings
-settings_description: When laser cleaning metal matrix composites, unlike pure metals that heat evenly, watch out for their embedded reinforcements—these can cause uneven heat buildup right from the start, risking cracks if you push power too high. We've found that starting with lower energy pulses helps control this, letting the laser clear contaminants without stressing the matrix. What sets MMCs apart is their hybrid strength from metal and fibers, so you adjust scan speeds slower to match their good heat spreading, avoiding delamination. In our experience, this approach restores surfaces smoothly for aerospace parts, but always test overlaps to prevent hot spots in the tougher zones.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composite
-- label: Fiber Reinforced
-  href: /materials/composite/fiber-reinforced
-- label: Metal Matrix Composites MMCs
-  href: /materials/metal-matrix-composites-mmcs
-images:
-  hero:
-    alt: Metal Matrix Composites Mmcs surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/metal-matrix-composites-mmcs-laser-cleaning-hero.jpg
-  micro:
-    alt: Metal Matrix Composites Mmcs microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/metal-matrix-composites-mmcs-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    unit: μs
-    value: 100
-thermalProperties:
-  thermalDiffusivity:
-    value: 85.0
-    unit: mm²/s
-  thermalConductivity:
-    value: 170.0
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1200
-    unit: K
-    type: decomposition
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 2.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.8
-    unit: K
-  reflectivity:
-    value: 0.82
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Matrix degradation and delamination
-    severity: critical
-    threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
-    impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
-    solutions:
-    - Use pulse mode with 5-10 second cooling for polymer-matrix composites
-    - Reduce power by 40-50% compared to monolithic materials
-    - Monitor for discoloration, bubbling, or layer lifting
-    - Ceramic and metal-matrix composites tolerate higher power
-  - challenge: Anisotropic thermal properties
-    severity: high
-    property_value: 10-100x variation parallel vs perpendicular to fibers
-    impact: Heat conducts rapidly along fibers but poorly across layers
-    solutions:
-    - Scan parallel to fiber direction for best heat dissipation
-    - Use crosshatch pattern (0° and 90°) to identify fiber orientation
-    - Increase cooling time 2-3x when scanning perpendicular to fibers
-    - Carbon fiber composites require special attention due to electrical conductivity
-  surface_characteristics:
-  - challenge: Fiber exposure and damage
-    severity: high
-    impact: Aggressive cleaning exposes or damages reinforcing fibers
-    solutions:
-    - Use low energy density (0.5-2 J/cm²) to protect matrix
-    - Multiple gentle passes preferred over single aggressive pass
-    - Stop immediately if fibers become visible
-    - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
-  - challenge: Surface finish variability
-    severity: medium
-    impact: Gel coat, paint, or protective layers alter absorption and damage threshold
-    solutions:
-    - Test on edge or hidden area first
-    - Coated surfaces may require 50-100W initial pass for coating removal
-    - Bare composite requires 30-50% lower power
-    - Adjust parameters when transitioning between coated and uncoated areas
-  contamination_challenges:
-  - challenge: Resin-based contaminant removal
-    severity: medium
-    impact: Adhesives, sealants, and coatings chemically bond to matrix
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 50W slow (800 mm/s) for residue
-    - Chemical pre-treatment improves results for stubborn adhesives
-    - Monitor for matrix damage; stop if surface texture changes
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:03.722629'
+metadata:
+  name: Metal Matrix Composites MMCs
+  slug: metal-matrix-composites-mmcs
+  category: composite
+  subcategory: fiber-reinforced
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 3
+    name: Ikmanda Roswati
+    country: Indonesia
+    country_display: Indonesia
+    title: Ph.D.
+    sex: m
+    jobTitle: Junior Research Scientist in Laser Physics
+    expertise:
+    - Ultrafast Laser Physics and Material Interactions
+    affiliation:
+      name: Bandung Institute of Technology
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Physics, ITB, 2020
+    - 2+ years in ultrafast laser research including ASEAN optics workshops
+    - Assisted in international optics projects
+    languages:
+    - English
+    - Bahasa Indonesia
+    email: info@z-beam.com
+    image: /images/author/ikmanda-roswati.jpg
+    imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+    url: https://z-beam.com/authors/ikmanda-roswati
+    sameAs:
+    - https://linkedin.com/in/ikmanda-roswati-physicist
+    - https://www.academia.edu/profile/IkmandaRoswati
+    persona_file: indonesia_persona.yaml
+    formatting_file: indonesia_formatting.yaml
+  title: Metal Matrix Composites MMCs Laser Cleaning Settings
+  settings_description: When laser cleaning metal matrix composites, unlike pure metals that heat evenly, watch out for their embedded reinforcements—these can cause uneven heat buildup right from the start, risking cracks if you push power too high. We've found that starting with lower energy pulses helps control this, letting the laser clear contaminants without stressing the matrix. What sets MMCs apart is their hybrid strength from metal and fibers, so you adjust scan speeds slower to match their good heat spreading, avoiding delamination. In our experience, this approach restores surfaces smoothly for aerospace parts, but always test overlaps to prevent hot spots in the tougher zones.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Composite
+    href: /materials/composite
+  - label: Fiber Reinforced
+    href: /materials/composite/fiber-reinforced
+  - label: Metal Matrix Composites MMCs
+    href: /materials/metal-matrix-composites-mmcs
+  images:
+    hero:
+      alt: Metal Matrix Composites Mmcs surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/metal-matrix-composites-mmcs-laser-cleaning-hero.jpg
+    micro:
+      alt: Metal Matrix Composites Mmcs microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/metal-matrix-composites-mmcs-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 100
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 1064
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 50
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    energyDensity:
+      unit: J/cm²
+      value: 5
+      min: 0.1
+      max: 20
+    pulseWidth:
+      unit: ns
+      value: 10
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 3
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+    dwellTime:
+      unit: μs
+      value: 100
+  thermalProperties:
+    thermalDiffusivity:
+      value: 85.0
+      unit: mm²/s
+    thermalConductivity:
+      value: 170.0
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 1200
+      unit: K
+      type: decomposition
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 2.5
+      unit: J/cm²
+    ablationThreshold:
+      value: 2.8
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.8
+      unit: K
+    reflectivity:
+      value: 0.82
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Matrix degradation and delamination
+      severity: critical
+      threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
+      impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
+      solutions:
+      - Use pulse mode with 5-10 second cooling for polymer-matrix composites
+      - Reduce power by 40-50% compared to monolithic materials
+      - Monitor for discoloration, bubbling, or layer lifting
+      - Ceramic and metal-matrix composites tolerate higher power
+    - challenge: Anisotropic thermal properties
+      severity: high
+      property_value: 10-100x variation parallel vs perpendicular to fibers
+      impact: Heat conducts rapidly along fibers but poorly across layers
+      solutions:
+      - Scan parallel to fiber direction for best heat dissipation
+      - Use crosshatch pattern (0° and 90°) to identify fiber orientation
+      - Increase cooling time 2-3x when scanning perpendicular to fibers
+      - Carbon fiber composites require special attention due to electrical conductivity
+    surface_characteristics:
+    - challenge: Fiber exposure and damage
+      severity: high
+      impact: Aggressive cleaning exposes or damages reinforcing fibers
+      solutions:
+      - Use low energy density (0.5-2 J/cm²) to protect matrix
+      - Multiple gentle passes preferred over single aggressive pass
+      - Stop immediately if fibers become visible
+      - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
+    - challenge: Surface finish variability
+      severity: medium
+      impact: Gel coat, paint, or protective layers alter absorption and damage threshold
+      solutions:
+      - Test on edge or hidden area first
+      - Coated surfaces may require 50-100W initial pass for coating removal
+      - Bare composite requires 30-50% lower power
+      - Adjust parameters when transitioning between coated and uncoated areas
+    contamination_challenges:
+    - challenge: Resin-based contaminant removal
+      severity: medium
+      impact: Adhesives, sealants, and coatings chemically bond to matrix
+      solutions:
+      - First pass 80W fast (1500 mm/s) for bulk removal
+      - Second pass 50W slow (800 mm/s) for residue
+      - Chemical pre-treatment improves results for stubborn adhesives
+      - Monitor for matrix damage; stop if surface texture changes
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:31.046280'

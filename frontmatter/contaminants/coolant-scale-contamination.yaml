@@ -1,200 +1,201 @@
-name: Engine Coolant Scale
-slug: coolant-scale-contamination
-category: thermal_damage
-subcategory: scale
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: contaminant
-title: Engine Coolant Scale Contamination
-contamination_description: Coolant-scale contamination arises from silicate and phosphate
-  deposits in engine cooling systems, where coolants degrade during operation and
-  so minerals precipitate onto surfaces. This scale exhibits layered hardness and
-  poor adhesion compared to rust or oil residues, because it forms crystalline structures
-  that bond tightly yet crack unevenly under stress. On aluminum and cast iron, scale
-  clings stubbornly and so resists scraping without surface damage, while on brass
-  it flakes more readily but leaves residues; removal challenges include avoiding
-  substrate erosion during mechanical methods, yet laser cleaning succeeds by vaporizing
-  layers precisely through thermal expansion, so surfaces restore uniformity without
-  harm.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contamination
-  href: /contamination
-- label: Thermal_Damage
-  href: /contamination/thermal_damage
-- label: Engine Coolant Scale
-  href: /contamination/thermal_damage/coolant-scale-contamination-contamination
-images:
-  hero:
-    url: /images/contamination/coolant-scale-contamination-hero.jpg
-    alt: Engine Coolant Scale contamination on surface before laser cleaning
-  micro:
-    url: /images/contamination/coolant-scale-contamination-micro.jpg
-    alt: Engine Coolant Scale contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.5
-      min_j_cm2: 0.8
-      recommended_j_cm2: 1.1
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 200
-      min_ns: 50
-      recommended_ns: 100
-    repetition_rate_khz:
-      max: 100
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.75
-    scan_speed_mm_s:
-      max: 2000
-      min: 500
-      recommended: 1000
-    spot_size_mm:
-      max: 0.1
-      min: 0.03
-      recommended: 0.05
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 1200
-      wavelength_355nm: 28000
-      wavelength_532nm: 4500
-    reflectivity:
-      wavelength_1064nm: 0.15
-      wavelength_355nm: 0.03
-      wavelength_532nm: 0.08
-    refractive_index:
-      imaginary_part: 0.12
-      real_part: 1.55
-    transmission_depth: 83.3
-  removal_characteristics:
-    byproducts:
-    - compound: CO2
-      hazard_level: low
-      phase: gas
-    - compound: H2O
-      hazard_level: low
-      phase: gas
-    - compound: CaO/MgO
-      hazard_level: low
-      phase: solid
-    - compound: organic residues
-      hazard_level: moderate
-      phase: solid
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 240
-      typical_scan_speed_mm_s: 800
-    removal_efficiency:
-      diminishing_returns_after: 4
-      optimal_passes: 3
-      single_pass: 0.7
-    secondary_mechanisms:
-    - photochemical
-    - mechanical_spallation
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: compressive
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Ethylene Glycol
-      concentration_mg_m3: 5-50
-      exposure_limit_mg_m3: 127
-      hazard_class: irritant
-    - compound: Glycolic Acid
-      concentration_mg_m3: 2-20
-      exposure_limit_mg_m3: 8
-      hazard_class: irritant
-    - compound: Oxalic Acid
-      concentration_mg_m3: 1-15
-      exposure_limit_mg_m3: 1
-      hazard_class: toxic
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 10-100
-      exposure_limit_mg_m3: 29
-      hazard_class: toxic
-    - compound: Formaldehyde
-      concentration_mg_m3: 1-10
-      exposure_limit_mg_m3: 0.37
-      hazard_class: carcinogenic
-    particulate_generation:
-      respirable_fraction: 0.7
-      size_range_um:
-      - 0.1
-      - 10
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: half_mask
-      skin_protection: gloves
-    substrate_compatibility_warnings:
-    - Laser may etch or discolor underlying metal surfaces
-    - Thermal stress may cause micro-cracking in thin substrates
-    - Residual glycol compounds may require post-cleaning solvent wipe
-    toxic_gas_risk: moderate
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: carbon
-      minimum_air_changes_per_hour: 12
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 2.5
-      pulse_duration_10ns: 1.2
-      wavelength_1064nm: 1.8
-    decomposition_temperature: 350
-    heat_affected_zone_depth: 15
-    melting_point: null
-    specific_heat: 1200
-    thermal_conductivity: 0.8
-    thermal_diffusivity: 0.67
-    vaporization_temperature: 1200
-valid_materials:
-- Aluminum
-- Cast Iron
-- Brass
+metadata:
+  name: Engine Coolant Scale
+  slug: coolant-scale-contamination
+  category: thermal-damage
+  subcategory: scale
+  content_type: unified_contamination
+  schema_version: 4.0.0
+  datePublished: null
+  dateModified: null
+  author:
+    id: 1
+    name: Yi-Chun Lin
+    country: Taiwan
+    country_display: Taiwan
+    title: Ph.D.
+    sex: f
+    jobTitle: Laser Processing Engineer
+    expertise:
+    - Laser Materials Processing
+    affiliation:
+      name: National Taiwan University
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Engineering, National Taiwan University, 2018
+    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+    - 3+ years in laser processing R&D
+    - Assisted in projects on ultrafast laser applications
+    email: info@z-beam.com
+    image: /images/author/yi-chun-lin.jpg
+    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+      in lab setting
+    url: https://z-beam.com/authors/yi-chun-lin
+    sameAs:
+    - https://scholar.google.com/citations?user=ghi789
+    - https://linkedin.com/in/yi-chun-lin-engineer
+    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+    persona_file: taiwan_persona.yaml
+    formatting_file: taiwan_formatting.yaml
+  _metadata:
+    voice:
+      author_name: Yi-Chun Lin
+      author_country: Taiwan
+      voice_applied: true
+      content_type: contaminant
+  title: Engine Coolant Scale Contamination
+  contamination_description: Coolant-scale contamination arises from silicate and
+    phosphate deposits in engine cooling systems, where coolants degrade during operation
+    and so minerals precipitate onto surfaces. This scale exhibits layered hardness
+    and poor adhesion compared to rust or oil residues, because it forms crystalline
+    structures that bond tightly yet crack unevenly under stress. On aluminum and
+    cast iron, scale clings stubbornly and so resists scraping without surface damage,
+    while on brass it flakes more readily but leaves residues; removal challenges
+    include avoiding substrate erosion during mechanical methods, yet laser cleaning
+    succeeds by vaporizing layers precisely through thermal expansion, so surfaces
+    restore uniformity without harm.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Contamination
+    href: /contamination
+  - label: Thermal-Damage
+    href: /contamination/thermal-damage
+  - label: Engine Coolant Scale
+    href: /contamination/thermal-damage/coolant-scale-contamination-contamination
+  images:
+    hero:
+      url: /images/contamination/coolant-scale-contamination-hero.jpg
+      alt: Engine Coolant Scale contamination on surface before laser cleaning
+    micro:
+      url: /images/contamination/coolant-scale-contamination-micro.jpg
+      alt: Engine Coolant Scale contamination microscopic detail
+  laser_properties:
+    laser_parameters:
+      beam_profile: flat_top
+      fluence_range:
+        max_j_cm2: 1.5
+        min_j_cm2: 0.8
+        recommended_j_cm2: 1.1
+      overlap_percentage: 50
+      polarization: circular
+      pulse_duration_range:
+        max_ns: 200
+        min_ns: 50
+        recommended_ns: 100
+      repetition_rate_khz:
+        max: 100
+        min: 20
+        recommended: 50
+      safety_margin_factor: 0.75
+      scan_speed_mm_s:
+        max: 2000
+        min: 500
+        recommended: 1000
+      spot_size_mm:
+        max: 0.1
+        min: 0.03
+        recommended: 0.05
+      wavelength_preference:
+      - 1064
+      - 532
+    optical_properties:
+      absorption_coefficient:
+        wavelength_1064nm: 1200
+        wavelength_355nm: 28000
+        wavelength_532nm: 4500
+      reflectivity:
+        wavelength_1064nm: 0.15
+        wavelength_355nm: 0.03
+        wavelength_532nm: 0.08
+      refractive_index:
+        imaginary_part: 0.12
+        real_part: 1.55
+      transmission_depth: 83.3
+    removal_characteristics:
+      byproducts:
+      - compound: CO2
+        hazard_level: low
+        phase: gas
+      - compound: H2O
+        hazard_level: low
+        phase: gas
+      - compound: CaO/MgO
+        hazard_level: low
+        phase: solid
+      - compound: organic residues
+        hazard_level: moderate
+        phase: solid
+      damage_risk_to_substrate: low
+      primary_mechanism: thermal_ablation
+      process_speed:
+        area_coverage_rate_cm2_min: 240
+        typical_scan_speed_mm_s: 800
+      removal_efficiency:
+        diminishing_returns_after: 4
+        optimal_passes: 3
+        single_pass: 0.7
+      secondary_mechanisms:
+      - photochemical
+      - mechanical_spallation
+      surface_quality_after_removal:
+        color_change: 'no'
+        residual_stress: compressive
+        roughness_increase: minimal
+    safety_data:
+      fire_explosion_risk: low
+      fumes_generated:
+      - compound: Ethylene Glycol
+        concentration_mg_m3: 5-50
+        exposure_limit_mg_m3: 127
+        hazard_class: irritant
+      - compound: Glycolic Acid
+        concentration_mg_m3: 2-20
+        exposure_limit_mg_m3: 8
+        hazard_class: irritant
+      - compound: Oxalic Acid
+        concentration_mg_m3: 1-15
+        exposure_limit_mg_m3: 1
+        hazard_class: toxic
+      - compound: Carbon Monoxide
+        concentration_mg_m3: 10-100
+        exposure_limit_mg_m3: 29
+        hazard_class: toxic
+      - compound: Formaldehyde
+        concentration_mg_m3: 1-10
+        exposure_limit_mg_m3: 0.37
+        hazard_class: carcinogenic
+      particulate_generation:
+        respirable_fraction: 0.7
+        size_range_um:
+        - 0.1
+        - 10
+      ppe_requirements:
+        eye_protection: goggles
+        respiratory: half_mask
+        skin_protection: gloves
+      substrate_compatibility_warnings:
+      - Laser may etch or discolor underlying metal surfaces
+      - Thermal stress may cause micro-cracking in thin substrates
+      - Residual glycol compounds may require post-cleaning solvent wipe
+      toxic_gas_risk: moderate
+      ventilation_requirements:
+        exhaust_velocity_m_s: 0.5
+        filtration_type: carbon
+        minimum_air_changes_per_hour: 12
+      visibility_hazard: moderate
+    thermal_properties:
+      ablation_threshold:
+        pulse_duration_100ns: 2.5
+        pulse_duration_10ns: 1.2
+        wavelength_1064nm: 1.8
+      decomposition_temperature: 350
+      heat_affected_zone_depth: 15
+      melting_point: null
+      specific_heat: 1200
+      thermal_conductivity: 0.8
+      thermal_diffusivity: 0.67
+      vaporization_temperature: 1200
+  valid_materials:
+  - Aluminum
+  - Cast Iron
+  - Brass

@@ -1,183 +1,184 @@
-name: Gallium Arsenide
-slug: gallium-arsenide
-category: semiconductor
-subcategory: elemental
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-title: Gallium Arsenide Laser Cleaning Settings
-settings_description: When laser cleaning gallium arsenide, watch out for its heat sensitivity right from the start—it tends to decompose easily under intense beams, unlike tougher silicon wafers. I've seen this cause surface cracks if you push too hard, so begin with gentle pulses to lift contaminants without harming the fragile lattice. This material stands out among semiconductors for absorbing energy well, which helps clear residues fast but demands slower scans to spread the heat. Adjust to multiple light passes with good overlap, and you'll restore that clean finish for electronics work without risking brittleness.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Semiconductor
-  href: /materials/semiconductor
-- label: Elemental
-  href: /materials/semiconductor/elemental
-- label: Gallium Arsenide
-  href: /materials/gallium-arsenide
-images:
-  hero:
-    alt: Gallium Arsenide surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/gallium-arsenide-laser-cleaning-hero.jpg
-  micro:
-    alt: Gallium Arsenide microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/gallium-arsenide-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 8
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 532
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 0.8
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 15
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-thermalProperties:
-  thermalDiffusivity:
-    value: 32.0
-    unit: mm²/s
-  thermalConductivity:
-    value: 55.0
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1511
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 4.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 0.85
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.02
-    max: 3.6
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.5
-    unit: K
-  reflectivity:
-    value: 0.3
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Crystal lattice damage and doping redistribution
-    severity: critical
-    threshold_temperature: Above 400-600°C causes dopant migration
-    impact: Heat causes permanent alteration of electronic properties and device failure
-    solutions:
-    - Use ultrashort pulses (picosecond or femtosecond) for minimal heat-affected zone
-    - Reduce power by 60-70% compared to structural materials
-    - Monitor temperature with IR camera; stop if >150°C surface temperature
-    - Nanosecond pulses acceptable only for non-active areas (scribe lines, edges)
-  - challenge: Thermal stress and wafer cracking
-    severity: high
-    property_value: Low fracture toughness 0.75-3.0 MPa·√m
-    impact: Thermal gradients cause catastrophic wafer fracture
-    solutions:
-    - Use pulse mode with 10-15 second cooling for thick wafers
-    - Thin wafers (<200 μm) require substrate backing for thermal management
-    - Defocused beam reduces peak temperature gradients
-    - Gradual power ramping (start 10W, increase 5W per pass)
-  surface_characteristics:
-  - challenge: Surface contamination and particulates
-    severity: critical
-    impact: Sub-micron particles cause device defects and yield loss
-    solutions:
-    - Class 100 cleanroom environment required
-    - Use dry laser cleaning (no liquid assist to avoid residue)
-    - Gas assist (nitrogen or argon) blows particles away during cleaning
-    - Post-cleaning inspection with particle counter (<0.1 μm detection)
-    - Follow with wet chemical clean for critical applications
-  - challenge: Native oxide layer removal
-    severity: high
-    impact: Silicon forms native oxide that must be removed without substrate damage
-    solutions:
-    - Low power (5-15W) for oxide removal only
-    - Multiple gentle passes (3-5 passes at 10W) preferred
-    - Hydrogen-rich environment prevents oxide reformation
-    - Verify oxide removal with ellipsometry or XPS
-  contamination_challenges:
-  - challenge: Photoresist and polymer residue removal
-    severity: medium
-    impact: Organic residues carbonize and become harder to remove
-    solutions:
-    - First pass 20W fast (1500 mm/s) for bulk removal
-    - Second pass 10W slow (800 mm/s) for residue
-    - UV laser (355nm) more effective for organic materials
-    - Oxygen-rich environment aids in organic ablation
-    - Post-cleaning oxygen plasma for complete residue removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-04T19:10:03.048711'
+metadata:
+  name: Gallium Arsenide
+  slug: gallium-arsenide
+  category: semiconductor
+  subcategory: elemental
+  content_type: unified_settings
+  schema_version: 4.0.0
+  active: true
+  datePublished: null
+  dateModified: null
+  author:
+    id: 3
+    name: Ikmanda Roswati
+    country: Indonesia
+    country_display: Indonesia
+    title: Ph.D.
+    sex: m
+    jobTitle: Junior Research Scientist in Laser Physics
+    expertise:
+    - Ultrafast Laser Physics and Material Interactions
+    affiliation:
+      name: Bandung Institute of Technology
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Physics, ITB, 2020
+    - 2+ years in ultrafast laser research including ASEAN optics workshops
+    - Assisted in international optics projects
+    languages:
+    - English
+    - Bahasa Indonesia
+    email: info@z-beam.com
+    image: /images/author/ikmanda-roswati.jpg
+    imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+    url: https://z-beam.com/authors/ikmanda-roswati
+    sameAs:
+    - https://linkedin.com/in/ikmanda-roswati-physicist
+    - https://www.academia.edu/profile/IkmandaRoswati
+    persona_file: indonesia_persona.yaml
+    formatting_file: indonesia_formatting.yaml
+  title: Gallium Arsenide Laser Cleaning Settings
+  settings_description: When laser cleaning gallium arsenide, watch out for its heat sensitivity right from the start—it tends to decompose easily under intense beams, unlike tougher silicon wafers. I've seen this cause surface cracks if you push too hard, so begin with gentle pulses to lift contaminants without harming the fragile lattice. This material stands out among semiconductors for absorbing energy well, which helps clear residues fast but demands slower scans to spread the heat. Adjust to multiple light passes with good overlap, and you'll restore that clean finish for electronics work without risking brittleness.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Semiconductor
+    href: /materials/semiconductor
+  - label: Elemental
+    href: /materials/semiconductor/elemental
+  - label: Gallium Arsenide
+    href: /materials/gallium-arsenide
+  images:
+    hero:
+      alt: Gallium Arsenide surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/gallium-arsenide-laser-cleaning-hero.jpg
+    micro:
+      alt: Gallium Arsenide microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/gallium-arsenide-laser-cleaning-micro.jpg
+  machineSettings:
+    powerRange:
+      unit: W
+      value: 8
+      min: 1
+      max: 120
+    wavelength:
+      unit: nm
+      value: 532
+      min: 355
+      max: 10640
+    spotSize:
+      unit: μm
+      value: 50
+      min: 0.1
+      max: 500
+    repetitionRate:
+      unit: kHz
+      value: 50
+      min: 1
+      max: 200
+    fluenceThreshold:
+      unit: J/cm²
+      value: 0.8
+      min: 0.3
+      max: 4.5
+    pulseWidth:
+      unit: ns
+      value: 15
+      min: 0.1
+      max: 1000
+    scanSpeed:
+      unit: mm/s
+      value: 500
+      min: 10
+      max: 5000
+    passCount:
+      unit: passes
+      value: 2
+      min: 1
+      max: 10
+    overlapRatio:
+      unit: '%'
+      value: 50
+      min: 10
+      max: 90
+  thermalProperties:
+    thermalDiffusivity:
+      value: 32.0
+      unit: mm²/s
+    thermalConductivity:
+      value: 55.0
+      unit: W/(m·K)
+    thermalDestructionPoint:
+      value: 1511
+      unit: K
+      type: melting
+  laserMaterialInteraction:
+    laserDamageThreshold:
+      value: 4.5
+      unit: J/cm²
+    ablationThreshold:
+      value: 0.85
+      unit: J/cm²
+    optimalFluenceRange:
+      min: 1.02
+      max: 3.6
+      unit: J/cm²
+    thermalShockResistance:
+      value: 1.5
+      unit: K
+    reflectivity:
+      value: 0.3
+      wavelength: 1064
+  material_challenges:
+    thermal_management:
+    - challenge: Crystal lattice damage and doping redistribution
+      severity: critical
+      threshold_temperature: Above 400-600°C causes dopant migration
+      impact: Heat causes permanent alteration of electronic properties and device failure
+      solutions:
+      - Use ultrashort pulses (picosecond or femtosecond) for minimal heat-affected zone
+      - Reduce power by 60-70% compared to structural materials
+      - Monitor temperature with IR camera; stop if >150°C surface temperature
+      - Nanosecond pulses acceptable only for non-active areas (scribe lines, edges)
+    - challenge: Thermal stress and wafer cracking
+      severity: high
+      property_value: Low fracture toughness 0.75-3.0 MPa·√m
+      impact: Thermal gradients cause catastrophic wafer fracture
+      solutions:
+      - Use pulse mode with 10-15 second cooling for thick wafers
+      - Thin wafers (<200 μm) require substrate backing for thermal management
+      - Defocused beam reduces peak temperature gradients
+      - Gradual power ramping (start 10W, increase 5W per pass)
+    surface_characteristics:
+    - challenge: Surface contamination and particulates
+      severity: critical
+      impact: Sub-micron particles cause device defects and yield loss
+      solutions:
+      - Class 100 cleanroom environment required
+      - Use dry laser cleaning (no liquid assist to avoid residue)
+      - Gas assist (nitrogen or argon) blows particles away during cleaning
+      - Post-cleaning inspection with particle counter (<0.1 μm detection)
+      - Follow with wet chemical clean for critical applications
+    - challenge: Native oxide layer removal
+      severity: high
+      impact: Silicon forms native oxide that must be removed without substrate damage
+      solutions:
+      - Low power (5-15W) for oxide removal only
+      - Multiple gentle passes (3-5 passes at 10W) preferred
+      - Hydrogen-rich environment prevents oxide reformation
+      - Verify oxide removal with ellipsometry or XPS
+    contamination_challenges:
+    - challenge: Photoresist and polymer residue removal
+      severity: medium
+      impact: Organic residues carbonize and become harder to remove
+      solutions:
+      - First pass 20W fast (1500 mm/s) for bulk removal
+      - Second pass 10W slow (800 mm/s) for residue
+      - UV laser (355nm) more effective for organic materials
+      - Oxygen-rich environment aids in organic ablation
+      - Post-cleaning oxygen plasma for complete residue removal
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T22:41:30.189409'

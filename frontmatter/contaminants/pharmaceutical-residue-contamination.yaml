@@ -1,199 +1,201 @@
-name: Pharmaceutical Drug Residue
-slug: pharmaceutical-residue-contamination
-category: chemical_residue
-subcategory: industrial
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: contaminant
-title: Pharmaceutical Drug Residue Contamination
-contamination_description: Pharmaceutical-residue contamination, it arises from active
-  ingredient deposits during equipment processing. This residue, it forms sticky layers
-  and differs from mineral scales by organic stickiness that bonds deeply. On stainless
-  steel and glass, it clings unevenly and defies solvents, so removal challenges persist;
-  laser cleaning, it vaporizes residue selectively and leaves surfaces intact.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contamination
-  href: /contamination
-- label: Chemical_Residue
-  href: /contamination/chemical_residue
-- label: Pharmaceutical Drug Residue
-  href: /contamination/chemical_residue/pharmaceutical-residue-contamination-contamination
-images:
-  hero:
-    url: /images/contamination/pharmaceutical-residue-contamination-hero.jpg
-    alt: Pharmaceutical Drug Residue contamination on surface before laser cleaning
-  micro:
-    url: /images/contamination/pharmaceutical-residue-contamination-micro.jpg
-    alt: Pharmaceutical Drug Residue contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.2
-      min_j_cm2: 0.3
-      recommended_j_cm2: 0.6
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 50
-      min_ns: 5
-      recommended_ns: 15
-    repetition_rate_khz:
-      max: 200
-      min: 10
-      recommended: 50
-    safety_margin_factor: 0.6
-    scan_speed_mm_s:
-      max: 3000
-      min: 500
-      recommended: 1500
-    spot_size_mm:
-      max: 0.1
-      min: 0.02
-      recommended: 0.05
-    wavelength_preference:
-    - 355
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 120
-      wavelength_355nm: 3200
-      wavelength_532nm: 850
-    reflectivity:
-      wavelength_1064nm: 0.15
-      wavelength_355nm: 0.04
-      wavelength_532nm: 0.08
-    refractive_index:
-      imaginary_part: 0.012
-      real_part: 1.55
-    transmission_depth: 83
-  removal_characteristics:
-    byproducts:
-    - compound: CO2
-      hazard_level: low
-      phase: gas
-    - compound: H2O
-      hazard_level: low
-      phase: gas
-    - compound: NOx
-      hazard_level: moderate
-      phase: gas
-    - compound: carbonized_residue
-      hazard_level: moderate
-      phase: solid
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 450
-      typical_scan_speed_mm_s: 1200
-    removal_efficiency:
-      diminishing_returns_after: 4
-      optimal_passes: 3
-      single_pass: 0.85
-    secondary_mechanisms:
-    - photochemical
-    - mechanical_spallation
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: compressive
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Pyrolytic Carbon Particles
-      concentration_mg_m3: 5-50
-      exposure_limit_mg_m3: 3
-      hazard_class: toxic
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 10-100
-      exposure_limit_mg_m3: 29
-      hazard_class: toxic
-    - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
-      concentration_mg_m3: 0.1-2
-      exposure_limit_mg_m3: 0.2
-      hazard_class: carcinogenic
-    - compound: Volatile Organic Compounds (VOCs)
-      concentration_mg_m3: 5-30
-      exposure_limit_mg_m3: 50
-      hazard_class: toxic
-    particulate_generation:
-      respirable_fraction: 0.8
-      size_range_um:
-      - 0.01
-      - 10
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: PAPR
-      skin_protection: gloves
-    substrate_compatibility_warnings:
-    - Laser parameters must be optimized to prevent substrate damage and excessive
-      pyrolysis
-    - Residue composition may vary significantly between pharmaceutical products
-    - Potential for secondary contamination of surrounding surfaces
-    toxic_gas_risk: moderate
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: carbon
-      minimum_air_changes_per_hour: 12
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 1.2
-      pulse_duration_10ns: 0.6
-      wavelength_1064nm: 0.8
-    decomposition_temperature: 280
-    heat_affected_zone_depth: 15
-    melting_point: null
-    specific_heat: 1500
-    thermal_conductivity: 0.18
-    thermal_diffusivity: 0.12
-    vaporization_temperature: 450
-valid_materials:
-- Stainless Steel
-- Teflon
-- Crown Glass
-- Float Glass
-- Borosilicate Glass
-- Aluminosilicate Glass
-- Fused Silica
-- Gorilla Glass
-- Tempered Glass
+metadata:
+  name: Pharmaceutical Drug Residue
+  slug: pharmaceutical-residue-contamination
+  category: chemical-residue
+  subcategory: industrial
+  content_type: unified_contamination
+  schema_version: 4.0.0
+  datePublished: null
+  dateModified: null
+  author:
+    id: 3
+    name: Ikmanda Roswati
+    country: Indonesia
+    country_display: Indonesia
+    title: Ph.D.
+    sex: m
+    jobTitle: Junior Research Scientist in Laser Physics
+    expertise:
+    - Ultrafast Laser Physics and Material Interactions
+    affiliation:
+      name: Bandung Institute of Technology
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Physics, ITB, 2020
+    - 2+ years in ultrafast laser research including ASEAN optics workshops
+    - Assisted in international optics projects
+    languages:
+    - English
+    - Bahasa Indonesia
+    email: info@z-beam.com
+    image: /images/author/ikmanda-roswati.jpg
+    imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+      Bandung Institute of Technology, fieldwork optics setup
+    url: https://z-beam.com/authors/ikmanda-roswati
+    sameAs:
+    - https://linkedin.com/in/ikmanda-roswati-physicist
+    - https://www.academia.edu/profile/IkmandaRoswati
+    persona_file: indonesia_persona.yaml
+    formatting_file: indonesia_formatting.yaml
+  _metadata:
+    voice:
+      author_name: Ikmanda Roswati
+      author_country: Indonesia
+      voice_applied: true
+      content_type: contaminant
+  title: Pharmaceutical Drug Residue Contamination
+  contamination_description: Pharmaceutical-residue contamination, it arises from
+    active ingredient deposits during equipment processing. This residue, it forms
+    sticky layers and differs from mineral scales by organic stickiness that bonds
+    deeply. On stainless steel and glass, it clings unevenly and defies solvents,
+    so removal challenges persist; laser cleaning, it vaporizes residue selectively
+    and leaves surfaces intact.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Contamination
+    href: /contamination
+  - label: Chemical-Residue
+    href: /contamination/chemical-residue
+  - label: Pharmaceutical Drug Residue
+    href: /contamination/chemical-residue/pharmaceutical-residue-contamination-contamination
+  images:
+    hero:
+      url: /images/contamination/pharmaceutical-residue-contamination-hero.jpg
+      alt: Pharmaceutical Drug Residue contamination on surface before laser cleaning
+    micro:
+      url: /images/contamination/pharmaceutical-residue-contamination-micro.jpg
+      alt: Pharmaceutical Drug Residue contamination microscopic detail
+  laser_properties:
+    laser_parameters:
+      beam_profile: flat_top
+      fluence_range:
+        max_j_cm2: 1.2
+        min_j_cm2: 0.3
+        recommended_j_cm2: 0.6
+      overlap_percentage: 50
+      polarization: circular
+      pulse_duration_range:
+        max_ns: 50
+        min_ns: 5
+        recommended_ns: 15
+      repetition_rate_khz:
+        max: 200
+        min: 10
+        recommended: 50
+      safety_margin_factor: 0.6
+      scan_speed_mm_s:
+        max: 3000
+        min: 500
+        recommended: 1500
+      spot_size_mm:
+        max: 0.1
+        min: 0.02
+        recommended: 0.05
+      wavelength_preference:
+      - 355
+      - 532
+    optical_properties:
+      absorption_coefficient:
+        wavelength_1064nm: 120
+        wavelength_355nm: 3200
+        wavelength_532nm: 850
+      reflectivity:
+        wavelength_1064nm: 0.15
+        wavelength_355nm: 0.04
+        wavelength_532nm: 0.08
+      refractive_index:
+        imaginary_part: 0.012
+        real_part: 1.55
+      transmission_depth: 83
+    removal_characteristics:
+      byproducts:
+      - compound: CO2
+        hazard_level: low
+        phase: gas
+      - compound: H2O
+        hazard_level: low
+        phase: gas
+      - compound: NOx
+        hazard_level: moderate
+        phase: gas
+      - compound: carbonized_residue
+        hazard_level: moderate
+        phase: solid
+      damage_risk_to_substrate: low
+      primary_mechanism: thermal_ablation
+      process_speed:
+        area_coverage_rate_cm2_min: 450
+        typical_scan_speed_mm_s: 1200
+      removal_efficiency:
+        diminishing_returns_after: 4
+        optimal_passes: 3
+        single_pass: 0.85
+      secondary_mechanisms:
+      - photochemical
+      - mechanical_spallation
+      surface_quality_after_removal:
+        color_change: 'no'
+        residual_stress: compressive
+        roughness_increase: minimal
+    safety_data:
+      fire_explosion_risk: low
+      fumes_generated:
+      - compound: Pyrolytic Carbon Particles
+        concentration_mg_m3: 5-50
+        exposure_limit_mg_m3: 3
+        hazard_class: toxic
+      - compound: Carbon Monoxide
+        concentration_mg_m3: 10-100
+        exposure_limit_mg_m3: 29
+        hazard_class: toxic
+      - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
+        concentration_mg_m3: 0.1-2
+        exposure_limit_mg_m3: 0.2
+        hazard_class: carcinogenic
+      - compound: Volatile Organic Compounds (VOCs)
+        concentration_mg_m3: 5-30
+        exposure_limit_mg_m3: 50
+        hazard_class: toxic
+      particulate_generation:
+        respirable_fraction: 0.8
+        size_range_um:
+        - 0.01
+        - 10
+      ppe_requirements:
+        eye_protection: goggles
+        respiratory: PAPR
+        skin_protection: gloves
+      substrate_compatibility_warnings:
+      - Laser parameters must be optimized to prevent substrate damage and excessive
+        pyrolysis
+      - Residue composition may vary significantly between pharmaceutical products
+      - Potential for secondary contamination of surrounding surfaces
+      toxic_gas_risk: moderate
+      ventilation_requirements:
+        exhaust_velocity_m_s: 0.5
+        filtration_type: carbon
+        minimum_air_changes_per_hour: 12
+      visibility_hazard: moderate
+    thermal_properties:
+      ablation_threshold:
+        pulse_duration_100ns: 1.2
+        pulse_duration_10ns: 0.6
+        wavelength_1064nm: 0.8
+      decomposition_temperature: 280
+      heat_affected_zone_depth: 15
+      melting_point: null
+      specific_heat: 1500
+      thermal_conductivity: 0.18
+      thermal_diffusivity: 0.12
+      vaporization_temperature: 450
+  valid_materials:
+  - Stainless Steel
+  - Teflon
+  - Crown Glass
+  - Float Glass
+  - Borosilicate Glass
+  - Aluminosilicate Glass
+  - Fused Silica
+  - Gorilla Glass
+  - Tempered Glass
