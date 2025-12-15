@@ -18,22 +18,23 @@ Contaminant pages follow a three-level hierarchical structure:
 /contaminants/{category}/{subcategory}/{slug}
 ```
 
-### Required Metadata Fields
+### Required Top-Level Fields
 
-Every contaminant frontmatter file must have these fields:
+Every contaminant frontmatter file must have these fields at the top level:
 
-- **`category`**: Top-level contamination category
-- **`subcategory`**: Second-level category  
+- **`name`**: Display name of the contaminant
 - **`slug`**: Unique identifier for the specific contaminant
+- **`category`**: Top-level contamination category
+- **`subcategory`**: Second-level category
 
-### Example Metadata
+### Example Structure
 
 ```yaml
-metadata:
-  name: Adhesive Residue / Tape Marks
-  slug: adhesive-residue-contamination
-  category: organic-residue
-  subcategory: adhesive
+name: Adhesive Residue / Tape Marks
+slug: adhesive-residue-contamination
+category: organic-residue
+subcategory: adhesive
+content_type: unified_contamination
 ```
 
 ---
@@ -57,21 +58,22 @@ breadcrumb:
 ### Complete Example
 
 ```yaml
-metadata:
-  name: Adhesive Residue / Tape Marks
-  slug: adhesive-residue-contamination
-  category: organic-residue
-  subcategory: adhesive
-  
-  breadcrumb:
-    - label: Home
-      href: /
-    - label: Contaminants
-      href: /contaminants
-    - label: Organic-Residue
-      href: /contaminants/organic-residue
-    - label: Adhesive Residue / Tape Marks
-      href: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
+name: Adhesive Residue / Tape Marks
+slug: adhesive-residue-contamination
+category: organic-residue
+subcategory: adhesive
+content_type: unified_contamination
+schema_version: 4.0.0
+
+breadcrumb:
+  - label: Home
+    href: /
+  - label: Contaminants
+    href: /contaminants
+  - label: Organic-Residue
+    href: /contaminants/organic-residue
+  - label: Adhesive Residue / Tape Marks
+    href: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
 ```
 
 ---

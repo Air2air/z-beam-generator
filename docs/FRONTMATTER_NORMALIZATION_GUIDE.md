@@ -1,60 +1,44 @@
 # Frontmatter Normalization Guide
 
-**Date**: December 14, 2025  
-**Purpose**: Standardize materials frontmatter structure to match settings and contaminants format  
-**Status**: Instructions for generator implementation
+**Date**: December 15, 2025  
+**Purpose**: Document the clean top-level structure for all frontmatter files  
+**Status**: ✅ COMPLETE - Metadata wrapper removed from all domains
 
 ---
 
 ## Executive Summary
 
-Materials currently use a **flat structure** (all fields at top level), while settings and contaminants use a **nested structure** (all fields wrapped in `metadata` property). This document provides instructions for normalizing materials frontmatter to use the nested structure, achieving complete consistency across all content types and eliminating remaining conditional logic.
+✅ **COMPLETED December 15, 2025**: All frontmatter files (materials, settings, contaminants) now use a **clean top-level structure** with no metadata wrapper. All 404 frontmatter files have been regenerated and deployed to production with consistent structure across all content types.
 
 ---
 
-## Current vs Target Structure
+## Final Structure (All Domains)
 
-### ✅ Already Normalized (Settings & Contaminants - NESTED)
+### ✅ Clean Top-Level Structure (Materials, Settings, Contaminants)
 
-```yaml
-metadata:
-  name: Alabaster
-  slug: alabaster-settings
-  category: stone
-  subcategory: sedimentary
-  content_type: unified_settings
-  schema_version: 4.0.0
-  active: true
-  title: Alabaster Laser Cleaning Settings
-  settings_description: ...
-  breadcrumb: [...]
-  images: {...}
-  machineSettings: {...}
-  thermalProperties: {...}
-  # ... all fields properly nested under metadata
-```
-
-### ❌ Current Structure (Materials - FLAT - NEEDS NORMALIZATION)
+All frontmatter files now use this structure:
 
 ```yaml
-name: Acrylic (PMMA)
-slug: acrylic-pmma
-category: plastic
-subcategory: thermoplastic
+name: Aluminum
+slug: aluminum-laser-cleaning
+category: metal
+subcategory: non-ferrous
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: '2025-12-11T19:49:32.275Z'
-dateModified: '2025-12-11T21:15:32.275Z'
+datePublished: '2025-12-15T00:00:00.000Z'
+dateModified: '2025-12-15T00:00:00.000Z'
 author: {...}
-title: Acrylic (PMMA) Laser Cleaning
+_metadata:
+  voice: {...}
+title: Aluminum Laser Cleaning
 description: ...
 breadcrumb: [...]
 images: {...}
 properties: {...}
-# ... all fields at top level (WRONG)
+# ... all fields at top level (clean structure)
 ```
 
-### ✅ Target Structure (Materials - NESTED)
+### ❌ Old Structure (Removed December 15, 2025)
 
 ```yaml
 meta✅ Settings Generator (Already Correct - No Changes Needed)
