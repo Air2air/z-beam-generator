@@ -77,7 +77,7 @@ class TrivialContaminantsExporter:
         - "rust_formation" → "rust-formation-contamination"
         
         This suffix is intentional and required for:
-        - Clear URL semantics (/contamination/industrial-oil-contamination)
+        - Clear URL semantics (/contaminants/industrial-oil-contamination)
         - SEO optimization (explicit contamination context)
         - Avoiding slug conflicts with materials/settings domains
         """
@@ -116,12 +116,13 @@ class TrivialContaminantsExporter:
         """
         Build breadcrumb navigation for contamination pattern.
         
-        Structure: Home > Contamination > [Category] > [Pattern Name]
-        URL Format: /contamination/{category}/{subcategory}/{slug}
+        Structure: Home > Contaminants > [Category] > [Pattern Name]
+        URL Format: /contaminants/{category}/{subcategory}/{slug}
         
         Per CONTAMINANT_BREADCRUMB_STRUCTURE.md (Dec 15, 2025):
         - MUST include subcategory in URL path
         - NO double "contamination" suffix in slug
+        - Top level is "Contaminants" (plural) not "Contamination"
         """
         category = pattern_data.get('category', 'contamination')
         subcategory = pattern_data.get('subcategory', 'general')
@@ -132,9 +133,9 @@ class TrivialContaminantsExporter:
         
         return [
             {'label': 'Home', 'href': '/'},
-            {'label': 'Contamination', 'href': '/contamination'},
-            {'label': category_display, 'href': f'/contamination/{category}'},
-            {'label': name, 'href': f'/contamination/{category}/{subcategory}/{slug}'}
+            {'label': 'Contaminants', 'href': '/contaminants'},
+            {'label': category_display, 'href': f'/contaminants/{category}'},
+            {'label': name, 'href': f'/contaminants/{category}/{subcategory}/{slug}'}
         ]
     
     def _build_images_structure(self, pattern_data: Dict, slug: str) -> Dict:
@@ -147,11 +148,11 @@ class TrivialContaminantsExporter:
         
         return {
             'hero': {
-                'url': f'/images/contamination/{slug}-hero.jpg',
+                'url': f'/images/contaminants/{slug}-hero.jpg',
                 'alt': f'{name} contamination on surface before laser cleaning'
             },
             'micro': {
-                'url': f'/images/contamination/{slug}-micro.jpg',
+                'url': f'/images/contaminants/{slug}-micro.jpg',
                 'alt': f'{name} contamination microscopic detail'
             }
         }

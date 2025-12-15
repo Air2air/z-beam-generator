@@ -50,21 +50,21 @@ context_notes: Common on manufactured items, shipped goods, or items with labels
 breadcrumb:
   - label: Home
     href: /
-  - label: Contamination Patterns
-    href: /contamination
-  - label: Contamination Type
-    href: /contamination/contamination
+  - label: Contaminants
+    href: /contaminants
+  - label: Organic-Residue
+    href: /contaminants/organic-residue
   - label: Adhesive Residue
-    href: /contamination/contamination/adhesive-residue
+    href: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
 
 # Hero images (from Contaminants.yaml micro field)
 images:
   hero:
     before:
-      url: /images/contamination/adhesive-residue-before.jpg
+      url: /images/contaminants/adhesive-residue-before.jpg
       alt: Surface shows contamination from adhesive residue affecting material appearance
     after:
-      url: /images/contamination/adhesive-residue-after.jpg
+      url: /images/contaminants/adhesive-residue-after.jpg
       alt: Post-cleaning reveals restored surface with adhesive residue successfully removed
 
 # Micro text (from Contaminants.yaml micro.before/after)

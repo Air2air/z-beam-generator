@@ -15,7 +15,7 @@ This document defines the **exact breadcrumb structure** for all contaminant pag
 Contaminant pages follow a three-level hierarchical structure:
 
 ```
-/contamination/{category}/{subcategory}/{slug}
+/contaminants/{category}/{subcategory}/{slug}
 ```
 
 ### Required Metadata Fields
@@ -46,12 +46,12 @@ metadata:
 breadcrumb:
   - label: Home
     href: /
-  - label: Contamination
-    href: /contamination
+  - label: Contaminants
+    href: /contaminants
   - label: {Category Display Name}
-    href: /contamination/{category}
+    href: /contaminants/{category}
   - label: {Contaminant Display Name}
-    href: /contamination/{category}/{subcategory}/{slug}
+    href: /contaminants/{category}/{subcategory}/{slug}
 ```
 
 ### Complete Example
@@ -66,12 +66,12 @@ metadata:
   breadcrumb:
     - label: Home
       href: /
-    - label: Contamination
-      href: /contamination
+    - label: Contaminants
+      href: /contaminants
     - label: Organic-Residue
-      href: /contamination/organic-residue
+      href: /contaminants/organic-residue
     - label: Adhesive Residue / Tape Marks
-      href: /contamination/organic-residue/adhesive/adhesive-residue-contamination
+      href: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
 ```
 
 ---
@@ -120,34 +120,34 @@ metadata:
 ### ❌ Mistake 1: Double "contamination" Suffix
 **WRONG:**
 ```yaml
-href: /contamination/organic-residue/adhesive-residue-contamination-contamination
+href: /contaminants/organic-residue/adhesive-residue-contamination-contamination
 ```
 
 **CORRECT:**
 ```yaml
-href: /contamination/organic-residue/adhesive/adhesive-residue-contamination
+href: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
 ```
 
 ### ❌ Mistake 2: Missing Subcategory Level
 **WRONG:**
 ```yaml
-href: /contamination/organic-residue/adhesive-residue-contamination
+href: /contaminants/organic-residue/adhesive-residue-contamination
 ```
 
 **CORRECT:**
 ```yaml
-href: /contamination/organic-residue/adhesive/adhesive-residue-contamination
+href: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
 ```
 
 ### ❌ Mistake 3: Slug Only (No Category/Subcategory)
 **WRONG:**
 ```yaml
-href: /contamination/adhesive-residue-contamination
+href: /contaminants/adhesive-residue-contamination
 ```
 
 **CORRECT:**
 ```yaml
-href: /contamination/organic-residue/adhesive/adhesive-residue-contamination
+href: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
 ```
 
 ---
@@ -159,8 +159,8 @@ Before generating contaminant frontmatter, verify:
 - [ ] `category` field is defined
 - [ ] `subcategory` field is defined
 - [ ] `slug` field is defined
-- [ ] Breadcrumb array has 4 items (Home, Contamination, Category, Item)
-- [ ] Final breadcrumb href includes all three levels: `/contamination/{category}/{subcategory}/{slug}`
+- [ ] Breadcrumb array has 4 items (Home, Contaminants, Category, Item)
+- [ ] Final breadcrumb href includes all three levels: `/contaminants/{category}/{subcategory}/{slug}`
 - [ ] No double "contamination" suffix in the URL
 - [ ] Slug matches the `slug` metadata field exactly
 
@@ -179,7 +179,7 @@ app/contaminants/[category]/[subcategory]/[slug]/page.tsx
 
 The correct URL is built as:
 ```typescript
-const correctUrl = `/contamination/${category}/${subcategory}/${slug}`;
+const correctUrl = `/contaminants/${category}/${subcategory}/${slug}`;
 ```
 
 ### Category Display Names
@@ -232,6 +232,12 @@ for file_path in contaminants_dir.glob('*.yaml'):
 ---
 
 ## Version History
+
+- **v1.2** (Dec 15, 2025): Breadcrumb Label and URL Standardization
+  - Changed breadcrumb label from "Contamination" (singular) to "Contaminants" (plural)
+  - Updated all URL paths from `/contamination/` to `/contaminants/`
+  - Maintains consistency with Next.js routing conventions
+  - All 98 contaminant files regenerated and deployed
 
 - **v1.1** (Dec 15, 2025): Category Accuracy Corrections
   - Corrected 5 category misassignments:
