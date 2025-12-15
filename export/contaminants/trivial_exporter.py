@@ -117,15 +117,24 @@ class TrivialContaminantsExporter:
         Build breadcrumb navigation for contamination pattern.
         
         Structure: Home > Contamination > [Category] > [Pattern Name]
+        URL Format: /contamination/{category}/{subcategory}/{slug}
+        
+        Per CONTAMINANT_BREADCRUMB_STRUCTURE.md (Dec 15, 2025):
+        - MUST include subcategory in URL path
+        - NO double "contamination" suffix in slug
         """
-        category = pattern_data.get('category', 'contamination').title()
+        category = pattern_data.get('category', 'contamination')
+        subcategory = pattern_data.get('subcategory', 'general')
         name = pattern_data.get('name', slug.replace('-', ' ').replace('_', ' ').title())
+        
+        # Format category display name with hyphens (e.g., "Organic-Residue")
+        category_display = '-'.join(word.capitalize() for word in category.split('-'))
         
         return [
             {'label': 'Home', 'href': '/'},
             {'label': 'Contamination', 'href': '/contamination'},
-            {'label': category, 'href': f'/contamination/{category.lower()}'},
-            {'label': name, 'href': f'/contamination/{category.lower()}/{slug}-contamination'}
+            {'label': category_display, 'href': f'/contamination/{category}'},
+            {'label': name, 'href': f'/contamination/{category}/{subcategory}/{slug}'}
         ]
     
     def _build_images_structure(self, pattern_data: Dict, slug: str) -> Dict:
