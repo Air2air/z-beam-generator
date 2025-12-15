@@ -199,10 +199,20 @@ class TrivialContaminantsExporter:
         frontmatter['name'] = source_name
         # Note: slug already has -contamination suffix from _create_slug()
         frontmatter['slug'] = slug
-        frontmatter['category'] = pattern_data.get('category', 'contamination')
         
-        # 4: Subcategory (Phase 1: Add subcategory field)
-        frontmatter['subcategory'] = pattern_data.get('subcategory', 'contamination')
+        # FAIL-FAST: Category and subcategory are now REQUIRED (no fallbacks)
+        if 'category' not in pattern_data:
+            raise ValueError(f"Pattern '{pattern_id}' missing required 'category' field")
+        if 'subcategory' not in pattern_data:
+            raise ValueError(f"Pattern '{pattern_id}' missing required 'subcategory' field")
+        
+        category = pattern_data['category']
+        subcategory = pattern_data['subcategory']
+        
+        frontmatter['category'] = category
+        
+        # 4: Subcategory
+        frontmatter['subcategory'] = subcategory
         
         # 5-6: Content Type & Schema (Phase 1: Add metadata fields)
         frontmatter['content_type'] = 'unified_contamination'
@@ -277,7 +287,7 @@ class TrivialContaminantsExporter:
         if 'commonality_score' in pattern_data:
             frontmatter['commonality_score'] = pattern_data['commonality_score']
         
-        # Write to file with -contamination suffix
+        # Write to file with -contamination suffix (flat structure)
         filename = f"{slug}.yaml"
         output_path = self.output_dir / filename
         

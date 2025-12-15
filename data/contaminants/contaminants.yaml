@@ -8,7 +8,7 @@ contamination_patterns:
         successfully removed through precise laser ablation.
       before: Surface shows contamination from adhesive residue / tape marks affecting
         material appearance and properties.
-    category: contamination
+    category: organic_residue
     context_notes: Common on manufactured items, shipped goods, or items with labels/tape
     description: Adhesive-residue contamination forms during shipping or labeling
       processes, and clings tenaciously to metals and plastics. Unlike dust that brushes
@@ -325,6 +325,7 @@ contamination_patterns:
       - amber
       texture: sticky, tacky, can attract dirt
       thickness: thin film
+    subcategory: adhesive
   algae-growth:
     composition:
     - Chlorophyll
@@ -600,6 +601,8 @@ contamination_patterns:
             moist, unsealed areas.
     author:
       id: 2
+    category: biological
+    subcategory: growth
   aluminum-oxidation:
     author:
       id: 3
@@ -857,6 +860,7 @@ contamination_patterns:
       - chalky
       texture: powdery, chalky, matte
       thickness: thin surface layer
+    subcategory: non-ferrous
   annealing-scale:
     composition:
     - Fe₃O₄
@@ -1105,6 +1109,8 @@ contamination_patterns:
             grain or areas of direct heat contact, and can be spotty or more widespread.
     author:
       id: 4
+    category: thermal_damage
+    subcategory: scale
   anodizing-defects:
     composition:
     - Al₂O₃
@@ -1339,6 +1345,8 @@ contamination_patterns:
           pattern: No pattern is observed since anodizing cannot occur on wood materials.
     author:
       id: 3
+    category: metallic_coating
+    subcategory: anodizing
   anti-seize:
     composition:
     - Copper
@@ -1581,6 +1589,8 @@ contamination_patterns:
             grain, with irregular edges and no uniform spread.
     author:
       id: 1
+    category: organic_residue
+    subcategory: lubricant
   asbestos-coating:
     composition:
     - Mg₃Si₂O₅(OH)₄
@@ -1811,6 +1821,8 @@ contamination_patterns:
             products like siding or insulation boards.
     author:
       id: 1
+    category: inorganic_coating
+    subcategory: hazardous
   aviation-sealant:
     composition:
     - Polysulfide
@@ -2096,6 +2108,8 @@ contamination_patterns:
             fully removed.
     author:
       id: 4
+    category: organic_residue
+    subcategory: adhesive
   battery-corrosion:
     composition:
     - KOH
@@ -2330,6 +2344,8 @@ contamination_patterns:
             liquid runs.
     author:
       id: 3
+    category: oxidation
+    subcategory: battery
   beryllium-oxide:
     composition:
     - BeO
@@ -2585,6 +2601,8 @@ contamination_patterns:
             layer.
     author:
       id: 1
+    category: chemical_residue
+    subcategory: hazardous
   biological-stains:
     composition:
     - Proteins
@@ -2862,6 +2880,8 @@ contamination_patterns:
             damp areas, spreading unevenly.
     author:
       id: 3
+    category: biological
+    subcategory: deposit
   bitumen-tar:
     composition:
     - Asphaltene
@@ -3140,6 +3160,8 @@ contamination_patterns:
             grain or forming drips and splatters from application or spills.
     author:
       id: 1
+    category: organic_residue
+    subcategory: petroleum
   blood-residue:
     composition:
     - Hemoglobin
@@ -3419,6 +3441,8 @@ contamination_patterns:
             feathering edges due to the porous surface absorbing the liquid.
     author:
       id: 3
+    category: biological
+    subcategory: deposit
   brake-dust:
     composition:
     - Fe
@@ -3663,6 +3687,8 @@ contamination_patterns:
             by surface texture and environmental factors like wind.
     author:
       id: 2
+    category: organic_residue
+    subcategory: biological_fluid
   brass-plating:
     composition:
     - Cu-Zn Alloy
@@ -3901,6 +3927,8 @@ contamination_patterns:
             brass particles have adhered or reacted, commonly near fasteners or joints.
     author:
       id: 3
+    category: metallic_coating
+    subcategory: plating
   bronze-patina:
     composition:
     - Cu₂O
@@ -4139,6 +4167,8 @@ contamination_patterns:
             moisture paths, and can be irregular.
     author:
       id: 3
+    category: oxidation
+    subcategory: non-ferrous
   cadmium-plating:
     composition:
     - Cd
@@ -4369,6 +4399,8 @@ contamination_patterns:
             pooling in porous regions, with no uniform spread.
     author:
       id: 2
+    category: metallic_coating
+    subcategory: plating
   carbon-buildup:
     composition:
     - C
@@ -4630,6 +4662,8 @@ contamination_patterns:
             by smoke or fire, and can follow the wood grain for a streaked effect.
     author:
       id: 2
+    category: organic_residue
+    subcategory: other
   carbon-soot:
     composition:
     - C
@@ -4932,6 +4966,8 @@ contamination_patterns:
             directional streaks from air currents.
     author:
       id: 3
+    category: organic_residue
+    subcategory: other
   ceramic-coating:
     composition:
     - ZrO₂
@@ -5196,6 +5232,8 @@ contamination_patterns:
             exposure.
     author:
       id: 2
+    category: inorganic_coating
+    subcategory: ceramic
   ceramic-glaze:
     composition:
     - SiO₂
@@ -5457,6 +5495,8 @@ contamination_patterns:
             wood's surface irregularities and not forming a uniform layer.
     author:
       id: 1
+    category: inorganic_coating
+    subcategory: ceramic
   chemical-stains:
     author:
       id: 3
@@ -5465,7 +5505,7 @@ contamination_patterns:
         successfully removed through precise laser ablation.
       before: Surface shows contamination from chemical stains / acid etching affecting
         material appearance and properties.
-    category: contamination
+    category: chemical_residue
     description: Chemical-stains contamination, it arises from exposure to acids,
       bases, or solvents, causing discoloration and etching on surfaces. This pattern,
       it differs from rust or dust by its chemical bonding and uneven penetration,
@@ -5727,6 +5767,7 @@ contamination_patterns:
       - often lighter or darker than base material
       texture: smooth to etched, may pit surface
       thickness: surface staining to deep etching
+    subcategory: industrial
   chrome-pitting:
     composition:
     - Cr₂O₃
@@ -5924,6 +5965,8 @@ contamination_patterns:
             paths.
     author:
       id: 1
+    category: oxidation
+    subcategory: non-ferrous
   concrete-dust:
     composition:
     - CaCO₃
@@ -6171,6 +6214,8 @@ contamination_patterns:
             and on horizontal surfaces where dust settles easily.
     author:
       id: 3
+    category: inorganic_coating
+    subcategory: mineral
   conversion-coating:
     composition:
     - Zn₃(PO₄)₂
@@ -6406,6 +6451,8 @@ contamination_patterns:
             often pooling in grooves or along edges.
     author:
       id: 2
+    category: inorganic_coating
+    subcategory: coating
   coolant-scale:
     composition:
     - SiO₂
@@ -6651,6 +6698,8 @@ contamination_patterns:
             has splashed or seeped into the wood grain.
     author:
       id: 1
+    category: thermal_damage
+    subcategory: scale
   copper-patina:
     author:
       id: 4
@@ -7119,6 +7168,7 @@ contamination_patterns:
           appearance: Thin blue-green verdigris film, NOT thick or chunky deposits.
             Subtle patina that follows surface texture.
         last_updated: '2025-11-30T22:27:10.411319'
+    subcategory: non-ferrous
   copper-plating:
     composition:
     - Cu
@@ -7346,6 +7396,8 @@ contamination_patterns:
             by the wood's grain and porosity.
     author:
       id: 2
+    category: metallic_coating
+    subcategory: plating
   corrosion-inhibitor:
     composition:
     - Amines
@@ -7597,6 +7649,8 @@ contamination_patterns:
             or form patches if not properly absorbed.
     author:
       id: 4
+    category: oxidation
+    subcategory: non-ferrous
   cutting-fluid:
     composition:
     - Emulsified Oil
@@ -7867,6 +7921,8 @@ contamination_patterns:
             the wood grain and accumulating in porous areas, with no uniform distribution.
     author:
       id: 4
+    category: thermal_damage
+    subcategory: coating
   diamond-coating:
     composition:
     - Amorphous Carbon
@@ -8111,6 +8167,8 @@ contamination_patterns:
             aligning with wood grain or tool marks, and may be unevenly distributed.
     author:
       id: 1
+    category: inorganic_coating
+    subcategory: coating
   efflorescence:
     composition:
     - CaCO₃
@@ -8358,6 +8416,8 @@ contamination_patterns:
             or moisture pathways, and is common in damp, unsealed areas.
     author:
       id: 4
+    category: inorganic_coating
+    subcategory: mineral
   electroplating-residue:
     composition:
     - Cyanides
@@ -8607,6 +8667,8 @@ contamination_patterns:
             or low-lying areas where solution pools.
     author:
       id: 3
+    category: metallic_coating
+    subcategory: plating
   environmental-dust:
     author:
       id: 3
@@ -8615,7 +8677,7 @@ contamination_patterns:
         successfully removed through precise laser ablation.
       before: Surface shows contamination from environmental dust layer affecting
         material appearance and properties.
-    category: contamination
+    category: organic_residue
     context_notes: Universal contamination - appears on all materials. Thickness varies
       by exposure and cleaning frequency.
     description: Environmental dust, it comprises fine particulates from air. This
@@ -8868,6 +8930,7 @@ contamination_patterns:
       - varies by location
       texture: fine, powdery, can cake with moisture
       thickness: thin film to thick accumulation
+    subcategory: other
   epoxy-residue:
     composition:
     - Bisphenol A
@@ -9139,6 +9202,8 @@ contamination_patterns:
             and may form drips, runs, or patches based on wood texture and application.
     author:
       id: 1
+    category: organic_residue
+    subcategory: adhesive
   exhaust-residue:
     composition:
     - C
@@ -9398,6 +9463,8 @@ contamination_patterns:
             wood grain and surface orientation, and may spread in patchy formations.
     author:
       id: 2
+    category: thermal_damage
+    subcategory: fire
   fertilizer-residue:
     composition:
     - KNO₃
@@ -9656,6 +9723,8 @@ contamination_patterns:
             more accumulation in porous or unfinished areas.
     author:
       id: 2
+    category: chemical_residue
+    subcategory: industrial
   fire-damage:
     composition:
     - C
@@ -9921,6 +9990,8 @@ contamination_patterns:
             exposed edges and surfaces facing the fire.
     author:
       id: 3
+    category: thermal_damage
+    subcategory: fire
   forging-scale:
     composition:
     - Fe₃O₄
@@ -10150,6 +10221,8 @@ contamination_patterns:
             in areas where metal debris has settled.
     author:
       id: 3
+    category: thermal_damage
+    subcategory: scale
   fuel-varnish:
     composition:
     - Gum
@@ -10392,6 +10465,8 @@ contamination_patterns:
             the wood's natural grain and absorption patterns.
     author:
       id: 1
+    category: organic_residue
+    subcategory: petroleum
   galvanize-corrosion:
     composition:
     - ZnO
@@ -10619,6 +10694,8 @@ contamination_patterns:
             in damp or shaded areas.
     author:
       id: 2
+    category: oxidation
+    subcategory: ferrous
   gasket-material:
     composition:
     - Cellulose
@@ -10870,6 +10947,8 @@ contamination_patterns:
             or areas of contact, with no uniform spread.
     author:
       id: 4
+    category: organic_residue
+    subcategory: adhesive
   gold-plating:
     composition:
     - Au
@@ -11097,6 +11176,8 @@ contamination_patterns:
             or damaged areas where the wood is more receptive.
     author:
       id: 4
+    category: metallic_coating
+    subcategory: plating
   graffiti-paint:
     composition:
     - Acrylic
@@ -11385,6 +11466,8 @@ contamination_patterns:
             or forming random spots where the paint adheres unevenly.
     author:
       id: 4
+    category: inorganic_coating
+    subcategory: paint
   graphite-marks:
     composition:
     - C (Graphite)
@@ -11631,6 +11714,8 @@ contamination_patterns:
             areas or along grain lines, with uneven distribution.
     author:
       id: 4
+    category: organic_residue
+    subcategory: marking
   grease-deposits:
     composition:
     - Mineral Oil
@@ -11880,6 +11965,8 @@ contamination_patterns:
             from contact, and may follow the wood grain in streaks.
     author:
       id: 4
+    category: organic_residue
+    subcategory: petroleum
   hydraulic-fluid:
     composition:
     - Mineral Oil
@@ -12126,6 +12213,8 @@ contamination_patterns:
             following the path of fluid flow or absorption.
     author:
       id: 2
+    category: organic_residue
+    subcategory: biological_fluid
   industrial-oil:
     author:
       id: 2
@@ -12134,7 +12223,7 @@ contamination_patterns:
         successfully removed through precise laser ablation.
       before: Surface shows contamination from industrial oil / grease buildup affecting
         material appearance and properties.
-    category: contamination
+    category: organic_residue
     conditional_rules:
     - rule: Only valid in machinery/industrial equipment context
     - rule: NOT valid on decorative items, furniture, or non-machinery plastic parts
@@ -12737,6 +12826,7 @@ contamination_patterns:
       - dark gray
       texture: greasy, sticky, slippery
       thickness: thin film to thick deposits
+    subcategory: petroleum
   ink-stains:
     composition:
     - Pigments
@@ -12990,6 +13080,8 @@ contamination_patterns:
             with occasional drips or splatters.
     author:
       id: 3
+    category: organic_residue
+    subcategory: marking
   insect-residue:
     composition:
     - Proteins
@@ -13259,6 +13351,8 @@ contamination_patterns:
             or insect pathways.
     author:
       id: 3
+    category: biological
+    subcategory: deposit
   laser-marking:
     composition:
     - Metal Oxides
@@ -13494,6 +13588,8 @@ contamination_patterns:
             leading to irregular distributions.
     author:
       id: 1
+    category: organic_residue
+    subcategory: marking
   lead-paint:
     composition:
     - Pb₃O₄
@@ -13763,6 +13859,8 @@ contamination_patterns:
             or blistered with age, following the wood grain or forming irregular flakes.
     author:
       id: 1
+    category: inorganic_coating
+    subcategory: paint
   lime-scale:
     composition:
     - CaCO₃
@@ -14014,6 +14112,8 @@ contamination_patterns:
             water drip lines or pooling areas.
     author:
       id: 4
+    category: thermal_damage
+    subcategory: scale
   medical-disinfectant:
     composition:
     - NaOCl
@@ -14260,6 +14360,8 @@ contamination_patterns:
             or along grain lines, with irregular distribution.
     author:
       id: 4
+    category: chemical_residue
+    subcategory: industrial
   mercury-contamination:
     composition:
     - Hg
@@ -14510,6 +14612,8 @@ contamination_patterns:
             wood grain or accumulating in cracks and imperfections.
     author:
       id: 1
+    category: chemical_residue
+    subcategory: hazardous
   metal-polish:
     composition:
     - Al₂O₃
@@ -14747,6 +14851,8 @@ contamination_patterns:
             or unfinished surfaces.
     author:
       id: 4
+    category: organic_residue
+    subcategory: wax
   mineral-deposits:
     composition:
     - CaCO₃
@@ -15040,6 +15146,8 @@ contamination_patterns:
             wood grain.
     author:
       id: 1
+    category: thermal_damage
+    subcategory: scale
   mineral-stain:
     composition:
     - Fe₂O₃
@@ -15294,6 +15402,8 @@ contamination_patterns:
             or moisture paths, sometimes forming irregular blotches.
     author:
       id: 2
+    category: inorganic_coating
+    subcategory: mineral
   mold-mildew:
     composition:
     - Fungal Hyphae
@@ -15565,6 +15675,8 @@ contamination_patterns:
             grain or moisture-prone areas like knots and edges.
     author:
       id: 1
+    category: biological
+    subcategory: growth
   nickel-plating:
     composition:
     - Ni
@@ -15804,6 +15916,8 @@ contamination_patterns:
             surface resists uniform deposition.
     author:
       id: 2
+    category: metallic_coating
+    subcategory: plating
   paint-residue:
     author:
       id: 3
@@ -15812,7 +15926,7 @@ contamination_patterns:
         successfully removed through precise laser ablation.
       before: Surface shows contamination from paint residue / coating failure affecting
         material appearance and properties.
-    category: contamination
+    category: inorganic_coating
     description: Paint-residue contamination, it arises from flaking, peeling, or
       degraded paint and coating materials. This pattern forms when environmental
       exposure causes binders in paint to break down, thus layers detach and scatter
@@ -16114,6 +16228,7 @@ contamination_patterns:
       - varies by paint color
       texture: flaking, peeling, cracked
       thickness: thin chips to thick layers
+    subcategory: paint
   passivation-defect:
     composition:
     - Cr₂O₃
@@ -16345,6 +16460,8 @@ contamination_patterns:
             paths, creating irregular distributions.
     author:
       id: 3
+    category: inorganic_coating
+    subcategory: coating
   pcb-contamination:
     composition:
     - C₁₂H₁₀₋ₓClₓ
@@ -16587,6 +16704,8 @@ contamination_patterns:
             the porous structure and absorption pathways.
     author:
       id: 1
+    category: chemical_residue
+    subcategory: industrial
   pesticide-residue:
     composition:
     - Organophosphates
@@ -16851,6 +16970,8 @@ contamination_patterns:
             grain or pooling in porous areas and knots.
     author:
       id: 2
+    category: chemical_residue
+    subcategory: industrial
   pharmaceutical-residue:
     composition:
     - APIs
@@ -17123,6 +17244,8 @@ contamination_patterns:
             absorption patterns.
     author:
       id: 3
+    category: chemical_residue
+    subcategory: industrial
   pickling-residue:
     composition:
     - FeCl₂
@@ -17356,6 +17479,8 @@ contamination_patterns:
             grain or pooling in low spots where acid settled.
     author:
       id: 1
+    category: inorganic_coating
+    subcategory: coating
   plasma-spray:
     composition:
     - Al₂O₃
@@ -17591,6 +17716,8 @@ contamination_patterns:
             well, leading to flaking and irregular spots.
     author:
       id: 2
+    category: thermal_damage
+    subcategory: coating
   plastic-residue:
     composition:
     - Polyethylene
@@ -17862,6 +17989,8 @@ contamination_patterns:
             accumulating in crevices and low spots.
     author:
       id: 2
+    category: organic_residue
+    subcategory: polymer
   pollen-deposit:
     composition:
     - Proteins
@@ -18124,6 +18253,8 @@ contamination_patterns:
             and grooves, and lighter coverage on smooth, vertical surfaces.
     author:
       id: 2
+    category: biological
+    subcategory: deposit
   powder-coating:
     composition:
     - Polyester Resin
@@ -18379,6 +18510,8 @@ contamination_patterns:
             on porous areas where adhesion is poor and overspray collects.
     author:
       id: 3
+    category: inorganic_coating
+    subcategory: paint
   primer-coating:
     composition:
     - Zinc Dust
@@ -18638,6 +18771,8 @@ contamination_patterns:
             or uneven patches in areas with varying wood porosity.
     author:
       id: 1
+    category: inorganic_coating
+    subcategory: paint
   pvd-coating:
     composition:
     - TiN
@@ -18870,6 +19005,8 @@ contamination_patterns:
             grain or surface imperfections.
     author:
       id: 2
+    category: inorganic_coating
+    subcategory: coating
   quench-oil:
     composition:
     - Carbonized Oil
@@ -19111,6 +19248,8 @@ contamination_patterns:
             or pooling in low areas.
     author:
       id: 1
+    category: thermal_damage
+    subcategory: scale
   radioactive-contamination:
     composition:
     - Isotopes
@@ -19357,6 +19496,8 @@ contamination_patterns:
             the wood grain, pores, or cracks where particles settle.
     author:
       id: 2
+    category: chemical_residue
+    subcategory: hazardous
   road-grime:
     composition:
     - Soil
@@ -19608,6 +19749,8 @@ contamination_patterns:
             and accumulating in cracks or low points where moisture and grime settle.
     author:
       id: 4
+    category: organic_residue
+    subcategory: other
   rubber-residue:
     composition:
     - C₅H₈
@@ -19894,6 +20037,8 @@ contamination_patterns:
             or areas of direct contact, and may spread unevenly across the surface.
     author:
       id: 1
+    category: organic_residue
+    subcategory: polymer
   rust-oxidation:
     composition:
     - Fe₂O₃
@@ -20338,6 +20483,8 @@ contamination_patterns:
     author:
       id: 1
       name: Ikmanda Roswati
+    category: oxidation
+    subcategory: ferrous
   salt-residue:
     composition:
     - NaCl
@@ -20588,6 +20735,8 @@ contamination_patterns:
             paths, with uneven distribution.
     author:
       id: 4
+    category: inorganic_coating
+    subcategory: mineral
   scale-buildup:
     author:
       id: 1
@@ -20596,7 +20745,7 @@ contamination_patterns:
         deposits successfully removed through precise laser ablation.
       before: Surface shows contamination from mineral scale / hard water deposits
         affecting material appearance and properties.
-    category: contamination
+    category: thermal_damage
     chemical_formula: CaCO₃ (calcium carbonate) or others
     context_notes: Common in plumbing, boilers, heat exchangers, and areas with water
       exposure
@@ -20877,6 +21026,7 @@ contamination_patterns:
       - orange-brown
       texture: crusty, crystalline, hard
       thickness: thin coating to thick deposits
+    subcategory: scale
   semiconductor-residue:
     composition:
     - SiO₂
@@ -21149,6 +21299,8 @@ contamination_patterns:
             the wood grain or accumulating in porous areas, and is rarely uniform.
     author:
       id: 4
+    category: chemical_residue
+    subcategory: industrial
   silicone-buildup:
     composition:
     - (CH₃)₂SiO
@@ -21436,6 +21588,8 @@ contamination_patterns:
             or accumulating in cracks and joints where sealant was applied excessively.
     author:
       id: 3
+    category: organic_residue
+    subcategory: adhesive
   silver-plating:
     composition:
     - Ag
@@ -21687,6 +21841,8 @@ contamination_patterns:
             more easily.
     author:
       id: 1
+    category: metallic_coating
+    subcategory: plating
   soap-scum:
     composition:
     - Calcium Stearate
@@ -21940,6 +22096,8 @@ contamination_patterns:
             water flow or high-use areas.
     author:
       id: 2
+    category: organic_residue
+    subcategory: cleaning_agent
   solder-flux:
     composition:
     - Abietic Acid
@@ -22182,6 +22340,8 @@ contamination_patterns:
             applied, with no uniform distribution.
     author:
       id: 2
+    category: organic_residue
+    subcategory: lubricant
   steel-corrosion:
     composition:
     - Fe₃O₄
@@ -22415,6 +22575,8 @@ contamination_patterns:
             nails or screws) are in contact, often following grain lines.
     author:
       id: 3
+    category: oxidation
+    subcategory: ferrous
   surgical-marking:
     composition:
     - Gentian Violet
@@ -22653,6 +22815,8 @@ contamination_patterns:
             grain, with potential for bleeding into surrounding areas.
     author:
       id: 3
+    category: chemical_residue
+    subcategory: industrial
   teflon-residue:
     composition:
     - PTFE
@@ -22909,6 +23073,8 @@ contamination_patterns:
             texture or areas where coating was improperly removed.
     author:
       id: 3
+    category: organic_residue
+    subcategory: other
   thermal-paste:
     composition:
     - ZnO
@@ -23150,6 +23316,8 @@ contamination_patterns:
             grooves or application strokes.
     author:
       id: 1
+    category: thermal_damage
+    subcategory: coating
   thread-locker:
     composition:
     - Dimethacrylate
@@ -23389,6 +23557,8 @@ contamination_patterns:
             natural grain or application points.
     author:
       id: 3
+    category: organic_residue
+    subcategory: adhesive
   tin-plating:
     composition:
     - Sn
@@ -23624,6 +23794,8 @@ contamination_patterns:
             especially where the residue was transferred or dripped onto the surface.
     author:
       id: 3
+    category: metallic_coating
+    subcategory: plating
   tree-sap:
     composition:
     - Terpenes
@@ -23898,6 +24070,8 @@ contamination_patterns:
             near knots or cuts where sap naturally exudes.
     author:
       id: 4
+    category: organic_residue
+    subcategory: natural
   undercoating:
     composition:
     - Asphalt
@@ -24153,6 +24327,8 @@ contamination_patterns:
             grain and pooling in low spots or cracks.
     author:
       id: 3
+    category: organic_residue
+    subcategory: other
   uranium-oxide:
     composition:
     - U₃O₈
@@ -24388,6 +24564,8 @@ contamination_patterns:
             the wood grain or accumulating in porous areas.
     author:
       id: 1
+    category: chemical_residue
+    subcategory: hazardous
   uv-chalking:
     author:
       id: 3
@@ -24396,7 +24574,7 @@ contamination_patterns:
         chalking successfully removed through precise laser ablation.
       before: Surface shows contamination from uv photodegradation / polymer chalking
         affecting material appearance and properties.
-    category: photodegradation
+    category: aging
     description: UV-chalking contamination, it arises from photodegradation under
       ultraviolet exposure, where polymer chains fragment on the surface and thus
       form a white chalky residue that scatters and adheres as a powdery film. This
@@ -24429,7 +24607,7 @@ contamination_patterns:
     - Ceramics
     - Glass
     - Wood
-    laser_properties: &id001
+    laser_properties:
       laser_parameters:
         beam_profile: flat_top
         fluence_range:
@@ -24671,6 +24849,7 @@ contamination_patterns:
       - faded original color
       texture: powdery, chalky, rough, crazed
       thickness: thin surface degradation
+    subcategory: photodegradation
   water-stain:
     composition:
     - CaCO₃
@@ -24936,6 +25115,8 @@ contamination_patterns:
             along the wood grain or forming where water has pooled or dripped.
     author:
       id: 2
+    category: organic_residue
+    subcategory: other
   wax-buildup:
     composition:
     - C₂₅H₅₂
@@ -25205,6 +25386,8 @@ contamination_patterns:
             of application or accumulating in grooves and carvings.
     author:
       id: 3
+    category: organic_residue
+    subcategory: wax
   wood-rot:
     author:
       id: 1
@@ -25213,7 +25396,7 @@ contamination_patterns:
         successfully removed through precise laser ablation.
       before: Surface shows contamination from wood rot / fungal biodegradation affecting
         material appearance and properties.
-    category: biodegradation
+    category: biological
     description: Wood rot forms through fungal biodegradation of wood fibers, so discoloration
       appears and softening occurs with structural weakening over time. This contamination
       penetrates deeply into material unlike surface dust or chemical stains, and
@@ -25492,6 +25675,7 @@ contamination_patterns:
       - black
       texture: soft, spongy, crumbly, stringy
       thickness: surface to deep penetration
+    subcategory: growth
   zinc-plating:
     composition:
     - Zn
@@ -25717,696 +25901,8 @@ contamination_patterns:
             or moisture paths.
     author:
       id: 1
-  natural-weathering:
-    micro:
-      before: Surface shows natural weathering and aging from environmental exposure.
-      after: Post-cleaning reveals restored surface with weathering effects removed
-        through laser ablation.
-    category: aging
-    context_notes: Natural weathering from UV, moisture cycling, thermal stress, and
-      oxidation. Distribution varies significantly by surface orientation.
-    description: Natural weathering contamination, it manifests as a heterogeneous
-      layer of degradation products, which forms through prolonged exposure to ultraviolet
-      radiation, moisture fluctuations, thermal stresses, and oxidative processes
-      that vary regionally, influenced from climatic patterns in Mediterranean zones.
-      This contamination, it distinguishes itself from industrial pollutants by its
-      uneven distribution dependent from surface orientation, exhibiting tenacious
-      adhesion on metals like steel and copper, where it promotes patina-like oxidation,
-      while on porous stones such as limestone or wood like oak, it induces cracking
-      and discoloration that demonstrates material-specific vulnerability. The challenges
-      for removal lie in its deep integration without damaging substrates, yet laser
-      cleaning proves effective, as the process selectively ablates these layers through
-      precise energy absorption, which preserves underlying integrity.
-    id: natural_weathering
-    laser_properties: *id001
-    valid_materials:
-    - Oak
-    - Pine
-    - Cedar
-    - Walnut
-    - Teak
-    - Bamboo
-    - Plywood
-    - MDF
-    - Steel
-    - Iron
-    - Aluminum
-    - Copper
-    - Brass
-    - Bronze
-    - Zinc
-    - Granite
-    - Marble
-    - Limestone
-    - Sandstone
-    - Slate
-    - Concrete
-    - Cement
-    - PVC
-    - Polyethylene
-    - Polypropylene
-    - ABS
-    - Acrylic
-    - Brick
-    - Tile
-    - Terracotta
-    - Porcelain
-    - Glass
-    - Redwood
-    visual_characteristics:
-      appearance_on_categories:
-        ceramic:
-          aged_appearance: Progressive loss of surface gloss and color intensity;
-            development of micro-cracks and surface roughness; accumulation of dirt,
-            minerals, and organic matter in recessed areas; biological colonization
-            creating green/black patches; gradual rounding of sharp edges and corners;
-            increasing contrast between exposed and protected surfaces.
-          buildup_progression: '1 YEAR: Slight color fading on sun-facing surfaces,
-            minor dirt accumulation in recesses. 5 YEARS: Visible UV bleaching patterns,
-            early edge rounding, initial biological colonization in moist areas. 10
-            YEARS: Distinct color zoning by orientation, developed water staining,
-            moderate surface texture changes, established biological communities.
-            20 YEARS: Advanced material loss at edges, deep crazing in glazed surfaces,
-            strong contrast between exposed and protected zones, complex patina with
-            multiple aging mechanisms visible.'
-          color_variations: 'New: Uniform factory colors (terra cotta red, brick orange,
-            porcelain white). Aged: Sun-facing surfaces fade to pale pink, beige,
-            or gray; horizontal surfaces darken with green/black biological staining;
-            moisture zones develop white mineral efflorescence; protected areas maintain
-            original vibrant colors; overall appearance becomes mottled with multiple
-            color zones.'
-          common_patterns: Vertical drip patterns from water runoff; horizontal pooling
-            stains on flat surfaces; sun-bleached upper surfaces with protected lower
-            areas; corner rounding and edge erosion; biological colonization in shaded,
-            moist zones; thermal stress cracking in areas with rapid temperature changes;
-            efflorescence patterns following moisture migration paths.
-          coverage_ranges: 'LIGHT AGING (10-30%): Isolated UV fading on sun-facing
-            surfaces, minor edge rounding, slight surface texture changes. MODERATE
-            AGING (30-70%): Distinct color zoning by orientation, visible biological
-            patches, noticeable surface erosion, developed water staining patterns.
-            HEAVY AGING (70-100%): Complete loss of original color uniformity, extensive
-            biological coverage, significant material loss at edges, deep crazing
-            or spalling, strong contrast between exposed and protected areas.'
-          description: Natural weathering creates a complex patina with color fading,
-            surface erosion, and biological growth. Sun-facing surfaces show pronounced
-            UV bleaching while horizontal surfaces accumulate water stains, mineral
-            deposits, and organic matter. Protected areas retain original coloration
-            and surface integrity, creating dramatic contrasts between exposed and
-            sheltered regions.
-          distribution_patterns: 'TOP/SUN-FACING: Maximum UV bleaching, thermal stress
-            cracking, minimal biological growth. VERTICAL: Moderate UV effects, prominent
-            vertical water streaking, variable biological colonization. PROTECTED/UNDERSIDES:
-            Minimal color change, surface preservation, potential for concentrated
-            moisture damage in specific conditions. NORTH-FACING: Reduced UV damage
-            but increased biological growth due to prolonged moisture retention.'
-          edge_center_behavior: 'EDGES: Show earliest and most severe aging with rounding,
-            color loss, and surface degradation; act as weathering initiation points.
-            CENTERS: Age more slowly with gradual color fading and surface texture
-            changes; protected from multi-directional exposure; maintain more original
-            character until late stages of aging.'
-          geometry_effects: 'CORNERS: Accelerated erosion from multiple exposure angles,
-            thermal stress concentration. EDGES: Mechanical rounding from environmental
-            abrasion, preferential water runoff paths. JOINTS: Moisture accumulation
-            leading to biological growth, efflorescence formation, potential for freeze-thaw
-            damage in cold climates. RECESSED AREAS: Dirt accumulation, protected
-            from direct weathering. PROJECTIONS: Maximum exposure to all weathering
-            elements.'
-          gravity_influence: Water flows downward creating vertical streaking patterns;
-            horizontal surfaces accumulate standing water leading to concentrated
-            staining; upper surfaces receive cleaner rainwater while lower surfaces
-            collect runoff contaminants; drainage paths create distinct aging corridors;
-            sediment and debris accumulate at the base of vertical surfaces.
-          lighting_effects: Aged surfaces appear matte with reduced specular reflection;
-            rough textures create complex shadow patterns under raking light; crazing
-            patterns become visible only under specific lighting angles; mineral deposits
-            and biological growth create varied reflectivity across the surface; sun-bleached
-            areas appear brighter while stained areas absorb more light.
-          texture_details: Smooth surfaces become micro-pitted from UV degradation
-            and acid rain; glazed surfaces develop fine crackle patterns (crazing);
-            unglazed terracotta becomes rougher with surface spalling; edges and corners
-            show rounding from mechanical erosion; biological growth creates bumpy,
-            irregular surfaces in moist areas.
-          thickness_range: Surface aging effects typically penetrate 0.1-2mm deep.
-            UV degradation affects only the outermost 0.1-0.5mm; moisture penetration
-            and biological growth affect up to 1-2mm in porous materials like terracotta;
-            erosion removes material at rates of 0.01-0.1mm per decade depending on
-            exposure.
-        concrete:
-          aged_appearance: Progressive transformation from uniform gray to textured,
-            multi-tonal surface with increasing complexity. Early stages show minor
-            discoloration and surface dusting, progressing to pronounced color variations,
-            exposed aggregate, and material loss, eventually developing rich patinas
-            with biological communities and significant surface erosion.
-          buildup_progression: '1 year: Surface graying, minor efflorescence on horizontal
-            surfaces. 5 years: Visible color mottling, initial cracking, biological
-            colonization begins on north-facing surfaces. 10 years: Pronounced texture
-            changes, spalling at edges, established staining patterns. 20 years: Significant
-            material loss, complex biological communities, deep patina with clear
-            orientation-based differentiation.'
-          color_variations: 'New concrete: Uniform medium gray → Light aging: Mottled
-            light gray with whitish efflorescence → Moderate aging: Patchy grays with
-            yellowish-brown iron stains and dark biological growth → Heavy aging:
-            Complex palette of grays, browns, rust stains, black algae/moss, and green
-            lichen with pronounced color banding from water runoff'
-          common_patterns: Vertical streaking from water runoff, efflorescence patterns
-            following moisture paths, differential weathering at reinforcement locations,
-            map cracking from thermal stress, spalling at corners and edges, tide-line
-            effects at ground contact, shadow patterns from adjacent structures, and
-            biological colonization following moisture gradients
-          coverage_ranges: 'Light aging (10-30% surface change): Minor discoloration,
-            faint efflorescence, slight surface dusting. Moderate aging (30-70%):
-            Pronounced color variations, visible cracking, exposed aggregate, biological
-            patches. Heavy aging (70-95%): Extensive material loss, deep staining,
-            dense biological coverage, significant surface erosion and spalling.'
-          description: Natural weathering transforms smooth gray concrete into textured,
-            variegated surfaces with complex color variations, surface erosion, and
-            biological growth. The aging manifests as a mosaic of lighter and darker
-            areas, surface roughening, and material loss at vulnerable points, creating
-            a patina that reflects decades of environmental exposure.
-          distribution_patterns: 'Horizontal surfaces: Heavy water pooling, biological
-            growth, freeze-thaw damage, UV bleaching. Vertical surfaces: Water streaking,
-            differential weathering by compass orientation (south-facing shows strongest
-            UV damage, north-facing shows biological growth). Protected areas: Minimal
-            color change, preserved surface texture, potential for concentrated moisture
-            damage in sheltered corners.'
-          edge_center_behavior: Edges show 2-5x faster deterioration with pronounced
-            spalling, rounding, and material loss. Centers remain more intact but
-            develop broader staining and cracking patterns. Edge deterioration typically
-            advances 5-15mm inward from corners while center areas maintain original
-            geometry with surface-level changes.
-          geometry_effects: 'Corners and edges: Accelerated spalling and erosion due
-            to multi-directional exposure. Joints and cracks: Concentrated water penetration
-            and efflorescence. Curved surfaces: More uniform weathering than flat
-            planes. Projections: Enhanced erosion on windward sides, protected leeward
-            sides.'
-          gravity_influence: Water flows create distinct patterns - vertical streaking
-            below joints and cracks, concentrated erosion at drip lines, sediment
-            deposition on horizontal surfaces, and tide-line effects at ground contact.
-            Upper surfaces experience washing action while lower areas accumulate
-            deposits and biological growth.
-          lighting_effects: Aged concrete exhibits strong directional reflectance
-            - rough surfaces scatter light creating matte appearance, while smooth
-            protected areas remain slightly glossy. Low-angle lighting dramatically
-            highlights texture variations, cracks, and surface irregularities. Wet
-            conditions intensify color saturation and reveal subtle staining patterns.
-          texture_details: Smooth surface becomes increasingly rough with exposed
-            aggregate, pitting from freeze-thaw cycles, and erosion of cement paste.
-            Surface develops micro-cracking, spalling at edges, and sandblasted appearance
-            on windward surfaces. Biological growth creates bumpy textures from moss
-            and lichen colonization.
-          thickness_range: Surface effects typically penetrate 1-10mm depth. Efflorescence
-            and staining are superficial (0.1-1mm), while erosion and spalling can
-            remove 2-10mm of material. Carbonation front progresses 5-25mm over decades.
-            Biological growth adds 1-5mm of surface buildup.
-        glass:
-          aged_appearance: Progressive loss of transparency, increasing surface roughness,
-            development of permanent stains, gradual accumulation of microscopic damage
-            that scatters light, and eventual structural weakening at vulnerable points.
-          buildup_progression: '1 YEAR: Microscopic surface changes, water spotting,
-            beginning of chemical leaching. 5 YEARS: Visible hazing, early staining
-            patterns, coating degradation begins on treated glass. 10 YEARS: Moderate
-            etching, rainbow iridescence appears, thermal stress cracks visible at
-            edges. 20 YEARS: Heavy surface degradation, significant transparency loss,
-            structural weakening at vulnerable points, multiple aging mechanisms fully
-            developed.'
-          color_variations: 'New: Crystal clear to slight green tint (soda-lime glass).
-            Light aging: Subtle yellowing or brownish tint. Moderate: Milky white
-            with rainbow iridescence (Newton''s rings). Heavy: Opaque white crust
-            with brown/black staining from embedded contaminants. Coated glass: Selective
-            degradation of coatings creates patchy discoloration.'
-          common_patterns: Drip lines from water runoff, sun-facing surface degradation
-            gradients, thermal stress cracking at edges, condensation patterns on
-            interior surfaces, wind-driven particulate abrasion patterns, bird dropping
-            etching circles, and protective mounting hardware shadows creating preserved
-            areas.
-          coverage_ranges: 'LIGHT AGING (0-20%): Minor hazing, subtle color shift,
-            microscopic surface changes barely visible. MODERATE AGING (20-60%): Visible
-            etching, noticeable transparency loss, distinct staining patterns, beginning
-            of iridescence. HEAVY AGING (60-100%): Severe optical distortion, surface
-            crust formation, multiple degradation mechanisms visible, structural concerns
-            apparent.'
-          description: Natural weathering creates a complex patina with subtle optical
-            distortions, surface hazing, and localized degradation. Aged glass develops
-            a milky appearance with rainbow-like iridescence in advanced stages, losing
-            its original clarity and transparency while gaining a distinctive historical
-            character.
-          distribution_patterns: 'NORTH-FACING: Minimal UV damage, primarily biological
-            growth and condensation effects. SOUTH-FACING: Maximum UV degradation,
-            thermal stress cracking, solar heating damage. EAST/WEST-FACING: Moderate
-            UV with morning/afternoon thermal cycling. HORIZONTAL SURFACES: Water
-            pooling, accelerated chemical leaching, particulate accumulation. PROTECTED
-            AREAS: Under frames and hardware show minimal aging, creating sharp contrast
-            lines.'
-          edge_center_behavior: 'EDGES: Faster degradation due to stress concentration,
-            sealant interaction, and increased thermal cycling. Show earlier cracking,
-            delamination, and chemical attack. CENTER: More uniform aging but develops
-            optical distortion first. Protected by frame from edge effects but suffers
-            bulk material degradation. Coated glass edges show coating failure first.'
-          geometry_effects: 'CORNERS: Maximum stress concentration leading to micro-cracking
-            and chipping. EDGES: Thermal bridging causes differential expansion, sealant
-            failure points. CURVED SURFACES: Varying sun exposure angles create complex
-            degradation gradients. JOINTS: Moisture infiltration points accelerate
-            surrounding degradation. FRAME INTERFACES: Create protected zones with
-            sharp aging boundaries.'
-          gravity_influence: Water runoff creates vertical streaking patterns, with
-            heavier deposits at bottom edges. Horizontal surfaces accumulate standing
-            water leading to concentrated chemical attack. Drainage points show accelerated
-            erosion. Upper surfaces experience cleaner rainwater washing, while lower
-            sections collect contaminated runoff.
-          lighting_effects: 'Direct light: Increased scattering creates hazy glow.
-            Transmitted light: Reduced clarity with rainbow diffraction patterns.
-            Angled light: Reveals surface texture and etching. Backlighting: Highlights
-            internal stresses and micro-fractures. Coated glass: Shows differential
-            reflection where coatings have degraded.'
-          texture_details: 'Initial: Mirror-smooth surface. Light: Microscopic pitting
-            and etching. Moderate: Orange peel texture with visible cratering. Heavy:
-            Rough, frosted surface with crizzling (fine cracking). Extreme: Delamination
-            and spalling at edges. Coated surfaces: Flaking, peeling, or crazing of
-            protective layers.'
-          thickness_range: 'Surface etching: 0.1-5 microns. Chemical leaching layer:
-            1-20 microns. Micro-cracking network: 5-50 microns depth. Delamination
-            in laminated glass: Full interlayer thickness (0.3-1.5mm). Structural
-            weakening: Can affect entire pane thickness in advanced cases.'
-        metal:
-          aged_appearance:
-            advanced: Full patina coverage, significant texture, material loss begins
-            initial: Spotty discoloration, minor surface dulling
-            moderate: Distinct color changes, beginning texture development
-            severe: Deep corrosion, flaking, structural weakening, heavy deposits
-          buildup_progression:
-            10-years: Full color transformation, significant texture, 60-80% coverage
-            1_year: Surface dulling, initial oxidation spots, minor color shifts
-            20-years: Deep patina/corrosion, material loss in advanced areas, 85-95%
-              coverage
-            5-years: Distinct aging patterns emerge, texture begins, 30-50% coverage
-          color_variations:
-            aluminum: Silver-white → Gray → White powdery oxidation → Dark gray/black
-              spots
-            brass: Yellow-gold → Dark brown → Greenish-blue patina → Black spots
-            copper: Pinkish-orange → Brown → Dark brown → Green patina (verdigris)
-              → Blue-green streaks
-            steel_iron: Silver-gray → Orange-brown rust → Dark brown/black oxides
-              → Reddish-brown streaks
-          common_patterns:
-            dripping_rust: Vertical streaking from water runoff on steel/iron
-            edge_corrosion: Accelerated aging at corners and cut edges
-            patina_flow: Blue-green cascades on copper surfaces following moisture
-              paths
-            salt_lines: Concentrated corrosion at moisture evaporation points
-            shadow_patterns: Sharp transitions where surfaces are protected from elements
-            thermal_cracking: Micro-fractures from expansion/contraction cycles
-          coverage_ranges:
-            complete_aging: 95-100% surface transformation, original surface largely
-              obscured
-            heavy_aging: 70-95% surface change, full patina/corrosion, significant
-              texture
-            light_aging: 10-30% surface change, minor discoloration, isolated spots
-            moderate_aging: 30-70% surface change, distinct patterns, texture development
-          description: Natural weathering creates complex, non-uniform surfaces with
-            mottled coloration, textured patinas, and directional degradation patterns.
-            Surfaces develop rich visual character through oxidation, corrosion, and
-            environmental deposition that varies dramatically by orientation, exposure,
-            and material composition.
-          distribution_patterns:
-            north_facing: Slower aging, more biological growth, less thermal stress
-            protected_areas: Sharp aging boundaries, minimal corrosion, original surface
-              preserved
-            south_facing: Rapid aging, maximum UV exposure, frequent thermal cycling
-            top_surfaces: Heaviest UV damage, water pooling, debris accumulation,
-              uniform aging
-            undersides: Protected from UV, moisture retention, biological growth,
-              different corrosion mechanisms
-            vertical_surfaces: Streaking patterns, directional weathering, moderate
-              UV exposure
-          edge_center_behavior:
-            centers: Protected by surrounding material, slower aging, more uniform
-              appearance
-            corner_effects: Triple exposure at corners causes 3-5x faster aging than
-              flat surfaces
-            edges: Thinner material, multiple exposure angles, faster aging, earlier
-              failure
-            transition_zones: Gradual aging changes from edges toward centers
-          geometry_effects:
-            complex_shapes: Variable exposure creates patchy aging with sharp transitions
-            flat_planes: Uniform aging patterns, consistent environmental exposure
-            joints_seams: Moisture trapping, crevice corrosion, accelerated failure
-              points
-            rounded_corners: More uniform aging, slower degradation
-            sharp_edges: Thinner protective layers, accelerated corrosion, material
-              loss
-          gravity_influence:
-            biological_growth: Moss/algae follow moisture retention patterns on horizontal
-              and vertical surfaces
-            salt_accumulation: Evaporation lines form at water runoff boundaries
-            sediment_deposition: Horizontal surfaces collect airborne particles that
-              accelerate localized corrosion
-            water_tracking: Vertical streaking follows drainage paths, concentrated
-              at drip points
-          lighting_effects:
-            diffuse_light: Softens appearance, makes surfaces appear more uniform
-            direct_sunlight: Highlights texture variations, reveals color complexity
-            grazing_light: Accentuates surface texture and corrosion depth
-            wet_conditions: Intensifies colors, creates reflective highlights on patinas
-          texture_details:
-            aluminum: Smooth → Chalky powder → Pitted surface → Rough oxide layer
-            brass: Smooth → Spotty corrosion → Wavy patina → Rough dezincification
-            copper: Smooth → Waxy patina → Crystalline crust → Flaking green layers
-              → Rough texture
-            steel_iron: Smooth → Grainy rust crystals → Flaking scale → Pitted surface
-              → Rough crust
-          thickness_range:
-            aluminum: 0.01-0.5mm (oxide layer remains relatively thin)
-            brass: 0.05-1mm (dezincification penetrates surface)
-            copper: 0.05-2mm (patina forms thin but dense layers)
-            steel_iron: 0.1-5mm (rust layers can build significantly)
-        plastic:
-          aged_appearance: 'Progressive aging shows: Early stage - slight color fading
-            and minor surface gloss reduction. Intermediate - distinct color changes,
-            visible cracking, and chalky patches. Advanced - severe material loss,
-            deep cracking, structural weakening, and complete surface transformation
-            from plastic to brittle, chalky material.'
-          buildup_progression: '1 year: Slight color fading, minor surface gloss reduction,
-            isolated micro-cracks on sun-exposed surfaces. 5 years: Distinct color
-            changes, visible cracking patterns, chalky residues appearing on horizontal
-            surfaces, clear orientation-based differences. 10 years: Severe color
-            loss on exposed surfaces, deep cracking networks, material loss at edges,
-            significant texture changes, protected areas still recognizable. 20 years:
-            Complete surface transformation, structural weakening, widespread material
-            loss, only deeply recessed areas retain original appearance, object may
-            become brittle and fragile.'
-          color_variations: 'New plastics show vibrant, uniform colors. Light aging
-            (1-3 years): Colors begin to fade, with reds and blues fading fastest.
-            Moderate aging (3-8 years): Colors become muted and uneven, developing
-            yellowish or brownish tints from photo-oxidation. Heavy aging (8+ years):
-            Complete color loss to grayish-white chalky appearance, with some areas
-            turning brown from embedded contaminants. PVC turns yellowish-brown, polyethylene
-            becomes milky white, polypropylene develops grayish chalkiness, acrylic
-            maintains better color but becomes hazy.'
-          common_patterns: Dendritic cracking patterns from thermal stress, water
-            drip lines forming vertical streaking, chalky patches surrounded by less-degraded
-            areas, edge delamination where layers separate, corner rounding from material
-            loss, biological growth patterns following moisture trails, shadow lines
-            creating sharp transitions between aged and protected surfaces.
-          coverage_ranges: 'Light aging (10-30% surface): Minor color fading, slight
-            gloss reduction, isolated micro-cracks. Moderate aging (30-70% surface):
-            Obvious color changes, visible cracking networks, chalky patches, texture
-            changes. Heavy aging (70-100% surface): Complete color loss, deep cracking,
-            material loss, structural weakening, widespread chalkiness.'
-          description: Natural weathering creates a complex mosaic of degradation
-            patterns across plastic surfaces, characterized by color fading, surface
-            crazing, chalky residues, and localized deterioration. The appearance
-            varies dramatically based on orientation, with sun-facing surfaces showing
-            severe UV damage, horizontal surfaces displaying water staining and biological
-            growth, and protected areas retaining near-original appearance. The overall
-            effect is a patchwork of different aging states across a single object.
-          distribution_patterns: 'Top/sun-facing surfaces: Severe UV degradation,
-            complete color loss, deep cracking. Vertical surfaces: Moderate UV damage
-            with vertical streaking from water runoff. Bottom/protected surfaces:
-            Minimal aging, retains original color and texture. North-facing: Slower
-            aging than south-facing. Horizontal surfaces: Water pooling, biological
-            growth, thermal stress cracking. Curved surfaces: Variable degradation
-            following sun exposure angles.'
-          edge_center_behavior: 'Edges show 2-5x faster degradation than centers.
-            Edge degradation: Complete material loss, rounding, deep cracking, delamination.
-            Center areas: More uniform aging, surface crazing, color fading, but maintains
-            structural integrity. Transition zones between edges and centers show
-            gradient patterns of decreasing degradation intensity.'
-          geometry_effects: Corners and edges age fastest due to multiple exposure
-            angles and stress concentration - showing rounding, cracking, and material
-            loss. Flat surfaces age more uniformly but develop directional patterns.
-            Joints and seams accumulate moisture and contaminants, leading to accelerated
-            local degradation. Curved surfaces show gradient aging following sun exposure
-            angles. Recessed areas collect debris and moisture, creating localized
-            aging hotspots.
-          gravity_influence: Water runoff creates vertical streaking patterns, with
-            heavier degradation along drainage paths. Dirt and contaminants accumulate
-            on horizontal surfaces, accelerating local aging. Water pooling creates
-            circular degradation patterns. Gravity pulls degraded material downward,
-            creating buildup at lower edges. Moisture wicking follows gravity paths
-            into joints and seams.
-          lighting_effects: Aged surfaces appear dramatically different under various
-            lighting. Direct sunlight highlights chalky residues and creates bright
-            reflections from degraded surfaces. Low-angle lighting reveals surface
-            texture, cracks, and uneven degradation. Backlighting shows material thinning
-            and internal stress patterns. Wet conditions temporarily restore original
-            appearance by filling surface pores.
-          texture_details: Initial smooth surfaces develop micro-cracks and crazing
-            patterns. UV exposure creates fine networks of surface cracks (0.1-0.5mm
-            deep). Horizontal surfaces accumulate pitting from water droplet erosion
-            and biological etching. Chalking creates a powdery, rough texture that
-            flakes off when touched. Protected areas remain smooth while exposed areas
-            become increasingly rough and porous.
-          thickness_range: Surface aging typically affects 0.1-2mm depth. UV degradation
-            penetrates 0.1-0.5mm. Chemical erosion affects 0.05-0.3mm. Mechanical
-            weathering (abrasion) removes 0.01-0.1mm annually. Severe cases show up
-            to 5mm material loss at corners and edges over decades.
-        stone:
-          aged_appearance: Progressive loss of surface polish, development of matte
-            patina, color saturation changes, accumulation of atmospheric deposits,
-            biological growth establishment, rounding of sharp architectural details,
-            and gradual surface recession through material loss.
-          buildup_progression: '1 year: Surface soiling, initial color darkening,
-            minor biological spotting. 5 years: Established patina, visible texture
-            changes, biological colonization patterns. 10 years: Significant color
-            transformation, edge rounding, crust formation in protected areas. 20
-            years: Complex weathering patterns, material loss evident, mature biological
-            communities, architectural detail softening.'
-          color_variations: 'Granite: Light grays darken to charcoal, pinks fade to
-            brownish-red, blacks develop silvery patina. Marble: Whites yellow to
-            cream/ivory, greens darken to olive, reds fade to pinkish-brown. Limestone:
-            Light tans darken to golden brown with grayish mottling. Sandstone: Reds
-            oxidize to deeper burgundy, yellows darken to ochre, whites develop grayish
-            crust.'
-          common_patterns: Differential weathering along mineral boundaries, exfoliation
-            sheets on granite, honeycomb weathering in sandstone, solution pits in
-            limestone, spalling on freeze-thaw cycles, dendritic staining from water
-            runoff, biological colonization patterns following moisture gradients,
-            and thermal stress cracking.
-          coverage_ranges: 'Light aging (10-30%): Subtle color shifts, minor surface
-            roughening, isolated biological spots. Moderate aging (30-70%): Distinct
-            color changes, established biological colonies, visible texture alteration,
-            beginning of edge rounding. Heavy aging (70-100%): Complete color transformation,
-            significant material loss, complex biological ecosystems, pronounced surface
-            features.'
-          description: Natural stone surfaces develop complex patinas characterized
-            by uneven coloration, surface roughening, biological colonization, and
-            material loss. The aging manifests as differential weathering where exposed
-            areas show accelerated degradation while protected zones retain original
-            characteristics. Stone becomes visually richer with increased textural
-            complexity and color depth over decades.
-          distribution_patterns: 'Horizontal surfaces: Maximum UV exposure, water
-            pooling, biological growth. Vertical surfaces: Runoff patterns, differential
-            solar exposure (south-facing most affected). Protected areas: Minimal
-            color change, surface preservation. North-facing: Moss/lichen dominance.
-            South-facing: Thermal stress and bleaching.'
-          edge_center_behavior: Edges show 2-5x faster weathering than centers, develop
-            rounded profiles, exhibit more pronounced color changes, and accumulate
-            less biological growth due to runoff. Centers retain more original surface
-            characteristics but develop uniform patina and may show differential mineral
-            weathering patterns.
-          geometry_effects: 'Corners: Accelerated weathering from two-sided exposure,
-            rounding and spalling. Edges: Differential thermal expansion causes micro-fracturing.
-            Joints: Moisture accumulation promotes biological growth and freeze-thaw
-            damage. Projections: Enhanced erosion from wind and water impact. Recesses:
-            Protected zones with minimal aging.'
-          gravity_influence: Water flows create dendritic staining patterns, downward
-            migration of dissolved minerals causes deposition at drip lines, accumulation
-            of debris in lower areas promotes biological growth, and runoff channels
-            develop preferential erosion paths creating fluting and rillenkarren.
-          lighting_effects: 'Aged surfaces exhibit complex light scattering: rough
-            textures create diffuse reflection, polished areas become matte reducing
-            specular highlights, color variations create subtle shadow effects, biological
-            films absorb certain wavelengths, and crust formations create glossy patches
-            amid matte backgrounds.'
-          texture_details: Surface roughening from granular disintegration, development
-            of micro-fractures, pitting from chemical dissolution, rounding of sharp
-            edges, formation of crusts (sandstone case-hardening, limestone calcite
-            crusts), biological film development (lichens, algae), and differential
-            erosion of mineral components.
-          thickness_range: 'Surface alteration typically extends 1-10mm deep: chemical
-            alteration zones 0.1-2mm, biological colonization 0.5-5mm, physical weathering
-            effects 1-10mm, with crust formations up to 3mm thick on sheltered surfaces.'
-        wood:
-          aged_appearance: 'Months: Surface dulling, slight color shift → 1 year:
-            Distinct gray patina on exposed surfaces, early checking → 2-5 years:
-            Prominent silver-gray on sun-facing surfaces, moderate checking, texture
-            development → 5-10 years: Deep silver-gray coloration, extensive checking,
-            potential spalting in moist areas, significant surface erosion on horizontal
-            planes.'
-          buildup_progression: '6 months: Surface dulling, early gray patina on sun-exposed
-            areas → 1 year: Distinct gray bands on vertical surfaces, checking begins
-            → 2 years: Silver-gray dominant on south-facing surfaces, moderate checking
-            patterns → 5 years: Extensive silvering, deep checking, texture development,
-            moisture patterns evident → 10 years: Deep charcoal grays, significant
-            surface erosion, complex weathering patterns with clear orientation effects'
-          color_variations: 'Fresh wood: golden/yellow/reddish-brown → Early weathering
-            (6-12 months): light gray patina with underlying warm tones → Moderate
-            (2-5 years): mottled gray-brown with silver highlights → Heavy (5+ years):
-            silver-gray to charcoal gray, with protected areas maintaining amber/brown
-            tones. South-facing surfaces develop silver-gray faster, while north-facing
-            retain more original color.'
-          common_patterns: Cupping on horizontal boards (edges higher than center),
-            checking patterns radiating from fasteners or end grain, splitting at
-            board ends, gray banding on vertical surfaces where water runs off, darker
-            staining in moisture-trapping areas, silvering on sun-exposed upper surfaces
-            with warmer tones in shadows.
-          coverage_ranges: 'Light weathering (10-30%): Scattered gray patches, minimal
-            checking, mostly original color visible → Moderate (30-70%): Prominent
-            gray areas with checking, mixed original and aged tones → Heavy (70-95%):
-            Dominant silver-gray, extensive checking and texture, only deeply protected
-            areas show original color.'
-          description: Natural weathering creates a complex, non-uniform surface with
-            silver-gray coloration dominating sun-exposed areas while retaining warmer
-            tones in protected zones. The surface develops raised wood fibers, checking
-            patterns, and subtle texture variations that create visual depth. Horizontal
-            surfaces show more moisture damage with darker staining and potential
-            fungal growth, while vertical surfaces display more prominent UV bleaching
-            and checking patterns. End grain appears darker and more eroded than face
-            grain due to increased moisture absorption.
-          distribution_patterns: 'Top surfaces: Heavy silver-gray UV bleaching, checking
-            patterns → Vertical surfaces: Gradient effect - lighter at top (more sun),
-            darker at bottom (moisture runoff) → South-facing: Rapid silvering and
-            checking → North-facing: Slower graying, retains more color → Protected
-            undersides: Minimal color change, retains original wood tones → End grain:
-            Darker, more eroded appearance.'
-          edge_center_behavior: Edges weather faster due to greater exposure - develop
-            silver-gray coloration sooner, show more checking and erosion. Center
-            areas retain color longer, develop checking patterns that originate from
-            edges. On horizontal surfaces, edges cup upward while centers show water
-            staining. On vertical panels, edges develop more pronounced checking while
-            centers show more uniform graying.
-          geometry_effects: 'Corners: Accelerated weathering on exposed edges, rounded
-            appearance over time → Edges: More rapid erosion and checking than flat
-            surfaces → Joints: Moisture trapping creates darker staining patterns
-            → End grain: Absorbs 10-15x more moisture, shows deeper checking and darker
-            coloration → Recessed areas: Protected from UV, maintain original color
-            → Protrusions: Heavy erosion and silvering.'
-          gravity_influence: Rain runoff creates vertical streaking patterns, with
-            darker staining along water paths. Horizontal surfaces show water pooling
-            marks and darker spots. Upper edges of horizontal boards develop heavier
-            erosion. Bottom edges of vertical surfaces accumulate moisture and show
-            darker staining. Drip lines form beneath joints and overhangs.
-          lighting_effects: 'Direct sunlight: Silver-gray surfaces appear bright with
-            high reflectivity, texture shadows create strong contrast → Overcast:
-            More uniform gray appearance, subtle texture details visible → Low angle
-            light: Checking patterns and surface texture become highly pronounced,
-            creating dramatic shadow effects → Wet conditions: Darker coloration,
-            enhanced grain patterns, increased contrast between aged and protected
-            areas.'
-          texture_details: Surface fibers raise and become fuzzy, creating a rough
-            tactile feel. Checking (small surface cracks) develops in sun-exposed
-            areas, typically following wood grain. Horizontal surfaces show more erosion
-            and potential spalting (fungal patterns). End grain becomes more porous
-            and may show honeycombing. Protected areas maintain smoother surfaces
-            with minimal fiber raising.
-          thickness_range: UV degradation typically penetrates 0.5-2mm, surface erosion
-            removes 1-3mm over decade, checking extends 1-5mm deep depending on wood
-            species. Moisture damage can penetrate deeper through end grain (up to
-            10mm) and in horizontal surfaces where water pools.
-        composite:
-          description: Natural aging effects on composite materials from UV, moisture,
-            and thermal cycling.
-          color_variations: Gradual fading and discoloration over time.
-          texture_details: Surface degradation and roughening.
-          common_patterns: UV bleaching and environmental staining.
-          aged_appearance: Progressive surface deterioration.
-          lighting_effects: Duller appearance under direct light.
-          thickness_range: Surface-level aging penetration.
-          distribution_patterns: 'Top surfaces: Heavy UV damage. Vertical: Streaking.
-            Protected: Minimal change.'
-          gravity_influence: Water runoff creates vertical staining patterns.
-          geometry_effects: Edges and corners show accelerated aging.
-          edge_center_behavior: Edges age faster than center areas.
-          coverage_ranges: 'Light: <30% surface change. Moderate: 30-60%. Heavy: >60%
-            degradation.'
-          buildup_progression: Visible changes within 1-5 years outdoor exposure.
-        fabric:
-          description: Natural aging effects on fabric materials from UV, moisture,
-            and thermal cycling.
-          color_variations: Gradual fading and discoloration over time.
-          texture_details: Surface degradation and roughening.
-          common_patterns: UV bleaching and environmental staining.
-          aged_appearance: Progressive surface deterioration.
-          lighting_effects: Duller appearance under direct light.
-          thickness_range: Surface-level aging penetration.
-          distribution_patterns: 'Top surfaces: Heavy UV damage. Vertical: Streaking.
-            Protected: Minimal change.'
-          gravity_influence: Water runoff creates vertical staining patterns.
-          geometry_effects: Edges and corners show accelerated aging.
-          edge_center_behavior: Edges age faster than center areas.
-          coverage_ranges: 'Light: <30% surface change. Moderate: 30-60%. Heavy: >60%
-            degradation.'
-          buildup_progression: Visible changes within 1-5 years outdoor exposure.
-        mineral:
-          description: Natural aging effects on mineral materials from UV, moisture,
-            and thermal cycling.
-          color_variations: Gradual fading and discoloration over time.
-          texture_details: Surface degradation and roughening.
-          common_patterns: UV bleaching and environmental staining.
-          aged_appearance: Progressive surface deterioration.
-          lighting_effects: Duller appearance under direct light.
-          thickness_range: Surface-level aging penetration.
-          distribution_patterns: 'Top surfaces: Heavy UV damage. Vertical: Streaking.
-            Protected: Minimal change.'
-          gravity_influence: Water runoff creates vertical staining patterns.
-          geometry_effects: Edges and corners show accelerated aging.
-          edge_center_behavior: Edges age faster than center areas.
-          coverage_ranges: 'Light: <30% surface change. Moderate: 30-60%. Heavy: >60%
-            degradation.'
-          buildup_progression: Visible changes within 1-5 years outdoor exposure.
-        rubber:
-          description: Natural aging effects on rubber materials from UV, moisture,
-            and thermal cycling.
-          color_variations: Gradual fading and discoloration over time.
-          texture_details: Surface degradation and roughening.
-          common_patterns: UV bleaching and environmental staining.
-          aged_appearance: Progressive surface deterioration.
-          lighting_effects: Duller appearance under direct light.
-          thickness_range: Surface-level aging penetration.
-          distribution_patterns: 'Top surfaces: Heavy UV damage. Vertical: Streaking.
-            Protected: Minimal change.'
-          gravity_influence: Water runoff creates vertical staining patterns.
-          geometry_effects: Edges and corners show accelerated aging.
-          edge_center_behavior: Edges age faster than center areas.
-          coverage_ranges: 'Light: <30% surface change. Moderate: 30-60%. Heavy: >60%
-            degradation.'
-          buildup_progression: Visible changes within 1-5 years outdoor exposure.
-        semiconductor:
-          description: Natural aging effects on semiconductor materials from UV, moisture,
-            and thermal cycling.
-          color_variations: Gradual fading and discoloration over time.
-          texture_details: Surface degradation and roughening.
-          common_patterns: UV bleaching and environmental staining.
-          aged_appearance: Progressive surface deterioration.
-          lighting_effects: Duller appearance under direct light.
-          thickness_range: Surface-level aging penetration.
-          distribution_patterns: 'Top surfaces: Heavy UV damage. Vertical: Streaking.
-            Protected: Minimal change.'
-          gravity_influence: Water runoff creates vertical staining patterns.
-          geometry_effects: Edges and corners show accelerated aging.
-          edge_center_behavior: Edges age faster than center areas.
-          coverage_ranges: 'Light: <30% surface change. Moderate: 30-60%. Heavy: >60%
-            degradation.'
-          buildup_progression: Visible changes within 1-5 years outdoor exposure.
-        specialty:
-          description: Natural aging effects on specialty materials from UV, moisture,
-            and thermal cycling.
-          color_variations: Gradual fading and discoloration over time.
-          texture_details: Surface degradation and roughening.
-          common_patterns: UV bleaching and environmental staining.
-          aged_appearance: Progressive surface deterioration.
-          lighting_effects: Duller appearance under direct light.
-          thickness_range: Surface-level aging penetration.
-          distribution_patterns: 'Top surfaces: Heavy UV damage. Vertical: Streaking.
-            Protected: Minimal change.'
-          gravity_influence: Water runoff creates vertical staining patterns.
-          geometry_effects: Edges and corners show accelerated aging.
-          edge_center_behavior: Edges age faster than center areas.
-          coverage_ranges: 'Light: <30% surface change. Moderate: 30-60%. Heavy: >60%
-            degradation.'
-          buildup_progression: Visible changes within 1-5 years outdoor exposure.
-    author:
-      id: 2
+    category: metallic_coating
+    subcategory: plating
 error_messages:
   oil_without_context:
     code: CONTEXT_REQUIRED
