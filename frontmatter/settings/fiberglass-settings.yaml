@@ -1,88 +1,48 @@
 name: Fiberglass
 slug: fiberglass-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.556195'
-dateModified: '2025-12-16T14:42:51.556195'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Fiberglass surface cleaning without thermal
-            damage
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-infrared wavelength for optimal Fiberglass absorption and minimal
-            transmission
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal spot diameter for precision cleaning resolution
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - High repetition rate for efficient cleaning coverage
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for effective contaminant removal
-        - - unit
-          - J/cm²
-        - - value
-          - 5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for controlled ablation of contaminants
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Scanning speed for efficient area coverage without thermal buildup
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of cleaning passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning coverage
-        - - unit
-          - '%'
-        - - value
-          - 50
-  - - dwellTime
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Effective dwell time per spot for contaminant ablation
-        - - unit
-          - μs
-        - - value
-          - 100
+datePublished: '2025-12-16T14:50:07.187464'
+dateModified: '2025-12-16T14:50:07.187464'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Fiberglass surface cleaning without thermal
+      damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-infrared wavelength for optimal Fiberglass absorption and minimal
+      transmission
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Optimal spot diameter for precision cleaning resolution
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: High repetition rate for efficient cleaning coverage
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal
+    unit: J/cm²
+    value: 5
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Scanning speed for efficient area coverage without thermal buildup
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning coverage
+    unit: '%'
+    value: 50
+  dwellTime:
+    description: Effective dwell time per spot for contaminant ablation
+    unit: μs
+    value: 100

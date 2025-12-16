@@ -1,82 +1,48 @@
 name: Copper
 slug: copper-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.536930'
-dateModified: '2025-12-16T14:42:51.536930'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Copper oxide removal and surface cleaning
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength optimized for Copper absorption and minimal substrate
-            damage
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal spot diameter for balancing cleaning efficiency and processing
-            speed
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - High repetition rate for efficient cleaning coverage while maintaining
-            process control
-        - - unit
-          - kHz
-        - - value
-          - 100
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Minimum fluence required for effective Copper oxide removal
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for effective oxide removal without excessive
-            thermal diffusion
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning with adequate energy deposition
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal pulse overlap for uniform cleaning without excessive heat accumulation
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.172216'
+dateModified: '2025-12-16T14:50:07.172216'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Copper oxide removal and surface cleaning
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength optimized for Copper absorption and minimal substrate
+      damage
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Optimal spot diameter for balancing cleaning efficiency and processing
+      speed
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      process control
+    unit: kHz
+    value: 100
+  fluenceThreshold:
+    description: Minimum fluence required for effective Copper oxide removal
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for effective oxide removal without excessive
+      thermal diffusion
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning with adequate energy
+      deposition
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal pulse overlap for uniform cleaning without excessive heat
+      accumulation
+    unit: '%'
+    value: 50

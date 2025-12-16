@@ -1,79 +1,44 @@
 name: Rhodium
 slug: rhodium-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.788565'
-dateModified: '2025-12-16T14:42:51.788565'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Rhodium surface cleaning without thermal damage
-        - - unit
-          - W
-        - - value
-          - 45
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength optimized for Rhodium's moderate reflectivity and thermal
-            absorption
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam diameter for precision cleaning resolution
-        - - unit
-          - μm
-        - - value
-          - 80
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - High repetition rate for efficient cleaning coverage
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Minimum fluence required for effective contaminant removal
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for controlled ablation of contaminants
-        - - unit
-          - ns
-        - - value
-          - 15
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Scanning speed for efficient area coverage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of cleaning passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning results
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.355374'
+dateModified: '2025-12-16T14:50:07.355374'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Rhodium surface cleaning without thermal
+      damage
+    unit: W
+    value: 45
+  wavelength:
+    description: Near-IR wavelength optimized for Rhodium's moderate reflectivity
+      and thermal absorption
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Optimal beam diameter for precision cleaning resolution
+    unit: μm
+    value: 80
+  repetitionRate:
+    description: High repetition rate for efficient cleaning coverage
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Minimum fluence required for effective contaminant removal
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    unit: ns
+    value: 15
+  scanSpeed:
+    description: Scanning speed for efficient area coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for complete contaminant removal
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning results
+    unit: '%'
+    value: 50

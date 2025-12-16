@@ -1,79 +1,43 @@
 name: Tungsten Carbide
 slug: tungsten-carbide-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.917511'
-dateModified: '2025-12-16T14:42:51.917511'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Tungsten Carbide oxide layer removal
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-infrared wavelength for optimal Tungsten Carbide absorption
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning resolution
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient cleaning without thermal damage
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for effective contaminant removal without substrate
-            damage
-        - - unit
-          - J/cm²
-        - - value
-          - 5.1
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for controlled ablation of surface contaminants
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform surface treatment
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of cleaning passes for thorough contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for complete surface coverage
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.451547'
+dateModified: '2025-12-16T14:50:07.451547'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Tungsten Carbide oxide layer removal
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-infrared wavelength for optimal Tungsten Carbide absorption
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning resolution
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning without thermal damage
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
+    unit: J/cm²
+    value: 5.1
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform surface treatment
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for thorough contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for complete surface coverage
+    unit: '%'
+    value: 50

@@ -1,78 +1,44 @@
 name: Carbon Fiber Reinforced Polymer
 slug: carbon-fiber-reinforced-polymer-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.502146'
-dateModified: '2025-12-16T14:42:51.502146'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for CFRP cleaning without matrix damage
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength for optimal carbon absorption and minimal polymer damage
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Focused spot size for precise cleaning resolution
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - High repetition rate for efficient cleaning with thermal management
-        - - unit
-          - kHz
-        - - value
-          - 100
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for effective contaminant removal without CFRP damage
-        - - unit
-          - J/cm²
-        - - value
-          - 5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for controlled ablation of contaminants
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning coverage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning without excessive heating
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.145449'
+dateModified: '2025-12-16T14:50:07.145449'
+machineSettings:
+  powerRange:
+    description: Optimal average power for CFRP cleaning without matrix damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength for optimal carbon absorption and minimal polymer
+      damage
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Focused spot size for precise cleaning resolution
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: High repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 100
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal without CFRP
+      damage
+    unit: J/cm²
+    value: 5
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive heating
+    unit: '%'
+    value: 50

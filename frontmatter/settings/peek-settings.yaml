@@ -1,78 +1,42 @@
 name: PEEK
 slug: peek-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.999211'
-dateModified: '2025-12-16T14:42:51.999211'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 30
-        - - unit
-          - W
-        - - description
-          - Low power for thermal-sensitive polymer cleaning
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 1064
-        - - unit
-          - nm
-        - - description
-          - Near-IR wavelength for controlled absorption
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 100
-        - - unit
-          - μm
-        - - description
-          - Larger spot for gentle surface treatment
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 20
-        - - unit
-          - kHz
-        - - description
-          - Lower frequency to prevent thermal damage
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 0.5
-        - - unit
-          - J/cm²
-        - - description
-          - Low energy density to avoid melting
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 10
-        - - unit
-          - ns
-        - - description
-          - Short pulses for minimal thermal impact
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 800
-        - - unit
-          - mm/s
-        - - description
-          - Fast scanning to reduce heat accumulation
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 2
-        - - unit
-          - passes
-        - - description
-          - Multiple gentle passes for gradual cleaning
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 30
-        - - unit
-          - '%'
-        - - description
-          - Lower overlap to prevent overheating
+datePublished: '2025-12-16T14:50:07.513803'
+dateModified: '2025-12-16T14:50:07.513803'
+machineSettings:
+  powerRange:
+    value: 30
+    unit: W
+    description: Low power for thermal-sensitive polymer cleaning
+  wavelength:
+    value: 1064
+    unit: nm
+    description: Near-IR wavelength for controlled absorption
+  spotSize:
+    value: 100
+    unit: μm
+    description: Larger spot for gentle surface treatment
+  repetitionRate:
+    value: 20
+    unit: kHz
+    description: Lower frequency to prevent thermal damage
+  energyDensity:
+    value: 0.5
+    unit: J/cm²
+    description: Low energy density to avoid melting
+  pulseWidth:
+    value: 10
+    unit: ns
+    description: Short pulses for minimal thermal impact
+  scanSpeed:
+    value: 800
+    unit: mm/s
+    description: Fast scanning to reduce heat accumulation
+  passCount:
+    value: 2
+    unit: passes
+    description: Multiple gentle passes for gradual cleaning
+  overlapRatio:
+    value: 30
+    unit: '%'
+    description: Lower overlap to prevent overheating

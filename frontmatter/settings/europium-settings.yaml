@@ -1,78 +1,42 @@
 name: Europium
 slug: europium-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.550050'
-dateModified: '2025-12-16T14:42:51.550050'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Europium oxide layer removal
-        - - unit
-          - W
-        - - value
-          - 45
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Green wavelength for optimal Europium absorption
-        - - unit
-          - nm
-        - - value
-          - 532
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient cleaning
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Threshold fluence for Europium oxide removal
-        - - unit
-          - J/cm²
-        - - value
-          - 1.2
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse width for controlled ablation
-        - - unit
-          - ns
-        - - value
-          - 8
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of cleaning passes required
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for complete coverage
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.180966'
+dateModified: '2025-12-16T14:50:07.180966'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Europium oxide layer removal
+    unit: W
+    value: 45
+  wavelength:
+    description: Green wavelength for optimal Europium absorption
+    unit: nm
+    value: 532
+  spotSize:
+    description: Beam spot diameter for precise cleaning
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Threshold fluence for Europium oxide removal
+    unit: J/cm²
+    value: 1.2
+  pulseWidth:
+    description: Nanosecond pulse width for controlled ablation
+    unit: ns
+    value: 8
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes required
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Optimal beam overlap for complete coverage
+    unit: '%'
+    value: 50

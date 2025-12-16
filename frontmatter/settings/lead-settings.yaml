@@ -1,78 +1,42 @@
 name: Lead
 slug: lead-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.635145'
-dateModified: '2025-12-16T14:42:51.635145'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power range for Lead surface cleaning
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength optimized for Lead absorption and minimal reflectivity
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise Lead surface treatment
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient Lead cleaning process
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Minimum fluence required for effective Lead removal
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for controlled Lead ablation
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform Lead cleaning
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete Lead contamination removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform Lead surface cleaning
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.245334'
+dateModified: '2025-12-16T14:50:07.245334'
+machineSettings:
+  powerRange:
+    description: Optimal average power range for Lead surface cleaning
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength optimized for Lead absorption and minimal reflectivity
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise Lead surface treatment
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for efficient Lead cleaning process
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Minimum fluence required for effective Lead removal
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled Lead ablation
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform Lead cleaning
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete Lead contamination removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform Lead surface cleaning
+    unit: '%'
+    value: 50

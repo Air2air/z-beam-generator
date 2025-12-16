@@ -1,82 +1,46 @@
 name: Polyester Resin Composites
 slug: polyester-resin-composites-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.726788'
-dateModified: '2025-12-16T14:42:51.726788'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for polyester resin composite cleaning without thermal
-            damage
-        - - unit
-          - W
-        - - value
-          - 90
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-infrared wavelength optimal for polyester resin composite processing
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam spot diameter for precision cleaning
-        - - unit
-          - μm
-        - - value
-          - 80
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for continuous cleaning process
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal pulse duration for efficient material removal with minimal heat
-            affected zone
-        - - unit
-          - ns
-        - - value
-          - 15
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for efficient coverage and material removal
-        - - unit
-          - mm/s
-        - - value
-          - 800
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap percentage for uniform cleaning
-        - - unit
-          - '%'
-        - - value
-          - 50
-  - - fluence
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Energy density threshold for effective Polyester Resin Composites cleaning
-            - Energy density threshold for composite material cleaning considering
-            matrix and reinforcement properties
-        - - unit
-          - J/cm²
-        - - value
-          - 3.0
+datePublished: '2025-12-16T14:50:07.312248'
+dateModified: '2025-12-16T14:50:07.312248'
+machineSettings:
+  powerRange:
+    description: Optimal average power for polyester resin composite cleaning without
+      thermal damage
+    unit: W
+    value: 90
+  wavelength:
+    description: Near-infrared wavelength optimal for polyester resin composite processing
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Optimal beam spot diameter for precision cleaning
+    unit: μm
+    value: 80
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning process
+    unit: kHz
+    value: 50
+  pulseWidth:
+    description: Optimal pulse duration for efficient material removal with minimal
+      heat affected zone
+    unit: ns
+    value: 15
+  scanSpeed:
+    description: Optimal scanning speed for efficient coverage and material removal
+    unit: mm/s
+    value: 800
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap percentage for uniform cleaning
+    unit: '%'
+    value: 50
+  fluence:
+    description: Energy density threshold for effective Polyester Resin Composites
+      cleaning - Energy density threshold for composite material cleaning considering
+      matrix and reinforcement properties
+    unit: J/cm²
+    value: 3.0

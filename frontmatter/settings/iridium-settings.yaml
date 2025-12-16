@@ -1,78 +1,43 @@
 name: Iridium
 slug: iridium-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.615961'
-dateModified: '2025-12-16T14:42:51.615961'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Iridium surface cleaning without thermal damage
-        - - unit
-          - W
-        - - value
-          - 45
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fundamental Nd:YAG wavelength with good Iridium absorption
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning control
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for continuous cleaning coverage
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Minimum fluence required for effective Iridium surface cleaning
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Short pulse duration for efficient ablation with minimal heat diffusion
-        - - unit
-          - ns
-        - - value
-          - 8
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for efficient area coverage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete contamination removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning results
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.230153'
+dateModified: '2025-12-16T14:50:07.230153'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Iridium surface cleaning without thermal
+      damage
+    unit: W
+    value: 45
+  wavelength:
+    description: Fundamental Nd:YAG wavelength with good Iridium absorption
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning control
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning coverage
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Minimum fluence required for effective Iridium surface cleaning
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Short pulse duration for efficient ablation with minimal heat diffusion
+    unit: ns
+    value: 8
+  scanSpeed:
+    description: Optimal scanning speed for efficient area coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete contamination removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning results
+    unit: '%'
+    value: 50

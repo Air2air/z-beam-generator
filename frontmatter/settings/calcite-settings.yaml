@@ -1,78 +1,45 @@
 name: Calcite
 slug: calcite-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.499041'
-dateModified: '2025-12-16T14:42:51.499041'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Calcite cleaning without thermal damage
-        - - unit
-          - W
-        - - value
-          - 45
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength for efficient Calcite absorption with minimal transmission
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning resolution on Calcite surfaces
-        - - unit
-          - μm
-        - - value
-          - 80
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient cleaning with thermal management
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Minimum fluence required for effective contaminant removal from Calcite
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for controlled ablation of Calcite surface contaminants
-        - - unit
-          - ns
-        - - value
-          - 12
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning coverage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning without excessive energy deposition
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.142893'
+dateModified: '2025-12-16T14:50:07.142893'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Calcite cleaning without thermal damage
+    unit: W
+    value: 45
+  wavelength:
+    description: Near-IR wavelength for efficient Calcite absorption with minimal
+      transmission
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning resolution on Calcite surfaces
+    unit: μm
+    value: 80
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Minimum fluence required for effective contaminant removal from Calcite
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of Calcite surface
+      contaminants
+    unit: ns
+    value: 12
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
+    unit: '%'
+    value: 50

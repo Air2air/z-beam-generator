@@ -1,86 +1,48 @@
 name: Cherry
 slug: cherry-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.522704'
-dateModified: '2025-12-16T14:42:51.522704'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Cherry surface cleaning without thermal damage
-        - - unit
-          - W
-        - - value
-          - 90
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-infrared wavelength for optimal absorption in Cherry organic compounds
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning control
-        - - unit
-          - μm
-        - - value
-          - 80
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for continuous cleaning process
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for effective contaminant removal
-        - - unit
-          - J/cm²
-        - - value
-          - 1.8
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for efficient ablation of contaminants
-        - - unit
-          - ns
-        - - value
-          - 12
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for efficient area coverage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of cleaning passes for complete surface treatment
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning coverage
-        - - unit
-          - '%'
-        - - value
-          - 30
-  - - dwellTime
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Effective dwell time per spot for contaminant removal
-        - - unit
-          - μs
-        - - value
-          - 100
+datePublished: '2025-12-16T14:50:07.162155'
+dateModified: '2025-12-16T14:50:07.162155'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Cherry surface cleaning without thermal
+      damage
+    unit: W
+    value: 90
+  wavelength:
+    description: Near-infrared wavelength for optimal absorption in Cherry organic
+      compounds
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning control
+    unit: μm
+    value: 80
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning process
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal
+    unit: J/cm²
+    value: 1.8
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient ablation of contaminants
+    unit: ns
+    value: 12
+  scanSpeed:
+    description: Optimal scanning speed for efficient area coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for complete surface treatment
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning coverage
+    unit: '%'
+    value: 30
+  dwellTime:
+    description: Effective dwell time per spot for contaminant removal
+    unit: μs
+    value: 100

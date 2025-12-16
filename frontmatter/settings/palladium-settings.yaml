@@ -1,86 +1,49 @@
 name: Palladium
 slug: palladium-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.699532'
-dateModified: '2025-12-16T14:42:51.699532'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Palladium oxide removal without substrate damage
-        - - unit
-          - W
-        - - value
-          - 90
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength for efficient absorption by Palladium oxides and contaminants
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning control on Palladium surfaces
-        - - unit
-          - μm
-        - - value
-          - 80
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient cleaning with thermal management
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Threshold fluence for effective contaminant removal from Palladium
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for controlled ablation of surface contaminants
-        - - unit
-          - ns
-        - - value
-          - 12
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning coverage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning without excessive heat accumulation
-        - - unit
-          - '%'
-        - - value
-          - 50
-  - - dwellTime
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Effective dwell time per cleaning spot for optimal results
-        - - unit
-          - μs
-        - - value
-          - 100
+datePublished: '2025-12-16T14:50:07.293786'
+dateModified: '2025-12-16T14:50:07.293786'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Palladium oxide removal without substrate
+      damage
+    unit: W
+    value: 90
+  wavelength:
+    description: Near-IR wavelength for efficient absorption by Palladium oxides and
+      contaminants
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning control on Palladium surfaces
+    unit: μm
+    value: 80
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Threshold fluence for effective contaminant removal from Palladium
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    unit: ns
+    value: 12
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive heat
+      accumulation
+    unit: '%'
+    value: 50
+  dwellTime:
+    description: Effective dwell time per cleaning spot for optimal results
+    unit: μs
+    value: 100

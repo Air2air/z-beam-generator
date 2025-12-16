@@ -1,81 +1,45 @@
 name: Kevlar-Reinforced Polymer
 slug: kevlar-reinforced-polymer-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.624992'
-dateModified: '2025-12-16T14:42:51.624992'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Kevlar-Reinforced Polymer surface cleaning without
-            thermal damage
-        - - unit
-          - W
-        - - value
-          - 45
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength providing optimal absorption balance between Kevlar
-            fibers and polymer matrix
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning control
-        - - unit
-          - μm
-        - - value
-          - 80
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient cleaning with thermal management
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for effective contaminant removal without substrate
-            damage
-        - - unit
-          - J/cm²
-        - - value
-          - 4.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for controlled ablation of surface contaminants
-        - - unit
-          - ns
-        - - value
-          - 15
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning coverage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of cleaning passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning pattern
-        - - unit
-          - '%'
-        - - value
-          - 40
+datePublished: '2025-12-16T14:50:07.236808'
+dateModified: '2025-12-16T14:50:07.236808'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Kevlar-Reinforced Polymer surface cleaning
+      without thermal damage
+    unit: W
+    value: 45
+  wavelength:
+    description: Near-IR wavelength providing optimal absorption balance between Kevlar
+      fibers and polymer matrix
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning control
+    unit: μm
+    value: 80
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
+    unit: J/cm²
+    value: 4.5
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    unit: ns
+    value: 15
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of cleaning passes for complete contaminant removal
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning pattern
+    unit: '%'
+    value: 40

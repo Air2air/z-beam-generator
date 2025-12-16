@@ -1,85 +1,50 @@
 name: Fused Silica
 slug: fused-silica-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.567755'
-dateModified: '2025-12-16T14:42:51.567755'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power range for Fused Silica surface cleaning without
-            thermal damage
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength providing optimal absorption balance for Fused Silica
-            contamination removal
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam spot diameter for precision cleaning with sufficient energy
-            density
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - High repetition rate for efficient cleaning coverage while maintaining
-            thermal management
-        - - unit
-          - kHz
-        - - value
-          - 100
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Critical fluence threshold for effective contaminant removal without Fused
-            Silica damage
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for efficient contaminant ablation with minimal
-            substrate heating
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning coverage and process efficiency
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of cleaning passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap percentage for uniform cleaning without excessive
-            energy deposition
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.198811'
+dateModified: '2025-12-16T14:50:07.198811'
+machineSettings:
+  powerRange:
+    description: Optimal average power range for Fused Silica surface cleaning without
+      thermal damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength providing optimal absorption balance for Fused
+      Silica contamination removal
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Optimal beam spot diameter for precision cleaning with sufficient
+      energy density
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal management
+    unit: kHz
+    value: 100
+  fluenceThreshold:
+    description: Critical fluence threshold for effective contaminant removal without
+      Fused Silica damage
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient contaminant ablation with
+      minimal substrate heating
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage and process
+      efficiency
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of cleaning passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap percentage for uniform cleaning without excessive
+      energy deposition
+    unit: '%'
+    value: 50

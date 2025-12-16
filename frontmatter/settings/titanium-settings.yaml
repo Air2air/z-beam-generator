@@ -1,78 +1,42 @@
 name: Titanium
 slug: titanium-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.899119'
-dateModified: '2025-12-16T14:42:51.899119'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Titanium oxide layer removal
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal wavelength for Titanium absorption characteristics
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam spot diameter for Titanium surface treatment
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient Titanium cleaning process
-        - - unit
-          - kHz
-        - - value
-          - 100
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Minimum fluence required for effective Titanium surface cleaning
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal pulse duration for Titanium ablation without thermal damage
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform Titanium cleaning
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal number of passes for thorough Titanium cleaning
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for complete Titanium surface coverage
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.434771'
+dateModified: '2025-12-16T14:50:07.434771'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Titanium oxide layer removal
+    unit: W
+    value: 100
+  wavelength:
+    description: Optimal wavelength for Titanium absorption characteristics
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Optimal beam spot diameter for Titanium surface treatment
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for efficient Titanium cleaning process
+    unit: kHz
+    value: 100
+  fluenceThreshold:
+    description: Minimum fluence required for effective Titanium surface cleaning
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Optimal pulse duration for Titanium ablation without thermal damage
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform Titanium cleaning
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Optimal number of passes for thorough Titanium cleaning
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for complete Titanium surface coverage
+    unit: '%'
+    value: 50

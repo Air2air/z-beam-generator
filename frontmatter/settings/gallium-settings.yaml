@@ -1,78 +1,45 @@
 name: Gallium
 slug: gallium-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.571549'
-dateModified: '2025-12-16T14:42:51.571549'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Gallium oxide removal without excessive melting
-        - - unit
-          - W
-        - - value
-          - 45
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength for moderate Gallium absorption with good penetration
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal spot diameter for precise cleaning of Gallium surfaces
-        - - unit
-          - μm
-        - - value
-          - 80
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Balanced repetition rate for efficient cleaning with thermal management
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Minimum fluence required for effective Gallium oxide removal
-        - - unit
-          - J/cm²
-        - - value
-          - 1.2
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulses for controlled ablation of surface contaminants
-        - - unit
-          - ns
-        - - value
-          - 15
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Scan speed for efficient area coverage while maintaining cleaning effectiveness
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of passes for complete contaminant removal without substrate damage
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal overlap between adjacent laser tracks for uniform cleaning
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.201535'
+dateModified: '2025-12-16T14:50:07.201535'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Gallium oxide removal without excessive
+      melting
+    unit: W
+    value: 45
+  wavelength:
+    description: Near-IR wavelength for moderate Gallium absorption with good penetration
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Optimal spot diameter for precise cleaning of Gallium surfaces
+    unit: μm
+    value: 80
+  repetitionRate:
+    description: Balanced repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Minimum fluence required for effective Gallium oxide removal
+    unit: J/cm²
+    value: 1.2
+  pulseWidth:
+    description: Nanosecond pulses for controlled ablation of surface contaminants
+    unit: ns
+    value: 15
+  scanSpeed:
+    description: Scan speed for efficient area coverage while maintaining cleaning
+      effectiveness
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of passes for complete contaminant removal without substrate
+      damage
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Optimal overlap between adjacent laser tracks for uniform cleaning
+    unit: '%'
+    value: 50

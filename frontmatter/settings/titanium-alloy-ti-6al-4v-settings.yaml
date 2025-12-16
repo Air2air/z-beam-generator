@@ -1,78 +1,42 @@
 name: Titanium Alloy (Ti-6Al-4V)
 slug: titanium-alloy-ti-6al-4v-settings
 domain: settings
-datePublished: '2025-12-16T14:42:52.013840'
-dateModified: '2025-12-16T14:42:52.013840'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 100
-        - - unit
-          - W
-        - - description
-          - Optimal average power for metal oxide removal
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 1064
-        - - unit
-          - nm
-        - - description
-          - Near-IR wavelength for optimal metal absorption
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 50
-        - - unit
-          - μm
-        - - description
-          - Beam spot diameter for effective cleaning resolution
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 50
-        - - unit
-          - kHz
-        - - description
-          - Pulse frequency for controlled cleaning
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 2.5
-        - - unit
-          - J/cm²
-        - - description
-          - Energy per unit area for oxide removal
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 10
-        - - unit
-          - ns
-        - - description
-          - Pulse duration for minimal heat-affected zone
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 500
-        - - unit
-          - mm/s
-        - - description
-          - Beam travel speed for uniform treatment
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 2
-        - - unit
-          - passes
-        - - description
-          - Number of cleaning cycles for complete removal
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 50
-        - - unit
-          - '%'
-        - - description
-          - Beam overlap for consistent coverage
+datePublished: '2025-12-16T14:50:07.525376'
+dateModified: '2025-12-16T14:50:07.525376'
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    description: Optimal average power for metal oxide removal
+  wavelength:
+    value: 1064
+    unit: nm
+    description: Near-IR wavelength for optimal metal absorption
+  spotSize:
+    value: 50
+    unit: μm
+    description: Beam spot diameter for effective cleaning resolution
+  repetitionRate:
+    value: 50
+    unit: kHz
+    description: Pulse frequency for controlled cleaning
+  energyDensity:
+    value: 2.5
+    unit: J/cm²
+    description: Energy per unit area for oxide removal
+  pulseWidth:
+    value: 10
+    unit: ns
+    description: Pulse duration for minimal heat-affected zone
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    description: Beam travel speed for uniform treatment
+  passCount:
+    value: 2
+    unit: passes
+    description: Number of cleaning cycles for complete removal
+  overlapRatio:
+    value: 50
+    unit: '%'
+    description: Beam overlap for consistent coverage

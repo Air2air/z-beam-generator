@@ -3,81 +3,45 @@ slug: aluminum-settings
 author:
   id: 4
 domain: settings
-datePublished: '2025-12-16T14:42:51.453752'
-dateModified: '2025-12-16T14:42:51.453752'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Aluminum oxide layer removal
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength for optimal Aluminum absorption and minimal substrate
-            damage
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for effective cleaning resolution and energy density
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for continuous cleaning coverage with thermal
-            management
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for Aluminum oxide removal without substrate damage
-        - - unit
-          - J/cm²
-        - - value
-          - 5.1
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for efficient oxide removal without excessive
-            thermal diffusion
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for efficient coverage and cleaning effectiveness
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal pulse overlap for uniform cleaning coverage
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.107086'
+dateModified: '2025-12-16T14:50:07.107086'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Aluminum oxide layer removal
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength for optimal Aluminum absorption and minimal substrate
+      damage
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for effective cleaning resolution and energy density
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning coverage with thermal
+      management
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for Aluminum oxide removal without substrate damage
+    unit: J/cm²
+    value: 5.1
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient oxide removal without excessive
+      thermal diffusion
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for efficient coverage and cleaning effectiveness
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal pulse overlap for uniform cleaning coverage
+    unit: '%'
+    value: 50

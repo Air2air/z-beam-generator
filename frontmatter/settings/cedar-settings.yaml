@@ -1,82 +1,48 @@
 name: Cedar
 slug: cedar-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.509182'
-dateModified: '2025-12-16T14:42:51.509182'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Cedar surface cleaning without charring
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-infrared wavelength for optimal Cedar absorption and minimal penetration
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam diameter for precision cleaning of Cedar grain patterns
-        - - unit
-          - μm
-        - - value
-          - 80
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - High repetition rate for uniform cleaning coverage on Cedar surfaces
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for effective contaminant removal without damaging Cedar
-            substrate
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Short pulse duration for efficient ablation of contaminants without excessive
-            heat diffusion
-        - - unit
-          - ns
-        - - value
-          - 12
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Scanning speed for efficient area coverage while maintaining cleaning
-            effectiveness
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of cleaning passes for complete contaminant removal from Cedar
-            surface
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning without excessive energy deposition
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.151540'
+dateModified: '2025-12-16T14:50:07.151540'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Cedar surface cleaning without charring
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-infrared wavelength for optimal Cedar absorption and minimal
+      penetration
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Optimal beam diameter for precision cleaning of Cedar grain patterns
+    unit: μm
+    value: 80
+  repetitionRate:
+    description: High repetition rate for uniform cleaning coverage on Cedar surfaces
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal without damaging
+      Cedar substrate
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Short pulse duration for efficient ablation of contaminants without
+      excessive heat diffusion
+    unit: ns
+    value: 12
+  scanSpeed:
+    description: Scanning speed for efficient area coverage while maintaining cleaning
+      effectiveness
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for complete contaminant removal from Cedar
+      surface
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
+    unit: '%'
+    value: 50

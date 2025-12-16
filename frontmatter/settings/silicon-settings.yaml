@@ -1,79 +1,47 @@
 name: Silicon
 slug: silicon-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.822159'
-dateModified: '2025-12-16T14:42:51.822159'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Silicon surface cleaning without substrate damage
-        - - unit
-          - W
-        - - value
-          - 25
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength with good Silicon absorption for contaminant removal
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning with adequate energy density
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient cleaning coverage and process control
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for effective contaminant removal without Silicon damage
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for effective contaminant ablation with minimal
-            thermal diffusion
-        - - unit
-          - ns
-        - - value
-          - 100
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning coverage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of cleaning passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning without excessive thermal buildup
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.379234'
+dateModified: '2025-12-16T14:50:07.379234'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Silicon surface cleaning without substrate
+      damage
+    unit: W
+    value: 25
+  wavelength:
+    description: Near-IR wavelength with good Silicon absorption for contaminant removal
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage and process
+      control
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Fluence threshold for effective contaminant removal without Silicon
+      damage
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for effective contaminant ablation with
+      minimal thermal diffusion
+    unit: ns
+    value: 100
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for complete contaminant removal
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
+    unit: '%'
+    value: 50

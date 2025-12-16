@@ -1,86 +1,47 @@
 name: MDF
 slug: mdf-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.645316'
-dateModified: '2025-12-16T14:42:51.645316'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for MDF surface cleaning without charring
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength for optimal MDF absorption and minimal substrate damage
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning control
-        - - unit
-          - μm
-        - - value
-          - 100
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - High repetition rate for efficient surface cleaning
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Energy density threshold for MDF surface ablation
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for controlled material removal
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform surface treatment
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of cleaning passes for thorough contamination removal
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam overlap percentage for complete surface coverage
-        - - unit
-          - '%'
-        - - value
-          - 50
-  - - dwellTime
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam dwell time per spot for effective material removal
-        - - unit
-          - μs
-        - - value
-          - 100
+datePublished: '2025-12-16T14:50:07.253437'
+dateModified: '2025-12-16T14:50:07.253437'
+machineSettings:
+  powerRange:
+    description: Optimal average power for MDF surface cleaning without charring
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength for optimal MDF absorption and minimal substrate
+      damage
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning control
+    unit: μm
+    value: 100
+  repetitionRate:
+    description: High repetition rate for efficient surface cleaning
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Energy density threshold for MDF surface ablation
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled material removal
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform surface treatment
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for thorough contamination removal
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Beam overlap percentage for complete surface coverage
+    unit: '%'
+    value: 50
+  dwellTime:
+    description: Beam dwell time per spot for effective material removal
+    unit: μs
+    value: 100

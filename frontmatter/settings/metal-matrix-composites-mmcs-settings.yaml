@@ -1,92 +1,52 @@
 name: Metal Matrix Composites MMCs
 slug: metal-matrix-composites-mmcs-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.668266'
-dateModified: '2025-12-16T14:42:51.668266'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for MMCs cleaning considering thermal conductivity
-            and matrix integrity
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength providing good absorption in metallic matrix while
-            minimizing damage to ceramic reinforcements
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter balancing cleaning efficiency and spatial resolution
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - High repetition rate for efficient cleaning while maintaining thermal
-            management
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence level sufficient for contaminant removal without damaging MMC
-            substrate
-        - - unit
-          - J/cm²
-        - - value
-          - 5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for controlled ablation without excessive thermal
-            diffusion
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning coverage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of cleaning passes for thorough contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam overlap percentage ensuring complete coverage without excessive energy
-            deposition
-        - - unit
-          - '%'
-        - - value
-          - 50
-  - - dwellTime
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Effective interaction time per spot location
-        - - unit
-          - μs
-        - - value
-          - 100
+datePublished: '2025-12-16T14:50:07.269256'
+dateModified: '2025-12-16T14:50:07.269256'
+machineSettings:
+  powerRange:
+    description: Optimal average power for MMCs cleaning considering thermal conductivity
+      and matrix integrity
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength providing good absorption in metallic matrix while
+      minimizing damage to ceramic reinforcements
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter balancing cleaning efficiency and spatial resolution
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: High repetition rate for efficient cleaning while maintaining thermal
+      management
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence level sufficient for contaminant removal without damaging
+      MMC substrate
+    unit: J/cm²
+    value: 5
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation without excessive
+      thermal diffusion
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for thorough contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Beam overlap percentage ensuring complete coverage without excessive
+      energy deposition
+    unit: '%'
+    value: 50
+  dwellTime:
+    description: Effective interaction time per spot location
+    unit: μs
+    value: 100

@@ -1,85 +1,51 @@
 name: Ceramic Matrix Composites CMCs
 slug: ceramic-matrix-composites-cmcs-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.515874'
-dateModified: '2025-12-16T14:42:51.515874'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for CMC surface contaminant removal without substrate
-            damage
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength providing optimal absorption balance for CMC ceramic
-            phases and contaminants
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter optimized for precision cleaning of CMC surface features
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - High repetition rate for efficient area coverage while maintaining thermal
-            management
-        - - unit
-          - kHz
-        - - value
-          - 100
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence level sufficient for contaminant ablation while below CMC damage
-            threshold
-        - - unit
-          - J/cm²
-        - - value
-          - 5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for efficient contaminant ablation with minimal
-            thermal diffusion into CMC substrate
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform contaminant removal across CMC surfaces
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of cleaning passes for thorough contaminant removal with process
-            control
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam overlap percentage ensuring complete coverage without excessive heat
-            accumulation
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.156651'
+dateModified: '2025-12-16T14:50:07.156651'
+machineSettings:
+  powerRange:
+    description: Optimal average power for CMC surface contaminant removal without
+      substrate damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength providing optimal absorption balance for CMC ceramic
+      phases and contaminants
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter optimized for precision cleaning of CMC surface
+      features
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: High repetition rate for efficient area coverage while maintaining
+      thermal management
+    unit: kHz
+    value: 100
+  energyDensity:
+    description: Fluence level sufficient for contaminant ablation while below CMC
+      damage threshold
+    unit: J/cm²
+    value: 5
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient contaminant ablation with
+      minimal thermal diffusion into CMC substrate
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform contaminant removal across CMC
+      surfaces
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for thorough contaminant removal with process
+      control
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Beam overlap percentage ensuring complete coverage without excessive
+      heat accumulation
+    unit: '%'
+    value: 50

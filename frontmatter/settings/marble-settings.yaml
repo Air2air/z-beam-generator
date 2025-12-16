@@ -1,83 +1,50 @@
 name: Marble
 slug: marble-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.664910'
-dateModified: '2025-12-16T14:42:51.664910'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Marble surface cleaning without thermal damage
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-infrared wavelength optimized for Marble absorption and minimal subsurface
-            damage
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning control on Marble surfaces
-        - - unit
-          - μm
-        - - value
-          - 100
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient cleaning coverage and thermal management
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for effective contaminant removal while preserving Marble
-            substrate
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for effective contaminant removal with controlled
-            thermal effects
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning without excessive thermal
-            buildup
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for thorough cleaning with progressive contaminant
-            removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning coverage and processing efficiency
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.266630'
+dateModified: '2025-12-16T14:50:07.266630'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Marble surface cleaning without thermal
+      damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-infrared wavelength optimized for Marble absorption and minimal
+      subsurface damage
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning control on Marble surfaces
+    unit: μm
+    value: 100
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal while preserving
+      Marble substrate
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for effective contaminant removal with
+      controlled thermal effects
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning without excessive thermal
+      buildup
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for thorough cleaning with progressive
+      contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning coverage and processing
+      efficiency
+    unit: '%'
+    value: 50

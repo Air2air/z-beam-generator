@@ -1,79 +1,47 @@
 name: Alumina
 slug: alumina-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.450410'
-dateModified: '2025-12-16T14:42:51.450410'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Alumina surface cleaning without thermal damage
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength providing good absorption in Alumina with minimal reflection
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for effective cleaning resolution and energy density
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate balancing cleaning efficiency and thermal management
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Minimum fluence required for effective Alumina surface cleaning
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for efficient material removal with controlled
-            thermal effects
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning coverage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning without excessive thermal buildup
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.104461'
+dateModified: '2025-12-16T14:50:07.104461'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Alumina surface cleaning without thermal
+      damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength providing good absorption in Alumina with minimal
+      reflection
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for effective cleaning resolution and energy density
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Minimum fluence required for effective Alumina surface cleaning
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient material removal with controlled
+      thermal effects
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
+    unit: '%'
+    value: 50

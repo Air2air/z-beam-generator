@@ -1,115 +1,82 @@
 name: Bronze
 slug: bronze-settings
-domain_linkages: !!python/object/apply:collections.OrderedDict
-- - - contaminants
-    - - adhesive-residue-contamination
-      - algae-growth-contamination
-      - biological-stains-contamination
-      - bronze-patina-contamination
-      - carbon-soot-contamination
-      - chemical-stains-contamination
-      - copper-patina-contamination
-      - epoxy-residue-contamination
-      - fertilizer-residue-contamination
-      - graffiti-paint-contamination
-      - graphite-marks-contamination
-      - ink-stains-contamination
-      - insect-residue-contamination
-      - lime-scale-contamination
-      - mercury-contamination
-      - mineral-deposits-contamination
-      - paint-residue-contamination
-      - pesticide-residue-contamination
-      - plastic-residue-contamination
-      - pollen-deposit-contamination
-      - radioactive-contamination
-      - rubber-residue-contamination
-      - salt-residue-contamination
-      - scale-buildup-contamination
-      - silicone-buildup-contamination
-      - silver-plating-contamination
-      - tree-sap-contamination
-      - water-stain-contamination
-      - wax-buildup-contamination
+domain_linkages:
+  contaminants:
+  - adhesive-residue-contamination
+  - algae-growth-contamination
+  - biological-stains-contamination
+  - bronze-patina-contamination
+  - carbon-soot-contamination
+  - chemical-stains-contamination
+  - copper-patina-contamination
+  - epoxy-residue-contamination
+  - fertilizer-residue-contamination
+  - graffiti-paint-contamination
+  - graphite-marks-contamination
+  - ink-stains-contamination
+  - insect-residue-contamination
+  - lime-scale-contamination
+  - mercury-contamination
+  - mineral-deposits-contamination
+  - paint-residue-contamination
+  - pesticide-residue-contamination
+  - plastic-residue-contamination
+  - pollen-deposit-contamination
+  - radioactive-contamination
+  - rubber-residue-contamination
+  - salt-residue-contamination
+  - scale-buildup-contamination
+  - silicone-buildup-contamination
+  - silver-plating-contamination
+  - tree-sap-contamination
+  - water-stain-contamination
+  - wax-buildup-contamination
 domain: settings
-datePublished: '2025-12-16T14:42:51.494662'
-dateModified: '2025-12-16T14:42:51.494662'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Bronze oxide removal without substrate damage
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength with good absorption in Bronze oxides and moderate
-            substrate absorption
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal spot diameter for balancing cleaning efficiency and processing
-            speed
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - High repetition rate for efficient cleaning coverage while maintaining
-            pulse energy
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for effective Bronze oxide removal while preserving
-            substrate
-        - - unit
-          - J/cm²
-        - - value
-          - 5.1
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for efficient oxide layer ablation with minimal
-            thermal diffusion
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform oxide removal without substrate damage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete oxide removal with safety margin
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal pulse overlap for uniform cleaning coverage without excessive
-            thermal buildup
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.139267'
+dateModified: '2025-12-16T14:50:07.139267'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Bronze oxide removal without substrate
+      damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength with good absorption in Bronze oxides and moderate
+      substrate absorption
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Optimal spot diameter for balancing cleaning efficiency and processing
+      speed
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      pulse energy
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective Bronze oxide removal while preserving
+      substrate
+    unit: J/cm²
+    value: 5.1
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient oxide layer ablation with
+      minimal thermal diffusion
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform oxide removal without substrate
+      damage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete oxide removal with safety
+      margin
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Optimal pulse overlap for uniform cleaning coverage without excessive
+      thermal buildup
+    unit: '%'
+    value: 50

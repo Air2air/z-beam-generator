@@ -1,81 +1,46 @@
 name: Borosilicate Glass
 slug: borosilicate-glass-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.480483'
-dateModified: '2025-12-16T14:42:51.480483'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Borosilicate Glass surface cleaning without
-            thermal damage
-        - - unit
-          - W
-        - - value
-          - 25
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength providing good transmission control for surface contamination
-            removal
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning control on glass surface
-        - - unit
-          - μm
-        - - value
-          - 100
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient cleaning with thermal management
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for contaminant removal without glass damage
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for efficient contaminant removal with minimal
-            substrate heating
-        - - unit
-          - ns
-        - - value
-          - 100
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning coverage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of cleaning passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning without excessive energy deposition
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.127539'
+dateModified: '2025-12-16T14:50:07.127539'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Borosilicate Glass surface cleaning without
+      thermal damage
+    unit: W
+    value: 25
+  wavelength:
+    description: Near-IR wavelength providing good transmission control for surface
+      contamination removal
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning control on glass surface
+    unit: μm
+    value: 100
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Fluence threshold for contaminant removal without glass damage
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      minimal substrate heating
+    unit: ns
+    value: 100
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
+    unit: '%'
+    value: 50

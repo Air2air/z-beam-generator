@@ -121,6 +121,19 @@ class TrivialSettingsExporter:
         
         return cleaned
     
+    def _convert_to_plain_dict(self, data):
+        """
+        Recursively convert OrderedDict to plain dict for clean YAML serialization.
+        
+        Prevents Python-specific !!python/object tags in output YAML.
+        """
+        if isinstance(data, OrderedDict) or isinstance(data, dict):
+            return {k: self._convert_to_plain_dict(v) for k, v in data.items()}
+        elif isinstance(data, list):
+            return [self._convert_to_plain_dict(item) for item in data]
+        else:
+            return data
+    
     def _generate_domain_linkages(self, material_name: str) -> Dict[str, Any]:
         """
         Generate domain_linkages from centralized associations.
@@ -234,9 +247,12 @@ class TrivialSettingsExporter:
         # Reorder fields according to specification
         ordered_frontmatter = self.field_order_validator.reorder_fields(frontmatter, 'settings')
         
+        # Convert to plain dict to avoid Python-specific YAML tags
+        plain_frontmatter = self._convert_to_plain_dict(ordered_frontmatter)
+        
         # Write to file with sort_keys=False to preserve field order
         with open(output_file, 'w', encoding='utf-8') as f:
-            yaml.dump(dict(ordered_frontmatter), f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+            yaml.dump(plain_frontmatter, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
         
         self.logger.info(f"✅ Exported settings: {material_name} → {slug}.yaml")
         return True

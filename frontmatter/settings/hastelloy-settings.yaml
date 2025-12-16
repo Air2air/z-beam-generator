@@ -1,91 +1,53 @@
 name: Hastelloy
 slug: hastelloy-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.602834'
-dateModified: '2025-12-16T14:42:51.602834'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Hastelloy surface cleaning without substrate
-            damage
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-infrared wavelength optimized for Hastelloy absorption and minimal
-            reflectivity
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning with adequate energy density
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for continuous cleaning coverage with thermal
-            management
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence level sufficient for contaminant removal while preserving Hastelloy
-            substrate
-        - - unit
-          - J/cm²
-        - - value
-          - 5.1
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for efficient contaminant removal with controlled
-            thermal effects
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for efficient area coverage with effective cleaning
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform cleaning without excessive thermal accumulation
-        - - unit
-          - '%'
-        - - value
-          - 50
-  - - dwellTime
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal dwell time per spot for effective cleaning with thermal control
-        - - unit
-          - μs
-        - - value
-          - 100
+datePublished: '2025-12-16T14:50:07.219709'
+dateModified: '2025-12-16T14:50:07.219709'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Hastelloy surface cleaning without substrate
+      damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-infrared wavelength optimized for Hastelloy absorption and minimal
+      reflectivity
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning coverage with thermal
+      management
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence level sufficient for contaminant removal while preserving
+      Hastelloy substrate
+    unit: J/cm²
+    value: 5.1
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      controlled thermal effects
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for efficient area coverage with effective
+      cleaning
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      accumulation
+    unit: '%'
+    value: 50
+  dwellTime:
+    description: Optimal dwell time per spot for effective cleaning with thermal control
+    unit: μs
+    value: 100

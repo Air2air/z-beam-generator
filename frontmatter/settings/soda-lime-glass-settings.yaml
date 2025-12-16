@@ -1,48 +1,29 @@
 name: Soda-Lime Glass
 slug: soda-lime-glass-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.848923'
-dateModified: '2025-12-16T14:42:51.848923'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Soda-Lime Glass surface cleaning without thermal
-            damage
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength optimized for Soda-Lime Glass absorption and minimal
-            subsurface damage
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise cleaning with adequate energy density
-        - - unit
-          - μm
-        - - value
-          - 100
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient cleaning coverage and thermal management
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Scan velocity for effective cleaning with controlled thermal input
-        - - unit
-          - mm/s
-        - - value
-          - 1150
+datePublished: '2025-12-16T14:50:07.402744'
+dateModified: '2025-12-16T14:50:07.402744'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Soda-Lime Glass surface cleaning without
+      thermal damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength optimized for Soda-Lime Glass absorption and minimal
+      subsurface damage
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    unit: μm
+    value: 100
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Scan velocity for effective cleaning with controlled thermal input
+    unit: mm/s
+    value: 1150

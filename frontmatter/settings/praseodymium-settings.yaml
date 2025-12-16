@@ -1,94 +1,50 @@
 name: Praseodymium
 slug: praseodymium-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.762708'
-dateModified: '2025-12-16T14:42:51.762708'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Praseodymium oxide removal
-        - - unit
-          - W
-        - - value
-          - 90
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal wavelength for Praseodymium absorption characteristics
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam spot diameter for Praseodymium surface processing
-        - - unit
-          - μm
-        - - value
-          - 80
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient Praseodymium cleaning
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Minimum fluence required for effective Praseodymium surface cleaning
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal energy density for controlled Praseodymium ablation
-        - - unit
-          - J/cm²
-        - - value
-          - 3.2
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal pulse duration for Praseodymium thermal management
-        - - unit
-          - ns
-        - - value
-          - 12
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform Praseodymium cleaning
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal number of passes for complete Praseodymium surface cleaning
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform Praseodymium processing
-        - - unit
-          - '%'
-        - - value
-          - 40
-  - - dwellTime
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal dwell time per spot for Praseodymium material interaction
-        - - unit
-          - μs
-        - - value
-          - 120
+datePublished: '2025-12-16T14:50:07.336786'
+dateModified: '2025-12-16T14:50:07.336786'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Praseodymium oxide removal
+    unit: W
+    value: 90
+  wavelength:
+    description: Optimal wavelength for Praseodymium absorption characteristics
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Optimal beam spot diameter for Praseodymium surface processing
+    unit: μm
+    value: 80
+  repetitionRate:
+    description: Optimal repetition rate for efficient Praseodymium cleaning
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Minimum fluence required for effective Praseodymium surface cleaning
+    unit: J/cm²
+    value: 2.5
+  energyDensity:
+    description: Optimal energy density for controlled Praseodymium ablation
+    unit: J/cm²
+    value: 3.2
+  pulseWidth:
+    description: Optimal pulse duration for Praseodymium thermal management
+    unit: ns
+    value: 12
+  scanSpeed:
+    description: Optimal scanning speed for uniform Praseodymium cleaning
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Optimal number of passes for complete Praseodymium surface cleaning
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform Praseodymium processing
+    unit: '%'
+    value: 40
+  dwellTime:
+    description: Optimal dwell time per spot for Praseodymium material interaction
+    unit: μs
+    value: 120

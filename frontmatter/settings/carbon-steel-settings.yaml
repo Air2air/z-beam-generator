@@ -1,92 +1,53 @@
 name: Carbon Steel
 slug: carbon-steel-settings
-domain_linkages: !!python/object/apply:collections.OrderedDict
-- - - contaminants
-    - - forging-scale-contamination
-      - rust-oxidation-contamination
-      - steel-corrosion-contamination
+domain_linkages:
+  contaminants:
+  - forging-scale-contamination
+  - rust-oxidation-contamination
+  - steel-corrosion-contamination
 domain: settings
-datePublished: '2025-12-16T14:42:52.025813'
-dateModified: '2025-12-16T14:42:52.025813'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Carbon Steel surface cleaning and oxide removal
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength with strong absorption in iron oxides for efficient
-            cleaning
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for Carbon Steel cleaning with good energy density
-        - - unit
-          - μm
-        - - value
-          - 100
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient cleaning coverage
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Energy density threshold for rust and scale removal from Carbon Steel
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for effective oxide removal
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform Carbon Steel cleaning
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform coverage
-        - - unit
-          - '%'
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence for contaminant ablation while preserving substrate
-        - - unit
-          - J/cm²
-        - - value
-          - 5
+datePublished: '2025-12-16T14:50:07.533324'
+dateModified: '2025-12-16T14:50:07.533324'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Carbon Steel surface cleaning and oxide
+      removal
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength with strong absorption in iron oxides for efficient
+      cleaning
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for Carbon Steel cleaning with good energy density
+    unit: μm
+    value: 100
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Energy density threshold for rust and scale removal from Carbon Steel
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for effective oxide removal
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform Carbon Steel cleaning
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform coverage
+    unit: '%'
+    value: 50
+  energyDensity:
+    description: Fluence for contaminant ablation while preserving substrate
+    unit: J/cm²
+    value: 5

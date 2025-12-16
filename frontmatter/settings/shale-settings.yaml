@@ -1,79 +1,44 @@
 name: Shale
 slug: shale-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.816686'
-dateModified: '2025-12-16T14:42:51.816686'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Shale surface cleaning without thermal damage
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength optimized for Shale mineral absorption characteristics
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for effective Shale cleaning resolution
-        - - unit
-          - μm
-        - - value
-          - 80
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for continuous Shale surface processing
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for effective Shale material removal
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for efficient Shale ablation with minimal heat
-            diffusion
-        - - unit
-          - ns
-        - - value
-          - 12
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform Shale surface treatment
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete Shale surface cleaning
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap for uniform Shale surface cleaning
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.376730'
+dateModified: '2025-12-16T14:50:07.376730'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Shale surface cleaning without thermal
+      damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength optimized for Shale mineral absorption characteristics
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for effective Shale cleaning resolution
+    unit: μm
+    value: 80
+  repetitionRate:
+    description: Optimal repetition rate for continuous Shale surface processing
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective Shale material removal
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient Shale ablation with minimal
+      heat diffusion
+    unit: ns
+    value: 12
+  scanSpeed:
+    description: Optimal scanning speed for uniform Shale surface treatment
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete Shale surface cleaning
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Optimal beam overlap for uniform Shale surface cleaning
+    unit: '%'
+    value: 50

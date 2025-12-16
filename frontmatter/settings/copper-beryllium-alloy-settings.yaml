@@ -1,89 +1,49 @@
 name: Copper-Beryllium Alloy
 slug: copper-beryllium-alloy-settings
-domain_linkages: !!python/object/apply:collections.OrderedDict
-- - - contaminants
-    - - beryllium-oxide-contamination
+domain_linkages:
+  contaminants:
+  - beryllium-oxide-contamination
 domain: settings
-datePublished: '2025-12-16T14:42:52.061785'
-dateModified: '2025-12-16T14:42:52.061785'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Moderate power for Cu-Be alloy - avoid beryllium vaporization
-        - - unit
-          - W
-        - - value
-          - 50
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR for selective cleaning without alloy damage
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Controlled spot size for Cu-Be cleaning
-        - - unit
-          - μm
-        - - value
-          - 70
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Lower rate for safety with beryllium content
-        - - unit
-          - kHz
-        - - value
-          - 30
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Lower fluence to avoid toxic beryllium release
-        - - unit
-          - J/cm²
-        - - value
-          - 1.2
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Short pulse for surface-only cleaning
-        - - unit
-          - ns
-        - - value
-          - 6
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Faster speed to minimize heat buildup
-        - - unit
-          - mm/s
-        - - value
-          - 600
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Light passes for gentle cleaning
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Moderate overlap for Cu-Be
-        - - unit
-          - '%'
-        - - value
-          - 35
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Controlled energy for beryllium safety
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
+datePublished: '2025-12-16T14:50:07.562800'
+dateModified: '2025-12-16T14:50:07.562800'
+machineSettings:
+  powerRange:
+    description: Moderate power for Cu-Be alloy - avoid beryllium vaporization
+    unit: W
+    value: 50
+  wavelength:
+    description: Near-IR for selective cleaning without alloy damage
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Controlled spot size for Cu-Be cleaning
+    unit: μm
+    value: 70
+  repetitionRate:
+    description: Lower rate for safety with beryllium content
+    unit: kHz
+    value: 30
+  fluenceThreshold:
+    description: Lower fluence to avoid toxic beryllium release
+    unit: J/cm²
+    value: 1.2
+  pulseWidth:
+    description: Short pulse for surface-only cleaning
+    unit: ns
+    value: 6
+  scanSpeed:
+    description: Faster speed to minimize heat buildup
+    unit: mm/s
+    value: 600
+  passCount:
+    description: Light passes for gentle cleaning
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Moderate overlap for Cu-Be
+    unit: '%'
+    value: 35
+  energyDensity:
+    description: Controlled energy for beryllium safety
+    unit: J/cm²
+    value: 2.5

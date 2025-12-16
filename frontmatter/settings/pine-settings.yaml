@@ -1,86 +1,46 @@
 name: Pine
 slug: pine-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.706495'
-dateModified: '2025-12-16T14:42:51.706495'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Pine surface cleaning without charring
-        - - unit
-          - W
-        - - value
-          - 90
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-infrared wavelength for optimal Pine wood absorption
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for precise Pine surface treatment
-        - - unit
-          - μm
-        - - value
-          - 80
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient Pine surface cleaning
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for effective contaminant removal from Pine
-        - - unit
-          - J/cm²
-        - - value
-          - 1.8
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for controlled ablation of contaminants
-        - - unit
-          - ns
-        - - value
-          - 12
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform Pine cleaning
-        - - unit
-          - mm/s
-        - - value
-          - 800
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Number of cleaning passes for complete Pine surface treatment
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam overlap percentage for uniform Pine surface coverage
-        - - unit
-          - '%'
-        - - value
-          - 30
-  - - dwellTime
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal dwell time per spot for Pine cleaning efficiency
-        - - unit
-          - μs
-        - - value
-          - 120
+datePublished: '2025-12-16T14:50:07.299159'
+dateModified: '2025-12-16T14:50:07.299159'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Pine surface cleaning without charring
+    unit: W
+    value: 90
+  wavelength:
+    description: Near-infrared wavelength for optimal Pine wood absorption
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise Pine surface treatment
+    unit: μm
+    value: 80
+  repetitionRate:
+    description: Optimal repetition rate for efficient Pine surface cleaning
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal from Pine
+    unit: J/cm²
+    value: 1.8
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    unit: ns
+    value: 12
+  scanSpeed:
+    description: Optimal scanning speed for uniform Pine cleaning
+    unit: mm/s
+    value: 800
+  passCount:
+    description: Number of cleaning passes for complete Pine surface treatment
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Beam overlap percentage for uniform Pine surface coverage
+    unit: '%'
+    value: 30
+  dwellTime:
+    description: Optimal dwell time per spot for Pine cleaning efficiency
+    unit: μs
+    value: 120

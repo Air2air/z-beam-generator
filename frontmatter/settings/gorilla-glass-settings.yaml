@@ -1,78 +1,42 @@
 name: Gorilla Glass
 slug: gorilla-glass-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.591274'
-dateModified: '2025-12-16T14:42:51.591274'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal power range for Gorilla Glass cleaning without thermal damage
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal wavelength for Gorilla Glass processing with good absorption
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal spot size for precision cleaning of Gorilla Glass surfaces
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for efficient cleaning with thermal management
-        - - unit
-          - kHz
-        - - value
-          - 100
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal fluence threshold for contaminant removal without glass damage
-        - - unit
-          - J/cm²
-        - - value
-          - 2.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal pulse width for controlled ablation of surface contaminants
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for uniform cleaning coverage
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal number of passes for complete contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 3
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal beam overlap ratio for uniform cleaning coverage
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.212216'
+dateModified: '2025-12-16T14:50:07.212216'
+machineSettings:
+  powerRange:
+    description: Optimal power range for Gorilla Glass cleaning without thermal damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Optimal wavelength for Gorilla Glass processing with good absorption
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Optimal spot size for precision cleaning of Gorilla Glass surfaces
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 100
+  fluenceThreshold:
+    description: Optimal fluence threshold for contaminant removal without glass damage
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Optimal pulse width for controlled ablation of surface contaminants
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Optimal number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap ratio for uniform cleaning coverage
+    unit: '%'
+    value: 50

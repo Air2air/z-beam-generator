@@ -1,78 +1,42 @@
 name: Ebony
 slug: ebony-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.980842'
-dateModified: '2025-12-16T14:42:51.980842'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 50
-        - - unit
-          - W
-        - - description
-          - Low power for organic material preservation
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 1064
-        - - unit
-          - nm
-        - - description
-          - Near-IR for controlled wood cleaning
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 100
-        - - unit
-          - μm
-        - - description
-          - Larger spot for gentle treatment
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 20
-        - - unit
-          - kHz
-        - - description
-          - Lower frequency to prevent burning
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 1.0
-        - - unit
-          - J/cm²
-        - - description
-          - Low energy to preserve wood fibers
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 10
-        - - unit
-          - ns
-        - - description
-          - Short pulses for minimal charring
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 700
-        - - unit
-          - mm/s
-        - - description
-          - Fast scanning to prevent heat damage
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 1
-        - - unit
-          - passes
-        - - description
-          - Single gentle pass for delicate surfaces
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 30
-        - - unit
-          - '%'
-        - - description
-          - Lower overlap for organic materials
+datePublished: '2025-12-16T14:50:07.499700'
+dateModified: '2025-12-16T14:50:07.499700'
+machineSettings:
+  powerRange:
+    value: 50
+    unit: W
+    description: Low power for organic material preservation
+  wavelength:
+    value: 1064
+    unit: nm
+    description: Near-IR for controlled wood cleaning
+  spotSize:
+    value: 100
+    unit: μm
+    description: Larger spot for gentle treatment
+  repetitionRate:
+    value: 20
+    unit: kHz
+    description: Lower frequency to prevent burning
+  energyDensity:
+    value: 1.0
+    unit: J/cm²
+    description: Low energy to preserve wood fibers
+  pulseWidth:
+    value: 10
+    unit: ns
+    description: Short pulses for minimal charring
+  scanSpeed:
+    value: 700
+    unit: mm/s
+    description: Fast scanning to prevent heat damage
+  passCount:
+    value: 1
+    unit: passes
+    description: Single gentle pass for delicate surfaces
+  overlapRatio:
+    value: 30
+    unit: '%'
+    description: Lower overlap for organic materials

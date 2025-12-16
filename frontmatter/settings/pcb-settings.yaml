@@ -1,89 +1,49 @@
 name: PCB
 slug: pcb-settings
-domain_linkages: !!python/object/apply:collections.OrderedDict
-- - - contaminants
-    - - solder-flux-contamination
+domain_linkages:
+  contaminants:
+  - solder-flux-contamination
 domain: settings
-datePublished: '2025-12-16T14:42:52.042569'
-dateModified: '2025-12-16T14:42:52.042569'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Low power for PCB cleaning to protect components
-        - - unit
-          - W
-        - - value
-          - 30
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR or UV wavelength for selective PCB cleaning
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Small spot size for precision PCB cleaning
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Lower rate to prevent component damage
-        - - unit
-          - kHz
-        - - value
-          - 30
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Very low fluence for delicate PCB substrates
-        - - unit
-          - J/cm²
-        - - value
-          - 0.8
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Short pulse for surface-only cleaning
-        - - unit
-          - ns
-        - - value
-          - 5
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Careful scanning speed for PCB cleaning
-        - - unit
-          - mm/s
-        - - value
-          - 300
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Light passes for gentle PCB cleaning
-        - - unit
-          - passes
-        - - value
-          - 1
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Minimal overlap for precision work
-        - - unit
-          - '%'
-        - - value
-          - 30
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Low energy density for component safety
-        - - unit
-          - J/cm²
-        - - value
-          - 1.5
+datePublished: '2025-12-16T14:50:07.548841'
+dateModified: '2025-12-16T14:50:07.548841'
+machineSettings:
+  powerRange:
+    description: Low power for PCB cleaning to protect components
+    unit: W
+    value: 30
+  wavelength:
+    description: Near-IR or UV wavelength for selective PCB cleaning
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Small spot size for precision PCB cleaning
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Lower rate to prevent component damage
+    unit: kHz
+    value: 30
+  fluenceThreshold:
+    description: Very low fluence for delicate PCB substrates
+    unit: J/cm²
+    value: 0.8
+  pulseWidth:
+    description: Short pulse for surface-only cleaning
+    unit: ns
+    value: 5
+  scanSpeed:
+    description: Careful scanning speed for PCB cleaning
+    unit: mm/s
+    value: 300
+  passCount:
+    description: Light passes for gentle PCB cleaning
+    unit: passes
+    value: 1
+  overlapRatio:
+    description: Minimal overlap for precision work
+    unit: '%'
+    value: 30
+  energyDensity:
+    description: Low energy density for component safety
+    unit: J/cm²
+    value: 1.5

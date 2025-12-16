@@ -1,89 +1,49 @@
 name: Teflon
 slug: teflon-settings
-domain_linkages: !!python/object/apply:collections.OrderedDict
-- - - contaminants
-    - - pharmaceutical-residue-contamination
+domain_linkages:
+  contaminants:
+  - pharmaceutical-residue-contamination
 domain: settings
-datePublished: '2025-12-16T14:42:52.080739'
-dateModified: '2025-12-16T14:42:52.080739'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Low power for Teflon (PTFE) - avoid decomposition
-        - - unit
-          - W
-        - - value
-          - 35
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - CO2 wavelength better absorbed by PTFE
-        - - unit
-          - nm
-        - - value
-          - 10600
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Spot size for Teflon cleaning
-        - - unit
-          - μm
-        - - value
-          - 100
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Lower rate for polymer safety
-        - - unit
-          - kHz
-        - - value
-          - 25
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Low fluence to prevent PTFE degradation
-        - - unit
-          - J/cm²
-        - - value
-          - 0.8
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Short pulse for surface cleaning
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Faster speed for heat control
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Light passes for Teflon
-        - - unit
-          - passes
-        - - value
-          - 1
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Moderate overlap
-        - - unit
-          - '%'
-        - - value
-          - 35
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Low energy for polymer
-        - - unit
-          - J/cm²
-        - - value
-          - 1.5
+datePublished: '2025-12-16T14:50:07.573256'
+dateModified: '2025-12-16T14:50:07.573256'
+machineSettings:
+  powerRange:
+    description: Low power for Teflon (PTFE) - avoid decomposition
+    unit: W
+    value: 35
+  wavelength:
+    description: CO2 wavelength better absorbed by PTFE
+    unit: nm
+    value: 10600
+  spotSize:
+    description: Spot size for Teflon cleaning
+    unit: μm
+    value: 100
+  repetitionRate:
+    description: Lower rate for polymer safety
+    unit: kHz
+    value: 25
+  fluenceThreshold:
+    description: Low fluence to prevent PTFE degradation
+    unit: J/cm²
+    value: 0.8
+  pulseWidth:
+    description: Short pulse for surface cleaning
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Faster speed for heat control
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Light passes for Teflon
+    unit: passes
+    value: 1
+  overlapRatio:
+    description: Moderate overlap
+    unit: '%'
+    value: 35
+  energyDensity:
+    description: Low energy for polymer
+    unit: J/cm²
+    value: 1.5

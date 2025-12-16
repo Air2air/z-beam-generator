@@ -1,78 +1,42 @@
 name: Gallium Nitride
 slug: gallium-nitride-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.983863'
-dateModified: '2025-12-16T14:42:51.983863'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 60
-        - - unit
-          - W
-        - - description
-          - Controlled power for precision semiconductor cleaning
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 1064
-        - - unit
-          - nm
-        - - description
-          - Near-IR for minimal lattice damage
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 30
-        - - unit
-          - μm
-        - - description
-          - Small spot for high-precision cleaning
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 30
-        - - unit
-          - kHz
-        - - description
-          - Moderate frequency for controlled removal
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 1.5
-        - - unit
-          - J/cm²
-        - - description
-          - Precision energy for contamination removal
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 10
-        - - unit
-          - ns
-        - - description
-          - Ultra-short pulses for minimal thermal damage
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 300
-        - - unit
-          - mm/s
-        - - description
-          - Careful scanning for uniform treatment
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 3
-        - - unit
-          - passes
-        - - description
-          - Multiple passes for complete cleaning
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - value
-          - 60
-        - - unit
-          - '%'
-        - - description
-          - High overlap for thorough coverage
+datePublished: '2025-12-16T14:50:07.502139'
+dateModified: '2025-12-16T14:50:07.502139'
+machineSettings:
+  powerRange:
+    value: 60
+    unit: W
+    description: Controlled power for precision semiconductor cleaning
+  wavelength:
+    value: 1064
+    unit: nm
+    description: Near-IR for minimal lattice damage
+  spotSize:
+    value: 30
+    unit: μm
+    description: Small spot for high-precision cleaning
+  repetitionRate:
+    value: 30
+    unit: kHz
+    description: Moderate frequency for controlled removal
+  energyDensity:
+    value: 1.5
+    unit: J/cm²
+    description: Precision energy for contamination removal
+  pulseWidth:
+    value: 10
+    unit: ns
+    description: Ultra-short pulses for minimal thermal damage
+  scanSpeed:
+    value: 300
+    unit: mm/s
+    description: Careful scanning for uniform treatment
+  passCount:
+    value: 3
+    unit: passes
+    description: Multiple passes for complete cleaning
+  overlapRatio:
+    value: 60
+    unit: '%'
+    description: High overlap for thorough coverage

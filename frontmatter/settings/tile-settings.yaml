@@ -1,92 +1,52 @@
 name: Tile
 slug: tile-settings
-domain_linkages: !!python/object/apply:collections.OrderedDict
-- - - contaminants
-    - - lime-scale-contamination
-      - mercury-contamination
-      - mineral-stain-contamination
-      - soap-scum-contamination
+domain_linkages:
+  contaminants:
+  - lime-scale-contamination
+  - mercury-contamination
+  - mineral-stain-contamination
+  - soap-scum-contamination
 domain: settings
-datePublished: '2025-12-16T14:42:52.049911'
-dateModified: '2025-12-16T14:42:52.049911'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Moderate power for Tile surface cleaning
-        - - unit
-          - W
-        - - value
-          - 50
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength for ceramic tile contaminant removal
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for Tile cleaning coverage
-        - - unit
-          - μm
-        - - value
-          - 90
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Repetition rate for efficient Tile cleaning
-        - - unit
-          - kHz
-        - - value
-          - 45
-  - - fluenceThreshold
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for Tile surface cleaning
-        - - unit
-          - J/cm²
-        - - value
-          - 1.5
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Pulse duration for controlled Tile cleaning
-        - - unit
-          - ns
-        - - value
-          - 12
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Scanning speed for uniform Tile cleaning
-        - - unit
-          - mm/s
-        - - value
-          - 450
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Passes for complete Tile contaminant removal
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam overlap for even Tile coverage
-        - - unit
-          - '%'
-        - - value
-          - 45
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Energy density for Tile cleaning
-        - - unit
-          - J/cm²
-        - - value
-          - 3
+datePublished: '2025-12-16T14:50:07.554573'
+dateModified: '2025-12-16T14:50:07.554573'
+machineSettings:
+  powerRange:
+    description: Moderate power for Tile surface cleaning
+    unit: W
+    value: 50
+  wavelength:
+    description: Near-IR wavelength for ceramic tile contaminant removal
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for Tile cleaning coverage
+    unit: μm
+    value: 90
+  repetitionRate:
+    description: Repetition rate for efficient Tile cleaning
+    unit: kHz
+    value: 45
+  fluenceThreshold:
+    description: Fluence threshold for Tile surface cleaning
+    unit: J/cm²
+    value: 1.5
+  pulseWidth:
+    description: Pulse duration for controlled Tile cleaning
+    unit: ns
+    value: 12
+  scanSpeed:
+    description: Scanning speed for uniform Tile cleaning
+    unit: mm/s
+    value: 450
+  passCount:
+    description: Passes for complete Tile contaminant removal
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Beam overlap for even Tile coverage
+    unit: '%'
+    value: 45
+  energyDensity:
+    description: Energy density for Tile cleaning
+    unit: J/cm²
+    value: 3

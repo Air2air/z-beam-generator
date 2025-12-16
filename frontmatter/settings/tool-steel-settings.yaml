@@ -1,85 +1,51 @@
 name: Tool Steel
 slug: tool-steel-settings
 domain: settings
-datePublished: '2025-12-16T14:42:51.906098'
-dateModified: '2025-12-16T14:42:51.906098'
-machineSettings: !!python/object/apply:collections.OrderedDict
-- - - powerRange
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal average power for Tool Steel oxide removal without substrate damage
-        - - unit
-          - W
-        - - value
-          - 100
-  - - wavelength
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Near-IR wavelength with good absorption in Tool Steel oxides and contaminants
-        - - unit
-          - nm
-        - - value
-          - 1064
-  - - spotSize
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Beam spot diameter for effective cleaning resolution and energy density
-            control
-        - - unit
-          - μm
-        - - value
-          - 50
-  - - repetitionRate
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal repetition rate for continuous cleaning coverage with controlled
-            thermal input
-        - - unit
-          - kHz
-        - - value
-          - 50
-  - - energyDensity
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Fluence threshold for effective contaminant removal without damaging Tool
-            Steel substrate
-        - - unit
-          - J/cm²
-        - - value
-          - 5.1
-  - - pulseWidth
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Nanosecond pulse duration for efficient contaminant ablation with minimal
-            thermal diffusion
-        - - unit
-          - ns
-        - - value
-          - 10
-  - - scanSpeed
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal scanning speed for efficient area coverage while maintaining cleaning
-            effectiveness
-        - - unit
-          - mm/s
-        - - value
-          - 500
-  - - passCount
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Recommended number of passes for complete contaminant removal from Tool
-            Steel surfaces
-        - - unit
-          - passes
-        - - value
-          - 2
-  - - overlapRatio
-    - !!python/object/apply:collections.OrderedDict
-      - - - description
-          - Optimal pulse overlap for uniform cleaning coverage without excessive
-            thermal buildup
-        - - unit
-          - '%'
-        - - value
-          - 50
+datePublished: '2025-12-16T14:50:07.443585'
+dateModified: '2025-12-16T14:50:07.443585'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Tool Steel oxide removal without substrate
+      damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength with good absorption in Tool Steel oxides and
+      contaminants
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for effective cleaning resolution and energy density
+      control
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning coverage with controlled
+      thermal input
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal without damaging
+      Tool Steel substrate
+    unit: J/cm²
+    value: 5.1
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient contaminant ablation with
+      minimal thermal diffusion
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for efficient area coverage while maintaining
+      cleaning effectiveness
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete contaminant removal from
+      Tool Steel surfaces
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Optimal pulse overlap for uniform cleaning coverage without excessive
+      thermal buildup
+    unit: '%'
+    value: 50
