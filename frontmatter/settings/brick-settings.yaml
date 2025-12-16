@@ -1,177 +1,84 @@
-id: brick-settings
-name: brick-laser-cleaning
+name: Brick
 slug: brick-settings
-category: masonry
-subcategory: general
-domain_linkages:
-  related_contaminants:
-  - id: efflorescence
-    title: Efflorescence
-    url: /contaminants/efflorescence
-    image: /images/contaminants/efflorescence.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graffiti-paint
-    title: Graffiti Paint
-    url: /contaminants/graffiti-paint
-    image: /images/contaminants/graffiti-paint.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds:
-  - id: toluene-compound
-    title: Toluene
-    url: /compounds/toluene
-    image: /images/compounds/toluene.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Release of toluene from spray paint
-    exposure_risk: moderate
-  - id: vocs-compound
-    title: Volatile Organic Compounds
-    url: /compounds/vocs
-    image: /images/compounds/vocs.jpg
-    frequency: very_common
-    severity: moderate
-    typical_context: Release of spray paint solvents
-    exposure_risk: moderate
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: brick-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning brick, start by preparing the surface to account for its porous structure, which can trap contaminants deeply and require multiple passes for thorough removal. You must begin with lower power settings to match its moderate thermal conductivity, ensuring heat stays localized without spreading to cause uneven expansion or micro-cracks in the brittle matrix. As you adjust the scan speed, keep it steady to leverage the material's high heat resistance, which allows effective restoration of historical facades or industrial surfaces without compromising structural integrity. Make sure you overlap passes generously, since brick's density helps absorb laser energy well, revealing clean layers progressively. In applications like cultural heritage restoration, this approach exposes original textures safely. Finally, watch for potential spalling on aged bricks—reduce energy density if surface flaking appears to avoid deeper damage.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Masonry
-  href: /materials/masonry
-- label: General
-  href: /materials/masonry/general
-- label: brick-laser-cleaning
-  href: /materials/brick-settings
-images:
-  hero:
-    alt: Brick surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/brick-laser-cleaning-hero.jpg
-  micro:
-    alt: Brick microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/brick-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.426
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.72
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1473
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 2.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.15
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.38
-    max: 2.0
-    unit: J/cm²
-  thermalShockResistance:
-    value: 2.0
-    unit: K
-  reflectivity:
-    value: 0.28
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Moisture-induced spalling and explosive failure
-    severity: critical
-    threshold_temperature: Steam formation >100°C with trapped moisture
-    impact: Trapped moisture converts to steam causing explosive surface spalling
-    solutions:
-    - Test moisture content before cleaning (>5% moisture requires drying)
-    - Use pulse mode with 10-15 second cooling for wet materials
-    - Reduce power by 50-60% for damp masonry
-    - Allow 24-48 hours drying after rain before laser cleaning
-    - Monitor for popping sounds or surface lifting; stop immediately
-    challenge_id: moisture_induced_spalling_and_explosive_failure
-  - challenge: Low thermal diffusivity and heat accumulation
-    severity: high
-    property_value: 0.1-1.0 mm²/s (3-10x slower than metals)
-    impact: Heat concentrates in surface layer causing thermal stress
-    solutions:
-    - Increase cooling time between passes (8-12 seconds)
-    - Use low repetition rates (<20 kHz)
-    - Defocused beam reduces peak intensity
-    - Multiple gentle passes preferred over aggressive single pass
-    challenge_id: low_thermal_diffusivity_and_heat_accumulation
-  surface_characteristics:
-  - challenge: High porosity and deep contamination
-    severity: high
-    porosity_range: 10-25% (brick and concrete highly porous)
-    impact: Contaminants penetrate deep into porous structure
-    solutions:
-    - Multiple progressive passes with power increase (50W → 80W → 100W)
-    - Reduce scan speed for deeper penetration (400-600 mm/s)
-    - Chemical pre-treatment for biological growth (algae, lichen)
-    - Expect 3-5 passes for complete cleaning vs 1-2 for dense materials
-    challenge_id: high_porosity_and_deep_contamination
-  - challenge: Surface heterogeneity and aggregate exposure
-    severity: medium
-    impact: Mixed composition (cement matrix, aggregates, voids) causes variable absorption
-    solutions:
-    - Use moderate power (70-90W) suitable for both matrix and aggregates
-    - Crosshatch scan pattern for uniform coverage
-    - Monitor for differential ablation; adjust power if aggregates become prominent
-    - Aged masonry more challenging than new construction
-    challenge_id: surface_heterogeneity_and_aggregate_exposure
-  contamination_challenges:
-  - challenge: Paint and coating removal from porous substrate
-    severity: medium
-    impact: Paint penetrates into pores requiring deep cleaning without substrate damage
-    solutions:
-    - First pass 100W fast (1500 mm/s) for surface paint layer
-    - Second pass 70W slow (800 mm/s) for paint in pores
-    - Third pass 50W very slow (500 mm/s) for residual staining
-    - Chemical stripping pre-treatment reduces laser exposure
-    - Heritage masonry requires gentler approach (max 60W)
-    challenge_id: paint_and_coating_removal_from_porous_substrate
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:57.142791'
+domain: settings
+datePublished: '2025-12-16T14:42:51.491495'
+dateModified: '2025-12-16T14:42:51.491495'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for brick surface cleaning without thermal damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-infrared wavelength for optimal brick absorption and minimal substrate
+            damage
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for effective cleaning resolution on brick surface
+            texture
+        - - unit
+          - μm
+        - - value
+          - 100
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning coverage and thermal management
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective contaminant removal while preserving brick
+            substrate
+        - - unit
+          - J/cm²
+        - - value
+          - 12
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for effective contaminant removal with controlled
+            thermal penetration
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning coverage and process efficiency
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete contaminant removal from porous
+            brick surface
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap percentage for uniform cleaning without excessive
+            thermal accumulation
+        - - unit
+          - '%'
+        - - value
+          - 50

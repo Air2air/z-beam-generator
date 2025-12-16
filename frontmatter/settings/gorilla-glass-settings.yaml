@@ -1,370 +1,78 @@
-id: gorilla-glass-settings
-name: gorilla-glass-laser-cleaning
+name: Gorilla Glass
 slug: gorilla-glass-settings
-category: glass
-subcategory: soda-lime
-domain_linkages:
-  related_contaminants:
-  - id: adhesive-residue
-    title: Adhesive Residue
-    url: /contaminants/adhesive-residue
-    image: /images/contaminants/adhesive-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: biological-stains
-    title: Biological Stains
-    url: /contaminants/biological-stains
-    image: /images/contaminants/biological-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: blood-residue
-    title: Blood Residue
-    url: /contaminants/blood-residue
-    image: /images/contaminants/blood-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: insect-residue
-    title: Insect Residue
-    url: /contaminants/insect-residue
-    image: /images/contaminants/insect-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lime-scale
-    title: Lime Scale
-    url: /contaminants/lime-scale
-    image: /images/contaminants/lime-scale.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: medical-disinfectant
-    title: Medical Disinfectant
-    url: /contaminants/medical-disinfectant
-    image: /images/contaminants/medical-disinfectant.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-deposits
-    title: Mineral Deposits
-    url: /contaminants/mineral-deposits
-    image: /images/contaminants/mineral-deposits.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pesticide-residue
-    title: Pesticide Residue
-    url: /contaminants/pesticide-residue
-    image: /images/contaminants/pesticide-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pharmaceutical-residue
-    title: Pharmaceutical Residue
-    url: /contaminants/pharmaceutical-residue
-    image: /images/contaminants/pharmaceutical-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: plastic-residue
-    title: Plastic Residue
-    url: /contaminants/plastic-residue
-    image: /images/contaminants/plastic-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pollen-deposit
-    title: Pollen Deposit
-    url: /contaminants/pollen-deposit
-    image: /images/contaminants/pollen-deposit.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: scale-buildup
-    title: Scale Buildup
-    url: /contaminants/scale-buildup
-    image: /images/contaminants/scale-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicone-buildup
-    title: Silicone Buildup
-    url: /contaminants/silicone-buildup
-    image: /images/contaminants/silicone-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: soap-scum
-    title: Soap Scum
-    url: /contaminants/soap-scum
-    image: /images/contaminants/soap-scum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: tree-sap
-    title: Tree Sap
-    url: /contaminants/tree-sap
-    image: /images/contaminants/tree-sap.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: water-stain
-    title: Water Stain
-    url: /contaminants/water-stain
-    image: /images/contaminants/water-stain.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds:
-  - id: carbon-monoxide-compound
-    title: Carbon Monoxide
-    url: /compounds/carbon-monoxide
-    image: /images/compounds/carbon-monoxide.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Incomplete combustion of organic adhesives
-    exposure_risk: high
-  - id: acetaldehyde-compound
-    title: Acetaldehyde
-    url: /compounds/acetaldehyde
-    image: /images/compounds/acetaldehyde.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Decomposition of vinyl and acrylic adhesives
-    exposure_risk: moderate
-  - id: hydrogen-chloride-compound
-    title: Hydrogen Chloride
-    url: /compounds/hydrogen-chloride
-    image: /images/compounds/hydrogen-chloride.jpg
-    frequency: occasional
-    severity: moderate
-    typical_context: Some adhesives contain chlorinated compounds
-    exposure_risk: moderate
-  - id: toluene-compound
-    title: Toluene
-    url: /compounds/toluene
-    image: /images/compounds/toluene.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Release of toluene from adhesive formulations
-    exposure_risk: moderate
-  - id: formaldehyde-compound
-    title: Formaldehyde
-    url: /compounds/formaldehyde
-    image: /images/compounds/formaldehyde.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Thermal breakdown of formaldehyde-based adhesives
-    exposure_risk: moderate
-  - id: hydrogen-cyanide-compound
-    title: Hydrogen Cyanide
-    url: /compounds/hydrogen-cyanide
-    image: /images/compounds/hydrogen-cyanide.jpg
-    frequency: occasional
-    severity: moderate
-    typical_context: Breakdown of cyanoacrylate adhesives
-    exposure_risk: moderate
-  - id: carbon-dioxide-compound
-    title: Carbon Dioxide
-    url: /compounds/carbon-dioxide
-    image: /images/compounds/carbon-dioxide.jpg
-    frequency: very_common
-    severity: low
-    typical_context: Complete combustion of adhesives
-    exposure_risk: low
-  - id: vocs-compound
-    title: Volatile Organic Compounds
-    url: /compounds/vocs
-    image: /images/compounds/vocs.jpg
-    frequency: very_common
-    severity: moderate
-    typical_context: Release of adhesive solvents
-    exposure_risk: moderate
-  - id: ammonia-compound
-    title: Ammonia
-    url: /compounds/ammonia
-    image: /images/compounds/ammonia.jpg
-    frequency: occasional
-    severity: low
-    typical_context: Breakdown of proteins
-    exposure_risk: low
-  - id: pahs-compound
-    title: Polycyclic Aromatic Hydrocarbons
-    url: /compounds/pahs
-    image: /images/compounds/pahs.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Thermal degradation of aromatic polymers
-    exposure_risk: moderate
-  - id: styrene-compound
-    title: Styrene
-    url: /compounds/styrene
-    image: /images/compounds/styrene.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Thermal depolymerization of polystyrene
-    exposure_risk: high
-  - id: phosgene-compound
-    title: Phosgene
-    url: /compounds/phosgene
-    image: /images/compounds/phosgene.jpg
-    frequency: rare
-    severity: high
-    typical_context: Thermal breakdown of certain chlorinated plastics
-    exposure_risk: high
-  - id: benzene-compound
-    title: Benzene
-    url: /compounds/benzene
-    image: /images/compounds/benzene.jpg
-    frequency: common
-    severity: high
-    typical_context: Thermal decomposition of polystyrene and aromatic polymers
-    exposure_risk: high
-  - id: acrolein-compound
-    title: Acrolein
-    url: /compounds/acrolein
-    image: /images/compounds/acrolein.jpg
-    frequency: occasional
-    severity: moderate
-    typical_context: Pyrolysis of certain polymers
-    exposure_risk: moderate
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: gorilla-glass-laser-cleaning Laser Cleaning Settings
-settings_description: We've found that Gorilla Glass cleans reliably with laser when we prioritize its strong energy absorption, which removes surface residues effectively without excessive material removal. This lets us restore clarity on delicate displays in electronics repair. But in the middle of passes, its limited heat spreading can build localized stress—so reduce speed to prevent cracking the chemically toughened layers.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Glass
-  href: /materials/glass
-- label: Soda Lime
-  href: /materials/glass/soda-lime
-- label: gorilla-glass-laser-cleaning
-  href: /materials/gorilla-glass-settings
-images:
-  hero:
-    alt: Gorilla Glass surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/gorilla-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Gorilla Glass microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/gorilla-glass-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.581
-    unit: mm²/s
-  thermalConductivity:
-    value: 1.05
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1073
-    unit: K
-    type: softening
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 5
-    unit: J/cm²
-  ablationThreshold:
-    value: 3.2
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 3.84
-    max: 4.0
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1
-    unit: K
-  reflectivity:
-    value: 0.0415
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Thermal shock and catastrophic failure
-    severity: critical
-    threshold_temperature: ΔT > 40-100°C rapid cooling (glass-dependent)
-    impact: Glass shatters from thermal gradients due to low thermal expansion and brittleness
-    solutions:
-    - Use pulse mode with 5-8 second cooling between passes
-    - Preheat substrate to room temperature before cleaning
-    - Avoid cold spots (air vents, cold backing) during processing
-    - Tempered glass more resistant but still susceptible to thermal shock
-    - Monitor for stress fractures; stop immediately if cracks appear
-    challenge_id: thermal_shock_and_catastrophic_failure
-  - challenge: Low thermal diffusivity
-    severity: high
-    property_value: 0.01-15 mm²/s (most glasses 0.5-1.0 mm²/s)
-    impact: Heat accumulates in localized zones creating thermal gradients
-    solutions:
-    - Reduce power by 30-40% compared to metals
-    - Increase scan speed to distribute heat (1000-2000 mm/s)
-    - Use defocused beam to spread energy over larger area
-    - Optical-grade glass (fused silica) tolerates higher power
-    challenge_id: low_thermal_diffusivity
-  surface_characteristics:
-  - challenge: Surface defects and stress concentrators
-    severity: high
-    impact: Scratches, chips, and inclusions dramatically lower damage threshold
-    solutions:
-    - Inspect surface with magnification before cleaning
-    - Reduce power 40-50% for scratched or damaged glass
-    - Clean around defects with extreme caution
-    - Polished optical glass requires different parameters than rough architectural glass
-    challenge_id: surface_defects_and_stress_concentrators
-  - challenge: Coating and film removal
-    severity: medium
-    impact: Thin films, anti-reflective coatings, and tints have different damage thresholds than substrate
-    solutions:
-    - Test on edge first to determine coating removal threshold
-    - Coated glass may require 40-60W initial pass
-    - Bare glass requires 20-30% lower power after coating removal
-    - AR coatings very sensitive - use 30-40W maximum
-    challenge_id: coating_and_film_removal
-  contamination_challenges:
-  - challenge: Adhesive and paint removal
-    severity: medium
-    impact: Thick coatings require multiple passes and generate debris that can scratch glass
-    solutions:
-    - First pass 60W fast (1800 mm/s) for bulk removal
-    - Second pass 40W slow (1000 mm/s) for residue
-    - Use air assist to blow debris away from surface
-    - Chemical pre-treatment reduces laser exposure time
-    - Avoid dragging ablated material across clean areas
-    challenge_id: adhesive_and_paint_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:58.976304'
+domain: settings
+datePublished: '2025-12-16T14:42:51.591274'
+dateModified: '2025-12-16T14:42:51.591274'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal power range for Gorilla Glass cleaning without thermal damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal wavelength for Gorilla Glass processing with good absorption
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal spot size for precision cleaning of Gorilla Glass surfaces
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning with thermal management
+        - - unit
+          - kHz
+        - - value
+          - 100
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal fluence threshold for contaminant removal without glass damage
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal pulse width for controlled ablation of surface contaminants
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning coverage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal number of passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap ratio for uniform cleaning coverage
+        - - unit
+          - '%'
+        - - value
+          - 50

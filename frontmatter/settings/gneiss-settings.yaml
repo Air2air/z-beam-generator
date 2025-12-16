@@ -1,136 +1,78 @@
-id: gneiss-settings
-name: gneiss-laser-cleaning
+name: Gneiss
 slug: gneiss-settings
-category: stone
-subcategory: metamorphic
-domain_linkages: {}
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: gneiss-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning gneiss, you'll want to account for its layered structure right from the start, as the foliation can lead to uneven energy absorption across mineral bands. This makes the process trickier than with uniform stones, so begin with reduced power levels to prevent thermal stress from cracking the more brittle layers. The material's overall durability helps it withstand cleaning without excessive wear, but its variable hardness requires scanning in short bursts to expose contaminants evenly while revealing the natural banding underneath. Adjust pulse duration to match the surface texture, which improves adhesion removal without compromising the stone's integrity. Make sure you monitor for heat buildup, as it reduces the risk of delamination in weaker zones. In the end, always test a small area first to avoid subsurface damage from overlooked mineral variations.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Metamorphic
-  href: /materials/stone/metamorphic
-- label: gneiss-laser-cleaning
-  href: /materials/gneiss-settings
-images:
-  hero:
-    alt: Gneiss surface during precision laser cleaning process removing contamination layer
-    url: /images/material/gneiss-laser-cleaning-hero.jpg
-  micro:
-    alt: Gneiss surface at 500x magnification showing laser cleaning results
-    url: /images/material/gneiss-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 1.3
-    unit: mm²/s
-  thermalConductivity:
-    value: 2.3
-    unit: W/(m·K)
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 1.8
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.3
-    unit: J/cm²
-  reflectivity:
-    value: 0.12
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Thermal shock and microcracking
-    severity: critical
-    threshold_temperature: ΔT > 50-150°C rapid cooling (stone-dependent)
-    impact: Natural stone contains microfissures that propagate under thermal stress
-    solutions:
-    - Use pulse mode with 8-12 second cooling between passes
-    - Reduce power by 40-50% for weathered or damaged stone
-    - Preheat substrate if possible to reduce thermal gradients
-    - Granite more resistant than marble; sandstone most vulnerable
-    - Monitor for surface crazing; stop immediately if cracks appear
-    challenge_id: thermal_shock_and_microcracking
-  - challenge: Moisture-induced spalling
-    severity: high
-    threshold_temperature: Steam formation >100°C with trapped moisture
-    impact: Porous stone traps moisture that explosively converts to steam
-    solutions:
-    - Test moisture content before cleaning (>3% requires drying)
-    - Allow 48-72 hours drying after rain before laser cleaning
-    - Reduce power by 50% for damp stone
-    - Use pulse mode with extended cooling (15-20 seconds)
-    - Heritage stone requires especially gentle approach
-    challenge_id: moisture_induced_spalling
-  surface_characteristics:
-  - challenge: Weathering and surface degradation
-    severity: high
-    impact: Aged stone has weaker surface layer more susceptible to damage
-    solutions:
-    - Reduce power 40-60% for weathered stone vs fresh stone
-    - Test on inconspicuous area first
-    - Multiple gentle passes (4-6 at 40-60W) preferred
-    - Monitor for powdering or flaking; adjust power immediately
-    - Heritage conservation requires documentation and testing
-    challenge_id: weathering_and_surface_degradation
-  - challenge: Mineral composition heterogeneity
-    severity: medium
-    impact: Mixed minerals have different absorption and damage thresholds
-    solutions:
-    - Use moderate power (60-80W) suitable for both light and dark minerals
-    - Crosshatch scan pattern for uniform coverage
-    - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
-    - Quartzite and marble more homogeneous than granite
-    challenge_id: mineral_composition_heterogeneity
-  contamination_challenges:
-  - challenge: Biological growth and deep staining
-    severity: medium
-    porosity_range: 0.5-25% (sandstone highly porous)
-    impact: Algae, lichen, and pollution penetrate deep into porous structure
-    solutions:
-    - First pass 80W fast (1200 mm/s) for surface growth
-    - Second pass 60W slow (700 mm/s) for roots and stains
-    - Third pass 40W very slow (400 mm/s) for deep staining
-    - Chemical biocide pre-treatment kills roots and reduces laser exposure
-    - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
-    challenge_id: biological_growth_and_deep_staining
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:05.178178'
+domain: settings
+datePublished: '2025-12-16T14:42:51.989787'
+dateModified: '2025-12-16T14:42:51.989787'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 90
+        - - unit
+          - W
+        - - description
+          - Optimal power for stone surface restoration
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 1064
+        - - unit
+          - nm
+        - - description
+          - Near-IR wavelength for stone cleaning
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 80
+        - - unit
+          - μm
+        - - description
+          - Moderate spot for effective treatment
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 40
+        - - unit
+          - kHz
+        - - description
+          - Balanced frequency for stone cleaning
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 2.2
+        - - unit
+          - J/cm²
+        - - description
+          - Energy for contamination removal
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 10
+        - - unit
+          - ns
+        - - description
+          - Controlled pulses for minimal damage
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 400
+        - - unit
+          - mm/s
+        - - description
+          - Steady scanning for uniform cleaning
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 2
+        - - unit
+          - passes
+        - - description
+          - Multiple passes for thorough treatment
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 50
+        - - unit
+          - '%'
+        - - description
+          - Standard overlap for consistent results

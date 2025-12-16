@@ -1,260 +1,83 @@
-id: polycarbonate-settings
-name: polycarbonate-laser-cleaning
+name: Polycarbonate
 slug: polycarbonate-settings
-category: plastic
-subcategory: thermoplastic
-domain_linkages:
-  related_contaminants:
-  - id: adhesive-residue
-    title: Adhesive Residue
-    url: /contaminants/adhesive-residue
-    image: /images/contaminants/adhesive-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chemical-stains
-    title: Chemical Stains
-    url: /contaminants/chemical-stains
-    image: /images/contaminants/chemical-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: paint-residue
-    title: Paint Residue
-    url: /contaminants/paint-residue
-    image: /images/contaminants/paint-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: uv-chalking
-    title: Uv Chalking
-    url: /contaminants/uv-chalking
-    image: /images/contaminants/uv-chalking.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds:
-  - id: carbon-monoxide-compound
-    title: Carbon Monoxide
-    url: /compounds/carbon-monoxide
-    image: /images/compounds/carbon-monoxide.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Incomplete combustion of organic adhesives
-    exposure_risk: high
-  - id: acetaldehyde-compound
-    title: Acetaldehyde
-    url: /compounds/acetaldehyde
-    image: /images/compounds/acetaldehyde.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Decomposition of vinyl and acrylic adhesives
-    exposure_risk: moderate
-  - id: hydrogen-chloride-compound
-    title: Hydrogen Chloride
-    url: /compounds/hydrogen-chloride
-    image: /images/compounds/hydrogen-chloride.jpg
-    frequency: occasional
-    severity: moderate
-    typical_context: Some adhesives contain chlorinated compounds
-    exposure_risk: moderate
-  - id: toluene-compound
-    title: Toluene
-    url: /compounds/toluene
-    image: /images/compounds/toluene.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Release of toluene from adhesive formulations
-    exposure_risk: moderate
-  - id: formaldehyde-compound
-    title: Formaldehyde
-    url: /compounds/formaldehyde
-    image: /images/compounds/formaldehyde.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Thermal breakdown of formaldehyde-based adhesives
-    exposure_risk: moderate
-  - id: hydrogen-cyanide-compound
-    title: Hydrogen Cyanide
-    url: /compounds/hydrogen-cyanide
-    image: /images/compounds/hydrogen-cyanide.jpg
-    frequency: occasional
-    severity: moderate
-    typical_context: Breakdown of cyanoacrylate adhesives
-    exposure_risk: moderate
-  - id: carbon-dioxide-compound
-    title: Carbon Dioxide
-    url: /compounds/carbon-dioxide
-    image: /images/compounds/carbon-dioxide.jpg
-    frequency: very_common
-    severity: low
-    typical_context: Complete combustion of adhesives
-    exposure_risk: low
-  - id: vocs-compound
-    title: Volatile Organic Compounds
-    url: /compounds/vocs
-    image: /images/compounds/vocs.jpg
-    frequency: very_common
-    severity: moderate
-    typical_context: Release of adhesive solvents
-    exposure_risk: moderate
-  - id: nitrogen-oxides-compound
-    title: Nitrogen Oxides
-    url: /compounds/nitrogen-oxides
-    image: /images/compounds/nitrogen-oxides.jpg
-    frequency: occasional
-    severity: low
-    typical_context: Nitrogen from some paint formulations
-    exposure_risk: low
-  - id: zinc-oxide-compound
-    title: Zinc Oxide
-    url: /compounds/zinc-oxide
-    image: /images/compounds/zinc-oxide.jpg
-    frequency: occasional
-    severity: low
-    typical_context: Zinc oxide pigments in paint
-    exposure_risk: low
-  - id: chromium-vi-compound
-    title: Hexavalent Chromium
-    url: /compounds/chromium-vi
-    image: /images/compounds/chromium-vi.jpg
-    frequency: occasional
-    severity: high
-    typical_context: Chromate pigments in some paints
-    exposure_risk: high
-  - id: pahs-compound
-    title: Polycyclic Aromatic Hydrocarbons
-    url: /compounds/pahs
-    image: /images/compounds/pahs.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Incomplete combustion of organic binders
-    exposure_risk: moderate
-  - id: benzene-compound
-    title: Benzene
-    url: /compounds/benzene
-    image: /images/compounds/benzene.jpg
-    frequency: common
-    severity: high
-    typical_context: Thermal breakdown of aromatic paint solvents
-    exposure_risk: high
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: polycarbonate-laser-cleaning Laser Cleaning Settings
-settings_description: The key with polycarbonate is its toughness, which makes it great for laser cleaning without fracturing easily. We've found this thermoplastic holds up well in applications like automotive parts and medical devices, so we typically start with gentle pulses to remove contaminants. But watch out mid-process—its poor heat spreading can cause localized melting if you push too hard, so adjust to quicker passes and lower energy to keep surfaces clear and intact.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Plastic
-  href: /materials/plastic
-- label: Thermoplastic
-  href: /materials/plastic/thermoplastic
-- label: polycarbonate-laser-cleaning
-  href: /materials/polycarbonate-settings
-images:
-  hero:
-    alt: Polycarbonate surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/polycarbonate-laser-cleaning-hero.jpg
-  micro:
-    alt: Polycarbonate microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/polycarbonate-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.117
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.2
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 673
-    unit: K
-    type: softening
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 5
-    unit: J/cm²
-  ablationThreshold:
-    value: 0.25
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 0.3
-    max: 4.0
-    unit: J/cm²
-  thermalShockResistance:
-    value: 0.8
-    unit: K
-  reflectivity:
-    value: 0.051
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Low melting/degradation temperatures
-    severity: high
-    threshold_range: 80-300°C depending on polymer type
-    impact: Melting, warping, or chemical degradation at low temperatures
-    solutions:
-    - Use lowest power settings (20-40W)
-    - Fast scan speeds (2000-4000 mm/s)
-    - Pulse mode with extended cooling (5-10 seconds between passes)
-    challenge_id: low_melting_degradation_temperatures
-  - challenge: Outgassing and fume generation
-    severity: high
-    impact: Toxic fumes, smoke, and potential fire hazard
-    solutions:
-    - Mandatory fume extraction system
-    - Work in well-ventilated areas
-    - Monitor for smoke/discoloration
-    challenge_id: outgassing_and_fume_generation
-  surface_characteristics:
-  - challenge: Variable absorption by color and additives
-    severity: medium
-    impact: Black plastics absorb 80-90%, white plastics absorb 10-30%
-    solutions:
-    - Adjust power based on plastic color (dark = lower, light = higher)
-    - Test on sample pieces first
-    challenge_id: variable_absorption_by_color_and_additives
-  contamination_challenges:
-  - challenge: Coating and label removal
-    severity: medium
-    impact: Adhesives melt and smear rather than ablate cleanly
-    solutions:
-    - Use UV wavelength (355nm) for better photochemical ablation
-    - Multiple gentle passes instead of single high-power pass
-    challenge_id: coating_and_label_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:00.949228'
+domain: settings
+datePublished: '2025-12-16T14:42:51.721596'
+dateModified: '2025-12-16T14:42:51.721596'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Polycarbonate surface cleaning without thermal
+            damage
+        - - unit
+          - W
+        - - value
+          - 15
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength providing good absorption in contaminants while minimizing
+            Polycarbonate substrate damage
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise cleaning with sufficient energy density
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning with adequate cooling between
+            pulses
+        - - unit
+          - kHz
+        - - value
+          - 20
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for contaminant removal while preserving Polycarbonate
+            substrate
+        - - unit
+          - J/cm²
+        - - value
+          - 0.8
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for effective contaminant removal with controlled
+            thermal penetration
+        - - unit
+          - ns
+        - - value
+          - 100
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning coverage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform cleaning without excessive thermal buildup
+        - - unit
+          - '%'
+        - - value
+          - 50

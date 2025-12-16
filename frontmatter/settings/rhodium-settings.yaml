@@ -1,143 +1,79 @@
-id: rhodium-settings
-name: rhodium-laser-cleaning
+name: Rhodium
 slug: rhodium-settings
-category: metal
-subcategory: non-ferrous
-domain_linkages: {}
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: rhodium-laser-cleaning Laser Cleaning Settings
-settings_description: When cleaning rhodium, watch its high reflectivity first—it tends to bounce laser energy away, so start with lower power to avoid scattering heat unevenly. I've seen this works best by scanning slowly across the surface, which exposes contaminants without stressing the dense, heat-resistant layer underneath. Multiple passes restore the shine effectively, reducing any risk of uneven ablation.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Non Ferrous
-  href: /materials/metal/non-ferrous
-- label: rhodium-laser-cleaning
-  href: /materials/rhodium-settings
-images:
-  hero:
-    alt: Rhodium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/rhodium-laser-cleaning-hero.jpg
-  micro:
-    alt: Rhodium microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/rhodium-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 49.7
-    unit: mm²/s
-  thermalConductivity:
-    value: 150.0
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 2237.0
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 0.85
-    unit: J/cm²
-  ablationThreshold:
-    value: 0.85
-    unit: J/cm²
-  thermalShockResistance:
-    value: 380.0
-    unit: K
-  reflectivity:
-    value: 0.7
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: High thermal conductivity and heat spread
-    severity: medium
-    property_value: 4-400 W/(m·K) depending on metal
-    impact: Heat spreads rapidly causing large heat-affected zones
-    solutions:
-    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-    - Increase scan speed to minimize dwell time
-    - Apply cooling between passes for thick sections
-    challenge_id: high_thermal_conductivity_and_heat_spread
-  - challenge: Melting and heat-affected zone formation
-    severity: high
-    threshold_range: 660°C (Al) to 3422°C (W)
-    impact: Substrate melting or microstructural changes in heat-affected zone
-    solutions:
-    - Stay below 70% of melting temperature
-    - Use pulse mode with adequate cooling time
-    - Monitor for surface discoloration indicating oxidation
-    challenge_id: melting_and_heat_affected_zone_formation
-  surface_characteristics:
-  - challenge: High reflectivity
-    severity: high
-    reflectivity_range: 60-95% at 1064nm for polished metals
-    impact: Most laser energy reflected, requiring higher power; safety hazard
-    solutions:
-    - Use shorter wavelengths (355nm UV) for better absorption
-    - Increase power density but monitor for thermal damage
-    - Ensure proper beam containment and safety measures
-    - Surface oxidation/roughness improves absorption
-    challenge_id: high_reflectivity
-  - challenge: Surface finish variations
-    severity: medium
-    impact: Polished surfaces reflect more, rough surfaces absorb better
-    solutions:
-    - Adjust power based on surface condition
-    - Test parameters on similar finish samples
-    - Polished surfaces need 20-40% more power
-    challenge_id: surface_finish_variations
-  contamination_challenges:
-  - challenge: Rust and oxide layer removal
-    severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
-    solutions:
-    - First pass at higher power (100-120W) to remove bulk oxide
-    - Second pass at lower power (60-80W) for final cleaning
-    - Monitor for base metal exposure to avoid over-processing
-    challenge_id: rust_and_oxide_layer_removal
-  - challenge: Oil and grease removal
-    severity: low
-    impact: Organic contaminants vaporize easily but can redeposit
-    solutions:
-    - Use fume extraction to prevent redeposition
-    - Higher scan speeds (3000-5000 mm/s) for thin films
-    - Chemical pre-cleaning for heavy contamination
-    challenge_id: oil_and_grease_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:01.800258'
+domain: settings
+datePublished: '2025-12-16T14:42:51.788565'
+dateModified: '2025-12-16T14:42:51.788565'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Rhodium surface cleaning without thermal damage
+        - - unit
+          - W
+        - - value
+          - 45
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength optimized for Rhodium's moderate reflectivity and thermal
+            absorption
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam diameter for precision cleaning resolution
+        - - unit
+          - μm
+        - - value
+          - 80
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High repetition rate for efficient cleaning coverage
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Minimum fluence required for effective contaminant removal
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for controlled ablation of contaminants
+        - - unit
+          - ns
+        - - value
+          - 15
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Scanning speed for efficient area coverage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Number of cleaning passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform cleaning results
+        - - unit
+          - '%'
+        - - value
+          - 50

@@ -1,0 +1,89 @@
+name: Silicon Wafers
+slug: silicon-wafers-settings
+domain_linkages: !!python/object/apply:collections.OrderedDict
+- - - contaminants
+    - - semiconductor-residue-contamination
+domain: settings
+datePublished: '2025-12-16T14:42:52.074855'
+dateModified: '2025-12-16T14:42:52.074855'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Very low power for delicate Silicon Wafers
+        - - unit
+          - W
+        - - value
+          - 20
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - UV wavelength for semiconductor cleaning
+        - - unit
+          - nm
+        - - value
+          - 355
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Small spot for precision wafer work
+        - - unit
+          - μm
+        - - value
+          - 40
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Lower rate for wafer safety
+        - - unit
+          - kHz
+        - - value
+          - 25
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Very low fluence for semiconductor
+        - - unit
+          - J/cm²
+        - - value
+          - 0.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Ultra-short pulse for wafer cleaning
+        - - unit
+          - ns
+        - - value
+          - 3
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Precise speed for wafer cleaning
+        - - unit
+          - mm/s
+        - - value
+          - 250
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Minimal passes for wafers
+        - - unit
+          - passes
+        - - value
+          - 1
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Careful overlap for wafers
+        - - unit
+          - '%'
+        - - value
+          - 30
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Very low energy for semiconductors
+        - - unit
+          - J/cm²
+        - - value
+          - 1

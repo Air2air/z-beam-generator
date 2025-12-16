@@ -1,143 +1,95 @@
-id: glass-fiber-reinforced-polymers-gfrp-settings
-name: glass-fiber-reinforced-polymers-gfrp-laser-cleaning
+name: Glass Fiber Reinforced Polymers GFRP
 slug: glass-fiber-reinforced-polymers-gfrp-settings
-category: composite
-subcategory: fiber-reinforced
-domain_linkages: {}
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: glass-fiber-reinforced-polymers-gfrp-laser-cleaning Laser Cleaning Settings
-settings_description: We've found that GFRP's embedded glass fibers in a polymer matrix demand careful laser setup right from the start to avoid delamination. Start with lower power levels and slower scan speeds, since the fibers can channel heat unevenly. This composite nature sets it apart from uniform metals—heat builds up in the resin quickly, risking cracks. We typically use multiple light passes with good overlap to gently remove contaminants without stressing the fibers. Watch for surface blistering; it signals overexposure, so dial back energy if you see any bubbling. In our experience, this approach restores the surface cleanly for aerospace parts while preserving strength.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composite
-- label: Fiber Reinforced
-  href: /materials/composite/fiber-reinforced
-- label: glass-fiber-reinforced-polymers-gfrp-laser-cleaning
-  href: /materials/glass-fiber-reinforced-polymers-gfrp-settings
-images:
-  hero:
-    alt: Glass Fiber Reinforced Polymers Gfrp surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-hero.jpg
-  micro:
-    alt: Glass Fiber Reinforced Polymers Gfrp microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.104
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.35
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 673
-    unit: K
-    type: decomposition
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 15
-    unit: J/cm²
-  ablationThreshold:
-    value: 3.2
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 3.84
-    max: 12.0
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.5
-    unit: K
-  reflectivity:
-    value: 0.05
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Matrix degradation and delamination
-    severity: critical
-    threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
-    impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
-    solutions:
-    - Use pulse mode with 5-10 second cooling for polymer-matrix composites
-    - Reduce power by 40-50% compared to monolithic materials
-    - Monitor for discoloration, bubbling, or layer lifting
-    - Ceramic and metal-matrix composites tolerate higher power
-    challenge_id: matrix_degradation_and_delamination
-  - challenge: Anisotropic thermal properties
-    severity: high
-    property_value: 10-100x variation parallel vs perpendicular to fibers
-    impact: Heat conducts rapidly along fibers but poorly across layers
-    solutions:
-    - Scan parallel to fiber direction for best heat dissipation
-    - Use crosshatch pattern (0° and 90°) to identify fiber orientation
-    - Increase cooling time 2-3x when scanning perpendicular to fibers
-    - Carbon fiber composites require special attention due to electrical conductivity
-    challenge_id: anisotropic_thermal_properties
-  surface_characteristics:
-  - challenge: Fiber exposure and damage
-    severity: high
-    impact: Aggressive cleaning exposes or damages reinforcing fibers
-    solutions:
-    - Use low energy density (0.5-2 J/cm²) to protect matrix
-    - Multiple gentle passes preferred over single aggressive pass
-    - Stop immediately if fibers become visible
-    - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
-    challenge_id: fiber_exposure_and_damage
-  - challenge: Surface finish variability
-    severity: medium
-    impact: Gel coat, paint, or protective layers alter absorption and damage threshold
-    solutions:
-    - Test on edge or hidden area first
-    - Coated surfaces may require 50-100W initial pass for coating removal
-    - Bare composite requires 30-50% lower power
-    - Adjust parameters when transitioning between coated and uncoated areas
-    challenge_id: surface_finish_variability
-  contamination_challenges:
-  - challenge: Resin-based contaminant removal
-    severity: medium
-    impact: Adhesives, sealants, and coatings chemically bond to matrix
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 50W slow (800 mm/s) for residue
-    - Chemical pre-treatment improves results for stubborn adhesives
-    - Monitor for matrix damage; stop if surface texture changes
-    challenge_id: resin_based_contaminant_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:58.859983'
+domain: settings
+datePublished: '2025-12-16T14:42:51.581914'
+dateModified: '2025-12-16T14:42:51.581914'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for GFRP surface cleaning without matrix damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength for optimal absorption in surface contaminants with
+            minimal GFRP damage
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise surface cleaning control
+        - - unit
+          - μm
+        - - value
+          - 100
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning with thermal management
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Threshold fluence for effective contaminant removal without fiber damage
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal energy density for GFRP surface processing
+        - - unit
+          - J/cm²
+        - - value
+          - 3.0
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for controlled ablation of surface contaminants
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning coverage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Number of cleaning passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam overlap percentage for uniform cleaning coverage
+        - - unit
+          - '%'
+        - - value
+          - 50
+  - - dwellTime
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal dwell time per spot for effective cleaning
+        - - unit
+          - ms
+        - - value
+          - 0.2

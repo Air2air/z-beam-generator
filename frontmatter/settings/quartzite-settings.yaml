@@ -1,290 +1,88 @@
-id: quartzite-settings
-name: quartzite-laser-cleaning
+name: Quartzite
 slug: quartzite-settings
-category: stone
-subcategory: sedimentary
-domain_linkages:
-  related_contaminants:
-  - id: algae-growth
-    title: Algae Growth
-    url: /contaminants/algae-growth
-    image: /images/contaminants/algae-growth.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: biological-stains
-    title: Biological Stains
-    url: /contaminants/biological-stains
-    image: /images/contaminants/biological-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bitumen-tar
-    title: Bitumen Tar
-    url: /contaminants/bitumen-tar
-    image: /images/contaminants/bitumen-tar.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-soot
-    title: Carbon Soot
-    url: /contaminants/carbon-soot
-    image: /images/contaminants/carbon-soot.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: ceramic-glaze
-    title: Ceramic Glaze
-    url: /contaminants/ceramic-glaze
-    image: /images/contaminants/ceramic-glaze.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: concrete-dust
-    title: Concrete Dust
-    url: /contaminants/concrete-dust
-    image: /images/contaminants/concrete-dust.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: efflorescence
-    title: Efflorescence
-    url: /contaminants/efflorescence
-    image: /images/contaminants/efflorescence.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fertilizer-residue
-    title: Fertilizer Residue
-    url: /contaminants/fertilizer-residue
-    image: /images/contaminants/fertilizer-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fire-damage
-    title: Fire Damage
-    url: /contaminants/fire-damage
-    image: /images/contaminants/fire-damage.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graffiti-paint
-    title: Graffiti Paint
-    url: /contaminants/graffiti-paint
-    image: /images/contaminants/graffiti-paint.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-deposits
-    title: Mineral Deposits
-    url: /contaminants/mineral-deposits
-    image: /images/contaminants/mineral-deposits.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-stain
-    title: Mineral Stain
-    url: /contaminants/mineral-stain
-    image: /images/contaminants/mineral-stain.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: salt-residue
-    title: Salt Residue
-    url: /contaminants/salt-residue
-    image: /images/contaminants/salt-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: scale-buildup
-    title: Scale Buildup
-    url: /contaminants/scale-buildup
-    image: /images/contaminants/scale-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: water-stain
-    title: Water Stain
-    url: /contaminants/water-stain
-    image: /images/contaminants/water-stain.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds:
-  - id: benzoapyrene-compound
-    title: Benzo[a]pyrene
-    url: /compounds/benzoapyrene
-    image: /images/compounds/benzoapyrene.jpg
-    frequency: common
-    severity: high
-    typical_context: Naturally present in bitumen/asphalt
-    exposure_risk: high
-  - id: pahs-compound
-    title: Polycyclic Aromatic Hydrocarbons
-    url: /compounds/pahs
-    image: /images/compounds/pahs.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Bitumen is rich in PAHs
-    exposure_risk: high
-  - id: carbon-monoxide-compound
-    title: Carbon Monoxide
-    url: /compounds/carbon-monoxide
-    image: /images/compounds/carbon-monoxide.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Pre-existing carbon compounds vaporizing
-    exposure_risk: high
-  - id: toluene-compound
-    title: Toluene
-    url: /compounds/toluene
-    image: /images/compounds/toluene.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Release of toluene from spray paint
-    exposure_risk: moderate
-  - id: vocs-compound
-    title: Volatile Organic Compounds
-    url: /compounds/vocs
-    image: /images/compounds/vocs.jpg
-    frequency: very_common
-    severity: moderate
-    typical_context: Release of spray paint solvents
-    exposure_risk: moderate
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: quartzite-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning Quartzite, the biggest challenge is its extreme hardness. This tough stone resists contaminants well, but it demands careful energy control to avoid surface cracks. I've seen setups where rushed power ramps cause micro-fractures, so start slow with gentle pulses. Its low porosity helps—dirt doesn't sink deep, making removal straightforward once you dial in. Unlike softer stones, Quartzite holds heat unevenly, so keep passes light and spaced. This works best when you focus on steady scanning without overlap buildup. Tends to shine up nicely after a few rounds. Just watch the edges at the end; overdoing dwell time there can lead to unwanted chipping, so ease off power gradually.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Sedimentary
-  href: /materials/stone/sedimentary
-- label: quartzite-laser-cleaning
-  href: /materials/quartzite-settings
-images:
-  hero:
-    alt: Quartzite surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/quartzite-laser-cleaning-hero.jpg
-  micro:
-    alt: Quartzite microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/quartzite-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 1.31
-    unit: mm²/s
-  thermalConductivity:
-    value: 6.0
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1700
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 8.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 11.3
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.2
-    unit: K
-  reflectivity:
-    value: 0.034
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Thermal shock and microcracking
-    severity: critical
-    threshold_temperature: ΔT > 50-150°C rapid cooling (stone-dependent)
-    impact: Natural stone contains microfissures that propagate under thermal stress
-    solutions:
-    - Use pulse mode with 8-12 second cooling between passes
-    - Reduce power by 40-50% for weathered or damaged stone
-    - Preheat substrate if possible to reduce thermal gradients
-    - Granite more resistant than marble; sandstone most vulnerable
-    - Monitor for surface crazing; stop immediately if cracks appear
-    challenge_id: thermal_shock_and_microcracking
-  - challenge: Moisture-induced spalling
-    severity: high
-    threshold_temperature: Steam formation >100°C with trapped moisture
-    impact: Porous stone traps moisture that explosively converts to steam
-    solutions:
-    - Test moisture content before cleaning (>3% requires drying)
-    - Allow 48-72 hours drying after rain before laser cleaning
-    - Reduce power by 50% for damp stone
-    - Use pulse mode with extended cooling (15-20 seconds)
-    - Heritage stone requires especially gentle approach
-    challenge_id: moisture_induced_spalling
-  surface_characteristics:
-  - challenge: Weathering and surface degradation
-    severity: high
-    impact: Aged stone has weaker surface layer more susceptible to damage
-    solutions:
-    - Reduce power 40-60% for weathered stone vs fresh stone
-    - Test on inconspicuous area first
-    - Multiple gentle passes (4-6 at 40-60W) preferred
-    - Monitor for powdering or flaking; adjust power immediately
-    - Heritage conservation requires documentation and testing
-    challenge_id: weathering_and_surface_degradation
-  - challenge: Mineral composition heterogeneity
-    severity: medium
-    impact: Mixed minerals have different absorption and damage thresholds
-    solutions:
-    - Use moderate power (60-80W) suitable for both light and dark minerals
-    - Crosshatch scan pattern for uniform coverage
-    - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
-    - Quartzite and marble more homogeneous than granite
-    challenge_id: mineral_composition_heterogeneity
-  contamination_challenges:
-  - challenge: Biological growth and deep staining
-    severity: medium
-    porosity_range: 0.5-25% (sandstone highly porous)
-    impact: Algae, lichen, and pollution penetrate deep into porous structure
-    solutions:
-    - First pass 80W fast (1200 mm/s) for surface growth
-    - Second pass 60W slow (700 mm/s) for roots and stains
-    - Third pass 40W very slow (400 mm/s) for deep staining
-    - Chemical biocide pre-treatment kills roots and reduces laser exposure
-    - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
-    challenge_id: biological_growth_and_deep_staining
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:01.606234'
+domain: settings
+datePublished: '2025-12-16T14:42:51.775138'
+dateModified: '2025-12-16T14:42:51.775138'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Quartzite cleaning without thermal damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength optimized for Quartzite absorption and minimal scattering
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for balanced cleaning efficiency and coverage area
+        - - unit
+          - μm
+        - - value
+          - 100
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning coverage and thermal management
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Minimum fluence required for effective contaminant removal from Quartzite
+            surface
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for efficient contaminant removal with minimal
+            substrate damage
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning and process efficiency
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap percentage for uniform cleaning coverage
+        - - unit
+          - '%'
+        - - value
+          - 50
+  - - dwellTime
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal dwell time per cleaning spot for effective material removal
+        - - unit
+          - μs
+        - - value
+          - 100

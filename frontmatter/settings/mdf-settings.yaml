@@ -1,159 +1,86 @@
-id: mdf-settings
-name: mdf-laser-cleaning
+name: MDF
 slug: mdf-settings
-category: wood
-subcategory: hardwood
-domain_linkages:
-  related_contaminants:
-  - id: wood-rot
-    title: Wood Rot
-    url: /contaminants/wood-rot
-    image: /images/contaminants/wood-rot.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds:
-  - id: formaldehyde-compound
-    title: Formaldehyde
-    url: /compounds/formaldehyde
-    image: /images/compounds/formaldehyde.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Decomposition of wood compounds
-    exposure_risk: moderate
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: mdf-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning MDF, the biggest hurdle is its porous structure. It soaks up heat unevenly. This leads to quick charring if you're not careful. I've seen surfaces bubble and delaminate from that buildup. Start low on power to let the laser gently lift dirt without penetrating deep. Its fibrous makeup differs from solid woods—more uniform but fragile under stress. That means you adjust scans slower for even coverage. Tends to absorb contaminants well, restoring finishes nicely in furniture or panels. But watch the edges; they fray easily. Keep passes light and overlapped just enough. In my experience, this brings back that smooth look without warping. Finally, avoid high energy bursts—they scorch the core and ruin the board.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/wood
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: mdf-laser-cleaning
-  href: /materials/mdf-settings
-images:
-  hero:
-    alt: Mdf surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/mdf-laser-cleaning-hero.jpg
-  micro:
-    alt: Mdf microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/mdf-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.107
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.13
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 550
-    unit: K
-    type: charring
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 5
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.2
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.44
-    max: 4.0
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.5
-    unit: K
-  reflectivity:
-    value: 0.12
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Charring and carbonization
-    severity: high
-    threshold_temperature: 250-300°C
-    impact: Wood chars at low temperatures leaving black marks and structural damage
-    solutions:
-    - Use pulse mode with 2-5 second cooling between passes
-    - Reduce power by 30-40% compared to metals
-    - Increase scan speed to reduce dwell time
-    - Monitor surface for discoloration; stop if browning occurs
-    challenge_id: charring_and_carbonization
-  - challenge: Slow thermal diffusivity
-    severity: medium
-    property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
-    impact: Heat accumulates rapidly causing thermal damage zones
-    solutions:
-    - Increase cooling time between passes
-    - Use lower repetition rates (<20 kHz)
-    - Apply crosshatch patterns to distribute heat
-    challenge_id: slow_thermal_diffusivity
-  surface_characteristics:
-  - challenge: Grain direction sensitivity
-    severity: medium
-    variation: 20-40% absorption variation by grain orientation
-    impact: Laser absorption varies significantly with grain direction
-    solutions:
-    - Scan parallel to grain for consistent results
-    - Use crosshatch pattern (0° and 90°) for uniform cleaning
-    - Test on scrap to determine optimal scan direction
-    challenge_id: grain_direction_sensitivity
-  - challenge: Porous structure with deep contamination
-    severity: medium
-    porosity_range: 12-65% (softwoods highest)
-    impact: Contaminants penetrate deep into wood structure
-    solutions:
-    - Multiple passes with progressive power increase
-    - Reduce scan speed for deeper penetration (600 mm/s)
-    - Chemical pre-treatment for deep-seated contamination
-    challenge_id: porous_structure_with_deep_contamination
-  contamination_challenges:
-  - challenge: Varnish and coating removal
-    severity: medium
-    impact: Thick coatings require multiple passes and generate smoke/fumes
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 60W slow (800 mm/s) for residue
-    - Use fume extraction to prevent redeposition
-    - Limit to 2-3 passes maximum to avoid substrate damage
-    challenge_id: varnish_and_coating_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:59.791646'
+domain: settings
+datePublished: '2025-12-16T14:42:51.645316'
+dateModified: '2025-12-16T14:42:51.645316'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for MDF surface cleaning without charring
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength for optimal MDF absorption and minimal substrate damage
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise cleaning control
+        - - unit
+          - μm
+        - - value
+          - 100
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High repetition rate for efficient surface cleaning
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Energy density threshold for MDF surface ablation
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for controlled material removal
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform surface treatment
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Number of cleaning passes for thorough contamination removal
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam overlap percentage for complete surface coverage
+        - - unit
+          - '%'
+        - - value
+          - 50
+  - - dwellTime
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam dwell time per spot for effective material removal
+        - - unit
+          - μs
+        - - value
+          - 100

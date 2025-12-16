@@ -1,144 +1,78 @@
-id: beech-settings
-name: beech-laser-cleaning
+name: Beech
 slug: beech-settings
-category: wood
-subcategory: hardwood
-domain_linkages: {}
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: beech-laser-cleaning Laser Cleaning Settings
-settings_description: 'When laser cleaning Beech, I''ve seen it stand out from softer woods like pine. Beech holds up better under the beam. Its denser grain absorbs heat more evenly than pine''s loose structure. This means cleaner removal of grime without splintering right away.
-
-
-  But watch the middle passes closely. Too much dwell time heats the pores inside, leading to charring that spreads fast. I''ve learned to ease off power there. Adjust your scan to quicker sweeps.
-
-
-  Compared to oak, Beech flexes less rigidly. That low give requires tighter overlap to avoid skipping spots. Tends to restore that natural luster smoothly if you do. Just keep passes light—brings back the wood''s warmth without warping. In my experience, this approach saves the finish every time.'
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/wood
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: beech-laser-cleaning
-  href: /materials/beech-settings
-images:
-  hero:
-    alt: Beech surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/beech-laser-cleaning-hero.jpg
-  micro:
-    alt: Beech microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/beech-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.163
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.17
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 523
-    unit: K
-    type: charring
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 1.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.3
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.2
-    unit: K
-  reflectivity:
-    value: 0.42
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Charring and carbonization
-    severity: high
-    threshold_temperature: 250-300°C
-    impact: Wood chars at low temperatures leaving black marks and structural damage
-    solutions:
-    - Use pulse mode with 2-5 second cooling between passes
-    - Reduce power by 30-40% compared to metals
-    - Increase scan speed to reduce dwell time
-    - Monitor surface for discoloration; stop if browning occurs
-    challenge_id: charring_and_carbonization
-  - challenge: Slow thermal diffusivity
-    severity: medium
-    property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
-    impact: Heat accumulates rapidly causing thermal damage zones
-    solutions:
-    - Increase cooling time between passes
-    - Use lower repetition rates (<20 kHz)
-    - Apply crosshatch patterns to distribute heat
-    challenge_id: slow_thermal_diffusivity
-  surface_characteristics:
-  - challenge: Grain direction sensitivity
-    severity: medium
-    variation: 20-40% absorption variation by grain orientation
-    impact: Laser absorption varies significantly with grain direction
-    solutions:
-    - Scan parallel to grain for consistent results
-    - Use crosshatch pattern (0° and 90°) for uniform cleaning
-    - Test on scrap to determine optimal scan direction
-    challenge_id: grain_direction_sensitivity
-  - challenge: Porous structure with deep contamination
-    severity: medium
-    porosity_range: 12-65% (softwoods highest)
-    impact: Contaminants penetrate deep into wood structure
-    solutions:
-    - Multiple passes with progressive power increase
-    - Reduce scan speed for deeper penetration (600 mm/s)
-    - Chemical pre-treatment for deep-seated contamination
-    challenge_id: porous_structure_with_deep_contamination
-  contamination_challenges:
-  - challenge: Varnish and coating removal
-    severity: medium
-    impact: Thick coatings require multiple passes and generate smoke/fumes
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 60W slow (800 mm/s) for residue
-    - Use fume extraction to prevent redeposition
-    - Limit to 2-3 passes maximum to avoid substrate damage
-    challenge_id: varnish_and_coating_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:56.560685'
+domain: settings
+datePublished: '2025-12-16T14:42:51.467458'
+dateModified: '2025-12-16T14:42:51.467458'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Beech surface cleaning without charring
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength optimized for Beech absorption characteristics
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Focused spot size for precise cleaning resolution
+        - - unit
+          - μm
+        - - value
+          - 100
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning coverage
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective contaminant removal from Beech surface
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for controlled ablation of contaminants
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning without thermal damage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete cleaning
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform cleaning coverage
+        - - unit
+          - '%'
+        - - value
+          - 50

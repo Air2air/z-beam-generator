@@ -1,144 +1,78 @@
-id: beryllium-settings
-name: beryllium-laser-cleaning
+name: Beryllium
 slug: beryllium-settings
-category: metal
-subcategory: specialty
-domain_linkages: {}
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: beryllium-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning Beryllium, you must first contrast it with more common metals like aluminum, because Beryllium's exceptional reflectivity sends most laser energy bouncing away, demanding a completely different setup to ensure effective contaminant removal without wasting power. This high reflectivity, unlike the better absorption in denser alloys, means you should start with adjusted pulse durations and slower scan speeds so the surface has time to absorb just enough heat for cleaning, while its lightweight nature allows rapid cooling that prevents warping if you control the overlap carefully. Beryllium's superior thermal conductivity spreads heat quickly across the material, which helps avoid localized damage but requires you to monitor passes closely to prevent overexposure. You also need to watch its brittleness compared to tougher steels, as sudden temperature shifts can lead to micro-cracks during the process. In the end, always end sessions with a cool-down
-  period and inspect for any subsurface stress, since overlooking this can compromise the material's integrity in high-stakes applications like aerospace components.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Specialty
-  href: /materials/metal/specialty
-- label: beryllium-laser-cleaning
-  href: /materials/beryllium-settings
-images:
-  hero:
-    alt: Beryllium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/beryllium-laser-cleaning-hero.jpg
-  micro:
-    alt: Beryllium microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/beryllium-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 64.2
-    unit: mm²/s
-  thermalConductivity:
-    value: 216.0
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1560.15
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 1.8
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.85
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.8
-    unit: K
-  reflectivity:
-    value: 0.95
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: High thermal conductivity and heat spread
-    severity: medium
-    property_value: 4-400 W/(m·K) depending on metal
-    impact: Heat spreads rapidly causing large heat-affected zones
-    solutions:
-    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-    - Increase scan speed to minimize dwell time
-    - Apply cooling between passes for thick sections
-    challenge_id: high_thermal_conductivity_and_heat_spread
-  - challenge: Melting and heat-affected zone formation
-    severity: high
-    threshold_range: 660°C (Al) to 3422°C (W)
-    impact: Substrate melting or microstructural changes in heat-affected zone
-    solutions:
-    - Stay below 70% of melting temperature
-    - Use pulse mode with adequate cooling time
-    - Monitor for surface discoloration indicating oxidation
-    challenge_id: melting_and_heat_affected_zone_formation
-  surface_characteristics:
-  - challenge: High reflectivity
-    severity: high
-    reflectivity_range: 60-95% at 1064nm for polished metals
-    impact: Most laser energy reflected, requiring higher power; safety hazard
-    solutions:
-    - Use shorter wavelengths (355nm UV) for better absorption
-    - Increase power density but monitor for thermal damage
-    - Ensure proper beam containment and safety measures
-    - Surface oxidation/roughness improves absorption
-    challenge_id: high_reflectivity
-  - challenge: Surface finish variations
-    severity: medium
-    impact: Polished surfaces reflect more, rough surfaces absorb better
-    solutions:
-    - Adjust power based on surface condition
-    - Test parameters on similar finish samples
-    - Polished surfaces need 20-40% more power
-    challenge_id: surface_finish_variations
-  contamination_challenges:
-  - challenge: Rust and oxide layer removal
-    severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
-    solutions:
-    - First pass at higher power (100-120W) to remove bulk oxide
-    - Second pass at lower power (60-80W) for final cleaning
-    - Monitor for base metal exposure to avoid over-processing
-    challenge_id: rust_and_oxide_layer_removal
-  - challenge: Oil and grease removal
-    severity: low
-    impact: Organic contaminants vaporize easily but can redeposit
-    solutions:
-    - Use fume extraction to prevent redeposition
-    - Higher scan speeds (3000-5000 mm/s) for thin films
-    - Chemical pre-cleaning for heavy contamination
-    challenge_id: oil_and_grease_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:56.611312'
+domain: settings
+datePublished: '2025-12-16T14:42:51.470434'
+dateModified: '2025-12-16T14:42:51.470434'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power range for Beryllium oxide layer removal
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength optimized for Beryllium thermal absorption characteristics
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise cleaning control
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High repetition rate for efficient cleaning with minimal thermal damage
+        - - unit
+          - kHz
+        - - value
+          - 100
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for Beryllium oxide removal without substrate damage
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for controlled ablation of surface contaminants
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning coverage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Number of cleaning passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam overlap percentage for uniform cleaning pattern
+        - - unit
+          - '%'
+        - - value
+          - 50

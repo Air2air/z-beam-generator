@@ -197,9 +197,12 @@ class TrivialContaminantsExporter:
         
         return linkages
     
-    def export_all(self) -> Dict[str, bool]:
+    def export_all(self, force: bool = False) -> Dict[str, bool]:
         """
         Export all contamination patterns to frontmatter files.
+        
+        Args:
+            force: Overwrite existing files (default: False)
         
         Returns:
             Dict mapping pattern names to success status

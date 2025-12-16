@@ -1,144 +1,115 @@
-id: bronze-settings
-name: bronze-laser-cleaning
+name: Bronze
 slug: bronze-settings
-category: metal
-subcategory: non-ferrous
-domain_linkages: {}
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: bronze-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning bronze, unlike ferrous metals like steel, you must account for its higher reflectivity that sends more energy back at the source. This means starting with gentler power levels to avoid surface melting, since bronze heats up faster from that bounce. Watch out mid-process for uneven patina removal—it can fade historical value—so adjust scans slower and use multiple light passes to lift dirt without erasing the alloy's natural shield.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Non Ferrous
-  href: /materials/metal/non-ferrous
-- label: bronze-laser-cleaning
-  href: /materials/bronze-settings
-images:
-  hero:
-    alt: Bronze surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/bronze-laser-cleaning-hero.jpg
-  micro:
-    alt: Bronze microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/bronze-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 22.0
-    unit: mm²/s
-  thermalConductivity:
-    value: 60.0
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1223.15
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 1.8
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.5
-    unit: J/cm²
-  thermalShockResistance:
-    value: 150
-    unit: K
-  reflectivity:
-    value: 0.65
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: High thermal conductivity and heat spread
-    severity: medium
-    property_value: 4-400 W/(m·K) depending on metal
-    impact: Heat spreads rapidly causing large heat-affected zones
-    solutions:
-    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-    - Increase scan speed to minimize dwell time
-    - Apply cooling between passes for thick sections
-    challenge_id: high_thermal_conductivity_and_heat_spread
-  - challenge: Melting and heat-affected zone formation
-    severity: high
-    threshold_range: 660°C (Al) to 3422°C (W)
-    impact: Substrate melting or microstructural changes in heat-affected zone
-    solutions:
-    - Stay below 70% of melting temperature
-    - Use pulse mode with adequate cooling time
-    - Monitor for surface discoloration indicating oxidation
-    challenge_id: melting_and_heat_affected_zone_formation
-  surface_characteristics:
-  - challenge: High reflectivity
-    severity: high
-    reflectivity_range: 60-95% at 1064nm for polished metals
-    impact: Most laser energy reflected, requiring higher power; safety hazard
-    solutions:
-    - Use shorter wavelengths (355nm UV) for better absorption
-    - Increase power density but monitor for thermal damage
-    - Ensure proper beam containment and safety measures
-    - Surface oxidation/roughness improves absorption
-    challenge_id: high_reflectivity
-  - challenge: Surface finish variations
-    severity: medium
-    impact: Polished surfaces reflect more, rough surfaces absorb better
-    solutions:
-    - Adjust power based on surface condition
-    - Test parameters on similar finish samples
-    - Polished surfaces need 20-40% more power
-    challenge_id: surface_finish_variations
-  contamination_challenges:
-  - challenge: Rust and oxide layer removal
-    severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
-    solutions:
-    - First pass at higher power (100-120W) to remove bulk oxide
-    - Second pass at lower power (60-80W) for final cleaning
-    - Monitor for base metal exposure to avoid over-processing
-    challenge_id: rust_and_oxide_layer_removal
-  - challenge: Oil and grease removal
-    severity: low
-    impact: Organic contaminants vaporize easily but can redeposit
-    solutions:
-    - Use fume extraction to prevent redeposition
-    - Higher scan speeds (3000-5000 mm/s) for thin films
-    - Chemical pre-cleaning for heavy contamination
-    challenge_id: oil_and_grease_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:57.197792'
+domain_linkages: !!python/object/apply:collections.OrderedDict
+- - - contaminants
+    - - adhesive-residue-contamination
+      - algae-growth-contamination
+      - biological-stains-contamination
+      - bronze-patina-contamination
+      - carbon-soot-contamination
+      - chemical-stains-contamination
+      - copper-patina-contamination
+      - epoxy-residue-contamination
+      - fertilizer-residue-contamination
+      - graffiti-paint-contamination
+      - graphite-marks-contamination
+      - ink-stains-contamination
+      - insect-residue-contamination
+      - lime-scale-contamination
+      - mercury-contamination
+      - mineral-deposits-contamination
+      - paint-residue-contamination
+      - pesticide-residue-contamination
+      - plastic-residue-contamination
+      - pollen-deposit-contamination
+      - radioactive-contamination
+      - rubber-residue-contamination
+      - salt-residue-contamination
+      - scale-buildup-contamination
+      - silicone-buildup-contamination
+      - silver-plating-contamination
+      - tree-sap-contamination
+      - water-stain-contamination
+      - wax-buildup-contamination
+domain: settings
+datePublished: '2025-12-16T14:42:51.494662'
+dateModified: '2025-12-16T14:42:51.494662'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Bronze oxide removal without substrate damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength with good absorption in Bronze oxides and moderate
+            substrate absorption
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal spot diameter for balancing cleaning efficiency and processing
+            speed
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High repetition rate for efficient cleaning coverage while maintaining
+            pulse energy
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective Bronze oxide removal while preserving
+            substrate
+        - - unit
+          - J/cm²
+        - - value
+          - 5.1
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for efficient oxide layer ablation with minimal
+            thermal diffusion
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform oxide removal without substrate damage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete oxide removal with safety margin
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal pulse overlap for uniform cleaning coverage without excessive
+            thermal buildup
+        - - unit
+          - '%'
+        - - value
+          - 50

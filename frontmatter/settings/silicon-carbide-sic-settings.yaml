@@ -1,141 +1,79 @@
-id: silicon-carbide-sic-settings
-name: silicon-carbide-sic-laser-cleaning
+name: Silicon Carbide (SiC)
 slug: silicon-carbide-sic-settings
-category: ceramic
-subcategory: carbide
-domain_linkages: {}
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: silicon-carbide-sic-laser-cleaning Laser Cleaning Settings
-settings_description: 'When laser cleaning silicon carbide, watch out for its extreme hardness right from the start. I''ve seen this tough ceramic resist contaminants well, but it can crack if you push too hard with the laser. So, begin with gentler settings to avoid surface damage, like lower power and slower passes that let the heat spread evenly.
-
-
-  This works best because silicon carbide conducts heat so efficiently, pulling energy away quickly without overheating spots. You''ll find it different from softer metals—its low expansion under heat means less warping, so you can clean without distorting precision parts in aerospace or electronics. Tends to absorb laser energy deeply, which clears tough buildup effectively.
-
-
-  Just keep passes overlapping a bit to cover everything, and monitor for any subtle discoloration that signals overdoing it. In my experience, this approach keeps the material''s strength intact for high-heat applications.'
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Ceramic
-  href: /materials/ceramic
-- label: Carbide
-  href: /materials/ceramic/carbide
-- label: silicon-carbide-sic-laser-cleaning
-  href: /materials/silicon-carbide-sic-settings
-images:
-  hero:
-    alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/silicon-carbide-laser-cleaning-hero.jpg
-  micro:
-    alt: Silicon Carbide microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/silicon-carbide-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 120.0
-    unit: mm²/s
-  thermalConductivity:
-    value: 370.0
-    unit: W/(m·K)
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 25.3
-    unit: J/cm²
-  ablationThreshold:
-    value: 3.0
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 3.6
-    max: 20.24
-    unit: J/cm²
-  reflectivity:
-    value: 0.204
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Thermal shock and cracking
-    severity: critical
-    threshold_temperature: ΔT > 200-300°C rapid cooling
-    impact: Ceramics crack catastrophically from rapid temperature changes due to low thermal expansion
-    solutions:
-    - Use pulse mode with 3-5 second cooling between passes
-    - Gradual power ramping (start 50W, increase 10W per pass)
-    - Preheat substrate to reduce thermal gradients
-    - Monitor for surface crazing; stop immediately if cracks appear
-    challenge_id: thermal_shock_and_cracking
-  - challenge: Variable thermal conductivity
-    severity: medium
-    property_value: 0.8-120 W/m·K (150x variation between materials)
-    impact: SiC/WC conduct heat well, but alumina/zirconia accumulate heat rapidly
-    solutions:
-    - Low conductivity ceramics (alumina, zirconia) require 50% longer cooling
-    - High conductivity ceramics (SiC, WC) tolerate higher power
-    - Test on scrap to determine cooling requirements
-    challenge_id: variable_thermal_conductivity
-  surface_characteristics:
-  - challenge: Surface defects and damage threshold
-    severity: high
-    impact: Micro-cracks, pores, and surface defects dramatically lower damage threshold
-    solutions:
-    - Inspect surface with magnification before cleaning
-    - Reduce power 30-40% for porous or aged ceramics
-    - Use multiple low-energy passes rather than single high-energy pass
-    - Polished ceramics tolerate 2-3x higher fluence than rough surfaces
-    challenge_id: surface_defects_and_damage_threshold
-  - challenge: Porosity variation
-    severity: medium
-    porosity_range: 0-30% (dense vs porous ceramics)
-    impact: Porous ceramics trap contaminants deep in structure and scatter laser energy
-    solutions:
-    - Dense ceramics (0-5% porosity) clean easily at 100-150W
-    - Porous ceramics require multiple progressive passes
-    - Use crosshatch scan pattern for uniform penetration
-    - Chemical pre-treatment for deep contamination in porous ceramics
-    challenge_id: porosity_variation
-  contamination_challenges:
-  - challenge: Coating and residue removal
-    severity: medium
-    impact: Hard coatings (PVD, thermal barrier) require high energy but risk substrate damage
-    solutions:
-    - First pass 120W fast (2000 mm/s) for bulk coating removal
-    - Second pass 80W slow (1000 mm/s) for residue
-    - Monitor for substrate exposure; adjust power accordingly
-    - PVD coatings may require chemical assist for complete removal
-    challenge_id: coating_and_residue_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:02.331956'
+domain: settings
+datePublished: '2025-12-16T14:42:51.827764'
+dateModified: '2025-12-16T14:42:51.827764'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for SiC surface cleaning without thermal damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength for optimal SiC absorption and minimal substrate damage
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise cleaning with adequate energy density
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning coverage and thermal management
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Minimum fluence required for effective contaminant removal from SiC surface
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for efficient contaminant removal with controlled
+            thermal effects
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning coverage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform cleaning without excessive thermal buildup
+        - - unit
+          - '%'
+        - - value
+          - 50

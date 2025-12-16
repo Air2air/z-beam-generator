@@ -1,170 +1,78 @@
-id: carbon-fiber-reinforced-polymer-settings
-name: carbon-fiber-reinforced-polymer-laser-cleaning
+name: Carbon Fiber Reinforced Polymer
 slug: carbon-fiber-reinforced-polymer-settings
-category: composite
-subcategory: fiber-reinforced
-domain_linkages:
-  related_contaminants:
-  - id: aviation-sealant
-    title: Aviation Sealant
-    url: /contaminants/aviation-sealant
-    image: /images/contaminants/aviation-sealant.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: epoxy-residue
-    title: Epoxy Residue
-    url: /contaminants/epoxy-residue
-    image: /images/contaminants/epoxy-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds:
-  - id: carbon-monoxide-compound
-    title: Carbon Monoxide
-    url: /compounds/carbon-monoxide
-    image: /images/compounds/carbon-monoxide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Thermal breakdown of epoxy resins
-    exposure_risk: moderate
-  - id: formaldehyde-compound
-    title: Formaldehyde
-    url: /compounds/formaldehyde
-    image: /images/compounds/formaldehyde.jpg
-    frequency: occasional
-    severity: low
-    typical_context: Thermal degradation of certain epoxy formulations
-    exposure_risk: low
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: carbon-fiber-reinforced-polymer-laser-cleaning Laser Cleaning Settings
-settings_description: We've found that when laser cleaning carbon fiber reinforced polymer, the biggest early concern is avoiding heat buildup in its low-conductivity matrix, which can delaminate the fibers if you're not careful. So we typically start with gentle power settings and slow scan speeds to let the laser absorb well into the surface. This clears contaminants effectively without weakening the strong composite bonds, and we follow with multiple light passes for even results. Just overlap your paths by half to prevent edge damage.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composite
-- label: Fiber Reinforced
-  href: /materials/composite/fiber-reinforced
-- label: carbon-fiber-reinforced-polymer-laser-cleaning
-  href: /materials/carbon-fiber-reinforced-polymer-settings
-images:
-  hero:
-    alt: Carbon Fiber Reinforced Polymer surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/carbon-fiber-reinforced-polymer-laser-cleaning-hero.jpg
-  micro:
-    alt: Carbon Fiber Reinforced Polymer microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/carbon-fiber-reinforced-polymer-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.57
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.92
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 700
-    unit: K
-    type: decomposition
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 3
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.3
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.5
-    unit: K
-  reflectivity:
-    value: 0.35
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Matrix degradation and delamination
-    severity: critical
-    threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
-    impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
-    solutions:
-    - Use pulse mode with 5-10 second cooling for polymer-matrix composites
-    - Reduce power by 40-50% compared to monolithic materials
-    - Monitor for discoloration, bubbling, or layer lifting
-    - Ceramic and metal-matrix composites tolerate higher power
-    challenge_id: matrix_degradation_and_delamination
-  - challenge: Anisotropic thermal properties
-    severity: high
-    property_value: 10-100x variation parallel vs perpendicular to fibers
-    impact: Heat conducts rapidly along fibers but poorly across layers
-    solutions:
-    - Scan parallel to fiber direction for best heat dissipation
-    - Use crosshatch pattern (0° and 90°) to identify fiber orientation
-    - Increase cooling time 2-3x when scanning perpendicular to fibers
-    - Carbon fiber composites require special attention due to electrical conductivity
-    challenge_id: anisotropic_thermal_properties
-  surface_characteristics:
-  - challenge: Fiber exposure and damage
-    severity: high
-    impact: Aggressive cleaning exposes or damages reinforcing fibers
-    solutions:
-    - Use low energy density (0.5-2 J/cm²) to protect matrix
-    - Multiple gentle passes preferred over single aggressive pass
-    - Stop immediately if fibers become visible
-    - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
-    challenge_id: fiber_exposure_and_damage
-  - challenge: Surface finish variability
-    severity: medium
-    impact: Gel coat, paint, or protective layers alter absorption and damage threshold
-    solutions:
-    - Test on edge or hidden area first
-    - Coated surfaces may require 50-100W initial pass for coating removal
-    - Bare composite requires 30-50% lower power
-    - Adjust parameters when transitioning between coated and uncoated areas
-    challenge_id: surface_finish_variability
-  contamination_challenges:
-  - challenge: Resin-based contaminant removal
-    severity: medium
-    impact: Adhesives, sealants, and coatings chemically bond to matrix
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 50W slow (800 mm/s) for residue
-    - Chemical pre-treatment improves results for stubborn adhesives
-    - Monitor for matrix damage; stop if surface texture changes
-    challenge_id: resin_based_contaminant_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:57.332763'
+domain: settings
+datePublished: '2025-12-16T14:42:51.502146'
+dateModified: '2025-12-16T14:42:51.502146'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for CFRP cleaning without matrix damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength for optimal carbon absorption and minimal polymer damage
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Focused spot size for precise cleaning resolution
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High repetition rate for efficient cleaning with thermal management
+        - - unit
+          - kHz
+        - - value
+          - 100
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective contaminant removal without CFRP damage
+        - - unit
+          - J/cm²
+        - - value
+          - 5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for controlled ablation of contaminants
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning coverage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform cleaning without excessive heating
+        - - unit
+          - '%'
+        - - value
+          - 50

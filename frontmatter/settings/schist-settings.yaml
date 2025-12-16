@@ -1,147 +1,81 @@
-id: schist-settings
-name: schist-laser-cleaning
+name: Schist
 slug: schist-settings
-category: stone
-subcategory: sedimentary
-domain_linkages: {}
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: schist-laser-cleaning Laser Cleaning Settings
-settings_description: When cleaning schist, watch its layered foliation that sets it apart from denser, more uniform stones like granite. I've seen this structure lead to delamination under uneven heat, so start with gentler passes to avoid cracking along those planes. Unlike smoother limestones, schist's moderate absorption pulls in laser energy well but traps heat due to low conductivity, which tends to build up quickly. This works best when you reduce power early on, allowing multiple light exposures to reveal surface grime without stressing the layers. Adjust overlap to keep things even, restoring the stone's natural sheen steadily.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Sedimentary
-  href: /materials/stone/sedimentary
-- label: schist-laser-cleaning
-  href: /materials/schist-settings
-images:
-  hero:
-    alt: Schist surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/schist-laser-cleaning-hero.jpg
-  micro:
-    alt: Schist microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/schist-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 1.0
-    unit: mm²/s
-  thermalConductivity:
-    value: 2.15
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1273
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 3
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.45
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.74
-    max: 2.4
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.5
-    unit: K
-  reflectivity:
-    value: 0.18
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Thermal shock and microcracking
-    severity: critical
-    threshold_temperature: ΔT > 50-150°C rapid cooling (stone-dependent)
-    impact: Natural stone contains microfissures that propagate under thermal stress
-    solutions:
-    - Use pulse mode with 8-12 second cooling between passes
-    - Reduce power by 40-50% for weathered or damaged stone
-    - Preheat substrate if possible to reduce thermal gradients
-    - Granite more resistant than marble; sandstone most vulnerable
-    - Monitor for surface crazing; stop immediately if cracks appear
-    challenge_id: thermal_shock_and_microcracking
-  - challenge: Moisture-induced spalling
-    severity: high
-    threshold_temperature: Steam formation >100°C with trapped moisture
-    impact: Porous stone traps moisture that explosively converts to steam
-    solutions:
-    - Test moisture content before cleaning (>3% requires drying)
-    - Allow 48-72 hours drying after rain before laser cleaning
-    - Reduce power by 50% for damp stone
-    - Use pulse mode with extended cooling (15-20 seconds)
-    - Heritage stone requires especially gentle approach
-    challenge_id: moisture_induced_spalling
-  surface_characteristics:
-  - challenge: Weathering and surface degradation
-    severity: high
-    impact: Aged stone has weaker surface layer more susceptible to damage
-    solutions:
-    - Reduce power 40-60% for weathered stone vs fresh stone
-    - Test on inconspicuous area first
-    - Multiple gentle passes (4-6 at 40-60W) preferred
-    - Monitor for powdering or flaking; adjust power immediately
-    - Heritage conservation requires documentation and testing
-    challenge_id: weathering_and_surface_degradation
-  - challenge: Mineral composition heterogeneity
-    severity: medium
-    impact: Mixed minerals have different absorption and damage thresholds
-    solutions:
-    - Use moderate power (60-80W) suitable for both light and dark minerals
-    - Crosshatch scan pattern for uniform coverage
-    - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
-    - Quartzite and marble more homogeneous than granite
-    challenge_id: mineral_composition_heterogeneity
-  contamination_challenges:
-  - challenge: Biological growth and deep staining
-    severity: medium
-    porosity_range: 0.5-25% (sandstone highly porous)
-    impact: Algae, lichen, and pollution penetrate deep into porous structure
-    solutions:
-    - First pass 80W fast (1200 mm/s) for surface growth
-    - Second pass 60W slow (700 mm/s) for roots and stains
-    - Third pass 40W very slow (400 mm/s) for deep staining
-    - Chemical biocide pre-treatment kills roots and reduces laser exposure
-    - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
-    challenge_id: biological_growth_and_deep_staining
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:02.142876'
+domain: settings
+datePublished: '2025-12-16T14:42:51.809832'
+dateModified: '2025-12-16T14:42:51.809832'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Schist surface cleaning without thermal damage
+        - - unit
+          - W
+        - - value
+          - 90
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength optimized for Schist mineral absorption characteristics
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise cleaning control on Schist mineral layers
+        - - unit
+          - μm
+        - - value
+          - 80
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning coverage on Schist surfaces
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective contaminant ablation without damaging
+            Schist substrate
+        - - unit
+          - J/cm²
+        - - value
+          - 4.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for effective contaminant removal with minimal
+            substrate damage
+        - - unit
+          - ns
+        - - value
+          - 12
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning across Schist surface variations
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for thorough cleaning of Schist mineral layers
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap percentage for complete coverage on uneven Schist
+            surfaces
+        - - unit
+          - '%'
+        - - value
+          - 50

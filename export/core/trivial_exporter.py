@@ -668,9 +668,12 @@ class TrivialFrontmatterExporter:
                     
         self.logger.info(f"   Taxonomy maps {len(self.property_taxonomy)} properties to categories")
     
-    def export_all(self) -> Dict[str, bool]:
+    def export_all(self, force: bool = False) -> Dict[str, bool]:
         """
         Export all materials from Materials.yaml to frontmatter files.
+        
+        Args:
+            force: Overwrite existing files (default: False)
         
         Returns:
             Dict mapping material names to success status
@@ -684,8 +687,8 @@ class TrivialFrontmatterExporter:
         results = {}
         for material_name in materials:
             try:
-                self.export_single(material_name, materials[material_name])
-                results[material_name] = True
+                success = self.export_single(material_name, materials[material_name], force=force)
+                results[material_name] = success
             except Exception as e:
                 self.logger.error(f"❌ Export failed for {material_name}: {e}")
                 results[material_name] = False
@@ -695,7 +698,7 @@ class TrivialFrontmatterExporter:
         
         return results
     
-    def export_single(self, material_name: str, material_data: Dict) -> None:
+    def export_single(self, material_name: str, material_data: Dict, force: bool = False) -> bool:
         """
         Export single material to frontmatter YAML file.
         
@@ -705,7 +708,19 @@ class TrivialFrontmatterExporter:
         Args:
             material_name: Name of the material
             material_data: Material data from Materials.yaml (100% complete, validated)
+            force: Overwrite existing file (default: False)
+            
+        Returns:
+            True if exported successfully, False if skipped
         """
+        # Check if file already exists
+        filename = f"{material_name}.yaml"
+        output_file = self.materials_output_dir / filename
+        
+        if output_file.exists() and not force:
+            self.logger.debug(f"Skipping existing file: {output_file}")
+            return False
+        
         # Start with material name
         frontmatter = {'name': material_name}
         
@@ -903,6 +918,8 @@ class TrivialFrontmatterExporter:
         
         # Export materials page only (settings handled by separate TrivialSettingsExporter)
         self._export_materials_page(material_name, frontmatter)
+        
+        return True
     
     def _export_materials_page(self, material_name: str, full_frontmatter: Dict) -> None:
         """

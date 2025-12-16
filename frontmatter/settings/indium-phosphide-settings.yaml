@@ -1,137 +1,78 @@
-id: indium-phosphide-settings
-name: indium-phosphide-laser-cleaning
+name: Indium Phosphide
 slug: indium-phosphide-settings
-category: semiconductor
-subcategory: compound
-domain_linkages: {}
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: indium-phosphide-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning Indium Phosphide, compare it to silicon, which absorbs laser energy more readily. Indium Phosphide tends to reflect more, so it demands gentler pulses to prevent surface cracking. I've seen this low absorption help avoid deep thermal damage, but it requires slower scan speeds to ensure complete contaminant removal without stressing the brittle structure. Unlike gallium arsenide, its dense, non-porous nature resists pitting, allowing tighter focus on oxide layers. This restores conductivity effectively when you keep energy low from the start. Start with defocused beams to expose underlying layers safely. Watch for micro-fractures if power creeps up too fast. In the end, always test a small area first to avoid irreversible brittleness issues.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Semiconductor
-  href: /materials/semiconductor
-- label: Compound
-  href: /materials/semiconductor/compound
-- label: indium-phosphide-laser-cleaning
-  href: /materials/indium-phosphide-settings
-images:
-  hero:
-    alt: Indium Phosphide surface during precision laser cleaning process removing contamination layer
-    url: /images/material/indium-phosphide-laser-cleaning-hero.jpg
-  micro:
-    alt: Indium Phosphide surface at 500x magnification showing laser cleaning results
-    url: /images/material/indium-phosphide-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 45.0
-    unit: mm²/s
-  thermalConductivity:
-    value: 68.0
-    unit: W/(m·K)
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 1.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 0.72
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 0.864
-    max: 1.2
-    unit: J/cm²
-  reflectivity:
-    value: 0.28
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Crystal lattice damage and doping redistribution
-    severity: critical
-    threshold_temperature: Above 400-600°C causes dopant migration
-    impact: Heat causes permanent alteration of electronic properties and device failure
-    solutions:
-    - Use ultrashort pulses (picosecond or femtosecond) for minimal heat-affected zone
-    - Reduce power by 60-70% compared to structural materials
-    - Monitor temperature with IR camera; stop if >150°C surface temperature
-    - Nanosecond pulses acceptable only for non-active areas (scribe lines, edges)
-    challenge_id: crystal_lattice_damage_and_doping_redistribution
-  - challenge: Thermal stress and wafer cracking
-    severity: high
-    property_value: Low fracture toughness 0.75-3.0 MPa·√m
-    impact: Thermal gradients cause catastrophic wafer fracture
-    solutions:
-    - Use pulse mode with 10-15 second cooling for thick wafers
-    - Thin wafers (<200 μm) require substrate backing for thermal management
-    - Defocused beam reduces peak temperature gradients
-    - Gradual power ramping (start 10W, increase 5W per pass)
-    challenge_id: thermal_stress_and_wafer_cracking
-  surface_characteristics:
-  - challenge: Surface contamination and particulates
-    severity: critical
-    impact: Sub-micron particles cause device defects and yield loss
-    solutions:
-    - Class 100 cleanroom environment required
-    - Use dry laser cleaning (no liquid assist to avoid residue)
-    - Gas assist (nitrogen or argon) blows particles away during cleaning
-    - Post-cleaning inspection with particle counter (<0.1 μm detection)
-    - Follow with wet chemical clean for critical applications
-    challenge_id: surface_contamination_and_particulates
-  - challenge: Native oxide layer removal
-    severity: high
-    impact: Silicon forms native oxide that must be removed without substrate damage
-    solutions:
-    - Low power (5-15W) for oxide removal only
-    - Multiple gentle passes (3-5 passes at 10W) preferred
-    - Hydrogen-rich environment prevents oxide reformation
-    - Verify oxide removal with ellipsometry or XPS
-    challenge_id: native_oxide_layer_removal
-  contamination_challenges:
-  - challenge: Photoresist and polymer residue removal
-    severity: medium
-    impact: Organic residues carbonize and become harder to remove
-    solutions:
-    - First pass 20W fast (1500 mm/s) for bulk removal
-    - Second pass 10W slow (800 mm/s) for residue
-    - UV laser (355nm) more effective for organic materials
-    - Oxygen-rich environment aids in organic ablation
-    - Post-cleaning oxygen plasma for complete residue removal
-    challenge_id: photoresist_and_polymer_residue_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:05.219493'
+domain: settings
+datePublished: '2025-12-16T14:42:51.993059'
+dateModified: '2025-12-16T14:42:51.993059'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 60
+        - - unit
+          - W
+        - - description
+          - Controlled power for precision semiconductor cleaning
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 1064
+        - - unit
+          - nm
+        - - description
+          - Near-IR for minimal lattice damage
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 30
+        - - unit
+          - μm
+        - - description
+          - Small spot for high-precision cleaning
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 30
+        - - unit
+          - kHz
+        - - description
+          - Moderate frequency for controlled removal
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 1.5
+        - - unit
+          - J/cm²
+        - - description
+          - Precision energy for contamination removal
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 10
+        - - unit
+          - ns
+        - - description
+          - Ultra-short pulses for minimal thermal damage
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 300
+        - - unit
+          - mm/s
+        - - description
+          - Careful scanning for uniform treatment
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 3
+        - - unit
+          - passes
+        - - description
+          - Multiple passes for complete cleaning
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 60
+        - - unit
+          - '%'
+        - - description
+          - High overlap for thorough coverage

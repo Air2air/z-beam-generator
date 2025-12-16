@@ -135,13 +135,13 @@ class TrivialSettingsExporter:
         # Get contaminants for this material
         contaminants = self.associations_validator.get_contaminants_for_material(material_slug)
         if contaminants:
-            linkages['contaminants'] = sorted([c['slug'] for c in contaminants])
+            linkages['contaminants'] = sorted([c['id'] for c in contaminants])
         
         # Get compounds for contaminants
         all_compounds = set()
         for contaminant in contaminants:
-            compounds = self.associations_validator.get_compounds_for_contaminant(contaminant['slug'])
-            all_compounds.update(c['slug'] for c in compounds)
+            compounds = self.associations_validator.get_compounds_for_contaminant(contaminant['id'])
+            all_compounds.update(c['id'] for c in compounds)
         
         if all_compounds:
             linkages['compounds'] = sorted(all_compounds)

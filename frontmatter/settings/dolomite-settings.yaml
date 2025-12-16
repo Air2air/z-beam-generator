@@ -1,136 +1,78 @@
-id: dolomite-settings
-name: dolomite-laser-cleaning
+name: Dolomite
 slug: dolomite-settings
-category: stone
-subcategory: sedimentary
-domain_linkages: {}
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: dolomite-laser-cleaning Laser Cleaning Settings
-settings_description: We've found that dolomite stands out from limestone in laser cleaning because its magnesium mix makes it denser and less porous. This means it resists heat buildup better, so we typically use steady, moderate power pulses to lift contaminants without cracking the surface. You'll get even results this way. Just watch for overexposure at the end—it can dull the finish if you're not careful.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Sedimentary
-  href: /materials/stone/sedimentary
-- label: dolomite-laser-cleaning
-  href: /materials/dolomite-settings
-images:
-  hero:
-    alt: Dolomite surface during precision laser cleaning process removing contamination layer
-    url: /images/material/dolomite-laser-cleaning-hero.jpg
-  micro:
-    alt: Dolomite surface at 500x magnification showing laser cleaning results
-    url: /images/material/dolomite-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 1.14
-    unit: mm²/s
-  thermalConductivity:
-    value: 2.8
-    unit: W/(m·K)
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 1.15
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.2
-    unit: J/cm²
-  reflectivity:
-    value: 0.067
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Thermal shock and microcracking
-    severity: critical
-    threshold_temperature: ΔT > 50-150°C rapid cooling (stone-dependent)
-    impact: Natural stone contains microfissures that propagate under thermal stress
-    solutions:
-    - Use pulse mode with 8-12 second cooling between passes
-    - Reduce power by 40-50% for weathered or damaged stone
-    - Preheat substrate if possible to reduce thermal gradients
-    - Granite more resistant than marble; sandstone most vulnerable
-    - Monitor for surface crazing; stop immediately if cracks appear
-    challenge_id: thermal_shock_and_microcracking
-  - challenge: Moisture-induced spalling
-    severity: high
-    threshold_temperature: Steam formation >100°C with trapped moisture
-    impact: Porous stone traps moisture that explosively converts to steam
-    solutions:
-    - Test moisture content before cleaning (>3% requires drying)
-    - Allow 48-72 hours drying after rain before laser cleaning
-    - Reduce power by 50% for damp stone
-    - Use pulse mode with extended cooling (15-20 seconds)
-    - Heritage stone requires especially gentle approach
-    challenge_id: moisture_induced_spalling
-  surface_characteristics:
-  - challenge: Weathering and surface degradation
-    severity: high
-    impact: Aged stone has weaker surface layer more susceptible to damage
-    solutions:
-    - Reduce power 40-60% for weathered stone vs fresh stone
-    - Test on inconspicuous area first
-    - Multiple gentle passes (4-6 at 40-60W) preferred
-    - Monitor for powdering or flaking; adjust power immediately
-    - Heritage conservation requires documentation and testing
-    challenge_id: weathering_and_surface_degradation
-  - challenge: Mineral composition heterogeneity
-    severity: medium
-    impact: Mixed minerals have different absorption and damage thresholds
-    solutions:
-    - Use moderate power (60-80W) suitable for both light and dark minerals
-    - Crosshatch scan pattern for uniform coverage
-    - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
-    - Quartzite and marble more homogeneous than granite
-    challenge_id: mineral_composition_heterogeneity
-  contamination_challenges:
-  - challenge: Biological growth and deep staining
-    severity: medium
-    porosity_range: 0.5-25% (sandstone highly porous)
-    impact: Algae, lichen, and pollution penetrate deep into porous structure
-    solutions:
-    - First pass 80W fast (1200 mm/s) for surface growth
-    - Second pass 60W slow (700 mm/s) for roots and stains
-    - Third pass 40W very slow (400 mm/s) for deep staining
-    - Chemical biocide pre-treatment kills roots and reduces laser exposure
-    - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
-    challenge_id: biological_growth_and_deep_staining
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:04.990093'
+domain: settings
+datePublished: '2025-12-16T14:42:51.976696'
+dateModified: '2025-12-16T14:42:51.976696'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 90
+        - - unit
+          - W
+        - - description
+          - Optimal power for stone surface restoration
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 1064
+        - - unit
+          - nm
+        - - description
+          - Near-IR wavelength for stone cleaning
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 80
+        - - unit
+          - μm
+        - - description
+          - Moderate spot for effective treatment
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 40
+        - - unit
+          - kHz
+        - - description
+          - Balanced frequency for stone cleaning
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 2.2
+        - - unit
+          - J/cm²
+        - - description
+          - Energy for contamination removal
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 10
+        - - unit
+          - ns
+        - - description
+          - Controlled pulses for minimal damage
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 400
+        - - unit
+          - mm/s
+        - - description
+          - Steady scanning for uniform cleaning
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 2
+        - - unit
+          - passes
+        - - description
+          - Multiple passes for thorough treatment
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 50
+        - - unit
+          - '%'
+        - - description
+          - Standard overlap for consistent results

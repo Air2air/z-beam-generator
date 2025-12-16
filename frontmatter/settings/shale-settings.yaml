@@ -1,147 +1,79 @@
-id: shale-settings
-name: shale-laser-cleaning
+name: Shale
 slug: shale-settings
-category: stone
-subcategory: sedimentary
-domain_linkages: {}
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: shale-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning shale, the key is its layered sedimentary structure, which makes it more prone to delamination than denser stones like granite. We've found that this layering absorbs laser energy unevenly, so you need to start with gentle passes to lift contaminants without prying apart those natural fissures. In our experience, keeping the beam focused and moving steadily helps the heat dissipate across the surface, preserving the material's integrity during restoration work on monuments or artifacts. But watch out midway through—its moderate porosity can trap moisture, leading to steam bursts if you ramp up intensity too soon, so adjust by slowing the scan speed and overlapping less to avoid micro-cracks. Overall, this approach works well for cultural heritage pieces, where we emphasize multiple light treatments over aggressive ones to maintain shale's subtle textures.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Sedimentary
-  href: /materials/stone/sedimentary
-- label: shale-laser-cleaning
-  href: /materials/shale-settings
-images:
-  hero:
-    alt: Shale surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/shale-laser-cleaning-hero.jpg
-  micro:
-    alt: Shale microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/shale-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.573
-    unit: mm²/s
-  thermalConductivity:
-    value: 1.8
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 873
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 3.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.25
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.5
-    max: 2.8
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.8
-    unit: K
-  reflectivity:
-    value: 0.12
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Thermal shock and microcracking
-    severity: critical
-    threshold_temperature: ΔT > 50-150°C rapid cooling (stone-dependent)
-    impact: Natural stone contains microfissures that propagate under thermal stress
-    solutions:
-    - Use pulse mode with 8-12 second cooling between passes
-    - Reduce power by 40-50% for weathered or damaged stone
-    - Preheat substrate if possible to reduce thermal gradients
-    - Granite more resistant than marble; sandstone most vulnerable
-    - Monitor for surface crazing; stop immediately if cracks appear
-    challenge_id: thermal_shock_and_microcracking
-  - challenge: Moisture-induced spalling
-    severity: high
-    threshold_temperature: Steam formation >100°C with trapped moisture
-    impact: Porous stone traps moisture that explosively converts to steam
-    solutions:
-    - Test moisture content before cleaning (>3% requires drying)
-    - Allow 48-72 hours drying after rain before laser cleaning
-    - Reduce power by 50% for damp stone
-    - Use pulse mode with extended cooling (15-20 seconds)
-    - Heritage stone requires especially gentle approach
-    challenge_id: moisture_induced_spalling
-  surface_characteristics:
-  - challenge: Weathering and surface degradation
-    severity: high
-    impact: Aged stone has weaker surface layer more susceptible to damage
-    solutions:
-    - Reduce power 40-60% for weathered stone vs fresh stone
-    - Test on inconspicuous area first
-    - Multiple gentle passes (4-6 at 40-60W) preferred
-    - Monitor for powdering or flaking; adjust power immediately
-    - Heritage conservation requires documentation and testing
-    challenge_id: weathering_and_surface_degradation
-  - challenge: Mineral composition heterogeneity
-    severity: medium
-    impact: Mixed minerals have different absorption and damage thresholds
-    solutions:
-    - Use moderate power (60-80W) suitable for both light and dark minerals
-    - Crosshatch scan pattern for uniform coverage
-    - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
-    - Quartzite and marble more homogeneous than granite
-    challenge_id: mineral_composition_heterogeneity
-  contamination_challenges:
-  - challenge: Biological growth and deep staining
-    severity: medium
-    porosity_range: 0.5-25% (sandstone highly porous)
-    impact: Algae, lichen, and pollution penetrate deep into porous structure
-    solutions:
-    - First pass 80W fast (1200 mm/s) for surface growth
-    - Second pass 60W slow (700 mm/s) for roots and stains
-    - Third pass 40W very slow (400 mm/s) for deep staining
-    - Chemical biocide pre-treatment kills roots and reduces laser exposure
-    - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
-    challenge_id: biological_growth_and_deep_staining
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:02.236892'
+domain: settings
+datePublished: '2025-12-16T14:42:51.816686'
+dateModified: '2025-12-16T14:42:51.816686'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Shale surface cleaning without thermal damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength optimized for Shale mineral absorption characteristics
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for effective Shale cleaning resolution
+        - - unit
+          - μm
+        - - value
+          - 80
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for continuous Shale surface processing
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective Shale material removal
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for efficient Shale ablation with minimal heat
+            diffusion
+        - - unit
+          - ns
+        - - value
+          - 12
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform Shale surface treatment
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete Shale surface cleaning
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform Shale surface cleaning
+        - - unit
+          - '%'
+        - - value
+          - 50

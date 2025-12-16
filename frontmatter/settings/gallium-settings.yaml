@@ -1,143 +1,78 @@
-id: gallium-settings
-name: gallium-laser-cleaning
+name: Gallium
 slug: gallium-settings
-category: metal
-subcategory: specialty
-domain_linkages: {}
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: gallium-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning gallium, you'll want to approach it unlike harder metals such as steel or titanium, which handle intense heat without issue. Gallium's unusually low melting point sets it apart, risking surface liquefaction if energy builds up too quickly. Start with reduced power and faster scan speeds to strip away oxides or residues while keeping the material solid. Make sure you avoid prolonged exposure in one spot, as this can cause uneven melting and distort the underlying structure. This method exposes a clean, intact surface ready for semiconductor or medical applications.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Specialty
-  href: /materials/metal/specialty
-- label: gallium-laser-cleaning
-  href: /materials/gallium-settings
-images:
-  hero:
-    alt: Gallium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/gallium-laser-cleaning-hero.jpg
-  micro:
-    alt: Gallium microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/gallium-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 18.5
-    unit: mm²/s
-  thermalConductivity:
-    value: 40.6
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 2477.0
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 0.15
-    unit: J/cm²
-  ablationThreshold:
-    value: 0.42
-    unit: J/cm²
-  thermalShockResistance:
-    value: 0.0021
-    unit: K
-  reflectivity:
-    value: 0.72
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: High thermal conductivity and heat spread
-    severity: medium
-    property_value: 4-400 W/(m·K) depending on metal
-    impact: Heat spreads rapidly causing large heat-affected zones
-    solutions:
-    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-    - Increase scan speed to minimize dwell time
-    - Apply cooling between passes for thick sections
-    challenge_id: high_thermal_conductivity_and_heat_spread
-  - challenge: Melting and heat-affected zone formation
-    severity: high
-    threshold_range: 660°C (Al) to 3422°C (W)
-    impact: Substrate melting or microstructural changes in heat-affected zone
-    solutions:
-    - Stay below 70% of melting temperature
-    - Use pulse mode with adequate cooling time
-    - Monitor for surface discoloration indicating oxidation
-    challenge_id: melting_and_heat_affected_zone_formation
-  surface_characteristics:
-  - challenge: High reflectivity
-    severity: high
-    reflectivity_range: 60-95% at 1064nm for polished metals
-    impact: Most laser energy reflected, requiring higher power; safety hazard
-    solutions:
-    - Use shorter wavelengths (355nm UV) for better absorption
-    - Increase power density but monitor for thermal damage
-    - Ensure proper beam containment and safety measures
-    - Surface oxidation/roughness improves absorption
-    challenge_id: high_reflectivity
-  - challenge: Surface finish variations
-    severity: medium
-    impact: Polished surfaces reflect more, rough surfaces absorb better
-    solutions:
-    - Adjust power based on surface condition
-    - Test parameters on similar finish samples
-    - Polished surfaces need 20-40% more power
-    challenge_id: surface_finish_variations
-  contamination_challenges:
-  - challenge: Rust and oxide layer removal
-    severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
-    solutions:
-    - First pass at higher power (100-120W) to remove bulk oxide
-    - Second pass at lower power (60-80W) for final cleaning
-    - Monitor for base metal exposure to avoid over-processing
-    challenge_id: rust_and_oxide_layer_removal
-  - challenge: Oil and grease removal
-    severity: low
-    impact: Organic contaminants vaporize easily but can redeposit
-    solutions:
-    - Use fume extraction to prevent redeposition
-    - Higher scan speeds (3000-5000 mm/s) for thin films
-    - Chemical pre-cleaning for heavy contamination
-    challenge_id: oil_and_grease_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:58.762976'
+domain: settings
+datePublished: '2025-12-16T14:42:51.571549'
+dateModified: '2025-12-16T14:42:51.571549'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Gallium oxide removal without excessive melting
+        - - unit
+          - W
+        - - value
+          - 45
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength for moderate Gallium absorption with good penetration
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal spot diameter for precise cleaning of Gallium surfaces
+        - - unit
+          - μm
+        - - value
+          - 80
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Balanced repetition rate for efficient cleaning with thermal management
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Minimum fluence required for effective Gallium oxide removal
+        - - unit
+          - J/cm²
+        - - value
+          - 1.2
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulses for controlled ablation of surface contaminants
+        - - unit
+          - ns
+        - - value
+          - 15
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Scan speed for efficient area coverage while maintaining cleaning effectiveness
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Number of passes for complete contaminant removal without substrate damage
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal overlap between adjacent laser tracks for uniform cleaning
+        - - unit
+          - '%'
+        - - value
+          - 50

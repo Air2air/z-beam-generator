@@ -1,597 +1,87 @@
-id: stainless-steel-settings
-name: stainless-steel-laser-cleaning
+name: Stainless Steel
 slug: stainless-steel-settings
-category: metal
-subcategory: ferrous
-domain_linkages:
-  related_contaminants:
-  - id: adhesive-residue
-    title: Adhesive Residue
-    url: /contaminants/adhesive-residue
-    image: /images/contaminants/adhesive-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: algae-growth
-    title: Algae Growth
-    url: /contaminants/algae-growth
-    image: /images/contaminants/algae-growth.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: annealing-scale
-    title: Annealing Scale
-    url: /contaminants/annealing-scale
-    image: /images/contaminants/annealing-scale.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: anti-seize
-    title: Anti Seize
-    url: /contaminants/anti-seize
-    image: /images/contaminants/anti-seize.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: biological-stains
-    title: Biological Stains
-    url: /contaminants/biological-stains
-    image: /images/contaminants/biological-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: blood-residue
-    title: Blood Residue
-    url: /contaminants/blood-residue
-    image: /images/contaminants/blood-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cadmium-plating
-    title: Cadmium Plating
-    url: /contaminants/cadmium-plating
-    image: /images/contaminants/cadmium-plating.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-buildup
-    title: Carbon Buildup
-    url: /contaminants/carbon-buildup
-    image: /images/contaminants/carbon-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-soot
-    title: Carbon Soot
-    url: /contaminants/carbon-soot
-    image: /images/contaminants/carbon-soot.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: ceramic-coating
-    title: Ceramic Coating
-    url: /contaminants/ceramic-coating
-    image: /images/contaminants/ceramic-coating.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chemical-stains
-    title: Chemical Stains
-    url: /contaminants/chemical-stains
-    image: /images/contaminants/chemical-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chrome-pitting
-    title: Chrome Pitting
-    url: /contaminants/chrome-pitting
-    image: /images/contaminants/chrome-pitting.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: epoxy-residue
-    title: Epoxy Residue
-    url: /contaminants/epoxy-residue
-    image: /images/contaminants/epoxy-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: exhaust-residue
-    title: Exhaust Residue
-    url: /contaminants/exhaust-residue
-    image: /images/contaminants/exhaust-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fertilizer-residue
-    title: Fertilizer Residue
-    url: /contaminants/fertilizer-residue
-    image: /images/contaminants/fertilizer-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graffiti-paint
-    title: Graffiti Paint
-    url: /contaminants/graffiti-paint
-    image: /images/contaminants/graffiti-paint.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graphite-marks
-    title: Graphite Marks
-    url: /contaminants/graphite-marks
-    image: /images/contaminants/graphite-marks.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: ink-stains
-    title: Ink Stains
-    url: /contaminants/ink-stains
-    image: /images/contaminants/ink-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: insect-residue
-    title: Insect Residue
-    url: /contaminants/insect-residue
-    image: /images/contaminants/insect-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lime-scale
-    title: Lime Scale
-    url: /contaminants/lime-scale
-    image: /images/contaminants/lime-scale.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: medical-disinfectant
-    title: Medical Disinfectant
-    url: /contaminants/medical-disinfectant
-    image: /images/contaminants/medical-disinfectant.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mercury-contamination
-    title: Mercury
-    url: /contaminants/mercury
-    image: /images/contaminants/mercury.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-deposits
-    title: Mineral Deposits
-    url: /contaminants/mineral-deposits
-    image: /images/contaminants/mineral-deposits.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: paint-residue
-    title: Paint Residue
-    url: /contaminants/paint-residue
-    image: /images/contaminants/paint-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: passivation-defect
-    title: Passivation Defect
-    url: /contaminants/passivation-defect
-    image: /images/contaminants/passivation-defect.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pesticide-residue
-    title: Pesticide Residue
-    url: /contaminants/pesticide-residue
-    image: /images/contaminants/pesticide-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pharmaceutical-residue
-    title: Pharmaceutical Residue
-    url: /contaminants/pharmaceutical-residue
-    image: /images/contaminants/pharmaceutical-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pickling-residue
-    title: Pickling Residue
-    url: /contaminants/pickling-residue
-    image: /images/contaminants/pickling-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: plastic-residue
-    title: Plastic Residue
-    url: /contaminants/plastic-residue
-    image: /images/contaminants/plastic-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pollen-deposit
-    title: Pollen Deposit
-    url: /contaminants/pollen-deposit
-    image: /images/contaminants/pollen-deposit.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: radioactive-contamination
-    title: Radioactive
-    url: /contaminants/radioactive
-    image: /images/contaminants/radioactive.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: rubber-residue
-    title: Rubber Residue
-    url: /contaminants/rubber-residue
-    image: /images/contaminants/rubber-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: salt-residue
-    title: Salt Residue
-    url: /contaminants/salt-residue
-    image: /images/contaminants/salt-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: scale-buildup
-    title: Scale Buildup
-    url: /contaminants/scale-buildup
-    image: /images/contaminants/scale-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicone-buildup
-    title: Silicone Buildup
-    url: /contaminants/silicone-buildup
-    image: /images/contaminants/silicone-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: surgical-marking
-    title: Surgical Marking
-    url: /contaminants/surgical-marking
-    image: /images/contaminants/surgical-marking.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: teflon-residue
-    title: Teflon Residue
-    url: /contaminants/teflon-residue
-    image: /images/contaminants/teflon-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: thread-locker
-    title: Thread Locker
-    url: /contaminants/thread-locker
-    image: /images/contaminants/thread-locker.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: tree-sap
-    title: Tree Sap
-    url: /contaminants/tree-sap
-    image: /images/contaminants/tree-sap.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: water-stain
-    title: Water Stain
-    url: /contaminants/water-stain
-    image: /images/contaminants/water-stain.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: wax-buildup
-    title: Wax Buildup
-    url: /contaminants/wax-buildup
-    image: /images/contaminants/wax-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds:
-  - id: carbon-monoxide-compound
-    title: Carbon Monoxide
-    url: /compounds/carbon-monoxide
-    image: /images/compounds/carbon-monoxide.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Incomplete combustion of organic adhesives
-    exposure_risk: high
-  - id: acetaldehyde-compound
-    title: Acetaldehyde
-    url: /compounds/acetaldehyde
-    image: /images/compounds/acetaldehyde.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Decomposition of vinyl and acrylic adhesives
-    exposure_risk: moderate
-  - id: hydrogen-chloride-compound
-    title: Hydrogen Chloride
-    url: /compounds/hydrogen-chloride
-    image: /images/compounds/hydrogen-chloride.jpg
-    frequency: occasional
-    severity: moderate
-    typical_context: Some adhesives contain chlorinated compounds
-    exposure_risk: moderate
-  - id: toluene-compound
-    title: Toluene
-    url: /compounds/toluene
-    image: /images/compounds/toluene.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Release of toluene from adhesive formulations
-    exposure_risk: moderate
-  - id: formaldehyde-compound
-    title: Formaldehyde
-    url: /compounds/formaldehyde
-    image: /images/compounds/formaldehyde.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Thermal breakdown of formaldehyde-based adhesives
-    exposure_risk: moderate
-  - id: hydrogen-cyanide-compound
-    title: Hydrogen Cyanide
-    url: /compounds/hydrogen-cyanide
-    image: /images/compounds/hydrogen-cyanide.jpg
-    frequency: occasional
-    severity: moderate
-    typical_context: Breakdown of cyanoacrylate adhesives
-    exposure_risk: moderate
-  - id: carbon-dioxide-compound
-    title: Carbon Dioxide
-    url: /compounds/carbon-dioxide
-    image: /images/compounds/carbon-dioxide.jpg
-    frequency: very_common
-    severity: low
-    typical_context: Complete combustion of adhesives
-    exposure_risk: low
-  - id: vocs-compound
-    title: Volatile Organic Compounds
-    url: /compounds/vocs
-    image: /images/compounds/vocs.jpg
-    frequency: very_common
-    severity: moderate
-    typical_context: Release of adhesive solvents
-    exposure_risk: moderate
-  - id: nitrogen-oxides-compound
-    title: Nitrogen Oxides
-    url: /compounds/nitrogen-oxides
-    image: /images/compounds/nitrogen-oxides.jpg
-    frequency: common
-    severity: low
-    typical_context: Formation from atmospheric nitrogen at high temperatures
-    exposure_risk: low
-  - id: iron-oxide-compound
-    title: Iron Oxide Fume
-    url: /compounds/iron-oxide
-    image: /images/compounds/iron-oxide.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Iron oxide layer from heat treatment
-    exposure_risk: high
-  - id: ammonia-compound
-    title: Ammonia
-    url: /compounds/ammonia
-    image: /images/compounds/ammonia.jpg
-    frequency: occasional
-    severity: low
-    typical_context: Breakdown of proteins
-    exposure_risk: low
-  - id: benzoapyrene-compound
-    title: Benzo[a]pyrene
-    url: /compounds/benzoapyrene
-    image: /images/compounds/benzoapyrene.jpg
-    frequency: common
-    severity: high
-    typical_context: Pre-existing from incomplete combustion
-    exposure_risk: high
-  - id: pahs-compound
-    title: Polycyclic Aromatic Hydrocarbons
-    url: /compounds/pahs
-    image: /images/compounds/pahs.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Vaporization and reformation of existing PAHs
-    exposure_risk: high
-  - id: chromium-vi-compound
-    title: Hexavalent Chromium
-    url: /compounds/chromium-vi
-    image: /images/compounds/chromium-vi.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Oxidation of chromium creates Cr(VI)
-    exposure_risk: high
-  - id: zinc-oxide-compound
-    title: Zinc Oxide
-    url: /compounds/zinc-oxide
-    image: /images/compounds/zinc-oxide.jpg
-    frequency: occasional
-    severity: low
-    typical_context: Zinc oxide pigments in paint
-    exposure_risk: low
-  - id: benzene-compound
-    title: Benzene
-    url: /compounds/benzene
-    image: /images/compounds/benzene.jpg
-    frequency: common
-    severity: high
-    typical_context: Thermal breakdown of aromatic paint solvents
-    exposure_risk: high
-  - id: styrene-compound
-    title: Styrene
-    url: /compounds/styrene
-    image: /images/compounds/styrene.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Thermal depolymerization of polystyrene
-    exposure_risk: high
-  - id: phosgene-compound
-    title: Phosgene
-    url: /compounds/phosgene
-    image: /images/compounds/phosgene.jpg
-    frequency: rare
-    severity: high
-    typical_context: Thermal breakdown of certain chlorinated plastics
-    exposure_risk: high
-  - id: acrolein-compound
-    title: Acrolein
-    url: /compounds/acrolein
-    image: /images/compounds/acrolein.jpg
-    frequency: occasional
-    severity: moderate
-    typical_context: Pyrolysis of certain polymers
-    exposure_risk: moderate
-  - id: sulfur-dioxide-compound
-    title: Sulfur Dioxide
-    url: /compounds/sulfur-dioxide
-    image: /images/compounds/sulfur-dioxide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Vulcanized rubber contains sulfur compounds
-    exposure_risk: moderate
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: stainless-steel-laser-cleaning Laser Cleaning Settings
-settings_description: We've found stainless steel cleans smoothly with laser, unlike more brittle carbon steels. Its tough surface holds up well under pulses. We start low on power to strip oxides without scratching. Watch out mid-process—too much heat dulls that shiny finish. Adjust speed up if buildup resists. This keeps corrosion resistance intact for food or marine jobs.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Ferrous
-  href: /materials/metal/ferrous
-- label: stainless-steel-laser-cleaning
-  href: /materials/stainless-steel-settings
-images:
-  hero:
-    alt: Stainless Steel surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/stainless-steel-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Stainless Steel surface after laser cleaning showing detailed surface structure
-    url: /images/material/stainless-steel-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 4.0
-    unit: mm²/s
-  thermalConductivity:
-    value: 16.2
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1700
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 5
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.5
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.8
-    max: 4.0
-    unit: J/cm²
-  thermalShockResistance:
-    value: 2.5
-    unit: K
-  reflectivity:
-    value: 0.65
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: High thermal conductivity and heat spread
-    severity: medium
-    property_value: 4-400 W/(m·K) depending on metal
-    impact: Heat spreads rapidly causing large heat-affected zones
-    solutions:
-    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-    - Increase scan speed to minimize dwell time
-    - Apply cooling between passes for thick sections
-    challenge_id: high_thermal_conductivity_and_heat_spread
-  - challenge: Melting and heat-affected zone formation
-    severity: high
-    threshold_range: 660°C (Al) to 3422°C (W)
-    impact: Substrate melting or microstructural changes in heat-affected zone
-    solutions:
-    - Stay below 70% of melting temperature
-    - Use pulse mode with adequate cooling time
-    - Monitor for surface discoloration indicating oxidation
-    challenge_id: melting_and_heat_affected_zone_formation
-  surface_characteristics:
-  - challenge: High reflectivity
-    severity: high
-    reflectivity_range: 60-95% at 1064nm for polished metals
-    impact: Most laser energy reflected, requiring higher power; safety hazard
-    solutions:
-    - Use shorter wavelengths (355nm UV) for better absorption
-    - Increase power density but monitor for thermal damage
-    - Ensure proper beam containment and safety measures
-    - Surface oxidation/roughness improves absorption
-    challenge_id: high_reflectivity
-  - challenge: Surface finish variations
-    severity: medium
-    impact: Polished surfaces reflect more, rough surfaces absorb better
-    solutions:
-    - Adjust power based on surface condition
-    - Test parameters on similar finish samples
-    - Polished surfaces need 20-40% more power
-    challenge_id: surface_finish_variations
-  contamination_challenges:
-  - challenge: Rust and oxide layer removal
-    severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
-    solutions:
-    - First pass at higher power (100-120W) to remove bulk oxide
-    - Second pass at lower power (60-80W) for final cleaning
-    - Monitor for base metal exposure to avoid over-processing
-    challenge_id: rust_and_oxide_layer_removal
-  - challenge: Oil and grease removal
-    severity: low
-    impact: Organic contaminants vaporize easily but can redeposit
-    solutions:
-    - Use fume extraction to prevent redeposition
-    - Higher scan speeds (3000-5000 mm/s) for thin films
-    - Chemical pre-cleaning for heavy contamination
-    challenge_id: oil_and_grease_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:02.805820'
+domain: settings
+datePublished: '2025-12-16T14:42:51.851935'
+dateModified: '2025-12-16T14:42:51.851935'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Stainless Steel oxide layer removal
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-infrared wavelength optimized for Stainless Steel absorption
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise cleaning resolution
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning with minimal heat accumulation
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective contaminant removal without substrate
+            damage
+        - - unit
+          - J/cm²
+        - - value
+          - 5.1
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for controlled ablation of surface contaminants
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning coverage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform cleaning without excessive processing
+        - - unit
+          - '%'
+        - - value
+          - 50
+  - - dwellTime
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Effective dwell time per spot for contaminant ablation
+        - - unit
+          - μs
+        - - value
+          - 100

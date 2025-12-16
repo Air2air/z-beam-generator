@@ -1,145 +1,78 @@
-id: dysprosium-settings
-name: dysprosium-laser-cleaning
+name: Dysprosium
 slug: dysprosium-settings
-category: rare-earth
-subcategory: lanthanide
-domain_linkages: {}
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: dysprosium-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning Dysprosium, we typically begin with a gentle power setup to handle its high reflectivity. This shiny surface bounces most energy away, so start low to build absorption gradually. We've found that keeps the dense material from overheating locally, given its poor heat spreading. Watch out mid-process for uneven spots—adjust scan speed slower there to avoid pitting. Finish with multiple light passes. This brings back the finish without warping its tough structure.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Rare-Earth
-  href: /materials/rare-earth
-- label: Lanthanide
-  href: /materials/rare-earth/lanthanide
-- label: dysprosium-laser-cleaning
-  href: /materials/dysprosium-settings
-images:
-  hero:
-    alt: Dysprosium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/dysprosium-laser-cleaning-hero.jpg
-  micro:
-    alt: Dysprosium microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/dysprosium-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 7.4
-    unit: mm²/s
-  thermalConductivity:
-    value: 10.7
-    unit: W/(m·K)
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 0.42
-    unit: J/cm²
-  ablationThreshold:
-    value: 0.82
-    unit: J/cm²
-  reflectivity:
-    value: 0.925
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Rapid oxidation and pyrophoricity
-    severity: critical
-    threshold_temperature: Above 150-300°C causes spontaneous ignition in air
-    impact: Rare-earth metals oxidize rapidly forming insulating oxide layer; fine particles pyrophoric
-    solutions:
-    - Process in inert atmosphere (argon or nitrogen) or high vacuum
-    - Use pulse mode with 10-15 second cooling to prevent sustained heating
-    - Keep surface temperature below 150°C monitored with IR camera
-    - Have fire suppression ready for pyrophoric materials
-    - Immediate passivation after cleaning to prevent further oxidation
-    challenge_id: rapid_oxidation_and_pyrophoricity
-  - challenge: Variable thermal properties across series
-    severity: medium
-    property_value: 3-8 mm²/s thermal diffusivity (2.7x variation)
-    impact: Different lanthanides require different cooling strategies
-    solutions:
-    - Light lanthanides (La, Ce, Pr) require more cooling time
-    - Heavy lanthanides (Dy, Er, Yb) tolerate slightly higher power
-    - Adjust parameters by specific element, not just category
-    - Test on small area to determine optimal cooling requirements
-    challenge_id: variable_thermal_properties_across_series
-  surface_characteristics:
-  - challenge: Oxide layer formation and removal
-    severity: high
-    impact: Surface oxidizes within seconds to minutes forming opaque layer
-    solutions:
-    - Clean in controlled atmosphere to prevent immediate reoxidation
-    - Multiple passes may be required as oxide reforms between passes
-    - Oxide removal threshold (1-3 J/cm²) lower than metal substrate (2-5 J/cm²)
-    - Chemical passivation immediately after cleaning
-    - Store in inert atmosphere or vacuum after processing
-    challenge_id: oxide_layer_formation_and_removal
-  - challenge: Magnetic property sensitivity
-    severity: high
-    impact: Heating above Curie temperature permanently alters magnetic properties
-    solutions:
-    - Monitor temperature strictly; Nd magnets lose magnetism above 310-400°C
-    - Use ultrashort pulses (picosecond) for minimal heat-affected zone
-    - Reduce power by 60-70% compared to non-magnetic metals
-    - Test magnetic properties before and after cleaning to verify preservation
-    challenge_id: magnetic_property_sensitivity
-  contamination_challenges:
-  - challenge: High-value material recovery
-    severity: medium
-    impact: Rare-earth elements extremely valuable; contamination removal must preserve material
-    solutions:
-    - First pass 15W very slow (500 mm/s) for assessment
-    - Gradual power increase (15W → 25W → 35W) across multiple passes
-    - Collect all ablated material for potential recovery
-    - Document process for traceability and quality control
-    - Consider chemical pre-treatment to reduce laser exposure
-    challenge_id: high_value_material_recovery
-  - challenge: Strategic material handling requirements
-    severity: medium
-    impact: Export-controlled materials require documentation and secure handling
-    solutions:
-    - Clean in controlled access facility
-    - Document all processing parameters and material quantities
-    - Secure storage of cleaned materials
-    - Follow applicable export control regulations
-    - Chain of custody documentation for high-value materials
-    challenge_id: strategic_material_handling_requirements
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:58.295271'
+domain: settings
+datePublished: '2025-12-16T14:42:51.543726'
+dateModified: '2025-12-16T14:42:51.543726'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Dysprosium oxide removal without substrate damage
+        - - unit
+          - W
+        - - value
+          - 95
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength optimized for Dysprosium's absorption characteristics
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise cleaning control
+        - - unit
+          - μm
+        - - value
+          - 80
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for continuous cleaning coverage
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Minimum fluence required for effective Dysprosium oxide removal
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for efficient oxide layer ablation
+        - - unit
+          - ns
+        - - value
+          - 12
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for thorough cleaning
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for complete surface coverage
+        - - unit
+          - '%'
+        - - value
+          - 50

@@ -1,289 +1,83 @@
-id: ash-settings
-name: ash-laser-cleaning
+name: Ash
 slug: ash-settings
-category: wood
-subcategory: hardwood
-domain_linkages:
-  related_contaminants:
-  - id: adhesive-residue
-    title: Adhesive Residue
-    url: /contaminants/adhesive-residue
-    image: /images/contaminants/adhesive-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: algae-growth
-    title: Algae Growth
-    url: /contaminants/algae-growth
-    image: /images/contaminants/algae-growth.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lead-paint
-    title: Lead Paint
-    url: /contaminants/lead-paint
-    image: /images/contaminants/lead-paint.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mold-mildew
-    title: Mold Mildew
-    url: /contaminants/mold-mildew
-    image: /images/contaminants/mold-mildew.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: paint-residue
-    title: Paint Residue
-    url: /contaminants/paint-residue
-    image: /images/contaminants/paint-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: wax-buildup
-    title: Wax Buildup
-    url: /contaminants/wax-buildup
-    image: /images/contaminants/wax-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds:
-  - id: carbon-monoxide-compound
-    title: Carbon Monoxide
-    url: /compounds/carbon-monoxide
-    image: /images/compounds/carbon-monoxide.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Incomplete combustion of organic adhesives
-    exposure_risk: high
-  - id: acetaldehyde-compound
-    title: Acetaldehyde
-    url: /compounds/acetaldehyde
-    image: /images/compounds/acetaldehyde.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Decomposition of vinyl and acrylic adhesives
-    exposure_risk: moderate
-  - id: hydrogen-chloride-compound
-    title: Hydrogen Chloride
-    url: /compounds/hydrogen-chloride
-    image: /images/compounds/hydrogen-chloride.jpg
-    frequency: occasional
-    severity: moderate
-    typical_context: Some adhesives contain chlorinated compounds
-    exposure_risk: moderate
-  - id: toluene-compound
-    title: Toluene
-    url: /compounds/toluene
-    image: /images/compounds/toluene.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Release of toluene from adhesive formulations
-    exposure_risk: moderate
-  - id: formaldehyde-compound
-    title: Formaldehyde
-    url: /compounds/formaldehyde
-    image: /images/compounds/formaldehyde.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Thermal breakdown of formaldehyde-based adhesives
-    exposure_risk: moderate
-  - id: hydrogen-cyanide-compound
-    title: Hydrogen Cyanide
-    url: /compounds/hydrogen-cyanide
-    image: /images/compounds/hydrogen-cyanide.jpg
-    frequency: occasional
-    severity: moderate
-    typical_context: Breakdown of cyanoacrylate adhesives
-    exposure_risk: moderate
-  - id: carbon-dioxide-compound
-    title: Carbon Dioxide
-    url: /compounds/carbon-dioxide
-    image: /images/compounds/carbon-dioxide.jpg
-    frequency: very_common
-    severity: low
-    typical_context: Complete combustion of adhesives
-    exposure_risk: low
-  - id: vocs-compound
-    title: Volatile Organic Compounds
-    url: /compounds/vocs
-    image: /images/compounds/vocs.jpg
-    frequency: very_common
-    severity: moderate
-    typical_context: Release of adhesive solvents
-    exposure_risk: moderate
-  - id: nitrogen-oxides-compound
-    title: Nitrogen Oxides
-    url: /compounds/nitrogen-oxides
-    image: /images/compounds/nitrogen-oxides.jpg
-    frequency: occasional
-    severity: low
-    typical_context: Nitrogen from some paint formulations
-    exposure_risk: low
-  - id: zinc-oxide-compound
-    title: Zinc Oxide
-    url: /compounds/zinc-oxide
-    image: /images/compounds/zinc-oxide.jpg
-    frequency: occasional
-    severity: low
-    typical_context: Zinc oxide pigments in paint
-    exposure_risk: low
-  - id: chromium-vi-compound
-    title: Hexavalent Chromium
-    url: /compounds/chromium-vi
-    image: /images/compounds/chromium-vi.jpg
-    frequency: occasional
-    severity: high
-    typical_context: Chromate pigments in some paints
-    exposure_risk: high
-  - id: pahs-compound
-    title: Polycyclic Aromatic Hydrocarbons
-    url: /compounds/pahs
-    image: /images/compounds/pahs.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Incomplete combustion of organic binders
-    exposure_risk: moderate
-  - id: benzene-compound
-    title: Benzene
-    url: /compounds/benzene
-    image: /images/compounds/benzene.jpg
-    frequency: common
-    severity: high
-    typical_context: Thermal breakdown of aromatic paint solvents
-    exposure_risk: high
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: ash-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning Ash, start with controlled power levels to leverage its strong laser absorption, which removes surface contaminants efficiently without deep penetration. This property works well because Ash's open structure allows heat to spread evenly, restoring wood grain in applications like furniture refinishing or heritage pieces. Make sure you adjust scan speeds slower during initial passes, as the material's moderate density can lead to uneven heating if rushed—watch for charring on porous areas. Reduce overlap ratios to avoid overexposure, revealing clean surfaces while preserving the wood's natural flexibility for further handling.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/wood
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: ash-laser-cleaning
-  href: /materials/ash-settings
-images:
-  hero:
-    alt: Ash surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/ash-laser-cleaning-hero.jpg
-  micro:
-    alt: Ash microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/ash-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.14
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.15
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 550
-    unit: K
-    type: charring
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 10
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.15
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.38
-    max: 8.0
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.5
-    unit: K
-  reflectivity:
-    value: 0.082
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Charring and carbonization
-    severity: high
-    threshold_temperature: 250-300°C
-    impact: Wood chars at low temperatures leaving black marks and structural damage
-    solutions:
-    - Use pulse mode with 2-5 second cooling between passes
-    - Reduce power by 30-40% compared to metals
-    - Increase scan speed to reduce dwell time
-    - Monitor surface for discoloration; stop if browning occurs
-    challenge_id: charring_and_carbonization
-  - challenge: Slow thermal diffusivity
-    severity: medium
-    property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
-    impact: Heat accumulates rapidly causing thermal damage zones
-    solutions:
-    - Increase cooling time between passes
-    - Use lower repetition rates (<20 kHz)
-    - Apply crosshatch patterns to distribute heat
-    challenge_id: slow_thermal_diffusivity
-  surface_characteristics:
-  - challenge: Grain direction sensitivity
-    severity: medium
-    variation: 20-40% absorption variation by grain orientation
-    impact: Laser absorption varies significantly with grain direction
-    solutions:
-    - Scan parallel to grain for consistent results
-    - Use crosshatch pattern (0° and 90°) for uniform cleaning
-    - Test on scrap to determine optimal scan direction
-    challenge_id: grain_direction_sensitivity
-  - challenge: Porous structure with deep contamination
-    severity: medium
-    porosity_range: 12-65% (softwoods highest)
-    impact: Contaminants penetrate deep into wood structure
-    solutions:
-    - Multiple passes with progressive power increase
-    - Reduce scan speed for deeper penetration (600 mm/s)
-    - Chemical pre-treatment for deep-seated contamination
-    challenge_id: porous_structure_with_deep_contamination
-  contamination_challenges:
-  - challenge: Varnish and coating removal
-    severity: medium
-    impact: Thick coatings require multiple passes and generate smoke/fumes
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 60W slow (800 mm/s) for residue
-    - Use fume extraction to prevent redeposition
-    - Limit to 2-3 passes maximum to avoid substrate damage
-    challenge_id: varnish_and_coating_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:56.368559'
+domain: settings
+datePublished: '2025-12-16T14:42:51.456929'
+dateModified: '2025-12-16T14:42:51.456929'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for efficient Ash removal without substrate damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-infrared wavelength optimized for Ash absorption and minimal substrate
+            interaction
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for effective Ash removal resolution and processing
+            efficiency
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for continuous cleaning coverage with thermal
+            recovery
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence level sufficient for Ash ablation while preserving underlying
+            substrate
+        - - unit
+          - J/cm²
+        - - value
+          - 5.1
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for controlled Ash ablation and thermal management
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform Ash removal and process throughput
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete Ash removal with process control
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform cleaning coverage without excessive thermal
+            buildup
+        - - unit
+          - '%'
+        - - value
+          - 50

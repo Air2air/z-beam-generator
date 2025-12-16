@@ -1,0 +1,92 @@
+name: PVC
+slug: pvc-settings
+domain_linkages: !!python/object/apply:collections.OrderedDict
+- - - contaminants
+    - - adhesive-residue-contamination
+      - chemical-stains-contamination
+      - paint-residue-contamination
+      - uv-chalking-contamination
+domain: settings
+datePublished: '2025-12-16T14:42:52.046210'
+dateModified: '2025-12-16T14:42:52.046210'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for PVC cleaning without thermal damage
+        - - unit
+          - W
+        - - value
+          - 40
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength for optimal PVC absorption and minimal substrate damage
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise PVC cleaning
+        - - unit
+          - μm
+        - - value
+          - 70
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient PVC removal
+        - - unit
+          - kHz
+        - - value
+          - 35
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective PVC ablation
+        - - unit
+          - J/cm²
+        - - value
+          - 1.2
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for controlled PVC ablation
+        - - unit
+          - ns
+        - - value
+          - 8
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform PVC removal
+        - - unit
+          - mm/s
+        - - value
+          - 400
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete PVC removal
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform PVC cleaning
+        - - unit
+          - '%'
+        - - value
+          - 40
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Energy density for PVC contaminant removal
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5

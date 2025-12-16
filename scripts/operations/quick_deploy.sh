@@ -48,7 +48,7 @@ python3 << 'EOF'
 from export.core.trivial_exporter import TrivialFrontmatterExporter
 exporter = TrivialFrontmatterExporter()
 print("Exporting 153 materials...")
-exporter.export_all()
+exporter.export_all(force=True)
 print("✅ Materials exported (NO API calls made)")
 EOF
 
@@ -59,7 +59,7 @@ python3 << 'EOF'
 from export.settings.trivial_exporter import TrivialSettingsExporter
 exporter = TrivialSettingsExporter()
 print("Exporting 153 settings...")
-exporter.export_all()
+exporter.export_all(force=True)
 print("✅ Settings exported (NO API calls made)")
 EOF
 
@@ -70,7 +70,7 @@ python3 << 'EOF'
 from export.contaminants.trivial_exporter import TrivialContaminantsExporter
 exporter = TrivialContaminantsExporter()
 print("Exporting 98 contaminants...")
-exporter.export_all()
+exporter.export_all(force=True)
 print("✅ Contaminants exported (NO API calls made)")
 EOF
 
@@ -81,7 +81,7 @@ python3 << 'EOF'
 from export.compounds.trivial_exporter import CompoundExporter
 exporter = CompoundExporter()
 print("Exporting 25 compounds...")
-exporter.export_all()
+exporter.export_all(force=True)
 print("✅ Compounds exported (NO API calls made)")
 EOF
 

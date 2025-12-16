@@ -1,143 +1,120 @@
-id: brass-settings
-name: brass-laser-cleaning
+name: Brass
 slug: brass-settings
-category: metal
-subcategory: non-ferrous
-domain_linkages: {}
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: brass-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning brass, you'll want to tackle its high reflectivity first, since the beam often bounces off the surface, absorbing little energy and slowing the process. Make sure you start with higher power levels to overcome this, but watch out mid-job for overheating spots that could warp delicate parts due to its solid heat spreading. Adjust by slowing the scan speed and adding passes, which clears tarnish cleanly without scratching the finish.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Non Ferrous
-  href: /materials/metal/non-ferrous
-- label: brass-laser-cleaning
-  href: /materials/brass-settings
-images:
-  hero:
-    alt: Brass surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/brass-laser-cleaning-hero.jpg
-  micro:
-    alt: Brass microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/brass-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 33.0
-    unit: mm²/s
-  thermalConductivity:
-    value: 109.0
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1193.15
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 0.45
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.1
-    unit: J/cm²
-  thermalShockResistance:
-    value: 180.0
-    unit: K
-  reflectivity:
-    value: 0.94
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: High thermal conductivity and heat spread
-    severity: medium
-    property_value: 4-400 W/(m·K) depending on metal
-    impact: Heat spreads rapidly causing large heat-affected zones
-    solutions:
-    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-    - Increase scan speed to minimize dwell time
-    - Apply cooling between passes for thick sections
-    challenge_id: high_thermal_conductivity_and_heat_spread
-  - challenge: Melting and heat-affected zone formation
-    severity: high
-    threshold_range: 660°C (Al) to 3422°C (W)
-    impact: Substrate melting or microstructural changes in heat-affected zone
-    solutions:
-    - Stay below 70% of melting temperature
-    - Use pulse mode with adequate cooling time
-    - Monitor for surface discoloration indicating oxidation
-    challenge_id: melting_and_heat_affected_zone_formation
-  surface_characteristics:
-  - challenge: High reflectivity
-    severity: high
-    reflectivity_range: 60-95% at 1064nm for polished metals
-    impact: Most laser energy reflected, requiring higher power; safety hazard
-    solutions:
-    - Use shorter wavelengths (355nm UV) for better absorption
-    - Increase power density but monitor for thermal damage
-    - Ensure proper beam containment and safety measures
-    - Surface oxidation/roughness improves absorption
-    challenge_id: high_reflectivity
-  - challenge: Surface finish variations
-    severity: medium
-    impact: Polished surfaces reflect more, rough surfaces absorb better
-    solutions:
-    - Adjust power based on surface condition
-    - Test parameters on similar finish samples
-    - Polished surfaces need 20-40% more power
-    challenge_id: surface_finish_variations
-  contamination_challenges:
-  - challenge: Rust and oxide layer removal
-    severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
-    solutions:
-    - First pass at higher power (100-120W) to remove bulk oxide
-    - Second pass at lower power (60-80W) for final cleaning
-    - Monitor for base metal exposure to avoid over-processing
-    challenge_id: rust_and_oxide_layer_removal
-  - challenge: Oil and grease removal
-    severity: low
-    impact: Organic contaminants vaporize easily but can redeposit
-    solutions:
-    - Use fume extraction to prevent redeposition
-    - Higher scan speeds (3000-5000 mm/s) for thin films
-    - Chemical pre-cleaning for heavy contamination
-    challenge_id: oil_and_grease_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:57.011108'
+domain_linkages: !!python/object/apply:collections.OrderedDict
+- - - contaminants
+    - - adhesive-residue-contamination
+      - algae-growth-contamination
+      - battery-corrosion-contamination
+      - biological-stains-contamination
+      - bronze-patina-contamination
+      - carbon-soot-contamination
+      - chemical-stains-contamination
+      - coolant-scale-contamination
+      - copper-patina-contamination
+      - copper-plating-contamination
+      - cutting-fluid-contamination
+      - electroplating-residue-contamination
+      - epoxy-residue-contamination
+      - fertilizer-residue-contamination
+      - fuel-varnish-contamination
+      - gold-plating-contamination
+      - graffiti-paint-contamination
+      - graphite-marks-contamination
+      - ink-stains-contamination
+      - insect-residue-contamination
+      - laser-marking-contamination
+      - lime-scale-contamination
+      - mercury-contamination
+      - metal-polish-contamination
+      - mineral-deposits-contamination
+      - paint-residue-contamination
+      - pesticide-residue-contamination
+      - plastic-residue-contamination
+      - pollen-deposit-contamination
+      - radioactive-contamination
+      - rubber-residue-contamination
+      - salt-residue-contamination
+      - scale-buildup-contamination
+      - silicone-buildup-contamination
+      - silver-plating-contamination
+      - solder-flux-contamination
+      - tin-plating-contamination
+      - tree-sap-contamination
+      - water-stain-contamination
+      - wax-buildup-contamination
+domain: settings
+datePublished: '2025-12-16T14:42:51.483803'
+dateModified: '2025-12-16T14:42:51.483803'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Brass oxide removal without substrate damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength for optimal Brass absorption and minimal reflectivity
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise cleaning resolution
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning with thermal management
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective contaminant removal on Brass
+        - - unit
+          - J/cm²
+        - - value
+          - 5.1
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for controlled ablation of surface contaminants
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning coverage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete oxide layer removal
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform cleaning without excessive heat accumulation
+        - - unit
+          - '%'
+        - - value
+          - 50

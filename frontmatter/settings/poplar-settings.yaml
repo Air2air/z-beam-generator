@@ -1,137 +1,89 @@
-id: poplar-settings
-name: poplar-laser-cleaning
+name: Poplar
 slug: poplar-settings
-category: wood
-subcategory: hardwood
-domain_linkages: {}
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: poplar-laser-cleaning Laser Cleaning Settings
-settings_description: 'When laser cleaning Poplar, compare it to denser hardwoods like oak. Poplar''s lighter structure sets it apart. This lower density speeds up the process. It exposes contaminants more easily. But higher porosity changes your approach. You must reduce power to prevent charring. Start with shorter passes on the surface. This restores the wood without deep damage. Unlike oak, Poplar absorbs energy quickly. So adjust overlap to avoid uneven heating. Make sure you scan at steady speeds. This improves cleaning on delicate grains. Poplar suits cultural heritage work well. It reveals fine details in furniture or instruments. But end with caution: Overlap too much, and it warps the soft fibers.'
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/wood
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: poplar-laser-cleaning
-  href: /materials/poplar-settings
-images:
-  hero:
-    alt: Poplar surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/poplar-laser-cleaning-hero.jpg
-  micro:
-    alt: Poplar microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/poplar-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.134
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.13
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 550
-    unit: K
-    type: charring
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 2.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.3
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.2
-    unit: K
-  reflectivity:
-    value: 0.38
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Charring and carbonization
-    severity: high
-    threshold_temperature: 250-300°C
-    impact: Wood chars at low temperatures leaving black marks and structural damage
-    solutions:
-    - Use pulse mode with 2-5 second cooling between passes
-    - Reduce power by 30-40% compared to metals
-    - Increase scan speed to reduce dwell time
-    - Monitor surface for discoloration; stop if browning occurs
-    challenge_id: charring_and_carbonization
-  - challenge: Slow thermal diffusivity
-    severity: medium
-    property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
-    impact: Heat accumulates rapidly causing thermal damage zones
-    solutions:
-    - Increase cooling time between passes
-    - Use lower repetition rates (<20 kHz)
-    - Apply crosshatch patterns to distribute heat
-    challenge_id: slow_thermal_diffusivity
-  surface_characteristics:
-  - challenge: Grain direction sensitivity
-    severity: medium
-    variation: 20-40% absorption variation by grain orientation
-    impact: Laser absorption varies significantly with grain direction
-    solutions:
-    - Scan parallel to grain for consistent results
-    - Use crosshatch pattern (0° and 90°) for uniform cleaning
-    - Test on scrap to determine optimal scan direction
-    challenge_id: grain_direction_sensitivity
-  - challenge: Porous structure with deep contamination
-    severity: medium
-    porosity_range: 12-65% (softwoods highest)
-    impact: Contaminants penetrate deep into wood structure
-    solutions:
-    - Multiple passes with progressive power increase
-    - Reduce scan speed for deeper penetration (600 mm/s)
-    - Chemical pre-treatment for deep-seated contamination
-    challenge_id: porous_structure_with_deep_contamination
-  contamination_challenges:
-  - challenge: Varnish and coating removal
-    severity: medium
-    impact: Thick coatings require multiple passes and generate smoke/fumes
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 60W slow (800 mm/s) for residue
-    - Use fume extraction to prevent redeposition
-    - Limit to 2-3 passes maximum to avoid substrate damage
-    challenge_id: varnish_and_coating_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:01.308278'
+domain: settings
+datePublished: '2025-12-16T14:42:51.751731'
+dateModified: '2025-12-16T14:42:51.751731'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Poplar surface cleaning without charring
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-infrared wavelength for optimal Poplar absorption and minimal subsurface
+            damage
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise cleaning control on Poplar grain structure
+        - - unit
+          - μm
+        - - value
+          - 100
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for continuous cleaning coverage on Poplar surfaces
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective contaminant removal without wood substrate
+            damage
+        - - unit
+          - J/cm²
+        - - value
+          - 1.2
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for efficient contaminant removal with minimal
+            wood damage
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for efficient Poplar surface cleaning
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete contaminant removal from Poplar
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform cleaning coverage on Poplar surfaces
+        - - unit
+          - '%'
+        - - value
+          - 50
+  - - dwellTime
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal dwell time per spot for effective cleaning without thermal accumulation
+        - - unit
+          - μs
+        - - value
+          - 100

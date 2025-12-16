@@ -1,145 +1,94 @@
-id: praseodymium-settings
-name: praseodymium-laser-cleaning
+name: Praseodymium
 slug: praseodymium-settings
-category: rare-earth
-subcategory: lanthanide
-domain_linkages: {}
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: praseodymium-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning praseodymium, its high reflectivity stands out compared to denser rare-earth metals like neodymium, which absorb energy more readily. This property tends to scatter the laser beam, so the process works best when you adjust settings to increase dwell time and reduce scan speed, allowing gradual removal of surface contaminants without scattering energy inefficiently. I've seen that praseodymium's low thermal conductivity keeps heat localized, much like other lanthanides but with less overall spread, which improves precision on delicate aerospace components but requires careful monitoring to avoid localized overheating in the middle of a pass. Watch out for its softness relative to harder alloys in automotive applications; pushing too high a power can deform the surface, so start with multiple low-energy passes to restore cleanliness while preserving integrity. This approach exposes underlying layers evenly, reducing oxidation risks during electronics
-  manufacturing.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Rare-Earth
-  href: /materials/rare-earth
-- label: Lanthanide
-  href: /materials/rare-earth/lanthanide
-- label: praseodymium-laser-cleaning
-  href: /materials/praseodymium-settings
-images:
-  hero:
-    alt: Praseodymium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/praseodymium-laser-cleaning-hero.jpg
-  micro:
-    alt: Praseodymium microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/praseodymium-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 13.08
-    unit: mm²/s
-  thermalConductivity:
-    value: 17.0
-    unit: W/(m·K)
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 1.85
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.85
-    unit: J/cm²
-  reflectivity:
-    value: 0.72
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Rapid oxidation and pyrophoricity
-    severity: critical
-    threshold_temperature: Above 150-300°C causes spontaneous ignition in air
-    impact: Rare-earth metals oxidize rapidly forming insulating oxide layer; fine particles pyrophoric
-    solutions:
-    - Process in inert atmosphere (argon or nitrogen) or high vacuum
-    - Use pulse mode with 10-15 second cooling to prevent sustained heating
-    - Keep surface temperature below 150°C monitored with IR camera
-    - Have fire suppression ready for pyrophoric materials
-    - Immediate passivation after cleaning to prevent further oxidation
-    challenge_id: rapid_oxidation_and_pyrophoricity
-  - challenge: Variable thermal properties across series
-    severity: medium
-    property_value: 3-8 mm²/s thermal diffusivity (2.7x variation)
-    impact: Different lanthanides require different cooling strategies
-    solutions:
-    - Light lanthanides (La, Ce, Pr) require more cooling time
-    - Heavy lanthanides (Dy, Er, Yb) tolerate slightly higher power
-    - Adjust parameters by specific element, not just category
-    - Test on small area to determine optimal cooling requirements
-    challenge_id: variable_thermal_properties_across_series
-  surface_characteristics:
-  - challenge: Oxide layer formation and removal
-    severity: high
-    impact: Surface oxidizes within seconds to minutes forming opaque layer
-    solutions:
-    - Clean in controlled atmosphere to prevent immediate reoxidation
-    - Multiple passes may be required as oxide reforms between passes
-    - Oxide removal threshold (1-3 J/cm²) lower than metal substrate (2-5 J/cm²)
-    - Chemical passivation immediately after cleaning
-    - Store in inert atmosphere or vacuum after processing
-    challenge_id: oxide_layer_formation_and_removal
-  - challenge: Magnetic property sensitivity
-    severity: high
-    impact: Heating above Curie temperature permanently alters magnetic properties
-    solutions:
-    - Monitor temperature strictly; Nd magnets lose magnetism above 310-400°C
-    - Use ultrashort pulses (picosecond) for minimal heat-affected zone
-    - Reduce power by 60-70% compared to non-magnetic metals
-    - Test magnetic properties before and after cleaning to verify preservation
-    challenge_id: magnetic_property_sensitivity
-  contamination_challenges:
-  - challenge: High-value material recovery
-    severity: medium
-    impact: Rare-earth elements extremely valuable; contamination removal must preserve material
-    solutions:
-    - First pass 15W very slow (500 mm/s) for assessment
-    - Gradual power increase (15W → 25W → 35W) across multiple passes
-    - Collect all ablated material for potential recovery
-    - Document process for traceability and quality control
-    - Consider chemical pre-treatment to reduce laser exposure
-    challenge_id: high_value_material_recovery
-  - challenge: Strategic material handling requirements
-    severity: medium
-    impact: Export-controlled materials require documentation and secure handling
-    solutions:
-    - Clean in controlled access facility
-    - Document all processing parameters and material quantities
-    - Secure storage of cleaned materials
-    - Follow applicable export control regulations
-    - Chain of custody documentation for high-value materials
-    challenge_id: strategic_material_handling_requirements
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:01.442365'
+domain: settings
+datePublished: '2025-12-16T14:42:51.762708'
+dateModified: '2025-12-16T14:42:51.762708'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Praseodymium oxide removal
+        - - unit
+          - W
+        - - value
+          - 90
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal wavelength for Praseodymium absorption characteristics
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam spot diameter for Praseodymium surface processing
+        - - unit
+          - μm
+        - - value
+          - 80
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient Praseodymium cleaning
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Minimum fluence required for effective Praseodymium surface cleaning
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal energy density for controlled Praseodymium ablation
+        - - unit
+          - J/cm²
+        - - value
+          - 3.2
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal pulse duration for Praseodymium thermal management
+        - - unit
+          - ns
+        - - value
+          - 12
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform Praseodymium cleaning
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal number of passes for complete Praseodymium surface cleaning
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform Praseodymium processing
+        - - unit
+          - '%'
+        - - value
+          - 40
+  - - dwellTime
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal dwell time per spot for Praseodymium material interaction
+        - - unit
+          - μs
+        - - value
+          - 120

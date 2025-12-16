@@ -1,142 +1,79 @@
-id: urethane-composites-settings
-name: urethane-composites-laser-cleaning
+name: Urethane Composites
 slug: urethane-composites-settings
-category: composite
-subcategory: structural
-domain_linkages: {}
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: urethane-composites-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning urethane composites, we typically begin by selecting a moderate power level to leverage their high absorption, which efficiently removes surface contaminants without immediate deep penetration. This approach accounts for the material's low thermal conductivity, so heat stays localized and reduces the risk of underlying delamination in these layered structures. We've found that slower scan speeds with multiple overlapping passes restore the surface integrity effectively, as the flexibility of urethane prevents cracking under controlled exposure. Always monitor for excessive buildup, which can degrade the composite's durability if power exceeds safe thresholds.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composite
-- label: Structural
-  href: /materials/composite/structural
-- label: urethane-composites-laser-cleaning
-  href: /materials/urethane-composites-settings
-images:
-  hero:
-    alt: Urethane Composites surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/urethane-composites-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Urethane Composites surface after laser cleaning showing detailed surface structure
-    url: /images/material/urethane-composites-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.12
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.22
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 523
-    unit: K
-    type: decomposition
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 2.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.2
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.44
-    max: 2.0
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.2
-    unit: K
-  reflectivity:
-    value: 0.065
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Matrix degradation and delamination
-    severity: critical
-    threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
-    impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
-    solutions:
-    - Use pulse mode with 5-10 second cooling for polymer-matrix composites
-    - Reduce power by 40-50% compared to monolithic materials
-    - Monitor for discoloration, bubbling, or layer lifting
-    - Ceramic and metal-matrix composites tolerate higher power
-    challenge_id: matrix_degradation_and_delamination
-  - challenge: Anisotropic thermal properties
-    severity: high
-    property_value: 10-100x variation parallel vs perpendicular to fibers
-    impact: Heat conducts rapidly along fibers but poorly across layers
-    solutions:
-    - Scan parallel to fiber direction for best heat dissipation
-    - Use crosshatch pattern (0° and 90°) to identify fiber orientation
-    - Increase cooling time 2-3x when scanning perpendicular to fibers
-    - Carbon fiber composites require special attention due to electrical conductivity
-    challenge_id: anisotropic_thermal_properties
-  surface_characteristics:
-  - challenge: Fiber exposure and damage
-    severity: high
-    impact: Aggressive cleaning exposes or damages reinforcing fibers
-    solutions:
-    - Use low energy density (0.5-2 J/cm²) to protect matrix
-    - Multiple gentle passes preferred over single aggressive pass
-    - Stop immediately if fibers become visible
-    - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
-    challenge_id: fiber_exposure_and_damage
-  - challenge: Surface finish variability
-    severity: medium
-    impact: Gel coat, paint, or protective layers alter absorption and damage threshold
-    solutions:
-    - Test on edge or hidden area first
-    - Coated surfaces may require 50-100W initial pass for coating removal
-    - Bare composite requires 30-50% lower power
-    - Adjust parameters when transitioning between coated and uncoated areas
-    challenge_id: surface_finish_variability
-  contamination_challenges:
-  - challenge: Resin-based contaminant removal
-    severity: medium
-    impact: Adhesives, sealants, and coatings chemically bond to matrix
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 50W slow (800 mm/s) for residue
-    - Chemical pre-treatment improves results for stubborn adhesives
-    - Monitor for matrix damage; stop if surface texture changes
-    challenge_id: resin_based_contaminant_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:04.249754'
+domain: settings
+datePublished: '2025-12-16T14:42:51.920983'
+dateModified: '2025-12-16T14:42:51.920983'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Urethane Composites cleaning without thermal
+            damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength optimized for Urethane absorption characteristics
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for effective cleaning resolution
+        - - unit
+          - μm
+        - - value
+          - 100
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning with thermal management
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for Urethane Composites ablation
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for controlled ablation of composite surface
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning coverage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform cleaning without excessive heating
+        - - unit
+          - '%'
+        - - value
+          - 50

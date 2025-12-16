@@ -1,0 +1,89 @@
+name: Quartz
+slug: quartz-settings
+domain_linkages: !!python/object/apply:collections.OrderedDict
+- - - contaminants
+    - - semiconductor-residue-contamination
+domain: settings
+datePublished: '2025-12-16T14:42:52.069277'
+dateModified: '2025-12-16T14:42:52.069277'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Moderate power for Quartz glass cleaning
+        - - unit
+          - W
+        - - value
+          - 60
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR or UV for quartz - consider transparency
+        - - unit
+          - nm
+        - - value
+          - 355
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Precision spot for optical quartz
+        - - unit
+          - μm
+        - - value
+          - 60
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Controlled rate for quartz
+        - - unit
+          - kHz
+        - - value
+          - 40
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence for surface contaminant removal
+        - - unit
+          - J/cm²
+        - - value
+          - 1.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Short pulse for quartz surface cleaning
+        - - unit
+          - ns
+        - - value
+          - 8
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Careful speed for optical surfaces
+        - - unit
+          - mm/s
+        - - value
+          - 350
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Gentle passes for quartz
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High overlap for uniform cleaning
+        - - unit
+          - '%'
+        - - value
+          - 50
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Moderate energy for quartz
+        - - unit
+          - J/cm²
+        - - value
+          - 3

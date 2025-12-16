@@ -1,0 +1,89 @@
+name: Carbide
+slug: carbide-settings
+domain_linkages: !!python/object/apply:collections.OrderedDict
+- - - contaminants
+    - - pvd-coating-contamination
+domain: settings
+datePublished: '2025-12-16T14:42:52.053865'
+dateModified: '2025-12-16T14:42:52.053865'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High power for hard Carbide ceramic cleaning
+        - - unit
+          - W
+        - - value
+          - 120
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength for carbide contaminant removal
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for Carbide cleaning
+        - - unit
+          - μm
+        - - value
+          - 80
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High repetition rate for efficient Carbide cleaning
+        - - unit
+          - kHz
+        - - value
+          - 60
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High fluence threshold for hard ceramic surface
+        - - unit
+          - J/cm²
+        - - value
+          - 4.0
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse for controlled ablation
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Moderate speed for thorough Carbide cleaning
+        - - unit
+          - mm/s
+        - - value
+          - 400
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Multiple passes for complete cleaning
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High overlap for uniform coverage
+        - - unit
+          - '%'
+        - - value
+          - 55
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High energy density for hard material
+        - - unit
+          - J/cm²
+        - - value
+          - 7

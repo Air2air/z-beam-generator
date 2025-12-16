@@ -1,142 +1,80 @@
-id: stucco-settings
-name: stucco-laser-cleaning
+name: Stucco
 slug: stucco-settings
-category: masonry
-subcategory: concrete
-domain_linkages: {}
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: stucco-laser-cleaning Laser Cleaning Settings
-settings_description: In our experience, the key with Stucco lies in its porous, cement-based structure that absorbs contaminants deeply while resisting heat buildup effectively during laser cleaning. We've found this makes it different from smoother masonry, so we typically start with controlled, low-intensity passes to gently lift surface grime without cracking the fragile matrix—watch out for overexposure here, as it can dry out and weaken the bonds mid-process. To handle this, we adjust by overlapping scans lightly and adding a damp post-treatment to restore evenness, ensuring clean results for heritage restorations.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Masonry
-  href: /materials/masonry
-- label: Concrete
-  href: /materials/masonry/concrete
-- label: stucco-laser-cleaning
-  href: /materials/stucco-settings
-images:
-  hero:
-    alt: Stucco surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/stucco-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Stucco surface after laser cleaning showing detailed surface structure
-    url: /images/material/stucco-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.45
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.72
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 800
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 2.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.8
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.5
-    unit: K
-  reflectivity:
-    value: 0.28
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Moisture-induced spalling and explosive failure
-    severity: critical
-    threshold_temperature: Steam formation >100°C with trapped moisture
-    impact: Trapped moisture converts to steam causing explosive surface spalling
-    solutions:
-    - Test moisture content before cleaning (>5% moisture requires drying)
-    - Use pulse mode with 10-15 second cooling for wet materials
-    - Reduce power by 50-60% for damp masonry
-    - Allow 24-48 hours drying after rain before laser cleaning
-    - Monitor for popping sounds or surface lifting; stop immediately
-    challenge_id: moisture_induced_spalling_and_explosive_failure
-  - challenge: Low thermal diffusivity and heat accumulation
-    severity: high
-    property_value: 0.1-1.0 mm²/s (3-10x slower than metals)
-    impact: Heat concentrates in surface layer causing thermal stress
-    solutions:
-    - Increase cooling time between passes (8-12 seconds)
-    - Use low repetition rates (<20 kHz)
-    - Defocused beam reduces peak intensity
-    - Multiple gentle passes preferred over aggressive single pass
-    challenge_id: low_thermal_diffusivity_and_heat_accumulation
-  surface_characteristics:
-  - challenge: High porosity and deep contamination
-    severity: high
-    porosity_range: 10-25% (brick and concrete highly porous)
-    impact: Contaminants penetrate deep into porous structure
-    solutions:
-    - Multiple progressive passes with power increase (50W → 80W → 100W)
-    - Reduce scan speed for deeper penetration (400-600 mm/s)
-    - Chemical pre-treatment for biological growth (algae, lichen)
-    - Expect 3-5 passes for complete cleaning vs 1-2 for dense materials
-    challenge_id: high_porosity_and_deep_contamination
-  - challenge: Surface heterogeneity and aggregate exposure
-    severity: medium
-    impact: Mixed composition (cement matrix, aggregates, voids) causes variable absorption
-    solutions:
-    - Use moderate power (70-90W) suitable for both matrix and aggregates
-    - Crosshatch scan pattern for uniform coverage
-    - Monitor for differential ablation; adjust power if aggregates become prominent
-    - Aged masonry more challenging than new construction
-    challenge_id: surface_heterogeneity_and_aggregate_exposure
-  contamination_challenges:
-  - challenge: Paint and coating removal from porous substrate
-    severity: medium
-    impact: Paint penetrates into pores requiring deep cleaning without substrate damage
-    solutions:
-    - First pass 100W fast (1500 mm/s) for surface paint layer
-    - Second pass 70W slow (800 mm/s) for paint in pores
-    - Third pass 50W very slow (500 mm/s) for residual staining
-    - Chemical stripping pre-treatment reduces laser exposure
-    - Heritage masonry requires gentler approach (max 60W)
-    challenge_id: paint_and_coating_removal_from_porous_substrate
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:03.093038'
+domain: settings
+datePublished: '2025-12-16T14:42:51.865278'
+dateModified: '2025-12-16T14:42:51.865278'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Stucco surface cleaning without substrate damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-infrared wavelength optimized for Stucco absorption and minimal substrate
+            interaction
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for balanced cleaning efficiency and resolution
+        - - unit
+          - mm
+        - - value
+          - 0.2
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning coverage and process speed
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective Stucco surface cleaning
+        - - unit
+          - J/cm²
+        - - value
+          - 3.2
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for effective contaminant removal with controlled
+            thermal effects
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning without thermal accumulation
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform cleaning coverage
+        - - unit
+          - '%'
+        - - value
+          - 50

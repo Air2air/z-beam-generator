@@ -1,344 +1,81 @@
-id: zirconia-settings
-name: zirconia-laser-cleaning
+name: Zirconia
 slug: zirconia-settings
-category: ceramic
-subcategory: oxide
-domain_linkages:
-  related_contaminants:
-  - id: adhesive-residue
-    title: Adhesive Residue
-    url: /contaminants/adhesive-residue
-    image: /images/contaminants/adhesive-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: blood-residue
-    title: Blood Residue
-    url: /contaminants/blood-residue
-    image: /images/contaminants/blood-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-buildup
-    title: Carbon Buildup
-    url: /contaminants/carbon-buildup
-    image: /images/contaminants/carbon-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-soot
-    title: Carbon Soot
-    url: /contaminants/carbon-soot
-    image: /images/contaminants/carbon-soot.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: ceramic-glaze
-    title: Ceramic Glaze
-    url: /contaminants/ceramic-glaze
-    image: /images/contaminants/ceramic-glaze.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chemical-stains
-    title: Chemical Stains
-    url: /contaminants/chemical-stains
-    image: /images/contaminants/chemical-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fire-damage
-    title: Fire Damage
-    url: /contaminants/fire-damage
-    image: /images/contaminants/fire-damage.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graphite-marks
-    title: Graphite Marks
-    url: /contaminants/graphite-marks
-    image: /images/contaminants/graphite-marks.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lime-scale
-    title: Lime Scale
-    url: /contaminants/lime-scale
-    image: /images/contaminants/lime-scale.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: medical-disinfectant
-    title: Medical Disinfectant
-    url: /contaminants/medical-disinfectant
-    image: /images/contaminants/medical-disinfectant.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-deposits
-    title: Mineral Deposits
-    url: /contaminants/mineral-deposits
-    image: /images/contaminants/mineral-deposits.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mold-mildew
-    title: Mold Mildew
-    url: /contaminants/mold-mildew
-    image: /images/contaminants/mold-mildew.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: scale-buildup
-    title: Scale Buildup
-    url: /contaminants/scale-buildup
-    image: /images/contaminants/scale-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: semiconductor-residue
-    title: Semiconductor Residue
-    url: /contaminants/semiconductor-residue
-    image: /images/contaminants/semiconductor-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicone-buildup
-    title: Silicone Buildup
-    url: /contaminants/silicone-buildup
-    image: /images/contaminants/silicone-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: soap-scum
-    title: Soap Scum
-    url: /contaminants/soap-scum
-    image: /images/contaminants/soap-scum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds:
-  - id: carbon-monoxide-compound
-    title: Carbon Monoxide
-    url: /compounds/carbon-monoxide
-    image: /images/compounds/carbon-monoxide.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Incomplete combustion of organic adhesives
-    exposure_risk: high
-  - id: acetaldehyde-compound
-    title: Acetaldehyde
-    url: /compounds/acetaldehyde
-    image: /images/compounds/acetaldehyde.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Decomposition of vinyl and acrylic adhesives
-    exposure_risk: moderate
-  - id: hydrogen-chloride-compound
-    title: Hydrogen Chloride
-    url: /compounds/hydrogen-chloride
-    image: /images/compounds/hydrogen-chloride.jpg
-    frequency: occasional
-    severity: moderate
-    typical_context: Some adhesives contain chlorinated compounds
-    exposure_risk: moderate
-  - id: toluene-compound
-    title: Toluene
-    url: /compounds/toluene
-    image: /images/compounds/toluene.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Release of toluene from adhesive formulations
-    exposure_risk: moderate
-  - id: formaldehyde-compound
-    title: Formaldehyde
-    url: /compounds/formaldehyde
-    image: /images/compounds/formaldehyde.jpg
-    frequency: common
-    severity: moderate
-    typical_context: Thermal breakdown of formaldehyde-based adhesives
-    exposure_risk: moderate
-  - id: hydrogen-cyanide-compound
-    title: Hydrogen Cyanide
-    url: /compounds/hydrogen-cyanide
-    image: /images/compounds/hydrogen-cyanide.jpg
-    frequency: occasional
-    severity: moderate
-    typical_context: Breakdown of cyanoacrylate adhesives
-    exposure_risk: moderate
-  - id: carbon-dioxide-compound
-    title: Carbon Dioxide
-    url: /compounds/carbon-dioxide
-    image: /images/compounds/carbon-dioxide.jpg
-    frequency: very_common
-    severity: low
-    typical_context: Complete combustion of adhesives
-    exposure_risk: low
-  - id: vocs-compound
-    title: Volatile Organic Compounds
-    url: /compounds/vocs
-    image: /images/compounds/vocs.jpg
-    frequency: very_common
-    severity: moderate
-    typical_context: Release of adhesive solvents
-    exposure_risk: moderate
-  - id: ammonia-compound
-    title: Ammonia
-    url: /compounds/ammonia
-    image: /images/compounds/ammonia.jpg
-    frequency: occasional
-    severity: low
-    typical_context: Breakdown of proteins
-    exposure_risk: low
-  - id: benzoapyrene-compound
-    title: Benzo[a]pyrene
-    url: /compounds/benzoapyrene
-    image: /images/compounds/benzoapyrene.jpg
-    frequency: common
-    severity: high
-    typical_context: Pre-existing from incomplete combustion
-    exposure_risk: high
-  - id: pahs-compound
-    title: Polycyclic Aromatic Hydrocarbons
-    url: /compounds/pahs
-    image: /images/compounds/pahs.jpg
-    frequency: very_common
-    severity: high
-    typical_context: Vaporization and reformation of existing PAHs
-    exposure_risk: high
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: zirconia-laser-cleaning Laser Cleaning Settings
-settings_description: The key with Zirconia is its strong laser absorption. We've found this makes cleaning efficient without much reflection loss. It removes contaminants quickly while preserving the surface. Unlike metals, its low thermal conductivity traps heat locally. We typically start with moderate power to prevent buildup. This approach reduces cracking risks in such a hard ceramic. Zirconia stands out for high toughness under stress. Adjust scan speeds higher for even exposure. In our experience, multiple light passes restore it fully. Watch for thermal gradients at the end, though, and cool between runs to avoid micro-fractures.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Ceramic
-  href: /materials/ceramic
-- label: Oxide
-  href: /materials/ceramic/oxide
-- label: zirconia-laser-cleaning
-  href: /materials/zirconia-settings
-images:
-  hero:
-    alt: Zirconia surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/zirconia-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed surface structure
-    url: /images/material/zirconia-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.858
-    unit: mm²/s
-  thermalConductivity:
-    value: 2.14
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 2988
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 10
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.1
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 2.52
-    max: 8.0
-    unit: J/cm²
-  thermalShockResistance:
-    value: 2.5
-    unit: K
-  reflectivity:
-    value: 0.133
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Thermal shock and cracking
-    severity: critical
-    threshold_temperature: ΔT > 200-300°C rapid cooling
-    impact: Ceramics crack catastrophically from rapid temperature changes due to low thermal expansion
-    solutions:
-    - Use pulse mode with 3-5 second cooling between passes
-    - Gradual power ramping (start 50W, increase 10W per pass)
-    - Preheat substrate to reduce thermal gradients
-    - Monitor for surface crazing; stop immediately if cracks appear
-    challenge_id: thermal_shock_and_cracking
-  - challenge: Variable thermal conductivity
-    severity: medium
-    property_value: 0.8-120 W/m·K (150x variation between materials)
-    impact: SiC/WC conduct heat well, but alumina/zirconia accumulate heat rapidly
-    solutions:
-    - Low conductivity ceramics (alumina, zirconia) require 50% longer cooling
-    - High conductivity ceramics (SiC, WC) tolerate higher power
-    - Test on scrap to determine cooling requirements
-    challenge_id: variable_thermal_conductivity
-  surface_characteristics:
-  - challenge: Surface defects and damage threshold
-    severity: high
-    impact: Micro-cracks, pores, and surface defects dramatically lower damage threshold
-    solutions:
-    - Inspect surface with magnification before cleaning
-    - Reduce power 30-40% for porous or aged ceramics
-    - Use multiple low-energy passes rather than single high-energy pass
-    - Polished ceramics tolerate 2-3x higher fluence than rough surfaces
-    challenge_id: surface_defects_and_damage_threshold
-  - challenge: Porosity variation
-    severity: medium
-    porosity_range: 0-30% (dense vs porous ceramics)
-    impact: Porous ceramics trap contaminants deep in structure and scatter laser energy
-    solutions:
-    - Dense ceramics (0-5% porosity) clean easily at 100-150W
-    - Porous ceramics require multiple progressive passes
-    - Use crosshatch scan pattern for uniform penetration
-    - Chemical pre-treatment for deep contamination in porous ceramics
-    challenge_id: porosity_variation
-  contamination_challenges:
-  - challenge: Coating and residue removal
-    severity: medium
-    impact: Hard coatings (PVD, thermal barrier) require high energy but risk substrate damage
-    solutions:
-    - First pass 120W fast (2000 mm/s) for bulk coating removal
-    - Second pass 80W slow (1000 mm/s) for residue
-    - Monitor for substrate exposure; adjust power accordingly
-    - PVD coatings may require chemical assist for complete removal
-    challenge_id: coating_and_residue_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:04.743250'
+domain: settings
+datePublished: '2025-12-16T14:42:51.943514'
+dateModified: '2025-12-16T14:42:51.943514'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Zirconia surface cleaning without thermal damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength with good absorption in Zirconia for efficient cleaning
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam spot diameter for precision cleaning of Zirconia surfaces
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High repetition rate for efficient cleaning coverage while maintaining
+            thermal control
+        - - unit
+          - kHz
+        - - value
+          - 100
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective contaminant removal from Zirconia
+        - - unit
+          - J/cm²
+        - - value
+          - 5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for effective contaminant removal with minimal
+            substrate damage
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning coverage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of cleaning passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap percentage for uniform cleaning without excessive
+            heat accumulation
+        - - unit
+          - '%'
+        - - value
+          - 50

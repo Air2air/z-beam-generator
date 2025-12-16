@@ -1,138 +1,78 @@
-id: gallium-nitride-settings
-name: gallium-nitride-laser-cleaning
+name: Gallium Nitride
 slug: gallium-nitride-settings
-category: semiconductor
-subcategory: compound
-domain_linkages: {}
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: gallium-nitride-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning Gallium Nitride, the biggest challenge we've found is its brittleness compared to softer semiconductors like silicon. This sets it apart because it cracks easily under uneven heating, unlike more forgiving materials. So we typically use short pulses and gentle power levels to remove contaminants without stressing the surface. We've seen this approach restore clean finishes reliably. Just watch for any micro-fractures at the end—adjust scans if needed to avoid them.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Semiconductor
-  href: /materials/semiconductor
-- label: Compound
-  href: /materials/semiconductor/compound
-- label: gallium-nitride-laser-cleaning
-  href: /materials/gallium-nitride-settings
-images:
-  hero:
-    alt: Gallium Nitride surface during precision laser cleaning process removing contamination layer
-    url: /images/material/gallium-nitride-laser-cleaning-hero.jpg
-  micro:
-    alt: Gallium Nitride surface at 500x magnification showing laser cleaning results
-    url: /images/material/gallium-nitride-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 43.3
-    unit: mm²/s
-  thermalConductivity:
-    value: 130.0
-    unit: W/(m·K)
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 0.92
-    unit: J/cm²
-  ablationThreshold:
-    value: 0.35
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 0.42
-    max: 0.736
-    unit: J/cm²
-  reflectivity:
-    value: 0.18
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Crystal lattice damage and doping redistribution
-    severity: critical
-    threshold_temperature: Above 400-600°C causes dopant migration
-    impact: Heat causes permanent alteration of electronic properties and device failure
-    solutions:
-    - Use ultrashort pulses (picosecond or femtosecond) for minimal heat-affected zone
-    - Reduce power by 60-70% compared to structural materials
-    - Monitor temperature with IR camera; stop if >150°C surface temperature
-    - Nanosecond pulses acceptable only for non-active areas (scribe lines, edges)
-    challenge_id: crystal_lattice_damage_and_doping_redistribution
-  - challenge: Thermal stress and wafer cracking
-    severity: high
-    property_value: Low fracture toughness 0.75-3.0 MPa·√m
-    impact: Thermal gradients cause catastrophic wafer fracture
-    solutions:
-    - Use pulse mode with 10-15 second cooling for thick wafers
-    - Thin wafers (<200 μm) require substrate backing for thermal management
-    - Defocused beam reduces peak temperature gradients
-    - Gradual power ramping (start 10W, increase 5W per pass)
-    challenge_id: thermal_stress_and_wafer_cracking
-  surface_characteristics:
-  - challenge: Surface contamination and particulates
-    severity: critical
-    impact: Sub-micron particles cause device defects and yield loss
-    solutions:
-    - Class 100 cleanroom environment required
-    - Use dry laser cleaning (no liquid assist to avoid residue)
-    - Gas assist (nitrogen or argon) blows particles away during cleaning
-    - Post-cleaning inspection with particle counter (<0.1 μm detection)
-    - Follow with wet chemical clean for critical applications
-    challenge_id: surface_contamination_and_particulates
-  - challenge: Native oxide layer removal
-    severity: high
-    impact: Silicon forms native oxide that must be removed without substrate damage
-    solutions:
-    - Low power (5-15W) for oxide removal only
-    - Multiple gentle passes (3-5 passes at 10W) preferred
-    - Hydrogen-rich environment prevents oxide reformation
-    - Verify oxide removal with ellipsometry or XPS
-    challenge_id: native_oxide_layer_removal
-  contamination_challenges:
-  - challenge: Photoresist and polymer residue removal
-    severity: medium
-    impact: Organic residues carbonize and become harder to remove
-    solutions:
-    - First pass 20W fast (1500 mm/s) for bulk removal
-    - Second pass 10W slow (800 mm/s) for residue
-    - UV laser (355nm) more effective for organic materials
-    - Oxygen-rich environment aids in organic ablation
-    - Post-cleaning oxygen plasma for complete residue removal
-    challenge_id: photoresist_and_polymer_residue_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:05.566232'
+domain: settings
+datePublished: '2025-12-16T14:42:51.983863'
+dateModified: '2025-12-16T14:42:51.983863'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 60
+        - - unit
+          - W
+        - - description
+          - Controlled power for precision semiconductor cleaning
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 1064
+        - - unit
+          - nm
+        - - description
+          - Near-IR for minimal lattice damage
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 30
+        - - unit
+          - μm
+        - - description
+          - Small spot for high-precision cleaning
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 30
+        - - unit
+          - kHz
+        - - description
+          - Moderate frequency for controlled removal
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 1.5
+        - - unit
+          - J/cm²
+        - - description
+          - Precision energy for contamination removal
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 10
+        - - unit
+          - ns
+        - - description
+          - Ultra-short pulses for minimal thermal damage
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 300
+        - - unit
+          - mm/s
+        - - description
+          - Careful scanning for uniform treatment
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 3
+        - - unit
+          - passes
+        - - description
+          - Multiple passes for complete cleaning
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - value
+          - 60
+        - - unit
+          - '%'
+        - - description
+          - High overlap for thorough coverage

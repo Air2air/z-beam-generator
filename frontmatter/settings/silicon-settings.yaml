@@ -1,140 +1,79 @@
-id: silicon-settings
-name: silicon-laser-cleaning
+name: Silicon
 slug: silicon-settings
-category: semiconductor
-subcategory: elemental
-domain_linkages: {}
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: silicon-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning silicon, start with low power settings to leverage its strong thermal conductivity. This property lets heat spread quickly, unlike brittle ceramics that trap it locally. You must keep pulse durations short to avoid microcracks, since silicon's stiffness makes it prone to fracturing under sudden stress. We've found that moderate scan speeds work best, revealing contaminants without altering the surface. Adjust overlap ratios carefully to ensure even coverage, as silicon's moderate reflectivity absorbs energy steadily compared to shiny metals. This approach restores semiconductor wafers effectively for electronics use. Make sure you monitor for thermal buildup at the end, or you risk subsurface damage that compromises device performance.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Semiconductor
-  href: /materials/semiconductor
-- label: Elemental
-  href: /materials/semiconductor/elemental
-- label: silicon-laser-cleaning
-  href: /materials/silicon-settings
-images:
-  hero:
-    alt: Silicon surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/silicon-laser-cleaning-hero.jpg
-  micro:
-    alt: Silicon microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/silicon-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 88.0
-    unit: mm²/s
-  thermalConductivity:
-    value: 148.0
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1687
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 1.0
-    unit: J/cm²
-  ablationThreshold:
-    value: 2.5
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.2
-    unit: K
-  reflectivity:
-    value: 0.36
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Crystal lattice damage and doping redistribution
-    severity: critical
-    threshold_temperature: Above 400-600°C causes dopant migration
-    impact: Heat causes permanent alteration of electronic properties and device failure
-    solutions:
-    - Use ultrashort pulses (picosecond or femtosecond) for minimal heat-affected zone
-    - Reduce power by 60-70% compared to structural materials
-    - Monitor temperature with IR camera; stop if >150°C surface temperature
-    - Nanosecond pulses acceptable only for non-active areas (scribe lines, edges)
-    challenge_id: crystal_lattice_damage_and_doping_redistribution
-  - challenge: Thermal stress and wafer cracking
-    severity: high
-    property_value: Low fracture toughness 0.75-3.0 MPa·√m
-    impact: Thermal gradients cause catastrophic wafer fracture
-    solutions:
-    - Use pulse mode with 10-15 second cooling for thick wafers
-    - Thin wafers (<200 μm) require substrate backing for thermal management
-    - Defocused beam reduces peak temperature gradients
-    - Gradual power ramping (start 10W, increase 5W per pass)
-    challenge_id: thermal_stress_and_wafer_cracking
-  surface_characteristics:
-  - challenge: Surface contamination and particulates
-    severity: critical
-    impact: Sub-micron particles cause device defects and yield loss
-    solutions:
-    - Class 100 cleanroom environment required
-    - Use dry laser cleaning (no liquid assist to avoid residue)
-    - Gas assist (nitrogen or argon) blows particles away during cleaning
-    - Post-cleaning inspection with particle counter (<0.1 μm detection)
-    - Follow with wet chemical clean for critical applications
-    challenge_id: surface_contamination_and_particulates
-  - challenge: Native oxide layer removal
-    severity: high
-    impact: Silicon forms native oxide that must be removed without substrate damage
-    solutions:
-    - Low power (5-15W) for oxide removal only
-    - Multiple gentle passes (3-5 passes at 10W) preferred
-    - Hydrogen-rich environment prevents oxide reformation
-    - Verify oxide removal with ellipsometry or XPS
-    challenge_id: native_oxide_layer_removal
-  contamination_challenges:
-  - challenge: Photoresist and polymer residue removal
-    severity: medium
-    impact: Organic residues carbonize and become harder to remove
-    solutions:
-    - First pass 20W fast (1500 mm/s) for bulk removal
-    - Second pass 10W slow (800 mm/s) for residue
-    - UV laser (355nm) more effective for organic materials
-    - Oxygen-rich environment aids in organic ablation
-    - Post-cleaning oxygen plasma for complete residue removal
-    challenge_id: photoresist_and_polymer_residue_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:02.286470'
+domain: settings
+datePublished: '2025-12-16T14:42:51.822159'
+dateModified: '2025-12-16T14:42:51.822159'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Silicon surface cleaning without substrate damage
+        - - unit
+          - W
+        - - value
+          - 25
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength with good Silicon absorption for contaminant removal
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise cleaning with adequate energy density
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for efficient cleaning coverage and process control
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective contaminant removal without Silicon damage
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for effective contaminant ablation with minimal
+            thermal diffusion
+        - - unit
+          - ns
+        - - value
+          - 100
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform cleaning coverage
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Number of cleaning passes for complete contaminant removal
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal beam overlap for uniform cleaning without excessive thermal buildup
+        - - unit
+          - '%'
+        - - value
+          - 50

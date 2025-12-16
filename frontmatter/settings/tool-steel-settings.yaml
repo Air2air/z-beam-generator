@@ -1,172 +1,85 @@
-id: tool-steel-settings
-name: tool-steel-laser-cleaning
+name: Tool Steel
 slug: tool-steel-settings
-category: metal
-subcategory: alloy
-domain_linkages:
-  related_contaminants:
-  - id: pvd-coating
-    title: Pvd Coating
-    url: /contaminants/pvd-coating
-    image: /images/contaminants/pvd-coating.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: quench-oil
-    title: Quench Oil
-    url: /contaminants/quench-oil
-    image: /images/contaminants/quench-oil.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds:
-  - id: acrolein-compound
-    title: Acrolein
-    url: /compounds/acrolein
-    image: /images/compounds/acrolein.jpg
-    frequency: common
-    severity: high
-    typical_context: Thermal decomposition of quenching oils
-    exposure_risk: high
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: tool-steel-laser-cleaning Laser Cleaning Settings
-settings_description: When laser cleaning Tool Steel, watch its toughness first—it resists buildup removal more than softer alloys like mild steel. I've seen overheating cause surface cracks if you rush. Start slow with the laser on low power. This clears rust gently without warping. Tool Steel's heat resistance shines here, unlike brittle metals. Scan in even passes. Overlap spots by half. Finish with a quick check for smoothness. It restores tools perfectly.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Alloy
-  href: /materials/metal/alloy
-- label: tool-steel-laser-cleaning
-  href: /materials/tool-steel-settings
-images:
-  hero:
-    alt: Tool Steel surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/tool-steel-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Tool Steel surface after laser cleaning showing detailed surface structure
-    url: /images/material/tool-steel-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 5.0
-    unit: mm²/s
-  thermalConductivity:
-    value: 25.0
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1723
-    unit: K
-    type: melting
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 2.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.45
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.74
-    max: 2.0
-    unit: J/cm²
-  thermalShockResistance:
-    value: 2.5
-    unit: K
-  reflectivity:
-    value: 0.68
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: High thermal conductivity and heat spread
-    severity: medium
-    property_value: 4-400 W/(m·K) depending on metal
-    impact: Heat spreads rapidly causing large heat-affected zones
-    solutions:
-    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-    - Increase scan speed to minimize dwell time
-    - Apply cooling between passes for thick sections
-    challenge_id: high_thermal_conductivity_and_heat_spread
-  - challenge: Melting and heat-affected zone formation
-    severity: high
-    threshold_range: 660°C (Al) to 3422°C (W)
-    impact: Substrate melting or microstructural changes in heat-affected zone
-    solutions:
-    - Stay below 70% of melting temperature
-    - Use pulse mode with adequate cooling time
-    - Monitor for surface discoloration indicating oxidation
-    challenge_id: melting_and_heat_affected_zone_formation
-  surface_characteristics:
-  - challenge: High reflectivity
-    severity: high
-    reflectivity_range: 60-95% at 1064nm for polished metals
-    impact: Most laser energy reflected, requiring higher power; safety hazard
-    solutions:
-    - Use shorter wavelengths (355nm UV) for better absorption
-    - Increase power density but monitor for thermal damage
-    - Ensure proper beam containment and safety measures
-    - Surface oxidation/roughness improves absorption
-    challenge_id: high_reflectivity
-  - challenge: Surface finish variations
-    severity: medium
-    impact: Polished surfaces reflect more, rough surfaces absorb better
-    solutions:
-    - Adjust power based on surface condition
-    - Test parameters on similar finish samples
-    - Polished surfaces need 20-40% more power
-    challenge_id: surface_finish_variations
-  contamination_challenges:
-  - challenge: Rust and oxide layer removal
-    severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
-    solutions:
-    - First pass at higher power (100-120W) to remove bulk oxide
-    - Second pass at lower power (60-80W) for final cleaning
-    - Monitor for base metal exposure to avoid over-processing
-    challenge_id: rust_and_oxide_layer_removal
-  - challenge: Oil and grease removal
-    severity: low
-    impact: Organic contaminants vaporize easily but can redeposit
-    solutions:
-    - Use fume extraction to prevent redeposition
-    - Higher scan speeds (3000-5000 mm/s) for thin films
-    - Chemical pre-cleaning for heavy contamination
-    challenge_id: oil_and_grease_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:09:03.876744'
+domain: settings
+datePublished: '2025-12-16T14:42:51.906098'
+dateModified: '2025-12-16T14:42:51.906098'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for Tool Steel oxide removal without substrate damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength with good absorption in Tool Steel oxides and contaminants
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for effective cleaning resolution and energy density
+            control
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal repetition rate for continuous cleaning coverage with controlled
+            thermal input
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - energyDensity
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Fluence threshold for effective contaminant removal without damaging Tool
+            Steel substrate
+        - - unit
+          - J/cm²
+        - - value
+          - 5.1
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for efficient contaminant ablation with minimal
+            thermal diffusion
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for efficient area coverage while maintaining cleaning
+            effectiveness
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Recommended number of passes for complete contaminant removal from Tool
+            Steel surfaces
+        - - unit
+          - passes
+        - - value
+          - 2
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal pulse overlap for uniform cleaning coverage without excessive
+            thermal buildup
+        - - unit
+          - '%'
+        - - value
+          - 50

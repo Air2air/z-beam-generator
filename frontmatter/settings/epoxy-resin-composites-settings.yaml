@@ -1,142 +1,79 @@
-id: epoxy-resin-composites-settings
-name: epoxy-resin-composites-laser-cleaning
+name: Epoxy Resin Composites
 slug: epoxy-resin-composites-settings
-category: composite
-subcategory: fiber-reinforced
-domain_linkages: {}
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
-title: epoxy-resin-composites-laser-cleaning Laser Cleaning Settings
-settings_description: I've seen epoxy resin composites behave differently from plain metals during laser cleaning, mainly because their fiber-reinforced structure absorbs energy more readily without reflecting it away. This helps remove contaminants efficiently, as the matrix holds up well under controlled heat, preventing quick degradation that you'd get with softer plastics. So, approach it by starting with gentler passes to leverage that absorption for clean results. Just watch out for localized overheating at the end, which can cause delamination if you push too hard.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composite
-- label: Fiber Reinforced
-  href: /materials/composite/fiber-reinforced
-- label: epoxy-resin-composites-laser-cleaning
-  href: /materials/epoxy-resin-composites-settings
-images:
-  hero:
-    alt: Epoxy Resin Composites surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/epoxy-resin-composites-laser-cleaning-hero.jpg
-  micro:
-    alt: Epoxy Resin Composites microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/epoxy-resin-composites-laser-cleaning-micro.jpg
-machineSettings: null
-thermalProperties:
-  thermalDiffusivity:
-    value: 0.115
-    unit: mm²/s
-  thermalConductivity:
-    value: 0.35
-    unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 600
-    unit: K
-    type: decomposition
-laserMaterialInteraction:
-  laserDamageThreshold:
-    value: 4.5
-    unit: J/cm²
-  ablationThreshold:
-    value: 1.2
-    unit: J/cm²
-  optimalFluenceRange:
-    min: 1.44
-    max: 3.6
-    unit: J/cm²
-  thermalShockResistance:
-    value: 1.2
-    unit: K
-  reflectivity:
-    value: 0.05
-    wavelength: 1064
-material_challenges:
-  thermal_management:
-  - challenge: Matrix degradation and delamination
-    severity: critical
-    threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
-    impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
-    solutions:
-    - Use pulse mode with 5-10 second cooling for polymer-matrix composites
-    - Reduce power by 40-50% compared to monolithic materials
-    - Monitor for discoloration, bubbling, or layer lifting
-    - Ceramic and metal-matrix composites tolerate higher power
-    challenge_id: matrix_degradation_and_delamination
-  - challenge: Anisotropic thermal properties
-    severity: high
-    property_value: 10-100x variation parallel vs perpendicular to fibers
-    impact: Heat conducts rapidly along fibers but poorly across layers
-    solutions:
-    - Scan parallel to fiber direction for best heat dissipation
-    - Use crosshatch pattern (0° and 90°) to identify fiber orientation
-    - Increase cooling time 2-3x when scanning perpendicular to fibers
-    - Carbon fiber composites require special attention due to electrical conductivity
-    challenge_id: anisotropic_thermal_properties
-  surface_characteristics:
-  - challenge: Fiber exposure and damage
-    severity: high
-    impact: Aggressive cleaning exposes or damages reinforcing fibers
-    solutions:
-    - Use low energy density (0.5-2 J/cm²) to protect matrix
-    - Multiple gentle passes preferred over single aggressive pass
-    - Stop immediately if fibers become visible
-    - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
-    challenge_id: fiber_exposure_and_damage
-  - challenge: Surface finish variability
-    severity: medium
-    impact: Gel coat, paint, or protective layers alter absorption and damage threshold
-    solutions:
-    - Test on edge or hidden area first
-    - Coated surfaces may require 50-100W initial pass for coating removal
-    - Bare composite requires 30-50% lower power
-    - Adjust parameters when transitioning between coated and uncoated areas
-    challenge_id: surface_finish_variability
-  contamination_challenges:
-  - challenge: Resin-based contaminant removal
-    severity: medium
-    impact: Adhesives, sealants, and coatings chemically bond to matrix
-    solutions:
-    - First pass 80W fast (1500 mm/s) for bulk removal
-    - Second pass 50W slow (800 mm/s) for residue
-    - Chemical pre-treatment improves results for stubborn adhesives
-    - Monitor for matrix damage; stop if surface texture changes
-    challenge_id: resin_based_contaminant_removal
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-16T14:08:58.339515'
+domain: settings
+datePublished: '2025-12-16T14:42:51.546903'
+dateModified: '2025-12-16T14:42:51.546903'
+machineSettings: !!python/object/apply:collections.OrderedDict
+- - - powerRange
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal average power for epoxy resin removal without substrate damage
+        - - unit
+          - W
+        - - value
+          - 100
+  - - wavelength
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Near-IR wavelength providing good absorption in epoxy resins with minimal
+            substrate penetration
+        - - unit
+          - nm
+        - - value
+          - 1064
+  - - spotSize
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam spot diameter for precise epoxy removal control
+        - - unit
+          - μm
+        - - value
+          - 50
+  - - repetitionRate
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - High repetition rate for efficient cleaning with thermal management
+        - - unit
+          - kHz
+        - - value
+          - 50
+  - - fluenceThreshold
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Minimum fluence required for epoxy resin ablation
+        - - unit
+          - J/cm²
+        - - value
+          - 2.5
+  - - pulseWidth
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Nanosecond pulse duration for controlled ablation of epoxy matrix
+        - - unit
+          - ns
+        - - value
+          - 10
+  - - scanSpeed
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Optimal scanning speed for uniform epoxy removal
+        - - unit
+          - mm/s
+        - - value
+          - 500
+  - - passCount
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Number of cleaning passes for complete epoxy removal
+        - - unit
+          - passes
+        - - value
+          - 3
+  - - overlapRatio
+    - !!python/object/apply:collections.OrderedDict
+      - - - description
+          - Beam overlap percentage for uniform cleaning coverage
+        - - unit
+          - '%'
+        - - value
+          - 50
