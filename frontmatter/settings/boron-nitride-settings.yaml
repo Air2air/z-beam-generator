@@ -1,13 +1,211 @@
-name: Boron Nitride
-slug: boron-nitride
 id: boron-nitride-settings
+name: boron-nitride-laser-cleaning
+slug: boron-nitride-settings
 category: ceramic
 subcategory: technical
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue
+    url: /contaminants/adhesive-residue
+    image: /images/contaminants/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: blood-residue
+    title: Blood Residue
+    url: /contaminants/blood-residue
+    image: /images/contaminants/blood-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbon-buildup
+    title: Carbon Buildup
+    url: /contaminants/carbon-buildup
+    image: /images/contaminants/carbon-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbon-soot
+    title: Carbon Soot
+    url: /contaminants/carbon-soot
+    image: /images/contaminants/carbon-soot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: ceramic-glaze
+    title: Ceramic Glaze
+    url: /contaminants/ceramic-glaze
+    image: /images/contaminants/ceramic-glaze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chemical-stains
+    title: Chemical Stains
+    url: /contaminants/chemical-stains
+    image: /images/contaminants/chemical-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fire-damage
+    title: Fire Damage
+    url: /contaminants/fire-damage
+    image: /images/contaminants/fire-damage.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: graphite-marks
+    title: Graphite Marks
+    url: /contaminants/graphite-marks
+    image: /images/contaminants/graphite-marks.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lime-scale
+    title: Lime Scale
+    url: /contaminants/lime-scale
+    image: /images/contaminants/lime-scale.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: medical-disinfectant
+    title: Medical Disinfectant
+    url: /contaminants/medical-disinfectant
+    image: /images/contaminants/medical-disinfectant.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mineral-deposits
+    title: Mineral Deposits
+    url: /contaminants/mineral-deposits
+    image: /images/contaminants/mineral-deposits.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mold-mildew
+    title: Mold Mildew
+    url: /contaminants/mold-mildew
+    image: /images/contaminants/mold-mildew.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: scale-buildup
+    title: Scale Buildup
+    url: /contaminants/scale-buildup
+    image: /images/contaminants/scale-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: semiconductor-residue
+    title: Semiconductor Residue
+    url: /contaminants/semiconductor-residue
+    image: /images/contaminants/semiconductor-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicone-buildup
+    title: Silicone Buildup
+    url: /contaminants/silicone-buildup
+    image: /images/contaminants/silicone-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: soap-scum
+    title: Soap Scum
+    url: /contaminants/soap-scum
+    image: /images/contaminants/soap-scum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/carbon-monoxide
+    image: /images/compounds/carbon-monoxide.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of organic adhesives
+    exposure_risk: high
+  - id: acetaldehyde-compound
+    title: Acetaldehyde
+    url: /compounds/acetaldehyde
+    image: /images/compounds/acetaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Decomposition of vinyl and acrylic adhesives
+    exposure_risk: moderate
+  - id: hydrogen-chloride-compound
+    title: Hydrogen Chloride
+    url: /compounds/hydrogen-chloride
+    image: /images/compounds/hydrogen-chloride.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Some adhesives contain chlorinated compounds
+    exposure_risk: moderate
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/toluene
+    image: /images/compounds/toluene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Release of toluene from adhesive formulations
+    exposure_risk: moderate
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/formaldehyde
+    image: /images/compounds/formaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of formaldehyde-based adhesives
+    exposure_risk: moderate
+  - id: hydrogen-cyanide-compound
+    title: Hydrogen Cyanide
+    url: /compounds/hydrogen-cyanide
+    image: /images/compounds/hydrogen-cyanide.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Breakdown of cyanoacrylate adhesives
+    exposure_risk: moderate
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/carbon-dioxide
+    image: /images/compounds/carbon-dioxide.jpg
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of adhesives
+    exposure_risk: low
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/vocs
+    image: /images/compounds/vocs.jpg
+    frequency: very_common
+    severity: moderate
+    typical_context: Release of adhesive solvents
+    exposure_risk: moderate
+  - id: ammonia-compound
+    title: Ammonia
+    url: /compounds/ammonia
+    image: /images/compounds/ammonia.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Breakdown of proteins
+    exposure_risk: low
+  - id: benzoapyrene-compound
+    title: Benzo[a]pyrene
+    url: /compounds/benzoapyrene
+    image: /images/compounds/benzoapyrene.jpg
+    frequency: common
+    severity: high
+    typical_context: Pre-existing from incomplete combustion
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/pahs
+    image: /images/compounds/pahs.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Vaporization and reformation of existing PAHs
+    exposure_risk: high
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,124 +235,13 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
-title: Boron Nitride Laser Cleaning Settings
-settings_description:
-  before: Before laser cleaning, Boron Nitride surfaces require careful parameter selection
-  after: After cleaning, Boron Nitride surfaces show restored appearance with controlled parameters
-domain_linkages:
-  related_contaminants:
-  - id: adhesive-residue
-    title: Adhesive Residue / Tape Marks
-    url: /contaminants/organic-residue/adhesive/adhesive-residue
-    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: blood-residue
-    title: Biological Blood Residue
-    url: /contaminants/biological/deposit/blood-residue
-    image: /images/contaminants/biological/deposit/blood-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-buildup
-    title: Carbon Deposit Buildup
-    url: /contaminants/organic-residue/other/carbon-buildup
-    image: /images/contaminants/organic-residue/other/carbon-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-soot
-    title: Carbon Soot Deposits
-    url: /contaminants/organic-residue/other/carbon-soot
-    image: /images/contaminants/organic-residue/other/carbon-soot.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: ceramic-glaze
-    title: Ceramic Glaze Deposits
-    url: /contaminants/inorganic-coating/ceramic/ceramic-glaze
-    image: /images/contaminants/inorganic-coating/ceramic/ceramic-glaze.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chemical-stains
-    title: Chemical Stains / Acid Etching
-    url: /contaminants/chemical-residue/industrial/chemical-stains
-    image: /images/contaminants/chemical-residue/industrial/chemical-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fire-damage
-    title: Fire and Smoke Damage
-    url: /contaminants/thermal-damage/fire/fire-damage
-    image: /images/contaminants/thermal-damage/fire/fire-damage.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graphite-marks
-    title: Graphite Deposit Traces
-    url: /contaminants/organic-residue/marking/graphite-marks
-    image: /images/contaminants/organic-residue/marking/graphite-marks.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lime-scale
-    title: Limescale Deposits
-    url: /contaminants/thermal-damage/scale/lime-scale
-    image: /images/contaminants/thermal-damage/scale/lime-scale.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: medical-disinfectant
-    title: Medical Disinfectant Residue
-    url: /contaminants/chemical-residue/industrial/medical-disinfectant
-    image: /images/contaminants/chemical-residue/industrial/medical-disinfectant.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-deposits
-    title: Hard Water Mineral Scale
-    url: /contaminants/thermal-damage/scale/mineral-deposits
-    image: /images/contaminants/thermal-damage/scale/mineral-deposits.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mold-mildew
-    title: Mold and Mildew Growth
-    url: /contaminants/biological/growth/mold-mildew
-    image: /images/contaminants/biological/growth/mold-mildew.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: scale-buildup
-    title: Mineral Scale / Hard Water Deposits
-    url: /contaminants/thermal-damage/scale/scale-buildup
-    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: semiconductor-residue
-    title: Semiconductor Processing Residue
-    url: /contaminants/chemical-residue/industrial/semiconductor-residue
-    image: /images/contaminants/chemical-residue/industrial/semiconductor-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicone-buildup
-    title: Silicone Sealant Buildup
-    url: /contaminants/organic-residue/adhesive/silicone-buildup
-    image: /images/contaminants/organic-residue/adhesive/silicone-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: soap-scum
-    title: Soap Scum Buildup
-    url: /contaminants/organic-residue/cleaning-agent/soap-scum
-    image: /images/contaminants/organic-residue/cleaning-agent/soap-scum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: boron-nitride-laser-cleaning Laser Cleaning Settings
+settings_description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing boron-nitride-laser-cleaning laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -164,8 +251,8 @@ breadcrumb:
   href: /materials/ceramic
 - label: Technical
   href: /materials/ceramic/technical
-- label: Boron Nitride
-  href: /materials/boron-nitride
+- label: boron-nitride-laser-cleaning
+  href: /materials/boron-nitride-settings
 images:
   hero:
     alt: Boron Nitride surface undergoing laser cleaning showing precise contamination removal
@@ -173,52 +260,7 @@ images:
   micro:
     alt: Boron Nitride microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/boron-nitride-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    value: 80
-    unit: W
-    min: 1
-    max: 120
-  wavelength:
-    value: 1064
-    unit: nm
-    min: 355
-    max: 10640
-  spotSize:
-    value: 50
-    unit: μm
-    min: 0.1
-    max: 500
-  repetitionRate:
-    value: 50
-    unit: kHz
-    min: 1
-    max: 200
-  energyDensity:
-    value: 2
-    unit: J/cm²
-    min: 0.1
-    max: 20
-  pulseWidth:
-    value: 10
-    unit: ns
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    min: 10
-    max: 5000
-  passCount:
-    value: 3
-    unit: passes
-    min: 1
-    max: 10
-  overlapRatio:
-    value: 50
-    unit: '%'
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 15.5
@@ -241,9 +283,56 @@ laserMaterialInteraction:
     value: 0.92
     wavelength: 1064
 material_challenges:
-- Requires careful power calibration to prevent material damage
-- Monitor surface temperature during processing
-- Verify cleaning effectiveness through inspection
+  thermal_management:
+  - challenge: Thermal shock and cracking
+    severity: critical
+    threshold_temperature: ΔT > 200-300°C rapid cooling
+    impact: Ceramics crack catastrophically from rapid temperature changes due to low thermal expansion
+    solutions:
+    - Use pulse mode with 3-5 second cooling between passes
+    - Gradual power ramping (start 50W, increase 10W per pass)
+    - Preheat substrate to reduce thermal gradients
+    - Monitor for surface crazing; stop immediately if cracks appear
+    challenge_id: thermal_shock_and_cracking
+  - challenge: Variable thermal conductivity
+    severity: medium
+    property_value: 0.8-120 W/m·K (150x variation between materials)
+    impact: SiC/WC conduct heat well, but alumina/zirconia accumulate heat rapidly
+    solutions:
+    - Low conductivity ceramics (alumina, zirconia) require 50% longer cooling
+    - High conductivity ceramics (SiC, WC) tolerate higher power
+    - Test on scrap to determine cooling requirements
+    challenge_id: variable_thermal_conductivity
+  surface_characteristics:
+  - challenge: Surface defects and damage threshold
+    severity: high
+    impact: Micro-cracks, pores, and surface defects dramatically lower damage threshold
+    solutions:
+    - Inspect surface with magnification before cleaning
+    - Reduce power 30-40% for porous or aged ceramics
+    - Use multiple low-energy passes rather than single high-energy pass
+    - Polished ceramics tolerate 2-3x higher fluence than rough surfaces
+    challenge_id: surface_defects_and_damage_threshold
+  - challenge: Porosity variation
+    severity: medium
+    porosity_range: 0-30% (dense vs porous ceramics)
+    impact: Porous ceramics trap contaminants deep in structure and scatter laser energy
+    solutions:
+    - Dense ceramics (0-5% porosity) clean easily at 100-150W
+    - Porous ceramics require multiple progressive passes
+    - Use crosshatch scan pattern for uniform penetration
+    - Chemical pre-treatment for deep contamination in porous ceramics
+    challenge_id: porosity_variation
+  contamination_challenges:
+  - challenge: Coating and residue removal
+    severity: medium
+    impact: Hard coatings (PVD, thermal barrier) require high energy but risk substrate damage
+    solutions:
+    - First pass 120W fast (2000 mm/s) for bulk coating removal
+    - Second pass 80W slow (1000 mm/s) for residue
+    - Monitor for substrate exposure; adjust power accordingly
+    - PVD coatings may require chemical assist for complete removal
+    challenge_id: coating_and_residue_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:44.226887'
+    generated_date: '2025-12-16T13:51:28.226711'

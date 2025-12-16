@@ -1,12 +1,73 @@
+id: carbon-buildup-contamination
 name: Carbon Deposit Buildup
 slug: carbon-buildup-contamination
-id: carbon-buildup-contamination
 category: organic-residue
 subcategory: other
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/Steel
+    image: /images/materials/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/Stainless Steel
+    image: /images/materials/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Alumina
+    title: Alumina
+    url: /materials/Alumina
+    image: /images/materials/Alumina.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicon-carbide
+    title: Silicon Carbide
+    url: /materials/silicon-carbide
+    image: /images/materials/silicon-carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zirconia
+    title: Zirconia
+    url: /materials/Zirconia
+    image: /images/materials/Zirconia.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum Nitride
+    title: Aluminum Nitride
+    url: /materials/Aluminum Nitride
+    image: /images/materials/Aluminum Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Carbide
+    title: Boron Carbide
+    url: /materials/Boron Carbide
+    image: /images/materials/Boron Carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Nitride
+    title: Boron Nitride
+    url: /materials/Boron Nitride
+    image: /images/materials/Boron Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Silicon Nitride
+    title: Silicon Nitride
+    url: /materials/Silicon Nitride
+    image: /images/materials/Silicon Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,6 +98,10 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Alessandro Moretti
@@ -187,74 +252,6 @@ laser_properties:
     thermal_conductivity: 1.5
     thermal_diffusivity: 0.21
     vaporization_temperature: 4200
-domain_linkages:
-  related_materials:
-  - id: Steel
-    title: Steel
-    url: /materials/metal/ferrous/Steel
-    image: /images/materials/metal/ferrous/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
-    title: Stainless Steel
-    url: /materials/metal/ferrous/Stainless Steel
-    image: /images/materials/metal/ferrous/Stainless Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Alumina
-    title: Alumina
-    url: /materials/ceramic/oxide/Alumina
-    image: /images/materials/ceramic/oxide/Alumina.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicon-carbide
-    title: Silicon Carbide
-    url: /materials/silicon-carbide
-    image: /images/materials/silicon-carbide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zirconia
-    title: Zirconia
-    url: /materials/ceramic/oxide/Zirconia
-    image: /images/materials/ceramic/oxide/Zirconia.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum Nitride
-    title: Aluminum Nitride
-    url: /materials/ceramic/technical/Aluminum Nitride
-    image: /images/materials/ceramic/technical/Aluminum Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Boron Carbide
-    title: Boron Carbide
-    url: /materials/ceramic/carbide/Boron Carbide
-    image: /images/materials/ceramic/carbide/Boron Carbide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Boron Nitride
-    title: Boron Nitride
-    url: /materials/ceramic/technical/Boron Nitride
-    image: /images/materials/ceramic/technical/Boron Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Silicon Nitride
-    title: Silicon Nitride
-    url: /materials/ceramic/oxide/Silicon Nitride
-    image: /images/materials/ceramic/oxide/Silicon Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Steel
 - Stainless Steel

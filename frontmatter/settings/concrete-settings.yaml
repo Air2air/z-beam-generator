@@ -1,13 +1,365 @@
-name: Concrete
-slug: concrete
 id: concrete-settings
+name: concrete-laser-cleaning
+slug: concrete-settings
 category: masonry
 subcategory: general
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_contaminants:
+  - id: algae-growth
+    title: Algae Growth
+    url: /contaminants/algae-growth
+    image: /images/contaminants/algae-growth.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: asbestos-coating
+    title: Asbestos Coating
+    url: /contaminants/asbestos-coating
+    image: /images/contaminants/asbestos-coating.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: biological-stains
+    title: Biological Stains
+    url: /contaminants/biological-stains
+    image: /images/contaminants/biological-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bitumen-tar
+    title: Bitumen Tar
+    url: /contaminants/bitumen-tar
+    image: /images/contaminants/bitumen-tar.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbon-soot
+    title: Carbon Soot
+    url: /contaminants/carbon-soot
+    image: /images/contaminants/carbon-soot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chemical-stains
+    title: Chemical Stains
+    url: /contaminants/chemical-stains
+    image: /images/contaminants/chemical-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: concrete-dust
+    title: Concrete Dust
+    url: /contaminants/concrete-dust
+    image: /images/contaminants/concrete-dust.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: efflorescence
+    title: Efflorescence
+    url: /contaminants/efflorescence
+    image: /images/contaminants/efflorescence.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: epoxy-residue
+    title: Epoxy Residue
+    url: /contaminants/epoxy-residue
+    image: /images/contaminants/epoxy-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fertilizer-residue
+    title: Fertilizer Residue
+    url: /contaminants/fertilizer-residue
+    image: /images/contaminants/fertilizer-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fire-damage
+    title: Fire Damage
+    url: /contaminants/fire-damage
+    image: /images/contaminants/fire-damage.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: graffiti-paint
+    title: Graffiti Paint
+    url: /contaminants/graffiti-paint
+    image: /images/contaminants/graffiti-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: graphite-marks
+    title: Graphite Marks
+    url: /contaminants/graphite-marks
+    image: /images/contaminants/graphite-marks.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: hydraulic-fluid
+    title: Hydraulic Fluid
+    url: /contaminants/hydraulic-fluid
+    image: /images/contaminants/hydraulic-fluid.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: ink-stains
+    title: Ink Stains
+    url: /contaminants/ink-stains
+    image: /images/contaminants/ink-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lead-paint
+    title: Lead Paint
+    url: /contaminants/lead-paint
+    image: /images/contaminants/lead-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mercury-contamination
+    title: Mercury
+    url: /contaminants/mercury
+    image: /images/contaminants/mercury.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mineral-stain
+    title: Mineral Stain
+    url: /contaminants/mineral-stain
+    image: /images/contaminants/mineral-stain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mold-mildew
+    title: Mold Mildew
+    url: /contaminants/mold-mildew
+    image: /images/contaminants/mold-mildew.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: paint-residue
+    title: Paint Residue
+    url: /contaminants/paint-residue
+    image: /images/contaminants/paint-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pcb-contamination
+    title: Pcb
+    url: /contaminants/pcb
+    image: /images/contaminants/pcb.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pesticide-residue
+    title: Pesticide Residue
+    url: /contaminants/pesticide-residue
+    image: /images/contaminants/pesticide-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: plastic-residue
+    title: Plastic Residue
+    url: /contaminants/plastic-residue
+    image: /images/contaminants/plastic-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: radioactive-contamination
+    title: Radioactive
+    url: /contaminants/radioactive
+    image: /images/contaminants/radioactive.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: rubber-residue
+    title: Rubber Residue
+    url: /contaminants/rubber-residue
+    image: /images/contaminants/rubber-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: salt-residue
+    title: Salt Residue
+    url: /contaminants/salt-residue
+    image: /images/contaminants/salt-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: scale-buildup
+    title: Scale Buildup
+    url: /contaminants/scale-buildup
+    image: /images/contaminants/scale-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicone-buildup
+    title: Silicone Buildup
+    url: /contaminants/silicone-buildup
+    image: /images/contaminants/silicone-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: uranium-oxide
+    title: Uranium Oxide
+    url: /contaminants/uranium-oxide
+    image: /images/contaminants/uranium-oxide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: water-stain
+    title: Water Stain
+    url: /contaminants/water-stain
+    image: /images/contaminants/water-stain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds:
+  - id: benzoapyrene-compound
+    title: Benzo[a]pyrene
+    url: /compounds/benzoapyrene
+    image: /images/compounds/benzoapyrene.jpg
+    frequency: common
+    severity: high
+    typical_context: Naturally present in bitumen/asphalt
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/pahs
+    image: /images/compounds/pahs.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Bitumen is rich in PAHs
+    exposure_risk: high
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/carbon-monoxide
+    image: /images/compounds/carbon-monoxide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of epoxy resins
+    exposure_risk: moderate
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/formaldehyde
+    image: /images/compounds/formaldehyde.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Thermal degradation of certain epoxy formulations
+    exposure_risk: low
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/toluene
+    image: /images/compounds/toluene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Release of toluene from spray paint
+    exposure_risk: moderate
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/vocs
+    image: /images/compounds/vocs.jpg
+    frequency: very_common
+    severity: moderate
+    typical_context: Release of spray paint solvents
+    exposure_risk: moderate
+  - id: acetaldehyde-compound
+    title: Acetaldehyde
+    url: /compounds/acetaldehyde
+    image: /images/compounds/acetaldehyde.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Breakdown of certain paint formulations
+    exposure_risk: low
+  - id: nitrogen-oxides-compound
+    title: Nitrogen Oxides
+    url: /compounds/nitrogen-oxides
+    image: /images/compounds/nitrogen-oxides.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Nitrogen from some paint formulations
+    exposure_risk: low
+  - id: zinc-oxide-compound
+    title: Zinc Oxide
+    url: /compounds/zinc-oxide
+    image: /images/compounds/zinc-oxide.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Zinc oxide pigments in paint
+    exposure_risk: low
+  - id: chromium-vi-compound
+    title: Hexavalent Chromium
+    url: /compounds/chromium-vi
+    image: /images/compounds/chromium-vi.jpg
+    frequency: occasional
+    severity: high
+    typical_context: Chromate pigments in some paints
+    exposure_risk: high
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/carbon-dioxide
+    image: /images/compounds/carbon-dioxide.jpg
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of organic paint
+    exposure_risk: low
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/benzene
+    image: /images/compounds/benzene.jpg
+    frequency: common
+    severity: high
+    typical_context: Thermal breakdown of aromatic paint solvents
+    exposure_risk: high
+  - id: hydrogen-chloride-compound
+    title: Hydrogen Chloride
+    url: /compounds/hydrogen-chloride
+    image: /images/compounds/hydrogen-chloride.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Thermal decomposition of PVC (polyvinyl chloride)
+    exposure_risk: high
+  - id: hydrogen-cyanide-compound
+    title: Hydrogen Cyanide
+    url: /compounds/hydrogen-cyanide
+    image: /images/compounds/hydrogen-cyanide.jpg
+    frequency: occasional
+    severity: high
+    typical_context: Thermal decomposition of nitrogen-containing polymers (polyurethane, nylon, acrylics)
+    exposure_risk: high
+  - id: styrene-compound
+    title: Styrene
+    url: /compounds/styrene
+    image: /images/compounds/styrene.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Thermal depolymerization of polystyrene
+    exposure_risk: high
+  - id: phosgene-compound
+    title: Phosgene
+    url: /compounds/phosgene
+    image: /images/compounds/phosgene.jpg
+    frequency: rare
+    severity: high
+    typical_context: Thermal breakdown of certain chlorinated plastics
+    exposure_risk: high
+  - id: acrolein-compound
+    title: Acrolein
+    url: /compounds/acrolein
+    image: /images/compounds/acrolein.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Pyrolysis of certain polymers
+    exposure_risk: moderate
+  - id: sulfur-dioxide-compound
+    title: Sulfur Dioxide
+    url: /compounds/sulfur-dioxide
+    image: /images/compounds/sulfur-dioxide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Vulcanized rubber contains sulfur compounds
+    exposure_risk: moderate
 author:
   id: 4
   name: Todd Dunning
@@ -36,220 +388,13 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
-title: Concrete Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: concrete-laser-cleaning Laser Cleaning Settings
 settings_description: We've found that concrete demands initial low-power passes in laser cleaning to avoid aggregate spalling, a risk not as prevalent in denser stones like granite. Its inherent porosity allows effective absorption of laser energy, which reveals embedded contaminants without excessive heat buildup. We typically follow with multiple overlapping scans to restore surface uniformity in infrastructure settings, reducing the chance of uneven ablation.
-domain_linkages:
-  related_contaminants:
-  - id: algae-growth
-    title: Algae and Lichen Growth
-    url: /contaminants/biological/growth/algae-growth
-    image: /images/contaminants/biological/growth/algae-growth.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: asbestos-coating
-    title: Asbestos-Containing Material
-    url: /contaminants/inorganic-coating/hazardous/asbestos-coating
-    image: /images/contaminants/inorganic-coating/hazardous/asbestos-coating.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: biological-stains
-    title: Organic Biofilm Deposits
-    url: /contaminants/biological/deposit/biological-stains
-    image: /images/contaminants/biological/deposit/biological-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bitumen-tar
-    title: Bitumen and Tar Coatings
-    url: /contaminants/organic-residue/petroleum/bitumen-tar
-    image: /images/contaminants/organic-residue/petroleum/bitumen-tar.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-soot
-    title: Carbon Soot Deposits
-    url: /contaminants/organic-residue/other/carbon-soot
-    image: /images/contaminants/organic-residue/other/carbon-soot.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chemical-stains
-    title: Chemical Stains / Acid Etching
-    url: /contaminants/chemical-residue/industrial/chemical-stains
-    image: /images/contaminants/chemical-residue/industrial/chemical-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: concrete-dust
-    title: Concrete Dust Deposits
-    url: /contaminants/inorganic-coating/mineral/concrete-dust
-    image: /images/contaminants/inorganic-coating/mineral/concrete-dust.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: efflorescence
-    title: Concrete Efflorescence
-    url: /contaminants/inorganic-coating/mineral/efflorescence
-    image: /images/contaminants/inorganic-coating/mineral/efflorescence.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: epoxy-residue
-    title: Epoxy Resin Deposits
-    url: /contaminants/organic-residue/adhesive/epoxy-residue
-    image: /images/contaminants/organic-residue/adhesive/epoxy-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fertilizer-residue
-    title: Fertilizer Salt Deposits
-    url: /contaminants/chemical-residue/industrial/fertilizer-residue
-    image: /images/contaminants/chemical-residue/industrial/fertilizer-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fire-damage
-    title: Fire and Smoke Damage
-    url: /contaminants/thermal-damage/fire/fire-damage
-    image: /images/contaminants/thermal-damage/fire/fire-damage.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graffiti-paint
-    title: Graffiti and Spray Paint
-    url: /contaminants/inorganic-coating/paint/graffiti-paint
-    image: /images/contaminants/inorganic-coating/paint/graffiti-paint.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graphite-marks
-    title: Graphite Deposit Traces
-    url: /contaminants/organic-residue/marking/graphite-marks
-    image: /images/contaminants/organic-residue/marking/graphite-marks.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: hydraulic-fluid
-    title: Hydraulic Fluid Contamination
-    url: /contaminants/organic-residue/petroleum/hydraulic-fluid
-    image: /images/contaminants/organic-residue/petroleum/hydraulic-fluid.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: ink-stains
-    title: Printing Ink Residue
-    url: /contaminants/organic-residue/marking/ink-stains
-    image: /images/contaminants/organic-residue/marking/ink-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lead-paint
-    title: Lead-Based Paint Removal
-    url: /contaminants/inorganic-coating/paint/lead-paint
-    image: /images/contaminants/inorganic-coating/paint/lead-paint.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mercury-contamination
-    title: Mercury Spill Residue
-    url: /contaminants/chemical-residue/hazardous/mercury-contamination
-    image: /images/contaminants/chemical-residue/hazardous/mercury-contamination.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-stain
-    title: Mineral Staining
-    url: /contaminants/inorganic-coating/mineral/mineral-stain
-    image: /images/contaminants/inorganic-coating/mineral/mineral-stain.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mold-mildew
-    title: Mold and Mildew Growth
-    url: /contaminants/biological/growth/mold-mildew
-    image: /images/contaminants/biological/growth/mold-mildew.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: paint-residue
-    title: Paint Residue / Coating Failure
-    url: /contaminants/inorganic-coating/paint/paint-residue
-    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pcb-contamination
-    title: PCB Oil Contamination
-    url: /contaminants/chemical-residue/industrial/pcb-contamination
-    image: /images/contaminants/chemical-residue/industrial/pcb-contamination.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pesticide-residue
-    title: Pesticide Chemical Residue
-    url: /contaminants/chemical-residue/industrial/pesticide-residue
-    image: /images/contaminants/chemical-residue/industrial/pesticide-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: plastic-residue
-    title: Degraded Polymer Deposits
-    url: /contaminants/organic-residue/polymer/plastic-residue
-    image: /images/contaminants/organic-residue/polymer/plastic-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: radioactive-contamination
-    title: Surface Radioactive Contamination
-    url: /contaminants/chemical-residue/hazardous/radioactive-contamination
-    image: /images/contaminants/chemical-residue/hazardous/radioactive-contamination.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: rubber-residue
-    title: Rubber Compound Residue
-    url: /contaminants/organic-residue/polymer/rubber-residue
-    image: /images/contaminants/organic-residue/polymer/rubber-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: salt-residue
-    title: Salt and Chloride Deposits
-    url: /contaminants/inorganic-coating/mineral/salt-residue
-    image: /images/contaminants/inorganic-coating/mineral/salt-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: scale-buildup
-    title: Mineral Scale / Hard Water Deposits
-    url: /contaminants/thermal-damage/scale/scale-buildup
-    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicone-buildup
-    title: Silicone Sealant Buildup
-    url: /contaminants/organic-residue/adhesive/silicone-buildup
-    image: /images/contaminants/organic-residue/adhesive/silicone-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: uranium-oxide
-    title: Depleted Uranium Oxide
-    url: /contaminants/chemical-residue/hazardous/uranium-oxide
-    image: /images/contaminants/chemical-residue/hazardous/uranium-oxide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: water-stain
-    title: Water Staining and Marks
-    url: /contaminants/organic-residue/other/water-stain
-    image: /images/contaminants/organic-residue/other/water-stain.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -259,8 +404,8 @@ breadcrumb:
   href: /materials/masonry
 - label: General
   href: /materials/masonry/general
-- label: Concrete
-  href: /materials/concrete
+- label: concrete-laser-cleaning
+  href: /materials/concrete-settings
 images:
   hero:
     alt: Concrete surface undergoing laser cleaning showing precise contamination removal
@@ -268,52 +413,7 @@ images:
   micro:
     alt: Concrete microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/concrete-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: mm
-    value: 0.8
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 2.5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 12
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.5
@@ -354,6 +454,7 @@ material_challenges:
     - Reduce power by 50-60% for damp masonry
     - Allow 24-48 hours drying after rain before laser cleaning
     - Monitor for popping sounds or surface lifting; stop immediately
+    challenge_id: moisture_induced_spalling_and_explosive_failure
   - challenge: Low thermal diffusivity and heat accumulation
     severity: high
     property_value: 0.1-1.0 mm²/s (3-10x slower than metals)
@@ -363,6 +464,7 @@ material_challenges:
     - Use low repetition rates (<20 kHz)
     - Defocused beam reduces peak intensity
     - Multiple gentle passes preferred over aggressive single pass
+    challenge_id: low_thermal_diffusivity_and_heat_accumulation
   surface_characteristics:
   - challenge: High porosity and deep contamination
     severity: high
@@ -373,6 +475,7 @@ material_challenges:
     - Reduce scan speed for deeper penetration (400-600 mm/s)
     - Chemical pre-treatment for biological growth (algae, lichen)
     - Expect 3-5 passes for complete cleaning vs 1-2 for dense materials
+    challenge_id: high_porosity_and_deep_contamination
   - challenge: Surface heterogeneity and aggregate exposure
     severity: medium
     impact: Mixed composition (cement matrix, aggregates, voids) causes variable absorption
@@ -381,6 +484,7 @@ material_challenges:
     - Crosshatch scan pattern for uniform coverage
     - Monitor for differential ablation; adjust power if aggregates become prominent
     - Aged masonry more challenging than new construction
+    challenge_id: surface_heterogeneity_and_aggregate_exposure
   contamination_challenges:
   - challenge: Paint and coating removal from porous substrate
     severity: medium
@@ -391,6 +495,7 @@ material_challenges:
     - Third pass 50W very slow (500 mm/s) for residual staining
     - Chemical stripping pre-treatment reduces laser exposure
     - Heritage masonry requires gentler approach (max 60W)
+    challenge_id: paint_and_coating_removal_from_porous_substrate
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:40.023930'
+    generated_date: '2025-12-16T13:51:19.692609'

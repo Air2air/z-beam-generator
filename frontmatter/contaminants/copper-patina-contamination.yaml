@@ -1,12 +1,36 @@
+id: copper-patina-contamination
 name: Copper Patina / Verdigris
 slug: copper-patina-contamination
-id: copper-patina-contamination
 category: oxidation
 subcategory: non-ferrous
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+micro:
+  after: Post-cleaning reveals restored surface with copper patina / verdigris successfully
+    removed through precise laser ablation.
+  before: Surface shows contamination from copper patina / verdigris affecting material
+    appearance and properties.
+domain_linkages:
+  related_materials:
+  - id: Copper
+    title: Copper
+    url: /materials/Copper
+    image: /images/materials/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bronze
+    title: Bronze
+    url: /materials/bronze
+    image: /images/materials/bronze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 4
   name: Todd Dunning
@@ -36,6 +60,10 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Todd Dunning
@@ -67,11 +95,6 @@ images:
   micro:
     url: /images/contaminants/copper-patina-contamination-micro.jpg
     alt: Copper Patina / Verdigris contamination microscopic detail
-micro:
-  after: Post-cleaning reveals restored surface with copper patina / verdigris successfully
-    removed through precise laser ablation.
-  before: Surface shows contamination from copper patina / verdigris affecting material
-    appearance and properties.
 laser_properties:
   laser_parameters:
     beam_profile: gaussian
@@ -193,44 +216,6 @@ eeat:
     name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/publication/3587
   reviewedBy: Z-Beam Quality Assurance Team
-domain_linkages:
-  related_materials:
-  - id: Copper
-    title: Copper
-    url: /materials/metal/non-ferrous/Copper
-    image: /images/materials/metal/non-ferrous/Copper.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bronze
-    title: Bronze
-    url: /materials/bronze
-    image: /images/materials/bronze.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance:
-  - id: iec-60825
-    title: IEC 60825
-    url: ''
-    image: /images/standards/generic-logo.svg
-    applicability: laser_operation
-    requirement: IEC 60825 - Safety of Laser Products
-  - id: osha-29
-    title: OSHA 29
-    url: ''
-    image: /images/standards/generic-logo.svg
-    applicability: laser_operation
-    requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  ppe_requirements: []
 valid_materials:
 - Copper
 - Brass

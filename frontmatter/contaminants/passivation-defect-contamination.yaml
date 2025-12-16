@@ -1,12 +1,24 @@
+id: passivation-defect-contamination
 name: Passivation Layer Irregularities
 slug: passivation-defect-contamination
-id: passivation-defect-contamination
 category: inorganic-coating
 subcategory: coating
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/Stainless Steel
+    image: /images/materials/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chrome-plated-steel
+    title: Chrome Plated Steel
+    url: /materials/chrome-plated-steel
+    image: /images/materials/chrome-plated-steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,6 +49,10 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -182,25 +198,6 @@ laser_properties:
     thermal_conductivity: 8
     thermal_diffusivity: 2.1
     vaporization_temperature: 1200
-domain_linkages:
-  related_materials:
-  - id: Stainless Steel
-    title: Stainless Steel
-    url: /materials/metal/ferrous/Stainless Steel
-    image: /images/materials/metal/ferrous/Stainless Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chrome-plated-steel
-    title: Chrome-Plated Steel
-    url: /materials/chrome-plated-steel
-    image: /images/materials/chrome-plated-steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Stainless Steel
 - Chrome-Plated Steel

@@ -1,13 +1,17 @@
-name: Tungsten Carbide
-slug: tungsten-carbide
 id: tungsten-carbide-settings
+name: tungsten-carbide-laser-cleaning
+slug: tungsten-carbide-settings
 category: ceramic
 subcategory: carbide
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_contaminants:
+  - id: diamond-coating
+    title: Diamond Coating
+    url: /contaminants/diamond-coating
+    image: /images/contaminants/diamond-coating.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,17 +41,13 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
-title: Tungsten Carbide Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: tungsten-carbide-laser-cleaning Laser Cleaning Settings
 settings_description: "When laser cleaning Tungsten Carbide, we've found you must start low on power to avoid cracking its brittle surface right away. This material's extreme hardness makes contaminants stick tough, so begin with a gentle pass to loosen dirt without scratching the base. We've typically set the beam to a focused spot and slow scan speed, letting its good heat spread evenly so you don't overheat edges. Unlike softer metals, its low expansion keeps shapes stable, but watch for buildup—multiple light passes restore that tool-sharp finish in aerospace parts. Just ease up if you spot any haze; it cleans clean without residue. \n\nYi-Chun Lin, Ph.D."
-domain_linkages:
-  related_contaminants:
-  - id: diamond-coating
-    title: Diamond-Like Carbon Removal
-    url: /contaminants/inorganic-coating/coating/diamond-coating
-    image: /images/contaminants/inorganic-coating/coating/diamond-coating.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -57,8 +57,8 @@ breadcrumb:
   href: /materials/ceramic
 - label: Carbide
   href: /materials/ceramic/carbide
-- label: Tungsten Carbide
-  href: /materials/tungsten-carbide
+- label: tungsten-carbide-laser-cleaning
+  href: /materials/tungsten-carbide-settings
 images:
   hero:
     alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination removal
@@ -66,52 +66,7 @@ images:
   micro:
     alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing detailed surface structure
     url: /images/material/tungsten-carbide-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5.1
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 19.2
@@ -151,6 +106,7 @@ material_challenges:
     - Gradual power ramping (start 50W, increase 10W per pass)
     - Preheat substrate to reduce thermal gradients
     - Monitor for surface crazing; stop immediately if cracks appear
+    challenge_id: thermal_shock_and_cracking
   - challenge: Variable thermal conductivity
     severity: medium
     property_value: 0.8-120 W/m·K (150x variation between materials)
@@ -159,6 +115,7 @@ material_challenges:
     - Low conductivity ceramics (alumina, zirconia) require 50% longer cooling
     - High conductivity ceramics (SiC, WC) tolerate higher power
     - Test on scrap to determine cooling requirements
+    challenge_id: variable_thermal_conductivity
   surface_characteristics:
   - challenge: Surface defects and damage threshold
     severity: high
@@ -168,6 +125,7 @@ material_challenges:
     - Reduce power 30-40% for porous or aged ceramics
     - Use multiple low-energy passes rather than single high-energy pass
     - Polished ceramics tolerate 2-3x higher fluence than rough surfaces
+    challenge_id: surface_defects_and_damage_threshold
   - challenge: Porosity variation
     severity: medium
     porosity_range: 0-30% (dense vs porous ceramics)
@@ -177,6 +135,7 @@ material_challenges:
     - Porous ceramics require multiple progressive passes
     - Use crosshatch scan pattern for uniform penetration
     - Chemical pre-treatment for deep contamination in porous ceramics
+    challenge_id: porosity_variation
   contamination_challenges:
   - challenge: Coating and residue removal
     severity: medium
@@ -186,6 +145,7 @@ material_challenges:
     - Second pass 80W slow (1000 mm/s) for residue
     - Monitor for substrate exposure; adjust power accordingly
     - PVD coatings may require chemical assist for complete removal
+    challenge_id: coating_and_residue_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:43.486709'
+    generated_date: '2025-12-16T13:51:26.450752'

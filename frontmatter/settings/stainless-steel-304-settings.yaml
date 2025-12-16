@@ -1,13 +1,9 @@
-name: Stainless Steel 304
-slug: stainless-steel-304
 id: stainless-steel-304-settings
+name: stainless-steel-304-laser-cleaning
+slug: stainless-steel-304-settings
 category: metal
 subcategory: alloy
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 4
   name: Todd Dunning
@@ -36,12 +32,13 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
-title: Stainless Steel 304 Laser Cleaning Settings
-settings_description:
-  before: Before laser cleaning, Stainless Steel 304 surfaces require careful parameter selection
-  after: After cleaning, Stainless Steel 304 surfaces show restored appearance with controlled parameters
-domain_linkages:
-  related_contaminants: []
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: stainless-steel-304-laser-cleaning Laser Cleaning Settings
+settings_description: We've found that when laser cleaning stainless steel 304, moderate power levels restore surfaces cleanly without excessive heat buildup. This approach works because the alloy's dense and non-porous nature allows the laser to remove oxides and contaminants efficiently while preserving the material's inherent corrosion resistance. In our experience, the moderate energy absorption of stainless steel 304 means it heats up steadily, exposing a fresh layer beneath dirt or rust that stays durable and protective afterward. We typically adjust scan speeds to keep the process even, reducing the risk of uneven cleaning on its smooth base. Its strong mechanical properties further support this by maintaining structural integrity during the operation. However, watch for potential surface discoloration if power creeps too high, so always monitor temperatures closely to avoid compromising that long-term oxidation resistance.
 breadcrumb:
 - label: Home
   href: /
@@ -51,8 +48,8 @@ breadcrumb:
   href: /materials/metal
 - label: Alloy
   href: /materials/metal/alloy
-- label: Stainless Steel 304
-  href: /materials/stainless-steel-304
+- label: stainless-steel-304-laser-cleaning
+  href: /materials/stainless-steel-304-settings
 images:
   hero:
     alt: Stainless Steel 304 surface during precision laser cleaning process removing contamination layer
@@ -60,52 +57,7 @@ images:
   micro:
     alt: Stainless Steel 304 surface at 500x magnification showing laser cleaning results
     url: /images/material/stainless-steel-304-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    value: 100
-    unit: W
-    min: 1
-    max: 120
-  wavelength:
-    value: 1064
-    unit: nm
-    min: 355
-    max: 10640
-  spotSize:
-    value: 50
-    unit: μm
-    min: 0.1
-    max: 500
-  repetitionRate:
-    value: 50
-    unit: kHz
-    min: 1
-    max: 200
-  energyDensity:
-    value: 2.5
-    unit: J/cm²
-    min: 0.1
-    max: 20
-  pulseWidth:
-    value: 10
-    unit: ns
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    min: 10
-    max: 5000
-  passCount:
-    value: 2
-    unit: passes
-    min: 1
-    max: 10
-  overlapRatio:
-    value: 50
-    unit: '%'
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 4.09
@@ -131,9 +83,61 @@ laserMaterialInteraction:
     value: 0.65
     wavelength: 1064
 material_challenges:
-- Requires careful power calibration to prevent material damage
-- Monitor surface temperature during processing
-- Verify cleaning effectiveness through inspection
+  thermal_management:
+  - challenge: High thermal conductivity and heat spread
+    severity: medium
+    property_value: 4-400 W/(m·K) depending on metal
+    impact: Heat spreads rapidly causing large heat-affected zones
+    solutions:
+    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
+    - Increase scan speed to minimize dwell time
+    - Apply cooling between passes for thick sections
+    challenge_id: high_thermal_conductivity_and_heat_spread
+  - challenge: Melting and heat-affected zone formation
+    severity: high
+    threshold_range: 660°C (Al) to 3422°C (W)
+    impact: Substrate melting or microstructural changes in heat-affected zone
+    solutions:
+    - Stay below 70% of melting temperature
+    - Use pulse mode with adequate cooling time
+    - Monitor for surface discoloration indicating oxidation
+    challenge_id: melting_and_heat_affected_zone_formation
+  surface_characteristics:
+  - challenge: High reflectivity
+    severity: high
+    reflectivity_range: 60-95% at 1064nm for polished metals
+    impact: Most laser energy reflected, requiring higher power; safety hazard
+    solutions:
+    - Use shorter wavelengths (355nm UV) for better absorption
+    - Increase power density but monitor for thermal damage
+    - Ensure proper beam containment and safety measures
+    - Surface oxidation/roughness improves absorption
+    challenge_id: high_reflectivity
+  - challenge: Surface finish variations
+    severity: medium
+    impact: Polished surfaces reflect more, rough surfaces absorb better
+    solutions:
+    - Adjust power based on surface condition
+    - Test parameters on similar finish samples
+    - Polished surfaces need 20-40% more power
+    challenge_id: surface_finish_variations
+  contamination_challenges:
+  - challenge: Rust and oxide layer removal
+    severity: medium
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
+    solutions:
+    - First pass at higher power (100-120W) to remove bulk oxide
+    - Second pass at lower power (60-80W) for final cleaning
+    - Monitor for base metal exposure to avoid over-processing
+    challenge_id: rust_and_oxide_layer_removal
+  - challenge: Oil and grease removal
+    severity: low
+    impact: Organic contaminants vaporize easily but can redeposit
+    solutions:
+    - Use fume extraction to prevent redeposition
+    - Higher scan speeds (3000-5000 mm/s) for thin films
+    - Chemical pre-cleaning for heavy contamination
+    challenge_id: oil_and_grease_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:44.062450'
+    generated_date: '2025-12-16T13:51:27.715011'

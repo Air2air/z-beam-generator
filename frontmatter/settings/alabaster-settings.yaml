@@ -1,13 +1,9 @@
-name: Alabaster
-slug: alabaster
 id: alabaster-settings
+name: alabaster-laser-cleaning
+slug: alabaster-settings
 category: stone
 subcategory: sedimentary
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,10 +33,13 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
-title: Alabaster Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: alabaster-laser-cleaning Laser Cleaning Settings
 settings_description: When laser cleaning alabaster, you must prioritize its softness compared to harder stones like marble, as it scratches easily under aggressive energy. This low durability means the material absorbs heat unevenly, risking cracks if you push too hard right away. Start with gentle passes at lower intensities to lift surface dirt without stressing the pores, which trap residues but also make it fragile. Watch for discoloration mid-process—dial back if you spot yellowing, and follow up with a cooling interval between sweeps. This approach preserves the fine texture alabaster brings to sculptures and heritage pieces, restoring clarity without harm.
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -50,8 +49,8 @@ breadcrumb:
   href: /materials/stone
 - label: Sedimentary
   href: /materials/stone/sedimentary
-- label: Alabaster
-  href: /materials/alabaster
+- label: alabaster-laser-cleaning
+  href: /materials/alabaster-settings
 images:
   hero:
     alt: Alabaster surface undergoing laser cleaning showing precise contamination removal
@@ -59,52 +58,7 @@ images:
   micro:
     alt: Alabaster microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/alabaster-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 45
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 1.2
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 15
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.182
@@ -145,6 +99,7 @@ material_challenges:
     - Preheat substrate if possible to reduce thermal gradients
     - Granite more resistant than marble; sandstone most vulnerable
     - Monitor for surface crazing; stop immediately if cracks appear
+    challenge_id: thermal_shock_and_microcracking
   - challenge: Moisture-induced spalling
     severity: high
     threshold_temperature: Steam formation >100°C with trapped moisture
@@ -155,6 +110,7 @@ material_challenges:
     - Reduce power by 50% for damp stone
     - Use pulse mode with extended cooling (15-20 seconds)
     - Heritage stone requires especially gentle approach
+    challenge_id: moisture_induced_spalling
   surface_characteristics:
   - challenge: Weathering and surface degradation
     severity: high
@@ -165,6 +121,7 @@ material_challenges:
     - Multiple gentle passes (4-6 at 40-60W) preferred
     - Monitor for powdering or flaking; adjust power immediately
     - Heritage conservation requires documentation and testing
+    challenge_id: weathering_and_surface_degradation
   - challenge: Mineral composition heterogeneity
     severity: medium
     impact: Mixed minerals have different absorption and damage thresholds
@@ -173,6 +130,7 @@ material_challenges:
     - Crosshatch scan pattern for uniform coverage
     - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
     - Quartzite and marble more homogeneous than granite
+    challenge_id: mineral_composition_heterogeneity
   contamination_challenges:
   - challenge: Biological growth and deep staining
     severity: medium
@@ -184,6 +142,7 @@ material_challenges:
     - Third pass 40W very slow (400 mm/s) for deep staining
     - Chemical biocide pre-treatment kills roots and reduces laser exposure
     - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
+    challenge_id: biological_growth_and_deep_staining
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:39.166068'
+    generated_date: '2025-12-16T13:51:18.060966'

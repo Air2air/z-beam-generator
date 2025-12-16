@@ -1,12 +1,31 @@
+id: silver-plating-contamination
 name: Silver Plating Residue
 slug: silver-plating-contamination
-id: silver-plating-contamination
 category: metallic-coating
 subcategory: plating
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: Copper
+    title: Copper
+    url: /materials/Copper
+    image: /images/materials/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bronze
+    title: Bronze
+    url: /materials/bronze
+    image: /images/materials/bronze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,6 +55,10 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -182,32 +205,6 @@ laser_properties:
     thermal_conductivity: 429
     thermal_diffusivity: 174
     vaporization_temperature: 2212
-domain_linkages:
-  related_materials:
-  - id: Copper
-    title: Copper
-    url: /materials/metal/non-ferrous/Copper
-    image: /images/materials/metal/non-ferrous/Copper.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bronze
-    title: Bronze
-    url: /materials/bronze
-    image: /images/materials/bronze.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Copper
 - Brass

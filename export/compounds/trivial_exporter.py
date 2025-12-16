@@ -1,14 +1,22 @@
 """
 Compounds Exporter
 Exports compound safety profiles to frontmatter YAML format for deployment.
+
+INTEGRATION:
+- Domain Associations: Reads from centralized DomainAssociations.yaml
+- Field Order: Uses FrontmatterFieldOrder.yaml for consistent structure
+- Bidirectional: Automatically generates reverse linkages to contaminants
 """
 
 import logging
 from typing import Dict, Any, Optional
 from pathlib import Path
 import yaml
+from collections import OrderedDict
 
 from domains.compounds.data_loader import CompoundDataLoader
+from shared.validation.domain_associations import DomainAssociationsValidator
+from shared.validation.field_order import FrontmatterFieldOrderValidator
 
 logger = logging.getLogger(__name__)
 
@@ -22,11 +30,19 @@ class CompoundExporter:
     def __init__(self):
         self.data_loader = CompoundDataLoader()
         
+        # Initialize validators
+        self.associations_validator = DomainAssociationsValidator()
+        self.associations_validator.load()  # Load associations data
+        
+        self.field_order_validator = FrontmatterFieldOrderValidator()
+        self.field_order_validator.load_schema()  # Load field order spec
+        
         # Output directory
         self.output_dir = Path(__file__).parent.parent.parent / "frontmatter" / "compounds"
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
         logger.info(f"CompoundExporter initialized, output: {self.output_dir}")
+        logger.info(f"✅ Domain associations loaded and validated")
     
     def export_compound(self, compound_id: str, force: bool = False) -> bool:
         """
@@ -57,9 +73,12 @@ class CompoundExporter:
         # Build frontmatter
         frontmatter = self._build_frontmatter(compound)
         
+        # Reorder fields according to specification
+        ordered_frontmatter = self.field_order_validator.reorder_fields(frontmatter, 'compounds')
+        
         # Write to file with sort_keys=False to preserve field order
         with open(output_file, 'w', encoding='utf-8') as f:
-            yaml.dump(frontmatter, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+            yaml.dump(dict(ordered_frontmatter), f, default_flow_style=False, allow_unicode=True, sort_keys=False)
         
         logger.info(f"✅ Exported {compound['name']} to {output_file}")
         return True
@@ -148,7 +167,8 @@ class CompoundExporter:
             'first_aid': compound.get('first_aid'),
             
             # Domain linkages (bidirectional relationships)
-            'domain_linkages': compound.get('domain_linkages', {}),
+            # Generated from centralized DomainAssociations.yaml
+            'domain_linkages': self._build_domain_linkages(compound),
             
             # Author (full data from Authors.yaml)
             'author': author_data.copy(),
@@ -167,6 +187,39 @@ class CompoundExporter:
         }
         
         return frontmatter
+    
+    def _build_domain_linkages(self, compound: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Build domain linkages from centralized associations.
+        
+        Args:
+            compound: Compound data
+            
+        Returns:
+            Dict with domain_linkages structure
+        """
+        compound_id = f"{compound['slug']}-compound"
+        
+        # Get contaminants that produce this compound (reverse lookup from associations)
+        produced_by = self.associations_validator.get_contaminants_for_compound(compound_id)
+        
+        # Build linkages structure
+        linkages = {}
+        
+        if produced_by:
+            linkages['produced_by_contaminants'] = produced_by
+        
+        # Future: Add related_materials when Material↔Compound associations populated
+        # related_materials = self.associations_validator.get_materials_for_compound(compound_id)
+        # if related_materials:
+        #     linkages['related_materials'] = related_materials
+        
+        logger.info(
+            f"  Domain linkages for {compound['name']}: "
+            f"{len(produced_by)} contaminants"
+        )
+        
+        return linkages
     
     def get_export_stats(self) -> Dict[str, Any]:
         """

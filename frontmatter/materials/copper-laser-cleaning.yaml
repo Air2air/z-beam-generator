@@ -1,12 +1,12 @@
-name: Copper
-slug: copper
 id: copper-laser-cleaning
+name: copper-laser-cleaning
+slug: copper-laser-cleaning
 category: metal
 subcategory: non-ferrous
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: null
-dateModified: null
+datePublished: '2025-12-16T13:59:38Z'
+dateModified: '2025-12-16T13:59:38Z'
 author:
   id: 4
   name: Todd Dunning
@@ -28,7 +28,8 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -42,7 +43,12 @@ _metadata:
     voice_applied: true
     content_type: material
 title: Copper Laser Cleaning
-material_description: Unlike ferrous metals that soak up laser energy and risk warping under heat, copper stands out with its exceptional reflectivity, which bounces away most pulses for targeted contaminant removal without damaging the underlying surface. In practice, this pairs with outstanding thermal conductivity to spread any residual heat evenly, delivering a clean finish on components in electronics or marine applications while maintaining long-term corrosion resistance.
+material_description: Unlike ferrous metals that soak up laser energy and risk warping
+  under heat, copper stands out with its exceptional reflectivity, which bounces away
+  most pulses for targeted contaminant removal without damaging the underlying surface.
+  In practice, this pairs with outstanding thermal conductivity to spread any residual
+  heat evenly, delivering a clean finish on components in electronics or marine applications
+  while maintaining long-term corrosion resistance.
 breadcrumb:
 - label: Home
   href: /
@@ -59,15 +65,34 @@ images:
     alt: Copper surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/copper-laser-cleaning-hero.jpg
   micro:
-    alt: Copper microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Copper microscopic view of laser cleaning showing detailed precise contamination
+      removal
     url: /images/material/copper-laser-cleaning-micro.jpg
 micro:
-  before: When laser cleaning copper, you'll want to keep the power steady to avoid overheating its soft surface. This metal shines in electronics and plumbing because it conducts electricity so well and resists corrosion over time. We've found it cleans up nicely, restoring that bright finish without much pitting. Just watch for any residue buildup in tight spots—quick passes usually handle it.
+  before: When laser cleaning copper, you'll want to keep the power steady to avoid
+    overheating its soft surface. This metal shines in electronics and plumbing because
+    it conducts electricity so well and resists corrosion over time. We've found it
+    cleans up nicely, restoring that bright finish without much pitting. Just watch
+    for any residue buildup in tight spots—quick passes usually handle it.
   after: ''
 faq:
 - question: 'Copper in Industrial Use: Key Facts and Laser Cleaning'
-  answer: "**What makes copper a go-to metal in industry?**  \nCopper stands out as a solid metal choice. It conducts electricity and heat well. Factories use it for wiring, pipes, and heat exchangers. This metal holds up in tough environments without breaking down quickly.\n\n**Tell me about its basic physical properties.**  \nDensity sits around 8.96 grams per cubic centimeter. Porosity stays near zero percent, so it's dense and non-porous. That means water or air won't seep in easily. You get a smooth, reliable surface for most jobs.\n\n**How does laser cleaning work on copper?**  \nLaser cleaning clears off rust, oils, or coatings from copper parts. It restores the finish without damaging the base metal. For standard setups, aim for about 100 watts of power. This level removes contaminants cleanly. Keep the beam moving to avoid overheating. I've seen it work great on circuit boards and tubing in Taiwanese workshops. Just adjust based on the dirt layer—but start low to test.\n\n**Any\
-    \ tips for handling copper during cleaning?**  \nWear gloves; copper can stain skin over time. And watch the reflections—lasers bounce off shiny surfaces. Safe practices keep everyone steady. Overall, this process saves time compared to chemicals."
+  answer: "**What makes copper a go-to metal in industry?**  \nCopper stands out as\
+    \ a solid metal choice. It conducts electricity and heat well. Factories use it\
+    \ for wiring, pipes, and heat exchangers. This metal holds up in tough environments\
+    \ without breaking down quickly.\n\n**Tell me about its basic physical properties.**\
+    \  \nDensity sits around 8.96 grams per cubic centimeter. Porosity stays near\
+    \ zero percent, so it's dense and non-porous. That means water or air won't seep\
+    \ in easily. You get a smooth, reliable surface for most jobs.\n\n**How does laser\
+    \ cleaning work on copper?**  \nLaser cleaning clears off rust, oils, or coatings\
+    \ from copper parts. It restores the finish without damaging the base metal. For\
+    \ standard setups, aim for about 100 watts of power. This level removes contaminants\
+    \ cleanly. Keep the beam moving to avoid overheating. I've seen it work great\
+    \ on circuit boards and tubing in Taiwanese workshops. Just adjust based on the\
+    \ dirt layer—but start low to test.\n\n**Any tips for handling copper during cleaning?**\
+    \  \nWear gloves; copper can stain skin over time. And watch the reflections—lasers\
+    \ bounce off shiny surfaces. Safe practices keep everyone steady. Overall, this\
+    \ process saves time compared to chemicals."
 regulatoryStandards:
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
@@ -174,42 +199,6 @@ materialProperties:
       min: 133
       max: 3865
     percentage: 60.0
-    thermalDestruction:
-      value: 1358
-      unit: K
-      source: ai_research
-      min: 256
-      max: 3859
-    laserAbsorption:
-      value: 0.04
-      unit: ''
-      source: ai_research
-      min: 0.02
-      max: '4.2e+08'
-    absorptivity:
-      value: 0.04
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.6
-    reflectivity:
-      value: 0.97
-      unit: dimensionless
-      source: ai_research
-      min: 0.35
-      max: 1
-    vaporPressure:
-      value: 101325
-      unit: Pa
-      source: ai_research
-      min: 0
-      max: 106391
-    thermalDestructionPoint:
-      value: 1358
-      unit: K
-      source: ai_research
-      min: 133
-      max: 3865
   laser_material_interaction:
     label: Laser-Material Interaction
     thermalConductivity:
@@ -312,271 +301,416 @@ material_metadata:
 domain_linkages:
   related_contaminants:
   - id: adhesive-residue
-    title: Adhesive Residue / Tape Marks
-    url: /contaminants/organic-residue/adhesive/adhesive-residue
-    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    title: Adhesive Residue
+    url: /contaminants/adhesive-residue
+    image: /images/contaminants/adhesive-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: algae-growth
-    title: Algae and Lichen Growth
-    url: /contaminants/biological/growth/algae-growth
-    image: /images/contaminants/biological/growth/algae-growth.jpg
+    title: Algae Growth
+    url: /contaminants/algae-growth
+    image: /images/contaminants/algae-growth.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: battery-corrosion
-    title: Battery Leakage Corrosion
-    url: /contaminants/oxidation/battery/battery-corrosion
-    image: /images/contaminants/oxidation/battery/battery-corrosion.jpg
+    title: Battery Corrosion
+    url: /contaminants/battery-corrosion
+    image: /images/contaminants/battery-corrosion.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: biological-stains
-    title: Organic Biofilm Deposits
-    url: /contaminants/biological/deposit/biological-stains
-    image: /images/contaminants/biological/deposit/biological-stains.jpg
+    title: Biological Stains
+    url: /contaminants/biological-stains
+    image: /images/contaminants/biological-stains.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: bronze-patina
-    title: Bronze Patina and Corrosion
-    url: /contaminants/oxidation/non-ferrous/bronze-patina
-    image: /images/contaminants/oxidation/non-ferrous/bronze-patina.jpg
+    title: Bronze Patina
+    url: /contaminants/bronze-patina
+    image: /images/contaminants/bronze-patina.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: carbon-soot
-    title: Carbon Soot Deposits
-    url: /contaminants/organic-residue/other/carbon-soot
-    image: /images/contaminants/organic-residue/other/carbon-soot.jpg
+    title: Carbon Soot
+    url: /contaminants/carbon-soot
+    image: /images/contaminants/carbon-soot.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: chemical-stains
-    title: Chemical Stains / Acid Etching
-    url: /contaminants/chemical-residue/industrial/chemical-stains
-    image: /images/contaminants/chemical-residue/industrial/chemical-stains.jpg
+    title: Chemical Stains
+    url: /contaminants/chemical-stains
+    image: /images/contaminants/chemical-stains.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: copper-patina
-    title: Copper Patina / Verdigris
-    url: /contaminants/oxidation/non-ferrous/copper-patina
-    image: /images/contaminants/oxidation/non-ferrous/copper-patina.jpg
+    title: Copper Patina
+    url: /contaminants/copper-patina
+    image: /images/contaminants/copper-patina.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: corrosion-inhibitor
-    title: Corrosion Inhibitor Coating
-    url: /contaminants/inorganic-coating/coating/corrosion-inhibitor
-    image: /images/contaminants/inorganic-coating/coating/corrosion-inhibitor.jpg
+    title: Corrosion Inhibitor
+    url: /contaminants/corrosion-inhibitor
+    image: /images/contaminants/corrosion-inhibitor.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: electroplating-residue
-    title: Electroplating Solution Residue
-    url: /contaminants/metallic-coating/plating/electroplating-residue
-    image: /images/contaminants/metallic-coating/plating/electroplating-residue.jpg
+    title: Electroplating Residue
+    url: /contaminants/electroplating-residue
+    image: /images/contaminants/electroplating-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: epoxy-residue
-    title: Epoxy Resin Deposits
-    url: /contaminants/organic-residue/adhesive/epoxy-residue
-    image: /images/contaminants/organic-residue/adhesive/epoxy-residue.jpg
+    title: Epoxy Residue
+    url: /contaminants/epoxy-residue
+    image: /images/contaminants/epoxy-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: fertilizer-residue
-    title: Fertilizer Salt Deposits
-    url: /contaminants/chemical-residue/industrial/fertilizer-residue
-    image: /images/contaminants/chemical-residue/industrial/fertilizer-residue.jpg
+    title: Fertilizer Residue
+    url: /contaminants/fertilizer-residue
+    image: /images/contaminants/fertilizer-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: gold-plating
-    title: Gold Electroplating
-    url: /contaminants/metallic-coating/plating/gold-plating
-    image: /images/contaminants/metallic-coating/plating/gold-plating.jpg
+    title: Gold Plating
+    url: /contaminants/gold-plating
+    image: /images/contaminants/gold-plating.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: graffiti-paint
-    title: Graffiti and Spray Paint
-    url: /contaminants/inorganic-coating/paint/graffiti-paint
-    image: /images/contaminants/inorganic-coating/paint/graffiti-paint.jpg
+    title: Graffiti Paint
+    url: /contaminants/graffiti-paint
+    image: /images/contaminants/graffiti-paint.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: graphite-marks
-    title: Graphite Deposit Traces
-    url: /contaminants/organic-residue/marking/graphite-marks
-    image: /images/contaminants/organic-residue/marking/graphite-marks.jpg
+    title: Graphite Marks
+    url: /contaminants/graphite-marks
+    image: /images/contaminants/graphite-marks.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: ink-stains
-    title: Printing Ink Residue
-    url: /contaminants/organic-residue/marking/ink-stains
-    image: /images/contaminants/organic-residue/marking/ink-stains.jpg
+    title: Ink Stains
+    url: /contaminants/ink-stains
+    image: /images/contaminants/ink-stains.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: insect-residue
-    title: Insect Impact Residue
-    url: /contaminants/biological/deposit/insect-residue
-    image: /images/contaminants/biological/deposit/insect-residue.jpg
+    title: Insect Residue
+    url: /contaminants/insect-residue
+    image: /images/contaminants/insect-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: lime-scale
-    title: Limescale Deposits
-    url: /contaminants/thermal-damage/scale/lime-scale
-    image: /images/contaminants/thermal-damage/scale/lime-scale.jpg
+    title: Lime Scale
+    url: /contaminants/lime-scale
+    image: /images/contaminants/lime-scale.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: mercury-contamination
-    title: Mercury Spill Residue
-    url: /contaminants/chemical-residue/hazardous/mercury-contamination
-    image: /images/contaminants/chemical-residue/hazardous/mercury-contamination.jpg
+    title: Mercury
+    url: /contaminants/mercury
+    image: /images/contaminants/mercury.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: metal-polish
-    title: Metal Polish Residue
-    url: /contaminants/organic-residue/wax/metal-polish
-    image: /images/contaminants/organic-residue/wax/metal-polish.jpg
+    title: Metal Polish
+    url: /contaminants/metal-polish
+    image: /images/contaminants/metal-polish.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: mineral-deposits
-    title: Hard Water Mineral Scale
-    url: /contaminants/thermal-damage/scale/mineral-deposits
-    image: /images/contaminants/thermal-damage/scale/mineral-deposits.jpg
+    title: Mineral Deposits
+    url: /contaminants/mineral-deposits
+    image: /images/contaminants/mineral-deposits.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: nickel-plating
-    title: Electroless Nickel Plating
-    url: /contaminants/metallic-coating/plating/nickel-plating
-    image: /images/contaminants/metallic-coating/plating/nickel-plating.jpg
+    title: Nickel Plating
+    url: /contaminants/nickel-plating
+    image: /images/contaminants/nickel-plating.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: paint-residue
-    title: Paint Residue / Coating Failure
-    url: /contaminants/inorganic-coating/paint/paint-residue
-    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    title: Paint Residue
+    url: /contaminants/paint-residue
+    image: /images/contaminants/paint-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: pesticide-residue
-    title: Pesticide Chemical Residue
-    url: /contaminants/chemical-residue/industrial/pesticide-residue
-    image: /images/contaminants/chemical-residue/industrial/pesticide-residue.jpg
+    title: Pesticide Residue
+    url: /contaminants/pesticide-residue
+    image: /images/contaminants/pesticide-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: plastic-residue
-    title: Degraded Polymer Deposits
-    url: /contaminants/organic-residue/polymer/plastic-residue
-    image: /images/contaminants/organic-residue/polymer/plastic-residue.jpg
+    title: Plastic Residue
+    url: /contaminants/plastic-residue
+    image: /images/contaminants/plastic-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: pollen-deposit
-    title: Pollen Accumulation
-    url: /contaminants/biological/deposit/pollen-deposit
-    image: /images/contaminants/biological/deposit/pollen-deposit.jpg
+    title: Pollen Deposit
+    url: /contaminants/pollen-deposit
+    image: /images/contaminants/pollen-deposit.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: radioactive-contamination
-    title: Surface Radioactive Contamination
-    url: /contaminants/chemical-residue/hazardous/radioactive-contamination
-    image: /images/contaminants/chemical-residue/hazardous/radioactive-contamination.jpg
+    title: Radioactive
+    url: /contaminants/radioactive
+    image: /images/contaminants/radioactive.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: rubber-residue
-    title: Rubber Compound Residue
-    url: /contaminants/organic-residue/polymer/rubber-residue
-    image: /images/contaminants/organic-residue/polymer/rubber-residue.jpg
+    title: Rubber Residue
+    url: /contaminants/rubber-residue
+    image: /images/contaminants/rubber-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: salt-residue
-    title: Salt and Chloride Deposits
-    url: /contaminants/inorganic-coating/mineral/salt-residue
-    image: /images/contaminants/inorganic-coating/mineral/salt-residue.jpg
+    title: Salt Residue
+    url: /contaminants/salt-residue
+    image: /images/contaminants/salt-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: scale-buildup
-    title: Mineral Scale / Hard Water Deposits
-    url: /contaminants/thermal-damage/scale/scale-buildup
-    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
+    title: Scale Buildup
+    url: /contaminants/scale-buildup
+    image: /images/contaminants/scale-buildup.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: silicone-buildup
-    title: Silicone Sealant Buildup
-    url: /contaminants/organic-residue/adhesive/silicone-buildup
-    image: /images/contaminants/organic-residue/adhesive/silicone-buildup.jpg
+    title: Silicone Buildup
+    url: /contaminants/silicone-buildup
+    image: /images/contaminants/silicone-buildup.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: silver-plating
-    title: Silver Plating Residue
-    url: /contaminants/metallic-coating/plating/silver-plating
-    image: /images/contaminants/metallic-coating/plating/silver-plating.jpg
+    title: Silver Plating
+    url: /contaminants/silver-plating
+    image: /images/contaminants/silver-plating.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: solder-flux
-    title: Soldering Flux Residue
-    url: /contaminants/organic-residue/lubricant/solder-flux
-    image: /images/contaminants/organic-residue/lubricant/solder-flux.jpg
+    title: Solder Flux
+    url: /contaminants/solder-flux
+    image: /images/contaminants/solder-flux.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: thermal-paste
-    title: Thermal Compound Deposits
-    url: /contaminants/organic-residue/other/thermal-paste
-    image: /images/contaminants/organic-residue/other/thermal-paste.jpg
+    title: Thermal Paste
+    url: /contaminants/thermal-paste
+    image: /images/contaminants/thermal-paste.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: tin-plating
-    title: Tin Plating Residue
-    url: /contaminants/metallic-coating/plating/tin-plating
-    image: /images/contaminants/metallic-coating/plating/tin-plating.jpg
+    title: Tin Plating
+    url: /contaminants/tin-plating
+    image: /images/contaminants/tin-plating.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: tree-sap
-    title: Tree Sap and Resin
-    url: /contaminants/organic-residue/natural/tree-sap
-    image: /images/contaminants/organic-residue/natural/tree-sap.jpg
+    title: Tree Sap
+    url: /contaminants/tree-sap
+    image: /images/contaminants/tree-sap.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: water-stain
-    title: Water Staining and Marks
-    url: /contaminants/organic-residue/other/water-stain
-    image: /images/contaminants/organic-residue/other/water-stain.jpg
+    title: Water Stain
+    url: /contaminants/water-stain
+    image: /images/contaminants/water-stain.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: wax-buildup
-    title: Wax Coating Buildup
-    url: /contaminants/organic-residue/wax/wax-buildup
-    image: /images/contaminants/organic-residue/wax/wax-buildup.jpg
+    title: Wax Buildup
+    url: /contaminants/wax-buildup
+    image: /images/contaminants/wax-buildup.jpg
     frequency: common
     severity: moderate
     typical_context: general
+  related_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/carbon-monoxide
+    image: /images/compounds/carbon-monoxide.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of organic adhesives
+    exposure_risk: high
+  - id: acetaldehyde-compound
+    title: Acetaldehyde
+    url: /compounds/acetaldehyde
+    image: /images/compounds/acetaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Decomposition of vinyl and acrylic adhesives
+    exposure_risk: moderate
+  - id: hydrogen-chloride-compound
+    title: Hydrogen Chloride
+    url: /compounds/hydrogen-chloride
+    image: /images/compounds/hydrogen-chloride.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Some adhesives contain chlorinated compounds
+    exposure_risk: moderate
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/toluene
+    image: /images/compounds/toluene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Release of toluene from adhesive formulations
+    exposure_risk: moderate
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/formaldehyde
+    image: /images/compounds/formaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of formaldehyde-based adhesives
+    exposure_risk: moderate
+  - id: hydrogen-cyanide-compound
+    title: Hydrogen Cyanide
+    url: /compounds/hydrogen-cyanide
+    image: /images/compounds/hydrogen-cyanide.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Breakdown of cyanoacrylate adhesives
+    exposure_risk: moderate
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/carbon-dioxide
+    image: /images/compounds/carbon-dioxide.jpg
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of adhesives
+    exposure_risk: low
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/vocs
+    image: /images/compounds/vocs.jpg
+    frequency: very_common
+    severity: moderate
+    typical_context: Release of adhesive solvents
+    exposure_risk: moderate
+  - id: benzoapyrene-compound
+    title: Benzo[a]pyrene
+    url: /compounds/benzoapyrene
+    image: /images/compounds/benzoapyrene.jpg
+    frequency: common
+    severity: high
+    typical_context: Formed during original combustion event
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/pahs
+    image: /images/compounds/pahs.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Pre-existing PAHs from incomplete combustion
+    exposure_risk: high
+  - id: nitrogen-oxides-compound
+    title: Nitrogen Oxides
+    url: /compounds/nitrogen-oxides
+    image: /images/compounds/nitrogen-oxides.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Nitrogen from some paint formulations
+    exposure_risk: low
+  - id: zinc-oxide-compound
+    title: Zinc Oxide
+    url: /compounds/zinc-oxide
+    image: /images/compounds/zinc-oxide.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Zinc oxide pigments in paint
+    exposure_risk: low
+  - id: chromium-vi-compound
+    title: Hexavalent Chromium
+    url: /compounds/chromium-vi
+    image: /images/compounds/chromium-vi.jpg
+    frequency: occasional
+    severity: high
+    typical_context: Chromate pigments in some paints
+    exposure_risk: high
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/benzene
+    image: /images/compounds/benzene.jpg
+    frequency: common
+    severity: high
+    typical_context: Thermal breakdown of aromatic paint solvents
+    exposure_risk: high
+  - id: styrene-compound
+    title: Styrene
+    url: /compounds/styrene
+    image: /images/compounds/styrene.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Thermal depolymerization of polystyrene
+    exposure_risk: high
+  - id: phosgene-compound
+    title: Phosgene
+    url: /compounds/phosgene
+    image: /images/compounds/phosgene.jpg
+    frequency: rare
+    severity: high
+    typical_context: Thermal breakdown of certain chlorinated plastics
+    exposure_risk: high
+  - id: acrolein-compound
+    title: Acrolein
+    url: /compounds/acrolein
+    image: /images/compounds/acrolein.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Pyrolysis of certain polymers
+    exposure_risk: moderate
+  - id: sulfur-dioxide-compound
+    title: Sulfur Dioxide
+    url: /compounds/sulfur-dioxide
+    image: /images/compounds/sulfur-dioxide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Vulcanized rubber contains sulfur compounds
+    exposure_risk: moderate
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -592,4 +726,4 @@ serviceOffering:
     notes: Lower power settings recommended due to high reflectivity
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:40.044662'
+    generated_date: '2025-12-16T13:51:19.734150'

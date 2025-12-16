@@ -1,9 +1,9 @@
 # Documentation Map - Z-Beam Generator
 
 **🗺️ Master Navigation for All Documentation**  
-**Last Updated**: December 13, 2025  
+**Last Updated**: December 16, 2025  
 **For**: AI Assistants, Developers, Contributors, and Users  
-**Recent Updates**: Learning module integration, item_data bug fix, enhanced AI detection, unique properties emphasis
+**Recent Updates**: Challenge taxonomy system, 4 new ADRs (ID normalization, challenges, associations, linkages), complete test suite
 
 ---
 
@@ -137,7 +137,14 @@ docs/
 │   ├── ADR-003-exploration-rate-reproducibility.md
 │   ├── ADR-004-content-instructions-location.md
 │   ├── ADR-005-dynamic-threshold-learning.md
-│   └── ADR-007-universal-humanness-layer.md  # 🔥 NEW (Nov 20, 2025)
+│   ├── ADR-006-id-normalization.md           # ⭐ NEW (Dec 16, 2025) - 251 IDs → slug format
+│   ├── ADR-007-universal-humanness-layer.md  # 🔥 NEW (Nov 20, 2025)
+│   ├── ADR-007-challenge-hybrid-approach.md  # ⭐ NEW (Dec 16, 2025) - Embedded with IDs
+│   ├── ADR-008-centralized-associations.md   # ⭐ NEW (Dec 16, 2025) - 2,040 linkages
+│   └── ADR-009-domain-linkages-architecture.md  # ⭐ NEW (Dec 16, 2025) - Rich metadata
+│
+├── guides/                            # ⭐ NEW (Dec 16, 2025) - User guides
+│   └── challenge-taxonomy.md          # Challenge system guide (51 types, query tool)
 │
 └── archive/                           # Historical documents
     ├── 2025-11/                       # November 2025 archives
@@ -207,6 +214,8 @@ z-beam-generator/
 │   ├── research/           # Research/data population scripts
 │   ├── migrations/         # Migration scripts
 │   ├── tools/              # Utility scripts
+│   │   ├── query_challenges.py      # ⭐ NEW (Dec 16, 2025) - Cross-material challenge queries
+│   │   └── README_query_challenges.md  # ⭐ NEW (Dec 16, 2025) - Query tool guide
 │   ├── analysis/           # Analysis scripts
 │   ├── testing/            # Testing scripts
 │   ├── maintenance/        # Maintenance scripts

@@ -1,12 +1,31 @@
+id: coolant-scale-contamination
 name: Engine Coolant Scale
 slug: coolant-scale-contamination
-id: coolant-scale-contamination
 category: thermal-damage
 subcategory: scale
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/Aluminum
+    image: /images/materials/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cast-iron
+    title: Cast Iron
+    url: /materials/cast-iron
+    image: /images/materials/cast-iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,6 +55,10 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -195,32 +218,6 @@ laser_properties:
     thermal_conductivity: 0.8
     thermal_diffusivity: 0.67
     vaporization_temperature: 1200
-domain_linkages:
-  related_materials:
-  - id: Aluminum
-    title: Aluminum
-    url: /materials/metal/non-ferrous/Aluminum
-    image: /images/materials/metal/non-ferrous/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cast-iron
-    title: Cast Iron
-    url: /materials/cast-iron
-    image: /images/materials/cast-iron.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Aluminum
 - Cast Iron

@@ -1,13 +1,9 @@
-name: Metal Matrix Composites MMCs
-slug: metal-matrix-composites-mmcs
 id: metal-matrix-composites-mmcs-settings
+name: metal-matrix-composites-mmcs-laser-cleaning
+slug: metal-matrix-composites-mmcs-settings
 category: composite
 subcategory: fiber-reinforced
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,10 +33,13 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
-title: Metal Matrix Composites MMCs Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: metal-matrix-composites-mmcs-laser-cleaning Laser Cleaning Settings
 settings_description: When laser cleaning metal matrix composites, unlike pure metals that heat evenly, watch out for their embedded reinforcements—these can cause uneven heat buildup right from the start, risking cracks if you push power too high. We've found that starting with lower energy pulses helps control this, letting the laser clear contaminants without stressing the matrix. What sets MMCs apart is their hybrid strength from metal and fibers, so you adjust scan speeds slower to match their good heat spreading, avoiding delamination. In our experience, this approach restores surfaces smoothly for aerospace parts, but always test overlaps to prevent hot spots in the tougher zones.
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -50,8 +49,8 @@ breadcrumb:
   href: /materials/composite
 - label: Fiber Reinforced
   href: /materials/composite/fiber-reinforced
-- label: Metal Matrix Composites MMCs
-  href: /materials/metal-matrix-composites-mmcs
+- label: metal-matrix-composites-mmcs-laser-cleaning
+  href: /materials/metal-matrix-composites-mmcs-settings
 images:
   hero:
     alt: Metal Matrix Composites Mmcs surface undergoing laser cleaning showing precise contamination removal
@@ -59,55 +58,7 @@ images:
   micro:
     alt: Metal Matrix Composites Mmcs microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/metal-matrix-composites-mmcs-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    unit: μs
-    value: 100
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 85.0
@@ -143,6 +94,7 @@ material_challenges:
     - Reduce power by 40-50% compared to monolithic materials
     - Monitor for discoloration, bubbling, or layer lifting
     - Ceramic and metal-matrix composites tolerate higher power
+    challenge_id: matrix_degradation_and_delamination
   - challenge: Anisotropic thermal properties
     severity: high
     property_value: 10-100x variation parallel vs perpendicular to fibers
@@ -152,6 +104,7 @@ material_challenges:
     - Use crosshatch pattern (0° and 90°) to identify fiber orientation
     - Increase cooling time 2-3x when scanning perpendicular to fibers
     - Carbon fiber composites require special attention due to electrical conductivity
+    challenge_id: anisotropic_thermal_properties
   surface_characteristics:
   - challenge: Fiber exposure and damage
     severity: high
@@ -161,6 +114,7 @@ material_challenges:
     - Multiple gentle passes preferred over single aggressive pass
     - Stop immediately if fibers become visible
     - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
+    challenge_id: fiber_exposure_and_damage
   - challenge: Surface finish variability
     severity: medium
     impact: Gel coat, paint, or protective layers alter absorption and damage threshold
@@ -169,6 +123,7 @@ material_challenges:
     - Coated surfaces may require 50-100W initial pass for coating removal
     - Bare composite requires 30-50% lower power
     - Adjust parameters when transitioning between coated and uncoated areas
+    challenge_id: surface_finish_variability
   contamination_challenges:
   - challenge: Resin-based contaminant removal
     severity: medium
@@ -178,6 +133,7 @@ material_challenges:
     - Second pass 50W slow (800 mm/s) for residue
     - Chemical pre-treatment improves results for stubborn adhesives
     - Monitor for matrix damage; stop if surface texture changes
+    challenge_id: resin_based_contaminant_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:41.356228'
+    generated_date: '2025-12-16T13:51:21.907726'

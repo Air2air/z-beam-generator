@@ -1,12 +1,31 @@
+id: anti-seize-contamination
 name: Anti-Seize Compound
 slug: anti-seize-contamination
-id: anti-seize-contamination
 category: organic-residue
 subcategory: lubricant
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/Steel
+    image: /images/materials/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/Stainless Steel
+    image: /images/materials/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/Aluminum
+    image: /images/materials/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,6 +55,10 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -191,32 +214,6 @@ laser_properties:
     thermal_conductivity: 0.3
     thermal_diffusivity: 0.25
     vaporization_temperature: 600
-domain_linkages:
-  related_materials:
-  - id: Steel
-    title: Steel
-    url: /materials/metal/ferrous/Steel
-    image: /images/materials/metal/ferrous/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
-    title: Stainless Steel
-    url: /materials/metal/ferrous/Stainless Steel
-    image: /images/materials/metal/ferrous/Stainless Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum
-    title: Aluminum
-    url: /materials/metal/non-ferrous/Aluminum
-    image: /images/materials/metal/non-ferrous/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Steel
 - Stainless Steel

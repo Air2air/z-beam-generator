@@ -1,13 +1,9 @@
-name: Hafnium
-slug: hafnium
 id: hafnium-settings
+name: hafnium-laser-cleaning
+slug: hafnium-settings
 category: metal
 subcategory: non-ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 4
   name: Todd Dunning
@@ -36,10 +32,13 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
-title: Hafnium Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: hafnium-laser-cleaning Laser Cleaning Settings
 settings_description: When laser cleaning hafnium, I've seen that its heat resistance works best if you start with controlled pulses to gradually expose the surface without cracking. This process restores the metal's integrity in aerospace or nuclear parts by reducing oxide layers steadily. Tends to absorb energy moderately, so overlap passes evenly to avoid uneven heating. Watch for thermal buildup at the end, as it can warp thin sections if not monitored closely.
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -49,8 +48,8 @@ breadcrumb:
   href: /materials/metal
 - label: Non Ferrous
   href: /materials/metal/non-ferrous
-- label: Hafnium
-  href: /materials/hafnium
+- label: hafnium-laser-cleaning
+  href: /materials/hafnium-settings
 images:
   hero:
     alt: Hafnium surface undergoing laser cleaning showing precise contamination removal
@@ -58,52 +57,7 @@ images:
   micro:
     alt: Hafnium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/hafnium-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 12.22
@@ -138,6 +92,7 @@ material_challenges:
     - Use shorter pulse durations (picosecond/femtosecond) for localized heating
     - Increase scan speed to minimize dwell time
     - Apply cooling between passes for thick sections
+    challenge_id: high_thermal_conductivity_and_heat_spread
   - challenge: Melting and heat-affected zone formation
     severity: high
     threshold_range: 660°C (Al) to 3422°C (W)
@@ -146,6 +101,7 @@ material_challenges:
     - Stay below 70% of melting temperature
     - Use pulse mode with adequate cooling time
     - Monitor for surface discoloration indicating oxidation
+    challenge_id: melting_and_heat_affected_zone_formation
   surface_characteristics:
   - challenge: High reflectivity
     severity: high
@@ -156,6 +112,7 @@ material_challenges:
     - Increase power density but monitor for thermal damage
     - Ensure proper beam containment and safety measures
     - Surface oxidation/roughness improves absorption
+    challenge_id: high_reflectivity
   - challenge: Surface finish variations
     severity: medium
     impact: Polished surfaces reflect more, rough surfaces absorb better
@@ -163,6 +120,7 @@ material_challenges:
     - Adjust power based on surface condition
     - Test parameters on similar finish samples
     - Polished surfaces need 20-40% more power
+    challenge_id: surface_finish_variations
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
@@ -171,6 +129,7 @@ material_challenges:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
     - Monitor for base metal exposure to avoid over-processing
+    challenge_id: rust_and_oxide_layer_removal
   - challenge: Oil and grease removal
     severity: low
     impact: Organic contaminants vaporize easily but can redeposit
@@ -178,6 +137,7 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
+    challenge_id: oil_and_grease_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:40.715785'
+    generated_date: '2025-12-16T13:51:20.870177'

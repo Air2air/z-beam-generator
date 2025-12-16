@@ -1,5 +1,5 @@
 contamination_patterns:
-  adhesive-residue:
+  adhesive-residue-contamination:
     author:
       id: 1
       name: Yi-Chun Lin
@@ -20,7 +20,7 @@ contamination_patterns:
         name: IEC 60825 - Safety of Laser Products
         url: https://webstore.iec.ch/publication/3587
       reviewedBy: Z-Beam Quality Assurance Team
-    id: adhesive_residue
+    id: adhesive-residue-contamination
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -682,7 +682,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
-  algae-growth:
+  algae-growth-contamination:
     composition:
     - Chlorophyll
     - Polysaccharides
@@ -1230,7 +1230,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  aluminum-oxidation:
+  aluminum-oxidation-contamination:
     author:
       id: 3
       name: Alessandro Moretti
@@ -1260,7 +1260,7 @@ contamination_patterns:
     formation_conditions:
     - oxygen
     - atmospheric_exposure
-    id: aluminum_oxidation
+    id: aluminum-oxidation-contamination
     invalid_materials:
     - Steel
     - Copper
@@ -1512,7 +1512,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
-  annealing-scale:
+  annealing-scale-contamination:
     composition:
     - Fe₃O₄
     - FeO
@@ -1788,7 +1788,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  anodizing-defects:
+  anodizing-defects-contamination:
     composition:
     - Al₂O₃
     - Dye Molecules
@@ -2036,7 +2036,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  anti-seize:
+  anti-seize-contamination:
     composition:
     - Copper
     - Graphite
@@ -2306,7 +2306,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  asbestos-coating:
+  asbestos-coating-contamination:
     composition:
     - Mg₃Si₂O₅(OH)₄
     - Fibers
@@ -2564,7 +2564,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  aviation-sealant:
+  aviation-sealant-contamination:
     composition:
     - Polysulfide
     - Silicone
@@ -2885,7 +2885,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  battery-corrosion:
+  battery-corrosion-contamination:
     composition:
     - KOH
     - K₂CO₃
@@ -3147,7 +3147,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  beryllium-oxide:
+  beryllium-oxide-contamination:
     composition:
     - BeO
     - Be Compounds
@@ -3423,7 +3423,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  biological-stains:
+  biological-stains-contamination:
     composition:
     - Proteins
     - Polysaccharides
@@ -3931,7 +3931,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  bitumen-tar:
+  bitumen-tar-contamination:
     composition:
     - Asphaltene
     - Resin
@@ -4300,7 +4300,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  blood-residue:
+  blood-residue-contamination:
     composition:
     - Hemoglobin
     - Proteins
@@ -4691,7 +4691,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  brake-dust:
+  brake-dust-contamination:
     composition:
     - Fe
     - Cu
@@ -4963,7 +4963,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  brass-plating:
+  brass-plating-contamination:
     composition:
     - Cu-Zn Alloy
     - Brass
@@ -5222,7 +5222,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  bronze-patina:
+  bronze-patina-contamination:
     composition:
     - Cu₂O
     - CuO
@@ -5488,7 +5488,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  cadmium-plating:
+  cadmium-plating-contamination:
     composition:
     - Cd
     - Cd Alloys
@@ -5739,7 +5739,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  carbon-buildup:
+  carbon-buildup-contamination:
     composition:
     - C
     - PAH
@@ -6070,7 +6070,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  carbon-soot:
+  carbon-soot-contamination:
     composition:
     - C
     - PAH
@@ -6603,7 +6603,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  ceramic-coating:
+  ceramic-coating-contamination:
     composition:
     - ZrO₂
     - Y₂O₃
@@ -6895,7 +6895,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  ceramic-glaze:
+  ceramic-glaze-contamination:
     composition:
     - SiO₂
     - Al₂O₃
@@ -7289,7 +7289,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  chemical-stains:
+  chemical-stains-contamination:
     author:
       id: 3
     micro:
@@ -7317,7 +7317,7 @@ contamination_patterns:
     - chemical_exposure
     - spills
     - industrial_process
-    id: chemical_stains
+    id: chemical-stains-contamination
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -7787,7 +7787,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
-  chrome-pitting:
+  chrome-pitting-contamination:
     composition:
     - Cr₂O₃
     - CrO₃
@@ -8005,7 +8005,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  concrete-dust:
+  concrete-dust-contamination:
     composition:
     - CaCO₃
     - SiO₂
@@ -8343,7 +8343,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  conversion-coating:
+  conversion-coating-contamination:
     composition:
     - Zn₃(PO₄)₂
     - Fe₃(PO₄)₂
@@ -8606,7 +8606,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  coolant-scale:
+  coolant-scale-contamination:
     composition:
     - SiO₂
     - CaCO₃
@@ -8879,7 +8879,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  copper-patina:
+  copper-patina-contamination:
     author:
       id: 4
       name: Todd Dunning
@@ -8911,7 +8911,7 @@ contamination_patterns:
     - carbon_dioxide
     - time
     - atmospheric_exposure
-    id: copper_patina
+    id: copper-patina-contamination
     invalid_materials:
     - Steel
     - Iron
@@ -9386,7 +9386,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
-  copper-plating:
+  copper-plating-contamination:
     composition:
     - Cu
     - Cu Compounds
@@ -9641,7 +9641,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  corrosion-inhibitor:
+  corrosion-inhibitor-contamination:
     composition:
     - Amines
     - Oil
@@ -9920,7 +9920,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  cutting-fluid:
+  cutting-fluid-contamination:
     composition:
     - Emulsified Oil
     - Biocides
@@ -10225,7 +10225,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  diamond-coating:
+  diamond-coating-contamination:
     composition:
     - Amorphous Carbon
     - Diamond
@@ -10497,7 +10497,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  efflorescence:
+  efflorescence-contamination:
     composition:
     - CaCO₃
     - CaSO₄
@@ -10835,7 +10835,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  electroplating-residue:
+  electroplating-residue-contamination:
     composition:
     - Cyanides
     - Metal Salts
@@ -11112,7 +11112,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  environmental-dust:
+  environmental-dust-contamination:
     author:
       id: 3
     micro:
@@ -11141,7 +11141,7 @@ contamination_patterns:
     - airborne_particles
     - time
     - lack_of_cleaning
-    id: environmental_dust
+    id: environmental-dust-contamination
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -11405,7 +11405,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
-  epoxy-residue:
+  epoxy-residue-contamination:
     composition:
     - Bisphenol A
     - Epichlorohydrin
@@ -11803,7 +11803,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  exhaust-residue:
+  exhaust-residue-contamination:
     composition:
     - C
     - Pb
@@ -12090,7 +12090,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  fertilizer-residue:
+  fertilizer-residue-contamination:
     composition:
     - KNO₃
     - NH₄NO₃
@@ -12530,7 +12530,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  fire-damage:
+  fire-damage-contamination:
     composition:
     - C
     - Ash
@@ -12935,7 +12935,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  forging-scale:
+  forging-scale-contamination:
     composition:
     - Fe₃O₄
     - FeO
@@ -13192,7 +13192,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  fuel-varnish:
+  fuel-varnish-contamination:
     composition:
     - Gum
     - Varnish
@@ -13462,7 +13462,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  galvanize-corrosion:
+  galvanize-corrosion-contamination:
     composition:
     - ZnO
     - Zn(OH)₂
@@ -13710,7 +13710,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  gasket-material:
+  gasket-material-contamination:
     composition:
     - Cellulose
     - Rubber
@@ -13989,7 +13989,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  gold-plating:
+  gold-plating-contamination:
     composition:
     - Au
     - Au Alloys
@@ -14244,7 +14244,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  graffiti-paint:
+  graffiti-paint-contamination:
     composition:
     - Acrylic
     - Enamel
@@ -14721,7 +14721,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  graphite-marks:
+  graphite-marks-contamination:
     composition:
     - C (Graphite)
     - Clay Binder
@@ -15135,7 +15135,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  grease-deposits:
+  grease-deposits-contamination:
     composition:
     - Mineral Oil
     - Lithium Soap
@@ -15419,7 +15419,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  hydraulic-fluid:
+  hydraulic-fluid-contamination:
     composition:
     - Mineral Oil
     - Additives
@@ -15693,7 +15693,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  industrial-oil:
+  industrial-oil-contamination:
     author:
       id: 2
     micro:
@@ -15725,7 +15725,7 @@ contamination_patterns:
         name: IEC 60825 - Safety of Laser Products
         url: https://webstore.iec.ch/publication/3587
       reviewedBy: Z-Beam Quality Assurance Team
-    id: industrial_oil
+    id: industrial-oil-contamination
     invalid_without_context:
     - decorative_plastics
     - wood_furniture
@@ -16329,7 +16329,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
-  ink-stains:
+  ink-stains-contamination:
     composition:
     - Pigments
     - Binder Resin
@@ -16708,7 +16708,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  insect-residue:
+  insect-residue-contamination:
     composition:
     - Proteins
     - Chitin
@@ -17131,7 +17131,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  laser-marking:
+  laser-marking-contamination:
     composition:
     - Metal Oxides
     - Carbon
@@ -17401,7 +17401,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  lead-paint:
+  lead-paint-contamination:
     composition:
     - Pb₃O₄
     - PbCO₃
@@ -17775,7 +17775,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  lime-scale:
+  lime-scale-contamination:
     composition:
     - CaCO₃
     - MgCO₃
@@ -18236,7 +18236,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  medical-disinfectant:
+  medical-disinfectant-contamination:
     composition:
     - NaOCl
     - Quats
@@ -18963,7 +18963,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  metal-polish:
+  metal-polish-contamination:
     composition:
     - Al₂O₃
     - CeO₂
@@ -19235,7 +19235,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  mineral-deposits:
+  mineral-deposits-contamination:
     composition:
     - CaCO₃
     - MgCO₃
@@ -19801,7 +19801,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  mineral-stain:
+  mineral-stain-contamination:
     composition:
     - Fe₂O₃
     - MnO₂
@@ -20153,7 +20153,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  mold-mildew:
+  mold-mildew-contamination:
     composition:
     - Fungal Hyphae
     - Melanin
@@ -20585,7 +20585,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  nickel-plating:
+  nickel-plating-contamination:
     composition:
     - Ni
     - P
@@ -20852,7 +20852,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  paint-residue:
+  paint-residue-contamination:
     author:
       id: 3
     micro:
@@ -20885,7 +20885,7 @@ contamination_patterns:
     - age
     - weathering
     - mechanical_damage
-    id: paint_residue
+    id: paint-residue-contamination
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -21425,7 +21425,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
-  passivation-defect:
+  passivation-defect-contamination:
     composition:
     - Cr₂O₃
     - Fe₂O₃
@@ -21947,7 +21947,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  pesticide-residue:
+  pesticide-residue-contamination:
     composition:
     - Organophosphates
     - Pyrethroids
@@ -22372,7 +22372,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  pharmaceutical-residue:
+  pharmaceutical-residue-contamination:
     composition:
     - APIs
     - Excipients
@@ -22714,7 +22714,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  pickling-residue:
+  pickling-residue-contamination:
     composition:
     - FeCl₂
     - H₂SO₄
@@ -22968,7 +22968,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  plasma-spray:
+  plasma-spray-contamination:
     composition:
     - Al₂O₃
     - ZrO₂
@@ -23231,7 +23231,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  plastic-residue:
+  plastic-residue-contamination:
     composition:
     - Polyethylene
     - Polypropylene
@@ -23663,7 +23663,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  pollen-deposit:
+  pollen-deposit-contamination:
     composition:
     - Proteins
     - Lipids
@@ -24079,7 +24079,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  powder-coating:
+  powder-coating-contamination:
     composition:
     - Polyester Resin
     - Epoxy
@@ -24362,7 +24362,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  primer-coating:
+  primer-coating-contamination:
     composition:
     - Zinc Dust
     - Epoxy Resin
@@ -24649,7 +24649,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  pvd-coating:
+  pvd-coating-contamination:
     composition:
     - TiN
     - CrN
@@ -24909,7 +24909,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  quench-oil:
+  quench-oil-contamination:
     composition:
     - Carbonized Oil
     - PAH
@@ -25529,7 +25529,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  road-grime:
+  road-grime-contamination:
     composition:
     - Soil
     - Oil
@@ -25801,7 +25801,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  rubber-residue:
+  rubber-residue-contamination:
     composition:
     - C₅H₈
     - Sulfur
@@ -26206,7 +26206,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  rust-oxidation:
+  rust-oxidation-contamination:
     composition:
     - Fe₂O₃
     description: 'Rust forms on iron through moisture and oxygen exposure. It creates
@@ -26692,7 +26692,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  salt-residue:
+  salt-residue-contamination:
     composition:
     - NaCl
     - MgCl₂
@@ -27124,7 +27124,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  scale-buildup:
+  scale-buildup-contamination:
     author:
       id: 1
     micro:
@@ -27156,7 +27156,7 @@ contamination_patterns:
     - hard_water
     - evaporation
     - repeated_wetting
-    id: scale_buildup
+    id: scale-buildup-contamination
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -27704,7 +27704,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
-  semiconductor-residue:
+  semiconductor-residue-contamination:
     composition:
     - SiO₂
     - Si₃N₄
@@ -28046,7 +28046,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  silicone-buildup:
+  silicone-buildup-contamination:
     composition:
     - (CH₃)₂SiO
     - SiO₂
@@ -28543,7 +28543,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  silver-plating:
+  silver-plating-contamination:
     composition:
     - Ag
     - Ag₂S (Tarnish)
@@ -28822,7 +28822,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  soap-scum:
+  soap-scum-contamination:
     composition:
     - Calcium Stearate
     - Mg Stearate
@@ -29194,7 +29194,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  solder-flux:
+  solder-flux-contamination:
     composition:
     - Abietic Acid
     - Activators
@@ -29464,7 +29464,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  steel-corrosion:
+  steel-corrosion-contamination:
     composition:
     - Fe₃O₄
     - FeO
@@ -29718,7 +29718,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  surgical-marking:
+  surgical-marking-contamination:
     composition:
     - Gentian Violet
     - Dyes
@@ -29977,7 +29977,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  teflon-residue:
+  teflon-residue-contamination:
     composition:
     - PTFE
     - Fluorocarbons
@@ -30261,7 +30261,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  thermal-paste:
+  thermal-paste-contamination:
     composition:
     - ZnO
     - Ag
@@ -30530,7 +30530,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  thread-locker:
+  thread-locker-contamination:
     composition:
     - Dimethacrylate
     - Peroxides
@@ -30797,7 +30797,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  tin-plating:
+  tin-plating-contamination:
     composition:
     - Sn
     - Sn-Pb Alloy
@@ -31060,7 +31060,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  tree-sap:
+  tree-sap-contamination:
     composition:
     - Terpenes
     - Resin Acids
@@ -31488,7 +31488,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  undercoating:
+  undercoating-contamination:
     composition:
     - Asphalt
     - Rubber
@@ -31764,7 +31764,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  uranium-oxide:
+  uranium-oxide-contamination:
     composition:
     - U₃O₈
     - UO₂
@@ -32020,7 +32020,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  uv-chalking:
+  uv-chalking-contamination:
     author:
       id: 3
     micro:
@@ -32055,7 +32055,7 @@ contamination_patterns:
     - sunlight
     - time
     - outdoor_exposure
-    id: uv_chalking
+    id: uv-chalking-contamination
     invalid_materials:
     - Metals
     - Ceramics
@@ -32377,7 +32377,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
-  water-stain:
+  water-stain-contamination:
     composition:
     - CaCO₃
     - Fe₂O₃
@@ -32873,7 +32873,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  wax-buildup:
+  wax-buildup-contamination:
     composition:
     - C₂₅H₅₂
     - Esters
@@ -33338,7 +33338,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
-  wood-rot:
+  wood-rot-contamination:
     author:
       id: 1
     micro:
@@ -33366,7 +33366,7 @@ contamination_patterns:
     - fungal_spores
     - warmth
     - poor_ventilation
-    id: wood_rot
+    id: wood-rot-contamination
     invalid_materials:
     - Metals
     - Plastics
@@ -33706,7 +33706,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
-  zinc-plating:
+  zinc-plating-contamination:
     composition:
     - Zn
     - Zn Alloys

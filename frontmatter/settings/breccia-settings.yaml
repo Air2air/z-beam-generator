@@ -1,13 +1,9 @@
-name: Breccia
-slug: breccia
 id: breccia-settings
+name: breccia-laser-cleaning
+slug: breccia-settings
 category: stone
 subcategory: sedimentary
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,10 +33,13 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
-title: Breccia Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: breccia-laser-cleaning Laser Cleaning Settings
 settings_description: When laser cleaning Breccia, you'll want to treat it differently from smoother sedimentary stones like limestone, since its fragmented makeup—think angular pebbles bound in a matrix—makes it more prone to uneven energy uptake. Start with gentler power levels to handle that irregularity without chipping the edges. Make sure you overlap scans by at least half the spot size, as the varying density can trap heat in porous spots and lead to micro-cracks if you're too aggressive. Adjust speeds upward on the matrix areas for even contaminant removal, restoring that natural, rugged finish without compromising the stone's modest strength.
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -50,8 +49,8 @@ breadcrumb:
   href: /materials/stone
 - label: Sedimentary
   href: /materials/stone/sedimentary
-- label: Breccia
-  href: /materials/breccia
+- label: breccia-laser-cleaning
+  href: /materials/breccia-settings
 images:
   hero:
     alt: Breccia surface undergoing laser cleaning showing precise contamination removal
@@ -59,52 +58,7 @@ images:
   micro:
     alt: Breccia microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/breccia-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 90
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 3.5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 12
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 1.05
@@ -145,6 +99,7 @@ material_challenges:
     - Preheat substrate if possible to reduce thermal gradients
     - Granite more resistant than marble; sandstone most vulnerable
     - Monitor for surface crazing; stop immediately if cracks appear
+    challenge_id: thermal_shock_and_microcracking
   - challenge: Moisture-induced spalling
     severity: high
     threshold_temperature: Steam formation >100°C with trapped moisture
@@ -155,6 +110,7 @@ material_challenges:
     - Reduce power by 50% for damp stone
     - Use pulse mode with extended cooling (15-20 seconds)
     - Heritage stone requires especially gentle approach
+    challenge_id: moisture_induced_spalling
   surface_characteristics:
   - challenge: Weathering and surface degradation
     severity: high
@@ -165,6 +121,7 @@ material_challenges:
     - Multiple gentle passes (4-6 at 40-60W) preferred
     - Monitor for powdering or flaking; adjust power immediately
     - Heritage conservation requires documentation and testing
+    challenge_id: weathering_and_surface_degradation
   - challenge: Mineral composition heterogeneity
     severity: medium
     impact: Mixed minerals have different absorption and damage thresholds
@@ -173,6 +130,7 @@ material_challenges:
     - Crosshatch scan pattern for uniform coverage
     - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
     - Quartzite and marble more homogeneous than granite
+    challenge_id: mineral_composition_heterogeneity
   contamination_challenges:
   - challenge: Biological growth and deep staining
     severity: medium
@@ -184,6 +142,7 @@ material_challenges:
     - Third pass 40W very slow (400 mm/s) for deep staining
     - Chemical biocide pre-treatment kills roots and reduces laser exposure
     - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
+    challenge_id: biological_growth_and_deep_staining
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:39.582001'
+    generated_date: '2025-12-16T13:51:18.885371'

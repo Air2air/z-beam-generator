@@ -1,13 +1,9 @@
-name: Terbium
-slug: terbium
 id: terbium-settings
+name: terbium-laser-cleaning
+slug: terbium-settings
 category: rare-earth
 subcategory: lanthanide
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,7 +33,12 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
-title: Terbium Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: terbium-laser-cleaning Laser Cleaning Settings
 settings_description: 'When laser cleaning Terbium, you must first watch out for its high reflectivity, which bounces back most of the laser energy compared to less reflective rare-earth metals like neodymium. This difference means you need to adjust your setup carefully to prevent inefficient cleaning or unintended heating elsewhere. Make sure you start with lower power levels right away, so you avoid scattering the beam and wasting energy on surfaces that won''t absorb it well.
 
 
@@ -45,8 +46,6 @@ settings_description: 'When laser cleaning Terbium, you must first watch out for
 
 
   In my experience with medical applications, this reflective trait sets Terbium apart, requiring you to test absorptivity enhancers if cleaning proves stubborn. Always prioritize overlap in your paths to ensure even coverage, restoring the finish without compromising its oxidation-prone edges. Approach it methodically, and you''ll clear residues effectively for renewable energy components too.'
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -56,8 +55,8 @@ breadcrumb:
   href: /materials/rare-earth
 - label: Lanthanide
   href: /materials/rare-earth/lanthanide
-- label: Terbium
-  href: /materials/terbium
+- label: terbium-laser-cleaning
+  href: /materials/terbium-settings
 images:
   hero:
     alt: Terbium surface undergoing laser cleaning showing precise contamination removal
@@ -65,52 +64,7 @@ images:
   micro:
     alt: Microscopic view of Terbium surface after laser cleaning showing detailed surface structure
     url: /images/material/terbium-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 45
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 15
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 7.41
@@ -151,6 +105,7 @@ material_challenges:
     - Keep surface temperature below 150°C monitored with IR camera
     - Have fire suppression ready for pyrophoric materials
     - Immediate passivation after cleaning to prevent further oxidation
+    challenge_id: rapid_oxidation_and_pyrophoricity
   - challenge: Variable thermal properties across series
     severity: medium
     property_value: 3-8 mm²/s thermal diffusivity (2.7x variation)
@@ -160,6 +115,7 @@ material_challenges:
     - Heavy lanthanides (Dy, Er, Yb) tolerate slightly higher power
     - Adjust parameters by specific element, not just category
     - Test on small area to determine optimal cooling requirements
+    challenge_id: variable_thermal_properties_across_series
   surface_characteristics:
   - challenge: Oxide layer formation and removal
     severity: high
@@ -170,6 +126,7 @@ material_challenges:
     - Oxide removal threshold (1-3 J/cm²) lower than metal substrate (2-5 J/cm²)
     - Chemical passivation immediately after cleaning
     - Store in inert atmosphere or vacuum after processing
+    challenge_id: oxide_layer_formation_and_removal
   - challenge: Magnetic property sensitivity
     severity: high
     impact: Heating above Curie temperature permanently alters magnetic properties
@@ -178,6 +135,7 @@ material_challenges:
     - Use ultrashort pulses (picosecond) for minimal heat-affected zone
     - Reduce power by 60-70% compared to non-magnetic metals
     - Test magnetic properties before and after cleaning to verify preservation
+    challenge_id: magnetic_property_sensitivity
   contamination_challenges:
   - challenge: High-value material recovery
     severity: medium
@@ -188,6 +146,7 @@ material_challenges:
     - Collect all ablated material for potential recovery
     - Document process for traceability and quality control
     - Consider chemical pre-treatment to reduce laser exposure
+    challenge_id: high_value_material_recovery
   - challenge: Strategic material handling requirements
     severity: medium
     impact: Export-controlled materials require documentation and secure handling
@@ -197,6 +156,7 @@ material_challenges:
     - Secure storage of cleaned materials
     - Follow applicable export control regulations
     - Chain of custody documentation for high-value materials
+    challenge_id: strategic_material_handling_requirements
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:43.154715'
+    generated_date: '2025-12-16T13:51:25.785002'

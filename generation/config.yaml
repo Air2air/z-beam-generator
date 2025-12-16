@@ -32,6 +32,10 @@ voice_parameters:
 
 # (simple_mode section REMOVED - always production mode)
 
+# Voice Intensity Parameters (1-10 scale)
+jargon_removal: 7                        # Reduce technical jargon (1=minimal, 10=maximum removal)
+professional_voice: 5                    # Professional tone level (1=casual, 10=highly professional)
+
 # Length Variation Control (1-10 scale)
 # This SINGLE slider controls variation for ALL components
 # Calculation: variation_pct = 10% + (slider * 5%)

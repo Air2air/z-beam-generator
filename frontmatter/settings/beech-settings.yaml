@@ -1,13 +1,9 @@
-name: Beech
-slug: beech
 id: beech-settings
+name: beech-laser-cleaning
+slug: beech-settings
 category: wood
 subcategory: hardwood
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,7 +33,12 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
-title: Beech Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: beech-laser-cleaning Laser Cleaning Settings
 settings_description: 'When laser cleaning Beech, I''ve seen it stand out from softer woods like pine. Beech holds up better under the beam. Its denser grain absorbs heat more evenly than pine''s loose structure. This means cleaner removal of grime without splintering right away.
 
 
@@ -45,8 +46,6 @@ settings_description: 'When laser cleaning Beech, I''ve seen it stand out from s
 
 
   Compared to oak, Beech flexes less rigidly. That low give requires tighter overlap to avoid skipping spots. Tends to restore that natural luster smoothly if you do. Just keep passes light—brings back the wood''s warmth without warping. In my experience, this approach saves the finish every time.'
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -56,8 +55,8 @@ breadcrumb:
   href: /materials/wood
 - label: Hardwood
   href: /materials/wood/hardwood
-- label: Beech
-  href: /materials/beech
+- label: beech-laser-cleaning
+  href: /materials/beech-settings
 images:
   hero:
     alt: Beech surface undergoing laser cleaning showing precise contamination removal
@@ -65,52 +64,7 @@ images:
   micro:
     alt: Beech microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/beech-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.163
@@ -146,6 +100,7 @@ material_challenges:
     - Reduce power by 30-40% compared to metals
     - Increase scan speed to reduce dwell time
     - Monitor surface for discoloration; stop if browning occurs
+    challenge_id: charring_and_carbonization
   - challenge: Slow thermal diffusivity
     severity: medium
     property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
@@ -154,6 +109,7 @@ material_challenges:
     - Increase cooling time between passes
     - Use lower repetition rates (<20 kHz)
     - Apply crosshatch patterns to distribute heat
+    challenge_id: slow_thermal_diffusivity
   surface_characteristics:
   - challenge: Grain direction sensitivity
     severity: medium
@@ -163,6 +119,7 @@ material_challenges:
     - Scan parallel to grain for consistent results
     - Use crosshatch pattern (0° and 90°) for uniform cleaning
     - Test on scrap to determine optimal scan direction
+    challenge_id: grain_direction_sensitivity
   - challenge: Porous structure with deep contamination
     severity: medium
     porosity_range: 12-65% (softwoods highest)
@@ -171,6 +128,7 @@ material_challenges:
     - Multiple passes with progressive power increase
     - Reduce scan speed for deeper penetration (600 mm/s)
     - Chemical pre-treatment for deep-seated contamination
+    challenge_id: porous_structure_with_deep_contamination
   contamination_challenges:
   - challenge: Varnish and coating removal
     severity: medium
@@ -180,6 +138,7 @@ material_challenges:
     - Second pass 60W slow (800 mm/s) for residue
     - Use fume extraction to prevent redeposition
     - Limit to 2-3 passes maximum to avoid substrate damage
+    challenge_id: varnish_and_coating_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:39.388949'
+    generated_date: '2025-12-16T13:51:18.514224'

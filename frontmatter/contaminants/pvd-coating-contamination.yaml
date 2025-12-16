@@ -1,12 +1,31 @@
+id: pvd-coating-contamination
 name: PVD Coating Defects
 slug: pvd-coating-contamination
-id: pvd-coating-contamination
 category: inorganic-coating
 subcategory: coating
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: Tool Steel
+    title: Tool Steel
+    url: /materials/Tool Steel
+    image: /images/materials/Tool Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbide
+    title: Carbide
+    url: /materials/carbide
+    image: /images/materials/carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: hss
+    title: Hss
+    url: /materials/hss
+    image: /images/materials/hss.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,6 +56,10 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Alessandro Moretti
@@ -185,32 +208,6 @@ laser_properties:
     thermal_conductivity: 8.5
     thermal_diffusivity: 1.6
     vaporization_temperature: 1200
-domain_linkages:
-  related_materials:
-  - id: Tool Steel
-    title: Tool Steel
-    url: /materials/metal/alloy/Tool Steel
-    image: /images/materials/metal/alloy/Tool Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbide
-    title: Carbide
-    url: /materials/carbide
-    image: /images/materials/carbide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: hss
-    title: HSS
-    url: /materials/hss
-    image: /images/materials/hss.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Tool Steel
 - Carbide

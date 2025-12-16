@@ -1,13 +1,9 @@
-name: Onyx
-slug: onyx
 id: onyx-settings
+name: onyx-laser-cleaning
+slug: onyx-settings
 category: stone
 subcategory: sedimentary
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,10 +32,13 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
-title: Onyx Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: onyx-laser-cleaning Laser Cleaning Settings
 settings_description: When laser cleaning onyx, make sure you watch its banded layers closely, unlike smoother marbles that heat evenly—onyx absorbs energy fast because of its dense quartz makeup, so start with lower power to prevent cracking those fine stripes. You must adjust scan speeds slower than for granites, since its poor heat spread traps warmth locally and risks surface checks if you rush. This keeps the natural polish intact for heritage pieces, avoiding dull spots from overexposure.
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -49,8 +48,8 @@ breadcrumb:
   href: /materials/stone
 - label: Sedimentary
   href: /materials/stone/sedimentary
-- label: Onyx
-  href: /materials/onyx
+- label: onyx-laser-cleaning
+  href: /materials/onyx-settings
 images:
   hero:
     alt: Onyx surface undergoing laser cleaning showing precise contamination removal
@@ -58,55 +57,7 @@ images:
   micro:
     alt: Onyx microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/onyx-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5.1
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    unit: μs
-    value: 200
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 1.05
@@ -147,6 +98,7 @@ material_challenges:
     - Preheat substrate if possible to reduce thermal gradients
     - Granite more resistant than marble; sandstone most vulnerable
     - Monitor for surface crazing; stop immediately if cracks appear
+    challenge_id: thermal_shock_and_microcracking
   - challenge: Moisture-induced spalling
     severity: high
     threshold_temperature: Steam formation >100°C with trapped moisture
@@ -157,6 +109,7 @@ material_challenges:
     - Reduce power by 50% for damp stone
     - Use pulse mode with extended cooling (15-20 seconds)
     - Heritage stone requires especially gentle approach
+    challenge_id: moisture_induced_spalling
   surface_characteristics:
   - challenge: Weathering and surface degradation
     severity: high
@@ -167,6 +120,7 @@ material_challenges:
     - Multiple gentle passes (4-6 at 40-60W) preferred
     - Monitor for powdering or flaking; adjust power immediately
     - Heritage conservation requires documentation and testing
+    challenge_id: weathering_and_surface_degradation
   - challenge: Mineral composition heterogeneity
     severity: medium
     impact: Mixed minerals have different absorption and damage thresholds
@@ -175,6 +129,7 @@ material_challenges:
     - Crosshatch scan pattern for uniform coverage
     - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
     - Quartzite and marble more homogeneous than granite
+    challenge_id: mineral_composition_heterogeneity
   contamination_challenges:
   - challenge: Biological growth and deep staining
     severity: medium
@@ -186,6 +141,7 @@ material_challenges:
     - Third pass 40W very slow (400 mm/s) for deep staining
     - Chemical biocide pre-treatment kills roots and reduces laser exposure
     - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
+    challenge_id: biological_growth_and_deep_staining
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:41.595624'
+    generated_date: '2025-12-16T13:51:22.361563'

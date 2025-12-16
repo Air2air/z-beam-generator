@@ -1,13 +1,9 @@
-name: Porphyry
-slug: porphyry
 id: porphyry-settings
+name: porphyry-laser-cleaning
+slug: porphyry-settings
 category: stone
 subcategory: sedimentary
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,10 +33,13 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
-title: Porphyry Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: porphyry-laser-cleaning Laser Cleaning Settings
 settings_description: We've found that when laser cleaning Porphyry, you need to start conservatively with power levels to prevent any surface cracking from its uneven crystal structure, which can trap heat unevenly compared to smoother granites. In our experience, this durable stone responds well because of its low porosity and strong compressive hold—it absorbs laser energy steadily without letting contaminants seep back in, unlike more porous limestones that demand extra passes. We typically use a focused beam with moderate speed and overlap to gently lift away grime while preserving the natural polish, since Porphyry's heat resistance lets it handle short bursts without warping. But watch out for overdoing the intensity early on; its moderate conductivity means heat builds up if you rush, so adjust by slowing the scan and adding passes to avoid subtle fissures that show up later in heritage pieces. This approach restores the stone's finish cleanly for architectural or cultural work.
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -50,8 +49,8 @@ breadcrumb:
   href: /materials/stone
 - label: Sedimentary
   href: /materials/stone/sedimentary
-- label: Porphyry
-  href: /materials/porphyry
+- label: porphyry-laser-cleaning
+  href: /materials/porphyry-settings
 images:
   hero:
     alt: Porphyry surface undergoing laser cleaning showing precise contamination removal
@@ -59,52 +58,7 @@ images:
   micro:
     alt: Porphyry microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/porphyry-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 12.7
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 1.15
@@ -145,6 +99,7 @@ material_challenges:
     - Preheat substrate if possible to reduce thermal gradients
     - Granite more resistant than marble; sandstone most vulnerable
     - Monitor for surface crazing; stop immediately if cracks appear
+    challenge_id: thermal_shock_and_microcracking
   - challenge: Moisture-induced spalling
     severity: high
     threshold_temperature: Steam formation >100°C with trapped moisture
@@ -155,6 +110,7 @@ material_challenges:
     - Reduce power by 50% for damp stone
     - Use pulse mode with extended cooling (15-20 seconds)
     - Heritage stone requires especially gentle approach
+    challenge_id: moisture_induced_spalling
   surface_characteristics:
   - challenge: Weathering and surface degradation
     severity: high
@@ -165,6 +121,7 @@ material_challenges:
     - Multiple gentle passes (4-6 at 40-60W) preferred
     - Monitor for powdering or flaking; adjust power immediately
     - Heritage conservation requires documentation and testing
+    challenge_id: weathering_and_surface_degradation
   - challenge: Mineral composition heterogeneity
     severity: medium
     impact: Mixed minerals have different absorption and damage thresholds
@@ -173,6 +130,7 @@ material_challenges:
     - Crosshatch scan pattern for uniform coverage
     - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
     - Quartzite and marble more homogeneous than granite
+    challenge_id: mineral_composition_heterogeneity
   contamination_challenges:
   - challenge: Biological growth and deep staining
     severity: medium
@@ -184,6 +142,7 @@ material_challenges:
     - Third pass 40W very slow (400 mm/s) for deep staining
     - Chemical biocide pre-treatment kills roots and reduces laser exposure
     - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
+    challenge_id: biological_growth_and_deep_staining
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:42.085805'
+    generated_date: '2025-12-16T13:51:23.481262'

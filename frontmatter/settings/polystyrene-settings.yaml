@@ -1,13 +1,9 @@
-name: Polystyrene
-slug: polystyrene
 id: polystyrene-settings
+name: polystyrene-laser-cleaning
+slug: polystyrene-settings
 category: plastic
 subcategory: thermoplastic
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,11 +33,14 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
-title: Polystyrene Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: polystyrene-laser-cleaning Laser Cleaning Settings
 settings_description: "When laser cleaning Polystyrene, watch its tendency to soften under heat—I've seen it deform quickly if you push the power too high right away. This plastic heats unevenly compared to tougher thermoplastics like acrylic, so start slow to avoid melting the surface. \n\nFirst, lower the energy input to let the laser gently lift dirt without penetrating deep. Polystyrene's lightweight nature makes it less forgiving than metals, which shrug off minor overheating, but it cleans up nicely once you control the beam. \n\nScan at a steady pace, overlapping passes lightly to build even coverage. I've found this works best when you keep the spot focused, preventing hot spots that could warp the material. Unlike denser plastics, its poor heat spread means you must pause between passes to cool down. \n\nFinish by checking for residue—Polystyrene holds onto grime stubbornly, but a second gentle run brings back its smooth finish without yellowing. Tends to shine up well for packaging\
   \ or electronics jobs."
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -51,8 +50,8 @@ breadcrumb:
   href: /materials/plastic
 - label: Thermoplastic
   href: /materials/plastic/thermoplastic
-- label: Polystyrene
-  href: /materials/polystyrene
+- label: polystyrene-laser-cleaning
+  href: /materials/polystyrene-settings
 images:
   hero:
     alt: Polystyrene surface undergoing laser cleaning showing precise contamination removal
@@ -60,52 +59,7 @@ images:
   micro:
     alt: Polystyrene microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/polystyrene-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 25
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 20
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 2.5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 100
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.102
@@ -144,6 +98,7 @@ material_challenges:
     - Use lowest power settings (20-40W)
     - Fast scan speeds (2000-4000 mm/s)
     - Pulse mode with extended cooling (5-10 seconds between passes)
+    challenge_id: low_melting_degradation_temperatures
   - challenge: Outgassing and fume generation
     severity: high
     impact: Toxic fumes, smoke, and potential fire hazard
@@ -151,6 +106,7 @@ material_challenges:
     - Mandatory fume extraction system
     - Work in well-ventilated areas
     - Monitor for smoke/discoloration
+    challenge_id: outgassing_and_fume_generation
   surface_characteristics:
   - challenge: Variable absorption by color and additives
     severity: medium
@@ -158,6 +114,7 @@ material_challenges:
     solutions:
     - Adjust power based on plastic color (dark = lower, light = higher)
     - Test on sample pieces first
+    challenge_id: variable_absorption_by_color_and_additives
   contamination_challenges:
   - challenge: Coating and label removal
     severity: medium
@@ -165,6 +122,7 @@ material_challenges:
     solutions:
     - Use UV wavelength (355nm) for better photochemical ablation
     - Multiple gentle passes instead of single high-power pass
+    challenge_id: coating_and_label_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:41.939444'
+    generated_date: '2025-12-16T13:51:23.225810'

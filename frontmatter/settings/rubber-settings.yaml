@@ -1,13 +1,9 @@
-name: Rubber
-slug: rubber
 id: rubber-settings
+name: rubber-laser-cleaning
+slug: rubber-settings
 category: composite
 subcategory: fiber-reinforced
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 4
   name: Todd Dunning
@@ -36,10 +32,13 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
-title: Rubber Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: rubber-laser-cleaning Laser Cleaning Settings
 settings_description: When laser cleaning rubber, you'll want to begin with the lowest possible power settings to account for its exceptional flexibility and low heat tolerance. This material absorbs laser energy quickly due to its dark surface properties, which allows contaminants to remove effectively without deep penetration into the base layer. Rubber's elasticity means it deforms under heat rather than cracking, so you must control scan speeds to prevent warping during multiple passes. We've found that short pulses restore surface integrity while exposing underlying fibers cleanly. Make sure you monitor for signs of softening, as excessive energy reduces durability and leads to material breakdown—always test on a small area first to adjust accordingly.
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -49,8 +48,8 @@ breadcrumb:
   href: /materials/composite
 - label: Fiber Reinforced
   href: /materials/composite/fiber-reinforced
-- label: Rubber
-  href: /materials/rubber
+- label: rubber-laser-cleaning
+  href: /materials/rubber-settings
 images:
   hero:
     alt: Rubber surface undergoing laser cleaning showing precise contamination removal
@@ -58,52 +57,7 @@ images:
   micro:
     alt: Rubber microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/rubber-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5.1
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.104
@@ -143,6 +97,7 @@ material_challenges:
     - Reduce power by 40-50% compared to monolithic materials
     - Monitor for discoloration, bubbling, or layer lifting
     - Ceramic and metal-matrix composites tolerate higher power
+    challenge_id: matrix_degradation_and_delamination
   - challenge: Anisotropic thermal properties
     severity: high
     property_value: 10-100x variation parallel vs perpendicular to fibers
@@ -152,6 +107,7 @@ material_challenges:
     - Use crosshatch pattern (0° and 90°) to identify fiber orientation
     - Increase cooling time 2-3x when scanning perpendicular to fibers
     - Carbon fiber composites require special attention due to electrical conductivity
+    challenge_id: anisotropic_thermal_properties
   surface_characteristics:
   - challenge: Fiber exposure and damage
     severity: high
@@ -161,6 +117,7 @@ material_challenges:
     - Multiple gentle passes preferred over single aggressive pass
     - Stop immediately if fibers become visible
     - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
+    challenge_id: fiber_exposure_and_damage
   - challenge: Surface finish variability
     severity: medium
     impact: Gel coat, paint, or protective layers alter absorption and damage threshold
@@ -169,6 +126,7 @@ material_challenges:
     - Coated surfaces may require 50-100W initial pass for coating removal
     - Bare composite requires 30-50% lower power
     - Adjust parameters when transitioning between coated and uncoated areas
+    challenge_id: surface_finish_variability
   contamination_challenges:
   - challenge: Resin-based contaminant removal
     severity: medium
@@ -178,6 +136,7 @@ material_challenges:
     - Second pass 50W slow (800 mm/s) for residue
     - Chemical pre-treatment improves results for stubborn adhesives
     - Monitor for matrix damage; stop if surface texture changes
+    challenge_id: resin_based_contaminant_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:42.362643'
+    generated_date: '2025-12-16T13:51:24.033346'

@@ -1,12 +1,24 @@
+id: galvanize-corrosion-contamination
 name: White Rust on Galvanized Steel
 slug: galvanize-corrosion-contamination
-id: galvanize-corrosion-contamination
 category: oxidation
 subcategory: ferrous
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: galvanized-steel
+    title: Galvanized Steel
+    url: /materials/galvanized-steel
+    image: /images/materials/galvanized-steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: zinc-coated-metal
+    title: Zinc Coated Metal
+    url: /materials/zinc-coated-metal
+    image: /images/materials/zinc-coated-metal.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,6 +49,10 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Alessandro Moretti
@@ -179,25 +195,6 @@ laser_properties:
     thermal_conductivity: 0.5
     thermal_diffusivity: 0.6
     vaporization_temperature: 120
-domain_linkages:
-  related_materials:
-  - id: galvanized-steel
-    title: Galvanized Steel
-    url: /materials/galvanized-steel
-    image: /images/materials/galvanized-steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: zinc-coated-metal
-    title: Zinc-Coated Metal
-    url: /materials/zinc-coated-metal
-    image: /images/materials/zinc-coated-metal.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Galvanized Steel
 - Zinc-Coated Metal

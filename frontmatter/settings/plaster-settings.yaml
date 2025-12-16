@@ -1,13 +1,9 @@
-name: Plaster
-slug: plaster
 id: plaster-settings
+name: plaster-laser-cleaning
+slug: plaster-settings
 category: masonry
 subcategory: general
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,10 +32,13 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
-title: Plaster Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: plaster-laser-cleaning Laser Cleaning Settings
 settings_description: When we laser clean plaster, the biggest challenge is its fragile nature. It crumbles easily under too much heat. So we start low on power. This keeps the surface intact while removing dirt. We've found plaster's porous structure absorbs contaminants deeply. That means multiple gentle passes work best. Watch out for cracking in the middle of the process. It happens if you speed up too fast. Adjust the scan slowly. Plaster differs from stone because it's softer overall. So use wider spots to spread energy evenly. This avoids hot spots. In our experience, it cleans up nicely for heritage sites. Just stay patient and monitor closely.
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -49,8 +48,8 @@ breadcrumb:
   href: /materials/masonry
 - label: General
   href: /materials/masonry/general
-- label: Plaster
-  href: /materials/plaster
+- label: plaster-laser-cleaning
+  href: /materials/plaster-settings
 images:
   hero:
     alt: Plaster surface undergoing laser cleaning showing precise contamination removal
@@ -58,52 +57,7 @@ images:
   micro:
     alt: Plaster microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/plaster-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 2.5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.21
@@ -144,6 +98,7 @@ material_challenges:
     - Reduce power by 50-60% for damp masonry
     - Allow 24-48 hours drying after rain before laser cleaning
     - Monitor for popping sounds or surface lifting; stop immediately
+    challenge_id: moisture_induced_spalling_and_explosive_failure
   - challenge: Low thermal diffusivity and heat accumulation
     severity: high
     property_value: 0.1-1.0 mm²/s (3-10x slower than metals)
@@ -153,6 +108,7 @@ material_challenges:
     - Use low repetition rates (<20 kHz)
     - Defocused beam reduces peak intensity
     - Multiple gentle passes preferred over aggressive single pass
+    challenge_id: low_thermal_diffusivity_and_heat_accumulation
   surface_characteristics:
   - challenge: High porosity and deep contamination
     severity: high
@@ -163,6 +119,7 @@ material_challenges:
     - Reduce scan speed for deeper penetration (400-600 mm/s)
     - Chemical pre-treatment for biological growth (algae, lichen)
     - Expect 3-5 passes for complete cleaning vs 1-2 for dense materials
+    challenge_id: high_porosity_and_deep_contamination
   - challenge: Surface heterogeneity and aggregate exposure
     severity: medium
     impact: Mixed composition (cement matrix, aggregates, voids) causes variable absorption
@@ -171,6 +128,7 @@ material_challenges:
     - Crosshatch scan pattern for uniform coverage
     - Monitor for differential ablation; adjust power if aggregates become prominent
     - Aged masonry more challenging than new construction
+    challenge_id: surface_heterogeneity_and_aggregate_exposure
   contamination_challenges:
   - challenge: Paint and coating removal from porous substrate
     severity: medium
@@ -181,6 +139,7 @@ material_challenges:
     - Third pass 50W very slow (500 mm/s) for residual staining
     - Chemical stripping pre-treatment reduces laser exposure
     - Heritage masonry requires gentler approach (max 60W)
+    challenge_id: paint_and_coating_removal_from_porous_substrate
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:41.722360'
+    generated_date: '2025-12-16T13:51:22.612945'

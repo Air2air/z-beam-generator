@@ -1,12 +1,22 @@
+id: aluminum-oxidation-contamination
 name: Aluminum Oxidation
 slug: aluminum-oxidation-contamination
-id: aluminum-oxidation-contamination
 category: oxidation
 subcategory: non-ferrous
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+micro:
+  after: Post-cleaning reveals restored surface with aluminum oxidation successfully
+    removed through precise laser ablation.
+  before: Surface shows contamination from aluminum oxidation affecting material appearance
+    and properties.
+domain_linkages:
+  related_materials:
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/Aluminum
+    image: /images/materials/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,6 +47,10 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -68,11 +82,6 @@ images:
   micro:
     url: /images/contaminants/aluminum-oxidation-contamination-micro.jpg
     alt: Aluminum Oxidation contamination microscopic detail
-micro:
-  after: Post-cleaning reveals restored surface with aluminum oxidation successfully
-    removed through precise laser ablation.
-  before: Surface shows contamination from aluminum oxidation affecting material appearance
-    and properties.
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -192,29 +201,5 @@ eeat:
     name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/publication/3587
   reviewedBy: Z-Beam Quality Assurance Team
-domain_linkages:
-  related_materials:
-  - id: Aluminum
-    title: Aluminum
-    url: /materials/metal/non-ferrous/Aluminum
-    image: /images/materials/metal/non-ferrous/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance:
-  - id: iec-60825
-    title: IEC 60825
-    url: ''
-    image: /images/standards/generic-logo.svg
-    applicability: laser_operation
-    requirement: IEC 60825 - Safety of Laser Products
-  - id: osha-29
-    title: OSHA 29
-    url: ''
-    image: /images/standards/generic-logo.svg
-    applicability: laser_operation
-    requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  ppe_requirements: []
 valid_materials:
 - Aluminum

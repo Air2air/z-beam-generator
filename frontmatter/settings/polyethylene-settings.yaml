@@ -1,13 +1,17 @@
-name: Polyethylene
-slug: polyethylene
 id: polyethylene-settings
+name: polyethylene-laser-cleaning
+slug: polyethylene-settings
 category: plastic
 subcategory: thermoplastic
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_contaminants:
+  - id: uv-chalking
+    title: Uv Chalking
+    url: /contaminants/uv-chalking
+    image: /images/contaminants/uv-chalking.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,17 +41,13 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
-title: Polyethylene Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: polyethylene-laser-cleaning Laser Cleaning Settings
 settings_description: The key with Polyethylene lies in its flexibility compared to stiffer plastics like PVC—it absorbs laser energy well without cracking, making surface buildup easy to remove. I've seen it restore food packaging finishes smoothly. But watch out mid-process; its low heat tolerance can cause softening if you dwell too long. Keep scans quick and light to avoid distortion, bringing back that clean, glossy look every time.
-domain_linkages:
-  related_contaminants:
-  - id: uv-chalking
-    title: UV Photodegradation / Polymer Chalking
-    url: /contaminants/aging/photodegradation/uv-chalking
-    image: /images/contaminants/aging/photodegradation/uv-chalking.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -57,8 +57,8 @@ breadcrumb:
   href: /materials/plastic
 - label: Thermoplastic
   href: /materials/plastic/thermoplastic
-- label: Polyethylene
-  href: /materials/polyethylene
+- label: polyethylene-laser-cleaning
+  href: /materials/polyethylene-settings
 images:
   hero:
     alt: Polyethylene surface undergoing laser cleaning showing precise contamination removal
@@ -66,52 +66,7 @@ images:
   micro:
     alt: Polyethylene microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/polyethylene-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5.1
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.16
@@ -150,6 +105,7 @@ material_challenges:
     - Use lowest power settings (20-40W)
     - Fast scan speeds (2000-4000 mm/s)
     - Pulse mode with extended cooling (5-10 seconds between passes)
+    challenge_id: low_melting_degradation_temperatures
   - challenge: Outgassing and fume generation
     severity: high
     impact: Toxic fumes, smoke, and potential fire hazard
@@ -157,6 +113,7 @@ material_challenges:
     - Mandatory fume extraction system
     - Work in well-ventilated areas
     - Monitor for smoke/discoloration
+    challenge_id: outgassing_and_fume_generation
   surface_characteristics:
   - challenge: Variable absorption by color and additives
     severity: medium
@@ -164,6 +121,7 @@ material_challenges:
     solutions:
     - Adjust power based on plastic color (dark = lower, light = higher)
     - Test on sample pieces first
+    challenge_id: variable_absorption_by_color_and_additives
   contamination_challenges:
   - challenge: Coating and label removal
     severity: medium
@@ -171,6 +129,7 @@ material_challenges:
     solutions:
     - Use UV wavelength (355nm) for better photochemical ablation
     - Multiple gentle passes instead of single high-power pass
+    challenge_id: coating_and_label_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:41.877565'
+    generated_date: '2025-12-16T13:51:23.047660'

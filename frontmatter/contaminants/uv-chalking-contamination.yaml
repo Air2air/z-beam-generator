@@ -1,12 +1,71 @@
+id: uv-chalking-contamination
 name: UV Photodegradation / Polymer Chalking
 slug: uv-chalking-contamination
-id: uv-chalking-contamination
 category: aging
 subcategory: photodegradation
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+micro:
+  after: Post-cleaning reveals restored surface with uv photodegradation / polymer
+    chalking successfully removed through precise laser ablation.
+  before: Surface shows contamination from uv photodegradation / polymer chalking
+    affecting material appearance and properties.
+domain_linkages:
+  related_materials:
+  - id: abs
+    title: Abs
+    url: /materials/abs
+    image: /images/materials/abs.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Acrylic (PMMA)
+    title: Acrylic (Pmma)
+    url: /materials/Acrylic (PMMA)
+    image: /images/materials/Acrylic (PMMA).jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Polycarbonate
+    title: Polycarbonate
+    url: /materials/Polycarbonate
+    image: /images/materials/Polycarbonate.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pvc
+    title: Pvc
+    url: /materials/pvc
+    image: /images/materials/pvc.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Nylon
+    title: Nylon
+    url: /materials/Nylon
+    image: /images/materials/Nylon.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Polyethylene
+    title: Polyethylene
+    url: /materials/Polyethylene
+    image: /images/materials/Polyethylene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Polypropylene
+    title: Polypropylene
+    url: /materials/Polypropylene
+    image: /images/materials/Polypropylene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Redwood
+    title: Redwood
+    url: /materials/Redwood
+    image: /images/materials/Redwood.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,6 +96,10 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -73,11 +136,6 @@ images:
   micro:
     url: /images/contaminants/uv-chalking-contamination-micro.jpg
     alt: UV Photodegradation / Polymer Chalking contamination microscopic detail
-micro:
-  after: Post-cleaning reveals restored surface with uv photodegradation / polymer
-    chalking successfully removed through precise laser ablation.
-  before: Surface shows contamination from uv photodegradation / polymer chalking
-    affecting material appearance and properties.
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -208,79 +266,6 @@ eeat:
     name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/publication/3587
   reviewedBy: Z-Beam Quality Assurance Team
-domain_linkages:
-  related_materials:
-  - id: abs
-    title: ABS
-    url: /materials/abs
-    image: /images/materials/abs.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Acrylic (PMMA)
-    title: Acrylic (PMMA)
-    url: /materials/plastic/thermoplastic/Acrylic (PMMA)
-    image: /images/materials/plastic/thermoplastic/Acrylic (PMMA).jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Polycarbonate
-    title: Polycarbonate
-    url: /materials/plastic/thermoplastic/Polycarbonate
-    image: /images/materials/plastic/thermoplastic/Polycarbonate.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pvc
-    title: PVC
-    url: /materials/pvc
-    image: /images/materials/pvc.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Nylon
-    title: Nylon
-    url: /materials/plastic/thermoplastic/Nylon
-    image: /images/materials/plastic/thermoplastic/Nylon.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Polyethylene
-    title: Polyethylene
-    url: /materials/plastic/thermoplastic/Polyethylene
-    image: /images/materials/plastic/thermoplastic/Polyethylene.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Polypropylene
-    title: Polypropylene
-    url: /materials/plastic/thermoplastic/Polypropylene
-    image: /images/materials/plastic/thermoplastic/Polypropylene.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Redwood
-    title: Redwood
-    url: /materials/wood/hardwood/Redwood
-    image: /images/materials/wood/hardwood/Redwood.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance:
-  - id: iec-60825
-    title: IEC 60825
-    url: ''
-    image: /images/standards/generic-logo.svg
-    applicability: laser_operation
-    requirement: IEC 60825 - Safety of Laser Products
-  - id: osha-29
-    title: OSHA 29
-    url: ''
-    image: /images/standards/generic-logo.svg
-    applicability: laser_operation
-    requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  ppe_requirements: []
 valid_materials:
 - ABS
 - Acrylic (PMMA)

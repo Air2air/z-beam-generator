@@ -1,12 +1,213 @@
+id: lime-scale-contamination
 name: Limescale Deposits
 slug: lime-scale-contamination
-id: lime-scale-contamination
 category: thermal-damage
 subcategory: scale
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: tile
+    title: Tile
+    url: /materials/tile
+    image: /images/materials/tile.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Crown Glass
+    title: Crown Glass
+    url: /materials/Crown Glass
+    image: /images/materials/Crown Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Float Glass
+    title: Float Glass
+    url: /materials/Float Glass
+    image: /images/materials/Float Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Borosilicate Glass
+    title: Borosilicate Glass
+    url: /materials/Borosilicate Glass
+    image: /images/materials/Borosilicate Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminosilicate Glass
+    title: Aluminosilicate Glass
+    url: /materials/Aluminosilicate Glass
+    image: /images/materials/Aluminosilicate Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Fused Silica
+    title: Fused Silica
+    url: /materials/Fused Silica
+    image: /images/materials/Fused Silica.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Gorilla Glass
+    title: Gorilla Glass
+    url: /materials/Gorilla Glass
+    image: /images/materials/Gorilla Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tempered Glass
+    title: Tempered Glass
+    url: /materials/Tempered Glass
+    image: /images/materials/Tempered Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/Aluminum
+    image: /images/materials/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Steel
+    title: Steel
+    url: /materials/Steel
+    image: /images/materials/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/Stainless Steel
+    image: /images/materials/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cast-iron
+    title: Cast Iron
+    url: /materials/cast-iron
+    image: /images/materials/cast-iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Copper
+    title: Copper
+    url: /materials/Copper
+    image: /images/materials/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bronze
+    title: Bronze
+    url: /materials/bronze
+    image: /images/materials/bronze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Titanium
+    title: Titanium
+    url: /materials/Titanium
+    image: /images/materials/Titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zinc
+    title: Zinc
+    url: /materials/Zinc
+    image: /images/materials/Zinc.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Nickel
+    title: Nickel
+    url: /materials/Nickel
+    image: /images/materials/Nickel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Lead
+    title: Lead
+    url: /materials/Lead
+    image: /images/materials/Lead.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tin
+    title: Tin
+    url: /materials/Tin
+    image: /images/materials/Tin.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cobalt
+    title: Cobalt
+    url: /materials/Cobalt
+    image: /images/materials/Cobalt.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Chromium
+    title: Chromium
+    url: /materials/Chromium
+    image: /images/materials/Chromium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Alumina
+    title: Alumina
+    url: /materials/Alumina
+    image: /images/materials/Alumina.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicon-carbide
+    title: Silicon Carbide
+    url: /materials/silicon-carbide
+    image: /images/materials/silicon-carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zirconia
+    title: Zirconia
+    url: /materials/Zirconia
+    image: /images/materials/Zirconia.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum Nitride
+    title: Aluminum Nitride
+    url: /materials/Aluminum Nitride
+    image: /images/materials/Aluminum Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Carbide
+    title: Boron Carbide
+    url: /materials/Boron Carbide
+    image: /images/materials/Boron Carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Nitride
+    title: Boron Nitride
+    url: /materials/Boron Nitride
+    image: /images/materials/Boron Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Silicon Nitride
+    title: Silicon Nitride
+    url: /materials/Silicon Nitride
+    image: /images/materials/Silicon Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 4
   name: Todd Dunning
@@ -36,6 +237,10 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Todd Dunning
@@ -178,214 +383,6 @@ laser_properties:
     thermal_conductivity: 1.3
     thermal_diffusivity: 0.15
     vaporization_temperature: 2850
-domain_linkages:
-  related_materials:
-  - id: tile
-    title: Tile
-    url: /materials/tile
-    image: /images/materials/tile.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Crown Glass
-    title: Crown Glass
-    url: /materials/glass/soda-lime/Crown Glass
-    image: /images/materials/glass/soda-lime/Crown Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Float Glass
-    title: Float Glass
-    url: /materials/glass/soda-lime/Float Glass
-    image: /images/materials/glass/soda-lime/Float Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Borosilicate Glass
-    title: Borosilicate Glass
-    url: /materials/glass/soda-lime/Borosilicate Glass
-    image: /images/materials/glass/soda-lime/Borosilicate Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminosilicate Glass
-    title: Aluminosilicate Glass
-    url: /materials/glass/specialty/Aluminosilicate Glass
-    image: /images/materials/glass/specialty/Aluminosilicate Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Fused Silica
-    title: Fused Silica
-    url: /materials/glass/soda-lime/Fused Silica
-    image: /images/materials/glass/soda-lime/Fused Silica.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Gorilla Glass
-    title: Gorilla Glass
-    url: /materials/glass/soda-lime/Gorilla Glass
-    image: /images/materials/glass/soda-lime/Gorilla Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Tempered Glass
-    title: Tempered Glass
-    url: /materials/glass/specialty-glass/Tempered Glass
-    image: /images/materials/glass/specialty-glass/Tempered Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum
-    title: Aluminum
-    url: /materials/metal/non-ferrous/Aluminum
-    image: /images/materials/metal/non-ferrous/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Steel
-    title: Steel
-    url: /materials/metal/ferrous/Steel
-    image: /images/materials/metal/ferrous/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
-    title: Stainless Steel
-    url: /materials/metal/ferrous/Stainless Steel
-    image: /images/materials/metal/ferrous/Stainless Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cast-iron
-    title: Cast Iron
-    url: /materials/cast-iron
-    image: /images/materials/cast-iron.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Copper
-    title: Copper
-    url: /materials/metal/non-ferrous/Copper
-    image: /images/materials/metal/non-ferrous/Copper.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bronze
-    title: Bronze
-    url: /materials/bronze
-    image: /images/materials/bronze.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Titanium
-    title: Titanium
-    url: /materials/metal/specialty/Titanium
-    image: /images/materials/metal/specialty/Titanium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zinc
-    title: Zinc
-    url: /materials/metal/alloy/Zinc
-    image: /images/materials/metal/alloy/Zinc.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Nickel
-    title: Nickel
-    url: /materials/metal/specialty/Nickel
-    image: /images/materials/metal/specialty/Nickel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Lead
-    title: Lead
-    url: /materials/metal/non-ferrous/Lead
-    image: /images/materials/metal/non-ferrous/Lead.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Tin
-    title: Tin
-    url: /materials/metal/alloy/Tin
-    image: /images/materials/metal/alloy/Tin.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Cobalt
-    title: Cobalt
-    url: /materials/metal/specialty/Cobalt
-    image: /images/materials/metal/specialty/Cobalt.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Chromium
-    title: Chromium
-    url: /materials/metal/specialty/Chromium
-    image: /images/materials/metal/specialty/Chromium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Alumina
-    title: Alumina
-    url: /materials/ceramic/oxide/Alumina
-    image: /images/materials/ceramic/oxide/Alumina.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicon-carbide
-    title: Silicon Carbide
-    url: /materials/silicon-carbide
-    image: /images/materials/silicon-carbide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zirconia
-    title: Zirconia
-    url: /materials/ceramic/oxide/Zirconia
-    image: /images/materials/ceramic/oxide/Zirconia.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum Nitride
-    title: Aluminum Nitride
-    url: /materials/ceramic/technical/Aluminum Nitride
-    image: /images/materials/ceramic/technical/Aluminum Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Boron Carbide
-    title: Boron Carbide
-    url: /materials/ceramic/carbide/Boron Carbide
-    image: /images/materials/ceramic/carbide/Boron Carbide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Boron Nitride
-    title: Boron Nitride
-    url: /materials/ceramic/technical/Boron Nitride
-    image: /images/materials/ceramic/technical/Boron Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Silicon Nitride
-    title: Silicon Nitride
-    url: /materials/ceramic/oxide/Silicon Nitride
-    image: /images/materials/ceramic/oxide/Silicon Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Tile
 - Crown Glass

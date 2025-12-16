@@ -1,13 +1,164 @@
-name: Walnut
-slug: walnut
 id: walnut-settings
+name: walnut-laser-cleaning
+slug: walnut-settings
 category: wood
 subcategory: hardwood
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue
+    url: /contaminants/adhesive-residue
+    image: /images/contaminants/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: algae-growth
+    title: Algae Growth
+    url: /contaminants/algae-growth
+    image: /images/contaminants/algae-growth.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lead-paint
+    title: Lead Paint
+    url: /contaminants/lead-paint
+    image: /images/contaminants/lead-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mold-mildew
+    title: Mold Mildew
+    url: /contaminants/mold-mildew
+    image: /images/contaminants/mold-mildew.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: paint-residue
+    title: Paint Residue
+    url: /contaminants/paint-residue
+    image: /images/contaminants/paint-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: wax-buildup
+    title: Wax Buildup
+    url: /contaminants/wax-buildup
+    image: /images/contaminants/wax-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: wood-rot
+    title: Wood Rot
+    url: /contaminants/wood-rot
+    image: /images/contaminants/wood-rot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/carbon-monoxide
+    image: /images/compounds/carbon-monoxide.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of organic adhesives
+    exposure_risk: high
+  - id: acetaldehyde-compound
+    title: Acetaldehyde
+    url: /compounds/acetaldehyde
+    image: /images/compounds/acetaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Decomposition of vinyl and acrylic adhesives
+    exposure_risk: moderate
+  - id: hydrogen-chloride-compound
+    title: Hydrogen Chloride
+    url: /compounds/hydrogen-chloride
+    image: /images/compounds/hydrogen-chloride.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Some adhesives contain chlorinated compounds
+    exposure_risk: moderate
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/toluene
+    image: /images/compounds/toluene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Release of toluene from adhesive formulations
+    exposure_risk: moderate
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/formaldehyde
+    image: /images/compounds/formaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of formaldehyde-based adhesives
+    exposure_risk: moderate
+  - id: hydrogen-cyanide-compound
+    title: Hydrogen Cyanide
+    url: /compounds/hydrogen-cyanide
+    image: /images/compounds/hydrogen-cyanide.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Breakdown of cyanoacrylate adhesives
+    exposure_risk: moderate
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/carbon-dioxide
+    image: /images/compounds/carbon-dioxide.jpg
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of adhesives
+    exposure_risk: low
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/vocs
+    image: /images/compounds/vocs.jpg
+    frequency: very_common
+    severity: moderate
+    typical_context: Release of adhesive solvents
+    exposure_risk: moderate
+  - id: nitrogen-oxides-compound
+    title: Nitrogen Oxides
+    url: /compounds/nitrogen-oxides
+    image: /images/compounds/nitrogen-oxides.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Nitrogen from some paint formulations
+    exposure_risk: low
+  - id: zinc-oxide-compound
+    title: Zinc Oxide
+    url: /compounds/zinc-oxide
+    image: /images/compounds/zinc-oxide.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Zinc oxide pigments in paint
+    exposure_risk: low
+  - id: chromium-vi-compound
+    title: Hexavalent Chromium
+    url: /compounds/chromium-vi
+    image: /images/compounds/chromium-vi.jpg
+    frequency: occasional
+    severity: high
+    typical_context: Chromate pigments in some paints
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/pahs
+    image: /images/compounds/pahs.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Incomplete combustion of organic binders
+    exposure_risk: moderate
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/benzene
+    image: /images/compounds/benzene.jpg
+    frequency: common
+    severity: high
+    typical_context: Thermal breakdown of aromatic paint solvents
+    exposure_risk: high
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,59 +187,13 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
-title: Walnut Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: walnut-laser-cleaning Laser Cleaning Settings
 settings_description: I've found walnut cleans nicely with gentle laser passes. Its open grain absorbs energy quickly, so it lifts dirt without much effort. This works well because the wood stays cool overall, avoiding deep burns. Just keep the beam moving steadily. Watch out for overdoing it—too much heat can char the surface, so test on a scrap first.
-domain_linkages:
-  related_contaminants:
-  - id: adhesive-residue
-    title: Adhesive Residue / Tape Marks
-    url: /contaminants/organic-residue/adhesive/adhesive-residue
-    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: algae-growth
-    title: Algae and Lichen Growth
-    url: /contaminants/biological/growth/algae-growth
-    image: /images/contaminants/biological/growth/algae-growth.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lead-paint
-    title: Lead-Based Paint Removal
-    url: /contaminants/inorganic-coating/paint/lead-paint
-    image: /images/contaminants/inorganic-coating/paint/lead-paint.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mold-mildew
-    title: Mold and Mildew Growth
-    url: /contaminants/biological/growth/mold-mildew
-    image: /images/contaminants/biological/growth/mold-mildew.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: paint-residue
-    title: Paint Residue / Coating Failure
-    url: /contaminants/inorganic-coating/paint/paint-residue
-    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: wax-buildup
-    title: Wax Coating Buildup
-    url: /contaminants/organic-residue/wax/wax-buildup
-    image: /images/contaminants/organic-residue/wax/wax-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: wood-rot
-    title: Wood Rot / Fungal Biodegradation
-    url: /contaminants/biological/growth/wood-rot
-    image: /images/contaminants/biological/growth/wood-rot.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -98,8 +203,8 @@ breadcrumb:
   href: /materials/wood
 - label: Hardwood
   href: /materials/wood/hardwood
-- label: Walnut
-  href: /materials/walnut
+- label: walnut-laser-cleaning
+  href: /materials/walnut-settings
 images:
   hero:
     alt: Walnut surface undergoing laser cleaning showing precise contamination removal
@@ -107,52 +212,7 @@ images:
   micro:
     alt: Microscopic view of Walnut surface after laser cleaning showing detailed surface structure
     url: /images/material/walnut-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 40
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 20
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 100
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.13
@@ -192,6 +252,7 @@ material_challenges:
     - Reduce power by 30-40% compared to metals
     - Increase scan speed to reduce dwell time
     - Monitor surface for discoloration; stop if browning occurs
+    challenge_id: charring_and_carbonization
   - challenge: Slow thermal diffusivity
     severity: medium
     property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
@@ -200,6 +261,7 @@ material_challenges:
     - Increase cooling time between passes
     - Use lower repetition rates (<20 kHz)
     - Apply crosshatch patterns to distribute heat
+    challenge_id: slow_thermal_diffusivity
   surface_characteristics:
   - challenge: Grain direction sensitivity
     severity: medium
@@ -209,6 +271,7 @@ material_challenges:
     - Scan parallel to grain for consistent results
     - Use crosshatch pattern (0° and 90°) for uniform cleaning
     - Test on scrap to determine optimal scan direction
+    challenge_id: grain_direction_sensitivity
   - challenge: Porous structure with deep contamination
     severity: medium
     porosity_range: 12-65% (softwoods highest)
@@ -217,6 +280,7 @@ material_challenges:
     - Multiple passes with progressive power increase
     - Reduce scan speed for deeper penetration (600 mm/s)
     - Chemical pre-treatment for deep-seated contamination
+    challenge_id: porous_structure_with_deep_contamination
   contamination_challenges:
   - challenge: Varnish and coating removal
     severity: medium
@@ -226,6 +290,7 @@ material_challenges:
     - Second pass 60W slow (800 mm/s) for residue
     - Use fume extraction to prevent redeposition
     - Limit to 2-3 passes maximum to avoid substrate damage
+    challenge_id: varnish_and_coating_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:43.582937'
+    generated_date: '2025-12-16T13:51:26.610747'

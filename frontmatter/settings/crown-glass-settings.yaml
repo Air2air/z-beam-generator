@@ -1,13 +1,235 @@
-name: Crown Glass
-slug: crown-glass
 id: crown-glass-settings
+name: crown-glass-laser-cleaning
+slug: crown-glass-settings
 category: glass
 subcategory: soda-lime
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue
+    url: /contaminants/adhesive-residue
+    image: /images/contaminants/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: biological-stains
+    title: Biological Stains
+    url: /contaminants/biological-stains
+    image: /images/contaminants/biological-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: blood-residue
+    title: Blood Residue
+    url: /contaminants/blood-residue
+    image: /images/contaminants/blood-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: insect-residue
+    title: Insect Residue
+    url: /contaminants/insect-residue
+    image: /images/contaminants/insect-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lime-scale
+    title: Lime Scale
+    url: /contaminants/lime-scale
+    image: /images/contaminants/lime-scale.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: medical-disinfectant
+    title: Medical Disinfectant
+    url: /contaminants/medical-disinfectant
+    image: /images/contaminants/medical-disinfectant.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mineral-deposits
+    title: Mineral Deposits
+    url: /contaminants/mineral-deposits
+    image: /images/contaminants/mineral-deposits.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pesticide-residue
+    title: Pesticide Residue
+    url: /contaminants/pesticide-residue
+    image: /images/contaminants/pesticide-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pharmaceutical-residue
+    title: Pharmaceutical Residue
+    url: /contaminants/pharmaceutical-residue
+    image: /images/contaminants/pharmaceutical-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: plastic-residue
+    title: Plastic Residue
+    url: /contaminants/plastic-residue
+    image: /images/contaminants/plastic-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pollen-deposit
+    title: Pollen Deposit
+    url: /contaminants/pollen-deposit
+    image: /images/contaminants/pollen-deposit.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: scale-buildup
+    title: Scale Buildup
+    url: /contaminants/scale-buildup
+    image: /images/contaminants/scale-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicone-buildup
+    title: Silicone Buildup
+    url: /contaminants/silicone-buildup
+    image: /images/contaminants/silicone-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: soap-scum
+    title: Soap Scum
+    url: /contaminants/soap-scum
+    image: /images/contaminants/soap-scum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: tree-sap
+    title: Tree Sap
+    url: /contaminants/tree-sap
+    image: /images/contaminants/tree-sap.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: water-stain
+    title: Water Stain
+    url: /contaminants/water-stain
+    image: /images/contaminants/water-stain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/carbon-monoxide
+    image: /images/compounds/carbon-monoxide.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of organic adhesives
+    exposure_risk: high
+  - id: acetaldehyde-compound
+    title: Acetaldehyde
+    url: /compounds/acetaldehyde
+    image: /images/compounds/acetaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Decomposition of vinyl and acrylic adhesives
+    exposure_risk: moderate
+  - id: hydrogen-chloride-compound
+    title: Hydrogen Chloride
+    url: /compounds/hydrogen-chloride
+    image: /images/compounds/hydrogen-chloride.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Some adhesives contain chlorinated compounds
+    exposure_risk: moderate
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/toluene
+    image: /images/compounds/toluene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Release of toluene from adhesive formulations
+    exposure_risk: moderate
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/formaldehyde
+    image: /images/compounds/formaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of formaldehyde-based adhesives
+    exposure_risk: moderate
+  - id: hydrogen-cyanide-compound
+    title: Hydrogen Cyanide
+    url: /compounds/hydrogen-cyanide
+    image: /images/compounds/hydrogen-cyanide.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Breakdown of cyanoacrylate adhesives
+    exposure_risk: moderate
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/carbon-dioxide
+    image: /images/compounds/carbon-dioxide.jpg
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of adhesives
+    exposure_risk: low
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/vocs
+    image: /images/compounds/vocs.jpg
+    frequency: very_common
+    severity: moderate
+    typical_context: Release of adhesive solvents
+    exposure_risk: moderate
+  - id: ammonia-compound
+    title: Ammonia
+    url: /compounds/ammonia
+    image: /images/compounds/ammonia.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Breakdown of proteins
+    exposure_risk: low
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/pahs
+    image: /images/compounds/pahs.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal degradation of aromatic polymers
+    exposure_risk: moderate
+  - id: styrene-compound
+    title: Styrene
+    url: /compounds/styrene
+    image: /images/compounds/styrene.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Thermal depolymerization of polystyrene
+    exposure_risk: high
+  - id: phosgene-compound
+    title: Phosgene
+    url: /compounds/phosgene
+    image: /images/compounds/phosgene.jpg
+    frequency: rare
+    severity: high
+    typical_context: Thermal breakdown of certain chlorinated plastics
+    exposure_risk: high
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/benzene
+    image: /images/compounds/benzene.jpg
+    frequency: common
+    severity: high
+    typical_context: Thermal decomposition of polystyrene and aromatic polymers
+    exposure_risk: high
+  - id: acrolein-compound
+    title: Acrolein
+    url: /compounds/acrolein
+    image: /images/compounds/acrolein.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Pyrolysis of certain polymers
+    exposure_risk: moderate
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,7 +259,12 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
-title: Crown Glass Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: crown-glass-laser-cleaning Laser Cleaning Settings
 settings_description: 'We''ve found Crown Glass tricky to clean without cracking. It handles heat poorly compared to sturdier borosilicate types. Start low on power to dodge thermal shock.
 
 
@@ -48,120 +275,6 @@ settings_description: 'We''ve found Crown Glass tricky to clean without cracking
 
 
   In heritage work, this approach preserves details well. We''ve seen it shine in labs too. Just cool between runs to stay safe.'
-domain_linkages:
-  related_contaminants:
-  - id: adhesive-residue
-    title: Adhesive Residue / Tape Marks
-    url: /contaminants/organic-residue/adhesive/adhesive-residue
-    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: biological-stains
-    title: Organic Biofilm Deposits
-    url: /contaminants/biological/deposit/biological-stains
-    image: /images/contaminants/biological/deposit/biological-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: blood-residue
-    title: Biological Blood Residue
-    url: /contaminants/biological/deposit/blood-residue
-    image: /images/contaminants/biological/deposit/blood-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: insect-residue
-    title: Insect Impact Residue
-    url: /contaminants/biological/deposit/insect-residue
-    image: /images/contaminants/biological/deposit/insect-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lime-scale
-    title: Limescale Deposits
-    url: /contaminants/thermal-damage/scale/lime-scale
-    image: /images/contaminants/thermal-damage/scale/lime-scale.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: medical-disinfectant
-    title: Medical Disinfectant Residue
-    url: /contaminants/chemical-residue/industrial/medical-disinfectant
-    image: /images/contaminants/chemical-residue/industrial/medical-disinfectant.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-deposits
-    title: Hard Water Mineral Scale
-    url: /contaminants/thermal-damage/scale/mineral-deposits
-    image: /images/contaminants/thermal-damage/scale/mineral-deposits.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pesticide-residue
-    title: Pesticide Chemical Residue
-    url: /contaminants/chemical-residue/industrial/pesticide-residue
-    image: /images/contaminants/chemical-residue/industrial/pesticide-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pharmaceutical-residue
-    title: Pharmaceutical Drug Residue
-    url: /contaminants/chemical-residue/industrial/pharmaceutical-residue
-    image: /images/contaminants/chemical-residue/industrial/pharmaceutical-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: plastic-residue
-    title: Degraded Polymer Deposits
-    url: /contaminants/organic-residue/polymer/plastic-residue
-    image: /images/contaminants/organic-residue/polymer/plastic-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pollen-deposit
-    title: Pollen Accumulation
-    url: /contaminants/biological/deposit/pollen-deposit
-    image: /images/contaminants/biological/deposit/pollen-deposit.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: scale-buildup
-    title: Mineral Scale / Hard Water Deposits
-    url: /contaminants/thermal-damage/scale/scale-buildup
-    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicone-buildup
-    title: Silicone Sealant Buildup
-    url: /contaminants/organic-residue/adhesive/silicone-buildup
-    image: /images/contaminants/organic-residue/adhesive/silicone-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: soap-scum
-    title: Soap Scum Buildup
-    url: /contaminants/organic-residue/cleaning-agent/soap-scum
-    image: /images/contaminants/organic-residue/cleaning-agent/soap-scum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: tree-sap
-    title: Tree Sap and Resin
-    url: /contaminants/organic-residue/natural/tree-sap
-    image: /images/contaminants/organic-residue/natural/tree-sap.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: water-stain
-    title: Water Staining and Marks
-    url: /contaminants/organic-residue/other/water-stain
-    image: /images/contaminants/organic-residue/other/water-stain.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -171,8 +284,8 @@ breadcrumb:
   href: /materials/glass
 - label: Soda Lime
   href: /materials/glass/soda-lime
-- label: Crown Glass
-  href: /materials/crown-glass
+- label: crown-glass-laser-cleaning
+  href: /materials/crown-glass-settings
 images:
   hero:
     alt: Crown Glass surface undergoing laser cleaning showing precise contamination removal
@@ -180,52 +293,7 @@ images:
   micro:
     alt: Crown Glass microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/crown-glass-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 25
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 1.2
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 8
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.569
@@ -266,6 +334,7 @@ material_challenges:
     - Avoid cold spots (air vents, cold backing) during processing
     - Tempered glass more resistant but still susceptible to thermal shock
     - Monitor for stress fractures; stop immediately if cracks appear
+    challenge_id: thermal_shock_and_catastrophic_failure
   - challenge: Low thermal diffusivity
     severity: high
     property_value: 0.01-15 mm²/s (most glasses 0.5-1.0 mm²/s)
@@ -275,6 +344,7 @@ material_challenges:
     - Increase scan speed to distribute heat (1000-2000 mm/s)
     - Use defocused beam to spread energy over larger area
     - Optical-grade glass (fused silica) tolerates higher power
+    challenge_id: low_thermal_diffusivity
   surface_characteristics:
   - challenge: Surface defects and stress concentrators
     severity: high
@@ -284,6 +354,7 @@ material_challenges:
     - Reduce power 40-50% for scratched or damaged glass
     - Clean around defects with extreme caution
     - Polished optical glass requires different parameters than rough architectural glass
+    challenge_id: surface_defects_and_stress_concentrators
   - challenge: Coating and film removal
     severity: medium
     impact: Thin films, anti-reflective coatings, and tints have different damage thresholds than substrate
@@ -292,6 +363,7 @@ material_challenges:
     - Coated glass may require 40-60W initial pass
     - Bare glass requires 20-30% lower power after coating removal
     - AR coatings very sensitive - use 30-40W maximum
+    challenge_id: coating_and_film_removal
   contamination_challenges:
   - challenge: Adhesive and paint removal
     severity: medium
@@ -302,6 +374,7 @@ material_challenges:
     - Use air assist to blow debris away from surface
     - Chemical pre-treatment reduces laser exposure time
     - Avoid dragging ablated material across clean areas
+    challenge_id: adhesive_and_paint_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:40.117665'
+    generated_date: '2025-12-16T13:51:19.905433'

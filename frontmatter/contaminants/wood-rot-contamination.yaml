@@ -1,12 +1,78 @@
+id: wood-rot-contamination
 name: Wood Rot / Fungal Biodegradation
 slug: wood-rot-contamination
-id: wood-rot-contamination
 category: biological
 subcategory: growth
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+micro:
+  after: Post-cleaning reveals restored surface with wood rot / fungal biodegradation
+    successfully removed through precise laser ablation.
+  before: Surface shows contamination from wood rot / fungal biodegradation affecting
+    material appearance and properties.
+domain_linkages:
+  related_materials:
+  - id: Oak
+    title: Oak
+    url: /materials/Oak
+    image: /images/materials/Oak.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Pine
+    title: Pine
+    url: /materials/Pine
+    image: /images/materials/Pine.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Maple
+    title: Maple
+    url: /materials/Maple
+    image: /images/materials/Maple.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cherry
+    title: Cherry
+    url: /materials/Cherry
+    image: /images/materials/Cherry.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Walnut
+    title: Walnut
+    url: /materials/Walnut
+    image: /images/materials/Walnut.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cedar
+    title: Cedar
+    url: /materials/Cedar
+    image: /images/materials/Cedar.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Plywood
+    title: Plywood
+    url: /materials/Plywood
+    image: /images/materials/Plywood.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: MDF
+    title: Mdf
+    url: /materials/MDF
+    image: /images/materials/MDF.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Redwood
+    title: Redwood
+    url: /materials/Redwood
+    image: /images/materials/Redwood.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,6 +102,10 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -65,11 +135,6 @@ images:
   micro:
     url: /images/contaminants/wood-rot-contamination-micro.jpg
     alt: Wood Rot / Fungal Biodegradation contamination microscopic detail
-micro:
-  after: Post-cleaning reveals restored surface with wood rot / fungal biodegradation
-    successfully removed through precise laser ablation.
-  before: Surface shows contamination from wood rot / fungal biodegradation affecting
-    material appearance and properties.
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -208,86 +273,6 @@ eeat:
     name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/publication/3587
   reviewedBy: Z-Beam Quality Assurance Team
-domain_linkages:
-  related_materials:
-  - id: Oak
-    title: Oak
-    url: /materials/wood/hardwood/Oak
-    image: /images/materials/wood/hardwood/Oak.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Pine
-    title: Pine
-    url: /materials/wood/softwood/Pine
-    image: /images/materials/wood/softwood/Pine.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Maple
-    title: Maple
-    url: /materials/wood/hardwood/Maple
-    image: /images/materials/wood/hardwood/Maple.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Cherry
-    title: Cherry
-    url: /materials/wood/hardwood/Cherry
-    image: /images/materials/wood/hardwood/Cherry.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Walnut
-    title: Walnut
-    url: /materials/wood/hardwood/Walnut
-    image: /images/materials/wood/hardwood/Walnut.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Cedar
-    title: Cedar
-    url: /materials/wood/softwood/Cedar
-    image: /images/materials/wood/softwood/Cedar.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Plywood
-    title: Plywood
-    url: /materials/wood/hardwood/Plywood
-    image: /images/materials/wood/hardwood/Plywood.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: MDF
-    title: MDF
-    url: /materials/wood/hardwood/MDF
-    image: /images/materials/wood/hardwood/MDF.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Redwood
-    title: Redwood
-    url: /materials/wood/hardwood/Redwood
-    image: /images/materials/wood/hardwood/Redwood.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance:
-  - id: iec-60825
-    title: IEC 60825
-    url: ''
-    image: /images/standards/generic-logo.svg
-    applicability: laser_operation
-    requirement: IEC 60825 - Safety of Laser Products
-  - id: osha-29
-    title: OSHA 29
-    url: ''
-    image: /images/standards/generic-logo.svg
-    applicability: laser_operation
-    requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  ppe_requirements: []
 valid_materials:
 - Oak
 - Pine

@@ -1,12 +1,31 @@
+id: annealing-scale-contamination
 name: Heat Treatment Scale
 slug: annealing-scale-contamination
-id: annealing-scale-contamination
 category: thermal-damage
 subcategory: scale
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/Steel
+    image: /images/materials/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/Stainless Steel
+    image: /images/materials/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Titanium
+    title: Titanium
+    url: /materials/Titanium
+    image: /images/materials/Titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 4
   name: Todd Dunning
@@ -36,6 +55,10 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Todd Dunning
@@ -179,32 +202,6 @@ laser_properties:
     thermal_conductivity: 0.8
     thermal_diffusivity: 0.15
     vaporization_temperature: 1200
-domain_linkages:
-  related_materials:
-  - id: Steel
-    title: Steel
-    url: /materials/metal/ferrous/Steel
-    image: /images/materials/metal/ferrous/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
-    title: Stainless Steel
-    url: /materials/metal/ferrous/Stainless Steel
-    image: /images/materials/metal/ferrous/Stainless Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Titanium
-    title: Titanium
-    url: /materials/metal/specialty/Titanium
-    image: /images/materials/metal/specialty/Titanium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Steel
 - Stainless Steel

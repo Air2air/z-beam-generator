@@ -1,12 +1,24 @@
+id: brass-plating-contamination
 name: Brass Coating Removal
 slug: brass-plating-contamination
-id: brass-plating-contamination
 category: metallic-coating
 subcategory: plating
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/Steel
+    image: /images/materials/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: zinc-alloy
+    title: Zinc Alloy
+    url: /materials/zinc-alloy
+    image: /images/materials/zinc-alloy.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,6 +49,10 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -184,25 +200,6 @@ laser_properties:
     thermal_conductivity: 120
     thermal_diffusivity: 35
     vaporization_temperature: 1100
-domain_linkages:
-  related_materials:
-  - id: Steel
-    title: Steel
-    url: /materials/metal/ferrous/Steel
-    image: /images/materials/metal/ferrous/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: zinc-alloy
-    title: Zinc Alloy
-    url: /materials/zinc-alloy
-    image: /images/materials/zinc-alloy.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Steel
 - Zinc Alloy

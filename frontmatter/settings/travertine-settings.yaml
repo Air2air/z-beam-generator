@@ -1,13 +1,156 @@
-name: Travertine
-slug: travertine
 id: travertine-settings
+name: travertine-laser-cleaning
+slug: travertine-settings
 category: stone
 subcategory: natural
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_contaminants:
+  - id: algae-growth
+    title: Algae Growth
+    url: /contaminants/algae-growth
+    image: /images/contaminants/algae-growth.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: biological-stains
+    title: Biological Stains
+    url: /contaminants/biological-stains
+    image: /images/contaminants/biological-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bitumen-tar
+    title: Bitumen Tar
+    url: /contaminants/bitumen-tar
+    image: /images/contaminants/bitumen-tar.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbon-soot
+    title: Carbon Soot
+    url: /contaminants/carbon-soot
+    image: /images/contaminants/carbon-soot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: ceramic-glaze
+    title: Ceramic Glaze
+    url: /contaminants/ceramic-glaze
+    image: /images/contaminants/ceramic-glaze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: concrete-dust
+    title: Concrete Dust
+    url: /contaminants/concrete-dust
+    image: /images/contaminants/concrete-dust.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: efflorescence
+    title: Efflorescence
+    url: /contaminants/efflorescence
+    image: /images/contaminants/efflorescence.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fertilizer-residue
+    title: Fertilizer Residue
+    url: /contaminants/fertilizer-residue
+    image: /images/contaminants/fertilizer-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fire-damage
+    title: Fire Damage
+    url: /contaminants/fire-damage
+    image: /images/contaminants/fire-damage.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: graffiti-paint
+    title: Graffiti Paint
+    url: /contaminants/graffiti-paint
+    image: /images/contaminants/graffiti-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mineral-deposits
+    title: Mineral Deposits
+    url: /contaminants/mineral-deposits
+    image: /images/contaminants/mineral-deposits.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mineral-stain
+    title: Mineral Stain
+    url: /contaminants/mineral-stain
+    image: /images/contaminants/mineral-stain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: salt-residue
+    title: Salt Residue
+    url: /contaminants/salt-residue
+    image: /images/contaminants/salt-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: scale-buildup
+    title: Scale Buildup
+    url: /contaminants/scale-buildup
+    image: /images/contaminants/scale-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: water-stain
+    title: Water Stain
+    url: /contaminants/water-stain
+    image: /images/contaminants/water-stain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds:
+  - id: benzoapyrene-compound
+    title: Benzo[a]pyrene
+    url: /compounds/benzoapyrene
+    image: /images/compounds/benzoapyrene.jpg
+    frequency: common
+    severity: high
+    typical_context: Naturally present in bitumen/asphalt
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/pahs
+    image: /images/compounds/pahs.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Bitumen is rich in PAHs
+    exposure_risk: high
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/carbon-monoxide
+    image: /images/compounds/carbon-monoxide.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Pre-existing carbon compounds vaporizing
+    exposure_risk: high
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/toluene
+    image: /images/compounds/toluene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Release of toluene from spray paint
+    exposure_risk: moderate
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/vocs
+    image: /images/compounds/vocs.jpg
+    frequency: very_common
+    severity: moderate
+    typical_context: Release of spray paint solvents
+    exposure_risk: moderate
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,115 +179,13 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
-title: Travertine Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: travertine-laser-cleaning Laser Cleaning Settings
 settings_description: When laser cleaning Travertine, watch out for its high porosity right from the start—I've seen it soak up heat unevenly, which can lead to micro-cracks if you're not careful. This natural stone, like a spongy limestone, differs from denser rocks because it traps contaminants deep inside, so you need to go gentle to avoid pulling the surface apart. Tends to heat up slowly due to poor conductivity, meaning prolonged exposure risks surface spalling. Start with lower power settings and slower scan speeds to let the laser gently loosen dirt without stressing the pores. This works best when you overlap passes lightly, pulling grime out layer by layer. I've found multiple light treatments clear buildup effectively while preserving the stone's texture for heritage sites. Just avoid high energy bursts—they'll scorch the calcite base and ruin that classic banded look. Adjust based on soiling thickness, and always test a small area first to keep things safe.
-domain_linkages:
-  related_contaminants:
-  - id: algae-growth
-    title: Algae and Lichen Growth
-    url: /contaminants/biological/growth/algae-growth
-    image: /images/contaminants/biological/growth/algae-growth.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: biological-stains
-    title: Organic Biofilm Deposits
-    url: /contaminants/biological/deposit/biological-stains
-    image: /images/contaminants/biological/deposit/biological-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bitumen-tar
-    title: Bitumen and Tar Coatings
-    url: /contaminants/organic-residue/petroleum/bitumen-tar
-    image: /images/contaminants/organic-residue/petroleum/bitumen-tar.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-soot
-    title: Carbon Soot Deposits
-    url: /contaminants/organic-residue/other/carbon-soot
-    image: /images/contaminants/organic-residue/other/carbon-soot.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: ceramic-glaze
-    title: Ceramic Glaze Deposits
-    url: /contaminants/inorganic-coating/ceramic/ceramic-glaze
-    image: /images/contaminants/inorganic-coating/ceramic/ceramic-glaze.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: concrete-dust
-    title: Concrete Dust Deposits
-    url: /contaminants/inorganic-coating/mineral/concrete-dust
-    image: /images/contaminants/inorganic-coating/mineral/concrete-dust.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: efflorescence
-    title: Concrete Efflorescence
-    url: /contaminants/inorganic-coating/mineral/efflorescence
-    image: /images/contaminants/inorganic-coating/mineral/efflorescence.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fertilizer-residue
-    title: Fertilizer Salt Deposits
-    url: /contaminants/chemical-residue/industrial/fertilizer-residue
-    image: /images/contaminants/chemical-residue/industrial/fertilizer-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fire-damage
-    title: Fire and Smoke Damage
-    url: /contaminants/thermal-damage/fire/fire-damage
-    image: /images/contaminants/thermal-damage/fire/fire-damage.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graffiti-paint
-    title: Graffiti and Spray Paint
-    url: /contaminants/inorganic-coating/paint/graffiti-paint
-    image: /images/contaminants/inorganic-coating/paint/graffiti-paint.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-deposits
-    title: Hard Water Mineral Scale
-    url: /contaminants/thermal-damage/scale/mineral-deposits
-    image: /images/contaminants/thermal-damage/scale/mineral-deposits.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-stain
-    title: Mineral Staining
-    url: /contaminants/inorganic-coating/mineral/mineral-stain
-    image: /images/contaminants/inorganic-coating/mineral/mineral-stain.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: salt-residue
-    title: Salt and Chloride Deposits
-    url: /contaminants/inorganic-coating/mineral/salt-residue
-    image: /images/contaminants/inorganic-coating/mineral/salt-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: scale-buildup
-    title: Mineral Scale / Hard Water Deposits
-    url: /contaminants/thermal-damage/scale/scale-buildup
-    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: water-stain
-    title: Water Staining and Marks
-    url: /contaminants/organic-residue/other/water-stain
-    image: /images/contaminants/organic-residue/other/water-stain.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -154,8 +195,8 @@ breadcrumb:
   href: /materials/stone
 - label: Natural
   href: /materials/stone/natural
-- label: Travertine
-  href: /materials/travertine
+- label: travertine-laser-cleaning
+  href: /materials/travertine-settings
 images:
   hero:
     alt: Travertine surface undergoing laser cleaning showing precise contamination removal
@@ -163,52 +204,7 @@ images:
   micro:
     alt: Microscopic view of Travertine surface after laser cleaning showing detailed surface structure
     url: /images/material/travertine-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 1.5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 30
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 1.12
@@ -249,6 +245,7 @@ material_challenges:
     - Preheat substrate if possible to reduce thermal gradients
     - Granite more resistant than marble; sandstone most vulnerable
     - Monitor for surface crazing; stop immediately if cracks appear
+    challenge_id: thermal_shock_and_microcracking
   - challenge: Moisture-induced spalling
     severity: high
     threshold_temperature: Steam formation >100°C with trapped moisture
@@ -259,6 +256,7 @@ material_challenges:
     - Reduce power by 50% for damp stone
     - Use pulse mode with extended cooling (15-20 seconds)
     - Heritage stone requires especially gentle approach
+    challenge_id: moisture_induced_spalling
   surface_characteristics:
   - challenge: Weathering and surface degradation
     severity: high
@@ -269,6 +267,7 @@ material_challenges:
     - Multiple gentle passes (4-6 at 40-60W) preferred
     - Monitor for powdering or flaking; adjust power immediately
     - Heritage conservation requires documentation and testing
+    challenge_id: weathering_and_surface_degradation
   - challenge: Mineral composition heterogeneity
     severity: medium
     impact: Mixed minerals have different absorption and damage thresholds
@@ -277,6 +276,7 @@ material_challenges:
     - Crosshatch scan pattern for uniform coverage
     - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
     - Quartzite and marble more homogeneous than granite
+    challenge_id: mineral_composition_heterogeneity
   contamination_challenges:
   - challenge: Biological growth and deep staining
     severity: medium
@@ -288,6 +288,7 @@ material_challenges:
     - Third pass 40W very slow (400 mm/s) for deep staining
     - Chemical biocide pre-treatment kills roots and reduces laser exposure
     - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
+    challenge_id: biological_growth_and_deep_staining
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:43.418854'
+    generated_date: '2025-12-16T13:51:26.336495'

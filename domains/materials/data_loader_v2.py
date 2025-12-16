@@ -257,7 +257,8 @@ class MaterialsDataLoader(BaseDataLoader):
         micros_file = content_dir / 'Micros.yaml'
         
         if not micros_file.exists():
-            logger.warning(f"Micros.yaml not found at {micros_file}")
+            # Legacy file - content now stored in Materials.yaml
+            logger.debug(f"Legacy Micros.yaml not found (expected - content in Materials.yaml)")
             return {}
         
         # Check cache
@@ -285,7 +286,8 @@ class MaterialsDataLoader(BaseDataLoader):
         faqs_file = content_dir / 'FAQs.yaml'
         
         if not faqs_file.exists():
-            logger.warning(f"FAQs.yaml not found at {faqs_file}")
+            # Legacy file - content now stored in Materials.yaml
+            logger.debug(f"Legacy FAQs.yaml not found (expected - content in Materials.yaml)")
             return {}
         
         # Check cache
@@ -317,7 +319,8 @@ class MaterialsDataLoader(BaseDataLoader):
         regulatory_file = content_dir / 'RegulatoryStandards.yaml'
         
         if not regulatory_file.exists():
-            logger.warning(f"RegulatoryStandards.yaml not found at {regulatory_file}")
+            # Legacy file - content now stored in Materials.yaml
+            logger.debug(f"Legacy RegulatoryStandards.yaml not found (expected - content in Materials.yaml)")
             return {}
         
         # Check cache

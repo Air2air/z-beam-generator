@@ -22,10 +22,13 @@ import logging
 import yaml
 from pathlib import Path
 from typing import Dict, Any
+from collections import OrderedDict
 from domains.materials.materials_cache import load_materials_cached
 from domains.materials.data_loader import get_material_challenges
 from shared.utils.core.slug_utils import create_material_slug
 from export.utils.numeric_formatting import format_numeric_value
+from shared.validation.domain_associations import DomainAssociationsValidator
+from shared.validation.field_order import FrontmatterFieldOrderValidator
 
 logger = logging.getLogger(__name__)
 
@@ -620,6 +623,15 @@ class TrivialFrontmatterExporter:
         self.logger.info(f"✅ Loaded {len(self.micros)} micros from content files")
         self.logger.info(f"✅ Loaded {len(self.faqs)} FAQ sets from content files")
         self.logger.info(f"✅ Loaded {len(self.regulatory_standards)} regulatory standards from content files")
+        
+        # Initialize validators for centralized systems
+        self.associations_validator = DomainAssociationsValidator()
+        self.associations_validator.load()
+        self.field_order_validator = FrontmatterFieldOrderValidator()
+        self.field_order_validator.load_schema()
+        
+        self.logger.info(f"✅ Loaded domain associations system")
+        self.logger.info(f"✅ Loaded field order specifications")
     
     # Content loading methods removed - now using unified_loader
     # See load_material_micros(), load_material_faqs(), load_regulatory_standards()
@@ -702,10 +714,10 @@ class TrivialFrontmatterExporter:
         category_ranges = self._get_category_ranges(category)
         
         # Generate breadcrumb navigation (before field copying)
-        # POLICY: Strip parentheses from all filenames for clean URLs and consistency
-        material_slug = create_material_slug(material_name)
-        filename = f"{material_slug}-laser-cleaning.yaml"
-        slug = filename.replace('.yaml', '')
+        # POLICY: Material_name is now the ID (slug format) after ID migration
+        # No need to slugify or add suffix - ID already includes -laser-cleaning
+        filename = f"{material_name}.yaml"
+        slug = material_name
         breadcrumb = self._generate_breadcrumb(material_data, slug)
         frontmatter['breadcrumb'] = breadcrumb
         
@@ -830,13 +842,17 @@ class TrivialFrontmatterExporter:
         if settings_entry and 'material_challenges' in settings_entry:
             challenges = settings_entry['material_challenges']
             if challenges:
-                frontmatter['material_challenges'] = self._strip_generation_metadata(challenges)
+                # Enrich with challenge_id fields for cross-material querying
+                enriched_challenges = self._enrich_challenges_with_ids(challenges)
+                frontmatter['material_challenges'] = self._strip_generation_metadata(enriched_challenges)
                 self.logger.info(f"✅ Added material_challenges for {material_name} from Settings.yaml")
         elif category:
             # Fallback to category-level challenges if material-specific not available
             material_challenges = get_material_challenges(category)
             if material_challenges:
-                frontmatter['material_challenges'] = self._strip_generation_metadata(material_challenges)
+                # Enrich with challenge_id fields
+                enriched_challenges = self._enrich_challenges_with_ids(material_challenges)
+                frontmatter['material_challenges'] = self._strip_generation_metadata(enriched_challenges)
                 self.logger.info(f"✅ Added material_challenges for {material_name} from {category} category")
             else:
                 self.logger.debug(f"No material_challenges found for category: {category}")
@@ -875,9 +891,9 @@ class TrivialFrontmatterExporter:
                 frontmatter['faq'] = self._strip_generation_metadata(formatted_faq)
                 self.logger.debug(f"Using FAQ from components")
         
-        # Export domain_linkages from Materials.yaml (bidirectional Material ↔ Contaminant relationships)
-        if 'domain_linkages' in material_data:
-            frontmatter['domain_linkages'] = material_data['domain_linkages']
+        # Generate domain_linkages from centralized associations (replaces hardcoded copy)
+        # material_name is already the ID (slug format) after ID migration
+        frontmatter['domain_linkages'] = self._build_material_linkages(material_name, material_name)
         
         # Export dual-file structure: materials page and settings page
         self._export_materials_page(material_name, frontmatter)
@@ -893,11 +909,10 @@ class TrivialFrontmatterExporter:
         
         # Core metadata
         materials_page['name'] = full_frontmatter.get('name')
-        # POLICY: Strip parentheses from slugs
-        material_slug = create_material_slug(material_name)
-        materials_page['slug'] = material_slug
+        # material_name is already the ID (slug format including -laser-cleaning suffix)
+        materials_page['slug'] = material_name
         # Add id field matching filename pattern
-        materials_page['id'] = f"{material_slug}-laser-cleaning"
+        materials_page['id'] = material_name
         materials_page['category'] = full_frontmatter.get('category')
         materials_page['subcategory'] = full_frontmatter.get('subcategory')
         materials_page['content_type'] = 'unified_material'
@@ -954,13 +969,15 @@ class TrivialFrontmatterExporter:
         }
         
         # Write materials page YAML (no wrapper - fields at root level)
-        # POLICY: Strip parentheses from filenames
-        material_slug = create_material_slug(material_name)
-        filename = f"{material_slug}-laser-cleaning.yaml"
+        # material_name is already the ID (slug format) - no need to re-slugify
+        filename = f"{material_name}.yaml"
         output_path = self.materials_output_dir / filename
         
+        # Apply field order specification
+        ordered_materials_page = self.field_order_validator.reorder_fields(materials_page, 'materials')
+        
         with open(output_path, 'w', encoding='utf-8') as f:
-            yaml.dump(materials_page, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
+            yaml.dump(dict(ordered_materials_page), f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
         
         # Verify what was written
         if material_name == 'Aluminum':
@@ -988,10 +1005,11 @@ class TrivialFrontmatterExporter:
         
         # Core metadata
         settings_page['name'] = full_frontmatter.get('name')
-        settings_slug = material_name.lower().replace(' ', '-')
-        settings_page['slug'] = settings_slug
+        # Settings pages use base slug without -laser-cleaning suffix
+        base_slug = material_name.replace('-laser-cleaning', '')
+        settings_page['slug'] = f"{base_slug}-settings"
         # Add id field matching filename pattern
-        settings_page['id'] = f"{settings_slug}-settings"
+        settings_page['id'] = f"{base_slug}-settings"
         settings_page['category'] = full_frontmatter.get('category')
         settings_page['subcategory'] = full_frontmatter.get('subcategory')
         settings_page['content_type'] = 'unified_settings'
@@ -1123,15 +1141,60 @@ class TrivialFrontmatterExporter:
         }
         
         # Write settings page YAML (no wrapper - fields at root level)
-        # POLICY: Strip parentheses from all filenames for clean URLs and consistency
-        material_slug = create_material_slug(material_name)
-        filename = f"{material_slug}-settings.yaml"
+        # Strip -laser-cleaning suffix from material_name to get base slug for settings
+        base_slug = material_name.replace('-laser-cleaning', '')
+        filename = f"{base_slug}-settings.yaml"
         output_path = self.settings_output_dir / filename
         
+        # Apply field order specification
+        ordered_settings_page = self.field_order_validator.reorder_fields(settings_page, 'settings')
+        
         with open(output_path, 'w', encoding='utf-8') as f:
-            yaml.dump(settings_page, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
+            yaml.dump(dict(ordered_settings_page), f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
         
         self.logger.info(f"✅ Exported settings page: {material_name} → {filename}")
+    
+    def _build_material_linkages(self, material_id: str, material_name: str) -> Dict:
+        """
+        Generate domain_linkages from centralized associations.
+        
+        Creates bidirectional linkages:
+        - related_contaminants: Contaminants that affect this material (bidirectional)
+        - related_compounds: Compounds created when cleaning this material (transitive via contaminants)
+        
+        Args:
+            material_id: Material ID (e.g., 'aluminum-laser-cleaning')
+            material_name: Material name for logging
+        
+        Returns:
+            Dict with domain_linkages structure
+        """
+        linkages = {}
+        
+        # Get contaminants that affect this material (bidirectional)
+        related_contaminants = self.associations_validator.get_contaminants_for_material(material_id)
+        if related_contaminants:
+            linkages['related_contaminants'] = related_contaminants
+        
+        # Get compounds (transitive: Material → Contaminant → Compound)
+        # For each related contaminant, get its compounds, then deduplicate
+        related_compounds = []
+        seen_compounds = set()
+        
+        for contaminant in related_contaminants:
+            contaminant_id = contaminant.get('id')
+            if contaminant_id:
+                compounds = self.associations_validator.get_compounds_for_contaminant(contaminant_id)
+                for compound in compounds:
+                    compound_id = compound.get('id')
+                    if compound_id and compound_id not in seen_compounds:
+                        seen_compounds.add(compound_id)
+                        related_compounds.append(compound)
+        
+        if related_compounds:
+            linkages['related_compounds'] = related_compounds
+        
+        return linkages
     
     def _get_category_ranges(self, category: str) -> Dict[str, Any]:
         """Get category-wide ranges from MaterialProperties.yaml."""
@@ -1582,6 +1645,51 @@ class TrivialFrontmatterExporter:
             return [self._strip_generation_metadata(item) for item in data]
         else:
             return data
+    
+    def _enrich_challenges_with_ids(self, challenges: Dict) -> Dict:
+        """
+        Add standardized challenge_id to each challenge for cross-material querying.
+        
+        Converts challenge text to snake_case ID:
+        "High reflectivity" -> "high_reflectivity"
+        
+        Args:
+            challenges: Material challenges dict with thermal_management, 
+                       surface_characteristics, contamination_challenges
+        
+        Returns:
+            Enriched challenges with challenge_id fields
+        """
+        if not isinstance(challenges, dict):
+            return challenges
+        
+        enriched = {}
+        
+        for category in ['thermal_management', 'surface_characteristics', 'contamination_challenges']:
+            if category in challenges and isinstance(challenges[category], list):
+                enriched[category] = []
+                
+                for challenge in challenges[category]:
+                    if not isinstance(challenge, dict):
+                        enriched[category].append(challenge)
+                        continue
+                    
+                    # Create enriched copy with challenge_id
+                    enriched_challenge = challenge.copy()
+                    
+                    # Generate ID from challenge name
+                    challenge_text = challenge.get('challenge', '')
+                    if challenge_text:
+                        challenge_id = challenge_text.lower().replace(' ', '_').replace('-', '_').replace('/', '_')
+                        enriched_challenge['challenge_id'] = challenge_id
+                    
+                    enriched[category].append(enriched_challenge)
+            else:
+                # Copy non-list fields as-is
+                if category in challenges:
+                    enriched[category] = challenges[category]
+        
+        return enriched
     
     def _normalize_regulatory_standards(self, standards: Any) -> list:
         """

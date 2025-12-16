@@ -1,12 +1,73 @@
+id: pharmaceutical-residue-contamination
 name: Pharmaceutical Drug Residue
 slug: pharmaceutical-residue-contamination
-id: pharmaceutical-residue-contamination
 category: chemical-residue
 subcategory: industrial
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/Stainless Steel
+    image: /images/materials/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: teflon
+    title: Teflon
+    url: /materials/teflon
+    image: /images/materials/teflon.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Crown Glass
+    title: Crown Glass
+    url: /materials/Crown Glass
+    image: /images/materials/Crown Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Float Glass
+    title: Float Glass
+    url: /materials/Float Glass
+    image: /images/materials/Float Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Borosilicate Glass
+    title: Borosilicate Glass
+    url: /materials/Borosilicate Glass
+    image: /images/materials/Borosilicate Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminosilicate Glass
+    title: Aluminosilicate Glass
+    url: /materials/Aluminosilicate Glass
+    image: /images/materials/Aluminosilicate Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Fused Silica
+    title: Fused Silica
+    url: /materials/Fused Silica
+    image: /images/materials/Fused Silica.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Gorilla Glass
+    title: Gorilla Glass
+    url: /materials/Gorilla Glass
+    image: /images/materials/Gorilla Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tempered Glass
+    title: Tempered Glass
+    url: /materials/Tempered Glass
+    image: /images/materials/Tempered Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,6 +98,10 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -188,74 +253,6 @@ laser_properties:
     thermal_conductivity: 0.18
     thermal_diffusivity: 0.12
     vaporization_temperature: 450
-domain_linkages:
-  related_materials:
-  - id: Stainless Steel
-    title: Stainless Steel
-    url: /materials/metal/ferrous/Stainless Steel
-    image: /images/materials/metal/ferrous/Stainless Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: teflon
-    title: Teflon
-    url: /materials/teflon
-    image: /images/materials/teflon.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Crown Glass
-    title: Crown Glass
-    url: /materials/glass/soda-lime/Crown Glass
-    image: /images/materials/glass/soda-lime/Crown Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Float Glass
-    title: Float Glass
-    url: /materials/glass/soda-lime/Float Glass
-    image: /images/materials/glass/soda-lime/Float Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Borosilicate Glass
-    title: Borosilicate Glass
-    url: /materials/glass/soda-lime/Borosilicate Glass
-    image: /images/materials/glass/soda-lime/Borosilicate Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminosilicate Glass
-    title: Aluminosilicate Glass
-    url: /materials/glass/specialty/Aluminosilicate Glass
-    image: /images/materials/glass/specialty/Aluminosilicate Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Fused Silica
-    title: Fused Silica
-    url: /materials/glass/soda-lime/Fused Silica
-    image: /images/materials/glass/soda-lime/Fused Silica.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Gorilla Glass
-    title: Gorilla Glass
-    url: /materials/glass/soda-lime/Gorilla Glass
-    image: /images/materials/glass/soda-lime/Gorilla Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Tempered Glass
-    title: Tempered Glass
-    url: /materials/glass/specialty-glass/Tempered Glass
-    image: /images/materials/glass/specialty-glass/Tempered Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Stainless Steel
 - Teflon

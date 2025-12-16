@@ -1,12 +1,12 @@
-name: Chromium
-slug: chromium
 id: chromium-laser-cleaning
+name: chromium-laser-cleaning
+slug: chromium-laser-cleaning
 category: metal
 subcategory: specialty
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: null
-dateModified: null
+datePublished: '2025-12-16T13:59:37Z'
+dateModified: '2025-12-16T13:59:37Z'
 author:
   id: 4
   name: Todd Dunning
@@ -28,7 +28,8 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -42,7 +43,9 @@ _metadata:
     voice_applied: true
     content_type: material
 title: Chromium Laser Cleaning
-material_description: Chromium delivers tough, wear-resistant coatings that shield tools and components from harsh chemical exposures and abrasion in demanding, long-term industrial settings
+material_description: Chromium delivers tough, wear-resistant coatings that shield
+  tools and components from harsh chemical exposures and abrasion in demanding, long-term
+  industrial settings
 breadcrumb:
 - label: Home
   href: /
@@ -56,35 +59,87 @@ breadcrumb:
   href: /materials/metal/specialty/chromium
 images:
   hero:
-    alt: Chromium surface undergoing laser cleaning showing precise contamination removal
+    alt: Chromium surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/chromium-laser-cleaning-hero.jpg
   micro:
-    alt: Chromium microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Chromium microscopic view of laser cleaning showing detailed precise contamination
+      removal
     url: /images/material/chromium-laser-cleaning-micro.jpg
 micro:
-  before: The contaminated chromium surface appears dull and uneven under magnification. Dark spots and fine particles cling to its texture, hiding the metal's natural shine. Scratches and residues make the whole area look rough and patchy.
-  after: Laser cleaning restores the chromium to a smooth, reflective state. Bright, uniform facets emerge without any clinging debris. The treated surface now gleams evenly, free of all visible imperfections.
+  before: The contaminated chromium surface appears dull and uneven under magnification.
+    Dark spots and fine particles cling to its texture, hiding the metal's natural
+    shine. Scratches and residues make the whole area look rough and patchy.
+  after: Laser cleaning restores the chromium to a smooth, reflective state. Bright,
+    uniform facets emerge without any clinging debris. The treated surface now gleams
+    evenly, free of all visible imperfections.
 faq:
-- question: Can laser cleaning safely remove chromium-containing coatings like **chrome plating** without damaging the base metal?
-  answer: '**Selectively ablates without substrate damage**. Yes, laser systems can safely strip chrome plating using pretty precise parameters like 2.5 J/cm² fluence and 50 µm spot size. It selectively ablates the coating without harming softer substrates like aluminum, fairly offering a big edge over harsh mechanical or chemical methods.'
-- question: What are the specific safety hazards of laser cleaning chromium or chromium-containing materials like stainless steel?
-  answer: Laser cleaning chromium typically generates hazardous hexavalent chromium fumes, particularly at fluences above 2.5 J/cm². Employ a fume extractor with both HEPA and activated carbon filtration. This qualifies as a pretty critical OSHA concern, demanding strict respiratory protection from the toxic plume.
-- question: What laser parameters (wavelength, pulse duration, power) are most effective for cleaning rust and contaminants from **chromium-nickel stainless steel** (e.g., 304, 316)?
-  answer: '**Preserves underlying passive layer**. For chromium-nickel steel, I''d typically recommend a 1064 nm wavelength with nanosecond pulses. This setup pretty effectively ablates the chromium oxide at ~2.5 J/cm², while minimizing heat input to safeguard the underlying passive layer and yield a clean, passivated surface.'
-- question: How do you verify that laser cleaning has successfully restored the passive chromium oxide layer on stainless steel for corrosion resistance?
-  answer: We typically verify the restored passive layer on chromium through water break and ferroxyl tests. After laser processing at about 2.5 J/cm², the surface has to be pretty chemically clean for proper repassivation, which is basically essential for corrosion resistance in tough applications.
-- question: Is laser cleaning suitable for preparing **chromium-alloy surfaces** (like tool steels) for subsequent processes like welding or thermal spraying?
-  answer: '**Avoids thermal damage to fatigue**. Laser cleaning works pretty effectively to prepare chromium-alloy surfaces at ~2.5 J/cm² fluence with a 50 µm spot size. This basically removes oxides without embedding contaminants, yielding the right surface profile for adhesion while dodging thermal damage that hurts fatigue life.'
-- question: What is the risk of **creating micro-cracks** or altering the surface hardness when laser cleaning high-chromium content materials like D2 tool steel or Stellite?
-  answer: '**Prevents micro-cracks with low fluence**. By choosing the right parameters, you can pretty much sidestep micro-cracks in high-chromium alloys. Typically, nanosecond pulses at 1064 nm wavelength, with fluence controlled around 2.5 J/cm², cut down thermal stress and preserve surface hardening in materials like D2 steel.'
-- question: Can laser cleaning be used to selectively remove corrosion products from chromium-copper alloys without **depleting the chromium** from the surface?
-  answer: '**Exploits chromium oxide absorption**. Yes, by dialing in fairly precise 1064 nm settings like 2.5 J/cm² fluence, you can basically leverage chromium oxide''s stronger absorption to strip away corrosion. This method selectively vaporizes the oxide layer while keeping the base alloy''s structure intact.'
-- question: How does the **presence of chromium** in an alloy affect the choice of laser type (Fiber, Pulsed Nd:YAG) for cleaning?
-  answer: '**Oxide layer absorbs near-IR**. Chromium''s oxide layer absorbs near-IR wavelengths like 1064 nm pretty strongly, making fiber lasers highly effective. Typically, pulsed systems with fluence around 2.5 J/cm² deliver the controlled ablation required to remove contaminants without thermally damaging the underlying alloy.'
-- question: What are the waste disposal considerations for the debris and filters from laser cleaning **chromium-contaminated surfaces**?
-  answer: '**Generates hazardous Cr(VI) particulate**. Laser cleaning chromium produces hazardous Cr(VI) particulates, which must be classified as toxic metal waste. The 1064 nm wavelength fairly effectively liberates these particles for capture by HEPA filters. Typically, you dispose of those filters per EPA regulations for hazardous waste through permitted facilities handling toxic metals.'
-- question: Why does laser-cleaned stainless steel sometimes show a **rainbow-colored effect** or tint, and does it indicate surface damage?
-  answer: '**Reformed oxide thin-film interference**. That rainbow tint on laser-cleaned chromium is basically thin-film interference from a reformed oxide layer. It''s cosmetic and signals a healthy, self-passivating surface, not damage. This typically happens with controlled heat input below the ~2.5 J/cm² ablation threshold, preserving the substrate.'
+- question: Can laser cleaning safely remove chromium-containing coatings like **chrome
+    plating** without damaging the base metal?
+  answer: '**Selectively ablates without substrate damage**. Yes, laser systems can
+    safely strip chrome plating using pretty precise parameters like 2.5 J/cm² fluence
+    and 50 µm spot size. It selectively ablates the coating without harming softer
+    substrates like aluminum, fairly offering a big edge over harsh mechanical or
+    chemical methods.'
+- question: What are the specific safety hazards of laser cleaning chromium or chromium-containing
+    materials like stainless steel?
+  answer: Laser cleaning chromium typically generates hazardous hexavalent chromium
+    fumes, particularly at fluences above 2.5 J/cm². Employ a fume extractor with
+    both HEPA and activated carbon filtration. This qualifies as a pretty critical
+    OSHA concern, demanding strict respiratory protection from the toxic plume.
+- question: What laser parameters (wavelength, pulse duration, power) are most effective
+    for cleaning rust and contaminants from **chromium-nickel stainless steel** (e.g.,
+    304, 316)?
+  answer: '**Preserves underlying passive layer**. For chromium-nickel steel, I''d
+    typically recommend a 1064 nm wavelength with nanosecond pulses. This setup pretty
+    effectively ablates the chromium oxide at ~2.5 J/cm², while minimizing heat input
+    to safeguard the underlying passive layer and yield a clean, passivated surface.'
+- question: How do you verify that laser cleaning has successfully restored the passive
+    chromium oxide layer on stainless steel for corrosion resistance?
+  answer: We typically verify the restored passive layer on chromium through water
+    break and ferroxyl tests. After laser processing at about 2.5 J/cm², the surface
+    has to be pretty chemically clean for proper repassivation, which is basically
+    essential for corrosion resistance in tough applications.
+- question: Is laser cleaning suitable for preparing **chromium-alloy surfaces** (like
+    tool steels) for subsequent processes like welding or thermal spraying?
+  answer: '**Avoids thermal damage to fatigue**. Laser cleaning works pretty effectively
+    to prepare chromium-alloy surfaces at ~2.5 J/cm² fluence with a 50 µm spot size.
+    This basically removes oxides without embedding contaminants, yielding the right
+    surface profile for adhesion while dodging thermal damage that hurts fatigue life.'
+- question: What is the risk of **creating micro-cracks** or altering the surface
+    hardness when laser cleaning high-chromium content materials like D2 tool steel
+    or Stellite?
+  answer: '**Prevents micro-cracks with low fluence**. By choosing the right parameters,
+    you can pretty much sidestep micro-cracks in high-chromium alloys. Typically,
+    nanosecond pulses at 1064 nm wavelength, with fluence controlled around 2.5 J/cm²,
+    cut down thermal stress and preserve surface hardening in materials like D2 steel.'
+- question: Can laser cleaning be used to selectively remove corrosion products from
+    chromium-copper alloys without **depleting the chromium** from the surface?
+  answer: '**Exploits chromium oxide absorption**. Yes, by dialing in fairly precise
+    1064 nm settings like 2.5 J/cm² fluence, you can basically leverage chromium oxide''s
+    stronger absorption to strip away corrosion. This method selectively vaporizes
+    the oxide layer while keeping the base alloy''s structure intact.'
+- question: How does the **presence of chromium** in an alloy affect the choice of
+    laser type (Fiber, Pulsed Nd:YAG) for cleaning?
+  answer: '**Oxide layer absorbs near-IR**. Chromium''s oxide layer absorbs near-IR
+    wavelengths like 1064 nm pretty strongly, making fiber lasers highly effective.
+    Typically, pulsed systems with fluence around 2.5 J/cm² deliver the controlled
+    ablation required to remove contaminants without thermally damaging the underlying
+    alloy.'
+- question: What are the waste disposal considerations for the debris and filters
+    from laser cleaning **chromium-contaminated surfaces**?
+  answer: '**Generates hazardous Cr(VI) particulate**. Laser cleaning chromium produces
+    hazardous Cr(VI) particulates, which must be classified as toxic metal waste.
+    The 1064 nm wavelength fairly effectively liberates these particles for capture
+    by HEPA filters. Typically, you dispose of those filters per EPA regulations for
+    hazardous waste through permitted facilities handling toxic metals.'
+- question: Why does laser-cleaned stainless steel sometimes show a **rainbow-colored
+    effect** or tint, and does it indicate surface damage?
+  answer: '**Reformed oxide thin-film interference**. That rainbow tint on laser-cleaned
+    chromium is basically thin-film interference from a reformed oxide layer. It''s
+    cosmetic and signals a healthy, self-passivating surface, not damage. This typically
+    happens with controlled heat input below the ~2.5 J/cm² ablation threshold, preserving
+    the substrate.'
 regulatoryStandards:
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
@@ -109,7 +164,7 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 40.0
+    percentage: 60.0
     electricalConductivity:
       value: '7.8e+06'
       unit: S/m
@@ -242,54 +297,6 @@ materialProperties:
       source: ai_research
       min: 0.27
       max: 15750
-    thermalDestruction:
-      value: 2180
-      unit: K
-      source: ai_research
-      min: 256
-      max: 3859
-    laserReflectivity:
-      value: 0.7
-      unit: fraction
-      source: ai_research
-      min: 0.4
-      max: 73.5
-    thermalExpansion:
-      value: 4.9
-      unit: ×10^{-6} K^{-1}
-      source: ai_research
-      min: 4e-06
-      max: 31.7
-    thermalConductivity:
-      value: 93.9
-      unit: W/m·K
-      source: ai_research
-      min: 7.4
-      max: 450
-    specificHeat:
-      value: 449
-      unit: J/(kg·K)
-      source: ai_research
-      min: 43.4
-      max: 1905
-    laserAbsorption:
-      value: 0.35
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: '4.2e+08'
-    thermalDiffusivity:
-      value: '2.9e-05'
-      unit: m²/s
-      source: ai_research
-      min: 2e-06
-      max: '0.00017'
-    ablationThreshold:
-      value: 1.2
-      unit: J/cm²
-      source: ai_research
-      min: 0.09
-      max: 4.3
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -400,187 +407,332 @@ material_metadata:
 domain_linkages:
   related_contaminants:
   - id: adhesive-residue
-    title: Adhesive Residue / Tape Marks
-    url: /contaminants/organic-residue/adhesive/adhesive-residue
-    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    title: Adhesive Residue
+    url: /contaminants/adhesive-residue
+    image: /images/contaminants/adhesive-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: algae-growth
-    title: Algae and Lichen Growth
-    url: /contaminants/biological/growth/algae-growth
-    image: /images/contaminants/biological/growth/algae-growth.jpg
+    title: Algae Growth
+    url: /contaminants/algae-growth
+    image: /images/contaminants/algae-growth.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: biological-stains
-    title: Organic Biofilm Deposits
-    url: /contaminants/biological/deposit/biological-stains
-    image: /images/contaminants/biological/deposit/biological-stains.jpg
+    title: Biological Stains
+    url: /contaminants/biological-stains
+    image: /images/contaminants/biological-stains.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: carbon-soot
-    title: Carbon Soot Deposits
-    url: /contaminants/organic-residue/other/carbon-soot
-    image: /images/contaminants/organic-residue/other/carbon-soot.jpg
+    title: Carbon Soot
+    url: /contaminants/carbon-soot
+    image: /images/contaminants/carbon-soot.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: chemical-stains
-    title: Chemical Stains / Acid Etching
-    url: /contaminants/chemical-residue/industrial/chemical-stains
-    image: /images/contaminants/chemical-residue/industrial/chemical-stains.jpg
+    title: Chemical Stains
+    url: /contaminants/chemical-stains
+    image: /images/contaminants/chemical-stains.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: epoxy-residue
-    title: Epoxy Resin Deposits
-    url: /contaminants/organic-residue/adhesive/epoxy-residue
-    image: /images/contaminants/organic-residue/adhesive/epoxy-residue.jpg
+    title: Epoxy Residue
+    url: /contaminants/epoxy-residue
+    image: /images/contaminants/epoxy-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: fertilizer-residue
-    title: Fertilizer Salt Deposits
-    url: /contaminants/chemical-residue/industrial/fertilizer-residue
-    image: /images/contaminants/chemical-residue/industrial/fertilizer-residue.jpg
+    title: Fertilizer Residue
+    url: /contaminants/fertilizer-residue
+    image: /images/contaminants/fertilizer-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: graffiti-paint
-    title: Graffiti and Spray Paint
-    url: /contaminants/inorganic-coating/paint/graffiti-paint
-    image: /images/contaminants/inorganic-coating/paint/graffiti-paint.jpg
+    title: Graffiti Paint
+    url: /contaminants/graffiti-paint
+    image: /images/contaminants/graffiti-paint.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: graphite-marks
-    title: Graphite Deposit Traces
-    url: /contaminants/organic-residue/marking/graphite-marks
-    image: /images/contaminants/organic-residue/marking/graphite-marks.jpg
+    title: Graphite Marks
+    url: /contaminants/graphite-marks
+    image: /images/contaminants/graphite-marks.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: ink-stains
-    title: Printing Ink Residue
-    url: /contaminants/organic-residue/marking/ink-stains
-    image: /images/contaminants/organic-residue/marking/ink-stains.jpg
+    title: Ink Stains
+    url: /contaminants/ink-stains
+    image: /images/contaminants/ink-stains.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: insect-residue
-    title: Insect Impact Residue
-    url: /contaminants/biological/deposit/insect-residue
-    image: /images/contaminants/biological/deposit/insect-residue.jpg
+    title: Insect Residue
+    url: /contaminants/insect-residue
+    image: /images/contaminants/insect-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: lime-scale
-    title: Limescale Deposits
-    url: /contaminants/thermal-damage/scale/lime-scale
-    image: /images/contaminants/thermal-damage/scale/lime-scale.jpg
+    title: Lime Scale
+    url: /contaminants/lime-scale
+    image: /images/contaminants/lime-scale.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: mercury-contamination
-    title: Mercury Spill Residue
-    url: /contaminants/chemical-residue/hazardous/mercury-contamination
-    image: /images/contaminants/chemical-residue/hazardous/mercury-contamination.jpg
+    title: Mercury
+    url: /contaminants/mercury
+    image: /images/contaminants/mercury.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: mineral-deposits
-    title: Hard Water Mineral Scale
-    url: /contaminants/thermal-damage/scale/mineral-deposits
-    image: /images/contaminants/thermal-damage/scale/mineral-deposits.jpg
+    title: Mineral Deposits
+    url: /contaminants/mineral-deposits
+    image: /images/contaminants/mineral-deposits.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: paint-residue
-    title: Paint Residue / Coating Failure
-    url: /contaminants/inorganic-coating/paint/paint-residue
-    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    title: Paint Residue
+    url: /contaminants/paint-residue
+    image: /images/contaminants/paint-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: pesticide-residue
-    title: Pesticide Chemical Residue
-    url: /contaminants/chemical-residue/industrial/pesticide-residue
-    image: /images/contaminants/chemical-residue/industrial/pesticide-residue.jpg
+    title: Pesticide Residue
+    url: /contaminants/pesticide-residue
+    image: /images/contaminants/pesticide-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: plastic-residue
-    title: Degraded Polymer Deposits
-    url: /contaminants/organic-residue/polymer/plastic-residue
-    image: /images/contaminants/organic-residue/polymer/plastic-residue.jpg
+    title: Plastic Residue
+    url: /contaminants/plastic-residue
+    image: /images/contaminants/plastic-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: pollen-deposit
-    title: Pollen Accumulation
-    url: /contaminants/biological/deposit/pollen-deposit
-    image: /images/contaminants/biological/deposit/pollen-deposit.jpg
+    title: Pollen Deposit
+    url: /contaminants/pollen-deposit
+    image: /images/contaminants/pollen-deposit.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: radioactive-contamination
-    title: Surface Radioactive Contamination
-    url: /contaminants/chemical-residue/hazardous/radioactive-contamination
-    image: /images/contaminants/chemical-residue/hazardous/radioactive-contamination.jpg
+    title: Radioactive
+    url: /contaminants/radioactive
+    image: /images/contaminants/radioactive.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: rubber-residue
-    title: Rubber Compound Residue
-    url: /contaminants/organic-residue/polymer/rubber-residue
-    image: /images/contaminants/organic-residue/polymer/rubber-residue.jpg
+    title: Rubber Residue
+    url: /contaminants/rubber-residue
+    image: /images/contaminants/rubber-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: salt-residue
-    title: Salt and Chloride Deposits
-    url: /contaminants/inorganic-coating/mineral/salt-residue
-    image: /images/contaminants/inorganic-coating/mineral/salt-residue.jpg
+    title: Salt Residue
+    url: /contaminants/salt-residue
+    image: /images/contaminants/salt-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: scale-buildup
-    title: Mineral Scale / Hard Water Deposits
-    url: /contaminants/thermal-damage/scale/scale-buildup
-    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
+    title: Scale Buildup
+    url: /contaminants/scale-buildup
+    image: /images/contaminants/scale-buildup.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: silicone-buildup
-    title: Silicone Sealant Buildup
-    url: /contaminants/organic-residue/adhesive/silicone-buildup
-    image: /images/contaminants/organic-residue/adhesive/silicone-buildup.jpg
+    title: Silicone Buildup
+    url: /contaminants/silicone-buildup
+    image: /images/contaminants/silicone-buildup.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: tree-sap
-    title: Tree Sap and Resin
-    url: /contaminants/organic-residue/natural/tree-sap
-    image: /images/contaminants/organic-residue/natural/tree-sap.jpg
+    title: Tree Sap
+    url: /contaminants/tree-sap
+    image: /images/contaminants/tree-sap.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: water-stain
-    title: Water Staining and Marks
-    url: /contaminants/organic-residue/other/water-stain
-    image: /images/contaminants/organic-residue/other/water-stain.jpg
+    title: Water Stain
+    url: /contaminants/water-stain
+    image: /images/contaminants/water-stain.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: wax-buildup
-    title: Wax Coating Buildup
-    url: /contaminants/organic-residue/wax/wax-buildup
-    image: /images/contaminants/organic-residue/wax/wax-buildup.jpg
+    title: Wax Buildup
+    url: /contaminants/wax-buildup
+    image: /images/contaminants/wax-buildup.jpg
     frequency: common
     severity: moderate
     typical_context: general
+  related_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/carbon-monoxide
+    image: /images/compounds/carbon-monoxide.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of organic adhesives
+    exposure_risk: high
+  - id: acetaldehyde-compound
+    title: Acetaldehyde
+    url: /compounds/acetaldehyde
+    image: /images/compounds/acetaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Decomposition of vinyl and acrylic adhesives
+    exposure_risk: moderate
+  - id: hydrogen-chloride-compound
+    title: Hydrogen Chloride
+    url: /compounds/hydrogen-chloride
+    image: /images/compounds/hydrogen-chloride.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Some adhesives contain chlorinated compounds
+    exposure_risk: moderate
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/toluene
+    image: /images/compounds/toluene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Release of toluene from adhesive formulations
+    exposure_risk: moderate
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/formaldehyde
+    image: /images/compounds/formaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of formaldehyde-based adhesives
+    exposure_risk: moderate
+  - id: hydrogen-cyanide-compound
+    title: Hydrogen Cyanide
+    url: /compounds/hydrogen-cyanide
+    image: /images/compounds/hydrogen-cyanide.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Breakdown of cyanoacrylate adhesives
+    exposure_risk: moderate
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/carbon-dioxide
+    image: /images/compounds/carbon-dioxide.jpg
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of adhesives
+    exposure_risk: low
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/vocs
+    image: /images/compounds/vocs.jpg
+    frequency: very_common
+    severity: moderate
+    typical_context: Release of adhesive solvents
+    exposure_risk: moderate
+  - id: benzoapyrene-compound
+    title: Benzo[a]pyrene
+    url: /compounds/benzoapyrene
+    image: /images/compounds/benzoapyrene.jpg
+    frequency: common
+    severity: high
+    typical_context: Formed during original combustion event
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/pahs
+    image: /images/compounds/pahs.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Pre-existing PAHs from incomplete combustion
+    exposure_risk: high
+  - id: nitrogen-oxides-compound
+    title: Nitrogen Oxides
+    url: /compounds/nitrogen-oxides
+    image: /images/compounds/nitrogen-oxides.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Nitrogen from some paint formulations
+    exposure_risk: low
+  - id: zinc-oxide-compound
+    title: Zinc Oxide
+    url: /compounds/zinc-oxide
+    image: /images/compounds/zinc-oxide.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Zinc oxide pigments in paint
+    exposure_risk: low
+  - id: chromium-vi-compound
+    title: Hexavalent Chromium
+    url: /compounds/chromium-vi
+    image: /images/compounds/chromium-vi.jpg
+    frequency: occasional
+    severity: high
+    typical_context: Chromate pigments in some paints
+    exposure_risk: high
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/benzene
+    image: /images/compounds/benzene.jpg
+    frequency: common
+    severity: high
+    typical_context: Thermal breakdown of aromatic paint solvents
+    exposure_risk: high
+  - id: styrene-compound
+    title: Styrene
+    url: /compounds/styrene
+    image: /images/compounds/styrene.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Thermal depolymerization of polystyrene
+    exposure_risk: high
+  - id: phosgene-compound
+    title: Phosgene
+    url: /compounds/phosgene
+    image: /images/compounds/phosgene.jpg
+    frequency: rare
+    severity: high
+    typical_context: Thermal breakdown of certain chlorinated plastics
+    exposure_risk: high
+  - id: acrolein-compound
+    title: Acrolein
+    url: /compounds/acrolein
+    image: /images/compounds/acrolein.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Pyrolysis of certain polymers
+    exposure_risk: moderate
+  - id: sulfur-dioxide-compound
+    title: Sulfur Dioxide
+    url: /compounds/sulfur-dioxide
+    image: /images/compounds/sulfur-dioxide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Vulcanized rubber contains sulfur compounds
+    exposure_risk: moderate
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -595,4 +747,4 @@ serviceOffering:
     notes: Controlled atmosphere may be required to prevent re-oxidation
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:39.889225'
+    generated_date: '2025-12-16T13:51:19.416687'

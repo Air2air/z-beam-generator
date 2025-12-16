@@ -1,12 +1,73 @@
+id: semiconductor-residue-contamination
 name: Semiconductor Processing Residue
 slug: semiconductor-residue-contamination
-id: semiconductor-residue-contamination
 category: chemical-residue
 subcategory: industrial
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: silicon-wafers
+    title: Silicon Wafers
+    url: /materials/silicon-wafers
+    image: /images/materials/silicon-wafers.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: quartz
+    title: Quartz
+    url: /materials/quartz
+    image: /images/materials/quartz.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Alumina
+    title: Alumina
+    url: /materials/Alumina
+    image: /images/materials/Alumina.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicon-carbide
+    title: Silicon Carbide
+    url: /materials/silicon-carbide
+    image: /images/materials/silicon-carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zirconia
+    title: Zirconia
+    url: /materials/Zirconia
+    image: /images/materials/Zirconia.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum Nitride
+    title: Aluminum Nitride
+    url: /materials/Aluminum Nitride
+    image: /images/materials/Aluminum Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Carbide
+    title: Boron Carbide
+    url: /materials/Boron Carbide
+    image: /images/materials/Boron Carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Nitride
+    title: Boron Nitride
+    url: /materials/Boron Nitride
+    image: /images/materials/Boron Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Silicon Nitride
+    title: Silicon Nitride
+    url: /materials/Silicon Nitride
+    image: /images/materials/Silicon Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 4
   name: Todd Dunning
@@ -36,6 +97,10 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Todd Dunning
@@ -196,74 +261,6 @@ laser_properties:
     thermal_conductivity: 0.35
     thermal_diffusivity: 0.25
     vaporization_temperature: 600
-domain_linkages:
-  related_materials:
-  - id: silicon-wafers
-    title: Silicon Wafers
-    url: /materials/silicon-wafers
-    image: /images/materials/silicon-wafers.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: quartz
-    title: Quartz
-    url: /materials/quartz
-    image: /images/materials/quartz.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Alumina
-    title: Alumina
-    url: /materials/ceramic/oxide/Alumina
-    image: /images/materials/ceramic/oxide/Alumina.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicon-carbide
-    title: Silicon Carbide
-    url: /materials/silicon-carbide
-    image: /images/materials/silicon-carbide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zirconia
-    title: Zirconia
-    url: /materials/ceramic/oxide/Zirconia
-    image: /images/materials/ceramic/oxide/Zirconia.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum Nitride
-    title: Aluminum Nitride
-    url: /materials/ceramic/technical/Aluminum Nitride
-    image: /images/materials/ceramic/technical/Aluminum Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Boron Carbide
-    title: Boron Carbide
-    url: /materials/ceramic/carbide/Boron Carbide
-    image: /images/materials/ceramic/carbide/Boron Carbide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Boron Nitride
-    title: Boron Nitride
-    url: /materials/ceramic/technical/Boron Nitride
-    image: /images/materials/ceramic/technical/Boron Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Silicon Nitride
-    title: Silicon Nitride
-    url: /materials/ceramic/oxide/Silicon Nitride
-    image: /images/materials/ceramic/oxide/Silicon Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Silicon Wafers
 - Quartz

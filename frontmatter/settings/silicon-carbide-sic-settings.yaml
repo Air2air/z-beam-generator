@@ -1,13 +1,9 @@
-name: Silicon Carbide (SiC)
-slug: silicon-carbide-(sic)
-id: silicon-carbide-(sic)-settings
+id: silicon-carbide-sic-settings
+name: silicon-carbide-sic-laser-cleaning
+slug: silicon-carbide-sic-settings
 category: ceramic
 subcategory: carbide
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,7 +32,12 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
-title: Silicon Carbide (SiC) Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: silicon-carbide-sic-laser-cleaning Laser Cleaning Settings
 settings_description: 'When laser cleaning silicon carbide, watch out for its extreme hardness right from the start. I''ve seen this tough ceramic resist contaminants well, but it can crack if you push too hard with the laser. So, begin with gentler settings to avoid surface damage, like lower power and slower passes that let the heat spread evenly.
 
 
@@ -44,8 +45,6 @@ settings_description: 'When laser cleaning silicon carbide, watch out for its ex
 
 
   Just keep passes overlapping a bit to cover everything, and monitor for any subtle discoloration that signals overdoing it. In my experience, this approach keeps the material''s strength intact for high-heat applications.'
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -55,8 +54,8 @@ breadcrumb:
   href: /materials/ceramic
 - label: Carbide
   href: /materials/ceramic/carbide
-- label: Silicon Carbide (SiC)
-  href: /materials/silicon-carbide-(sic)
+- label: silicon-carbide-sic-laser-cleaning
+  href: /materials/silicon-carbide-sic-settings
 images:
   hero:
     alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination removal
@@ -64,52 +63,7 @@ images:
   micro:
     alt: Silicon Carbide microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/silicon-carbide-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 120.0
@@ -142,6 +96,7 @@ material_challenges:
     - Gradual power ramping (start 50W, increase 10W per pass)
     - Preheat substrate to reduce thermal gradients
     - Monitor for surface crazing; stop immediately if cracks appear
+    challenge_id: thermal_shock_and_cracking
   - challenge: Variable thermal conductivity
     severity: medium
     property_value: 0.8-120 W/m·K (150x variation between materials)
@@ -150,6 +105,7 @@ material_challenges:
     - Low conductivity ceramics (alumina, zirconia) require 50% longer cooling
     - High conductivity ceramics (SiC, WC) tolerate higher power
     - Test on scrap to determine cooling requirements
+    challenge_id: variable_thermal_conductivity
   surface_characteristics:
   - challenge: Surface defects and damage threshold
     severity: high
@@ -159,6 +115,7 @@ material_challenges:
     - Reduce power 30-40% for porous or aged ceramics
     - Use multiple low-energy passes rather than single high-energy pass
     - Polished ceramics tolerate 2-3x higher fluence than rough surfaces
+    challenge_id: surface_defects_and_damage_threshold
   - challenge: Porosity variation
     severity: medium
     porosity_range: 0-30% (dense vs porous ceramics)
@@ -168,6 +125,7 @@ material_challenges:
     - Porous ceramics require multiple progressive passes
     - Use crosshatch scan pattern for uniform penetration
     - Chemical pre-treatment for deep contamination in porous ceramics
+    challenge_id: porosity_variation
   contamination_challenges:
   - challenge: Coating and residue removal
     severity: medium
@@ -177,6 +135,7 @@ material_challenges:
     - Second pass 80W slow (1000 mm/s) for residue
     - Monitor for substrate exposure; adjust power accordingly
     - PVD coatings may require chemical assist for complete removal
+    challenge_id: coating_and_residue_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:42.610768'
+    generated_date: '2025-12-16T13:51:24.701496'

@@ -1,12 +1,12 @@
-name: Ruthenium
-slug: ruthenium
 id: ruthenium-laser-cleaning
+name: ruthenium-laser-cleaning
+slug: ruthenium-laser-cleaning
 category: metal
 subcategory: non-ferrous
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: null
-dateModified: null
+datePublished: '2025-12-16T13:59:53Z'
+dateModified: '2025-12-16T13:59:53Z'
 author:
   id: 1
   name: Yi-Chun Lin
@@ -27,7 +27,8 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -42,7 +43,11 @@ _metadata:
     voice_applied: true
     content_type: material
 title: Ruthenium Laser Cleaning
-material_description: When facing harsh chemical environments that corrode most metals, I've observed Ruthenium performing exceptionally well, thanks to its outstanding corrosion resistance over everyday options like nickel or copper, ensuring reliable components in processing plants and marine applications without additional protective coatings.
+material_description: When facing harsh chemical environments that corrode most metals,
+  I've observed Ruthenium performing exceptionally well, thanks to its outstanding
+  corrosion resistance over everyday options like nickel or copper, ensuring reliable
+  components in processing plants and marine applications without additional protective
+  coatings.
 breadcrumb:
 - label: Home
   href: /
@@ -56,33 +61,87 @@ breadcrumb:
   href: /materials/metal/non-ferrous/ruthenium
 images:
   hero:
-    alt: Ruthenium surface undergoing laser cleaning showing precise contamination removal
+    alt: Ruthenium surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/ruthenium-laser-cleaning-hero.jpg
   micro:
-    alt: Ruthenium microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Ruthenium microscopic view of laser cleaning showing detailed precise contamination
+      removal
     url: /images/material/ruthenium-laser-cleaning-micro.jpg
 micro:
-  before: "Under 1000x magnification, the ruthenium surface looks rough and covered in dark, sticky patches that scatter across the view.  \nIrregular clumps of grime cling tightly, dulling the metal's natural gleam and creating bumpy textures everywhere.  \nThese contaminants build up unevenly, hiding the underlying structure from clear sight."
-  after: "After laser treatment at 1000x magnification, the ruthenium surface appears smooth and free of all dark patches that once cluttered it.  \nClean lines emerge"
+  before: "Under 1000x magnification, the ruthenium surface looks rough and covered\
+    \ in dark, sticky patches that scatter across the view.  \nIrregular clumps of\
+    \ grime cling tightly, dulling the metal's natural gleam and creating bumpy textures\
+    \ everywhere.  \nThese contaminants build up unevenly, hiding the underlying structure\
+    \ from clear sight."
+  after: "After laser treatment at 1000x magnification, the ruthenium surface appears\
+    \ smooth and free of all dark patches that once cluttered it.  \nClean lines emerge"
 faq:
-- question: What laser wavelengths are most effective for cleaning ruthenium-coated mirrors without **causing delamination**?
-  answer: '**1064 nm minimizes delamination**. Notably, for ruthenium-coated mirrors, the 1064 nm near-IR laser wavelength excels in oxide removal at 2.3 J/cm² fluence. It minimizes delamination by targeting the thin film''s absorption, thus preventing substrate harm. The 532 nm green light serves as an alternative, but specifically demands stricter pulse control to preserve coating adhesion. This method achieves uniform cleaning across two passes at 500 mm/s scan speed.'
-- question: How does ruthenium's **high reflectivity** affect the efficiency of laser cleaning processes on optical surfaces?
-  answer: '**Impedes absorption, slows efficiency**. Ruthenium shows high reflectivity, particularly 70-90% across visible and IR ranges, which scatters substantial laser energy on optical surfaces and hinders absorption, thereby reducing cleaning efficiency. Address this challenge using a 1064 nm wavelength with 8 ns pulses at 2.3 J/cm² fluence, thus improving targeted oxide removal while preventing bulk damage.'
-- question: Are there specific safety risks when using pulsed lasers to remove contaminants from ruthenium alloys in semiconductor manufacturing?
-  answer: Pulsed laser cleaning of ruthenium alloys at 1064 nm can trigger ruthenium oxide formation, particularly when fluence exceeds 2.3 J/cm², thus releasing potentially toxic vapors. Airborne nanoparticles from ablation pose inhalation hazards, so adhere to OSHA ventilation standards using local exhaust systems to capture fines under 50 μm spot size.
-- question: What pulse energy levels should be used to avoid thermal damage when laser cleaning **ruthenium thin films** on substrates?
-  answer: '**fluences below 1 J/cm²**. For laser cleaning of ruthenium thin films, target pulse fluences below 1 J/cm² to avoid thermal damage to underlying substrates. Specifically at 1064 nm with 8 ns pulses, this threshold enables selective oxide ablation while curbing heat buildup—thus, apply interferometry for real-time surface monitoring.'
-- question: In laser cleaning of ruthenium catalysts, how can we prevent chemical reactions with residual surface impurities?
-  answer: To protect ruthenium catalysts against reactions with surface impurities during laser cleaning, conduct the process under an inert argon atmosphere, specifically at 1064 nm wavelength and 2.3 J/cm² fluence, for precise oxide removal. Then, passivate the surface via controlled exposure, thus forming a protective layer that curbs its high catalytic reactivity.
-- question: What are the common issues with **residue removal on ruthenium** surfaces using femtosecond lasers versus nanosecond lasers?
-  answer: '**Femtosecond enables non-thermal ablation**. Femtosecond lasers, particularly via precise non-thermal ablation, effectively remove ruthenium residues, producing minimal heat-affected zones and enhanced surface integrity compared to nanosecond systems. These ns systems frequently induce thermal damage or incomplete cleaning at 2.3 J/cm² fluence. Notably, electronics case studies demonstrate fs''s cleaner outcomes, yet with 20-30% slower rates than ns at 50 kHz repetition.'
-- question: How does **ruthenium's melting point** influence the choice of laser power for surface treatment in jewelry applications?
-  answer: '**Allows 45 W without fusion**. Notably, ruthenium''s high melting point of 2334°C enables laser powers near 45 W for jewelry cleaning, vaporizing surface oxides while avoiding base material fusion. Its moderate thermal conductivity thus requires precise fluence control at 2.3 J/cm² to avoid heat buildup and keep contaminant removal superficial.'
-- question: What regulatory standards apply to **handling ruthenium dust** generated during laser cleaning in industrial settings?
-  answer: '**Classifies as hazardous toxic waste**. When managing ruthenium dust produced by laser cleaning, adherence to EPA standards for toxic metal waste is crucial, designating it as hazardous for safe disposal while capping airborne exposure at under 0.1 mg/m³ per OSHA PEL. Particularly under REACH, EU operators must register ruthenium particulates and ensure ventilation during 2.3 J/cm² fluence operations, thus reducing inhalation hazards in electronics or aerospace settings.'
-- question: Can laser cleaning restore the optical properties of ruthenium-coated EUV lithography mirrors after contamination?
-  answer: Yes, laser cleaning notably restores ruthenium-coated EUV lithography mirrors, recovering reflectivity above 95% at 13.5 nm following contamination. Specifically, a 1064 nm wavelength with 2.3 J/cm² fluence and 45 W power ablates oxides cleanly without substrate damage, thus preserving low surface roughness per ASML protocols.
+- question: What laser wavelengths are most effective for cleaning ruthenium-coated
+    mirrors without **causing delamination**?
+  answer: '**1064 nm minimizes delamination**. Notably, for ruthenium-coated mirrors,
+    the 1064 nm near-IR laser wavelength excels in oxide removal at 2.3 J/cm² fluence.
+    It minimizes delamination by targeting the thin film''s absorption, thus preventing
+    substrate harm. The 532 nm green light serves as an alternative, but specifically
+    demands stricter pulse control to preserve coating adhesion. This method achieves
+    uniform cleaning across two passes at 500 mm/s scan speed.'
+- question: How does ruthenium's **high reflectivity** affect the efficiency of laser
+    cleaning processes on optical surfaces?
+  answer: '**Impedes absorption, slows efficiency**. Ruthenium shows high reflectivity,
+    particularly 70-90% across visible and IR ranges, which scatters substantial laser
+    energy on optical surfaces and hinders absorption, thereby reducing cleaning efficiency.
+    Address this challenge using a 1064 nm wavelength with 8 ns pulses at 2.3 J/cm²
+    fluence, thus improving targeted oxide removal while preventing bulk damage.'
+- question: Are there specific safety risks when using pulsed lasers to remove contaminants
+    from ruthenium alloys in semiconductor manufacturing?
+  answer: Pulsed laser cleaning of ruthenium alloys at 1064 nm can trigger ruthenium
+    oxide formation, particularly when fluence exceeds 2.3 J/cm², thus releasing potentially
+    toxic vapors. Airborne nanoparticles from ablation pose inhalation hazards, so
+    adhere to OSHA ventilation standards using local exhaust systems to capture fines
+    under 50 μm spot size.
+- question: What pulse energy levels should be used to avoid thermal damage when laser
+    cleaning **ruthenium thin films** on substrates?
+  answer: '**fluences below 1 J/cm²**. For laser cleaning of ruthenium thin films,
+    target pulse fluences below 1 J/cm² to avoid thermal damage to underlying substrates.
+    Specifically at 1064 nm with 8 ns pulses, this threshold enables selective oxide
+    ablation while curbing heat buildup—thus, apply interferometry for real-time surface
+    monitoring.'
+- question: In laser cleaning of ruthenium catalysts, how can we prevent chemical
+    reactions with residual surface impurities?
+  answer: To protect ruthenium catalysts against reactions with surface impurities
+    during laser cleaning, conduct the process under an inert argon atmosphere, specifically
+    at 1064 nm wavelength and 2.3 J/cm² fluence, for precise oxide removal. Then,
+    passivate the surface via controlled exposure, thus forming a protective layer
+    that curbs its high catalytic reactivity.
+- question: What are the common issues with **residue removal on ruthenium** surfaces
+    using femtosecond lasers versus nanosecond lasers?
+  answer: '**Femtosecond enables non-thermal ablation**. Femtosecond lasers, particularly
+    via precise non-thermal ablation, effectively remove ruthenium residues, producing
+    minimal heat-affected zones and enhanced surface integrity compared to nanosecond
+    systems. These ns systems frequently induce thermal damage or incomplete cleaning
+    at 2.3 J/cm² fluence. Notably, electronics case studies demonstrate fs''s cleaner
+    outcomes, yet with 20-30% slower rates than ns at 50 kHz repetition.'
+- question: How does **ruthenium's melting point** influence the choice of laser power
+    for surface treatment in jewelry applications?
+  answer: '**Allows 45 W without fusion**. Notably, ruthenium''s high melting point
+    of 2334°C enables laser powers near 45 W for jewelry cleaning, vaporizing surface
+    oxides while avoiding base material fusion. Its moderate thermal conductivity
+    thus requires precise fluence control at 2.3 J/cm² to avoid heat buildup and keep
+    contaminant removal superficial.'
+- question: What regulatory standards apply to **handling ruthenium dust** generated
+    during laser cleaning in industrial settings?
+  answer: '**Classifies as hazardous toxic waste**. When managing ruthenium dust produced
+    by laser cleaning, adherence to EPA standards for toxic metal waste is crucial,
+    designating it as hazardous for safe disposal while capping airborne exposure
+    at under 0.1 mg/m³ per OSHA PEL. Particularly under REACH, EU operators must register
+    ruthenium particulates and ensure ventilation during 2.3 J/cm² fluence operations,
+    thus reducing inhalation hazards in electronics or aerospace settings.'
+- question: Can laser cleaning restore the optical properties of ruthenium-coated
+    EUV lithography mirrors after contamination?
+  answer: Yes, laser cleaning notably restores ruthenium-coated EUV lithography mirrors,
+    recovering reflectivity above 95% at 13.5 nm following contamination. Specifically,
+    a 1064 nm wavelength with 2.3 J/cm² fluence and 45 W power ablates oxides cleanly
+    without substrate damage, thus preserving low surface roughness per ASML protocols.
 regulatoryStandards:
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
@@ -107,7 +166,7 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 40.0
+    percentage: 60.0
     electricalConductivity:
       value: '1.4e+07'
       unit: S/m
@@ -240,54 +299,6 @@ materialProperties:
       source: ai_research
       min: 0.27
       max: 15750
-    thermalDestruction:
-      value: 2607
-      unit: K
-      source: ai_research
-      min: 256
-      max: 3859
-    specificHeat:
-      value: 238
-      unit: J/(kg·K)
-      source: ai_research
-      min: 43.4
-      max: 1905
-    laserReflectivity:
-      value: 0.68
-      unit: ''
-      source: ai_research
-      min: 0.4
-      max: 73.5
-    thermalConductivity:
-      value: 117
-      unit: W/m·K
-      source: ai_research
-      min: 7.4
-      max: 450
-    thermalExpansion:
-      value: '6.4e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: 4e-06
-      max: 31.7
-    laserAbsorption:
-      value: 0.11
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: '4.2e+08'
-    thermalDiffusivity:
-      value: '3.9e-05'
-      unit: m^2/s
-      source: ai_research
-      min: 2e-06
-      max: '0.00017'
-    ablationThreshold:
-      value: 0.92
-      unit: J/cm²
-      source: ai_research
-      min: 0.09
-      max: 4.3
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -393,8 +404,7 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.922623Z'
   structure_version: '2.0'
-domain_linkages:
-  related_contaminants: []
+domain_linkages: {}
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -410,4 +420,4 @@ serviceOffering:
     notes: Lower power settings recommended due to high reflectivity
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:42.372966'
+    generated_date: '2025-12-16T13:51:24.051760'

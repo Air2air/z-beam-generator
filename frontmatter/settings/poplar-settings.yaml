@@ -1,13 +1,9 @@
-name: Poplar
-slug: poplar
 id: poplar-settings
+name: poplar-laser-cleaning
+slug: poplar-settings
 category: wood
 subcategory: hardwood
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 4
   name: Todd Dunning
@@ -36,10 +32,13 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
-title: Poplar Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: poplar-laser-cleaning Laser Cleaning Settings
 settings_description: 'When laser cleaning Poplar, compare it to denser hardwoods like oak. Poplar''s lighter structure sets it apart. This lower density speeds up the process. It exposes contaminants more easily. But higher porosity changes your approach. You must reduce power to prevent charring. Start with shorter passes on the surface. This restores the wood without deep damage. Unlike oak, Poplar absorbs energy quickly. So adjust overlap to avoid uneven heating. Make sure you scan at steady speeds. This improves cleaning on delicate grains. Poplar suits cultural heritage work well. It reveals fine details in furniture or instruments. But end with caution: Overlap too much, and it warps the soft fibers.'
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -49,8 +48,8 @@ breadcrumb:
   href: /materials/wood
 - label: Hardwood
   href: /materials/wood/hardwood
-- label: Poplar
-  href: /materials/poplar
+- label: poplar-laser-cleaning
+  href: /materials/poplar-settings
 images:
   hero:
     alt: Poplar surface undergoing laser cleaning showing precise contamination removal
@@ -58,55 +57,7 @@ images:
   micro:
     alt: Poplar microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/poplar-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 1.2
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    unit: μs
-    value: 100
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.134
@@ -142,6 +93,7 @@ material_challenges:
     - Reduce power by 30-40% compared to metals
     - Increase scan speed to reduce dwell time
     - Monitor surface for discoloration; stop if browning occurs
+    challenge_id: charring_and_carbonization
   - challenge: Slow thermal diffusivity
     severity: medium
     property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
@@ -150,6 +102,7 @@ material_challenges:
     - Increase cooling time between passes
     - Use lower repetition rates (<20 kHz)
     - Apply crosshatch patterns to distribute heat
+    challenge_id: slow_thermal_diffusivity
   surface_characteristics:
   - challenge: Grain direction sensitivity
     severity: medium
@@ -159,6 +112,7 @@ material_challenges:
     - Scan parallel to grain for consistent results
     - Use crosshatch pattern (0° and 90°) for uniform cleaning
     - Test on scrap to determine optimal scan direction
+    challenge_id: grain_direction_sensitivity
   - challenge: Porous structure with deep contamination
     severity: medium
     porosity_range: 12-65% (softwoods highest)
@@ -167,6 +121,7 @@ material_challenges:
     - Multiple passes with progressive power increase
     - Reduce scan speed for deeper penetration (600 mm/s)
     - Chemical pre-treatment for deep-seated contamination
+    challenge_id: porous_structure_with_deep_contamination
   contamination_challenges:
   - challenge: Varnish and coating removal
     severity: medium
@@ -176,6 +131,7 @@ material_challenges:
     - Second pass 60W slow (800 mm/s) for residue
     - Use fume extraction to prevent redeposition
     - Limit to 2-3 passes maximum to avoid substrate damage
+    challenge_id: varnish_and_coating_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:42.022786'
+    generated_date: '2025-12-16T13:51:23.384450'

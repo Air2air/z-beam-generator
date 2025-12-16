@@ -1,13 +1,9 @@
-name: Cerium
-slug: cerium
 id: cerium-settings
+name: cerium-laser-cleaning
+slug: cerium-settings
 category: rare-earth
 subcategory: lanthanide
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 4
   name: Todd Dunning
@@ -36,11 +32,14 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
-title: Cerium Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: cerium-laser-cleaning Laser Cleaning Settings
 settings_description: When laser cleaning cerium, you'll want to address its high reflectivity first, since this property scatters much of the laser energy away from the surface and reduces overall efficiency in removing contaminants. Make sure you start with lower power settings to compensate, allowing the process to gradually expose and restore the underlying metal without excessive scattering that could prolong treatment times. Cerium's low thermal conductivity further complicates this, as localized heat buildup risks damaging the soft structure, so you must control pulse durations carefully to prevent warping or uneven ablation. What sets cerium apart from common metals is its reactive nature as a rare-earth element, which forms a tenacious oxide layer that clings tightly and demands multiple passes for complete removal, while its moderate density aids in precise handling during setup. This combination improves outcomes in applications like optical component cleaning or aerospace parts,
   where restoring surface integrity matters most. Adjust scan speeds to overlap coverage adequately, ensuring the laser removes residues without compromising the material's ductility. Finally, watch out for overexposure, as cerium's sensitivity to oxidation post-cleaning can lead to rapid recontamination if not sealed promptly.
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -50,8 +49,8 @@ breadcrumb:
   href: /materials/rare-earth
 - label: Lanthanide
   href: /materials/rare-earth/lanthanide
-- label: Cerium
-  href: /materials/cerium
+- label: cerium-laser-cleaning
+  href: /materials/cerium-settings
 images:
   hero:
     alt: Cerium surface undergoing laser cleaning showing precise contamination removal
@@ -59,57 +58,7 @@ images:
   micro:
     alt: Cerium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/cerium-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 5.1
-    min: 0.3
-    max: 4.5
-  energyDensity:
-    unit: J/cm²
-    value: 5.1
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 8.67
@@ -139,6 +88,7 @@ material_challenges:
     - Keep surface temperature below 150°C monitored with IR camera
     - Have fire suppression ready for pyrophoric materials
     - Immediate passivation after cleaning to prevent further oxidation
+    challenge_id: rapid_oxidation_and_pyrophoricity
   - challenge: Variable thermal properties across series
     severity: medium
     property_value: 3-8 mm²/s thermal diffusivity (2.7x variation)
@@ -148,6 +98,7 @@ material_challenges:
     - Heavy lanthanides (Dy, Er, Yb) tolerate slightly higher power
     - Adjust parameters by specific element, not just category
     - Test on small area to determine optimal cooling requirements
+    challenge_id: variable_thermal_properties_across_series
   surface_characteristics:
   - challenge: Oxide layer formation and removal
     severity: high
@@ -158,6 +109,7 @@ material_challenges:
     - Oxide removal threshold (1-3 J/cm²) lower than metal substrate (2-5 J/cm²)
     - Chemical passivation immediately after cleaning
     - Store in inert atmosphere or vacuum after processing
+    challenge_id: oxide_layer_formation_and_removal
   - challenge: Magnetic property sensitivity
     severity: high
     impact: Heating above Curie temperature permanently alters magnetic properties
@@ -166,6 +118,7 @@ material_challenges:
     - Use ultrashort pulses (picosecond) for minimal heat-affected zone
     - Reduce power by 60-70% compared to non-magnetic metals
     - Test magnetic properties before and after cleaning to verify preservation
+    challenge_id: magnetic_property_sensitivity
   contamination_challenges:
   - challenge: High-value material recovery
     severity: medium
@@ -176,6 +129,7 @@ material_challenges:
     - Collect all ablated material for potential recovery
     - Document process for traceability and quality control
     - Consider chemical pre-treatment to reduce laser exposure
+    challenge_id: high_value_material_recovery
   - challenge: Strategic material handling requirements
     severity: medium
     impact: Export-controlled materials require documentation and secure handling
@@ -185,6 +139,7 @@ material_challenges:
     - Secure storage of cleaned materials
     - Follow applicable export control regulations
     - Chain of custody documentation for high-value materials
+    challenge_id: strategic_material_handling_requirements
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:39.844928'
+    generated_date: '2025-12-16T13:51:19.328606'

@@ -1,13 +1,26 @@
-name: Plywood
-slug: plywood
 id: plywood-settings
+name: plywood-laser-cleaning
+slug: plywood-settings
 category: wood
 subcategory: hardwood
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_contaminants:
+  - id: wood-rot
+    title: Wood Rot
+    url: /contaminants/wood-rot
+    image: /images/contaminants/wood-rot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds:
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/formaldehyde
+    image: /images/compounds/formaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Decomposition of wood compounds
+    exposure_risk: moderate
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,17 +50,13 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
-title: Plywood Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: plywood-laser-cleaning Laser Cleaning Settings
 settings_description: When laser cleaning plywood, unlike solid hardwoods, its layered structure and high porosity make it more forgiving on heat buildup, so it tends to clean evenly without deep charring if you keep passes light and quick. I've seen this layered makeup absorb contaminants well, restoring surfaces in furniture or heritage pieces, but watch midway—too much dwell can delaminate edges, so adjust speed up to avoid that pitfall and preserve the glue bonds.
-domain_linkages:
-  related_contaminants:
-  - id: wood-rot
-    title: Wood Rot / Fungal Biodegradation
-    url: /contaminants/biological/growth/wood-rot
-    image: /images/contaminants/biological/growth/wood-rot.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -57,8 +66,8 @@ breadcrumb:
   href: /materials/wood
 - label: Hardwood
   href: /materials/wood/hardwood
-- label: Plywood
-  href: /materials/plywood
+- label: plywood-laser-cleaning
+  href: /materials/plywood-settings
 images:
   hero:
     alt: Plywood surface undergoing laser cleaning showing precise contamination removal
@@ -66,55 +75,7 @@ images:
   micro:
     alt: Plywood microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/plywood-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 2
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    unit: μs
-    value: 100
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.12
@@ -154,6 +115,7 @@ material_challenges:
     - Reduce power by 30-40% compared to metals
     - Increase scan speed to reduce dwell time
     - Monitor surface for discoloration; stop if browning occurs
+    challenge_id: charring_and_carbonization
   - challenge: Slow thermal diffusivity
     severity: medium
     property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
@@ -162,6 +124,7 @@ material_challenges:
     - Increase cooling time between passes
     - Use lower repetition rates (<20 kHz)
     - Apply crosshatch patterns to distribute heat
+    challenge_id: slow_thermal_diffusivity
   surface_characteristics:
   - challenge: Grain direction sensitivity
     severity: medium
@@ -171,6 +134,7 @@ material_challenges:
     - Scan parallel to grain for consistent results
     - Use crosshatch pattern (0° and 90°) for uniform cleaning
     - Test on scrap to determine optimal scan direction
+    challenge_id: grain_direction_sensitivity
   - challenge: Porous structure with deep contamination
     severity: medium
     porosity_range: 12-65% (softwoods highest)
@@ -179,6 +143,7 @@ material_challenges:
     - Multiple passes with progressive power increase
     - Reduce scan speed for deeper penetration (600 mm/s)
     - Chemical pre-treatment for deep-seated contamination
+    challenge_id: porous_structure_with_deep_contamination
   contamination_challenges:
   - challenge: Varnish and coating removal
     severity: medium
@@ -188,6 +153,7 @@ material_challenges:
     - Second pass 60W slow (800 mm/s) for residue
     - Use fume extraction to prevent redeposition
     - Limit to 2-3 passes maximum to avoid substrate damage
+    challenge_id: varnish_and_coating_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:41.784436'
+    generated_date: '2025-12-16T13:51:22.852707'

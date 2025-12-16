@@ -1,12 +1,24 @@
+id: beryllium-oxide-contamination
 name: Beryllium Oxide Contamination
 slug: beryllium-oxide-contamination
-id: beryllium-oxide-contamination
 category: chemical-residue
 subcategory: hazardous
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: copper-beryllium-alloy
+    title: Copper Beryllium Alloy
+    url: /materials/copper-beryllium-alloy
+    image: /images/materials/copper-beryllium-alloy.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Steel
+    title: Steel
+    url: /materials/Steel
+    image: /images/materials/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,6 +48,10 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -175,25 +191,6 @@ laser_properties:
     thermal_conductivity: 280
     thermal_diffusivity: 105
     vaporization_temperature: 3900
-domain_linkages:
-  related_materials:
-  - id: copper-beryllium-alloy
-    title: Copper-Beryllium Alloy
-    url: /materials/copper-beryllium-alloy
-    image: /images/materials/copper-beryllium-alloy.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Steel
-    title: Steel
-    url: /materials/metal/ferrous/Steel
-    image: /images/materials/metal/ferrous/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Copper-Beryllium Alloy
 - Steel

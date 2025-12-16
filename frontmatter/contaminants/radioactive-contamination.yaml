@@ -1,12 +1,199 @@
+id: radioactive-contamination
 name: Surface Radioactive Contamination
 slug: radioactive-contamination
-id: radioactive-contamination
 category: chemical-residue
 subcategory: hazardous
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: stainless-steel-laser-cleaning
+    title: Stainless Steel
+    url: /materials/stainless-steel
+    image: /images/materials/stainless-steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/steel
+    image: /images/materials/steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: aluminum-laser-cleaning
+    title: Aluminum
+    url: /materials/aluminum
+    image: /images/materials/aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: concrete-laser-cleaning
+    title: Concrete
+    url: /materials/concrete
+    image: /images/materials/concrete.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: zinc-laser-cleaning
+    title: Zinc
+    url: /materials/zinc
+    image: /images/materials/zinc.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: titanium-laser-cleaning
+    title: Titanium
+    url: /materials/titanium
+    image: /images/materials/titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: copper-laser-cleaning
+    title: Copper
+    url: /materials/copper
+    image: /images/materials/copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cobalt-laser-cleaning
+    title: Cobalt
+    url: /materials/cobalt
+    image: /images/materials/cobalt.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: tin-laser-cleaning
+    title: Tin
+    url: /materials/tin
+    image: /images/materials/tin.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lead-laser-cleaning
+    title: Lead
+    url: /materials/lead
+    image: /images/materials/lead.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chromium-laser-cleaning
+    title: Chromium
+    url: /materials/chromium
+    image: /images/materials/chromium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: nickel-laser-cleaning
+    title: Nickel
+    url: /materials/nickel
+    image: /images/materials/nickel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/Stainless Steel
+    image: /images/materials/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Concrete
+    title: Concrete
+    url: /materials/Concrete
+    image: /images/materials/Concrete.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/Aluminum
+    image: /images/materials/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Steel
+    title: Steel
+    url: /materials/Steel
+    image: /images/materials/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cast-iron
+    title: Cast Iron
+    url: /materials/cast-iron
+    image: /images/materials/cast-iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Copper
+    title: Copper
+    url: /materials/Copper
+    image: /images/materials/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bronze
+    title: Bronze
+    url: /materials/bronze
+    image: /images/materials/bronze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Titanium
+    title: Titanium
+    url: /materials/Titanium
+    image: /images/materials/Titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zinc
+    title: Zinc
+    url: /materials/Zinc
+    image: /images/materials/Zinc.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Nickel
+    title: Nickel
+    url: /materials/Nickel
+    image: /images/materials/Nickel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Lead
+    title: Lead
+    url: /materials/Lead
+    image: /images/materials/Lead.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tin
+    title: Tin
+    url: /materials/Tin
+    image: /images/materials/Tin.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cobalt
+    title: Cobalt
+    url: /materials/Cobalt
+    image: /images/materials/Cobalt.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Chromium
+    title: Chromium
+    url: /materials/Chromium
+    image: /images/materials/Chromium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,6 +224,10 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Alessandro Moretti
@@ -181,116 +372,6 @@ laser_properties:
     thermal_conductivity: 0.8
     thermal_diffusivity: 0.15
     vaporization_temperature: 1200
-domain_linkages:
-  related_materials:
-  - id: Stainless Steel
-    title: Stainless Steel
-    url: /materials/metal/ferrous/Stainless Steel
-    image: /images/materials/metal/ferrous/Stainless Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Concrete
-    title: Concrete
-    url: /materials/masonry/general/Concrete
-    image: /images/materials/masonry/general/Concrete.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum
-    title: Aluminum
-    url: /materials/metal/non-ferrous/Aluminum
-    image: /images/materials/metal/non-ferrous/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Steel
-    title: Steel
-    url: /materials/metal/ferrous/Steel
-    image: /images/materials/metal/ferrous/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cast-iron
-    title: Cast Iron
-    url: /materials/cast-iron
-    image: /images/materials/cast-iron.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Copper
-    title: Copper
-    url: /materials/metal/non-ferrous/Copper
-    image: /images/materials/metal/non-ferrous/Copper.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bronze
-    title: Bronze
-    url: /materials/bronze
-    image: /images/materials/bronze.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Titanium
-    title: Titanium
-    url: /materials/metal/specialty/Titanium
-    image: /images/materials/metal/specialty/Titanium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zinc
-    title: Zinc
-    url: /materials/metal/alloy/Zinc
-    image: /images/materials/metal/alloy/Zinc.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Nickel
-    title: Nickel
-    url: /materials/metal/specialty/Nickel
-    image: /images/materials/metal/specialty/Nickel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Lead
-    title: Lead
-    url: /materials/metal/non-ferrous/Lead
-    image: /images/materials/metal/non-ferrous/Lead.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Tin
-    title: Tin
-    url: /materials/metal/alloy/Tin
-    image: /images/materials/metal/alloy/Tin.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Cobalt
-    title: Cobalt
-    url: /materials/metal/specialty/Cobalt
-    image: /images/materials/metal/specialty/Cobalt.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Chromium
-    title: Chromium
-    url: /materials/metal/specialty/Chromium
-    image: /images/materials/metal/specialty/Chromium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Stainless Steel
 - Concrete

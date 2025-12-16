@@ -1,0 +1,210 @@
+# Material Challenge Taxonomy
+# Standardized challenge IDs for cross-material querying
+# Generated: 2025-12-16
+
+thermal_management:
+  anisotropic_thermal_properties:
+    name: "Anisotropic thermal properties"
+    description: "Directional thermal conductivity causing uneven heating"
+  
+  charring_and_carbonization:
+    name: "Charring and carbonization"
+    description: "Surface degradation through thermal decomposition"
+  
+  crystal_lattice_damage_and_doping_redistribution:
+    name: "Crystal lattice damage and doping redistribution"
+    description: "Semiconductor-specific thermal damage to crystal structure"
+  
+  high_thermal_conductivity_and_heat_spread:
+    name: "High thermal conductivity and heat spread"
+    description: "Rapid heat dissipation causing large heat-affected zones"
+  
+  low_melting_degradation_temperatures:
+    name: "Low melting/degradation temperatures"
+    description: "Material vulnerable to thermal damage at low temperatures"
+  
+  low_thermal_diffusivity:
+    name: "Low thermal diffusivity"
+    description: "Slow heat dissipation causing heat accumulation"
+  
+  low_thermal_diffusivity_and_heat_accumulation:
+    name: "Low thermal diffusivity and heat accumulation"
+    description: "Combined effect of poor heat dissipation"
+  
+  matrix_degradation_and_delamination:
+    name: "Matrix degradation and delamination"
+    description: "Composite material separation under thermal stress"
+  
+  melting_and_heat_affected_zone_formation:
+    name: "Melting and heat-affected zone formation"
+    description: "Substrate melting or microstructural changes"
+  
+  moisture_induced_spalling:
+    name: "Moisture-induced spalling"
+    description: "Surface flaking due to trapped moisture vaporization"
+  
+  moisture_induced_spalling_and_explosive_failure:
+    name: "Moisture-induced spalling and explosive failure"
+    description: "Catastrophic failure from rapid moisture expansion"
+  
+  outgassing_and_fume_generation:
+    name: "Outgassing and fume generation"
+    description: "Release of volatile compounds during heating"
+  
+  rapid_oxidation_and_pyrophoricity:
+    name: "Rapid oxidation and pyrophoricity"
+    description: "Spontaneous ignition risk with reactive metals"
+  
+  slow_thermal_diffusivity:
+    name: "Slow thermal diffusivity"
+    description: "Poor heat dissipation leading to hot spots"
+  
+  thermal_shock_and_catastrophic_failure:
+    name: "Thermal shock and catastrophic failure"
+    description: "Complete structural failure from rapid temperature change"
+  
+  thermal_shock_and_cracking:
+    name: "Thermal shock and cracking"
+    description: "Crack formation from rapid thermal cycling"
+  
+  thermal_shock_and_microcracking:
+    name: "Thermal shock and microcracking"
+    description: "Fine crack network from thermal stress"
+  
+  thermal_stress_and_wafer_cracking:
+    name: "Thermal stress and wafer cracking"
+    description: "Wafer-specific cracking from thermal gradients"
+  
+  variable_thermal_conductivity:
+    name: "Variable thermal conductivity"
+    description: "Non-uniform thermal properties across material"
+  
+  variable_thermal_properties_across_series:
+    name: "Variable thermal properties across series"
+    description: "Different thermal behavior across material variants"
+
+surface_characteristics:
+  coating_and_film_removal:
+    name: "Coating and film removal"
+    description: "Selective removal of thin surface layers"
+  
+  fiber_exposure_and_damage:
+    name: "Fiber exposure and damage"
+    description: "Composite fiber vulnerability during cleaning"
+  
+  grain_direction_sensitivity:
+    name: "Grain direction sensitivity"
+    description: "Different cleaning response based on grain orientation"
+  
+  high_porosity_and_deep_contamination:
+    name: "High porosity and deep contamination"
+    description: "Deep contamination penetration in porous materials"
+  
+  high_reflectivity:
+    name: "High reflectivity"
+    description: "High laser energy reflection requiring increased power"
+  
+  magnetic_property_sensitivity:
+    name: "Magnetic property sensitivity"
+    description: "Risk of altering magnetic properties during processing"
+  
+  mineral_composition_heterogeneity:
+    name: "Mineral composition heterogeneity"
+    description: "Variable response due to mixed mineral composition"
+  
+  native_oxide_layer_removal:
+    name: "Native oxide layer removal"
+    description: "Removal of naturally-formed protective oxide"
+  
+  oxide_layer_formation_and_removal:
+    name: "Oxide layer formation and removal"
+    description: "Managing oxide formation during laser processing"
+  
+  porosity_variation:
+    name: "Porosity variation"
+    description: "Non-uniform porosity affecting cleaning consistency"
+  
+  porous_structure_with_deep_contamination:
+    name: "Porous structure with deep contamination"
+    description: "Deep contamination in open pore networks"
+  
+  surface_contamination_and_particulates:
+    name: "Surface contamination and particulates"
+    description: "Loose particle contamination on surface"
+  
+  surface_defects_and_damage_threshold:
+    name: "Surface defects and damage threshold"
+    description: "Low damage threshold at surface imperfections"
+  
+  surface_defects_and_stress_concentrators:
+    name: "Surface defects and stress concentrators"
+    description: "Crack initiation at existing defects"
+  
+  surface_finish_variability:
+    name: "Surface finish variability"
+    description: "Inconsistent surface finish affecting absorption"
+  
+  surface_finish_variations:
+    name: "Surface finish variations"
+    description: "Variable surface roughness affecting laser response"
+  
+  surface_heterogeneity_and_aggregate_exposure:
+    name: "Surface heterogeneity and aggregate exposure"
+    description: "Mixed surface composition requiring varied parameters"
+  
+  variable_absorption_by_color_and_additives:
+    name: "Variable absorption by color and additives"
+    description: "Different absorption based on colorants and additives"
+  
+  weathering_and_surface_degradation:
+    name: "Weathering and surface degradation"
+    description: "Environmental damage affecting surface integrity"
+
+contamination_challenges:
+  adhesive_and_paint_removal:
+    name: "Adhesive and paint removal"
+    description: "Removal of adhesive bonds and paint coatings"
+  
+  biological_growth_and_deep_staining:
+    name: "Biological growth and deep staining"
+    description: "Organic growth and deep penetrating stains"
+  
+  coating_and_label_removal:
+    name: "Coating and label removal"
+    description: "Removal of surface coatings and labels"
+  
+  coating_and_residue_removal:
+    name: "Coating and residue removal"
+    description: "General coating and residue removal"
+  
+  high_value_material_recovery:
+    name: "High-value material recovery"
+    description: "Contamination removal from expensive materials"
+  
+  oil_and_grease_removal:
+    name: "Oil and grease removal"
+    description: "Removal of organic lubricants and oils"
+  
+  paint_and_coating_removal_from_porous_substrate:
+    name: "Paint and coating removal from porous substrate"
+    description: "Coating removal from absorbent materials"
+  
+  photoresist_and_polymer_residue_removal:
+    name: "Photoresist and polymer residue removal"
+    description: "Semiconductor process residue removal"
+  
+  resin_based_contaminant_removal:
+    name: "Resin-based contaminant removal"
+    description: "Removal of epoxy and resin residues"
+  
+  rust_and_oxide_layer_removal:
+    name: "Rust and oxide layer removal"
+    description: "Iron oxide and general oxide removal"
+  
+  strategic_material_handling_requirements:
+    name: "Strategic material handling requirements"
+    description: "Special handling for rare/strategic materials"
+  
+  varnish_and_coating_removal:
+    name: "Varnish and coating removal"
+    description: "Removal of protective varnish coatings"

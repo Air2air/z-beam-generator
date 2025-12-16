@@ -1,0 +1,487 @@
+# Domain Frontmatter Field Order Specification
+# =============================================================================
+# 
+# PURPOSE: Centralized template defining standard field order for all domains
+# 
+# USAGE:
+#   - Exporters use this to generate frontmatter in correct order
+#   - Validators check frontmatter matches this order
+#   - Documentation references this for field requirements
+# 
+# BENEFITS:
+#   - Consistency across all 424 files
+#   - Easy to maintain field order in one place
+#   - Clear specification for new fields
+#   - Automatic formatting validation
+# 
+# =============================================================================
+
+# =============================================================================
+# MATERIALS DOMAIN
+# =============================================================================
+materials:
+  field_order:
+    # Identity fields
+    - id
+    - name
+    - slug
+    - category
+    - subcategory
+    - content_type
+    - schema_version
+    
+    # Publishing metadata
+    - datePublished
+    - dateModified
+    
+    # Author
+    - author
+    
+    # Voice metadata
+    - _metadata
+    
+    # Page content
+    - title
+    - material_description
+    - breadcrumb
+    
+    # Images
+    - images
+    
+    # Content sections
+    - micro
+    - faq
+    - regulatoryStandards
+    - materialProperties
+    - eeat
+    - material_metadata
+    
+    # Cross-domain relationships
+    - domain_linkages
+    
+    # SEO/Schema.org
+    - serviceOffering
+    
+    # Technical metadata
+    - preservedData
+    - tensile_strength
+    - yield_strength
+    - elastic_modulus
+    - surface_roughness
+    
+    # Material properties (Chemical)
+    - oxidation_resistance
+    - corrosion_resistance
+    - chemical_stability
+    
+    # Laser interaction parameters
+    - ablation_threshold
+    - optimal_wavelength
+    - recommended_fluence_range
+    - recommended_pulse_duration
+    - recommended_repetition_rate
+    - recommended_scan_speed
+    
+    # Safety and handling
+    - safety_considerations
+    - ppe_requirements
+    - ventilation_requirements
+    
+    # Content fields
+    - description
+    - micro
+    - faq
+    
+    # Cross-domain relationships
+    - domain_linkages
+    
+    # Authorship
+    - author
+    
+    # Navigation
+    - breadcrumbs
+    
+    # Metadata
+    - type
+    - domain
+    - last_updated
+  
+  required_fields:
+    - id
+    - name
+    - slug
+    - category
+    - subcategory
+    - content_type
+    - author
+
+# =============================================================================
+# CONTAMINANTS DOMAIN
+# =============================================================================
+contaminants:
+  field_order:
+    # Identity fields
+    - id
+    - name
+    - slug
+    - display_name
+    
+    # Classification
+    - category
+    - subcategory
+    - contamination_type
+    
+    # Physical properties
+    - thickness_range
+    - adhesion_strength
+    - hardness
+    - particle_size_range
+    - density
+    
+    # Optical properties
+    - color
+    - appearance
+    - texture
+    - opacity
+    
+    # Chemical properties
+    - composition
+    - ph_level
+    - solubility
+    - reactivity
+    
+    # Removal characteristics
+    - removal_difficulty
+    - recommended_wavelength
+    - recommended_fluence_range
+    - recommended_pulse_duration
+    - typical_passes_required
+    
+    # Safety considerations
+    - health_hazards
+    - generated_compounds
+    - safety_precautions
+    - ppe_requirements
+    
+    # Content fields
+    - description
+    - micro
+    - faq
+    
+    # Cross-domain relationships
+    - domain_linkages
+    
+    # Authorship
+    - author
+    
+    # Navigation
+    - breadcrumbs
+    
+    # Metadata
+    - type
+    - domain
+    - last_updated
+  
+  required_fields:
+    - id
+    - name
+    - slug
+    - category
+    - subcategory
+    - domain_linkages
+    - author
+    - type
+    - domain
+
+# =============================================================================
+# COMPOUNDS DOMAIN
+# =============================================================================
+compounds:
+  field_order:
+    # Identity fields
+    - id
+    - name
+    - display_name
+    - slug
+    
+    # Chemical identity
+    - chemical_formula
+    - cas_number
+    - molecular_weight
+    
+    # Classification
+    - category
+    - subcategory
+    - hazard_class
+    
+    # Exposure limits
+    - exposure_limits
+    
+    # Health and safety
+    - health_effects_keywords
+    - monitoring_required
+    - typical_concentration_range
+    - sources_in_laser_cleaning
+    
+    # Content fields
+    - description
+    - health_effects
+    - exposure_guidelines
+    - detection_methods
+    - first_aid
+    
+    # Cross-domain relationships
+    - domain_linkages
+    
+    # Authorship
+    - author
+    
+    # Navigation
+    - breadcrumbs
+    
+    # Metadata
+    - type
+    - domain
+    - last_updated
+  
+  required_fields:
+    - id
+    - name
+    - slug
+    - chemical_formula
+    - category
+    - subcategory
+    - domain_linkages
+    - author
+    - type
+    - domain
+
+# =============================================================================
+# SETTINGS DOMAIN
+# =============================================================================
+settings:
+  field_order:
+    # Identity fields
+    - id
+    - name
+    - slug
+    - display_name
+    
+    # Classification
+    - category
+    - subcategory
+    - application_type
+    
+    # Laser parameters
+    - wavelength
+    - pulse_duration
+    - repetition_rate
+    - fluence
+    - spot_size
+    - scan_speed
+    - pulse_energy
+    - average_power
+    
+    # System configuration
+    - beam_profile
+    - focal_length
+    - working_distance
+    - assist_gas
+    - assist_gas_pressure
+    
+    # Process parameters
+    - number_of_passes
+    - overlap_percentage
+    - scanning_pattern
+    
+    # Quality metrics
+    - expected_removal_rate
+    - surface_finish
+    - process_efficiency
+    
+    # Content fields
+    - description
+    - micro
+    - faq
+    
+    # Cross-domain relationships
+    - domain_linkages
+    
+    # Authorship
+    - author
+    
+    # Navigation
+    - breadcrumbs
+    
+    # Metadata
+    - type
+    - domain
+    - last_updated
+  
+  required_fields:
+    - id
+    - name
+    - slug
+    - category
+    - subcategory
+    - wavelength
+    - domain_linkages
+    - author
+    - type
+    - domain
+
+# =============================================================================
+# COMMON NESTED STRUCTURES
+# =============================================================================
+
+# Exposure Limits Structure (Compounds)
+exposure_limits_structure:
+  - osha_pel_ppm
+  - osha_pel_mg_m3
+  - niosh_rel_ppm
+  - niosh_rel_mg_m3
+  - acgih_tlv_ppm
+  - acgih_tlv_mg_m3
+
+# Domain Linkages Structure (All Domains)
+domain_linkages_structure:
+  materials:
+    - related_contaminants
+    - related_compounds
+    - related_settings
+  
+  contaminants:
+    - related_materials
+    - produces_compounds
+    - recommended_settings
+  
+  compounds:
+    - produced_by_contaminants
+    - related_materials
+  
+  settings:
+    - suitable_materials
+    - effective_contaminants
+
+# Link Item Structure (All domain_linkages)
+link_item_structure:
+  - id
+  - title
+  - url
+  - image
+  - frequency  # or other context-specific fields
+  - severity
+  - typical_context
+
+# Author Structure (All Domains)
+author_structure:
+  - id
+  - name
+  - country
+  - country_display
+  - title
+  - sex
+  - jobTitle
+  - expertise
+  - affiliation
+  - credentials
+  - languages
+  - email
+  - image
+  - imageAlt
+  - url
+  - sameAs
+  - persona_file
+  - formatting_file
+
+# Affiliation Structure (nested in author)
+affiliation_structure:
+  - name
+  - type
+
+# Breadcrumbs Structure (All Domains)
+breadcrumb_item_structure:
+  - label
+  - url
+
+# =============================================================================
+# FIELD TYPE SPECIFICATIONS
+# =============================================================================
+
+field_types:
+  # String fields
+  string_fields:
+    - id
+    - name
+    - slug
+    - display_name
+    - category
+    - subcategory
+    - description
+    - micro
+    - type
+    - domain
+    - chemical_formula
+    - cas_number
+  
+  # Numeric fields
+  numeric_fields:
+    - density
+    - melting_point
+    - thermal_conductivity
+    - molecular_weight
+    - wavelength
+    - fluence
+    - repetition_rate
+  
+  # Boolean fields
+  boolean_fields:
+    - monitoring_required
+  
+  # List fields
+  list_fields:
+    - health_effects_keywords
+    - sources_in_laser_cleaning
+    - expertise
+    - credentials
+    - languages
+    - breadcrumbs
+  
+  # Object fields
+  object_fields:
+    - exposure_limits
+    - domain_linkages
+    - author
+    - affiliation
+  
+  # Nullable fields (can be null)
+  nullable_fields:
+    - display_name
+    - scientific_name
+    - description
+    - micro
+    - faq
+    - last_updated
+
+# =============================================================================
+# VALIDATION RULES
+# =============================================================================
+
+validation:
+  # Field naming conventions
+  naming_conventions:
+    use_snake_case: true
+    no_abbreviations: true  # Except standard ones (id, url, etc.)
+    descriptive_names: true
+  
+  # Value conventions
+  value_conventions:
+    boolean_lowercase: true  # true/false not True/False
+    null_lowercase: true     # null not None or NULL
+    consistent_units: true   # Document units in field names
+  
+  # Structure conventions
+  structure_conventions:
+    alphabetical_lists: false  # Lists maintain semantic order
+    nested_object_order: true  # Follow nested structure specs
+    consistent_indentation: true  # 2-space YAML indentation

@@ -1,13 +1,48 @@
-name: Fiberglass
-slug: fiberglass
 id: fiberglass-settings
+name: fiberglass-laser-cleaning
+slug: fiberglass-settings
 category: composite
 subcategory: fiber-reinforced
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_contaminants:
+  - id: aviation-sealant
+    title: Aviation Sealant
+    url: /contaminants/aviation-sealant
+    image: /images/contaminants/aviation-sealant.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: epoxy-residue
+    title: Epoxy Residue
+    url: /contaminants/epoxy-residue
+    image: /images/contaminants/epoxy-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: soap-scum
+    title: Soap Scum
+    url: /contaminants/soap-scum
+    image: /images/contaminants/soap-scum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/carbon-monoxide
+    image: /images/compounds/carbon-monoxide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of epoxy resins
+    exposure_risk: moderate
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/formaldehyde
+    image: /images/compounds/formaldehyde.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Thermal degradation of certain epoxy formulations
+    exposure_risk: low
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,31 +71,13 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
-title: Fiberglass Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: fiberglass-laser-cleaning Laser Cleaning Settings
 settings_description: When laser cleaning fiberglass, I've found that starting with a gentle scan speed helps the process go smoothly. This composite material holds up well because of its strong, lightweight fibers that resist corrosion in tough environments like marine or aerospace settings. But watch out midway—its poor heat spread can cause localized damage if you push too hard, so adjust to multiple light passes instead of one heavy go. Tends to clean contaminants without scratching the surface when you keep the energy low and overlap spots just right. This way, you preserve its flexibility for applications in wind energy or construction.
-domain_linkages:
-  related_contaminants:
-  - id: aviation-sealant
-    title: Aerospace Sealant Residue
-    url: /contaminants/organic-residue/adhesive/aviation-sealant
-    image: /images/contaminants/organic-residue/adhesive/aviation-sealant.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: epoxy-residue
-    title: Epoxy Resin Deposits
-    url: /contaminants/organic-residue/adhesive/epoxy-residue
-    image: /images/contaminants/organic-residue/adhesive/epoxy-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: soap-scum
-    title: Soap Scum Buildup
-    url: /contaminants/organic-residue/cleaning-agent/soap-scum
-    image: /images/contaminants/organic-residue/cleaning-agent/soap-scum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -70,8 +87,8 @@ breadcrumb:
   href: /materials/composite
 - label: Fiber Reinforced
   href: /materials/composite/fiber-reinforced
-- label: Fiberglass
-  href: /materials/fiberglass
+- label: fiberglass-laser-cleaning
+  href: /materials/fiberglass-settings
 images:
   hero:
     alt: Fiberglass surface undergoing laser cleaning showing precise contamination removal
@@ -79,55 +96,7 @@ images:
   micro:
     alt: Fiberglass microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/fiberglass-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    unit: μs
-    value: 100
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.18
@@ -163,6 +132,7 @@ material_challenges:
     - Reduce power by 40-50% compared to monolithic materials
     - Monitor for discoloration, bubbling, or layer lifting
     - Ceramic and metal-matrix composites tolerate higher power
+    challenge_id: matrix_degradation_and_delamination
   - challenge: Anisotropic thermal properties
     severity: high
     property_value: 10-100x variation parallel vs perpendicular to fibers
@@ -172,6 +142,7 @@ material_challenges:
     - Use crosshatch pattern (0° and 90°) to identify fiber orientation
     - Increase cooling time 2-3x when scanning perpendicular to fibers
     - Carbon fiber composites require special attention due to electrical conductivity
+    challenge_id: anisotropic_thermal_properties
   surface_characteristics:
   - challenge: Fiber exposure and damage
     severity: high
@@ -181,6 +152,7 @@ material_challenges:
     - Multiple gentle passes preferred over single aggressive pass
     - Stop immediately if fibers become visible
     - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
+    challenge_id: fiber_exposure_and_damage
   - challenge: Surface finish variability
     severity: medium
     impact: Gel coat, paint, or protective layers alter absorption and damage threshold
@@ -189,6 +161,7 @@ material_challenges:
     - Coated surfaces may require 50-100W initial pass for coating removal
     - Bare composite requires 30-50% lower power
     - Adjust parameters when transitioning between coated and uncoated areas
+    challenge_id: surface_finish_variability
   contamination_challenges:
   - challenge: Resin-based contaminant removal
     severity: medium
@@ -198,6 +171,7 @@ material_challenges:
     - Second pass 50W slow (800 mm/s) for residue
     - Chemical pre-treatment improves results for stubborn adhesives
     - Monitor for matrix damage; stop if surface texture changes
+    challenge_id: resin_based_contaminant_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:40.351046'
+    generated_date: '2025-12-16T13:51:20.139829'

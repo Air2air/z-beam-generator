@@ -1,12 +1,45 @@
+id: pcb-contamination
 name: PCB Oil Contamination
 slug: pcb-contamination
-id: pcb-contamination
 category: chemical-residue
 subcategory: industrial
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/steel
+    image: /images/materials/steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: concrete-laser-cleaning
+    title: Concrete
+    url: /materials/concrete
+    image: /images/materials/concrete.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Steel
+    title: Steel
+    url: /materials/Steel
+    image: /images/materials/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Concrete
+    title: Concrete
+    url: /materials/Concrete
+    image: /images/materials/Concrete.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: transformer-housings
+    title: Transformer Housings
+    url: /materials/transformer-housings
+    image: /images/materials/transformer-housings.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,6 +69,10 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -192,32 +229,6 @@ laser_properties:
     thermal_conductivity: 0.15
     thermal_diffusivity: 0.08
     vaporization_temperature: 500
-domain_linkages:
-  related_materials:
-  - id: Steel
-    title: Steel
-    url: /materials/metal/ferrous/Steel
-    image: /images/materials/metal/ferrous/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Concrete
-    title: Concrete
-    url: /materials/masonry/general/Concrete
-    image: /images/materials/masonry/general/Concrete.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: transformer-housings
-    title: Transformer Housings
-    url: /materials/transformer-housings
-    image: /images/materials/transformer-housings.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Steel
 - Concrete

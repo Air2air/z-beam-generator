@@ -1,12 +1,225 @@
+id: chemical-stains-contamination
 name: Chemical Stains / Acid Etching
 slug: chemical-stains-contamination
-id: chemical-stains-contamination
 category: chemical-residue
 subcategory: industrial
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+micro:
+  after: Post-cleaning reveals restored surface with chemical stains / acid etching
+    successfully removed through precise laser ablation.
+  before: Surface shows contamination from chemical stains / acid etching affecting
+    material appearance and properties.
+domain_linkages:
+  related_materials:
+  - id: Concrete
+    title: Concrete
+    url: /materials/Concrete
+    image: /images/materials/Concrete.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/Aluminum
+    image: /images/materials/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Steel
+    title: Steel
+    url: /materials/Steel
+    image: /images/materials/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/Stainless Steel
+    image: /images/materials/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cast-iron
+    title: Cast Iron
+    url: /materials/cast-iron
+    image: /images/materials/cast-iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Copper
+    title: Copper
+    url: /materials/Copper
+    image: /images/materials/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bronze
+    title: Bronze
+    url: /materials/bronze
+    image: /images/materials/bronze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Titanium
+    title: Titanium
+    url: /materials/Titanium
+    image: /images/materials/Titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zinc
+    title: Zinc
+    url: /materials/Zinc
+    image: /images/materials/Zinc.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Nickel
+    title: Nickel
+    url: /materials/Nickel
+    image: /images/materials/Nickel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Lead
+    title: Lead
+    url: /materials/Lead
+    image: /images/materials/Lead.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tin
+    title: Tin
+    url: /materials/Tin
+    image: /images/materials/Tin.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cobalt
+    title: Cobalt
+    url: /materials/Cobalt
+    image: /images/materials/Cobalt.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Chromium
+    title: Chromium
+    url: /materials/Chromium
+    image: /images/materials/Chromium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: abs
+    title: Abs
+    url: /materials/abs
+    image: /images/materials/abs.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Acrylic (PMMA)
+    title: Acrylic (Pmma)
+    url: /materials/Acrylic (PMMA)
+    image: /images/materials/Acrylic (PMMA).jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Polycarbonate
+    title: Polycarbonate
+    url: /materials/Polycarbonate
+    image: /images/materials/Polycarbonate.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: PET
+    title: Pet
+    url: /materials/PET
+    image: /images/materials/PET.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Polypropylene
+    title: Polypropylene
+    url: /materials/Polypropylene
+    image: /images/materials/Polypropylene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pvc
+    title: Pvc
+    url: /materials/pvc
+    image: /images/materials/pvc.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Nylon
+    title: Nylon
+    url: /materials/Nylon
+    image: /images/materials/Nylon.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: ptfe
+    title: Ptfe
+    url: /materials/ptfe
+    image: /images/materials/ptfe.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Alumina
+    title: Alumina
+    url: /materials/Alumina
+    image: /images/materials/Alumina.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicon-carbide
+    title: Silicon Carbide
+    url: /materials/silicon-carbide
+    image: /images/materials/silicon-carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zirconia
+    title: Zirconia
+    url: /materials/Zirconia
+    image: /images/materials/Zirconia.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum Nitride
+    title: Aluminum Nitride
+    url: /materials/Aluminum Nitride
+    image: /images/materials/Aluminum Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Carbide
+    title: Boron Carbide
+    url: /materials/Boron Carbide
+    image: /images/materials/Boron Carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Nitride
+    title: Boron Nitride
+    url: /materials/Boron Nitride
+    image: /images/materials/Boron Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Silicon Nitride
+    title: Silicon Nitride
+    url: /materials/Silicon Nitride
+    image: /images/materials/Silicon Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,6 +250,10 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -67,11 +284,6 @@ images:
   micro:
     url: /images/contaminants/chemical-stains-contamination-micro.jpg
     alt: Chemical Stains / Acid Etching contamination microscopic detail
-micro:
-  after: Post-cleaning reveals restored surface with chemical stains / acid etching
-    successfully removed through precise laser ablation.
-  before: Surface shows contamination from chemical stains / acid etching affecting
-    material appearance and properties.
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -198,233 +410,6 @@ eeat:
     name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/publication/3587
   reviewedBy: Z-Beam Quality Assurance Team
-domain_linkages:
-  related_materials:
-  - id: Concrete
-    title: Concrete
-    url: /materials/masonry/general/Concrete
-    image: /images/materials/masonry/general/Concrete.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum
-    title: Aluminum
-    url: /materials/metal/non-ferrous/Aluminum
-    image: /images/materials/metal/non-ferrous/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Steel
-    title: Steel
-    url: /materials/metal/ferrous/Steel
-    image: /images/materials/metal/ferrous/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
-    title: Stainless Steel
-    url: /materials/metal/ferrous/Stainless Steel
-    image: /images/materials/metal/ferrous/Stainless Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cast-iron
-    title: Cast Iron
-    url: /materials/cast-iron
-    image: /images/materials/cast-iron.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Copper
-    title: Copper
-    url: /materials/metal/non-ferrous/Copper
-    image: /images/materials/metal/non-ferrous/Copper.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bronze
-    title: Bronze
-    url: /materials/bronze
-    image: /images/materials/bronze.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Titanium
-    title: Titanium
-    url: /materials/metal/specialty/Titanium
-    image: /images/materials/metal/specialty/Titanium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zinc
-    title: Zinc
-    url: /materials/metal/alloy/Zinc
-    image: /images/materials/metal/alloy/Zinc.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Nickel
-    title: Nickel
-    url: /materials/metal/specialty/Nickel
-    image: /images/materials/metal/specialty/Nickel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Lead
-    title: Lead
-    url: /materials/metal/non-ferrous/Lead
-    image: /images/materials/metal/non-ferrous/Lead.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Tin
-    title: Tin
-    url: /materials/metal/alloy/Tin
-    image: /images/materials/metal/alloy/Tin.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Cobalt
-    title: Cobalt
-    url: /materials/metal/specialty/Cobalt
-    image: /images/materials/metal/specialty/Cobalt.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Chromium
-    title: Chromium
-    url: /materials/metal/specialty/Chromium
-    image: /images/materials/metal/specialty/Chromium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: abs
-    title: ABS
-    url: /materials/abs
-    image: /images/materials/abs.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Acrylic (PMMA)
-    title: Acrylic (PMMA)
-    url: /materials/plastic/thermoplastic/Acrylic (PMMA)
-    image: /images/materials/plastic/thermoplastic/Acrylic (PMMA).jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Polycarbonate
-    title: Polycarbonate
-    url: /materials/plastic/thermoplastic/Polycarbonate
-    image: /images/materials/plastic/thermoplastic/Polycarbonate.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: PET
-    title: PET
-    url: /materials/plastic/thermoplastic/PET
-    image: /images/materials/plastic/thermoplastic/PET.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Polypropylene
-    title: Polypropylene
-    url: /materials/plastic/thermoplastic/Polypropylene
-    image: /images/materials/plastic/thermoplastic/Polypropylene.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pvc
-    title: PVC
-    url: /materials/pvc
-    image: /images/materials/pvc.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Nylon
-    title: Nylon
-    url: /materials/plastic/thermoplastic/Nylon
-    image: /images/materials/plastic/thermoplastic/Nylon.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: ptfe
-    title: PTFE
-    url: /materials/ptfe
-    image: /images/materials/ptfe.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Alumina
-    title: Alumina
-    url: /materials/ceramic/oxide/Alumina
-    image: /images/materials/ceramic/oxide/Alumina.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicon-carbide
-    title: Silicon Carbide
-    url: /materials/silicon-carbide
-    image: /images/materials/silicon-carbide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zirconia
-    title: Zirconia
-    url: /materials/ceramic/oxide/Zirconia
-    image: /images/materials/ceramic/oxide/Zirconia.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum Nitride
-    title: Aluminum Nitride
-    url: /materials/ceramic/technical/Aluminum Nitride
-    image: /images/materials/ceramic/technical/Aluminum Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Boron Carbide
-    title: Boron Carbide
-    url: /materials/ceramic/carbide/Boron Carbide
-    image: /images/materials/ceramic/carbide/Boron Carbide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Boron Nitride
-    title: Boron Nitride
-    url: /materials/ceramic/technical/Boron Nitride
-    image: /images/materials/ceramic/technical/Boron Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Silicon Nitride
-    title: Silicon Nitride
-    url: /materials/ceramic/oxide/Silicon Nitride
-    image: /images/materials/ceramic/oxide/Silicon Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance:
-  - id: iec-60825
-    title: IEC 60825
-    url: ''
-    image: /images/standards/generic-logo.svg
-    applicability: laser_operation
-    requirement: IEC 60825 - Safety of Laser Products
-  - id: osha-29
-    title: OSHA 29
-    url: ''
-    image: /images/standards/generic-logo.svg
-    applicability: laser_operation
-    requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  ppe_requirements: []
 valid_materials:
 - Concrete
 - Aluminum

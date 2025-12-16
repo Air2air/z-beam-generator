@@ -1,12 +1,12 @@
-name: Gorilla Glass
-slug: gorilla-glass
 id: gorilla-glass-laser-cleaning
+name: gorilla-glass-laser-cleaning
+slug: gorilla-glass-laser-cleaning
 category: glass
 subcategory: soda-lime
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: null
-dateModified: null
+datePublished: '2025-12-16T13:59:42Z'
+dateModified: '2025-12-16T13:59:42Z'
 author:
   id: 4
   name: Todd Dunning
@@ -28,7 +28,8 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -42,7 +43,10 @@ _metadata:
     voice_applied: true
     content_type: material
 title: Gorilla Glass Laser Cleaning
-material_description: When laser cleaning Gorilla Glass, start by setting the power low to avoid any risk of micro-cracks from its high thermal sensitivity, then gradually increase as its inherent toughness removes contaminants without compromising the surface integrity I've seen hold up in repeated electronics repairs.
+material_description: When laser cleaning Gorilla Glass, start by setting the power
+  low to avoid any risk of micro-cracks from its high thermal sensitivity, then gradually
+  increase as its inherent toughness removes contaminants without compromising the
+  surface integrity I've seen hold up in repeated electronics repairs.
 breadcrumb:
 - label: Home
   href: /
@@ -56,35 +60,88 @@ breadcrumb:
   href: /materials/glass/soda-lime/gorilla-glass
 images:
   hero:
-    alt: Gorilla Glass surface undergoing laser cleaning showing precise contamination removal
+    alt: Gorilla Glass surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/gorilla-glass-laser-cleaning-hero.jpg
   micro:
-    alt: Gorilla Glass microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Gorilla Glass microscopic view of laser cleaning showing detailed precise
+      contamination removal
     url: /images/material/gorilla-glass-laser-cleaning-micro.jpg
 micro:
-  before: The contaminated surface reveals scattered patches of grime and dust that cling unevenly. Oily residues form irregular blobs, obscuring the glass's natural texture beneath. Fine debris particles dot the area, creating a mottled and rough overall look.
-  after: Laser treatment exposes a smooth expanse free of grime and clinging residues. The glass surface now gleams with uniform clarity, revealing its inherent polish. Subtle textures emerge cleanly, without any mottled spots or rough interruptions.
+  before: The contaminated surface reveals scattered patches of grime and dust that
+    cling unevenly. Oily residues form irregular blobs, obscuring the glass's natural
+    texture beneath. Fine debris particles dot the area, creating a mottled and rough
+    overall look.
+  after: Laser treatment exposes a smooth expanse free of grime and clinging residues.
+    The glass surface now gleams with uniform clarity, revealing its inherent polish.
+    Subtle textures emerge cleanly, without any mottled spots or rough interruptions.
 faq:
-- question: Can you use a laser to clean Gorilla Glass without damaging the **oleophobic coating**?
-  answer: '**Low fluence preserves coating**. Yes, laser cleaning of Gorilla Glass is feasible while pretty much preserving its oleophobic coating. The key is basically using a carefully controlled 1064 nm wavelength with fluence below ~2.5 J/cm². This approach selectively removes contaminants without the thermal accumulation that degrades the delicate surface treatment.'
-- question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning contaminants from Gorilla Glass without **causing micro-fractures**?
-  answer: '**1064nm minimizes thermal stress**. For Gorilla Glass, a 1064nm wavelength is typically optimal. It provides pretty sufficient absorption by most contaminants while transmitting through the glass matrix, minimizing heat buildup in the chemically strengthened layer. Maintain fluence below 2.5 J/cm² with a 50µm spot size to ablate residues without inducing micro-fractures from thermal stress.'
-- question: How does the ion-exchange process and resulting **compressive stress layer** in Gorilla Glass affect its susceptibility to laser-induced damage?
-  answer: '**Exceeds threshold releasing compressive energy**. The ion-exchange process builds a pretty deep compressive layer, but pushing past the 2.5 J/cm² fluence threshold can locally overcome this stress. That typically sparks pinpoint failures, as the stored compressive energy gets basically unleashed in a catastrophic burst, undermining the glass''s structural integrity.'
-- question: What are the safe operating parameters (fluence, pulse width, repetition rate) for laser cleaning Gorilla Glass on consumer electronics like smartphones?
-  answer: For Gorilla Glass, kick off with a 1064 nm wavelength and a pretty conservative fluence below 2.5 J/cm². Typically, go for a 10 ns pulse width and 100 kHz repetition rate, but validate those settings on scrap parts first to avoid surface damage.
-- question: After laser cleaning, is there a change in the surface roughness or **optical clarity** of Gorilla Glass that could affect touch sensitivity or display quality?
-  answer: '**Maintains optical clarity below threshold**. When cleaned properly below the 2.5 J/cm² threshold, Gorilla Glass typically retains its optical clarity. We confirm this by assessing surface topology and haze, ensuring laser-induced micromelting causes no change to touch sensitivity.'
-- question: Can laser cleaning be used to **selectively remove hard coatings** (like anti-glare or anti-fingerprint) from Gorilla Glass without damaging the substrate?
-  answer: '**fluence below 2.5 J/cm²**. Yes, basically, with precise 1064 nm laser parameters, you can ablate these coatings. The key is maintaining fluence below 2.5 J/cm² to typically remove the polymer layers without affecting the ion-exchanged glass substrate.'
-- question: What specific safety hazards are associated with laser cleaning Gorilla Glass, such as toxic fumes from ablated coatings or **glass particulates**?
-  answer: '**Generates silica nanoparticles and fumes**. Laser cleaning of Gorilla Glass at 1064 nm typically generates hazardous silica nanoparticles and toxic metal fumes from coatings. Proper fume extraction is mandatory, and I''d basically recommend a fully enclosed Class 1 laser system with appropriate respiratory PPE to mitigate these inhalation risks.'
-- question: How do you verify the effectiveness of laser cleaning on Gorilla Glass? What non-destructive testing methods are suitable?
-  answer: We typically verify cleaning effectiveness with high-magnification microscopy to inspect for micro-fractures and spectrophotometry to ensure optical performance. But visual inspection alone is basically insufficient, since it overlooks subsurface damage from fluence exceeding 2.5 J/cm².
-- question: Is laser cleaning a viable method for **removing scratches** from Gorilla Glass, or does it primarily target surface contaminants?
-  answer: '**Ablation enlarges defects**. Laser cleaning basically relies on ablation at around 2.5 J/cm², making it fairly ideal for stripping away surface contaminants. But with a scratch, the process would just etch the whole surface, worsening the defect instead of mending it. This method essentially removes material and can''t fill or polish out those flaws.'
-- question: For laser cleaning systems, what type of beam delivery (galvo scanner, fixed optic) and spot size are recommended for treating the **curved edges** of Gorilla Glass?
-  answer: '**Galvo scanner dynamic focus**. For Gorilla Glass edges, a galvo scanner with dynamic focus is typically essential. This setup basically maintains the required 2.5 J/cm² fluence across complex 2.5D contours by adjusting the focal plane continuously. A 50 µm spot size delivers the precision to clean curved surfaces effectively, without inducing thermal stress.'
+- question: Can you use a laser to clean Gorilla Glass without damaging the **oleophobic
+    coating**?
+  answer: '**Low fluence preserves coating**. Yes, laser cleaning of Gorilla Glass
+    is feasible while pretty much preserving its oleophobic coating. The key is basically
+    using a carefully controlled 1064 nm wavelength with fluence below ~2.5 J/cm².
+    This approach selectively removes contaminants without the thermal accumulation
+    that degrades the delicate surface treatment.'
+- question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning contaminants
+    from Gorilla Glass without **causing micro-fractures**?
+  answer: '**1064nm minimizes thermal stress**. For Gorilla Glass, a 1064nm wavelength
+    is typically optimal. It provides pretty sufficient absorption by most contaminants
+    while transmitting through the glass matrix, minimizing heat buildup in the chemically
+    strengthened layer. Maintain fluence below 2.5 J/cm² with a 50µm spot size to
+    ablate residues without inducing micro-fractures from thermal stress.'
+- question: How does the ion-exchange process and resulting **compressive stress layer**
+    in Gorilla Glass affect its susceptibility to laser-induced damage?
+  answer: '**Exceeds threshold releasing compressive energy**. The ion-exchange process
+    builds a pretty deep compressive layer, but pushing past the 2.5 J/cm² fluence
+    threshold can locally overcome this stress. That typically sparks pinpoint failures,
+    as the stored compressive energy gets basically unleashed in a catastrophic burst,
+    undermining the glass''s structural integrity.'
+- question: What are the safe operating parameters (fluence, pulse width, repetition
+    rate) for laser cleaning Gorilla Glass on consumer electronics like smartphones?
+  answer: For Gorilla Glass, kick off with a 1064 nm wavelength and a pretty conservative
+    fluence below 2.5 J/cm². Typically, go for a 10 ns pulse width and 100 kHz repetition
+    rate, but validate those settings on scrap parts first to avoid surface damage.
+- question: After laser cleaning, is there a change in the surface roughness or **optical
+    clarity** of Gorilla Glass that could affect touch sensitivity or display quality?
+  answer: '**Maintains optical clarity below threshold**. When cleaned properly below
+    the 2.5 J/cm² threshold, Gorilla Glass typically retains its optical clarity.
+    We confirm this by assessing surface topology and haze, ensuring laser-induced
+    micromelting causes no change to touch sensitivity.'
+- question: Can laser cleaning be used to **selectively remove hard coatings** (like
+    anti-glare or anti-fingerprint) from Gorilla Glass without damaging the substrate?
+  answer: '**fluence below 2.5 J/cm²**. Yes, basically, with precise 1064 nm laser
+    parameters, you can ablate these coatings. The key is maintaining fluence below
+    2.5 J/cm² to typically remove the polymer layers without affecting the ion-exchanged
+    glass substrate.'
+- question: What specific safety hazards are associated with laser cleaning Gorilla
+    Glass, such as toxic fumes from ablated coatings or **glass particulates**?
+  answer: '**Generates silica nanoparticles and fumes**. Laser cleaning of Gorilla
+    Glass at 1064 nm typically generates hazardous silica nanoparticles and toxic
+    metal fumes from coatings. Proper fume extraction is mandatory, and I''d basically
+    recommend a fully enclosed Class 1 laser system with appropriate respiratory PPE
+    to mitigate these inhalation risks.'
+- question: How do you verify the effectiveness of laser cleaning on Gorilla Glass?
+    What non-destructive testing methods are suitable?
+  answer: We typically verify cleaning effectiveness with high-magnification microscopy
+    to inspect for micro-fractures and spectrophotometry to ensure optical performance.
+    But visual inspection alone is basically insufficient, since it overlooks subsurface
+    damage from fluence exceeding 2.5 J/cm².
+- question: Is laser cleaning a viable method for **removing scratches** from Gorilla
+    Glass, or does it primarily target surface contaminants?
+  answer: '**Ablation enlarges defects**. Laser cleaning basically relies on ablation
+    at around 2.5 J/cm², making it fairly ideal for stripping away surface contaminants.
+    But with a scratch, the process would just etch the whole surface, worsening the
+    defect instead of mending it. This method essentially removes material and can''t
+    fill or polish out those flaws.'
+- question: For laser cleaning systems, what type of beam delivery (galvo scanner,
+    fixed optic) and spot size are recommended for treating the **curved edges** of
+    Gorilla Glass?
+  answer: '**Galvo scanner dynamic focus**. For Gorilla Glass edges, a galvo scanner
+    with dynamic focus is typically essential. This setup basically maintains the
+    required 2.5 J/cm² fluence across complex 2.5D contours by adjusting the focal
+    plane continuously. A 50 µm spot size delivers the precision to clean curved surfaces
+    effectively, without inducing thermal stress.'
 regulatoryStandards:
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
@@ -109,7 +166,7 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 40.0
+    percentage: 60.0
     electricalResistivity:
       value: 1e+12
       unit: ohm m
@@ -176,60 +233,14 @@ materialProperties:
       source: scientific_literature
       source_type: journal_article
       source_name: Optical Materials Express
-      citation: 'Liu, Y. et al., Laser-induced damage threshold of ion-exchanged aluminosilicate glasses including Gorilla Glass, Optical Materials Express, 2016, DOI: 10.1364/OME.6.002345'
-      context: Gorilla Glass 3 (chemically strengthened aluminosilicate, ~0.7 mm thickness), 25°C, 10 ns pulse duration, 1064 nm wavelength, single-shot fluence measurement
+      citation: 'Liu, Y. et al., Laser-induced damage threshold of ion-exchanged aluminosilicate
+        glasses including Gorilla Glass, Optical Materials Express, 2016, DOI: 10.1364/OME.6.002345'
+      context: Gorilla Glass 3 (chemically strengthened aluminosilicate, ~0.7 mm thickness),
+        25°C, 10 ns pulse duration, 1064 nm wavelength, single-shot fluence measurement
       researched_date: '2025-11-24T11:59:28.712703'
       needs_validation: true
       min: 2.4
       max: 15.6
-    thermalDestruction:
-      value: 1743
-      unit: K
-      source: ai_research
-      min: 638
-      max: 2426
-    specificHeat:
-      value: 840
-      unit: J/(kg·K)
-      source: ai_research
-      min: 120
-      max: 900
-    laserReflectivity:
-      value: 0.04
-      unit: ''
-      source: ai_research
-      min: 0.03
-      max: 3.8
-    thermalConductivity:
-      value: 1.1
-      unit: W/m·K
-      source: ai_research
-      min: 0.77
-      max: 36.7
-    thermalExpansion:
-      value: 9e-06
-      unit: K^{-1}
-      source: ai_research
-      min: 1e-06
-      max: 9.7
-    laserAbsorption:
-      value: 10.5
-      unit: m^{-1}
-      source: ai_research
-      min: 0.01
-      max: 73500
-    thermalDiffusivity:
-      value: '5.8e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 1e-05
-    ablationThreshold:
-      value: 3.2
-      unit: J/cm²
-      source: ai_research
-      min: 0.64
-      max: 13.1
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -339,117 +350,230 @@ material_metadata:
 domain_linkages:
   related_contaminants:
   - id: adhesive-residue
-    title: Adhesive Residue / Tape Marks
-    url: /contaminants/organic-residue/adhesive/adhesive-residue
-    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    title: Adhesive Residue
+    url: /contaminants/adhesive-residue
+    image: /images/contaminants/adhesive-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: biological-stains
-    title: Organic Biofilm Deposits
-    url: /contaminants/biological/deposit/biological-stains
-    image: /images/contaminants/biological/deposit/biological-stains.jpg
+    title: Biological Stains
+    url: /contaminants/biological-stains
+    image: /images/contaminants/biological-stains.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: blood-residue
-    title: Biological Blood Residue
-    url: /contaminants/biological/deposit/blood-residue
-    image: /images/contaminants/biological/deposit/blood-residue.jpg
+    title: Blood Residue
+    url: /contaminants/blood-residue
+    image: /images/contaminants/blood-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: insect-residue
-    title: Insect Impact Residue
-    url: /contaminants/biological/deposit/insect-residue
-    image: /images/contaminants/biological/deposit/insect-residue.jpg
+    title: Insect Residue
+    url: /contaminants/insect-residue
+    image: /images/contaminants/insect-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: lime-scale
-    title: Limescale Deposits
-    url: /contaminants/thermal-damage/scale/lime-scale
-    image: /images/contaminants/thermal-damage/scale/lime-scale.jpg
+    title: Lime Scale
+    url: /contaminants/lime-scale
+    image: /images/contaminants/lime-scale.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: medical-disinfectant
-    title: Medical Disinfectant Residue
-    url: /contaminants/chemical-residue/industrial/medical-disinfectant
-    image: /images/contaminants/chemical-residue/industrial/medical-disinfectant.jpg
+    title: Medical Disinfectant
+    url: /contaminants/medical-disinfectant
+    image: /images/contaminants/medical-disinfectant.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: mineral-deposits
-    title: Hard Water Mineral Scale
-    url: /contaminants/thermal-damage/scale/mineral-deposits
-    image: /images/contaminants/thermal-damage/scale/mineral-deposits.jpg
+    title: Mineral Deposits
+    url: /contaminants/mineral-deposits
+    image: /images/contaminants/mineral-deposits.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: pesticide-residue
-    title: Pesticide Chemical Residue
-    url: /contaminants/chemical-residue/industrial/pesticide-residue
-    image: /images/contaminants/chemical-residue/industrial/pesticide-residue.jpg
+    title: Pesticide Residue
+    url: /contaminants/pesticide-residue
+    image: /images/contaminants/pesticide-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: pharmaceutical-residue
-    title: Pharmaceutical Drug Residue
-    url: /contaminants/chemical-residue/industrial/pharmaceutical-residue
-    image: /images/contaminants/chemical-residue/industrial/pharmaceutical-residue.jpg
+    title: Pharmaceutical Residue
+    url: /contaminants/pharmaceutical-residue
+    image: /images/contaminants/pharmaceutical-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: plastic-residue
-    title: Degraded Polymer Deposits
-    url: /contaminants/organic-residue/polymer/plastic-residue
-    image: /images/contaminants/organic-residue/polymer/plastic-residue.jpg
+    title: Plastic Residue
+    url: /contaminants/plastic-residue
+    image: /images/contaminants/plastic-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: pollen-deposit
-    title: Pollen Accumulation
-    url: /contaminants/biological/deposit/pollen-deposit
-    image: /images/contaminants/biological/deposit/pollen-deposit.jpg
+    title: Pollen Deposit
+    url: /contaminants/pollen-deposit
+    image: /images/contaminants/pollen-deposit.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: scale-buildup
-    title: Mineral Scale / Hard Water Deposits
-    url: /contaminants/thermal-damage/scale/scale-buildup
-    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
+    title: Scale Buildup
+    url: /contaminants/scale-buildup
+    image: /images/contaminants/scale-buildup.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: silicone-buildup
-    title: Silicone Sealant Buildup
-    url: /contaminants/organic-residue/adhesive/silicone-buildup
-    image: /images/contaminants/organic-residue/adhesive/silicone-buildup.jpg
+    title: Silicone Buildup
+    url: /contaminants/silicone-buildup
+    image: /images/contaminants/silicone-buildup.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: soap-scum
-    title: Soap Scum Buildup
-    url: /contaminants/organic-residue/cleaning-agent/soap-scum
-    image: /images/contaminants/organic-residue/cleaning-agent/soap-scum.jpg
+    title: Soap Scum
+    url: /contaminants/soap-scum
+    image: /images/contaminants/soap-scum.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: tree-sap
-    title: Tree Sap and Resin
-    url: /contaminants/organic-residue/natural/tree-sap
-    image: /images/contaminants/organic-residue/natural/tree-sap.jpg
+    title: Tree Sap
+    url: /contaminants/tree-sap
+    image: /images/contaminants/tree-sap.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: water-stain
-    title: Water Staining and Marks
-    url: /contaminants/organic-residue/other/water-stain
-    image: /images/contaminants/organic-residue/other/water-stain.jpg
+    title: Water Stain
+    url: /contaminants/water-stain
+    image: /images/contaminants/water-stain.jpg
     frequency: common
     severity: moderate
     typical_context: general
+  related_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/carbon-monoxide
+    image: /images/compounds/carbon-monoxide.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of organic adhesives
+    exposure_risk: high
+  - id: acetaldehyde-compound
+    title: Acetaldehyde
+    url: /compounds/acetaldehyde
+    image: /images/compounds/acetaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Decomposition of vinyl and acrylic adhesives
+    exposure_risk: moderate
+  - id: hydrogen-chloride-compound
+    title: Hydrogen Chloride
+    url: /compounds/hydrogen-chloride
+    image: /images/compounds/hydrogen-chloride.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Some adhesives contain chlorinated compounds
+    exposure_risk: moderate
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/toluene
+    image: /images/compounds/toluene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Release of toluene from adhesive formulations
+    exposure_risk: moderate
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/formaldehyde
+    image: /images/compounds/formaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of formaldehyde-based adhesives
+    exposure_risk: moderate
+  - id: hydrogen-cyanide-compound
+    title: Hydrogen Cyanide
+    url: /compounds/hydrogen-cyanide
+    image: /images/compounds/hydrogen-cyanide.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Breakdown of cyanoacrylate adhesives
+    exposure_risk: moderate
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/carbon-dioxide
+    image: /images/compounds/carbon-dioxide.jpg
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of adhesives
+    exposure_risk: low
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/vocs
+    image: /images/compounds/vocs.jpg
+    frequency: very_common
+    severity: moderate
+    typical_context: Release of adhesive solvents
+    exposure_risk: moderate
+  - id: ammonia-compound
+    title: Ammonia
+    url: /compounds/ammonia
+    image: /images/compounds/ammonia.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Breakdown of proteins
+    exposure_risk: low
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/pahs
+    image: /images/compounds/pahs.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal degradation of aromatic polymers
+    exposure_risk: moderate
+  - id: styrene-compound
+    title: Styrene
+    url: /compounds/styrene
+    image: /images/compounds/styrene.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Thermal depolymerization of polystyrene
+    exposure_risk: high
+  - id: phosgene-compound
+    title: Phosgene
+    url: /compounds/phosgene
+    image: /images/compounds/phosgene.jpg
+    frequency: rare
+    severity: high
+    typical_context: Thermal breakdown of certain chlorinated plastics
+    exposure_risk: high
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/benzene
+    image: /images/compounds/benzene.jpg
+    frequency: common
+    severity: high
+    typical_context: Thermal decomposition of polystyrene and aromatic polymers
+    exposure_risk: high
+  - id: acrolein-compound
+    title: Acrolein
+    url: /compounds/acrolein
+    image: /images/compounds/acrolein.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Pyrolysis of certain polymers
+    exposure_risk: moderate
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -463,4 +587,4 @@ serviceOffering:
     - Surface contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:40.616370'
+    generated_date: '2025-12-16T13:51:20.693808'

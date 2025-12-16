@@ -20,6 +20,10 @@ import logging
 import yaml
 from pathlib import Path
 from typing import Dict, Any
+from collections import OrderedDict
+
+from shared.validation.domain_associations import DomainAssociationsValidator
+from shared.validation.field_order import FrontmatterFieldOrderValidator
 
 logger = logging.getLogger(__name__)
 
@@ -44,6 +48,12 @@ class TrivialContaminantsExporter:
         
         # Load source data
         self.contaminants_data = self._load_contaminants()
+        
+        # Initialize validators for centralized systems
+        self.associations_validator = DomainAssociationsValidator()
+        self.associations_validator.load()
+        self.field_order_validator = FrontmatterFieldOrderValidator()
+        self.field_order_validator.load_schema()
         
         self.logger.info(f"✅ Loaded {len(self.contaminants_data.get('contamination_patterns', {}))} contamination patterns")
     
@@ -156,6 +166,36 @@ class TrivialContaminantsExporter:
                 'alt': f'{name} contamination microscopic detail'
             }
         }
+    
+    def _build_domain_linkages(self, pattern_data: Dict, slug: str) -> Dict:
+        """
+        Generate domain_linkages from centralized associations.
+        
+        Creates bidirectional linkages:
+        - produces_compounds: Compounds produced by this contaminant (forward lookup)
+        - related_materials: Materials affected by this contaminant (from associations)
+        
+        Args:
+            pattern_data: Pattern data from Contaminants.yaml
+            slug: Contaminant slug (e.g., 'carbon-buildup-contamination')
+        
+        Returns:
+            Dict with domain_linkages structure
+        """
+        contaminant_id = slug  # ID already has -contamination suffix
+        linkages = {}
+        
+        # Get compounds produced by this contaminant (forward lookup)
+        produces_compounds = self.associations_validator.get_compounds_for_contaminant(contaminant_id)
+        if produces_compounds:
+            linkages['produces_compounds'] = produces_compounds
+        
+        # Get materials affected by this contaminant (bidirectional)
+        related_materials = self.associations_validator.get_materials_for_contaminant(contaminant_id)
+        if related_materials:
+            linkages['related_materials'] = related_materials
+        
+        return linkages
     
     def export_all(self) -> Dict[str, bool]:
         """
@@ -290,9 +330,8 @@ class TrivialContaminantsExporter:
         if 'eeat' in pattern_data:
             frontmatter['eeat'] = self._strip_generation_metadata(pattern_data['eeat'])
         
-        # Export domain_linkages (new standardized structure)
-        if 'domain_linkages' in pattern_data:
-            frontmatter['domain_linkages'] = self._strip_generation_metadata(pattern_data['domain_linkages'])
+        # Generate domain_linkages from centralized associations (replaces hardcoded copy)
+        frontmatter['domain_linkages'] = self._build_domain_linkages(pattern_data, slug)
         
         # Backward compatibility: also export valid_materials if present
         if 'valid_materials' in pattern_data:
@@ -304,15 +343,16 @@ class TrivialContaminantsExporter:
         if 'commonality_score' in pattern_data:
             frontmatter['commonality_score'] = pattern_data['commonality_score']
         
-        # Write to file with -contamination suffix
-        output_data = frontmatter
+        # Apply field order specification
+        ordered_frontmatter = self.field_order_validator.reorder_fields(frontmatter, 'contaminants')
         
+        # Write to file with -contamination suffix
         filename = f"{slug}.yaml"
         output_path = self.output_dir / filename
         
         with open(output_path, 'w', encoding='utf-8') as f:
             yaml.dump(
-                output_data,
+                dict(ordered_frontmatter),
                 f,
                 default_flow_style=False,
                 allow_unicode=True,

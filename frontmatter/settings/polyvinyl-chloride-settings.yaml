@@ -1,13 +1,9 @@
-name: Polyvinyl Chloride
-slug: polyvinyl-chloride
 id: polyvinyl-chloride-settings
+name: polyvinyl-chloride-laser-cleaning
+slug: polyvinyl-chloride-settings
 category: plastic
 subcategory: thermoplastic
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,10 +33,13 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
-title: Polyvinyl Chloride Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: polyvinyl-chloride-laser-cleaning Laser Cleaning Settings
 settings_description: When laser cleaning polyvinyl chloride, you must watch its low heat tolerance right from the start—it's a thermoplastic that softens quickly under intense energy, leading to warping or melting if you're not careful. This makes it different from metals, where heat spreads out fast; here, the energy stays localized because it doesn't conduct heat well, so you risk damaging the surface before buildup even clears. Start with reduced power to build up gradually, and keep scan speeds high to limit exposure time on any spot. You'll find it absorbs laser light readily, which helps remove contaminants efficiently without much reflection loss, but always test on a small area first to avoid pitting. For best results, use multiple light passes with good overlap, letting it cool between them—this restores the smooth finish on pipes or panels without compromising its corrosion resistance or flexibility.
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -50,8 +49,8 @@ breadcrumb:
   href: /materials/plastic
 - label: Thermoplastic
   href: /materials/plastic/thermoplastic
-- label: Polyvinyl Chloride
-  href: /materials/polyvinyl-chloride
+- label: polyvinyl-chloride-laser-cleaning
+  href: /materials/polyvinyl-chloride-settings
 images:
   hero:
     alt: Polyvinyl Chloride surface undergoing laser cleaning showing precise contamination removal
@@ -59,52 +58,7 @@ images:
   micro:
     alt: Polyvinyl Chloride microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/polyvinyl-chloride-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.12
@@ -143,6 +97,7 @@ material_challenges:
     - Use lowest power settings (20-40W)
     - Fast scan speeds (2000-4000 mm/s)
     - Pulse mode with extended cooling (5-10 seconds between passes)
+    challenge_id: low_melting_degradation_temperatures
   - challenge: Outgassing and fume generation
     severity: high
     impact: Toxic fumes, smoke, and potential fire hazard
@@ -150,6 +105,7 @@ material_challenges:
     - Mandatory fume extraction system
     - Work in well-ventilated areas
     - Monitor for smoke/discoloration
+    challenge_id: outgassing_and_fume_generation
   surface_characteristics:
   - challenge: Variable absorption by color and additives
     severity: medium
@@ -157,6 +113,7 @@ material_challenges:
     solutions:
     - Adjust power based on plastic color (dark = lower, light = higher)
     - Test on sample pieces first
+    challenge_id: variable_absorption_by_color_and_additives
   contamination_challenges:
   - challenge: Coating and label removal
     severity: medium
@@ -164,6 +121,7 @@ material_challenges:
     solutions:
     - Use UV wavelength (355nm) for better photochemical ablation
     - Multiple gentle passes instead of single high-power pass
+    challenge_id: coating_and_label_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:41.994625'
+    generated_date: '2025-12-16T13:51:23.339226'

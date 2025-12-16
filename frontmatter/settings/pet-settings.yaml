@@ -1,13 +1,136 @@
-name: PET
-slug: pet
 id: pet-settings
+name: pet-laser-cleaning
+slug: pet-settings
 category: plastic
 subcategory: thermoplastic
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue
+    url: /contaminants/adhesive-residue
+    image: /images/contaminants/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chemical-stains
+    title: Chemical Stains
+    url: /contaminants/chemical-stains
+    image: /images/contaminants/chemical-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: paint-residue
+    title: Paint Residue
+    url: /contaminants/paint-residue
+    image: /images/contaminants/paint-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/carbon-monoxide
+    image: /images/compounds/carbon-monoxide.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of organic adhesives
+    exposure_risk: high
+  - id: acetaldehyde-compound
+    title: Acetaldehyde
+    url: /compounds/acetaldehyde
+    image: /images/compounds/acetaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Decomposition of vinyl and acrylic adhesives
+    exposure_risk: moderate
+  - id: hydrogen-chloride-compound
+    title: Hydrogen Chloride
+    url: /compounds/hydrogen-chloride
+    image: /images/compounds/hydrogen-chloride.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Some adhesives contain chlorinated compounds
+    exposure_risk: moderate
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/toluene
+    image: /images/compounds/toluene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Release of toluene from adhesive formulations
+    exposure_risk: moderate
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/formaldehyde
+    image: /images/compounds/formaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of formaldehyde-based adhesives
+    exposure_risk: moderate
+  - id: hydrogen-cyanide-compound
+    title: Hydrogen Cyanide
+    url: /compounds/hydrogen-cyanide
+    image: /images/compounds/hydrogen-cyanide.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Breakdown of cyanoacrylate adhesives
+    exposure_risk: moderate
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/carbon-dioxide
+    image: /images/compounds/carbon-dioxide.jpg
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of adhesives
+    exposure_risk: low
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/vocs
+    image: /images/compounds/vocs.jpg
+    frequency: very_common
+    severity: moderate
+    typical_context: Release of adhesive solvents
+    exposure_risk: moderate
+  - id: nitrogen-oxides-compound
+    title: Nitrogen Oxides
+    url: /compounds/nitrogen-oxides
+    image: /images/compounds/nitrogen-oxides.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Nitrogen from some paint formulations
+    exposure_risk: low
+  - id: zinc-oxide-compound
+    title: Zinc Oxide
+    url: /compounds/zinc-oxide
+    image: /images/compounds/zinc-oxide.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Zinc oxide pigments in paint
+    exposure_risk: low
+  - id: chromium-vi-compound
+    title: Hexavalent Chromium
+    url: /compounds/chromium-vi
+    image: /images/compounds/chromium-vi.jpg
+    frequency: occasional
+    severity: high
+    typical_context: Chromate pigments in some paints
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/pahs
+    image: /images/compounds/pahs.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Incomplete combustion of organic binders
+    exposure_risk: moderate
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/benzene
+    image: /images/compounds/benzene.jpg
+    frequency: common
+    severity: high
+    typical_context: Thermal breakdown of aromatic paint solvents
+    exposure_risk: high
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,33 +159,13 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
-title: PET Laser Cleaning Settings
-settings_description:
-  before: Before laser cleaning, PET surfaces require careful parameter selection
-  after: After cleaning, PET surfaces show restored appearance with controlled parameters
-domain_linkages:
-  related_contaminants:
-  - id: adhesive-residue
-    title: Adhesive Residue / Tape Marks
-    url: /contaminants/organic-residue/adhesive/adhesive-residue
-    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chemical-stains
-    title: Chemical Stains / Acid Etching
-    url: /contaminants/chemical-residue/industrial/chemical-stains
-    image: /images/contaminants/chemical-residue/industrial/chemical-stains.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: paint-residue
-    title: Paint Residue / Coating Failure
-    url: /contaminants/inorganic-coating/paint/paint-residue
-    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: pet-laser-cleaning Laser Cleaning Settings
+settings_description: When laser cleaning PET, you must start with the lowest possible power settings to avoid quick melting, as this thermoplastic softens much faster than sturdier plastics like PVC. Unlike metals that reflect energy and stay cool, PET absorbs just enough to heat evenly, so it demands precise control to prevent warping. Make sure you use short pulses and keep the beam moving steadily—this clears surface grime without damaging the smooth, non-porous base underneath. Watch for any yellowing early on, and dial back energy if you see it, because PET's strength holds up well under stress but not repeated heat exposure. Adjust scan speed higher for thicker buildup to maintain even cleaning.
 breadcrumb:
 - label: Home
   href: /
@@ -72,8 +175,8 @@ breadcrumb:
   href: /materials/plastic
 - label: Thermoplastic
   href: /materials/plastic/thermoplastic
-- label: PET
-  href: /materials/pet
+- label: pet-laser-cleaning
+  href: /materials/pet-settings
 images:
   hero:
     alt: PET surface during precision laser cleaning process removing contamination layer
@@ -81,52 +184,7 @@ images:
   micro:
     alt: PET surface at 500x magnification showing laser cleaning results
     url: /images/material/pet-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    value: 30
-    unit: W
-    min: 1
-    max: 120
-  wavelength:
-    value: 1064
-    unit: nm
-    min: 355
-    max: 10640
-  spotSize:
-    value: 100
-    unit: μm
-    min: 0.1
-    max: 500
-  repetitionRate:
-    value: 20
-    unit: kHz
-    min: 1
-    max: 200
-  energyDensity:
-    value: 0.5
-    unit: J/cm²
-    min: 0.1
-    max: 20
-  pulseWidth:
-    value: 10
-    unit: ns
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    value: 800
-    unit: mm/s
-    min: 10
-    max: 5000
-  passCount:
-    value: 2
-    unit: passes
-    min: 1
-    max: 10
-  overlapRatio:
-    value: 30
-    unit: '%'
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 0.12
@@ -149,9 +207,40 @@ laserMaterialInteraction:
     value: 0.042
     wavelength: 1064
 material_challenges:
-- Requires careful power calibration to prevent material damage
-- Monitor surface temperature during processing
-- Verify cleaning effectiveness through inspection
+  thermal_management:
+  - challenge: Low melting/degradation temperatures
+    severity: high
+    threshold_range: 80-300°C depending on polymer type
+    impact: Melting, warping, or chemical degradation at low temperatures
+    solutions:
+    - Use lowest power settings (20-40W)
+    - Fast scan speeds (2000-4000 mm/s)
+    - Pulse mode with extended cooling (5-10 seconds between passes)
+    challenge_id: low_melting_degradation_temperatures
+  - challenge: Outgassing and fume generation
+    severity: high
+    impact: Toxic fumes, smoke, and potential fire hazard
+    solutions:
+    - Mandatory fume extraction system
+    - Work in well-ventilated areas
+    - Monitor for smoke/discoloration
+    challenge_id: outgassing_and_fume_generation
+  surface_characteristics:
+  - challenge: Variable absorption by color and additives
+    severity: medium
+    impact: Black plastics absorb 80-90%, white plastics absorb 10-30%
+    solutions:
+    - Adjust power based on plastic color (dark = lower, light = higher)
+    - Test on sample pieces first
+    challenge_id: variable_absorption_by_color_and_additives
+  contamination_challenges:
+  - challenge: Coating and label removal
+    severity: medium
+    impact: Adhesives melt and smear rather than ablate cleanly
+    solutions:
+    - Use UV wavelength (355nm) for better photochemical ablation
+    - Multiple gentle passes instead of single high-power pass
+    challenge_id: coating_and_label_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:43.979194'
+    generated_date: '2025-12-16T13:51:27.542954'

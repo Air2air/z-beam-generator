@@ -1,12 +1,129 @@
+id: epoxy-residue-contamination
 name: Epoxy Resin Deposits
 slug: epoxy-residue-contamination
-id: epoxy-residue-contamination
 category: organic-residue
 subcategory: adhesive
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+domain_linkages:
+  related_materials:
+  - id: Concrete
+    title: Concrete
+    url: /materials/Concrete
+    image: /images/materials/Concrete.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Carbon Fiber Reinforced Polymer
+    title: Carbon Fiber Reinforced Polymer
+    url: /materials/Carbon Fiber Reinforced Polymer
+    image: /images/materials/Carbon Fiber Reinforced Polymer.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Fiberglass
+    title: Fiberglass
+    url: /materials/Fiberglass
+    image: /images/materials/Fiberglass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/Aluminum
+    image: /images/materials/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Steel
+    title: Steel
+    url: /materials/Steel
+    image: /images/materials/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/Stainless Steel
+    image: /images/materials/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cast-iron
+    title: Cast Iron
+    url: /materials/cast-iron
+    image: /images/materials/cast-iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Copper
+    title: Copper
+    url: /materials/Copper
+    image: /images/materials/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bronze
+    title: Bronze
+    url: /materials/bronze
+    image: /images/materials/bronze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Titanium
+    title: Titanium
+    url: /materials/Titanium
+    image: /images/materials/Titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zinc
+    title: Zinc
+    url: /materials/Zinc
+    image: /images/materials/Zinc.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Nickel
+    title: Nickel
+    url: /materials/Nickel
+    image: /images/materials/Nickel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Lead
+    title: Lead
+    url: /materials/Lead
+    image: /images/materials/Lead.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tin
+    title: Tin
+    url: /materials/Tin
+    image: /images/materials/Tin.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cobalt
+    title: Cobalt
+    url: /materials/Cobalt
+    image: /images/materials/Cobalt.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Chromium
+    title: Chromium
+    url: /materials/Chromium
+    image: /images/materials/Chromium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 1
   name: Yi-Chun Lin
@@ -36,6 +153,10 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -195,130 +316,6 @@ laser_properties:
     thermal_conductivity: 0.2
     thermal_diffusivity: 0.17
     vaporization_temperature: 450
-domain_linkages:
-  related_materials:
-  - id: Concrete
-    title: Concrete
-    url: /materials/masonry/general/Concrete
-    image: /images/materials/masonry/general/Concrete.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Carbon Fiber Reinforced Polymer
-    title: Carbon Fiber Reinforced Polymer
-    url: /materials/composite/fiber-reinforced/Carbon Fiber Reinforced Polymer
-    image: /images/materials/composite/fiber-reinforced/Carbon Fiber Reinforced Polymer.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Fiberglass
-    title: Fiberglass
-    url: /materials/composite/fiber-reinforced/Fiberglass
-    image: /images/materials/composite/fiber-reinforced/Fiberglass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum
-    title: Aluminum
-    url: /materials/metal/non-ferrous/Aluminum
-    image: /images/materials/metal/non-ferrous/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Steel
-    title: Steel
-    url: /materials/metal/ferrous/Steel
-    image: /images/materials/metal/ferrous/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
-    title: Stainless Steel
-    url: /materials/metal/ferrous/Stainless Steel
-    image: /images/materials/metal/ferrous/Stainless Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cast-iron
-    title: Cast Iron
-    url: /materials/cast-iron
-    image: /images/materials/cast-iron.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Copper
-    title: Copper
-    url: /materials/metal/non-ferrous/Copper
-    image: /images/materials/metal/non-ferrous/Copper.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bronze
-    title: Bronze
-    url: /materials/bronze
-    image: /images/materials/bronze.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Titanium
-    title: Titanium
-    url: /materials/metal/specialty/Titanium
-    image: /images/materials/metal/specialty/Titanium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zinc
-    title: Zinc
-    url: /materials/metal/alloy/Zinc
-    image: /images/materials/metal/alloy/Zinc.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Nickel
-    title: Nickel
-    url: /materials/metal/specialty/Nickel
-    image: /images/materials/metal/specialty/Nickel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Lead
-    title: Lead
-    url: /materials/metal/non-ferrous/Lead
-    image: /images/materials/metal/non-ferrous/Lead.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Tin
-    title: Tin
-    url: /materials/metal/alloy/Tin
-    image: /images/materials/metal/alloy/Tin.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Cobalt
-    title: Cobalt
-    url: /materials/metal/specialty/Cobalt
-    image: /images/materials/metal/specialty/Cobalt.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Chromium
-    title: Chromium
-    url: /materials/metal/specialty/Chromium
-    image: /images/materials/metal/specialty/Chromium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance: []
-  ppe_requirements: []
 valid_materials:
 - Concrete
 - Carbon Fiber Reinforced Polymer

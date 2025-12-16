@@ -1,12 +1,22 @@
+id: industrial-oil-contamination
 name: Industrial Oil / Grease Buildup
 slug: industrial-oil-contamination
-id: industrial-oil-contamination
 category: organic-residue
 subcategory: petroleum
-content_type: unified_contamination
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
+micro:
+  after: Post-cleaning reveals restored surface with industrial oil / grease buildup
+    successfully removed through precise laser ablation.
+  before: Surface shows contamination from industrial oil / grease buildup affecting
+    material appearance and properties.
+domain_linkages:
+  related_materials:
+  - id: all
+    title: All
+    url: /materials/all
+    image: /images/materials/all.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 2
   name: Alessandro Moretti
@@ -37,6 +47,10 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 _metadata:
   voice:
     author_name: Alessandro Moretti
@@ -69,11 +83,6 @@ images:
   micro:
     url: /images/contaminants/industrial-oil-contamination-micro.jpg
     alt: Industrial Oil / Grease Buildup contamination microscopic detail
-micro:
-  after: Post-cleaning reveals restored surface with industrial oil / grease buildup
-    successfully removed through precise laser ablation.
-  before: Surface shows contamination from industrial oil / grease buildup affecting
-    material appearance and properties.
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -208,29 +217,5 @@ eeat:
     name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/publication/3587
   reviewedBy: Z-Beam Quality Assurance Team
-domain_linkages:
-  related_materials:
-  - id: all
-    title: ALL
-    url: /materials/all
-    image: /images/materials/all.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  related_compounds: []
-  regulatory_compliance:
-  - id: iec-60825
-    title: IEC 60825
-    url: ''
-    image: /images/standards/generic-logo.svg
-    applicability: laser_operation
-    requirement: IEC 60825 - Safety of Laser Products
-  - id: osha-29
-    title: OSHA 29
-    url: ''
-    image: /images/standards/generic-logo.svg
-    applicability: laser_operation
-    requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  ppe_requirements: []
 valid_materials:
 - ALL

@@ -1,12 +1,12 @@
-name: Ash
-slug: ash
 id: ash-laser-cleaning
+name: ash-laser-cleaning
+slug: ash-laser-cleaning
 category: wood
 subcategory: hardwood
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: null
-dateModified: null
+datePublished: '2025-12-16T13:59:34Z'
+dateModified: '2025-12-16T13:59:34Z'
 author:
   id: 4
   name: Todd Dunning
@@ -28,7 +28,8 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -42,7 +43,10 @@ _metadata:
     voice_applied: true
     content_type: material
 title: Ash Laser Cleaning
-material_description: Ash's real strength is its outstanding shock resistance and thermal stability, which we've seen enables precise laser cleaning to revive fine details in heritage woodwork and instruments without surface charring or structural weakening.
+material_description: Ash's real strength is its outstanding shock resistance and
+  thermal stability, which we've seen enables precise laser cleaning to revive fine
+  details in heritage woodwork and instruments without surface charring or structural
+  weakening.
 breadcrumb:
 - label: Home
   href: /
@@ -59,16 +63,30 @@ images:
     alt: Ash surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/ash-laser-cleaning-hero.jpg
   micro:
-    alt: Ash microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Ash microscopic view of laser cleaning showing detailed precise contamination
+      removal
     url: /images/material/ash-laser-cleaning-micro.jpg
 micro:
-  before: Under 1000x magnification, the ash wood surface appears covered in thick, uneven layers of dark grime. Fine particles and debris cling tightly to the rough fibers and fill tiny cracks. This contamination obscures the natural texture completely.
-  after: After laser treatment at 1000x magnification, the ash wood surface reveals smooth, exposed fibers without any residue. Clean lines emerge where grime once hid, restoring the material's original evenness. The treatment uncovers a uniform, detailed structure.
+  before: Under 1000x magnification, the ash wood surface appears covered in thick,
+    uneven layers of dark grime. Fine particles and debris cling tightly to the rough
+    fibers and fill tiny cracks. This contamination obscures the natural texture completely.
+  after: After laser treatment at 1000x magnification, the ash wood surface reveals
+    smooth, exposed fibers without any residue. Clean lines emerge where grime once
+    hid, restoring the material's original evenness. The treatment uncovers a uniform,
+    detailed structure.
 faq:
 - question: How does laser cleaning restore the **natural grain** of aged Ash wood?
-  answer: '**Preserves light color and patterns**. Laser cleaning gently ablates surface contaminants like dirt, varnish, or smoke residue from Ash wood without harming the underlying grain. This non-contact approach typically preserves the wood''s light color and prominent patterns, uncovering its original beauty in 10-20 minutes per panel—pretty ideal for antique furniture restoration.'
+  answer: '**Preserves light color and patterns**. Laser cleaning gently ablates surface
+    contaminants like dirt, varnish, or smoke residue from Ash wood without harming
+    the underlying grain. This non-contact approach typically preserves the wood''s
+    light color and prominent patterns, uncovering its original beauty in 10-20 minutes
+    per panel—pretty ideal for antique furniture restoration.'
 - question: What are the risks of using laser cleaning on Ash wood **prone to warping**?
-  answer: '**Low-power pulses prevent micro-cracks**. Yeah, laser cleaning works pretty safely on Ash wood when handled right. It typically dodges the moisture that worsens warping, unlike old methods. Still, too much heat risks micro-cracks; experts advise low-power pulsed lasers plus close monitoring to avoid that, preserving the wood''s flexibility for lasting strength.'
+  answer: '**Low-power pulses prevent micro-cracks**. Yeah, laser cleaning works pretty
+    safely on Ash wood when handled right. It typically dodges the moisture that worsens
+    warping, unlike old methods. Still, too much heat risks micro-cracks; experts
+    advise low-power pulsed lasers plus close monitoring to avoid that, preserving
+    the wood''s flexibility for lasting strength.'
 regulatoryStandards:
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
@@ -98,7 +116,7 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 40.0
+    percentage: 60.0
     fractureToughness:
       value: 0.36
       unit: MPa√m
@@ -164,55 +182,16 @@ materialProperties:
       unit: J/cm²
       source: scientific_literature
       source_type: journal_article
-      source_name: Laser-induced damage thresholds of selected wood species for cultural heritage conservation
+      source_name: Laser-induced damage thresholds of selected wood species for cultural
+        heritage conservation
       citation: 'Kolar, J. et al., Journal of Cultural Heritage, 2012, DOI: 10.1016/j.culher.2011.12.004'
-      context: Ash wood (Fraxinus excelsior, density 0.65 g/cm³, moisture content 10-12%), room temperature (20°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured in air at 1 atm
+      context: Ash wood (Fraxinus excelsior, density 0.65 g/cm³, moisture content
+        10-12%), room temperature (20°C), 1064 nm Nd:YAG laser, 10 ns pulse duration,
+        measured in air at 1 atm
       researched_date: '2025-11-24T11:50:30.491359'
       needs_validation: true
       min: '0.0025'
       max: 5.4
-    thermalDestruction:
-      value: 573
-      unit: K
-      source: ai_research
-      min: 226
-      max: 642
-    laserReflectivity:
-      value: 0.08
-      unit: dimensionless (fraction)
-      source: ai_research
-      min: 0.02
-      max: 0.44
-    thermalExpansion:
-      value: '3.2e-05'
-      unit: 1/°C
-      source: ai_research
-      min: 1e-06
-      max: '5.8e-05'
-    thermalConductivity:
-      value: 0.15
-      unit: W/m·K
-      source: ai_research
-      min: 0.04
-      max: 0.4
-    specificHeat:
-      value: 1380
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1.3
-      max: 1554
-    laserAbsorption:
-      value: 0.82
-      unit: dimensionless
-      source: ai_research
-      min: 0.78
-      max: 336000
-    thermalDiffusivity:
-      value: '1.4e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -305,9 +284,13 @@ materialProperties:
       unit: J/cm²
       source: scientific_literature
       source_type: journal_article
-      source_name: Laser Ablation Thresholds for Different Wood Species in Cultural Heritage Conservation
-      citation: 'Sansonetti, L., et al., Journal of Cultural Heritage, 2013, DOI: 10.1016/j.culher.2012.10.005'
-      context: Ash wood (Fraxinus excelsior, density 0.65 g/cm³, natural moisture content <12%), room temperature (20°C), 1064 nm Nd:YAG laser, pulse duration 10 ns, measured under vacuum conditions to simulate controlled cleaning environment
+      source_name: Laser Ablation Thresholds for Different Wood Species in Cultural
+        Heritage Conservation
+      citation: 'Sansonetti, L., et al., Journal of Cultural Heritage, 2013, DOI:
+        10.1016/j.culher.2012.10.005'
+      context: Ash wood (Fraxinus excelsior, density 0.65 g/cm³, natural moisture
+        content <12%), room temperature (20°C), 1064 nm Nd:YAG laser, pulse duration
+        10 ns, measured under vacuum conditions to simulate controlled cleaning environment
       researched_date: '2025-11-24T11:50:39.074814'
       needs_validation: true
       min: 0.51
@@ -325,47 +308,152 @@ material_metadata:
 domain_linkages:
   related_contaminants:
   - id: adhesive-residue
-    title: Adhesive Residue / Tape Marks
-    url: /contaminants/organic-residue/adhesive/adhesive-residue
-    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    title: Adhesive Residue
+    url: /contaminants/adhesive-residue
+    image: /images/contaminants/adhesive-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: algae-growth
-    title: Algae and Lichen Growth
-    url: /contaminants/biological/growth/algae-growth
-    image: /images/contaminants/biological/growth/algae-growth.jpg
+    title: Algae Growth
+    url: /contaminants/algae-growth
+    image: /images/contaminants/algae-growth.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: lead-paint
-    title: Lead-Based Paint Removal
-    url: /contaminants/inorganic-coating/paint/lead-paint
-    image: /images/contaminants/inorganic-coating/paint/lead-paint.jpg
+    title: Lead Paint
+    url: /contaminants/lead-paint
+    image: /images/contaminants/lead-paint.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: mold-mildew
-    title: Mold and Mildew Growth
-    url: /contaminants/biological/growth/mold-mildew
-    image: /images/contaminants/biological/growth/mold-mildew.jpg
+    title: Mold Mildew
+    url: /contaminants/mold-mildew
+    image: /images/contaminants/mold-mildew.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: paint-residue
-    title: Paint Residue / Coating Failure
-    url: /contaminants/inorganic-coating/paint/paint-residue
-    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    title: Paint Residue
+    url: /contaminants/paint-residue
+    image: /images/contaminants/paint-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: wax-buildup
-    title: Wax Coating Buildup
-    url: /contaminants/organic-residue/wax/wax-buildup
-    image: /images/contaminants/organic-residue/wax/wax-buildup.jpg
+    title: Wax Buildup
+    url: /contaminants/wax-buildup
+    image: /images/contaminants/wax-buildup.jpg
     frequency: common
     severity: moderate
     typical_context: general
+  related_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/carbon-monoxide
+    image: /images/compounds/carbon-monoxide.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of organic adhesives
+    exposure_risk: high
+  - id: acetaldehyde-compound
+    title: Acetaldehyde
+    url: /compounds/acetaldehyde
+    image: /images/compounds/acetaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Decomposition of vinyl and acrylic adhesives
+    exposure_risk: moderate
+  - id: hydrogen-chloride-compound
+    title: Hydrogen Chloride
+    url: /compounds/hydrogen-chloride
+    image: /images/compounds/hydrogen-chloride.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Some adhesives contain chlorinated compounds
+    exposure_risk: moderate
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/toluene
+    image: /images/compounds/toluene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Release of toluene from adhesive formulations
+    exposure_risk: moderate
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/formaldehyde
+    image: /images/compounds/formaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of formaldehyde-based adhesives
+    exposure_risk: moderate
+  - id: hydrogen-cyanide-compound
+    title: Hydrogen Cyanide
+    url: /compounds/hydrogen-cyanide
+    image: /images/compounds/hydrogen-cyanide.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Breakdown of cyanoacrylate adhesives
+    exposure_risk: moderate
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/carbon-dioxide
+    image: /images/compounds/carbon-dioxide.jpg
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of adhesives
+    exposure_risk: low
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/vocs
+    image: /images/compounds/vocs.jpg
+    frequency: very_common
+    severity: moderate
+    typical_context: Release of adhesive solvents
+    exposure_risk: moderate
+  - id: nitrogen-oxides-compound
+    title: Nitrogen Oxides
+    url: /compounds/nitrogen-oxides
+    image: /images/compounds/nitrogen-oxides.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Nitrogen from some paint formulations
+    exposure_risk: low
+  - id: zinc-oxide-compound
+    title: Zinc Oxide
+    url: /compounds/zinc-oxide
+    image: /images/compounds/zinc-oxide.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Zinc oxide pigments in paint
+    exposure_risk: low
+  - id: chromium-vi-compound
+    title: Hexavalent Chromium
+    url: /compounds/chromium-vi
+    image: /images/compounds/chromium-vi.jpg
+    frequency: occasional
+    severity: high
+    typical_context: Chromate pigments in some paints
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/pahs
+    image: /images/compounds/pahs.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Incomplete combustion of organic binders
+    exposure_risk: moderate
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/benzene
+    image: /images/compounds/benzene.jpg
+    frequency: common
+    severity: high
+    typical_context: Thermal breakdown of aromatic paint solvents
+    exposure_risk: high
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -380,4 +468,4 @@ serviceOffering:
     notes: Careful power control to avoid charring
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:39.276223'
+    generated_date: '2025-12-16T13:51:18.280420'

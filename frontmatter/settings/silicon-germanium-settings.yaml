@@ -1,13 +1,9 @@
-name: Silicon Germanium
-slug: silicon-germanium
 id: silicon-germanium-settings
+name: silicon-germanium-laser-cleaning
+slug: silicon-germanium-settings
 category: semiconductor
 subcategory: elemental
-content_type: unified_settings
-schema_version: 4.0.0
-active: true
-datePublished: null
-dateModified: null
+domain_linkages: {}
 author:
   id: 3
   name: Ikmanda Roswati
@@ -37,10 +33,13 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
-title: Silicon Germanium Laser Cleaning Settings
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+title: silicon-germanium-laser-cleaning Laser Cleaning Settings
 settings_description: I've found that laser cleaning Silicon Germanium works smoothly when you ease into it with gentle settings, much like handling pure silicon but with extra caution for its alloy quirks. This material tends to absorb energy more readily than silicon alone, thanks to the germanium mix, which helps contaminants lift off without much force. In my experience, it restores surfaces in electronics manufacturing or telecom parts effectively, clearing residues while preserving the semiconductor integrity that sets it apart from tougher metals. The blend gives it a bit more flexibility under heat compared to rigid ceramics, so you can push scan speeds a touch higher once you gauge the response. But watch how it conducts warmth—it's not as efficient as silicon, leading to quicker buildup if you're not careful. To avoid cracks or altered properties, always test on a scrap piece first and keep passes minimal; rushing it can dull that precise edge SiGe offers in high-tech apps.
-domain_linkages:
-  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -50,8 +49,8 @@ breadcrumb:
   href: /materials/semiconductor
 - label: Elemental
   href: /materials/semiconductor/elemental
-- label: Silicon Germanium
-  href: /materials/silicon-germanium
+- label: silicon-germanium-laser-cleaning
+  href: /materials/silicon-germanium-settings
 images:
   hero:
     alt: Silicon Germanium surface undergoing laser cleaning showing precise contamination removal
@@ -59,52 +58,7 @@ images:
   micro:
     alt: Silicon Germanium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/silicon-germanium-laser-cleaning-micro.jpg
-machineSettings:
-  powerRange:
-    unit: W
-    value: 45
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 1.2
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 15
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 25.0
@@ -144,6 +98,7 @@ material_challenges:
     - Reduce power by 60-70% compared to structural materials
     - Monitor temperature with IR camera; stop if >150°C surface temperature
     - Nanosecond pulses acceptable only for non-active areas (scribe lines, edges)
+    challenge_id: crystal_lattice_damage_and_doping_redistribution
   - challenge: Thermal stress and wafer cracking
     severity: high
     property_value: Low fracture toughness 0.75-3.0 MPa·√m
@@ -153,6 +108,7 @@ material_challenges:
     - Thin wafers (<200 μm) require substrate backing for thermal management
     - Defocused beam reduces peak temperature gradients
     - Gradual power ramping (start 10W, increase 5W per pass)
+    challenge_id: thermal_stress_and_wafer_cracking
   surface_characteristics:
   - challenge: Surface contamination and particulates
     severity: critical
@@ -163,6 +119,7 @@ material_challenges:
     - Gas assist (nitrogen or argon) blows particles away during cleaning
     - Post-cleaning inspection with particle counter (<0.1 μm detection)
     - Follow with wet chemical clean for critical applications
+    challenge_id: surface_contamination_and_particulates
   - challenge: Native oxide layer removal
     severity: high
     impact: Silicon forms native oxide that must be removed without substrate damage
@@ -171,6 +128,7 @@ material_challenges:
     - Multiple gentle passes (3-5 passes at 10W) preferred
     - Hydrogen-rich environment prevents oxide reformation
     - Verify oxide removal with ellipsometry or XPS
+    challenge_id: native_oxide_layer_removal
   contamination_challenges:
   - challenge: Photoresist and polymer residue removal
     severity: medium
@@ -181,6 +139,7 @@ material_challenges:
     - UV laser (355nm) more effective for organic materials
     - Oxygen-rich environment aids in organic ablation
     - Post-cleaning oxygen plasma for complete residue removal
+    challenge_id: photoresist_and_polymer_residue_removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:42.641334'
+    generated_date: '2025-12-16T13:51:24.752870'

@@ -1,12 +1,12 @@
-name: Tin
-slug: tin
 id: tin-laser-cleaning
+name: tin-laser-cleaning
+slug: tin-laser-cleaning
 category: metal
 subcategory: alloy
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: null
-dateModified: null
+datePublished: '2025-12-16T13:59:57Z'
+dateModified: '2025-12-16T13:59:57Z'
 author:
   id: 1
   name: Yi-Chun Lin
@@ -27,7 +27,8 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -42,7 +43,9 @@ _metadata:
     voice_applied: true
     content_type: material
 title: Tin Laser Cleaning
-material_description: For laser cleaning of tin, begin with low power to carefully manage its low melting point, in contrast to tougher metals that endure higher intensities without deformation.
+material_description: For laser cleaning of tin, begin with low power to carefully
+  manage its low melting point, in contrast to tougher metals that endure higher intensities
+  without deformation.
 breadcrumb:
 - label: Home
   href: /
@@ -59,30 +62,85 @@ images:
     alt: Tin surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/tin-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Tin surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Tin surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/tin-laser-cleaning-micro.jpg
 micro:
-  before: When we examine the tin surface before laser cleaning at 1000x magnification, dirty smudges cover most of it unevenly. Grimy particles cling tightly to the rough texture, making the whole area look dull and patchy. Scattered dark spots mar the base metal, hiding its natural shine completely.
-  after: After the laser treatment, the same view shows a smooth and even surface free from all grime. The metal gleams brightly now, with no rough patches or clinging debris left behind
+  before: When we examine the tin surface before laser cleaning at 1000x magnification,
+    dirty smudges cover most of it unevenly. Grimy particles cling tightly to the
+    rough texture, making the whole area look dull and patchy. Scattered dark spots
+    mar the base metal, hiding its natural shine completely.
+  after: After the laser treatment, the same view shows a smooth and even surface
+    free from all grime. The metal gleams brightly now, with no rough patches or clinging
+    debris left behind
 faq:
-- question: What laser parameters, such as wavelength and pulse duration, are optimal for cleaning **tin oxide layers** without melting the underlying tin surface?
-  answer: '**1064 nm limits substrate heating**. For cleaning tin oxide without melting the underlying metal at 231.9°C, choose a 1064 nm fiber laser rather than 532 nm—particularly its near-IR wavelength boosts oxide absorption while tin''s high reflectivity limits substrate heating. Thus, pair this setup with 12 ns pulses, 45 W power, and 2.5 J/cm² fluence for controlled ablation.'
-- question: How effective is laser cleaning at removing contaminants from tin-plated steel without **damaging the tin coating**?
-  answer: '**Safeguards adhesion below delamination thresholds**. Laser cleaning particularly shines in removing contaminants from tin-plated steel, while protecting the coating''s robust adhesion by staying below delamination limits like 2.5 J/cm² fluence at 1064 nm. Notably, this nanosecond-pulse approach at around 45 W power prevents pitting, unlike abrasive blasting that causes surface scratches or chemicals leaving residues in electronics and aerospace.'
-- question: What safety risks arise from **laser-induced fumes** when cleaning tin surfaces, and how can they be mitigated?
-  answer: '**Mitigates toxic tin vapor inhalation**. Laser cleaning tin at 2.5 J/cm² fluence releases toxic vapors and oxides, particularly endangering workers via heavy metal inhalation and chronic health risks. Thus, implement robust local exhaust ventilation, NIOSH respirators, and OSHA-compliant monitoring to maintain exposure below 2 mg/m³ limits.'
-- question: In electronics manufacturing, can laser cleaning be used to remove flux residues from **tin-lead solder joints** without affecting solder integrity?
-  answer: '**Minimizes heat for thermal sensitivity**. Yes, laser cleaning effectively removes flux residues from tin-lead solder joints in electronics manufacturing, while preserving joint integrity through its non-contact approach. Particularly mindful of tin''s thermal sensitivity, a 1064 nm wavelength and 45 W power thus minimize heat buildup, as PCB rework case studies notably demonstrate for consistent outcomes.'
-- question: How does tin's **high reflectivity** impact the efficiency of laser cleaning, and what adjustments are needed for different laser types?
-  answer: '**Requires shorter wavelengths or pre-treatment**. Tin''s reflectivity, particularly exceeding 90% in the near-IR spectrum, scatters most laser energy and thus limits absorption, slashing cleaning efficiency. For better uptake, switch to shorter wavelengths or apply surface pre-treatment to enhance adherence. Specifically at 1064 nm with 45 W power, aim for 2.5 J/cm² fluence to ablate oxide layers effectively without damaging the base metal.'
-- question: What are common issues with laser cleaning of historical tin artifacts, such as pewter items, and how to **preserve patina**?
-  answer: '**Low fluence prevents patina erosion**. When cleaning historical pewter artifacts, laser methods particularly risk eroding the valued patina via excessive ablation. To protect it, apply low fluence below 2.5 J/cm² at 45 W power using reversible techniques; thus, this adheres to American Institute for Conservation guidelines for gentle contaminant removal without oxide harm.'
-- question: Does laser cleaning alter the **microstructure or hardness** of pure tin or tin alloys during surface treatment?
-  answer: '**Preserves beta-phase microstructure**. Laser cleaning of pure tin or alloys at fluences around 2.5 J/cm² and 1064 nm wavelength generally preserves the beta-phase microstructure, thus avoiding recrystallization or notable hardness shifts in Vickers testing. Post-treatment SEM analysis specifically confirms minimal subsurface changes, owing to controlled 45 W power and 500 mm/s scan speeds.'
-- question: What environmental and regulatory concerns should be addressed when using laser cleaning on **tin-containing waste** or scrap metal?
-  answer: '**Capture ablated tin particulates**. When cleaning tin scrap using lasers at 1064 nm wavelength and 45 W power, particularly prioritize capturing ablated particulates to prevent tin leaching as an EPA-regulated pollutant. In electronics recycling, ensure RoHS compliance by keeping residues below 0.1% tin limits. Thus, effective ventilation and filtration systems remain essential for mitigating airborne hazards.'
-- question: How does the chemical reactivity of tin with oxygen affect the choice of laser cleaning methods for rusted tin surfaces?
-  answer: Tin's strong affinity for oxygen, particularly in creating a tenacious SnO2 rust layer, requires laser cleaning to emphasize ablation over vaporization. This strategy avoids melting the metal and sparking re-oxidation. Specifically, a 1064 nm wavelength at 2.5 J/cm² fluence and 45 W power delivers precise oxide removal without surplus heat, thus typically under inert gas to shield the fresh surface.
+- question: What laser parameters, such as wavelength and pulse duration, are optimal
+    for cleaning **tin oxide layers** without melting the underlying tin surface?
+  answer: '**1064 nm limits substrate heating**. For cleaning tin oxide without melting
+    the underlying metal at 231.9°C, choose a 1064 nm fiber laser rather than 532
+    nm—particularly its near-IR wavelength boosts oxide absorption while tin''s high
+    reflectivity limits substrate heating. Thus, pair this setup with 12 ns pulses,
+    45 W power, and 2.5 J/cm² fluence for controlled ablation.'
+- question: How effective is laser cleaning at removing contaminants from tin-plated
+    steel without **damaging the tin coating**?
+  answer: '**Safeguards adhesion below delamination thresholds**. Laser cleaning particularly
+    shines in removing contaminants from tin-plated steel, while protecting the coating''s
+    robust adhesion by staying below delamination limits like 2.5 J/cm² fluence at
+    1064 nm. Notably, this nanosecond-pulse approach at around 45 W power prevents
+    pitting, unlike abrasive blasting that causes surface scratches or chemicals leaving
+    residues in electronics and aerospace.'
+- question: What safety risks arise from **laser-induced fumes** when cleaning tin
+    surfaces, and how can they be mitigated?
+  answer: '**Mitigates toxic tin vapor inhalation**. Laser cleaning tin at 2.5 J/cm²
+    fluence releases toxic vapors and oxides, particularly endangering workers via
+    heavy metal inhalation and chronic health risks. Thus, implement robust local
+    exhaust ventilation, NIOSH respirators, and OSHA-compliant monitoring to maintain
+    exposure below 2 mg/m³ limits.'
+- question: In electronics manufacturing, can laser cleaning be used to remove flux
+    residues from **tin-lead solder joints** without affecting solder integrity?
+  answer: '**Minimizes heat for thermal sensitivity**. Yes, laser cleaning effectively
+    removes flux residues from tin-lead solder joints in electronics manufacturing,
+    while preserving joint integrity through its non-contact approach. Particularly
+    mindful of tin''s thermal sensitivity, a 1064 nm wavelength and 45 W power thus
+    minimize heat buildup, as PCB rework case studies notably demonstrate for consistent
+    outcomes.'
+- question: How does tin's **high reflectivity** impact the efficiency of laser cleaning,
+    and what adjustments are needed for different laser types?
+  answer: '**Requires shorter wavelengths or pre-treatment**. Tin''s reflectivity,
+    particularly exceeding 90% in the near-IR spectrum, scatters most laser energy
+    and thus limits absorption, slashing cleaning efficiency. For better uptake, switch
+    to shorter wavelengths or apply surface pre-treatment to enhance adherence. Specifically
+    at 1064 nm with 45 W power, aim for 2.5 J/cm² fluence to ablate oxide layers effectively
+    without damaging the base metal.'
+- question: What are common issues with laser cleaning of historical tin artifacts,
+    such as pewter items, and how to **preserve patina**?
+  answer: '**Low fluence prevents patina erosion**. When cleaning historical pewter
+    artifacts, laser methods particularly risk eroding the valued patina via excessive
+    ablation. To protect it, apply low fluence below 2.5 J/cm² at 45 W power using
+    reversible techniques; thus, this adheres to American Institute for Conservation
+    guidelines for gentle contaminant removal without oxide harm.'
+- question: Does laser cleaning alter the **microstructure or hardness** of pure tin
+    or tin alloys during surface treatment?
+  answer: '**Preserves beta-phase microstructure**. Laser cleaning of pure tin or
+    alloys at fluences around 2.5 J/cm² and 1064 nm wavelength generally preserves
+    the beta-phase microstructure, thus avoiding recrystallization or notable hardness
+    shifts in Vickers testing. Post-treatment SEM analysis specifically confirms minimal
+    subsurface changes, owing to controlled 45 W power and 500 mm/s scan speeds.'
+- question: What environmental and regulatory concerns should be addressed when using
+    laser cleaning on **tin-containing waste** or scrap metal?
+  answer: '**Capture ablated tin particulates**. When cleaning tin scrap using lasers
+    at 1064 nm wavelength and 45 W power, particularly prioritize capturing ablated
+    particulates to prevent tin leaching as an EPA-regulated pollutant. In electronics
+    recycling, ensure RoHS compliance by keeping residues below 0.1% tin limits. Thus,
+    effective ventilation and filtration systems remain essential for mitigating airborne
+    hazards.'
+- question: How does the chemical reactivity of tin with oxygen affect the choice
+    of laser cleaning methods for rusted tin surfaces?
+  answer: Tin's strong affinity for oxygen, particularly in creating a tenacious SnO2
+    rust layer, requires laser cleaning to emphasize ablation over vaporization. This
+    strategy avoids melting the metal and sparking re-oxidation. Specifically, a 1064
+    nm wavelength at 2.5 J/cm² fluence and 45 W power delivers precise oxide removal
+    without surplus heat, thus typically under inert gas to shield the fresh surface.
 regulatoryStandards:
 - description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
@@ -235,54 +293,6 @@ materialProperties:
       min: 0.27
       max: 15750
     percentage: 60.0
-    thermalDestruction:
-      value: 505
-      unit: K
-      source: ai_research
-      min: 256
-      max: 3859
-    specificHeat:
-      value: 227
-      unit: J/kg·K
-      source: ai_research
-      min: 43.4
-      max: 1905
-    laserReflectivity:
-      value: 0.71
-      unit: dimensionless
-      source: ai_research
-      min: 0.4
-      max: 73.5
-    thermalConductivity:
-      value: 66.8
-      unit: W/m·K
-      source: ai_research
-      min: 7.4
-      max: 450
-    thermalExpansion:
-      value: '2.3e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: 4e-06
-      max: 31.7
-    laserAbsorption:
-      value: 0.42
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: '4.2e+08'
-    thermalDiffusivity:
-      value: 4e-05
-      unit: m²/s
-      source: ai_research
-      min: 2e-06
-      max: '0.00017'
-    ablationThreshold:
-      value: 1.2
-      unit: J/cm²
-      source: ai_research
-      min: 0.09
-      max: 4.3
   laser_material_interaction:
     label: Laser-Material Interaction
     absorptivity:
@@ -392,187 +402,332 @@ material_metadata:
 domain_linkages:
   related_contaminants:
   - id: adhesive-residue
-    title: Adhesive Residue / Tape Marks
-    url: /contaminants/organic-residue/adhesive/adhesive-residue
-    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    title: Adhesive Residue
+    url: /contaminants/adhesive-residue
+    image: /images/contaminants/adhesive-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: algae-growth
-    title: Algae and Lichen Growth
-    url: /contaminants/biological/growth/algae-growth
-    image: /images/contaminants/biological/growth/algae-growth.jpg
+    title: Algae Growth
+    url: /contaminants/algae-growth
+    image: /images/contaminants/algae-growth.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: biological-stains
-    title: Organic Biofilm Deposits
-    url: /contaminants/biological/deposit/biological-stains
-    image: /images/contaminants/biological/deposit/biological-stains.jpg
+    title: Biological Stains
+    url: /contaminants/biological-stains
+    image: /images/contaminants/biological-stains.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: carbon-soot
-    title: Carbon Soot Deposits
-    url: /contaminants/organic-residue/other/carbon-soot
-    image: /images/contaminants/organic-residue/other/carbon-soot.jpg
+    title: Carbon Soot
+    url: /contaminants/carbon-soot
+    image: /images/contaminants/carbon-soot.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: chemical-stains
-    title: Chemical Stains / Acid Etching
-    url: /contaminants/chemical-residue/industrial/chemical-stains
-    image: /images/contaminants/chemical-residue/industrial/chemical-stains.jpg
+    title: Chemical Stains
+    url: /contaminants/chemical-stains
+    image: /images/contaminants/chemical-stains.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: epoxy-residue
-    title: Epoxy Resin Deposits
-    url: /contaminants/organic-residue/adhesive/epoxy-residue
-    image: /images/contaminants/organic-residue/adhesive/epoxy-residue.jpg
+    title: Epoxy Residue
+    url: /contaminants/epoxy-residue
+    image: /images/contaminants/epoxy-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: fertilizer-residue
-    title: Fertilizer Salt Deposits
-    url: /contaminants/chemical-residue/industrial/fertilizer-residue
-    image: /images/contaminants/chemical-residue/industrial/fertilizer-residue.jpg
+    title: Fertilizer Residue
+    url: /contaminants/fertilizer-residue
+    image: /images/contaminants/fertilizer-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: graffiti-paint
-    title: Graffiti and Spray Paint
-    url: /contaminants/inorganic-coating/paint/graffiti-paint
-    image: /images/contaminants/inorganic-coating/paint/graffiti-paint.jpg
+    title: Graffiti Paint
+    url: /contaminants/graffiti-paint
+    image: /images/contaminants/graffiti-paint.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: graphite-marks
-    title: Graphite Deposit Traces
-    url: /contaminants/organic-residue/marking/graphite-marks
-    image: /images/contaminants/organic-residue/marking/graphite-marks.jpg
+    title: Graphite Marks
+    url: /contaminants/graphite-marks
+    image: /images/contaminants/graphite-marks.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: ink-stains
-    title: Printing Ink Residue
-    url: /contaminants/organic-residue/marking/ink-stains
-    image: /images/contaminants/organic-residue/marking/ink-stains.jpg
+    title: Ink Stains
+    url: /contaminants/ink-stains
+    image: /images/contaminants/ink-stains.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: insect-residue
-    title: Insect Impact Residue
-    url: /contaminants/biological/deposit/insect-residue
-    image: /images/contaminants/biological/deposit/insect-residue.jpg
+    title: Insect Residue
+    url: /contaminants/insect-residue
+    image: /images/contaminants/insect-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: lime-scale
-    title: Limescale Deposits
-    url: /contaminants/thermal-damage/scale/lime-scale
-    image: /images/contaminants/thermal-damage/scale/lime-scale.jpg
+    title: Lime Scale
+    url: /contaminants/lime-scale
+    image: /images/contaminants/lime-scale.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: mercury-contamination
-    title: Mercury Spill Residue
-    url: /contaminants/chemical-residue/hazardous/mercury-contamination
-    image: /images/contaminants/chemical-residue/hazardous/mercury-contamination.jpg
+    title: Mercury
+    url: /contaminants/mercury
+    image: /images/contaminants/mercury.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: mineral-deposits
-    title: Hard Water Mineral Scale
-    url: /contaminants/thermal-damage/scale/mineral-deposits
-    image: /images/contaminants/thermal-damage/scale/mineral-deposits.jpg
+    title: Mineral Deposits
+    url: /contaminants/mineral-deposits
+    image: /images/contaminants/mineral-deposits.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: paint-residue
-    title: Paint Residue / Coating Failure
-    url: /contaminants/inorganic-coating/paint/paint-residue
-    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    title: Paint Residue
+    url: /contaminants/paint-residue
+    image: /images/contaminants/paint-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: pesticide-residue
-    title: Pesticide Chemical Residue
-    url: /contaminants/chemical-residue/industrial/pesticide-residue
-    image: /images/contaminants/chemical-residue/industrial/pesticide-residue.jpg
+    title: Pesticide Residue
+    url: /contaminants/pesticide-residue
+    image: /images/contaminants/pesticide-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: plastic-residue
-    title: Degraded Polymer Deposits
-    url: /contaminants/organic-residue/polymer/plastic-residue
-    image: /images/contaminants/organic-residue/polymer/plastic-residue.jpg
+    title: Plastic Residue
+    url: /contaminants/plastic-residue
+    image: /images/contaminants/plastic-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: pollen-deposit
-    title: Pollen Accumulation
-    url: /contaminants/biological/deposit/pollen-deposit
-    image: /images/contaminants/biological/deposit/pollen-deposit.jpg
+    title: Pollen Deposit
+    url: /contaminants/pollen-deposit
+    image: /images/contaminants/pollen-deposit.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: radioactive-contamination
-    title: Surface Radioactive Contamination
-    url: /contaminants/chemical-residue/hazardous/radioactive-contamination
-    image: /images/contaminants/chemical-residue/hazardous/radioactive-contamination.jpg
+    title: Radioactive
+    url: /contaminants/radioactive
+    image: /images/contaminants/radioactive.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: rubber-residue
-    title: Rubber Compound Residue
-    url: /contaminants/organic-residue/polymer/rubber-residue
-    image: /images/contaminants/organic-residue/polymer/rubber-residue.jpg
+    title: Rubber Residue
+    url: /contaminants/rubber-residue
+    image: /images/contaminants/rubber-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: salt-residue
-    title: Salt and Chloride Deposits
-    url: /contaminants/inorganic-coating/mineral/salt-residue
-    image: /images/contaminants/inorganic-coating/mineral/salt-residue.jpg
+    title: Salt Residue
+    url: /contaminants/salt-residue
+    image: /images/contaminants/salt-residue.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: scale-buildup
-    title: Mineral Scale / Hard Water Deposits
-    url: /contaminants/thermal-damage/scale/scale-buildup
-    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
+    title: Scale Buildup
+    url: /contaminants/scale-buildup
+    image: /images/contaminants/scale-buildup.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: silicone-buildup
-    title: Silicone Sealant Buildup
-    url: /contaminants/organic-residue/adhesive/silicone-buildup
-    image: /images/contaminants/organic-residue/adhesive/silicone-buildup.jpg
+    title: Silicone Buildup
+    url: /contaminants/silicone-buildup
+    image: /images/contaminants/silicone-buildup.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: tree-sap
-    title: Tree Sap and Resin
-    url: /contaminants/organic-residue/natural/tree-sap
-    image: /images/contaminants/organic-residue/natural/tree-sap.jpg
+    title: Tree Sap
+    url: /contaminants/tree-sap
+    image: /images/contaminants/tree-sap.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: water-stain
-    title: Water Staining and Marks
-    url: /contaminants/organic-residue/other/water-stain
-    image: /images/contaminants/organic-residue/other/water-stain.jpg
+    title: Water Stain
+    url: /contaminants/water-stain
+    image: /images/contaminants/water-stain.jpg
     frequency: common
     severity: moderate
     typical_context: general
   - id: wax-buildup
-    title: Wax Coating Buildup
-    url: /contaminants/organic-residue/wax/wax-buildup
-    image: /images/contaminants/organic-residue/wax/wax-buildup.jpg
+    title: Wax Buildup
+    url: /contaminants/wax-buildup
+    image: /images/contaminants/wax-buildup.jpg
     frequency: common
     severity: moderate
     typical_context: general
+  related_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/carbon-monoxide
+    image: /images/compounds/carbon-monoxide.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of organic adhesives
+    exposure_risk: high
+  - id: acetaldehyde-compound
+    title: Acetaldehyde
+    url: /compounds/acetaldehyde
+    image: /images/compounds/acetaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Decomposition of vinyl and acrylic adhesives
+    exposure_risk: moderate
+  - id: hydrogen-chloride-compound
+    title: Hydrogen Chloride
+    url: /compounds/hydrogen-chloride
+    image: /images/compounds/hydrogen-chloride.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Some adhesives contain chlorinated compounds
+    exposure_risk: moderate
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/toluene
+    image: /images/compounds/toluene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Release of toluene from adhesive formulations
+    exposure_risk: moderate
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/formaldehyde
+    image: /images/compounds/formaldehyde.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of formaldehyde-based adhesives
+    exposure_risk: moderate
+  - id: hydrogen-cyanide-compound
+    title: Hydrogen Cyanide
+    url: /compounds/hydrogen-cyanide
+    image: /images/compounds/hydrogen-cyanide.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Breakdown of cyanoacrylate adhesives
+    exposure_risk: moderate
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/carbon-dioxide
+    image: /images/compounds/carbon-dioxide.jpg
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of adhesives
+    exposure_risk: low
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/vocs
+    image: /images/compounds/vocs.jpg
+    frequency: very_common
+    severity: moderate
+    typical_context: Release of adhesive solvents
+    exposure_risk: moderate
+  - id: benzoapyrene-compound
+    title: Benzo[a]pyrene
+    url: /compounds/benzoapyrene
+    image: /images/compounds/benzoapyrene.jpg
+    frequency: common
+    severity: high
+    typical_context: Formed during original combustion event
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/pahs
+    image: /images/compounds/pahs.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Pre-existing PAHs from incomplete combustion
+    exposure_risk: high
+  - id: nitrogen-oxides-compound
+    title: Nitrogen Oxides
+    url: /compounds/nitrogen-oxides
+    image: /images/compounds/nitrogen-oxides.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Nitrogen from some paint formulations
+    exposure_risk: low
+  - id: zinc-oxide-compound
+    title: Zinc Oxide
+    url: /compounds/zinc-oxide
+    image: /images/compounds/zinc-oxide.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Zinc oxide pigments in paint
+    exposure_risk: low
+  - id: chromium-vi-compound
+    title: Hexavalent Chromium
+    url: /compounds/chromium-vi
+    image: /images/compounds/chromium-vi.jpg
+    frequency: occasional
+    severity: high
+    typical_context: Chromate pigments in some paints
+    exposure_risk: high
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/benzene
+    image: /images/compounds/benzene.jpg
+    frequency: common
+    severity: high
+    typical_context: Thermal breakdown of aromatic paint solvents
+    exposure_risk: high
+  - id: styrene-compound
+    title: Styrene
+    url: /compounds/styrene
+    image: /images/compounds/styrene.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Thermal depolymerization of polystyrene
+    exposure_risk: high
+  - id: phosgene-compound
+    title: Phosgene
+    url: /compounds/phosgene
+    image: /images/compounds/phosgene.jpg
+    frequency: rare
+    severity: high
+    typical_context: Thermal breakdown of certain chlorinated plastics
+    exposure_risk: high
+  - id: acrolein-compound
+    title: Acrolein
+    url: /compounds/acrolein
+    image: /images/compounds/acrolein.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Pyrolysis of certain polymers
+    exposure_risk: moderate
+  - id: sulfur-dioxide-compound
+    title: Sulfur Dioxide
+    url: /compounds/sulfur-dioxide
+    image: /images/compounds/sulfur-dioxide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Vulcanized rubber contains sulfur compounds
+    exposure_risk: moderate
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -586,4 +741,4 @@ serviceOffering:
     - Surface contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T22:06:43.229027'
+    generated_date: '2025-12-16T13:51:25.936151'
