@@ -204,6 +204,12 @@ class TrivialSettingsExporter:
         frontmatter['slug'] = slug
         frontmatter['domain'] = 'settings'
         
+        # Add ISO 8601 timestamps if missing (Schema.org requirement)
+        from datetime import datetime
+        current_timestamp = datetime.now().isoformat()
+        frontmatter['datePublished'] = setting_data.get('datePublished') or current_timestamp
+        frontmatter['dateModified'] = setting_data.get('dateModified') or current_timestamp
+        
         # Copy machine settings
         if 'machineSettings' in setting_data:
             frontmatter['machineSettings'] = self._strip_generation_metadata(setting_data['machineSettings'])

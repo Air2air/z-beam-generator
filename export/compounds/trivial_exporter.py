@@ -73,6 +73,14 @@ class CompoundExporter:
         # Build frontmatter
         frontmatter = self._build_frontmatter(compound)
         
+        # Add ISO 8601 timestamps if missing (Schema.org requirement)
+        from datetime import datetime
+        current_timestamp = datetime.now().isoformat()
+        if 'datePublished' not in frontmatter or not frontmatter['datePublished']:
+            frontmatter['datePublished'] = current_timestamp
+        if 'dateModified' not in frontmatter or not frontmatter['dateModified']:
+            frontmatter['dateModified'] = current_timestamp
+        
         # Reorder fields according to specification
         ordered_frontmatter = self.field_order_validator.reorder_fields(frontmatter, 'compounds')
         

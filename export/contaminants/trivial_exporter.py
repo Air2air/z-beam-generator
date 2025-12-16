@@ -270,9 +270,11 @@ class TrivialContaminantsExporter:
         frontmatter['content_type'] = 'unified_contamination'
         frontmatter['schema_version'] = '4.0.0'
         
-        # 7-8: Publishing Dates (Phase 1: Add date fields)
-        frontmatter['datePublished'] = pattern_data.get('datePublished', None)
-        frontmatter['dateModified'] = pattern_data.get('dateModified', None)
+        # 7-8: Publishing Dates (Phase 1: Add date fields with ISO 8601 timestamps)
+        from datetime import datetime
+        current_timestamp = datetime.now().isoformat()
+        frontmatter['datePublished'] = pattern_data.get('datePublished') or current_timestamp
+        frontmatter['dateModified'] = pattern_data.get('dateModified') or current_timestamp
         
         # 9: Author (Phase 1: Add FULL author block from Authors.yaml)
         author_field = pattern_data.get('author', {})

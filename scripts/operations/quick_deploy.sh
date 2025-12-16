@@ -4,10 +4,10 @@
 # =======================
 #
 # Deploys all domains and validates in 6 steps:
-# 1. Export materials (153 files) - NO API calls
-# 2. Export settings (153 files) - NO API calls
-# 3. Export contaminants (98 files) - NO API calls
-# 4. Export compounds (25 files) - NO API calls
+# 1. Export materials (153 files) - NO API calls + ISO 8601 timestamps
+# 2. Export settings (153 files) - NO API calls + ISO 8601 timestamps
+# 3. Export contaminants (98 files) - NO API calls + ISO 8601 timestamps
+# 4. Export compounds (25 files) - NO API calls + ISO 8601 timestamps
 # 5. Re-extract associations
 # 6. Run tests
 #
@@ -16,6 +16,11 @@
 # - Settings: TrivialSettingsExporter - Simple YAML-to-YAML copy
 # - Contaminants: TrivialContaminantsExporter - Simple YAML-to-YAML copy
 # - Compounds: CompoundExporter - Simple YAML-to-YAML copy
+#
+# ✅ TIMESTAMP GENERATION: All exporters generate ISO 8601 timestamps
+# - datePublished: Generated on first export if missing
+# - dateModified: Updated on every export
+# - Format: YYYY-MM-DDTHH:MM:SS.ffffff (Python datetime.now().isoformat())
 #
 # All AI generation, research, and validation happens BEFORE export.
 # Exporters only copy complete, validated data to frontmatter files.

@@ -713,6 +713,12 @@ class TrivialFrontmatterExporter:
         category = material_data.get('category', '')
         category_ranges = self._get_category_ranges(category)
         
+        # Add ISO 8601 timestamps if missing (Schema.org requirement)
+        from datetime import datetime
+        current_timestamp = datetime.now().isoformat()
+        frontmatter['datePublished'] = material_data.get('datePublished') or current_timestamp
+        frontmatter['dateModified'] = material_data.get('dateModified') or current_timestamp
+        
         # Generate breadcrumb navigation (before field copying)
         # POLICY: Material_name is now the ID (slug format) after ID migration
         # No need to slugify or add suffix - ID already includes -laser-cleaning
