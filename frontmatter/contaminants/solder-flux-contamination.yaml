@@ -1,5 +1,6 @@
 name: Soldering Flux Residue
 slug: solder-flux-contamination
+id: solder-flux-contamination
 category: organic-residue
 subcategory: lubricant
 content_type: unified_contamination
@@ -110,7 +111,7 @@ laser_properties:
     transmission_depth: 11.8
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -189,6 +190,32 @@ laser_properties:
     thermal_conductivity: 0.2
     thermal_diffusivity: 0.08
     vaporization_temperature: 450
+domain_linkages:
+  related_materials:
+  - id: pcb
+    title: PCB
+    url: /materials/pcb
+    image: /images/materials/pcb.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Copper
+    title: Copper
+    url: /materials/metal/non-ferrous/Copper
+    image: /images/materials/metal/non-ferrous/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - PCB
 - Copper

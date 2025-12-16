@@ -1,5 +1,6 @@
 name: Heavy Machinery Grease
 slug: grease-deposits-contamination
+id: grease-deposits-contamination
 category: organic-residue
 subcategory: petroleum
 content_type: unified_contamination
@@ -111,7 +112,7 @@ laser_properties:
     transmission_depth: 11.8
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -197,6 +198,39 @@ laser_properties:
     thermal_conductivity: 0.15
     thermal_diffusivity: 0.08
     vaporization_temperature: 450
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Iron
+    title: Iron
+    url: /materials/metal/ferrous/Iron
+    image: /images/materials/metal/ferrous/Iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/metal/non-ferrous/Aluminum
+    image: /images/materials/metal/non-ferrous/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cast-iron
+    title: Cast Iron
+    url: /materials/cast-iron
+    image: /images/materials/cast-iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Steel
 - Iron

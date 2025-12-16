@@ -1,5 +1,21 @@
 # End-to-End Data Architecture Evaluation
-**Date**: December 15, 2025  
+
+> **⚠️ ARCHIVED NOTICE**  
+> **Date**: December 15, 2025  
+> **Status**: **SUPERSEDED BY MIGRATION**  
+> **Replacement**: Data architecture fundamentally changed with `domain_linkages` migration  
+> **Current Documentation**: See [DOMAIN_LINKAGES_MIGRATION_COMPLETE_DEC15_2025.md](./DOMAIN_LINKAGES_MIGRATION_COMPLETE_DEC15_2025.md)
+>
+> **This analysis reflects the OLD structure** (pre-migration with `valid_materials`, `eeat.citations`, etc.)  
+> **All findings are now outdated.** The migration to `domain_linkages` structure changed:
+> - Contaminants: Now use `domain_linkages.related_materials[]` (not `valid_materials`)
+> - Materials: Now use `domain_linkages.related_contaminants[]` (bidirectional)
+> - All linkages: Now have standardized `id`/`title`/`url`/`image` fields
+> - Bidirectional relationships: 1,962 total linkages across 4 domains
+
+---
+
+**Date**: December 15, 2025 (ARCHIVED)  
 **Type**: Objective Analysis & Consolidation Proposals
 
 ---
@@ -7,6 +23,8 @@
 ## Executive Summary
 
 **Current State**: The Z-Beam system maintains **23.8 MB** of data across **425 YAML files**, **6 SQLite databases**, and multiple supporting structures. The architecture shows **moderate redundancy** but has **strong separation of concerns**.
+
+**⚠️ NOTE**: This analysis was performed BEFORE the domain_linkages migration. All references to `valid_materials`, `eeat.citations`, and old linkage patterns are outdated.
 
 **Key Findings**:
 - ✅ Data duplication is **intentional and justified** (frontmatter = deployment format)
@@ -19,7 +37,7 @@
 
 ---
 
-## 1. Current Data Architecture
+## 1. Current Data Architecture (OUTDATED - Pre-Migration)
 
 ### 1.1 Primary Data Storage
 

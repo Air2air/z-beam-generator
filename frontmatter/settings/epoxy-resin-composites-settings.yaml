@@ -1,5 +1,6 @@
 name: Epoxy Resin Composites
 slug: epoxy-resin-composites
+id: epoxy-resin-composites-settings
 category: composite
 subcategory: fiber-reinforced
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: taiwan_formatting.yaml
 title: Epoxy Resin Composites Laser Cleaning Settings
 settings_description: I've seen epoxy resin composites behave differently from plain metals during laser cleaning, mainly because their fiber-reinforced structure absorbs energy more readily without reflecting it away. This helps remove contaminants efficiently, as the matrix holds up well under controlled heat, preventing quick degradation that you'd get with softer plastics. So, approach it by starting with gentler passes to leverage that absorption for clean results. Just watch out for localized overheating at the end, which can cause delamination if you push too hard.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -177,4 +180,4 @@ material_challenges:
     - Monitor for matrix damage; stop if surface texture changes
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:09.604987'
+    generated_date: '2025-12-15T22:06:40.179762'

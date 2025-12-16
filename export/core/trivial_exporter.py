@@ -606,8 +606,8 @@ class TrivialFrontmatterExporter:
         self.logger.info(f"✅ Loaded property taxonomy with {len(self.property_taxonomy)} categories")
         self.logger.info(f"✅ Loaded {len(self.settings_data.get('settings', {}))} materials from Settings.yaml")
         
-        # Load separated content files for orchestration using unified_loader
-        from shared.data.unified_loader import (
+        # Load separated content files for orchestration
+        from shared.data.loader import (
             load_material_micros,
             load_material_faqs,
             load_regulatory_standards
@@ -744,7 +744,8 @@ class TrivialFrontmatterExporter:
             'datePublished', 'dateModified',  # Schema.org date fields from git history
             'images', 'micro', 'regulatoryStandards', 'eeat',
             'materialProperties', 'machineSettings', 'material_challenges', 'settings_description', 'faq',
-            '_metadata', 'material_metadata'
+            '_metadata', 'material_metadata',
+            'domain_linkages'  # Added: Export bidirectional linkages (Material ↔ Contaminant)
         }
         
         # Copy only exportable fields from Materials.yaml (exclude 'author' - it's enriched from registry above)
@@ -874,6 +875,10 @@ class TrivialFrontmatterExporter:
                 frontmatter['faq'] = self._strip_generation_metadata(formatted_faq)
                 self.logger.debug(f"Using FAQ from components")
         
+        # Export domain_linkages from Materials.yaml (bidirectional Material ↔ Contaminant relationships)
+        if 'domain_linkages' in material_data:
+            frontmatter['domain_linkages'] = material_data['domain_linkages']
+        
         # Export dual-file structure: materials page and settings page
         self._export_materials_page(material_name, frontmatter)
         self._export_settings_page(material_name, frontmatter, material_data)
@@ -889,7 +894,10 @@ class TrivialFrontmatterExporter:
         # Core metadata
         materials_page['name'] = full_frontmatter.get('name')
         # POLICY: Strip parentheses from slugs
-        materials_page['slug'] = create_material_slug(material_name)
+        material_slug = create_material_slug(material_name)
+        materials_page['slug'] = material_slug
+        # Add id field matching filename pattern
+        materials_page['id'] = f"{material_slug}-laser-cleaning"
         materials_page['category'] = full_frontmatter.get('category')
         materials_page['subcategory'] = full_frontmatter.get('subcategory')
         materials_page['content_type'] = 'unified_material'
@@ -918,6 +926,9 @@ class TrivialFrontmatterExporter:
         materials_page['materialProperties'] = full_frontmatter.get('materialProperties')
         materials_page['eeat'] = full_frontmatter.get('eeat')
         materials_page['material_metadata'] = full_frontmatter.get('material_metadata')
+        
+        # Cross-domain relationships (Material ↔ Contaminant bidirectional linkages)
+        materials_page['domain_linkages'] = full_frontmatter.get('domain_linkages')
         
         # Generate serviceOffering for SEO rich snippets (Service/Product JSON-LD schema)
         # Uses category/subcategory to determine difficulty, hours, and target contaminants
@@ -977,7 +988,10 @@ class TrivialFrontmatterExporter:
         
         # Core metadata
         settings_page['name'] = full_frontmatter.get('name')
-        settings_page['slug'] = material_name.lower().replace(' ', '-')
+        settings_slug = material_name.lower().replace(' ', '-')
+        settings_page['slug'] = settings_slug
+        # Add id field matching filename pattern
+        settings_page['id'] = f"{settings_slug}-settings"
         settings_page['category'] = full_frontmatter.get('category')
         settings_page['subcategory'] = full_frontmatter.get('subcategory')
         settings_page['content_type'] = 'unified_settings'
@@ -994,6 +1008,10 @@ class TrivialFrontmatterExporter:
         # Settings page metadata
         settings_page['title'] = f"{full_frontmatter.get('name')} Laser Cleaning Settings"
         settings_page['settings_description'] = full_frontmatter.get('settings_description', f"Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing {full_frontmatter.get('name').lower()} laser cleaning operations.")
+        
+        # Export domain_linkages to settings page if present
+        if 'domain_linkages' in full_frontmatter:
+            settings_page['domain_linkages'] = full_frontmatter['domain_linkages']
         
         # Settings-specific breadcrumb (uses /materials paths)
         category = full_frontmatter.get('category', '')

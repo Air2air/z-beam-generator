@@ -1,0 +1,191 @@
+{
+  "compound_id": "styrene",
+  "name": "Styrene",
+  "cas_number": "100-42-5",
+  "formula": "C8H8",
+  "ppe_requirements": {
+    "respiratory": "NIOSH-approved organic vapor respirator for <50 ppm. SCBA for >50 ppm or unknown concentrations.",
+    "skin": "Nitrile or butyl rubber gloves. Chemical-resistant clothing. Styrene absorbs through skin.",
+    "eye": "Chemical safety goggles, face shield for splash hazard.",
+    "minimum_level": "Level C for <50 ppm, Level B for >50 ppm",
+    "special_notes": "Neurotoxin and probable carcinogen (IARC 2B). Skin absorption significant. Extremely irritating. May cause CNS depression."
+  },
+  "physical_properties": {
+    "boiling_point": "145\u00b0C (293\u00b0F)",
+    "melting_point": "-30.6\u00b0C (-23\u00b0F)",
+    "vapor_pressure": "5 mmHg @ 20\u00b0C",
+    "vapor_density": "3.6 (Air=1)",
+    "specific_gravity": "0.906",
+    "flash_point": "31\u00b0C (88\u00b0F) closed cup",
+    "autoignition_temp": "490\u00b0C (914\u00b0F)",
+    "explosive_limits": "LEL: 1.1%, UEL: 6.1%",
+    "appearance": "Colorless to yellowish oily liquid",
+    "odor": "Sweet, floral odor @ 0.05-0.5 ppm (odor fatigue occurs)"
+  },
+  "emergency_response": {
+    "fire_hazard": "Flammable liquid. May polymerize explosively in fire. Vapors heavier than air. May travel to ignition sources.",
+    "fire_suppression": "Stop flow if safe. Use dry chemical, CO2, alcohol-resistant foam. Water spray to cool containers. Do not use water jet on liquid. Prevent contamination - polymerization hazard.",
+    "spill_procedures": "Eliminate ignition sources. Ventilate area. Contain with sand or earth. Neutralize with sodium bisulfite. Dispose as hazardous waste. Check stabilizer level before handling.",
+    "exposure_immediate_actions": "Remove to fresh air immediately. Eyes: flush with water for 15 minutes. Remove contaminated clothing - styrene penetrates. Wash skin thoroughly. Seek medical attention - neurotoxin and carcinogen exposure. Monitor for CNS effects.",
+    "environmental_hazards": "Toxic to aquatic life. Bioaccumulates. Report spills >1000 lbs.",
+    "special_hazards": "PROBABLE HUMAN CARCINOGEN (IARC 2B). NEUROTOXIN - causes CNS depression, peripheral neuropathy. Irritating to eyes, skin, respiratory tract. May polymerize explosively. Olfactory fatigue - cannot rely on odor. Metabolized to styrene oxide (more toxic)."
+  },
+  "storage_requirements": {
+    "temperature_range": "Store below 32\u00b0C. Keep cool. Avoid excessive heat.",
+    "ventilation": "Local exhaust ventilation. Mechanical ventilation with emergency backup.",
+    "incompatibilities": [
+      "Oxidizers",
+      "Peroxides",
+      "Strong acids",
+      "Aluminum chloride",
+      "Copper",
+      "Brass",
+      "Iron"
+    ],
+    "container_material": "Stainless steel or aluminum. Must contain inhibitor (tert-butylcatechol). Check inhibitor level regularly.",
+    "segregation": "Separate from oxidizers by 20 feet. Flammable liquid storage cabinet.",
+    "quantity_limits": "Minimize quantities. Follow NFPA 30 for flammable liquids.",
+    "special_requirements": "CRITICAL: Store with polymerization inhibitor (10-15 ppm tert-butylcatechol). Monitor inhibitor level monthly. Avoid light and heat. Post \"FLAMMABLE\" and \"CANCER HAZARD\" signs. Date containers."
+  },
+  "regulatory_classification": {
+    "un_number": "UN2055 (monomer, stabilized)",
+    "dot_hazard_class": "3 (Flammable liquid)",
+    "dot_label": "Flammable Liquid",
+    "nfpa_codes": {
+      "health": 2,
+      "flammability": 3,
+      "reactivity": 2,
+      "special": null
+    },
+    "epa_hazard_categories": [
+      "Flammability",
+      "Acute toxicity",
+      "Carcinogenicity (probable)",
+      "Neurotoxicity",
+      "Aquatic toxicity"
+    ],
+    "sara_title_iii": true,
+    "cercla_rq": "1000 pounds (454 kg)",
+    "rcra_code": null
+  },
+  "workplace_exposure": {
+    "osha_pel": {
+      "twa_8hr": "100 ppm (425 mg/m\u00b3)",
+      "stel_15min": "200 ppm (850 mg/m\u00b3)",
+      "ceiling": null
+    },
+    "niosh_rel": {
+      "twa_8hr": "50 ppm (215 mg/m\u00b3)",
+      "stel_15min": "100 ppm (425 mg/m\u00b3)",
+      "ceiling": null,
+      "idlh": "700 ppm"
+    },
+    "acgih_tlv": {
+      "twa_8hr": "20 ppm",
+      "stel_15min": "40 ppm",
+      "ceiling": null
+    },
+    "biological_exposure_indices": [
+      {
+        "metabolite": "Mandelic acid + Phenylglyoxylic acid",
+        "specimen": "Urine",
+        "timing": "End of shift",
+        "bei_value": "400 mg/g creatinine"
+      },
+      {
+        "metabolite": "Styrene",
+        "specimen": "Blood",
+        "timing": "End of shift",
+        "bei_value": "0.2 mg/L"
+      }
+    ]
+  },
+  "synonyms_identifiers": {
+    "synonyms": [
+      "Vinyl benzene",
+      "Phenylethylene",
+      "Cinnamene",
+      "Styrol",
+      "Ethenylbenzene"
+    ],
+    "common_trade_names": [],
+    "other_identifiers": {
+      "rtecs_number": "WL3675000",
+      "ec_number": "202-851-5",
+      "pubchem_cid": "7501"
+    }
+  },
+  "reactivity": {
+    "stability": "UNSTABLE. Polymerizes when heated or contaminated. Inhibitor required.",
+    "polymerization": "Exothermic polymerization with peroxides, oxidizers, or heat. May be explosive. Check inhibitor level.",
+    "incompatible_materials": [
+      "Oxidizers",
+      "Peroxides",
+      "Strong acids",
+      "Aluminum chloride",
+      "Copper",
+      "Brass",
+      "Iron compounds",
+      "Sulfuric acid"
+    ],
+    "hazardous_decomposition": [
+      "Carbon monoxide",
+      "Carbon dioxide",
+      "Toxic styrene vapors",
+      "Benzene"
+    ],
+    "conditions_to_avoid": [
+      "Heat",
+      "Light",
+      "Oxidizers",
+      "Peroxides",
+      "Contamination",
+      "Sparks",
+      "Flames"
+    ],
+    "reactivity_hazard": "May polymerize violently. Reacts with oxidizers. Attacks some plastics, rubber, and coatings. Forms peroxides on prolonged storage."
+  },
+  "environmental_impact": {
+    "aquatic_toxicity": "Toxic to aquatic life. LC50 (fish, 96h): 4-10 mg/L.",
+    "biodegradability": "Readily biodegradable (>60% in 28 days).",
+    "bioaccumulation": "Moderate bioaccumulation potential. BCF: 25-150. Log Kow: 2.95.",
+    "soil_mobility": "Moderate mobility. Adsorbs to soil organic matter. Volatilizes from soil.",
+    "atmospheric_fate": "Photolyzes via hydroxyl radicals. Atmospheric half-life: 1-2 days. Forms ozone.",
+    "ozone_depletion": false,
+    "global_warming_potential": null,
+    "reportable_releases": {
+      "water": "1000 lbs to navigable waters",
+      "air": "1000 lbs/day (CERCLA RQ)"
+    }
+  },
+  "detection_monitoring": {
+    "sensor_types": [
+      "Photoionization detector (PID)",
+      "Flame ionization detector (FID)",
+      "Infrared"
+    ],
+    "detection_range": "0-200 ppm typical",
+    "alarm_setpoints": {
+      "low": "20 ppm (ACGIH TLV)",
+      "high": "50 ppm (NIOSH REL)",
+      "evacuate": "700 ppm (NIOSH IDLH)"
+    },
+    "colorimetric_tubes": [
+      "Dr\u00e4ger Styrene 1/a",
+      "Gastec 132"
+    ],
+    "analytical_methods": [
+      {
+        "method": "NIOSH 1501",
+        "technique": "GC-FID",
+        "detection_limit": "0.005 ppm"
+      },
+      {
+        "method": "OSHA Method 89",
+        "technique": "GC-FID",
+        "detection_limit": "0.01 ppm"
+      }
+    ],
+    "odor_threshold": "0.05-0.5 ppm - WARNING: Olfactory fatigue occurs. Cannot rely on odor for protection."
+  }
+}

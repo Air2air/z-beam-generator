@@ -1,5 +1,6 @@
 name: Silicon Nitride
 slug: silicon-nitride
+id: silicon-nitride-laser-cleaning
 category: ceramic
 subcategory: oxide
 content_type: unified_material
@@ -342,6 +343,120 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.922723Z'
   structure_version: '2.0'
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue
+    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: blood-residue
+    title: Biological Blood Residue
+    url: /contaminants/biological/deposit/blood-residue
+    image: /images/contaminants/biological/deposit/blood-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbon-buildup
+    title: Carbon Deposit Buildup
+    url: /contaminants/organic-residue/other/carbon-buildup
+    image: /images/contaminants/organic-residue/other/carbon-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbon-soot
+    title: Carbon Soot Deposits
+    url: /contaminants/organic-residue/other/carbon-soot
+    image: /images/contaminants/organic-residue/other/carbon-soot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: ceramic-glaze
+    title: Ceramic Glaze Deposits
+    url: /contaminants/inorganic-coating/ceramic/ceramic-glaze
+    image: /images/contaminants/inorganic-coating/ceramic/ceramic-glaze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chemical-stains
+    title: Chemical Stains / Acid Etching
+    url: /contaminants/chemical-residue/industrial/chemical-stains
+    image: /images/contaminants/chemical-residue/industrial/chemical-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fire-damage
+    title: Fire and Smoke Damage
+    url: /contaminants/thermal-damage/fire/fire-damage
+    image: /images/contaminants/thermal-damage/fire/fire-damage.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: graphite-marks
+    title: Graphite Deposit Traces
+    url: /contaminants/organic-residue/marking/graphite-marks
+    image: /images/contaminants/organic-residue/marking/graphite-marks.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lime-scale
+    title: Limescale Deposits
+    url: /contaminants/thermal-damage/scale/lime-scale
+    image: /images/contaminants/thermal-damage/scale/lime-scale.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: medical-disinfectant
+    title: Medical Disinfectant Residue
+    url: /contaminants/chemical-residue/industrial/medical-disinfectant
+    image: /images/contaminants/chemical-residue/industrial/medical-disinfectant.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mineral-deposits
+    title: Hard Water Mineral Scale
+    url: /contaminants/thermal-damage/scale/mineral-deposits
+    image: /images/contaminants/thermal-damage/scale/mineral-deposits.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mold-mildew
+    title: Mold and Mildew Growth
+    url: /contaminants/biological/growth/mold-mildew
+    image: /images/contaminants/biological/growth/mold-mildew.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: scale-buildup
+    title: Mineral Scale / Hard Water Deposits
+    url: /contaminants/thermal-damage/scale/scale-buildup
+    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: semiconductor-residue
+    title: Semiconductor Processing Residue
+    url: /contaminants/chemical-residue/industrial/semiconductor-residue
+    image: /images/contaminants/chemical-residue/industrial/semiconductor-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicone-buildup
+    title: Silicone Sealant Buildup
+    url: /contaminants/organic-residue/adhesive/silicone-buildup
+    image: /images/contaminants/organic-residue/adhesive/silicone-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: soap-scum
+    title: Soap Scum Buildup
+    url: /contaminants/organic-residue/cleaning-agent/soap-scum
+    image: /images/contaminants/organic-residue/cleaning-agent/soap-scum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -355,4 +470,4 @@ serviceOffering:
     - Adhesive residue
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:14.364470'
+    generated_date: '2025-12-15T22:06:42.651275'

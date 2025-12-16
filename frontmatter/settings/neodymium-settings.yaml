@@ -1,5 +1,6 @@
 name: Neodymium
 slug: neodymium
+id: neodymium-settings
 category: rare-earth
 subcategory: lanthanide
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: taiwan_formatting.yaml
 title: Neodymium Laser Cleaning Settings
 settings_description: When laser cleaning Neodymium, we've found it behaves differently from tougher metals like steel because of its soft, reactive nature as a rare-earth lanthanide, which makes it prone to quick surface oxidation if heat builds up too fast. So, we approach it by starting with gentler pulses to localize energy and prevent unwanted reactions, unlike the higher intensities we use on more conductive materials. This keeps the dense structure intact while removing contaminants effectively. Just watch out for overexposure at the end, as it can lead to pitting.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -178,4 +181,4 @@ material_challenges:
     - Chain of custody documentation for high-value materials
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:11.337410'
+    generated_date: '2025-12-15T22:06:41.448357'

@@ -1,5 +1,6 @@
 name: Plywood
 slug: plywood
+id: plywood-laser-cleaning
 category: wood
 subcategory: hardwood
 content_type: unified_material
@@ -337,6 +338,15 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.922377Z'
   structure_version: '2.0'
+domain_linkages:
+  related_contaminants:
+  - id: wood-rot
+    title: Wood Rot / Fungal Biodegradation
+    url: /contaminants/biological/growth/wood-rot
+    image: /images/contaminants/biological/growth/wood-rot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -351,4 +361,4 @@ serviceOffering:
     notes: Careful power control to avoid charring
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:11.954318'
+    generated_date: '2025-12-15T22:06:41.764174'

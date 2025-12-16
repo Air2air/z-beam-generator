@@ -1,5 +1,6 @@
 name: Redwood
 slug: redwood
+id: redwood-settings
 category: wood
 subcategory: hardwood
 content_type: unified_settings
@@ -44,6 +45,57 @@ settings_description: 'We''ve found that cleaning redwood with lasers requires c
 
 
   But watch the high porosity—it soaks up residue if you overlap too much. Adjust by increasing passes lightly. Compared to oak, redwood flexes more under heat, so steady scanning prevents cracks. This keeps the wood''s warm tone intact for furniture or art work.'
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue
+    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: algae-growth
+    title: Algae and Lichen Growth
+    url: /contaminants/biological/growth/algae-growth
+    image: /images/contaminants/biological/growth/algae-growth.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: environmental-dust
+    title: Environmental Dust Layer
+    url: /contaminants/organic-residue/other/environmental-dust
+    image: /images/contaminants/organic-residue/other/environmental-dust.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mold-mildew
+    title: Mold and Mildew Growth
+    url: /contaminants/biological/growth/mold-mildew
+    image: /images/contaminants/biological/growth/mold-mildew.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: uv-chalking
+    title: UV Photodegradation / Polymer Chalking
+    url: /contaminants/aging/photodegradation/uv-chalking
+    image: /images/contaminants/aging/photodegradation/uv-chalking.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: wax-buildup
+    title: Wax Coating Buildup
+    url: /contaminants/organic-residue/wax/wax-buildup
+    image: /images/contaminants/organic-residue/wax/wax-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: wood-rot
+    title: Wood Rot / Fungal Biodegradation
+    url: /contaminants/biological/growth/wood-rot
+    image: /images/contaminants/biological/growth/wood-rot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -186,4 +238,4 @@ material_challenges:
     - Limit to 2-3 passes maximum to avoid substrate damage
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:13.058668'
+    generated_date: '2025-12-15T22:06:42.240397'

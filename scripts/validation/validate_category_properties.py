@@ -56,10 +56,16 @@ def validate_material_properties():
     # Validate each material
     violations = []
     valid_materials = 0
+    domain_linkages_count = 0
     
     for material_name, material_data in materials_section.items():
         if not isinstance(material_data, dict):
             continue
+        
+        # Count domain_linkages if present (new structure)
+        if 'domain_linkages' in material_data:
+            if 'related_contaminants' in material_data['domain_linkages']:
+                domain_linkages_count += len(material_data['domain_linkages']['related_contaminants'])
         
         category = material_data.get('category', 'unknown')
         valid_props = valid_properties_by_category.get(category, set())
@@ -95,6 +101,8 @@ def validate_material_properties():
     if not violations:
         print("✅ SUCCESS: All materials have valid properties for their categories!")
         print(f"   {valid_materials} materials validated")
+        if domain_linkages_count > 0:
+            print(f"   {domain_linkages_count} domain linkages found")
         print()
         return True
     

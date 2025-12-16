@@ -1,5 +1,6 @@
 name: Lanthanum
 slug: lanthanum
+id: lanthanum-settings
 category: rare-earth
 subcategory: lanthanide
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
   formatting_file: italy_formatting.yaml
 title: Lanthanum Laser Cleaning Settings
 settings_description: When laser cleaning Lanthanum, we've found the biggest challenge lies in its quick tendency to oxidize during the process, since it reacts strongly with air even at moderate heat levels. This sets it apart from more stable metals, demanding a careful approach to prevent surface discoloration that could ruin precision parts like optical components or magnets. To handle this, we typically use short, controlled pulses in an inert gas environment, which clears contaminants effectively while keeping the underlying material intact and shiny. Watch out for excessive dwell time, though—it can lead to uneven heating and potential warping on thin sections.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -188,4 +191,4 @@ material_challenges:
     - Chain of custody documentation for high-value materials
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:10.702546'
+    generated_date: '2025-12-15T22:06:40.969988'

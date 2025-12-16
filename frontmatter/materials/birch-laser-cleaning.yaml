@@ -1,5 +1,6 @@
 name: Birch
 slug: birch
+id: birch-laser-cleaning
 category: wood
 subcategory: hardwood
 content_type: unified_material
@@ -321,6 +322,50 @@ eeat:
 material_metadata:
   regulatoryStandards:
   - EPA Clean Air Act Compliance
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue
+    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: algae-growth
+    title: Algae and Lichen Growth
+    url: /contaminants/biological/growth/algae-growth
+    image: /images/contaminants/biological/growth/algae-growth.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lead-paint
+    title: Lead-Based Paint Removal
+    url: /contaminants/inorganic-coating/paint/lead-paint
+    image: /images/contaminants/inorganic-coating/paint/lead-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mold-mildew
+    title: Mold and Mildew Growth
+    url: /contaminants/biological/growth/mold-mildew
+    image: /images/contaminants/biological/growth/mold-mildew.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: paint-residue
+    title: Paint Residue / Coating Failure
+    url: /contaminants/inorganic-coating/paint/paint-residue
+    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: wax-buildup
+    title: Wax Coating Buildup
+    url: /contaminants/organic-residue/wax/wax-buildup
+    image: /images/contaminants/organic-residue/wax/wax-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -335,4 +380,4 @@ serviceOffering:
     notes: Careful power control to avoid charring
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:08.574433'
+    generated_date: '2025-12-15T22:06:39.428922'

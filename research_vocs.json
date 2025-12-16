@@ -1,0 +1,174 @@
+{
+  "compound_id": "vocs",
+  "name": "Volatile Organic Compounds (VOCs)",
+  "cas_number": "N/A (mixture)",
+  "formula": "Various",
+  "ppe_requirements": {
+    "respiratory": "Organic vapor respirator with appropriate cartridge for known VOC concentrations. SCBA for unknown mixtures or high concentrations.",
+    "skin": "Nitrile or butyl rubber gloves depending on specific VOC. Chemical-resistant clothing for liquid contact.",
+    "eye": "Chemical safety goggles, face shield for splash hazard.",
+    "minimum_level": "Level C for known low concentrations, Level B for unknown mixtures or high vapor concentrations",
+    "special_notes": "VOCs vary widely in toxicity. Mixture effects unpredictable. Some VOCs carcinogenic (benzene, formaldehyde). Others neurotoxic (toluene, xylene). Identify specific VOCs when possible."
+  },
+  "physical_properties": {
+    "boiling_point": "Variable (<260\u00b0C by EPA definition)",
+    "melting_point": "Variable",
+    "vapor_pressure": "High (>0.01 kPa @ 25\u00b0C by definition)",
+    "vapor_density": "Variable, typically >1 (heavier than air)",
+    "specific_gravity": "Variable (0.7-1.6 typical)",
+    "flash_point": "Variable (many <38\u00b0C)",
+    "autoignition_temp": "Variable (200-600\u00b0C typical)",
+    "explosive_limits": "Variable depending on compound",
+    "appearance": "Colorless to colored liquids or gases",
+    "odor": "Variable - sweet, pungent, solvent-like, or odorless"
+  },
+  "emergency_response": {
+    "fire_hazard": "Many VOCs flammable or combustible. Vapors heavier than air. May travel to ignition sources. Explosive mixtures possible.",
+    "fire_suppression": "Use dry chemical, CO2, foam appropriate for specific VOC. Water spray to cool containers. Prevent runoff contamination.",
+    "spill_procedures": "Eliminate ignition sources. Ventilate area. Identify VOCs if possible. Contain with absorbent. Dispose as hazardous waste. Monitor air quality.",
+    "exposure_immediate_actions": "Remove to fresh air. Eyes: flush with water. Remove contaminated clothing. Wash skin. Seek medical attention - inform physician of specific VOCs if known. Monitor for delayed effects.",
+    "environmental_hazards": "Many VOCs toxic to aquatic life. Contribute to ozone formation and smog. Bioaccumulate. Contaminate groundwater.",
+    "special_hazards": "Complex mixtures with unpredictable effects. Some carcinogenic (benzene, formaldehyde, 1,3-butadiene). Others neurotoxic (toluene, xylene, styrene). Respiratory irritants. Contribute to indoor air quality problems. Chronic exposure health effects vary widely."
+  },
+  "storage_requirements": {
+    "temperature_range": "Cool storage below 25\u00b0C typical. Refrigerate if highly volatile.",
+    "ventilation": "Local exhaust ventilation. Outdoor storage preferred for large quantities.",
+    "incompatibilities": [
+      "Variable - check specific VOC SDS. Generally: oxidizers, strong acids, strong bases"
+    ],
+    "container_material": "Depends on specific VOC. Metal or glass typically. Check compatibility.",
+    "segregation": "Separate from oxidizers. Flammable storage if applicable.",
+    "quantity_limits": "Follow NFPA 30 for flammable/combustible liquids. Minimize quantities.",
+    "special_requirements": "Label with specific VOC contents. Post appropriate hazard signs. Secondary containment for liquids. Gas detection for enclosed spaces. Emergency procedures."
+  },
+  "regulatory_classification": {
+    "un_number": "Variable by specific VOC",
+    "dot_hazard_class": "Variable (commonly Class 3 Flammable)",
+    "dot_label": "Variable",
+    "nfpa_codes": {
+      "health": "1-4 (Variable)",
+      "flammability": "1-4 (Variable)",
+      "reactivity": "0-2 (Variable)",
+      "special": "Variable"
+    },
+    "epa_hazard_categories": [
+      "Variable - may include carcinogenicity, neurotoxicity, reproductive toxicity, aquatic toxicity"
+    ],
+    "sara_title_iii": "Many VOCs listed",
+    "cercla_rq": "Variable by specific VOC",
+    "rcra_code": "Many VOCs have codes (U-series, F-series)"
+  },
+  "workplace_exposure": {
+    "osha_pel": {
+      "twa_8hr": "Variable by specific VOC. No general limit.",
+      "stel_15min": "Variable",
+      "ceiling": "Variable"
+    },
+    "niosh_rel": {
+      "twa_8hr": "Variable by specific VOC",
+      "stel_15min": "Variable",
+      "ceiling": "Variable",
+      "idlh": "Variable"
+    },
+    "acgih_tlv": {
+      "twa_8hr": "Variable by specific VOC. TLVs exist for individual compounds.",
+      "stel_15min": "Variable",
+      "ceiling": "Variable"
+    },
+    "biological_exposure_indices": [
+      {
+        "metabolite": "Variable metabolites depending on VOC",
+        "specimen": "Urine or blood",
+        "timing": "End of shift",
+        "bei_value": "Specific to individual VOC"
+      }
+    ]
+  },
+  "synonyms_identifiers": {
+    "synonyms": [
+      "Organic vapors",
+      "Organic solvents",
+      "VOC mixture",
+      "Hydrocarbon vapors"
+    ],
+    "common_trade_names": [
+      "Paint thinners",
+      "Degreasers",
+      "Cleaning solvents"
+    ],
+    "other_identifiers": {
+      "rtecs_number": "Specific to individual VOC",
+      "ec_number": "Specific to individual VOC",
+      "pubchem_cid": "Specific to individual VOC"
+    }
+  },
+  "reactivity": {
+    "stability": "Variable. Many stable under normal conditions. Some polymerize or degrade.",
+    "polymerization": "Some VOCs polymerize (styrene, acrylates). Check individual compounds.",
+    "incompatible_materials": [
+      "Variable - commonly: oxidizers, strong acids, strong bases, reactive metals"
+    ],
+    "hazardous_decomposition": [
+      "Carbon monoxide",
+      "Carbon dioxide",
+      "Variable toxic gases depending on compound"
+    ],
+    "conditions_to_avoid": [
+      "Heat",
+      "Ignition sources",
+      "Incompatible materials",
+      "Oxidizers"
+    ],
+    "reactivity_hazard": "Variable. Many form explosive mixtures with air. Some react violently with oxidizers. Peroxide formation possible in ethers."
+  },
+  "environmental_impact": {
+    "aquatic_toxicity": "Variable. Many VOCs toxic to aquatic life (LC50: 1-1000 mg/L range).",
+    "biodegradability": "Variable. Some readily biodegradable, others persistent.",
+    "bioaccumulation": "Variable. Log Kow range: -1 to 7. Lipophilic VOCs bioaccumulate.",
+    "soil_mobility": "Variable. Many volatile from soil. Some adsorb strongly.",
+    "atmospheric_fate": "Photochemical reactions. Form ozone and smog. Atmospheric half-life: hours to months. Major air quality concern.",
+    "ozone_depletion": "Some VOCs deplete ozone (CFCs, halons - now banned)",
+    "global_warming_potential": "Some VOCs are greenhouse gases",
+    "reportable_releases": {
+      "water": "Variable by specific VOC (1-5000 lbs typical)",
+      "air": "Variable by specific VOC. VOC emissions regulated."
+    }
+  },
+  "detection_monitoring": {
+    "sensor_types": [
+      "Photoionization detector (PID)",
+      "Flame ionization detector (FID)",
+      "Metal oxide semiconductor",
+      "Infrared",
+      "Gas chromatography"
+    ],
+    "detection_range": "0.1-10,000 ppm depending on sensor and VOC",
+    "alarm_setpoints": {
+      "low": "Variable - set to specific VOC TLV or mixture assessment",
+      "high": "Variable - typically 2x TLV or STEL",
+      "evacuate": "Variable - set to IDLH of most hazardous component"
+    },
+    "colorimetric_tubes": [
+      "VOC-specific tubes available (benzene, toluene, xylene, etc.)",
+      "General organic vapor tubes"
+    ],
+    "analytical_methods": [
+      {
+        "method": "EPA Method TO-15",
+        "technique": "GC-MS (canister sampling)",
+        "detection_limit": "ppb levels for most VOCs"
+      },
+      {
+        "method": "NIOSH 1501",
+        "technique": "GC-FID (charcoal tube sampling)",
+        "detection_limit": "Variable, typically 0.01-0.1 ppm"
+      },
+      {
+        "method": "EPA Method 8260",
+        "technique": "GC-MS (water samples)",
+        "detection_limit": "\u00b5g/L levels"
+      }
+    ],
+    "odor_threshold": "Variable. Some VOCs odorless (benzene), others pungent at low ppm. Olfactory fatigue common. Do not rely on odor."
+  }
+}

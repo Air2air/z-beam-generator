@@ -1,5 +1,6 @@
 name: Automotive Undercoating
 slug: undercoating-contamination
+id: undercoating-contamination
 category: organic-residue
 subcategory: other
 content_type: unified_contamination
@@ -111,7 +112,7 @@ laser_properties:
     transmission_depth: 11.8
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -200,6 +201,25 @@ laser_properties:
     thermal_conductivity: 0.25
     thermal_diffusivity: 0.17
     vaporization_temperature: 450
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: painted-metal
+    title: Painted Metal
+    url: /materials/painted-metal
+    image: /images/materials/painted-metal.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Steel
 - Painted Metal

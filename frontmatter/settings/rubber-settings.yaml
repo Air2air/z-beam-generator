@@ -1,5 +1,6 @@
 name: Rubber
 slug: rubber
+id: rubber-settings
 category: composite
 subcategory: fiber-reinforced
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: usa_formatting.yaml
 title: Rubber Laser Cleaning Settings
 settings_description: When laser cleaning rubber, you'll want to begin with the lowest possible power settings to account for its exceptional flexibility and low heat tolerance. This material absorbs laser energy quickly due to its dark surface properties, which allows contaminants to remove effectively without deep penetration into the base layer. Rubber's elasticity means it deforms under heat rather than cracking, so you must control scan speeds to prevent warping during multiple passes. We've found that short pulses restore surface integrity while exposing underlying fibers cleanly. Make sure you monitor for signs of softening, as excessive energy reduces durability and leads to material breakdown—always test on a small area first to adjust accordingly.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -177,4 +180,4 @@ material_challenges:
     - Monitor for matrix damage; stop if surface texture changes
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:13.504747'
+    generated_date: '2025-12-15T22:06:42.362643'

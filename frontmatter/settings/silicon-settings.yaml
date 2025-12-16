@@ -1,5 +1,6 @@
 name: Silicon
 slug: silicon
+id: silicon-settings
 category: semiconductor
 subcategory: elemental
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: usa_formatting.yaml
 title: Silicon Laser Cleaning Settings
 settings_description: When laser cleaning silicon, start with low power settings to leverage its strong thermal conductivity. This property lets heat spread quickly, unlike brittle ceramics that trap it locally. You must keep pulse durations short to avoid microcracks, since silicon's stiffness makes it prone to fracturing under sudden stress. We've found that moderate scan speeds work best, revealing contaminants without altering the surface. Adjust overlap ratios carefully to ensure even coverage, as silicon's moderate reflectivity absorbs energy steadily compared to shiny metals. This approach restores semiconductor wafers effectively for electronics use. Make sure you monitor for thermal buildup at the end, or you risk subsurface damage that compromises device performance.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -175,4 +178,4 @@ material_challenges:
     - Post-cleaning oxygen plasma for complete residue removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:14.240850'
+    generated_date: '2025-12-15T22:06:42.587453'

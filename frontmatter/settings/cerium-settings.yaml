@@ -1,5 +1,6 @@
 name: Cerium
 slug: cerium
+id: cerium-settings
 category: rare-earth
 subcategory: lanthanide
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
 title: Cerium Laser Cleaning Settings
 settings_description: When laser cleaning cerium, you'll want to address its high reflectivity first, since this property scatters much of the laser energy away from the surface and reduces overall efficiency in removing contaminants. Make sure you start with lower power settings to compensate, allowing the process to gradually expose and restore the underlying metal without excessive scattering that could prolong treatment times. Cerium's low thermal conductivity further complicates this, as localized heat buildup risks damaging the soft structure, so you must control pulse durations carefully to prevent warping or uneven ablation. What sets cerium apart from common metals is its reactive nature as a rare-earth element, which forms a tenacious oxide layer that clings tightly and demands multiple passes for complete removal, while its moderate density aids in precise handling during setup. This combination improves outcomes in applications like optical component cleaning or aerospace parts,
   where restoring surface integrity matters most. Adjust scan speeds to overlap coverage adequately, ensuring the laser removes residues without compromising the material's ductility. Finally, watch out for overexposure, as cerium's sensitivity to oxidation post-cleaning can lead to rapid recontamination if not sealed promptly.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -184,4 +187,4 @@ material_challenges:
     - Chain of custody documentation for high-value materials
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:09.208777'
+    generated_date: '2025-12-15T22:06:39.844928'

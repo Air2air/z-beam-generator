@@ -1,5 +1,6 @@
 name: Rhenium
 slug: rhenium
+id: rhenium-settings
 category: metal
 subcategory: non-ferrous
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
   formatting_file: italy_formatting.yaml
 title: Rhenium Laser Cleaning Settings
 settings_description: When laser cleaning rhenium, watch its strong reflectivity first. It bounces back much of the beam, so energy absorption stays low. This makes surface buildup stubborn to remove. I've seen it take extra care to avoid uneven heating. Start with lower power settings to build heat gradually. That prevents hot spots on this dense metal. Rhenium's extreme heat resistance helps here—it won't warp easily. But go slow on passes. Overlap scans to cover fully without stressing the surface. Tends to shine up nicely once clean, restoring that aerospace-grade finish.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -178,4 +181,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:13.155527'
+    generated_date: '2025-12-15T22:06:42.273331'

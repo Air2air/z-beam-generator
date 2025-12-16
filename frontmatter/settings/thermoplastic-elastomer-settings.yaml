@@ -1,5 +1,6 @@
 name: Thermoplastic Elastomer
 slug: thermoplastic-elastomer
+id: thermoplastic-elastomer-settings
 category: composite
 subcategory: structural
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: usa_formatting.yaml
 title: Thermoplastic Elastomer Laser Cleaning Settings
 settings_description: We've found that laser cleaning Thermoplastic Elastomer works best when we start with conservative power levels to leverage its good absorption of laser energy, which removes surface contaminants effectively without immediate heat buildup. This approach restores the material's flexibility and surface integrity quickly, as its low thermal conductivity keeps heat localized and prevents widespread softening. In our experience, the elastomer's rubber-like resilience sets it apart from rigid plastics, allowing multiple passes that expose clean layers beneath residues from automotive or medical applications. We adjust scan speeds to be moderate, ensuring the process reduces oxidation risks while maintaining the material's shape. However, always monitor for excessive dwell time at the end, as prolonged exposure can cause deformation in this sensitive composite.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -180,4 +183,4 @@ material_challenges:
     - Monitor for matrix damage; stop if surface texture changes
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:15.418364'
+    generated_date: '2025-12-15T22:06:43.217401'

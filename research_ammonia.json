@@ -1,0 +1,176 @@
+{
+  "compound_id": "ammonia",
+  "name": "Ammonia",
+  "cas_number": "7664-41-7",
+  "formula": "NH3",
+  "ppe_requirements": {
+    "respiratory": "SCBA or supplied-air respirator for >25 ppm or unknown concentrations. Air-purifying with ammonia cartridge acceptable for \u226425 ppm.",
+    "skin": "Neoprene, nitrile, or butyl rubber gloves. Chemical-resistant clothing. Liquid ammonia causes severe burns and frostbite.",
+    "eye": "Chemical safety goggles, full face shield. Extremely irritating and corrosive to eyes.",
+    "minimum_level": "Level C for known <25 ppm, Level B for >25 ppm or liquefied ammonia",
+    "special_notes": "Extremely irritating at low concentrations. Immediately dangerous above 300 ppm. Cryogenic liquid causes frostbite. Emergency eyewash/shower within 10 seconds."
+  },
+  "physical_properties": {
+    "boiling_point": "-33.34\u00b0C (-28\u00b0F)",
+    "melting_point": "-77.73\u00b0C (-107.9\u00b0F)",
+    "vapor_pressure": "7510 mmHg @ 20\u00b0C",
+    "vapor_density": "0.60 (Air=1)",
+    "specific_gravity": "0.682 (liquid @ -33\u00b0C)",
+    "flash_point": "Not applicable (gas)",
+    "autoignition_temp": "651\u00b0C (1204\u00b0F)",
+    "explosive_limits": "LEL: 15%, UEL: 28%",
+    "appearance": "Colorless gas, colorless liquid under pressure",
+    "odor": "Sharp, pungent, suffocating odor @ 5-50 ppm"
+  },
+  "emergency_response": {
+    "fire_hazard": "Flammable gas. Narrow explosive range but ignites easily. Vapors lighter than air - rise and disperse. May reignite after flame is extinguished.",
+    "fire_suppression": "Stop flow if safe to do so. Do not extinguish flame unless leak can be stopped. Cool cylinders with water spray from safe distance. Use dry chemical, CO2 from maximum distance.",
+    "spill_procedures": "EVACUATE. Ventilate area. SCBA required for liquid releases or >300 ppm. Contain with water spray or fog. Dilute with water. Neutralize with acid (sulfuric, hydrochloric). Dike large liquid spills.",
+    "exposure_immediate_actions": "Remove to fresh air immediately. Eyes: flush with water for 15+ minutes - CRITICAL. Remove contaminated clothing. Wash skin with water. If inhaled: administer oxygen. Seek immediate medical attention - severe irritation likely.",
+    "environmental_hazards": "Toxic to aquatic life at high concentrations. Rapid volatilization from water. Report releases >100 lbs.",
+    "special_hazards": "Extremely irritating and corrosive to eyes, skin, and respiratory tract. Causes severe chemical burns. Cryogenic liquid causes frostbite. Forms explosive mixtures with air. Reacts violently with acids and halogens."
+  },
+  "storage_requirements": {
+    "temperature_range": "Store cylinders <52\u00b0C. Keep away from heat.",
+    "ventilation": "Outdoor storage preferred. Indoor: mechanical ventilation with emergency backup. Ammonia gas detection mandatory.",
+    "incompatibilities": [
+      "Acids (violent reaction)",
+      "Halogens (chlorine, bromine)",
+      "Heavy metals",
+      "Oxidizers",
+      "Mercury",
+      "Silver compounds",
+      "Calcium hypochlorite"
+    ],
+    "container_material": "Steel cylinders for compressed gas. Stainless steel for solutions.",
+    "segregation": "Separate from acids by 20 feet or firewall. Separate from oxidizers and halogens. Flammable gas storage.",
+    "quantity_limits": "Per fire code. Refrigeration systems subject to special regulations.",
+    "special_requirements": "Cylinder restraints mandatory. Leak detection system required. Post \"FLAMMABLE GAS\" and \"CORROSIVE\" signs. Emergency eyewash/shower within 25 feet. Avoid contact with copper, brass, zinc in piping."
+  },
+  "regulatory_classification": {
+    "un_number": "UN1005 (anhydrous), UN2672 (solution)",
+    "dot_hazard_class": "2.2 (Non-flammable gas) or 2.3 (Toxic gas) depending on concentration",
+    "dot_label": "Non-flammable Gas or Poison Gas",
+    "nfpa_codes": {
+      "health": 3,
+      "flammability": 1,
+      "reactivity": 0,
+      "special": null
+    },
+    "epa_hazard_categories": [
+      "Acute toxicity (inhalation)",
+      "Flammability",
+      "Skin corrosion",
+      "Serious eye damage"
+    ],
+    "sara_title_iii": true,
+    "cercla_rq": "100 pounds (45.4 kg)",
+    "rcra_code": null
+  },
+  "workplace_exposure": {
+    "osha_pel": {
+      "twa_8hr": "50 ppm (35 mg/m\u00b3)",
+      "stel_15min": null,
+      "ceiling": null
+    },
+    "niosh_rel": {
+      "twa_8hr": "25 ppm (18 mg/m\u00b3)",
+      "stel_15min": "35 ppm (27 mg/m\u00b3) - 15 min",
+      "ceiling": null,
+      "idlh": "300 ppm"
+    },
+    "acgih_tlv": {
+      "twa_8hr": "25 ppm",
+      "stel_15min": "35 ppm",
+      "ceiling": null
+    },
+    "biological_exposure_indices": []
+  },
+  "synonyms_identifiers": {
+    "synonyms": [
+      "Anhydrous ammonia",
+      "NH3",
+      "Ammonia gas",
+      "Ammonia solution (aqueous)"
+    ],
+    "common_trade_names": [],
+    "other_identifiers": {
+      "rtecs_number": "BO0875000",
+      "ec_number": "231-635-3",
+      "pubchem_cid": "222"
+    }
+  },
+  "reactivity": {
+    "stability": "Stable under normal conditions.",
+    "polymerization": "Will not polymerize",
+    "incompatible_materials": [
+      "Strong acids (violent exothermic)",
+      "Halogens (explosive reactions)",
+      "Heavy metal compounds",
+      "Mercury",
+      "Silver oxide",
+      "Oxidizers",
+      "Calcium hypochlorite"
+    ],
+    "hazardous_decomposition": [
+      "Nitrogen",
+      "Hydrogen",
+      "Nitrogen oxides (in fire)",
+      "Ammonia vapors"
+    ],
+    "conditions_to_avoid": [
+      "Heat",
+      "Acids",
+      "Halogens",
+      "Oxidizers",
+      "Sparks",
+      "Open flames"
+    ],
+    "reactivity_hazard": "Reacts violently with strong acids producing heat and ammonium salts. Explosive reaction with halogens. Attacks copper, brass, zinc, aluminum, and alloys."
+  },
+  "environmental_impact": {
+    "aquatic_toxicity": "Toxic to fish at high concentrations. LC50 (fish, 96h): 0.5-2.0 mg/L un-ionized NH3. Unionized form highly toxic.",
+    "biodegradability": "Readily biodegradable. Nitrifying bacteria convert to nitrate.",
+    "bioaccumulation": "Does not bioaccumulate. Log Kow: -1.69.",
+    "soil_mobility": "High mobility as gas. Volatilizes from soil. Absorbed as ammonium ion.",
+    "atmospheric_fate": "Reacts with acids forming ammonium salts. Washed out by rain. Atmospheric residence: days.",
+    "ozone_depletion": false,
+    "global_warming_potential": null,
+    "reportable_releases": {
+      "water": "100 lbs to navigable waters",
+      "air": "100 lbs/day (CERCLA RQ)"
+    }
+  },
+  "detection_monitoring": {
+    "sensor_types": [
+      "Electrochemical",
+      "Infrared",
+      "Catalytic bead",
+      "Colorimetric"
+    ],
+    "detection_range": "0-100 ppm typical",
+    "alarm_setpoints": {
+      "low": "25 ppm (NIOSH REL/ACGIH TLV)",
+      "high": "35 ppm (NIOSH STEL/ACGIH STEL)",
+      "evacuate": "300 ppm (NIOSH IDLH)"
+    },
+    "colorimetric_tubes": [
+      "Dr\u00e4ger Ammonia 0.25/a",
+      "Gastec 3L",
+      "Kitagawa 105"
+    ],
+    "analytical_methods": [
+      {
+        "method": "NIOSH 6016",
+        "technique": "Ion chromatography",
+        "detection_limit": "0.03 ppm"
+      },
+      {
+        "method": "OSHA ID-188",
+        "technique": "Ion chromatography",
+        "detection_limit": "0.02 ppm"
+      }
+    ],
+    "odor_threshold": "5-50 ppm - provides good warning below toxic levels"
+  }
+}

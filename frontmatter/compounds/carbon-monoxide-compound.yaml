@@ -1,0 +1,145 @@
+id: carbon-monoxide-compound
+name: Carbon Monoxide
+display_name: Carbon Monoxide (CO)
+slug: carbon-monoxide
+chemical_formula: CO
+cas_number: 630-08-0
+molecular_weight: 28.01
+category: toxic_gas
+subcategory: asphyxiant
+hazard_class: toxic
+exposure_limits:
+  osha_pel_ppm: 50
+  osha_pel_mg_m3: 55
+  niosh_rel_ppm: 35
+  niosh_rel_mg_m3: 40
+  acgih_tlv_ppm: 25
+  acgih_tlv_mg_m3: 29
+health_effects_keywords:
+- asphyxiation
+- cardiovascular_effects
+- headache
+- dizziness
+- fatal_at_high_dose
+monitoring_required: true
+typical_concentration_range: 10-50 mg/m³
+sources_in_laser_cleaning:
+- incomplete_organic_combustion
+- thermal_decomposition_carbon_compounds
+- oxygen_deficient_conditions
+description: null
+health_effects: null
+exposure_guidelines: null
+detection_methods: null
+first_aid: null
+domain_linkages:
+  produced_by_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue
+    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of organic adhesives
+  - id: paint-residue
+    title: Paint Residue / Coating Failure
+    url: /contaminants/inorganic-coating/paint/paint-residue
+    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Thermal decomposition of organic paint binders
+  - id: rubber-residue
+    title: Rubber Compound Residue
+    url: /contaminants/organic-residue/polymer/rubber-residue
+    image: /images/contaminants/organic-residue/polymer/rubber-residue.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Pyrolysis of rubber compounds
+  - id: plastic-residue
+    title: Degraded Polymer Deposits
+    url: /contaminants/organic-residue/polymer/plastic-residue
+    image: /images/contaminants/organic-residue/polymer/plastic-residue.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of plastic polymers
+  - id: industrial-oil
+    title: Industrial Oil / Grease Buildup
+    url: /contaminants/organic-residue/petroleum/industrial-oil
+    image: /images/contaminants/organic-residue/petroleum/industrial-oil.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal decomposition of hydrocarbon chains
+  - id: silicone-buildup
+    title: Silicone Sealant Buildup
+    url: /contaminants/organic-residue/adhesive/silicone-buildup
+    image: /images/contaminants/organic-residue/adhesive/silicone-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Pyrolysis of silicone polymers
+  - id: thermal-paste
+    title: Thermal Compound Deposits
+    url: /contaminants/organic-residue/other/thermal-paste
+    image: /images/contaminants/organic-residue/other/thermal-paste.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Combustion of organic carriers
+  - id: epoxy-residue
+    title: Epoxy Resin Deposits
+    url: /contaminants/organic-residue/adhesive/epoxy-residue
+    image: /images/contaminants/organic-residue/adhesive/epoxy-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of epoxy resins
+  - id: fire-damage
+    title: Fire and Smoke Damage
+    url: /contaminants/thermal-damage/fire/fire-damage
+    image: /images/contaminants/thermal-damage/fire/fire-damage.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Pre-existing carbon compounds vaporizing
+  - id: carbon-buildup
+    title: Carbon Deposit Buildup
+    url: /contaminants/organic-residue/other/carbon-buildup
+    image: /images/contaminants/organic-residue/other/carbon-buildup.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of carbon materials
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  country_display: United States
+  title: MA
+  sex: m
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
+  image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+breadcrumbs:
+- label: Home
+  url: /
+- label: Hazardous Compounds
+  url: /compounds
+- label: Carbon Monoxide
+  url: /compounds/carbon-monoxide
+type: compound
+domain: compounds
+last_updated: null

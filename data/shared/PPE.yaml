@@ -1,0 +1,252 @@
+# Personal Protective Equipment (PPE) Specifications
+# Single source of truth for all PPE references across domains
+#
+# Referenced by:
+# - Contaminants.yaml (laser cleaning safety)
+# - Compounds.yaml (chemical handling)
+# - Settings.yaml (equipment operation)
+
+ppe_specifications:
+  # Eye Protection
+  ppe-eye-goggles:
+    id: "ppe-eye-goggles"
+    name: "Safety Goggles"
+    type: "eye_protection"
+    protection_level: "moderate"
+    standards:
+      - standard_id: "ansi-z87-1"
+        requirement: "Impact-rated Z87+"
+    description: "Chemical splash goggles with side shields and indirect venting"
+    specifications:
+      - "Anti-fog coating"
+      - "UV protection"
+      - "Side shields"
+      - "Indirect venting"
+    suitable_for:
+      - "Chemical splash"
+      - "Particulate exposure"
+      - "Moderate laser scattered light"
+  
+  ppe-eye-face-shield:
+    id: "ppe-eye-face-shield"
+    name: "Face Shield"
+    type: "eye_protection"
+    protection_level: "high"
+    standards:
+      - standard_id: "ansi-z87-1"
+        requirement: "Full face coverage"
+    description: "Full-face shield for splash and impact protection"
+    specifications:
+      - "Polycarbonate lens"
+      - "Anti-fog coating"
+      - "Adjustable headgear"
+      - "Chin coverage"
+    suitable_for:
+      - "High splash hazard"
+      - "Large particulate generation"
+      - "Chemical sprays"
+    notes: "Use in combination with safety goggles for complete protection"
+  
+  ppe-eye-laser-od4:
+    id: "ppe-eye-laser-od4"
+    name: "Laser Safety Eyewear (OD4+)"
+    type: "eye_protection"
+    protection_level: "critical"
+    standards:
+      - standard_id: "ansi-z136-1"
+        requirement: "OD4+ at wavelength"
+      - standard_id: "iec-60825"
+        requirement: "Class 4 laser protection"
+    description: "Laser-specific eyewear with wavelength-specific optical density"
+    specifications:
+      - "OD4+ at specified wavelengths"
+      - "Side protection"
+      - "Comfortable fit for extended wear"
+      - "Visible light transmission >20%"
+    suitable_for:
+      - "Laser operation and alignment"
+      - "Class 4 laser systems"
+    wavelength_specific: true
+  
+  # Respiratory Protection
+  ppe-respiratory-half-face:
+    id: "ppe-respiratory-half-face"
+    name: "Half-Face Respirator"
+    type: "respiratory"
+    protection_level: "moderate"
+    standards:
+      - standard_id: "niosh-42-cfr-84"
+        requirement: "NIOSH-approved APR"
+    description: "Half-face air-purifying respirator with organic vapor cartridges"
+    specifications:
+      - "Organic vapor cartridges (P100)"
+      - "Silicone face seal"
+      - "Low breathing resistance"
+      - "Compatible with safety glasses"
+    suitable_for:
+      - "Low to moderate vapor concentrations"
+      - "Non-IDLH atmospheres"
+      - "Short-duration exposure"
+    limitations: "Does not protect eyes; use with safety goggles"
+  
+  ppe-respiratory-full-face:
+    id: "ppe-respiratory-full-face"
+    name: "Full-Face Respirator"
+    type: "respiratory"
+    protection_level: "high"
+    standards:
+      - standard_id: "niosh-42-cfr-84"
+        requirement: "NIOSH-approved full-facepiece APR"
+    description: "Full-face pressure-demand respirator with organic vapor and particulate cartridges"
+    specifications:
+      - "Organic vapor + P100 combination cartridges"
+      - "Wide field of vision"
+      - "Communication diaphragm"
+      - "Positive pressure option"
+    suitable_for:
+      - "High vapor concentrations"
+      - "Carcinogen exposure"
+      - "Eye and respiratory protection combined"
+    cartridge_options:
+      - "Organic vapor"
+      - "Acid gas"
+      - "Formaldehyde-specific"
+      - "Multi-gas"
+  
+  ppe-respiratory-papr:
+    id: "ppe-respiratory-papr"
+    name: "Powered Air-Purifying Respirator (PAPR)"
+    type: "respiratory"
+    protection_level: "very_high"
+    standards:
+      - standard_id: "niosh-42-cfr-84"
+        requirement: "NIOSH-approved PAPR"
+    description: "Battery-powered respirator with hood or helmet"
+    specifications:
+      - "HEPA filtration"
+      - "Positive pressure airflow"
+      - "4+ hour battery life"
+      - "Comfortable for extended wear"
+    suitable_for:
+      - "Extended work periods"
+      - "High particulate environments"
+      - "Users with facial hair"
+      - "Claustrophobic workers"
+  
+  # Skin Protection - Hands
+  ppe-skin-nitrile-gloves:
+    id: "ppe-skin-nitrile-gloves"
+    name: "Nitrile Gloves (Chemical-Resistant)"
+    type: "skin_protection"
+    protection_level: "moderate"
+    standards:
+      - standard_id: "astm-d6978"
+        requirement: "8+ hour breakthrough time"
+    description: "Nitrile gloves with extended breakthrough times for organic chemicals"
+    specifications:
+      - "15+ mil thickness"
+      - "Extended cuff (12+ inches)"
+      - "Textured grip"
+      - "Powder-free"
+    suitable_for:
+      - "Organic solvents"
+      - "Moderate acids/bases"
+      - "Oil and grease"
+    breakthrough_times:
+      - compound: "formaldehyde"
+        time_hours: 8
+      - compound: "toluene"
+        time_hours: 4
+      - compound: "acetone"
+        time_hours: 1
+  
+  ppe-skin-butyl-gloves:
+    id: "ppe-skin-butyl-gloves"
+    name: "Butyl Rubber Gloves"
+    type: "skin_protection"
+    protection_level: "high"
+    standards:
+      - standard_id: "astm-d6978"
+        requirement: "Permeation-resistant"
+    description: "Butyl rubber gloves for superior chemical resistance"
+    specifications:
+      - "20+ mil thickness"
+      - "Seamless construction"
+      - "Extended cuff (14+ inches)"
+      - "Non-slip finish"
+    suitable_for:
+      - "Ketones"
+      - "Esters"
+      - "Alcohols"
+      - "Strong acids/bases"
+    breakthrough_times:
+      - compound: "formaldehyde"
+        time_hours: ">8"
+      - compound: "acetone"
+        time_hours: ">8"
+      - compound: "methanol"
+        time_hours: ">8"
+  
+  ppe-skin-leather-gloves:
+    id: "ppe-skin-leather-gloves"
+    name: "Leather Work Gloves"
+    type: "skin_protection"
+    protection_level: "low"
+    standards:
+      - standard_id: "ansi-z87-1"
+        requirement: "Cut resistance level A2+"
+    description: "Leather gloves for mechanical protection and heat resistance"
+    specifications:
+      - "Full-grain leather"
+      - "Reinforced palm and fingers"
+      - "Heat resistance to 250°F"
+      - "Cut resistance"
+    suitable_for:
+      - "Mechanical hazards"
+      - "Heat protection"
+      - "Abrasion resistance"
+    limitations: "Not for chemical protection"
+  
+  # Body Protection
+  ppe-body-lab-coat:
+    id: "ppe-body-lab-coat"
+    name: "Laboratory Coat (Flame-Resistant)"
+    type: "body_protection"
+    protection_level: "moderate"
+    standards:
+      - standard_id: "nfpa-704"
+        requirement: "Flame-resistant material"
+    description: "Flame-resistant lab coat for chemical and thermal protection"
+    specifications:
+      - "100% cotton or FR-treated"
+      - "Snap closures (no buttons)"
+      - "Knit cuffs"
+      - "Length to mid-thigh or knee"
+    suitable_for:
+      - "Chemical splash protection"
+      - "Flame resistance"
+      - "Particulate contamination"
+  
+  ppe-body-tyvek-suit:
+    id: "ppe-body-tyvek-suit"
+    name: "Tyvek Protective Suit"
+    type: "body_protection"
+    protection_level: "high"
+    standards:
+      - standard_id: "osha-29-cfr-1926-95"
+        requirement: "Chemical protective clothing"
+    description: "Full-body disposable suit for chemical and particulate protection"
+    specifications:
+      - "Tyvek or equivalent material"
+      - "Elastic wrists and ankles"
+      - "Hood with elastic face opening"
+      - "Front zipper with storm flap"
+    suitable_for:
+      - "High particulate environments"
+      - "Chemical contamination risk"
+      - "Cleanroom applications"
+
+# Version tracking
+schema_version: "1.0.0"
+last_updated: "2025-12-15"
+description: "Centralized PPE specifications database for Z-Beam Generator system"

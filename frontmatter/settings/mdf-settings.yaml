@@ -1,5 +1,6 @@
 name: MDF
 slug: mdf
+id: mdf-settings
 category: wood
 subcategory: hardwood
 content_type: unified_settings
@@ -38,6 +39,15 @@ author:
   formatting_file: italy_formatting.yaml
 title: MDF Laser Cleaning Settings
 settings_description: When laser cleaning MDF, the biggest hurdle is its porous structure. It soaks up heat unevenly. This leads to quick charring if you're not careful. I've seen surfaces bubble and delaminate from that buildup. Start low on power to let the laser gently lift dirt without penetrating deep. Its fibrous makeup differs from solid woods—more uniform but fragile under stress. That means you adjust scans slower for even coverage. Tends to absorb contaminants well, restoring finishes nicely in furniture or panels. But watch the edges; they fray easily. Keep passes light and overlapped just enough. In my experience, this brings back that smooth look without warping. Finally, avoid high energy bursts—they scorch the core and ruin the board.
+domain_linkages:
+  related_contaminants:
+  - id: wood-rot
+    title: Wood Rot / Fungal Biodegradation
+    url: /contaminants/biological/growth/wood-rot
+    image: /images/contaminants/biological/growth/wood-rot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -180,4 +190,4 @@ material_challenges:
     - Limit to 2-3 passes maximum to avoid substrate damage
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:10.892589'
+    generated_date: '2025-12-15T22:06:41.131111'

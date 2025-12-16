@@ -1,5 +1,6 @@
 name: Mineral Scale / Hard Water Deposits
 slug: scale-buildup-contamination
+id: scale-buildup-contamination
 category: thermal-damage
 subcategory: scale
 content_type: unified_contamination
@@ -120,7 +121,7 @@ laser_properties:
     - compound: CaO
       hazard_level: moderate
       phase: solid
-    - compound: CO₂
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: CaCO₃ nanoparticles
@@ -192,6 +193,296 @@ eeat:
     name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/publication/3587
   reviewedBy: Z-Beam Quality Assurance Team
+domain_linkages:
+  related_materials:
+  - id: Concrete
+    title: Concrete
+    url: /materials/masonry/general/Concrete
+    image: /images/materials/masonry/general/Concrete.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/metal/non-ferrous/Aluminum
+    image: /images/materials/metal/non-ferrous/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/metal/ferrous/Stainless Steel
+    image: /images/materials/metal/ferrous/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cast-iron
+    title: Cast Iron
+    url: /materials/cast-iron
+    image: /images/materials/cast-iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Copper
+    title: Copper
+    url: /materials/metal/non-ferrous/Copper
+    image: /images/materials/metal/non-ferrous/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bronze
+    title: Bronze
+    url: /materials/bronze
+    image: /images/materials/bronze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Titanium
+    title: Titanium
+    url: /materials/metal/specialty/Titanium
+    image: /images/materials/metal/specialty/Titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zinc
+    title: Zinc
+    url: /materials/metal/alloy/Zinc
+    image: /images/materials/metal/alloy/Zinc.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Nickel
+    title: Nickel
+    url: /materials/metal/specialty/Nickel
+    image: /images/materials/metal/specialty/Nickel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Lead
+    title: Lead
+    url: /materials/metal/non-ferrous/Lead
+    image: /images/materials/metal/non-ferrous/Lead.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tin
+    title: Tin
+    url: /materials/metal/alloy/Tin
+    image: /images/materials/metal/alloy/Tin.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cobalt
+    title: Cobalt
+    url: /materials/metal/specialty/Cobalt
+    image: /images/materials/metal/specialty/Cobalt.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Chromium
+    title: Chromium
+    url: /materials/metal/specialty/Chromium
+    image: /images/materials/metal/specialty/Chromium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Alumina
+    title: Alumina
+    url: /materials/ceramic/oxide/Alumina
+    image: /images/materials/ceramic/oxide/Alumina.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicon-carbide
+    title: Silicon Carbide
+    url: /materials/silicon-carbide
+    image: /images/materials/silicon-carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zirconia
+    title: Zirconia
+    url: /materials/ceramic/oxide/Zirconia
+    image: /images/materials/ceramic/oxide/Zirconia.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum Nitride
+    title: Aluminum Nitride
+    url: /materials/ceramic/technical/Aluminum Nitride
+    image: /images/materials/ceramic/technical/Aluminum Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Carbide
+    title: Boron Carbide
+    url: /materials/ceramic/carbide/Boron Carbide
+    image: /images/materials/ceramic/carbide/Boron Carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Nitride
+    title: Boron Nitride
+    url: /materials/ceramic/technical/Boron Nitride
+    image: /images/materials/ceramic/technical/Boron Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Silicon Nitride
+    title: Silicon Nitride
+    url: /materials/ceramic/oxide/Silicon Nitride
+    image: /images/materials/ceramic/oxide/Silicon Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Crown Glass
+    title: Crown Glass
+    url: /materials/glass/soda-lime/Crown Glass
+    image: /images/materials/glass/soda-lime/Crown Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Float Glass
+    title: Float Glass
+    url: /materials/glass/soda-lime/Float Glass
+    image: /images/materials/glass/soda-lime/Float Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Borosilicate Glass
+    title: Borosilicate Glass
+    url: /materials/glass/soda-lime/Borosilicate Glass
+    image: /images/materials/glass/soda-lime/Borosilicate Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminosilicate Glass
+    title: Aluminosilicate Glass
+    url: /materials/glass/specialty/Aluminosilicate Glass
+    image: /images/materials/glass/specialty/Aluminosilicate Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Fused Silica
+    title: Fused Silica
+    url: /materials/glass/soda-lime/Fused Silica
+    image: /images/materials/glass/soda-lime/Fused Silica.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Gorilla Glass
+    title: Gorilla Glass
+    url: /materials/glass/soda-lime/Gorilla Glass
+    image: /images/materials/glass/soda-lime/Gorilla Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tempered Glass
+    title: Tempered Glass
+    url: /materials/glass/specialty-glass/Tempered Glass
+    image: /images/materials/glass/specialty-glass/Tempered Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Granite
+    title: Granite
+    url: /materials/stone/igneous/Granite
+    image: /images/materials/stone/igneous/Granite.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Marble
+    title: Marble
+    url: /materials/stone/metamorphic/Marble
+    image: /images/materials/stone/metamorphic/Marble.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Limestone
+    title: Limestone
+    url: /materials/stone/sedimentary/Limestone
+    image: /images/materials/stone/sedimentary/Limestone.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Sandstone
+    title: Sandstone
+    url: /materials/stone/sedimentary/Sandstone
+    image: /images/materials/stone/sedimentary/Sandstone.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Basalt
+    title: Basalt
+    url: /materials/stone/igneous/Basalt
+    image: /images/materials/stone/igneous/Basalt.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Slate
+    title: Slate
+    url: /materials/stone/metamorphic/Slate
+    image: /images/materials/stone/metamorphic/Slate.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Quartzite
+    title: Quartzite
+    url: /materials/stone/sedimentary/Quartzite
+    image: /images/materials/stone/sedimentary/Quartzite.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Travertine
+    title: Travertine
+    url: /materials/stone/natural/Travertine
+    image: /images/materials/stone/natural/Travertine.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Bluestone
+    title: Bluestone
+    url: /materials/stone/sedimentary/Bluestone
+    image: /images/materials/stone/sedimentary/Bluestone.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Soapstone
+    title: Soapstone
+    url: /materials/stone/sedimentary/Soapstone
+    image: /images/materials/stone/sedimentary/Soapstone.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance:
+  - id: iec-60825
+    title: IEC 60825
+    url: ''
+    image: /images/standards/generic-logo.svg
+    applicability: laser_operation
+    requirement: IEC 60825 - Safety of Laser Products
+  - id: osha-29
+    title: OSHA 29
+    url: ''
+    image: /images/standards/generic-logo.svg
+    applicability: laser_operation
+    requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  ppe_requirements: []
 valid_materials:
 - Concrete
 - Aluminum

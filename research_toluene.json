@@ -1,0 +1,192 @@
+{
+  "compound_id": "toluene",
+  "name": "Toluene",
+  "cas_number": "108-88-3",
+  "formula": "C7H8",
+  "ppe_requirements": {
+    "respiratory": "Organic vapor respirator for <50 ppm. SCBA for >50 ppm or unknown concentrations.",
+    "skin": "Nitrile or butyl rubber gloves. Chemical-resistant clothing. Toluene absorbs through skin.",
+    "eye": "Chemical safety goggles, face shield for splash hazard.",
+    "minimum_level": "Level C for <50 ppm, Level B for >50 ppm",
+    "special_notes": "CNS depressant and neurotoxin. Abuse potential (inhalant). Skin absorption significant. Reproductive toxin. Embryo/fetal toxicity concern."
+  },
+  "physical_properties": {
+    "boiling_point": "110.6\u00b0C (231\u00b0F)",
+    "melting_point": "-95\u00b0C (-139\u00b0F)",
+    "vapor_pressure": "22 mmHg @ 20\u00b0C",
+    "vapor_density": "3.1 (Air=1)",
+    "specific_gravity": "0.867",
+    "flash_point": "4\u00b0C (39\u00b0F) closed cup",
+    "autoignition_temp": "480\u00b0C (896\u00b0F)",
+    "explosive_limits": "LEL: 1.1%, UEL: 7.1%",
+    "appearance": "Colorless liquid",
+    "odor": "Sweet, pungent, benzene-like odor @ 0.16-40 ppm"
+  },
+  "emergency_response": {
+    "fire_hazard": "Flammable liquid. Vapors heavier than air. May travel to ignition sources. Flash point very low.",
+    "fire_suppression": "Stop flow if safe. Use dry chemical, CO2, alcohol-resistant foam. Water spray to cool containers. Do not use water jet on liquid.",
+    "spill_procedures": "Eliminate ignition sources. Ventilate area. Contain with sand or vermiculite. Absorb with activated carbon. Dispose as hazardous waste.",
+    "exposure_immediate_actions": "Remove to fresh air. Eyes: flush with water for 15 minutes. Remove contaminated clothing immediately. Wash skin thoroughly. Seek medical attention - neurotoxin and reproductive toxin exposure. Monitor for CNS depression.",
+    "environmental_hazards": "Toxic to aquatic life. Bioaccumulates moderately. Contaminates groundwater. Report spills >1000 lbs.",
+    "special_hazards": "NEUROTOXIN - causes CNS depression, peripheral neuropathy, cognitive impairment. REPRODUCTIVE TOXIN - embryo/fetal toxicity. Abuse potential (intentional inhalation). Chronic exposure causes hearing loss, vision problems. Metabolized to benzyl alcohol and benzoic acid."
+  },
+  "storage_requirements": {
+    "temperature_range": "Store below 25\u00b0C. Keep away from heat.",
+    "ventilation": "Local exhaust ventilation. Mechanical ventilation for large quantities.",
+    "incompatibilities": [
+      "Strong oxidizers",
+      "Nitric acid",
+      "Sulfuric acid",
+      "Chromic acid",
+      "Halogens"
+    ],
+    "container_material": "Stainless steel or aluminum. Attacks some plastics and rubber.",
+    "segregation": "Separate from oxidizers by 20 feet. Flammable liquid storage cabinet.",
+    "quantity_limits": "Follow NFPA 30. Minimize quantities in work areas.",
+    "special_requirements": "Post \"FLAMMABLE LIQUID\" signs. Secondary containment. Bonding and grounding for transfers. Emergency eyewash/shower within 25 feet."
+  },
+  "regulatory_classification": {
+    "un_number": "UN1294",
+    "dot_hazard_class": "3 (Flammable liquid)",
+    "dot_label": "Flammable Liquid",
+    "nfpa_codes": {
+      "health": 2,
+      "flammability": 3,
+      "reactivity": 0,
+      "special": null
+    },
+    "epa_hazard_categories": [
+      "Flammability",
+      "Acute toxicity",
+      "Neurotoxicity",
+      "Reproductive toxicity",
+      "Aquatic toxicity"
+    ],
+    "sara_title_iii": true,
+    "cercla_rq": "1000 pounds (454 kg)",
+    "rcra_code": "U220"
+  },
+  "workplace_exposure": {
+    "osha_pel": {
+      "twa_8hr": "200 ppm (750 mg/m\u00b3)",
+      "stel_15min": "300 ppm (1130 mg/m\u00b3)",
+      "ceiling": "500 ppm (peak)"
+    },
+    "niosh_rel": {
+      "twa_8hr": "100 ppm (375 mg/m\u00b3)",
+      "stel_15min": "150 ppm (560 mg/m\u00b3)",
+      "ceiling": null,
+      "idlh": "500 ppm"
+    },
+    "acgih_tlv": {
+      "twa_8hr": "20 ppm",
+      "stel_15min": null,
+      "ceiling": null
+    },
+    "biological_exposure_indices": [
+      {
+        "metabolite": "o-Cresol",
+        "specimen": "Urine",
+        "timing": "End of shift",
+        "bei_value": "0.5 mg/L"
+      },
+      {
+        "metabolite": "Toluene",
+        "specimen": "Blood",
+        "timing": "Prior to last shift of work week",
+        "bei_value": "0.02 mg/L"
+      },
+      {
+        "metabolite": "Toluene",
+        "specimen": "Blood",
+        "timing": "End of shift",
+        "bei_value": "0.05 mg/L"
+      }
+    ]
+  },
+  "synonyms_identifiers": {
+    "synonyms": [
+      "Methyl benzene",
+      "Toluol",
+      "Phenylmethane",
+      "Methylbenzene"
+    ],
+    "common_trade_names": [],
+    "other_identifiers": {
+      "rtecs_number": "XS5250000",
+      "ec_number": "203-625-9",
+      "pubchem_cid": "1140"
+    }
+  },
+  "reactivity": {
+    "stability": "Stable under normal conditions.",
+    "polymerization": "Will not polymerize",
+    "incompatible_materials": [
+      "Strong oxidizers",
+      "Nitric acid",
+      "Sulfuric acid",
+      "Chromic acid",
+      "Halogens (chlorine, fluorine)",
+      "Perchloric acid",
+      "Aluminum chloride"
+    ],
+    "hazardous_decomposition": [
+      "Carbon monoxide",
+      "Carbon dioxide",
+      "Toxic fumes",
+      "Irritating vapors"
+    ],
+    "conditions_to_avoid": [
+      "Heat",
+      "Ignition sources",
+      "Sparks",
+      "Flames",
+      "Strong oxidizers"
+    ],
+    "reactivity_hazard": "Reacts violently with strong oxidizers. May react explosively with dinitrogen tetroxide. Attacks some plastics, rubber, and coatings."
+  },
+  "environmental_impact": {
+    "aquatic_toxicity": "Toxic to aquatic life. LC50 (fish, 96h): 5.5-40 mg/L depending on species.",
+    "biodegradability": "Readily biodegradable (>60% in 28 days).",
+    "bioaccumulation": "Moderate bioaccumulation potential. BCF: 13-90. Log Kow: 2.69.",
+    "soil_mobility": "Moderate to high mobility. Volatilizes from soil surface. Adsorbs to organic matter.",
+    "atmospheric_fate": "Photolyzes via hydroxyl radicals. Atmospheric half-life: 13 hours to 3 days. Contributes to ozone formation.",
+    "ozone_depletion": false,
+    "global_warming_potential": null,
+    "reportable_releases": {
+      "water": "1000 lbs to navigable waters",
+      "air": "1000 lbs/day (CERCLA RQ)"
+    }
+  },
+  "detection_monitoring": {
+    "sensor_types": [
+      "Photoionization detector (PID)",
+      "Flame ionization detector (FID)",
+      "Infrared"
+    ],
+    "detection_range": "0-500 ppm typical",
+    "alarm_setpoints": {
+      "low": "20 ppm (ACGIH TLV)",
+      "high": "100 ppm (NIOSH REL)",
+      "evacuate": "500 ppm (NIOSH IDLH)"
+    },
+    "colorimetric_tubes": [
+      "Dr\u00e4ger Toluene 5/a",
+      "Gastec 122",
+      "Kitagawa 118"
+    ],
+    "analytical_methods": [
+      {
+        "method": "NIOSH 1501",
+        "technique": "GC-FID",
+        "detection_limit": "0.01 ppm"
+      },
+      {
+        "method": "OSHA Method 111",
+        "technique": "GC-FID",
+        "detection_limit": "0.005 ppm"
+      }
+    ],
+    "odor_threshold": "0.16-40 ppm - provides early warning but wide range. Olfactory adaptation occurs."
+  }
+}

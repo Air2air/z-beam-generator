@@ -1,5 +1,6 @@
 name: Quenching Oil Residue
 slug: quench-oil-contamination
+id: quench-oil-contamination
 category: thermal-damage
 subcategory: scale
 content_type: unified_contamination
@@ -109,13 +110,13 @@ laser_properties:
     transmission_depth: 11.8
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
       hazard_level: low
       phase: gas
-    - compound: CO
+    - compound: carbon-monoxide
       hazard_level: moderate
       phase: gas
     - compound: VOCs
@@ -190,6 +191,25 @@ laser_properties:
     thermal_conductivity: 0.15
     thermal_diffusivity: 0.08
     vaporization_temperature: 300
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tool Steel
+    title: Tool Steel
+    url: /materials/metal/alloy/Tool Steel
+    image: /images/materials/metal/alloy/Tool Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Steel
 - Tool Steel

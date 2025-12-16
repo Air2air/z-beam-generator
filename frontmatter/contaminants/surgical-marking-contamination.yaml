@@ -1,5 +1,6 @@
 name: Surgical Ink Markings
 slug: surgical-marking-contamination
+id: surgical-marking-contamination
 category: chemical-residue
 subcategory: industrial
 content_type: unified_contamination
@@ -112,7 +113,7 @@ laser_properties:
     transmission_depth: 12.5
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -186,6 +187,25 @@ laser_properties:
     thermal_conductivity: 0.2
     thermal_diffusivity: 0.15
     vaporization_temperature: 450
+domain_linkages:
+  related_materials:
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/metal/ferrous/Stainless Steel
+    image: /images/materials/metal/ferrous/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Titanium
+    title: Titanium
+    url: /materials/metal/specialty/Titanium
+    image: /images/materials/metal/specialty/Titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Stainless Steel
 - Titanium

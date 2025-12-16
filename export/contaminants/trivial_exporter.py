@@ -209,6 +209,8 @@ class TrivialContaminantsExporter:
         frontmatter['name'] = source_name
         # Note: slug already has -contamination suffix from _create_slug()
         frontmatter['slug'] = slug
+        # Add id field matching filename pattern (slug is already complete with -contamination suffix)
+        frontmatter['id'] = slug
         
         # FAIL-FAST: Category and subcategory are now REQUIRED (no fallbacks)
         if 'category' not in pattern_data:
@@ -288,6 +290,11 @@ class TrivialContaminantsExporter:
         if 'eeat' in pattern_data:
             frontmatter['eeat'] = self._strip_generation_metadata(pattern_data['eeat'])
         
+        # Export domain_linkages (new standardized structure)
+        if 'domain_linkages' in pattern_data:
+            frontmatter['domain_linkages'] = self._strip_generation_metadata(pattern_data['domain_linkages'])
+        
+        # Backward compatibility: also export valid_materials if present
         if 'valid_materials' in pattern_data:
             frontmatter['valid_materials'] = pattern_data['valid_materials']
         

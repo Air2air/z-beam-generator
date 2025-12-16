@@ -1,0 +1,197 @@
+{
+  "compound_id": "chromium-vi",
+  "name": "Chromium VI (Hexavalent Chromium)",
+  "cas_number": "18540-29-9",
+  "formula": "Cr(VI)",
+  "ppe_requirements": {
+    "respiratory": "NIOSH-approved air-purifying respirator with P100 filters for \u22642.5 \u00b5g/m\u00b3. Powered air-purifying respirator (PAPR) for \u226412.5 \u00b5g/m\u00b3. SCBA for >12.5 \u00b5g/m\u00b3 or unknown concentrations.",
+    "skin": "Nitrile or neoprene gloves (>4mil thickness). Chemical-resistant clothing. Cr(VI) can cause allergic skin reactions and ulcerations.",
+    "eye": "Chemical safety goggles, face shield for dusty/spray operations",
+    "minimum_level": "Level C for known concentrations <2.5 \u00b5g/m\u00b3, Level B for higher concentrations or welding/cutting operations",
+    "special_notes": "CARCINOGEN and ALLERGEN. Prevent skin contact - causes sensitization. Welding/cutting stainless steel generates Cr(VI) fume. Use wet methods to control dust. Medical surveillance required."
+  },
+  "physical_properties": {
+    "boiling_point": "Varies by compound (chromic acid: decomposes >250\u00b0C)",
+    "melting_point": "Varies by compound",
+    "vapor_pressure": "Negligible at room temperature",
+    "vapor_density": "Not applicable (metal/salt)",
+    "specific_gravity": "Varies (chromic acid: 1.2)",
+    "flash_point": "Not applicable",
+    "autoignition_temp": "Not applicable",
+    "explosive_limits": "Not applicable",
+    "appearance": "Yellow to orange-red crystalline solid (chromates), green solution (chromic acid)",
+    "odor": "Odorless or faint acrid odor"
+  },
+  "emergency_response": {
+    "fire_hazard": "Non-combustible. Strong oxidizer - increases fire intensity. Chromates may explode when heated with organic materials.",
+    "fire_suppression": "Use agent appropriate for surrounding fire. Do not use water on dichromate fires. Wear SCBA.",
+    "spill_procedures": "Evacuate area. Wear full PPE. Avoid dust generation. Reduce Cr(VI) to Cr(III) with sodium bisulfite or ferrous sulfate before cleanup. Sweep/vacuum with HEPA filter. Dispose as hazardous waste. Decontaminate area thoroughly.",
+    "exposure_immediate_actions": "Remove contaminated clothing immediately. Wash skin with soap and water for 15 minutes. If inhaled, move to fresh air. Seek medical attention immediately - inform physician of Cr(VI) exposure and potential for delayed effects.",
+    "environmental_hazards": "Toxic to aquatic life. Cr(VI) is highly mobile in groundwater. Can contaminate drinking water. Report releases >5000 lbs.",
+    "special_hazards": "KNOWN HUMAN CARCINOGEN (IARC Group 1). Causes lung cancer, nasal septum perforation. Strong oxidizer - reacts violently with combustibles. Corrosive to skin (ulcers/chrome holes). Potent allergen - can cause severe dermatitis."
+  },
+  "storage_requirements": {
+    "temperature_range": "Store at room temperature, avoid excessive heat",
+    "ventilation": "Local exhaust ventilation. Store in well-ventilated area away from work areas.",
+    "incompatibilities": [
+      "Combustible materials",
+      "Organic materials",
+      "Reducing agents",
+      "Acids",
+      "Bases",
+      "Ammonia",
+      "Hydrogen sulfide"
+    ],
+    "container_material": "Tightly sealed glass or plastic containers. Polyethylene or glass for chromic acid.",
+    "segregation": "Separate from combustibles, organics, and reducing agents by 20 feet or firewall. Designated carcinogen storage.",
+    "quantity_limits": "Minimize quantities stored. OSHA requires carcinogen storage protocols.",
+    "special_requirements": "Post \"CANCER HAZARD\" and \"STRONG OXIDIZER\" signs. Restrict access to authorized personnel. Secondary containment for liquids. Inspect weekly for container integrity. Emergency eyewash/shower within 10 seconds."
+  },
+  "regulatory_classification": {
+    "un_number": "UN3288 (Toxic solid, inorganic, n.o.s.) or UN1755 (Chromic acid solution)",
+    "dot_hazard_class": "6.1 (Toxic) or 8 (Corrosive)",
+    "dot_label": "Toxic or Corrosive",
+    "nfpa_codes": {
+      "health": 3,
+      "flammability": 0,
+      "reactivity": 1,
+      "special": "OX (Oxidizer)"
+    },
+    "epa_hazard_categories": [
+      "Carcinogenicity",
+      "Acute toxicity",
+      "Skin corrosion",
+      "Respiratory sensitization",
+      "Aquatic toxicity"
+    ],
+    "sara_title_iii": true,
+    "cercla_rq": "5000 pounds (2270 kg) for soluble Cr(VI) compounds",
+    "rcra_code": "D007 (chromium)"
+  },
+  "workplace_exposure": {
+    "osha_pel": {
+      "twa_8hr": "5 \u00b5g/m\u00b3 (as Cr) - applies to all Cr(VI) compounds",
+      "stel_15min": null,
+      "ceiling": null
+    },
+    "niosh_rel": {
+      "twa_8hr": "0.2 \u00b5g/m\u00b3 (certain Cr(VI) compounds)",
+      "stel_15min": null,
+      "ceiling": "1 \u00b5g/m\u00b3 (as Cr)",
+      "idlh": "15 mg/m\u00b3 (as Cr(VI))"
+    },
+    "acgih_tlv": {
+      "twa_8hr": "0.0002 mg/m\u00b3 (0.2 \u00b5g/m\u00b3) - water-soluble Cr(VI), inhalable",
+      "stel_15min": null,
+      "ceiling": null
+    },
+    "biological_exposure_indices": [
+      {
+        "metabolite": "Chromium",
+        "specimen": "Urine",
+        "timing": "End of shift, end of work week",
+        "bei_value": "<10 \u00b5g/L (increase during shift <10 \u00b5g/L)"
+      },
+      {
+        "metabolite": "Chromium",
+        "specimen": "Red blood cells",
+        "timing": "End of shift",
+        "bei_value": "<0.5 \u00b5g/L"
+      }
+    ]
+  },
+  "synonyms_identifiers": {
+    "synonyms": [
+      "Hexavalent chromium",
+      "Cr(VI)",
+      "Chromate",
+      "Chromic acid",
+      "Potassium dichromate",
+      "Sodium chromate"
+    ],
+    "common_trade_names": [
+      "Chrome plating chemicals",
+      "Chromate conversion coatings"
+    ],
+    "other_identifiers": {
+      "rtecs_number": "GB6200000 (chromic acid)",
+      "ec_number": "231-889-5 (chromium trioxide)",
+      "pubchem_cid": "24425"
+    }
+  },
+  "reactivity": {
+    "stability": "Stable under normal conditions. Some compounds decompose when heated.",
+    "polymerization": "Will not polymerize",
+    "incompatible_materials": [
+      "Strong reducing agents",
+      "Combustible materials",
+      "Organic materials",
+      "Acids with metals",
+      "Bases",
+      "Ammonia",
+      "Sulfur",
+      "Phosphorus"
+    ],
+    "hazardous_decomposition": [
+      "Chromium oxides",
+      "Toxic fumes",
+      "Oxygen (chromates)"
+    ],
+    "conditions_to_avoid": [
+      "Heat",
+      "Incompatible materials",
+      "Moisture (some compounds)",
+      "Shock (chromates)"
+    ],
+    "reactivity_hazard": "STRONG OXIDIZER. Reacts violently with combustible materials, reducing agents. Chromates may explode when heated. Corrosive to skin and metals."
+  },
+  "environmental_impact": {
+    "aquatic_toxicity": "Very toxic to aquatic life. LC50 (fish, 96h): 10-100 mg/L depending on species. Cr(VI) more toxic than Cr(III).",
+    "biodegradability": "Not biodegradable. Cr(VI) can be reduced to less toxic Cr(III) by organic matter and reducing conditions.",
+    "bioaccumulation": "Low bioaccumulation potential. Does not concentrate in food chain.",
+    "soil_mobility": "High mobility in soil and groundwater as Cr(VI). Adsorbs less than Cr(III). Contaminates wells.",
+    "atmospheric_fate": "Settles as particulate. Does not react in atmosphere. Washed out by rain.",
+    "ozone_depletion": false,
+    "global_warming_potential": null,
+    "reportable_releases": {
+      "water": "5000 lbs to navigable waters",
+      "air": "5000 lbs/day (CERCLA RQ for soluble Cr(VI))"
+    }
+  },
+  "detection_monitoring": {
+    "sensor_types": [
+      "Particulate monitors",
+      "Personal air sampling pumps",
+      "Area monitors",
+      "Colorimetric detection"
+    ],
+    "detection_range": "0.0001-100 \u00b5g/m\u00b3",
+    "alarm_setpoints": {
+      "low": "0.2 \u00b5g/m\u00b3 (NIOSH REL certain compounds)",
+      "high": "5 \u00b5g/m\u00b3 (OSHA PEL)",
+      "evacuate": "15 mg/m\u00b3 (15,000 \u00b5g/m\u00b3) (NIOSH IDLH)"
+    },
+    "colorimetric_tubes": [
+      "Dr\u00e4ger Chromium VI 0.1/a",
+      "Gastec 171"
+    ],
+    "analytical_methods": [
+      {
+        "method": "NIOSH 7600",
+        "technique": "Visible absorption spectrophotometry",
+        "detection_limit": "0.02 \u00b5g/sample"
+      },
+      {
+        "method": "NIOSH 7605",
+        "technique": "Ion chromatography",
+        "detection_limit": "0.05 \u00b5g/sample"
+      },
+      {
+        "method": "OSHA ID-215",
+        "technique": "Visible spectrophotometry",
+        "detection_limit": "0.05 \u00b5g/sample"
+      }
+    ],
+    "odor_threshold": "Not applicable - no warning odor at hazardous levels"
+  }
+}

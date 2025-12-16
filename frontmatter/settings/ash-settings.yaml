@@ -1,5 +1,6 @@
 name: Ash
 slug: ash
+id: ash-settings
 category: wood
 subcategory: hardwood
 content_type: unified_settings
@@ -37,6 +38,50 @@ author:
   formatting_file: usa_formatting.yaml
 title: Ash Laser Cleaning Settings
 settings_description: When laser cleaning Ash, start with controlled power levels to leverage its strong laser absorption, which removes surface contaminants efficiently without deep penetration. This property works well because Ash's open structure allows heat to spread evenly, restoring wood grain in applications like furniture refinishing or heritage pieces. Make sure you adjust scan speeds slower during initial passes, as the material's moderate density can lead to uneven heating if rushed—watch for charring on porous areas. Reduce overlap ratios to avoid overexposure, revealing clean surfaces while preserving the wood's natural flexibility for further handling.
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue
+    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: algae-growth
+    title: Algae and Lichen Growth
+    url: /contaminants/biological/growth/algae-growth
+    image: /images/contaminants/biological/growth/algae-growth.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lead-paint
+    title: Lead-Based Paint Removal
+    url: /contaminants/inorganic-coating/paint/lead-paint
+    image: /images/contaminants/inorganic-coating/paint/lead-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mold-mildew
+    title: Mold and Mildew Growth
+    url: /contaminants/biological/growth/mold-mildew
+    image: /images/contaminants/biological/growth/mold-mildew.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: paint-residue
+    title: Paint Residue / Coating Failure
+    url: /contaminants/inorganic-coating/paint/paint-residue
+    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: wax-buildup
+    title: Wax Coating Buildup
+    url: /contaminants/organic-residue/wax/wax-buildup
+    image: /images/contaminants/organic-residue/wax/wax-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -176,4 +221,4 @@ material_challenges:
     - Limit to 2-3 passes maximum to avoid substrate damage
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:08.377047'
+    generated_date: '2025-12-15T22:06:39.294482'

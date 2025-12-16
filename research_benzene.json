@@ -1,0 +1,198 @@
+{
+  "compound_id": "benzene",
+  "name": "Benzene",
+  "cas_number": "71-43-2",
+  "formula": "C6H6",
+  "ppe_requirements": {
+    "respiratory": "NIOSH-approved organic vapor respirator with full facepiece for >10 ppm, SCBA or supplied-air for >50 ppm or unknown concentrations",
+    "skin": "Nitrile gloves (>0.5mm), butyl rubber gloves, chemical-resistant clothing, impervious suit for spill response",
+    "eye": "Chemical safety goggles and face shield for splash potential",
+    "minimum_level": "Level B for spill response, Level C for operations <50 ppm",
+    "special_notes": "Benzene is absorbed through skin - full body protection required. Change contaminated clothing immediately, do not reuse without decontamination."
+  },
+  "physical_properties": {
+    "boiling_point": "80.1\u00b0C (176\u00b0F)",
+    "melting_point": "5.5\u00b0C (42\u00b0F)",
+    "vapor_pressure": "95 mmHg @ 25\u00b0C",
+    "vapor_density": "2.77 (Air=1)",
+    "specific_gravity": "0.8765 @ 20\u00b0C",
+    "flash_point": "-11\u00b0C (12\u00b0F) closed cup",
+    "autoignition_temp": "498\u00b0C (928\u00b0F)",
+    "explosive_limits": "LEL: 1.2%, UEL: 7.8%",
+    "appearance": "Clear, colorless to pale yellow liquid",
+    "odor": "Sweet, aromatic odor; Odor threshold: 1.5-4.7 ppm (variable, not reliable)"
+  },
+  "emergency_response": {
+    "fire_hazard": "Highly flammable liquid. Vapors heavier than air, may travel to ignition source. Forms explosive mixtures with air.",
+    "fire_suppression": "Dry chemical, CO2, alcohol-resistant foam. Water spray to cool containers and disperse vapors. Do not use direct water stream.",
+    "spill_procedures": "Evacuate area, eliminate ignition sources, ventilate confined spaces, contain with absorbent (sand, vermiculite), prevent entry to waterways, collect in sealed containers",
+    "exposure_immediate_actions": "Remove to fresh air immediately. Remove contaminated clothing. Wash skin with soap and water for 15+ minutes. Flush eyes for 15+ minutes. Seek immediate medical attention - benzene poisoning can be delayed.",
+    "environmental_hazards": "Toxic to aquatic life. Floats on water. Volatile - evaporates rapidly. Report spills >10 lbs to CERCLA.",
+    "special_hazards": "Carcinogen - causes leukemia. May cause bone marrow depression with chronic exposure. Decomposes producing toxic carbon monoxide and carbon dioxide."
+  },
+  "storage_requirements": {
+    "temperature_range": "Store below 25\u00b0C (77\u00b0F) in cool area",
+    "ventilation": "Local exhaust ventilation required, explosion-proof equipment, minimum 100 ft/min face velocity",
+    "incompatibilities": [
+      "Strong oxidizers",
+      "Halogens (chlorine, bromine)",
+      "Nitric acid",
+      "Sulfuric acid",
+      "Perchlorates",
+      "Permanganates",
+      "Peroxides"
+    ],
+    "container_material": "Steel, stainless steel, or aluminum containers. Avoid plastics that dissolve in benzene.",
+    "segregation": "Separate from oxidizers, acids, halogens. Store in approved flammable liquid storage cabinet. Keep away from heat, sparks, open flames.",
+    "quantity_limits": "Flammable liquid storage per 29 CFR 1910.106: Maximum 10 gallons outside approved cabinet, 60 gallons inside safety cabinet",
+    "special_requirements": "Store in tightly sealed containers in cool, dry, well-ventilated area. Ground and bond containers during transfer. Use explosion-proof electrical equipment."
+  },
+  "regulatory_classification": {
+    "un_number": "UN1114",
+    "dot_hazard_class": "3 (Flammable liquid)",
+    "dot_label": "Flammable Liquid",
+    "nfpa_codes": {
+      "health": 2,
+      "flammability": 3,
+      "reactivity": 0,
+      "special": null
+    },
+    "epa_hazard_categories": [
+      "Acute toxicity",
+      "Flammability",
+      "Carcinogenicity",
+      "Germ cell mutagenicity",
+      "Reproductive toxicity",
+      "Specific target organ toxicity (repeated exposure)",
+      "Aspiration hazard"
+    ],
+    "sara_title_iii": true,
+    "cercla_rq": "10 pounds (4.54 kg)",
+    "rcra_code": "U019"
+  },
+  "workplace_exposure": {
+    "osha_pel": {
+      "twa_8hr": "1 ppm",
+      "stel_15min": "5 ppm",
+      "ceiling": null
+    },
+    "niosh_rel": {
+      "twa_8hr": "0.1 ppm",
+      "stel_15min": "1 ppm",
+      "ceiling": null,
+      "idlh": "500 ppm"
+    },
+    "acgih_tlv": {
+      "twa_8hr": "0.5 ppm",
+      "stel_15min": "2.5 ppm",
+      "ceiling": null
+    },
+    "biological_exposure_indices": [
+      {
+        "metabolite": "s-Phenylmercapturic acid (SPMA)",
+        "specimen": "Urine",
+        "timing": "End of shift",
+        "bei_value": "25 \u00b5g/g creatinine"
+      },
+      {
+        "metabolite": "t,t-Muconic acid",
+        "specimen": "Urine",
+        "timing": "End of shift",
+        "bei_value": "500 \u00b5g/g creatinine"
+      }
+    ]
+  },
+  "synonyms_identifiers": {
+    "synonyms": [
+      "Benzol",
+      "Benzole",
+      "Phenyl hydride",
+      "Cyclohexatriene",
+      "Pyrobenzol",
+      "Coal naphtha",
+      "Mineral naphtha"
+    ],
+    "common_trade_names": [
+      "Benzol",
+      "Motor benzol"
+    ],
+    "other_identifiers": {
+      "rtecs_number": "CY1400000",
+      "ec_number": "200-753-7",
+      "pubchem_cid": "241"
+    }
+  },
+  "reactivity": {
+    "stability": "Stable under normal conditions. May polymerize with aluminum chloride catalyst.",
+    "polymerization": "Will not occur under normal conditions.",
+    "incompatible_materials": [
+      "Strong oxidizers",
+      "Halogens",
+      "Nitric acid",
+      "Sulfuric acid",
+      "Perchlorates",
+      "Permanganates",
+      "Peroxides",
+      "Aluminum chloride (catalyst)"
+    ],
+    "hazardous_decomposition": [
+      "Carbon monoxide",
+      "Carbon dioxide",
+      "Irritating and toxic fumes"
+    ],
+    "conditions_to_avoid": [
+      "Heat",
+      "Flames",
+      "Sparks",
+      "Static discharge",
+      "Oxidizers",
+      "High temperatures"
+    ],
+    "reactivity_hazard": "Reacts violently with strong oxidizers causing fire and explosion hazard. Attacks some forms of plastics, rubber, and coatings."
+  },
+  "environmental_impact": {
+    "aquatic_toxicity": "Toxic to aquatic organisms. LC50 (fish, 96h): 5.3-5.9 mg/L (rainbow trout). Toxic to algae and invertebrates.",
+    "biodegradability": "Readily biodegradable under aerobic conditions. >60% degradation in 28 days.",
+    "bioaccumulation": "Low potential. Log Kow: 2.13 (does not bioaccumulate significantly)",
+    "soil_mobility": "High mobility. Low soil adsorption. May leach to groundwater.",
+    "atmospheric_fate": "Photooxidation half-life: 4-17 days. Reacts with hydroxyl radicals. Does not undergo direct photolysis.",
+    "ozone_depletion": false,
+    "global_warming_potential": null,
+    "reportable_releases": {
+      "water": "10 lbs (4.54 kg) to navigable waters (CWA Section 311)",
+      "air": "10 lbs/day (CERCLA RQ)"
+    }
+  },
+  "detection_monitoring": {
+    "sensor_types": [
+      "Photoionization detector (PID)",
+      "Infrared",
+      "Flame ionization detector (FID)",
+      "Colorimetric tubes"
+    ],
+    "detection_range": "0-10 ppm typical, 0-100 ppm extended",
+    "alarm_setpoints": {
+      "low": "1 ppm (OSHA PEL)",
+      "high": "5 ppm (OSHA STEL)",
+      "evacuate": "500 ppm (NIOSH IDLH)"
+    },
+    "colorimetric_tubes": [
+      "Dr\u00e4ger CH25801",
+      "Gastec 121",
+      "Kitagawa 118"
+    ],
+    "analytical_methods": [
+      {
+        "method": "NIOSH 1501",
+        "technique": "GC-FID (Gas Chromatography - Flame Ionization)",
+        "detection_limit": "0.01 ppm"
+      },
+      {
+        "method": "OSHA 12",
+        "technique": "GC-FID with charcoal tube",
+        "detection_limit": "0.01 ppm"
+      }
+    ],
+    "odor_threshold": "NOT reliable indicator. Odor threshold (1.5-4.7 ppm) is above safe exposure levels and varies greatly. Do not rely on odor - use monitoring equipment."
+  }
+}

@@ -1,5 +1,6 @@
 name: Wax Coating Buildup
 slug: wax-buildup-contamination
+id: wax-buildup-contamination
 category: organic-residue
 subcategory: wax
 content_type: unified_contamination
@@ -112,7 +113,7 @@ laser_properties:
     - compound: hydrocarbons (CxHy)
       hazard_level: moderate
       phase: gas
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: carbon particulates
@@ -191,6 +192,200 @@ laser_properties:
     thermal_conductivity: 0.25
     thermal_diffusivity: 0.1
     vaporization_temperature: 400
+domain_linkages:
+  related_materials:
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/metal/non-ferrous/Aluminum
+    image: /images/materials/metal/non-ferrous/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/metal/ferrous/Stainless Steel
+    image: /images/materials/metal/ferrous/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cast-iron
+    title: Cast Iron
+    url: /materials/cast-iron
+    image: /images/materials/cast-iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Copper
+    title: Copper
+    url: /materials/metal/non-ferrous/Copper
+    image: /images/materials/metal/non-ferrous/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bronze
+    title: Bronze
+    url: /materials/bronze
+    image: /images/materials/bronze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Titanium
+    title: Titanium
+    url: /materials/metal/specialty/Titanium
+    image: /images/materials/metal/specialty/Titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zinc
+    title: Zinc
+    url: /materials/metal/alloy/Zinc
+    image: /images/materials/metal/alloy/Zinc.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Nickel
+    title: Nickel
+    url: /materials/metal/specialty/Nickel
+    image: /images/materials/metal/specialty/Nickel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Lead
+    title: Lead
+    url: /materials/metal/non-ferrous/Lead
+    image: /images/materials/metal/non-ferrous/Lead.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tin
+    title: Tin
+    url: /materials/metal/alloy/Tin
+    image: /images/materials/metal/alloy/Tin.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cobalt
+    title: Cobalt
+    url: /materials/metal/specialty/Cobalt
+    image: /images/materials/metal/specialty/Cobalt.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Chromium
+    title: Chromium
+    url: /materials/metal/specialty/Chromium
+    image: /images/materials/metal/specialty/Chromium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Oak
+    title: Oak
+    url: /materials/wood/hardwood/Oak
+    image: /images/materials/wood/hardwood/Oak.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Maple
+    title: Maple
+    url: /materials/wood/hardwood/Maple
+    image: /images/materials/wood/hardwood/Maple.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cherry
+    title: Cherry
+    url: /materials/wood/hardwood/Cherry
+    image: /images/materials/wood/hardwood/Cherry.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Walnut
+    title: Walnut
+    url: /materials/wood/hardwood/Walnut
+    image: /images/materials/wood/hardwood/Walnut.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Pine
+    title: Pine
+    url: /materials/wood/softwood/Pine
+    image: /images/materials/wood/softwood/Pine.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cedar
+    title: Cedar
+    url: /materials/wood/softwood/Cedar
+    image: /images/materials/wood/softwood/Cedar.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Ash
+    title: Ash
+    url: /materials/wood/hardwood/Ash
+    image: /images/materials/wood/hardwood/Ash.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Birch
+    title: Birch
+    url: /materials/wood/hardwood/Birch
+    image: /images/materials/wood/hardwood/Birch.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Mahogany
+    title: Mahogany
+    url: /materials/wood/hardwood/Mahogany
+    image: /images/materials/wood/hardwood/Mahogany.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Teak
+    title: Teak
+    url: /materials/wood/hardwood/Teak
+    image: /images/materials/wood/hardwood/Teak.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Bamboo
+    title: Bamboo
+    url: /materials/wood/hardwood/Bamboo
+    image: /images/materials/wood/hardwood/Bamboo.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Fir
+    title: Fir
+    url: /materials/wood/softwood/Fir
+    image: /images/materials/wood/softwood/Fir.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Redwood
+    title: Redwood
+    url: /materials/wood/hardwood/Redwood
+    image: /images/materials/wood/hardwood/Redwood.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Aluminum
 - Steel

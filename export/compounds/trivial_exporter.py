@@ -45,8 +45,8 @@ class CompoundExporter:
             logger.error(f"Compound not found: {compound_id}")
             return False
         
-        # Prepare output file
-        output_file = self.output_dir / f"{compound['slug']}.yaml"
+        # Prepare output file with -compound suffix
+        output_file = self.output_dir / f"{compound['slug']}-compound.yaml"
         if output_file.exists() and not force:
             logger.warning(
                 f"Frontmatter already exists: {output_file} "
@@ -57,9 +57,9 @@ class CompoundExporter:
         # Build frontmatter
         frontmatter = self._build_frontmatter(compound)
         
-        # Write to file
+        # Write to file with sort_keys=False to preserve field order
         with open(output_file, 'w', encoding='utf-8') as f:
-            yaml.dump(frontmatter, f, default_flow_style=False, allow_unicode=True)
+            yaml.dump(frontmatter, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
         
         logger.info(f"✅ Exported {compound['name']} to {output_file}")
         return True
@@ -115,8 +115,8 @@ class CompoundExporter:
         
         # Build frontmatter
         frontmatter = {
-            # Core identification
-            'id': compound['id'],
+            # Core identification - id should match filename (slug without extension)
+            'id': f"{compound['slug']}-compound",  # Include -compound suffix to match filename
             'name': compound['name'],
             'display_name': compound['display_name'],
             'slug': compound['slug'],
@@ -146,6 +146,9 @@ class CompoundExporter:
             'exposure_guidelines': compound.get('exposure_guidelines'),
             'detection_methods': compound.get('detection_methods'),
             'first_aid': compound.get('first_aid'),
+            
+            # Domain linkages (bidirectional relationships)
+            'domain_linkages': compound.get('domain_linkages', {}),
             
             # Author (full data from Authors.yaml)
             'author': author_data.copy(),

@@ -1,0 +1,103 @@
+id: zinc-oxide-compound
+name: Zinc Oxide
+display_name: Zinc Oxide (ZnO)
+slug: zinc-oxide
+chemical_formula: ZnO
+cas_number: 1314-13-2
+molecular_weight: 81.38
+category: metal_fume
+subcategory: metal_oxide
+hazard_class: irritant
+exposure_limits:
+  osha_pel_ppm: null
+  osha_pel_mg_m3: 5
+  niosh_rel_ppm: null
+  niosh_rel_mg_m3: 5
+  acgih_tlv_ppm: null
+  acgih_tlv_mg_m3: 2
+health_effects_keywords:
+- metal_fume_fever
+- respiratory_irritation
+- flu_like_symptoms
+- temporary_effects
+monitoring_required: true
+typical_concentration_range: 1-10 mg/m³
+sources_in_laser_cleaning:
+- galvanized_steel_cleaning
+- zinc_coating_removal
+- zinc_alloy_processing
+description: null
+health_effects: null
+exposure_guidelines: null
+detection_methods: null
+first_aid: null
+domain_linkages:
+  produced_by_contaminants:
+  - id: galvanize-corrosion
+    title: White Rust on Galvanized Steel
+    url: /contaminants/oxidation/ferrous/galvanize-corrosion
+    image: /images/contaminants/oxidation/ferrous/galvanize-corrosion.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Vaporization from galvanized coatings
+  - id: zinc-plating
+    title: Zinc Electroplating
+    url: /contaminants/metallic-coating/plating/zinc-plating
+    image: /images/contaminants/metallic-coating/plating/zinc-plating.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Direct vaporization of zinc electroplating
+  - id: brass-plating
+    title: Brass Coating Removal
+    url: /contaminants/metallic-coating/plating/brass-plating
+    image: /images/contaminants/metallic-coating/plating/brass-plating.jpg
+    frequency: common
+    severity: moderate
+    typical_context: Zinc component of brass alloy
+  - id: paint-residue
+    title: Paint Residue / Coating Failure
+    url: /contaminants/inorganic-coating/paint/paint-residue
+    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    frequency: occasional
+    severity: low
+    typical_context: Zinc oxide pigments in paint
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+    Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+breadcrumbs:
+- label: Home
+  url: /
+- label: Hazardous Compounds
+  url: /compounds
+- label: Zinc Oxide
+  url: /compounds/zinc-oxide
+type: compound
+domain: compounds
+last_updated: null

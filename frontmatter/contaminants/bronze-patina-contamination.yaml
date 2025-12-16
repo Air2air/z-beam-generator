@@ -1,5 +1,6 @@
 name: Bronze Patina and Corrosion
 slug: bronze-patina-contamination
+id: bronze-patina-contamination
 category: oxidation
 subcategory: non-ferrous
 content_type: unified_contamination
@@ -121,7 +122,7 @@ laser_properties:
     - compound: SnO2
       hazard_level: moderate
       phase: solid
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: Metal vapor
@@ -189,6 +190,32 @@ laser_properties:
     thermal_conductivity: 0.8
     thermal_diffusivity: 0.25
     vaporization_temperature: 1085
+domain_linkages:
+  related_materials:
+  - id: bronze
+    title: Bronze
+    url: /materials/bronze
+    image: /images/materials/bronze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Copper
+    title: Copper
+    url: /materials/metal/non-ferrous/Copper
+    image: /images/materials/metal/non-ferrous/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Bronze
 - Brass

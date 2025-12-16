@@ -1,0 +1,180 @@
+{
+  "compound_id": "benzoapyrene",
+  "name": "Benzo[a]pyrene",
+  "cas_number": "50-32-8",
+  "formula": "C20H12",
+  "ppe_requirements": {
+    "respiratory": "NIOSH-approved air-purifying respirator with P100 particulate filters for <0.2 mg/m\u00b3. SCBA for unknown concentrations or emergency response.",
+    "skin": "Nitrile or butyl rubber gloves, chemical-resistant clothing. PAHs absorb through skin - double gloving recommended for prolonged exposure.",
+    "eye": "Chemical safety goggles, face shield for dusty operations",
+    "minimum_level": "Level C for known concentrations <0.2 mg/m\u00b3, Level B for unknown or >0.2 mg/m\u00b3",
+    "special_notes": "PAH is carcinogenic - minimize skin contact. Decontaminate immediately after exposure. Disposable protective clothing recommended for heavy contamination."
+  },
+  "physical_properties": {
+    "boiling_point": "496\u00b0C (925\u00b0F) - decomposes",
+    "melting_point": "178.1\u00b0C (352.6\u00b0F)",
+    "vapor_pressure": "5.5 \u00d7 10\u207b\u2079 mmHg @ 25\u00b0C (negligible)",
+    "vapor_density": "Not applicable (solid)",
+    "specific_gravity": "1.35",
+    "flash_point": "Not determined",
+    "autoignition_temp": "Not determined",
+    "explosive_limits": "Not applicable",
+    "appearance": "Pale yellow to tan crystalline solid, needles or plates",
+    "odor": "Faint aromatic odor"
+  },
+  "emergency_response": {
+    "fire_hazard": "Combustible solid. May burn in sustained fire. Produces carcinogenic PAH compounds in smoke.",
+    "fire_suppression": "Dry chemical, CO2, water spray, foam. Wear SCBA - toxic combustion products. Contain runoff.",
+    "spill_procedures": "Avoid generating dust. Sweep/vacuum with HEPA filter. Place in sealed containers. DO NOT wash down drains - PAH contamination persists. Dispose as hazardous waste.",
+    "exposure_immediate_actions": "Remove contaminated clothing immediately. Wash skin thoroughly with soap and water. Do not use solvents on skin. If inhaled, move to fresh air. Seek medical attention - inform physician of carcinogen exposure.",
+    "environmental_hazards": "Very toxic to aquatic life. Persists in environment (soil/sediment for years). Bioaccumulates in food chain. Report spills >1 lb.",
+    "special_hazards": "KNOWN HUMAN CARCINOGEN (IARC Group 1). Causes lung cancer, skin cancer, leukemia. Mutagenic and teratogenic. PAH exposure linked to multiple cancers. Contaminated soil requires remediation."
+  },
+  "storage_requirements": {
+    "temperature_range": "Store at room temperature, avoid excessive heat >30\u00b0C",
+    "ventilation": "Local exhaust ventilation to control dust. Store in well-ventilated area.",
+    "incompatibilities": [
+      "Strong oxidizers",
+      "Strong acids",
+      "Halogens"
+    ],
+    "container_material": "Tightly sealed glass or plastic containers. Store away from light.",
+    "segregation": "Separate from oxidizers and incompatibles. Designated carcinogen storage area.",
+    "quantity_limits": "Minimize quantities. Follow institutional carcinogen storage protocols.",
+    "special_requirements": "Post \"CANCER HAZARD\" signs. Restrict access to authorized trained personnel only. Secondary containment required. Inspect containers regularly for integrity."
+  },
+  "regulatory_classification": {
+    "un_number": "UN3077 (Environmentally hazardous substance, solid, n.o.s.)",
+    "dot_hazard_class": "9 (Miscellaneous)",
+    "dot_label": "Class 9",
+    "nfpa_codes": {
+      "health": 3,
+      "flammability": 1,
+      "reactivity": 0,
+      "special": null
+    },
+    "epa_hazard_categories": [
+      "Carcinogenicity",
+      "Aquatic toxicity",
+      "Persistence",
+      "Bioaccumulation"
+    ],
+    "sara_title_iii": true,
+    "cercla_rq": "1 pound (0.454 kg)",
+    "rcra_code": "U022"
+  },
+  "workplace_exposure": {
+    "osha_pel": {
+      "twa_8hr": "0.2 mg/m\u00b3 (coal tar pitch volatiles)",
+      "stel_15min": null,
+      "ceiling": null
+    },
+    "niosh_rel": {
+      "twa_8hr": "0.1 mg/m\u00b3 (coal tar pitch volatiles)",
+      "stel_15min": null,
+      "ceiling": null,
+      "idlh": "80 mg/m\u00b3 (as coal tar pitch volatiles)"
+    },
+    "acgih_tlv": {
+      "twa_8hr": "0.2 mg/m\u00b3 (inhalable fraction)",
+      "stel_15min": null,
+      "ceiling": null
+    },
+    "biological_exposure_indices": [
+      {
+        "metabolite": "1-Hydroxypyrene",
+        "specimen": "Urine",
+        "timing": "End of shift",
+        "bei_value": "<0.5 \u00b5g/L (non-occupationally exposed), <2.0 \u00b5g/L (occupationally exposed)"
+      },
+      {
+        "metabolite": "PAH metabolites",
+        "specimen": "Urine",
+        "timing": "End of week",
+        "bei_value": "Establish baseline, monitor trends"
+      }
+    ]
+  },
+  "synonyms_identifiers": {
+    "synonyms": [
+      "B[a]P",
+      "BaP",
+      "Benzo(a)pyrene",
+      "3,4-Benzopyrene",
+      "Benzo[def]chrysene"
+    ],
+    "common_trade_names": [],
+    "other_identifiers": {
+      "rtecs_number": "DJ3675000",
+      "ec_number": "200-028-5",
+      "pubchem_cid": "2336"
+    }
+  },
+  "reactivity": {
+    "stability": "Stable under normal conditions. Light-sensitive. Decomposes at high temperatures.",
+    "polymerization": "Will not polymerize",
+    "incompatible_materials": [
+      "Strong oxidizers (nitric acid, peroxides)",
+      "Strong acids",
+      "Halogens"
+    ],
+    "hazardous_decomposition": [
+      "Carbon monoxide",
+      "Carbon dioxide",
+      "Toxic PAH compounds",
+      "Polycyclic aromatic hydrocarbons"
+    ],
+    "conditions_to_avoid": [
+      "Heat",
+      "Flames",
+      "Light",
+      "Oxidizers"
+    ],
+    "reactivity_hazard": "May react with strong oxidizers. Generally stable but avoid high heat."
+  },
+  "environmental_impact": {
+    "aquatic_toxicity": "Very toxic to aquatic organisms. LC50 (fathead minnow, 96h): 3.7 \u00b5g/L. Bioaccumulates in fish - BCF 1,100-15,000.",
+    "biodegradability": "Poorly biodegradable. Degradation half-life in soil: months to years. Resistant to microbial breakdown.",
+    "bioaccumulation": "High bioaccumulation potential. Log Kow: 6.04-6.50. Accumulates in fatty tissues and sediments.",
+    "soil_mobility": "Low mobility. Strongly adsorbs to soil/sediment organic matter. Persistent in contaminated sites.",
+    "atmospheric_fate": "Primarily bound to particulate matter. Photolyzes slowly under UV light. Atmospheric half-life: hours to days on particles.",
+    "ozone_depletion": false,
+    "global_warming_potential": null,
+    "reportable_releases": {
+      "water": "1 lb to navigable waters - reportable to NRC",
+      "air": "1 lb/day - reportable to EPA (CERCLA RQ)"
+    }
+  },
+  "detection_monitoring": {
+    "sensor_types": [
+      "Particulate monitors (PM2.5/PM10)",
+      "Area air sampling",
+      "Personal air sampling pumps"
+    ],
+    "detection_range": "0.001-10 mg/m\u00b3",
+    "alarm_setpoints": {
+      "low": "0.1 mg/m\u00b3 (NIOSH REL)",
+      "high": "0.2 mg/m\u00b3 (OSHA PEL)",
+      "evacuate": "80 mg/m\u00b3 (NIOSH IDLH)"
+    },
+    "colorimetric_tubes": "Not available - laboratory analysis required",
+    "analytical_methods": [
+      {
+        "method": "NIOSH 5506",
+        "technique": "HPLC with fluorescence detection",
+        "detection_limit": "0.2 ng/sample"
+      },
+      {
+        "method": "EPA Method 8310",
+        "technique": "HPLC or GC-MS",
+        "detection_limit": "Sub-ppb levels"
+      },
+      {
+        "method": "OSHA Method 58",
+        "technique": "GC with FID",
+        "detection_limit": "0.1 \u00b5g/sample"
+      }
+    ],
+    "odor_threshold": "Not applicable - no characteristic warning odor at hazardous levels"
+  }
+}

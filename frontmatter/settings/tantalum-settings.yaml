@@ -1,5 +1,6 @@
 name: Tantalum
 slug: tantalum
+id: tantalum-settings
 category: metal
 subcategory: alloy
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: taiwan_formatting.yaml
 title: Tantalum Laser Cleaning Settings
 settings_description: When laser cleaning Tantalum, start by selecting a stable laser setup that handles its extreme heat resistance. This metal withstands intense energy without melting easily, so you must ramp up power gradually to avoid uneven heating on the surface. Make sure you focus the beam tightly at first, because Tantalum's dense nature holds contaminants stubbornly, requiring steady passes to lift them off without scratching the base. Watch out midway—its natural shine can reflect the laser, risking stray energy that damages nearby areas, so adjust the angle slightly and add a quick pre-scan to test absorption. Once clear, lower the intensity for finishing touches; this preserves its strong corrosion resistance for applications like medical devices or chemical gear. You should always follow with a cool-down period, as the material retains heat longer than lighter metals.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -177,4 +180,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:15.016054'
+    generated_date: '2025-12-15T22:06:43.049084'

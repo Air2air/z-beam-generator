@@ -1,5 +1,6 @@
 name: Polyester Resin Composites
 slug: polyester-resin-composites
+id: polyester-resin-composites-settings
 category: composite
 subcategory: fiber-reinforced
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
   formatting_file: indonesia_formatting.yaml
 title: Polyester Resin Composites Laser Cleaning Settings
 settings_description: When laser cleaning polyester resin composites, I've found starting with a gentle pass works best. These fiber-reinforced materials differ from plain plastics because they're layered for strength, so the laser clears surface grime without delaminating fibers. You'll notice their low heat spread compared to metals—keeps the base intact. Adjust the beam to skim lightly at first. This tends to restore the smooth finish nicely, especially in aerospace or marine parts where corrosion hides underneath. I've seen it shine up wind turbine blades effectively. Move the scan steadily across the surface. Unlike denser composites, these expand little under heat, avoiding cracks. But watch the edges. End with a final check—too much dwell can yellow the resin, so pull back power if you spot any haze.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -176,4 +179,4 @@ material_challenges:
     - Monitor for matrix damage; stop if surface texture changes
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:12.079209'
+    generated_date: '2025-12-15T22:06:41.846611'

@@ -1,5 +1,6 @@
 name: Tungsten
 slug: tungsten
+id: tungsten-settings
 category: metal
 subcategory: alloy
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: taiwan_formatting.yaml
 title: Tungsten Laser Cleaning Settings
 settings_description: When we laser clean Tungsten, we typically begin with a thorough surface inspection to spot any contaminants like oxides or residues from its aerospace or nuclear uses. This dense metal holds up well under heat, so we ramp up the laser power gradually to overcome its reflective nature that bounces back much of the beam. We've found that pulsing the laser in short bursts helps the heat spread evenly thanks to its strong thermal conductivity, preventing hot spots on the hard surface. But watch out midway—its resistance to oxidation drops if temperatures climb too high, so adjust the scan speed to avoid unwanted surface changes. We finish with multiple light passes to polish without stressing the material's toughness, ensuring clean results for tooling or electrodes. This approach keeps the Tungsten intact and ready for reuse.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -181,4 +184,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:15.847122'
+    generated_date: '2025-12-15T22:06:43.456655'

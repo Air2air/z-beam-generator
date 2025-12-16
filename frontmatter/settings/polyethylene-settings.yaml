@@ -1,5 +1,6 @@
 name: Polyethylene
 slug: polyethylene
+id: polyethylene-settings
 category: plastic
 subcategory: thermoplastic
 content_type: unified_settings
@@ -38,6 +39,15 @@ author:
   formatting_file: italy_formatting.yaml
 title: Polyethylene Laser Cleaning Settings
 settings_description: The key with Polyethylene lies in its flexibility compared to stiffer plastics like PVC—it absorbs laser energy well without cracking, making surface buildup easy to remove. I've seen it restore food packaging finishes smoothly. But watch out mid-process; its low heat tolerance can cause softening if you dwell too long. Keep scans quick and light to avoid distortion, bringing back that clean, glossy look every time.
+domain_linkages:
+  related_contaminants:
+  - id: uv-chalking
+    title: UV Photodegradation / Polymer Chalking
+    url: /contaminants/aging/photodegradation/uv-chalking
+    image: /images/contaminants/aging/photodegradation/uv-chalking.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -163,4 +173,4 @@ material_challenges:
     - Multiple gentle passes instead of single high-power pass
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:12.131184'
+    generated_date: '2025-12-15T22:06:41.877565'

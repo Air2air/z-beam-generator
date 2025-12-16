@@ -1,0 +1,168 @@
+{
+  "compound_id": "sulfur-dioxide",
+  "name": "Sulfur Dioxide",
+  "cas_number": "7446-09-5",
+  "formula": "SO2",
+  "ppe_requirements": {
+    "respiratory": "SCBA or supplied-air respirator for >5 ppm or unknown concentrations. Air-purifying with acid gas cartridge acceptable for \u22645 ppm with escape provisions.",
+    "skin": "Nitrile gloves for liquid contact (cryogenic hazard). Thermal protection for liquefied SO2.",
+    "eye": "Chemical safety goggles, face shield for liquid contact",
+    "minimum_level": "Level C for known <5 ppm, Level B for >5 ppm or liquefied SO2",
+    "special_notes": "Extremely irritating to eyes and respiratory tract. Cryogenic liquid causes frostbite. Asthma trigger - asthmatics extremely sensitive."
+  },
+  "physical_properties": {
+    "boiling_point": "-10.0\u00b0C (14\u00b0F)",
+    "melting_point": "-75.5\u00b0C (-103.9\u00b0F)",
+    "vapor_pressure": "2538 mmHg @ 21\u00b0C",
+    "vapor_density": "2.26 (Air=1)",
+    "specific_gravity": "1.43 (liquid @ 0\u00b0C)",
+    "flash_point": "Not applicable (non-flammable)",
+    "autoignition_temp": "Not applicable",
+    "explosive_limits": "Not applicable",
+    "appearance": "Colorless gas, colorless liquid under pressure",
+    "odor": "Pungent, suffocating odor @ 0.3-1 ppm"
+  },
+  "emergency_response": {
+    "fire_hazard": "Non-flammable. Cylinders may explode when heated. Toxic decomposition products in fire.",
+    "fire_suppression": "If cylinder involved in fire, evacuate immediately - explosion hazard. Cool cylinders with water spray from maximum distance. Let fire burn out if possible.",
+    "spill_procedures": "EVACUATE. Ventilate area. SCBA for >100 ppm. Neutralize with soda ash or lime. Contain with dry sand or earth. For liquid: cryogenic hazard - specialized equipment needed.",
+    "exposure_immediate_actions": "Remove to fresh air immediately. Eyes: flush with water for 15 minutes. If inhaled: administer oxygen. Seek medical attention - risk of bronchospasm and delayed pulmonary edema. For asthmatics: MEDICAL EMERGENCY.",
+    "environmental_hazards": "Major contributor to acid rain. Toxic to vegetation. Acidifies water bodies. Report releases >1 lb.",
+    "special_hazards": "Severe respiratory and eye irritant. Triggers asthma attacks. Forms sulfurous acid with moisture. Corrosive to tissues. May cause bronchospasm and pulmonary edema. Cryogenic liquid causes frostbite."
+  },
+  "storage_requirements": {
+    "temperature_range": "Store cylinders <52\u00b0C. Liquefied SO2 requires cryogenic storage.",
+    "ventilation": "Outdoor storage preferred. Indoor: mechanical ventilation with emergency backup. SO2 gas detection mandatory.",
+    "incompatibilities": [
+      "Potassium chlorate",
+      "Alkali metals",
+      "Sodium hydride",
+      "Metal oxides",
+      "Aluminum",
+      "Halogens"
+    ],
+    "container_material": "Steel cylinders. Stainless steel for liquid.",
+    "segregation": "Separate from incompatibles. Corrosive gas storage area.",
+    "quantity_limits": "Per fire code. Many facilities limit indoor storage.",
+    "special_requirements": "Cylinder restraints mandatory. Leak detection system required. Post \"CORROSIVE GAS\" signs. Emergency procedures posted. For liquid: cryogenic handling equipment."
+  },
+  "regulatory_classification": {
+    "un_number": "UN1079",
+    "dot_hazard_class": "2.3 (Toxic gas)",
+    "dot_label": "Poison Gas",
+    "nfpa_codes": {
+      "health": 3,
+      "flammability": 0,
+      "reactivity": 0,
+      "special": null
+    },
+    "epa_hazard_categories": [
+      "Acute toxicity (inhalation)",
+      "Skin corrosion",
+      "Serious eye damage"
+    ],
+    "sara_title_iii": true,
+    "cercla_rq": "1 pound (0.454 kg)",
+    "rcra_code": null
+  },
+  "workplace_exposure": {
+    "osha_pel": {
+      "twa_8hr": "5 ppm (13 mg/m\u00b3)",
+      "stel_15min": null,
+      "ceiling": null
+    },
+    "niosh_rel": {
+      "twa_8hr": "2 ppm (5 mg/m\u00b3)",
+      "stel_15min": "5 ppm (13 mg/m\u00b3) - 15 min",
+      "ceiling": null,
+      "idlh": "100 ppm"
+    },
+    "acgih_tlv": {
+      "twa_8hr": "0.25 ppm",
+      "stel_15min": null,
+      "ceiling": null
+    },
+    "biological_exposure_indices": []
+  },
+  "synonyms_identifiers": {
+    "synonyms": [
+      "Sulfurous anhydride",
+      "Sulfur oxide",
+      "SO2",
+      "Sulphur dioxide"
+    ],
+    "common_trade_names": [],
+    "other_identifiers": {
+      "rtecs_number": "WS4550000",
+      "ec_number": "231-195-2",
+      "pubchem_cid": "1119"
+    }
+  },
+  "reactivity": {
+    "stability": "Stable under normal conditions.",
+    "polymerization": "Will not polymerize",
+    "incompatible_materials": [
+      "Potassium chlorate",
+      "Alkali metals",
+      "Metal oxides",
+      "Halogens",
+      "Ammonia",
+      "Acetylene",
+      "Aluminum"
+    ],
+    "hazardous_decomposition": [
+      "Sulfur oxides",
+      "Sulfuric acid mist"
+    ],
+    "conditions_to_avoid": [
+      "Heat",
+      "Moisture (forms sulfurous acid)",
+      "Incompatible materials"
+    ],
+    "reactivity_hazard": "Reacts with water to form sulfurous acid (corrosive). Reacts violently with metal oxides and alkali metals."
+  },
+  "environmental_impact": {
+    "aquatic_toxicity": "Toxic to aquatic life. LC50 (fish, 96h): 100-180 mg/L. Forms acidic solutions.",
+    "biodegradability": "Reacts in atmosphere. Oxidizes to sulfuric acid. Not biodegradable.",
+    "bioaccumulation": "Does not bioaccumulate.",
+    "soil_mobility": "High mobility as gas. Deposits as sulfates. Contributes to soil acidification.",
+    "atmospheric_fate": "Oxidizes to sulfur trioxide then sulfuric acid. Major acid rain precursor. Atmospheric residence: hours to days.",
+    "ozone_depletion": false,
+    "global_warming_potential": null,
+    "reportable_releases": {
+      "water": "1 lb to navigable waters",
+      "air": "1 lb/day (CERCLA RQ)"
+    }
+  },
+  "detection_monitoring": {
+    "sensor_types": [
+      "Electrochemical",
+      "UV fluorescence",
+      "Infrared"
+    ],
+    "detection_range": "0-50 ppm typical",
+    "alarm_setpoints": {
+      "low": "2 ppm (NIOSH REL)",
+      "high": "5 ppm (OSHA PEL/NIOSH STEL)",
+      "evacuate": "100 ppm (NIOSH IDLH)"
+    },
+    "colorimetric_tubes": [
+      "Dr\u00e4ger SO2 0.1/a",
+      "Gastec 5L",
+      "Kitagawa 103"
+    ],
+    "analytical_methods": [
+      {
+        "method": "NIOSH 6004",
+        "technique": "Ion chromatography",
+        "detection_limit": "0.05 ppm"
+      },
+      {
+        "method": "OSHA ID-104",
+        "technique": "Ion chromatography",
+        "detection_limit": "0.02 ppm"
+      }
+    ],
+    "odor_threshold": "0.3-1 ppm - provides adequate warning below toxic levels"
+  }
+}

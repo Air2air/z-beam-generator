@@ -1,5 +1,6 @@
 name: White Rust on Galvanized Steel
 slug: galvanize-corrosion-contamination
+id: galvanize-corrosion-contamination
 category: oxidation
 subcategory: ferrous
 content_type: unified_contamination
@@ -117,7 +118,7 @@ laser_properties:
     - compound: Zn vapor
       hazard_level: moderate
       phase: gas
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     damage_risk_to_substrate: low
@@ -178,6 +179,25 @@ laser_properties:
     thermal_conductivity: 0.5
     thermal_diffusivity: 0.6
     vaporization_temperature: 120
+domain_linkages:
+  related_materials:
+  - id: galvanized-steel
+    title: Galvanized Steel
+    url: /materials/galvanized-steel
+    image: /images/materials/galvanized-steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: zinc-coated-metal
+    title: Zinc-Coated Metal
+    url: /materials/zinc-coated-metal
+    image: /images/materials/zinc-coated-metal.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Galvanized Steel
 - Zinc-Coated Metal

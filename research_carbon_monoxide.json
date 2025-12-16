@@ -1,0 +1,180 @@
+{
+  "compound_id": "carbon-monoxide",
+  "name": "Carbon Monoxide",
+  "cas_number": "630-08-0",
+  "formula": "CO",
+  "ppe_requirements": {
+    "respiratory": "NIOSH-approved full-face pressure-demand SCBA or supplied-air respirator with escape bottle for IDLH conditions. Continuous flow supplied-air for <1200 ppm.",
+    "skin": "Protective gloves not normally required for gas (required for compressed gas cylinders). Thermal protection if handling cryogenic liquid.",
+    "eye": "Safety glasses. Face shield if handling compressed gas cylinders.",
+    "minimum_level": "Level B for confined spaces/unknown concentrations, Level C with supplied air for known concentrations <1200 ppm",
+    "special_notes": "CO is an asphyxiant - displaces oxygen. SCBA required in oxygen-deficient atmospheres (<19.5% O2). Detector badges provide no respiratory protection."
+  },
+  "physical_properties": {
+    "boiling_point": "-191.5\u00b0C (-312.7\u00b0F)",
+    "melting_point": "-205.1\u00b0C (-337.2\u00b0F)",
+    "vapor_pressure": ">760 mmHg @ 20\u00b0C (gas at normal temperature)",
+    "vapor_density": "0.968 (Air=1)",
+    "specific_gravity": "0.791 @ -191.5\u00b0C (liquid)",
+    "flash_point": "Not applicable (gas)",
+    "autoignition_temp": "609\u00b0C (1128\u00b0F)",
+    "explosive_limits": "LEL: 12.5%, UEL: 74%",
+    "appearance": "Colorless gas",
+    "odor": "Odorless - Cannot be detected by smell (DANGEROUS!)"
+  },
+  "emergency_response": {
+    "fire_hazard": "Extremely flammable gas. Wide flammability range. Vapors lighter than air but may accumulate in low areas. Cylinders may rupture in fire.",
+    "fire_suppression": "Do not extinguish burning gas unless flow can be stopped. Use water spray to cool cylinders. Use dry chemical or CO2 for surrounding fires.",
+    "spill_procedures": "Evacuate area immediately. Eliminate ignition sources. Ventilate area or move containers to safe area. Stop leak if safe to do so. Monitor with CO detectors.",
+    "exposure_immediate_actions": "Remove to fresh air IMMEDIATELY. Administer 100% oxygen by tight-fitting mask. If breathing stopped, give artificial respiration. Seek immediate medical attention. Consider hyperbaric oxygen therapy for severe exposures.",
+    "environmental_hazards": "Negligible environmental persistence - rapidly disperses and oxidizes to CO2. Primary hazard is asphyxiation, not environmental contamination.",
+    "special_hazards": "Odorless, colorless - cannot detect without monitors. Binds to hemoglobin 200-250x more strongly than oxygen, causing tissue hypoxia. Delayed neurological effects possible."
+  },
+  "storage_requirements": {
+    "temperature_range": "Store compressed gas cylinders below 52\u00b0C (125\u00b0F)",
+    "ventilation": "Outdoor storage preferred. If indoors: continuous mechanical ventilation, gas detection system with alarms",
+    "incompatibilities": [
+      "Strong oxidizers",
+      "Oxygen",
+      "Air (explosive mixtures)",
+      "Chlorine",
+      "Fluorine",
+      "Nitrous oxide"
+    ],
+    "container_material": "DOT-approved compressed gas cylinders (steel, aluminum). Do not transfer to unauthorized containers.",
+    "segregation": "Separate from oxygen cylinders by 20 feet or 5-foot non-combustible barrier. Store in dedicated gas cylinder storage.",
+    "quantity_limits": "Per 29 CFR 1910.253: Maximum 300 cubic feet indoors, unlimited outdoors with proper segregation",
+    "special_requirements": "Secure cylinders to prevent falling. Store upright. Cap cylinders when not in use. Post \"CARBON MONOXIDE - POISON GAS\" signs. Implement gas detection systems."
+  },
+  "regulatory_classification": {
+    "un_number": "UN1016",
+    "dot_hazard_class": "2.3 (Poisonous gas), 2.1 (Flammable gas)",
+    "dot_label": "Poison Gas, Flammable Gas",
+    "nfpa_codes": {
+      "health": 3,
+      "flammability": 4,
+      "reactivity": 0,
+      "special": null
+    },
+    "epa_hazard_categories": [
+      "Acute toxicity (inhalation)",
+      "Flammable gases",
+      "Gases under pressure",
+      "Reproductive toxicity",
+      "Specific target organ toxicity (single exposure)"
+    ],
+    "sara_title_iii": false,
+    "cercla_rq": "Not listed (gas, difficult to quantify releases)",
+    "rcra_code": "Not listed as hazardous waste"
+  },
+  "workplace_exposure": {
+    "osha_pel": {
+      "twa_8hr": "50 ppm",
+      "stel_15min": null,
+      "ceiling": null
+    },
+    "niosh_rel": {
+      "twa_8hr": "35 ppm",
+      "stel_15min": null,
+      "ceiling": "200 ppm (never to exceed)",
+      "idlh": "1200 ppm"
+    },
+    "acgih_tlv": {
+      "twa_8hr": "25 ppm",
+      "stel_15min": null,
+      "ceiling": null
+    },
+    "biological_exposure_indices": [
+      {
+        "metabolite": "Carboxyhemoglobin (COHb)",
+        "specimen": "Blood",
+        "timing": "End of shift",
+        "bei_value": "<3.5% of hemoglobin for non-smokers, <10% post-shift"
+      }
+    ]
+  },
+  "synonyms_identifiers": {
+    "synonyms": [
+      "Carbon oxide",
+      "Carbonic oxide",
+      "Flue gas",
+      "Exhaust gas",
+      "CO"
+    ],
+    "common_trade_names": [],
+    "other_identifiers": {
+      "rtecs_number": "FG3500000",
+      "ec_number": "211-128-3",
+      "pubchem_cid": "281"
+    }
+  },
+  "reactivity": {
+    "stability": "Stable under normal conditions.",
+    "polymerization": "Will not occur.",
+    "incompatible_materials": [
+      "Strong oxidizers (oxygen, halogens, fluorine, chlorine)",
+      "Silver oxide",
+      "Iron oxide",
+      "Bromine trifluoride",
+      "Nickel carbonyl (forms at high temperature)"
+    ],
+    "hazardous_decomposition": [
+      "Carbon dioxide",
+      "Oxygen (incomplete combustion may regenerate CO)"
+    ],
+    "conditions_to_avoid": [
+      "Heat",
+      "Open flames",
+      "Sparks",
+      "Oxidizers",
+      "High temperatures",
+      "Confined spaces without ventilation"
+    ],
+    "reactivity_hazard": "Reacts violently with strong oxidizers. May form explosive mixtures with air (12.5-74%). Reacts with heated iron to form toxic iron carbonyl."
+  },
+  "environmental_impact": {
+    "aquatic_toxicity": "Low direct toxicity to aquatic life. LC50 (fish): >100 mg/L. Rapidly escapes to atmosphere from water.",
+    "biodegradability": "Not biodegradable in conventional sense. Oxidizes to CO2 in atmosphere.",
+    "bioaccumulation": "No bioaccumulation potential. Does not persist in environment.",
+    "soil_mobility": "Not applicable - gas escapes to atmosphere immediately.",
+    "atmospheric_fate": "Oxidizes to CO2 via hydroxyl radical reaction. Atmospheric lifetime: 1-2 months. Contributes to tropospheric ozone formation.",
+    "ozone_depletion": false,
+    "global_warming_potential": "Indirect effect via methane oxidation, but negligible GWP itself",
+    "reportable_releases": {
+      "water": "Not reportable (low aquatic persistence)",
+      "air": "State-dependent. Many states require reporting large releases (e.g., >100 lbs/hr in some jurisdictions)"
+    }
+  },
+  "detection_monitoring": {
+    "sensor_types": [
+      "Electrochemical (most common)",
+      "Infrared (NDIR)",
+      "Semiconductor",
+      "Biomimetic gel (color change)"
+    ],
+    "detection_range": "0-300 ppm typical, 0-1000 ppm extended, 0-2000 ppm for rescue",
+    "alarm_setpoints": {
+      "low": "35 ppm (NIOSH REL)",
+      "high": "200 ppm (NIOSH Ceiling)",
+      "evacuate": "1200 ppm (NIOSH IDLH)"
+    },
+    "colorimetric_tubes": [
+      "Dr\u00e4ger CH25701",
+      "Gastec 1LC/1LB",
+      "Kitagawa 106SD"
+    ],
+    "analytical_methods": [
+      {
+        "method": "NIOSH 6604",
+        "technique": "GC-FID or electrochemical sensor",
+        "detection_limit": "0.03 ppm"
+      },
+      {
+        "method": "OSHA ID-209",
+        "technique": "GC-TCD (thermal conductivity)",
+        "detection_limit": "2 ppm"
+      }
+    ],
+    "odor_threshold": "NO ODOR - Cannot be detected by smell. MUST use electronic monitors. Odorless nature makes CO extremely dangerous."
+  }
+}

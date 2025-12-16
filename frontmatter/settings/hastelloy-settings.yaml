@@ -1,5 +1,6 @@
 name: Hastelloy
 slug: hastelloy
+id: hastelloy-settings
 category: metal
 subcategory: specialty
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: usa_formatting.yaml
 title: Hastelloy Laser Cleaning Settings
 settings_description: When laser cleaning Hastelloy, start with reduced power to manage its low thermal conductivity, which causes heat to build up quickly in treated areas. This approach removes surface contaminants cleanly while preserving the alloy's exceptional corrosion resistance. But watch for uneven heating midway through—adjust scan speeds downward to avoid cracking the protective oxide layer. Multiple passes restore the finish without weakening its high-temperature strength.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -180,4 +183,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:10.336322'
+    generated_date: '2025-12-15T22:06:40.747471'

@@ -1,5 +1,6 @@
 name: Fiberglass
 slug: fiberglass
+id: fiberglass-settings
 category: composite
 subcategory: fiber-reinforced
 content_type: unified_settings
@@ -37,6 +38,29 @@ author:
   formatting_file: taiwan_formatting.yaml
 title: Fiberglass Laser Cleaning Settings
 settings_description: When laser cleaning fiberglass, I've found that starting with a gentle scan speed helps the process go smoothly. This composite material holds up well because of its strong, lightweight fibers that resist corrosion in tough environments like marine or aerospace settings. But watch out midway—its poor heat spread can cause localized damage if you push too hard, so adjust to multiple light passes instead of one heavy go. Tends to clean contaminants without scratching the surface when you keep the energy low and overlap spots just right. This way, you preserve its flexibility for applications in wind energy or construction.
+domain_linkages:
+  related_contaminants:
+  - id: aviation-sealant
+    title: Aerospace Sealant Residue
+    url: /contaminants/organic-residue/adhesive/aviation-sealant
+    image: /images/contaminants/organic-residue/adhesive/aviation-sealant.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: epoxy-residue
+    title: Epoxy Resin Deposits
+    url: /contaminants/organic-residue/adhesive/epoxy-residue
+    image: /images/contaminants/organic-residue/adhesive/epoxy-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: soap-scum
+    title: Soap Scum Buildup
+    url: /contaminants/organic-residue/cleaning-agent/soap-scum
+    image: /images/contaminants/organic-residue/cleaning-agent/soap-scum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -176,4 +200,4 @@ material_challenges:
     - Monitor for matrix damage; stop if surface texture changes
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:09.745071'
+    generated_date: '2025-12-15T22:06:40.351046'

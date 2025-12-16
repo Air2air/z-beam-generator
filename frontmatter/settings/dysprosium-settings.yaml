@@ -1,5 +1,6 @@
 name: Dysprosium
 slug: dysprosium
+id: dysprosium-settings
 category: rare-earth
 subcategory: lanthanide
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
   formatting_file: italy_formatting.yaml
 title: Dysprosium Laser Cleaning Settings
 settings_description: When laser cleaning Dysprosium, we typically begin with a gentle power setup to handle its high reflectivity. This shiny surface bounces most energy away, so start low to build absorption gradually. We've found that keeps the dense material from overheating locally, given its poor heat spreading. Watch out mid-process for uneven spots—adjust scan speed slower there to avoid pitting. Finish with multiple light passes. This brings back the finish without warping its tough structure.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -179,4 +182,4 @@ material_challenges:
     - Chain of custody documentation for high-value materials
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:09.554610'
+    generated_date: '2025-12-15T22:06:40.150768'

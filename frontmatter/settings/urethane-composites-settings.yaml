@@ -1,5 +1,6 @@
 name: Urethane Composites
 slug: urethane-composites
+id: urethane-composites-settings
 category: composite
 subcategory: structural
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: usa_formatting.yaml
 title: Urethane Composites Laser Cleaning Settings
 settings_description: When laser cleaning urethane composites, we typically begin by selecting a moderate power level to leverage their high absorption, which efficiently removes surface contaminants without immediate deep penetration. This approach accounts for the material's low thermal conductivity, so heat stays localized and reduces the risk of underlying delamination in these layered structures. We've found that slower scan speeds with multiple overlapping passes restore the surface integrity effectively, as the flexibility of urethane prevents cracking under controlled exposure. Always monitor for excessive buildup, which can degrade the composite's durability if power exceeds safe thresholds.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -177,4 +180,4 @@ material_challenges:
     - Monitor for matrix damage; stop if surface texture changes
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:15.947033'
+    generated_date: '2025-12-15T22:06:43.514393'

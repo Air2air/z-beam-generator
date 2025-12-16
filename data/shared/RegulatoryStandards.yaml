@@ -1,0 +1,210 @@
+# Regulatory Standards Database
+# Single source of truth for all regulatory references across domains
+#
+# Referenced by:
+# - Materials.yaml (laser processing compliance)
+# - Contaminants.yaml (safety requirements)
+# - Compounds.yaml (chemical regulations)
+# - Settings.yaml (equipment standards)
+
+regulatory_standards:
+  # OSHA Standards
+  osha-29-cfr-1910-1200:
+    id: "osha-29-cfr-1910-1200"
+    name: "OSHA 29 CFR 1910.1200"
+    full_name: "Hazard Communication Standard"
+    organization: "OSHA"
+    category: "chemical_safety"
+    url: "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.1200"
+    description: "Requires chemical manufacturers and importers to evaluate hazards and provide safety data sheets"
+    applicability: ["compounds", "contaminants"]
+    last_updated: "2024-01-01"
+  
+  osha-29-cfr-1926-95:
+    id: "osha-29-cfr-1926-95"
+    name: "OSHA 29 CFR 1926.95"
+    full_name: "Personal Protective Equipment (Construction)"
+    organization: "OSHA"
+    category: "ppe"
+    url: "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95"
+    description: "Requirements for PPE in construction environments"
+    applicability: ["materials", "contaminants", "compounds"]
+    last_updated: "2023-06-01"
+  
+  osha-29-cfr-1910-1048:
+    id: "osha-29-cfr-1910-1048"
+    name: "OSHA 29 CFR 1910.1048"
+    full_name: "Formaldehyde Standard"
+    organization: "OSHA"
+    category: "exposure_control"
+    url: "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.1048"
+    description: "Specific requirements for formaldehyde exposure control"
+    applicability: ["compounds", "contaminants"]
+    last_updated: "2023-01-01"
+  
+  # IEC Standards (Laser Safety)
+  iec-60825:
+    id: "iec-60825"
+    name: "IEC 60825"
+    full_name: "Safety of Laser Products"
+    organization: "IEC"
+    category: "laser_safety"
+    url: "https://webstore.iec.ch/publication/3587"
+    description: "International standard for laser product safety and classification"
+    applicability: ["materials", "contaminants", "settings"]
+    last_updated: "2014-05-01"
+  
+  # ANSI Standards
+  ansi-z136-1:
+    id: "ansi-z136-1"
+    name: "ANSI Z136.1"
+    full_name: "Safe Use of Lasers"
+    organization: "ANSI"
+    category: "laser_safety"
+    url: "https://www.lia.org/store/product/1059-ansi-z136-1-2014"
+    description: "American National Standard for Safe Use of Lasers"
+    applicability: ["materials", "contaminants", "settings"]
+    last_updated: "2014-01-01"
+  
+  ansi-z87-1:
+    id: "ansi-z87-1"
+    name: "ANSI Z87.1"
+    full_name: "Occupational and Educational Personal Eye and Face Protection Devices"
+    organization: "ANSI"
+    category: "ppe"
+    url: "https://webstore.ansi.org/standards/isea/ansiz872020"
+    description: "Standard for eye and face protection equipment"
+    applicability: ["materials", "contaminants", "compounds"]
+    last_updated: "2020-01-01"
+  
+  # ISO Standards
+  iso-11146:
+    id: "iso-11146"
+    name: "ISO 11146"
+    full_name: "Lasers and laser-related equipment - Test methods for laser beam widths, divergence angles and beam propagation ratios"
+    organization: "ISO"
+    category: "beam_characterization"
+    url: "https://www.iso.org/standard/33625.html"
+    description: "Methods for characterizing laser beam properties"
+    applicability: ["materials", "settings"]
+    last_updated: "2005-01-01"
+  
+  iso-9001:
+    id: "iso-9001"
+    name: "ISO 9001"
+    full_name: "Quality Management Systems"
+    organization: "ISO"
+    category: "quality_management"
+    url: "https://www.iso.org/iso-9001-quality-management.html"
+    description: "Requirements for quality management systems"
+    applicability: ["materials", "settings"]
+    last_updated: "2015-09-01"
+  
+  # ASTM Standards
+  astm-e2490:
+    id: "astm-e2490"
+    name: "ASTM E2490"
+    full_name: "Standard Guide for Measurement of Particle Size Distribution of Nanomaterials in Suspension by Photon Correlation Spectroscopy (PCS)"
+    organization: "ASTM"
+    category: "material_characterization"
+    url: "https://www.astm.org/e2490-21.html"
+    description: "Methods for measuring nanoparticle size distributions"
+    applicability: ["materials", "contaminants"]
+    last_updated: "2021-01-01"
+  
+  astm-d6978:
+    id: "astm-d6978"
+    name: "ASTM D6978"
+    full_name: "Standard Practice for Assessment of Resistance of Medical Gloves to Permeation by Chemotherapy Drugs"
+    organization: "ASTM"
+    category: "ppe"
+    url: "https://www.astm.org/d6978-05r19.html"
+    description: "Testing methods for chemical permeation resistance of gloves"
+    applicability: ["compounds", "contaminants"]
+    last_updated: "2019-01-01"
+  
+  # DOT Hazmat
+  dot-hazmat:
+    id: "dot-hazmat"
+    name: "DOT Hazmat Regulations"
+    full_name: "Hazardous Materials Regulations (49 CFR)"
+    organization: "DOT"
+    category: "transportation"
+    url: "https://www.phmsa.dot.gov/hazmat/regs"
+    description: "Regulations for transporting hazardous materials"
+    applicability: ["compounds"]
+    last_updated: "2024-01-01"
+  
+  # NFPA Codes
+  nfpa-704:
+    id: "nfpa-704"
+    name: "NFPA 704"
+    full_name: "Standard System for the Identification of the Hazards of Materials for Emergency Response"
+    organization: "NFPA"
+    category: "hazard_identification"
+    url: "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=704"
+    description: "Diamond-shaped hazard identification system"
+    applicability: ["compounds", "contaminants"]
+    last_updated: "2017-01-01"
+  
+  # NIOSH Standards
+  niosh-42-cfr-84:
+    id: "niosh-42-cfr-84"
+    name: "NIOSH 42 CFR 84"
+    full_name: "Approval of Respiratory Protective Devices"
+    organization: "NIOSH"
+    category: "ppe"
+    url: "https://www.cdc.gov/niosh/npptl/topics/respirators/pt84abs2.html"
+    description: "Certification requirements for respiratory protection equipment"
+    applicability: ["compounds", "contaminants"]
+    last_updated: "1995-07-10"
+  
+  niosh-2541:
+    id: "niosh-2541"
+    name: "NIOSH 2541"
+    full_name: "Formaldehyde (Sampling and Analytical Method)"
+    organization: "NIOSH"
+    category: "exposure_monitoring"
+    url: "https://www.cdc.gov/niosh/docs/2003-154/pdfs/2541.pdf"
+    description: "Method for sampling and analyzing formaldehyde in workplace air"
+    applicability: ["compounds", "contaminants"]
+    last_updated: "1994-08-15"
+  
+  # EPA Standards
+  cercla:
+    id: "cercla"
+    name: "CERCLA"
+    full_name: "Comprehensive Environmental Response, Compensation, and Liability Act"
+    organization: "EPA"
+    category: "environmental"
+    url: "https://www.epa.gov/superfund/superfund-cercla-overview"
+    description: "Superfund law for hazardous substance cleanup"
+    applicability: ["compounds"]
+    last_updated: "1980-12-11"
+  
+  sara-title-iii:
+    id: "sara-title-iii"
+    name: "SARA Title III"
+    full_name: "Emergency Planning and Community Right-to-Know Act"
+    organization: "EPA"
+    category: "environmental"
+    url: "https://www.epa.gov/epcra"
+    description: "Emergency planning and hazardous chemical reporting requirements"
+    applicability: ["compounds"]
+    last_updated: "1986-10-17"
+  
+  rcra:
+    id: "rcra"
+    name: "RCRA"
+    full_name: "Resource Conservation and Recovery Act"
+    organization: "EPA"
+    category: "waste_management"
+    url: "https://www.epa.gov/rcra"
+    description: "Federal law governing disposal of solid and hazardous waste"
+    applicability: ["compounds"]
+    last_updated: "1976-10-21"
+
+# Version tracking
+schema_version: "1.0.0"
+last_updated: "2025-12-15"
+description: "Centralized regulatory standards database for Z-Beam Generator system"

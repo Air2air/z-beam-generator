@@ -1,5 +1,6 @@
 name: Pine
 slug: pine
+id: pine-settings
 category: wood
 subcategory: softwood
 content_type: unified_settings
@@ -38,6 +39,57 @@ author:
   formatting_file: italy_formatting.yaml
 title: Pine Laser Cleaning Settings
 settings_description: When laser cleaning pine, watch out right away for its softness compared to denser hardwoods like oak—I've seen it char easily if you push too hard, so start with gentle passes to avoid scorching the fibers. Unlike those tougher woods that handle higher intensities without flinching, pine's open grain soaks up heat quickly, which means you need shorter dwell times to prevent deep thermal damage. This works best when you adjust the scan speed upward, letting the laser skim the surface and lift grime without embedding into the porous structure. Tends to restore that natural finish nicely in furniture or heritage pieces, but skip multiple overlaps early on, or you'll warp the low-density boards. I've found contrasting it this way keeps the process efficient for marine or construction applications, bringing back clean timber without compromising its flexibility.
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue
+    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: algae-growth
+    title: Algae and Lichen Growth
+    url: /contaminants/biological/growth/algae-growth
+    image: /images/contaminants/biological/growth/algae-growth.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lead-paint
+    title: Lead-Based Paint Removal
+    url: /contaminants/inorganic-coating/paint/lead-paint
+    image: /images/contaminants/inorganic-coating/paint/lead-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mold-mildew
+    title: Mold and Mildew Growth
+    url: /contaminants/biological/growth/mold-mildew
+    image: /images/contaminants/biological/growth/mold-mildew.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: paint-residue
+    title: Paint Residue / Coating Failure
+    url: /contaminants/inorganic-coating/paint/paint-residue
+    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: wax-buildup
+    title: Wax Coating Buildup
+    url: /contaminants/organic-residue/wax/wax-buildup
+    image: /images/contaminants/organic-residue/wax/wax-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: wood-rot
+    title: Wood Rot / Fungal Biodegradation
+    url: /contaminants/biological/growth/wood-rot
+    image: /images/contaminants/biological/growth/wood-rot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -180,4 +232,4 @@ material_challenges:
     - Limit to 2-3 passes maximum to avoid substrate damage
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:11.839699'
+    generated_date: '2025-12-15T22:06:41.689410'

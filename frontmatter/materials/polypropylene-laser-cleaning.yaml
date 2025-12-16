@@ -1,5 +1,6 @@
 name: Polypropylene
 slug: polypropylene
+id: polypropylene-laser-cleaning
 category: plastic
 subcategory: thermoplastic
 content_type: unified_material
@@ -336,6 +337,36 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.922429Z'
   structure_version: '2.0'
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue
+    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chemical-stains
+    title: Chemical Stains / Acid Etching
+    url: /contaminants/chemical-residue/industrial/chemical-stains
+    image: /images/contaminants/chemical-residue/industrial/chemical-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: paint-residue
+    title: Paint Residue / Coating Failure
+    url: /contaminants/inorganic-coating/paint/paint-residue
+    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: uv-chalking
+    title: UV Photodegradation / Polymer Chalking
+    url: /contaminants/aging/photodegradation/uv-chalking
+    image: /images/contaminants/aging/photodegradation/uv-chalking.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -350,4 +381,4 @@ serviceOffering:
     notes: Low fluence required to prevent melting or warping
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:12.146941'
+    generated_date: '2025-12-15T22:06:41.887886'

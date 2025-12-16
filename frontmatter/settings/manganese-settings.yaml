@@ -1,5 +1,6 @@
 name: Manganese
 slug: manganese
+id: manganese-settings
 category: metal
 subcategory: non-ferrous
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
 title: Manganese Laser Cleaning Settings
 settings_description: When laser cleaning manganese, the main challenge lies in its low thermal conductivity, which causes heat to build up quickly in targeted areas. This buildup can lead to uneven ablation if not managed, potentially damaging the underlying structure before contaminants fully remove. I've seen this happen when initial passes use too much power, so start with reduced settings to allow controlled energy delivery that exposes clean surfaces without excess stress. Its moderate reflectivity helps by absorbing enough laser energy for effective cleaning, unlike highly reflective metals that scatter light and demand higher fluences. This property lets you restore manganese components in aerospace or marine applications reliably, as long as you adjust for its brittleness by incorporating overlap in scans to avoid micro-cracks. Tends to work best with shorter pulses that minimize thermal diffusion. Watch out for prolonged exposure at the end, which might compromise its corrosion
   resistance—always verify surface integrity after the final pass.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -178,4 +181,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:11.044605'
+    generated_date: '2025-12-15T22:06:41.249642'

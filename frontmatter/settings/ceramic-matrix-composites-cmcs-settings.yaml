@@ -1,5 +1,6 @@
 name: Ceramic Matrix Composites CMCs
 slug: ceramic-matrix-composites-cmcs
+id: ceramic-matrix-composites-cmcs-settings
 category: composite
 subcategory: fiber-reinforced
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
 title: Ceramic Matrix Composites CMCs Laser Cleaning Settings
 settings_description: When laser cleaning Ceramic Matrix Composites, we always begin by assessing the surface for any embedded fibers, as these can trap contaminants and lead to uneven removal if not handled carefully from the outset. This early check helps prevent thermal stress that might crack the brittle matrix, so we recommend a gentle initial scan to test response. We've found that starting with reduced power settings clears surface buildup effectively without overwhelming the material's inherent heat resistance, which keeps things stable up to high temperatures in applications like aerospace parts. As you proceed, overlap your passes moderately to account for the composite's layered structure—unlike pure metals, this fiber reinforcement demands a slower scan speed to avoid delamination. In our experience, this approach leverages the material's durability and low expansion under heat, ensuring clean results for automotive or energy components while dodging common pitfalls like subsurface
   damage from over-aggressive pulses. Finally, inspect between passes to confirm no oxidation creeps in, adjusting as needed for optimal preservation.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -174,4 +177,4 @@ material_challenges:
     - Monitor for matrix damage; stop if surface texture changes
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:09.160583'
+    generated_date: '2025-12-15T22:06:39.818247'

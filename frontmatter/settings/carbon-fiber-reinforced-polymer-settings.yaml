@@ -1,5 +1,6 @@
 name: Carbon Fiber Reinforced Polymer
 slug: carbon-fiber-reinforced-polymer
+id: carbon-fiber-reinforced-polymer-settings
 category: composite
 subcategory: fiber-reinforced
 content_type: unified_settings
@@ -37,6 +38,22 @@ author:
   formatting_file: taiwan_formatting.yaml
 title: Carbon Fiber Reinforced Polymer Laser Cleaning Settings
 settings_description: We've found that when laser cleaning carbon fiber reinforced polymer, the biggest early concern is avoiding heat buildup in its low-conductivity matrix, which can delaminate the fibers if you're not careful. So we typically start with gentle power settings and slow scan speeds to let the laser absorb well into the surface. This clears contaminants effectively without weakening the strong composite bonds, and we follow with multiple light passes for even results. Just overlap your paths by half to prevent edge damage.
+domain_linkages:
+  related_contaminants:
+  - id: aviation-sealant
+    title: Aerospace Sealant Residue
+    url: /contaminants/organic-residue/adhesive/aviation-sealant
+    image: /images/contaminants/organic-residue/adhesive/aviation-sealant.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: epoxy-residue
+    title: Epoxy Resin Deposits
+    url: /contaminants/organic-residue/adhesive/epoxy-residue
+    image: /images/contaminants/organic-residue/adhesive/epoxy-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -173,4 +190,4 @@ material_challenges:
     - Monitor for matrix damage; stop if surface texture changes
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:08.961457'
+    generated_date: '2025-12-15T22:06:39.694412'

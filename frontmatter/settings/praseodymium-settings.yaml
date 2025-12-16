@@ -1,5 +1,6 @@
 name: Praseodymium
 slug: praseodymium
+id: praseodymium-settings
 category: rare-earth
 subcategory: lanthanide
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
 title: Praseodymium Laser Cleaning Settings
 settings_description: When laser cleaning praseodymium, its high reflectivity stands out compared to denser rare-earth metals like neodymium, which absorb energy more readily. This property tends to scatter the laser beam, so the process works best when you adjust settings to increase dwell time and reduce scan speed, allowing gradual removal of surface contaminants without scattering energy inefficiently. I've seen that praseodymium's low thermal conductivity keeps heat localized, much like other lanthanides but with less overall spread, which improves precision on delicate aerospace components but requires careful monitoring to avoid localized overheating in the middle of a pass. Watch out for its softness relative to harder alloys in automotive applications; pushing too high a power can deform the surface, so start with multiple low-energy passes to restore cleanliness while preserving integrity. This approach exposes underlying layers evenly, reducing oxidation risks during electronics
   manufacturing.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -187,4 +190,4 @@ material_challenges:
     - Chain of custody documentation for high-value materials
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:12.701120'
+    generated_date: '2025-12-15T22:06:42.111795'

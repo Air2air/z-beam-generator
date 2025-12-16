@@ -1,5 +1,6 @@
 name: Bamboo
 slug: bamboo
+id: bamboo-settings
 category: wood
 subcategory: hardwood
 content_type: unified_settings
@@ -37,6 +38,50 @@ author:
   formatting_file: taiwan_formatting.yaml
 title: Bamboo Laser Cleaning Settings
 settings_description: When laser cleaning bamboo, you'll want to treat it differently from typical hardwoods because its grass-like fibers make it more flexible and porous. This high absorption pulls in laser energy quickly, clearing contaminants without deep penetration. But watch out mid-process—its low heat spread can cause localized scorching if you push power too high. So start low and scan slowly to keep the structure intact.
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue
+    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: algae-growth
+    title: Algae and Lichen Growth
+    url: /contaminants/biological/growth/algae-growth
+    image: /images/contaminants/biological/growth/algae-growth.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lead-paint
+    title: Lead-Based Paint Removal
+    url: /contaminants/inorganic-coating/paint/lead-paint
+    image: /images/contaminants/inorganic-coating/paint/lead-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mold-mildew
+    title: Mold and Mildew Growth
+    url: /contaminants/biological/growth/mold-mildew
+    image: /images/contaminants/biological/growth/mold-mildew.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: paint-residue
+    title: Paint Residue / Coating Failure
+    url: /contaminants/inorganic-coating/paint/paint-residue
+    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: wax-buildup
+    title: Wax Coating Buildup
+    url: /contaminants/organic-residue/wax/wax-buildup
+    image: /images/contaminants/organic-residue/wax/wax-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -176,4 +221,4 @@ material_challenges:
     - Limit to 2-3 passes maximum to avoid substrate damage
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:08.419183'
+    generated_date: '2025-12-15T22:06:39.325537'

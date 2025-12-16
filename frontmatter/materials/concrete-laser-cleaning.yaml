@@ -1,5 +1,6 @@
 name: Concrete
 slug: concrete
+id: concrete-laser-cleaning
 category: masonry
 subcategory: general
 content_type: unified_material
@@ -331,6 +332,218 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.921851Z'
   structure_version: '2.0'
+domain_linkages:
+  related_contaminants:
+  - id: algae-growth
+    title: Algae and Lichen Growth
+    url: /contaminants/biological/growth/algae-growth
+    image: /images/contaminants/biological/growth/algae-growth.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: asbestos-coating
+    title: Asbestos-Containing Material
+    url: /contaminants/inorganic-coating/hazardous/asbestos-coating
+    image: /images/contaminants/inorganic-coating/hazardous/asbestos-coating.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: biological-stains
+    title: Organic Biofilm Deposits
+    url: /contaminants/biological/deposit/biological-stains
+    image: /images/contaminants/biological/deposit/biological-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bitumen-tar
+    title: Bitumen and Tar Coatings
+    url: /contaminants/organic-residue/petroleum/bitumen-tar
+    image: /images/contaminants/organic-residue/petroleum/bitumen-tar.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbon-soot
+    title: Carbon Soot Deposits
+    url: /contaminants/organic-residue/other/carbon-soot
+    image: /images/contaminants/organic-residue/other/carbon-soot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chemical-stains
+    title: Chemical Stains / Acid Etching
+    url: /contaminants/chemical-residue/industrial/chemical-stains
+    image: /images/contaminants/chemical-residue/industrial/chemical-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: concrete-dust
+    title: Concrete Dust Deposits
+    url: /contaminants/inorganic-coating/mineral/concrete-dust
+    image: /images/contaminants/inorganic-coating/mineral/concrete-dust.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: efflorescence
+    title: Concrete Efflorescence
+    url: /contaminants/inorganic-coating/mineral/efflorescence
+    image: /images/contaminants/inorganic-coating/mineral/efflorescence.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: epoxy-residue
+    title: Epoxy Resin Deposits
+    url: /contaminants/organic-residue/adhesive/epoxy-residue
+    image: /images/contaminants/organic-residue/adhesive/epoxy-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fertilizer-residue
+    title: Fertilizer Salt Deposits
+    url: /contaminants/chemical-residue/industrial/fertilizer-residue
+    image: /images/contaminants/chemical-residue/industrial/fertilizer-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fire-damage
+    title: Fire and Smoke Damage
+    url: /contaminants/thermal-damage/fire/fire-damage
+    image: /images/contaminants/thermal-damage/fire/fire-damage.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: graffiti-paint
+    title: Graffiti and Spray Paint
+    url: /contaminants/inorganic-coating/paint/graffiti-paint
+    image: /images/contaminants/inorganic-coating/paint/graffiti-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: graphite-marks
+    title: Graphite Deposit Traces
+    url: /contaminants/organic-residue/marking/graphite-marks
+    image: /images/contaminants/organic-residue/marking/graphite-marks.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: hydraulic-fluid
+    title: Hydraulic Fluid Contamination
+    url: /contaminants/organic-residue/petroleum/hydraulic-fluid
+    image: /images/contaminants/organic-residue/petroleum/hydraulic-fluid.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: ink-stains
+    title: Printing Ink Residue
+    url: /contaminants/organic-residue/marking/ink-stains
+    image: /images/contaminants/organic-residue/marking/ink-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lead-paint
+    title: Lead-Based Paint Removal
+    url: /contaminants/inorganic-coating/paint/lead-paint
+    image: /images/contaminants/inorganic-coating/paint/lead-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mercury-contamination
+    title: Mercury Spill Residue
+    url: /contaminants/chemical-residue/hazardous/mercury-contamination
+    image: /images/contaminants/chemical-residue/hazardous/mercury-contamination.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mineral-stain
+    title: Mineral Staining
+    url: /contaminants/inorganic-coating/mineral/mineral-stain
+    image: /images/contaminants/inorganic-coating/mineral/mineral-stain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mold-mildew
+    title: Mold and Mildew Growth
+    url: /contaminants/biological/growth/mold-mildew
+    image: /images/contaminants/biological/growth/mold-mildew.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: paint-residue
+    title: Paint Residue / Coating Failure
+    url: /contaminants/inorganic-coating/paint/paint-residue
+    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pcb-contamination
+    title: PCB Oil Contamination
+    url: /contaminants/chemical-residue/industrial/pcb-contamination
+    image: /images/contaminants/chemical-residue/industrial/pcb-contamination.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pesticide-residue
+    title: Pesticide Chemical Residue
+    url: /contaminants/chemical-residue/industrial/pesticide-residue
+    image: /images/contaminants/chemical-residue/industrial/pesticide-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: plastic-residue
+    title: Degraded Polymer Deposits
+    url: /contaminants/organic-residue/polymer/plastic-residue
+    image: /images/contaminants/organic-residue/polymer/plastic-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: radioactive-contamination
+    title: Surface Radioactive Contamination
+    url: /contaminants/chemical-residue/hazardous/radioactive-contamination
+    image: /images/contaminants/chemical-residue/hazardous/radioactive-contamination.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: rubber-residue
+    title: Rubber Compound Residue
+    url: /contaminants/organic-residue/polymer/rubber-residue
+    image: /images/contaminants/organic-residue/polymer/rubber-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: salt-residue
+    title: Salt and Chloride Deposits
+    url: /contaminants/inorganic-coating/mineral/salt-residue
+    image: /images/contaminants/inorganic-coating/mineral/salt-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: scale-buildup
+    title: Mineral Scale / Hard Water Deposits
+    url: /contaminants/thermal-damage/scale/scale-buildup
+    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicone-buildup
+    title: Silicone Sealant Buildup
+    url: /contaminants/organic-residue/adhesive/silicone-buildup
+    image: /images/contaminants/organic-residue/adhesive/silicone-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: uranium-oxide
+    title: Depleted Uranium Oxide
+    url: /contaminants/chemical-residue/hazardous/uranium-oxide
+    image: /images/contaminants/chemical-residue/hazardous/uranium-oxide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: water-stain
+    title: Water Staining and Marks
+    url: /contaminants/organic-residue/other/water-stain
+    image: /images/contaminants/organic-residue/other/water-stain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -344,4 +557,4 @@ serviceOffering:
     - Adhesive residue
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:09.372218'
+    generated_date: '2025-12-15T22:06:39.986628'

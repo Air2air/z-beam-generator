@@ -1,5 +1,6 @@
 name: Gold Electroplating
 slug: gold-plating-contamination
+id: gold-plating-contamination
 category: metallic-coating
 subcategory: plating
 content_type: unified_contamination
@@ -177,6 +178,32 @@ laser_properties:
     thermal_conductivity: 318
     thermal_diffusivity: 127
     vaporization_temperature: 2856
+domain_linkages:
+  related_materials:
+  - id: Copper
+    title: Copper
+    url: /materials/metal/non-ferrous/Copper
+    image: /images/materials/metal/non-ferrous/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Nickel
+    title: Nickel
+    url: /materials/metal/specialty/Nickel
+    image: /images/materials/metal/specialty/Nickel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Copper
 - Brass

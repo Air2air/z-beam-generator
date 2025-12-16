@@ -1,0 +1,170 @@
+{
+  "compound_id": "hydrogen-chloride",
+  "name": "Hydrogen Chloride",
+  "cas_number": "7647-01-0",
+  "formula": "HCl",
+  "ppe_requirements": {
+    "respiratory": "SCBA or supplied-air respirator for >5 ppm or unknown concentrations. Air-purifying with acid gas cartridge acceptable for \u22645 ppm with escape provisions.",
+    "skin": "Neoprene or butyl rubber gloves, chemical-resistant suit. HCl is highly corrosive to skin.",
+    "eye": "Chemical safety goggles, full face shield mandatory. Extremely corrosive to eyes.",
+    "minimum_level": "Level C for known <5 ppm, Level B for >5 ppm or liquid HCl",
+    "special_notes": "Extremely corrosive. Causes severe burns on contact. Fumes in moist air. Emergency eyewash/shower within 10 seconds mandatory. Liquid causes frostbite (cryogenic)."
+  },
+  "physical_properties": {
+    "boiling_point": "-85.05\u00b0C (-121\u00b0F)",
+    "melting_point": "-114.17\u00b0C (-173.5\u00b0F)",
+    "vapor_pressure": ">760 mmHg @ 20\u00b0C (gas)",
+    "vapor_density": "1.27 (Air=1)",
+    "specific_gravity": "1.19 (liquid @ -26\u00b0C)",
+    "flash_point": "Not applicable (non-flammable)",
+    "autoignition_temp": "Not applicable",
+    "explosive_limits": "Not applicable",
+    "appearance": "Colorless gas, colorless to light yellow liquid (anhydrous)",
+    "odor": "Pungent, irritating odor @ 0.8-5 ppm"
+  },
+  "emergency_response": {
+    "fire_hazard": "Non-flammable. Cylinders may explode when heated. Corrosive decomposition products.",
+    "fire_suppression": "Do not use water directly on HCl gas - forms corrosive hydrochloric acid mist. Cool cylinders with water spray from safe distance.",
+    "spill_procedures": "EVACUATE. Ventilate area. SCBA required for >5 ppm. Neutralize with soda ash, lime, or sodium bicarbonate. Contain with dry sand or earth. Decontaminate equipment.",
+    "exposure_immediate_actions": "Remove to fresh air immediately. Eyes: flush with water for 15+ minutes - GET MEDICAL HELP IMMEDIATELY. Skin: remove contaminated clothing, flush with water for 15 minutes. If inhaled: administer oxygen. Seek immediate medical attention - corrosive injury.",
+    "environmental_hazards": "Toxic to aquatic life. Forms hydrochloric acid in water. Report releases >5000 lbs.",
+    "special_hazards": "Extremely corrosive to all tissues. Forms dense white corrosive mist in moist air. Reacts with metals producing flammable hydrogen gas. Causes severe burns, permanent eye damage, respiratory tract damage."
+  },
+  "storage_requirements": {
+    "temperature_range": "Store cylinders <52\u00b0C. Keep away from heat.",
+    "ventilation": "Outdoor storage preferred. Indoor: mechanical ventilation with acid-resistant ductwork. HCl gas detection required.",
+    "incompatibilities": [
+      "Metals (generates hydrogen)",
+      "Bases",
+      "Oxidizers",
+      "Alcohols",
+      "Amines",
+      "Aldehydes",
+      "Metal carbides"
+    ],
+    "container_material": "Steel cylinders for compressed gas. Glass, PVC, PVDF, or PTFE for liquid.",
+    "segregation": "Separate from bases, oxidizers, and metals. Corrosive storage area.",
+    "quantity_limits": "Per fire code. Minimize indoor storage of cylinders.",
+    "special_requirements": "Cylinder restraints mandatory. Leak detection system required. Post \"CORROSIVE GAS\" signs. Emergency eyewash/shower within 25 feet. Store in cool, dry area. Protect from physical damage."
+  },
+  "regulatory_classification": {
+    "un_number": "UN1050 (anhydrous), UN1789 (solution)",
+    "dot_hazard_class": "2.3 (Toxic gas), 8 (Corrosive)",
+    "dot_label": "Poison Gas, Corrosive",
+    "nfpa_codes": {
+      "health": 3,
+      "flammability": 0,
+      "reactivity": 0,
+      "special": null
+    },
+    "epa_hazard_categories": [
+      "Acute toxicity (inhalation)",
+      "Skin corrosion",
+      "Serious eye damage"
+    ],
+    "sara_title_iii": true,
+    "cercla_rq": "5000 pounds (2270 kg)",
+    "rcra_code": null
+  },
+  "workplace_exposure": {
+    "osha_pel": {
+      "twa_8hr": null,
+      "stel_15min": null,
+      "ceiling": "5 ppm (7 mg/m\u00b3)"
+    },
+    "niosh_rel": {
+      "twa_8hr": null,
+      "stel_15min": null,
+      "ceiling": "5 ppm (7 mg/m\u00b3)",
+      "idlh": "50 ppm"
+    },
+    "acgih_tlv": {
+      "twa_8hr": null,
+      "stel_15min": null,
+      "ceiling": "2 ppm"
+    },
+    "biological_exposure_indices": []
+  },
+  "synonyms_identifiers": {
+    "synonyms": [
+      "Hydrochloric acid gas",
+      "Muriatic acid gas",
+      "Chlorohydric acid",
+      "Anhydrous hydrogen chloride"
+    ],
+    "common_trade_names": [],
+    "other_identifiers": {
+      "rtecs_number": "MW4025000",
+      "ec_number": "231-595-7",
+      "pubchem_cid": "313"
+    }
+  },
+  "reactivity": {
+    "stability": "Stable as dry gas. Forms corrosive hydrochloric acid with moisture.",
+    "polymerization": "Will not polymerize",
+    "incompatible_materials": [
+      "Metals (Al, Zn, Fe - generates H2)",
+      "Strong bases",
+      "Strong oxidizers",
+      "Alcohols",
+      "Amines",
+      "Aldehydes",
+      "Metal carbides"
+    ],
+    "hazardous_decomposition": [
+      "Hydrogen chloride gas",
+      "Chlorine (if heated with oxidizers)"
+    ],
+    "conditions_to_avoid": [
+      "Moisture",
+      "Heat",
+      "Incompatible materials",
+      "Metals"
+    ],
+    "reactivity_hazard": "Reacts violently with metals producing flammable hydrogen gas. Reacts exothermically with bases. Forms corrosive mist in humid air."
+  },
+  "environmental_impact": {
+    "aquatic_toxicity": "Toxic to aquatic life. LC50 (fish, 96h): 100-300 mg/L HCl solution. Acidifies water.",
+    "biodegradability": "Not biodegradable. Dissolves in water forming hydrochloric acid.",
+    "bioaccumulation": "Does not bioaccumulate.",
+    "soil_mobility": "High mobility as gas. Deposits as chloride salts. Acidifies soil.",
+    "atmospheric_fate": "Rapidly dissolves in atmospheric moisture. Forms hydrochloric acid droplets. Washed out by rain.",
+    "ozone_depletion": false,
+    "global_warming_potential": null,
+    "reportable_releases": {
+      "water": "5000 lbs to navigable waters",
+      "air": "5000 lbs/day (CERCLA RQ)"
+    }
+  },
+  "detection_monitoring": {
+    "sensor_types": [
+      "Electrochemical",
+      "Infrared",
+      "Colorimetric"
+    ],
+    "detection_range": "0-50 ppm typical",
+    "alarm_setpoints": {
+      "low": "2 ppm (ACGIH ceiling)",
+      "high": "5 ppm (OSHA/NIOSH ceiling)",
+      "evacuate": "50 ppm (NIOSH IDLH)"
+    },
+    "colorimetric_tubes": [
+      "Dr\u00e4ger HCl 0.2/a",
+      "Gastec 14L",
+      "Kitagawa 183"
+    ],
+    "analytical_methods": [
+      {
+        "method": "NIOSH 7903",
+        "technique": "Ion chromatography",
+        "detection_limit": "0.02 ppm"
+      },
+      {
+        "method": "OSHA ID-173",
+        "technique": "Ion chromatography",
+        "detection_limit": "0.01 ppm"
+      }
+    ],
+    "odor_threshold": "0.8-5 ppm - provides adequate warning but close to toxic levels"
+  }
+}

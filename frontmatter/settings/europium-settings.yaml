@@ -1,5 +1,6 @@
 name: Europium
 slug: europium
+id: europium-settings
 category: rare-earth
 subcategory: lanthanide
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: usa_formatting.yaml
 title: Europium Laser Cleaning Settings
 settings_description: When laser cleaning Europium, you must start with low power settings to avoid cracking its brittle structure. Unlike denser rare-earth metals, Europium's softness demands careful control, as it absorbs energy unevenly and heats up quickly. This reduces the risk of surface deformation. We've found that short pulses work best here, removing contaminants without exposing the underlying material to excessive stress. Watch out for oxidation buildup during passes; adjust speed to prevent it from weakening the cleaned areas. Keep passes minimal to restore optical clarity in components.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -178,4 +181,4 @@ material_challenges:
     - Chain of custody documentation for high-value materials
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:09.649600'
+    generated_date: '2025-12-15T22:06:40.207224'

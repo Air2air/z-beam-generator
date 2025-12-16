@@ -1,5 +1,6 @@
 name: Brick
 slug: brick
+id: brick-settings
 category: masonry
 subcategory: general
 content_type: unified_settings
@@ -37,6 +38,22 @@ author:
   formatting_file: usa_formatting.yaml
 title: Brick Laser Cleaning Settings
 settings_description: When laser cleaning brick, start by preparing the surface to account for its porous structure, which can trap contaminants deeply and require multiple passes for thorough removal. You must begin with lower power settings to match its moderate thermal conductivity, ensuring heat stays localized without spreading to cause uneven expansion or micro-cracks in the brittle matrix. As you adjust the scan speed, keep it steady to leverage the material's high heat resistance, which allows effective restoration of historical facades or industrial surfaces without compromising structural integrity. Make sure you overlap passes generously, since brick's density helps absorb laser energy well, revealing clean layers progressively. In applications like cultural heritage restoration, this approach exposes original textures safely. Finally, watch for potential spalling on aged bricks—reduce energy density if surface flaking appears to avoid deeper damage.
+domain_linkages:
+  related_contaminants:
+  - id: efflorescence
+    title: Concrete Efflorescence
+    url: /contaminants/inorganic-coating/mineral/efflorescence
+    image: /images/contaminants/inorganic-coating/mineral/efflorescence.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: graffiti-paint
+    title: Graffiti and Spray Paint
+    url: /contaminants/inorganic-coating/paint/graffiti-paint
+    image: /images/contaminants/inorganic-coating/paint/graffiti-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -180,4 +197,4 @@ material_challenges:
     - Heritage masonry requires gentler approach (max 60W)
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:08.826841'
+    generated_date: '2025-12-15T22:06:39.610047'

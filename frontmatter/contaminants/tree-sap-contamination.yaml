@@ -1,5 +1,6 @@
 name: Tree Sap and Resin
 slug: tree-sap-contamination
+id: tree-sap-contamination
 category: organic-residue
 subcategory: natural
 content_type: unified_contamination
@@ -111,7 +112,7 @@ laser_properties:
     transmission_depth: 118
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -120,7 +121,7 @@ laser_properties:
     - compound: carbon_particulates
       hazard_level: moderate
       phase: solid
-    - compound: volatile_organic_compounds
+    - compound: vocs
       hazard_level: moderate
       phase: gas
     damage_risk_to_substrate: low
@@ -194,6 +195,158 @@ laser_properties:
     thermal_conductivity: 0.2
     thermal_diffusivity: 0.06
     vaporization_temperature: 300
+domain_linkages:
+  related_materials:
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/metal/non-ferrous/Aluminum
+    image: /images/materials/metal/non-ferrous/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/metal/ferrous/Stainless Steel
+    image: /images/materials/metal/ferrous/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cast-iron
+    title: Cast Iron
+    url: /materials/cast-iron
+    image: /images/materials/cast-iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Copper
+    title: Copper
+    url: /materials/metal/non-ferrous/Copper
+    image: /images/materials/metal/non-ferrous/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bronze
+    title: Bronze
+    url: /materials/bronze
+    image: /images/materials/bronze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Titanium
+    title: Titanium
+    url: /materials/metal/specialty/Titanium
+    image: /images/materials/metal/specialty/Titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zinc
+    title: Zinc
+    url: /materials/metal/alloy/Zinc
+    image: /images/materials/metal/alloy/Zinc.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Nickel
+    title: Nickel
+    url: /materials/metal/specialty/Nickel
+    image: /images/materials/metal/specialty/Nickel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Lead
+    title: Lead
+    url: /materials/metal/non-ferrous/Lead
+    image: /images/materials/metal/non-ferrous/Lead.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tin
+    title: Tin
+    url: /materials/metal/alloy/Tin
+    image: /images/materials/metal/alloy/Tin.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cobalt
+    title: Cobalt
+    url: /materials/metal/specialty/Cobalt
+    image: /images/materials/metal/specialty/Cobalt.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Chromium
+    title: Chromium
+    url: /materials/metal/specialty/Chromium
+    image: /images/materials/metal/specialty/Chromium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Crown Glass
+    title: Crown Glass
+    url: /materials/glass/soda-lime/Crown Glass
+    image: /images/materials/glass/soda-lime/Crown Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Float Glass
+    title: Float Glass
+    url: /materials/glass/soda-lime/Float Glass
+    image: /images/materials/glass/soda-lime/Float Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Borosilicate Glass
+    title: Borosilicate Glass
+    url: /materials/glass/soda-lime/Borosilicate Glass
+    image: /images/materials/glass/soda-lime/Borosilicate Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminosilicate Glass
+    title: Aluminosilicate Glass
+    url: /materials/glass/specialty/Aluminosilicate Glass
+    image: /images/materials/glass/specialty/Aluminosilicate Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Fused Silica
+    title: Fused Silica
+    url: /materials/glass/soda-lime/Fused Silica
+    image: /images/materials/glass/soda-lime/Fused Silica.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Gorilla Glass
+    title: Gorilla Glass
+    url: /materials/glass/soda-lime/Gorilla Glass
+    image: /images/materials/glass/soda-lime/Gorilla Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tempered Glass
+    title: Tempered Glass
+    url: /materials/glass/specialty-glass/Tempered Glass
+    image: /images/materials/glass/specialty-glass/Tempered Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Aluminum
 - Steel

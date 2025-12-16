@@ -1,5 +1,6 @@
 name: Environmental Dust Layer
 slug: environmental-dust-contamination
+id: environmental-dust-contamination
 category: organic-residue
 subcategory: other
 content_type: unified_contamination
@@ -119,7 +120,7 @@ laser_properties:
     - compound: SiO2 nanoparticles
       hazard_level: moderate
       phase: solid
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -203,6 +204,37 @@ eeat:
     name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/publication/3587
   reviewedBy: Z-Beam Quality Assurance Team
+domain_linkages:
+  related_materials:
+  - id: all
+    title: ALL
+    url: /materials/all
+    image: /images/materials/all.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Redwood
+    title: Redwood
+    url: /materials/wood/hardwood/Redwood
+    image: /images/materials/wood/hardwood/Redwood.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance:
+  - id: iec-60825
+    title: IEC 60825
+    url: ''
+    image: /images/standards/generic-logo.svg
+    applicability: laser_operation
+    requirement: IEC 60825 - Safety of Laser Products
+  - id: osha-29
+    title: OSHA 29
+    url: ''
+    image: /images/standards/generic-logo.svg
+    applicability: laser_operation
+    requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  ppe_requirements: []
 valid_materials:
 - ALL
 - Redwood

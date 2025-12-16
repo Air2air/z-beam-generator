@@ -1,5 +1,6 @@
 name: Powder Coating Buildup
 slug: powder-coating-contamination
+id: powder-coating-contamination
 category: inorganic-coating
 subcategory: paint
 content_type: unified_contamination
@@ -112,7 +113,7 @@ laser_properties:
     transmission_depth: 11.8
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -194,6 +195,32 @@ laser_properties:
     thermal_conductivity: 0.25
     thermal_diffusivity: 0.21
     vaporization_temperature: 450
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/metal/non-ferrous/Aluminum
+    image: /images/materials/metal/non-ferrous/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: galvanized-metal
+    title: Galvanized Metal
+    url: /materials/galvanized-metal
+    image: /images/materials/galvanized-metal.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Steel
 - Aluminum

@@ -1,5 +1,6 @@
 name: Metal Matrix Composites MMCs
 slug: metal-matrix-composites-mmcs
+id: metal-matrix-composites-mmcs-settings
 category: composite
 subcategory: fiber-reinforced
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
   formatting_file: indonesia_formatting.yaml
 title: Metal Matrix Composites MMCs Laser Cleaning Settings
 settings_description: When laser cleaning metal matrix composites, unlike pure metals that heat evenly, watch out for their embedded reinforcements—these can cause uneven heat buildup right from the start, risking cracks if you push power too high. We've found that starting with lower energy pulses helps control this, letting the laser clear contaminants without stressing the matrix. What sets MMCs apart is their hybrid strength from metal and fibers, so you adjust scan speeds slower to match their good heat spreading, avoiding delamination. In our experience, this approach restores surfaces smoothly for aerospace parts, but always test overlaps to prevent hot spots in the tougher zones.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -177,4 +180,4 @@ material_challenges:
     - Monitor for matrix damage; stop if surface texture changes
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:11.193104'
+    generated_date: '2025-12-15T22:06:41.356228'

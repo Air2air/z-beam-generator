@@ -1,5 +1,6 @@
 name: UV Photodegradation / Polymer Chalking
 slug: uv-chalking-contamination
+id: uv-chalking-contamination
 category: aging
 subcategory: photodegradation
 content_type: unified_contamination
@@ -121,7 +122,7 @@ laser_properties:
     transmission_depth: 11.8
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -130,7 +131,7 @@ laser_properties:
     - compound: carbon_particulates
       hazard_level: moderate
       phase: solid
-    - compound: volatile_organic_compounds
+    - compound: vocs
       hazard_level: moderate
       phase: gas
     damage_risk_to_substrate: low
@@ -207,6 +208,79 @@ eeat:
     name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/publication/3587
   reviewedBy: Z-Beam Quality Assurance Team
+domain_linkages:
+  related_materials:
+  - id: abs
+    title: ABS
+    url: /materials/abs
+    image: /images/materials/abs.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Acrylic (PMMA)
+    title: Acrylic (PMMA)
+    url: /materials/plastic/thermoplastic/Acrylic (PMMA)
+    image: /images/materials/plastic/thermoplastic/Acrylic (PMMA).jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Polycarbonate
+    title: Polycarbonate
+    url: /materials/plastic/thermoplastic/Polycarbonate
+    image: /images/materials/plastic/thermoplastic/Polycarbonate.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pvc
+    title: PVC
+    url: /materials/pvc
+    image: /images/materials/pvc.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Nylon
+    title: Nylon
+    url: /materials/plastic/thermoplastic/Nylon
+    image: /images/materials/plastic/thermoplastic/Nylon.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Polyethylene
+    title: Polyethylene
+    url: /materials/plastic/thermoplastic/Polyethylene
+    image: /images/materials/plastic/thermoplastic/Polyethylene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Polypropylene
+    title: Polypropylene
+    url: /materials/plastic/thermoplastic/Polypropylene
+    image: /images/materials/plastic/thermoplastic/Polypropylene.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Redwood
+    title: Redwood
+    url: /materials/wood/hardwood/Redwood
+    image: /images/materials/wood/hardwood/Redwood.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance:
+  - id: iec-60825
+    title: IEC 60825
+    url: ''
+    image: /images/standards/generic-logo.svg
+    applicability: laser_operation
+    requirement: IEC 60825 - Safety of Laser Products
+  - id: osha-29
+    title: OSHA 29
+    url: ''
+    image: /images/standards/generic-logo.svg
+    applicability: laser_operation
+    requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  ppe_requirements: []
 valid_materials:
 - ABS
 - Acrylic (PMMA)

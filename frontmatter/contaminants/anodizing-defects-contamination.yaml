@@ -1,5 +1,6 @@
 name: Anodizing Layer Irregularities
 slug: anodizing-defects-contamination
+id: anodizing-defects-contamination
 category: metallic-coating
 subcategory: anodizing
 content_type: unified_contamination
@@ -110,7 +111,7 @@ laser_properties:
     transmission_depth: 11.8
   removal_characteristics:
     byproducts:
-    - compound: Al2O3 nanoparticles
+    - compound: aluminum-oxide
       hazard_level: moderate
       phase: solid
     - compound: Aluminum vapor
@@ -181,5 +182,17 @@ laser_properties:
     thermal_conductivity: 0.8
     thermal_diffusivity: 0.25
     vaporization_temperature: 1200
+domain_linkages:
+  related_materials:
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/metal/non-ferrous/Aluminum
+    image: /images/materials/metal/non-ferrous/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Aluminum

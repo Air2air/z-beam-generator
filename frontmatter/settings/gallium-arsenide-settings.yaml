@@ -1,5 +1,6 @@
 name: Gallium Arsenide
 slug: gallium-arsenide
+id: gallium-arsenide-settings
 category: semiconductor
 subcategory: elemental
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
   formatting_file: indonesia_formatting.yaml
 title: Gallium Arsenide Laser Cleaning Settings
 settings_description: When laser cleaning gallium arsenide, watch out for its heat sensitivity right from the start—it tends to decompose easily under intense beams, unlike tougher silicon wafers. I've seen this cause surface cracks if you push too hard, so begin with gentle pulses to lift contaminants without harming the fragile lattice. This material stands out among semiconductors for absorbing energy well, which helps clear residues fast but demands slower scans to spread the heat. Adjust to multiple light passes with good overlap, and you'll restore that clean finish for electronics work without risking brittleness.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -180,4 +183,4 @@ material_challenges:
     - Post-cleaning oxygen plasma for complete residue removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:09.978312'
+    generated_date: '2025-12-15T22:06:40.543223'

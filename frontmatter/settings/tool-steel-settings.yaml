@@ -1,5 +1,6 @@
 name: Tool Steel
 slug: tool-steel
+id: tool-steel-settings
 category: metal
 subcategory: alloy
 content_type: unified_settings
@@ -38,6 +39,22 @@ author:
   formatting_file: italy_formatting.yaml
 title: Tool Steel Laser Cleaning Settings
 settings_description: When laser cleaning Tool Steel, watch its toughness first—it resists buildup removal more than softer alloys like mild steel. I've seen overheating cause surface cracks if you rush. Start slow with the laser on low power. This clears rust gently without warping. Tool Steel's heat resistance shines here, unlike brittle metals. Scan in even passes. Overlap spots by half. Finish with a quick check for smoothness. It restores tools perfectly.
+domain_linkages:
+  related_contaminants:
+  - id: pvd-coating
+    title: PVD Coating Defects
+    url: /contaminants/inorganic-coating/coating/pvd-coating
+    image: /images/contaminants/inorganic-coating/coating/pvd-coating.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: quench-oil
+    title: Quenching Oil Residue
+    url: /contaminants/thermal-damage/scale/quench-oil
+    image: /images/contaminants/thermal-damage/scale/quench-oil.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -182,4 +199,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:15.620108'
+    generated_date: '2025-12-15T22:06:43.382389'

@@ -1,5 +1,6 @@
 name: Aerospace Sealant Residue
 slug: aviation-sealant-contamination
+id: aviation-sealant-contamination
 category: organic-residue
 subcategory: adhesive
 content_type: unified_contamination
@@ -113,7 +114,7 @@ laser_properties:
     transmission_depth: 11.8
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -194,6 +195,39 @@ laser_properties:
     thermal_conductivity: 0.18
     thermal_diffusivity: 0.12
     vaporization_temperature: 450
+domain_linkages:
+  related_materials:
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/metal/non-ferrous/Aluminum
+    image: /images/materials/metal/non-ferrous/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Titanium
+    title: Titanium
+    url: /materials/metal/specialty/Titanium
+    image: /images/materials/metal/specialty/Titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Carbon Fiber Reinforced Polymer
+    title: Carbon Fiber Reinforced Polymer
+    url: /materials/composite/fiber-reinforced/Carbon Fiber Reinforced Polymer
+    image: /images/materials/composite/fiber-reinforced/Carbon Fiber Reinforced Polymer.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Fiberglass
+    title: Fiberglass
+    url: /materials/composite/fiber-reinforced/Fiberglass
+    image: /images/materials/composite/fiber-reinforced/Fiberglass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Aluminum
 - Titanium

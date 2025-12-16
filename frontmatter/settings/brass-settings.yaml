@@ -1,5 +1,6 @@
 name: Brass
 slug: brass
+id: brass-settings
 category: metal
 subcategory: non-ferrous
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: taiwan_formatting.yaml
 title: Brass Laser Cleaning Settings
 settings_description: When laser cleaning brass, you'll want to tackle its high reflectivity first, since the beam often bounces off the surface, absorbing little energy and slowing the process. Make sure you start with higher power levels to overcome this, but watch out mid-job for overheating spots that could warp delicate parts due to its solid heat spreading. Adjust by slowing the scan speed and adding passes, which clears tarnish cleanly without scratching the finish.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -177,4 +180,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:08.737547'
+    generated_date: '2025-12-15T22:06:39.554025'

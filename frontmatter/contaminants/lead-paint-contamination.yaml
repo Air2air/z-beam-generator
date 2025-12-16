@@ -1,5 +1,6 @@
 name: Lead-Based Paint Removal
 slug: lead-paint-contamination
+id: lead-paint-contamination
 category: inorganic-coating
 subcategory: paint
 content_type: unified_contamination
@@ -116,7 +117,7 @@ laser_properties:
     - compound: Pb
       hazard_level: high
       phase: gas
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -191,6 +192,109 @@ laser_properties:
     thermal_conductivity: 0.8
     thermal_diffusivity: 0.6
     vaporization_temperature: 650
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Concrete
+    title: Concrete
+    url: /materials/masonry/general/Concrete
+    image: /images/materials/masonry/general/Concrete.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Oak
+    title: Oak
+    url: /materials/wood/hardwood/Oak
+    image: /images/materials/wood/hardwood/Oak.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Maple
+    title: Maple
+    url: /materials/wood/hardwood/Maple
+    image: /images/materials/wood/hardwood/Maple.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cherry
+    title: Cherry
+    url: /materials/wood/hardwood/Cherry
+    image: /images/materials/wood/hardwood/Cherry.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Walnut
+    title: Walnut
+    url: /materials/wood/hardwood/Walnut
+    image: /images/materials/wood/hardwood/Walnut.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Pine
+    title: Pine
+    url: /materials/wood/softwood/Pine
+    image: /images/materials/wood/softwood/Pine.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cedar
+    title: Cedar
+    url: /materials/wood/softwood/Cedar
+    image: /images/materials/wood/softwood/Cedar.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Ash
+    title: Ash
+    url: /materials/wood/hardwood/Ash
+    image: /images/materials/wood/hardwood/Ash.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Birch
+    title: Birch
+    url: /materials/wood/hardwood/Birch
+    image: /images/materials/wood/hardwood/Birch.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Mahogany
+    title: Mahogany
+    url: /materials/wood/hardwood/Mahogany
+    image: /images/materials/wood/hardwood/Mahogany.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Teak
+    title: Teak
+    url: /materials/wood/hardwood/Teak
+    image: /images/materials/wood/hardwood/Teak.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Bamboo
+    title: Bamboo
+    url: /materials/wood/hardwood/Bamboo
+    image: /images/materials/wood/hardwood/Bamboo.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Fir
+    title: Fir
+    url: /materials/wood/softwood/Fir
+    image: /images/materials/wood/softwood/Fir.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Steel
 - Concrete

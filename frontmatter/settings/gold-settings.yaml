@@ -1,5 +1,6 @@
 name: Gold
 slug: gold
+id: gold-settings
 category: metal
 subcategory: non-ferrous
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
   formatting_file: indonesia_formatting.yaml
 title: Gold Laser Cleaning Settings
 settings_description: When laser cleaning gold, unlike copper or silver, its extreme reflectivity bounces most energy away. We typically switch to shorter wavelengths for better absorption. This lets you remove contaminants without melting the surface. Watch out mid-process for uneven heating—dial down power if spots heat up. We've found multiple light passes restore that pristine finish safely. Adjust overlap to avoid warping delicate pieces.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -178,4 +181,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:10.094384'
+    generated_date: '2025-12-15T22:06:40.606099'

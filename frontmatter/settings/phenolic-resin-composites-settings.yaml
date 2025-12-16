@@ -1,5 +1,6 @@
 name: Phenolic Resin Composites
 slug: phenolic-resin-composites
+id: phenolic-resin-composites-settings
 category: composite
 subcategory: fiber-reinforced
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: usa_formatting.yaml
 title: Phenolic Resin Composites Laser Cleaning Settings
 settings_description: When laser cleaning phenolic resin composites, we typically begin by addressing their tendency to retain heat due to poor thermal conductivity. This buildup risks damaging the resin matrix if power levels rise too quickly, so we recommend starting with conservative settings to allow gradual contaminant removal. Unlike metals that dissipate heat evenly, these fiber-reinforced materials absorb laser energy efficiently but unevenly, which can expose underlying fibers to thermal stress. We've found that multiple low-intensity passes restore surface integrity without delamination. To avoid charring pitfalls, monitor for localized discoloration and adjust scan speeds accordingly, ensuring the composite's compressive strength remains intact for applications in aerospace and automotive sectors.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -173,4 +176,4 @@ material_challenges:
     - Monitor for matrix damage; stop if surface texture changes
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:11.792551'
+    generated_date: '2025-12-15T22:06:41.656192'

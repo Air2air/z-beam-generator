@@ -1,5 +1,6 @@
 name: PET
 slug: pet
+id: pet-settings
 category: plastic
 subcategory: thermoplastic
 content_type: unified_settings
@@ -39,6 +40,29 @@ title: PET Laser Cleaning Settings
 settings_description:
   before: Before laser cleaning, PET surfaces require careful parameter selection
   after: After cleaning, PET surfaces show restored appearance with controlled parameters
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue
+    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chemical-stains
+    title: Chemical Stains / Acid Etching
+    url: /contaminants/chemical-residue/industrial/chemical-stains
+    image: /images/contaminants/chemical-residue/industrial/chemical-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: paint-residue
+    title: Paint Residue / Coating Failure
+    url: /contaminants/inorganic-coating/paint/paint-residue
+    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -130,4 +154,4 @@ material_challenges:
 - Verify cleaning effectiveness through inspection
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:16.829559'
+    generated_date: '2025-12-15T22:06:43.979194'

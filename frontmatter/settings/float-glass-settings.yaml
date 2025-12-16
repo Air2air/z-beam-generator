@@ -1,5 +1,6 @@
 name: Float Glass
 slug: float-glass
+id: float-glass-settings
 category: glass
 subcategory: soda-lime
 content_type: unified_settings
@@ -38,6 +39,120 @@ author:
   formatting_file: indonesia_formatting.yaml
 title: Float Glass Laser Cleaning Settings
 settings_description: When laser cleaning Float Glass, I've found you get the best results by starting with a gentle scan to test its smooth, even surface. This glass, made through the float process, holds up well to contaminants like oils or residues from manufacturing, but its brittleness means you must keep the energy low right from the first pass to prevent micro-cracks. Tends to absorb heat slowly, so overlap your paths just enough for thorough coverage without building up too much warmth that could warp the edges. I've seen it restore architectural panels beautifully this way, but watch out midway—ramp up passes only if needed, or you'll risk thermal stress on its thin structure. Finish by cooling naturally to maintain that clear finish.
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue
+    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: biological-stains
+    title: Organic Biofilm Deposits
+    url: /contaminants/biological/deposit/biological-stains
+    image: /images/contaminants/biological/deposit/biological-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: blood-residue
+    title: Biological Blood Residue
+    url: /contaminants/biological/deposit/blood-residue
+    image: /images/contaminants/biological/deposit/blood-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: insect-residue
+    title: Insect Impact Residue
+    url: /contaminants/biological/deposit/insect-residue
+    image: /images/contaminants/biological/deposit/insect-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lime-scale
+    title: Limescale Deposits
+    url: /contaminants/thermal-damage/scale/lime-scale
+    image: /images/contaminants/thermal-damage/scale/lime-scale.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: medical-disinfectant
+    title: Medical Disinfectant Residue
+    url: /contaminants/chemical-residue/industrial/medical-disinfectant
+    image: /images/contaminants/chemical-residue/industrial/medical-disinfectant.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mineral-deposits
+    title: Hard Water Mineral Scale
+    url: /contaminants/thermal-damage/scale/mineral-deposits
+    image: /images/contaminants/thermal-damage/scale/mineral-deposits.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pesticide-residue
+    title: Pesticide Chemical Residue
+    url: /contaminants/chemical-residue/industrial/pesticide-residue
+    image: /images/contaminants/chemical-residue/industrial/pesticide-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pharmaceutical-residue
+    title: Pharmaceutical Drug Residue
+    url: /contaminants/chemical-residue/industrial/pharmaceutical-residue
+    image: /images/contaminants/chemical-residue/industrial/pharmaceutical-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: plastic-residue
+    title: Degraded Polymer Deposits
+    url: /contaminants/organic-residue/polymer/plastic-residue
+    image: /images/contaminants/organic-residue/polymer/plastic-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pollen-deposit
+    title: Pollen Accumulation
+    url: /contaminants/biological/deposit/pollen-deposit
+    image: /images/contaminants/biological/deposit/pollen-deposit.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: scale-buildup
+    title: Mineral Scale / Hard Water Deposits
+    url: /contaminants/thermal-damage/scale/scale-buildup
+    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicone-buildup
+    title: Silicone Sealant Buildup
+    url: /contaminants/organic-residue/adhesive/silicone-buildup
+    image: /images/contaminants/organic-residue/adhesive/silicone-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: soap-scum
+    title: Soap Scum Buildup
+    url: /contaminants/organic-residue/cleaning-agent/soap-scum
+    image: /images/contaminants/organic-residue/cleaning-agent/soap-scum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: tree-sap
+    title: Tree Sap and Resin
+    url: /contaminants/organic-residue/natural/tree-sap
+    image: /images/contaminants/organic-residue/natural/tree-sap.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: water-stain
+    title: Water Staining and Marks
+    url: /contaminants/organic-residue/other/water-stain
+    image: /images/contaminants/organic-residue/other/water-stain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -179,4 +294,4 @@ material_challenges:
     - Avoid dragging ablated material across clean areas
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:09.836090'
+    generated_date: '2025-12-15T22:06:40.434935'

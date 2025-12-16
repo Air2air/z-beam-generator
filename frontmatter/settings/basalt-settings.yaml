@@ -1,5 +1,6 @@
 name: Basalt
 slug: basalt
+id: basalt-settings
 category: stone
 subcategory: igneous
 content_type: unified_settings
@@ -37,6 +38,113 @@ author:
   formatting_file: taiwan_formatting.yaml
 title: Basalt Laser Cleaning Settings
 settings_description: When laser cleaning basalt, it stands out from softer stones like limestone because of its dense, hard nature. I've seen this density help absorb laser energy quickly, so contaminants lift off without much residue left behind. That makes the process efficient for tough buildup in construction or heritage sites. But watch out mid-way—basalt tends to fracture if heat builds unevenly, unlike those porous limestones that just fizz away. This works best when you keep passes steady and overlap spots well, solving the brittleness by spreading the energy. In my experience, it preserves the stone's strength for marine or aerospace uses, avoiding cracks that could weaken structures later. Just ease into higher intensities gradually to handle its heat resistance without surprises.
+domain_linkages:
+  related_contaminants:
+  - id: algae-growth
+    title: Algae and Lichen Growth
+    url: /contaminants/biological/growth/algae-growth
+    image: /images/contaminants/biological/growth/algae-growth.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: biological-stains
+    title: Organic Biofilm Deposits
+    url: /contaminants/biological/deposit/biological-stains
+    image: /images/contaminants/biological/deposit/biological-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bitumen-tar
+    title: Bitumen and Tar Coatings
+    url: /contaminants/organic-residue/petroleum/bitumen-tar
+    image: /images/contaminants/organic-residue/petroleum/bitumen-tar.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbon-soot
+    title: Carbon Soot Deposits
+    url: /contaminants/organic-residue/other/carbon-soot
+    image: /images/contaminants/organic-residue/other/carbon-soot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: ceramic-glaze
+    title: Ceramic Glaze Deposits
+    url: /contaminants/inorganic-coating/ceramic/ceramic-glaze
+    image: /images/contaminants/inorganic-coating/ceramic/ceramic-glaze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: concrete-dust
+    title: Concrete Dust Deposits
+    url: /contaminants/inorganic-coating/mineral/concrete-dust
+    image: /images/contaminants/inorganic-coating/mineral/concrete-dust.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: efflorescence
+    title: Concrete Efflorescence
+    url: /contaminants/inorganic-coating/mineral/efflorescence
+    image: /images/contaminants/inorganic-coating/mineral/efflorescence.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fertilizer-residue
+    title: Fertilizer Salt Deposits
+    url: /contaminants/chemical-residue/industrial/fertilizer-residue
+    image: /images/contaminants/chemical-residue/industrial/fertilizer-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fire-damage
+    title: Fire and Smoke Damage
+    url: /contaminants/thermal-damage/fire/fire-damage
+    image: /images/contaminants/thermal-damage/fire/fire-damage.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: graffiti-paint
+    title: Graffiti and Spray Paint
+    url: /contaminants/inorganic-coating/paint/graffiti-paint
+    image: /images/contaminants/inorganic-coating/paint/graffiti-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mineral-deposits
+    title: Hard Water Mineral Scale
+    url: /contaminants/thermal-damage/scale/mineral-deposits
+    image: /images/contaminants/thermal-damage/scale/mineral-deposits.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mineral-stain
+    title: Mineral Staining
+    url: /contaminants/inorganic-coating/mineral/mineral-stain
+    image: /images/contaminants/inorganic-coating/mineral/mineral-stain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: salt-residue
+    title: Salt and Chloride Deposits
+    url: /contaminants/inorganic-coating/mineral/salt-residue
+    image: /images/contaminants/inorganic-coating/mineral/salt-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: scale-buildup
+    title: Mineral Scale / Hard Water Deposits
+    url: /contaminants/thermal-damage/scale/scale-buildup
+    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: water-stain
+    title: Water Staining and Marks
+    url: /contaminants/organic-residue/other/water-stain
+    image: /images/contaminants/organic-residue/other/water-stain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -182,4 +290,4 @@ material_challenges:
     - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:08.459369'
+    generated_date: '2025-12-15T22:06:39.354781'

@@ -1,5 +1,6 @@
 name: Mineral Staining
 slug: mineral-stain-contamination
+id: mineral-stain-contamination
 category: inorganic-coating
 subcategory: mineral
 content_type: unified_contamination
@@ -117,7 +118,7 @@ laser_properties:
     - compound: Fe2O3
       hazard_level: low
       phase: solid
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -185,6 +186,102 @@ laser_properties:
     thermal_conductivity: 0.8
     thermal_diffusivity: 0.3
     vaporization_temperature: 1200
+domain_linkages:
+  related_materials:
+  - id: Concrete
+    title: Concrete
+    url: /materials/masonry/general/Concrete
+    image: /images/materials/masonry/general/Concrete.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: tile
+    title: Tile
+    url: /materials/tile
+    image: /images/materials/tile.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: grout
+    title: Grout
+    url: /materials/grout
+    image: /images/materials/grout.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Granite
+    title: Granite
+    url: /materials/stone/igneous/Granite
+    image: /images/materials/stone/igneous/Granite.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Marble
+    title: Marble
+    url: /materials/stone/metamorphic/Marble
+    image: /images/materials/stone/metamorphic/Marble.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Limestone
+    title: Limestone
+    url: /materials/stone/sedimentary/Limestone
+    image: /images/materials/stone/sedimentary/Limestone.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Sandstone
+    title: Sandstone
+    url: /materials/stone/sedimentary/Sandstone
+    image: /images/materials/stone/sedimentary/Sandstone.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Basalt
+    title: Basalt
+    url: /materials/stone/igneous/Basalt
+    image: /images/materials/stone/igneous/Basalt.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Slate
+    title: Slate
+    url: /materials/stone/metamorphic/Slate
+    image: /images/materials/stone/metamorphic/Slate.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Quartzite
+    title: Quartzite
+    url: /materials/stone/sedimentary/Quartzite
+    image: /images/materials/stone/sedimentary/Quartzite.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Travertine
+    title: Travertine
+    url: /materials/stone/natural/Travertine
+    image: /images/materials/stone/natural/Travertine.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Bluestone
+    title: Bluestone
+    url: /materials/stone/sedimentary/Bluestone
+    image: /images/materials/stone/sedimentary/Bluestone.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Soapstone
+    title: Soapstone
+    url: /materials/stone/sedimentary/Soapstone
+    image: /images/materials/stone/sedimentary/Soapstone.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Concrete
 - Tile

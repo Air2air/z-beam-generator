@@ -1,5 +1,6 @@
 name: Hafnium
 slug: hafnium
+id: hafnium-settings
 category: metal
 subcategory: non-ferrous
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: usa_formatting.yaml
 title: Hafnium Laser Cleaning Settings
 settings_description: When laser cleaning hafnium, I've seen that its heat resistance works best if you start with controlled pulses to gradually expose the surface without cracking. This process restores the metal's integrity in aerospace or nuclear parts by reducing oxide layers steadily. Tends to absorb energy moderately, so overlap passes evenly to avoid uneven heating. Watch for thermal buildup at the end, as it can warp thin sections if not monitored closely.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -177,4 +180,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:10.277783'
+    generated_date: '2025-12-15T22:06:40.715785'

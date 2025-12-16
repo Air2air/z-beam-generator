@@ -1,5 +1,6 @@
 name: Iron
 slug: iron
+id: iron-settings
 category: metal
 subcategory: ferrous
 content_type: unified_settings
@@ -38,6 +39,36 @@ author:
   formatting_file: indonesia_formatting.yaml
 title: Iron Laser Cleaning Settings
 settings_description: When laser cleaning iron, watch out for its strong thermal conductivity right from the start—it spreads heat quickly across the surface, so you must use controlled, lower power settings to prevent warping or unintended melting in thicker sections. I've seen this property make iron a solid choice for heavy-duty jobs like restoring marine parts or automotive frames, as it absorbs laser energy well enough to clear rust and scale without deep penetration. What sets iron apart from non-ferrous metals is its tendency to oxidize easily, which means you should follow up with a pass that minimizes re-exposure to air, keeping the beam focused and speed steady. Tends to shine in cultural heritage work too, where its durability lets you strip contaminants gently. Just avoid rushing the process; overlap scans moderately to ensure even coverage without hotspots.
+domain_linkages:
+  related_contaminants:
+  - id: forging-scale
+    title: Forging Mill Scale
+    url: /contaminants/thermal-damage/scale/forging-scale
+    image: /images/contaminants/thermal-damage/scale/forging-scale.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: grease-deposits
+    title: Heavy Machinery Grease
+    url: /contaminants/organic-residue/petroleum/grease-deposits
+    image: /images/contaminants/organic-residue/petroleum/grease-deposits.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: rust-oxidation
+    title: Rust / Iron Oxide Formation
+    url: /contaminants/oxidation/ferrous/rust-oxidation
+    image: /images/contaminants/oxidation/ferrous/rust-oxidation.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: zinc-plating
+    title: Zinc Electroplating
+    url: /contaminants/metallic-coating/plating/zinc-plating
+    image: /images/contaminants/metallic-coating/plating/zinc-plating.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -182,4 +213,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:10.609990'
+    generated_date: '2025-12-15T22:06:40.909120'

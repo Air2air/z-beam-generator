@@ -1,5 +1,6 @@
 name: Platinum
 slug: platinum
+id: platinum-settings
 category: metal
 subcategory: non-ferrous
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
   formatting_file: indonesia_formatting.yaml
 title: Platinum Laser Cleaning Settings
 settings_description: When laser cleaning platinum, watch its high reflectivity first. It bounces back most laser energy. This scatters the beam and slows contaminant removal. I've seen jobs drag on without adjustments. Start low on power to build heat gradually. Tends to work best with multiple passes. Overlap scans tightly for even coverage. Avoid high fluence early—it risks uneven heating. Platinum's heat resistance helps here. It stays stable under steady pulses. This restores surfaces cleanly without warping. Just keep scans slow to control buildup.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -176,4 +179,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:11.938733'
+    generated_date: '2025-12-15T22:06:41.754946'

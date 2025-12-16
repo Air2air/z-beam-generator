@@ -1,5 +1,6 @@
 name: Iron
 slug: iron
+id: iron-laser-cleaning
 category: metal
 subcategory: ferrous
 content_type: unified_material
@@ -392,6 +393,36 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.922112Z'
   structure_version: '2.0'
+domain_linkages:
+  related_contaminants:
+  - id: forging-scale
+    title: Forging Mill Scale
+    url: /contaminants/thermal-damage/scale/forging-scale
+    image: /images/contaminants/thermal-damage/scale/forging-scale.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: grease-deposits
+    title: Heavy Machinery Grease
+    url: /contaminants/organic-residue/petroleum/grease-deposits
+    image: /images/contaminants/organic-residue/petroleum/grease-deposits.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: rust-oxidation
+    title: Rust / Iron Oxide Formation
+    url: /contaminants/oxidation/ferrous/rust-oxidation
+    image: /images/contaminants/oxidation/ferrous/rust-oxidation.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: zinc-plating
+    title: Zinc Electroplating
+    url: /contaminants/metallic-coating/plating/zinc-plating
+    image: /images/contaminants/metallic-coating/plating/zinc-plating.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -406,4 +437,4 @@ serviceOffering:
     - Heat treatment scale
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:10.576945'
+    generated_date: '2025-12-15T22:06:40.886034'

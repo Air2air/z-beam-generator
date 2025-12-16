@@ -1,0 +1,82 @@
+id: phosgene-compound
+name: Phosgene
+display_name: Phosgene (COCl₂)
+slug: phosgene
+chemical_formula: COCl2
+cas_number: 75-44-5
+molecular_weight: 98.92
+category: toxic_gas
+subcategory: reactive_gas
+hazard_class: toxic
+exposure_limits:
+  osha_pel_ppm: 0.1
+  osha_pel_mg_m3: 0.4
+  niosh_rel_ppm: 0.1
+  niosh_rel_mg_m3: 0.4
+  acgih_tlv_ppm: 0.1
+  acgih_tlv_mg_m3: 0.4
+health_effects_keywords:
+- severe_pulmonary_edema
+- delayed_effects
+- fatal
+- chemical_warfare_agent
+monitoring_required: true
+typical_concentration_range: 0.1-1 mg/m³
+sources_in_laser_cleaning:
+- chlorinated_solvent_decomposition
+- carbon_chlorine_interaction
+- chlorinated_polymer_pyrolysis
+description: null
+health_effects: null
+exposure_guidelines: null
+detection_methods: null
+first_aid: null
+domain_linkages:
+  produced_by_contaminants:
+  - id: plastic-residue
+    title: Degraded Polymer Deposits
+    url: /contaminants/organic-residue/polymer/plastic-residue
+    image: /images/contaminants/organic-residue/polymer/plastic-residue.jpg
+    frequency: rare
+    severity: high
+    typical_context: Thermal breakdown of certain chlorinated plastics
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+breadcrumbs:
+- label: Home
+  url: /
+- label: Hazardous Compounds
+  url: /compounds
+- label: Phosgene
+  url: /compounds/phosgene
+type: compound
+domain: compounds
+last_updated: null

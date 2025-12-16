@@ -1,5 +1,6 @@
 name: Plywood
 slug: plywood
+id: plywood-settings
 category: wood
 subcategory: hardwood
 content_type: unified_settings
@@ -38,6 +39,15 @@ author:
   formatting_file: italy_formatting.yaml
 title: Plywood Laser Cleaning Settings
 settings_description: When laser cleaning plywood, unlike solid hardwoods, its layered structure and high porosity make it more forgiving on heat buildup, so it tends to clean evenly without deep charring if you keep passes light and quick. I've seen this layered makeup absorb contaminants well, restoring surfaces in furniture or heritage pieces, but watch midway—too much dwell can delaminate edges, so adjust speed up to avoid that pitfall and preserve the glue bonds.
+domain_linkages:
+  related_contaminants:
+  - id: wood-rot
+    title: Wood Rot / Fungal Biodegradation
+    url: /contaminants/biological/growth/wood-rot
+    image: /images/contaminants/biological/growth/wood-rot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -180,4 +190,4 @@ material_challenges:
     - Limit to 2-3 passes maximum to avoid substrate damage
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:11.985794'
+    generated_date: '2025-12-15T22:06:41.784436'

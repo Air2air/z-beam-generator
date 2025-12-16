@@ -1,5 +1,6 @@
 name: Steel Surface Corrosion
 slug: steel-corrosion-contamination
+id: steel-corrosion-contamination
 category: oxidation
 subcategory: ferrous
 content_type: unified_contamination
@@ -115,7 +116,7 @@ laser_properties:
     - compound: Fe3O4
       hazard_level: low
       phase: solid
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     damage_risk_to_substrate: low
@@ -184,6 +185,25 @@ laser_properties:
     thermal_conductivity: 0.8
     thermal_diffusivity: 0.3
     vaporization_temperature: 1200
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbon-steel
+    title: Carbon Steel
+    url: /materials/carbon-steel
+    image: /images/materials/carbon-steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Steel
 - Carbon Steel

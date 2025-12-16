@@ -1,5 +1,6 @@
 name: Medical Disinfectant Residue
 slug: medical-disinfectant-contamination
+id: medical-disinfectant-contamination
 category: chemical-residue
 subcategory: industrial
 content_type: unified_contamination
@@ -109,7 +110,7 @@ laser_properties:
     transmission_depth: 83.3
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -183,6 +184,116 @@ laser_properties:
     thermal_conductivity: 0.15
     thermal_diffusivity: 0.1
     vaporization_temperature: 250
+domain_linkages:
+  related_materials:
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/metal/ferrous/Stainless Steel
+    image: /images/materials/metal/ferrous/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Crown Glass
+    title: Crown Glass
+    url: /materials/glass/soda-lime/Crown Glass
+    image: /images/materials/glass/soda-lime/Crown Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Float Glass
+    title: Float Glass
+    url: /materials/glass/soda-lime/Float Glass
+    image: /images/materials/glass/soda-lime/Float Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Borosilicate Glass
+    title: Borosilicate Glass
+    url: /materials/glass/soda-lime/Borosilicate Glass
+    image: /images/materials/glass/soda-lime/Borosilicate Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminosilicate Glass
+    title: Aluminosilicate Glass
+    url: /materials/glass/specialty/Aluminosilicate Glass
+    image: /images/materials/glass/specialty/Aluminosilicate Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Fused Silica
+    title: Fused Silica
+    url: /materials/glass/soda-lime/Fused Silica
+    image: /images/materials/glass/soda-lime/Fused Silica.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Gorilla Glass
+    title: Gorilla Glass
+    url: /materials/glass/soda-lime/Gorilla Glass
+    image: /images/materials/glass/soda-lime/Gorilla Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tempered Glass
+    title: Tempered Glass
+    url: /materials/glass/specialty-glass/Tempered Glass
+    image: /images/materials/glass/specialty-glass/Tempered Glass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Alumina
+    title: Alumina
+    url: /materials/ceramic/oxide/Alumina
+    image: /images/materials/ceramic/oxide/Alumina.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicon-carbide
+    title: Silicon Carbide
+    url: /materials/silicon-carbide
+    image: /images/materials/silicon-carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zirconia
+    title: Zirconia
+    url: /materials/ceramic/oxide/Zirconia
+    image: /images/materials/ceramic/oxide/Zirconia.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum Nitride
+    title: Aluminum Nitride
+    url: /materials/ceramic/technical/Aluminum Nitride
+    image: /images/materials/ceramic/technical/Aluminum Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Carbide
+    title: Boron Carbide
+    url: /materials/ceramic/carbide/Boron Carbide
+    image: /images/materials/ceramic/carbide/Boron Carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Nitride
+    title: Boron Nitride
+    url: /materials/ceramic/technical/Boron Nitride
+    image: /images/materials/ceramic/technical/Boron Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Silicon Nitride
+    title: Silicon Nitride
+    url: /materials/ceramic/oxide/Silicon Nitride
+    image: /images/materials/ceramic/oxide/Silicon Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Stainless Steel
 - Crown Glass

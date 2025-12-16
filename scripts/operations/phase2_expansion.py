@@ -1,11 +1,28 @@
 #!/usr/bin/env python3
 """
 Phase 2 Expansion: Add patterns to reach 100 total + rename with hyphens
+
+⚠️ IMPORTANT: This script creates contaminants with the NEW domain_linkages structure.
+All entries must include:
+- domain_linkages.related_materials[] (replaces valid_materials)
+- domain_linkages.incompatible_materials[] (replaces prohibited_materials)
+- Each linkage entry must have: id, title, url, image
 """
 
 import yaml
 from pathlib import Path
 from datetime import datetime
+
+def create_material_linkage(material_id, material_name, category="metal", subcategory="steel"):
+    """Create a properly formatted material linkage entry"""
+    return {
+        "id": material_id.lower().replace(" ", "-"),
+        "title": material_name,
+        "url": f"/materials/{category}/{subcategory}/{material_id.lower().replace(' ', '-')}",
+        "image": f"/images/materials/{category}/{subcategory}/{material_id.lower().replace(' ', '-')}.jpg",
+        "frequency": "common",  # Default value, can be customized per material
+        "severity": "moderate"  # Default value, can be customized per material
+    }
 
 # Additional 45 patterns to reach Phase 2 (100 total from current 33 + 22 = 55)
 PHASE2_PATTERNS = {
@@ -13,8 +30,18 @@ PHASE2_PATTERNS = {
         "name": "Steel Surface Corrosion",
         "description": "General oxidation and corrosion products on carbon steel and alloy steel surfaces",
         "composition": ["Fe₃O₄", "FeO", "Fe₂O₃"],
-        "valid_materials": ["Steel", "Carbon Steel", "Alloy Steel"],
-        "prohibited_materials": ["Stainless Steel", "Aluminum", "Copper"]
+        "domain_linkages": {
+            "related_materials": [
+                create_material_linkage("Steel", "Steel", "metal", "steel"),
+                create_material_linkage("Carbon-Steel", "Carbon Steel", "metal", "steel"),
+                create_material_linkage("Alloy-Steel", "Alloy Steel", "metal", "steel")
+            ],
+            "incompatible_materials": [
+                create_material_linkage("Stainless-Steel", "Stainless Steel", "metal", "steel"),
+                create_material_linkage("Aluminum", "Aluminum", "metal", "aluminum"),
+                create_material_linkage("Copper", "Copper", "metal", "copper")
+            ]
+        }
     },
     "salt-residue": {
         "name": "Salt and Chloride Deposits",

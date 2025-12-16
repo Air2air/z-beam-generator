@@ -1,5 +1,6 @@
 name: Tin Plating Residue
 slug: tin-plating-contamination
+id: tin-plating-contamination
 category: metallic-coating
 subcategory: plating
 content_type: unified_contamination
@@ -179,6 +180,32 @@ laser_properties:
     thermal_conductivity: 66.8
     thermal_diffusivity: 40.2
     vaporization_temperature: 2602
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Copper
+    title: Copper
+    url: /materials/metal/non-ferrous/Copper
+    image: /images/materials/metal/non-ferrous/Copper.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass
+    title: Brass
+    url: /materials/brass
+    image: /images/materials/brass.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Steel
 - Copper

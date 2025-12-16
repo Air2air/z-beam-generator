@@ -1,5 +1,6 @@
 name: Brick
 slug: brick
+id: brick-laser-cleaning
 category: masonry
 subcategory: general
 content_type: unified_material
@@ -328,6 +329,22 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.921713Z'
   structure_version: '2.0'
+domain_linkages:
+  related_contaminants:
+  - id: efflorescence
+    title: Concrete Efflorescence
+    url: /contaminants/inorganic-coating/mineral/efflorescence
+    image: /images/contaminants/inorganic-coating/mineral/efflorescence.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: graffiti-paint
+    title: Graffiti and Spray Paint
+    url: /contaminants/inorganic-coating/paint/graffiti-paint
+    image: /images/contaminants/inorganic-coating/paint/graffiti-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -341,4 +358,4 @@ serviceOffering:
     - Adhesive residue
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:08.796742'
+    generated_date: '2025-12-15T22:06:39.592569'

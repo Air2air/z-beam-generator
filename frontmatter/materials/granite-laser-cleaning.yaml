@@ -1,5 +1,6 @@
 name: Granite
 slug: granite
+id: granite-laser-cleaning
 category: stone
 subcategory: igneous
 content_type: unified_material
@@ -337,6 +338,113 @@ material_metadata:
   regulatoryStandards:
   - EPA Clean Air Act Compliance
   - ASTM C615 - Standard Specification for Granite Dimension Stone
+domain_linkages:
+  related_contaminants:
+  - id: algae-growth
+    title: Algae and Lichen Growth
+    url: /contaminants/biological/growth/algae-growth
+    image: /images/contaminants/biological/growth/algae-growth.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: biological-stains
+    title: Organic Biofilm Deposits
+    url: /contaminants/biological/deposit/biological-stains
+    image: /images/contaminants/biological/deposit/biological-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bitumen-tar
+    title: Bitumen and Tar Coatings
+    url: /contaminants/organic-residue/petroleum/bitumen-tar
+    image: /images/contaminants/organic-residue/petroleum/bitumen-tar.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbon-soot
+    title: Carbon Soot Deposits
+    url: /contaminants/organic-residue/other/carbon-soot
+    image: /images/contaminants/organic-residue/other/carbon-soot.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: ceramic-glaze
+    title: Ceramic Glaze Deposits
+    url: /contaminants/inorganic-coating/ceramic/ceramic-glaze
+    image: /images/contaminants/inorganic-coating/ceramic/ceramic-glaze.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: concrete-dust
+    title: Concrete Dust Deposits
+    url: /contaminants/inorganic-coating/mineral/concrete-dust
+    image: /images/contaminants/inorganic-coating/mineral/concrete-dust.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: efflorescence
+    title: Concrete Efflorescence
+    url: /contaminants/inorganic-coating/mineral/efflorescence
+    image: /images/contaminants/inorganic-coating/mineral/efflorescence.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fertilizer-residue
+    title: Fertilizer Salt Deposits
+    url: /contaminants/chemical-residue/industrial/fertilizer-residue
+    image: /images/contaminants/chemical-residue/industrial/fertilizer-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fire-damage
+    title: Fire and Smoke Damage
+    url: /contaminants/thermal-damage/fire/fire-damage
+    image: /images/contaminants/thermal-damage/fire/fire-damage.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: graffiti-paint
+    title: Graffiti and Spray Paint
+    url: /contaminants/inorganic-coating/paint/graffiti-paint
+    image: /images/contaminants/inorganic-coating/paint/graffiti-paint.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mineral-deposits
+    title: Hard Water Mineral Scale
+    url: /contaminants/thermal-damage/scale/mineral-deposits
+    image: /images/contaminants/thermal-damage/scale/mineral-deposits.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mineral-stain
+    title: Mineral Staining
+    url: /contaminants/inorganic-coating/mineral/mineral-stain
+    image: /images/contaminants/inorganic-coating/mineral/mineral-stain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: salt-residue
+    title: Salt and Chloride Deposits
+    url: /contaminants/inorganic-coating/mineral/salt-residue
+    image: /images/contaminants/inorganic-coating/mineral/salt-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: scale-buildup
+    title: Mineral Scale / Hard Water Deposits
+    url: /contaminants/thermal-damage/scale/scale-buildup
+    image: /images/contaminants/thermal-damage/scale/scale-buildup.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: water-stain
+    title: Water Staining and Marks
+    url: /contaminants/organic-residue/other/water-stain
+    image: /images/contaminants/organic-residue/other/water-stain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -350,4 +458,4 @@ serviceOffering:
     - Weathering deposits
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:10.174986'
+    generated_date: '2025-12-15T22:06:40.657559'

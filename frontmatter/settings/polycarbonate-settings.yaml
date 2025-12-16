@@ -1,5 +1,6 @@
 name: Polycarbonate
 slug: polycarbonate
+id: polycarbonate-settings
 category: plastic
 subcategory: thermoplastic
 content_type: unified_settings
@@ -37,6 +38,36 @@ author:
   formatting_file: taiwan_formatting.yaml
 title: Polycarbonate Laser Cleaning Settings
 settings_description: The key with polycarbonate is its toughness, which makes it great for laser cleaning without fracturing easily. We've found this thermoplastic holds up well in applications like automotive parts and medical devices, so we typically start with gentle pulses to remove contaminants. But watch out mid-process—its poor heat spreading can cause localized melting if you push too hard, so adjust to quicker passes and lower energy to keep surfaces clear and intact.
+domain_linkages:
+  related_contaminants:
+  - id: adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue
+    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chemical-stains
+    title: Chemical Stains / Acid Etching
+    url: /contaminants/chemical-residue/industrial/chemical-stains
+    image: /images/contaminants/chemical-residue/industrial/chemical-stains.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: paint-residue
+    title: Paint Residue / Coating Failure
+    url: /contaminants/inorganic-coating/paint/paint-residue
+    image: /images/contaminants/inorganic-coating/paint/paint-residue.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: uv-chalking
+    title: UV Photodegradation / Polymer Chalking
+    url: /contaminants/aging/photodegradation/uv-chalking
+    image: /images/contaminants/aging/photodegradation/uv-chalking.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 breadcrumb:
 - label: Home
   href: /
@@ -162,4 +193,4 @@ material_challenges:
     - Multiple gentle passes instead of single high-power pass
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:12.031110'
+    generated_date: '2025-12-15T22:06:41.815698'

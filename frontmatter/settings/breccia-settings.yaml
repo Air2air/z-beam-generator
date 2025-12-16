@@ -1,5 +1,6 @@
 name: Breccia
 slug: breccia
+id: breccia-settings
 category: stone
 subcategory: sedimentary
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
   formatting_file: indonesia_formatting.yaml
 title: Breccia Laser Cleaning Settings
 settings_description: When laser cleaning Breccia, you'll want to treat it differently from smoother sedimentary stones like limestone, since its fragmented makeup—think angular pebbles bound in a matrix—makes it more prone to uneven energy uptake. Start with gentler power levels to handle that irregularity without chipping the edges. Make sure you overlap scans by at least half the spot size, as the varying density can trap heat in porous spots and lead to micro-cracks if you're too aggressive. Adjust speeds upward on the matrix areas for even contaminant removal, restoring that natural, rugged finish without compromising the stone's modest strength.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -183,4 +186,4 @@ material_challenges:
     - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:08.780635'
+    generated_date: '2025-12-15T22:06:39.582001'

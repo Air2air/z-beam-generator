@@ -1,5 +1,6 @@
 name: Beryllium Oxide Contamination
 slug: beryllium-oxide-contamination
+id: beryllium-oxide-contamination
 category: chemical-residue
 subcategory: hazardous
 content_type: unified_contamination
@@ -174,6 +175,25 @@ laser_properties:
     thermal_conductivity: 280
     thermal_diffusivity: 105
     vaporization_temperature: 3900
+domain_linkages:
+  related_materials:
+  - id: copper-beryllium-alloy
+    title: Copper-Beryllium Alloy
+    url: /materials/copper-beryllium-alloy
+    image: /images/materials/copper-beryllium-alloy.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Copper-Beryllium Alloy
 - Steel

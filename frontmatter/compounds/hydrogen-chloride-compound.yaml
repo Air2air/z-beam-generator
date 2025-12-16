@@ -1,0 +1,89 @@
+id: hydrogen-chloride-compound
+name: Hydrogen Chloride
+display_name: Hydrogen Chloride (HCl)
+slug: hydrogen-chloride
+chemical_formula: HCl
+cas_number: 7647-01-0
+molecular_weight: 36.46
+category: corrosive_gas
+subcategory: acid_gas
+hazard_class: corrosive
+exposure_limits:
+  osha_pel_ppm: null
+  osha_pel_mg_m3: 7
+  niosh_rel_ppm: 5
+  niosh_rel_mg_m3: 7
+  acgih_tlv_ppm: null
+  acgih_tlv_mg_m3: 2
+health_effects_keywords:
+- severe_respiratory_irritation
+- corrosive_to_tissue
+- pulmonary_edema
+- tooth_erosion
+monitoring_required: true
+typical_concentration_range: 5-20 mg/m³
+sources_in_laser_cleaning:
+- pvc_decomposition
+- chlorinated_polymer_pyrolysis
+- chlorinated_solvent_breakdown
+description: null
+health_effects: null
+exposure_guidelines: null
+detection_methods: null
+first_aid: null
+domain_linkages:
+  produced_by_contaminants:
+  - id: plastic-residue
+    title: Degraded Polymer Deposits
+    url: /contaminants/organic-residue/polymer/plastic-residue
+    image: /images/contaminants/organic-residue/polymer/plastic-residue.jpg
+    frequency: very_common
+    severity: high
+    typical_context: Thermal decomposition of PVC (polyvinyl chloride)
+  - id: adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue
+    image: /images/contaminants/organic-residue/adhesive/adhesive-residue.jpg
+    frequency: occasional
+    severity: moderate
+    typical_context: Some adhesives contain chlorinated compounds
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+breadcrumbs:
+- label: Home
+  url: /
+- label: Hazardous Compounds
+  url: /compounds
+- label: Hydrogen Chloride
+  url: /compounds/hydrogen-chloride
+type: compound
+domain: compounds
+last_updated: null

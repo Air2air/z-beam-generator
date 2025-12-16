@@ -1,5 +1,6 @@
 name: Yttrium
 slug: yttrium
+id: yttrium-settings
 category: rare-earth
 subcategory: scandium-group
 content_type: unified_settings
@@ -38,6 +39,8 @@ author:
   formatting_file: indonesia_formatting.yaml
 title: Yttrium Laser Cleaning Settings
 settings_description: The key with Yttrium is its high reflectivity, which makes laser cleaning a bit tricky at first. We've found it bounces back most laser energy, so we typically start with multiple passes to gradually remove contaminants without wasting power. This soft metal holds up well for precision work in electronics or magnet production, but its low thermal conductivity means heat lingers in spots—watch out here to avoid localized melting or oxidation during longer sessions. Keep scan speeds steady and overlap low to restore surfaces cleanly. In our experience, this approach clears residues effectively while preserving its optical qualities.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -195,4 +198,4 @@ material_challenges:
     - Chain of custody documentation for high-value materials
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:16.153909'
+    generated_date: '2025-12-15T22:06:43.644889'

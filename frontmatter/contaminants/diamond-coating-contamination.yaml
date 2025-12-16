@@ -1,5 +1,6 @@
 name: Diamond-Like Carbon Removal
 slug: diamond-coating-contamination
+id: diamond-coating-contamination
 category: inorganic-coating
 subcategory: coating
 content_type: unified_contamination
@@ -110,10 +111,10 @@ laser_properties:
     transmission_depth: 1.25
   removal_characteristics:
     byproducts:
-    - compound: CO
+    - compound: carbon-monoxide
       hazard_level: high
       phase: gas
-    - compound: CO₂
+    - compound: carbon-dioxide
       hazard_level: moderate
       phase: gas
     - compound: C (nanoparticles)
@@ -186,6 +187,32 @@ laser_properties:
     thermal_conductivity: 1.5
     thermal_diffusivity: 0.8
     vaporization_temperature: 1200
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Titanium
+    title: Titanium
+    url: /materials/metal/specialty/Titanium
+    image: /images/materials/metal/specialty/Titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Tungsten Carbide
+    title: Tungsten Carbide
+    url: /materials/ceramic/carbide/Tungsten Carbide
+    image: /images/materials/ceramic/carbide/Tungsten Carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Steel
 - Titanium

@@ -1,5 +1,6 @@
 name: Aluminum Oxidation
 slug: aluminum-oxidation-contamination
+id: aluminum-oxidation-contamination
 category: oxidation
 subcategory: non-ferrous
 content_type: unified_contamination
@@ -116,7 +117,7 @@ laser_properties:
     transmission_depth: 66.7
   removal_characteristics:
     byproducts:
-    - compound: Al₂O₃ nanoparticles
+    - compound: aluminum-oxide
       hazard_level: moderate
       phase: solid
     - compound: Al vapor
@@ -191,5 +192,29 @@ eeat:
     name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/publication/3587
   reviewedBy: Z-Beam Quality Assurance Team
+domain_linkages:
+  related_materials:
+  - id: Aluminum
+    title: Aluminum
+    url: /materials/metal/non-ferrous/Aluminum
+    image: /images/materials/metal/non-ferrous/Aluminum.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance:
+  - id: iec-60825
+    title: IEC 60825
+    url: ''
+    image: /images/standards/generic-logo.svg
+    applicability: laser_operation
+    requirement: IEC 60825 - Safety of Laser Products
+  - id: osha-29
+    title: OSHA 29
+    url: ''
+    image: /images/standards/generic-logo.svg
+    applicability: laser_operation
+    requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  ppe_requirements: []
 valid_materials:
 - Aluminum

@@ -1,5 +1,6 @@
 name: Ceramic Glaze Deposits
 slug: ceramic-glaze-contamination
+id: ceramic-glaze-contamination
 category: inorganic-coating
 subcategory: ceramic
 content_type: unified_contamination
@@ -181,6 +182,137 @@ laser_properties:
     thermal_conductivity: 1.2
     thermal_diffusivity: 0.8
     vaporization_temperature: 1800
+domain_linkages:
+  related_materials:
+  - id: Porcelain
+    title: Porcelain
+    url: /materials/ceramic/oxide/Porcelain
+    image: /images/materials/ceramic/oxide/Porcelain.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Alumina
+    title: Alumina
+    url: /materials/ceramic/oxide/Alumina
+    image: /images/materials/ceramic/oxide/Alumina.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicon-carbide
+    title: Silicon Carbide
+    url: /materials/silicon-carbide
+    image: /images/materials/silicon-carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Zirconia
+    title: Zirconia
+    url: /materials/ceramic/oxide/Zirconia
+    image: /images/materials/ceramic/oxide/Zirconia.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Aluminum Nitride
+    title: Aluminum Nitride
+    url: /materials/ceramic/technical/Aluminum Nitride
+    image: /images/materials/ceramic/technical/Aluminum Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Carbide
+    title: Boron Carbide
+    url: /materials/ceramic/carbide/Boron Carbide
+    image: /images/materials/ceramic/carbide/Boron Carbide.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Boron Nitride
+    title: Boron Nitride
+    url: /materials/ceramic/technical/Boron Nitride
+    image: /images/materials/ceramic/technical/Boron Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Silicon Nitride
+    title: Silicon Nitride
+    url: /materials/ceramic/oxide/Silicon Nitride
+    image: /images/materials/ceramic/oxide/Silicon Nitride.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Granite
+    title: Granite
+    url: /materials/stone/igneous/Granite
+    image: /images/materials/stone/igneous/Granite.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Marble
+    title: Marble
+    url: /materials/stone/metamorphic/Marble
+    image: /images/materials/stone/metamorphic/Marble.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Limestone
+    title: Limestone
+    url: /materials/stone/sedimentary/Limestone
+    image: /images/materials/stone/sedimentary/Limestone.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Sandstone
+    title: Sandstone
+    url: /materials/stone/sedimentary/Sandstone
+    image: /images/materials/stone/sedimentary/Sandstone.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Basalt
+    title: Basalt
+    url: /materials/stone/igneous/Basalt
+    image: /images/materials/stone/igneous/Basalt.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Slate
+    title: Slate
+    url: /materials/stone/metamorphic/Slate
+    image: /images/materials/stone/metamorphic/Slate.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Quartzite
+    title: Quartzite
+    url: /materials/stone/sedimentary/Quartzite
+    image: /images/materials/stone/sedimentary/Quartzite.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Travertine
+    title: Travertine
+    url: /materials/stone/natural/Travertine
+    image: /images/materials/stone/natural/Travertine.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Bluestone
+    title: Bluestone
+    url: /materials/stone/sedimentary/Bluestone
+    image: /images/materials/stone/sedimentary/Bluestone.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Soapstone
+    title: Soapstone
+    url: /materials/stone/sedimentary/Soapstone
+    image: /images/materials/stone/sedimentary/Soapstone.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Porcelain
 - Alumina

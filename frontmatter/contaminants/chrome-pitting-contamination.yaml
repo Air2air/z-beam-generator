@@ -1,5 +1,6 @@
 name: Chromium Oxide Pitting
 slug: chrome-pitting-contamination
+id: chrome-pitting-contamination
 category: oxidation
 subcategory: non-ferrous
 content_type: unified_contamination
@@ -182,6 +183,25 @@ laser_properties:
     thermal_conductivity: 0.42
     thermal_diffusivity: 0.15
     vaporization_temperature: 2700
+domain_linkages:
+  related_materials:
+  - id: chrome-plated-steel
+    title: Chrome-Plated Steel
+    url: /materials/chrome-plated-steel
+    image: /images/materials/chrome-plated-steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Stainless Steel
+    title: Stainless Steel
+    url: /materials/metal/ferrous/Stainless Steel
+    image: /images/materials/metal/ferrous/Stainless Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Chrome-Plated Steel
 - Stainless Steel

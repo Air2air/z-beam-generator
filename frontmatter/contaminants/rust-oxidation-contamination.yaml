@@ -1,5 +1,6 @@
 name: Rust / Iron Oxide Formation
 slug: rust-oxidation-contamination
+id: rust-oxidation-contamination
 category: oxidation
 subcategory: ferrous
 content_type: unified_contamination
@@ -128,7 +129,7 @@ laser_properties:
     transmission_depth: 1.2
   removal_characteristics:
     byproducts:
-    - compound: Fe2O3/Fe3O4 nanoparticles
+    - compound: iron-oxide
       hazard_level: moderate
       phase: solid
     - compound: O2
@@ -193,6 +194,46 @@ laser_properties:
     thermal_conductivity: 0.5
     thermal_diffusivity: 0.8
     vaporization_temperature: 2850
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Iron
+    title: Iron
+    url: /materials/metal/ferrous/Iron
+    image: /images/materials/metal/ferrous/Iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cast-iron
+    title: Cast Iron
+    url: /materials/cast-iron
+    image: /images/materials/cast-iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbon-steel
+    title: Carbon Steel
+    url: /materials/carbon-steel
+    image: /images/materials/carbon-steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: wrought-iron
+    title: Wrought Iron
+    url: /materials/wrought-iron
+    image: /images/materials/wrought-iron.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Steel
 - Iron

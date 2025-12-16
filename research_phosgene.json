@@ -1,0 +1,174 @@
+{
+  "compound_id": "phosgene",
+  "name": "Phosgene",
+  "cas_number": "75-44-5",
+  "formula": "COCl2",
+  "ppe_requirements": {
+    "respiratory": "MANDATORY: Full-face pressure-demand SCBA or positive-pressure supplied-air respirator. No air-purifying respirators approved - extremely toxic.",
+    "skin": "Butyl rubber or neoprene gloves, fully-encapsulating chemical protective suit for gas contact.",
+    "eye": "Chemical safety goggles and full face shield",
+    "minimum_level": "Level A for unknown concentrations or >0.1 ppm, Level B minimum for known concentrations <0.1 ppm",
+    "special_notes": "ONE OF THE MOST TOXIC INDUSTRIAL CHEMICALS. Chemical warfare agent. Delayed pulmonary edema 2-48 hours post-exposure. SELF-RESCUE RESPIRATORS INADEQUATE - immediate SCBA required."
+  },
+  "physical_properties": {
+    "boiling_point": "8.2\u00b0C (46.8\u00b0F)",
+    "melting_point": "-118\u00b0C (-180\u00b0F)",
+    "vapor_pressure": "1173 mmHg @ 20\u00b0C",
+    "vapor_density": "3.4 (Air=1)",
+    "specific_gravity": "1.37 (liquid @ 20\u00b0C)",
+    "flash_point": "Not applicable (non-flammable)",
+    "autoignition_temp": "Not applicable",
+    "explosive_limits": "Not applicable",
+    "appearance": "Colorless gas or fuming liquid",
+    "odor": "Musty hay or freshly cut grass odor @ 0.4-1.5 ppm - WARNING: Odor threshold ABOVE safe levels"
+  },
+  "emergency_response": {
+    "fire_hazard": "Non-flammable. Cylinders may explode when heated. Decomposes in heat producing deadly gases.",
+    "fire_suppression": "EVACUATE IMMEDIATELY. Extremely deadly decomposition products. Use unmanned equipment only. Water spray from maximum distance to cool cylinders.",
+    "spill_procedures": "EVACUATE LARGE AREA IMMEDIATELY. Call HAZMAT. SCBA MANDATORY. Extremely lethal at ppm levels. Neutralize with ammonia or caustic soda solution. Specialized cleanup required.",
+    "exposure_immediate_actions": "MEDICAL EMERGENCY. Remove to fresh air immediately. Administer 100% oxygen. NO artificial respiration if breathing. Monitor for 48 hours - DELAYED PULMONARY EDEMA likely. Hospitalize immediately even if asymptomatic. Inform medical staff: phosgene exposure.",
+    "environmental_hazards": "Toxic to all life. Hydrolyzes to HCl and CO2 in water. Report ANY release immediately.",
+    "special_hazards": "CHEMICAL WARFARE AGENT (WWI). EXTREMELY TOXIC. Delayed pulmonary edema 2-48 hours after asymptomatic period - sudden death possible. Odor warning INADEQUATE (threshold above safe levels). Hydrolyzes to hydrochloric acid in lungs. Death can occur hours after \"feeling fine\"."
+  },
+  "storage_requirements": {
+    "temperature_range": "Store cylinders <52\u00b0C. Keep cool - above 8\u00b0C gas becomes liquid.",
+    "ventilation": "Outdoor storage STRONGLY PREFERRED. Indoor only with continuous mechanical ventilation, emergency backup, phosgene detection with REMOTE alarms.",
+    "incompatibilities": [
+      "Moisture/water",
+      "Alcohols",
+      "Ammonia",
+      "Metal powders",
+      "Aluminum",
+      "Sodium",
+      "Potassium"
+    ],
+    "container_material": "Steel cylinders only. Glass for laboratory quantities.",
+    "segregation": "ISOLATED storage. Separate from ALL other chemicals. Restricted area with multiple barriers.",
+    "quantity_limits": "MINIMIZE. Many jurisdictions prohibit or strictly limit quantities.",
+    "special_requirements": "CRITICAL: Phosgene detection system with remote monitoring and alarms MANDATORY. Post \"CHEMICAL WARFARE AGENT - EXTREME DANGER\" signs. Restricted access - authorized trained personnel only with buddy system. Emergency procedures and antidote protocol posted. Medical surveillance required. Notification to local emergency services REQUIRED."
+  },
+  "regulatory_classification": {
+    "un_number": "UN1076",
+    "dot_hazard_class": "2.3 (Toxic gas), 8 (Corrosive)",
+    "dot_label": "Poison Gas, Corrosive",
+    "nfpa_codes": {
+      "health": 4,
+      "flammability": 0,
+      "reactivity": 1,
+      "special": null
+    },
+    "epa_hazard_categories": [
+      "Acute toxicity (fatal if inhaled)",
+      "Corrosive",
+      "Specific target organ toxicity"
+    ],
+    "sara_title_iii": true,
+    "cercla_rq": "10 pounds (4.54 kg)",
+    "rcra_code": "P095"
+  },
+  "workplace_exposure": {
+    "osha_pel": {
+      "twa_8hr": "0.1 ppm (0.4 mg/m\u00b3)",
+      "stel_15min": null,
+      "ceiling": null
+    },
+    "niosh_rel": {
+      "twa_8hr": "0.1 ppm (0.4 mg/m\u00b3)",
+      "stel_15min": "0.2 ppm (0.8 mg/m\u00b3) - 15 min ceiling",
+      "ceiling": null,
+      "idlh": "2 ppm"
+    },
+    "acgih_tlv": {
+      "twa_8hr": "0.1 ppm",
+      "stel_15min": null,
+      "ceiling": null
+    },
+    "biological_exposure_indices": []
+  },
+  "synonyms_identifiers": {
+    "synonyms": [
+      "Carbonyl chloride",
+      "Carbon oxychloride",
+      "Carbonyl dichloride",
+      "COCl2"
+    ],
+    "common_trade_names": [],
+    "other_identifiers": {
+      "rtecs_number": "SY5600000",
+      "ec_number": "200-870-3",
+      "pubchem_cid": "6371"
+    }
+  },
+  "reactivity": {
+    "stability": "Stable when dry. Hydrolyzes slowly in moist air. Rapidly in water.",
+    "polymerization": "Will not polymerize",
+    "incompatible_materials": [
+      "Water",
+      "Moisture",
+      "Alcohols",
+      "Ammonia",
+      "Amines",
+      "Active metals (Al, Na, K)",
+      "Metal powders",
+      "Bases"
+    ],
+    "hazardous_decomposition": [
+      "Hydrogen chloride",
+      "Carbon monoxide",
+      "Carbon dioxide",
+      "Chlorine"
+    ],
+    "conditions_to_avoid": [
+      "Heat",
+      "Moisture",
+      "Water",
+      "Incompatible materials",
+      "Sunlight (promotes decomposition)"
+    ],
+    "reactivity_hazard": "Hydrolyzes with water forming hydrochloric acid (corrosive). Reacts violently with active metals. May explode on contact with aluminum powder."
+  },
+  "environmental_impact": {
+    "aquatic_toxicity": "Extremely toxic but rapidly hydrolyzes to HCl and CO2 in water. Environmental impact primarily from hydrolysis products.",
+    "biodegradability": "Not biodegradable. Hydrolyzes rapidly to CO2 and HCl.",
+    "bioaccumulation": "Does not bioaccumulate.",
+    "soil_mobility": "High mobility as gas. Hydrolyzes on contact with soil moisture.",
+    "atmospheric_fate": "Photolyzes and hydrolyzes. Atmospheric half-life: hours. Forms HCl with water vapor.",
+    "ozone_depletion": false,
+    "global_warming_potential": null,
+    "reportable_releases": {
+      "water": "10 lbs - IMMEDIATELY reportable",
+      "air": "10 lbs/day - IMMEDIATELY reportable due to extreme toxicity"
+    }
+  },
+  "detection_monitoring": {
+    "sensor_types": [
+      "Electrochemical",
+      "Infrared",
+      "Photoionization",
+      "Colorimetric badges"
+    ],
+    "detection_range": "0-1 ppm (must detect sub-ppm)",
+    "alarm_setpoints": {
+      "low": "0.1 ppm (OSHA PEL/NIOSH REL)",
+      "high": "0.2 ppm (NIOSH STEL)",
+      "evacuate": "2 ppm (NIOSH IDLH) - IMMEDIATELY LIFE-THREATENING"
+    },
+    "colorimetric_tubes": [
+      "Dr\u00e4ger Phosgene 0.02/a",
+      "Gastec 14L"
+    ],
+    "analytical_methods": [
+      {
+        "method": "NIOSH 6371",
+        "technique": "GC with electron capture detector",
+        "detection_limit": "0.002 ppm"
+      },
+      {
+        "method": "OSHA Method 61",
+        "technique": "GC",
+        "detection_limit": "0.005 ppm"
+      }
+    ],
+    "odor_threshold": "0.4-1.5 ppm - UNRELIABLE. Odor threshold ABOVE safe exposure limits. NEVER rely on odor. MANDATORY continuous monitoring."
+  }
+}

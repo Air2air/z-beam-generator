@@ -1,5 +1,6 @@
 name: Wood Rot / Fungal Biodegradation
 slug: wood-rot-contamination
+id: wood-rot-contamination
 category: biological
 subcategory: growth
 content_type: unified_contamination
@@ -113,7 +114,7 @@ laser_properties:
     transmission_depth: 83.3
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
@@ -207,6 +208,86 @@ eeat:
     name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/publication/3587
   reviewedBy: Z-Beam Quality Assurance Team
+domain_linkages:
+  related_materials:
+  - id: Oak
+    title: Oak
+    url: /materials/wood/hardwood/Oak
+    image: /images/materials/wood/hardwood/Oak.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Pine
+    title: Pine
+    url: /materials/wood/softwood/Pine
+    image: /images/materials/wood/softwood/Pine.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Maple
+    title: Maple
+    url: /materials/wood/hardwood/Maple
+    image: /images/materials/wood/hardwood/Maple.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cherry
+    title: Cherry
+    url: /materials/wood/hardwood/Cherry
+    image: /images/materials/wood/hardwood/Cherry.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Walnut
+    title: Walnut
+    url: /materials/wood/hardwood/Walnut
+    image: /images/materials/wood/hardwood/Walnut.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Cedar
+    title: Cedar
+    url: /materials/wood/softwood/Cedar
+    image: /images/materials/wood/softwood/Cedar.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Plywood
+    title: Plywood
+    url: /materials/wood/hardwood/Plywood
+    image: /images/materials/wood/hardwood/Plywood.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: MDF
+    title: MDF
+    url: /materials/wood/hardwood/MDF
+    image: /images/materials/wood/hardwood/MDF.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Redwood
+    title: Redwood
+    url: /materials/wood/hardwood/Redwood
+    image: /images/materials/wood/hardwood/Redwood.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance:
+  - id: iec-60825
+    title: IEC 60825
+    url: ''
+    image: /images/standards/generic-logo.svg
+    applicability: laser_operation
+    requirement: IEC 60825 - Safety of Laser Products
+  - id: osha-29
+    title: OSHA 29
+    url: ''
+    image: /images/standards/generic-logo.svg
+    applicability: laser_operation
+    requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  ppe_requirements: []
 valid_materials:
 - Oak
 - Pine

@@ -1,5 +1,6 @@
 name: Tungsten Carbide
 slug: tungsten-carbide
+id: tungsten-carbide-laser-cleaning
 category: ceramic
 subcategory: carbide
 content_type: unified_material
@@ -335,6 +336,15 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.922958Z'
   structure_version: '2.0'
+domain_linkages:
+  related_contaminants:
+  - id: diamond-coating
+    title: Diamond-Like Carbon Removal
+    url: /contaminants/inorganic-coating/coating/diamond-coating
+    image: /images/contaminants/inorganic-coating/coating/diamond-coating.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -348,4 +358,4 @@ serviceOffering:
     - Adhesive residue
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:15.864505'
+    generated_date: '2025-12-15T22:06:43.467081'

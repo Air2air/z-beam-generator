@@ -1,0 +1,199 @@
+{
+  "compound_id": "hydrogen-cyanide",
+  "name": "Hydrogen Cyanide",
+  "cas_number": "74-90-8",
+  "formula": "HCN",
+  "ppe_requirements": {
+    "respiratory": "MANDATORY: Full-face pressure-demand SCBA or positive-pressure supplied-air respirator with escape SCBA. No air-purifying respirators approved - extremely toxic.",
+    "skin": "Butyl rubber gloves (>0.5mm), nitrile gloves, fully-encapsulating chemical protective suit. HCN absorbs rapidly through skin.",
+    "eye": "Chemical safety goggles and full face shield. Liquid contact causes severe burns.",
+    "minimum_level": "Level A for unknown concentrations or >10 ppm, Level B minimum for known concentrations <10 ppm",
+    "special_notes": "HCN penetrates ordinary clothing. Rapidly absorbed through skin causing systemic poisoning. Use butyl rubber - NOT neoprene or natural rubber. Emergency cyanide antidote kit must be immediately available."
+  },
+  "physical_properties": {
+    "boiling_point": "25.6\u00b0C (78\u00b0F)",
+    "melting_point": "-13.3\u00b0C (8\u00b0F)",
+    "vapor_pressure": "620 mmHg @ 20\u00b0C",
+    "vapor_density": "0.94 (Air=1)",
+    "specific_gravity": "0.687 @ 20\u00b0C (liquid)",
+    "flash_point": "-17.8\u00b0C (0\u00b0F) closed cup",
+    "autoignition_temp": "538\u00b0C (1000\u00b0F)",
+    "explosive_limits": "LEL: 5.6%, UEL: 40%",
+    "appearance": "Colorless or pale blue liquid, colorless gas",
+    "odor": "Faint bitter almond odor; WARNING: 20-40% of population cannot detect odor (genetic variation)"
+  },
+  "emergency_response": {
+    "fire_hazard": "Extremely flammable liquid and vapor. Wide explosive range. May polymerize explosively if contaminated. Vapors may travel to ignition source.",
+    "fire_suppression": "Evacuate area immediately - extremely toxic combustion products. Use unmanned hose holders or monitor nozzles. Dry chemical, CO2, alcohol-resistant foam from safe distance. Water spray to cool cylinders.",
+    "spill_procedures": "EVACUATE IMMEDIATELY - call HAZMAT team. Self-Contained Breathing Apparatus MANDATORY. Eliminate ignition sources. Contain with sand/vermiculite. Neutralize with sodium hydroxide or calcium hypochlorite solution. Decontaminate area thoroughly.",
+    "exposure_immediate_actions": "MEDICAL EMERGENCY - minutes count. Remove to fresh air immediately. Administer 100% oxygen. Apply cyanide antidote kit (amyl nitrite, sodium nitrite, sodium thiosulfate) per protocol. CPR if needed. Rush to hospital - inform medical staff of cyanide exposure immediately.",
+    "environmental_hazards": "Extremely toxic to all life. Highly volatile - rapidly disperses but lethal during dispersion. Report any release immediately. Toxic to aquatic life at extremely low concentrations.",
+    "special_hazards": "ONE OF THE MOST TOXIC INDUSTRIAL CHEMICALS. Inhibits cellular respiration by binding to cytochrome oxidase. Death can occur within minutes. Polymerizes violently with alkaline contamination. Decomposes producing nitrogen oxides and hydrogen cyanide gas."
+  },
+  "storage_requirements": {
+    "temperature_range": "Store below 25\u00b0C (77\u00b0F), ideally <15\u00b0C. Avoid heating above boiling point.",
+    "ventilation": "Outdoor storage strongly preferred. If indoors: continuous mechanical ventilation with emergency backup, HCN gas detection with evacuation alarms",
+    "incompatibilities": [
+      "Acids",
+      "Strong bases",
+      "Oxidizers",
+      "Water (polymerization catalyst)",
+      "Ammonia",
+      "Sulfur",
+      "Halogens",
+      "Amines"
+    ],
+    "container_material": "Stainless steel or glass with PTFE-lined caps. Stabilized with acid (H3PO4 or H2SO4) to prevent polymerization. Never use copper, copper alloys, or iron containers.",
+    "segregation": "Isolated storage area, separate from all other chemicals. Secure area with restricted access. Post \"POISON GAS - AUTHORIZED PERSONNEL ONLY\" signs.",
+    "quantity_limits": "Minimize quantities stored. Per OSHA, treat as extremely hazardous. Many facilities limit to <5 gallons on-site.",
+    "special_requirements": "CRITICAL: Store with stabilizer (acid). Check stabilizer level regularly. Refrigerated storage recommended. Gas detection system MANDATORY. Emergency shower/eyewash within 10 seconds travel. Cyanide antidote kits at storage location. Written emergency procedures posted."
+  },
+  "regulatory_classification": {
+    "un_number": "UN1051 (anhydrous, stabilized), UN1613 (solution)",
+    "dot_hazard_class": "6.1 (Toxic), 3 (Flammable liquid)",
+    "dot_label": "Poison, Flammable Liquid",
+    "nfpa_codes": {
+      "health": 4,
+      "flammability": 4,
+      "reactivity": 2,
+      "special": null
+    },
+    "epa_hazard_categories": [
+      "Acute toxicity (fatal if inhaled/swallowed/skin contact)",
+      "Flammability",
+      "Skin corrosion",
+      "Serious eye damage"
+    ],
+    "sara_title_iii": true,
+    "cercla_rq": "10 pounds (4.54 kg)",
+    "rcra_code": "P063"
+  },
+  "workplace_exposure": {
+    "osha_pel": {
+      "twa_8hr": null,
+      "stel_15min": null,
+      "ceiling": "10 ppm (11 mg/m\u00b3) - Skin notation"
+    },
+    "niosh_rel": {
+      "twa_8hr": null,
+      "stel_15min": "4.7 ppm (5 mg/m\u00b3) - 10 min ceiling",
+      "ceiling": null,
+      "idlh": "50 ppm"
+    },
+    "acgih_tlv": {
+      "twa_8hr": null,
+      "stel_15min": null,
+      "ceiling": "4.7 ppm - Skin notation"
+    },
+    "biological_exposure_indices": [
+      {
+        "metabolite": "Thiocyanate",
+        "specimen": "Urine",
+        "timing": "End of shift, end of work week",
+        "bei_value": "1 mg/L (non-smoker), 4 mg/L (smoker)"
+      },
+      {
+        "metabolite": "Cyanide",
+        "specimen": "Blood",
+        "timing": "Immediately post-exposure",
+        "bei_value": "<0.5 \u00b5g/mL (toxic >1 \u00b5g/mL, lethal >3 \u00b5g/mL)"
+      }
+    ]
+  },
+  "synonyms_identifiers": {
+    "synonyms": [
+      "Hydrocyanic acid",
+      "Prussic acid",
+      "Formonitrile",
+      "Methanenitrile",
+      "Carbon hydride nitride",
+      "HCN"
+    ],
+    "common_trade_names": [
+      "Zyklon",
+      "Cyclone B (historical)"
+    ],
+    "other_identifiers": {
+      "rtecs_number": "MW6825000",
+      "ec_number": "200-821-6",
+      "pubchem_cid": "768"
+    }
+  },
+  "reactivity": {
+    "stability": "UNSTABLE. Polymerizes violently when contaminated with water, bases, or ammonia. Must be stabilized with acid.",
+    "polymerization": "May polymerize explosively if not stabilized. Polymerization exothermic - can rupture containers and cause explosions.",
+    "incompatible_materials": [
+      "Water (polymerization)",
+      "Strong bases (sodium hydroxide)",
+      "Acids (releases HCN gas)",
+      "Oxidizers",
+      "Ammonia",
+      "Amines",
+      "Sulfur",
+      "Acetaldehyde",
+      "Halogens"
+    ],
+    "hazardous_decomposition": [
+      "Nitrogen oxides (NOx)",
+      "Hydrogen cyanide gas",
+      "Carbon monoxide",
+      "Ammonia"
+    ],
+    "conditions_to_avoid": [
+      "Heat",
+      "Moisture/water",
+      "Alkaline conditions",
+      "Light",
+      "Flames",
+      "Sparks",
+      "Oxidizers",
+      "Contamination of any kind"
+    ],
+    "reactivity_hazard": "EXTREMELY REACTIVE. Violent polymerization with alkaline materials. Reacts with oxidizers causing fire and explosion. Attacks some metals (copper, zinc) forming explosive metal cyanides."
+  },
+  "environmental_impact": {
+    "aquatic_toxicity": "Extremely toxic to aquatic life. LC50 (fish, 96h): 0.05-0.3 mg/L. Toxic at parts-per-billion levels.",
+    "biodegradability": "Readily biodegradable by specialized bacteria. Oxidizes to carbon dioxide and ammonia. Half-life in water: hours to days.",
+    "bioaccumulation": "Does not bioaccumulate. Log Kow: 0.66. Rapidly metabolized or volatilizes.",
+    "soil_mobility": "High mobility in soil. Volatilizes rapidly. Does not adsorb to soil.",
+    "atmospheric_fate": "Rapidly oxidizes via hydroxyl radicals. Atmospheric half-life: 1-3 years. Photolyzes in sunlight.",
+    "ozone_depletion": false,
+    "global_warming_potential": null,
+    "reportable_releases": {
+      "water": "10 lbs (4.54 kg) to navigable waters - IMMEDIATELY reportable",
+      "air": "10 lbs/day (CERCLA RQ) - ANY release must be reported immediately due to extreme toxicity"
+    }
+  },
+  "detection_monitoring": {
+    "sensor_types": [
+      "Electrochemical",
+      "Semiconductor",
+      "Photoionization detector (PID)",
+      "Infrared"
+    ],
+    "detection_range": "0-30 ppm typical (must detect sub-ppm levels)",
+    "alarm_setpoints": {
+      "low": "4.7 ppm (NIOSH ceiling)",
+      "high": "10 ppm (OSHA ceiling)",
+      "evacuate": "50 ppm (NIOSH IDLH) - IMMEDIATELY LIFE-THREATENING"
+    },
+    "colorimetric_tubes": [
+      "Dr\u00e4ger CH29901",
+      "Gastec 12L/12",
+      "Kitagawa 710"
+    ],
+    "analytical_methods": [
+      {
+        "method": "NIOSH 6010",
+        "technique": "Spectrophotometry (colorimetric)",
+        "detection_limit": "0.2 ppb"
+      },
+      {
+        "method": "OSHA PV2074",
+        "technique": "Ion chromatography",
+        "detection_limit": "0.03 ppm"
+      }
+    ],
+    "odor_threshold": "UNRELIABLE - 20-40% of population cannot smell HCN (genetic). Odor threshold (0.58-5 ppm) overlaps toxic range. NEVER rely on odor - MANDATORY continuous monitoring with alarms."
+  }
+}

@@ -1,5 +1,6 @@
 name: Industrial Oil / Grease Buildup
 slug: industrial-oil-contamination
+id: industrial-oil-contamination
 category: organic-residue
 subcategory: petroleum
 content_type: unified_contamination
@@ -117,13 +118,13 @@ laser_properties:
     transmission_depth: 8.3
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
       hazard_level: low
       phase: gas
-    - compound: CO
+    - compound: carbon-monoxide
       hazard_level: moderate
       phase: gas
     - compound: C (soot)
@@ -207,5 +208,29 @@ eeat:
     name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/publication/3587
   reviewedBy: Z-Beam Quality Assurance Team
+domain_linkages:
+  related_materials:
+  - id: all
+    title: ALL
+    url: /materials/all
+    image: /images/materials/all.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance:
+  - id: iec-60825
+    title: IEC 60825
+    url: ''
+    image: /images/standards/generic-logo.svg
+    applicability: laser_operation
+    requirement: IEC 60825 - Safety of Laser Products
+  - id: osha-29
+    title: OSHA 29
+    url: ''
+    image: /images/standards/generic-logo.svg
+    applicability: laser_operation
+    requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  ppe_requirements: []
 valid_materials:
 - ALL

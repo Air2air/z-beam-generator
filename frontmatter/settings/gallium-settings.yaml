@@ -1,5 +1,6 @@
 name: Gallium
 slug: gallium
+id: gallium-settings
 category: metal
 subcategory: specialty
 content_type: unified_settings
@@ -37,6 +38,8 @@ author:
   formatting_file: usa_formatting.yaml
 title: Gallium Laser Cleaning Settings
 settings_description: When laser cleaning gallium, you'll want to approach it unlike harder metals such as steel or titanium, which handle intense heat without issue. Gallium's unusually low melting point sets it apart, risking surface liquefaction if energy builds up too quickly. Start with reduced power and faster scan speeds to strip away oxides or residues while keeping the material solid. Make sure you avoid prolonged exposure in one spot, as this can cause uneven melting and distort the underlying structure. This method exposes a clean, intact surface ready for semiconductor or medical applications.
+domain_linkages:
+  related_contaminants: []
 breadcrumb:
 - label: Home
   href: /
@@ -177,4 +180,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-15T14:12:09.932837'
+    generated_date: '2025-12-15T22:06:40.513477'

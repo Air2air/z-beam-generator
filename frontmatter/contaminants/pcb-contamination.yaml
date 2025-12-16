@@ -1,5 +1,6 @@
 name: PCB Oil Contamination
 slug: pcb-contamination
+id: pcb-contamination
 category: chemical-residue
 subcategory: industrial
 content_type: unified_contamination
@@ -109,13 +110,13 @@ laser_properties:
     transmission_depth: 11.8
   removal_characteristics:
     byproducts:
-    - compound: CO2
+    - compound: carbon-dioxide
       hazard_level: low
       phase: gas
     - compound: H2O
       hazard_level: low
       phase: gas
-    - compound: CO
+    - compound: carbon-monoxide
       hazard_level: moderate
       phase: gas
     - compound: VOCs
@@ -191,6 +192,32 @@ laser_properties:
     thermal_conductivity: 0.15
     thermal_diffusivity: 0.08
     vaporization_temperature: 500
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Concrete
+    title: Concrete
+    url: /materials/masonry/general/Concrete
+    image: /images/materials/masonry/general/Concrete.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: transformer-housings
+    title: Transformer Housings
+    url: /materials/transformer-housings
+    image: /images/materials/transformer-housings.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Steel
 - Concrete

@@ -1,5 +1,6 @@
 name: Thermal Spray Coating
 slug: plasma-spray-contamination
+id: plasma-spray-contamination
 category: thermal-damage
 subcategory: coating
 content_type: unified_contamination
@@ -183,6 +184,32 @@ laser_properties:
     thermal_conductivity: 8.5
     thermal_diffusivity: 1.6
     vaporization_temperature: 2800
+domain_linkages:
+  related_materials:
+  - id: Steel
+    title: Steel
+    url: /materials/metal/ferrous/Steel
+    image: /images/materials/metal/ferrous/Steel.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: Titanium
+    title: Titanium
+    url: /materials/metal/specialty/Titanium
+    image: /images/materials/metal/specialty/Titanium.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: turbine-blades
+    title: Turbine Blades
+    url: /materials/turbine-blades
+    image: /images/materials/turbine-blades.jpg
+    frequency: common
+    severity: moderate
+    typical_context: general
+  related_compounds: []
+  regulatory_compliance: []
+  ppe_requirements: []
 valid_materials:
 - Steel
 - Titanium
