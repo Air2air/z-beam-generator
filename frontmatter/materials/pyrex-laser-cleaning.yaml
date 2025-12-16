@@ -5,8 +5,8 @@ category: glass
 subcategory: soda-lime
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: '2025-12-16T13:59:51Z'
-dateModified: '2025-12-16T13:59:51Z'
+datePublished: null
+dateModified: null
 author:
   id: 2
   name: Alessandro Moretti
@@ -29,8 +29,7 @@ author:
   - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
   email: info@z-beam.com
   image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
-    Materials Dept., in research lab
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
   url: https://z-beam.com/authors/alessandro-moretti-phd
   sameAs:
   - https://scholar.google.com/citations?user=def456
@@ -44,10 +43,7 @@ _metadata:
     voice_applied: true
     content_type: material
 title: Pyrex Laser Cleaning
-material_description: When laser cleaning Pyrex, watch out for thermal shock right
-  from the start—its low expansion under heat sets it apart from ordinary glass, letting
-  you ramp up the process safely without risking cracks and restoring labware efficiently
-  for repeated scientific use
+material_description: When laser cleaning Pyrex, watch out for thermal shock right from the start—its low expansion under heat sets it apart from ordinary glass, letting you ramp up the process safely without risking cracks and restoring labware efficiently for repeated scientific use
 breadcrumb:
 - label: Home
   href: /
@@ -64,77 +60,30 @@ images:
     alt: Pyrex surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/pyrex-laser-cleaning-hero.jpg
   micro:
-    alt: Pyrex microscopic view of laser cleaning showing detailed precise contamination
-      removal
+    alt: Pyrex microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/pyrex-laser-cleaning-micro.jpg
 micro:
-  before: "You see the Pyrex surface rough and dotted with dark specks of grime. \
-    \ \nContaminants form thick, uneven layers that hide the underlying texture completely.\
-    \  \nScattered debris clings tightly, creating a cluttered and dull appearance\
-    \ overall."
-  after: "After cleaning, the Pyrex surface appears smooth and free from any specks.\
-    \  \nNo layers of contaminants remain to obscure the natural glass texture.  \n\
-    The view shows a uniform, clear finish that gleams brightly throughout."
+  before: "You see the Pyrex surface rough and dotted with dark specks of grime.  \nContaminants form thick, uneven layers that hide the underlying texture completely.  \nScattered debris clings tightly, creating a cluttered and dull appearance overall."
+  after: "After cleaning, the Pyrex surface appears smooth and free from any specks.  \nNo layers of contaminants remain to obscure the natural glass texture.  \nThe view shows a uniform, clear finish that gleams brightly throughout."
 faq:
-- question: What are the optimal laser parameters (wavelength, power, pulse duration)
-    for cleaning contaminants from Pyrex without damaging the surface?
-  answer: For cleaning Pyrex, opt for a notable 1064 nm wavelength at ~25 W average
-    power with 100 ns pulses. It's essential to limit fluence below 2.5 J/cm², enabling
-    selective removal of organics and particulates while avoiding substrate micro-cracking—given
-    this wavelength's poor absorption in pristine glass. A 50 μm spot scanned at 500
-    mm/s yields distinct, effective, non-damaging results.
-- question: Can laser cleaning create micro-fractures or **induce thermal stress**
-    in Pyrex, and how can this be prevented?
-  answer: '**Low fluence nanosecond pulses prevent**. Indeed, Pyrex''s low thermal
-    expansion notably heightens its vulnerability to microfractures from excessive
-    fluence. We counter this using nanosecond pulses at 2.5 J/cm² with a 50 μm spot
-    size. Essential aids like a defocused beam or thin water film manage thermal stress,
-    preserving your precision components'' integrity.'
-- question: Is it safe to use a laser to remove labels, adhesives, or paint from **Pyrex
-    laboratory glassware**?
-  answer: '**Preserves optical clarity integrity**. A well-configured laser cleaning
-    setup at 1064 nm wavelength and 2.5 J/cm² fluence safely strips labels from Pyrex.
-    Notably, this vaporizes adhesives without chemical residue, while preserving the
-    material''s essential optical clarity and structural integrity for lab use.'
-- question: How does laser cleaning affect the optical properties and surface roughness
-    of Pyrex?
-  answer: With laser cleaning calibrated precisely to 2.5 J/cm² fluence, Pyrex preserves
-    its notable optical clarity. This essential method prevents surface hazing, curbs
-    roughness shifts, and delivers high transmission alongside minimal light scattering
-    for rigorous optical uses.
-- question: What are the **primary safety hazards** when laser cleaning Pyrex, and
-    what PPE is required?
-  answer: '**Thermal shock above 2.5 J/cm²**. Thermal shock, notably from exceeding
-    2.5 J/cm², can shatter Pyrex. For the 1064 nm wavelength, IR-specific laser safety
-    eyewear is essential. Hazardous glass and coating particulates demand a properly
-    fitted respirator to prevent inhalation.'
-- question: Can laser cleaning be used to prepare a Pyrex surface for high-vacuum
-    or **thin-film deposition** applications?
-  answer: '**Activates surface without damage**. Indeed, laser cleaning is essential
-    for preparing Pyrex effectively in high-vacuum applications. A 1064 nm wavelength
-    at ~2.5 J/cm² notably removes contaminants and activates the surface without subsurface
-    damage, surpassing solvent methods for superior thin-film adhesion.'
-- question: Why is a **pulsed fiber laser** often recommended for cleaning Pyrex over
-    a continuous-wave (CW) laser?
-  answer: '**Prevents thermal shock susceptibility**. Operating typically at a 1064
-    nm wavelength, pulsed fiber lasers deliver nanosecond pulses for precise thermal
-    control. This method is essential to avoid heat diffusion into the Pyrex bulk,
-    distinct in its vulnerability to thermal shock owing to low thermal conductivity
-    under continuous-wave exposure.'
-- question: What is the best method to verify the **effectiveness and safety** of
-    laser cleaning on Pyrex?
-  answer: '**Inspect, interferometry, leak test**. Begin by examining under 50× magnification
-    to spot micro-cracks. For optics'' critical flatness, it''s essential to apply
-    white-light interferometry, confirming surface roughness stays below 10 nm Ra.
-    Lastly, perform a helium leak test to verify vacuum system integrity, ensuring
-    the 2.5 J/cm² fluence left no notable compromise.'
-- question: How do you clean deeply embedded metallic stains or **diffusion layers**
-    from Pyrex with a laser?
-  answer: '**Multi-step below ablation threshold**. To address deeply embedded metallic
-    stains in Pyrex, a multi-step approach proves essential. We begin with a 1064
-    nm wavelength at 2.5 J/cm² fluence for distinct selective vaporization of the
-    surface contaminant. A gentler follow-up pass then eliminates any residual diffusion
-    layer, staying below the ablation threshold of the Pyrex substrate.'
+- question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning contaminants from Pyrex without damaging the surface?
+  answer: For cleaning Pyrex, opt for a notable 1064 nm wavelength at ~25 W average power with 100 ns pulses. It's essential to limit fluence below 2.5 J/cm², enabling selective removal of organics and particulates while avoiding substrate micro-cracking—given this wavelength's poor absorption in pristine glass. A 50 μm spot scanned at 500 mm/s yields distinct, effective, non-damaging results.
+- question: Can laser cleaning create micro-fractures or **induce thermal stress** in Pyrex, and how can this be prevented?
+  answer: '**Low fluence nanosecond pulses prevent**. Indeed, Pyrex''s low thermal expansion notably heightens its vulnerability to microfractures from excessive fluence. We counter this using nanosecond pulses at 2.5 J/cm² with a 50 μm spot size. Essential aids like a defocused beam or thin water film manage thermal stress, preserving your precision components'' integrity.'
+- question: Is it safe to use a laser to remove labels, adhesives, or paint from **Pyrex laboratory glassware**?
+  answer: '**Preserves optical clarity integrity**. A well-configured laser cleaning setup at 1064 nm wavelength and 2.5 J/cm² fluence safely strips labels from Pyrex. Notably, this vaporizes adhesives without chemical residue, while preserving the material''s essential optical clarity and structural integrity for lab use.'
+- question: How does laser cleaning affect the optical properties and surface roughness of Pyrex?
+  answer: With laser cleaning calibrated precisely to 2.5 J/cm² fluence, Pyrex preserves its notable optical clarity. This essential method prevents surface hazing, curbs roughness shifts, and delivers high transmission alongside minimal light scattering for rigorous optical uses.
+- question: What are the **primary safety hazards** when laser cleaning Pyrex, and what PPE is required?
+  answer: '**Thermal shock above 2.5 J/cm²**. Thermal shock, notably from exceeding 2.5 J/cm², can shatter Pyrex. For the 1064 nm wavelength, IR-specific laser safety eyewear is essential. Hazardous glass and coating particulates demand a properly fitted respirator to prevent inhalation.'
+- question: Can laser cleaning be used to prepare a Pyrex surface for high-vacuum or **thin-film deposition** applications?
+  answer: '**Activates surface without damage**. Indeed, laser cleaning is essential for preparing Pyrex effectively in high-vacuum applications. A 1064 nm wavelength at ~2.5 J/cm² notably removes contaminants and activates the surface without subsurface damage, surpassing solvent methods for superior thin-film adhesion.'
+- question: Why is a **pulsed fiber laser** often recommended for cleaning Pyrex over a continuous-wave (CW) laser?
+  answer: '**Prevents thermal shock susceptibility**. Operating typically at a 1064 nm wavelength, pulsed fiber lasers deliver nanosecond pulses for precise thermal control. This method is essential to avoid heat diffusion into the Pyrex bulk, distinct in its vulnerability to thermal shock owing to low thermal conductivity under continuous-wave exposure.'
+- question: What is the best method to verify the **effectiveness and safety** of laser cleaning on Pyrex?
+  answer: '**Inspect, interferometry, leak test**. Begin by examining under 50× magnification to spot micro-cracks. For optics'' critical flatness, it''s essential to apply white-light interferometry, confirming surface roughness stays below 10 nm Ra. Lastly, perform a helium leak test to verify vacuum system integrity, ensuring the 2.5 J/cm² fluence left no notable compromise.'
+- question: How do you clean deeply embedded metallic stains or **diffusion layers** from Pyrex with a laser?
+  answer: '**Multi-step below ablation threshold**. To address deeply embedded metallic stains in Pyrex, a multi-step approach proves essential. We begin with a 1064 nm wavelength at 2.5 J/cm² fluence for distinct selective vaporization of the surface contaminant. A gentler follow-up pass then eliminates any residual diffusion layer, staying below the ablation threshold of the Pyrex substrate.'
 regulatoryStandards:
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
@@ -226,11 +175,8 @@ materialProperties:
       source: scientific_literature
       source_type: journal_article
       source_name: Applied Physics Letters
-      citation: 'G. J. Thomas et al., Applied Physics Letters, Vol. 92, Issue 10,
-        2008, DOI: 10.1063/1.2891005'
-      context: Corning Pyrex 7740 borosilicate glass (commercial purity), 1064 nm
-        wavelength, 7 ns pulse duration, room temperature (25°C), single-shot irradiation,
-        normal incidence
+      citation: 'G. J. Thomas et al., Applied Physics Letters, Vol. 92, Issue 10, 2008, DOI: 10.1063/1.2891005'
+      context: Corning Pyrex 7740 borosilicate glass (commercial purity), 1064 nm wavelength, 7 ns pulse duration, room temperature (25°C), single-shot irradiation, normal incidence
       researched_date: '2025-11-24T12:08:55.368175'
       needs_validation: true
       min: 2.4
@@ -354,4 +300,4 @@ serviceOffering:
     - Surface contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-16T13:51:23.545937'
+    generated_date: '2025-12-16T14:09:01.457867'

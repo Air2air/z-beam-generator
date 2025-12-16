@@ -895,9 +895,8 @@ class TrivialFrontmatterExporter:
         # material_name is already the ID (slug format) after ID migration
         frontmatter['domain_linkages'] = self._build_material_linkages(material_name, material_name)
         
-        # Export dual-file structure: materials page and settings page
+        # Export materials page only (settings handled by separate TrivialSettingsExporter)
         self._export_materials_page(material_name, frontmatter)
-        self._export_settings_page(material_name, frontmatter, material_data)
     
     def _export_materials_page(self, material_name: str, full_frontmatter: Dict) -> None:
         """
