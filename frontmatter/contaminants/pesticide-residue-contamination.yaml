@@ -3,14 +3,14 @@ name: Pesticide Chemical Residue
 slug: pesticide-residue-contamination
 category: chemical-residue
 subcategory: industrial
-datePublished: '2025-12-16T21:47:35.107205'
-dateModified: '2025-12-16T21:47:35.107205'
+datePublished: '2025-12-17T12:39:34.217928'
+dateModified: '2025-12-17T12:39:34.217928'
 domain_linkages:
   related_materials:
   - id: stainless-steel-laser-cleaning
     title: Stainless Steel
     url: /materials/metal/ferrous/stainless-steel-laser-cleaning
-    image: /images/materials/stainless-steel.jpg
+    image: /images/material/stainless-steel-laser-cleaning-hero.jpg
     category: metal
     subcategory: ferrous
     frequency: common
@@ -19,7 +19,7 @@ domain_linkages:
   - id: steel-laser-cleaning
     title: Steel
     url: /materials/metal/ferrous/steel-laser-cleaning
-    image: /images/materials/steel.jpg
+    image: /images/material/steel-laser-cleaning-hero.jpg
     category: metal
     subcategory: ferrous
     frequency: common
@@ -28,7 +28,7 @@ domain_linkages:
   - id: aluminum-laser-cleaning
     title: Aluminum
     url: /materials/metal/non-ferrous/aluminum-laser-cleaning
-    image: /images/materials/aluminum.jpg
+    image: /images/material/aluminum-laser-cleaning-hero.jpg
     category: metal
     subcategory: non-ferrous
     frequency: common
@@ -37,7 +37,7 @@ domain_linkages:
   - id: concrete-laser-cleaning
     title: Concrete
     url: /materials/masonry/general/concrete-laser-cleaning
-    image: /images/materials/concrete.jpg
+    image: /images/material/concrete-laser-cleaning-hero.jpg
     category: masonry
     subcategory: general
     frequency: common
@@ -46,7 +46,7 @@ domain_linkages:
   - id: zinc-laser-cleaning
     title: Zinc
     url: /materials/metal/alloy/zinc-laser-cleaning
-    image: /images/materials/zinc.jpg
+    image: /images/material/zinc-laser-cleaning-hero.jpg
     category: metal
     subcategory: alloy
     frequency: common
@@ -55,7 +55,7 @@ domain_linkages:
   - id: crown-glass-laser-cleaning
     title: Crown Glass
     url: /materials/glass/soda-lime/crown-glass-laser-cleaning
-    image: /images/materials/crown-glass.jpg
+    image: /images/material/crown-glass-laser-cleaning-hero.jpg
     category: glass
     subcategory: soda-lime
     frequency: common
@@ -64,7 +64,7 @@ domain_linkages:
   - id: aluminosilicate-glass-laser-cleaning
     title: Aluminosilicate Glass
     url: /materials/glass/specialty/aluminosilicate-glass-laser-cleaning
-    image: /images/materials/aluminosilicate-glass.jpg
+    image: /images/material/aluminosilicate-glass-laser-cleaning-hero.jpg
     category: glass
     subcategory: specialty
     frequency: common
@@ -73,7 +73,7 @@ domain_linkages:
   - id: tempered-glass-laser-cleaning
     title: Tempered Glass
     url: /materials/glass/specialty-glass/tempered-glass-laser-cleaning
-    image: /images/materials/tempered-glass.jpg
+    image: /images/material/tempered-glass-laser-cleaning-hero.jpg
     category: glass
     subcategory: specialty-glass
     frequency: common
@@ -82,7 +82,7 @@ domain_linkages:
   - id: titanium-laser-cleaning
     title: Titanium
     url: /materials/metal/specialty/titanium-laser-cleaning
-    image: /images/materials/titanium.jpg
+    image: /images/material/titanium-laser-cleaning-hero.jpg
     category: metal
     subcategory: specialty
     frequency: common
@@ -91,7 +91,7 @@ domain_linkages:
   - id: fused-silica-laser-cleaning
     title: Fused Silica
     url: /materials/glass/soda-lime/fused-silica-laser-cleaning
-    image: /images/materials/fused-silica.jpg
+    image: /images/material/fused-silica-laser-cleaning-hero.jpg
     category: glass
     subcategory: soda-lime
     frequency: common
@@ -100,7 +100,7 @@ domain_linkages:
   - id: borosilicate-glass-laser-cleaning
     title: Borosilicate Glass
     url: /materials/glass/soda-lime/borosilicate-glass-laser-cleaning
-    image: /images/materials/borosilicate-glass.jpg
+    image: /images/material/borosilicate-glass-laser-cleaning-hero.jpg
     category: glass
     subcategory: soda-lime
     frequency: common
@@ -109,7 +109,7 @@ domain_linkages:
   - id: copper-laser-cleaning
     title: Copper
     url: /materials/metal/non-ferrous/copper-laser-cleaning
-    image: /images/materials/copper.jpg
+    image: /images/material/copper-laser-cleaning-hero.jpg
     category: metal
     subcategory: non-ferrous
     frequency: common
@@ -118,7 +118,7 @@ domain_linkages:
   - id: cobalt-laser-cleaning
     title: Cobalt
     url: /materials/metal/specialty/cobalt-laser-cleaning
-    image: /images/materials/cobalt.jpg
+    image: /images/material/cobalt-laser-cleaning-hero.jpg
     category: metal
     subcategory: specialty
     frequency: common
@@ -127,7 +127,7 @@ domain_linkages:
   - id: float-glass-laser-cleaning
     title: Float Glass
     url: /materials/glass/soda-lime/float-glass-laser-cleaning
-    image: /images/materials/float-glass.jpg
+    image: /images/material/float-glass-laser-cleaning-hero.jpg
     category: glass
     subcategory: soda-lime
     frequency: common
@@ -136,16 +136,25 @@ domain_linkages:
   - id: gorilla-glass-laser-cleaning
     title: Gorilla Glass
     url: /materials/glass/soda-lime/gorilla-glass-laser-cleaning
-    image: /images/materials/gorilla-glass.jpg
+    image: /images/material/gorilla-glass-laser-cleaning-hero.jpg
     category: glass
     subcategory: soda-lime
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: brass-laser-cleaning
+    title: Brass
+    url: /materials/metal/non-ferrous/brass-laser-cleaning
+    image: /images/material/brass-laser-cleaning-hero.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
   - id: tin-laser-cleaning
     title: Tin
     url: /materials/metal/alloy/tin-laser-cleaning
-    image: /images/materials/tin.jpg
+    image: /images/material/tin-laser-cleaning-hero.jpg
     category: metal
     subcategory: alloy
     frequency: common
@@ -154,7 +163,7 @@ domain_linkages:
   - id: lead-laser-cleaning
     title: Lead
     url: /materials/metal/non-ferrous/lead-laser-cleaning
-    image: /images/materials/lead.jpg
+    image: /images/material/lead-laser-cleaning-hero.jpg
     category: metal
     subcategory: non-ferrous
     frequency: common
@@ -163,7 +172,7 @@ domain_linkages:
   - id: chromium-laser-cleaning
     title: Chromium
     url: /materials/metal/specialty/chromium-laser-cleaning
-    image: /images/materials/chromium.jpg
+    image: /images/material/chromium-laser-cleaning-hero.jpg
     category: metal
     subcategory: specialty
     frequency: common
@@ -172,9 +181,27 @@ domain_linkages:
   - id: nickel-laser-cleaning
     title: Nickel
     url: /materials/metal/specialty/nickel-laser-cleaning
-    image: /images/materials/nickel.jpg
+    image: /images/material/nickel-laser-cleaning-hero.jpg
     category: metal
     subcategory: specialty
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bronze-laser-cleaning
+    title: Bronze
+    url: /materials/metal/non-ferrous/bronze-laser-cleaning
+    image: /images/material/bronze-laser-cleaning-hero.jpg
+    category: metal
+    subcategory: non-ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cast-iron-laser-cleaning
+    title: Cast Iron
+    url: /materials/metal/ferrous/cast-iron-laser-cleaning
+    image: /images/material/cast-iron-laser-cleaning-hero.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general

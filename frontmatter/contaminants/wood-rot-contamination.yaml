@@ -3,14 +3,94 @@ name: Wood Rot / Fungal Biodegradation
 slug: wood-rot-contamination
 category: biological
 subcategory: growth
-datePublished: '2025-12-16T21:47:35.577542'
-dateModified: '2025-12-16T21:47:35.577542'
+datePublished: '2025-12-17T12:39:35.332716'
+dateModified: '2025-12-17T12:39:35.332716'
 micro:
-  after: Post-cleaning reveals restored surface with wood rot / fungal biodegradation
-    successfully removed through precise laser ablation.
-  before: Surface shows contamination from wood rot / fungal biodegradation affecting
-    material appearance and properties.
+  after: Post-cleaning reveals restored surface with wood rot / fungal biodegradation successfully removed through precise laser ablation.
+  before: Surface shows contamination from wood rot / fungal biodegradation affecting material appearance and properties.
 domain_linkages:
+  related_materials:
+  - id: redwood-laser-cleaning
+    title: Redwood
+    url: /materials/wood/hardwood/redwood-laser-cleaning
+    image: /images/material/redwood-laser-cleaning-hero.jpg
+    category: wood
+    subcategory: hardwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: mdf-laser-cleaning
+    title: MDF
+    url: /materials/wood/hardwood/mdf-laser-cleaning
+    image: /images/material/mdf-laser-cleaning-hero.jpg
+    category: wood
+    subcategory: hardwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: maple-laser-cleaning
+    title: Maple
+    url: /materials/wood/hardwood/maple-laser-cleaning
+    image: /images/material/maple-laser-cleaning-hero.jpg
+    category: wood
+    subcategory: hardwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: plywood-laser-cleaning
+    title: Plywood
+    url: /materials/wood/hardwood/plywood-laser-cleaning
+    image: /images/material/plywood-laser-cleaning-hero.jpg
+    category: wood
+    subcategory: hardwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: walnut-laser-cleaning
+    title: Walnut
+    url: /materials/wood/hardwood/walnut-laser-cleaning
+    image: /images/material/walnut-laser-cleaning-hero.jpg
+    category: wood
+    subcategory: hardwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pine-laser-cleaning
+    title: Pine
+    url: /materials/wood/softwood/pine-laser-cleaning
+    image: /images/material/pine-laser-cleaning-hero.jpg
+    category: wood
+    subcategory: softwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: oak-laser-cleaning
+    title: Oak
+    url: /materials/wood/hardwood/oak-laser-cleaning
+    image: /images/material/oak-laser-cleaning-hero.jpg
+    category: wood
+    subcategory: hardwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cherry-laser-cleaning
+    title: Cherry
+    url: /materials/wood/hardwood/cherry-laser-cleaning
+    image: /images/material/cherry-laser-cleaning-hero.jpg
+    category: wood
+    subcategory: hardwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cedar-laser-cleaning
+    title: Cedar
+    url: /materials/wood/softwood/cedar-laser-cleaning
+    image: /images/material/cedar-laser-cleaning-hero.jpg
+    category: wood
+    subcategory: softwood
+    frequency: common
+    severity: moderate
+    typical_context: general
   produces_compounds:
   - id: formaldehyde-compound
     title: Formaldehyde
@@ -33,88 +113,6 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
-  related_materials:
-  - id: redwood-laser-cleaning
-    title: Redwood
-    url: /materials/wood/hardwood/redwood-laser-cleaning
-    image: /images/materials/redwood.jpg
-    category: wood
-    subcategory: hardwood
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mdf-laser-cleaning
-    title: MDF
-    url: /materials/wood/hardwood/mdf-laser-cleaning
-    image: /images/materials/mdf.jpg
-    category: wood
-    subcategory: hardwood
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: maple-laser-cleaning
-    title: Maple
-    url: /materials/wood/hardwood/maple-laser-cleaning
-    image: /images/materials/maple.jpg
-    category: wood
-    subcategory: hardwood
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: plywood-laser-cleaning
-    title: Plywood
-    url: /materials/wood/hardwood/plywood-laser-cleaning
-    image: /images/materials/plywood.jpg
-    category: wood
-    subcategory: hardwood
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: walnut-laser-cleaning
-    title: Walnut
-    url: /materials/wood/hardwood/walnut-laser-cleaning
-    image: /images/materials/walnut.jpg
-    category: wood
-    subcategory: hardwood
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pine-laser-cleaning
-    title: Pine
-    url: /materials/wood/softwood/pine-laser-cleaning
-    image: /images/materials/pine.jpg
-    category: wood
-    subcategory: softwood
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: oak-laser-cleaning
-    title: Oak
-    url: /materials/wood/hardwood/oak-laser-cleaning
-    image: /images/materials/oak.jpg
-    category: wood
-    subcategory: hardwood
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cherry-laser-cleaning
-    title: Cherry
-    url: /materials/wood/hardwood/cherry-laser-cleaning
-    image: /images/materials/cherry.jpg
-    category: wood
-    subcategory: hardwood
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cedar-laser-cleaning
-    title: Cedar
-    url: /materials/wood/softwood/cedar-laser-cleaning
-    image: /images/materials/cedar.jpg
-    category: wood
-    subcategory: softwood
-    frequency: common
-    severity: moderate
-    typical_context: general
 author:
   id: 1
   name: Yi-Chun Lin
@@ -135,8 +133,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -153,12 +150,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Wood Rot / Fungal Biodegradation Contamination
-contamination_description: Wood rot forms through fungal biodegradation of wood fibers,
-  so discoloration appears and softening occurs with structural weakening over time.
-  This contamination penetrates deeply into material unlike surface dust or chemical
-  stains, and behaves faster on softwoods like pine while slower on hardwoods like
-  oak. Removal challenges arise because rot makes wood brittle, yet laser cleaning
-  succeeds by selectively ablating decayed layers without damaging healthy substrate.
+contamination_description: Wood rot forms through fungal biodegradation of wood fibers, so discoloration appears and softening occurs with structural weakening over time. This contamination penetrates deeply into material unlike surface dust or chemical stains, and behaves faster on softwoods like pine while slower on hardwoods like oak. Removal challenges arise because rot makes wood brittle, yet laser cleaning succeeds by selectively ablating decayed layers without damaging healthy substrate.
 breadcrumb:
 - label: Home
   href: /
@@ -323,8 +315,3 @@ valid_materials:
 - Plywood
 - MDF
 - Redwood
-safety_data:
-  _migration_status:
-    domain_linkages_enhanced: true
-    enhancement_date: '2025-12-17'
-    validated: true

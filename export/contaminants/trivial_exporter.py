@@ -289,6 +289,23 @@ class TrivialContaminantsExporter(BaseTrivialExporter):
         # Generate domain_linkages from centralized associations (replaces hardcoded copy)
         frontmatter['domain_linkages'] = self.linkages_service.generate_linkages(slug, 'contaminants')
         
+        # PRESERVE produces_compounds safety data from existing frontmatter (if exists)
+        # Safety data enhancement (Dec 17, 2025): exposure_limits, concentration_range, etc.
+        # This data is manually researched and should not be overwritten during export.
+        existing_frontmatter_path = self.output_dir / f"{slug}.yaml"
+        if existing_frontmatter_path.exists():
+            try:
+                with open(existing_frontmatter_path, 'r', encoding='utf-8') as f:
+                    existing_data = yaml.safe_load(f)
+                    if existing_data and 'domain_linkages' in existing_data:
+                        existing_linkages = existing_data['domain_linkages']
+                        if 'produces_compounds' in existing_linkages:
+                            # Preserve produces_compounds section from existing file
+                            frontmatter['domain_linkages']['produces_compounds'] = existing_linkages['produces_compounds']
+                            self.logger.debug(f"   ✓ Preserved produces_compounds safety data for {slug}")
+            except Exception as e:
+                self.logger.warning(f"⚠️  Could not preserve produces_compounds for {slug}: {e}")
+        
         # Backward compatibility: also export valid_materials if present
         if 'valid_materials' in pattern_data:
             frontmatter['valid_materials'] = pattern_data['valid_materials']

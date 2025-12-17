@@ -356,6 +356,11 @@ class DomainAssociationsValidator:
         lookup_id = contaminant_id.replace('-contamination', '')
         
         associations = self.data.get('contaminant_compound_associations', [])
+        
+        # Handle None or missing associations
+        if not associations:
+            return []
+        
         results = []
         
         for assoc in associations:

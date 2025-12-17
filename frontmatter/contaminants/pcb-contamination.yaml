@@ -3,9 +3,28 @@ name: PCB Oil Contamination
 slug: pcb-contamination
 category: chemical-residue
 subcategory: industrial
-datePublished: '2025-12-16T21:47:35.097770'
-dateModified: '2025-12-16T21:47:35.097770'
-domain_linkages: {}
+datePublished: '2025-12-17T12:39:34.195372'
+dateModified: '2025-12-17T12:39:34.195372'
+domain_linkages:
+  related_materials:
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/material/steel-laser-cleaning-hero.jpg
+    category: metal
+    subcategory: ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: concrete-laser-cleaning
+    title: Concrete
+    url: /materials/masonry/general/concrete-laser-cleaning
+    image: /images/material/concrete-laser-cleaning-hero.jpg
+    category: masonry
+    subcategory: general
+    frequency: common
+    severity: moderate
+    typical_context: general
 author:
   id: 1
   name: Yi-Chun Lin

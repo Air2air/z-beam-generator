@@ -5,8 +5,8 @@ category: metal
 subcategory: alloy
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: '2025-12-16T21:37:55.836777'
-dateModified: '2025-12-16T21:37:55.836777'
+datePublished: '2025-12-17T12:38:49.052925'
+dateModified: '2025-12-17T12:38:49.052925'
 author:
   id: 2
   name: Alessandro Moretti
@@ -343,35 +343,24 @@ material_metadata:
   structure_version: '2.0'
 domain_linkages:
   related_contaminants:
-  - id: pvd-coating
+  - id: pvd-coating-contamination
     title: PVD Coating Defects
     url: /contaminants/inorganic-coating/coating/pvd-coating-contamination
-    image: /images/contaminants/pvd-coating.jpg
+    image: /images/contaminant/pvd-coating-contamination-hero.jpg
     category: inorganic-coating
     subcategory: coating
     frequency: common
     severity: moderate
     typical_context: general
-  - id: quench-oil
+  - id: quench-oil-contamination
     title: Quenching Oil Residue
     url: /contaminants/thermal-damage/scale/quench-oil-contamination
-    image: /images/contaminants/quench-oil.jpg
+    image: /images/contaminant/quench-oil-contamination-hero.jpg
     category: thermal-damage
     subcategory: scale
     frequency: common
     severity: moderate
     typical_context: general
-  related_compounds:
-  - id: acrolein-compound
-    title: Acrolein
-    url: /compounds/toxic-gas/aldehyde/acrolein-compound
-    image: /images/compounds/acrolein.jpg
-    category: toxic-gas
-    subcategory: aldehyde
-    frequency: common
-    severity: high
-    typical_context: Thermal decomposition of quenching oils
-    exposure_risk: high
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -385,4 +374,4 @@ serviceOffering:
     - Surface contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-16T21:37:55.838143'
+    generated_date: '2025-12-17T12:38:49.054460'

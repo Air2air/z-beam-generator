@@ -5,8 +5,8 @@ category: composite
 subcategory: fiber-reinforced
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: '2025-12-16T21:37:53.913580'
-dateModified: '2025-12-16T21:37:53.913580'
+datePublished: '2025-12-17T12:38:47.112808'
+dateModified: '2025-12-17T12:38:47.112808'
 author:
   id: 1
   name: Yi-Chun Lin
@@ -290,54 +290,33 @@ material_metadata:
   structure_version: '2.0'
 domain_linkages:
   related_contaminants:
-  - id: aviation-sealant
+  - id: aviation-sealant-contamination
     title: Aerospace Sealant Residue
     url: /contaminants/organic-residue/adhesive/aviation-sealant-contamination
-    image: /images/contaminants/aviation-sealant.jpg
+    image: /images/contaminant/aviation-sealant-contamination-hero.jpg
     category: organic-residue
     subcategory: adhesive
     frequency: common
     severity: moderate
     typical_context: general
-  - id: epoxy-residue
+  - id: epoxy-residue-contamination
     title: Epoxy Resin Deposits
     url: /contaminants/organic-residue/adhesive/epoxy-residue-contamination
-    image: /images/contaminants/epoxy-residue.jpg
+    image: /images/contaminant/epoxy-residue-contamination-hero.jpg
     category: organic-residue
     subcategory: adhesive
     frequency: common
     severity: moderate
     typical_context: general
-  - id: soap-scum
+  - id: soap-scum-contamination
     title: Soap Scum Buildup
     url: /contaminants/organic-residue/cleaning-agent/soap-scum-contamination
-    image: /images/contaminants/soap-scum.jpg
+    image: /images/contaminant/soap-scum-contamination-hero.jpg
     category: organic-residue
     subcategory: cleaning-agent
     frequency: common
     severity: moderate
     typical_context: general
-  related_compounds:
-  - id: carbon-monoxide-compound
-    title: Carbon Monoxide
-    url: /compounds/toxic-gas/asphyxiant/carbon-monoxide-compound
-    image: /images/compounds/carbon-monoxide.jpg
-    category: toxic-gas
-    subcategory: asphyxiant
-    frequency: common
-    severity: moderate
-    typical_context: Thermal breakdown of epoxy resins
-    exposure_risk: moderate
-  - id: formaldehyde-compound
-    title: Formaldehyde
-    url: /compounds/carcinogen/aldehyde/formaldehyde-compound
-    image: /images/compounds/formaldehyde.jpg
-    category: carcinogen
-    subcategory: aldehyde
-    frequency: occasional
-    severity: low
-    typical_context: Thermal degradation of certain epoxy formulations
-    exposure_risk: low
 serviceOffering:
   enabled: true
   type: professionalCleaning
@@ -352,4 +331,4 @@ serviceOffering:
     notes: Careful parameter control to avoid matrix damage
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-16T21:37:53.914995'
+    generated_date: '2025-12-17T12:38:47.114218'

@@ -3,9 +3,19 @@ name: Steel Surface Corrosion
 slug: steel-corrosion-contamination
 category: oxidation
 subcategory: ferrous
-datePublished: '2025-12-16T21:47:35.416010'
-dateModified: '2025-12-16T21:47:35.416010'
+datePublished: '2025-12-17T12:39:34.992776'
+dateModified: '2025-12-17T12:39:34.992776'
 domain_linkages:
+  related_materials:
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/material/steel-laser-cleaning-hero.jpg
+    category: metal
+    subcategory: ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
   produces_compounds:
   - id: chromium-vi-compound
     title: Hexavalent Chromium
@@ -28,16 +38,6 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
-  related_materials:
-  - id: steel-laser-cleaning
-    title: Steel
-    url: /materials/metal/ferrous/steel-laser-cleaning
-    image: /images/materials/steel.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
 author:
   id: 3
   name: Ikmanda Roswati
@@ -60,8 +60,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -77,12 +76,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Steel Surface Corrosion Contamination
-contamination_description: Steel corrosion contamination, it arises from oxidation
-  on carbon steel surfaces exposed to moisture and air. This rust layer, it adheres
-  tightly and penetrates substrate unlike loose dust or paint, thus poses removal
-  challenges by risking base material damage during mechanical methods. Laser cleaning
-  targets it effectively, as ablation vaporizes oxide precisely and leaves surface
-  intact.
+contamination_description: Steel corrosion contamination, it arises from oxidation on carbon steel surfaces exposed to moisture and air. This rust layer, it adheres tightly and penetrates substrate unlike loose dust or paint, thus poses removal challenges by risking base material damage during mechanical methods. Laser cleaning targets it effectively, as ablation vaporizes oxide precisely and leaves surface intact.
 breadcrumb:
 - label: Home
   href: /
@@ -221,8 +215,3 @@ laser_properties:
 valid_materials:
 - Steel
 - Carbon Steel
-safety_data:
-  _migration_status:
-    domain_linkages_enhanced: true
-    enhancement_date: '2025-12-17'
-    validated: true

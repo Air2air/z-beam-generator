@@ -3,9 +3,28 @@ name: Quenching Oil Residue
 slug: quench-oil-contamination
 category: thermal-damage
 subcategory: scale
-datePublished: '2025-12-16T21:47:35.234008'
-dateModified: '2025-12-16T21:47:35.234008'
+datePublished: '2025-12-17T12:39:34.518797'
+dateModified: '2025-12-17T12:39:34.518797'
 domain_linkages:
+  related_materials:
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/material/steel-laser-cleaning-hero.jpg
+    category: metal
+    subcategory: ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: tool-steel-laser-cleaning
+    title: Tool Steel
+    url: /materials/metal/alloy/tool-steel-laser-cleaning
+    image: /images/material/tool-steel-laser-cleaning-hero.jpg
+    category: metal
+    subcategory: alloy
+    frequency: common
+    severity: moderate
+    typical_context: general
   produces_compounds:
   - id: acrolein-compound
     title: Acrolein
@@ -28,25 +47,6 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
-  related_materials:
-  - id: steel-laser-cleaning
-    title: Steel
-    url: /materials/metal/ferrous/steel-laser-cleaning
-    image: /images/materials/steel.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: tool-steel-laser-cleaning
-    title: Tool Steel
-    url: /materials/metal/alloy/tool-steel-laser-cleaning
-    image: /images/materials/tool-steel.jpg
-    category: metal
-    subcategory: alloy
-    frequency: common
-    severity: moderate
-    typical_context: general
 author:
   id: 1
   name: Yi-Chun Lin
@@ -67,8 +67,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -85,13 +84,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Quenching Oil Residue Contamination
-contamination_description: During quenching process, oil contaminates steel surfaces
-  because heat treatment causes carbonization, so deposits form hard layers that differ
-  from rust by their oily residue and adhesion strength. On tool steel, contamination
-  spreads unevenly and resists solvents, while on steel it bonds tightly during cooling,
-  creating removal challenges like surface damage from mechanical methods. Laser cleaning
-  works effectively so pulses vaporize deposits without harming substrate, and process
-  achieves clean results after short exposure.
+contamination_description: During quenching process, oil contaminates steel surfaces because heat treatment causes carbonization, so deposits form hard layers that differ from rust by their oily residue and adhesion strength. On tool steel, contamination spreads unevenly and resists solvents, while on steel it bonds tightly during cooling, creating removal challenges like surface damage from mechanical methods. Laser cleaning works effectively so pulses vaporize deposits without harming substrate, and process achieves clean results after short exposure.
 breadcrumb:
 - label: Home
   href: /
@@ -236,8 +229,3 @@ laser_properties:
 valid_materials:
 - Steel
 - Tool Steel
-safety_data:
-  _migration_status:
-    domain_linkages_enhanced: true
-    enhancement_date: '2025-12-17'
-    validated: true
