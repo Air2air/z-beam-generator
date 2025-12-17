@@ -1,58 +1,73 @@
-id: carbon-steel-settings
-name: Carbon Steel
-slug: carbon-steel-settings
-category: unknown
-subcategory: unknown
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.644993'
-dateModified: '2025-12-17T12:39:12.644993'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Carbon Steel surface cleaning and oxide removal
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength with strong absorption in iron oxides for efficient cleaning
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for Carbon Steel cleaning with good energy density
-    unit: μm
-    value: 100
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Energy density threshold for rust and scale removal from Carbon Steel
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for effective oxide removal
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform Carbon Steel cleaning
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended passes for complete contaminant removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform coverage
-    unit: '%'
-    value: 50
-  energyDensity:
-    description: Fluence for contaminant ablation while preserving substrate
-    unit: J/cm²
-    value: 5
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Carbon Steel
-  href: /settings/carbon-steel-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - carbon-steel-settings
+  - - slug
+    - carbon-steel-settings
+  - - category
+    - unknown
+  - - subcategory
+    - unknown
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.644993'
+  - - dateModified
+    - '2025-12-17T12:39:12.644993'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Carbon Steel
+        href: /settings/carbon-steel-settings
+  - - name
+    - Carbon Steel
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Carbon Steel surface cleaning and oxide
+          removal
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength with strong absorption in iron oxides for
+          efficient cleaning
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for Carbon Steel cleaning with good energy
+          density
+        unit: μm
+        value: 100
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning coverage
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Energy density threshold for rust and scale removal from Carbon
+          Steel
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for effective oxide removal
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform Carbon Steel cleaning
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended passes for complete contaminant removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform coverage
+        unit: '%'
+        value: 50
+      energyDensity:
+        description: Fluence for contaminant ablation while preserving substrate
+        unit: J/cm²
+        value: 5

@@ -1,74 +1,96 @@
-id: acrolein-compound
-name: Acrolein
-display_name: Acrolein (C₃H₄O)
-slug: acrolein
-chemical_formula: C3H4O
-cas_number: 107-02-8
-molecular_weight: 56.06
-datePublished: '2025-12-17T12:19:39.264230'
-dateModified: '2025-12-17T12:19:39.264230'
-category: toxic-gas
-subcategory: aldehyde
-hazard_class: toxic
-exposure_limits:
-  osha_pel_ppm: 0.1
-  osha_pel_mg_m3: 0.25
-  niosh_rel_ppm: 0.1
-  niosh_rel_mg_m3: 0.25
-  acgih_tlv_ppm: 0.1
-  acgih_tlv_mg_m3: 0.23
-health_effects_keywords:
-- severe_respiratory_irritation
-- pulmonary_edema
-- eye_irritation
-- lacrimation
-monitoring_required: true
-typical_concentration_range: 0.5-5 mg/m³
-sources_in_laser_cleaning:
-- acrylic_decomposition
-- fat_pyrolysis
-- glycerin_breakdown
-description: null
-health_effects: null
-exposure_guidelines: null
-detection_methods: null
-first_aid: null
-domain_linkages: {}
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-content_type: unified_compound
-schema_version: 4.0.0
-breadcrumb:
-- label: Home
-  href: /
-- label: Hazardous Compounds
-  href: /compounds
-- label: Acrolein
-  href: /compounds/acrolein-compound
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - acrolein-compound
+  - - slug
+    - acrolein
+  - - category
+    - toxic-gas
+  - - subcategory
+    - aldehyde
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_compound
+  - - datePublished
+    - '2025-12-17T12:19:39.264230'
+  - - dateModified
+    - '2025-12-17T12:19:39.264230'
+  - - author
+    - id: 2
+      name: Alessandro Moretti
+      country: Italy
+      country_display: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise:
+      - Laser-Based Additive Manufacturing
+      affiliation:
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf:
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs:
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      persona_file: italy_persona.yaml
+      formatting_file: italy_formatting.yaml
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Hazardous Compounds
+        href: /compounds
+      - label: Acrolein
+        href: /compounds/acrolein-compound
+  - - name
+    - Acrolein
+  - - display_name
+    - Acrolein (C₃H₄O)
+  - - chemical_formula
+    - C3H4O
+  - - cas_number
+    - 107-02-8
+  - - molecular_weight
+    - 56.06
+  - - hazard_class
+    - toxic
+  - - exposure_limits
+    - osha_pel_ppm: 0.1
+      osha_pel_mg_m3: 0.25
+      niosh_rel_ppm: 0.1
+      niosh_rel_mg_m3: 0.25
+      acgih_tlv_ppm: 0.1
+      acgih_tlv_mg_m3: 0.23
+  - - health_effects_keywords
+    - - severe_respiratory_irritation
+      - pulmonary_edema
+      - eye_irritation
+      - lacrimation
+  - - monitoring_required
+    - true
+  - - typical_concentration_range
+    - 0.5-5 mg/m³
+  - - sources_in_laser_cleaning
+    - - acrylic_decomposition
+      - fat_pyrolysis
+      - glycerin_breakdown
+  - - description
+    - null
+  - - health_effects
+    - null
+  - - exposure_guidelines
+    - null
+  - - detection_methods
+    - null
+  - - first_aid
+    - null

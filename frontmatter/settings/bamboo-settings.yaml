@@ -1,64 +1,75 @@
-id: bamboo-settings
-name: Bamboo
-slug: bamboo-settings
-category: wood
-subcategory: hardwood
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.143986'
-dateModified: '2025-12-17T12:39:12.143986'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - lead-paint-contamination
-  - mold-mildew-contamination
-  - paint-residue-contamination
-  - wax-buildup-contamination
-author:
-  id: 1
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for bamboo surface cleaning without charring
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength for optimal absorption in bamboo contaminants with minimal substrate damage
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning resolution on bamboo surface features
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage with thermal management
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Optimal fluence level for contaminant ablation while preserving bamboo substrate
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant removal with controlled thermal penetration
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Number of cleaning passes for complete contaminant removal without substrate damage
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Beam overlap percentage for uniform cleaning coverage across bamboo surface
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Bamboo
-  href: /settings/bamboo-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - bamboo-settings
+  - - slug
+    - bamboo-settings
+  - - category
+    - wood
+  - - subcategory
+    - hardwood
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.143986'
+  - - dateModified
+    - '2025-12-17T12:39:12.143986'
+  - - author
+    - id: 1
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Bamboo
+        href: /settings/bamboo-settings
+  - - name
+    - Bamboo
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for bamboo surface cleaning without charring
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength for optimal absorption in bamboo contaminants
+          with minimal substrate damage
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning resolution on bamboo
+          surface features
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for continuous cleaning coverage with
+          thermal management
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Optimal fluence level for contaminant ablation while preserving
+          bamboo substrate
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for efficient contaminant removal with
+          controlled thermal penetration
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for efficient area coverage while maintaining
+          cleaning effectiveness
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Number of cleaning passes for complete contaminant removal without
+          substrate damage
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Beam overlap percentage for uniform cleaning coverage across
+          bamboo surface
+        unit: '%'
+        value: 50

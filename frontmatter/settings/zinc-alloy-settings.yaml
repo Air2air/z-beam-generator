@@ -1,58 +1,69 @@
-id: zinc-alloy-settings
-name: Zinc Alloy
-slug: zinc-alloy-settings
-category: unknown
-subcategory: unknown
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.684170'
-dateModified: '2025-12-17T12:39:12.684170'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Lower power for Zinc Alloy - low melting point
-    unit: W
-    value: 45
-  wavelength:
-    description: Near-IR wavelength for zinc alloy cleaning
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot for Zinc Alloy cleaning
-    unit: μm
-    value: 80
-  repetitionRate:
-    description: Moderate rate for zinc alloy
-    unit: kHz
-    value: 35
-  fluenceThreshold:
-    description: Lower fluence for low-melting alloy
-    unit: J/cm²
-    value: 1.0
-  pulseWidth:
-    description: Short pulse to prevent melting
-    unit: ns
-    value: 8
-  scanSpeed:
-    description: Faster scanning for heat control
-    unit: mm/s
-    value: 550
-  passCount:
-    description: Light passes for zinc alloy
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Moderate overlap
-    unit: '%'
-    value: 40
-  energyDensity:
-    description: Low energy for zinc preservation
-    unit: J/cm²
-    value: 2
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Zinc Alloy
-  href: /settings/zinc-alloy-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - zinc-alloy-settings
+  - - slug
+    - zinc-alloy-settings
+  - - category
+    - unknown
+  - - subcategory
+    - unknown
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.684170'
+  - - dateModified
+    - '2025-12-17T12:39:12.684170'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Zinc Alloy
+        href: /settings/zinc-alloy-settings
+  - - name
+    - Zinc Alloy
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Lower power for Zinc Alloy - low melting point
+        unit: W
+        value: 45
+      wavelength:
+        description: Near-IR wavelength for zinc alloy cleaning
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot for Zinc Alloy cleaning
+        unit: μm
+        value: 80
+      repetitionRate:
+        description: Moderate rate for zinc alloy
+        unit: kHz
+        value: 35
+      fluenceThreshold:
+        description: Lower fluence for low-melting alloy
+        unit: J/cm²
+        value: 1.0
+      pulseWidth:
+        description: Short pulse to prevent melting
+        unit: ns
+        value: 8
+      scanSpeed:
+        description: Faster scanning for heat control
+        unit: mm/s
+        value: 550
+      passCount:
+        description: Light passes for zinc alloy
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Moderate overlap
+        unit: '%'
+        value: 40
+      energyDensity:
+        description: Low energy for zinc preservation
+        unit: J/cm²
+        value: 2

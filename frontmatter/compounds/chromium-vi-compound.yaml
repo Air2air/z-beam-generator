@@ -1,73 +1,95 @@
-id: chromium-vi-compound
-name: Hexavalent Chromium
-display_name: Chromium(VI)
-slug: chromium-vi
-chemical_formula: Cr(VI)
-cas_number: 18540-29-9
-molecular_weight: 52.0
-datePublished: '2025-12-17T12:19:39.295692'
-dateModified: '2025-12-17T12:19:39.295692'
-category: carcinogen
-subcategory: heavy-metal
-hazard_class: carcinogenic
-exposure_limits:
-  osha_pel_ppm: null
-  osha_pel_mg_m3: 0.005
-  niosh_rel_ppm: null
-  niosh_rel_mg_m3: 0.001
-  acgih_tlv_ppm: null
-  acgih_tlv_mg_m3: 0.0002
-health_effects_keywords:
-- lung_cancer
-- respiratory_irritation
-- skin_ulceration
-- nasal_septum_perforation
-monitoring_required: true
-typical_concentration_range: 0.001-0.01 mg/m³
-sources_in_laser_cleaning:
-- stainless_steel_cleaning
-- chrome_plating_removal
-- chromate_coating_removal
-description: null
-health_effects: null
-exposure_guidelines: null
-detection_methods: null
-first_aid: null
-domain_linkages: {}
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_compound
-schema_version: 4.0.0
-breadcrumb:
-- label: Home
-  href: /
-- label: Hazardous Compounds
-  href: /compounds
-- label: Hexavalent Chromium
-  href: /compounds/chromium-vi-compound
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - chromium-vi-compound
+  - - slug
+    - chromium-vi
+  - - category
+    - carcinogen
+  - - subcategory
+    - heavy-metal
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_compound
+  - - datePublished
+    - '2025-12-17T12:19:39.295692'
+  - - dateModified
+    - '2025-12-17T12:19:39.295692'
+  - - author
+    - id: 4
+      name: Todd Dunning
+      country: United States
+      country_display: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      persona_file: usa_persona.yaml
+      formatting_file: usa_formatting.yaml
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Hazardous Compounds
+        href: /compounds
+      - label: Hexavalent Chromium
+        href: /compounds/chromium-vi-compound
+  - - name
+    - Hexavalent Chromium
+  - - display_name
+    - Chromium(VI)
+  - - chemical_formula
+    - Cr(VI)
+  - - cas_number
+    - 18540-29-9
+  - - molecular_weight
+    - 52.0
+  - - hazard_class
+    - carcinogenic
+  - - exposure_limits
+    - osha_pel_ppm: null
+      osha_pel_mg_m3: 0.005
+      niosh_rel_ppm: null
+      niosh_rel_mg_m3: 0.001
+      acgih_tlv_ppm: null
+      acgih_tlv_mg_m3: 0.0002
+  - - health_effects_keywords
+    - - lung_cancer
+      - respiratory_irritation
+      - skin_ulceration
+      - nasal_septum_perforation
+  - - monitoring_required
+    - true
+  - - typical_concentration_range
+    - 0.001-0.01 mg/m³
+  - - sources_in_laser_cleaning
+    - - stainless_steel_cleaning
+      - chrome_plating_removal
+      - chromate_coating_removal
+  - - description
+    - null
+  - - health_effects
+    - null
+  - - exposure_guidelines
+    - null
+  - - detection_methods
+    - null
+  - - first_aid
+    - null

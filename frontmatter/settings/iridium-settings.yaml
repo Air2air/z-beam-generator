@@ -1,54 +1,67 @@
-id: iridium-settings
-name: Iridium
-slug: iridium-settings
-category: metal
-subcategory: non-ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.291955'
-dateModified: '2025-12-17T12:39:12.291955'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Iridium surface cleaning without thermal damage
-    unit: W
-    value: 45
-  wavelength:
-    description: Fundamental Nd:YAG wavelength with good Iridium absorption
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning control
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Minimum fluence required for effective Iridium surface cleaning
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Short pulse duration for efficient ablation with minimal heat diffusion
-    unit: ns
-    value: 8
-  scanSpeed:
-    description: Optimal scanning speed for efficient area coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contamination removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning results
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Iridium
-  href: /settings/iridium-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - iridium-settings
+  - - slug
+    - iridium-settings
+  - - category
+    - metal
+  - - subcategory
+    - non-ferrous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.291955'
+  - - dateModified
+    - '2025-12-17T12:39:12.291955'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Iridium
+        href: /settings/iridium-settings
+  - - name
+    - Iridium
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Iridium surface cleaning without thermal
+          damage
+        unit: W
+        value: 45
+      wavelength:
+        description: Fundamental Nd:YAG wavelength with good Iridium absorption
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning control
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for continuous cleaning coverage
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Minimum fluence required for effective Iridium surface cleaning
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Short pulse duration for efficient ablation with minimal heat
+          diffusion
+        unit: ns
+        value: 8
+      scanSpeed:
+        description: Optimal scanning speed for efficient area coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contamination removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning results
+        unit: '%'
+        value: 50

@@ -1,72 +1,65 @@
-id: aluminosilicate-glass-settings
-name: Aluminosilicate Glass
-slug: aluminosilicate-glass-settings
-category: glass
-subcategory: specialty
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.582811'
-dateModified: '2025-12-17T12:39:12.582811'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - biological-stains-contamination
-  - blood-residue-contamination
-  - insect-residue-contamination
-  - lime-scale-contamination
-  - medical-disinfectant-contamination
-  - mineral-deposits-contamination
-  - pesticide-residue-contamination
-  - pharmaceutical-residue-contamination
-  - plastic-residue-contamination
-  - pollen-deposit-contamination
-  - scale-buildup-contamination
-  - silicone-buildup-contamination
-  - soap-scum-contamination
-  - tree-sap-contamination
-  - water-stain-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    value: 70
-    unit: W
-    description: Controlled power for glass cleaning
-  wavelength:
-    value: 1064
-    unit: nm
-    description: Near-IR for transparent material cleaning
-  spotSize:
-    value: 60
-    unit: μm
-    description: Spot size for effective glass treatment
-  repetitionRate:
-    value: 40
-    unit: kHz
-    description: Moderate frequency for glass cleaning
-  energyDensity:
-    value: 1.8
-    unit: J/cm²
-    description: Controlled energy for surface treatment
-  pulseWidth:
-    value: 10
-    unit: ns
-    description: Short pulses to prevent cracking
-  scanSpeed:
-    value: 600
-    unit: mm/s
-    description: Faster scanning for thermal management
-  passCount:
-    value: 2
-    unit: passes
-    description: Careful passes for complete cleaning
-  overlapRatio:
-    value: 40
-    unit: '%'
-    description: Moderate overlap for glass surfaces
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Aluminosilicate Glass
-  href: /settings/aluminosilicate-glass-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - aluminosilicate-glass-settings
+  - - slug
+    - aluminosilicate-glass-settings
+  - - category
+    - glass
+  - - subcategory
+    - specialty
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.582811'
+  - - dateModified
+    - '2025-12-17T12:39:12.582811'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Aluminosilicate Glass
+        href: /settings/aluminosilicate-glass-settings
+  - - name
+    - Aluminosilicate Glass
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        value: 70
+        unit: W
+        description: Controlled power for glass cleaning
+      wavelength:
+        value: 1064
+        unit: nm
+        description: Near-IR for transparent material cleaning
+      spotSize:
+        value: 60
+        unit: μm
+        description: Spot size for effective glass treatment
+      repetitionRate:
+        value: 40
+        unit: kHz
+        description: Moderate frequency for glass cleaning
+      energyDensity:
+        value: 1.8
+        unit: J/cm²
+        description: Controlled energy for surface treatment
+      pulseWidth:
+        value: 10
+        unit: ns
+        description: Short pulses to prevent cracking
+      scanSpeed:
+        value: 600
+        unit: mm/s
+        description: Faster scanning for thermal management
+      passCount:
+        value: 2
+        unit: passes
+        description: Careful passes for complete cleaning
+      overlapRatio:
+        value: 40
+        unit: '%'
+        description: Moderate overlap for glass surfaces

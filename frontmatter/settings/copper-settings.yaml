@@ -1,94 +1,71 @@
-id: copper-settings
-name: Copper
-slug: copper-settings
-category: metal
-subcategory: non-ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.217208'
-dateModified: '2025-12-17T12:39:12.217208'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - battery-corrosion-contamination
-  - biological-stains-contamination
-  - bronze-patina-contamination
-  - carbon-soot-contamination
-  - chemical-stains-contamination
-  - copper-patina-contamination
-  - corrosion-inhibitor-contamination
-  - electroplating-residue-contamination
-  - epoxy-residue-contamination
-  - fertilizer-residue-contamination
-  - gold-plating-contamination
-  - graffiti-paint-contamination
-  - graphite-marks-contamination
-  - ink-stains-contamination
-  - insect-residue-contamination
-  - lime-scale-contamination
-  - mercury-contamination
-  - metal-polish-contamination
-  - mineral-deposits-contamination
-  - nickel-plating-contamination
-  - paint-residue-contamination
-  - pesticide-residue-contamination
-  - plastic-residue-contamination
-  - pollen-deposit-contamination
-  - radioactive-contamination
-  - rubber-residue-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - silicone-buildup-contamination
-  - silver-plating-contamination
-  - solder-flux-contamination
-  - thermal-paste-contamination
-  - tin-plating-contamination
-  - tree-sap-contamination
-  - water-stain-contamination
-  - wax-buildup-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Copper oxide removal and surface cleaning
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength optimized for Copper absorption and minimal substrate damage
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Optimal spot diameter for balancing cleaning efficiency and processing speed
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: High repetition rate for efficient cleaning coverage while maintaining process control
-    unit: kHz
-    value: 100
-  fluenceThreshold:
-    description: Minimum fluence required for effective Copper oxide removal
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for effective oxide removal without excessive thermal diffusion
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning with adequate energy deposition
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal pulse overlap for uniform cleaning without excessive heat accumulation
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Copper
-  href: /settings/copper-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - copper-settings
+  - - slug
+    - copper-settings
+  - - category
+    - metal
+  - - subcategory
+    - non-ferrous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.217208'
+  - - dateModified
+    - '2025-12-17T12:39:12.217208'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Copper
+        href: /settings/copper-settings
+  - - name
+    - Copper
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Copper oxide removal and surface cleaning
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength optimized for Copper absorption and minimal
+          substrate damage
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Optimal spot diameter for balancing cleaning efficiency and processing
+          speed
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: High repetition rate for efficient cleaning coverage while maintaining
+          process control
+        unit: kHz
+        value: 100
+      fluenceThreshold:
+        description: Minimum fluence required for effective Copper oxide removal
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for effective oxide removal without
+          excessive thermal diffusion
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning with adequate energy
+          deposition
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal pulse overlap for uniform cleaning without excessive
+          heat accumulation
+        unit: '%'
+        value: 50

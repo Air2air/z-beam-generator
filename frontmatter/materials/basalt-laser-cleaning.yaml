@@ -1,430 +1,464 @@
-id: basalt-laser-cleaning
-name: basalt-laser-cleaning
-slug: basalt-laser-cleaning
-category: stone
-subcategory: igneous
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:38:46.300456'
-dateModified: '2025-12-17T12:38:46.300456'
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
-title: Basalt Laser Cleaning
-material_description: When handling basalt for laser cleaning in tough industrial settings, I've seen it outperform softer stones like sandstone by staying intact against intense heat and corrosion, so you avoid surface damage during aerospace or marine repairs.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Igneous
-  href: /materials/stone/igneous
-- label: Basalt
-  href: /materials/stone/igneous/basalt
-images:
-  hero:
-    alt: Basalt surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/basalt-laser-cleaning-hero.jpg
-  micro:
-    alt: Basalt microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/basalt-laser-cleaning-micro.jpg
-micro:
-  before: We've found the contaminated basalt surface looks rough and uneven under magnification. Dark specks of dirt and grime fill every tiny crack and pore. This buildup obscures the stone's natural grainy texture completely.
-  after: After laser treatment, we observe a crisp, even surface free of debris. The stone's inherent patterns stand out sharply now. Clean edges reveal the material's solid, uniform structure.
-faq:
-- question: How does laser cleaning restore the natural appearance of **weathered basalt surfaces**?
-  answer: '**Revives dark luster and texture**. Laser cleaning employs precise energy pulses to eliminate dirt, grime, and oxidation layers from basalt, particularly without harming the stone itself. Notably, this non-abrasive approach restores the original dark luster and texture, thus boosting durability while safeguarding historical or architectural value in just a few sessions.'
-- question: Can laser cleaning address the **brittleness issues** in basalt structures?
-  answer: '**Combine with post-cleaning sealants**. Yes, but indirectly: it cleans contaminants that exacerbate cracking, thus improving surface integrity. However, specifically for inherent brittleness, combine with sealants post-cleaning to boost resistance.'
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 60.0
-    fractureToughness:
-      value: 2.4
-      unit: MPa m^{0.5}
-      source: ai_research
-      min: 0.13
-      max: 2
-    density:
-      value: 2900
-      unit: kg/m³
-      source: ai_research
-      min: 2.2
-      max: 3045
-    oxidationResistance:
-      value: 0.96
-      unit: dimensionless
-      source: ai_research
-      min: '9.5e-05'
-      max: 1547
-    youngsModulus:
-      value: 89
-      unit: GPa
-      source: ai_research
-      min: 9.8
-      max: '7.9e+10'
-    hardness:
-      value: 6
-      unit: Mohs
-      source: ai_research
-      min: 0.7
-      max: 7.3
-    compressiveStrength:
-      value: 200
-      unit: MPa
-      source: ai_research
-      min: 2.1
-      max: 220
-    tensileStrength:
-      value: 14
-      unit: MPa
-      source: ai_research
-      min: 1.4
-      max: 15.7
-    flexuralStrength:
-      value: 20
-      unit: MPa
-      source: ai_research
-      min: 2.2
-      max: 36.6
-    corrosionResistance:
-      value: 0.96
-      unit: dimensionless
-      source: ai_research
-      min: '6.6e-05'
-      max: 21
-    porosity:
-      value: 3.4
-      unit: '%'
-      source: ai_research
-      min: 0
-      max: 19.4
-    laserDamageThreshold:
-      value: 1.4
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Laser Ablation Thresholds of Rock Materials for Cultural Heritage Cleaning
-      citation: 'Sanz et al., Applied Physics A: Materials Science & Processing, 2015, DOI: 10.1007/s00339-015-8987-4'
-      context: 'Natural basalt (volcanic rock from Canary Islands, composition: 50% SiO2, 15% Al2O3, 10% FeO, 10% CaO, 10% MgO), room temperature (25°C), 1064 nm Nd:YAG laser, 7 ns pulse duration, measured in air at 1 atm'
-      researched_date: '2025-11-24T11:51:05.437578'
-      needs_validation: true
-      min: 0.42
-      max: 13.1
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    absorptivity:
-      value: 0.85
-      unit: dimensionless
-      min: 0.7
-      max: 0.95
-      source: ai_research
-    absorptionCoefficient:
-      value: 500000
-      unit: m⁻¹
-      min: 100000
-      max: 1e+06
-      source: ai_research
-    laserDamageThreshold:
-      value: 5
-      unit: J/cm²
-      min: 1
-      max: 10
-      source: ai_research
-    thermalShockResistance:
-      value: 3
-      unit: MW/m
-      min: 2
-      max: 4
-      source: ai_research
-    reflectivity:
-      value: 0.15
-      unit: dimensionless
-      min: 0.05
-      max: 0.3
-      source: ai_research
-    thermalDestructionPoint:
-      value: 1573
-      unit: K
-      min: 1400
-      max: 1700
-      source: ai_research
-    vaporPressure:
-      value: 1
-      unit: Pa
-      min: 0.1
-      max: 10
-      source: ai_research
-    thermalDestruction:
-      value: 1673
-      unit: K
-      source: ai_research
-      min: 273
-      max: 2300
-    laserReflectivity:
-      value: 0.1
-      unit: dimensionless
-      source: ai_research
-      min: 0.03
-      max: 0.44
-    thermalExpansion:
-      value: '6.5e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: 6e-06
-      max: 12
-    thermalConductivity:
-      value: 1.7
-      unit: W/m·K
-      source: ai_research
-      min: 0.2
-      max: 8
-    specificHeat:
-      value: 840
-      unit: J/(kg·K)
-      source: ai_research
-      min: 400
-      max: 1200
-    laserAbsorption:
-      value: 7500
-      unit: cm^{-1}
-      source: ai_research
-      min: 0.06
-      max: '1.3e+06'
-    thermalDiffusivity:
-      value: '8.5e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 2e-06
-    ablationThreshold:
-      value: 2.8
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Laser ablation thresholds of common rocks for planetary exploration
-      citation: 'Starke, J. et al., Applied Physics A: Materials Science & Processing, 2015, DOI: 10.1007/s00339-015-9123-4'
-      context: Natural basalt (mafic composition, 45-52% SiO2), room temperature (25°C), measured with 1064 nm Nd:YAG laser, 10 ns pulse duration, atmospheric pressure
-      researched_date: '2025-11-24T11:51:12.051697'
-      needs_validation: true
-      min: 0.65
-      max: 6.3
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - ANSI Z136.1 - Safe Use of Lasers
-  isBasedOn:
-    name: ANSI Z136.1 - Safe Use of Lasers
-    url: https://webstore.ansi.org/standards/lia/ansiz1362022
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921602Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921610Z'
-  structure_version: '2.0'
-domain_linkages:
-  related_contaminants:
-  - id: algae-growth-contamination
-    title: Algae and Lichen Growth
-    url: /contaminants/biological/growth/algae-growth-contamination
-    image: /images/contaminant/algae-growth-contamination-hero.jpg
-    category: biological
-    subcategory: growth
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: biological-stains-contamination
-    title: Organic Biofilm Deposits
-    url: /contaminants/biological/deposit/biological-stains-contamination
-    image: /images/contaminant/biological-stains-contamination-hero.jpg
-    category: biological
-    subcategory: deposit
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bitumen-tar-contamination
-    title: Bitumen and Tar Coatings
-    url: /contaminants/organic-residue/petroleum/bitumen-tar-contamination
-    image: /images/contaminant/bitumen-tar-contamination-hero.jpg
-    category: organic-residue
-    subcategory: petroleum
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-soot-contamination
-    title: Carbon Soot Deposits
-    url: /contaminants/organic-residue/other/carbon-soot-contamination
-    image: /images/contaminant/carbon-soot-contamination-hero.jpg
-    category: organic-residue
-    subcategory: other
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: ceramic-glaze-contamination
-    title: Ceramic Glaze Deposits
-    url: /contaminants/inorganic-coating/ceramic/ceramic-glaze-contamination
-    image: /images/contaminant/ceramic-glaze-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: ceramic
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: concrete-dust-contamination
-    title: Concrete Dust Deposits
-    url: /contaminants/inorganic-coating/mineral/concrete-dust-contamination
-    image: /images/contaminant/concrete-dust-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: mineral
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: efflorescence-contamination
-    title: Concrete Efflorescence
-    url: /contaminants/inorganic-coating/mineral/efflorescence-contamination
-    image: /images/contaminant/efflorescence-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: mineral
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fertilizer-residue-contamination
-    title: Fertilizer Salt Deposits
-    url: /contaminants/chemical-residue/industrial/fertilizer-residue-contamination
-    image: /images/contaminant/fertilizer-residue-contamination-hero.jpg
-    category: chemical-residue
-    subcategory: industrial
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fire-damage-contamination
-    title: Fire and Smoke Damage
-    url: /contaminants/thermal-damage/fire/fire-damage-contamination
-    image: /images/contaminant/fire-damage-contamination-hero.jpg
-    category: thermal-damage
-    subcategory: fire
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graffiti-paint-contamination
-    title: Graffiti and Spray Paint
-    url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
-    image: /images/contaminant/graffiti-paint-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: paint
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-deposits-contamination
-    title: Hard Water Mineral Scale
-    url: /contaminants/thermal-damage/scale/mineral-deposits-contamination
-    image: /images/contaminant/mineral-deposits-contamination-hero.jpg
-    category: thermal-damage
-    subcategory: scale
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-stain-contamination
-    title: Mineral Staining
-    url: /contaminants/inorganic-coating/mineral/mineral-stain-contamination
-    image: /images/contaminant/mineral-stain-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: mineral
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: salt-residue-contamination
-    title: Salt and Chloride Deposits
-    url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
-    image: /images/contaminant/salt-residue-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: mineral
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: scale-buildup-contamination
-    title: Mineral Scale / Hard Water Deposits
-    url: /contaminants/thermal-damage/scale/scale-buildup-contamination
-    image: /images/contaminant/scale-buildup-contamination-hero.jpg
-    category: thermal-damage
-    subcategory: scale
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: water-stain-contamination
-    title: Water Staining and Marks
-    url: /contaminants/organic-residue/other/water-stain-contamination
-    image: /images/contaminant/water-stain-contamination-hero.jpg
-    category: organic-residue
-    subcategory: other
-    frequency: common
-    severity: moderate
-    typical_context: general
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 2
-    estimatedHoursTypical: 6
-    targetContaminants:
-    - Surface contamination
-    - Paint and coatings
-    - Biological growth
-    - Weathering deposits
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-17T12:38:46.302025'
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - basalt-laser-cleaning
+  - - title
+    - Basalt Laser Cleaning
+  - - slug
+    - basalt-laser-cleaning
+  - - category
+    - stone
+  - - subcategory
+    - igneous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_material
+  - - datePublished
+    - '2025-12-17T12:38:46.300456'
+  - - dateModified
+    - '2025-12-17T12:38:46.300456'
+  - - author
+    - id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+  - - material_description
+    - When handling basalt for laser cleaning in tough industrial settings, I've seen
+      it outperform softer stones like sandstone by staying intact against intense
+      heat and corrosion, so you avoid surface damage during aerospace or marine repairs.
+  - - micro
+    - before: We've found the contaminated basalt surface looks rough and uneven under
+        magnification. Dark specks of dirt and grime fill every tiny crack and pore.
+        This buildup obscures the stone's natural grainy texture completely.
+      after: After laser treatment, we observe a crisp, even surface free of debris.
+        The stone's inherent patterns stand out sharply now. Clean edges reveal the
+        material's solid, uniform structure.
+  - - related_contaminants
+    - - id: algae-growth-contamination
+        title: Algae and Lichen Growth
+        url: /contaminants/biological/growth/algae-growth-contamination
+        image: /images/contaminant/algae-growth-contamination-hero.jpg
+        category: biological
+        subcategory: growth
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: biological-stains-contamination
+        title: Organic Biofilm Deposits
+        url: /contaminants/biological/deposit/biological-stains-contamination
+        image: /images/contaminant/biological-stains-contamination-hero.jpg
+        category: biological
+        subcategory: deposit
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: bitumen-tar-contamination
+        title: Bitumen and Tar Coatings
+        url: /contaminants/organic-residue/petroleum/bitumen-tar-contamination
+        image: /images/contaminant/bitumen-tar-contamination-hero.jpg
+        category: organic-residue
+        subcategory: petroleum
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: carbon-soot-contamination
+        title: Carbon Soot Deposits
+        url: /contaminants/organic-residue/other/carbon-soot-contamination
+        image: /images/contaminant/carbon-soot-contamination-hero.jpg
+        category: organic-residue
+        subcategory: other
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: ceramic-glaze-contamination
+        title: Ceramic Glaze Deposits
+        url: /contaminants/inorganic-coating/ceramic/ceramic-glaze-contamination
+        image: /images/contaminant/ceramic-glaze-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: ceramic
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: concrete-dust-contamination
+        title: Concrete Dust Deposits
+        url: /contaminants/inorganic-coating/mineral/concrete-dust-contamination
+        image: /images/contaminant/concrete-dust-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: mineral
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: efflorescence-contamination
+        title: Concrete Efflorescence
+        url: /contaminants/inorganic-coating/mineral/efflorescence-contamination
+        image: /images/contaminant/efflorescence-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: mineral
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: fertilizer-residue-contamination
+        title: Fertilizer Salt Deposits
+        url: /contaminants/chemical-residue/industrial/fertilizer-residue-contamination
+        image: /images/contaminant/fertilizer-residue-contamination-hero.jpg
+        category: chemical-residue
+        subcategory: industrial
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: fire-damage-contamination
+        title: Fire and Smoke Damage
+        url: /contaminants/thermal-damage/fire/fire-damage-contamination
+        image: /images/contaminant/fire-damage-contamination-hero.jpg
+        category: thermal-damage
+        subcategory: fire
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: graffiti-paint-contamination
+        title: Graffiti and Spray Paint
+        url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+        image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: paint
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: mineral-deposits-contamination
+        title: Hard Water Mineral Scale
+        url: /contaminants/thermal-damage/scale/mineral-deposits-contamination
+        image: /images/contaminant/mineral-deposits-contamination-hero.jpg
+        category: thermal-damage
+        subcategory: scale
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: mineral-stain-contamination
+        title: Mineral Staining
+        url: /contaminants/inorganic-coating/mineral/mineral-stain-contamination
+        image: /images/contaminant/mineral-stain-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: mineral
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: salt-residue-contamination
+        title: Salt and Chloride Deposits
+        url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+        image: /images/contaminant/salt-residue-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: mineral
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: scale-buildup-contamination
+        title: Mineral Scale / Hard Water Deposits
+        url: /contaminants/thermal-damage/scale/scale-buildup-contamination
+        image: /images/contaminant/scale-buildup-contamination-hero.jpg
+        category: thermal-damage
+        subcategory: scale
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: water-stain-contamination
+        title: Water Staining and Marks
+        url: /contaminants/organic-residue/other/water-stain-contamination
+        image: /images/contaminant/water-stain-contamination-hero.jpg
+        category: organic-residue
+        subcategory: other
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Materials
+        href: /materials
+      - label: Stone
+        href: /materials/stone
+      - label: Igneous
+        href: /materials/stone/igneous
+      - label: Basalt
+        href: /materials/stone/igneous/basalt
+  - - images
+    - hero:
+        alt: Basalt surface undergoing laser cleaning showing precise contamination
+          removal
+        url: /images/material/basalt-laser-cleaning-hero.jpg
+      micro:
+        alt: Basalt microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/basalt-laser-cleaning-micro.jpg
+  - - eeat
+    - reviewedBy: Z-Beam Quality Assurance Team
+      citations:
+      - ANSI Z136.1 - Safe Use of Lasers
+      isBasedOn:
+        name: ANSI Z136.1 - Safe Use of Lasers
+        url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  - - _metadata
+    - voice:
+        author_name: Yi-Chun Lin
+        author_country: Taiwan
+        voice_applied: true
+        content_type: material
+  - - faq
+    - - question: How does laser cleaning restore the natural appearance of **weathered
+          basalt surfaces**?
+        answer: '**Revives dark luster and texture**. Laser cleaning employs precise
+          energy pulses to eliminate dirt, grime, and oxidation layers from basalt,
+          particularly without harming the stone itself. Notably, this non-abrasive
+          approach restores the original dark luster and texture, thus boosting durability
+          while safeguarding historical or architectural value in just a few sessions.'
+      - question: Can laser cleaning address the **brittleness issues** in basalt
+          structures?
+        answer: '**Combine with post-cleaning sealants**. Yes, but indirectly: it
+          cleans contaminants that exacerbate cracking, thus improving surface integrity.
+          However, specifically for inherent brittleness, combine with sealants post-cleaning
+          to boost resistance.'
+  - - regulatoryStandards
+    - - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        image: /images/logo/logo-org-fda.png
+        longName: Food and Drug Administration
+        name: FDA
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      - description: ANSI Z136.1 - Safe Use of Lasers
+        image: /images/logo/logo-org-ansi.png
+        longName: American National Standards Institute
+        name: ANSI
+        url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      - description: IEC 60825 - Safety of Laser Products
+        image: /images/logo/logo-org-iec.png
+        longName: International Electrotechnical Commission
+        name: IEC
+        url: https://webstore.iec.ch/publication/3587
+      - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+        image: /images/logo/logo-org-osha.png
+        longName: Occupational Safety and Health Administration
+        name: OSHA
+        url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  - - materialProperties
+    - material_characteristics:
+        label: Material Characteristics
+        percentage: 60.0
+        fractureToughness:
+          value: 2.4
+          unit: MPa m^{0.5}
+          source: ai_research
+          min: 0.13
+          max: 2
+        density:
+          value: 2900
+          unit: kg/m³
+          source: ai_research
+          min: 2.2
+          max: 3045
+        oxidationResistance:
+          value: 0.96
+          unit: dimensionless
+          source: ai_research
+          min: '9.5e-05'
+          max: 1547
+        youngsModulus:
+          value: 89
+          unit: GPa
+          source: ai_research
+          min: 9.8
+          max: '7.9e+10'
+        hardness:
+          value: 6
+          unit: Mohs
+          source: ai_research
+          min: 0.7
+          max: 7.3
+        compressiveStrength:
+          value: 200
+          unit: MPa
+          source: ai_research
+          min: 2.1
+          max: 220
+        tensileStrength:
+          value: 14
+          unit: MPa
+          source: ai_research
+          min: 1.4
+          max: 15.7
+        flexuralStrength:
+          value: 20
+          unit: MPa
+          source: ai_research
+          min: 2.2
+          max: 36.6
+        corrosionResistance:
+          value: 0.96
+          unit: dimensionless
+          source: ai_research
+          min: '6.6e-05'
+          max: 21
+        porosity:
+          value: 3.4
+          unit: '%'
+          source: ai_research
+          min: 0
+          max: 19.4
+        laserDamageThreshold:
+          value: 1.4
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Laser Ablation Thresholds of Rock Materials for Cultural Heritage
+            Cleaning
+          citation: 'Sanz et al., Applied Physics A: Materials Science & Processing,
+            2015, DOI: 10.1007/s00339-015-8987-4'
+          context: 'Natural basalt (volcanic rock from Canary Islands, composition:
+            50% SiO2, 15% Al2O3, 10% FeO, 10% CaO, 10% MgO), room temperature (25°C),
+            1064 nm Nd:YAG laser, 7 ns pulse duration, measured in air at 1 atm'
+          researched_date: '2025-11-24T11:51:05.437578'
+          needs_validation: true
+          min: 0.42
+          max: 13.1
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        percentage: 40.0
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1e+06
+          source: ai_research
+        laserDamageThreshold:
+          value: 5
+          unit: J/cm²
+          min: 1
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 3
+          unit: MW/m
+          min: 2
+          max: 4
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1573
+          unit: K
+          min: 1400
+          max: 1700
+          source: ai_research
+        vaporPressure:
+          value: 1
+          unit: Pa
+          min: 0.1
+          max: 10
+          source: ai_research
+        thermalDestruction:
+          value: 1673
+          unit: K
+          source: ai_research
+          min: 273
+          max: 2300
+        laserReflectivity:
+          value: 0.1
+          unit: dimensionless
+          source: ai_research
+          min: 0.03
+          max: 0.44
+        thermalExpansion:
+          value: '6.5e-06'
+          unit: K^{-1}
+          source: ai_research
+          min: 6e-06
+          max: 12
+        thermalConductivity:
+          value: 1.7
+          unit: W/m·K
+          source: ai_research
+          min: 0.2
+          max: 8
+        specificHeat:
+          value: 840
+          unit: J/(kg·K)
+          source: ai_research
+          min: 400
+          max: 1200
+        laserAbsorption:
+          value: 7500
+          unit: cm^{-1}
+          source: ai_research
+          min: 0.06
+          max: '1.3e+06'
+        thermalDiffusivity:
+          value: '8.5e-07'
+          unit: m²/s
+          source: ai_research
+          min: 0
+          max: 2e-06
+        ablationThreshold:
+          value: 2.8
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Laser ablation thresholds of common rocks for planetary exploration
+          citation: 'Starke, J. et al., Applied Physics A: Materials Science & Processing,
+            2015, DOI: 10.1007/s00339-015-9123-4'
+          context: Natural basalt (mafic composition, 45-52% SiO2), room temperature
+            (25°C), measured with 1064 nm Nd:YAG laser, 10 ns pulse duration, atmospheric
+            pressure
+          researched_date: '2025-11-24T11:51:12.051697'
+          needs_validation: true
+          min: 0.65
+          max: 6.3
+  - - material_metadata
+    - last_updated: '2025-10-27T23:48:40.921602Z'
+      normalization_applied: true
+      normalization_date: '2025-10-27T23:48:40.921610Z'
+      structure_version: '2.0'
+  - - serviceOffering
+    - enabled: true
+      type: professionalCleaning
+      materialSpecific:
+        estimatedHoursMin: 2
+        estimatedHoursTypical: 6
+        targetContaminants:
+        - Surface contamination
+        - Paint and coatings
+        - Biological growth
+        - Weathering deposits
+  - - preservedData
+    - generationMetadata:
+        generated_date: '2025-12-17T12:38:46.302025'

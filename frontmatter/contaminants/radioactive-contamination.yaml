@@ -1,325 +1,346 @@
-id: radioactive-contamination
-name: Surface Radioactive Contamination
-slug: radioactive-contamination
-category: chemical-residue
-subcategory: hazardous
-datePublished: '2025-12-17T13:33:42.563631'
-dateModified: '2025-12-17T13:33:42.563631'
-domain_linkages:
-  related_materials:
-  - id: stainless-steel-laser-cleaning
-    title: Stainless Steel
-    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
-    image: /images/material/stainless-steel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: steel-laser-cleaning
-    title: Steel
-    url: /materials/metal/ferrous/steel-laser-cleaning
-    image: /images/material/steel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: aluminum-laser-cleaning
-    title: Aluminum
-    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
-    image: /images/material/aluminum-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: concrete-laser-cleaning
-    title: Concrete
-    url: /materials/masonry/general/concrete-laser-cleaning
-    image: /images/material/concrete-laser-cleaning-hero.jpg
-    category: masonry
-    subcategory: general
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: zinc-laser-cleaning
-    title: Zinc
-    url: /materials/metal/alloy/zinc-laser-cleaning
-    image: /images/material/zinc-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: alloy
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: titanium-laser-cleaning
-    title: Titanium
-    url: /materials/metal/specialty/titanium-laser-cleaning
-    image: /images/material/titanium-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: copper-laser-cleaning
-    title: Copper
-    url: /materials/metal/non-ferrous/copper-laser-cleaning
-    image: /images/material/copper-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cobalt-laser-cleaning
-    title: Cobalt
-    url: /materials/metal/specialty/cobalt-laser-cleaning
-    image: /images/material/cobalt-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass-laser-cleaning
-    title: Brass
-    url: /materials/metal/non-ferrous/brass-laser-cleaning
-    image: /images/material/brass-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: tin-laser-cleaning
-    title: Tin
-    url: /materials/metal/alloy/tin-laser-cleaning
-    image: /images/material/tin-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: alloy
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lead-laser-cleaning
-    title: Lead
-    url: /materials/metal/non-ferrous/lead-laser-cleaning
-    image: /images/material/lead-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chromium-laser-cleaning
-    title: Chromium
-    url: /materials/metal/specialty/chromium-laser-cleaning
-    image: /images/material/chromium-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: nickel-laser-cleaning
-    title: Nickel
-    url: /materials/metal/specialty/nickel-laser-cleaning
-    image: /images/material/nickel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bronze-laser-cleaning
-    title: Bronze
-    url: /materials/metal/non-ferrous/bronze-laser-cleaning
-    image: /images/material/bronze-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cast-iron-laser-cleaning
-    title: Cast Iron
-    url: /materials/metal/ferrous/cast-iron-laser-cleaning
-    image: /images/material/cast-iron-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-content_type: unified_contamination
-schema_version: 4.0.0
-_metadata:
-  voice:
-    author_name: Alessandro Moretti
-    author_country: Italy
-    voice_applied: true
-    content_type: contaminant
-title: Surface Radioactive Contamination Contamination
-contamination_description: Radioactive contamination, it consists of low-level particle deposits arising from nuclear processes or environmental exposure, which manifest as adherent layers that emit alpha or beta radiation, distinguishing themselves from chemical contaminants through their persistent isotopic signatures and minimal visibility under standard inspection. On materials such as stainless steel or concrete, these deposits behave tenaciously, embedding into porous surfaces or forming oxide bonds on metals like copper and titanium, influenced from surface roughness that complicates uniform adhesion. Key removal challenges include avoiding secondary dispersion of particles, yet laser cleaning proves effective, as the pulsed energy vaporizes the thin layers selectively without mechanical abrasion, preserving the underlying substrate integrity.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contaminants
-  href: /contaminants
-- label: Chemical-Residue
-  href: /contaminants/chemical-residue
-- label: Surface Radioactive Contamination
-  href: /contaminants/chemical-residue/hazardous/radioactive-contamination
-images:
-  hero:
-    url: /images/contaminants/radioactive-contamination-hero.jpg
-    alt: Surface Radioactive Contamination contamination on surface before laser cleaning
-  micro:
-    url: /images/contaminants/radioactive-contamination-micro.jpg
-    alt: Surface Radioactive Contamination contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.2
-      min_j_cm2: 0.3
-      recommended_j_cm2: 0.7
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 100
-      min_ns: 5
-      recommended_ns: 20
-    repetition_rate_khz:
-      max: 200
-      min: 10
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 2000
-      min: 100
-      recommended: 500
-    spot_size_mm:
-      max: 0.5
-      min: 0.05
-      recommended: 0.1
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 8500
-      wavelength_355nm: 45000
-      wavelength_532nm: 22000
-    reflectivity:
-      wavelength_1064nm: 0.15
-      wavelength_355nm: 0.03
-      wavelength_532nm: 0.08
-    refractive_index:
-      imaginary_part: 0.35
-      real_part: 2.1
-    transmission_depth: 11.8
-  removal_characteristics:
-    byproducts:
-    - compound: radioactive particulates
-      hazard_level: high
-      phase: solid
-    - compound: carbon-dioxide
-      hazard_level: low
-      phase: gas
-    - compound: H2O
-      hazard_level: low
-      phase: gas
-    - compound: metal oxides
-      hazard_level: moderate
-      phase: solid
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 120
-      typical_scan_speed_mm_s: 500
-    removal_efficiency:
-      diminishing_returns_after: 5
-      optimal_passes: 3
-      single_pass: 0.85
-    secondary_mechanisms:
-    - photochemical
-    - mechanical_spallation
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: compressive
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Radioactive particulates (resuspended)
-      concentration_mg_m3: 0.1
-      exposure_limit_mg_m3: 0.0001
-      hazard_class: carcinogenic
-    particulate_generation:
-      respirable_fraction: 0.8
-      size_range_um:
-      - 0.1
-      - 10
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: PAPR
-      skin_protection: full_suit
-    substrate_compatibility_warnings:
-    - Laser may embed radioactive particles into substrate surface
-    - Potential for creating airborne contamination plume beyond work area
-    - Secondary contamination of equipment and surfaces likely
-    toxic_gas_risk: low
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: HEPA
-      minimum_air_changes_per_hour: 12
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 4.1
-      pulse_duration_10ns: 2.8
-      wavelength_1064nm: 3.2
-    decomposition_temperature: 450
-    heat_affected_zone_depth: 25
-    melting_point: 280
-    specific_heat: 850
-    thermal_conductivity: 0.8
-    thermal_diffusivity: 0.15
-    vaporization_temperature: 1200
-valid_materials:
-- Stainless Steel
-- Concrete
-- Aluminum
-- Steel
-- Cast Iron
-- Copper
-- Bronze
-- Brass
-- Titanium
-- Zinc
-- Nickel
-- Lead
-- Tin
-- Cobalt
-- Chromium
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - radioactive-contamination
+  - - title
+    - Surface Radioactive Contamination Contamination
+  - - slug
+    - radioactive-contamination
+  - - category
+    - chemical-residue
+  - - subcategory
+    - hazardous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_contamination
+  - - datePublished
+    - '2025-12-17T13:33:42.563631'
+  - - dateModified
+    - '2025-12-17T13:33:42.563631'
+  - - author
+    - id: 2
+      name: Alessandro Moretti
+      country: Italy
+      country_display: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise:
+      - Laser-Based Additive Manufacturing
+      affiliation:
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf:
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs:
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      persona_file: italy_persona.yaml
+      formatting_file: italy_formatting.yaml
+  - - contamination_description
+    - Radioactive contamination, it consists of low-level particle deposits arising
+      from nuclear processes or environmental exposure, which manifest as adherent
+      layers that emit alpha or beta radiation, distinguishing themselves from chemical
+      contaminants through their persistent isotopic signatures and minimal visibility
+      under standard inspection. On materials such as stainless steel or concrete,
+      these deposits behave tenaciously, embedding into porous surfaces or forming
+      oxide bonds on metals like copper and titanium, influenced from surface roughness
+      that complicates uniform adhesion. Key removal challenges include avoiding secondary
+      dispersion of particles, yet laser cleaning proves effective, as the pulsed
+      energy vaporizes the thin layers selectively without mechanical abrasion, preserving
+      the underlying substrate integrity.
+  - - laser_properties
+    - laser_parameters:
+        beam_profile: flat_top
+        fluence_range:
+          max_j_cm2: 1.2
+          min_j_cm2: 0.3
+          recommended_j_cm2: 0.7
+        overlap_percentage: 50
+        polarization: circular
+        pulse_duration_range:
+          max_ns: 100
+          min_ns: 5
+          recommended_ns: 20
+        repetition_rate_khz:
+          max: 200
+          min: 10
+          recommended: 50
+        safety_margin_factor: 0.7
+        scan_speed_mm_s:
+          max: 2000
+          min: 100
+          recommended: 500
+        spot_size_mm:
+          max: 0.5
+          min: 0.05
+          recommended: 0.1
+        wavelength_preference:
+        - 1064
+        - 532
+      optical_properties:
+        absorption_coefficient:
+          wavelength_1064nm: 8500
+          wavelength_355nm: 45000
+          wavelength_532nm: 22000
+        reflectivity:
+          wavelength_1064nm: 0.15
+          wavelength_355nm: 0.03
+          wavelength_532nm: 0.08
+        refractive_index:
+          imaginary_part: 0.35
+          real_part: 2.1
+        transmission_depth: 11.8
+      removal_characteristics:
+        byproducts:
+        - compound: radioactive particulates
+          hazard_level: high
+          phase: solid
+        - compound: carbon-dioxide
+          hazard_level: low
+          phase: gas
+        - compound: H2O
+          hazard_level: low
+          phase: gas
+        - compound: metal oxides
+          hazard_level: moderate
+          phase: solid
+        damage_risk_to_substrate: low
+        primary_mechanism: thermal_ablation
+        process_speed:
+          area_coverage_rate_cm2_min: 120
+          typical_scan_speed_mm_s: 500
+        removal_efficiency:
+          diminishing_returns_after: 5
+          optimal_passes: 3
+          single_pass: 0.85
+        secondary_mechanisms:
+        - photochemical
+        - mechanical_spallation
+        surface_quality_after_removal:
+          color_change: 'no'
+          residual_stress: compressive
+          roughness_increase: minimal
+      safety_data:
+        fire_explosion_risk: low
+        fumes_generated:
+        - compound: Radioactive particulates (resuspended)
+          concentration_mg_m3: 0.1
+          exposure_limit_mg_m3: 0.0001
+          hazard_class: carcinogenic
+        particulate_generation:
+          respirable_fraction: 0.8
+          size_range_um:
+          - 0.1
+          - 10
+        ppe_requirements:
+          eye_protection: goggles
+          respiratory: PAPR
+          skin_protection: full_suit
+        substrate_compatibility_warnings:
+        - Laser may embed radioactive particles into substrate surface
+        - Potential for creating airborne contamination plume beyond work area
+        - Secondary contamination of equipment and surfaces likely
+        toxic_gas_risk: low
+        ventilation_requirements:
+          exhaust_velocity_m_s: 0.5
+          filtration_type: HEPA
+          minimum_air_changes_per_hour: 12
+        visibility_hazard: moderate
+      thermal_properties:
+        ablation_threshold:
+          pulse_duration_100ns: 4.1
+          pulse_duration_10ns: 2.8
+          wavelength_1064nm: 3.2
+        decomposition_temperature: 450
+        heat_affected_zone_depth: 25
+        melting_point: 280
+        specific_heat: 850
+        thermal_conductivity: 0.8
+        thermal_diffusivity: 0.15
+        vaporization_temperature: 1200
+  - - related_materials
+    - - id: stainless-steel-laser-cleaning
+        title: Stainless Steel
+        url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+        image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: steel-laser-cleaning
+        title: Steel
+        url: /materials/metal/ferrous/steel-laser-cleaning
+        image: /images/material/steel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: aluminum-laser-cleaning
+        title: Aluminum
+        url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+        image: /images/material/aluminum-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: concrete-laser-cleaning
+        title: Concrete
+        url: /materials/masonry/general/concrete-laser-cleaning
+        image: /images/material/concrete-laser-cleaning-hero.jpg
+        category: masonry
+        subcategory: general
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: zinc-laser-cleaning
+        title: Zinc
+        url: /materials/metal/alloy/zinc-laser-cleaning
+        image: /images/material/zinc-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: alloy
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: titanium-laser-cleaning
+        title: Titanium
+        url: /materials/metal/specialty/titanium-laser-cleaning
+        image: /images/material/titanium-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: copper-laser-cleaning
+        title: Copper
+        url: /materials/metal/non-ferrous/copper-laser-cleaning
+        image: /images/material/copper-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: cobalt-laser-cleaning
+        title: Cobalt
+        url: /materials/metal/specialty/cobalt-laser-cleaning
+        image: /images/material/cobalt-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: brass-laser-cleaning
+        title: Brass
+        url: /materials/metal/non-ferrous/brass-laser-cleaning
+        image: /images/material/brass-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: tin-laser-cleaning
+        title: Tin
+        url: /materials/metal/alloy/tin-laser-cleaning
+        image: /images/material/tin-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: alloy
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: lead-laser-cleaning
+        title: Lead
+        url: /materials/metal/non-ferrous/lead-laser-cleaning
+        image: /images/material/lead-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: chromium-laser-cleaning
+        title: Chromium
+        url: /materials/metal/specialty/chromium-laser-cleaning
+        image: /images/material/chromium-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: nickel-laser-cleaning
+        title: Nickel
+        url: /materials/metal/specialty/nickel-laser-cleaning
+        image: /images/material/nickel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: bronze-laser-cleaning
+        title: Bronze
+        url: /materials/metal/non-ferrous/bronze-laser-cleaning
+        image: /images/material/bronze-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: cast-iron-laser-cleaning
+        title: Cast Iron
+        url: /materials/metal/ferrous/cast-iron-laser-cleaning
+        image: /images/material/cast-iron-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Contaminants
+        href: /contaminants
+      - label: Chemical-Residue
+        href: /contaminants/chemical-residue
+      - label: Surface Radioactive Contamination
+        href: /contaminants/chemical-residue/hazardous/radioactive-contamination
+  - - images
+    - hero:
+        url: /images/contaminants/radioactive-contamination-hero.jpg
+        alt: Surface Radioactive Contamination contamination on surface before laser
+          cleaning
+      micro:
+        url: /images/contaminants/radioactive-contamination-micro.jpg
+        alt: Surface Radioactive Contamination contamination microscopic detail
+  - - valid_materials
+    - - Stainless Steel
+      - Concrete
+      - Aluminum
+      - Steel
+      - Cast Iron
+      - Copper
+      - Bronze
+      - Brass
+      - Titanium
+      - Zinc
+      - Nickel
+      - Lead
+      - Tin
+      - Cobalt
+      - Chromium
+  - - _metadata
+    - voice:
+        author_name: Alessandro Moretti
+        author_country: Italy
+        voice_applied: true
+        content_type: contaminant

@@ -1,74 +1,96 @@
-id: toluene-compound
-name: Toluene
-display_name: Toluene (C₇H₈)
-slug: toluene
-chemical_formula: C7H8
-cas_number: 108-88-3
-molecular_weight: 92.14
-datePublished: '2025-12-17T12:19:39.279316'
-dateModified: '2025-12-17T12:19:39.279316'
-category: solvent
-subcategory: aromatic-hydrocarbon
-hazard_class: toxic
-exposure_limits:
-  osha_pel_ppm: 200
-  osha_pel_mg_m3: 754
-  niosh_rel_ppm: 100
-  niosh_rel_mg_m3: 375
-  acgih_tlv_ppm: 20
-  acgih_tlv_mg_m3: 75
-health_effects_keywords:
-- neurological_effects
-- liver_damage
-- kidney_damage
-- narcotic_effects
-- hearing_loss
-monitoring_required: true
-typical_concentration_range: 2-15 mg/m³
-sources_in_laser_cleaning:
-- paint_solvent_vaporization
-- polymer_decomposition
-- adhesive_breakdown
-description: null
-health_effects: null
-exposure_guidelines: null
-detection_methods: null
-first_aid: null
-domain_linkages: {}
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_compound
-schema_version: 4.0.0
-breadcrumb:
-- label: Home
-  href: /
-- label: Hazardous Compounds
-  href: /compounds
-- label: Toluene
-  href: /compounds/toluene-compound
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - toluene-compound
+  - - slug
+    - toluene
+  - - category
+    - solvent
+  - - subcategory
+    - aromatic-hydrocarbon
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_compound
+  - - datePublished
+    - '2025-12-17T12:19:39.279316'
+  - - dateModified
+    - '2025-12-17T12:19:39.279316'
+  - - author
+    - id: 4
+      name: Todd Dunning
+      country: United States
+      country_display: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      persona_file: usa_persona.yaml
+      formatting_file: usa_formatting.yaml
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Hazardous Compounds
+        href: /compounds
+      - label: Toluene
+        href: /compounds/toluene-compound
+  - - name
+    - Toluene
+  - - display_name
+    - Toluene (C₇H₈)
+  - - chemical_formula
+    - C7H8
+  - - cas_number
+    - 108-88-3
+  - - molecular_weight
+    - 92.14
+  - - hazard_class
+    - toxic
+  - - exposure_limits
+    - osha_pel_ppm: 200
+      osha_pel_mg_m3: 754
+      niosh_rel_ppm: 100
+      niosh_rel_mg_m3: 375
+      acgih_tlv_ppm: 20
+      acgih_tlv_mg_m3: 75
+  - - health_effects_keywords
+    - - neurological_effects
+      - liver_damage
+      - kidney_damage
+      - narcotic_effects
+      - hearing_loss
+  - - monitoring_required
+    - true
+  - - typical_concentration_range
+    - 2-15 mg/m³
+  - - sources_in_laser_cleaning
+    - - paint_solvent_vaporization
+      - polymer_decomposition
+      - adhesive_breakdown
+  - - description
+    - null
+  - - health_effects
+    - null
+  - - exposure_guidelines
+    - null
+  - - detection_methods
+    - null
+  - - first_aid
+    - null

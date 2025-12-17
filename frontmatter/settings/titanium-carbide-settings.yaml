@@ -1,54 +1,71 @@
-id: titanium-carbide-settings
-name: Titanium Carbide
-slug: titanium-carbide-settings
-category: ceramic
-subcategory: carbide
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.534675'
-dateModified: '2025-12-17T12:39:12.534675'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Titanium Carbide surface cleaning without substrate damage
-    unit: W
-    value: 150
-  wavelength:
-    description: Near-IR wavelength optimized for Titanium Carbide absorption and minimal substrate interaction
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning of Titanium Carbide surfaces
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage with thermal management
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Minimum fluence required for effective Titanium Carbide contaminant removal
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient ablation of Titanium Carbide contaminants
-    unit: ns
-    value: 15
-  scanSpeed:
-    description: Optimal scanning speed for efficient cleaning coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Titanium Carbide
-  href: /settings/titanium-carbide-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - titanium-carbide-settings
+  - - slug
+    - titanium-carbide-settings
+  - - category
+    - ceramic
+  - - subcategory
+    - carbide
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.534675'
+  - - dateModified
+    - '2025-12-17T12:39:12.534675'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Titanium Carbide
+        href: /settings/titanium-carbide-settings
+  - - name
+    - Titanium Carbide
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Titanium Carbide surface cleaning without
+          substrate damage
+        unit: W
+        value: 150
+      wavelength:
+        description: Near-IR wavelength optimized for Titanium Carbide absorption
+          and minimal substrate interaction
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning of Titanium Carbide surfaces
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for continuous cleaning coverage with
+          thermal management
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Minimum fluence required for effective Titanium Carbide contaminant
+          removal
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for efficient ablation of Titanium
+          Carbide contaminants
+        unit: ns
+        value: 15
+      scanSpeed:
+        description: Optimal scanning speed for efficient cleaning coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning without excessive thermal
+          buildup
+        unit: '%'
+        value: 50

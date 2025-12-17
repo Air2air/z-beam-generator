@@ -1,62 +1,73 @@
-id: ash-settings
-name: Ash
-slug: ash-settings
-category: wood
-subcategory: hardwood
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.140351'
-dateModified: '2025-12-17T12:39:12.140351'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - lead-paint-contamination
-  - mold-mildew-contamination
-  - paint-residue-contamination
-  - wax-buildup-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for efficient Ash removal without substrate damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-infrared wavelength optimized for Ash absorption and minimal substrate interaction
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for effective Ash removal resolution and processing efficiency
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage with thermal recovery
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence level sufficient for Ash ablation while preserving underlying substrate
-    unit: J/cm²
-    value: 5.1
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled Ash ablation and thermal management
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform Ash removal and process throughput
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete Ash removal with process control
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Ash
-  href: /settings/ash-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - ash-settings
+  - - slug
+    - ash-settings
+  - - category
+    - wood
+  - - subcategory
+    - hardwood
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.140351'
+  - - dateModified
+    - '2025-12-17T12:39:12.140351'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Ash
+        href: /settings/ash-settings
+  - - name
+    - Ash
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for efficient Ash removal without substrate
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-infrared wavelength optimized for Ash absorption and minimal
+          substrate interaction
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for effective Ash removal resolution and processing
+          efficiency
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for continuous cleaning coverage with
+          thermal recovery
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence level sufficient for Ash ablation while preserving underlying
+          substrate
+        unit: J/cm²
+        value: 5.1
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled Ash ablation and thermal
+          management
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform Ash removal and process throughput
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete Ash removal with process
+          control
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning coverage without excessive
+          thermal buildup
+        unit: '%'
+        value: 50

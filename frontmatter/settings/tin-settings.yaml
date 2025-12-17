@@ -1,82 +1,68 @@
-id: tin-settings
-name: Tin
-slug: tin-settings
-category: metal
-subcategory: alloy
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.526111'
-dateModified: '2025-12-17T12:39:12.526111'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - biological-stains-contamination
-  - carbon-soot-contamination
-  - chemical-stains-contamination
-  - epoxy-residue-contamination
-  - fertilizer-residue-contamination
-  - graffiti-paint-contamination
-  - graphite-marks-contamination
-  - ink-stains-contamination
-  - insect-residue-contamination
-  - lime-scale-contamination
-  - mercury-contamination
-  - mineral-deposits-contamination
-  - paint-residue-contamination
-  - pesticide-residue-contamination
-  - plastic-residue-contamination
-  - pollen-deposit-contamination
-  - radioactive-contamination
-  - rubber-residue-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - silicone-buildup-contamination
-  - tree-sap-contamination
-  - water-stain-contamination
-  - wax-buildup-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Tin oxide removal without substrate damage
-    unit: W
-    value: 45
-  wavelength:
-    description: Near-IR wavelength for efficient Tin oxide absorption with minimal substrate heating
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise Tin surface cleaning
-    unit: μm
-    value: 80
-  repetitionRate:
-    description: Optimal repetition rate for efficient Tin cleaning with thermal management
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Minimum fluence required for Tin oxide ablation threshold
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled Tin oxide ablation
-    unit: ns
-    value: 12
-  scanSpeed:
-    description: Optimal scanning speed for uniform Tin oxide removal
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete Tin oxide removal
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap for uniform Tin surface cleaning
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Tin
-  href: /settings/tin-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - tin-settings
+  - - slug
+    - tin-settings
+  - - category
+    - metal
+  - - subcategory
+    - alloy
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.526111'
+  - - dateModified
+    - '2025-12-17T12:39:12.526111'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Tin
+        href: /settings/tin-settings
+  - - name
+    - Tin
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Tin oxide removal without substrate
+          damage
+        unit: W
+        value: 45
+      wavelength:
+        description: Near-IR wavelength for efficient Tin oxide absorption with minimal
+          substrate heating
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise Tin surface cleaning
+        unit: μm
+        value: 80
+      repetitionRate:
+        description: Optimal repetition rate for efficient Tin cleaning with thermal
+          management
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Minimum fluence required for Tin oxide ablation threshold
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled Tin oxide ablation
+        unit: ns
+        value: 12
+      scanSpeed:
+        description: Optimal scanning speed for uniform Tin oxide removal
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete Tin oxide removal
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap for uniform Tin surface cleaning
+        unit: '%'
+        value: 50

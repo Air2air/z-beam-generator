@@ -1,58 +1,74 @@
-id: tool-steel-settings
-name: Tool Steel
-slug: tool-steel-settings
-category: metal
-subcategory: alloy
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.537736'
-dateModified: '2025-12-17T12:39:12.537736'
-domain_linkages:
-  contaminants:
-  - pvd-coating-contamination
-  - quench-oil-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Tool Steel oxide removal without substrate damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength with good absorption in Tool Steel oxides and contaminants
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for effective cleaning resolution and energy density control
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage with controlled thermal input
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal without damaging Tool Steel substrate
-    unit: J/cm²
-    value: 5.1
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant ablation with minimal thermal diffusion
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contaminant removal from Tool Steel surfaces
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal pulse overlap for uniform cleaning coverage without excessive thermal buildup
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Tool Steel
-  href: /settings/tool-steel-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - tool-steel-settings
+  - - slug
+    - tool-steel-settings
+  - - category
+    - metal
+  - - subcategory
+    - alloy
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.537736'
+  - - dateModified
+    - '2025-12-17T12:39:12.537736'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Tool Steel
+        href: /settings/tool-steel-settings
+  - - name
+    - Tool Steel
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Tool Steel oxide removal without substrate
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength with good absorption in Tool Steel oxides
+          and contaminants
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for effective cleaning resolution and energy
+          density control
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for continuous cleaning coverage with
+          controlled thermal input
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for effective contaminant removal without damaging
+          Tool Steel substrate
+        unit: J/cm²
+        value: 5.1
+      pulseWidth:
+        description: Nanosecond pulse duration for efficient contaminant ablation
+          with minimal thermal diffusion
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for efficient area coverage while maintaining
+          cleaning effectiveness
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+          from Tool Steel surfaces
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal pulse overlap for uniform cleaning coverage without excessive
+          thermal buildup
+        unit: '%'
+        value: 50

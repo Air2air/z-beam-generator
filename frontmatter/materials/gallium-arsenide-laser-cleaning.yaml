@@ -1,305 +1,380 @@
-id: gallium-arsenide-laser-cleaning
-name: gallium-arsenide-laser-cleaning
-slug: gallium-arsenide-laser-cleaning
-category: semiconductor
-subcategory: elemental
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:38:47.227583'
-dateModified: '2025-12-17T12:38:47.227583'
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
-title: Gallium Arsenide Laser Cleaning
-material_description: For laser cleaning Gallium Arsenide, begin with low power to protect its delicate semiconductor structure from damage, then slowly raise the power to strip away contaminants while keeping high electron mobility intact for solid electronics reliability
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Semiconductor
-  href: /materials/semiconductor
-- label: Elemental
-  href: /materials/semiconductor/elemental
-- label: Gallium Arsenide
-  href: /materials/semiconductor/elemental/gallium-arsenide
-images:
-  hero:
-    alt: Gallium Arsenide surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/gallium-arsenide-laser-cleaning-hero.jpg
-  micro:
-    alt: Gallium Arsenide microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/gallium-arsenide-laser-cleaning-micro.jpg
-micro:
-  before: Under the microscope at high magnification, we see the gallium arsenide surface covered in scattered dark spots and uneven patches. These contaminants cling tightly, creating rough textures that obscure the material's natural shine. We've found this buildup often hides fine details, making the whole area look dull and irregular.
-  after: After laser treatment, the same surface appears smooth and uniformly bright across the view. No spots remain, and the texture feels even, restoring the material's clear, reflective quality. In our experience, this
-faq:
-- question: What are the specific laser parameters (wavelength, fluence, pulse duration) for effectively cleaning contaminants from Gallium Arsenide without causing surface damage or **stoichiometric changes**?
-  answer: '**Prevents gallium droplet formation**. As an Indonesian laser cleaning specialist, I suggest a 1064 nm Nd:YAG laser with 0.5–0.8 J/cm² fluence and 10–20 ns pulse duration for GaAs contaminants. This process delivers effective removal without surface damage or stoichiometric shifts, drawn from practical experience.'
-- question: How does the high reflectivity and thermal sensitivity of GaAs complicate laser cleaning compared to cleaning metals?
-  answer: GaAs exhibits high reflectivity at typical 1µm wavelengths, so practically, we rely on 532 nm green light for adequate absorption. This process demands careful handling due to the material's thermal sensitivity, yielding a narrow window where the 0.8 J/cm² cleaning threshold nears the damage limit and requires precise fluence control to prevent thermal runaway.
-- question: What is the best method for laser cleaning **native oxides** from a Gallium Arsenide wafer prior to epitaxial growth or contact deposition?
-  answer: '**preserves GaAs stoichiometry**. Laser cleaning at 532 nm wavelength with fluence below 0.8 J/cm² efficiently removes native oxides while preserving GaAs stoichiometry. This process outperforms chemical etching by delivering a straightforward, atomically clean, non-contaminated surface vital for high-quality epitaxial growth.'
-- question: What safety protocols are essential when laser cleaning GaAs due to the generation of **toxic arsenic-containing particulates**?
-  answer: '**Use enclosed HEPA filtration systems**. Because of GaAs''s arsenic content, opt for fully enclosed systems with HEPA filtration to capture toxic nanoparticles. This process calls for continuous air monitoring of arsenic levels and supplied-air respirators. The 532 nm wavelength at 0.8 J/cm² efficiently ablates contaminants while minimizing hazardous byproducts.'
-- question: Can laser cleaning be used to selectively remove a damaged layer from a GaAs substrate after mechanical polishing or **ion implantation**?
-  answer: '**Preserves electronic quality**. Laser cleaning offers a straightforward way to selectively strip damaged layers from GaAs substrates, employing precise settings like 0.8 J/cm² fluence. This process, with its nanosecond pulses, ablates subsurface defects practically, while safeguarding electronic quality and curbing surface roughness to restore material integrity.'
-- question: How do you verify the success of a GaAs laser cleaning process? What **characterization techniques** are used?
-  answer: '**Preserves electronic properties via photoluminescence**. We confirm GaAs cleaning success practically through AFM, targeting surface roughness below 1 nm, alongside XPS for oxide removal verification. Photoluminescence then ensures this process at 532 nm maintains the material''s electronic properties.'
-- question: Is laser cleaning a viable alternative to wet chemical etching for GaAs in a manufacturing environment, considering throughput and cost?
-  answer: Laser cleaning provides a practical dry option for GaAs processing, with precise fluence control at 0.8 J/cm². Throughput hinges on 500 mm/s scan speeds, yet this process eliminates chemical waste efficiently, though fitting it into existing wet fab lines demands thoughtful system engineering.
-- question: What are the **primary failure modes** or types of damage when laser cleaning GaAs, and how can they be identified?
-  answer: '**Thermal decomposition causes gallium balling**. Key failure modes, approached in a practical way, feature thermal decomposition that leads to gallium balling and non-stoichiometric surfaces from fluence over 0.8 J/cm². Micro-cracking and localized melting emerge under wrong settings, like average power above 8 W. This process shows up in SEM analysis via surface droplets and compositional changes.'
-- question: Why are **UV wavelengths** (e.g., Excimer lasers) often considered for GaAs processing compared to IR lasers?
-  answer: '**Enables cold ablation minimal damage**. UV wavelengths, especially excimer lasers near 248 nm, offer a practical approach for GaAs processing. Their high photon energy breaks chemical bonds directly, enabling precise "cold" ablation with minimal thermal damage to the sensitive substrate. This process is vital for preserving the material''s electronic properties, particularly at the optimal fluence threshold of 0.8 J/cm².'
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 60.0
-    electricalResistivity:
-      value: '3.3e+06'
-      unit: Ω m
-      source: ai_research
-      min: 11.4
-      max: '1.4e+06'
-    fractureToughness: 0.44
-    density:
-      value: 5.3
-      unit: g/cm³
-      source: ai_research
-      min: 2.2
-      max: 5.5
-    oxidationResistance:
-      value: '0.008'
-      unit: nm/min
-      source: ai_research
-      min: 0
-      max: 2.4
-    youngsModulus:
-      value: 85.4
-      unit: GPa
-      source: ai_research
-      min: 81.1
-      max: '1.5e+11'
-    hardness:
-      value: 7.5
-      unit: GPa
-      source: ai_research
-      min: 2
-      max: 2600
-    compressiveStrength:
-      value: 1170
-      unit: MPa
-      source: ai_research
-      min: 133
-      max: 7343
-    tensileStrength:
-      value: 41
-      unit: MPa
-      source: ai_research
-      min: 30.8
-      max: 255
-    flexuralStrength:
-      value: 140
-      unit: MPa
-      source: ai_research
-      min: 79.9
-      max: 148
-    corrosionResistance:
-      value: 0.85
-      unit: dimensionless (normalized resistance scale 0-1)
-      source: ai_research
-      min: 0.87
-      max: 157500
-    laserDamageThreshold:
-      value: 10.5
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Applied Physics Letters
-      citation: 'G. R. Huggett, F. W. Chambers, and R. A. House, Applied Physics Letters, 1975, Vol. 27, Issue 6, pp. 298-300, DOI: 10.1063/1.88493'
-      context: Undoped single-crystal Gallium Arsenide (99.999% purity), room temperature (25°C), 1.06 μm wavelength, 20 ns pulse duration, single-shot measurement in vacuum
-      researched_date: '2025-11-24T11:58:47.098498'
-      needs_validation: true
-      min: 0.47
-      max: 8.9
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    absorptivity:
-      value: 0.68
-      unit: dimensionless
-      min: 0.5
-      max: 0.9
-      source: ai_research
-    absorptionCoefficient:
-      value: 1e+07
-      unit: m⁻¹
-      min: 1e+06
-      max: 1e+08
-      source: ai_research
-    laserDamageThreshold:
-      value: 4.5
-      unit: J/cm²
-      min: 1
-      max: 10
-      source: ai_research
-    thermalShockResistance:
-      value: 1.5
-      unit: MW/m
-      min: 0.8
-      max: 2.5
-      source: ai_research
-    reflectivity:
-      value: 0.32
-      unit: dimensionless
-      min: 0.3
-      max: 0.35
-      source: ai_research
-    thermalDestructionPoint:
-      value: 1511
-      unit: K
-      min: 1400
-      max: 1600
-      source: ai_research
-    vaporPressure:
-      value: 5
-      unit: Pa
-      min: 0.1
-      max: 50
-      source: ai_research
-    thermalDestruction:
-      value: 1511
-      unit: K
-      source: ai_research
-      min: 1502
-      max: 1696
-    laserReflectivity:
-      value: 0.3
-      unit: '1'
-      source: ai_research
-      min: 0.3
-      max: 0.36
-    thermalExpansion:
-      value: '5.7e-06'
-      unit: 1/K
-      source: ai_research
-      min: 2e-06
-      max: 6e-06
-    thermalConductivity:
-      value: 55
-      unit: W/m·K
-      source: ai_research
-      min: 0.2
-      max: 156
-    specificHeat:
-      value: 322
-      unit: J/(kg·K)
-      source: ai_research
-      min: 300
-      max: 900
-    laserAbsorption:
-      value: 0.68
-      unit: dimensionless
-      source: ai_research
-      min: 19380
-      max: '1.1e+06'
-    thermalDiffusivity:
-      value: '3.2e-05'
-      unit: m²/s
-      source: ai_research
-      min: '2.4e-05'
-      max: '9.2e-05'
-    ablationThreshold:
-      value: 0.85
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Applied Surface Science
-      citation: 'J. Bonse, J. Krüger, S. Höhm, A. Rosenfeld, ''Femtosecond laser ablation of gallium arsenide: threshold fluences and incubation effects'', Applied Surface Science, 2012, DOI: 10.1016/j.apsusc.2012.04.123'
-      context: Undoped single-crystal GaAs (purity >99.99%), room temperature (25°C), 800 nm wavelength Ti:sapphire femtosecond laser, 100 fs pulse duration, measured in air at 1 atm
-      researched_date: '2025-11-24T11:58:55.625892'
-      needs_validation: true
-      min: 1.2
-      max: 2
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - ANSI Z136.1 - Safe Use of Lasers
-  - IEC 60825 - Safety of Laser Products
-  isBasedOn:
-    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921971Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921977Z'
-  structure_version: '2.0'
-domain_linkages: {}
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 1
-    estimatedHoursTypical: 4
-    targetContaminants:
-    - Surface contamination
-    - Paint and coatings
-    - Oxide layer
-    - Adhesive residue
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-17T12:38:47.228891'
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - gallium-arsenide-laser-cleaning
+  - - title
+    - Gallium Arsenide Laser Cleaning
+  - - slug
+    - gallium-arsenide-laser-cleaning
+  - - category
+    - semiconductor
+  - - subcategory
+    - elemental
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_material
+  - - datePublished
+    - '2025-12-17T12:38:47.227583'
+  - - dateModified
+    - '2025-12-17T12:38:47.227583'
+  - - author
+    - id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      country_display: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      persona_file: indonesia_persona.yaml
+      formatting_file: indonesia_formatting.yaml
+  - - material_description
+    - For laser cleaning Gallium Arsenide, begin with low power to protect its delicate
+      semiconductor structure from damage, then slowly raise the power to strip away
+      contaminants while keeping high electron mobility intact for solid electronics
+      reliability
+  - - micro
+    - before: Under the microscope at high magnification, we see the gallium arsenide
+        surface covered in scattered dark spots and uneven patches. These contaminants
+        cling tightly, creating rough textures that obscure the material's natural
+        shine. We've found this buildup often hides fine details, making the whole
+        area look dull and irregular.
+      after: After laser treatment, the same surface appears smooth and uniformly
+        bright across the view. No spots remain, and the texture feels even, restoring
+        the material's clear, reflective quality. In our experience, this
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Materials
+        href: /materials
+      - label: Semiconductor
+        href: /materials/semiconductor
+      - label: Elemental
+        href: /materials/semiconductor/elemental
+      - label: Gallium Arsenide
+        href: /materials/semiconductor/elemental/gallium-arsenide
+  - - images
+    - hero:
+        alt: Gallium Arsenide surface undergoing laser cleaning showing precise contamination
+          removal
+        url: /images/material/gallium-arsenide-laser-cleaning-hero.jpg
+      micro:
+        alt: Gallium Arsenide microscopic view of laser cleaning showing detailed
+          precise contamination removal
+        url: /images/material/gallium-arsenide-laser-cleaning-micro.jpg
+  - - eeat
+    - reviewedBy: Z-Beam Quality Assurance Team
+      citations:
+      - ANSI Z136.1 - Safe Use of Lasers
+      - IEC 60825 - Safety of Laser Products
+      isBasedOn:
+        name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  - - _metadata
+    - voice:
+        author_name: Ikmanda Roswati
+        author_country: Indonesia
+        voice_applied: true
+        content_type: material
+  - - faq
+    - - question: What are the specific laser parameters (wavelength, fluence, pulse
+          duration) for effectively cleaning contaminants from Gallium Arsenide without
+          causing surface damage or **stoichiometric changes**?
+        answer: '**Prevents gallium droplet formation**. As an Indonesian laser cleaning
+          specialist, I suggest a 1064 nm Nd:YAG laser with 0.5–0.8 J/cm² fluence
+          and 10–20 ns pulse duration for GaAs contaminants. This process delivers
+          effective removal without surface damage or stoichiometric shifts, drawn
+          from practical experience.'
+      - question: How does the high reflectivity and thermal sensitivity of GaAs complicate
+          laser cleaning compared to cleaning metals?
+        answer: GaAs exhibits high reflectivity at typical 1µm wavelengths, so practically,
+          we rely on 532 nm green light for adequate absorption. This process demands
+          careful handling due to the material's thermal sensitivity, yielding a narrow
+          window where the 0.8 J/cm² cleaning threshold nears the damage limit and
+          requires precise fluence control to prevent thermal runaway.
+      - question: What is the best method for laser cleaning **native oxides** from
+          a Gallium Arsenide wafer prior to epitaxial growth or contact deposition?
+        answer: '**preserves GaAs stoichiometry**. Laser cleaning at 532 nm wavelength
+          with fluence below 0.8 J/cm² efficiently removes native oxides while preserving
+          GaAs stoichiometry. This process outperforms chemical etching by delivering
+          a straightforward, atomically clean, non-contaminated surface vital for
+          high-quality epitaxial growth.'
+      - question: What safety protocols are essential when laser cleaning GaAs due
+          to the generation of **toxic arsenic-containing particulates**?
+        answer: '**Use enclosed HEPA filtration systems**. Because of GaAs''s arsenic
+          content, opt for fully enclosed systems with HEPA filtration to capture
+          toxic nanoparticles. This process calls for continuous air monitoring of
+          arsenic levels and supplied-air respirators. The 532 nm wavelength at 0.8
+          J/cm² efficiently ablates contaminants while minimizing hazardous byproducts.'
+      - question: Can laser cleaning be used to selectively remove a damaged layer
+          from a GaAs substrate after mechanical polishing or **ion implantation**?
+        answer: '**Preserves electronic quality**. Laser cleaning offers a straightforward
+          way to selectively strip damaged layers from GaAs substrates, employing
+          precise settings like 0.8 J/cm² fluence. This process, with its nanosecond
+          pulses, ablates subsurface defects practically, while safeguarding electronic
+          quality and curbing surface roughness to restore material integrity.'
+      - question: How do you verify the success of a GaAs laser cleaning process?
+          What **characterization techniques** are used?
+        answer: '**Preserves electronic properties via photoluminescence**. We confirm
+          GaAs cleaning success practically through AFM, targeting surface roughness
+          below 1 nm, alongside XPS for oxide removal verification. Photoluminescence
+          then ensures this process at 532 nm maintains the material''s electronic
+          properties.'
+      - question: Is laser cleaning a viable alternative to wet chemical etching for
+          GaAs in a manufacturing environment, considering throughput and cost?
+        answer: Laser cleaning provides a practical dry option for GaAs processing,
+          with precise fluence control at 0.8 J/cm². Throughput hinges on 500 mm/s
+          scan speeds, yet this process eliminates chemical waste efficiently, though
+          fitting it into existing wet fab lines demands thoughtful system engineering.
+      - question: What are the **primary failure modes** or types of damage when laser
+          cleaning GaAs, and how can they be identified?
+        answer: '**Thermal decomposition causes gallium balling**. Key failure modes,
+          approached in a practical way, feature thermal decomposition that leads
+          to gallium balling and non-stoichiometric surfaces from fluence over 0.8
+          J/cm². Micro-cracking and localized melting emerge under wrong settings,
+          like average power above 8 W. This process shows up in SEM analysis via
+          surface droplets and compositional changes.'
+      - question: Why are **UV wavelengths** (e.g., Excimer lasers) often considered
+          for GaAs processing compared to IR lasers?
+        answer: '**Enables cold ablation minimal damage**. UV wavelengths, especially
+          excimer lasers near 248 nm, offer a practical approach for GaAs processing.
+          Their high photon energy breaks chemical bonds directly, enabling precise
+          "cold" ablation with minimal thermal damage to the sensitive substrate.
+          This process is vital for preserving the material''s electronic properties,
+          particularly at the optimal fluence threshold of 0.8 J/cm².'
+  - - regulatoryStandards
+    - - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        image: /images/logo/logo-org-fda.png
+        longName: Food and Drug Administration
+        name: FDA
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      - description: ANSI Z136.1 - Safe Use of Lasers
+        image: /images/logo/logo-org-ansi.png
+        longName: American National Standards Institute
+        name: ANSI
+        url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      - description: IEC 60825 - Safety of Laser Products
+        image: /images/logo/logo-org-iec.png
+        longName: International Electrotechnical Commission
+        name: IEC
+        url: https://webstore.iec.ch/publication/3587
+      - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+        image: /images/logo/logo-org-osha.png
+        longName: Occupational Safety and Health Administration
+        name: OSHA
+        url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  - - materialProperties
+    - material_characteristics:
+        label: Material Characteristics
+        percentage: 60.0
+        electricalResistivity:
+          value: '3.3e+06'
+          unit: Ω m
+          source: ai_research
+          min: 11.4
+          max: '1.4e+06'
+        fractureToughness: 0.44
+        density:
+          value: 5.3
+          unit: g/cm³
+          source: ai_research
+          min: 2.2
+          max: 5.5
+        oxidationResistance:
+          value: '0.008'
+          unit: nm/min
+          source: ai_research
+          min: 0
+          max: 2.4
+        youngsModulus:
+          value: 85.4
+          unit: GPa
+          source: ai_research
+          min: 81.1
+          max: '1.5e+11'
+        hardness:
+          value: 7.5
+          unit: GPa
+          source: ai_research
+          min: 2
+          max: 2600
+        compressiveStrength:
+          value: 1170
+          unit: MPa
+          source: ai_research
+          min: 133
+          max: 7343
+        tensileStrength:
+          value: 41
+          unit: MPa
+          source: ai_research
+          min: 30.8
+          max: 255
+        flexuralStrength:
+          value: 140
+          unit: MPa
+          source: ai_research
+          min: 79.9
+          max: 148
+        corrosionResistance:
+          value: 0.85
+          unit: dimensionless (normalized resistance scale 0-1)
+          source: ai_research
+          min: 0.87
+          max: 157500
+        laserDamageThreshold:
+          value: 10.5
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Applied Physics Letters
+          citation: 'G. R. Huggett, F. W. Chambers, and R. A. House, Applied Physics
+            Letters, 1975, Vol. 27, Issue 6, pp. 298-300, DOI: 10.1063/1.88493'
+          context: Undoped single-crystal Gallium Arsenide (99.999% purity), room
+            temperature (25°C), 1.06 μm wavelength, 20 ns pulse duration, single-shot
+            measurement in vacuum
+          researched_date: '2025-11-24T11:58:47.098498'
+          needs_validation: true
+          min: 0.47
+          max: 8.9
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        percentage: 40.0
+        absorptivity:
+          value: 0.68
+          unit: dimensionless
+          min: 0.5
+          max: 0.9
+          source: ai_research
+        absorptionCoefficient:
+          value: 1e+07
+          unit: m⁻¹
+          min: 1e+06
+          max: 1e+08
+          source: ai_research
+        laserDamageThreshold:
+          value: 4.5
+          unit: J/cm²
+          min: 1
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.8
+          max: 2.5
+          source: ai_research
+        reflectivity:
+          value: 0.32
+          unit: dimensionless
+          min: 0.3
+          max: 0.35
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1511
+          unit: K
+          min: 1400
+          max: 1600
+          source: ai_research
+        vaporPressure:
+          value: 5
+          unit: Pa
+          min: 0.1
+          max: 50
+          source: ai_research
+        thermalDestruction:
+          value: 1511
+          unit: K
+          source: ai_research
+          min: 1502
+          max: 1696
+        laserReflectivity:
+          value: 0.3
+          unit: '1'
+          source: ai_research
+          min: 0.3
+          max: 0.36
+        thermalExpansion:
+          value: '5.7e-06'
+          unit: 1/K
+          source: ai_research
+          min: 2e-06
+          max: 6e-06
+        thermalConductivity:
+          value: 55
+          unit: W/m·K
+          source: ai_research
+          min: 0.2
+          max: 156
+        specificHeat:
+          value: 322
+          unit: J/(kg·K)
+          source: ai_research
+          min: 300
+          max: 900
+        laserAbsorption:
+          value: 0.68
+          unit: dimensionless
+          source: ai_research
+          min: 19380
+          max: '1.1e+06'
+        thermalDiffusivity:
+          value: '3.2e-05'
+          unit: m²/s
+          source: ai_research
+          min: '2.4e-05'
+          max: '9.2e-05'
+        ablationThreshold:
+          value: 0.85
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Applied Surface Science
+          citation: 'J. Bonse, J. Krüger, S. Höhm, A. Rosenfeld, ''Femtosecond laser
+            ablation of gallium arsenide: threshold fluences and incubation effects'',
+            Applied Surface Science, 2012, DOI: 10.1016/j.apsusc.2012.04.123'
+          context: Undoped single-crystal GaAs (purity >99.99%), room temperature
+            (25°C), 800 nm wavelength Ti:sapphire femtosecond laser, 100 fs pulse
+            duration, measured in air at 1 atm
+          researched_date: '2025-11-24T11:58:55.625892'
+          needs_validation: true
+          min: 1.2
+          max: 2
+  - - material_metadata
+    - last_updated: '2025-10-27T23:48:40.921971Z'
+      normalization_applied: true
+      normalization_date: '2025-10-27T23:48:40.921977Z'
+      structure_version: '2.0'
+  - - serviceOffering
+    - enabled: true
+      type: professionalCleaning
+      materialSpecific:
+        estimatedHoursMin: 1
+        estimatedHoursTypical: 4
+        targetContaminants:
+        - Surface contamination
+        - Paint and coatings
+        - Oxide layer
+        - Adhesive residue
+  - - preservedData
+    - generationMetadata:
+        generated_date: '2025-12-17T12:38:47.228891'

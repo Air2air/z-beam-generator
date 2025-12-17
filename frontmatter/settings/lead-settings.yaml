@@ -1,82 +1,67 @@
-id: lead-settings
-name: Lead
-slug: lead-settings
-category: metal
-subcategory: non-ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.302444'
-dateModified: '2025-12-17T12:39:12.302444'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - biological-stains-contamination
-  - carbon-soot-contamination
-  - chemical-stains-contamination
-  - epoxy-residue-contamination
-  - fertilizer-residue-contamination
-  - graffiti-paint-contamination
-  - graphite-marks-contamination
-  - ink-stains-contamination
-  - insect-residue-contamination
-  - lime-scale-contamination
-  - mercury-contamination
-  - mineral-deposits-contamination
-  - paint-residue-contamination
-  - pesticide-residue-contamination
-  - plastic-residue-contamination
-  - pollen-deposit-contamination
-  - radioactive-contamination
-  - rubber-residue-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - silicone-buildup-contamination
-  - tree-sap-contamination
-  - water-stain-contamination
-  - wax-buildup-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power range for Lead surface cleaning
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength optimized for Lead absorption and minimal reflectivity
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise Lead surface treatment
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for efficient Lead cleaning process
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Minimum fluence required for effective Lead removal
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled Lead ablation
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform Lead cleaning
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete Lead contamination removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform Lead surface cleaning
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Lead
-  href: /settings/lead-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - lead-settings
+  - - slug
+    - lead-settings
+  - - category
+    - metal
+  - - subcategory
+    - non-ferrous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.302444'
+  - - dateModified
+    - '2025-12-17T12:39:12.302444'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Lead
+        href: /settings/lead-settings
+  - - name
+    - Lead
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power range for Lead surface cleaning
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength optimized for Lead absorption and minimal
+          reflectivity
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise Lead surface treatment
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for efficient Lead cleaning process
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Minimum fluence required for effective Lead removal
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled Lead ablation
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform Lead cleaning
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete Lead contamination
+          removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform Lead surface cleaning
+        unit: '%'
+        value: 50

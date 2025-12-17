@@ -1,364 +1,437 @@
-id: ruthenium-laser-cleaning
-name: ruthenium-laser-cleaning
-slug: ruthenium-laser-cleaning
-category: metal
-subcategory: non-ferrous
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:38:48.398264'
-dateModified: '2025-12-17T12:38:48.398264'
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
-title: Ruthenium Laser Cleaning
-material_description: When facing harsh chemical environments that corrode most metals, I've observed Ruthenium performing exceptionally well, thanks to its outstanding corrosion resistance over everyday options like nickel or copper, ensuring reliable components in processing plants and marine applications without additional protective coatings.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Non Ferrous
-  href: /materials/metal/non-ferrous
-- label: Ruthenium
-  href: /materials/metal/non-ferrous/ruthenium
-images:
-  hero:
-    alt: Ruthenium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/ruthenium-laser-cleaning-hero.jpg
-  micro:
-    alt: Ruthenium microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/ruthenium-laser-cleaning-micro.jpg
-micro:
-  before: "Under 1000x magnification, the ruthenium surface looks rough and covered in dark, sticky patches that scatter across the view.  \nIrregular clumps of grime cling tightly, dulling the metal's natural gleam and creating bumpy textures everywhere.  \nThese contaminants build up unevenly, hiding the underlying structure from clear sight."
-  after: "After laser treatment at 1000x magnification, the ruthenium surface appears smooth and free of all dark patches that once cluttered it.  \nClean lines emerge"
-faq:
-- question: What laser wavelengths are most effective for cleaning ruthenium-coated mirrors without **causing delamination**?
-  answer: '**1064 nm minimizes delamination**. Notably, for ruthenium-coated mirrors, the 1064 nm near-IR laser wavelength excels in oxide removal at 2.3 J/cm² fluence. It minimizes delamination by targeting the thin film''s absorption, thus preventing substrate harm. The 532 nm green light serves as an alternative, but specifically demands stricter pulse control to preserve coating adhesion. This method achieves uniform cleaning across two passes at 500 mm/s scan speed.'
-- question: How does ruthenium's **high reflectivity** affect the efficiency of laser cleaning processes on optical surfaces?
-  answer: '**Impedes absorption, slows efficiency**. Ruthenium shows high reflectivity, particularly 70-90% across visible and IR ranges, which scatters substantial laser energy on optical surfaces and hinders absorption, thereby reducing cleaning efficiency. Address this challenge using a 1064 nm wavelength with 8 ns pulses at 2.3 J/cm² fluence, thus improving targeted oxide removal while preventing bulk damage.'
-- question: Are there specific safety risks when using pulsed lasers to remove contaminants from ruthenium alloys in semiconductor manufacturing?
-  answer: Pulsed laser cleaning of ruthenium alloys at 1064 nm can trigger ruthenium oxide formation, particularly when fluence exceeds 2.3 J/cm², thus releasing potentially toxic vapors. Airborne nanoparticles from ablation pose inhalation hazards, so adhere to OSHA ventilation standards using local exhaust systems to capture fines under 50 μm spot size.
-- question: What pulse energy levels should be used to avoid thermal damage when laser cleaning **ruthenium thin films** on substrates?
-  answer: '**fluences below 1 J/cm²**. For laser cleaning of ruthenium thin films, target pulse fluences below 1 J/cm² to avoid thermal damage to underlying substrates. Specifically at 1064 nm with 8 ns pulses, this threshold enables selective oxide ablation while curbing heat buildup—thus, apply interferometry for real-time surface monitoring.'
-- question: In laser cleaning of ruthenium catalysts, how can we prevent chemical reactions with residual surface impurities?
-  answer: To protect ruthenium catalysts against reactions with surface impurities during laser cleaning, conduct the process under an inert argon atmosphere, specifically at 1064 nm wavelength and 2.3 J/cm² fluence, for precise oxide removal. Then, passivate the surface via controlled exposure, thus forming a protective layer that curbs its high catalytic reactivity.
-- question: What are the common issues with **residue removal on ruthenium** surfaces using femtosecond lasers versus nanosecond lasers?
-  answer: '**Femtosecond enables non-thermal ablation**. Femtosecond lasers, particularly via precise non-thermal ablation, effectively remove ruthenium residues, producing minimal heat-affected zones and enhanced surface integrity compared to nanosecond systems. These ns systems frequently induce thermal damage or incomplete cleaning at 2.3 J/cm² fluence. Notably, electronics case studies demonstrate fs''s cleaner outcomes, yet with 20-30% slower rates than ns at 50 kHz repetition.'
-- question: How does **ruthenium's melting point** influence the choice of laser power for surface treatment in jewelry applications?
-  answer: '**Allows 45 W without fusion**. Notably, ruthenium''s high melting point of 2334°C enables laser powers near 45 W for jewelry cleaning, vaporizing surface oxides while avoiding base material fusion. Its moderate thermal conductivity thus requires precise fluence control at 2.3 J/cm² to avoid heat buildup and keep contaminant removal superficial.'
-- question: What regulatory standards apply to **handling ruthenium dust** generated during laser cleaning in industrial settings?
-  answer: '**Classifies as hazardous toxic waste**. When managing ruthenium dust produced by laser cleaning, adherence to EPA standards for toxic metal waste is crucial, designating it as hazardous for safe disposal while capping airborne exposure at under 0.1 mg/m³ per OSHA PEL. Particularly under REACH, EU operators must register ruthenium particulates and ensure ventilation during 2.3 J/cm² fluence operations, thus reducing inhalation hazards in electronics or aerospace settings.'
-- question: Can laser cleaning restore the optical properties of ruthenium-coated EUV lithography mirrors after contamination?
-  answer: Yes, laser cleaning notably restores ruthenium-coated EUV lithography mirrors, recovering reflectivity above 95% at 13.5 nm following contamination. Specifically, a 1064 nm wavelength with 2.3 J/cm² fluence and 45 W power ablates oxides cleanly without substrate damage, thus preserving low surface roughness per ASML protocols.
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 60.0
-    electricalConductivity:
-      value: '1.4e+07'
-      unit: S/m
-      source: ai_research
-      min: 659300
-      max: '6.6e+07'
-    electricalResistivity:
-      value: '7.1e-08'
-      unit: Ω·m
-      source: ai_research
-      min: 0
-      max: 2e-06
-    fractureToughness:
-      value: 1.8
-      unit: MPa m^{0.5}
-      source: ai_research
-      min: 0.67
-      max: 157
-    surfaceRoughness:
-      value: 0.3
-      unit: nm
-      source: ai_research
-      min: 0.02
-      max: 6.6
-    youngsModulus:
-      value: 447
-      unit: GPa
-      source: ai_research
-      min: 10.4
-      max: 2e+11
-    oxidationResistance:
-      value: 1073
-      unit: K
-      source: ai_research
-      min: -554
-      max: 1762
-    density:
-      value: 12.4
-      unit: g/cm³
-      source: ai_research
-      min: 1.7
-      max: 9408
-    hardness:
-      value: 210
-      unit: HV
-      source: ai_research
-      min: 0.2
-      max: 3500
-    corrosionResistance:
-      value: 0.98
-      unit: dimensionless (resistance index 0-1)
-      source: ai_research
-      min: -1.1
-      max: '1.1e+06'
-    compressiveStrength:
-      value: 2200
-      unit: MPa
-      source: ai_research
-      min: 8
-      max: 2625
-    flexuralStrength:
-      value: 950
-      unit: MPa
-      source: ai_research
-      min: 11.4
-      max: 2897
-    tensileStrength:
-      value: 410
-      unit: MPa
-      source: ai_research
-      min: 3
-      max: 3000
-    porosity:
-      value: 0
-      unit: fraction
-      source: ai_research
-      min: 0
-      max: 15
-    absorptivity:
-      value: 0.38
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.6
-    boilingPoint:
-      value: 4423
-      unit: K
-      source: ai_research
-      min: 929
-      max: 6454
-    absorptionCoefficient:
-      value: '4.5e+07'
-      unit: m^{-1}
-      source: ai_research
-      min: 589000
-      max: '9.9e+07'
-    meltingPoint:
-      value: 2607
-      unit: K
-      source: ai_research
-      min: 133
-      max: 3865
-    vaporPressure:
-      value: 38
-      unit: Pa
-      source: ai_research
-      min: 0
-      max: 106391
-    thermalDestructionPoint:
-      value: 2607
-      unit: K
-      source: ai_research
-      min: 133
-      max: 3865
-    reflectivity:
-      value: 0.55
-      unit: fraction
-      source: ai_research
-      min: 0.35
-      max: 1
-    thermalShockResistance:
-      value: 161
-      unit: K
-      source: ai_research
-      min: 6.7
-      max: 379050
-    laserDamageThreshold:
-      value: 2.1
-      unit: J/cm²
-      source: ai_research
-      min: 0.27
-      max: 15750
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    absorptionCoefficient:
-      source: ai_research
-      unit: m⁻¹
-      value: '5.4e+07'
-      min: 589000
-      max: '9.9e+07'
-    absorptivity:
-      source: ai_research
-      unit: dimensionless
-      value: 0.42
-      min: 0.02
-      max: 0.6
-    laserDamageThreshold:
-      source: ai_research
-      unit: J/cm²
-      value: 0.45
-      min: 0.27
-      max: 15750
-    reflectivity:
-      source: ai_research
-      unit: dimensionless (ratio)
-      value: 0.65
-      min: 0.35
-      max: 1
-    thermalDestructionPoint:
-      source: ai_research
-      unit: K
-      value: 2523
-      min: 133
-      max: 3865
-    thermalShockResistance:
-      source: ai_research
-      unit: °C
-      value: 450
-      min: 6.7
-      max: 379050
-    vaporPressure:
-      source: ai_research
-      unit: Pa
-      value: 1.3
-      min: 0
-      max: 106391
-    thermalDestruction:
-      value: 2607
-      unit: K
-      source: ai_research
-      min: 256
-      max: 3859
-    specificHeat:
-      value: 238
-      unit: J/(kg·K)
-      source: ai_research
-      min: 43.4
-      max: 1905
-    laserReflectivity:
-      value: 0.68
-      unit: ''
-      source: ai_research
-      min: 0.4
-      max: 73.5
-    thermalConductivity:
-      value: 117
-      unit: W/m·K
-      source: ai_research
-      min: 7.4
-      max: 450
-    thermalExpansion:
-      value: '6.4e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: 4e-06
-      max: 31.7
-    laserAbsorption:
-      value: 0.11
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: '4.2e+08'
-    thermalDiffusivity:
-      value: '3.9e-05'
-      unit: m^2/s
-      source: ai_research
-      min: 2e-06
-      max: '0.00017'
-    ablationThreshold:
-      value: 0.92
-      unit: J/cm²
-      source: ai_research
-      min: 0.09
-      max: 4.3
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.922617Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922623Z'
-  structure_version: '2.0'
-domain_linkages: {}
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 1
-    estimatedHoursTypical: 3
-    targetContaminants:
-    - Oxide layer
-    - Paint and coatings
-    - Grease and oils
-    - Anodizing removal
-    - Tarnish and patina
-    notes: Lower power settings recommended due to high reflectivity
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-17T12:38:48.399451'
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - ruthenium-laser-cleaning
+  - - title
+    - Ruthenium Laser Cleaning
+  - - slug
+    - ruthenium-laser-cleaning
+  - - category
+    - metal
+  - - subcategory
+    - non-ferrous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_material
+  - - datePublished
+    - '2025-12-17T12:38:48.398264'
+  - - dateModified
+    - '2025-12-17T12:38:48.398264'
+  - - author
+    - id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+  - - material_description
+    - When facing harsh chemical environments that corrode most metals, I've observed
+      Ruthenium performing exceptionally well, thanks to its outstanding corrosion
+      resistance over everyday options like nickel or copper, ensuring reliable components
+      in processing plants and marine applications without additional protective coatings.
+  - - micro
+    - before: "Under 1000x magnification, the ruthenium surface looks rough and covered\
+        \ in dark, sticky patches that scatter across the view.  \nIrregular clumps\
+        \ of grime cling tightly, dulling the metal's natural gleam and creating bumpy\
+        \ textures everywhere.  \nThese contaminants build up unevenly, hiding the\
+        \ underlying structure from clear sight."
+      after: "After laser treatment at 1000x magnification, the ruthenium surface\
+        \ appears smooth and free of all dark patches that once cluttered it.  \n\
+        Clean lines emerge"
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Materials
+        href: /materials
+      - label: Metal
+        href: /materials/metal
+      - label: Non Ferrous
+        href: /materials/metal/non-ferrous
+      - label: Ruthenium
+        href: /materials/metal/non-ferrous/ruthenium
+  - - images
+    - hero:
+        alt: Ruthenium surface undergoing laser cleaning showing precise contamination
+          removal
+        url: /images/material/ruthenium-laser-cleaning-hero.jpg
+      micro:
+        alt: Ruthenium microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/ruthenium-laser-cleaning-micro.jpg
+  - - eeat
+    - reviewedBy: Z-Beam Quality Assurance Team
+      citations:
+      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      isBasedOn:
+        name: IEC 60825 - Safety of Laser Products
+        url: https://webstore.iec.ch/publication/3587
+  - - _metadata
+    - voice:
+        author_name: Yi-Chun Lin
+        author_country: Taiwan
+        voice_applied: true
+        content_type: material
+  - - faq
+    - - question: What laser wavelengths are most effective for cleaning ruthenium-coated
+          mirrors without **causing delamination**?
+        answer: '**1064 nm minimizes delamination**. Notably, for ruthenium-coated
+          mirrors, the 1064 nm near-IR laser wavelength excels in oxide removal at
+          2.3 J/cm² fluence. It minimizes delamination by targeting the thin film''s
+          absorption, thus preventing substrate harm. The 532 nm green light serves
+          as an alternative, but specifically demands stricter pulse control to preserve
+          coating adhesion. This method achieves uniform cleaning across two passes
+          at 500 mm/s scan speed.'
+      - question: How does ruthenium's **high reflectivity** affect the efficiency
+          of laser cleaning processes on optical surfaces?
+        answer: '**Impedes absorption, slows efficiency**. Ruthenium shows high reflectivity,
+          particularly 70-90% across visible and IR ranges, which scatters substantial
+          laser energy on optical surfaces and hinders absorption, thereby reducing
+          cleaning efficiency. Address this challenge using a 1064 nm wavelength with
+          8 ns pulses at 2.3 J/cm² fluence, thus improving targeted oxide removal
+          while preventing bulk damage.'
+      - question: Are there specific safety risks when using pulsed lasers to remove
+          contaminants from ruthenium alloys in semiconductor manufacturing?
+        answer: Pulsed laser cleaning of ruthenium alloys at 1064 nm can trigger ruthenium
+          oxide formation, particularly when fluence exceeds 2.3 J/cm², thus releasing
+          potentially toxic vapors. Airborne nanoparticles from ablation pose inhalation
+          hazards, so adhere to OSHA ventilation standards using local exhaust systems
+          to capture fines under 50 μm spot size.
+      - question: What pulse energy levels should be used to avoid thermal damage
+          when laser cleaning **ruthenium thin films** on substrates?
+        answer: '**fluences below 1 J/cm²**. For laser cleaning of ruthenium thin
+          films, target pulse fluences below 1 J/cm² to avoid thermal damage to underlying
+          substrates. Specifically at 1064 nm with 8 ns pulses, this threshold enables
+          selective oxide ablation while curbing heat buildup—thus, apply interferometry
+          for real-time surface monitoring.'
+      - question: In laser cleaning of ruthenium catalysts, how can we prevent chemical
+          reactions with residual surface impurities?
+        answer: To protect ruthenium catalysts against reactions with surface impurities
+          during laser cleaning, conduct the process under an inert argon atmosphere,
+          specifically at 1064 nm wavelength and 2.3 J/cm² fluence, for precise oxide
+          removal. Then, passivate the surface via controlled exposure, thus forming
+          a protective layer that curbs its high catalytic reactivity.
+      - question: What are the common issues with **residue removal on ruthenium**
+          surfaces using femtosecond lasers versus nanosecond lasers?
+        answer: '**Femtosecond enables non-thermal ablation**. Femtosecond lasers,
+          particularly via precise non-thermal ablation, effectively remove ruthenium
+          residues, producing minimal heat-affected zones and enhanced surface integrity
+          compared to nanosecond systems. These ns systems frequently induce thermal
+          damage or incomplete cleaning at 2.3 J/cm² fluence. Notably, electronics
+          case studies demonstrate fs''s cleaner outcomes, yet with 20-30% slower
+          rates than ns at 50 kHz repetition.'
+      - question: How does **ruthenium's melting point** influence the choice of laser
+          power for surface treatment in jewelry applications?
+        answer: '**Allows 45 W without fusion**. Notably, ruthenium''s high melting
+          point of 2334°C enables laser powers near 45 W for jewelry cleaning, vaporizing
+          surface oxides while avoiding base material fusion. Its moderate thermal
+          conductivity thus requires precise fluence control at 2.3 J/cm² to avoid
+          heat buildup and keep contaminant removal superficial.'
+      - question: What regulatory standards apply to **handling ruthenium dust** generated
+          during laser cleaning in industrial settings?
+        answer: '**Classifies as hazardous toxic waste**. When managing ruthenium
+          dust produced by laser cleaning, adherence to EPA standards for toxic metal
+          waste is crucial, designating it as hazardous for safe disposal while capping
+          airborne exposure at under 0.1 mg/m³ per OSHA PEL. Particularly under REACH,
+          EU operators must register ruthenium particulates and ensure ventilation
+          during 2.3 J/cm² fluence operations, thus reducing inhalation hazards in
+          electronics or aerospace settings.'
+      - question: Can laser cleaning restore the optical properties of ruthenium-coated
+          EUV lithography mirrors after contamination?
+        answer: Yes, laser cleaning notably restores ruthenium-coated EUV lithography
+          mirrors, recovering reflectivity above 95% at 13.5 nm following contamination.
+          Specifically, a 1064 nm wavelength with 2.3 J/cm² fluence and 45 W power
+          ablates oxides cleanly without substrate damage, thus preserving low surface
+          roughness per ASML protocols.
+  - - regulatoryStandards
+    - - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        image: /images/logo/logo-org-fda.png
+        longName: Food and Drug Administration
+        name: FDA
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      - description: ANSI Z136.1 - Safe Use of Lasers
+        image: /images/logo/logo-org-ansi.png
+        longName: American National Standards Institute
+        name: ANSI
+        url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      - description: IEC 60825 - Safety of Laser Products
+        image: /images/logo/logo-org-iec.png
+        longName: International Electrotechnical Commission
+        name: IEC
+        url: https://webstore.iec.ch/publication/3587
+      - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+        image: /images/logo/logo-org-osha.png
+        longName: Occupational Safety and Health Administration
+        name: OSHA
+        url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  - - materialProperties
+    - material_characteristics:
+        label: Material Characteristics
+        percentage: 60.0
+        electricalConductivity:
+          value: '1.4e+07'
+          unit: S/m
+          source: ai_research
+          min: 659300
+          max: '6.6e+07'
+        electricalResistivity:
+          value: '7.1e-08'
+          unit: Ω·m
+          source: ai_research
+          min: 0
+          max: 2e-06
+        fractureToughness:
+          value: 1.8
+          unit: MPa m^{0.5}
+          source: ai_research
+          min: 0.67
+          max: 157
+        surfaceRoughness:
+          value: 0.3
+          unit: nm
+          source: ai_research
+          min: 0.02
+          max: 6.6
+        youngsModulus:
+          value: 447
+          unit: GPa
+          source: ai_research
+          min: 10.4
+          max: 2e+11
+        oxidationResistance:
+          value: 1073
+          unit: K
+          source: ai_research
+          min: -554
+          max: 1762
+        density:
+          value: 12.4
+          unit: g/cm³
+          source: ai_research
+          min: 1.7
+          max: 9408
+        hardness:
+          value: 210
+          unit: HV
+          source: ai_research
+          min: 0.2
+          max: 3500
+        corrosionResistance:
+          value: 0.98
+          unit: dimensionless (resistance index 0-1)
+          source: ai_research
+          min: -1.1
+          max: '1.1e+06'
+        compressiveStrength:
+          value: 2200
+          unit: MPa
+          source: ai_research
+          min: 8
+          max: 2625
+        flexuralStrength:
+          value: 950
+          unit: MPa
+          source: ai_research
+          min: 11.4
+          max: 2897
+        tensileStrength:
+          value: 410
+          unit: MPa
+          source: ai_research
+          min: 3
+          max: 3000
+        porosity:
+          value: 0
+          unit: fraction
+          source: ai_research
+          min: 0
+          max: 15
+        absorptivity:
+          value: 0.38
+          unit: dimensionless
+          source: ai_research
+          min: 0.02
+          max: 0.6
+        boilingPoint:
+          value: 4423
+          unit: K
+          source: ai_research
+          min: 929
+          max: 6454
+        absorptionCoefficient:
+          value: '4.5e+07'
+          unit: m^{-1}
+          source: ai_research
+          min: 589000
+          max: '9.9e+07'
+        meltingPoint:
+          value: 2607
+          unit: K
+          source: ai_research
+          min: 133
+          max: 3865
+        vaporPressure:
+          value: 38
+          unit: Pa
+          source: ai_research
+          min: 0
+          max: 106391
+        thermalDestructionPoint:
+          value: 2607
+          unit: K
+          source: ai_research
+          min: 133
+          max: 3865
+        reflectivity:
+          value: 0.55
+          unit: fraction
+          source: ai_research
+          min: 0.35
+          max: 1
+        thermalShockResistance:
+          value: 161
+          unit: K
+          source: ai_research
+          min: 6.7
+          max: 379050
+        laserDamageThreshold:
+          value: 2.1
+          unit: J/cm²
+          source: ai_research
+          min: 0.27
+          max: 15750
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        percentage: 40.0
+        absorptionCoefficient:
+          source: ai_research
+          unit: m⁻¹
+          value: '5.4e+07'
+          min: 589000
+          max: '9.9e+07'
+        absorptivity:
+          source: ai_research
+          unit: dimensionless
+          value: 0.42
+          min: 0.02
+          max: 0.6
+        laserDamageThreshold:
+          source: ai_research
+          unit: J/cm²
+          value: 0.45
+          min: 0.27
+          max: 15750
+        reflectivity:
+          source: ai_research
+          unit: dimensionless (ratio)
+          value: 0.65
+          min: 0.35
+          max: 1
+        thermalDestructionPoint:
+          source: ai_research
+          unit: K
+          value: 2523
+          min: 133
+          max: 3865
+        thermalShockResistance:
+          source: ai_research
+          unit: °C
+          value: 450
+          min: 6.7
+          max: 379050
+        vaporPressure:
+          source: ai_research
+          unit: Pa
+          value: 1.3
+          min: 0
+          max: 106391
+        thermalDestruction:
+          value: 2607
+          unit: K
+          source: ai_research
+          min: 256
+          max: 3859
+        specificHeat:
+          value: 238
+          unit: J/(kg·K)
+          source: ai_research
+          min: 43.4
+          max: 1905
+        laserReflectivity:
+          value: 0.68
+          unit: ''
+          source: ai_research
+          min: 0.4
+          max: 73.5
+        thermalConductivity:
+          value: 117
+          unit: W/m·K
+          source: ai_research
+          min: 7.4
+          max: 450
+        thermalExpansion:
+          value: '6.4e-06'
+          unit: K^{-1}
+          source: ai_research
+          min: 4e-06
+          max: 31.7
+        laserAbsorption:
+          value: 0.11
+          unit: dimensionless
+          source: ai_research
+          min: 0.02
+          max: '4.2e+08'
+        thermalDiffusivity:
+          value: '3.9e-05'
+          unit: m^2/s
+          source: ai_research
+          min: 2e-06
+          max: '0.00017'
+        ablationThreshold:
+          value: 0.92
+          unit: J/cm²
+          source: ai_research
+          min: 0.09
+          max: 4.3
+  - - material_metadata
+    - last_updated: '2025-10-27T23:48:40.922617Z'
+      normalization_applied: true
+      normalization_date: '2025-10-27T23:48:40.922623Z'
+      structure_version: '2.0'
+  - - serviceOffering
+    - enabled: true
+      type: professionalCleaning
+      materialSpecific:
+        estimatedHoursMin: 1
+        estimatedHoursTypical: 3
+        targetContaminants:
+        - Oxide layer
+        - Paint and coatings
+        - Grease and oils
+        - Anodizing removal
+        - Tarnish and patina
+        notes: Lower power settings recommended due to high reflectivity
+  - - preservedData
+    - generationMetadata:
+        generated_date: '2025-12-17T12:38:48.399451'

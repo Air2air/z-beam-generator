@@ -1,54 +1,70 @@
-id: polystyrene-settings
-name: Polystyrene
-slug: polystyrene-settings
-category: plastic
-subcategory: thermoplastic
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.391272'
-dateModified: '2025-12-17T12:39:12.391272'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Polystyrene surface cleaning without thermal damage
-    unit: W
-    value: 25
-  wavelength:
-    description: Near-IR wavelength providing good absorption in Polystyrene with minimal thermal penetration
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning control on Polystyrene surfaces
-    unit: μm
-    value: 100
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 20
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal without substrate damage
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of Polystyrene surface contaminants
-    unit: ns
-    value: 100
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning pattern
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Polystyrene
-  href: /settings/polystyrene-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - polystyrene-settings
+  - - slug
+    - polystyrene-settings
+  - - category
+    - plastic
+  - - subcategory
+    - thermoplastic
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.391272'
+  - - dateModified
+    - '2025-12-17T12:39:12.391272'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Polystyrene
+        href: /settings/polystyrene-settings
+  - - name
+    - Polystyrene
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Polystyrene surface cleaning without
+          thermal damage
+        unit: W
+        value: 25
+      wavelength:
+        description: Near-IR wavelength providing good absorption in Polystyrene with
+          minimal thermal penetration
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning control on Polystyrene
+          surfaces
+        unit: μm
+        value: 100
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning with thermal management
+        unit: kHz
+        value: 20
+      energyDensity:
+        description: Fluence threshold for effective contaminant removal without substrate
+          damage
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled ablation of Polystyrene
+          surface contaminants
+        unit: ns
+        value: 100
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning pattern
+        unit: '%'
+        value: 50

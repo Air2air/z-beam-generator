@@ -1,73 +1,95 @@
-id: hydrogen-cyanide-compound
-name: Hydrogen Cyanide
-display_name: Hydrogen Cyanide (HCN)
-slug: hydrogen-cyanide
-chemical_formula: HCN
-cas_number: 74-90-8
-molecular_weight: 27.03
-datePublished: '2025-12-17T12:19:39.248668'
-dateModified: '2025-12-17T12:19:39.248668'
-category: toxic-gas
-subcategory: cyanide
-hazard_class: toxic
-exposure_limits:
-  osha_pel_ppm: 10
-  osha_pel_mg_m3: 11
-  niosh_rel_ppm: null
-  niosh_rel_mg_m3: 5
-  acgih_tlv_ppm: null
-  acgih_tlv_mg_m3: 4.7
-health_effects_keywords:
-- cellular_asphyxiation
-- rapid_unconsciousness
-- respiratory_failure
-- fatal_at_high_dose
-monitoring_required: true
-typical_concentration_range: 1-10 mg/m³
-sources_in_laser_cleaning:
-- nitrogen_containing_polymers
-- polyurethane_decomposition
-- nylon_pyrolysis
-description: null
-health_effects: null
-exposure_guidelines: null
-detection_methods: null
-first_aid: null
-domain_linkages: {}
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_compound
-schema_version: 4.0.0
-breadcrumb:
-- label: Home
-  href: /
-- label: Hazardous Compounds
-  href: /compounds
-- label: Hydrogen Cyanide
-  href: /compounds/hydrogen-cyanide-compound
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - hydrogen-cyanide-compound
+  - - slug
+    - hydrogen-cyanide
+  - - category
+    - toxic-gas
+  - - subcategory
+    - cyanide
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_compound
+  - - datePublished
+    - '2025-12-17T12:19:39.248668'
+  - - dateModified
+    - '2025-12-17T12:19:39.248668'
+  - - author
+    - id: 4
+      name: Todd Dunning
+      country: United States
+      country_display: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      persona_file: usa_persona.yaml
+      formatting_file: usa_formatting.yaml
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Hazardous Compounds
+        href: /compounds
+      - label: Hydrogen Cyanide
+        href: /compounds/hydrogen-cyanide-compound
+  - - name
+    - Hydrogen Cyanide
+  - - display_name
+    - Hydrogen Cyanide (HCN)
+  - - chemical_formula
+    - HCN
+  - - cas_number
+    - 74-90-8
+  - - molecular_weight
+    - 27.03
+  - - hazard_class
+    - toxic
+  - - exposure_limits
+    - osha_pel_ppm: 10
+      osha_pel_mg_m3: 11
+      niosh_rel_ppm: null
+      niosh_rel_mg_m3: 5
+      acgih_tlv_ppm: null
+      acgih_tlv_mg_m3: 4.7
+  - - health_effects_keywords
+    - - cellular_asphyxiation
+      - rapid_unconsciousness
+      - respiratory_failure
+      - fatal_at_high_dose
+  - - monitoring_required
+    - true
+  - - typical_concentration_range
+    - 1-10 mg/m³
+  - - sources_in_laser_cleaning
+    - - nitrogen_containing_polymers
+      - polyurethane_decomposition
+      - nylon_pyrolysis
+  - - description
+    - null
+  - - health_effects
+    - null
+  - - exposure_guidelines
+    - null
+  - - detection_methods
+    - null
+  - - first_aid
+    - null

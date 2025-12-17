@@ -1,91 +1,66 @@
-id: titanium-settings
-name: Titanium
-slug: titanium-settings
-category: metal
-subcategory: specialty
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.530395'
-dateModified: '2025-12-17T12:39:12.530395'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - annealing-scale-contamination
-  - aviation-sealant-contamination
-  - biological-stains-contamination
-  - carbon-soot-contamination
-  - ceramic-coating-contamination
-  - chemical-stains-contamination
-  - cutting-fluid-contamination
-  - diamond-coating-contamination
-  - epoxy-residue-contamination
-  - exhaust-residue-contamination
-  - fertilizer-residue-contamination
-  - graffiti-paint-contamination
-  - graphite-marks-contamination
-  - ink-stains-contamination
-  - insect-residue-contamination
-  - laser-marking-contamination
-  - lime-scale-contamination
-  - mercury-contamination
-  - mineral-deposits-contamination
-  - paint-residue-contamination
-  - pesticide-residue-contamination
-  - plasma-spray-contamination
-  - plastic-residue-contamination
-  - pollen-deposit-contamination
-  - radioactive-contamination
-  - rubber-residue-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - silicone-buildup-contamination
-  - surgical-marking-contamination
-  - tree-sap-contamination
-  - water-stain-contamination
-  - wax-buildup-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Titanium oxide layer removal
-    unit: W
-    value: 100
-  wavelength:
-    description: Optimal wavelength for Titanium absorption characteristics
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Optimal beam spot diameter for Titanium surface treatment
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for efficient Titanium cleaning process
-    unit: kHz
-    value: 100
-  fluenceThreshold:
-    description: Minimum fluence required for effective Titanium surface cleaning
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Optimal pulse duration for Titanium ablation without thermal damage
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform Titanium cleaning
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Optimal number of passes for thorough Titanium cleaning
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for complete Titanium surface coverage
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Titanium
-  href: /settings/titanium-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - titanium-settings
+  - - slug
+    - titanium-settings
+  - - category
+    - metal
+  - - subcategory
+    - specialty
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.530395'
+  - - dateModified
+    - '2025-12-17T12:39:12.530395'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Titanium
+        href: /settings/titanium-settings
+  - - name
+    - Titanium
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Titanium oxide layer removal
+        unit: W
+        value: 100
+      wavelength:
+        description: Optimal wavelength for Titanium absorption characteristics
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Optimal beam spot diameter for Titanium surface treatment
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for efficient Titanium cleaning process
+        unit: kHz
+        value: 100
+      fluenceThreshold:
+        description: Minimum fluence required for effective Titanium surface cleaning
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Optimal pulse duration for Titanium ablation without thermal
+          damage
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform Titanium cleaning
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Optimal number of passes for thorough Titanium cleaning
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for complete Titanium surface coverage
+        unit: '%'
+        value: 50

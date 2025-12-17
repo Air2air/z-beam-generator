@@ -1,58 +1,75 @@
-id: thermoplastic-elastomer-settings
-name: Thermoplastic Elastomer
-slug: thermoplastic-elastomer-settings
-category: composite
-subcategory: structural
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.522531'
-dateModified: '2025-12-17T12:39:12.522531'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Thermoplastic Elastomer surface cleaning without thermal damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength optimized for Thermoplastic Elastomer absorption and minimal substrate damage
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning control on Thermoplastic Elastomer surfaces
-    unit: μm
-    value: 100
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal without damaging Thermoplastic Elastomer substrate
-    unit: J/cm²
-    value: 1.2
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
-    unit: '%'
-    value: 50
-  dwellTime:
-    description: Optimal dwell time per spot for effective cleaning
-    unit: μs
-    value: 100
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Thermoplastic Elastomer
-  href: /settings/thermoplastic-elastomer-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - thermoplastic-elastomer-settings
+  - - slug
+    - thermoplastic-elastomer-settings
+  - - category
+    - composite
+  - - subcategory
+    - structural
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.522531'
+  - - dateModified
+    - '2025-12-17T12:39:12.522531'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Thermoplastic Elastomer
+        href: /settings/thermoplastic-elastomer-settings
+  - - name
+    - Thermoplastic Elastomer
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Thermoplastic Elastomer surface cleaning
+          without thermal damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength optimized for Thermoplastic Elastomer absorption
+          and minimal substrate damage
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning control on Thermoplastic
+          Elastomer surfaces
+        unit: μm
+        value: 100
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning with thermal management
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for effective contaminant removal without damaging
+          Thermoplastic Elastomer substrate
+        unit: J/cm²
+        value: 1.2
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled ablation of surface
+          contaminants
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning without excessive thermal
+          buildup
+        unit: '%'
+        value: 50
+      dwellTime:
+        description: Optimal dwell time per spot for effective cleaning
+        unit: μs
+        value: 100

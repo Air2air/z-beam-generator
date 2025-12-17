@@ -1,58 +1,74 @@
-id: brick-settings
-name: Brick
-slug: brick-settings
-category: masonry
-subcategory: general
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.175293'
-dateModified: '2025-12-17T12:39:12.175293'
-domain_linkages:
-  contaminants:
-  - efflorescence-contamination
-  - graffiti-paint-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for brick surface cleaning without thermal damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-infrared wavelength for optimal brick absorption and minimal substrate damage
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for effective cleaning resolution on brick surface texture
-    unit: μm
-    value: 100
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal management
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal while preserving brick substrate
-    unit: J/cm²
-    value: 12
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage and process efficiency
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contaminant removal from porous brick surface
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning without excessive thermal accumulation
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Brick
-  href: /settings/brick-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - brick-settings
+  - - slug
+    - brick-settings
+  - - category
+    - masonry
+  - - subcategory
+    - general
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.175293'
+  - - dateModified
+    - '2025-12-17T12:39:12.175293'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Brick
+        href: /settings/brick-settings
+  - - name
+    - Brick
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for brick surface cleaning without thermal
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-infrared wavelength for optimal brick absorption and minimal
+          substrate damage
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for effective cleaning resolution on brick
+          surface texture
+        unit: μm
+        value: 100
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning coverage and thermal
+          management
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for effective contaminant removal while preserving
+          brick substrate
+        unit: J/cm²
+        value: 12
+      pulseWidth:
+        description: Nanosecond pulse duration for effective contaminant removal with
+          controlled thermal penetration
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning coverage and process
+          efficiency
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+          from porous brick surface
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap percentage for uniform cleaning without
+          excessive thermal accumulation
+        unit: '%'
+        value: 50

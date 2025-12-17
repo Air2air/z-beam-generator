@@ -1,312 +1,395 @@
-id: ceramic-matrix-composites-cmcs-laser-cleaning
-name: ceramic-matrix-composites-cmcs-laser-cleaning
-slug: ceramic-matrix-composites-cmcs-laser-cleaning
-category: composite
-subcategory: fiber-reinforced
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:38:46.694950'
-dateModified: '2025-12-17T12:38:46.694950'
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
-title: CMCs Laser Cleaning
-material_description: When working with Ceramic Matrix Composites in high-heat environments, prioritize their superior toughness that resists cracking under thermal stress, allowing them to surpass brittle traditional ceramics by preserving structural integrity in aerospace or energy applications
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composite
-- label: Fiber Reinforced
-  href: /materials/composite/fiber-reinforced
-- label: Ceramic Matrix Composites CMCs
-  href: /materials/composite/fiber-reinforced/ceramic-matrix-composites-cmcs
-images:
-  hero:
-    alt: Ceramic Matrix Composites Cmcs surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/ceramic-matrix-composites-cmcs-laser-cleaning-hero.jpg
-  micro:
-    alt: Ceramic Matrix Composites Cmcs microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/ceramic-matrix-composites-cmcs-laser-cleaning-micro.jpg
-micro:
-  before: I've seen contaminated CMC surfaces under magnification show a rough, dusty layer everywhere. Particles cling tightly to the fibers, making the whole thing look uneven and clogged. This buildup hides the material's true texture completely.
-  after: After laser treatment, the same surface appears smooth and open. Fibers stand out clearly now, free from any clinging debris. The clean look reveals a uniform, fresh structure overall.
-faq:
-- question: What is the maximum safe laser fluence (J/cm²) for cleaning CMCs without damaging the **SiC matrix** or fiber reinforcement?
-  answer: '**Fluence below 2-4 J/cm²**. For typical SiC/SiC composites, I suggest keeping fluence below 2-4 J/cm² using nanosecond pulses at 1064 nm. Notably, this range removes oxides and carbon deposits effectively while preserving matrix integrity. Thus, the precise safe threshold depends on your specific fiber type and initial surface contamination level.'
-- question: How do I remove environmental contaminants like carbonaceous soot from CMC turbine blades without altering the underlying protective EBC (**Environmental Barrier Coating**)?
-  answer: '**Preserves EBC integrity**. Employing a 1064 nm wavelength at 5 J/cm² fluence particularly ablates carbonaceous soot, while preserving Yb₂SiO₅ EBC integrity. We sustain a 500 mm/s scan speed with 50 μm spot size to guarantee contaminant removal absent thermal alteration. Thus, optical microscopy post-processing verifies surface preservation.'
-- question: What **laser wavelength** (e.g., 1064nm, 532nm, or 10.6μm) is most effective for cleaning CMCs, and why?
-  answer: '**1064nm preserves SiC and fibers**. In CMC laser cleaning, the 1064nm wavelength at 5 J/cm² fluence notably achieves optimal absorption balance. This specifically removes contaminants while preserving the SiC matrix and carbon fibers, thus preventing thermal damage to the composite''s critical constituents.'
-- question: Can laser cleaning induce micro-cracks or thermal stress damage in the CMC's **brittle ceramic matrix**?
-  answer: '**Nanosecond pulses minimize micro-cracks**. Yes, notably, laser cleaning can induce micro-cracks in CMCs due to thermal shock. Employing nanosecond pulses at 10 ns with a fluence of 5 J/cm² helps minimize this risk by restricting heat diffusion. Thus, process monitoring remains essential for detecting subsurface thermal stress damage.'
-- question: What are the best practices for handling the nanoparticles and vapors generated during laser cleaning of CMCs, especially those with **carbon fibers**?
-  answer: '**Requires HEPA filtration ventilation**. Applying a 5 J/cm² fluence notably generates SiC nanoparticles and carbon fibers that demand HEPA filtration. Thus, uphold industrial hygiene through adequate ventilation and respiratory safeguards for operators managing these ultrafine byproducts in CMC laser processing.'
-- question: How does laser cleaning affect the **surface roughness and porosity** of a CMC, and what is the impact on subsequent re-coating or re-inspection?
-  answer: '**Opens pores, enhances adhesion**. Properly tuned 1064 nm laser cleaning at 5 J/cm² minimally alters CMC topography. Specifically, it can slightly increase surface roughness by opening sealed pores, which notably enhances coating adhesion but may require NDE signal compensation for accurate inspection.'
-- question: Is laser cleaning a viable method for depainting CMC components, and what are the risks of leaving **residual chemical contaminants** from the paint?
-  answer: '**Risk of carbonaceous residues**. Notably, laser depainting at 5 J/cm² removes organic coatings from CMCs effectively, with minimal substrate interaction. Particularly, the key risk involves incomplete paint pyrolysis, potentially leaving carbonaceous residues unseen in mechanical approaches. Thus, strict parameter control proves vital to prevent this contamination.'
-- question: For automated laser cleaning of **complex CMC geometries** (like airfoils), how critical is beam delivery and scanning control to ensure uniform cleaning without hot spots?
-  answer: '**Precise 3D beam delivery paramount**. For intricate CMC airfoils, accurate 3D beam delivery proves essential. Notably, galvo scanners facilitate swift contour tracking at 500 mm/s, while closed-loop LIBS monitoring specifically maintains uniform 5 J/cm² fluence to avert hot spots and thermal damage.'
-- question: What is the fundamental difference in laser interaction between a SiC/SiC CMC and a C/C (Carbon-Carbon) composite, and how does that change the cleaning strategy?
-  answer: The core distinction arises from carbon's strong 1064 nm absorption and oxidation susceptibility, compared to SiC's robust ablation threshold around 5 J/cm². Specifically, C/C processing requires inert gas support and milder fluence levels, while SiC/SiC tolerates harsher ns-pulse conditions. Thus, these factors shape unique laser tactics for each composite.
-- question: After laser cleaning, what non-destructive testing (NDE) methods are most reliable for verifying surface integrity and the absence of heat-affected zones on CMCs?
-  answer: For verifying CMC surface integrity post-laser cleaning at 5 J/cm², fluorescent penetrant inspection particularly excels at revealing micro-cracks. Notably, pulsed thermography offers high reliability in detecting subsurface thermal alterations by mapping effusivity changes in potential heat-affected zones, all without contact.
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 60.0
-    electricalResistivity:
-      value: 0.02
-      unit: ohm-m
-      source: ai_research
-      min: 0
-      max: 1e+14
-    fractureToughness:
-      value: 25
-      unit: MPa√m
-      source: ai_research
-      min: 0.01
-      max: 26.2
-    density:
-      value: 2.6
-      unit: g/cm³
-      source: ai_research
-      min: 1
-      max: 2520
-    oxidationResistance:
-      value: 1400
-      unit: °C
-      source: ai_research
-      min: 0
-      max: 1668
-    youngsModulus:
-      value: 240
-      unit: GPa
-      source: ai_research
-      min: '0.0047'
-      max: '1.4e+11'
-    hardness:
-      value: 20.5
-      unit: GPa
-      source: ai_research
-      min: 5
-      max: 120
-    compressiveStrength:
-      value: 420
-      unit: MPa
-      source: ai_research
-      min: 6.6
-      max: 1260
-    tensileStrength:
-      value: 310
-      unit: MPa
-      source: ai_research
-      min: 16.1
-      max: 1627
-    flexuralStrength:
-      value: 350
-      unit: MPa
-      source: ai_research
-      min: 4.6
-      max: 1197
-    corrosionResistance:
-      value: '0.005'
-      unit: mm/year
-      source: ai_research
-      min: 0
-      max: 4725
-    laserDamageThreshold:
-      value: 3.2
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Laser Damage Thresholds of Silicon Carbide-Based Ceramic Matrix Composites
-      citation: 'Mei, H. et al., Journal of the European Ceramic Society, 2019, DOI: 10.1016/j.jeurceramsoc.2019.05.012'
-      context: SiC/SiC CMC with 2D woven Hi-Nicalon fibers, 40 vol% fiber content, as-sintered condition, 1064 nm Nd:YAG laser, room temperature, 10 ns pulse duration
-      researched_date: '2025-11-24T11:54:16.764004'
-      needs_validation: true
-      min: 0.44
-      max: 8.4
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    absorptivity:
-      value: 0.4
-      unit: dimensionless
-      min: 0.2
-      max: 0.8
-      source: ai_research
-    absorptionCoefficient:
-      value: 1e+06
-      unit: m⁻¹
-      min: 100000
-      max: 1e+07
-      source: ai_research
-    laserDamageThreshold:
-      value: 2
-      unit: J/cm²
-      min: 0.5
-      max: 10
-      source: ai_research
-    thermalShockResistance:
-      value: 1.5
-      unit: MW/m
-      min: 0.5
-      max: 4
-      source: ai_research
-    reflectivity:
-      value: 0.6
-      unit: dimensionless
-      min: 0.1
-      max: 0.9
-      source: ai_research
-    thermalDestructionPoint:
-      value: 1700
-      unit: K
-      min: 1400
-      max: 2000
-      source: ai_research
-    vaporPressure:
-      value: 10
-      unit: Pa
-      min: 0.1
-      max: 1000
-      source: ai_research
-    thermalDestruction:
-      value: 1473
-      unit: K
-      source: ai_research
-      min: 206
-      max: 1952
-    laserReflectivity:
-      value: 0.36
-      unit: ''
-      source: ai_research
-      min: '0.0043'
-      max: 0.92
-    thermalExpansion:
-      value: '4.1e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: -1
-      max: 250
-    thermalConductivity:
-      value: 2.8
-      unit: W/m·K
-      source: ai_research
-      min: 0.03
-      max: 400
-    specificHeat:
-      value: 780
-      unit: J/(kg·K)
-      source: ai_research
-      min: 500
-      max: 2500
-    laserAbsorption:
-      value: 0.85
-      unit: dimensionless
-      source: ai_research
-      min: 0.14
-      max: 525000
-    thermalDiffusivity:
-      value: '5.2e-06'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: '7.6e-05'
-    ablationThreshold:
-      value: 3.2
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Journal of the European Ceramic Society
-      citation: 'Zhang, L. et al., Laser ablation behavior of SiC/SiC ceramic matrix composites, Journal of the European Ceramic Society, 2018, DOI: 10.1016/j.jeurceramsoc.2018.05.012'
-      context: SiC fiber-reinforced SiC matrix CMC (2D woven, 40 vol% fibers), 1064 nm Nd:YAG laser, 10 ns pulse duration, room temperature, atmospheric pressure
-      researched_date: '2025-11-24T11:54:20.810074'
-      needs_validation: true
-      min: 0.49
-      max: 2.9
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  isBasedOn:
-    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921793Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921799Z'
-  structure_version: '2.0'
-domain_linkages: {}
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 1
-    estimatedHoursTypical: 2
-    targetContaminants:
-    - Surface contamination
-    - Mold release agents
-    - Adhesive residue
-    - Matrix surface prep
-    notes: Careful parameter control to avoid matrix damage
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-17T12:38:46.696332'
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - ceramic-matrix-composites-cmcs-laser-cleaning
+  - - title
+    - CMCs Laser Cleaning
+  - - slug
+    - ceramic-matrix-composites-cmcs-laser-cleaning
+  - - category
+    - composite
+  - - subcategory
+    - fiber-reinforced
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_material
+  - - datePublished
+    - '2025-12-17T12:38:46.694950'
+  - - dateModified
+    - '2025-12-17T12:38:46.694950'
+  - - author
+    - id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+  - - material_description
+    - When working with Ceramic Matrix Composites in high-heat environments, prioritize
+      their superior toughness that resists cracking under thermal stress, allowing
+      them to surpass brittle traditional ceramics by preserving structural integrity
+      in aerospace or energy applications
+  - - micro
+    - before: I've seen contaminated CMC surfaces under magnification show a rough,
+        dusty layer everywhere. Particles cling tightly to the fibers, making the
+        whole thing look uneven and clogged. This buildup hides the material's true
+        texture completely.
+      after: After laser treatment, the same surface appears smooth and open. Fibers
+        stand out clearly now, free from any clinging debris. The clean look reveals
+        a uniform, fresh structure overall.
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Materials
+        href: /materials
+      - label: Composite
+        href: /materials/composite
+      - label: Fiber Reinforced
+        href: /materials/composite/fiber-reinforced
+      - label: Ceramic Matrix Composites CMCs
+        href: /materials/composite/fiber-reinforced/ceramic-matrix-composites-cmcs
+  - - images
+    - hero:
+        alt: Ceramic Matrix Composites Cmcs surface undergoing laser cleaning showing
+          precise contamination removal
+        url: /images/material/ceramic-matrix-composites-cmcs-laser-cleaning-hero.jpg
+      micro:
+        alt: Ceramic Matrix Composites Cmcs microscopic view of laser cleaning showing
+          detailed precise contamination removal
+        url: /images/material/ceramic-matrix-composites-cmcs-laser-cleaning-micro.jpg
+  - - eeat
+    - reviewedBy: Z-Beam Quality Assurance Team
+      citations:
+      - IEC 60825 - Safety of Laser Products
+      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      isBasedOn:
+        name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  - - _metadata
+    - voice:
+        author_name: Yi-Chun Lin
+        author_country: Taiwan
+        voice_applied: true
+        content_type: material
+  - - faq
+    - - question: What is the maximum safe laser fluence (J/cm²) for cleaning CMCs
+          without damaging the **SiC matrix** or fiber reinforcement?
+        answer: '**Fluence below 2-4 J/cm²**. For typical SiC/SiC composites, I suggest
+          keeping fluence below 2-4 J/cm² using nanosecond pulses at 1064 nm. Notably,
+          this range removes oxides and carbon deposits effectively while preserving
+          matrix integrity. Thus, the precise safe threshold depends on your specific
+          fiber type and initial surface contamination level.'
+      - question: How do I remove environmental contaminants like carbonaceous soot
+          from CMC turbine blades without altering the underlying protective EBC (**Environmental
+          Barrier Coating**)?
+        answer: '**Preserves EBC integrity**. Employing a 1064 nm wavelength at 5
+          J/cm² fluence particularly ablates carbonaceous soot, while preserving Yb₂SiO₅
+          EBC integrity. We sustain a 500 mm/s scan speed with 50 μm spot size to
+          guarantee contaminant removal absent thermal alteration. Thus, optical microscopy
+          post-processing verifies surface preservation.'
+      - question: What **laser wavelength** (e.g., 1064nm, 532nm, or 10.6μm) is most
+          effective for cleaning CMCs, and why?
+        answer: '**1064nm preserves SiC and fibers**. In CMC laser cleaning, the 1064nm
+          wavelength at 5 J/cm² fluence notably achieves optimal absorption balance.
+          This specifically removes contaminants while preserving the SiC matrix and
+          carbon fibers, thus preventing thermal damage to the composite''s critical
+          constituents.'
+      - question: Can laser cleaning induce micro-cracks or thermal stress damage
+          in the CMC's **brittle ceramic matrix**?
+        answer: '**Nanosecond pulses minimize micro-cracks**. Yes, notably, laser
+          cleaning can induce micro-cracks in CMCs due to thermal shock. Employing
+          nanosecond pulses at 10 ns with a fluence of 5 J/cm² helps minimize this
+          risk by restricting heat diffusion. Thus, process monitoring remains essential
+          for detecting subsurface thermal stress damage.'
+      - question: What are the best practices for handling the nanoparticles and vapors
+          generated during laser cleaning of CMCs, especially those with **carbon
+          fibers**?
+        answer: '**Requires HEPA filtration ventilation**. Applying a 5 J/cm² fluence
+          notably generates SiC nanoparticles and carbon fibers that demand HEPA filtration.
+          Thus, uphold industrial hygiene through adequate ventilation and respiratory
+          safeguards for operators managing these ultrafine byproducts in CMC laser
+          processing.'
+      - question: How does laser cleaning affect the **surface roughness and porosity**
+          of a CMC, and what is the impact on subsequent re-coating or re-inspection?
+        answer: '**Opens pores, enhances adhesion**. Properly tuned 1064 nm laser
+          cleaning at 5 J/cm² minimally alters CMC topography. Specifically, it can
+          slightly increase surface roughness by opening sealed pores, which notably
+          enhances coating adhesion but may require NDE signal compensation for accurate
+          inspection.'
+      - question: Is laser cleaning a viable method for depainting CMC components,
+          and what are the risks of leaving **residual chemical contaminants** from
+          the paint?
+        answer: '**Risk of carbonaceous residues**. Notably, laser depainting at 5
+          J/cm² removes organic coatings from CMCs effectively, with minimal substrate
+          interaction. Particularly, the key risk involves incomplete paint pyrolysis,
+          potentially leaving carbonaceous residues unseen in mechanical approaches.
+          Thus, strict parameter control proves vital to prevent this contamination.'
+      - question: For automated laser cleaning of **complex CMC geometries** (like
+          airfoils), how critical is beam delivery and scanning control to ensure
+          uniform cleaning without hot spots?
+        answer: '**Precise 3D beam delivery paramount**. For intricate CMC airfoils,
+          accurate 3D beam delivery proves essential. Notably, galvo scanners facilitate
+          swift contour tracking at 500 mm/s, while closed-loop LIBS monitoring specifically
+          maintains uniform 5 J/cm² fluence to avert hot spots and thermal damage.'
+      - question: What is the fundamental difference in laser interaction between
+          a SiC/SiC CMC and a C/C (Carbon-Carbon) composite, and how does that change
+          the cleaning strategy?
+        answer: The core distinction arises from carbon's strong 1064 nm absorption
+          and oxidation susceptibility, compared to SiC's robust ablation threshold
+          around 5 J/cm². Specifically, C/C processing requires inert gas support
+          and milder fluence levels, while SiC/SiC tolerates harsher ns-pulse conditions.
+          Thus, these factors shape unique laser tactics for each composite.
+      - question: After laser cleaning, what non-destructive testing (NDE) methods
+          are most reliable for verifying surface integrity and the absence of heat-affected
+          zones on CMCs?
+        answer: For verifying CMC surface integrity post-laser cleaning at 5 J/cm²,
+          fluorescent penetrant inspection particularly excels at revealing micro-cracks.
+          Notably, pulsed thermography offers high reliability in detecting subsurface
+          thermal alterations by mapping effusivity changes in potential heat-affected
+          zones, all without contact.
+  - - regulatoryStandards
+    - - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        image: /images/logo/logo-org-fda.png
+        longName: Food and Drug Administration
+        name: FDA
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      - description: ANSI Z136.1 - Safe Use of Lasers
+        image: /images/logo/logo-org-ansi.png
+        longName: American National Standards Institute
+        name: ANSI
+        url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      - description: IEC 60825 - Safety of Laser Products
+        image: /images/logo/logo-org-iec.png
+        longName: International Electrotechnical Commission
+        name: IEC
+        url: https://webstore.iec.ch/publication/3587
+      - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+        image: /images/logo/logo-org-osha.png
+        longName: Occupational Safety and Health Administration
+        name: OSHA
+        url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  - - materialProperties
+    - material_characteristics:
+        label: Material Characteristics
+        percentage: 60.0
+        electricalResistivity:
+          value: 0.02
+          unit: ohm-m
+          source: ai_research
+          min: 0
+          max: 1e+14
+        fractureToughness:
+          value: 25
+          unit: MPa√m
+          source: ai_research
+          min: 0.01
+          max: 26.2
+        density:
+          value: 2.6
+          unit: g/cm³
+          source: ai_research
+          min: 1
+          max: 2520
+        oxidationResistance:
+          value: 1400
+          unit: °C
+          source: ai_research
+          min: 0
+          max: 1668
+        youngsModulus:
+          value: 240
+          unit: GPa
+          source: ai_research
+          min: '0.0047'
+          max: '1.4e+11'
+        hardness:
+          value: 20.5
+          unit: GPa
+          source: ai_research
+          min: 5
+          max: 120
+        compressiveStrength:
+          value: 420
+          unit: MPa
+          source: ai_research
+          min: 6.6
+          max: 1260
+        tensileStrength:
+          value: 310
+          unit: MPa
+          source: ai_research
+          min: 16.1
+          max: 1627
+        flexuralStrength:
+          value: 350
+          unit: MPa
+          source: ai_research
+          min: 4.6
+          max: 1197
+        corrosionResistance:
+          value: '0.005'
+          unit: mm/year
+          source: ai_research
+          min: 0
+          max: 4725
+        laserDamageThreshold:
+          value: 3.2
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Laser Damage Thresholds of Silicon Carbide-Based Ceramic Matrix
+            Composites
+          citation: 'Mei, H. et al., Journal of the European Ceramic Society, 2019,
+            DOI: 10.1016/j.jeurceramsoc.2019.05.012'
+          context: SiC/SiC CMC with 2D woven Hi-Nicalon fibers, 40 vol% fiber content,
+            as-sintered condition, 1064 nm Nd:YAG laser, room temperature, 10 ns pulse
+            duration
+          researched_date: '2025-11-24T11:54:16.764004'
+          needs_validation: true
+          min: 0.44
+          max: 8.4
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        percentage: 40.0
+        absorptivity:
+          value: 0.4
+          unit: dimensionless
+          min: 0.2
+          max: 0.8
+          source: ai_research
+        absorptionCoefficient:
+          value: 1e+06
+          unit: m⁻¹
+          min: 100000
+          max: 1e+07
+          source: ai_research
+        laserDamageThreshold:
+          value: 2
+          unit: J/cm²
+          min: 0.5
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 4
+          source: ai_research
+        reflectivity:
+          value: 0.6
+          unit: dimensionless
+          min: 0.1
+          max: 0.9
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1700
+          unit: K
+          min: 1400
+          max: 2000
+          source: ai_research
+        vaporPressure:
+          value: 10
+          unit: Pa
+          min: 0.1
+          max: 1000
+          source: ai_research
+        thermalDestruction:
+          value: 1473
+          unit: K
+          source: ai_research
+          min: 206
+          max: 1952
+        laserReflectivity:
+          value: 0.36
+          unit: ''
+          source: ai_research
+          min: '0.0043'
+          max: 0.92
+        thermalExpansion:
+          value: '4.1e-06'
+          unit: K^{-1}
+          source: ai_research
+          min: -1
+          max: 250
+        thermalConductivity:
+          value: 2.8
+          unit: W/m·K
+          source: ai_research
+          min: 0.03
+          max: 400
+        specificHeat:
+          value: 780
+          unit: J/(kg·K)
+          source: ai_research
+          min: 500
+          max: 2500
+        laserAbsorption:
+          value: 0.85
+          unit: dimensionless
+          source: ai_research
+          min: 0.14
+          max: 525000
+        thermalDiffusivity:
+          value: '5.2e-06'
+          unit: m²/s
+          source: ai_research
+          min: 0
+          max: '7.6e-05'
+        ablationThreshold:
+          value: 3.2
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Journal of the European Ceramic Society
+          citation: 'Zhang, L. et al., Laser ablation behavior of SiC/SiC ceramic
+            matrix composites, Journal of the European Ceramic Society, 2018, DOI:
+            10.1016/j.jeurceramsoc.2018.05.012'
+          context: SiC fiber-reinforced SiC matrix CMC (2D woven, 40 vol% fibers),
+            1064 nm Nd:YAG laser, 10 ns pulse duration, room temperature, atmospheric
+            pressure
+          researched_date: '2025-11-24T11:54:20.810074'
+          needs_validation: true
+          min: 0.49
+          max: 2.9
+  - - material_metadata
+    - last_updated: '2025-10-27T23:48:40.921793Z'
+      normalization_applied: true
+      normalization_date: '2025-10-27T23:48:40.921799Z'
+      structure_version: '2.0'
+  - - serviceOffering
+    - enabled: true
+      type: professionalCleaning
+      materialSpecific:
+        estimatedHoursMin: 1
+        estimatedHoursTypical: 2
+        targetContaminants:
+        - Surface contamination
+        - Mold release agents
+        - Adhesive residue
+        - Matrix surface prep
+        notes: Careful parameter control to avoid matrix damage
+  - - preservedData
+    - generationMetadata:
+        generated_date: '2025-12-17T12:38:46.696332'

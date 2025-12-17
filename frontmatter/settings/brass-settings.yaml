@@ -1,96 +1,68 @@
-id: brass-settings
-name: Brass
-slug: brass-settings
-category: metal
-subcategory: non-ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.168009'
-dateModified: '2025-12-17T12:39:12.168009'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - battery-corrosion-contamination
-  - biological-stains-contamination
-  - bronze-patina-contamination
-  - carbon-soot-contamination
-  - chemical-stains-contamination
-  - coolant-scale-contamination
-  - copper-patina-contamination
-  - copper-plating-contamination
-  - cutting-fluid-contamination
-  - electroplating-residue-contamination
-  - epoxy-residue-contamination
-  - fertilizer-residue-contamination
-  - fuel-varnish-contamination
-  - gold-plating-contamination
-  - graffiti-paint-contamination
-  - graphite-marks-contamination
-  - ink-stains-contamination
-  - insect-residue-contamination
-  - laser-marking-contamination
-  - lime-scale-contamination
-  - mercury-contamination
-  - metal-polish-contamination
-  - mineral-deposits-contamination
-  - paint-residue-contamination
-  - pesticide-residue-contamination
-  - plastic-residue-contamination
-  - pollen-deposit-contamination
-  - radioactive-contamination
-  - rubber-residue-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - silicone-buildup-contamination
-  - silver-plating-contamination
-  - solder-flux-contamination
-  - tin-plating-contamination
-  - tree-sap-contamination
-  - water-stain-contamination
-  - wax-buildup-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Brass oxide removal without substrate damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength for optimal Brass absorption and minimal reflectivity
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning resolution
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal on Brass
-    unit: J/cm²
-    value: 5.1
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete oxide layer removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Brass
-  href: /settings/brass-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - brass-settings
+  - - slug
+    - brass-settings
+  - - category
+    - metal
+  - - subcategory
+    - non-ferrous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.168009'
+  - - dateModified
+    - '2025-12-17T12:39:12.168009'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Brass
+        href: /settings/brass-settings
+  - - name
+    - Brass
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Brass oxide removal without substrate
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength for optimal Brass absorption and minimal reflectivity
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning resolution
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning with thermal management
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for effective contaminant removal on Brass
+        unit: J/cm²
+        value: 5.1
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled ablation of surface
+          contaminants
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete oxide layer removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning without excessive heat
+          accumulation
+        unit: '%'
+        value: 50

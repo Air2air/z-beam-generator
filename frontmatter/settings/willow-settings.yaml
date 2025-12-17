@@ -1,58 +1,77 @@
-id: willow-settings
-name: Willow
-slug: willow-settings
-category: wood
-subcategory: hardwood
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.556730'
-dateModified: '2025-12-17T12:39:12.556730'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Willow surface cleaning without thermal damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-infrared wavelength optimized for Willow absorption and minimal penetration
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning with adequate energy density
-    unit: μm
-    value: 100
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal management
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal without substrate damage
-    unit: J/cm²
-    value: 1.2
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for efficient area coverage and effective cleaning
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Optimal number of passes for complete cleaning without excessive processing
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Beam overlap percentage for uniform cleaning coverage
-    unit: '%'
-    value: 50
-  dwellTime:
-    description: Optimal dwell time per spot for effective cleaning action
-    unit: μs
-    value: 100
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Willow
-  href: /settings/willow-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - willow-settings
+  - - slug
+    - willow-settings
+  - - category
+    - wood
+  - - subcategory
+    - hardwood
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.556730'
+  - - dateModified
+    - '2025-12-17T12:39:12.556730'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Willow
+        href: /settings/willow-settings
+  - - name
+    - Willow
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Willow surface cleaning without thermal
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-infrared wavelength optimized for Willow absorption and
+          minimal penetration
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning with adequate energy
+          density
+        unit: μm
+        value: 100
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning coverage and thermal
+          management
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for effective contaminant removal without substrate
+          damage
+        unit: J/cm²
+        value: 1.2
+      pulseWidth:
+        description: Nanosecond pulse duration for effective contaminant removal with
+          controlled thermal effects
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for efficient area coverage and effective
+          cleaning
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Optimal number of passes for complete cleaning without excessive
+          processing
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Beam overlap percentage for uniform cleaning coverage
+        unit: '%'
+        value: 50
+      dwellTime:
+        description: Optimal dwell time per spot for effective cleaning action
+        unit: μs
+        value: 100

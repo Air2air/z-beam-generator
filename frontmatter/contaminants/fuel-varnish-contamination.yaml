@@ -1,220 +1,237 @@
-id: fuel-varnish-contamination
-name: Fuel System Varnish
-slug: fuel-varnish-contamination
-category: organic-residue
-subcategory: petroleum
-datePublished: '2025-12-17T13:33:40.663075'
-dateModified: '2025-12-17T13:33:40.663075'
-domain_linkages:
-  related_materials:
-  - id: steel-laser-cleaning
-    title: Steel
-    url: /materials/metal/ferrous/steel-laser-cleaning
-    image: /images/material/steel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: aluminum-laser-cleaning
-    title: Aluminum
-    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
-    image: /images/material/aluminum-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass-laser-cleaning
-    title: Brass
-    url: /materials/metal/non-ferrous/brass-laser-cleaning
-    image: /images/material/brass-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_contamination
-schema_version: 4.0.0
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: contaminant
-title: Fuel System Varnish Contamination
-contamination_description: Fuel-varnish forms as sticky polymerized deposits from degraded fuel in engines, so it builds up during storage and operation. This contamination shows unique gummy texture and dark color, distinguishing it from dry rust or oily residues because varnish resists solvents yet cracks under heat. On steel and aluminum surfaces, it adheres tightly and causes corrosion over time, while brass experiences reduced conductivity from the layer, so removal challenges include avoiding substrate damage during scraping. Laser cleaning works effectively because pulses vaporize the varnish selectively without harming metal bases.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contaminants
-  href: /contaminants
-- label: Organic-Residue
-  href: /contaminants/organic-residue
-- label: Fuel System Varnish
-  href: /contaminants/organic-residue/petroleum/fuel-varnish-contamination
-images:
-  hero:
-    url: /images/contaminants/fuel-varnish-contamination-hero.jpg
-    alt: Fuel System Varnish contamination on surface before laser cleaning
-  micro:
-    url: /images/contaminants/fuel-varnish-contamination-micro.jpg
-    alt: Fuel System Varnish contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.2
-      min_j_cm2: 0.3
-      recommended_j_cm2: 0.8
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 100
-      min_ns: 10
-      recommended_ns: 30
-    repetition_rate_khz:
-      max: 200
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 2000
-      min: 500
-      recommended: 1000
-    spot_size_mm:
-      max: 0.2
-      min: 0.05
-      recommended: 0.1
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 850
-      wavelength_355nm: 18500
-      wavelength_532nm: 4200
-    reflectivity:
-      wavelength_1064nm: 0.12
-      wavelength_355nm: 0.04
-      wavelength_532nm: 0.08
-    refractive_index:
-      imaginary_part: 0.022
-      real_part: 1.55
-    transmission_depth: 11.8
-  removal_characteristics:
-    byproducts:
-    - compound: carbon-dioxide
-      hazard_level: low
-      phase: gas
-    - compound: H2O
-      hazard_level: low
-      phase: gas
-    - compound: carbon_particulates
-      hazard_level: moderate
-      phase: solid
-    - compound: vocs
-      hazard_level: moderate
-      phase: gas
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 240
-      typical_scan_speed_mm_s: 800
-    removal_efficiency:
-      diminishing_returns_after: 5
-      optimal_passes: 3
-      single_pass: 0.65
-    secondary_mechanisms:
-    - photochemical
-    - mechanical_spallation
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: compressive
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: high
-    fumes_generated:
-    - compound: Acetaldehyde
-      concentration_mg_m3: 5-25
-      exposure_limit_mg_m3: 25
-      hazard_class: irritant
-    - compound: Formaldehyde
-      concentration_mg_m3: 0.5-5
-      exposure_limit_mg_m3: 0.3
-      hazard_class: carcinogenic
-    - compound: Acrolein
-      concentration_mg_m3: 0.1-1
-      exposure_limit_mg_m3: 0.1
-      hazard_class: toxic
-    - compound: Benzene
-      concentration_mg_m3: 0.5-3
-      exposure_limit_mg_m3: 0.5
-      hazard_class: carcinogenic
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 10-50
-      exposure_limit_mg_m3: 29
-      hazard_class: toxic
-    particulate_generation:
-      respirable_fraction: 0.8
-      size_range_um:
-      - 0.1
-      - 10
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: PAPR
-      skin_protection: gloves
-    substrate_compatibility_warnings:
-    - Avoid laser cleaning on thin-walled fuel system components to prevent burn-through
-    - Ensure complete fuel system purging before laser cleaning operations
-    - Test on small area first to assess substrate damage potential
-    toxic_gas_risk: moderate
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: carbon
-      minimum_air_changes_per_hour: 12
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 1.2
-      pulse_duration_10ns: 0.6
-      wavelength_1064nm: 0.8
-    decomposition_temperature: 280
-    heat_affected_zone_depth: 15
-    melting_point: null
-    specific_heat: 1600
-    thermal_conductivity: 0.18
-    thermal_diffusivity: 0.11
-    vaporization_temperature: 450
-valid_materials:
-- Steel
-- Aluminum
-- Brass
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - fuel-varnish-contamination
+  - - title
+    - Fuel System Varnish Contamination
+  - - slug
+    - fuel-varnish-contamination
+  - - category
+    - organic-residue
+  - - subcategory
+    - petroleum
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_contamination
+  - - datePublished
+    - '2025-12-17T13:33:40.663075'
+  - - dateModified
+    - '2025-12-17T13:33:40.663075'
+  - - author
+    - id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+  - - contamination_description
+    - Fuel-varnish forms as sticky polymerized deposits from degraded fuel in engines,
+      so it builds up during storage and operation. This contamination shows unique
+      gummy texture and dark color, distinguishing it from dry rust or oily residues
+      because varnish resists solvents yet cracks under heat. On steel and aluminum
+      surfaces, it adheres tightly and causes corrosion over time, while brass experiences
+      reduced conductivity from the layer, so removal challenges include avoiding
+      substrate damage during scraping. Laser cleaning works effectively because pulses
+      vaporize the varnish selectively without harming metal bases.
+  - - laser_properties
+    - laser_parameters:
+        beam_profile: flat_top
+        fluence_range:
+          max_j_cm2: 1.2
+          min_j_cm2: 0.3
+          recommended_j_cm2: 0.8
+        overlap_percentage: 50
+        polarization: circular
+        pulse_duration_range:
+          max_ns: 100
+          min_ns: 10
+          recommended_ns: 30
+        repetition_rate_khz:
+          max: 200
+          min: 20
+          recommended: 50
+        safety_margin_factor: 0.7
+        scan_speed_mm_s:
+          max: 2000
+          min: 500
+          recommended: 1000
+        spot_size_mm:
+          max: 0.2
+          min: 0.05
+          recommended: 0.1
+        wavelength_preference:
+        - 1064
+        - 532
+      optical_properties:
+        absorption_coefficient:
+          wavelength_1064nm: 850
+          wavelength_355nm: 18500
+          wavelength_532nm: 4200
+        reflectivity:
+          wavelength_1064nm: 0.12
+          wavelength_355nm: 0.04
+          wavelength_532nm: 0.08
+        refractive_index:
+          imaginary_part: 0.022
+          real_part: 1.55
+        transmission_depth: 11.8
+      removal_characteristics:
+        byproducts:
+        - compound: carbon-dioxide
+          hazard_level: low
+          phase: gas
+        - compound: H2O
+          hazard_level: low
+          phase: gas
+        - compound: carbon_particulates
+          hazard_level: moderate
+          phase: solid
+        - compound: vocs
+          hazard_level: moderate
+          phase: gas
+        damage_risk_to_substrate: low
+        primary_mechanism: thermal_ablation
+        process_speed:
+          area_coverage_rate_cm2_min: 240
+          typical_scan_speed_mm_s: 800
+        removal_efficiency:
+          diminishing_returns_after: 5
+          optimal_passes: 3
+          single_pass: 0.65
+        secondary_mechanisms:
+        - photochemical
+        - mechanical_spallation
+        surface_quality_after_removal:
+          color_change: 'no'
+          residual_stress: compressive
+          roughness_increase: minimal
+      safety_data:
+        fire_explosion_risk: high
+        fumes_generated:
+        - compound: Acetaldehyde
+          concentration_mg_m3: 5-25
+          exposure_limit_mg_m3: 25
+          hazard_class: irritant
+        - compound: Formaldehyde
+          concentration_mg_m3: 0.5-5
+          exposure_limit_mg_m3: 0.3
+          hazard_class: carcinogenic
+        - compound: Acrolein
+          concentration_mg_m3: 0.1-1
+          exposure_limit_mg_m3: 0.1
+          hazard_class: toxic
+        - compound: Benzene
+          concentration_mg_m3: 0.5-3
+          exposure_limit_mg_m3: 0.5
+          hazard_class: carcinogenic
+        - compound: Carbon Monoxide
+          concentration_mg_m3: 10-50
+          exposure_limit_mg_m3: 29
+          hazard_class: toxic
+        particulate_generation:
+          respirable_fraction: 0.8
+          size_range_um:
+          - 0.1
+          - 10
+        ppe_requirements:
+          eye_protection: goggles
+          respiratory: PAPR
+          skin_protection: gloves
+        substrate_compatibility_warnings:
+        - Avoid laser cleaning on thin-walled fuel system components to prevent burn-through
+        - Ensure complete fuel system purging before laser cleaning operations
+        - Test on small area first to assess substrate damage potential
+        toxic_gas_risk: moderate
+        ventilation_requirements:
+          exhaust_velocity_m_s: 0.5
+          filtration_type: carbon
+          minimum_air_changes_per_hour: 12
+        visibility_hazard: moderate
+      thermal_properties:
+        ablation_threshold:
+          pulse_duration_100ns: 1.2
+          pulse_duration_10ns: 0.6
+          wavelength_1064nm: 0.8
+        decomposition_temperature: 280
+        heat_affected_zone_depth: 15
+        melting_point: null
+        specific_heat: 1600
+        thermal_conductivity: 0.18
+        thermal_diffusivity: 0.11
+        vaporization_temperature: 450
+  - - related_materials
+    - - id: steel-laser-cleaning
+        title: Steel
+        url: /materials/metal/ferrous/steel-laser-cleaning
+        image: /images/material/steel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: aluminum-laser-cleaning
+        title: Aluminum
+        url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+        image: /images/material/aluminum-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: brass-laser-cleaning
+        title: Brass
+        url: /materials/metal/non-ferrous/brass-laser-cleaning
+        image: /images/material/brass-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Contaminants
+        href: /contaminants
+      - label: Organic-Residue
+        href: /contaminants/organic-residue
+      - label: Fuel System Varnish
+        href: /contaminants/organic-residue/petroleum/fuel-varnish-contamination
+  - - images
+    - hero:
+        url: /images/contaminants/fuel-varnish-contamination-hero.jpg
+        alt: Fuel System Varnish contamination on surface before laser cleaning
+      micro:
+        url: /images/contaminants/fuel-varnish-contamination-micro.jpg
+        alt: Fuel System Varnish contamination microscopic detail
+  - - valid_materials
+    - - Steel
+      - Aluminum
+      - Brass
+  - - _metadata
+    - voice:
+        author_name: Yi-Chun Lin
+        author_country: Taiwan
+        voice_applied: true
+        content_type: contaminant

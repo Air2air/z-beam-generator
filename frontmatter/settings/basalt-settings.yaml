@@ -1,71 +1,67 @@
-id: basalt-settings
-name: Basalt
-slug: basalt-settings
-category: stone
-subcategory: igneous
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.147449'
-dateModified: '2025-12-17T12:39:12.147449'
-domain_linkages:
-  contaminants:
-  - algae-growth-contamination
-  - biological-stains-contamination
-  - bitumen-tar-contamination
-  - carbon-soot-contamination
-  - ceramic-glaze-contamination
-  - concrete-dust-contamination
-  - efflorescence-contamination
-  - fertilizer-residue-contamination
-  - fire-damage-contamination
-  - graffiti-paint-contamination
-  - mineral-deposits-contamination
-  - mineral-stain-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - water-stain-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Basalt surface cleaning without thermal damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-infrared wavelength optimized for Basalt absorption characteristics
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for effective cleaning resolution
-    unit: μm
-    value: 100
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence level for effective contaminant removal without substrate damage
-    unit: J/cm²
-    value: 12
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient ablation of surface contaminants
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform surface treatment
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Basalt
-  href: /settings/basalt-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - basalt-settings
+  - - slug
+    - basalt-settings
+  - - category
+    - stone
+  - - subcategory
+    - igneous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.147449'
+  - - dateModified
+    - '2025-12-17T12:39:12.147449'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Basalt
+        href: /settings/basalt-settings
+  - - name
+    - Basalt
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Basalt surface cleaning without thermal
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-infrared wavelength optimized for Basalt absorption characteristics
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for effective cleaning resolution
+        unit: μm
+        value: 100
+      repetitionRate:
+        description: Optimal repetition rate for continuous cleaning coverage
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence level for effective contaminant removal without substrate
+          damage
+        unit: J/cm²
+        value: 12
+      pulseWidth:
+        description: Nanosecond pulse duration for efficient ablation of surface contaminants
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform surface treatment
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Number of cleaning passes for complete contaminant removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning coverage
+        unit: '%'
+        value: 50

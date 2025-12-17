@@ -1,62 +1,72 @@
-id: birch-settings
-name: Birch
-slug: birch-settings
-category: wood
-subcategory: hardwood
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.157055'
-dateModified: '2025-12-17T12:39:12.157055'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - lead-paint-contamination
-  - mold-mildew-contamination
-  - paint-residue-contamination
-  - wax-buildup-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Birch surface cleaning without charring
-    unit: W
-    value: 45
-  wavelength:
-    description: Near-IR wavelength for optimal Birch wood absorption and minimal subsurface damage
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning resolution on Birch surface features
-    unit: μm
-    value: 80
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage while maintaining thermal control
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal without damaging Birch substrate
-    unit: J/cm²
-    value: 4.5
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of contaminants without excessive heat diffusion
-    unit: ns
-    value: 12
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage without excessive dwell time
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning coverage
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Birch
-  href: /settings/birch-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - birch-settings
+  - - slug
+    - birch-settings
+  - - category
+    - wood
+  - - subcategory
+    - hardwood
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.157055'
+  - - dateModified
+    - '2025-12-17T12:39:12.157055'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Birch
+        href: /settings/birch-settings
+  - - name
+    - Birch
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Birch surface cleaning without charring
+        unit: W
+        value: 45
+      wavelength:
+        description: Near-IR wavelength for optimal Birch wood absorption and minimal
+          subsurface damage
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning resolution on Birch surface
+          features
+        unit: μm
+        value: 80
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning coverage while
+          maintaining thermal control
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for effective contaminant removal without damaging
+          Birch substrate
+        unit: J/cm²
+        value: 4.5
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled ablation of contaminants
+          without excessive heat diffusion
+        unit: ns
+        value: 12
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning coverage without
+          excessive dwell time
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of cleaning passes for complete contaminant
+          removal
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap percentage for uniform cleaning coverage
+        unit: '%'
+        value: 50

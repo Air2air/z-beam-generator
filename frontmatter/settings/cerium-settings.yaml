@@ -1,58 +1,72 @@
-id: cerium-settings
-name: Cerium
-slug: cerium-settings
-category: rare-earth
-subcategory: lanthanide
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.199556'
-dateModified: '2025-12-17T12:39:12.199556'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Cerium oxide removal without substrate damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength for optimal Cerium absorption and thermal processing
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning control on Cerium surfaces
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Fluence threshold for effective Cerium cleaning
-    unit: J/cm²
-    value: 5.1
-  energyDensity:
-    description: Fluence threshold for effective Cerium oxide removal
-    unit: J/cm²
-    value: 5.1
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of Cerium oxides
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal pulse overlap for uniform cleaning without excessive heating
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Cerium
-  href: /settings/cerium-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - cerium-settings
+  - - slug
+    - cerium-settings
+  - - category
+    - rare-earth
+  - - subcategory
+    - lanthanide
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.199556'
+  - - dateModified
+    - '2025-12-17T12:39:12.199556'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Cerium
+        href: /settings/cerium-settings
+  - - name
+    - Cerium
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Cerium oxide removal without substrate
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength for optimal Cerium absorption and thermal
+          processing
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning control on Cerium surfaces
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning with thermal management
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Fluence threshold for effective Cerium cleaning
+        unit: J/cm²
+        value: 5.1
+      energyDensity:
+        description: Fluence threshold for effective Cerium oxide removal
+        unit: J/cm²
+        value: 5.1
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled ablation of Cerium oxides
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal pulse overlap for uniform cleaning without excessive
+          heating
+        unit: '%'
+        value: 50

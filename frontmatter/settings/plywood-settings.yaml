@@ -1,61 +1,70 @@
-id: plywood-settings
-name: Plywood
-slug: plywood-settings
-category: wood
-subcategory: hardwood
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.378012'
-dateModified: '2025-12-17T12:39:12.378012'
-domain_linkages:
-  contaminants:
-  - wood-rot-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Plywood surface cleaning without charring
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-infrared wavelength for optimal Plywood absorption and minimal penetration
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise Plywood surface treatment
-    unit: μm
-    value: 80
-  repetitionRate:
-    description: Optimal repetition rate for efficient Plywood cleaning coverage
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for effective Plywood contaminant removal
-    unit: J/cm²
-    value: 2.0
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled Plywood surface ablation
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform Plywood cleaning
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete Plywood cleaning
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap for uniform Plywood surface treatment
-    unit: '%'
-    value: 50
-  dwellTime:
-    description: Optimal dwell time per spot for Plywood processing
-    unit: μs
-    value: 100
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Plywood
-  href: /settings/plywood-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - plywood-settings
+  - - slug
+    - plywood-settings
+  - - category
+    - wood
+  - - subcategory
+    - hardwood
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.378012'
+  - - dateModified
+    - '2025-12-17T12:39:12.378012'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Plywood
+        href: /settings/plywood-settings
+  - - name
+    - Plywood
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Plywood surface cleaning without charring
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-infrared wavelength for optimal Plywood absorption and minimal
+          penetration
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise Plywood surface treatment
+        unit: μm
+        value: 80
+      repetitionRate:
+        description: Optimal repetition rate for efficient Plywood cleaning coverage
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for effective Plywood contaminant removal
+        unit: J/cm²
+        value: 2.0
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled Plywood surface ablation
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform Plywood cleaning
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete Plywood cleaning
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap for uniform Plywood surface treatment
+        unit: '%'
+        value: 50
+      dwellTime:
+        description: Optimal dwell time per spot for Plywood processing
+        unit: μs
+        value: 100

@@ -1,366 +1,441 @@
-id: gallium-laser-cleaning
-name: gallium-laser-cleaning
-slug: gallium-laser-cleaning
-category: metal
-subcategory: specialty
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:38:47.205006'
-dateModified: '2025-12-17T12:38:47.205006'
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
-title: Gallium Laser Cleaning
-material_description: We've found that Gallium stands out among metals due to its low melting point near room temperature, enabling fluid handling in semiconductor manufacturing while requiring careful thermal control to avoid deformation
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Specialty
-  href: /materials/metal/specialty
-- label: Gallium
-  href: /materials/metal/specialty/gallium
-images:
-  hero:
-    alt: Gallium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/gallium-laser-cleaning-hero.jpg
-  micro:
-    alt: Gallium microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/gallium-laser-cleaning-micro.jpg
-micro:
-  before: When examining the contaminated Gallium surface at 1000x magnification, you notice scattered dark spots and uneven patches across the material. These irregularities make the surface look rough and dull under close inspection. Contaminants cling tightly, obscuring the underlying texture completely.
-  after: After laser treatment, the same surface appears smooth and uniform at 1000x magnification. The process removes all visible residues, revealing a consistent metallic sheen. This cleaning restores clarity, exposing the material's natural, even finish without
-faq:
-- question: Can laser cleaning safely remove **gallium contamination** from aluminum surfaces without causing damage?
-  answer: '**Prevents liquid metal embrittlement**. Yeah, laser cleaning can pretty safely remove gallium contamination from aluminum. Basically, a 1064 nm wavelength at ~1.2 J/cm² fluence selectively ablates the gallium without etching the substrate. Typically, post-process EDS verification confirms complete removal and prevents liquid metal embrittlement.'
-- question: What laser wavelength (Fiber, Nd:YAG, etc.) works best for removing **gallium residues** from equipment surfaces?
-  answer: '**1064 nm fiber lasers optimal**. I''d recommend 1064 nm fiber lasers for gallium residue removal, given their fairly high 61.8% absorption rate in gallium. This near-IR wavelength basically vaporizes the metal efficiently at a fluence threshold of 1.2 J/cm², helping prevent substrate damage. Gallium''s low melting point of 29.76°C demands precise thermal control to avoid spreading molten material.'
-- question: Does laser cleaning gallium create **hazardous fumes or nanoparticles** that require special ventilation?
-  answer: '**Produces respirable metallic aerosols**. Yes, gallium laser cleaning produces pretty hazardous nanoparticles and fumes, calling for robust ventilation. Given its fairly low 29.8°C melting point and high 2204°C boiling point, the process readily generates respirable metallic aerosols. Employ local exhaust ventilation plus a P100 respirator to counter inhalation risks from these ultrafine particulates.'
-- question: How do you verify that all gallium has been completely removed after laser cleaning, particularly from **porous surfaces**?
-  answer: '**EDX mapping and thermal cycling**. For validating porous surfaces, we basically rely on EDX mapping at 15 kV to detect trace gallium residues below 0.1 wt%. With gallium''s fairly low melting point of 29.76°C, we also conduct thermal cycling to check for weeping from subsurface contamination that could trigger embrittlement.'
-- question: What are the specific laser parameter adjustments needed for cleaning gallium versus other **low-melting-point metals**?
-  answer: '**prevents liquid phase formation**. For gallium''s fairly low 29.8°C melting point, go with ultra-short pulses under 15 ns and a fluence just above its 0.45 J/cm² ablation threshold. Basically, this cuts heat input to prevent liquid phase issues while tapping its high surface tension for clean material removal.'
-- question: Can laser cleaning cause gallium to alloy with or further penetrate substrate materials during the cleaning process?
-  answer: Yes, laser cleaning can basically lead to gallium alloying if thermal input isn't controlled properly. Given its pretty low melting point of 29.76°C, excessive fluence above ~1.2 J/cm² promotes diffusion into aluminum or copper substrates. Opt for short 15 ns pulses and high scan speeds to ablate contaminants without melting the bulk material.
-- question: What waste management procedures are required for **gallium-contaminated debris** generated during laser cleaning?
-  answer: '**D008 classification HEPA filtration**. Gallium debris typically falls under D008 hazardous waste classification because of its toxicity. For your 1064 nm laser system, HEPA filtration is essential to capture vaporized particles, as gallium''s 2204°C boiling point basically generates fine aerosols during ablation. Consult California''s specific metal disposal regulations for proper handling.'
-- question: How does gallium's **low melting point** affect laser cleaning efficiency compared to higher-temperature metals?
-  answer: '**Lowers energy, risks splatter**. Gallium melts at a pretty low 29.8°C, slashing the energy demands for laser cleaning far below what''s typical for steel. Still, that low point brings a fairly serious splatter hazard, demanding tight control under the 1.2 J/cm² ablation threshold to handle its swift phase shift.'
-- question: What surface preparation or containment methods prevent **gallium spread** during laser cleaning operations?
-  answer: '**Chilling prevents liquefaction**. Keep gallium under its 29.8°C melting point with active chilling to avoid liquefaction. For containment, basically apply a low-fluence (~1.2 J/cm²) laser at 1064 nm to vaporize oxides without melting the base metal. Pretty much, pre-clean parts via cryogenic cooling to freeze surface contaminants, keeping them brittle for precise removal.'
-- question: Are there specific laser cleaning protocols for removing gallium from **sensitive electronic components** or connectors?
-  answer: '**Thermal management prevents smearing**. For delicate electronics, basically stick to low-power nanosecond pulses at the 1064nm wavelength, keeping fluence fairly below 1.2 J/cm². Gallium''s 29.76°C melting point demands careful thermal management to avoid smearing. Then, follow up with an isopropyl alcohol rinse to clear residual conductive particles, and confirm cleanliness via electrical testing.'
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 60.0
-    electricalConductivity:
-      value: '6.8e+06'
-      unit: S/m
-      source: ai_research
-      min: 659300
-      max: '6.6e+07'
-    electricalResistivity:
-      value: '2.7e-07'
-      unit: Ω·m
-      source: ai_research
-      min: 0
-      max: 2e-06
-    fractureToughness:
-      value: 0.65
-      unit: MPa m^{1/2}
-      source: ai_research
-      min: 0.67
-      max: 157
-    surfaceRoughness:
-      value: 0.05
-      unit: μm
-      source: ai_research
-      min: 0.02
-      max: 6.6
-    density:
-      value: 5.9
-      unit: g/cm³
-      source: ai_research
-      min: 1.7
-      max: 9408
-    oxidationResistance:
-      value: 1.4
-      unit: dimensionless
-      source: ai_research
-      min: -554
-      max: 1762
-    youngsModulus:
-      value: 11
-      unit: GPa
-      source: ai_research
-      min: 10.4
-      max: 2e+11
-    hardness:
-      value: 80
-      unit: MPa
-      source: ai_research
-      min: 0.2
-      max: 3500
-    compressiveStrength:
-      value: 21
-      unit: MPa
-      source: ai_research
-      min: 8
-      max: 2625
-    tensileStrength:
-      value: 16
-      unit: MPa
-      source: ai_research
-      min: 3
-      max: 3000
-    flexuralStrength:
-      value: 16.5
-      unit: MPa
-      source: ai_research
-      min: 11.4
-      max: 2897
-    corrosionResistance:
-      value: '0.002'
-      unit: mm/year
-      source: ai_research
-      min: -1.1
-      max: '1.1e+06'
-    porosity:
-      value: 0
-      unit: '%'
-      source: ai_research
-      min: 0
-      max: 15
-    boilingPoint:
-      value: 2676
-      unit: K
-      source: ai_research
-      min: 929
-      max: 6454
-    absorptivity:
-      value: 0.34
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.6
-    absorptionCoefficient:
-      value: 7e+07
-      unit: m^{-1}
-      source: ai_research
-      min: 589000
-      max: '9.9e+07'
-    reflectivity:
-      value: 0.71
-      unit: dimensionless
-      source: ai_research
-      min: 0.35
-      max: 1
-    vaporPressure:
-      value: 0
-      unit: Pa
-      source: ai_research
-      min: 0
-      max: 106391
-    meltingPoint:
-      value: 303
-      unit: K
-      source: ai_research
-      min: 133
-      max: 3865
-    thermalDestructionPoint:
-      value: 303
-      unit: K
-      source: ai_research
-      min: 133
-      max: 3865
-    thermalShockResistance:
-      value: 160
-      unit: K
-      source: ai_research
-      min: 6.7
-      max: 379050
-    laserDamageThreshold:
-      value: 0.75
-      unit: J/cm²
-      source: ai_research
-      min: 0.27
-      max: 15750
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    absorptionCoefficient:
-      source: ai_research
-      unit: m⁻¹
-      value: '1.1e+07'
-      min: 589000
-      max: '9.9e+07'
-    absorptivity:
-      source: ai_research
-      unit: dimensionless
-      value: 0.42
-      min: 0.02
-      max: 0.6
-    laserDamageThreshold:
-      source: ai_research
-      unit: J/cm²
-      value: 0.15
-      min: 0.27
-      max: 15750
-    reflectivity:
-      source: ai_research
-      unit: dimensionless (ratio)
-      value: 0.71
-      min: 0.35
-      max: 1
-    thermalDestructionPoint:
-      source: ai_research
-      unit: K
-      value: 2477
-      min: 133
-      max: 3865
-    thermalShockResistance:
-      source: ai_research
-      unit: MPa·m²/W
-      value: '0.0021'
-      min: 6.7
-      max: 379050
-    vaporPressure:
-      source: ai_research
-      unit: Pa
-      value: '1.3e-06'
-      min: 0
-      max: 106391
-    thermalDestruction:
-      value: 303
-      unit: K
-      source: ai_research
-      min: 256
-      max: 3859
-    laserReflectivity:
-      value: 0.72
-      unit: ''
-      source: ai_research
-      min: 0.4
-      max: 73.5
-    thermalExpansion:
-      value: '1.8e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: 4e-06
-      max: 31.7
-    thermalConductivity:
-      value: 40.6
-      unit: W/m·K
-      source: ai_research
-      min: 7.4
-      max: 450
-    specificHeat:
-      value: 371
-      unit: J/(kg·K)
-      source: ai_research
-      min: 43.4
-      max: 1905
-    laserAbsorption:
-      value: '7.8e+07'
-      unit: m^{-1}
-      source: ai_research
-      min: 0.02
-      max: '4.2e+08'
-    thermalDiffusivity:
-      value: '1.8e-05'
-      unit: m²/s
-      source: ai_research
-      min: 2e-06
-      max: '0.00017'
-    ablationThreshold:
-      value: 0.42
-      unit: J/cm²
-      source: ai_research
-      min: 0.09
-      max: 4.3
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921959Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921965Z'
-  structure_version: '2.0'
-domain_linkages: {}
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 2
-    estimatedHoursTypical: 6
-    targetContaminants:
-    - Oxide scale
-    - Heat discoloration
-    - Alpha case layer
-    - Thermal barrier coatings
-    notes: Controlled atmosphere may be required to prevent re-oxidation
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-17T12:38:47.206273'
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - gallium-laser-cleaning
+  - - title
+    - Gallium Laser Cleaning
+  - - slug
+    - gallium-laser-cleaning
+  - - category
+    - metal
+  - - subcategory
+    - specialty
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_material
+  - - datePublished
+    - '2025-12-17T12:38:47.205006'
+  - - dateModified
+    - '2025-12-17T12:38:47.205006'
+  - - author
+    - id: 4
+      name: Todd Dunning
+      country: United States
+      country_display: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      persona_file: usa_persona.yaml
+      formatting_file: usa_formatting.yaml
+  - - material_description
+    - We've found that Gallium stands out among metals due to its low melting point
+      near room temperature, enabling fluid handling in semiconductor manufacturing
+      while requiring careful thermal control to avoid deformation
+  - - micro
+    - before: When examining the contaminated Gallium surface at 1000x magnification,
+        you notice scattered dark spots and uneven patches across the material. These
+        irregularities make the surface look rough and dull under close inspection.
+        Contaminants cling tightly, obscuring the underlying texture completely.
+      after: After laser treatment, the same surface appears smooth and uniform at
+        1000x magnification. The process removes all visible residues, revealing a
+        consistent metallic sheen. This cleaning restores clarity, exposing the material's
+        natural, even finish without
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Materials
+        href: /materials
+      - label: Metal
+        href: /materials/metal
+      - label: Specialty
+        href: /materials/metal/specialty
+      - label: Gallium
+        href: /materials/metal/specialty/gallium
+  - - images
+    - hero:
+        alt: Gallium surface undergoing laser cleaning showing precise contamination
+          removal
+        url: /images/material/gallium-laser-cleaning-hero.jpg
+      micro:
+        alt: Gallium microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/gallium-laser-cleaning-micro.jpg
+  - - eeat
+    - reviewedBy: Z-Beam Quality Assurance Team
+      citations:
+      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      isBasedOn:
+        name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+        url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  - - _metadata
+    - voice:
+        author_name: Todd Dunning
+        author_country: United States
+        voice_applied: true
+        content_type: material
+  - - faq
+    - - question: Can laser cleaning safely remove **gallium contamination** from
+          aluminum surfaces without causing damage?
+        answer: '**Prevents liquid metal embrittlement**. Yeah, laser cleaning can
+          pretty safely remove gallium contamination from aluminum. Basically, a 1064
+          nm wavelength at ~1.2 J/cm² fluence selectively ablates the gallium without
+          etching the substrate. Typically, post-process EDS verification confirms
+          complete removal and prevents liquid metal embrittlement.'
+      - question: What laser wavelength (Fiber, Nd:YAG, etc.) works best for removing
+          **gallium residues** from equipment surfaces?
+        answer: '**1064 nm fiber lasers optimal**. I''d recommend 1064 nm fiber lasers
+          for gallium residue removal, given their fairly high 61.8% absorption rate
+          in gallium. This near-IR wavelength basically vaporizes the metal efficiently
+          at a fluence threshold of 1.2 J/cm², helping prevent substrate damage. Gallium''s
+          low melting point of 29.76°C demands precise thermal control to avoid spreading
+          molten material.'
+      - question: Does laser cleaning gallium create **hazardous fumes or nanoparticles**
+          that require special ventilation?
+        answer: '**Produces respirable metallic aerosols**. Yes, gallium laser cleaning
+          produces pretty hazardous nanoparticles and fumes, calling for robust ventilation.
+          Given its fairly low 29.8°C melting point and high 2204°C boiling point,
+          the process readily generates respirable metallic aerosols. Employ local
+          exhaust ventilation plus a P100 respirator to counter inhalation risks from
+          these ultrafine particulates.'
+      - question: How do you verify that all gallium has been completely removed after
+          laser cleaning, particularly from **porous surfaces**?
+        answer: '**EDX mapping and thermal cycling**. For validating porous surfaces,
+          we basically rely on EDX mapping at 15 kV to detect trace gallium residues
+          below 0.1 wt%. With gallium''s fairly low melting point of 29.76°C, we also
+          conduct thermal cycling to check for weeping from subsurface contamination
+          that could trigger embrittlement.'
+      - question: What are the specific laser parameter adjustments needed for cleaning
+          gallium versus other **low-melting-point metals**?
+        answer: '**prevents liquid phase formation**. For gallium''s fairly low 29.8°C
+          melting point, go with ultra-short pulses under 15 ns and a fluence just
+          above its 0.45 J/cm² ablation threshold. Basically, this cuts heat input
+          to prevent liquid phase issues while tapping its high surface tension for
+          clean material removal.'
+      - question: Can laser cleaning cause gallium to alloy with or further penetrate
+          substrate materials during the cleaning process?
+        answer: Yes, laser cleaning can basically lead to gallium alloying if thermal
+          input isn't controlled properly. Given its pretty low melting point of 29.76°C,
+          excessive fluence above ~1.2 J/cm² promotes diffusion into aluminum or copper
+          substrates. Opt for short 15 ns pulses and high scan speeds to ablate contaminants
+          without melting the bulk material.
+      - question: What waste management procedures are required for **gallium-contaminated
+          debris** generated during laser cleaning?
+        answer: '**D008 classification HEPA filtration**. Gallium debris typically
+          falls under D008 hazardous waste classification because of its toxicity.
+          For your 1064 nm laser system, HEPA filtration is essential to capture vaporized
+          particles, as gallium''s 2204°C boiling point basically generates fine aerosols
+          during ablation. Consult California''s specific metal disposal regulations
+          for proper handling.'
+      - question: How does gallium's **low melting point** affect laser cleaning efficiency
+          compared to higher-temperature metals?
+        answer: '**Lowers energy, risks splatter**. Gallium melts at a pretty low
+          29.8°C, slashing the energy demands for laser cleaning far below what''s
+          typical for steel. Still, that low point brings a fairly serious splatter
+          hazard, demanding tight control under the 1.2 J/cm² ablation threshold to
+          handle its swift phase shift.'
+      - question: What surface preparation or containment methods prevent **gallium
+          spread** during laser cleaning operations?
+        answer: '**Chilling prevents liquefaction**. Keep gallium under its 29.8°C
+          melting point with active chilling to avoid liquefaction. For containment,
+          basically apply a low-fluence (~1.2 J/cm²) laser at 1064 nm to vaporize
+          oxides without melting the base metal. Pretty much, pre-clean parts via
+          cryogenic cooling to freeze surface contaminants, keeping them brittle for
+          precise removal.'
+      - question: Are there specific laser cleaning protocols for removing gallium
+          from **sensitive electronic components** or connectors?
+        answer: '**Thermal management prevents smearing**. For delicate electronics,
+          basically stick to low-power nanosecond pulses at the 1064nm wavelength,
+          keeping fluence fairly below 1.2 J/cm². Gallium''s 29.76°C melting point
+          demands careful thermal management to avoid smearing. Then, follow up with
+          an isopropyl alcohol rinse to clear residual conductive particles, and confirm
+          cleanliness via electrical testing.'
+  - - regulatoryStandards
+    - - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        image: /images/logo/logo-org-fda.png
+        longName: Food and Drug Administration
+        name: FDA
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      - description: ANSI Z136.1 - Safe Use of Lasers
+        image: /images/logo/logo-org-ansi.png
+        longName: American National Standards Institute
+        name: ANSI
+        url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      - description: IEC 60825 - Safety of Laser Products
+        image: /images/logo/logo-org-iec.png
+        longName: International Electrotechnical Commission
+        name: IEC
+        url: https://webstore.iec.ch/publication/3587
+      - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+        image: /images/logo/logo-org-osha.png
+        longName: Occupational Safety and Health Administration
+        name: OSHA
+        url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  - - materialProperties
+    - material_characteristics:
+        label: Material Characteristics
+        percentage: 60.0
+        electricalConductivity:
+          value: '6.8e+06'
+          unit: S/m
+          source: ai_research
+          min: 659300
+          max: '6.6e+07'
+        electricalResistivity:
+          value: '2.7e-07'
+          unit: Ω·m
+          source: ai_research
+          min: 0
+          max: 2e-06
+        fractureToughness:
+          value: 0.65
+          unit: MPa m^{1/2}
+          source: ai_research
+          min: 0.67
+          max: 157
+        surfaceRoughness:
+          value: 0.05
+          unit: μm
+          source: ai_research
+          min: 0.02
+          max: 6.6
+        density:
+          value: 5.9
+          unit: g/cm³
+          source: ai_research
+          min: 1.7
+          max: 9408
+        oxidationResistance:
+          value: 1.4
+          unit: dimensionless
+          source: ai_research
+          min: -554
+          max: 1762
+        youngsModulus:
+          value: 11
+          unit: GPa
+          source: ai_research
+          min: 10.4
+          max: 2e+11
+        hardness:
+          value: 80
+          unit: MPa
+          source: ai_research
+          min: 0.2
+          max: 3500
+        compressiveStrength:
+          value: 21
+          unit: MPa
+          source: ai_research
+          min: 8
+          max: 2625
+        tensileStrength:
+          value: 16
+          unit: MPa
+          source: ai_research
+          min: 3
+          max: 3000
+        flexuralStrength:
+          value: 16.5
+          unit: MPa
+          source: ai_research
+          min: 11.4
+          max: 2897
+        corrosionResistance:
+          value: '0.002'
+          unit: mm/year
+          source: ai_research
+          min: -1.1
+          max: '1.1e+06'
+        porosity:
+          value: 0
+          unit: '%'
+          source: ai_research
+          min: 0
+          max: 15
+        boilingPoint:
+          value: 2676
+          unit: K
+          source: ai_research
+          min: 929
+          max: 6454
+        absorptivity:
+          value: 0.34
+          unit: dimensionless
+          source: ai_research
+          min: 0.02
+          max: 0.6
+        absorptionCoefficient:
+          value: 7e+07
+          unit: m^{-1}
+          source: ai_research
+          min: 589000
+          max: '9.9e+07'
+        reflectivity:
+          value: 0.71
+          unit: dimensionless
+          source: ai_research
+          min: 0.35
+          max: 1
+        vaporPressure:
+          value: 0
+          unit: Pa
+          source: ai_research
+          min: 0
+          max: 106391
+        meltingPoint:
+          value: 303
+          unit: K
+          source: ai_research
+          min: 133
+          max: 3865
+        thermalDestructionPoint:
+          value: 303
+          unit: K
+          source: ai_research
+          min: 133
+          max: 3865
+        thermalShockResistance:
+          value: 160
+          unit: K
+          source: ai_research
+          min: 6.7
+          max: 379050
+        laserDamageThreshold:
+          value: 0.75
+          unit: J/cm²
+          source: ai_research
+          min: 0.27
+          max: 15750
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        percentage: 40.0
+        absorptionCoefficient:
+          source: ai_research
+          unit: m⁻¹
+          value: '1.1e+07'
+          min: 589000
+          max: '9.9e+07'
+        absorptivity:
+          source: ai_research
+          unit: dimensionless
+          value: 0.42
+          min: 0.02
+          max: 0.6
+        laserDamageThreshold:
+          source: ai_research
+          unit: J/cm²
+          value: 0.15
+          min: 0.27
+          max: 15750
+        reflectivity:
+          source: ai_research
+          unit: dimensionless (ratio)
+          value: 0.71
+          min: 0.35
+          max: 1
+        thermalDestructionPoint:
+          source: ai_research
+          unit: K
+          value: 2477
+          min: 133
+          max: 3865
+        thermalShockResistance:
+          source: ai_research
+          unit: MPa·m²/W
+          value: '0.0021'
+          min: 6.7
+          max: 379050
+        vaporPressure:
+          source: ai_research
+          unit: Pa
+          value: '1.3e-06'
+          min: 0
+          max: 106391
+        thermalDestruction:
+          value: 303
+          unit: K
+          source: ai_research
+          min: 256
+          max: 3859
+        laserReflectivity:
+          value: 0.72
+          unit: ''
+          source: ai_research
+          min: 0.4
+          max: 73.5
+        thermalExpansion:
+          value: '1.8e-05'
+          unit: K^{-1}
+          source: ai_research
+          min: 4e-06
+          max: 31.7
+        thermalConductivity:
+          value: 40.6
+          unit: W/m·K
+          source: ai_research
+          min: 7.4
+          max: 450
+        specificHeat:
+          value: 371
+          unit: J/(kg·K)
+          source: ai_research
+          min: 43.4
+          max: 1905
+        laserAbsorption:
+          value: '7.8e+07'
+          unit: m^{-1}
+          source: ai_research
+          min: 0.02
+          max: '4.2e+08'
+        thermalDiffusivity:
+          value: '1.8e-05'
+          unit: m²/s
+          source: ai_research
+          min: 2e-06
+          max: '0.00017'
+        ablationThreshold:
+          value: 0.42
+          unit: J/cm²
+          source: ai_research
+          min: 0.09
+          max: 4.3
+  - - material_metadata
+    - last_updated: '2025-10-27T23:48:40.921959Z'
+      normalization_applied: true
+      normalization_date: '2025-10-27T23:48:40.921965Z'
+      structure_version: '2.0'
+  - - serviceOffering
+    - enabled: true
+      type: professionalCleaning
+      materialSpecific:
+        estimatedHoursMin: 2
+        estimatedHoursTypical: 6
+        targetContaminants:
+        - Oxide scale
+        - Heat discoloration
+        - Alpha case layer
+        - Thermal barrier coatings
+        notes: Controlled atmosphere may be required to prevent re-oxidation
+  - - preservedData
+    - generationMetadata:
+        generated_date: '2025-12-17T12:38:47.206273'

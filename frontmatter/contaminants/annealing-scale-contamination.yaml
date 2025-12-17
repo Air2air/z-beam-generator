@@ -1,252 +1,270 @@
-id: annealing-scale-contamination
-name: Heat Treatment Scale
-slug: annealing-scale-contamination
-category: thermal-damage
-subcategory: scale
-datePublished: '2025-12-17T13:33:38.984354'
-dateModified: '2025-12-17T13:33:38.984354'
-domain_linkages:
-  related_materials:
-  - id: stainless-steel-laser-cleaning
-    title: Stainless Steel
-    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
-    image: /images/material/stainless-steel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: steel-laser-cleaning
-    title: Steel
-    url: /materials/metal/ferrous/steel-laser-cleaning
-    image: /images/material/steel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: titanium-laser-cleaning
-    title: Titanium
-    url: /materials/metal/specialty/titanium-laser-cleaning
-    image: /images/material/titanium-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  produces_compounds:
-  - id: nitrogen-oxides-compound
-    title: Nitrogen Oxides
-    url: /compounds/toxic-gas/oxidizing-gas/nitrogen-oxides-compound
-    image: /images/compounds/nitrogen-oxides.jpg
-    category: toxic-gas
-    subcategory: oxidizing-gas
-    frequency: common
-    severity: low
-    typical_context: Formation from atmospheric nitrogen at high temperatures
-    exposure_risk: low
-    exposure_limits:
-      osha_pel_mg_m3: 9
-      niosh_rel_mg_m3: 1.8
-      acgih_tlv_mg_m3: 5.6
-      idlh_mg_m3: null
-    exceeds_limits: false
-    monitoring_required: false
-    control_measures:
-      ventilation_required: false
-      ppe_level: none
-      filtration_type: null
-    concentration_range: 1-10 mg/m³
-    hazard_class: toxic
-  - id: iron-oxide-compound
-    title: Iron Oxide Fume
-    url: /compounds/metal-fume/metal-oxide/iron-oxide-compound
-    image: /images/compounds/iron-oxide.jpg
-    category: metal-fume
-    subcategory: metal-oxide
-    frequency: very_common
-    severity: high
-    typical_context: Iron oxide layer from heat treatment
-    exposure_risk: high
-    exposure_limits:
-      osha_pel_mg_m3: 10
-      niosh_rel_mg_m3: 5
-      acgih_tlv_mg_m3: 5
-      idlh_mg_m3: null
-    exceeds_limits: false
-    monitoring_required: false
-    control_measures:
-      ventilation_required: false
-      ppe_level: none
-      filtration_type: null
-    concentration_range: 5.0 mg/m³
-    hazard_class: irritant
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_contamination
-schema_version: 4.0.0
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: contaminant
-title: Heat Treatment Scale Contamination
-contamination_description: Annealing-scale builds up as a thick oxide layer during slow heating in controlled atmospheres, ramping up deeper than surface rust and clinging tight to shift conductivity far beyond lighter contaminants. On steel, it grips firm and alters properties sharply, stainless steel holds it even tighter, and titanium shows looser attachment overall, posing significant challenges since mild acids drag slowly without etching underneath while blasting scatters debris widely. Turns out, laser cleaning lines up best, vaporizing the buildup precisely to achieve a clean finish and keep the base material intact.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contaminants
-  href: /contaminants
-- label: Thermal-Damage
-  href: /contaminants/thermal-damage
-- label: Heat Treatment Scale
-  href: /contaminants/thermal-damage/scale/annealing-scale-contamination
-images:
-  hero:
-    url: /images/contaminants/annealing-scale-contamination-hero.jpg
-    alt: Heat Treatment Scale contamination on surface before laser cleaning
-  micro:
-    url: /images/contaminants/annealing-scale-contamination-micro.jpg
-    alt: Heat Treatment Scale contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.4
-      min_j_cm2: 0.8
-      recommended_j_cm2: 1.1
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 200
-      min_ns: 10
-      recommended_ns: 100
-    repetition_rate_khz:
-      max: 200
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 2000
-      min: 500
-      recommended: 1000
-    spot_size_mm:
-      max: 0.1
-      min: 0.03
-      recommended: 0.05
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 8500
-      wavelength_355nm: 45000
-      wavelength_532nm: 22000
-    reflectivity:
-      wavelength_1064nm: 0.35
-      wavelength_355nm: 0.07
-      wavelength_532nm: 0.18
-    refractive_index:
-      imaginary_part: 0.38
-      real_part: 2.45
-    transmission_depth: 1.2
-  removal_characteristics:
-    byproducts:
-    - compound: iron-oxide
-      hazard_level: moderate
-      phase: solid
-    - compound: carbon-monoxide
-      hazard_level: low
-      phase: gas
-    - compound: metal vapor plasma
-      hazard_level: moderate
-      phase: plasma
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 240
-      typical_scan_speed_mm_s: 800
-    removal_efficiency:
-      diminishing_returns_after: 5
-      optimal_passes: 3
-      single_pass: 0.7
-    secondary_mechanisms:
-    - mechanical_spallation
-    - thermal_stress_fracturing
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: compressive
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Iron Oxide Fume
-      concentration_mg_m3: 5.0
-      exposure_limit_mg_m3: 5.0
-      hazard_class: irritant
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 15.0
-      exposure_limit_mg_m3: 29.0
-      hazard_class: toxic
-    particulate_generation:
-      respirable_fraction: 0.8
-      size_range_um:
-      - 0.1
-      - 10.0
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: half_mask
-      skin_protection: gloves
-    substrate_compatibility_warnings:
-    - Avoid laser cleaning on galvanized steel due to zinc oxide fume generation
-    - Exercise caution on painted surfaces which may contain hazardous pigments
-    - Ensure substrate is free of oils/greases that may produce additional hazardous fumes
-    toxic_gas_risk: low
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: HEPA
-      minimum_air_changes_per_hour: 12
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 4.5
-      pulse_duration_10ns: 3.2
-      wavelength_1064nm: 2.8
-    decomposition_temperature: 650
-    heat_affected_zone_depth: 25
-    melting_point: N/A
-    specific_heat: 850
-    thermal_conductivity: 0.8
-    thermal_diffusivity: 0.15
-    vaporization_temperature: 1200
-valid_materials:
-- Steel
-- Stainless Steel
-- Titanium
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - annealing-scale-contamination
+  - - title
+    - Heat Treatment Scale Contamination
+  - - slug
+    - annealing-scale-contamination
+  - - category
+    - thermal-damage
+  - - subcategory
+    - scale
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_contamination
+  - - datePublished
+    - '2025-12-17T13:33:38.984354'
+  - - dateModified
+    - '2025-12-17T13:33:38.984354'
+  - - author
+    - id: 4
+      name: Todd Dunning
+      country: United States
+      country_display: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      persona_file: usa_persona.yaml
+      formatting_file: usa_formatting.yaml
+  - - contamination_description
+    - Annealing-scale builds up as a thick oxide layer during slow heating in controlled
+      atmospheres, ramping up deeper than surface rust and clinging tight to shift
+      conductivity far beyond lighter contaminants. On steel, it grips firm and alters
+      properties sharply, stainless steel holds it even tighter, and titanium shows
+      looser attachment overall, posing significant challenges since mild acids drag
+      slowly without etching underneath while blasting scatters debris widely. Turns
+      out, laser cleaning lines up best, vaporizing the buildup precisely to achieve
+      a clean finish and keep the base material intact.
+  - - laser_properties
+    - laser_parameters:
+        beam_profile: flat_top
+        fluence_range:
+          max_j_cm2: 1.4
+          min_j_cm2: 0.8
+          recommended_j_cm2: 1.1
+        overlap_percentage: 50
+        polarization: circular
+        pulse_duration_range:
+          max_ns: 200
+          min_ns: 10
+          recommended_ns: 100
+        repetition_rate_khz:
+          max: 200
+          min: 20
+          recommended: 50
+        safety_margin_factor: 0.7
+        scan_speed_mm_s:
+          max: 2000
+          min: 500
+          recommended: 1000
+        spot_size_mm:
+          max: 0.1
+          min: 0.03
+          recommended: 0.05
+        wavelength_preference:
+        - 1064
+        - 532
+      optical_properties:
+        absorption_coefficient:
+          wavelength_1064nm: 8500
+          wavelength_355nm: 45000
+          wavelength_532nm: 22000
+        reflectivity:
+          wavelength_1064nm: 0.35
+          wavelength_355nm: 0.07
+          wavelength_532nm: 0.18
+        refractive_index:
+          imaginary_part: 0.38
+          real_part: 2.45
+        transmission_depth: 1.2
+      removal_characteristics:
+        byproducts:
+        - compound: iron-oxide
+          hazard_level: moderate
+          phase: solid
+        - compound: carbon-monoxide
+          hazard_level: low
+          phase: gas
+        - compound: metal vapor plasma
+          hazard_level: moderate
+          phase: plasma
+        damage_risk_to_substrate: low
+        primary_mechanism: thermal_ablation
+        process_speed:
+          area_coverage_rate_cm2_min: 240
+          typical_scan_speed_mm_s: 800
+        removal_efficiency:
+          diminishing_returns_after: 5
+          optimal_passes: 3
+          single_pass: 0.7
+        secondary_mechanisms:
+        - mechanical_spallation
+        - thermal_stress_fracturing
+        surface_quality_after_removal:
+          color_change: 'no'
+          residual_stress: compressive
+          roughness_increase: minimal
+      safety_data:
+        fire_explosion_risk: low
+        fumes_generated:
+        - compound: Iron Oxide Fume
+          concentration_mg_m3: 5.0
+          exposure_limit_mg_m3: 5.0
+          hazard_class: irritant
+        - compound: Carbon Monoxide
+          concentration_mg_m3: 15.0
+          exposure_limit_mg_m3: 29.0
+          hazard_class: toxic
+        particulate_generation:
+          respirable_fraction: 0.8
+          size_range_um:
+          - 0.1
+          - 10.0
+        ppe_requirements:
+          eye_protection: goggles
+          respiratory: half_mask
+          skin_protection: gloves
+        substrate_compatibility_warnings:
+        - Avoid laser cleaning on galvanized steel due to zinc oxide fume generation
+        - Exercise caution on painted surfaces which may contain hazardous pigments
+        - Ensure substrate is free of oils/greases that may produce additional hazardous
+          fumes
+        toxic_gas_risk: low
+        ventilation_requirements:
+          exhaust_velocity_m_s: 0.5
+          filtration_type: HEPA
+          minimum_air_changes_per_hour: 12
+        visibility_hazard: moderate
+      thermal_properties:
+        ablation_threshold:
+          pulse_duration_100ns: 4.5
+          pulse_duration_10ns: 3.2
+          wavelength_1064nm: 2.8
+        decomposition_temperature: 650
+        heat_affected_zone_depth: 25
+        melting_point: N/A
+        specific_heat: 850
+        thermal_conductivity: 0.8
+        thermal_diffusivity: 0.15
+        vaporization_temperature: 1200
+  - - produces_compounds
+    - - id: nitrogen-oxides-compound
+        title: Nitrogen Oxides
+        url: /compounds/toxic-gas/oxidizing-gas/nitrogen-oxides-compound
+        image: /images/compounds/nitrogen-oxides.jpg
+        category: toxic-gas
+        subcategory: oxidizing-gas
+        frequency: common
+        severity: low
+        typical_context: Formation from atmospheric nitrogen at high temperatures
+        exposure_risk: low
+        exposure_limits:
+          osha_pel_mg_m3: 9
+          niosh_rel_mg_m3: 1.8
+          acgih_tlv_mg_m3: 5.6
+          idlh_mg_m3: null
+        exceeds_limits: false
+        monitoring_required: false
+        control_measures:
+          ventilation_required: false
+          ppe_level: none
+          filtration_type: null
+        concentration_range: 1-10 mg/m³
+        hazard_class: toxic
+      - id: iron-oxide-compound
+        title: Iron Oxide Fume
+        url: /compounds/metal-fume/metal-oxide/iron-oxide-compound
+        image: /images/compounds/iron-oxide.jpg
+        category: metal-fume
+        subcategory: metal-oxide
+        frequency: very_common
+        severity: high
+        typical_context: Iron oxide layer from heat treatment
+        exposure_risk: high
+        exposure_limits:
+          osha_pel_mg_m3: 10
+          niosh_rel_mg_m3: 5
+          acgih_tlv_mg_m3: 5
+          idlh_mg_m3: null
+        exceeds_limits: false
+        monitoring_required: false
+        control_measures:
+          ventilation_required: false
+          ppe_level: none
+          filtration_type: null
+        concentration_range: 5.0 mg/m³
+        hazard_class: irritant
+  - - related_materials
+    - - id: stainless-steel-laser-cleaning
+        title: Stainless Steel
+        url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+        image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: steel-laser-cleaning
+        title: Steel
+        url: /materials/metal/ferrous/steel-laser-cleaning
+        image: /images/material/steel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: titanium-laser-cleaning
+        title: Titanium
+        url: /materials/metal/specialty/titanium-laser-cleaning
+        image: /images/material/titanium-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Contaminants
+        href: /contaminants
+      - label: Thermal-Damage
+        href: /contaminants/thermal-damage
+      - label: Heat Treatment Scale
+        href: /contaminants/thermal-damage/scale/annealing-scale-contamination
+  - - images
+    - hero:
+        url: /images/contaminants/annealing-scale-contamination-hero.jpg
+        alt: Heat Treatment Scale contamination on surface before laser cleaning
+      micro:
+        url: /images/contaminants/annealing-scale-contamination-micro.jpg
+        alt: Heat Treatment Scale contamination microscopic detail
+  - - valid_materials
+    - - Steel
+      - Stainless Steel
+      - Titanium
+  - - _metadata
+    - voice:
+        author_name: Todd Dunning
+        author_country: United States
+        voice_applied: true
+        content_type: contaminant

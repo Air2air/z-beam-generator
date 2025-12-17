@@ -1,324 +1,404 @@
-id: silicon-laser-cleaning
-name: silicon-laser-cleaning
-slug: silicon-laser-cleaning
-category: semiconductor
-subcategory: elemental
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:38:48.516625'
-dateModified: '2025-12-17T12:38:48.516625'
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
-title: Silicon Laser Cleaning
-material_description: Silicon works well for laser cleaning in electronics and solar setups, thanks to its durable hardness and strong corrosion resistance. In practice, dialing in precise laser energy addresses its sensitivity, ensuring clean finishes without damage.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Semiconductor
-  href: /materials/semiconductor
-- label: Elemental
-  href: /materials/semiconductor/elemental
-- label: Silicon
-  href: /materials/semiconductor/elemental/silicon
-images:
-  hero:
-    alt: Silicon surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/silicon-laser-cleaning-hero.jpg
-  micro:
-    alt: Silicon microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/silicon-laser-cleaning-micro.jpg
-micro:
-  before: The silicon surface reveals irregular patches of grime and debris scattered widely. Dust particles cling tightly, creating uneven textures that obscure details below. Contaminants form dull layers, dulling the overall appearance under magnification.
-  after: Laser treatment removes the grime, exposing a smooth and uniform silicon surface. Debris vanishes completely, revealing even textures without any clinging spots. The cleaned area shines clearly, highlighting pristine details throughout.
-faq:
-- question: What laser wavelengths are most effective for cleaning contaminants from silicon wafers without causing **thermal damage**?
-  answer: '**1064 nm minimizes deep heating**. For silicon wafers in semiconductor applications, a 1064 nm near-IR wavelength typically performs best, targeting contaminants while the silicon absorbs just enough for ablation without deep heating. Stay under 2.5 J/cm² fluence to avoid the ablation threshold and minimize subsurface defects—UV alternatives like 355 nm can pretty much handle stubborn residues but increase scattering risks.'
-- question: How does laser cleaning remove native oxide layers from silicon surfaces, and what are the risks of microcracking?
-  answer: Laser cleaning ablates silicon's native oxide layer through pretty rapid vaporization from 100 ns pulses at 1064 nm, as near-IR absorption heats the thin film to plasma thresholds without deep substrate penetration. Going beyond 2.5 J/cm² fluence fairly risks thermal gradients that lead to microcracks, particularly in semiconductors. After cleaning, check via SEM for subsurface integrity to protect microelectronics.
-- question: In laser cleaning of silicon solar panels, what fluence levels prevent damage to the **anti-reflective coating**?
-  answer: '**Maintain fluence below 2.5 J/cm²**. For silicon solar panels, keep fluence under 2.5 J/cm² in laser cleaning to pretty well protect the anti-reflective coating. This approach typically enables contaminant ablation at 1064 nm without thermal damage, maintaining module efficiency while preventing residue that might drop output by up to 5%.'
-- question: What safety precautions are needed when using lasers to clean silicon components due to potential **silicon nanoparticle generation**?
-  answer: '**Mitigate airborne nanoparticle inhalation**. When laser-cleaning silicon at 25 W with 2.5 J/cm² fluence, ablated nanoparticles can typically become airborne, risking lung irritation through inhalation. Basically, set up local exhaust ventilation to capture fine dust, and follow OSHA guidelines for N95 respirators, gloves, and protective eyewear to protect workers.'
-- question: Can femtosecond lasers clean **silicon MEMS devices** more effectively than nanosecond lasers, and why?
-  answer: '**Ultrashort pulses minimize thermal damage**. Yes, femtosecond lasers pretty much outperform nanosecond ones for cleaning silicon MEMS, thanks to ultrashort pulses that slash the heat-affected zone below 1 μm—versus 10-50 μm for 100 ns pulses—while preserving delicate microstructures. This basically boosts yield by minimizing thermal damage at fluences around 2.5 J/cm², ideal for silicon''s sensitivity.'
-- question: What are common issues with **redeposition of debris** during laser cleaning of silicon substrates in semiconductor fabs?
-  answer: '**Employ nitrogen gas assist**. In semiconductor fabs, redeposition of ablated particles onto silicon substrates typically happens because of low ejection velocities, which risks contamination in processing. To address this, apply nitrogen gas assist at fairly moderate pressures with a 2.5 J/cm² fluence threshold, driving debris away without harming the material. Effectiveness shows through surface roughness under 1 nm Ra following cleanup.'
-- question: How does the **thermal conductivity of silicon** influence the choice of laser power for surface treatment in cleaning processes?
-  answer: '**Enables higher laser power safely**. Silicon''s fairly high thermal conductivity of 150 W/mK enables quick heat dissipation, so we can basically boost laser power to around 25 W for effective contaminant removal without harming the substrate. That feature cuts down on localized overheating, allowing us to adjust scan speeds to 500 mm/s and fluence to 2.5 J/cm² for uniform surface treatment.'
-- question: What regulatory standards apply to laser cleaning of silicon in **cleanroom environments** for electronics manufacturing?
-  answer: '**Maintain fluence below 2.5 J/cm²**. In cleanroom setups for electronics manufacturing, laser cleaning of silicon wafers has to comply with ISO 14644 standards for air cleanliness—typically Class 5 or better—to prevent particulate contamination. Laser safety adheres to ANSI Z136 guidelines, protecting eyes and skin during operations at 1064 nm wavelength and 25 W power. For silicon-specific control, basically maintain fluence below 2.5 J/cm² to avoid subsurface damage while meeting SEMI F21 particle standards.'
-- question: In training guides, what handling practices are recommended for silicon parts before and after laser cleaning to **avoid contamination**?
-  answer: '**Minimize ESD and oxidation**. Before laser cleaning, handle silicon wafers fairly carefully in a class 100 cleanroom with anti-static gloves and tools to minimize ESD risks and particulates. After ablation at 2.5 J/cm² fluence, typically store them in nitrogen-purged enclosures to curb oxidation, preserving semiconductor integrity for electronics and solar uses.'
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-- description: SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
-  image: /images/logo/logo-org-generic.png
-  longName: Unknown Organization
-  name: Unknown
-  url: ''
-- description: ASTM F1188 - Standard Specification for Single Crystal Silicon
-  image: /images/logo/logo-org-generic.png
-  longName: Unknown Organization
-  name: Unknown
-  url: ''
-- description: ISO 14644 - Cleanroom and Associated Controlled Environments
-  image: /images/logo/logo-org-iso.png
-  longName: International Organization for Standardization
-  name: ISO
-  url: https://www.iso.org/standard/60426.html
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 60.0
-    electricalResistivity:
-      value: 2300
-      unit: Ω·m
-      source: ai_research
-      min: 11.4
-      max: '1.4e+06'
-    fractureToughness:
-      value: 0.75
-      unit: MPa√m
-      source: ai_research
-      min: 0.52
-      max: 0.97
-    youngsModulus:
-      value: '1.7e+11'
-      unit: Pa
-      source: ai_research
-      min: 81.1
-      max: '1.5e+11'
-    oxidationResistance:
-      value: 2.3
-      unit: dimensionless
-      source: ai_research
-      min: 0
-      max: 2.4
-    density:
-      value: 2329
-      unit: kg/m³
-      source: ai_research
-      min: 2.2
-      max: 5.5
-    hardness:
-      value: 9.3
-      unit: GPa
-      source: ai_research
-      min: 7
-      max: 12
-    corrosionResistance:
-      value: 0.98
-      unit: dimensionless (resistance index)
-      source: ai_research
-      min: 0.87
-      max: 157500
-    compressiveStrength:
-      value: 7000
-      unit: MPa
-      source: ai_research
-      min: 133
-      max: 7343
-    flexuralStrength:
-      value: 295
-      unit: MPa
-      source: ai_research
-      min: 79.9
-      max: 148
-    tensileStrength:
-      value: 7000
-      unit: MPa
-      source: ai_research
-      min: 30.8
-      max: 255
-    laserDamageThreshold:
-      value: 0.25
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Applied Optics
-      citation: 'Carr, C. W., et al., Laser-induced defect reactions governing damage initiation in single-crystal Si at 1064 nm, Applied Optics, 2003, Vol. 42, No. 21, pp. 4242-4248, DOI: 10.1364/AO.42.004242'
-      context: Single-crystal silicon (CZ-grown, <100> orientation, 99.9999% purity), room temperature (25°C), 1064 nm wavelength, 3 ns pulse duration, measured in vacuum
-      researched_date: '2025-11-24T12:18:31.619113'
-      needs_validation: true
-      min: 0.47
-      max: 8.9
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    absorptivity:
-      value: 0.65
-      unit: dimensionless
-      min: 0.5
-      max: 0.8
-      source: ai_research
-    absorptionCoefficient:
-      value: 50000
-      unit: m⁻¹
-      min: 10000
-      max: 100000
-      source: ai_research
-    laserDamageThreshold:
-      value: 1
-      unit: J/cm²
-      min: 0.5
-      max: 2
-      source: ai_research
-    thermalShockResistance:
-      value: 1.2
-      unit: MW/m
-      min: 0.8
-      max: 1.5
-      source: ai_research
-    reflectivity:
-      value: 0.35
-      unit: dimensionless
-      min: 0.3
-      max: 0.4
-      source: ai_research
-    thermalDestructionPoint:
-      value: 1687
-      unit: K
-      min: 1600
-      max: 1800
-      source: ai_research
-    vaporPressure:
-      value: 0.1
-      unit: Pa
-      min: 0.01
-      max: 1
-      source: ai_research
-    thermalDestruction:
-      value: 1687
-      unit: K
-      source: ai_research
-      min: 1502
-      max: 1696
-    specificHeat:
-      value: 702
-      unit: J/kg·K
-      source: ai_research
-      min: 300
-      max: 900
-    laserReflectivity:
-      value: 0.36
-      unit: dimensionless
-      source: ai_research
-      min: 0.3
-      max: 0.36
-    thermalConductivity:
-      value: 148
-      unit: W/m·K
-      source: ai_research
-      min: 0.2
-      max: 156
-    thermalExpansion:
-      value: '2.6e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: 2e-06
-      max: 6e-06
-    laserAbsorption:
-      value: 336000
-      unit: m^{-1}
-      source: ai_research
-      min: 19380
-      max: '1.1e+06'
-    thermalDiffusivity:
-      value: '8.8e-05'
-      unit: m²/s
-      source: ai_research
-      min: '2.4e-05'
-      max: '9.2e-05'
-    ablationThreshold:
-      value: 2.5
-      unit: J/cm²
-      source: scientific_literature
-      source_type: textbook
-      source_name: Laser Processing and Chemistry
-      citation: D. Bäuerle, Laser Processing and Chemistry, 4th Edition, Springer-Verlag Berlin Heidelberg, 2011, ISBN 978-3-642-17652-8
-      context: Single-crystal silicon (99.999% purity), room temperature (25°C), nanosecond pulse duration (10-20 ns), 532 nm wavelength, measured in air at 1 atm
-      researched_date: '2025-11-24T12:18:40.536280'
-      needs_validation: true
-      min: 1.2
-      max: 2
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - ASTM F1188 - Standard Specification for Single Crystal Silicon
-  isBasedOn:
-    name: SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
-    url: ''
-material_metadata:
-  regulatoryStandards:
-  - SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
-  - ASTM F1188 - Standard Specification for Single Crystal Silicon
-  - ISO 14644 - Cleanroom and Associated Controlled Environments
-domain_linkages: {}
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 1
-    estimatedHoursTypical: 4
-    targetContaminants:
-    - Surface contamination
-    - Paint and coatings
-    - Oxide layer
-    - Adhesive residue
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-17T12:38:48.517921'
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - silicon-laser-cleaning
+  - - title
+    - Silicon Laser Cleaning
+  - - slug
+    - silicon-laser-cleaning
+  - - category
+    - semiconductor
+  - - subcategory
+    - elemental
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_material
+  - - datePublished
+    - '2025-12-17T12:38:48.516625'
+  - - dateModified
+    - '2025-12-17T12:38:48.516625'
+  - - author
+    - id: 4
+      name: Todd Dunning
+      country: United States
+      country_display: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      persona_file: usa_persona.yaml
+      formatting_file: usa_formatting.yaml
+  - - material_description
+    - Silicon works well for laser cleaning in electronics and solar setups, thanks
+      to its durable hardness and strong corrosion resistance. In practice, dialing
+      in precise laser energy addresses its sensitivity, ensuring clean finishes without
+      damage.
+  - - micro
+    - before: The silicon surface reveals irregular patches of grime and debris scattered
+        widely. Dust particles cling tightly, creating uneven textures that obscure
+        details below. Contaminants form dull layers, dulling the overall appearance
+        under magnification.
+      after: Laser treatment removes the grime, exposing a smooth and uniform silicon
+        surface. Debris vanishes completely, revealing even textures without any clinging
+        spots. The cleaned area shines clearly, highlighting pristine details throughout.
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Materials
+        href: /materials
+      - label: Semiconductor
+        href: /materials/semiconductor
+      - label: Elemental
+        href: /materials/semiconductor/elemental
+      - label: Silicon
+        href: /materials/semiconductor/elemental/silicon
+  - - images
+    - hero:
+        alt: Silicon surface undergoing laser cleaning showing precise contamination
+          removal
+        url: /images/material/silicon-laser-cleaning-hero.jpg
+      micro:
+        alt: Silicon microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/silicon-laser-cleaning-micro.jpg
+  - - eeat
+    - reviewedBy: Z-Beam Quality Assurance Team
+      citations:
+      - IEC 60825 - Safety of Laser Products
+      - ASTM F1188 - Standard Specification for Single Crystal Silicon
+      isBasedOn:
+        name: SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
+        url: ''
+  - - _metadata
+    - voice:
+        author_name: Todd Dunning
+        author_country: United States
+        voice_applied: true
+        content_type: material
+  - - faq
+    - - question: What laser wavelengths are most effective for cleaning contaminants
+          from silicon wafers without causing **thermal damage**?
+        answer: '**1064 nm minimizes deep heating**. For silicon wafers in semiconductor
+          applications, a 1064 nm near-IR wavelength typically performs best, targeting
+          contaminants while the silicon absorbs just enough for ablation without
+          deep heating. Stay under 2.5 J/cm² fluence to avoid the ablation threshold
+          and minimize subsurface defects—UV alternatives like 355 nm can pretty much
+          handle stubborn residues but increase scattering risks.'
+      - question: How does laser cleaning remove native oxide layers from silicon
+          surfaces, and what are the risks of microcracking?
+        answer: Laser cleaning ablates silicon's native oxide layer through pretty
+          rapid vaporization from 100 ns pulses at 1064 nm, as near-IR absorption
+          heats the thin film to plasma thresholds without deep substrate penetration.
+          Going beyond 2.5 J/cm² fluence fairly risks thermal gradients that lead
+          to microcracks, particularly in semiconductors. After cleaning, check via
+          SEM for subsurface integrity to protect microelectronics.
+      - question: In laser cleaning of silicon solar panels, what fluence levels prevent
+          damage to the **anti-reflective coating**?
+        answer: '**Maintain fluence below 2.5 J/cm²**. For silicon solar panels, keep
+          fluence under 2.5 J/cm² in laser cleaning to pretty well protect the anti-reflective
+          coating. This approach typically enables contaminant ablation at 1064 nm
+          without thermal damage, maintaining module efficiency while preventing residue
+          that might drop output by up to 5%.'
+      - question: What safety precautions are needed when using lasers to clean silicon
+          components due to potential **silicon nanoparticle generation**?
+        answer: '**Mitigate airborne nanoparticle inhalation**. When laser-cleaning
+          silicon at 25 W with 2.5 J/cm² fluence, ablated nanoparticles can typically
+          become airborne, risking lung irritation through inhalation. Basically,
+          set up local exhaust ventilation to capture fine dust, and follow OSHA guidelines
+          for N95 respirators, gloves, and protective eyewear to protect workers.'
+      - question: Can femtosecond lasers clean **silicon MEMS devices** more effectively
+          than nanosecond lasers, and why?
+        answer: '**Ultrashort pulses minimize thermal damage**. Yes, femtosecond lasers
+          pretty much outperform nanosecond ones for cleaning silicon MEMS, thanks
+          to ultrashort pulses that slash the heat-affected zone below 1 μm—versus
+          10-50 μm for 100 ns pulses—while preserving delicate microstructures. This
+          basically boosts yield by minimizing thermal damage at fluences around 2.5
+          J/cm², ideal for silicon''s sensitivity.'
+      - question: What are common issues with **redeposition of debris** during laser
+          cleaning of silicon substrates in semiconductor fabs?
+        answer: '**Employ nitrogen gas assist**. In semiconductor fabs, redeposition
+          of ablated particles onto silicon substrates typically happens because of
+          low ejection velocities, which risks contamination in processing. To address
+          this, apply nitrogen gas assist at fairly moderate pressures with a 2.5
+          J/cm² fluence threshold, driving debris away without harming the material.
+          Effectiveness shows through surface roughness under 1 nm Ra following cleanup.'
+      - question: How does the **thermal conductivity of silicon** influence the choice
+          of laser power for surface treatment in cleaning processes?
+        answer: '**Enables higher laser power safely**. Silicon''s fairly high thermal
+          conductivity of 150 W/mK enables quick heat dissipation, so we can basically
+          boost laser power to around 25 W for effective contaminant removal without
+          harming the substrate. That feature cuts down on localized overheating,
+          allowing us to adjust scan speeds to 500 mm/s and fluence to 2.5 J/cm² for
+          uniform surface treatment.'
+      - question: What regulatory standards apply to laser cleaning of silicon in
+          **cleanroom environments** for electronics manufacturing?
+        answer: '**Maintain fluence below 2.5 J/cm²**. In cleanroom setups for electronics
+          manufacturing, laser cleaning of silicon wafers has to comply with ISO 14644
+          standards for air cleanliness—typically Class 5 or better—to prevent particulate
+          contamination. Laser safety adheres to ANSI Z136 guidelines, protecting
+          eyes and skin during operations at 1064 nm wavelength and 25 W power. For
+          silicon-specific control, basically maintain fluence below 2.5 J/cm² to
+          avoid subsurface damage while meeting SEMI F21 particle standards.'
+      - question: In training guides, what handling practices are recommended for
+          silicon parts before and after laser cleaning to **avoid contamination**?
+        answer: '**Minimize ESD and oxidation**. Before laser cleaning, handle silicon
+          wafers fairly carefully in a class 100 cleanroom with anti-static gloves
+          and tools to minimize ESD risks and particulates. After ablation at 2.5
+          J/cm² fluence, typically store them in nitrogen-purged enclosures to curb
+          oxidation, preserving semiconductor integrity for electronics and solar
+          uses.'
+  - - regulatoryStandards
+    - - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        image: /images/logo/logo-org-fda.png
+        longName: Food and Drug Administration
+        name: FDA
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      - description: ANSI Z136.1 - Safe Use of Lasers
+        image: /images/logo/logo-org-ansi.png
+        longName: American National Standards Institute
+        name: ANSI
+        url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      - description: IEC 60825 - Safety of Laser Products
+        image: /images/logo/logo-org-iec.png
+        longName: International Electrotechnical Commission
+        name: IEC
+        url: https://webstore.iec.ch/publication/3587
+      - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+        image: /images/logo/logo-org-osha.png
+        longName: Occupational Safety and Health Administration
+        name: OSHA
+        url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      - description: SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
+        image: /images/logo/logo-org-generic.png
+        longName: Unknown Organization
+        name: Unknown
+        url: ''
+      - description: ASTM F1188 - Standard Specification for Single Crystal Silicon
+        image: /images/logo/logo-org-generic.png
+        longName: Unknown Organization
+        name: Unknown
+        url: ''
+      - description: ISO 14644 - Cleanroom and Associated Controlled Environments
+        image: /images/logo/logo-org-iso.png
+        longName: International Organization for Standardization
+        name: ISO
+        url: https://www.iso.org/standard/60426.html
+  - - materialProperties
+    - material_characteristics:
+        label: Material Characteristics
+        percentage: 60.0
+        electricalResistivity:
+          value: 2300
+          unit: Ω·m
+          source: ai_research
+          min: 11.4
+          max: '1.4e+06'
+        fractureToughness:
+          value: 0.75
+          unit: MPa√m
+          source: ai_research
+          min: 0.52
+          max: 0.97
+        youngsModulus:
+          value: '1.7e+11'
+          unit: Pa
+          source: ai_research
+          min: 81.1
+          max: '1.5e+11'
+        oxidationResistance:
+          value: 2.3
+          unit: dimensionless
+          source: ai_research
+          min: 0
+          max: 2.4
+        density:
+          value: 2329
+          unit: kg/m³
+          source: ai_research
+          min: 2.2
+          max: 5.5
+        hardness:
+          value: 9.3
+          unit: GPa
+          source: ai_research
+          min: 7
+          max: 12
+        corrosionResistance:
+          value: 0.98
+          unit: dimensionless (resistance index)
+          source: ai_research
+          min: 0.87
+          max: 157500
+        compressiveStrength:
+          value: 7000
+          unit: MPa
+          source: ai_research
+          min: 133
+          max: 7343
+        flexuralStrength:
+          value: 295
+          unit: MPa
+          source: ai_research
+          min: 79.9
+          max: 148
+        tensileStrength:
+          value: 7000
+          unit: MPa
+          source: ai_research
+          min: 30.8
+          max: 255
+        laserDamageThreshold:
+          value: 0.25
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Applied Optics
+          citation: 'Carr, C. W., et al., Laser-induced defect reactions governing
+            damage initiation in single-crystal Si at 1064 nm, Applied Optics, 2003,
+            Vol. 42, No. 21, pp. 4242-4248, DOI: 10.1364/AO.42.004242'
+          context: Single-crystal silicon (CZ-grown, <100> orientation, 99.9999% purity),
+            room temperature (25°C), 1064 nm wavelength, 3 ns pulse duration, measured
+            in vacuum
+          researched_date: '2025-11-24T12:18:31.619113'
+          needs_validation: true
+          min: 0.47
+          max: 8.9
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        percentage: 40.0
+        absorptivity:
+          value: 0.65
+          unit: dimensionless
+          min: 0.5
+          max: 0.8
+          source: ai_research
+        absorptionCoefficient:
+          value: 50000
+          unit: m⁻¹
+          min: 10000
+          max: 100000
+          source: ai_research
+        laserDamageThreshold:
+          value: 1
+          unit: J/cm²
+          min: 0.5
+          max: 2
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.8
+          max: 1.5
+          source: ai_research
+        reflectivity:
+          value: 0.35
+          unit: dimensionless
+          min: 0.3
+          max: 0.4
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1687
+          unit: K
+          min: 1600
+          max: 1800
+          source: ai_research
+        vaporPressure:
+          value: 0.1
+          unit: Pa
+          min: 0.01
+          max: 1
+          source: ai_research
+        thermalDestruction:
+          value: 1687
+          unit: K
+          source: ai_research
+          min: 1502
+          max: 1696
+        specificHeat:
+          value: 702
+          unit: J/kg·K
+          source: ai_research
+          min: 300
+          max: 900
+        laserReflectivity:
+          value: 0.36
+          unit: dimensionless
+          source: ai_research
+          min: 0.3
+          max: 0.36
+        thermalConductivity:
+          value: 148
+          unit: W/m·K
+          source: ai_research
+          min: 0.2
+          max: 156
+        thermalExpansion:
+          value: '2.6e-06'
+          unit: K^{-1}
+          source: ai_research
+          min: 2e-06
+          max: 6e-06
+        laserAbsorption:
+          value: 336000
+          unit: m^{-1}
+          source: ai_research
+          min: 19380
+          max: '1.1e+06'
+        thermalDiffusivity:
+          value: '8.8e-05'
+          unit: m²/s
+          source: ai_research
+          min: '2.4e-05'
+          max: '9.2e-05'
+        ablationThreshold:
+          value: 2.5
+          unit: J/cm²
+          source: scientific_literature
+          source_type: textbook
+          source_name: Laser Processing and Chemistry
+          citation: D. Bäuerle, Laser Processing and Chemistry, 4th Edition, Springer-Verlag
+            Berlin Heidelberg, 2011, ISBN 978-3-642-17652-8
+          context: Single-crystal silicon (99.999% purity), room temperature (25°C),
+            nanosecond pulse duration (10-20 ns), 532 nm wavelength, measured in air
+            at 1 atm
+          researched_date: '2025-11-24T12:18:40.536280'
+          needs_validation: true
+          min: 1.2
+          max: 2
+  - - material_metadata
+    - regulatoryStandards:
+      - SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
+      - ASTM F1188 - Standard Specification for Single Crystal Silicon
+      - ISO 14644 - Cleanroom and Associated Controlled Environments
+  - - serviceOffering
+    - enabled: true
+      type: professionalCleaning
+      materialSpecific:
+        estimatedHoursMin: 1
+        estimatedHoursTypical: 4
+        targetContaminants:
+        - Surface contamination
+        - Paint and coatings
+        - Oxide layer
+        - Adhesive residue
+  - - preservedData
+    - generationMetadata:
+        generated_date: '2025-12-17T12:38:48.517921'

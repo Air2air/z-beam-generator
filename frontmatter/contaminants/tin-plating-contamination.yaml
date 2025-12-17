@@ -1,205 +1,224 @@
-id: tin-plating-contamination
-name: Tin Plating Residue
-slug: tin-plating-contamination
-category: metallic-coating
-subcategory: plating
-datePublished: '2025-12-17T13:33:43.222689'
-dateModified: '2025-12-17T13:33:43.222689'
-domain_linkages:
-  related_materials:
-  - id: steel-laser-cleaning
-    title: Steel
-    url: /materials/metal/ferrous/steel-laser-cleaning
-    image: /images/material/steel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: copper-laser-cleaning
-    title: Copper
-    url: /materials/metal/non-ferrous/copper-laser-cleaning
-    image: /images/material/copper-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass-laser-cleaning
-    title: Brass
-    url: /materials/metal/non-ferrous/brass-laser-cleaning
-    image: /images/material/brass-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-content_type: unified_contamination
-schema_version: 4.0.0
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: contaminant
-title: Tin Plating Residue Contamination
-contamination_description: Tin-plating contamination, it arises from degraded coatings on electronic components and food containers, forming thin metallic layers that adhere tightly through oxidation and environmental exposure. This contamination, it distinguishes itself by soft, ductile texture unlike harder oxide scales, and behaves differently on steel where it promotes corrosion, on copper it accelerates tarnish, and on brass it induces uneven patina thus complicating uniform cleaning. Removal challenges stem from its persistence and risk of substrate damage, yet laser cleaning proves effective as precise pulses ablate the layer selectively and restore surface integrity without mechanical stress.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contaminants
-  href: /contaminants
-- label: Metallic-Coating
-  href: /contaminants/metallic-coating
-- label: Tin Plating Residue
-  href: /contaminants/metallic-coating/plating/tin-plating-contamination
-images:
-  hero:
-    url: /images/contaminants/tin-plating-contamination-hero.jpg
-    alt: Tin Plating Residue contamination on surface before laser cleaning
-  micro:
-    url: /images/contaminants/tin-plating-contamination-micro.jpg
-    alt: Tin Plating Residue contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.2
-      min_j_cm2: 0.3
-      recommended_j_cm2: 0.8
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 200
-      min_ns: 10
-      recommended_ns: 50
-    repetition_rate_khz:
-      max: 200
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 2000
-      min: 500
-      recommended: 1000
-    spot_size_mm:
-      max: 0.1
-      min: 0.02
-      recommended: 0.05
-    wavelength_preference:
-    - 532
-    - 1064
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 85000
-      wavelength_355nm: 450000
-      wavelength_532nm: 210000
-    reflectivity:
-      wavelength_1064nm: 0.65
-      wavelength_355nm: 0.12
-      wavelength_532nm: 0.35
-    refractive_index:
-      imaginary_part: 4.2
-      real_part: 2.8
-    transmission_depth: 1.2
-  removal_characteristics:
-    byproducts:
-    - compound: SnO2
-      hazard_level: low
-      phase: solid
-    - compound: Sn
-      hazard_level: moderate
-      phase: gas
-    - compound: SnO
-      hazard_level: moderate
-      phase: gas
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 240
-      typical_scan_speed_mm_s: 800
-    removal_efficiency:
-      diminishing_returns_after: 3
-      optimal_passes: 2
-      single_pass: 0.85
-    secondary_mechanisms:
-    - melting_and_ejection
-    - vaporization
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: compressive
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Tin Oxide (SnO2)
-      concentration_mg_m3: 5-25
-      exposure_limit_mg_m3: 2.0
-      hazard_class: irritant
-    - compound: Metal Fume (Tin)
-      concentration_mg_m3: 1-10
-      exposure_limit_mg_m3: 2.0
-      hazard_class: irritant
-    particulate_generation:
-      respirable_fraction: 0.7
-      size_range_um:
-      - 0.1
-      - 10.0
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: half_mask
-      skin_protection: gloves
-    substrate_compatibility_warnings:
-    - May generate higher fume concentrations if substrate contains lead or other alloying elements
-    - Avoid laser parameters that cause substrate melting to minimize fume generation
-    toxic_gas_risk: low
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: HEPA
-      minimum_air_changes_per_hour: 10
-    visibility_hazard: low
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 0.4
-      pulse_duration_10ns: 0.6
-      wavelength_1064nm: 0.8
-    decomposition_temperature: 600
-    heat_affected_zone_depth: 15
-    melting_point: 232
-    specific_heat: 228
-    thermal_conductivity: 66.8
-    thermal_diffusivity: 40.2
-    vaporization_temperature: 2602
-valid_materials:
-- Steel
-- Copper
-- Brass
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - tin-plating-contamination
+  - - title
+    - Tin Plating Residue Contamination
+  - - slug
+    - tin-plating-contamination
+  - - category
+    - metallic-coating
+  - - subcategory
+    - plating
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_contamination
+  - - datePublished
+    - '2025-12-17T13:33:43.222689'
+  - - dateModified
+    - '2025-12-17T13:33:43.222689'
+  - - author
+    - id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      country_display: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      persona_file: indonesia_persona.yaml
+      formatting_file: indonesia_formatting.yaml
+  - - contamination_description
+    - Tin-plating contamination, it arises from degraded coatings on electronic components
+      and food containers, forming thin metallic layers that adhere tightly through
+      oxidation and environmental exposure. This contamination, it distinguishes itself
+      by soft, ductile texture unlike harder oxide scales, and behaves differently
+      on steel where it promotes corrosion, on copper it accelerates tarnish, and
+      on brass it induces uneven patina thus complicating uniform cleaning. Removal
+      challenges stem from its persistence and risk of substrate damage, yet laser
+      cleaning proves effective as precise pulses ablate the layer selectively and
+      restore surface integrity without mechanical stress.
+  - - laser_properties
+    - laser_parameters:
+        beam_profile: flat_top
+        fluence_range:
+          max_j_cm2: 1.2
+          min_j_cm2: 0.3
+          recommended_j_cm2: 0.8
+        overlap_percentage: 50
+        polarization: circular
+        pulse_duration_range:
+          max_ns: 200
+          min_ns: 10
+          recommended_ns: 50
+        repetition_rate_khz:
+          max: 200
+          min: 20
+          recommended: 50
+        safety_margin_factor: 0.7
+        scan_speed_mm_s:
+          max: 2000
+          min: 500
+          recommended: 1000
+        spot_size_mm:
+          max: 0.1
+          min: 0.02
+          recommended: 0.05
+        wavelength_preference:
+        - 532
+        - 1064
+      optical_properties:
+        absorption_coefficient:
+          wavelength_1064nm: 85000
+          wavelength_355nm: 450000
+          wavelength_532nm: 210000
+        reflectivity:
+          wavelength_1064nm: 0.65
+          wavelength_355nm: 0.12
+          wavelength_532nm: 0.35
+        refractive_index:
+          imaginary_part: 4.2
+          real_part: 2.8
+        transmission_depth: 1.2
+      removal_characteristics:
+        byproducts:
+        - compound: SnO2
+          hazard_level: low
+          phase: solid
+        - compound: Sn
+          hazard_level: moderate
+          phase: gas
+        - compound: SnO
+          hazard_level: moderate
+          phase: gas
+        damage_risk_to_substrate: low
+        primary_mechanism: thermal_ablation
+        process_speed:
+          area_coverage_rate_cm2_min: 240
+          typical_scan_speed_mm_s: 800
+        removal_efficiency:
+          diminishing_returns_after: 3
+          optimal_passes: 2
+          single_pass: 0.85
+        secondary_mechanisms:
+        - melting_and_ejection
+        - vaporization
+        surface_quality_after_removal:
+          color_change: 'no'
+          residual_stress: compressive
+          roughness_increase: minimal
+      safety_data:
+        fire_explosion_risk: low
+        fumes_generated:
+        - compound: Tin Oxide (SnO2)
+          concentration_mg_m3: 5-25
+          exposure_limit_mg_m3: 2.0
+          hazard_class: irritant
+        - compound: Metal Fume (Tin)
+          concentration_mg_m3: 1-10
+          exposure_limit_mg_m3: 2.0
+          hazard_class: irritant
+        particulate_generation:
+          respirable_fraction: 0.7
+          size_range_um:
+          - 0.1
+          - 10.0
+        ppe_requirements:
+          eye_protection: goggles
+          respiratory: half_mask
+          skin_protection: gloves
+        substrate_compatibility_warnings:
+        - May generate higher fume concentrations if substrate contains lead or other
+          alloying elements
+        - Avoid laser parameters that cause substrate melting to minimize fume generation
+        toxic_gas_risk: low
+        ventilation_requirements:
+          exhaust_velocity_m_s: 0.5
+          filtration_type: HEPA
+          minimum_air_changes_per_hour: 10
+        visibility_hazard: low
+      thermal_properties:
+        ablation_threshold:
+          pulse_duration_100ns: 0.4
+          pulse_duration_10ns: 0.6
+          wavelength_1064nm: 0.8
+        decomposition_temperature: 600
+        heat_affected_zone_depth: 15
+        melting_point: 232
+        specific_heat: 228
+        thermal_conductivity: 66.8
+        thermal_diffusivity: 40.2
+        vaporization_temperature: 2602
+  - - related_materials
+    - - id: steel-laser-cleaning
+        title: Steel
+        url: /materials/metal/ferrous/steel-laser-cleaning
+        image: /images/material/steel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: copper-laser-cleaning
+        title: Copper
+        url: /materials/metal/non-ferrous/copper-laser-cleaning
+        image: /images/material/copper-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: brass-laser-cleaning
+        title: Brass
+        url: /materials/metal/non-ferrous/brass-laser-cleaning
+        image: /images/material/brass-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Contaminants
+        href: /contaminants
+      - label: Metallic-Coating
+        href: /contaminants/metallic-coating
+      - label: Tin Plating Residue
+        href: /contaminants/metallic-coating/plating/tin-plating-contamination
+  - - images
+    - hero:
+        url: /images/contaminants/tin-plating-contamination-hero.jpg
+        alt: Tin Plating Residue contamination on surface before laser cleaning
+      micro:
+        url: /images/contaminants/tin-plating-contamination-micro.jpg
+        alt: Tin Plating Residue contamination microscopic detail
+  - - valid_materials
+    - - Steel
+      - Copper
+      - Brass
+  - - _metadata
+    - voice:
+        author_name: Ikmanda Roswati
+        author_country: Indonesia
+        voice_applied: true
+        content_type: contaminant

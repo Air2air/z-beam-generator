@@ -1,83 +1,68 @@
-id: zinc-settings
-name: Zinc
-slug: zinc-settings
-category: metal
-subcategory: alloy
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.562371'
-dateModified: '2025-12-17T12:39:12.562371'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - biological-stains-contamination
-  - carbon-soot-contamination
-  - chemical-stains-contamination
-  - conversion-coating-contamination
-  - epoxy-residue-contamination
-  - fertilizer-residue-contamination
-  - graffiti-paint-contamination
-  - graphite-marks-contamination
-  - ink-stains-contamination
-  - insect-residue-contamination
-  - lime-scale-contamination
-  - mercury-contamination
-  - mineral-deposits-contamination
-  - paint-residue-contamination
-  - pesticide-residue-contamination
-  - plastic-residue-contamination
-  - pollen-deposit-contamination
-  - radioactive-contamination
-  - rubber-residue-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - silicone-buildup-contamination
-  - tree-sap-contamination
-  - water-stain-contamination
-  - wax-buildup-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Zinc oxide removal without substrate damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength with good Zinc absorption and minimal reflectivity
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for effective Zinc oxide removal
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning with thermal management
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for Zinc oxide ablation without melting substrate
-    unit: J/cm²
-    value: 5.1
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient Zinc ablation with thermal control
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform Zinc surface cleaning
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Number of passes for thorough Zinc oxide removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for complete Zinc surface coverage
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Zinc
-  href: /settings/zinc-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - zinc-settings
+  - - slug
+    - zinc-settings
+  - - category
+    - metal
+  - - subcategory
+    - alloy
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.562371'
+  - - dateModified
+    - '2025-12-17T12:39:12.562371'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Zinc
+        href: /settings/zinc-settings
+  - - name
+    - Zinc
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Zinc oxide removal without substrate
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength with good Zinc absorption and minimal reflectivity
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for effective Zinc oxide removal
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for continuous cleaning with thermal
+          management
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for Zinc oxide ablation without melting substrate
+        unit: J/cm²
+        value: 5.1
+      pulseWidth:
+        description: Nanosecond pulse duration for efficient Zinc ablation with thermal
+          control
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform Zinc surface cleaning
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Number of passes for thorough Zinc oxide removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for complete Zinc surface coverage
+        unit: '%'
+        value: 50

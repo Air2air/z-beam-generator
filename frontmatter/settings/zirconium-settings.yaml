@@ -1,58 +1,78 @@
-id: zirconium-settings
-name: Zirconium
-slug: zirconium-settings
-category: metal
-subcategory: alloy
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.574607'
-dateModified: '2025-12-17T12:39:12.574607'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Zirconium oxide removal without substrate damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength optimized for Zirconium's moderate absorption and thermal processing
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Optimal beam diameter for balancing cleaning efficiency and processing speed
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: High repetition rate for efficient surface coverage while maintaining thermal control
-    unit: kHz
-    value: 100
-  energyDensity:
-    description: Fluence optimized for Zirconium oxide ablation threshold while preserving base material
-    unit: J/cm²
-    value: 5.1
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient oxide layer ablation with minimal heat affected zone
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Scanning speed providing effective oxide removal with controlled thermal input
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Number of cleaning passes for thorough oxide removal with minimal substrate impact
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Beam overlap percentage ensuring complete surface coverage without excessive thermal buildup
-    unit: '%'
-    value: 50
-  dwellTime:
-    description: Effective interaction time per spot for controlled material removal
-    unit: μs
-    value: 100
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Zirconium
-  href: /settings/zirconium-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - zirconium-settings
+  - - slug
+    - zirconium-settings
+  - - category
+    - metal
+  - - subcategory
+    - alloy
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.574607'
+  - - dateModified
+    - '2025-12-17T12:39:12.574607'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Zirconium
+        href: /settings/zirconium-settings
+  - - name
+    - Zirconium
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Zirconium oxide removal without substrate
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength optimized for Zirconium's moderate absorption
+          and thermal processing
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Optimal beam diameter for balancing cleaning efficiency and processing
+          speed
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: High repetition rate for efficient surface coverage while maintaining
+          thermal control
+        unit: kHz
+        value: 100
+      energyDensity:
+        description: Fluence optimized for Zirconium oxide ablation threshold while
+          preserving base material
+        unit: J/cm²
+        value: 5.1
+      pulseWidth:
+        description: Nanosecond pulse duration for efficient oxide layer ablation
+          with minimal heat affected zone
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Scanning speed providing effective oxide removal with controlled
+          thermal input
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Number of cleaning passes for thorough oxide removal with minimal
+          substrate impact
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Beam overlap percentage ensuring complete surface coverage without
+          excessive thermal buildup
+        unit: '%'
+        value: 50
+      dwellTime:
+        description: Effective interaction time per spot for controlled material removal
+        unit: μs
+        value: 100

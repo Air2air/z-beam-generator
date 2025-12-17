@@ -1,555 +1,584 @@
-id: bronze-laser-cleaning
-name: bronze-laser-cleaning
-slug: bronze-laser-cleaning
-category: metal
-subcategory: non-ferrous
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:38:46.541237'
-dateModified: '2025-12-17T12:38:46.541237'
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-_metadata:
-  voice:
-    author_name: Alessandro Moretti
-    author_country: Italy
-    voice_applied: true
-    content_type: material
-title: Bronze Laser Cleaning
-material_description: Bronze, it demonstrates exceptional oxidation resistance in laser cleaning processes, where contaminants are removed without disrupting the protective patina that forms naturally. This tenacity, distinct from ferrous metals that rust readily, preserves structural integrity in art sculptures and marine monuments, yielding efficient restoration dependent from controlled laser parameters.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Non Ferrous
-  href: /materials/metal/non-ferrous
-- label: Bronze
-  href: /materials/metal/non-ferrous/bronze
-images:
-  hero:
-    alt: Bronze surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/bronze-laser-cleaning-hero.jpg
-  micro:
-    alt: Bronze microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/bronze-laser-cleaning-micro.jpg
-micro:
-  before: Looking closely at the bronze surface before cleaning, I see a layer of dull, patchy grime covering everything. Dark streaks and tiny clumps stick tightly to the metal, making it look uneven and worn. Scratches and small pits scatter across, roughening the whole view.
-  after: After the laser treatment, the bronze surface appears smooth and brightly metallic. The grime vanishes completely, revealing a uniform shine without any streaks. Now, the texture looks even and clear, free from those old pits
-faq:
-- question: What makes bronze a reliable metal for industrial use?
-  answer: Bronze is a copper-tin alloy we often turn to in manufacturing. It holds up well in tools, fittings, and even marine parts because it resists corrosion. Density sits around 8.8 g/cm³, so pieces stay sturdy without getting too heavy. Porosity hovers at about 0.5%, which means fewer voids that could trap dirt or weaken the structure.
-- question: How do we clean bronze with lasers?
-  answer: Laser cleaning works great here. You apply roughly 100 W power to remove rust or grime from surfaces. This method clears contaminants fast and leaves the base metal intact. It suits restoration projects, like old statues, without harsh chemicals. Just watch the settings to avoid heating the alloy too much.
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    density:
-      value: 8.8
-      unit: g/cm³
-      min: 0.53
-      max: 22.6
-    porosity:
-      value: 0.5
-      unit: '%'
-      min: 0
-      max: 15
-    surfaceRoughness:
-      value: 0.8
-      unit: μm
-      min: 0.4
-      max: 150
-    tensileStrength:
-      value: 400
-      unit: MPa
-      min: 3
-      max: 3000
-    youngsModulus:
-      value: 110
-      unit: GPa
-      min: 5
-      max: 600
-    hardness:
-      value: 100
-      unit: HB
-      min: 0.5
-      max: 3500
-    flexuralStrength:
-      value: 450
-      unit: MPa
-      min: 2.5
-      max: 1050
-    oxidationResistance:
-      value: 8
-      unit: scale 1-10
-      min: 200
-      max: 1200
-    corrosionResistance:
-      value: 7
-      unit: scale 1-10
-      min: 1
-      max: 10
-    compressiveStrength:
-      value: 345
-      unit: MPa
-      source: ai_research
-      min: 8
-      max: 2625
-    fractureToughness:
-      value: 52
-      unit: MPa m^{0.5}
-      source: ai_research
-      min: 0.67
-      max: 157
-    electricalResistivity:
-      value: 2e-07
-      unit: Ω·m
-      source: ai_research
-      min: 0
-      max: 2e-06
-    boilingPoint:
-      value: 2840
-      unit: K
-      source: ai_research
-      min: 929
-      max: 6454
-    electricalConductivity:
-      value: 7e+06
-      unit: S/m
-      source: ai_research
-      min: 659300
-      max: '6.6e+07'
-    meltingPoint:
-      value: 950
-      unit: °C
-      source: ai_research
-      min: 133
-      max: 3865
-    percentage: 60.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    thermalConductivity:
-      value: 60
-      unit: W/(m·K)
-      min: 7
-      max: 430
-    thermalExpansion:
-      value: 18
-      unit: ×10^{-6}/K
-      min: 0.5
-      max: 33
-    thermalDiffusivity:
-      value: 22
-      unit: mm²/s
-      min: 0.06
-      max: 174
-    specificHeat:
-      value: 380
-      unit: J/(kg·K)
-      min: 100
-      max: 2000
-    thermalShockResistance:
-      value: 150
-      unit: W/m·K
-      min: 50
-      max: 400
-    laserReflectivity:
-      value: 0.65
-      unit: ''
-      min: 5
-      max: 99.9
-    absorptionCoefficient:
-      value: 5.5
-      unit: ×10^6 /m
-      min: 100000
-      max: 5e+07
-    ablationThreshold:
-      value: 2.5
-      unit: J/cm²
-      min: 2
-      max: 8
-    laserDamageThreshold:
-      value: 1.8
-      unit: J/cm²
-      min: 0.1
-      max: 20
-    percentage: 40.0
-    thermalDestruction:
-      value: 1223
-      unit: K
-      source: ai_research
-      min: 256
-      max: 3859
-    laserAbsorption:
-      value: '7.8e+07'
-      unit: m^{-1}
-      source: ai_research
-      min: 0.02
-      max: '4.2e+08'
-    absorptivity:
-      value: 0.35
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.6
-    reflectivity:
-      value: 0.65
-      unit: ''
-      source: ai_research
-      min: 0.35
-      max: 1
-    vaporPressure:
-      value: 0.14
-      unit: Pa
-      source: ai_research
-      min: 0
-      max: 106391
-    thermalDestructionPoint:
-      value: 950
-      unit: °C
-      source: ai_research
-      min: 133
-      max: 3865
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - ANSI Z136.1 - Safe Use of Lasers
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921726Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921734Z'
-  structure_version: '2.0'
-domain_linkages:
-  related_contaminants:
-  - id: water-stain-contamination
-    title: Water Staining and Marks
-    url: /contaminants/organic-residue/other/water-stain-contamination
-    image: /images/contaminant/water-stain-contamination-hero.jpg
-    category: organic-residue
-    subcategory: other
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: plastic-residue-contamination
-    title: Degraded Polymer Deposits
-    url: /contaminants/organic-residue/polymer/plastic-residue-contamination
-    image: /images/contaminant/plastic-residue-contamination-hero.jpg
-    category: organic-residue
-    subcategory: polymer
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-soot-contamination
-    title: Carbon Soot Deposits
-    url: /contaminants/organic-residue/other/carbon-soot-contamination
-    image: /images/contaminant/carbon-soot-contamination-hero.jpg
-    category: organic-residue
-    subcategory: other
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: insect-residue-contamination
-    title: Insect Impact Residue
-    url: /contaminants/biological/deposit/insect-residue-contamination
-    image: /images/contaminant/insect-residue-contamination-hero.jpg
-    category: biological
-    subcategory: deposit
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bronze-patina-contamination
-    title: Bronze Patina and Corrosion
-    url: /contaminants/oxidation/non-ferrous/bronze-patina-contamination
-    image: /images/contaminant/bronze-patina-contamination-hero.jpg
-    category: oxidation
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pesticide-residue-contamination
-    title: Pesticide Chemical Residue
-    url: /contaminants/chemical-residue/industrial/pesticide-residue-contamination
-    image: /images/contaminant/pesticide-residue-contamination-hero.jpg
-    category: chemical-residue
-    subcategory: industrial
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mineral-deposits-contamination
-    title: Hard Water Mineral Scale
-    url: /contaminants/thermal-damage/scale/mineral-deposits-contamination
-    image: /images/contaminant/mineral-deposits-contamination-hero.jpg
-    category: thermal-damage
-    subcategory: scale
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: biological-stains-contamination
-    title: Organic Biofilm Deposits
-    url: /contaminants/biological/deposit/biological-stains-contamination
-    image: /images/contaminant/biological-stains-contamination-hero.jpg
-    category: biological
-    subcategory: deposit
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: radioactive-contamination
-    title: Surface Radioactive Contamination
-    url: /contaminants/chemical-residue/hazardous/radioactive-contamination
-    image: /images/contaminant/radioactive-contamination-hero.jpg
-    category: chemical-residue
-    subcategory: hazardous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: adhesive-residue-contamination
-    title: Adhesive Residue / Tape Marks
-    url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
-    image: /images/contaminant/adhesive-residue-contamination-hero.jpg
-    category: organic-residue
-    subcategory: adhesive
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: paint-residue-contamination
-    title: Paint Residue / Coating Failure
-    url: /contaminants/inorganic-coating/paint/paint-residue-contamination
-    image: /images/contaminant/paint-residue-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: paint
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: tree-sap-contamination
-    title: Tree Sap and Resin
-    url: /contaminants/organic-residue/natural/tree-sap-contamination
-    image: /images/contaminant/tree-sap-contamination-hero.jpg
-    category: organic-residue
-    subcategory: natural
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: epoxy-residue-contamination
-    title: Epoxy Resin Deposits
-    url: /contaminants/organic-residue/adhesive/epoxy-residue-contamination
-    image: /images/contaminant/epoxy-residue-contamination-hero.jpg
-    category: organic-residue
-    subcategory: adhesive
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graphite-marks-contamination
-    title: Graphite Deposit Traces
-    url: /contaminants/organic-residue/marking/graphite-marks-contamination
-    image: /images/contaminant/graphite-marks-contamination-hero.jpg
-    category: organic-residue
-    subcategory: marking
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pollen-deposit-contamination
-    title: Pollen Accumulation
-    url: /contaminants/biological/deposit/pollen-deposit-contamination
-    image: /images/contaminant/pollen-deposit-contamination-hero.jpg
-    category: biological
-    subcategory: deposit
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: ink-stains-contamination
-    title: Printing Ink Residue
-    url: /contaminants/organic-residue/marking/ink-stains-contamination
-    image: /images/contaminant/ink-stains-contamination-hero.jpg
-    category: organic-residue
-    subcategory: marking
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silver-plating-contamination
-    title: Silver Plating Residue
-    url: /contaminants/metallic-coating/plating/silver-plating-contamination
-    image: /images/contaminant/silver-plating-contamination-hero.jpg
-    category: metallic-coating
-    subcategory: plating
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graffiti-paint-contamination
-    title: Graffiti and Spray Paint
-    url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
-    image: /images/contaminant/graffiti-paint-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: paint
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: algae-growth-contamination
-    title: Algae and Lichen Growth
-    url: /contaminants/biological/growth/algae-growth-contamination
-    image: /images/contaminant/algae-growth-contamination-hero.jpg
-    category: biological
-    subcategory: growth
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: salt-residue-contamination
-    title: Salt and Chloride Deposits
-    url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
-    image: /images/contaminant/salt-residue-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: mineral
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: scale-buildup-contamination
-    title: Mineral Scale / Hard Water Deposits
-    url: /contaminants/thermal-damage/scale/scale-buildup-contamination
-    image: /images/contaminant/scale-buildup-contamination-hero.jpg
-    category: thermal-damage
-    subcategory: scale
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fertilizer-residue-contamination
-    title: Fertilizer Salt Deposits
-    url: /contaminants/chemical-residue/industrial/fertilizer-residue-contamination
-    image: /images/contaminant/fertilizer-residue-contamination-hero.jpg
-    category: chemical-residue
-    subcategory: industrial
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: wax-buildup-contamination
-    title: Wax Coating Buildup
-    url: /contaminants/organic-residue/wax/wax-buildup-contamination
-    image: /images/contaminant/wax-buildup-contamination-hero.jpg
-    category: organic-residue
-    subcategory: wax
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: rubber-residue-contamination
-    title: Rubber Compound Residue
-    url: /contaminants/organic-residue/polymer/rubber-residue-contamination
-    image: /images/contaminant/rubber-residue-contamination-hero.jpg
-    category: organic-residue
-    subcategory: polymer
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: copper-patina-contamination
-    title: Copper Patina / Verdigris
-    url: /contaminants/oxidation/non-ferrous/copper-patina-contamination
-    image: /images/contaminant/copper-patina-contamination-hero.jpg
-    category: oxidation
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicone-buildup-contamination
-    title: Silicone Sealant Buildup
-    url: /contaminants/organic-residue/adhesive/silicone-buildup-contamination
-    image: /images/contaminant/silicone-buildup-contamination-hero.jpg
-    category: organic-residue
-    subcategory: adhesive
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lime-scale-contamination
-    title: Limescale Deposits
-    url: /contaminants/thermal-damage/scale/lime-scale-contamination
-    image: /images/contaminant/lime-scale-contamination-hero.jpg
-    category: thermal-damage
-    subcategory: scale
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chemical-stains-contamination
-    title: Chemical Stains / Acid Etching
-    url: /contaminants/chemical-residue/industrial/chemical-stains-contamination
-    image: /images/contaminant/chemical-stains-contamination-hero.jpg
-    category: chemical-residue
-    subcategory: industrial
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mercury-contamination
-    title: Mercury Spill Residue
-    url: /contaminants/chemical-residue/hazardous/mercury-contamination
-    image: /images/contaminant/mercury-contamination-hero.jpg
-    category: chemical-residue
-    subcategory: hazardous
-    frequency: common
-    severity: moderate
-    typical_context: general
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 1
-    estimatedHoursTypical: 3
-    targetContaminants:
-    - Oxide layer
-    - Paint and coatings
-    - Grease and oils
-    - Anodizing removal
-    - Tarnish and patina
-    notes: Lower power settings recommended due to high reflectivity
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-17T12:38:46.542128'
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - bronze-laser-cleaning
+  - - title
+    - Bronze Laser Cleaning
+  - - slug
+    - bronze-laser-cleaning
+  - - category
+    - metal
+  - - subcategory
+    - non-ferrous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_material
+  - - datePublished
+    - '2025-12-17T12:38:46.541237'
+  - - dateModified
+    - '2025-12-17T12:38:46.541237'
+  - - author
+    - id: 2
+      name: Alessandro Moretti
+      country: Italy
+      country_display: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise:
+      - Laser-Based Additive Manufacturing
+      affiliation:
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf:
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs:
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      persona_file: italy_persona.yaml
+      formatting_file: italy_formatting.yaml
+  - - material_description
+    - Bronze, it demonstrates exceptional oxidation resistance in laser cleaning processes,
+      where contaminants are removed without disrupting the protective patina that
+      forms naturally. This tenacity, distinct from ferrous metals that rust readily,
+      preserves structural integrity in art sculptures and marine monuments, yielding
+      efficient restoration dependent from controlled laser parameters.
+  - - micro
+    - before: Looking closely at the bronze surface before cleaning, I see a layer
+        of dull, patchy grime covering everything. Dark streaks and tiny clumps stick
+        tightly to the metal, making it look uneven and worn. Scratches and small
+        pits scatter across, roughening the whole view.
+      after: After the laser treatment, the bronze surface appears smooth and brightly
+        metallic. The grime vanishes completely, revealing a uniform shine without
+        any streaks. Now, the texture looks even and clear, free from those old pits
+  - - related_contaminants
+    - - id: water-stain-contamination
+        title: Water Staining and Marks
+        url: /contaminants/organic-residue/other/water-stain-contamination
+        image: /images/contaminant/water-stain-contamination-hero.jpg
+        category: organic-residue
+        subcategory: other
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: plastic-residue-contamination
+        title: Degraded Polymer Deposits
+        url: /contaminants/organic-residue/polymer/plastic-residue-contamination
+        image: /images/contaminant/plastic-residue-contamination-hero.jpg
+        category: organic-residue
+        subcategory: polymer
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: carbon-soot-contamination
+        title: Carbon Soot Deposits
+        url: /contaminants/organic-residue/other/carbon-soot-contamination
+        image: /images/contaminant/carbon-soot-contamination-hero.jpg
+        category: organic-residue
+        subcategory: other
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: insect-residue-contamination
+        title: Insect Impact Residue
+        url: /contaminants/biological/deposit/insect-residue-contamination
+        image: /images/contaminant/insect-residue-contamination-hero.jpg
+        category: biological
+        subcategory: deposit
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: bronze-patina-contamination
+        title: Bronze Patina and Corrosion
+        url: /contaminants/oxidation/non-ferrous/bronze-patina-contamination
+        image: /images/contaminant/bronze-patina-contamination-hero.jpg
+        category: oxidation
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: pesticide-residue-contamination
+        title: Pesticide Chemical Residue
+        url: /contaminants/chemical-residue/industrial/pesticide-residue-contamination
+        image: /images/contaminant/pesticide-residue-contamination-hero.jpg
+        category: chemical-residue
+        subcategory: industrial
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: mineral-deposits-contamination
+        title: Hard Water Mineral Scale
+        url: /contaminants/thermal-damage/scale/mineral-deposits-contamination
+        image: /images/contaminant/mineral-deposits-contamination-hero.jpg
+        category: thermal-damage
+        subcategory: scale
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: biological-stains-contamination
+        title: Organic Biofilm Deposits
+        url: /contaminants/biological/deposit/biological-stains-contamination
+        image: /images/contaminant/biological-stains-contamination-hero.jpg
+        category: biological
+        subcategory: deposit
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: radioactive-contamination
+        title: Surface Radioactive Contamination
+        url: /contaminants/chemical-residue/hazardous/radioactive-contamination
+        image: /images/contaminant/radioactive-contamination-hero.jpg
+        category: chemical-residue
+        subcategory: hazardous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: adhesive-residue-contamination
+        title: Adhesive Residue / Tape Marks
+        url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
+        image: /images/contaminant/adhesive-residue-contamination-hero.jpg
+        category: organic-residue
+        subcategory: adhesive
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: paint-residue-contamination
+        title: Paint Residue / Coating Failure
+        url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+        image: /images/contaminant/paint-residue-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: paint
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: tree-sap-contamination
+        title: Tree Sap and Resin
+        url: /contaminants/organic-residue/natural/tree-sap-contamination
+        image: /images/contaminant/tree-sap-contamination-hero.jpg
+        category: organic-residue
+        subcategory: natural
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: epoxy-residue-contamination
+        title: Epoxy Resin Deposits
+        url: /contaminants/organic-residue/adhesive/epoxy-residue-contamination
+        image: /images/contaminant/epoxy-residue-contamination-hero.jpg
+        category: organic-residue
+        subcategory: adhesive
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: graphite-marks-contamination
+        title: Graphite Deposit Traces
+        url: /contaminants/organic-residue/marking/graphite-marks-contamination
+        image: /images/contaminant/graphite-marks-contamination-hero.jpg
+        category: organic-residue
+        subcategory: marking
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: pollen-deposit-contamination
+        title: Pollen Accumulation
+        url: /contaminants/biological/deposit/pollen-deposit-contamination
+        image: /images/contaminant/pollen-deposit-contamination-hero.jpg
+        category: biological
+        subcategory: deposit
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: ink-stains-contamination
+        title: Printing Ink Residue
+        url: /contaminants/organic-residue/marking/ink-stains-contamination
+        image: /images/contaminant/ink-stains-contamination-hero.jpg
+        category: organic-residue
+        subcategory: marking
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: silver-plating-contamination
+        title: Silver Plating Residue
+        url: /contaminants/metallic-coating/plating/silver-plating-contamination
+        image: /images/contaminant/silver-plating-contamination-hero.jpg
+        category: metallic-coating
+        subcategory: plating
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: graffiti-paint-contamination
+        title: Graffiti and Spray Paint
+        url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+        image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: paint
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: algae-growth-contamination
+        title: Algae and Lichen Growth
+        url: /contaminants/biological/growth/algae-growth-contamination
+        image: /images/contaminant/algae-growth-contamination-hero.jpg
+        category: biological
+        subcategory: growth
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: salt-residue-contamination
+        title: Salt and Chloride Deposits
+        url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+        image: /images/contaminant/salt-residue-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: mineral
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: scale-buildup-contamination
+        title: Mineral Scale / Hard Water Deposits
+        url: /contaminants/thermal-damage/scale/scale-buildup-contamination
+        image: /images/contaminant/scale-buildup-contamination-hero.jpg
+        category: thermal-damage
+        subcategory: scale
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: fertilizer-residue-contamination
+        title: Fertilizer Salt Deposits
+        url: /contaminants/chemical-residue/industrial/fertilizer-residue-contamination
+        image: /images/contaminant/fertilizer-residue-contamination-hero.jpg
+        category: chemical-residue
+        subcategory: industrial
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: wax-buildup-contamination
+        title: Wax Coating Buildup
+        url: /contaminants/organic-residue/wax/wax-buildup-contamination
+        image: /images/contaminant/wax-buildup-contamination-hero.jpg
+        category: organic-residue
+        subcategory: wax
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: rubber-residue-contamination
+        title: Rubber Compound Residue
+        url: /contaminants/organic-residue/polymer/rubber-residue-contamination
+        image: /images/contaminant/rubber-residue-contamination-hero.jpg
+        category: organic-residue
+        subcategory: polymer
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: copper-patina-contamination
+        title: Copper Patina / Verdigris
+        url: /contaminants/oxidation/non-ferrous/copper-patina-contamination
+        image: /images/contaminant/copper-patina-contamination-hero.jpg
+        category: oxidation
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: silicone-buildup-contamination
+        title: Silicone Sealant Buildup
+        url: /contaminants/organic-residue/adhesive/silicone-buildup-contamination
+        image: /images/contaminant/silicone-buildup-contamination-hero.jpg
+        category: organic-residue
+        subcategory: adhesive
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: lime-scale-contamination
+        title: Limescale Deposits
+        url: /contaminants/thermal-damage/scale/lime-scale-contamination
+        image: /images/contaminant/lime-scale-contamination-hero.jpg
+        category: thermal-damage
+        subcategory: scale
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: chemical-stains-contamination
+        title: Chemical Stains / Acid Etching
+        url: /contaminants/chemical-residue/industrial/chemical-stains-contamination
+        image: /images/contaminant/chemical-stains-contamination-hero.jpg
+        category: chemical-residue
+        subcategory: industrial
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: mercury-contamination
+        title: Mercury Spill Residue
+        url: /contaminants/chemical-residue/hazardous/mercury-contamination
+        image: /images/contaminant/mercury-contamination-hero.jpg
+        category: chemical-residue
+        subcategory: hazardous
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Materials
+        href: /materials
+      - label: Metal
+        href: /materials/metal
+      - label: Non Ferrous
+        href: /materials/metal/non-ferrous
+      - label: Bronze
+        href: /materials/metal/non-ferrous/bronze
+  - - images
+    - hero:
+        alt: Bronze surface undergoing laser cleaning showing precise contamination
+          removal
+        url: /images/material/bronze-laser-cleaning-hero.jpg
+      micro:
+        alt: Bronze microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/bronze-laser-cleaning-micro.jpg
+  - - eeat
+    - reviewedBy: Z-Beam Quality Assurance Team
+      citations:
+      - IEC 60825 - Safety of Laser Products
+      - ANSI Z136.1 - Safe Use of Lasers
+      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      isBasedOn:
+        name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+        url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  - - _metadata
+    - voice:
+        author_name: Alessandro Moretti
+        author_country: Italy
+        voice_applied: true
+        content_type: material
+  - - faq
+    - - question: What makes bronze a reliable metal for industrial use?
+        answer: Bronze is a copper-tin alloy we often turn to in manufacturing. It
+          holds up well in tools, fittings, and even marine parts because it resists
+          corrosion. Density sits around 8.8 g/cm³, so pieces stay sturdy without
+          getting too heavy. Porosity hovers at about 0.5%, which means fewer voids
+          that could trap dirt or weaken the structure.
+      - question: How do we clean bronze with lasers?
+        answer: Laser cleaning works great here. You apply roughly 100 W power to
+          remove rust or grime from surfaces. This method clears contaminants fast
+          and leaves the base metal intact. It suits restoration projects, like old
+          statues, without harsh chemicals. Just watch the settings to avoid heating
+          the alloy too much.
+  - - regulatoryStandards
+    - - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        image: /images/logo/logo-org-fda.png
+        longName: Food and Drug Administration
+        name: FDA
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      - description: ANSI Z136.1 - Safe Use of Lasers
+        image: /images/logo/logo-org-ansi.png
+        longName: American National Standards Institute
+        name: ANSI
+        url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      - description: IEC 60825 - Safety of Laser Products
+        image: /images/logo/logo-org-iec.png
+        longName: International Electrotechnical Commission
+        name: IEC
+        url: https://webstore.iec.ch/publication/3587
+      - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+        image: /images/logo/logo-org-osha.png
+        longName: Occupational Safety and Health Administration
+        name: OSHA
+        url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  - - materialProperties
+    - material_characteristics:
+        label: Material Characteristics
+        density:
+          value: 8.8
+          unit: g/cm³
+          min: 0.53
+          max: 22.6
+        porosity:
+          value: 0.5
+          unit: '%'
+          min: 0
+          max: 15
+        surfaceRoughness:
+          value: 0.8
+          unit: μm
+          min: 0.4
+          max: 150
+        tensileStrength:
+          value: 400
+          unit: MPa
+          min: 3
+          max: 3000
+        youngsModulus:
+          value: 110
+          unit: GPa
+          min: 5
+          max: 600
+        hardness:
+          value: 100
+          unit: HB
+          min: 0.5
+          max: 3500
+        flexuralStrength:
+          value: 450
+          unit: MPa
+          min: 2.5
+          max: 1050
+        oxidationResistance:
+          value: 8
+          unit: scale 1-10
+          min: 200
+          max: 1200
+        corrosionResistance:
+          value: 7
+          unit: scale 1-10
+          min: 1
+          max: 10
+        compressiveStrength:
+          value: 345
+          unit: MPa
+          source: ai_research
+          min: 8
+          max: 2625
+        fractureToughness:
+          value: 52
+          unit: MPa m^{0.5}
+          source: ai_research
+          min: 0.67
+          max: 157
+        electricalResistivity:
+          value: 2e-07
+          unit: Ω·m
+          source: ai_research
+          min: 0
+          max: 2e-06
+        boilingPoint:
+          value: 2840
+          unit: K
+          source: ai_research
+          min: 929
+          max: 6454
+        electricalConductivity:
+          value: 7e+06
+          unit: S/m
+          source: ai_research
+          min: 659300
+          max: '6.6e+07'
+        meltingPoint:
+          value: 950
+          unit: °C
+          source: ai_research
+          min: 133
+          max: 3865
+        percentage: 60.0
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        thermalConductivity:
+          value: 60
+          unit: W/(m·K)
+          min: 7
+          max: 430
+        thermalExpansion:
+          value: 18
+          unit: ×10^{-6}/K
+          min: 0.5
+          max: 33
+        thermalDiffusivity:
+          value: 22
+          unit: mm²/s
+          min: 0.06
+          max: 174
+        specificHeat:
+          value: 380
+          unit: J/(kg·K)
+          min: 100
+          max: 2000
+        thermalShockResistance:
+          value: 150
+          unit: W/m·K
+          min: 50
+          max: 400
+        laserReflectivity:
+          value: 0.65
+          unit: ''
+          min: 5
+          max: 99.9
+        absorptionCoefficient:
+          value: 5.5
+          unit: ×10^6 /m
+          min: 100000
+          max: 5e+07
+        ablationThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 2
+          max: 8
+        laserDamageThreshold:
+          value: 1.8
+          unit: J/cm²
+          min: 0.1
+          max: 20
+        percentage: 40.0
+        thermalDestruction:
+          value: 1223
+          unit: K
+          source: ai_research
+          min: 256
+          max: 3859
+        laserAbsorption:
+          value: '7.8e+07'
+          unit: m^{-1}
+          source: ai_research
+          min: 0.02
+          max: '4.2e+08'
+        absorptivity:
+          value: 0.35
+          unit: dimensionless
+          source: ai_research
+          min: 0.02
+          max: 0.6
+        reflectivity:
+          value: 0.65
+          unit: ''
+          source: ai_research
+          min: 0.35
+          max: 1
+        vaporPressure:
+          value: 0.14
+          unit: Pa
+          source: ai_research
+          min: 0
+          max: 106391
+        thermalDestructionPoint:
+          value: 950
+          unit: °C
+          source: ai_research
+          min: 133
+          max: 3865
+  - - material_metadata
+    - last_updated: '2025-10-27T23:48:40.921726Z'
+      normalization_applied: true
+      normalization_date: '2025-10-27T23:48:40.921734Z'
+      structure_version: '2.0'
+  - - serviceOffering
+    - enabled: true
+      type: professionalCleaning
+      materialSpecific:
+        estimatedHoursMin: 1
+        estimatedHoursTypical: 3
+        targetContaminants:
+        - Oxide layer
+        - Paint and coatings
+        - Grease and oils
+        - Anodizing removal
+        - Tarnish and patina
+        notes: Lower power settings recommended due to high reflectivity
+  - - preservedData
+    - generationMetadata:
+        generated_date: '2025-12-17T12:38:46.542128'

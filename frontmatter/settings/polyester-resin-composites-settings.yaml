@@ -1,54 +1,70 @@
-id: polyester-resin-composites-settings
-name: Polyester Resin Composites
-slug: polyester-resin-composites-settings
-category: composite
-subcategory: fiber-reinforced
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.383430'
-dateModified: '2025-12-17T12:39:12.383430'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for polyester resin composite cleaning without thermal damage
-    unit: W
-    value: 90
-  wavelength:
-    description: Near-infrared wavelength optimal for polyester resin composite processing
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Optimal beam spot diameter for precision cleaning
-    unit: μm
-    value: 80
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning process
-    unit: kHz
-    value: 50
-  pulseWidth:
-    description: Optimal pulse duration for efficient material removal with minimal heat affected zone
-    unit: ns
-    value: 15
-  scanSpeed:
-    description: Optimal scanning speed for efficient coverage and material removal
-    unit: mm/s
-    value: 800
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning
-    unit: '%'
-    value: 50
-  fluence:
-    description: Energy density threshold for effective Polyester Resin Composites cleaning - Energy density threshold for composite material cleaning considering matrix and reinforcement properties
-    unit: J/cm²
-    value: 3.0
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Polyester Resin Composites
-  href: /settings/polyester-resin-composites-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - polyester-resin-composites-settings
+  - - slug
+    - polyester-resin-composites-settings
+  - - category
+    - composite
+  - - subcategory
+    - fiber-reinforced
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.383430'
+  - - dateModified
+    - '2025-12-17T12:39:12.383430'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Polyester Resin Composites
+        href: /settings/polyester-resin-composites-settings
+  - - name
+    - Polyester Resin Composites
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for polyester resin composite cleaning
+          without thermal damage
+        unit: W
+        value: 90
+      wavelength:
+        description: Near-infrared wavelength optimal for polyester resin composite
+          processing
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Optimal beam spot diameter for precision cleaning
+        unit: μm
+        value: 80
+      repetitionRate:
+        description: Optimal repetition rate for continuous cleaning process
+        unit: kHz
+        value: 50
+      pulseWidth:
+        description: Optimal pulse duration for efficient material removal with minimal
+          heat affected zone
+        unit: ns
+        value: 15
+      scanSpeed:
+        description: Optimal scanning speed for efficient coverage and material removal
+        unit: mm/s
+        value: 800
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap percentage for uniform cleaning
+        unit: '%'
+        value: 50
+      fluence:
+        description: Energy density threshold for effective Polyester Resin Composites
+          cleaning - Energy density threshold for composite material cleaning considering
+          matrix and reinforcement properties
+        unit: J/cm²
+        value: 3.0

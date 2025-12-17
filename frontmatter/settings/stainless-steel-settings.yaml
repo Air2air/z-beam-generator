@@ -1,101 +1,72 @@
-id: stainless-steel-settings
-name: Stainless Steel
-slug: stainless-steel-settings
-category: metal
-subcategory: ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.489570'
-dateModified: '2025-12-17T12:39:12.489570'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - annealing-scale-contamination
-  - anti-seize-contamination
-  - biological-stains-contamination
-  - blood-residue-contamination
-  - cadmium-plating-contamination
-  - carbon-buildup-contamination
-  - carbon-soot-contamination
-  - ceramic-coating-contamination
-  - chemical-stains-contamination
-  - chrome-pitting-contamination
-  - epoxy-residue-contamination
-  - exhaust-residue-contamination
-  - fertilizer-residue-contamination
-  - graffiti-paint-contamination
-  - graphite-marks-contamination
-  - ink-stains-contamination
-  - insect-residue-contamination
-  - lime-scale-contamination
-  - medical-disinfectant-contamination
-  - mercury-contamination
-  - mineral-deposits-contamination
-  - paint-residue-contamination
-  - passivation-defect-contamination
-  - pesticide-residue-contamination
-  - pharmaceutical-residue-contamination
-  - pickling-residue-contamination
-  - plastic-residue-contamination
-  - pollen-deposit-contamination
-  - radioactive-contamination
-  - rubber-residue-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - silicone-buildup-contamination
-  - surgical-marking-contamination
-  - teflon-residue-contamination
-  - thread-locker-contamination
-  - tree-sap-contamination
-  - water-stain-contamination
-  - wax-buildup-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Stainless Steel oxide layer removal
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-infrared wavelength optimized for Stainless Steel absorption
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning resolution
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with minimal heat accumulation
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal without substrate damage
-    unit: J/cm²
-    value: 5.1
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive processing
-    unit: '%'
-    value: 50
-  dwellTime:
-    description: Effective dwell time per spot for contaminant ablation
-    unit: μs
-    value: 100
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Stainless Steel
-  href: /settings/stainless-steel-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - stainless-steel-settings
+  - - slug
+    - stainless-steel-settings
+  - - category
+    - metal
+  - - subcategory
+    - ferrous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.489570'
+  - - dateModified
+    - '2025-12-17T12:39:12.489570'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Stainless Steel
+        href: /settings/stainless-steel-settings
+  - - name
+    - Stainless Steel
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Stainless Steel oxide layer removal
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-infrared wavelength optimized for Stainless Steel absorption
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning resolution
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning with minimal heat
+          accumulation
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for effective contaminant removal without substrate
+          damage
+        unit: J/cm²
+        value: 5.1
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled ablation of surface
+          contaminants
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning without excessive processing
+        unit: '%'
+        value: 50
+      dwellTime:
+        description: Effective dwell time per spot for contaminant ablation
+        unit: μs
+        value: 100

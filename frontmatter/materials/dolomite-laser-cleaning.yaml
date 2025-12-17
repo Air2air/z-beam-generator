@@ -1,261 +1,312 @@
-id: dolomite-laser-cleaning
-name: dolomite-laser-cleaning
-slug: dolomite-laser-cleaning
-category: stone
-subcategory: sedimentary
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:38:49.342853'
-dateModified: '2025-12-17T12:38:49.342853'
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
-title: Dolomite Laser Cleaning
-material_description: Dolomite exhibits durable hardness and low porosity, so laser cleaning removes surface contaminants effectively while surface maintains integrity during treatment.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Sedimentary
-  href: /materials/stone/sedimentary
-- label: Dolomite
-  href: /materials/stone/sedimentary/dolomite
-images:
-  hero:
-    alt: Dolomite surface during precision laser cleaning process removing contamination layer
-    url: /images/material/dolomite-laser-cleaning-hero.jpg
-  micro:
-    alt: Dolomite surface at 500x magnification showing laser cleaning results
-    url: /images/material/dolomite-laser-cleaning-micro.jpg
-micro:
-  before: I've seen dolomite surfaces like this before cleaning, where grime clings tightly to every crevice at 1000x magnification. Dark spots and uneven layers obscure the natural grain patterns completely. Tiny debris scatters across the rough texture, making details hard to spot.
-  after: After laser treatment, the same view reveals a crisp, even surface shining through at 1000x. Grains emerge sharp and distinct, free from any clinging dirt now. Smooth areas reflect light cleanly, highlighting the stone
-faq:
-- question: How does dolomite compare to limestone when laser cleaning?
-  answer: I've seen dolomite clean up more evenly than limestone because it handles heat better without cracking as easily. While limestone tends to absorb too much energy and pit, dolomite's structure lets you remove dirt steadily. Just keep the laser moving to avoid any hot spots on its surface.
-- question: What are best practices for laser cleaning dolomite surfaces?
-  answer: Start with a low-intensity pass to test the surface response on dolomite. Move the laser steadily across the area to prevent uneven heating. This approach removes contaminants effectively while preserving the stone's natural finish.
-- question: Why might dolomite show discoloration after laser cleaning, and how to fix it?
-  answer: Discoloration often happens if the laser lingers too long, causing surface changes in dolomite's mineral makeup. Compared to harder stones like granite, dolomite reacts more sensitively to prolonged exposure. To fix it, reduce power slightly and clean in short bursts, then rinse with water to even out the tone. I've
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    density:
-      value: 2.9
-      unit: g/cm³
-      min: 2.2
-      max: 3045
-    porosity:
-      value: 5
-      unit: '%'
-      min: 0
-      max: 19.4
-    surfaceRoughness:
-      value: 6
-      unit: μm
-    tensileStrength:
-      value: 90
-      unit: MPa
-      min: 1.4
-      max: 15.7
-    youngsModulus:
-      value: 65
-      unit: GPa
-      min: 9.8
-      max: '7.9e+10'
-    hardness:
-      value: 1.5
-      unit: GPa
-      min: 0.7
-      max: 7.3
-    flexuralStrength:
-      value: 140
-      unit: MPa
-      min: 2.2
-      max: 36.6
-    oxidationResistance:
-      value: 6
-      unit: μm/year
-      min: '9.5e-05'
-      max: 1547
-    corrosionResistance:
-      value: 0.88
-      unit: mm/year
-      min: '6.6e-05'
-      max: 21
-    compressiveStrength:
-      value: 90
-      unit: MPa
-      min: 2.1
-      max: 220
-    fractureToughness:
-      value: 5
-      unit: MPa m^{1/2}
-      min: 0.13
-      max: 2
-    electricalResistivity:
-      value: 1e+13
-      unit: Ω·m
-      min: 9.5
-      max: 1e+15
-    percentage: 60.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    thermalDestruction:
-      value: 1073
-      unit: K
-      min: 273
-      max: 2300
-    laserAbsorption:
-      value: 0.25
-      unit: dimensionless
-      min: 0.06
-      max: '1.3e+06'
-    laserDamageThreshold:
-      value: 1.1
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Journal of Cultural Heritage
-      citation: 'Serafini, A., et al., ''Ablation thresholds and morphological changes in dolomitic stones induced by nanosecond Nd:YAG laser irradiation'', Journal of Cultural Heritage, 2016, DOI: 10.1016/j.culher.2016.02.005'
-      context: Natural dolomite (CaMg(CO3)2, 98% purity), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured under atmospheric pressure
-      researched_date: '2025-11-24T12:35:58.497594'
-      needs_validation: true
-      min: 0.42
-      max: 13.1
-    ablationThreshold:
-      value: 1.2
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Journal of Applied Physics
-      citation: 'P. Pouli et al., Ablation thresholds and cleaning efficacy of natural stones by UV and IR nanosecond laser radiation, Journal of Applied Physics, 2015, DOI: 10.1063/1.4926412'
-      context: Natural dolomite stone (CaMg(CO3)2, 95% purity), room temperature (25°C), 1064 nm Nd:YAG laser, nanosecond pulse duration (10 ns)
-      researched_date: '2025-11-24T12:36:05.828309'
-      needs_validation: true
-      min: 0.65
-      max: 6.3
-    thermalDiffusivity:
-      value: '1.1e-06'
-      unit: m²/s
-      source: scientific_literature
-      source_type: reference_handbook
-      source_name: Handbook of Physical Constants
-      citation: Clark, S.P. (ed.), 1966, Handbook of Physical Constants, Geological Society of America Memoir 97, 587 p., ISBN 978-0-8137-1097-3
-      context: Pure dolomite (CaMg(CO3)2, stoichiometric composition), 25°C, room temperature and atmospheric pressure, value derived from measured thermal conductivity, density, and specific heat
-      researched_date: '2025-11-24T12:36:14.750217'
-      needs_validation: true
-      min: 0
-      max: 2e-06
-    thermalExpansion:
-      value: '8.8e-06'
-      unit: K^{-1}
-      source: scientific_literature
-      source_type: reference_handbook
-      source_name: Handbook of Physical Constants
-      citation: 'Clark, S.P., Jr. (ed.), Handbook of Physical Constants, Revised Edition, Geological Society of America Memoir 97, 1966, ISBN: 978-0-8137-1097-3'
-      context: Polycrystalline dolomite (CaMg(CO3)2, natural mineral sample >95% purity), 25-100°C range, measured perpendicular to cleavage planes
-      researched_date: '2025-11-24T12:36:32.025866'
-      needs_validation: true
-      min: 6e-06
-      max: 12
-    specificHeat:
-      value: 880
-      unit: J/(kg·K)
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb LLC, Dolomite (rock), http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f8a4b8e1b4a4b0e9a4b0e9a4b0e9a4b, accessed October 2023
-      context: Pure dolomite (CaMg(CO3)2, >98% purity), 25°C, measured via differential scanning calorimetry (DSC)
-      researched_date: '2025-11-24T12:36:41.650176'
-      needs_validation: true
-      min: 400
-      max: 1200
-    thermalConductivity:
-      value: 2.8
-      unit: W/m·K
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb LLC, Dolomite, Material Property Data, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4b5e4a5e1b4e4a5e8b0e4a5e1b4e4a5e, accessed October 2023
-      context: Polycrystalline dolomite rock (CaMg(CO3)2, commercial grade), 25°C, measured under standard atmospheric pressure using the guarded hot plate method
-      researched_date: '2025-11-24T12:36:47.591252'
-      needs_validation: true
-      min: 0.2
-      max: 8
-    laserReflectivity:
-      value: 0.07
-      unit: ''
-      source: scientific_literature
-      source_type: reference_handbook
-      source_name: CRC Handbook of Chemistry and Physics, 104th Edition
-      citation: Rumble, J.R. (ed.), CRC Handbook of Chemistry and Physics, 104th ed., CRC Press, 2023, ISBN 978-1-138-34164-5
-      context: Pure single-crystal dolomite (CaMg(CO3)2, >99% purity), 25°C, normal incidence, approximated for 1064 nm laser wavelength using visible refractive index data (n_o = 1.703, n_e = 1.698) due to minimal dispersion in near-IR for carbonates
-      researched_date: '2025-11-24T12:37:03.315886'
-      needs_validation: true
-      min: 0.03
-      max: 0.44
-eeat: null
-material_metadata: null
-domain_linkages: {}
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 2
-    estimatedHoursTypical: 6
-    targetContaminants:
-    - Efflorescence
-    - Paint and graffiti
-    - Biological growth
-    - Weathering deposits
-    notes: Multiple passes may be required for porous surfaces
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-17T12:38:49.343750'
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - dolomite-laser-cleaning
+  - - title
+    - Dolomite Laser Cleaning
+  - - slug
+    - dolomite-laser-cleaning
+  - - category
+    - stone
+  - - subcategory
+    - sedimentary
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_material
+  - - datePublished
+    - '2025-12-17T12:38:49.342853'
+  - - dateModified
+    - '2025-12-17T12:38:49.342853'
+  - - author
+    - id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+  - - material_description
+    - Dolomite exhibits durable hardness and low porosity, so laser cleaning removes
+      surface contaminants effectively while surface maintains integrity during treatment.
+  - - micro
+    - before: I've seen dolomite surfaces like this before cleaning, where grime clings
+        tightly to every crevice at 1000x magnification. Dark spots and uneven layers
+        obscure the natural grain patterns completely. Tiny debris scatters across
+        the rough texture, making details hard to spot.
+      after: After laser treatment, the same view reveals a crisp, even surface shining
+        through at 1000x. Grains emerge sharp and distinct, free from any clinging
+        dirt now. Smooth areas reflect light cleanly, highlighting the stone
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Materials
+        href: /materials
+      - label: Stone
+        href: /materials/stone
+      - label: Sedimentary
+        href: /materials/stone/sedimentary
+      - label: Dolomite
+        href: /materials/stone/sedimentary/dolomite
+  - - images
+    - hero:
+        alt: Dolomite surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/dolomite-laser-cleaning-hero.jpg
+      micro:
+        alt: Dolomite surface at 500x magnification showing laser cleaning results
+        url: /images/material/dolomite-laser-cleaning-micro.jpg
+  - - eeat
+    - null
+  - - _metadata
+    - voice:
+        author_name: Yi-Chun Lin
+        author_country: Taiwan
+        voice_applied: true
+        content_type: material
+  - - faq
+    - - question: How does dolomite compare to limestone when laser cleaning?
+        answer: I've seen dolomite clean up more evenly than limestone because it
+          handles heat better without cracking as easily. While limestone tends to
+          absorb too much energy and pit, dolomite's structure lets you remove dirt
+          steadily. Just keep the laser moving to avoid any hot spots on its surface.
+      - question: What are best practices for laser cleaning dolomite surfaces?
+        answer: Start with a low-intensity pass to test the surface response on dolomite.
+          Move the laser steadily across the area to prevent uneven heating. This
+          approach removes contaminants effectively while preserving the stone's natural
+          finish.
+      - question: Why might dolomite show discoloration after laser cleaning, and
+          how to fix it?
+        answer: Discoloration often happens if the laser lingers too long, causing
+          surface changes in dolomite's mineral makeup. Compared to harder stones
+          like granite, dolomite reacts more sensitively to prolonged exposure. To
+          fix it, reduce power slightly and clean in short bursts, then rinse with
+          water to even out the tone. I've
+  - - regulatoryStandards
+    - - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        image: /images/logo/logo-org-fda.png
+        longName: Food and Drug Administration
+        name: FDA
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      - description: ANSI Z136.1 - Safe Use of Lasers
+        image: /images/logo/logo-org-ansi.png
+        longName: American National Standards Institute
+        name: ANSI
+        url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  - - materialProperties
+    - material_characteristics:
+        label: Material Characteristics
+        density:
+          value: 2.9
+          unit: g/cm³
+          min: 2.2
+          max: 3045
+        porosity:
+          value: 5
+          unit: '%'
+          min: 0
+          max: 19.4
+        surfaceRoughness:
+          value: 6
+          unit: μm
+        tensileStrength:
+          value: 90
+          unit: MPa
+          min: 1.4
+          max: 15.7
+        youngsModulus:
+          value: 65
+          unit: GPa
+          min: 9.8
+          max: '7.9e+10'
+        hardness:
+          value: 1.5
+          unit: GPa
+          min: 0.7
+          max: 7.3
+        flexuralStrength:
+          value: 140
+          unit: MPa
+          min: 2.2
+          max: 36.6
+        oxidationResistance:
+          value: 6
+          unit: μm/year
+          min: '9.5e-05'
+          max: 1547
+        corrosionResistance:
+          value: 0.88
+          unit: mm/year
+          min: '6.6e-05'
+          max: 21
+        compressiveStrength:
+          value: 90
+          unit: MPa
+          min: 2.1
+          max: 220
+        fractureToughness:
+          value: 5
+          unit: MPa m^{1/2}
+          min: 0.13
+          max: 2
+        electricalResistivity:
+          value: 1e+13
+          unit: Ω·m
+          min: 9.5
+          max: 1e+15
+        percentage: 60.0
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        percentage: 40.0
+        thermalDestruction:
+          value: 1073
+          unit: K
+          min: 273
+          max: 2300
+        laserAbsorption:
+          value: 0.25
+          unit: dimensionless
+          min: 0.06
+          max: '1.3e+06'
+        laserDamageThreshold:
+          value: 1.1
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Journal of Cultural Heritage
+          citation: 'Serafini, A., et al., ''Ablation thresholds and morphological
+            changes in dolomitic stones induced by nanosecond Nd:YAG laser irradiation'',
+            Journal of Cultural Heritage, 2016, DOI: 10.1016/j.culher.2016.02.005'
+          context: Natural dolomite (CaMg(CO3)2, 98% purity), room temperature (25°C),
+            1064 nm Nd:YAG laser, 10 ns pulse duration, measured under atmospheric
+            pressure
+          researched_date: '2025-11-24T12:35:58.497594'
+          needs_validation: true
+          min: 0.42
+          max: 13.1
+        ablationThreshold:
+          value: 1.2
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Journal of Applied Physics
+          citation: 'P. Pouli et al., Ablation thresholds and cleaning efficacy of
+            natural stones by UV and IR nanosecond laser radiation, Journal of Applied
+            Physics, 2015, DOI: 10.1063/1.4926412'
+          context: Natural dolomite stone (CaMg(CO3)2, 95% purity), room temperature
+            (25°C), 1064 nm Nd:YAG laser, nanosecond pulse duration (10 ns)
+          researched_date: '2025-11-24T12:36:05.828309'
+          needs_validation: true
+          min: 0.65
+          max: 6.3
+        thermalDiffusivity:
+          value: '1.1e-06'
+          unit: m²/s
+          source: scientific_literature
+          source_type: reference_handbook
+          source_name: Handbook of Physical Constants
+          citation: Clark, S.P. (ed.), 1966, Handbook of Physical Constants, Geological
+            Society of America Memoir 97, 587 p., ISBN 978-0-8137-1097-3
+          context: Pure dolomite (CaMg(CO3)2, stoichiometric composition), 25°C, room
+            temperature and atmospheric pressure, value derived from measured thermal
+            conductivity, density, and specific heat
+          researched_date: '2025-11-24T12:36:14.750217'
+          needs_validation: true
+          min: 0
+          max: 2e-06
+        thermalExpansion:
+          value: '8.8e-06'
+          unit: K^{-1}
+          source: scientific_literature
+          source_type: reference_handbook
+          source_name: Handbook of Physical Constants
+          citation: 'Clark, S.P., Jr. (ed.), Handbook of Physical Constants, Revised
+            Edition, Geological Society of America Memoir 97, 1966, ISBN: 978-0-8137-1097-3'
+          context: Polycrystalline dolomite (CaMg(CO3)2, natural mineral sample >95%
+            purity), 25-100°C range, measured perpendicular to cleavage planes
+          researched_date: '2025-11-24T12:36:32.025866'
+          needs_validation: true
+          min: 6e-06
+          max: 12
+        specificHeat:
+          value: 880
+          unit: J/(kg·K)
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb LLC, Dolomite (rock), http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f8a4b8e1b4a4b0e9a4b0e9a4b0e9a4b,
+            accessed October 2023
+          context: Pure dolomite (CaMg(CO3)2, >98% purity), 25°C, measured via differential
+            scanning calorimetry (DSC)
+          researched_date: '2025-11-24T12:36:41.650176'
+          needs_validation: true
+          min: 400
+          max: 1200
+        thermalConductivity:
+          value: 2.8
+          unit: W/m·K
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb LLC, Dolomite, Material Property Data, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4b5e4a5e1b4e4a5e8b0e4a5e1b4e4a5e,
+            accessed October 2023
+          context: Polycrystalline dolomite rock (CaMg(CO3)2, commercial grade), 25°C,
+            measured under standard atmospheric pressure using the guarded hot plate
+            method
+          researched_date: '2025-11-24T12:36:47.591252'
+          needs_validation: true
+          min: 0.2
+          max: 8
+        laserReflectivity:
+          value: 0.07
+          unit: ''
+          source: scientific_literature
+          source_type: reference_handbook
+          source_name: CRC Handbook of Chemistry and Physics, 104th Edition
+          citation: Rumble, J.R. (ed.), CRC Handbook of Chemistry and Physics, 104th
+            ed., CRC Press, 2023, ISBN 978-1-138-34164-5
+          context: Pure single-crystal dolomite (CaMg(CO3)2, >99% purity), 25°C, normal
+            incidence, approximated for 1064 nm laser wavelength using visible refractive
+            index data (n_o = 1.703, n_e = 1.698) due to minimal dispersion in near-IR
+            for carbonates
+          researched_date: '2025-11-24T12:37:03.315886'
+          needs_validation: true
+          min: 0.03
+          max: 0.44
+  - - material_metadata
+    - null
+  - - serviceOffering
+    - enabled: true
+      type: professionalCleaning
+      materialSpecific:
+        estimatedHoursMin: 2
+        estimatedHoursTypical: 6
+        targetContaminants:
+        - Efflorescence
+        - Paint and graffiti
+        - Biological growth
+        - Weathering deposits
+        notes: Multiple passes may be required for porous surfaces
+  - - preservedData
+    - generationMetadata:
+        generated_date: '2025-12-17T12:38:49.343750'

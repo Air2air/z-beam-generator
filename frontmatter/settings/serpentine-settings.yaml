@@ -1,54 +1,67 @@
-id: serpentine-settings
-name: Serpentine
-slug: serpentine-settings
-category: stone
-subcategory: sedimentary
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.454288'
-dateModified: '2025-12-17T12:39:12.454288'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Serpentine cleaning without thermal damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength optimized for Serpentine mineral absorption
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise Serpentine surface cleaning
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Minimum fluence required for effective Serpentine ablation
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient ablation of Serpentine layers
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for efficient Serpentine removal
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete Serpentine removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform Serpentine cleaning
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Serpentine
-  href: /settings/serpentine-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - serpentine-settings
+  - - slug
+    - serpentine-settings
+  - - category
+    - stone
+  - - subcategory
+    - sedimentary
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.454288'
+  - - dateModified
+    - '2025-12-17T12:39:12.454288'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Serpentine
+        href: /settings/serpentine-settings
+  - - name
+    - Serpentine
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Serpentine cleaning without thermal
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength optimized for Serpentine mineral absorption
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise Serpentine surface cleaning
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for continuous cleaning coverage
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Minimum fluence required for effective Serpentine ablation
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for efficient ablation of Serpentine
+          layers
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for efficient Serpentine removal
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete Serpentine removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform Serpentine cleaning
+        unit: '%'
+        value: 50

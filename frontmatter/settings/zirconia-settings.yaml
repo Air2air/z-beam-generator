@@ -1,72 +1,72 @@
-id: zirconia-settings
-name: Zirconia
-slug: zirconia-settings
-category: ceramic
-subcategory: oxide
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.568163'
-dateModified: '2025-12-17T12:39:12.568163'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - blood-residue-contamination
-  - carbon-buildup-contamination
-  - carbon-soot-contamination
-  - ceramic-glaze-contamination
-  - chemical-stains-contamination
-  - fire-damage-contamination
-  - graphite-marks-contamination
-  - lime-scale-contamination
-  - medical-disinfectant-contamination
-  - mineral-deposits-contamination
-  - mold-mildew-contamination
-  - scale-buildup-contamination
-  - semiconductor-residue-contamination
-  - silicone-buildup-contamination
-  - soap-scum-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Zirconia surface cleaning without thermal damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength with good absorption in Zirconia for efficient cleaning
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Optimal beam spot diameter for precision cleaning of Zirconia surfaces
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
-    unit: kHz
-    value: 100
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal from Zirconia
-    unit: J/cm²
-    value: 5
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning without excessive heat accumulation
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Zirconia
-  href: /settings/zirconia-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - zirconia-settings
+  - - slug
+    - zirconia-settings
+  - - category
+    - ceramic
+  - - subcategory
+    - oxide
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.568163'
+  - - dateModified
+    - '2025-12-17T12:39:12.568163'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Zirconia
+        href: /settings/zirconia-settings
+  - - name
+    - Zirconia
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Zirconia surface cleaning without thermal
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength with good absorption in Zirconia for efficient
+          cleaning
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Optimal beam spot diameter for precision cleaning of Zirconia
+          surfaces
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: High repetition rate for efficient cleaning coverage while maintaining
+          thermal control
+        unit: kHz
+        value: 100
+      energyDensity:
+        description: Fluence threshold for effective contaminant removal from Zirconia
+        unit: J/cm²
+        value: 5
+      pulseWidth:
+        description: Nanosecond pulse duration for effective contaminant removal with
+          minimal substrate damage
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of cleaning passes for complete contaminant
+          removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap percentage for uniform cleaning without
+          excessive heat accumulation
+        unit: '%'
+        value: 50

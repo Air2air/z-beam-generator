@@ -1,75 +1,75 @@
-id: quartzite-settings
-name: Quartzite
-slug: quartzite-settings
-category: stone
-subcategory: sedimentary
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.421011'
-dateModified: '2025-12-17T12:39:12.421011'
-domain_linkages:
-  contaminants:
-  - algae-growth-contamination
-  - biological-stains-contamination
-  - bitumen-tar-contamination
-  - carbon-soot-contamination
-  - ceramic-glaze-contamination
-  - concrete-dust-contamination
-  - efflorescence-contamination
-  - fertilizer-residue-contamination
-  - fire-damage-contamination
-  - graffiti-paint-contamination
-  - mineral-deposits-contamination
-  - mineral-stain-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - water-stain-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Quartzite cleaning without thermal damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength optimized for Quartzite absorption and minimal scattering
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for balanced cleaning efficiency and coverage area
-    unit: μm
-    value: 100
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal management
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Minimum fluence required for effective contaminant removal from Quartzite surface
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate damage
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning and process efficiency
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning coverage
-    unit: '%'
-    value: 50
-  dwellTime:
-    description: Optimal dwell time per cleaning spot for effective material removal
-    unit: μs
-    value: 100
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Quartzite
-  href: /settings/quartzite-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - quartzite-settings
+  - - slug
+    - quartzite-settings
+  - - category
+    - stone
+  - - subcategory
+    - sedimentary
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.421011'
+  - - dateModified
+    - '2025-12-17T12:39:12.421011'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Quartzite
+        href: /settings/quartzite-settings
+  - - name
+    - Quartzite
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Quartzite cleaning without thermal
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength optimized for Quartzite absorption and minimal
+          scattering
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for balanced cleaning efficiency and coverage
+          area
+        unit: μm
+        value: 100
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning coverage and thermal
+          management
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Minimum fluence required for effective contaminant removal from
+          Quartzite surface
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for efficient contaminant removal with
+          minimal substrate damage
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning and process efficiency
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap percentage for uniform cleaning coverage
+        unit: '%'
+        value: 50
+      dwellTime:
+        description: Optimal dwell time per cleaning spot for effective material removal
+        unit: μs
+        value: 100

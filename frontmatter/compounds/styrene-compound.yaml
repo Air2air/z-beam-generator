@@ -1,73 +1,95 @@
-id: styrene-compound
-name: Styrene
-display_name: Styrene (C₈H₈)
-slug: styrene
-chemical_formula: C8H8
-cas_number: 100-42-5
-molecular_weight: 104.15
-datePublished: '2025-12-17T12:19:39.282818'
-dateModified: '2025-12-17T12:19:39.282818'
-category: irritant
-subcategory: aromatic-hydrocarbon
-hazard_class: irritant
-exposure_limits:
-  osha_pel_ppm: 100
-  osha_pel_mg_m3: 425
-  niosh_rel_ppm: 50
-  niosh_rel_mg_m3: 215
-  acgih_tlv_ppm: 20
-  acgih_tlv_mg_m3: 85
-health_effects_keywords:
-- respiratory_irritation
-- neurological_effects
-- reproductive_toxicity
-- suspected_carcinogen
-monitoring_required: true
-typical_concentration_range: 3-20 mg/m³
-sources_in_laser_cleaning:
-- polystyrene_decomposition
-- styrene_polymer_pyrolysis
-- plastic_breakdown
-description: null
-health_effects: null
-exposure_guidelines: null
-detection_methods: null
-first_aid: null
-domain_linkages: {}
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_compound
-schema_version: 4.0.0
-breadcrumb:
-- label: Home
-  href: /
-- label: Hazardous Compounds
-  href: /compounds
-- label: Styrene
-  href: /compounds/styrene-compound
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - styrene-compound
+  - - slug
+    - styrene
+  - - category
+    - irritant
+  - - subcategory
+    - aromatic-hydrocarbon
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_compound
+  - - datePublished
+    - '2025-12-17T12:19:39.282818'
+  - - dateModified
+    - '2025-12-17T12:19:39.282818'
+  - - author
+    - id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Hazardous Compounds
+        href: /compounds
+      - label: Styrene
+        href: /compounds/styrene-compound
+  - - name
+    - Styrene
+  - - display_name
+    - Styrene (C₈H₈)
+  - - chemical_formula
+    - C8H8
+  - - cas_number
+    - 100-42-5
+  - - molecular_weight
+    - 104.15
+  - - hazard_class
+    - irritant
+  - - exposure_limits
+    - osha_pel_ppm: 100
+      osha_pel_mg_m3: 425
+      niosh_rel_ppm: 50
+      niosh_rel_mg_m3: 215
+      acgih_tlv_ppm: 20
+      acgih_tlv_mg_m3: 85
+  - - health_effects_keywords
+    - - respiratory_irritation
+      - neurological_effects
+      - reproductive_toxicity
+      - suspected_carcinogen
+  - - monitoring_required
+    - true
+  - - typical_concentration_range
+    - 3-20 mg/m³
+  - - sources_in_laser_cleaning
+    - - polystyrene_decomposition
+      - styrene_polymer_pyrolysis
+      - plastic_breakdown
+  - - description
+    - null
+  - - health_effects
+    - null
+  - - exposure_guidelines
+    - null
+  - - detection_methods
+    - null
+  - - first_aid
+    - null

@@ -1,58 +1,69 @@
-id: wrought-iron-settings
-name: Wrought Iron
-slug: wrought-iron-settings
-category: unknown
-subcategory: unknown
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.657351'
-dateModified: '2025-12-17T12:39:12.657351'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal power for Wrought Iron rust and scale removal
-    unit: W
-    value: 110
-  wavelength:
-    description: Near-IR wavelength with strong iron oxide absorption
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for Wrought Iron cleaning
-    unit: μm
-    value: 100
-  repetitionRate:
-    description: High repetition rate for efficient rust removal
-    unit: kHz
-    value: 55
-  fluenceThreshold:
-    description: Energy density for heavy oxide removal from Wrought Iron
-    unit: J/cm²
-    value: 3.0
-  pulseWidth:
-    description: Nanosecond pulse for effective rust ablation
-    unit: ns
-    value: 12
-  scanSpeed:
-    description: Scanning speed for thorough Wrought Iron cleaning
-    unit: mm/s
-    value: 450
-  passCount:
-    description: Multiple passes for complete rust removal
-    unit: passes
-    value: 4
-  overlapRatio:
-    description: Higher overlap for textured Wrought Iron surfaces
-    unit: '%'
-    value: 55
-  energyDensity:
-    description: Fluence for heavy contamination removal
-    unit: J/cm²
-    value: 6
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Wrought Iron
-  href: /settings/wrought-iron-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - wrought-iron-settings
+  - - slug
+    - wrought-iron-settings
+  - - category
+    - unknown
+  - - subcategory
+    - unknown
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.657351'
+  - - dateModified
+    - '2025-12-17T12:39:12.657351'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Wrought Iron
+        href: /settings/wrought-iron-settings
+  - - name
+    - Wrought Iron
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal power for Wrought Iron rust and scale removal
+        unit: W
+        value: 110
+      wavelength:
+        description: Near-IR wavelength with strong iron oxide absorption
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for Wrought Iron cleaning
+        unit: μm
+        value: 100
+      repetitionRate:
+        description: High repetition rate for efficient rust removal
+        unit: kHz
+        value: 55
+      fluenceThreshold:
+        description: Energy density for heavy oxide removal from Wrought Iron
+        unit: J/cm²
+        value: 3.0
+      pulseWidth:
+        description: Nanosecond pulse for effective rust ablation
+        unit: ns
+        value: 12
+      scanSpeed:
+        description: Scanning speed for thorough Wrought Iron cleaning
+        unit: mm/s
+        value: 450
+      passCount:
+        description: Multiple passes for complete rust removal
+        unit: passes
+        value: 4
+      overlapRatio:
+        description: Higher overlap for textured Wrought Iron surfaces
+        unit: '%'
+        value: 55
+      energyDensity:
+        description: Fluence for heavy contamination removal
+        unit: J/cm²
+        value: 6

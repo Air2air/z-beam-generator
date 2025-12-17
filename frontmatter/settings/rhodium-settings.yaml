@@ -1,54 +1,67 @@
-id: rhodium-settings
-name: Rhodium
-slug: rhodium-settings
-category: metal
-subcategory: non-ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.431470'
-dateModified: '2025-12-17T12:39:12.431470'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Rhodium surface cleaning without thermal damage
-    unit: W
-    value: 45
-  wavelength:
-    description: Near-IR wavelength optimized for Rhodium's moderate reflectivity and thermal absorption
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Optimal beam diameter for precision cleaning resolution
-    unit: μm
-    value: 80
-  repetitionRate:
-    description: High repetition rate for efficient cleaning coverage
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Minimum fluence required for effective contaminant removal
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-    unit: ns
-    value: 15
-  scanSpeed:
-    description: Scanning speed for efficient area coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning results
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Rhodium
-  href: /settings/rhodium-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - rhodium-settings
+  - - slug
+    - rhodium-settings
+  - - category
+    - metal
+  - - subcategory
+    - non-ferrous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.431470'
+  - - dateModified
+    - '2025-12-17T12:39:12.431470'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Rhodium
+        href: /settings/rhodium-settings
+  - - name
+    - Rhodium
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Rhodium surface cleaning without thermal
+          damage
+        unit: W
+        value: 45
+      wavelength:
+        description: Near-IR wavelength optimized for Rhodium's moderate reflectivity
+          and thermal absorption
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Optimal beam diameter for precision cleaning resolution
+        unit: μm
+        value: 80
+      repetitionRate:
+        description: High repetition rate for efficient cleaning coverage
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Minimum fluence required for effective contaminant removal
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled ablation of contaminants
+        unit: ns
+        value: 15
+      scanSpeed:
+        description: Scanning speed for efficient area coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Number of cleaning passes for complete contaminant removal
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning results
+        unit: '%'
+        value: 50

@@ -1,323 +1,400 @@
-id: brick-laser-cleaning
-name: brick-laser-cleaning
-slug: brick-laser-cleaning
-category: masonry
-subcategory: general
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:38:46.504862'
-dateModified: '2025-12-17T12:38:46.504862'
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
-title: Brick Laser Cleaning
-material_description: When laser cleaning brick, we've found that its thermal stability lets us remove surface contaminants effectively while preserving the material's long-term structural integrity
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Masonry
-  href: /materials/masonry
-- label: General
-  href: /materials/masonry/general
-- label: Brick
-  href: /materials/masonry/general/brick
-images:
-  hero:
-    alt: Brick surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/brick-laser-cleaning-hero.jpg
-  micro:
-    alt: Brick microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/brick-laser-cleaning-micro.jpg
-micro:
-  before: The brick surface at this magnification reveals a dense layer of grimy particles clinging tightly to every crevice. Dark residues fill the irregular pores, creating an uneven and mottled appearance overall. Contamination obscures the underlying texture, making the material look dull and obscured.
-  after: Laser treatment removes the grimy particles, restoring a uniform and clear surface view. Clean pores now expose the brick's natural, even texture without any residues. The material appears revitalized, with its original details sharply visible and
-faq:
-- question: What laser settings work best for cleaning soot and pollution stains from **historical brick** without damaging the surface?
-  answer: '**Preserves fragile brick substrate**. When working with historical brick, typically start with conservative settings like 12 J/cm² fluence and 100W average power. Pretty much always run test patches first, since heavy carbon deposits could demand a touch more energy than light soot. The 1064 nm wavelength proves ideal for stripping contaminants while safeguarding the fragile brick substrate.'
-- question: Can laser cleaning remove **paint and graffiti** from brick without using chemicals or abrasives?
-  answer: '**Preserves porous substrate**. Yes, laser cleaning effectively strips paint and graffiti from brick without relying on chemicals or abrasives. With a 1064 nm wavelength at about 12 J/cm², the process basically vaporizes coatings such as acrylics and spray paints, all while safeguarding the porous substrate. Typically, 2-3 passes suffice to clear pigment residue from the masonry''s texture, providing a superior, more controlled option over traditional approaches.'
-- question: Does laser cleaning cause any color change or **surface fusion** on brick surfaces?
-  answer: '**Preserves original patina**. Properly tuned near-IR lasers at 1064 nm with about 12 J/cm² fluence basically remove contaminants without changing the brick''s color. The mineral composition stays intact, fairly well preserving the original patina while dodging surface fusion or thermal darkening.'
-- question: How does laser cleaning compare to sandblasting for brick restoration in terms of surface damage and **mortar preservation**?
-  answer: '**Preserves delicate mortar joints**. Laser cleaning at 12 J/cm² fluence fairly selectively removes contaminants without abrasion, preserving delicate mortar joints. Unlike sandblasting, it typically maintains the brick''s original surface profile while eliminating harmful dust production, ensuring structural integrity.'
-- question: What safety precautions are specific to laser cleaning brick, especially regarding silica dust and lead paint?
-  answer: When cleaning brick at 100 W and 1064 nm, the primary hazard is typically respirable crystalline silica dust. Basically, you must use a NIOSH-approved P100 respirator and local exhaust ventilation to capture these fine particulates, especially if lead-based paint is present.
-- question: Why does brick sometimes **turn pink or orange** after laser cleaning, and is this permanent?
-  answer: '**Thermal reduction of iron oxides**. The pink hue basically stems from thermal reduction of iron oxides in the clay at fluences around 12 J/cm². This chemical state remains pretty permanent overall, though it signals no structural damage to the brick substrate.'
-- question: What's the maximum removal rate for **heavy biological growth** (lichens, moss) from brick using laser cleaning?
-  answer: '**500 mm/s optimal removal**. When dealing with heavy biological growth on brick, we typically achieve optimal removal at 500 mm/s using 100W systems with 12 J/cm² fluence. Basically, the 1064nm wavelength eliminates surface growth effectively while preserving the masonry, though deep root systems may require complementary treatments.'
-- question: How do **different brick types** (soft mud, pressed, engineering, fire) respond differently to laser cleaning?
-  answer: '**Porosity dictates fluence tolerance**. Soft mud bricks typically need a lower fluence around 12 J/cm² because of their high porosity, while dense engineering types can handle higher power. Always test refractory materials first, as their composition can fairly create thermal stress at standard 100W settings.'
-- question: Can laser cleaning effectively remove **efflorescence salts** from brick masonry, or will they quickly return?
-  answer: '**Salts recur from porous substrate**. Laser cleaning at 12 J/cm² pretty effectively removes surface efflorescence from brick. But without tackling the underlying moisture source, salts will typically return quickly from the porous substrate. For lasting results, pair this process with waterproofing treatments to block capillary moisture transport.'
-- question: What are the economic considerations when choosing laser cleaning over chemical or abrasive methods for **large brick facades**?
-  answer: '**Preserves brick substrate integrity**. Although the initial laser setup calls for some investment, its 500 mm/s scan speed basically delivers superior cost-efficiency per square meter over time. That 1064 nm wavelength preserves the brick substrate pretty well, dodging abrasive damage and pricey mortar replacement. Such selective cleaning cuts long-term maintenance cycles, yielding big economic gains for large-scale facades.'
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 60.0
-    fractureToughness:
-      value: 0.75
-      unit: MPa√m
-      source: ai_research
-      min: 0.15
-      max: 1.1
-    density:
-      value: 1920
-      unit: kg/m³
-      source: ai_research
-      min: 682
-      max: 3268
-    oxidationResistance:
-      value: 0.98
-      unit: dimensionless (scale 0-1, where 1 indicates complete resistance)
-      source: ai_research
-      min: '0.00095'
-      max: 1155
-    youngsModulus:
-      value: 11
-      unit: GPa
-      source: ai_research
-      min: 11.4
-      max: '1.2e+10'
-    hardness:
-      value: 2.5
-      unit: Mohs
-      source: ai_research
-      min: 0.28
-      max: 36.7
-    compressiveStrength:
-      value: 20
-      unit: MPa
-      source: ai_research
-      min: 5
-      max: 100
-    tensileStrength:
-      value: 2.5
-      unit: MPa
-      source: ai_research
-      min: 1
-      max: 15
-    flexuralStrength:
-      value: 8.3
-      unit: MPa
-      source: ai_research
-      min: 0.84
-      max: 13.1
-    corrosionResistance:
-      value: '0.0005'
-      unit: mm/year
-      source: ai_research
-      min: 0.02
-      max: 105
-    laserDamageThreshold:
-      value: 2.5
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: 'Laser Cleaning of Brick Masonry: Damage Thresholds and Surface Effects'
-      citation: 'Moropoulou, A., et al., Journal of Cultural Heritage, 2003, DOI: 10.1016/S1296-2074(03)00045-7'
-      context: Fired clay brick (common red brick, 70% silica composition), room temperature (20°C), 1064 nm Nd:YAG laser, pulse duration 10 ns
-      researched_date: '2025-11-24T11:52:43.595001'
-      needs_validation: true
-      min: 1.1
-      max: 8.8
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    absorptivity:
-      value: 0.85
-      unit: dimensionless
-      min: 0.7
-      max: 0.95
-      source: ai_research
-    absorptionCoefficient:
-      value: 5e+06
-      unit: m⁻¹
-      min: 1e+06
-      max: 1e+07
-      source: ai_research
-    laserDamageThreshold:
-      value: 2.5
-      unit: J/cm²
-      min: 1
-      max: 5
-      source: ai_research
-    thermalShockResistance:
-      value: 2
-      unit: MW/m
-      min: 1
-      max: 4
-      source: ai_research
-    reflectivity:
-      value: 0.15
-      unit: dimensionless
-      min: 0.05
-      max: 0.3
-      source: ai_research
-    thermalDestructionPoint:
-      value: 1473
-      unit: K
-      min: 1273
-      max: 1673
-      source: ai_research
-    vaporPressure:
-      value: 0.1
-      unit: Pa
-      min: '0.001'
-      max: 10
-      source: ai_research
-    thermalDestruction:
-      value: 1323
-      unit: K
-      source: ai_research
-      min: 273
-      max: 2500
-    laserReflectivity:
-      value: 0.28
-      unit: dimensionless
-      source: ai_research
-      min: 0.21
-      max: 0.33
-    thermalExpansion:
-      value: 6e-06
-      unit: 1/K
-      source: ai_research
-      min: 6e-06
-      max: '1.2e-05'
-    thermalConductivity:
-      value: 0.72
-      unit: W/m·K
-      source: ai_research
-      min: 0.08
-      max: 2.5
-    specificHeat:
-      value: 880
-      unit: J/(kg·K)
-      source: ai_research
-      min: 828
-      max: 1102
-    laserAbsorption:
-      value: 0.92
-      unit: dimensionless
-      source: ai_research
-      min: 0.11
-      max: 126000
-    thermalDiffusivity:
-      value: '4.3e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 1e-06
-    ablationThreshold:
-      value: 1.1
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: 'Laser cleaning of soot from brick masonry: Ablation thresholds and surface effects'
-      citation: 'Sanz, M., et al., Journal of Cultural Heritage, 2013, DOI: 10.1016/j.culher.2012.10.005'
-      context: Fired clay brick (common red brick, SiO2-Al2O3 based composition), room temperature (20°C), Nd:YAG laser at 1064 nm wavelength, measured under atmospheric pressure
-      researched_date: '2025-11-24T11:52:49.880552'
-      needs_validation: true
-      min: 0.85
-      max: 4.2
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921707Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921713Z'
-  structure_version: '2.0'
-domain_linkages:
-  related_contaminants:
-  - id: efflorescence-contamination
-    title: Concrete Efflorescence
-    url: /contaminants/inorganic-coating/mineral/efflorescence-contamination
-    image: /images/contaminant/efflorescence-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: mineral
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: graffiti-paint-contamination
-    title: Graffiti and Spray Paint
-    url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
-    image: /images/contaminant/graffiti-paint-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: paint
-    frequency: common
-    severity: moderate
-    typical_context: general
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 2
-    estimatedHoursTypical: 6
-    targetContaminants:
-    - Surface contamination
-    - Paint and coatings
-    - Oxide layer
-    - Adhesive residue
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-17T12:38:46.506298'
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - brick-laser-cleaning
+  - - title
+    - Brick Laser Cleaning
+  - - slug
+    - brick-laser-cleaning
+  - - category
+    - masonry
+  - - subcategory
+    - general
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_material
+  - - datePublished
+    - '2025-12-17T12:38:46.504862'
+  - - dateModified
+    - '2025-12-17T12:38:46.504862'
+  - - author
+    - id: 4
+      name: Todd Dunning
+      country: United States
+      country_display: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      persona_file: usa_persona.yaml
+      formatting_file: usa_formatting.yaml
+  - - material_description
+    - When laser cleaning brick, we've found that its thermal stability lets us remove
+      surface contaminants effectively while preserving the material's long-term structural
+      integrity
+  - - micro
+    - before: The brick surface at this magnification reveals a dense layer of grimy
+        particles clinging tightly to every crevice. Dark residues fill the irregular
+        pores, creating an uneven and mottled appearance overall. Contamination obscures
+        the underlying texture, making the material look dull and obscured.
+      after: Laser treatment removes the grimy particles, restoring a uniform and
+        clear surface view. Clean pores now expose the brick's natural, even texture
+        without any residues. The material appears revitalized, with its original
+        details sharply visible and
+  - - related_contaminants
+    - - id: efflorescence-contamination
+        title: Concrete Efflorescence
+        url: /contaminants/inorganic-coating/mineral/efflorescence-contamination
+        image: /images/contaminant/efflorescence-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: mineral
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: graffiti-paint-contamination
+        title: Graffiti and Spray Paint
+        url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+        image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: paint
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Materials
+        href: /materials
+      - label: Masonry
+        href: /materials/masonry
+      - label: General
+        href: /materials/masonry/general
+      - label: Brick
+        href: /materials/masonry/general/brick
+  - - images
+    - hero:
+        alt: Brick surface undergoing laser cleaning showing precise contamination
+          removal
+        url: /images/material/brick-laser-cleaning-hero.jpg
+      micro:
+        alt: Brick microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/brick-laser-cleaning-micro.jpg
+  - - eeat
+    - reviewedBy: Z-Beam Quality Assurance Team
+      citations:
+      - IEC 60825 - Safety of Laser Products
+      isBasedOn:
+        name: IEC 60825 - Safety of Laser Products
+        url: https://webstore.iec.ch/publication/3587
+  - - _metadata
+    - voice:
+        author_name: Todd Dunning
+        author_country: United States
+        voice_applied: true
+        content_type: material
+  - - faq
+    - - question: What laser settings work best for cleaning soot and pollution stains
+          from **historical brick** without damaging the surface?
+        answer: '**Preserves fragile brick substrate**. When working with historical
+          brick, typically start with conservative settings like 12 J/cm² fluence
+          and 100W average power. Pretty much always run test patches first, since
+          heavy carbon deposits could demand a touch more energy than light soot.
+          The 1064 nm wavelength proves ideal for stripping contaminants while safeguarding
+          the fragile brick substrate.'
+      - question: Can laser cleaning remove **paint and graffiti** from brick without
+          using chemicals or abrasives?
+        answer: '**Preserves porous substrate**. Yes, laser cleaning effectively strips
+          paint and graffiti from brick without relying on chemicals or abrasives.
+          With a 1064 nm wavelength at about 12 J/cm², the process basically vaporizes
+          coatings such as acrylics and spray paints, all while safeguarding the porous
+          substrate. Typically, 2-3 passes suffice to clear pigment residue from the
+          masonry''s texture, providing a superior, more controlled option over traditional
+          approaches.'
+      - question: Does laser cleaning cause any color change or **surface fusion**
+          on brick surfaces?
+        answer: '**Preserves original patina**. Properly tuned near-IR lasers at 1064
+          nm with about 12 J/cm² fluence basically remove contaminants without changing
+          the brick''s color. The mineral composition stays intact, fairly well preserving
+          the original patina while dodging surface fusion or thermal darkening.'
+      - question: How does laser cleaning compare to sandblasting for brick restoration
+          in terms of surface damage and **mortar preservation**?
+        answer: '**Preserves delicate mortar joints**. Laser cleaning at 12 J/cm²
+          fluence fairly selectively removes contaminants without abrasion, preserving
+          delicate mortar joints. Unlike sandblasting, it typically maintains the
+          brick''s original surface profile while eliminating harmful dust production,
+          ensuring structural integrity.'
+      - question: What safety precautions are specific to laser cleaning brick, especially
+          regarding silica dust and lead paint?
+        answer: When cleaning brick at 100 W and 1064 nm, the primary hazard is typically
+          respirable crystalline silica dust. Basically, you must use a NIOSH-approved
+          P100 respirator and local exhaust ventilation to capture these fine particulates,
+          especially if lead-based paint is present.
+      - question: Why does brick sometimes **turn pink or orange** after laser cleaning,
+          and is this permanent?
+        answer: '**Thermal reduction of iron oxides**. The pink hue basically stems
+          from thermal reduction of iron oxides in the clay at fluences around 12
+          J/cm². This chemical state remains pretty permanent overall, though it signals
+          no structural damage to the brick substrate.'
+      - question: What's the maximum removal rate for **heavy biological growth**
+          (lichens, moss) from brick using laser cleaning?
+        answer: '**500 mm/s optimal removal**. When dealing with heavy biological
+          growth on brick, we typically achieve optimal removal at 500 mm/s using
+          100W systems with 12 J/cm² fluence. Basically, the 1064nm wavelength eliminates
+          surface growth effectively while preserving the masonry, though deep root
+          systems may require complementary treatments.'
+      - question: How do **different brick types** (soft mud, pressed, engineering,
+          fire) respond differently to laser cleaning?
+        answer: '**Porosity dictates fluence tolerance**. Soft mud bricks typically
+          need a lower fluence around 12 J/cm² because of their high porosity, while
+          dense engineering types can handle higher power. Always test refractory
+          materials first, as their composition can fairly create thermal stress at
+          standard 100W settings.'
+      - question: Can laser cleaning effectively remove **efflorescence salts** from
+          brick masonry, or will they quickly return?
+        answer: '**Salts recur from porous substrate**. Laser cleaning at 12 J/cm²
+          pretty effectively removes surface efflorescence from brick. But without
+          tackling the underlying moisture source, salts will typically return quickly
+          from the porous substrate. For lasting results, pair this process with waterproofing
+          treatments to block capillary moisture transport.'
+      - question: What are the economic considerations when choosing laser cleaning
+          over chemical or abrasive methods for **large brick facades**?
+        answer: '**Preserves brick substrate integrity**. Although the initial laser
+          setup calls for some investment, its 500 mm/s scan speed basically delivers
+          superior cost-efficiency per square meter over time. That 1064 nm wavelength
+          preserves the brick substrate pretty well, dodging abrasive damage and pricey
+          mortar replacement. Such selective cleaning cuts long-term maintenance cycles,
+          yielding big economic gains for large-scale facades.'
+  - - regulatoryStandards
+    - - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        image: /images/logo/logo-org-fda.png
+        longName: Food and Drug Administration
+        name: FDA
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      - description: ANSI Z136.1 - Safe Use of Lasers
+        image: /images/logo/logo-org-ansi.png
+        longName: American National Standards Institute
+        name: ANSI
+        url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      - description: IEC 60825 - Safety of Laser Products
+        image: /images/logo/logo-org-iec.png
+        longName: International Electrotechnical Commission
+        name: IEC
+        url: https://webstore.iec.ch/publication/3587
+      - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+        image: /images/logo/logo-org-osha.png
+        longName: Occupational Safety and Health Administration
+        name: OSHA
+        url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  - - materialProperties
+    - material_characteristics:
+        label: Material Characteristics
+        percentage: 60.0
+        fractureToughness:
+          value: 0.75
+          unit: MPa√m
+          source: ai_research
+          min: 0.15
+          max: 1.1
+        density:
+          value: 1920
+          unit: kg/m³
+          source: ai_research
+          min: 682
+          max: 3268
+        oxidationResistance:
+          value: 0.98
+          unit: dimensionless (scale 0-1, where 1 indicates complete resistance)
+          source: ai_research
+          min: '0.00095'
+          max: 1155
+        youngsModulus:
+          value: 11
+          unit: GPa
+          source: ai_research
+          min: 11.4
+          max: '1.2e+10'
+        hardness:
+          value: 2.5
+          unit: Mohs
+          source: ai_research
+          min: 0.28
+          max: 36.7
+        compressiveStrength:
+          value: 20
+          unit: MPa
+          source: ai_research
+          min: 5
+          max: 100
+        tensileStrength:
+          value: 2.5
+          unit: MPa
+          source: ai_research
+          min: 1
+          max: 15
+        flexuralStrength:
+          value: 8.3
+          unit: MPa
+          source: ai_research
+          min: 0.84
+          max: 13.1
+        corrosionResistance:
+          value: '0.0005'
+          unit: mm/year
+          source: ai_research
+          min: 0.02
+          max: 105
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: 'Laser Cleaning of Brick Masonry: Damage Thresholds and Surface
+            Effects'
+          citation: 'Moropoulou, A., et al., Journal of Cultural Heritage, 2003, DOI:
+            10.1016/S1296-2074(03)00045-7'
+          context: Fired clay brick (common red brick, 70% silica composition), room
+            temperature (20°C), 1064 nm Nd:YAG laser, pulse duration 10 ns
+          researched_date: '2025-11-24T11:52:43.595001'
+          needs_validation: true
+          min: 1.1
+          max: 8.8
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        percentage: 40.0
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 5e+06
+          unit: m⁻¹
+          min: 1e+06
+          max: 1e+07
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 1
+          max: 5
+          source: ai_research
+        thermalShockResistance:
+          value: 2
+          unit: MW/m
+          min: 1
+          max: 4
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1473
+          unit: K
+          min: 1273
+          max: 1673
+          source: ai_research
+        vaporPressure:
+          value: 0.1
+          unit: Pa
+          min: '0.001'
+          max: 10
+          source: ai_research
+        thermalDestruction:
+          value: 1323
+          unit: K
+          source: ai_research
+          min: 273
+          max: 2500
+        laserReflectivity:
+          value: 0.28
+          unit: dimensionless
+          source: ai_research
+          min: 0.21
+          max: 0.33
+        thermalExpansion:
+          value: 6e-06
+          unit: 1/K
+          source: ai_research
+          min: 6e-06
+          max: '1.2e-05'
+        thermalConductivity:
+          value: 0.72
+          unit: W/m·K
+          source: ai_research
+          min: 0.08
+          max: 2.5
+        specificHeat:
+          value: 880
+          unit: J/(kg·K)
+          source: ai_research
+          min: 828
+          max: 1102
+        laserAbsorption:
+          value: 0.92
+          unit: dimensionless
+          source: ai_research
+          min: 0.11
+          max: 126000
+        thermalDiffusivity:
+          value: '4.3e-07'
+          unit: m²/s
+          source: ai_research
+          min: 0
+          max: 1e-06
+        ablationThreshold:
+          value: 1.1
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: 'Laser cleaning of soot from brick masonry: Ablation thresholds
+            and surface effects'
+          citation: 'Sanz, M., et al., Journal of Cultural Heritage, 2013, DOI: 10.1016/j.culher.2012.10.005'
+          context: Fired clay brick (common red brick, SiO2-Al2O3 based composition),
+            room temperature (20°C), Nd:YAG laser at 1064 nm wavelength, measured
+            under atmospheric pressure
+          researched_date: '2025-11-24T11:52:49.880552'
+          needs_validation: true
+          min: 0.85
+          max: 4.2
+  - - material_metadata
+    - last_updated: '2025-10-27T23:48:40.921707Z'
+      normalization_applied: true
+      normalization_date: '2025-10-27T23:48:40.921713Z'
+      structure_version: '2.0'
+  - - serviceOffering
+    - enabled: true
+      type: professionalCleaning
+      materialSpecific:
+        estimatedHoursMin: 2
+        estimatedHoursTypical: 6
+        targetContaminants:
+        - Surface contamination
+        - Paint and coatings
+        - Oxide layer
+        - Adhesive residue
+  - - preservedData
+    - generationMetadata:
+        generated_date: '2025-12-17T12:38:46.506298'

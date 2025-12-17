@@ -1,58 +1,70 @@
-id: sapphire-glass-settings
-name: Sapphire Glass
-slug: sapphire-glass-settings
-category: glass
-subcategory: soda-lime
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.448461'
-dateModified: '2025-12-17T12:39:12.448461'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal power range for Sapphire Glass cleaning without thermal damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Optimal wavelength for Sapphire Glass processing with good absorption
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Optimal spot size for precision cleaning of Sapphire Glass surfaces
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 100
-  energyDensity:
-    description: Optimal energy density for effective contaminant removal
-    unit: J/cm²
-    value: 5
-  pulseWidth:
-    description: Optimal pulse width for controlled ablation of contaminants
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Optimal number of passes for complete contaminant removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal overlap ratio between adjacent laser tracks
-    unit: '%'
-    value: 50
-  dwellTime:
-    description: Optimal dwell time per cleaning spot location
-    unit: μs
-    value: 100
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Sapphire Glass
-  href: /settings/sapphire-glass-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - sapphire-glass-settings
+  - - slug
+    - sapphire-glass-settings
+  - - category
+    - glass
+  - - subcategory
+    - soda-lime
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.448461'
+  - - dateModified
+    - '2025-12-17T12:39:12.448461'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Sapphire Glass
+        href: /settings/sapphire-glass-settings
+  - - name
+    - Sapphire Glass
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal power range for Sapphire Glass cleaning without thermal
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Optimal wavelength for Sapphire Glass processing with good absorption
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Optimal spot size for precision cleaning of Sapphire Glass surfaces
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning with thermal management
+        unit: kHz
+        value: 100
+      energyDensity:
+        description: Optimal energy density for effective contaminant removal
+        unit: J/cm²
+        value: 5
+      pulseWidth:
+        description: Optimal pulse width for controlled ablation of contaminants
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Optimal number of passes for complete contaminant removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal overlap ratio between adjacent laser tracks
+        unit: '%'
+        value: 50
+      dwellTime:
+        description: Optimal dwell time per cleaning spot location
+        unit: μs
+        value: 100

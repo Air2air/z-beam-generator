@@ -1,125 +1,71 @@
-id: steel-settings
-name: Steel
-slug: steel-settings
-category: metal
-subcategory: ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.494301'
-dateModified: '2025-12-17T12:39:12.494301'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - annealing-scale-contamination
-  - anti-seize-contamination
-  - battery-corrosion-contamination
-  - beryllium-oxide-contamination
-  - biological-stains-contamination
-  - bitumen-tar-contamination
-  - brake-dust-contamination
-  - brass-plating-contamination
-  - cadmium-plating-contamination
-  - carbon-buildup-contamination
-  - carbon-soot-contamination
-  - ceramic-coating-contamination
-  - chemical-stains-contamination
-  - concrete-dust-contamination
-  - conversion-coating-contamination
-  - copper-plating-contamination
-  - corrosion-inhibitor-contamination
-  - cutting-fluid-contamination
-  - diamond-coating-contamination
-  - electroplating-residue-contamination
-  - epoxy-residue-contamination
-  - exhaust-residue-contamination
-  - fertilizer-residue-contamination
-  - fire-damage-contamination
-  - forging-scale-contamination
-  - fuel-varnish-contamination
-  - gasket-material-contamination
-  - graffiti-paint-contamination
-  - graphite-marks-contamination
-  - grease-deposits-contamination
-  - hydraulic-fluid-contamination
-  - ink-stains-contamination
-  - insect-residue-contamination
-  - laser-marking-contamination
-  - lead-paint-contamination
-  - lime-scale-contamination
-  - mercury-contamination
-  - metal-polish-contamination
-  - mineral-deposits-contamination
-  - nickel-plating-contamination
-  - paint-residue-contamination
-  - pcb-contamination
-  - pesticide-residue-contamination
-  - pickling-residue-contamination
-  - plasma-spray-contamination
-  - plastic-residue-contamination
-  - pollen-deposit-contamination
-  - powder-coating-contamination
-  - primer-coating-contamination
-  - quench-oil-contamination
-  - radioactive-contamination
-  - road-grime-contamination
-  - rubber-residue-contamination
-  - rust-oxidation-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - silicone-buildup-contamination
-  - steel-corrosion-contamination
-  - teflon-residue-contamination
-  - thread-locker-contamination
-  - tin-plating-contamination
-  - tree-sap-contamination
-  - undercoating-contamination
-  - uranium-oxide-contamination
-  - water-stain-contamination
-  - wax-buildup-contamination
-  - zinc-plating-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Steel surface cleaning and oxide removal
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-infrared wavelength with good absorption in Steel oxides and contaminants
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for balanced cleaning efficiency and coverage area
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal management
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence level sufficient for contaminant ablation while preserving Steel substrate
-    unit: J/cm²
-    value: 5
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal without substrate damage
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning and process efficiency
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage without excessive heat accumulation
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Steel
-  href: /settings/steel-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - steel-settings
+  - - slug
+    - steel-settings
+  - - category
+    - metal
+  - - subcategory
+    - ferrous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.494301'
+  - - dateModified
+    - '2025-12-17T12:39:12.494301'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Steel
+        href: /settings/steel-settings
+  - - name
+    - Steel
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Steel surface cleaning and oxide removal
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-infrared wavelength with good absorption in Steel oxides
+          and contaminants
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for balanced cleaning efficiency and coverage
+          area
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning coverage and thermal
+          management
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence level sufficient for contaminant ablation while preserving
+          Steel substrate
+        unit: J/cm²
+        value: 5
+      pulseWidth:
+        description: Nanosecond pulse duration for effective contaminant removal without
+          substrate damage
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning and process efficiency
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning coverage without excessive
+          heat accumulation
+        unit: '%'
+        value: 50

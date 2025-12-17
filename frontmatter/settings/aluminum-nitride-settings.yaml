@@ -1,72 +1,65 @@
-id: aluminum-nitride-settings
-name: Aluminum Nitride
-slug: aluminum-nitride-settings
-category: ceramic
-subcategory: technical
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.588536'
-dateModified: '2025-12-17T12:39:12.588536'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - blood-residue-contamination
-  - carbon-buildup-contamination
-  - carbon-soot-contamination
-  - ceramic-glaze-contamination
-  - chemical-stains-contamination
-  - fire-damage-contamination
-  - graphite-marks-contamination
-  - lime-scale-contamination
-  - medical-disinfectant-contamination
-  - mineral-deposits-contamination
-  - mold-mildew-contamination
-  - scale-buildup-contamination
-  - semiconductor-residue-contamination
-  - silicone-buildup-contamination
-  - soap-scum-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    value: 80
-    unit: W
-    description: Optimal average power for ceramic cleaning
-  wavelength:
-    value: 1064
-    unit: nm
-    description: Near-IR wavelength for optimal absorption
-  spotSize:
-    value: 50
-    unit: μm
-    description: Beam spot diameter for effective cleaning resolution
-  repetitionRate:
-    value: 50
-    unit: kHz
-    description: Pulse frequency for controlled material removal
-  energyDensity:
-    value: 2.0
-    unit: J/cm²
-    description: Energy per unit area for surface cleaning
-  pulseWidth:
-    value: 10
-    unit: ns
-    description: Pulse duration for minimal thermal penetration
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    description: Beam travel speed for uniform coverage
-  passCount:
-    value: 3
-    unit: passes
-    description: Number of cleaning cycles for complete removal
-  overlapRatio:
-    value: 50
-    unit: '%'
-    description: Beam overlap for consistent surface treatment
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Aluminum Nitride
-  href: /settings/aluminum-nitride-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - aluminum-nitride-settings
+  - - slug
+    - aluminum-nitride-settings
+  - - category
+    - ceramic
+  - - subcategory
+    - technical
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.588536'
+  - - dateModified
+    - '2025-12-17T12:39:12.588536'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Aluminum Nitride
+        href: /settings/aluminum-nitride-settings
+  - - name
+    - Aluminum Nitride
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        value: 80
+        unit: W
+        description: Optimal average power for ceramic cleaning
+      wavelength:
+        value: 1064
+        unit: nm
+        description: Near-IR wavelength for optimal absorption
+      spotSize:
+        value: 50
+        unit: μm
+        description: Beam spot diameter for effective cleaning resolution
+      repetitionRate:
+        value: 50
+        unit: kHz
+        description: Pulse frequency for controlled material removal
+      energyDensity:
+        value: 2.0
+        unit: J/cm²
+        description: Energy per unit area for surface cleaning
+      pulseWidth:
+        value: 10
+        unit: ns
+        description: Pulse duration for minimal thermal penetration
+      scanSpeed:
+        value: 500
+        unit: mm/s
+        description: Beam travel speed for uniform coverage
+      passCount:
+        value: 3
+        unit: passes
+        description: Number of cleaning cycles for complete removal
+      overlapRatio:
+        value: 50
+        unit: '%'
+        description: Beam overlap for consistent surface treatment

@@ -1,54 +1,68 @@
-id: neodymium-settings
-name: Neodymium
-slug: neodymium-settings
-category: rare-earth
-subcategory: lanthanide
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.341311'
-dateModified: '2025-12-17T12:39:12.341311'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Neodymium oxide removal without substrate damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Fundamental Nd:YAG wavelength with good Neodymium absorption
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning control
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal
-    unit: J/cm²
-    value: 5.1
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete surface cleaning
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Neodymium
-  href: /settings/neodymium-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - neodymium-settings
+  - - slug
+    - neodymium-settings
+  - - category
+    - rare-earth
+  - - subcategory
+    - lanthanide
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.341311'
+  - - dateModified
+    - '2025-12-17T12:39:12.341311'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Neodymium
+        href: /settings/neodymium-settings
+  - - name
+    - Neodymium
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Neodymium oxide removal without substrate
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Fundamental Nd:YAG wavelength with good Neodymium absorption
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning control
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning with thermal management
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for effective contaminant removal
+        unit: J/cm²
+        value: 5.1
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled ablation of surface
+          contaminants
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete surface cleaning
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning without excessive heat
+          accumulation
+        unit: '%'
+        value: 50

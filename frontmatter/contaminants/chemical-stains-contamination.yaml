@@ -1,458 +1,477 @@
-id: chemical-stains-contamination
-name: Chemical Stains / Acid Etching
-slug: chemical-stains-contamination
-category: chemical-residue
-subcategory: industrial
-datePublished: '2025-12-17T13:33:39.783020'
-dateModified: '2025-12-17T13:33:39.783020'
-micro:
-  after: Post-cleaning reveals restored surface with chemical stains / acid etching successfully removed through precise laser ablation.
-  before: Surface shows contamination from chemical stains / acid etching affecting material appearance and properties.
-domain_linkages:
-  related_materials:
-  - id: stainless-steel-laser-cleaning
-    title: Stainless Steel
-    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
-    image: /images/material/stainless-steel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: steel-laser-cleaning
-    title: Steel
-    url: /materials/metal/ferrous/steel-laser-cleaning
-    image: /images/material/steel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: acrylic-pmma-laser-cleaning
-    title: Acrylic (PMMA)
-    url: /materials/plastic/thermoplastic/acrylic-pmma-laser-cleaning
-    image: /images/material/acrylic-pmma-laser-cleaning-hero.jpg
-    category: plastic
-    subcategory: thermoplastic
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: aluminum-laser-cleaning
-    title: Aluminum
-    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
-    image: /images/material/aluminum-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: pet-laser-cleaning
-    title: PET
-    url: /materials/plastic/thermoplastic/pet-laser-cleaning
-    image: /images/material/pet-laser-cleaning-hero.jpg
-    category: plastic
-    subcategory: thermoplastic
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: concrete-laser-cleaning
-    title: Concrete
-    url: /materials/masonry/general/concrete-laser-cleaning
-    image: /images/material/concrete-laser-cleaning-hero.jpg
-    category: masonry
-    subcategory: general
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: zinc-laser-cleaning
-    title: Zinc
-    url: /materials/metal/alloy/zinc-laser-cleaning
-    image: /images/material/zinc-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: alloy
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: polycarbonate-laser-cleaning
-    title: Polycarbonate
-    url: /materials/plastic/thermoplastic/polycarbonate-laser-cleaning
-    image: /images/material/polycarbonate-laser-cleaning-hero.jpg
-    category: plastic
-    subcategory: thermoplastic
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: boron-carbide-laser-cleaning
-    title: Boron Carbide
-    url: /materials/ceramic/carbide/boron-carbide-laser-cleaning
-    image: /images/material/boron-carbide-laser-cleaning-hero.jpg
-    category: ceramic
-    subcategory: carbide
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: titanium-laser-cleaning
-    title: Titanium
-    url: /materials/metal/specialty/titanium-laser-cleaning
-    image: /images/material/titanium-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: boron-nitride-laser-cleaning
-    title: Boron Nitride
-    url: /materials/ceramic/technical/boron-nitride-laser-cleaning
-    image: /images/material/boron-nitride-laser-cleaning-hero.jpg
-    category: ceramic
-    subcategory: technical
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: copper-laser-cleaning
-    title: Copper
-    url: /materials/metal/non-ferrous/copper-laser-cleaning
-    image: /images/material/copper-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cobalt-laser-cleaning
-    title: Cobalt
-    url: /materials/metal/specialty/cobalt-laser-cleaning
-    image: /images/material/cobalt-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: polypropylene-laser-cleaning
-    title: Polypropylene
-    url: /materials/plastic/thermoplastic/polypropylene-laser-cleaning
-    image: /images/material/polypropylene-laser-cleaning-hero.jpg
-    category: plastic
-    subcategory: thermoplastic
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicon-nitride-laser-cleaning
-    title: Silicon Nitride
-    url: /materials/ceramic/oxide/silicon-nitride-laser-cleaning
-    image: /images/material/silicon-nitride-laser-cleaning-hero.jpg
-    category: ceramic
-    subcategory: oxide
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass-laser-cleaning
-    title: Brass
-    url: /materials/metal/non-ferrous/brass-laser-cleaning
-    image: /images/material/brass-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: zirconia-laser-cleaning
-    title: Zirconia
-    url: /materials/ceramic/oxide/zirconia-laser-cleaning
-    image: /images/material/zirconia-laser-cleaning-hero.jpg
-    category: ceramic
-    subcategory: oxide
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: aluminum-nitride-laser-cleaning
-    title: Aluminum Nitride
-    url: /materials/ceramic/technical/aluminum-nitride-laser-cleaning
-    image: /images/material/aluminum-nitride-laser-cleaning-hero.jpg
-    category: ceramic
-    subcategory: technical
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: tin-laser-cleaning
-    title: Tin
-    url: /materials/metal/alloy/tin-laser-cleaning
-    image: /images/material/tin-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: alloy
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lead-laser-cleaning
-    title: Lead
-    url: /materials/metal/non-ferrous/lead-laser-cleaning
-    image: /images/material/lead-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chromium-laser-cleaning
-    title: Chromium
-    url: /materials/metal/specialty/chromium-laser-cleaning
-    image: /images/material/chromium-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: alumina-laser-cleaning
-    title: Alumina
-    url: /materials/ceramic/oxide/alumina-laser-cleaning
-    image: /images/material/alumina-laser-cleaning-hero.jpg
-    category: ceramic
-    subcategory: oxide
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: nickel-laser-cleaning
-    title: Nickel
-    url: /materials/metal/specialty/nickel-laser-cleaning
-    image: /images/material/nickel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bronze-laser-cleaning
-    title: Bronze
-    url: /materials/metal/non-ferrous/bronze-laser-cleaning
-    image: /images/material/bronze-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cast-iron-laser-cleaning
-    title: Cast Iron
-    url: /materials/metal/ferrous/cast-iron-laser-cleaning
-    image: /images/material/cast-iron-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: nylon-laser-cleaning
-    title: Nylon
-    url: /materials/plastic/thermoplastic/nylon-laser-cleaning
-    image: /images/material/nylon-laser-cleaning-hero.jpg
-    category: plastic
-    subcategory: thermoplastic
-    frequency: common
-    severity: moderate
-    typical_context: general
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-content_type: unified_contamination
-schema_version: 4.0.0
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: contaminant
-title: Chemical Stains / Acid Etching Contamination
-contamination_description: Chemical-stains contamination, it arises from exposure to acids, bases, or solvents, causing discoloration and etching on surfaces. This pattern, it differs from rust or dust by its chemical bonding and uneven penetration, thus resists mechanical wiping. On metals like steel and aluminum, stains embed deeply and corrode, while on plastics such as acrylic and ABS, they cause cracking. Removal challenges include substrate damage risk, so laser cleaning works effectively by vaporizing stains selectively and preserving material integrity.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contaminants
-  href: /contaminants
-- label: Chemical-Residue
-  href: /contaminants/chemical-residue
-- label: Chemical Stains / Acid Etching
-  href: /contaminants/chemical-residue/industrial/chemical-stains-contamination
-images:
-  hero:
-    url: /images/contaminants/chemical-stains-contamination-hero.jpg
-    alt: Chemical Stains / Acid Etching contamination on surface before laser cleaning
-  micro:
-    url: /images/contaminants/chemical-stains-contamination-micro.jpg
-    alt: Chemical Stains / Acid Etching contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.4
-      min_j_cm2: 0.3
-      recommended_j_cm2: 0.8
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 200
-      min_ns: 10
-      recommended_ns: 50
-    repetition_rate_khz:
-      max: 200
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 3000
-      min: 500
-      recommended: 1200
-    spot_size_mm:
-      max: 0.1
-      min: 0.02
-      recommended: 0.05
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 8500
-      wavelength_355nm: 45000
-      wavelength_532nm: 22000
-    reflectivity:
-      wavelength_1064nm: 0.15
-      wavelength_355nm: 0.05
-      wavelength_532nm: 0.08
-    refractive_index:
-      imaginary_part: 0.12
-      real_part: 1.55
-    transmission_depth: 11.8
-  removal_characteristics:
-    byproducts:
-    - compound: carbon-dioxide
-      hazard_level: low
-      phase: gas
-    - compound: H2O
-      hazard_level: low
-      phase: gas
-    - compound: various oxides
-      hazard_level: moderate
-      phase: solid
-    - compound: acid vapors
-      hazard_level: high
-      phase: gas
-    damage_risk_to_substrate: medium
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 240
-      typical_scan_speed_mm_s: 800
-    removal_efficiency:
-      diminishing_returns_after: 5
-      optimal_passes: 3
-      single_pass: 0.7
-    secondary_mechanisms:
-    - photochemical
-    - mechanical_spallation
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: compressive
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Hydrogen chloride
-      concentration_mg_m3: 5-50
-      exposure_limit_mg_m3: 7
-      hazard_class: corrosive
-    - compound: Chlorine
-      concentration_mg_m3: 1-10
-      exposure_limit_mg_m3: 2.9
-      hazard_class: toxic
-    - compound: Metal oxides
-      concentration_mg_m3: 10-100
-      exposure_limit_mg_m3: 5
-      hazard_class: irritant
-    particulate_generation:
-      respirable_fraction: 0.7
-      size_range_um:
-      - 0.1
-      - 10
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: full_face
-      skin_protection: full_suit
-    substrate_compatibility_warnings:
-    - Laser heating may convert surface chlorides to toxic gases
-    - Acid residues can react violently under laser irradiation
-    - May generate chlorine gas from chloride-containing stains
-    toxic_gas_risk: moderate
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: carbon
-      minimum_air_changes_per_hour: 12
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 4.5
-      pulse_duration_10ns: 3.2
-      wavelength_1064nm: 2.8
-    decomposition_temperature: 450
-    heat_affected_zone_depth: 15
-    melting_point: 180
-    specific_heat: 1200
-    thermal_conductivity: 0.15
-    thermal_diffusivity: 0.12
-    vaporization_temperature: 280
-eeat:
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
-  reviewedBy: Z-Beam Quality Assurance Team
-valid_materials:
-- Concrete
-- Aluminum
-- Steel
-- Stainless Steel
-- Cast Iron
-- Copper
-- Bronze
-- Brass
-- Titanium
-- Zinc
-- Nickel
-- Lead
-- Tin
-- Cobalt
-- Chromium
-- ABS
-- Acrylic (PMMA)
-- Polycarbonate
-- PET
-- Polypropylene
-- PVC
-- Nylon
-- PTFE
-- Alumina
-- Silicon Carbide
-- Zirconia
-- Aluminum Nitride
-- Boron Carbide
-- Boron Nitride
-- Silicon Nitride
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - chemical-stains-contamination
+  - - title
+    - Chemical Stains / Acid Etching Contamination
+  - - slug
+    - chemical-stains-contamination
+  - - category
+    - chemical-residue
+  - - subcategory
+    - industrial
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_contamination
+  - - datePublished
+    - '2025-12-17T13:33:39.783020'
+  - - dateModified
+    - '2025-12-17T13:33:39.783020'
+  - - author
+    - id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      country_display: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      persona_file: indonesia_persona.yaml
+      formatting_file: indonesia_formatting.yaml
+  - - contamination_description
+    - Chemical-stains contamination, it arises from exposure to acids, bases, or solvents,
+      causing discoloration and etching on surfaces. This pattern, it differs from
+      rust or dust by its chemical bonding and uneven penetration, thus resists mechanical
+      wiping. On metals like steel and aluminum, stains embed deeply and corrode,
+      while on plastics such as acrylic and ABS, they cause cracking. Removal challenges
+      include substrate damage risk, so laser cleaning works effectively by vaporizing
+      stains selectively and preserving material integrity.
+  - - micro
+    - after: Post-cleaning reveals restored surface with chemical stains / acid etching
+        successfully removed through precise laser ablation.
+      before: Surface shows contamination from chemical stains / acid etching affecting
+        material appearance and properties.
+  - - laser_properties
+    - laser_parameters:
+        beam_profile: flat_top
+        fluence_range:
+          max_j_cm2: 1.4
+          min_j_cm2: 0.3
+          recommended_j_cm2: 0.8
+        overlap_percentage: 50
+        polarization: circular
+        pulse_duration_range:
+          max_ns: 200
+          min_ns: 10
+          recommended_ns: 50
+        repetition_rate_khz:
+          max: 200
+          min: 20
+          recommended: 50
+        safety_margin_factor: 0.7
+        scan_speed_mm_s:
+          max: 3000
+          min: 500
+          recommended: 1200
+        spot_size_mm:
+          max: 0.1
+          min: 0.02
+          recommended: 0.05
+        wavelength_preference:
+        - 1064
+        - 532
+      optical_properties:
+        absorption_coefficient:
+          wavelength_1064nm: 8500
+          wavelength_355nm: 45000
+          wavelength_532nm: 22000
+        reflectivity:
+          wavelength_1064nm: 0.15
+          wavelength_355nm: 0.05
+          wavelength_532nm: 0.08
+        refractive_index:
+          imaginary_part: 0.12
+          real_part: 1.55
+        transmission_depth: 11.8
+      removal_characteristics:
+        byproducts:
+        - compound: carbon-dioxide
+          hazard_level: low
+          phase: gas
+        - compound: H2O
+          hazard_level: low
+          phase: gas
+        - compound: various oxides
+          hazard_level: moderate
+          phase: solid
+        - compound: acid vapors
+          hazard_level: high
+          phase: gas
+        damage_risk_to_substrate: medium
+        primary_mechanism: thermal_ablation
+        process_speed:
+          area_coverage_rate_cm2_min: 240
+          typical_scan_speed_mm_s: 800
+        removal_efficiency:
+          diminishing_returns_after: 5
+          optimal_passes: 3
+          single_pass: 0.7
+        secondary_mechanisms:
+        - photochemical
+        - mechanical_spallation
+        surface_quality_after_removal:
+          color_change: 'no'
+          residual_stress: compressive
+          roughness_increase: minimal
+      safety_data:
+        fire_explosion_risk: low
+        fumes_generated:
+        - compound: Hydrogen chloride
+          concentration_mg_m3: 5-50
+          exposure_limit_mg_m3: 7
+          hazard_class: corrosive
+        - compound: Chlorine
+          concentration_mg_m3: 1-10
+          exposure_limit_mg_m3: 2.9
+          hazard_class: toxic
+        - compound: Metal oxides
+          concentration_mg_m3: 10-100
+          exposure_limit_mg_m3: 5
+          hazard_class: irritant
+        particulate_generation:
+          respirable_fraction: 0.7
+          size_range_um:
+          - 0.1
+          - 10
+        ppe_requirements:
+          eye_protection: goggles
+          respiratory: full_face
+          skin_protection: full_suit
+        substrate_compatibility_warnings:
+        - Laser heating may convert surface chlorides to toxic gases
+        - Acid residues can react violently under laser irradiation
+        - May generate chlorine gas from chloride-containing stains
+        toxic_gas_risk: moderate
+        ventilation_requirements:
+          exhaust_velocity_m_s: 0.5
+          filtration_type: carbon
+          minimum_air_changes_per_hour: 12
+        visibility_hazard: moderate
+      thermal_properties:
+        ablation_threshold:
+          pulse_duration_100ns: 4.5
+          pulse_duration_10ns: 3.2
+          wavelength_1064nm: 2.8
+        decomposition_temperature: 450
+        heat_affected_zone_depth: 15
+        melting_point: 180
+        specific_heat: 1200
+        thermal_conductivity: 0.15
+        thermal_diffusivity: 0.12
+        vaporization_temperature: 280
+  - - related_materials
+    - - id: stainless-steel-laser-cleaning
+        title: Stainless Steel
+        url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+        image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: steel-laser-cleaning
+        title: Steel
+        url: /materials/metal/ferrous/steel-laser-cleaning
+        image: /images/material/steel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: acrylic-pmma-laser-cleaning
+        title: Acrylic (PMMA)
+        url: /materials/plastic/thermoplastic/acrylic-pmma-laser-cleaning
+        image: /images/material/acrylic-pmma-laser-cleaning-hero.jpg
+        category: plastic
+        subcategory: thermoplastic
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: aluminum-laser-cleaning
+        title: Aluminum
+        url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+        image: /images/material/aluminum-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: pet-laser-cleaning
+        title: PET
+        url: /materials/plastic/thermoplastic/pet-laser-cleaning
+        image: /images/material/pet-laser-cleaning-hero.jpg
+        category: plastic
+        subcategory: thermoplastic
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: concrete-laser-cleaning
+        title: Concrete
+        url: /materials/masonry/general/concrete-laser-cleaning
+        image: /images/material/concrete-laser-cleaning-hero.jpg
+        category: masonry
+        subcategory: general
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: zinc-laser-cleaning
+        title: Zinc
+        url: /materials/metal/alloy/zinc-laser-cleaning
+        image: /images/material/zinc-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: alloy
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: polycarbonate-laser-cleaning
+        title: Polycarbonate
+        url: /materials/plastic/thermoplastic/polycarbonate-laser-cleaning
+        image: /images/material/polycarbonate-laser-cleaning-hero.jpg
+        category: plastic
+        subcategory: thermoplastic
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: boron-carbide-laser-cleaning
+        title: Boron Carbide
+        url: /materials/ceramic/carbide/boron-carbide-laser-cleaning
+        image: /images/material/boron-carbide-laser-cleaning-hero.jpg
+        category: ceramic
+        subcategory: carbide
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: titanium-laser-cleaning
+        title: Titanium
+        url: /materials/metal/specialty/titanium-laser-cleaning
+        image: /images/material/titanium-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: boron-nitride-laser-cleaning
+        title: Boron Nitride
+        url: /materials/ceramic/technical/boron-nitride-laser-cleaning
+        image: /images/material/boron-nitride-laser-cleaning-hero.jpg
+        category: ceramic
+        subcategory: technical
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: copper-laser-cleaning
+        title: Copper
+        url: /materials/metal/non-ferrous/copper-laser-cleaning
+        image: /images/material/copper-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: cobalt-laser-cleaning
+        title: Cobalt
+        url: /materials/metal/specialty/cobalt-laser-cleaning
+        image: /images/material/cobalt-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: polypropylene-laser-cleaning
+        title: Polypropylene
+        url: /materials/plastic/thermoplastic/polypropylene-laser-cleaning
+        image: /images/material/polypropylene-laser-cleaning-hero.jpg
+        category: plastic
+        subcategory: thermoplastic
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: silicon-nitride-laser-cleaning
+        title: Silicon Nitride
+        url: /materials/ceramic/oxide/silicon-nitride-laser-cleaning
+        image: /images/material/silicon-nitride-laser-cleaning-hero.jpg
+        category: ceramic
+        subcategory: oxide
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: brass-laser-cleaning
+        title: Brass
+        url: /materials/metal/non-ferrous/brass-laser-cleaning
+        image: /images/material/brass-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: zirconia-laser-cleaning
+        title: Zirconia
+        url: /materials/ceramic/oxide/zirconia-laser-cleaning
+        image: /images/material/zirconia-laser-cleaning-hero.jpg
+        category: ceramic
+        subcategory: oxide
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: aluminum-nitride-laser-cleaning
+        title: Aluminum Nitride
+        url: /materials/ceramic/technical/aluminum-nitride-laser-cleaning
+        image: /images/material/aluminum-nitride-laser-cleaning-hero.jpg
+        category: ceramic
+        subcategory: technical
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: tin-laser-cleaning
+        title: Tin
+        url: /materials/metal/alloy/tin-laser-cleaning
+        image: /images/material/tin-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: alloy
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: lead-laser-cleaning
+        title: Lead
+        url: /materials/metal/non-ferrous/lead-laser-cleaning
+        image: /images/material/lead-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: chromium-laser-cleaning
+        title: Chromium
+        url: /materials/metal/specialty/chromium-laser-cleaning
+        image: /images/material/chromium-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: alumina-laser-cleaning
+        title: Alumina
+        url: /materials/ceramic/oxide/alumina-laser-cleaning
+        image: /images/material/alumina-laser-cleaning-hero.jpg
+        category: ceramic
+        subcategory: oxide
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: nickel-laser-cleaning
+        title: Nickel
+        url: /materials/metal/specialty/nickel-laser-cleaning
+        image: /images/material/nickel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: bronze-laser-cleaning
+        title: Bronze
+        url: /materials/metal/non-ferrous/bronze-laser-cleaning
+        image: /images/material/bronze-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: cast-iron-laser-cleaning
+        title: Cast Iron
+        url: /materials/metal/ferrous/cast-iron-laser-cleaning
+        image: /images/material/cast-iron-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: nylon-laser-cleaning
+        title: Nylon
+        url: /materials/plastic/thermoplastic/nylon-laser-cleaning
+        image: /images/material/nylon-laser-cleaning-hero.jpg
+        category: plastic
+        subcategory: thermoplastic
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Contaminants
+        href: /contaminants
+      - label: Chemical-Residue
+        href: /contaminants/chemical-residue
+      - label: Chemical Stains / Acid Etching
+        href: /contaminants/chemical-residue/industrial/chemical-stains-contamination
+  - - images
+    - hero:
+        url: /images/contaminants/chemical-stains-contamination-hero.jpg
+        alt: Chemical Stains / Acid Etching contamination on surface before laser
+          cleaning
+      micro:
+        url: /images/contaminants/chemical-stains-contamination-micro.jpg
+        alt: Chemical Stains / Acid Etching contamination microscopic detail
+  - - valid_materials
+    - - Concrete
+      - Aluminum
+      - Steel
+      - Stainless Steel
+      - Cast Iron
+      - Copper
+      - Bronze
+      - Brass
+      - Titanium
+      - Zinc
+      - Nickel
+      - Lead
+      - Tin
+      - Cobalt
+      - Chromium
+      - ABS
+      - Acrylic (PMMA)
+      - Polycarbonate
+      - PET
+      - Polypropylene
+      - PVC
+      - Nylon
+      - PTFE
+      - Alumina
+      - Silicon Carbide
+      - Zirconia
+      - Aluminum Nitride
+      - Boron Carbide
+      - Boron Nitride
+      - Silicon Nitride
+  - - eeat
+    - citations:
+      - IEC 60825 - Safety of Laser Products
+      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      isBasedOn:
+        name: IEC 60825 - Safety of Laser Products
+        url: https://webstore.iec.ch/publication/3587
+      reviewedBy: Z-Beam Quality Assurance Team
+  - - _metadata
+    - voice:
+        author_name: Ikmanda Roswati
+        author_country: Indonesia
+        voice_applied: true
+        content_type: contaminant

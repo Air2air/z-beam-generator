@@ -1,54 +1,66 @@
-id: manganese-settings
-name: Manganese
-slug: manganese-settings
-category: metal
-subcategory: non-ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.324461'
-dateModified: '2025-12-17T12:39:12.324461'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Manganese oxide removal without substrate damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength for optimal absorption in Manganese oxides
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning control
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Minimum fluence required for Manganese oxide removal
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient oxide layer ablation
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete oxide removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Manganese
-  href: /settings/manganese-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - manganese-settings
+  - - slug
+    - manganese-settings
+  - - category
+    - metal
+  - - subcategory
+    - non-ferrous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.324461'
+  - - dateModified
+    - '2025-12-17T12:39:12.324461'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Manganese
+        href: /settings/manganese-settings
+  - - name
+    - Manganese
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Manganese oxide removal without substrate
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength for optimal absorption in Manganese oxides
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning control
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for continuous cleaning coverage
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Minimum fluence required for Manganese oxide removal
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for efficient oxide layer ablation
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete oxide removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning coverage
+        unit: '%'
+        value: 50

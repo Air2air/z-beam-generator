@@ -1,58 +1,69 @@
-id: hss-settings
-name: HSS
-slug: hss-settings
-category: unknown
-subcategory: unknown
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.678102'
-dateModified: '2025-12-17T12:39:12.678102'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal power for High-Speed Steel cleaning
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength for HSS oxide removal
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for HSS cleaning
-    unit: μm
-    value: 90
-  repetitionRate:
-    description: Optimal rate for HSS tool cleaning
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Fluence for oxide and coating removal
-    unit: J/cm²
-    value: 2.8
-  pulseWidth:
-    description: Nanosecond pulse for effective cleaning
-    unit: ns
-    value: 12
-  scanSpeed:
-    description: Scanning speed for HSS tools
-    unit: mm/s
-    value: 450
-  passCount:
-    description: Passes for complete HSS cleaning
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Overlap for uniform HSS cleaning
-    unit: '%'
-    value: 50
-  energyDensity:
-    description: Energy density for HSS substrate
-    unit: J/cm²
-    value: 5.5
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: HSS
-  href: /settings/hss-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - hss-settings
+  - - slug
+    - hss-settings
+  - - category
+    - unknown
+  - - subcategory
+    - unknown
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.678102'
+  - - dateModified
+    - '2025-12-17T12:39:12.678102'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: HSS
+        href: /settings/hss-settings
+  - - name
+    - HSS
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal power for High-Speed Steel cleaning
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength for HSS oxide removal
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for HSS cleaning
+        unit: μm
+        value: 90
+      repetitionRate:
+        description: Optimal rate for HSS tool cleaning
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Fluence for oxide and coating removal
+        unit: J/cm²
+        value: 2.8
+      pulseWidth:
+        description: Nanosecond pulse for effective cleaning
+        unit: ns
+        value: 12
+      scanSpeed:
+        description: Scanning speed for HSS tools
+        unit: mm/s
+        value: 450
+      passCount:
+        description: Passes for complete HSS cleaning
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Overlap for uniform HSS cleaning
+        unit: '%'
+        value: 50
+      energyDensity:
+        description: Energy density for HSS substrate
+        unit: J/cm²
+        value: 5.5

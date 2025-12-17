@@ -1,194 +1,209 @@
-id: asbestos-coating-contamination
-name: Asbestos-Containing Material
-slug: asbestos-coating-contamination
-category: inorganic-coating
-subcategory: hazardous
-datePublished: '2025-12-17T13:33:39.086418'
-dateModified: '2025-12-17T13:33:39.086418'
-domain_linkages:
-  related_materials:
-  - id: concrete-laser-cleaning
-    title: Concrete
-    url: /materials/masonry/general/concrete-laser-cleaning
-    image: /images/material/concrete-laser-cleaning-hero.jpg
-    category: masonry
-    subcategory: general
-    frequency: common
-    severity: moderate
-    typical_context: general
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_contamination
-schema_version: 4.0.0
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: contaminant
-title: Asbestos-Containing Material Contamination
-contamination_description: Asbestos-coating contamination creates removal difficulties because fibrous silicate insulation builds up on surfaces during applications. This layer forms through exposure and shows fibrous texture so it differs from smooth contaminants. On steel pipes, boilers, and concrete, it clings tightly and resists scraping, but laser cleaning works effectively by ablating fibers precisely without harming bases.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contaminants
-  href: /contaminants
-- label: Inorganic-Coating
-  href: /contaminants/inorganic-coating
-- label: Asbestos-Containing Material
-  href: /contaminants/inorganic-coating/hazardous/asbestos-coating-contamination
-images:
-  hero:
-    url: /images/contaminants/asbestos-coating-contamination-hero.jpg
-    alt: Asbestos-Containing Material contamination on surface before laser cleaning
-  micro:
-    url: /images/contaminants/asbestos-coating-contamination-micro.jpg
-    alt: Asbestos-Containing Material contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 0.8
-      min_j_cm2: 0.2
-      recommended_j_cm2: 0.5
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 100
-      min_ns: 10
-      recommended_ns: 30
-    repetition_rate_khz:
-      max: 100
-      min: 10
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 2000
-      min: 500
-      recommended: 1000
-    spot_size_mm:
-      max: 0.2
-      min: 0.05
-      recommended: 0.1
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 120
-      wavelength_355nm: 2800
-      wavelength_532nm: 450
-    reflectivity:
-      wavelength_1064nm: 0.35
-      wavelength_355nm: 0.08
-      wavelength_532nm: 0.25
-    refractive_index:
-      imaginary_part: 0.012
-      real_part: 1.55
-    transmission_depth: 83
-  removal_characteristics:
-    byproducts:
-    - compound: SiO2
-      hazard_level: low
-      phase: solid
-    - compound: MgO
-      hazard_level: low
-      phase: solid
-    - compound: H2O
-      hazard_level: low
-      phase: gas
-    - compound: asbestos fibers
-      hazard_level: high
-      phase: solid
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 450
-      typical_scan_speed_mm_s: 1200
-    removal_efficiency:
-      diminishing_returns_after: 4
-      optimal_passes: 3
-      single_pass: 0.85
-    secondary_mechanisms:
-    - mechanical_spallation
-    - photochemical
-    surface_quality_after_removal:
-      color_change: 'yes'
-      residual_stress: compressive
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Crystalline Silica (as quartz)
-      concentration_mg_m3: 5.0
-      exposure_limit_mg_m3: 0.025
-      hazard_class: carcinogenic
-    - compound: Asbestos Fibers
-      concentration_mg_m3: 10.0
-      exposure_limit_mg_m3: 0.1
-      hazard_class: carcinogenic
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 15.0
-      exposure_limit_mg_m3: 29.0
-      hazard_class: toxic
-    particulate_generation:
-      respirable_fraction: 0.8
-      size_range_um:
-      - 0.1
-      - 10.0
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: PAPR
-      skin_protection: full_suit
-    substrate_compatibility_warnings:
-    - Laser may aerosolize intact asbestos fibers without complete destruction
-    - Thermal degradation may create respirable asbestos fibers from bonded ACM
-    - Inadequate laser parameters may increase fiber release compared to wet methods
-    toxic_gas_risk: low
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: HEPA
-      minimum_air_changes_per_hour: 12
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 2.5
-      pulse_duration_10ns: 1.2
-      wavelength_1064nm: 1.8
-    decomposition_temperature: 600
-    heat_affected_zone_depth: 45
-    melting_point: N/A
-    specific_heat: 840
-    thermal_conductivity: 0.15
-    thermal_diffusivity: 0.12
-    vaporization_temperature: 1200
-valid_materials:
-- Steel Pipes
-- Boilers
-- Concrete
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - asbestos-coating-contamination
+  - - title
+    - Asbestos-Containing Material Contamination
+  - - slug
+    - asbestos-coating-contamination
+  - - category
+    - inorganic-coating
+  - - subcategory
+    - hazardous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_contamination
+  - - datePublished
+    - '2025-12-17T13:33:39.086418'
+  - - dateModified
+    - '2025-12-17T13:33:39.086418'
+  - - author
+    - id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+  - - contamination_description
+    - Asbestos-coating contamination creates removal difficulties because fibrous
+      silicate insulation builds up on surfaces during applications. This layer forms
+      through exposure and shows fibrous texture so it differs from smooth contaminants.
+      On steel pipes, boilers, and concrete, it clings tightly and resists scraping,
+      but laser cleaning works effectively by ablating fibers precisely without harming
+      bases.
+  - - laser_properties
+    - laser_parameters:
+        beam_profile: flat_top
+        fluence_range:
+          max_j_cm2: 0.8
+          min_j_cm2: 0.2
+          recommended_j_cm2: 0.5
+        overlap_percentage: 50
+        polarization: circular
+        pulse_duration_range:
+          max_ns: 100
+          min_ns: 10
+          recommended_ns: 30
+        repetition_rate_khz:
+          max: 100
+          min: 10
+          recommended: 50
+        safety_margin_factor: 0.7
+        scan_speed_mm_s:
+          max: 2000
+          min: 500
+          recommended: 1000
+        spot_size_mm:
+          max: 0.2
+          min: 0.05
+          recommended: 0.1
+        wavelength_preference:
+        - 1064
+        - 532
+      optical_properties:
+        absorption_coefficient:
+          wavelength_1064nm: 120
+          wavelength_355nm: 2800
+          wavelength_532nm: 450
+        reflectivity:
+          wavelength_1064nm: 0.35
+          wavelength_355nm: 0.08
+          wavelength_532nm: 0.25
+        refractive_index:
+          imaginary_part: 0.012
+          real_part: 1.55
+        transmission_depth: 83
+      removal_characteristics:
+        byproducts:
+        - compound: SiO2
+          hazard_level: low
+          phase: solid
+        - compound: MgO
+          hazard_level: low
+          phase: solid
+        - compound: H2O
+          hazard_level: low
+          phase: gas
+        - compound: asbestos fibers
+          hazard_level: high
+          phase: solid
+        damage_risk_to_substrate: low
+        primary_mechanism: thermal_ablation
+        process_speed:
+          area_coverage_rate_cm2_min: 450
+          typical_scan_speed_mm_s: 1200
+        removal_efficiency:
+          diminishing_returns_after: 4
+          optimal_passes: 3
+          single_pass: 0.85
+        secondary_mechanisms:
+        - mechanical_spallation
+        - photochemical
+        surface_quality_after_removal:
+          color_change: 'yes'
+          residual_stress: compressive
+          roughness_increase: minimal
+      safety_data:
+        fire_explosion_risk: low
+        fumes_generated:
+        - compound: Crystalline Silica (as quartz)
+          concentration_mg_m3: 5.0
+          exposure_limit_mg_m3: 0.025
+          hazard_class: carcinogenic
+        - compound: Asbestos Fibers
+          concentration_mg_m3: 10.0
+          exposure_limit_mg_m3: 0.1
+          hazard_class: carcinogenic
+        - compound: Carbon Monoxide
+          concentration_mg_m3: 15.0
+          exposure_limit_mg_m3: 29.0
+          hazard_class: toxic
+        particulate_generation:
+          respirable_fraction: 0.8
+          size_range_um:
+          - 0.1
+          - 10.0
+        ppe_requirements:
+          eye_protection: goggles
+          respiratory: PAPR
+          skin_protection: full_suit
+        substrate_compatibility_warnings:
+        - Laser may aerosolize intact asbestos fibers without complete destruction
+        - Thermal degradation may create respirable asbestos fibers from bonded ACM
+        - Inadequate laser parameters may increase fiber release compared to wet methods
+        toxic_gas_risk: low
+        ventilation_requirements:
+          exhaust_velocity_m_s: 0.5
+          filtration_type: HEPA
+          minimum_air_changes_per_hour: 12
+        visibility_hazard: moderate
+      thermal_properties:
+        ablation_threshold:
+          pulse_duration_100ns: 2.5
+          pulse_duration_10ns: 1.2
+          wavelength_1064nm: 1.8
+        decomposition_temperature: 600
+        heat_affected_zone_depth: 45
+        melting_point: N/A
+        specific_heat: 840
+        thermal_conductivity: 0.15
+        thermal_diffusivity: 0.12
+        vaporization_temperature: 1200
+  - - related_materials
+    - - id: concrete-laser-cleaning
+        title: Concrete
+        url: /materials/masonry/general/concrete-laser-cleaning
+        image: /images/material/concrete-laser-cleaning-hero.jpg
+        category: masonry
+        subcategory: general
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Contaminants
+        href: /contaminants
+      - label: Inorganic-Coating
+        href: /contaminants/inorganic-coating
+      - label: Asbestos-Containing Material
+        href: /contaminants/inorganic-coating/hazardous/asbestos-coating-contamination
+  - - images
+    - hero:
+        url: /images/contaminants/asbestos-coating-contamination-hero.jpg
+        alt: Asbestos-Containing Material contamination on surface before laser cleaning
+      micro:
+        url: /images/contaminants/asbestos-coating-contamination-micro.jpg
+        alt: Asbestos-Containing Material contamination microscopic detail
+  - - valid_materials
+    - - Steel Pipes
+      - Boilers
+      - Concrete
+  - - _metadata
+    - voice:
+        author_name: Yi-Chun Lin
+        author_country: Taiwan
+        voice_applied: true
+        content_type: contaminant

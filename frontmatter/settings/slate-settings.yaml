@@ -1,71 +1,66 @@
-id: slate-settings
-name: Slate
-slug: slate-settings
-category: stone
-subcategory: metamorphic
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.479644'
-dateModified: '2025-12-17T12:39:12.479644'
-domain_linkages:
-  contaminants:
-  - algae-growth-contamination
-  - biological-stains-contamination
-  - bitumen-tar-contamination
-  - carbon-soot-contamination
-  - ceramic-glaze-contamination
-  - concrete-dust-contamination
-  - efflorescence-contamination
-  - fertilizer-residue-contamination
-  - fire-damage-contamination
-  - graffiti-paint-contamination
-  - mineral-deposits-contamination
-  - mineral-stain-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - water-stain-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Slate surface cleaning without thermal damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-infrared wavelength optimized for Slate mineral absorption
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning control
-    unit: μm
-    value: 100
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal from Slate
-    unit: J/cm²
-    value: 12.7
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of cleaning passes for thorough removal
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Slate
-  href: /settings/slate-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - slate-settings
+  - - slug
+    - slate-settings
+  - - category
+    - stone
+  - - subcategory
+    - metamorphic
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.479644'
+  - - dateModified
+    - '2025-12-17T12:39:12.479644'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Slate
+        href: /settings/slate-settings
+  - - name
+    - Slate
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Slate surface cleaning without thermal
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-infrared wavelength optimized for Slate mineral absorption
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning control
+        unit: μm
+        value: 100
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning coverage
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for effective contaminant removal from Slate
+        unit: J/cm²
+        value: 12.7
+      pulseWidth:
+        description: Nanosecond pulse duration for effective contaminant removal
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of cleaning passes for thorough removal
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning coverage
+        unit: '%'
+        value: 50

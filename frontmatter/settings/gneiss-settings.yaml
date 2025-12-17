@@ -1,54 +1,65 @@
-id: gneiss-settings
-name: Gneiss
-slug: gneiss-settings
-category: stone
-subcategory: metamorphic
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.608862'
-dateModified: '2025-12-17T12:39:12.608862'
-domain: settings
-machineSettings:
-  powerRange:
-    value: 90
-    unit: W
-    description: Optimal power for stone surface restoration
-  wavelength:
-    value: 1064
-    unit: nm
-    description: Near-IR wavelength for stone cleaning
-  spotSize:
-    value: 80
-    unit: μm
-    description: Moderate spot for effective treatment
-  repetitionRate:
-    value: 40
-    unit: kHz
-    description: Balanced frequency for stone cleaning
-  energyDensity:
-    value: 2.2
-    unit: J/cm²
-    description: Energy for contamination removal
-  pulseWidth:
-    value: 10
-    unit: ns
-    description: Controlled pulses for minimal damage
-  scanSpeed:
-    value: 400
-    unit: mm/s
-    description: Steady scanning for uniform cleaning
-  passCount:
-    value: 2
-    unit: passes
-    description: Multiple passes for thorough treatment
-  overlapRatio:
-    value: 50
-    unit: '%'
-    description: Standard overlap for consistent results
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Gneiss
-  href: /settings/gneiss-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - gneiss-settings
+  - - slug
+    - gneiss-settings
+  - - category
+    - stone
+  - - subcategory
+    - metamorphic
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.608862'
+  - - dateModified
+    - '2025-12-17T12:39:12.608862'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Gneiss
+        href: /settings/gneiss-settings
+  - - name
+    - Gneiss
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        value: 90
+        unit: W
+        description: Optimal power for stone surface restoration
+      wavelength:
+        value: 1064
+        unit: nm
+        description: Near-IR wavelength for stone cleaning
+      spotSize:
+        value: 80
+        unit: μm
+        description: Moderate spot for effective treatment
+      repetitionRate:
+        value: 40
+        unit: kHz
+        description: Balanced frequency for stone cleaning
+      energyDensity:
+        value: 2.2
+        unit: J/cm²
+        description: Energy for contamination removal
+      pulseWidth:
+        value: 10
+        unit: ns
+        description: Controlled pulses for minimal damage
+      scanSpeed:
+        value: 400
+        unit: mm/s
+        description: Steady scanning for uniform cleaning
+      passCount:
+        value: 2
+        unit: passes
+        description: Multiple passes for thorough treatment
+      overlapRatio:
+        value: 50
+        unit: '%'
+        description: Standard overlap for consistent results

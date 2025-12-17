@@ -1,63 +1,70 @@
-id: maple-settings
-name: Maple
-slug: maple-settings
-category: wood
-subcategory: hardwood
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.327430'
-dateModified: '2025-12-17T12:39:12.327430'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - lead-paint-contamination
-  - mold-mildew-contamination
-  - paint-residue-contamination
-  - wax-buildup-contamination
-  - wood-rot-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for surface cleaning without charring
-    unit: W
-    value: 45
-  wavelength:
-    description: Near-IR wavelength for controlled wood ablation with minimal thermal damage
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Optimal beam diameter for precise cleaning control on wood surface
-    unit: μm
-    value: 80
-  repetitionRate:
-    description: Balanced repetition rate for efficient cleaning with controlled thermal input
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal without wood damage
-    unit: J/cm²
-    value: 2.8
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate heating
-    unit: ns
-    value: 12
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete surface cleaning
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Maple
-  href: /settings/maple-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - maple-settings
+  - - slug
+    - maple-settings
+  - - category
+    - wood
+  - - subcategory
+    - hardwood
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.327430'
+  - - dateModified
+    - '2025-12-17T12:39:12.327430'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Maple
+        href: /settings/maple-settings
+  - - name
+    - Maple
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for surface cleaning without charring
+        unit: W
+        value: 45
+      wavelength:
+        description: Near-IR wavelength for controlled wood ablation with minimal
+          thermal damage
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Optimal beam diameter for precise cleaning control on wood surface
+        unit: μm
+        value: 80
+      repetitionRate:
+        description: Balanced repetition rate for efficient cleaning with controlled
+          thermal input
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for effective contaminant removal without wood
+          damage
+        unit: J/cm²
+        value: 2.8
+      pulseWidth:
+        description: Nanosecond pulse duration for efficient contaminant removal with
+          minimal substrate heating
+        unit: ns
+        value: 12
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete surface cleaning
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning without excessive thermal
+          buildup
+        unit: '%'
+        value: 50

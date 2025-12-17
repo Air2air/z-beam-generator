@@ -1,59 +1,65 @@
-id: pet-settings
-name: PET
-slug: pet-settings
-category: plastic
-subcategory: thermoplastic
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.621048'
-dateModified: '2025-12-17T12:39:12.621048'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - chemical-stains-contamination
-  - paint-residue-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    value: 30
-    unit: W
-    description: Low power for thermal-sensitive polymer cleaning
-  wavelength:
-    value: 1064
-    unit: nm
-    description: Near-IR wavelength for controlled absorption
-  spotSize:
-    value: 100
-    unit: μm
-    description: Larger spot for gentle surface treatment
-  repetitionRate:
-    value: 20
-    unit: kHz
-    description: Lower frequency to prevent thermal damage
-  energyDensity:
-    value: 0.5
-    unit: J/cm²
-    description: Low energy density to avoid melting
-  pulseWidth:
-    value: 10
-    unit: ns
-    description: Short pulses for minimal thermal impact
-  scanSpeed:
-    value: 800
-    unit: mm/s
-    description: Fast scanning to reduce heat accumulation
-  passCount:
-    value: 2
-    unit: passes
-    description: Multiple gentle passes for gradual cleaning
-  overlapRatio:
-    value: 30
-    unit: '%'
-    description: Lower overlap to prevent overheating
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: PET
-  href: /settings/pet-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - pet-settings
+  - - slug
+    - pet-settings
+  - - category
+    - plastic
+  - - subcategory
+    - thermoplastic
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.621048'
+  - - dateModified
+    - '2025-12-17T12:39:12.621048'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: PET
+        href: /settings/pet-settings
+  - - name
+    - PET
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        value: 30
+        unit: W
+        description: Low power for thermal-sensitive polymer cleaning
+      wavelength:
+        value: 1064
+        unit: nm
+        description: Near-IR wavelength for controlled absorption
+      spotSize:
+        value: 100
+        unit: μm
+        description: Larger spot for gentle surface treatment
+      repetitionRate:
+        value: 20
+        unit: kHz
+        description: Lower frequency to prevent thermal damage
+      energyDensity:
+        value: 0.5
+        unit: J/cm²
+        description: Low energy density to avoid melting
+      pulseWidth:
+        value: 10
+        unit: ns
+        description: Short pulses for minimal thermal impact
+      scanSpeed:
+        value: 800
+        unit: mm/s
+        description: Fast scanning to reduce heat accumulation
+      passCount:
+        value: 2
+        unit: passes
+        description: Multiple gentle passes for gradual cleaning
+      overlapRatio:
+        value: 30
+        unit: '%'
+        description: Lower overlap to prevent overheating

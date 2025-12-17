@@ -1,353 +1,391 @@
-id: ash-laser-cleaning
-name: ash-laser-cleaning
-slug: ash-laser-cleaning
-category: wood
-subcategory: hardwood
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:38:46.267498'
-dateModified: '2025-12-17T12:38:46.267498'
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
-title: Ash Laser Cleaning
-material_description: Ash's real strength is its outstanding shock resistance and thermal stability, which we've seen enables precise laser cleaning to revive fine details in heritage woodwork and instruments without surface charring or structural weakening.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/wood
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: Ash
-  href: /materials/wood/hardwood/ash
-images:
-  hero:
-    alt: Ash surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/ash-laser-cleaning-hero.jpg
-  micro:
-    alt: Ash microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/ash-laser-cleaning-micro.jpg
-micro:
-  before: Under 1000x magnification, the ash wood surface appears covered in thick, uneven layers of dark grime. Fine particles and debris cling tightly to the rough fibers and fill tiny cracks. This contamination obscures the natural texture completely.
-  after: After laser treatment at 1000x magnification, the ash wood surface reveals smooth, exposed fibers without any residue. Clean lines emerge where grime once hid, restoring the material's original evenness. The treatment uncovers a uniform, detailed structure.
-faq:
-- question: How does laser cleaning restore the **natural grain** of aged Ash wood?
-  answer: '**Preserves light color and patterns**. Laser cleaning gently ablates surface contaminants like dirt, varnish, or smoke residue from Ash wood without harming the underlying grain. This non-contact approach typically preserves the wood''s light color and prominent patterns, uncovering its original beauty in 10-20 minutes per panel—pretty ideal for antique furniture restoration.'
-- question: What are the risks of using laser cleaning on Ash wood **prone to warping**?
-  answer: '**Low-power pulses prevent micro-cracks**. Yeah, laser cleaning works pretty safely on Ash wood when handled right. It typically dodges the moisture that worsens warping, unlike old methods. Still, too much heat risks micro-cracks; experts advise low-power pulsed lasers plus close monitoring to avoid that, preserving the wood''s flexibility for lasting strength.'
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-- description: EPA Clean Air Act Compliance
-  image: /images/logo/logo-org-generic.png
-  longName: Unknown Organization
-  name: Unknown
-  url: ''
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 60.0
-    fractureToughness:
-      value: 0.36
-      unit: MPa√m
-      source: ai_research
-      min: 0.26
-      max: 2
-    density:
-      value: 670
-      unit: kg/m³
-      source: ai_research
-      min: 0.4
-      max: 955
-    oxidationResistance:
-      value: 290
-      unit: °C
-      source: ai_research
-      min: 0.1
-      max: 549
-    youngsModulus:
-      value: 12.8
-      unit: GPa
-      source: ai_research
-      min: 3.3
-      max: 11235
-    hardness:
-      value: 5870
-      unit: N
-      source: ai_research
-      min: 399
-      max: 12590
-    compressiveStrength:
-      value: 69
-      unit: MPa
-      source: ai_research
-      min: 20
-      max: 80
-    tensileStrength:
-      value: 115
-      unit: MPa
-      source: ai_research
-      min: 9.5
-      max: 209
-    flexuralStrength:
-      value: 96.5
-      unit: MPa
-      source: ai_research
-      min: 19.1
-      max: 148
-    corrosionResistance:
-      value: 0.75
-      unit: dimensionless
-      source: ai_research
-      min: 0
-      max: 4.7
-    porosity:
-      value: 0.6
-      unit: fraction
-      source: ai_research
-      min: 0.39
-      max: 0.79
-    laserDamageThreshold:
-      value: 24.7
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Laser-induced damage thresholds of selected wood species for cultural heritage conservation
-      citation: 'Kolar, J. et al., Journal of Cultural Heritage, 2012, DOI: 10.1016/j.culher.2011.12.004'
-      context: Ash wood (Fraxinus excelsior, density 0.65 g/cm³, moisture content 10-12%), room temperature (20°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured in air at 1 atm
-      researched_date: '2025-11-24T11:50:30.491359'
-      needs_validation: true
-      min: '0.0025'
-      max: 5.4
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    absorptivity:
-      value: 0.85
-      unit: dimensionless
-      min: 0.7
-      max: 0.95
-      source: ai_research
-    absorptionCoefficient:
-      value: 500000
-      unit: m⁻¹
-      min: 100000
-      max: 1e+06
-      source: ai_research
-    laserDamageThreshold:
-      value: 10
-      unit: J/cm²
-      min: 5
-      max: 20
-      source: ai_research
-    thermalShockResistance:
-      value: 1.5
-      unit: MW/m
-      min: 0.5
-      max: 3
-      source: ai_research
-    reflectivity:
-      value: 0.1
-      unit: dimensionless
-      min: 0.05
-      max: 0.2
-      source: ai_research
-    thermalDestructionPoint:
-      value: 550
-      unit: K
-      min: 500
-      max: 600
-      source: ai_research
-    vaporPressure:
-      value: 100
-      unit: Pa
-      min: 10
-      max: 1000
-      source: ai_research
-    thermalDestruction:
-      value: 573
-      unit: K
-      source: ai_research
-      min: 226
-      max: 642
-    laserReflectivity:
-      value: 0.08
-      unit: dimensionless (fraction)
-      source: ai_research
-      min: 0.02
-      max: 0.44
-    thermalExpansion:
-      value: '3.2e-05'
-      unit: 1/°C
-      source: ai_research
-      min: 1e-06
-      max: '5.8e-05'
-    thermalConductivity:
-      value: 0.15
-      unit: W/m·K
-      source: ai_research
-      min: 0.04
-      max: 0.4
-    specificHeat:
-      value: 1380
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1.3
-      max: 1554
-    laserAbsorption:
-      value: 0.82
-      unit: dimensionless
-      source: ai_research
-      min: 0.78
-      max: 336000
-    thermalDiffusivity:
-      value: '1.4e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
-    ablationThreshold:
-      value: 1.1
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Laser Ablation Thresholds for Different Wood Species in Cultural Heritage Conservation
-      citation: 'Sansonetti, L., et al., Journal of Cultural Heritage, 2013, DOI: 10.1016/j.culher.2012.10.005'
-      context: Ash wood (Fraxinus excelsior, density 0.65 g/cm³, natural moisture content <12%), room temperature (20°C), 1064 nm Nd:YAG laser, pulse duration 10 ns, measured under vacuum conditions to simulate controlled cleaning environment
-      researched_date: '2025-11-24T11:50:39.074814'
-      needs_validation: true
-      min: 0.51
-      max: 2.6
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - EPA Clean Air Act Compliance
-  isBasedOn:
-    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-material_metadata:
-  regulatoryStandards:
-  - EPA Clean Air Act Compliance
-domain_linkages:
-  related_contaminants:
-  - id: adhesive-residue-contamination
-    title: Adhesive Residue / Tape Marks
-    url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
-    image: /images/contaminant/adhesive-residue-contamination-hero.jpg
-    category: organic-residue
-    subcategory: adhesive
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: algae-growth-contamination
-    title: Algae and Lichen Growth
-    url: /contaminants/biological/growth/algae-growth-contamination
-    image: /images/contaminant/algae-growth-contamination-hero.jpg
-    category: biological
-    subcategory: growth
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lead-paint-contamination
-    title: Lead-Based Paint Removal
-    url: /contaminants/inorganic-coating/paint/lead-paint-contamination
-    image: /images/contaminant/lead-paint-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: paint
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: mold-mildew-contamination
-    title: Mold and Mildew Growth
-    url: /contaminants/biological/growth/mold-mildew-contamination
-    image: /images/contaminant/mold-mildew-contamination-hero.jpg
-    category: biological
-    subcategory: growth
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: paint-residue-contamination
-    title: Paint Residue / Coating Failure
-    url: /contaminants/inorganic-coating/paint/paint-residue-contamination
-    image: /images/contaminant/paint-residue-contamination-hero.jpg
-    category: inorganic-coating
-    subcategory: paint
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: wax-buildup-contamination
-    title: Wax Coating Buildup
-    url: /contaminants/organic-residue/wax/wax-buildup-contamination
-    image: /images/contaminant/wax-buildup-contamination-hero.jpg
-    category: organic-residue
-    subcategory: wax
-    frequency: common
-    severity: moderate
-    typical_context: general
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 1
-    estimatedHoursTypical: 3
-    targetContaminants:
-    - Char and weathering
-    - Paint and finish
-    - Stain removal
-    - Surface contamination
-    notes: Careful power control to avoid charring
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-17T12:38:46.268242'
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - ash-laser-cleaning
+  - - title
+    - Ash Laser Cleaning
+  - - slug
+    - ash-laser-cleaning
+  - - category
+    - wood
+  - - subcategory
+    - hardwood
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_material
+  - - datePublished
+    - '2025-12-17T12:38:46.267498'
+  - - dateModified
+    - '2025-12-17T12:38:46.267498'
+  - - author
+    - id: 4
+      name: Todd Dunning
+      country: United States
+      country_display: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      persona_file: usa_persona.yaml
+      formatting_file: usa_formatting.yaml
+  - - material_description
+    - Ash's real strength is its outstanding shock resistance and thermal stability,
+      which we've seen enables precise laser cleaning to revive fine details in heritage
+      woodwork and instruments without surface charring or structural weakening.
+  - - micro
+    - before: Under 1000x magnification, the ash wood surface appears covered in thick,
+        uneven layers of dark grime. Fine particles and debris cling tightly to the
+        rough fibers and fill tiny cracks. This contamination obscures the natural
+        texture completely.
+      after: After laser treatment at 1000x magnification, the ash wood surface reveals
+        smooth, exposed fibers without any residue. Clean lines emerge where grime
+        once hid, restoring the material's original evenness. The treatment uncovers
+        a uniform, detailed structure.
+  - - related_contaminants
+    - - id: adhesive-residue-contamination
+        title: Adhesive Residue / Tape Marks
+        url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
+        image: /images/contaminant/adhesive-residue-contamination-hero.jpg
+        category: organic-residue
+        subcategory: adhesive
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: algae-growth-contamination
+        title: Algae and Lichen Growth
+        url: /contaminants/biological/growth/algae-growth-contamination
+        image: /images/contaminant/algae-growth-contamination-hero.jpg
+        category: biological
+        subcategory: growth
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: lead-paint-contamination
+        title: Lead-Based Paint Removal
+        url: /contaminants/inorganic-coating/paint/lead-paint-contamination
+        image: /images/contaminant/lead-paint-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: paint
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: mold-mildew-contamination
+        title: Mold and Mildew Growth
+        url: /contaminants/biological/growth/mold-mildew-contamination
+        image: /images/contaminant/mold-mildew-contamination-hero.jpg
+        category: biological
+        subcategory: growth
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: paint-residue-contamination
+        title: Paint Residue / Coating Failure
+        url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+        image: /images/contaminant/paint-residue-contamination-hero.jpg
+        category: inorganic-coating
+        subcategory: paint
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: wax-buildup-contamination
+        title: Wax Coating Buildup
+        url: /contaminants/organic-residue/wax/wax-buildup-contamination
+        image: /images/contaminant/wax-buildup-contamination-hero.jpg
+        category: organic-residue
+        subcategory: wax
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Materials
+        href: /materials
+      - label: Wood
+        href: /materials/wood
+      - label: Hardwood
+        href: /materials/wood/hardwood
+      - label: Ash
+        href: /materials/wood/hardwood/ash
+  - - images
+    - hero:
+        alt: Ash surface undergoing laser cleaning showing precise contamination removal
+        url: /images/material/ash-laser-cleaning-hero.jpg
+      micro:
+        alt: Ash microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/ash-laser-cleaning-micro.jpg
+  - - eeat
+    - reviewedBy: Z-Beam Quality Assurance Team
+      citations:
+      - EPA Clean Air Act Compliance
+      isBasedOn:
+        name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  - - _metadata
+    - voice:
+        author_name: Todd Dunning
+        author_country: United States
+        voice_applied: true
+        content_type: material
+  - - faq
+    - - question: How does laser cleaning restore the **natural grain** of aged Ash
+          wood?
+        answer: '**Preserves light color and patterns**. Laser cleaning gently ablates
+          surface contaminants like dirt, varnish, or smoke residue from Ash wood
+          without harming the underlying grain. This non-contact approach typically
+          preserves the wood''s light color and prominent patterns, uncovering its
+          original beauty in 10-20 minutes per panel—pretty ideal for antique furniture
+          restoration.'
+      - question: What are the risks of using laser cleaning on Ash wood **prone to
+          warping**?
+        answer: '**Low-power pulses prevent micro-cracks**. Yeah, laser cleaning works
+          pretty safely on Ash wood when handled right. It typically dodges the moisture
+          that worsens warping, unlike old methods. Still, too much heat risks micro-cracks;
+          experts advise low-power pulsed lasers plus close monitoring to avoid that,
+          preserving the wood''s flexibility for lasting strength.'
+  - - regulatoryStandards
+    - - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        image: /images/logo/logo-org-fda.png
+        longName: Food and Drug Administration
+        name: FDA
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      - description: ANSI Z136.1 - Safe Use of Lasers
+        image: /images/logo/logo-org-ansi.png
+        longName: American National Standards Institute
+        name: ANSI
+        url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      - description: IEC 60825 - Safety of Laser Products
+        image: /images/logo/logo-org-iec.png
+        longName: International Electrotechnical Commission
+        name: IEC
+        url: https://webstore.iec.ch/publication/3587
+      - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+        image: /images/logo/logo-org-osha.png
+        longName: Occupational Safety and Health Administration
+        name: OSHA
+        url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      - description: EPA Clean Air Act Compliance
+        image: /images/logo/logo-org-generic.png
+        longName: Unknown Organization
+        name: Unknown
+        url: ''
+  - - materialProperties
+    - material_characteristics:
+        label: Material Characteristics
+        percentage: 60.0
+        fractureToughness:
+          value: 0.36
+          unit: MPa√m
+          source: ai_research
+          min: 0.26
+          max: 2
+        density:
+          value: 670
+          unit: kg/m³
+          source: ai_research
+          min: 0.4
+          max: 955
+        oxidationResistance:
+          value: 290
+          unit: °C
+          source: ai_research
+          min: 0.1
+          max: 549
+        youngsModulus:
+          value: 12.8
+          unit: GPa
+          source: ai_research
+          min: 3.3
+          max: 11235
+        hardness:
+          value: 5870
+          unit: N
+          source: ai_research
+          min: 399
+          max: 12590
+        compressiveStrength:
+          value: 69
+          unit: MPa
+          source: ai_research
+          min: 20
+          max: 80
+        tensileStrength:
+          value: 115
+          unit: MPa
+          source: ai_research
+          min: 9.5
+          max: 209
+        flexuralStrength:
+          value: 96.5
+          unit: MPa
+          source: ai_research
+          min: 19.1
+          max: 148
+        corrosionResistance:
+          value: 0.75
+          unit: dimensionless
+          source: ai_research
+          min: 0
+          max: 4.7
+        porosity:
+          value: 0.6
+          unit: fraction
+          source: ai_research
+          min: 0.39
+          max: 0.79
+        laserDamageThreshold:
+          value: 24.7
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Laser-induced damage thresholds of selected wood species for
+            cultural heritage conservation
+          citation: 'Kolar, J. et al., Journal of Cultural Heritage, 2012, DOI: 10.1016/j.culher.2011.12.004'
+          context: Ash wood (Fraxinus excelsior, density 0.65 g/cm³, moisture content
+            10-12%), room temperature (20°C), 1064 nm Nd:YAG laser, 10 ns pulse duration,
+            measured in air at 1 atm
+          researched_date: '2025-11-24T11:50:30.491359'
+          needs_validation: true
+          min: '0.0025'
+          max: 5.4
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        percentage: 40.0
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1e+06
+          source: ai_research
+        laserDamageThreshold:
+          value: 10
+          unit: J/cm²
+          min: 5
+          max: 20
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.1
+          unit: dimensionless
+          min: 0.05
+          max: 0.2
+          source: ai_research
+        thermalDestructionPoint:
+          value: 550
+          unit: K
+          min: 500
+          max: 600
+          source: ai_research
+        vaporPressure:
+          value: 100
+          unit: Pa
+          min: 10
+          max: 1000
+          source: ai_research
+        thermalDestruction:
+          value: 573
+          unit: K
+          source: ai_research
+          min: 226
+          max: 642
+        laserReflectivity:
+          value: 0.08
+          unit: dimensionless (fraction)
+          source: ai_research
+          min: 0.02
+          max: 0.44
+        thermalExpansion:
+          value: '3.2e-05'
+          unit: 1/°C
+          source: ai_research
+          min: 1e-06
+          max: '5.8e-05'
+        thermalConductivity:
+          value: 0.15
+          unit: W/m·K
+          source: ai_research
+          min: 0.04
+          max: 0.4
+        specificHeat:
+          value: 1380
+          unit: J/(kg·K)
+          source: ai_research
+          min: 1.3
+          max: 1554
+        laserAbsorption:
+          value: 0.82
+          unit: dimensionless
+          source: ai_research
+          min: 0.78
+          max: 336000
+        thermalDiffusivity:
+          value: '1.4e-07'
+          unit: m²/s
+          source: ai_research
+          min: 0
+          max: 0
+        ablationThreshold:
+          value: 1.1
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Laser Ablation Thresholds for Different Wood Species in Cultural
+            Heritage Conservation
+          citation: 'Sansonetti, L., et al., Journal of Cultural Heritage, 2013, DOI:
+            10.1016/j.culher.2012.10.005'
+          context: Ash wood (Fraxinus excelsior, density 0.65 g/cm³, natural moisture
+            content <12%), room temperature (20°C), 1064 nm Nd:YAG laser, pulse duration
+            10 ns, measured under vacuum conditions to simulate controlled cleaning
+            environment
+          researched_date: '2025-11-24T11:50:39.074814'
+          needs_validation: true
+          min: 0.51
+          max: 2.6
+  - - material_metadata
+    - regulatoryStandards:
+      - EPA Clean Air Act Compliance
+  - - serviceOffering
+    - enabled: true
+      type: professionalCleaning
+      materialSpecific:
+        estimatedHoursMin: 1
+        estimatedHoursTypical: 3
+        targetContaminants:
+        - Char and weathering
+        - Paint and finish
+        - Stain removal
+        - Surface contamination
+        notes: Careful power control to avoid charring
+  - - preservedData
+    - generationMetadata:
+        generated_date: '2025-12-17T12:38:46.268242'

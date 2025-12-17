@@ -1,71 +1,72 @@
-id: travertine-settings
-name: Travertine
-slug: travertine-settings
-category: stone
-subcategory: natural
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.540787'
-dateModified: '2025-12-17T12:39:12.540787'
-domain_linkages:
-  contaminants:
-  - algae-growth-contamination
-  - biological-stains-contamination
-  - bitumen-tar-contamination
-  - carbon-soot-contamination
-  - ceramic-glaze-contamination
-  - concrete-dust-contamination
-  - efflorescence-contamination
-  - fertilizer-residue-contamination
-  - fire-damage-contamination
-  - graffiti-paint-contamination
-  - mineral-deposits-contamination
-  - mineral-stain-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - water-stain-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Travertine surface cleaning without thermal damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength optimized for Travertine absorption and minimal substrate damage
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for balanced cleaning efficiency and resolution
-    unit: μm
-    value: 100
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and process speed
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence level sufficient for contaminant removal below Travertine damage threshold
-    unit: J/cm²
-    value: 1.5
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning without overlapping damage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap for complete coverage without excessive energy deposition
-    unit: '%'
-    value: 30
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Travertine
-  href: /settings/travertine-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - travertine-settings
+  - - slug
+    - travertine-settings
+  - - category
+    - stone
+  - - subcategory
+    - natural
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.540787'
+  - - dateModified
+    - '2025-12-17T12:39:12.540787'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Travertine
+        href: /settings/travertine-settings
+  - - name
+    - Travertine
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Travertine surface cleaning without
+          thermal damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength optimized for Travertine absorption and minimal
+          substrate damage
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for balanced cleaning efficiency and resolution
+        unit: μm
+        value: 100
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning coverage and process
+          speed
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence level sufficient for contaminant removal below Travertine
+          damage threshold
+        unit: J/cm²
+        value: 1.5
+      pulseWidth:
+        description: Nanosecond pulse duration for effective contaminant removal with
+          controlled thermal penetration
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning without overlapping
+          damage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Number of cleaning passes for complete contaminant removal
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap for complete coverage without excessive
+          energy deposition
+        unit: '%'
+        value: 30

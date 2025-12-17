@@ -1,229 +1,250 @@
-id: aviation-sealant-contamination
-name: Aerospace Sealant Residue
-slug: aviation-sealant-contamination
-category: organic-residue
-subcategory: adhesive
-datePublished: '2025-12-17T13:33:39.117394'
-dateModified: '2025-12-17T13:33:39.117394'
-domain_linkages:
-  related_materials:
-  - id: aluminum-laser-cleaning
-    title: Aluminum
-    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
-    image: /images/material/aluminum-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: titanium-laser-cleaning
-    title: Titanium
-    url: /materials/metal/specialty/titanium-laser-cleaning
-    image: /images/material/titanium-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: fiberglass-laser-cleaning
-    title: Fiberglass
-    url: /materials/composite/fiber-reinforced/fiberglass-laser-cleaning
-    image: /images/material/fiberglass-laser-cleaning-hero.jpg
-    category: composite
-    subcategory: fiber-reinforced
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-fiber-reinforced-polymer-laser-cleaning
-    title: Carbon Fiber Reinforced Polymer
-    url: /materials/composite/fiber-reinforced/carbon-fiber-reinforced-polymer-laser-cleaning
-    image: /images/material/carbon-fiber-reinforced-polymer-laser-cleaning-hero.jpg
-    category: composite
-    subcategory: fiber-reinforced
-    frequency: common
-    severity: moderate
-    typical_context: general
-author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  country_display: United States
-  title: MA
-  sex: m
-  jobTitle: Junior Optical Materials Specialist
-  expertise:
-  - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
-  image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-content_type: unified_contamination
-schema_version: 4.0.0
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: contaminant
-title: Aerospace Sealant Residue Contamination
-contamination_description: Aviation sealant contamination arises when excess polysulfide or silicone materials, applied to seal aircraft joints, cure unevenly and harden into a rubbery residue during assembly. It stands out from oils or paints through its elastic, crosslinked polymer structure that resists basic solvents and wipes, turning tenacious on surfaces. On aluminum and titanium, it bonds deeply into oxide layers and pores, while infiltrating resin matrices in carbon fiber reinforced polymer and strands in fiberglass, creating stress points; removal challenges traditional scraping or chemicals, which risk damage and prolong downtime. Laser cleaning works out effectively by pulsing targeted energy to vaporize layers precisely, clearing residues without abrading substrates and preserving structural integrity across these materials.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contaminants
-  href: /contaminants
-- label: Organic-Residue
-  href: /contaminants/organic-residue
-- label: Aerospace Sealant Residue
-  href: /contaminants/organic-residue/adhesive/aviation-sealant-contamination
-images:
-  hero:
-    url: /images/contaminants/aviation-sealant-contamination-hero.jpg
-    alt: Aerospace Sealant Residue contamination on surface before laser cleaning
-  micro:
-    url: /images/contaminants/aviation-sealant-contamination-micro.jpg
-    alt: Aerospace Sealant Residue contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.4
-      min_j_cm2: 0.8
-      recommended_j_cm2: 1.1
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 200
-      min_ns: 10
-      recommended_ns: 100
-    repetition_rate_khz:
-      max: 100
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 2000
-      min: 500
-      recommended: 1000
-    spot_size_mm:
-      max: 0.1
-      min: 0.03
-      recommended: 0.05
-    wavelength_preference:
-    - 1064
-    - 355
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 850
-      wavelength_355nm: 18500
-      wavelength_532nm: 4200
-    reflectivity:
-      wavelength_1064nm: 0.15
-      wavelength_355nm: 0.03
-      wavelength_532nm: 0.08
-    refractive_index:
-      imaginary_part: 0.024
-      real_part: 1.52
-    transmission_depth: 11.8
-  removal_characteristics:
-    byproducts:
-    - compound: carbon-dioxide
-      hazard_level: low
-      phase: gas
-    - compound: H2O
-      hazard_level: low
-      phase: gas
-    - compound: SiO2
-      hazard_level: low
-      phase: solid
-    - compound: organic volatiles
-      hazard_level: moderate
-      phase: gas
-    - compound: carbonaceous particles
-      hazard_level: moderate
-      phase: solid
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 240
-      typical_scan_speed_mm_s: 800
-    removal_efficiency:
-      diminishing_returns_after: 5
-      optimal_passes: 3
-      single_pass: 0.7
-    secondary_mechanisms:
-    - photochemical
-    - mechanical_spallation
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: compressive
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Formaldehyde
-      concentration_mg_m3: 2.5
-      exposure_limit_mg_m3: 0.37
-      hazard_class: carcinogenic
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 15
-      exposure_limit_mg_m3: 29
-      hazard_class: toxic
-    - compound: Acetaldehyde
-      concentration_mg_m3: 1.8
-      exposure_limit_mg_m3: 45
-      hazard_class: irritant
-    - compound: Particulate Polycyclic Aromatic Hydrocarbons
-      concentration_mg_m3: 0.5
-      exposure_limit_mg_m3: 0.2
-      hazard_class: carcinogenic
-    particulate_generation:
-      respirable_fraction: 0.7
-      size_range_um:
-      - 0.1
-      - 10
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: PAPR
-      skin_protection: gloves
-    substrate_compatibility_warnings:
-    - Laser parameters must be optimized to prevent substrate damage to aluminum alloys
-    - Avoid prolonged exposure on thin composite materials
-    - Test for surface discoloration on sensitive aerospace coatings
-    toxic_gas_risk: moderate
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: carbon
-      minimum_air_changes_per_hour: 12
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 0.9
-      pulse_duration_10ns: 1.2
-      wavelength_1064nm: 1.8
-    decomposition_temperature: 380
-    heat_affected_zone_depth: 25
-    melting_point: null
-    specific_heat: 1500
-    thermal_conductivity: 0.18
-    thermal_diffusivity: 0.12
-    vaporization_temperature: 450
-valid_materials:
-- Aluminum
-- Titanium
-- Carbon Fiber Reinforced Polymer
-- Fiberglass
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - aviation-sealant-contamination
+  - - title
+    - Aerospace Sealant Residue Contamination
+  - - slug
+    - aviation-sealant-contamination
+  - - category
+    - organic-residue
+  - - subcategory
+    - adhesive
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_contamination
+  - - datePublished
+    - '2025-12-17T13:33:39.117394'
+  - - dateModified
+    - '2025-12-17T13:33:39.117394'
+  - - author
+    - id: 4
+      name: Todd Dunning
+      country: United States
+      country_display: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      persona_file: usa_persona.yaml
+      formatting_file: usa_formatting.yaml
+  - - contamination_description
+    - Aviation sealant contamination arises when excess polysulfide or silicone materials,
+      applied to seal aircraft joints, cure unevenly and harden into a rubbery residue
+      during assembly. It stands out from oils or paints through its elastic, crosslinked
+      polymer structure that resists basic solvents and wipes, turning tenacious on
+      surfaces. On aluminum and titanium, it bonds deeply into oxide layers and pores,
+      while infiltrating resin matrices in carbon fiber reinforced polymer and strands
+      in fiberglass, creating stress points; removal challenges traditional scraping
+      or chemicals, which risk damage and prolong downtime. Laser cleaning works out
+      effectively by pulsing targeted energy to vaporize layers precisely, clearing
+      residues without abrading substrates and preserving structural integrity across
+      these materials.
+  - - laser_properties
+    - laser_parameters:
+        beam_profile: flat_top
+        fluence_range:
+          max_j_cm2: 1.4
+          min_j_cm2: 0.8
+          recommended_j_cm2: 1.1
+        overlap_percentage: 50
+        polarization: circular
+        pulse_duration_range:
+          max_ns: 200
+          min_ns: 10
+          recommended_ns: 100
+        repetition_rate_khz:
+          max: 100
+          min: 20
+          recommended: 50
+        safety_margin_factor: 0.7
+        scan_speed_mm_s:
+          max: 2000
+          min: 500
+          recommended: 1000
+        spot_size_mm:
+          max: 0.1
+          min: 0.03
+          recommended: 0.05
+        wavelength_preference:
+        - 1064
+        - 355
+      optical_properties:
+        absorption_coefficient:
+          wavelength_1064nm: 850
+          wavelength_355nm: 18500
+          wavelength_532nm: 4200
+        reflectivity:
+          wavelength_1064nm: 0.15
+          wavelength_355nm: 0.03
+          wavelength_532nm: 0.08
+        refractive_index:
+          imaginary_part: 0.024
+          real_part: 1.52
+        transmission_depth: 11.8
+      removal_characteristics:
+        byproducts:
+        - compound: carbon-dioxide
+          hazard_level: low
+          phase: gas
+        - compound: H2O
+          hazard_level: low
+          phase: gas
+        - compound: SiO2
+          hazard_level: low
+          phase: solid
+        - compound: organic volatiles
+          hazard_level: moderate
+          phase: gas
+        - compound: carbonaceous particles
+          hazard_level: moderate
+          phase: solid
+        damage_risk_to_substrate: low
+        primary_mechanism: thermal_ablation
+        process_speed:
+          area_coverage_rate_cm2_min: 240
+          typical_scan_speed_mm_s: 800
+        removal_efficiency:
+          diminishing_returns_after: 5
+          optimal_passes: 3
+          single_pass: 0.7
+        secondary_mechanisms:
+        - photochemical
+        - mechanical_spallation
+        surface_quality_after_removal:
+          color_change: 'no'
+          residual_stress: compressive
+          roughness_increase: minimal
+      safety_data:
+        fire_explosion_risk: low
+        fumes_generated:
+        - compound: Formaldehyde
+          concentration_mg_m3: 2.5
+          exposure_limit_mg_m3: 0.37
+          hazard_class: carcinogenic
+        - compound: Carbon Monoxide
+          concentration_mg_m3: 15
+          exposure_limit_mg_m3: 29
+          hazard_class: toxic
+        - compound: Acetaldehyde
+          concentration_mg_m3: 1.8
+          exposure_limit_mg_m3: 45
+          hazard_class: irritant
+        - compound: Particulate Polycyclic Aromatic Hydrocarbons
+          concentration_mg_m3: 0.5
+          exposure_limit_mg_m3: 0.2
+          hazard_class: carcinogenic
+        particulate_generation:
+          respirable_fraction: 0.7
+          size_range_um:
+          - 0.1
+          - 10
+        ppe_requirements:
+          eye_protection: goggles
+          respiratory: PAPR
+          skin_protection: gloves
+        substrate_compatibility_warnings:
+        - Laser parameters must be optimized to prevent substrate damage to aluminum
+          alloys
+        - Avoid prolonged exposure on thin composite materials
+        - Test for surface discoloration on sensitive aerospace coatings
+        toxic_gas_risk: moderate
+        ventilation_requirements:
+          exhaust_velocity_m_s: 0.5
+          filtration_type: carbon
+          minimum_air_changes_per_hour: 12
+        visibility_hazard: moderate
+      thermal_properties:
+        ablation_threshold:
+          pulse_duration_100ns: 0.9
+          pulse_duration_10ns: 1.2
+          wavelength_1064nm: 1.8
+        decomposition_temperature: 380
+        heat_affected_zone_depth: 25
+        melting_point: null
+        specific_heat: 1500
+        thermal_conductivity: 0.18
+        thermal_diffusivity: 0.12
+        vaporization_temperature: 450
+  - - related_materials
+    - - id: aluminum-laser-cleaning
+        title: Aluminum
+        url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+        image: /images/material/aluminum-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: titanium-laser-cleaning
+        title: Titanium
+        url: /materials/metal/specialty/titanium-laser-cleaning
+        image: /images/material/titanium-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: fiberglass-laser-cleaning
+        title: Fiberglass
+        url: /materials/composite/fiber-reinforced/fiberglass-laser-cleaning
+        image: /images/material/fiberglass-laser-cleaning-hero.jpg
+        category: composite
+        subcategory: fiber-reinforced
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: carbon-fiber-reinforced-polymer-laser-cleaning
+        title: Carbon Fiber Reinforced Polymer
+        url: /materials/composite/fiber-reinforced/carbon-fiber-reinforced-polymer-laser-cleaning
+        image: /images/material/carbon-fiber-reinforced-polymer-laser-cleaning-hero.jpg
+        category: composite
+        subcategory: fiber-reinforced
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Contaminants
+        href: /contaminants
+      - label: Organic-Residue
+        href: /contaminants/organic-residue
+      - label: Aerospace Sealant Residue
+        href: /contaminants/organic-residue/adhesive/aviation-sealant-contamination
+  - - images
+    - hero:
+        url: /images/contaminants/aviation-sealant-contamination-hero.jpg
+        alt: Aerospace Sealant Residue contamination on surface before laser cleaning
+      micro:
+        url: /images/contaminants/aviation-sealant-contamination-micro.jpg
+        alt: Aerospace Sealant Residue contamination microscopic detail
+  - - valid_materials
+    - - Aluminum
+      - Titanium
+      - Carbon Fiber Reinforced Polymer
+      - Fiberglass
+  - - _metadata
+    - voice:
+        author_name: Todd Dunning
+        author_country: United States
+        voice_applied: true
+        content_type: contaminant

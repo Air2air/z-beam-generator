@@ -1,260 +1,313 @@
-id: ebony-laser-cleaning
-name: ebony-laser-cleaning
-slug: ebony-laser-cleaning
-category: wood
-subcategory: hardwood
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:38:49.356754'
-dateModified: '2025-12-17T12:38:49.356754'
-author:
-  id: 2
-  name: Alessandro Moretti
-  country: Italy
-  country_display: Italy
-  title: Ph.D.
-  sex: m
-  jobTitle: Materials Engineer
-  expertise:
-  - Laser-Based Additive Manufacturing
-  affiliation:
-    name: Politecnico di Milano's Materials Dept.
-    type: EducationalOrganization
-  alumniOf:
-    name: University of Bologna
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Science, TU Milano, 2015
-  - 5+ years industrial ceramics experience
-  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-  email: info@z-beam.com
-  image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-  url: https://z-beam.com/authors/alessandro-moretti-phd
-  sameAs:
-  - https://scholar.google.com/citations?user=def456
-  - https://linkedin.com/in/alessandro-moretti-engineer
-  persona_file: italy_persona.yaml
-  formatting_file: italy_formatting.yaml
-_metadata:
-  voice:
-    author_name: Alessandro Moretti
-    author_country: Italy
-    voice_applied: true
-    content_type: material
-title: Ebony Laser Cleaning
-material_description: Ebony, this dense hardwood, it exhibits remarkable resilience to laser ablation, which facilitates precise contaminant removal in restoration tasks while preserving surface integrity.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/wood
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: Ebony
-  href: /materials/wood/hardwood/ebony
-images:
-  hero:
-    alt: Ebony surface during precision laser cleaning process removing contamination layer
-    url: /images/material/ebony-laser-cleaning-hero.jpg
-  micro:
-    alt: Ebony surface at 500x magnification showing laser cleaning results
-    url: /images/material/ebony-laser-cleaning-micro.jpg
-micro:
-  before: When we examine ebony's contaminated surface up close, grime layers coat every crevice and dull the natural sheen. Dust particles cluster in uneven patches, making the texture look rough and clogged. Scratches from wear hide beneath this buildup, obscuring the wood's fine details.
-  after: After laser treatment, we've found the surface gleams smoothly with no residue left behind. The clean texture reveals sharp grain lines that run evenly through the material. Polished areas now shine uniformly, bringing back
-faq:
-- question: How do I prevent burning ebony during laser cleaning?
-  answer: You must start with lower power settings to gently remove surface dirt without overheating the dense wood. Ebony's hardness helps it withstand the process, but its low heat tolerance means you should use short pulses that clear buildup quickly. Keep the laser moving steadily across the surface to avoid hot spots. In my experience, this approach restores the natural finish beautifully. Watch out for prolonged exposure, as it can char the material and ruin your work.
-- question: What's the best practice for cleaning old dirt off ebony artifacts?
-  answer: Make sure you test the laser on a small hidden area first to see how the ebony responds. The wood's tight grain absorbs energy evenly, so a focused beam works well to lift grime without scratching. You'll want to follow up with a soft cloth to polish away any residue left behind. This method preserves the ebony's deep color and smooth texture effectively.
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    density:
-      value: 1.2
-      unit: g/cm³
-      min: 0.4
-      max: 955
-    porosity:
-      value: 8
-      unit: '%'
-      min: 0.39
-      max: 0.79
-    surfaceRoughness:
-      value: 2
-      unit: μm
-    tensileStrength:
-      value: 120
-      unit: MPa
-      min: 9.5
-      max: 209
-    youngsModulus:
-      value: 15
-      unit: GPa
-      min: 3.3
-      max: 11235
-    hardness:
-      value: 0.8
-      unit: GPa
-      min: 399
-      max: 12590
-    flexuralStrength:
-      value: 180
-      unit: MPa
-      min: 19.1
-      max: 148
-    oxidationResistance:
-      value: 4
-      unit: μm/year
-      min: 0.1
-      max: 549
-    corrosionResistance:
-      value: 0.93
-      unit: mm/year
-      min: 0
-      max: 4.7
-    compressiveStrength:
-      value: 120
-      unit: MPa
-      min: 20
-      max: 80
-    fractureToughness:
-      value: 3
-      unit: MPa m^{1/2}
-      min: 0.26
-      max: 2
-    electricalResistivity:
-      value: 1e+10
-      unit: Ω·m
-      min: '9.5e+09'
-      max: 1e+12
-    percentage: 60.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    thermalDestruction:
-      value: 573
-      unit: K
-      min: 226
-      max: 642
-    laserAbsorption:
-      value: 0.15
-      unit: dimensionless
-      min: 0.78
-      max: 336000
-    laserDamageThreshold:
-      value: 3.2
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Laser Ablation Thresholds of Tropical Hardwoods for Nd:YAG Laser Cleaning
-      citation: 'Fernandes, D.M. et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5028374'
-      context: Gaboon ebony (Diospyros dendo), natural density 1.05 g/cm³, 25°C, 1064 nm Nd:YAG laser, pulse duration 10 ns, measured on polished surface
-      researched_date: '2025-11-24T12:37:10.939087'
-      needs_validation: true
-      min: '0.0025'
-      max: 5.4
-    ablationThreshold:
-      value: 1.4
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Journal of Cultural Heritage
-      citation: 'Konstantinidis, A. et al., Laser cleaning of ebony in cultural heritage artifacts: Threshold determination for 1064 nm Nd:YAG, Journal of Cultural Heritage, 2018, DOI: 10.1016/j.culher.2017.10.004'
-      context: Natural ebony (Diospyros ebenum, 100% purity as-sourced wood), 20°C, measured with Q-switched Nd:YAG laser at 1064 nm wavelength, pulse duration 10 ns
-      researched_date: '2025-11-24T12:37:17.480459'
-      needs_validation: true
-      min: 0.51
-      max: 2.6
-    thermalDiffusivity:
-      value: '1.2e-07'
-      unit: m²/s
-      source: scientific_literature
-      source_type: textbook
-      source_name: Wood Handbook - Wood as an Engineering Material
-      citation: 'Forest Products Laboratory, U.S. Department of Agriculture, Forest Service. 1999. Wood handbook - Wood as an engineering material. General Technical Report FPL-GTR-113. Madison, WI: USDA Forest Service, Forest Products Laboratory. 463 p. ISBN: N/A (Government Publication)'
-      context: Dry ebony wood (0% moisture content, Diospyros spp.), 25°C, along the grain direction, calculated from measured thermal conductivity, density, and specific heat
-      researched_date: '2025-11-24T12:37:36.520246'
-      needs_validation: true
-      min: 0
-      max: 0
-    thermalExpansion:
-      value: '4.2e-06'
-      unit: K^{-1}
-      source: scientific_literature
-      source_type: textbook
-      source_name: 'Wood Handbook: Wood as an Engineering Material'
-      citation: Forest Products Laboratory, USDA Forest Service, General Technical Report FPL-GTR-190, 2010, https://www.fpl.fs.fed.us/documnts/fplgtr/fpl_gtr190.pdf
-      context: African ebony (Diospyros crassiflora), longitudinal direction, 20-25°C, oven-dry condition, dilatometry measurement
-      researched_date: '2025-11-24T12:37:45.205972'
-      needs_validation: true
-      min: 1e-06
-      max: '5.8e-05'
-    specificHeat:
-      value: 1420
-      unit: J/kg·K
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Thermal Properties of Ebony Wood (Diospyros spp.) for Engineering Applications
-      citation: 'Olorunnisola, A. O., Journal of Materials Science and Engineering B, 2012, DOI: 10.17265/2161-6221/2012.05B.004'
-      context: Oven-dry ebony wood (Diospyros crassiflora, density 1050 kg/m³), 25°C, measured under standard atmospheric pressure using differential scanning calorimetry (DSC)
-      researched_date: '2025-11-24T12:38:07.314343'
-      needs_validation: true
-      min: 1.3
-      max: 1554
-    thermalConductivity:
-      value: 0.16
-      unit: W/(m·K)
-      source: scientific_literature
-      source_type: textbook
-      source_name: Handbook of Wood Chemistry and Wood Composites, Second Edition
-      citation: Rowell, Roger M. (Editor), CRC Press, Taylor & Francis Group, 2013, ISBN 978-1-4398-5381-8
-      context: Oven-dry African ebony wood (Diospyros crassiflora, density 1050 kg/m³), 20°C, parallel to grain direction, steady-state heat flow method
-      researched_date: '2025-11-24T12:38:16.676444'
-      needs_validation: true
-      min: 0.04
-      max: 0.4
-    laserReflectivity:
-      value: 0.04
-      unit: ''
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Optical properties of ebony wood for laser processing applications
-      citation: 'Assefa et al., Journal of Cultural Heritage, 2016, DOI: 10.1016/j.culher.2015.10.004'
-      context: Natural ebony (Diospyros crassiflora, density 1.05 g/cm³), room temperature (25°C), 1064 nm Nd:YAG laser wavelength, diffuse reflectivity measured via integrating sphere spectrophotometer
-      researched_date: '2025-11-24T12:38:27.077012'
-      needs_validation: true
-      min: 0.02
-      max: 0.44
-eeat: null
-material_metadata: null
-domain_linkages: {}
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 1
-    estimatedHoursTypical: 3
-    targetContaminants:
-    - Char and weathering
-    - Paint and finish
-    - Stain removal
-    - Surface contamination
-    notes: Careful power control to avoid charring
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-17T12:38:49.357224'
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - ebony-laser-cleaning
+  - - title
+    - Ebony Laser Cleaning
+  - - slug
+    - ebony-laser-cleaning
+  - - category
+    - wood
+  - - subcategory
+    - hardwood
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_material
+  - - datePublished
+    - '2025-12-17T12:38:49.356754'
+  - - dateModified
+    - '2025-12-17T12:38:49.356754'
+  - - author
+    - id: 2
+      name: Alessandro Moretti
+      country: Italy
+      country_display: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise:
+      - Laser-Based Additive Manufacturing
+      affiliation:
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf:
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs:
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      persona_file: italy_persona.yaml
+      formatting_file: italy_formatting.yaml
+  - - material_description
+    - Ebony, this dense hardwood, it exhibits remarkable resilience to laser ablation,
+      which facilitates precise contaminant removal in restoration tasks while preserving
+      surface integrity.
+  - - micro
+    - before: When we examine ebony's contaminated surface up close, grime layers
+        coat every crevice and dull the natural sheen. Dust particles cluster in uneven
+        patches, making the texture look rough and clogged. Scratches from wear hide
+        beneath this buildup, obscuring the wood's fine details.
+      after: After laser treatment, we've found the surface gleams smoothly with no
+        residue left behind. The clean texture reveals sharp grain lines that run
+        evenly through the material. Polished areas now shine uniformly, bringing
+        back
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Materials
+        href: /materials
+      - label: Wood
+        href: /materials/wood
+      - label: Hardwood
+        href: /materials/wood/hardwood
+      - label: Ebony
+        href: /materials/wood/hardwood/ebony
+  - - images
+    - hero:
+        alt: Ebony surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/ebony-laser-cleaning-hero.jpg
+      micro:
+        alt: Ebony surface at 500x magnification showing laser cleaning results
+        url: /images/material/ebony-laser-cleaning-micro.jpg
+  - - eeat
+    - null
+  - - _metadata
+    - voice:
+        author_name: Alessandro Moretti
+        author_country: Italy
+        voice_applied: true
+        content_type: material
+  - - faq
+    - - question: How do I prevent burning ebony during laser cleaning?
+        answer: You must start with lower power settings to gently remove surface
+          dirt without overheating the dense wood. Ebony's hardness helps it withstand
+          the process, but its low heat tolerance means you should use short pulses
+          that clear buildup quickly. Keep the laser moving steadily across the surface
+          to avoid hot spots. In my experience, this approach restores the natural
+          finish beautifully. Watch out for prolonged exposure, as it can char the
+          material and ruin your work.
+      - question: What's the best practice for cleaning old dirt off ebony artifacts?
+        answer: Make sure you test the laser on a small hidden area first to see how
+          the ebony responds. The wood's tight grain absorbs energy evenly, so a focused
+          beam works well to lift grime without scratching. You'll want to follow
+          up with a soft cloth to polish away any residue left behind. This method
+          preserves the ebony's deep color and smooth texture effectively.
+  - - regulatoryStandards
+    - - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+        image: /images/logo/logo-org-fda.png
+        longName: Food and Drug Administration
+        name: FDA
+        url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      - description: ANSI Z136.1 - Safe Use of Lasers
+        image: /images/logo/logo-org-ansi.png
+        longName: American National Standards Institute
+        name: ANSI
+        url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  - - materialProperties
+    - material_characteristics:
+        label: Material Characteristics
+        density:
+          value: 1.2
+          unit: g/cm³
+          min: 0.4
+          max: 955
+        porosity:
+          value: 8
+          unit: '%'
+          min: 0.39
+          max: 0.79
+        surfaceRoughness:
+          value: 2
+          unit: μm
+        tensileStrength:
+          value: 120
+          unit: MPa
+          min: 9.5
+          max: 209
+        youngsModulus:
+          value: 15
+          unit: GPa
+          min: 3.3
+          max: 11235
+        hardness:
+          value: 0.8
+          unit: GPa
+          min: 399
+          max: 12590
+        flexuralStrength:
+          value: 180
+          unit: MPa
+          min: 19.1
+          max: 148
+        oxidationResistance:
+          value: 4
+          unit: μm/year
+          min: 0.1
+          max: 549
+        corrosionResistance:
+          value: 0.93
+          unit: mm/year
+          min: 0
+          max: 4.7
+        compressiveStrength:
+          value: 120
+          unit: MPa
+          min: 20
+          max: 80
+        fractureToughness:
+          value: 3
+          unit: MPa m^{1/2}
+          min: 0.26
+          max: 2
+        electricalResistivity:
+          value: 1e+10
+          unit: Ω·m
+          min: '9.5e+09'
+          max: 1e+12
+        percentage: 60.0
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        percentage: 40.0
+        thermalDestruction:
+          value: 573
+          unit: K
+          min: 226
+          max: 642
+        laserAbsorption:
+          value: 0.15
+          unit: dimensionless
+          min: 0.78
+          max: 336000
+        laserDamageThreshold:
+          value: 3.2
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Laser Ablation Thresholds of Tropical Hardwoods for Nd:YAG
+            Laser Cleaning
+          citation: 'Fernandes, D.M. et al., Journal of Applied Physics, 2018, DOI:
+            10.1063/1.5028374'
+          context: Gaboon ebony (Diospyros dendo), natural density 1.05 g/cm³, 25°C,
+            1064 nm Nd:YAG laser, pulse duration 10 ns, measured on polished surface
+          researched_date: '2025-11-24T12:37:10.939087'
+          needs_validation: true
+          min: '0.0025'
+          max: 5.4
+        ablationThreshold:
+          value: 1.4
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Journal of Cultural Heritage
+          citation: 'Konstantinidis, A. et al., Laser cleaning of ebony in cultural
+            heritage artifacts: Threshold determination for 1064 nm Nd:YAG, Journal
+            of Cultural Heritage, 2018, DOI: 10.1016/j.culher.2017.10.004'
+          context: Natural ebony (Diospyros ebenum, 100% purity as-sourced wood),
+            20°C, measured with Q-switched Nd:YAG laser at 1064 nm wavelength, pulse
+            duration 10 ns
+          researched_date: '2025-11-24T12:37:17.480459'
+          needs_validation: true
+          min: 0.51
+          max: 2.6
+        thermalDiffusivity:
+          value: '1.2e-07'
+          unit: m²/s
+          source: scientific_literature
+          source_type: textbook
+          source_name: Wood Handbook - Wood as an Engineering Material
+          citation: 'Forest Products Laboratory, U.S. Department of Agriculture, Forest
+            Service. 1999. Wood handbook - Wood as an engineering material. General
+            Technical Report FPL-GTR-113. Madison, WI: USDA Forest Service, Forest
+            Products Laboratory. 463 p. ISBN: N/A (Government Publication)'
+          context: Dry ebony wood (0% moisture content, Diospyros spp.), 25°C, along
+            the grain direction, calculated from measured thermal conductivity, density,
+            and specific heat
+          researched_date: '2025-11-24T12:37:36.520246'
+          needs_validation: true
+          min: 0
+          max: 0
+        thermalExpansion:
+          value: '4.2e-06'
+          unit: K^{-1}
+          source: scientific_literature
+          source_type: textbook
+          source_name: 'Wood Handbook: Wood as an Engineering Material'
+          citation: Forest Products Laboratory, USDA Forest Service, General Technical
+            Report FPL-GTR-190, 2010, https://www.fpl.fs.fed.us/documnts/fplgtr/fpl_gtr190.pdf
+          context: African ebony (Diospyros crassiflora), longitudinal direction,
+            20-25°C, oven-dry condition, dilatometry measurement
+          researched_date: '2025-11-24T12:37:45.205972'
+          needs_validation: true
+          min: 1e-06
+          max: '5.8e-05'
+        specificHeat:
+          value: 1420
+          unit: J/kg·K
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Thermal Properties of Ebony Wood (Diospyros spp.) for Engineering
+            Applications
+          citation: 'Olorunnisola, A. O., Journal of Materials Science and Engineering
+            B, 2012, DOI: 10.17265/2161-6221/2012.05B.004'
+          context: Oven-dry ebony wood (Diospyros crassiflora, density 1050 kg/m³),
+            25°C, measured under standard atmospheric pressure using differential
+            scanning calorimetry (DSC)
+          researched_date: '2025-11-24T12:38:07.314343'
+          needs_validation: true
+          min: 1.3
+          max: 1554
+        thermalConductivity:
+          value: 0.16
+          unit: W/(m·K)
+          source: scientific_literature
+          source_type: textbook
+          source_name: Handbook of Wood Chemistry and Wood Composites, Second Edition
+          citation: Rowell, Roger M. (Editor), CRC Press, Taylor & Francis Group,
+            2013, ISBN 978-1-4398-5381-8
+          context: Oven-dry African ebony wood (Diospyros crassiflora, density 1050
+            kg/m³), 20°C, parallel to grain direction, steady-state heat flow method
+          researched_date: '2025-11-24T12:38:16.676444'
+          needs_validation: true
+          min: 0.04
+          max: 0.4
+        laserReflectivity:
+          value: 0.04
+          unit: ''
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Optical properties of ebony wood for laser processing applications
+          citation: 'Assefa et al., Journal of Cultural Heritage, 2016, DOI: 10.1016/j.culher.2015.10.004'
+          context: Natural ebony (Diospyros crassiflora, density 1.05 g/cm³), room
+            temperature (25°C), 1064 nm Nd:YAG laser wavelength, diffuse reflectivity
+            measured via integrating sphere spectrophotometer
+          researched_date: '2025-11-24T12:38:27.077012'
+          needs_validation: true
+          min: 0.02
+          max: 0.44
+  - - material_metadata
+    - null
+  - - serviceOffering
+    - enabled: true
+      type: professionalCleaning
+      materialSpecific:
+        estimatedHoursMin: 1
+        estimatedHoursTypical: 3
+        targetContaminants:
+        - Char and weathering
+        - Paint and finish
+        - Stain removal
+        - Surface contamination
+        notes: Careful power control to avoid charring
+  - - preservedData
+    - generationMetadata:
+        generated_date: '2025-12-17T12:38:49.357224'

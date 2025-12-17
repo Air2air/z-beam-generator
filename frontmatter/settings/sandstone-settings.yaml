@@ -1,71 +1,66 @@
-id: sandstone-settings
-name: Sandstone
-slug: sandstone-settings
-category: stone
-subcategory: sedimentary
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.445121'
-dateModified: '2025-12-17T12:39:12.445121'
-domain_linkages:
-  contaminants:
-  - algae-growth-contamination
-  - biological-stains-contamination
-  - bitumen-tar-contamination
-  - carbon-soot-contamination
-  - ceramic-glaze-contamination
-  - concrete-dust-contamination
-  - efflorescence-contamination
-  - fertilizer-residue-contamination
-  - fire-damage-contamination
-  - graffiti-paint-contamination
-  - mineral-deposits-contamination
-  - mineral-stain-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - water-stain-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for sandstone cleaning without thermal damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength optimized for sandstone mineral absorption
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise cleaning control
-    unit: μm
-    value: 100
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Minimum fluence required for effective sandstone cleaning
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete cleaning
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform coverage
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Sandstone
-  href: /settings/sandstone-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - sandstone-settings
+  - - slug
+    - sandstone-settings
+  - - category
+    - stone
+  - - subcategory
+    - sedimentary
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.445121'
+  - - dateModified
+    - '2025-12-17T12:39:12.445121'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Sandstone
+        href: /settings/sandstone-settings
+  - - name
+    - Sandstone
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for sandstone cleaning without thermal
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength optimized for sandstone mineral absorption
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise cleaning control
+        unit: μm
+        value: 100
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning coverage
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Minimum fluence required for effective sandstone cleaning
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for effective contaminant removal
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete cleaning
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform coverage
+        unit: '%'
+        value: 50

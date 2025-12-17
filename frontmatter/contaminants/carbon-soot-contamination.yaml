@@ -1,535 +1,552 @@
-id: carbon-soot-contamination
-name: Carbon Soot Deposits
-slug: carbon-soot-contamination
-category: organic-residue
-subcategory: other
-datePublished: '2025-12-17T13:33:39.623706'
-dateModified: '2025-12-17T13:33:39.623706'
-domain_linkages:
-  related_materials:
-  - id: stainless-steel-laser-cleaning
-    title: Stainless Steel
-    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
-    image: /images/material/stainless-steel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: steel-laser-cleaning
-    title: Steel
-    url: /materials/metal/ferrous/steel-laser-cleaning
-    image: /images/material/steel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: quartzite-laser-cleaning
-    title: Quartzite
-    url: /materials/stone/sedimentary/quartzite-laser-cleaning
-    image: /images/material/quartzite-laser-cleaning-hero.jpg
-    category: stone
-    subcategory: sedimentary
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: aluminum-laser-cleaning
-    title: Aluminum
-    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
-    image: /images/material/aluminum-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: concrete-laser-cleaning
-    title: Concrete
-    url: /materials/masonry/general/concrete-laser-cleaning
-    image: /images/material/concrete-laser-cleaning-hero.jpg
-    category: masonry
-    subcategory: general
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: granite-laser-cleaning
-    title: Granite
-    url: /materials/stone/igneous/granite-laser-cleaning
-    image: /images/material/granite-laser-cleaning-hero.jpg
-    category: stone
-    subcategory: igneous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: zinc-laser-cleaning
-    title: Zinc
-    url: /materials/metal/alloy/zinc-laser-cleaning
-    image: /images/material/zinc-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: alloy
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: travertine-laser-cleaning
-    title: Travertine
-    url: /materials/stone/natural/travertine-laser-cleaning
-    image: /images/material/travertine-laser-cleaning-hero.jpg
-    category: stone
-    subcategory: natural
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bluestone-laser-cleaning
-    title: Bluestone
-    url: /materials/stone/sedimentary/bluestone-laser-cleaning
-    image: /images/material/bluestone-laser-cleaning-hero.jpg
-    category: stone
-    subcategory: sedimentary
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: boron-carbide-laser-cleaning
-    title: Boron Carbide
-    url: /materials/ceramic/carbide/boron-carbide-laser-cleaning
-    image: /images/material/boron-carbide-laser-cleaning-hero.jpg
-    category: ceramic
-    subcategory: carbide
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: titanium-laser-cleaning
-    title: Titanium
-    url: /materials/metal/specialty/titanium-laser-cleaning
-    image: /images/material/titanium-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: limestone-laser-cleaning
-    title: Limestone
-    url: /materials/stone/sedimentary/limestone-laser-cleaning
-    image: /images/material/limestone-laser-cleaning-hero.jpg
-    category: stone
-    subcategory: sedimentary
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: soapstone-laser-cleaning
-    title: Soapstone
-    url: /materials/stone/sedimentary/soapstone-laser-cleaning
-    image: /images/material/soapstone-laser-cleaning-hero.jpg
-    category: stone
-    subcategory: sedimentary
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: boron-nitride-laser-cleaning
-    title: Boron Nitride
-    url: /materials/ceramic/technical/boron-nitride-laser-cleaning
-    image: /images/material/boron-nitride-laser-cleaning-hero.jpg
-    category: ceramic
-    subcategory: technical
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: copper-laser-cleaning
-    title: Copper
-    url: /materials/metal/non-ferrous/copper-laser-cleaning
-    image: /images/material/copper-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cobalt-laser-cleaning
-    title: Cobalt
-    url: /materials/metal/specialty/cobalt-laser-cleaning
-    image: /images/material/cobalt-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicon-nitride-laser-cleaning
-    title: Silicon Nitride
-    url: /materials/ceramic/oxide/silicon-nitride-laser-cleaning
-    image: /images/material/silicon-nitride-laser-cleaning-hero.jpg
-    category: ceramic
-    subcategory: oxide
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: basalt-laser-cleaning
-    title: Basalt
-    url: /materials/stone/igneous/basalt-laser-cleaning
-    image: /images/material/basalt-laser-cleaning-hero.jpg
-    category: stone
-    subcategory: igneous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: sandstone-laser-cleaning
-    title: Sandstone
-    url: /materials/stone/sedimentary/sandstone-laser-cleaning
-    image: /images/material/sandstone-laser-cleaning-hero.jpg
-    category: stone
-    subcategory: sedimentary
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass-laser-cleaning
-    title: Brass
-    url: /materials/metal/non-ferrous/brass-laser-cleaning
-    image: /images/material/brass-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: zirconia-laser-cleaning
-    title: Zirconia
-    url: /materials/ceramic/oxide/zirconia-laser-cleaning
-    image: /images/material/zirconia-laser-cleaning-hero.jpg
-    category: ceramic
-    subcategory: oxide
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: aluminum-nitride-laser-cleaning
-    title: Aluminum Nitride
-    url: /materials/ceramic/technical/aluminum-nitride-laser-cleaning
-    image: /images/material/aluminum-nitride-laser-cleaning-hero.jpg
-    category: ceramic
-    subcategory: technical
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: tin-laser-cleaning
-    title: Tin
-    url: /materials/metal/alloy/tin-laser-cleaning
-    image: /images/material/tin-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: alloy
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: marble-laser-cleaning
-    title: Marble
-    url: /materials/stone/metamorphic/marble-laser-cleaning
-    image: /images/material/marble-laser-cleaning-hero.jpg
-    category: stone
-    subcategory: metamorphic
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: lead-laser-cleaning
-    title: Lead
-    url: /materials/metal/non-ferrous/lead-laser-cleaning
-    image: /images/material/lead-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chromium-laser-cleaning
-    title: Chromium
-    url: /materials/metal/specialty/chromium-laser-cleaning
-    image: /images/material/chromium-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: alumina-laser-cleaning
-    title: Alumina
-    url: /materials/ceramic/oxide/alumina-laser-cleaning
-    image: /images/material/alumina-laser-cleaning-hero.jpg
-    category: ceramic
-    subcategory: oxide
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: nickel-laser-cleaning
-    title: Nickel
-    url: /materials/metal/specialty/nickel-laser-cleaning
-    image: /images/material/nickel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: specialty
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bronze-laser-cleaning
-    title: Bronze
-    url: /materials/metal/non-ferrous/bronze-laser-cleaning
-    image: /images/material/bronze-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cast-iron-laser-cleaning
-    title: Cast Iron
-    url: /materials/metal/ferrous/cast-iron-laser-cleaning
-    image: /images/material/cast-iron-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: slate-laser-cleaning
-    title: Slate
-    url: /materials/stone/metamorphic/slate-laser-cleaning
-    image: /images/material/slate-laser-cleaning-hero.jpg
-    category: stone
-    subcategory: metamorphic
-    frequency: common
-    severity: moderate
-    typical_context: general
-  produces_compounds:
-  - id: benzoapyrene-compound
-    title: Benzo[a]pyrene
-    url: /compounds/carcinogen/polycyclic-aromatic-hydrocarbon/benzoapyrene-compound
-    image: /images/compounds/benzoapyrene.jpg
-    category: carcinogen
-    subcategory: polycyclic-aromatic-hydrocarbon
-    frequency: common
-    severity: high
-    typical_context: Formed during original combustion event
-    exposure_risk: high
-    control_measures:
-      ventilation_required: false
-      ppe_level: none
-      filtration_type: null
-    concentration_range: 0.001-1 μg/m³
-    hazard_class: carcinogenic
-  - id: pahs-compound
-    title: Polycyclic Aromatic Hydrocarbons
-    url: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
-    image: /images/compounds/pahs.jpg
-    category: carcinogen
-    subcategory: aromatic-hydrocarbon
-    frequency: very_common
-    severity: high
-    typical_context: Pre-existing PAHs from incomplete combustion
-    exposure_risk: high
-    exposure_limits:
-      osha_pel_mg_m3: 0.2
-      niosh_rel_mg_m3: 0.1
-      acgih_tlv_mg_m3: 0.2
-      idlh_mg_m3: null
-    exceeds_limits: false
-    monitoring_required: false
-    control_measures:
-      ventilation_required: false
-      ppe_level: none
-      filtration_type: null
-    concentration_range: 2.5 mg/m³
-    hazard_class: carcinogenic
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-content_type: unified_contamination
-schema_version: 4.0.0
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: contaminant
-title: Carbon Soot Deposits Contamination
-contamination_description: Carbon-soot contamination, it arises from incomplete combustion in engines and furnaces, thus forming black residue of fine particulates. This residue clings tightly and embeds deeply into surfaces, distinguishing itself from dust by resisting water and brushing, while on steel and concrete it alters texture and penetrates pores. Removal challenges include scratching risks and chemical residues, yet laser cleaning vaporizes soot precisely and preserves substrate integrity thus.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contaminants
-  href: /contaminants
-- label: Organic-Residue
-  href: /contaminants/organic-residue
-- label: Carbon Soot Deposits
-  href: /contaminants/organic-residue/other/carbon-soot-contamination
-images:
-  hero:
-    url: /images/contaminants/carbon-soot-contamination-hero.jpg
-    alt: Carbon Soot Deposits contamination on surface before laser cleaning
-  micro:
-    url: /images/contaminants/carbon-soot-contamination-micro.jpg
-    alt: Carbon Soot Deposits contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.2
-      min_j_cm2: 0.2
-      recommended_j_cm2: 0.6
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 100
-      min_ns: 10
-      recommended_ns: 30
-    repetition_rate_khz:
-      max: 200
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.6
-    scan_speed_mm_s:
-      max: 5000
-      min: 500
-      recommended: 1500
-    spot_size_mm:
-      max: 0.1
-      min: 0.03
-      recommended: 0.05
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 8000
-      wavelength_355nm: 60000
-      wavelength_532nm: 25000
-    reflectivity:
-      wavelength_1064nm: 0.05
-      wavelength_355nm: 0.01
-      wavelength_532nm: 0.03
-    refractive_index:
-      imaginary_part: 0.4
-      real_part: 1.8
-    transmission_depth: 1.25
-  removal_characteristics:
-    byproducts:
-    - compound: carbon-dioxide
-      hazard_level: low
-      phase: gas
-    - compound: carbon-monoxide
-      hazard_level: moderate
-      phase: gas
-    - compound: C_nanoparticles
-      hazard_level: moderate
-      phase: solid
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 1200
-      typical_scan_speed_mm_s: 500
-    removal_efficiency:
-      diminishing_returns_after: 3
-      optimal_passes: 2
-      single_pass: 0.85
-    secondary_mechanisms:
-    - photochemical
-    - mechanical_spallation
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: none
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 50.0
-      exposure_limit_mg_m3: 29.0
-      hazard_class: toxic
-    - compound: Carbon Dioxide
-      concentration_mg_m3: 500.0
-      exposure_limit_mg_m3: 9000.0
-      hazard_class: toxic
-    - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
-      concentration_mg_m3: 2.5
-      exposure_limit_mg_m3: 0.2
-      hazard_class: carcinogenic
-    - compound: Ultrafine Carbon Particles
-      concentration_mg_m3: 15.0
-      exposure_limit_mg_m3: 3.0
-      hazard_class: toxic
-    particulate_generation:
-      respirable_fraction: 0.8
-      size_range_um:
-      - 0.01
-      - 10.0
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: PAPR
-      skin_protection: full_suit
-    substrate_compatibility_warnings:
-    - Laser parameters must be optimized to minimize substrate damage and excessive fume generation
-    - Avoid laser cleaning on painted surfaces containing lead or chromium
-    - Test on small area first to assess fume generation characteristics
-    toxic_gas_risk: moderate
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: dual
-      minimum_air_changes_per_hour: 12
-    visibility_hazard: high
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 1.2
-      pulse_duration_10ns: 0.6
-      wavelength_1064nm: 0.8
-    decomposition_temperature: 400
-    heat_affected_zone_depth: 15
-    melting_point: 3550
-    specific_heat: 840
-    thermal_conductivity: 1.5
-    thermal_diffusivity: 1.2
-    vaporization_temperature: 1800
-valid_materials:
-- Concrete
-- Aluminum
-- Steel
-- Stainless Steel
-- Cast Iron
-- Copper
-- Bronze
-- Brass
-- Titanium
-- Zinc
-- Nickel
-- Lead
-- Tin
-- Cobalt
-- Chromium
-- Alumina
-- Silicon Carbide
-- Zirconia
-- Aluminum Nitride
-- Boron Carbide
-- Boron Nitride
-- Silicon Nitride
-- Granite
-- Marble
-- Limestone
-- Sandstone
-- Basalt
-- Slate
-- Quartzite
-- Travertine
-- Bluestone
-- Soapstone
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - carbon-soot-contamination
+  - - title
+    - Carbon Soot Deposits Contamination
+  - - slug
+    - carbon-soot-contamination
+  - - category
+    - organic-residue
+  - - subcategory
+    - other
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_contamination
+  - - datePublished
+    - '2025-12-17T13:33:39.623706'
+  - - dateModified
+    - '2025-12-17T13:33:39.623706'
+  - - author
+    - id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      country_display: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      persona_file: indonesia_persona.yaml
+      formatting_file: indonesia_formatting.yaml
+  - - contamination_description
+    - Carbon-soot contamination, it arises from incomplete combustion in engines and
+      furnaces, thus forming black residue of fine particulates. This residue clings
+      tightly and embeds deeply into surfaces, distinguishing itself from dust by
+      resisting water and brushing, while on steel and concrete it alters texture
+      and penetrates pores. Removal challenges include scratching risks and chemical
+      residues, yet laser cleaning vaporizes soot precisely and preserves substrate
+      integrity thus.
+  - - laser_properties
+    - laser_parameters:
+        beam_profile: flat_top
+        fluence_range:
+          max_j_cm2: 1.2
+          min_j_cm2: 0.2
+          recommended_j_cm2: 0.6
+        overlap_percentage: 50
+        polarization: circular
+        pulse_duration_range:
+          max_ns: 100
+          min_ns: 10
+          recommended_ns: 30
+        repetition_rate_khz:
+          max: 200
+          min: 20
+          recommended: 50
+        safety_margin_factor: 0.6
+        scan_speed_mm_s:
+          max: 5000
+          min: 500
+          recommended: 1500
+        spot_size_mm:
+          max: 0.1
+          min: 0.03
+          recommended: 0.05
+        wavelength_preference:
+        - 1064
+        - 532
+      optical_properties:
+        absorption_coefficient:
+          wavelength_1064nm: 8000
+          wavelength_355nm: 60000
+          wavelength_532nm: 25000
+        reflectivity:
+          wavelength_1064nm: 0.05
+          wavelength_355nm: 0.01
+          wavelength_532nm: 0.03
+        refractive_index:
+          imaginary_part: 0.4
+          real_part: 1.8
+        transmission_depth: 1.25
+      removal_characteristics:
+        byproducts:
+        - compound: carbon-dioxide
+          hazard_level: low
+          phase: gas
+        - compound: carbon-monoxide
+          hazard_level: moderate
+          phase: gas
+        - compound: C_nanoparticles
+          hazard_level: moderate
+          phase: solid
+        damage_risk_to_substrate: low
+        primary_mechanism: thermal_ablation
+        process_speed:
+          area_coverage_rate_cm2_min: 1200
+          typical_scan_speed_mm_s: 500
+        removal_efficiency:
+          diminishing_returns_after: 3
+          optimal_passes: 2
+          single_pass: 0.85
+        secondary_mechanisms:
+        - photochemical
+        - mechanical_spallation
+        surface_quality_after_removal:
+          color_change: 'no'
+          residual_stress: none
+          roughness_increase: minimal
+      safety_data:
+        fire_explosion_risk: low
+        fumes_generated:
+        - compound: Carbon Monoxide
+          concentration_mg_m3: 50.0
+          exposure_limit_mg_m3: 29.0
+          hazard_class: toxic
+        - compound: Carbon Dioxide
+          concentration_mg_m3: 500.0
+          exposure_limit_mg_m3: 9000.0
+          hazard_class: toxic
+        - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
+          concentration_mg_m3: 2.5
+          exposure_limit_mg_m3: 0.2
+          hazard_class: carcinogenic
+        - compound: Ultrafine Carbon Particles
+          concentration_mg_m3: 15.0
+          exposure_limit_mg_m3: 3.0
+          hazard_class: toxic
+        particulate_generation:
+          respirable_fraction: 0.8
+          size_range_um:
+          - 0.01
+          - 10.0
+        ppe_requirements:
+          eye_protection: goggles
+          respiratory: PAPR
+          skin_protection: full_suit
+        substrate_compatibility_warnings:
+        - Laser parameters must be optimized to minimize substrate damage and excessive
+          fume generation
+        - Avoid laser cleaning on painted surfaces containing lead or chromium
+        - Test on small area first to assess fume generation characteristics
+        toxic_gas_risk: moderate
+        ventilation_requirements:
+          exhaust_velocity_m_s: 0.5
+          filtration_type: dual
+          minimum_air_changes_per_hour: 12
+        visibility_hazard: high
+      thermal_properties:
+        ablation_threshold:
+          pulse_duration_100ns: 1.2
+          pulse_duration_10ns: 0.6
+          wavelength_1064nm: 0.8
+        decomposition_temperature: 400
+        heat_affected_zone_depth: 15
+        melting_point: 3550
+        specific_heat: 840
+        thermal_conductivity: 1.5
+        thermal_diffusivity: 1.2
+        vaporization_temperature: 1800
+  - - produces_compounds
+    - - id: benzoapyrene-compound
+        title: Benzo[a]pyrene
+        url: /compounds/carcinogen/polycyclic-aromatic-hydrocarbon/benzoapyrene-compound
+        image: /images/compounds/benzoapyrene.jpg
+        category: carcinogen
+        subcategory: polycyclic-aromatic-hydrocarbon
+        frequency: common
+        severity: high
+        typical_context: Formed during original combustion event
+        exposure_risk: high
+        control_measures:
+          ventilation_required: false
+          ppe_level: none
+          filtration_type: null
+        concentration_range: 0.001-1 μg/m³
+        hazard_class: carcinogenic
+      - id: pahs-compound
+        title: Polycyclic Aromatic Hydrocarbons
+        url: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
+        image: /images/compounds/pahs.jpg
+        category: carcinogen
+        subcategory: aromatic-hydrocarbon
+        frequency: very_common
+        severity: high
+        typical_context: Pre-existing PAHs from incomplete combustion
+        exposure_risk: high
+        exposure_limits:
+          osha_pel_mg_m3: 0.2
+          niosh_rel_mg_m3: 0.1
+          acgih_tlv_mg_m3: 0.2
+          idlh_mg_m3: null
+        exceeds_limits: false
+        monitoring_required: false
+        control_measures:
+          ventilation_required: false
+          ppe_level: none
+          filtration_type: null
+        concentration_range: 2.5 mg/m³
+        hazard_class: carcinogenic
+  - - related_materials
+    - - id: stainless-steel-laser-cleaning
+        title: Stainless Steel
+        url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+        image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: steel-laser-cleaning
+        title: Steel
+        url: /materials/metal/ferrous/steel-laser-cleaning
+        image: /images/material/steel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: quartzite-laser-cleaning
+        title: Quartzite
+        url: /materials/stone/sedimentary/quartzite-laser-cleaning
+        image: /images/material/quartzite-laser-cleaning-hero.jpg
+        category: stone
+        subcategory: sedimentary
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: aluminum-laser-cleaning
+        title: Aluminum
+        url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+        image: /images/material/aluminum-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: concrete-laser-cleaning
+        title: Concrete
+        url: /materials/masonry/general/concrete-laser-cleaning
+        image: /images/material/concrete-laser-cleaning-hero.jpg
+        category: masonry
+        subcategory: general
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: granite-laser-cleaning
+        title: Granite
+        url: /materials/stone/igneous/granite-laser-cleaning
+        image: /images/material/granite-laser-cleaning-hero.jpg
+        category: stone
+        subcategory: igneous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: zinc-laser-cleaning
+        title: Zinc
+        url: /materials/metal/alloy/zinc-laser-cleaning
+        image: /images/material/zinc-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: alloy
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: travertine-laser-cleaning
+        title: Travertine
+        url: /materials/stone/natural/travertine-laser-cleaning
+        image: /images/material/travertine-laser-cleaning-hero.jpg
+        category: stone
+        subcategory: natural
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: bluestone-laser-cleaning
+        title: Bluestone
+        url: /materials/stone/sedimentary/bluestone-laser-cleaning
+        image: /images/material/bluestone-laser-cleaning-hero.jpg
+        category: stone
+        subcategory: sedimentary
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: boron-carbide-laser-cleaning
+        title: Boron Carbide
+        url: /materials/ceramic/carbide/boron-carbide-laser-cleaning
+        image: /images/material/boron-carbide-laser-cleaning-hero.jpg
+        category: ceramic
+        subcategory: carbide
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: titanium-laser-cleaning
+        title: Titanium
+        url: /materials/metal/specialty/titanium-laser-cleaning
+        image: /images/material/titanium-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: limestone-laser-cleaning
+        title: Limestone
+        url: /materials/stone/sedimentary/limestone-laser-cleaning
+        image: /images/material/limestone-laser-cleaning-hero.jpg
+        category: stone
+        subcategory: sedimentary
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: soapstone-laser-cleaning
+        title: Soapstone
+        url: /materials/stone/sedimentary/soapstone-laser-cleaning
+        image: /images/material/soapstone-laser-cleaning-hero.jpg
+        category: stone
+        subcategory: sedimentary
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: boron-nitride-laser-cleaning
+        title: Boron Nitride
+        url: /materials/ceramic/technical/boron-nitride-laser-cleaning
+        image: /images/material/boron-nitride-laser-cleaning-hero.jpg
+        category: ceramic
+        subcategory: technical
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: copper-laser-cleaning
+        title: Copper
+        url: /materials/metal/non-ferrous/copper-laser-cleaning
+        image: /images/material/copper-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: cobalt-laser-cleaning
+        title: Cobalt
+        url: /materials/metal/specialty/cobalt-laser-cleaning
+        image: /images/material/cobalt-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: silicon-nitride-laser-cleaning
+        title: Silicon Nitride
+        url: /materials/ceramic/oxide/silicon-nitride-laser-cleaning
+        image: /images/material/silicon-nitride-laser-cleaning-hero.jpg
+        category: ceramic
+        subcategory: oxide
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: basalt-laser-cleaning
+        title: Basalt
+        url: /materials/stone/igneous/basalt-laser-cleaning
+        image: /images/material/basalt-laser-cleaning-hero.jpg
+        category: stone
+        subcategory: igneous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: sandstone-laser-cleaning
+        title: Sandstone
+        url: /materials/stone/sedimentary/sandstone-laser-cleaning
+        image: /images/material/sandstone-laser-cleaning-hero.jpg
+        category: stone
+        subcategory: sedimentary
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: brass-laser-cleaning
+        title: Brass
+        url: /materials/metal/non-ferrous/brass-laser-cleaning
+        image: /images/material/brass-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: zirconia-laser-cleaning
+        title: Zirconia
+        url: /materials/ceramic/oxide/zirconia-laser-cleaning
+        image: /images/material/zirconia-laser-cleaning-hero.jpg
+        category: ceramic
+        subcategory: oxide
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: aluminum-nitride-laser-cleaning
+        title: Aluminum Nitride
+        url: /materials/ceramic/technical/aluminum-nitride-laser-cleaning
+        image: /images/material/aluminum-nitride-laser-cleaning-hero.jpg
+        category: ceramic
+        subcategory: technical
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: tin-laser-cleaning
+        title: Tin
+        url: /materials/metal/alloy/tin-laser-cleaning
+        image: /images/material/tin-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: alloy
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: marble-laser-cleaning
+        title: Marble
+        url: /materials/stone/metamorphic/marble-laser-cleaning
+        image: /images/material/marble-laser-cleaning-hero.jpg
+        category: stone
+        subcategory: metamorphic
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: lead-laser-cleaning
+        title: Lead
+        url: /materials/metal/non-ferrous/lead-laser-cleaning
+        image: /images/material/lead-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: chromium-laser-cleaning
+        title: Chromium
+        url: /materials/metal/specialty/chromium-laser-cleaning
+        image: /images/material/chromium-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: alumina-laser-cleaning
+        title: Alumina
+        url: /materials/ceramic/oxide/alumina-laser-cleaning
+        image: /images/material/alumina-laser-cleaning-hero.jpg
+        category: ceramic
+        subcategory: oxide
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: nickel-laser-cleaning
+        title: Nickel
+        url: /materials/metal/specialty/nickel-laser-cleaning
+        image: /images/material/nickel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: specialty
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: bronze-laser-cleaning
+        title: Bronze
+        url: /materials/metal/non-ferrous/bronze-laser-cleaning
+        image: /images/material/bronze-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: cast-iron-laser-cleaning
+        title: Cast Iron
+        url: /materials/metal/ferrous/cast-iron-laser-cleaning
+        image: /images/material/cast-iron-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: slate-laser-cleaning
+        title: Slate
+        url: /materials/stone/metamorphic/slate-laser-cleaning
+        image: /images/material/slate-laser-cleaning-hero.jpg
+        category: stone
+        subcategory: metamorphic
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Contaminants
+        href: /contaminants
+      - label: Organic-Residue
+        href: /contaminants/organic-residue
+      - label: Carbon Soot Deposits
+        href: /contaminants/organic-residue/other/carbon-soot-contamination
+  - - images
+    - hero:
+        url: /images/contaminants/carbon-soot-contamination-hero.jpg
+        alt: Carbon Soot Deposits contamination on surface before laser cleaning
+      micro:
+        url: /images/contaminants/carbon-soot-contamination-micro.jpg
+        alt: Carbon Soot Deposits contamination microscopic detail
+  - - valid_materials
+    - - Concrete
+      - Aluminum
+      - Steel
+      - Stainless Steel
+      - Cast Iron
+      - Copper
+      - Bronze
+      - Brass
+      - Titanium
+      - Zinc
+      - Nickel
+      - Lead
+      - Tin
+      - Cobalt
+      - Chromium
+      - Alumina
+      - Silicon Carbide
+      - Zirconia
+      - Aluminum Nitride
+      - Boron Carbide
+      - Boron Nitride
+      - Silicon Nitride
+      - Granite
+      - Marble
+      - Limestone
+      - Sandstone
+      - Basalt
+      - Slate
+      - Quartzite
+      - Travertine
+      - Bluestone
+      - Soapstone
+  - - _metadata
+    - voice:
+        author_name: Ikmanda Roswati
+        author_country: Indonesia
+        voice_applied: true
+        content_type: contaminant

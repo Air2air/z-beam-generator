@@ -1,208 +1,226 @@
-id: undercoating-contamination
-name: Automotive Undercoating
-slug: undercoating-contamination
-category: organic-residue
-subcategory: other
-datePublished: '2025-12-17T13:33:43.305762'
-dateModified: '2025-12-17T13:33:43.305762'
-domain_linkages:
-  related_materials:
-  - id: steel-laser-cleaning
-    title: Steel
-    url: /materials/metal/ferrous/steel-laser-cleaning
-    image: /images/material/steel-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
-  title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
-  expertise:
-  - Ultrafast Laser Physics and Material Interactions
-  affiliation:
-    name: Bandung Institute of Technology
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
-  email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
-  sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
-content_type: unified_contamination
-schema_version: 4.0.0
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: contaminant
-title: Automotive Undercoating Contamination
-contamination_description: Undercoating contamination arises from rubberized or tar-based coatings applied to vehicle underbodies for protection against rust and road debris, where it hardens over time into a thick, adhesive layer. This pattern differs from oxide scales or grease residues by its elastic, bitumen-like texture that clings unevenly and releases volatile fumes when heated. On steel, it bonds aggressively and traps salts beneath, complicating adhesion loss, whereas on painted metal, it overlays loosely yet promotes delamination underneath. Challenges include incomplete vaporization leading to residue streaks, thus laser cleaning succeeds by targeted ablation that selects the organic layer for removal while substrate stays intact.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contaminants
-  href: /contaminants
-- label: Organic-Residue
-  href: /contaminants/organic-residue
-- label: Automotive Undercoating
-  href: /contaminants/organic-residue/other/undercoating-contamination
-images:
-  hero:
-    url: /images/contaminants/undercoating-contamination-hero.jpg
-    alt: Automotive Undercoating contamination on surface before laser cleaning
-  micro:
-    url: /images/contaminants/undercoating-contamination-micro.jpg
-    alt: Automotive Undercoating contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.4
-      min_j_cm2: 0.8
-      recommended_j_cm2: 1.1
-    overlap_percentage: 50
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 100
-      min_ns: 10
-      recommended_ns: 30
-    repetition_rate_khz:
-      max: 100
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 2000
-      min: 500
-      recommended: 1000
-    spot_size_mm:
-      max: 0.2
-      min: 0.05
-      recommended: 0.1
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 850
-      wavelength_532nm: 12500
-    reflectivity:
-      wavelength_1064nm: 0.15
-      wavelength_355nm: 0.05
-      wavelength_532nm: 0.08
-    refractive_index:
-      imaginary_part: 0.12
-      real_part: 1.55
-    transmission_depth: 11.8
-  removal_characteristics:
-    byproducts:
-    - compound: carbon-dioxide
-      hazard_level: low
-      phase: gas
-    - compound: H2O
-      hazard_level: low
-      phase: gas
-    - compound: Various hydrocarbons
-      hazard_level: moderate
-      phase: gas
-    - compound: Carbonaceous particles
-      hazard_level: moderate
-      phase: solid
-    - compound: Metal oxides (from fillers)
-      hazard_level: moderate
-      phase: solid
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 480
-      typical_scan_speed_mm_s: 800
-    removal_efficiency:
-      diminishing_returns_after: 4
-      optimal_passes: 3
-      single_pass: 0.4
-    secondary_mechanisms:
-    - mechanical_spallation
-    - photochemical_decomposition
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: none
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 50-200
-      exposure_limit_mg_m3: 29
-      hazard_class: toxic
-    - compound: Benzene
-      concentration_mg_m3: 5-25
-      exposure_limit_mg_m3: 0.5
-      hazard_class: carcinogenic
-    - compound: Toluene
-      concentration_mg_m3: 50-150
-      exposure_limit_mg_m3: 75
-      hazard_class: toxic
-    - compound: Xylene
-      concentration_mg_m3: 30-100
-      exposure_limit_mg_m3: 100
-      hazard_class: irritant
-    - compound: Formaldehyde
-      concentration_mg_m3: 2-10
-      exposure_limit_mg_m3: 0.37
-      hazard_class: carcinogenic
-    - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
-      concentration_mg_m3: 1-10
-      exposure_limit_mg_m3: 0.2
-      hazard_class: carcinogenic
-    particulate_generation:
-      respirable_fraction: 0.7
-      size_range_um:
-      - 0.1
-      - 10.0
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: PAPR
-      skin_protection: full_suit
-    substrate_compatibility_warnings:
-    - May cause surface etching on aluminum alloys
-    - Can damage thin-gauge steel if laser parameters not properly controlled
-    - Avoid prolonged exposure on rubber components and seals
-    toxic_gas_risk: moderate
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: carbon
-      minimum_air_changes_per_hour: 15
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 2.5
-      pulse_duration_10ns: 1.2
-      wavelength_1064nm: 0.8
-    decomposition_temperature: 350
-    heat_affected_zone_depth: 15
-    melting_point: null
-    specific_heat: 1500
-    thermal_conductivity: 0.25
-    thermal_diffusivity: 0.17
-    vaporization_temperature: 450
-valid_materials:
-- Steel
-- Painted Metal
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - undercoating-contamination
+  - - title
+    - Automotive Undercoating Contamination
+  - - slug
+    - undercoating-contamination
+  - - category
+    - organic-residue
+  - - subcategory
+    - other
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_contamination
+  - - datePublished
+    - '2025-12-17T13:33:43.305762'
+  - - dateModified
+    - '2025-12-17T13:33:43.305762'
+  - - author
+    - id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      country_display: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      persona_file: indonesia_persona.yaml
+      formatting_file: indonesia_formatting.yaml
+  - - contamination_description
+    - Undercoating contamination arises from rubberized or tar-based coatings applied
+      to vehicle underbodies for protection against rust and road debris, where it
+      hardens over time into a thick, adhesive layer. This pattern differs from oxide
+      scales or grease residues by its elastic, bitumen-like texture that clings unevenly
+      and releases volatile fumes when heated. On steel, it bonds aggressively and
+      traps salts beneath, complicating adhesion loss, whereas on painted metal, it
+      overlays loosely yet promotes delamination underneath. Challenges include incomplete
+      vaporization leading to residue streaks, thus laser cleaning succeeds by targeted
+      ablation that selects the organic layer for removal while substrate stays intact.
+  - - laser_properties
+    - laser_parameters:
+        beam_profile: flat_top
+        fluence_range:
+          max_j_cm2: 1.4
+          min_j_cm2: 0.8
+          recommended_j_cm2: 1.1
+        overlap_percentage: 50
+        polarization: circular
+        pulse_duration_range:
+          max_ns: 100
+          min_ns: 10
+          recommended_ns: 30
+        repetition_rate_khz:
+          max: 100
+          min: 20
+          recommended: 50
+        safety_margin_factor: 0.7
+        scan_speed_mm_s:
+          max: 2000
+          min: 500
+          recommended: 1000
+        spot_size_mm:
+          max: 0.2
+          min: 0.05
+          recommended: 0.1
+        wavelength_preference:
+        - 1064
+        - 532
+      optical_properties:
+        absorption_coefficient:
+          wavelength_1064nm: 850
+          wavelength_532nm: 12500
+        reflectivity:
+          wavelength_1064nm: 0.15
+          wavelength_355nm: 0.05
+          wavelength_532nm: 0.08
+        refractive_index:
+          imaginary_part: 0.12
+          real_part: 1.55
+        transmission_depth: 11.8
+      removal_characteristics:
+        byproducts:
+        - compound: carbon-dioxide
+          hazard_level: low
+          phase: gas
+        - compound: H2O
+          hazard_level: low
+          phase: gas
+        - compound: Various hydrocarbons
+          hazard_level: moderate
+          phase: gas
+        - compound: Carbonaceous particles
+          hazard_level: moderate
+          phase: solid
+        - compound: Metal oxides (from fillers)
+          hazard_level: moderate
+          phase: solid
+        damage_risk_to_substrate: low
+        primary_mechanism: thermal_ablation
+        process_speed:
+          area_coverage_rate_cm2_min: 480
+          typical_scan_speed_mm_s: 800
+        removal_efficiency:
+          diminishing_returns_after: 4
+          optimal_passes: 3
+          single_pass: 0.4
+        secondary_mechanisms:
+        - mechanical_spallation
+        - photochemical_decomposition
+        surface_quality_after_removal:
+          color_change: 'no'
+          residual_stress: none
+          roughness_increase: minimal
+      safety_data:
+        fire_explosion_risk: low
+        fumes_generated:
+        - compound: Carbon Monoxide
+          concentration_mg_m3: 50-200
+          exposure_limit_mg_m3: 29
+          hazard_class: toxic
+        - compound: Benzene
+          concentration_mg_m3: 5-25
+          exposure_limit_mg_m3: 0.5
+          hazard_class: carcinogenic
+        - compound: Toluene
+          concentration_mg_m3: 50-150
+          exposure_limit_mg_m3: 75
+          hazard_class: toxic
+        - compound: Xylene
+          concentration_mg_m3: 30-100
+          exposure_limit_mg_m3: 100
+          hazard_class: irritant
+        - compound: Formaldehyde
+          concentration_mg_m3: 2-10
+          exposure_limit_mg_m3: 0.37
+          hazard_class: carcinogenic
+        - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
+          concentration_mg_m3: 1-10
+          exposure_limit_mg_m3: 0.2
+          hazard_class: carcinogenic
+        particulate_generation:
+          respirable_fraction: 0.7
+          size_range_um:
+          - 0.1
+          - 10.0
+        ppe_requirements:
+          eye_protection: goggles
+          respiratory: PAPR
+          skin_protection: full_suit
+        substrate_compatibility_warnings:
+        - May cause surface etching on aluminum alloys
+        - Can damage thin-gauge steel if laser parameters not properly controlled
+        - Avoid prolonged exposure on rubber components and seals
+        toxic_gas_risk: moderate
+        ventilation_requirements:
+          exhaust_velocity_m_s: 0.5
+          filtration_type: carbon
+          minimum_air_changes_per_hour: 15
+        visibility_hazard: moderate
+      thermal_properties:
+        ablation_threshold:
+          pulse_duration_100ns: 2.5
+          pulse_duration_10ns: 1.2
+          wavelength_1064nm: 0.8
+        decomposition_temperature: 350
+        heat_affected_zone_depth: 15
+        melting_point: null
+        specific_heat: 1500
+        thermal_conductivity: 0.25
+        thermal_diffusivity: 0.17
+        vaporization_temperature: 450
+  - - related_materials
+    - - id: steel-laser-cleaning
+        title: Steel
+        url: /materials/metal/ferrous/steel-laser-cleaning
+        image: /images/material/steel-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Contaminants
+        href: /contaminants
+      - label: Organic-Residue
+        href: /contaminants/organic-residue
+      - label: Automotive Undercoating
+        href: /contaminants/organic-residue/other/undercoating-contamination
+  - - images
+    - hero:
+        url: /images/contaminants/undercoating-contamination-hero.jpg
+        alt: Automotive Undercoating contamination on surface before laser cleaning
+      micro:
+        url: /images/contaminants/undercoating-contamination-micro.jpg
+        alt: Automotive Undercoating contamination microscopic detail
+  - - valid_materials
+    - - Steel
+      - Painted Metal
+  - - _metadata
+    - voice:
+        author_name: Ikmanda Roswati
+        author_country: Indonesia
+        voice_applied: true
+        content_type: contaminant

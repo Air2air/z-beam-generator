@@ -1,54 +1,69 @@
-id: stucco-settings
-name: Stucco
-slug: stucco-settings
-category: masonry
-subcategory: concrete
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.501740'
-dateModified: '2025-12-17T12:39:12.501740'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Stucco surface cleaning without substrate damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-infrared wavelength optimized for Stucco absorption and minimal substrate interaction
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for balanced cleaning efficiency and resolution
-    unit: mm
-    value: 0.2
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and process speed
-    unit: kHz
-    value: 50
-  energyDensity:
-    description: Fluence threshold for effective Stucco surface cleaning
-    unit: J/cm²
-    value: 3.2
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning without thermal accumulation
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Stucco
-  href: /settings/stucco-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - stucco-settings
+  - - slug
+    - stucco-settings
+  - - category
+    - masonry
+  - - subcategory
+    - concrete
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.501740'
+  - - dateModified
+    - '2025-12-17T12:39:12.501740'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Stucco
+        href: /settings/stucco-settings
+  - - name
+    - Stucco
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Stucco surface cleaning without substrate
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-infrared wavelength optimized for Stucco absorption and
+          minimal substrate interaction
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for balanced cleaning efficiency and resolution
+        unit: mm
+        value: 0.2
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning coverage and process
+          speed
+        unit: kHz
+        value: 50
+      energyDensity:
+        description: Fluence threshold for effective Stucco surface cleaning
+        unit: J/cm²
+        value: 3.2
+      pulseWidth:
+        description: Nanosecond pulse duration for effective contaminant removal with
+          controlled thermal effects
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning without thermal accumulation
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning coverage
+        unit: '%'
+        value: 50

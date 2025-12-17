@@ -1,234 +1,250 @@
-id: thermal-paste-contamination
-name: Thermal Compound Deposits
-slug: thermal-paste-contamination
-category: organic-residue
-subcategory: other
-datePublished: '2025-12-17T13:33:43.161785'
-dateModified: '2025-12-17T13:33:43.161785'
-domain_linkages:
-  related_materials:
-  - id: aluminum-laser-cleaning
-    title: Aluminum
-    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
-    image: /images/material/aluminum-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: copper-laser-cleaning
-    title: Copper
-    url: /materials/metal/non-ferrous/copper-laser-cleaning
-    image: /images/material/copper-laser-cleaning-hero.jpg
-    category: metal
-    subcategory: non-ferrous
-    frequency: common
-    severity: moderate
-    typical_context: general
-  produces_compounds:
-  - id: carbon-monoxide-compound
-    title: Carbon Monoxide
-    url: /compounds/toxic-gas/asphyxiant/carbon-monoxide-compound
-    image: /images/compounds/carbon-monoxide.jpg
-    category: toxic-gas
-    subcategory: asphyxiant
-    frequency: common
-    severity: moderate
-    typical_context: Combustion of organic carriers
-    exposure_risk: moderate
-    exposure_limits:
-      osha_pel_mg_m3: 55
-      niosh_rel_mg_m3: 40
-      acgih_tlv_mg_m3: 29
-      idlh_mg_m3: null
-    exceeds_limits: false
-    monitoring_required: false
-    control_measures:
-      ventilation_required: false
-      ppe_level: none
-      filtration_type: null
-    concentration_range: 5-50 mg/m³
-    hazard_class: toxic
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-content_type: unified_contamination
-schema_version: 4.0.0
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: contaminant
-title: Thermal Compound Deposits Contamination
-contamination_description: Thermal paste contamination arises from silicone or metal-based materials used in CPU cooling systems and it forms when paste spreads beyond interfaces during assembly or operation. This contaminant shows unique greasy texture and strong adhesion so it differs from dry dust or oxide layers by resisting simple wiping. On copper and aluminum surfaces, it hardens over time and removal challenges include residue buildup because paste bonds tightly. Laser cleaning works effectively since pulses vaporize paste without harming underlying nickel-plated areas.
-breadcrumb:
-- label: Home
-  href: /
-- label: Contaminants
-  href: /contaminants
-- label: Organic-Residue
-  href: /contaminants/organic-residue
-- label: Thermal Compound Deposits
-  href: /contaminants/organic-residue/other/thermal-paste-contamination
-images:
-  hero:
-    url: /images/contaminants/thermal-paste-contamination-hero.jpg
-    alt: Thermal Compound Deposits contamination on surface before laser cleaning
-  micro:
-    url: /images/contaminants/thermal-paste-contamination-micro.jpg
-    alt: Thermal Compound Deposits contamination microscopic detail
-laser_properties:
-  laser_parameters:
-    beam_profile: flat_top
-    fluence_range:
-      max_j_cm2: 1.2
-      min_j_cm2: 0.3
-      recommended_j_cm2: 0.8
-    overlap_percentage: 40
-    polarization: circular
-    pulse_duration_range:
-      max_ns: 200
-      min_ns: 10
-      recommended_ns: 50
-    repetition_rate_khz:
-      max: 200
-      min: 20
-      recommended: 50
-    safety_margin_factor: 0.7
-    scan_speed_mm_s:
-      max: 2000
-      min: 500
-      recommended: 1000
-    spot_size_mm:
-      max: 0.1
-      min: 0.02
-      recommended: 0.05
-    wavelength_preference:
-    - 1064
-    - 532
-  optical_properties:
-    absorption_coefficient:
-      wavelength_1064nm: 850
-      wavelength_532nm: 12500
-    reflectivity:
-      wavelength_1064nm: 0.15
-      wavelength_355nm: 0.05
-      wavelength_532nm: 0.08
-    refractive_index:
-      imaginary_part: 0.023
-      real_part: 1.52
-    transmission_depth: 11.8
-  removal_characteristics:
-    byproducts:
-    - compound: carbon-dioxide
-      hazard_level: low
-      phase: gas
-    - compound: H2O
-      hazard_level: low
-      phase: gas
-    - compound: amorphous_carbon
-      hazard_level: low
-      phase: solid
-    - compound: silicon_dioxide_nanoparticles
-      hazard_level: moderate
-      phase: solid
-    damage_risk_to_substrate: low
-    primary_mechanism: thermal_ablation
-    process_speed:
-      area_coverage_rate_cm2_min: 240
-      typical_scan_speed_mm_s: 800
-    removal_efficiency:
-      diminishing_returns_after: 3
-      optimal_passes: 2
-      single_pass: 0.85
-    secondary_mechanisms:
-    - photochemical
-    - mechanical_spallation
-    surface_quality_after_removal:
-      color_change: 'no'
-      residual_stress: none
-      roughness_increase: minimal
-  safety_data:
-    fire_explosion_risk: low
-    fumes_generated:
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 5-50
-      exposure_limit_mg_m3: 29
-      hazard_class: toxic
-    - compound: Carbon Dioxide
-      concentration_mg_m3: 100-500
-      exposure_limit_mg_m3: 9000
-      hazard_class: irritant
-    - compound: Formaldehyde
-      concentration_mg_m3: 1-10
-      exposure_limit_mg_m3: 0.37
-      hazard_class: carcinogenic
-    - compound: Acetaldehyde
-      concentration_mg_m3: 1-15
-      exposure_limit_mg_m3: 45
-      hazard_class: carcinogenic
-    - compound: Particulate Polycyclic Aromatic Hydrocarbons
-      concentration_mg_m3: 2-20
-      exposure_limit_mg_m3: 0.2
-      hazard_class: carcinogenic
-    particulate_generation:
-      respirable_fraction: 0.8
-      size_range_um:
-      - 0.1
-      - 10.0
-    ppe_requirements:
-      eye_protection: goggles
-      respiratory: PAPR
-      skin_protection: gloves
-    substrate_compatibility_warnings:
-    - Thermal damage possible to underlying materials - conduct test patch first
-    - May leave residue on certain substrates requiring secondary cleaning
-    - Avoid use on heat-sensitive materials near electronics
-    toxic_gas_risk: moderate
-    ventilation_requirements:
-      exhaust_velocity_m_s: 0.5
-      filtration_type: carbon
-      minimum_air_changes_per_hour: 12
-    visibility_hazard: moderate
-  thermal_properties:
-    ablation_threshold:
-      pulse_duration_100ns: 0.4
-      pulse_duration_10ns: 0.6
-      wavelength_1064nm: 0.8
-    decomposition_temperature: 300
-    heat_affected_zone_depth: 15
-    melting_point: 180
-    specific_heat: 1500
-    thermal_conductivity: 0.25
-    thermal_diffusivity: 0.15
-    vaporization_temperature: 450
-valid_materials:
-- Copper
-- Aluminum
-- Nickel-Plated Surfaces
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - thermal-paste-contamination
+  - - title
+    - Thermal Compound Deposits Contamination
+  - - slug
+    - thermal-paste-contamination
+  - - category
+    - organic-residue
+  - - subcategory
+    - other
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_contamination
+  - - datePublished
+    - '2025-12-17T13:33:43.161785'
+  - - dateModified
+    - '2025-12-17T13:33:43.161785'
+  - - author
+    - id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+  - - contamination_description
+    - Thermal paste contamination arises from silicone or metal-based materials used
+      in CPU cooling systems and it forms when paste spreads beyond interfaces during
+      assembly or operation. This contaminant shows unique greasy texture and strong
+      adhesion so it differs from dry dust or oxide layers by resisting simple wiping.
+      On copper and aluminum surfaces, it hardens over time and removal challenges
+      include residue buildup because paste bonds tightly. Laser cleaning works effectively
+      since pulses vaporize paste without harming underlying nickel-plated areas.
+  - - laser_properties
+    - laser_parameters:
+        beam_profile: flat_top
+        fluence_range:
+          max_j_cm2: 1.2
+          min_j_cm2: 0.3
+          recommended_j_cm2: 0.8
+        overlap_percentage: 40
+        polarization: circular
+        pulse_duration_range:
+          max_ns: 200
+          min_ns: 10
+          recommended_ns: 50
+        repetition_rate_khz:
+          max: 200
+          min: 20
+          recommended: 50
+        safety_margin_factor: 0.7
+        scan_speed_mm_s:
+          max: 2000
+          min: 500
+          recommended: 1000
+        spot_size_mm:
+          max: 0.1
+          min: 0.02
+          recommended: 0.05
+        wavelength_preference:
+        - 1064
+        - 532
+      optical_properties:
+        absorption_coefficient:
+          wavelength_1064nm: 850
+          wavelength_532nm: 12500
+        reflectivity:
+          wavelength_1064nm: 0.15
+          wavelength_355nm: 0.05
+          wavelength_532nm: 0.08
+        refractive_index:
+          imaginary_part: 0.023
+          real_part: 1.52
+        transmission_depth: 11.8
+      removal_characteristics:
+        byproducts:
+        - compound: carbon-dioxide
+          hazard_level: low
+          phase: gas
+        - compound: H2O
+          hazard_level: low
+          phase: gas
+        - compound: amorphous_carbon
+          hazard_level: low
+          phase: solid
+        - compound: silicon_dioxide_nanoparticles
+          hazard_level: moderate
+          phase: solid
+        damage_risk_to_substrate: low
+        primary_mechanism: thermal_ablation
+        process_speed:
+          area_coverage_rate_cm2_min: 240
+          typical_scan_speed_mm_s: 800
+        removal_efficiency:
+          diminishing_returns_after: 3
+          optimal_passes: 2
+          single_pass: 0.85
+        secondary_mechanisms:
+        - photochemical
+        - mechanical_spallation
+        surface_quality_after_removal:
+          color_change: 'no'
+          residual_stress: none
+          roughness_increase: minimal
+      safety_data:
+        fire_explosion_risk: low
+        fumes_generated:
+        - compound: Carbon Monoxide
+          concentration_mg_m3: 5-50
+          exposure_limit_mg_m3: 29
+          hazard_class: toxic
+        - compound: Carbon Dioxide
+          concentration_mg_m3: 100-500
+          exposure_limit_mg_m3: 9000
+          hazard_class: irritant
+        - compound: Formaldehyde
+          concentration_mg_m3: 1-10
+          exposure_limit_mg_m3: 0.37
+          hazard_class: carcinogenic
+        - compound: Acetaldehyde
+          concentration_mg_m3: 1-15
+          exposure_limit_mg_m3: 45
+          hazard_class: carcinogenic
+        - compound: Particulate Polycyclic Aromatic Hydrocarbons
+          concentration_mg_m3: 2-20
+          exposure_limit_mg_m3: 0.2
+          hazard_class: carcinogenic
+        particulate_generation:
+          respirable_fraction: 0.8
+          size_range_um:
+          - 0.1
+          - 10.0
+        ppe_requirements:
+          eye_protection: goggles
+          respiratory: PAPR
+          skin_protection: gloves
+        substrate_compatibility_warnings:
+        - Thermal damage possible to underlying materials - conduct test patch first
+        - May leave residue on certain substrates requiring secondary cleaning
+        - Avoid use on heat-sensitive materials near electronics
+        toxic_gas_risk: moderate
+        ventilation_requirements:
+          exhaust_velocity_m_s: 0.5
+          filtration_type: carbon
+          minimum_air_changes_per_hour: 12
+        visibility_hazard: moderate
+      thermal_properties:
+        ablation_threshold:
+          pulse_duration_100ns: 0.4
+          pulse_duration_10ns: 0.6
+          wavelength_1064nm: 0.8
+        decomposition_temperature: 300
+        heat_affected_zone_depth: 15
+        melting_point: 180
+        specific_heat: 1500
+        thermal_conductivity: 0.25
+        thermal_diffusivity: 0.15
+        vaporization_temperature: 450
+  - - produces_compounds
+    - - id: carbon-monoxide-compound
+        title: Carbon Monoxide
+        url: /compounds/toxic-gas/asphyxiant/carbon-monoxide-compound
+        image: /images/compounds/carbon-monoxide.jpg
+        category: toxic-gas
+        subcategory: asphyxiant
+        frequency: common
+        severity: moderate
+        typical_context: Combustion of organic carriers
+        exposure_risk: moderate
+        exposure_limits:
+          osha_pel_mg_m3: 55
+          niosh_rel_mg_m3: 40
+          acgih_tlv_mg_m3: 29
+          idlh_mg_m3: null
+        exceeds_limits: false
+        monitoring_required: false
+        control_measures:
+          ventilation_required: false
+          ppe_level: none
+          filtration_type: null
+        concentration_range: 5-50 mg/m³
+        hazard_class: toxic
+  - - related_materials
+    - - id: aluminum-laser-cleaning
+        title: Aluminum
+        url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+        image: /images/material/aluminum-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+      - id: copper-laser-cleaning
+        title: Copper
+        url: /materials/metal/non-ferrous/copper-laser-cleaning
+        image: /images/material/copper-laser-cleaning-hero.jpg
+        category: metal
+        subcategory: non-ferrous
+        frequency: common
+        severity: moderate
+        typical_context: general
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Contaminants
+        href: /contaminants
+      - label: Organic-Residue
+        href: /contaminants/organic-residue
+      - label: Thermal Compound Deposits
+        href: /contaminants/organic-residue/other/thermal-paste-contamination
+  - - images
+    - hero:
+        url: /images/contaminants/thermal-paste-contamination-hero.jpg
+        alt: Thermal Compound Deposits contamination on surface before laser cleaning
+      micro:
+        url: /images/contaminants/thermal-paste-contamination-micro.jpg
+        alt: Thermal Compound Deposits contamination microscopic detail
+  - - valid_materials
+    - - Copper
+      - Aluminum
+      - Nickel-Plated Surfaces
+  - - _metadata
+    - voice:
+        author_name: Yi-Chun Lin
+        author_country: Taiwan
+        voice_applied: true
+        content_type: contaminant

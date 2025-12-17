@@ -1,58 +1,69 @@
-id: tile-settings
-name: Tile
-slug: tile-settings
-category: unknown
-subcategory: unknown
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.669692'
-dateModified: '2025-12-17T12:39:12.669692'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Moderate power for Tile surface cleaning
-    unit: W
-    value: 50
-  wavelength:
-    description: Near-IR wavelength for ceramic tile contaminant removal
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for Tile cleaning coverage
-    unit: μm
-    value: 90
-  repetitionRate:
-    description: Repetition rate for efficient Tile cleaning
-    unit: kHz
-    value: 45
-  fluenceThreshold:
-    description: Fluence threshold for Tile surface cleaning
-    unit: J/cm²
-    value: 1.5
-  pulseWidth:
-    description: Pulse duration for controlled Tile cleaning
-    unit: ns
-    value: 12
-  scanSpeed:
-    description: Scanning speed for uniform Tile cleaning
-    unit: mm/s
-    value: 450
-  passCount:
-    description: Passes for complete Tile contaminant removal
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Beam overlap for even Tile coverage
-    unit: '%'
-    value: 45
-  energyDensity:
-    description: Energy density for Tile cleaning
-    unit: J/cm²
-    value: 3
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Tile
-  href: /settings/tile-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - tile-settings
+  - - slug
+    - tile-settings
+  - - category
+    - unknown
+  - - subcategory
+    - unknown
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.669692'
+  - - dateModified
+    - '2025-12-17T12:39:12.669692'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Tile
+        href: /settings/tile-settings
+  - - name
+    - Tile
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Moderate power for Tile surface cleaning
+        unit: W
+        value: 50
+      wavelength:
+        description: Near-IR wavelength for ceramic tile contaminant removal
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for Tile cleaning coverage
+        unit: μm
+        value: 90
+      repetitionRate:
+        description: Repetition rate for efficient Tile cleaning
+        unit: kHz
+        value: 45
+      fluenceThreshold:
+        description: Fluence threshold for Tile surface cleaning
+        unit: J/cm²
+        value: 1.5
+      pulseWidth:
+        description: Pulse duration for controlled Tile cleaning
+        unit: ns
+        value: 12
+      scanSpeed:
+        description: Scanning speed for uniform Tile cleaning
+        unit: mm/s
+        value: 450
+      passCount:
+        description: Passes for complete Tile contaminant removal
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Beam overlap for even Tile coverage
+        unit: '%'
+        value: 45
+      energyDensity:
+        description: Energy density for Tile cleaning
+        unit: J/cm²
+        value: 3

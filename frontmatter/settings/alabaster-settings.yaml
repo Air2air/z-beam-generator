@@ -1,56 +1,74 @@
-id: alabaster-settings
-name: Alabaster
-slug: alabaster-settings
-category: stone
-subcategory: sedimentary
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.124129'
-dateModified: '2025-12-17T12:39:12.124129'
-author:
-  id: 2
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Alabaster surface cleaning without thermal damage
-    unit: W
-    value: 45
-  wavelength:
-    description: Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk material damage
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter providing sufficient energy density for cleaning with good resolution
-    unit: μm
-    value: 80
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage while avoiding thermal accumulation
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Energy density threshold for effective contaminant removal without damaging Alabaster substrate
-    unit: J/cm²
-    value: 1.2
-  pulseWidth:
-    description: Short pulse duration for efficient contaminant removal with minimal heat diffusion
-    unit: ns
-    value: 15
-  scanSpeed:
-    description: Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning coverage
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Alabaster
-  href: /settings/alabaster-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - alabaster-settings
+  - - slug
+    - alabaster-settings
+  - - category
+    - stone
+  - - subcategory
+    - sedimentary
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.124129'
+  - - dateModified
+    - '2025-12-17T12:39:12.124129'
+  - - author
+    - id: 2
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Alabaster
+        href: /settings/alabaster-settings
+  - - name
+    - Alabaster
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Alabaster surface cleaning without
+          thermal damage
+        unit: W
+        value: 45
+      wavelength:
+        description: Near-IR wavelength providing good absorption in surface contaminants
+          while minimizing bulk material damage
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter providing sufficient energy density for cleaning
+          with good resolution
+        unit: μm
+        value: 80
+      repetitionRate:
+        description: Optimal repetition rate for continuous cleaning coverage while
+          avoiding thermal accumulation
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Energy density threshold for effective contaminant removal without
+          damaging Alabaster substrate
+        unit: J/cm²
+        value: 1.2
+      pulseWidth:
+        description: Short pulse duration for efficient contaminant removal with minimal
+          heat diffusion
+        unit: ns
+        value: 15
+      scanSpeed:
+        description: Optimal scanning speed for efficient area coverage while maintaining
+          cleaning effectiveness
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete contaminant removal
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap percentage for uniform cleaning coverage
+        unit: '%'
+        value: 50

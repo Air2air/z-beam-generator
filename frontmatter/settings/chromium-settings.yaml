@@ -1,82 +1,67 @@
-id: chromium-settings
-name: Chromium
-slug: chromium-settings
-category: metal
-subcategory: specialty
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.205763'
-dateModified: '2025-12-17T12:39:12.205763'
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - biological-stains-contamination
-  - carbon-soot-contamination
-  - chemical-stains-contamination
-  - epoxy-residue-contamination
-  - fertilizer-residue-contamination
-  - graffiti-paint-contamination
-  - graphite-marks-contamination
-  - ink-stains-contamination
-  - insect-residue-contamination
-  - lime-scale-contamination
-  - mercury-contamination
-  - mineral-deposits-contamination
-  - paint-residue-contamination
-  - pesticide-residue-contamination
-  - plastic-residue-contamination
-  - pollen-deposit-contamination
-  - radioactive-contamination
-  - rubber-residue-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - silicone-buildup-contamination
-  - tree-sap-contamination
-  - water-stain-contamination
-  - wax-buildup-contamination
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Chromium oxide removal without substrate damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength with good Chromium absorption for efficient cleaning
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise Chromium surface cleaning
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for efficient Chromium cleaning throughput
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Minimum fluence required for effective Chromium oxide removal
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for effective Chromium oxide ablation
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform Chromium surface treatment
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete Chromium oxide removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform Chromium surface cleaning
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Chromium
-  href: /settings/chromium-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - chromium-settings
+  - - slug
+    - chromium-settings
+  - - category
+    - metal
+  - - subcategory
+    - specialty
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.205763'
+  - - dateModified
+    - '2025-12-17T12:39:12.205763'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Chromium
+        href: /settings/chromium-settings
+  - - name
+    - Chromium
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Chromium oxide removal without substrate
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength with good Chromium absorption for efficient
+          cleaning
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise Chromium surface cleaning
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for efficient Chromium cleaning throughput
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Minimum fluence required for effective Chromium oxide removal
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for effective Chromium oxide ablation
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform Chromium surface treatment
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete Chromium oxide removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform Chromium surface cleaning
+        unit: '%'
+        value: 50

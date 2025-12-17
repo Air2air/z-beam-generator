@@ -1,54 +1,67 @@
-id: gallium-arsenide-settings
-name: Gallium Arsenide
-slug: gallium-arsenide-settings
-category: semiconductor
-subcategory: elemental
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.257403'
-dateModified: '2025-12-17T12:39:12.257403'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for GaAs surface cleaning without thermal damage
-    unit: W
-    value: 8
-  wavelength:
-    description: Green wavelength optimized for GaAs absorption characteristics
-    unit: nm
-    value: 532
-  spotSize:
-    description: Beam spot diameter for precise cleaning resolution
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Fluence threshold for GaAs surface cleaning without substrate damage
-    unit: J/cm²
-    value: 0.8
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-    unit: ns
-    value: 15
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 2
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Gallium Arsenide
-  href: /settings/gallium-arsenide-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - gallium-arsenide-settings
+  - - slug
+    - gallium-arsenide-settings
+  - - category
+    - semiconductor
+  - - subcategory
+    - elemental
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.257403'
+  - - dateModified
+    - '2025-12-17T12:39:12.257403'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Gallium Arsenide
+        href: /settings/gallium-arsenide-settings
+  - - name
+    - Gallium Arsenide
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for GaAs surface cleaning without thermal
+          damage
+        unit: W
+        value: 8
+      wavelength:
+        description: Green wavelength optimized for GaAs absorption characteristics
+        unit: nm
+        value: 532
+      spotSize:
+        description: Beam spot diameter for precise cleaning resolution
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for efficient cleaning with thermal management
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Fluence threshold for GaAs surface cleaning without substrate
+          damage
+        unit: J/cm²
+        value: 0.8
+      pulseWidth:
+        description: Nanosecond pulse duration for controlled ablation of contaminants
+        unit: ns
+        value: 15
+      scanSpeed:
+        description: Optimal scanning speed for uniform cleaning coverage
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Number of cleaning passes for complete contaminant removal
+        unit: passes
+        value: 2
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning coverage
+        unit: '%'
+        value: 50

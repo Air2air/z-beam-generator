@@ -1,54 +1,72 @@
-id: niobium-settings
-name: Niobium
-slug: niobium-settings
-category: metal
-subcategory: non-ferrous
-content_type: unified_settings
-schema_version: 4.0.0
-datePublished: '2025-12-17T12:39:12.347243'
-dateModified: '2025-12-17T12:39:12.347243'
-domain: settings
-machineSettings:
-  powerRange:
-    description: Optimal average power for Niobium oxide removal without substrate damage
-    unit: W
-    value: 100
-  wavelength:
-    description: Near-IR wavelength optimized for Niobium's absorption characteristics and oxide layer removal
-    unit: nm
-    value: 1064
-  spotSize:
-    description: Beam spot diameter for precise oxide removal with adequate cleaning efficiency
-    unit: μm
-    value: 50
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage with thermal management
-    unit: kHz
-    value: 50
-  fluenceThreshold:
-    description: Minimum fluence required for effective Niobium oxide ablation
-    unit: J/cm²
-    value: 2.5
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient oxide ablation with minimal thermal penetration
-    unit: ns
-    value: 10
-  scanSpeed:
-    description: Optimal scanning speed for uniform oxide removal and process efficiency
-    unit: mm/s
-    value: 500
-  passCount:
-    description: Recommended number of passes for complete oxide removal
-    unit: passes
-    value: 3
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
-    unit: '%'
-    value: 50
-breadcrumb:
-- label: Home
-  href: /
-- label: Laser Settings
-  href: /settings
-- label: Niobium
-  href: /settings/niobium-settings
+!!python/object/apply:collections.OrderedDict
+- - - id
+    - niobium-settings
+  - - slug
+    - niobium-settings
+  - - category
+    - metal
+  - - subcategory
+    - non-ferrous
+  - - schema_version
+    - 5.0.0
+  - - content_type
+    - unified_settings
+  - - datePublished
+    - '2025-12-17T12:39:12.347243'
+  - - dateModified
+    - '2025-12-17T12:39:12.347243'
+  - - breadcrumb
+    - - label: Home
+        href: /
+      - label: Laser Settings
+        href: /settings
+      - label: Niobium
+        href: /settings/niobium-settings
+  - - name
+    - Niobium
+  - - domain
+    - settings
+  - - machineSettings
+    - powerRange:
+        description: Optimal average power for Niobium oxide removal without substrate
+          damage
+        unit: W
+        value: 100
+      wavelength:
+        description: Near-IR wavelength optimized for Niobium's absorption characteristics
+          and oxide layer removal
+        unit: nm
+        value: 1064
+      spotSize:
+        description: Beam spot diameter for precise oxide removal with adequate cleaning
+          efficiency
+        unit: μm
+        value: 50
+      repetitionRate:
+        description: Optimal repetition rate for continuous cleaning coverage with
+          thermal management
+        unit: kHz
+        value: 50
+      fluenceThreshold:
+        description: Minimum fluence required for effective Niobium oxide ablation
+        unit: J/cm²
+        value: 2.5
+      pulseWidth:
+        description: Nanosecond pulse duration for efficient oxide ablation with minimal
+          thermal penetration
+        unit: ns
+        value: 10
+      scanSpeed:
+        description: Optimal scanning speed for uniform oxide removal and process
+          efficiency
+        unit: mm/s
+        value: 500
+      passCount:
+        description: Recommended number of passes for complete oxide removal
+        unit: passes
+        value: 3
+      overlapRatio:
+        description: Optimal beam overlap for uniform cleaning without excessive heat
+          accumulation
+        unit: '%'
+        value: 50
