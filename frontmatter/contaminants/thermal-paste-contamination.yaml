@@ -3,8 +3,8 @@ name: Thermal Compound Deposits
 slug: thermal-paste-contamination
 category: organic-residue
 subcategory: other
-datePublished: '2025-12-17T12:39:35.066315'
-dateModified: '2025-12-17T12:39:35.066315'
+datePublished: '2025-12-17T13:33:43.161785'
+dateModified: '2025-12-17T13:33:43.161785'
 domain_linkages:
   related_materials:
   - id: aluminum-laser-cleaning
@@ -69,8 +69,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -87,13 +86,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Thermal Compound Deposits Contamination
-contamination_description: Thermal paste contamination arises from silicone or metal-based
-  materials used in CPU cooling systems and it forms when paste spreads beyond interfaces
-  during assembly or operation. This contaminant shows unique greasy texture and strong
-  adhesion so it differs from dry dust or oxide layers by resisting simple wiping.
-  On copper and aluminum surfaces, it hardens over time and removal challenges include
-  residue buildup because paste bonds tightly. Laser cleaning works effectively since
-  pulses vaporize paste without harming underlying nickel-plated areas.
+contamination_description: Thermal paste contamination arises from silicone or metal-based materials used in CPU cooling systems and it forms when paste spreads beyond interfaces during assembly or operation. This contaminant shows unique greasy texture and strong adhesion so it differs from dry dust or oxide layers by resisting simple wiping. On copper and aluminum surfaces, it hardens over time and removal challenges include residue buildup because paste bonds tightly. Laser cleaning works effectively since pulses vaporize paste without harming underlying nickel-plated areas.
 breadcrumb:
 - label: Home
   href: /
@@ -183,6 +176,27 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: low
+    fumes_generated:
+    - compound: Carbon Monoxide
+      concentration_mg_m3: 5-50
+      exposure_limit_mg_m3: 29
+      hazard_class: toxic
+    - compound: Carbon Dioxide
+      concentration_mg_m3: 100-500
+      exposure_limit_mg_m3: 9000
+      hazard_class: irritant
+    - compound: Formaldehyde
+      concentration_mg_m3: 1-10
+      exposure_limit_mg_m3: 0.37
+      hazard_class: carcinogenic
+    - compound: Acetaldehyde
+      concentration_mg_m3: 1-15
+      exposure_limit_mg_m3: 45
+      hazard_class: carcinogenic
+    - compound: Particulate Polycyclic Aromatic Hydrocarbons
+      concentration_mg_m3: 2-20
+      exposure_limit_mg_m3: 0.2
+      hazard_class: carcinogenic
     particulate_generation:
       respirable_fraction: 0.8
       size_range_um:

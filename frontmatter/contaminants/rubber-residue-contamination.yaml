@@ -3,8 +3,8 @@ name: Rubber Compound Residue
 slug: rubber-residue-contamination
 category: organic-residue
 subcategory: polymer
-datePublished: '2025-12-17T12:39:34.596673'
-dateModified: '2025-12-17T12:39:34.596673'
+datePublished: '2025-12-17T13:33:42.637056'
+dateModified: '2025-12-17T13:33:42.637056'
 domain_linkages:
   related_materials:
   - id: stainless-steel-laser-cleaning
@@ -187,6 +187,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 2-15 mg/m³
+    hazard_class: toxic
   - id: benzoapyrene-compound
     title: Benzo[a]pyrene
     url: /compounds/carcinogen/polycyclic-aromatic-hydrocarbon/benzoapyrene-compound
@@ -201,6 +203,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 0.001-1 μg/m³
+    hazard_class: carcinogenic
   - id: pahs-compound
     title: Polycyclic Aromatic Hydrocarbons
     url: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
@@ -314,6 +318,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 10-100 mg/m³
+    hazard_class: irritant
   - id: benzene-compound
     title: Benzene
     url: /compounds/carcinogen/aromatic-hydrocarbon/benzene-compound
@@ -380,8 +386,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -398,13 +403,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Rubber Compound Residue Contamination
-contamination_description: Rubber-residue contamination arises from vulcanized rubber
-  deposits of tire marks, seals, and gaskets, so it forms during friction and compression
-  on surfaces. This residue shows unique elasticity and strong adhesion that distinguish
-  it from oily or powdery contaminants because of its polymeric nature. On materials
-  like steel or concrete, residue clings tightly and resists scraping, so removal
-  challenges include incomplete cleaning without damaging substrate, yet laser cleaning
-  succeeds by vaporizing layers precisely during pulsed exposure.
+contamination_description: Rubber-residue contamination arises from vulcanized rubber deposits of tire marks, seals, and gaskets, so it forms during friction and compression on surfaces. This residue shows unique elasticity and strong adhesion that distinguish it from oily or powdery contaminants because of its polymeric nature. On materials like steel or concrete, residue clings tightly and resists scraping, so removal challenges include incomplete cleaning without damaging substrate, yet laser cleaning succeeds by vaporizing layers precisely during pulsed exposure.
 breadcrumb:
 - label: Home
   href: /
@@ -495,6 +494,31 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: low
+    fumes_generated:
+    - compound: Carbon Monoxide
+      concentration_mg_m3: 50-200
+      exposure_limit_mg_m3: 29
+      hazard_class: toxic
+    - compound: Hydrogen Cyanide
+      concentration_mg_m3: 5-30
+      exposure_limit_mg_m3: 5
+      hazard_class: toxic
+    - compound: Benzene
+      concentration_mg_m3: 10-50
+      exposure_limit_mg_m3: 0.5
+      hazard_class: carcinogenic
+    - compound: Styrene
+      concentration_mg_m3: 20-100
+      exposure_limit_mg_m3: 85
+      hazard_class: irritant
+    - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
+      concentration_mg_m3: 2-15
+      exposure_limit_mg_m3: 0.2
+      hazard_class: carcinogenic
+    - compound: Sulfur Dioxide
+      concentration_mg_m3: 5-25
+      exposure_limit_mg_m3: 5
+      hazard_class: irritant
     particulate_generation:
       respirable_fraction: 0.7
       size_range_um:

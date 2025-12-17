@@ -3,8 +3,8 @@ name: Chromium Oxide Pitting
 slug: chrome-pitting-contamination
 category: oxidation
 subcategory: non-ferrous
-datePublished: '2025-12-17T12:39:32.923445'
-dateModified: '2025-12-17T12:39:32.923445'
+datePublished: '2025-12-17T13:33:39.848659'
+dateModified: '2025-12-17T13:33:39.848659'
 domain_linkages:
   related_materials:
   - id: stainless-steel-laser-cleaning
@@ -60,8 +60,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -78,15 +77,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Chromium Oxide Pitting Contamination
-contamination_description: Chrome-pitting forms when localized chromium oxide layer
-  breaks down on plated surfaces because of environmental exposure and corrosion,
-  so surface degradation happens in small pits. This contamination shows unique pitting
-  patterns distinct from uniform rust or scaling, where isolated spots appear without
-  spreading widely, and it behaves differently on chrome-plated steel by deepening
-  quickly during cleaning, while on stainless steel, pits resist less but still challenge
-  uniformity. Key removal issues arise from substrate damage risk, yet laser cleaning
-  works effectively because precise pulses target oxide breakdown so contaminants
-  ablate cleanly without affecting base material.
+contamination_description: Chrome-pitting forms when localized chromium oxide layer breaks down on plated surfaces because of environmental exposure and corrosion, so surface degradation happens in small pits. This contamination shows unique pitting patterns distinct from uniform rust or scaling, where isolated spots appear without spreading widely, and it behaves differently on chrome-plated steel by deepening quickly during cleaning, while on stainless steel, pits resist less but still challenge uniformity. Key removal issues arise from substrate damage risk, yet laser cleaning works effectively because precise pulses target oxide breakdown so contaminants ablate cleanly without affecting base material.
 breadcrumb:
 - label: Home
   href: /
@@ -174,6 +165,19 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: low
+    fumes_generated:
+    - compound: Chromium(III) Oxide
+      concentration_mg_m3: 5.0
+      exposure_limit_mg_m3: 0.5
+      hazard_class: toxic
+    - compound: Chromium(VI) Oxide
+      concentration_mg_m3: 0.8
+      exposure_limit_mg_m3: 0.005
+      hazard_class: carcinogenic
+    - compound: Iron Oxide
+      concentration_mg_m3: 15.0
+      exposure_limit_mg_m3: 5.0
+      hazard_class: irritant
     particulate_generation:
       respirable_fraction: 0.7
       size_range_um:

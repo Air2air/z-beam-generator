@@ -3,8 +3,8 @@ name: Fire and Smoke Damage
 slug: fire-damage-contamination
 category: thermal-damage
 subcategory: fire
-datePublished: '2025-12-17T12:39:33.328090'
-dateModified: '2025-12-17T12:39:33.328090'
+datePublished: '2025-12-17T13:33:40.561399'
+dateModified: '2025-12-17T13:33:40.561399'
 domain_linkages:
   related_materials:
   - id: steel-laser-cleaning
@@ -207,6 +207,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 0.001-1 μg/m³
+    hazard_class: carcinogenic
   - id: pahs-compound
     title: Polycyclic Aromatic Hydrocarbons
     url: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
@@ -252,8 +254,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -269,16 +270,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Fire and Smoke Damage Contamination
-contamination_description: Fire-damage contamination consists of char, soot, and thermal
-  degradation products, which form when intense heat from fires decomposes organic
-  matter and deposits irregular residues on surfaces. This contamination, it exhibits
-  unique carbonaceous layering and strong chemical bonding that distinguish it from
-  simpler particulates like dust, thus adheres tenaciously to porous substrates such
-  as concrete and sandstone, where it infiltrates cracks and resists mechanical scraping
-  without risking material erosion. Key challenges arise from uneven thickness and
-  heat sensitivity, yet laser cleaning proves effective, as selective ablation vaporizes
-  the residues layer by layer while preserving durable bases like steel and granite
-  intact.
+contamination_description: Fire-damage contamination consists of char, soot, and thermal degradation products, which form when intense heat from fires decomposes organic matter and deposits irregular residues on surfaces. This contamination, it exhibits unique carbonaceous layering and strong chemical bonding that distinguish it from simpler particulates like dust, thus adheres tenaciously to porous substrates such as concrete and sandstone, where it infiltrates cracks and resists mechanical scraping without risking material erosion. Key challenges arise from uneven thickness and heat sensitivity, yet laser cleaning proves effective, as selective ablation vaporizes the residues layer by layer while preserving durable bases like steel and granite intact.
 breadcrumb:
 - label: Home
   href: /
@@ -369,6 +361,31 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: moderate
+    fumes_generated:
+    - compound: Carbon Monoxide
+      concentration_mg_m3: 50.0
+      exposure_limit_mg_m3: 29.0
+      hazard_class: toxic
+    - compound: Carbon Dioxide
+      concentration_mg_m3: 9000.0
+      exposure_limit_mg_m3: 9000.0
+      hazard_class: toxic
+    - compound: Acrolein
+      concentration_mg_m3: 0.5
+      exposure_limit_mg_m3: 0.23
+      hazard_class: irritant
+    - compound: Formaldehyde
+      concentration_mg_m3: 2.5
+      exposure_limit_mg_m3: 0.37
+      hazard_class: carcinogenic
+    - compound: Benzene
+      concentration_mg_m3: 3.0
+      exposure_limit_mg_m3: 0.32
+      hazard_class: carcinogenic
+    - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
+      concentration_mg_m3: 1.2
+      exposure_limit_mg_m3: 0.2
+      hazard_class: carcinogenic
     particulate_generation:
       respirable_fraction: 0.8
       size_range_um:

@@ -24,6 +24,7 @@ from collections import OrderedDict
 
 from export.core.base_trivial_exporter import BaseTrivialExporter
 from shared.data.author_loader import get_author
+from export.contaminants.compound_lookup import enrich_produces_compounds
 
 logger = logging.getLogger(__name__)
 
@@ -289,9 +290,10 @@ class TrivialContaminantsExporter(BaseTrivialExporter):
         # Generate domain_linkages from centralized associations (replaces hardcoded copy)
         frontmatter['domain_linkages'] = self.linkages_service.generate_linkages(slug, 'contaminants')
         
-        # PRESERVE produces_compounds safety data from existing frontmatter (if exists)
+        # PRESERVE manually-researched produces_compounds safety data from existing frontmatter
         # Safety data enhancement (Dec 17, 2025): exposure_limits, concentration_range, etc.
-        # This data is manually researched and should not be overwritten during export.
+        # This data is manually researched and should NOT be overwritten.
+        # Priority: Existing manual data > Defaults from Compounds.yaml
         existing_frontmatter_path = self.output_dir / f"{slug}.yaml"
         if existing_frontmatter_path.exists():
             try:
@@ -305,6 +307,16 @@ class TrivialContaminantsExporter(BaseTrivialExporter):
                             self.logger.debug(f"   ✓ Preserved produces_compounds safety data for {slug}")
             except Exception as e:
                 self.logger.warning(f"⚠️  Could not preserve produces_compounds for {slug}: {e}")
+        
+        # ENRICH produces_compounds with concentration_range and hazard_class from Compounds.yaml
+        # Phase 2 (Dec 17, 2025): Add default safety data for compounds missing these fields
+        # This happens AFTER preservation so we only enrich compounds that don't already have the data
+        if 'produces_compounds' in frontmatter['domain_linkages']:
+            compounds = frontmatter['domain_linkages']['produces_compounds']
+            if compounds:
+                enriched = enrich_produces_compounds(compounds)
+                frontmatter['domain_linkages']['produces_compounds'] = enriched
+                self.logger.debug(f"   ✓ Enriched produces_compounds with defaults from Compounds.yaml")
         
         # Backward compatibility: also export valid_materials if present
         if 'valid_materials' in pattern_data:

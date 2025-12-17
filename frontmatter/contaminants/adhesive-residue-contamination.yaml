@@ -3,18 +3,10 @@ name: Adhesive Residue / Tape Marks
 slug: adhesive-residue-contamination
 category: organic-residue
 subcategory: adhesive
-datePublished: '2025-12-17T12:39:32.181899'
-dateModified: '2025-12-17T12:39:32.181899'
+datePublished: '2025-12-17T13:33:38.251486'
+dateModified: '2025-12-17T13:33:38.251486'
 micro:
-  before: Adhesive residue contamination poses cleaning challenge because sticky polymers
-    bond tightly to surfaces. Before laser treatment, microscopic view reveals uneven
-    film layer that clings and distorts substrate texture so removal proves difficult.
-    This contaminant differs from other organic residues through its viscoelastic
-    tackiness, which allows slow migration under minimal heat and resists mechanical
-    wiping unlike dry dusts. After ablation, surface exhibits smooth uniformity and
-    no lingering traces. Laser cleaning achieves thorough decontamination so original
-    properties restore effectively. Observations confirm process effectiveness in
-    removing such tenacious buildup.
+  before: Adhesive residue contamination poses cleaning challenge because sticky polymers bond tightly to surfaces. Before laser treatment, microscopic view reveals uneven film layer that clings and distorts substrate texture so removal proves difficult. This contaminant differs from other organic residues through its viscoelastic tackiness, which allows slow migration under minimal heat and resists mechanical wiping unlike dry dusts. After ablation, surface exhibits smooth uniformity and no lingering traces. Laser cleaning achieves thorough decontamination so original properties restore effectively. Observations confirm process effectiveness in removing such tenacious buildup.
   after: "Ikmanda Roswati, Ph.D.  \nIndonesia"
 domain_linkages:
   related_materials:
@@ -491,6 +483,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 5-20 mg/m³
+    hazard_class: corrosive
   - id: toluene-compound
     title: Toluene
     url: /compounds/solvent/aromatic-hydrocarbon/toluene-compound
@@ -558,6 +552,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 1-10 mg/m³
+    hazard_class: toxic
   - id: carbon-dioxide-compound
     title: Carbon Dioxide
     url: /compounds/asphyxiant/simple-asphyxiant/carbon-dioxide-compound
@@ -579,6 +575,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 50-200 mg/m³
+    hazard_class: asphyxiant
   - id: vocs-compound
     title: Volatile Organic Compounds
     url: /compounds/irritant/organic-vapor/vocs-compound
@@ -600,6 +598,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 10-100 mg/m³
+    hazard_class: irritant
 author:
   id: 1
   name: Yi-Chun Lin
@@ -620,8 +620,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -638,13 +637,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Adhesive Residue / Tape Marks Contamination
-contamination_description: Adhesive residue contamination consists of organic polymers
-  from tapes and labels, so sticky films form on surfaces during manufacturing or
-  shipping after these materials are removed. This contamination differs from oily
-  types because it shows tacky and uneven buildup that adheres strongly to metals
-  like steel and aluminum, while it blends into plastics such as ABS on exposure.
-  During mechanical removal, re-adhesion occurs so challenges arise, but laser cleaning
-  vaporizes organics selectively and substrates remain undamaged after treatment.
+contamination_description: Adhesive residue contamination consists of organic polymers from tapes and labels, so sticky films form on surfaces during manufacturing or shipping after these materials are removed. This contamination differs from oily types because it shows tacky and uneven buildup that adheres strongly to metals like steel and aluminum, while it blends into plastics such as ABS on exposure. During mechanical removal, re-adhesion occurs so challenges arise, but laser cleaning vaporizes organics selectively and substrates remain undamaged after treatment.
 breadcrumb:
 - label: Home
   href: /
@@ -736,6 +729,31 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: low
+    fumes_generated:
+    - compound: Acetaldehyde
+      concentration_mg_m3: 5-25
+      exposure_limit_mg_m3: 25
+      hazard_class: irritant
+    - compound: Formaldehyde
+      concentration_mg_m3: 1-10
+      exposure_limit_mg_m3: 0.3
+      hazard_class: carcinogenic
+    - compound: Benzene
+      concentration_mg_m3: 0.5-5
+      exposure_limit_mg_m3: 0.5
+      hazard_class: carcinogenic
+    - compound: Toluene
+      concentration_mg_m3: 2-15
+      exposure_limit_mg_m3: 20
+      hazard_class: toxic
+    - compound: Styrene
+      concentration_mg_m3: 3-20
+      exposure_limit_mg_m3: 50
+      hazard_class: irritant
+    - compound: Carbon Monoxide
+      concentration_mg_m3: 10-50
+      exposure_limit_mg_m3: 29
+      hazard_class: toxic
     particulate_generation:
       respirable_fraction: 0.7
       size_range_um:

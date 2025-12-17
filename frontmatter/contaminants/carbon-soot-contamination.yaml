@@ -3,8 +3,8 @@ name: Carbon Soot Deposits
 slug: carbon-soot-contamination
 category: organic-residue
 subcategory: other
-datePublished: '2025-12-17T12:39:32.768168'
-dateModified: '2025-12-17T12:39:32.768168'
+datePublished: '2025-12-17T13:33:39.623706'
+dateModified: '2025-12-17T13:33:39.623706'
 domain_linkages:
   related_materials:
   - id: stainless-steel-laser-cleaning
@@ -301,6 +301,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 0.001-1 μg/m³
+    hazard_class: carcinogenic
   - id: pahs-compound
     title: Polycyclic Aromatic Hydrocarbons
     url: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
@@ -346,8 +348,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -363,12 +364,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Carbon Soot Deposits Contamination
-contamination_description: Carbon-soot contamination, it arises from incomplete combustion
-  in engines and furnaces, thus forming black residue of fine particulates. This residue
-  clings tightly and embeds deeply into surfaces, distinguishing itself from dust
-  by resisting water and brushing, while on steel and concrete it alters texture and
-  penetrates pores. Removal challenges include scratching risks and chemical residues,
-  yet laser cleaning vaporizes soot precisely and preserves substrate integrity thus.
+contamination_description: Carbon-soot contamination, it arises from incomplete combustion in engines and furnaces, thus forming black residue of fine particulates. This residue clings tightly and embeds deeply into surfaces, distinguishing itself from dust by resisting water and brushing, while on steel and concrete it alters texture and penetrates pores. Removal challenges include scratching risks and chemical residues, yet laser cleaning vaporizes soot precisely and preserves substrate integrity thus.
 breadcrumb:
 - label: Home
   href: /
@@ -456,6 +452,23 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: low
+    fumes_generated:
+    - compound: Carbon Monoxide
+      concentration_mg_m3: 50.0
+      exposure_limit_mg_m3: 29.0
+      hazard_class: toxic
+    - compound: Carbon Dioxide
+      concentration_mg_m3: 500.0
+      exposure_limit_mg_m3: 9000.0
+      hazard_class: toxic
+    - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
+      concentration_mg_m3: 2.5
+      exposure_limit_mg_m3: 0.2
+      hazard_class: carcinogenic
+    - compound: Ultrafine Carbon Particles
+      concentration_mg_m3: 15.0
+      exposure_limit_mg_m3: 3.0
+      hazard_class: toxic
     particulate_generation:
       respirable_fraction: 0.8
       size_range_um:
@@ -466,8 +479,7 @@ laser_properties:
       respiratory: PAPR
       skin_protection: full_suit
     substrate_compatibility_warnings:
-    - Laser parameters must be optimized to minimize substrate damage and excessive
-      fume generation
+    - Laser parameters must be optimized to minimize substrate damage and excessive fume generation
     - Avoid laser cleaning on painted surfaces containing lead or chromium
     - Test on small area first to assess fume generation characteristics
     toxic_gas_risk: moderate

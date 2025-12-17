@@ -3,13 +3,11 @@ name: Industrial Oil / Grease Buildup
 slug: industrial-oil-contamination
 category: organic-residue
 subcategory: petroleum
-datePublished: '2025-12-17T12:39:33.629937'
-dateModified: '2025-12-17T12:39:33.629937'
+datePublished: '2025-12-17T13:33:41.179345'
+dateModified: '2025-12-17T13:33:41.179345'
 micro:
-  after: Post-cleaning reveals restored surface with industrial oil / grease buildup
-    successfully removed through precise laser ablation.
-  before: Surface shows contamination from industrial oil / grease buildup affecting
-    material appearance and properties.
+  after: Post-cleaning reveals restored surface with industrial oil / grease buildup successfully removed through precise laser ablation.
+  before: Surface shows contamination from industrial oil / grease buildup affecting material appearance and properties.
 domain_linkages:
   produces_compounds:
   - id: carbon-monoxide-compound
@@ -33,6 +31,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 10-50 mg/m³
+    hazard_class: toxic
   - id: carbon-dioxide-compound
     title: Carbon Dioxide
     url: /compounds/asphyxiant/simple-asphyxiant/carbon-dioxide-compound
@@ -54,6 +54,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 50-200 mg/m³
+    hazard_class: asphyxiant
   - id: vocs-compound
     title: Volatile Organic Compounds
     url: /compounds/irritant/organic-vapor/vocs-compound
@@ -75,6 +77,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 10-100 mg/m³
+    hazard_class: irritant
   - id: benzene-compound
     title: Benzene
     url: /compounds/carcinogen/aromatic-hydrocarbon/benzene-compound
@@ -119,6 +123,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 2-10 mg/m³
+    hazard_class: toxic
   - id: acrolein-compound
     title: Acrolein
     url: /compounds/toxic-gas/aldehyde/acrolein-compound
@@ -164,8 +170,7 @@ author:
   - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
   email: info@z-beam.com
   image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
-    Materials Dept., in research lab
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
   url: https://z-beam.com/authors/alessandro-moretti-phd
   sameAs:
   - https://scholar.google.com/citations?user=def456
@@ -181,15 +186,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Industrial Oil / Grease Buildup Contamination
-contamination_description: Industrial oil contamination, it arises in manufacturing
-  environments where machinery lubricants degrade under friction and heat, forming
-  sticky residues that adhere to operational surfaces during prolonged use. This substance,
-  it manifests a tenacious hold influenced from warmth and air exposure, distinguishing
-  it from faster-evaporating solvents by penetrating microstructures on metals to
-  create resilient sheaths or thicker layers on porous materials that impair pliability.
-  Key removal challenges stem from its oily composition repelling water-based agents
-  and rebounding from mechanical scrubbing, yet laser cleaning proves effective, vaporizing
-  the oil through selective light absorption that preserves underlying bases unharmed.
+contamination_description: Industrial oil contamination, it arises in manufacturing environments where machinery lubricants degrade under friction and heat, forming sticky residues that adhere to operational surfaces during prolonged use. This substance, it manifests a tenacious hold influenced from warmth and air exposure, distinguishing it from faster-evaporating solvents by penetrating microstructures on metals to create resilient sheaths or thicker layers on porous materials that impair pliability. Key removal challenges stem from its oily composition repelling water-based agents and rebounding from mechanical scrubbing, yet laser cleaning proves effective, vaporizing the oil through selective light absorption that preserves underlying bases unharmed.
 breadcrumb:
 - label: Home
   href: /
@@ -283,6 +280,23 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: low
+    fumes_generated:
+    - compound: Acrolein
+      concentration_mg_m3: 2.5
+      exposure_limit_mg_m3: 0.23
+      hazard_class: toxic
+    - compound: Formaldehyde
+      concentration_mg_m3: 1.8
+      exposure_limit_mg_m3: 0.37
+      hazard_class: carcinogenic
+    - compound: Benzene
+      concentration_mg_m3: 0.8
+      exposure_limit_mg_m3: 0.32
+      hazard_class: carcinogenic
+    - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
+      concentration_mg_m3: 1.2
+      exposure_limit_mg_m3: 0.2
+      hazard_class: carcinogenic
     particulate_generation:
       respirable_fraction: 0.7
       size_range_um:
@@ -293,8 +307,7 @@ laser_properties:
       respiratory: PAPR
       skin_protection: gloves
     substrate_compatibility_warnings:
-    - Laser parameters must be optimized to avoid substrate damage and excessive fume
-      generation
+    - Laser parameters must be optimized to avoid substrate damage and excessive fume generation
     - Test cleaning parameters on small area first to assess fume production
     - Avoid laser cleaning on thin or heat-sensitive materials
     toxic_gas_risk: moderate
