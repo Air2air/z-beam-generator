@@ -202,66 +202,54 @@ class TrivialContaminantsExporter(BaseTrivialExporter):
         # Create slug for URL (with -contamination suffix)
         slug = self._create_slug(pattern_id)
         
-        # Build frontmatter in CANONICAL ORDER (matching materials/settings)
-        # Order: name, slug, category, subcategory, content_type, schema_version,
-        #        datePublished, dateModified, author, _metadata, title, 
-        #        {domain}_description, breadcrumb, images, [domain-specific fields]
+        # Build frontmatter in STANDARD ORDER (normalized across all domains)
+        # Order: id, name, slug, category, subcategory, content_type, schema_version,
+        #        datePublished, dateModified, author, [domain-specific], breadcrumb, domain_linkages
         
         frontmatter = {}
         
-        # 1-3: Identification (name, slug, category)
-        # Use 'name' field from source data (properly formatted with spaces)
-        # Fallback to pattern_id converted to title case if name not present
+        # 1-3: Identity fields
+        frontmatter['id'] = slug
         source_name = pattern_data.get('name', pattern_id.replace('-', ' ').replace('_', ' ').title())
         frontmatter['name'] = source_name
-        # Note: slug already has -contamination suffix from _create_slug()
         frontmatter['slug'] = slug
-        # Add id field matching filename pattern (slug is already complete with -contamination suffix)
-        frontmatter['id'] = slug
         
-        # FAIL-FAST: Category and subcategory are now REQUIRED (no fallbacks)
+        # 4-5: Category and subcategory (REQUIRED, convert underscores to hyphens)
         if 'category' not in pattern_data:
             raise ValueError(f"Pattern '{pattern_id}' missing required 'category' field")
         if 'subcategory' not in pattern_data:
             raise ValueError(f"Pattern '{pattern_id}' missing required 'subcategory' field")
         
-        # Convert underscores to hyphens for URL consistency
         category = pattern_data['category'].replace('_', '-')
         subcategory = pattern_data['subcategory'].replace('_', '-')
         
         frontmatter['category'] = category
-        
-        # 4: Subcategory
         frontmatter['subcategory'] = subcategory
         
-        # 5-6: Content Type & Schema (Phase 1: Add metadata fields)
+        # 6-7: Content Type & Schema (BEFORE dates for normalization)
         frontmatter['content_type'] = 'unified_contamination'
         frontmatter['schema_version'] = '4.0.0'
         
-        # 7-8: Publishing Dates (Phase 1: Add date fields with ISO 8601 timestamps)
+        # 8-9: Publishing Dates
         current_timestamp = self.generate_timestamp()
-        if 'datePublished' not in frontmatter or not frontmatter['datePublished']:
-            frontmatter['datePublished'] = current_timestamp
-        if 'dateModified' not in frontmatter or not frontmatter['dateModified']:
-            frontmatter['dateModified'] = current_timestamp
+        frontmatter['datePublished'] = current_timestamp
+        frontmatter['dateModified'] = current_timestamp
         
-        # 9: Author (Phase 1: Add FULL author block from Authors.yaml)
+        # 10: Author (AFTER dates for normalization)
         author_field = pattern_data.get('author', {})
         author_id = author_field.get('id') if isinstance(author_field, dict) else author_field
         
         if author_id:
-            # Use base class method to enrich author data
             try:
                 frontmatter['author'] = self.enrich_author_data(author_id)
             except KeyError:
                 self.logger.warning(f"⚠️  Invalid author ID {author_id} for pattern {pattern_id}")
-                # Fallback to minimal author with just ID
                 frontmatter['author'] = {'id': author_id}
         else:
             # No author - set to None
             frontmatter['author'] = None
         
-        # 10: Metadata (voice tracking)
+        # 11: Metadata (voice tracking) - REMOVED per user request, keeping _metadata for now
         if author_id and 'author' in frontmatter and frontmatter['author']:
             frontmatter['_metadata'] = {
                 'voice': {

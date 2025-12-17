@@ -146,32 +146,35 @@ class CompoundExporter(BaseTrivialExporter):
         author_id = compound['author']['id']
         author_data = self.enrich_author_data(author_id)
         
-        # Build frontmatter
+        # Build frontmatter in STANDARD ORDER (normalized across all domains)
         frontmatter = {
-            # Core identification - id should match filename (slug without extension)
-            'id': f"{compound['slug']}-compound",  # Include -compound suffix to match filename
+            # 1-3: Core identification
+            'id': f"{compound['slug']}-compound",
             'name': compound['name'],
             'display_name': compound['display_name'],
             'slug': compound['slug'],
             
-            # Chemical properties
-            'chemical_formula': compound['chemical_formula'],
-            'cas_number': compound.get('cas_number'),
-            'molecular_weight': compound.get('molecular_weight'),
+            # 4-5: Classification (convert underscores to hyphens)
+            'category': compound['category'].replace('_', '-') if compound.get('category') else None,
+            'subcategory': compound.get('subcategory', '').replace('_', '-') if compound.get('subcategory') else None,
             
-            # Schema fields (normalization with other domains)
+            # 6-7: Schema fields
             'content_type': 'unified_compound',
             'schema_version': '4.0.0',
             
-            # Classification (convert underscores to hyphens for URL consistency)
-            'category': compound['category'].replace('_', '-') if compound.get('category') else None,
-            'subcategory': compound.get('subcategory', '').replace('_', '-') if compound.get('subcategory') else None,
+            # 8-9: Publishing dates
+            'datePublished': None,  # Set below
+            'dateModified': None,   # Set below
+            
+            # 10: Author (full data from Authors.yaml)
+            'author': author_data.copy(),
+            
+            # 11+: Domain-specific fields
+            'chemical_formula': compound['chemical_formula'],
+            'cas_number': compound.get('cas_number'),
+            'molecular_weight': compound.get('molecular_weight'),
             'hazard_class': compound['hazard_class'],
-            
-            # Exposure limits
             'exposure_limits': compound.get('exposure_limits', {}),
-            
-            # Safety data
             'health_effects_keywords': compound.get('health_effects_keywords', []),
             'monitoring_required': compound.get('monitoring_required', False),
             'typical_concentration_range': compound.get('typical_concentration_range'),
@@ -184,21 +187,17 @@ class CompoundExporter(BaseTrivialExporter):
             'detection_methods': compound.get('detection_methods'),
             'first_aid': compound.get('first_aid'),
             
-            # Domain linkages (bidirectional relationships)
-            # Generated from centralized DomainAssociations.yaml via DomainLinkagesService
-            'domain_linkages': self.linkages_service.generate_linkages(
-                f"{compound['slug']}-compound", 'compounds'
-            ),
-            
-            # Author (full data from Authors.yaml)
-            'author': author_data.copy(),
-            
             # Breadcrumb navigation
             'breadcrumb': [
                 {'label': 'Home', 'href': '/'},
                 {'label': 'Hazardous Compounds', 'href': '/compounds'},
                 {'label': compound['name'], 'href': f"/compounds/{compound['slug']}-compound"}
-            ]
+            ],
+            
+            # Domain linkages (bidirectional relationships)
+            'domain_linkages': self.linkages_service.generate_linkages(
+                f"{compound['slug']}-compound", 'compounds'
+            )
         }
         
         return frontmatter
