@@ -3,26 +3,16 @@ name: Engine Coolant Scale
 slug: coolant-scale-contamination
 category: thermal-damage
 subcategory: scale
+datePublished: '2025-12-16T21:08:14.618961'
+dateModified: '2025-12-16T21:08:14.618961'
 domain_linkages:
   related_materials:
-  - id: Aluminum
+  - id: aluminum-laser-cleaning
     title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cast-iron
-    title: Cast Iron
-    url: /materials/cast-iron
-    image: /images/materials/cast-iron.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -46,8 +36,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -57,8 +46,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.107030'
-dateModified: '2025-12-16T14:49:04.107030'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -66,16 +53,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Engine Coolant Scale Contamination
-contamination_description: Coolant-scale contamination arises from silicate and phosphate
-  deposits in engine cooling systems, where coolants degrade during operation and
-  so minerals precipitate onto surfaces. This scale exhibits layered hardness and
-  poor adhesion compared to rust or oil residues, because it forms crystalline structures
-  that bond tightly yet crack unevenly under stress. On aluminum and cast iron, scale
-  clings stubbornly and so resists scraping without surface damage, while on brass
-  it flakes more readily but leaves residues; removal challenges include avoiding
-  substrate erosion during mechanical methods, yet laser cleaning succeeds by vaporizing
-  layers precisely through thermal expansion, so surfaces restore uniformity without
-  harm.
+contamination_description: Coolant-scale contamination arises from silicate and phosphate deposits in engine cooling systems, where coolants degrade during operation and so minerals precipitate onto surfaces. This scale exhibits layered hardness and poor adhesion compared to rust or oil residues, because it forms crystalline structures that bond tightly yet crack unevenly under stress. On aluminum and cast iron, scale clings stubbornly and so resists scraping without surface damage, while on brass it flakes more readily but leaves residues; removal challenges include avoiding substrate erosion during mechanical methods, yet laser cleaning succeeds by vaporizing layers precisely through thermal expansion, so surfaces restore uniformity without harm.
 breadcrumb:
 - label: Home
   href: /

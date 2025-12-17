@@ -3,26 +3,25 @@ name: Tin Plating Residue
 slug: tin-plating-contamination
 category: metallic-coating
 subcategory: plating
+datePublished: '2025-12-16T21:08:15.529651'
+dateModified: '2025-12-16T21:08:15.529651'
 domain_linkages:
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Copper
+  - id: copper-laser-cleaning
     title: Copper
-    url: /materials/Copper
-    image: /images/materials/Copper.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
+    url: /materials/metal/non-ferrous/copper-laser-cleaning
+    image: /images/materials/copper.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -48,8 +47,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -58,8 +56,6 @@ author:
   formatting_file: indonesia_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:05.013180'
-dateModified: '2025-12-16T14:49:05.013180'
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -67,15 +63,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Tin Plating Residue Contamination
-contamination_description: Tin-plating contamination, it arises from degraded coatings
-  on electronic components and food containers, forming thin metallic layers that
-  adhere tightly through oxidation and environmental exposure. This contamination,
-  it distinguishes itself by soft, ductile texture unlike harder oxide scales, and
-  behaves differently on steel where it promotes corrosion, on copper it accelerates
-  tarnish, and on brass it induces uneven patina thus complicating uniform cleaning.
-  Removal challenges stem from its persistence and risk of substrate damage, yet laser
-  cleaning proves effective as precise pulses ablate the layer selectively and restore
-  surface integrity without mechanical stress.
+contamination_description: Tin-plating contamination, it arises from degraded coatings on electronic components and food containers, forming thin metallic layers that adhere tightly through oxidation and environmental exposure. This contamination, it distinguishes itself by soft, ductile texture unlike harder oxide scales, and behaves differently on steel where it promotes corrosion, on copper it accelerates tarnish, and on brass it induces uneven patina thus complicating uniform cleaning. Removal challenges stem from its persistence and risk of substrate damage, yet laser cleaning proves effective as precise pulses ablate the layer selectively and restore surface integrity without mechanical stress.
 breadcrumb:
 - label: Home
   href: /
@@ -182,8 +170,7 @@ laser_properties:
       respiratory: half_mask
       skin_protection: gloves
     substrate_compatibility_warnings:
-    - May generate higher fume concentrations if substrate contains lead or other
-      alloying elements
+    - May generate higher fume concentrations if substrate contains lead or other alloying elements
     - Avoid laser parameters that cause substrate melting to minimize fume generation
     toxic_gas_risk: low
     ventilation_requirements:

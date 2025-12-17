@@ -1,17 +1,20 @@
+id: metal-matrix-composites-mmcs-settings
 name: Metal Matrix Composites MMCs
 slug: metal-matrix-composites-mmcs-settings
+category: composite
+subcategory: fiber-reinforced
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.967017'
+dateModified: '2025-12-16T17:59:17.967017'
 domain: settings
-datePublished: '2025-12-16T14:50:07.269256'
-dateModified: '2025-12-16T14:50:07.269256'
 machineSettings:
   powerRange:
-    description: Optimal average power for MMCs cleaning considering thermal conductivity
-      and matrix integrity
+    description: Optimal average power for MMCs cleaning considering thermal conductivity and matrix integrity
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength providing good absorption in metallic matrix while
-      minimizing damage to ceramic reinforcements
+    description: Near-IR wavelength providing good absorption in metallic matrix while minimizing damage to ceramic reinforcements
     unit: nm
     value: 1064
   spotSize:
@@ -19,18 +22,15 @@ machineSettings:
     unit: μm
     value: 50
   repetitionRate:
-    description: High repetition rate for efficient cleaning while maintaining thermal
-      management
+    description: High repetition rate for efficient cleaning while maintaining thermal management
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence level sufficient for contaminant removal without damaging
-      MMC substrate
+    description: Fluence level sufficient for contaminant removal without damaging MMC substrate
     unit: J/cm²
     value: 5
   pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation without excessive
-      thermal diffusion
+    description: Nanosecond pulse duration for controlled ablation without excessive thermal diffusion
     unit: ns
     value: 10
   scanSpeed:
@@ -42,8 +42,7 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Beam overlap percentage ensuring complete coverage without excessive
-      energy deposition
+    description: Beam overlap percentage ensuring complete coverage without excessive energy deposition
     unit: '%'
     value: 50
   dwellTime:

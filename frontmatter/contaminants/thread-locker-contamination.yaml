@@ -3,26 +3,34 @@ name: Threadlocker Adhesive
 slug: thread-locker-contamination
 category: organic-residue
 subcategory: adhesive
+datePublished: '2025-12-16T21:08:15.517623'
+dateModified: '2025-12-16T21:08:15.517623'
 domain_linkages:
   related_materials:
-  - id: Steel
-    title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
+  - id: stainless-steel-laser-cleaning
     title: Stainless Steel
-    url: /materials/Stainless Steel
-    image: /images/materials/Stainless Steel.jpg
+    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+    image: /images/materials/stainless-steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Aluminum
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: aluminum-laser-cleaning
     title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -48,8 +56,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -58,8 +65,6 @@ author:
   formatting_file: indonesia_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:05.002316'
-dateModified: '2025-12-16T14:49:05.002316'
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -67,16 +72,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Threadlocker Adhesive Contamination
-contamination_description: Thread-locker contamination, it arises from anaerobic adhesive
-  residues on mechanical fasteners, and forms through curing without oxygen exposure,
-  thus creating polymerized layers that bond threads tightly. This residue, it exhibits
-  exceptional chemical resistance and elastic toughness, distinguishing from fluid
-  oils or loose particles by its strong adhesion and deep penetration into microstructures—on
-  steel and stainless steel, it adheres firmly, while on aluminum, bonding remains
-  looser yet embeds deeply still. Removal challenges include solvent ineffectiveness
-  and risk of substrate etching, so laser cleaning proves effective, as it ablates
-  residue precisely through thermal vaporization and preserves material integrity
-  for uniform surfaces.
+contamination_description: Thread-locker contamination, it arises from anaerobic adhesive residues on mechanical fasteners, and forms through curing without oxygen exposure, thus creating polymerized layers that bond threads tightly. This residue, it exhibits exceptional chemical resistance and elastic toughness, distinguishing from fluid oils or loose particles by its strong adhesion and deep penetration into microstructures—on steel and stainless steel, it adheres firmly, while on aluminum, bonding remains looser yet embeds deeply still. Removal challenges include solvent ineffectiveness and risk of substrate etching, so laser cleaning proves effective, as it ablates residue precisely through thermal vaporization and preserves material integrity for uniform surfaces.
 breadcrumb:
 - label: Home
   href: /

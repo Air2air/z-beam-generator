@@ -1,16 +1,27 @@
+id: carbon-fiber-reinforced-polymer-settings
 name: Carbon Fiber Reinforced Polymer
 slug: carbon-fiber-reinforced-polymer-settings
+category: composite
+subcategory: fiber-reinforced
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.747876'
+dateModified: '2025-12-16T17:59:17.747876'
+domain_linkages:
+  contaminants:
+  - aviation-sealant
+  - epoxy-residue
+  compounds:
+  - carbon-monoxide-compound
+  - formaldehyde-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.145449'
-dateModified: '2025-12-16T14:50:07.145449'
 machineSettings:
   powerRange:
     description: Optimal average power for CFRP cleaning without matrix damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength for optimal carbon absorption and minimal polymer
-      damage
+    description: Near-IR wavelength for optimal carbon absorption and minimal polymer damage
     unit: nm
     value: 1064
   spotSize:
@@ -22,8 +33,7 @@ machineSettings:
     unit: kHz
     value: 100
   energyDensity:
-    description: Fluence threshold for effective contaminant removal without CFRP
-      damage
+    description: Fluence threshold for effective contaminant removal without CFRP damage
     unit: J/cm²
     value: 5
   pulseWidth:

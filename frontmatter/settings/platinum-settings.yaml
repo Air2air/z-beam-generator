@@ -1,17 +1,20 @@
+id: platinum-settings
 name: Platinum
 slug: platinum-settings
+category: metal
+subcategory: non-ferrous
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.022151'
+dateModified: '2025-12-16T17:59:18.022151'
 domain: settings
-datePublished: '2025-12-16T14:50:07.304329'
-dateModified: '2025-12-16T14:50:07.304329'
 machineSettings:
   powerRange:
-    description: Optimal average power for Platinum surface cleaning without thermal
-      damage
+    description: Optimal average power for Platinum surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength optimized for Platinum's moderate reflectivity
-      and thermal processing
+    description: Near-IR wavelength optimized for Platinum's moderate reflectivity and thermal processing
     unit: nm
     value: 1064
   spotSize:
@@ -19,13 +22,11 @@ machineSettings:
     unit: μm
     value: 50
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage with controlled
-      thermal input
+    description: Optimal repetition rate for efficient cleaning coverage with controlled thermal input
     unit: kHz
     value: 50
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal while
-      minimizing Platinum substrate heating
+    description: Nanosecond pulse duration for effective contaminant removal while minimizing Platinum substrate heating
     unit: ns
     value: 10
   scanSpeed:
@@ -37,12 +38,10 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
     unit: '%'
     value: 50
   fluence:
-    description: Energy density threshold for effective contaminant removal without
-      Platinum damage
+    description: Energy density threshold for effective contaminant removal without Platinum damage
     unit: J/cm²
     value: 5

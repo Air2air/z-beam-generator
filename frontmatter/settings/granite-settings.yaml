@@ -1,12 +1,39 @@
+id: granite-settings
 name: Granite
 slug: granite-settings
+category: stone
+subcategory: igneous
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.880385'
+dateModified: '2025-12-16T17:59:17.880385'
+domain_linkages:
+  contaminants:
+  - algae-growth
+  - biological-stains
+  - bitumen-tar
+  - carbon-soot
+  - ceramic-glaze
+  - concrete-dust
+  - efflorescence
+  - fertilizer-residue
+  - fire-damage
+  - graffiti-paint
+  - mineral-deposits
+  - mineral-stain
+  - salt-residue
+  - scale-buildup
+  - water-stain
+  compounds:
+  - benzoapyrene-compound
+  - carbon-monoxide-compound
+  - pahs-compound
+  - toluene-compound
+  - vocs-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.214789'
-dateModified: '2025-12-16T14:50:07.214789'
 machineSettings:
   powerRange:
-    description: Optimal average power for granite surface cleaning without thermal
-      damage
+    description: Optimal average power for granite surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
@@ -26,8 +53,7 @@ machineSettings:
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
     unit: ns
     value: 10
   scanSpeed:
@@ -39,7 +65,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     unit: '%'
     value: 50

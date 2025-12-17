@@ -131,6 +131,10 @@ contaminants:
     - subcategory
     - contamination_type
     
+    # Publishing metadata
+    - datePublished
+    - dateModified
+    
     # Physical properties
     - thickness_range
     - adhesion_strength
@@ -209,6 +213,10 @@ compounds:
     - cas_number
     - molecular_weight
     
+    # Publishing metadata
+    - datePublished
+    - dateModified
+    
     # Classification
     - category
     - subcategory
@@ -270,7 +278,13 @@ settings:
     # Classification
     - category
     - subcategory
+    - content_type
+    - schema_version
     - application_type
+    
+    # Publishing metadata
+    - datePublished
+    - dateModified
     
     # Laser parameters
     - wavelength

@@ -1,17 +1,20 @@
+id: plaster-settings
 name: Plaster
 slug: plaster-settings
+category: masonry
+subcategory: general
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.018383'
+dateModified: '2025-12-16T17:59:18.018383'
 domain: settings
-datePublished: '2025-12-16T14:50:07.301839'
-dateModified: '2025-12-16T14:50:07.301839'
 machineSettings:
   powerRange:
-    description: Optimal average power for plaster surface cleaning without thermal
-      damage
+    description: Optimal average power for plaster surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-infrared wavelength optimized for plaster absorption and minimal
-      substrate damage
+    description: Near-infrared wavelength optimized for plaster absorption and minimal substrate damage
     unit: nm
     value: 1064
   spotSize:
@@ -19,23 +22,19 @@ machineSettings:
     unit: μm
     value: 100
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence level sufficient for contaminant removal while preserving
-      plaster substrate
+    description: Fluence level sufficient for contaminant removal while preserving plaster substrate
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal penetration
+    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
     unit: ns
     value: 10
   scanSpeed:
-    description: Optimal scanning speed for uniform cleaning without excessive dwell
-      time
+    description: Optimal scanning speed for uniform cleaning without excessive dwell time
     unit: mm/s
     value: 500
   passCount:

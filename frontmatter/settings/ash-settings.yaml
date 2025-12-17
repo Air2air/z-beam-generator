@@ -1,37 +1,58 @@
+id: ash-settings
 name: Ash
 slug: ash-settings
+category: wood
+subcategory: hardwood
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.688535'
+dateModified: '2025-12-16T17:59:17.688535'
+domain_linkages:
+  contaminants:
+  - adhesive-residue
+  - algae-growth
+  - lead-paint
+  - mold-mildew
+  - paint-residue
+  - wax-buildup
+  compounds:
+  - acetaldehyde-compound
+  - benzene-compound
+  - carbon-dioxide-compound
+  - carbon-monoxide-compound
+  - chromium-vi-compound
+  - formaldehyde-compound
+  - hydrogen-chloride-compound
+  - hydrogen-cyanide-compound
+  - nitrogen-oxides-compound
+  - pahs-compound
+  - toluene-compound
+  - vocs-compound
+  - zinc-oxide-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.109700'
-dateModified: '2025-12-16T14:50:07.109700'
 machineSettings:
   powerRange:
-    description: Optimal average power for efficient Ash removal without substrate
-      damage
+    description: Optimal average power for efficient Ash removal without substrate damage
     unit: W
     value: 100
   wavelength:
-    description: Near-infrared wavelength optimized for Ash absorption and minimal
-      substrate interaction
+    description: Near-infrared wavelength optimized for Ash absorption and minimal substrate interaction
     unit: nm
     value: 1064
   spotSize:
-    description: Beam spot diameter for effective Ash removal resolution and processing
-      efficiency
+    description: Beam spot diameter for effective Ash removal resolution and processing efficiency
     unit: μm
     value: 50
   repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage with thermal
-      recovery
+    description: Optimal repetition rate for continuous cleaning coverage with thermal recovery
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence level sufficient for Ash ablation while preserving underlying
-      substrate
+    description: Fluence level sufficient for Ash ablation while preserving underlying substrate
     unit: J/cm²
     value: 5.1
   pulseWidth:
-    description: Nanosecond pulse duration for controlled Ash ablation and thermal
-      management
+    description: Nanosecond pulse duration for controlled Ash ablation and thermal management
     unit: ns
     value: 10
   scanSpeed:
@@ -39,12 +60,10 @@ machineSettings:
     unit: mm/s
     value: 500
   passCount:
-    description: Recommended number of passes for complete Ash removal with process
-      control
+    description: Recommended number of passes for complete Ash removal with process control
     unit: passes
     value: 2
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage without excessive
-      thermal buildup
+    description: Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup
     unit: '%'
     value: 50

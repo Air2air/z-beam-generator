@@ -1,17 +1,20 @@
+id: phenolic-resin-composites-settings
 name: Phenolic Resin Composites
 slug: phenolic-resin-composites-settings
+category: composite
+subcategory: fiber-reinforced
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.009359'
+dateModified: '2025-12-16T17:59:18.009359'
 domain: settings
-datePublished: '2025-12-16T14:50:07.296587'
-dateModified: '2025-12-16T14:50:07.296587'
 machineSettings:
   powerRange:
-    description: Optimal average power for phenolic resin composite cleaning without
-      thermal damage
+    description: Optimal average power for phenolic resin composite cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength optimized for phenolic resin absorption and minimal
-      substrate damage
+    description: Near-IR wavelength optimized for phenolic resin absorption and minimal substrate damage
     unit: nm
     value: 1064
   spotSize:
@@ -27,8 +30,7 @@ machineSettings:
     unit: J/cm²
     value: 5.1
   pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of phenolic resin
-      matrix
+    description: Nanosecond pulse duration for controlled ablation of phenolic resin matrix
     unit: ns
     value: 10
   scanSpeed:
@@ -40,7 +42,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
     unit: '%'
     value: 50

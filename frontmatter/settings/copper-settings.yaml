@@ -1,26 +1,87 @@
+id: copper-settings
 name: Copper
 slug: copper-settings
+category: metal
+subcategory: non-ferrous
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.794824'
+dateModified: '2025-12-16T17:59:17.794824'
+domain_linkages:
+  contaminants:
+  - adhesive-residue
+  - algae-growth
+  - battery-corrosion
+  - biological-stains
+  - bronze-patina
+  - carbon-soot
+  - chemical-stains
+  - copper-patina
+  - corrosion-inhibitor
+  - electroplating-residue
+  - epoxy-residue
+  - fertilizer-residue
+  - gold-plating
+  - graffiti-paint
+  - graphite-marks
+  - ink-stains
+  - insect-residue
+  - lime-scale
+  - mercury-contamination
+  - metal-polish
+  - mineral-deposits
+  - nickel-plating
+  - paint-residue
+  - pesticide-residue
+  - plastic-residue
+  - pollen-deposit
+  - radioactive-contamination
+  - rubber-residue
+  - salt-residue
+  - scale-buildup
+  - silicone-buildup
+  - silver-plating
+  - solder-flux
+  - thermal-paste
+  - tin-plating
+  - tree-sap
+  - water-stain
+  - wax-buildup
+  compounds:
+  - acetaldehyde-compound
+  - acrolein-compound
+  - benzene-compound
+  - benzoapyrene-compound
+  - carbon-dioxide-compound
+  - carbon-monoxide-compound
+  - chromium-vi-compound
+  - formaldehyde-compound
+  - hydrogen-chloride-compound
+  - hydrogen-cyanide-compound
+  - nitrogen-oxides-compound
+  - pahs-compound
+  - phosgene-compound
+  - styrene-compound
+  - sulfur-dioxide-compound
+  - toluene-compound
+  - vocs-compound
+  - zinc-oxide-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.172216'
-dateModified: '2025-12-16T14:50:07.172216'
 machineSettings:
   powerRange:
     description: Optimal average power for Copper oxide removal and surface cleaning
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength optimized for Copper absorption and minimal substrate
-      damage
+    description: Near-IR wavelength optimized for Copper absorption and minimal substrate damage
     unit: nm
     value: 1064
   spotSize:
-    description: Optimal spot diameter for balancing cleaning efficiency and processing
-      speed
+    description: Optimal spot diameter for balancing cleaning efficiency and processing speed
     unit: μm
     value: 50
   repetitionRate:
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      process control
+    description: High repetition rate for efficient cleaning coverage while maintaining process control
     unit: kHz
     value: 100
   fluenceThreshold:
@@ -28,13 +89,11 @@ machineSettings:
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for effective oxide removal without excessive
-      thermal diffusion
+    description: Nanosecond pulse duration for effective oxide removal without excessive thermal diffusion
     unit: ns
     value: 10
   scanSpeed:
-    description: Optimal scanning speed for uniform cleaning with adequate energy
-      deposition
+    description: Optimal scanning speed for uniform cleaning with adequate energy deposition
     unit: mm/s
     value: 500
   passCount:
@@ -42,7 +101,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal pulse overlap for uniform cleaning without excessive heat accumulation
     unit: '%'
     value: 50

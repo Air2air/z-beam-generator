@@ -3,33 +3,55 @@ name: Machining Coolant Residue
 slug: cutting-fluid-contamination
 category: organic-residue
 subcategory: lubricant
+datePublished: '2025-12-16T21:08:14.662763'
+dateModified: '2025-12-16T21:08:14.662763'
 domain_linkages:
+  produces_compounds:
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/carcinogen/aromatic_hydrocarbon/benzene-compound
+    image: /images/compounds/benzene.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
+    frequency: occasional
+    severity: moderate
+    typical_context: Decomposition of aromatic additives
+    exposure_risk: moderate
+  - id: acrolein-compound
+    title: Acrolein
+    url: /compounds/toxic_gas/aldehyde/acrolein-compound
+    image: /images/compounds/acrolein.jpg
+    category: toxic_gas
+    subcategory: aldehyde
+    frequency: common
+    severity: high
+    typical_context: Thermal breakdown of oil-based cutting fluids
+    exposure_risk: high
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Aluminum
+  - id: aluminum-laser-cleaning
     title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Titanium
+  - id: titanium-laser-cleaning
     title: Titanium
-    url: /materials/Titanium
-    image: /images/materials/Titanium.jpg
+    url: /materials/metal/specialty/titanium-laser-cleaning
+    image: /images/materials/titanium.jpg
+    category: metal
+    subcategory: specialty
     frequency: common
     severity: moderate
     typical_context: general
@@ -54,8 +76,7 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -64,8 +85,6 @@ author:
   formatting_file: usa_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.149710'
-dateModified: '2025-12-16T14:49:04.149710'
 _metadata:
   voice:
     author_name: Todd Dunning
@@ -73,14 +92,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Machining Coolant Residue Contamination
-contamination_description: Cutting fluids lubricate and cool metal machining operations,
-  yet they accumulate as sticky, oily residues from evaporation and splatter during
-  use. Turns out, this contamination stands apart from dust or rust through its rancid,
-  bacteria-laden film that clings tenaciously, bonding firmly to steel for dull finishes,
-  etching aluminum with light pitting, hazing brass surfaces, and trapping pockets
-  in titanium cracks. Removal challenges include slow solvent absorption and scratching
-  risks from scrubbing, but laser cleaning addresses this effectively by vaporizing
-  layers without contact to achieve clean, tight tolerances overall.
+contamination_description: Cutting fluids lubricate and cool metal machining operations, yet they accumulate as sticky, oily residues from evaporation and splatter during use. Turns out, this contamination stands apart from dust or rust through its rancid, bacteria-laden film that clings tenaciously, bonding firmly to steel for dull finishes, etching aluminum with light pitting, hazing brass surfaces, and trapping pockets in titanium cracks. Removal challenges include slow solvent absorption and scratching risks from scrubbing, but laser cleaning addresses this effectively by vaporizing layers without contact to achieve clean, tight tolerances overall.
 breadcrumb:
 - label: Home
   href: /
@@ -198,11 +210,9 @@ laser_properties:
       respiratory: PAPR
       skin_protection: gloves
     substrate_compatibility_warnings:
-    - Thermal decomposition may create hazardous byproducts not present in original
-      coolant
+    - Thermal decomposition may create hazardous byproducts not present in original coolant
     - Residue thickness and composition significantly affect fume generation rate
-    - Chlorinated or sulfurized extreme pressure additives may produce additional
-      toxic gases
+    - Chlorinated or sulfurized extreme pressure additives may produce additional toxic gases
     toxic_gas_risk: moderate
     ventilation_requirements:
       exhaust_velocity_m_s: 0.5

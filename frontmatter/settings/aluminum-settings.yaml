@@ -1,18 +1,91 @@
+id: aluminum-settings
 name: Aluminum
 slug: aluminum-settings
+category: metal
+subcategory: non-ferrous
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.681565'
+dateModified: '2025-12-16T17:59:17.681565'
+domain_linkages:
+  contaminants:
+  - adhesive-residue
+  - algae-growth
+  - aluminum-oxidation
+  - anodizing-defects
+  - anti-seize
+  - aviation-sealant
+  - biological-stains
+  - brake-dust
+  - carbon-soot
+  - chemical-stains
+  - conversion-coating
+  - coolant-scale
+  - corrosion-inhibitor
+  - cutting-fluid
+  - epoxy-residue
+  - fertilizer-residue
+  - fuel-varnish
+  - gasket-material
+  - graffiti-paint
+  - graphite-marks
+  - grease-deposits
+  - hydraulic-fluid
+  - ink-stains
+  - insect-residue
+  - laser-marking
+  - lime-scale
+  - mercury-contamination
+  - metal-polish
+  - mineral-deposits
+  - nickel-plating
+  - paint-residue
+  - pesticide-residue
+  - plastic-residue
+  - pollen-deposit
+  - powder-coating
+  - primer-coating
+  - radioactive-contamination
+  - road-grime
+  - rubber-residue
+  - salt-residue
+  - scale-buildup
+  - silicone-buildup
+  - teflon-residue
+  - thermal-paste
+  - thread-locker
+  - tree-sap
+  - water-stain
+  - wax-buildup
+  compounds:
+  - acetaldehyde-compound
+  - acrolein-compound
+  - benzene-compound
+  - benzoapyrene-compound
+  - carbon-dioxide-compound
+  - carbon-monoxide-compound
+  - chromium-vi-compound
+  - formaldehyde-compound
+  - hydrogen-chloride-compound
+  - hydrogen-cyanide-compound
+  - nitrogen-oxides-compound
+  - pahs-compound
+  - phosgene-compound
+  - styrene-compound
+  - sulfur-dioxide-compound
+  - toluene-compound
+  - vocs-compound
+  - zinc-oxide-compound
 author:
   id: 4
 domain: settings
-datePublished: '2025-12-16T14:50:07.107086'
-dateModified: '2025-12-16T14:50:07.107086'
 machineSettings:
   powerRange:
     description: Optimal average power for Aluminum oxide layer removal
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength for optimal Aluminum absorption and minimal substrate
-      damage
+    description: Near-IR wavelength for optimal Aluminum absorption and minimal substrate damage
     unit: nm
     value: 1064
   spotSize:
@@ -20,8 +93,7 @@ machineSettings:
     unit: μm
     value: 50
   repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage with thermal
-      management
+    description: Optimal repetition rate for continuous cleaning coverage with thermal management
     unit: kHz
     value: 50
   energyDensity:
@@ -29,8 +101,7 @@ machineSettings:
     unit: J/cm²
     value: 5.1
   pulseWidth:
-    description: Nanosecond pulse duration for efficient oxide removal without excessive
-      thermal diffusion
+    description: Nanosecond pulse duration for efficient oxide removal without excessive thermal diffusion
     unit: ns
     value: 10
   scanSpeed:

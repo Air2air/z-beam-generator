@@ -3,124 +3,154 @@ name: Epoxy Resin Deposits
 slug: epoxy-residue-contamination
 category: organic-residue
 subcategory: adhesive
+datePublished: '2025-12-16T21:08:14.724633'
+dateModified: '2025-12-16T21:08:14.724633'
 domain_linkages:
+  produces_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/toxic_gas/asphyxiant/carbon-monoxide-compound
+    image: /images/compounds/carbon-monoxide.jpg
+    category: toxic_gas
+    subcategory: asphyxiant
+    frequency: common
+    severity: moderate
+    typical_context: Thermal breakdown of epoxy resins
+    exposure_risk: moderate
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/carcinogen/aldehyde/formaldehyde-compound
+    image: /images/compounds/formaldehyde.jpg
+    category: carcinogen
+    subcategory: aldehyde
+    frequency: occasional
+    severity: low
+    typical_context: Thermal degradation of certain epoxy formulations
+    exposure_risk: low
   related_materials:
-  - id: Concrete
-    title: Concrete
-    url: /materials/Concrete
-    image: /images/materials/Concrete.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Carbon Fiber Reinforced Polymer
-    title: Carbon Fiber Reinforced Polymer
-    url: /materials/Carbon Fiber Reinforced Polymer
-    image: /images/materials/Carbon Fiber Reinforced Polymer.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Fiberglass
-    title: Fiberglass
-    url: /materials/Fiberglass
-    image: /images/materials/Fiberglass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum
-    title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Steel
-    title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
+  - id: stainless-steel-laser-cleaning
     title: Stainless Steel
-    url: /materials/Stainless Steel
-    image: /images/materials/Stainless Steel.jpg
+    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+    image: /images/materials/stainless-steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: cast-iron
-    title: Cast Iron
-    url: /materials/cast-iron
-    image: /images/materials/cast-iron.jpg
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Copper
-    title: Copper
-    url: /materials/Copper
-    image: /images/materials/Copper.jpg
+  - id: aluminum-laser-cleaning
+    title: Aluminum
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: bronze
-    title: Bronze
-    url: /materials/bronze
-    image: /images/materials/bronze.jpg
+  - id: concrete-laser-cleaning
+    title: Concrete
+    url: /materials/masonry/general/concrete-laser-cleaning
+    image: /images/materials/concrete.jpg
+    category: masonry
+    subcategory: general
     frequency: common
     severity: moderate
     typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Titanium
-    title: Titanium
-    url: /materials/Titanium
-    image: /images/materials/Titanium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zinc
+  - id: zinc-laser-cleaning
     title: Zinc
-    url: /materials/Zinc
-    image: /images/materials/Zinc.jpg
+    url: /materials/metal/alloy/zinc-laser-cleaning
+    image: /images/materials/zinc.jpg
+    category: metal
+    subcategory: alloy
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Nickel
-    title: Nickel
-    url: /materials/Nickel
-    image: /images/materials/Nickel.jpg
+  - id: titanium-laser-cleaning
+    title: Titanium
+    url: /materials/metal/specialty/titanium-laser-cleaning
+    image: /images/materials/titanium.jpg
+    category: metal
+    subcategory: specialty
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Lead
-    title: Lead
-    url: /materials/Lead
-    image: /images/materials/Lead.jpg
+  - id: copper-laser-cleaning
+    title: Copper
+    url: /materials/metal/non-ferrous/copper-laser-cleaning
+    image: /images/materials/copper.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Tin
-    title: Tin
-    url: /materials/Tin
-    image: /images/materials/Tin.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Cobalt
+  - id: cobalt-laser-cleaning
     title: Cobalt
-    url: /materials/Cobalt
-    image: /images/materials/Cobalt.jpg
+    url: /materials/metal/specialty/cobalt-laser-cleaning
+    image: /images/materials/cobalt.jpg
+    category: metal
+    subcategory: specialty
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Chromium
+  - id: fiberglass-laser-cleaning
+    title: Fiberglass
+    url: /materials/composite/fiber-reinforced/fiberglass-laser-cleaning
+    image: /images/materials/fiberglass.jpg
+    category: composite
+    subcategory: fiber-reinforced
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: carbon-fiber-reinforced-polymer-laser-cleaning
+    title: Carbon Fiber Reinforced Polymer
+    url: /materials/composite/fiber-reinforced/carbon-fiber-reinforced-polymer-laser-cleaning
+    image: /images/materials/carbon-fiber-reinforced-polymer.jpg
+    category: composite
+    subcategory: fiber-reinforced
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: tin-laser-cleaning
+    title: Tin
+    url: /materials/metal/alloy/tin-laser-cleaning
+    image: /images/materials/tin.jpg
+    category: metal
+    subcategory: alloy
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lead-laser-cleaning
+    title: Lead
+    url: /materials/metal/non-ferrous/lead-laser-cleaning
+    image: /images/materials/lead.jpg
+    category: metal
+    subcategory: non-ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chromium-laser-cleaning
     title: Chromium
-    url: /materials/Chromium
-    image: /images/materials/Chromium.jpg
+    url: /materials/metal/specialty/chromium-laser-cleaning
+    image: /images/materials/chromium.jpg
+    category: metal
+    subcategory: specialty
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: nickel-laser-cleaning
+    title: Nickel
+    url: /materials/metal/specialty/nickel-laser-cleaning
+    image: /images/materials/nickel.jpg
+    category: metal
+    subcategory: specialty
     frequency: common
     severity: moderate
     typical_context: general
@@ -144,8 +174,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -155,8 +184,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.205436'
-dateModified: '2025-12-16T14:49:04.205436'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -164,13 +191,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Epoxy Resin Deposits Contamination
-contamination_description: Epoxy-residue forms when cured two-part adhesive hardens
-  on surfaces after mixing and application, creating tough layer with dense bonds.
-  This contamination shows unique stickiness and resistance to solvents unlike softer
-  paints or oils, so removal needs targeted heat without damaging base. On metals
-  such as steel and aluminum, residue clings tightly during exposure, posing challenges
-  like incomplete stripping because of its durability, yet laser cleaning succeeds
-  by vaporizing it precisely through controlled pulses.
+contamination_description: Epoxy-residue forms when cured two-part adhesive hardens on surfaces after mixing and application, creating tough layer with dense bonds. This contamination shows unique stickiness and resistance to solvents unlike softer paints or oils, so removal needs targeted heat without damaging base. On metals such as steel and aluminum, residue clings tightly during exposure, posing challenges like incomplete stripping because of its durability, yet laser cleaning succeeds by vaporizing it precisely through controlled pulses.
 breadcrumb:
 - label: Home
   href: /

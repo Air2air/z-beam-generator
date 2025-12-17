@@ -1,17 +1,23 @@
+id: polyethylene-settings
 name: Polyethylene
 slug: polyethylene-settings
+category: plastic
+subcategory: thermoplastic
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.039283'
+dateModified: '2025-12-16T17:59:18.039283'
+domain_linkages:
+  contaminants:
+  - uv-chalking
 domain: settings
-datePublished: '2025-12-16T14:50:07.315028'
-dateModified: '2025-12-16T14:50:07.315028'
 machineSettings:
   powerRange:
-    description: Optimal average power for Polyethylene surface cleaning without thermal
-      damage
+    description: Optimal average power for Polyethylene surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength with good Polyethylene absorption for efficient
-      cleaning
+    description: Near-IR wavelength with good Polyethylene absorption for efficient cleaning
     unit: nm
     value: 1064
   spotSize:

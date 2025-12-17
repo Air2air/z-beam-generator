@@ -3,26 +3,36 @@ name: Forging Mill Scale
 slug: forging-scale-contamination
 category: thermal-damage
 subcategory: scale
+datePublished: '2025-12-16T21:08:14.794015'
+dateModified: '2025-12-16T21:08:14.794015'
 domain_linkages:
+  produces_compounds:
+  - id: iron-oxide-compound
+    title: Iron Oxide Fume
+    url: /compounds/metal_fume/metal_oxide/iron-oxide-compound
+    image: /images/compounds/iron-oxide.jpg
+    category: metal_fume
+    subcategory: metal_oxide
+    frequency: very_common
+    severity: high
+    typical_context: Iron oxide scale from forging operations
+    exposure_risk: high
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Iron
+  - id: iron-laser-cleaning
     title: Iron
-    url: /materials/Iron
-    image: /images/materials/Iron.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-steel
-    title: Carbon Steel
-    url: /materials/carbon-steel
-    image: /images/materials/carbon-steel.jpg
+    url: /materials/metal/ferrous/iron-laser-cleaning
+    image: /images/materials/iron.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -48,8 +58,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -58,8 +67,6 @@ author:
   formatting_file: indonesia_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.266690'
-dateModified: '2025-12-16T14:49:04.266690'
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -67,12 +74,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Forging Mill Scale Contamination
-contamination_description: Forging-scale, it consists of black oxide layer that forms
-  during hot forging and rolling operations on steel surfaces. This contamination,
-  it shows dense adherence and dark coloration, thus distinguishes from rust by its
-  thermal origin and resistance to mild abrasion. On carbon steel, scale persists
-  strongly and challenges mechanical removal, but laser cleaning effectively ablates
-  it through precise energy absorption, so surface restores without damage.
+contamination_description: Forging-scale, it consists of black oxide layer that forms during hot forging and rolling operations on steel surfaces. This contamination, it shows dense adherence and dark coloration, thus distinguishes from rust by its thermal origin and resistance to mild abrasion. On carbon steel, scale persists strongly and challenges mechanical removal, but laser cleaning effectively ablates it through precise energy absorption, so surface restores without damage.
 breadcrumb:
 - label: Home
   href: /

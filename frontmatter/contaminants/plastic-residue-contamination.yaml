@@ -3,159 +3,289 @@ name: Degraded Polymer Deposits
 slug: plastic-residue-contamination
 category: organic-residue
 subcategory: polymer
+datePublished: '2025-12-16T21:08:15.214647'
+dateModified: '2025-12-16T21:08:15.214647'
 domain_linkages:
+  produces_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/toxic_gas/asphyxiant/carbon-monoxide-compound
+    image: /images/compounds/carbon-monoxide.jpg
+    category: toxic_gas
+    subcategory: asphyxiant
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of plastic polymers
+    exposure_risk: high
+  - id: acetaldehyde-compound
+    title: Acetaldehyde
+    url: /compounds/irritant/aldehyde/acetaldehyde-compound
+    image: /images/compounds/acetaldehyde.jpg
+    category: irritant
+    subcategory: aldehyde
+    frequency: common
+    severity: moderate
+    typical_context: Thermal degradation of polyethylene and polypropylene
+    exposure_risk: moderate
+  - id: hydrogen-chloride-compound
+    title: Hydrogen Chloride
+    url: /compounds/corrosive_gas/acid_gas/hydrogen-chloride-compound
+    image: /images/compounds/hydrogen-chloride.jpg
+    category: corrosive_gas
+    subcategory: acid_gas
+    frequency: very_common
+    severity: high
+    typical_context: Thermal decomposition of PVC (polyvinyl chloride)
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/carcinogen/aromatic_hydrocarbon/pahs-compound
+    image: /images/compounds/pahs.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
+    frequency: common
+    severity: moderate
+    typical_context: Thermal degradation of aromatic polymers
+    exposure_risk: moderate
+  - id: hydrogen-cyanide-compound
+    title: Hydrogen Cyanide
+    url: /compounds/toxic_gas/cyanide/hydrogen-cyanide-compound
+    image: /images/compounds/hydrogen-cyanide.jpg
+    category: toxic_gas
+    subcategory: cyanide
+    frequency: occasional
+    severity: high
+    typical_context: Thermal decomposition of nitrogen-containing polymers (polyurethane, nylon, acrylics)
+    exposure_risk: high
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/asphyxiant/simple_asphyxiant/carbon-dioxide-compound
+    image: /images/compounds/carbon-dioxide.jpg
+    category: asphyxiant
+    subcategory: simple_asphyxiant
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of polymers
+    exposure_risk: low
+  - id: styrene-compound
+    title: Styrene
+    url: /compounds/irritant/aromatic_hydrocarbon/styrene-compound
+    image: /images/compounds/styrene.jpg
+    category: irritant
+    subcategory: aromatic_hydrocarbon
+    frequency: very_common
+    severity: high
+    typical_context: Thermal depolymerization of polystyrene
+    exposure_risk: high
+  - id: phosgene-compound
+    title: Phosgene
+    url: /compounds/toxic_gas/reactive_gas/phosgene-compound
+    image: /images/compounds/phosgene.jpg
+    category: toxic_gas
+    subcategory: reactive_gas
+    frequency: rare
+    severity: high
+    typical_context: Thermal breakdown of certain chlorinated plastics
+    exposure_risk: high
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/irritant/organic_vapor/vocs-compound
+    image: /images/compounds/vocs.jpg
+    category: irritant
+    subcategory: organic_vapor
+    frequency: common
+    severity: moderate
+    typical_context: Thermal decomposition products
+    exposure_risk: moderate
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/carcinogen/aromatic_hydrocarbon/benzene-compound
+    image: /images/compounds/benzene.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
+    frequency: common
+    severity: high
+    typical_context: Thermal decomposition of polystyrene and aromatic polymers
+    exposure_risk: high
+  - id: acrolein-compound
+    title: Acrolein
+    url: /compounds/toxic_gas/aldehyde/acrolein-compound
+    image: /images/compounds/acrolein.jpg
+    category: toxic_gas
+    subcategory: aldehyde
+    frequency: occasional
+    severity: moderate
+    typical_context: Pyrolysis of certain polymers
+    exposure_risk: moderate
   related_materials:
-  - id: Concrete
-    title: Concrete
-    url: /materials/Concrete
-    image: /images/materials/Concrete.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum
-    title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Steel
-    title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
+  - id: stainless-steel-laser-cleaning
     title: Stainless Steel
-    url: /materials/Stainless Steel
-    image: /images/materials/Stainless Steel.jpg
+    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+    image: /images/materials/stainless-steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: cast-iron
-    title: Cast Iron
-    url: /materials/cast-iron
-    image: /images/materials/cast-iron.jpg
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Copper
-    title: Copper
-    url: /materials/Copper
-    image: /images/materials/Copper.jpg
+  - id: aluminum-laser-cleaning
+    title: Aluminum
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: bronze
-    title: Bronze
-    url: /materials/bronze
-    image: /images/materials/bronze.jpg
+  - id: concrete-laser-cleaning
+    title: Concrete
+    url: /materials/masonry/general/concrete-laser-cleaning
+    image: /images/materials/concrete.jpg
+    category: masonry
+    subcategory: general
     frequency: common
     severity: moderate
     typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Titanium
-    title: Titanium
-    url: /materials/Titanium
-    image: /images/materials/Titanium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zinc
+  - id: zinc-laser-cleaning
     title: Zinc
-    url: /materials/Zinc
-    image: /images/materials/Zinc.jpg
+    url: /materials/metal/alloy/zinc-laser-cleaning
+    image: /images/materials/zinc.jpg
+    category: metal
+    subcategory: alloy
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Nickel
-    title: Nickel
-    url: /materials/Nickel
-    image: /images/materials/Nickel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Lead
-    title: Lead
-    url: /materials/Lead
-    image: /images/materials/Lead.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Tin
-    title: Tin
-    url: /materials/Tin
-    image: /images/materials/Tin.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Cobalt
-    title: Cobalt
-    url: /materials/Cobalt
-    image: /images/materials/Cobalt.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Chromium
-    title: Chromium
-    url: /materials/Chromium
-    image: /images/materials/Chromium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Crown Glass
+  - id: crown-glass-laser-cleaning
     title: Crown Glass
-    url: /materials/Crown Glass
-    image: /images/materials/Crown Glass.jpg
+    url: /materials/glass/soda-lime/crown-glass-laser-cleaning
+    image: /images/materials/crown-glass.jpg
+    category: glass
+    subcategory: soda-lime
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Float Glass
-    title: Float Glass
-    url: /materials/Float Glass
-    image: /images/materials/Float Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Borosilicate Glass
-    title: Borosilicate Glass
-    url: /materials/Borosilicate Glass
-    image: /images/materials/Borosilicate Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminosilicate Glass
+  - id: aluminosilicate-glass-laser-cleaning
     title: Aluminosilicate Glass
-    url: /materials/Aluminosilicate Glass
-    image: /images/materials/Aluminosilicate Glass.jpg
+    url: /materials/glass/specialty/aluminosilicate-glass-laser-cleaning
+    image: /images/materials/aluminosilicate-glass.jpg
+    category: glass
+    subcategory: specialty
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Fused Silica
-    title: Fused Silica
-    url: /materials/Fused Silica
-    image: /images/materials/Fused Silica.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Gorilla Glass
-    title: Gorilla Glass
-    url: /materials/Gorilla Glass
-    image: /images/materials/Gorilla Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Tempered Glass
+  - id: tempered-glass-laser-cleaning
     title: Tempered Glass
-    url: /materials/Tempered Glass
-    image: /images/materials/Tempered Glass.jpg
+    url: /materials/glass/specialty-glass/tempered-glass-laser-cleaning
+    image: /images/materials/tempered-glass.jpg
+    category: glass
+    subcategory: specialty-glass
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: titanium-laser-cleaning
+    title: Titanium
+    url: /materials/metal/specialty/titanium-laser-cleaning
+    image: /images/materials/titanium.jpg
+    category: metal
+    subcategory: specialty
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fused-silica-laser-cleaning
+    title: Fused Silica
+    url: /materials/glass/soda-lime/fused-silica-laser-cleaning
+    image: /images/materials/fused-silica.jpg
+    category: glass
+    subcategory: soda-lime
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: borosilicate-glass-laser-cleaning
+    title: Borosilicate Glass
+    url: /materials/glass/soda-lime/borosilicate-glass-laser-cleaning
+    image: /images/materials/borosilicate-glass.jpg
+    category: glass
+    subcategory: soda-lime
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: copper-laser-cleaning
+    title: Copper
+    url: /materials/metal/non-ferrous/copper-laser-cleaning
+    image: /images/materials/copper.jpg
+    category: metal
+    subcategory: non-ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cobalt-laser-cleaning
+    title: Cobalt
+    url: /materials/metal/specialty/cobalt-laser-cleaning
+    image: /images/materials/cobalt.jpg
+    category: metal
+    subcategory: specialty
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: float-glass-laser-cleaning
+    title: Float Glass
+    url: /materials/glass/soda-lime/float-glass-laser-cleaning
+    image: /images/materials/float-glass.jpg
+    category: glass
+    subcategory: soda-lime
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: gorilla-glass-laser-cleaning
+    title: Gorilla Glass
+    url: /materials/glass/soda-lime/gorilla-glass-laser-cleaning
+    image: /images/materials/gorilla-glass.jpg
+    category: glass
+    subcategory: soda-lime
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: tin-laser-cleaning
+    title: Tin
+    url: /materials/metal/alloy/tin-laser-cleaning
+    image: /images/materials/tin.jpg
+    category: metal
+    subcategory: alloy
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lead-laser-cleaning
+    title: Lead
+    url: /materials/metal/non-ferrous/lead-laser-cleaning
+    image: /images/materials/lead.jpg
+    category: metal
+    subcategory: non-ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chromium-laser-cleaning
+    title: Chromium
+    url: /materials/metal/specialty/chromium-laser-cleaning
+    image: /images/materials/chromium.jpg
+    category: metal
+    subcategory: specialty
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: nickel-laser-cleaning
+    title: Nickel
+    url: /materials/metal/specialty/nickel-laser-cleaning
+    image: /images/materials/nickel.jpg
+    category: metal
+    subcategory: specialty
     frequency: common
     severity: moderate
     typical_context: general
@@ -181,8 +311,7 @@ author:
   - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
   email: info@z-beam.com
   image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
-    Materials Dept., in research lab
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
   url: https://z-beam.com/authors/alessandro-moretti-phd
   sameAs:
   - https://scholar.google.com/citations?user=def456
@@ -191,8 +320,6 @@ author:
   formatting_file: italy_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.704308'
-dateModified: '2025-12-16T14:49:04.704308'
 _metadata:
   voice:
     author_name: Alessandro Moretti
@@ -200,15 +327,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Degraded Polymer Deposits Contamination
-contamination_description: Plastic-residue contamination, it manifests as melted,
-  degraded, or oxidized layers from heat exposure or UV degradation, which distinguishes
-  itself from inorganic rusts by its viscoelastic, non-brittle nature that clings
-  irregularly. On metals such as steel and aluminum, the residue adheres tenaciously,
-  influenced from surface porosity, while on glass it spreads thinly yet persistently,
-  leading to challenges in removal due to its thermal sensitivity and potential for
-  re-melting during cleaning. Laser cleaning proves effective, as the process vaporizes
-  the residue selectively, that demonstrates preservation of the substrate integrity
-  without mechanical abrasion.
+contamination_description: Plastic-residue contamination, it manifests as melted, degraded, or oxidized layers from heat exposure or UV degradation, which distinguishes itself from inorganic rusts by its viscoelastic, non-brittle nature that clings irregularly. On metals such as steel and aluminum, the residue adheres tenaciously, influenced from surface porosity, while on glass it spreads thinly yet persistently, leading to challenges in removal due to its thermal sensitivity and potential for re-melting during cleaning. Laser cleaning proves effective, as the process vaporizes the residue selectively, that demonstrates preservation of the substrate integrity without mechanical abrasion.
 breadcrumb:
 - label: Home
   href: /

@@ -1,12 +1,16 @@
+id: shale-settings
 name: Shale
 slug: shale-settings
+category: stone
+subcategory: sedimentary
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.130723'
+dateModified: '2025-12-16T17:59:18.130723'
 domain: settings
-datePublished: '2025-12-16T14:50:07.376730'
-dateModified: '2025-12-16T14:50:07.376730'
 machineSettings:
   powerRange:
-    description: Optimal average power for Shale surface cleaning without thermal
-      damage
+    description: Optimal average power for Shale surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
@@ -26,8 +30,7 @@ machineSettings:
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for efficient Shale ablation with minimal
-      heat diffusion
+    description: Nanosecond pulse duration for efficient Shale ablation with minimal heat diffusion
     unit: ns
     value: 12
   scanSpeed:

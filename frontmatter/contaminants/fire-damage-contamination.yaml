@@ -3,138 +3,200 @@ name: Fire and Smoke Damage
 slug: fire-damage-contamination
 category: thermal-damage
 subcategory: fire
+datePublished: '2025-12-16T21:08:14.773956'
+dateModified: '2025-12-16T21:08:14.773956'
 domain_linkages:
+  produces_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/toxic_gas/asphyxiant/carbon-monoxide-compound
+    image: /images/compounds/carbon-monoxide.jpg
+    category: toxic_gas
+    subcategory: asphyxiant
+    frequency: very_common
+    severity: high
+    typical_context: Pre-existing carbon compounds vaporizing
+    exposure_risk: high
+  - id: benzoapyrene-compound
+    title: Benzo[a]pyrene
+    url: /compounds/carcinogen/polycyclic_aromatic_hydrocarbon/benzoapyrene-compound
+    image: /images/compounds/benzoapyrene.jpg
+    category: carcinogen
+    subcategory: polycyclic_aromatic_hydrocarbon
+    frequency: common
+    severity: high
+    typical_context: Formed during fire events
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/carcinogen/aromatic_hydrocarbon/pahs-compound
+    image: /images/compounds/pahs.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
+    frequency: very_common
+    severity: high
+    typical_context: Pre-existing PAHs from fire events
+    exposure_risk: high
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Concrete
-    title: Concrete
-    url: /materials/Concrete
-    image: /images/materials/Concrete.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Granite
-    title: Granite
-    url: /materials/Granite
-    image: /images/materials/Granite.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Marble
-    title: Marble
-    url: /materials/Marble
-    image: /images/materials/Marble.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Limestone
-    title: Limestone
-    url: /materials/Limestone
-    image: /images/materials/Limestone.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Sandstone
-    title: Sandstone
-    url: /materials/Sandstone
-    image: /images/materials/Sandstone.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Basalt
-    title: Basalt
-    url: /materials/Basalt
-    image: /images/materials/Basalt.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Slate
-    title: Slate
-    url: /materials/Slate
-    image: /images/materials/Slate.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Quartzite
+  - id: quartzite-laser-cleaning
     title: Quartzite
-    url: /materials/Quartzite
-    image: /images/materials/Quartzite.jpg
+    url: /materials/stone/sedimentary/quartzite-laser-cleaning
+    image: /images/materials/quartzite.jpg
+    category: stone
+    subcategory: sedimentary
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Travertine
+  - id: concrete-laser-cleaning
+    title: Concrete
+    url: /materials/masonry/general/concrete-laser-cleaning
+    image: /images/materials/concrete.jpg
+    category: masonry
+    subcategory: general
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: granite-laser-cleaning
+    title: Granite
+    url: /materials/stone/igneous/granite-laser-cleaning
+    image: /images/materials/granite.jpg
+    category: stone
+    subcategory: igneous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: travertine-laser-cleaning
     title: Travertine
-    url: /materials/Travertine
-    image: /images/materials/Travertine.jpg
+    url: /materials/stone/natural/travertine-laser-cleaning
+    image: /images/materials/travertine.jpg
+    category: stone
+    subcategory: natural
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Bluestone
+  - id: bluestone-laser-cleaning
     title: Bluestone
-    url: /materials/Bluestone
-    image: /images/materials/Bluestone.jpg
+    url: /materials/stone/sedimentary/bluestone-laser-cleaning
+    image: /images/materials/bluestone.jpg
+    category: stone
+    subcategory: sedimentary
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Soapstone
-    title: Soapstone
-    url: /materials/Soapstone
-    image: /images/materials/Soapstone.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Alumina
-    title: Alumina
-    url: /materials/Alumina
-    image: /images/materials/Alumina.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: silicon-carbide
-    title: Silicon Carbide
-    url: /materials/silicon-carbide
-    image: /images/materials/silicon-carbide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zirconia
-    title: Zirconia
-    url: /materials/Zirconia
-    image: /images/materials/Zirconia.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum Nitride
-    title: Aluminum Nitride
-    url: /materials/Aluminum Nitride
-    image: /images/materials/Aluminum Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Boron Carbide
+  - id: boron-carbide-laser-cleaning
     title: Boron Carbide
-    url: /materials/Boron Carbide
-    image: /images/materials/Boron Carbide.jpg
+    url: /materials/ceramic/carbide/boron-carbide-laser-cleaning
+    image: /images/materials/boron-carbide.jpg
+    category: ceramic
+    subcategory: carbide
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Boron Nitride
+  - id: limestone-laser-cleaning
+    title: Limestone
+    url: /materials/stone/sedimentary/limestone-laser-cleaning
+    image: /images/materials/limestone.jpg
+    category: stone
+    subcategory: sedimentary
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: soapstone-laser-cleaning
+    title: Soapstone
+    url: /materials/stone/sedimentary/soapstone-laser-cleaning
+    image: /images/materials/soapstone.jpg
+    category: stone
+    subcategory: sedimentary
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: boron-nitride-laser-cleaning
     title: Boron Nitride
-    url: /materials/Boron Nitride
-    image: /images/materials/Boron Nitride.jpg
+    url: /materials/ceramic/technical/boron-nitride-laser-cleaning
+    image: /images/materials/boron-nitride.jpg
+    category: ceramic
+    subcategory: technical
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Silicon Nitride
+  - id: silicon-nitride-laser-cleaning
     title: Silicon Nitride
-    url: /materials/Silicon Nitride
-    image: /images/materials/Silicon Nitride.jpg
+    url: /materials/ceramic/oxide/silicon-nitride-laser-cleaning
+    image: /images/materials/silicon-nitride.jpg
+    category: ceramic
+    subcategory: oxide
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: basalt-laser-cleaning
+    title: Basalt
+    url: /materials/stone/igneous/basalt-laser-cleaning
+    image: /images/materials/basalt.jpg
+    category: stone
+    subcategory: igneous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: sandstone-laser-cleaning
+    title: Sandstone
+    url: /materials/stone/sedimentary/sandstone-laser-cleaning
+    image: /images/materials/sandstone.jpg
+    category: stone
+    subcategory: sedimentary
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: zirconia-laser-cleaning
+    title: Zirconia
+    url: /materials/ceramic/oxide/zirconia-laser-cleaning
+    image: /images/materials/zirconia.jpg
+    category: ceramic
+    subcategory: oxide
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: aluminum-nitride-laser-cleaning
+    title: Aluminum Nitride
+    url: /materials/ceramic/technical/aluminum-nitride-laser-cleaning
+    image: /images/materials/aluminum-nitride.jpg
+    category: ceramic
+    subcategory: technical
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: marble-laser-cleaning
+    title: Marble
+    url: /materials/stone/metamorphic/marble-laser-cleaning
+    image: /images/materials/marble.jpg
+    category: stone
+    subcategory: metamorphic
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: alumina-laser-cleaning
+    title: Alumina
+    url: /materials/ceramic/oxide/alumina-laser-cleaning
+    image: /images/materials/alumina.jpg
+    category: ceramic
+    subcategory: oxide
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: slate-laser-cleaning
+    title: Slate
+    url: /materials/stone/metamorphic/slate-laser-cleaning
+    image: /images/materials/slate.jpg
+    category: stone
+    subcategory: metamorphic
     frequency: common
     severity: moderate
     typical_context: general
@@ -160,8 +222,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -170,8 +231,6 @@ author:
   formatting_file: indonesia_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.250555'
-dateModified: '2025-12-16T14:49:04.250555'
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -179,16 +238,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Fire and Smoke Damage Contamination
-contamination_description: Fire-damage contamination consists of char, soot, and thermal
-  degradation products, which form when intense heat from fires decomposes organic
-  matter and deposits irregular residues on surfaces. This contamination, it exhibits
-  unique carbonaceous layering and strong chemical bonding that distinguish it from
-  simpler particulates like dust, thus adheres tenaciously to porous substrates such
-  as concrete and sandstone, where it infiltrates cracks and resists mechanical scraping
-  without risking material erosion. Key challenges arise from uneven thickness and
-  heat sensitivity, yet laser cleaning proves effective, as selective ablation vaporizes
-  the residues layer by layer while preserving durable bases like steel and granite
-  intact.
+contamination_description: Fire-damage contamination consists of char, soot, and thermal degradation products, which form when intense heat from fires decomposes organic matter and deposits irregular residues on surfaces. This contamination, it exhibits unique carbonaceous layering and strong chemical bonding that distinguish it from simpler particulates like dust, thus adheres tenaciously to porous substrates such as concrete and sandstone, where it infiltrates cracks and resists mechanical scraping without risking material erosion. Key challenges arise from uneven thickness and heat sensitivity, yet laser cleaning proves effective, as selective ablation vaporizes the residues layer by layer while preserving durable bases like steel and granite intact.
 breadcrumb:
 - label: Home
   href: /

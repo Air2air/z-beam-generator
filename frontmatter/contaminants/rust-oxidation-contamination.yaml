@@ -3,40 +3,46 @@ name: Rust / Iron Oxide Formation
 slug: rust-oxidation-contamination
 category: oxidation
 subcategory: ferrous
+datePublished: '2025-12-16T21:08:15.341694'
+dateModified: '2025-12-16T21:08:15.341694'
 domain_linkages:
+  produces_compounds:
+  - id: nitrogen-oxides-compound
+    title: Nitrogen Oxides
+    url: /compounds/toxic_gas/oxidizing_gas/nitrogen-oxides-compound
+    image: /images/compounds/nitrogen-oxides.jpg
+    category: toxic_gas
+    subcategory: oxidizing_gas
+    frequency: common
+    severity: low
+    typical_context: High-temperature oxidation during laser cleaning
+    exposure_risk: low
+  - id: iron-oxide-compound
+    title: Iron Oxide Fume
+    url: /compounds/metal_fume/metal_oxide/iron-oxide-compound
+    image: /images/compounds/iron-oxide.jpg
+    category: metal_fume
+    subcategory: metal_oxide
+    frequency: very_common
+    severity: high
+    typical_context: Vaporization of iron oxide
+    exposure_risk: high
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Iron
+  - id: iron-laser-cleaning
     title: Iron
-    url: /materials/Iron
-    image: /images/materials/Iron.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cast-iron
-    title: Cast Iron
-    url: /materials/cast-iron
-    image: /images/materials/cast-iron.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbon-steel
-    title: Carbon Steel
-    url: /materials/carbon-steel
-    image: /images/materials/carbon-steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: wrought-iron
-    title: Wrought Iron
-    url: /materials/wrought-iron
-    image: /images/materials/wrought-iron.jpg
+    url: /materials/metal/ferrous/iron-laser-cleaning
+    image: /images/materials/iron.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -60,8 +66,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -71,8 +76,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.840682'
-dateModified: '2025-12-16T14:49:04.840682'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -80,32 +83,19 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Rust / Iron Oxide Formation Contamination
-contamination_description: 'Rust forms on iron through moisture and oxygen exposure.
-  It creates reddish flaky layer over time. Before protection, reaction starts at
-  scratches, so contamination develops gradually.
+contamination_description: 'Rust forms on iron through moisture and oxygen exposure. It creates reddish flaky layer over time. Before protection, reaction starts at scratches, so contamination develops gradually.
 
 
-  After exposure, rust expands progressively and adheres strongly. Dust settles loosely
-  and brushes away easily, but rust penetrates deeper and weakens base material. Oils
-  form uniform films without expansion, while rust causes ongoing degradation, as
-  observations indicate.
+  After exposure, rust expands progressively and adheres strongly. Dust settles loosely and brushes away easily, but rust penetrates deeper and weakens base material. Oils form uniform films without expansion, while rust causes ongoing degradation, as observations indicate.
 
 
-  On steel, rust behaves aggressively and burrows into structure, leading to brittleness.
-  In contrast, on wrought iron, it stays more superficial and peels off with less
-  resistance. This difference highlights how material reactivity influences penetration
-  depth and overall impact.
+  On steel, rust behaves aggressively and burrows into structure, leading to brittleness. In contrast, on wrought iron, it stays more superficial and peels off with less resistance. This difference highlights how material reactivity influences penetration depth and overall impact.
 
 
-  Removal challenges arise because rust clings tightly and recurs if moisture persists.
-  Mechanical scraping risks further surface damage, and incomplete removal allows
-  regrowth, so careful methods are needed.
+  Removal challenges arise because rust clings tightly and recurs if moisture persists. Mechanical scraping risks further surface damage, and incomplete removal allows regrowth, so careful methods are needed.
 
 
-  Laser cleaning proves effective for rust because it targets layer precisely without
-  contacting surface. Heat vaporizes oxide, so underlying material remains intact.
-  After treatment, surface exhibits cleanliness and uniformity, preventing weakening
-  over time.'
+  Laser cleaning proves effective for rust because it targets layer precisely without contacting surface. Heat vaporizes oxide, so underlying material remains intact. After treatment, surface exhibits cleanliness and uniformity, preventing weakening over time.'
 breadcrumb:
 - label: Home
   href: /
@@ -210,8 +200,7 @@ laser_properties:
       skin_protection: gloves
     substrate_compatibility_warnings:
     - Avoid laser cleaning on painted surfaces containing lead or chromates
-    - Ensure substrate is free of oils, solvents, or other contaminants that may produce
-      toxic fumes
+    - Ensure substrate is free of oils, solvents, or other contaminants that may produce toxic fumes
     - Check for galvanized coatings that may produce zinc oxide fume
     toxic_gas_risk: low
     ventilation_requirements:

@@ -3,19 +3,25 @@ name: Automotive Road Grime
 slug: road-grime-contamination
 category: organic-residue
 subcategory: other
+datePublished: '2025-12-16T21:08:15.310273'
+dateModified: '2025-12-16T21:08:15.310273'
 domain_linkages:
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Aluminum
+  - id: aluminum-laser-cleaning
     title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -40,8 +46,7 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -50,8 +55,6 @@ author:
   formatting_file: usa_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.813696'
-dateModified: '2025-12-16T14:49:04.813696'
 _metadata:
   voice:
     author_name: Todd Dunning
@@ -59,15 +62,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Automotive Road Grime Contamination
-contamination_description: Road-grime contamination builds up on vehicle surfaces
-  during everyday driving, as dirt particles mix with oil residues and salt from winter
-  roads or coastal sprays, creating a stubborn layered film that clings tightly unlike
-  simpler dust or rust alone. This mix sets in differently on steel, where it accelerates
-  corrosion through salt's moisture-trapping action, versus aluminum, which resists
-  deeper pitting but still faces adhesive oil buildup that dulls finishes over time.
-  Laser cleaning tackles these challenges effectively by vaporizing the grime layer
-  without damaging underlying metals, ramping up removal speed while cutting down
-  on chemical use for a clean, efficient process.
+contamination_description: Road-grime contamination builds up on vehicle surfaces during everyday driving, as dirt particles mix with oil residues and salt from winter roads or coastal sprays, creating a stubborn layered film that clings tightly unlike simpler dust or rust alone. This mix sets in differently on steel, where it accelerates corrosion through salt's moisture-trapping action, versus aluminum, which resists deeper pitting but still faces adhesive oil buildup that dulls finishes over time. Laser cleaning tackles these challenges effectively by vaporizing the grime layer without damaging underlying metals, ramping up removal speed while cutting down on chemical use for a clean, efficient process.
 breadcrumb:
 - label: Home
   href: /
@@ -189,8 +184,7 @@ laser_properties:
       respiratory: PAPR
       skin_protection: gloves
     substrate_compatibility_warnings:
-    - Laser parameters must be carefully controlled to prevent substrate damage to
-      underlying automotive surfaces
+    - Laser parameters must be carefully controlled to prevent substrate damage to underlying automotive surfaces
     - Thermal buildup may damage paint, clear coat, or plastic components
     - Reflective surfaces may create beam deflection hazards
     toxic_gas_risk: moderate

@@ -1,16 +1,30 @@
+id: iron-settings
 name: Iron
 slug: iron-settings
+category: metal
+subcategory: ferrous
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.908454'
+dateModified: '2025-12-16T17:59:17.908454'
+domain_linkages:
+  contaminants:
+  - forging-scale
+  - grease-deposits
+  - rust-oxidation
+  - zinc-plating
+  compounds:
+  - iron-oxide-compound
+  - nitrogen-oxides-compound
+  - zinc-oxide-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.233165'
-dateModified: '2025-12-16T14:50:07.233165'
 machineSettings:
   powerRange:
     description: Optimal average power for Iron oxide removal without substrate damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength with good absorption in Iron oxides and minimal
-      substrate damage
+    description: Near-IR wavelength with good absorption in Iron oxides and minimal substrate damage
     unit: nm
     value: 1064
   spotSize:
@@ -38,7 +52,6 @@ machineSettings:
     unit: passes
     value: 2
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
     unit: '%'
     value: 50

@@ -1,17 +1,20 @@
+id: titanium-carbide-settings
 name: Titanium Carbide
 slug: titanium-carbide-settings
+category: ceramic
+subcategory: carbide
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.233270'
+dateModified: '2025-12-16T17:59:18.233270'
 domain: settings
-datePublished: '2025-12-16T14:50:07.439205'
-dateModified: '2025-12-16T14:50:07.439205'
 machineSettings:
   powerRange:
-    description: Optimal average power for Titanium Carbide surface cleaning without
-      substrate damage
+    description: Optimal average power for Titanium Carbide surface cleaning without substrate damage
     unit: W
     value: 150
   wavelength:
-    description: Near-IR wavelength optimized for Titanium Carbide absorption and
-      minimal substrate interaction
+    description: Near-IR wavelength optimized for Titanium Carbide absorption and minimal substrate interaction
     unit: nm
     value: 1064
   spotSize:
@@ -19,18 +22,15 @@ machineSettings:
     unit: μm
     value: 50
   repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage with thermal
-      management
+    description: Optimal repetition rate for continuous cleaning coverage with thermal management
     unit: kHz
     value: 50
   fluenceThreshold:
-    description: Minimum fluence required for effective Titanium Carbide contaminant
-      removal
+    description: Minimum fluence required for effective Titanium Carbide contaminant removal
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for efficient ablation of Titanium Carbide
-      contaminants
+    description: Nanosecond pulse duration for efficient ablation of Titanium Carbide contaminants
     unit: ns
     value: 15
   scanSpeed:
@@ -42,7 +42,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     unit: '%'
     value: 50

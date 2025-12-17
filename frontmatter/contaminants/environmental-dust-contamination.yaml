@@ -3,24 +3,19 @@ name: Environmental Dust Layer
 slug: environmental-dust-contamination
 category: organic-residue
 subcategory: other
+datePublished: '2025-12-16T21:08:14.713179'
+dateModified: '2025-12-16T21:08:14.713179'
 micro:
-  after: Post-cleaning reveals restored surface with environmental dust layer successfully
-    removed through precise laser ablation.
-  before: Surface shows contamination from environmental dust layer affecting material
-    appearance and properties.
+  after: Post-cleaning reveals restored surface with environmental dust layer successfully removed through precise laser ablation.
+  before: Surface shows contamination from environmental dust layer affecting material appearance and properties.
 domain_linkages:
   related_materials:
-  - id: all
-    title: All
-    url: /materials/all
-    image: /images/materials/all.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Redwood
+  - id: redwood-laser-cleaning
     title: Redwood
-    url: /materials/Redwood
-    image: /images/materials/Redwood.jpg
+    url: /materials/wood/hardwood/redwood-laser-cleaning
+    image: /images/materials/redwood.jpg
+    category: wood
+    subcategory: hardwood
     frequency: common
     severity: moderate
     typical_context: general
@@ -46,8 +41,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -56,8 +50,6 @@ author:
   formatting_file: indonesia_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.194735'
-dateModified: '2025-12-16T14:49:04.194735'
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -65,12 +57,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Environmental Dust Layer Contamination
-contamination_description: Environmental dust, it comprises fine particulates from
-  air. This contamination forms by settling on surfaces after atmospheric exposure,
-  and thus creates universal thin layers on all materials. Distinct from thicker residues
-  by its light adhesion and variable buildup, it clings evenly yet reaccumulates quickly,
-  thus poses removal challenges through mechanical means, so laser cleaning ablates
-  selectively and restores cleanliness effectively.
+contamination_description: Environmental dust, it comprises fine particulates from air. This contamination forms by settling on surfaces after atmospheric exposure, and thus creates universal thin layers on all materials. Distinct from thicker residues by its light adhesion and variable buildup, it clings evenly yet reaccumulates quickly, thus poses removal challenges through mechanical means, so laser cleaning ablates selectively and restores cleanliness effectively.
 breadcrumb:
 - label: Home
   href: /
@@ -87,8 +74,7 @@ images:
   micro:
     url: /images/contaminants/environmental-dust-contamination-micro.jpg
     alt: Environmental Dust Layer contamination microscopic detail
-context_notes: Universal contamination - appears on all materials. Thickness varies
-  by exposure and cleaning frequency.
+context_notes: Universal contamination - appears on all materials. Thickness varies by exposure and cleaning frequency.
 laser_properties:
   laser_parameters:
     beam_profile: flat_top
@@ -191,8 +177,7 @@ laser_properties:
       skin_protection: gloves
     substrate_compatibility_warnings:
     - Laser parameters must be optimized to prevent substrate damage
-    - Avoid laser cleaning on surfaces containing chlorinated compounds (risk of phosgene
-      gas)
+    - Avoid laser cleaning on surfaces containing chlorinated compounds (risk of phosgene gas)
     - Test on small area first to assess fume generation characteristics
     toxic_gas_risk: low
     ventilation_requirements:

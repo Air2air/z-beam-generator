@@ -1,50 +1,13 @@
+id: brass-settings
 name: Brass
 slug: brass-settings
-domain_linkages:
-  contaminants:
-  - adhesive-residue-contamination
-  - algae-growth-contamination
-  - battery-corrosion-contamination
-  - biological-stains-contamination
-  - bronze-patina-contamination
-  - carbon-soot-contamination
-  - chemical-stains-contamination
-  - coolant-scale-contamination
-  - copper-patina-contamination
-  - copper-plating-contamination
-  - cutting-fluid-contamination
-  - electroplating-residue-contamination
-  - epoxy-residue-contamination
-  - fertilizer-residue-contamination
-  - fuel-varnish-contamination
-  - gold-plating-contamination
-  - graffiti-paint-contamination
-  - graphite-marks-contamination
-  - ink-stains-contamination
-  - insect-residue-contamination
-  - laser-marking-contamination
-  - lime-scale-contamination
-  - mercury-contamination
-  - metal-polish-contamination
-  - mineral-deposits-contamination
-  - paint-residue-contamination
-  - pesticide-residue-contamination
-  - plastic-residue-contamination
-  - pollen-deposit-contamination
-  - radioactive-contamination
-  - rubber-residue-contamination
-  - salt-residue-contamination
-  - scale-buildup-contamination
-  - silicone-buildup-contamination
-  - silver-plating-contamination
-  - solder-flux-contamination
-  - tin-plating-contamination
-  - tree-sap-contamination
-  - water-stain-contamination
-  - wax-buildup-contamination
+category: metal
+subcategory: non-ferrous
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.727213'
+dateModified: '2025-12-16T17:59:17.727213'
 domain: settings
-datePublished: '2025-12-16T14:50:07.130019'
-dateModified: '2025-12-16T14:50:07.130019'
 machineSettings:
   powerRange:
     description: Optimal average power for Brass oxide removal without substrate damage
@@ -79,7 +42,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
     unit: '%'
     value: 50

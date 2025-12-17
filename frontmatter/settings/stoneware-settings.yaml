@@ -1,12 +1,16 @@
+id: stoneware-settings
 name: Stoneware
 slug: stoneware-settings
+category: ceramic
+subcategory: oxide
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.187335'
+dateModified: '2025-12-16T17:59:18.187335'
 domain: settings
-datePublished: '2025-12-16T14:50:07.409649'
-dateModified: '2025-12-16T14:50:07.409649'
 machineSettings:
   powerRange:
-    description: Optimal average power for Stoneware surface cleaning without thermal
-      damage
+    description: Optimal average power for Stoneware surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
@@ -22,8 +26,7 @@ machineSettings:
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence level for effective contaminant removal without substrate
-      damage
+    description: Fluence level for effective contaminant removal without substrate damage
     unit: J/cm²
     value: 5
   pulseWidth:

@@ -5,8 +5,8 @@ category: composite
 subcategory: fiber-reinforced
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:48:46.783715'
-dateModified: '2025-12-16T14:48:46.783715'
+datePublished: '2025-12-16T18:07:18.817352'
+dateModified: '2025-12-16T18:07:18.817352'
 author:
   id: 1
   name: Yi-Chun Lin
@@ -301,32 +301,40 @@ material_metadata:
 domain_linkages:
   related_contaminants:
   - id: aviation-sealant
-    title: Aviation Sealant
-    url: /contaminants/aviation-sealant
+    title: Aerospace Sealant Residue
+    url: /contaminants/organic-residue/adhesive/aviation-sealant-contamination
     image: /images/contaminants/aviation-sealant.jpg
+    category: organic-residue
+    subcategory: adhesive
     frequency: common
     severity: moderate
     typical_context: general
   - id: epoxy-residue
-    title: Epoxy Residue
-    url: /contaminants/epoxy-residue
+    title: Epoxy Resin Deposits
+    url: /contaminants/organic-residue/adhesive/epoxy-residue-contamination
     image: /images/contaminants/epoxy-residue.jpg
+    category: organic-residue
+    subcategory: adhesive
     frequency: common
     severity: moderate
     typical_context: general
   related_compounds:
   - id: carbon-monoxide-compound
     title: Carbon Monoxide
-    url: /compounds/carbon-monoxide
+    url: /compounds/toxic_gas/asphyxiant/carbon-monoxide-compound
     image: /images/compounds/carbon-monoxide.jpg
+    category: toxic_gas
+    subcategory: asphyxiant
     frequency: common
     severity: moderate
     typical_context: Thermal breakdown of epoxy resins
     exposure_risk: moderate
   - id: formaldehyde-compound
     title: Formaldehyde
-    url: /compounds/formaldehyde
+    url: /compounds/carcinogen/aldehyde/formaldehyde-compound
     image: /images/compounds/formaldehyde.jpg
+    category: carcinogen
+    subcategory: aldehyde
     frequency: occasional
     severity: low
     typical_context: Thermal degradation of certain epoxy formulations
@@ -345,4 +353,4 @@ serviceOffering:
     notes: Careful parameter control to avoid matrix damage
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-16T14:48:46.785982'
+    generated_date: '2025-12-16T18:07:18.819445'

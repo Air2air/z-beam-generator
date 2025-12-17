@@ -22,13 +22,13 @@ from pathlib import Path
 from typing import Dict, Any
 from collections import OrderedDict
 
-from shared.validation.domain_associations import DomainAssociationsValidator
-from shared.validation.field_order import FrontmatterFieldOrderValidator
+from export.core.base_trivial_exporter import BaseTrivialExporter
+from shared.data.author_loader import get_author
 
 logger = logging.getLogger(__name__)
 
 
-class TrivialContaminantsExporter:
+class TrivialContaminantsExporter(BaseTrivialExporter):
     """
     Trivial exporter: Copy Contaminants.yaml → Frontmatter YAML files.
     
@@ -41,21 +41,22 @@ class TrivialContaminantsExporter:
     """
     
     def __init__(self):
-        """Initialize with output directory."""
-        self.output_dir = Path(__file__).resolve().parents[2] / "frontmatter" / "contaminants"
-        self.output_dir.mkdir(parents=True, exist_ok=True)
-        self.logger = logging.getLogger(__name__)
+        """Initialize with output directory and load contaminants data."""
+        super().__init__('contaminants', 'contaminants')
         
         # Load source data
         self.contaminants_data = self._load_contaminants()
         
-        # Initialize validators for centralized systems
-        self.associations_validator = DomainAssociationsValidator()
-        self.associations_validator.load()
-        self.field_order_validator = FrontmatterFieldOrderValidator()
-        self.field_order_validator.load_schema()
-        
         self.logger.info(f"✅ Loaded {len(self.contaminants_data.get('contamination_patterns', {}))} contamination patterns")
+    
+    def _load_domain_data(self) -> Dict[str, Any]:
+        """
+        Abstract method implementation: Return contaminants data for base class.
+        
+        Returns:
+            Dict containing contamination_patterns and metadata
+        """
+        return self.contaminants_data
     
     def _load_contaminants(self) -> Dict[str, Any]:
         """Load Contaminants.yaml."""
@@ -105,23 +106,6 @@ class TrivialContaminantsExporter:
         
         return slug
     
-    def _strip_generation_metadata(self, data: Any) -> Any:
-        """
-        Recursively strip generation metadata fields from data structure.
-        
-        Removes: _generated_at, _generation_id, _model, _temperature, etc.
-        """
-        if isinstance(data, dict):
-            return {
-                k: self._strip_generation_metadata(v)
-                for k, v in data.items()
-                if not k.startswith('_') or k == '_metadata'  # Keep _metadata
-            }
-        elif isinstance(data, list):
-            return [self._strip_generation_metadata(item) for item in data]
-        else:
-            return data
-    
     def _build_breadcrumb(self, pattern_data: Dict, slug: str) -> list:
         """
         Build breadcrumb navigation for contamination pattern.
@@ -167,37 +151,17 @@ class TrivialContaminantsExporter:
             }
         }
     
-    def _build_domain_linkages(self, pattern_data: Dict, slug: str) -> Dict:
-        """
-        Generate domain_linkages from centralized associations.
-        
-        Creates bidirectional linkages:
-        - produces_compounds: Compounds produced by this contaminant (forward lookup)
-        - related_materials: Materials affected by this contaminant (from associations)
-        
-        Args:
-            pattern_data: Pattern data from Contaminants.yaml
-            slug: Contaminant slug (e.g., 'carbon-buildup-contamination')
-        
-        Returns:
-            Dict with domain_linkages structure
-        """
-        contaminant_id = slug  # ID already has -contamination suffix
-        linkages = {}
-        
-        # Get compounds produced by this contaminant (forward lookup)
-        produces_compounds = self.associations_validator.get_compounds_for_contaminant(contaminant_id)
-        if produces_compounds:
-            linkages['produces_compounds'] = produces_compounds
-        
-        # Get materials affected by this contaminant (bidirectional)
-        related_materials = self.associations_validator.get_materials_for_contaminant(contaminant_id)
-        if related_materials:
-            linkages['related_materials'] = related_materials
-        
-        return linkages
+    # DEPRECATED: Replaced by centralized DomainLinkagesService
+    # def _build_domain_linkages(self, pattern_data: Dict, slug: str) -> Dict:
+    #     """
+    #     OLD METHOD - Now using shared/services/domain_linkages_service.py
+    #     
+    #     This method has been replaced by DomainLinkagesService.generate_linkages()
+    #     for consistency across all exporters.
+    #     """
+    #     pass
     
-    def export_all(self, force: bool = False) -> Dict[str, bool]:
+    def export_all(self, force: bool = True) -> Dict[str, bool]:
         """
         Export all contamination patterns to frontmatter files.
         
@@ -274,22 +238,20 @@ class TrivialContaminantsExporter:
         frontmatter['schema_version'] = '4.0.0'
         
         # 7-8: Publishing Dates (Phase 1: Add date fields with ISO 8601 timestamps)
-        from datetime import datetime
-        current_timestamp = datetime.now().isoformat()
-        frontmatter['datePublished'] = pattern_data.get('datePublished') or current_timestamp
-        frontmatter['dateModified'] = pattern_data.get('dateModified') or current_timestamp
+        current_timestamp = self.generate_timestamp()
+        if 'datePublished' not in frontmatter or not frontmatter['datePublished']:
+            frontmatter['datePublished'] = current_timestamp
+        if 'dateModified' not in frontmatter or not frontmatter['dateModified']:
+            frontmatter['dateModified'] = current_timestamp
         
         # 9: Author (Phase 1: Add FULL author block from Authors.yaml)
         author_field = pattern_data.get('author', {})
         author_id = author_field.get('id') if isinstance(author_field, dict) else author_field
         
         if author_id:
-            # Get full author data from Authors.yaml
-            from shared.data.author_loader import get_author
+            # Use base class method to enrich author data
             try:
-                author_data = get_author(author_id)
-                # Use full author data with all 18 fields
-                frontmatter['author'] = author_data.copy()
+                frontmatter['author'] = self.enrich_author_data(author_id)
             except KeyError:
                 self.logger.warning(f"⚠️  Invalid author ID {author_id} for pattern {pattern_id}")
                 # Fallback to minimal author with just ID
@@ -314,7 +276,7 @@ class TrivialContaminantsExporter:
         
         # 12: Main Content (contamination_description - note naming consistency)
         if 'description' in pattern_data:
-            frontmatter['contamination_description'] = self._strip_generation_metadata(pattern_data['description'])
+            frontmatter['contamination_description'] = self.strip_generation_metadata(pattern_data['description'])
         
         # 13: Breadcrumb (Phase 1: Add navigation structure)
         frontmatter['breadcrumb'] = self._build_breadcrumb(pattern_data, slug)
@@ -324,45 +286,33 @@ class TrivialContaminantsExporter:
         
         # Domain-specific fields (in logical order)
         if 'micro' in pattern_data:
-            frontmatter['micro'] = self._strip_generation_metadata(pattern_data['micro'])
+            frontmatter['micro'] = self.strip_generation_metadata(pattern_data['micro'])
         
         if 'context_notes' in pattern_data:
             frontmatter['context_notes'] = pattern_data['context_notes']
         
         if 'laser_properties' in pattern_data:
-            frontmatter['laser_properties'] = self._strip_generation_metadata(pattern_data['laser_properties'])
+            frontmatter['laser_properties'] = self.strip_generation_metadata(pattern_data['laser_properties'])
         
         if 'eeat' in pattern_data:
-            frontmatter['eeat'] = self._strip_generation_metadata(pattern_data['eeat'])
+            frontmatter['eeat'] = self.strip_generation_metadata(pattern_data['eeat'])
         
         # Generate domain_linkages from centralized associations (replaces hardcoded copy)
-        frontmatter['domain_linkages'] = self._build_domain_linkages(pattern_data, slug)
+        frontmatter['domain_linkages'] = self.linkages_service.generate_linkages(slug, 'contaminants')
         
         # Backward compatibility: also export valid_materials if present
         if 'valid_materials' in pattern_data:
             frontmatter['valid_materials'] = pattern_data['valid_materials']
         
         if 'appearance' in pattern_data:
-            frontmatter['appearance'] = self._strip_generation_metadata(pattern_data['appearance'])
+            frontmatter['appearance'] = self.strip_generation_metadata(pattern_data['appearance'])
         
         if 'commonality_score' in pattern_data:
             frontmatter['commonality_score'] = pattern_data['commonality_score']
         
-        # Apply field order specification
-        ordered_frontmatter = self.field_order_validator.reorder_fields(frontmatter, 'contaminants')
-        
-        # Write to file with -contamination suffix
+        # Write to file using base class method (handles field ordering + YAML writing)
         filename = f"{slug}.yaml"
-        output_path = self.output_dir / filename
-        
-        with open(output_path, 'w', encoding='utf-8') as f:
-            yaml.dump(
-                dict(ordered_frontmatter),
-                f,
-                default_flow_style=False,
-                allow_unicode=True,
-                sort_keys=False
-            )
+        self.write_frontmatter_yaml(frontmatter, filename)
         
         self.logger.info(f"✅ Exported {pattern_id} → {filename}")
 

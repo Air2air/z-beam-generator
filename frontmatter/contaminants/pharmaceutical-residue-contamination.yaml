@@ -3,68 +3,79 @@ name: Pharmaceutical Drug Residue
 slug: pharmaceutical-residue-contamination
 category: chemical-residue
 subcategory: industrial
+datePublished: '2025-12-16T21:08:15.180518'
+dateModified: '2025-12-16T21:08:15.180518'
 domain_linkages:
   related_materials:
-  - id: Stainless Steel
+  - id: stainless-steel-laser-cleaning
     title: Stainless Steel
-    url: /materials/Stainless Steel
-    image: /images/materials/Stainless Steel.jpg
+    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+    image: /images/materials/stainless-steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: teflon
-    title: Teflon
-    url: /materials/teflon
-    image: /images/materials/teflon.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Crown Glass
+  - id: crown-glass-laser-cleaning
     title: Crown Glass
-    url: /materials/Crown Glass
-    image: /images/materials/Crown Glass.jpg
+    url: /materials/glass/soda-lime/crown-glass-laser-cleaning
+    image: /images/materials/crown-glass.jpg
+    category: glass
+    subcategory: soda-lime
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Float Glass
-    title: Float Glass
-    url: /materials/Float Glass
-    image: /images/materials/Float Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Borosilicate Glass
-    title: Borosilicate Glass
-    url: /materials/Borosilicate Glass
-    image: /images/materials/Borosilicate Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminosilicate Glass
+  - id: aluminosilicate-glass-laser-cleaning
     title: Aluminosilicate Glass
-    url: /materials/Aluminosilicate Glass
-    image: /images/materials/Aluminosilicate Glass.jpg
+    url: /materials/glass/specialty/aluminosilicate-glass-laser-cleaning
+    image: /images/materials/aluminosilicate-glass.jpg
+    category: glass
+    subcategory: specialty
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Fused Silica
-    title: Fused Silica
-    url: /materials/Fused Silica
-    image: /images/materials/Fused Silica.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Gorilla Glass
-    title: Gorilla Glass
-    url: /materials/Gorilla Glass
-    image: /images/materials/Gorilla Glass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Tempered Glass
+  - id: tempered-glass-laser-cleaning
     title: Tempered Glass
-    url: /materials/Tempered Glass
-    image: /images/materials/Tempered Glass.jpg
+    url: /materials/glass/specialty-glass/tempered-glass-laser-cleaning
+    image: /images/materials/tempered-glass.jpg
+    category: glass
+    subcategory: specialty-glass
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fused-silica-laser-cleaning
+    title: Fused Silica
+    url: /materials/glass/soda-lime/fused-silica-laser-cleaning
+    image: /images/materials/fused-silica.jpg
+    category: glass
+    subcategory: soda-lime
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: borosilicate-glass-laser-cleaning
+    title: Borosilicate Glass
+    url: /materials/glass/soda-lime/borosilicate-glass-laser-cleaning
+    image: /images/materials/borosilicate-glass.jpg
+    category: glass
+    subcategory: soda-lime
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: float-glass-laser-cleaning
+    title: Float Glass
+    url: /materials/glass/soda-lime/float-glass-laser-cleaning
+    image: /images/materials/float-glass.jpg
+    category: glass
+    subcategory: soda-lime
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: gorilla-glass-laser-cleaning
+    title: Gorilla Glass
+    url: /materials/glass/soda-lime/gorilla-glass-laser-cleaning
+    image: /images/materials/gorilla-glass.jpg
+    category: glass
+    subcategory: soda-lime
     frequency: common
     severity: moderate
     typical_context: general
@@ -90,8 +101,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -100,8 +110,6 @@ author:
   formatting_file: indonesia_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.635156'
-dateModified: '2025-12-16T14:49:04.635156'
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -109,11 +117,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Pharmaceutical Drug Residue Contamination
-contamination_description: Pharmaceutical-residue contamination, it arises from active
-  ingredient deposits during equipment processing. This residue, it forms sticky layers
-  and differs from mineral scales by organic stickiness that bonds deeply. On stainless
-  steel and glass, it clings unevenly and defies solvents, so removal challenges persist;
-  laser cleaning, it vaporizes residue selectively and leaves surfaces intact.
+contamination_description: Pharmaceutical-residue contamination, it arises from active ingredient deposits during equipment processing. This residue, it forms sticky layers and differs from mineral scales by organic stickiness that bonds deeply. On stainless steel and glass, it clings unevenly and defies solvents, so removal challenges persist; laser cleaning, it vaporizes residue selectively and leaves surfaces intact.
 breadcrumb:
 - label: Home
   href: /
@@ -231,8 +235,7 @@ laser_properties:
       respiratory: PAPR
       skin_protection: gloves
     substrate_compatibility_warnings:
-    - Laser parameters must be optimized to prevent substrate damage and excessive
-      pyrolysis
+    - Laser parameters must be optimized to prevent substrate damage and excessive pyrolysis
     - Residue composition may vary significantly between pharmaceutical products
     - Potential for secondary contamination of surrounding surfaces
     toxic_gas_risk: moderate

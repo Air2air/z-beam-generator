@@ -1,6 +1,10 @@
 # Generation Configuration
 # Single-pass production generation
 
+# Feature Flags
+features:
+  use_new_architecture: false  # Set to true to use refactored components (QualityOrchestrator, LearningIntegrator, ParameterManager)
+
 # Quality Gate Settings (used for post-generation analysis)
 # Thresholds for logging and learning - generation always succeeds
 quality_gates:

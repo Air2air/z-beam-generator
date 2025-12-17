@@ -1,12 +1,16 @@
+id: neodymium-settings
 name: Neodymium
 slug: neodymium-settings
+category: rare-earth
+subcategory: lanthanide
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.979337'
+dateModified: '2025-12-16T17:59:17.979337'
 domain: settings
-datePublished: '2025-12-16T14:50:07.277118'
-dateModified: '2025-12-16T14:50:07.277118'
 machineSettings:
   powerRange:
-    description: Optimal average power for Neodymium oxide removal without substrate
-      damage
+    description: Optimal average power for Neodymium oxide removal without substrate damage
     unit: W
     value: 100
   wavelength:
@@ -38,7 +42,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
     unit: '%'
     value: 50

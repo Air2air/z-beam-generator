@@ -1,27 +1,28 @@
+id: niobium-settings
 name: Niobium
 slug: niobium-settings
+category: metal
+subcategory: non-ferrous
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.991766'
+dateModified: '2025-12-16T17:59:17.991766'
 domain: settings
-datePublished: '2025-12-16T14:50:07.282295'
-dateModified: '2025-12-16T14:50:07.282295'
 machineSettings:
   powerRange:
-    description: Optimal average power for Niobium oxide removal without substrate
-      damage
+    description: Optimal average power for Niobium oxide removal without substrate damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength optimized for Niobium's absorption characteristics
-      and oxide layer removal
+    description: Near-IR wavelength optimized for Niobium's absorption characteristics and oxide layer removal
     unit: nm
     value: 1064
   spotSize:
-    description: Beam spot diameter for precise oxide removal with adequate cleaning
-      efficiency
+    description: Beam spot diameter for precise oxide removal with adequate cleaning efficiency
     unit: μm
     value: 50
   repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage with thermal
-      management
+    description: Optimal repetition rate for continuous cleaning coverage with thermal management
     unit: kHz
     value: 50
   fluenceThreshold:
@@ -29,8 +30,7 @@ machineSettings:
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for efficient oxide ablation with minimal
-      thermal penetration
+    description: Nanosecond pulse duration for efficient oxide ablation with minimal thermal penetration
     unit: ns
     value: 10
   scanSpeed:
@@ -42,7 +42,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
     unit: '%'
     value: 50

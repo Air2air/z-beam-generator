@@ -1,17 +1,20 @@
+id: willow-settings
 name: Willow
 slug: willow-settings
+category: wood
+subcategory: hardwood
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.266391'
+dateModified: '2025-12-16T17:59:18.266391'
 domain: settings
-datePublished: '2025-12-16T14:50:07.461708'
-dateModified: '2025-12-16T14:50:07.461708'
 machineSettings:
   powerRange:
-    description: Optimal average power for Willow surface cleaning without thermal
-      damage
+    description: Optimal average power for Willow surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-infrared wavelength optimized for Willow absorption and minimal
-      penetration
+    description: Near-infrared wavelength optimized for Willow absorption and minimal penetration
     unit: nm
     value: 1064
   spotSize:
@@ -19,28 +22,23 @@ machineSettings:
     unit: μm
     value: 100
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     unit: J/cm²
     value: 1.2
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
+    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
     unit: ns
     value: 10
   scanSpeed:
-    description: Optimal scanning speed for efficient area coverage and effective
-      cleaning
+    description: Optimal scanning speed for efficient area coverage and effective cleaning
     unit: mm/s
     value: 500
   passCount:
-    description: Optimal number of passes for complete cleaning without excessive
-      processing
+    description: Optimal number of passes for complete cleaning without excessive processing
     unit: passes
     value: 3
   overlapRatio:

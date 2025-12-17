@@ -3,19 +3,14 @@
 # Quick Deployment Script
 # =======================
 #
-# Deploys all domains and validates in 6 steps:
-# 1. Export materials (153 files) - NO API calls + ISO 8601 timestamps
-# 2. Export settings (153 files) - NO API calls + ISO 8601 timestamps
-# 3. Export contaminants (98 files) - NO API calls + ISO 8601 timestamps
-# 4. Export compounds (25 files) - NO API calls + ISO 8601 timestamps
+# Deploys all domains and validates in 4 steps:
+# 1-4. Export all domains (materials, settings, contaminants, compounds) via orchestrator
 # 5. Re-extract associations
 # 6. Run tests
 #
 # ⚠️ MANDATORY REQUIREMENT: All exporters MUST have ZERO API calls
-# - Materials: TrivialFrontmatterExporter - Simple YAML-to-YAML copy
-# - Settings: TrivialSettingsExporter - Simple YAML-to-YAML copy
-# - Contaminants: TrivialContaminantsExporter - Simple YAML-to-YAML copy
-# - Compounds: CompoundExporter - Simple YAML-to-YAML copy
+# - Uses scripts/operations/deploy_all.py for orchestrated export
+# - All exporters: Simple YAML-to-YAML copy (NO API calls)
 #
 # ✅ TIMESTAMP GENERATION: All exporters generate ISO 8601 timestamps
 # - datePublished: Generated on first export if missing
@@ -42,48 +37,9 @@ NC='\033[0m' # No Color
 
 cd "$(dirname "$0")/../.."
 
-# Step 1: Export Materials
-echo -e "${BLUE}📦 Step 1/6: Exporting Materials (NO API)...${NC}"
-python3 << 'EOF'
-from export.core.trivial_exporter import TrivialFrontmatterExporter
-exporter = TrivialFrontmatterExporter()
-print("Exporting 153 materials...")
-exporter.export_all(force=True)
-print("✅ Materials exported (NO API calls made)")
-EOF
-
-# Step 2: Export Settings
-echo ""
-echo -e "${BLUE}📦 Step 2/6: Exporting Settings (NO API)...${NC}"
-python3 << 'EOF'
-from export.settings.trivial_exporter import TrivialSettingsExporter
-exporter = TrivialSettingsExporter()
-print("Exporting 153 settings...")
-exporter.export_all(force=True)
-print("✅ Settings exported (NO API calls made)")
-EOF
-
-# Step 3: Export Contaminants  
-echo ""
-echo -e "${BLUE}📦 Step 3/6: Exporting Contaminants (NO API)...${NC}"
-python3 << 'EOF'
-from export.contaminants.trivial_exporter import TrivialContaminantsExporter
-exporter = TrivialContaminantsExporter()
-print("Exporting 98 contaminants...")
-exporter.export_all(force=True)
-print("✅ Contaminants exported (NO API calls made)")
-EOF
-
-# Step 4: Export Compounds
-echo ""
-echo -e "${BLUE}📦 Step 4/6: Exporting Compounds (NO API)...${NC}"
-python3 << 'EOF'
-from export.compounds.trivial_exporter import CompoundExporter
-exporter = CompoundExporter()
-print("Exporting 25 compounds...")
-exporter.export_all(force=True)
-print("✅ Compounds exported (NO API calls made)")
-EOF
+# Steps 1-4: Export All Domains (using orchestrator)
+echo -e "${BLUE}📦 Steps 1-4/6: Exporting All Domains (NO API)...${NC}"
+python3 scripts/operations/deploy_all.py --skip-tests
 
 # Step 5: Re-extract associations
 echo ""

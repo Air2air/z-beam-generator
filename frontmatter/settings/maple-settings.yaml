@@ -1,16 +1,43 @@
+id: maple-settings
 name: Maple
 slug: maple-settings
+category: wood
+subcategory: hardwood
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.957174'
+dateModified: '2025-12-16T17:59:17.957174'
+domain_linkages:
+  contaminants:
+  - adhesive-residue
+  - algae-growth
+  - lead-paint
+  - mold-mildew
+  - paint-residue
+  - wax-buildup
+  - wood-rot
+  compounds:
+  - acetaldehyde-compound
+  - benzene-compound
+  - carbon-dioxide-compound
+  - carbon-monoxide-compound
+  - chromium-vi-compound
+  - formaldehyde-compound
+  - hydrogen-chloride-compound
+  - hydrogen-cyanide-compound
+  - nitrogen-oxides-compound
+  - pahs-compound
+  - toluene-compound
+  - vocs-compound
+  - zinc-oxide-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.264080'
-dateModified: '2025-12-16T14:50:07.264080'
 machineSettings:
   powerRange:
     description: Optimal average power for surface cleaning without charring
     unit: W
     value: 45
   wavelength:
-    description: Near-IR wavelength for controlled wood ablation with minimal thermal
-      damage
+    description: Near-IR wavelength for controlled wood ablation with minimal thermal damage
     unit: nm
     value: 1064
   spotSize:
@@ -18,18 +45,15 @@ machineSettings:
     unit: μm
     value: 80
   repetitionRate:
-    description: Balanced repetition rate for efficient cleaning with controlled thermal
-      input
+    description: Balanced repetition rate for efficient cleaning with controlled thermal input
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
+    description: Fluence threshold for effective contaminant removal without wood damage
     unit: J/cm²
     value: 2.8
   pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate heating
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate heating
     unit: ns
     value: 12
   scanSpeed:
@@ -41,7 +65,6 @@ machineSettings:
     unit: passes
     value: 2
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     unit: '%'
     value: 50

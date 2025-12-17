@@ -1,16 +1,20 @@
+id: polyvinyl-chloride-settings
 name: Polyvinyl Chloride
 slug: polyvinyl-chloride-settings
+category: plastic
+subcategory: thermoplastic
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.056710'
+dateModified: '2025-12-16T17:59:18.056710'
 domain: settings
-datePublished: '2025-12-16T14:50:07.325428'
-dateModified: '2025-12-16T14:50:07.325428'
 machineSettings:
   powerRange:
     description: Optimal average power for PVC cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength for optimal PVC absorption and minimal substrate
-      damage
+    description: Near-IR wavelength for optimal PVC absorption and minimal substrate damage
     unit: nm
     value: 1064
   spotSize:

@@ -3,19 +3,25 @@ name: Acid Pickling Stains
 slug: pickling-residue-contamination
 category: inorganic-coating
 subcategory: coating
+datePublished: '2025-12-16T21:08:15.193661'
+dateModified: '2025-12-16T21:08:15.193661'
 domain_linkages:
   related_materials:
-  - id: Stainless Steel
+  - id: stainless-steel-laser-cleaning
     title: Stainless Steel
-    url: /materials/Stainless Steel
-    image: /images/materials/Stainless Steel.jpg
+    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+    image: /images/materials/stainless-steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -39,8 +45,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -50,8 +55,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.647717'
-dateModified: '2025-12-16T14:49:04.647717'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -59,11 +62,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Acid Pickling Stains Contamination
-contamination_description: After pickling process, residue forms from acid and iron
-  salts on steel surfaces so contamination builds up. This residue shows crystalline
-  patterns, distinct from rust because it dissolves in water unlike fixed oxides.
-  On stainless steel, it causes pitting and laser cleaning removes it effectively
-  by targeted ablation without damaging substrate.
+contamination_description: After pickling process, residue forms from acid and iron salts on steel surfaces so contamination builds up. This residue shows crystalline patterns, distinct from rust because it dissolves in water unlike fixed oxides. On stainless steel, it causes pitting and laser cleaning removes it effectively by targeted ablation without damaging substrate.
 breadcrumb:
 - label: Home
   href: /

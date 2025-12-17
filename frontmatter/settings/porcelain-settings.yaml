@@ -1,17 +1,23 @@
+id: porcelain-settings
 name: Porcelain
 slug: porcelain-settings
+category: ceramic
+subcategory: oxide
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.064942'
+dateModified: '2025-12-16T17:59:18.064942'
+domain_linkages:
+  contaminants:
+  - ceramic-glaze
 domain: settings
-datePublished: '2025-12-16T14:50:07.330578'
-dateModified: '2025-12-16T14:50:07.330578'
 machineSettings:
   powerRange:
-    description: Optimal average power for Porcelain surface cleaning without thermal
-      damage
+    description: Optimal average power for Porcelain surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-infrared wavelength optimized for Porcelain absorption and minimal
-      substrate damage
+    description: Near-infrared wavelength optimized for Porcelain absorption and minimal substrate damage
     unit: nm
     value: 1064
   spotSize:
@@ -19,18 +25,15 @@ machineSettings:
     unit: μm
     value: 100
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective contaminant removal while preserving
-      Porcelain substrate
+    description: Fluence threshold for effective contaminant removal while preserving Porcelain substrate
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
+    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
     unit: ns
     value: 10
   scanSpeed:
@@ -42,8 +45,7 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage without excessive
-      thermal buildup
+    description: Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup
     unit: '%'
     value: 50
   dwellTime:

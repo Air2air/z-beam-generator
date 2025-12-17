@@ -1,17 +1,43 @@
+id: travertine-settings
 name: Travertine
 slug: travertine-settings
+category: stone
+subcategory: natural
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.241972'
+dateModified: '2025-12-16T17:59:18.241972'
+domain_linkages:
+  contaminants:
+  - algae-growth
+  - biological-stains
+  - bitumen-tar
+  - carbon-soot
+  - ceramic-glaze
+  - concrete-dust
+  - efflorescence
+  - fertilizer-residue
+  - fire-damage
+  - graffiti-paint
+  - mineral-deposits
+  - mineral-stain
+  - salt-residue
+  - scale-buildup
+  - water-stain
+  compounds:
+  - benzoapyrene-compound
+  - carbon-monoxide-compound
+  - pahs-compound
+  - toluene-compound
+  - vocs-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.446391'
-dateModified: '2025-12-16T14:50:07.446391'
 machineSettings:
   powerRange:
-    description: Optimal average power for Travertine surface cleaning without thermal
-      damage
+    description: Optimal average power for Travertine surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength optimized for Travertine absorption and minimal
-      substrate damage
+    description: Near-IR wavelength optimized for Travertine absorption and minimal substrate damage
     unit: nm
     value: 1064
   spotSize:
@@ -19,18 +45,15 @@ machineSettings:
     unit: μm
     value: 100
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and process
-      speed
+    description: Optimal repetition rate for efficient cleaning coverage and process speed
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence level sufficient for contaminant removal below Travertine
-      damage threshold
+    description: Fluence level sufficient for contaminant removal below Travertine damage threshold
     unit: J/cm²
     value: 1.5
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal penetration
+    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
     unit: ns
     value: 10
   scanSpeed:
@@ -42,7 +65,6 @@ machineSettings:
     unit: passes
     value: 2
   overlapRatio:
-    description: Optimal beam overlap for complete coverage without excessive energy
-      deposition
+    description: Optimal beam overlap for complete coverage without excessive energy deposition
     unit: '%'
     value: 30

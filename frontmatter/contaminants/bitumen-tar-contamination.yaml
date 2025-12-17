@@ -3,89 +3,136 @@ name: Bitumen and Tar Coatings
 slug: bitumen-tar-contamination
 category: organic-residue
 subcategory: petroleum
+datePublished: '2025-12-16T21:08:14.413777'
+dateModified: '2025-12-16T21:08:14.413777'
 domain_linkages:
+  produces_compounds:
+  - id: benzoapyrene-compound
+    title: Benzo[a]pyrene
+    url: /compounds/carcinogen/polycyclic_aromatic_hydrocarbon/benzoapyrene-compound
+    image: /images/compounds/benzoapyrene.jpg
+    category: carcinogen
+    subcategory: polycyclic_aromatic_hydrocarbon
+    frequency: common
+    severity: high
+    typical_context: Naturally present in bitumen/asphalt
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/carcinogen/aromatic_hydrocarbon/pahs-compound
+    image: /images/compounds/pahs.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
+    frequency: very_common
+    severity: high
+    typical_context: Bitumen is rich in PAHs
+    exposure_risk: high
   related_materials:
-  - id: Concrete
-    title: Concrete
-    url: /materials/Concrete
-    image: /images/materials/Concrete.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Granite
-    title: Granite
-    url: /materials/Granite
-    image: /images/materials/Granite.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Marble
-    title: Marble
-    url: /materials/Marble
-    image: /images/materials/Marble.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Limestone
-    title: Limestone
-    url: /materials/Limestone
-    image: /images/materials/Limestone.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Sandstone
-    title: Sandstone
-    url: /materials/Sandstone
-    image: /images/materials/Sandstone.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Basalt
-    title: Basalt
-    url: /materials/Basalt
-    image: /images/materials/Basalt.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Slate
-    title: Slate
-    url: /materials/Slate
-    image: /images/materials/Slate.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Quartzite
+  - id: quartzite-laser-cleaning
     title: Quartzite
-    url: /materials/Quartzite
-    image: /images/materials/Quartzite.jpg
+    url: /materials/stone/sedimentary/quartzite-laser-cleaning
+    image: /images/materials/quartzite.jpg
+    category: stone
+    subcategory: sedimentary
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Travertine
+  - id: concrete-laser-cleaning
+    title: Concrete
+    url: /materials/masonry/general/concrete-laser-cleaning
+    image: /images/materials/concrete.jpg
+    category: masonry
+    subcategory: general
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: granite-laser-cleaning
+    title: Granite
+    url: /materials/stone/igneous/granite-laser-cleaning
+    image: /images/materials/granite.jpg
+    category: stone
+    subcategory: igneous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: travertine-laser-cleaning
     title: Travertine
-    url: /materials/Travertine
-    image: /images/materials/Travertine.jpg
+    url: /materials/stone/natural/travertine-laser-cleaning
+    image: /images/materials/travertine.jpg
+    category: stone
+    subcategory: natural
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Bluestone
+  - id: bluestone-laser-cleaning
     title: Bluestone
-    url: /materials/Bluestone
-    image: /images/materials/Bluestone.jpg
+    url: /materials/stone/sedimentary/bluestone-laser-cleaning
+    image: /images/materials/bluestone.jpg
+    category: stone
+    subcategory: sedimentary
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Soapstone
+  - id: limestone-laser-cleaning
+    title: Limestone
+    url: /materials/stone/sedimentary/limestone-laser-cleaning
+    image: /images/materials/limestone.jpg
+    category: stone
+    subcategory: sedimentary
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: soapstone-laser-cleaning
     title: Soapstone
-    url: /materials/Soapstone
-    image: /images/materials/Soapstone.jpg
+    url: /materials/stone/sedimentary/soapstone-laser-cleaning
+    image: /images/materials/soapstone.jpg
+    category: stone
+    subcategory: sedimentary
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: basalt-laser-cleaning
+    title: Basalt
+    url: /materials/stone/igneous/basalt-laser-cleaning
+    image: /images/materials/basalt.jpg
+    category: stone
+    subcategory: igneous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: sandstone-laser-cleaning
+    title: Sandstone
+    url: /materials/stone/sedimentary/sandstone-laser-cleaning
+    image: /images/materials/sandstone.jpg
+    category: stone
+    subcategory: sedimentary
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: marble-laser-cleaning
+    title: Marble
+    url: /materials/stone/metamorphic/marble-laser-cleaning
+    image: /images/materials/marble.jpg
+    category: stone
+    subcategory: metamorphic
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: slate-laser-cleaning
+    title: Slate
+    url: /materials/stone/metamorphic/slate-laser-cleaning
+    image: /images/materials/slate.jpg
+    category: stone
+    subcategory: metamorphic
     frequency: common
     severity: moderate
     typical_context: general
@@ -109,8 +156,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -120,8 +166,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:03.917992'
-dateModified: '2025-12-16T14:49:03.917992'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -129,13 +173,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Bitumen and Tar Coatings Contamination
-contamination_description: Bitumen-tar contamination arises from heavy petroleum-based
-  coatings applied in roofing and paving, so it forms thick, sticky layers during
-  waterproofing processes. This contaminant shows unique dark, viscous properties
-  that distinguish it from lighter paints because adhesion strengthens on porous surfaces
-  like concrete and granite. Removal challenges include strong bonding that resists
-  mechanical scraping, yet laser cleaning succeeds by vaporizing the layer selectively
-  so underlying materials such as steel and marble remain undamaged.
+contamination_description: Bitumen-tar contamination arises from heavy petroleum-based coatings applied in roofing and paving, so it forms thick, sticky layers during waterproofing processes. This contaminant shows unique dark, viscous properties that distinguish it from lighter paints because adhesion strengthens on porous surfaces like concrete and granite. Removal challenges include strong bonding that resists mechanical scraping, yet laser cleaning succeeds by vaporizing the layer selectively so underlying materials such as steel and marble remain undamaged.
 breadcrumb:
 - label: Home
   href: /
@@ -260,8 +298,7 @@ laser_properties:
       respiratory: PAPR
       skin_protection: full_suit
     substrate_compatibility_warnings:
-    - Thermal decomposition may generate hazardous byproducts not present in original
-      material
+    - Thermal decomposition may generate hazardous byproducts not present in original material
     - Laser parameters must be optimized to minimize excessive heating and fume generation
     - Residual contamination may require secondary cleaning methods
     toxic_gas_risk: moderate

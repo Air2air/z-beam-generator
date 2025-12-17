@@ -1,42 +1,73 @@
+id: fused-silica-settings
 name: Fused Silica
 slug: fused-silica-settings
+category: glass
+subcategory: soda-lime
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.836552'
+dateModified: '2025-12-16T17:59:17.836552'
+domain_linkages:
+  contaminants:
+  - adhesive-residue
+  - biological-stains
+  - blood-residue
+  - insect-residue
+  - lime-scale
+  - medical-disinfectant
+  - mineral-deposits
+  - pesticide-residue
+  - pharmaceutical-residue
+  - plastic-residue
+  - pollen-deposit
+  - scale-buildup
+  - silicone-buildup
+  - soap-scum
+  - tree-sap
+  - water-stain
+  compounds:
+  - acetaldehyde-compound
+  - acrolein-compound
+  - ammonia-compound
+  - benzene-compound
+  - carbon-dioxide-compound
+  - carbon-monoxide-compound
+  - formaldehyde-compound
+  - hydrogen-chloride-compound
+  - hydrogen-cyanide-compound
+  - pahs-compound
+  - phosgene-compound
+  - styrene-compound
+  - toluene-compound
+  - vocs-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.198811'
-dateModified: '2025-12-16T14:50:07.198811'
 machineSettings:
   powerRange:
-    description: Optimal average power range for Fused Silica surface cleaning without
-      thermal damage
+    description: Optimal average power range for Fused Silica surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength providing optimal absorption balance for Fused
-      Silica contamination removal
+    description: Near-IR wavelength providing optimal absorption balance for Fused Silica contamination removal
     unit: nm
     value: 1064
   spotSize:
-    description: Optimal beam spot diameter for precision cleaning with sufficient
-      energy density
+    description: Optimal beam spot diameter for precision cleaning with sufficient energy density
     unit: μm
     value: 50
   repetitionRate:
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal management
+    description: High repetition rate for efficient cleaning coverage while maintaining thermal management
     unit: kHz
     value: 100
   fluenceThreshold:
-    description: Critical fluence threshold for effective contaminant removal without
-      Fused Silica damage
+    description: Critical fluence threshold for effective contaminant removal without Fused Silica damage
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant ablation with
-      minimal substrate heating
+    description: Nanosecond pulse duration for efficient contaminant ablation with minimal substrate heating
     unit: ns
     value: 10
   scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage and process
-      efficiency
+    description: Optimal scanning speed for uniform cleaning coverage and process efficiency
     unit: mm/s
     value: 500
   passCount:
@@ -44,7 +75,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning without excessive
-      energy deposition
+    description: Optimal beam overlap percentage for uniform cleaning without excessive energy deposition
     unit: '%'
     value: 50

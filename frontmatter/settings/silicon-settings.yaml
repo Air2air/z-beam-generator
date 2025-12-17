@@ -1,12 +1,16 @@
+id: silicon-settings
 name: Silicon
 slug: silicon-settings
+category: semiconductor
+subcategory: elemental
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.135100'
+dateModified: '2025-12-16T17:59:18.135100'
 domain: settings
-datePublished: '2025-12-16T14:50:07.379234'
-dateModified: '2025-12-16T14:50:07.379234'
 machineSettings:
   powerRange:
-    description: Optimal average power for Silicon surface cleaning without substrate
-      damage
+    description: Optimal average power for Silicon surface cleaning without substrate damage
     unit: W
     value: 25
   wavelength:
@@ -18,18 +22,15 @@ machineSettings:
     unit: μm
     value: 50
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and process
-      control
+    description: Optimal repetition rate for efficient cleaning coverage and process control
     unit: kHz
     value: 50
   fluenceThreshold:
-    description: Fluence threshold for effective contaminant removal without Silicon
-      damage
+    description: Fluence threshold for effective contaminant removal without Silicon damage
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant ablation with
-      minimal thermal diffusion
+    description: Nanosecond pulse duration for effective contaminant ablation with minimal thermal diffusion
     unit: ns
     value: 100
   scanSpeed:
@@ -41,7 +42,6 @@ machineSettings:
     unit: passes
     value: 2
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     unit: '%'
     value: 50

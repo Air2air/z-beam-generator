@@ -3,117 +3,216 @@ name: Rubber Compound Residue
 slug: rubber-residue-contamination
 category: organic-residue
 subcategory: polymer
+datePublished: '2025-12-16T21:08:15.321031'
+dateModified: '2025-12-16T21:08:15.321031'
 domain_linkages:
+  produces_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/toxic_gas/asphyxiant/carbon-monoxide-compound
+    image: /images/compounds/carbon-monoxide.jpg
+    category: toxic_gas
+    subcategory: asphyxiant
+    frequency: very_common
+    severity: high
+    typical_context: Pyrolysis of rubber compounds
+    exposure_risk: high
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/solvent/aromatic_hydrocarbon/toluene-compound
+    image: /images/compounds/toluene.jpg
+    category: solvent
+    subcategory: aromatic_hydrocarbon
+    frequency: occasional
+    severity: low
+    typical_context: Thermal breakdown of aromatic rubber compounds
+    exposure_risk: low
+  - id: benzoapyrene-compound
+    title: Benzo[a]pyrene
+    url: /compounds/carcinogen/polycyclic_aromatic_hydrocarbon/benzoapyrene-compound
+    image: /images/compounds/benzoapyrene.jpg
+    category: carcinogen
+    subcategory: polycyclic_aromatic_hydrocarbon
+    frequency: occasional
+    severity: moderate
+    typical_context: Formed during high-temperature pyrolysis
+    exposure_risk: moderate
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/carcinogen/aromatic_hydrocarbon/pahs-compound
+    image: /images/compounds/pahs.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
+    frequency: common
+    severity: high
+    typical_context: Pyrolysis produces PAHs
+    exposure_risk: high
+  - id: hydrogen-cyanide-compound
+    title: Hydrogen Cyanide
+    url: /compounds/toxic_gas/cyanide/hydrogen-cyanide-compound
+    image: /images/compounds/hydrogen-cyanide.jpg
+    category: toxic_gas
+    subcategory: cyanide
+    frequency: occasional
+    severity: high
+    typical_context: Pyrolysis of nitrile rubber
+    exposure_risk: high
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/asphyxiant/simple_asphyxiant/carbon-dioxide-compound
+    image: /images/compounds/carbon-dioxide.jpg
+    category: asphyxiant
+    subcategory: simple_asphyxiant
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of rubber
+    exposure_risk: low
+  - id: styrene-compound
+    title: Styrene
+    url: /compounds/irritant/aromatic_hydrocarbon/styrene-compound
+    image: /images/compounds/styrene.jpg
+    category: irritant
+    subcategory: aromatic_hydrocarbon
+    frequency: common
+    severity: moderate
+    typical_context: Pyrolysis of styrene-butadiene rubber
+    exposure_risk: moderate
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/irritant/organic_vapor/vocs-compound
+    image: /images/compounds/vocs.jpg
+    category: irritant
+    subcategory: organic_vapor
+    frequency: common
+    severity: moderate
+    typical_context: Pyrolysis products
+    exposure_risk: moderate
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/carcinogen/aromatic_hydrocarbon/benzene-compound
+    image: /images/compounds/benzene.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
+    frequency: common
+    severity: high
+    typical_context: Pyrolysis of styrene-butadiene rubber
+    exposure_risk: high
+  - id: sulfur-dioxide-compound
+    title: Sulfur Dioxide
+    url: /compounds/toxic_gas/acid_gas/sulfur-dioxide-compound
+    image: /images/compounds/sulfur-dioxide.jpg
+    category: toxic_gas
+    subcategory: acid_gas
+    frequency: common
+    severity: moderate
+    typical_context: Vulcanized rubber contains sulfur compounds
+    exposure_risk: moderate
   related_materials:
-  - id: Concrete
-    title: Concrete
-    url: /materials/Concrete
-    image: /images/materials/Concrete.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: asphalt
-    title: Asphalt
-    url: /materials/asphalt
-    image: /images/materials/asphalt.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum
-    title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Steel
-    title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
+  - id: stainless-steel-laser-cleaning
     title: Stainless Steel
-    url: /materials/Stainless Steel
-    image: /images/materials/Stainless Steel.jpg
+    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+    image: /images/materials/stainless-steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: cast-iron
-    title: Cast Iron
-    url: /materials/cast-iron
-    image: /images/materials/cast-iron.jpg
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Copper
-    title: Copper
-    url: /materials/Copper
-    image: /images/materials/Copper.jpg
+  - id: aluminum-laser-cleaning
+    title: Aluminum
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: bronze
-    title: Bronze
-    url: /materials/bronze
-    image: /images/materials/bronze.jpg
+  - id: concrete-laser-cleaning
+    title: Concrete
+    url: /materials/masonry/general/concrete-laser-cleaning
+    image: /images/materials/concrete.jpg
+    category: masonry
+    subcategory: general
     frequency: common
     severity: moderate
     typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Titanium
-    title: Titanium
-    url: /materials/Titanium
-    image: /images/materials/Titanium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zinc
+  - id: zinc-laser-cleaning
     title: Zinc
-    url: /materials/Zinc
-    image: /images/materials/Zinc.jpg
+    url: /materials/metal/alloy/zinc-laser-cleaning
+    image: /images/materials/zinc.jpg
+    category: metal
+    subcategory: alloy
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Nickel
-    title: Nickel
-    url: /materials/Nickel
-    image: /images/materials/Nickel.jpg
+  - id: titanium-laser-cleaning
+    title: Titanium
+    url: /materials/metal/specialty/titanium-laser-cleaning
+    image: /images/materials/titanium.jpg
+    category: metal
+    subcategory: specialty
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Lead
-    title: Lead
-    url: /materials/Lead
-    image: /images/materials/Lead.jpg
+  - id: copper-laser-cleaning
+    title: Copper
+    url: /materials/metal/non-ferrous/copper-laser-cleaning
+    image: /images/materials/copper.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Tin
-    title: Tin
-    url: /materials/Tin
-    image: /images/materials/Tin.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Cobalt
+  - id: cobalt-laser-cleaning
     title: Cobalt
-    url: /materials/Cobalt
-    image: /images/materials/Cobalt.jpg
+    url: /materials/metal/specialty/cobalt-laser-cleaning
+    image: /images/materials/cobalt.jpg
+    category: metal
+    subcategory: specialty
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Chromium
+  - id: tin-laser-cleaning
+    title: Tin
+    url: /materials/metal/alloy/tin-laser-cleaning
+    image: /images/materials/tin.jpg
+    category: metal
+    subcategory: alloy
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lead-laser-cleaning
+    title: Lead
+    url: /materials/metal/non-ferrous/lead-laser-cleaning
+    image: /images/materials/lead.jpg
+    category: metal
+    subcategory: non-ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chromium-laser-cleaning
     title: Chromium
-    url: /materials/Chromium
-    image: /images/materials/Chromium.jpg
+    url: /materials/metal/specialty/chromium-laser-cleaning
+    image: /images/materials/chromium.jpg
+    category: metal
+    subcategory: specialty
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: nickel-laser-cleaning
+    title: Nickel
+    url: /materials/metal/specialty/nickel-laser-cleaning
+    image: /images/materials/nickel.jpg
+    category: metal
+    subcategory: specialty
     frequency: common
     severity: moderate
     typical_context: general
@@ -137,8 +236,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -148,8 +246,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.824090'
-dateModified: '2025-12-16T14:49:04.824090'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -157,13 +253,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Rubber Compound Residue Contamination
-contamination_description: Rubber-residue contamination arises from vulcanized rubber
-  deposits of tire marks, seals, and gaskets, so it forms during friction and compression
-  on surfaces. This residue shows unique elasticity and strong adhesion that distinguish
-  it from oily or powdery contaminants because of its polymeric nature. On materials
-  like steel or concrete, residue clings tightly and resists scraping, so removal
-  challenges include incomplete cleaning without damaging substrate, yet laser cleaning
-  succeeds by vaporizing layers precisely during pulsed exposure.
+contamination_description: Rubber-residue contamination arises from vulcanized rubber deposits of tire marks, seals, and gaskets, so it forms during friction and compression on surfaces. This residue shows unique elasticity and strong adhesion that distinguish it from oily or powdery contaminants because of its polymeric nature. On materials like steel or concrete, residue clings tightly and resists scraping, so removal challenges include incomplete cleaning without damaging substrate, yet laser cleaning succeeds by vaporizing layers precisely during pulsed exposure.
 breadcrumb:
 - label: Home
   href: /

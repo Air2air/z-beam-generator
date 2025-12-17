@@ -5,8 +5,8 @@ category: stone
 subcategory: natural
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:48:49.297640'
-dateModified: '2025-12-16T14:48:49.297640'
+datePublished: '2025-12-16T18:07:21.525477'
+dateModified: '2025-12-16T18:07:21.525477'
 author:
   id: 1
   name: Yi-Chun Lin
@@ -289,147 +289,187 @@ material_metadata:
 domain_linkages:
   related_contaminants:
   - id: algae-growth
-    title: Algae Growth
-    url: /contaminants/algae-growth
+    title: Algae and Lichen Growth
+    url: /contaminants/biological/growth/algae-growth-contamination
     image: /images/contaminants/algae-growth.jpg
+    category: biological
+    subcategory: growth
     frequency: common
     severity: moderate
     typical_context: general
   - id: biological-stains
-    title: Biological Stains
-    url: /contaminants/biological-stains
+    title: Organic Biofilm Deposits
+    url: /contaminants/biological/deposit/biological-stains-contamination
     image: /images/contaminants/biological-stains.jpg
+    category: biological
+    subcategory: deposit
     frequency: common
     severity: moderate
     typical_context: general
   - id: bitumen-tar
-    title: Bitumen Tar
-    url: /contaminants/bitumen-tar
+    title: Bitumen and Tar Coatings
+    url: /contaminants/organic-residue/petroleum/bitumen-tar-contamination
     image: /images/contaminants/bitumen-tar.jpg
+    category: organic-residue
+    subcategory: petroleum
     frequency: common
     severity: moderate
     typical_context: general
   - id: carbon-soot
-    title: Carbon Soot
-    url: /contaminants/carbon-soot
+    title: Carbon Soot Deposits
+    url: /contaminants/organic-residue/other/carbon-soot-contamination
     image: /images/contaminants/carbon-soot.jpg
+    category: organic-residue
+    subcategory: other
     frequency: common
     severity: moderate
     typical_context: general
   - id: ceramic-glaze
-    title: Ceramic Glaze
-    url: /contaminants/ceramic-glaze
+    title: Ceramic Glaze Deposits
+    url: /contaminants/inorganic-coating/ceramic/ceramic-glaze-contamination
     image: /images/contaminants/ceramic-glaze.jpg
+    category: inorganic-coating
+    subcategory: ceramic
     frequency: common
     severity: moderate
     typical_context: general
   - id: concrete-dust
-    title: Concrete Dust
-    url: /contaminants/concrete-dust
+    title: Concrete Dust Deposits
+    url: /contaminants/inorganic-coating/mineral/concrete-dust-contamination
     image: /images/contaminants/concrete-dust.jpg
+    category: inorganic-coating
+    subcategory: mineral
     frequency: common
     severity: moderate
     typical_context: general
   - id: efflorescence
-    title: Efflorescence
-    url: /contaminants/efflorescence
+    title: Concrete Efflorescence
+    url: /contaminants/inorganic-coating/mineral/efflorescence-contamination
     image: /images/contaminants/efflorescence.jpg
+    category: inorganic-coating
+    subcategory: mineral
     frequency: common
     severity: moderate
     typical_context: general
   - id: fertilizer-residue
-    title: Fertilizer Residue
-    url: /contaminants/fertilizer-residue
+    title: Fertilizer Salt Deposits
+    url: /contaminants/chemical-residue/industrial/fertilizer-residue-contamination
     image: /images/contaminants/fertilizer-residue.jpg
+    category: chemical-residue
+    subcategory: industrial
     frequency: common
     severity: moderate
     typical_context: general
   - id: fire-damage
-    title: Fire Damage
-    url: /contaminants/fire-damage
+    title: Fire and Smoke Damage
+    url: /contaminants/thermal-damage/fire/fire-damage-contamination
     image: /images/contaminants/fire-damage.jpg
+    category: thermal-damage
+    subcategory: fire
     frequency: common
     severity: moderate
     typical_context: general
   - id: graffiti-paint
-    title: Graffiti Paint
-    url: /contaminants/graffiti-paint
+    title: Graffiti and Spray Paint
+    url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
     image: /images/contaminants/graffiti-paint.jpg
+    category: inorganic-coating
+    subcategory: paint
     frequency: common
     severity: moderate
     typical_context: general
   - id: mineral-deposits
-    title: Mineral Deposits
-    url: /contaminants/mineral-deposits
+    title: Hard Water Mineral Scale
+    url: /contaminants/thermal-damage/scale/mineral-deposits-contamination
     image: /images/contaminants/mineral-deposits.jpg
+    category: thermal-damage
+    subcategory: scale
     frequency: common
     severity: moderate
     typical_context: general
   - id: mineral-stain
-    title: Mineral Stain
-    url: /contaminants/mineral-stain
+    title: Mineral Staining
+    url: /contaminants/inorganic-coating/mineral/mineral-stain-contamination
     image: /images/contaminants/mineral-stain.jpg
+    category: inorganic-coating
+    subcategory: mineral
     frequency: common
     severity: moderate
     typical_context: general
   - id: salt-residue
-    title: Salt Residue
-    url: /contaminants/salt-residue
+    title: Salt and Chloride Deposits
+    url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
     image: /images/contaminants/salt-residue.jpg
+    category: inorganic-coating
+    subcategory: mineral
     frequency: common
     severity: moderate
     typical_context: general
   - id: scale-buildup
-    title: Scale Buildup
-    url: /contaminants/scale-buildup
+    title: Mineral Scale / Hard Water Deposits
+    url: /contaminants/thermal-damage/scale/scale-buildup-contamination
     image: /images/contaminants/scale-buildup.jpg
+    category: thermal-damage
+    subcategory: scale
     frequency: common
     severity: moderate
     typical_context: general
   - id: water-stain
-    title: Water Stain
-    url: /contaminants/water-stain
+    title: Water Staining and Marks
+    url: /contaminants/organic-residue/other/water-stain-contamination
     image: /images/contaminants/water-stain.jpg
+    category: organic-residue
+    subcategory: other
     frequency: common
     severity: moderate
     typical_context: general
   related_compounds:
   - id: benzoapyrene-compound
     title: Benzo[a]pyrene
-    url: /compounds/benzoapyrene
+    url: /compounds/carcinogen/polycyclic_aromatic_hydrocarbon/benzoapyrene-compound
     image: /images/compounds/benzoapyrene.jpg
+    category: carcinogen
+    subcategory: polycyclic_aromatic_hydrocarbon
     frequency: common
     severity: high
     typical_context: Naturally present in bitumen/asphalt
     exposure_risk: high
   - id: pahs-compound
     title: Polycyclic Aromatic Hydrocarbons
-    url: /compounds/pahs
+    url: /compounds/carcinogen/aromatic_hydrocarbon/pahs-compound
     image: /images/compounds/pahs.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
     frequency: very_common
     severity: high
     typical_context: Bitumen is rich in PAHs
     exposure_risk: high
   - id: carbon-monoxide-compound
     title: Carbon Monoxide
-    url: /compounds/carbon-monoxide
+    url: /compounds/toxic_gas/asphyxiant/carbon-monoxide-compound
     image: /images/compounds/carbon-monoxide.jpg
+    category: toxic_gas
+    subcategory: asphyxiant
     frequency: very_common
     severity: high
     typical_context: Pre-existing carbon compounds vaporizing
     exposure_risk: high
   - id: toluene-compound
     title: Toluene
-    url: /compounds/toluene
+    url: /compounds/solvent/aromatic_hydrocarbon/toluene-compound
     image: /images/compounds/toluene.jpg
+    category: solvent
+    subcategory: aromatic_hydrocarbon
     frequency: common
     severity: moderate
     typical_context: Release of toluene from spray paint
     exposure_risk: moderate
   - id: vocs-compound
     title: Volatile Organic Compounds
-    url: /compounds/vocs
+    url: /compounds/irritant/organic_vapor/vocs-compound
     image: /images/compounds/vocs.jpg
+    category: irritant
+    subcategory: organic_vapor
     frequency: very_common
     severity: moderate
     typical_context: Release of spray paint solvents
@@ -448,4 +488,4 @@ serviceOffering:
     notes: Multiple passes may be required for porous surfaces
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-16T14:48:49.299289'
+    generated_date: '2025-12-16T18:07:21.527324'

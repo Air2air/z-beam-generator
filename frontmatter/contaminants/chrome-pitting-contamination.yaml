@@ -3,19 +3,27 @@ name: Chromium Oxide Pitting
 slug: chrome-pitting-contamination
 category: oxidation
 subcategory: non-ferrous
+datePublished: '2025-12-16T21:08:14.580831'
+dateModified: '2025-12-16T21:08:14.580831'
 domain_linkages:
+  produces_compounds:
+  - id: chromium-vi-compound
+    title: Hexavalent Chromium
+    url: /compounds/carcinogen/heavy_metal/chromium-vi-compound
+    image: /images/compounds/chromium-vi.jpg
+    category: carcinogen
+    subcategory: heavy_metal
+    frequency: very_common
+    severity: high
+    typical_context: Oxidation of chromium creates Cr(VI)
+    exposure_risk: high
   related_materials:
-  - id: chrome-plated-steel
-    title: Chrome Plated Steel
-    url: /materials/chrome-plated-steel
-    image: /images/materials/chrome-plated-steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
+  - id: stainless-steel-laser-cleaning
     title: Stainless Steel
-    url: /materials/Stainless Steel
-    image: /images/materials/Stainless Steel.jpg
+    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+    image: /images/materials/stainless-steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -39,8 +47,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -50,8 +57,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.067533'
-dateModified: '2025-12-16T14:49:04.067533'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -59,15 +64,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Chromium Oxide Pitting Contamination
-contamination_description: Chrome-pitting forms when localized chromium oxide layer
-  breaks down on plated surfaces because of environmental exposure and corrosion,
-  so surface degradation happens in small pits. This contamination shows unique pitting
-  patterns distinct from uniform rust or scaling, where isolated spots appear without
-  spreading widely, and it behaves differently on chrome-plated steel by deepening
-  quickly during cleaning, while on stainless steel, pits resist less but still challenge
-  uniformity. Key removal issues arise from substrate damage risk, yet laser cleaning
-  works effectively because precise pulses target oxide breakdown so contaminants
-  ablate cleanly without affecting base material.
+contamination_description: Chrome-pitting forms when localized chromium oxide layer breaks down on plated surfaces because of environmental exposure and corrosion, so surface degradation happens in small pits. This contamination shows unique pitting patterns distinct from uniform rust or scaling, where isolated spots appear without spreading widely, and it behaves differently on chrome-plated steel by deepening quickly during cleaning, while on stainless steel, pits resist less but still challenge uniformity. Key removal issues arise from substrate damage risk, yet laser cleaning works effectively because precise pulses target oxide breakdown so contaminants ablate cleanly without affecting base material.
 breadcrumb:
 - label: Home
   href: /

@@ -3,26 +3,25 @@ name: Electroplating Solution Residue
 slug: electroplating-residue-contamination
 category: metallic-coating
 subcategory: plating
+datePublished: '2025-12-16T21:08:14.701821'
+dateModified: '2025-12-16T21:08:14.701821'
 domain_linkages:
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Copper
+  - id: copper-laser-cleaning
     title: Copper
-    url: /materials/Copper
-    image: /images/materials/Copper.jpg
+    url: /materials/metal/non-ferrous/copper-laser-cleaning
+    image: /images/materials/copper.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -48,8 +47,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -58,8 +56,6 @@ author:
   formatting_file: indonesia_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.183773'
-dateModified: '2025-12-16T14:49:04.183773'
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -67,14 +63,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Electroplating Solution Residue Contamination
-contamination_description: Electroplating-residue contamination, it arises from chemical
-  deposits in bath solutions during the plating process, and forms thin adherent layers
-  on metal surfaces. This residue, it distinguishes by crystalline structure and chemical
-  inertness from oxide scales or dust particles; on steel it embrittles surface, on
-  brass it corrodes selectively, while on copper it conducts poorly and still persists
-  stubbornly, so strong bonding resists mechanical removal. Laser cleaning ablates
-  residue precisely with pulsed energy, without damaging substrate, and thus restores
-  conductivity already.
+contamination_description: Electroplating-residue contamination, it arises from chemical deposits in bath solutions during the plating process, and forms thin adherent layers on metal surfaces. This residue, it distinguishes by crystalline structure and chemical inertness from oxide scales or dust particles; on steel it embrittles surface, on brass it corrodes selectively, while on copper it conducts poorly and still persists stubbornly, so strong bonding resists mechanical removal. Laser cleaning ablates residue precisely with pulsed energy, without damaging substrate, and thus restores conductivity already.
 breadcrumb:
 - label: Home
   href: /
@@ -196,10 +185,8 @@ laser_properties:
       respiratory: PAPR
       skin_protection: full_suit
     substrate_compatibility_warnings:
-    - Laser cleaning may generate toxic hydrogen cyanide gas from cyanide-based plating
-      residues
-    - Thermal decomposition of chromium-plated surfaces can produce carcinogenic hexavalent
-      chromium
+    - Laser cleaning may generate toxic hydrogen cyanide gas from cyanide-based plating residues
+    - Thermal decomposition of chromium-plated surfaces can produce carcinogenic hexavalent chromium
     - Nickel compounds become airborne and present inhalation cancer risk
     toxic_gas_risk: high
     ventilation_requirements:

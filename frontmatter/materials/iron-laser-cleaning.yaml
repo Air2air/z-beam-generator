@@ -5,8 +5,8 @@ category: metal
 subcategory: ferrous
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:48:47.594602'
-dateModified: '2025-12-16T14:48:47.594602'
+datePublished: '2025-12-16T18:07:19.610562'
+dateModified: '2025-12-16T18:07:19.610562'
 author:
   id: 3
   name: Ikmanda Roswati
@@ -348,54 +348,68 @@ material_metadata:
 domain_linkages:
   related_contaminants:
   - id: forging-scale
-    title: Forging Scale
-    url: /contaminants/forging-scale
+    title: Forging Mill Scale
+    url: /contaminants/thermal-damage/scale/forging-scale-contamination
     image: /images/contaminants/forging-scale.jpg
+    category: thermal-damage
+    subcategory: scale
     frequency: common
     severity: moderate
     typical_context: general
   - id: grease-deposits
-    title: Grease Deposits
-    url: /contaminants/grease-deposits
+    title: Heavy Machinery Grease
+    url: /contaminants/organic-residue/petroleum/grease-deposits-contamination
     image: /images/contaminants/grease-deposits.jpg
+    category: organic-residue
+    subcategory: petroleum
     frequency: common
     severity: moderate
     typical_context: general
   - id: rust-oxidation
-    title: Rust Oxidation
-    url: /contaminants/rust-oxidation
+    title: Rust / Iron Oxide Formation
+    url: /contaminants/oxidation/ferrous/rust-oxidation-contamination
     image: /images/contaminants/rust-oxidation.jpg
+    category: oxidation
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
   - id: zinc-plating
-    title: Zinc Plating
-    url: /contaminants/zinc-plating
+    title: Zinc Electroplating
+    url: /contaminants/metallic-coating/plating/zinc-plating-contamination
     image: /images/contaminants/zinc-plating.jpg
+    category: metallic-coating
+    subcategory: plating
     frequency: common
     severity: moderate
     typical_context: general
   related_compounds:
   - id: iron-oxide-compound
     title: Iron Oxide Fume
-    url: /compounds/iron-oxide
+    url: /compounds/metal_fume/metal_oxide/iron-oxide-compound
     image: /images/compounds/iron-oxide.jpg
+    category: metal_fume
+    subcategory: metal_oxide
     frequency: very_common
     severity: high
     typical_context: Iron oxide scale from forging operations
     exposure_risk: high
   - id: nitrogen-oxides-compound
     title: Nitrogen Oxides
-    url: /compounds/nitrogen-oxides
+    url: /compounds/toxic_gas/oxidizing_gas/nitrogen-oxides-compound
     image: /images/compounds/nitrogen-oxides.jpg
+    category: toxic_gas
+    subcategory: oxidizing_gas
     frequency: common
     severity: low
     typical_context: High-temperature oxidation during laser cleaning
     exposure_risk: low
   - id: zinc-oxide-compound
     title: Zinc Oxide
-    url: /compounds/zinc-oxide
+    url: /compounds/metal_fume/metal_oxide/zinc-oxide-compound
     image: /images/compounds/zinc-oxide.jpg
+    category: metal_fume
+    subcategory: metal_oxide
     frequency: very_common
     severity: high
     typical_context: Direct vaporization of zinc electroplating
@@ -414,4 +428,4 @@ serviceOffering:
     - Heat treatment scale
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-16T14:48:47.595885'
+    generated_date: '2025-12-16T18:07:19.611912'

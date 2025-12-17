@@ -1,8 +1,16 @@
+id: tungsten-carbide-settings
 name: Tungsten Carbide
 slug: tungsten-carbide-settings
+category: ceramic
+subcategory: carbide
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.250647'
+dateModified: '2025-12-16T17:59:18.250647'
+domain_linkages:
+  contaminants:
+  - diamond-coating
 domain: settings
-datePublished: '2025-12-16T14:50:07.451547'
-dateModified: '2025-12-16T14:50:07.451547'
 machineSettings:
   powerRange:
     description: Optimal average power for Tungsten Carbide oxide layer removal
@@ -21,8 +29,7 @@ machineSettings:
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     unit: J/cm²
     value: 5.1
   pulseWidth:

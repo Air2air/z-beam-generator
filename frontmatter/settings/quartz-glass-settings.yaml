@@ -1,16 +1,20 @@
+id: quartz-glass-settings
 name: Quartz Glass
 slug: quartz-glass-settings
+category: glass
+subcategory: soda-lime
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.082096'
+dateModified: '2025-12-16T17:59:18.082096'
 domain: settings
-datePublished: '2025-12-16T14:50:07.344224'
-dateModified: '2025-12-16T14:50:07.344224'
 machineSettings:
   powerRange:
     description: Optimal average power for Quartz Glass cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength with good transmission through Quartz Glass for
-      selective contaminant removal
+    description: Near-IR wavelength with good transmission through Quartz Glass for selective contaminant removal
     unit: nm
     value: 1064
   spotSize:
@@ -18,18 +22,15 @@ machineSettings:
     unit: μm
     value: 50
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with controlled thermal
-      accumulation
+    description: Optimal repetition rate for efficient cleaning with controlled thermal accumulation
     unit: kHz
     value: 50
   fluenceThreshold:
-    description: Energy density threshold for effective contaminant removal without
-      damaging Quartz Glass substrate
+    description: Energy density threshold for effective contaminant removal without damaging Quartz Glass substrate
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate heating
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate heating
     unit: ns
     value: 10
   scanSpeed:

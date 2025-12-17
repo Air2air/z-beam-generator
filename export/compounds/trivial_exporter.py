@@ -6,6 +6,7 @@ INTEGRATION:
 - Domain Associations: Reads from centralized DomainAssociations.yaml
 - Field Order: Uses FrontmatterFieldOrder.yaml for consistent structure
 - Bidirectional: Automatically generates reverse linkages to contaminants
+- Base Class: Inherits shared utilities from BaseTrivialExporter
 """
 
 import logging
@@ -15,50 +16,56 @@ import yaml
 from collections import OrderedDict
 
 from domains.compounds.data_loader import CompoundDataLoader
-from shared.validation.domain_associations import DomainAssociationsValidator
-from shared.validation.field_order import FrontmatterFieldOrderValidator
+from export.core.base_trivial_exporter import BaseTrivialExporter
 
 logger = logging.getLogger(__name__)
 
 
-class CompoundExporter:
+class CompoundExporter(BaseTrivialExporter):
     """
     Exports compound data to frontmatter format.
     Hydrates author references, adds breadcrumbs, prepares for web deployment.
     """
     
     def __init__(self):
+        # Initialize base class (validators, output_dir, logging)
+        super().__init__(
+            domain_name='compounds',
+            output_subdir='compounds'
+        )
+        
+        # Domain-specific data loader
         self.data_loader = CompoundDataLoader()
         
-        # Initialize validators
-        self.associations_validator = DomainAssociationsValidator()
-        self.associations_validator.load()  # Load associations data
-        
-        self.field_order_validator = FrontmatterFieldOrderValidator()
-        self.field_order_validator.load_schema()  # Load field order spec
-        
-        # Output directory
-        self.output_dir = Path(__file__).parent.parent.parent / "frontmatter" / "compounds"
-        self.output_dir.mkdir(parents=True, exist_ok=True)
-        
         logger.info(f"CompoundExporter initialized, output: {self.output_dir}")
-        logger.info(f"✅ Domain associations loaded and validated")
     
-    def export_compound(self, compound_id: str, force: bool = False) -> bool:
+    def _load_domain_data(self) -> Dict[str, Any]:
+        """
+        Load Compounds.yaml data.
+        
+        Returns:
+            Compounds data dictionary
+        """
+        # CompoundDataLoader handles loading internally
+        # Return empty dict as we access data via data_loader methods
+        return {}
+    
+    def export_single(self, item_id: str, item_data: Dict = None, force: bool = False) -> bool:
         """
         Export single compound to frontmatter YAML.
         
         Args:
-            compound_id: Compound identifier
+            item_id: Compound identifier
+            item_data: Unused (data loaded via data_loader)
             force: Overwrite existing file
             
         Returns:
             True if exported successfully
         """
-        # Load compound data
-        compound = self.data_loader.get_compound(compound_id)
+        # Load compound data using data loader
+        compound = self.data_loader.get_compound(item_id)
         if not compound:
-            logger.error(f"Compound not found: {compound_id}")
+            logger.error(f"Compound not found: {item_id}")
             return False
         
         # Prepare output file with -compound suffix
@@ -74,24 +81,28 @@ class CompoundExporter:
         frontmatter = self._build_frontmatter(compound)
         
         # Add ISO 8601 timestamps if missing (Schema.org requirement)
-        from datetime import datetime
-        current_timestamp = datetime.now().isoformat()
+        timestamp = self.generate_timestamp()
         if 'datePublished' not in frontmatter or not frontmatter['datePublished']:
-            frontmatter['datePublished'] = current_timestamp
+            frontmatter['datePublished'] = timestamp
         if 'dateModified' not in frontmatter or not frontmatter['dateModified']:
-            frontmatter['dateModified'] = current_timestamp
+            frontmatter['dateModified'] = timestamp
         
-        # Reorder fields according to specification
-        ordered_frontmatter = self.field_order_validator.reorder_fields(frontmatter, 'compounds')
-        
-        # Write to file with sort_keys=False to preserve field order
-        with open(output_file, 'w', encoding='utf-8') as f:
-            yaml.dump(dict(ordered_frontmatter), f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+        # Write with base class utility (handles field ordering + YAML writing)
+        self.write_frontmatter_yaml(
+            frontmatter,
+            filename=f"{compound['slug']}-compound.yaml",
+            apply_ordering=True
+        )
         
         logger.info(f"✅ Exported {compound['name']} to {output_file}")
         return True
     
-    def export_all(self, force: bool = False) -> Dict[str, bool]:
+    # Legacy method name for backward compatibility
+    def export_compound(self, compound_id: str, force: bool = False) -> bool:
+        """Legacy method - calls export_single()."""
+        return self.export_single(compound_id, force=force)
+    
+    def export_all(self, force: bool = True) -> Dict[str, bool]:
         """
         Export all compounds to frontmatter.
         
@@ -108,7 +119,7 @@ class CompoundExporter:
         
         for compound_id in compound_ids:
             try:
-                success = self.export_compound(compound_id, force=force)
+                success = self.export_single(compound_id, force=force)
                 results[compound_id] = success
             except Exception as e:
                 logger.error(f"Failed to export {compound_id}: {e}")
@@ -131,14 +142,9 @@ class CompoundExporter:
         Returns:
             Dict ready for YAML export
         """
-        # Hydrate author data
+        # Hydrate author data using base class utility
         author_id = compound['author']['id']
-
-        
-        from shared.data.author_loader import get_author
-        author_data = get_author(author_id)
-        if not author_data:
-            raise ValueError(f"Author not found: {author_id}")
+        author_data = self.enrich_author_data(author_id)
         
         # Build frontmatter
         frontmatter = {
@@ -175,8 +181,10 @@ class CompoundExporter:
             'first_aid': compound.get('first_aid'),
             
             # Domain linkages (bidirectional relationships)
-            # Generated from centralized DomainAssociations.yaml
-            'domain_linkages': self._build_domain_linkages(compound),
+            # Generated from centralized DomainAssociations.yaml via DomainLinkagesService
+            'domain_linkages': self.linkages_service.generate_linkages(
+                f"{compound['slug']}-compound", 'compounds'
+            ),
             
             # Author (full data from Authors.yaml)
             'author': author_data.copy(),
@@ -196,38 +204,15 @@ class CompoundExporter:
         
         return frontmatter
     
-    def _build_domain_linkages(self, compound: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Build domain linkages from centralized associations.
-        
-        Args:
-            compound: Compound data
-            
-        Returns:
-            Dict with domain_linkages structure
-        """
-        compound_id = f"{compound['slug']}-compound"
-        
-        # Get contaminants that produce this compound (reverse lookup from associations)
-        produced_by = self.associations_validator.get_contaminants_for_compound(compound_id)
-        
-        # Build linkages structure
-        linkages = {}
-        
-        if produced_by:
-            linkages['produced_by_contaminants'] = produced_by
-        
-        # Future: Add related_materials when Material↔Compound associations populated
-        # related_materials = self.associations_validator.get_materials_for_compound(compound_id)
-        # if related_materials:
-        #     linkages['related_materials'] = related_materials
-        
-        logger.info(
-            f"  Domain linkages for {compound['name']}: "
-            f"{len(produced_by)} contaminants"
-        )
-        
-        return linkages
+    # DEPRECATED: Replaced by centralized DomainLinkagesService
+    # def _build_domain_linkages(self, compound: Dict[str, Any]) -> Dict[str, Any]:
+    #     """
+    #     OLD METHOD - Now using shared/services/domain_linkages_service.py
+    #     
+    #     This method has been replaced by DomainLinkagesService.generate_linkages()
+    #     for consistency across all exporters.
+    #     """
+    #     pass
     
     def get_export_stats(self) -> Dict[str, Any]:
         """

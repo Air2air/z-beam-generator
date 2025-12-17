@@ -3,19 +3,16 @@ name: Beryllium Oxide Contamination
 slug: beryllium-oxide-contamination
 category: chemical-residue
 subcategory: hazardous
+datePublished: '2025-12-16T21:08:14.381157'
+dateModified: '2025-12-16T21:08:14.381157'
 domain_linkages:
   related_materials:
-  - id: copper-beryllium-alloy
-    title: Copper Beryllium Alloy
-    url: /materials/copper-beryllium-alloy
-    image: /images/materials/copper-beryllium-alloy.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -39,8 +36,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -50,8 +46,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:03.887789'
-dateModified: '2025-12-16T14:49:03.887789'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -59,12 +53,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Beryllium Oxide Contamination Contamination
-contamination_description: Beryllium oxide forms during high-temperature exposure
-  in aerospace processes, so contamination builds as hard, toxic layer on metal surfaces.
-  This differs from other oxides because toxicity poses health risks, and adhesion
-  varies stronger on copper-beryllium alloy than steel. Removal challenges include
-  avoiding substrate damage from its durability, but laser cleaning works effectively
-  after precise pulsing, so contaminants ablate cleanly without residue.
+contamination_description: Beryllium oxide forms during high-temperature exposure in aerospace processes, so contamination builds as hard, toxic layer on metal surfaces. This differs from other oxides because toxicity poses health risks, and adhesion varies stronger on copper-beryllium alloy than steel. Removal challenges include avoiding substrate damage from its durability, but laser cleaning works effectively after precise pulsing, so contaminants ablate cleanly without residue.
 breadcrumb:
 - label: Home
   href: /

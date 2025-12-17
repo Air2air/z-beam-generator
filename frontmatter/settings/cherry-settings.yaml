@@ -1,17 +1,43 @@
+id: cherry-settings
 name: Cherry
 slug: cherry-settings
+category: wood
+subcategory: hardwood
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.771943'
+dateModified: '2025-12-16T17:59:17.771943'
+domain_linkages:
+  contaminants:
+  - adhesive-residue
+  - algae-growth
+  - lead-paint
+  - mold-mildew
+  - paint-residue
+  - wax-buildup
+  - wood-rot
+  compounds:
+  - acetaldehyde-compound
+  - benzene-compound
+  - carbon-dioxide-compound
+  - carbon-monoxide-compound
+  - chromium-vi-compound
+  - formaldehyde-compound
+  - hydrogen-chloride-compound
+  - hydrogen-cyanide-compound
+  - nitrogen-oxides-compound
+  - pahs-compound
+  - toluene-compound
+  - vocs-compound
+  - zinc-oxide-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.162155'
-dateModified: '2025-12-16T14:50:07.162155'
 machineSettings:
   powerRange:
-    description: Optimal average power for Cherry surface cleaning without thermal
-      damage
+    description: Optimal average power for Cherry surface cleaning without thermal damage
     unit: W
     value: 90
   wavelength:
-    description: Near-infrared wavelength for optimal absorption in Cherry organic
-      compounds
+    description: Near-infrared wavelength for optimal absorption in Cherry organic compounds
     unit: nm
     value: 1064
   spotSize:

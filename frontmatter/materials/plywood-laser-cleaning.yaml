@@ -5,8 +5,8 @@ category: wood
 subcategory: hardwood
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:48:48.172331'
-dateModified: '2025-12-16T14:48:48.172331'
+datePublished: '2025-12-16T18:07:20.210721'
+dateModified: '2025-12-16T18:07:20.210721'
 author:
   id: 2
   name: Alessandro Moretti
@@ -299,17 +299,21 @@ material_metadata:
 domain_linkages:
   related_contaminants:
   - id: wood-rot
-    title: Wood Rot
-    url: /contaminants/wood-rot
+    title: Wood Rot / Fungal Biodegradation
+    url: /contaminants/biological/growth/wood-rot-contamination
     image: /images/contaminants/wood-rot.jpg
+    category: biological
+    subcategory: growth
     frequency: common
     severity: moderate
     typical_context: general
   related_compounds:
   - id: formaldehyde-compound
     title: Formaldehyde
-    url: /compounds/formaldehyde
+    url: /compounds/carcinogen/aldehyde/formaldehyde-compound
     image: /images/compounds/formaldehyde.jpg
+    category: carcinogen
+    subcategory: aldehyde
     frequency: common
     severity: moderate
     typical_context: Decomposition of wood compounds
@@ -328,4 +332,4 @@ serviceOffering:
     notes: Careful power control to avoid charring
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-16T14:48:48.173809'
+    generated_date: '2025-12-16T18:07:20.212330'

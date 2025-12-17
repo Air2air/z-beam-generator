@@ -1,17 +1,20 @@
+id: pyrex-settings
 name: Pyrex
 slug: pyrex-settings
+category: glass
+subcategory: soda-lime
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.078150'
+dateModified: '2025-12-16T17:59:18.078150'
 domain: settings
-datePublished: '2025-12-16T14:50:07.340517'
-dateModified: '2025-12-16T14:50:07.340517'
 machineSettings:
   powerRange:
-    description: Optimal average power for Pyrex surface cleaning without thermal
-      damage
+    description: Optimal average power for Pyrex surface cleaning without thermal damage
     unit: W
     value: 25
   wavelength:
-    description: Near-IR wavelength providing good absorption in surface contaminants
-      while minimizing bulk Pyrex absorption
+    description: Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk Pyrex absorption
     unit: nm
     value: 1064
   spotSize:
@@ -19,18 +22,15 @@ machineSettings:
     unit: μm
     value: 50
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     unit: kHz
     value: 50
   fluenceThreshold:
-    description: Energy density threshold for effective contaminant removal without
-      damaging Pyrex substrate
+    description: Energy density threshold for effective contaminant removal without damaging Pyrex substrate
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
+    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
     unit: ns
     value: 100
   scanSpeed:
@@ -42,7 +42,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning without excessive
-      thermal buildup
+    description: Optimal beam overlap percentage for uniform cleaning without excessive thermal buildup
     unit: '%'
     value: 50

@@ -1,17 +1,53 @@
+id: borosilicate-glass-settings
 name: Borosilicate Glass
 slug: borosilicate-glass-settings
+category: glass
+subcategory: soda-lime
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.721966'
+dateModified: '2025-12-16T17:59:17.721966'
+domain_linkages:
+  contaminants:
+  - adhesive-residue
+  - biological-stains
+  - blood-residue
+  - insect-residue
+  - lime-scale
+  - medical-disinfectant
+  - mineral-deposits
+  - pesticide-residue
+  - pharmaceutical-residue
+  - plastic-residue
+  - pollen-deposit
+  - scale-buildup
+  - silicone-buildup
+  - soap-scum
+  - tree-sap
+  - water-stain
+  compounds:
+  - acetaldehyde-compound
+  - acrolein-compound
+  - ammonia-compound
+  - benzene-compound
+  - carbon-dioxide-compound
+  - carbon-monoxide-compound
+  - formaldehyde-compound
+  - hydrogen-chloride-compound
+  - hydrogen-cyanide-compound
+  - pahs-compound
+  - phosgene-compound
+  - styrene-compound
+  - toluene-compound
+  - vocs-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.127539'
-dateModified: '2025-12-16T14:50:07.127539'
 machineSettings:
   powerRange:
-    description: Optimal average power for Borosilicate Glass surface cleaning without
-      thermal damage
+    description: Optimal average power for Borosilicate Glass surface cleaning without thermal damage
     unit: W
     value: 25
   wavelength:
-    description: Near-IR wavelength providing good transmission control for surface
-      contamination removal
+    description: Near-IR wavelength providing good transmission control for surface contamination removal
     unit: nm
     value: 1064
   spotSize:
@@ -27,8 +63,7 @@ machineSettings:
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate heating
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate heating
     unit: ns
     value: 100
   scanSpeed:
@@ -40,7 +75,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive energy
-      deposition
+    description: Optimal beam overlap for uniform cleaning without excessive energy deposition
     unit: '%'
     value: 50

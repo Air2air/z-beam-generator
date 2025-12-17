@@ -1,16 +1,43 @@
+id: limestone-settings
 name: Limestone
 slug: limestone-settings
+category: stone
+subcategory: sedimentary
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.930340'
+dateModified: '2025-12-16T17:59:17.930340'
+domain_linkages:
+  contaminants:
+  - algae-growth
+  - biological-stains
+  - bitumen-tar
+  - carbon-soot
+  - ceramic-glaze
+  - concrete-dust
+  - efflorescence
+  - fertilizer-residue
+  - fire-damage
+  - graffiti-paint
+  - mineral-deposits
+  - mineral-stain
+  - salt-residue
+  - scale-buildup
+  - water-stain
+  compounds:
+  - benzoapyrene-compound
+  - carbon-monoxide-compound
+  - pahs-compound
+  - toluene-compound
+  - vocs-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.250742'
-dateModified: '2025-12-16T14:50:07.250742'
 machineSettings:
   powerRange:
     description: Optimal average power for limestone cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength optimized for limestone absorption and minimal
-      scattering
+    description: Near-IR wavelength optimized for limestone absorption and minimal scattering
     unit: nm
     value: 1064
   spotSize:
@@ -18,18 +45,15 @@ machineSettings:
     unit: μm
     value: 100
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective contaminant removal while preserving
-      limestone surface
+    description: Fluence threshold for effective contaminant removal while preserving limestone surface
     unit: J/cm²
     value: 12
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
     unit: ns
     value: 10
   scanSpeed:

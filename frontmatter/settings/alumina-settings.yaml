@@ -1,17 +1,50 @@
+id: alumina-settings
 name: Alumina
 slug: alumina-settings
+category: ceramic
+subcategory: oxide
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.676048'
+dateModified: '2025-12-16T17:59:17.676048'
+domain_linkages:
+  contaminants:
+  - adhesive-residue
+  - blood-residue
+  - carbon-buildup
+  - carbon-soot
+  - ceramic-glaze
+  - chemical-stains
+  - fire-damage
+  - graphite-marks
+  - lime-scale
+  - medical-disinfectant
+  - mineral-deposits
+  - mold-mildew
+  - scale-buildup
+  - semiconductor-residue
+  - silicone-buildup
+  - soap-scum
+  compounds:
+  - acetaldehyde-compound
+  - ammonia-compound
+  - benzoapyrene-compound
+  - carbon-dioxide-compound
+  - carbon-monoxide-compound
+  - formaldehyde-compound
+  - hydrogen-chloride-compound
+  - hydrogen-cyanide-compound
+  - pahs-compound
+  - toluene-compound
+  - vocs-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.104461'
-dateModified: '2025-12-16T14:50:07.104461'
 machineSettings:
   powerRange:
-    description: Optimal average power for Alumina surface cleaning without thermal
-      damage
+    description: Optimal average power for Alumina surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength providing good absorption in Alumina with minimal
-      reflection
+    description: Near-IR wavelength providing good absorption in Alumina with minimal reflection
     unit: nm
     value: 1064
   spotSize:
@@ -19,8 +52,7 @@ machineSettings:
     unit: μm
     value: 50
   repetitionRate:
-    description: Optimal repetition rate balancing cleaning efficiency and thermal
-      management
+    description: Optimal repetition rate balancing cleaning efficiency and thermal management
     unit: kHz
     value: 50
   fluenceThreshold:
@@ -28,8 +60,7 @@ machineSettings:
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for efficient material removal with controlled
-      thermal effects
+    description: Nanosecond pulse duration for efficient material removal with controlled thermal effects
     unit: ns
     value: 10
   scanSpeed:
@@ -41,7 +72,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     unit: '%'
     value: 50

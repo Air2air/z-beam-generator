@@ -1,17 +1,53 @@
+id: float-glass-settings
 name: Float Glass
 slug: float-glass-settings
+category: glass
+subcategory: soda-lime
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.831147'
+dateModified: '2025-12-16T17:59:17.831147'
+domain_linkages:
+  contaminants:
+  - adhesive-residue
+  - biological-stains
+  - blood-residue
+  - insect-residue
+  - lime-scale
+  - medical-disinfectant
+  - mineral-deposits
+  - pesticide-residue
+  - pharmaceutical-residue
+  - plastic-residue
+  - pollen-deposit
+  - scale-buildup
+  - silicone-buildup
+  - soap-scum
+  - tree-sap
+  - water-stain
+  compounds:
+  - acetaldehyde-compound
+  - acrolein-compound
+  - ammonia-compound
+  - benzene-compound
+  - carbon-dioxide-compound
+  - carbon-monoxide-compound
+  - formaldehyde-compound
+  - hydrogen-chloride-compound
+  - hydrogen-cyanide-compound
+  - pahs-compound
+  - phosgene-compound
+  - styrene-compound
+  - toluene-compound
+  - vocs-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.195964'
-dateModified: '2025-12-16T14:50:07.195964'
 machineSettings:
   powerRange:
-    description: Optimal average power for Float Glass surface cleaning without thermal
-      damage
+    description: Optimal average power for Float Glass surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength optimized for Float Glass absorption and minimal
-      subsurface damage
+    description: Near-IR wavelength optimized for Float Glass absorption and minimal subsurface damage
     unit: nm
     value: 1064
   spotSize:
@@ -19,18 +55,15 @@ machineSettings:
     unit: μm
     value: 100
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective contaminant removal below glass damage
-      threshold
+    description: Fluence threshold for effective contaminant removal below glass damage threshold
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal without
-      glass damage
+    description: Nanosecond pulse duration for effective contaminant removal without glass damage
     unit: ns
     value: 10
   scanSpeed:
@@ -42,8 +75,7 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     unit: '%'
     value: 50
   dwellTime:

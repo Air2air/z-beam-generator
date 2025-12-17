@@ -1,17 +1,20 @@
+id: palladium-settings
 name: Palladium
 slug: palladium-settings
+category: metal
+subcategory: non-ferrous
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.005245'
+dateModified: '2025-12-16T17:59:18.005245'
 domain: settings
-datePublished: '2025-12-16T14:50:07.293786'
-dateModified: '2025-12-16T14:50:07.293786'
 machineSettings:
   powerRange:
-    description: Optimal average power for Palladium oxide removal without substrate
-      damage
+    description: Optimal average power for Palladium oxide removal without substrate damage
     unit: W
     value: 90
   wavelength:
-    description: Near-IR wavelength for efficient absorption by Palladium oxides and
-      contaminants
+    description: Near-IR wavelength for efficient absorption by Palladium oxides and contaminants
     unit: nm
     value: 1064
   spotSize:
@@ -39,8 +42,7 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
     unit: '%'
     value: 50
   dwellTime:

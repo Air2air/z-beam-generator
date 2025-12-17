@@ -1,8 +1,36 @@
+id: soapstone-settings
 name: Soapstone
 slug: soapstone-settings
+category: stone
+subcategory: sedimentary
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.163919'
+dateModified: '2025-12-16T17:59:18.163919'
+domain_linkages:
+  contaminants:
+  - algae-growth
+  - biological-stains
+  - bitumen-tar
+  - carbon-soot
+  - ceramic-glaze
+  - concrete-dust
+  - efflorescence
+  - fertilizer-residue
+  - fire-damage
+  - graffiti-paint
+  - mineral-deposits
+  - mineral-stain
+  - salt-residue
+  - scale-buildup
+  - water-stain
+  compounds:
+  - benzoapyrene-compound
+  - carbon-monoxide-compound
+  - pahs-compound
+  - toluene-compound
+  - vocs-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.400289'
-dateModified: '2025-12-16T14:50:07.400289'
 machineSettings:
   powerRange:
     description: Optimal average power for Soapstone cleaning without thermal damage
@@ -21,13 +49,11 @@ machineSettings:
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse width for controlled ablation of Soapstone surface
-      contaminants
+    description: Nanosecond pulse width for controlled ablation of Soapstone surface contaminants
     unit: ns
     value: 10
   scanSpeed:

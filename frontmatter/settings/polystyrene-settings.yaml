@@ -1,17 +1,20 @@
+id: polystyrene-settings
 name: Polystyrene
 slug: polystyrene-settings
+category: plastic
+subcategory: thermoplastic
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.048409'
+dateModified: '2025-12-16T17:59:18.048409'
 domain: settings
-datePublished: '2025-12-16T14:50:07.320216'
-dateModified: '2025-12-16T14:50:07.320216'
 machineSettings:
   powerRange:
-    description: Optimal average power for Polystyrene surface cleaning without thermal
-      damage
+    description: Optimal average power for Polystyrene surface cleaning without thermal damage
     unit: W
     value: 25
   wavelength:
-    description: Near-IR wavelength providing good absorption in Polystyrene with
-      minimal thermal penetration
+    description: Near-IR wavelength providing good absorption in Polystyrene with minimal thermal penetration
     unit: nm
     value: 1064
   spotSize:
@@ -23,13 +26,11 @@ machineSettings:
     unit: kHz
     value: 20
   energyDensity:
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of Polystyrene
-      surface contaminants
+    description: Nanosecond pulse duration for controlled ablation of Polystyrene surface contaminants
     unit: ns
     value: 100
   scanSpeed:

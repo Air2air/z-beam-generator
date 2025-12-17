@@ -29,6 +29,7 @@ from shared.utils.core.slug_utils import create_material_slug
 from export.utils.numeric_formatting import format_numeric_value
 from shared.validation.domain_associations import DomainAssociationsValidator
 from shared.validation.field_order import FrontmatterFieldOrderValidator
+from shared.services.domain_linkages_service import DomainLinkagesService
 
 logger = logging.getLogger(__name__)
 
@@ -630,8 +631,12 @@ class TrivialFrontmatterExporter:
         self.field_order_validator = FrontmatterFieldOrderValidator()
         self.field_order_validator.load_schema()
         
+        # Initialize domain linkages service (centralized)
+        self.linkages_service = DomainLinkagesService()
+        
         self.logger.info(f"✅ Loaded domain associations system")
         self.logger.info(f"✅ Loaded field order specifications")
+        self.logger.info(f"✅ Initialized domain linkages service")
     
     # Content loading methods removed - now using unified_loader
     # See load_material_micros(), load_material_faqs(), load_regulatory_standards()
@@ -668,7 +673,7 @@ class TrivialFrontmatterExporter:
                     
         self.logger.info(f"   Taxonomy maps {len(self.property_taxonomy)} properties to categories")
     
-    def export_all(self, force: bool = False) -> Dict[str, bool]:
+    def export_all(self, force: bool = True) -> Dict[str, bool]:
         """
         Export all materials from Materials.yaml to frontmatter files.
         
@@ -731,8 +736,10 @@ class TrivialFrontmatterExporter:
         # Add ISO 8601 timestamps if missing (Schema.org requirement)
         from datetime import datetime
         current_timestamp = datetime.now().isoformat()
-        frontmatter['datePublished'] = material_data.get('datePublished') or current_timestamp
-        frontmatter['dateModified'] = material_data.get('dateModified') or current_timestamp
+        if 'datePublished' not in frontmatter or not frontmatter['datePublished']:
+            frontmatter['datePublished'] = current_timestamp
+        if 'dateModified' not in frontmatter or not frontmatter['dateModified']:
+            frontmatter['dateModified'] = current_timestamp
         
         # Generate breadcrumb navigation (before field copying)
         # POLICY: Material_name is now the ID (slug format) after ID migration
@@ -914,7 +921,9 @@ class TrivialFrontmatterExporter:
         
         # Generate domain_linkages from centralized associations (replaces hardcoded copy)
         # material_name is already the ID (slug format) after ID migration
-        frontmatter['domain_linkages'] = self._build_material_linkages(material_name, material_name)
+        frontmatter['domain_linkages'] = self.linkages_service.generate_linkages(
+            material_name, 'materials'
+        )
         
         # Export materials page only (settings handled by separate TrivialSettingsExporter)
         self._export_materials_page(material_name, frontmatter)
@@ -1176,47 +1185,15 @@ class TrivialFrontmatterExporter:
         
         self.logger.info(f"✅ Exported settings page: {material_name} → {filename}")
     
-    def _build_material_linkages(self, material_id: str, material_name: str) -> Dict:
-        """
-        Generate domain_linkages from centralized associations.
-        
-        Creates bidirectional linkages:
-        - related_contaminants: Contaminants that affect this material (bidirectional)
-        - related_compounds: Compounds created when cleaning this material (transitive via contaminants)
-        
-        Args:
-            material_id: Material ID (e.g., 'aluminum-laser-cleaning')
-            material_name: Material name for logging
-        
-        Returns:
-            Dict with domain_linkages structure
-        """
-        linkages = {}
-        
-        # Get contaminants that affect this material (bidirectional)
-        related_contaminants = self.associations_validator.get_contaminants_for_material(material_id)
-        if related_contaminants:
-            linkages['related_contaminants'] = related_contaminants
-        
-        # Get compounds (transitive: Material → Contaminant → Compound)
-        # For each related contaminant, get its compounds, then deduplicate
-        related_compounds = []
-        seen_compounds = set()
-        
-        for contaminant in related_contaminants:
-            contaminant_id = contaminant.get('id')
-            if contaminant_id:
-                compounds = self.associations_validator.get_compounds_for_contaminant(contaminant_id)
-                for compound in compounds:
-                    compound_id = compound.get('id')
-                    if compound_id and compound_id not in seen_compounds:
-                        seen_compounds.add(compound_id)
-                        related_compounds.append(compound)
-        
-        if related_compounds:
-            linkages['related_compounds'] = related_compounds
-        
-        return linkages
+    # DEPRECATED: Replaced by centralized DomainLinkagesService
+    # def _build_material_linkages(self, material_id: str, material_name: str) -> Dict:
+    #     """
+    #     OLD METHOD - Now using shared/services/domain_linkages_service.py
+    #     
+    #     This method has been replaced by DomainLinkagesService.generate_linkages()
+    #     for consistency across all exporters.
+    #     """
+    #     pass
     
     def _get_category_ranges(self, category: str) -> Dict[str, Any]:
         """Get category-wide ranges from MaterialProperties.yaml."""

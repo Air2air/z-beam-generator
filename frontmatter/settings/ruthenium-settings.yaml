@@ -1,17 +1,20 @@
+id: ruthenium-settings
 name: Ruthenium
 slug: ruthenium-settings
+category: metal
+subcategory: non-ferrous
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.111264'
+dateModified: '2025-12-16T17:59:18.111264'
 domain: settings
-datePublished: '2025-12-16T14:50:07.364016'
-dateModified: '2025-12-16T14:50:07.364016'
 machineSettings:
   powerRange:
-    description: Optimal average power for Ruthenium oxide removal without substrate
-      damage
+    description: Optimal average power for Ruthenium oxide removal without substrate damage
     unit: W
     value: 45
   wavelength:
-    description: Near-IR wavelength for efficient Ruthenium oxide absorption with
-      minimal substrate interaction
+    description: Near-IR wavelength for efficient Ruthenium oxide absorption with minimal substrate interaction
     unit: nm
     value: 1064
   spotSize:
@@ -23,8 +26,7 @@ machineSettings:
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for Ruthenium oxide removal without bulk material
-      damage
+    description: Fluence threshold for Ruthenium oxide removal without bulk material damage
     unit: J/cm²
     value: 2.3
   pulseWidth:

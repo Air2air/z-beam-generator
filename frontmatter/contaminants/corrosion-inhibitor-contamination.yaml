@@ -3,26 +3,34 @@ name: Corrosion Inhibitor Coating
 slug: corrosion-inhibitor-contamination
 category: inorganic-coating
 subcategory: coating
+datePublished: '2025-12-16T21:08:14.650936'
+dateModified: '2025-12-16T21:08:14.650936'
 domain_linkages:
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Aluminum
+  - id: aluminum-laser-cleaning
     title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Copper
+  - id: copper-laser-cleaning
     title: Copper
-    url: /materials/Copper
-    image: /images/materials/Copper.jpg
+    url: /materials/metal/non-ferrous/copper-laser-cleaning
+    image: /images/materials/copper.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -47,8 +55,7 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -57,8 +64,6 @@ author:
   formatting_file: usa_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.138706'
-dateModified: '2025-12-16T14:49:04.138706'
 _metadata:
   voice:
     author_name: Todd Dunning
@@ -66,14 +71,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Corrosion Inhibitor Coating Contamination
-contamination_description: Corrosion-inhibitor contamination arises from chemical
-  coatings applied to protect metals during storage and shipping, forming a thin,
-  waxy residue that migrates to surfaces over time. This oily layer stands out from
-  rust or dirt by its slippery texture and faint chemical odor, resisting water-based
-  cleaners while adhering unevenly—firmly on steel yet flaking off aluminum and copper
-  more readily. Removal poses challenges like incomplete stripping without damaging
-  substrates, but laser cleaning tackles this effectively by vaporizing the inhibitor
-  precisely, achieving a clean finish that backs up long-term surface integrity.
+contamination_description: Corrosion-inhibitor contamination arises from chemical coatings applied to protect metals during storage and shipping, forming a thin, waxy residue that migrates to surfaces over time. This oily layer stands out from rust or dirt by its slippery texture and faint chemical odor, resisting water-based cleaners while adhering unevenly—firmly on steel yet flaking off aluminum and copper more readily. Removal poses challenges like incomplete stripping without damaging substrates, but laser cleaning tackles this effectively by vaporizing the inhibitor precisely, achieving a clean finish that backs up long-term surface integrity.
 breadcrumb:
 - label: Home
   href: /
@@ -199,8 +197,7 @@ laser_properties:
       respiratory: PAPR
       skin_protection: full_suit
     substrate_compatibility_warnings:
-    - Thermal decomposition may generate toxic fumes when coating contains organic
-      compounds
+    - Thermal decomposition may generate toxic fumes when coating contains organic compounds
     - Metallic substrates may reflect laser radiation creating secondary hazards
     - Incomplete removal may create mixed hazardous waste requiring special disposal
     toxic_gas_risk: moderate

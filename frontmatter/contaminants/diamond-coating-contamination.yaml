@@ -3,26 +3,34 @@ name: Diamond-Like Carbon Removal
 slug: diamond-coating-contamination
 category: inorganic-coating
 subcategory: coating
+datePublished: '2025-12-16T21:08:14.675279'
+dateModified: '2025-12-16T21:08:14.675279'
 domain_linkages:
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Titanium
-    title: Titanium
-    url: /materials/Titanium
-    image: /images/materials/Titanium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Tungsten Carbide
+  - id: tungsten-carbide-laser-cleaning
     title: Tungsten Carbide
-    url: /materials/Tungsten Carbide
-    image: /images/materials/Tungsten Carbide.jpg
+    url: /materials/ceramic/carbide/tungsten-carbide-laser-cleaning
+    image: /images/materials/tungsten-carbide.jpg
+    category: ceramic
+    subcategory: carbide
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: titanium-laser-cleaning
+    title: Titanium
+    url: /materials/metal/specialty/titanium-laser-cleaning
+    image: /images/materials/titanium.jpg
+    category: metal
+    subcategory: specialty
     frequency: common
     severity: moderate
     typical_context: general
@@ -46,8 +54,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -57,8 +64,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.160096'
-dateModified: '2025-12-16T14:49:04.160096'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -66,14 +71,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Diamond-Like Carbon Removal Contamination
-contamination_description: Diamond-coating contamination arises from residues during
-  deposition processes, so layer forms on surfaces and adheres strongly because of
-  carbon bonding. This contamination shows unique hardness and low friction unlike
-  softer oxide types, and behaves differently on steel where it bonds tightly, on
-  titanium with even spreading, and on tungsten carbide showing partial resistance
-  during exposure. Removal challenges include high thermal stability that resists
-  mild methods, so laser cleaning applies effectively by ablating layer selectively
-  without damaging substrate underneath.
+contamination_description: Diamond-coating contamination arises from residues during deposition processes, so layer forms on surfaces and adheres strongly because of carbon bonding. This contamination shows unique hardness and low friction unlike softer oxide types, and behaves differently on steel where it bonds tightly, on titanium with even spreading, and on tungsten carbide showing partial resistance during exposure. Removal challenges include high thermal stability that resists mild methods, so laser cleaning applies effectively by ablating layer selectively without damaging substrate underneath.
 breadcrumb:
 - label: Home
   href: /
@@ -187,11 +185,9 @@ laser_properties:
       respiratory: PAPR
       skin_protection: gloves
     substrate_compatibility_warnings:
-    - Avoid laser cleaning on substrates containing chlorinated compounds (risk of
-      phosgene generation)
+    - Avoid laser cleaning on substrates containing chlorinated compounds (risk of phosgene generation)
     - Ensure substrate does not contain heavy metals that could vaporize
-    - Test for potential hydrogen cyanide generation if nitrogen-containing compounds
-      are present
+    - Test for potential hydrogen cyanide generation if nitrogen-containing compounds are present
     toxic_gas_risk: moderate
     ventilation_requirements:
       exhaust_velocity_m_s: 0.5

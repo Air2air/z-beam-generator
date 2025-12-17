@@ -3,33 +3,34 @@ name: Metal Polish Residue
 slug: metal-polish-contamination
 category: organic-residue
 subcategory: wax
+datePublished: '2025-12-16T21:08:15.033185'
+dateModified: '2025-12-16T21:08:15.033185'
 domain_linkages:
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Aluminum
+  - id: aluminum-laser-cleaning
     title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Copper
+  - id: copper-laser-cleaning
     title: Copper
-    url: /materials/Copper
-    image: /images/materials/Copper.jpg
+    url: /materials/metal/non-ferrous/copper-laser-cleaning
+    image: /images/materials/copper.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -54,8 +55,7 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -64,8 +64,6 @@ author:
   formatting_file: usa_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.498767'
-dateModified: '2025-12-16T14:49:04.498767'
 _metadata:
   voice:
     author_name: Todd Dunning
@@ -73,13 +71,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Metal Polish Residue Contamination
-contamination_description: Metal-polish contamination consists of fine abrasive compound
-  residues that embed into metal surfaces during polishing operations to achieve a
-  smooth finish. These deposits stand out from oils or rust by their gritty, tenacious
-  particles, which adhere deeply and often oxidize on brass or copper, while forming
-  a tougher film on steel and aluminum. Removal proves challenging due to the risk
-  of substrate damage from scraping, yet laser cleaning effectively ablates them layer
-  by layer, preserving material integrity without harsh chemicals.
+contamination_description: Metal-polish contamination consists of fine abrasive compound residues that embed into metal surfaces during polishing operations to achieve a smooth finish. These deposits stand out from oils or rust by their gritty, tenacious particles, which adhere deeply and often oxidize on brass or copper, while forming a tougher film on steel and aluminum. Removal proves challenging due to the risk of substrate damage from scraping, yet laser cleaning effectively ablates them layer by layer, preserving material integrity without harsh chemicals.
 breadcrumb:
 - label: Home
   href: /

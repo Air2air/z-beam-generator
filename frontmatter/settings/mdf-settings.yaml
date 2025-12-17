@@ -1,16 +1,25 @@
+id: mdf-settings
 name: MDF
 slug: mdf-settings
+category: wood
+subcategory: hardwood
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.936466'
+dateModified: '2025-12-16T17:59:17.936466'
+domain_linkages:
+  contaminants:
+  - wood-rot
+  compounds:
+  - formaldehyde-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.253437'
-dateModified: '2025-12-16T14:50:07.253437'
 machineSettings:
   powerRange:
     description: Optimal average power for MDF surface cleaning without charring
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength for optimal MDF absorption and minimal substrate
-      damage
+    description: Near-IR wavelength for optimal MDF absorption and minimal substrate damage
     unit: nm
     value: 1064
   spotSize:

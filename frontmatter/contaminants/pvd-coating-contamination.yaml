@@ -3,26 +3,16 @@ name: PVD Coating Defects
 slug: pvd-coating-contamination
 category: inorganic-coating
 subcategory: coating
+datePublished: '2025-12-16T21:08:15.278995'
+dateModified: '2025-12-16T21:08:15.278995'
 domain_linkages:
   related_materials:
-  - id: Tool Steel
+  - id: tool-steel-laser-cleaning
     title: Tool Steel
-    url: /materials/Tool Steel
-    image: /images/materials/Tool Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: carbide
-    title: Carbide
-    url: /materials/carbide
-    image: /images/materials/carbide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: hss
-    title: Hss
-    url: /materials/hss
-    image: /images/materials/hss.jpg
+    url: /materials/metal/alloy/tool-steel-laser-cleaning
+    image: /images/materials/tool-steel.jpg
+    category: metal
+    subcategory: alloy
     frequency: common
     severity: moderate
     typical_context: general
@@ -48,8 +38,7 @@ author:
   - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
   email: info@z-beam.com
   image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
-    Materials Dept., in research lab
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
   url: https://z-beam.com/authors/alessandro-moretti-phd
   sameAs:
   - https://scholar.google.com/citations?user=def456
@@ -58,8 +47,6 @@ author:
   formatting_file: italy_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.773485'
-dateModified: '2025-12-16T14:49:04.773485'
 _metadata:
   voice:
     author_name: Alessandro Moretti
@@ -67,16 +54,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: PVD Coating Defects Contamination
-contamination_description: PVD-coating contamination, it manifests as thin-film irregularities
-  and delamination, which forms during vapor deposition when substrate adhesion weakens
-  from residual gases or uneven evaporation. This pattern, it distinguishes itself
-  from oxide scaling by its layered, brittle structure that flakes tenaciously under
-  stress, yet persists more stubbornly on carbide than on tool steel or HSS, where
-  delamination appears less uniform. Removal challenges arise from the contamination's
-  thermal sensitivity, which risks substrate damage if ablated aggressively, but laser
-  cleaning proves effective, as it selectively vaporizes the irregular layers through
-  precise energy absorption, that demonstrates controlled restoration without altering
-  the underlying material integrity.
+contamination_description: PVD-coating contamination, it manifests as thin-film irregularities and delamination, which forms during vapor deposition when substrate adhesion weakens from residual gases or uneven evaporation. This pattern, it distinguishes itself from oxide scaling by its layered, brittle structure that flakes tenaciously under stress, yet persists more stubbornly on carbide than on tool steel or HSS, where delamination appears less uniform. Removal challenges arise from the contamination's thermal sensitivity, which risks substrate damage if ablated aggressively, but laser cleaning proves effective, as it selectively vaporizes the irregular layers through precise energy absorption, that demonstrates controlled restoration without altering the underlying material integrity.
 breadcrumb:
 - label: Home
   href: /

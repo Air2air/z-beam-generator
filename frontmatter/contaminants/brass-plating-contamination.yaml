@@ -3,19 +3,27 @@ name: Brass Coating Removal
 slug: brass-plating-contamination
 category: metallic-coating
 subcategory: plating
+datePublished: '2025-12-16T21:08:14.458309'
+dateModified: '2025-12-16T21:08:14.458309'
 domain_linkages:
-  related_materials:
-  - id: Steel
-    title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+  produces_compounds:
+  - id: zinc-oxide-compound
+    title: Zinc Oxide
+    url: /compounds/metal_fume/metal_oxide/zinc-oxide-compound
+    image: /images/compounds/zinc-oxide.jpg
+    category: metal_fume
+    subcategory: metal_oxide
     frequency: common
     severity: moderate
-    typical_context: general
-  - id: zinc-alloy
-    title: Zinc Alloy
-    url: /materials/zinc-alloy
-    image: /images/materials/zinc-alloy.jpg
+    typical_context: Zinc component of brass alloy
+    exposure_risk: moderate
+  related_materials:
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -41,8 +49,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -51,8 +58,6 @@ author:
   formatting_file: indonesia_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:03.957208'
-dateModified: '2025-12-16T14:49:03.957208'
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -60,15 +65,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Brass Coating Removal Contamination
-contamination_description: Brass-plating contamination forms during alloy deposition
-  for decorative layering on hardware. Impurities embed in the process, and create
-  uneven films thus leading to flaky residues. This contamination, it distinguishes
-  from uniform oxides through metallic sheen and strong adhesion that resists simple
-  wiping. On zinc alloy, it spreads rapidly and bonds tightly so persists under exposure,
-  while on steel, it flakes loosely after time passes. Removal challenges arise from
-  persistent sticking, and mechanical scraping damages surfaces easily. Laser cleaning
-  proves effective, as pulses vaporize layers precisely thus restore smoothness without
-  harm.
+contamination_description: Brass-plating contamination forms during alloy deposition for decorative layering on hardware. Impurities embed in the process, and create uneven films thus leading to flaky residues. This contamination, it distinguishes from uniform oxides through metallic sheen and strong adhesion that resists simple wiping. On zinc alloy, it spreads rapidly and bonds tightly so persists under exposure, while on steel, it flakes loosely after time passes. Removal challenges arise from persistent sticking, and mechanical scraping damages surfaces easily. Laser cleaning proves effective, as pulses vaporize layers precisely thus restore smoothness without harm.
 breadcrumb:
 - label: Home
   href: /

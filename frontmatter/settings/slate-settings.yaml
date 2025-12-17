@@ -1,12 +1,39 @@
+id: slate-settings
 name: Slate
 slug: slate-settings
+category: stone
+subcategory: metamorphic
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.159407'
+dateModified: '2025-12-16T17:59:18.159407'
+domain_linkages:
+  contaminants:
+  - algae-growth
+  - biological-stains
+  - bitumen-tar
+  - carbon-soot
+  - ceramic-glaze
+  - concrete-dust
+  - efflorescence
+  - fertilizer-residue
+  - fire-damage
+  - graffiti-paint
+  - mineral-deposits
+  - mineral-stain
+  - salt-residue
+  - scale-buildup
+  - water-stain
+  compounds:
+  - benzoapyrene-compound
+  - carbon-monoxide-compound
+  - pahs-compound
+  - toluene-compound
+  - vocs-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.397675'
-dateModified: '2025-12-16T14:50:07.397675'
 machineSettings:
   powerRange:
-    description: Optimal average power for Slate surface cleaning without thermal
-      damage
+    description: Optimal average power for Slate surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:

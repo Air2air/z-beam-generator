@@ -1,16 +1,20 @@
+id: poplar-settings
 name: Poplar
 slug: poplar-settings
+category: wood
+subcategory: hardwood
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.060752'
+dateModified: '2025-12-16T17:59:18.060752'
 domain: settings
-datePublished: '2025-12-16T14:50:07.327876'
-dateModified: '2025-12-16T14:50:07.327876'
 machineSettings:
   powerRange:
     description: Optimal average power for Poplar surface cleaning without charring
     unit: W
     value: 100
   wavelength:
-    description: Near-infrared wavelength for optimal Poplar absorption and minimal
-      subsurface damage
+    description: Near-infrared wavelength for optimal Poplar absorption and minimal subsurface damage
     unit: nm
     value: 1064
   spotSize:
@@ -18,18 +22,15 @@ machineSettings:
     unit: μm
     value: 100
   repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage on Poplar
-      surfaces
+    description: Optimal repetition rate for continuous cleaning coverage on Poplar surfaces
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective contaminant removal without wood
-      substrate damage
+    description: Fluence threshold for effective contaminant removal without wood substrate damage
     unit: J/cm²
     value: 1.2
   pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal wood damage
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal wood damage
     unit: ns
     value: 10
   scanSpeed:
@@ -37,8 +38,7 @@ machineSettings:
     unit: mm/s
     value: 500
   passCount:
-    description: Recommended number of passes for complete contaminant removal from
-      Poplar
+    description: Recommended number of passes for complete contaminant removal from Poplar
     unit: passes
     value: 2
   overlapRatio:
@@ -46,7 +46,6 @@ machineSettings:
     unit: '%'
     value: 50
   dwellTime:
-    description: Optimal dwell time per spot for effective cleaning without thermal
-      accumulation
+    description: Optimal dwell time per spot for effective cleaning without thermal accumulation
     unit: μs
     value: 100

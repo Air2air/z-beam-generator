@@ -1,17 +1,20 @@
+id: tantalum-settings
 name: Tantalum
 slug: tantalum-settings
+category: metal
+subcategory: alloy
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.195081'
+dateModified: '2025-12-16T17:59:18.195081'
 domain: settings
-datePublished: '2025-12-16T14:50:07.414828'
-dateModified: '2025-12-16T14:50:07.414828'
 machineSettings:
   powerRange:
-    description: Optimal average power for Tantalum oxide removal without substrate
-      damage
+    description: Optimal average power for Tantalum oxide removal without substrate damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength optimized for Tantalum's high reflectivity and
-      thermal conductivity
+    description: Near-IR wavelength optimized for Tantalum's high reflectivity and thermal conductivity
     unit: nm
     value: 1064
   spotSize:
@@ -27,13 +30,11 @@ machineSettings:
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for efficient oxide ablation with minimal
-      heat affected zone
+    description: Nanosecond pulse duration for efficient oxide ablation with minimal heat affected zone
     unit: ns
     value: 10
   scanSpeed:
-    description: Optimal scanning speed for efficient area coverage without thermal
-      buildup
+    description: Optimal scanning speed for efficient area coverage without thermal buildup
     unit: mm/s
     value: 500
   passCount:
@@ -41,7 +42,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      input
+    description: Optimal pulse overlap for uniform cleaning without excessive heat input
     unit: '%'
     value: 50

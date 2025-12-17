@@ -3,26 +3,36 @@ name: Thermal Compound Deposits
 slug: thermal-paste-contamination
 category: organic-residue
 subcategory: other
+datePublished: '2025-12-16T21:08:15.505974'
+dateModified: '2025-12-16T21:08:15.505974'
 domain_linkages:
+  produces_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/toxic_gas/asphyxiant/carbon-monoxide-compound
+    image: /images/compounds/carbon-monoxide.jpg
+    category: toxic_gas
+    subcategory: asphyxiant
+    frequency: common
+    severity: moderate
+    typical_context: Combustion of organic carriers
+    exposure_risk: moderate
   related_materials:
-  - id: Copper
-    title: Copper
-    url: /materials/Copper
-    image: /images/materials/Copper.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum
+  - id: aluminum-laser-cleaning
     title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: nickel-plated-surfaces
-    title: Nickel Plated Surfaces
-    url: /materials/nickel-plated-surfaces
-    image: /images/materials/nickel-plated-surfaces.jpg
+  - id: copper-laser-cleaning
+    title: Copper
+    url: /materials/metal/non-ferrous/copper-laser-cleaning
+    image: /images/materials/copper.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -46,8 +56,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -57,8 +66,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.991110'
-dateModified: '2025-12-16T14:49:04.991110'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -66,13 +73,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Thermal Compound Deposits Contamination
-contamination_description: Thermal paste contamination arises from silicone or metal-based
-  materials used in CPU cooling systems and it forms when paste spreads beyond interfaces
-  during assembly or operation. This contaminant shows unique greasy texture and strong
-  adhesion so it differs from dry dust or oxide layers by resisting simple wiping.
-  On copper and aluminum surfaces, it hardens over time and removal challenges include
-  residue buildup because paste bonds tightly. Laser cleaning works effectively since
-  pulses vaporize paste without harming underlying nickel-plated areas.
+contamination_description: Thermal paste contamination arises from silicone or metal-based materials used in CPU cooling systems and it forms when paste spreads beyond interfaces during assembly or operation. This contaminant shows unique greasy texture and strong adhesion so it differs from dry dust or oxide layers by resisting simple wiping. On copper and aluminum surfaces, it hardens over time and removal challenges include residue buildup because paste bonds tightly. Laser cleaning works effectively since pulses vaporize paste without harming underlying nickel-plated areas.
 breadcrumb:
 - label: Home
   href: /

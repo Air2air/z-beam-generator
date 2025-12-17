@@ -1,17 +1,20 @@
+id: fiber-reinforced-polyurethane-frpu-settings
 name: Fiber Reinforced Polyurethane FRPU
 slug: fiber-reinforced-polyurethane-frpu-settings
+category: composite
+subcategory: fiber-reinforced
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.817954'
+dateModified: '2025-12-16T17:59:17.817954'
 domain: settings
-datePublished: '2025-12-16T14:50:07.184467'
-dateModified: '2025-12-16T14:50:07.184467'
 machineSettings:
   powerRange:
-    description: Optimal average power for FRPU cleaning without thermal damage to
-      fiber reinforcement
+    description: Optimal average power for FRPU cleaning without thermal damage to fiber reinforcement
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength optimized for polyurethane absorption while minimizing
-      fiber damage
+    description: Near-IR wavelength optimized for polyurethane absorption while minimizing fiber damage
     unit: nm
     value: 1064
   spotSize:
@@ -19,23 +22,19 @@ machineSettings:
     unit: μm
     value: 100
   repetitionRate:
-    description: High repetition rate for efficient cleaning with minimal thermal
-      accumulation
+    description: High repetition rate for efficient cleaning with minimal thermal accumulation
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective polyurethane removal while preserving
-      fibers
+    description: Fluence threshold for effective polyurethane removal while preserving fibers
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of polyurethane
-      matrix
+    description: Nanosecond pulse duration for controlled ablation of polyurethane matrix
     unit: ns
     value: 10
   scanSpeed:
-    description: Optimal scanning speed for efficient coverage without excessive dwell
-      time
+    description: Optimal scanning speed for efficient coverage without excessive dwell time
     unit: mm/s
     value: 500
   passCount:
@@ -43,7 +42,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      input
+    description: Optimal beam overlap for uniform cleaning without excessive thermal input
     unit: '%'
     value: 50

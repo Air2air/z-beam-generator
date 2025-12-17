@@ -1,50 +1,47 @@
+id: rubber-settings
 name: Rubber
 slug: rubber-settings
+category: composite
+subcategory: fiber-reinforced
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.107326'
+dateModified: '2025-12-16T17:59:18.107326'
 domain: settings
-datePublished: '2025-12-16T14:50:07.361268'
-dateModified: '2025-12-16T14:50:07.361268'
 machineSettings:
   powerRange:
     description: Optimal average power for rubber cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-infrared wavelength for optimal rubber absorption and minimal
-      substrate damage
+    description: Near-infrared wavelength for optimal rubber absorption and minimal substrate damage
     unit: nm
     value: 1064
   spotSize:
-    description: Beam spot diameter for precise rubber removal with adequate cleaning
-      area
+    description: Beam spot diameter for precise rubber removal with adequate cleaning area
     unit: μm
     value: 50
   repetitionRate:
-    description: Optimal repetition rate for efficient rubber cleaning with good process
-      control
+    description: Optimal repetition rate for efficient rubber cleaning with good process control
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective rubber ablation while preserving
-      substrate integrity
+    description: Fluence threshold for effective rubber ablation while preserving substrate integrity
     unit: J/cm²
     value: 5.1
   pulseWidth:
-    description: Nanosecond pulse duration for effective rubber ablation with controlled
-      thermal effects
+    description: Nanosecond pulse duration for effective rubber ablation with controlled thermal effects
     unit: ns
     value: 10
   scanSpeed:
-    description: Optimal scanning speed for uniform rubber removal without excessive
-      heat accumulation
+    description: Optimal scanning speed for uniform rubber removal without excessive heat accumulation
     unit: mm/s
     value: 500
   passCount:
-    description: Recommended number of passes for complete rubber removal with process
-      control
+    description: Recommended number of passes for complete rubber removal with process control
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap for uniform rubber removal without excessive
-      processing time
+    description: Optimal beam overlap for uniform rubber removal without excessive processing time
     unit: '%'
     value: 50

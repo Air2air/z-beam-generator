@@ -1,36 +1,59 @@
+id: quartzite-settings
 name: Quartzite
 slug: quartzite-settings
+category: stone
+subcategory: sedimentary
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.085922'
+dateModified: '2025-12-16T17:59:18.085922'
+domain_linkages:
+  contaminants:
+  - algae-growth
+  - biological-stains
+  - bitumen-tar
+  - carbon-soot
+  - ceramic-glaze
+  - concrete-dust
+  - efflorescence
+  - fertilizer-residue
+  - fire-damage
+  - graffiti-paint
+  - mineral-deposits
+  - mineral-stain
+  - salt-residue
+  - scale-buildup
+  - water-stain
+  compounds:
+  - benzoapyrene-compound
+  - carbon-monoxide-compound
+  - pahs-compound
+  - toluene-compound
+  - vocs-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.347295'
-dateModified: '2025-12-16T14:50:07.347295'
 machineSettings:
   powerRange:
     description: Optimal average power for Quartzite cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength optimized for Quartzite absorption and minimal
-      scattering
+    description: Near-IR wavelength optimized for Quartzite absorption and minimal scattering
     unit: nm
     value: 1064
   spotSize:
-    description: Beam spot diameter for balanced cleaning efficiency and coverage
-      area
+    description: Beam spot diameter for balanced cleaning efficiency and coverage area
     unit: μm
     value: 100
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     unit: kHz
     value: 50
   fluenceThreshold:
-    description: Minimum fluence required for effective contaminant removal from Quartzite
-      surface
+    description: Minimum fluence required for effective contaminant removal from Quartzite surface
     unit: J/cm²
     value: 2.5
   pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate damage
     unit: ns
     value: 10
   scanSpeed:

@@ -3,255 +3,382 @@ name: Paint Residue / Coating Failure
 slug: paint-residue-contamination
 category: inorganic-coating
 subcategory: paint
+datePublished: '2025-12-16T21:08:15.113172'
+dateModified: '2025-12-16T21:08:15.113172'
 micro:
-  after: Post-cleaning reveals restored surface with paint residue / coating failure
-    successfully removed through precise laser ablation.
-  before: Surface shows contamination from paint residue / coating failure affecting
-    material appearance and properties.
+  after: Post-cleaning reveals restored surface with paint residue / coating failure successfully removed through precise laser ablation.
+  before: Surface shows contamination from paint residue / coating failure affecting material appearance and properties.
 domain_linkages:
+  produces_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/toxic_gas/asphyxiant/carbon-monoxide-compound
+    image: /images/compounds/carbon-monoxide.jpg
+    category: toxic_gas
+    subcategory: asphyxiant
+    frequency: very_common
+    severity: high
+    typical_context: Thermal decomposition of organic paint binders
+    exposure_risk: high
+  - id: acetaldehyde-compound
+    title: Acetaldehyde
+    url: /compounds/irritant/aldehyde/acetaldehyde-compound
+    image: /images/compounds/acetaldehyde.jpg
+    category: irritant
+    subcategory: aldehyde
+    frequency: occasional
+    severity: low
+    typical_context: Breakdown of certain paint formulations
+    exposure_risk: low
+  - id: nitrogen-oxides-compound
+    title: Nitrogen Oxides
+    url: /compounds/toxic_gas/oxidizing_gas/nitrogen-oxides-compound
+    image: /images/compounds/nitrogen-oxides.jpg
+    category: toxic_gas
+    subcategory: oxidizing_gas
+    frequency: occasional
+    severity: low
+    typical_context: Nitrogen from some paint formulations
+    exposure_risk: low
+  - id: toluene-compound
+    title: Toluene
+    url: /compounds/solvent/aromatic_hydrocarbon/toluene-compound
+    image: /images/compounds/toluene.jpg
+    category: solvent
+    subcategory: aromatic_hydrocarbon
+    frequency: common
+    severity: moderate
+    typical_context: Vaporization of toluene-based paint solvents
+    exposure_risk: moderate
+  - id: zinc-oxide-compound
+    title: Zinc Oxide
+    url: /compounds/metal_fume/metal_oxide/zinc-oxide-compound
+    image: /images/compounds/zinc-oxide.jpg
+    category: metal_fume
+    subcategory: metal_oxide
+    frequency: occasional
+    severity: low
+    typical_context: Zinc oxide pigments in paint
+    exposure_risk: low
+  - id: chromium-vi-compound
+    title: Hexavalent Chromium
+    url: /compounds/carcinogen/heavy_metal/chromium-vi-compound
+    image: /images/compounds/chromium-vi.jpg
+    category: carcinogen
+    subcategory: heavy_metal
+    frequency: occasional
+    severity: high
+    typical_context: Chromate pigments in some paints
+    exposure_risk: high
+  - id: formaldehyde-compound
+    title: Formaldehyde
+    url: /compounds/carcinogen/aldehyde/formaldehyde-compound
+    image: /images/compounds/formaldehyde.jpg
+    category: carcinogen
+    subcategory: aldehyde
+    frequency: occasional
+    severity: moderate
+    typical_context: Breakdown of melamine or urea-formaldehyde resins
+    exposure_risk: moderate
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/carcinogen/aromatic_hydrocarbon/pahs-compound
+    image: /images/compounds/pahs.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
+    frequency: common
+    severity: moderate
+    typical_context: Incomplete combustion of organic binders
+    exposure_risk: moderate
+  - id: carbon-dioxide-compound
+    title: Carbon Dioxide
+    url: /compounds/asphyxiant/simple_asphyxiant/carbon-dioxide-compound
+    image: /images/compounds/carbon-dioxide.jpg
+    category: asphyxiant
+    subcategory: simple_asphyxiant
+    frequency: very_common
+    severity: low
+    typical_context: Complete combustion of organic paint
+    exposure_risk: low
+  - id: vocs-compound
+    title: Volatile Organic Compounds
+    url: /compounds/irritant/organic_vapor/vocs-compound
+    image: /images/compounds/vocs.jpg
+    category: irritant
+    subcategory: organic_vapor
+    frequency: very_common
+    severity: moderate
+    typical_context: Vaporization of paint solvents and binders
+    exposure_risk: moderate
+  - id: benzene-compound
+    title: Benzene
+    url: /compounds/carcinogen/aromatic_hydrocarbon/benzene-compound
+    image: /images/compounds/benzene.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
+    frequency: common
+    severity: high
+    typical_context: Thermal breakdown of aromatic paint solvents
+    exposure_risk: high
   related_materials:
-  - id: Concrete
-    title: Concrete
-    url: /materials/Concrete
-    image: /images/materials/Concrete.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum
-    title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Steel
-    title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
-    title: Stainless Steel
-    url: /materials/Stainless Steel
-    image: /images/materials/Stainless Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: cast-iron
-    title: Cast Iron
-    url: /materials/cast-iron
-    image: /images/materials/cast-iron.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Copper
-    title: Copper
-    url: /materials/Copper
-    image: /images/materials/Copper.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: bronze
-    title: Bronze
-    url: /materials/bronze
-    image: /images/materials/bronze.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Titanium
-    title: Titanium
-    url: /materials/Titanium
-    image: /images/materials/Titanium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zinc
-    title: Zinc
-    url: /materials/Zinc
-    image: /images/materials/Zinc.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Nickel
-    title: Nickel
-    url: /materials/Nickel
-    image: /images/materials/Nickel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Lead
-    title: Lead
-    url: /materials/Lead
-    image: /images/materials/Lead.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Tin
-    title: Tin
-    url: /materials/Tin
-    image: /images/materials/Tin.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Cobalt
-    title: Cobalt
-    url: /materials/Cobalt
-    image: /images/materials/Cobalt.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Chromium
-    title: Chromium
-    url: /materials/Chromium
-    image: /images/materials/Chromium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Oak
-    title: Oak
-    url: /materials/Oak
-    image: /images/materials/Oak.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Maple
-    title: Maple
-    url: /materials/Maple
-    image: /images/materials/Maple.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Cherry
-    title: Cherry
-    url: /materials/Cherry
-    image: /images/materials/Cherry.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Walnut
-    title: Walnut
-    url: /materials/Walnut
-    image: /images/materials/Walnut.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Pine
-    title: Pine
-    url: /materials/Pine
-    image: /images/materials/Pine.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Cedar
-    title: Cedar
-    url: /materials/Cedar
-    image: /images/materials/Cedar.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Ash
-    title: Ash
-    url: /materials/Ash
-    image: /images/materials/Ash.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Birch
-    title: Birch
-    url: /materials/Birch
-    image: /images/materials/Birch.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Mahogany
+  - id: mahogany-laser-cleaning
     title: Mahogany
-    url: /materials/Mahogany
-    image: /images/materials/Mahogany.jpg
+    url: /materials/wood/hardwood/mahogany-laser-cleaning
+    image: /images/materials/mahogany.jpg
+    category: wood
+    subcategory: hardwood
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Teak
-    title: Teak
-    url: /materials/Teak
-    image: /images/materials/Teak.jpg
+  - id: stainless-steel-laser-cleaning
+    title: Stainless Steel
+    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+    image: /images/materials/stainless-steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Bamboo
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: bamboo-laser-cleaning
     title: Bamboo
-    url: /materials/Bamboo
-    image: /images/materials/Bamboo.jpg
+    url: /materials/wood/hardwood/bamboo-laser-cleaning
+    image: /images/materials/bamboo.jpg
+    category: wood
+    subcategory: hardwood
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Fir
+  - id: acrylic-pmma-laser-cleaning
+    title: Acrylic (PMMA)
+    url: /materials/plastic/thermoplastic/acrylic-pmma-laser-cleaning
+    image: /images/materials/acrylic-pmma.jpg
+    category: plastic
+    subcategory: thermoplastic
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: fir-laser-cleaning
     title: Fir
-    url: /materials/Fir
-    image: /images/materials/Fir.jpg
+    url: /materials/wood/softwood/fir-laser-cleaning
+    image: /images/materials/fir.jpg
+    category: wood
+    subcategory: softwood
     frequency: common
     severity: moderate
     typical_context: general
-  - id: abs
-    title: Abs
-    url: /materials/abs
-    image: /images/materials/abs.jpg
+  - id: aluminum-laser-cleaning
+    title: Aluminum
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Acrylic (PMMA)
-    title: Acrylic (Pmma)
-    url: /materials/Acrylic (PMMA)
-    image: /images/materials/Acrylic (PMMA).jpg
+  - id: pet-laser-cleaning
+    title: PET
+    url: /materials/plastic/thermoplastic/pet-laser-cleaning
+    image: /images/materials/pet.jpg
+    category: plastic
+    subcategory: thermoplastic
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Polycarbonate
+  - id: concrete-laser-cleaning
+    title: Concrete
+    url: /materials/masonry/general/concrete-laser-cleaning
+    image: /images/materials/concrete.jpg
+    category: masonry
+    subcategory: general
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: birch-laser-cleaning
+    title: Birch
+    url: /materials/wood/hardwood/birch-laser-cleaning
+    image: /images/materials/birch.jpg
+    category: wood
+    subcategory: hardwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: maple-laser-cleaning
+    title: Maple
+    url: /materials/wood/hardwood/maple-laser-cleaning
+    image: /images/materials/maple.jpg
+    category: wood
+    subcategory: hardwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: zinc-laser-cleaning
+    title: Zinc
+    url: /materials/metal/alloy/zinc-laser-cleaning
+    image: /images/materials/zinc.jpg
+    category: metal
+    subcategory: alloy
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: walnut-laser-cleaning
+    title: Walnut
+    url: /materials/wood/hardwood/walnut-laser-cleaning
+    image: /images/materials/walnut.jpg
+    category: wood
+    subcategory: hardwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: polycarbonate-laser-cleaning
     title: Polycarbonate
-    url: /materials/Polycarbonate
-    image: /images/materials/Polycarbonate.jpg
+    url: /materials/plastic/thermoplastic/polycarbonate-laser-cleaning
+    image: /images/materials/polycarbonate.jpg
+    category: plastic
+    subcategory: thermoplastic
     frequency: common
     severity: moderate
     typical_context: general
-  - id: PET
-    title: Pet
-    url: /materials/PET
-    image: /images/materials/PET.jpg
+  - id: teak-laser-cleaning
+    title: Teak
+    url: /materials/wood/hardwood/teak-laser-cleaning
+    image: /images/materials/teak.jpg
+    category: wood
+    subcategory: hardwood
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Polypropylene
+  - id: titanium-laser-cleaning
+    title: Titanium
+    url: /materials/metal/specialty/titanium-laser-cleaning
+    image: /images/materials/titanium.jpg
+    category: metal
+    subcategory: specialty
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: pine-laser-cleaning
+    title: Pine
+    url: /materials/wood/softwood/pine-laser-cleaning
+    image: /images/materials/pine.jpg
+    category: wood
+    subcategory: softwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: oak-laser-cleaning
+    title: Oak
+    url: /materials/wood/hardwood/oak-laser-cleaning
+    image: /images/materials/oak.jpg
+    category: wood
+    subcategory: hardwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: copper-laser-cleaning
+    title: Copper
+    url: /materials/metal/non-ferrous/copper-laser-cleaning
+    image: /images/materials/copper.jpg
+    category: metal
+    subcategory: non-ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cobalt-laser-cleaning
+    title: Cobalt
+    url: /materials/metal/specialty/cobalt-laser-cleaning
+    image: /images/materials/cobalt.jpg
+    category: metal
+    subcategory: specialty
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: polypropylene-laser-cleaning
     title: Polypropylene
-    url: /materials/Polypropylene
-    image: /images/materials/Polypropylene.jpg
+    url: /materials/plastic/thermoplastic/polypropylene-laser-cleaning
+    image: /images/materials/polypropylene.jpg
+    category: plastic
+    subcategory: thermoplastic
     frequency: common
     severity: moderate
     typical_context: general
-  - id: pvc
-    title: Pvc
-    url: /materials/pvc
-    image: /images/materials/pvc.jpg
+  - id: cherry-laser-cleaning
+    title: Cherry
+    url: /materials/wood/hardwood/cherry-laser-cleaning
+    image: /images/materials/cherry.jpg
+    category: wood
+    subcategory: hardwood
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Nylon
+  - id: ash-laser-cleaning
+    title: Ash
+    url: /materials/wood/hardwood/ash-laser-cleaning
+    image: /images/materials/ash.jpg
+    category: wood
+    subcategory: hardwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: tin-laser-cleaning
+    title: Tin
+    url: /materials/metal/alloy/tin-laser-cleaning
+    image: /images/materials/tin.jpg
+    category: metal
+    subcategory: alloy
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: lead-laser-cleaning
+    title: Lead
+    url: /materials/metal/non-ferrous/lead-laser-cleaning
+    image: /images/materials/lead.jpg
+    category: metal
+    subcategory: non-ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: chromium-laser-cleaning
+    title: Chromium
+    url: /materials/metal/specialty/chromium-laser-cleaning
+    image: /images/materials/chromium.jpg
+    category: metal
+    subcategory: specialty
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: cedar-laser-cleaning
+    title: Cedar
+    url: /materials/wood/softwood/cedar-laser-cleaning
+    image: /images/materials/cedar.jpg
+    category: wood
+    subcategory: softwood
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: nickel-laser-cleaning
+    title: Nickel
+    url: /materials/metal/specialty/nickel-laser-cleaning
+    image: /images/materials/nickel.jpg
+    category: metal
+    subcategory: specialty
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: nylon-laser-cleaning
     title: Nylon
-    url: /materials/Nylon
-    image: /images/materials/Nylon.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: ptfe
-    title: Ptfe
-    url: /materials/ptfe
-    image: /images/materials/ptfe.jpg
+    url: /materials/plastic/thermoplastic/nylon-laser-cleaning
+    image: /images/materials/nylon.jpg
+    category: plastic
+    subcategory: thermoplastic
     frequency: common
     severity: moderate
     typical_context: general
@@ -277,8 +404,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -287,8 +413,6 @@ author:
   formatting_file: indonesia_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.572018'
-dateModified: '2025-12-16T14:49:04.572018'
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -296,17 +420,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Paint Residue / Coating Failure Contamination
-contamination_description: Paint-residue contamination, it arises from flaking, peeling,
-  or degraded paint and coating materials. This pattern forms when environmental exposure
-  causes binders in paint to break down, thus layers detach and scatter as residue.
-  Unique characteristics distinguish it, such as irregular flakes with color remnants
-  and adhesive stickiness, unlike dust or rust that lacks organic binders. On metals,
-  residue adheres tightly and traps moisture, while on stone or wood, it embeds into
-  pores and promotes further degradation. Removal challenges persist, because residue
-  resists solvents due to its polymeric nature, and mechanical scraping risks surface
-  damage. Laser cleaning proves effective here, as precise energy pulses ablate residue
-  layers without affecting substrates, thus surface already regains uniformity following
-  treatment.
+contamination_description: Paint-residue contamination, it arises from flaking, peeling, or degraded paint and coating materials. This pattern forms when environmental exposure causes binders in paint to break down, thus layers detach and scatter as residue. Unique characteristics distinguish it, such as irregular flakes with color remnants and adhesive stickiness, unlike dust or rust that lacks organic binders. On metals, residue adheres tightly and traps moisture, while on stone or wood, it embeds into pores and promotes further degradation. Removal challenges persist, because residue resists solvents due to its polymeric nature, and mechanical scraping risks surface damage. Laser cleaning proves effective here, as precise energy pulses ablate residue layers without affecting substrates, thus surface already regains uniformity following treatment.
 breadcrumb:
 - label: Home
   href: /

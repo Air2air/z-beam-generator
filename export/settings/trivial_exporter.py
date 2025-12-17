@@ -22,13 +22,12 @@ from pathlib import Path
 from typing import Dict, Any
 from collections import OrderedDict
 
-from shared.validation.domain_associations import DomainAssociationsValidator
-from shared.validation.field_order import FrontmatterFieldOrderValidator
+from export.core.base_trivial_exporter import BaseTrivialExporter
 
 logger = logging.getLogger(__name__)
 
 
-class TrivialSettingsExporter:
+class TrivialSettingsExporter(BaseTrivialExporter):
     """
     Trivial exporter: Copy Settings.yaml → Frontmatter YAML files.
     
@@ -41,21 +40,23 @@ class TrivialSettingsExporter:
     """
     
     def __init__(self):
-        """Initialize with output directory."""
-        self.output_dir = Path(__file__).resolve().parents[2] / "frontmatter" / "settings"
-        self.output_dir.mkdir(parents=True, exist_ok=True)
-        self.logger = logging.getLogger(__name__)
+        """Initialize with output directory and load settings data."""
+        super().__init__('settings', 'settings')
         
         # Load source data
         self.settings_data = self._load_settings()
-        
-        # Initialize validators for centralized systems
-        self.associations_validator = DomainAssociationsValidator()
-        self.associations_validator.load()
-        self.field_order_validator = FrontmatterFieldOrderValidator()
-        self.field_order_validator.load_schema()
+        self.materials_data = self._load_materials()  # Need for category/subcategory lookup
         
         self.logger.info(f"✅ Loaded {len(self.settings_data.get('settings', {}))} settings profiles")
+    
+    def _load_domain_data(self) -> Dict[str, Any]:
+        """
+        Abstract method implementation: Return settings data for base class.
+        
+        Returns:
+            Dict containing settings and metadata
+        """
+        return self.settings_data
     
     def _load_settings(self) -> Dict[str, Any]:
         """Load Settings.yaml."""
@@ -67,6 +68,18 @@ class TrivialSettingsExporter:
             return data or {}
         except Exception as e:
             self.logger.error(f"❌ Failed to load Settings.yaml: {e}")
+            return {}
+    
+    def _load_materials(self) -> Dict[str, Any]:
+        """Load Materials.yaml for category/subcategory lookup."""
+        materials_path = Path(__file__).resolve().parents[2] / "data" / "materials" / "Materials.yaml"
+        
+        try:
+            with open(materials_path, 'r', encoding='utf-8') as f:
+                data = yaml.safe_load(f)
+            return data or {}
+        except Exception as e:
+            self.logger.error(f"❌ Failed to load Materials.yaml: {e}")
             return {}
     
     def _create_slug(self, material_name: str) -> str:
@@ -94,33 +107,6 @@ class TrivialSettingsExporter:
         
         return slug
     
-    def _strip_generation_metadata(self, data: Dict) -> Dict:
-        """
-        Remove generation metadata fields from data.
-        
-        Removes: _generated_at, _generation_id, _model, _temperature, etc.
-        Keeps: Core data fields needed for frontmatter
-        """
-        if not isinstance(data, dict):
-            return data
-        
-        cleaned = OrderedDict()
-        for key, value in data.items():
-            # Skip generation metadata
-            if key.startswith('_generated') or key.startswith('_model') or key.startswith('_temperature'):
-                continue
-            
-            # Recursively clean nested dicts
-            if isinstance(value, dict):
-                cleaned[key] = self._strip_generation_metadata(value)
-            elif isinstance(value, list):
-                cleaned[key] = [self._strip_generation_metadata(item) if isinstance(item, dict) else item 
-                               for item in value]
-            else:
-                cleaned[key] = value
-        
-        return cleaned
-    
     def _convert_to_plain_dict(self, data):
         """
         Recursively convert OrderedDict to plain dict for clean YAML serialization.
@@ -134,34 +120,17 @@ class TrivialSettingsExporter:
         else:
             return data
     
-    def _generate_domain_linkages(self, material_name: str) -> Dict[str, Any]:
-        """
-        Generate domain_linkages from centralized associations.
-        
-        Reads from DomainAssociations.yaml and generates bidirectional linkages.
-        """
-        linkages = OrderedDict()
-        
-        # Get material associations (settings are linked to same materials as the material page)
-        material_slug = material_name.lower().replace(' ', '-')
-        
-        # Get contaminants for this material
-        contaminants = self.associations_validator.get_contaminants_for_material(material_slug)
-        if contaminants:
-            linkages['contaminants'] = sorted([c['id'] for c in contaminants])
-        
-        # Get compounds for contaminants
-        all_compounds = set()
-        for contaminant in contaminants:
-            compounds = self.associations_validator.get_compounds_for_contaminant(contaminant['id'])
-            all_compounds.update(c['id'] for c in compounds)
-        
-        if all_compounds:
-            linkages['compounds'] = sorted(all_compounds)
-        
-        return linkages if linkages else None
+    # DEPRECATED: Replaced by centralized DomainLinkagesService
+    # def _generate_domain_linkages(self, material_name: str) -> Dict[str, Any]:
+    #     """
+    #     OLD METHOD - Now using shared/services/domain_linkages_service.py
+    #     
+    #     This method has been replaced by DomainLinkagesService.generate_linkages()
+    #     for consistency across all exporters.
+    #     """
+    #     pass
     
-    def export_all(self, force: bool = False) -> Dict[str, bool]:
+    def export_all(self, force: bool = True) -> Dict[str, bool]:
         """
         Export all settings to frontmatter YAML files.
         
@@ -212,20 +181,40 @@ class TrivialSettingsExporter:
         # Build frontmatter
         frontmatter = OrderedDict()
         
-        # Basic fields
+        # Basic fields (id, name, slug per schema)
+        frontmatter['id'] = slug  # id matches filename/slug
         frontmatter['name'] = material_name
         frontmatter['slug'] = slug
         frontmatter['domain'] = 'settings'
         
+        # Lookup category/subcategory from Materials.yaml
+        # Convert material_name to materials key format (e.g., "Aluminum" → "aluminum-laser-cleaning")
+        material_key = material_name.lower().replace(' ', '-') + '-laser-cleaning'
+        materials = self.materials_data.get('materials', {})
+        if material_key in materials:
+            material_data = materials[material_key]
+            frontmatter['category'] = material_data.get('category', 'unknown')
+            frontmatter['subcategory'] = material_data.get('subcategory', 'unknown')
+        else:
+            # Fallback if material not found
+            self.logger.warning(f"⚠️ Material {material_name} not found in Materials.yaml, using defaults")
+            frontmatter['category'] = 'unknown'
+            frontmatter['subcategory'] = 'unknown'
+        
+        # Add required schema fields per FRONTMATTER_GENERATION_GUIDE_V2.md
+        frontmatter['content_type'] = 'unified_settings'
+        frontmatter['schema_version'] = '4.0.0'
+        
         # Add ISO 8601 timestamps if missing (Schema.org requirement)
-        from datetime import datetime
-        current_timestamp = datetime.now().isoformat()
-        frontmatter['datePublished'] = setting_data.get('datePublished') or current_timestamp
-        frontmatter['dateModified'] = setting_data.get('dateModified') or current_timestamp
+        current_timestamp = self.generate_timestamp()
+        if 'datePublished' not in frontmatter or not frontmatter['datePublished']:
+            frontmatter['datePublished'] = current_timestamp
+        if 'dateModified' not in frontmatter or not frontmatter['dateModified']:
+            frontmatter['dateModified'] = current_timestamp
         
         # Copy machine settings
         if 'machineSettings' in setting_data:
-            frontmatter['machineSettings'] = self._strip_generation_metadata(setting_data['machineSettings'])
+            frontmatter['machineSettings'] = self.strip_generation_metadata(setting_data['machineSettings'])
         
         # Copy settings description
         if 'settingsDescription' in setting_data:
@@ -233,26 +222,23 @@ class TrivialSettingsExporter:
         
         # Copy challenges if present
         if 'challenges' in setting_data:
-            frontmatter['challenges'] = self._strip_generation_metadata(setting_data['challenges'])
+            frontmatter['challenges'] = self.strip_generation_metadata(setting_data['challenges'])
         
         # Copy author if present
         if 'author' in setting_data:
             frontmatter['author'] = setting_data['author']
         
         # Generate domain_linkages from centralized associations
-        domain_linkages = self._generate_domain_linkages(material_name)
+        material_slug = material_name.lower().replace(' ', '-')
+        domain_linkages = self.linkages_service.generate_linkages(material_slug, 'settings')
         if domain_linkages:
             frontmatter['domain_linkages'] = domain_linkages
         
-        # Reorder fields according to specification
-        ordered_frontmatter = self.field_order_validator.reorder_fields(frontmatter, 'settings')
-        
-        # Convert to plain dict to avoid Python-specific YAML tags
-        plain_frontmatter = self._convert_to_plain_dict(ordered_frontmatter)
-        
-        # Write to file with sort_keys=False to preserve field order
-        with open(output_file, 'w', encoding='utf-8') as f:
-            yaml.dump(plain_frontmatter, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+        # Write to file using base class method (handles field ordering + YAML writing)
+        filename = f"{slug}.yaml"
+        # Convert to plain dict before writing
+        plain_frontmatter = self._convert_to_plain_dict(frontmatter)
+        self.write_frontmatter_yaml(plain_frontmatter, filename)
         
         self.logger.info(f"✅ Exported settings: {material_name} → {slug}.yaml")
         return True

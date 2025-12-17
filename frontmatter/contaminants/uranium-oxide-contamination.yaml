@@ -3,19 +3,25 @@ name: Depleted Uranium Oxide
 slug: uranium-oxide-contamination
 category: chemical-residue
 subcategory: hazardous
+datePublished: '2025-12-16T21:08:15.570217'
+dateModified: '2025-12-16T21:08:15.570217'
 domain_linkages:
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Concrete
+  - id: concrete-laser-cleaning
     title: Concrete
-    url: /materials/Concrete
-    image: /images/materials/Concrete.jpg
+    url: /materials/masonry/general/concrete-laser-cleaning
+    image: /images/materials/concrete.jpg
+    category: masonry
+    subcategory: general
     frequency: common
     severity: moderate
     typical_context: general
@@ -39,8 +45,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -50,8 +55,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:05.050338'
-dateModified: '2025-12-16T14:49:05.050338'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -59,12 +62,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Depleted Uranium Oxide Contamination
-contamination_description: Uranium oxide forms on surfaces after exposure to nuclear
-  materials in manufacturing and military settings. Unlike rust or dust, it exhibits
-  dense layering and radioactivity so distinguishes itself clearly. On steel, bond
-  holds tightly, while on concrete, penetration deepens into structure, and challenges
-  arise from hardness during removal. Laser cleaning succeeds because ablation vaporizes
-  contamination precisely without residue spread.
+contamination_description: Uranium oxide forms on surfaces after exposure to nuclear materials in manufacturing and military settings. Unlike rust or dust, it exhibits dense layering and radioactivity so distinguishes itself clearly. On steel, bond holds tightly, while on concrete, penetration deepens into structure, and challenges arise from hardness during removal. Laser cleaning succeeds because ablation vaporizes contamination precisely without residue spread.
 breadcrumb:
 - label: Home
   href: /

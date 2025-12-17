@@ -1,17 +1,50 @@
+id: zirconia-settings
 name: Zirconia
 slug: zirconia-settings
+category: ceramic
+subcategory: oxide
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.280869'
+dateModified: '2025-12-16T17:59:18.280869'
+domain_linkages:
+  contaminants:
+  - adhesive-residue
+  - blood-residue
+  - carbon-buildup
+  - carbon-soot
+  - ceramic-glaze
+  - chemical-stains
+  - fire-damage
+  - graphite-marks
+  - lime-scale
+  - medical-disinfectant
+  - mineral-deposits
+  - mold-mildew
+  - scale-buildup
+  - semiconductor-residue
+  - silicone-buildup
+  - soap-scum
+  compounds:
+  - acetaldehyde-compound
+  - ammonia-compound
+  - benzoapyrene-compound
+  - carbon-dioxide-compound
+  - carbon-monoxide-compound
+  - formaldehyde-compound
+  - hydrogen-chloride-compound
+  - hydrogen-cyanide-compound
+  - pahs-compound
+  - toluene-compound
+  - vocs-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.469714'
-dateModified: '2025-12-16T14:50:07.469714'
 machineSettings:
   powerRange:
-    description: Optimal average power for Zirconia surface cleaning without thermal
-      damage
+    description: Optimal average power for Zirconia surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength with good absorption in Zirconia for efficient
-      cleaning
+    description: Near-IR wavelength with good absorption in Zirconia for efficient cleaning
     unit: nm
     value: 1064
   spotSize:
@@ -19,8 +52,7 @@ machineSettings:
     unit: μm
     value: 50
   repetitionRate:
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
     unit: kHz
     value: 100
   energyDensity:
@@ -28,8 +60,7 @@ machineSettings:
     unit: J/cm²
     value: 5
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
     unit: ns
     value: 10
   scanSpeed:
@@ -41,7 +72,6 @@ machineSettings:
     unit: passes
     value: 3
   overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning without excessive
-      heat accumulation
+    description: Optimal beam overlap percentage for uniform cleaning without excessive heat accumulation
     unit: '%'
     value: 50

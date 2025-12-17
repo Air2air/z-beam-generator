@@ -1,46 +1,44 @@
+id: mortar-settings
 name: Mortar
 slug: mortar-settings
+category: masonry
+subcategory: general
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.975429'
+dateModified: '2025-12-16T17:59:17.975429'
 domain: settings
-datePublished: '2025-12-16T14:50:07.274552'
-dateModified: '2025-12-16T14:50:07.274552'
 machineSettings:
   powerRange:
     description: Optimal average power for mortar cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
-    description: Near-infrared wavelength optimized for mortar absorption and minimal
-      substrate damage
+    description: Near-infrared wavelength optimized for mortar absorption and minimal substrate damage
     unit: nm
     value: 1064
   spotSize:
-    description: Beam spot diameter for precise mortar cleaning with adequate energy
-      density
+    description: Beam spot diameter for precise mortar cleaning with adequate energy density
     unit: mm
     value: 0.1
   repetitionRate:
-    description: Optimal repetition rate for efficient mortar removal with good surface
-      quality
+    description: Optimal repetition rate for efficient mortar removal with good surface quality
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective mortar ablation without damaging
-      underlying substrate
+    description: Fluence threshold for effective mortar ablation without damaging underlying substrate
     unit: J/cm²
     value: 12.7
   pulseWidth:
-    description: Nanosecond pulse duration for effective mortar ablation with controlled
-      thermal effects
+    description: Nanosecond pulse duration for effective mortar ablation with controlled thermal effects
     unit: ns
     value: 10
   scanSpeed:
-    description: Optimal scanning speed for uniform mortar removal and processing
-      efficiency
+    description: Optimal scanning speed for uniform mortar removal and processing efficiency
     unit: mm/s
     value: 500
   passCount:
-    description: Recommended number of passes for complete mortar removal with quality
-      control
+    description: Recommended number of passes for complete mortar removal with quality control
     unit: passes
     value: 3
   overlapRatio:

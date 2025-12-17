@@ -1,17 +1,20 @@
+id: molybdenum-settings
 name: Molybdenum
 slug: molybdenum-settings
+category: metal
+subcategory: non-ferrous
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.971404'
+dateModified: '2025-12-16T17:59:17.971404'
 domain: settings
-datePublished: '2025-12-16T14:50:07.271988'
-dateModified: '2025-12-16T14:50:07.271988'
 machineSettings:
   powerRange:
-    description: Optimal average power for Molybdenum oxide removal without substrate
-      damage
+    description: Optimal average power for Molybdenum oxide removal without substrate damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength providing good absorption for Molybdenum surface
-      contaminants
+    description: Near-IR wavelength providing good absorption for Molybdenum surface contaminants
     unit: nm
     value: 1064
   spotSize:
@@ -19,18 +22,15 @@ machineSettings:
     unit: μm
     value: 50
   repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage with thermal
-      management
+    description: Optimal repetition rate for continuous cleaning coverage with thermal management
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective contaminant removal from Molybdenum
-      surface
+    description: Fluence threshold for effective contaminant removal from Molybdenum surface
     unit: J/cm²
     value: 5.1
   pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant ablation with
-      minimal thermal diffusion
+    description: Nanosecond pulse duration for efficient contaminant ablation with minimal thermal diffusion
     unit: ns
     value: 10
   scanSpeed:

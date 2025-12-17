@@ -5,8 +5,8 @@ category: metal
 subcategory: specialty
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:48:46.948789'
-dateModified: '2025-12-16T14:48:46.948789'
+datePublished: '2025-12-16T18:07:18.963877'
+dateModified: '2025-12-16T18:07:18.963877'
 author:
   id: 4
   name: Todd Dunning
@@ -352,328 +352,416 @@ material_metadata:
 domain_linkages:
   related_contaminants:
   - id: adhesive-residue
-    title: Adhesive Residue
-    url: /contaminants/adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
     image: /images/contaminants/adhesive-residue.jpg
+    category: organic-residue
+    subcategory: adhesive
     frequency: common
     severity: moderate
     typical_context: general
   - id: algae-growth
-    title: Algae Growth
-    url: /contaminants/algae-growth
+    title: Algae and Lichen Growth
+    url: /contaminants/biological/growth/algae-growth-contamination
     image: /images/contaminants/algae-growth.jpg
+    category: biological
+    subcategory: growth
     frequency: common
     severity: moderate
     typical_context: general
   - id: biological-stains
-    title: Biological Stains
-    url: /contaminants/biological-stains
+    title: Organic Biofilm Deposits
+    url: /contaminants/biological/deposit/biological-stains-contamination
     image: /images/contaminants/biological-stains.jpg
+    category: biological
+    subcategory: deposit
     frequency: common
     severity: moderate
     typical_context: general
   - id: carbon-soot
-    title: Carbon Soot
-    url: /contaminants/carbon-soot
+    title: Carbon Soot Deposits
+    url: /contaminants/organic-residue/other/carbon-soot-contamination
     image: /images/contaminants/carbon-soot.jpg
+    category: organic-residue
+    subcategory: other
     frequency: common
     severity: moderate
     typical_context: general
   - id: chemical-stains
-    title: Chemical Stains
-    url: /contaminants/chemical-stains
+    title: Chemical Stains / Acid Etching
+    url: /contaminants/chemical-residue/industrial/chemical-stains-contamination
     image: /images/contaminants/chemical-stains.jpg
+    category: chemical-residue
+    subcategory: industrial
     frequency: common
     severity: moderate
     typical_context: general
   - id: epoxy-residue
-    title: Epoxy Residue
-    url: /contaminants/epoxy-residue
+    title: Epoxy Resin Deposits
+    url: /contaminants/organic-residue/adhesive/epoxy-residue-contamination
     image: /images/contaminants/epoxy-residue.jpg
+    category: organic-residue
+    subcategory: adhesive
     frequency: common
     severity: moderate
     typical_context: general
   - id: fertilizer-residue
-    title: Fertilizer Residue
-    url: /contaminants/fertilizer-residue
+    title: Fertilizer Salt Deposits
+    url: /contaminants/chemical-residue/industrial/fertilizer-residue-contamination
     image: /images/contaminants/fertilizer-residue.jpg
+    category: chemical-residue
+    subcategory: industrial
     frequency: common
     severity: moderate
     typical_context: general
   - id: graffiti-paint
-    title: Graffiti Paint
-    url: /contaminants/graffiti-paint
+    title: Graffiti and Spray Paint
+    url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
     image: /images/contaminants/graffiti-paint.jpg
+    category: inorganic-coating
+    subcategory: paint
     frequency: common
     severity: moderate
     typical_context: general
   - id: graphite-marks
-    title: Graphite Marks
-    url: /contaminants/graphite-marks
+    title: Graphite Deposit Traces
+    url: /contaminants/organic-residue/marking/graphite-marks-contamination
     image: /images/contaminants/graphite-marks.jpg
+    category: organic-residue
+    subcategory: marking
     frequency: common
     severity: moderate
     typical_context: general
   - id: ink-stains
-    title: Ink Stains
-    url: /contaminants/ink-stains
+    title: Printing Ink Residue
+    url: /contaminants/organic-residue/marking/ink-stains-contamination
     image: /images/contaminants/ink-stains.jpg
+    category: organic-residue
+    subcategory: marking
     frequency: common
     severity: moderate
     typical_context: general
   - id: insect-residue
-    title: Insect Residue
-    url: /contaminants/insect-residue
+    title: Insect Impact Residue
+    url: /contaminants/biological/deposit/insect-residue-contamination
     image: /images/contaminants/insect-residue.jpg
+    category: biological
+    subcategory: deposit
     frequency: common
     severity: moderate
     typical_context: general
   - id: lime-scale
-    title: Lime Scale
-    url: /contaminants/lime-scale
+    title: Limescale Deposits
+    url: /contaminants/thermal-damage/scale/lime-scale-contamination
     image: /images/contaminants/lime-scale.jpg
+    category: thermal-damage
+    subcategory: scale
     frequency: common
     severity: moderate
     typical_context: general
   - id: mercury-contamination
-    title: Mercury
-    url: /contaminants/mercury
+    title: Mercury Spill Residue
+    url: /contaminants/chemical-residue/hazardous/mercury-contamination
     image: /images/contaminants/mercury.jpg
+    category: chemical-residue
+    subcategory: hazardous
     frequency: common
     severity: moderate
     typical_context: general
   - id: mineral-deposits
-    title: Mineral Deposits
-    url: /contaminants/mineral-deposits
+    title: Hard Water Mineral Scale
+    url: /contaminants/thermal-damage/scale/mineral-deposits-contamination
     image: /images/contaminants/mineral-deposits.jpg
+    category: thermal-damage
+    subcategory: scale
     frequency: common
     severity: moderate
     typical_context: general
   - id: paint-residue
-    title: Paint Residue
-    url: /contaminants/paint-residue
+    title: Paint Residue / Coating Failure
+    url: /contaminants/inorganic-coating/paint/paint-residue-contamination
     image: /images/contaminants/paint-residue.jpg
+    category: inorganic-coating
+    subcategory: paint
     frequency: common
     severity: moderate
     typical_context: general
   - id: pesticide-residue
-    title: Pesticide Residue
-    url: /contaminants/pesticide-residue
+    title: Pesticide Chemical Residue
+    url: /contaminants/chemical-residue/industrial/pesticide-residue-contamination
     image: /images/contaminants/pesticide-residue.jpg
+    category: chemical-residue
+    subcategory: industrial
     frequency: common
     severity: moderate
     typical_context: general
   - id: plastic-residue
-    title: Plastic Residue
-    url: /contaminants/plastic-residue
+    title: Degraded Polymer Deposits
+    url: /contaminants/organic-residue/polymer/plastic-residue-contamination
     image: /images/contaminants/plastic-residue.jpg
+    category: organic-residue
+    subcategory: polymer
     frequency: common
     severity: moderate
     typical_context: general
   - id: pollen-deposit
-    title: Pollen Deposit
-    url: /contaminants/pollen-deposit
+    title: Pollen Accumulation
+    url: /contaminants/biological/deposit/pollen-deposit-contamination
     image: /images/contaminants/pollen-deposit.jpg
+    category: biological
+    subcategory: deposit
     frequency: common
     severity: moderate
     typical_context: general
   - id: radioactive-contamination
-    title: Radioactive
-    url: /contaminants/radioactive
+    title: Surface Radioactive Contamination
+    url: /contaminants/chemical-residue/hazardous/radioactive-contamination
     image: /images/contaminants/radioactive.jpg
+    category: chemical-residue
+    subcategory: hazardous
     frequency: common
     severity: moderate
     typical_context: general
   - id: rubber-residue
-    title: Rubber Residue
-    url: /contaminants/rubber-residue
+    title: Rubber Compound Residue
+    url: /contaminants/organic-residue/polymer/rubber-residue-contamination
     image: /images/contaminants/rubber-residue.jpg
+    category: organic-residue
+    subcategory: polymer
     frequency: common
     severity: moderate
     typical_context: general
   - id: salt-residue
-    title: Salt Residue
-    url: /contaminants/salt-residue
+    title: Salt and Chloride Deposits
+    url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
     image: /images/contaminants/salt-residue.jpg
+    category: inorganic-coating
+    subcategory: mineral
     frequency: common
     severity: moderate
     typical_context: general
   - id: scale-buildup
-    title: Scale Buildup
-    url: /contaminants/scale-buildup
+    title: Mineral Scale / Hard Water Deposits
+    url: /contaminants/thermal-damage/scale/scale-buildup-contamination
     image: /images/contaminants/scale-buildup.jpg
+    category: thermal-damage
+    subcategory: scale
     frequency: common
     severity: moderate
     typical_context: general
   - id: silicone-buildup
-    title: Silicone Buildup
-    url: /contaminants/silicone-buildup
+    title: Silicone Sealant Buildup
+    url: /contaminants/organic-residue/adhesive/silicone-buildup-contamination
     image: /images/contaminants/silicone-buildup.jpg
+    category: organic-residue
+    subcategory: adhesive
     frequency: common
     severity: moderate
     typical_context: general
   - id: tree-sap
-    title: Tree Sap
-    url: /contaminants/tree-sap
+    title: Tree Sap and Resin
+    url: /contaminants/organic-residue/natural/tree-sap-contamination
     image: /images/contaminants/tree-sap.jpg
+    category: organic-residue
+    subcategory: natural
     frequency: common
     severity: moderate
     typical_context: general
   - id: water-stain
-    title: Water Stain
-    url: /contaminants/water-stain
+    title: Water Staining and Marks
+    url: /contaminants/organic-residue/other/water-stain-contamination
     image: /images/contaminants/water-stain.jpg
+    category: organic-residue
+    subcategory: other
     frequency: common
     severity: moderate
     typical_context: general
   - id: wax-buildup
-    title: Wax Buildup
-    url: /contaminants/wax-buildup
+    title: Wax Coating Buildup
+    url: /contaminants/organic-residue/wax/wax-buildup-contamination
     image: /images/contaminants/wax-buildup.jpg
+    category: organic-residue
+    subcategory: wax
     frequency: common
     severity: moderate
     typical_context: general
   related_compounds:
   - id: carbon-monoxide-compound
     title: Carbon Monoxide
-    url: /compounds/carbon-monoxide
+    url: /compounds/toxic_gas/asphyxiant/carbon-monoxide-compound
     image: /images/compounds/carbon-monoxide.jpg
+    category: toxic_gas
+    subcategory: asphyxiant
     frequency: very_common
     severity: high
     typical_context: Incomplete combustion of organic adhesives
     exposure_risk: high
   - id: acetaldehyde-compound
     title: Acetaldehyde
-    url: /compounds/acetaldehyde
+    url: /compounds/irritant/aldehyde/acetaldehyde-compound
     image: /images/compounds/acetaldehyde.jpg
+    category: irritant
+    subcategory: aldehyde
     frequency: common
     severity: moderate
     typical_context: Decomposition of vinyl and acrylic adhesives
     exposure_risk: moderate
   - id: hydrogen-chloride-compound
     title: Hydrogen Chloride
-    url: /compounds/hydrogen-chloride
+    url: /compounds/corrosive_gas/acid_gas/hydrogen-chloride-compound
     image: /images/compounds/hydrogen-chloride.jpg
+    category: corrosive_gas
+    subcategory: acid_gas
     frequency: occasional
     severity: moderate
     typical_context: Some adhesives contain chlorinated compounds
     exposure_risk: moderate
   - id: toluene-compound
     title: Toluene
-    url: /compounds/toluene
+    url: /compounds/solvent/aromatic_hydrocarbon/toluene-compound
     image: /images/compounds/toluene.jpg
+    category: solvent
+    subcategory: aromatic_hydrocarbon
     frequency: common
     severity: moderate
     typical_context: Release of toluene from adhesive formulations
     exposure_risk: moderate
   - id: formaldehyde-compound
     title: Formaldehyde
-    url: /compounds/formaldehyde
+    url: /compounds/carcinogen/aldehyde/formaldehyde-compound
     image: /images/compounds/formaldehyde.jpg
+    category: carcinogen
+    subcategory: aldehyde
     frequency: common
     severity: moderate
     typical_context: Thermal breakdown of formaldehyde-based adhesives
     exposure_risk: moderate
   - id: hydrogen-cyanide-compound
     title: Hydrogen Cyanide
-    url: /compounds/hydrogen-cyanide
+    url: /compounds/toxic_gas/cyanide/hydrogen-cyanide-compound
     image: /images/compounds/hydrogen-cyanide.jpg
+    category: toxic_gas
+    subcategory: cyanide
     frequency: occasional
     severity: moderate
     typical_context: Breakdown of cyanoacrylate adhesives
     exposure_risk: moderate
   - id: carbon-dioxide-compound
     title: Carbon Dioxide
-    url: /compounds/carbon-dioxide
+    url: /compounds/asphyxiant/simple_asphyxiant/carbon-dioxide-compound
     image: /images/compounds/carbon-dioxide.jpg
+    category: asphyxiant
+    subcategory: simple_asphyxiant
     frequency: very_common
     severity: low
     typical_context: Complete combustion of adhesives
     exposure_risk: low
   - id: vocs-compound
     title: Volatile Organic Compounds
-    url: /compounds/vocs
+    url: /compounds/irritant/organic_vapor/vocs-compound
     image: /images/compounds/vocs.jpg
+    category: irritant
+    subcategory: organic_vapor
     frequency: very_common
     severity: moderate
     typical_context: Release of adhesive solvents
     exposure_risk: moderate
   - id: benzoapyrene-compound
     title: Benzo[a]pyrene
-    url: /compounds/benzoapyrene
+    url: /compounds/carcinogen/polycyclic_aromatic_hydrocarbon/benzoapyrene-compound
     image: /images/compounds/benzoapyrene.jpg
+    category: carcinogen
+    subcategory: polycyclic_aromatic_hydrocarbon
     frequency: common
     severity: high
     typical_context: Formed during original combustion event
     exposure_risk: high
   - id: pahs-compound
     title: Polycyclic Aromatic Hydrocarbons
-    url: /compounds/pahs
+    url: /compounds/carcinogen/aromatic_hydrocarbon/pahs-compound
     image: /images/compounds/pahs.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
     frequency: very_common
     severity: high
     typical_context: Pre-existing PAHs from incomplete combustion
     exposure_risk: high
   - id: nitrogen-oxides-compound
     title: Nitrogen Oxides
-    url: /compounds/nitrogen-oxides
+    url: /compounds/toxic_gas/oxidizing_gas/nitrogen-oxides-compound
     image: /images/compounds/nitrogen-oxides.jpg
+    category: toxic_gas
+    subcategory: oxidizing_gas
     frequency: occasional
     severity: low
     typical_context: Nitrogen from some paint formulations
     exposure_risk: low
   - id: zinc-oxide-compound
     title: Zinc Oxide
-    url: /compounds/zinc-oxide
+    url: /compounds/metal_fume/metal_oxide/zinc-oxide-compound
     image: /images/compounds/zinc-oxide.jpg
+    category: metal_fume
+    subcategory: metal_oxide
     frequency: occasional
     severity: low
     typical_context: Zinc oxide pigments in paint
     exposure_risk: low
   - id: chromium-vi-compound
     title: Hexavalent Chromium
-    url: /compounds/chromium-vi
+    url: /compounds/carcinogen/heavy_metal/chromium-vi-compound
     image: /images/compounds/chromium-vi.jpg
+    category: carcinogen
+    subcategory: heavy_metal
     frequency: occasional
     severity: high
     typical_context: Chromate pigments in some paints
     exposure_risk: high
   - id: benzene-compound
     title: Benzene
-    url: /compounds/benzene
+    url: /compounds/carcinogen/aromatic_hydrocarbon/benzene-compound
     image: /images/compounds/benzene.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
     frequency: common
     severity: high
     typical_context: Thermal breakdown of aromatic paint solvents
     exposure_risk: high
   - id: styrene-compound
     title: Styrene
-    url: /compounds/styrene
+    url: /compounds/irritant/aromatic_hydrocarbon/styrene-compound
     image: /images/compounds/styrene.jpg
+    category: irritant
+    subcategory: aromatic_hydrocarbon
     frequency: very_common
     severity: high
     typical_context: Thermal depolymerization of polystyrene
     exposure_risk: high
   - id: phosgene-compound
     title: Phosgene
-    url: /compounds/phosgene
+    url: /compounds/toxic_gas/reactive_gas/phosgene-compound
     image: /images/compounds/phosgene.jpg
+    category: toxic_gas
+    subcategory: reactive_gas
     frequency: rare
     severity: high
     typical_context: Thermal breakdown of certain chlorinated plastics
     exposure_risk: high
   - id: acrolein-compound
     title: Acrolein
-    url: /compounds/acrolein
+    url: /compounds/toxic_gas/aldehyde/acrolein-compound
     image: /images/compounds/acrolein.jpg
+    category: toxic_gas
+    subcategory: aldehyde
     frequency: occasional
     severity: moderate
     typical_context: Pyrolysis of certain polymers
     exposure_risk: moderate
   - id: sulfur-dioxide-compound
     title: Sulfur Dioxide
-    url: /compounds/sulfur-dioxide
+    url: /compounds/toxic_gas/acid_gas/sulfur-dioxide-compound
     image: /images/compounds/sulfur-dioxide.jpg
+    category: toxic_gas
+    subcategory: acid_gas
     frequency: common
     severity: moderate
     typical_context: Vulcanized rubber contains sulfur compounds
@@ -692,4 +780,4 @@ serviceOffering:
     notes: Controlled atmosphere may be required to prevent re-oxidation
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-16T14:48:46.950808'
+    generated_date: '2025-12-16T18:07:18.965688'

@@ -3,68 +3,110 @@ name: Carbon Deposit Buildup
 slug: carbon-buildup-contamination
 category: organic-residue
 subcategory: other
+datePublished: '2025-12-16T21:08:14.491286'
+dateModified: '2025-12-16T21:08:14.491286'
 domain_linkages:
+  produces_compounds:
+  - id: carbon-monoxide-compound
+    title: Carbon Monoxide
+    url: /compounds/toxic_gas/asphyxiant/carbon-monoxide-compound
+    image: /images/compounds/carbon-monoxide.jpg
+    category: toxic_gas
+    subcategory: asphyxiant
+    frequency: very_common
+    severity: high
+    typical_context: Incomplete combustion of carbon materials
+    exposure_risk: high
+  - id: benzoapyrene-compound
+    title: Benzo[a]pyrene
+    url: /compounds/carcinogen/polycyclic_aromatic_hydrocarbon/benzoapyrene-compound
+    image: /images/compounds/benzoapyrene.jpg
+    category: carcinogen
+    subcategory: polycyclic_aromatic_hydrocarbon
+    frequency: common
+    severity: high
+    typical_context: Pre-existing from incomplete combustion
+    exposure_risk: high
+  - id: pahs-compound
+    title: Polycyclic Aromatic Hydrocarbons
+    url: /compounds/carcinogen/aromatic_hydrocarbon/pahs-compound
+    image: /images/compounds/pahs.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
+    frequency: very_common
+    severity: high
+    typical_context: Vaporization and reformation of existing PAHs
+    exposure_risk: high
   related_materials:
-  - id: Steel
-    title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
+  - id: stainless-steel-laser-cleaning
     title: Stainless Steel
-    url: /materials/Stainless Steel
-    image: /images/materials/Stainless Steel.jpg
+    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+    image: /images/materials/stainless-steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Alumina
-    title: Alumina
-    url: /materials/Alumina
-    image: /images/materials/Alumina.jpg
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: silicon-carbide
-    title: Silicon Carbide
-    url: /materials/silicon-carbide
-    image: /images/materials/silicon-carbide.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Zirconia
-    title: Zirconia
-    url: /materials/Zirconia
-    image: /images/materials/Zirconia.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum Nitride
-    title: Aluminum Nitride
-    url: /materials/Aluminum Nitride
-    image: /images/materials/Aluminum Nitride.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Boron Carbide
+  - id: boron-carbide-laser-cleaning
     title: Boron Carbide
-    url: /materials/Boron Carbide
-    image: /images/materials/Boron Carbide.jpg
+    url: /materials/ceramic/carbide/boron-carbide-laser-cleaning
+    image: /images/materials/boron-carbide.jpg
+    category: ceramic
+    subcategory: carbide
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Boron Nitride
+  - id: boron-nitride-laser-cleaning
     title: Boron Nitride
-    url: /materials/Boron Nitride
-    image: /images/materials/Boron Nitride.jpg
+    url: /materials/ceramic/technical/boron-nitride-laser-cleaning
+    image: /images/materials/boron-nitride.jpg
+    category: ceramic
+    subcategory: technical
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Silicon Nitride
+  - id: silicon-nitride-laser-cleaning
     title: Silicon Nitride
-    url: /materials/Silicon Nitride
-    image: /images/materials/Silicon Nitride.jpg
+    url: /materials/ceramic/oxide/silicon-nitride-laser-cleaning
+    image: /images/materials/silicon-nitride.jpg
+    category: ceramic
+    subcategory: oxide
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: zirconia-laser-cleaning
+    title: Zirconia
+    url: /materials/ceramic/oxide/zirconia-laser-cleaning
+    image: /images/materials/zirconia.jpg
+    category: ceramic
+    subcategory: oxide
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: aluminum-nitride-laser-cleaning
+    title: Aluminum Nitride
+    url: /materials/ceramic/technical/aluminum-nitride-laser-cleaning
+    image: /images/materials/aluminum-nitride.jpg
+    category: ceramic
+    subcategory: technical
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: alumina-laser-cleaning
+    title: Alumina
+    url: /materials/ceramic/oxide/alumina-laser-cleaning
+    image: /images/materials/alumina.jpg
+    category: ceramic
+    subcategory: oxide
     frequency: common
     severity: moderate
     typical_context: general
@@ -90,8 +132,7 @@ author:
   - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
   email: info@z-beam.com
   image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
-    Materials Dept., in research lab
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
   url: https://z-beam.com/authors/alessandro-moretti-phd
   sameAs:
   - https://scholar.google.com/citations?user=def456
@@ -100,8 +141,6 @@ author:
   formatting_file: italy_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:03.986484'
-dateModified: '2025-12-16T14:49:03.986484'
 _metadata:
   voice:
     author_name: Alessandro Moretti
@@ -109,14 +148,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Carbon Deposit Buildup Contamination
-contamination_description: Carbon-buildup manifests as hard deposits from combustion
-  and pyrolysis processes, which form tenacious layers on surfaces exposed to high-heat
-  environments. This contamination, it distinguishes itself from softer residues by
-  its dense, adherent structure that resists mechanical abrasion, particularly on
-  steel and stainless steel where it embeds deeply, while on alumina or silicon carbide
-  it appears more superficial yet persistent. Removal challenges arise from its thermal
-  stability, influenced from substrate variations, but laser cleaning proves effective,
-  as the beam vaporizes the buildup selectively without altering the underlying materials.
+contamination_description: Carbon-buildup manifests as hard deposits from combustion and pyrolysis processes, which form tenacious layers on surfaces exposed to high-heat environments. This contamination, it distinguishes itself from softer residues by its dense, adherent structure that resists mechanical abrasion, particularly on steel and stainless steel where it embeds deeply, while on alumina or silicon carbide it appears more superficial yet persistent. Removal challenges arise from its thermal stability, influenced from substrate variations, but laser cleaning proves effective, as the beam vaporizes the buildup selectively without altering the underlying materials.
 breadcrumb:
 - label: Home
   href: /

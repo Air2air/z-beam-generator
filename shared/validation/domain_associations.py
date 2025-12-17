@@ -277,13 +277,22 @@ class DomainAssociationsValidator:
                 slug = contaminant_id.replace('-contamination', '')
                 
                 # Get contaminant details from Contaminants.yaml
-                contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(slug, {})
+                # Note: Associations use shortened ID, but Contaminants.yaml uses full ID with suffix
+                full_contaminant_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
+                contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
+                
+                # Build URL with category/subcategory path + -contamination suffix
+                category = contaminant_data.get('category', 'general')
+                subcategory = contaminant_data.get('subcategory', 'misc')
+                url_slug = f"{slug}-contamination"
                 
                 results.append({
                     'id': contaminant_id,
                     'title': contaminant_data.get('name', slug.replace('-', ' ').title()),
-                    'url': f"/contaminants/{slug}",  # URL construction
+                    'url': f"/contaminants/{category}/{subcategory}/{url_slug}",
                     'image': f"/images/contaminants/{slug}.jpg",
+                    'category': category,
+                    'subcategory': subcategory,
                     'frequency': assoc['frequency'],
                     'severity': assoc['severity'],
                     'typical_context': assoc.get('typical_context', '')
@@ -296,7 +305,7 @@ class DomainAssociationsValidator:
         Get all materials affected by a contaminant (reverse lookup)
         
         Args:
-            contaminant_id: Contaminant ID (e.g., 'rust-oxidation-contamination')
+            contaminant_id: Contaminant ID (e.g., 'rust-oxidation-contamination' or 'rust-oxidation')
         
         Returns:
             List of material linkage dictionaries with full metadata
@@ -304,22 +313,33 @@ class DomainAssociationsValidator:
         if not self.data:
             self.load()
         
+        # Strip suffix for lookup (associations use shortened IDs)
+        lookup_id = contaminant_id.replace('-contamination', '')
+        
         associations = self.data.get('material_contaminant_associations', []) or []
         results = []
         
         for assoc in associations:
-            if assoc.get('contaminant_id') == contaminant_id:
+            if assoc.get('contaminant_id') == lookup_id:
                 material_id = assoc['material_id']
                 slug = material_id.replace('-laser-cleaning', '')
                 
                 # Get material details from Materials.yaml
-                material_data = self.materials_data.get('materials', {}).get(slug.replace('-', ' ').title(), {})
+                # Note: Materials.yaml now uses full ID as key (with -laser-cleaning suffix)
+                material_data = self.materials_data.get('materials', {}).get(material_id, {})
+                
+                # Build URL with category/subcategory path + -laser-cleaning suffix
+                category = material_data.get('category', 'general')
+                subcategory = material_data.get('subcategory', 'misc')
+                url_slug = f"{slug.lower()}-laser-cleaning"
                 
                 results.append({
                     'id': material_id,
                     'title': material_data.get('name', slug.replace('-', ' ').title()),
-                    'url': f"/materials/{slug}",
+                    'url': f"/materials/{category}/{subcategory}/{url_slug}",
                     'image': f"/images/materials/{slug}.jpg",
+                    'category': category,
+                    'subcategory': subcategory,
                     'frequency': assoc['frequency'],
                     'severity': assoc['severity'],
                     'typical_context': assoc.get('typical_context', '')
@@ -332,7 +352,7 @@ class DomainAssociationsValidator:
         Get all compounds produced by a contaminant
         
         Args:
-            contaminant_id: Contaminant ID (e.g., 'rust-oxidation-contamination')
+            contaminant_id: Contaminant ID (e.g., 'rust-oxidation-contamination' or 'rust-oxidation')
         
         Returns:
             List of compound linkage dictionaries with full metadata
@@ -340,22 +360,32 @@ class DomainAssociationsValidator:
         if not self.data:
             self.load()
         
+        # Strip suffix for lookup (associations use shortened IDs)
+        lookup_id = contaminant_id.replace('-contamination', '')
+        
         associations = self.data.get('contaminant_compound_associations', [])
         results = []
         
         for assoc in associations:
-            if assoc.get('contaminant_id') == contaminant_id:
+            if assoc.get('contaminant_id') == lookup_id:
                 compound_id = assoc['compound_id']
                 slug = compound_id.replace('-compound', '')
                 
                 # Get compound details from Compounds.yaml
                 compound_data = self.compounds_data.get('compounds', {}).get(slug, {})
                 
+                # Build URL with category/subcategory path + -compound suffix
+                category = compound_data.get('category', 'general')
+                subcategory = compound_data.get('subcategory', 'misc')
+                url_slug = f"{slug}-compound"
+                
                 results.append({
                     'id': compound_id,
                     'title': compound_data.get('name', slug.replace('-', ' ').title()),
-                    'url': f"/compounds/{slug}",
+                    'url': f"/compounds/{category}/{subcategory}/{url_slug}",
                     'image': f"/images/compounds/{slug}.jpg",
+                    'category': category,
+                    'subcategory': subcategory,
                     'frequency': assoc['frequency'],
                     'severity': assoc['severity'],
                     'typical_context': assoc.get('typical_context', ''),
@@ -385,12 +415,19 @@ class DomainAssociationsValidator:
                 contaminant_id = assoc['contaminant_id']
                 slug = contaminant_id.replace('-contamination', '')
                 
-                contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(slug, {})
+                # Get contaminant details (associations use shortened ID)
+                full_contaminant_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
+                contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
+                
+                # Build URL with category/subcategory path + -contamination suffix
+                category = contaminant_data.get('category', 'general')
+                subcategory = contaminant_data.get('subcategory', 'misc')
+                url_slug = f"{slug}-contamination"
                 
                 results.append({
                     'id': contaminant_id,
                     'title': contaminant_data.get('name', slug.replace('-', ' ').title()),
-                    'url': f"/contaminants/{slug}",
+                    'url': f"/contaminants/{category}/{subcategory}/{url_slug}",
                     'image': f"/images/contaminants/{slug}.jpg",
                     'frequency': assoc['frequency'],
                     'severity': assoc['severity'],

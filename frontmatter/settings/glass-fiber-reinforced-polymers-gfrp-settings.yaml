@@ -1,16 +1,20 @@
+id: glass-fiber-reinforced-polymers-gfrp-settings
 name: Glass Fiber Reinforced Polymers GFRP
 slug: glass-fiber-reinforced-polymers-gfrp-settings
+category: composite
+subcategory: fiber-reinforced
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.866767'
+dateModified: '2025-12-16T17:59:17.866767'
 domain: settings
-datePublished: '2025-12-16T14:50:07.206729'
-dateModified: '2025-12-16T14:50:07.206729'
 machineSettings:
   powerRange:
     description: Optimal average power for GFRP surface cleaning without matrix damage
     unit: W
     value: 100
   wavelength:
-    description: Near-IR wavelength for optimal absorption in surface contaminants
-      with minimal GFRP damage
+    description: Near-IR wavelength for optimal absorption in surface contaminants with minimal GFRP damage
     unit: nm
     value: 1064
   spotSize:
@@ -22,8 +26,7 @@ machineSettings:
     unit: kHz
     value: 50
   fluenceThreshold:
-    description: Threshold fluence for effective contaminant removal without fiber
-      damage
+    description: Threshold fluence for effective contaminant removal without fiber damage
     unit: J/cm²
     value: 2.5
   energyDensity:

@@ -3,26 +3,34 @@ name: PTFE Coating Residue
 slug: teflon-residue-contamination
 category: organic-residue
 subcategory: other
+datePublished: '2025-12-16T21:08:15.493106'
+dateModified: '2025-12-16T21:08:15.493106'
 domain_linkages:
   related_materials:
-  - id: Steel
-    title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Aluminum
-    title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Stainless Steel
+  - id: stainless-steel-laser-cleaning
     title: Stainless Steel
-    url: /materials/Stainless Steel
-    image: /images/materials/Stainless Steel.jpg
+    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+    image: /images/materials/stainless-steel.jpg
+    category: metal
+    subcategory: ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: aluminum-laser-cleaning
+    title: Aluminum
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -48,8 +56,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -58,8 +65,6 @@ author:
   formatting_file: indonesia_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.980285'
-dateModified: '2025-12-16T14:49:04.980285'
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -67,14 +72,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: PTFE Coating Residue Contamination
-contamination_description: Teflon-residue contamination, it arises from degraded fluoropolymer
-  coatings during manufacturing processes and thus forms thin, persistent films on
-  surfaces. This residue, it distinguishes itself by chemical inertness and low surface
-  energy, unlike organic contaminants that degrade easily, and so resists adhesion
-  on steel, aluminum, and stainless steel where it bonds tightly yet flakes under
-  shear. Removal challenges include its thermal stability that demands precise energy
-  input, but laser cleaning proves effective as pulsed beams ablate the layer selectively
-  without substrate damage, and thus restores surface integrity.
+contamination_description: Teflon-residue contamination, it arises from degraded fluoropolymer coatings during manufacturing processes and thus forms thin, persistent films on surfaces. This residue, it distinguishes itself by chemical inertness and low surface energy, unlike organic contaminants that degrade easily, and so resists adhesion on steel, aluminum, and stainless steel where it bonds tightly yet flakes under shear. Removal challenges include its thermal stability that demands precise energy input, but laser cleaning proves effective as pulsed beams ablate the layer selectively without substrate damage, and thus restores surface integrity.
 breadcrumb:
 - label: Home
   href: /

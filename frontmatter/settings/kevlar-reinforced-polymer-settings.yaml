@@ -1,17 +1,20 @@
+id: kevlar-reinforced-polymer-settings
 name: Kevlar-Reinforced Polymer
 slug: kevlar-reinforced-polymer-settings
+category: composite
+subcategory: fiber-reinforced
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.912662'
+dateModified: '2025-12-16T17:59:17.912662'
 domain: settings
-datePublished: '2025-12-16T14:50:07.236808'
-dateModified: '2025-12-16T14:50:07.236808'
 machineSettings:
   powerRange:
-    description: Optimal average power for Kevlar-Reinforced Polymer surface cleaning
-      without thermal damage
+    description: Optimal average power for Kevlar-Reinforced Polymer surface cleaning without thermal damage
     unit: W
     value: 45
   wavelength:
-    description: Near-IR wavelength providing optimal absorption balance between Kevlar
-      fibers and polymer matrix
+    description: Near-IR wavelength providing optimal absorption balance between Kevlar fibers and polymer matrix
     unit: nm
     value: 1064
   spotSize:
@@ -23,8 +26,7 @@ machineSettings:
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     unit: J/cm²
     value: 4.5
   pulseWidth:

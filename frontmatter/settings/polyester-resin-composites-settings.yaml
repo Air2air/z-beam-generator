@@ -1,12 +1,16 @@
+id: polyester-resin-composites-settings
 name: Polyester Resin Composites
 slug: polyester-resin-composites-settings
+category: composite
+subcategory: fiber-reinforced
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.034870'
+dateModified: '2025-12-16T17:59:18.034870'
 domain: settings
-datePublished: '2025-12-16T14:50:07.312248'
-dateModified: '2025-12-16T14:50:07.312248'
 machineSettings:
   powerRange:
-    description: Optimal average power for polyester resin composite cleaning without
-      thermal damage
+    description: Optimal average power for polyester resin composite cleaning without thermal damage
     unit: W
     value: 90
   wavelength:
@@ -22,8 +26,7 @@ machineSettings:
     unit: kHz
     value: 50
   pulseWidth:
-    description: Optimal pulse duration for efficient material removal with minimal
-      heat affected zone
+    description: Optimal pulse duration for efficient material removal with minimal heat affected zone
     unit: ns
     value: 15
   scanSpeed:
@@ -39,8 +42,6 @@ machineSettings:
     unit: '%'
     value: 50
   fluence:
-    description: Energy density threshold for effective Polyester Resin Composites
-      cleaning - Energy density threshold for composite material cleaning considering
-      matrix and reinforcement properties
+    description: Energy density threshold for effective Polyester Resin Composites cleaning - Energy density threshold for composite material cleaning considering matrix and reinforcement properties
     unit: J/cm²
     value: 3.0

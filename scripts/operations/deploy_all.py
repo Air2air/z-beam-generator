@@ -73,8 +73,9 @@ def export_all_domains():
     
     domains = [
         ('materials', 'export.core.trivial_exporter', 'TrivialFrontmatterExporter'),
-        ('contaminants', 'export.contaminants.trivial_exporter', 'ContaminantsFrontmatterExporter'),
-        ('compounds', 'export.compounds.trivial_exporter', 'CompoundsFrontmatterExporter'),
+        ('settings', 'export.settings.trivial_exporter', 'TrivialSettingsExporter'),
+        ('contaminants', 'export.contaminants.trivial_exporter', 'TrivialContaminantsExporter'),
+        ('compounds', 'export.compounds.trivial_exporter', 'CompoundExporter'),
     ]
     
     all_success = True

@@ -1,12 +1,49 @@
+id: tempered-glass-settings
 name: Tempered Glass
 slug: tempered-glass-settings
+category: glass
+subcategory: specialty-glass
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.204257'
+dateModified: '2025-12-16T17:59:18.204257'
+domain_linkages:
+  contaminants:
+  - adhesive-residue
+  - biological-stains
+  - blood-residue
+  - insect-residue
+  - lime-scale
+  - medical-disinfectant
+  - mineral-deposits
+  - pesticide-residue
+  - pharmaceutical-residue
+  - plastic-residue
+  - pollen-deposit
+  - scale-buildup
+  - silicone-buildup
+  - soap-scum
+  - tree-sap
+  - water-stain
+  compounds:
+  - acetaldehyde-compound
+  - acrolein-compound
+  - ammonia-compound
+  - benzene-compound
+  - carbon-dioxide-compound
+  - carbon-monoxide-compound
+  - formaldehyde-compound
+  - hydrogen-chloride-compound
+  - hydrogen-cyanide-compound
+  - pahs-compound
+  - phosgene-compound
+  - styrene-compound
+  - toluene-compound
+  - vocs-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.420004'
-dateModified: '2025-12-16T14:50:07.420004'
 machineSettings:
   powerRange:
-    description: Optimal average power for Tempered Glass cleaning without thermal
-      damage
+    description: Optimal average power for Tempered Glass cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
@@ -38,8 +75,7 @@ machineSettings:
     unit: passes
     value: 2
   overlapRatio:
-    description: Optimal overlap ratio for complete coverage without excessive energy
-      deposition
+    description: Optimal overlap ratio for complete coverage without excessive energy deposition
     unit: '%'
     value: 50
   dwellTime:

@@ -1,44 +1,42 @@
+id: alabaster-settings
 name: Alabaster
 slug: alabaster-settings
+category: stone
+subcategory: sedimentary
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.671357'
+dateModified: '2025-12-16T17:59:17.671357'
 author:
   id: 2
 domain: settings
-datePublished: '2025-12-16T14:50:07.101383'
-dateModified: '2025-12-16T14:50:07.101383'
 machineSettings:
   powerRange:
-    description: Optimal average power for Alabaster surface cleaning without thermal
-      damage
+    description: Optimal average power for Alabaster surface cleaning without thermal damage
     unit: W
     value: 45
   wavelength:
-    description: Near-IR wavelength providing good absorption in surface contaminants
-      while minimizing bulk material damage
+    description: Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk material damage
     unit: nm
     value: 1064
   spotSize:
-    description: Beam spot diameter providing sufficient energy density for cleaning
-      with good resolution
+    description: Beam spot diameter providing sufficient energy density for cleaning with good resolution
     unit: μm
     value: 80
   repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage while avoiding
-      thermal accumulation
+    description: Optimal repetition rate for continuous cleaning coverage while avoiding thermal accumulation
     unit: kHz
     value: 50
   fluenceThreshold:
-    description: Energy density threshold for effective contaminant removal without
-      damaging Alabaster substrate
+    description: Energy density threshold for effective contaminant removal without damaging Alabaster substrate
     unit: J/cm²
     value: 1.2
   pulseWidth:
-    description: Short pulse duration for efficient contaminant removal with minimal
-      heat diffusion
+    description: Short pulse duration for efficient contaminant removal with minimal heat diffusion
     unit: ns
     value: 15
   scanSpeed:
-    description: Optimal scanning speed for efficient area coverage while maintaining
-      cleaning effectiveness
+    description: Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
     unit: mm/s
     value: 500
   passCount:

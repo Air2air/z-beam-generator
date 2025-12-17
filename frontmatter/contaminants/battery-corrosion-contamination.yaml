@@ -3,26 +3,25 @@ name: Battery Leakage Corrosion
 slug: battery-corrosion-contamination
 category: oxidation
 subcategory: battery
+datePublished: '2025-12-16T21:08:14.370887'
+dateModified: '2025-12-16T21:08:14.370887'
 domain_linkages:
   related_materials:
-  - id: Copper
-    title: Copper
-    url: /materials/Copper
-    image: /images/materials/Copper.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
+  - id: copper-laser-cleaning
+    title: Copper
+    url: /materials/metal/non-ferrous/copper-laser-cleaning
+    image: /images/materials/copper.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -48,8 +47,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -58,8 +56,6 @@ author:
   formatting_file: indonesia_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:03.877748'
-dateModified: '2025-12-16T14:49:03.877748'
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -67,12 +63,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Battery Leakage Corrosion Contamination
-contamination_description: Battery-corrosion contamination forms through electrolyte
-  reactions in devices. This pattern penetrates deeply and accelerates under electrical
-  stress, thus distinguishes from atmospheric rust by resisting reversal and clinging
-  tightly to alloys. On copper, it builds insulating films; on steel and brass, cracking
-  induces. Removal challenges demand careful dissolution, but laser cleaning ablates
-  layers precisely, so surface restores conductivity effectively.
+contamination_description: Battery-corrosion contamination forms through electrolyte reactions in devices. This pattern penetrates deeply and accelerates under electrical stress, thus distinguishes from atmospheric rust by resisting reversal and clinging tightly to alloys. On copper, it builds insulating films; on steel and brass, cracking induces. Removal challenges demand careful dissolution, but laser cleaning ablates layers precisely, so surface restores conductivity effectively.
 breadcrumb:
 - label: Home
   href: /

@@ -1,17 +1,20 @@
+id: stucco-settings
 name: Stucco
 slug: stucco-settings
+category: masonry
+subcategory: concrete
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.191201'
+dateModified: '2025-12-16T17:59:18.191201'
 domain: settings
-datePublished: '2025-12-16T14:50:07.412097'
-dateModified: '2025-12-16T14:50:07.412097'
 machineSettings:
   powerRange:
-    description: Optimal average power for Stucco surface cleaning without substrate
-      damage
+    description: Optimal average power for Stucco surface cleaning without substrate damage
     unit: W
     value: 100
   wavelength:
-    description: Near-infrared wavelength optimized for Stucco absorption and minimal
-      substrate interaction
+    description: Near-infrared wavelength optimized for Stucco absorption and minimal substrate interaction
     unit: nm
     value: 1064
   spotSize:
@@ -19,8 +22,7 @@ machineSettings:
     unit: mm
     value: 0.2
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and process
-      speed
+    description: Optimal repetition rate for efficient cleaning coverage and process speed
     unit: kHz
     value: 50
   energyDensity:
@@ -28,8 +30,7 @@ machineSettings:
     unit: J/cm²
     value: 3.2
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
+    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
     unit: ns
     value: 10
   scanSpeed:

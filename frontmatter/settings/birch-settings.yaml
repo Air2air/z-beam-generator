@@ -1,41 +1,62 @@
+id: birch-settings
 name: Birch
 slug: birch-settings
+category: wood
+subcategory: hardwood
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:17.711254'
+dateModified: '2025-12-16T17:59:17.711254'
+domain_linkages:
+  contaminants:
+  - adhesive-residue
+  - algae-growth
+  - lead-paint
+  - mold-mildew
+  - paint-residue
+  - wax-buildup
+  compounds:
+  - acetaldehyde-compound
+  - benzene-compound
+  - carbon-dioxide-compound
+  - carbon-monoxide-compound
+  - chromium-vi-compound
+  - formaldehyde-compound
+  - hydrogen-chloride-compound
+  - hydrogen-cyanide-compound
+  - nitrogen-oxides-compound
+  - pahs-compound
+  - toluene-compound
+  - vocs-compound
+  - zinc-oxide-compound
 domain: settings
-datePublished: '2025-12-16T14:50:07.122532'
-dateModified: '2025-12-16T14:50:07.122532'
 machineSettings:
   powerRange:
     description: Optimal average power for Birch surface cleaning without charring
     unit: W
     value: 45
   wavelength:
-    description: Near-IR wavelength for optimal Birch wood absorption and minimal
-      subsurface damage
+    description: Near-IR wavelength for optimal Birch wood absorption and minimal subsurface damage
     unit: nm
     value: 1064
   spotSize:
-    description: Beam spot diameter for precise cleaning resolution on Birch surface
-      features
+    description: Beam spot diameter for precise cleaning resolution on Birch surface features
     unit: μm
     value: 80
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: Optimal repetition rate for efficient cleaning coverage while maintaining thermal control
     unit: kHz
     value: 50
   energyDensity:
-    description: Fluence threshold for effective contaminant removal without damaging
-      Birch substrate
+    description: Fluence threshold for effective contaminant removal without damaging Birch substrate
     unit: J/cm²
     value: 4.5
   pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-      without excessive heat diffusion
+    description: Nanosecond pulse duration for controlled ablation of contaminants without excessive heat diffusion
     unit: ns
     value: 12
   scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage without excessive
-      dwell time
+    description: Optimal scanning speed for uniform cleaning coverage without excessive dwell time
     unit: mm/s
     value: 500
   passCount:

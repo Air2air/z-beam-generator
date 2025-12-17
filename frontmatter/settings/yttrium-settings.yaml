@@ -1,12 +1,16 @@
+id: yttrium-settings
 name: Yttrium
 slug: yttrium-settings
+category: rare-earth
+subcategory: scandium-group
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T17:59:18.270636'
+dateModified: '2025-12-16T17:59:18.270636'
 domain: settings
-datePublished: '2025-12-16T14:50:07.464418'
-dateModified: '2025-12-16T14:50:07.464418'
 machineSettings:
   powerRange:
-    description: Optimal average power for Yttrium surface cleaning without thermal
-      damage
+    description: Optimal average power for Yttrium surface cleaning without thermal damage
     unit: W
     value: 100
   wavelength:
@@ -14,13 +18,11 @@ machineSettings:
     unit: nm
     value: 1064
   spotSize:
-    description: Beam spot diameter for precise Yttrium surface cleaning with adequate
-      energy density
+    description: Beam spot diameter for precise Yttrium surface cleaning with adequate energy density
     unit: μm
     value: 50
   repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage on Yttrium
-      surfaces
+    description: Optimal repetition rate for continuous cleaning coverage on Yttrium surfaces
     unit: kHz
     value: 50
   fluenceThreshold:
@@ -28,23 +30,19 @@ machineSettings:
     unit: J/cm²
     value: 5.1
   energyDensity:
-    description: Fluence threshold for effective Yttrium contaminant removal without
-      substrate damage
+    description: Fluence threshold for effective Yttrium contaminant removal without substrate damage
     unit: J/cm²
     value: 5.1
   pulseWidth:
-    description: Nanosecond pulse duration for efficient Yttrium ablation with controlled
-      thermal effects
+    description: Nanosecond pulse duration for efficient Yttrium ablation with controlled thermal effects
     unit: ns
     value: 10
   scanSpeed:
-    description: Optimal scanning speed for efficient Yttrium surface coverage without
-      excessive overlap
+    description: Optimal scanning speed for efficient Yttrium surface coverage without excessive overlap
     unit: mm/s
     value: 500
   passCount:
-    description: Recommended number of cleaning passes for complete Yttrium surface
-      treatment
+    description: Recommended number of cleaning passes for complete Yttrium surface treatment
     unit: passes
     value: 2
   overlapRatio:

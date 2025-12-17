@@ -5,8 +5,8 @@ category: wood
 subcategory: hardwood
 content_type: unified_material
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:48:46.579226'
-dateModified: '2025-12-16T14:48:46.579226'
+datePublished: '2025-12-16T18:07:18.664523'
+dateModified: '2025-12-16T18:07:18.664523'
 author:
   id: 4
   name: Todd Dunning
@@ -283,148 +283,186 @@ material_metadata:
 domain_linkages:
   related_contaminants:
   - id: adhesive-residue
-    title: Adhesive Residue
-    url: /contaminants/adhesive-residue
+    title: Adhesive Residue / Tape Marks
+    url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
     image: /images/contaminants/adhesive-residue.jpg
+    category: organic-residue
+    subcategory: adhesive
     frequency: common
     severity: moderate
     typical_context: general
   - id: algae-growth
-    title: Algae Growth
-    url: /contaminants/algae-growth
+    title: Algae and Lichen Growth
+    url: /contaminants/biological/growth/algae-growth-contamination
     image: /images/contaminants/algae-growth.jpg
+    category: biological
+    subcategory: growth
     frequency: common
     severity: moderate
     typical_context: general
   - id: lead-paint
-    title: Lead Paint
-    url: /contaminants/lead-paint
+    title: Lead-Based Paint Removal
+    url: /contaminants/inorganic-coating/paint/lead-paint-contamination
     image: /images/contaminants/lead-paint.jpg
+    category: inorganic-coating
+    subcategory: paint
     frequency: common
     severity: moderate
     typical_context: general
   - id: mold-mildew
-    title: Mold Mildew
-    url: /contaminants/mold-mildew
+    title: Mold and Mildew Growth
+    url: /contaminants/biological/growth/mold-mildew-contamination
     image: /images/contaminants/mold-mildew.jpg
+    category: biological
+    subcategory: growth
     frequency: common
     severity: moderate
     typical_context: general
   - id: paint-residue
-    title: Paint Residue
-    url: /contaminants/paint-residue
+    title: Paint Residue / Coating Failure
+    url: /contaminants/inorganic-coating/paint/paint-residue-contamination
     image: /images/contaminants/paint-residue.jpg
+    category: inorganic-coating
+    subcategory: paint
     frequency: common
     severity: moderate
     typical_context: general
   - id: wax-buildup
-    title: Wax Buildup
-    url: /contaminants/wax-buildup
+    title: Wax Coating Buildup
+    url: /contaminants/organic-residue/wax/wax-buildup-contamination
     image: /images/contaminants/wax-buildup.jpg
+    category: organic-residue
+    subcategory: wax
     frequency: common
     severity: moderate
     typical_context: general
   related_compounds:
   - id: carbon-monoxide-compound
     title: Carbon Monoxide
-    url: /compounds/carbon-monoxide
+    url: /compounds/toxic_gas/asphyxiant/carbon-monoxide-compound
     image: /images/compounds/carbon-monoxide.jpg
+    category: toxic_gas
+    subcategory: asphyxiant
     frequency: very_common
     severity: high
     typical_context: Incomplete combustion of organic adhesives
     exposure_risk: high
   - id: acetaldehyde-compound
     title: Acetaldehyde
-    url: /compounds/acetaldehyde
+    url: /compounds/irritant/aldehyde/acetaldehyde-compound
     image: /images/compounds/acetaldehyde.jpg
+    category: irritant
+    subcategory: aldehyde
     frequency: common
     severity: moderate
     typical_context: Decomposition of vinyl and acrylic adhesives
     exposure_risk: moderate
   - id: hydrogen-chloride-compound
     title: Hydrogen Chloride
-    url: /compounds/hydrogen-chloride
+    url: /compounds/corrosive_gas/acid_gas/hydrogen-chloride-compound
     image: /images/compounds/hydrogen-chloride.jpg
+    category: corrosive_gas
+    subcategory: acid_gas
     frequency: occasional
     severity: moderate
     typical_context: Some adhesives contain chlorinated compounds
     exposure_risk: moderate
   - id: toluene-compound
     title: Toluene
-    url: /compounds/toluene
+    url: /compounds/solvent/aromatic_hydrocarbon/toluene-compound
     image: /images/compounds/toluene.jpg
+    category: solvent
+    subcategory: aromatic_hydrocarbon
     frequency: common
     severity: moderate
     typical_context: Release of toluene from adhesive formulations
     exposure_risk: moderate
   - id: formaldehyde-compound
     title: Formaldehyde
-    url: /compounds/formaldehyde
+    url: /compounds/carcinogen/aldehyde/formaldehyde-compound
     image: /images/compounds/formaldehyde.jpg
+    category: carcinogen
+    subcategory: aldehyde
     frequency: common
     severity: moderate
     typical_context: Thermal breakdown of formaldehyde-based adhesives
     exposure_risk: moderate
   - id: hydrogen-cyanide-compound
     title: Hydrogen Cyanide
-    url: /compounds/hydrogen-cyanide
+    url: /compounds/toxic_gas/cyanide/hydrogen-cyanide-compound
     image: /images/compounds/hydrogen-cyanide.jpg
+    category: toxic_gas
+    subcategory: cyanide
     frequency: occasional
     severity: moderate
     typical_context: Breakdown of cyanoacrylate adhesives
     exposure_risk: moderate
   - id: carbon-dioxide-compound
     title: Carbon Dioxide
-    url: /compounds/carbon-dioxide
+    url: /compounds/asphyxiant/simple_asphyxiant/carbon-dioxide-compound
     image: /images/compounds/carbon-dioxide.jpg
+    category: asphyxiant
+    subcategory: simple_asphyxiant
     frequency: very_common
     severity: low
     typical_context: Complete combustion of adhesives
     exposure_risk: low
   - id: vocs-compound
     title: Volatile Organic Compounds
-    url: /compounds/vocs
+    url: /compounds/irritant/organic_vapor/vocs-compound
     image: /images/compounds/vocs.jpg
+    category: irritant
+    subcategory: organic_vapor
     frequency: very_common
     severity: moderate
     typical_context: Release of adhesive solvents
     exposure_risk: moderate
   - id: nitrogen-oxides-compound
     title: Nitrogen Oxides
-    url: /compounds/nitrogen-oxides
+    url: /compounds/toxic_gas/oxidizing_gas/nitrogen-oxides-compound
     image: /images/compounds/nitrogen-oxides.jpg
+    category: toxic_gas
+    subcategory: oxidizing_gas
     frequency: occasional
     severity: low
     typical_context: Nitrogen from some paint formulations
     exposure_risk: low
   - id: zinc-oxide-compound
     title: Zinc Oxide
-    url: /compounds/zinc-oxide
+    url: /compounds/metal_fume/metal_oxide/zinc-oxide-compound
     image: /images/compounds/zinc-oxide.jpg
+    category: metal_fume
+    subcategory: metal_oxide
     frequency: occasional
     severity: low
     typical_context: Zinc oxide pigments in paint
     exposure_risk: low
   - id: chromium-vi-compound
     title: Hexavalent Chromium
-    url: /compounds/chromium-vi
+    url: /compounds/carcinogen/heavy_metal/chromium-vi-compound
     image: /images/compounds/chromium-vi.jpg
+    category: carcinogen
+    subcategory: heavy_metal
     frequency: occasional
     severity: high
     typical_context: Chromate pigments in some paints
     exposure_risk: high
   - id: pahs-compound
     title: Polycyclic Aromatic Hydrocarbons
-    url: /compounds/pahs
+    url: /compounds/carcinogen/aromatic_hydrocarbon/pahs-compound
     image: /images/compounds/pahs.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
     frequency: common
     severity: moderate
     typical_context: Incomplete combustion of organic binders
     exposure_risk: moderate
   - id: benzene-compound
     title: Benzene
-    url: /compounds/benzene
+    url: /compounds/carcinogen/aromatic_hydrocarbon/benzene-compound
     image: /images/compounds/benzene.jpg
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
     frequency: common
     severity: high
     typical_context: Thermal breakdown of aromatic paint solvents
@@ -443,4 +481,4 @@ serviceOffering:
     notes: Careful power control to avoid charring
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-16T14:48:46.580307'
+    generated_date: '2025-12-16T18:07:18.665867'

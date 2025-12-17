@@ -3,19 +3,36 @@ name: Zinc Electroplating
 slug: zinc-plating-contamination
 category: metallic-coating
 subcategory: plating
+datePublished: '2025-12-16T21:08:15.653723'
+dateModified: '2025-12-16T21:08:15.653723'
 domain_linkages:
+  produces_compounds:
+  - id: zinc-oxide-compound
+    title: Zinc Oxide
+    url: /compounds/metal_fume/metal_oxide/zinc-oxide-compound
+    image: /images/compounds/zinc-oxide.jpg
+    category: metal_fume
+    subcategory: metal_oxide
+    frequency: very_common
+    severity: high
+    typical_context: Direct vaporization of zinc electroplating
+    exposure_risk: high
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Iron
+  - id: iron-laser-cleaning
     title: Iron
-    url: /materials/Iron
-    image: /images/materials/Iron.jpg
+    url: /materials/metal/ferrous/iron-laser-cleaning
+    image: /images/materials/iron.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -39,8 +56,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -50,8 +66,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:05.131034'
-dateModified: '2025-12-16T14:49:05.131034'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -59,13 +73,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Zinc Electroplating Contamination
-contamination_description: Zinc-plating contamination appears as thin protective layer
-  on steel and iron surfaces, so it forms during corrosion-resistant coating processes
-  to prevent rust. This layer shows unique even distribution and metallic sheen that
-  differs from rust or scale buildup, and it adheres tightly on steel while flaking
-  more easily on iron during exposure. Removal challenges include risk of base material
-  damage because of strong bonding, but laser cleaning works effectively so it ablates
-  the layer precisely without harming underlying steel or iron.
+contamination_description: Zinc-plating contamination appears as thin protective layer on steel and iron surfaces, so it forms during corrosion-resistant coating processes to prevent rust. This layer shows unique even distribution and metallic sheen that differs from rust or scale buildup, and it adheres tightly on steel while flaking more easily on iron during exposure. Removal challenges include risk of base material damage because of strong bonding, but laser cleaning works effectively so it ablates the layer precisely without harming underlying steel or iron.
 breadcrumb:
 - label: Home
   href: /

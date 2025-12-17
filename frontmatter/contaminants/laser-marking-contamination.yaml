@@ -3,33 +3,34 @@ name: Laser Marking Discoloration
 slug: laser-marking-contamination
 category: organic-residue
 subcategory: marking
+datePublished: '2025-12-16T21:08:14.957389'
+dateModified: '2025-12-16T21:08:14.957389'
 domain_linkages:
   related_materials:
-  - id: Steel
+  - id: steel-laser-cleaning
     title: Steel
-    url: /materials/Steel
-    image: /images/materials/Steel.jpg
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/materials/steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Aluminum
+  - id: aluminum-laser-cleaning
     title: Aluminum
-    url: /materials/Aluminum
-    image: /images/materials/Aluminum.jpg
+    url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+    image: /images/materials/aluminum.jpg
+    category: metal
+    subcategory: non-ferrous
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Titanium
+  - id: titanium-laser-cleaning
     title: Titanium
-    url: /materials/Titanium
-    image: /images/materials/Titanium.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: brass
-    title: Brass
-    url: /materials/brass
-    image: /images/materials/brass.jpg
+    url: /materials/metal/specialty/titanium-laser-cleaning
+    image: /images/materials/titanium.jpg
+    category: metal
+    subcategory: specialty
     frequency: common
     severity: moderate
     typical_context: general
@@ -53,8 +54,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -64,8 +64,6 @@ author:
   formatting_file: taiwan_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.422628'
-dateModified: '2025-12-16T14:49:04.422628'
 _metadata:
   voice:
     author_name: Yi-Chun Lin
@@ -73,14 +71,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Laser Marking Discoloration Contamination
-contamination_description: After laser marking, oxidized surface layer forms on metal
-  surfaces because heat exposure accelerates oxidation during engraving. This contamination
-  shows unique localized discoloration and texture that distinguishes it from uniform
-  rust buildup in other processes, and behavior varies so on steel and titanium stronger
-  adhesion occurs while on aluminum and brass looser attachment allows easier detachment.
-  Key removal challenges arise from potential substrate damage during cleaning, yet
-  laser cleaning proves effective because selective energy pulses ablate oxide precisely
-  so underlying material remains intact.
+contamination_description: After laser marking, oxidized surface layer forms on metal surfaces because heat exposure accelerates oxidation during engraving. This contamination shows unique localized discoloration and texture that distinguishes it from uniform rust buildup in other processes, and behavior varies so on steel and titanium stronger adhesion occurs while on aluminum and brass looser attachment allows easier detachment. Key removal challenges arise from potential substrate damage during cleaning, yet laser cleaning proves effective because selective energy pulses ablate oxide precisely so underlying material remains intact.
 breadcrumb:
 - label: Home
   href: /

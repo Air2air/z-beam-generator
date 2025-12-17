@@ -3,19 +3,16 @@ name: Passivation Layer Irregularities
 slug: passivation-defect-contamination
 category: inorganic-coating
 subcategory: coating
+datePublished: '2025-12-16T21:08:15.141548'
+dateModified: '2025-12-16T21:08:15.141548'
 domain_linkages:
   related_materials:
-  - id: Stainless Steel
+  - id: stainless-steel-laser-cleaning
     title: Stainless Steel
-    url: /materials/Stainless Steel
-    image: /images/materials/Stainless Steel.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: chrome-plated-steel
-    title: Chrome Plated Steel
-    url: /materials/chrome-plated-steel
-    image: /images/materials/chrome-plated-steel.jpg
+    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+    image: /images/materials/stainless-steel.jpg
+    category: metal
+    subcategory: ferrous
     frequency: common
     severity: moderate
     typical_context: general
@@ -41,8 +38,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -51,8 +47,6 @@ author:
   formatting_file: indonesia_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.594487'
-dateModified: '2025-12-16T14:49:04.594487'
 _metadata:
   voice:
     author_name: Ikmanda Roswati
@@ -60,13 +54,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Passivation Layer Irregularities Contamination
-contamination_description: Uneven oxide layers define passivation-defect contamination,
-  and they form during stainless steel passivation when chromium oxide builds irregularly
-  from exposure to air and moisture. This defect exhibits patchy adhesion and resists
-  mechanical scraping, thus sets it apart from loose dirt or even rust films, while
-  on chrome-plated steel it clings similarly and persists after basic cleaning. Challenges
-  arise from its tight bonding to metal, so laser cleaning succeeds by targeting ablation
-  precisely, thus removes layers without harming the durable substrate.
+contamination_description: Uneven oxide layers define passivation-defect contamination, and they form during stainless steel passivation when chromium oxide builds irregularly from exposure to air and moisture. This defect exhibits patchy adhesion and resists mechanical scraping, thus sets it apart from loose dirt or even rust films, while on chrome-plated steel it clings similarly and persists after basic cleaning. Challenges arise from its tight bonding to metal, so laser cleaning succeeds by targeting ablation precisely, thus removes layers without harming the durable substrate.
 breadcrumb:
 - label: Home
   href: /
@@ -178,8 +166,7 @@ laser_properties:
       skin_protection: gloves
     substrate_compatibility_warnings:
     - Laser parameters must be optimized to minimize excessive heating and fume generation
-    - Inspect substrate for coatings or contaminants that may produce additional hazardous
-      byproducts
+    - Inspect substrate for coatings or contaminants that may produce additional hazardous byproducts
     toxic_gas_risk: low
     ventilation_requirements:
       exhaust_velocity_m_s: 0.5

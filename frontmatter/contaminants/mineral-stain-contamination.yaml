@@ -3,96 +3,106 @@ name: Mineral Staining
 slug: mineral-stain-contamination
 category: inorganic-coating
 subcategory: mineral
+datePublished: '2025-12-16T21:08:15.069507'
+dateModified: '2025-12-16T21:08:15.069507'
 domain_linkages:
   related_materials:
-  - id: Concrete
-    title: Concrete
-    url: /materials/Concrete
-    image: /images/materials/Concrete.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: tile
-    title: Tile
-    url: /materials/tile
-    image: /images/materials/tile.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: grout
-    title: Grout
-    url: /materials/grout
-    image: /images/materials/grout.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Granite
-    title: Granite
-    url: /materials/Granite
-    image: /images/materials/Granite.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Marble
-    title: Marble
-    url: /materials/Marble
-    image: /images/materials/Marble.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Limestone
-    title: Limestone
-    url: /materials/Limestone
-    image: /images/materials/Limestone.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Sandstone
-    title: Sandstone
-    url: /materials/Sandstone
-    image: /images/materials/Sandstone.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Basalt
-    title: Basalt
-    url: /materials/Basalt
-    image: /images/materials/Basalt.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Slate
-    title: Slate
-    url: /materials/Slate
-    image: /images/materials/Slate.jpg
-    frequency: common
-    severity: moderate
-    typical_context: general
-  - id: Quartzite
+  - id: quartzite-laser-cleaning
     title: Quartzite
-    url: /materials/Quartzite
-    image: /images/materials/Quartzite.jpg
+    url: /materials/stone/sedimentary/quartzite-laser-cleaning
+    image: /images/materials/quartzite.jpg
+    category: stone
+    subcategory: sedimentary
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Travertine
+  - id: concrete-laser-cleaning
+    title: Concrete
+    url: /materials/masonry/general/concrete-laser-cleaning
+    image: /images/materials/concrete.jpg
+    category: masonry
+    subcategory: general
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: granite-laser-cleaning
+    title: Granite
+    url: /materials/stone/igneous/granite-laser-cleaning
+    image: /images/materials/granite.jpg
+    category: stone
+    subcategory: igneous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: travertine-laser-cleaning
     title: Travertine
-    url: /materials/Travertine
-    image: /images/materials/Travertine.jpg
+    url: /materials/stone/natural/travertine-laser-cleaning
+    image: /images/materials/travertine.jpg
+    category: stone
+    subcategory: natural
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Bluestone
+  - id: bluestone-laser-cleaning
     title: Bluestone
-    url: /materials/Bluestone
-    image: /images/materials/Bluestone.jpg
+    url: /materials/stone/sedimentary/bluestone-laser-cleaning
+    image: /images/materials/bluestone.jpg
+    category: stone
+    subcategory: sedimentary
     frequency: common
     severity: moderate
     typical_context: general
-  - id: Soapstone
+  - id: limestone-laser-cleaning
+    title: Limestone
+    url: /materials/stone/sedimentary/limestone-laser-cleaning
+    image: /images/materials/limestone.jpg
+    category: stone
+    subcategory: sedimentary
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: soapstone-laser-cleaning
     title: Soapstone
-    url: /materials/Soapstone
-    image: /images/materials/Soapstone.jpg
+    url: /materials/stone/sedimentary/soapstone-laser-cleaning
+    image: /images/materials/soapstone.jpg
+    category: stone
+    subcategory: sedimentary
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: basalt-laser-cleaning
+    title: Basalt
+    url: /materials/stone/igneous/basalt-laser-cleaning
+    image: /images/materials/basalt.jpg
+    category: stone
+    subcategory: igneous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: sandstone-laser-cleaning
+    title: Sandstone
+    url: /materials/stone/sedimentary/sandstone-laser-cleaning
+    image: /images/materials/sandstone.jpg
+    category: stone
+    subcategory: sedimentary
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: marble-laser-cleaning
+    title: Marble
+    url: /materials/stone/metamorphic/marble-laser-cleaning
+    image: /images/materials/marble.jpg
+    category: stone
+    subcategory: metamorphic
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: slate-laser-cleaning
+    title: Slate
+    url: /materials/stone/metamorphic/slate-laser-cleaning
+    image: /images/materials/slate.jpg
+    category: stone
+    subcategory: metamorphic
     frequency: common
     severity: moderate
     typical_context: general
@@ -118,8 +128,7 @@ author:
   - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
   email: info@z-beam.com
   image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
-    Materials Dept., in research lab
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
   url: https://z-beam.com/authors/alessandro-moretti-phd
   sameAs:
   - https://scholar.google.com/citations?user=def456
@@ -128,8 +137,6 @@ author:
   formatting_file: italy_formatting.yaml
 content_type: unified_contamination
 schema_version: 4.0.0
-datePublished: '2025-12-16T14:49:04.530664'
-dateModified: '2025-12-16T14:49:04.530664'
 _metadata:
   voice:
     author_name: Alessandro Moretti
@@ -137,15 +144,7 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Mineral Staining Contamination
-contamination_description: Mineral-stain contamination, it arises from dissolved iron,
-  manganese, and copper in water sources, which precipitate as tenacious reddish-brown
-  or blackish deposits upon evaporation or oxidation, distinguishing itself from organic
-  soiling by its inorganic hardness and metallic sheen. On porous materials like limestone
-  or grout, these stains penetrate deeply, manifesting persistent discoloration that
-  resists superficial abrasion, whereas on denser surfaces such as granite, they form
-  superficial crusts. Removal challenges stem from strong adhesion influenced from
-  substrate chemistry, yet laser cleaning proves effective, as the process ablates
-  layers selectively, preserving the underlying integrity without chemical residues.
+contamination_description: Mineral-stain contamination, it arises from dissolved iron, manganese, and copper in water sources, which precipitate as tenacious reddish-brown or blackish deposits upon evaporation or oxidation, distinguishing itself from organic soiling by its inorganic hardness and metallic sheen. On porous materials like limestone or grout, these stains penetrate deeply, manifesting persistent discoloration that resists superficial abrasion, whereas on denser surfaces such as granite, they form superficial crusts. Removal challenges stem from strong adhesion influenced from substrate chemistry, yet laser cleaning proves effective, as the process ablates layers selectively, preserving the underlying integrity without chemical residues.
 breadcrumb:
 - label: Home
   href: /
