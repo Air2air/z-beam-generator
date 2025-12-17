@@ -263,6 +263,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 1-20 mg/m³
+    hazard_class: toxic
   - id: vocs-compound
     title: Volatile Organic Compounds
     url: /compounds/irritant/organic-vapor/vocs-compound
@@ -305,7 +307,8 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -321,7 +324,14 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Graffiti and Spray Paint Contamination
-contamination_description: Graffiti paint acts as a deliberate contaminant that spray artists apply to urban surfaces, where it quickly bonds through chemical adhesion and solvent penetration. Unlike everyday dirt or pollutants, it sets up deep into porous substrates while creating slick, resistant films on non-porous ones, turning removal into a significant challenge that often leaves behind stubborn stains. Laser cleaning tackles this effectively by vaporizing the paint layer precisely without damaging the base material, achieving a clean finish that traditional solvents struggle to match.
+contamination_description: Graffiti paint acts as a deliberate contaminant that spray
+  artists apply to urban surfaces, where it quickly bonds through chemical adhesion
+  and solvent penetration. Unlike everyday dirt or pollutants, it sets up deep into
+  porous substrates while creating slick, resistant films on non-porous ones, turning
+  removal into a significant challenge that often leaves behind stubborn stains. Laser
+  cleaning tackles this effectively by vaporizing the paint layer precisely without
+  damaging the base material, achieving a clean finish that traditional solvents struggle
+  to match.
 breadcrumb:
 - label: Home
   href: /
@@ -412,31 +422,6 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: low
-    fumes_generated:
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 5-50
-      exposure_limit_mg_m3: 29
-      hazard_class: toxic
-    - compound: Carbon Dioxide
-      concentration_mg_m3: 900-9000
-      exposure_limit_mg_m3: 9000
-      hazard_class: toxic
-    - compound: Benzene
-      concentration_mg_m3: 0.1-5
-      exposure_limit_mg_m3: 1.6
-      hazard_class: carcinogenic
-    - compound: Toluene
-      concentration_mg_m3: 1-20
-      exposure_limit_mg_m3: 75
-      hazard_class: toxic
-    - compound: Formaldehyde
-      concentration_mg_m3: 0.1-2
-      exposure_limit_mg_m3: 0.37
-      hazard_class: carcinogenic
-    - compound: Hydrogen Chloride
-      concentration_mg_m3: 0.5-10
-      exposure_limit_mg_m3: 2.5
-      hazard_class: corrosive
     particulate_generation:
       respirable_fraction: 0.8
       size_range_um:

@@ -182,6 +182,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 10-100 mg/m³
+    hazard_class: toxic
   - id: formaldehyde-compound
     title: Formaldehyde
     url: /compounds/carcinogen/aldehyde/formaldehyde-compound
@@ -203,6 +205,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 1-15 mg/m³
+    hazard_class: carcinogenic
 author:
   id: 1
   name: Yi-Chun Lin
@@ -223,7 +227,8 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -240,7 +245,13 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Epoxy Resin Deposits Contamination
-contamination_description: Epoxy-residue forms when cured two-part adhesive hardens on surfaces after mixing and application, creating tough layer with dense bonds. This contamination shows unique stickiness and resistance to solvents unlike softer paints or oils, so removal needs targeted heat without damaging base. On metals such as steel and aluminum, residue clings tightly during exposure, posing challenges like incomplete stripping because of its durability, yet laser cleaning succeeds by vaporizing it precisely through controlled pulses.
+contamination_description: Epoxy-residue forms when cured two-part adhesive hardens
+  on surfaces after mixing and application, creating tough layer with dense bonds.
+  This contamination shows unique stickiness and resistance to solvents unlike softer
+  paints or oils, so removal needs targeted heat without damaging base. On metals
+  such as steel and aluminum, residue clings tightly during exposure, posing challenges
+  like incomplete stripping because of its durability, yet laser cleaning succeeds
+  by vaporizing it precisely through controlled pulses.
 breadcrumb:
 - label: Home
   href: /
@@ -334,27 +345,6 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: low
-    fumes_generated:
-    - compound: Benzene
-      concentration_mg_m3: 5-50
-      exposure_limit_mg_m3: 0.5
-      hazard_class: carcinogenic
-    - compound: Phenol
-      concentration_mg_m3: 2-20
-      exposure_limit_mg_m3: 5.2
-      hazard_class: toxic
-    - compound: Formaldehyde
-      concentration_mg_m3: 1-15
-      exposure_limit_mg_m3: 0.37
-      hazard_class: carcinogenic
-    - compound: Carbon monoxide
-      concentration_mg_m3: 10-100
-      exposure_limit_mg_m3: 29
-      hazard_class: toxic
-    - compound: Particulate polycyclic aromatic hydrocarbons
-      concentration_mg_m3: 0.5-5
-      exposure_limit_mg_m3: 0.2
-      hazard_class: carcinogenic
     particulate_generation:
       respirable_fraction: 0.8
       size_range_um:

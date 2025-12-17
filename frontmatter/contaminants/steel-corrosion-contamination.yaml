@@ -38,6 +38,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 0.01-1.0 mg/m³
+    hazard_class: toxic
 author:
   id: 3
   name: Ikmanda Roswati
@@ -60,7 +62,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -76,7 +79,12 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Steel Surface Corrosion Contamination
-contamination_description: Steel corrosion contamination, it arises from oxidation on carbon steel surfaces exposed to moisture and air. This rust layer, it adheres tightly and penetrates substrate unlike loose dust or paint, thus poses removal challenges by risking base material damage during mechanical methods. Laser cleaning targets it effectively, as ablation vaporizes oxide precisely and leaves surface intact.
+contamination_description: Steel corrosion contamination, it arises from oxidation
+  on carbon steel surfaces exposed to moisture and air. This rust layer, it adheres
+  tightly and penetrates substrate unlike loose dust or paint, thus poses removal
+  challenges by risking base material damage during mechanical methods. Laser cleaning
+  targets it effectively, as ablation vaporizes oxide precisely and leaves surface
+  intact.
 breadcrumb:
 - label: Home
   href: /
@@ -164,23 +172,6 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: low
-    fumes_generated:
-    - compound: Iron Oxide (FeO/Fe2O3/Fe3O4)
-      concentration_mg_m3: 5-50
-      exposure_limit_mg_m3: 5.0
-      hazard_class: irritant
-    - compound: Manganese Oxide
-      concentration_mg_m3: 0.1-5.0
-      exposure_limit_mg_m3: 0.2
-      hazard_class: toxic
-    - compound: Chromium Oxide
-      concentration_mg_m3: 0.01-1.0
-      exposure_limit_mg_m3: 0.5
-      hazard_class: toxic
-    - compound: Nickel Oxide
-      concentration_mg_m3: 0.01-0.5
-      exposure_limit_mg_m3: 0.1
-      hazard_class: carcinogenic
     particulate_generation:
       respirable_fraction: 0.8
       size_range_um:

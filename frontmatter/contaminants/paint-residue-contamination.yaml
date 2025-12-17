@@ -6,8 +6,10 @@ subcategory: paint
 datePublished: '2025-12-17T12:39:34.088325'
 dateModified: '2025-12-17T12:39:34.088325'
 micro:
-  after: Post-cleaning reveals restored surface with paint residue / coating failure successfully removed through precise laser ablation.
-  before: Surface shows contamination from paint residue / coating failure affecting material appearance and properties.
+  after: Post-cleaning reveals restored surface with paint residue / coating failure
+    successfully removed through precise laser ablation.
+  before: Surface shows contamination from paint residue / coating failure affecting
+    material appearance and properties.
 domain_linkages:
   related_materials:
   - id: mahogany-laser-cleaning
@@ -320,6 +322,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 5-50 mg/m³
+    hazard_class: toxic
   - id: acetaldehyde-compound
     title: Acetaldehyde
     url: /compounds/irritant/aldehyde/acetaldehyde-compound
@@ -404,6 +408,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 5-50 mg/m³
+    hazard_class: toxic
   - id: chromium-vi-compound
     title: Hexavalent Chromium
     url: /compounds/carcinogen/heavy-metal/chromium-vi-compound
@@ -446,6 +452,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 0.1-2.0 mg/m³
+    hazard_class: carcinogenic
   - id: pahs-compound
     title: Polycyclic Aromatic Hydrocarbons
     url: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
@@ -488,6 +496,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 900-1800 mg/m³
+    hazard_class: toxic
   - id: vocs-compound
     title: Volatile Organic Compounds
     url: /compounds/irritant/organic-vapor/vocs-compound
@@ -509,6 +519,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 10-100 mg/m³
+    hazard_class: toxic
   - id: benzene-compound
     title: Benzene
     url: /compounds/carcinogen/aromatic-hydrocarbon/benzene-compound
@@ -552,7 +564,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -568,7 +581,17 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Paint Residue / Coating Failure Contamination
-contamination_description: Paint-residue contamination, it arises from flaking, peeling, or degraded paint and coating materials. This pattern forms when environmental exposure causes binders in paint to break down, thus layers detach and scatter as residue. Unique characteristics distinguish it, such as irregular flakes with color remnants and adhesive stickiness, unlike dust or rust that lacks organic binders. On metals, residue adheres tightly and traps moisture, while on stone or wood, it embeds into pores and promotes further degradation. Removal challenges persist, because residue resists solvents due to its polymeric nature, and mechanical scraping risks surface damage. Laser cleaning proves effective here, as precise energy pulses ablate residue layers without affecting substrates, thus surface already regains uniformity following treatment.
+contamination_description: Paint-residue contamination, it arises from flaking, peeling,
+  or degraded paint and coating materials. This pattern forms when environmental exposure
+  causes binders in paint to break down, thus layers detach and scatter as residue.
+  Unique characteristics distinguish it, such as irregular flakes with color remnants
+  and adhesive stickiness, unlike dust or rust that lacks organic binders. On metals,
+  residue adheres tightly and traps moisture, while on stone or wood, it embeds into
+  pores and promotes further degradation. Removal challenges persist, because residue
+  resists solvents due to its polymeric nature, and mechanical scraping risks surface
+  damage. Laser cleaning proves effective here, as precise energy pulses ablate residue
+  layers without affecting substrates, thus surface already regains uniformity following
+  treatment.
 breadcrumb:
 - label: Home
   href: /
@@ -659,27 +682,6 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: low
-    fumes_generated:
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 5-50
-      exposure_limit_mg_m3: 29
-      hazard_class: toxic
-    - compound: Carbon Dioxide
-      concentration_mg_m3: 900-1800
-      exposure_limit_mg_m3: 9000
-      hazard_class: toxic
-    - compound: Formaldehyde
-      concentration_mg_m3: 0.1-2.0
-      exposure_limit_mg_m3: 0.37
-      hazard_class: carcinogenic
-    - compound: Volatile Organic Compounds (VOCs)
-      concentration_mg_m3: 10-100
-      exposure_limit_mg_m3: 100
-      hazard_class: toxic
-    - compound: Hydrogen Cyanide
-      concentration_mg_m3: 0.5-5.0
-      exposure_limit_mg_m3: 5
-      hazard_class: toxic
     particulate_generation:
       respirable_fraction: 0.7
       size_range_um:

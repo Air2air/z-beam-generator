@@ -281,6 +281,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 10-100 mg/m³
+    hazard_class: toxic
   - id: vocs-compound
     title: Volatile Organic Compounds
     url: /compounds/irritant/organic-vapor/vocs-compound
@@ -324,7 +326,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -340,7 +343,14 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Silicone Sealant Buildup Contamination
-contamination_description: Silicone-buildup forms from polysiloxane sealants, applied in construction and automotive coatings, where residues cure into thin, flexible films over time. This contamination distinguishes itself with hydrophobic nature and strong adhesion, unlike oily greases that smear easily, and it persists stubbornly on metals like steel and aluminum, altering wettability without deep penetration. Removal challenges stem from chemical inertness, thus solvents often fail, but laser cleaning succeeds, as targeted pulses ablate the layer precisely and restore surface integrity.
+contamination_description: Silicone-buildup forms from polysiloxane sealants, applied
+  in construction and automotive coatings, where residues cure into thin, flexible
+  films over time. This contamination distinguishes itself with hydrophobic nature
+  and strong adhesion, unlike oily greases that smear easily, and it persists stubbornly
+  on metals like steel and aluminum, altering wettability without deep penetration.
+  Removal challenges stem from chemical inertness, thus solvents often fail, but laser
+  cleaning succeeds, as targeted pulses ablate the layer precisely and restore surface
+  integrity.
 breadcrumb:
 - label: Home
   href: /
@@ -431,23 +441,6 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: low
-    fumes_generated:
-    - compound: Silicon Dioxide (amorphous)
-      concentration_mg_m3: 5-50
-      exposure_limit_mg_m3: 10
-      hazard_class: irritant
-    - compound: Formaldehyde
-      concentration_mg_m3: 2-15
-      exposure_limit_mg_m3: 0.3
-      hazard_class: carcinogenic
-    - compound: Acetaldehyde
-      concentration_mg_m3: 1-10
-      exposure_limit_mg_m3: 25
-      hazard_class: irritant
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 10-100
-      exposure_limit_mg_m3: 29
-      hazard_class: toxic
     particulate_generation:
       respirable_fraction: 0.7
       size_range_um:

@@ -151,6 +151,8 @@ domain_linkages:
       ventilation_required: false
       ppe_level: none
       filtration_type: null
+    concentration_range: 5-25 mg/m³
+    hazard_class: carcinogenic
 author:
   id: 1
   name: Yi-Chun Lin
@@ -171,7 +173,8 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -188,7 +191,13 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Bitumen and Tar Coatings Contamination
-contamination_description: Bitumen-tar contamination arises from heavy petroleum-based coatings applied in roofing and paving, so it forms thick, sticky layers during waterproofing processes. This contaminant shows unique dark, viscous properties that distinguish it from lighter paints because adhesion strengthens on porous surfaces like concrete and granite. Removal challenges include strong bonding that resists mechanical scraping, yet laser cleaning succeeds by vaporizing the layer selectively so underlying materials such as steel and marble remain undamaged.
+contamination_description: Bitumen-tar contamination arises from heavy petroleum-based
+  coatings applied in roofing and paving, so it forms thick, sticky layers during
+  waterproofing processes. This contaminant shows unique dark, viscous properties
+  that distinguish it from lighter paints because adhesion strengthens on porous surfaces
+  like concrete and granite. Removal challenges include strong bonding that resists
+  mechanical scraping, yet laser cleaning succeeds by vaporizing the layer selectively
+  so underlying materials such as steel and marble remain undamaged.
 breadcrumb:
 - label: Home
   href: /
@@ -282,27 +291,6 @@ laser_properties:
       roughness_increase: minimal
   safety_data:
     fire_explosion_risk: low
-    fumes_generated:
-    - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
-      concentration_mg_m3: 5-25
-      exposure_limit_mg_m3: 0.2
-      hazard_class: carcinogenic
-    - compound: Benzene-soluble fraction
-      concentration_mg_m3: 10-50
-      exposure_limit_mg_m3: 0.2
-      hazard_class: carcinogenic
-    - compound: Hydrogen Sulfide
-      concentration_mg_m3: 2-10
-      exposure_limit_mg_m3: 10
-      hazard_class: toxic
-    - compound: Carbon Monoxide
-      concentration_mg_m3: 15-75
-      exposure_limit_mg_m3: 29
-      hazard_class: toxic
-    - compound: Volatile Organic Compounds
-      concentration_mg_m3: 20-100
-      exposure_limit_mg_m3: 100
-      hazard_class: irritant
     particulate_generation:
       respirable_fraction: 0.7
       size_range_um:
@@ -313,7 +301,8 @@ laser_properties:
       respiratory: PAPR
       skin_protection: full_suit
     substrate_compatibility_warnings:
-    - Thermal decomposition may generate hazardous byproducts not present in original material
+    - Thermal decomposition may generate hazardous byproducts not present in original
+      material
     - Laser parameters must be optimized to minimize excessive heating and fume generation
     - Residual contamination may require secondary cleaning methods
     toxic_gas_risk: moderate
