@@ -17,6 +17,17 @@ domain_linkages:
     severity: moderate
     typical_context: Pyrolysis of silicone polymers
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 55
+      niosh_rel_mg_m3: 40
+      acgih_tlv_mg_m3: 29
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: vocs-compound
     title: Volatile Organic Compounds
     url: /compounds/irritant/organic-vapor/vocs-compound
@@ -27,6 +38,17 @@ domain_linkages:
     severity: moderate
     typical_context: Thermal breakdown of silicone polymers
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: null
+      niosh_rel_mg_m3: null
+      acgih_tlv_mg_m3: 100
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: stainless-steel-laser-cleaning
     title: Stainless Steel
@@ -275,7 +297,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -291,7 +314,14 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Silicone Sealant Buildup Contamination
-contamination_description: Silicone-buildup forms from polysiloxane sealants, applied in construction and automotive coatings, where residues cure into thin, flexible films over time. This contamination distinguishes itself with hydrophobic nature and strong adhesion, unlike oily greases that smear easily, and it persists stubbornly on metals like steel and aluminum, altering wettability without deep penetration. Removal challenges stem from chemical inertness, thus solvents often fail, but laser cleaning succeeds, as targeted pulses ablate the layer precisely and restore surface integrity.
+contamination_description: Silicone-buildup forms from polysiloxane sealants, applied
+  in construction and automotive coatings, where residues cure into thin, flexible
+  films over time. This contamination distinguishes itself with hydrophobic nature
+  and strong adhesion, unlike oily greases that smear easily, and it persists stubbornly
+  on metals like steel and aluminum, altering wettability without deep penetration.
+  Removal challenges stem from chemical inertness, thus solvents often fail, but laser
+  cleaning succeeds, as targeted pulses ablate the layer precisely and restore surface
+  integrity.
 breadcrumb:
 - label: Home
   href: /
@@ -460,3 +490,8 @@ valid_materials:
 - Boron Carbide
 - Boron Nitride
 - Silicon Nitride
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true

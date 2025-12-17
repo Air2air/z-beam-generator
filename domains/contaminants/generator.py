@@ -74,7 +74,6 @@ class ContaminantFrontmatterGenerator(BaseFrontmatterGenerator):
             QuickFactsModule,
             IndustriesModule,
             AppearanceModule,
-            CrosslinkingModule,
             AuthorModule,
         )
         
@@ -93,9 +92,8 @@ class ContaminantFrontmatterGenerator(BaseFrontmatterGenerator):
         self.quick_facts_module = QuickFactsModule()
         self.industries_module = IndustriesModule()
         self.appearance_module = AppearanceModule()
-        self.crosslinking_module = CrosslinkingModule()
         
-        self.logger.info("ContaminantFrontmatterGenerator initialized with 13 modules")
+        self.logger.info("ContaminantFrontmatterGenerator initialized with 12 modules")
     
     def _load_type_data(self):
         """
@@ -277,13 +275,7 @@ class ContaminantFrontmatterGenerator(BaseFrontmatterGenerator):
             if appearance:
                 frontmatter['appearance_by_category'] = appearance
             
-            # 13. Crosslinking (affected_materials, related_content)
-            pattern_id = identifier_key  # Use slug as pattern_id
-            crosslinking = self.crosslinking_module.generate(contaminant_data, pattern_id)
-            if crosslinking:
-                frontmatter.update(crosslinking)
-            
-            # 14. Context notes (if present)
+            # 13. Context notes (if present)
             if 'context_notes' in contaminant_data:
                 frontmatter['context_notes'] = contaminant_data['context_notes']
             

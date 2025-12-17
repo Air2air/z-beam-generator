@@ -6,8 +6,10 @@ subcategory: paint
 datePublished: '2025-12-16T21:47:35.059188'
 dateModified: '2025-12-16T21:47:35.059188'
 micro:
-  after: Post-cleaning reveals restored surface with paint residue / coating failure successfully removed through precise laser ablation.
-  before: Surface shows contamination from paint residue / coating failure affecting material appearance and properties.
+  after: Post-cleaning reveals restored surface with paint residue / coating failure
+    successfully removed through precise laser ablation.
+  before: Surface shows contamination from paint residue / coating failure affecting
+    material appearance and properties.
 domain_linkages:
   produces_compounds:
   - id: carbon-monoxide-compound
@@ -20,6 +22,17 @@ domain_linkages:
     severity: high
     typical_context: Thermal decomposition of organic paint binders
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 55
+      niosh_rel_mg_m3: 40
+      acgih_tlv_mg_m3: 29
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: acetaldehyde-compound
     title: Acetaldehyde
     url: /compounds/irritant/aldehyde/acetaldehyde-compound
@@ -30,6 +43,17 @@ domain_linkages:
     severity: low
     typical_context: Breakdown of certain paint formulations
     exposure_risk: low
+    exposure_limits:
+      osha_pel_mg_m3: 360
+      niosh_rel_mg_m3: null
+      acgih_tlv_mg_m3: 45
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: nitrogen-oxides-compound
     title: Nitrogen Oxides
     url: /compounds/toxic-gas/oxidizing-gas/nitrogen-oxides-compound
@@ -40,6 +64,17 @@ domain_linkages:
     severity: low
     typical_context: Nitrogen from some paint formulations
     exposure_risk: low
+    exposure_limits:
+      osha_pel_mg_m3: 9
+      niosh_rel_mg_m3: 1.8
+      acgih_tlv_mg_m3: 5.6
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: toluene-compound
     title: Toluene
     url: /compounds/solvent/aromatic-hydrocarbon/toluene-compound
@@ -50,6 +85,17 @@ domain_linkages:
     severity: moderate
     typical_context: Vaporization of toluene-based paint solvents
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 754
+      niosh_rel_mg_m3: 375
+      acgih_tlv_mg_m3: 75
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: zinc-oxide-compound
     title: Zinc Oxide
     url: /compounds/metal-fume/metal-oxide/zinc-oxide-compound
@@ -60,6 +106,17 @@ domain_linkages:
     severity: low
     typical_context: Zinc oxide pigments in paint
     exposure_risk: low
+    exposure_limits:
+      osha_pel_mg_m3: 5
+      niosh_rel_mg_m3: 5
+      acgih_tlv_mg_m3: 2
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: chromium-vi-compound
     title: Hexavalent Chromium
     url: /compounds/carcinogen/heavy-metal/chromium-vi-compound
@@ -70,6 +127,17 @@ domain_linkages:
     severity: high
     typical_context: Chromate pigments in some paints
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 0.005
+      niosh_rel_mg_m3: 0.001
+      acgih_tlv_mg_m3: 0.0002
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: formaldehyde-compound
     title: Formaldehyde
     url: /compounds/carcinogen/aldehyde/formaldehyde-compound
@@ -80,6 +148,17 @@ domain_linkages:
     severity: moderate
     typical_context: Breakdown of melamine or urea-formaldehyde resins
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 0.92
+      niosh_rel_mg_m3: 0.02
+      acgih_tlv_mg_m3: 0.3
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: pahs-compound
     title: Polycyclic Aromatic Hydrocarbons
     url: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
@@ -90,6 +169,17 @@ domain_linkages:
     severity: moderate
     typical_context: Incomplete combustion of organic binders
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 0.2
+      niosh_rel_mg_m3: 0.1
+      acgih_tlv_mg_m3: 0.2
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: carbon-dioxide-compound
     title: Carbon Dioxide
     url: /compounds/asphyxiant/simple-asphyxiant/carbon-dioxide-compound
@@ -100,6 +190,17 @@ domain_linkages:
     severity: low
     typical_context: Complete combustion of organic paint
     exposure_risk: low
+    exposure_limits:
+      osha_pel_mg_m3: 9000
+      niosh_rel_mg_m3: 9000
+      acgih_tlv_mg_m3: 9000
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: vocs-compound
     title: Volatile Organic Compounds
     url: /compounds/irritant/organic-vapor/vocs-compound
@@ -110,6 +211,17 @@ domain_linkages:
     severity: moderate
     typical_context: Vaporization of paint solvents and binders
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: null
+      niosh_rel_mg_m3: null
+      acgih_tlv_mg_m3: 100
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: benzene-compound
     title: Benzene
     url: /compounds/carcinogen/aromatic-hydrocarbon/benzene-compound
@@ -120,6 +232,17 @@ domain_linkages:
     severity: high
     typical_context: Thermal breakdown of aromatic paint solvents
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 3.2
+      niosh_rel_mg_m3: 0.32
+      acgih_tlv_mg_m3: 1.6
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: mahogany-laser-cleaning
     title: Mahogany
@@ -404,7 +527,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -420,7 +544,17 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Paint Residue / Coating Failure Contamination
-contamination_description: Paint-residue contamination, it arises from flaking, peeling, or degraded paint and coating materials. This pattern forms when environmental exposure causes binders in paint to break down, thus layers detach and scatter as residue. Unique characteristics distinguish it, such as irregular flakes with color remnants and adhesive stickiness, unlike dust or rust that lacks organic binders. On metals, residue adheres tightly and traps moisture, while on stone or wood, it embeds into pores and promotes further degradation. Removal challenges persist, because residue resists solvents due to its polymeric nature, and mechanical scraping risks surface damage. Laser cleaning proves effective here, as precise energy pulses ablate residue layers without affecting substrates, thus surface already regains uniformity following treatment.
+contamination_description: Paint-residue contamination, it arises from flaking, peeling,
+  or degraded paint and coating materials. This pattern forms when environmental exposure
+  causes binders in paint to break down, thus layers detach and scatter as residue.
+  Unique characteristics distinguish it, such as irregular flakes with color remnants
+  and adhesive stickiness, unlike dust or rust that lacks organic binders. On metals,
+  residue adheres tightly and traps moisture, while on stone or wood, it embeds into
+  pores and promotes further degradation. Removal challenges persist, because residue
+  resists solvents due to its polymeric nature, and mechanical scraping risks surface
+  damage. Laser cleaning proves effective here, as precise energy pulses ablate residue
+  layers without affecting substrates, thus surface already regains uniformity following
+  treatment.
 breadcrumb:
 - label: Home
   href: /
@@ -607,3 +741,8 @@ valid_materials:
 - PVC
 - Nylon
 - PTFE
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true

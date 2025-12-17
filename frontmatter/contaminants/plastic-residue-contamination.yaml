@@ -17,6 +17,17 @@ domain_linkages:
     severity: high
     typical_context: Incomplete combustion of plastic polymers
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 55
+      niosh_rel_mg_m3: 40
+      acgih_tlv_mg_m3: 29
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: acetaldehyde-compound
     title: Acetaldehyde
     url: /compounds/irritant/aldehyde/acetaldehyde-compound
@@ -27,6 +38,17 @@ domain_linkages:
     severity: moderate
     typical_context: Thermal degradation of polyethylene and polypropylene
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 360
+      niosh_rel_mg_m3: null
+      acgih_tlv_mg_m3: 45
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: hydrogen-chloride-compound
     title: Hydrogen Chloride
     url: /compounds/corrosive-gas/acid-gas/hydrogen-chloride-compound
@@ -37,6 +59,17 @@ domain_linkages:
     severity: high
     typical_context: Thermal decomposition of PVC (polyvinyl chloride)
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 7
+      niosh_rel_mg_m3: 7
+      acgih_tlv_mg_m3: 2
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: pahs-compound
     title: Polycyclic Aromatic Hydrocarbons
     url: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
@@ -47,6 +80,17 @@ domain_linkages:
     severity: moderate
     typical_context: Thermal degradation of aromatic polymers
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 0.2
+      niosh_rel_mg_m3: 0.1
+      acgih_tlv_mg_m3: 0.2
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: hydrogen-cyanide-compound
     title: Hydrogen Cyanide
     url: /compounds/toxic-gas/cyanide/hydrogen-cyanide-compound
@@ -55,8 +99,20 @@ domain_linkages:
     subcategory: cyanide
     frequency: occasional
     severity: high
-    typical_context: Thermal decomposition of nitrogen-containing polymers (polyurethane, nylon, acrylics)
+    typical_context: Thermal decomposition of nitrogen-containing polymers (polyurethane,
+      nylon, acrylics)
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 11
+      niosh_rel_mg_m3: 5
+      acgih_tlv_mg_m3: 4.7
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: carbon-dioxide-compound
     title: Carbon Dioxide
     url: /compounds/asphyxiant/simple-asphyxiant/carbon-dioxide-compound
@@ -67,6 +123,17 @@ domain_linkages:
     severity: low
     typical_context: Complete combustion of polymers
     exposure_risk: low
+    exposure_limits:
+      osha_pel_mg_m3: 9000
+      niosh_rel_mg_m3: 9000
+      acgih_tlv_mg_m3: 9000
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: styrene-compound
     title: Styrene
     url: /compounds/irritant/aromatic-hydrocarbon/styrene-compound
@@ -77,6 +144,17 @@ domain_linkages:
     severity: high
     typical_context: Thermal depolymerization of polystyrene
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 425
+      niosh_rel_mg_m3: 215
+      acgih_tlv_mg_m3: 85
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: phosgene-compound
     title: Phosgene
     url: /compounds/toxic-gas/reactive-gas/phosgene-compound
@@ -87,6 +165,17 @@ domain_linkages:
     severity: high
     typical_context: Thermal breakdown of certain chlorinated plastics
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 0.4
+      niosh_rel_mg_m3: 0.4
+      acgih_tlv_mg_m3: 0.4
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: vocs-compound
     title: Volatile Organic Compounds
     url: /compounds/irritant/organic-vapor/vocs-compound
@@ -97,6 +186,17 @@ domain_linkages:
     severity: moderate
     typical_context: Thermal decomposition products
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: null
+      niosh_rel_mg_m3: null
+      acgih_tlv_mg_m3: 100
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: benzene-compound
     title: Benzene
     url: /compounds/carcinogen/aromatic-hydrocarbon/benzene-compound
@@ -107,6 +207,17 @@ domain_linkages:
     severity: high
     typical_context: Thermal decomposition of polystyrene and aromatic polymers
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 3.2
+      niosh_rel_mg_m3: 0.32
+      acgih_tlv_mg_m3: 1.6
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: acrolein-compound
     title: Acrolein
     url: /compounds/toxic-gas/aldehyde/acrolein-compound
@@ -117,6 +228,17 @@ domain_linkages:
     severity: moderate
     typical_context: Pyrolysis of certain polymers
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 0.25
+      niosh_rel_mg_m3: 0.25
+      acgih_tlv_mg_m3: 0.23
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: stainless-steel-laser-cleaning
     title: Stainless Steel
@@ -311,7 +433,8 @@ author:
   - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
   email: info@z-beam.com
   image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+    Materials Dept., in research lab
   url: https://z-beam.com/authors/alessandro-moretti-phd
   sameAs:
   - https://scholar.google.com/citations?user=def456
@@ -327,7 +450,15 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Degraded Polymer Deposits Contamination
-contamination_description: Plastic-residue contamination, it manifests as melted, degraded, or oxidized layers from heat exposure or UV degradation, which distinguishes itself from inorganic rusts by its viscoelastic, non-brittle nature that clings irregularly. On metals such as steel and aluminum, the residue adheres tenaciously, influenced from surface porosity, while on glass it spreads thinly yet persistently, leading to challenges in removal due to its thermal sensitivity and potential for re-melting during cleaning. Laser cleaning proves effective, as the process vaporizes the residue selectively, that demonstrates preservation of the substrate integrity without mechanical abrasion.
+contamination_description: Plastic-residue contamination, it manifests as melted,
+  degraded, or oxidized layers from heat exposure or UV degradation, which distinguishes
+  itself from inorganic rusts by its viscoelastic, non-brittle nature that clings
+  irregularly. On metals such as steel and aluminum, the residue adheres tenaciously,
+  influenced from surface porosity, while on glass it spreads thinly yet persistently,
+  leading to challenges in removal due to its thermal sensitivity and potential for
+  re-melting during cleaning. Laser cleaning proves effective, as the process vaporizes
+  the residue selectively, that demonstrates preservation of the substrate integrity
+  without mechanical abrasion.
 breadcrumb:
 - label: Home
   href: /
@@ -497,3 +628,8 @@ valid_materials:
 - Fused Silica
 - Gorilla Glass
 - Tempered Glass
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true

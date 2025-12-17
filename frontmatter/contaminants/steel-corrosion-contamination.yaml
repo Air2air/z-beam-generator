@@ -17,6 +17,17 @@ domain_linkages:
     severity: high
     typical_context: Oxidation of chromium in stainless steel
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 0.005
+      niosh_rel_mg_m3: 0.001
+      acgih_tlv_mg_m3: 0.0002
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: steel-laser-cleaning
     title: Steel
@@ -49,7 +60,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -65,7 +77,12 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Steel Surface Corrosion Contamination
-contamination_description: Steel corrosion contamination, it arises from oxidation on carbon steel surfaces exposed to moisture and air. This rust layer, it adheres tightly and penetrates substrate unlike loose dust or paint, thus poses removal challenges by risking base material damage during mechanical methods. Laser cleaning targets it effectively, as ablation vaporizes oxide precisely and leaves surface intact.
+contamination_description: Steel corrosion contamination, it arises from oxidation
+  on carbon steel surfaces exposed to moisture and air. This rust layer, it adheres
+  tightly and penetrates substrate unlike loose dust or paint, thus poses removal
+  challenges by risking base material damage during mechanical methods. Laser cleaning
+  targets it effectively, as ablation vaporizes oxide precisely and leaves surface
+  intact.
 breadcrumb:
 - label: Home
   href: /
@@ -204,3 +221,8 @@ laser_properties:
 valid_materials:
 - Steel
 - Carbon Steel
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true

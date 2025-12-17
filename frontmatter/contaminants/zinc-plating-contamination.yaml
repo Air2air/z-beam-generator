@@ -17,6 +17,17 @@ domain_linkages:
     severity: high
     typical_context: Direct vaporization of zinc electroplating
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 5
+      niosh_rel_mg_m3: 5
+      acgih_tlv_mg_m3: 2
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: steel-laser-cleaning
     title: Steel
@@ -56,7 +67,8 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -73,7 +85,13 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Zinc Electroplating Contamination
-contamination_description: Zinc-plating contamination appears as thin protective layer on steel and iron surfaces, so it forms during corrosion-resistant coating processes to prevent rust. This layer shows unique even distribution and metallic sheen that differs from rust or scale buildup, and it adheres tightly on steel while flaking more easily on iron during exposure. Removal challenges include risk of base material damage because of strong bonding, but laser cleaning works effectively so it ablates the layer precisely without harming underlying steel or iron.
+contamination_description: Zinc-plating contamination appears as thin protective layer
+  on steel and iron surfaces, so it forms during corrosion-resistant coating processes
+  to prevent rust. This layer shows unique even distribution and metallic sheen that
+  differs from rust or scale buildup, and it adheres tightly on steel while flaking
+  more easily on iron during exposure. Removal challenges include risk of base material
+  damage because of strong bonding, but laser cleaning works effectively so it ablates
+  the layer precisely without harming underlying steel or iron.
 breadcrumb:
 - label: Home
   href: /
@@ -204,3 +222,8 @@ laser_properties:
 valid_materials:
 - Steel
 - Iron
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true

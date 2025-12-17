@@ -3,45 +3,14 @@ name: Carbon Deposit Buildup
 slug: carbon-buildup-contamination
 category: organic-residue
 subcategory: other
-datePublished: '2025-12-16T21:47:34.453668'
-dateModified: '2025-12-16T21:47:34.453668'
+datePublished: '2025-12-17T00:37:01.283579'
+dateModified: '2025-12-17T00:37:01.283579'
 domain_linkages:
-  produces_compounds:
-  - id: carbon-monoxide-compound
-    title: Carbon Monoxide
-    url: /compounds/toxic-gas/asphyxiant/carbon-monoxide-compound
-    image: /images/compounds/carbon-monoxide.jpg
-    category: toxic-gas
-    subcategory: asphyxiant
-    frequency: very_common
-    severity: high
-    typical_context: Incomplete combustion of carbon materials
-    exposure_risk: high
-  - id: benzoapyrene-compound
-    title: Benzo[a]pyrene
-    url: /compounds/carcinogen/polycyclic-aromatic-hydrocarbon/benzoapyrene-compound
-    image: /images/compounds/benzoapyrene.jpg
-    category: carcinogen
-    subcategory: polycyclic-aromatic-hydrocarbon
-    frequency: common
-    severity: high
-    typical_context: Pre-existing from incomplete combustion
-    exposure_risk: high
-  - id: pahs-compound
-    title: Polycyclic Aromatic Hydrocarbons
-    url: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
-    image: /images/compounds/pahs.jpg
-    category: carcinogen
-    subcategory: aromatic-hydrocarbon
-    frequency: very_common
-    severity: high
-    typical_context: Vaporization and reformation of existing PAHs
-    exposure_risk: high
   related_materials:
   - id: stainless-steel-laser-cleaning
     title: Stainless Steel
     url: /materials/metal/ferrous/stainless-steel-laser-cleaning
-    image: /images/materials/stainless-steel.jpg
+    image: /images/material/stainless-steel-laser-cleaning-hero.jpg
     category: metal
     subcategory: ferrous
     frequency: common
@@ -50,7 +19,7 @@ domain_linkages:
   - id: steel-laser-cleaning
     title: Steel
     url: /materials/metal/ferrous/steel-laser-cleaning
-    image: /images/materials/steel.jpg
+    image: /images/material/steel-laser-cleaning-hero.jpg
     category: metal
     subcategory: ferrous
     frequency: common
@@ -59,7 +28,7 @@ domain_linkages:
   - id: boron-carbide-laser-cleaning
     title: Boron Carbide
     url: /materials/ceramic/carbide/boron-carbide-laser-cleaning
-    image: /images/materials/boron-carbide.jpg
+    image: /images/material/boron-carbide-laser-cleaning-hero.jpg
     category: ceramic
     subcategory: carbide
     frequency: common
@@ -68,7 +37,7 @@ domain_linkages:
   - id: boron-nitride-laser-cleaning
     title: Boron Nitride
     url: /materials/ceramic/technical/boron-nitride-laser-cleaning
-    image: /images/materials/boron-nitride.jpg
+    image: /images/material/boron-nitride-laser-cleaning-hero.jpg
     category: ceramic
     subcategory: technical
     frequency: common
@@ -77,7 +46,7 @@ domain_linkages:
   - id: silicon-nitride-laser-cleaning
     title: Silicon Nitride
     url: /materials/ceramic/oxide/silicon-nitride-laser-cleaning
-    image: /images/materials/silicon-nitride.jpg
+    image: /images/material/silicon-nitride-laser-cleaning-hero.jpg
     category: ceramic
     subcategory: oxide
     frequency: common
@@ -86,7 +55,7 @@ domain_linkages:
   - id: zirconia-laser-cleaning
     title: Zirconia
     url: /materials/ceramic/oxide/zirconia-laser-cleaning
-    image: /images/materials/zirconia.jpg
+    image: /images/material/zirconia-laser-cleaning-hero.jpg
     category: ceramic
     subcategory: oxide
     frequency: common
@@ -95,7 +64,7 @@ domain_linkages:
   - id: aluminum-nitride-laser-cleaning
     title: Aluminum Nitride
     url: /materials/ceramic/technical/aluminum-nitride-laser-cleaning
-    image: /images/materials/aluminum-nitride.jpg
+    image: /images/material/aluminum-nitride-laser-cleaning-hero.jpg
     category: ceramic
     subcategory: technical
     frequency: common
@@ -104,7 +73,79 @@ domain_linkages:
   - id: alumina-laser-cleaning
     title: Alumina
     url: /materials/ceramic/oxide/alumina-laser-cleaning
-    image: /images/materials/alumina.jpg
+    image: /images/material/alumina-laser-cleaning-hero.jpg
+    category: ceramic
+    subcategory: oxide
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: steel-laser-cleaning
+    title: Steel
+    url: /materials/metal/ferrous/steel-laser-cleaning
+    image: /images/material/steel-laser-cleaning-hero.jpg
+    category: metal
+    subcategory: ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: stainless-steel-laser-cleaning
+    title: Stainless Steel
+    url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+    image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+    category: metal
+    subcategory: ferrous
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: alumina-laser-cleaning
+    title: Alumina
+    url: /materials/ceramic/oxide/alumina-laser-cleaning
+    image: /images/material/alumina-laser-cleaning-hero.jpg
+    category: ceramic
+    subcategory: oxide
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: zirconia-laser-cleaning
+    title: Zirconia
+    url: /materials/ceramic/oxide/zirconia-laser-cleaning
+    image: /images/material/zirconia-laser-cleaning-hero.jpg
+    category: ceramic
+    subcategory: oxide
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: aluminum-nitride-laser-cleaning
+    title: Aluminum Nitride
+    url: /materials/ceramic/technical/aluminum-nitride-laser-cleaning
+    image: /images/material/aluminum-nitride-laser-cleaning-hero.jpg
+    category: ceramic
+    subcategory: technical
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: boron-carbide-laser-cleaning
+    title: Boron Carbide
+    url: /materials/ceramic/carbide/boron-carbide-laser-cleaning
+    image: /images/material/boron-carbide-laser-cleaning-hero.jpg
+    category: ceramic
+    subcategory: carbide
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: boron-nitride-laser-cleaning
+    title: Boron Nitride
+    url: /materials/ceramic/technical/boron-nitride-laser-cleaning
+    image: /images/material/boron-nitride-laser-cleaning-hero.jpg
+    category: ceramic
+    subcategory: technical
+    frequency: common
+    severity: moderate
+    typical_context: general
+  - id: silicon-nitride-laser-cleaning
+    title: Silicon Nitride
+    url: /materials/ceramic/oxide/silicon-nitride-laser-cleaning
+    image: /images/material/silicon-nitride-laser-cleaning-hero.jpg
     category: ceramic
     subcategory: oxide
     frequency: common

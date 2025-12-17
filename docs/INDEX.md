@@ -138,7 +138,6 @@
   - `README.md` - Component overview
   - `generator_base.md`
   - `text/README.md` - Text component documentation (deprecated, see TEXT_GENERATION_GUIDE.md)
-  - `text/CROSSLINKING.md` - **NEW (Dec 14, 2025)** - Automatic cross-linking system for all domains ✅
 
 - **Archived** (2025-12-11): Optimizer documentation moved to `archive/2025-12-pre-consolidation/optimizer/`
   - See `archive/README.md` for archived optimizer guides
@@ -149,7 +148,6 @@
 See `/components/` for:
 - Text generation (`text/`)
 - Frontmatter (`frontmatter/`)
-- Cross-linking (`shared/text/cross_linking/`) - Automatic markdown link insertion
 - Settings (`settings/`)
 - Other components
 
@@ -179,6 +177,7 @@ See `/components/` for:
 - `THERMAL_DATA_GAPS.md` - Thermal data completeness analysis
 - `SERVICE_OFFERING_FRONTMATTER_SPEC.md` - Service offering frontmatter structure
 - `SETTINGS_THERMAL_DATA_SPEC.md` - Settings thermal data specification
+- **NEW**: `DOMAIN_LINKAGES_SAFETY_DATA_IMPLEMENTATION.md` - ⭐ Implementation guide for safety data enhancement (Dec 17, 2025)
 - Plus 6 more data guides
 
 ### 06-ai-systems/

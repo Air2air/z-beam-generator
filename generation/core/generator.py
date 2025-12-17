@@ -79,10 +79,6 @@ class Generator:
         from shared.text.research import SystemDataResearcher
         self.researcher = SystemDataResearcher()
         
-        # Initialize cross-linking builder (NEW - Dec 11, 2025)
-        from shared.text.cross_linking import CrossLinkBuilder
-        self.link_builder = CrossLinkBuilder()
-        
         # Load config for base parameters
         from generation.config.config_loader import get_config
         config = get_config()
@@ -95,7 +91,7 @@ class Generator:
         # Load personas
         self.personas = self._load_all_personas()
         
-        self.logger.info(f"Generator initialized for '{domain}' domain (single-pass with research + cross-linking)")
+        self.logger.info(f"Generator initialized for '{domain}' domain (single-pass with research)")
     
     def _load_all_personas(self) -> Dict[int, Dict[str, Any]]:
         """Load all author voice profiles from shared/voice/profiles/"""
@@ -562,49 +558,6 @@ class Generator:
             content = self.adapter.extract_content(response.content, component_type)
         except Exception as e:
             raise ValueError(f"Content extraction failed: {e}")
-        
-        # Add sparse cross-links (DISABLED - Dec 14, 2025)
-        # Documentation: docs/03-components/text/CROSSLINKING.md
-        # Apply to all text fields: strings, dicts (micro), and lists (FAQ)
-        # Automatically links materials/contaminants mentioned in generated text
-        # DISABLED: Crosslinking temporarily disabled due to URL issues
-        if False:  # Disabled crosslinking
-            try:
-                self.logger.info("🔗 Adding cross-links...")
-                
-                if isinstance(content, str) and len(content) > 50:
-                    # String content (material_description, description, etc.)
-                    content = self.link_builder.add_links(
-                        content=content,
-                        current_item=identifier,
-                        domain=self.domain,
-                        valid_materials=item_data.get('valid_materials')  # Any domain can use filtering
-                    )
-                elif isinstance(content, dict):
-                    # Dict content (micro with before/after)
-                    for key, value in content.items():
-                        if isinstance(value, str) and len(value) > 50:
-                            content[key] = self.link_builder.add_links(
-                                content=value,
-                                current_item=identifier,
-                                domain=self.domain,
-                                valid_materials=item_data.get('valid_materials')  # Any domain can use filtering
-                            )
-                elif isinstance(content, list):
-                    # List content (FAQ with Q&A pairs)
-                    for item in content:
-                        if isinstance(item, dict) and 'answer' in item:
-                            if isinstance(item['answer'], str) and len(item['answer']) > 50:
-                                item['answer'] = self.link_builder.add_links(
-                                    content=item['answer'],
-                                    current_item=identifier,
-                                    domain=self.domain,
-                                    valid_materials=item_data.get('valid_materials')  # Any domain can use filtering
-                                )
-                
-                self.logger.info("✅ Cross-linking complete")
-            except Exception as e:
-                self.logger.warning(f"⚠️  Cross-linking failed: {e} (continuing without links)")
         
         # Calculate word count (handle both string and dict content)
         if isinstance(content, dict):

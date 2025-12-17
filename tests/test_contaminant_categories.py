@@ -13,26 +13,26 @@ from pathlib import Path
 # Expected categories and subcategories (from schema)
 ALLOWED_CATEGORIES = [
     'oxidation',
-    'organic_residue',
-    'inorganic_coating',
-    'metallic_coating',
-    'thermal_damage',
+    'organic-residue',
+    'inorganic-coating',
+    'metallic-coating',
+    'thermal-damage',
     'biological',
-    'chemical_residue',
+    'chemical-residue',
     'aging'
 ]
 
 ALLOWED_SUBCATEGORIES = {
     'oxidation': ['ferrous', 'non-ferrous', 'battery'],
-    'organic_residue': [
-        'petroleum', 'adhesive', 'polymer', 'biological_fluid',
-        'wax', 'marking', 'lubricant', 'cleaning_agent', 'natural', 'other'
+    'organic-residue': [
+        'petroleum', 'adhesive', 'polymer', 'biological-fluid',
+        'wax', 'marking', 'lubricant', 'cleaning-agent', 'natural', 'other'
     ],
-    'inorganic_coating': ['paint', 'ceramic', 'mineral', 'coating', 'hazardous'],
-    'metallic_coating': ['plating', 'anodizing'],
-    'thermal_damage': ['scale', 'fire', 'coating'],
+    'inorganic-coating': ['paint', 'ceramic', 'mineral', 'coating', 'hazardous'],
+    'metallic-coating': ['plating', 'anodizing'],
+    'thermal-damage': ['scale', 'fire', 'coating'],
     'biological': ['growth', 'deposit'],
-    'chemical_residue': ['hazardous', 'industrial'],
+    'chemical-residue': ['hazardous', 'industrial'],
     'aging': ['photodegradation', 'weathering']
 }
 
@@ -136,11 +136,11 @@ class TestCategoryDistribution:
         
         # Expected distribution (approximate, based on implementation)
         expected_ranges = {
-            'organic_residue': (25, 35),      # Largest category
-            'inorganic_coating': (15, 20),
-            'thermal_damage': (10, 15),
-            'chemical_residue': (10, 15),
-            'metallic_coating': (8, 12),
+            'organic-residue': (25, 35),      # Largest category
+            'inorganic-coating': (15, 20),
+            'thermal-damage': (10, 15),
+            'chemical-residue': (10, 15),
+            'metallic-coating': (8, 12),
             'oxidation': (7, 11),
             'biological': (5, 10),
             'aging': (1, 3)
@@ -175,47 +175,47 @@ class TestQuestionablePatterns:
     """Test the 3 patterns that were moved to correct categories."""
     
     def test_brass_plating_moved_to_metallic_coating(self, contaminants_data):
-        """brass-plating should be in metallic_coating/plating."""
+        """brass-plating-contamination should be in metallic-coating/plating."""
         patterns = contaminants_data['contamination_patterns']
-        assert 'brass-plating' in patterns
+        assert 'brass-plating-contamination' in patterns
         
-        pattern = patterns['brass-plating']
-        assert pattern['category'] == 'metallic_coating', (
-            f"brass-plating category is '{pattern['category']}', "
-            f"expected 'metallic_coating'"
+        pattern = patterns['brass-plating-contamination']
+        assert pattern['category'] == 'metallic-coating', (
+            f"brass-plating-contamination category is '{pattern['category']}', "
+            f"expected 'metallic-coating'"
         )
         assert pattern['subcategory'] == 'plating', (
-            f"brass-plating subcategory is '{pattern['subcategory']}', "
+            f"brass-plating-contamination subcategory is '{pattern['subcategory']}', "
             f"expected 'plating'"
         )
     
     def test_chrome_pitting_moved_to_oxidation(self, contaminants_data):
-        """chrome-pitting should be in oxidation/non-ferrous."""
+        """chrome-pitting-contamination should be in oxidation/non-ferrous."""
         patterns = contaminants_data['contamination_patterns']
-        assert 'chrome-pitting' in patterns
+        assert 'chrome-pitting-contamination' in patterns
         
-        pattern = patterns['chrome-pitting']
+        pattern = patterns['chrome-pitting-contamination']
         assert pattern['category'] == 'oxidation', (
-            f"chrome-pitting category is '{pattern['category']}', "
+            f"chrome-pitting-contamination category is '{pattern['category']}', "
             f"expected 'oxidation'"
         )
         assert pattern['subcategory'] == 'non-ferrous', (
-            f"chrome-pitting subcategory is '{pattern['subcategory']}', "
+            f"chrome-pitting-contamination subcategory is '{pattern['subcategory']}', "
             f"expected 'non-ferrous'"
         )
     
     def test_chemical_stains_moved_to_chemical_residue(self, contaminants_data):
-        """chemical-stains should be in chemical_residue/industrial."""
+        """chemical-stains-contamination should be in chemical-residue/industrial."""
         patterns = contaminants_data['contamination_patterns']
-        assert 'chemical-stains' in patterns
+        assert 'chemical-stains-contamination' in patterns
         
-        pattern = patterns['chemical-stains']
-        assert pattern['category'] == 'chemical_residue', (
-            f"chemical-stains category is '{pattern['category']}', "
-            f"expected 'chemical_residue'"
+        pattern = patterns['chemical-stains-contamination']
+        assert pattern['category'] == 'chemical-residue', (
+            f"chemical-stains-contamination category is '{pattern['category']}', "
+            f"expected 'chemical-residue'"
         )
         assert pattern['subcategory'] == 'industrial', (
-            f"chemical-stains subcategory is '{pattern['subcategory']}', "
+            f"chemical-stains-contamination subcategory is '{pattern['subcategory']}', "
             f"expected 'industrial'"
         )
 

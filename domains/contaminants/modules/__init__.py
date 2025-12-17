@@ -20,7 +20,6 @@ from .seo_module import SEOModule
 from .quick_facts_module import QuickFactsModule
 from .industries_module import IndustriesModule
 from .appearance_module import AppearanceModule
-from .crosslinking_module import CrosslinkingModule
 from .author_module import AuthorModule
 
 __all__ = [
@@ -37,6 +36,5 @@ __all__ = [
     'QuickFactsModule',
     'IndustriesModule',
     'AppearanceModule',
-    'CrosslinkingModule',
     'AuthorModule',
 ]

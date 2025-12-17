@@ -17,6 +17,17 @@ domain_linkages:
     severity: moderate
     typical_context: Release of toluene from spray paint
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 754
+      niosh_rel_mg_m3: 375
+      acgih_tlv_mg_m3: 75
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: vocs-compound
     title: Volatile Organic Compounds
     url: /compounds/irritant/organic-vapor/vocs-compound
@@ -27,6 +38,17 @@ domain_linkages:
     severity: moderate
     typical_context: Release of spray paint solvents
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: null
+      niosh_rel_mg_m3: null
+      acgih_tlv_mg_m3: 100
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: stainless-steel-laser-cleaning
     title: Stainless Steel
@@ -256,7 +278,8 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -272,7 +295,14 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Graffiti and Spray Paint Contamination
-contamination_description: Graffiti paint acts as a deliberate contaminant that spray artists apply to urban surfaces, where it quickly bonds through chemical adhesion and solvent penetration. Unlike everyday dirt or pollutants, it sets up deep into porous substrates while creating slick, resistant films on non-porous ones, turning removal into a significant challenge that often leaves behind stubborn stains. Laser cleaning tackles this effectively by vaporizing the paint layer precisely without damaging the base material, achieving a clean finish that traditional solvents struggle to match.
+contamination_description: Graffiti paint acts as a deliberate contaminant that spray
+  artists apply to urban surfaces, where it quickly bonds through chemical adhesion
+  and solvent penetration. Unlike everyday dirt or pollutants, it sets up deep into
+  porous substrates while creating slick, resistant films on non-porous ones, turning
+  removal into a significant challenge that often leaves behind stubborn stains. Laser
+  cleaning tackles this effectively by vaporizing the paint layer precisely without
+  damaging the base material, achieving a clean finish that traditional solvents struggle
+  to match.
 breadcrumb:
 - label: Home
   href: /
@@ -446,3 +476,8 @@ valid_materials:
 - Tin
 - Cobalt
 - Chromium
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true

@@ -17,6 +17,17 @@ domain_linkages:
     severity: moderate
     typical_context: Decomposition of aromatic additives
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 3.2
+      niosh_rel_mg_m3: 0.32
+      acgih_tlv_mg_m3: 1.6
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: acrolein-compound
     title: Acrolein
     url: /compounds/toxic-gas/aldehyde/acrolein-compound
@@ -27,6 +38,17 @@ domain_linkages:
     severity: high
     typical_context: Thermal breakdown of oil-based cutting fluids
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 0.25
+      niosh_rel_mg_m3: 0.25
+      acgih_tlv_mg_m3: 0.23
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: steel-laser-cleaning
     title: Steel
@@ -76,7 +98,8 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -92,7 +115,14 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Machining Coolant Residue Contamination
-contamination_description: Cutting fluids lubricate and cool metal machining operations, yet they accumulate as sticky, oily residues from evaporation and splatter during use. Turns out, this contamination stands apart from dust or rust through its rancid, bacteria-laden film that clings tenaciously, bonding firmly to steel for dull finishes, etching aluminum with light pitting, hazing brass surfaces, and trapping pockets in titanium cracks. Removal challenges include slow solvent absorption and scratching risks from scrubbing, but laser cleaning addresses this effectively by vaporizing layers without contact to achieve clean, tight tolerances overall.
+contamination_description: Cutting fluids lubricate and cool metal machining operations,
+  yet they accumulate as sticky, oily residues from evaporation and splatter during
+  use. Turns out, this contamination stands apart from dust or rust through its rancid,
+  bacteria-laden film that clings tenaciously, bonding firmly to steel for dull finishes,
+  etching aluminum with light pitting, hazing brass surfaces, and trapping pockets
+  in titanium cracks. Removal challenges include slow solvent absorption and scratching
+  risks from scrubbing, but laser cleaning addresses this effectively by vaporizing
+  layers without contact to achieve clean, tight tolerances overall.
 breadcrumb:
 - label: Home
   href: /
@@ -210,9 +240,11 @@ laser_properties:
       respiratory: PAPR
       skin_protection: gloves
     substrate_compatibility_warnings:
-    - Thermal decomposition may create hazardous byproducts not present in original coolant
+    - Thermal decomposition may create hazardous byproducts not present in original
+      coolant
     - Residue thickness and composition significantly affect fume generation rate
-    - Chlorinated or sulfurized extreme pressure additives may produce additional toxic gases
+    - Chlorinated or sulfurized extreme pressure additives may produce additional
+      toxic gases
     toxic_gas_risk: moderate
     ventilation_requirements:
       exhaust_velocity_m_s: 0.5
@@ -236,3 +268,8 @@ valid_materials:
 - Aluminum
 - Brass
 - Titanium
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true

@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+"""
+Test Contaminant Generation with Different Authors
+
+Tests voice consistency by generating contaminant micros with all 4 authors.
+"""
+
+import sys
+from pathlib import Path
+
+# Add project root to path
+sys.path.insert(0, str(Path(__file__).parent))
+
+from generation.core.generator import Generator
+from shared.api.client_factory import APIClientFactory
+
+def test_contaminant_with_author(pattern_id: str, author_id: int):
+    """Generate contaminant micro with specific author"""
+    
+    print(f"\n{'='*80}")
+    print(f"🧪 GENERATING CONTAMINANT: {pattern_id}")
+    print(f"👤 AUTHOR: {author_id}")
+    print(f"{'='*80}\n")
+    
+    # Create API client
+    api_client = APIClientFactory.create_client('grok')
+    
+    # Create generator
+    generator = Generator(
+        api_client=api_client,
+        domain='contaminants'
+    )
+    
+    # Generate micro
+    result = generator.generate(
+        item_name=pattern_id,
+        component_type='micro',
+        author_id=author_id
+    )
+    
+    if result.success:
+        print(f"\n✅ GENERATION SUCCESSFUL")
+        print(f"\n📝 GENERATED CONTENT:")
+        print(f"{'─'*80}")
+        print(result.content)
+        print(f"{'─'*80}")
+        
+        print(f"\n📊 QUALITY METRICS:")
+        print(f"   • Winston Score: {result.metadata.get('winston_score', 'N/A')}")
+        print(f"   • Realism Score: {result.metadata.get('realism_score', 'N/A')}")
+        print(f"   • Length: {len(result.content)} chars, {len(result.content.split())} words")
+    else:
+        print(f"\n❌ GENERATION FAILED: {result.error}")
+    
+    return result
+
+
+def main():
+    """Test all 4 authors with different contaminant patterns"""
+    
+    # Test patterns (one per author)
+    test_cases = [
+        ("rust_oxidation", 1, "James Chen - Technical & Precise"),
+        ("paint_coating", 2, "Maria Rodriguez - Conversational & Practical"),
+        ("oil_grease", 3, "Yuki Tanaka - Balanced & Professional"),
+        ("biological_growth", 4, "Lars Müller - Direct & Efficient")
+    ]
+    
+    print("\n" + "="*80)
+    print("🎭 CONTAMINANT VOICE CONSISTENCY TEST")
+    print("Testing all 4 author personas with different contamination patterns")
+    print("="*80)
+    
+    results = []
+    
+    for pattern_id, author_id, author_description in test_cases:
+        result = test_contaminant_with_author(pattern_id, author_id)
+        results.append({
+            'pattern': pattern_id,
+            'author_id': author_id,
+            'author_desc': author_description,
+            'success': result.success,
+            'content': result.content if result.success else None,
+            'length': len(result.content) if result.success else 0
+        })
+        
+        # Brief pause between generations
+        import time
+        time.sleep(2)
+    
+    # Summary
+    print(f"\n\n{'='*80}")
+    print("📊 SUMMARY")
+    print(f"{'='*80}\n")
+    
+    successful = sum(1 for r in results if r['success'])
+    print(f"Total: {len(results)} generations")
+    print(f"Successful: {successful}/{len(results)}")
+    print(f"Failed: {len(results) - successful}/{len(results)}")
+    
+    if successful > 0:
+        print(f"\n📝 GENERATED SAMPLES:\n")
+        for r in results:
+            if r['success']:
+                print(f"👤 {r['author_desc']}")
+                print(f"   Pattern: {r['pattern']}")
+                print(f"   Length: {r['length']} chars")
+                print(f"   Content: {r['content'][:100]}...")
+                print()
+    
+    print(f"{'='*80}\n")
+
+
+if __name__ == '__main__':
+    main()

@@ -17,6 +17,17 @@ domain_linkages:
     severity: high
     typical_context: Pre-existing carbon compounds vaporizing
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 55
+      niosh_rel_mg_m3: 40
+      acgih_tlv_mg_m3: 29
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: benzoapyrene-compound
     title: Benzo[a]pyrene
     url: /compounds/carcinogen/polycyclic-aromatic-hydrocarbon/benzoapyrene-compound
@@ -27,6 +38,10 @@ domain_linkages:
     severity: high
     typical_context: Formed during fire events
     exposure_risk: high
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: pahs-compound
     title: Polycyclic Aromatic Hydrocarbons
     url: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
@@ -37,6 +52,17 @@ domain_linkages:
     severity: high
     typical_context: Pre-existing PAHs from fire events
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 0.2
+      niosh_rel_mg_m3: 0.1
+      acgih_tlv_mg_m3: 0.2
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: steel-laser-cleaning
     title: Steel
@@ -222,7 +248,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -238,7 +265,16 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Fire and Smoke Damage Contamination
-contamination_description: Fire-damage contamination consists of char, soot, and thermal degradation products, which form when intense heat from fires decomposes organic matter and deposits irregular residues on surfaces. This contamination, it exhibits unique carbonaceous layering and strong chemical bonding that distinguish it from simpler particulates like dust, thus adheres tenaciously to porous substrates such as concrete and sandstone, where it infiltrates cracks and resists mechanical scraping without risking material erosion. Key challenges arise from uneven thickness and heat sensitivity, yet laser cleaning proves effective, as selective ablation vaporizes the residues layer by layer while preserving durable bases like steel and granite intact.
+contamination_description: Fire-damage contamination consists of char, soot, and thermal
+  degradation products, which form when intense heat from fires decomposes organic
+  matter and deposits irregular residues on surfaces. This contamination, it exhibits
+  unique carbonaceous layering and strong chemical bonding that distinguish it from
+  simpler particulates like dust, thus adheres tenaciously to porous substrates such
+  as concrete and sandstone, where it infiltrates cracks and resists mechanical scraping
+  without risking material erosion. Key challenges arise from uneven thickness and
+  heat sensitivity, yet laser cleaning proves effective, as selective ablation vaporizes
+  the residues layer by layer while preserving durable bases like steel and granite
+  intact.
 breadcrumb:
 - label: Home
   href: /
@@ -405,3 +441,8 @@ valid_materials:
 - Boron Carbide
 - Boron Nitride
 - Silicon Nitride
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true

@@ -86,17 +86,17 @@ data:
   safety_library: "data/safety/Fume_Compounds.yaml"
   citations: "data/standards/Citations.yaml"
   
-# Crosslinking with other domains
-crosslinks:
-  materials:
-    enabled: true
-    fields: ["sources_in_laser_cleaning"]
-    bidirectional: true
-    
-  contaminants:
-    enabled: true
-    fields: ["sources_in_laser_cleaning"]
-    bidirectional: true
+# Crosslinking with other domains (DISABLED - feature removed)
+# crosslinks:
+#   materials:
+#     enabled: true
+#     fields: ["sources_in_laser_cleaning"]
+#     bidirectional: true
+#     
+#   contaminants:
+#     enabled: true
+#     fields: ["sources_in_laser_cleaning"]
+#     bidirectional: true
 
 # Export configuration
 export:
@@ -104,7 +104,7 @@ export:
   filename_pattern: "{slug}-compound.yaml"
   include_breadcrumbs: true
   hydrate_authors: true
-  hydrate_crosslinks: true
+  hydrate_crosslinks: false  # Disabled - feature removed
   
   # Required frontmatter fields
   required_fields:

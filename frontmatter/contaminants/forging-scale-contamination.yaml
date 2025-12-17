@@ -17,6 +17,17 @@ domain_linkages:
     severity: high
     typical_context: Iron oxide scale from forging operations
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 10
+      niosh_rel_mg_m3: 5
+      acgih_tlv_mg_m3: 5
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: steel-laser-cleaning
     title: Steel
@@ -58,7 +69,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -74,7 +86,12 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Forging Mill Scale Contamination
-contamination_description: Forging-scale, it consists of black oxide layer that forms during hot forging and rolling operations on steel surfaces. This contamination, it shows dense adherence and dark coloration, thus distinguishes from rust by its thermal origin and resistance to mild abrasion. On carbon steel, scale persists strongly and challenges mechanical removal, but laser cleaning effectively ablates it through precise energy absorption, so surface restores without damage.
+contamination_description: Forging-scale, it consists of black oxide layer that forms
+  during hot forging and rolling operations on steel surfaces. This contamination,
+  it shows dense adherence and dark coloration, thus distinguishes from rust by its
+  thermal origin and resistance to mild abrasion. On carbon steel, scale persists
+  strongly and challenges mechanical removal, but laser cleaning effectively ablates
+  it through precise energy absorption, so surface restores without damage.
 breadcrumb:
 - label: Home
   href: /
@@ -210,3 +227,8 @@ valid_materials:
 - Steel
 - Iron
 - Carbon Steel
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true

@@ -17,6 +17,17 @@ domain_linkages:
     severity: moderate
     typical_context: Combustion of organic carriers
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 55
+      niosh_rel_mg_m3: 40
+      acgih_tlv_mg_m3: 29
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: aluminum-laser-cleaning
     title: Aluminum
@@ -56,7 +67,8 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -73,7 +85,13 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Thermal Compound Deposits Contamination
-contamination_description: Thermal paste contamination arises from silicone or metal-based materials used in CPU cooling systems and it forms when paste spreads beyond interfaces during assembly or operation. This contaminant shows unique greasy texture and strong adhesion so it differs from dry dust or oxide layers by resisting simple wiping. On copper and aluminum surfaces, it hardens over time and removal challenges include residue buildup because paste bonds tightly. Laser cleaning works effectively since pulses vaporize paste without harming underlying nickel-plated areas.
+contamination_description: Thermal paste contamination arises from silicone or metal-based
+  materials used in CPU cooling systems and it forms when paste spreads beyond interfaces
+  during assembly or operation. This contaminant shows unique greasy texture and strong
+  adhesion so it differs from dry dust or oxide layers by resisting simple wiping.
+  On copper and aluminum surfaces, it hardens over time and removal challenges include
+  residue buildup because paste bonds tightly. Laser cleaning works effectively since
+  pulses vaporize paste without harming underlying nickel-plated areas.
 breadcrumb:
 - label: Home
   href: /
@@ -219,3 +237,8 @@ valid_materials:
 - Copper
 - Aluminum
 - Nickel-Plated Surfaces
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true

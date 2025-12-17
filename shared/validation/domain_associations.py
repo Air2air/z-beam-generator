@@ -110,10 +110,8 @@ class DomainAssociationsValidator:
                 self._valid_material_ids = set()
             else:
                 materials = self.materials_data.get('materials', {})
-                # IDs are slug + '-laser-cleaning'
-                self._valid_material_ids = {
-                    f"{slug}-laser-cleaning" for slug in materials.keys()
-                }
+                # IDs already include -laser-cleaning suffix
+                self._valid_material_ids = set(materials.keys())
         return self._valid_material_ids
     
     def _get_valid_contaminant_ids(self) -> Set[str]:
@@ -123,10 +121,8 @@ class DomainAssociationsValidator:
                 self._valid_contaminant_ids = set()
             else:
                 contaminants = self.contaminants_data.get('contamination_patterns', {})
-                # IDs are slug + '-contamination'
-                self._valid_contaminant_ids = {
-                    f"{slug}-contamination" for slug in contaminants.keys()
-                }
+                # IDs already include -contamination suffix
+                self._valid_contaminant_ids = set(contaminants.keys())
         return self._valid_contaminant_ids
     
     def _get_valid_compound_ids(self) -> Set[str]:
@@ -136,10 +132,8 @@ class DomainAssociationsValidator:
                 self._valid_compound_ids = set()
             else:
                 compounds = self.compounds_data.get('compounds', {})
-                # IDs are slug + '-compound'
-                self._valid_compound_ids = {
-                    f"{slug}-compound" for slug in compounds.keys()
-                }
+                # IDs already include -compound suffix
+                self._valid_compound_ids = set(compounds.keys())
         return self._valid_compound_ids
     
     def _get_valid_settings_ids(self) -> Set[str]:
@@ -149,10 +143,8 @@ class DomainAssociationsValidator:
                 self._valid_settings_ids = set()
             else:
                 settings = self.settings_data.get('settings', {})
-                # IDs are slug + '-settings'
-                self._valid_settings_ids = {
-                    f"{slug}-settings" for slug in settings.keys()
-                }
+                # IDs already include -settings suffix
+                self._valid_settings_ids = set(settings.keys())
         return self._valid_settings_ids
     
     def validate_association(self, assoc: Dict, assoc_type: str) -> List[str]:
@@ -290,7 +282,7 @@ class DomainAssociationsValidator:
                     'id': contaminant_id,
                     'title': contaminant_data.get('name', slug.replace('-', ' ').title()),
                     'url': f"/contaminants/{category}/{subcategory}/{url_slug}",
-                    'image': f"/images/contaminants/{slug}.jpg",
+                    'image': f"/images/contaminant/{slug}-contamination-hero.jpg",
                     'category': category,
                     'subcategory': subcategory,
                     'frequency': assoc['frequency'],
@@ -313,8 +305,8 @@ class DomainAssociationsValidator:
         if not self.data:
             self.load()
         
-        # Strip suffix for lookup (associations use shortened IDs)
-        lookup_id = contaminant_id.replace('-contamination', '')
+        # Ensure contaminant ID has suffix (associations use full IDs with suffix)
+        lookup_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
         
         associations = self.data.get('material_contaminant_associations', []) or []
         results = []
@@ -337,7 +329,7 @@ class DomainAssociationsValidator:
                     'id': material_id,
                     'title': material_data.get('name', slug.replace('-', ' ').title()),
                     'url': f"/materials/{category}/{subcategory}/{url_slug}",
-                    'image': f"/images/materials/{slug}.jpg",
+                    'image': f"/images/material/{slug}-laser-cleaning-hero.jpg",
                     'category': category,
                     'subcategory': subcategory,
                     'frequency': assoc['frequency'],
@@ -383,7 +375,7 @@ class DomainAssociationsValidator:
                     'id': compound_id,
                     'title': compound_data.get('name', slug.replace('-', ' ').title()),
                     'url': f"/compounds/{category}/{subcategory}/{url_slug}",
-                    'image': f"/images/compounds/{slug}.jpg",
+                    'image': f"/images/compound/{slug}-compound-hero.jpg",
                     'category': category,
                     'subcategory': subcategory,
                     'frequency': assoc['frequency'],
@@ -428,7 +420,7 @@ class DomainAssociationsValidator:
                     'id': contaminant_id,
                     'title': contaminant_data.get('name', slug.replace('-', ' ').title()),
                     'url': f"/contaminants/{category}/{subcategory}/{url_slug}",
-                    'image': f"/images/contaminants/{slug}.jpg",
+                    'image': f"/images/contaminant/{slug}-contamination-hero.jpg",
                     'frequency': assoc['frequency'],
                     'severity': assoc['severity'],
                     'typical_context': assoc.get('typical_context', '')

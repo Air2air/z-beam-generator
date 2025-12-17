@@ -17,6 +17,17 @@ domain_linkages:
     severity: high
     typical_context: Thermal decomposition of quenching oils
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 0.25
+      niosh_rel_mg_m3: 0.25
+      acgih_tlv_mg_m3: 0.23
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: steel-laser-cleaning
     title: Steel
@@ -56,7 +67,8 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -73,7 +85,13 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Quenching Oil Residue Contamination
-contamination_description: During quenching process, oil contaminates steel surfaces because heat treatment causes carbonization, so deposits form hard layers that differ from rust by their oily residue and adhesion strength. On tool steel, contamination spreads unevenly and resists solvents, while on steel it bonds tightly during cooling, creating removal challenges like surface damage from mechanical methods. Laser cleaning works effectively so pulses vaporize deposits without harming substrate, and process achieves clean results after short exposure.
+contamination_description: During quenching process, oil contaminates steel surfaces
+  because heat treatment causes carbonization, so deposits form hard layers that differ
+  from rust by their oily residue and adhesion strength. On tool steel, contamination
+  spreads unevenly and resists solvents, while on steel it bonds tightly during cooling,
+  creating removal challenges like surface damage from mechanical methods. Laser cleaning
+  works effectively so pulses vaporize deposits without harming substrate, and process
+  achieves clean results after short exposure.
 breadcrumb:
 - label: Home
   href: /
@@ -218,3 +236,8 @@ laser_properties:
 valid_materials:
 - Steel
 - Tool Steel
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true

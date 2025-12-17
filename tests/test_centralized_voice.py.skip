@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+"""Test centralized voice enforcement."""
+
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+
+from generation.core.generator import Generator
+from shared.api.client_factory import APIClientFactory
+
+def test_voice_centralization():
+    """Test that voice enforcement is now centralized in prompt builder."""
+    
+    # Use Generator which supports author_id
+    api_client = APIClientFactory.create_client('grok')
+    generator = Generator(api_client=api_client, domain='contaminants')
+    
+    print("=" * 80)
+    print("Testing Centralized Voice Enforcement")
+    print("=" * 80)
+    print()
+    print("Generating: industrial-oil (Author 2: Alessandro Moretti, Italy)")
+    print()
+    
+    # Generate with Italian author
+    result = generator.generate(
+        identifier="industrial-oil",
+        component_type="description",
+        author_id=2
+    )
+    
+    print("\n" + "=" * 80)
+    print("RESULT")
+    print("=" * 80)
+    print(f"\nContent ({result['word_count']} words):")
+    print(result['content'])
+    print(f"\nSaved: {result.get('saved', False)}")
+    print(f"Temperature: {result.get('temperature', 'N/A')}")
+    
+    # Check for Italian EFL patterns
+    content = result['content'].lower()
+    italian_markers = {
+        'cleft': ', it ' in content or ', that ' in content,
+        'preposition_ext': 'dependent from' in content or 'influenced from' in content,
+        'subjunctive': 'it seems that' in content or 'it appears' in content,
+    }
+    
+    print(f"\n📊 Italian EFL Markers Detected:")
+    for marker, found in italian_markers.items():
+        status = "✅" if found else "❌"
+        print(f"   {status} {marker}: {found}")
+    
+    markers_found = sum(italian_markers.values())
+    print(f"\n🎯 Voice Distinctiveness: {markers_found}/3 Italian patterns detected")
+    
+    if markers_found >= 1:
+        print("✅ Voice enforcement working - nationality-specific patterns present!")
+    else:
+        print("⚠️  Warning: No Italian patterns detected - may need stronger enforcement")
+
+if __name__ == "__main__":
+    test_voice_centralization()

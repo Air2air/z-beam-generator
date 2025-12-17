@@ -17,6 +17,17 @@ domain_linkages:
     severity: moderate
     typical_context: Zinc component of brass alloy
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 5
+      niosh_rel_mg_m3: 5
+      acgih_tlv_mg_m3: 2
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: steel-laser-cleaning
     title: Steel
@@ -49,7 +60,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -65,7 +77,15 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Brass Coating Removal Contamination
-contamination_description: Brass-plating contamination forms during alloy deposition for decorative layering on hardware. Impurities embed in the process, and create uneven films thus leading to flaky residues. This contamination, it distinguishes from uniform oxides through metallic sheen and strong adhesion that resists simple wiping. On zinc alloy, it spreads rapidly and bonds tightly so persists under exposure, while on steel, it flakes loosely after time passes. Removal challenges arise from persistent sticking, and mechanical scraping damages surfaces easily. Laser cleaning proves effective, as pulses vaporize layers precisely thus restore smoothness without harm.
+contamination_description: Brass-plating contamination forms during alloy deposition
+  for decorative layering on hardware. Impurities embed in the process, and create
+  uneven films thus leading to flaky residues. This contamination, it distinguishes
+  from uniform oxides through metallic sheen and strong adhesion that resists simple
+  wiping. On zinc alloy, it spreads rapidly and bonds tightly so persists under exposure,
+  while on steel, it flakes loosely after time passes. Removal challenges arise from
+  persistent sticking, and mechanical scraping damages surfaces easily. Laser cleaning
+  proves effective, as pulses vaporize layers precisely thus restore smoothness without
+  harm.
 breadcrumb:
 - label: Home
   href: /
@@ -200,3 +220,8 @@ laser_properties:
 valid_materials:
 - Steel
 - Zinc Alloy
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true

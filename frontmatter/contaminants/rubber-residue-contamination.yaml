@@ -17,6 +17,17 @@ domain_linkages:
     severity: high
     typical_context: Pyrolysis of rubber compounds
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 55
+      niosh_rel_mg_m3: 40
+      acgih_tlv_mg_m3: 29
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: toluene-compound
     title: Toluene
     url: /compounds/solvent/aromatic-hydrocarbon/toluene-compound
@@ -27,6 +38,17 @@ domain_linkages:
     severity: low
     typical_context: Thermal breakdown of aromatic rubber compounds
     exposure_risk: low
+    exposure_limits:
+      osha_pel_mg_m3: 754
+      niosh_rel_mg_m3: 375
+      acgih_tlv_mg_m3: 75
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: benzoapyrene-compound
     title: Benzo[a]pyrene
     url: /compounds/carcinogen/polycyclic-aromatic-hydrocarbon/benzoapyrene-compound
@@ -37,6 +59,10 @@ domain_linkages:
     severity: moderate
     typical_context: Formed during high-temperature pyrolysis
     exposure_risk: moderate
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: pahs-compound
     title: Polycyclic Aromatic Hydrocarbons
     url: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
@@ -47,6 +73,17 @@ domain_linkages:
     severity: high
     typical_context: Pyrolysis produces PAHs
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 0.2
+      niosh_rel_mg_m3: 0.1
+      acgih_tlv_mg_m3: 0.2
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: hydrogen-cyanide-compound
     title: Hydrogen Cyanide
     url: /compounds/toxic-gas/cyanide/hydrogen-cyanide-compound
@@ -57,6 +94,17 @@ domain_linkages:
     severity: high
     typical_context: Pyrolysis of nitrile rubber
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 11
+      niosh_rel_mg_m3: 5
+      acgih_tlv_mg_m3: 4.7
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: carbon-dioxide-compound
     title: Carbon Dioxide
     url: /compounds/asphyxiant/simple-asphyxiant/carbon-dioxide-compound
@@ -67,6 +115,17 @@ domain_linkages:
     severity: low
     typical_context: Complete combustion of rubber
     exposure_risk: low
+    exposure_limits:
+      osha_pel_mg_m3: 9000
+      niosh_rel_mg_m3: 9000
+      acgih_tlv_mg_m3: 9000
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: styrene-compound
     title: Styrene
     url: /compounds/irritant/aromatic-hydrocarbon/styrene-compound
@@ -77,6 +136,17 @@ domain_linkages:
     severity: moderate
     typical_context: Pyrolysis of styrene-butadiene rubber
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 425
+      niosh_rel_mg_m3: 215
+      acgih_tlv_mg_m3: 85
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: vocs-compound
     title: Volatile Organic Compounds
     url: /compounds/irritant/organic-vapor/vocs-compound
@@ -87,6 +157,17 @@ domain_linkages:
     severity: moderate
     typical_context: Pyrolysis products
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: null
+      niosh_rel_mg_m3: null
+      acgih_tlv_mg_m3: 100
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: benzene-compound
     title: Benzene
     url: /compounds/carcinogen/aromatic-hydrocarbon/benzene-compound
@@ -97,6 +178,17 @@ domain_linkages:
     severity: high
     typical_context: Pyrolysis of styrene-butadiene rubber
     exposure_risk: high
+    exposure_limits:
+      osha_pel_mg_m3: 3.2
+      niosh_rel_mg_m3: 0.32
+      acgih_tlv_mg_m3: 1.6
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   - id: sulfur-dioxide-compound
     title: Sulfur Dioxide
     url: /compounds/toxic-gas/acid-gas/sulfur-dioxide-compound
@@ -107,6 +199,17 @@ domain_linkages:
     severity: moderate
     typical_context: Vulcanized rubber contains sulfur compounds
     exposure_risk: moderate
+    exposure_limits:
+      osha_pel_mg_m3: 13
+      niosh_rel_mg_m3: 5
+      acgih_tlv_mg_m3: 0.65
+      idlh_mg_m3: null
+    exceeds_limits: false
+    monitoring_required: false
+    control_measures:
+      ventilation_required: false
+      ppe_level: none
+      filtration_type: null
   related_materials:
   - id: stainless-steel-laser-cleaning
     title: Stainless Steel
@@ -236,7 +339,8 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -253,7 +357,13 @@ _metadata:
     voice_applied: true
     content_type: contaminant
 title: Rubber Compound Residue Contamination
-contamination_description: Rubber-residue contamination arises from vulcanized rubber deposits of tire marks, seals, and gaskets, so it forms during friction and compression on surfaces. This residue shows unique elasticity and strong adhesion that distinguish it from oily or powdery contaminants because of its polymeric nature. On materials like steel or concrete, residue clings tightly and resists scraping, so removal challenges include incomplete cleaning without damaging substrate, yet laser cleaning succeeds by vaporizing layers precisely during pulsed exposure.
+contamination_description: Rubber-residue contamination arises from vulcanized rubber
+  deposits of tire marks, seals, and gaskets, so it forms during friction and compression
+  on surfaces. This residue shows unique elasticity and strong adhesion that distinguish
+  it from oily or powdery contaminants because of its polymeric nature. On materials
+  like steel or concrete, residue clings tightly and resists scraping, so removal
+  challenges include incomplete cleaning without damaging substrate, yet laser cleaning
+  succeeds by vaporizing layers precisely during pulsed exposure.
 breadcrumb:
 - label: Home
   href: /
@@ -417,3 +527,8 @@ valid_materials:
 - Tin
 - Cobalt
 - Chromium
+safety_data:
+  _migration_status:
+    domain_linkages_enhanced: true
+    enhancement_date: '2025-12-17'
+    validated: true
