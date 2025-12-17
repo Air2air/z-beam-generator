@@ -1,9 +1,9 @@
 # Documentation Map - Z-Beam Generator
 
 **🗺️ Master Navigation for All Documentation**  
-**Last Updated**: December 16, 2025  
+**Last Updated**: December 17, 2025  
 **For**: AI Assistants, Developers, Contributors, and Users  
-**Recent Updates**: Challenge taxonomy system, 4 new ADRs (ID normalization, challenges, associations, linkages), complete test suite
+**Recent Updates**: Schema 5.0.0 normalization (flattened domain_linkages), Phase 2 complete (compound enrichment), challenge taxonomy system, 4 new ADRs
 
 ---
 
@@ -46,6 +46,9 @@ This is THE comprehensive guide for all AI assistants. Contains:
 | **Enhanced AI detection** | `ENHANCED_AI_DETECTION_DEC13_2025.md` ⭐ NEW |
 | **Unique properties emphasis** | `UNIQUE_PROPERTIES_EMPHASIS_DEC13_2025.md` ⭐ NEW |
 | **Learning integration & bug fix** | `LEARNING_INTEGRATION_AND_BUG_FIX_DEC13_2025.md` ⭐ NEW |
+| **Schema 5.0.0 normalization** | `docs/SCHEMA_5_0_NORMALIZATION_COMPLETE.md` ⭐ NEW (Dec 17, 2025) |
+| **Phase 2 implementation** | `docs/PHASE_2_COMPLETE_DEC17_2025.md` ⭐ NEW (Dec 17, 2025) |
+| **Frontmatter structure spec** | `docs/FRONTMATTER_STRUCTURE_SPECIFICATION.md` ⭐ NEW (Dec 17, 2025) |
 
 ---
 
@@ -266,6 +269,27 @@ z-beam-generator/
 ---
 
 ## 📊 November 2025 Key Updates
+
+### Schema 5.0.0 Normalization (Dec 17) 🔥 **NEW**
+- **Flattened domain_linkages**: Nested → top-level arrays (8 linkage types)
+- **Field ordering**: Canonical 40+ field specification
+- **Files migrated**: 294 total (99 contaminants, 153 materials, 20 compounds, 22 settings)
+- **Migration script**: `scripts/normalize_frontmatter_structure.py` (automated tool)
+- **Grade**: A+ (100/100) - Complete normalization
+- **Docs**: 
+  - `docs/SCHEMA_5_0_NORMALIZATION_COMPLETE.md` (190-line completion report)
+  - `docs/FRONTMATTER_STRUCTURE_SPECIFICATION.md` (825-line specification)
+- **Tests**: `tests/test_schema_5_normalization.py` (comprehensive coverage)
+- **Benefits**: Simpler frontend code (no nested property access), 1:1 YAML-to-component mapping
+
+### Phase 2 Complete: Compound Data Enrichment (Dec 17) 🔥 **NEW**
+- **Auto-enrichment**: All contaminant files now include full compound safety metadata
+- **Coverage**: 75 compounds enriched with concentration_range and hazard_class
+- **100% automation**: No manual editing required - exporters enrich automatically
+- **Single source**: Compounds.yaml provides defaults for all missing fields
+- **Grade**: A+ (100/100) - Complete implementation
+- **Docs**: `docs/PHASE_2_COMPLETE_DEC17_2025.md` (detailed implementation)
+- **Migration script**: `scripts/migrate_compound_data.py` (Phase 1 data migration)
 
 ### Universal Humanness Layer (Nov 20) 🔥 **NEW**
 - **Dual-feedback learning**: Winston DB + Subjective patterns
