@@ -109,10 +109,36 @@ def extract_associations():
     return success
 
 
+def copy_to_production():
+    """Copy frontmatter files to production z-beam directory"""
+    print("\n" + "="*80)
+    print("📦 STEP 3: COPYING FRONTMATTER TO PRODUCTION")
+    print("="*80)
+    
+    # Determine paths
+    generator_path = Path(__file__).resolve().parents[2]
+    production_path = generator_path.parent / "z-beam" / "frontmatter"
+    
+    # Check if production directory exists
+    if not production_path.exists():
+        print(f"⚠️  Production directory not found: {production_path}")
+        print("   Skipping production copy (development environment)")
+        return True
+    
+    cmd = f"cp -r {generator_path}/frontmatter/* {production_path}/"
+    success, output = run_command(cmd, "Copy frontmatter to production")
+    
+    if success:
+        print(f"  ✅ Copied frontmatter to: {production_path}")
+        print(f"  📂 Domains: materials, contaminants, compounds, settings")
+    
+    return success
+
+
 def run_tests():
     """Run centralized architecture test suite"""
     print("\n" + "="*80)
-    print("🧪 STEP 3: RUNNING TEST SUITE")
+    print("🧪 STEP 4: RUNNING TEST SUITE")
     print("="*80)
     
     cmd = "python3 -m pytest tests/test_centralized_architecture.py -v --tb=line"
@@ -142,9 +168,10 @@ def main():
     if not args.test_only:
         print("  1. Export all domains to frontmatter (materials, contaminants, compounds)")
         print("  2. Re-extract domain associations from frontmatter")
+        print("  3. Copy frontmatter to production (z-beam directory)")
     if not args.skip_tests:
-        print("  3. Run comprehensive test suite (17 tests)")
-    print("  4. Report final status\n")
+        print("  4. Run comprehensive test suite (17 tests)")
+    print("  5. Report final status\n")
     
     start_time = time.time()
     steps_passed = 0
@@ -152,7 +179,7 @@ def main():
     
     # Step 1 & 2: Export and extract
     if not args.test_only:
-        steps_total += 2
+        steps_total += 3  # Export, Extract, Copy to production
         
         if export_all_domains():
             steps_passed += 1
@@ -160,8 +187,11 @@ def main():
         if not args.export_only:
             if extract_associations():
                 steps_passed += 1
+            
+            if copy_to_production():
+                steps_passed += 1
     
-    # Step 3: Tests
+    # Step 4: Tests
     if not args.skip_tests and not args.export_only:
         steps_total += 1
         if run_tests():

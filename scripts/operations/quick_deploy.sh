@@ -3,10 +3,11 @@
 # Quick Deployment Script
 # =======================
 #
-# Deploys all domains and validates in 4 steps:
+# Deploys all domains and validates in 6 steps:
 # 1-4. Export all domains (materials, settings, contaminants, compounds) via orchestrator
 # 5. Re-extract associations
-# 6. Run tests
+# 6. Copy frontmatter to production (z-beam directory)
+# 7. Run tests
 #
 # ⚠️ MANDATORY REQUIREMENT: All exporters MUST have ZERO API calls
 # - Uses scripts/operations/deploy_all.py for orchestrated export
@@ -37,18 +38,13 @@ NC='\033[0m' # No Color
 
 cd "$(dirname "$0")/../.."
 
-# Steps 1-4: Export All Domains (using orchestrator)
-echo -e "${BLUE}📦 Steps 1-4/6: Exporting All Domains (NO API)...${NC}"
+# Steps 1-6: Export All Domains, Extract Associations, Copy to Production
+echo -e "${BLUE}📦 Steps 1-6/7: Full Deployment (Export + Extract + Production Copy)...${NC}"
 python3 scripts/operations/deploy_all.py --skip-tests
 
-# Step 5: Re-extract associations
+# Step 7: Run tests
 echo ""
-echo -e "${BLUE}🔗 Step 5/6: Re-extracting Domain Associations...${NC}"
-python3 scripts/data/extract_existing_linkages.py | tail -20
-
-# Step 6: Run tests
-echo ""
-echo -e "${BLUE}🧪 Step 6/6: Running Test Suite...${NC}"
+echo -e "${BLUE}🧪 Step 7/7: Running Test Suite...${NC}"
 python3 -m pytest tests/test_centralized_architecture.py -v --tb=line 2>&1 | grep -E "(PASSED|FAILED|passed|failed)" | tail -5
 
 echo ""
