@@ -282,8 +282,8 @@ class DomainAssociationsValidator:
                 contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
                 
                 # Build URL with category/subcategory path + -contamination suffix
-                category = contaminant_data.get('category', 'general')
-                subcategory = contaminant_data.get('subcategory', 'misc')
+                category = contaminant_data.get('category', 'general').replace('_', '-')
+                subcategory = contaminant_data.get('subcategory', 'misc').replace('_', '-')
                 url_slug = f"{slug}-contamination"
                 
                 results.append({
@@ -329,8 +329,8 @@ class DomainAssociationsValidator:
                 material_data = self.materials_data.get('materials', {}).get(material_id, {})
                 
                 # Build URL with category/subcategory path + -laser-cleaning suffix
-                category = material_data.get('category', 'general')
-                subcategory = material_data.get('subcategory', 'misc')
+                category = material_data.get('category', 'general').replace('_', '-')
+                subcategory = material_data.get('subcategory', 'misc').replace('_', '-')
                 url_slug = f"{slug.lower()}-laser-cleaning"
                 
                 results.append({
@@ -375,8 +375,8 @@ class DomainAssociationsValidator:
                 compound_data = self.compounds_data.get('compounds', {}).get(slug, {})
                 
                 # Build URL with category/subcategory path + -compound suffix
-                category = compound_data.get('category', 'general')
-                subcategory = compound_data.get('subcategory', 'misc')
+                category = compound_data.get('category', 'general').replace('_', '-')
+                subcategory = compound_data.get('subcategory', 'misc').replace('_', '-')
                 url_slug = f"{slug}-compound"
                 
                 results.append({
@@ -420,8 +420,8 @@ class DomainAssociationsValidator:
                 contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
                 
                 # Build URL with category/subcategory path + -contamination suffix
-                category = contaminant_data.get('category', 'general')
-                subcategory = contaminant_data.get('subcategory', 'misc')
+                category = contaminant_data.get('category', 'general').replace('_', '-')
+                subcategory = contaminant_data.get('subcategory', 'misc').replace('_', '-')
                 url_slug = f"{slug}-contamination"
                 
                 results.append({

@@ -225,8 +225,9 @@ class TrivialContaminantsExporter(BaseTrivialExporter):
         if 'subcategory' not in pattern_data:
             raise ValueError(f"Pattern '{pattern_id}' missing required 'subcategory' field")
         
-        category = pattern_data['category']
-        subcategory = pattern_data['subcategory']
+        # Convert underscores to hyphens for URL consistency
+        category = pattern_data['category'].replace('_', '-')
+        subcategory = pattern_data['subcategory'].replace('_', '-')
         
         frontmatter['category'] = category
         

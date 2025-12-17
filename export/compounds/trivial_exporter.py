@@ -159,9 +159,9 @@ class CompoundExporter(BaseTrivialExporter):
             'cas_number': compound.get('cas_number'),
             'molecular_weight': compound.get('molecular_weight'),
             
-            # Classification
-            'category': compound['category'],
-            'subcategory': compound.get('subcategory'),
+            # Classification (convert underscores to hyphens for URL consistency)
+            'category': compound['category'].replace('_', '-') if compound.get('category') else None,
+            'subcategory': compound.get('subcategory', '').replace('_', '-') if compound.get('subcategory') else None,
             'hazard_class': compound['hazard_class'],
             
             # Exposure limits
