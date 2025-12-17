@@ -1,0 +1,58 @@
+id: carbide-settings
+name: Carbide
+slug: carbide-settings
+category: unknown
+subcategory: unknown
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T21:44:17.822035'
+dateModified: '2025-12-16T21:44:17.822035'
+domain: settings
+machineSettings:
+  powerRange:
+    description: High power for hard Carbide ceramic cleaning
+    unit: W
+    value: 120
+  wavelength:
+    description: Near-IR wavelength for carbide contaminant removal
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for Carbide cleaning
+    unit: μm
+    value: 80
+  repetitionRate:
+    description: High repetition rate for efficient Carbide cleaning
+    unit: kHz
+    value: 60
+  fluenceThreshold:
+    description: High fluence threshold for hard ceramic surface
+    unit: J/cm²
+    value: 4.0
+  pulseWidth:
+    description: Nanosecond pulse for controlled ablation
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Moderate speed for thorough Carbide cleaning
+    unit: mm/s
+    value: 400
+  passCount:
+    description: Multiple passes for complete cleaning
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: High overlap for uniform coverage
+    unit: '%'
+    value: 55
+  energyDensity:
+    description: High energy density for hard material
+    unit: J/cm²
+    value: 7
+breadcrumb:
+- label: Home
+  href: /
+- label: Laser Settings
+  href: /settings
+- label: Carbide
+  href: /settings/carbide-settings

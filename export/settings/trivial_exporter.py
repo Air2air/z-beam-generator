@@ -228,6 +228,13 @@ class TrivialSettingsExporter(BaseTrivialExporter):
         if 'author' in setting_data:
             frontmatter['author'] = setting_data['author']
         
+        # Add breadcrumb navigation
+        frontmatter['breadcrumb'] = [
+            {'label': 'Home', 'href': '/'},
+            {'label': 'Laser Settings', 'href': '/settings'},
+            {'label': material_name, 'href': f'/settings/{slug}'}
+        ]
+        
         # Generate domain_linkages from centralized associations
         material_slug = material_name.lower().replace(' ', '-')
         domain_linkages = self.linkages_service.generate_linkages(material_slug, 'settings')

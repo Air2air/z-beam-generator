@@ -159,6 +159,10 @@ class CompoundExporter(BaseTrivialExporter):
             'cas_number': compound.get('cas_number'),
             'molecular_weight': compound.get('molecular_weight'),
             
+            # Schema fields (normalization with other domains)
+            'content_type': 'unified_compound',
+            'schema_version': '4.0.0',
+            
             # Classification (convert underscores to hyphens for URL consistency)
             'category': compound['category'].replace('_', '-') if compound.get('category') else None,
             'subcategory': compound.get('subcategory', '').replace('_', '-') if compound.get('subcategory') else None,
@@ -189,17 +193,12 @@ class CompoundExporter(BaseTrivialExporter):
             # Author (full data from Authors.yaml)
             'author': author_data.copy(),
             
-            # Breadcrumbs
-            'breadcrumbs': [
-                {'label': 'Home', 'url': '/'},
-                {'label': 'Hazardous Compounds', 'url': '/compounds'},
-                {'label': compound['name'], 'url': f"/compounds/{compound['slug']}"}
-            ],
-            
-            # Metadata
-            'type': 'compound',
-            'domain': 'compounds',
-            'last_updated': None  # Set by deployment process
+            # Breadcrumb navigation
+            'breadcrumb': [
+                {'label': 'Home', 'href': '/'},
+                {'label': 'Hazardous Compounds', 'href': '/compounds'},
+                {'label': compound['name'], 'href': f"/compounds/{compound['slug']}-compound"}
+            ]
         }
         
         return frontmatter

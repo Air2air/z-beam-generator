@@ -1,0 +1,58 @@
+id: teflon-settings
+name: Teflon
+slug: teflon-settings
+category: unknown
+subcategory: unknown
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-12-16T21:44:17.844534'
+dateModified: '2025-12-16T21:44:17.844534'
+domain: settings
+machineSettings:
+  powerRange:
+    description: Low power for Teflon (PTFE) - avoid decomposition
+    unit: W
+    value: 35
+  wavelength:
+    description: CO2 wavelength better absorbed by PTFE
+    unit: nm
+    value: 10600
+  spotSize:
+    description: Spot size for Teflon cleaning
+    unit: μm
+    value: 100
+  repetitionRate:
+    description: Lower rate for polymer safety
+    unit: kHz
+    value: 25
+  fluenceThreshold:
+    description: Low fluence to prevent PTFE degradation
+    unit: J/cm²
+    value: 0.8
+  pulseWidth:
+    description: Short pulse for surface cleaning
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Faster speed for heat control
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Light passes for Teflon
+    unit: passes
+    value: 1
+  overlapRatio:
+    description: Moderate overlap
+    unit: '%'
+    value: 35
+  energyDensity:
+    description: Low energy for polymer
+    unit: J/cm²
+    value: 1.5
+breadcrumb:
+- label: Home
+  href: /
+- label: Laser Settings
+  href: /settings
+- label: Teflon
+  href: /settings/teflon-settings
