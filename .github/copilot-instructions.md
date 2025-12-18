@@ -2434,20 +2434,68 @@ When suggesting code changes:
 
 **THE PROBLEM WITH TEMPORARY FIXES:**
 If you create a "fix script" that patches frontmatter files directly, the fix will be **OVERWRITTEN** on the next `--deploy` because:
-1. Frontmatter is **GENERATED FROM** Materials.yaml + Categories.yaml
+1. Frontmatter is **GENERATED FROM** Materials.yaml + Categories.yaml + DomainAssociations.yaml
 2. The exporter code runs on every deployment
 3. Patching output files is **TEMPORARY** - they get regenerated
 
-**THE CORRECT APPROACH:**
-1. ✅ **Fix the exporter code** (`export/core/trivial_exporter.py`) to ALWAYS generate correct structure
-2. ✅ **Regenerate all frontmatter** with `--deploy` to apply the fix
-3. ✅ **Verify the fix persists** by checking files after regeneration
-4. ❌ **NEVER create one-off patch scripts** that modify frontmatter files directly
+**THE THREE-LAYER ARCHITECTURE:**
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ LAYER 1: SOURCE DATA (Single Source of Truth)                   │
+│ • data/materials/Materials.yaml                                  │
+│ • data/contaminants/Contaminants.yaml                           │
+│ • data/associations/DomainAssociations.yaml                     │
+│ • data/settings/Settings.yaml, data/compounds/Compounds.yaml    │
+│ FIX HERE: When data is wrong (missing values, incorrect ranges) │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ LAYER 2: EXPORT PROCESS (Transformation Logic)                  │
+│ • export/core/trivial_exporter.py (main generation logic)       │
+│ • export/config/*.yaml (domain configurations)                  │
+│ • export/generation/registry.py (field generators)              │
+│ FIX HERE: When generation logic is wrong (format, structure)    │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│ LAYER 3: FRONTMATTER FILES (Generated Output)                   │
+│ • ../z-beam/frontmatter/materials/*.yaml                        │
+│ • ../z-beam/frontmatter/contaminants/*.yaml                     │
+│ • ../z-beam/frontmatter/compounds/*.yaml                        │
+│ • ❌ NEVER EDIT DIRECTLY - These get regenerated                │
+└─────────────────────────────────────────────────────────────────┘
+```
 
-**EXAMPLE - Machine Settings Missing Min/Max:**
-- ❌ WRONG: Create script to add min/max to existing frontmatter files
-- ✅ RIGHT: Fix `_enrich_machine_settings()` in trivial_exporter.py, then redeploy
+**THE CORRECT APPROACH:**
+1. ✅ **Identify the layer** - Is this a data issue, generation logic issue, or config issue?
+2. ✅ **Fix at the source** - Edit the appropriate file in Layer 1 or Layer 2
+3. ✅ **Regenerate all frontmatter** - Run the export process to apply the fix
+4. ✅ **Verify the fix persists** - Check multiple files, ensure fix wasn't overwritten
+5. ❌ **NEVER create one-off patch scripts** that modify Layer 3 files directly
+
+**EXAMPLE 1 - Machine Settings Missing Min/Max:**
+- ❌ WRONG: Create script to add min/max to existing frontmatter files (Layer 3)
+- ✅ RIGHT: Fix `_enrich_machine_settings()` in trivial_exporter.py (Layer 2), then regenerate
 - WHY: Next deployment would overwrite the patched files with incomplete data
+
+**EXAMPLE 2 - Breadcrumbs Wrong Format (Dec 18, 2025):**
+- **Issue**: 422 frontmatter files had `breadcrumb_text: "Home / Materials / stone / Alabaster"` (text string)
+- **Expected**: `breadcrumb: [{label: "Home", href: "/"}, {label: "Materials", href: "/materials"}]` (array)
+- ❌ WRONG: Create script to convert breadcrumb_text to breadcrumb arrays in frontmatter files
+- ✅ RIGHT: Removed `BreadcrumbGenerator` from export/config/*.yaml (Layer 2) - it was overwriting TrivialFrontmatterExporter's correct format
+- **Result**: Next regeneration will use TrivialFrontmatterExporter._generate_breadcrumb() which creates proper arrays
+- **Verification**: After regeneration, checked multiple files confirmed breadcrumb is array, breadcrumb_text removed
+- WHY: Fixing the config prevents the bad generator from running; fix persists through all future regenerations
+
+**VERIFICATION CHECKLIST - Did Your Fix Persist?**
+After fixing at source and regenerating:
+- [ ] Check 3-5 files from each affected domain
+- [ ] Confirm fix appears in ALL checked files (not just one)
+- [ ] Verify old incorrect format is completely gone
+- [ ] Try regenerating again - does fix still persist?
+- [ ] If fix disappeared → You fixed the wrong layer!
 
 **RULE: If frontmatter has an issue, fix the GENERATOR, not the GENERATED files.**
 
