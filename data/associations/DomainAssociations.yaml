@@ -1,270 +1,4494 @@
-# Domain Associations - Centralized Relationship Management
-# =============================================================================
-# 
-# PURPOSE: Single source of truth for all cross-domain relationships
-# 
-# ARCHITECTURE:
-#   - Bidirectionality: Each association automatically generates both forward and reverse linkages
-#   - Validation: All IDs and URLs validated before export
-#   - Verification: Relationships must be research-backed with sources
-#   - Mandatory: Exporters MUST read from this file (no hardcoded linkages)
-# 
-# USAGE:
-#   Exporters read this file and generate bidirectional relationships for frontmatter
-# 
-# VERIFICATION STATUS:
-#   - verified: true  = Research-backed, peer-reviewed, or lab-confirmed
-#   - verified: false = Placeholder, needs research
-# 
-# =============================================================================
-
 metadata:
-  version: "1.0.0"
-  last_updated: "2025-12-16"
-  total_associations: 0
-  verification_rate: "0%"
-  
-# =============================================================================
-# MATERIAL ↔ CONTAMINANT ASSOCIATIONS
-# =============================================================================
-# Bidirectional: Generates both:
-#   - Materials → relationships.related_contaminants
-#   - Contaminants → relationships.related_materials
-# =============================================================================
-
+  version: 1.0.0
+  last_updated: '2025-12-16'
+  total_associations: 635
+  verification_rate: 0%
 material_contaminant_associations:
-  # Example structure (to be populated from existing data):
-  # - material_id: aluminum-laser-cleaning
-  #   contaminant_id: oxidation-contamination
-  #   frequency: very_common
-  #   severity: moderate
-  #   typical_context: "Aluminum naturally oxidizes in air"
-  #   verified: true
-  #   verification_source: "ASM Materials Handbook Vol 2, 2024"
-  #   notes: "Anodized layers require higher fluence"
-
-# =============================================================================
-# CONTAMINANT ↔ COMPOUND ASSOCIATIONS
-# =============================================================================
-# Bidirectional: Generates both:
-#   - Contaminants → relationships.produces_compounds
-#   - Compounds → relationships.produced_by_contaminants
-# =============================================================================
-
+- material_id: alabaster-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: alabaster-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: alabaster-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: alabaster-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: alumina-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: alumina-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: alumina-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: alumina-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-laser-cleaning
+  contaminant_id: aluminum-oxidation-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ash-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ash-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ash-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ash-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bamboo-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bamboo-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bamboo-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bamboo-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: basalt-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: basalt-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: basalt-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: basalt-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: beech-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: beech-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: beech-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: beech-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: beryllium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: beryllium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: beryllium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: beryllium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: beryllium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: birch-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: birch-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: birch-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: birch-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bluestone-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bluestone-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bluestone-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bluestone-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: borosilicate-glass-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: borosilicate-glass-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: borosilicate-glass-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: borosilicate-glass-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: brass-laser-cleaning
+  contaminant_id: copper-patina-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: brass-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: brass-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: brass-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: brass-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: breccia-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: breccia-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: breccia-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: breccia-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: brick-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: brick-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bronze-laser-cleaning
+  contaminant_id: copper-patina-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bronze-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bronze-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bronze-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: bronze-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: calcite-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: calcite-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: calcite-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: calcite-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: carbon-fiber-reinforced-polymer-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: carbon-fiber-reinforced-polymer-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: carbon-fiber-reinforced-polymer-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: carbon-fiber-reinforced-polymer-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cast-iron-laser-cleaning
+  contaminant_id: rust-oxidation-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cast-iron-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cast-iron-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cast-iron-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cast-iron-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cast-iron-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cedar-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cedar-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cedar-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cedar-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cement-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cement-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ceramic-matrix-composites-cmcs-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ceramic-matrix-composites-cmcs-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ceramic-matrix-composites-cmcs-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ceramic-matrix-composites-cmcs-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cerium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cerium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cherry-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cherry-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cherry-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cherry-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: chromium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: chromium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: chromium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: chromium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: chromium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cobalt-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cobalt-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cobalt-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cobalt-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: cobalt-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: concrete-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: concrete-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: concrete-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: concrete-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: copper-laser-cleaning
+  contaminant_id: copper-patina-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: copper-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: copper-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: copper-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: copper-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: crown-glass-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: crown-glass-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: crown-glass-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: crown-glass-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: dysprosium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: dysprosium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: epoxy-resin-composites-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: epoxy-resin-composites-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: epoxy-resin-composites-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: epoxy-resin-composites-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: europium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: europium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fiber-reinforced-polyurethane-frpu-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fiber-reinforced-polyurethane-frpu-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fiber-reinforced-polyurethane-frpu-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fiber-reinforced-polyurethane-frpu-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fiberglass-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fiberglass-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fiberglass-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fiberglass-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fir-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fir-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fir-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fir-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: float-glass-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: float-glass-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: float-glass-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: float-glass-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fused-silica-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fused-silica-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fused-silica-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: fused-silica-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gallium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gallium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gallium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gallium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gallium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gallium-arsenide-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gallium-arsenide-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: glass-fiber-reinforced-polymers-gfrp-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: glass-fiber-reinforced-polymers-gfrp-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: glass-fiber-reinforced-polymers-gfrp-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: glass-fiber-reinforced-polymers-gfrp-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gold-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gold-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gold-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gold-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gold-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gorilla-glass-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gorilla-glass-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gorilla-glass-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gorilla-glass-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: granite-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: granite-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: granite-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: granite-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hafnium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hafnium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hafnium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hafnium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hafnium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hastelloy-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hastelloy-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hastelloy-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hastelloy-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hastelloy-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hickory-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hickory-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hickory-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: hickory-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: inconel-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: inconel-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: inconel-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: inconel-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: inconel-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: indium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: indium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: indium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: indium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: indium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: iridium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: iridium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: iridium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: iridium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: iridium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: iron-laser-cleaning
+  contaminant_id: rust-oxidation-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: iron-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: iron-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: iron-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: iron-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: iron-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: kevlar-reinforced-polymer-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: kevlar-reinforced-polymer-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: kevlar-reinforced-polymer-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: kevlar-reinforced-polymer-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: lanthanum-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: lanthanum-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: lead-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: lead-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: lead-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: lead-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: lead-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: lead-crystal-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: lead-crystal-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: lead-crystal-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: lead-crystal-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: limestone-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: limestone-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: limestone-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: limestone-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: mdf-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: mdf-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: mdf-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: mdf-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: magnesium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: magnesium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: magnesium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: magnesium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: magnesium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: mahogany-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: mahogany-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: mahogany-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: mahogany-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: manganese-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: manganese-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: manganese-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: manganese-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: manganese-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: maple-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: maple-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: maple-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: maple-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: marble-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: marble-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: marble-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: marble-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: metal-matrix-composites-mmcs-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: metal-matrix-composites-mmcs-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: metal-matrix-composites-mmcs-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: metal-matrix-composites-mmcs-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: molybdenum-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: molybdenum-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: molybdenum-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: molybdenum-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: molybdenum-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: mortar-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: mortar-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: neodymium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: neodymium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: nickel-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: nickel-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: nickel-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: nickel-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: nickel-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: niobium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: niobium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: niobium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: niobium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: niobium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: oak-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: oak-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: oak-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: oak-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: onyx-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: onyx-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: onyx-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: onyx-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: palladium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: palladium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: palladium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: palladium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: palladium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: phenolic-resin-composites-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: phenolic-resin-composites-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: phenolic-resin-composites-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: phenolic-resin-composites-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: pine-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: pine-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: pine-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: pine-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: plaster-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: plaster-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: platinum-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: platinum-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: platinum-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: platinum-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: platinum-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: plywood-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: plywood-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: plywood-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: plywood-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polycarbonate-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polycarbonate-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polycarbonate-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polycarbonate-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyester-resin-composites-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyester-resin-composites-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyester-resin-composites-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyester-resin-composites-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyethylene-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyethylene-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyethylene-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyethylene-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polypropylene-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polypropylene-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polypropylene-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polypropylene-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polystyrene-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polystyrene-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polystyrene-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polystyrene-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polytetrafluoroethylene-ptfe-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polytetrafluoroethylene-ptfe-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polytetrafluoroethylene-ptfe-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polytetrafluoroethylene-ptfe-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyvinyl-chloride-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyvinyl-chloride-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyvinyl-chloride-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyvinyl-chloride-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: poplar-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: poplar-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: poplar-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: poplar-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: porcelain-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: porcelain-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: porcelain-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: porcelain-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: porphyry-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: porphyry-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: porphyry-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: porphyry-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: praseodymium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: praseodymium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: pyrex-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: pyrex-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: pyrex-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: pyrex-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: quartz-glass-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: quartz-glass-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: quartz-glass-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: quartz-glass-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: quartzite-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: quartzite-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: quartzite-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: quartzite-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: redwood-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: redwood-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: redwood-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: redwood-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rhenium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rhenium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rhenium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rhenium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rhenium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rhodium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rhodium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rhodium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rhodium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rhodium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rosewood-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rosewood-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rosewood-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rosewood-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rubber-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rubber-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rubber-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: rubber-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ruthenium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ruthenium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ruthenium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ruthenium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ruthenium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: sandstone-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: sandstone-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: sandstone-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: sandstone-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: sapphire-glass-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: sapphire-glass-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: sapphire-glass-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: sapphire-glass-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: schist-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: schist-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: schist-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: schist-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: serpentine-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: serpentine-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: serpentine-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: serpentine-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: shale-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: shale-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: shale-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: shale-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silicon-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silicon-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silicon-carbide-sic-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silicon-carbide-sic-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silicon-carbide-sic-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silicon-carbide-sic-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silicon-germanium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silicon-germanium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silicon-nitride-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silicon-nitride-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silicon-nitride-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silicon-nitride-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silver-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silver-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silver-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silver-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: silver-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: slate-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: slate-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: slate-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: slate-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: soapstone-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: soapstone-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: soapstone-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: soapstone-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: soda-lime-glass-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: soda-lime-glass-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: soda-lime-glass-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: soda-lime-glass-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: steel-laser-cleaning
+  contaminant_id: rust-oxidation-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: steel-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: steel-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: steel-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: steel-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: steel-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stoneware-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stoneware-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stoneware-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stoneware-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stucco-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stucco-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tantalum-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tantalum-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tantalum-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tantalum-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tantalum-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: teak-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: teak-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: teak-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: teak-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tempered-glass-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tempered-glass-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tempered-glass-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tempered-glass-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: terbium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: terbium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: terracotta-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: terracotta-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: thermoplastic-elastomer-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: thermoplastic-elastomer-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: thermoplastic-elastomer-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: thermoplastic-elastomer-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tin-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tin-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tin-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tin-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tin-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-carbide-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-carbide-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-carbide-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-carbide-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tool-steel-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tool-steel-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tool-steel-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tool-steel-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tool-steel-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: travertine-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: travertine-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: travertine-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: travertine-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tungsten-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tungsten-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tungsten-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tungsten-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tungsten-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tungsten-carbide-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tungsten-carbide-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tungsten-carbide-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: tungsten-carbide-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: urethane-composites-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: urethane-composites-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: urethane-composites-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: urethane-composites-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: vanadium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: vanadium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: vanadium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: vanadium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: vanadium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: walnut-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: walnut-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: walnut-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: walnut-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: willow-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: willow-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: willow-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: willow-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: yttrium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: yttrium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zinc-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zinc-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zinc-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zinc-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zinc-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zirconia-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zirconia-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zirconia-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zirconia-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zirconium-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zirconium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zirconium-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zirconium-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: zirconium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: acrylic-pmma-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: acrylic-pmma-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: acrylic-pmma-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: acrylic-pmma-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminosilicate-glass-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminosilicate-glass-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminosilicate-glass-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminosilicate-glass-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: dolomite-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: dolomite-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: dolomite-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: dolomite-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ebony-laser-cleaning
+  contaminant_id: wood-rot-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ebony-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ebony-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: ebony-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: germanium-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: germanium-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gneiss-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gneiss-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gneiss-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gneiss-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: indium-phosphide-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: indium-phosphide-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: nylon-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: nylon-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: nylon-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: nylon-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: peek-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: peek-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: peek-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: peek-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: pet-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: pet-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: pet-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: pet-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-alloy-ti-6al-4v-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-alloy-ti-6al-4v-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-alloy-ti-6al-4v-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-alloy-ti-6al-4v-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-alloy-ti-6al-4v-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-316-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-316-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-316-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-316-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-316-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-304-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-304-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-304-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-304-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: stainless-steel-304-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gallium-nitride-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: gallium-nitride-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-bronze-laser-cleaning
+  contaminant_id: aluminum-oxidation-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-bronze-laser-cleaning
+  contaminant_id: industrial-oil-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-bronze-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-bronze-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-bronze-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-bronze-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyimide-laser-cleaning
+  contaminant_id: uv-chalking-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyimide-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyimide-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: polyimide-laser-cleaning
+  contaminant_id: adhesive-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-nitride-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-nitride-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-nitride-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: aluminum-nitride-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: boron-carbide-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: boron-carbide-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: boron-carbide-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: boron-carbide-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: boron-nitride-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: boron-nitride-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: boron-nitride-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: boron-nitride-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-nitride-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-nitride-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-nitride-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: titanium-nitride-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: yttria-stabilized-zirconia-laser-cleaning
+  contaminant_id: environmental-dust-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: yttria-stabilized-zirconia-laser-cleaning
+  contaminant_id: scale-buildup-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: yttria-stabilized-zirconia-laser-cleaning
+  contaminant_id: chemical-stains-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
+- material_id: yttria-stabilized-zirconia-laser-cleaning
+  contaminant_id: paint-residue-contamination
+  frequency: common
+  severity: moderate
+  typical_context: general
+  verified: false
+  notes: Migrated from Materials.yaml contamination.valid list
 contaminant_compound_associations:
-  
-  # Carbon Buildup → PAHs
-  - contaminant_id: carbon-buildup-contamination
-    compound_id: pahs-compound
-    frequency: very_common
-    severity: high
-    typical_context: "Vaporization and reformation of existing PAHs"
-    verified: true
-    verification_source: "NIOSH 5506 - PAH analysis in combustion products"
-    notes: "Pre-existing PAHs in carbon deposits become airborne during ablation"
-  
-  # Carbon Soot → PAHs
-  - contaminant_id: carbon-soot-contamination
-    compound_id: pahs-compound
-    frequency: very_common
-    severity: high
-    typical_context: "Pre-existing PAHs from incomplete combustion"
-    verified: true
-    verification_source: "OSHA Technical Manual TED 01-00-015"
-    notes: "Soot particles contain multiple PAH species"
-  
-  # Fire Damage → PAHs
-  - contaminant_id: fire-damage-contamination
-    compound_id: pahs-compound
-    frequency: very_common
-    severity: high
-    typical_context: "Pre-existing PAHs from fire events"
-    verified: true
-    verification_source: "EPA Method 8270D - PAHs in fire debris"
-    notes: "Structural fires produce high PAH concentrations"
-  
-  # Rubber Residue → PAHs
-  - contaminant_id: rubber-residue-contamination
-    compound_id: pahs-compound
-    frequency: common
-    severity: high
-    typical_context: "Pyrolysis produces PAHs"
-    verified: true
-    verification_source: "Journal of Hazardous Materials 2023"
-    notes: "Rubber pyrolysis generates multi-ring aromatics"
-  
-  # Paint Residue → PAHs
-  - contaminant_id: paint-residue-contamination
-    compound_id: pahs-compound
-    frequency: common
-    severity: moderate
-    typical_context: "Incomplete combustion of organic binders"
-    verified: true
-    verification_source: "ACGIH TLV Documentation"
-    notes: "Oil-based paints contain aromatic hydrocarbons"
-  
-  # Plastic Residue → PAHs
-  - contaminant_id: plastic-residue-contamination
-    compound_id: pahs-compound
-    frequency: common
-    severity: moderate
-    typical_context: "Thermal degradation of aromatic polymers"
-    verified: true
-    verification_source: "Polymer Degradation and Stability 2022"
-    notes: "Styrenic polymers particularly prone to PAH formation"
-  
-  # Bitumen/Tar → PAHs
-  - contaminant_id: bitumen-tar-contamination
-    compound_id: pahs-compound
-    frequency: very_common
-    severity: high
-    typical_context: "Bitumen is rich in PAHs"
-    verified: true
-    verification_source: "IARC Monograph Vol 103 - Bitumen emissions"
-    notes: "Coal tar contains up to 10,000 ppm PAHs"
-  
-  # Adhesive Residue → Carbon Monoxide
-  - contaminant_id: adhesive-residue-contamination
-    compound_id: carbon-monoxide-compound
-    frequency: very_common
-    severity: high
-    typical_context: "Incomplete combustion of organic adhesives"
-    verified: true
-    verification_source: "NIOSH Pocket Guide to Chemical Hazards"
-    notes: "Most organic compounds produce CO when heated"
-  
-  # Paint Residue → Carbon Monoxide
-  - contaminant_id: paint-residue-contamination
-    compound_id: carbon-monoxide-compound
-    frequency: very_common
-    severity: high
-    typical_context: "Combustion of paint binders and solvents"
-    verified: true
-    verification_source: "OSHA 3352 - Combustion product hazards"
-    notes: "CO production increases with insufficient oxygen"
-  
-  # Rubber Residue → Carbon Monoxide
-  - contaminant_id: rubber-residue-contamination
-    compound_id: carbon-monoxide-compound
-    frequency: very_common
-    severity: high
-    typical_context: "Pyrolysis of rubber polymers"
-    verified: true
-    verification_source: "Journal of Analytical and Applied Pyrolysis 2021"
-    notes: "Rubber decomposition produces significant CO"
-  
-  # Plastic Residue → Acetaldehyde
-  - contaminant_id: plastic-residue-contamination
-    compound_id: acetaldehyde-compound
-    frequency: common
-    severity: moderate
-    typical_context: "PET and PVC thermal degradation"
-    verified: true
-    verification_source: "Polymer Degradation Mechanisms 2023"
-    notes: "PET releases acetaldehyde above 200°C"
-  
-  # Adhesive Residue → Acetaldehyde
-  - contaminant_id: adhesive-residue-contamination
-    compound_id: acetaldehyde-compound
-    frequency: common
-    severity: moderate
-    typical_context: "EVA and acrylic adhesive breakdown"
-    verified: true
-    verification_source: "Adhesive Technology Handbook 2022"
-    notes: "Ethyl-based adhesives produce aldehydes"
-  
-  # Paint Residue → Acetaldehyde
-  - contaminant_id: paint-residue-contamination
-    compound_id: acetaldehyde-compound
-    frequency: occasional
-    severity: low
-    typical_context: "Acrylic paint thermal degradation"
-    verified: true
-    verification_source: "Paint and Coating Testing Manual 2021"
-    notes: "Water-based acrylics produce trace aldehydes"
-  
-  # Plastic Residue → Hydrogen Chloride
-  - contaminant_id: plastic-residue-contamination
-    compound_id: hydrogen-chloride-compound
-    frequency: very_common
-    severity: high
-    typical_context: "PVC thermal decomposition"
-    verified: true
-    verification_source: "NIOSH Method 7903 - HCl in workplace air"
-    notes: "PVC releases HCl gas starting at 200°C"
-  
-  # Adhesive Residue → Hydrogen Chloride
-  - contaminant_id: adhesive-residue-contamination
-    compound_id: hydrogen-chloride-compound
-    frequency: occasional
-    severity: moderate
-    typical_context: "Chlorinated adhesive breakdown"
-    verified: true
-    verification_source: "Industrial Adhesive Chemistry 2022"
-    notes: "Neoprene adhesives contain chlorine"
-  
-  # Rust/Oxidation → Nitrogen Oxides
-  - contaminant_id: rust-oxidation-contamination
-    compound_id: nitrogen-oxides-compound
-    frequency: common
-    severity: low
-    typical_context: "High-temperature iron oxide reactions with nitrogen"
-    verified: true
-    verification_source: "ACGIH Documentation of TLVs - NOx"
-    notes: "NOx formation increases with laser power"
-
-# =============================================================================
-# MATERIAL ↔ COMPOUND ASSOCIATIONS (via transitive relationships)
-# =============================================================================
-# Derived from: Material → Contaminant → Compound
-# Bidirectional: Generates both:
-#   - Materials → relationships.related_compounds
-#   - Compounds → relationships.related_materials
-# =============================================================================
-
-material_compound_associations:
-  # These will be auto-generated from transitive relationships
-  # Material → Contaminant → Compound
-  # Example:
-  # - material_id: steel-laser-cleaning
-  #   compound_id: pahs-compound
-  #   via_contaminants:
-  #     - rust-oxidation-contamination
-  #     - paint-residue-contamination
-  #   exposure_risk: moderate
-  #   source: laser_ablation
-  #   verified: true
-  #   verification_source: "Derived from contaminant associations"
-
-# =============================================================================
-# VALIDATION RULES
-# =============================================================================
+- contaminant_id: carbon-buildup-contamination
+  compound_id: pahs-compound
+  frequency: very_common
+  severity: high
+  typical_context: Vaporization and reformation of existing PAHs
+  verified: true
+  verification_source: NIOSH 5506 - PAH analysis in combustion products
+  notes: Pre-existing PAHs in carbon deposits become airborne during ablation
+- contaminant_id: carbon-soot-contamination
+  compound_id: pahs-compound
+  frequency: very_common
+  severity: high
+  typical_context: Pre-existing PAHs from incomplete combustion
+  verified: true
+  verification_source: OSHA Technical Manual TED 01-00-015
+  notes: Soot particles contain multiple PAH species
+- contaminant_id: fire-damage-contamination
+  compound_id: pahs-compound
+  frequency: very_common
+  severity: high
+  typical_context: Pre-existing PAHs from fire events
+  verified: true
+  verification_source: EPA Method 8270D - PAHs in fire debris
+  notes: Structural fires produce high PAH concentrations
+- contaminant_id: rubber-residue-contamination
+  compound_id: pahs-compound
+  frequency: common
+  severity: high
+  typical_context: Pyrolysis produces PAHs
+  verified: true
+  verification_source: Journal of Hazardous Materials 2023
+  notes: Rubber pyrolysis generates multi-ring aromatics
+- contaminant_id: paint-residue-contamination
+  compound_id: pahs-compound
+  frequency: common
+  severity: moderate
+  typical_context: Incomplete combustion of organic binders
+  verified: true
+  verification_source: ACGIH TLV Documentation
+  notes: Oil-based paints contain aromatic hydrocarbons
+- contaminant_id: plastic-residue-contamination
+  compound_id: pahs-compound
+  frequency: common
+  severity: moderate
+  typical_context: Thermal degradation of aromatic polymers
+  verified: true
+  verification_source: Polymer Degradation and Stability 2022
+  notes: Styrenic polymers particularly prone to PAH formation
+- contaminant_id: bitumen-tar-contamination
+  compound_id: pahs-compound
+  frequency: very_common
+  severity: high
+  typical_context: Bitumen is rich in PAHs
+  verified: true
+  verification_source: IARC Monograph Vol 103 - Bitumen emissions
+  notes: Coal tar contains up to 10,000 ppm PAHs
+- contaminant_id: adhesive-residue-contamination
+  compound_id: carbon-monoxide-compound
+  frequency: very_common
+  severity: high
+  typical_context: Incomplete combustion of organic adhesives
+  verified: true
+  verification_source: NIOSH Pocket Guide to Chemical Hazards
+  notes: Most organic compounds produce CO when heated
+- contaminant_id: paint-residue-contamination
+  compound_id: carbon-monoxide-compound
+  frequency: very_common
+  severity: high
+  typical_context: Combustion of paint binders and solvents
+  verified: true
+  verification_source: OSHA 3352 - Combustion product hazards
+  notes: CO production increases with insufficient oxygen
+- contaminant_id: rubber-residue-contamination
+  compound_id: carbon-monoxide-compound
+  frequency: very_common
+  severity: high
+  typical_context: Pyrolysis of rubber polymers
+  verified: true
+  verification_source: Journal of Analytical and Applied Pyrolysis 2021
+  notes: Rubber decomposition produces significant CO
+- contaminant_id: plastic-residue-contamination
+  compound_id: acetaldehyde-compound
+  frequency: common
+  severity: moderate
+  typical_context: PET and PVC thermal degradation
+  verified: true
+  verification_source: Polymer Degradation Mechanisms 2023
+  notes: "PET releases acetaldehyde above 200\xB0C"
+- contaminant_id: adhesive-residue-contamination
+  compound_id: acetaldehyde-compound
+  frequency: common
+  severity: moderate
+  typical_context: EVA and acrylic adhesive breakdown
+  verified: true
+  verification_source: Adhesive Technology Handbook 2022
+  notes: Ethyl-based adhesives produce aldehydes
+- contaminant_id: paint-residue-contamination
+  compound_id: acetaldehyde-compound
+  frequency: occasional
+  severity: low
+  typical_context: Acrylic paint thermal degradation
+  verified: true
+  verification_source: Paint and Coating Testing Manual 2021
+  notes: Water-based acrylics produce trace aldehydes
+- contaminant_id: plastic-residue-contamination
+  compound_id: hydrogen-chloride-compound
+  frequency: very_common
+  severity: high
+  typical_context: PVC thermal decomposition
+  verified: true
+  verification_source: NIOSH Method 7903 - HCl in workplace air
+  notes: "PVC releases HCl gas starting at 200\xB0C"
+- contaminant_id: adhesive-residue-contamination
+  compound_id: hydrogen-chloride-compound
+  frequency: occasional
+  severity: moderate
+  typical_context: Chlorinated adhesive breakdown
+  verified: true
+  verification_source: Industrial Adhesive Chemistry 2022
+  notes: Neoprene adhesives contain chlorine
+- contaminant_id: rust-oxidation-contamination
+  compound_id: nitrogen-oxides-compound
+  frequency: common
+  severity: low
+  typical_context: High-temperature iron oxide reactions with nitrogen
+  verified: true
+  verification_source: ACGIH Documentation of TLVs - NOx
+  notes: NOx formation increases with laser power
+material_compound_associations: null
 validation:
   required_fields:
-    - contaminant_id or material_id
-    - compound_id (for compound associations)
-    - frequency
-    - severity
-    - verified
-  
+  - contaminant_id or material_id
+  - compound_id (for compound associations)
+  - frequency
+  - severity
+  - verified
   allowed_frequency_values:
-    - very_common
-    - common
-    - occasional
-    - rare
-  
+  - very_common
+  - common
+  - occasional
+  - rare
   allowed_severity_values:
-    - critical
-    - high
-    - moderate
-    - low
-  
+  - critical
+  - high
+  - moderate
+  - low
   url_validation:
     enabled: true
     check_target_exists: true
     fail_on_invalid: true
-  
   verification_requirements:
     require_source_when_verified: true
     warn_on_unverified: true
-    block_export_if_unverified: false  # Set to true for strict mode
+    block_export_if_unverified: false

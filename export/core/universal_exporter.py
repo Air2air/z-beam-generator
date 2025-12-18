@@ -333,17 +333,6 @@ class UniversalFrontmatterExporter:
         Raises:
             IOError: If write fails
         """
-        # 🔍 DEBUG: Check slug before writing
-        if 'relationships' in frontmatter:
-            dl = frontmatter['relationships']
-            if isinstance(dl, dict):
-                for linkage_type, entries in dl.items():
-                    if isinstance(entries, list) and len(entries) > 0:
-                        first_entry = entries[0]
-                        if isinstance(first_entry, dict):
-                            has_slug = 'slug' in first_entry
-                            print(f"🔍 IN _write_frontmatter() - {linkage_type}[0] has slug: {has_slug}")
-        
         # Create output directory if needed
         output_file.parent.mkdir(parents=True, exist_ok=True)
         

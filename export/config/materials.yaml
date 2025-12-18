@@ -77,9 +77,6 @@ enrichments:
   # 6. Populate relationships from DomainLinkagesService
   - type: relationships
     domain: materials
-  
-  # 7. Add slug fields to domain linkages (AFTER relationships populated)
-  - type: relationships_slug
 
 # ============================================================================
 # CONTENT GENERATORS (Applied in order)

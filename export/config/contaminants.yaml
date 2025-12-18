@@ -60,26 +60,28 @@ enrichments:
     fields:
       - datePublished
       - dateModified
-  
-  # 5. Add slug fields to domain linkages
-  - type: relationships_slug
 
 # ============================================================================
 # CONTENT GENERATORS (Applied in order)
 # ============================================================================
 generators:
-  # 1. Generate SEO meta description from contaminant_description
+  # 1. Generate relationships from DomainAssociations.yaml
+  - type: relationships
+    domain: contaminants
+    output_field: relationships
+  
+  # 2. Generate SEO meta description from contaminant_description
   - type: seo_description
     source_field: contaminant_description
     output_field: seo_description
     max_length: 160
   
-  # 2. Generate breadcrumb navigation
+  # 3. Generate breadcrumb navigation
   - type: breadcrumb
     template: "Home / Contaminants / {category} / {name}"
     output_field: breadcrumb_text
   
-  # 3. Generate URL-safe slug (if missing)
+  # 4. Generate URL-safe slug (if missing)
   - type: slug
     source_field: name
     output_field: slug
