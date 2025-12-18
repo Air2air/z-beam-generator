@@ -76,13 +76,13 @@ def load_settings_yaml() -> Dict[str, Dict[str, Any]]:
             data = yaml.safe_load(f)
             settings = data.get('settings', {})
             
-            # Extract machineSettings from nested structure
-            # Settings.yaml has: settings.MaterialName.machineSettings.{params}
+            # Extract machine_settings from nested structure
+            # Settings.yaml has: settings.MaterialName.machine_settings.{params}
             # We need to return: { MaterialName: {params} }
             extracted = {}
             for material_name, material_settings in settings.items():
-                if 'machineSettings' in material_settings:
-                    extracted[material_name] = material_settings['machineSettings']
+                if 'machine_settings' in material_settings:
+                    extracted[material_name] = material_settings['machine_settings']
             
             return extracted
     except Exception as e:

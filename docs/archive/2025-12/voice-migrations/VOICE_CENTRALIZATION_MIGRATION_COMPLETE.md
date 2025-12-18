@@ -36,7 +36,7 @@
    - **Removed**: Voice instructions ("Write like you're explaining...")
    - **Added**: `{voice_instruction}` placeholder
 
-5. `domains/contaminants/prompts/material_description.txt`
+5. `domains/contaminants/prompts/description.txt`
    - **Added**: `{voice_instruction}` placeholder (was missing)
 
 6. `domains/settings/prompts/settings_description.txt`

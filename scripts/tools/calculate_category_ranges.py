@@ -34,10 +34,10 @@ def extract_property_values_by_category():
     for material_name, material_data in materials.items():
         category = material_data.get('category', 'unknown')
         
-        if 'materialProperties' not in material_data:
+        if 'properties' not in material_data:
             continue
         
-        mat_props = material_data['materialProperties']
+        mat_props = material_data['properties']
         
         # Check both property groups
         for group_name in ['material_characteristics', 'laser_material_interaction']:

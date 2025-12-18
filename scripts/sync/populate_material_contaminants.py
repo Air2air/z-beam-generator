@@ -34,10 +34,12 @@ Date: November 26, 2025
 
 import argparse
 import sys
-import yaml
 from pathlib import Path
 from typing import Dict, List
 from collections import defaultdict
+
+# Use shared YAML utilities
+from shared.utils.file_io import read_yaml_file, write_yaml_file
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent
@@ -46,8 +48,7 @@ sys.path.insert(0, str(project_root))
 
 def load_yaml(filepath: Path) -> Dict:
     """Load YAML file."""
-    with open(filepath, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+    return read_yaml_file(filepath)
 
 
 def save_yaml(filepath: Path, data: Dict, backup: bool = True):
@@ -59,8 +60,7 @@ def save_yaml(filepath: Path, data: Dict, backup: bool = True):
             import shutil
             shutil.copy2(filepath, backup_path)
     
-    with open(filepath, 'w', encoding='utf-8') as f:
-        yaml.dump(data, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
+    write_yaml_file(filepath, data, sort_keys=False)
 
 
 def build_material_contaminant_index(contaminants_data: Dict) -> Dict[str, Dict[str, List[str]]]:

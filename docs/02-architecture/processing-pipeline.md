@@ -712,7 +712,7 @@ def add_cross_links(content: str, current_item: str, domain: str) -> str:
 **Contaminants Domain:**
 - `domains/contaminants/prompts/micro.txt` - Contamination micro descriptions
 - `domains/contaminants/prompts/faq.txt` - Contamination FAQs
-- `domains/contaminants/prompts/material_description.txt` - Contamination descriptions
+- `domains/contaminants/prompts/description.txt` - Contamination descriptions
 
 **Settings Domain:**
 - `domains/settings/prompts/settings_description.txt` - Laser setting descriptions

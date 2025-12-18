@@ -2,7 +2,7 @@
 """
 Migrate Properties from Legacy "other" Group to Proper Category Groups
 
-This script moves properties from the legacy "other" group in materialProperties
+This script moves properties from the legacy "other" group in properties
 into the appropriate category groups (material_characteristics or laser_material_interaction)
 based on property type classification.
 
@@ -120,10 +120,10 @@ def migrate_other_properties(material_data: Dict[str, Any], material_name: str,
     Returns:
         Tuple of (updated_data, migration_report)
     """
-    if 'materialProperties' not in material_data:
+    if 'properties' not in material_data:
         return material_data, {'migrated': 0, 'properties': []}
     
-    mat_props = material_data['materialProperties']
+    mat_props = material_data['properties']
     
     # Check if 'other' group exists
     if 'other' not in mat_props:
@@ -256,7 +256,7 @@ def main():
     
     # Process each material
     for name, mat_data in materials.items():
-        if 'materialProperties' in mat_data and 'other' in mat_data['materialProperties']:
+        if 'properties' in mat_data and 'other' in mat_data['properties']:
             materials_with_other += 1
             
             updated_data, report = migrate_other_properties(mat_data, name, args.dry_run)

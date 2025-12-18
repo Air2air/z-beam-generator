@@ -66,9 +66,9 @@ rm scripts/validation/enhanced_schema_validator.py
 9. ❌ `test_component_summaries_routes_to_settings_dir`
 10. ❌ `test_micro_routes_to_materials_dir`
 11. ❌ `test_micro_generation_workflow`
-12. ❌ `test_material_description_routes_to_materials_dir`
+12. ❌ `test_description_routes_to_materials_dir`
 13. ❌ `test_description_update_preserves_all_other_fields`
-14. ❌ `test_material_description_update_preserves_all_other_fields`
+14. ❌ `test_description_update_preserves_all_other_fields`
 
 **Resolution**: ✅ All 14 tests fixed Dec 6, 2025
 - Root cause: Missing `domain` parameter in test calls

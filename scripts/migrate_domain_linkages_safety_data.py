@@ -2,30 +2,30 @@
 """
 Domain Linkages Safety Data Enhancement Migration Script
 
-Enhances domain_linkages.produces_compounds with safety/technical data
+Enhances relationships.produces_compounds with safety/technical data
 from safety_data.fumes_generated and compound frontmatter.
 
 Phase: Data Enhancement & Dual-Write (Phase 2)
 Status: Maintains both structures during transition
 """
 
-import yaml
 import glob
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 import sys
 
+# Use shared YAML utilities
+from shared.utils.file_io import read_yaml_file, write_yaml_file
+
 
 def load_yaml(file_path: Path) -> Dict:
     """Load YAML file safely"""
-    with open(file_path, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f) or {}
+    return read_yaml_file(file_path)
 
 
 def save_yaml(file_path: Path, data: Dict) -> None:
     """Save YAML file with proper formatting"""
-    with open(file_path, 'w', encoding='utf-8') as f:
-        yaml.dump(data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+    write_yaml_file(file_path, data, sort_keys=False)
 
 
 def normalize_compound_name(name: str) -> str:
@@ -92,7 +92,7 @@ def enhance_produces_compounds(
     dry_run: bool = False
 ) -> tuple[List[Dict], List[str]]:
     """
-    Enhance domain_linkages.produces_compounds with safety data
+    Enhance relationships.produces_compounds with safety data
     
     Returns:
         (enhanced_compounds, warnings)
@@ -100,11 +100,11 @@ def enhance_produces_compounds(
     warnings = []
     
     # Get existing domain linkages
-    domain_linkages = contaminant_data.get('domain_linkages', {})
-    produces_compounds = domain_linkages.get('produces_compounds', [])
+    relationships = contaminant_data.get('relationships', {})
+    produces_compounds = relationships.get('produces_compounds', [])
     
     if not produces_compounds:
-        warnings.append("No produces_compounds found in domain_linkages")
+        warnings.append("No produces_compounds found in relationships")
         return [], warnings
     
     # Get safety data if it exists (optional - not all files have this yet)
@@ -240,10 +240,10 @@ def migrate_contaminant_file(
         if not enhanced_compounds:
             return False, warnings
         
-        # Update domain_linkages with enhanced data
-        if 'domain_linkages' not in data:
-            data['domain_linkages'] = {}
-        data['domain_linkages']['produces_compounds'] = enhanced_compounds
+        # Update relationships with enhanced data
+        if 'relationships' not in data:
+            data['relationships'] = {}
+        data['relationships']['produces_compounds'] = enhanced_compounds
         
         # Add migration metadata to safety_data (don't overwrite existing safety_data)
         if 'safety_data' not in data:
@@ -251,7 +251,7 @@ def migrate_contaminant_file(
         if '_migration_status' not in data['safety_data']:
             data['safety_data']['_migration_status'] = {}
         data['safety_data']['_migration_status'].update({
-            'domain_linkages_enhanced': True,
+            'relationships_enhanced': True,
             'enhancement_date': '2025-12-17',
             'validated': True
         })
@@ -336,7 +336,7 @@ def main():
         total_files += 1
         if success:
             successful += 1
-            print(f"   ✅ Enhanced domain_linkages")
+            print(f"   ✅ Enhanced relationships")
         else:
             failed += 1
             print(f"   ❌ FAILED")

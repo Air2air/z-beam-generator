@@ -148,10 +148,10 @@ class PropertyTaxonomy:
                 if 'properties' in cat_data:
                     prop_list = cat_data['properties']
                 else:
-                    prop_list = cat_data.get('materialProperties', [])
+                    prop_list = cat_data.get('properties', [])
                     
                 self.categories[cat_id] = {
-                    'materialProperties': prop_list,
+                    'properties': prop_list,
                     'id': cat_id
                 }
             
@@ -167,7 +167,7 @@ class PropertyTaxonomy:
             # Build reverse lookup: property -> category (O(1) access)
             self._property_to_category = {}
             for cat_id, cat_data in self.categories.items():
-                properties = cat_data.get('materialProperties', [])
+                properties = cat_data.get('properties', [])
                 if not isinstance(properties, list):
                     raise PropertyTaxonomyError(
                         f"Invalid properties for category {cat_id}: must be list"
@@ -307,7 +307,7 @@ class PropertyTaxonomy:
             List of property names in that category
         """
         cat_data = self.categories.get(category_id, {})
-        return cat_data.get('materialProperties', [])
+        return cat_data.get('properties', [])
     
     def get_usage_tier(self, property_name: str) -> str:
         """
@@ -404,14 +404,14 @@ class PropertyTaxonomy:
             property_name: Name of the property
             
         Returns:
-            'materialProperties' or 'materialCharacteristics'
+            'properties' or 'characteristics'
         """
         prop_info = self.properties.get(property_name, {})
         prop_type = prop_info.get('type', 'quantitative')
         
         if prop_type == 'qualitative':
-            return 'materialCharacteristics'
-        return 'materialProperties'
+            return 'characteristics'
+        return 'properties'
     
     # ===== Validation =====
     

@@ -125,7 +125,7 @@ The humanness optimizer DOES add a LENGTH GUIDELINE:
 **Standard Deviation**: 79 words (132% of base)
 
 ### Materials (Working system)
-| Material | Words (material_description) |
+| Material | Words (description) |
 |----------|------------------------------|
 | Aluminum | 52 words |
 | Sample average | ~30-50 words |
@@ -194,7 +194,7 @@ Write a concise technical description (1-2 sentences) about {material}...
 ### Code Verification
 ```bash
 # Current materials prompt
-$ cat domains/materials/prompts/material_description.txt | head -1
+$ cat domains/materials/prompts/description.txt | head -1
 Write a concise technical description (1-2 sentences) about {material}...
 
 # Current contaminants prompt

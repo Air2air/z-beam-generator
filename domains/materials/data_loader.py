@@ -148,8 +148,8 @@ def load_materials_data() -> Dict[str, Any]:
                 'Aluminum': {
                     'name': 'Aluminum',
                     'category': 'metal',
-                    'materialProperties': { ... },  # Merged from MaterialProperties.yaml
-                    'machineSettings': { ... },     # Merged from Settings.yaml (via orchestrator)
+                    'properties': { ... },  # Merged from MaterialProperties.yaml
+                    'machine_settings': { ... },     # Merged from Settings.yaml (via orchestrator)
                     ...
                 },
                 ...
@@ -183,8 +183,8 @@ def load_material(material_name: str) -> Optional[Dict[str, Any]]:
     
     Example:
         >>> aluminum = load_material("Aluminum")
-        >>> print(aluminum['materialProperties']['density'])
-        >>> print(aluminum['machineSettings']['powerRange'])
+        >>> print(aluminum['properties']['density'])
+        >>> print(aluminum['machine_settings']['powerRange'])
     """
     all_data = load_materials_data()
     materials = all_data.get('materials', {})
@@ -415,7 +415,7 @@ def get_parameter_ranges() -> Dict[str, Any]:
     Returns min/max ranges for all laser parameters (global ranges).
     These are used to enrich Settings frontmatter with min/max fields.
     
-    Source: data/materials/Categories.yaml -> machineSettingsRanges
+    Source: data/materials/Categories.yaml -> machine_settingsRanges
     
     Returns:
         Dict mapping parameter names to range metadata:
@@ -445,9 +445,9 @@ def get_parameter_ranges() -> Dict[str, Any]:
     try:
         with open(categories_file, 'r', encoding='utf-8') as f:
             data = yaml.safe_load(f)
-        return data.get('machineSettingsRanges', {})
+        return data.get('machine_settingsRanges', {})
     except Exception as e:
-        raise MaterialDataError(f"Failed to load machineSettingsRanges: {e}")
+        raise MaterialDataError(f"Failed to load machine_settingsRanges: {e}")
 
 
 def get_parameter_descriptions() -> Dict[str, Any]:
@@ -625,7 +625,7 @@ def load_categories_yaml() -> Dict[str, Any]:
     Load Categories.yaml (complete category data with ranges and challenges)
     
     Returns:
-        Dict with category data including material_challenges
+        Dict with category data including challenges
     
     Raises:
         MaterialDataError: If Categories.yaml cannot be loaded
@@ -641,15 +641,15 @@ def load_categories_yaml() -> Dict[str, Any]:
         raise MaterialDataError(f"Failed to load Categories.yaml: {e}")
 
 
-def get_material_challenges(category: str) -> Dict[str, Any]:
+def get_challenges(category: str) -> Dict[str, Any]:
     """
-    Get material_challenges for a specific category from Categories.yaml
+    Get challenges for a specific category from Categories.yaml
     
     Args:
         category: Category name (e.g., 'wood', 'metal', 'ceramic')
     
     Returns:
-        Dict with material_challenges structure:
+        Dict with challenges structure:
         {
             "thermal_management": [...],
             "surface_characteristics": [...],
@@ -660,7 +660,7 @@ def get_material_challenges(category: str) -> Dict[str, Any]:
     """
     categories = load_categories_yaml()
     category_data = categories.get(category, {})
-    return category_data.get('material_challenges', {})
+    return category_data.get('challenges', {})
 
 
 # ============================================================================

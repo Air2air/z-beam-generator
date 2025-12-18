@@ -2,7 +2,7 @@
 """
 Extract Content from Materials.yaml to Separate Files
 
-Extracts caption, faq, and regulatoryStandards from Materials.yaml into:
+Extracts caption, faq, and regulatory_standards from Materials.yaml into:
 - materials/data/content/Micros.yaml
 - materials/data/content/FAQs.yaml
 - materials/data/content/RegulatoryStandards.yaml
@@ -66,8 +66,8 @@ def extract_content():
             faq_count += 1
         
         # Extract regulatory standards
-        if 'regulatoryStandards' in material_data:
-            regulatory_standards[material_name] = material_data['regulatoryStandards']
+        if 'regulatory_standards' in material_data:
+            regulatory_standards[material_name] = material_data['regulatory_standards']
             regulatory_count += 1
     
     print(f"   ✅ Extracted {micro_count} micros")

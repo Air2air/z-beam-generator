@@ -18,7 +18,7 @@ def _determine_property_category(property_name: str) -> str:
         categorizer = get_property_categorizer()
         category_id = categorizer.get_category(property_name)
         
-        # Map category IDs to materialProperties group names
+        # Map category IDs to properties group names
         if category_id in ['laser_material_interaction', 'optical', 'laser_absorption']:
             return 'laser_material_interaction'
         else:
@@ -129,11 +129,11 @@ def handle_data_gaps():
                 continue  # Skip materials with unknown categories
             
             # Extract properties from GROUPED structure
-            # materialProperties contains exactly two category groups:
+            # properties contains exactly two category groups:
             # - material_characteristics: Physical/thermal properties
             # - laser_material_interaction: Laser-specific properties
             # Each group has: label, description, and actual properties
-            material_properties_section = material_data.get('materialProperties', {})
+            material_properties_section = material_data.get('properties', {})
             
             # Flatten properties from both standard category groups
             properties = {}
@@ -351,7 +351,7 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
                 print(f"⚠️  Warning: Material '{material_name}' has unknown category '{category}'")
                 continue
             
-            properties = material_data.get('materialProperties', {})
+            properties = material_data.get('properties', {})
             missing_props = []
             
             # Check inside category groups (FLAT structure per frontmatter_template.yaml)
@@ -521,10 +521,10 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
                 print(f"\n💾 Saving {len(material_results)} properties for {material_name}...")
                 
                 # Ensure category groups exist
-                if 'materialProperties' not in materials_section[material_name]:
-                    materials_section[material_name]['materialProperties'] = {}
+                if 'properties' not in materials_section[material_name]:
+                    materials_section[material_name]['properties'] = {}
                 
-                mat_props = materials_section[material_name]['materialProperties']
+                mat_props = materials_section[material_name]['properties']
                 if 'material_characteristics' not in mat_props:
                     mat_props['material_characteristics'] = {
                         'label': 'Material Characteristics',

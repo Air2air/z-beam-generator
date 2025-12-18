@@ -74,7 +74,7 @@ content_type: unified_settings
 | **Null datePublished** | 153 | 98 | 153 | **0** ✅ | **404/424** (95%) 🔴 |
 | **Null dateModified** | 153 | 98 | 153 | **0** ✅ | **404/424** (95%) 🔴 |
 | **Null EEAT** | 21 | 88 | N/A | N/A | **109/251** (43%) 🟡 |
-| **Null material_metadata** | 21 | N/A | N/A | N/A | **21/153** (14%) 🟡 |
+| **Null metadata** | 21 | N/A | N/A | N/A | **21/153** (14%) 🟡 |
 | **Truncated FAQ** | ~3 | Unknown | N/A | N/A | **~3** 🟡 |
 
 ### **Compounds Domain** (20 files) ✅ **Reference Model**
@@ -105,7 +105,7 @@ The compounds generator correctly implements ISO 8601 timestamp generation. Stud
 - ❌ **Null datePublished**: 153/153 (100%)
 - ❌ **Null dateModified**: 153/153 (100%)
 - ❌ **Null eeat**: 21/153 (14%)
-- ❌ **Null material_metadata**: 21/153 (14%)
+- ❌ **Null metadata**: 21/153 (14%)
 - ❌ **Truncated FAQ answers**: ~3 files
 
 **Quality Highlights** ✅:
@@ -145,7 +145,7 @@ The compounds generator correctly implements ISO 8601 timestamp generation. Stud
 - ❌ **Null datePublished**: 153/153 (100%)
 - ❌ **Null dateModified**: 153/153 (100%)
 
-**Note**: No EEAT or material_metadata fields (settings-specific schema)
+**Note**: No EEAT or metadata fields (settings-specific schema)
 
 **Unique Fields**:
 - Laser parameter specifications
@@ -217,7 +217,7 @@ active: true
 - Power ranges, wavelengths, pulse durations
 - Safety thresholds
 - Material-specific adjustments
-- No EEAT or material_metadata (settings-specific schema)
+- No EEAT or metadata (settings-specific schema)
 
 ### **Compounds Domain** (20 files) ✅ **Reference Model**
 

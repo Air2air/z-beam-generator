@@ -45,7 +45,7 @@ def main():
         if not isinstance(mat_data, dict):
             continue
             
-        mat_props = mat_data.get('materialProperties', {})
+        mat_props = mat_data.get('properties', {})
         if not isinstance(mat_props, dict):
             continue
         

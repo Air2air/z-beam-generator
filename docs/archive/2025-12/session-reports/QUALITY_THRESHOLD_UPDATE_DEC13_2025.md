@@ -7,7 +7,7 @@
 
 ## 🎯 **SUMMARY**
 
-Updated quality scoring to fairly evaluate single-sentence content (like material_description) without penalizing for metrics that don't apply to concise text.
+Updated quality scoring to fairly evaluate single-sentence content (like description) without penalizing for metrics that don't apply to concise text.
 
 ---
 
@@ -163,7 +163,7 @@ $ python3 -m pytest tests/test_postprocessing_bug_fixes.py -v
 # Process all material descriptions with new threshold
 python3 run.py --postprocess \
   --domain materials \
-  --field material_description \
+  --field description \
   --all
 ```
 
@@ -202,7 +202,7 @@ python3 run.py --postprocess \
 1. ❌ Old content is **DISCARDED** (not modified, not refined)
 2. ✅ System calls `generator.generate()` with **original prompt template**
 3. ✅ Completely **NEW generation** from scratch
-4. ✅ Uses same domain prompt as initial generation (e.g., `domains/materials/prompts/material_description.txt`)
+4. ✅ Uses same domain prompt as initial generation (e.g., `domains/materials/prompts/description.txt`)
 5. ✅ Learning-optimized parameters (sweet spot from database)
 6. ✅ If new content passes (≥60/100), it's saved; if fails, original remains
 

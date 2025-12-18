@@ -1,7 +1,7 @@
 # Data Architecture: Complete Pipeline Normalization
 
 ## Overview
-This document describes the **fully normalized** data flow through the Z-Beam Generator system after October 2025 restructuring with 2-category materialProperties taxonomy.
+This document describes the **fully normalized** data flow through the Z-Beam Generator system after October 2025 restructuring with 2-category properties taxonomy.
 
 **Last Updated**: October 15, 2025  
 **Status**: ✅ Complete normalization achieved with 2-category system (laser_material_interaction + material_characteristics)
@@ -41,7 +41,7 @@ in materials. This ensures:
 ratings) MUST be handled differently from quantitative properties:
 
 1. **No min/max ranges**: Qualitative properties have `min: null, max: null` (always)
-2. **Move to materialCharacteristics**: If found in legacy Materials.yaml, move them out of numerical property sections
+2. **Move to characteristics**: If found in legacy Materials.yaml, move them out of numerical property sections
 3. **Separate categorization**: Store qualitative properties in their own section to avoid mixing with numerical data
 4. **Examples**: 
    - `crystallineStructure`: "FCC" → No numerical range
@@ -54,7 +54,7 @@ min/max ranges. If ranges don't exist in Categories.yaml:
 - Calculate from sibling materials in the same category
 - NO EXCEPTIONS - all numerical properties must have non-null min/max ranges
 
-**QUALITATIVE PROPERTIES HANDLING RULE** (October 17, 2025): Qualitative properties (non-numerical descriptive values) **MUST NOT** have `min`/`max` **fields at all** and **MUST** be stored in the `materialCharacteristics` section of frontmatter, separate from quantitative material properties. This ensures:
+**QUALITATIVE PROPERTIES HANDLING RULE** (October 17, 2025): Qualitative properties (non-numerical descriptive values) **MUST NOT** have `min`/`max` **fields at all** and **MUST** be stored in the `characteristics` section of frontmatter, separate from quantitative material properties. This ensures:
 - Clear separation between numerical (measurable) and qualitative (descriptive) data
 - Zero null values system-wide (qualitative properties achieve this by omitting min/max fields entirely)
 - Proper categorization in frontmatter output structure
@@ -83,8 +83,8 @@ materials:
 
 **Treatment in Frontmatter**:
 ```yaml
-# ✅ CORRECT: Qualitative properties in materialCharacteristics
-materialCharacteristics:
+# ✅ CORRECT: Qualitative properties in characteristics
+characteristics:
   crystallineStructure:
     value: "FCC"
     confidence: 99
@@ -95,7 +95,7 @@ materialCharacteristics:
 **Migration Strategy**: When encountering qualitative properties in legacy data:
 1. **Identify**: Check if property has non-numerical values or allowedValues list
 2. **Validate**: Confirm property should not have numerical ranges
-3. **Relocate**: Move from quantitative properties to materialCharacteristics
+3. **Relocate**: Move from quantitative properties to characteristics
 4. **Document**: Update schema to reflect qualitative nature
 
 ---
@@ -286,7 +286,7 @@ materials:
 ┌──────────────────────────────────────────────────────────────────────┐
 │ 4. Frontmatter YAML Output (2-Category Structure)                    │
 │    content/components/frontmatter/[material]-laser-cleaning.yaml     │
-│    materialProperties:                                                │
+│    properties:                                                │
 │      laser_material_interaction:                                      │
 │        label: Laser-Material Interaction                              │
 │        percentage: 47.3                                               │
@@ -320,7 +320,7 @@ materials:
 
 ---
 
-## Two-Category materialProperties System
+## Two-Category properties System
 
 ### Overview (as of October 15, 2025)
 The frontmatter uses a **2-category taxonomy** for organizing material properties:
@@ -387,7 +387,7 @@ materials:
 
 #### Generated Frontmatter:
 ```yaml
-materialProperties:
+properties:
   laser_material_interaction:
     label: Laser-Material Interaction
     properties:
@@ -505,7 +505,7 @@ materials:
 ### Frontmatter Output
 
 ```yaml
-materialProperties:
+properties:
   physical_structural:
     label: Physical/Structural Properties
     properties:

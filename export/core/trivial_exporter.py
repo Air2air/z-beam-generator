@@ -2,6 +2,16 @@
 """
 Trivial Frontmatter Exporter
 
+⚠️ DEPRECATED (December 17, 2025)
+This exporter is deprecated and will be removed in Phase 5.
+Use UniversalFrontmatterExporter instead:
+  from export.core.universal_exporter import UniversalFrontmatterExporter
+  from export.config.loader import load_domain_config
+  config = load_domain_config('materials')
+  exporter = UniversalFrontmatterExporter(config)
+  exporter.export_all()
+Or use CLI: python3 run.py --export --domain materials
+
 PURPOSE: Export Materials.yaml data to frontmatter YAML files.
 DESIGN: Simple YAML-to-YAML copy + Categories.yaml metadata - NO API, NO validation.
 
@@ -24,12 +34,12 @@ from pathlib import Path
 from typing import Dict, Any
 from collections import OrderedDict
 from domains.materials.materials_cache import load_materials_cached
-from domains.materials.data_loader import get_material_challenges
+from domains.materials.data_loader import get_challenges
 from shared.utils.core.slug_utils import create_material_slug
 from export.utils.numeric_formatting import format_numeric_value
 from shared.validation.domain_associations import DomainAssociationsValidator
 from shared.validation.field_order import FrontmatterFieldOrderValidator
-from shared.services.domain_linkages_service import DomainLinkagesService
+from shared.services.relationships_service import DomainLinkagesService
 
 logger = logging.getLogger(__name__)
 
@@ -774,36 +784,36 @@ class TrivialFrontmatterExporter:
         # Add enriched author data to frontmatter (from registry, not Materials.yaml)
         frontmatter['author'] = author_data.copy()
         
-        # Load settings from Settings.yaml (machineSettings + material_challenges)
+        # Load settings from Settings.yaml (machine_settings + challenges)
         settings_entry = self.settings_data.get('settings', {}).get(material_name, {})
         
         # Define fields that should be exported to frontmatter (per frontmatter_template.yaml)
         EXPORTABLE_FIELDS = {
             'breadcrumb',
-            'category', 'subcategory', 'title', 'material_description',
+            'category', 'subcategory', 'title', 'description',
             'datePublished', 'dateModified',  # Schema.org date fields from git history
-            'images', 'micro', 'regulatoryStandards', 'eeat',
-            'materialProperties', 'machineSettings', 'material_challenges', 'settings_description', 'faq',
-            '_metadata', 'material_metadata',
-            'domain_linkages'  # Added: Export bidirectional linkages (Material ↔ Contaminant)
+            'images', 'micro', 'regulatory_standards', 'eeat',
+            'properties', 'machine_settings', 'challenges', 'settings_description', 'faq',
+            '_metadata', 'metadata',
+            'relationships'  # Added: Export bidirectional linkages (Material ↔ Contaminant)
         }
         
         # Copy only exportable fields from Materials.yaml (exclude 'author' - it's enriched from registry above)
         for key, value in material_data.items():
             if key not in EXPORTABLE_FIELDS:
-                # Skip fields that shouldn't be in frontmatter (author, applications, materialCharacteristics, environmentalImpact, outcomeMetrics, etc.)
+                # Skip fields that shouldn't be in frontmatter (author, applications, characteristics, environmentalImpact, outcomeMetrics, etc.)
                 continue
             
-            if key == 'materialProperties':
+            if key == 'properties':
                 # Enrich material properties with min/max from category ranges
                 enriched = self._enrich_material_properties(value, category_ranges)
-                # Remove description fields except from regulatoryStandards
+                # Remove description fields except from regulatory_standards
                 cleaned = self._remove_descriptions(enriched, preserve_regulatory=False)
                 # Strip generation metadata
                 frontmatter[key] = self._strip_generation_metadata(cleaned)
-            elif key == 'machineSettings':
+            elif key == 'machine_settings':
                 # Load from Settings.yaml instead of Materials.yaml
-                settings_value = settings_entry.get('machineSettings', {})
+                settings_value = settings_entry.get('machine_settings', {})
                 if settings_value:
                     # Enrich machine settings with min/max from machine settings ranges
                     enriched = self._enrich_machine_settings(settings_value, category_ranges)
@@ -824,12 +834,12 @@ class TrivialFrontmatterExporter:
                     frontmatter['faq'] = self._strip_generation_metadata(formatted_faq)
                 # If no FAQ in Materials.yaml, will try external FAQs.yaml after loop
                 continue
-            elif key == 'regulatoryStandards':
-                # Copy regulatoryStandards from Materials.yaml
+            elif key == 'regulatory_standards':
+                # Copy regulatory_standards from Materials.yaml
                 # Keep description field for regulatory standards (user-facing)
                 if value:  # If exists in Materials.yaml, use it
-                    frontmatter['regulatoryStandards'] = self._strip_generation_metadata(value)
-                # If no regulatoryStandards in Materials.yaml, will try external RegulatoryStandards.yaml after loop
+                    frontmatter['regulatory_standards'] = self._strip_generation_metadata(value)
+                # If no regulatory_standards in Materials.yaml, will try external RegulatoryStandards.yaml after loop
                 continue
             else:
                 # Copy as-is but remove description fields and strip generation metadata
@@ -861,29 +871,29 @@ class TrivialFrontmatterExporter:
             frontmatter['faq'] = self._strip_generation_metadata(formatted_faq)
         
         # Add regulatory standards from RegulatoryStandards.yaml (if not already present from Materials.yaml)
-        if 'regulatoryStandards' not in frontmatter and material_name in self.regulatory_standards:
+        if 'regulatory_standards' not in frontmatter and material_name in self.regulatory_standards:
             regulatory_data = self.regulatory_standards[material_name]
             normalized = self._normalize_regulatory_standards(regulatory_data)
-            frontmatter['regulatoryStandards'] = self._strip_generation_metadata(normalized)
+            frontmatter['regulatory_standards'] = self._strip_generation_metadata(normalized)
         
-        # Add material_challenges from Settings.yaml (material-specific challenges)
-        if settings_entry and 'material_challenges' in settings_entry:
-            challenges = settings_entry['material_challenges']
+        # Add challenges from Settings.yaml (material-specific challenges)
+        if settings_entry and 'challenges' in settings_entry:
+            challenges = settings_entry['challenges']
             if challenges:
                 # Enrich with challenge_id fields for cross-material querying
                 enriched_challenges = self._enrich_challenges_with_ids(challenges)
-                frontmatter['material_challenges'] = self._strip_generation_metadata(enriched_challenges)
-                self.logger.info(f"✅ Added material_challenges for {material_name} from Settings.yaml")
+                frontmatter['challenges'] = self._strip_generation_metadata(enriched_challenges)
+                self.logger.info(f"✅ Added challenges for {material_name} from Settings.yaml")
         elif category:
             # Fallback to category-level challenges if material-specific not available
-            material_challenges = get_material_challenges(category)
-            if material_challenges:
+            challenges = get_challenges(category)
+            if challenges:
                 # Enrich with challenge_id fields
-                enriched_challenges = self._enrich_challenges_with_ids(material_challenges)
-                frontmatter['material_challenges'] = self._strip_generation_metadata(enriched_challenges)
-                self.logger.info(f"✅ Added material_challenges for {material_name} from {category} category")
+                enriched_challenges = self._enrich_challenges_with_ids(challenges)
+                frontmatter['challenges'] = self._strip_generation_metadata(enriched_challenges)
+                self.logger.info(f"✅ Added challenges for {material_name} from {category} category")
             else:
-                self.logger.debug(f"No material_challenges found for category: {category}")
+                self.logger.debug(f"No challenges found for category: {category}")
         
         # Add settings_description from Settings.yaml
         if settings_entry and 'settings_description' in settings_entry:
@@ -896,8 +906,8 @@ class TrivialFrontmatterExporter:
         if 'components' in material_data:
             components = material_data['components']
             # Priority order: components > direct fields
-            if 'material_description' in components:
-                frontmatter['material_description'] = components['material_description']
+            if 'description' in components:
+                frontmatter['description'] = components['description']
             if 'settings_description' in components:
                 frontmatter['settings_description'] = components['settings_description']
             if 'micro' in components:
@@ -919,9 +929,9 @@ class TrivialFrontmatterExporter:
                 frontmatter['faq'] = self._strip_generation_metadata(formatted_faq)
                 self.logger.debug(f"Using FAQ from components")
         
-        # Generate domain_linkages from centralized associations (replaces hardcoded copy)
+        # Generate relationships from centralized associations (replaces hardcoded copy)
         # material_name is already the ID (slug format) after ID migration
-        frontmatter['domain_linkages'] = self.linkages_service.generate_linkages(
+        frontmatter['relationships'] = self.linkages_service.generate_linkages(
             material_name, 'materials'
         )
         
@@ -959,7 +969,7 @@ class TrivialFrontmatterExporter:
         
         # Page-specific metadata
         materials_page['title'] = full_frontmatter.get('title')
-        materials_page['material_description'] = full_frontmatter.get('material_description')
+        materials_page['description'] = full_frontmatter.get('description')
         materials_page['breadcrumb'] = full_frontmatter.get('breadcrumb')
         
         # Images
@@ -968,20 +978,20 @@ class TrivialFrontmatterExporter:
         # Content (materials page specific)
         materials_page['micro'] = full_frontmatter.get('micro')
         materials_page['faq'] = full_frontmatter.get('faq')
-        materials_page['regulatoryStandards'] = full_frontmatter.get('regulatoryStandards')
-        materials_page['materialProperties'] = full_frontmatter.get('materialProperties')
+        materials_page['regulatory_standards'] = full_frontmatter.get('regulatory_standards')
+        materials_page['properties'] = full_frontmatter.get('properties')
         materials_page['eeat'] = full_frontmatter.get('eeat')
-        materials_page['material_metadata'] = full_frontmatter.get('material_metadata')
+        materials_page['metadata'] = full_frontmatter.get('metadata')
         
         # Cross-domain relationships (Material ↔ Contaminant bidirectional linkages)
-        materials_page['domain_linkages'] = full_frontmatter.get('domain_linkages')
+        materials_page['relationships'] = full_frontmatter.get('relationships')
         
         # Generate serviceOffering for SEO rich snippets (Service/Product JSON-LD schema)
         # Uses category/subcategory to determine difficulty, hours, and target contaminants
         category = full_frontmatter.get('category', '')
         subcategory = full_frontmatter.get('subcategory', '')
-        machine_settings = full_frontmatter.get('machineSettings')
-        material_properties = full_frontmatter.get('materialProperties')
+        machine_settings = full_frontmatter.get('machine_settings')
+        material_properties = full_frontmatter.get('properties')
         
         materials_page['serviceOffering'] = self._generate_service_offering(
             material_name=material_name,
@@ -1008,14 +1018,14 @@ class TrivialFrontmatterExporter:
         ordered_materials_page = self.field_order_validator.reorder_fields(materials_page, 'materials')
         
         with open(output_path, 'w', encoding='utf-8') as f:
-            yaml.dump(dict(ordered_materials_page), f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
+            yaml.dump(dict(ordered_materials_page), f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=float('inf'))
         
         # Verify what was written
         if material_name == 'Aluminum':
             with open(output_path, 'r') as f:
                 content = f.read()
                 for line in content.split('\n')[:10]:
-                    if 'material_description:' in line:
+                    if 'description:' in line:
                         print(f"✅ [VERIFY] Wrote to file: {line}")
                         break
         
@@ -1058,9 +1068,9 @@ class TrivialFrontmatterExporter:
         settings_page['title'] = f"{full_frontmatter.get('name')} Laser Cleaning Settings"
         settings_page['settings_description'] = full_frontmatter.get('settings_description', f"Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing {full_frontmatter.get('name').lower()} laser cleaning operations.")
         
-        # Export domain_linkages to settings page if present
-        if 'domain_linkages' in full_frontmatter:
-            settings_page['domain_linkages'] = full_frontmatter['domain_linkages']
+        # Export relationships to settings page if present
+        if 'relationships' in full_frontmatter:
+            settings_page['relationships'] = full_frontmatter['relationships']
         
         # Settings-specific breadcrumb (uses /materials paths)
         category = full_frontmatter.get('category', '')
@@ -1093,10 +1103,10 @@ class TrivialFrontmatterExporter:
         settings_page['images'] = full_frontmatter.get('images')
         
         # Content (settings page specific)
-        settings_page['machineSettings'] = full_frontmatter.get('machineSettings')
+        settings_page['machine_settings'] = full_frontmatter.get('machine_settings')
         
         # Extract and add thermalProperties block for interactive components
-        # Source: materialProperties.laser_material_interaction in Materials.yaml
+        # Source: properties.laser_material_interaction in Materials.yaml
         if material_data:
             thermal_props = self._extract_thermal_properties(material_data)
             if thermal_props:
@@ -1160,8 +1170,8 @@ class TrivialFrontmatterExporter:
                             }
                     self.logger.debug(f"✅ Added laserMaterialInteraction (category defaults) for {material_name}")
         
-        # Add material_challenges (category-level diagnostic guidance)
-        settings_page['material_challenges'] = full_frontmatter.get('material_challenges')
+        # Add challenges (category-level diagnostic guidance)
+        settings_page['challenges'] = full_frontmatter.get('challenges')
         
         # Add preservedData with generation timestamp for metadata sync validation
         from datetime import datetime
@@ -1181,14 +1191,14 @@ class TrivialFrontmatterExporter:
         ordered_settings_page = self.field_order_validator.reorder_fields(settings_page, 'settings')
         
         with open(output_path, 'w', encoding='utf-8') as f:
-            yaml.dump(dict(ordered_settings_page), f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
+            yaml.dump(dict(ordered_settings_page), f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=float('inf'))
         
         self.logger.info(f"✅ Exported settings page: {material_name} → {filename}")
     
     # DEPRECATED: Replaced by centralized DomainLinkagesService
     # def _build_material_linkages(self, material_id: str, material_name: str) -> Dict:
     #     """
-    #     OLD METHOD - Now using shared/services/domain_linkages_service.py
+    #     OLD METHOD - Now using shared/services/relationships_service.py
     #     
     #     This method has been replaced by DomainLinkagesService.generate_linkages()
     #     for consistency across all exporters.
@@ -1351,7 +1361,7 @@ class TrivialFrontmatterExporter:
         """
         Extract thermalProperties block from material data for settings page.
         
-        Source: materialProperties.laser_material_interaction
+        Source: properties.laser_material_interaction
         
         Returns:
             Dict with thermalDiffusivity, thermalConductivity, thermalDestructionPoint
@@ -1360,7 +1370,7 @@ class TrivialFrontmatterExporter:
         thermal_props = {}
         
         # Get laser_material_interaction data
-        mat_props = material_data.get('materialProperties', {})
+        mat_props = material_data.get('properties', {})
         lmi = mat_props.get('laser_material_interaction', {})
         
         if not lmi:
@@ -1413,7 +1423,7 @@ class TrivialFrontmatterExporter:
         """
         Extract laserMaterialInteraction block from material data for settings page.
         
-        Source: materialProperties.laser_material_interaction
+        Source: properties.laser_material_interaction
         
         Returns:
             Dict with laserDamageThreshold, ablationThreshold, optimalFluenceRange
@@ -1422,7 +1432,7 @@ class TrivialFrontmatterExporter:
         laser_props = {}
         
         # Get laser_material_interaction data
-        mat_props = material_data.get('materialProperties', {})
+        mat_props = material_data.get('properties', {})
         lmi = mat_props.get('laser_material_interaction', {})
         
         if not lmi:
@@ -1584,13 +1594,13 @@ class TrivialFrontmatterExporter:
         
         Args:
             data: Data to process (dict, list, or other)
-            preserve_regulatory: If True, preserve descriptions (for regulatoryStandards only)
+            preserve_regulatory: If True, preserve descriptions (for regulatory_standards only)
         
         Returns:
             Data with description fields removed (except when preserve_regulatory=True)
         """
         if preserve_regulatory:
-            # Don't remove descriptions from regulatoryStandards
+            # Don't remove descriptions from regulatory_standards
             return data
         
         if isinstance(data, dict):
@@ -1692,7 +1702,7 @@ class TrivialFrontmatterExporter:
     
     def _normalize_regulatory_standards(self, standards: Any) -> list:
         """
-        Normalize regulatoryStandards to template format.
+        Normalize regulatory_standards to template format.
         
         Per frontmatter_template.yaml, regulatory standards should be:
         - List of dicts only (no strings)
@@ -1702,7 +1712,7 @@ class TrivialFrontmatterExporter:
         - Enriched organization metadata for SEMI and ASTM standards
         
         Args:
-            standards: Raw regulatoryStandards from Materials.yaml
+            standards: Raw regulatory_standards from Materials.yaml
             
         Returns:
             Normalized list of regulatory standards dicts
@@ -1940,15 +1950,15 @@ class TrivialFrontmatterExporter:
         
         Uses material category/subcategory to determine:
         - Difficulty level → estimated hours
-        - Target contaminants (from mapping or machineSettings.contaminantType)
+        - Target contaminants (from mapping or machine_settings.contaminantType)
         - Material-specific notes
         
         Args:
             material_name: Name of the material
             category: Material category (e.g., 'metal', 'plastic')
             subcategory: Material subcategory (e.g., 'ferrous', 'non-ferrous')
-            machine_settings: Optional machineSettings dict to extract contaminantType
-            material_properties: Optional materialProperties for notes generation
+            machine_settings: Optional machine_settings dict to extract contaminantType
+            material_properties: Optional properties for notes generation
             
         Returns:
             serviceOffering dict per SERVICE_OFFERING_FRONTMATTER_SPEC.md
@@ -1965,10 +1975,10 @@ class TrivialFrontmatterExporter:
         # Get estimated hours for this difficulty level
         hours = SERVICE_OFFERING_HOURS.get(difficulty, SERVICE_OFFERING_HOURS['standard'])
         
-        # Get target contaminants - priority: machineSettings.contaminantType > mapping
+        # Get target contaminants - priority: machine_settings.contaminantType > mapping
         target_contaminants = []
         
-        # Try to get from machineSettings first
+        # Try to get from machine_settings first
         if machine_settings and isinstance(machine_settings, dict):
             contaminant_type = machine_settings.get('contaminantType')
             if contaminant_type:
@@ -1977,7 +1987,7 @@ class TrivialFrontmatterExporter:
                 elif isinstance(contaminant_type, str):
                     target_contaminants = [contaminant_type]
         
-        # Fall back to category-based mapping if no machineSettings contaminants
+        # Fall back to category-based mapping if no machine_settings contaminants
         if not target_contaminants:
             target_contaminants = TARGET_CONTAMINANTS.get(category_key)
             if not target_contaminants:

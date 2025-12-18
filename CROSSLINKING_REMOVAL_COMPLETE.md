@@ -20,7 +20,7 @@ The crosslinking feature has been completely removed from the Z-Beam Generator p
 
 ### Tests
 - `tests/test_crosslinking*.py` (all variations)
-- `tests/test_domain_linkages*.py` (all variations)
+- `tests/test_relationships*.py` (all variations)
 
 ### Documentation
 - `docs/03-components/text/CROSSLINKING.md`

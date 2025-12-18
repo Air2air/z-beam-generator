@@ -1,11 +1,11 @@
 """
-SettingsModule - Extract machineSettings with ranges from Categories.yaml
+SettingsModule - Extract machine_settings with ranges from Categories.yaml
 
-Handles: machineSettings dictionary with min/max ranges
+Handles: machine_settings dictionary with min/max ranges
 
 Architecture:
 - Extract settings from Materials.yaml
-- Apply ranges from Categories.yaml machineSettingsRanges
+- Apply ranges from Categories.yaml machine_settingsRanges
 - Shared architecture with PropertiesModule (same core logic)
 - Fail-fast if category ranges not defined
 """
@@ -17,7 +17,7 @@ from pathlib import Path
 
 
 class SettingsModule:
-    """Extract and format machineSettings for frontmatter"""
+    """Extract and format machine_settings for frontmatter"""
     
     def __init__(self, categories_yaml_path: str = "data/Categories.yaml"):
         """
@@ -48,7 +48,7 @@ class SettingsModule:
     
     def generate(self, material_name: str, material_data: Dict) -> Dict:
         """
-        Extract machineSettings with ranges
+        Extract machine_settings with ranges
         
         Args:
             material_name: Name of material
@@ -64,11 +64,11 @@ class SettingsModule:
         self.logger.info(f"Generating machine settings for {material_name}")
         
         # Get settings from material data
-        if 'machineSettings' not in material_data:
-            self.logger.warning(f"No machineSettings for {material_name}")
+        if 'machine_settings' not in material_data:
+            self.logger.warning(f"No machine_settings for {material_name}")
             return {}
         
-        settings = material_data['machineSettings']
+        settings = material_data['machine_settings']
         
         # Settings.yaml has description, value, unit per setting
         # Return as-is (already in correct format)
@@ -85,19 +85,19 @@ class SettingsModule:
         Apply min/max ranges from Categories.yaml
         
         Data Architecture Rule:
-        - machineSettingsRanges are PARAMETER-level ranges (not category-specific)
+        - machine_settingsRanges are PARAMETER-level ranges (not category-specific)
         - Apply universally across all materials/categories
         - Min/max from Categories.yaml ONLY, NEVER from Materials.yaml
         
-        Note: Unlike materialProperties which are category-specific,
+        Note: Unlike properties which are category-specific,
         machine settings ranges are universal parameters (power, frequency, etc.)
         """
         # Get universal machine settings ranges
-        ranges = self.categories_data.get('machineSettingsRanges', {})
+        ranges = self.categories_data.get('machine_settingsRanges', {})
         
         if not ranges:
             self.logger.warning(
-                "No machineSettingsRanges found in Categories.yaml - "
+                "No machine_settingsRanges found in Categories.yaml - "
                 "settings will be exported without ranges"
             )
             return settings
@@ -123,7 +123,7 @@ class SettingsModule:
                 result[setting_name] = setting_value
                 
                 self.logger.debug(
-                    f"Setting '{setting_name}' not in machineSettingsRanges, "
+                    f"Setting '{setting_name}' not in machine_settingsRanges, "
                     f"using value as-is"
                 )
         

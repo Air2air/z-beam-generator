@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Migrate all domains (Materials, Settings, Compounds) to use domain_linkages structure.
+Migrate all domains (Materials, Settings, Compounds) to use relationships structure.
 
-This script adds bidirectional domain_linkages to all entities based on existing relationships.
+This script adds bidirectional relationships to all entities based on existing relationships.
 
 Author: GitHub Copilot
 Date: December 15, 2025
@@ -15,7 +15,7 @@ from typing import Dict, List, Any, Optional
 
 
 class AllDomainsMigrator:
-    """Migrates all domains to use domain_linkages structure."""
+    """Migrates all domains to use relationships structure."""
     
     def __init__(self, dry_run: bool = True):
         self.dry_run = dry_run
@@ -105,8 +105,8 @@ class AllDomainsMigrator:
         
         if 'contamination_patterns' in self.contaminants_data:
             for contaminant_id, contaminant in self.contaminants_data['contamination_patterns'].items():
-                if 'domain_linkages' in contaminant:
-                    for material_link in contaminant['domain_linkages'].get('related_materials', []):
+                if 'relationships' in contaminant:
+                    for material_link in contaminant['relationships'].get('related_materials', []):
                         material_id = material_link['id']
                         if material_id not in material_to_contaminants:
                             material_to_contaminants[material_id] = []
@@ -123,19 +123,19 @@ class AllDomainsMigrator:
                         }
                         material_to_contaminants[material_id].append(contaminant_linkage)
         
-        # Add domain_linkages to each material
+        # Add relationships to each material
         for material_id, material in self.materials_data['materials'].items():
             print(f"Processing: {material_id}...", end=' ')
             
-            if 'domain_linkages' not in material:
-                material['domain_linkages'] = {}
+            if 'relationships' not in material:
+                material['relationships'] = {}
             
             # Add related contaminants
             if material_id in material_to_contaminants:
-                material['domain_linkages']['related_contaminants'] = material_to_contaminants[material_id]
+                material['relationships']['related_contaminants'] = material_to_contaminants[material_id]
                 self.stats['materials_contaminant_links'] += len(material_to_contaminants[material_id])
             else:
-                material['domain_linkages']['related_contaminants'] = []
+                material['relationships']['related_contaminants'] = []
             
             self.stats['materials_processed'] += 1
             print("✅")
@@ -160,8 +160,8 @@ class AllDomainsMigrator:
         for setting_id, setting in self.settings_data['settings'].items():
             print(f"Processing: {setting_id}...", end=' ')
             
-            if 'domain_linkages' not in setting:
-                setting['domain_linkages'] = {}
+            if 'relationships' not in setting:
+                setting['relationships'] = {}
             
             # Get materials that use this setting (from applicable_materials or similar)
             related_materials = []
@@ -189,14 +189,14 @@ class AllDomainsMigrator:
                         self.stats['settings_material_links'] += 1
                         
                         # Get contaminants for this material
-                        if 'domain_linkages' in material:
-                            for contaminant in material['domain_linkages'].get('related_contaminants', []):
+                        if 'relationships' in material:
+                            for contaminant in material['relationships'].get('related_contaminants', []):
                                 cont_id = contaminant['id']
                                 if cont_id not in related_contaminants:
                                     related_contaminants[cont_id] = contaminant
             
-            setting['domain_linkages']['related_materials'] = related_materials
-            setting['domain_linkages']['related_contaminants'] = list(related_contaminants.values())
+            setting['relationships']['related_materials'] = related_materials
+            setting['relationships']['related_contaminants'] = list(related_contaminants.values())
             
             self.stats['settings_processed'] += 1
             self.stats['settings_contaminant_links'] += len(related_contaminants)
@@ -223,8 +223,8 @@ class AllDomainsMigrator:
         
         if 'contamination_patterns' in self.contaminants_data:
             for contaminant_id, contaminant in self.contaminants_data['contamination_patterns'].items():
-                if 'domain_linkages' in contaminant:
-                    for compound_link in contaminant['domain_linkages'].get('related_compounds', []):
+                if 'relationships' in contaminant:
+                    for compound_link in contaminant['relationships'].get('related_compounds', []):
                         compound_id = compound_link['id']
                         if compound_id not in compound_to_contaminants:
                             compound_to_contaminants[compound_id] = []
@@ -240,19 +240,19 @@ class AllDomainsMigrator:
                         }
                         compound_to_contaminants[compound_id].append(contaminant_linkage)
         
-        # Add domain_linkages to each compound
+        # Add relationships to each compound
         for compound_id, compound in self.compounds_data['compounds'].items():
             print(f"Processing: {compound_id}...", end=' ')
             
-            if 'domain_linkages' not in compound:
-                compound['domain_linkages'] = {}
+            if 'relationships' not in compound:
+                compound['relationships'] = {}
             
             # Add produced_by_contaminants
             if compound_id in compound_to_contaminants:
-                compound['domain_linkages']['produced_by_contaminants'] = compound_to_contaminants[compound_id]
+                compound['relationships']['produced_by_contaminants'] = compound_to_contaminants[compound_id]
                 self.stats['compounds_contaminant_links'] += len(compound_to_contaminants[compound_id])
             else:
-                compound['domain_linkages']['produced_by_contaminants'] = []
+                compound['relationships']['produced_by_contaminants'] = []
             
             self.stats['compounds_processed'] += 1
             print("✅")
@@ -294,7 +294,7 @@ class AllDomainsMigrator:
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Migrate all domains to domain_linkages format')
+    parser = argparse.ArgumentParser(description='Migrate all domains to relationships format')
     parser.add_argument('--apply', action='store_true', help='Apply changes (default is dry-run)')
     args = parser.parse_args()
     

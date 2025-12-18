@@ -13,7 +13,7 @@ Architecture:
 REMOVED MODULES (fields removed from template):
 - ApplicationsModule (applications field removed)
 - ImpactModule (environmentalImpact, outcomeMetrics removed)
-- CharacteristicsModule (materialCharacteristics removed)
+- CharacteristicsModule (characteristics removed)
 """
 
 import logging
@@ -87,19 +87,19 @@ class FrontmatterOrchestrator:
             
             # 3. Material Properties (with ranges)
             self.logger.debug("3/6 Generating material properties...")
-            frontmatter['materialProperties'] = self.properties_module.generate(
+            frontmatter['properties'] = self.properties_module.generate(
                 material_name, material_data
             )
             
             # 4. Machine Settings (with ranges)
             self.logger.debug("4/6 Generating machine settings...")
-            frontmatter['machineSettings'] = self.settings_module.generate(
+            frontmatter['machine_settings'] = self.settings_module.generate(
                 material_name, material_data
             )
             
             # 5. Compliance (regulatory standards)
             self.logger.debug("5/6 Extracting compliance...")
-            frontmatter['regulatoryStandards'] = self.compliance_module.generate(
+            frontmatter['regulatory_standards'] = self.compliance_module.generate(
                 material_data
             )
             

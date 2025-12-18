@@ -6,12 +6,12 @@ Main class for frontmatter generation with **shared generation architecture**.
 
 ### 🏗️ Shared Generation Architecture
 
-**Core Principle**: Both `materialProperties` and `machineSettings` are generated using **identical, reusable methods**. The implementation differs only in data category parameters, making the system highly maintainable and consistent.
+**Core Principle**: Both `properties` and `machine_settings` are generated using **identical, reusable methods**. The implementation differs only in data category parameters, making the system highly maintainable and consistent.
 
 ```python
 # Shared generation flow:
-materialProperties = _generate_properties_with_ranges(material_data)    # Uses material category
-machineSettings = _generate_machine_settings_with_ranges(material_data) # Uses 'machine' category
+properties = _generate_properties_with_ranges(material_data)    # Uses material category
+machine_settings = _generate_machine_settings_with_ranges(material_data) # Uses 'machine' category
 
 # Both call the same core method:
 _create_datametrics_property(value, prop_key, category) → DataMetrics structure
@@ -21,8 +21,8 @@ _create_datametrics_property(value, prop_key, category) → DataMetrics structur
 
 | Method | Purpose | Category Parameter | Output Structure |
 |--------|---------|-------------------|------------------|
-| `_generate_properties_with_ranges()` | materialProperties | material type ('metal', 'ceramic') | DataMetrics |
-| `_generate_machine_settings_with_ranges()` | machineSettings | 'machine' | DataMetrics |
+| `_generate_properties_with_ranges()` | properties | material type ('metal', 'ceramic') | DataMetrics |
+| `_generate_machine_settings_with_ranges()` | machine_settings | 'machine' | DataMetrics |
 | `_create_datametrics_property()` | **Shared core** | varies by caller | `{value, unit, confidence, min, max, description}` |
 
 ### Constructor
@@ -153,7 +153,7 @@ PropertyEnhancementService.add_properties(frontmatter, preserve_min_max=True)
 Enhances machine settings with parameter data.
 
 **Parameters:**
-- `machineSettings` (dict): Machine settings data to enhance
+- `machine_settings` (dict): Machine settings data to enhance
 - `use_optimized` (bool): Whether to use optimized format
 
 #### `apply_full_optimization(frontmatter: dict, use_optimized: bool = True) -> dict`

@@ -21,13 +21,13 @@ Website navigation requires bidirectional relationships between domains:
 
 ## Decision
 
-**Embed complete `domain_linkages` object in every frontmatter file with rich metadata for immediate rendering.**
+**Embed complete `relationships` object in every frontmatter file with rich metadata for immediate rendering.**
 
 ### Structure
 
 **In Materials/Settings Pages**:
 ```yaml
-domain_linkages:
+relationships:
   related_contaminants:
   - id: rust-contamination                    # Unique identifier
     title: Rust                               # Display name
@@ -40,7 +40,7 @@ domain_linkages:
 
 **In Contaminant Pages**:
 ```yaml
-domain_linkages:
+relationships:
   related_materials:
   - id: aluminum-laser-cleaning               # Material ID
     title: Aluminum                           # Display name
@@ -57,7 +57,7 @@ domain_linkages:
 
 **Chosen**: Embed complete data
 ```yaml
-domain_linkages:
+relationships:
   related_contaminants:
   - id: rust-contamination
     title: Rust                    # ← Embedded
@@ -67,7 +67,7 @@ domain_linkages:
 
 **Alternative**: Reference only
 ```yaml
-domain_linkages:
+relationships:
   related_contaminants:
   - rust-contamination  # Frontend must fetch details
 ```
@@ -81,7 +81,7 @@ domain_linkages:
 
 **2. Field Names**
 
-**Chosen**: `domain_linkages` (not `related_items`, `associations`, `links`)
+**Chosen**: `relationships` (not `related_items`, `associations`, `links`)
 
 **Rationale**:
 - Clear intention: cross-domain relationships
@@ -161,7 +161,7 @@ domain_linkages:
 
 **Structure**:
 ```yaml
-domain_linkages:
+relationships:
   related_contaminants: [rust-contamination, oil-contamination]
 ```
 
@@ -178,8 +178,8 @@ domain_linkages:
 1. DomainAssociationsValidator loads ExtractedLinkages.yaml
 2. Exporter calls get_related_contaminants(material_id)
 3. Validator returns rich metadata array
-4. Exporter writes to frontmatter['domain_linkages']
-5. Frontend reads domain_linkages directly
+4. Exporter writes to frontmatter['relationships']
+5. Frontend reads relationships directly
 ```
 
 **Code Location**:
@@ -205,7 +205,7 @@ def get_related_contaminants(self, material_id: str) -> List[Dict]:
 
 **Coverage Statistics**:
 ```bash
-# Check all pages have domain_linkages
+# Check all pages have relationships
 python3 -c "
 import yaml
 from pathlib import Path
@@ -217,10 +217,10 @@ for domain in ['materials', 'settings', 'contaminants']:
         total += 1
         with open(f) as file:
             data = yaml.safe_load(file)
-            if 'domain_linkages' in data:
+            if 'relationships' in data:
                 count += 1
 
-print(f'{count}/{total} pages have domain_linkages')
+print(f'{count}/{total} pages have relationships')
 "
 # Result: 404/404 pages (100%)
 ```
@@ -242,7 +242,7 @@ python3 scripts/tools/validate_linkages.py
 
 - Validator: `shared/validators/domain_associations_validator.py`
 - Exporter: `export/core/trivial_exporter.py` (method: `_build_material_linkages`)
-- Tests: `tests/test_domain_linkages.py`
+- Tests: `tests/test_relationships.py`
 - Sample: `frontmatter/materials/aluminum-laser-cleaning.yaml`
 
 ## Notes
@@ -257,7 +257,7 @@ We chose runtime performance (embedded data) over smaller files. Reasons:
 
 **Future Considerations**:
 
-If domain_linkages grow significantly (>50 items per page):
+If relationships grow significantly (>50 items per page):
 1. **Option**: Paginate linkages (show top 20, "View more" loads rest)
 2. **Option**: Split into categories (common, occasional, rare)
 3. **Current**: Average 6-8 contaminants per material (manageable)
@@ -269,7 +269,7 @@ If domain_linkages grow significantly (>50 items per page):
 - **Our approach**: Follows industry best practice
 
 **Performance Metrics**:
-- Average domain_linkages size: 2-3KB per page
+- Average relationships size: 2-3KB per page
 - Frontmatter load time: <1ms
 - Rendering time: Instant (no async operations)
 - SEO impact: Positive (all links indexable)

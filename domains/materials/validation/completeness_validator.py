@@ -12,10 +12,10 @@ Enforces 100% data completeness for frontmatter generation:
 5. Detects empty sections and triggers research
 
 STRUCTURE (per materials/data/frontmatter_template.yaml):
-- 'materialProperties' = Top-level key containing category groups
+- 'properties' = Top-level key containing category groups
 - Category groups: 'material_characteristics', 'laser_material_interaction'
 - Properties are DIRECTLY under category groups (FLAT structure)
-- Example: materialProperties.material_characteristics.density (NOT .properties.density)
+- Example: properties.material_characteristics.density (NOT .properties.density)
 
 METADATA KEYS (excluded from property counts):
 - 'label' = Display name for category group
@@ -57,7 +57,7 @@ class CompletenessValidator:
     
     Enforces:
     - All essential properties present
-    - No empty sections (materialProperties, machineSettings)
+    - No empty sections (properties, machine_settings)
     - Legacy qualitative properties re-categorized
     - All values validated and researched
     - Comprehensive property coverage
@@ -167,17 +167,17 @@ class CompletenessValidator:
         unvalidated = []
         
         # 1. Check for empty sections
-        if not frontmatter.get('materialProperties'):
-            empty_sections.append('materialProperties')
-            errors.append(f"materialProperties section is empty for {material_name}")
+        if not frontmatter.get('properties'):
+            empty_sections.append('properties')
+            errors.append(f"properties section is empty for {material_name}")
         
-        if not frontmatter.get('machineSettings'):
-            empty_sections.append('machineSettings')
-            errors.append(f"machineSettings section is empty for {material_name}")
+        if not frontmatter.get('machine_settings'):
+            empty_sections.append('machine_settings')
+            errors.append(f"machine_settings section is empty for {material_name}")
         
         # 2. Validate essential properties present
         essential = self.ESSENTIAL_PROPERTIES.get(material_category, set())
-        present_props = self._extract_all_properties(frontmatter.get('materialProperties', {}))
+        present_props = self._extract_all_properties(frontmatter.get('properties', {}))
         
         missing = essential - present_props
         if missing:
@@ -189,7 +189,7 @@ class CompletenessValidator:
         
         # 3. Detect legacy qualitative properties in wrong categories
         legacy_qual = self._detect_legacy_qualitative(
-            frontmatter.get('materialProperties', {})
+            frontmatter.get('properties', {})
         )
         if legacy_qual:
             legacy_qualitative = legacy_qual
@@ -200,7 +200,7 @@ class CompletenessValidator:
         
         # 4. Validate all values have confidence and sources
         unvalidated = self._find_unvalidated_values(
-            frontmatter.get('materialProperties', {})
+            frontmatter.get('properties', {})
         )
         if unvalidated:
             warnings.append(
@@ -209,7 +209,7 @@ class CompletenessValidator:
             )
         
         # 5. Validate machine settings completeness
-        present_settings = set(frontmatter.get('machineSettings', {}).keys())
+        present_settings = set(frontmatter.get('machine_settings', {}).keys())
         missing_settings = self.ESSENTIAL_MACHINE_SETTINGS - present_settings
         if missing_settings:
             missing_props.extend(sorted(missing_settings))
@@ -247,7 +247,7 @@ class CompletenessValidator:
         CANONICAL REFERENCE: materials/data/frontmatter_template.yaml
         
         GROUPED structure:
-          materialProperties:                          <- Top-level key (ALWAYS 'materialProperties')
+          properties:                          <- Top-level key (ALWAYS 'properties')
             material_characteristics:                  <- Category group
               label: "Material Characteristics"
               description: "..."
@@ -262,7 +262,7 @@ class CompletenessValidator:
                 laserReflectivity: { value, min, max, unit }
         
         NOTE: 'properties' here refers to the nested dict WITHIN a category group,
-              not the top-level which is ALWAYS 'materialProperties'
+              not the top-level which is ALWAYS 'properties'
         """
         properties = set()
         
@@ -343,7 +343,7 @@ class CompletenessValidator:
         # FLATTENED STRUCTURE - No nested 'properties' key
         
         Args:
-            material_properties: Current materialProperties structure (flattened)
+            material_properties: Current properties structure (flattened)
             
         Returns:
             Tuple of (updated_material_properties, migration_log)

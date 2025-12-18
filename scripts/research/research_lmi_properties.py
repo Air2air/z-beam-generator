@@ -154,11 +154,11 @@ def main():
                 print(f"   ⚠️  No properties researched")
                 continue
             
-            # Initialize materialProperties if needed
-            if 'materialProperties' not in all_materials[material_name]:
-                all_materials[material_name]['materialProperties'] = {}
+            # Initialize properties if needed
+            if 'properties' not in all_materials[material_name]:
+                all_materials[material_name]['properties'] = {}
             
-            mat_props = all_materials[material_name]['materialProperties']
+            mat_props = all_materials[material_name]['properties']
             
             # Create or update laser_material_interaction
             if 'laser_material_interaction' not in mat_props:

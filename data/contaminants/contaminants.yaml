@@ -4,25 +4,24 @@ contamination_patterns:
       id: 1
       name: Yi-Chun Lin
     micro:
-      before: Adhesive residue contamination poses cleaning challenge because sticky
-        polymers bond tightly to surfaces. Before laser treatment, microscopic view
-        reveals uneven film layer that clings and distorts substrate texture so removal
-        proves difficult. This contaminant differs from other organic residues through
-        its viscoelastic tackiness, which allows slow migration under minimal heat
-        and resists mechanical wiping unlike dry dusts. After ablation, surface exhibits
-        smooth uniformity and no lingering traces. Laser cleaning achieves thorough
-        decontamination so original properties restore effectively. Observations confirm
-        process effectiveness in removing such tenacious buildup.
-      after: "Ikmanda Roswati, Ph.D.  \nIndonesia"
+      before: Adhesive residue contamination exhibits sticky viscoelastic bonds, distinct
+        from other organic residues by trapping micro-particles in polymeric matrix
+        and resisting shear forces so removal challenges increase. Before laser cleaning,
+        surface appears irregular with layered buildup that clings tightly. After
+        treatment, contamination is ablated completely, and clean surface shows uniformity
+        without remnants. During observations, residue's arcane fluorescence under
+        light reveals hidden films, because heat from laser vaporizes bonds effectively.
+        Process achieves smooth texture on substrate.
+      after: Ikmanda Roswati, Ph.D. from Indonesia
     category: organic-residue
     context_notes: Common on manufactured items, shipped goods, or items with labels/tape
-    description: Adhesive residue contamination consists of organic polymers from
-      tapes and labels, so sticky films form on surfaces during manufacturing or shipping
-      after these materials are removed. This contamination differs from oily types
-      because it shows tacky and uneven buildup that adheres strongly to metals like
-      steel and aluminum, while it blends into plastics such as ABS on exposure. During
-      mechanical removal, re-adhesion occurs so challenges arise, but laser cleaning
-      vaporizes organics selectively and substrates remain undamaged after treatment.
+    description: Adhesive residue appears as sticky organic films on surfaces after
+      tapes or labels are removed from manufactured items and shipped goods, so tacky
+      uneven buildup forms during handling. This contamination differs from oily types
+      because strong adhesion occurs on metals like steel and aluminum, while blending
+      happens on plastics such as ABS, and mechanical removal causes re-adhesion challenges
+      in attempts. Laser cleaning vaporizes organics selectively during exposure,
+      so substrates stay undamaged after treatment.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -333,7 +332,7 @@ contamination_patterns:
       texture: sticky, tacky, can attract dirt
       thickness: thin film
     subcategory: adhesive
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Aluminum
         title: Aluminum
@@ -693,6 +692,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
+    slug: adhesive-residue-tape-marks
   algae-growth-contamination:
     composition:
     - Chlorophyll
@@ -970,7 +970,7 @@ contamination_patterns:
       id: 2
     category: biological
     subcategory: growth
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -1241,6 +1241,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: algae-and-lichen-growth
   aluminum-oxidation-contamination:
     author:
       id: 3
@@ -1499,7 +1500,7 @@ contamination_patterns:
       texture: powdery, chalky, matte
       thickness: thin surface layer
     subcategory: non-ferrous
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Aluminum
         title: Aluminum
@@ -1523,6 +1524,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
+    slug: aluminum-oxidation
   annealing-scale-contamination:
     composition:
     - Fe₃O₄
@@ -1773,7 +1775,7 @@ contamination_patterns:
       id: 4
     category: thermal-damage
     subcategory: scale
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -1799,6 +1801,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: heat-treatment-scale
   anodizing-defects-contamination:
     composition:
     - Al₂O₃
@@ -2035,7 +2038,7 @@ contamination_patterns:
       id: 3
     category: metallic-coating
     subcategory: anodizing
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Aluminum
         title: Aluminum
@@ -2047,6 +2050,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: anodizing-layer-irregularities
   anti-seize-contamination:
     composition:
     - Copper
@@ -2291,7 +2295,7 @@ contamination_patterns:
       id: 1
     category: organic-residue
     subcategory: lubricant
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -2317,6 +2321,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: anti-seize-compound
   asbestos-coating-contamination:
     composition:
     - Mg₃Si₂O₅(OH)₄
@@ -2549,7 +2554,7 @@ contamination_patterns:
       id: 1
     category: inorganic-coating
     subcategory: hazardous
-    domain_linkages:
+    relationships:
       related_materials:
       - id: steel-pipes
         title: Steel Pipes
@@ -2575,6 +2580,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: asbestos-containing-material
   aviation-sealant-contamination:
     composition:
     - Polysulfide
@@ -2862,7 +2868,7 @@ contamination_patterns:
       id: 4
     category: organic-residue
     subcategory: adhesive
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Aluminum
         title: Aluminum
@@ -2896,6 +2902,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: aerospace-sealant-residue
   battery-corrosion-contamination:
     composition:
     - KOH
@@ -3132,7 +3139,7 @@ contamination_patterns:
       id: 3
     category: oxidation
     subcategory: battery
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Copper
         title: Copper
@@ -3158,6 +3165,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: battery-leakage-corrosion
   beryllium-oxide-contamination:
     composition:
     - BeO
@@ -3415,7 +3423,7 @@ contamination_patterns:
       id: 1
     category: chemical-residue
     subcategory: hazardous
-    domain_linkages:
+    relationships:
       related_materials:
       - id: copper-beryllium-alloy
         title: Copper-Beryllium Alloy
@@ -3434,6 +3442,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: beryllium-oxide-contamination
   biological-stains-contamination:
     composition:
     - Proteins
@@ -3713,7 +3722,7 @@ contamination_patterns:
       id: 3
     category: biological
     subcategory: deposit
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -3942,6 +3951,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: organic-biofilm-deposits
   bitumen-tar-contamination:
     composition:
     - Asphaltene
@@ -4222,7 +4232,7 @@ contamination_patterns:
       id: 1
     category: organic-residue
     subcategory: petroleum
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -4311,6 +4321,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: bitumen-and-tar-coatings
   blood-residue-contamination:
     composition:
     - Hemoglobin
@@ -4592,7 +4603,7 @@ contamination_patterns:
       id: 3
     category: biological
     subcategory: deposit
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Stainless Steel
         title: Stainless Steel
@@ -4702,6 +4713,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: biological-blood-residue
   brake-dust-contamination:
     composition:
     - Fe
@@ -4948,7 +4960,7 @@ contamination_patterns:
       id: 2
     category: inorganic-coating
     subcategory: mineral
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -4974,6 +4986,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: brake-pad-dust-deposits
   brass-plating-contamination:
     composition:
     - Cu-Zn Alloy
@@ -5214,7 +5227,7 @@ contamination_patterns:
       id: 3
     category: metallic-coating
     subcategory: plating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -5233,6 +5246,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: brass-coating-removal
   bronze-patina-contamination:
     composition:
     - Cu₂O
@@ -5473,7 +5487,7 @@ contamination_patterns:
       id: 3
     category: oxidation
     subcategory: non-ferrous
-    domain_linkages:
+    relationships:
       related_materials:
       - id: bronze
         title: Bronze
@@ -5499,6 +5513,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: bronze-patina-and-corrosion
   cadmium-plating-contamination:
     composition:
     - Cd
@@ -5731,7 +5746,7 @@ contamination_patterns:
       id: 2
     category: metallic-coating
     subcategory: plating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -5750,6 +5765,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: cadmium-plating-removal
   carbon-buildup-contamination:
     composition:
     - C
@@ -6013,7 +6029,7 @@ contamination_patterns:
       id: 2
     category: organic-residue
     subcategory: other
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -6081,6 +6097,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: carbon-deposit-buildup
   carbon-soot-contamination:
     composition:
     - C
@@ -6385,7 +6402,7 @@ contamination_patterns:
       id: 3
     category: organic-residue
     subcategory: other
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -6614,6 +6631,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: carbon-soot-deposits
   ceramic-coating-contamination:
     composition:
     - ZrO₂
@@ -6880,7 +6898,7 @@ contamination_patterns:
       id: 2
     category: inorganic-coating
     subcategory: ceramic
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -6906,6 +6924,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: ceramic-heat-barrier-coating
   ceramic-glaze-contamination:
     composition:
     - SiO₂
@@ -7169,7 +7188,7 @@ contamination_patterns:
       id: 1
     category: inorganic-coating
     subcategory: ceramic
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Porcelain
         title: Porcelain
@@ -7300,6 +7319,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: ceramic-glaze-deposits
   chemical-stains-contamination:
     author:
       id: 3
@@ -7571,7 +7591,7 @@ contamination_patterns:
       texture: smooth to etched, may pit surface
       thickness: surface staining to deep etching
     subcategory: industrial
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -7798,6 +7818,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
+    slug: chemical-stains-acid-etching
   chrome-pitting-contamination:
     composition:
     - Cr₂O₃
@@ -7997,7 +8018,7 @@ contamination_patterns:
       id: 1
     category: oxidation
     subcategory: non-ferrous
-    domain_linkages:
+    relationships:
       related_materials:
       - id: chrome-plated-steel
         title: Chrome-Plated Steel
@@ -8016,6 +8037,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: chromium-oxide-pitting
   concrete-dust-contamination:
     composition:
     - CaCO₃
@@ -8265,7 +8287,7 @@ contamination_patterns:
       id: 3
     category: inorganic-coating
     subcategory: mineral
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -8354,6 +8376,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: concrete-dust-deposits
   conversion-coating-contamination:
     composition:
     - Zn₃(PO₄)₂
@@ -8591,7 +8614,7 @@ contamination_patterns:
       id: 2
     category: inorganic-coating
     subcategory: coating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -8617,6 +8640,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: chemical-conversion-coating
   coolant-scale-contamination:
     composition:
     - SiO₂
@@ -8864,7 +8888,7 @@ contamination_patterns:
       id: 1
     category: thermal-damage
     subcategory: scale
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Aluminum
         title: Aluminum
@@ -8890,6 +8914,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: engine-coolant-scale
   copper-patina-contamination:
     author:
       id: 4
@@ -9359,7 +9384,7 @@ contamination_patterns:
             Subtle patina that follows surface texture.
         last_updated: '2025-11-30T22:27:10.411319'
     subcategory: non-ferrous
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Copper
         title: Copper
@@ -9397,6 +9422,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
+    slug: copper-patina-verdigris
   copper-plating-contamination:
     composition:
     - Cu
@@ -9626,7 +9652,7 @@ contamination_patterns:
       id: 2
     category: metallic-coating
     subcategory: plating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -9652,6 +9678,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: copper-electroplating
   corrosion-inhibitor-contamination:
     composition:
     - Amines
@@ -9905,7 +9932,7 @@ contamination_patterns:
       id: 4
     category: inorganic-coating
     subcategory: coating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -9931,6 +9958,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: corrosion-inhibitor-coating
   cutting-fluid-contamination:
     composition:
     - Emulsified Oil
@@ -10203,7 +10231,7 @@ contamination_patterns:
       id: 4
     category: organic-residue
     subcategory: lubricant
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -10236,6 +10264,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: machining-coolant-residue
   diamond-coating-contamination:
     composition:
     - Amorphous Carbon
@@ -10482,7 +10511,7 @@ contamination_patterns:
       id: 1
     category: inorganic-coating
     subcategory: coating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -10508,6 +10537,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: diamond-like-carbon-removal
   efflorescence-contamination:
     composition:
     - CaCO₃
@@ -10757,7 +10787,7 @@ contamination_patterns:
       id: 4
     category: inorganic-coating
     subcategory: mineral
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -10846,6 +10876,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: concrete-efflorescence
   electroplating-residue-contamination:
     composition:
     - Cyanides
@@ -11097,7 +11128,7 @@ contamination_patterns:
       id: 3
     category: metallic-coating
     subcategory: plating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -11123,6 +11154,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: electroplating-solution-residue
   environmental-dust-contamination:
     author:
       id: 3
@@ -11385,7 +11417,7 @@ contamination_patterns:
       texture: fine, powdery, can cake with moisture
       thickness: thin film to thick accumulation
     subcategory: other
-    domain_linkages:
+    relationships:
       related_materials:
       - id: all
         title: ALL
@@ -11416,6 +11448,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
+    slug: environmental-dust-layer
   epoxy-residue-contamination:
     composition:
     - Bisphenol A
@@ -11689,7 +11722,7 @@ contamination_patterns:
       id: 1
     category: organic-residue
     subcategory: adhesive
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -11814,6 +11847,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: epoxy-resin-deposits
   exhaust-residue-contamination:
     composition:
     - C
@@ -12075,7 +12109,7 @@ contamination_patterns:
       id: 2
     category: thermal-damage
     subcategory: fire
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -12101,6 +12135,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: exhaust-system-deposits
   fertilizer-residue-contamination:
     composition:
     - KNO₃
@@ -12361,7 +12396,7 @@ contamination_patterns:
       id: 2
     category: chemical-residue
     subcategory: industrial
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -12541,6 +12576,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: fertilizer-salt-deposits
   fire-damage-contamination:
     composition:
     - C
@@ -12808,7 +12844,7 @@ contamination_patterns:
       id: 3
     category: thermal-damage
     subcategory: fire
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -12946,6 +12982,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: fire-and-smoke-damage
   forging-scale-contamination:
     composition:
     - Fe₃O₄
@@ -13177,7 +13214,7 @@ contamination_patterns:
       id: 3
     category: thermal-damage
     subcategory: scale
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -13203,6 +13240,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: forging-mill-scale
   fuel-varnish-contamination:
     composition:
     - Gum
@@ -13447,7 +13485,7 @@ contamination_patterns:
       id: 1
     category: organic-residue
     subcategory: petroleum
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -13473,6 +13511,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: fuel-system-varnish
   galvanize-corrosion-contamination:
     composition:
     - ZnO
@@ -13702,7 +13741,7 @@ contamination_patterns:
       id: 2
     category: oxidation
     subcategory: ferrous
-    domain_linkages:
+    relationships:
       related_materials:
       - id: galvanized-steel
         title: Galvanized Steel
@@ -13721,6 +13760,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: white-rust-on-galvanized-steel
   gasket-material-contamination:
     composition:
     - Cellulose
@@ -13974,7 +14014,7 @@ contamination_patterns:
       id: 4
     category: organic-residue
     subcategory: adhesive
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -14000,6 +14040,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: gasket-material-residue
   gold-plating-contamination:
     composition:
     - Au
@@ -14229,7 +14270,7 @@ contamination_patterns:
       id: 4
     category: metallic-coating
     subcategory: plating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Copper
         title: Copper
@@ -14255,6 +14296,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: gold-electroplating
   graffiti-paint-contamination:
     composition:
     - Acrylic
@@ -14545,7 +14587,7 @@ contamination_patterns:
       id: 4
     category: inorganic-coating
     subcategory: paint
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -14732,6 +14774,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: graffiti-and-spray-paint
   graphite-marks-contamination:
     composition:
     - C (Graphite)
@@ -14980,7 +15023,7 @@ contamination_patterns:
       id: 4
     category: organic-residue
     subcategory: marking
-    domain_linkages:
+    relationships:
       related_materials:
       - id: paper
         title: Paper
@@ -15146,6 +15189,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: graphite-deposit-traces
   grease-deposits-contamination:
     composition:
     - Mineral Oil
@@ -15397,7 +15441,7 @@ contamination_patterns:
       id: 4
     category: organic-residue
     subcategory: petroleum
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -15430,6 +15474,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: heavy-machinery-grease
   hydraulic-fluid-contamination:
     composition:
     - Mineral Oil
@@ -15678,7 +15723,7 @@ contamination_patterns:
       id: 2
     category: organic-residue
     subcategory: petroleum
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -15704,6 +15749,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: hydraulic-fluid-contamination
   industrial-oil-contamination:
     author:
       id: 2
@@ -16316,7 +16362,7 @@ contamination_patterns:
       texture: greasy, sticky, slippery
       thickness: thin film to thick deposits
     subcategory: petroleum
-    domain_linkages:
+    relationships:
       related_materials:
       - id: all
         title: ALL
@@ -16340,6 +16386,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
+    slug: industrial-oil-grease-buildup
   ink-stains-contamination:
     composition:
     - Pigments
@@ -16595,7 +16642,7 @@ contamination_patterns:
       id: 3
     category: organic-residue
     subcategory: marking
-    domain_linkages:
+    relationships:
       related_materials:
       - id: paper
         title: Paper
@@ -16719,6 +16766,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: printing-ink-residue
   insect-residue-contamination:
     composition:
     - Proteins
@@ -16990,7 +17038,7 @@ contamination_patterns:
       id: 3
     category: biological
     subcategory: deposit
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Crown Glass
         title: Crown Glass
@@ -17142,6 +17190,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: insect-impact-residue
   laser-marking-contamination:
     composition:
     - Metal Oxides
@@ -17379,7 +17428,7 @@ contamination_patterns:
       id: 1
     category: organic-residue
     subcategory: marking
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -17412,6 +17461,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: laser-marking-discoloration
   lead-paint-contamination:
     composition:
     - Pb₃O₄
@@ -17683,7 +17733,7 @@ contamination_patterns:
       id: 1
     category: inorganic-coating
     subcategory: paint
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -17786,6 +17836,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: lead-based-paint-removal
   lime-scale-contamination:
     composition:
     - CaCO₃
@@ -18039,7 +18090,7 @@ contamination_patterns:
       id: 4
     category: thermal-damage
     subcategory: scale
-    domain_linkages:
+    relationships:
       related_materials:
       - id: tile
         title: Tile
@@ -18247,6 +18298,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: limescale-deposits
   medical-disinfectant-contamination:
     composition:
     - NaOCl
@@ -18495,7 +18547,7 @@ contamination_patterns:
       id: 4
     category: chemical-residue
     subcategory: industrial
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Stainless Steel
         title: Stainless Steel
@@ -18605,6 +18657,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: medical-disinfectant-residue
   mercury-contamination:
     composition:
     - Hg
@@ -18857,7 +18910,7 @@ contamination_patterns:
       id: 1
     category: chemical-residue
     subcategory: hazardous
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -18974,6 +19027,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: mercury-spill-residue
   metal-polish-contamination:
     composition:
     - Al₂O₃
@@ -19213,7 +19267,7 @@ contamination_patterns:
       id: 4
     category: organic-residue
     subcategory: wax
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -19246,6 +19300,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: metal-polish-residue
   mineral-deposits-contamination:
     composition:
     - CaCO₃
@@ -19541,7 +19596,7 @@ contamination_patterns:
       id: 1
     category: thermal-damage
     subcategory: scale
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Aluminum
         title: Aluminum
@@ -19812,6 +19867,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: hard-water-mineral-scale
   mineral-stain-contamination:
     composition:
     - Fe₂O₃
@@ -20068,7 +20124,7 @@ contamination_patterns:
       id: 2
     category: inorganic-coating
     subcategory: mineral
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -20164,6 +20220,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: mineral-staining
   mold-mildew-contamination:
     composition:
     - Fungal Hyphae
@@ -20437,7 +20494,7 @@ contamination_patterns:
       id: 1
     category: biological
     subcategory: growth
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -20596,6 +20653,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: mold-and-mildew-growth
   nickel-plating-contamination:
     composition:
     - Ni
@@ -20837,7 +20895,7 @@ contamination_patterns:
       id: 2
     category: metallic-coating
     subcategory: plating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -20863,6 +20921,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: electroless-nickel-plating
   paint-residue-contamination:
     author:
       id: 3
@@ -21174,7 +21233,7 @@ contamination_patterns:
       texture: flaking, peeling, cracked
       thickness: thin chips to thick layers
     subcategory: paint
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -21436,6 +21495,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
+    slug: paint-residue-coating-failure
   passivation-defect-contamination:
     composition:
     - Cr₂O₃
@@ -21669,7 +21729,7 @@ contamination_patterns:
       id: 3
     category: inorganic-coating
     subcategory: coating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Stainless Steel
         title: Stainless Steel
@@ -21688,6 +21748,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: passivation-layer-irregularities
   pcb-contamination:
     composition:
     - C₁₂H₁₀₋ₓClₓ
@@ -21932,7 +21993,7 @@ contamination_patterns:
       id: 1
     category: chemical-residue
     subcategory: industrial
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -21958,6 +22019,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: pcb-oil-contamination
   pesticide-residue-contamination:
     composition:
     - Organophosphates
@@ -22224,7 +22286,7 @@ contamination_patterns:
       id: 2
     category: chemical-residue
     subcategory: industrial
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -22383,6 +22445,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: pesticide-chemical-residue
   pharmaceutical-residue-contamination:
     composition:
     - APIs
@@ -22657,7 +22720,7 @@ contamination_patterns:
       id: 3
     category: chemical-residue
     subcategory: industrial
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Stainless Steel
         title: Stainless Steel
@@ -22725,6 +22788,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: pharmaceutical-drug-residue
   pickling-residue-contamination:
     composition:
     - FeCl₂
@@ -22960,7 +23024,7 @@ contamination_patterns:
       id: 1
     category: inorganic-coating
     subcategory: coating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Stainless Steel
         title: Stainless Steel
@@ -22979,6 +23043,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: acid-pickling-stains
   plasma-spray-contamination:
     composition:
     - Al₂O₃
@@ -23216,7 +23281,7 @@ contamination_patterns:
       id: 2
     category: thermal-damage
     subcategory: coating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -23242,6 +23307,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: thermal-spray-coating
   plastic-residue-contamination:
     composition:
     - Polyethylene
@@ -23515,7 +23581,7 @@ contamination_patterns:
       id: 2
     category: organic-residue
     subcategory: polymer
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -23674,6 +23740,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: degraded-polymer-deposits
   pollen-deposit-contamination:
     composition:
     - Proteins
@@ -23938,7 +24005,7 @@ contamination_patterns:
       id: 2
     category: biological
     subcategory: deposit
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Crown Glass
         title: Crown Glass
@@ -24090,6 +24157,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: pollen-accumulation
   powder-coating-contamination:
     composition:
     - Polyester Resin
@@ -24347,7 +24415,7 @@ contamination_patterns:
       id: 3
     category: inorganic-coating
     subcategory: paint
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -24373,6 +24441,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: powder-coating-buildup
   primer-coating-contamination:
     composition:
     - Zinc Dust
@@ -24634,7 +24703,7 @@ contamination_patterns:
       id: 1
     category: inorganic-coating
     subcategory: paint
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -24660,6 +24729,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: paint-primer-layers
   pvd-coating-contamination:
     composition:
     - TiN
@@ -24894,7 +24964,7 @@ contamination_patterns:
       id: 2
     category: inorganic-coating
     subcategory: coating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Tool Steel
         title: Tool Steel
@@ -24920,6 +24990,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: pvd-coating-defects
   quench-oil-contamination:
     composition:
     - Carbonized Oil
@@ -25163,7 +25234,7 @@ contamination_patterns:
       id: 1
     category: thermal-damage
     subcategory: scale
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -25182,6 +25253,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: quenching-oil-residue
   radioactive-contamination:
     composition:
     - Isotopes
@@ -25430,7 +25502,7 @@ contamination_patterns:
       id: 2
     category: chemical-residue
     subcategory: hazardous
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Stainless Steel
         title: Stainless Steel
@@ -25540,6 +25612,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: surface-radioactive-contamination
   road-grime-contamination:
     composition:
     - Soil
@@ -25793,7 +25866,7 @@ contamination_patterns:
       id: 4
     category: organic-residue
     subcategory: other
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -25812,6 +25885,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: automotive-road-grime
   rubber-residue-contamination:
     composition:
     - C₅H₈
@@ -26100,7 +26174,7 @@ contamination_patterns:
       id: 1
     category: organic-residue
     subcategory: polymer
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -26217,6 +26291,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: rubber-compound-residue
   rust-oxidation-contamination:
     composition:
     - Fe₂O₃
@@ -26663,7 +26738,7 @@ contamination_patterns:
       name: Ikmanda Roswati
     category: oxidation
     subcategory: ferrous
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -26703,6 +26778,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: rust-iron-oxide-formation
   salt-residue-contamination:
     composition:
     - NaCl
@@ -26955,7 +27031,7 @@ contamination_patterns:
       id: 4
     category: inorganic-coating
     subcategory: mineral
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -27135,6 +27211,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: salt-and-chloride-deposits
   scale-buildup-contamination:
     author:
       id: 1
@@ -27425,7 +27502,7 @@ contamination_patterns:
       texture: crusty, crystalline, hard
       thickness: thin coating to thick deposits
     subcategory: scale
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -27715,6 +27792,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
+    slug: mineral-scale-hard-water-deposits
   semiconductor-residue-contamination:
     composition:
     - SiO₂
@@ -27989,7 +28067,7 @@ contamination_patterns:
       id: 4
     category: chemical-residue
     subcategory: industrial
-    domain_linkages:
+    relationships:
       related_materials:
       - id: silicon-wafers
         title: Silicon Wafers
@@ -28057,6 +28135,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: semiconductor-processing-residue
   silicone-buildup-contamination:
     composition:
     - (CH₃)₂SiO
@@ -28346,7 +28425,7 @@ contamination_patterns:
       id: 3
     category: organic-residue
     subcategory: adhesive
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -28554,6 +28633,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: silicone-sealant-buildup
   silver-plating-contamination:
     composition:
     - Ag
@@ -28807,7 +28887,7 @@ contamination_patterns:
       id: 1
     category: metallic-coating
     subcategory: plating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Copper
         title: Copper
@@ -28833,6 +28913,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: silver-plating-residue
   soap-scum-contamination:
     composition:
     - Calcium Stearate
@@ -29088,7 +29169,7 @@ contamination_patterns:
       id: 2
     category: organic-residue
     subcategory: cleaning-agent
-    domain_linkages:
+    relationships:
       related_materials:
       - id: tile
         title: Tile
@@ -29205,6 +29286,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: soap-scum-buildup
   solder-flux-contamination:
     composition:
     - Abietic Acid
@@ -29449,7 +29531,7 @@ contamination_patterns:
       id: 2
     category: organic-residue
     subcategory: lubricant
-    domain_linkages:
+    relationships:
       related_materials:
       - id: pcb
         title: PCB
@@ -29475,6 +29557,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: soldering-flux-residue
   steel-corrosion-contamination:
     composition:
     - Fe₃O₄
@@ -29710,7 +29793,7 @@ contamination_patterns:
       id: 3
     category: oxidation
     subcategory: ferrous
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -29729,6 +29812,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: steel-surface-corrosion
   surgical-marking-contamination:
     composition:
     - Gentian Violet
@@ -29969,7 +30053,7 @@ contamination_patterns:
       id: 3
     category: chemical-residue
     subcategory: industrial
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Stainless Steel
         title: Stainless Steel
@@ -29988,6 +30072,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: surgical-ink-markings
   teflon-residue-contamination:
     composition:
     - PTFE
@@ -30246,7 +30331,7 @@ contamination_patterns:
       id: 3
     category: organic-residue
     subcategory: other
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -30272,6 +30357,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: ptfe-coating-residue
   thermal-paste-contamination:
     composition:
     - ZnO
@@ -30515,7 +30601,7 @@ contamination_patterns:
       id: 1
     category: organic-residue
     subcategory: other
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Copper
         title: Copper
@@ -30541,6 +30627,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: thermal-compound-deposits
   thread-locker-contamination:
     composition:
     - Dimethacrylate
@@ -30782,7 +30869,7 @@ contamination_patterns:
       id: 3
     category: organic-residue
     subcategory: adhesive
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -30808,6 +30895,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: threadlocker-adhesive
   tin-plating-contamination:
     composition:
     - Sn
@@ -31045,7 +31133,7 @@ contamination_patterns:
       id: 3
     category: metallic-coating
     subcategory: plating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -31071,6 +31159,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: tin-plating-residue
   tree-sap-contamination:
     composition:
     - Terpenes
@@ -31347,7 +31436,7 @@ contamination_patterns:
       id: 4
     category: organic-residue
     subcategory: natural
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Aluminum
         title: Aluminum
@@ -31499,6 +31588,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: tree-sap-and-resin
   undercoating-contamination:
     composition:
     - Asphalt
@@ -31756,7 +31846,7 @@ contamination_patterns:
       id: 3
     category: organic-residue
     subcategory: other
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -31775,6 +31865,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: automotive-undercoating
   uranium-oxide-contamination:
     composition:
     - U₃O₈
@@ -32012,7 +32103,7 @@ contamination_patterns:
       id: 1
     category: chemical-residue
     subcategory: hazardous
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -32031,6 +32122,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: depleted-uranium-oxide
   uv-chalking-contamination:
     author:
       id: 3
@@ -32315,7 +32407,7 @@ contamination_patterns:
       texture: powdery, chalky, rough, crazed
       thickness: thin surface degradation
     subcategory: photodegradation
-    domain_linkages:
+    relationships:
       related_materials:
       - id: abs
         title: ABS
@@ -32388,6 +32480,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
+    slug: uv-photodegradation-polymer-chalking
   water-stain-contamination:
     composition:
     - CaCO₃
@@ -32655,7 +32748,7 @@ contamination_patterns:
       id: 2
     category: organic-residue
     subcategory: other
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Concrete
         title: Concrete
@@ -32884,6 +32977,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: water-staining-and-marks
   wax-buildup-contamination:
     composition:
     - C₂₅H₅₂
@@ -33155,7 +33249,7 @@ contamination_patterns:
       id: 3
     category: organic-residue
     subcategory: wax
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Aluminum
         title: Aluminum
@@ -33349,6 +33443,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: wax-coating-buildup
   wood-rot-contamination:
     author:
       id: 1
@@ -33637,7 +33732,7 @@ contamination_patterns:
       texture: soft, spongy, crumbly, stringy
       thickness: surface to deep penetration
     subcategory: growth
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Oak
         title: Oak
@@ -33717,6 +33812,7 @@ contamination_patterns:
         applicability: laser_operation
         requirement: OSHA 29 CFR 1926.95 - Personal Protective Equipment
       ppe_requirements: []
+    slug: wood-rot-fungal-biodegradation
   zinc-plating-contamination:
     composition:
     - Zn
@@ -33944,7 +34040,7 @@ contamination_patterns:
       id: 1
     category: metallic-coating
     subcategory: plating
-    domain_linkages:
+    relationships:
       related_materials:
       - id: Steel
         title: Steel
@@ -33963,6 +34059,7 @@ contamination_patterns:
       related_compounds: []
       regulatory_compliance: []
       ppe_requirements: []
+    slug: zinc-electroplating
 error_messages:
   oil_without_context:
     code: CONTEXT_REQUIRED

@@ -44,7 +44,7 @@ class UnifiedMaterialsGenerator:
     Responsibilities:
     - Generate content via Generator (single-pass)
     - Handle FAQ topic enhancement (optional)
-    - Generate EEAT section (non-AI, random selection from regulatoryStandards)
+    - Generate EEAT section (non-AI, random selection from regulatory_standards)
     - Save to Materials.yaml
     """
     
@@ -89,11 +89,11 @@ class UnifiedMaterialsGenerator:
     
     def generate_eeat(self, material_name: str, material_data: Dict) -> Optional[Dict]:
         """
-        Generate EEAT section from regulatoryStandards (pure Python, no AI).
+        Generate EEAT section from regulatory_standards (pure Python, no AI).
         
         EEAT (Experience, Expertise, Authoritativeness, Trustworthiness):
         - reviewedBy: Fixed string "Z-Beam Quality Assurance Team"
-        - citations: 1-3 random regulatoryStandards descriptions
+        - citations: 1-3 random regulatory_standards descriptions
         - isBasedOn: 1 random regulatoryStandard with name and url
         
         Args:
@@ -101,15 +101,15 @@ class UnifiedMaterialsGenerator:
             material_data: Material data from Materials.yaml
             
         Returns:
-            EEAT dict or None if no regulatoryStandards available
+            EEAT dict or None if no regulatory_standards available
         """
         import tempfile
         import yaml
         
         self.logger.info(f"📊 Generating EEAT section for {material_name}")
         
-        # Get regulatoryStandards
-        regulatory_standards = material_data.get('regulatoryStandards', [])
+        # Get regulatory_standards
+        regulatory_standards = material_data.get('regulatory_standards', [])
         
         # Filter to dict entries only (skip any legacy string entries)
         dict_standards = [
@@ -118,7 +118,7 @@ class UnifiedMaterialsGenerator:
         ]
         
         if not dict_standards:
-            self.logger.warning(f"No valid regulatoryStandards found for {material_name}")
+            self.logger.warning(f"No valid regulatory_standards found for {material_name}")
             return None
         
         # Select 1-3 random standards for citations

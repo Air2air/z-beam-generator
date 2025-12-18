@@ -11,14 +11,14 @@
 **Regeneration Strategy**: When content quality is below 60/100 threshold, the system performs a **complete regeneration from scratch** using the original domain prompt templates.
 
 **Original Domain Prompts Used** (NOT refinement prompts):
-- `domains/materials/prompts/material_description.txt`
+- `domains/materials/prompts/description.txt`
 - `domains/materials/prompts/micro.txt`
 - `domains/materials/prompts/faq.txt`
 - `domains/contaminants/prompts/description.txt`
 - `domains/contaminants/prompts/micro.txt`
 - `domains/contaminants/prompts/faq.txt`
 - `domains/settings/prompts/settings_description.txt`
-- `domains/settings/prompts/material_challenges.txt`
+- `domains/settings/prompts/challenges.txt`
 
 **Design Decision**: The system does NOT use specialized "postprocess refinement" prompts. Instead, it treats low-quality content as if it never existed and generates completely fresh content using the same pipeline as initial generation. This ensures consistency and leverages the full learning system (sweet spot parameters, learned weights, validation correlation).
 
@@ -81,7 +81,7 @@ python3 run.py --postprocess \
 **Examples:**
 ```bash
 # Postprocess single item (dry-run preview)
-python3 run.py --postprocess --domain materials --item "Aluminum" --field material_description --dry-run
+python3 run.py --postprocess --domain materials --item "Aluminum" --field description --dry-run
 
 # Postprocess all items in domain
 python3 run.py --postprocess --domain contaminants --field description --all
@@ -90,7 +90,7 @@ python3 run.py --postprocess --domain contaminants --field description --all
 python3 run.py --postprocess --domain materials --field micro --all --batch-size 5
 
 # Process all fields for one item
-python3 run.py --postprocess --domain materials --item "Steel" --field material_description
+python3 run.py --postprocess --domain materials --item "Steel" --field description
 python3 run.py --postprocess --domain materials --item "Steel" --field micro
 python3 run.py --postprocess --domain materials --item "Steel" --field faq
 ```
@@ -125,12 +125,12 @@ python3 run.py --postprocess --domain contaminants --item "adhesive-residue" --f
 
 **Results:**
 ```
-📝 POSTPROCESSING: aluminum - material_description
+📝 POSTPROCESSING: aluminum - description
 📄 Current content: 287 chars (quality score: 58/100)
 🔍 Old quality: AI=100, Voice=100, Structural=0 → Overall=58
 
 🔧 Quality score 58/100 below threshold - regenerating...
-   Using original prompt template: domains/materials/prompts/material_description.txt
+   Using original prompt template: domains/materials/prompts/description.txt
    Loading sweet spot parameters from learning database...
    Generating humanness instructions...
 
@@ -159,7 +159,7 @@ python3 run.py --postprocess --domain contaminants --item "adhesive-residue" --f
 ### 1. Apply Voice Centralization to Legacy Content
 After implementing voice centralization (Dec 12, 2025), use postprocessing to update old content:
 ```bash
-python3 run.py --postprocess --domain materials --field material_description --all
+python3 run.py --postprocess --domain materials --field description --all
 ```
 
 2. **Regenerate Low-Quality Content**

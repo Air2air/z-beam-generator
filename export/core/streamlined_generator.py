@@ -180,9 +180,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # Load machine settings ranges from Categories.yaml (category-level data)
             machine_settings_data = category_loader.get_machine_settings()
-            if 'machineSettingsRanges' not in machine_settings_data:
-                raise MaterialDataError("machineSettingsRanges section required in category data")
-            self.machine_settings_ranges = machine_settings_data['machineSettingsRanges']
+            if 'machine_settingsRanges' not in machine_settings_data:
+                raise MaterialDataError("machine_settingsRanges section required in category data")
+            self.machine_settings_ranges = machine_settings_data['machine_settingsRanges']
             self.logger.info("Loaded machine settings ranges from category data (via CategoryDataLoader)")
         except Exception as e:
             self.logger.error(f"Failed to load machine settings data: {e}")
@@ -232,9 +232,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.categories_data = categories_data  # Store full categories data for unified industry access
             
             # Load standardized descriptions and templates
-            if 'machineSettingsDescriptions' not in categories_data:
-                raise ConfigurationError("machineSettingsDescriptions section required in Categories.yaml")
-            self.machine_settings_descriptions = categories_data['machineSettingsDescriptions']
+            if 'machine_settingsDescriptions' not in categories_data:
+                raise ConfigurationError("machine_settingsDescriptions section required in Categories.yaml")
+            self.machine_settings_descriptions = categories_data['machine_settingsDescriptions']
             
             # Initialize TemplateService with configuration and ranges
             self.template_service = TemplateService(
@@ -360,7 +360,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 if 'technical_analysis' in micro:
                     caption['technicalAnalysis'] = caption.pop('technical_analysis')
                 if 'material_properties' in micro:
-                    caption['materialProperties'] = caption.pop('material_properties')
+                    caption['properties'] = caption.pop('material_properties')
                 if 'image_url' in micro:
                     caption['imageUrl'] = caption.pop('image_url')
                 self.logger.debug("Enforced camelCase for caption keys")
@@ -430,15 +430,15 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         self.logger.info(f"🔍 Validating 100% data completeness for {material_name}...")
         
         # Step 1: Migrate legacy qualitative properties
-        if frontmatter.get('materialProperties'):
+        if frontmatter.get('properties'):
             updated_props, migration_log = self.completeness_validator.migrate_legacy_qualitative(
-                frontmatter['materialProperties']
+                frontmatter['properties']
             )
             if migration_log:
                 self.logger.info(f"✅ Migrated {len(migration_log)} legacy qualitative properties")
                 for log_entry in migration_log:
                     self.logger.debug(f"  - {log_entry}")
-                frontmatter['materialProperties'] = updated_props
+                frontmatter['properties'] = updated_props
         
         # Step 2: Validate completeness
         result = self.completeness_validator.validate_completeness(
@@ -456,7 +456,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             )
             
             # Auto-remediate: trigger property research if properties empty
-            if 'materialProperties' in result.empty_sections:
+            if 'properties' in result.empty_sections:
                 self.logger.info("🔧 Auto-remediating: researching missing properties...")
                 try:
                     # Use property_manager to discover and research
@@ -472,7 +472,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             categorized = self.property_processor.organize_properties_by_category(
                                 research_result.quantitative_properties
                             )
-                            frontmatter['materialProperties'] = self.property_processor.apply_category_ranges(
+                            frontmatter['properties'] = self.property_processor.apply_category_ranges(
                                 categorized, material_category
                             )
                             self.logger.info(f"✅ Auto-remediated: added {len(research_result.quantitative_properties)} properties")
@@ -557,10 +557,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # Generate breadcrumb navigation
             frontmatter['breadcrumb'] = self._generate_breadcrumb(material_name, material_data)
-            # Load materialProperties directly from Materials.yaml (data-only mode)
+            # Load properties directly from Materials.yaml (data-only mode)
             # Only copy category groups (material_characteristics, laser_material_interaction, etc.)
             # Skip individual properties at root level
-            material_props = material_data.get('materialProperties', {})
+            material_props = material_data.get('properties', {})
             
             if material_props:
                 # Filter to only include category groups (objects with 'label' key)
@@ -579,13 +579,13 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 )
                 self.logger.info(f"✅ Applied category ranges to {len(filtered_props)} property categories")
                 
-                frontmatter['materialProperties'] = filtered_props
+                frontmatter['properties'] = filtered_props
             else:
-                self.logger.warning(f"⚠️ No materialProperties found in Materials.yaml for {material_name}")
-                frontmatter['materialProperties'] = {}
+                self.logger.warning(f"⚠️ No properties found in Materials.yaml for {material_name}")
+                frontmatter['properties'] = {}
             
             # Generate machine settings with Min/Max ranges
-            frontmatter['machineSettings'] = self._generate_machine_settings_with_ranges(material_data, material_name)
+            frontmatter['machine_settings'] = self._generate_machine_settings_with_ranges(material_data, material_name)
             # Generate images section
             frontmatter['images'] = self._generate_images_section(material_name)
             # REMOVED: environmentalImpact and outcomeMetrics - these are AI-generated content, not data
@@ -595,12 +595,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             if self.pipeline_process_service:
                 # AI mode: Generate using PipelineProcessService
                 frontmatter = self.pipeline_process_service.add_regulatory_standards_section(frontmatter, material_data)
-            elif 'regulatoryStandards' in material_data:
+            elif 'regulatory_standards' in material_data:
                 # Data-only mode: Copy directly from Materials.yaml
-                frontmatter['regulatoryStandards'] = material_data['regulatoryStandards']
-                self.logger.info(f"✅ Copied {len(material_data['regulatoryStandards'])} regulatory standards from Materials.yaml")
+                frontmatter['regulatory_standards'] = material_data['regulatory_standards']
+                self.logger.info(f"✅ Copied {len(material_data['regulatory_standards'])} regulatory standards from Materials.yaml")
             else:
-                self.logger.warning(f"⚠️  No regulatoryStandards in Materials.yaml for {material_name}")
+                self.logger.warning(f"⚠️  No regulatory_standards in Materials.yaml for {material_name}")
             
             # Generate author
             author_info = self._generate_author(material_data)
@@ -650,7 +650,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         properties = {}
         
         # OPTIMIZATION: Check Materials.yaml first before calling AI
-        yaml_properties = material_data.get('materialProperties', {})
+        yaml_properties = material_data.get('properties', {})
         yaml_count = 0
         ai_count = 0
         
@@ -852,7 +852,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         except Exception as e:
             self.logger.error(f"Property discovery failed for {material_name}: {e}")
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
-            raise PropertyDiscoveryError(f"Cannot generate materialProperties for {material_name}: {e}")
+            raise PropertyDiscoveryError(f"Cannot generate properties for {material_name}: {e}")
         
         if not properties:
             # FAIL-FAST - must have at least some properties for valid frontmatter
@@ -941,12 +941,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     def _generate_machine_settings_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
         """Generate machine settings with DataMetrics structure using comprehensive AI discovery (GROK compliant - no fallbacks)"""
         # First check if machine settings already exist in Materials.yaml
-        if 'machineSettings' in material_data and material_data['machineSettings']:
+        if 'machine_settings' in material_data and material_data['machine_settings']:
             self.logger.info(f"Using existing machine settings from Materials.yaml for {material_name}")
-            settings = material_data['machineSettings']
+            settings = material_data['machine_settings']
             
-            # Add min/max ranges from machineSettingsRanges in Categories.yaml
-            ranges = self.categories_data.get('machineSettingsRanges', {})
+            # Add min/max ranges from machine_settingsRanges in Categories.yaml
+            ranges = self.categories_data.get('machine_settingsRanges', {})
             for setting_name, setting_data in settings.items():
                 if isinstance(setting_data, dict) and setting_name in ranges:
                     range_data = ranges[setting_name]
@@ -966,7 +966,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             return machine_settings
         except Exception as e:
             self.logger.error(f"Machine settings research failed for {material_name}: {e}")
-            raise PropertyDiscoveryError(f"Cannot generate machineSettings for {material_name}: {e}")
+            raise PropertyDiscoveryError(f"Cannot generate machine_settings for {material_name}: {e}")
 
     def _update_categories_yaml_with_range(self, category: str, property_name: str, range_data: Dict) -> None:
         """
@@ -1027,19 +1027,19 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Parse AI response and merge with Min/Max from range functions
             parsed_content = self._parse_api_response(ai_content, material_data)
             # Ensure Min/Max using PropertyProcessor (Step 5: Direct usage, no deprecated wrappers)
-            if 'materialProperties' in parsed_content:
+            if 'properties' in parsed_content:
                 # Generate properties with ranges using PropertyProcessor
                 basic_properties = self._generate_basic_properties(material_data, material_name)
                 categorized = self.property_processor.organize_properties_by_category(basic_properties)
-                parsed_content['materialProperties'] = self.property_processor.merge_with_ranges(
-                    parsed_content['materialProperties'], categorized
+                parsed_content['properties'] = self.property_processor.merge_with_ranges(
+                    parsed_content['properties'], categorized
                 )
             
-            if 'machineSettings' in parsed_content:
+            if 'machine_settings' in parsed_content:
                 # Generate machine settings using PropertyManager
                 machine_settings = self.property_manager.research_machine_settings(material_name)
-                parsed_content['machineSettings'] = self.property_processor.merge_with_ranges(
-                    parsed_content['machineSettings'], machine_settings
+                parsed_content['machine_settings'] = self.property_processor.merge_with_ranges(
+                    parsed_content['machine_settings'], machine_settings
                 )
             self.logger.info(f"Successfully generated frontmatter for {material_name} with Min/Max ranges")
             return parsed_content
@@ -1087,7 +1087,7 @@ CRITICAL REQUIREMENTS:
 
 1. **Material Properties Structure** (DataMetrics format):
    - Each property must have: value, unit, confidence, min, max, description
-   - Use materialProperties (not properties) key
+   - Use properties (not properties) key
    - Include: density, thermalConductivity, tensileStrength, hardness, etc.
 
 2. **Machine Settings Structure** (DataMetrics format):
@@ -1149,7 +1149,7 @@ Material context: {material_data}
 ✓ contaminantTypes arrays have 2-4 specific contaminants
 ✓ Applications are material-specific and realistic
 
-Return YAML format with materialProperties, machineSettings, and structured applications sections."""
+Return YAML format with properties, machine_settings, and structured applications sections."""
         return prompt
 
     def _parse_api_response(self, response: str, material_data: Dict) -> Dict:
@@ -1440,18 +1440,18 @@ Return YAML format with materialProperties, machineSettings, and structured appl
                     voice_profile
                 )
             
-            # Transform materialProperties category descriptions
-            if 'materialProperties' in frontmatter:
-                for category_key, category_data in frontmatter['materialProperties'].items():
+            # Transform properties category descriptions
+            if 'properties' in frontmatter:
+                for category_key, category_data in frontmatter['properties'].items():
                     if isinstance(category_data, dict) and 'description' in category_data:
                         category_data['description'] = self._voice_transform_text(
                             category_data['description'],
                             voice_profile
                         )
             
-            # Transform materialCharacteristics descriptions
-            if 'materialCharacteristics' in frontmatter:
-                for category_key, category_data in frontmatter['materialCharacteristics'].items():
+            # Transform characteristics descriptions
+            if 'characteristics' in frontmatter:
+                for category_key, category_data in frontmatter['characteristics'].items():
                     if isinstance(category_data, dict) and 'description' in category_data:
                         category_data['description'] = self._voice_transform_text(
                             category_data['description'],
@@ -1659,7 +1659,7 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             research_prompt = self.industry_prompts.build_research_prompt(
                 material_name=material_name,
                 category=material_data.get('category', 'material'),
-                material_properties=material_data.get('materialProperties', {})
+                material_properties=material_data.get('properties', {})
             )
             research_response = self.api_client.generate_simple(research_prompt, max_tokens=1000)
             
@@ -1724,7 +1724,7 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             raise ConfigurationError("PipelineProcessService not initialized for template fallback")
         
         # Use existing template generation method
-        temp_frontmatter = {'materialProperties': material_data.get('materialProperties', {})}
+        temp_frontmatter = {'properties': material_data.get('properties', {})}
         temp_frontmatter = self.pipeline_process_service.add_environmental_impact_section(temp_frontmatter, material_data)
         return temp_frontmatter.get('environmentalImpact', [])
     
@@ -1758,7 +1758,7 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             raise ConfigurationError("PipelineProcessService not initialized for template fallback")
         
         # Use existing template generation method
-        temp_frontmatter = {'materialProperties': material_data.get('materialProperties', {})}
+        temp_frontmatter = {'properties': material_data.get('properties', {})}
         temp_frontmatter = self.pipeline_process_service.add_outcome_metrics_section(temp_frontmatter, material_data)
         return temp_frontmatter.get('outcomeMetrics', [])
     
@@ -2192,7 +2192,7 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             
             # Extract context
             applications = material_data.get('applications', [])
-            properties = material_data.get('materialProperties', {})
+            properties = material_data.get('properties', {})
             # Build property summary for context
             property_summary = []
             for prop, data in list(properties.items())[:5]:  # Limit to top 5 properties
@@ -2358,7 +2358,7 @@ Generate the subtitle now:"""
             after_paragraphs = "1-2 paragraphs" if after_target < 400 else "2-3 paragraphs"
             
             # Extract material properties for context
-            material_props = frontmatter.get('materialProperties', {})
+            material_props = frontmatter.get('properties', {})
             category = frontmatter.get('category', 'material')
             applications = frontmatter.get('applications', [])
             # Build context for AI
@@ -2475,7 +2475,7 @@ Generate exactly two text blocks:
                     'componentType': 'template_micro'
                 },
                 'author': author_name,
-                'materialProperties': {
+                'properties': {
                     'materialType': category.capitalize(),
                     'analysisMethod': 'template_microscopy'
                 },

@@ -81,7 +81,7 @@ domains/{domain}/
 ├── data_loader.py       # Data loading utilities (REQUIRED)
 ├── generator.py         # Frontmatter generator (REQUIRED)
 ├── prompts/             # Domain prompt templates (REQUIRED)
-│   ├── material_description.txt
+│   ├── description.txt
 │   ├── micro.txt
 │   └── faq.txt
 └── modules/             # Optional modular components
@@ -319,9 +319,9 @@ tests/
 ### Investigation Needed
 Check if all prompt templates use consistent format:
 ```
-domains/materials/prompts/material_description.txt
+domains/materials/prompts/description.txt
 domains/materials/prompts/micro.txt
-domains/contaminants/prompts/material_description.txt
+domains/contaminants/prompts/description.txt
 shared/prompts/personas/*.yaml
 ```
 
@@ -340,7 +340,7 @@ grep -h "{" domains/*/prompts/*.txt | sort | uniq
 ```
 
 ### Expected Standardization
-- All domains have same core components (material_description, micro, faq)
+- All domains have same core components (description, micro, faq)
 - Domain-specific components documented
 - Placeholder variables standardized ({material_name}, {voice_instruction}, etc.)
 

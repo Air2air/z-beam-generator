@@ -181,7 +181,7 @@ PASSED test_real_world_scenario
 | **Settings** | 🟡 Ready | 🟡 Ready | 🟡 Ready | INFRASTRUCTURE READY |
 
 **Field Types Supported**:
-- ✅ String fields: `material_description`, `description`
+- ✅ String fields: `description`, `description`
 - ✅ Dict fields: `micro.before`, `micro.after`
 - ✅ List fields: `faq` answers
 

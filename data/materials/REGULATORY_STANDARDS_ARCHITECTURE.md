@@ -124,7 +124,7 @@ All standards in the parent framework use unique IDs following this pattern:
 ### Materials.yaml
 Currently contains full regulatory standards arrays:
 ```yaml
-regulatoryStandards:
+regulatory_standards:
   - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
     image: /images/logo/logo-org-fda.png
     longName: Food and Drug Administration
@@ -142,7 +142,7 @@ Reads from `content/RegulatoryStandards.yaml` to populate material frontmatter w
 ### Future Enhancement (Optional)
 Could add `standard_id` fields to Materials.yaml for direct parent framework lookups:
 ```yaml
-regulatoryStandards:
+regulatory_standards:
   - standard_id: std_fda_21cfr1040
   - standard_id: std_ansi_z136_1
   - standard_id: std_iec_60825_1

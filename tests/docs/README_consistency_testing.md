@@ -67,7 +67,7 @@ spotSize: Min value 'small' is not numeric
 
 ```python
 def test_categories_yaml_min_max_source_compliance(self):
-    """Test that materialProperties min/max values come from Categories.yaml category_ranges"""
+    """Test that properties min/max values come from Categories.yaml category_ranges"""
 ```
 
 **What it catches**:

@@ -1,7 +1,7 @@
 """
 Tests for Schema 5.0.0 Normalization Script
 
-Tests the frontmatter structure migration from nested domain_linkages (4.0.0)
+Tests the frontmatter structure migration from nested relationships (4.0.0)
 to flattened top-level arrays (5.0.0).
 
 Test Coverage:
@@ -30,7 +30,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
 from normalize_frontmatter_structure import (
     load_yaml,
     save_yaml,
-    flatten_domain_linkages,
+    flatten_relationships,
     remove_duplicate_fields,
     reorder_fields,
     update_schema_version,
@@ -83,14 +83,14 @@ schema_version: '4.0.0'
 
 
 class TestDomainLinkagesFlattening:
-    """Test flattening of nested domain_linkages to top-level"""
+    """Test flattening of nested relationships to top-level"""
     
-    def test_flatten_nested_domain_linkages(self):
+    def test_flatten_nested_relationships(self):
         """Should extract all linkage types from nested structure"""
         data = {
             'id': 'test-id',
             'title': 'Test',
-            'domain_linkages': {
+            'relationships': {
                 'produces_compounds': [{'id': 'compound-1'}],
                 'related_materials': [{'id': 'material-1'}],
                 'related_contaminants': [{'id': 'contaminant-1'}],
@@ -102,7 +102,7 @@ class TestDomainLinkagesFlattening:
             }
         }
         
-        result = flatten_domain_linkages(data)
+        result = flatten_relationships(data)
         
         # Should have all 8 linkage types at top level (matching normalize script)
         assert 'produces_compounds' in result
@@ -114,54 +114,54 @@ class TestDomainLinkagesFlattening:
         assert 'related_settings' in result
         assert 'related_compounds' in result
         
-        # Should remove domain_linkages key
-        assert 'domain_linkages' not in result
+        # Should remove relationships key
+        assert 'relationships' not in result
         
         # Data should be preserved
         assert result['produces_compounds'] == [{'id': 'compound-1'}]
         assert result['related_materials'] == [{'id': 'material-1'}]
     
-    def test_flatten_partial_domain_linkages(self):
-        """Should handle domain_linkages with only some linkage types"""
+    def test_flatten_partial_relationships(self):
+        """Should handle relationships with only some linkage types"""
         data = {
             'id': 'test-id',
-            'domain_linkages': {
+            'relationships': {
                 'produces_compounds': [{'id': 'compound-1'}],
                 'related_materials': [{'id': 'material-1'}]
                 # Only 2 out of 8 linkage types
             }
         }
         
-        result = flatten_domain_linkages(data)
+        result = flatten_relationships(data)
         
         assert 'produces_compounds' in result
         assert 'related_materials' in result
-        assert 'domain_linkages' not in result
+        assert 'relationships' not in result
         assert len(result['produces_compounds']) == 1
     
-    def test_flatten_no_domain_linkages(self):
-        """Should return unchanged if no domain_linkages"""
+    def test_flatten_no_relationships(self):
+        """Should return unchanged if no relationships"""
         data = {
             'id': 'test-id',
             'title': 'Test',
             'produces_compounds': [{'id': 'compound-1'}]  # Already flat
         }
         
-        result = flatten_domain_linkages(data)
+        result = flatten_relationships(data)
         
         assert result == data
         assert 'produces_compounds' in result
     
-    def test_flatten_empty_domain_linkages(self):
-        """Should handle empty domain_linkages object"""
+    def test_flatten_empty_relationships(self):
+        """Should handle empty relationships object"""
         data = {
             'id': 'test-id',
-            'domain_linkages': {}
+            'relationships': {}
         }
         
-        result = flatten_domain_linkages(data)
+        result = flatten_relationships(data)
         
-        assert 'domain_linkages' not in result
+        assert 'relationships' not in result
         assert result['id'] == 'test-id'
 
 
@@ -307,7 +307,7 @@ title: Test Contaminant Title
 slug: test-contaminant
 category: organic-residue
 schema_version: '4.0.0'
-domain_linkages:
+relationships:
   produces_compounds:
     - id: compound-1
       title: Compound 1
@@ -335,7 +335,7 @@ domain_linkages:
             assert data['schema_version'] == '5.0.0'
             
             # Should be flattened
-            assert 'domain_linkages' not in data
+            assert 'relationships' not in data
             assert 'produces_compounds' in data
             assert 'related_materials' in data
             
@@ -380,7 +380,7 @@ produces_compounds:
         """Should not modify file in dry-run mode"""
         yaml_content = """id: test-id
 schema_version: '4.0.0'
-domain_linkages:
+relationships:
   produces_compounds: []
 """
         
@@ -399,7 +399,7 @@ domain_linkages:
             # File should be unchanged (dry-run doesn't save)
             data = load_yaml(Path(temp_path))
             assert data['schema_version'] == '4.0.0'
-            assert 'domain_linkages' in data
+            assert 'relationships' in data
             
         finally:
             Path(temp_path).unlink()
@@ -451,7 +451,7 @@ class TestIntegration:
 name: File 1
 title: File 1 Title
 schema_version: '4.0.0'
-domain_linkages:
+relationships:
   produces_compounds: []
 """)
             
@@ -468,7 +468,7 @@ produces_compounds: []
             file3.write_text("""id: file3
 name: File 3
 schema_version: '4.0.0'
-domain_linkages:
+relationships:
   related_materials: []
 """)
             
@@ -486,7 +486,7 @@ domain_linkages:
             for yaml_file in tmpdir_path.glob('*.yaml'):
                 data = load_yaml(yaml_file)
                 assert data['schema_version'] == '5.0.0'
-                assert 'domain_linkages' not in data
+                assert 'relationships' not in data
 
 
 if __name__ == '__main__':

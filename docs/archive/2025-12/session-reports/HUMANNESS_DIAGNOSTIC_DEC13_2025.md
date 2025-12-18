@@ -6,7 +6,7 @@
 
 ## 🔍 Problem Summary
 
-Generated material_descriptions across 4 authors show:
+Generated descriptions across 4 authors show:
 - **Identical structural patterns** (all single-sentence, formulaic)
 - **AI tell-tale phrases** ("distinguishes itself," "stands out among")
 - **Zero voice distinctiveness** (sound like same technical manual)
@@ -18,7 +18,7 @@ Generated material_descriptions across 4 authors show:
 
 ### 1. **DOMAIN PROMPT IS TOO RESTRICTIVE** 🚨 CRITICAL
 
-**File**: `domains/materials/prompts/material_description.txt`
+**File**: `domains/materials/prompts/description.txt`
 
 **Current Content**:
 ```

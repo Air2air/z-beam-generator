@@ -2,7 +2,7 @@
 """
 Test Update Script for Materials Module V2.0
 
-Updates all test files to use 'materialProperties' instead of 'properties'
+Updates all test files to use 'properties' instead of 'properties'
 for Materials.yaml structure.
 
 Usage:
@@ -39,96 +39,96 @@ class TestUpdater:
         original_content = content
         changes = 0
         
-        # Pattern 1: material_data['properties'] → material_data['materialProperties']
+        # Pattern 1: material_data['properties'] → material_data['properties']
         pattern1 = r"material_data\['properties'\]"
-        new_content, n1 = re.subn(pattern1, "material_data['materialProperties']", content)
+        new_content, n1 = re.subn(pattern1, "material_data['properties']", content)
         content = new_content
         changes += n1
         
-        # Pattern 2: mat_data['properties'] → mat_data['materialProperties']
+        # Pattern 2: mat_data['properties'] → mat_data['properties']
         pattern2 = r"mat_data\['properties'\]"
-        new_content, n2 = re.subn(pattern2, "mat_data['materialProperties']", content)
+        new_content, n2 = re.subn(pattern2, "mat_data['properties']", content)
         content = new_content
         changes += n2
         
-        # Pattern 3: material_data.get('properties' → material_data.get('materialProperties'
+        # Pattern 3: material_data.get('properties' → material_data.get('properties'
         pattern3 = r"material_data\.get\('properties'"
-        new_content, n3 = re.subn(pattern3, "material_data.get('materialProperties'", content)
+        new_content, n3 = re.subn(pattern3, "material_data.get('properties'", content)
         content = new_content
         changes += n3
         
-        # Pattern 4: mat_data.get('properties' → mat_data.get('materialProperties'
+        # Pattern 4: mat_data.get('properties' → mat_data.get('properties'
         pattern4 = r"mat_data\.get\('properties'"
-        new_content, n4 = re.subn(pattern4, "mat_data.get('materialProperties'", content)
+        new_content, n4 = re.subn(pattern4, "mat_data.get('properties'", content)
         content = new_content
         changes += n4
         
-        # Pattern 5: item['properties'] → item['materialProperties'] (for materials iteration)
+        # Pattern 5: item['properties'] → item['properties'] (for materials iteration)
         # Only in test_materials_uniqueness_requirements.py
         if 'test_materials_uniqueness_requirements.py' in str(file_path):
             pattern5 = r"item\['properties'\]"
-            new_content, n5 = re.subn(pattern5, "item['materialProperties']", content)
+            new_content, n5 = re.subn(pattern5, "item['properties']", content)
             content = new_content
             changes += n5
             
             pattern5b = r"item\.get\('properties'"
-            new_content, n5b = re.subn(pattern5b, "item.get('materialProperties'", content)
+            new_content, n5b = re.subn(pattern5b, "item.get('properties'", content)
             content = new_content
             changes += n5b
         
         # Pattern 6: props = material_data.get('properties', {})
         pattern6 = r"props = material_data\.get\('properties', \{\}\)"
-        new_content, n6 = re.subn(pattern6, "props = material_data.get('materialProperties', {})", content)
+        new_content, n6 = re.subn(pattern6, "props = material_data.get('properties', {})", content)
         content = new_content
         changes += n6
         
         # Pattern 7: properties = material_data.get('properties', {})
         pattern7 = r"properties = material_data\.get\('properties', \{\}\)"
-        new_content, n7 = re.subn(pattern7, "properties = material_data.get('materialProperties', {})", content)
+        new_content, n7 = re.subn(pattern7, "properties = material_data.get('properties', {})", content)
         content = new_content
         changes += n7
         
         # Pattern 8: properties = material_data['properties']
         pattern8 = r"properties = material_data\['properties'\]"
-        new_content, n8 = re.subn(pattern8, "properties = material_data['materialProperties']", content)
+        new_content, n8 = re.subn(pattern8, "properties = material_data['properties']", content)
         content = new_content
         changes += n8
         
         # Pattern 9: enhanced['properties'] in test_property_enhancer.py
         if 'test_property_enhancer.py' in str(file_path):
             pattern9 = r"enhanced\['properties'\]"
-            new_content, n9 = re.subn(pattern9, "enhanced['materialProperties']", content)
+            new_content, n9 = re.subn(pattern9, "enhanced['properties']", content)
             content = new_content
             changes += n9
             
             pattern9b = r"steel\['properties'\]"
-            new_content, n9b = re.subn(pattern9b, "steel['materialProperties']", content)
+            new_content, n9b = re.subn(pattern9b, "steel['properties']", content)
             content = new_content
             changes += n9b
         
         # Pattern 10: other_section['properties'] / updated_properties
         if 'test_validation_stage3_fix.py' in str(file_path):
             pattern10 = r"other_section\['properties'\]"
-            new_content, n10 = re.subn(pattern10, "other_section['materialProperties']", content)
+            new_content, n10 = re.subn(pattern10, "other_section['properties']", content)
             content = new_content
             changes += n10
             
             pattern10b = r"other_section\.get\('properties'"
-            new_content, n10b = re.subn(pattern10b, "other_section.get('materialProperties'", content)
+            new_content, n10b = re.subn(pattern10b, "other_section.get('properties'", content)
             content = new_content
             changes += n10b
         
         # Pattern 11: test_audit_frontmatter_regeneration.py
         if 'test_audit_frontmatter_regeneration.py' in str(file_path):
             pattern11 = r"material_data\['properties'\]\['density'\]"
-            new_content, n11 = re.subn(pattern11, "material_data['materialProperties']['density']", content)
+            new_content, n11 = re.subn(pattern11, "material_data['properties']['density']", content)
             content = new_content
             changes += n11
         
         # Pattern 12: test_range_propagation.py - copper_material references
         if 'test_range_propagation.py' in str(file_path):
             pattern12 = r"copper_material\['properties'\]"
-            new_content, n12 = re.subn(pattern12, "copper_material['materialProperties']", content)
+            new_content, n12 = re.subn(pattern12, "copper_material['properties']", content)
             content = new_content
             changes += n12
         

@@ -274,7 +274,7 @@ class PostGenerationQualityService:
         issues = []
         
         # Completeness scoring
-        required_fields = ['name', 'category', 'title', 'description', 'materialProperties', 'applications']
+        required_fields = ['name', 'category', 'title', 'description', 'properties', 'applications']
         present_fields = sum(1 for field in required_fields if field in frontmatter and frontmatter[field])
         completeness_score = present_fields / len(required_fields)
         
@@ -284,8 +284,8 @@ class PostGenerationQualityService:
         
         # Accuracy scoring (check material properties)
         accuracy_score = 1.0
-        if 'materialProperties' in frontmatter:
-            props = frontmatter['materialProperties']
+        if 'properties' in frontmatter:
+            props = frontmatter['properties']
             if isinstance(props, dict) and len(props) < 5:
                 accuracy_score = 0.7
                 issues.append("Insufficient material properties (need at least 5)")

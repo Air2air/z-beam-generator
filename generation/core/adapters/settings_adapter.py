@@ -93,8 +93,8 @@ class SettingsAdapter(DataSourceAdapter):
             context_parts.append(f"Material: {item_data['name']}")
         
         # Add any machine settings ranges
-        if 'machineSettings' in item_data:
-            settings = item_data['machineSettings']
+        if 'machine_settings' in item_data:
+            settings = item_data['machine_settings']
             context_parts.append("\nMachine Settings Ranges:")
             for param, values in settings.items():
                 if isinstance(values, dict):

@@ -134,7 +134,7 @@ material_characteristics (52.7%)
 
 ### Structure
 ```yaml
-materialProperties:
+properties:
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption...
@@ -222,13 +222,13 @@ propertyCategories:
 **Transformation**:
 ```python
 # OLD (3 categories)
-materialProperties:
+properties:
   energy_coupling: {...}
   structural_response: {...}
   material_properties: {...}
 
 # NEW (2 categories)
-materialProperties:
+properties:
   laser_material_interaction: {merged: energy_coupling}
   material_characteristics: {merged: structural_response + material_properties}
 ```

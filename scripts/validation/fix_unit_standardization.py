@@ -86,8 +86,8 @@ class UnitStandardizationFixer:
             
             # Find and fix the property
             fixed = False
-            if 'materialProperties' in data:
-                for group_name, group_data in data['materialProperties'].items():
+            if 'properties' in data:
+                for group_name, group_data in data['properties'].items():
                     # Properties are directly in group_data (flat structure)
                     metadata_keys = {'label', 'description', 'percentage'}
                     if not isinstance(group_data, dict):

@@ -23,7 +23,7 @@ _metadata:
 
 settings:
   Aluminum:
-    machineSettings:
+    machine_settings:
       powerRange:
         value: 50
         unit: "W"
@@ -33,7 +33,7 @@ settings:
         value: 1064
         unit: "nm"
       # ... 7 more parameters
-    material_challenges:
+    challenges:
       thermal_management: [...]
       precision_requirements: [...]
       contamination_challenges: [...]
@@ -124,8 +124,8 @@ settings = load_settings_cached()
 
 | Field | Coverage | Status |
 |-------|----------|--------|
-| machineSettings | 159/159 (100%) | ✅ COMPLETE |
-| material_challenges | 159/159 (100%) | ✅ COMPLETE |
+| machine_settings | 159/159 (100%) | ✅ COMPLETE |
+| challenges | 159/159 (100%) | ✅ COMPLETE |
 | settings_description | 159/159 (100%) | ✅ COMPLETE |
 
 **Last Verified**: November 26, 2025

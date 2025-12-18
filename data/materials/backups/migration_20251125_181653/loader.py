@@ -119,13 +119,13 @@ def load_settings_yaml() -> Dict[str, Dict[str, Any]]:
             data = yaml.safe_load(f)
             settings = data.get('settings', {})
             
-            # Extract machineSettings from nested structure
-            # Settings.yaml has: settings.MaterialName.machineSettings.{params}
+            # Extract machine_settings from nested structure
+            # Settings.yaml has: settings.MaterialName.machine_settings.{params}
             # We need to return: { MaterialName: {params} }
             extracted = {}
             for material_name, material_settings in settings.items():
-                if 'machineSettings' in material_settings:
-                    extracted[material_name] = material_settings['machineSettings']
+                if 'machine_settings' in material_settings:
+                    extracted[material_name] = material_settings['machine_settings']
             
             return extracted
     except Exception as e:
@@ -161,7 +161,7 @@ def load_materials_data() -> Dict[str, Any]:
     Load complete materials data by merging all three files
     
     This is the primary function to use for loading materials data.
-    It loads Materials.yaml and merges in materialProperties and machineSettings
+    It loads Materials.yaml and merges in properties and machine_settings
     from their respective files.
     
     Returns:
@@ -171,8 +171,8 @@ def load_materials_data() -> Dict[str, Any]:
                 'Aluminum': {
                     'name': 'Aluminum',
                     'category': 'metal',
-                    'materialProperties': { ... },  # Merged from MaterialProperties.yaml
-                    'machineSettings': { ... },     # Merged from Settings.yaml
+                    'properties': { ... },  # Merged from MaterialProperties.yaml
+                    'machine_settings': { ... },     # Merged from Settings.yaml
                     ...
                 },
                 ...
@@ -196,14 +196,14 @@ def load_materials_data() -> Dict[str, Any]:
     # Merge properties and settings into each material
     merged_count = 0
     for material_name, material_data in materials.items():
-        # Merge materialProperties if available
+        # Merge properties if available
         if material_name in properties_data:
-            material_data['materialProperties'] = properties_data[material_name]
+            material_data['properties'] = properties_data[material_name]
             merged_count += 1
         
-        # Merge machineSettings if available
+        # Merge machine_settings if available
         if material_name in settings_data:
-            material_data['machineSettings'] = settings_data[material_name]
+            material_data['machine_settings'] = settings_data[material_name]
     
     # Update materials in the data structure
     materials_data['materials'] = materials
@@ -227,8 +227,8 @@ def load_material(material_name: str) -> Optional[Dict[str, Any]]:
     
     Example:
         >>> aluminum = load_material("Aluminum")
-        >>> print(aluminum['materialProperties']['density'])
-        >>> print(aluminum['machineSettings']['powerRange'])
+        >>> print(aluminum['properties']['density'])
+        >>> print(aluminum['machine_settings']['powerRange'])
     """
     all_data = load_materials_data()
     materials = all_data.get('materials', {})
@@ -672,7 +672,7 @@ def load_categories_yaml() -> Dict[str, Any]:
     Load Categories.yaml (complete category data with ranges and challenges)
     
     Returns:
-        Dict with category data including material_challenges
+        Dict with category data including challenges
     
     Raises:
         MaterialDataError: If Categories.yaml cannot be loaded
@@ -688,15 +688,15 @@ def load_categories_yaml() -> Dict[str, Any]:
         raise MaterialDataError(f"Failed to load Categories.yaml: {e}")
 
 
-def get_material_challenges(category: str) -> Dict[str, Any]:
+def get_challenges(category: str) -> Dict[str, Any]:
     """
-    Get material_challenges for a specific category from Categories.yaml
+    Get challenges for a specific category from Categories.yaml
     
     Args:
         category: Category name (e.g., 'wood', 'metal', 'ceramic')
     
     Returns:
-        Dict with material_challenges structure:
+        Dict with challenges structure:
         {
             "thermal_management": [...],
             "surface_characteristics": [...],
@@ -707,7 +707,7 @@ def get_material_challenges(category: str) -> Dict[str, Any]:
     """
     categories = load_categories_yaml()
     category_data = categories.get(category, {})
-    return category_data.get('material_challenges', {})
+    return category_data.get('challenges', {})
 
 
 # ============================================================================

@@ -2,7 +2,7 @@
 """
 Code Update Script for Materials Module V2.0
 
-Updates all Python code to use 'materialProperties' instead of 'properties'
+Updates all Python code to use 'properties' instead of 'properties'
 in the materials module.
 
 Usage:
@@ -39,10 +39,10 @@ class CodeUpdater:
         original_content = content
         changes = 0
         
-        # Pattern 1: material['properties'] → material['materialProperties']
-        # Pattern 2: material.get('properties') → material.get('materialProperties')
-        # Pattern 3: data['properties'] → data['materialProperties']
-        # Pattern 4: data.get('properties') → data.get('materialProperties')
+        # Pattern 1: material['properties'] → material['properties']
+        # Pattern 2: material.get('properties') → material.get('properties')
+        # Pattern 3: data['properties'] → data['properties']
+        # Pattern 4: data.get('properties') → data.get('properties')
         # BUT preserve: category_data.get('properties') - this is for categories.yaml
         # BUT preserve: schema['properties'] - this is JSON schema structure
         # BUT preserve: frontmatter_schema['properties'] - this is JSON schema
@@ -50,52 +50,52 @@ class CodeUpdater:
         # Step 1: Replace dictionary access patterns
         # Count changes by tracking actual replacements
         
-        # Pattern 1: material_entry['properties'] → material_entry['materialProperties']
+        # Pattern 1: material_entry['properties'] → material_entry['properties']
         pattern1 = r"material_entry\['properties'\]"
-        new_content, n1 = re.subn(pattern1, "material_entry['materialProperties']", content)
+        new_content, n1 = re.subn(pattern1, "material_entry['properties']", content)
         content = new_content
         changes += n1
         
-        # Pattern 2: material_data['properties'] → material_data['materialProperties']
+        # Pattern 2: material_data['properties'] → material_data['properties']
         pattern2 = r"material_data\['properties'\]"
-        new_content, n2 = re.subn(pattern2, "material_data['materialProperties']", content)
+        new_content, n2 = re.subn(pattern2, "material_data['properties']", content)
         content = new_content
         changes += n2
         
-        # Pattern 3: material['properties'] → material['materialProperties']
+        # Pattern 3: material['properties'] → material['properties']
         pattern3 = r"material\['properties'\]"
-        new_content, n3 = re.subn(pattern3, "material['materialProperties']", content)
+        new_content, n3 = re.subn(pattern3, "material['properties']", content)
         content = new_content
         changes += n3
         
-        # Pattern 4: material_entry.get('properties' → material_entry.get('materialProperties'
+        # Pattern 4: material_entry.get('properties' → material_entry.get('properties'
         pattern4 = r"material_entry\.get\('properties'"
-        new_content, n4 = re.subn(pattern4, "material_entry.get('materialProperties'", content)
+        new_content, n4 = re.subn(pattern4, "material_entry.get('properties'", content)
         content = new_content
         changes += n4
         
-        # Pattern 5: material_data.get('properties' → material_data.get('materialProperties'
+        # Pattern 5: material_data.get('properties' → material_data.get('properties'
         pattern5 = r"material_data\.get\('properties'"
-        new_content, n5 = re.subn(pattern5, "material_data.get('materialProperties'", content)
+        new_content, n5 = re.subn(pattern5, "material_data.get('properties'", content)
         content = new_content
         changes += n5
         
-        # Pattern 6: material.get('properties' → material.get('materialProperties'
+        # Pattern 6: material.get('properties' → material.get('properties'
         # BUT NOT: schema.get('properties' or frontmatter_schema.get('properties'
         pattern6 = r"(?<!schema\.)(?<!_schema\.)material\.get\('properties'"
-        new_content, n6 = re.subn(pattern6, "material.get('materialProperties'", content)
+        new_content, n6 = re.subn(pattern6, "material.get('properties'", content)
         content = new_content
         changes += n6
         
         # Pattern 7: properties = material_data.get('properties', {})
         pattern7 = r"properties = material_data\.get\('properties', \{\}\)"
-        new_content, n7 = re.subn(pattern7, "properties = material_data.get('materialProperties', {})", content)
+        new_content, n7 = re.subn(pattern7, "properties = material_data.get('properties', {})", content)
         content = new_content
         changes += n7
         
         # Pattern 8: corrected_data['properties'] = {}
         pattern8 = r"corrected_data\['properties'\] = \{\}"
-        new_content, n8 = re.subn(pattern8, "corrected_data['materialProperties'] = {}", content)
+        new_content, n8 = re.subn(pattern8, "corrected_data['properties'] = {}", content)
         content = new_content
         changes += n8
         

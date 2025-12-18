@@ -638,7 +638,7 @@ The 'before' side MUST show {severity_desc}. If contamination appears lighter th
         visual_appearance = ""
         
         if material_properties:
-            chars = material_properties.get('materialCharacteristics', {})
+            chars = material_properties.get('characteristics', {})
             
             # Get reflectivity
             refl_data = chars.get('reflectivity', {})

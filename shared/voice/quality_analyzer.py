@@ -463,7 +463,7 @@ class QualityAnalyzer:
         """
         sentences = [s.strip() for s in re.split(r'[.!?]+', text) if s.strip()]
         
-        # Single-sentence content (like material_description) gets baseline score
+        # Single-sentence content (like description) gets baseline score
         # Don't penalize appropriately concise content for lack of variation
         if len(sentences) < 2:
             return {

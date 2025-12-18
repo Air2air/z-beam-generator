@@ -42,7 +42,7 @@ class FrontmatterValidator:
         self._check_images(data)
         self._check_faq(data)
         self._check_properties(data)
-        self._check_domain_linkages(data)
+        self._check_relationships(data)
         self._check_metadata(data)
         
         is_valid = len(self.errors) == 0
@@ -61,8 +61,8 @@ class FrontmatterValidator:
     def _check_required_fields(self, data: Dict[str, Any]):
         """Check all mandatory top-level fields"""
         required = ['name', 'slug', 'id', 'category', 'subcategory', 'title', 
-                   'material_description', 'breadcrumb', 'images', 'micro', 'faq',
-                   'materialProperties', 'domain_linkages', 'serviceOffering']
+                   'description', 'breadcrumb', 'images', 'micro', 'faq',
+                   'properties', 'relationships', 'serviceOffering']
         
         for field in required:
             if field not in data or data[field] is None:
@@ -108,10 +108,10 @@ class FrontmatterValidator:
     def _check_content(self, data: Dict[str, Any]):
         """Check content quality and word counts"""
         # Material description: 30-50 words
-        desc = data.get('material_description', '')
+        desc = data.get('description', '')
         word_count = len(desc.split())
         if word_count < 30 or word_count > 50:
-            self.warnings.append(f"material_description word count {word_count} (should be 30-50)")
+            self.warnings.append(f"description word count {word_count} (should be 30-50)")
             self.quality_score -= 3
         
         # Micro before/after: 60-80 words each
@@ -169,7 +169,7 @@ class FrontmatterValidator:
     
     def _check_properties(self, data: Dict[str, Any]):
         """Check material properties completeness"""
-        props = data.get('materialProperties', {})
+        props = data.get('properties', {})
         
         if not props:
             self.errors.append("Material properties missing")
@@ -185,9 +185,9 @@ class FrontmatterValidator:
             self.errors.append("Missing laser_material_interaction section")
             self.quality_score -= 10
     
-    def _check_domain_linkages(self, data: Dict[str, Any]):
+    def _check_relationships(self, data: Dict[str, Any]):
         """Check domain linkages (related contaminants)"""
-        linkages = data.get('domain_linkages', {})
+        linkages = data.get('relationships', {})
         contaminants = linkages.get('related_contaminants', [])
         
         if len(contaminants) < 4:
@@ -207,8 +207,8 @@ class FrontmatterValidator:
             self.errors.append("EEAT data is null")
             self.quality_score -= 10
         
-        if data.get('material_metadata') is None:
-            self.errors.append("material_metadata is null")
+        if data.get('metadata') is None:
+            self.errors.append("metadata is null")
             self.quality_score -= 10
 
 def main():

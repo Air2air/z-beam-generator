@@ -92,7 +92,7 @@ CATEGORY_SETTINGS_TEMPLATES = {
 }
 
 
-def generate_material_challenges(material_name, category):
+def generate_challenges(material_name, category):
     """Generate material-specific challenges based on category"""
     
     challenges_templates = {
@@ -404,8 +404,8 @@ def main():
         
         # Create settings entry
         settings[mat_name] = {
-            'machineSettings': template.copy(),
-            'material_challenges': generate_material_challenges(mat_name, category),
+            'machine_settings': template.copy(),
+            'challenges': generate_challenges(mat_name, category),
             'settings_description': f"Laser cleaning {mat_name} requires careful parameter control based on its {category} properties. The settings provided balance cleaning effectiveness with material preservation, accounting for thermal sensitivity and surface characteristics typical of {category} materials."
         }
         

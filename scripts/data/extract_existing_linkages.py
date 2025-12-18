@@ -3,7 +3,7 @@
 Extract Existing Domain Linkages
 =================================
 
-Extracts all existing domain_linkages from frontmatter files and outputs
+Extracts all existing relationships from frontmatter files and outputs
 them in DomainAssociations.yaml format.
 
 USAGE:
@@ -37,7 +37,7 @@ def extract_compound_contaminant_linkages(frontmatter_dir: Path) -> List[Dict]:
             data = yaml.safe_load(f)
         
         compound_id = data.get('id')
-        linkages = data.get('domain_linkages', {}).get('produced_by_contaminants', [])
+        linkages = data.get('relationships', {}).get('produced_by_contaminants', [])
         
         for link in linkages:
             contaminant_id = link.get('id')
@@ -80,7 +80,7 @@ def extract_contaminant_material_linkages(frontmatter_dir: Path) -> List[Dict]:
             data = yaml.safe_load(f)
         
         contaminant_id = data.get('id')
-        linkages = data.get('domain_linkages', {}).get('related_materials', [])
+        linkages = data.get('relationships', {}).get('related_materials', [])
         
         for link in linkages:
             material_id = link.get('id')
@@ -123,7 +123,7 @@ def extract_material_contaminant_linkages(frontmatter_dir: Path) -> List[Dict]:
             data = yaml.safe_load(f)
         
         material_id = data.get('id')
-        linkages = data.get('domain_linkages', {}).get('related_contaminants', [])
+        linkages = data.get('relationships', {}).get('related_contaminants', [])
         
         for link in linkages:
             contaminant_id = link.get('id')

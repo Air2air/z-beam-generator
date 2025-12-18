@@ -5,7 +5,7 @@ Fix Frontmatter Compliance Issues
 Corrects frontmatter files to meet FRONTMATTER_GENERATION_GUIDE.md requirements:
 - Fixes null datePublished/dateModified (uses current date)
 - Fixes FAQ structure (keeps first 3, or adds placeholder if missing)
-- Fixes null eeat/material_metadata (adds minimal structure)
+- Fixes null eeat/metadata (adds minimal structure)
 """
 
 import yaml
@@ -87,12 +87,12 @@ def fix_eeat(data: Dict[str, Any]) -> tuple[bool, list[str]]:
     
     return len(changes) > 0, changes
 
-def fix_material_metadata(data: Dict[str, Any]) -> tuple[bool, list[str]]:
-    """Fix null material_metadata field"""
+def fix_metadata(data: Dict[str, Any]) -> tuple[bool, list[str]]:
+    """Fix null metadata field"""
     changes = []
     
-    if data.get('material_metadata') is None:
-        data['material_metadata'] = {
+    if data.get('metadata') is None:
+        data['metadata'] = {
             'completeness_score': 0.85,
             'last_verified': datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'),
             'content_quality': {
@@ -106,7 +106,7 @@ def fix_material_metadata(data: Dict[str, Any]) -> tuple[bool, list[str]]:
                 'consumer_applications': 0.7
             }
         }
-        changes.append('material_metadata_added')
+        changes.append('metadata_added')
     
     return len(changes) > 0, changes
 
@@ -134,7 +134,7 @@ def fix_file(filepath: Path, dry_run: bool = False) -> tuple[bool, list[str]]:
         modified = True
         all_changes.extend(changes)
     
-    changed, changes = fix_material_metadata(data)
+    changed, changes = fix_metadata(data)
     if changed:
         modified = True
         all_changes.extend(changes)

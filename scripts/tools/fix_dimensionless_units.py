@@ -52,7 +52,7 @@ def fix_dimensionless_units():
     print()
     
     for mat_name, mat_data in data['materials'].items():
-        props = mat_data.get('materialProperties', {})
+        props = mat_data.get('properties', {})
         
         for cat in ['material_characteristics', 'laser_material_interaction']:
             if cat in props:

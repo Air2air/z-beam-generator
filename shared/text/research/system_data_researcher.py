@@ -119,7 +119,7 @@ class SystemDataResearcher:
         material = self.get_material(material_name)
         if not material:
             return None
-        return material.get('materialProperties', {}).get(property_name)
+        return material.get('properties', {}).get(property_name)
     
     def get_related_materials(self, material_name: str, limit: int = 5) -> List[str]:
         """

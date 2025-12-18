@@ -90,8 +90,8 @@ material_contaminant_associations:
 ```
 
 **Generates**:
-- `materials/aluminum-laser-cleaning.yaml` → `domain_linkages.related_contaminants`
-- `contaminants/oxidation-contamination.yaml` → `domain_linkages.related_materials`
+- `materials/aluminum-laser-cleaning.yaml` → `relationships.related_contaminants`
+- `contaminants/oxidation-contamination.yaml` → `relationships.related_materials`
 
 ### Contaminant ↔ Compound Association
 
@@ -108,8 +108,8 @@ contaminant_compound_associations:
 ```
 
 **Generates**:
-- `contaminants/carbon-buildup-contamination.yaml` → `domain_linkages.produces_compounds`
-- `compounds/pahs-compound.yaml` → `domain_linkages.produced_by_contaminants`
+- `contaminants/carbon-buildup-contamination.yaml` → `relationships.produces_compounds`
+- `compounds/pahs-compound.yaml` → `relationships.produced_by_contaminants`
 
 ### Material ↔ Compound Association (Transitive)
 
@@ -127,8 +127,8 @@ material_compound_associations:
 ```
 
 **Generates**:
-- `materials/steel-laser-cleaning.yaml` → `domain_linkages.related_compounds`
-- `compounds/pahs-compound.yaml` → `domain_linkages.related_materials`
+- `materials/steel-laser-cleaning.yaml` → `relationships.related_compounds`
+- `compounds/pahs-compound.yaml` → `relationships.related_materials`
 
 ---
 
@@ -175,8 +175,8 @@ compounds = validator.get_compounds_for_contaminant('rust-oxidation-contaminatio
 materials = validator.get_materials_for_compound('pahs-compound')  # Reverse lookup
 
 # Inject into frontmatter during export
-material_data['domain_linkages']['related_contaminants'] = contaminants
-contaminant_data['domain_linkages']['produces_compounds'] = compounds
+material_data['relationships']['related_contaminants'] = contaminants
+contaminant_data['relationships']['produces_compounds'] = compounds
 ```
 
 ---
@@ -344,7 +344,7 @@ Update system documentation:
 **Before** (Scattered):
 ```yaml
 # compounds/pahs-compound.yaml
-domain_linkages:
+relationships:
   produced_by_contaminants:
     - id: carbon-buildup
       # ... metadata

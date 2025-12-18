@@ -56,12 +56,12 @@ def create_category_taxonomy():
     
     # Sections removed (now in other files):
     removed_sections = []
-    if 'machineSettingsRanges' in data:
-        removed_sections.append(f"machineSettingsRanges ({len(data['machineSettingsRanges'])} parameters) → ParameterDefinitions.yaml")
+    if 'machine_settingsRanges' in data:
+        removed_sections.append(f"machine_settingsRanges ({len(data['machine_settingsRanges'])} parameters) → ParameterDefinitions.yaml")
     if 'propertyCategories' in data:
         removed_sections.append(f"propertyCategories → PropertyDefinitions.yaml")
-    if 'machineSettingsDescriptions' in data:
-        removed_sections.append(f"machineSettingsDescriptions → ParameterDefinitions.yaml")
+    if 'machine_settingsDescriptions' in data:
+        removed_sections.append(f"machine_settingsDescriptions → ParameterDefinitions.yaml")
     if 'materialPropertyDescriptions' in data:
         removed_sections.append(f"materialPropertyDescriptions → PropertyDefinitions.yaml")
     if 'environmentalImpactTemplates' in data:

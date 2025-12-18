@@ -34,7 +34,7 @@ class ParameterManager:
         >>> manager = ParameterManager(dynamic_config, humanness_optimizer)
         >>> 
         >>> params = manager.get_parameters(
-        ...     component_type='material_description',
+        ...     component_type='description',
         ...     author_id='todd',
         ...     domain='materials',
         ...     context={'custom_field': 'value'}
@@ -117,7 +117,7 @@ class ParameterManager:
         Calculate all generation parameters dynamically.
         
         Args:
-            component_type: Type of content (material_description, micro, faq, etc.)
+            component_type: Type of content (description, micro, faq, etc.)
             author_id: Author persona ID (todd, yi-chun, alessandro, ikmanda)
             domain: Domain name (materials, settings, contaminants, compounds)
             context: Additional context dict with ANY custom fields

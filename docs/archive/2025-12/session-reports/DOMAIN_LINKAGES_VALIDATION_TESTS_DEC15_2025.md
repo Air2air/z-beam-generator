@@ -4,7 +4,7 @@
 
 **CREATED**: Comprehensive test suite to validate all cross-domain linkages
 
-**FILE**: `tests/test_domain_linkages_validation.py` (474 lines, 14 tests)
+**FILE**: `tests/test_relationships_validation.py` (474 lines, 14 tests)
 
 ---
 
@@ -15,7 +15,7 @@
 1. **Compound Validation** ✅
    - All 78 compound→contaminant IDs are valid
    - All compound→contaminant URLs match actual slugs
-   - All compounds have domain_linkages structure
+   - All compounds have relationships structure
    - Statistics: 20/20 compounds with linkages, 78 total links
 
 2. **Material→Contaminant Validation** ✅
@@ -120,7 +120,7 @@ url = f"/materials/{category}/{subcategory}/{actual_slug}"
 - **REQUIREMENT**: Must look up target item's `slug` field, not use ID directly
 
 **3. Structure Validation** ✅
-- Verifies domain_linkages structure exists
+- Verifies relationships structure exists
 - Tests: 2/2 passing
 - Coverage: All domains have structure
 
@@ -246,22 +246,22 @@ material_url = f"/materials/{category}/{subcategory}/{actual_slug}"
 
 ### Run All Validation Tests
 ```bash
-python3 -m pytest tests/test_domain_linkages_validation.py -v
+python3 -m pytest tests/test_relationships_validation.py -v
 ```
 
 ### Run Specific Test Class
 ```bash
-python3 -m pytest tests/test_domain_linkages_validation.py::TestCompoundLinkageValidation -v
+python3 -m pytest tests/test_relationships_validation.py::TestCompoundLinkageValidation -v
 ```
 
 ### Run Single Test
 ```bash
-python3 -m pytest tests/test_domain_linkages_validation.py::TestCompoundLinkageValidation::test_all_linked_contaminant_ids_exist -v
+python3 -m pytest tests/test_relationships_validation.py::TestCompoundLinkageValidation::test_all_linked_contaminant_ids_exist -v
 ```
 
 ### Get Coverage Report
 ```bash
-python3 -m pytest tests/test_domain_linkages_validation.py::TestCrossValidation::test_comprehensive_coverage_report -v -s
+python3 -m pytest tests/test_relationships_validation.py::TestCrossValidation::test_comprehensive_coverage_report -v -s
 ```
 
 ---
@@ -280,7 +280,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run linkage validation
-        run: python3 -m pytest tests/test_domain_linkages_validation.py -v
+        run: python3 -m pytest tests/test_relationships_validation.py -v
 ```
 
 ---

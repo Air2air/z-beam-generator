@@ -30,7 +30,7 @@
 **New Files** (3):
 - `scripts/data/remove_orphan_settings.py` (127 lines)
 - `shared/utils/yaml_loader.py` (115 lines)
-- `shared/services/domain_linkages_service.py` (264 lines)
+- `shared/services/relationships_service.py` (264 lines)
 
 **Modified Files** (5):
 - `scripts/operations/quick_deploy.sh` (50+ lines removed, 3 lines added)
@@ -94,7 +94,7 @@ PVC, Quartz, Silicon Wafers, Teflon, Tile, Wrought Iron, Zinc Alloy
 **Impact**: Exporters know about implementation details they shouldn't
 
 #### Issue 4: Domain Linkages Duplication
-**Evidence**: Each exporter has own `_generate_domain_linkages()` method
+**Evidence**: Each exporter has own `_generate_relationships()` method
 **Impact**: 
 - Same logic in 4 places
 - Inconsistent behavior between domains
@@ -290,7 +290,7 @@ print(f'Loaded {len(data[\"materials\"])} materials')
 ### Priority 4: Centralize Domain Linkages (2 hours)
 **Principle**: Fail-Fast Design - Single source of truth
 
-**Problem**: Each exporter has its own `_generate_domain_linkages()` method
+**Problem**: Each exporter has its own `_generate_relationships()` method
 ```python
 # Duplicated in 4 places:
 # - export/core/trivial_exporter.py (materials)
@@ -301,7 +301,7 @@ print(f'Loaded {len(data[\"materials\"])} materials')
 
 **Solution**: Create centralized service
 
-**NEW FILE**: `shared/services/domain_linkages_service.py`
+**NEW FILE**: `shared/services/relationships_service.py`
 ```python
 """
 Centralized Domain Linkages Service
@@ -310,7 +310,7 @@ Centralized Domain Linkages Service
 Single source of truth for generating domain linkages across all exporters.
 
 Usage:
-    from shared.services.domain_linkages_service import DomainLinkagesService
+    from shared.services.relationships_service import DomainLinkagesService
     
     service = DomainLinkagesService()
     linkages = service.generate_linkages('aluminum', 'materials')
@@ -389,19 +389,19 @@ class DomainLinkagesService:
         pass
 ```
 
-**UPDATE EXPORTERS**: Replace `_generate_domain_linkages()` with service call
+**UPDATE EXPORTERS**: Replace `_generate_relationships()` with service call
 
 ```python
 # In export/core/trivial_exporter.py (and other exporters)
 
-from shared.services.domain_linkages_service import DomainLinkagesService
+from shared.services.relationships_service import DomainLinkagesService
 
 class TrivialFrontmatterExporter:
     def __init__(self):
         # ... existing init
         self.linkages_service = DomainLinkagesService()
     
-    def _add_domain_linkages(self, frontmatter: dict, material_slug: str):
+    def _add_relationships(self, frontmatter: dict, material_slug: str):
         """Add domain linkages using centralized service"""
         linkages = self.linkages_service.generate_linkages(
             material_slug, 
@@ -409,7 +409,7 @@ class TrivialFrontmatterExporter:
         )
         frontmatter.update(linkages)
         
-    # REMOVE: Old _generate_domain_linkages() method (100+ lines)
+    # REMOVE: Old _generate_relationships() method (100+ lines)
 ```
 
 **Benefits**:
@@ -421,7 +421,7 @@ class TrivialFrontmatterExporter:
 
 **Testing**:
 ```python
-# tests/shared/test_domain_linkages_service.py
+# tests/shared/test_relationships_service.py
 
 def test_linkages_for_materials():
     service = DomainLinkagesService()
@@ -441,8 +441,8 @@ def test_linkages_for_contaminants():
 ```
 
 **Migration Steps**:
-1. Create `shared/services/domain_linkages_service.py`
-2. Copy logic from existing `_generate_domain_linkages()` methods
+1. Create `shared/services/relationships_service.py`
+2. Copy logic from existing `_generate_relationships()` methods
 3. Test service independently
 4. Update exporters to use service (one at a time)
 5. Remove old methods from exporters
@@ -650,7 +650,7 @@ pytest tests/ -k export
 
 ### New Tests Required (Priority 4)
 ```python
-# tests/export/test_domain_linkages_service.py
+# tests/export/test_relationships_service.py
 def test_centralized_linkages_materials():
     """Verify linkages service works for materials"""
     service = DomainLinkagesService()
@@ -759,7 +759,7 @@ git checkout HEAD -- scripts/validation/fail_fast_materials_validator.py
 ### If Priority 4 Fails (Centralized Linkages)
 ```bash
 # Remove new service
-rm shared/services/domain_linkages_service.py
+rm shared/services/relationships_service.py
 
 # Restore exporters
 git checkout HEAD -- export/core/trivial_exporter.py
@@ -818,8 +818,8 @@ Before implementation, user must approve:
   - Updated `scripts/operations/quick_deploy.sh` (orchestrator integration)
   - Created `shared/utils/yaml_loader.py` (115 lines, C-based loader)
 - ✅ Phase 2 implemented (1.5 hours)
-  - Created `shared/services/domain_linkages_service.py` (264 lines)
+  - Created `shared/services/relationships_service.py` (264 lines)
   - Updated 4 exporters to use centralized service
-  - Deprecated old `_build_domain_linkages()` methods (4 files)
+  - Deprecated old `_build_relationships()` methods (4 files)
 - ✅ All tests verified, deployment working
 - **Status**: COMPLETE - A (95/100)

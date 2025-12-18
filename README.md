@@ -3,7 +3,7 @@
 **🔬 AI-Powered Laser Cleaning Content Generation System**  
 **✅ Production-Ready**: 98.1% Accuracy | B+ Code Quality (85/100) | 159 Materials  
 **🤖 Intelligent Learning**: Composite Quality Scoring + Adaptive Thresholds + Sweet Spot Optimization  
-**📊 Latest Update**: Phase 2/3/4 Complete - 13 Materials Fully Generated (Nov 23, 2025)
+**📊 Latest Update**: Phase 5 Complete - Universal Export System (Dec 18, 2025)
 
 A dynamic, schema-driven content generator for laser cleaning technical documentation with AI-researched material property validation, intelligent quality learning, and strict fail-fast architecture.
 
@@ -45,12 +45,17 @@ python3 run.py --micro "Aluminum"
 python3 run.py --subtitle "Steel"
 python3 run.py --faq "Copper"
 
+# Export frontmatter (universal exporter)
+python3 run.py --export --domain materials
+python3 run.py --export --domain contaminants
+python3 run.py --export --domain compounds
+python3 run.py --export --domain settings
+
 # Validate existing content (optional - runs 6-pass pipeline)
 python3 run.py --validate-content Aluminum caption
 
 # Batch operations
 python3 run.py --batch-test
-python3 run.py --deploy
 ```
 
 **📖 Full Setup Guide**: [docs/01-getting-started/](docs/01-getting-started/) | **🗺️ Documentation Map**: [DOCUMENTATION_MAP.md](DOCUMENTATION_MAP.md)
@@ -381,7 +386,7 @@ See LICENSE file for details.
 - **Scientific Confidence**: 100% high-confidence AI research results
 
 ### Enhanced Categories Structure
-- **machineSettingsDescriptions**: Comprehensive parameter descriptions with selection criteria
+- **machine_settingsDescriptions**: Comprehensive parameter descriptions with selection criteria
 - **materialPropertyDescriptions**: Standardized property definitions with laser cleaning relevance
 - **environmentalImpactTemplates**: Reusable environmental benefit templates
 - **applicationTypeDefinitions**: Standardized cleaning application categories
@@ -394,7 +399,7 @@ A dynamic, schema-driven content generator for laser cleaning technical document
 
 - **🏗️ Consolidated Architecture**: Streamlined to 6 active components from original 11
 - **📊 Schema-Driven**: Fully dynamic content generation using JSON schemas
-- **🗂️ Unified Frontmatter**: Single component generating both materialProperties and machineSettings
+- **🗂️ Unified Frontmatter**: Single component generating both properties and machine_settings
 - **🤖 AI-Powered**: DeepSeek API integration for frontmatter generation
 - **� PropertyResearcher**: Two-stage property discovery with 85% confidence threshold
 - **🏭 Component Factory**: ComponentGeneratorFactory pattern for clean component management  
@@ -411,7 +416,7 @@ The Z-Beam Generator uses a consolidated 6-component architecture for streamline
 ```
 z-beam-generator/
 ├── components/                     # 6 active components
-│   ├── frontmatter/               # Unified metadata with materialProperties + machineSettings  
+│   ├── frontmatter/               # Unified metadata with properties + machine_settings  
 │   ├── author/                    # Author information (depends on frontmatter)
 │   ├── badgesymbol/              # Material symbol badges (depends on frontmatter)
 │   ├── metatags/                 # HTML meta tags
@@ -657,7 +662,7 @@ Each material generates these component types:
 
 | Component | Description | Status | API Provider | Dependencies |
 |-----------|-------------|---------|--------------|-------------|
-| `frontmatter` | YAML metadata with materialProperties & machineSettings | ✅ Working | deepseek | None |
+| `frontmatter` | YAML metadata with properties & machine_settings | ✅ Working | deepseek | None |
 | `author` | Author information | ✅ Working | none | **REQUIRES frontmatter** |
 | `badgesymbol` | Material symbol badge | ✅ Working | none | **REQUIRES frontmatter** |
 | `metatags` | HTML meta tags | ✅ Working | none | None |
@@ -668,15 +673,15 @@ Each material generates these component types:
 
 ## ⚠️ CRITICAL DEPENDENCY: Frontmatter Data
 
-**IMPORTANT**: The frontmatter component generates comprehensive metadata including both `materialProperties` and `machineSettings` sections. Component generation depends on this frontmatter data for that specified material. Component failures will cascade without it. This is intentional design.
+**IMPORTANT**: The frontmatter component generates comprehensive metadata including both `properties` and `machine_settings` sections. Component generation depends on this frontmatter data for that specified material. Component failures will cascade without it. This is intentional design.
 
 ### Frontmatter Dependency Chain
 
 ```
 ┌─────────────────────────────────────┐
 │          Frontmatter               │ ←── REQUIRED for dependent components
-│  (materialProperties +             │
-│   machineSettings)                 │
+│  (properties +             │
+│   machine_settings)                 │
 └─────────────────────────────────────┘
          │
          ▼
@@ -693,12 +698,12 @@ Each material generates these component types:
 
 The frontmatter component now generates a unified structure containing:
 
-#### materialProperties Section
+#### properties Section
 - Physical and chemical properties
 - Performance characteristics  
 - Technical specifications
 
-#### machineSettings Section
+#### machine_settings Section
 - Laser parameters and power settings
 - Processing speeds and configurations
 - Equipment recommendations
@@ -723,7 +728,7 @@ The frontmatter component now generates a unified structure containing:
 When frontmatter data is missing or incomplete:
 
 1. **Frontmatter Generation Fails**
-   - Missing required fields (category, formula, materialProperties)
+   - Missing required fields (category, formula, properties)
    - Invalid data structure  
    - File not found
 
@@ -757,7 +762,7 @@ The system has been consolidated from 11 original components to **6 active compo
 ### Architecture Benefits
 - **Simplified Dependencies**: Clear frontmatter → dependent component relationships
 - **Reduced Maintenance**: Fewer components to maintain and test
-- **Improved Reliability**: Consolidated frontmatter includes both materialProperties and machineSettings
+- **Improved Reliability**: Consolidated frontmatter includes both properties and machine_settings
 - **Better Performance**: Streamlined generation pipeline with fewer API calls
 
 ### Component Integration
@@ -1082,7 +1087,7 @@ Configure property discovery in `research/material_property_researcher.py`:
 # Dependency chain for component generation
 frontmatter:
   dependencies: []
-  generates: [materialProperties, machineSettings]
+  generates: [properties, machine_settings]
   
 author:
   dependencies: [frontmatter]
@@ -1102,7 +1107,7 @@ propertiestable: []
 
 ### Current Status
 - **✅ 6/6 components** generating successfully (consolidated architecture)
-- **✅ Frontmatter consolidation** with materialProperties + machineSettings
+- **✅ Frontmatter consolidation** with properties + machine_settings
 - **✅ PropertyResearcher integration** with two-stage discovery system
 - **✅ Schema validation** with frontmatter.json and json-ld.json
 - **✅ Component factory** supporting all active components
@@ -1124,7 +1129,7 @@ propertiestable: []
 
 ### Quality Metrics
 - **Schema Compliance**: 100% for all generated components
-- **Frontmatter Completeness**: Both materialProperties and machineSettings sections
+- **Frontmatter Completeness**: Both properties and machine_settings sections
 - **PropertyResearcher Accuracy**: 85% confidence threshold
 - **Component Integration**: 6/6 components working with factory pattern
 - **Test Coverage**: Comprehensive integration tests for all workflows
@@ -1190,7 +1195,7 @@ python3 -m pytest test_*.py -v
 
 #### Consolidated Architecture Tests (`tests/test_consolidated_architecture.py`)
 - **Component Integration**: All 6 components working with ComponentGeneratorFactory
-- **Frontmatter Consolidation**: Validates both materialProperties and machineSettings sections  
+- **Frontmatter Consolidation**: Validates both properties and machine_settings sections  
 - **Dependency Testing**: Tests frontmatter-dependent components (author, badgesymbol)
 - **DataMetrics Compliance**: Ensures generated content matches expected schema structure
 - **PropertyResearcher Integration**: Tests two-stage property discovery system
@@ -1211,7 +1216,7 @@ python3 -m pytest test_*.py -v
 
 ### Test Results Status
 All integration tests passing for consolidated 6-component architecture:
-- ✅ **Frontmatter generation** with unified materialProperties + machineSettings
+- ✅ **Frontmatter generation** with unified properties + machine_settings
 - ✅ **Component factory** creating all 6 component types
 - ✅ **Dependency validation** for author and badgesymbol components
 - ✅ **Schema compliance** for all generated content
@@ -1235,7 +1240,7 @@ All component consolidation work has been completed successfully:
 
 ### Recent Achievements
 - **210 files removed** during consolidation (metricsproperties, metricsmachinesettings, text components)
-- **Unified frontmatter** generating both materialProperties and machineSettings sections
+- **Unified frontmatter** generating both properties and machine_settings sections
 - **Comprehensive test suite** validating all 6 components and architectural patterns
 - **Complete documentation** including consolidated architecture guide
 

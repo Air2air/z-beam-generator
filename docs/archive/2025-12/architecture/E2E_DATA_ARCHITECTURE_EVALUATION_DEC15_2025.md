@@ -3,13 +3,13 @@
 > **⚠️ ARCHIVED NOTICE**  
 > **Date**: December 15, 2025  
 > **Status**: **SUPERSEDED BY MIGRATION**  
-> **Replacement**: Data architecture fundamentally changed with `domain_linkages` migration  
+> **Replacement**: Data architecture fundamentally changed with `relationships` migration  
 > **Current Documentation**: See [DOMAIN_LINKAGES_MIGRATION_COMPLETE_DEC15_2025.md](./DOMAIN_LINKAGES_MIGRATION_COMPLETE_DEC15_2025.md)
 >
 > **This analysis reflects the OLD structure** (pre-migration with `valid_materials`, `eeat.citations`, etc.)  
-> **All findings are now outdated.** The migration to `domain_linkages` structure changed:
-> - Contaminants: Now use `domain_linkages.related_materials[]` (not `valid_materials`)
-> - Materials: Now use `domain_linkages.related_contaminants[]` (bidirectional)
+> **All findings are now outdated.** The migration to `relationships` structure changed:
+> - Contaminants: Now use `relationships.related_materials[]` (not `valid_materials`)
+> - Materials: Now use `relationships.related_contaminants[]` (bidirectional)
 > - All linkages: Now have standardized `id`/`title`/`url`/`image` fields
 > - Bidirectional relationships: 1,962 total linkages across 4 domains
 
@@ -24,7 +24,7 @@
 
 **Current State**: The Z-Beam system maintains **23.8 MB** of data across **425 YAML files**, **6 SQLite databases**, and multiple supporting structures. The architecture shows **moderate redundancy** but has **strong separation of concerns**.
 
-**⚠️ NOTE**: This analysis was performed BEFORE the domain_linkages migration. All references to `valid_materials`, `eeat.citations`, and old linkage patterns are outdated.
+**⚠️ NOTE**: This analysis was performed BEFORE the relationships migration. All references to `valid_materials`, `eeat.citations`, and old linkage patterns are outdated.
 
 **Key Findings**:
 - ✅ Data duplication is **intentional and justified** (frontmatter = deployment format)
@@ -76,8 +76,8 @@
 - **18 top-level keys**
 - **14.8 KB per item**
 - Most complex sections:
-  - `materialProperties`: Physical/chemical properties
-  - `materialCharacteristics`: Descriptive characteristics
+  - `properties`: Physical/chemical properties
+  - `characteristics`: Descriptive characteristics
   - `contamination`: Valid/prohibited contaminants
   - `components`: Generated text components
 

@@ -41,7 +41,7 @@ def quick_consistency_check():
         try:
             # Set up test environment
             test_materials_data = materials_data.copy()
-            test_materials_data['machineSettingsRanges'] = {
+            test_materials_data['machine_settingsRanges'] = {
                 'powerRange': {'min': 10, 'max': 1000, 'unit': 'W'}
             }
             
@@ -80,7 +80,7 @@ def quick_consistency_check():
         
         # Test 4: Required sections present
         try:
-            required_sections = ['machineSettingsDescriptions', 'categories']
+            required_sections = ['machine_settingsDescriptions', 'categories']
             missing = [s for s in required_sections if s not in categories_data]
             if missing:
                 print(f"   ❌ Missing required sections: {missing}")

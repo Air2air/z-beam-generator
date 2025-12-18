@@ -46,7 +46,7 @@ class BatchGenerator:
     
     # Component batch configuration
     BATCH_CONFIG = {
-        'material_description': {
+        'description': {
             'eligible': True,            # ✅ ENABLED - batches 3 materials to meet Winston 300-char min
             'chars_per_component': 140,  # Actual average (was 175 estimate)
             'min_batch_size': 3,         # Minimum 3 material descriptions = 420+ chars (was 2)
@@ -92,7 +92,7 @@ class BatchGenerator:
         Check if component type is eligible for batch generation.
         
         Args:
-            component_type: Type of component (micro, material_description, etc.)
+            component_type: Type of component (micro, description, etc.)
             
         Returns:
             True if component should use batch generation
@@ -130,7 +130,7 @@ class BatchGenerator:
         
         return optimal_size
     
-    def batch_generate_material_descriptions(
+    def batch_generate_descriptions(
         self,
         materials: List[str],
         skip_integrity_check: bool = False
@@ -165,7 +165,7 @@ class BatchGenerator:
                 'cost_savings': float
             }
         """
-        component_type = 'material_description'
+        component_type = 'description'
         batch_size = len(materials)
         
         self.logger.info(f"\n{'='*80}")
@@ -196,7 +196,7 @@ class BatchGenerator:
             all_results = {}
             for i in range(0, len(materials), max_size):
                 batch = materials[i:i+max_size]
-                batch_result = self.batch_generate_material_descriptions(batch, skip_integrity_check)
+                batch_result = self.batch_generate_descriptions(batch, skip_integrity_check)
                 if batch_result['success']:
                     all_results.update(batch_result['results'])
                 else:
@@ -224,7 +224,7 @@ class BatchGenerator:
                 try:
                     result = self.generator.generate(material, component_type)
                     
-                    # Handle string return (material_description case)
+                    # Handle string return (description case)
                     if isinstance(result, str):
                         individual_results[material] = {
                             'content': result,

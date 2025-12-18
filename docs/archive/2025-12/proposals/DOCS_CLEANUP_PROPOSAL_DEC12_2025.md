@@ -29,7 +29,7 @@ Test Files (17):
 ❌ test_contaminant_frontmatter_4authors.py       # Move → tests/
 ❌ test_contaminants_loader_v2.py                 # Move → tests/
 ❌ test_frontmatter_normalization.py              # Move → tests/
-❌ test_material_descriptions.py                  # Move → tests/
+❌ test_descriptions.py                  # Move → tests/
 ❌ test_normalized_exports.py                     # Move → tests/
 ❌ test_persona_loading_simple.py                 # Move → tests/
 ❌ test_settings_loader_v2.py                     # Move → tests/

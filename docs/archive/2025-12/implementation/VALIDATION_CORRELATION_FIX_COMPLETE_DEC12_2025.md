@@ -129,7 +129,7 @@ Domain: materials
 ```
 ✅ HAS CONTEXT
 Material: Aluminum
-Component: material_description
+Component: description
 Domain: materials
 ```
 
@@ -152,7 +152,7 @@ FROM prompt_validation_feedback
 GROUP BY material, component_type;
 
 -- Before: || 155  (NULL, NULL, 155)
--- After:  Aluminum | material_description | 2
+-- After:  Aluminum | description | 2
 --         || 155  (legacy entries)
 ```
 

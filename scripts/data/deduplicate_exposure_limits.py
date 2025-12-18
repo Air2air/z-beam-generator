@@ -13,10 +13,12 @@ Usage:
     python3 scripts/data/deduplicate_exposure_limits.py --apply
 """
 
-import yaml
 import argparse
 from pathlib import Path
 from typing import Dict, List
+
+# Use shared YAML utilities
+from shared.utils.file_io import read_yaml_file, write_yaml_file
 
 # Paths
 DATA_DIR = Path(__file__).parent.parent.parent / "data"
@@ -25,13 +27,11 @@ COMPOUNDS_FILE = DATA_DIR / "compounds" / "Compounds.yaml"
 
 def load_yaml(filepath: Path) -> dict:
     """Load YAML file"""
-    with open(filepath, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+    return read_yaml_file(filepath)
 
 def save_yaml(filepath: Path, data: dict):
     """Save YAML file with proper formatting"""
-    with open(filepath, 'w', encoding='utf-8') as f:
-        yaml.dump(data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+    write_yaml_file(filepath, data, sort_keys=False)
 
 def standardize_compound_name_to_id(compound_name: str) -> str:
     """Convert compound name to kebab-case ID"""

@@ -4,7 +4,7 @@ Frontmatter Structure Normalizer - Schema 5.0.0
 
 PURPOSE: Migrate all frontmatter files from 4.0.0 to 5.0.0 structure
 CHANGES:
-  1. Flatten domain_linkages (move to top level)
+  1. Flatten relationships (move to top level)
   2. Remove duplicate 'name' field (keep 'title')
   3. Reorder fields according to specification
   4. Update schema_version to 5.0.0
@@ -21,11 +21,13 @@ USAGE:
 """
 
 import argparse
-import yaml
 from pathlib import Path
 from collections import OrderedDict
 from typing import Dict, Any, List
 import logging
+
+# Use shared YAML utilities
+from shared.utils.file_io import read_yaml_file, write_yaml_file
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
@@ -54,7 +56,7 @@ FIELD_ORDER = [
     
     # CONTENT (type-specific)
     'contamination_description',
-    'material_description',
+    'description',
     'compound_description',
     'settings_description',
     'micro',
@@ -97,23 +99,20 @@ FIELD_ORDER = [
 
 def load_yaml(file_path: Path) -> Dict:
     """Load YAML file (handles OrderedDict tags)."""
-    with open(file_path, 'r', encoding='utf-8') as f:
-        # Use unsafe load to handle OrderedDict tags, but we control the source files
-        return yaml.unsafe_load(f)
+    return read_yaml_file(file_path)
 
 
 def save_yaml(file_path: Path, data: Dict) -> None:
     """Save YAML file with proper formatting."""
-    with open(file_path, 'w', encoding='utf-8') as f:
-        yaml.dump(data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+    write_yaml_file(file_path, data, sort_keys=False)
 
 
-def flatten_domain_linkages(data: Dict) -> Dict:
+def flatten_relationships(data: Dict) -> Dict:
     """
-    Flatten domain_linkages structure to top level.
+    Flatten relationships structure to top level.
     
     BEFORE (4.0.0):
-        domain_linkages:
+        relationships:
             produces_compounds: [...]
             related_materials: [...]
     
@@ -121,10 +120,10 @@ def flatten_domain_linkages(data: Dict) -> Dict:
         produces_compounds: [...]
         related_materials: [...]
     """
-    if 'domain_linkages' not in data:
+    if 'relationships' not in data:
         return data
     
-    linkages = data.pop('domain_linkages')
+    linkages = data.pop('relationships')
     
     # Move each linkage type to top level
     linkage_types = [
@@ -205,19 +204,19 @@ def normalize_file(file_path: Path, dry_run: bool = False) -> Dict[str, Any]:
         
         # Track changes
         original_keys = set(data.keys())
-        had_domain_linkages = 'domain_linkages' in data
+        had_relationships = 'relationships' in data
         had_name_field = 'name' in data
         original_schema = data.get('schema_version', 'unknown')
         
         # Apply transformations
-        data = flatten_domain_linkages(data)
+        data = flatten_relationships(data)
         data = remove_duplicate_fields(data)
         data = update_schema_version(data)
         data = reorder_fields(data)
         
         # Record changes
-        if had_domain_linkages:
-            changes.append('Flattened domain_linkages')
+        if had_relationships:
+            changes.append('Flattened relationships')
         
         if had_name_field and 'name' not in data:
             changes.append('Removed duplicate name field')
@@ -385,7 +384,7 @@ Examples:
     logger.info("=" * 80)
     logger.info("")
     logger.info("CHANGES:")
-    logger.info("  1. Flatten domain_linkages (move to top level)")
+    logger.info("  1. Flatten relationships (move to top level)")
     logger.info("  2. Remove duplicate 'name' field (keep 'title')")
     logger.info("  3. Reorder fields according to specification")
     logger.info("  4. Update schema_version to 5.0.0")

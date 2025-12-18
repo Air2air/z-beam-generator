@@ -20,7 +20,7 @@ from typing import Dict, Any
 from collections import OrderedDict
 
 from shared.validation.domain_associations import DomainAssociationsValidator
-from shared.services.domain_linkages_service import DomainLinkagesService
+from shared.services.relationships_service import DomainLinkagesService
 from shared.validation.field_order import FrontmatterFieldOrderValidator
 
 logger = logging.getLogger(__name__)
@@ -236,7 +236,7 @@ from export.core.base_trivial_exporter import BaseTrivialExporter
 
 # Remove these (now in base):
 # from shared.validation.domain_associations import DomainAssociationsValidator
-# from shared.services.domain_linkages_service import DomainLinkagesService
+# from shared.services.relationships_service import DomainLinkagesService
 # from shared.validation.field_order import FrontmatterFieldOrderValidator
 ```
 

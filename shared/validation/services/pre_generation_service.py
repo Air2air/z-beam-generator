@@ -399,8 +399,8 @@ class PreGenerationValidationService:
             
             for material_name_key, material_data in materials_section.items():
                 if material_name_key == material_name:
-                    # Extract properties from materialProperties (flat structure)
-                    mat_props = material_data.get('materialProperties', {})
+                    # Extract properties from properties (flat structure)
+                    mat_props = material_data.get('properties', {})
                     metadata_keys = {'label', 'description', 'percentage'}
                     for cat in ['material_characteristics', 'laser_material_interaction']:
                         cat_data = mat_props.get(cat, {})
@@ -640,8 +640,8 @@ class PreGenerationValidationService:
             if category in materials_section:
                 for item in materials_section[category].get('items', []):
                     if item.get('name') == material_name:
-                        # Extract from materialProperties (flat structure)
-                        mat_props = item.get('materialProperties', {})
+                        # Extract from properties (flat structure)
+                        mat_props = item.get('properties', {})
                         metadata_keys = {'label', 'description', 'percentage'}
                         for cat in ['material_characteristics', 'laser_material_interaction']:
                             cat_data = mat_props.get(cat, {})
@@ -764,8 +764,8 @@ class PreGenerationValidationService:
                 for item in category_items.get('items', []):
                     material_name = item.get('name')
                     
-                    # Extract from materialProperties (flat structure)
-                    mat_props = item.get('materialProperties', {})
+                    # Extract from properties (flat structure)
+                    mat_props = item.get('properties', {})
                     metadata_keys = {'label', 'description', 'percentage'}
                     properties = {}
                     for cat in ['material_characteristics', 'laser_material_interaction']:
@@ -879,8 +879,8 @@ class PreGenerationValidationService:
             if category in materials_section:
                 for item in materials_section[category].get('items', []):
                     if item.get('name') == material_name:
-                        # Extract from materialProperties (flat structure)
-                        mat_props = item.get('materialProperties', {})
+                        # Extract from properties (flat structure)
+                        mat_props = item.get('properties', {})
                         metadata_keys = {'label', 'description', 'percentage'}
                         for cat in ['material_characteristics', 'laser_material_interaction']:
                             cat_data = mat_props.get(cat, {})

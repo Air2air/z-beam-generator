@@ -127,12 +127,12 @@ def test_settings_export():
                 print(f'   Sections ({len(sections)}): {", ".join(sections[:10])}{"..." if len(sections) > 10 else ""}')
                 
                 # Check for key fields
-                has_settings = 'machineSettings' in data
-                has_challenges = 'material_challenges' in data
+                has_settings = 'machine_settings' in data
+                has_challenges = 'challenges' in data
                 has_description = 'settings_description' in data
                 
-                print(f'   ✓ machineSettings: {has_settings}')
-                print(f'   ✓ material_challenges: {has_challenges}')
+                print(f'   ✓ machine_settings: {has_settings}')
+                print(f'   ✓ challenges: {has_challenges}')
                 print(f'   ✓ settings_description: {has_description}')
                 
                 results.append((material, True, len(sections)))

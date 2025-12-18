@@ -18,10 +18,10 @@ Usage:
     from shared.text.utils.length_manager import LengthManager
     
     manager = LengthManager(config)
-    target = manager.get_target_length('material_description')
-    # Returns random value between min and max (e.g., 12-35 for material_description)
+    target = manager.get_target_length('description')
+    # Returns random value between min and max (e.g., 12-35 for description)
     
-    is_valid = manager.validate_length(text, 'material_description')
+    is_valid = manager.validate_length(text, 'description')
     # Returns True if word count is within configured min/max bounds
 """
 
@@ -93,7 +93,7 @@ class LengthManager:
         variation percentage, then applies uniformly to component target.
         
         Args:
-            component_type: Type of component (material_description, micro, etc.)
+            component_type: Type of component (description, micro, etc.)
             
         Returns:
             Target word count (randomized within global variation range)

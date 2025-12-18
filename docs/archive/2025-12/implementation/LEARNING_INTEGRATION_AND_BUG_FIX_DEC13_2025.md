@@ -146,7 +146,7 @@ return PromptBuilder._build_spec_driven_prompt(
 Tested with 4 material descriptions (1 per author):
 
 ```bash
-python3 test_4authors_material_description.py
+python3 test_4authors_description.py
 ```
 
 **Results**:
@@ -185,7 +185,7 @@ Failed: 0/4
 
 ### Generation Test (4 Authors)
 ```bash
-python3 test_4authors_material_description.py
+python3 test_4authors_description.py
 ```
 
 **Authors Tested**:
@@ -284,7 +284,7 @@ Generation with optimized parameters
 - `DOCUMENTATION_MAP.md` - Updated December 13, 2025
 
 ### Test Files
-- `test_4authors_material_description.py` - Author variation testing
+- `test_4authors_description.py` - Author variation testing
 - `test_enhanced_ai_detection.py` - AI detection tests (5/5 passing)
 
 ---

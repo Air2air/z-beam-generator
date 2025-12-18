@@ -14,7 +14,7 @@ from dataclasses import dataclass
 class QualitativePropertyDefinition:
     """Definition of a qualitative property"""
     name: str
-    category: str  # Subcategory within materialCharacteristics
+    category: str  # Subcategory within characteristics
     allowed_values: List[str]
     description: str
     unit: str
@@ -146,7 +146,7 @@ QUALITATIVE_PROPERTIES: Dict[str, QualitativePropertyDefinition] = {
 }
 
 
-# Category definitions for materialCharacteristics
+# Category definitions for characteristics
 MATERIAL_CHARACTERISTICS_CATEGORIES = {
     'thermal_behavior': {
         'label': 'Thermal Behavior',
@@ -194,5 +194,5 @@ def get_qualitative_properties_by_category(category: str) -> List[str]:
 
 
 def get_all_categories() -> List[str]:
-    """Get all materialCharacteristics category names"""
+    """Get all characteristics category names"""
     return list(MATERIAL_CHARACTERISTICS_CATEGORIES.keys())

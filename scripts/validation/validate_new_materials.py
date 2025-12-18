@@ -46,7 +46,7 @@ REQUIRED_METADATA = {
     'category',
     'subcategory',
     'name',
-    'material_metadata',
+    'metadata',
 }
 
 # Required property fields for each property
@@ -87,7 +87,7 @@ def validate_material(material_name: str, material_data: Dict[str, Any]) -> Dict
         warnings.append(f"Expected category 'metal', got '{material_data.get('category')}'")
     
     # Get properties
-    properties = material_data.get('materialProperties', {})
+    properties = material_data.get('properties', {})
     
     # Check required properties
     for prop in REQUIRED_METAL_PROPERTIES:
@@ -121,10 +121,10 @@ def validate_material(material_name: str, material_data: Dict[str, Any]) -> Dict
             warnings.append(f"Property '{prop_name}' has non-standard source: {prop_data['source']}")
     
     # Check industry tags
-    if 'material_metadata' in material_data:
-        metadata = material_data['material_metadata']
+    if 'metadata' in material_data:
+        metadata = material_data['metadata']
         if 'industryTags' not in metadata:
-            errors.append("Missing industryTags in material_metadata")
+            errors.append("Missing industryTags in metadata")
         elif not isinstance(metadata['industryTags'], list):
             errors.append("industryTags must be a list")
         elif len(metadata['industryTags']) < 3:

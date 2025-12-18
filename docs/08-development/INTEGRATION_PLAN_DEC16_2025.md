@@ -175,7 +175,7 @@ class QualityEvaluatedGenerator:
         
         Args:
             item_name: Name of item (material, setting, etc.)
-            component_type: Type of content (material_description, micro, etc.)
+            component_type: Type of content (description, micro, etc.)
             author_id: Author persona ID
             domain: Domain name (materials, settings, contaminants, compounds)
         
@@ -299,8 +299,8 @@ def test_both_architectures_generate_content():
     new_gen = NewGenerator(...)
     
     # Generate with both
-    old_result = old_gen.generate('Aluminum', 'material_description', 'todd')
-    new_result = new_gen.generate('Aluminum', 'material_description', 'todd', 'materials')
+    old_result = old_gen.generate('Aluminum', 'description', 'todd')
+    new_result = new_gen.generate('Aluminum', 'description', 'todd', 'materials')
     
     # Both should succeed
     assert old_result.success

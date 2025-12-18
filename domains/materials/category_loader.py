@@ -157,7 +157,7 @@ class CategoryDataLoader:
         Get machine settings ranges and descriptions from ParameterDefinitions.yaml.
         
         Returns:
-            Dict with machineSettingsRanges and machineSettingsDescriptions
+            Dict with machine_settingsRanges and machine_settingsDescriptions
         """
         # Load from ParameterDefinitions.yaml via loader (normalized architecture)
         from domains.materials.data_loader import load_parameter_definitions_yaml
@@ -165,8 +165,8 @@ class CategoryDataLoader:
         param_defs = load_parameter_definitions_yaml()
         
         return {
-            'machineSettingsRanges': param_defs.get('parameter_ranges', {}),
-            'machineSettingsDescriptions': param_defs.get('parameter_definitions', {})
+            'machine_settingsRanges': param_defs.get('parameter_ranges', {}),
+            'machine_settingsDescriptions': param_defs.get('parameter_definitions', {})
         }
     
     def get_material_properties(self) -> Dict[str, Any]:
@@ -249,8 +249,8 @@ class CategoryDataLoader:
         
         # Merge in machine settings from ParameterDefinitions.yaml for backward compatibility
         machine_settings = self.get_machine_settings()
-        categories_data['machineSettingsRanges'] = machine_settings['machineSettingsRanges']
-        categories_data['machineSettingsDescriptions'] = machine_settings['machineSettingsDescriptions']
+        categories_data['machine_settingsRanges'] = machine_settings['machine_settingsRanges']
+        categories_data['machine_settingsDescriptions'] = machine_settings['machine_settingsDescriptions']
         
         # Merge in property descriptions from PropertyDefinitions.yaml for backward compatibility
         import yaml

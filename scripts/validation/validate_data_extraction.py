@@ -3,7 +3,7 @@
 Comprehensive validation of data architecture extraction
 
 Validates that:
-1. All 132 materials have materialProperties and machineSettings
+1. All 132 materials have properties and machine_settings
 2. Data is correctly merged from separate YAML files
 3. All loaders work correctly
 4. No data loss during extraction
@@ -31,17 +31,17 @@ def compare_material_data(name: str, original: dict, merged: dict) -> tuple[bool
     """Compare original and merged data for a material"""
     issues = []
     
-    # Check materialProperties
-    if 'materialProperties' not in merged:
-        issues.append(f"Missing materialProperties")
-    elif merged['materialProperties'] != original.get('materialProperties', {}):
-        issues.append(f"materialProperties mismatch")
+    # Check properties
+    if 'properties' not in merged:
+        issues.append(f"Missing properties")
+    elif merged['properties'] != original.get('properties', {}):
+        issues.append(f"properties mismatch")
     
-    # Check machineSettings
-    if 'machineSettings' not in merged:
-        issues.append(f"Missing machineSettings")
-    elif merged['machineSettings'] != original.get('machineSettings', {}):
-        issues.append(f"machineSettings mismatch")
+    # Check machine_settings
+    if 'machine_settings' not in merged:
+        issues.append(f"Missing machine_settings")
+    elif merged['machine_settings'] != original.get('machine_settings', {}):
+        issues.append(f"machine_settings mismatch")
     
     # Check other fields preserved
     for key in ['name', 'category', 'description', 'title']:
@@ -117,11 +117,11 @@ def main():
     
     # Coverage checks
     print("\n📈 DATA COVERAGE:")
-    has_props = sum(1 for m in materials_via_loader.values() if 'materialProperties' in m)
-    has_settings = sum(1 for m in materials_via_loader.values() if 'machineSettings' in m)
+    has_props = sum(1 for m in materials_via_loader.values() if 'properties' in m)
+    has_settings = sum(1 for m in materials_via_loader.values() if 'machine_settings' in m)
     
-    print(f"   • materialProperties: {has_props}/{total_materials} ({has_props/total_materials*100:.1f}%)")
-    print(f"   • machineSettings: {has_settings}/{total_materials} ({has_settings/total_materials*100:.1f}%)")
+    print(f"   • properties: {has_props}/{total_materials} ({has_props/total_materials*100:.1f}%)")
+    print(f"   • machine_settings: {has_settings}/{total_materials} ({has_settings/total_materials*100:.1f}%)")
     
     # File sizes
     print("\n💾 FILE SIZES:")

@@ -284,7 +284,7 @@ class MaterialAuditor:
                 return
             
             # Check for prohibited min/max ranges in material properties
-            properties = material_data.get('materialProperties', {})
+            properties = material_data.get('properties', {})
             
             for prop_name, prop_data in properties.items():
                 if isinstance(prop_data, dict):
@@ -381,7 +381,7 @@ class MaterialAuditor:
                 result.architecture_compliance = False
             
             # Check properties are defined in category
-            properties = material_data.get('materialProperties', {})
+            properties = material_data.get('properties', {})
             category_ranges = self.category_definitions.get(category, {}).get('category_ranges', {})
             
             for prop_name in properties:
@@ -451,7 +451,7 @@ class MaterialAuditor:
                     ))
             
             # Validate properties structure
-            properties = material_data.get('materialProperties', {})
+            properties = material_data.get('properties', {})
             if not properties:
                 result.issues.append(AuditIssue(
                     severity=AuditSeverity.HIGH,
@@ -533,7 +533,7 @@ class MaterialAuditor:
             if not category:
                 return
             
-            properties = set(material_data.get('materialProperties', {}).keys())
+            properties = set(material_data.get('properties', {}).keys())
             essential_props = self.essential_properties.get(category, set())
             
             # Calculate coverage
@@ -602,7 +602,7 @@ class MaterialAuditor:
                 return
             
             category = material_data.get('category', '').lower()
-            properties = material_data.get('materialProperties', {})
+            properties = material_data.get('properties', {})
             
             # Basic category validation
             valid_categories = set(self.category_definitions.keys())
@@ -669,7 +669,7 @@ class MaterialAuditor:
             if not material_data:
                 return
             
-            properties = material_data.get('materialProperties', {})
+            properties = material_data.get('properties', {})
             if not properties:
                 return
             
@@ -864,7 +864,7 @@ class MaterialAuditor:
             if not material_data:
                 return
             
-            properties = material_data.get('materialProperties', {})
+            properties = material_data.get('properties', {})
             
             # Check for fail-fast violations
             for prop_name, prop_data in properties.items():
@@ -986,12 +986,12 @@ class MaterialAuditor:
                         text_fields_to_check.append((f'outcomeMetrics[{i}].description', desc))
             
             # Add material property descriptions
-            mat_props = frontmatter_data.get('materialProperties', {})
+            mat_props = frontmatter_data.get('properties', {})
             for prop_group, group_data in mat_props.items():
                 if isinstance(group_data, dict):
                     group_desc = group_data.get('description', '')
                     if group_desc:
-                        text_fields_to_check.append((f'materialProperties.{prop_group}.description', group_desc))
+                        text_fields_to_check.append((f'properties.{prop_group}.description', group_desc))
                     
                     # Properties are directly in group_data (flat structure, excluding metadata)
                     metadata_keys = {'label', 'description', 'percentage'}
@@ -999,7 +999,7 @@ class MaterialAuditor:
                         if prop_name not in metadata_keys and isinstance(prop_data, dict):
                             prop_desc = prop_data.get('description', '')
                             if prop_desc:
-                                text_fields_to_check.append((f'materialProperties.{prop_group}.{prop_name}.description', prop_desc))
+                                text_fields_to_check.append((f'properties.{prop_group}.{prop_name}.description', prop_desc))
             
             # Analyze each text field
             for field_path, text_content in text_fields_to_check:
@@ -1248,7 +1248,7 @@ class MaterialAuditor:
                         issue.severity = AuditSeverity.INFO
             
             # Fix 2: Add basic confidence scores where missing
-            properties = material_data.get('materialProperties', {})
+            properties = material_data.get('properties', {})
             for prop_name, prop_data in properties.items():
                 if isinstance(prop_data, dict) and 'confidence' not in prop_data:
                     source = prop_data.get('source', '').lower()

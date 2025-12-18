@@ -20,7 +20,7 @@ def example_old_way():
     with open(project_root / 'data' / 'Categories.yaml', 'r') as f:
         categories = yaml.safe_load(f)
     
-    machine_settings = categories['machineSettingsRanges']
+    machine_settings = categories['machine_settingsRanges']
     safety_templates = categories['safetyTemplates']
     
     return machine_settings, safety_templates
@@ -34,7 +34,7 @@ def example_new_way():
     
     # Load only what you need - faster and cleaner
     settings_data = loader.get_machine_settings()
-    machine_settings = settings_data['machineSettingsRanges']
+    machine_settings = settings_data['machine_settingsRanges']
     
     safety_data = loader.get_safety_regulatory()
     safety_templates = safety_data['safetyTemplates']
@@ -50,7 +50,7 @@ def example_convenience():
     settings = load_category_data('machine_settings')
     safety = load_category_data('safety_regulatory')
     
-    return settings['machineSettingsRanges'], safety['safetyTemplates']
+    return settings['machine_settingsRanges'], safety['safetyTemplates']
 
 
 def example_specific_category():

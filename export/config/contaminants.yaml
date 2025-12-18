@@ -1,0 +1,85 @@
+# Contaminants Domain Configuration
+# Configuration for UniversalFrontmatterExporter (Phase 2)
+# Created: December 17, 2025
+
+# ============================================================================
+# DOMAIN IDENTITY
+# ============================================================================
+domain: contaminants
+source_file: data/contaminants/Contaminants.yaml
+output_path: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/contaminants
+items_key: contamination_patterns
+id_field: pattern_id
+slug_field: slug
+
+# ============================================================================
+# ENRICHMENTS (Applied in order)
+# ============================================================================
+enrichments:
+  # 1. Enrich compound linkages (produces_compounds when removed)
+  - type: compound_linkage
+    field: produces_compounds
+    title: Compounds Released
+    description: Hazardous fumes and particles generated when removing this contamination
+    source: data/compounds/Compounds.yaml
+    defaults:
+      - concentration_range
+      - hazard_class
+      - exposure_limits
+      - control_measures
+      - cas_number
+      - compound_category
+  
+  # 2. Enrich material linkages (related_materials)
+  - type: material_linkage
+    field: related_materials
+    title: Found on Materials
+    description: Materials commonly affected by this type of contamination
+    source: data/materials/Materials.yaml
+    defaults:
+      - category
+      - subcategory
+      - material_type
+      - thermal_conductivity
+      - reflectivity
+  
+  # 3. Enrich related settings linkages
+  - type: settings_linkage
+    field: related_settings
+    title: Effective Settings
+    description: Laser parameters optimized for removing this type of contamination
+    source: data/settings/Settings.yaml
+    defaults:
+      - setting_category
+      - power_watts
+      - pulse_frequency_hz
+      - recommended_for
+  
+  # 4. Add timestamps
+  - type: timestamp
+    fields:
+      - datePublished
+      - dateModified
+  
+  # 5. Add slug fields to domain linkages
+  - type: relationships_slug
+
+# ============================================================================
+# CONTENT GENERATORS (Applied in order)
+# ============================================================================
+generators:
+  # 1. Generate SEO meta description from contaminant_description
+  - type: seo_description
+    source_field: contaminant_description
+    output_field: seo_description
+    max_length: 160
+  
+  # 2. Generate breadcrumb navigation
+  - type: breadcrumb
+    template: "Home / Contaminants / {category} / {name}"
+    output_field: breadcrumb_text
+  
+  # 3. Generate URL-safe slug (if missing)
+  - type: slug
+    source_field: name
+    output_field: slug

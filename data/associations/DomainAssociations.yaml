@@ -10,7 +10,7 @@
 #   - Mandatory: Exporters MUST read from this file (no hardcoded linkages)
 # 
 # USAGE:
-#   Exporters read this file and generate bidirectional domain_linkages for frontmatter
+#   Exporters read this file and generate bidirectional relationships for frontmatter
 # 
 # VERIFICATION STATUS:
 #   - verified: true  = Research-backed, peer-reviewed, or lab-confirmed
@@ -28,8 +28,8 @@ metadata:
 # MATERIAL ↔ CONTAMINANT ASSOCIATIONS
 # =============================================================================
 # Bidirectional: Generates both:
-#   - Materials → domain_linkages.related_contaminants
-#   - Contaminants → domain_linkages.related_materials
+#   - Materials → relationships.related_contaminants
+#   - Contaminants → relationships.related_materials
 # =============================================================================
 
 material_contaminant_associations:
@@ -47,8 +47,8 @@ material_contaminant_associations:
 # CONTAMINANT ↔ COMPOUND ASSOCIATIONS
 # =============================================================================
 # Bidirectional: Generates both:
-#   - Contaminants → domain_linkages.produces_compounds
-#   - Compounds → domain_linkages.produced_by_contaminants
+#   - Contaminants → relationships.produces_compounds
+#   - Compounds → relationships.produced_by_contaminants
 # =============================================================================
 
 contaminant_compound_associations:
@@ -218,8 +218,8 @@ contaminant_compound_associations:
 # =============================================================================
 # Derived from: Material → Contaminant → Compound
 # Bidirectional: Generates both:
-#   - Materials → domain_linkages.related_compounds
-#   - Compounds → domain_linkages.related_materials
+#   - Materials → relationships.related_compounds
+#   - Compounds → relationships.related_materials
 # =============================================================================
 
 material_compound_associations:

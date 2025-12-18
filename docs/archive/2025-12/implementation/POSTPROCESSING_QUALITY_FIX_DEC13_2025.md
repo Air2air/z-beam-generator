@@ -281,7 +281,7 @@ All fixes tested and verified. Postprocessing can continue safely.
 ### Changes Made
 
 **1. Quality Threshold: 70 → 60**
-- **Reason**: Single-sentence content (material_description) was scoring exactly 70/100 due to 0 structural score
+- **Reason**: Single-sentence content (description) was scoring exactly 70/100 due to 0 structural score
 - **Impact**: Appropriate concise content now passes comfortably (85/100 instead of borderline 70/100)
 
 **2. Single-Sentence Baseline Scoring: 0 → 50**

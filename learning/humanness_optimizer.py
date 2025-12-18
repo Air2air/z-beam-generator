@@ -124,7 +124,7 @@ class HumannessOptimizer:
             'micro', 
             'settings_description', 
             'component_summaries', 
-            'material_description',
+            'description',
             'description',  # Generic description component (used by contaminants, materials, settings)
             'frontmatter_description'  # Frontmatter-specific descriptions
         }
@@ -911,7 +911,7 @@ def generate_humanness_layer(
     Generate humanness instructions (convenience function).
     
     Args:
-        component_type: Type of component (micro, material_description, etc.)
+        component_type: Type of component (micro, description, etc.)
         strictness_level: 1-5 (retry attempt number)
         previous_ai_tendencies: AI patterns from previous attempt
         winston_db_path: Path to Winston database

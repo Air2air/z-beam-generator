@@ -21,7 +21,7 @@ For advanced operations, use run_unified.py with the unified pipeline.
   python3 run.py --faq "Aluminum"          # Generate AI FAQ → Materials.yaml (single-pass)
   
   # Step 2: Validate & Improve (post-processing with learning systems)
-  python3 run.py --validate-content Aluminum material_description  # Run all quality checks + learning (up to 5 attempts)
+  python3 run.py --validate-content Aluminum description  # Run all quality checks + learning (up to 5 attempts)
   python3 run.py --validate-content Aluminum caption   # Winston, Realism, Readability, Subjective + DB logging
   
   # Step 3: Voice enhancement (optional)
@@ -138,7 +138,7 @@ import argparse
 # Import command handlers from modular structure
 from shared.commands import (
     handle_micro_generation,
-    handle_material_description_generation,
+    handle_description_generation,
     handle_settings_description_generation,
     handle_component_summaries_generation,
     handle_faq_generation,
@@ -207,12 +207,12 @@ def main():
     parser.add_argument("--test", action="store_true", help="Run test mode")
     parser.add_argument("--validate", action="store_true", help="Run hierarchical validation")
     parser.add_argument("--validate-content", nargs=2, metavar=('MATERIAL', 'COMPONENT'), 
-                       help="Validate and improve generated content with learning systems (e.g., --validate-content Aluminum material_description)")
+                       help="Validate and improve generated content with learning systems (e.g., --validate-content Aluminum description)")
     parser.add_argument("--validate-report", help="Generate validation report")
     parser.add_argument("--content-validation-report", help="Content quality validation report")
     parser.add_argument("--validate-ai-detection", action="store_true", help="Audit content with Winston AI")
     parser.add_argument("--winston-threshold", type=float, default=70.0, help="Winston human score threshold (0-100)")
-    parser.add_argument("--winston-component", choices=['material_description', 'micro', 'faq'], 
+    parser.add_argument("--winston-component", choices=['description', 'micro', 'faq'], 
                        help="Specific component type to audit with Winston")
     
     # Data Research & Completeness Commands
@@ -374,9 +374,9 @@ def main():
             print(f"❌ Batch test failed: {e}")
             return 1
     
-    if getattr(args, 'batch_material_description', None):
-        from shared.commands.batch import handle_batch_material_description_generation
-        result = handle_batch_material_description_generation(args.batch_material_description, skip_integrity_check=args.skip_integrity_check)
+    if getattr(args, 'batch_description', None):
+        from shared.commands.batch import handle_batch_description_generation
+        result = handle_batch_description_generation(args.batch_description, skip_integrity_check=args.skip_integrity_check)
         return result
     
     if args.batch_micro:
@@ -415,8 +415,8 @@ def main():
         # Per-iteration learning happens inline - no global evaluation needed
         return result
     
-    if getattr(args, 'material_description', None):
-        result = handle_material_description_generation(args.material_description, skip_integrity_check=args.skip_integrity_check)
+    if getattr(args, 'description', None):
+        result = handle_description_generation(args.description, skip_integrity_check=args.skip_integrity_check)
         # Per-iteration learning happens inline - no global evaluation needed
         return result
     

@@ -37,7 +37,7 @@ def get_materials_missing_thermal_props() -> List[Tuple[str, str, List[str]]]:
     target_props = ['thermalConductivity', 'thermalDiffusivity', 'ablationThreshold']
     
     for mat_name, mat_data in materials.items():
-        mat_props = mat_data.get('materialProperties', {})
+        mat_props = mat_data.get('properties', {})
         lmi = mat_props.get('laser_material_interaction', {})
         
         missing = []
@@ -207,7 +207,7 @@ def main():
                 continue
             
             # Get laser_material_interaction section
-            mat_props = all_materials[material_name].get('materialProperties', {})
+            mat_props = all_materials[material_name].get('properties', {})
             lmi = mat_props.get('laser_material_interaction', {})
             
             # Add researched properties

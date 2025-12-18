@@ -95,7 +95,7 @@ class BidirectionalLinkageCompleter:
         # Step 1: Build Contaminant → Compound map
         contaminant_to_compounds = defaultdict(set)
         for compound_id, compound_data in self.compounds_data['compounds'].items():
-            produced_by = compound_data.get('domain_linkages', {}).get('produced_by_contaminants', [])
+            produced_by = compound_data.get('relationships', {}).get('produced_by_contaminants', [])
             for contaminant_link in produced_by:
                 contaminant_id = contaminant_link.get('id', '')
                 if contaminant_id:
@@ -107,7 +107,7 @@ class BidirectionalLinkageCompleter:
         
         # Step 2: For each Material, find its Contaminants, then find their Compounds
         for material_name, material_data in self.materials_data['materials'].items():
-            related_contaminants = material_data.get('domain_linkages', {}).get('related_contaminants', [])
+            related_contaminants = material_data.get('relationships', {}).get('related_contaminants', [])
             
             for contaminant_link in related_contaminants:
                 contaminant_id = contaminant_link.get('id', '')
@@ -148,11 +148,11 @@ class BidirectionalLinkageCompleter:
                     'source': 'laser_ablation'
                 })
             
-            # Add to material's domain_linkages
-            if 'domain_linkages' not in material_data:
-                material_data['domain_linkages'] = {}
+            # Add to material's relationships
+            if 'relationships' not in material_data:
+                material_data['relationships'] = {}
             
-            material_data['domain_linkages']['related_compounds'] = compound_linkages
+            material_data['relationships']['related_compounds'] = compound_linkages
             
             self.stats['materials_updated'] += 1
             self.stats['compounds_linked'] += len(compound_linkages)

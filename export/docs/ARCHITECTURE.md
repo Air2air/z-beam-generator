@@ -29,7 +29,7 @@ components/frontmatter/
 
 ### StreamlinedFrontmatterGenerator
 - **Primary Function**: Consolidated frontmatter generation with **shared generation architecture**
-- **Architecture Principle**: materialProperties and machineSettings use **identical, reusable methods**
+- **Architecture Principle**: properties and machine_settings use **identical, reusable methods**
 - **Key Distinction**: Only data category parameters differ ('metal'/'ceramic' vs 'machine')
 - **Core Method**: `_create_datametrics_property()` - shared by both property types
 - **Result Structure**: Consistent DataMetrics format: `{value, unit, confidence, min, max, description}`
@@ -37,8 +37,8 @@ components/frontmatter/
 #### Shared Generation Flow
 ```python
 # Both property types follow identical methodology:
-materialProperties  = _generate_properties_with_ranges(material_data)    # category: 'metal'/'ceramic'/etc
-machineSettings     = _generate_machine_settings_with_ranges(material_data) # category: 'machine'
+properties  = _generate_properties_with_ranges(material_data)    # category: 'metal'/'ceramic'/etc
+machine_settings     = _generate_machine_settings_with_ranges(material_data) # category: 'machine'
 
 # Both internally call:
 _create_datametrics_property(value, prop_key, category) → DataMetrics structure
@@ -47,14 +47,14 @@ _create_datametrics_property(value, prop_key, category) → DataMetrics structur
 #### Method Reusability Matrix
 | Method | Target Section | Category Parameter | Reuses Core Logic |
 |--------|---------------|-------------------|------------------|
-| `_generate_properties_with_ranges()` | materialProperties | material-specific | ✅ |
-| `_generate_machine_settings_with_ranges()` | machineSettings | 'machine' | ✅ |
+| `_generate_properties_with_ranges()` | properties | material-specific | ✅ |
+| `_generate_machine_settings_with_ranges()` | machine_settings | 'machine' | ✅ |
 | `_create_datametrics_property()` | **Both** | varies | **Core Method** |
 - **Key Features**:
   - Enhanced material data lookup with dual-source strategy (material_index + materials.category.items[])
   - Comprehensive category and subcategory classification system (30+ subcategories)
   - **NEW: Hierarchical schema support** with nested sections:
-    - `materialProperties` (chemical/physical/mechanical/thermal)
+    - `properties` (chemical/physical/mechanical/thermal)
     - `laserProcessing` (recommended/thresholds/compatibility)  
     - `processing` (surface compatibility and guidelines)
     - `safety` (hazards and regulatory compliance)
@@ -62,7 +62,7 @@ _create_datametrics_property(value, prop_key, category) → DataMetrics structur
     - `content` (authoring metadata)
     - `metadata` (validation tracking)
   - Rich data population (properties, applications, machine settings, compatibility)
-  - **Backward compatibility** with legacy flat structure (`properties`, `machineSettings`, `chemicalProperties`)
+  - **Backward compatibility** with legacy flat structure (`properties`, `machine_settings`, `chemicalProperties`)
   - Materials.yaml data processing with intelligent fallback
   - Author object resolution via `get_author_by_id()`
   - Image section generation with hero and micro images

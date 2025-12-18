@@ -4,15 +4,15 @@ Frontmatter Generation Modules
 Active Modules (6):
 - MetadataModule: name, title, description, category, subcategory
 - AuthorModule: author metadata extraction
-- PropertiesModule: materialProperties with GROUPED structure
-- SettingsModule: machineSettings with ranges
-- ComplianceModule: regulatoryStandards extraction
+- PropertiesModule: properties with GROUPED structure
+- SettingsModule: machine_settings with ranges
+- ComplianceModule: regulatory_standards extraction
 - MediaModule: images, micro
 
 Removed Modules (Nov 2, 2025):
 - ApplicationsModule: applications field removed from template
 - ImpactModule: environmentalImpact/outcomeMetrics fields removed
-- CharacteristicsModule: materialCharacteristics field removed
+- CharacteristicsModule: characteristics field removed
 
 Architecture:
 - Single Responsibility: Each module handles ONE domain

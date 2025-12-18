@@ -56,7 +56,7 @@ def handle_generation(
     component_label = component_type.upper().replace('_', ' ')
     icon_map = {
         'micro': '📝',
-        'material_description': '📌',
+        'description': '📌',
         'settings_description': '⚙️',
         'component_summary': '📋',
         'faq': '❓',
@@ -501,14 +501,14 @@ def handle_micro_generation(material_name: str, skip_integrity_check: bool = Fal
     return handle_generation(material_name, 'micro', domain='materials', skip_integrity_check=skip_integrity_check)
 
 
-def handle_material_description_generation(material_name: str, skip_integrity_check: bool = False):
+def handle_description_generation(material_name: str, skip_integrity_check: bool = False):
     """
-    DEPRECATED: Use handle_generation(material_name, 'material_description') instead.
+    DEPRECATED: Use handle_generation(material_name, 'description') instead.
     
     Generate AI-powered material description for a material and save to Materials.yaml.
     This is a backward compatibility wrapper around the generic handler.
     """
-    return handle_generation(material_name, 'material_description', domain='materials', skip_integrity_check=skip_integrity_check)
+    return handle_generation(material_name, 'description', domain='materials', skip_integrity_check=skip_integrity_check)
 
 
 def handle_settings_description_generation(material_name: str, skip_integrity_check: bool = False):

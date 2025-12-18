@@ -71,7 +71,7 @@ contamination_challenges:
 ```yaml
 Aluminum:
   # ... other settings ...
-  material_challenges:
+  challenges:
     thermal_management:
     - challenge: High thermal conductivity and heat spread
       challenge_id: high_thermal_conductivity_and_heat_spread  # AUTO-GENERATED
@@ -214,7 +214,7 @@ surface_characteristics:
 **Add challenge to relevant materials**:
 ```yaml
 Aluminum:
-  material_challenges:
+  challenges:
     surface_characteristics:
     - challenge: Anodized coating protection  # Must match taxonomy name
       severity: high
@@ -415,7 +415,7 @@ pytest tests/test_challenge_taxonomy.py -v
 
 **Flow**:
 1. Load material settings from `Settings.yaml`
-2. Extract `material_challenges` dictionary
+2. Extract `challenges` dictionary
 3. Call `_enrich_challenges_with_ids()`
 4. Add `challenge_id` to each challenge
 5. Export to frontmatter with enriched data

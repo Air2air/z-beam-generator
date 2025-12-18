@@ -38,7 +38,7 @@ from typing import Dict, Any
 from datetime import datetime
 
 from shared.validation.domain_associations import DomainAssociationsValidator
-from shared.services.domain_linkages_service import DomainLinkagesService
+from shared.services.relationships_service import DomainLinkagesService
 from shared.validation.field_order import FrontmatterFieldOrderValidator
 
 

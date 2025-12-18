@@ -33,7 +33,7 @@
 
 **Files Modified**:
 - `domains/contaminants/prompts/description.txt` (+110 words enforcement)
-- `domains/materials/prompts/material_description.txt` (+45 words enforcement)
+- `domains/materials/prompts/description.txt` (+45 words enforcement)
 
 **Result**: Voice distinctiveness jumped from 15% → 60%+
 
@@ -79,7 +79,7 @@ verbs, etc.) throughout—at least 1-2 distinctive markers
 per paragraph as specified.
 ────────────────────────────────────────────
 
-domains/materials/prompts/material_description.txt:
+domains/materials/prompts/description.txt:
 ────────────────────────────────────────────
 CRITICAL: You MUST write using the EXACT linguistic patterns 
 specified in the voice instructions below. Demonstrate your 
@@ -97,7 +97,7 @@ for laser processing.
 
 **Issues**:
 - ❌ 110 words of enforcement in `description.txt`
-- ❌ 45 words of enforcement in `material_description.txt`
+- ❌ 45 words of enforcement in `description.txt`
 - ❌ Future domains would need same duplication
 - ❌ Changes require editing multiple files
 - ❌ Risk of inconsistency between domains
@@ -149,7 +149,7 @@ unique, how it behaves on different materials, and key
 challenges for removal.
 ────────────────────────────────────────────
 
-domains/materials/prompts/material_description.txt:
+domains/materials/prompts/description.txt:
 ────────────────────────────────────────────
 Write a concise description (30-80 words) of {material} for 
 laser cleaning applications.
@@ -320,7 +320,7 @@ turning out a clean finish in most cases...
 ### Phase 2: Strengthening (Commit 5ac21f3a)
 ```
 domains/contaminants/prompts/description.txt: +110 words enforcement
-domains/materials/prompts/material_description.txt: +45 words enforcement
+domains/materials/prompts/description.txt: +45 words enforcement
 ```
 
 ### Phase 3: Centralization (Commit c4248a7d)
@@ -332,7 +332,7 @@ domains/contaminants/prompts/description.txt:
   - Removed: 110 words enforcement
   - Kept: {voice_instruction} placeholder + content requirements
 
-domains/materials/prompts/material_description.txt:
+domains/materials/prompts/description.txt:
   - Removed: 45 words enforcement
   - Kept: {voice_instruction} placeholder + content requirements
 ```
@@ -363,7 +363,7 @@ cat shared/text/utils/prompt_builder.py | grep -A 15 "GLOBAL VOICE ENFORCEMENT"
 
 # View simplified domain prompts
 cat domains/contaminants/prompts/description.txt
-cat domains/materials/prompts/material_description.txt
+cat domains/materials/prompts/description.txt
 
 # Test voice distinctiveness
 python3 test_4contaminants_4authors.py 2>&1 | tee output/voice_test.txt

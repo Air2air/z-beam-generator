@@ -355,7 +355,7 @@ safety_data:
 **Source**: `contamination_patterns.{pattern}.eeat.citations`
 
 ```yaml
-regulatoryStandards:
+regulatory_standards:
   - name: IEC
     longName: International Electrotechnical Commission
     description: IEC 60825 - Safety of Laser Products

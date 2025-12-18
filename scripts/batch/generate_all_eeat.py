@@ -3,11 +3,11 @@
 Batch EEAT Generator - Generate EEAT for all materials
 
 Generates EEAT (Experience, Expertise, Authoritativeness, Trustworthiness) 
-metadata for all materials from their regulatoryStandards.
+metadata for all materials from their regulatory_standards.
 
 EEAT Structure:
 - reviewedBy: "Z-Beam Quality Assurance Team"
-- citations: 1-3 random regulatoryStandards descriptions
+- citations: 1-3 random regulatory_standards descriptions
 - isBasedOn: 1 random regulatoryStandard with name and url
 
 Usage:
@@ -140,12 +140,12 @@ def generate_all_eeat(dry_run: bool = False, specific_material: str = None):
         try:
             material_data = materials_data['materials'][material_name]
             
-            # Check if material has regulatoryStandards
-            reg_standards = material_data.get('regulatoryStandards', [])
+            # Check if material has regulatory_standards
+            reg_standards = material_data.get('regulatory_standards', [])
             dict_standards = [s for s in reg_standards if isinstance(s, dict)]
             
             if not dict_standards:
-                logger.warning(f"   ⏭️  Skipped: No valid regulatoryStandards")
+                logger.warning(f"   ⏭️  Skipped: No valid regulatory_standards")
                 skip_count += 1
                 continue
             

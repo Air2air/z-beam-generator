@@ -577,7 +577,7 @@ class CategoryRangeResearcher:
             )]
         
         category = material_data.get('category', 'unknown')
-        properties = material_data.get('materialProperties', {})
+        properties = material_data.get('properties', {})
         
         # Get research ranges for this category
         research_ranges = self.research_ranges.get(category, {})

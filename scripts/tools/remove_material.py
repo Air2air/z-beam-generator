@@ -24,7 +24,8 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-import yaml
+# Use shared YAML utilities
+from shared.utils.file_io import read_yaml_file, write_yaml_file
 
 
 def slugify(name: str) -> str:
@@ -34,14 +35,12 @@ def slugify(name: str) -> str:
 
 def load_yaml(file_path: Path) -> dict:
     """Load YAML file."""
-    with open(file_path) as f:
-        return yaml.safe_load(f)
+    return read_yaml_file(file_path)
 
 
 def save_yaml(file_path: Path, data: dict) -> None:
     """Save YAML file preserving structure."""
-    with open(file_path, 'w') as f:
-        yaml.dump(data, f, default_flow_style=False, indent=2, sort_keys=False, allow_unicode=True)
+    write_yaml_file(file_path, data, sort_keys=False)
 
 
 def find_material_key(materials: dict, search_name: str) -> str | None:

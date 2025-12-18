@@ -101,7 +101,7 @@ class MaterialsAdapter(DataSourceAdapter):
         # Only provide category/subcategory for classification context
         
         # Extract key properties
-        properties = item_data.get('materialProperties', {})
+        properties = item_data.get('properties', {})
         key_props = []
         for prop in ['hardness', 'thermalConductivity', 'density', 'meltingPoint']:
             if prop in properties:
@@ -234,7 +234,7 @@ class MaterialsAdapter(DataSourceAdapter):
         }
         
         # Extract property values from nested structure
-        material_props = item_data.get('materialProperties', {})
+        material_props = item_data.get('properties', {})
         material_chars = material_props.get('material_characteristics', {})
         for prop_name, prop_data in material_chars.items():
             if isinstance(prop_data, dict) and 'value' in prop_data:
@@ -244,7 +244,7 @@ class MaterialsAdapter(DataSourceAdapter):
                     facts['properties'][prop_name] = f"{value} {unit}".strip()
         
         # Extract machine settings from nested structure
-        settings_section = item_data.get('machineSettings', {})
+        settings_section = item_data.get('machine_settings', {})
         laser_settings = settings_section.get('laser_settings', {})
         settings = laser_settings if laser_settings else settings_section
         for setting_name, setting_data in settings.items():

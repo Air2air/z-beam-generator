@@ -202,7 +202,7 @@ Each query result includes:
 Challenge data is embedded in settings frontmatter:
 
 ```yaml
-material_challenges:
+challenges:
   thermal_management:
   - challenge: High thermal conductivity and heat spread
     challenge_id: high_thermal_conductivity_and_heat_spread

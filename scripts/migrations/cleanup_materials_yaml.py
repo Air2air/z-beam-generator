@@ -2,8 +2,8 @@
 """
 Cleanup Materials.yaml by removing extracted content fields.
 
-PURPOSE: Remove caption, faq, regulatoryStandards from Materials.yaml after extraction.
-RESULT: Reduce Materials.yaml from 2.8MB to ~800KB (materialProperties remain).
+PURPOSE: Remove caption, faq, regulatory_standards from Materials.yaml after extraction.
+RESULT: Reduce Materials.yaml from 2.8MB to ~800KB (properties remain).
 
 SAFETY:
 - Creates timestamped backup before modification
@@ -30,7 +30,7 @@ def backup_materials_file(materials_file: Path) -> Path:
 
 def remove_extracted_fields(materials_data: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Remove caption, faq, regulatoryStandards from all materials.
+    Remove caption, faq, regulatory_standards from all materials.
     
     These fields are now in separate content files and orchestrated by TrivialFrontmatterExporter.
     """
@@ -39,7 +39,7 @@ def remove_extracted_fields(materials_data: Dict[str, Any]) -> Dict[str, Any]:
     removed_stats = {
         'micro': 0,
         'faq': 0,
-        'regulatoryStandards': 0
+        'regulatory_standards': 0
     }
     
     for material_name, material_data in materials_section.items():
@@ -52,9 +52,9 @@ def remove_extracted_fields(materials_data: Dict[str, Any]) -> Dict[str, Any]:
             del material_data['faq']
             removed_stats['faq'] += 1
         
-        if 'regulatoryStandards' in material_data:
-            del material_data['regulatoryStandards']
-            removed_stats['regulatoryStandards'] += 1
+        if 'regulatory_standards' in material_data:
+            del material_data['regulatory_standards']
+            removed_stats['regulatory_standards'] += 1
     
     return materials_data, removed_stats
 
@@ -94,7 +94,7 @@ def main():
     
     print(f"   ✅ Removed caption from {removed_stats['micro']} materials")
     print(f"   ✅ Removed faq from {removed_stats['faq']} materials")
-    print(f"   ✅ Removed regulatoryStandards from {removed_stats['regulatoryStandards']} materials")
+    print(f"   ✅ Removed regulatory_standards from {removed_stats['regulatory_standards']} materials")
     
     # Write cleaned data
     print(f"\n💾 Writing cleaned Materials.yaml...")
@@ -114,13 +114,13 @@ def main():
     print(f"Initial:   {initial_size_mb:.2f} MB")
     print(f"Final:     {final_size_mb:.2f} MB")
     print(f"Reduced:   {reduction_mb:.2f} MB ({reduction_pct:.1f}%)")
-    print(f"Target:    ~0.80 MB (materialProperties + metadata)")
+    print(f"Target:    ~0.80 MB (properties + metadata)")
     
     if final_size_mb < 1.0:
         print(f"\n✅ Successfully reduced Materials.yaml to under 1MB!")
     else:
         print(f"\n⚠️  File still larger than expected target of ~800KB")
-        print(f"   This is expected if materialProperties are comprehensive.")
+        print(f"   This is expected if properties are comprehensive.")
     
     print(f"\n✅ Cleanup complete!")
     print(f"   Backup: {backup_file}")

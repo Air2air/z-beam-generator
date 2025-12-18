@@ -349,8 +349,8 @@ class PropertyValueResearcher:
             if not material_data:
                 return None
             
-            # Properties are in materialProperties → category groups (flat structure)
-            mat_props = material_data.get('materialProperties', {})
+            # Properties are in properties → category groups (flat structure)
+            mat_props = material_data.get('properties', {})
             properties = {}
             
             # Collect all properties from both category groups (excluding metadata)

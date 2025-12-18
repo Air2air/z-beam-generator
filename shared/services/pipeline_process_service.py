@@ -200,7 +200,7 @@ class PipelineProcessService:
             material_data: Material data from Materials.yaml
             
         Returns:
-            Updated frontmatter with regulatoryStandards section
+            Updated frontmatter with regulatory_standards section
         """
         try:
             all_regulatory_standards = []
@@ -213,12 +213,12 @@ class PipelineProcessService:
             # Add material-specific regulatory standards from Materials.yaml
             material_specific_standards = []
             
-            # Check for standards in material_metadata (optimized structure)
-            if 'material_metadata' in material_data and 'regulatoryStandards' in material_data['material_metadata']:
-                material_specific_standards = material_data['material_metadata']['regulatoryStandards']
+            # Check for standards in metadata (optimized structure)
+            if 'metadata' in material_data and 'regulatory_standards' in material_data['metadata']:
+                material_specific_standards = material_data['metadata']['regulatory_standards']
             # Fallback to direct field (legacy structure)
-            elif 'regulatoryStandards' in material_data:
-                material_specific_standards = material_data['regulatoryStandards']
+            elif 'regulatory_standards' in material_data:
+                material_specific_standards = material_data['regulatory_standards']
             
             if material_specific_standards:
                 all_regulatory_standards.extend(material_specific_standards)
@@ -226,18 +226,18 @@ class PipelineProcessService:
             
             # Add combined regulatory standards to frontmatter
             if all_regulatory_standards:
-                frontmatter['regulatoryStandards'] = all_regulatory_standards
+                frontmatter['regulatory_standards'] = all_regulatory_standards
                 self.logger.info(f"Total regulatory standards: {len(all_regulatory_standards)} (universal + specific)")
             else:
                 # Ensure universal standards are always present
-                frontmatter['regulatoryStandards'] = self.universal_regulatory_standards
+                frontmatter['regulatory_standards'] = self.universal_regulatory_standards
                 
             return frontmatter
             
         except Exception as e:
             self.logger.error(f"Failed to add regulatory standards: {e}")
             # Ensure universal standards are preserved even on error
-            frontmatter['regulatoryStandards'] = self.universal_regulatory_standards
+            frontmatter['regulatory_standards'] = self.universal_regulatory_standards
             return frontmatter
     
     def generate_applications_from_unified_industry_data(
@@ -282,8 +282,8 @@ class PipelineProcessService:
             
             # Check for material-specific industry overrides (preserved unique tags)
             material_specific_industries = []
-            if 'material_metadata' in material_data and 'industryTags' in material_data['material_metadata']:
-                material_specific_industries = material_data['material_metadata']['industryTags']
+            if 'metadata' in material_data and 'industryTags' in material_data['metadata']:
+                material_specific_industries = material_data['metadata']['industryTags']
             
             # Combine category primary + material-specific industries
             all_industries = list(set(category_primary_industries + material_specific_industries))
@@ -344,7 +344,7 @@ class PipelineProcessService:
         return {
             'environmental_impact_count': len(frontmatter.get('environmentalImpact', [])),
             'outcome_metrics_count': len(frontmatter.get('outcomeMetrics', [])),
-            'regulatory_standards_count': len(frontmatter.get('regulatoryStandards', [])),
+            'regulatory_standards_count': len(frontmatter.get('regulatory_standards', [])),
             'applications_count': len(frontmatter.get('applications', []))
         }
     
@@ -371,8 +371,8 @@ class PipelineProcessService:
         prompt = f"""Generate a concise technical description (1-2 sentences) for the environmental benefit "{benefit_type}" specifically for {material_name} laser cleaning.
 
 Material properties:
-- Thermal conductivity: {material_data.get('materialProperties', {}).get('thermalConductivity', 'N/A')}
-- Melting point: {material_data.get('materialProperties', {}).get('meltingPoint', 'N/A')}
+- Thermal conductivity: {material_data.get('properties', {}).get('thermalConductivity', 'N/A')}
+- Melting point: {material_data.get('properties', {}).get('meltingPoint', 'N/A')}
 - Material category: {material_data.get('category', 'Metal')}
 
 Applicable industries: {', '.join(industries) if industries else 'General industrial'}
@@ -462,8 +462,8 @@ Output ONLY the statement, no prefix or explanation."""
         prompt = f"""Generate a concise technical description (1-2 sentences) for the outcome metric "{metric_type}" specifically for {material_name} laser cleaning.
 
 Material properties:
-- Hardness: {material_data.get('materialProperties', {}).get('hardness', 'N/A')}
-- Surface properties: {material_data.get('materialProperties', {}).get('surfaceRoughness', 'N/A')}
+- Hardness: {material_data.get('properties', {}).get('hardness', 'N/A')}
+- Surface properties: {material_data.get('properties', {}).get('surfaceRoughness', 'N/A')}
 - Material category: {material_data.get('category', 'Metal')}
 
 Measurement methods available: {', '.join(measurement_methods) if measurement_methods else 'Standard methods'}

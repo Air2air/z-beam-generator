@@ -6,7 +6,7 @@ This folder contains prompts and templates for materials text content generation
 
 ```
 domains/materials/prompts/
-├── material_description.txt         # Main material description prompt (30-80 words)
+├── description.txt         # Main material description prompt (30-80 words)
 ├── micro.txt                        # Microscopic view caption prompt (80-120 words)
 └── faq.txt                          # FAQ generation prompt (multiple Q&A pairs)
 ```
@@ -15,7 +15,7 @@ domains/materials/prompts/
 
 Each component type has its own prompt template with specific requirements:
 
-- **material_description.txt** - Comprehensive technical description emphasizing unique properties
+- **description.txt** - Comprehensive technical description emphasizing unique properties
 - **micro.txt** - Microscopic view captions (before/after laser cleaning)
 - **faq.txt** - Frequently asked questions with practical customer concerns
 

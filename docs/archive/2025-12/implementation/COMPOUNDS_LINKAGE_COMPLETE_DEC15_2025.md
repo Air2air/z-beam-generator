@@ -131,12 +131,12 @@ results = exporter.export_all(force=True)
 "
 ```
 
-**Result**: 20/20 compound frontmatter files generated with domain_linkages
+**Result**: 20/20 compound frontmatter files generated with relationships
 
 ### Verification
 
 ```
-✅ Files with domain_linkages: 20/20
+✅ Files with relationships: 20/20
 ✅ Total linkage entries: 78/78
 ```
 
@@ -155,7 +155,7 @@ cp -rv frontmatter/compounds/* ../z-beam/frontmatter/compounds/
 ### Production Verification
 
 ```
-✅ Files with domain_linkages: 20/20
+✅ Files with relationships: 20/20
 ✅ Total linkage entries: 78/78
 ```
 
@@ -203,7 +203,7 @@ These linkages inform:
 
 ```
 Compounds.yaml
-  └── domain_linkages
+  └── relationships
       └── produced_by_contaminants: [...]
           ├── id: contaminant-id
           ├── title: Display name
@@ -216,7 +216,7 @@ Compounds.yaml
 ↓ (trivial_exporter.py)
 
 frontmatter/compounds/{slug}.yaml
-  ├── domain_linkages
+  ├── relationships
   │   └── produced_by_contaminants: [78 total entries]
   └── [all other compound data]
 
@@ -299,7 +299,7 @@ python3 << 'EOF'
 import yaml
 with open('data/compounds/Compounds.yaml') as f:
     data = yaml.safe_load(f)
-total = sum(len(c['domain_linkages']['produced_by_contaminants']) 
+total = sum(len(c['relationships']['produced_by_contaminants']) 
             for c in data['compounds'].values())
 print(f"Total linkages in Compounds.yaml: {total}")
 EOF
@@ -314,7 +314,7 @@ for f in os.listdir('frontmatter/compounds'):
     if f.endswith('.yaml'):
         with open(f'frontmatter/compounds/{f}') as file:
             d = yaml.safe_load(file)
-            total += len(d['domain_linkages']['produced_by_contaminants'])
+            total += len(d['relationships']['produced_by_contaminants'])
 print(f"Total linkages in frontmatter: {total}")
 EOF
 ```
@@ -328,7 +328,7 @@ for f in os.listdir('../z-beam/frontmatter/compounds'):
     if f.endswith('.yaml'):
         with open(f'../z-beam/frontmatter/compounds/{f}') as file:
             d = yaml.safe_load(file)
-            total += len(d['domain_linkages']['produced_by_contaminants'])
+            total += len(d['relationships']['produced_by_contaminants'])
 print(f"Total linkages in production: {total}")
 EOF
 ```
@@ -370,7 +370,7 @@ All three should return: **78**
 ✅ **MISSION COMPLETE**
 
 **Research**: 78 compound-contaminant relationships scientifically determined
-**Implementation**: 20/20 compounds updated with domain_linkages
+**Implementation**: 20/20 compounds updated with relationships
 **Export**: 20/20 frontmatter files generated with linkages
 **Deployment**: 20/20 files copied to production and verified
 

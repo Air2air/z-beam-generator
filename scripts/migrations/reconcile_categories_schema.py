@@ -11,11 +11,13 @@ multi-file architecture:
 Preserves all existing per-material data while adding category-level metadata.
 """
 
-import yaml
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any
 import shutil
+
+# Use shared YAML utilities
+from shared.utils.file_io import read_yaml_file, write_yaml_file
 
 
 class CategoriesReconciler:
@@ -34,8 +36,7 @@ class CategoriesReconciler:
     def load_yaml(self, path: Path) -> Dict[str, Any]:
         """Load YAML file."""
         print(f"Loading {path.name}...")
-        with open(path, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f)
+        return read_yaml_file(path)
     
     def save_yaml(self, data: Dict[str, Any], path: Path, backup: bool = True):
         """Save YAML file with optional backup."""
@@ -45,9 +46,7 @@ class CategoriesReconciler:
             shutil.copy2(path, backup_path)
         
         print(f"Writing {path.name}...")
-        with open(path, 'w', encoding='utf-8') as f:
-            yaml.dump(data, f, default_flow_style=False, sort_keys=False, 
-                     allow_unicode=True, width=120)
+        write_yaml_file(path, data, sort_keys=False)
     
     def extend_material_properties(self, categories_data: Dict[str, Any], 
                                    properties_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -125,14 +124,14 @@ class CategoriesReconciler:
         }
         
         # Add parameter ranges
-        if 'machineSettingsRanges' in categories_data:
+        if 'machine_settingsRanges' in categories_data:
             print("  ✓ Adding parameterRanges section")
-            extended['parameterRanges'] = categories_data['machineSettingsRanges']
+            extended['parameterRanges'] = categories_data['machine_settingsRanges']
         
         # Add parameter descriptions
-        if 'machineSettingsDescriptions' in categories_data:
+        if 'machine_settingsDescriptions' in categories_data:
             print("  ✓ Adding parameterDescriptions section")
-            extended['parameterDescriptions'] = categories_data['machineSettingsDescriptions']
+            extended['parameterDescriptions'] = categories_data['machine_settingsDescriptions']
         
         # Preserve existing per-material settings (unchanged)
         print("  ✓ Preserving existing per-material settings")

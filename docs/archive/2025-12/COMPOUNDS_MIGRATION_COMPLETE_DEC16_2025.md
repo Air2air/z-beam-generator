@@ -22,7 +22,7 @@ from export.core.base_trivial_exporter import BaseTrivialExporter
 
 # ❌ REMOVED (now in base class)
 from shared.validation.domain_associations import DomainAssociationsValidator
-from shared.services.domain_linkages_service import DomainLinkagesService
+from shared.services.relationships_service import DomainLinkagesService
 from shared.validation.field_order import FrontmatterFieldOrderValidator
 ```
 

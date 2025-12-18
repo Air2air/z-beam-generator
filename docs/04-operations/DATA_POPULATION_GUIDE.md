@@ -92,7 +92,7 @@ python3 run.py --data-gaps
 Aluminum:
   name: Aluminum
   category: metal
-  materialProperties:
+  properties:
     density:
       value: 2.70
       unit: g/cm³
@@ -166,7 +166,7 @@ import yaml
 with open('data/materials/Materials.yaml', 'r') as f:
     data = yaml.safe_load(f)
     bn = data['materials']['Boron Nitride']
-    props = bn.get('materialProperties', {})
+    props = bn.get('properties', {})
     print(f"Boron Nitride: {len(props)} properties")
     for key, val in list(props.items())[:3]:
         if isinstance(val, dict):

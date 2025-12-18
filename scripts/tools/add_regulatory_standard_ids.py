@@ -60,10 +60,10 @@ def add_standard_ids_to_materials(materials_file: Path) -> None:
     print(f"\nProcessing {total_materials} materials...")
     
     for material_name, material_data in materials.items():
-        if 'regulatoryStandards' not in material_data:
+        if 'regulatory_standards' not in material_data:
             continue
             
-        standards = material_data['regulatoryStandards']
+        standards = material_data['regulatory_standards']
         if not isinstance(standards, list):
             continue
         

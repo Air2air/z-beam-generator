@@ -946,8 +946,8 @@ class DataQualityValidationAgent:
         # Get all properties in material (flat structure)
         all_props = set()
         metadata_keys = {'label', 'description', 'percentage'}
-        if 'materialProperties' in material_data:
-            for group_name, group_data in material_data['materialProperties'].items():
+        if 'properties' in material_data:
+            for group_name, group_data in material_data['properties'].items():
                 if isinstance(group_data, dict):
                     all_props.update(k for k in group_data.keys() if k not in metadata_keys)
         
@@ -1009,15 +1009,15 @@ class DataQualityValidationAgent:
                     print(f"Validating {material} ({category})...")
                 
                 # Level 1: Category structure validation
-                if 'materialProperties' in data:
+                if 'properties' in data:
                     # Validate two-category system
-                    issues = self.validate_two_category_system(material, data['materialProperties'])
+                    issues = self.validate_two_category_system(material, data['properties'])
                     for issue in issues:
                         all_issues[issue['severity']].append(issue)
                     
                     # Property validation (flat structure)
                     metadata_keys = {'label', 'description', 'percentage'}
-                    for group_name, group_data in data['materialProperties'].items():
+                    for group_name, group_data in data['properties'].items():
                         if not isinstance(group_data, dict):
                             continue
                         
@@ -1031,8 +1031,8 @@ class DataQualityValidationAgent:
                                 all_issues[issue['severity']].append(issue)
                     
                     # Level 2: Relationship validation (flat structure)
-                    laser_int = data['materialProperties'].get('laser_material_interaction', {})
-                    char_group = data['materialProperties'].get('material_characteristics', {})
+                    laser_int = data['properties'].get('laser_material_interaction', {})
+                    char_group = data['properties'].get('material_characteristics', {})
                     laser_props = {k: v for k, v in laser_int.items() if k not in metadata_keys} if isinstance(laser_int, dict) else {}
                     char_props = {k: v for k, v in char_group.items() if k not in metadata_keys} if isinstance(char_group, dict) else {}
                     

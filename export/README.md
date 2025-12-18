@@ -95,14 +95,14 @@ The frontmatter exporter now automatically enriches regulatory standards metadat
 **Enrichment Examples:**
 ```yaml
 # BEFORE (Materials.yaml)
-regulatoryStandards:
+regulatory_standards:
   - name: Unknown
     description: SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
     url: ''
     image: /images/logo/logo-org-generic.png
 
 # AFTER (Frontmatter export)
-regulatoryStandards:
+regulatory_standards:
   - name: SEMI
     description: SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
     url: https://store-us.semi.org/products/semi-m1
@@ -269,7 +269,7 @@ head -n 18 frontmatter/materials/aluminum-laser-cleaning.yaml
 ## 🏗️ Hierarchical Architecture
 
 ### Core Principle
-Frontmatter uses a **hierarchical structure** with `materialProperties` and `laserProcessing` instead of flat `properties`/`machineSettings`.
+Frontmatter uses a **hierarchical structure** with `properties` and `laserProcessing` instead of flat `properties`/`machine_settings`.
 
 ### Format Example
 ```yaml
@@ -289,7 +289,7 @@ breadcrumb:
   - label: "Aluminum"
     href: "/materials/aluminum-laser-cleaning"
 
-materialProperties:
+properties:
   chemical:
     formula: "Al"                    # Chemical composition
     symbol: "Al"                     # Chemical symbol
@@ -350,8 +350,8 @@ outcomeMetrics:
 
 **Dual-Source Architecture**: Materials.yaml for properties, Settings.yaml for machine settings. No AI API calls, completely deterministic output.
 
-- **materialProperties**: Extracted directly from Materials.yaml `materialProperties` section
-- **machineSettings**: Extracted from Settings.yaml `machineSettings` section
+- **properties**: Extracted directly from Materials.yaml `properties` section
+- **machine_settings**: Extracted from Settings.yaml `machine_settings` section
 - **environmentalImpact**: Sourced from Materials.yaml `environmentalImpact` field
 - **applications**: Uses Materials.yaml `applications` data
 - **author**: Extracted from Materials.yaml `author` field
@@ -364,8 +364,8 @@ outcomeMetrics:
    - Generates deterministic subtitle from material name
    - No API calls, completely self-contained
 
-2. **`_generate_machine_settings_with_ranges(material_data, material_name)`** → machineSettings  
-   - Uses Settings.yaml `machineSettings` section
+2. **`_generate_machine_settings_with_ranges(material_data, material_name)`** → machine_settings  
+   - Uses Settings.yaml `machine_settings` section
    - Template fallback: Standard laser parameters (1064nm wavelength, 50-200W power, etc.)
    - No AI calculation, uses proven template values
 
@@ -396,7 +396,7 @@ else:
 
 **Key Methods:**
 - `_extract_property_data()`: Unified extraction for values, ranges, and units
-- `_generate_from_materials_data()`: Creates hierarchical materialProperties/laserProcessing structure
+- `_generate_from_materials_data()`: Creates hierarchical properties/laserProcessing structure
 - `generate()`: Main entry point returning ComponentResult with YAML content
 
 ### Hierarchical Structure Benefits
@@ -521,8 +521,8 @@ print("✅ Schema validation passed!")
 
 ### Check Numeric Format
 ```python
-properties = frontmatter_data.get('materialProperties', {})
-machine_settings = frontmatter_data.get('machineSettings', {})
+properties = frontmatter_data.get('properties', {})
+machine_settings = frontmatter_data.get('machine_settings', {})
 
 # Count numeric values
 numeric_props = [k for k, v in properties.items() 

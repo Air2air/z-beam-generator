@@ -2,10 +2,10 @@
 """
 Phase 2 Expansion: Add patterns to reach 100 total + rename with hyphens
 
-⚠️ IMPORTANT: This script creates contaminants with the NEW domain_linkages structure.
+⚠️ IMPORTANT: This script creates contaminants with the NEW relationships structure.
 All entries must include:
-- domain_linkages.related_materials[] (replaces valid_materials)
-- domain_linkages.incompatible_materials[] (replaces prohibited_materials)
+- relationships.related_materials[] (replaces valid_materials)
+- relationships.incompatible_materials[] (replaces prohibited_materials)
 - Each linkage entry must have: id, title, url, image
 """
 
@@ -30,7 +30,7 @@ PHASE2_PATTERNS = {
         "name": "Steel Surface Corrosion",
         "description": "General oxidation and corrosion products on carbon steel and alloy steel surfaces",
         "composition": ["Fe₃O₄", "FeO", "Fe₂O₃"],
-        "domain_linkages": {
+        "relationships": {
             "related_materials": [
                 create_material_linkage("Steel", "Steel", "metal", "steel"),
                 create_material_linkage("Carbon-Steel", "Carbon Steel", "metal", "steel"),

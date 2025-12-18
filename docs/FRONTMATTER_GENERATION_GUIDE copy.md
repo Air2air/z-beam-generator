@@ -97,7 +97,7 @@ _metadata:
 
 ```yaml
 title: [Material Name] Laser Cleaning
-material_description: [30-50 word description highlighting key benefits and characteristics for laser cleaning applications]
+description: [30-50 word description highlighting key benefits and characteristics for laser cleaning applications]
 ```
 
 **Requirements**:
@@ -179,7 +179,7 @@ faq:
 ### **10. Regulatory Standards** (MANDATORY - Minimum 2)
 
 ```yaml
-regulatoryStandards:
+regulatory_standards:
   - description: [Standard identifier] - [Standard name]
     image: /images/logo/logo-org-[org-slug].png
     longName: [Full organization name]
@@ -196,7 +196,7 @@ regulatoryStandards:
 ### **11. Material Properties** (MANDATORY - 100% Complete)
 
 ```yaml
-materialProperties:
+properties:
   material_characteristics:
     label: Material Characteristics
     percentage: 60.0
@@ -246,7 +246,7 @@ propertyName:
 ### **12. Domain Linkages** (MANDATORY - 4 Contaminants)
 
 ```yaml
-domain_linkages:
+relationships:
   related_contaminants:
     - id: [contaminant-slug]
       title: [Contaminant Title]
@@ -322,11 +322,11 @@ eeat:
 
 ### **15. Material Metadata** (MUST NOT BE NULL)
 
-**🚨 DISCOVERED ISSUE**: 21 files (14%) have null material_metadata  
+**🚨 DISCOVERED ISSUE**: 21 files (14%) have null metadata  
 **GOOD EXAMPLE** (from Alabaster):
 
 ```yaml
-material_metadata:
+metadata:
   last_updated: '2025-10-27T23:48:40.921556Z'
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.921587Z'
@@ -336,7 +336,7 @@ material_metadata:
 **COMPREHENSIVE STRUCTURE** (recommended):
 
 ```yaml
-material_metadata:
+metadata:
   completeness_score: 0.95  # 0.0-1.0 based on filled fields
   last_updated: '2025-12-16T00:00:00Z'
   last_verified: '2025-12-16T00:00:00Z'
@@ -380,7 +380,7 @@ preservedData:
 | **Null datePublished** | 153/153 (100%) | SEO rankings blocked | 🔴 Critical |
 | **Null dateModified** | 153/153 (100%) | Change tracking missing | 🔴 Critical |
 | **Null eeat** | 21/153 (14%) | E-E-A-T signals missing | 🟡 High |
-| **Null material_metadata** | 21/153 (14%) | Completeness tracking absent | 🟡 High |
+| **Null metadata** | 21/153 (14%) | Completeness tracking absent | 🟡 High |
 | **Truncated FAQ answers** | ~3 files | Incomplete content | 🟡 High |
 
 #### **Quality Highlights** ✅
@@ -413,7 +413,7 @@ preservedData:
 
 1. **Add ISO 8601 timestamps** to all datePublished/dateModified fields
 2. **Populate EEAT data** for 21 files missing it
-3. **Add material_metadata** for 21 files missing it
+3. **Add metadata** for 21 files missing it
 4. **Complete truncated FAQs** (Aluminum Bronze, possibly others)
 5. **Verify no mid-sentence endings** across all FAQ answers
 
@@ -455,7 +455,7 @@ answer: Laser cleaning acrylic demands careful control since its clear nature ca
 ```yaml
 # ❌ WRONG
 eeat: null
-material_metadata: null
+metadata: null
 
 # ✅ CORRECT - Always populate these fields
 ```
@@ -490,7 +490,7 @@ laserDamageThreshold:
 
 | Section | Min Words | Max Words | Quality Check |
 |---------|-----------|-----------|---------------|
-| material_description | 30 | 50 | Technical + practical benefits |
+| description | 30 | 50 | Technical + practical benefits |
 | micro.before | 60 | 80 | Vivid sensory description |
 | micro.after | 60 | 80 | Clear contrast with before |
 | FAQ answer | 100 | 150 | Complete, practical, experienced |
@@ -503,7 +503,7 @@ laserDamageThreshold:
 - ✅ **4-6** related contaminants with complete metadata
 - ✅ **3+ FAQ items** (more for complex materials - Iron has 9!)
 - ✅ **2+** regulatory standards (most files have 2-4)
-- ✅ **0** null fields in critical sections (datePublished, dateModified, eeat, material_metadata)
+- ✅ **0** null fields in critical sections (datePublished, dateModified, eeat, metadata)
 
 **🚨 CRITICAL**: Current files fail on date fields (100% null rate) and partial metadata (14% null rate)
 
@@ -542,7 +542,7 @@ Before generating frontmatter:
 - [ ] Identify 4-6 relevant contaminants
 - [ ] Draft complete FAQ answers (no truncation, 100-150 words each)
 - [ ] **🔥 Populate EEAT data** (14% of files missing this)
-- [ ] **🔥 Calculate and add material_metadata** (14% of files missing this)
+- [ ] **🔥 Calculate and add metadata** (14% of files missing this)
 - [ ] Validate all URLs and image paths
 - [ ] Ensure no null fields in critical sections
 - [ ] **Verify FAQ answers are complete** (check for mid-sentence endings)

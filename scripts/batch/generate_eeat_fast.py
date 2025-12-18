@@ -21,7 +21,7 @@ MATERIALS_FILE = PROJECT_ROOT / "materials" / "data" / "Materials.yaml"
 
 def generate_eeat_data(regulatory_standards: list) -> dict:
     """
-    Generate EEAT section from regulatoryStandards.
+    Generate EEAT section from regulatory_standards.
     
     Pure Python - no API calls needed.
     """
@@ -103,14 +103,14 @@ def main(dry_run: bool = False):
     for i, material_name in enumerate(without_eeat, 1):
         material_data = materials[material_name]
         
-        # Get regulatoryStandards
-        reg_standards = material_data.get('regulatoryStandards', [])
+        # Get regulatory_standards
+        reg_standards = material_data.get('regulatory_standards', [])
         
         # Generate EEAT
         eeat_data = generate_eeat_data(reg_standards)
         
         if eeat_data is None:
-            print(f"[{i}/{len(without_eeat)}] ⏭️  {material_name}: No valid regulatoryStandards")
+            print(f"[{i}/{len(without_eeat)}] ⏭️  {material_name}: No valid regulatory_standards")
             skipped += 1
             continue
         

@@ -8,17 +8,17 @@
 
 ## Summary
 
-All frontmatter files have been successfully migrated from nested `domain_linkages` structure (4.0.0) to flattened top-level arrays (5.0.0). This simplifies frontend code and creates a 1:1 mapping between YAML arrays and React components.
+All frontmatter files have been successfully migrated from nested `relationships` structure (4.0.0) to flattened top-level arrays (5.0.0). This simplifies frontend code and creates a 1:1 mapping between YAML arrays and React components.
 
 ---
 
 ## Changes Applied
 
-### 1. Flattened domain_linkages
+### 1. Flattened relationships
 
 **BEFORE (4.0.0)**:
 ```yaml
-domain_linkages:
+relationships:
   produces_compounds: [...]
   related_materials: [...]
   related_contaminants: [...]
@@ -104,7 +104,7 @@ cp -r z-beam-generator/frontmatter/* z-beam/frontmatter/
 ```python
 # Production file check
 Schema version: 5.0.0
-Has domain_linkages (nested): False  ✅
+Has relationships (nested): False  ✅
 Has produces_compounds (top-level): True  ✅
 ```
 
@@ -115,8 +115,8 @@ Has produces_compounds (top-level): True  ✅
 ### Before (4.0.0) - Nested Access
 
 ```tsx
-const compounds = metadata.domain_linkages?.produces_compounds || [];
-const materials = metadata.domain_linkages?.related_materials || [];
+const compounds = metadata.relationships?.produces_compounds || [];
+const materials = metadata.relationships?.related_materials || [];
 ```
 
 ### After (5.0.0) - Direct Access
@@ -153,7 +153,7 @@ The base exporter (`export/core/base_trivial_exporter.py`) handles field orderin
 **Generator File**:
 ```
 Schema: 5.0.0 ✅
-Has domain_linkages (nested): False ✅
+Has relationships (nested): False ✅
 Has produces_compounds (top-level): True ✅
 Field count: 21
 Field order: Correct (id → title → slug → ... → produces_compounds → related_*)
@@ -162,7 +162,7 @@ Field order: Correct (id → title → slug → ... → produces_compounds → r
 **Production File**:
 ```
 Schema: 5.0.0 ✅
-Has domain_linkages (nested): False ✅
+Has relationships (nested): False ✅
 Has produces_compounds (top-level): True ✅
 Matches generator: Yes ✅
 ```

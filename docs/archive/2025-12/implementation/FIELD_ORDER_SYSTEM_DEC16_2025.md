@@ -217,11 +217,11 @@ Each domain has mandatory fields:
 
 **Materials**:
 - `id`, `name`, `slug`, `category`, `subcategory`
-- `domain_linkages`, `author`, `type`, `domain`
+- `relationships`, `author`, `type`, `domain`
 
 **Compounds**:
 - `id`, `name`, `slug`, `chemical_formula`, `category`, `subcategory`
-- `domain_linkages`, `author`, `type`, `domain`
+- `relationships`, `author`, `type`, `domain`
 
 ### Field Order Check
 
@@ -259,7 +259,7 @@ Fields not in specification are flagged:
 | **Settings** | 153 | TBD | TBD | TBD |
 
 **Materials Issues**: Legacy fields from previous structure
-- Fields like `material_description`, `eeat`, `materialProperties`
+- Fields like `description`, `eeat`, `properties`
 - Need schema update or migration
 
 ---
@@ -310,7 +310,7 @@ Add field order validation to test suite:
 ### Domain Linkages Structure
 
 ```yaml
-domain_linkages:
+relationships:
   # Materials domain
   related_contaminants: [...]   # List of contaminant links
   related_compounds: [...]       # List of compound links

@@ -2,7 +2,7 @@
 Shared prompt resources.
 
 NOTE: Text prompt templates are now in domain config.yaml files:
-- domains/materials/config.yaml → prompts.micro, prompts.faq, prompts.material_description
+- domains/materials/config.yaml → prompts.micro, prompts.faq, prompts.description
 - domains/settings/config.yaml → prompts.component_summary_base, prompts.settings_description
 
 The old TextPromptBuilder class was removed as it violated the Template-Only Policy

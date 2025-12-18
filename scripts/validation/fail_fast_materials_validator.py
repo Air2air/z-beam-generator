@@ -48,7 +48,7 @@ def validate_no_default_values(materials_data: Dict) -> List[str]:
             material_name = item.get('name', 'Unknown')
             
             # Check properties for default sources
-            properties = item.get('materialProperties', {})
+            properties = item.get('properties', {})
             for prop_name, prop_data in properties.items():
                 if isinstance(prop_data, dict):
                     source = prop_data.get('source')
@@ -85,7 +85,7 @@ def validate_ai_research_requirement(materials_data: Dict) -> List[str]:
         
         for item in items:
             material_name = item.get('name', 'Unknown')
-            properties = item.get('materialProperties', {})
+            properties = item.get('properties', {})
             
             for prop_name, prop_data in properties.items():
                 if isinstance(prop_data, dict):
@@ -139,7 +139,7 @@ def validate_forbidden_defaults_only(materials_data: Dict) -> List[str]:
     for category, category_data in materials_data.get('materials', {}).items():
         for item in category_data.get('items', []):
             material_name = item.get('name', 'Unknown')
-            properties = item.get('materialProperties', {})
+            properties = item.get('properties', {})
             
             for prop_name, prop_data in properties.items():
                 if isinstance(prop_data, dict):
@@ -240,17 +240,17 @@ def validate_material_completeness(materials_data: Dict) -> List[str]:
     """
     FAIL-FAST VALIDATION: MATERIAL PROPERTIES MUST BE COMPLETE
     
-    Checks that materialProperties sections have actual property values,
+    Checks that properties sections have actual property values,
     not just labels or empty sections.
     """
     violations = []
     
     for material_name, material_data in materials_data.get('materials', {}).items():
-        props = material_data.get('materialProperties', {})
+        props = material_data.get('properties', {})
         
         if not props:
             violations.append(
-                f"EMPTY PROPERTIES: {material_name} has no materialProperties defined"
+                f"EMPTY PROPERTIES: {material_name} has no properties defined"
             )
             continue
         

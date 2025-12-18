@@ -144,7 +144,7 @@ class PropertyManager:
             categorizer = get_property_categorizer()
             category_id = categorizer.get_category(property_name)
             
-            # Map category IDs to materialProperties group names
+            # Map category IDs to properties group names
             # Laser-related categories -> laser_material_interaction
             if category_id in ['laser_material_interaction', 'optical', 'laser_absorption']:
                 return 'laser_material_interaction'
@@ -204,9 +204,9 @@ class PropertyManager:
             
             material_entry = materials_data['materials'][material_name]
             
-            # Ensure materialProperties has category groups (per frontmatter_template.yaml)
-            if 'materialProperties' not in material_entry:
-                material_entry['materialProperties'] = {
+            # Ensure properties has category groups (per frontmatter_template.yaml)
+            if 'properties' not in material_entry:
+                material_entry['properties'] = {
                     'material_characteristics': {'label': 'Material Characteristics'},
                     'laser_material_interaction': {'label': 'Laser-Material Interaction'}
                 }
@@ -218,21 +218,21 @@ class PropertyManager:
                 category_group = self._determine_property_category(prop_name)
                 
                 # Ensure category group exists
-                if category_group not in material_entry['materialProperties']:
+                if category_group not in material_entry['properties']:
                     label = 'Material Characteristics' if category_group == 'material_characteristics' else 'Laser-Material Interaction'
-                    material_entry['materialProperties'][category_group] = {'label': label}
+                    material_entry['properties'][category_group] = {'label': label}
                 
                 # Only persist if not already in YAML or has higher confidence
-                existing = material_entry['materialProperties'][category_group].get(prop_name)
+                existing = material_entry['properties'][category_group].get(prop_name)
                 
                 if existing is None:
                     # New property - add it to correct category group
-                    material_entry['materialProperties'][category_group][prop_name] = prop_data
+                    material_entry['properties'][category_group][prop_name] = prop_data
                     updates_count += 1
                     self.logger.debug(f"  ✅ Added {prop_name} to {category_group}: {prop_data.get('value')} {prop_data.get('unit')}")
                 elif existing.get('source') != 'ai_research':
                     # Existing property but not from AI - upgrade it
-                    material_entry['materialProperties'][category_group][prop_name] = prop_data
+                    material_entry['properties'][category_group][prop_name] = prop_data
                     updates_count += 1
                     self.logger.debug(f"  🔄 Updated {prop_name} in {category_group}: {prop_data.get('value')} {prop_data.get('unit')}")
                 else:
@@ -397,7 +397,7 @@ class PropertyManager:
                 # Enhance with standardized descriptions if available
                 if self.enhance_descriptions:
                     machine_setting_data = self.enhance_descriptions(
-                        machine_setting_data, setting_name, 'machineSettings'
+                        machine_setting_data, setting_name, 'machine_settings'
                     )
                 
                 researched[setting_name] = machine_setting_data
@@ -645,7 +645,7 @@ class PropertyManager:
         # Enhance with standardized descriptions
         if self.enhance_descriptions:
             property_data = self.enhance_descriptions(
-                property_data, prop_name, 'materialProperties'
+                property_data, prop_name, 'properties'
             )
         
         self.logger.info(

@@ -42,7 +42,7 @@ materials:
     
     # Page content
     - title
-    - material_description
+    - description
     - breadcrumb
     
     # Images
@@ -51,13 +51,13 @@ materials:
     # Content sections
     - micro
     - faq
-    - regulatoryStandards
-    - materialProperties
+    - regulatory_standards
+    - properties
     - eeat
-    - material_metadata
+    - metadata
     
     # Cross-domain relationships
-    - domain_linkages
+    - relationships
     
     # SEO/Schema.org
     - serviceOffering
@@ -93,7 +93,7 @@ materials:
     - faq
     
     # Cross-domain relationships
-    - domain_linkages
+    - relationships
     
     # Authorship
     - author
@@ -173,7 +173,7 @@ contaminants:
     - faq
     
     # Cross-domain relationships
-    - domain_linkages
+    - relationships
     
     # Authorship
     - author
@@ -192,7 +192,7 @@ contaminants:
     - slug
     - category
     - subcategory
-    - domain_linkages
+    - relationships
     - author
     - type
     - domain
@@ -239,7 +239,7 @@ compounds:
     - first_aid
     
     # Cross-domain relationships
-    - domain_linkages
+    - relationships
     
     # Authorship
     - author
@@ -259,7 +259,7 @@ compounds:
     - chemical_formula
     - category
     - subcategory
-    - domain_linkages
+    - relationships
     - author
     - type
     - domain
@@ -319,7 +319,7 @@ settings:
     - faq
     
     # Cross-domain relationships
-    - domain_linkages
+    - relationships
     
     # Authorship
     - author
@@ -339,7 +339,7 @@ settings:
     - category
     - subcategory
     - wavelength
-    - domain_linkages
+    - relationships
     - author
     - type
     - domain
@@ -358,7 +358,7 @@ exposure_limits_structure:
   - acgih_tlv_mg_m3
 
 # Domain Linkages Structure (All Domains)
-domain_linkages_structure:
+relationships_structure:
   materials:
     - related_contaminants
     - related_compounds
@@ -377,9 +377,10 @@ domain_linkages_structure:
     - suitable_materials
     - effective_contaminants
 
-# Link Item Structure (All domain_linkages)
+# Link Item Structure (All relationships)
 link_item_structure:
   - id
+  - slug
   - title
   - url
   - image
@@ -464,7 +465,7 @@ field_types:
   # Object fields
   object_fields:
     - exposure_limits
-    - domain_linkages
+    - relationships
     - author
     - affiliation
   

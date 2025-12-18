@@ -40,7 +40,7 @@ universal_regulatory_standards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-machineSettingsRanges:
+machine_settingsRanges:
   energyDensity:
     description: Energy density (fluence) for laser cleaning
     max: 20.0
@@ -230,7 +230,7 @@ propertyCategories:
       threshold: 0
       property_count: 34
       note: All properties not listed in core or common tiers
-machineSettingsDescriptions:
+machine_settingsDescriptions:
   ablationThreshold:
     description: Minimum energy density required to initiate material removal from
       the surface
@@ -1330,7 +1330,7 @@ categories:
         sample_count: 7
         auto_generated: true
         generated_date: '2025-10-16'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Thermal shock and cracking
         severity: critical
@@ -1500,7 +1500,7 @@ categories:
     - ISO 6474 - Implants for Surgery - Ceramic Materials
     - NSF/ANSI 51 - Food Equipment Materials
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    materialProperties:
+    properties:
       thermalExpansion:
         min: 3.3
         max: 10.5
@@ -1678,7 +1678,7 @@ categories:
         notes: Highly variable by matrix type; polymer-matrix 1-3 J/cm², ceramic-matrix 4-6 J/cm², metal-matrix 5-8 J/cm²
         measurement_context: Nanosecond pulses, surface and fiber-dependent
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Matrix degradation and delamination
         severity: critical
@@ -1745,7 +1745,7 @@ categories:
     - FDA 21 CFR 1040.10 - Laser Product Performance Standards
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    materialProperties:
+    properties:
       hardness:
         min: 22.5
         max: 150.0
@@ -1917,7 +1917,7 @@ categories:
         notes: Optical quality glass shows highest thresholds; fused silica 15-20 J/cm², borosilicate 8-12 J/cm², soda-lime 3-6 J/cm²
         measurement_context: Nanosecond pulses, 1064nm wavelength, surface quality critical
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Thermal shock and catastrophic failure
         severity: critical
@@ -1994,7 +1994,7 @@ categories:
     - FDA 21 CFR 1040.10 - Laser Product Performance Standards
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    materialProperties:
+    properties:
       fractureToughness:
         min: 0.71
         max: 2.0
@@ -2163,7 +2163,7 @@ categories:
         notes: Highly dependent on material density and moisture; dense concrete 5-8 J/cm², brick 3-5 J/cm², plaster 2-3 J/cm²
         measurement_context: Nanosecond pulses, heritage conservation applications
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Moisture-induced spalling and explosive failure
         severity: critical
@@ -2246,7 +2246,7 @@ categories:
     - FDA 21 CFR 1040.10 - Laser Product Performance Standards
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    materialProperties:
+    properties:
       thermalExpansion:
         min: 5.5
         max: 18.0
@@ -2770,7 +2770,7 @@ categories:
     - FDA 21 CFR 1040.10 - Laser Product Performance Standards
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    materialProperties:
+    properties:
       thermalDiffusivity:
         min: 0.07
         max: 165.63
@@ -2836,7 +2836,7 @@ categories:
         min: 0.1
         max: 50.0
         unit: J/cm²
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: High thermal conductivity and heat spread
         severity: medium
@@ -3020,7 +3020,7 @@ categories:
         notes: Varies with polymer structure; crystalline polymers 2-5 J/cm², amorphous 0.8-2 J/cm²; melting/degradation threshold
         measurement_context: Nanosecond pulses, wavelength and additive-dependent
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Low melting/degradation temperatures
         severity: high
@@ -3072,7 +3072,7 @@ categories:
     - FDA 21 CFR 1040.10 - Laser Product Performance Standards
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    materialProperties:
+    properties:
       thermalExpansion:
         min: 50.0
         max: 100.0
@@ -3248,7 +3248,7 @@ categories:
         notes: Silicon 1-3 J/cm², GaAs 2-4 J/cm², SiC/GaN 5-10 J/cm²; surface passivation and crystal quality affect threshold significantly
         measurement_context: Nanosecond pulses, precision cleaning applications
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Crystal lattice damage and doping redistribution
         severity: critical
@@ -3352,7 +3352,7 @@ categories:
     - ISO 14644 - Cleanroom and Associated Controlled Environments
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
     - SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
-    materialProperties:
+    properties:
       fractureToughness:
         min: 0.44
         max: 3.0
@@ -3530,7 +3530,7 @@ categories:
         notes: Highly variable by stone type and weathering; granite 5-10 J/cm², marble 3-6 J/cm², sandstone 1.5-3 J/cm²
         measurement_context: Nanosecond pulses, architectural restoration
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Thermal shock and microcracking
         severity: critical
@@ -3775,7 +3775,7 @@ categories:
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
     - UNESCO Guidelines for Cultural Heritage Conservation
-    materialProperties:
+    properties:
       flexuralStrength:
         min: 9.5
         max: 95.0
@@ -3957,7 +3957,7 @@ categories:
         notes: Charring threshold 250-300°C; softwoods 2-3 J/cm², hardwoods 3-5 J/cm²; grain sensitivity 20-40% variation; moisture increases threshold
         measurement_context: Nanosecond pulses, thermal damage (charring) defines threshold
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Charring and carbonization
         severity: high
@@ -4194,7 +4194,7 @@ categories:
     - IMO Marine Pollution Prevention Standards
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
     - USDA Food Safety Guidelines (for food-contact surfaces)
-    materialProperties:
+    properties:
       fractureToughness:
         min: 0.33
         max: 4.4
@@ -4326,7 +4326,7 @@ categories:
         confidence: 90
         notes: Thermal diffusivity varies across lanthanide series; influenced by magnetic properties
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Rapid oxidation and pyrophoricity
         severity: critical
@@ -4513,7 +4513,7 @@ categories:
         unit: Å
         confidence: 90
         description: Typical lattice parameter range for lanthanide crystal structures
-    materialProperties:
+    properties:
       density:
         min: 6.1
         max: 9.8
@@ -4547,7 +4547,7 @@ categories:
       oxidationResistance:
         min: 300
         max: 600
-materialPropertiesDefinitions:
+propertiesDefinitions:
   thermalProperties:
     description: Thermal behavior and heat transfer characteristics
     common_properties:

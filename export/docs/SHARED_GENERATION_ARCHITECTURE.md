@@ -2,7 +2,7 @@
 
 ## Overview
 
-The frontmatter component implements a **shared generation architecture** where `materialProperties` and `machineSettings` are generated using identical, reusable methods. This design ensures consistency, maintainability, and eliminates code duplication.
+The frontmatter component implements a **shared generation architecture** where `properties` and `machine_settings` are generated using identical, reusable methods. This design ensures consistency, maintainability, and eliminates code duplication.
 
 ## Core Architecture Principle
 
@@ -10,8 +10,8 @@ The frontmatter component implements a **shared generation architecture** where 
 
 ```python
 # Identical generation flow:
-materialProperties = _generate_properties_with_ranges(material_data)    # Category: material type
-machineSettings   = _generate_machine_settings_with_ranges(material_data) # Category: 'machine'
+properties = _generate_properties_with_ranges(material_data)    # Category: material type
+machine_settings   = _generate_machine_settings_with_ranges(material_data) # Category: 'machine'
 
 # Both call shared core method:
 _create_datametrics_property(value, prop_key, category) → {value, unit, confidence, min, max, description}
@@ -21,19 +21,19 @@ _create_datametrics_property(value, prop_key, category) → {value, unit, confid
 
 | Generation Method | Target Section | Category Parameter | Shared Core |
 |------------------|---------------|-------------------|-------------|
-| `_generate_properties_with_ranges()` | materialProperties | 'metal', 'ceramic', 'polymer' | ✅ |
-| `_generate_machine_settings_with_ranges()` | machineSettings | 'machine' | ✅ |
+| `_generate_properties_with_ranges()` | properties | 'metal', 'ceramic', 'polymer' | ✅ |
+| `_generate_machine_settings_with_ranges()` | machine_settings | 'machine' | ✅ |
 | `_create_datametrics_property()` | **Both sections** | Varies by caller | **Core Method** |
 
 ## Self-Explanatory Data Categories
 
-### materialProperties
+### properties
 - **Category**: Material-specific ('metal', 'ceramic', 'polymer', 'glass', 'composite')  
 - **Research**: Uses PropertyValueResearcher with material context - **FULLY DYNAMIC, NO FALLBACKS**
 - **Selection**: 100% AI-driven property discovery based on material analysis
 - **Examples**: density, thermalConductivity, tensileStrength, youngsModulus
 
-### machineSettings  
+### machine_settings  
 - **Category**: 'machine' (universal for all laser parameters)
 - **Research**: Uses MachineSettingsResearcher with laser context - **FULLY DYNAMIC, NO FALLBACKS**
 - **Selection**: Calculated from researched material properties, no defaults allowed

@@ -87,8 +87,8 @@ class CategorySplitter:
         # 3. Machine Settings
         logger.info("📦 3/8: Extracting Machine Settings...")
         self.save_file('machine_settings.yaml', {
-            'machineSettingsRanges': data.get('machineSettingsRanges', {}),
-            'machineSettingsDescriptions': data.get('machineSettingsDescriptions', {})
+            'machine_settingsRanges': data.get('machine_settingsRanges', {}),
+            'machine_settingsDescriptions': data.get('machine_settingsDescriptions', {})
         }, 'Laser machine parameter ranges and detailed guidance for optimal material processing')
         
         # 4. Material Properties (from categories)

@@ -3,7 +3,7 @@
 # This template uses <VariableName> placeholders for values that should be replaced
 # All values shown here are template variables - replace with actual material data
 
-# CRITICAL: This is the GROUPED structure - materialProperties has category groups
+# CRITICAL: This is the GROUPED structure - properties has category groups
 # Each group (material_characteristics, laser_material_interaction) contains properties
 
 # NOTE: The exporter automatically strips generation metadata (generated timestamps,
@@ -46,7 +46,7 @@ micro: # this is a micro for the micro image above, describing the visual conten
   before: <BeforeText>  # Describe contaminated state at microscopic level with specific measurements
   after: <AfterText>  # Describe cleaned state revealing material microstructure 
 
-regulatoryStandards: # this is a list of relevant regulatory standards and guidelines for laser cleaning of this specific material.  Include links and logos.
+regulatory_standards: # this is a list of relevant regulatory standards and guidelines for laser cleaning of this specific material.  Include links and logos.
   - name: FDA
     description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
     url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
@@ -68,7 +68,7 @@ regulatoryStandards: # this is a list of relevant regulatory standards and guide
     image: /images/logo/logo-org-osha.png
 
 
-materialProperties:
+properties:
   material_characteristics: # this is a list of properties related to the material's physical characteristics
     label: Material Characteristics
     
@@ -105,7 +105,7 @@ materialProperties:
       research_basis: <ResearchSource>
     # Add more properties as needed
 
-machineSettings: # this is a list of the machine settings relevant to laser cleaning of this specific material.  These settings should be highly researched and specific to the material.
+machine_settings: # this is a list of the machine settings relevant to laser cleaning of this specific material.  These settings should be highly researched and specific to the material.
   
   <SettingName1>: # Example: powerRange, wavelength, pulseDuration, spotSize, etc.
     value: <Value>

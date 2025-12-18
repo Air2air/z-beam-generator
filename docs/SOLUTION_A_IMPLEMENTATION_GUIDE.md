@@ -8,13 +8,13 @@
 
 ## Executive Summary
 
-**Objective**: Eliminate data duplication between `domain_linkages.produces_compounds` and `laser_properties.safety_data.fumes_generated` by adding 2 missing fields to the enhanced structure and deprecating the legacy data.
+**Objective**: Eliminate data duplication between `relationships.produces_compounds` and `laser_properties.safety_data.fumes_generated` by adding 2 missing fields to the enhanced structure and deprecating the legacy data.
 
 **Changes**:
-- ✅ Add `concentration_range` field to domain_linkages.produces_compounds
-- ✅ Add `hazard_class` field to domain_linkages.produces_compounds
+- ✅ Add `concentration_range` field to relationships.produces_compounds
+- ✅ Add `hazard_class` field to relationships.produces_compounds
 - ✅ Remove `laser_properties.safety_data.fumes_generated` entirely
-- ✅ Update SafetyDataPanel component to use domain_linkages only
+- ✅ Update SafetyDataPanel component to use relationships only
 - ✅ Create CompoundSafetyGrid component for enhanced display
 
 **Impact**:
@@ -29,9 +29,9 @@
 
 ### Data Duplication Issue
 
-**Location A**: `domain_linkages.produces_compounds` (Enhanced, 90% complete)
+**Location A**: `relationships.produces_compounds` (Enhanced, 90% complete)
 ```yaml
-domain_linkages:
+relationships:
   produces_compounds:
     - id: carbon-monoxide-compound
       title: Carbon Monoxide
@@ -96,7 +96,7 @@ interface FumeData {
 Create new schema file: `schemas/contaminant-frontmatter-v4.1.yaml`
 
 ```yaml
-# Enhanced domain_linkages.produces_compounds schema
+# Enhanced relationships.produces_compounds schema
 produces_compounds:
   type: array
   items:
@@ -251,7 +251,7 @@ export const HAZARD_CLASS_COLORS: Record<HazardClass, string> = {
 ```python
 #!/usr/bin/env python3
 """
-Migrate compound data from fumes_generated to domain_linkages.produces_compounds
+Migrate compound data from fumes_generated to relationships.produces_compounds
 Adds concentration_range and hazard_class fields
 Removes legacy fumes_generated array
 """
@@ -297,7 +297,7 @@ def migrate_frontmatter(file_path: Path, dry_run: bool = False) -> Dict[str, Any
     }
     
     # Check if migration needed
-    if 'domain_linkages' not in data or 'produces_compounds' not in data['domain_linkages']:
+    if 'relationships' not in data or 'produces_compounds' not in data['relationships']:
         print("  ⚠️  No produces_compounds found, skipping")
         return stats
     
@@ -317,7 +317,7 @@ def migrate_frontmatter(file_path: Path, dry_run: bool = False) -> Dict[str, Any
         fumes_lookup[normalized] = fume
     
     # Update each compound in produces_compounds
-    compounds = data['domain_linkages']['produces_compounds']
+    compounds = data['relationships']['produces_compounds']
     
     for compound in compounds:
         # Extract normalized name from title
@@ -619,7 +619,7 @@ import { CompoundSafetyGrid } from '../CompoundSafetyGrid/CompoundSafetyGrid';
 
 interface SafetyDataPanelProps {
   safetyData: any;
-  compounds?: any[];  // NEW: from domain_linkages.produces_compounds
+  compounds?: any[];  // NEW: from relationships.produces_compounds
   className?: string;
 }
 
@@ -667,7 +667,7 @@ export function SafetyDataPanel({
   <div className="mb-16">
     <SafetyDataPanel
       safetyData={metadata.laser_properties.safety_data}
-      compounds={(metadata as any).domain_linkages?.produces_compounds || []}  // ADDED
+      compounds={(metadata as any).relationships?.produces_compounds || []}  // ADDED
     />
   </div>
 )}
@@ -757,7 +757,7 @@ describe('Safety Data Migration', () => {
   
   it('should have produces_compounds with all required fields', () => {
     const data = loadYaml(testFile);
-    const compounds = data.domain_linkages.produces_compounds;
+    const compounds = data.relationships.produces_compounds;
     
     expect(compounds).toBeDefined();
     expect(compounds.length).toBeGreaterThan(0);
@@ -852,7 +852,7 @@ git commit -m "feat: migrate compound data to unified structure
 - Add concentration_range and hazard_class to produces_compounds
 - Remove legacy fumes_generated data
 - Create CompoundSafetyGrid component
-- Update SafetyDataPanel to use domain_linkages
+- Update SafetyDataPanel to use relationships
 
 Closes #XXX"
 
@@ -967,7 +967,7 @@ Once Solution A is stable, consider:
 
 ### Before Migration
 ```yaml
-domain_linkages:
+relationships:
   produces_compounds:
     - id: carbon-monoxide-compound
       title: Carbon Monoxide
@@ -986,7 +986,7 @@ laser_properties:
 
 ### After Migration
 ```yaml
-domain_linkages:
+relationships:
   produces_compounds:
     - id: carbon-monoxide-compound
       title: Carbon Monoxide

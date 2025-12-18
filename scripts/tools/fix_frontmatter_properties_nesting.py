@@ -26,14 +26,14 @@ import sys
 
 def fix_properties_nesting(data):
     """
-    Remove invalid 'properties:' nesting from materialProperties.
+    Remove invalid 'properties:' nesting from properties.
     
     Returns True if changes were made.
     """
-    if 'materialProperties' not in data:
+    if 'properties' not in data:
         return False
     
-    mp = data['materialProperties']
+    mp = data['properties']
     changes_made = False
     
     for category in ['material_characteristics', 'laser_material_interaction']:

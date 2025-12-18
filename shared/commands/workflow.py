@@ -19,7 +19,7 @@ from typing import Dict, Any
 # Import generation commands
 from shared.commands import (
     handle_micro_generation,
-    handle_material_description_generation,
+    handle_description_generation,
     handle_faq_generation,
 )
 
@@ -49,8 +49,8 @@ def _validate_material_completeness(material_name: str, material_data: Dict) -> 
     
     # Check critical sections
     critical_sections = {
-        'materialProperties': material_data.get('materialProperties', {}),
-        'machineSettings': material_data.get('machineSettings', {})
+        'properties': material_data.get('properties', {}),
+        'machine_settings': material_data.get('machine_settings', {})
     }
     
     for section_name, section_data in critical_sections.items():
@@ -58,15 +58,15 @@ def _validate_material_completeness(material_name: str, material_data: Dict) -> 
             validation['complete'] = False
             validation['missing'].append(section_name)
     
-    # Check if materialProperties has actual values (not just labels)
-    if material_data.get('materialProperties'):
-        props = material_data['materialProperties']
+    # Check if properties has actual values (not just labels)
+    if material_data.get('properties'):
+        props = material_data['properties']
         has_actual_properties = False
         label_only_count = 0
         
         for prop, value in props.items():
             if value is None or value == '':
-                validation['warnings'].append(f"materialProperties.{prop} is null/empty")
+                validation['warnings'].append(f"properties.{prop} is null/empty")
             elif isinstance(value, dict):
                 # Check if this property has actual value data (not just label/type metadata)
                 has_value = any(key in value for key in ['value', 'min', 'max'])
@@ -78,15 +78,15 @@ def _validate_material_completeness(material_name: str, material_data: Dict) -> 
         # If ALL properties are label-only (no actual values), mark as incomplete
         if not has_actual_properties and label_only_count > 0:
             validation['complete'] = False
-            validation['missing'].append('materialProperties (has labels but no actual property values)')
+            validation['missing'].append('properties (has labels but no actual property values)')
             validation['warnings'].append(
-                f"materialProperties contains {label_only_count} label-only fields - needs property research"
+                f"properties contains {label_only_count} label-only fields - needs property research"
             )
     
-    if material_data.get('machineSettings'):
-        for setting, value in material_data['machineSettings'].items():
+    if material_data.get('machine_settings'):
+        for setting, value in material_data['machine_settings'].items():
             if value is None or value == '':
-                validation['warnings'].append(f"machineSettings.{setting} is null/empty")
+                validation['warnings'].append(f"machine_settings.{setting} is null/empty")
     
     # NEW: Validate property values are within category min/max ranges
     range_violations = _validate_property_ranges(material_name, material_data)
@@ -134,8 +134,8 @@ def _validate_property_ranges(material_name: str, material_data: Dict) -> list:
         
         category_ranges = category_info['category_ranges']
         
-        # Check materialProperties
-        material_props = material_data.get('materialProperties', {})
+        # Check properties
+        material_props = material_data.get('properties', {})
         
         # Check both category groups and root-level properties
         for category_group in ['material_characteristics', 'laser_material_interaction']:
@@ -215,7 +215,7 @@ def _check_property_range(prop_name: str, prop_value: Any, category_ranges: Dict
 def _research_missing_properties_inline(material_name: str, missing_sections: list) -> bool:
     """
     Inline property research using PropertyManager.
-    Triggers auto-remediation for missing materialProperties or machineSettings.
+    Triggers auto-remediation for missing properties or machine_settings.
     
     Returns:
         True if research succeeded, False otherwise
@@ -224,9 +224,9 @@ def _research_missing_properties_inline(material_name: str, missing_sections: li
         print("🔬 Starting inline property research...")
         print(f"   Missing sections: {', '.join(missing_sections)}")
         
-        # Check if materialProperties section exists but is incomplete
-        if 'materialProperties' in missing_sections or \
-           any('materialProperties' in section for section in missing_sections):
+        # Check if properties section exists but is incomplete
+        if 'properties' in missing_sections or \
+           any('properties' in section for section in missing_sections):
             
             print("   Triggering property research to populate missing data...")
             
@@ -234,7 +234,7 @@ def _research_missing_properties_inline(material_name: str, missing_sections: li
             from shared.commands.research import handle_research_missing_properties
             
             # Research properties for this specific material (no user confirmation in auto mode)
-            # Note: This will populate the materialProperties structure with actual property values
+            # Note: This will populate the properties structure with actual property values
             research_success = handle_research_missing_properties(
                 batch_size=10,
                 confidence_threshold=70,
@@ -250,7 +250,7 @@ def _research_missing_properties_inline(material_name: str, missing_sections: li
                 print("⚠️  Property research had issues - continuing anyway")
                 return True  # Don't block workflow
         else:
-            print("   No materialProperties issues detected")
+            print("   No properties issues detected")
             return True
             
     except Exception as e:
@@ -629,8 +629,8 @@ def run_material_workflow(
             
             # Generate material description
             print("→ Generating material description...")
-            material_desc_success = handle_material_description_generation(material_name)
-            step_results['generation']['material_description'] = material_desc_success
+            material_desc_success = handle_description_generation(material_name)
+            step_results['generation']['description'] = material_desc_success
             
             # Generate FAQ
             print("→ Generating FAQ...")

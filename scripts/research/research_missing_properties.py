@@ -191,10 +191,10 @@ def get_materials_missing_property(materials_data: dict, property_name: str) -> 
     missing = []
     
     for material_name, material_data in materials_data.items():
-        if 'materialProperties' not in material_data:
+        if 'properties' not in material_data:
             continue
             
-        mat_props = material_data['materialProperties']
+        mat_props = material_data['properties']
         category = material_data.get('category', 'unknown')
         
         # Check both property groups
@@ -289,10 +289,10 @@ def main():
                     group_name = 'material_characteristics'
                 
                 # Ensure structure exists
-                if 'materialProperties' not in all_materials[material_name]:
-                    all_materials[material_name]['materialProperties'] = {}
+                if 'properties' not in all_materials[material_name]:
+                    all_materials[material_name]['properties'] = {}
                 
-                mat_props = all_materials[material_name]['materialProperties']
+                mat_props = all_materials[material_name]['properties']
                 
                 if group_name not in mat_props:
                     if group_name == 'laser_material_interaction':

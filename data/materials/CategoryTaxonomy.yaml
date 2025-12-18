@@ -176,7 +176,7 @@ categories:
         sample_count: 7
         auto_generated: true
         generated_date: '2025-10-16'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Thermal shock and cracking
         severity: critical
@@ -350,7 +350,7 @@ categories:
     - ISO 6474 - Implants for Surgery - Ceramic Materials
     - NSF/ANSI 51 - Food Equipment Materials
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    materialProperties:
+    properties:
       thermalExpansion:
         min: 3.3
         max: 10.5
@@ -530,7 +530,7 @@ categories:
           4-6 J/cm², metal-matrix 5-8 J/cm²
         measurement_context: Nanosecond pulses, surface and fiber-dependent
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Matrix degradation and delamination
         severity: critical
@@ -599,7 +599,7 @@ categories:
     - FDA 21 CFR 1040.10 - Laser Product Performance Standards
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    materialProperties:
+    properties:
       hardness:
         min: 22.5
         max: 150.0
@@ -773,7 +773,7 @@ categories:
         measurement_context: Nanosecond pulses, 1064nm wavelength, surface quality
           critical
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Thermal shock and catastrophic failure
         severity: critical
@@ -854,7 +854,7 @@ categories:
     - FDA 21 CFR 1040.10 - Laser Product Performance Standards
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    materialProperties:
+    properties:
       fractureToughness:
         min: 0.71
         max: 2.0
@@ -1026,7 +1026,7 @@ categories:
           J/cm², brick 3-5 J/cm², plaster 2-3 J/cm²
         measurement_context: Nanosecond pulses, heritage conservation applications
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Moisture-induced spalling and explosive failure
         severity: critical
@@ -1111,7 +1111,7 @@ categories:
     - FDA 21 CFR 1040.10 - Laser Product Performance Standards
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    materialProperties:
+    properties:
       thermalExpansion:
         min: 5.5
         max: 18.0
@@ -1643,7 +1643,7 @@ categories:
     - FDA 21 CFR 1040.10 - Laser Product Performance Standards
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    materialProperties:
+    properties:
       thermalDiffusivity:
         min: 0.07
         max: 165.63
@@ -1709,7 +1709,7 @@ categories:
         min: 0.1
         max: 50.0
         unit: J/cm²
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: High thermal conductivity and heat spread
         severity: medium
@@ -1896,7 +1896,7 @@ categories:
           0.8-2 J/cm²; melting/degradation threshold
         measurement_context: Nanosecond pulses, wavelength and additive-dependent
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Low melting/degradation temperatures
         severity: high
@@ -1948,7 +1948,7 @@ categories:
     - FDA 21 CFR 1040.10 - Laser Product Performance Standards
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    materialProperties:
+    properties:
       thermalExpansion:
         min: 50.0
         max: 100.0
@@ -2127,7 +2127,7 @@ categories:
           and crystal quality affect threshold significantly
         measurement_context: Nanosecond pulses, precision cleaning applications
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Crystal lattice damage and doping redistribution
         severity: critical
@@ -2234,7 +2234,7 @@ categories:
     - ISO 14644 - Cleanroom and Associated Controlled Environments
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
     - SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
-    materialProperties:
+    properties:
       fractureToughness:
         min: 0.44
         max: 3.0
@@ -2414,7 +2414,7 @@ categories:
           3-6 J/cm², sandstone 1.5-3 J/cm²
         measurement_context: Nanosecond pulses, architectural restoration
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Thermal shock and microcracking
         severity: critical
@@ -2660,7 +2660,7 @@ categories:
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
     - UNESCO Guidelines for Cultural Heritage Conservation
-    materialProperties:
+    properties:
       flexuralStrength:
         min: 9.5
         max: 95.0
@@ -2846,7 +2846,7 @@ categories:
         measurement_context: Nanosecond pulses, thermal damage (charring) defines
           threshold
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Charring and carbonization
         severity: high
@@ -3084,7 +3084,7 @@ categories:
     - IMO Marine Pollution Prevention Standards
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
     - USDA Food Safety Guidelines (for food-contact surfaces)
-    materialProperties:
+    properties:
       fractureToughness:
         min: 0.33
         max: 4.4
@@ -3218,7 +3218,7 @@ categories:
         notes: Thermal diffusivity varies across lanthanide series; influenced by
           magnetic properties
         last_updated: '2025-11-12'
-    material_challenges:
+    challenges:
       thermal_management:
       - challenge: Rapid oxidation and pyrophoricity
         severity: critical
@@ -3408,7 +3408,7 @@ categories:
         unit: Å
         confidence: 90
         description: Typical lattice parameter range for lanthanide crystal structures
-    materialProperties:
+    properties:
       density:
         min: 6.1
         max: 9.8

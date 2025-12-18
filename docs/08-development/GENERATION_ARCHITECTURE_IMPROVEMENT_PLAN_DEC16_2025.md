@@ -173,7 +173,7 @@ class LearningIntegrator:
             context: {
                 'domain': 'materials' | 'settings' | 'contaminants' | 'compounds',
                 'item_name': 'Aluminum' | 'Speed' | 'Rust' | 'Chromium',
-                'component_type': 'material_description' | 'micro' | ...,
+                'component_type': 'description' | 'micro' | ...,
                 'author_id': 'todd' | 'yi-chun' | ...,
                 # 🚀 Add new fields here without changing code!
                 'custom_field': 'value',
@@ -288,7 +288,7 @@ class ParameterManager:
         Calculate all generation parameters dynamically.
         
         Args:
-            component_type: 'material_description', 'micro', 'faq', etc.
+            component_type: 'description', 'micro', 'faq', etc.
             author_id: 'todd', 'yi-chun', etc.
             domain: 'materials', 'settings', 'contaminants', 'compounds'
             context: Additional domain-specific context
@@ -465,12 +465,12 @@ def test_simplified_generator_maintains_functionality():
     """Comprehensive test - verify ALL functionality preserved"""
     
     # Test 1: Content generation still works
-    result = generator.generate('Aluminum', 'material_description', 'todd')
+    result = generator.generate('Aluminum', 'description', 'todd')
     assert result.success
     assert len(result.content) > 0
     
     # Test 2: Content saved to Materials.yaml
-    saved_content = load_from_materials_yaml('Aluminum', 'material_description')
+    saved_content = load_from_materials_yaml('Aluminum', 'description')
     assert saved_content == result.content
     
     # Test 3: Quality evaluation ran
@@ -687,7 +687,7 @@ integrator = LearningIntegrator('learning.db')
 integrator.log_generation(content, scores, params, {
     'domain': 'materials',  # or 'settings', 'contaminants', etc.
     'item_name': 'Aluminum',
-    'component_type': 'material_description'
+    'component_type': 'description'
 })
 ```
 
@@ -698,7 +698,7 @@ manager = ParameterManager(dynamic_config, humanness_opt)
 
 # Works for any domain + component combination
 params = manager.get_parameters(
-    'material_description', 
+    'description', 
     'todd',
     domain='materials'  # or 'settings', 'contaminants', etc.
 )
@@ -852,7 +852,7 @@ scores = orchestrator.evaluate(content, context)
 # Would need to modify evaluated_generator.py
 class QualityEvaluatedGenerator:
     def generate(self, item_name, component_type):
-        if component_type == 'material_description':
+        if component_type == 'description':
             # ...
         elif component_type == 'compound_description':  # ← NEW CODE IN CORE
             # ... 50 lines of compound-specific logic
@@ -881,7 +881,7 @@ learning_integrator.log_generation(content, scores, params, {'domain': 'compound
 # Would need to modify QualityEvaluatedGenerator for images
 class QualityEvaluatedGenerator:
     def generate(self, item_name, component_type):
-        if component_type in ['material_description', 'micro', 'faq']:
+        if component_type in ['description', 'micro', 'faq']:
             # ... text generation
         elif component_type == 'image_caption':  # ← NEW LOGIC
             # ... image caption logic (different from text)

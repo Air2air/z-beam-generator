@@ -412,7 +412,7 @@ class PostprocessCommand:
         print(f"   • Voice Authenticity: {quality_analysis['voice_authenticity']['score']}/100")
         
         # Use pipeline's threshold (60/100 allows concise content to pass)
-        # Lowered from 70 to account for single-sentence material_description content
+        # Lowered from 70 to account for single-sentence description content
         # which appropriately scores lower on structural variation metrics
         QUALITY_THRESHOLD = 60
         MIN_CONTENT_LENGTH = 150  # Minimum characters for acceptable content

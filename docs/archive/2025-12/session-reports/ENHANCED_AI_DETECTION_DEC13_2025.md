@@ -131,7 +131,7 @@ if result['overall_score'] == 0.0:
 **Postprocessing:**
 ```bash
 # Enhanced AI detection automatically active
-python3 run.py --postprocess --domain materials --field material_description --all
+python3 run.py --postprocess --domain materials --field description --all
 ```
 
 ## Configuration

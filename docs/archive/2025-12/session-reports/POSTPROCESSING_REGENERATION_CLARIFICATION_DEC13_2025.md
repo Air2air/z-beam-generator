@@ -14,7 +14,7 @@
 1. ❌ **Old content is DISCARDED** (not edited, not refined, not modified)
 2. ✅ **System calls `generator.generate()`** with original prompt template
 3. ✅ **Completely NEW generation** from scratch
-4. ✅ **Uses same domain prompt** as initial generation (e.g., `domains/materials/prompts/material_description.txt`)
+4. ✅ **Uses same domain prompt** as initial generation (e.g., `domains/materials/prompts/description.txt`)
 5. ✅ **Learning-optimized parameters** (sweet spot from database)
 6. ✅ **If new passes (≥60/100)**: Saved to data YAML + frontmatter
 7. ✅ **If new fails**: Original content remains unchanged

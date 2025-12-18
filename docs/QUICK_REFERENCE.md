@@ -31,7 +31,16 @@
 **BEFORE** any work, review these files organized by category:
 
 ### ⚡ Recent Updates (November-December 2025)
-- **🔥 Voice Enforcement Centralization** (Dec 12): Single source of truth for voice enforcement 🔥 **NEWEST**
+- **🎉 Phase 5: Export System Cleanup Complete** (Dec 18): Final consolidation 🔥 **NEWEST**
+  - See: `docs/archive/2025-12/PHASE_5_COMPLETION_REPORT.md`
+  - Removed: 1,136 lines of deprecated code (contaminants/settings exporters, deploy script)
+  - Export System: Universal exporter (900 lines) handles all 4 domains
+  - Slug Cleanup: 557 slugs added to source data, 100% clean filenames
+  - Tests: 7/7 Phase 4 validation tests passing
+  - Files: 424 production frontmatter files (153 materials, 98 contaminants, 20 compounds, 153 settings)
+  - Grade: A+ (98/100) - Production system complete
+  - CLI: `python3 run.py --export --domain materials|contaminants|compounds|settings`
+- **🔥 Voice Enforcement Centralization** (Dec 12): Single source of truth for voice enforcement
   - See: `docs/08-development/VOICE_ENFORCEMENT_CENTRALIZATION_DEC12_2025.md`
   - Problem: Voice enforcement duplicated across domain prompts (DRY violation)
   - Solution: Centralized in `_build_voice_instruction()` method for automatic propagation
@@ -159,7 +168,7 @@ Creating "fix scripts" that patch frontmatter files directly is **TEMPORARY** be
 
 **Old Structure**:
 ```yaml
-regulatoryStandards:
+regulatory_standards:
   - "FDA 21 CFR 1040.10"
 images:
   hero: {...}  # micro missing for 107 materials
@@ -167,7 +176,7 @@ images:
 
 **New Structure**:
 ```yaml
-regulatoryStandards:
+regulatory_standards:
   - name: FDA
     description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
     url: https://www.ecfr.gov/...
@@ -257,7 +266,7 @@ python3 -c "from processing.chain_verification import generate_chain_verificatio
 
 ```yaml
 # ✅ CORRECT (per frontmatter_template.yaml):
-materialProperties:
+properties:
   material_characteristics:
     label: "..."
     density:           # ← Property DIRECTLY here
@@ -265,7 +274,7 @@ materialProperties:
       unit: "g/cm³"
 
 # ❌ WRONG (causes bugs):
-materialProperties:
+properties:
   material_characteristics:
     label: "..."
     properties:        # ❌ NO! This wrapper should NOT exist

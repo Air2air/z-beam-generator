@@ -88,7 +88,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         research_prompt = self.industry_prompts.build_research_prompt(
             material_name=material_name,
             category=material_data.get('category'),
-            material_properties=material_data.get('materialProperties', {})
+            material_properties=material_data.get('properties', {})
         )
         research_response = api_client.generate_simple(research_prompt)
         

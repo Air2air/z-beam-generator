@@ -336,7 +336,7 @@ Include REALISTIC data based on laser cleaning physics and industry practices.""
         
         # Detect material category to provide better context
         material_data = self.materials_data.get(material_name, {})
-        category = material_data.get('materialProperties', {}).get('category', 'unknown')
+        category = material_data.get('properties', {}).get('category', 'unknown')
         
         # Build category-specific prompt
         if category == 'metal':

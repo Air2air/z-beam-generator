@@ -7,7 +7,7 @@ This script performs a comprehensive migration across the entire Z-Beam Generato
 
 CHANGES TO FRONTMATTER/MATERIALS/*.YAML (152 FILES):
 1. Remove 'subtitle_metadata' field
-2. Rename 'subtitle' → 'material_description'
+2. Rename 'subtitle' → 'description'
 3. Remove 'description' field (moves to settings)
 
 CHANGES TO FRONTMATTER/SETTINGS/*.YAML (152 FILES):
@@ -38,7 +38,7 @@ sys.path.insert(0, str(project_root))
 
 
 class SubtitleMigration:
-    """Handles the migration of subtitle fields to material_description."""
+    """Handles the migration of subtitle fields to description."""
     
     def __init__(self, dry_run: bool = False):
         """
@@ -62,7 +62,7 @@ class SubtitleMigration:
         
         Changes:
         1. Remove subtitle_metadata
-        2. Rename subtitle → material_description
+        2. Rename subtitle → description
         3. Extract description for settings
         
         Returns:
@@ -86,9 +86,9 @@ class SubtitleMigration:
                 del data['subtitle_metadata']
                 changes_made = True
             
-            # Rename subtitle → material_description
+            # Rename subtitle → description
             if 'subtitle' in data:
-                data['material_description'] = data['subtitle']
+                data['description'] = data['subtitle']
                 del data['subtitle']
                 changes_made = True
             
@@ -149,7 +149,7 @@ class SubtitleMigration:
         
         Changes:
         1. For each material: Remove subtitle_metadata
-        2. For each material: Rename subtitle → material_description
+        2. For each material: Rename subtitle → description
         3. For each material: Move description to components.settings_description
         
         Returns:
@@ -170,9 +170,9 @@ class SubtitleMigration:
                     del material_data['subtitle_metadata']
                     changes_made = True
                 
-                # Rename subtitle → material_description
+                # Rename subtitle → description
                 if 'subtitle' in material_data:
-                    material_data['material_description'] = material_data['subtitle']
+                    material_data['description'] = material_data['subtitle']
                     del material_data['subtitle']
                     changes_made = True
                 
@@ -227,7 +227,7 @@ class SubtitleMigration:
             project_root / "frontmatter" / "materials-new"
         ]
         
-        material_descriptions = {}  # Store for settings migration
+        descriptions = {}  # Store for settings migration
         
         for materials_dir in materials_dirs:
             if not materials_dir.exists():
@@ -237,7 +237,7 @@ class SubtitleMigration:
                 success, description = self.migrate_material_file(filepath)
                 if success and description:
                     # Store description for corresponding settings file
-                    material_descriptions[filepath.stem] = description
+                    descriptions[filepath.stem] = description
         
         print(f"   ✅ Processed {self.stats['materials_processed']} material files")
         print(f"   ✅ Updated {self.stats['materials_updated']} material files")
@@ -257,7 +257,7 @@ class SubtitleMigration:
             for filepath in sorted(settings_dir.glob("*.yaml")):
                 # Match material file to settings file by stem
                 material_stem = filepath.stem.replace('-settings', '-laser-cleaning')
-                description = material_descriptions.get(material_stem)
+                description = descriptions.get(material_stem)
                 
                 if description:
                     self.migrate_settings_file(filepath, description)
@@ -299,7 +299,7 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(
-        description='Migrate subtitle fields to material_description across entire system'
+        description='Migrate subtitle fields to description across entire system'
     )
     parser.add_argument(
         '--dry-run',
@@ -318,7 +318,7 @@ def main():
         print("\n⚠️  WARNING: This will modify 300+ files across the system!")
         print()
         print("Changes:")
-        print("  • Materials: Remove subtitle_metadata, rename subtitle → material_description, remove description")
+        print("  • Materials: Remove subtitle_metadata, rename subtitle → description, remove description")
         print("  • Settings: Add settings_description")
         print("  • Materials.yaml: Apply same transformations")
         print()

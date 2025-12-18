@@ -9,7 +9,7 @@ and field ordering defined in frontmatter_template.yaml.
 
 KEY NORMALIZATIONS:
 1. Field Ordering: Ensure canonical order from frontmatter_template.yaml
-2. GROUPED Structure: Verify materialProperties has proper category groups
+2. GROUPED Structure: Verify properties has proper category groups
 3. Properties Structure: Each group must have label, description, properties dict
 4. Required Fields: Ensure name, category, subcategory, title, subtitle exist
 5. Cleanup: Remove deprecated fields, normalize naming
@@ -59,8 +59,8 @@ def save_materials(data):
 # Canonical field order from frontmatter_template.yaml
 CANONICAL_ORDER = [
     'name', 'category', 'subcategory', 'title', 'subtitle', 'description',
-    'author', 'images', 'micro', 'regulatoryStandards', 'applications',
-    'materialProperties', 'materialCharacteristics', 'machineSettings',
+    'author', 'images', 'micro', 'regulatory_standards', 'applications',
+    'properties', 'characteristics', 'machine_settings',
     'faq', '_metadata'
 ]
 
@@ -91,11 +91,11 @@ def reorder_fields(data: Dict) -> OrderedDict:
 
 
 def ensure_grouped_properties(data: Dict) -> Dict:
-    """Ensure materialProperties has proper GROUPED structure."""
-    if 'materialProperties' not in data:
-        data['materialProperties'] = {}
+    """Ensure properties has proper GROUPED structure."""
+    if 'properties' not in data:
+        data['properties'] = {}
     
-    mat_props = data['materialProperties']
+    mat_props = data['properties']
     
     for group_name, group_config in REQUIRED_GROUPS.items():
         if group_name not in mat_props:

@@ -8,12 +8,14 @@ then updates Materials.yaml with proper citations following zero-fallback policy
 According to DATA_STORAGE_POLICY: ALL research must be saved to Materials.yaml.
 """
 
-import yaml
 import re
 import sys
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any, Optional, Tuple
+
+# Use shared YAML utilities
+from shared.utils.file_io import read_yaml_file, write_yaml_file
 
 
 class ResearchCitationIntegrator:
@@ -28,8 +30,7 @@ class ResearchCitationIntegrator:
         
     def load_yaml(self, filepath: Path) -> Dict[str, Any]:
         """Load YAML file"""
-        with open(filepath, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f) or {}
+        return read_yaml_file(filepath)
     
     def save_yaml(self, filepath: Path, data: Dict[str, Any]):
         """Save YAML file with backup"""
@@ -44,8 +45,7 @@ class ResearchCitationIntegrator:
                 print(f"📦 Backup created: {backup_file.name}")
         
             # Save updated data
-            with open(filepath, 'w', encoding='utf-8') as f:
-                yaml.dump(data, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+            write_yaml_file(filepath, data, sort_keys=False)
             print(f"💾 Saved: {filepath.name}")
         else:
             print(f"🔍 DRY RUN: Would save {filepath.name}")
@@ -227,11 +227,11 @@ class ResearchCitationIntegrator:
             
             print(f"\n🔬 Processing: {material_name}")
             
-            # Ensure materialCharacteristics exists
-            if 'materialCharacteristics' not in materials[material_name]:
-                materials[material_name]['materialCharacteristics'] = {}
+            # Ensure characteristics exists
+            if 'characteristics' not in materials[material_name]:
+                materials[material_name]['characteristics'] = {}
             
-            material_chars = materials[material_name]['materialCharacteristics']
+            material_chars = materials[material_name]['characteristics']
             
             # Process each property
             for prop_name, prop_data in properties.items():
@@ -330,7 +330,7 @@ class ResearchCitationIntegrator:
         }
         
         for material_name, material_data in materials.items():
-            material_chars = material_data.get('materialCharacteristics', {})
+            material_chars = material_data.get('characteristics', {})
             
             has_citation = False
             for prop_name, prop_data in material_chars.items():

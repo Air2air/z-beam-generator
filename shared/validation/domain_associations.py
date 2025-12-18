@@ -273,13 +273,15 @@ class DomainAssociationsValidator:
                 full_contaminant_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
                 contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
                 
-                # Build URL with category/subcategory path + -contamination suffix
+                # Build URL with category/subcategory path (no suffix in URL slug)
                 category = contaminant_data.get('category', 'general').replace('_', '-')
                 subcategory = contaminant_data.get('subcategory', 'misc').replace('_', '-')
-                url_slug = f"{slug}-contamination"
+                url_slug = slug  # URL uses shortened slug without suffix
                 
                 results.append({
                     'id': contaminant_id,
+                    'test_field_12345': 'TESTVALUE',  # TEST field
+                    'slug': url_slug,  # Matches end of URL
                     'title': contaminant_data.get('name', slug.replace('-', ' ').title()),
                     'url': f"/contaminants/{category}/{subcategory}/{url_slug}",
                     'image': f"/images/contaminant/{slug}-contamination-hero.jpg",
@@ -289,6 +291,9 @@ class DomainAssociationsValidator:
                     'severity': assoc['severity'],
                     'typical_context': assoc.get('typical_context', '')
                 })
+                
+                # DEBUG
+                print(f"   Added contaminant linkage with slug: {url_slug}")
         
         return results
     
@@ -320,13 +325,14 @@ class DomainAssociationsValidator:
                 # Note: Materials.yaml now uses full ID as key (with -laser-cleaning suffix)
                 material_data = self.materials_data.get('materials', {}).get(material_id, {})
                 
-                # Build URL with category/subcategory path + -laser-cleaning suffix
+                # Build URL with category/subcategory path (no suffix in URL slug)
                 category = material_data.get('category', 'general').replace('_', '-')
                 subcategory = material_data.get('subcategory', 'misc').replace('_', '-')
-                url_slug = f"{slug.lower()}-laser-cleaning"
+                url_slug = slug.lower()  # URL uses shortened slug without suffix
                 
                 results.append({
                     'id': material_id,
+                    'slug': url_slug,  # Matches end of URL
                     'title': material_data.get('name', slug.replace('-', ' ').title()),
                     'url': f"/materials/{category}/{subcategory}/{url_slug}",
                     'image': f"/images/material/{slug}-laser-cleaning-hero.jpg",
@@ -371,13 +377,14 @@ class DomainAssociationsValidator:
                 # Get compound details from Compounds.yaml
                 compound_data = self.compounds_data.get('compounds', {}).get(slug, {})
                 
-                # Build URL with category/subcategory path + -compound suffix
+                # Build URL with category/subcategory path (no suffix in URL slug)
                 category = compound_data.get('category', 'general').replace('_', '-')
                 subcategory = compound_data.get('subcategory', 'misc').replace('_', '-')
-                url_slug = f"{slug}-compound"
+                url_slug = slug  # URL uses shortened slug without suffix
                 
                 results.append({
                     'id': compound_id,
+                    'slug': url_slug,  # Matches end of URL
                     'title': compound_data.get('name', slug.replace('-', ' ').title()),
                     'url': f"/compounds/{category}/{subcategory}/{url_slug}",
                     'image': f"/images/compound/{slug}-compound-hero.jpg",
@@ -416,13 +423,14 @@ class DomainAssociationsValidator:
                 full_contaminant_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
                 contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
                 
-                # Build URL with category/subcategory path + -contamination suffix
+                # Build URL with category/subcategory path (no suffix in URL slug)
                 category = contaminant_data.get('category', 'general').replace('_', '-')
                 subcategory = contaminant_data.get('subcategory', 'misc').replace('_', '-')
-                url_slug = f"{slug}-contamination"
+                url_slug = slug  # URL uses shortened slug without suffix
                 
                 results.append({
                     'id': contaminant_id,
+                    'slug': url_slug,  # Matches end of URL
                     'title': contaminant_data.get('name', slug.replace('-', ' ').title()),
                     'url': f"/contaminants/{category}/{subcategory}/{url_slug}",
                     'image': f"/images/contaminant/{slug}-contamination-hero.jpg",

@@ -99,7 +99,7 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
     
     Args:
         item_name: Name of item
-        field_name: Field to update (e.g., 'settings_description', 'material_description', 'micro')
+        field_name: Field to update (e.g., 'settings_description', 'description', 'micro')
         field_value: New value for field
         domain: Domain name (e.g., 'materials', 'settings')
         

@@ -128,7 +128,7 @@ class QualityEvaluatedGenerator:
         
         Args:
             material_name: Name of material
-            component_type: Type of component (micro, material_description, faq)
+            component_type: Type of component (micro, description, faq)
             retry_session_id: Optional session ID to group retry attempts together
             is_retry: Whether this is a retry attempt (enables proper learning tracking)
             **kwargs: Additional parameters (e.g., faq_count)
@@ -558,7 +558,7 @@ class QualityEvaluatedGenerator:
                 parts.append(f"Q: {q}\nA: {a}")
             return "\n\n".join(parts)
         else:
-            # String content (material_description, etc.)
+            # String content (description, etc.)
             return str(content)
     
     def _load_sweet_spot_parameters(self) -> Dict[str, float]:

@@ -11,8 +11,8 @@
 **Strict separation between material properties and machine settings.**
 
 ```
-data/materials/Materials.yaml → materialProperties (ONLY)
-data/settings/Settings.yaml   → machineSettings (ONLY)
+data/materials/Materials.yaml → properties (ONLY)
+data/settings/Settings.yaml   → machine_settings (ONLY)
 ```
 
 **Zero cross-contamination allowed.**
@@ -30,7 +30,7 @@ data/settings/Settings.yaml   → machineSettings (ONLY)
 **Single Source of Truth for Material Properties**
 
 ✅ **ALLOWED**:
-- `materialProperties` → Contains:
+- `properties` → Contains:
   - `laser_material_interaction` (absorption, reflectivity, thermal properties, ablation threshold, etc.)
   - `material_characteristics` (physical properties, composition, density, etc.)
 - `category` (material classification)
@@ -39,7 +39,7 @@ data/settings/Settings.yaml   → machineSettings (ONLY)
 - `author` (attribution)
 
 ❌ **FORBIDDEN**:
-- `machineSettings` (belongs in Settings.yaml)
+- `machine_settings` (belongs in Settings.yaml)
 - Any laser processing parameters (power, wavelength, etc.)
 
 **Structure**:
@@ -47,7 +47,7 @@ data/settings/Settings.yaml   → machineSettings (ONLY)
 materials:
   Material-Name:
     category: "category_name"
-    materialProperties:
+    properties:
       laser_material_interaction:
         absorptionCoefficient: {...}
         reflectivity: {...}
@@ -67,7 +67,7 @@ materials:
 **Domain**: `domains/settings/` (independent from materials)
 
 ✅ **ALLOWED**:
-- `machineSettings` → Contains:
+- `machine_settings` → Contains:
   - `powerRange` (laser power parameters)
   - `wavelength` (laser wavelength)
   - `pulseDuration` (pulse timing)
@@ -76,24 +76,24 @@ materials:
   - `spotSize` (beam parameters)
   - `fluence` (energy density)
   - `pulseEnergy` (pulse parameters)
-- `material_challenges` (operational considerations)
+- `challenges` (operational considerations)
 - `settings_description` (human-readable description)
 
 ❌ **FORBIDDEN**:
-- `materialProperties` (belongs in Materials.yaml)
+- `properties` (belongs in Materials.yaml)
 - Any physical/thermal/chemical properties
 
 **Structure**:
 ```yaml
 settings:
   Material-Name:
-    machineSettings:
+    machine_settings:
       powerRange: {...}
       wavelength: {...}
       repetitionRate: {...}
       scanSpeed: {...}
       spotSize: {...}
-    material_challenges: "Text describing operational challenges"
+    challenges: "Text describing operational challenges"
     settings_description: "Text describing settings rationale"
 ```
 
@@ -132,10 +132,10 @@ materials/*.yaml    settings/*-settings.yaml
 **Location**: `tests/test_data_architecture_separation.py`
 
 **Tests**:
-1. ✅ Materials.yaml has NO machineSettings
-2. ✅ Settings.yaml has NO materialProperties
-3. ✅ Materials.yaml HAS materialProperties
-4. ✅ Settings.yaml HAS machineSettings
+1. ✅ Materials.yaml has NO machine_settings
+2. ✅ Settings.yaml has NO properties
+3. ✅ Materials.yaml HAS properties
+4. ✅ Settings.yaml HAS machine_settings
 5. ✅ Architecture separation summary report
 
 **Run**:
@@ -155,12 +155,12 @@ python3 -m pytest tests/test_data_architecture_separation.py -v
 **As of November 26, 2025**:
 
 ### Materials.yaml (159 materials)
-- ✅ materialProperties: 159/159 materials (100%)
-- ✅ machineSettings: 0/159 materials (0% - correct)
+- ✅ properties: 159/159 materials (100%)
+- ✅ machine_settings: 0/159 materials (0% - correct)
 
 ### Settings.yaml (159 materials)
-- ✅ machineSettings: 159/159 materials (100%)
-- ✅ materialProperties: 0/159 materials (0% - correct)
+- ✅ machine_settings: 159/159 materials (100%)
+- ✅ properties: 0/159 materials (0% - correct)
 
 **Violations**: 0  
 **Architecture Status**: ✅ COMPLIANT
@@ -170,8 +170,8 @@ python3 -m pytest tests/test_data_architecture_separation.py -v
 ## 🚨 Historical Context
 
 ### Migration (November 24, 2025)
-- **Before**: 132 materials had duplicate machineSettings in BOTH files
-- **Action**: Removed all machineSettings from Materials.yaml
+- **Before**: 132 materials had duplicate machine_settings in BOTH files
+- **Action**: Removed all machine_settings from Materials.yaml
 - **Result**: Settings.yaml became single source of truth
 - **Documentation**: `MACHINESETTINGS_MIGRATION_NOV24_2025.md`
 

@@ -451,7 +451,7 @@ safety_data:
 # ============================================================================
 # REGULATORY STANDARDS
 # ============================================================================
-regulatoryStandards:
+regulatory_standards:
   - standard: ISO 11553-2
     description: Safety of machinery — Laser processing machines — Part 2
     relevance: high

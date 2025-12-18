@@ -79,7 +79,7 @@ Check files again - if they still have issues, the generator fix didn't work.
 # scripts/tools/add_machine_settings_ranges.py
 for file in frontmatter_files:
     data = yaml.load(file)
-    for setting in data['machineSettings']:
+    for setting in data['machine_settings']:
         # Add min/max from Categories.yaml
         setting['min'] = ranges[setting_name]['min']
         setting['max'] = ranges[setting_name]['max']
@@ -112,8 +112,8 @@ Then: `python3 run.py --deploy --no-completeness-check`
 # scripts/tools/remove_invalid_keys.py
 for file in frontmatter_files:
     data = yaml.load(file)
-    # Remove materialCharacteristics and applications
-    data.pop('materialCharacteristics', None)
+    # Remove characteristics and applications
+    data.pop('characteristics', None)
     data.pop('applications', None)
     yaml.dump(data, file)
 ```
@@ -127,8 +127,8 @@ def export_single(self, material_name: str, material_data: Dict):
     # Define exportable fields whitelist
     EXPORTABLE_FIELDS = {
         'category', 'subcategory', 'title', 'subtitle',
-        'materialProperties', 'machineSettings', 'faq', ...
-        # materialCharacteristics NOT in list
+        'properties', 'machine_settings', 'faq', ...
+        # characteristics NOT in list
         # applications NOT in list
     }
     
@@ -158,7 +158,7 @@ Ask yourself:
 **Check**: Is `_add_min_max()` actually being called? With correct range dict?
 
 ### 2. Exporting Forbidden Fields
-**Symptom**: Root-level keys that shouldn't exist (materialCharacteristics, applications)  
+**Symptom**: Root-level keys that shouldn't exist (characteristics, applications)  
 **Fix Location**: `export_single()` - add EXPORTABLE_FIELDS whitelist  
 **Check**: Are you filtering keys before copying?
 
@@ -189,17 +189,17 @@ After fixing the generator and redeploying:
 ## Historical Failures (Learn From These)
 
 ### November 3, 2025 - Multiple Repeated Failures
-- **Issue**: Missing min/max in machineSettings (112/132 files)
+- **Issue**: Missing min/max in machine_settings (112/132 files)
 - **Failed Attempts**: 
   - Created `fix_frontmatter_conformity.py` to patch files
-  - Fixed materialProperties but not machineSettings
+  - Fixed properties but not machine_settings
   - Claimed success without verifying persistence
 - **Root Cause**: Never fixed `_enrich_machine_settings()` in exporter
 - **User Frustration**: "Why must I keep discovering violations that I have asked several times to fix?"
 - **Lesson**: AI kept fixing symptoms, not root cause
 
 ### November 3, 2025 - Invalid Keys Returning
-- **Issue**: `materialCharacteristics` and `applications` in frontmatter
+- **Issue**: `characteristics` and `applications` in frontmatter
 - **Failed Attempts**: Removed from files with script
 - **Root Cause**: Exporter copied ALL fields from Materials.yaml without filtering
 - **Fix**: Added EXPORTABLE_FIELDS whitelist to `export_single()`

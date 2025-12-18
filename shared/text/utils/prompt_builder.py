@@ -262,7 +262,7 @@ distinctive markers per paragraph as specified in your voice instructions."""
         2. Shared (deprecated): prompts/components/{component}.txt
         
         Args:
-            component_type: Component type (micro, faq, material_description, etc.)
+            component_type: Component type (micro, faq, description, etc.)
             domain: Domain name (materials, contaminants, settings)
             
         Returns:

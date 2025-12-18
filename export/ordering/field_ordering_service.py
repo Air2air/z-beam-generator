@@ -9,15 +9,15 @@ CANONICAL REFERENCE: materials/data/frontmatter_template.yaml
 This is the single source of truth for field order and structure.
 
 Field Order (per template):
-1. name, category, subcategory, title, material_description, settings_description
+1. name, category, subcategory, title, description, settings_description
 2. author (determines voice)
 3. images (hero, micro)
 4. micro (description, before, after)
-5. regulatoryStandards
+5. regulatory_standards
 6. applications
-7. materialProperties (GROUPED: material_characteristics, laser_material_interaction)
-8. materialCharacteristics (qualitative properties)
-9. machineSettings
+7. properties (GROUPED: material_characteristics, laser_material_interaction)
+8. characteristics (qualitative properties)
+9. machine_settings
 10. environmentalImpact
 11. outcomeMetrics
 12. faq
@@ -42,7 +42,7 @@ class FieldOrderingService:
         
         Canonical hierarchy:
         1. Basic Identification (name, category, subcategory)
-        2. Content Metadata (title, material_description, settings_description)
+        2. Content Metadata (title, description, settings_description)
         3. Author (determines voice generation)
         4. Visual Assets (images: hero, micro)
         5. Micro (description, before, after)
@@ -73,7 +73,7 @@ class FieldOrderingService:
                 ordered_data[field] = frontmatter_data[field]
                 
         # === 2. CONTENT METADATA ===
-        for field in ["title", "material_description", "settings_description", "headline", "keywords"]:
+        for field in ["title", "description", "settings_description", "headline", "keywords"]:
             if field in frontmatter_data:
                 ordered_data[field] = frontmatter_data[field]
                 
@@ -90,27 +90,27 @@ class FieldOrderingService:
             ordered_data["micro"] = frontmatter_data["micro"]
             
         # === 6. REGULATORY STANDARDS (moved earlier per template) ===
-        if "regulatoryStandards" in frontmatter_data:
-            ordered_data["regulatoryStandards"] = frontmatter_data["regulatoryStandards"]
+        if "regulatory_standards" in frontmatter_data:
+            ordered_data["regulatory_standards"] = frontmatter_data["regulatory_standards"]
             
         # === 7. APPLICATIONS ===
         if "applications" in frontmatter_data:
             ordered_data["applications"] = frontmatter_data["applications"]
             
         # === 8. MATERIAL PROPERTIES (GROUPED structure preserved) ===
-        if "materialProperties" in frontmatter_data:
-            ordered_data["materialProperties"] = FieldOrderingService._create_clean_properties_structure(
-                frontmatter_data["materialProperties"]
+        if "properties" in frontmatter_data:
+            ordered_data["properties"] = FieldOrderingService._create_clean_properties_structure(
+                frontmatter_data["properties"]
             )
             
         # === 9. MATERIAL CHARACTERISTICS (qualitative properties) ===
-        if "materialCharacteristics" in frontmatter_data:
-            ordered_data["materialCharacteristics"] = frontmatter_data["materialCharacteristics"]
+        if "characteristics" in frontmatter_data:
+            ordered_data["characteristics"] = frontmatter_data["characteristics"]
             
         # === 10. MACHINE SETTINGS ===
-        if "machineSettings" in frontmatter_data:
-            ordered_data["machineSettings"] = FieldOrderingService._create_clean_machine_settings_structure(
-                frontmatter_data["machineSettings"]
+        if "machine_settings" in frontmatter_data:
+            ordered_data["machine_settings"] = FieldOrderingService._create_clean_machine_settings_structure(
+                frontmatter_data["machine_settings"]
             )
             
         # === 11. ENVIRONMENTAL IMPACT ===

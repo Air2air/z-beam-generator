@@ -57,9 +57,9 @@ Domain (page type)
 
 | Domain | Page URL | Components |
 |--------|----------|------------|
-| **materials** | `/laser-cleaning/{material}` | `material_description`, `micro`, `faq` |
+| **materials** | `/laser-cleaning/{material}` | `description`, `micro`, `faq` |
 | **settings** | `/laser-cleaning/{material}/settings` | `settings_description`, `component_summaries` |
-| **contaminants** | `/contaminants/{pattern}` | `material_description`, `micro`, `faq` |
+| **contaminants** | `/contaminants/{pattern}` | `description`, `micro`, `faq` |
 
 ### This Document: Settings Domain
 
@@ -71,7 +71,7 @@ Component summaries belong to the **Settings domain** because they:
 
 **Context for writing**:
 - Assume user is actively configuring/troubleshooting
-- Reference Settings properties (`machineSettings`, `thermalProperties`, `laserMaterialInteraction`)
+- Reference Settings properties (`machine_settings`, `thermalProperties`, `laserMaterialInteraction`)
 - Focus on "what this tool helps you do" not "what this material is"
 
 ### Directory Structure
@@ -151,7 +151,7 @@ Before generating, research and identify:
 
 **Shows**: Table of recommended parameters (power, pulse width, repetition rate, scan speed)
 
-**Generation focus**: Reference `machineSettings` from YAML. Highlight parameters critical for this specific material.
+**Generation focus**: Reference `machine_settings` from YAML. Highlight parameters critical for this specific material.
 
 ---
 
@@ -199,7 +199,7 @@ Before generating, research and identify:
 
 **Shows**: Material Challenges tab + Troubleshooting tab
 
-**Generation focus**: Reference `material_challenges` and `common_issues`. Mention 1-2 challenges unique to this material (charring, oxide reformation, melting).
+**Generation focus**: Reference `challenges` and `common_issues`. Mention 1-2 challenges unique to this material (charring, oxide reformation, melting).
 
 ---
 
@@ -242,7 +242,7 @@ Before generating, research and identify:
 | Source | Location | Fields Used |
 |--------|----------|-------------|
 | Materials YAML | `frontmatter/materials/{material}-laser-cleaning.yaml` | `material_characteristics`, `laser_material_interaction` |
-| Settings YAML | `frontmatter/settings/{material}-settings.yaml` | `machineSettings`, `thermalProperties`, `laserMaterialInteraction`, `material_challenges`, `common_issues` |
+| Settings YAML | `frontmatter/settings/{material}-settings.yaml` | `machine_settings`, `thermalProperties`, `laserMaterialInteraction`, `challenges`, `common_issues` |
 | Category knowledge | Domain expertise | Use cases, industry concerns, common contaminants |
 
 ### Material-Specific Research
@@ -259,7 +259,7 @@ For each material, identify:
 
 ### YAML Location
 
-Insert `component_summaries` in Settings YAML after `laserMaterialInteraction`, before `material_challenges`:
+Insert `component_summaries` in Settings YAML after `laserMaterialInteraction`, before `challenges`:
 
 ```yaml
 # {material}-settings.yaml
@@ -280,7 +280,7 @@ component_summaries:           # ← INSERT HERE
   
   # ... all 11 components ...
 
-material_challenges:
+challenges:
   # ... existing data ...
 ```
 

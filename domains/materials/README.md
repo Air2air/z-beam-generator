@@ -59,7 +59,7 @@ Each material in `data.yaml` follows the GROUPED structure defined in `data/fron
 - **Identification**: name, category, subcategory, title, subtitle
 - **Content**: author, micro
 - **Assets**: images (hero, micro)
-- **Standards**: regulatoryStandards
+- **Standards**: regulatory_standards
 - **FAQ**: Frequently asked questions
 
 ### Material Properties (GROUPED Structure)
@@ -79,7 +79,7 @@ Properties are organized into two category groups:
 
 Each group contains:
 ```yaml
-materialProperties:
+properties:
   material_characteristics:
     label: "Material Characteristics"
     description: "Physical, mechanical, and chemical properties"

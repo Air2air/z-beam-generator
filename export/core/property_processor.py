@@ -136,8 +136,8 @@ class PropertyProcessor:
             
         Returns:
             Tuple of (quantitative_properties, qualitative_properties)
-            - quantitative_properties: Properties with min/max ranges for materialProperties
-            - qualitative_properties: Properties with allowedValues for materialCharacteristics
+            - quantitative_properties: Properties with min/max ranges for properties
+            - qualitative_properties: Properties with allowedValues for characteristics
         """
         quantitative = {}
         qualitative_by_category = {}
@@ -165,7 +165,7 @@ class PropertyProcessor:
             
             for prop_name, prop_data in properties.items():
                 if is_qualitative_property(prop_name):
-                    # This is a qualitative property - move to materialCharacteristics
+                    # This is a qualitative property - move to characteristics
                     qual_props[prop_name] = prop_data
                     
                     # Add allowedValues if defined
@@ -175,7 +175,7 @@ class PropertyProcessor:
                             prop_data['allowedValues'] = qual_def.allowed_values
                             prop_data['unit'] = qual_def.unit
                 else:
-                    # Quantitative property - stays in materialProperties
+                    # Quantitative property - stays in properties
                     quant_props[prop_name] = prop_data
             
             # Keep category in quantitative if it has any quantitative properties

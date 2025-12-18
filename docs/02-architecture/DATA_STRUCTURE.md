@@ -45,7 +45,7 @@ category_metadata:
     description: Wood materials for laser cleaning applications
   # ... 7 more categories
 
-machineSettingsRanges:
+machine_settingsRanges:
   powerRange:
     min: 1.0
     max: 120
@@ -68,7 +68,7 @@ materials:
     mechanicalProperties: {...}
     thermalProperties: {...}
     electricalProperties: {...}
-    material_metadata: {...}
+    metadata: {...}
     author: {...}
   
   Copper:
@@ -120,7 +120,7 @@ MaterialName:
     resistivity: 2.65e-8
     # ... more electrical properties
   
-  material_metadata:
+  metadata:
     common_name: "Aluminum"
     alternative_names: ["Aluminium"]
     category: "metal"
@@ -285,7 +285,7 @@ data = load_materials()
 # Iterate all materials
 for name, material_data in data['materials'].items():
     print(f"{name}: {material_data['category']}")
-    print(f"  Density: {material_data['materialProperties']['density']}")
+    print(f"  Density: {material_data['properties']['density']}")
 ```
 
 ## Category System

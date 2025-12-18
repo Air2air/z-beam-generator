@@ -169,24 +169,24 @@ class MaterialContent(ContentSchema):
     """Material-specific content schema"""
     
     # Material-specific fields
-    materialProperties: Dict[str, Dict]
-    machineSettings: Dict[str, Dict]
+    properties: Dict[str, Dict]
+    machine_settings: Dict[str, Dict]
     applications: List[str]
-    regulatoryStandards: List[Dict]
+    regulatory_standards: List[Dict]
     environmentalImpact: List[str]
     outcomeMetrics: List[str]
-    materialCharacteristics: List[str]
+    characteristics: List[str]
     
     def get_required_fields(self) -> List[str]:
         return [
-            'name', 'category', 'materialProperties', 
-            'machineSettings', 'applications'
+            'name', 'category', 'properties', 
+            'machine_settings', 'applications'
         ]
     
     def get_researchable_fields(self) -> Dict[str, FieldResearchSpec]:
         return {
-            'materialProperties': FieldResearchSpec(
-                field_name='materialProperties',
+            'properties': FieldResearchSpec(
+                field_name='properties',
                 field_type='property',
                 data_type='dict',
                 research_method='web_search',
@@ -633,7 +633,7 @@ existing_data = {
     'name': 'Steel',
     'category': 'metal',
     'subcategory': 'ferrous',
-    'materialProperties': {...},  # Partial data
+    'properties': {...},  # Partial data
     # Missing: applications, standards, etc.
 }
 

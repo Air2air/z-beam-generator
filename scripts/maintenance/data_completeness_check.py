@@ -17,7 +17,7 @@ from typing import Dict, List, Tuple
 # TIER DEFINITIONS
 FIELD_TIERS = {
     'critical_ai_content': {
-        'materials': ['material_description', 'micro', 'faq'],
+        'materials': ['description', 'micro', 'faq'],
         'settings': ['settings_description'],
         'description': 'AI-generated text content',
         'required': True,
@@ -33,8 +33,8 @@ FIELD_TIERS = {
         'target': 100.0
     },
     'technical_research': {
-        'materials': ['materialProperties', 'materialCharacteristics', 'regulatoryStandards'],
-        'settings': ['machineSettings', 'material_challenges'],
+        'materials': ['properties', 'characteristics', 'regulatory_standards'],
+        'settings': ['machine_settings', 'challenges'],
         'description': 'Technical data from research',
         'required': False,
         'blocking': False,
@@ -93,11 +93,11 @@ def check_materials_completeness() -> Dict:
                 value = mat_data.get(field)
                 
                 # Determine field type
-                if field in ['material_description', 'faq', 'name', 'category', 'title']:
+                if field in ['description', 'faq', 'name', 'category', 'title']:
                     field_type = 'string'
-                elif field in ['micro', 'author', 'images', 'materialProperties']:
+                elif field in ['micro', 'author', 'images', 'properties']:
                     field_type = 'dict'
-                elif field in ['applications', 'materialCharacteristics', 'regulatoryStandards', 'breadcrumb']:
+                elif field in ['applications', 'characteristics', 'regulatory_standards', 'breadcrumb']:
                     field_type = 'list'
                 else:
                     field_type = 'string'
@@ -193,7 +193,7 @@ def check_settings_completeness() -> Dict:
                 # Determine field type
                 if field in ['settings_description', 'name', 'category', 'title']:
                     field_type = 'string'
-                elif field in ['author', 'images', 'machineSettings', 'material_challenges']:
+                elif field in ['author', 'images', 'machine_settings', 'challenges']:
                     field_type = 'dict'
                 elif field in ['breadcrumb']:
                     field_type = 'list'

@@ -8,7 +8,7 @@
 
 ### **Priority 1: Relaxed Domain Prompt** ✅ COMPLETE
 
-**File**: `domains/materials/prompts/material_description.txt`
+**File**: `domains/materials/prompts/description.txt`
 
 **Changes**:
 ```diff

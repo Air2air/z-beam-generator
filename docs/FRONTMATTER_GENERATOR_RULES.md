@@ -140,7 +140,7 @@ name: Material Name
 category: category-name
 subcategory: subcategory-name
 title: Material Name Laser Cleaning
-material_description: "One-sentence description focusing on laser cleaning advantages (50-150 words)"
+description: "One-sentence description focusing on laser cleaning advantages (50-150 words)"
 
 author:
   persona_file: usa_persona.yaml
@@ -176,7 +176,7 @@ images:
     alt: "Material Name surface at 500x magnification showing laser cleaning results"
     url: /images/material/material-name-micro.jpg
 
-# ... rest of material-specific fields (materialProperties, machineSettings, etc.)
+# ... rest of material-specific fields (properties, machine_settings, etc.)
 ```
 
 ### **Contaminants Frontmatter Template**
@@ -276,7 +276,7 @@ images:
     alt: "Material Name laser cleaning parameter visualization"
     url: /images/settings/material-name-settings-hero.jpg
 
-# ... rest of settings-specific fields (machineSettings, parameter_relationships, etc.)
+# ... rest of settings-specific fields (machine_settings, parameter_relationships, etc.)
 ```
 
 ---
@@ -303,7 +303,7 @@ Before generating frontmatter, verify:
 ### **Settings Validation** (Settings Pages Only)
 - [ ] NO `micro` field (settings don't need before/after descriptions)
 - [ ] `materialRef` field points to corresponding material YAML file
-- [ ] `machineSettings` or `components.parameter_relationships` exists
+- [ ] `machine_settings` or `components.parameter_relationships` exists
 
 ---
 

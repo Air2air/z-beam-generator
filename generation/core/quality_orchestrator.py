@@ -58,7 +58,7 @@ class QualityOrchestrator:
         >>> scores = orchestrator.evaluate(content, {
         ...     'domain': 'materials',
         ...     'item_name': 'Aluminum',
-        ...     'component_type': 'material_description'
+        ...     'component_type': 'description'
         ... })
     """
     
@@ -139,7 +139,7 @@ class QualityOrchestrator:
             context: Domain-specific context:
                 - 'domain': 'materials' | 'settings' | 'contaminants' | 'compounds'
                 - 'item_name': Name of item being evaluated
-                - 'component_type': Type of content (material_description, micro, etc.)
+                - 'component_type': Type of content (description, micro, etc.)
                 - 'author_id': Author persona ID
                 - Any additional custom fields
         

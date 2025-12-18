@@ -217,7 +217,7 @@ frontmatter/materials/{material-slug}-laser-cleaning.yaml
 
 ### Placement in File
 
-Add `serviceOffering` after existing fields like `machineSettings` and `faq`:
+Add `serviceOffering` after existing fields like `machine_settings` and `faq`:
 
 ```yaml
 title: "Aluminum Laser Cleaning"
@@ -227,7 +227,7 @@ subcategory: "Non-Ferrous"
 
 # ... existing fields ...
 
-machineSettings:
+machine_settings:
   # ... existing settings ...
 
 faq:
@@ -284,6 +284,6 @@ Expected output:
 
 1. **DO NOT hardcode prices** - always reference `SITE_CONFIG.pricing`
 2. **Use material properties** to determine difficulty and estimated hours
-3. **Pull contaminants** from existing `machineSettings.contaminantType` if available
-4. **Notes field** should reference relevant `machineSettings` parameters (fluence limits, power settings)
+3. **Pull contaminants** from existing `machine_settings.contaminantType` if available
+4. **Notes field** should reference relevant `machine_settings` parameters (fluence limits, power settings)
 5. **All materials get `professionalCleaning`** type unless specifically equipment-focused

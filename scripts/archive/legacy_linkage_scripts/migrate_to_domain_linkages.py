@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Migrate Contaminants.yaml to domain_linkages structure.
+Migrate Contaminants.yaml to relationships structure.
 
 This script migrates legacy linkage fields to the new standardized format:
-- valid_materials → domain_linkages.related_materials (with id/title/url/image)
-- eeat.citations → domain_linkages.regulatory_compliance (with id/title/url/image)
-- fumes_generated → domain_linkages.related_compounds (with id/title/url/image)
-- ppe_requirements → domain_linkages.ppe_requirements (with id/title/url/image)
+- valid_materials → relationships.related_materials (with id/title/url/image)
+- eeat.citations → relationships.regulatory_compliance (with id/title/url/image)
+- fumes_generated → relationships.related_compounds (with id/title/url/image)
+- ppe_requirements → relationships.ppe_requirements (with id/title/url/image)
 
 Author: GitHub Copilot
 Date: December 15, 2025
@@ -20,7 +20,7 @@ import re
 
 
 class DomainLinkagesMigrator:
-    """Migrates contaminants to use domain_linkages structure."""
+    """Migrates contaminants to use relationships structure."""
     
     def __init__(self, dry_run: bool = True):
         self.dry_run = dry_run
@@ -285,8 +285,8 @@ class DomainLinkagesMigrator:
         }
     
     def migrate_contaminant(self, contaminant_id: str, contaminant_data: Dict) -> Dict:
-        """Migrate a single contaminant to domain_linkages format."""
-        domain_linkages = {
+        """Migrate a single contaminant to relationships format."""
+        relationships = {
             'related_materials': [],
             'related_compounds': [],
             'regulatory_compliance': [],
@@ -298,7 +298,7 @@ class DomainLinkagesMigrator:
             for material_name in contaminant_data['valid_materials']:
                 linkage = self._migrate_material_linkage(material_name)
                 if linkage:
-                    domain_linkages['related_materials'].append(linkage)
+                    relationships['related_materials'].append(linkage)
                     self.stats['materials_migrated'] += 1
         
         # Migrate fumes_generated to related_compounds
@@ -306,7 +306,7 @@ class DomainLinkagesMigrator:
             for compound_data in contaminant_data['fumes_generated']:
                 linkage = self._migrate_compound_linkage(compound_data)
                 if linkage:
-                    domain_linkages['related_compounds'].append(linkage)
+                    relationships['related_compounds'].append(linkage)
                     self.stats['compounds_migrated'] += 1
                     
                     # Count removed exposure limits
@@ -318,7 +318,7 @@ class DomainLinkagesMigrator:
             for citation in contaminant_data['eeat']['citations']:
                 linkage = self._migrate_standard_linkage(citation)
                 if linkage:
-                    domain_linkages['regulatory_compliance'].append(linkage)
+                    relationships['regulatory_compliance'].append(linkage)
                     self.stats['standards_migrated'] += 1
         
         # Migrate ppe_requirements
@@ -326,12 +326,12 @@ class DomainLinkagesMigrator:
             for ppe_key, ppe_value in contaminant_data['ppe_requirements'].items():
                 linkage = self._migrate_ppe_linkage(ppe_key, ppe_value)
                 if linkage:
-                    domain_linkages['ppe_requirements'].append(linkage)
+                    relationships['ppe_requirements'].append(linkage)
                     self.stats['ppe_migrated'] += 1
         
-        # Add domain_linkages to contaminant data
+        # Add relationships to contaminant data
         migrated_data = contaminant_data.copy()
-        migrated_data['domain_linkages'] = domain_linkages
+        migrated_data['relationships'] = relationships
         
         self.stats['contaminants_processed'] += 1
         
@@ -400,8 +400,8 @@ class DomainLinkagesMigrator:
             # Find a good example with multiple linkage types
             example_id = None
             for cid, cdata in migrated_contaminants.items():
-                if 'domain_linkages' in cdata:
-                    dl = cdata['domain_linkages']
+                if 'relationships' in cdata:
+                    dl = cdata['relationships']
                     if (len(dl.get('related_materials', [])) > 0 and
                         len(dl.get('related_compounds', [])) > 0 and
                         len(dl.get('regulatory_compliance', [])) > 0 and
@@ -414,12 +414,12 @@ class DomainLinkagesMigrator:
             
             example = migrated_contaminants[example_id]
             print(f"ID: {example_id}")
-            print(yaml.dump({'domain_linkages': example.get('domain_linkages', {})}, 
+            print(yaml.dump({'relationships': example.get('relationships', {})}, 
                           default_flow_style=False, sort_keys=False))
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Migrate Contaminants.yaml to domain_linkages format')
+    parser = argparse.ArgumentParser(description='Migrate Contaminants.yaml to relationships format')
     parser.add_argument('--apply', action='store_true', help='Apply changes (default is dry-run)')
     args = parser.parse_args()
     

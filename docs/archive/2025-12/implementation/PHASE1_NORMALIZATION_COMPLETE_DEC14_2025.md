@@ -46,7 +46,7 @@ Successfully normalized contaminant frontmatter structure to match materials and
 9. **author** - Full 18-field author block
 10. **_metadata** - Voice tracking (voice_id, voice_version)
 11. **title** - Page title
-12. **{domain}_description** - Main content (material_description, settings_description, contamination_description)
+12. **{domain}_description** - Main content (description, settings_description, contamination_description)
 13. **breadcrumb** - Navigation structure
 14. **images** - Hero and micro image references
 
@@ -217,10 +217,10 @@ These differences are **intentional** and reflect domain-specific requirements:
 
 **Settings Domain**:
 - Position 7: `active` flag (boolean) - controls UI visibility
-- Additional fields: `machineSettings`, `thermalProperties`
+- Additional fields: `machine_settings`, `thermalProperties`
 
 **Materials Domain**:
-- Additional fields: `faq`, `regulatoryStandards`, `relatedMaterials`
+- Additional fields: `faq`, `regulatory_standards`, `relatedMaterials`
 
 **Contaminants Domain**:
 - Additional fields: `laser_properties`, `removal_mechanisms`, `before_after_comparison`
@@ -270,7 +270,7 @@ These differences are **intentional** and reflect domain-specific requirements:
 The 8% difference is **intentional** and represents:
 1. Domain-specific fields (settings.active, materials.faq, contaminants.laser_properties)
 2. Author field variation (alumniOf present/absent based on registry data)
-3. Content field naming variation (material_description vs settings_description vs contamination_description)
+3. Content field naming variation (description vs settings_description vs contamination_description)
 
 These variations are **necessary** for domain-specific functionality and do not indicate inconsistency.
 
@@ -282,7 +282,7 @@ This is **correct behavior** - the registry provides complete author data, and s
 
 ### Content Field Naming Pattern
 Follows convention: `{domain}_description`
-- ✅ material_description
+- ✅ description
 - ✅ settings_description
 - ✅ contamination_description
 

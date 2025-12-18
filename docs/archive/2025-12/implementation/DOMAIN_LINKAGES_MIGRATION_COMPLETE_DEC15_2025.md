@@ -3,7 +3,7 @@
 **Date**: December 15, 2025  
 **Status**: ✅ COMPLETE  
 **Migration Scripts**: 
-- `scripts/data/migrate_to_domain_linkages.py` (Contaminants)
+- `scripts/data/migrate_to_relationships.py` (Contaminants)
 - `scripts/data/migrate_all_domains_to_linkages.py` (Materials, Settings, Compounds)
 
 ---
@@ -12,10 +12,10 @@
 
 ### Phase 1: Contaminants ✅ COMPLETE
 
-**Script**: `migrate_to_domain_linkages.py --apply`
+**Script**: `migrate_to_relationships.py --apply`
 
 **Results**:
-- ✅ **98 contaminants** migrated to `domain_linkages` structure
+- ✅ **98 contaminants** migrated to `relationships` structure
 - ✅ **1,063 material linkages** created (valid_materials → related_materials)
 - ✅ **20 regulatory standard linkages** created (eeat.citations → regulatory_compliance)
 - ✅ **0 compound linkages** (fumes_generated field not present yet)
@@ -24,10 +24,10 @@
 **Fields Migrated**:
 ```yaml
 # Legacy format → New format
-valid_materials → domain_linkages.related_materials
-eeat.citations → domain_linkages.regulatory_compliance
-fumes_generated → domain_linkages.related_compounds (ready for future)
-ppe_requirements → domain_linkages.ppe_requirements (ready for future)
+valid_materials → relationships.related_materials
+eeat.citations → relationships.regulatory_compliance
+fumes_generated → relationships.related_compounds (ready for future)
+ppe_requirements → relationships.ppe_requirements (ready for future)
 ```
 
 **Image Paths**: All material linkages now use **hero image paths**
@@ -52,7 +52,7 @@ ppe_requirements → domain_linkages.ppe_requirements (ready for future)
 ```yaml
 # Contaminant → Material (original)
 adhesive-residue:
-  domain_linkages:
+  relationships:
     related_materials:
       - id: Aluminum
         title: Aluminum
@@ -61,7 +61,7 @@ adhesive-residue:
 
 # Material → Contaminant (new, bidirectional)
 Aluminum:
-  domain_linkages:
+  relationships:
     related_contaminants:
       - id: adhesive-residue
         title: Adhesive Residue / Tape Marks
@@ -99,13 +99,13 @@ Aluminum:
 
 **Status**: Compounds are ready for linkages once:
 1. Contaminants have `fumes_generated` field populated
-2. OR contaminants have `related_compounds` in their domain_linkages
+2. OR contaminants have `related_compounds` in their relationships
 
 **Bidirectional Relationship** (when fumes_generated populated):
 ```yaml
 # Contaminant → Compound (original)
 adhesive-residue:
-  domain_linkages:
+  relationships:
     related_compounds:
       - id: formaldehyde
         title: Formaldehyde
@@ -116,7 +116,7 @@ adhesive-residue:
 
 # Compound → Contaminant (new, bidirectional)
 formaldehyde:
-  domain_linkages:
+  relationships:
     produced_by_contaminants:
       - id: adhesive-residue
         title: Adhesive Residue / Tape Marks
@@ -172,10 +172,10 @@ image: /images/ppe/ppe-respiratory-full-face.jpg  # Product image
 ## Data Quality Summary
 
 ### ✅ Fully Implemented
-- **Contaminants**: 98/98 with domain_linkages (100%)
-- **Materials**: 153/153 with domain_linkages (100%)
-- **Settings**: 169/169 with domain_linkages structure (100%)
-- **Compounds**: 20/20 with domain_linkages structure (100%)
+- **Contaminants**: 98/98 with relationships (100%)
+- **Materials**: 153/153 with relationships (100%)
+- **Settings**: 169/169 with relationships structure (100%)
+- **Compounds**: 20/20 with relationships structure (100%)
 
 ### ✅ Bidirectional Relationships Working
 - **Contaminant ↔ Material**: COMPLETE
@@ -213,13 +213,13 @@ image: /images/ppe/ppe-respiratory-full-face.jpg  # Product image
 ## Files Modified
 
 ### Data Files (4)
-1. `data/contaminants/Contaminants.yaml` - Added domain_linkages to 98 entries
-2. `data/materials/Materials.yaml` - Added domain_linkages to 153 entries
-3. `data/settings/Settings.yaml` - Added domain_linkages structure to 169 entries
-4. `data/compounds/Compounds.yaml` - Added domain_linkages structure to 20 entries
+1. `data/contaminants/Contaminants.yaml` - Added relationships to 98 entries
+2. `data/materials/Materials.yaml` - Added relationships to 153 entries
+3. `data/settings/Settings.yaml` - Added relationships structure to 169 entries
+4. `data/compounds/Compounds.yaml` - Added relationships structure to 20 entries
 
 ### Scripts Created (2)
-1. `scripts/data/migrate_to_domain_linkages.py` - Contaminants migration
+1. `scripts/data/migrate_to_relationships.py` - Contaminants migration
 2. `scripts/data/migrate_all_domains_to_linkages.py` - Other domains migration
 
 ### Documentation (1)
@@ -231,7 +231,7 @@ image: /images/ppe/ppe-respiratory-full-face.jpg  # Product image
 
 ```bash
 # Contaminants (already applied)
-python3 scripts/data/migrate_to_domain_linkages.py --apply
+python3 scripts/data/migrate_to_relationships.py --apply
 
 # All other domains (already applied)
 python3 scripts/data/migrate_all_domains_to_linkages.py --apply
@@ -244,10 +244,10 @@ python3 scripts/data/migrate_all_domains_to_linkages.py --apply
 
 ## Success Criteria ✅
 
-- [x] All contaminants have domain_linkages (98/98)
-- [x] All materials have domain_linkages (153/153)
-- [x] All settings have domain_linkages structure (169/169)
-- [x] All compounds have domain_linkages structure (20/20)
+- [x] All contaminants have relationships (98/98)
+- [x] All materials have relationships (153/153)
+- [x] All settings have relationships structure (169/169)
+- [x] All compounds have relationships structure (20/20)
 - [x] Material→Contaminant bidirectional relationships working (899 links)
 - [x] Contaminant→Material relationships preserved (1,063 links)
 - [x] Hero image paths used for material/setting cards

@@ -1,12 +1,12 @@
 """
-PropertiesModule - Extract materialProperties with ranges from Categories.yaml
+PropertiesModule - Extract properties with ranges from Categories.yaml
 
-Handles: materialProperties dictionary with min/max ranges
+Handles: properties dictionary with min/max ranges
 
 Architecture:
 - Extract properties from Materials.yaml
 - Apply min/max ranges from Categories.yaml
-- Separate qualitative properties to materialCharacteristics
+- Separate qualitative properties to characteristics
 - Fail-fast if category ranges not defined
 """
 
@@ -17,7 +17,7 @@ from pathlib import Path
 
 
 class PropertiesModule:
-    """Extract and format materialProperties for frontmatter"""
+    """Extract and format properties for frontmatter"""
     
     def __init__(self, categories_yaml_path: str = "data/Categories.yaml"):
         """
@@ -48,7 +48,7 @@ class PropertiesModule:
     
     def generate(self, material_name: str, material_data: Dict) -> Dict:
         """
-        Extract materialProperties with ranges
+        Extract properties with ranges
         
         Args:
             material_name: Name of material
@@ -69,11 +69,11 @@ class PropertiesModule:
             raise ValueError(f"Category missing for {material_name}")
         
         # Get properties from material data
-        if 'materialProperties' not in material_data:
-            self.logger.warning(f"No materialProperties for {material_name}")
+        if 'properties' not in material_data:
+            self.logger.warning(f"No properties for {material_name}")
             return {}
         
-        properties = material_data['materialProperties']
+        properties = material_data['properties']
         
         # Apply ranges from Categories.yaml
         properties_with_ranges = self._apply_ranges(
@@ -108,7 +108,7 @@ class PropertiesModule:
                 f"(material: {material_name})"
             )
         
-        category_props = categories[category].get('materialProperties', {})
+        category_props = categories[category].get('properties', {})
         
         # Apply ranges to each property
         result = {}

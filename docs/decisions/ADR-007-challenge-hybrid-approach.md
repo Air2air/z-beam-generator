@@ -14,7 +14,7 @@ Material challenges (e.g., "High reflectivity", "Thermal shock and microcracking
 - Top challenges appear in 42 materials (27% reuse rate)
 - Challenge details vary by material (e.g., reflectivity ranges: 60-95% for aluminum vs 40-70% for ceramics)
 
-**Question**: Should `material_challenges` be:
+**Question**: Should `challenges` be:
 - **Option A**: Separate domain with independent entities (like contaminants)?
 - **Option B**: Embedded attributes with no standardization?
 - **Option C**: Hybrid approach with embedded data + standardized IDs?
@@ -51,7 +51,7 @@ Material challenges (e.g., "High reflectivity", "Thermal shock and microcracking
 
 **Data Structure**:
 ```yaml
-material_challenges:
+challenges:
   thermal_management:
   - challenge: High reflectivity              # Human-readable name
     challenge_id: high_reflectivity           # ← Standardized query ID
@@ -125,7 +125,7 @@ challenges:
 
 **Structure**:
 ```yaml
-material_challenges:
+challenges:
   thermal_management:
   - challenge: High reflectivity  # No challenge_id
     severity: high

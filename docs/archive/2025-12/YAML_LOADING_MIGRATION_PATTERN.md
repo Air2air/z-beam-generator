@@ -211,7 +211,7 @@ def load_settings_for_material(material_name):
         return {}
     
     settings = data.get('settings', {})
-    return settings.get(material_name, {}).get('machineSettings', {})
+    return settings.get(material_name, {}).get('machine_settings', {})
 ```
 
 **After (5 lines)**:

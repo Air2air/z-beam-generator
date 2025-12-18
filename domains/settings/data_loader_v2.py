@@ -81,7 +81,7 @@ class SettingsDataLoader(BaseDataLoader):
         Load Settings.yaml.
         
         Args:
-            extract_machine_settings: If True, extract machineSettings from nested structure
+            extract_machine_settings: If True, extract machine_settings from nested structure
                                      If False, return raw settings structure
         
         Returns:
@@ -91,7 +91,7 @@ class SettingsDataLoader(BaseDataLoader):
                 Format: { "Aluminum": { "powerRange": {...}, "wavelength": {...}, ... }, ... }
             
             If extract_machine_settings=False:
-                Format: { "settings": { "Aluminum": { "machineSettings": {...}, ... }, ... } }
+                Format: { "settings": { "Aluminum": { "machine_settings": {...}, ... }, ... } }
         
         Raises:
             ConfigurationError: If file cannot be loaded
@@ -106,14 +106,14 @@ class SettingsDataLoader(BaseDataLoader):
         data = self._load_yaml_file(self.settings_file)
         
         if extract_machine_settings:
-            # Extract machineSettings from nested structure
-            # Settings.yaml has: settings.MaterialName.machineSettings.{params}
+            # Extract machine_settings from nested structure
+            # Settings.yaml has: settings.MaterialName.machine_settings.{params}
             # We return: { MaterialName: {params} }
             settings = data.get('settings', {})
             extracted = {}
             for material_name, material_settings in settings.items():
-                if 'machineSettings' in material_settings:
-                    extracted[material_name] = material_settings['machineSettings']
+                if 'machine_settings' in material_settings:
+                    extracted[material_name] = material_settings['machine_settings']
             
             result = extracted
         else:

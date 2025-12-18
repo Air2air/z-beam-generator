@@ -222,7 +222,7 @@ class TemplateService:
         Args:
             property_data: Property data dict
             property_name: Name of the property
-            property_type: Type ('materialProperties' or 'machineSettings')
+            property_type: Type ('properties' or 'machine_settings')
             
         Returns:
             Enhanced property data (currently returns original)

@@ -148,7 +148,7 @@ link = f"../contaminants/{slug}.md"
 ### ⚠️ Materials Domain (READY but NOT USED)
 - **Status**: Infrastructure ready, not currently activated
 - **Text fields**: 
-  - `material_description` (1-2 sentences)
+  - `description` (1-2 sentences)
   - `micro.before` + `micro.after` (1 sentence each)
   - `faq` (multiple Q&A pairs)
 - **Potential links**:
@@ -224,7 +224,7 @@ if domain != 'materials':
 
 ### Phase 2: Expand to All Text Fields (Immediate)
 **Current coverage:**
-- ✅ `description` (material_description for materials, description for contaminants)
+- ✅ `description` (description for materials, description for contaminants)
 - ❌ `micro.before` (dict field, currently skipped)
 - ❌ `micro.after` (dict field, currently skipped)
 - ❌ `faq` (list field, currently skipped)
@@ -326,7 +326,7 @@ with open('frontmatter/contaminants/aluminum-oxidation-contamination.yaml') as f
 ### Test 2: Enable Materials Cross-Linking
 ```bash
 # Generate material description with cross-linking enabled
-python3 run.py --material "Steel" --component material_description
+python3 run.py --material "Steel" --component description
 
 # Check for links to other materials/contaminants
 grep -o '\[.*\](.*\.md)' frontmatter/materials/steel-laser-cleaning.yaml
@@ -420,7 +420,7 @@ cross_linking:
   # Apply to these content types
   content_types:
     - description
-    - material_description
+    - description
     - micro_before
     - micro_after
     - faq_answers

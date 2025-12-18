@@ -63,9 +63,9 @@ def run_data_validation(report_file = None) -> bool:
                     if category in materials_section:
                         for item in materials_section[category]['items']:
                             if item['name'] == material_name:
-                                # Ensure materialProperties exists with flat structure
-                                if 'materialProperties' not in item:
-                                    item['materialProperties'] = {
+                                # Ensure properties exists with flat structure
+                                if 'properties' not in item:
+                                    item['properties'] = {
                                         'material_characteristics': {'label': 'Material Characteristics'},
                                         'laser_material_interaction': {'label': 'Laser-Material Interaction'}
                                     }
@@ -73,7 +73,7 @@ def run_data_validation(report_file = None) -> bool:
                                 # Determine which category this property belongs to
                                 # For now, put physical properties in material_characteristics
                                 target_category = 'material_characteristics'
-                                mat_props = item['materialProperties']
+                                mat_props = item['properties']
                                 
                                 if target_category not in mat_props:
                                     mat_props[target_category] = {'label': 'Material Characteristics'}
@@ -131,9 +131,9 @@ def run_data_validation(report_file = None) -> bool:
                 for material_item in materials_in_category:
                     material_name = material_item.get('name')
                     
-                    # Ensure materialProperties structure exists (flat, per frontmatter_template.yaml)
-                    if 'materialProperties' not in material_item:
-                        material_item['materialProperties'] = {
+                    # Ensure properties structure exists (flat, per frontmatter_template.yaml)
+                    if 'properties' not in material_item:
+                        material_item['properties'] = {
                             'material_characteristics': {'label': 'Material Characteristics'},
                             'laser_material_interaction': {'label': 'Laser-Material Interaction'}
                         }
@@ -141,7 +141,7 @@ def run_data_validation(report_file = None) -> bool:
                     
                     # Determine target category group for this property (simplified - use material_characteristics)
                     target_group = 'material_characteristics'
-                    mat_props = material_item['materialProperties']
+                    mat_props = material_item['properties']
                     if target_group not in mat_props:
                         mat_props[target_group] = {'label': 'Material Characteristics'}
                     
@@ -226,8 +226,8 @@ def run_data_validation(report_file = None) -> bool:
                     if category in materials_section:
                         for item in materials_section[category]['items']:
                             if item['name'] == material_name:
-                                # Extract from materialProperties (flat structure)
-                                mat_props = item.get('materialProperties', {})
+                                # Extract from properties (flat structure)
+                                mat_props = item.get('properties', {})
                                 for cat in ['material_characteristics', 'laser_material_interaction']:
                                     cat_data = mat_props.get(cat, {})
                                     if isinstance(cat_data, dict):
@@ -243,7 +243,7 @@ def run_data_validation(report_file = None) -> bool:
                         frontmatter_data = yaml.safe_load(f)
                     
                     # Check if updates are needed
-                    current_properties = frontmatter_data.get('materialProperties', {})
+                    current_properties = frontmatter_data.get('properties', {})
                     needs_update = False
                     
                     # Handle thermal destruction migration: meltingPoint → thermalDestructionPoint
@@ -286,25 +286,25 @@ def run_data_validation(report_file = None) -> bool:
                                 
                                 # Update the frontmatter
                                 if isinstance(current_properties[prop_name], dict):
-                                    frontmatter_data['materialProperties'][prop_name]['value'] = updated_actual
+                                    frontmatter_data['properties'][prop_name]['value'] = updated_actual
                                 else:
-                                    frontmatter_data['materialProperties'][prop_name] = updated_actual
+                                    frontmatter_data['properties'][prop_name] = updated_actual
                         else:
                             # Add new property from Materials.yaml
                             needs_update = True
                             new_val = prop_value.get('value') if isinstance(prop_value, dict) else prop_value
                             print(f"   ➕ Adding {material_name}.{prop_name}: {new_val}")
-                            frontmatter_data['materialProperties'][prop_name] = prop_value
+                            frontmatter_data['properties'][prop_name] = prop_value
                     
                     # Apply thermal destruction migration
                     if thermal_destruction_migration:
                         for thermal_prop, thermal_value in thermal_destruction_migration.items():
                             if thermal_prop == '_remove_meltingPoint':
-                                if 'meltingPoint' in frontmatter_data['materialProperties']:
-                                    del frontmatter_data['materialProperties']['meltingPoint']
+                                if 'meltingPoint' in frontmatter_data['properties']:
+                                    del frontmatter_data['properties']['meltingPoint']
                                     print(f"     ❌ Removed obsolete meltingPoint property")
                             else:
-                                frontmatter_data['materialProperties'][thermal_prop] = thermal_value
+                                frontmatter_data['properties'][thermal_prop] = thermal_value
                     
                     # Save updated frontmatter if needed
                     if needs_update:

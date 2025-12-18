@@ -1,28 +1,24 @@
 #!/usr/bin/env python3
 """
-Migrate compound data from fumes_generated to domain_linkages.produces_compounds
+Migrate compound data from fumes_generated to relationships.produces_compounds
 Adds concentration_range and hazard_class fields
 Removes legacy fumes_generated array
 """
 
-import yaml
 import sys
 from pathlib import Path
 from typing import Dict, List, Any
 
+# Use shared YAML utilities
+from shared.utils.file_io import read_yaml_file, write_yaml_file
+
 def load_yaml(file_path: Path) -> Dict:
     """Load YAML file with safe loader"""
-    with open(file_path, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+    return read_yaml_file(file_path)
 
 def save_yaml(file_path: Path, data: Dict) -> None:
     """Save YAML file with consistent formatting"""
-    with open(file_path, 'w', encoding='utf-8') as f:
-        yaml.dump(data, f, 
-                  default_flow_style=False,
-                  allow_unicode=True,
-                  sort_keys=False,
-                  indent=2)
+    write_yaml_file(file_path, data, sort_keys=False)
 
 def normalize_compound_name(name: str) -> str:
     """Normalize compound names for matching"""
@@ -46,7 +42,7 @@ def migrate_frontmatter(file_path: Path, dry_run: bool = False) -> Dict[str, Any
     }
     
     # Check if migration needed
-    if 'domain_linkages' not in data or 'produces_compounds' not in data['domain_linkages']:
+    if 'relationships' not in data or 'produces_compounds' not in data['relationships']:
         print("  ⚠️  No produces_compounds found, skipping")
         return stats
     
@@ -65,7 +61,7 @@ def migrate_frontmatter(file_path: Path, dry_run: bool = False) -> Dict[str, Any
         fumes_lookup[normalized] = fume
     
     # Update each compound in produces_compounds
-    compounds = data['domain_linkages']['produces_compounds']
+    compounds = data['relationships']['produces_compounds']
     
     for compound in compounds:
         # Extract normalized name from title

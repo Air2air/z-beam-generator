@@ -8,7 +8,7 @@ The range functions in `StreamlinedFrontmatterGenerator` provide **materials sci
 ### Materials Science Research Approach
 Range functions now use comprehensive materials research data:
 - **Material Category Ranges**: Extracted from `Materials.yaml` `category_ranges` section
-- **Machine Settings Ranges**: Based on laser equipment specifications in `machineSettingsRanges`
+- **Machine Settings Ranges**: Based on laser equipment specifications in `machine_settingsRanges`
 - **Property-Specific**: Each material category (metal, ceramic, glass, etc.) has scientifically researched ranges
 - **Equipment-Based**: Machine settings use actual laser equipment operational limits
 
@@ -36,7 +36,7 @@ Every property must include:
 
 #### _generate_machine_settings_with_ranges() 
 - **Purpose**: Generate machine settings with equipment-based Min/Max ranges
-- **Data Source**: `Materials.yaml` `machineSettingsRanges` section
+- **Data Source**: `Materials.yaml` `machine_settingsRanges` section
 - **Range Logic**: Based on actual laser equipment specifications
 - **Settings Handled**:
   - powerRange (1W - 10,000W)
@@ -47,7 +47,7 @@ Every property must include:
 #### _get_research_based_range()
 - **Purpose**: Core research data lookup for accurate ranges
 - **Material Properties**: Maps to category_ranges by material type
-- **Machine Settings**: Maps to machineSettingsRanges
+- **Machine Settings**: Maps to machine_settingsRanges
 - **Fallback Protection**: Uses calculated ranges only if research data missing
 
 ### Integration with AI Generation
@@ -71,7 +71,7 @@ category_ranges:
   ceramic:
     density: {min: 1.8 g/cm³, max: 15.7 g/cm³}
     
-machineSettingsRanges:
+machine_settingsRanges:
   powerRange: {min: 1 W, max: 10000 W}
   wavelength: {min: 157 nm, max: 10600 nm}
 ```

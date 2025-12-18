@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Remove 'other' category from materialProperties and recategorize properties.
+Remove 'other' category from properties and recategorize properties.
 
 The 'other' category is NOT valid per frontmatter_template.yaml.
 Only 2 valid category groups exist:
@@ -41,7 +41,7 @@ def load_property_categorization() -> Dict[str, str]:
 
 
 def map_category_to_group(category_id: str) -> str:
-    """Map Categories.yaml category to materialProperties group name."""
+    """Map Categories.yaml category to properties group name."""
     # Laser-related categories map to laser_material_interaction
     if category_id in ['laser_material_interaction', 'optical', 'laser_absorption']:
         return 'laser_material_interaction'
@@ -81,7 +81,7 @@ def remove_other_category():
     print("=== PROCESSING MATERIALS ===")
     
     for mat_name, mat_data in materials.items():
-        mp = mat_data.get('materialProperties', {})
+        mp = mat_data.get('properties', {})
         
         if 'other' not in mp:
             continue
@@ -105,7 +105,7 @@ def remove_other_category():
             category_id = prop_to_cat.get(prop_name)
             
             if category_id:
-                # Map to materialProperties group name
+                # Map to properties group name
                 group_name = map_category_to_group(category_id)
                 
                 # Ensure target group exists

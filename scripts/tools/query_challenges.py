@@ -23,12 +23,12 @@ def load_all_challenges():
         with open(yaml_file) as f:
             data = yaml.safe_load(f)
         
-        if data and 'material_challenges' in data:
+        if data and 'challenges' in data:
             material_id = data.get('id', yaml_file.stem)
             material_name = data.get('name', material_id)
             materials_with_challenges[material_id] = {
                 'name': material_name,
-                'challenges': data['material_challenges']
+                'challenges': data['challenges']
             }
     
     return materials_with_challenges

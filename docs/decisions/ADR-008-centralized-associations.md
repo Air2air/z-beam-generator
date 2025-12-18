@@ -81,7 +81,7 @@ related_materials = validator.get_related_materials(contaminant_id)
 
 **Frontmatter Structure** (Consistent Everywhere):
 ```yaml
-domain_linkages:
+relationships:
   related_contaminants:  # In materials/settings pages
   - id: rust-contamination
     title: Rust
@@ -108,7 +108,7 @@ domain_linkages:
 1. **Single Source of Truth**: 2,040 associations in one file
 2. **Automated Extraction**: No manual script maintenance
 3. **Bidirectional Consistency**: Materials ↔ Contaminants validated automatically
-4. **100% Coverage**: All 404 pages (materials + settings + contaminants) have domain_linkages
+4. **100% Coverage**: All 404 pages (materials + settings + contaminants) have relationships
 5. **Queryable**: Find all materials for contaminant, all contaminants for material
 6. **Reusable**: Same validator used by all 3 exporters
 7. **Maintainable**: Add material → run extraction → associations auto-updated
@@ -176,7 +176,7 @@ def get_related_contaminants(material):
 
 **Test Coverage**:
 ```bash
-# Verify all pages have domain_linkages
+# Verify all pages have relationships
 python3 tests/test_centralized_architecture.py
 # Result: 404/404 pages (100%)
 

@@ -440,7 +440,7 @@ class DomainAdapter(DataSourceAdapter):
         }
         
         # Add common enrichment fields if present
-        for key in ['category', 'properties', 'materialProperties', 'applications', 
+        for key in ['category', 'properties', 'properties', 'applications', 
                     'machine_settings', 'description', 'challenges']:
             if key in item_data:
                 enrichment[key] = item_data[key]

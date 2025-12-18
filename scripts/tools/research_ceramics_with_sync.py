@@ -69,7 +69,7 @@ def research_and_sync_properties():
             continue
             
         mat_data = data['materials'][material_name]
-        props = mat_data.get('materialProperties', {})
+        props = mat_data.get('properties', {})
         
         if not props:
             print(f"⚠️  {material_name}: No properties to sync")
@@ -78,9 +78,9 @@ def research_and_sync_properties():
         print(f"\n📝 {material_name}:")
         print(f"   Properties: {len(props)}")
         
-        # Sync materialProperties field to frontmatter
+        # Sync properties field to frontmatter
         try:
-            sync_field_to_frontmatter(material_name, 'materialProperties', props)
+            sync_field_to_frontmatter(material_name, 'properties', props)
             print(f"   ✅ Synced to frontmatter")
             sync_count += 1
         except Exception as e:

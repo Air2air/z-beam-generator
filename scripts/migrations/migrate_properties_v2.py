@@ -3,7 +3,7 @@
 Atomic Migration Script for Materials Module V2.0
 
 This script performs three critical changes to Materials.yaml:
-1. Rename 'properties' → 'materialProperties' throughout
+1. Rename 'properties' → 'properties' throughout
 2. Remove all 'description' fields from property dictionaries
 3. Map 'meltingPoint' → 'thermalDestruction' everywhere
 
@@ -45,7 +45,7 @@ class MigrationStats:
             "MIGRATION REPORT",
             "=" * 80,
             f"Materials Processed: {self.materials_processed}",
-            f"'properties' → 'materialProperties': {self.properties_renamed}",
+            f"'properties' → 'properties': {self.properties_renamed}",
             f"'description' fields removed: {self.descriptions_removed}",
             f"'meltingPoint' → 'thermalDestruction': {self.melting_points_mapped}",
             "",
@@ -118,15 +118,15 @@ class PropertiesMigrator:
         
         material_name = material.get('name', 'Unknown')
         
-        # Change 1: Rename 'properties' → 'materialProperties'
+        # Change 1: Rename 'properties' → 'properties'
         if 'properties' in material:
-            material['materialProperties'] = material.pop('properties')
+            material['properties'] = material.pop('properties')
             self.stats.properties_renamed += 1
         
-        # Change 2 & 3: Process materialProperties
-        if 'materialProperties' in material:
-            material['materialProperties'] = self._migrate_properties(
-                material['materialProperties'], 
+        # Change 2 & 3: Process properties
+        if 'properties' in material:
+            material['properties'] = self._migrate_properties(
+                material['properties'], 
                 material_name
             )
         
@@ -137,7 +137,7 @@ class PropertiesMigrator:
         """Migrate properties dictionary recursively"""
         if not isinstance(properties, dict):
             self.stats.warnings.append(
-                f"{material_name}: materialProperties is not a dict: {type(properties)}"
+                f"{material_name}: properties is not a dict: {type(properties)}"
             )
             return properties
         
@@ -204,15 +204,15 @@ class PropertiesMigrator:
             # Check 1: No 'properties' key should exist
             if 'properties' in material:
                 validation_errors.append(
-                    f"{material_name}: Still has 'properties' key (should be 'materialProperties')"
+                    f"{material_name}: Still has 'properties' key (should be 'properties')"
                 )
             
-            # Check 2: materialProperties exists and is dict
-            if 'materialProperties' in material:
-                props = material['materialProperties']
+            # Check 2: properties exists and is dict
+            if 'properties' in material:
+                props = material['properties']
                 if not isinstance(props, dict):
                     validation_errors.append(
-                        f"{material_name}: materialProperties is not a dict"
+                        f"{material_name}: properties is not a dict"
                     )
                 else:
                     # Check 3: No description fields

@@ -1,7 +1,7 @@
 # Code and Documentation Update Summary
 **Date**: December 15, 2025  
 **Session**: Post-Migration System Update  
-**Scope**: Update dependent code, tests, and documentation after domain_linkages migration
+**Scope**: Update dependent code, tests, and documentation after relationships migration
 
 ---
 
@@ -23,7 +23,7 @@
 **File**: `export/contaminants/trivial_exporter.py`  
 **Status**: ✅ UPDATED  
 **Changes**:
-- Added export of `domain_linkages` to frontmatter (lines 288-295)
+- Added export of `relationships` to frontmatter (lines 288-295)
 - Kept `valid_materials` export for backward compatibility
 - Frontmatter files will now include new linkage structure
 
@@ -33,7 +33,7 @@
 **File**: `scripts/validation/validate_category_properties.py`  
 **Status**: ✅ UPDATED  
 **Changes**:
-- Added domain_linkages counter to track new structure
+- Added relationships counter to track new structure
 - Reports count of domain linkages during validation
 - Still validates material properties (original purpose)
 
@@ -44,7 +44,7 @@
 **Status**: ✅ UPDATED  
 **Changes**:
 - Added `create_material_linkage()` helper function
-- Updated PHASE2_PATTERNS to use `domain_linkages` structure
+- Updated PHASE2_PATTERNS to use `relationships` structure
 - All new contaminants will have proper id/title/url/image fields
 - Added comprehensive docstring explaining new requirements
 
@@ -61,7 +61,7 @@
 **After**:
 ```yaml
 "steel-corrosion": {
-    "domain_linkages": {
+    "relationships": {
         "related_materials": [
             {
                 "id": "steel",
@@ -81,13 +81,13 @@
 ## 2. Test Suite Created ✅
 
 ### 2.1 Comprehensive Domain Linkages Tests
-**File**: `tests/test_domain_linkages_structure.py`  
+**File**: `tests/test_relationships_structure.py`  
 **Status**: ✅ CREATED (9 tests, all passing)
 
 **Test Coverage**:
 
 #### Contaminant Structure Tests (4 tests)
-1. ✅ `test_all_contaminants_have_domain_linkages` - 98/98 contaminants verified
+1. ✅ `test_all_contaminants_have_relationships` - 98/98 contaminants verified
 2. ✅ `test_related_materials_have_required_fields` - All entries have id/title/url/image
 3. ✅ `test_regulatory_standards_have_required_fields` - Standards have id/title/url
 4. ✅ `test_image_paths_match_url_structure` - Path consistency verified
@@ -104,11 +104,11 @@
    - Total linkages: 1,962
 
 #### Integration Tests (1 test)
-9. ✅ `test_exporter_preserves_domain_linkages_fields` - Exporter code verified
+9. ✅ `test_exporter_preserves_relationships_fields` - Exporter code verified
 
 **Test Execution**:
 ```bash
-python3 -m pytest tests/test_domain_linkages_structure.py -v
+python3 -m pytest tests/test_relationships_structure.py -v
 ============== 9 passed in 9.56s ==============
 ```
 
@@ -132,7 +132,7 @@ python3 -m pytest tests/test_domain_linkages_structure.py -v
 - Added "ARCHIVED NOTICE" at top
 - Noted that analysis reflects OLD structure (pre-migration)
 - Links to migration completion document
-- Explained what changed (valid_materials → domain_linkages, etc.)
+- Explained what changed (valid_materials → relationships, etc.)
 
 ---
 
@@ -144,7 +144,7 @@ python3 -m pytest tests/test_domain_linkages_structure.py -v
 **Reason**: Replaced by `migrate_all_domains_to_linkages.py`  
 **Recommendation**: Archive with notice pointing to new migration scripts
 
-**Why Not Updated**: Migration is a one-time operation. The old generator worked with `valid_materials` field and is no longer needed. The new migration scripts handle the domain_linkages structure.
+**Why Not Updated**: Migration is a one-time operation. The old generator worked with `valid_materials` field and is no longer needed. The new migration scripts handle the relationships structure.
 
 ---
 
@@ -153,11 +153,11 @@ python3 -m pytest tests/test_domain_linkages_structure.py -v
 ### 5.1 Test Suite Validation
 ```
 ✅ All 9 tests passing
-✅ 98/98 contaminants have domain_linkages
+✅ 98/98 contaminants have relationships
 ✅ 899 Material→Contaminant linkages verified
 ✅ 1,063 Contaminant→Material linkages verified
 ✅ All linkage entries have required fields (id/title/url/image)
-✅ Exporter code includes domain_linkages export
+✅ Exporter code includes relationships export
 ```
 
 ### 5.2 Code Quality
@@ -183,10 +183,10 @@ python3 -m pytest tests/test_domain_linkages_structure.py -v
 ### 6.1 What Changed
 | Old Structure | New Structure | Impact |
 |---------------|---------------|---------|
-| `valid_materials: ["Steel"]` | `domain_linkages.related_materials: [{id, title, url, image}]` | Richer data, UI-ready |
-| `prohibited_materials: ["Aluminum"]` | `domain_linkages.incompatible_materials: [{id, title, url, image}]` | Consistent structure |
+| `valid_materials: ["Steel"]` | `relationships.related_materials: [{id, title, url, image}]` | Richer data, UI-ready |
+| `prohibited_materials: ["Aluminum"]` | `relationships.incompatible_materials: [{id, title, url, image}]` | Consistent structure |
 | No reverse links | Bidirectional navigation | Material ↔ Contaminant discovery |
-| Scattered fields | Unified `domain_linkages` section | Cleaner architecture |
+| Scattered fields | Unified `relationships` section | Cleaner architecture |
 
 ### 6.2 System-Wide Coverage
 ```
@@ -208,14 +208,14 @@ Total bidirectional:     1,962 linkages
 ## 7. Next Steps (Optional Enhancements)
 
 ### 7.1 Immediate (Recommended)
-- ✅ Run exporter to regenerate frontmatter with domain_linkages
+- ✅ Run exporter to regenerate frontmatter with relationships
 - ✅ Verify UI correctly displays new linkage structure
 - ✅ Archive generate_bidirectional_linkages.py with notice
 
 ### 7.2 Future (When Data Available)
 - ⏳ Populate Settings.applicable_materials to enable linkages
 - ⏳ Populate Compounds.fumes_generated to enable linkages
-- ⏳ Add domain_linkages to remaining 90 materials without contaminant links
+- ⏳ Add relationships to remaining 90 materials without contaminant links
 
 ---
 
@@ -223,7 +223,7 @@ Total bidirectional:     1,962 linkages
 
 All success criteria met:
 
-- ✅ **Exporter Updated**: Exports domain_linkages to frontmatter
+- ✅ **Exporter Updated**: Exports relationships to frontmatter
 - ✅ **Tests Created**: 9 comprehensive tests, all passing
 - ✅ **Code Updated**: Phase2 expansion uses new structure
 - ✅ **Documentation Archived**: Superseded docs clearly marked
@@ -236,12 +236,12 @@ All success criteria met:
 ## 9. Files Modified
 
 ### Code Files (3)
-1. `export/contaminants/trivial_exporter.py` - Exports domain_linkages ✅
+1. `export/contaminants/trivial_exporter.py` - Exports relationships ✅
 2. `scripts/validation/validate_category_properties.py` - Tracks new linkages ✅
 3. `scripts/operations/phase2_expansion.py` - Creates new structure ✅
 
 ### Test Files (1)
-4. `tests/test_domain_linkages_structure.py` - Comprehensive validation ✅
+4. `tests/test_relationships_structure.py` - Comprehensive validation ✅
 
 ### Documentation Files (2)
 5. `docs/FORMAL_LINKAGE_SPECIFICATION.md` - Archived with notice ✅
@@ -256,7 +256,7 @@ All success criteria met:
 
 **🎉 ALL UPDATES COMPLETE**
 
-✅ **Code**: Updated to use domain_linkages structure  
+✅ **Code**: Updated to use relationships structure  
 ✅ **Tests**: Created and passing (9/9)  
 ✅ **Documentation**: Archived with clear notices  
 ✅ **Migration**: Verified and complete  
@@ -266,7 +266,7 @@ All success criteria met:
 
 **System Status**: ✅ READY FOR PRODUCTION
 
-The domain_linkages migration is now fully implemented across:
+The relationships migration is now fully implemented across:
 - Data files (4 domains migrated)
 - Export system (frontmatter generation)
 - Validation system (new structure tracked)

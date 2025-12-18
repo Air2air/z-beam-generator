@@ -307,7 +307,7 @@ client = create_api_client('grok')
 coordinator = UnifiedMaterialsGenerator(client)
 
 # Generate content (validation runs automatically)
-result = coordinator.generate('Aluminum', 'material_description')
+result = coordinator.generate('Aluminum', 'description')
 
 # Validation issues (if any) are:
 # 1. Displayed in terminal output

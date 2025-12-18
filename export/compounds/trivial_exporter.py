@@ -2,6 +2,16 @@
 Compounds Exporter
 Exports compound safety profiles to frontmatter YAML format for deployment.
 
+⚠️ DEPRECATED (December 17, 2025)
+This exporter is deprecated and will be removed in Phase 5.
+Use UniversalFrontmatterExporter instead:
+  from export.core.universal_exporter import UniversalFrontmatterExporter
+  from export.config.loader import load_domain_config
+  config = load_domain_config('compounds')
+  exporter = UniversalFrontmatterExporter(config)
+  exporter.export_all()
+Or use CLI: python3 run.py --export --domain compounds
+
 INTEGRATION:
 - Domain Associations: Reads from centralized DomainAssociations.yaml
 - Field Order: Uses FrontmatterFieldOrder.yaml for consistent structure
@@ -195,7 +205,7 @@ class CompoundExporter(BaseTrivialExporter):
             ],
             
             # Domain linkages (bidirectional relationships)
-            'domain_linkages': self.linkages_service.generate_linkages(
+            'relationships': self.linkages_service.generate_linkages(
                 f"{compound['slug']}-compound", 'compounds'
             )
         }
@@ -203,9 +213,9 @@ class CompoundExporter(BaseTrivialExporter):
         return frontmatter
     
     # DEPRECATED: Replaced by centralized DomainLinkagesService
-    # def _build_domain_linkages(self, compound: Dict[str, Any]) -> Dict[str, Any]:
+    # def _build_relationships(self, compound: Dict[str, Any]) -> Dict[str, Any]:
     #     """
-    #     OLD METHOD - Now using shared/services/domain_linkages_service.py
+    #     OLD METHOD - Now using shared/services/relationships_service.py
     #     
     #     This method has been replaced by DomainLinkagesService.generate_linkages()
     #     for consistency across all exporters.

@@ -41,7 +41,7 @@ class LearningIntegrator:
         ...     context={
         ...         'domain': 'materials',
         ...         'item_name': 'Aluminum',
-        ...         'component_type': 'material_description',
+        ...         'component_type': 'description',
         ...         'author_id': 'todd'
         ...     }
         ... )
@@ -350,7 +350,7 @@ class LearningIntegrator:
         Query sweet spot samples and calculate optimal parameters.
         
         Args:
-            component_type: Type of content (material_description, micro, etc.)
+            component_type: Type of content (description, micro, etc.)
             domain: Domain (materials, settings, contaminants, compounds)
             min_quality: Minimum quality threshold for samples
             limit: Maximum number of samples to analyze

@@ -153,7 +153,7 @@ class SettingsFrontmatterGenerator(BaseFrontmatterGenerator):
         Build complete settings frontmatter using modular components.
         
         This is a trivial YAML-to-YAML export - all data already exists
-        in Settings.yaml (machineSettings, material_challenges, settings_description)
+        in Settings.yaml (machine_settings, challenges, settings_description)
         
         Args:
             identifier: Material name
@@ -179,17 +179,17 @@ class SettingsFrontmatterGenerator(BaseFrontmatterGenerator):
             frontmatter.update(metadata)
             
             # 2. Machine Settings
-            if 'machineSettings' in settings_data:
+            if 'machine_settings' in settings_data:
                 # Note: SettingsModule expects material_data structure,
                 # but Settings.yaml is already per-material
                 machine_settings = self.settings_module.generate(identifier, settings_data)
                 if machine_settings:
-                    frontmatter['machineSettings'] = machine_settings
+                    frontmatter['machine_settings'] = machine_settings
             
             # 3. Material Challenges
             challenges = self.challenges_module.generate(settings_data)
             if challenges:
-                frontmatter['material_challenges'] = challenges
+                frontmatter['challenges'] = challenges
             
             # 4. Settings Description
             description = self.description_module.generate(settings_data)

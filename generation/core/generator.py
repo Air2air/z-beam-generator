@@ -148,7 +148,7 @@ class Generator:
         
         Args:
             identifier: Item name (material, setting, etc.) - domain agnostic
-            component_type: Type of component (micro, material_description, faq)
+            component_type: Type of component (micro, description, faq)
             faq_count: Number of FAQ items (ignored for non-FAQ components)
             
         Returns:
@@ -201,7 +201,7 @@ class Generator:
         
         Args:
             identifier: Item name (material, setting, etc.) - domain agnostic
-            component_type: Type of component (micro, material_description, faq)
+            component_type: Type of component (micro, description, faq)
             faq_count: Number of FAQ items (ignored for non-FAQ components)
             humanness_layer: Dynamic humanness instructions (from HumannessOptimizer)
             **kwargs: Additional context (e.g., existing_content for postprocessing)
@@ -569,7 +569,7 @@ class Generator:
             word_count = sum(len(qa.get('answer', '').split()) for qa in content)
             char_count = sum(len(qa.get('answer', '')) for qa in content)
         else:
-            # String content (material_description, etc.)
+            # String content (description, etc.)
             word_count = len(str(content).split())
             char_count = len(str(content))
         
@@ -692,9 +692,9 @@ class Generator:
         if material_name not in data['materials']:
             raise ValueError(f"Material '{material_name}' not found in Materials.yaml")
         
-        # material_description/settings_description/faq go at ROOT level (not in components)
+        # description/settings_description/faq go at ROOT level (not in components)
         # Micro goes in components (before/after structure)
-        if component_type in ['material_description', 'settings_description', 'faq']:
+        if component_type in ['description', 'settings_description', 'faq']:
             # Save to root level for consistency with existing structure
             data['materials'][material_name][component_type] = content
         else:

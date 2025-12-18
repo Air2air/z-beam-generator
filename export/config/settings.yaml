@@ -1,0 +1,94 @@
+# Settings Domain Configuration
+# Configuration for UniversalFrontmatterExporter (Phase 2)
+# Created: December 17, 2025
+
+# ============================================================================
+# DOMAIN IDENTITY
+# ============================================================================
+domain: settings
+source_file: data/settings/Settings.yaml
+output_path: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/settings
+items_key: settings
+id_field: id
+slug_field: slug
+filename_suffix: -settings
+
+# ============================================================================
+# ENRICHMENTS (Applied in order)
+# ============================================================================
+enrichments:
+  # 1. Enrich material linkages (applies_to_materials)
+  - type: material_linkage
+    field: applies_to_materials
+    title: Applicable Materials
+    description: Materials that can be safely cleaned using these laser parameters
+    source: data/materials/Materials.yaml
+    defaults:
+      - category
+      - subcategory
+      - material_type
+      - thermal_conductivity
+      - reflectivity
+  
+  # 2. Enrich contaminant linkages (effective_against_contaminants)
+  - type: contaminant_linkage
+    field: effective_against_contaminants
+    title: Effective Against
+    description: Types of contamination that can be removed using these laser settings
+    source: data/contaminants/Contaminants.yaml
+    defaults:
+      - category
+      - subcategory
+      - hazard_level
+      - contaminant_category
+      - commonality_score
+  
+  # 3. Enrich compound linkages (relevant_compounds)
+  - type: compound_linkage
+    field: relevant_compounds
+    title: Safety Considerations
+    description: Hazardous compounds that may be generated when using these settings
+    source: data/compounds/Compounds.yaml
+    defaults:
+      - concentration_range
+      - hazard_class
+      - exposure_limits
+      - control_measures
+      - cas_number
+      - compound_category
+  
+  # 4. Add timestamps
+  - type: timestamp
+    fields:
+      - datePublished
+      - dateModified
+  
+  # 5. Add slug fields to domain linkages
+  - type: relationships_slug
+
+# ============================================================================
+# CONTENT GENERATORS (Applied in order)
+# ============================================================================
+generators:
+  # 1. Generate SEO meta description from settings_description
+  - type: seo_description
+    source_field: settings_description
+    output_field: seo_description
+    max_length: 160
+  
+  # 2. Generate breadcrumb navigation
+  - type: breadcrumb
+    template: "Home / Settings / {setting_category} / {name}"
+    output_field: breadcrumb_text
+  
+  # 3. Generate excerpt from settings_description
+  - type: excerpt
+    source_field: settings_description
+    output_field: excerpt
+    mode: words
+    length: 50
+  
+  # 4. Generate URL-safe slug (if missing)
+  - type: slug
+    source_field: name
+    output_field: slug

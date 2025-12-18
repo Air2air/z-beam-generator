@@ -19,11 +19,11 @@ Any operation processing multiple items (>5) MUST use background execution:
 
 ```bash
 # ✅ CORRECT - Background with nohup
-nohup python3 run.py --postprocess --domain materials --field material_description --all > output/process.txt 2>&1 &
+nohup python3 run.py --postprocess --domain materials --field description --all > output/process.txt 2>&1 &
 echo "Process started with PID: $!"
 
 # ❌ WRONG - Foreground blocking
-python3 run.py --postprocess --domain materials --field material_description --all
+python3 run.py --postprocess --domain materials --field description --all
 ```
 
 ### Rule 2: Output Redirection Required
@@ -161,7 +161,7 @@ python3 run.py --postprocess --domain materials --field micro --all
 nohup python3 run.py \
   --postprocess \
   --domain materials \
-  --field material_description \
+  --field description \
   --all \
   --batch-size 5 \
   > output/postprocess_materials_all.txt 2>&1 &
@@ -246,7 +246,7 @@ fi
 
 ### Postprocessing All Materials (153 items)
 ```bash
-nohup python3 run.py --postprocess --domain materials --field material_description --all --batch-size 5 > output/postprocess_materials_all.txt 2>&1 &
+nohup python3 run.py --postprocess --domain materials --field description --all --batch-size 5 > output/postprocess_materials_all.txt 2>&1 &
 echo "PID: $!"
 ```
 

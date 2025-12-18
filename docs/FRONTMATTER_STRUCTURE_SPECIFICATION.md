@@ -13,7 +13,7 @@ All frontmatter files follow a consistent structure with **logical field orderin
 
 ### Key Principles
 
-1. **Flat Structure**: No nested `domain_linkages` object - each linkage type is top-level
+1. **Flat Structure**: No nested `relationships` object - each linkage type is top-level
 2. **Logical Ordering**: Fields organized by purpose (identity → dates → author → content → technical → linkages → SEO)
 3. **Consistent Naming**: Same field names across all article types
 4. **Frontend-Friendly**: Each array maps to one `<GridSection>` component
@@ -57,7 +57,7 @@ author:
 # CONTENT - Human-readable text (type-specific)
 # ============================================================================
 contamination_description: string   # For contaminants only
-material_description: string        # For materials only
+description: string        # For materials only
 compound_description: string        # For compounds only
 settings_description: string        # For settings only
 
@@ -143,7 +143,7 @@ Complete data dictionary for all frontmatter fields. Each linkage field is an **
 | Field | Title | Description | Type | Required | Used By | Example |
 |-------|-------|-------------|------|----------|---------|---------|
 | `contamination_description` | Contamination Description | Technical description of contaminant properties | string | ✅ | Contaminants | `Adhesive residue consists of...` |
-| `material_description` | Material Description | Technical description of material properties | string | ✅ | Materials | `Aluminum is a lightweight...` |
+| `description` | Material Description | Technical description of material properties | string | ✅ | Materials | `Aluminum is a lightweight...` |
 | `compound_description` | Compound Description | Technical description of compound properties | string | ✅ | Compounds | `Carbon monoxide is a toxic...` |
 | `settings_description` | Settings Description | Description of laser parameter optimization | string | ✅ | Settings | `Optimized parameters for...` |
 | `micro` | Microscopy Content | Before/after microscopy observations | object | ❌ | All | `{before: "...", after: "..."}` |
@@ -370,7 +370,7 @@ author:
   title: Ph.D.
 
 # CONTENT
-material_description: |
+description: |
   Aluminum is a lightweight, corrosion-resistant metal widely used in aerospace,
   automotive, and construction industries...
 
@@ -662,10 +662,10 @@ author:
 
 **Changes Required:**
 
-1. **Flatten domain_linkages**:
+1. **Flatten relationships**:
    ```yaml
    # OLD
-   domain_linkages:
+   relationships:
      produces_compounds: [...]
      related_materials: [...]
    
@@ -763,7 +763,7 @@ export function ContaminantsLayout({ metadata }) {
 ```
 
 **Benefits:**
-- ✅ No nested property access (`metadata.produces_compounds` not `metadata.domain_linkages.produces_compounds`)
+- ✅ No nested property access (`metadata.produces_compounds` not `metadata.relationships.produces_compounds`)
 - ✅ Simpler conditional rendering
 - ✅ Each array maps to one GridSection
 - ✅ YAML field order controls display order
@@ -786,7 +786,7 @@ export function ContaminantsLayout({ metadata }) {
 
 ### Required Fields (Type-Specific)
 - **Contaminants**: `contamination_description`, `laser_properties.safety_data`
-- **Materials**: `material_description`, `physical_properties`
+- **Materials**: `description`, `physical_properties`
 - **Compounds**: `compound_description`, `chemical_properties`
 - **Settings**: `settings_description`, `laser_parameters`
 
@@ -810,13 +810,13 @@ export function ContaminantsLayout({ metadata }) {
 ## Version History
 
 ### 5.0.0 (December 17, 2025)
-- Flattened domain_linkages structure
+- Flattened relationships structure
 - Removed duplicate `name` field
 - Standardized field ordering across all types
 - Added `concentration_range` and `hazard_class` to compounds
 
 ### 4.0.0 (November 2025)
-- Enhanced compound safety data in domain_linkages
+- Enhanced compound safety data in relationships
 - Added exposure limits and control measures
 
 ### 3.0.0 (October 2025)

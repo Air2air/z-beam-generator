@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Reorganize materialProperties in Materials.yaml
+Reorganize properties in Materials.yaml
 
 Move laser-interaction properties from material_characteristics to laser_material_interaction.
 This fixes the semantic separation between intrinsic material properties and laser interaction properties.
@@ -82,10 +82,10 @@ def reorganize_material(material_name: str, material_data: dict) -> tuple[dict, 
     """
     stats = {'moved': [], 'already_correct': [], 'unclassified': []}
     
-    if 'materialProperties' not in material_data:
+    if 'properties' not in material_data:
         return material_data, stats
     
-    mat_props = material_data['materialProperties']
+    mat_props = material_data['properties']
     mat_chars = mat_props.get('material_characteristics', {})
     laser_int = mat_props.get('laser_material_interaction', {})
     

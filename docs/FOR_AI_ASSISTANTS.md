@@ -1,7 +1,7 @@
 # Documentation for AI Assistants
 
 **Purpose**: Quick navigation guide for AI assistants (GitHub Copilot, Grok, Claude, etc.)  
-**Last Updated**: December 12, 2025
+**Last Updated**: December 18, 2025
 
 ---
 

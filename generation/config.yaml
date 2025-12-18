@@ -101,7 +101,7 @@ winston_feedback_db_path: "z-beam.db"    # SQLite database for Winston feedback
 component_extraction:
   micro:
     extraction_strategy: before_after  # Extract before/after paragraphs
-  material_description:
+  description:
     extraction_strategy: raw            # Return text as-is
   settings_description:
     extraction_strategy: raw            # Return text as-is
@@ -129,7 +129,7 @@ component_extraction:
 # MANDATORY: Keep targets SMALL - LLMs generate 2-3x over target consistently
 component_lengths:
   description: 60                 # Contaminant descriptions (±70% = 18-102 range) → actual ~120-180 words
-  material_description: 30        # Material subtitles (±70% = 9-51 range)
+  description: 30        # Material subtitles (±70% = 9-51 range)
   settings_description: 30        # Settings subtitles (±70% = 9-51 range)
   micro: 80                       # Before/after captions (±70% = 24-136 range)
   faq: 50                         # FAQ answers (±70% = 15-85 range)

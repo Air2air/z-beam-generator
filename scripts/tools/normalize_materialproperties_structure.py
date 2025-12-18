@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Normalize materialProperties structure across ALL data files.
+Normalize properties structure across ALL data files.
 
 CANONICAL STRUCTURE (from frontmatter_template.yaml):
-materialProperties:
+properties:
   material_characteristics:
     label: Material Characteristics
     <property_name>:
@@ -101,7 +101,7 @@ def flatten_property_value(prop_value: Any) -> Dict:
 
 def normalize_material_properties(properties: Dict, taxonomy: Dict[str, str]) -> Dict:
     """
-    Normalize materialProperties to canonical grouped structure.
+    Normalize properties to canonical grouped structure.
     """
     # Initialize canonical structure
     normalized = {
@@ -163,12 +163,12 @@ def normalize_materials_yaml():
     print()
     
     # Normalize each material
-    print("🔧 Normalizing materialProperties structure...")
+    print("🔧 Normalizing properties structure...")
     normalized_count = 0
     skipped_count = 0
     
     for material_name, material_data in materials.items():
-        properties = material_data.get('materialProperties', {})
+        properties = material_data.get('properties', {})
         if not properties:
             print(f"  ⏭️  {material_name}: No properties - skipping")
             skipped_count += 1
@@ -189,7 +189,7 @@ def normalize_materials_yaml():
         
         # Normalize
         normalized_properties = normalize_material_properties(properties, taxonomy)
-        material_data['materialProperties'] = normalized_properties
+        material_data['properties'] = normalized_properties
         normalized_count += 1
         print(f"  ✅ {material_name}: Normalized")
     

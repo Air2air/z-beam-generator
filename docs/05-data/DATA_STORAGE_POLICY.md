@@ -139,7 +139,7 @@ def export_to_frontmatter(material_name):
         raise DataIncompleteError(f"{material_name} missing properties - fix in Materials.yaml")
     
     # Just copy complete data - no fallbacks
-    frontmatter = {'materialProperties': material_data['materialProperties']}
+    frontmatter = {'properties': material_data['properties']}
     return frontmatter
 
 # ❌ WRONG: Using category fallback ranges
@@ -149,8 +149,8 @@ def export_to_frontmatter(material_name):
     
     # NEVER DO THIS - no fallback ranges allowed
     for prop in category_data['properties']:
-        if prop not in material_data['materialProperties']:
-            material_data['materialProperties'][prop] = category_data['properties'][prop]  # ❌ FORBIDDEN
+        if prop not in material_data['properties']:
+            material_data['properties'][prop] = category_data['properties'][prop]  # ❌ FORBIDDEN
 ```
 
 
@@ -163,7 +163,7 @@ def export_to_frontmatter(material_name):
     frontmatter = {
         'title': material_data['title'],
         'micro': material_data['micro'],  # Already generated in Materials.yaml
-        'properties': material_data['materialProperties'],  # Already validated
+        'properties': material_data['properties'],  # Already validated
         'applications': material_data['applications'],  # Already researched
         # ... just copy fields ...
     }
@@ -188,7 +188,7 @@ def export_to_frontmatter(material_name):
 ```python
 # BAD: Reading frontmatter to update Materials.yaml
 frontmatter_data = yaml.safe_load(open('frontmatter/aluminum-laser-cleaning.yaml'))
-material_data['materialProperties']['density'] = frontmatter_data['materialProperties']['density']
+material_data['properties']['density'] = frontmatter_data['properties']['density']
 
 # BAD: Storing new data only in frontmatter
 frontmatter['new_property'] = researched_value
@@ -216,7 +216,7 @@ frontmatter = self.generate_frontmatter(material_name)
 # GOOD: Update Materials.yaml, regenerate frontmatter
 with open('data/Materials.yaml', 'r+') as f:
     materials = yaml.safe_load(f)
-    materials['materials'][material_name]['materialProperties']['density'] = new_value
+    materials['materials'][material_name]['properties']['density'] = new_value
     f.seek(0)
     yaml.dump(materials, f)
     f.truncate()
@@ -281,7 +281,7 @@ class PropertyManager:
         with open(self.materials_file, 'r+') as f:
             materials_data = yaml.safe_load(f)
             # Update material properties
-            materials_data['materials'][material_name]['materialProperties'].update(properties)
+            materials_data['materials'][material_name]['properties'].update(properties)
             f.seek(0)
             yaml.dump(materials_data, f)
             f.truncate()
@@ -335,7 +335,7 @@ def test_researched_properties_saved_to_materials_yaml():
     # CRITICAL: Verify saved to Materials.yaml
     with open('data/Materials.yaml') as f:
         materials = yaml.safe_load(f)
-        material_props = materials['materials']['TestMaterial']['materialProperties']
+        material_props = materials['materials']['TestMaterial']['properties']
         
         # All researched properties MUST be in Materials.yaml
         for prop_name in result.quantitative_properties:
@@ -550,7 +550,7 @@ If you find code that violates this policy:
    ```python
    # Example violation
    frontmatter_data = load_frontmatter(material_name)
-   materials_data['materialProperties'] = frontmatter_data['properties']  # ❌ Wrong direction
+   materials_data['properties'] = frontmatter_data['properties']  # ❌ Wrong direction
    ```
 
 2. **Fix the data flow**
@@ -588,7 +588,7 @@ If you find code that violates this policy:
 │  STEP 0: DATA COMPLETENESS VALIDATION + AUTO-REMEDIATION (INLINE) │
 └────────────────────────────────────────────────────────────────────┘
 1. Validate Material Data in Materials.yaml
-   - Check critical sections (materialProperties, machineSettings)
+   - Check critical sections (properties, machine_settings)
    - Detect null/missing values
    - If incomplete → Trigger PropertyManager.discover_and_research_properties()
    - Auto-remediation saves directly to Materials.yaml
@@ -649,7 +649,7 @@ Result: Frontmatter files = exact copy of Materials.yaml + Categories.yaml metad
 
 **Missing Material Properties**:
 ```python
-# Triggered by: Missing/null materialProperties or machineSettings
+# Triggered by: Missing/null properties or machine_settings
 PropertyManager.discover_and_research_properties(material_name)
   → Research property values using AI
   → Validate ranges against Categories.yaml

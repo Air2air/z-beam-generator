@@ -9,7 +9,7 @@ from typing import Dict, Optional
 
 
 class ChallengesModule:
-    """Extract material_challenges for settings frontmatter"""
+    """Extract challenges for settings frontmatter"""
     
     def __init__(self):
         self.logger = logging.getLogger(__name__)
@@ -22,17 +22,17 @@ class ChallengesModule:
             settings_data: Settings data from Settings.yaml
             
         Returns:
-            Dictionary with material_challenges or None if not present
+            Dictionary with challenges or None if not present
         """
         self.logger.info("Extracting material challenges")
         
-        challenges = settings_data.get('material_challenges')
+        challenges = settings_data.get('challenges')
         
         if not challenges:
-            self.logger.warning("No material_challenges in settings data")
+            self.logger.warning("No challenges in settings data")
             return None
         
-        self.logger.info("✅ Extracted material_challenges")
+        self.logger.info("✅ Extracted challenges")
         return challenges
 
 

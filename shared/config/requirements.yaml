@@ -84,14 +84,14 @@ schema_compliance:
       - "subcategory"    # Material subcategory
       - "title"          # Display title
       - "description"    # Material description
-      - "materialProperties" # Property groups
+      - "properties" # Property groups
       - "applications"   # Use cases (≥2 items)
       - "author"         # Author information
     optional:
       - "images"         # Image data
       - "environmentalImpact" # Environmental data
       - "outcomeMetrics" # Performance metrics
-      - "regulatoryStandards" # Compliance standards
+      - "regulatory_standards" # Compliance standards
       - "tags"           # SEO tags (4-10 items)
   
   category_enum:
@@ -440,7 +440,7 @@ frontmatter_structure:
       - "description"    # Material description
     
     properties:
-      - "materialProperties" # Property groups object
+      - "properties" # Property groups object
     
     content:
       - "applications"   # Applications array (≥2 items)
@@ -454,9 +454,9 @@ frontmatter_structure:
     - "images"          # Image data object
     - "environmentalImpact" # Environmental impact array
     - "outcomeMetrics"  # Outcome metrics array
-    - "regulatoryStandards" # Standards array
+    - "regulatory_standards" # Standards array
     - "tags"            # SEO tags array (4-10 items)
-    - "materialCharacteristics" # Additional characteristics
+    - "characteristics" # Additional characteristics
   
   # Applications structure (from validation docs)
   applications:
@@ -518,7 +518,7 @@ frontmatter_structure:
         url_pattern: "/images/material/"
   
   # Material properties structure
-  materialProperties:
+  properties:
     structure: "Nested object with property groups"
     property_groups:
       common:

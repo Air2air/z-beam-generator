@@ -60,7 +60,7 @@ Each component type should have appropriate constraints based on content depth:
 
 | Component | Recommended Constraint | Expected Words |
 |-----------|----------------------|----------------|
-| material_description | (1-2 sentences) | 30-50 words |
+| description | (1-2 sentences) | 30-50 words |
 | contaminant description | (2-3 sentences) | 70-90 words |
 | settings_description | (1-2 sentences) | 30-50 words |
 | micro (before/after) | (2 short paragraphs) | 60-80 words |
@@ -103,7 +103,7 @@ CONTENT REQUIREMENTS (WHAT to say):
 
 ### Domain-Specific Examples
 
-**Materials Domain** (`domains/materials/prompts/material_description.txt`):
+**Materials Domain** (`domains/materials/prompts/description.txt`):
 ```
 Write a concise technical description (1-2 sentences) about {material} for laser cleaning applications.
 ```

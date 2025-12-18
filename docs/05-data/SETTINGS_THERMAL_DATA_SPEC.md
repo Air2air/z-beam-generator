@@ -80,12 +80,12 @@ thermalProperties:
 
 #### Source Data Location
 - **Materials.yaml** contains thermal and laser properties under:
-  - `materials.[name].materialProperties.laser_material_interaction.thermalDiffusivity`
-  - `materials.[name].materialProperties.laser_material_interaction.thermalConductivity`
-  - `materials.[name].materialProperties.laser_material_interaction.specificHeat`
-  - `materials.[name].materialProperties.laser_material_interaction.ablationThreshold`
-  - `materials.[name].materialProperties.laser_material_interaction.laserDamageThreshold`
-  - `materials.[name].materialProperties.laser_material_interaction.thermalDestructionPoint`
+  - `materials.[name].properties.laser_material_interaction.thermalDiffusivity`
+  - `materials.[name].properties.laser_material_interaction.thermalConductivity`
+  - `materials.[name].properties.laser_material_interaction.specificHeat`
+  - `materials.[name].properties.laser_material_interaction.ablationThreshold`
+  - `materials.[name].properties.laser_material_interaction.laserDamageThreshold`
+  - `materials.[name].properties.laser_material_interaction.thermalDestructionPoint`
 - Values have varied units - MUST normalize during export
 
 #### Unit Conversion & Normalization
@@ -428,7 +428,7 @@ reflectivity: 0.12
 │  category: metal                                                     │
 │  subcategory: non-ferrous                                           │
 │                                                                      │
-│  machineSettings:                                                    │
+│  machine_settings:                                                    │
 │    powerRange: { value: 100, unit: W, min: 1, max: 120 }            │
 │    wavelength: { value: 1064, unit: nm }                            │
 │    # ... existing parameters ...                                     │
@@ -650,10 +650,10 @@ Before deploying settings YAML changes:
 
 | Data Block | Purpose | Source Path | Coverage | Priority |
 |------------|---------|-------------|----------|----------|
-| `thermalProperties.thermalDiffusivity` | ThermalAccumulation cooling rates | `materialProperties.laser_material_interaction.thermalDiffusivity` | 153/153 (100%) | CRITICAL |
-| `thermalProperties.thermalDestructionPoint` | Safe temperature limits | `materialProperties.laser_material_interaction.thermalDestructionPoint` | 129/153 (84%) | CRITICAL |
-| `laserMaterialInteraction.laserDamageThreshold` | Safety heatmap red zones | `materialProperties.laser_material_interaction.laserDamageThreshold` | 153/153 (100%) | HIGH |
-| `laserMaterialInteraction.ablationThreshold` | Effectiveness heatmap | `materialProperties.laser_material_interaction.ablationThreshold` | 153/153 (100%) | HIGH |
+| `thermalProperties.thermalDiffusivity` | ThermalAccumulation cooling rates | `properties.laser_material_interaction.thermalDiffusivity` | 153/153 (100%) | CRITICAL |
+| `thermalProperties.thermalDestructionPoint` | Safe temperature limits | `properties.laser_material_interaction.thermalDestructionPoint` | 129/153 (84%) | CRITICAL |
+| `laserMaterialInteraction.laserDamageThreshold` | Safety heatmap red zones | `properties.laser_material_interaction.laserDamageThreshold` | 153/153 (100%) | HIGH |
+| `laserMaterialInteraction.ablationThreshold` | Effectiveness heatmap | `properties.laser_material_interaction.ablationThreshold` | 153/153 (100%) | HIGH |
 | `laserMaterialInteraction.optimalFluenceRange` | Optimal cleaning zones | Calculated from above | Derived | MEDIUM |
 
 **Expected Outcome**: All 4 interactive components on settings pages will show accurate, material-specific behavior instead of generic aluminum/metal defaults.

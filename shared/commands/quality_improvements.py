@@ -17,7 +17,7 @@ Architecture:
 Usage:
     from shared.commands.quality_improvements import QualityImprovementSystem
     
-    improver = QualityImprovementSystem(domain='materials', field='material_description')
+    improver = QualityImprovementSystem(domain='materials', field='description')
     result = improver.evaluate_for_improvement(text, item_data, quality_analysis)
     
     if result['needs_improvement']:
@@ -51,7 +51,7 @@ class QualityImprovementSystem:
         
         Args:
             domain: Domain name (materials, contaminants, settings)
-            field: Field type (material_description, micro, etc.)
+            field: Field type (description, micro, etc.)
             learning_db_path: Path to learning database
             quality_analyzer: QualityAnalyzer instance (optional)
         """

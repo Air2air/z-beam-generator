@@ -93,7 +93,7 @@ def validate_materials_yaml() -> Tuple[List[str], Dict[str, List[str]]]:
     
     # Check material properties for nulls
     for material_name, material_data in data.get('materials', {}).items():
-        properties = material_data.get('materialProperties', {})
+        properties = material_data.get('properties', {})
         
         for prop_name, prop_data in properties.items():
             if not isinstance(prop_data, dict):

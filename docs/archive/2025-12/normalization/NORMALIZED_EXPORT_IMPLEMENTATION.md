@@ -149,8 +149,8 @@ class {Domain}FrontmatterGenerator(BaseFrontmatterGenerator):
 - Titanium: 8 sections ✅
 
 **Verified Fields**:
-- ✓ machineSettings (all 4)
-- ✓ material_challenges (all 4)
+- ✓ machine_settings (all 4)
+- ✓ challenges (all 4)
 - ✓ settings_description (all 4)
 
 ### Overall: 8/8 Successful ✅

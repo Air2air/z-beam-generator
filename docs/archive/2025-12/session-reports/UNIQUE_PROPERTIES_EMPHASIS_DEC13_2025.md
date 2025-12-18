@@ -36,7 +36,7 @@ unknown properties and behaviors can be researched to add interest.
 ### Materials Domain (3 files)
 
 **Generation Prompts:**
-1. `domains/materials/prompts/material_description.txt`
+1. `domains/materials/prompts/description.txt`
    - Technical subtitles (15-25 words)
    - Focus on unique advantages for laser cleaning
 
@@ -68,7 +68,7 @@ unknown properties and behaviors can be researched to add interest.
    - Contamination removal FAQ
    - Contaminant-specific unique challenges
 
-4. `domains/contaminants/prompts/material_description.txt`
+4. `domains/contaminants/prompts/description.txt`
    - Contamination subtitles (20 words)
    - Primary unique removal challenge
 
@@ -95,7 +95,7 @@ unknown properties and behaviors can be researched to add interest.
 **Consistency:** Identical wording across all prompts
 **Scope:** Applies to both generation AND postprocessing
 
-**Example (materials/prompts/material_description.txt):**
+**Example (materials/prompts/description.txt):**
 ```
 Write a technical subtitle (15-25 words, single sentence) about {material}.
 
@@ -139,14 +139,14 @@ grep -r "very unique properties" domains/*/prompts/*.txt | wc -l
 **Generation Testing:**
 ```bash
 # Generate new content to verify emphasis applied
-python3 run.py --material "Aluminum" --component material_description
+python3 run.py --material "Aluminum" --component description
 # Expected: Unique properties emphasized (e.g., oxide layer, thermal conductivity)
 ```
 
 **Postprocessing Testing:**
 ```bash
 # Postprocess existing content with new emphasis
-python3 run.py --postprocess --domain materials --field material_description --material "Aluminum"
+python3 run.py --postprocess --domain materials --field description --material "Aluminum"
 # Expected: Enhanced unique property emphasis in refined content
 ```
 

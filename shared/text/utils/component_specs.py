@@ -62,7 +62,7 @@ class ComponentRegistry:
     # Component type to domain mapping
     # Used to load domain-specific configs from domains/{domain}/config.yaml
     _component_domain_map = {
-        'material_description': 'materials',
+        'description': 'materials',
         'micro': 'materials',
         'faq': 'materials',
         'settings_description': 'settings',
@@ -248,7 +248,7 @@ class ComponentRegistry:
         
         Directory structure:
         domains/
-        ├── materials/prompts/micro.txt, faq.txt, material_description.txt
+        ├── materials/prompts/micro.txt, faq.txt, description.txt
         ├── settings/prompts/settings_description.txt, component_summaries.txt
         ├── contaminants/prompts/micro.txt
         └── etc.
@@ -413,7 +413,7 @@ class DomainContext:
         return cls(
             domain='settings',
             focus_template='Operating parameters, optimal ranges, adjustment guidelines, effects on outcomes',
-            enrichment_strategy='Extract from Settings.yaml machineSettings: power, frequency, pulse duration, etc.',
+            enrichment_strategy='Extract from Settings.yaml machine_settings: power, frequency, pulse duration, etc.',
             example_facts='Power: 100W; Frequency: 50kHz; Pulse Duration: 200ns; Spot Size: 50μm',
             terminology_style='Precise and technical; always include units; cite ranges and thresholds; explain trade-offs'
         )

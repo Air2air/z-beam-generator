@@ -510,7 +510,7 @@ Before documenting as "COMPLETE":
 → **READ THIS FIRST**: `.github/COPILOT_GENERATION_GUIDE.md`
 - Handles: "Generate material description for Aluminum", "Create micro for Steel", etc.
 - Shows: Exact commands to run, terminal output handling, result reporting
-- Covers: All component types (material_description, micro, FAQ, settings_description)
+- Covers: All component types (description, micro, FAQ, settings_description)
 
 ### **Need Documentation?**
 → **PRIMARY GUIDE**: `docs/08-development/AI_ASSISTANT_GUIDE.md` - 30-second navigation (NEW)
@@ -876,7 +876,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 2. **Pattern Compliance Validation**: Automated checking for nationality-specific linguistic patterns
 
 **Implementation**:
-- `domains/materials/prompts/material_description.txt`: Relaxed constraint + voice emphasis
+- `domains/materials/prompts/description.txt`: Relaxed constraint + voice emphasis
 - `shared/voice/quality_analyzer.py`: New `_check_pattern_compliance()` method
 - `tests/test_voice_pattern_compliance.py`: 11 tests validating all 4 nationalities
 
@@ -1331,13 +1331,13 @@ See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 
 - ✅ **prompts/*.txt files** - Define component types by filename
   - Create `prompts/micro.txt` to define 'micro' component
-  - Create `prompts/material_description.txt` to define 'material_description' component
+  - Create `prompts/description.txt` to define 'description' component
   - Each .txt file = one component type
 - ✅ **config.yaml** - Define component word counts
   ```yaml
   component_lengths:
     micro: 25
-    material_description: 15
+    description: 15
   ```
 - ❌ **processing/*.py files** - NO hardcoded component types
   - ❌ `if component_type == 'micro':`
@@ -1367,7 +1367,7 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
     micro:
       default: 50
       extraction_strategy: before_after  # Strategy-based extraction
-    material_description:
+    description:
       default: 30
       extraction_strategy: raw  # Return text as-is
   ```
@@ -1477,7 +1477,7 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 
 **Purpose**: Provides complete transparency and verification of generation results.
 **Implementation**: `shared/commands/generation.py` - all generation handlers
-**Compliance**: Mandatory for micro, material_description, FAQ generation
+**Compliance**: Mandatory for micro, description, FAQ generation
 
 ### 13. **Voice Instruction Centralization Policy** 🔥 **NEW (Dec 6, 2025) - CRITICAL**
 **ALL voice, tone, and style instructions MUST exist ONLY in persona files.**
@@ -1543,7 +1543,7 @@ See `docs/08-development/VOICE_INSTRUCTION_CENTRALIZATION_POLICY.md` for complet
 
 **Implementation**:
 - `shared/voice/quality_analyzer.py`: `_check_pattern_compliance()` method
-- `domains/materials/prompts/material_description.txt`: Relaxed prompt with voice emphasis
+- `domains/materials/prompts/description.txt`: Relaxed prompt with voice emphasis
 - Enforcement: Automated tests in `tests/test_voice_pattern_compliance.py` (11 tests, all passing)
 
 **Results**:

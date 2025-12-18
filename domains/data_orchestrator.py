@@ -91,17 +91,17 @@ def merge_materials_settings(
         # Merge properties and settings into each material
         merged_count = 0
         for material_name, material_data in materials.items():
-            # Merge materialProperties if available (DEEP MERGE to preserve existing data)
+            # Merge properties if available (DEEP MERGE to preserve existing data)
             if material_name in properties_data:
-                existing_props = material_data.get('materialProperties', {})
+                existing_props = material_data.get('properties', {})
                 new_props = properties_data[material_name]
                 # Deep merge: new_props values override existing, but existing fills gaps
-                material_data['materialProperties'] = _deep_merge(existing_props, new_props)
+                material_data['properties'] = _deep_merge(existing_props, new_props)
                 merged_count += 1
             
-            # Merge machineSettings if available
+            # Merge machine_settings if available
             if material_name in settings_data:
-                material_data['machineSettings'] = settings_data[material_name]
+                material_data['machine_settings'] = settings_data[material_name]
         
         # Update materials in the data structure
         materials_data['materials'] = materials
@@ -127,8 +127,8 @@ def load_complete_materials_data() -> Dict[str, Any]:
             'materials': {
                 'MaterialName': {
                     ...core metadata...,
-                    'materialProperties': {...},  # From properties domain
-                    'machineSettings': {...}       # From settings domain
+                    'properties': {...},  # From properties domain
+                    'machine_settings': {...}       # From settings domain
                 }
             },
             'category_metadata': {...},
@@ -141,8 +141,8 @@ def load_complete_materials_data() -> Dict[str, Any]:
     Example:
         >>> data = load_complete_materials_data()
         >>> aluminum = data['materials']['Aluminum']
-        >>> density = aluminum['materialProperties']['density']
-        >>> power = aluminum['machineSettings']['powerRange']
+        >>> density = aluminum['properties']['density']
+        >>> power = aluminum['machine_settings']['powerRange']
     """
     try:
         # Load from each domain independently

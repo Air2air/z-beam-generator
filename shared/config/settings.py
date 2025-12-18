@@ -286,7 +286,7 @@ COMPONENT_CONFIG = {
     # - badgesymbol: Extracted from frontmatter material properties  
     # - micro: Extracted from frontmatter.caption section
     # - text: Extracted from frontmatter text fields
-    # - table: Extracted from frontmatter.machineSettings section
+    # - table: Extracted from frontmatter.machine_settings section
     # - jsonld: Extracted from frontmatter structured data
     # - author: Extracted from frontmatter.author section
     # ========================================================================

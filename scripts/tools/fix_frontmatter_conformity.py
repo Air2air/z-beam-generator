@@ -3,7 +3,7 @@
 Fix ALL Frontmatter Files to Conform with frontmatter_template.yaml
 
 This script ensures 100% conformity by:
-1. Removing invalid root-level keys (materialCharacteristics, applications)
+1. Removing invalid root-level keys (characteristics, applications)
 2. Flattening nested 'properties:' keys in category groups
 3. Ensuring all properties are direct children of category groups
 4. Adding min/max from Categories.yaml where missing
@@ -40,15 +40,15 @@ def fix_frontmatter_structure(data, categories_data):
     changes = []
     
     # 1. Remove invalid root-level keys
-    invalid_keys = ['materialCharacteristics', 'applications']
+    invalid_keys = ['characteristics', 'applications']
     for key in invalid_keys:
         if key in data:
             del data[key]
             changes.append(f"Removed invalid key: {key}")
     
-    # 2. Fix materialProperties structure
-    if 'materialProperties' in data:
-        mp = data['materialProperties']
+    # 2. Fix properties structure
+    if 'properties' in data:
+        mp = data['properties']
         material_category = data.get('category', '')
         category_ranges = get_category_ranges(categories_data, material_category)
         

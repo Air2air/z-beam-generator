@@ -147,7 +147,7 @@ class ContentSchema(ABC):
         Return list of required field names.
         
         These fields MUST be present for content to be valid.
-        Example: ['name', 'category', 'materialProperties']
+        Example: ['name', 'category', 'properties']
         """
         pass
     
@@ -158,7 +158,7 @@ class ContentSchema(ABC):
         
         Maps field_name → FieldResearchSpec
         Example: {
-            'materialProperties': FieldResearchSpec(...),
+            'properties': FieldResearchSpec(...),
             'applications': FieldResearchSpec(...)
         }
         """

@@ -87,7 +87,7 @@ All critical imports verified working:
 ```python
 # Generation commands
 from shared.commands.generation import (
-    handle_material_description_generation,
+    handle_description_generation,
     handle_settings_description_generation,
     handle_micro_generation,
     handle_faq_generation

@@ -5,12 +5,16 @@ Z-Beam Generator - Main CLI Entry Point
 Commands:
   --postprocess    Refine existing populated text fields
   --generate       Generate new content (future implementation)
-  --export         Export to frontmatter (future implementation)
+  --export         Export frontmatter using Universal Exporter
+  --export-all     Export all domains to production
 """
 
 import sys
 import argparse
+from pathlib import Path
 from shared.commands.postprocess import PostprocessCommand
+from export.core.universal_exporter import UniversalFrontmatterExporter
+from export.config.loader import load_domain_config
 
 
 def postprocess_command(args):
@@ -24,9 +28,9 @@ def postprocess_command(args):
     
     if not args.field:
         print("❌ Error: --field is required for postprocessing")
-        print("   Materials: material_description, micro, faq")
+        print("   Materials: description, micro, faq")
         print("   Contaminants: description, micro, faq")
-        print("   Settings: settings_description, material_challenges")
+        print("   Settings: settings_description, challenges")
         print("   Compounds: compound_description, health_effects, exposure_guidelines")
         sys.exit(1)
     
@@ -63,6 +67,74 @@ def postprocess_command(args):
         sys.exit(1)
 
 
+def export_command(args):
+    """Execute export command using Universal Exporter"""
+    
+    # Validate domain
+    if not args.domain:
+        print("❌ Error: --domain is required for export")
+        print("   Available: materials, contaminants, compounds, settings")
+        sys.exit(1)
+    
+    try:
+        # Load domain configuration
+        config = load_domain_config(args.domain)
+        print(f"✅ Loaded config: export/config/{args.domain}.yaml")
+        
+        # Create exporter
+        exporter = UniversalFrontmatterExporter(config)
+        print(f"✅ Exporter initialized")
+        print(f"   Source: {exporter.source_file}")
+        print(f"   Output: {exporter.output_path}")
+        
+        # Export
+        force = not args.skip_existing
+        print(f"\n🔄 Exporting {args.domain}...")
+        results = exporter.export_all(force=force)
+        
+        # Summary
+        exported = sum(1 for success in results.values() if success)
+        skipped = len(results) - exported
+        print(f"\n✅ Export complete:")
+        print(f"   Exported: {exported}")
+        if skipped > 0:
+            print(f"   Skipped: {skipped} (existing files, use --force to overwrite)")
+        
+    except Exception as e:
+        print(f"❌ Export failed: {e}")
+        sys.exit(1)
+
+
+def export_all_command(args):
+    """Export all domains to production"""
+    
+    domains = ['materials', 'contaminants', 'compounds', 'settings']
+    
+    print("="*80)
+    print("🚀 EXPORTING ALL DOMAINS TO PRODUCTION")
+    print("="*80)
+    
+    total_exported = 0
+    for domain in domains:
+        print(f"\n📦 {domain.upper()}:")
+        
+        try:
+            config = load_domain_config(domain)
+            exporter = UniversalFrontmatterExporter(config)
+            results = exporter.export_all(force=True)
+            
+            exported = sum(1 for success in results.values() if success)
+            total_exported += exported
+            print(f"   ✅ {exported}/{len(results)} files")
+            
+        except Exception as e:
+            print(f"   ❌ Error: {e}")
+    
+    print(f"\n{'='*80}")
+    print(f"✅ TOTAL: {total_exported} files exported")
+    print("="*80)
+
+
 def main():
     """Main CLI entry point"""
     parser = argparse.ArgumentParser(
@@ -70,8 +142,15 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
+  # Export specific domain
+  python3 run.py --export --domain materials
+  python3 run.py --export --domain compounds --skip-existing
+
+  # Export all domains to production
+  python3 run.py --export-all
+
   # Postprocess single item
-  python3 run.py --postprocess --domain materials --item "Aluminum" --field material_description
+  python3 run.py --postprocess --domain materials --item "Aluminum" --field description
 
   # Postprocess all items (dry run)
   python3 run.py --postprocess --domain materials --field micro --all --dry-run
@@ -80,7 +159,7 @@ Examples:
   python3 run.py --postprocess --domain contaminants --field description --all --batch-size 5
 
   # Postprocess all fields for one item
-  python3 run.py --postprocess --domain materials --item "Steel" --field material_description
+  python3 run.py --postprocess --domain materials --item "Steel" --field description
   python3 run.py --postprocess --domain materials --item "Steel" --field micro
   python3 run.py --postprocess --domain materials --item "Steel" --field faq
         """
@@ -89,6 +168,14 @@ Examples:
     # Main commands
     parser.add_argument('--postprocess', action='store_true',
                         help='Postprocess existing populated text fields')
+    parser.add_argument('--export', action='store_true',
+                        help='Export frontmatter for specific domain using Universal Exporter')
+    parser.add_argument('--export-all', action='store_true',
+                        help='Export all domains to production')
+    
+    # Export arguments
+    parser.add_argument('--skip-existing', action='store_true',
+                        help='Skip existing files (default: overwrite)')
     
     # Postprocessing arguments
     parser.add_argument('--domain', type=str,
@@ -110,10 +197,16 @@ Examples:
     # Execute command
     if args.postprocess:
         postprocess_command(args)
+    elif args.export:
+        export_command(args)
+    elif args.export_all:
+        export_all_command(args)
     else:
         parser.print_help()
         print("\n❌ Error: No command specified")
         print("   Use --postprocess to refine existing content")
+        print("   Use --export to export frontmatter for a domain")
+        print("   Use --export-all to export all domains")
         sys.exit(1)
 
 

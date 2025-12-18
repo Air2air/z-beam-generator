@@ -75,7 +75,7 @@ All tests and documentation have been updated for the Schema 5.0.0 normalization
 
 **Updated Section**: "📊 November 2025 Key Updates" → December 2025 additions
 - Schema 5.0.0 Normalization (Dec 17) 🔥 **NEW**
-  - Flattened domain_linkages details
+  - Flattened relationships details
   - Migration script reference
   - Test file reference
   - Benefits summary
@@ -98,10 +98,10 @@ collected 21 items
 
 tests/test_schema_5_normalization.py::TestYAMLLoading::test_load_yaml_standard_format PASSED [ 4%]
 tests/test_schema_5_normalization.py::TestYAMLLoading::test_load_yaml_standard_format_with_unsafe PASSED [ 9%]
-tests/test_schema_5_normalization.py::TestDomainLinkagesFlattening::test_flatten_nested_domain_linkages PASSED [ 14%]
-tests/test_schema_5_normalization.py::TestDomainLinkagesFlattening::test_flatten_partial_domain_linkages PASSED [ 19%]
-tests/test_schema_5_normalization.py::TestDomainLinkagesFlattening::test_flatten_no_domain_linkages PASSED [ 23%]
-tests/test_schema_5_normalization.py::TestDomainLinkagesFlattening::test_flatten_empty_domain_linkages PASSED [ 28%]
+tests/test_schema_5_normalization.py::TestDomainLinkagesFlattening::test_flatten_nested_relationships PASSED [ 14%]
+tests/test_schema_5_normalization.py::TestDomainLinkagesFlattening::test_flatten_partial_relationships PASSED [ 19%]
+tests/test_schema_5_normalization.py::TestDomainLinkagesFlattening::test_flatten_no_relationships PASSED [ 23%]
+tests/test_schema_5_normalization.py::TestDomainLinkagesFlattening::test_flatten_empty_relationships PASSED [ 28%]
 tests/test_schema_5_normalization.py::TestDuplicateFieldRemoval::test_remove_name_when_title_exists PASSED [ 33%]
 tests/test_schema_5_normalization.py::TestDuplicateFieldRemoval::test_keep_name_if_no_title PASSED [ 38%]
 tests/test_schema_5_normalization.py::TestDuplicateFieldRemoval::test_no_name_field PASSED [ 42%]
@@ -191,7 +191,7 @@ normalize_file(temp_path, dry_run=False)  # str not accepted
 
 **Migration Script**: `scripts/normalize_frontmatter_structure.py`
 - ✅ YAML loading (unsafe_load for OrderedDict)
-- ✅ flatten_domain_linkages() - all 8 types
+- ✅ flatten_relationships() - all 8 types
 - ✅ remove_duplicate_fields() - name field handling
 - ✅ reorder_fields() - canonical ordering
 - ✅ update_schema_version() - 5.0.0 setting

@@ -182,7 +182,7 @@ compounds:
         technique: GC-TCD (thermal conductivity)
         detection_limit: 2 ppm
       odor_threshold: NO ODOR - Cannot be detected by smell. MUST use electronic monitors. Odorless nature makes CO extremely dangerous.
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: adhesive-residue
         title: Adhesive Residue / Tape Marks
@@ -442,7 +442,7 @@ compounds:
         technique: HPLC (DNPH cartridge)
         detection_limit: 0.001 ppm
       odor_threshold: 0.05-1 ppm - provides early warning but olfactory fatigue occurs. Do not rely on odor alone.
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: adhesive-residue
         title: Adhesive Residue / Tape Marks
@@ -665,7 +665,7 @@ compounds:
         technique: GC-FID with charcoal tube
         detection_limit: 0.01 ppm
       odor_threshold: NOT reliable indicator. Odor threshold (1.5-4.7 ppm) is above safe exposure levels and varies greatly. Do not rely on odor - use monitoring equipment.
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: paint-residue
         title: Paint Residue / Coating Failure
@@ -738,7 +738,7 @@ compounds:
     - organic_material_incomplete_combustion
     - carbon_rich_contamination
     - high_temperature_pyrolysis
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: carbon-buildup
         title: Carbon Deposit Buildup
@@ -982,7 +982,7 @@ compounds:
         technique: Ion chromatography
         detection_limit: 0.03 ppm
       odor_threshold: UNRELIABLE - 20-40% of population cannot smell HCN (genetic). Odor threshold (0.58-5 ppm) overlaps toxic range. NEVER rely on odor - MANDATORY continuous monitoring with alarms.
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: plastic-residue
         title: Degraded Polymer Deposits
@@ -1185,7 +1185,7 @@ compounds:
         technique: HPLC
         detection_limit: 0.02 ppm
       odor_threshold: 0.05-1 ppm - provides early warning
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: plastic-residue
         title: Degraded Polymer Deposits
@@ -1393,7 +1393,7 @@ compounds:
         technique: HPLC
         detection_limit: 0.01 ppm
       odor_threshold: 0.16-1.0 ppm - provides warning BUT overlaps toxic range. DO NOT rely on odor alone.
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: industrial-oil
         title: Industrial Oil / Grease Buildup
@@ -1593,7 +1593,7 @@ compounds:
         technique: Ion chromatography
         detection_limit: 0.01 ppm
       odor_threshold: 0.8-5 ppm - provides adequate warning but close to toxic levels
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: plastic-residue
         title: Degraded Polymer Deposits
@@ -1795,7 +1795,7 @@ compounds:
         technique: GC-FID
         detection_limit: 0.005 ppm
       odor_threshold: 0.16-40 ppm - provides early warning but wide range. Olfactory adaptation occurs.
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: paint-residue
         title: Paint Residue / Coating Failure
@@ -2011,7 +2011,7 @@ compounds:
         technique: GC-FID
         detection_limit: 0.01 ppm
       odor_threshold: '0.05-0.5 ppm - WARNING: Olfactory fatigue occurs. Cannot rely on odor for protection.'
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: plastic-residue
         title: Degraded Polymer Deposits
@@ -2199,7 +2199,7 @@ compounds:
         technique: AAS
         detection_limit: 0.3 µg/sample
       odor_threshold: Not applicable - odorless
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: galvanize-corrosion
         title: White Rust on Galvanized Steel
@@ -2391,7 +2391,7 @@ compounds:
         technique: AAS
         detection_limit: 0.3 µg/sample
       odor_threshold: Not applicable - odorless
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: rust-oxidation
         title: Rust / Iron Oxide Formation
@@ -2603,7 +2603,7 @@ compounds:
         technique: Visible spectrophotometry
         detection_limit: 0.05 µg/sample
       odor_threshold: Not applicable - no warning odor at hazardous levels
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: chrome-pitting
         title: Chromium Oxide Pitting
@@ -2808,7 +2808,7 @@ compounds:
         technique: Ion chromatography
         detection_limit: 0.007 ppm
       odor_threshold: 'NO2: 0.1-1 ppm (provides warning but overlaps toxic range). NO: odorless (NO WARNING).'
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: rust-oxidation
         title: Rust / Iron Oxide Formation
@@ -2999,7 +2999,7 @@ compounds:
         technique: Ion chromatography
         detection_limit: 0.02 ppm
       odor_threshold: 0.3-1 ppm - provides adequate warning below toxic levels
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: rubber-residue
         title: Rubber Compound Residue
@@ -3189,7 +3189,7 @@ compounds:
         technique: GC
         detection_limit: 0.005 ppm
       odor_threshold: 0.4-1.5 ppm - UNRELIABLE. Odor threshold ABOVE safe exposure limits. NEVER rely on odor. MANDATORY continuous monitoring.
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: plastic-residue
         title: Degraded Polymer Deposits
@@ -3374,7 +3374,7 @@ compounds:
         technique: Ion chromatography
         detection_limit: 0.02 ppm
       odor_threshold: 5-50 ppm - provides good warning below toxic levels
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: blood-residue
         title: Biological Blood Residue
@@ -3544,7 +3544,7 @@ compounds:
         technique: Colorimetric
         detection_limit: 0.01%
       odor_threshold: Not applicable - odorless at all concentrations. No warning property. MUST use instruments.
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: paint-residue
         title: Paint Residue / Coating Failure
@@ -3749,7 +3749,7 @@ compounds:
         technique: GC-MS (water samples)
         detection_limit: µg/L levels
       odor_threshold: Variable. Some VOCs odorless (benzene), others pungent at low ppm. Olfactory fatigue common. Do not rely on odor.
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: paint-residue
         title: Paint Residue / Coating Failure
@@ -3975,7 +3975,7 @@ compounds:
         technique: GC with FID
         detection_limit: 0.1 µg/sample
       odor_threshold: Not applicable - no characteristic warning odor at hazardous levels
-    domain_linkages:
+    relationships:
       produced_by_contaminants:
       - id: carbon-buildup
         title: Carbon Deposit Buildup

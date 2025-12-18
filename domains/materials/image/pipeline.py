@@ -98,7 +98,7 @@ def load_material_properties(material_name: str) -> Optional[Dict[str, Any]]:
             return None
         
         # Extract relevant properties
-        material_props = material_data.get('materialProperties', {})
+        material_props = material_data.get('properties', {})
         characteristics = material_props.get('material_characteristics', {})
         laser_interaction = material_props.get('laser_material_interaction', {})
         

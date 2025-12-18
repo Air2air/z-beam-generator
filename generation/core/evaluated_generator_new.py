@@ -149,7 +149,7 @@ class QualityEvaluatedGenerator:
         
         Args:
             item_name: Name of item (material, setting, contaminant, compound)
-            component_type: Type of content (material_description, micro, faq, etc.)
+            component_type: Type of content (description, micro, faq, etc.)
             author_id: Author persona ID (todd, yi_chun, alessandro, ikmanda)
             domain: Domain name (materials, settings, contaminants, compounds)
             **kwargs: Additional parameters (e.g., faq_count)

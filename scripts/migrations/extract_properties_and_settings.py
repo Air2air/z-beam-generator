@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Extract materialProperties and machineSettings from Materials.yaml
+Extract properties and machine_settings from Materials.yaml
 
 This script:
 1. Reads Materials.yaml
-2. Extracts all materialProperties into MaterialProperties.yaml
-3. Extracts all machineSettings into MachineSettings.yaml
+2. Extracts all properties into MaterialProperties.yaml
+3. Extracts all machine_settings into MachineSettings.yaml
 4. Creates updated Materials.yaml without those fields
 5. Preserves all associations via material names
 6. Creates backup of original file
@@ -13,14 +13,16 @@ This script:
 Data Structure:
 - MaterialProperties.yaml: { material_name: { ...properties } }
 - MachineSettings.yaml: { material_name: { ...settings } }
-- Materials.yaml: All other fields except materialProperties and machineSettings
+- Materials.yaml: All other fields except properties and machine_settings
 """
 
-import yaml
 from pathlib import Path
 from datetime import datetime
 import shutil
 from typing import Dict, Any
+
+# Use shared YAML utilities
+from shared.utils.file_io import read_yaml_file, write_yaml_file
 
 # Paths
 MATERIALS_FILE = Path("data/materials/Materials.yaml")
@@ -31,19 +33,12 @@ BACKUP_DIR = Path("data/materials/backups")
 
 def load_yaml(file_path: Path) -> Dict[str, Any]:
     """Load YAML file"""
-    with open(file_path, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+    return read_yaml_file(file_path)
 
 
 def save_yaml(data: Dict[str, Any], file_path: Path) -> None:
     """Save data to YAML file with proper formatting"""
-    with open(file_path, 'w', encoding='utf-8') as f:
-        yaml.dump(data, f, 
-                 default_flow_style=False,
-                 allow_unicode=True,
-                 sort_keys=False,
-                 width=120,
-                 indent=2)
+    write_yaml_file(file_path, data, sort_keys=False)
 
 
 def create_backup(file_path: Path) -> Path:
@@ -72,7 +67,7 @@ def extract_data() -> None:
     materials = materials_data['materials']
     print(f"   Found {len(materials)} materials")
     
-    # Extract materialProperties and machineSettings
+    # Extract properties and machine_settings
     print("\n🔍 Extracting data...")
     material_properties = {}
     machine_settings = {}
@@ -82,21 +77,21 @@ def extract_data() -> None:
     extracted_settings_count = 0
     
     for material_name, material_data in materials.items():
-        # Extract materialProperties
-        if 'materialProperties' in material_data:
-            material_properties[material_name] = material_data.pop('materialProperties')
+        # Extract properties
+        if 'properties' in material_data:
+            material_properties[material_name] = material_data.pop('properties')
             extracted_props_count += 1
         
-        # Extract machineSettings
-        if 'machineSettings' in material_data:
-            machine_settings[material_name] = material_data.pop('machineSettings')
+        # Extract machine_settings
+        if 'machine_settings' in material_data:
+            machine_settings[material_name] = material_data.pop('machine_settings')
             extracted_settings_count += 1
         
         # Store cleaned material data
         materials_without_extracted[material_name] = material_data
     
-    print(f"   ✅ Extracted materialProperties from {extracted_props_count} materials")
-    print(f"   ✅ Extracted machineSettings from {extracted_settings_count} materials")
+    print(f"   ✅ Extracted properties from {extracted_props_count} materials")
+    print(f"   ✅ Extracted machine_settings from {extracted_settings_count} materials")
     
     # Create backup of original Materials.yaml
     print(f"\n💾 Creating backup...")
@@ -109,7 +104,7 @@ def extract_data() -> None:
             'description': 'Material properties extracted from Materials.yaml',
             'extracted_date': datetime.now().isoformat(),
             'total_materials': len(material_properties),
-            'structure': 'Each material name maps to its materialProperties data'
+            'structure': 'Each material name maps to its properties data'
         },
         'properties': material_properties
     }
@@ -123,7 +118,7 @@ def extract_data() -> None:
             'description': 'Machine settings extracted from Materials.yaml',
             'extracted_date': datetime.now().isoformat(),
             'total_materials': len(machine_settings),
-            'structure': 'Each material name maps to its machineSettings data'
+            'structure': 'Each material name maps to its machine_settings data'
         },
         'settings': machine_settings
     }
@@ -140,7 +135,7 @@ def extract_data() -> None:
     
     materials_data['_extraction_metadata'] = {
         'extracted_date': datetime.now().isoformat(),
-        'extracted_fields': ['materialProperties', 'machineSettings'],
+        'extracted_fields': ['properties', 'machine_settings'],
         'new_files': ['MaterialProperties.yaml', 'MachineSettings.yaml'],
         'note': 'Use materials.data.loader module to load complete material data'
     }

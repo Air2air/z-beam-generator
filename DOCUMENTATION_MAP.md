@@ -1,9 +1,9 @@
 # Documentation Map - Z-Beam Generator
 
 **🗺️ Master Navigation for All Documentation**  
-**Last Updated**: December 17, 2025  
+**Last Updated**: December 18, 2025  
 **For**: AI Assistants, Developers, Contributors, and Users  
-**Recent Updates**: Schema 5.0.0 normalization (flattened domain_linkages), Phase 2 complete (compound enrichment), challenge taxonomy system, 4 new ADRs
+**Recent Updates**: Phase 5 complete (78.7% code reduction, 424 files exported), Schema 5.0.0 normalization, Universal export system, Challenge taxonomy, 4 new ADRs
 
 ---
 
@@ -194,7 +194,7 @@ processing/
 z-beam-generator/
 ├── domains/                # Domain-specific code & prompts
 │   ├── materials/          # Materials domain (text + image prompts)
-│   │   ├── prompts/        # Component prompts: micro.txt, faq.txt, material_description.txt
+│   │   ├── prompts/        # Component prompts: micro.txt, faq.txt, description.txt
 │   │   └── image/          # Image generation for materials
 │   ├── settings/           # Settings domain
 │   │   └── prompts/        # settings_description.txt, component_summaries.txt
@@ -271,7 +271,7 @@ z-beam-generator/
 ## 📊 November 2025 Key Updates
 
 ### Schema 5.0.0 Normalization (Dec 17) 🔥 **NEW**
-- **Flattened domain_linkages**: Nested → top-level arrays (8 linkage types)
+- **Flattened relationships**: Nested → top-level arrays (8 linkage types)
 - **Field ordering**: Canonical 40+ field specification
 - **Files migrated**: 294 total (99 contaminants, 153 materials, 20 compounds, 22 settings)
 - **Migration script**: `scripts/normalize_frontmatter_structure.py` (automated tool)

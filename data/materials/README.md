@@ -43,8 +43,8 @@ materials = all_data['materials']
 
 # Each material has complete data merged
 aluminum = materials['Aluminum']
-print(aluminum['materialProperties'])  # From MaterialProperties.yaml
-print(aluminum['machineSettings'])     # From MachineSettings.yaml
+print(aluminum['properties'])  # From MaterialProperties.yaml
+print(aluminum['machine_settings'])     # From MachineSettings.yaml
 
 # Or load specific material
 aluminum = load_material("Aluminum")
@@ -60,7 +60,7 @@ materials = data['materials']
 aluminum = materials['Aluminum']
 ```
 
-Both methods return **identical structure** - materialProperties and machineSettings are merged into each material.
+Both methods return **identical structure** - properties and machine_settings are merged into each material.
 
 ---
 
@@ -78,8 +78,8 @@ Both methods return **identical structure** - materialProperties and machineSett
 - Material characteristics (legacy field)
 
 **Does NOT contain** (extracted to separate files):
-- ❌ materialProperties (→ MaterialProperties.yaml)
-- ❌ machineSettings (→ MachineSettings.yaml)
+- ❌ properties (→ MaterialProperties.yaml)
+- ❌ machine_settings (→ MachineSettings.yaml)
 
 **Example Structure**:
 ```yaml
@@ -92,8 +92,8 @@ materials:
     title: "Aluminum Laser Cleaning"
     faq: [...]
     micro: {...}
-    # materialProperties merged at runtime from MaterialProperties.yaml
-    # machineSettings merged at runtime from MachineSettings.yaml
+    # properties merged at runtime from MaterialProperties.yaml
+    # machine_settings merged at runtime from MachineSettings.yaml
 ```
 
 ---
@@ -211,8 +211,8 @@ Load complete materials database with merged properties and settings.
         'Aluminum': {
             'name': 'Aluminum',
             'category': 'metal',
-            'materialProperties': {...},  # Merged from MaterialProperties.yaml
-            'machineSettings': {...},     # Merged from MachineSettings.yaml
+            'properties': {...},  # Merged from MaterialProperties.yaml
+            'machine_settings': {...},     # Merged from MachineSettings.yaml
             # ... other fields from Materials.yaml
         },
         # ... 131 more materials
@@ -230,8 +230,8 @@ Load specific material with merged data.
 ```python
 aluminum = load_material("Aluminum")
 if aluminum:
-    density = aluminum['materialProperties']['material_characteristics']['density']
-    power = aluminum['machineSettings']['powerRange']
+    density = aluminum['properties']['material_characteristics']['density']
+    power = aluminum['machine_settings']['powerRange']
 ```
 
 ### `get_material_names() -> List[str]`
@@ -247,8 +247,8 @@ Clear LRU cache if YAML files modified at runtime.
 ## ✅ Validation
 
 All materials are validated to have:
-- ✅ Complete materialProperties (132/132 materials)
-- ✅ Complete machineSettings (132/132 materials)
+- ✅ Complete properties (132/132 materials)
+- ✅ Complete machine_settings (132/132 materials)
 - ✅ All required property fields
 - ✅ All required setting parameters
 
@@ -300,8 +300,8 @@ Aluminum:
 with open('Materials.yaml') as f:
     data = yaml.safe_load(f)
     aluminum = data['materials']['Aluminum']
-    props = aluminum['materialProperties']  # Embedded
-    settings = aluminum['machineSettings']  # Embedded
+    props = aluminum['properties']  # Embedded
+    settings = aluminum['machine_settings']  # Embedded
 ```
 
 **After (v3.0)**:
@@ -310,8 +310,8 @@ with open('Materials.yaml') as f:
 from materials.data import load_materials_data
 data = load_materials_data()
 aluminum = data['materials']['Aluminum']
-props = aluminum['materialProperties']  # Merged from MaterialProperties.yaml
-settings = aluminum['machineSettings']  # Merged from MachineSettings.yaml
+props = aluminum['properties']  # Merged from MaterialProperties.yaml
+settings = aluminum['machine_settings']  # Merged from MachineSettings.yaml
 ```
 
 **Result**: Same code, same structure, better architecture! ✅

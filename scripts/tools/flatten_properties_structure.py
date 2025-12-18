@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Flatten materialProperties structure to match frontmatter_template.yaml.
+Flatten properties structure to match frontmatter_template.yaml.
 
 BEFORE (WRONG):
-materialProperties:
+properties:
   material_characteristics:
     label: "..."
     description: "..."
@@ -12,7 +12,7 @@ materialProperties:
       porosity: {value: 0.5, unit: "%"}
 
 AFTER (CORRECT per template):
-materialProperties:
+properties:
   material_characteristics:
     label: "..."
     density: {value: 8.8, unit: "g/cm³"}
@@ -32,7 +32,7 @@ def flatten_material_properties(material_data):
     if not isinstance(material_data, dict):
         return material_data, False
     
-    mat_props = material_data.get('materialProperties', {})
+    mat_props = material_data.get('properties', {})
     if not isinstance(mat_props, dict):
         return material_data, False
     

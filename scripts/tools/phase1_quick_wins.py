@@ -114,7 +114,7 @@ def add_materials_to_yaml(materials_data, dry_run=False):
                 'category': mat_info['category'],
                 'subcategory': mat_info['subcategory'],
                 'title': f'{mat_name} Laser Cleaning',
-                'material_metadata': {
+                'metadata': {
                     'last_updated': datetime.now().isoformat() + 'Z',
                     'structure_version': '2.0',
                     'phase1_added': True

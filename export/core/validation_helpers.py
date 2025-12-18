@@ -96,10 +96,10 @@ class ValidationHelpers:
             if 'chemicalFormula' not in frontmatter_data:
                 logger.warning("Missing chemical formula in frontmatter data")
                 
-            # Ensure materialProperties structure exists per frontmatter_template.yaml
-            if 'materialProperties' not in frontmatter_data:
-                logger.warning("Missing materialProperties section in frontmatter data")
-                frontmatter_data['materialProperties'] = {
+            # Ensure properties structure exists per frontmatter_template.yaml
+            if 'properties' not in frontmatter_data:
+                logger.warning("Missing properties section in frontmatter data")
+                frontmatter_data['properties'] = {
                     'material_characteristics': {'label': 'Material Characteristics'},
                     'laser_material_interaction': {'label': 'Laser-Material Interaction'}
                 }
@@ -136,18 +136,18 @@ class ValidationHelpers:
                 corrected_data['name'] = material_name
                 logger.info(f"Added missing name field: {material_name}")
             
-            # Ensure materialProperties structure exists per frontmatter_template.yaml
-            if 'materialProperties' not in corrected_data:
-                corrected_data['materialProperties'] = {
+            # Ensure properties structure exists per frontmatter_template.yaml
+            if 'properties' not in corrected_data:
+                corrected_data['properties'] = {
                     'material_characteristics': {'label': 'Material Characteristics'},
                     'laser_material_interaction': {'label': 'Laser-Material Interaction'}
                 }
-                logger.info("Added missing materialProperties section")
+                logger.info("Added missing properties section")
             
             # Ensure machine settings section exists
-            if 'machineSettings' not in corrected_data:
-                corrected_data['machineSettings'] = {}
-                logger.info("Added missing machineSettings section")
+            if 'machine_settings' not in corrected_data:
+                corrected_data['machine_settings'] = {}
+                logger.info("Added missing machine_settings section")
             
             return corrected_data
             

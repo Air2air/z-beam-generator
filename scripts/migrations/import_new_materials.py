@@ -431,7 +431,7 @@ class MaterialImporter:
                     'before': f"{name} laser cleaning requires careful parameter selection to optimize contamination removal while preserving substrate integrity.",
                     'after': ''
                 },
-                'regulatoryStandards': [
+                'regulatory_standards': [
                     {
                         'description': 'FDA 21 CFR 1040.10 - Laser Product Performance Standards',
                         'image': '/images/logo/logo-org-fda.png',
@@ -447,18 +447,18 @@ class MaterialImporter:
                         'url': 'https://webstore.ansi.org/standards/lia/ansiz1362022'
                     }
                 ],
-                'materialProperties': {
+                'properties': {
                     'material_characteristics': {
                         'label': 'Material Characteristics',
                         'description': 'Intrinsic physical and mechanical properties affecting laser cleaning outcomes'
                     }
                 },
-                'material_description': f'Laser cleaning parameters and specifications for {name}'
+                'description': f'Laser cleaning parameters and specifications for {name}'
             }
             
             # Add properties
             for prop_name, prop_data in mat_def['properties'].items():
-                material['materialProperties']['material_characteristics'][prop_name] = prop_data
+                material['properties']['material_characteristics'][prop_name] = prop_data
             
             # Add to materials section
             self.data['materials'][name] = material
@@ -489,9 +489,9 @@ class MaterialImporter:
             'author': material_data.get('author', {}),
             'images': material_data.get('images', {}),
             'micro': material_data.get('micro', {}),
-            'regulatoryStandards': material_data.get('regulatoryStandards', []),
-            'materialProperties': material_data.get('materialProperties', {}),
-            'material_description': material_data.get('material_description', f"Laser cleaning parameters and specifications for {material_data['name']}")
+            'regulatory_standards': material_data.get('regulatory_standards', []),
+            'properties': material_data.get('properties', {}),
+            'description': material_data.get('description', f"Laser cleaning parameters and specifications for {material_data['name']}")
         }
         
         return transformed

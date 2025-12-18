@@ -58,11 +58,11 @@ _metadata, breadcrumb, content_type, dateModified, datePublished
 schema_version, subcategory
 
 # Content Fields
-material_description, material_metadata, micro
+description, metadata, micro
 faq, eeat, images
 
 # Material-Specific
-materialProperties, serviceOffering, regulatoryStandards
+properties, serviceOffering, regulatory_standards
 preservedData
 ```
 
@@ -90,10 +90,10 @@ active, breadcrumb, content_type, dateModified, datePublished
 schema_version, subcategory
 
 # Content Fields
-settings_description, material_challenges, images
+settings_description, challenges, images
 
 # Settings-Specific
-machineSettings, laserMaterialInteraction, thermalProperties
+machine_settings, laserMaterialInteraction, thermalProperties
 preservedData
 ```
 
@@ -106,11 +106,11 @@ preservedData
 ❌ **Missing**: `description`, `layout`
 
 **Impact**: 
-- Materials uses `material_description` instead of generic `description`
+- Materials uses `description` instead of generic `description`
 - No `layout` field (may use different layout system)
 
 **Recommendation**:
-- **Option A**: Add alias `description → material_description` for consistency
+- **Option A**: Add alias `description → description` for consistency
 - **Option B**: Accept domain-specific naming (materials use specialized field names)
 - **Decision**: Accept as domain-specific - materials have richer structure
 
@@ -252,15 +252,15 @@ preservedData
 ### ✅ Acceptable Domain Differences
 
 1. **Description Field Naming**
-   - Materials: `material_description` ✅
+   - Materials: `description` ✅
    - Contaminants: `description` ✅
    - Settings: `settings_description` ✅
    - **Assessment**: Domain-appropriate naming
 
 2. **Domain-Specific Enhancement Fields**
    - Contaminants: SEO optimization, crosslinking, industries_served ✅
-   - Materials: materialProperties, serviceOffering ✅
-   - Settings: machineSettings, thermalProperties ✅
+   - Materials: properties, serviceOffering ✅
+   - Settings: machine_settings, thermalProperties ✅
    - **Assessment**: Expected specialization
 
 ---
@@ -294,7 +294,7 @@ preservedData
 ### Priority 3: Documentation
 
 4. **Document domain-specific naming conventions**
-   - Clarify that `material_description`, `description`, `settings_description` are equivalent
+   - Clarify that `description`, `description`, `settings_description` are equivalent
    - Document why each domain uses specialized naming
 
 5. **Create normalization compliance checklist**
@@ -346,7 +346,7 @@ preservedData
 2. ⚠️ Settings missing EEAT (recommended for expertise)
 3. ⚠️ Layout field not universal (optional consistency improvement)
 
-**Verdict**: The export system is **well-normalized** with only minor gaps that are easily addressable. The domain-specific field naming (material_description, description, settings_description) is **acceptable and appropriate** for each domain's unique needs.
+**Verdict**: The export system is **well-normalized** with only minor gaps that are easily addressable. The domain-specific field naming (description, description, settings_description) is **acceptable and appropriate** for each domain's unique needs.
 
 ---
 

@@ -6,7 +6,7 @@ Normalizes all material entries in Materials.yaml to match the frontmatter templ
 Migrates FLAT structure to GROUPED structure and ensures consistent field ordering.
 
 MIGRATION: FLAT → GROUPED Structure
-- Flat: All properties directly under materialProperties
+- Flat: All properties directly under properties
 - Grouped: Properties organized into material_characteristics and laser_material_interaction
 
 Field Order (canonical):
@@ -14,11 +14,11 @@ Field Order (canonical):
 2. author (moved earlier per template)
 3. images
 4. caption
-5. regulatoryStandards
+5. regulatory_standards
 6. applications
-7. materialProperties (GROUPED: material_characteristics, laser_material_interaction)
-8. materialCharacteristics (qualitative properties)
-9. machineSettings
+7. properties (GROUPED: material_characteristics, laser_material_interaction)
+8. characteristics (qualitative properties)
+9. machine_settings
 10. environmentalImpact
 11. outcomeMetrics
 12. faq
@@ -50,18 +50,18 @@ CANONICAL_ORDER = [
     'author',
     'images',
     'micro',
-    'regulatoryStandards',
+    'regulatory_standards',
     'applications',
-    'materialProperties',
-    'materialCharacteristics',
-    'machineSettings',
+    'properties',
+    'characteristics',
+    'machine_settings',
     'environmentalImpact',
     'outcomeMetrics',
     'faq',
     '_metadata',
 ]
 
-# Property group order within materialProperties
+# Property group order within properties
 PROPERTY_GROUP_ORDER = [
     'material_characteristics',
     'laser_material_interaction',
@@ -132,8 +132,8 @@ def migrate_flat_to_grouped(mat_props: Dict) -> OrderedDict:
     """
     Migrate FLAT structure to GROUPED structure.
     
-    FLAT: materialProperties: { density: {...}, thermalConductivity: {...}, ... }
-    GROUPED: materialProperties:
+    FLAT: properties: { density: {...}, thermalConductivity: {...}, ... }
+    GROUPED: properties:
                material_characteristics:
                  label: Material Characteristics
                  description: ...
@@ -189,7 +189,7 @@ def migrate_flat_to_grouped(mat_props: Dict) -> OrderedDict:
 
 
 def normalize_material_properties(mat_props: Dict) -> OrderedDict:
-    """Normalize materialProperties structure (assumes already grouped)"""
+    """Normalize properties structure (assumes already grouped)"""
     if not isinstance(mat_props, dict):
         return mat_props
     
@@ -214,7 +214,7 @@ def normalize_material_properties(mat_props: Dict) -> OrderedDict:
 
 
 def normalize_machine_settings(settings: Dict) -> OrderedDict:
-    """Normalize machineSettings order"""
+    """Normalize machine_settings order"""
     if not isinstance(settings, dict):
         return settings
     
@@ -240,10 +240,10 @@ def normalize_material_entry(material_data: Dict) -> OrderedDict:
     # Add fields in canonical order
     for field in CANONICAL_ORDER:
         if field in material_data:
-            if field == 'materialProperties':
+            if field == 'properties':
                 # Migrate FLAT → GROUPED and normalize
                 normalized[field] = migrate_flat_to_grouped(material_data[field])
-            elif field == 'machineSettings':
+            elif field == 'machine_settings':
                 normalized[field] = normalize_machine_settings(material_data[field])
             else:
                 normalized[field] = material_data[field]

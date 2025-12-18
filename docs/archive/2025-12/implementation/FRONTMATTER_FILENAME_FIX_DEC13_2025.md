@@ -67,12 +67,12 @@ def get_frontmatter_path(item_name: str, field_name: str, domain: str) -> Path:
 
 ### Manual Testing:
 ```bash
-# Test syncing material_description for Acrylic (PMMA)
+# Test syncing description for Acrylic (PMMA)
 python3 -c "
 from generation.utils.frontmatter_sync import sync_field_to_frontmatter
 sync_field_to_frontmatter(
     item_name='Acrylic (PMMA)',
-    field_name='material_description',
+    field_name='description',
     field_value='Test content',
     domain='materials'
 )

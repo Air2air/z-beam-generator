@@ -5,7 +5,7 @@ These modules handle straightforward field extraction with minimal logic.
 
 REMOVED (Nov 2, 2025):
 - ImpactModule: environmentalImpact and outcomeMetrics fields removed from template
-- CharacteristicsModule: materialCharacteristics field removed from template
+- CharacteristicsModule: characteristics field removed from template
 """
 
 import logging
@@ -13,7 +13,7 @@ from typing import Dict, List
 
 
 class ComplianceModule:
-    """Extract regulatoryStandards for frontmatter"""
+    """Extract regulatory_standards for frontmatter"""
     
     def __init__(self):
         self.logger = logging.getLogger(__name__)
@@ -22,10 +22,10 @@ class ComplianceModule:
         """Extract regulatory standards list"""
         self.logger.info("Extracting regulatory standards")
         
-        standards = material_data.get('regulatoryStandards', [])
+        standards = material_data.get('regulatory_standards', [])
         
         if not isinstance(standards, list):
-            self.logger.warning(f"regulatoryStandards not a list: {type(standards)}")
+            self.logger.warning(f"regulatory_standards not a list: {type(standards)}")
             return []
         
         self.logger.info(f"✅ Extracted {len(standards)} standards")
