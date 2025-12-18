@@ -92,8 +92,3 @@ generators:
   - type: breadcrumb
     template: "Home / Materials / {category} / {name}"
     output_field: breadcrumb_text
-  
-  # 4. Generate URL-safe slug (if missing)
-  - type: slug
-    source_field: name
-    output_field: slug
