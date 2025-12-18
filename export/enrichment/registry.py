@@ -50,6 +50,7 @@ from export.enrichment.base import BaseEnricher
 # Import enrichers
 from export.enrichment.slug_enricher import DomainLinkagesSlugEnricher
 from export.enrichment.relationships_enricher import DomainLinkagesEnricher
+from export.enrichment.breadcrumb_enricher import BreadcrumbEnricher
 
 logger = logging.getLogger(__name__)
 
@@ -418,6 +419,7 @@ ENRICHER_REGISTRY = {
     'timestamp': TimestampEnricher,
     'relationships': DomainLinkagesEnricher,
     'relationships_slug': DomainLinkagesSlugEnricher,
+    'breadcrumb': BreadcrumbEnricher,  # Generates breadcrumb navigation arrays
 }
 
 

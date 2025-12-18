@@ -77,6 +77,14 @@ enrichments:
   # 6. Populate relationships from DomainLinkagesService
   - type: relationships
     domain: materials
+  
+  # 7. Generate breadcrumb navigation (array format)
+  - type: breadcrumb
+    domain: materials
+    category_field: category
+    subcategory_field: subcategory
+    name_field: name
+    slug_field: slug
 
 # ============================================================================
 # CONTENT GENERATORS (Applied in order)

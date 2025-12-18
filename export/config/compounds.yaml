@@ -60,6 +60,13 @@ enrichments:
     fields:
       - datePublished
       - dateModified
+  
+  # 5. Generate breadcrumb navigation (array format)
+  - type: breadcrumb
+    domain: compounds
+    category_field: compound_category
+    name_field: common_name
+    slug_field: slug
 
 # ============================================================================
 # CONTENT GENERATORS (Applied in order)
