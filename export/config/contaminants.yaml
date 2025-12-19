@@ -17,8 +17,30 @@ filename_suffix: ""
 # ============================================================================
 enrichments:
   # 0. Restructure contaminant frontmatter (move technical data to relationships)
-  - type: contaminant_restructure
-    enabled: true
+  - type: universal_restructure
+    domain: contaminants
+    cleanup_rules:
+      old_relationship_keys:
+        - related_contaminants
+        - related_materials
+        - related_compounds
+      legacy_fields:
+        - metadata
+        - voice_enhanced
+      move_to_relationships:
+        - visual_characteristics
+        - laser_properties
+        - eeat
+        - valid_materials
+        - invalid_materials
+        - prohibited_materials
+        - regulatory_standards_detail
+        - context_notes
+        - realism_notes
+        - formation_conditions
+        - chemical_formula
+        - scientific_name
+        - required_elements
   
   # 1. Enrich compound linkages (produces_compounds when removed)
   - type: compound_linkage

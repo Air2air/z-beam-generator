@@ -23,6 +23,13 @@ USAGE:
 import yaml
 from pathlib import Path
 from typing import Dict, List, Optional, Set
+
+from shared.utils.formatters import (
+    normalize_taxonomy,
+    extract_slug,
+    format_image_url,
+    format_display_name
+)
 from dataclasses import dataclass
 
 
@@ -273,20 +280,17 @@ class DomainAssociationsValidator:
                 contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
                 
                 # Build linkage per FRONTMATTER_GENERATOR_LINKAGE_SPEC.md
-                category = contaminant_data.get('category', 'general').replace('_', '-')
-                subcategory = contaminant_data.get('subcategory', 'misc').replace('_', '-')
+                category, subcategory = normalize_taxonomy(contaminant_data)
                 
-                # Extract display name for title
-                display_name = contaminant_id.replace('-contamination', '').replace('-', ' ').title()
-                
-                # Create slug for image path (without -contamination suffix)
-                slug = contaminant_id.replace('-contamination', '')
+                # Extract display name and slug using formatters
+                display_name = format_display_name(contaminant_id, '-contamination')
+                slug = extract_slug(contaminant_id, '-contamination')
                 
                 results.append({
                     'id': contaminant_id,
                     'title': contaminant_data.get('name', display_name),
                     'url': f"/contaminants/{category}/{subcategory}/{contaminant_id}",
-                    'image': f"/images/contaminants/{slug}.jpg",
+                    'image': format_image_url('contaminants', slug),
                     'category': category,
                     'subcategory': subcategory,
                     'frequency': assoc['frequency'],
@@ -324,18 +328,17 @@ class DomainAssociationsValidator:
                 material_data = self.materials_data.get('materials', {}).get(material_id, {})
                 
                 # Build linkage per FRONTMATTER_GENERATOR_LINKAGE_SPEC.md
-                category = material_data.get('category', 'general').replace('_', '-')
-                subcategory = material_data.get('subcategory', 'misc').replace('_', '-')
+                category, subcategory = normalize_taxonomy(material_data)
                 
-                # Extract display name and slug for title and image
-                slug = material_id.replace('-laser-cleaning', '')
-                display_name = slug.replace('-', ' ').title()
+                # Extract display name and slug using formatters
+                slug = extract_slug(material_id, '-laser-cleaning')
+                display_name = format_display_name(material_id, '-laser-cleaning')
                 
                 results.append({
                     'id': material_id,
                     'title': material_data.get('name', display_name),
                     'url': f"/materials/{category}/{subcategory}/{material_id}",
-                    'image': f"/images/material/{material_id}-hero.jpg",
+                    'image': format_image_url('materials', material_id),
                     'category': category,
                     'subcategory': subcategory,
                     'frequency': assoc['frequency'],
@@ -374,17 +377,16 @@ class DomainAssociationsValidator:
                 compound_id = assoc['compound_id']
                 
                 # Get compound details from Compounds.yaml (uses slug without suffix as key)
-                slug_without_suffix = compound_id.replace('-compound', '')
+                slug_without_suffix = extract_slug(compound_id, '-compound')
                 compound_data = self.compounds_data.get('compounds', {}).get(slug_without_suffix, {})
                 
                 # Build linkage per FRONTMATTER_GENERATOR_LINKAGE_SPEC.md
-                category = compound_data.get('category', 'general').replace('_', '-')
-                subcategory = compound_data.get('subcategory', 'misc').replace('_', '-')
+                category, subcategory = normalize_taxonomy(compound_data)
                 
                 results.append({
                     'id': compound_id,
                     'url': f"/compounds/{category}/{subcategory}/{compound_id}",
-                    'image': f"/images/compounds/{slug_without_suffix}.jpg",
+                    'image': format_image_url('compounds', slug_without_suffix),
                     'category': category,
                     'subcategory': subcategory,
                     'frequency': assoc['frequency'],
@@ -420,20 +422,17 @@ class DomainAssociationsValidator:
                 contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
                 
                 # Build linkage per FRONTMATTER_GENERATOR_LINKAGE_SPEC.md
-                category = contaminant_data.get('category', 'general').replace('_', '-')
-                subcategory = contaminant_data.get('subcategory', 'misc').replace('_', '-')
+                category, subcategory = normalize_taxonomy(contaminant_data)
                 
-                # Extract display name for title
-                display_name = contaminant_id.replace('-contamination', '').replace('-', ' ').title()
-                
-                # Create slug for image path (without -contamination suffix)
-                slug = contaminant_id.replace('-contamination', '')
+                # Extract display name and slug using formatters
+                display_name = format_display_name(contaminant_id, '-contamination')
+                slug = extract_slug(contaminant_id, '-contamination')
                 
                 results.append({
                     'id': contaminant_id,
                     'title': contaminant_data.get('name', display_name),
                     'url': f"/contaminants/{category}/{subcategory}/{contaminant_id}",
-                    'image': f"/images/contaminants/{slug}.jpg",
+                    'image': format_image_url('contaminants', slug),
                     'category': category,
                     'subcategory': subcategory,
                     'frequency': assoc['frequency'],

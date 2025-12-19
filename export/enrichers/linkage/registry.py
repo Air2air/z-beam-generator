@@ -53,6 +53,7 @@ from export.enrichers.linkage.relationships_enricher import DomainLinkagesEnrich
 from export.enrichers.linkage.relationship_grouping_enricher import RelationshipGroupingEnricher
 from export.enrichers.linkage.relationship_renaming_enricher import RelationshipRenamingEnricher
 from export.enrichers.linkage.author_enricher import AuthorEnricher
+from export.enrichers.linkage.universal_restructure_enricher import UniversalRestructureEnricher
 from export.enrichers.linkage.compound_restructure_enricher import CompoundRestructureEnricher
 from export.enrichers.linkage.contaminant_restructure_enricher import ContaminantRestructureEnricher
 from export.enrichers.linkage.settings_restructure_enricher import SettingsRestructureEnricher
@@ -422,6 +423,7 @@ class TimestampEnricher(BaseEnricher):
 
 # Registry mapping enricher type → class
 ENRICHER_REGISTRY = {
+    'universal_restructure': UniversalRestructureEnricher,  # Consolidates all restructure enrichers (Dec 19, 2025)
     'compound_restructure': CompoundRestructureEnricher,
     'contaminant_restructure': ContaminantRestructureEnricher,
     'relationship_renaming': RelationshipRenamingEnricher,  # Change 3: Dec 19, 2025
@@ -441,7 +443,6 @@ ENRICHER_REGISTRY = {
     'relationships_slug': DomainLinkagesSlugEnricher,
     'breadcrumb': BreadcrumbEnricher,  # Generates breadcrumb navigation arrays
 }
-
 
 def create_enrichers(configs: List[Dict[str, Any]]) -> List[BaseEnricher]:
     """

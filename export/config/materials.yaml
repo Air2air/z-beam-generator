@@ -16,7 +16,19 @@ filename_suffix: ""
 # ============================================================================
 enrichments:
   # 0. Restructure: Consolidate root fields into relationships (Phase 3 - Dec 19, 2025)
-  - type: materials_restructure
+  - type: universal_restructure
+    domain: materials
+    cleanup_rules:
+      old_relationship_keys:
+        - related_contaminants
+        - related_materials
+        - related_compounds
+      legacy_fields:
+        - metadata
+        - eeat
+        - voice_enhanced
+      duplicate_fields:
+        regulatory_standards: regulatory  # root → relationships.regulatory
   
   # 1. Enrich compound linkages (produces_compounds)
   - type: compound_linkage

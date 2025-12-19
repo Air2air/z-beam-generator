@@ -17,7 +17,33 @@ filename_suffix: -compound
 # ============================================================================
 enrichments:
   # 0. RESTRUCTURE: Move top-level fields to relationships (NEW - Phase 1)
-  - type: compound_restructure
+  - type: universal_restructure
+    domain: compounds
+    cleanup_rules:
+      old_relationship_keys:
+        - related_contaminants
+        - related_materials
+        - related_compounds
+      legacy_fields:
+        - metadata
+        - eeat
+        - voice_enhanced
+      move_to_relationships:
+        - chemical_properties
+        - physical_properties
+        - toxicity
+        - formation_sources
+        - health_effects
+        - exposure_monitoring
+        - personal_protection
+        - emergency_response
+        - occupational_exposure_limits
+        - regulatory_frameworks
+        - ventilation_systems
+        - engineering_controls
+        - safe_work_practices
+        - medical_surveillance
+        - risk_assessment
   
   # 1. Enrich contaminant linkages (source_contaminants)
   - type: contaminant_linkage
