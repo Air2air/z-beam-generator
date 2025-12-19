@@ -755,8 +755,7 @@ class TrivialFrontmatterExporter:
         # POLICY: Material_name is now the ID (slug format) after ID migration
         # No need to slugify or add suffix - ID already includes -laser-cleaning
         filename = f"{material_name}.yaml"
-        slug = material_name
-        breadcrumb = self._generate_breadcrumb(material_data, slug)
+        breadcrumb = self._generate_breadcrumb(material_data, material_name)
         frontmatter['breadcrumb'] = breadcrumb
         
         # Enrich author data from Authors.yaml (Materials.yaml only has author.id)
@@ -951,7 +950,6 @@ class TrivialFrontmatterExporter:
         # Core metadata
         materials_page['name'] = full_frontmatter.get('name')
         # material_name is already the ID (slug format including -laser-cleaning suffix)
-        materials_page['slug'] = material_name
         # Add id field matching filename pattern
         materials_page['id'] = material_name
         materials_page['category'] = full_frontmatter.get('category')

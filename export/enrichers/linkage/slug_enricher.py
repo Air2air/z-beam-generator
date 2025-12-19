@@ -103,15 +103,12 @@ class DomainLinkagesSlugEnricher(BaseEnricher):
                 if url:
                     slug = self._extract_slug_from_url(url)
                     if slug:
-                        entry['slug'] = slug
-                        total_added += 1
-                        print(f"✅ Added slug '{slug}' to {linkage_type} entry (id={entry.get('id')})")
-                        logger.debug(f"Added slug '{slug}' to {linkage_type} entry (id={entry.get('id')})")
-        
-        print(f"📊 SUMMARY: Added {total_added} slug fields ({total_processed} entries processed)")
-        if total_added > 0:
-            logger.info(f"Added {total_added} slug fields ({total_processed} entries processed)")
-        
+                        # DISABLED: Per Phase 1 migration, slug fields should not exist in relationships
+                        # entry['slug'] = slug
+                        # total_added += 1
+                        # print(f"✅ Added slug '{slug}' to {linkage_type} entry (id={entry.get('id')})")  
+                        # logger.debug(f"Added slug '{slug}' to {linkage_type} entry (id={entry.get('id')})")  
+                        pass  # Slug enrichment disabled per FRONTMATTER_FORMATTING_SPECIFICATION Phase 1
         return frontmatter
     
     def _extract_slug_from_url(self, url: str) -> str:

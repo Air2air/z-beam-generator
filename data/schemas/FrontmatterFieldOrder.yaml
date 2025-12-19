@@ -24,7 +24,6 @@ materials:
     # Identity fields
     - id
     - name
-    - slug
     - category
     - subcategory
     - content_type
@@ -98,7 +97,6 @@ materials:
   required_fields:
     - id
     - name
-    - slug
     - category
     - subcategory
     - content_type
@@ -112,7 +110,6 @@ contaminants:
     # Identity fields
     - id
     - name
-    - slug
     - display_name
     
     # Classification
@@ -178,7 +175,6 @@ contaminants:
   required_fields:
     - id
     - name
-    - slug
     - category
     - subcategory
     - relationships
@@ -195,7 +191,6 @@ compounds:
     - id
     - name
     - display_name
-    - slug
     
     # Chemical identity
     - chemical_formula
@@ -244,7 +239,6 @@ compounds:
   required_fields:
     - id
     - name
-    - slug
     - chemical_formula
     - category
     - subcategory
@@ -261,7 +255,6 @@ settings:
     # Identity fields
     - id
     - name
-    - slug
     - display_name
     
     # Classification
@@ -324,7 +317,6 @@ settings:
   required_fields:
     - id
     - name
-    - slug
     - category
     - subcategory
     - wavelength
