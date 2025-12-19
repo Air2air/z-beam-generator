@@ -36,7 +36,6 @@ materials:
     - name
     - title
     - category
-    - subcategory
     
     # ─────────────────────────────────────────────────────
     # 2. PAGE METADATA
@@ -69,7 +68,7 @@ materials:
     - author
     
     # ─────────────────────────────────────────────────────
-    # 10. RELATIONSHIPS (Last Section)
+    # 10. RELATIONSHIPS (Last Section - includes regulatory_standards)
     # ─────────────────────────────────────────────────────
     - relationships
   
@@ -77,7 +76,6 @@ materials:
     - id
     - name
     - category
-    - subcategory
     - content_type
     - author
 
@@ -92,7 +90,6 @@ contaminants:
     - id
     - name
     - category
-    - subcategory
     
     # ─────────────────────────────────────────────────────
     # 2. PAGE METADATA
@@ -122,7 +119,6 @@ contaminants:
     - id
     - name
     - category
-    - subcategory
     - content_type
 
 # =============================================================================
@@ -137,7 +133,6 @@ compounds:
     - name
     - display_name
     - category
-    - subcategory
     - hazard_class
     
     # ─────────────────────────────────────────────────────
@@ -188,7 +183,6 @@ compounds:
     - name
     - chemical_formula
     - category
-    - subcategory
     - content_type
 
 # =============================================================================
@@ -220,47 +214,14 @@ settings:
     - machine_settings
     
     # ─────────────────────────────────────────────────────
-    # 10. RELATIONSHIPS
+    # 10. RELATIONSHIPS (Last Section)
     # ─────────────────────────────────────────────────────
     - relationships
-    - working_distance
-    - assist_gas
-    - assist_gas_pressure
-    
-    # Process parameters
-    - number_of_passes
-    - overlap_percentage
-    - scanning_pattern
-    
-    # Quality metrics
-    - expected_removal_rate
-    - surface_finish
-    - process_efficiency
-    
-    # Content fields
-    - description
-    - micro
-    - faq
-    
-    # Cross-domain relationships
-    - relationships
-    
-    # Authorship
-    - author
-    
-    # Navigation
-    - breadcrumbs
-    
-    # Metadata
-    - type
-    - domain
-    - last_updated
   
   required_fields:
     - id
     - name
     - category
-    - subcategory
     - wavelength
     - relationships
     - author
@@ -286,6 +247,7 @@ relationships_structure:
     - related_contaminants
     - related_compounds
     - related_settings
+    - regulatory_standards
   
   contaminants:
     - related_materials
@@ -354,7 +316,6 @@ field_types:
     - slug
     - display_name
     - category
-    - subcategory
     - description
     - micro
     - type
