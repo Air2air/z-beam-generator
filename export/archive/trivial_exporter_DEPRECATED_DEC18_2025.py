@@ -758,6 +758,17 @@ class TrivialFrontmatterExporter:
         breadcrumb = self._generate_breadcrumb(material_data, material_name)
         frontmatter['breadcrumb'] = breadcrumb
         
+        # Add full_path from final breadcrumb item (complete hierarchical path)
+        if breadcrumb:
+            frontmatter['full_path'] = breadcrumb[-1]['href']
+            if material_name == 'aluminum-laser-cleaning':
+                print(f"✨ DEBUG: Set full_path in export_single for {material_name}")
+                print(f"✨ DEBUG: full_path value: {breadcrumb[-1]['href']}")
+                print(f"✨ DEBUG: breadcrumb: {breadcrumb}")
+            self.logger.info(f"✅ DEBUG: Set full_path to '{breadcrumb[-1]['href']}' for {material_name}")
+        else:
+            self.logger.warning(f"⚠️ DEBUG: No breadcrumb for {material_name}, skipping full_path")
+        
         # Enrich author data from Authors.yaml (Materials.yaml only has author.id)
         author_field = material_data.get('author', {})
         author_id = author_field.get('id') if isinstance(author_field, dict) else author_field
@@ -788,7 +799,7 @@ class TrivialFrontmatterExporter:
         
         # Define fields that should be exported to frontmatter (per frontmatter_template.yaml)
         EXPORTABLE_FIELDS = {
-            'breadcrumb',
+            'breadcrumb', 'full_path',  # Navigation fields
             'category', 'subcategory', 'title', 'description',
             'datePublished', 'dateModified',  # Schema.org date fields from git history
             'images', 'micro', 'regulatory_standards', 'eeat',
@@ -834,11 +845,11 @@ class TrivialFrontmatterExporter:
                 # If no FAQ in Materials.yaml, will try external FAQs.yaml after loop
                 continue
             elif key == 'regulatory_standards':
-                # Copy regulatory_standards from Materials.yaml
-                # Keep description field for regulatory standards (user-facing)
-                if value:  # If exists in Materials.yaml, use it
-                    frontmatter['regulatory_standards'] = self._strip_generation_metadata(value)
-                # If no regulatory_standards in Materials.yaml, will try external RegulatoryStandards.yaml after loop
+                # Skip - regulatory_standards goes into relationships, not top-level
+                # Will be added to relationships later in _create_materials_page()
+                continue
+            elif key == 'subcategory':
+                # Skip - subcategory removed from frontmatter schema
                 continue
             else:
                 # Copy as-is but remove description fields and strip generation metadata
@@ -869,11 +880,9 @@ class TrivialFrontmatterExporter:
             formatted_faq = self._format_faq_with_topics(cleaned)
             frontmatter['faq'] = self._strip_generation_metadata(formatted_faq)
         
-        # Add regulatory standards from RegulatoryStandards.yaml (if not already present from Materials.yaml)
-        if 'regulatory_standards' not in frontmatter and material_name in self.regulatory_standards:
-            regulatory_data = self.regulatory_standards[material_name]
-            normalized = self._normalize_regulatory_standards(regulatory_data)
-            frontmatter['regulatory_standards'] = self._strip_generation_metadata(normalized)
+        # Skip regulatory standards from RegulatoryStandards.yaml
+        # regulatory_standards goes into relationships, not top-level
+        # Will be loaded from Materials.yaml or RegulatoryStandards.yaml and placed in relationships by _create_materials_page()
         
         # Add challenges from Settings.yaml (material-specific challenges)
         if settings_entry and 'challenges' in settings_entry:
@@ -945,6 +954,19 @@ class TrivialFrontmatterExporter:
         
         Includes: micro, FAQ, regulatory standards, material properties, images, author
         """
+        # Debug: Check what's in full_frontmatter right when this method is called
+        if material_name == 'aluminum-laser-cleaning':
+            print(f"🔍 DEBUG: _export_materials_page called for {material_name}")
+            print(f"🔍 DEBUG: 'full_path' in full_frontmatter: {'full_path' in full_frontmatter}")
+            print(f"🔍 DEBUG: 'breadcrumb' in full_frontmatter: {'breadcrumb' in full_frontmatter}")
+            if 'full_path' in full_frontmatter:
+                print(f"🔍 DEBUG: full_path value: {full_frontmatter['full_path']}")
+            if 'breadcrumb' in full_frontmatter:
+                bc = full_frontmatter['breadcrumb']
+                print(f"🔍 DEBUG: breadcrumb length: {len(bc) if bc else 0}")
+                if bc and len(bc) > 0:
+                    print(f"🔍 DEBUG: breadcrumb last item: {bc[-1]}")
+        
         materials_page = {}
         
         # Core metadata
@@ -953,7 +975,7 @@ class TrivialFrontmatterExporter:
         # Add id field matching filename pattern
         materials_page['id'] = material_name
         materials_page['category'] = full_frontmatter.get('category')
-        materials_page['subcategory'] = full_frontmatter.get('subcategory')
+        # subcategory removed - no longer used in frontmatter
         materials_page['content_type'] = 'unified_material'
         materials_page['schema_version'] = '4.0.0'
         
@@ -968,7 +990,17 @@ class TrivialFrontmatterExporter:
         # Page-specific metadata
         materials_page['title'] = full_frontmatter.get('title')
         materials_page['description'] = full_frontmatter.get('description')
+        
+        # Add full_path if it exists (only add if not None)
+        if 'full_path' in full_frontmatter and full_frontmatter['full_path'] is not None:
+            materials_page['full_path'] = full_frontmatter['full_path']
+            self.logger.info(f"✅ DEBUG: Copied full_path to materials_page: {full_frontmatter['full_path']}")
+        else:
+            self.logger.warning(f"⚠️ DEBUG: full_path NOT in full_frontmatter or is None for {material_name}")
+        
         materials_page['breadcrumb'] = full_frontmatter.get('breadcrumb')
+        
+        # Debug logging removed - was here before
         
         # Images
         materials_page['images'] = full_frontmatter.get('images')
@@ -976,25 +1008,46 @@ class TrivialFrontmatterExporter:
         # Content (materials page specific)
         materials_page['micro'] = full_frontmatter.get('micro')
         materials_page['faq'] = full_frontmatter.get('faq')
-        materials_page['regulatory_standards'] = full_frontmatter.get('regulatory_standards')
+        # regulatory_standards moved to relationships - see below
         materials_page['properties'] = full_frontmatter.get('properties')
         materials_page['eeat'] = full_frontmatter.get('eeat')
         materials_page['metadata'] = full_frontmatter.get('metadata')
         
         # Cross-domain relationships (Material ↔ Contaminant bidirectional linkages)
-        materials_page['relationships'] = full_frontmatter.get('relationships')
+        # Now includes regulatory_standards
+        relationships = full_frontmatter.get('relationships', {})
+        if not isinstance(relationships, dict):
+            relationships = {}
+        
+        # Add regulatory_standards to relationships
+        # Load from Materials.yaml or RegulatoryStandards.yaml
+        regulatory_standards = None
+        if material_name in self.materials:
+            material_data = self.materials[material_name]
+            regulatory_standards = material_data.get('regulatory_standards')
+        
+        # If not in Materials.yaml, try RegulatoryStandards.yaml
+        if not regulatory_standards and material_name in self.regulatory_standards:
+            regulatory_data = self.regulatory_standards[material_name]
+            regulatory_standards = self._normalize_regulatory_standards(regulatory_data)
+        
+        if regulatory_standards:
+            regulatory_standards = self._strip_generation_metadata(regulatory_standards)
+            relationships['regulatory_standards'] = regulatory_standards
+        
+        materials_page['relationships'] = relationships
         
         # Generate serviceOffering for SEO rich snippets (Service/Product JSON-LD schema)
-        # Uses category/subcategory to determine difficulty, hours, and target contaminants
+        # Uses category to determine difficulty, hours, and target contaminants
         category = full_frontmatter.get('category', '')
-        subcategory = full_frontmatter.get('subcategory', '')
+        # subcategory no longer used
         machine_settings = full_frontmatter.get('machine_settings')
         material_properties = full_frontmatter.get('properties')
         
         materials_page['serviceOffering'] = self._generate_service_offering(
             material_name=material_name,
             category=category,
-            subcategory=subcategory,
+            subcategory='',  # No longer used
             machine_settings=machine_settings,
             material_properties=material_properties
         )
@@ -1012,8 +1065,20 @@ class TrivialFrontmatterExporter:
         filename = f"{material_name}.yaml"
         output_path = self.materials_output_dir / filename
         
+        # Debug: Check if full_path is in materials_page before reordering
+        if material_name == 'aluminum-laser-cleaning':
+            self.logger.info(f"🔍 DEBUG: Before reorder, materials_page has full_path: {'full_path' in materials_page}")
+            if 'full_path' in materials_page:
+                self.logger.info(f"🔍 DEBUG: full_path value: {materials_page['full_path']}")
+        
         # Apply field order specification
         ordered_materials_page = self.field_order_validator.reorder_fields(materials_page, 'materials')
+        
+        # Debug: Check if full_path survived reordering
+        if material_name == 'aluminum-laser-cleaning':
+            self.logger.info(f"🔍 DEBUG: After reorder, ordered_materials_page has full_path: {'full_path' in ordered_materials_page}")
+            if 'full_path' in ordered_materials_page:
+                self.logger.info(f"🔍 DEBUG: full_path value after reorder: {ordered_materials_page['full_path']}")
         
         with open(output_path, 'w', encoding='utf-8') as f:
             yaml.dump(dict(ordered_materials_page), f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=float('inf'))
@@ -1050,7 +1115,7 @@ class TrivialFrontmatterExporter:
         # Add id field matching filename pattern
         settings_page['id'] = f"{base_slug}-settings"
         settings_page['category'] = full_frontmatter.get('category')
-        settings_page['subcategory'] = full_frontmatter.get('subcategory')
+        # subcategory removed - no longer used
         settings_page['content_type'] = 'unified_settings'
         settings_page['schema_version'] = '4.0.0'
         settings_page['active'] = True
@@ -1072,7 +1137,7 @@ class TrivialFrontmatterExporter:
         
         # Settings-specific breadcrumb (uses /materials paths)
         category = full_frontmatter.get('category', '')
-        subcategory = full_frontmatter.get('subcategory', '')
+        # subcategory removed - no longer used in breadcrumbs
         breadcrumb = [
             {'label': 'Home', 'href': '/'},
             {'label': 'Materials', 'href': '/materials'}
@@ -1084,11 +1149,7 @@ class TrivialFrontmatterExporter:
                 'href': f'/materials/{category}'
             })
         
-        if subcategory:
-            breadcrumb.append({
-                'label': subcategory.replace('_', ' ').replace('-', ' ').title(),
-                'href': f'/materials/{category}/{subcategory}'
-            })
+        # No subcategory level in breadcrumbs
         
         breadcrumb.append({
             'label': full_frontmatter.get('name'),
@@ -1096,6 +1157,10 @@ class TrivialFrontmatterExporter:
         })
         
         settings_page['breadcrumb'] = breadcrumb
+        
+        # Add full_path from final breadcrumb item
+        if breadcrumb:
+            settings_page['full_path'] = breadcrumb[-1]['href']
         
         # Images (shared between pages)
         settings_page['images'] = full_frontmatter.get('images')

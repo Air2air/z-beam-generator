@@ -54,18 +54,23 @@ class BreadcrumbEnricher:
     
     def enrich(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Generate breadcrumb navigation array.
+        Generate breadcrumb navigation array and full_path.
         
         Args:
             frontmatter: Input frontmatter dict
         
         Returns:
-            Frontmatter with breadcrumb array added
+            Frontmatter with breadcrumb array and full_path added
         """
         breadcrumb = self._generate_breadcrumb(frontmatter)
         frontmatter['breadcrumb'] = breadcrumb
         
-        logger.debug(f"Generated breadcrumb with {len(breadcrumb)} levels")
+        # Add full_path from final breadcrumb item
+        if breadcrumb and len(breadcrumb) > 0:
+            frontmatter['full_path'] = breadcrumb[-1]['href']
+            logger.debug(f"Generated breadcrumb with {len(breadcrumb)} levels, full_path: {breadcrumb[-1]['href']}")
+        else:
+            logger.warning(f"No breadcrumb generated, skipping full_path")
         
         return frontmatter
     

@@ -11,6 +11,7 @@ Commands:
 
 import sys
 import argparse
+import subprocess
 from pathlib import Path
 from shared.commands.postprocess import PostprocessCommand
 from export.core.universal_exporter import UniversalFrontmatterExporter
@@ -100,6 +101,24 @@ def export_command(args):
         if skipped > 0:
             print(f"   Skipped: {skipped} (existing files, use --force to overwrite)")
         
+        # Run link integrity validation
+        print(f"\n🔍 Running link integrity validation for {args.domain}...")
+        validation_result = subprocess.run(
+            ['python3', 'scripts/validation/verify_frontmatter_links.py', '--domain', args.domain],
+            capture_output=True,
+            text=True
+        )
+        
+        # Show validation output
+        if validation_result.stdout:
+            print(validation_result.stdout)
+        
+        if validation_result.returncode != 0:
+            print(f"⚠️  Link validation found issues (exit code: {validation_result.returncode})")
+            print(f"   Review errors above. Use scripts/validation/verify_frontmatter_links.py for details.")
+        else:
+            print(f"✅ Link integrity validation passed")
+        
     except Exception as e:
         print(f"❌ Export failed: {e}")
         sys.exit(1)
@@ -112,6 +131,33 @@ def export_all_command(args):
     
     print("="*80)
     print("🚀 EXPORTING ALL DOMAINS TO PRODUCTION")
+    print("="*80)
+    
+    # Step 1: Validate source data integrity BEFORE export
+    print("\n" + "="*80)
+    print("🔍 STEP 1: VALIDATING SOURCE DATA INTEGRITY")
+    print("="*80)
+    
+    data_validation_result = subprocess.run(
+        ['python3', 'scripts/validation/verify_data_integrity.py'],
+        capture_output=True,
+        text=True
+    )
+    
+    if data_validation_result.stdout:
+        print(data_validation_result.stdout)
+    
+    if data_validation_result.returncode != 0:
+        print("\n❌ EXPORT ABORTED: Data integrity validation failed")
+        print("   Fix broken references in source data before exporting")
+        print("   Run: python3 scripts/validation/verify_data_integrity.py")
+        sys.exit(1)
+    
+    print("\n✅ Source data integrity validated")
+    
+    # Step 2: Export all domains
+    print("\n" + "="*80)
+    print("🔄 STEP 2: EXPORTING ALL DOMAINS")
     print("="*80)
     
     total_exported = 0
@@ -132,6 +178,28 @@ def export_all_command(args):
     
     print(f"\n{'='*80}")
     print(f"✅ TOTAL: {total_exported} files exported")
+    
+    # Step 3: Validate exported frontmatter links
+    print("\n" + "="*80)
+    print("🔍 STEP 3: VALIDATING EXPORTED FRONTMATTER")
+    print("="*80)
+    
+    frontmatter_validation_result = subprocess.run(
+        ['python3', 'scripts/validation/verify_frontmatter_links.py'],
+        capture_output=True,
+        text=True
+    )
+    
+    if frontmatter_validation_result.stdout:
+        print(frontmatter_validation_result.stdout)
+    
+    if frontmatter_validation_result.returncode != 0:
+        print("\n⚠️  DEPLOYMENT WARNING: Frontmatter validation found issues")
+        print("   Review errors above before deploying to production")
+        print("   Run: python3 scripts/validation/verify_frontmatter_links.py")
+    else:
+        print("\n✅ Frontmatter link integrity validated")
+    
     print("="*80)
 
 

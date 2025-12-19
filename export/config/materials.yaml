@@ -15,6 +15,9 @@ filename_suffix: ""
 # ENRICHMENTS (Applied in order)
 # ============================================================================
 enrichments:
+  # 0. Restructure: Consolidate root fields into relationships (Phase 3 - Dec 19, 2025)
+  - type: materials_restructure
+  
   # 1. Enrich compound linkages (produces_compounds)
   - type: compound_linkage
     field: produces_compounds
@@ -80,7 +83,11 @@ enrichments:
   - type: relationships
     domain: materials
   
-  # 8. Generate breadcrumb navigation (array format)
+  # 8. Group relationships into semantic categories
+  - type: relationship_grouping
+    domain: materials
+  
+  # 9. Generate breadcrumb navigation (array format)
   - type: breadcrumb
     domain: materials
     category_field: category

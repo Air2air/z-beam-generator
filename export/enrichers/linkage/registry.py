@@ -54,6 +54,8 @@ from export.enrichers.linkage.relationship_grouping_enricher import Relationship
 from export.enrichers.linkage.author_enricher import AuthorEnricher
 from export.enrichers.linkage.compound_restructure_enricher import CompoundRestructureEnricher
 from export.enrichers.linkage.contaminant_restructure_enricher import ContaminantRestructureEnricher
+from export.enrichers.linkage.settings_restructure_enricher import SettingsRestructureEnricher
+from export.enrichers.linkage.materials_restructure_enricher import MaterialsRestructureEnricher
 from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
 from export.enrichers.metadata.name_enricher import NameEnricher
 
@@ -419,6 +421,8 @@ class TimestampEnricher(BaseEnricher):
 ENRICHER_REGISTRY = {
     'compound_restructure': CompoundRestructureEnricher,
     'contaminant_restructure': ContaminantRestructureEnricher,
+    'settings_restructure': SettingsRestructureEnricher,  # Phase 1: Dec 19, 2025
+    'materials_restructure': MaterialsRestructureEnricher,  # Phase 3: Dec 19, 2025
     'compound_linkage': CompoundLinkageEnricher,
     'material_linkage': MaterialLinkageEnricher,
     'contaminant_linkage': ContaminantLinkageEnricher,

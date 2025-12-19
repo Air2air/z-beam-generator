@@ -2452,8 +2452,9 @@ If you create a "fix script" that patches frontmatter files directly, the fix wi
                            ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │ LAYER 2: EXPORT PROCESS (Transformation Logic)                  │
-│ • export/core/trivial_exporter.py (main generation logic)       │
+│ • export/core/universal_exporter.py (PRODUCTION SYSTEM)         │
 │ • export/config/*.yaml (domain configurations)                  │
+│ • export/enrichers/**/*.py (enrichment logic)                   │
 │ • export/generation/registry.py (field generators)              │
 │ FIX HERE: When generation logic is wrong (format, structure)    │
 └──────────────────────────┬──────────────────────────────────────┘
@@ -2484,8 +2485,8 @@ If you create a "fix script" that patches frontmatter files directly, the fix wi
 - **Issue**: 422 frontmatter files had `breadcrumb_text: "Home / Materials / stone / Alabaster"` (text string)
 - **Expected**: `breadcrumb: [{label: "Home", href: "/"}, {label: "Materials", href: "/materials"}]` (array)
 - ❌ WRONG: Create script to convert breadcrumb_text to breadcrumb arrays in frontmatter files
-- ✅ RIGHT: Removed `BreadcrumbGenerator` from export/config/*.yaml (Layer 2) - it was overwriting TrivialFrontmatterExporter's correct format
-- **Result**: Next regeneration will use TrivialFrontmatterExporter._generate_breadcrumb() which creates proper arrays
+- ✅ RIGHT: Removed `BreadcrumbGenerator` from export/config/*.yaml (Layer 2) - it was overwriting correct format
+- **Result**: Next regeneration uses BreadcrumbEnricher in universal_exporter.py which creates proper arrays
 - **Verification**: After regeneration, checked multiple files confirmed breadcrumb is array, breadcrumb_text removed
 - WHY: Fixing the config prevents the bad generator from running; fix persists through all future regenerations
 

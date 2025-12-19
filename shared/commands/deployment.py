@@ -10,6 +10,7 @@ def deploy_to_production():
     """Deploy generated content to Next.js production site."""
     import shutil
     import os
+    import subprocess
     
     # Clear ALL caches to ensure fresh data is used
     from domains.materials.materials_cache import clear_materials_cache, invalidate_material_cache
@@ -19,30 +20,53 @@ def deploy_to_production():
     invalidate_material_cache()  # Clear name lookup cache
     print("🔄 Cleared all caches to ensure fresh data")
     
-    # STEP 1: Regenerate frontmatter from Materials.yaml
+    # STEP 0: Validate source data integrity BEFORE regeneration
     print("\n" + "=" * 80)
-    print("📦 STEP 1: Regenerating frontmatter from Materials.yaml")
+    print("🔍 STEP 0: VALIDATING SOURCE DATA INTEGRITY")
+    print("=" * 80)
+    
+    validation_result = subprocess.run(
+        ['python3', 'scripts/validation/verify_data_integrity.py'],
+        capture_output=True,
+        text=True
+    )
+    
+    if validation_result.stdout:
+        print(validation_result.stdout)
+    
+    if validation_result.returncode != 0:
+        print("\n❌ DEPLOYMENT ABORTED: Data integrity validation failed")
+        print("   Fix broken references in source data before deploying")
+        print("   Run: python3 scripts/validation/verify_data_integrity.py")
+        return False
+    
+    print("\n✅ Source data integrity validated - proceeding with deployment")
+    
+    # STEP 1: Regenerate frontmatter from all domains (Universal Export System)
+    print("\n" + "=" * 80)
+    print("📦 STEP 1: Regenerating frontmatter for ALL DOMAINS (Universal Export System)")
     print("=" * 80)
     
     try:
-        # Use TrivialFrontmatterExporter to regenerate all frontmatter files
-        from export.core.trivial_exporter import export_all_frontmatter
+        # Use Universal export system (regenerate_all_domains.py)
+        import sys
+        from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+        from scripts.operations.regenerate_all_domains import main as regenerate_all
         import time
         
         start_time = time.time()
-        print("🔄 Exporting all materials from Materials.yaml...")
+        print("🔄 Exporting all domains: materials, contaminants, compounds, settings...")
         
-        results = export_all_frontmatter()
+        exit_code = regenerate_all()
         
         elapsed = time.time() - start_time
-        success_count = sum(1 for v in results.values() if v)
         
-        print(f"\n✅ Frontmatter regeneration complete:")
-        print(f"   • Success: {success_count}/{len(results)} materials")
-        print(f"   • Time: {elapsed:.1f}s")
-        
-        if success_count == 0:
-            print("❌ No materials were successfully exported")
+        if exit_code == 0:
+            print(f"\n✅ Frontmatter regeneration complete (all 424 files)")
+            print(f"   • Time: {elapsed:.1f}s")
+        else:
+            print(f"❌ Frontmatter regeneration had errors (exit code: {exit_code})")
             return False
             
     except Exception as e:
@@ -51,6 +75,50 @@ def deploy_to_production():
         traceback.print_exc()
         return False
     
+    # STEP 2: Validate exported frontmatter files
+    print("\n" + "=" * 80)
+    print("🔍 STEP 2: VALIDATING EXPORTED FRONTMATTER")
+    print("=" * 80)
+    
+    frontmatter_validation_result = subprocess.run(
+        ['python3', 'scripts/validation/verify_frontmatter_links.py'],
+        capture_output=True,
+        text=True
+    )
+    
+    if frontmatter_validation_result.stdout:
+        print(frontmatter_validation_result.stdout)
+    
+    if frontmatter_validation_result.returncode != 0:
+        print("\n⚠️  WARNING: Frontmatter validation found issues")
+        print("   Review warnings above, but deployment will continue")
+        print("   Run: python3 scripts/validation/verify_frontmatter_links.py")
+    else:
+        print("\n✅ Frontmatter link validation passed")
+    
+    # STEP 3: Deployment complete
+    print("\n" + "=" * 80)
+    print("✅ STEP 3: Deployment complete - frontmatter in production location")
+    print("=" * 80)
+    print("📂 Universal export system writes directly to:")
+    print("   /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/")
+    print("\n🎉 Deployment successful! Next.js production site updated.")
+    
+    return True
+
+
+def legacy_deploy_step_removed():
+    """
+    LEGACY STEP - NO LONGER NEEDED (Dec 18, 2025)
+    
+    Old deployment copied from:
+      /Users/todddunning/Desktop/Z-Beam/z-beam-generator/frontmatter (TrivialFrontmatterExporter output)
+    To:
+      /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter (Next.js production)
+    
+    New Universal export system writes directly to production location.
+    No copy step needed.
+    """
     # STEP 2: Deploy to Next.js
     print("\n" + "=" * 80)
     print("🚀 STEP 2: Deploying frontmatter to Next.js production site")

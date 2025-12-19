@@ -81,6 +81,7 @@ class ContaminantRestructureEnricher(BaseEnricher):
         'eeat': 'eeat',
         'valid_materials': 'valid_materials',
         'invalid_materials': 'invalid_materials',
+        'prohibited_materials': 'prohibited_materials',  # Phase 2: Dec 19, 2025
         'regulatory_standards_detail': 'regulatory_standards_detail',
         'context_notes': 'context_notes',
         'realism_notes': 'realism_notes',

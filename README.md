@@ -3,7 +3,7 @@
 **🔬 AI-Powered Laser Cleaning Content Generation System**  
 **✅ Production-Ready**: 98.1% Accuracy | B+ Code Quality (85/100) | 159 Materials  
 **🤖 Intelligent Learning**: Composite Quality Scoring + Adaptive Thresholds + Sweet Spot Optimization  
-**📊 Latest Update**: Phase 5 Complete - Universal Export System (Dec 18, 2025)
+**📊 Latest Update**: Phase 5 Complete - Link Integrity Validation System (Dec 18, 2025)
 
 A dynamic, schema-driven content generator for laser cleaning technical documentation with AI-researched material property validation, intelligent quality learning, and strict fail-fast architecture.
 
@@ -51,6 +51,10 @@ python3 run.py --export --domain contaminants
 python3 run.py --export --domain compounds
 python3 run.py --export --domain settings
 
+# 🔥 Validate data integrity & links (MANDATORY Dec 18, 2025)
+python3 scripts/validation/verify_data_integrity.py      # Check source data
+python3 scripts/validation/verify_frontmatter_links.py   # Check exported files
+
 # Validate existing content (optional - runs 6-pass pipeline)
 python3 run.py --validate-content Aluminum caption
 
@@ -88,10 +92,20 @@ python3 run.py --batch-test
 - **Code Quality**: B+ grade (85/100) with zero critical violations
 - **Automated Enforcement**: Integrity checker validates all policies
 - **Documentation Coverage**: Complete documentation for all systems
+- **🔥 Link Integrity Validation**: Two-tier validation system (data integrity + frontmatter paths) - MANDATORY (Dec 18, 2025)
 
 ---
 
-## 🔄 Recent Updates (November 2025)
+## 🔄 Recent Updates (December 2025)
+
+### ✅ December 18: Link Integrity Validation System 🔥 **NEW**
+- **Two-Tier Validation**: Data integrity (source) + Frontmatter path validation (export)
+- **Scripts**: `verify_data_integrity.py` + `verify_frontmatter_links.py`
+- **Coverage**: All 4 domains (materials, contaminants, compounds, settings)
+- **Features**: Broken reference detection, bidirectional consistency, orphaned items, path verification
+- **Tests**: 20/20 automated tests passing for validation requirements
+- **Status**: ✅ MANDATORY for all deployments
+- **Documentation**: [FRONTMATTER_LINK_VALIDATION.md](docs/08-development/FRONTMATTER_LINK_VALIDATION.md)
 
 ### ✅ November 20: Mock/Fallback Violations Eliminated 🔥
 - **Discovery**: Batch test revealed Winston API unconfigured but system logging fake scores (100% human, 0% AI)

@@ -1,8 +1,8 @@
 """
 Validation module for Z-Beam Generator
 
-Provides consolidated validation functions for content validation
-and other validation tasks.
+Provides consolidated validation functions for content validation,
+reference validation, and other validation tasks.
 """
 
 from .quality_validator import QualityScoreValidator
@@ -22,6 +22,11 @@ from .validator import (
     validate_and_fix,
 )
 
+# Reference validation (new)
+from .reference_registry import ReferenceRegistry, ReferenceInfo
+from .validator_mixin import ReferenceValidatorMixin
+from .validation_schema import ValidationSchema
+
 __all__ = [
     "QualityScoreValidator",
     "FrontmatterDependencyValidator",
@@ -38,4 +43,9 @@ __all__ = [
     "create_validator",
     "validate_prompt_quick",
     "validate_and_fix",
+    # Reference validation
+    "ReferenceRegistry",
+    "ReferenceInfo",
+    "ReferenceValidatorMixin",
+    "ValidationSchema",
 ]

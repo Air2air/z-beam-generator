@@ -3,6 +3,7 @@
 **🏥 Comprehensive validation and health monitoring for Z-Beam Generator**  
 **🎯 Scope**: Setup validation, runtime health checks, system diagnostics  
 **🛟 Purpose**: Ensure system integrity and catch issues before generation  
+**📅 Last Updated**: December 18, 2025
 
 ---
 
@@ -16,6 +17,7 @@ The Z-Beam Generator implements **fail-fast validation** to catch configuration 
 - **Runtime health checks**: Monitor system state during execution
 - **Post-generation validation**: Verify output quality and completeness
 - **Continuous monitoring**: Track system performance and reliability
+- **🔥 Link integrity validation**: Mandatory verification of all internal references (NEW Dec 18, 2025)
 
 ### Validation Layers
 
@@ -24,20 +26,159 @@ graph TD
     A[System Validation] --> B[Pre-Execution Checks]
     A --> C[Runtime Monitoring]
     A --> D[Post-Generation Validation]
+    A --> E[Link Integrity Validation]
     
-    B --> E[Configuration Validation]
-    B --> F[Dependency Checks]
-    B --> G[API Connectivity]
-    B --> H[File System Access]
+    B --> F[Configuration Validation]
+    B --> G[Dependency Checks]
+    B --> H[API Connectivity]
+    B --> I[File System Access]
     
-    C --> I[Performance Monitoring]
-    C --> J[Error Detection]
-    C --> K[Resource Usage]
+    C --> J[Performance Monitoring]
+    C --> K[Error Detection]
+    C --> L[Resource Usage]
     
-    D --> L[Content Quality]
-    D --> M[File Integrity]
-    D --> N[Schema Compliance]
+    D --> M[Content Quality]
+    D --> N[File Integrity]
+    D --> O[Schema Compliance]
+    
+    E --> P[Data Integrity]
+    E --> Q[Frontmatter Path Validation]
+    E --> R[Bidirectional Consistency]
 ```
+
+---
+
+## 🔗 Link Integrity Validation (MANDATORY - Dec 18, 2025)
+
+### Overview
+
+**Two-tier validation system** ensures data integrity and production correctness:
+
+1. **Data Integrity Validation** - Validates source YAML files
+2. **Frontmatter Path Validation** - Validates exported production files
+
+### 1️⃣ Data Integrity Validation
+
+**Script**: `scripts/validation/verify_data_integrity.py`  
+**Purpose**: Validate relationships WITHIN source data files before export  
+**Scope**: `data/materials/Materials.yaml`, `data/contaminants/Contaminants.yaml`, etc.
+
+```bash
+# Validate all source data
+python3 scripts/validation/verify_data_integrity.py
+
+# Validate specific domain
+python3 scripts/validation/verify_data_integrity.py --domain materials
+```
+
+**What It Checks**:
+- ✅ All referenced IDs exist in source data
+- ✅ Relationship types are valid for domain
+- ⚠️ Bidirectional links are consistent
+- ℹ️ Orphaned items (no relationships)
+
+**Example Output**:
+```
+📁 Source Files Validated: 4
+📦 Total Items: 334
+🔗 Total Relationships: 974
+
+❌ ERRORS: 0
+✅ No issues found! Data integrity is perfect.
+```
+
+### 2️⃣ Frontmatter Path Validation
+
+**Script**: `scripts/validation/verify_frontmatter_links.py`  
+**Purpose**: Validate exported frontmatter files in production  
+**Scope**: `../z-beam/frontmatter/**/*.yaml`
+
+```bash
+# Validate all frontmatter files
+python3 scripts/validation/verify_frontmatter_links.py
+
+# Validate specific domain
+python3 scripts/validation/verify_frontmatter_links.py --domain materials
+
+# Export detailed report
+python3 scripts/validation/verify_frontmatter_links.py --report links_report.md
+```
+
+**What It Checks**:
+- ✅ Domain directories exist
+- ✅ Target files exist at expected paths
+- ✅ URL formats are correct
+- ⚠️ Bidirectional links are consistent
+- ℹ️ Orphaned items
+
+**Example Output**:
+```
+📁 Checking domain directory structure...
+   ✅ Found: /path/to/frontmatter/materials (153 files)
+   ✅ Found: /path/to/frontmatter/contaminants (98 files)
+
+📁 Files Scanned: 424
+🔗 Total Links: 2073
+
+❌ ERRORS: 0
+✅ No issues found!
+```
+
+### Mandatory Pre-Deployment Check
+
+**BEFORE deploying frontmatter**, MUST run both validators:
+
+```bash
+# 1. Validate source data integrity
+python3 scripts/validation/verify_data_integrity.py
+if [ $? -ne 0 ]; then
+    echo "❌ Fix data integrity issues before export"
+    exit 1
+fi
+
+# 2. Export frontmatter
+python3 run.py --export-all
+
+# 3. Validate exported frontmatter
+python3 scripts/validation/verify_frontmatter_links.py
+if [ $? -ne 0 ]; then
+    echo "❌ Fix frontmatter issues before deployment"
+    exit 1
+fi
+
+# 4. Deploy
+echo "✅ All validations passed - safe to deploy"
+```
+
+### Integration with CI/CD
+
+Add to `.github/workflows/deploy.yml`:
+
+```yaml
+- name: Validate Data Integrity
+  run: |
+    python3 scripts/validation/verify_data_integrity.py
+    if [ $? -ne 0 ]; then
+      echo "❌ Data integrity validation failed"
+      exit 1
+    fi
+
+- name: Export Frontmatter
+  run: python3 run.py --export-all
+
+- name: Validate Frontmatter Links
+  run: |
+    python3 scripts/validation/verify_frontmatter_links.py
+    if [ $? -ne 0 ]; then
+      echo "❌ Frontmatter link validation failed"
+      exit 1
+    fi
+```
+
+### Documentation
+
+- **Data Integrity**: See script comments in `scripts/validation/verify_data_integrity.py`
+- **Frontmatter Validation**: See `docs/08-development/FRONTMATTER_LINK_VALIDATION.md`
 
 ---
 
