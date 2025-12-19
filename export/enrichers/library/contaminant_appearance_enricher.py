@@ -15,7 +15,7 @@ class ContaminantAppearanceEnricher(BaseLibraryEnricher):
     def __init__(self, library_file: Optional[Path] = None):
         """Initialize with contaminant appearance library."""
         if library_file is None:
-            library_file = Path(__file__).parent.parent.parent / 'data' / 'contaminants' / 'ContaminantAppearance.yaml'
+            library_file = Path(__file__).resolve().parent.parent.parent.parent / 'data' / 'contaminants' / 'Contaminants.yaml'
         super().__init__(library_file)
     
     def get_entry(self, entry_id: str) -> Optional[Dict[str, Any]]:
