@@ -15,7 +15,8 @@ class RegulatoryStandardsEnricher(BaseLibraryEnricher):
     def __init__(self, library_file: Optional[Path] = None):
         """Initialize with regulatory standards library."""
         if library_file is None:
-            library_file = Path(__file__).parent.parent.parent / 'data' / 'regulatory' / 'RegulatoryStandards.yaml'
+            # Navigate from export/enrichers/library/ to project root, then to data/regulatory/
+            library_file = Path(__file__).parent.parent.parent.parent / 'data' / 'regulatory' / 'RegulatoryStandards.yaml'
         super().__init__(library_file)
     
     def get_entry(self, entry_id: str) -> Optional[Dict[str, Any]]:
