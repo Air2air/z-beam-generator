@@ -60,6 +60,7 @@ from export.enrichers.linkage.materials_restructure_enricher import MaterialsRes
 from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
 from export.enrichers.metadata.name_enricher import NameEnricher
 from export.enrichers.cleanup.field_cleanup_enricher import FieldCleanupEnricher
+from export.enrichers.grouping.contaminant_materials_grouping_enricher import ContaminantMaterialsGroupingEnricher
 
 logger = logging.getLogger(__name__)
 
@@ -425,6 +426,7 @@ ENRICHER_REGISTRY = {
     'contaminant_restructure': ContaminantRestructureEnricher,
     'relationship_renaming': RelationshipRenamingEnricher,  # Change 3: Dec 19, 2025
     'field_cleanup': FieldCleanupEnricher,  # Changes 2 & 5: Dec 19, 2025
+    'contaminant_materials_grouping': ContaminantMaterialsGroupingEnricher,  # Change 4: Dec 19, 2025
     'settings_restructure': SettingsRestructureEnricher,  # Phase 1: Dec 19, 2025
     'materials_restructure': MaterialsRestructureEnricher,  # Phase 3: Dec 19, 2025
     'compound_linkage': CompoundLinkageEnricher,

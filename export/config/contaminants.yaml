@@ -75,7 +75,7 @@ enrichments:
     subcategory_field: subcategory
     name_field: name
   
-  # 8. Field cleanup (Changes 2 & 5 - Dec 19, 2025)
+  # 7. Field cleanup (Changes 2 & 5 - Dec 19, 2025)
   - type: field_cleanup
 
 # ============================================================================
@@ -101,7 +101,10 @@ generators:
     domain: contaminants
     output_field: relationships
   
-  # 2. Generate SEO meta description from contaminant_description
+  # 2. Group materials by category (Change 4 - Dec 19, 2025)
+  - type: contaminant_materials_grouping
+  
+  # 3. Generate SEO meta description from contaminant_description
   - type: seo_description
     source_field: contaminant_description
     output_field: seo_description

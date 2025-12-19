@@ -46,6 +46,9 @@ from export.generation.base import BaseGenerator
 # Import domain linkages generator
 from export.generation.relationships_generator import DomainLinkagesGenerator
 
+# Import contaminant materials grouping generator
+from export.generation.contaminant_materials_grouping_generator import ContaminantMaterialsGroupingGenerator
+
 logger = logging.getLogger(__name__)
 
 
@@ -243,6 +246,7 @@ GENERATOR_REGISTRY = {
     'seo_description': SEODescriptionGenerator,
     'excerpt': ExcerptGenerator,
     'relationships': DomainLinkagesGenerator,
+    'contaminant_materials_grouping': ContaminantMaterialsGroupingGenerator,  # Change 4: Dec 19, 2025
 }
 
 
