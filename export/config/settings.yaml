@@ -65,11 +65,14 @@ enrichments:
   # 5. Expand author field with full profile
   - type: author
   
-  # 6. Generate breadcrumb navigation (array format)
+  # 6. Add name field from id (Settings.yaml uses material name as key)
+  - type: name
+  
+  # 7. Generate breadcrumb navigation (array format)
   - type: breadcrumb
     domain: settings
     category_field: setting_category
-    name_field: setting_name
+    name_field: name
 
 # ============================================================================
 # LIBRARY ENRICHMENTS (Expand library relationships with full data)

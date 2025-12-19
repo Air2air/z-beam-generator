@@ -55,6 +55,7 @@ from export.enrichers.linkage.author_enricher import AuthorEnricher
 from export.enrichers.linkage.compound_restructure_enricher import CompoundRestructureEnricher
 from export.enrichers.linkage.contaminant_restructure_enricher import ContaminantRestructureEnricher
 from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
+from export.enrichers.metadata.name_enricher import NameEnricher
 
 logger = logging.getLogger(__name__)
 
@@ -424,6 +425,7 @@ ENRICHER_REGISTRY = {
     'settings_linkage': SettingsLinkageEnricher,
     'timestamp': TimestampEnricher,
     'author': AuthorEnricher,
+    'name': NameEnricher,  # Adds name field from id if missing
     'relationships': DomainLinkagesEnricher,
     'relationship_grouping': RelationshipGroupingEnricher,
     'relationships_slug': DomainLinkagesSlugEnricher,
