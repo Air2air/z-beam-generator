@@ -50,7 +50,9 @@ from export.enrichers.base import BaseEnricher
 # Import enrichers
 from export.enrichers.linkage.slug_enricher import DomainLinkagesSlugEnricher
 from export.enrichers.linkage.relationships_enricher import DomainLinkagesEnricher
+from export.enrichers.linkage.relationship_grouping_enricher import RelationshipGroupingEnricher
 from export.enrichers.linkage.author_enricher import AuthorEnricher
+from export.enrichers.linkage.compound_restructure_enricher import CompoundRestructureEnricher
 from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
 
 logger = logging.getLogger(__name__)
@@ -413,6 +415,7 @@ class TimestampEnricher(BaseEnricher):
 
 # Registry mapping enricher type → class
 ENRICHER_REGISTRY = {
+    'compound_restructure': CompoundRestructureEnricher,
     'compound_linkage': CompoundLinkageEnricher,
     'material_linkage': MaterialLinkageEnricher,
     'contaminant_linkage': ContaminantLinkageEnricher,
@@ -420,6 +423,7 @@ ENRICHER_REGISTRY = {
     'timestamp': TimestampEnricher,
     'author': AuthorEnricher,
     'relationships': DomainLinkagesEnricher,
+    'relationship_grouping': RelationshipGroupingEnricher,
     'relationships_slug': DomainLinkagesSlugEnricher,
     'breadcrumb': BreadcrumbEnricher,  # Generates breadcrumb navigation arrays
 }

@@ -16,6 +16,9 @@ filename_suffix: -compound
 # ENRICHMENTS (Applied in order)
 # ============================================================================
 enrichments:
+  # 0. RESTRUCTURE: Move top-level fields to relationships (NEW - Phase 1)
+  - type: compound_restructure
+  
   # 1. Enrich contaminant linkages (found_in_contaminants)
   - type: contaminant_linkage
     field: found_in_contaminants
