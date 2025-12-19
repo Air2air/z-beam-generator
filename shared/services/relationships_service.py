@@ -116,7 +116,7 @@ class DomainLinkagesService:
         Generate linkages for materials domain.
         
         Creates:
-        - related_contaminants: Contaminants that affect this material
+        - contaminants: Contaminants that affect this material
         - related_compounds: Compounds produced (transitive via contaminants)
         
         Args:
@@ -128,15 +128,15 @@ class DomainLinkagesService:
         linkages = {}
         
         # Get contaminants that affect this material (bidirectional)
-        related_contaminants = self.associations_validator.get_contaminants_for_material(material_id)
-        if related_contaminants:
-            linkages['related_contaminants'] = related_contaminants
+        contaminants = self.associations_validator.get_contaminants_for_material(material_id)
+        if contaminants:
+            linkages['contaminants'] = contaminants
         
         # Get compounds (transitive: Material → Contaminant → Compound)
         related_compounds = []
         seen_compounds = set()
         
-        for contaminant in related_contaminants:
+        for contaminant in contaminants:
             contaminant_id = contaminant.get('id')
             if contaminant_id:
                 compounds = self.associations_validator.get_compounds_for_contaminant(contaminant_id)
@@ -190,7 +190,7 @@ class DomainLinkagesService:
         
         Creates:
         - produces_compounds: Compounds produced by this contaminant
-        - related_materials: Materials affected by this contaminant
+        - materials: Materials affected by this contaminant
         
         Args:
             contaminant_id: Contaminant ID (e.g., 'rust-contamination')
@@ -206,9 +206,9 @@ class DomainLinkagesService:
             linkages['produces_compounds'] = produces_compounds
         
         # Get materials affected by this contaminant (bidirectional)
-        related_materials = self.associations_validator.get_materials_for_contaminant(contaminant_id)
-        if related_materials:
-            linkages['related_materials'] = related_materials
+        materials = self.associations_validator.get_materials_for_contaminant(contaminant_id)
+        if materials:
+            linkages['materials'] = materials
         
         return linkages
     
@@ -217,7 +217,7 @@ class DomainLinkagesService:
         Generate linkages for compounds domain.
         
         Creates:
-        - produced_by_contaminants: Contaminants that produce this compound
+        - source_contaminants: Contaminants that produce this compound
         
         Args:
             compound_id: Compound ID (e.g., 'iron-oxide-compound')
@@ -231,12 +231,12 @@ class DomainLinkagesService:
         produced_by = self.associations_validator.get_contaminants_for_compound(compound_id)
         
         if produced_by:
-            linkages['produced_by_contaminants'] = produced_by
+            linkages['source_contaminants'] = produced_by
         
-        # Future: Add related_materials when Material↔Compound associations populated
-        # related_materials = self.associations_validator.get_materials_for_compound(compound_id)
-        # if related_materials:
-        #     linkages['related_materials'] = related_materials
+        # Future: Add affected_materials when Material↔Compound associations populated
+        # affected_materials = self.associations_validator.get_materials_for_compound(compound_id)
+        # if affected_materials:
+        #     linkages['affected_materials'] = affected_materials
         
         return linkages
     

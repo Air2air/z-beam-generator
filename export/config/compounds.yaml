@@ -19,9 +19,9 @@ enrichments:
   # 0. RESTRUCTURE: Move top-level fields to relationships (NEW - Phase 1)
   - type: compound_restructure
   
-  # 1. Enrich contaminant linkages (found_in_contaminants)
+  # 1. Enrich contaminant linkages (source_contaminants)
   - type: contaminant_linkage
-    field: found_in_contaminants
+    field: source_contaminants
     title: Found in Contaminants
     description: Contamination patterns that contain or release this compound
     source: data/contaminants/Contaminants.yaml
@@ -32,9 +32,9 @@ enrichments:
       - contaminant_category
       - commonality_score
   
-  # 2. Enrich material linkages (produced_from_materials)
+  # 2. Enrich material linkages (affected_materials)
   - type: material_linkage
-    field: produced_from_materials
+    field: affected_materials
     title: Produced from Materials
     description: Materials that generate this compound when laser processed
     source: data/materials/Materials.yaml
@@ -72,6 +72,9 @@ enrichments:
     category_field: compound_category
     name_field: common_name
     slug_field: slug
+  
+  # 9. Field cleanup (Changes 2 & 5 - Dec 19, 2025)
+  - type: field_cleanup
 
 # ============================================================================
 # LIBRARY ENRICHMENTS (New modular system)

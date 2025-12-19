@@ -51,6 +51,7 @@ from export.enrichers.base import BaseEnricher
 from export.enrichers.linkage.slug_enricher import DomainLinkagesSlugEnricher
 from export.enrichers.linkage.relationships_enricher import DomainLinkagesEnricher
 from export.enrichers.linkage.relationship_grouping_enricher import RelationshipGroupingEnricher
+from export.enrichers.linkage.relationship_renaming_enricher import RelationshipRenamingEnricher
 from export.enrichers.linkage.author_enricher import AuthorEnricher
 from export.enrichers.linkage.compound_restructure_enricher import CompoundRestructureEnricher
 from export.enrichers.linkage.contaminant_restructure_enricher import ContaminantRestructureEnricher
@@ -58,6 +59,7 @@ from export.enrichers.linkage.settings_restructure_enricher import SettingsRestr
 from export.enrichers.linkage.materials_restructure_enricher import MaterialsRestructureEnricher
 from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
 from export.enrichers.metadata.name_enricher import NameEnricher
+from export.enrichers.cleanup.field_cleanup_enricher import FieldCleanupEnricher
 
 logger = logging.getLogger(__name__)
 
@@ -421,6 +423,8 @@ class TimestampEnricher(BaseEnricher):
 ENRICHER_REGISTRY = {
     'compound_restructure': CompoundRestructureEnricher,
     'contaminant_restructure': ContaminantRestructureEnricher,
+    'relationship_renaming': RelationshipRenamingEnricher,  # Change 3: Dec 19, 2025
+    'field_cleanup': FieldCleanupEnricher,  # Changes 2 & 5: Dec 19, 2025
     'settings_restructure': SettingsRestructureEnricher,  # Phase 1: Dec 19, 2025
     'materials_restructure': MaterialsRestructureEnricher,  # Phase 3: Dec 19, 2025
     'compound_linkage': CompoundLinkageEnricher,

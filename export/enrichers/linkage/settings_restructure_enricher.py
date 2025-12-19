@@ -49,7 +49,7 @@ class SettingsRestructureEnricher(BaseEnricher):
     
     def enrich(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Move machine_settings into relationships section.
+        Move machine_settings into relationships section and rename relationships.
         
         Args:
             frontmatter: Input frontmatter dict
@@ -61,9 +61,20 @@ class SettingsRestructureEnricher(BaseEnricher):
         if 'relationships' not in frontmatter:
             frontmatter['relationships'] = {}
         
+        relationships = frontmatter['relationships']
+        
         # Move machine_settings if it exists at root
         if 'machine_settings' in frontmatter:
-            frontmatter['relationships']['machine_settings'] = frontmatter.pop('machine_settings')
+            relationships['machine_settings'] = frontmatter.pop('machine_settings')
             logger.debug(f"Moved machine_settings into relationships")
+        
+        # Rename relationships (Change 3 - standardize naming)
+        if 'related_materials' in relationships:
+            relationships['materials'] = relationships.pop('related_materials')
+            logger.debug("Renamed related_materials → materials")
+        
+        if 'related_contaminants' in relationships:
+            relationships['contaminants'] = relationships.pop('related_contaminants')
+            logger.debug("Renamed related_contaminants → contaminants")
         
         return frontmatter

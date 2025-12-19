@@ -93,7 +93,10 @@ enrichments:
     category_field: category
     subcategory_field: subcategory
     name_field: name
-
+  
+  # 9.5. Field cleanup: Remove redundant fields (Changes 2 & 5 - Dec 19, 2025)
+  # Runs AFTER grouping so it cleans the final structure
+  - type: field_cleanup
 
 # ============================================================================
 # LIBRARY ENRICHMENTS (New modular system)

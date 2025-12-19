@@ -34,9 +34,9 @@ enrichments:
       - cas_number
       - compound_category
   
-  # 2. Enrich material linkages (related_materials)
+  # 2. Enrich material linkages (materials)
   - type: material_linkage
-    field: related_materials
+    field: materials
     title: Found on Materials
     description: Materials commonly affected by this type of contamination
     source: data/materials/Materials.yaml
@@ -74,6 +74,9 @@ enrichments:
     category_field: category
     subcategory_field: subcategory
     name_field: name
+  
+  # 8. Field cleanup (Changes 2 & 5 - Dec 19, 2025)
+  - type: field_cleanup
 
 # ============================================================================
 # LIBRARY ENRICHMENTS (Expand library relationships with full data)

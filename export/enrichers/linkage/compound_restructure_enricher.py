@@ -99,6 +99,9 @@ class CompoundRestructureEnricher(BaseEnricher):
         # 6. Add cross-references (placeholder structure - will be populated by linkage enrichers)
         self._add_cross_reference_placeholders(relationships)
         
+        # 7. Rename relationships (Change 3 - standardize naming - Dec 19, 2025)
+        self._rename_relationships(relationships)
+        
         logger.debug(f"Restructured compound frontmatter: {frontmatter.get('id', 'unknown')}")
         
         return frontmatter
@@ -280,5 +283,21 @@ class CompoundRestructureEnricher(BaseEnricher):
                 'description': 'Materials where this compound is commonly detected during laser cleaning',
                 'items': []  # Will be populated by enricher
             }
+    
+    def _rename_relationships(self, relationships: Dict[str, Any]) -> None:
+        """
+        Rename relationships to standardized names (Change 3 - Dec 19, 2025).
+        
+        Renames:
+        - produced_by_contaminants → source_contaminants
+        - found_on_materials → affected_materials
+        """
+        if 'produced_by_contaminants' in relationships:
+            relationships['source_contaminants'] = relationships.pop('produced_by_contaminants')
+            logger.debug("Renamed produced_by_contaminants → source_contaminants")
+        
+        if 'found_on_materials' in relationships:
+            relationships['affected_materials'] = relationships.pop('found_on_materials')
+            logger.debug("Renamed found_on_materials → affected_materials")
         
         logger.debug("Added cross-reference placeholder structures")
