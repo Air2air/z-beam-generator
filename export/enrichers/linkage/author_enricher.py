@@ -95,9 +95,12 @@ class AuthorEnricher(BaseEnricher):
             logger.warning("Author dict has no 'id' field")
             return frontmatter
         
-        # If author already has name field, assume it's already expanded
-        if 'name' in author and len(author) > 2:  # More than just id and name
-            logger.debug(f"Author {author_id} already expanded")
+        # Check if author is fully expanded (has key fields beyond basic info)
+        # Basic fields: id, name, country, country_display, title
+        # Complete fields should include: credentials, email, image, url
+        required_complete_fields = ['credentials', 'email', 'image', 'url']
+        if all(field in author for field in required_complete_fields):
+            logger.debug(f"Author {author_id} already fully expanded")
             return frontmatter
         
         # Load authors data
