@@ -49,6 +49,9 @@ from export.generation.relationships_generator import DomainLinkagesGenerator
 # Import contaminant materials grouping generator
 from export.generation.contaminant_materials_grouping_generator import ContaminantMaterialsGroupingGenerator
 
+# Import field cleanup generator
+from export.generation.field_cleanup_generator import FieldCleanupGenerator
+
 logger = logging.getLogger(__name__)
 
 
@@ -247,6 +250,7 @@ GENERATOR_REGISTRY = {
     'excerpt': ExcerptGenerator,
     'relationships': DomainLinkagesGenerator,
     'contaminant_materials_grouping': ContaminantMaterialsGroupingGenerator,  # Change 4: Dec 19, 2025
+    'field_cleanup': FieldCleanupGenerator,  # Changes 2 & 5: Dec 19, 2025
 }
 
 

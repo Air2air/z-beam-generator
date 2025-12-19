@@ -72,9 +72,6 @@ enrichments:
     category_field: compound_category
     name_field: common_name
     slug_field: slug
-  
-  # 9. Field cleanup (Changes 2 & 5 - Dec 19, 2025)
-  - type: field_cleanup
 
 # ============================================================================
 # LIBRARY ENRICHMENTS (New modular system)
@@ -119,7 +116,10 @@ library_enrichments:
 # CONTENT GENERATORS (Applied in order)
 # ============================================================================
 generators:
-  # 1. Generate SEO meta description from compound_description
+  # 1. Remove redundant fields (Changes 2 & 5 - Dec 19, 2025)
+  - type: field_cleanup
+  
+  # 2. Generate SEO meta description from compound_description
   - type: seo_description
     source_field: compound_description
     output_field: seo_description

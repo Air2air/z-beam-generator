@@ -76,9 +76,7 @@ enrichments:
     domain: settings
     category_field: setting_category
     name_field: name
-  
-  # 8. Field cleanup (Changes 2 & 5 - Dec 19, 2025)
-  - type: field_cleanup
+
 
 # ============================================================================
 # LIBRARY ENRICHMENTS (Expand library relationships with full data)
@@ -98,7 +96,10 @@ library_enrichments:
 # CONTENT GENERATORS (Applied in order)
 # ============================================================================
 generators:
-  # 1. Generate SEO meta description from settings_description
+  # 1. Remove redundant fields (Changes 2 & 5 - Dec 19, 2025)
+  - type: field_cleanup
+  
+  # 2. Generate SEO meta description from settings_description
   - type: seo_description
     source_field: settings_description
     output_field: seo_description

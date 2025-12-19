@@ -93,10 +93,6 @@ enrichments:
     category_field: category
     subcategory_field: subcategory
     name_field: name
-  
-  # 9.5. Field cleanup: Remove redundant fields (Changes 2 & 5 - Dec 19, 2025)
-  # Runs AFTER grouping so it cleans the final structure
-  - type: field_cleanup
 
 # ============================================================================
 # LIBRARY ENRICHMENTS (New modular system)
@@ -125,7 +121,10 @@ library_enrichments:
 # CONTENT GENERATORS (Applied in order)
 # ============================================================================
 generators:
-  # 1. Generate SEO meta description from description
+  # 1. Remove redundant fields (Changes 2 & 5 - Dec 19, 2025)
+  - type: field_cleanup
+  
+  # 2. Generate SEO meta description from description
   - type: seo_description
     source_field: description
     output_field: seo_description
