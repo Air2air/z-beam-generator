@@ -2,17 +2,25 @@
 # =============================================================================
 # 
 # PURPOSE: Centralized template defining standard field order for all domains
+# DATE: December 18, 2025
+# VERSION: 5.0.0
+# 
+# STANDARDIZED FIELD ORDER PRINCIPLES:
+#   1. IDENTITY & CLASSIFICATION - Top (id, name, category, etc.)
+#   2. PAGE METADATA - Core (dates, content_type, schema_version)
+#   3. NAVIGATION - Breadcrumb structure
+#   4. CHEMICAL IDENTIFIERS - Compounds only (formula, CAS, molecular weight)
+#   5. CONTENT FIELDS - AI-generated text (description, micro, faq, etc.)
+#   6. IMAGES & MEDIA - Visual assets
+#   7. AUTHOR INFORMATION - Complete author object
+#   8. EXPOSURE DATA - Compounds only (limits, monitoring)
+#   9. MACHINE SETTINGS - Settings domain only
+#   10. RELATIONSHIPS - Last section (all cross-references)
 # 
 # USAGE:
 #   - Exporters use this to generate frontmatter in correct order
 #   - Validators check frontmatter matches this order
 #   - Documentation references this for field requirements
-# 
-# BENEFITS:
-#   - Consistency across all 424 files
-#   - Easy to maintain field order in one place
-#   - Clear specification for new fields
-#   - Automatic formatting validation
 # 
 # =============================================================================
 
@@ -21,80 +29,49 @@
 # =============================================================================
 materials:
   field_order:
-    # Identity fields
+    # ─────────────────────────────────────────────────────
+    # 1. IDENTITY & CLASSIFICATION
+    # ─────────────────────────────────────────────────────
     - id
     - name
+    - title
     - category
     - subcategory
     
-    # Publishing metadata
+    # ─────────────────────────────────────────────────────
+    # 2. PAGE METADATA
+    # ─────────────────────────────────────────────────────
     - datePublished
     - dateModified
-    
-    # Page-related fields
     - content_type
     - schema_version
+    
+    # ─────────────────────────────────────────────────────
+    # 3. NAVIGATION
+    # ─────────────────────────────────────────────────────
     - breadcrumb
     
-    # Author
-    - author
-    
-    # Voice metadata
-    - _metadata
-    
-    # Page content
-    - title
+    # ─────────────────────────────────────────────────────
+    # 5. CONTENT FIELDS (AI-Generated)
+    # ─────────────────────────────────────────────────────
     - description
-    
-    # Images
-    - images
-    
-    # Content sections
     - micro
     - faq
-    - regulatory_standards
-    - properties
-    - eeat
-    - metadata
     
-    # Cross-domain relationships
+    # ─────────────────────────────────────────────────────
+    # 6. IMAGES & MEDIA
+    # ─────────────────────────────────────────────────────
+    - images
+    
+    # ─────────────────────────────────────────────────────
+    # 7. AUTHOR INFORMATION
+    # ─────────────────────────────────────────────────────
+    - author
+    
+    # ─────────────────────────────────────────────────────
+    # 10. RELATIONSHIPS (Last Section)
+    # ─────────────────────────────────────────────────────
     - relationships
-    
-    # SEO/Schema.org
-    - serviceOffering
-    
-    # Technical metadata
-    - preservedData
-    - tensile_strength
-    - yield_strength
-    - elastic_modulus
-    - surface_roughness
-    
-    # Material properties (Chemical)
-    - oxidation_resistance
-    - corrosion_resistance
-    - chemical_stability
-    
-    # Laser interaction parameters
-    - ablation_threshold
-    - optimal_wavelength
-    - recommended_fluence_range
-    - recommended_pulse_duration
-    - recommended_repetition_rate
-    - recommended_scan_speed
-    
-    # Safety and handling
-    - safety_considerations
-    - ppe_requirements
-    - ventilation_requirements
-    
-    # Navigation
-    - breadcrumbs
-    
-    # Metadata
-    - type
-    - domain
-    - last_updated
   
   required_fields:
     - id
@@ -109,144 +86,102 @@ materials:
 # =============================================================================
 contaminants:
   field_order:
-    # Identity fields
+    # ─────────────────────────────────────────────────────
+    # 1. IDENTITY & CLASSIFICATION
+    # ─────────────────────────────────────────────────────
     - id
     - name
-    - display_name
-    
-    # Classification
     - category
     - subcategory
-    - contamination_type
     
-    # Publishing metadata
+    # ─────────────────────────────────────────────────────
+    # 2. PAGE METADATA
+    # ─────────────────────────────────────────────────────
     - datePublished
     - dateModified
-    
-    # Page-related fields
     - content_type
     - schema_version
+    
+    # ─────────────────────────────────────────────────────
+    # 3. NAVIGATION
+    # ─────────────────────────────────────────────────────
     - breadcrumb
     
-    # Physical properties
-    - thickness_range
-    - adhesion_strength
-    - hardness
-    - particle_size_range
-    - density
-    
-    # Optical properties
-    - color
-    - appearance
-    - texture
-    - opacity
-    
-    # Chemical properties
-    - composition
-    - ph_level
-    - solubility
-    - reactivity
-    
-    # Removal characteristics
-    - removal_difficulty
-    - recommended_wavelength
-    - recommended_fluence_range
-    - recommended_pulse_duration
-    - typical_passes_required
-    
-    # Safety considerations
-    - health_hazards
-    - generated_compounds
-    - safety_precautions
-    - ppe_requirements
-    
-    # Content fields
+    # ─────────────────────────────────────────────────────
+    # 5. CONTENT FIELDS
+    # ─────────────────────────────────────────────────────
     - description
     - micro
-    - faq
     
-    # Cross-domain relationships
+    # ─────────────────────────────────────────────────────
+    # 10. RELATIONSHIPS
+    # ─────────────────────────────────────────────────────
     - relationships
-    
-    # Authorship
-    - author
-    
-    # Navigation
-    - breadcrumbs
-    
-    # Metadata
-    - type
-    - domain
-    - last_updated
   
   required_fields:
     - id
     - name
     - category
     - subcategory
-    - relationships
-    - author
-    - type
-    - domain
+    - content_type
 
 # =============================================================================
 # COMPOUNDS DOMAIN
 # =============================================================================
 compounds:
   field_order:
-    # Identity fields
+    # ─────────────────────────────────────────────────────
+    # 1. IDENTITY & CLASSIFICATION
+    # ─────────────────────────────────────────────────────
     - id
     - name
     - display_name
-    
-    # Chemical identity
-    - chemical_formula
-    - cas_number
-    - molecular_weight
-    
-    # Publishing metadata
-    - datePublished
-    - dateModified
-    
-    # Page-related fields
-    - content_type
-    - schema_version
-    - breadcrumb
-    
-    # Classification
     - category
     - subcategory
     - hazard_class
     
-    # Exposure limits
-    - exposure_limits
+    # ─────────────────────────────────────────────────────
+    # 2. PAGE METADATA
+    # ─────────────────────────────────────────────────────
+    - datePublished
+    - dateModified
+    - content_type
+    - schema_version
     
-    # Health and safety
-    - health_effects_keywords
-    - monitoring_required
-    - typical_concentration_range
-    - sources_in_laser_cleaning
+    # ─────────────────────────────────────────────────────
+    # 3. NAVIGATION
+    # ─────────────────────────────────────────────────────
+    - breadcrumb
     
-    # Content fields
+    # ─────────────────────────────────────────────────────
+    # 4. CHEMICAL IDENTIFIERS
+    # ─────────────────────────────────────────────────────
+    - chemical_formula
+    - cas_number
+    - molecular_weight
+    
+    # ─────────────────────────────────────────────────────
+    # 5. CONTENT FIELDS
+    # ─────────────────────────────────────────────────────
     - description
     - health_effects
     - exposure_guidelines
     - detection_methods
     - first_aid
     
-    # Cross-domain relationships
+    # ─────────────────────────────────────────────────────
+    # 8. EXPOSURE DATA
+    # ─────────────────────────────────────────────────────
+    - exposure_limits
+    - health_effects_keywords
+    - monitoring_required
+    - typical_concentration_range
+    - sources_in_laser_cleaning
+    
+    # ─────────────────────────────────────────────────────
+    # 10. RELATIONSHIPS
+    # ─────────────────────────────────────────────────────
     - relationships
-    
-    # Authorship
-    - author
-    
-    # Navigation
-    - breadcrumbs
-    
-    # Metadata
-    - type
-    - domain
-    - last_updated
   
   required_fields:
     - id
@@ -254,47 +189,40 @@ compounds:
     - chemical_formula
     - category
     - subcategory
-    - relationships
-    - author
-    - type
-    - domain
+    - content_type
 
 # =============================================================================
 # SETTINGS DOMAIN
 # =============================================================================
 settings:
   field_order:
-    # Identity fields
+    # ─────────────────────────────────────────────────────
+    # 1. IDENTITY
+    # ─────────────────────────────────────────────────────
     - id
-    - name
-    - display_name
     
-    # Classification
-    - category
-    - subcategory
-    - application_type
-    
-    # Publishing metadata
+    # ─────────────────────────────────────────────────────
+    # 2. PAGE METADATA
+    # ─────────────────────────────────────────────────────
     - datePublished
     - dateModified
-    
-    # Page-related fields
     - content_type
     - schema_version
     
-    # Laser parameters
-    - wavelength
-    - pulse_duration
-    - repetition_rate
-    - fluence
-    - spot_size
-    - scan_speed
-    - pulse_energy
-    - average_power
+    # ─────────────────────────────────────────────────────
+    # 7. AUTHOR INFORMATION
+    # ─────────────────────────────────────────────────────
+    - author
     
-    # System configuration
-    - beam_profile
-    - focal_length
+    # ─────────────────────────────────────────────────────
+    # 9. MACHINE SETTINGS
+    # ─────────────────────────────────────────────────────
+    - machine_settings
+    
+    # ─────────────────────────────────────────────────────
+    # 10. RELATIONSHIPS
+    # ─────────────────────────────────────────────────────
+    - relationships
     - working_distance
     - assist_gas
     - assist_gas_pressure

@@ -6,6 +6,196 @@
 
 ---
 
+## Standardized Field Order
+
+**Priority**: Page-related metadata at the top, content in the middle, relationships at the bottom.
+
+### Universal Field Order (All Domains)
+
+```yaml
+# ─────────────────────────────────────────────────────
+# 1. IDENTITY & CLASSIFICATION (Required)
+# ─────────────────────────────────────────────────────
+id:                           # Unique identifier (slug format)
+name:                         # Display name
+display_name:                 # Alternative display (compounds only)
+title:                        # Page title (materials/contaminants)
+slug:                         # URL slug (if different from id)
+category:                     # Primary category
+subcategory:                  # Secondary category
+hazard_class:                 # Hazard classification (compounds only)
+
+# ─────────────────────────────────────────────────────
+# 2. PAGE METADATA (Required)
+# ─────────────────────────────────────────────────────
+datePublished:                # ISO 8601 timestamp
+dateModified:                 # ISO 8601 timestamp
+content_type:                 # materials | contaminants | compounds | settings
+schema_version:               # Current: 5.0.0
+
+# ─────────────────────────────────────────────────────
+# 3. NAVIGATION (Required)
+# ─────────────────────────────────────────────────────
+breadcrumb:                   # Array of {label, href} objects
+  - label: Home
+    href: /
+  - label: [Domain]
+    href: /[domain]
+  # ... additional levels
+
+# ─────────────────────────────────────────────────────
+# 4. CHEMICAL IDENTIFIERS (Compounds only)
+# ─────────────────────────────────────────────────────
+chemical_formula:             # Chemical notation (e.g., C2H4O)
+cas_number:                   # CAS Registry Number
+molecular_weight:             # Numeric value
+
+# ─────────────────────────────────────────────────────
+# 5. CONTENT FIELDS (AI-Generated)
+# ─────────────────────────────────────────────────────
+description:                  # Primary description (1-2 sentences)
+micro:                        # Micro-content (materials/contaminants)
+  before:                     # Before laser cleaning state
+  after:                      # After laser cleaning state
+faq:                          # Frequently asked questions
+health_effects:               # Health impact description (compounds)
+exposure_guidelines:          # Exposure guidance (compounds)
+detection_methods:            # Detection methodology (compounds)
+first_aid:                    # First aid instructions (compounds)
+
+# ─────────────────────────────────────────────────────
+# 6. IMAGES & MEDIA
+# ─────────────────────────────────────────────────────
+images:                       # Image metadata
+  hero:
+    url: string
+    alt: string
+    caption: string
+  gallery:                    # Array of image objects
+    - url: string
+      alt: string
+      caption: string
+
+# ─────────────────────────────────────────────────────
+# 7. AUTHOR INFORMATION
+# ─────────────────────────────────────────────────────
+author:                       # Complete author object
+  id: number
+  name: string
+  country: string
+  country_display: string
+  title: string
+  sex: string
+  jobTitle: string
+  expertise: array
+  affiliation:
+    name: string
+    type: string
+  credentials: array
+  email: string
+  image: string
+  imageAlt: string
+  url: string
+  sameAs: array
+  persona_file: string
+  formatting_file: string
+
+# ─────────────────────────────────────────────────────
+# 8. EXPOSURE DATA (Compounds only)
+# ─────────────────────────────────────────────────────
+exposure_limits:              # Regulatory exposure limits
+  osha_pel_ppm: number
+  osha_pel_mg_m3: number
+  niosh_rel_ppm: number
+  niosh_rel_mg_m3: number
+  acgih_tlv_ppm: number
+  acgih_tlv_mg_m3: number
+health_effects_keywords:      # Array of keywords
+monitoring_required: boolean
+typical_concentration_range: string
+sources_in_laser_cleaning: array
+
+# ─────────────────────────────────────────────────────
+# 9. MACHINE SETTINGS (Settings only)
+# ─────────────────────────────────────────────────────
+machine_settings:             # Laser parameter configurations
+  powerRange:
+    description: string
+    unit: string
+    value: number
+    min: number
+    max: number
+  wavelength:
+    # ... similar structure
+  # ... additional parameters
+
+# ─────────────────────────────────────────────────────
+# 10. RELATIONSHIPS (Last Section)
+# ─────────────────────────────────────────────────────
+relationships:
+  # Cross-domain references
+  related_materials: array
+  related_contaminants: array
+  related_compounds: array
+  related_settings: array
+  
+  # Production & sources
+  produced_by_contaminants: array
+  produced_by_materials: array
+  
+  # Regulatory & standards
+  regulatory_standards: array
+  regulatory_classification: array
+  
+  # Compatibility
+  compatible_materials: array
+  prohibited_materials: array
+  recommended_settings: array
+  
+  # Technical data
+  laser_properties: array
+  machine_settings: array
+  material_properties: array
+  optical_properties: array
+  
+  # Safety & PPE
+  ppe_requirements: array
+  emergency_response: array
+  storage_requirements: array
+  
+  # Exposure & monitoring
+  workplace_exposure: array
+  exposure_limits: array
+  detection_monitoring: array
+  
+  # Chemical data
+  physical_properties: array
+  chemical_properties: array
+  reactivity: array
+  environmental_impact: array
+  
+  # Metadata
+  synonyms_identifiers: array
+  health_effects_keywords: array
+  sources_in_laser_cleaning: array
+  
+  # Domain-specific
+  applications: array
+  characteristics: array
+  challenges: array
+  composition: array
+  visual_characteristics: array
+```
+
+### Domain-Specific Notes
+
+**Materials**: Include `title`, `description`, `micro`, `faq`, `images` after breadcrumb  
+**Contaminants**: Include `description`, `micro` after breadcrumb, relationships at end  
+**Compounds**: Include chemical identifiers early, health/exposure data before relationships  
+**Settings**: Include `machine_settings` section before relationships
+
+---
+
 ## Quick Reference: Parent Keys Organization
 
 ```yaml
