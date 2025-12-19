@@ -165,8 +165,8 @@ class CompoundExporter(BaseTrivialExporter):
             'slug': compound['slug'],
             
             # 4-5: Classification (convert underscores to hyphens)
-            'category': compound['category'].replace('_', '-') if compound.get('category') else None,
-            'subcategory': compound.get('subcategory', '').replace('_', '-') if compound.get('subcategory') else None,
+            'category': normalize_category(compound.get('category')),
+            'subcategory': normalize_category(compound.get('subcategory')),
             
             # 6-7: Schema fields
             'content_type': 'unified_compound',

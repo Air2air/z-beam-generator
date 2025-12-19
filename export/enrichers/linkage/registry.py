@@ -424,17 +424,14 @@ class TimestampEnricher(BaseEnricher):
 # Registry mapping enricher type → class
 ENRICHER_REGISTRY = {
     'universal_restructure': UniversalRestructureEnricher,  # Consolidates all restructure enrichers (Dec 19, 2025)
-    'compound_restructure': CompoundRestructureEnricher,
-    'contaminant_restructure': ContaminantRestructureEnricher,
+    'universal_linkage': UniversalLinkageEnricher,  # Consolidates all linkage enrichers (Dec 19, 2025)
     'relationship_renaming': RelationshipRenamingEnricher,  # Change 3: Dec 19, 2025
     'field_cleanup': FieldCleanupEnricher,  # Changes 2 & 5: Dec 19, 2025
     'contaminant_materials_grouping': ContaminantMaterialsGroupingEnricher,  # Change 4: Dec 19, 2025
-    'settings_restructure': SettingsRestructureEnricher,  # Phase 1: Dec 19, 2025
-    'materials_restructure': MaterialsRestructureEnricher,  # Phase 3: Dec 19, 2025
-    'compound_linkage': CompoundLinkageEnricher,
-    'material_linkage': MaterialLinkageEnricher,
-    'contaminant_linkage': ContaminantLinkageEnricher,
-    'settings_linkage': SettingsLinkageEnricher,
+    'compound_linkage': CompoundLinkageEnricher,  # Legacy - use universal_linkage
+    'material_linkage': MaterialLinkageEnricher,  # Legacy - use universal_linkage
+    'contaminant_linkage': ContaminantLinkageEnricher,  # Legacy - use universal_linkage
+    'settings_linkage': SettingsLinkageEnricher,  # Legacy - use universal_linkage
     'timestamp': TimestampEnricher,
     'author': AuthorEnricher,
     'name': NameEnricher,  # Adds name field from id if missing
