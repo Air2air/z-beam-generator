@@ -27,28 +27,6 @@ class ResearchCitationIntegrator:
         self.property_research_file = self.project_root / 'materials' / 'data' / 'PropertyResearch.yaml'
         self.setting_research_file = self.project_root / 'materials' / 'data' / 'SettingResearch.yaml'
         self.dry_run = dry_run
-        
-    def load_yaml(self, filepath: Path) -> Dict[str, Any]:
-        """Load YAML file"""
-        return read_yaml_file(filepath)
-    
-    def save_yaml(self, filepath: Path, data: Dict[str, Any]):
-        """Save YAML file with backup"""
-        if not self.dry_run:
-            # Create backup
-            backup_file = filepath.with_suffix(
-                f'.backup_{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml'
-            )
-            if filepath.exists():
-                import shutil
-                shutil.copy2(filepath, backup_file)
-                print(f"📦 Backup created: {backup_file.name}")
-        
-            # Save updated data
-            write_yaml_file(filepath, data, sort_keys=False)
-            print(f"💾 Saved: {filepath.name}")
-        else:
-            print(f"🔍 DRY RUN: Would save {filepath.name}")
     
     def extract_citation_from_raw_response(self, raw_response: str) -> Tuple[Optional[Dict], Optional[str]]:
         """
@@ -202,8 +180,8 @@ class ResearchCitationIntegrator:
         
         # Load data files
         print("📖 Loading data files...")
-        materials_data = self.load_yaml(self.materials_file)
-        property_research = self.load_yaml(self.property_research_file)
+        materials_data = read_yaml_file(self.materials_file)
+        property_research = read_yaml_file(self.property_research_file)
         
         if not materials_data or 'materials' not in materials_data:
             print("❌ Invalid Materials.yaml structure")
@@ -294,7 +272,21 @@ class ResearchCitationIntegrator:
         # Save updated Materials.yaml
         if updates_count > 0:
             print(f"\n💾 Saving {updates_count} updates to Materials.yaml...")
-            self.save_yaml(self.materials_file, materials_data)
+            if not self.dry_run:
+                # Create backup
+                backup_file = self.materials_file.with_suffix(
+                    f'.backup_{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml'
+                )
+                if self.materials_file.exists():
+                    import shutil
+                    shutil.copy2(self.materials_file, backup_file)
+                    print(f"📦 Backup created: {backup_file.name}")
+            
+                # Save updated data
+                write_yaml_file(self.materials_file, materials_data, sort_keys=False)
+                print(f"💾 Saved: {self.materials_file.name}")
+            else:
+                print(f"🔍 DRY RUN: Would save {self.materials_file.name}")
         else:
             print("\n⚠️  No updates to save")
         

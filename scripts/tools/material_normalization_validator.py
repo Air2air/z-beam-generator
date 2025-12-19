@@ -18,7 +18,12 @@ import argparse
 import sys
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
-import yaml
+
+# Add project root to path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+# Use centralized YAML utilities
+from shared.utils.yaml_utils import load_yaml
 
 # Project root
 PROJECT_ROOT = Path(__file__).parent.parent.parent
@@ -43,23 +48,16 @@ CODE_FILES = {
 }
 
 
-def load_yaml(path: Path) -> Dict:
-    """Load YAML file safely."""
-    if not path.exists():
-        print(f"⚠️  File not found: {path}")
-        return {}
-    with open(path, 'r') as f:
-        return yaml.safe_load(f) or {}
-
-
 def get_materials_from_source() -> Tuple[Set[str], Dict[str, str]]:
     """
     Get canonical material list from Materials.yaml (source of truth).
     
     Returns:
         Tuple of (material_names set, material_to_category dict)
-    """
-    data = load_yaml(DATA_FILES["Materials.yaml"])
+    """    if not DATA_FILES["Materials.yaml"].exists():
+        print(f"⚠️  File not found: {DATA_FILES['Materials.yaml']}")
+        return set(), {}
+        data = load_yaml(DATA_FILES["Materials.yaml"])
     materials_section = data.get("materials", {})
     
     material_names = set()

@@ -12,14 +12,6 @@ from typing import Dict, List, Any
 # Use shared YAML utilities
 from shared.utils.file_io import read_yaml_file, write_yaml_file
 
-def load_yaml(file_path: Path) -> Dict:
-    """Load YAML file with safe loader"""
-    return read_yaml_file(file_path)
-
-def save_yaml(file_path: Path, data: Dict) -> None:
-    """Save YAML file with consistent formatting"""
-    write_yaml_file(file_path, data, sort_keys=False)
-
 def normalize_compound_name(name: str) -> str:
     """Normalize compound names for matching"""
     return name.strip().lower().replace(' ', '-')
@@ -32,7 +24,7 @@ def migrate_frontmatter(file_path: Path, dry_run: bool = False) -> Dict[str, Any
     """
     print(f"\n{'[DRY RUN] ' if dry_run else ''}Processing: {file_path.name}")
     
-    data = load_yaml(file_path)
+    data = read_yaml_file(file_path)
     stats = {
         'file': file_path.name,
         'compounds_updated': 0,
@@ -127,7 +119,7 @@ def migrate_frontmatter(file_path: Path, dry_run: bool = False) -> Dict[str, Any
     
     # Save if not dry run
     if not dry_run and (stats['compounds_updated'] > 0 or stats['fumes_removed']):
-        save_yaml(file_path, data)
+        write_yaml_file(file_path, data, sort_keys=False)
         print(f"  ✅ Updated {stats['compounds_updated']} compounds")
     elif dry_run:
         print(f"  ℹ️  Would update {stats['compounds_updated']} compounds")

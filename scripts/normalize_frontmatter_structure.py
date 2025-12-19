@@ -97,16 +97,6 @@ FIELD_ORDER = [
 ]
 
 
-def load_yaml(file_path: Path) -> Dict:
-    """Load YAML file (handles OrderedDict tags)."""
-    return read_yaml_file(file_path)
-
-
-def save_yaml(file_path: Path, data: Dict) -> None:
-    """Save YAML file with proper formatting."""
-    write_yaml_file(file_path, data, sort_keys=False)
-
-
 def flatten_relationships(data: Dict) -> Dict:
     """
     Flatten relationships structure to top level.
@@ -230,7 +220,7 @@ def normalize_file(file_path: Path, dry_run: bool = False) -> Dict[str, Any]:
         
         # Save if not dry run
         if not dry_run and changes:
-            save_yaml(file_path, data)
+            write_yaml_file(file_path, data, sort_keys=False)
         
         return {
             'success': True,

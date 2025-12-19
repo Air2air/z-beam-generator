@@ -25,14 +25,6 @@ DATA_DIR = Path(__file__).parent.parent.parent / "data"
 CONTAMINANTS_FILE = DATA_DIR / "contaminants" / "Contaminants.yaml"
 COMPOUNDS_FILE = DATA_DIR / "compounds" / "Compounds.yaml"
 
-def load_yaml(filepath: Path) -> dict:
-    """Load YAML file"""
-    return read_yaml_file(filepath)
-
-def save_yaml(filepath: Path, data: dict):
-    """Save YAML file with proper formatting"""
-    write_yaml_file(filepath, data, sort_keys=False)
-
 def standardize_compound_name_to_id(compound_name: str) -> str:
     """Convert compound name to kebab-case ID"""
     return compound_name.lower().replace(' ', '-').replace('_', '-')
@@ -119,8 +111,8 @@ def main(dry_run: bool = True):
     
     # Load data
     print("📂 Loading data files...")
-    contaminants = load_yaml(CONTAMINANTS_FILE)
-    compounds = load_yaml(COMPOUNDS_FILE)
+    contaminants = read_yaml_file(CONTAMINANTS_FILE)
+    compounds = read_yaml_file(COMPOUNDS_FILE)
     
     print(f"   ✅ Contaminants: {len(contaminants['contaminants'])} entries")
     print(f"   ✅ Compounds: {len(compounds['compounds'])} entries")
@@ -174,7 +166,7 @@ def main(dry_run: bool = True):
     # Save changes
     if not dry_run:
         print("💾 Saving changes...")
-        save_yaml(CONTAMINANTS_FILE, contaminants)
+        write_yaml_file(CONTAMINANTS_FILE, contaminants, sort_keys=False)
         print(f"   ✅ Contaminants.yaml updated")
         print()
         print("✅ DEDUPLICATION COMPLETE")

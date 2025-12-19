@@ -24,6 +24,9 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+# Add project root to path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
 # Use shared YAML utilities
 from shared.utils.file_io import read_yaml_file, write_yaml_file
 
@@ -31,16 +34,6 @@ from shared.utils.file_io import read_yaml_file, write_yaml_file
 def slugify(name: str) -> str:
     """Convert material name to filename slug."""
     return name.lower().replace(' ', '-').replace('/', '-').replace('(', '').replace(')', '')
-
-
-def load_yaml(file_path: Path) -> dict:
-    """Load YAML file."""
-    return read_yaml_file(file_path)
-
-
-def save_yaml(file_path: Path, data: dict) -> None:
-    """Save YAML file preserving structure."""
-    write_yaml_file(file_path, data, sort_keys=False)
 
 
 def find_material_key(materials: dict, search_name: str) -> str | None:
@@ -54,7 +47,7 @@ def find_material_key(materials: dict, search_name: str) -> str | None:
 
 def list_materials(materials_file: Path) -> None:
     """List all materials in the data file."""
-    data = load_yaml(materials_file)
+    data = read_yaml_file(materials_file)
     materials = data.get('materials', {})
     
     print(f"\n📋 Materials in {materials_file.name} ({len(materials)} total):\n")
@@ -85,7 +78,7 @@ def remove_material(material_name: str, dry_run: bool = False, auto_yes: bool = 
         print(f"❌ Error: Materials file not found: {materials_file}")
         return False
     
-    data = load_yaml(materials_file)
+    data = read_yaml_file(materials_file)
     materials = data.get('materials', {})
     category_mapping = data.get('category_mapping', {})
     material_index = data.get('material_index', {})
@@ -145,7 +138,7 @@ def remove_material(material_name: str, dry_run: bool = False, auto_yes: bool = 
     
     # Step 4: Check Settings.yaml
     print("\n⚙️  Settings.yaml:")
-    settings_data = load_yaml(settings_file) if settings_file.exists() else {}
+    settings_data = read_yaml_file(settings_file) if settings_file.exists() else {}
     settings_materials = settings_data.get('settings', {})
     settings_key = find_material_key(settings_materials, material_name) if settings_materials else None
     if settings_key and settings_key in settings_materials:
@@ -248,7 +241,7 @@ def remove_material(material_name: str, dry_run: bool = False, auto_yes: bool = 
             settings_data_ref = removal[2]
             settings_file_path = removal[3]
             del settings_data_ref['settings'][settings_key]
-            save_yaml(settings_file_path, settings_data_ref)
+            write_yaml_file(settings_file_path, settings_data_ref, sort_keys=False)
             print(f"✅ Removed '{settings_key}' from Settings.yaml")
         elif removal_type == 'frontmatter':
             target = removal[1]
@@ -276,7 +269,7 @@ def remove_material(material_name: str, dry_run: bool = False, auto_yes: bool = 
                 print(f"✅ Removed from {pf.name}")
     
     # Save updated Materials.yaml
-    save_yaml(materials_file, data)
+    write_yaml_file(materials_file, data, sort_keys=False)
     print("✅ Saved updated Materials.yaml")
     
     print(f"\n🎉 Material '{effective_key}' successfully removed from {len(removals)} locations!")

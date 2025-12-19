@@ -32,21 +32,6 @@ class CategoriesReconciler:
         self.archive_dir = data_dir / "archive"
         
         self.timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        
-    def load_yaml(self, path: Path) -> Dict[str, Any]:
-        """Load YAML file."""
-        print(f"Loading {path.name}...")
-        return read_yaml_file(path)
-    
-    def save_yaml(self, data: Dict[str, Any], path: Path, backup: bool = True):
-        """Save YAML file with optional backup."""
-        if backup and path.exists():
-            backup_path = path.parent / f"{path.stem}_{self.timestamp}{path.suffix}"
-            print(f"Creating backup: {backup_path.name}")
-            shutil.copy2(path, backup_path)
-        
-        print(f"Writing {path.name}...")
-        write_yaml_file(path, data, sort_keys=False)
     
     def extend_material_properties(self, categories_data: Dict[str, Any], 
                                    properties_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -299,9 +284,12 @@ All data has been preserved and integrated into the new multi-file architecture.
         print(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         
         # Load all files
-        categories_data = self.load_yaml(self.categories_path)
-        properties_data = self.load_yaml(self.properties_path)
-        settings_data = self.load_yaml(self.settings_path)
+        print(f"Loading {self.categories_path.name}...")
+        categories_data = read_yaml_file(self.categories_path)
+        print(f"Loading {self.properties_path.name}...")
+        properties_data = read_yaml_file(self.properties_path)
+        print(f"Loading {self.settings_path.name}...")
+        settings_data = read_yaml_file(self.settings_path)
         
         # Extend MaterialProperties.yaml
         extended_properties = self.extend_material_properties(categories_data, properties_data)
@@ -320,9 +308,23 @@ All data has been preserved and integrated into the new multi-file architecture.
         
         # Save extended files (with backups)
         print("\n=== Saving Extended Files ===")
-        self.save_yaml(extended_properties, self.properties_path, backup=True)
-        self.save_yaml(extended_settings, self.settings_path, backup=True)
-        self.save_yaml(category_metadata, self.metadata_path, backup=False)
+        # Save extended files with backups
+        if self.properties_path.exists():
+            backup_path = self.properties_path.parent / f"{self.properties_path.stem}_{self.timestamp}{self.properties_path.suffix}"
+            print(f"Creating backup: {backup_path.name}")
+            shutil.copy2(self.properties_path, backup_path)
+        print(f"Writing {self.properties_path.name}...")
+        write_yaml_file(extended_properties, self.properties_path, sort_keys=False)
+        
+        if self.settings_path.exists():
+            backup_path = self.settings_path.parent / f"{self.settings_path.stem}_{self.timestamp}{self.settings_path.suffix}"
+            print(f"Creating backup: {backup_path.name}")
+            shutil.copy2(self.settings_path, backup_path)
+        print(f"Writing {self.settings_path.name}...")
+        write_yaml_file(extended_settings, self.settings_path, sort_keys=False)
+        
+        print(f"Writing {self.metadata_path.name}...")
+        write_yaml_file(category_metadata, self.metadata_path, sort_keys=False)
         
         # Archive Categories.yaml
         self.archive_categories()

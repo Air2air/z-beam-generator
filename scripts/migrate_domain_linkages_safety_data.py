@@ -18,15 +18,6 @@ import sys
 from shared.utils.file_io import read_yaml_file, write_yaml_file
 
 
-def load_yaml(file_path: Path) -> Dict:
-    """Load YAML file safely"""
-    return read_yaml_file(file_path)
-
-
-def save_yaml(file_path: Path, data: Dict) -> None:
-    """Save YAML file with proper formatting"""
-    write_yaml_file(file_path, data, sort_keys=False)
-
 
 def normalize_compound_name(name: str) -> str:
     """Normalize compound name for matching"""
@@ -65,7 +56,7 @@ def load_compound_data(compound_id: str, compounds_dir: Path) -> Optional[Dict]:
     # Try to find compound file
     compound_files = list(compounds_dir.rglob(f'{compound_id}.yaml'))
     if compound_files:
-        return load_yaml(compound_files[0])
+        return read_yaml_file(compound_files[0])
     return None
 
 
@@ -229,7 +220,7 @@ def migrate_contaminant_file(
     
     try:
         # Load contaminant data
-        data = load_yaml(file_path)
+        data = read_yaml_file(file_path)
         
         # Enhance produces_compounds
         enhanced_compounds, enhancement_warnings = enhance_produces_compounds(
@@ -258,7 +249,7 @@ def migrate_contaminant_file(
         
         # Save if not dry run
         if not dry_run:
-            save_yaml(file_path, data)
+            write_yaml_file(file_path, data, sort_keys=False)
         
         return True, warnings
         

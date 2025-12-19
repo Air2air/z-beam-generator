@@ -31,16 +31,6 @@ SETTINGS_FILE = Path("data/materials/MachineSettings.yaml")
 BACKUP_DIR = Path("data/materials/backups")
 
 
-def load_yaml(file_path: Path) -> Dict[str, Any]:
-    """Load YAML file"""
-    return read_yaml_file(file_path)
-
-
-def save_yaml(data: Dict[str, Any], file_path: Path) -> None:
-    """Save data to YAML file with proper formatting"""
-    write_yaml_file(file_path, data, sort_keys=False)
-
-
 def create_backup(file_path: Path) -> Path:
     """Create timestamped backup of file"""
     BACKUP_DIR.mkdir(exist_ok=True)
@@ -59,7 +49,7 @@ def extract_data() -> None:
     
     # Load Materials.yaml
     print(f"\n📖 Loading {MATERIALS_FILE}...")
-    materials_data = load_yaml(MATERIALS_FILE)
+    materials_data = read_yaml_file(MATERIALS_FILE)
     
     if 'materials' not in materials_data:
         raise ValueError("No 'materials' key found in Materials.yaml")

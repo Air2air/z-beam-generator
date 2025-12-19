@@ -46,23 +46,6 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 
-def load_yaml(filepath: Path) -> Dict:
-    """Load YAML file."""
-    return read_yaml_file(filepath)
-
-
-def save_yaml(filepath: Path, data: Dict, backup: bool = True):
-    """Save YAML file with optional backup."""
-    if backup and filepath.exists():
-        backup_path = filepath.with_suffix('.yaml.bak')
-        if not backup_path.exists():
-            print(f"📦 Creating backup: {backup_path.name}")
-            import shutil
-            shutil.copy2(filepath, backup_path)
-    
-    write_yaml_file(filepath, data, sort_keys=False)
-
-
 def build_material_contaminant_index(contaminants_data: Dict) -> Dict[str, Dict[str, List[str]]]:
     """
     Build reverse index from contamination patterns to materials.
@@ -250,8 +233,8 @@ Architecture:
     
     # Load data
     print('📂 Loading data files...')
-    contaminants_data = load_yaml(contaminants_file)
-    materials_data = load_yaml(materials_file)
+    contaminants_data = read_yaml_file(contaminants_file)
+    materials_data = read_yaml_file(materials_file)
     
     patterns_count = len(contaminants_data.get('contamination_patterns', {}))
     materials_count = len(materials_data.get('materials', {}))
@@ -324,7 +307,14 @@ Architecture:
         print('   python3 scripts/sync/populate_material_contaminants.py')
     else:
         print('💾 Saving Materials.yaml...')
-        save_yaml(materials_file, updated_data, backup=not args.no_backup)
+        # Create backup if requested
+        if not args.no_backup and materials_file.exists():
+            backup_path = materials_file.with_suffix('.yaml.bak')
+            if not backup_path.exists():
+                print(f"📦 Creating backup: {backup_path.name}")
+                import shutil
+                shutil.copy2(materials_file, backup_path)
+        write_yaml_file(materials_file, updated_data, sort_keys=False)
         print('   ✅ Saved successfully')
         print()
         print('✨ SYNC COMPLETE')

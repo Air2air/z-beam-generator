@@ -12,17 +12,17 @@ Usage:
     python3 scripts/validation/validate_zero_nulls.py --frontmatter
 """
 
-import yaml
 import argparse
+import sys
 from pathlib import Path
 from typing import Dict, List, Any, Tuple
 from collections import defaultdict
 
+# Add project root to path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-def load_yaml(file_path: Path) -> Dict:
-    """Load YAML file safely"""
-    with open(file_path, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+# Use centralized YAML utilities
+from shared.utils.yaml_utils import load_yaml
 
 
 def find_nulls_recursive(data: Any, path: str = "") -> List[str]:
