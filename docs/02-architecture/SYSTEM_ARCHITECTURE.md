@@ -1,5 +1,12 @@
 # Z-Beam Generator System Architecture
 
+> ⚠️ **UPDATE (Dec 19, 2025)**: Several referenced files have been removed:
+> - `streamlined_generator.py` (replaced by `UniversalFrontmatterExporter`)
+> - `trivial_exporter.py` (replaced by `UniversalFrontmatterExporter`)
+> - `schema_validator.py` (use `shared.validation.SchemaValidator` directly)
+>
+> See `EXPORTERS_UPDATED_DEC19_2025.md` for current architecture.
+
 **Version**: 2.0 (Post-Flattening)  
 **Last Updated**: October 2, 2025  
 **Status**: Production-Ready

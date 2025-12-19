@@ -1,5 +1,7 @@
 # Z-Beam Generator: Simplified Architecture
 
+> ⚠️ **UPDATE (Dec 19, 2025)**: `streamlined_generator.py` has been removed. See `EXPORTERS_UPDATED_DEC19_2025.md` for current architecture using `UniversalFrontmatterExporter`.
+
 **Version**: 2.0 (October 2025)  
 **Philosophy**: Streamlined to 6 active components with enhanced prompting
 
