@@ -10,7 +10,7 @@ import yaml
 import json
 from pathlib import Path
 from datetime import datetime
-import shutil
+from shared.utils.file_operations import create_backup_directory
 
 # Qualitative to numeric conversions (temperature in °C for oxidationResistance)
 QUALITATIVE_CONVERSIONS = {
@@ -45,7 +45,11 @@ class QualitativeValueFixer:
     def create_backup(self):
         """Create backup of frontmatter directory"""
         print(f"Creating backup at {self.backup_dir}...")
-        shutil.copytree(self.frontmatter_dir, self.backup_dir)
+        create_backup_directory(
+            self.frontmatter_dir,
+            backup_dir=self.backup_dir.parent,
+            timestamp=False
+        )
         print(f"✅ Backup created\n")
     
     def load_validation_report(self) -> dict:

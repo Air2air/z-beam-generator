@@ -19,7 +19,7 @@ Usage:
 
 import sys
 import yaml
-import shutil
+from shared.utils.file_operations import create_backup_file
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List
@@ -85,12 +85,14 @@ class PropertiesMigrator:
     
     def create_backup(self) -> Path:
         """Create timestamped backup of Materials.yaml"""
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        backup_file = self.backup_dir / f"materials_backup_{timestamp}.yaml"
-        
-        print(f"📦 Creating backup: {backup_file}")
-        shutil.copy2(self.materials_file, backup_file)
-        
+        print(f"📦 Creating backup...")
+        backup_file = create_backup_file(
+            self.materials_file,
+            backup_dir=self.backup_dir,
+            timestamp=True,
+            suffix='materials_backup'
+        )
+        print(f"📦 Backup created: {backup_file}")
         return backup_file
     
     def load_materials(self) -> Dict:

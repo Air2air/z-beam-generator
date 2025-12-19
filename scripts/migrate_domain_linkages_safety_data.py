@@ -16,12 +16,7 @@ import sys
 
 # Use shared YAML utilities
 from shared.utils.file_io import read_yaml_file, write_yaml_file
-
-
-
-def normalize_compound_name(name: str) -> str:
-    """Normalize compound name for matching"""
-    return name.lower().strip()
+from shared.utils.formatters import normalize_compound_name
 
 
 def parse_concentration_range(concentration_str: str) -> Optional[Dict[str, float]]:

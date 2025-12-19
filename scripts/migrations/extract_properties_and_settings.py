@@ -18,11 +18,11 @@ Data Structure:
 
 from pathlib import Path
 from datetime import datetime
-import shutil
 from typing import Dict, Any
 
 # Use shared YAML utilities
 from shared.utils.file_io import read_yaml_file, write_yaml_file
+from shared.utils.file_operations import create_backup_file
 
 # Paths
 MATERIALS_FILE = Path("data/materials/Materials.yaml")
@@ -34,9 +34,12 @@ BACKUP_DIR = Path("data/materials/backups")
 def create_backup(file_path: Path) -> Path:
     """Create timestamped backup of file"""
     BACKUP_DIR.mkdir(exist_ok=True)
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    backup_path = BACKUP_DIR / f"{file_path.stem}_{timestamp}.yaml"
-    shutil.copy2(file_path, backup_path)
+    backup_path = create_backup_file(
+        file_path,
+        backup_dir=BACKUP_DIR,
+        timestamp=True,
+        suffix=''
+    )
     print(f"📦 Created backup: {backup_path}")
     return backup_path
 

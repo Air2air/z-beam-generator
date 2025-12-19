@@ -11,10 +11,7 @@ from typing import Dict, List, Any
 
 # Use shared YAML utilities
 from shared.utils.file_io import read_yaml_file, write_yaml_file
-
-def normalize_compound_name(name: str) -> str:
-    """Normalize compound names for matching"""
-    return name.strip().lower().replace(' ', '-')
+from shared.utils.formatters import normalize_compound_name
 
 def migrate_frontmatter(file_path: Path, dry_run: bool = False) -> Dict[str, Any]:
     """
@@ -49,7 +46,7 @@ def migrate_frontmatter(file_path: Path, dry_run: bool = False) -> Dict[str, Any
     # Create lookup: normalized_name -> fume_data
     fumes_lookup = {}
     for fume in fumes_generated:
-        normalized = normalize_compound_name(fume.get('compound', ''))
+        normalized = normalize_compound_name(fume.get('compound', ''), slug_format=True)
         fumes_lookup[normalized] = fume
     
     # Update each compound in produces_compounds
@@ -58,14 +55,14 @@ def migrate_frontmatter(file_path: Path, dry_run: bool = False) -> Dict[str, Any
     for compound in compounds:
         # Extract normalized name from title
         title = compound.get('title', '')
-        normalized_title = normalize_compound_name(title)
+        normalized_title = normalize_compound_name(title, slug_format=True)
         
         # Find matching fume
         fume = fumes_lookup.get(normalized_title)
         
         if not fume and fumes_lookup:
             # Try matching by last word (e.g., "Carbon Monoxide" -> "monoxide")
-            last_word = normalize_compound_name(title.split()[-1] if title else '')
+            last_word = normalize_compound_name(title.split()[-1] if title else '', slug_format=True)
             fume = next((f for name, f in fumes_lookup.items() if last_word in name), None)
         
         if fume:

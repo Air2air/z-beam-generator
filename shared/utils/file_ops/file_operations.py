@@ -429,3 +429,103 @@ def save_version_history(
     pass
 
 
+def create_backup_file(
+    filepath: Path,
+    backup_dir: Optional[Path] = None,
+    timestamp: bool = True,
+    suffix: str = 'backup'
+) -> Path:
+    """
+    Create timestamped backup of a single file.
+    
+    Args:
+        filepath: Path to file to backup
+        backup_dir: Optional directory for backups (default: same dir as file with 'backups' subdir)
+        timestamp: Whether to include timestamp in backup name
+        suffix: Suffix for backup file (default: 'backup')
+        
+    Returns:
+        Path to created backup file
+        
+    Example:
+        >>> backup = create_backup_file(Path('data.yaml'))
+        >>> # Creates: backups/data_backup_20231219_143022.yaml
+    """
+    filepath = Path(filepath)
+    
+    if not filepath.exists():
+        raise FileNotFoundError(f"File not found: {filepath}")
+    
+    # Determine backup directory
+    if backup_dir is None:
+        backup_dir = filepath.parent / 'backups'
+    
+    backup_dir = Path(backup_dir)
+    backup_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Build backup filename
+    if timestamp:
+        timestamp_str = datetime.now().strftime('%Y%m%d_%H%M%S')
+        backup_name = f"{filepath.stem}_{suffix}_{timestamp_str}{filepath.suffix}"
+    else:
+        backup_name = f"{filepath.stem}_{suffix}{filepath.suffix}"
+    
+    backup_path = backup_dir / backup_name
+    
+    # Copy file with metadata preservation
+    shutil.copy2(filepath, backup_path)
+    
+    return backup_path
+
+
+def create_backup_directory(
+    source_dir: Path,
+    backup_dir: Optional[Path] = None,
+    timestamp: bool = True,
+    suffix: str = 'backup'
+) -> Path:
+    """
+    Create timestamped backup of an entire directory.
+    
+    Args:
+        source_dir: Path to directory to backup
+        backup_dir: Optional parent directory for backups (default: parent of source_dir)
+        timestamp: Whether to include timestamp in backup name
+        suffix: Suffix for backup directory (default: 'backup')
+        
+    Returns:
+        Path to created backup directory
+        
+    Example:
+        >>> backup = create_backup_directory(Path('frontmatter'))
+        >>> # Creates: frontmatter_backup_20231219_143022/
+    """
+    source_dir = Path(source_dir)
+    
+    if not source_dir.exists():
+        raise FileNotFoundError(f"Directory not found: {source_dir}")
+    
+    if not source_dir.is_dir():
+        raise NotADirectoryError(f"Not a directory: {source_dir}")
+    
+    # Determine backup location
+    if backup_dir is None:
+        backup_parent = source_dir.parent
+    else:
+        backup_parent = Path(backup_dir)
+    
+    backup_parent.mkdir(parents=True, exist_ok=True)
+    
+    # Build backup directory name
+    if timestamp:
+        timestamp_str = datetime.now().strftime('%Y%m%d_%H%M%S')
+        backup_name = f"{source_dir.name}_{suffix}_{timestamp_str}"
+    else:
+        backup_name = f"{source_dir.name}_{suffix}"
+    
+    backup_path = backup_parent / backup_name
+    
+    # Copy entire directory tree
+    shutil.copytree(source_dir, backup_path)
+    
+    return backup_path

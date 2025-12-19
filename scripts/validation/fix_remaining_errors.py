@@ -24,7 +24,12 @@ class RemainingErrorsFixer:
     def create_backup(self):
         """Create backup of frontmatter directory"""
         print(f"Creating backup at {self.backup_dir}...")
-        shutil.copytree(self.frontmatter_dir, self.backup_dir)
+        create_backup_directory(
+            self.frontmatter_dir,
+            backup_dir=self.backup_dir.parent,
+            timestamp=False,  # We already have timestamp in self.backup_dir path
+            suffix=self.backup_dir.name.replace(f"{self.frontmatter_dir.name}_", "")
+        )
         print("✅ Backup created\n")
     
     def fix_material(self, material: str, fixes: dict) -> int:

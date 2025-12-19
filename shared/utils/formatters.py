@@ -50,6 +50,29 @@ def normalize_taxonomy(data: dict) -> Tuple[str, str]:
     return category, subcategory
 
 
+def normalize_compound_name(name: str, slug_format: bool = False) -> str:
+    """
+    Normalize compound name for consistent matching and comparison.
+    
+    Args:
+        name: Compound name to normalize
+        slug_format: If True, replace spaces with dashes for slug-like format
+    
+    Returns:
+        Normalized compound name (lowercase, stripped)
+    
+    Example:
+        >>> normalize_compound_name("Carbon Monoxide")
+        'carbon monoxide'
+        >>> normalize_compound_name("Carbon Monoxide", slug_format=True)
+        'carbon-monoxide'
+    """
+    normalized = name.strip().lower()
+    if slug_format:
+        normalized = normalized.replace(' ', '-')
+    return normalized
+
+
 def extract_slug(item_id: str, suffix: Optional[str] = None) -> str:
     """
     Extract slug by removing domain suffix.
