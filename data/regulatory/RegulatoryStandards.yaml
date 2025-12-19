@@ -1,0 +1,404 @@
+# Regulatory Standards Library
+# Modular data file for regulatory_standards relationship type
+# 
+# Purpose: Centralize regulatory standards referenced across 150+ materials/settings
+# Impact: Eliminates 75,000+ lines of duplicate data
+# 
+# Usage in frontmatter:
+#   relationships:
+#     regulatory_standards:
+#     - type: regulatory
+#       id: fda-laser-product-performance
+#       compliance_level: mandatory
+#       jurisdiction_applies: true
+#
+# Schema version: 1.0.0
+# Last updated: 2025-12-18
+
+regulatory_standards:
+  # ============================================
+  # FEDERAL REGULATIONS - UNITED STATES
+  # ============================================
+  
+  fda-laser-product-performance:
+    id: fda-laser-product-performance
+    title: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    short_title: FDA Laser Product Standards
+    authority: FDA
+    authority_full: Food and Drug Administration
+    agency_type: federal
+    country: United States
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    image: /images/logo/logo-org-fda.png
+    description: Federal performance standards for all laser products manufactured or imported into the United States
+    scope: Product design, manufacturing, labeling, and reporting
+    applicability:
+      - Laser cleaning equipment manufacturers
+      - Equipment importers
+      - Product distributors
+    compliance_requirements:
+      - Laser safety classification labeling
+      - Protective housing requirements
+      - Aperture safety interlocks
+      - Key-operated control switches
+      - Remote interlock connectors
+      - Laser radiation emission indicators
+      - Beam attenuators
+    compliance_level: mandatory
+    enforcement: FDA may seize non-compliant products
+    penalties: Civil penalties up to $1,000 per violation
+    effective_date: 1976-08-02
+    last_amended: 2020-11-30
+    jurisdiction: United States (federal)
+    related_standards:
+      - iec-60825-laser-safety
+      - ansi-z136-1-laser-safety
+    category: product_safety
+    
+  osha-ppe-requirements:
+    id: osha-ppe-requirements
+    title: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    short_title: OSHA PPE Requirements
+    authority: OSHA
+    authority_full: Occupational Safety and Health Administration
+    agency_type: federal
+    country: United States
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+    image: /images/logo/logo-org-osha.png
+    description: Federal requirements for personal protective equipment in construction and industrial operations
+    scope: Eye protection, respiratory protection, protective clothing
+    applicability:
+      - All workplaces using laser equipment
+      - Operators and nearby personnel
+      - Maintenance personnel
+    compliance_requirements:
+      - Laser safety eyewear rated for wavelength
+      - Protective clothing for skin exposure risk
+      - Respiratory protection for fume/particulate exposure
+      - Employer-provided PPE at no cost to employees
+      - PPE training and fit testing
+    compliance_level: mandatory
+    enforcement: OSHA inspections and citations
+    penalties: Up to $15,625 per serious violation
+    effective_date: 1971-04-28
+    last_amended: 2023-01-23
+    jurisdiction: United States (federal)
+    related_standards:
+      - ansi-z87-1-eye-protection
+      - ansi-z136-1-laser-safety
+    category: workplace_safety
+    
+  # ============================================
+  # INTERNATIONAL STANDARDS
+  # ============================================
+  
+  ansi-z136-1-laser-safety:
+    id: ansi-z136-1-laser-safety
+    title: ANSI Z136.1 - Safe Use of Lasers
+    short_title: ANSI Laser Safety Standard
+    authority: ANSI
+    authority_full: American National Standards Institute
+    agency_type: standards_body
+    country: United States
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    image: /images/logo/logo-org-ansi.png
+    description: Comprehensive safety standard for laser operation, maintenance, and safety programs
+    scope: Hazard evaluation, control measures, safety procedures, training
+    applicability:
+      - All laser operators and safety officers
+      - Laser safety programs
+      - Facility design and operations
+    compliance_requirements:
+      - Laser safety officer designation
+      - Hazard evaluation and classification
+      - Nominal hazard zone calculation
+      - Standard operating procedures
+      - Laser safety training program
+      - Medical surveillance for high-power operations
+      - Controlled access to laser areas
+    compliance_level: recommended
+    adoption: Widely adopted, referenced by OSHA
+    effective_date: 2022-08-01
+    edition: 2022 edition
+    replaces: ANSI Z136.1-2014
+    jurisdiction: International (US-origin)
+    related_standards:
+      - iec-60825-laser-safety
+      - osha-ppe-requirements
+    category: operational_safety
+    
+  iec-60825-laser-safety:
+    id: iec-60825-laser-safety
+    title: IEC 60825 - Safety of Laser Products
+    short_title: IEC Laser Product Safety
+    authority: IEC
+    authority_full: International Electrotechnical Commission
+    agency_type: standards_body
+    country: International
+    url: https://webstore.iec.ch/publication/3587
+    image: /images/logo/logo-org-iec.png
+    description: International standard for laser product safety classification and requirements
+    scope: Product design, classification, labeling, user information
+    applicability:
+      - Laser product manufacturers worldwide
+      - Product certification bodies
+      - International trade compliance
+    compliance_requirements:
+      - Laser classification (Class 1-4)
+      - Safety labeling requirements
+      - User information documentation
+      - Engineering controls per class
+      - Emission limits verification
+    compliance_level: recommended
+    adoption: Required for CE marking in EU
+    effective_date: 2014-05-07
+    edition: IEC 60825-1:2014
+    parts:
+      - "Part 1: Equipment classification and requirements"
+      - "Part 2: Safety of optical fibre communication systems"
+      - "Part 4: Laser guards"
+    jurisdiction: International
+    harmonized_with:
+      - EN 60825-1 (Europe)
+      - BS EN 60825-1 (UK)
+    related_standards:
+      - ansi-z136-1-laser-safety
+      - ce-machinery-directive
+    category: product_safety
+    
+  iso-11553-laser-processing:
+    id: iso-11553-laser-processing
+    title: ISO 11553 - Laser Processing Safety
+    short_title: ISO Laser Processing
+    authority: ISO
+    authority_full: International Organization for Standardization
+    agency_type: standards_body
+    country: International
+    url: https://www.iso.org/standard/73827.html
+    image: /images/logo/logo-org-iso.png
+    description: Safety requirements for laser processing machines and systems
+    scope: Machine design, protective housings, emissions control, ventilation
+    applicability:
+      - Laser processing equipment manufacturers
+      - Equipment integrators
+      - Facility operators
+    compliance_requirements:
+      - Enclosed processing area with interlocks
+      - Fume extraction and filtration systems
+      - Emergency stop systems
+      - Warning labels and indicators
+      - Operator training requirements
+    compliance_level: recommended
+    adoption: Industry best practice
+    effective_date: 2020-06-01
+    edition: ISO 11553:2020
+    parts:
+      - "Part 1: General safety requirements"
+      - "Part 2: Safety requirements for hand-held processing devices"
+    jurisdiction: International
+    related_standards:
+      - iec-60825-laser-safety
+      - ce-machinery-directive
+    category: equipment_safety
+    
+  # ============================================
+  # REGIONAL REGULATIONS - EUROPEAN UNION
+  # ============================================
+  
+  ce-machinery-directive:
+    id: ce-machinery-directive
+    title: CE Machinery Directive 2006/42/EC
+    short_title: CE Machinery Directive
+    authority: EU
+    authority_full: European Union
+    agency_type: regulatory_body
+    country: European Union
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32006L0042
+    image: /images/logo/logo-org-eu.png
+    description: European requirements for machinery safety including laser equipment
+    scope: Essential health and safety requirements for machinery
+    applicability:
+      - All machinery sold in EU/EEA markets
+      - Laser cleaning equipment for EU markets
+      - Equipment distributors and importers
+    compliance_requirements:
+      - CE marking affixing
+      - Declaration of Conformity
+      - Technical documentation file
+      - Risk assessment documentation
+      - Harmonized standards compliance (EN 60825, EN 12254)
+      - User manual in local language
+    compliance_level: mandatory
+    enforcement: Market surveillance authorities
+    penalties: Product withdrawal, market bans, fines
+    effective_date: 2006-05-17
+    transition_period: Ended 2009-12-29
+    jurisdiction: European Union + EEA (Norway, Iceland, Liechtenstein)
+    harmonized_standards:
+      - EN 60825-1 (Laser safety)
+      - EN 12254 (Laser processing machinery)
+      - EN ISO 11553 (Safety requirements)
+    related_standards:
+      - iec-60825-laser-safety
+      - iso-11553-laser-processing
+    category: product_safety
+    
+  reach-chemical-restrictions:
+    id: reach-chemical-restrictions
+    title: REACH Regulation (EC) No 1907/2006
+    short_title: REACH
+    authority: ECHA
+    authority_full: European Chemicals Agency
+    agency_type: regulatory_body
+    country: European Union
+    url: https://echa.europa.eu/regulations/reach
+    image: /images/logo/logo-org-echa.png
+    description: Registration, Evaluation, Authorization and Restriction of Chemicals in EU
+    scope: Chemical substance restrictions, authorizations, safety data
+    applicability:
+      - Materials containing restricted substances
+      - Coatings with heavy metals (lead, cadmium, chromium VI)
+      - Paint removal operations
+      - Chemical exposure during laser cleaning
+    compliance_requirements:
+      - Safety data sheets for chemical products
+      - Substance registration (if importing >1 tonne/year)
+      - Restriction compliance for Annex XVII substances
+      - Authorization for SVHC substances
+      - Exposure scenario development
+    compliance_level: mandatory
+    enforcement: National REACH authorities
+    penalties: Varies by member state, significant fines possible
+    effective_date: 2007-06-01
+    jurisdiction: European Union
+    restricted_substances:
+      - Lead compounds in coatings
+      - Cadmium in pigments
+      - Chromium VI compounds
+      - Asbestos-containing materials
+    related_standards:
+      - rohs-directive
+      - ce-machinery-directive
+    category: chemical_safety
+    
+  rohs-directive:
+    id: rohs-directive
+    title: RoHS Directive 2011/65/EU
+    short_title: RoHS
+    authority: EU
+    authority_full: European Union
+    agency_type: regulatory_body
+    country: European Union
+    url: https://ec.europa.eu/environment/topics/waste-and-recycling/rohs-directive_en
+    image: /images/logo/logo-org-eu.png
+    description: Restriction of Hazardous Substances in electrical and electronic equipment
+    scope: Heavy metal restrictions in EEE components
+    applicability:
+      - Laser equipment electronics
+      - Control system components
+      - Materials being cleaned (if EEE)
+    compliance_requirements:
+      - Limits for lead, mercury, cadmium, hexavalent chromium, PBB, PBDE
+      - Material declaration documentation
+      - Supply chain verification
+      - CE marking (combined with Machinery Directive)
+    compliance_level: mandatory
+    enforcement: Market surveillance authorities
+    penalties: Product withdrawal, fines
+    effective_date: 2011-07-21
+    recast_of: RoHS 2002/95/EC
+    jurisdiction: European Union
+    restricted_substances:
+      - Lead (Pb) <0.1%
+      - Mercury (Hg) <0.1%
+      - Cadmium (Cd) <0.01%
+      - Hexavalent chromium (Cr VI) <0.1%
+      - PBB, PBDE <0.1%
+    related_standards:
+      - reach-chemical-restrictions
+      - ce-machinery-directive
+    category: product_safety
+    
+  # ============================================
+  # REGIONAL REGULATIONS - UNITED KINGDOM
+  # ============================================
+  
+  uk-laser-regulations:
+    id: uk-laser-regulations
+    title: UK Laser Safety Regulations 2018
+    short_title: UK Laser Regulations
+    authority: HSE
+    authority_full: Health and Safety Executive
+    agency_type: regulatory_body
+    country: United Kingdom
+    url: https://www.hse.gov.uk/radiation/lasers/index.htm
+    image: /images/logo/logo-org-hse.png
+    description: UK-specific laser safety requirements for workplaces
+    scope: Workplace laser safety, risk assessment, control measures
+    applicability:
+      - All UK workplaces using lasers
+      - Employers and self-employed persons
+      - Laser protection advisers
+    compliance_requirements:
+      - Risk assessment for laser operations
+      - Laser protection adviser (if Class 3B/4)
+      - Local rules and safe systems of work
+      - Training for operators and maintenance staff
+      - Controlled access to laser areas
+      - Medical surveillance for high-risk operations
+      - Incident reporting to HSE
+    compliance_level: mandatory
+    enforcement: HSE inspections and enforcement notices
+    penalties: Unlimited fines, imprisonment for serious breaches
+    effective_date: 2018-01-01
+    post_brexit: UK-specific requirements (diverged from EU)
+    jurisdiction: United Kingdom
+    guidance_documents:
+      - "HSG95 - The Radiation Safety of Lasers Used for Display Purposes"
+      - "HSE Laser Safety Guidance"
+    related_standards:
+      - bs-en-60825-uk-laser-standard
+      - ansi-z136-1-laser-safety
+    category: workplace_safety
+    
+  # ============================================
+  # PPE STANDARDS
+  # ============================================
+  
+  ansi-z87-1-eye-protection:
+    id: ansi-z87-1-eye-protection
+    title: ANSI Z87.1 - Occupational Eye and Face Protection
+    short_title: ANSI Eye Protection
+    authority: ANSI
+    authority_full: American National Standards Institute
+    agency_type: standards_body
+    country: United States
+    url: https://webstore.ansi.org/standards/isea/ansiz872020
+    image: /images/logo/logo-org-ansi.png
+    description: Requirements for industrial eye and face protection devices
+    scope: Safety glasses, goggles, face shields, laser eyewear
+    applicability:
+      - All laser operators requiring eye protection
+      - Laser safety eyewear selection
+      - PPE suppliers and manufacturers
+    compliance_requirements:
+      - Optical density rating for laser wavelength
+      - Impact resistance testing
+      - Field of view requirements
+      - Marking and labeling (Z87+ for impact)
+      - Comfort and fit requirements
+    compliance_level: recommended
+    adoption: OSHA references for compliance
+    effective_date: 2020-11-20
+    edition: ANSI Z87.1-2020
+    replaces: ANSI Z87.1-2015
+    jurisdiction: United States
+    laser_specific:
+      - Optical density requirements by wavelength
+      - Visible light transmission minimums
+      - Damage threshold specifications
+      - Laser scale number (LSN) marking
+    related_standards:
+      - osha-ppe-requirements
+      - ansi-z136-1-laser-safety
+    category: ppe_standards

@@ -19,7 +19,7 @@ from typing import Dict, Any, List
 import logging
 from pathlib import Path
 
-from export.enrichment.base import BaseEnricher
+from export.enrichers.base import BaseEnricher
 
 logger = logging.getLogger(__name__)
 

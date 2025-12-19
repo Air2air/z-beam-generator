@@ -333,6 +333,12 @@ contamination_patterns:
       thickness: thin film
     subcategory: adhesive
     slug: adhesive-residue-tape-marks
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   algae-growth-contamination:
     composition:
     - Chlorophyll
@@ -611,6 +617,12 @@ contamination_patterns:
     category: biological
     subcategory: growth
     slug: algae-and-lichen-growth
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   aluminum-oxidation-contamination:
     author:
       id: 3
@@ -870,6 +882,12 @@ contamination_patterns:
       thickness: thin surface layer
     subcategory: non-ferrous
     slug: aluminum-oxidation
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   annealing-scale-contamination:
     composition:
     - Fe₃O₄
@@ -1121,6 +1139,12 @@ contamination_patterns:
     category: thermal-damage
     subcategory: scale
     slug: heat-treatment-scale
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   anodizing-defects-contamination:
     composition:
     - Al₂O₃
@@ -1358,6 +1382,12 @@ contamination_patterns:
     category: metallic-coating
     subcategory: anodizing
     slug: anodizing-layer-irregularities
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   anti-seize-contamination:
     composition:
     - Copper
@@ -1603,6 +1633,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: lubricant
     slug: anti-seize-compound
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   asbestos-coating-contamination:
     composition:
     - Mg₃Si₂O₅(OH)₄
@@ -1836,6 +1872,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: hazardous
     slug: asbestos-containing-material
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   aviation-sealant-contamination:
     composition:
     - Polysulfide
@@ -2124,6 +2166,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: adhesive
     slug: aerospace-sealant-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   battery-corrosion-contamination:
     composition:
     - KOH
@@ -2361,6 +2409,12 @@ contamination_patterns:
     category: oxidation
     subcategory: battery
     slug: battery-leakage-corrosion
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   beryllium-oxide-contamination:
     composition:
     - BeO
@@ -2619,6 +2673,12 @@ contamination_patterns:
     category: chemical-residue
     subcategory: hazardous
     slug: beryllium-oxide-contamination
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   biological-stains-contamination:
     composition:
     - Proteins
@@ -2899,6 +2959,12 @@ contamination_patterns:
     category: biological
     subcategory: deposit
     slug: organic-biofilm-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   bitumen-tar-contamination:
     composition:
     - Asphaltene
@@ -3180,6 +3246,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: petroleum
     slug: bitumen-and-tar-coatings
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   blood-residue-contamination:
     composition:
     - Hemoglobin
@@ -3462,6 +3534,12 @@ contamination_patterns:
     category: biological
     subcategory: deposit
     slug: biological-blood-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   brake-dust-contamination:
     composition:
     - Fe
@@ -3709,6 +3787,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: mineral
     slug: brake-pad-dust-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   brass-plating-contamination:
     composition:
     - Cu-Zn Alloy
@@ -3950,6 +4034,12 @@ contamination_patterns:
     category: metallic-coating
     subcategory: plating
     slug: brass-coating-removal
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   bronze-patina-contamination:
     composition:
     - Cu₂O
@@ -4191,6 +4281,12 @@ contamination_patterns:
     category: oxidation
     subcategory: non-ferrous
     slug: bronze-patina-and-corrosion
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   cadmium-plating-contamination:
     composition:
     - Cd
@@ -4424,6 +4520,12 @@ contamination_patterns:
     category: metallic-coating
     subcategory: plating
     slug: cadmium-plating-removal
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   carbon-buildup-contamination:
     composition:
     - C
@@ -4688,6 +4790,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: other
     slug: carbon-deposit-buildup
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   carbon-soot-contamination:
     composition:
     - C
@@ -4993,6 +5101,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: other
     slug: carbon-soot-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   ceramic-coating-contamination:
     composition:
     - ZrO₂
@@ -5260,6 +5374,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: ceramic
     slug: ceramic-heat-barrier-coating
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   ceramic-glaze-contamination:
     composition:
     - SiO₂
@@ -5524,6 +5644,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: ceramic
     slug: ceramic-glaze-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   chemical-stains-contamination:
     author:
       id: 3
@@ -5796,6 +5922,12 @@ contamination_patterns:
       thickness: surface staining to deep etching
     subcategory: industrial
     slug: chemical-stains-acid-etching
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   chrome-pitting-contamination:
     composition:
     - Cr₂O₃
@@ -5996,6 +6128,12 @@ contamination_patterns:
     category: oxidation
     subcategory: non-ferrous
     slug: chromium-oxide-pitting
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   concrete-dust-contamination:
     composition:
     - CaCO₃
@@ -6246,6 +6384,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: mineral
     slug: concrete-dust-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   conversion-coating-contamination:
     composition:
     - Zn₃(PO₄)₂
@@ -6484,6 +6628,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: coating
     slug: chemical-conversion-coating
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   coolant-scale-contamination:
     composition:
     - SiO₂
@@ -6732,6 +6882,12 @@ contamination_patterns:
     category: thermal-damage
     subcategory: scale
     slug: engine-coolant-scale
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   copper-patina-contamination:
     author:
       id: 4
@@ -7202,6 +7358,12 @@ contamination_patterns:
         last_updated: '2025-11-30T22:27:10.411319'
     subcategory: non-ferrous
     slug: copper-patina-verdigris
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   copper-plating-contamination:
     composition:
     - Cu
@@ -7432,6 +7594,12 @@ contamination_patterns:
     category: metallic-coating
     subcategory: plating
     slug: copper-electroplating
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   corrosion-inhibitor-contamination:
     composition:
     - Amines
@@ -7686,6 +7854,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: coating
     slug: corrosion-inhibitor-coating
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   cutting-fluid-contamination:
     composition:
     - Emulsified Oil
@@ -7959,6 +8133,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: lubricant
     slug: machining-coolant-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   diamond-coating-contamination:
     composition:
     - Amorphous Carbon
@@ -8206,6 +8386,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: coating
     slug: diamond-like-carbon-removal
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   efflorescence-contamination:
     composition:
     - CaCO₃
@@ -8456,6 +8642,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: mineral
     slug: concrete-efflorescence
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   electroplating-residue-contamination:
     composition:
     - Cyanides
@@ -8708,6 +8900,12 @@ contamination_patterns:
     category: metallic-coating
     subcategory: plating
     slug: electroplating-solution-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   environmental-dust-contamination:
     author:
       id: 3
@@ -8971,6 +9169,12 @@ contamination_patterns:
       thickness: thin film to thick accumulation
     subcategory: other
     slug: environmental-dust-layer
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   epoxy-residue-contamination:
     composition:
     - Bisphenol A
@@ -9245,6 +9449,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: adhesive
     slug: epoxy-resin-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   exhaust-residue-contamination:
     composition:
     - C
@@ -9507,6 +9717,12 @@ contamination_patterns:
     category: thermal-damage
     subcategory: fire
     slug: exhaust-system-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   fertilizer-residue-contamination:
     composition:
     - KNO₃
@@ -9768,6 +9984,12 @@ contamination_patterns:
     category: chemical-residue
     subcategory: industrial
     slug: fertilizer-salt-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   fire-damage-contamination:
     composition:
     - C
@@ -10036,6 +10258,12 @@ contamination_patterns:
     category: thermal-damage
     subcategory: fire
     slug: fire-and-smoke-damage
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   forging-scale-contamination:
     composition:
     - Fe₃O₄
@@ -10268,6 +10496,12 @@ contamination_patterns:
     category: thermal-damage
     subcategory: scale
     slug: forging-mill-scale
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   fuel-varnish-contamination:
     composition:
     - Gum
@@ -10513,6 +10747,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: petroleum
     slug: fuel-system-varnish
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   galvanize-corrosion-contamination:
     composition:
     - ZnO
@@ -10743,6 +10983,12 @@ contamination_patterns:
     category: oxidation
     subcategory: ferrous
     slug: white-rust-on-galvanized-steel
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   gasket-material-contamination:
     composition:
     - Cellulose
@@ -10997,6 +11243,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: adhesive
     slug: gasket-material-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   gold-plating-contamination:
     composition:
     - Au
@@ -11227,6 +11479,12 @@ contamination_patterns:
     category: metallic-coating
     subcategory: plating
     slug: gold-electroplating
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   graffiti-paint-contamination:
     composition:
     - Acrylic
@@ -11518,6 +11776,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: paint
     slug: graffiti-and-spray-paint
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   graphite-marks-contamination:
     composition:
     - C (Graphite)
@@ -11767,6 +12031,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: marking
     slug: graphite-deposit-traces
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   grease-deposits-contamination:
     composition:
     - Mineral Oil
@@ -12019,6 +12289,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: petroleum
     slug: heavy-machinery-grease
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   hydraulic-fluid-contamination:
     composition:
     - Mineral Oil
@@ -12268,6 +12544,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: petroleum
     slug: hydraulic-fluid-contamination
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   industrial-oil-contamination:
     author:
       id: 2
@@ -12881,6 +13163,12 @@ contamination_patterns:
       thickness: thin film to thick deposits
     subcategory: petroleum
     slug: industrial-oil-grease-buildup
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   ink-stains-contamination:
     composition:
     - Pigments
@@ -13137,6 +13425,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: marking
     slug: printing-ink-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   insect-residue-contamination:
     composition:
     - Proteins
@@ -13409,6 +13703,12 @@ contamination_patterns:
     category: biological
     subcategory: deposit
     slug: insect-impact-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   laser-marking-contamination:
     composition:
     - Metal Oxides
@@ -13647,6 +13947,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: marking
     slug: laser-marking-discoloration
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   lead-paint-contamination:
     composition:
     - Pb₃O₄
@@ -13919,6 +14225,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: paint
     slug: lead-based-paint-removal
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   lime-scale-contamination:
     composition:
     - CaCO₃
@@ -14173,6 +14485,12 @@ contamination_patterns:
     category: thermal-damage
     subcategory: scale
     slug: limescale-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   medical-disinfectant-contamination:
     composition:
     - NaOCl
@@ -14422,6 +14740,12 @@ contamination_patterns:
     category: chemical-residue
     subcategory: industrial
     slug: medical-disinfectant-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   mercury-contamination:
     composition:
     - Hg
@@ -14675,6 +14999,12 @@ contamination_patterns:
     category: chemical-residue
     subcategory: hazardous
     slug: mercury-spill-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   metal-polish-contamination:
     composition:
     - Al₂O₃
@@ -14915,6 +15245,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: wax
     slug: metal-polish-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   mineral-deposits-contamination:
     composition:
     - CaCO₃
@@ -15211,6 +15547,12 @@ contamination_patterns:
     category: thermal-damage
     subcategory: scale
     slug: hard-water-mineral-scale
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   mineral-stain-contamination:
     composition:
     - Fe₂O₃
@@ -15468,6 +15810,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: mineral
     slug: mineral-staining
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   mold-mildew-contamination:
     composition:
     - Fungal Hyphae
@@ -15742,6 +16090,12 @@ contamination_patterns:
     category: biological
     subcategory: growth
     slug: mold-and-mildew-growth
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   nickel-plating-contamination:
     composition:
     - Ni
@@ -15984,6 +16338,12 @@ contamination_patterns:
     category: metallic-coating
     subcategory: plating
     slug: electroless-nickel-plating
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   paint-residue-contamination:
     author:
       id: 3
@@ -16296,6 +16656,12 @@ contamination_patterns:
       thickness: thin chips to thick layers
     subcategory: paint
     slug: paint-residue-coating-failure
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   passivation-defect-contamination:
     composition:
     - Cr₂O₃
@@ -16530,6 +16896,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: coating
     slug: passivation-layer-irregularities
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   pcb-contamination:
     composition:
     - C₁₂H₁₀₋ₓClₓ
@@ -16775,6 +17147,12 @@ contamination_patterns:
     category: chemical-residue
     subcategory: industrial
     slug: pcb-oil-contamination
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   pesticide-residue-contamination:
     composition:
     - Organophosphates
@@ -17042,6 +17420,12 @@ contamination_patterns:
     category: chemical-residue
     subcategory: industrial
     slug: pesticide-chemical-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   pharmaceutical-residue-contamination:
     composition:
     - APIs
@@ -17317,6 +17701,12 @@ contamination_patterns:
     category: chemical-residue
     subcategory: industrial
     slug: pharmaceutical-drug-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   pickling-residue-contamination:
     composition:
     - FeCl₂
@@ -17553,6 +17943,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: coating
     slug: acid-pickling-stains
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   plasma-spray-contamination:
     composition:
     - Al₂O₃
@@ -17791,6 +18187,12 @@ contamination_patterns:
     category: thermal-damage
     subcategory: coating
     slug: thermal-spray-coating
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   plastic-residue-contamination:
     composition:
     - Polyethylene
@@ -18065,6 +18467,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: polymer
     slug: degraded-polymer-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   pollen-deposit-contamination:
     composition:
     - Proteins
@@ -18330,6 +18738,12 @@ contamination_patterns:
     category: biological
     subcategory: deposit
     slug: pollen-accumulation
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   powder-coating-contamination:
     composition:
     - Polyester Resin
@@ -18588,6 +19002,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: paint
     slug: powder-coating-buildup
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   primer-coating-contamination:
     composition:
     - Zinc Dust
@@ -18850,6 +19270,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: paint
     slug: paint-primer-layers
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   pvd-coating-contamination:
     composition:
     - TiN
@@ -19085,6 +19511,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: coating
     slug: pvd-coating-defects
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   quench-oil-contamination:
     composition:
     - Carbonized Oil
@@ -19329,6 +19761,12 @@ contamination_patterns:
     category: thermal-damage
     subcategory: scale
     slug: quenching-oil-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   radioactive-contamination:
     composition:
     - Isotopes
@@ -19578,6 +20016,12 @@ contamination_patterns:
     category: chemical-residue
     subcategory: hazardous
     slug: surface-radioactive-contamination
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   road-grime-contamination:
     composition:
     - Soil
@@ -19832,6 +20276,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: other
     slug: automotive-road-grime
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   rubber-residue-contamination:
     composition:
     - C₅H₈
@@ -20121,6 +20571,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: polymer
     slug: rubber-compound-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   rust-oxidation-contamination:
     composition:
     - Fe₂O₃
@@ -20568,6 +21024,12 @@ contamination_patterns:
     category: oxidation
     subcategory: ferrous
     slug: rust-iron-oxide-formation
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   salt-residue-contamination:
     composition:
     - NaCl
@@ -20821,6 +21283,12 @@ contamination_patterns:
     category: inorganic-coating
     subcategory: mineral
     slug: salt-and-chloride-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   scale-buildup-contamination:
     author:
       id: 1
@@ -21112,6 +21580,12 @@ contamination_patterns:
       thickness: thin coating to thick deposits
     subcategory: scale
     slug: mineral-scale-hard-water-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   semiconductor-residue-contamination:
     composition:
     - SiO₂
@@ -21387,6 +21861,12 @@ contamination_patterns:
     category: chemical-residue
     subcategory: industrial
     slug: semiconductor-processing-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   silicone-buildup-contamination:
     composition:
     - (CH₃)₂SiO
@@ -21677,6 +22157,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: adhesive
     slug: silicone-sealant-buildup
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   silver-plating-contamination:
     composition:
     - Ag
@@ -21931,6 +22417,12 @@ contamination_patterns:
     category: metallic-coating
     subcategory: plating
     slug: silver-plating-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   soap-scum-contamination:
     composition:
     - Calcium Stearate
@@ -22187,6 +22679,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: cleaning-agent
     slug: soap-scum-buildup
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   solder-flux-contamination:
     composition:
     - Abietic Acid
@@ -22432,6 +22930,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: lubricant
     slug: soldering-flux-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   steel-corrosion-contamination:
     composition:
     - Fe₃O₄
@@ -22668,6 +23172,12 @@ contamination_patterns:
     category: oxidation
     subcategory: ferrous
     slug: steel-surface-corrosion
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   surgical-marking-contamination:
     composition:
     - Gentian Violet
@@ -22909,6 +23419,12 @@ contamination_patterns:
     category: chemical-residue
     subcategory: industrial
     slug: surgical-ink-markings
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   teflon-residue-contamination:
     composition:
     - PTFE
@@ -23168,6 +23684,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: other
     slug: ptfe-coating-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   thermal-paste-contamination:
     composition:
     - ZnO
@@ -23412,6 +23934,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: other
     slug: thermal-compound-deposits
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   thread-locker-contamination:
     composition:
     - Dimethacrylate
@@ -23654,6 +24182,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: adhesive
     slug: threadlocker-adhesive
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   tin-plating-contamination:
     composition:
     - Sn
@@ -23892,6 +24426,12 @@ contamination_patterns:
     category: metallic-coating
     subcategory: plating
     slug: tin-plating-residue
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   tree-sap-contamination:
     composition:
     - Terpenes
@@ -24169,6 +24709,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: natural
     slug: tree-sap-and-resin
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   undercoating-contamination:
     composition:
     - Asphalt
@@ -24427,6 +24973,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: other
     slug: automotive-undercoating
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   uranium-oxide-contamination:
     composition:
     - U₃O₈
@@ -24665,6 +25217,12 @@ contamination_patterns:
     category: chemical-residue
     subcategory: hazardous
     slug: depleted-uranium-oxide
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   uv-chalking-contamination:
     author:
       id: 3
@@ -24950,6 +25508,12 @@ contamination_patterns:
       thickness: thin surface degradation
     subcategory: photodegradation
     slug: uv-photodegradation-polymer-chalking
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   water-stain-contamination:
     composition:
     - CaCO₃
@@ -25218,6 +25782,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: other
     slug: water-staining-and-marks
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   wax-buildup-contamination:
     composition:
     - C₂₅H₅₂
@@ -25490,6 +26060,12 @@ contamination_patterns:
     category: organic-residue
     subcategory: wax
     slug: wax-coating-buildup
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   wood-rot-contamination:
     author:
       id: 1
@@ -25779,6 +26355,12 @@ contamination_patterns:
       thickness: surface to deep penetration
     subcategory: growth
     slug: wood-rot-fungal-biodegradation
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
   zinc-plating-contamination:
     composition:
     - Zn
@@ -26007,6 +26589,12 @@ contamination_patterns:
     category: metallic-coating
     subcategory: plating
     slug: zinc-electroplating
+    relationships:
+      regulatory_standards:
+      - type: regulatory_standards
+        id: osha-ppe-requirements
+      - type: regulatory_standards
+        id: ansi-z136-1-laser-safety
 error_messages:
   oil_without_context:
     code: CONTEXT_REQUIRED

@@ -8,7 +8,7 @@ This runs BEFORE the slug enricher so that slug can be added to the populated li
 import logging
 from typing import Dict, Any
 
-from export.enrichment.base import BaseEnricher
+from export.enrichers.base import BaseEnricher
 from shared.services.relationships_service import DomainLinkagesService
 
 logger = logging.getLogger(__name__)
@@ -67,8 +67,16 @@ class DomainLinkagesEnricher(BaseEnricher):
         total = sum(len(v) if isinstance(v, list) else 0 for v in linkages.values())
         print(f"   Populated {len(linkages)} linkage types, {total} total entries")
         
-        # Add to frontmatter
-        frontmatter['relationships'] = linkages
+        # MERGE with existing relationships (preserve library relationships from source)
+        existing_rels = frontmatter.get('relationships', {})
+        if existing_rels:
+            print(f"   ⚠️  Merging with {len(existing_rels)} existing relationship types: {list(existing_rels.keys())}")
+            # Merge: linkages takes priority for overlapping keys, but existing preserved
+            merged_rels = dict(existing_rels)
+            merged_rels.update(linkages)
+            frontmatter['relationships'] = merged_rels
+        else:
+            frontmatter['relationships'] = linkages
         
         logger.debug(f"Populated relationships for {item_id} in {self.domain}")
         

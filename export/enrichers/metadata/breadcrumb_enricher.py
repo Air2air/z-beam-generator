@@ -21,6 +21,8 @@ Per Schema 5.0.0 and FRONTMATTER_FORMATTING_GUIDE.md.
 from typing import Dict, Any, List
 import logging
 
+from export.utils.url_formatter import format_domain_url
+
 logger = logging.getLogger(__name__)
 
 
@@ -42,13 +44,11 @@ class BreadcrumbEnricher:
                 - category_field: Field name for category (default: 'category')
                 - subcategory_field: Field name for subcategory (default: 'subcategory')
                 - name_field: Field name for item name (default: 'name')
-                - slug_field: Field name for slug (default: 'slug')
         """
         self.domain = config.get('domain', 'materials')
         self.category_field = config.get('category_field', 'category')
         self.subcategory_field = config.get('subcategory_field', 'subcategory')
         self.name_field = config.get('name_field', 'name')
-        self.slug_field = config.get('slug_field', 'slug')
         
         logger.info(f"Initialized BreadcrumbEnricher for domain: {self.domain}")
     
@@ -107,16 +107,17 @@ class BreadcrumbEnricher:
         
         # Add current item
         name = data.get(self.name_field, '')
-        slug = data.get(self.slug_field, '')
+        item_id = data.get('id', '')
         
-        if name and slug:
-            # Build final href based on whether there's a subcategory
-            if subcategory:
-                final_href = f"/{self.domain}/{category.lower()}/{subcategory.lower()}/{slug}"
-            elif category:
-                final_href = f"/{self.domain}/{category.lower()}/{slug}"
-            else:
-                final_href = f"/{self.domain}/{slug}"
+        if name and item_id:
+            # Build final href using centralized formatter
+            final_href = format_domain_url(
+                domain=self.domain,
+                item_id=item_id,
+                category=category if category else None,
+                subcategory=subcategory if subcategory else None,
+                slugify_item_id=False  # IDs should already be slugified
+            )
             
             breadcrumb.append({
                 "label": name,

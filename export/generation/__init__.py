@@ -5,9 +5,7 @@ from export.generation.registry import (
     create_generators,
     BaseGenerator,
     SEODescriptionGenerator,
-    BreadcrumbGenerator,
     ExcerptGenerator,
-    SlugGenerator,
 )
 
 __all__ = [
@@ -15,7 +13,5 @@ __all__ = [
     'create_generators',
     'BaseGenerator',
     'SEODescriptionGenerator',
-    'BreadcrumbGenerator',
     'ExcerptGenerator',
-    'SlugGenerator',
 ]

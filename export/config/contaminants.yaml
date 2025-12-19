@@ -9,8 +9,8 @@ domain: contaminants
 source_file: data/contaminants/Contaminants.yaml
 output_path: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/contaminants
 items_key: contamination_patterns
-id_field: pattern_id
-slug_field: slug
+id_field: id
+filename_suffix: ""
 
 # ============================================================================
 # ENRICHMENTS (Applied in order)
@@ -67,7 +67,20 @@ enrichments:
     category_field: category
     subcategory_field: subcategory
     name_field: name
-    slug_field: slug
+
+# ============================================================================
+# LIBRARY ENRICHMENTS (Expand library relationships with full data)
+# ============================================================================
+library_enrichments:
+  # Enable library-based enrichment for contaminants
+  enabled: true
+  
+  # Define enrichment mappings (relationship field → output field)
+  enrichments:
+    # Regulatory Standards
+    - type: regulatory_standards
+      relationship_field: relationships.regulatory_standards
+      output_field: regulatory_standards_detail
 
 # ============================================================================
 # CONTENT GENERATORS (Applied in order)

@@ -283,29 +283,6 @@ compounds:
         frequency: very_common
         severity: high
         typical_context: Incomplete combustion of carbon materials
-      chemical_properties:
-      - type: chemical_properties
-        id: carbon-monoxide-physical-data
-      health_effects:
-      - type: health_effects
-        id: carbon-monoxide-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: carbon-monoxide-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: carbon-monoxide-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Carbon Monoxide
-          pel_ppm: 50
-      emergency_response:
-      - type: emergency_response
-        id: toxic-gas-extreme
-        overrides:
-          specific_compound: Carbon Monoxide
   formaldehyde:
     id: formaldehyde
     name: Formaldehyde
@@ -558,29 +535,6 @@ compounds:
         frequency: occasional
         severity: low
         typical_context: Thermal degradation of certain epoxy formulations
-      chemical_properties:
-      - type: chemical_properties
-        id: formaldehyde-physical-data
-      health_effects:
-      - type: health_effects
-        id: formaldehyde-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: formaldehyde-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: formaldehyde-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: particulate-carcinogen
-        overrides:
-          specific_compound: Formaldehyde
-          pel_ppm: 0.75
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Formaldehyde
   benzene:
     id: benzene
     name: Benzene
@@ -836,29 +790,6 @@ compounds:
         frequency: occasional
         severity: moderate
         typical_context: Decomposition of aromatic additives
-      chemical_properties:
-      - type: chemical_properties
-        id: benzene-physical-data
-      health_effects:
-      - type: health_effects
-        id: benzene-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: benzene-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: benzene-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: particulate-carcinogen
-        overrides:
-          specific_compound: Benzene
-          pel_ppm: 1
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Benzene
   pahs:
     id: pahs
     name: Polycyclic Aromatic Hydrocarbons
@@ -946,29 +877,6 @@ compounds:
         frequency: very_common
         severity: high
         typical_context: Bitumen is rich in PAHs
-      chemical_properties:
-      - type: chemical_properties
-        id: pahs-physical-data
-      health_effects:
-      - type: health_effects
-        id: pahs-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: pahs-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: pahs-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: particulate-carcinogen
-        overrides:
-          specific_compound: Polycyclic Aromatic Hydrocarbons
-          pel_ppm: null
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Polycyclic Aromatic Hydrocarbons
   hydrogen-cyanide:
     id: hydrogen-cyanide
     name: Hydrogen Cyanide
@@ -1230,29 +1138,6 @@ compounds:
         frequency: occasional
         severity: moderate
         typical_context: Breakdown of cyanoacrylate adhesives
-      chemical_properties:
-      - type: chemical_properties
-        id: hydrogen-cyanide-physical-data
-      health_effects:
-      - type: health_effects
-        id: hydrogen-cyanide-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: hydrogen-cyanide-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: hydrogen-cyanide-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-high-concentration
-        overrides:
-          specific_compound: Hydrogen Cyanide
-          pel_ppm: 10
-      emergency_response:
-      - type: emergency_response
-        id: toxic-gas-extreme
-        overrides:
-          specific_compound: Hydrogen Cyanide
   acetaldehyde:
     id: acetaldehyde
     name: Acetaldehyde
@@ -1735,29 +1620,6 @@ compounds:
         frequency: occasional
         severity: moderate
         typical_context: Pyrolysis of certain polymers
-      chemical_properties:
-      - type: chemical_properties
-        id: acrolein-physical-data
-      health_effects:
-      - type: health_effects
-        id: acrolein-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: acrolein-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: acrolein-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-high-concentration
-        overrides:
-          specific_compound: Acrolein
-          pel_ppm: 0.1
-      emergency_response:
-      - type: emergency_response
-        id: toxic-gas-extreme
-        overrides:
-          specific_compound: Acrolein
   hydrogen-chloride:
     id: hydrogen-chloride
     name: Hydrogen Chloride
@@ -1967,29 +1829,6 @@ compounds:
         frequency: occasional
         severity: moderate
         typical_context: Some adhesives contain chlorinated compounds
-      chemical_properties:
-      - type: chemical_properties
-        id: hydrogen-chloride-physical-data
-      health_effects:
-      - type: health_effects
-        id: hydrogen-chloride-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: hydrogen-chloride-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: hydrogen-chloride-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: corrosive-liquid-moderate
-        overrides:
-          specific_compound: Hydrogen Chloride
-          pel_ppm: null
-      emergency_response:
-      - type: emergency_response
-        id: corrosive-liquid-strong
-        overrides:
-          specific_compound: Hydrogen Chloride
   toluene:
     id: toluene
     name: Toluene
@@ -2225,29 +2064,6 @@ compounds:
         frequency: occasional
         severity: low
         typical_context: Thermal breakdown of aromatic rubber compounds
-      chemical_properties:
-      - type: chemical_properties
-        id: toluene-physical-data
-      health_effects:
-      - type: health_effects
-        id: toluene-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: toluene-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: toluene-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Toluene
-          pel_ppm: 200
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Toluene
   styrene:
     id: styrene
     name: Styrene
@@ -2475,29 +2291,6 @@ compounds:
         frequency: common
         severity: moderate
         typical_context: Pyrolysis of styrene-butadiene rubber
-      chemical_properties:
-      - type: chemical_properties
-        id: styrene-physical-data
-      health_effects:
-      - type: health_effects
-        id: styrene-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: styrene-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: styrene-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Styrene
-          pel_ppm: 100
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Styrene
   zinc-oxide:
     id: zinc-oxide
     name: Zinc Oxide
@@ -2718,29 +2511,6 @@ compounds:
         frequency: occasional
         severity: low
         typical_context: Zinc oxide pigments in paint
-      chemical_properties:
-      - type: chemical_properties
-        id: zinc-oxide-physical-data
-      health_effects:
-      - type: health_effects
-        id: zinc-oxide-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: zinc-oxide-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: zinc-oxide-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Zinc Oxide
-          pel_ppm: null
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Zinc Oxide
   iron-oxide:
     id: iron-oxide
     name: Iron Oxide Fume
@@ -2940,29 +2710,6 @@ compounds:
         frequency: very_common
         severity: high
         typical_context: Iron oxide scale from forging operations
-      chemical_properties:
-      - type: chemical_properties
-        id: iron-oxide-physical-data
-      health_effects:
-      - type: health_effects
-        id: iron-oxide-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: iron-oxide-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: iron-oxide-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Iron Oxide Fume
-          pel_ppm: null
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Iron Oxide Fume
   chromium-vi:
     id: chromium-vi
     name: Hexavalent Chromium
@@ -3207,29 +2954,6 @@ compounds:
         frequency: occasional
         severity: high
         typical_context: Chromate pigments in some paints
-      chemical_properties:
-      - type: chemical_properties
-        id: chromium-vi-physical-data
-      health_effects:
-      - type: health_effects
-        id: chromium-vi-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: chromium-vi-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: chromium-vi-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: particulate-carcinogen
-        overrides:
-          specific_compound: Hexavalent Chromium
-          pel_ppm: null
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Hexavalent Chromium
   nitrogen-oxides:
     id: nitrogen-oxides
     name: Nitrogen Oxides
@@ -3462,29 +3186,6 @@ compounds:
         frequency: occasional
         severity: low
         typical_context: Nitrogen from some paint formulations
-      chemical_properties:
-      - type: chemical_properties
-        id: nitrogen-oxides-physical-data
-      health_effects:
-      - type: health_effects
-        id: nitrogen-oxides-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: nitrogen-oxides-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: nitrogen-oxides-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Nitrogen Oxides
-          pel_ppm: 25
-      emergency_response:
-      - type: emergency_response
-        id: toxic-gas-extreme
-        overrides:
-          specific_compound: Nitrogen Oxides
   sulfur-dioxide:
     id: sulfur-dioxide
     name: Sulfur Dioxide
@@ -3690,29 +3391,6 @@ compounds:
         frequency: occasional
         severity: low
         typical_context: Sulfur additives in some lubricants
-      chemical_properties:
-      - type: chemical_properties
-        id: sulfur-dioxide-physical-data
-      health_effects:
-      - type: health_effects
-        id: sulfur-dioxide-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: sulfur-dioxide-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: sulfur-dioxide-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-high-concentration
-        overrides:
-          specific_compound: Sulfur Dioxide
-          pel_ppm: 5
-      emergency_response:
-      - type: emergency_response
-        id: toxic-gas-extreme
-        overrides:
-          specific_compound: Sulfur Dioxide
   phosgene:
     id: phosgene
     name: Phosgene
@@ -3926,29 +3604,6 @@ compounds:
         frequency: rare
         severity: high
         typical_context: Thermal breakdown of certain chlorinated plastics
-      chemical_properties:
-      - type: chemical_properties
-        id: phosgene-physical-data
-      health_effects:
-      - type: health_effects
-        id: phosgene-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: phosgene-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: phosgene-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-high-concentration
-        overrides:
-          specific_compound: Phosgene
-          pel_ppm: 0.1
-      emergency_response:
-      - type: emergency_response
-        id: toxic-gas-extreme
-        overrides:
-          specific_compound: Phosgene
   ammonia:
     id: ammonia
     name: Ammonia
@@ -4160,29 +3815,6 @@ compounds:
         frequency: occasional
         severity: low
         typical_context: Breakdown of proteins
-      chemical_properties:
-      - type: chemical_properties
-        id: ammonia-physical-data
-      health_effects:
-      - type: health_effects
-        id: ammonia-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: ammonia-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: ammonia-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: corrosive-liquid-moderate
-        overrides:
-          specific_compound: Ammonia
-          pel_ppm: 50
-      emergency_response:
-      - type: emergency_response
-        id: corrosive-liquid-strong
-        overrides:
-          specific_compound: Ammonia
   carbon-dioxide:
     id: carbon-dioxide
     name: Carbon Dioxide
@@ -4406,29 +4038,6 @@ compounds:
         frequency: very_common
         severity: low
         typical_context: Complete combustion of hydrocarbons
-      chemical_properties:
-      - type: chemical_properties
-        id: carbon-dioxide-physical-data
-      health_effects:
-      - type: health_effects
-        id: carbon-dioxide-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: carbon-dioxide-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: carbon-dioxide-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Carbon Dioxide
-          pel_ppm: 5000
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Carbon Dioxide
   vocs:
     id: vocs
     name: Volatile Organic Compounds
@@ -4676,29 +4285,6 @@ compounds:
         frequency: common
         severity: moderate
         typical_context: Thermal decomposition products
-      chemical_properties:
-      - type: chemical_properties
-        id: vocs-physical-data
-      health_effects:
-      - type: health_effects
-        id: vocs-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: vocs-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: vocs-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Volatile Organic Compounds
-          pel_ppm: null
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Volatile Organic Compounds
   benzoapyrene:
     id: benzoapyrene
     name: Benzo[a]pyrene
@@ -4939,26 +4525,3 @@ compounds:
         frequency: occasional
         severity: moderate
         typical_context: Formed during high-temperature pyrolysis
-      chemical_properties:
-      - type: chemical_properties
-        id: benzoapyrene-physical-data
-      health_effects:
-      - type: health_effects
-        id: benzoapyrene-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: benzoapyrene-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: benzoapyrene-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: particulate-carcinogen
-        overrides:
-          specific_compound: Benzo[a]pyrene
-          pel_ppm: null
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Benzo[a]pyrene

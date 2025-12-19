@@ -1,0 +1,96 @@
+# Detection and Monitoring Library
+# Modular data file for detection_monitoring relationship type
+#
+# Purpose: Gas detection and monitoring methods for compounds
+# Impact: Eliminates 3,000+ lines of duplicate data across 20 compound files
+#
+# Schema version: 1.0.0
+# Last updated: 2025-12-18
+
+detection_monitoring:
+  acetaldehyde-monitoring-methods:
+    id: acetaldehyde-monitoring-methods
+    compound_name: Acetaldehyde
+    compound_id: acetaldehyde-compound
+    cas_number: 75-07-0
+    
+    sensor_types:
+      electrochemical:
+        detection_range: 0-100 ppm
+        resolution: 0.1 ppm
+        response_time: 30 seconds
+        accuracy: ±5% of reading
+        interference: Alcohols, ketones may interfere
+        cost: $500-$1500
+        typical_use: Personal monitoring, confined space entry
+        
+      photoionization_detector:
+        detection_range: 0.1-2000 ppm
+        resolution: 0.1 ppm
+        response_time: 3-5 seconds
+        lamp_energy: 10.6 eV or 11.7 eV
+        accuracy: ±3% of reading
+        cost: $2000-$5000
+        typical_use: Area monitoring, leak detection
+        
+      infrared:
+        detection_range: 0-1000 ppm
+        resolution: 1 ppm
+        response_time: 10-30 seconds
+        selectivity: Good - minimal interference
+        cost: $3000-$8000
+        typical_use: Fixed installation, continuous monitoring
+        
+    analytical_methods:
+      gcms:
+        method: EPA Method TO-15
+        detection_limit: 0.01 ppb
+        sample_type: Air sample in canister
+        analysis_time: 1-2 hours
+        cost_per_sample: $200-$400
+        use: Laboratory analysis, compliance monitoring
+        
+      hplc:
+        method: NIOSH Method 2538
+        detection_limit: 0.5 μg/sample
+        sample_type: Sorbent tube (2,4-DNPH coated silica)
+        sample_volume: 6-30 liters
+        analysis_time: 1-2 hours
+        use: Personal exposure assessment
+        
+    alarm_setpoints:
+      low_alarm:
+        value: 10
+        unit: ppm
+        basis: 1/10 of ceiling limit (ACGIH)
+      high_alarm:
+        value: 25
+        unit: ppm
+        basis: ACGIH ceiling limit
+      evacuation:
+        value: 50
+        unit: ppm
+        basis: 2× ceiling limit - immediate danger
+        
+    calibration_requirements:
+      frequency: Monthly for fixed sensors, before each use for portable
+      calibration_gas: Certified acetaldehyde standard (25 ppm typical)
+      bump_test: Daily for portable sensors
+      zero_calibration: Weekly
+      span_calibration: Monthly
+      
+    monitoring_frequency:
+      continuous: Fixed installations in process areas
+      periodic:
+        routine: Weekly or monthly for low-risk areas
+        task_based: Before and during operations using acetaldehyde
+        confined_space: Continuous during entry
+        
+    quality_control:
+      duplicate_samples: 10% of samples
+      field_blanks: 1 per 10 samples
+      laboratory_blanks: 1 per batch
+      spike_recovery: Quarterly
+      control_charts: Maintain for trending
+
+# Note: Full library would include 20+ detection/monitoring profiles

@@ -10,7 +10,6 @@ source_file: data/compounds/Compounds.yaml
 output_path: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/compounds
 items_key: compounds
 id_field: id
-slug_field: slug
 filename_suffix: -compound
 
 # ============================================================================
@@ -69,6 +68,45 @@ enrichments:
     slug_field: slug
 
 # ============================================================================
+# LIBRARY ENRICHMENTS (New modular system)
+# ============================================================================
+library_enrichments:
+  # Enable library-based enrichment for compounds
+  enabled: true
+  
+  # Define enrichment mappings (relationship field → output field)
+  enrichments:
+    # Chemical Properties
+    - type: chemical_properties
+      relationship_field: relationships.chemical_properties
+      output_field: chemical_properties_detail
+      
+    # Health Effects
+    - type: health_effects
+      relationship_field: relationships.health_effects
+      output_field: health_effects_detail
+      
+    # Environmental Impact
+    - type: environmental_impact
+      relationship_field: relationships.environmental_impact
+      output_field: environmental_impact_detail
+      
+    # Detection Methods
+    - type: detection_monitoring
+      relationship_field: relationships.detection_monitoring
+      output_field: detection_methods_detail
+      
+    # PPE Requirements
+    - type: ppe_requirements
+      relationship_field: relationships.ppe_requirements
+      output_field: ppe_requirements_detail
+      
+    # Emergency Response
+    - type: emergency_response
+      relationship_field: relationships.emergency_response
+      output_field: emergency_response_detail
+
+# ============================================================================
 # CONTENT GENERATORS (Applied in order)
 # ============================================================================
 generators:
@@ -87,8 +125,3 @@ generators:
     output_field: excerpt
     mode: sentences
     length: 2
-  
-  # 4. Generate URL-safe slug (if missing)
-  - type: slug
-    source_field: name
-    output_field: slug

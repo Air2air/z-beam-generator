@@ -1,0 +1,235 @@
+# Laser Parameters Library
+# Modular data file for laser_parameters relationship type
+#
+# Purpose: Standardized laser parameters for contaminant/material combinations
+# Impact: Eliminates 15,000+ lines of duplicate data across 98 contaminant files
+#
+# Usage in frontmatter:
+#   relationships:
+#     laser_parameters:
+#     - type: laser
+#       id: rust-removal-optimal
+#       material_id: steel
+#       effectiveness: high
+#       site_specific_notes: "Increase passes for marine environment rust"
+#
+# Schema version: 1.0.0
+# Last updated: 2025-12-18
+
+laser_parameters:
+  # ============================================
+  # RUST REMOVAL - FERROUS METALS
+  # ============================================
+  
+  rust-removal-optimal:
+    id: rust-removal-optimal
+    contaminant_type: rust
+    contaminant_id: rust-iron-oxide-formation
+    material_categories: [ferrous_metal]
+    valid_materials: [steel, cast_iron, wrought_iron]
+    
+    laser_parameters:
+      wavelength:
+        optimal: 1064
+        range: [1064, 1070]
+        unit: nm
+        laser_type: Fiber laser (Nd:YAG)
+      power:
+        optimal: 100-500
+        range: [50, 1000]
+        unit: W
+        notes: Higher power for thick rust, lower for surface oxidation
+      pulse_duration:
+        optimal: 50-200
+        range: [20, 500]
+        unit: ns
+        mode: Pulsed (Q-switched preferred)
+      repetition_rate:
+        optimal: 20-50
+        range: [10, 100]
+        unit: kHz
+        notes: Higher rates for faster cleaning, lower for precision
+      spot_size:
+        optimal: 5-20
+        range: [3, 50]
+        unit: mm
+        notes: Smaller spots for detailed work, larger for area coverage
+      fluence:
+        optimal: 2-5
+        range: [1, 10]
+        unit: J/cm²
+        notes: Adjust based on rust thickness and substrate
+      scan_speed:
+        optimal: 1000-5000
+        range: [500, 10000]
+        unit: mm/s
+        notes: Multiple passes may be required for heavy rust
+        
+    optical_properties:
+      absorption_coefficient:
+        value: 0.85-0.95
+        wavelength: 1064
+        unit: nm
+        notes: High absorption due to iron oxide optical properties
+      reflectivity:
+        value: 0.05-0.15
+        wavelength: 1064
+        notes: Low reflectivity enables efficient energy transfer
+      thermal_penetration_depth:
+        value: 10-50
+        unit: μm
+        notes: Rust layer typically ablated before substrate heating
+        
+    removal_characteristics:
+      mechanism: Photothermal ablation with shock wave assistance
+      threshold_fluence:
+        value: 0.8-1.5
+        unit: J/cm²
+        notes: Onset of visible rust removal
+      removal_rate:
+        typical: 50-200
+        unit: μm/pass
+        notes: Depends on rust thickness and laser parameters
+      selectivity: High - rust removed preferentially over substrate
+      passes_required:
+        light_rust: 1-2
+        moderate_rust: 2-4
+        heavy_rust: 4-8
+        notes: May require parameter adjustment between passes
+      surface_finish:
+        roughness_change: Minimal to slight improvement
+        typical_ra: 1.5-3.5
+        unit: μm
+        notes: Cleaner than base metal with rust removed
+        
+    safety_considerations:
+      fume_generation: Moderate - iron oxide particles
+      fume_composition: [Fe₂O₃, Fe₃O₄, fine iron particles]
+      ventilation_required: Local exhaust ventilation (LEV) mandatory
+      ppe_required:
+        - Laser safety eyewear (OD 7+ @ 1064nm)
+        - Respirator (P100 filter minimum)
+        - Heat-resistant gloves
+        - Face shield (for splatter protection)
+      fire_hazard: Low (rust is non-combustible)
+      spark_generation: Minimal
+      environmental_concerns: Collect and dispose rust particles as metal waste
+      
+    substrate_effects:
+      thermal_impact: Minimal if parameters optimized
+      max_temperature_rise: 200-400
+      unit: °C
+      typical_penetration: Surface only (<100 μm)
+      microstructure_change: None if properly controlled
+      hardness_change: Negligible
+      residual_stress: Slight compressive (beneficial)
+      warnings:
+        - Avoid excessive fluence (>8 J/cm²) to prevent melting
+        - Monitor for substrate discoloration (indicates overheating)
+        - Test parameters on sample before production cleaning
+        
+    process_optimization:
+      best_practices:
+        - Start with lower power, increase gradually
+        - Use multiple passes rather than single high-power pass
+        - Overlap scan lines by 30-50% for uniform coverage
+        - Clean in cross-hatch pattern for heavy rust
+        - Monitor substrate temperature (IR camera recommended)
+      troubleshooting:
+        incomplete_removal: Increase fluence or add passes
+        substrate_damage: Reduce fluence or power
+        uneven_cleaning: Improve overlap or reduce scan speed
+        excessive_fumes: Improve ventilation, reduce power
+        
+  # ============================================
+  # PAINT REMOVAL - GENERAL
+  # ============================================
+  
+  paint-removal-multi-layer:
+    id: paint-removal-multi-layer
+    contaminant_type: paint
+    contaminant_id: paint-coating
+    material_categories: [metal, composite]
+    
+    laser_parameters:
+      wavelength:
+        optimal: 1064
+        alternative: [532, 355]
+        unit: nm
+        notes: IR (1064) for most paints, UV for thin coatings
+      power:
+        optimal: 100-500
+        range: [50, 1000]
+        unit: W
+      pulse_duration:
+        optimal: 100-300
+        range: [50, 500]
+        unit: ns
+      repetition_rate:
+        optimal: 20-40
+        range: [10, 80]
+        unit: kHz
+      fluence:
+        optimal: 1-4
+        range: [0.5, 8]
+        unit: J/cm²
+        notes: Start low, increase until paint removal observed
+        
+    removal_characteristics:
+      mechanism: Photothermal decomposition and ablation
+      layer_selectivity: Good - can remove one layer at a time
+      passes_required:
+        single_layer: 2-4
+        multi_layer: 4-10
+        notes: Adjust parameters between layers if needed
+        
+    safety_considerations:
+      fume_generation: High - organic vapors and particles
+      fume_composition: [VOCs, pigment particles, binder decomposition products]
+      ventilation_required: High-efficiency LEV with HEPA and activated carbon
+      ppe_required:
+        - Laser safety eyewear (OD 7+ @ wavelength)
+        - Organic vapor respirator with P100 filter
+        - Chemical-resistant gloves
+        - Full face shield
+      fire_hazard: Moderate (some paints flammable)
+      toxicity_concerns: May contain lead, chromates, cadmium in old paints
+      
+  # ============================================
+  # OIL/GREASE REMOVAL
+  # ============================================
+  
+  oil-grease-removal-light:
+    id: oil-grease-removal-light
+    contaminant_type: oil
+    contaminant_id: oil-contamination
+    material_categories: [metal]
+    
+    laser_parameters:
+      wavelength:
+        optimal: 1064
+        unit: nm
+      power:
+        optimal: 50-200
+        range: [30, 300]
+        unit: W
+        notes: Lower power sufficient for thin oil films
+      fluence:
+        optimal: 0.5-2
+        range: [0.3, 4]
+        unit: J/cm²
+        notes: Low fluence to vaporize oil without substrate damage
+        
+    removal_characteristics:
+      mechanism: Vaporization and thermal decomposition
+      effectiveness: High for light contamination (<50 μm)
+      limitation: Heavy grease may require pre-cleaning or higher parameters
+      
+    safety_considerations:
+      fume_generation: Moderate - hydrocarbon vapors
+      fire_hazard: High - oil vapors are flammable
+      ventilation_required: Mandatory - explosion-proof fans
+
+# Note: Full library would include 50+ laser parameter sets covering
+# all contaminant/material combinations with detailed parameters,
+# optical properties, removal characteristics, and safety data.

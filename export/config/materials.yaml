@@ -9,8 +9,7 @@ domain: materials
 source_file: data/materials/Materials.yaml
 output_path: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/materials
 items_key: materials
-id_field: id
-slug_field: slug
+filename_suffix: ""
 
 # ============================================================================
 # ENRICHMENTS (Applied in order)
@@ -84,7 +83,30 @@ enrichments:
     category_field: category
     subcategory_field: subcategory
     name_field: name
-    slug_field: slug
+
+
+# ============================================================================
+# LIBRARY ENRICHMENTS (New modular system)
+# ============================================================================
+library_enrichments:
+  enabled: true
+  
+  enrichments:
+    # Regulatory Standards
+    - type: regulatory_standards
+      relationship_field: relationships.regulatory_standards
+      output_field: regulatory_standards_detail
+      
+    # Disabled until library files are populated:
+    # Material Applications
+    # - type: material_applications
+    #   relationship_field: relationships.material_applications
+    #   output_field: material_applications_detail
+      
+    # Material Properties
+    # - type: material_properties
+    #   relationship_field: relationships.material_properties
+    #   output_field: material_properties_detail
 
 # ============================================================================
 # CONTENT GENERATORS (Applied in order)

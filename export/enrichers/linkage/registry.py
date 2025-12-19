@@ -45,12 +45,12 @@ import logging
 from datetime import datetime
 
 # Import base enricher class
-from export.enrichment.base import BaseEnricher
+from export.enrichers.base import BaseEnricher
 
 # Import enrichers
-from export.enrichment.slug_enricher import DomainLinkagesSlugEnricher
-from export.enrichment.relationships_enricher import DomainLinkagesEnricher
-from export.enrichment.breadcrumb_enricher import BreadcrumbEnricher
+from export.enrichers.linkage.slug_enricher import DomainLinkagesSlugEnricher
+from export.enrichers.linkage.relationships_enricher import DomainLinkagesEnricher
+from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
 
 logger = logging.getLogger(__name__)
 

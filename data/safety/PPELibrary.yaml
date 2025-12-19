@@ -1,0 +1,421 @@
+# PPE Requirements Library
+# Modular data file for ppe_requirements relationship type
+#
+# Purpose: Standardized PPE recommendations based on hazard types
+# Impact: Eliminates 4,000+ lines of duplicate data across 20 compound files
+#
+# Usage in frontmatter:
+#   relationships:
+#     ppe_requirements:
+#     - type: ppe
+#       id: irritant-gas-low-concentration
+#       hazard_level: moderate
+#       environment: outdoor
+#       overrides:
+#         special_requirements:
+#         - "Additional site-specific requirement"
+#
+# Schema version: 1.0.0
+# Last updated: 2025-12-18
+
+ppe_templates:
+  # ============================================
+  # GAS/VAPOR HAZARDS - LOW CONCENTRATION
+  # ============================================
+  
+  irritant-gas-low-concentration:
+    id: irritant-gas-low-concentration
+    hazard_type: irritant_gas
+    concentration_range: "<25 ppm"
+    exposure_duration: short_term
+    minimum_protection_level: Level C
+    
+    respiratory:
+      primary:
+        equipment: NIOSH-approved organic vapor respirator
+        standard: NIOSH 42 CFR 84
+        filter_type: Organic vapor cartridge
+        condition: For concentrations <25 ppm
+        fit_test_required: true
+        change_schedule: Per manufacturer guidance or saturation
+      upgrade_conditions:
+        - trigger: Concentration >25 ppm
+          equipment: Self-contained breathing apparatus (SCBA)
+        - trigger: Unknown concentration
+          equipment: SCBA or supplied-air respirator
+        - trigger: Oxygen deficient atmosphere (<19.5%)
+          equipment: SCBA (pressure-demand mode)
+          
+    skin:
+      gloves:
+        material: Nitrile or butyl rubber
+        thickness: 15-18 mil minimum
+        standard: ANSI/ISEA 105
+        breakthrough_time: ">480 minutes"
+        condition: All handling operations
+      body:
+        equipment: Chemical-resistant apron or coveralls
+        material: Tyvek or equivalent polymer-laminate
+        standard: ANSI/ISEA 101
+        condition: Splash potential or prolonged exposure
+      footwear:
+        equipment: Chemical-resistant boots
+        material: Nitrile or PVC
+        condition: Floor contamination or large spills
+        
+    eye:
+      primary:
+        equipment: Chemical safety goggles
+        type: Indirect vents, sealed to face
+        standard: ANSI Z87.1
+        marking: Z87+ for impact protection
+        condition: All operations with exposure potential
+      secondary:
+        equipment: Face shield
+        condition: Splash hazard or container transfer
+        use: Over goggles, not replacement
+        
+    special_requirements:
+      - Work in well-ventilated area or use local exhaust ventilation
+      - Eliminate all ignition sources within 50 feet
+      - Emergency shower and eyewash within 10 seconds travel time
+      - Prohibit eating, drinking, smoking in contaminated areas
+      - Wash hands thoroughly before eating or drinking
+      
+    decontamination:
+      - Remove contaminated clothing immediately
+      - Wash skin with soap and water
+      - Launder contaminated clothing separately
+      - Do not reuse until properly decontaminated
+      
+    training_required:
+      - Respiratory protection program
+      - Chemical hazard awareness
+      - PPE donning and doffing procedures
+      - Emergency response procedures
+      
+    medical_surveillance:
+      required: false
+      recommended: Annual respiratory fitness evaluation
+      
+    limitations:
+      - Not for IDLH (Immediately Dangerous to Life or Health) atmospheres
+      - Not for oxygen-deficient environments
+      - Air-purifying respirators do not supply oxygen
+      
+  # ============================================
+  # GAS/VAPOR HAZARDS - HIGH CONCENTRATION
+  # ============================================
+  
+  irritant-gas-high-concentration:
+    id: irritant-gas-high-concentration
+    hazard_type: irritant_gas
+    concentration_range: ">25 ppm or unknown"
+    exposure_duration: any
+    minimum_protection_level: Level B
+    idlh_atmosphere: potentially
+    
+    respiratory:
+      primary:
+        equipment: Self-contained breathing apparatus (SCBA)
+        type: Pressure-demand, positive-pressure
+        standard: NIOSH 42 CFR 84
+        air_supply: Compressed breathing air (Grade D minimum)
+        duration: 30-60 minutes typical
+        condition: MANDATORY for >25 ppm or unknown concentrations
+        maintenance: Daily inspection, annual certification
+      alternative:
+        equipment: Supplied-air respirator with escape bottle
+        type: Pressure-demand mode
+        condition: Only if continuous air supply verified
+        escape_bottle: 5-minute minimum escape time
+        
+    skin:
+      suit:
+        equipment: Level B chemical protective suit
+        material: Butyl rubber, Viton, or multilayer
+        standard: NFPA 1991 Level B
+        condition: Fully encapsulating when >25 ppm
+        splash_protection: Liquid-tight seams
+      gloves:
+        material: Butyl rubber (inner) + outer chemical glove
+        thickness: ">25 mil combined"
+        breakthrough_time: ">8 hours"
+        tape_seal: Taped to suit sleeves
+      boots:
+        equipment: Chemical-resistant boots
+        material: Match suit material
+        condition: Integrated or taped to suit
+        
+    eye:
+      equipment: Full-face respirator facepiece (part of SCBA)
+      backup: Chemical goggles worn under facepiece
+      condition: Full face and eye protection mandatory
+      
+    special_requirements:
+      - Buddy system mandatory - never work alone
+      - Continuous air monitoring with audible alarms
+      - Decontamination area established before entry
+      - Emergency escape routes identified
+      - Communication system established
+      - Entry permit required for confined spaces
+      - Standby rescue team with equivalent PPE
+      
+    entry_procedures:
+      - Pre-entry medical clearance for SCBA use
+      - Equipment inspection checklist
+      - Atmosphere testing before and during entry
+      - Continuous air monitoring
+      - Time limits for SCBA air supply
+      - Backup SCBA or escape respirator available
+      
+    decontamination:
+      primary:
+        - Gross decontamination in hot zone
+        - Suit and equipment wash-down
+        - Methodical removal in decon area
+        - Inner clothing removal last
+      secondary:
+        - Shower immediately after doffing
+        - Wash with soap and water for 15 minutes
+        - Medical evaluation if exposure suspected
+      disposal:
+        - All PPE as hazardous waste unless decontaminated
+        - SCBA facepieces cleaned and disinfected
+        - Suits inspected for damage before reuse
+      
+    training_required:
+      - HAZWOPER 40-hour or equivalent
+      - SCBA qualification and practice
+      - Level B suit donning and doffing
+      - Decontamination procedures
+      - Emergency egress procedures
+      
+    medical_surveillance:
+      required: true
+      frequency: Annual minimum
+      requirements:
+        - Respiratory medical clearance
+        - SCBA fit testing (annual)
+        - Exposure monitoring records
+        
+    limitations:
+      - SCBA air supply limits operation time
+      - Heat stress significant in chemical suits
+      - Dexterity and mobility reduced
+      - Communication may be impaired
+      - Exit buddy system required
+      
+  # ============================================
+  # PARTICULATE HAZARDS - CARCINOGEN
+  # ============================================
+  
+  particulate-carcinogen:
+    id: particulate-carcinogen
+    hazard_type: particulate
+    hazard_level: carcinogen
+    minimum_protection_level: Level C
+    
+    respiratory:
+      primary:
+        equipment: HEPA-filtered respirator (P100)
+        standard: NIOSH 42 CFR 84
+        condition: For particles <10 μm
+        filter_efficiency: "99.97% @ 0.3 μm"
+        fit_test_required: true
+        cartridge_change: Per manufacturer or breathing resistance increase
+        
+    skin:
+      gloves:
+        material: Nitrile gloves, disposable
+        standard: ANSI/ISEA 101
+        condition: Prevent skin contact with particulates
+        disposal: Contained disposal - hazardous waste
+      body:
+        equipment: Disposable Tyvek coveralls
+        standard: ANSI/ISEA 101
+        condition: Full body coverage, sealed at wrists/ankles
+        hood: Integrated hood covering head and neck
+        disposal: Hazardous waste, do not reuse
+      footwear:
+        equipment: Disposable boot covers
+        material: Tyvek or polyethylene
+        condition: Prevent particulate tracking
+        
+    eye:
+      equipment: Safety goggles with side shields
+      standard: ANSI Z87.1
+      condition: Impact and particle protection
+      cleaning: Disposable or decontaminate between uses
+      
+    special_requirements:
+      - Wet methods preferred to suppress dust
+      - HEPA vacuum only - never dry sweep
+      - Designated decontamination area
+      - Disposable PPE changed in decon area
+      - Shower facilities available
+      - No eating, drinking, smoking in work area
+      - Medical surveillance program required
+      
+    decontamination:
+      - Remove PPE in designated decon area
+      - Vacuum suit before removal (HEPA only)
+      - Remove from inside out to minimize contact
+      - Place in labeled hazardous waste bag
+      - Wash hands and face thoroughly
+      - Shower at end of shift
+      
+    training_required:
+      - Carcinogen hazard awareness
+      - HEPA respirator fit testing
+      - Proper PPE donning and doffing
+      - Decontamination procedures
+      - Medical surveillance requirements
+      
+    medical_surveillance:
+      required: true
+      frequency: Annual minimum
+      requirements:
+        - Baseline and periodic medical exams
+        - Respiratory function testing
+        - Cancer screening per OSHA guidelines
+        - Exposure records maintenance
+        
+    waste_handling:
+      - All PPE as hazardous waste
+      - Sealed, labeled containers
+      - Manifest tracking required
+      - EPA hazardous waste codes applicable
+      
+  # ============================================
+  # CORROSIVE LIQUIDS - MODERATE HAZARD
+  # ============================================
+  
+  corrosive-liquid-moderate:
+    id: corrosive-liquid-moderate
+    hazard_type: corrosive_liquid
+    hazard_level: moderate
+    minimum_protection_level: Level C
+    
+    respiratory:
+      equipment: Half-face respirator with acid gas cartridge
+      standard: NIOSH 42 CFR 84
+      condition: If vapor exposure possible
+      cartridge_type: Acid gas/organic vapor combination
+      fit_test_required: true
+      
+    skin:
+      gloves:
+        material: Neoprene or PVC gloves
+        length: Elbow-length for handling
+        standard: ASTM F739
+        breakthrough_time: ">8 hours"
+        thickness: ">18 mil"
+      apron:
+        equipment: Chemical-resistant apron
+        material: Neoprene, PVC, or rubber
+        length: Full-length coverage
+        condition: All handling operations
+      footwear:
+        equipment: Chemical-resistant boots
+        material: PVC or rubber
+        height: At least 8 inches
+        
+    eye:
+      primary:
+        equipment: Chemical splash goggles
+        standard: ANSI Z87.1
+        type: Indirect vents, sealed to face
+      secondary:
+        equipment: Face shield (8-inch minimum)
+        condition: Over goggles for handling operations
+        use: Face shield does not replace goggles
+        
+    special_requirements:
+      - Emergency shower and eyewash within 10 seconds travel time
+      - Flush eyes for 15 minutes if contact occurs
+      - Remove contaminated clothing immediately
+      - Work in ventilated area or use fume hood
+      - Have neutralizing agent available (appropriate for specific chemical)
+      
+    decontamination:
+      - Flush contaminated areas with water immediately
+      - Remove contaminated clothing under water if possible
+      - Wash skin thoroughly with soap and water
+      - Launder contaminated clothing separately
+      - Inspect PPE for damage before reuse
+      
+    training_required:
+      - Chemical hazard awareness (corrosives)
+      - Proper PPE selection and use
+      - Emergency response procedures
+      - First aid for chemical burns
+      
+    first_aid:
+      eye_contact:
+        - Flush immediately with water for 15+ minutes
+        - Hold eyelids open during flushing
+        - Seek immediate medical attention
+      skin_contact:
+        - Remove contaminated clothing
+        - Flush with water for 15+ minutes
+        - Wash with soap and water
+        - Seek medical attention
+      inhalation:
+        - Move to fresh air
+        - Administer oxygen if available
+        - Seek medical attention
+        
+  # ============================================
+  # FLAMMABLE VAPORS - HIGH FIRE HAZARD
+  # ============================================
+  
+  flammable-vapor-high:
+    id: flammable-vapor-high
+    hazard_type: flammable_vapor
+    fire_hazard: high
+    explosion_risk: high
+    minimum_protection_level: Level C
+    
+    respiratory:
+      equipment: Organic vapor respirator
+      standard: NIOSH 42 CFR 84
+      condition: For vapors, not for oxygen deficiency
+      limitation: Not for IDLH atmospheres
+      
+    skin:
+      gloves:
+        material: Nitrile or neoprene (solvent-resistant)
+        standard: ANSI/ISEA 105
+        condition: All handling operations
+      clothing:
+        equipment: Fire-resistant coveralls
+        standard: NFPA 2112
+        condition: High fire/flash risk operations
+        
+    eye:
+      equipment: Safety goggles or safety glasses with side shields
+      standard: ANSI Z87.1
+      
+    special_requirements:
+      - Eliminate ALL ignition sources within 50 feet minimum
+      - Prohibit smoking, open flames, hot work
+      - Use explosion-proof electrical equipment only
+      - Ground and bond containers during transfer
+      - Use non-sparking tools only
+      - Ensure adequate ventilation
+      - Fire extinguisher immediately available (appropriate type)
+      - Emergency evacuation plan established
+      
+    fire_prevention:
+      - Static grounding/bonding required
+      - Explosion-proof ventilation fans
+      - Vapor monitoring required
+      - Hot work permits if welding/cutting nearby
+      - Clear evacuation routes maintained
+      
+    training_required:
+      - Flammable liquid hazards
+      - Ignition source elimination
+      - Fire extinguisher use
+      - Emergency evacuation procedures

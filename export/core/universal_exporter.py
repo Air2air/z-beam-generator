@@ -28,9 +28,11 @@ Usage:
 
 from pathlib import Path
 from typing import Dict, Any, List, Optional
-import yaml
 import logging
 from datetime import datetime
+
+from export.utils.url_formatter import format_filename
+from export.utils import load_domain_data, write_frontmatter
 
 logger = logging.getLogger(__name__)
 
@@ -50,7 +52,7 @@ class UniversalFrontmatterExporter:
         Args:
             config: Domain configuration dict loaded from export/config/{domain}.yaml
                 Required keys: domain, source_file, output_path, items_key
-                Optional keys: enrichments, generators, id_field, slug_field
+                Optional keys: enrichments, generators, id_field
         
         Raises:
             ValueError: If required config keys missing
@@ -63,16 +65,18 @@ class UniversalFrontmatterExporter:
         self.output_path = Path(config['output_path'])
         self.items_key = config.get('items_key', self.domain)
         self.id_field = config.get('id_field', 'id')
-        self.slug_field = config.get('slug_field', 'slug')
         self.filename_suffix = config.get('filename_suffix', '')
+        self.slugify_filenames = config.get('slugify_filenames', False)
         
         # Enrichment and generation configs
         self.enrichment_configs = config.get('enrichments', [])
         self.generator_configs = config.get('generators', [])
+        self.library_enrichment_config = config.get('library_enrichments', {})
         
         # Lazy-loaded components
         self._enrichers: Optional[List] = None
         self._generators: Optional[List] = None
+        self._library_processor: Optional[Any] = None
         self._domain_data: Optional[Dict] = None
         self._field_validator = None
         
@@ -103,7 +107,7 @@ class UniversalFrontmatterExporter:
     def enrichers(self) -> List:
         """Lazy-load enrichers from config."""
         if self._enrichers is None:
-            from export.enrichment.registry import create_enrichers
+            from export.enrichers.linkage.registry import create_enrichers
             self._enrichers = create_enrichers(self.enrichment_configs)
         return self._enrichers
     
@@ -123,6 +127,14 @@ class UniversalFrontmatterExporter:
             self._field_validator = FrontmatterFieldOrderValidator()
         return self._field_validator
     
+    @property
+    def library_processor(self):
+        """Lazy-load library enrichment processor."""
+        if self._library_processor is None and self.library_enrichment_config.get('enabled', False):
+            from export.enrichers.library import LibraryEnrichmentProcessor
+            self._library_processor = LibraryEnrichmentProcessor(self.config)
+        return self._library_processor
+    
     def _load_domain_data(self) -> Dict[str, Any]:
         """
         Load source data from YAML file.
@@ -135,21 +147,10 @@ class UniversalFrontmatterExporter:
             yaml.YAMLError: If YAML parsing fails
         """
         if self._domain_data is None:
-            logger.debug(f"Loading domain data from: {self.source_file}")
-            
-            with open(self.source_file, 'r', encoding='utf-8') as f:
-                self._domain_data = yaml.safe_load(f)
-            
-            # Validate items key exists
-            if self.items_key not in self._domain_data:
-                raise ValueError(
-                    f"Items key '{self.items_key}' not found in {self.source_file}\n"
-                    f"Available keys: {', '.join(self._domain_data.keys())}"
-                )
-            
-            logger.info(
-                f"Loaded {len(self._domain_data[self.items_key])} items "
-                f"from {self.domain} domain"
+            # Use centralized data loader
+            self._domain_data = load_domain_data(
+                self.source_file,
+                items_key=self.items_key
             )
         
         return self._domain_data
@@ -182,9 +183,12 @@ class UniversalFrontmatterExporter:
         Raises:
             Exception: If export fails (enrichment, generation, or write error)
         """
-        # Determine output filename from slug or id
-        slug = item_data.get(self.slug_field, item_id)
-        filename = f"{slug}{self.filename_suffix}.yaml"
+        # Determine output filename from item_id (with optional slugification)
+        filename = format_filename(
+            item_id=item_id,
+            suffix=self.filename_suffix,
+            slugify_id=self.slugify_filenames
+        )
         output_file = self.output_path / filename
         
         # Skip if exists and not forced
@@ -203,6 +207,20 @@ class UniversalFrontmatterExporter:
                 frontmatter = enricher.enrich(frontmatter)
                 logger.debug(f"Applied enricher: {enricher.__class__.__name__}")
             
+            # Apply library enrichments (expand library relationships with full data)
+            if self.library_processor:
+                logger.debug(f"🔍 BEFORE library enrichment - frontmatter keys: {list(frontmatter.keys())}")
+                if 'relationships' in frontmatter:
+                    logger.debug(f"   relationships keys: {list(frontmatter['relationships'].keys())}")
+                
+                frontmatter = self.library_processor.process_item(frontmatter)
+                logger.debug("Applied library enrichments")
+                
+                logger.debug(f"🔍 AFTER library enrichment - frontmatter keys: {list(frontmatter.keys())}")
+                # Check if enriched fields were added
+                enriched_fields = [k for k in frontmatter.keys() if k.endswith('_detail')]
+                logger.debug(f"Enriched fields added: {enriched_fields}")
+            
             # Apply generators (create derived content)
             for generator in self.generators:
                 frontmatter = generator.generate(frontmatter)
@@ -210,21 +228,6 @@ class UniversalFrontmatterExporter:
             
             # Validate and order fields (reorder_fields expects domain parameter)
             frontmatter = self.field_validator.reorder_fields(frontmatter, self.domain)
-            
-            # 🔍 DEBUG: Check if relationships still has slug before write
-            if 'relationships' in frontmatter:
-                dl = frontmatter['relationships']
-                if isinstance(dl, dict):
-                    for linkage_type, entries in dl.items():
-                        if isinstance(entries, list) and len(entries) > 0:
-                            first_entry = entries[0]
-                            if isinstance(first_entry, dict):
-                                has_slug = 'slug' in first_entry
-                                print(f"🔍 BEFORE WRITE - {linkage_type}[0] has slug: {has_slug}")
-                                if has_slug:
-                                    print(f"    slug value: {first_entry['slug']}")
-                                else:
-                                    print(f"    keys: {list(first_entry.keys())}")
             
             # Convert OrderedDict to regular dict for YAML serialization
             frontmatter = dict(frontmatter)
@@ -333,45 +336,11 @@ class UniversalFrontmatterExporter:
         Raises:
             IOError: If write fails
         """
-        # Create output directory if needed
-        output_file.parent.mkdir(parents=True, exist_ok=True)
+        # Convert OrderedDict to regular dict
+        frontmatter = dict(frontmatter)
         
-        # Write YAML with proper formatting
-        # 🚨 CRITICAL: Use SafeDumper to prevent Python-specific tags
-        # Without SafeDumper, OrderedDict creates !!python/object tags
-        # that break JavaScript parsers (js-yaml cannot read them)
-        yaml_string = yaml.dump(
-            frontmatter,
-            default_flow_style=False,
-            allow_unicode=True,
-            sort_keys=False,  # Preserve field order
-            width=120,
-            Dumper=yaml.SafeDumper  # MANDATORY - prevents Python tags
-        )
-        
-        # 🔍 DEBUG: Check if slug is in relationships entries
-        if 'relationships' in frontmatter:
-            # Check if slug appears AFTER relationships in the YAML string
-            dl_index = yaml_string.find('relationships:')
-            if dl_index > 0:
-                # Look for slug in the next 2000 characters after relationships
-                after_dl = yaml_string[dl_index:dl_index+2000]
-                linkage_slug_count = after_dl.count('\n    slug:')
-                print(f"🔍 Found {linkage_slug_count} slug fields in relationships section of YAML")
-                if linkage_slug_count == 0:
-                    print(f"❌ NO SLUG FIELDS IN relationships!")
-                    # Show sample
-                    sample = after_dl[:300]
-                    print(f"Sample:\n{sample}")
-            
-            # Write to temp file for inspection
-            if 'aluminum' in str(output_file).lower():
-                with open('/tmp/aluminum_yaml_final.yaml', 'w') as f:
-                    f.write(yaml_string)
-                print("📝 Wrote debug copy to /tmp/aluminum_yaml_final.yaml")
-        
-        with open(output_file, 'w', encoding='utf-8') as f:
-            f.write(yaml_string)
+        # Use centralized YAML writer with SafeDumper
+        write_frontmatter(output_file, frontmatter, create_dirs=True)
         
         logger.debug(f"Wrote {output_file} ({len(frontmatter)} fields)")
     

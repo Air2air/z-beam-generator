@@ -151,64 +151,6 @@ class SEODescriptionGenerator(BaseGenerator):
         return truncated.rstrip(',.;:') + '...'
 
 
-class BreadcrumbGenerator(BaseGenerator):
-    """
-    Generate breadcrumb navigation strings.
-    
-    Creates breadcrumb paths from category/subcategory fields using
-    a template string.
-    
-    Example:
-        Template: "Home / Materials / {category} / {subcategory}"
-        Result: "Home / Materials / Metals / Steel"
-    """
-    
-    def __init__(self, config: Dict[str, Any]):
-        """
-        Initialize breadcrumb generator.
-        
-        Args:
-            config: Config with keys:
-                - template: Template string with {field} placeholders
-                - output_field: Field to write to (default: 'breadcrumb')
-        
-        Raises:
-            ValueError: If template missing
-        """
-        super().__init__(config)
-        
-        if 'template' not in config:
-            raise ValueError("BreadcrumbGenerator requires 'template'")
-        
-        self.template = config['template']
-        self.output_field = config.get('output_field', 'breadcrumb')
-    
-    def generate(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Generate breadcrumb from template.
-        
-        Args:
-            frontmatter: Input frontmatter dict
-        
-        Returns:
-            Frontmatter with breadcrumb added
-        """
-        try:
-            # Format template with frontmatter fields
-            breadcrumb = self.template.format(**frontmatter)
-            frontmatter[self.output_field] = breadcrumb
-            
-            logger.debug(f"Generated breadcrumb: {breadcrumb}")
-            
-        except KeyError as e:
-            logger.warning(
-                f"Breadcrumb template missing field: {e}. "
-                f"Template: {self.template}"
-            )
-        
-        return frontmatter
-
-
 class ExcerptGenerator(BaseGenerator):
     """
     Generate short excerpts from long content.
@@ -296,94 +238,10 @@ class ExcerptGenerator(BaseGenerator):
         return truncated + '...'
 
 
-class SlugGenerator(BaseGenerator):
-    """
-    Generate URL-safe slugs from name fields.
-    
-    Converts:
-        "Rust & Oxidation Contamination" → "rust-oxidation-contamination"
-    """
-    
-    def __init__(self, config: Dict[str, Any]):
-        """
-        Initialize slug generator.
-        
-        Args:
-            config: Config with keys:
-                - source_field: Field to read from (e.g., 'name')
-                - output_field: Field to write to (default: 'slug')
-        """
-        super().__init__(config)
-        
-        if 'source_field' not in config:
-            raise ValueError("SlugGenerator requires 'source_field'")
-        
-        self.source_field = config['source_field']
-        self.output_field = config.get('output_field', 'slug')
-    
-    def generate(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Generate slug from source field.
-        
-        Args:
-            frontmatter: Input frontmatter dict
-        
-        Returns:
-            Frontmatter with slug added
-        """
-        # Skip if slug already exists
-        if self.output_field in frontmatter and frontmatter[self.output_field]:
-            return frontmatter
-        
-        if self.source_field not in frontmatter:
-            return frontmatter
-        
-        source_text = frontmatter[self.source_field]
-        if not source_text:
-            return frontmatter
-        
-        # Generate slug
-        slug = self._create_slug(source_text)
-        frontmatter[self.output_field] = slug
-        
-        logger.debug(f"Generated slug: {slug}")
-        
-        return frontmatter
-    
-    def _create_slug(self, text: str) -> str:
-        """
-        Create URL-safe slug from text.
-        
-        Args:
-            text: Source text
-        
-        Returns:
-            Lowercase, hyphenated slug
-        """
-        # Lowercase
-        slug = text.lower()
-        
-        # Remove special characters
-        slug = re.sub(r'[^\w\s-]', '', slug)
-        
-        # Replace whitespace with hyphens
-        slug = re.sub(r'[\s_]+', '-', slug)
-        
-        # Remove consecutive hyphens
-        slug = re.sub(r'-+', '-', slug)
-        
-        # Strip leading/trailing hyphens
-        slug = slug.strip('-')
-        
-        return slug
-
-
 # Registry mapping generator type → class
 GENERATOR_REGISTRY = {
     'seo_description': SEODescriptionGenerator,
-    'breadcrumb': BreadcrumbGenerator,
     'excerpt': ExcerptGenerator,
-    'slug': SlugGenerator,
     'relationships': DomainLinkagesGenerator,
 }
 

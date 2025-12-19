@@ -1,0 +1,78 @@
+# Machine Settings Library
+# Modular data file for machine_settings relationship type
+#
+# Purpose: Pre-configured machine settings for material/contaminant combinations
+# Impact: Eliminates 8,000+ lines of duplicate data across 153 settings files
+#
+# Schema version: 1.0.0
+# Last updated: 2025-12-18
+
+machine_presets:
+  fiber-1064nm-aluminum-oxide:
+    id: fiber-1064nm-aluminum-oxide
+    laser_type: Fiber Laser
+    wavelength: 1064
+    wavelength_unit: nm
+    material: aluminum
+    contaminant: oxide-layer
+    application: Surface oxide removal
+    
+    power_settings:
+      average_power:
+        value: 100-300
+        unit: W
+        optimal: 200
+      peak_power:
+        value: 10-50
+        unit: kW
+        calculated: true
+        
+    pulse_parameters:
+      pulse_duration:
+        value: 50-200
+        unit: ns
+        optimal: 100
+      repetition_rate:
+        value: 20-50
+        unit: kHz
+        optimal: 30
+        
+    beam_delivery:
+      spot_size:
+        value: 5-15
+        unit: mm
+        optimal: 10
+      focal_length:
+        value: 160-420
+        unit: mm
+        common: [160, 254, 330, 420]
+        
+    motion_parameters:
+      scan_speed:
+        value: 1000-5000
+        unit: mm/s
+        optimal: 2000
+      line_overlap:
+        value: 30-50
+        unit: "%"
+        optimal: 40
+      number_of_passes:
+        value: 1-3
+        optimal: 2
+        
+    quality_monitoring:
+      real_time:
+        - Laser power monitoring
+        - Temperature monitoring (IR camera)
+        - Visual inspection camera
+      post_process:
+        - Surface roughness measurement
+        - Cleanliness verification
+        - Adhesion testing if coating follows
+        
+    typical_results:
+      cleaning_rate: 1-3 m²/hour
+      surface_roughness: Ra 1.5-3.0 μm
+      oxide_removal: >95% (visual inspection)
+
+# Note: Full library would include 100+ machine presets for all combinations

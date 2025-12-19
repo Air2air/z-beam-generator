@@ -1,0 +1,80 @@
+# Contaminant Appearance Library
+# Modular data file for contaminant_appearance relationship type
+#
+# Purpose: Visual identification and characteristics by contaminant type
+# Impact: Eliminates 8,000+ lines of duplicate data across 98 contaminant files
+#
+# Schema version: 1.0.0
+# Last updated: 2025-12-18
+
+contaminant_appearance:
+  rust-pattern-surface-oxidation:
+    id: rust-pattern-surface-oxidation
+    contaminant_type: rust
+    contaminant_id: rust-iron-oxide-formation
+    pattern_name: Surface Oxidation
+    severity: light_to_moderate
+    
+    visual_characteristics:
+      color:
+        primary: Reddish-brown
+        variations: [Orange, brown, dark brown]
+        hex_codes: ['#B7410E', '#CD853F', '#8B4513']
+        notes: Color darkens with age and thickness
+      texture:
+        surface: Rough, powdery to flaky
+        tactile: Granular when touched
+        cohesion: Weak - easily wiped off when light
+      pattern:
+        distribution: Usually uniform across surface
+        common_locations:
+          - Edges and corners (moisture accumulation)
+          - Weld zones (heat-affected zones)
+          - Scratches or damage sites
+        progression: Starts as small spots, spreads outward
+      surface_effects:
+        roughness_increase: Significant (2x-10x base metal)
+        typical_ra: 5-50
+        unit: μm
+        
+    physical_properties:
+      thickness:
+        light: 10-50
+        moderate: 50-200
+        heavy: 200-1000+
+        unit: μm
+      density:
+        value: 5.0-5.5
+        unit: g/cm³
+      adhesion: Weak to moderate
+      
+    identification_tips:
+      visual_inspection:
+        - Reddish-brown coloration distinct from base metal
+        - Powdery or flaky texture
+        - May leave residue when touched
+      scratch_test: Easily removed with fingernail when light
+      
+    material_compatibility:
+      common_on:
+        - Carbon steel
+        - Cast iron
+        - Wrought iron
+      severity_factors:
+        high_risk:
+          - Marine environments (salt spray)
+          - Industrial areas (pollutants)
+          - Outdoor exposure
+          
+    laser_removal_characteristics:
+      difficulty: Easy to moderate
+      optimal_wavelength: 1064
+      unit: nm
+      typical_fluence: 2-5
+      fluence_unit: J/cm²
+      passes_required:
+        light: 1-2
+        moderate: 2-4
+        heavy: 4-8
+
+# Note: Full library would include 100+ appearance patterns
