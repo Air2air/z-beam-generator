@@ -16,6 +16,10 @@ filename_suffix: ""
 # ENRICHMENTS (Applied in order)
 # ============================================================================
 enrichments:
+  # 0. Restructure contaminant frontmatter (move technical data to relationships)
+  - type: contaminant_restructure
+    enabled: true
+  
   # 1. Enrich compound linkages (produces_compounds when removed)
   - type: compound_linkage
     field: produces_compounds

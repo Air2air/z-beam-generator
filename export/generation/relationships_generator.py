@@ -82,7 +82,11 @@ class DomainLinkagesGenerator(BaseGenerator):
             linkages = self.linkages_service.generate_linkages(item_id, self.domain)
             
             if linkages:
-                frontmatter[self.output_field] = linkages
+                # MERGE with existing relationships instead of replacing
+                # (Preserves technical fields moved by restructure enrichers)
+                existing_relationships = frontmatter.get(self.output_field, {})
+                merged_relationships = {**existing_relationships, **linkages}
+                frontmatter[self.output_field] = merged_relationships
                 
                 # Count total linkage entries for logging
                 total_entries = sum(len(v) if v else 0 for v in linkages.values())
@@ -91,8 +95,9 @@ class DomainLinkagesGenerator(BaseGenerator):
                     f"({len(linkages)} linkage types)"
                 )
             else:
-                # No linkages found - set empty dict
-                frontmatter[self.output_field] = {}
+                # No linkages found - preserve existing relationships if any
+                if self.output_field not in frontmatter:
+                    frontmatter[self.output_field] = {}
                 logger.debug(f"No linkages found for {item_id}")
         
         except Exception as e:

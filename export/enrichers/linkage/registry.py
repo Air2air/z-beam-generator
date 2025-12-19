@@ -53,6 +53,7 @@ from export.enrichers.linkage.relationships_enricher import DomainLinkagesEnrich
 from export.enrichers.linkage.relationship_grouping_enricher import RelationshipGroupingEnricher
 from export.enrichers.linkage.author_enricher import AuthorEnricher
 from export.enrichers.linkage.compound_restructure_enricher import CompoundRestructureEnricher
+from export.enrichers.linkage.contaminant_restructure_enricher import ContaminantRestructureEnricher
 from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
 
 logger = logging.getLogger(__name__)
@@ -416,6 +417,7 @@ class TimestampEnricher(BaseEnricher):
 # Registry mapping enricher type → class
 ENRICHER_REGISTRY = {
     'compound_restructure': CompoundRestructureEnricher,
+    'contaminant_restructure': ContaminantRestructureEnricher,
     'compound_linkage': CompoundLinkageEnricher,
     'material_linkage': MaterialLinkageEnricher,
     'contaminant_linkage': ContaminantLinkageEnricher,
