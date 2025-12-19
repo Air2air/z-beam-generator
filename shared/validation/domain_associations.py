@@ -250,7 +250,7 @@ class DomainAssociationsValidator:
         
         if all_errors:
             raise ValueError(
-                f"Domain associations validation failed:\n" +
+                "Domain associations validation failed:\n" +
                 "\n".join(f"  - {err}" for err in all_errors)
             )
     
@@ -331,8 +331,7 @@ class DomainAssociationsValidator:
                 # Build linkage per FRONTMATTER_GENERATOR_LINKAGE_SPEC.md
                 category, subcategory = normalize_taxonomy(material_data)
                 
-                # Extract display name and slug using formatters
-                slug = extract_slug(material_id, '-laser-cleaning')
+                # Extract display name using formatters
                 display_name = format_display_name(material_id, '-laser-cleaning')
                 
                 results.append({
@@ -479,7 +478,7 @@ def main():
         stats = validator.get_statistics()
         
         print("✅ Domain associations validation PASSED")
-        print(f"\nStatistics:")
+        print("\nStatistics:")
         print(f"  Total associations: {stats['total_associations']}")
         print(f"  Material ↔ Contaminant: {stats['material_contaminant']}")
         print(f"  Contaminant ↔ Compound: {stats['contaminant_compound']}")
