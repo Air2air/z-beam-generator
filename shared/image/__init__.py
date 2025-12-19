@@ -8,16 +8,13 @@ Author: AI Assistant
 Date: November 26, 2025 (Extracted from materials domain)
 """
 
-from shared.image.learning import (
-    ImageGenerationLogger,
-    create_logger
-)
+from shared.image.learning import ImageGenerationLogger, create_logger
 from shared.image.utils import (
-    SharedPromptBuilder,
-    PromptOptimizer,
-    get_pipeline_monitor,
     FailureStage,
-    FailureType
+    FailureType,
+    PromptOptimizer,
+    SharedPromptBuilder,
+    get_pipeline_monitor,
 )
 
 __all__ = [

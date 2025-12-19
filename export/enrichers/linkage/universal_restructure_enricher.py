@@ -32,7 +32,7 @@ Purpose: Code consolidation and maintainability
 """
 
 import logging
-from typing import Dict, Any, List
+from typing import Any, Dict, List
 
 from export.enrichers.base import BaseEnricher
 

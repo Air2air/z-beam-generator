@@ -77,7 +77,7 @@ def handle_generation(
     try:
         # === Use unified Generator with domain adapter ===
         from generation.core.generator import Generator
-        
+
         # Initialize API client
         from shared.api.client_factory import create_api_client
         print("🔧 Initializing API client...")
@@ -288,8 +288,8 @@ def _run_subjective_evaluation(content, identifier, component_type):
         identifier: Domain-agnostic item identifier
         component_type: Type of component generated
     """
-    from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
     from shared.api.client_factory import create_api_client
+    from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
     
     print("🔍 Running subjective evaluation (Grok API)...")
     eval_client = create_api_client('grok')
@@ -347,11 +347,11 @@ def _run_winston_detection(content, identifier, component_type, api_client):
     """
     print("🤖 Running Winston AI detection...")
     try:
-        from postprocessing.detection.winston_integration import WinstonIntegration
-        from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
         from generation.config.config_loader import get_config
-        from shared.text.validation.constants import ValidationConstants
+        from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
+        from postprocessing.detection.winston_integration import WinstonIntegration
         from shared.api.client_factory import APIClientFactory
+        from shared.text.validation.constants import ValidationConstants
         
         config = get_config()
         db_path = config.config.get('winston_feedback_db_path')
@@ -429,8 +429,8 @@ def _update_sweet_spot_if_needed(identifier, component_type):
         identifier: Domain-agnostic item identifier
         component_type: Type of component generated
     """
-    from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
     from generation.config.config_loader import get_config
+    from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
     
     config = get_config()
     db_path = config.config.get('winston_feedback_db_path')

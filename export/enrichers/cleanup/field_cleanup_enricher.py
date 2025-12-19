@@ -13,7 +13,8 @@ Target fields for removal:
 - typical_context (when value is "general")
 """
 
-from typing import Dict, Any, List
+from typing import Any, Dict, List
+
 from export.enrichers.base import BaseEnricher
 
 

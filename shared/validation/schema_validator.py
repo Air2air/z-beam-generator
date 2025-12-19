@@ -10,7 +10,7 @@ Updated: October 29, 2025 - Validation consolidation
 import warnings
 
 # Redirect to new consolidated location
-from shared.validation.core.schema import SchemaValidator, SchemaValidationResult
+from shared.validation.core.schema import SchemaValidationResult, SchemaValidator
 from shared.validation.errors import ValidationResult
 
 # Deprecation warning

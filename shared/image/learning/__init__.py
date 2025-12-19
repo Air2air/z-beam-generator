@@ -10,7 +10,7 @@ Date: November 26, 2025 (Extracted from materials domain)
 
 from shared.image.learning.image_generation_logger import (
     ImageGenerationLogger,
-    create_logger
+    create_logger,
 )
 
 __all__ = [

@@ -15,9 +15,11 @@ This utility follows GROK_INSTRUCTIONS principles:
 import logging
 import os
 import time
-import yaml
 from pathlib import Path
 from typing import Any, Dict, Optional
+
+import yaml
+
 from shared.validation.errors import ConfigurationError
 
 logger = logging.getLogger(__name__)

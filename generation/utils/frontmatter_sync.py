@@ -23,10 +23,11 @@ Usage:
 """
 
 import logging
-import yaml
 import tempfile
 from pathlib import Path
 from typing import Any
+
+import yaml
 
 logger = logging.getLogger(__name__)
 

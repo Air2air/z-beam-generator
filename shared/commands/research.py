@@ -14,7 +14,9 @@ def _determine_property_category(property_name: str) -> str:
     based on property name taxonomy.
     """
     try:
-        from domains.materials.utils.property_categorizer import get_property_categorizer
+        from domains.materials.utils.property_categorizer import (
+            get_property_categorizer,
+        )
         categorizer = get_property_categorizer()
         category_id = categorizer.get_category(property_name)
         
@@ -84,10 +86,14 @@ def handle_data_gaps():
     try:
         import subprocess
         import sys
-        import yaml
-        from pathlib import Path
         from collections import defaultdict
-        from domains.materials.utils.category_property_cache import get_category_property_cache
+        from pathlib import Path
+
+        import yaml
+
+        from domains.materials.utils.category_property_cache import (
+            get_category_property_cache,
+        )
         
         print("="*80)
         print("DATA GAPS & RESEARCH PRIORITIES")
@@ -285,15 +291,20 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
         auto_mode: If True, skip user confirmation (for workflow auto-remediation)
     """
     try:
-        import yaml
-        from pathlib import Path
-        from collections import defaultdict
         import sys
+        from collections import defaultdict
         from datetime import datetime
-        
+        from pathlib import Path
+
+        import yaml
+
         # Import research infrastructure
         sys.path.insert(0, str(Path(__file__).parent))
-        from materials.research.unified_material_research import PropertyValueResearcher, ResearchContext
+        from materials.research.unified_material_research import (
+            PropertyValueResearcher,
+            ResearchContext,
+        )
+
         from shared.api.client_factory import create_api_client
         
         print("="*80)
@@ -306,7 +317,9 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
         print()
         
         # Load category property cache (validates property applicability per category)
-        from domains.materials.utils.category_property_cache import get_category_property_cache
+        from domains.materials.utils.category_property_cache import (
+            get_category_property_cache,
+        )
         
         print("📂 Loading category property definitions...")
         cache = get_category_property_cache()
@@ -443,7 +456,9 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
         print()
         
         # Initialize researcher - Use AIResearchEnrichmentService (not PropertyValueResearcher)
-        from materials.research.services.ai_research_service import AIResearchEnrichmentService
+        from materials.research.services.ai_research_service import (
+            AIResearchEnrichmentService,
+        )
         researcher = AIResearchEnrichmentService(api_provider="grok")
         print("✅ AI Research Service initialized with Grok API")
         print()
@@ -704,9 +719,10 @@ def handle_fix_analysis(material=None, failure_type=None):
         True if successful, False otherwise
     """
     try:
-        from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
-        from learning.fix_strategy_manager import FixStrategyManager
         from pathlib import Path
+
+        from learning.fix_strategy_manager import FixStrategyManager
+        from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
         
         print("=" * 80)
         print("🔧 FIX STRATEGY EFFECTIVENESS REPORT")

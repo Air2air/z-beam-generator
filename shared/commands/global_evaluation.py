@@ -16,11 +16,12 @@ Benefits:
 
 import logging
 from typing import Optional
+
+from domains.materials.data_loader import load_material
+from generation.config.config_loader import get_config
+from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
 from shared.api.client_factory import create_api_client
 from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
-from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
-from generation.config.config_loader import get_config
-from domains.materials.data_loader import load_material
 
 logger = logging.getLogger(__name__)
 
@@ -207,7 +208,7 @@ def _apply_realism_learning(
     
     try:
         from learning.realism_optimizer import RealismOptimizer
-        
+
         # Initialize optimizer
         optimizer = RealismOptimizer()
         

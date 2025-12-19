@@ -9,6 +9,7 @@ and DeepSeek-specific features.
 import logging
 
 from .client import APIClient, APIResponse, GenerationRequest
+
 # No default configs allowed in fail-fast architecture
 
 logger = logging.getLogger(__name__)
@@ -90,8 +91,9 @@ class DeepSeekClient(APIClient):
         
         # First try to load from component's prompt.yaml
         try:
-            import yaml
             from pathlib import Path
+
+            import yaml
             
             component_prompt_path = Path(f"components/{component_type}/prompt.yaml")
             if component_prompt_path.exists():

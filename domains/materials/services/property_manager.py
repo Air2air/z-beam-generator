@@ -24,24 +24,25 @@ Updated: October 20, 2025 - Added Materials.yaml writeback
 
 import logging
 import shutil
-import yaml
-from pathlib import Path
-from datetime import datetime
-from typing import Dict, List, Set, Optional, Tuple, Callable
 from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Callable, Dict, List, Optional, Set, Tuple
 
-# from domains.materials.research.unified_material_research import UnifiedMaterialResearch
-from shared.validation.errors import PropertyDiscoveryError, ConfigurationError
-from shared.validation.helpers.unit_converter import UnitConverter
+import yaml
 
 # Qualitative property definitions
 from export.qualitative_properties import (
+    MATERIAL_CHARACTERISTICS_CATEGORIES,
     QUALITATIVE_PROPERTIES,
-    is_qualitative_property,
     get_property_definition,
+    is_qualitative_property,
     validate_qualitative_value,
-    MATERIAL_CHARACTERISTICS_CATEGORIES
 )
+
+# from domains.materials.research.unified_material_research import UnifiedMaterialResearch
+from shared.validation.errors import ConfigurationError, PropertyDiscoveryError
+from shared.validation.helpers.unit_converter import UnitConverter
 
 logger = logging.getLogger(__name__)
 
@@ -140,7 +141,9 @@ class PropertyManager:
             Category group name ('material_characteristics' or 'laser_material_interaction')
         """
         try:
-            from domains.materials.utils.property_categorizer import get_property_categorizer
+            from domains.materials.utils.property_categorizer import (
+                get_property_categorizer,
+            )
             categorizer = get_property_categorizer()
             category_id = categorizer.get_category(property_name)
             
@@ -752,7 +755,7 @@ class PropertyManager:
         try:
             # Import audit functionality (lazy import to avoid circular dependencies)
             from .material_auditor import create_audit_hook
-            
+
             # Create audit hook and run audit
             audit_hook = create_audit_hook()
             audit_result = audit_hook(material_name, auto_fix=True)
@@ -812,7 +815,7 @@ class PropertyManager:
         """
         try:
             from .material_auditor import MaterialAuditor
-            
+
             # Initialize auditor
             auditor = MaterialAuditor()
             

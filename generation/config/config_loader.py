@@ -12,11 +12,12 @@ Usage:
     temperature = config.get_temperature()
 """
 
-import os
-import yaml
 import logging
-from typing import Dict, Any, Optional
+import os
 from pathlib import Path
+from typing import Any, Dict, Optional
+
+import yaml
 
 logger = logging.getLogger(__name__)
 

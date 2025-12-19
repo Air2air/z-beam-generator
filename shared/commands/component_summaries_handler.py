@@ -24,16 +24,16 @@ Domain-agnostic: Uses DomainAdapter for all paths and configuration.
 """
 
 import logging
-from typing import Dict, Any, Optional
 from pathlib import Path
+from typing import Any, Dict, Optional
 
 # Reusable helpers (domain-agnostic)
 from shared.generation import (
     generate_text,
     get_api_client,
+    get_random_author,
     load_yaml_file,
     update_yaml_field,
-    get_random_author
 )
 
 logger = logging.getLogger(__name__)
@@ -106,7 +106,7 @@ def load_persona_voice(country: str) -> str:
     Returns core_voice_instruction from the persona, or a default if not found.
     """
     import yaml
-    
+
     # Map country to persona file
     country_to_file = {
         "Taiwan": "taiwan.yaml",
@@ -152,7 +152,7 @@ def generate_single_component(
     Returns the generated text or None if generation fails.
     """
     from generation.config.dynamic_config import DynamicConfig
-    
+
     # Get dynamic config for generation parameters
     dynamic_config = DynamicConfig()
     

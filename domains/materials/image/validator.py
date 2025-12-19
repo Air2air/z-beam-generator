@@ -15,9 +15,9 @@ Date: November 25, 2025
 import json
 import logging
 import os
+from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Dict, Any, Optional, List
-from dataclasses import dataclass, asdict
+from typing import Any, Dict, List, Optional
 
 import google.generativeai as genai
 from PIL import Image
@@ -209,8 +209,9 @@ class MaterialImageValidator:
         self.model = genai.GenerativeModel(model)
         
         # Initialize shared prompt builder for validation prompts
-        from shared.image.utils.prompt_builder import SharedPromptBuilder
         from pathlib import Path
+
+        from shared.image.utils.prompt_builder import SharedPromptBuilder
         prompts_dir = Path(__file__).parent / "prompts" / "shared"
         self.prompt_builder = SharedPromptBuilder(prompts_dir=prompts_dir)
         

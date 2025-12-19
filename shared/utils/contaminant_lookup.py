@@ -34,8 +34,8 @@ Date: November 26, 2025
 
 from pathlib import Path
 from typing import List, Optional, Tuple
-import yaml
 
+import yaml
 
 # Cache for loaded data
 _materials_cache = None

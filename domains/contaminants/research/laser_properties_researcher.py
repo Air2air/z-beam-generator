@@ -10,9 +10,10 @@ Date: November 25, 2025
 
 import logging
 from dataclasses import dataclass, field
-from typing import Any, Dict, Optional, List
-from shared.validation.errors import GenerationError
+from typing import Any, Dict, List, Optional
+
 from shared.api.client import GenerationRequest
+from shared.validation.errors import GenerationError
 
 logger = logging.getLogger(__name__)
 
@@ -748,9 +749,10 @@ YAML only, with brief risk summary."""
     
     def _parse_yaml_response(self, response: str) -> Dict:
         """Parse YAML from AI response, handling code blocks."""
-        import yaml
         import re
-        
+
+        import yaml
+
         # Extract YAML from code blocks if present
         yaml_match = re.search(r'```(?:yaml)?\n(.*?)\n```', response, re.DOTALL)
         if yaml_match:

@@ -26,15 +26,18 @@ Fail-Fast Design:
 
 import logging
 from abc import ABC, abstractmethod
-from pathlib import Path
-from typing import Dict, Any, Optional, List
 from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
-from shared.generators.component_generators import APIComponentGenerator, ComponentResult
+from shared.generators.component_generators import (
+    APIComponentGenerator,
+    ComponentResult,
+)
 from shared.validation.errors import (
     ConfigurationError,
     GenerationError,
-    MaterialDataError
+    MaterialDataError,
 )
 
 logger = logging.getLogger(__name__)
@@ -537,8 +540,9 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
             new_value: New text value to save
         """
         try:
-            import yaml
             from pathlib import Path
+
+            import yaml
             
             materials_yaml_path = Path("data/materials/Materials.yaml")
             
@@ -607,7 +611,7 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
         """
         try:
             import yaml
-            
+
             # Get output filename
             filename = self._get_output_filename(identifier)
             

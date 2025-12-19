@@ -5,7 +5,8 @@ Expands chemical_properties relationships with full physical/chemical data.
 """
 
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Any, Dict, List, Optional
+
 from export.enrichers.base import BaseLibraryEnricher
 
 

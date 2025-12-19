@@ -23,8 +23,10 @@ Usage:
             # Use valid_refs...
 """
 
-from typing import List, Dict, Set, Tuple, Optional
-from shared.validation.reference_registry import ReferenceRegistry, ReferenceInfo
+from typing import Dict, List, Optional, Set, Tuple
+
+from shared.validation.reference_registry import ReferenceInfo, ReferenceRegistry
+
 
 class ReferenceValidatorMixin:
     """Mixin to add reference validation to generators"""

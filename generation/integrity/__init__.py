@@ -12,6 +12,6 @@ This module verifies:
 - Test coverage and validity
 """
 
-from .integrity_checker import IntegrityChecker, IntegrityStatus, IntegrityResult
+from .integrity_checker import IntegrityChecker, IntegrityResult, IntegrityStatus
 
 __all__ = ['IntegrityChecker', 'IntegrityStatus', 'IntegrityResult']

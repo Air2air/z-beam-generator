@@ -14,9 +14,9 @@ import logging
 from typing import Any, Dict, List, Optional
 
 # Import authoritative registry
+from data.authors.registry import get_all_authors as registry_get_all_authors
+from data.authors.registry import get_author as registry_get_author
 from data.authors.registry import (
-    get_author as registry_get_author,
-    get_all_authors as registry_get_all_authors,
     list_valid_author_ids as registry_list_valid_author_ids,
 )
 

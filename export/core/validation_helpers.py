@@ -8,7 +8,7 @@ Extracted from the monolithic generator for better separation of concerns.
 
 import logging
 import re
-from typing import Dict, Tuple, Any
+from typing import Any, Dict, Tuple
 
 logger = logging.getLogger(__name__)
 
@@ -165,10 +165,10 @@ class ValidationHelpers:
             validation_report: Report data to save
         """
         try:
-            import os
             import json
+            import os
             from datetime import datetime
-            
+
             # Create reports directory if it doesn't exist
             reports_dir = "logs/validation_reports"
             os.makedirs(reports_dir, exist_ok=True)
@@ -232,7 +232,7 @@ class ValidationHelpers:
         """
         try:
             # Use existing schema validator instead of non-existent comprehensive validator
-            from export.core.schema_validator import FrontmatterSchemaValidator
+            # NOTE: schema_validator removed Dec 19, 2025 - use shared.validation.SchemaValidator directly
             
             # Parse YAML content for validation
             import yaml
@@ -296,7 +296,9 @@ class ValidationHelpers:
                             if "Missing required field:" in issue:
                                 field_name = issue.split(": ")[1]
                                 # FAIL-FAST: Cannot proceed with invalid data
-                                from shared.utils.ai.loud_errors import validation_failure
+                                from shared.utils.ai.loud_errors import (
+                                    validation_failure,
+                                )
                                 validation_failure(
                                     "frontmatter_generator",
                                     f"Missing required field '{field_name}' in generated frontmatter - fail-fast architecture requires complete data",

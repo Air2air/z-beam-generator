@@ -6,8 +6,9 @@ Reduces generic, AI-like descriptions by injecting specific, verifiable data.
 """
 
 import logging
-from typing import Dict, Optional
 from pathlib import Path
+from typing import Dict, Optional
+
 import yaml
 
 logger = logging.getLogger(__name__)

@@ -8,8 +8,8 @@ No separate component - just enhanced prompts for better quality.
 
 import logging
 import re
-from typing import Dict, List
 from pathlib import Path
+from typing import Dict, List
 
 logger = logging.getLogger(__name__)
 

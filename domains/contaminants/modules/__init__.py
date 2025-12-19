@@ -7,20 +7,20 @@ the same architecture as materials domain.
 Per CONTAMINATION_FRONTMATTER_SPEC.md
 """
 
-from .metadata_module import MetadataModule
+from .appearance_module import AppearanceModule
+from .author_module import AuthorModule
+from .industries_module import IndustriesModule
 from .laser_module import LaserModule
+from .metadata_module import MetadataModule
 from .modules import (
-    MediaModule,
     EEATModule,
+    MediaModule,
     OpticalModule,
     RemovalModule,
     SafetyModule,
 )
-from .seo_module import SEOModule
 from .quick_facts_module import QuickFactsModule
-from .industries_module import IndustriesModule
-from .appearance_module import AppearanceModule
-from .author_module import AuthorModule
+from .seo_module import SEOModule
 
 __all__ = [
     # Basic modules (v1.0)

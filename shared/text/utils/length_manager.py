@@ -25,10 +25,11 @@ Usage:
     # Returns True if word count is within configured min/max bounds
 """
 
-import random
 import logging
-from typing import Dict, Tuple, Optional
+import random
 from pathlib import Path
+from typing import Dict, Optional, Tuple
+
 import yaml
 
 logger = logging.getLogger(__name__)

@@ -8,7 +8,7 @@ Data source: laser_properties.removal_efficiency and process_variables
 """
 
 import logging
-from typing import Dict, Optional, List
+from typing import Dict, List, Optional
 
 
 class QuickFactsModule:

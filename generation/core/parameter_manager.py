@@ -13,10 +13,11 @@ This module provides dynamic parameter calculation for content generation:
 - Works across all domains without modification
 """
 
-from typing import Dict, Any, Callable, Optional
-import yaml
 import logging
 from pathlib import Path
+from typing import Any, Callable, Dict, Optional
+
+import yaml
 
 logger = logging.getLogger(__name__)
 

@@ -15,7 +15,7 @@ Author: AI Assistant
 Date: November 26, 2025
 """
 
-from typing import Dict, Any
+from typing import Any, Dict
 
 # ✅ CORRECT: Orchestrator imports from multiple domains
 from domains.materials.data_loader import load_materials_yaml, load_properties_yaml

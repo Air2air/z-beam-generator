@@ -26,7 +26,8 @@ import logging
 import random
 import re
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Any, Dict, Optional
+
 import yaml
 
 logger = logging.getLogger(__name__)
@@ -255,7 +256,7 @@ class Generator:
         
         # Build prompt using unified builder for all components
         from shared.text.utils.prompt_builder import PromptBuilder
-        
+
         # Get technical intensity from config and normalize to 0.0-1.0 scale
         config_technical_intensity = self.config.get('voice_parameters', {}).get('technical_intensity', 2)
         normalized_intensity = (config_technical_intensity - 1) / 2.0  # 1→0.0, 2→0.5, 3→1.0
@@ -340,9 +341,11 @@ class Generator:
         self.logger.info("="*80)
         
         try:
+            from shared.validation.prompt_coherence_validator import (
+                validate_prompt_coherence,
+            )
             from shared.validation.prompt_validator import validate_text_prompt
-            from shared.validation.prompt_coherence_validator import validate_prompt_coherence
-            
+
             # Stage 1: Standard validation (length, format, technical)
             validation_result = validate_text_prompt(prompt)
             
@@ -595,145 +598,6 @@ class Generator:
         """
         self.adapter.write_component(identifier, component_type, content)
     
-    def _save_to_settings_yaml(self, material_name: str, content: Any):
-        """
-        DEPRECATED: Hardcoded for Settings.yaml only.
-        Use adapter.write_component() instead (domain-aware).
-        
-        This method is kept for backward compatibility but should not be used.
-        """
-        import sys
-        print(f"⚠️  [DEPRECATED] _save_to_settings_yaml called for {material_name}")
-        print(f"💡 Use adapter.write_component() instead (domain-aware)")
-        sys.stdout.flush()
-        
-        from domains.settings.data_loader import get_settings_path
-        settings_path = get_settings_path()
-        
-        # Load existing data
-        try:
-            with open(settings_path, 'r', encoding='utf-8') as f:
-                data = yaml.safe_load(f)
-        except Exception as e:
-            raise FileNotFoundError(f"Failed to load Settings.yaml: {e}")
-        
-        if material_name not in data.get('settings', {}):
-            raise ValueError(f"Material '{material_name}' not found in Settings.yaml")
-        
-        # Save settings_description to Settings.yaml
-        data['settings'][material_name]['settings_description'] = content
-        
-        # Update metadata
-        data['_metadata']['last_updated'] = '2025-11-24T21:00:00Z'
-        
-        # Atomic write: write to temp file, then rename
-        try:
-            import tempfile
-            with tempfile.NamedTemporaryFile(
-                mode='w',
-                encoding='utf-8',
-                dir=settings_path.parent,
-                delete=False,
-                suffix='.yaml'
-            ) as temp_f:
-                yaml.safe_dump(data, temp_f, default_flow_style=False, allow_unicode=True, sort_keys=False)
-                temp_path = temp_f.name
-            
-            # Atomic rename (POSIX guarantees atomicity)
-            Path(temp_path).replace(settings_path)
-            
-            print(f"✅ settings_description written to data/settings/Settings.yaml → settings.{material_name}.settings_description")
-            import sys
-            sys.stdout.flush()
-            
-            # DUAL-WRITE POLICY: Immediately sync field to frontmatter
-            print(f"🔄 Syncing to frontmatter...")
-            sys.stdout.flush()
-            try:
-                from generation.utils.frontmatter_sync import sync_field_to_frontmatter
-                sync_field_to_frontmatter(material_name, 'settings_description', content, domain='settings')
-                print(f"✅ Frontmatter sync complete for {material_name}")
-                sys.stdout.flush()
-            except Exception as sync_error:
-                print(f"❌ Frontmatter sync FAILED: {sync_error}")
-                sys.stdout.flush()
-                import traceback
-                traceback.print_exc()
-                # Don't fail the whole generation - sync can be done manually
-                print(f"⚠️  Continuing despite sync failure...")
-            
-        except Exception as e:
-            # Clean up temp file on failure
-            if 'temp_path' in locals():
-                Path(temp_path).unlink(missing_ok=True)
-            raise ValueError(f"Failed to save to Settings.yaml: {e}")
-    
-    def _save_to_materials_yaml(self, material_name: str, component_type: str, content: Any):
-        """
-        DEPRECATED: Hardcoded for Materials.yaml only.
-        Use adapter.write_component() instead (domain-aware).
-        
-        This method is kept for backward compatibility but should not be used.
-        """
-        import sys
-        print(f"⚠️  [DEPRECATED] _save_to_materials_yaml called for {material_name}")
-        print(f"💡 Use adapter.write_component() instead (domain-aware)")
-        sys.stdout.flush()
-        
-        materials_path = Path("data/materials/Materials.yaml")
-        
-        # Load existing data
-        try:
-            with open(materials_path, 'r', encoding='utf-8') as f:
-                data = yaml.safe_load(f)
-        except Exception as e:
-            raise FileNotFoundError(f"Failed to load Materials.yaml: {e}")
-        
-        if material_name not in data['materials']:
-            raise ValueError(f"Material '{material_name}' not found in Materials.yaml")
-        
-        # description/settings_description/faq go at ROOT level (not in components)
-        # Micro goes in components (before/after structure)
-        if component_type in ['description', 'settings_description', 'faq']:
-            # Save to root level for consistency with existing structure
-            data['materials'][material_name][component_type] = content
-        else:
-            # Micro and other components go in components section
-            if 'components' not in data['materials'][material_name]:
-                data['materials'][material_name]['components'] = {}
-            data['materials'][material_name]['components'][component_type] = content
-        
-        # Atomic write: write to temp file, then rename
-        try:
-            import tempfile
-            with tempfile.NamedTemporaryFile(
-                mode='w',
-                encoding='utf-8',
-                dir=materials_path.parent,
-                delete=False,
-                suffix='.yaml'
-            ) as temp_f:
-                yaml.safe_dump(data, temp_f, default_flow_style=False, allow_unicode=True, sort_keys=False)
-                temp_path = temp_f.name
-            
-            # Atomic rename (POSIX guarantees atomicity)
-            Path(temp_path).replace(materials_path)
-            
-            print(f"💾 Saved to data/materials/Materials.yaml")
-            
-            # DUAL-WRITE POLICY (Nov 22, 2025): Immediately sync field to frontmatter
-            # Only updated field written to frontmatter, others preserved
-            # Author field is NEVER updated (immutability policy)
-            print(f"🔄 Syncing {component_type} to frontmatter...")
-            from generation.utils.frontmatter_sync import sync_field_to_frontmatter
-            sync_field_to_frontmatter(material_name, component_type, content, domain='materials')
-            
-        except Exception as e:
-            # Clean up temp file on failure
-            if 'temp_path' in locals():
-                Path(temp_path).unlink(missing_ok=True)
-            raise ValueError(f"Failed to save to Materials.yaml: {e}")
-    
     def _log_validation_issues(
         self, 
         validation_result, 
@@ -759,7 +623,9 @@ class Generator:
         """
         try:
             # Lazy import to avoid circular dependencies
-            from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
+            from postprocessing.detection.winston_feedback_db import (
+                WinstonFeedbackDatabase,
+            )
             
             db = WinstonFeedbackDatabase('z-beam.db')
             

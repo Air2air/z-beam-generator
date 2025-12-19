@@ -12,22 +12,25 @@ Follows GROK fail-fast principles:
 """
 
 import logging
-from typing import Dict, Optional, Tuple
 from pathlib import Path
+from typing import Dict, Optional, Tuple
+
 import yaml
 
-from shared.validation.errors import PropertyDiscoveryError, ConfigurationError
-from domains.materials.utils.property_taxonomy import get_property_taxonomy as get_property_categorizer
+from domains.materials.utils.property_taxonomy import (
+    get_property_taxonomy as get_property_categorizer,
+)
 
 # Qualitative property definitions
 from export.qualitative_properties import (
-    QUALITATIVE_PROPERTIES,
     MATERIAL_CHARACTERISTICS_CATEGORIES,
-    is_qualitative_property
+    QUALITATIVE_PROPERTIES,
+    is_qualitative_property,
 )
 
 # Validation utilities for confidence normalization
 from shared.services.validation import ValidationOrchestrator
+from shared.validation.errors import ConfigurationError, PropertyDiscoveryError
 
 logger = logging.getLogger(__name__)
 
@@ -471,6 +474,7 @@ class PropertyProcessor:
         """Extract unit from string value (e.g., "7.85 g/cm³" -> "g/cm³")"""
         if isinstance(value, str):
             import re
+
             # Remove numeric part to get unit
             unit = re.sub(r'[-+]?\d*\.?\d+\s*', '', value).strip()
             if unit:

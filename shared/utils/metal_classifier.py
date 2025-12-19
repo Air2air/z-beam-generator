@@ -13,8 +13,8 @@ Author: AI Assistant
 Date: November 30, 2025
 """
 
-from typing import Set, Optional
 import logging
+from typing import Optional, Set
 
 logger = logging.getLogger(__name__)
 

@@ -4,10 +4,12 @@ Provides centralized access to all system requirements from config/requirements.
 Single source of truth for ALL generation, validation, and auditing requirements
 """
 
-import yaml
 import os
-from typing import Dict, Any, List, Optional, Union
 from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
+
+import yaml
+
 
 class RequirementsLoader:
     """Singleton class to load and provide access to comprehensive system requirements"""

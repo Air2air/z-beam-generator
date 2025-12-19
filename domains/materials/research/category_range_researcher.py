@@ -13,13 +13,13 @@ Features:
 - Integration with existing materials database
 """
 
-import sys
 import json
-from typing import Dict, List, Optional, Any, Tuple
+import statistics
+import sys
+from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-import statistics
-from collections import defaultdict
+from typing import Any, Dict, List, Optional, Tuple
 
 # Add project root to path
 project_root = Path(__file__).parent.parent

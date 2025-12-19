@@ -17,7 +17,9 @@ from shared.validation.errors import GenerationError
 
 # Import material-aware prompt system
 try:
-    from material_prompting.core.material_aware_generator import MaterialAwarePromptGenerator
+    from material_prompting.core.material_aware_generator import (
+        MaterialAwarePromptGenerator,
+    )
     from material_prompting.exceptions.handler import MaterialExceptionHandler
     MATERIAL_AWARE_PROMPTS_AVAILABLE = True
 except ImportError:
@@ -74,8 +76,9 @@ class BaseComponentGenerator(ABC):
         # Load API keys using standardized approach
         try:
             # Load config/api_keys.py keys into environment
-            from shared.config.api_keys import API_KEYS
             import os
+
+            from shared.config.api_keys import API_KEYS
             for key, value in API_KEYS.items():
                 if value and not os.getenv(key):
                     os.environ[key] = str(value)
@@ -310,7 +313,9 @@ class APIComponentGenerator(BaseComponentGenerator):
         # Special handling for frontmatter enhancement
         if self.component_type == "frontmatter":
             try:
-                from domains.materials.utils.property_enhancer import enhance_generated_frontmatter
+                from domains.materials.utils.property_enhancer import (
+                    enhance_generated_frontmatter,
+                )
 
                 category = material_data.get("category", "")
                 content = enhance_generated_frontmatter(content, category)
@@ -339,7 +344,8 @@ class ComponentGeneratorFactory:
         try:
             # Import API generators dynamically
             if component_type == "frontmatter":
-                from export.core.streamlined_generator import (
+                # NOTE: StreamlinedFrontmatterGenerator removed Dec 19, 2025
+                from export.core.universal_exporter import (
                     StreamlinedFrontmatterGenerator,
                 )
 
@@ -357,7 +363,9 @@ class ComponentGeneratorFactory:
                 return RefactoredCaptionGenerator()
             elif component_type == "subtitle":
                 # Subtitle generator with Author Voice integration (Phase 1)
-                from materials.subtitle.generators.generator import SubtitleComponentGenerator
+                from materials.subtitle.generators.generator import (
+                    SubtitleComponentGenerator,
+                )
 
                 return SubtitleComponentGenerator()
             # Try hybrid components first for known hybrid components

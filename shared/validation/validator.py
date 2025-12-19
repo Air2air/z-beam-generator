@@ -19,11 +19,11 @@ Date: November 28, 2025
 import json
 import logging
 import re
-from dataclasses import dataclass, field, asdict
+from dataclasses import asdict, dataclass, field
+from datetime import datetime
 from enum import Enum
 from pathlib import Path
-from typing import Dict, List, Optional, Literal, Any, Set
-from datetime import datetime
+from typing import Any, Dict, List, Literal, Optional, Set
 
 logger = logging.getLogger(__name__)
 
@@ -460,7 +460,9 @@ class EarlyStageValidator:
         
         # Import feedback validator
         try:
-            from domains.materials.image.tools.validate_feedback import FeedbackValidator
+            from domains.materials.image.tools.validate_feedback import (
+                FeedbackValidator,
+            )
             validator = FeedbackValidator(self.prompts_dir)
             validator.load_templates()
             result = validator.validate_feedback()

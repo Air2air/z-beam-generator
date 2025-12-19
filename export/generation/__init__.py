@@ -2,10 +2,10 @@
 
 from export.generation.registry import (
     GENERATOR_REGISTRY,
-    create_generators,
     BaseGenerator,
-    SEODescriptionGenerator,
     ExcerptGenerator,
+    SEODescriptionGenerator,
+    create_generators,
 )
 
 __all__ = [

@@ -28,11 +28,11 @@ Author: Z-Beam Development Team
 Date: December 11, 2025
 """
 
-from typing import Union, Literal
 import logging
+from typing import Literal, Union
 
-from domains.materials.data_loader_v2 import MaterialsDataLoader
 from domains.contaminants.data_loader_v2 import ContaminantsDataLoader
+from domains.materials.data_loader_v2 import MaterialsDataLoader
 from domains.settings.data_loader_v2 import SettingsDataLoader
 
 logger = logging.getLogger(__name__)

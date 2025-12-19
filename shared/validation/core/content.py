@@ -11,11 +11,11 @@ Merges functionality from:
 - validation/micro_integration_validator.py
 """
 
-from typing import Dict, Any, Optional, List
 from dataclasses import dataclass, field
+from typing import Any, Dict, List, Optional
 
 from shared.validation.core.base_validator import BaseValidator, ValidationContext
-from shared.validation.errors import ErrorType, ErrorSeverity, ValidationResult
+from shared.validation.errors import ErrorSeverity, ErrorType, ValidationResult
 
 
 @dataclass

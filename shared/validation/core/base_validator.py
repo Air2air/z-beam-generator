@@ -13,16 +13,16 @@ Per GROK_INSTRUCTIONS.md:
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
 from datetime import datetime
+from typing import Any, Dict, List, Optional
 
 # Import unified error types
 from shared.validation.errors import (
-    ValidationError,
-    ValidationResult,
+    ConfigurationError,
     ErrorSeverity,
     ErrorType,
-    ConfigurationError
+    ValidationError,
+    ValidationResult,
 )
 
 

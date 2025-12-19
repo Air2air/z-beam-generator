@@ -7,7 +7,7 @@ Tracks score changes per iteration and reduces sentence logging to essential fai
 
 import time
 from datetime import datetime
-from typing import Dict, List, Any, Optional
+from typing import Any, Dict, List, Optional
 
 
 class AIDetectionIterationLogger:

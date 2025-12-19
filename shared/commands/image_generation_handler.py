@@ -19,16 +19,18 @@ Date: November 26, 2025
 """
 
 import re
-import yaml
-from pathlib import Path
-from typing import Dict, Optional, List, Tuple
 from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+import yaml
+
+from domains.materials.image.material_config import MaterialImageConfig
 
 # Local imports
 from domains.materials.image.material_generator import MaterialImageGenerator
-from domains.materials.image.material_config import MaterialImageConfig
-from shared.validation.validator import UnifiedValidator, ValidationStatus
 from shared.api.gemini_image_client import GeminiImageClient
+from shared.validation.validator import UnifiedValidator, ValidationStatus
 
 
 @dataclass
@@ -594,9 +596,9 @@ class ImageGenerationHandler:
 
 def main():
     """CLI interface for image generation handler"""
-    import sys
     import os
-    
+    import sys
+
     # Get API key from environment
     api_key = os.getenv('GEMINI_API_KEY')
     

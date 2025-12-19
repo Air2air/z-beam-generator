@@ -13,10 +13,11 @@ Part of Export System Consolidation Phase 3.
 """
 
 from abc import ABC, abstractmethod
-from typing import Dict, List, Any, Optional
-from pathlib import Path
-import yaml
 from functools import lru_cache
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import yaml
 
 
 class BaseEnricher(ABC):

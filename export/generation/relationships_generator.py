@@ -11,8 +11,9 @@ Schema 5.0.0-compliant fields including 'slug'.
 Part of Phase 2 Universal Exporter Architecture.
 """
 
-from typing import Dict, Any
 import logging
+from typing import Any, Dict
+
 from export.generation.base import BaseGenerator
 from shared.services.relationships_service import DomainLinkagesService
 

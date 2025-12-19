@@ -9,7 +9,8 @@ Purpose: Ground generation in actual system data when context requires it.
 
 import logging
 from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
 import yaml
 
 logger = logging.getLogger(__name__)

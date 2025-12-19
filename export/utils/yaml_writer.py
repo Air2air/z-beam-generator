@@ -5,10 +5,11 @@ Provides consistent YAML serialization with proper formatting
 and SafeDumper usage to prevent Python-specific tags.
 """
 
-from pathlib import Path
-from typing import Dict, Any
-import yaml
 import logging
+from pathlib import Path
+from typing import Any, Dict
+
+import yaml
 
 logger = logging.getLogger(__name__)
 

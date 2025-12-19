@@ -15,9 +15,9 @@ Architecture:
 - Adds slug field only if missing (preserves existing slugs)
 """
 
-from typing import Dict, Any, List
 import logging
 from pathlib import Path
+from typing import Any, Dict, List
 
 from export.enrichers.base import BaseEnricher
 

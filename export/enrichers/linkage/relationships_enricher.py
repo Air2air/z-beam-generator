@@ -6,7 +6,7 @@ This runs BEFORE the slug enricher so that slug can be added to the populated li
 """
 
 import logging
-from typing import Dict, Any
+from typing import Any, Dict
 
 from export.enrichers.base import BaseEnricher
 from shared.services.relationships_service import DomainLinkagesService

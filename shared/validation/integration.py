@@ -7,8 +7,12 @@ Simple API for FAQ, Caption, and Subtitle generators to validate their output.
 """
 
 import logging
-from typing import Dict, Any, Optional
-from shared.validation.content_validator import ContentValidationService, ContentValidationResult
+from typing import Any, Dict, Optional
+
+from shared.validation.content_validator import (
+    ContentValidationResult,
+    ContentValidationService,
+)
 
 logger = logging.getLogger(__name__)
 

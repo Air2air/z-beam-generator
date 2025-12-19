@@ -7,11 +7,12 @@ Eliminates hardcoded environment variable names and ensures uniform behavior.
 """
 
 import os
-from typing import Dict, Optional, Any
+from typing import Any, Dict, Optional
 
 # Ensure API keys are loaded into environment early
 try:
     from shared.config.api_keys import API_KEYS
+
     # This import automatically sets the environment variables
 except ImportError:
     raise RuntimeError(

@@ -15,11 +15,11 @@ Usage:
     result = researcher.get_common_shape("Bismuth")
     # Returns: {"object": "pharmaceutical tablet mold", "context": "standalone", "setting": "workshop bench"}
 """
-import os
-import json
 import hashlib
-from typing import Optional, Dict, Any
+import json
+import os
 from pathlib import Path
+from typing import Any, Dict, Optional
 
 import google.generativeai as genai
 

@@ -8,9 +8,10 @@ Author: AI Assistant
 Date: October 29, 2025
 """
 
-from typing import Dict, Type, Any
-from shared.schemas.base import FieldType
+from typing import Any, Dict, Type
+
 from shared.research.base import ContentResearcher
+from shared.schemas.base import FieldType
 
 
 class ResearcherFactory:

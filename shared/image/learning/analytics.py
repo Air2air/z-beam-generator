@@ -345,6 +345,7 @@ def main():
         print("=" * 70)
         try:
             from domains.materials.image.material_config import CATEGORY_DEFAULTS
+
             # Use force_update=True to migrate existing rows with view_mode
             count = logger.seed_defaults_from_config(CATEGORY_DEFAULTS, force_update=True)
             print(f"\n   ✅ Seeded/updated {count} category defaults")

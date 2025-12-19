@@ -27,13 +27,13 @@ Updated: November 3, 2025 - Flattened structure per canonical template
 """
 
 import logging
-from typing import Dict, List, Set, Tuple, Optional
 from dataclasses import dataclass
+from typing import Dict, List, Optional, Set, Tuple
 
 from export.qualitative_properties import (
-    is_qualitative_property,
+    MATERIAL_CHARACTERISTICS_CATEGORIES,
     QUALITATIVE_PROPERTIES,
-    MATERIAL_CHARACTERISTICS_CATEGORIES
+    is_qualitative_property,
 )
 
 logger = logging.getLogger(__name__)

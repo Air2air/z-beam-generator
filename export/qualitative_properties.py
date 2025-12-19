@@ -6,8 +6,8 @@ Defines all qualitative (categorical/non-numeric) properties,
 their allowed values, categories, and validation rules.
 """
 
-from typing import Dict, List, Optional
 from dataclasses import dataclass
+from typing import Dict, List, Optional
 
 
 @dataclass

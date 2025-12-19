@@ -7,7 +7,7 @@ See: docs/08-development/NUMERIC_FORMATTING_POLICY.md
 Created: November 29, 2025
 """
 
-from typing import Union, Optional
+from typing import Optional, Union
 
 
 def format_numeric_value(value: Optional[float], unit: str = '') -> Optional[Union[int, float, str]]:

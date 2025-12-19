@@ -8,10 +8,11 @@ Implements common functionality for all library enrichers:
 - Caching for performance
 """
 
-from typing import Dict, List, Any, Optional
-from pathlib import Path
-import yaml
 from functools import lru_cache
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import yaml
 
 
 class BaseLibraryEnricher:

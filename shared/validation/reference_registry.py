@@ -19,12 +19,14 @@ Usage:
     suggestions = registry.suggest_fixes('contaminants', 'rust')
 """
 
-import yaml
-from pathlib import Path
-from typing import Dict, Set, List, Optional, Tuple
-from dataclasses import dataclass
-from collections import defaultdict
 import difflib
+from collections import defaultdict
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, List, Optional, Set, Tuple
+
+import yaml
+
 
 @dataclass
 class ReferenceInfo:

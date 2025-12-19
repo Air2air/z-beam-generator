@@ -16,13 +16,17 @@ from .base import BaseEnricher, BaseLibraryEnricher
 
 # Errors
 from .errors import (
-    ExportError,
+    ConfigurationError,
     EnrichmentError,
-    LibraryNotFoundError,
     EntryNotFoundError,
+    ExportError,
     InvalidRelationshipError,
-    ConfigurationError
+    LibraryNotFoundError,
 )
+
+# Library enrichers
+from .library import LibraryEnrichmentProcessor
+from .library.enricher_registry import EnricherRegistry as LibraryEnricherRegistry
 
 # Linkage enrichers
 from .linkage import DomainLinkagesEnricher, DomainLinkagesSlugEnricher
@@ -30,10 +34,6 @@ from .linkage.registry import create_enrichers
 
 # Metadata enrichers
 from .metadata import BreadcrumbEnricher
-
-# Library enrichers
-from .library import LibraryEnrichmentProcessor
-from .library.enricher_registry import EnricherRegistry as LibraryEnricherRegistry
 
 __all__ = [
     # Base classes

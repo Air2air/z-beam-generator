@@ -12,9 +12,9 @@ Per GROK_INSTRUCTIONS.md:
 """
 
 from dataclasses import dataclass, field
-from enum import Enum
-from typing import Optional, Dict, Any, List
 from datetime import datetime
+from enum import Enum
+from typing import Any, Dict, List, Optional
 
 
 class ErrorSeverity(Enum):

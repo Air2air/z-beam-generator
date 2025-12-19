@@ -6,8 +6,8 @@ Two-phase prompting for regulatory standards research within frontmatter generat
 """
 
 import logging
-from typing import Dict, List
 from pathlib import Path
+from typing import Dict, List
 
 logger = logging.getLogger(__name__)
 

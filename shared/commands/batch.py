@@ -206,7 +206,7 @@ def _generate_individually(materials: list, component_type: str, skip_integrity_
     
     # Import generic handler (component-agnostic)
     from shared.commands.generation import handle_generation
-    
+
     # Process each material
     success_count = 0
     failed_count = 0

@@ -23,8 +23,10 @@ Usage:
 """
 
 import math
-from typing import Dict, Any, Optional
+from typing import Any, Dict, Optional
+
 from generation.config.config_loader import get_config
+
 # from parameters.registry import get_registry  # NOTE: registry removed during reorganization
 # from parameters.base import BaseParameter  # NOTE: not needed for current implementation
 

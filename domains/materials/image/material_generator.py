@@ -15,19 +15,21 @@ Date: November 24, 2025 (Simplified: November 29, 2025)
 """
 
 import logging
-from typing import Dict, Any, Optional
+from typing import Any, Dict, Optional
+
+from domains.materials.image.material_config import MaterialImageConfig
 
 # Simplified architecture: Use YAML-based pattern selector (no API calls for contamination)
 from domains.materials.image.research.contamination_pattern_selector import (
-    ContaminationPatternSelector
+    ContaminationPatternSelector,
 )
-from shared.image.utils.prompt_builder import SharedPromptBuilder
 from shared.image.orchestrator import ImagePromptOrchestrator
-from domains.materials.image.material_config import MaterialImageConfig
 from shared.image.utils.image_pipeline_monitor import get_pipeline_monitor
-from shared.validation.contamination_validator import ContaminationValidator
+from shared.image.utils.prompt_builder import SharedPromptBuilder
+
 # Centralized metal classification for accurate rust prevention
 from shared.utils.metal_classifier import get_classifier
+from shared.validation.contamination_validator import ContaminationValidator
 
 logger = logging.getLogger(__name__)
 
@@ -441,7 +443,9 @@ class MaterialImageGenerator:
         elif self.gemini_api_key:
             # Research most common shape/item (only API call)
             try:
-                from domains.materials.image.research.shape_researcher import MaterialShapeResearcher
+                from domains.materials.image.research.shape_researcher import (
+                    MaterialShapeResearcher,
+                )
                 shape_researcher = MaterialShapeResearcher()
                 print(f"\n🔎 Researching common {material_name} object (API call)...")
                 shape_result = shape_researcher.get_common_shape(material_name, category)
@@ -465,7 +469,9 @@ class MaterialImageGenerator:
         shape_name = research_data.get('common_object', research_data.get('common_shape', ''))
         if self.gemini_api_key and shape_name:
             try:
-                from domains.materials.image.research.assembly_researcher import AssemblyResearcher
+                from domains.materials.image.research.assembly_researcher import (
+                    AssemblyResearcher,
+                )
                 assembly_researcher = AssemblyResearcher()
                 
                 # Only research if it's a complex part

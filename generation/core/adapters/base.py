@@ -6,8 +6,8 @@ to work with any YAML data source (Materials, Regions, Applications, etc.)
 """
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any
 from pathlib import Path
+from typing import Any, Dict
 
 
 class DataSourceAdapter(ABC):

@@ -5,8 +5,8 @@ Modular components for settings frontmatter export.
 """
 
 from .metadata_module import MetadataModule
+from .modules import AuthorModule, ChallengesModule, DescriptionModule, EEATModule
 from .settings_module import SettingsModule
-from .modules import ChallengesModule, DescriptionModule, AuthorModule, EEATModule
 
 __all__ = [
     'MetadataModule',

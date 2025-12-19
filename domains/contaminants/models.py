@@ -10,8 +10,8 @@ Date: November 25, 2025
 """
 
 from dataclasses import dataclass, field
-from typing import List, Dict, Optional, Set
 from enum import Enum
+from typing import Dict, List, Optional, Set
 
 
 class ContaminantCategory(Enum):

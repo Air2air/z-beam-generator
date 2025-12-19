@@ -21,8 +21,8 @@ Design: Single-pass approach - generate once, save immediately, then evaluate.
 """
 
 import logging
-from typing import Dict, Any, Optional, List
 from dataclasses import dataclass
+from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -101,10 +101,11 @@ class QualityEvaluatedGenerator:
         self.humanness_optimizer = HumannessOptimizer()
         
         # Initialize learning modules for continuous improvement
-        from learning.sweet_spot_analyzer import SweetSpotAnalyzer
-        from learning.weight_learner import WeightLearner
-        from learning.validation_winston_correlator import ValidationWinstonCorrelator
         from pathlib import Path
+
+        from learning.sweet_spot_analyzer import SweetSpotAnalyzer
+        from learning.validation_winston_correlator import ValidationWinstonCorrelator
+        from learning.weight_learner import WeightLearner
         
         db_path = Path('z-beam.db')
         self.sweet_spot_analyzer = SweetSpotAnalyzer(db_path=str(db_path))
@@ -216,7 +217,7 @@ class QualityEvaluatedGenerator:
                 
                 # Use unified quality analyzer with learned weights
                 from shared.voice.quality_analyzer import QualityAnalyzer
-                
+
                 # Get learned weights from weight_learner
                 learned_weights = self._get_learned_quality_weights()
                 
@@ -572,7 +573,9 @@ class QualityEvaluatedGenerator:
         or empty dict if insufficient learning data.
         """
         try:
-            from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
+            from postprocessing.detection.winston_feedback_db import (
+                WinstonFeedbackDatabase,
+            )
             
             db = WinstonFeedbackDatabase('z-beam.db')
             sweet_spot = db.get_sweet_spot('*', '*')  # Global scope
@@ -635,6 +638,7 @@ class QualityEvaluatedGenerator:
         """
         try:
             import sqlite3
+
             from scipy.stats import pearsonr
             
             conn = sqlite3.connect('z-beam.db')
@@ -706,9 +710,11 @@ class QualityEvaluatedGenerator:
             return {'passed': True, 'human_score': 1.0, 'ai_score': 0.0, 'message': 'Winston not configured'}
         
         try:
-            from postprocessing.detection.winston_integration import WinstonIntegration
-            from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
             from generation.config.config_loader import get_config
+            from postprocessing.detection.winston_feedback_db import (
+                WinstonFeedbackDatabase,
+            )
+            from postprocessing.detection.winston_integration import WinstonIntegration
             from shared.text.validation.constants import ValidationConstants
             
             config = get_config()
@@ -829,10 +835,11 @@ class QualityEvaluatedGenerator:
             if not self.winston_client:
                 return
             
-            from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
-            
             # Get database path from config
             from generation.config.config_loader import get_config
+            from postprocessing.detection.winston_feedback_db import (
+                WinstonFeedbackDatabase,
+            )
             config = get_config()
             db_path = config.config.get('winston_feedback_db_path', 'z-beam.db')
             
@@ -956,7 +963,7 @@ class QualityEvaluatedGenerator:
     def _get_author_id(self, material_name: str) -> int:
         """Get author_id for item from domain data file - FAIL-FAST if missing"""
         from data.authors.registry import resolve_author_for_generation
-        
+
         # Use generator's domain adapter to load data
         all_data = self.generator.adapter.load_all_data()
         data_root_key = self.generator.adapter.data_root_key
@@ -978,7 +985,7 @@ class QualityEvaluatedGenerator:
         Returns dict with 'name' and 'country' keys required by VoicePostProcessor.
         """
         from data.authors.registry import resolve_author_for_generation
-        
+
         # Use generator's domain adapter to load data
         all_data = self.generator.adapter.load_all_data()
         data_root_key = self.generator.adapter.data_root_key

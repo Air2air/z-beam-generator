@@ -13,7 +13,7 @@ Part of: Relationship Grouping Enhancement
 """
 
 import logging
-from typing import Dict, Any, List
+from typing import Any, Dict, List
 
 from export.enrichers.base import BaseEnricher
 

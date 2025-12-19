@@ -9,12 +9,13 @@ Author: GitHub Copilot
 Date: October 17, 2025
 """
 
-import yaml
-import json
-from pathlib import Path
-from typing import Dict, Set, Optional
-from datetime import datetime
 import hashlib
+import json
+from datetime import datetime
+from pathlib import Path
+from typing import Dict, Optional, Set
+
+import yaml
 
 
 class CategoryPropertyCache:

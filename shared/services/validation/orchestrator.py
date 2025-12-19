@@ -22,13 +22,13 @@ Author: Consolidation Phase 1 - October 22, 2025
 """
 
 import logging
-from pathlib import Path
-from typing import Dict, List, Optional, Any, Union
 from dataclasses import dataclass, field
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
 
 # Import validation results and errors
-from shared.validation.errors import ValidationError, ValidationResult, ErrorSeverity
+from shared.validation.errors import ErrorSeverity, ValidationError, ValidationResult
 
 # Lazy imports to avoid circular dependencies - services imported at runtime
 
@@ -116,11 +116,14 @@ class ValidationOrchestrator:
         """Initialize all validation services with lazy imports to avoid circular dependencies"""
         try:
             # Lazy imports to avoid circular dependencies
-            from shared.validation.services.pre_generation_service import PreGenerationValidationService
-            from shared.validation.content_validator import ContentValidationService
-            from shared.services.property.material_auditor import MaterialAuditor
             from materials.services.validation_service import ValidationService
-            
+
+            from shared.services.property.material_auditor import MaterialAuditor
+            from shared.validation.content_validator import ContentValidationService
+            from shared.validation.services.pre_generation_service import (
+                PreGenerationValidationService,
+            )
+
             # Core validation services
             self.pre_generation_service = PreGenerationValidationService()
             self.content_validation_service = ContentValidationService()  # Replaced PostGenerationQualityService
@@ -310,7 +313,10 @@ class ValidationOrchestrator:
             self.logger.info(f"📊 Running post-generation validation for {material_name}")
             
             # Load material data to validate
-            from domains.materials.materials_cache import load_materials, get_material_by_name
+            from domains.materials.materials_cache import (
+                get_material_by_name,
+                load_materials,
+            )
             materials_data = load_materials()
             material_info = get_material_by_name(material_name, materials_data)
             

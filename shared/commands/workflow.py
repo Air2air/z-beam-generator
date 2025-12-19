@@ -14,23 +14,23 @@ User workflow: "run Brass" → Complete validated frontmatter file
 No manual steps. No separate scripts. Everything orchestrated inline.
 """
 
-from typing import Dict, Any
-
-# Import generation commands
-from shared.commands import (
-    handle_micro_generation,
-    handle_description_generation,
-    handle_faq_generation,
-)
-
-# Import voice enhancement
-from scripts.voice.enhance_materials_voice import MaterialsVoiceEnhancer
+from typing import Any, Dict
 
 # Import frontmatter export
 from export.orchestrator import FrontmatterOrchestrator
 
+# Import voice enhancement
+from scripts.voice.enhance_materials_voice import MaterialsVoiceEnhancer
+
 # Import API client
 from shared.api.client_factory import create_api_client
+
+# Import generation commands
+from shared.commands import (
+    handle_description_generation,
+    handle_faq_generation,
+    handle_micro_generation,
+)
 
 
 def _validate_material_completeness(material_name: str, material_data: Dict) -> Dict[str, Any]:
@@ -110,6 +110,7 @@ def _validate_property_ranges(material_name: str, material_data: Dict) -> list:
     try:
         # Load Categories.yaml to get category ranges
         from pathlib import Path
+
         import yaml
         
         categories_path = Path("data/materials/Categories.yaml")
@@ -232,7 +233,7 @@ def _research_missing_properties_inline(material_name: str, missing_sections: li
             
             # Import and call the existing research handler
             from shared.commands.research import handle_research_missing_properties
-            
+
             # Research properties for this specific material (no user confirmation in auto mode)
             # Note: This will populate the properties structure with actual property values
             research_success = handle_research_missing_properties(
@@ -273,8 +274,9 @@ def _research_missing_category_ranges_inline() -> bool:
         print("🔬 Starting inline category range research...")
         
         from pathlib import Path
+
         import yaml
-        
+
         # Load Categories.yaml directly (avoid fail_fast validation triggers)
         categories_path = Path("data/materials/Categories.yaml")
         if not categories_path.exists():
@@ -509,7 +511,10 @@ def run_material_workflow(
             print("="*80 + "\n")
             
             # Load material data
-            from domains.materials.materials_cache import load_materials, get_material_by_name
+            from domains.materials.materials_cache import (
+                get_material_by_name,
+                load_materials,
+            )
             materials = load_materials()
             material_data = get_material_by_name(material_name, materials)
             
@@ -528,7 +533,9 @@ def run_material_workflow(
             
             # Check category ranges completeness
             print("\n📋 Checking category ranges in Categories.yaml...")
-            from scripts.validation.fail_fast_materials_validator import validate_category_ranges
+            from scripts.validation.fail_fast_materials_validator import (
+                validate_category_ranges,
+            )
             category_violations = validate_category_ranges()
             
             if category_violations:
@@ -596,7 +603,12 @@ def run_material_workflow(
                     if research_success:
                         print("✅ Property research completed - Materials.yaml updated")
                         # Reload material data after research
-                        from domains.materials.materials_cache import load_materials as reload_materials, get_material_by_name as get_mat
+                        from domains.materials.materials_cache import (
+                            get_material_by_name as get_mat,
+                        )
+                        from domains.materials.materials_cache import (
+                            load_materials as reload_materials,
+                        )
                         materials = reload_materials()
                         material_data = get_mat(material_name, materials)
                         validation_success = True
@@ -687,7 +699,10 @@ def run_material_workflow(
             print("="*80 + "\n")
             
             # Reload material data to get latest content
-            from domains.materials.materials_cache import load_materials, get_material_by_name
+            from domains.materials.materials_cache import (
+                get_material_by_name,
+                load_materials,
+            )
             materials = load_materials()
             material_data = get_material_by_name(material_name, materials)
             
@@ -714,7 +729,10 @@ def run_material_workflow(
             
             try:
                 # Load material data from Materials.yaml
-                from domains.materials.materials_cache import load_materials, get_material_by_name  # noqa: F811
+                from domains.materials.materials_cache import (  # noqa: F811
+                    get_material_by_name,
+                    load_materials,
+                )
                 materials = load_materials()
                 material_data = get_material_by_name(material_name, materials)
                 
@@ -734,6 +752,7 @@ def run_material_workflow(
                 if export_success:
                     # Write frontmatter file to frontmatter/materials/ directory
                     from pathlib import Path
+
                     import yaml
                     
                     output_dir = Path("frontmatter/materials")

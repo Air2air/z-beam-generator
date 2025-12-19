@@ -30,7 +30,7 @@ Purpose: Code consolidation and maintainability
 
 import logging
 from pathlib import Path
-from typing import Dict, Any, List, Optional
+from typing import Any, Dict, List, Optional
 
 from export.enrichers.base import BaseEnricher
 from shared.utils.yaml_utils import load_yaml

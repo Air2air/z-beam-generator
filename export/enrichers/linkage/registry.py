@@ -37,28 +37,37 @@ Usage:
         frontmatter = enricher.enrich(frontmatter)
 """
 
-from abc import ABC, abstractmethod
-from pathlib import Path
-from typing import Dict, Any, List, Optional
-import yaml
 import logging
+from abc import ABC, abstractmethod
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import yaml
 
 # Import base enricher class
 from export.enrichers.base import BaseEnricher
+from export.enrichers.cleanup.field_cleanup_enricher import FieldCleanupEnricher
+from export.enrichers.grouping.contaminant_materials_grouping_enricher import (
+    ContaminantMaterialsGroupingEnricher,
+)
+from export.enrichers.linkage.author_enricher import AuthorEnricher
+from export.enrichers.linkage.relationship_grouping_enricher import (
+    RelationshipGroupingEnricher,
+)
+from export.enrichers.linkage.relationship_renaming_enricher import (
+    RelationshipRenamingEnricher,
+)
+from export.enrichers.linkage.relationships_enricher import DomainLinkagesEnricher
 
 # Import enrichers
 from export.enrichers.linkage.slug_enricher import DomainLinkagesSlugEnricher
-from export.enrichers.linkage.relationships_enricher import DomainLinkagesEnricher
-from export.enrichers.linkage.relationship_grouping_enricher import RelationshipGroupingEnricher
-from export.enrichers.linkage.relationship_renaming_enricher import RelationshipRenamingEnricher
-from export.enrichers.linkage.author_enricher import AuthorEnricher
-from export.enrichers.linkage.universal_restructure_enricher import UniversalRestructureEnricher
 from export.enrichers.linkage.universal_linkage_enricher import UniversalLinkageEnricher
+from export.enrichers.linkage.universal_restructure_enricher import (
+    UniversalRestructureEnricher,
+)
 from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
 from export.enrichers.metadata.name_enricher import NameEnricher
-from export.enrichers.cleanup.field_cleanup_enricher import FieldCleanupEnricher
-from export.enrichers.grouping.contaminant_materials_grouping_enricher import ContaminantMaterialsGroupingEnricher
 
 logger = logging.getLogger(__name__)
 

@@ -23,10 +23,11 @@ USAGE:
     validator.validate_domain('materials')
 """
 
-import yaml
+from collections import OrderedDict
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
-from collections import OrderedDict
+
+import yaml
 
 
 class FrontmatterFieldOrderValidator:
@@ -306,8 +307,8 @@ class FrontmatterFieldOrderValidator:
 
 def main():
     """CLI for validating/reordering frontmatter fields"""
-    import sys
     import argparse
+    import sys
     
     parser = argparse.ArgumentParser(description='Validate/reorder frontmatter field order')
     parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings'],

@@ -45,16 +45,13 @@ Example Usage:
 """
 
 import logging
-from pathlib import Path
-from typing import Dict, Any, Optional
 from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Dict, Optional
 
 # FAIL-FAST: Import unified validator - validation is REQUIRED per copilot-instructions.md
 # No try/except fallback - if validator unavailable, fail immediately
-from shared.validation.validator import (
-    validate_prompt_quick,
-    ValidationReport
-)
+from shared.validation.validator import ValidationReport, validate_prompt_quick
 
 logger = logging.getLogger(__name__)
 

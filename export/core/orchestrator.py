@@ -40,8 +40,8 @@ Usage:
 """
 
 import logging
-from typing import Dict, Any, Optional, List
 from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 from shared.generators.component_generators import ComponentResult
 from shared.validation.errors import ConfigurationError, GenerationError
@@ -100,7 +100,7 @@ class FrontmatterOrchestrator:
             # Fallback to legacy generator for backward compatibility
             self.logger.warning(f"New material generator not available, using legacy: {e}")
             try:
-                from export.core.streamlined_generator import StreamlinedFrontmatterGenerator
+                # NOTE: StreamlinedFrontmatterGenerator removed Dec 19, 2025 - use UniversalFrontmatterExporter
                 self.register_generator('material', StreamlinedFrontmatterGenerator)
                 self.logger.info("✅ Registered legacy material generator (streamlined)")
             except ImportError as e2:

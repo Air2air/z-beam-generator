@@ -16,12 +16,13 @@ Architecture:
 """
 
 import logging
-from typing import Dict, Any, Optional
 from pathlib import Path
+from typing import Any, Dict, Optional
+
 import yaml
 
 from export.core.base_generator import BaseFrontmatterGenerator, GenerationContext
-from shared.validation.errors import GenerationError, ConfigurationError
+from shared.validation.errors import ConfigurationError, GenerationError
 
 logger = logging.getLogger(__name__)
 
@@ -57,12 +58,12 @@ class SettingsFrontmatterGenerator(BaseFrontmatterGenerator):
         
         # Initialize modules
         from .modules import (
-            MetadataModule,
-            SettingsModule,
+            AuthorModule,
             ChallengesModule,
             DescriptionModule,
-            AuthorModule,
             EEATModule,
+            MetadataModule,
+            SettingsModule,
         )
         
         self.metadata_module = MetadataModule()

@@ -4,22 +4,23 @@ Enricher Registry and Factory
 Central registry for all library enrichers with factory pattern.
 """
 
-from typing import Dict, Type, Optional
 from pathlib import Path
+from typing import Dict, Optional, Type
 
 from export.enrichers.base import BaseLibraryEnricher
-from .regulatory_enricher import RegulatoryStandardsEnricher
-from .ppe_enricher import PPELibraryEnricher
+
+from .chemical_properties_enricher import ChemicalPropertiesEnricher
+from .contaminant_appearance_enricher import ContaminantAppearanceEnricher
+from .detection_monitoring_enricher import DetectionMonitoringEnricher
 from .emergency_response_enricher import EmergencyResponseEnricher
+from .environmental_impact_enricher import EnvironmentalImpactEnricher
+from .health_effects_enricher import HealthEffectsEnricher
 from .laser_parameters_enricher import LaserParametersEnricher
 from .machine_settings_enricher import MachineSettingsEnricher
 from .material_applications_enricher import MaterialApplicationsEnricher
 from .material_properties_enricher import MaterialPropertiesEnricher
-from .contaminant_appearance_enricher import ContaminantAppearanceEnricher
-from .chemical_properties_enricher import ChemicalPropertiesEnricher
-from .health_effects_enricher import HealthEffectsEnricher
-from .environmental_impact_enricher import EnvironmentalImpactEnricher
-from .detection_monitoring_enricher import DetectionMonitoringEnricher
+from .ppe_enricher import PPELibraryEnricher
+from .regulatory_enricher import RegulatoryStandardsEnricher
 
 
 class EnricherRegistry:

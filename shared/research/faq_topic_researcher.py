@@ -206,7 +206,7 @@ Return ONLY valid JSON:
         try:
             # Extract JSON from response
             import re
-            
+
             # Try to find JSON block
             json_match = re.search(r'\{[^{}]*\}', response, re.DOTALL)
             if not json_match:

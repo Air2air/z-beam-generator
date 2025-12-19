@@ -5,10 +5,11 @@ Defines characteristics and prompt templates for different content types.
 Dynamically loads component lengths from config.yaml instead of hardcoding.
 """
 
-from typing import Dict, Optional
 from dataclasses import dataclass
-import yaml
 from pathlib import Path
+from typing import Dict, Optional
+
+import yaml
 
 
 @dataclass

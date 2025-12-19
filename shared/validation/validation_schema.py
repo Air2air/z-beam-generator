@@ -6,6 +6,7 @@ Defines validation rules and field mappings for all domains.
 
 from typing import Dict, List
 
+
 class ValidationSchema:
     """Central schema for reference validation"""
     

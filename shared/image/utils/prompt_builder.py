@@ -12,9 +12,9 @@ Author: AI Assistant
 Date: November 25, 2025
 """
 
+import logging
 from pathlib import Path
 from typing import Dict, List, Optional
-import logging
 
 from .prompt_optimizer import PromptOptimizer
 from .research_data_verifier import ResearchDataVerifier, verify_optimization

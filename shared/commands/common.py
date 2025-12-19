@@ -6,36 +6,38 @@ This module centralizes frequently used imports across command handlers
 to reduce duplication and improve maintainability.
 """
 
+import argparse
+
 # Standard library
 import os
 import sys
-import yaml
-import argparse
-from pathlib import Path
-from typing import Optional, List, Dict, Any, Tuple
 from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
+
+import yaml
 
 # Data loading
 from domains.materials.materials_cache import (
-    load_materials_cached as load_materials,
     clear_materials_cache,
-    get_material_by_name
+    get_material_by_name,
 )
+from domains.materials.materials_cache import load_materials_cached as load_materials
+from shared.api.client_cache import get_cached_api_client
 
 # API clients
 from shared.api.client_factory import create_api_client
-from shared.api.client_cache import get_cached_api_client
-
-# Generators
-from shared.generators.dynamic_generator import DynamicGenerator
-from shared.generators.component_generators import ComponentGeneratorFactory
 
 # Configuration
 from shared.config.settings import (
-    GLOBAL_OPERATIONAL_CONFIG,
     API_PROVIDERS,
     COMPONENT_CONFIG,
+    GLOBAL_OPERATIONAL_CONFIG,
 )
+from shared.generators.component_generators import ComponentGeneratorFactory
+
+# Generators
+from shared.generators.dynamic_generator import DynamicGenerator
 
 # Utilities
 from shared.utils.filename import generate_safe_filename
@@ -50,7 +52,9 @@ def get_pre_generation_service():
 
 def get_research_service():
     """Get the research service"""
-    from shared.services.property.property_research_service import PropertyResearchService
+    from shared.services.property.property_research_service import (
+        PropertyResearchService,
+    )
     return PropertyResearchService()
 
 def get_quality_service():

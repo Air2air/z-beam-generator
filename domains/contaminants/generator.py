@@ -16,13 +16,14 @@ Architecture:
 """
 
 import logging
-from typing import Dict, Any, Optional
 from pathlib import Path
+from typing import Any, Dict, Optional
+
 import yaml
 
 from export.core.base_generator import BaseFrontmatterGenerator, GenerationContext
 from shared.generators.component_generators import ComponentResult
-from shared.validation.errors import GenerationError, ConfigurationError
+from shared.validation.errors import ConfigurationError, GenerationError
 
 logger = logging.getLogger(__name__)
 
@@ -63,20 +64,20 @@ class ContaminantFrontmatterGenerator(BaseFrontmatterGenerator):
         
         # Initialize modules
         from .modules import (
-            MetadataModule,
+            AppearanceModule,
+            AuthorModule,
+            EEATModule,
+            IndustriesModule,
             LaserModule,
             MediaModule,
-            EEATModule,
+            MetadataModule,
             OpticalModule,
+            QuickFactsModule,
             RemovalModule,
             SafetyModule,
             SEOModule,
-            QuickFactsModule,
-            IndustriesModule,
-            AppearanceModule,
-            AuthorModule,
         )
-        
+
         # Basic modules (v1.0)
         self.metadata_module = MetadataModule()
         self.laser_module = LaserModule()

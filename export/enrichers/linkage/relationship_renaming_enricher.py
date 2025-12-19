@@ -19,7 +19,8 @@ Domain-specific mappings:
 - Materials: Already correct (uses "contaminants")
 """
 
-from typing import Dict, Any
+from typing import Any, Dict
+
 from export.enrichers.base import BaseEnricher
 
 

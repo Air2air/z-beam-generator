@@ -8,20 +8,20 @@ Part of consolidation plan to organize services by domain.
 Last Updated: October 22, 2025
 """
 
-# Validation Services
-from .validation.orchestrator import ValidationOrchestrator
-from .validation.schema_validator import UnifiedSchemaValidator
-
 # Research Services (canonical location: shared/research/services/)
 from shared.research.services.ai_research_service import AIResearchEnrichmentService
+from shared.services.pipeline_process_service import PipelineProcessService
 
 # Generic Services (extracted from materials domain)
 from shared.services.template_service import TemplateService
-from shared.services.pipeline_process_service import PipelineProcessService
 
 # Property Services
 # PropertyManager moved to components/frontmatter/services/property_manager.py
 from .property.material_auditor import MaterialAuditor
+
+# Validation Services
+from .validation.orchestrator import ValidationOrchestrator
+from .validation.schema_validator import UnifiedSchemaValidator
 
 __all__ = [
     # Validation Services

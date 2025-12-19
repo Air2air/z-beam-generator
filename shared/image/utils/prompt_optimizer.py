@@ -15,8 +15,8 @@ Author: AI Assistant
 Date: November 25, 2025
 """
 
-from typing import Dict, Optional
 import logging
+from typing import Dict, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -251,7 +251,7 @@ class PromptOptimizer:
         Keep requirements, cut "(e.g., ...)" explanations.
         """
         import re
-        
+
         # Remove parenthetical examples
         text = re.sub(r'\s*\(e\.g\.,?\s+[^)]+\)', '', text)
         text = re.sub(r'\s*\(such as[^)]+\)', '', text)

@@ -5,7 +5,8 @@ Expands contaminant_appearance relationships with full visual characteristics.
 """
 
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Any, Dict, List, Optional
+
 from export.enrichers.base import BaseLibraryEnricher
 
 

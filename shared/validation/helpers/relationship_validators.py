@@ -7,7 +7,9 @@ Contains relationship validation logic for properties that depend on each other.
 """
 
 from typing import Dict, List
-from shared.validation.errors import ValidationError as VError, ErrorSeverity, ErrorType
+
+from shared.validation.errors import ErrorSeverity, ErrorType
+from shared.validation.errors import ValidationError as VError
 
 
 class RelationshipValidators:

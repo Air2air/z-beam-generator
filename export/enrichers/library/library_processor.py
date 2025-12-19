@@ -6,8 +6,8 @@ Processes relationships.<library_type> and enriches with full library data.
 """
 
 import logging
-from typing import Dict, Any, List, Optional
 from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 from .enricher_registry import EnricherRegistry
 

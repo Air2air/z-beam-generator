@@ -16,9 +16,10 @@ Date: November 29, 2025
 """
 
 import logging
-import yaml
 from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
+import yaml
 
 # Use central metal classifier for ferrous/non-ferrous logic
 from shared.utils.metal_classifier import get_classifier
@@ -841,6 +842,7 @@ class ContaminationPatternSelector:
             return 'varied'
         
         import re
+
         # Common color words to look for
         color_pattern = r'\b(red|orange|brown|black|white|gray|grey|green|blue|yellow|rust|patina|silver|gold|dark|light|translucent|opaque|yellowish|grayish|greenish|brownish|whitish|golden|copper|bronze|tan|beige|cream|ivory)\b'
         colors = re.findall(color_pattern, text.lower())
@@ -858,6 +860,7 @@ class ContaminationPatternSelector:
             return 'varied surface texture'
         
         import re
+
         # Common texture words to look for
         texture_pattern = r'\b(rough|smooth|flaky|powdery|granular|porous|glossy|matte|pitted|scaly|sticky|gummy|crusty|filmy|slimy|chalky|crystalline|gritty|tacky|dull|shiny)\b'
         textures = re.findall(texture_pattern, text.lower())

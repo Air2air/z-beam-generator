@@ -23,8 +23,8 @@ Provides multi-dimensional quality scoring for generated content
 import logging
 import warnings
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any
 from datetime import datetime
+from typing import Any, Dict, List, Optional
 
 # Issue deprecation warning on import
 warnings.warn(
@@ -38,20 +38,25 @@ warnings.warn(
 logger = logging.getLogger(__name__)
 
 
-import yaml
 import logging
-from pathlib import Path
-from typing import Dict, List, Any, Optional, Tuple
-from dataclasses import dataclass, field
-from datetime import datetime
 
 # Import existing validators
 import sys
+from dataclasses import dataclass, field
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
+
+import yaml
+
 project_root = Path(__file__).parent.parent.parent
 sys.path.append(str(project_root))
 
-from shared.validation.schema_validator import SchemaValidator, ValidationResult as SchemaValidationResult
 from shared.validation.micro_integration_validator import MicroIntegrationValidator
+from shared.validation.schema_validator import SchemaValidator
+from shared.validation.schema_validator import (
+    ValidationResult as SchemaValidationResult,
+)
 
 logger = logging.getLogger(__name__)
 

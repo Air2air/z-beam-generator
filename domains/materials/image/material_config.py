@@ -9,9 +9,8 @@ Author: AI Assistant
 Date: November 25, 2025
 """
 
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from typing import Dict, Optional
-
 
 # Category-based researched defaults
 CATEGORY_DEFAULTS = {
@@ -233,7 +232,9 @@ class MaterialImageConfig:
         """
         # Load from YAML for learning system integration
         try:
-            from domains.materials.image.research.contamination_pattern_selector import ContaminationPatternSelector
+            from domains.materials.image.research.contamination_pattern_selector import (
+                ContaminationPatternSelector,
+            )
             selector = ContaminationPatternSelector()
             data = selector._load_data()
             context_settings = data.get('context_settings', {})

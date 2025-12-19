@@ -17,11 +17,11 @@ Usage:
     settings_path = get_settings_path()
 """
 
-import yaml
-from pathlib import Path
-from typing import Dict, Any
 from functools import lru_cache
+from pathlib import Path
+from typing import Any, Dict
 
+import yaml
 
 # File path - Point to data/settings directory
 PROJECT_ROOT = Path(__file__).parent.parent.parent

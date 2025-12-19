@@ -8,7 +8,7 @@ Created: December 19, 2025
 Purpose: Consolidate repeated formatting patterns (category normalization, slug extraction, etc.)
 """
 
-from typing import Tuple, Optional
+from typing import Optional, Tuple
 
 
 def normalize_category(category: Optional[str], default: str = 'general') -> str:

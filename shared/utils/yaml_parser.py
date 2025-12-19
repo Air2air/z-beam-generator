@@ -5,11 +5,12 @@ Handles YAML files with multiple documents (--- separators) and provides
 utilities for loading and transforming component data.
 """
 
-import yaml
 import json
-from pathlib import Path
-from typing import Dict, Any, Optional, Union
 import logging
+from pathlib import Path
+from typing import Any, Dict, Optional, Union
+
+import yaml
 
 logger = logging.getLogger(__name__)
 

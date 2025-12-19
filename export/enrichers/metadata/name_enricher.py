@@ -10,7 +10,7 @@ Purpose: Fix settings frontmatter missing name field
 """
 
 import logging
-from typing import Dict, Any
+from typing import Any, Dict
 
 from export.enrichers.base import BaseEnricher
 

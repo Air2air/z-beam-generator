@@ -37,12 +37,12 @@ Checks:
    - Integration tests verify E2E flows
 """
 
+import sqlite3
 import time
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Dict, List, Optional, Any
 from pathlib import Path
-import sqlite3
+from typing import Any, Dict, List, Optional
 
 from generation.config.config_loader import get_config
 from generation.config.dynamic_config import DynamicConfig
@@ -848,7 +848,7 @@ class IntegrityChecker:
         start = time.time()
         try:
             import os
-            
+
             # Check if Winston API key exists
             api_key = os.getenv('WINSTON_API_KEY')
             if api_key:
@@ -880,7 +880,7 @@ class IntegrityChecker:
         start = time.time()
         try:
             import os
-            
+
             # Check if Grok API key exists
             api_key = os.getenv('XAI_API_KEY')
             if api_key:

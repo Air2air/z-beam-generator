@@ -18,10 +18,13 @@ Created: December 19, 2025
 Part of: Change 4 - Group Contaminants Relationships
 """
 
-from typing import Dict, Any
-from export.generation.base import BaseGenerator
-from export.enrichers.grouping.contaminant_materials_grouping_enricher import ContaminantMaterialsGroupingEnricher
 import logging
+from typing import Any, Dict
+
+from export.enrichers.grouping.contaminant_materials_grouping_enricher import (
+    ContaminantMaterialsGroupingEnricher,
+)
+from export.generation.base import BaseGenerator
 
 logger = logging.getLogger(__name__)
 

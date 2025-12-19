@@ -10,18 +10,18 @@ Date: November 25, 2025
 """
 
 import logging
-from typing import List, Dict, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 
+from .library import ContaminationLibrary, get_library
 from .models import (
     ContaminantPattern,
-    MaterialProperties,
     ContaminationContext,
-    ValidationResult,
+    MaterialCompatibility,
+    MaterialProperties,
     ValidationIssue,
+    ValidationResult,
     ValidationSeverity,
-    MaterialCompatibility
 )
-from .library import get_library, ContaminationLibrary
 
 logger = logging.getLogger(__name__)
 

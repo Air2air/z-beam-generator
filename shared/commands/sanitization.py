@@ -11,8 +11,8 @@ def run_frontmatter_sanitization(specific_file=None):
     """Run frontmatter YAML sanitization as a post-processor"""
     try:
         # Import the sanitizer
-        import sys
         import os
+        import sys
         sys.path.append(os.path.join(os.path.dirname(__file__), 'scripts', 'tools'))
         from scripts.tools.sanitize_frontmatter import FrontmatterSanitizer
         

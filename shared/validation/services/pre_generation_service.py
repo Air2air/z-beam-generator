@@ -16,41 +16,42 @@ Per GROK_INSTRUCTIONS.md:
 - No degraded operation modes
 """
 
-import yaml
 import json
-from pathlib import Path
-from datetime import datetime
-from typing import Dict, List, Optional, Tuple, Any
-from dataclasses import dataclass, field
-from collections import defaultdict
-import math
 import logging
+import math
+from collections import defaultdict
+from dataclasses import dataclass, field
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
+
+import yaml
+
+# Import validation rules from comprehensive_validation_agent
+from scripts.validation.comprehensive_validation_agent import (
+    CATEGORY_RULES,
+    PROPERTY_RULES,
+    QUALITATIVE_ONLY_PROPERTIES,
+    RELATIONSHIP_RULES,
+    CategoryRule,
+    PropertyRule,
+    RelationshipRule,
+)
 
 # Import unified error types
 from shared.validation.errors import (
-    ValidationError as VError,
-    ValidationResult,
+    ConfigurationError,
     ErrorSeverity,
     ErrorType,
-    ConfigurationError,
-    MaterialsValidationError
+    MaterialsValidationError,
 )
+from shared.validation.errors import ValidationError as VError
+from shared.validation.errors import ValidationResult
 
 # Import validation helpers
 from shared.validation.helpers.property_validators import PropertyValidators
 from shared.validation.helpers.relationship_validators import RelationshipValidators
-from shared.validation.helpers.unit_converter import UnitConverter, UnitConversionError
-
-# Import validation rules from comprehensive_validation_agent
-from scripts.validation.comprehensive_validation_agent import (
-    PropertyRule,
-    RelationshipRule,
-    CategoryRule,
-    PROPERTY_RULES,
-    RELATIONSHIP_RULES,
-    CATEGORY_RULES,
-    QUALITATIVE_ONLY_PROPERTIES
-)
+from shared.validation.helpers.unit_converter import UnitConversionError, UnitConverter
 
 logger = logging.getLogger(__name__)
 

@@ -19,7 +19,8 @@ Follows fail-fast principles:
 
 import logging
 from typing import Dict, List
-from shared.validation.errors import MaterialDataError, ConfigurationError
+
+from shared.validation.errors import ConfigurationError, MaterialDataError
 
 logger = logging.getLogger(__name__)
 

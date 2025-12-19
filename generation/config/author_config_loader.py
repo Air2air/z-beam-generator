@@ -22,11 +22,11 @@ Usage:
     temp = dynamic.calculate_temperature('micro')
 """
 
-import yaml
+import logging
 from pathlib import Path
 from typing import Dict, Optional
-import logging
 
+import yaml
 from processing.config.config_loader import ProcessingConfig
 
 logger = logging.getLogger(__name__)

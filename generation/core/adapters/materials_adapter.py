@@ -9,9 +9,10 @@ import json
 import logging
 import re
 import tempfile
-import yaml
 from pathlib import Path
-from typing import Dict, Any
+from typing import Any, Dict
+
+import yaml
 
 from generation.core.adapters.base import DataSourceAdapter
 
@@ -277,7 +278,7 @@ class MaterialsAdapter(DataSourceAdapter):
             ValueError: If extraction fails or unknown strategy
         """
         from shared.text.utils.component_specs import ComponentRegistry
-        
+
         # Get extraction strategy for this component
         try:
             spec = ComponentRegistry.get_spec(component_type)
@@ -298,24 +299,7 @@ class MaterialsAdapter(DataSourceAdapter):
         else:
             raise ValueError(f"Unknown extraction strategy: {strategy}")
     
-    def extract_component_content(
-        self,
-        text: str,
-        component_type: str
-    ) -> Any:
-        """
-        DEPRECATED: Use extract_content() instead.
-        Extract component-specific content from generated text.
-        
-        Args:
-            text: Generated text
-            component_type: Component type
-            
-        Returns:
-            Extracted content in appropriate format
-        """
-        # Delegate to new strategy-based method
-        return self.extract_content(text, component_type)
+
     
     def _extract_before_after(self, text: str) -> Dict[str, str]:
         """
@@ -482,7 +466,7 @@ class MaterialsAdapter(DataSourceAdapter):
             ValueError: If extraction fails
         """
         import yaml
-        
+
         # Strategy 1: Extract from ```yaml code block
         yaml_block_pattern = r'```(?:yaml)?\s*\n?(.*?)```'
         matches = re.findall(yaml_block_pattern, text, re.DOTALL)

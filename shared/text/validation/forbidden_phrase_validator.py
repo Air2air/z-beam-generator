@@ -9,13 +9,14 @@ LEARNING MODE: Continuously updates forbidden phrases from Winston failures in d
 Created: November 20, 2025
 """
 
-import re
 import logging
+import re
 import sqlite3
-from typing import List, Tuple, Set
-from pathlib import Path
-import yaml
 from collections import Counter
+from pathlib import Path
+from typing import List, Set, Tuple
+
+import yaml
 
 logger = logging.getLogger(__name__)
 

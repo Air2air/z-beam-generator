@@ -19,14 +19,11 @@ REMOVED MODULES (fields removed from template):
 import logging
 from typing import Dict, Optional
 
-from domains.materials.modules.metadata_module import MetadataModule
 from domains.materials.modules.author_module import AuthorModule
+from domains.materials.modules.metadata_module import MetadataModule
+from domains.materials.modules.modules import ComplianceModule, MediaModule
 from domains.materials.modules.properties_module import PropertiesModule
 from domains.settings.modules.settings_module import SettingsModule
-from domains.materials.modules.modules import (
-    ComplianceModule,
-    MediaModule
-)
 
 
 class FrontmatterOrchestrator:

@@ -19,19 +19,21 @@ This module handles:
 CRITICAL: Regeneration = Fresh generation from original prompt, NOT refinement of existing text.
 """
 
+import logging
 import os
-import yaml
 import tempfile
 import uuid
 from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
+import yaml
+
 from generation.core.evaluated_generator import QualityEvaluatedGenerator
 from generation.core.generator import Generator
-from shared.api.client_factory import create_api_client
-from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
-from shared.text.validation.forbidden_phrase_validator import ForbiddenPhraseValidator
 from generation.utils.frontmatter_sync import sync_field_to_frontmatter
-import logging
+from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
+from shared.api.client_factory import create_api_client
+from shared.text.validation.forbidden_phrase_validator import ForbiddenPhraseValidator
 
 logger = logging.getLogger(__name__)
 

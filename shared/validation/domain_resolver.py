@@ -20,10 +20,12 @@ Usage:
     # }
 """
 
-import yaml
-from pathlib import Path
-from typing import Dict, Optional, List
 from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, List, Optional
+
+import yaml
+
 
 @dataclass
 class LinkInfo:

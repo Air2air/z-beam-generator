@@ -104,6 +104,7 @@ class UnifiedMaterialsGenerator:
             EEAT dict or None if no regulatory_standards available
         """
         import tempfile
+
         import yaml
         
         self.logger.info(f"📊 Generating EEAT section for {material_name}")

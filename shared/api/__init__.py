@@ -7,35 +7,39 @@ with consistent behavior across all providers and environments.
 
 # Main API client and factory
 from .client import APIClient, APIResponse, GenerationRequest
-from .client_factory import APIClientFactory, create_api_client, get_api_client_for_component
 
 # Client caching for performance
 from .client_cache import (
     APIClientCache,
+    api_client_cache,
     get_cached_api_client,
     get_cached_client_for_component,
-    api_client_cache
+)
+from .client_factory import (
+    APIClientFactory,
+    create_api_client,
+    get_api_client_for_component,
+)
+
+# Client management
+from .client_manager import get_api_client_for_component as get_component_client
+from .client_manager import (
+    setup_api_client,
+    test_api_connectivity,
+    validate_api_environment,
 )
 
 # Configuration and key management
-from .config import get_default_config, get_api_providers
-from .key_manager import (
-    APIKeyManager,
-    get_api_key,
-    validate_all_api_keys,
-    get_masked_api_key,
-    is_provider_available
-)
+from .config import get_api_providers, get_default_config
 
 # Specialized clients
 from .deepseek import DeepSeekClient, create_deepseek_client
-
-# Client management
-from .client_manager import (
-    setup_api_client,
-    validate_api_environment,
-    get_api_client_for_component as get_component_client,
-    test_api_connectivity
+from .key_manager import (
+    APIKeyManager,
+    get_api_key,
+    get_masked_api_key,
+    is_provider_available,
+    validate_all_api_keys,
 )
 
 # Environment loading (DEPRECATED - use key_manager for all new code)

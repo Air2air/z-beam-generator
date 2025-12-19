@@ -8,7 +8,8 @@ Author: AI Assistant
 Date: October 30, 2025
 """
 
-from typing import Dict, Any, Optional
+from typing import Any, Dict, Optional
+
 from shared.api.client_factory import APIClientFactory
 
 

@@ -18,9 +18,10 @@ Created: December 19, 2025
 Part of: Change 4 - Group Contaminants Relationships
 """
 
-from typing import Dict, Any, List
-from export.enrichers.base import BaseEnricher
 import logging
+from typing import Any, Dict, List
+
+from export.enrichers.base import BaseEnricher
 
 logger = logging.getLogger(__name__)
 

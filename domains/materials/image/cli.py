@@ -19,8 +19,8 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 
-from domains.materials.image.pipeline import ImageGenerationPipeline, GenerationResult
 from domains.materials.image.material_config import MaterialImageConfig
+from domains.materials.image.pipeline import GenerationResult, ImageGenerationPipeline
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)

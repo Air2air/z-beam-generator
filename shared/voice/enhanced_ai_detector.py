@@ -23,10 +23,10 @@ Grade F Violations (Instant Rejection):
 
 """
 
-from typing import Dict, Any, List, Tuple
+import logging
 import re
 import statistics
-import logging
+from typing import Any, Dict, List, Tuple
 
 logger = logging.getLogger(__name__)
 

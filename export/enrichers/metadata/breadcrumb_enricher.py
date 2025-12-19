@@ -18,8 +18,8 @@ Format:
 Per Schema 5.0.0 and FRONTMATTER_FORMATTING_GUIDE.md.
 """
 
-from typing import Dict, Any, List
 import logging
+from typing import Any, Dict, List
 
 from export.utils.url_formatter import format_domain_url
 

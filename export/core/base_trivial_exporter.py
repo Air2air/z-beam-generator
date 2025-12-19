@@ -31,14 +31,15 @@ USAGE:
 """
 
 import logging
-import yaml
 from abc import ABC, abstractmethod
-from pathlib import Path
-from typing import Dict, Any
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict
 
-from shared.validation.domain_associations import DomainAssociationsValidator
+import yaml
+
 from shared.services.relationships_service import DomainLinkagesService
+from shared.validation.domain_associations import DomainAssociationsValidator
 from shared.validation.field_order import FrontmatterFieldOrderValidator
 
 

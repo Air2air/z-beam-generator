@@ -10,9 +10,9 @@ Schema Requirements:
 - Consistent unit format validation and normalization
 """
 
+import logging
 import re
 from typing import Dict, Optional, Tuple
-import logging
 
 logger = logging.getLogger(__name__)
 

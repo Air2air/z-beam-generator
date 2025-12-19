@@ -11,11 +11,15 @@ def generate_content_validation_report(output_file: str) -> bool:
     Returns:
         True if report generated successfully
     """
-    from pathlib import Path
     from datetime import datetime
-    from shared.validation.integration import validate_generated_content, get_dimension_scores_dict
-    from domains.materials.materials_cache import load_materials, get_material_by_name
+    from pathlib import Path
+
+    from domains.materials.materials_cache import get_material_by_name, load_materials
     from export.utils.author_manager import get_author_info_for_material
+    from shared.validation.integration import (
+        get_dimension_scores_dict,
+        validate_generated_content,
+    )
     
     print("📊 Generating Content Quality Validation Report")
     print("=" * 80)

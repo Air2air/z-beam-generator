@@ -13,11 +13,11 @@ Created: December 11, 2025
 Policy Compliance: PROMPT_CHAINING_POLICY.md + Voice Instruction Centralization
 """
 
-import re
 import logging
+import re
 from dataclasses import dataclass, field
-from typing import List, Dict, Optional, Tuple, Set
 from enum import Enum
+from typing import Dict, List, Optional, Set, Tuple
 
 logger = logging.getLogger(__name__)
 

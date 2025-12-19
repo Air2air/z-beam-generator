@@ -9,13 +9,14 @@ Merges functionality from:
 - validation/duplication_detector.py
 """
 
-from typing import Dict, Any, Optional, List, Set
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Any, Dict, List, Optional, Set
+
 import yaml
 
 from shared.validation.core.base_validator import BaseValidator, ValidationContext
-from shared.validation.errors import ErrorType, ErrorSeverity
+from shared.validation.errors import ErrorSeverity, ErrorType
 
 
 @dataclass

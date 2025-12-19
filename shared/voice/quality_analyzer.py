@@ -31,17 +31,18 @@ Design Principles:
     - Efficient: Shared text analysis across dimensions
 """
 
-from typing import Dict, Any, Optional
 import logging
 import re
 import statistics
-import yaml
 from pathlib import Path
+from typing import Any, Dict, Optional
+
+import yaml
 
 # Import existing detection modules
 from shared.voice.ai_detection import AIDetector, load_patterns
-from shared.voice.post_processor import VoicePostProcessor
 from shared.voice.enhanced_ai_detector import EnhancedAIDetector
+from shared.voice.post_processor import VoicePostProcessor
 
 logger = logging.getLogger(__name__)
 

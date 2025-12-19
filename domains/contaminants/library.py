@@ -9,19 +9,20 @@ Author: AI Assistant
 Date: November 25, 2025
 """
 
-import os
-import yaml
 import logging
+import os
+from functools import lru_cache
 from pathlib import Path
 from typing import Dict, List, Optional
-from functools import lru_cache
+
+import yaml
 
 from .models import (
-    ContaminantPattern,
-    MaterialProperties,
     ContaminantCategory,
+    ContaminantPattern,
+    FormationConditions,
+    MaterialProperties,
     VisualCharacteristics,
-    FormationConditions
 )
 
 logger = logging.getLogger(__name__)

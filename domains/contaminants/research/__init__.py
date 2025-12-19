@@ -9,9 +9,9 @@ Date: November 25, 2025
 """
 
 from domains.contaminants.research.laser_properties_researcher import (
-    LaserPropertiesResearcher,
+    ContaminationResearchResult,
     ContaminationResearchSpec,
-    ContaminationResearchResult
+    LaserPropertiesResearcher,
 )
 
 __all__ = [

@@ -3,10 +3,11 @@ DEPRECATED: Redirect wrapper for backward compatibility.
 Use validation.core.content instead.
 """
 import warnings
+
 from shared.validation.core.content import (
-    ContentValidator,
     ContentQualityScore,
-    MicroIntegrationValidator
+    ContentValidator,
+    MicroIntegrationValidator,
 )
 from shared.validation.errors import ValidationResult
 

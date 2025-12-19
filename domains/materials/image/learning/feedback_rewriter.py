@@ -8,8 +8,8 @@ Imagen 4 struggles with abstract concepts like "contamination" but responds well
 - Reference objects people recognize visually
 """
 
-from typing import Dict, List, Tuple
 import re
+from typing import Dict, List, Tuple
 
 
 class FeedbackRewriter:

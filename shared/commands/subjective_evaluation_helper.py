@@ -5,9 +5,10 @@ Provides easy integration of Claude subjective evaluation as a final
 post-generation quality check step with learning database integration.
 """
 
-from typing import Optional, Dict, Any
 import logging
-from postprocessing.evaluation import SubjectiveEvaluator, SubjectiveEvaluationResult
+from typing import Any, Dict, Optional
+
+from postprocessing.evaluation import SubjectiveEvaluationResult, SubjectiveEvaluator
 
 logger = logging.getLogger(__name__)
 

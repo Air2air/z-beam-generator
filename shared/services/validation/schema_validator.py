@@ -27,14 +27,15 @@ Author: Consolidation Phase 2 - October 22, 2025
 """
 
 import json
-import jsonschema
-import yaml
 import logging
-from typing import Dict, Any, List, Optional, Union, Tuple
 from dataclasses import dataclass, field
-from pathlib import Path
 from datetime import datetime
 from enum import Enum
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple, Union
+
+import jsonschema
+import yaml
 
 # Import consolidated validation from core (updated October 2025)
 from shared.validation.core import SchemaValidator

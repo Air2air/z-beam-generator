@@ -10,10 +10,11 @@ PERFORMANCE OPTIMIZATION:
 FAIL-FAST VALIDATION: Per GROK_INSTRUCTIONS.md, enforces ZERO TOLERANCE for defaults/fallbacks.
 """
 
-from pathlib import Path
-from datetime import datetime, timedelta
-from typing import Dict, Optional, Tuple
 import functools
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Dict, Optional, Tuple
+
 import yaml
 
 # Global cache with time-based expiration
@@ -137,7 +138,9 @@ def load_materials():
     
     # FAIL-FAST VALIDATION - NO EXCEPTIONS
     try:
-        from scripts.validation.fail_fast_materials_validator import fail_fast_validate_materials
+        from scripts.validation.fail_fast_materials_validator import (
+            fail_fast_validate_materials,
+        )
         fail_fast_validate_materials()
     except Exception as e:
         raise RuntimeError(

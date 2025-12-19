@@ -10,6 +10,7 @@ Date: October 29, 2025
 
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional
+
 from shared.schemas.base import FieldResearchSpec, ResearchResult
 
 

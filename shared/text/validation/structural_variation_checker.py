@@ -11,13 +11,14 @@ Created: November 21, 2025
 Purpose: Add structural variation as essential quality parameter alongside Winston/humanness
 """
 
+import logging
 import re
 import sqlite3
-import yaml
-from typing import Dict, List, Optional, Tuple
-from pathlib import Path
 from dataclasses import dataclass
-import logging
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+import yaml
 
 logger = logging.getLogger(__name__)
 
@@ -184,8 +185,9 @@ class StructuralVariationChecker:
         
         # Check word count variance (minimum threshold from config)
         # Load variance threshold from config (default 5% minimum)
-        import yaml
         from pathlib import Path
+
+        import yaml
         config_path = Path("generation/config.yaml")
         if config_path.exists():
             with open(config_path, 'r') as f:
@@ -395,9 +397,10 @@ class StructuralVariationChecker:
         - connectors: typical linking words
         - formality_level: tone characteristics
         """
-        import yaml
         import os
-        
+
+        import yaml
+
         # Map author IDs to persona files
         author_files = {
             2: 'shared/voice/profiles/italy.yaml',

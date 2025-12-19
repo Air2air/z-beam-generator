@@ -29,12 +29,12 @@ Usage (Legacy - still works):
     pattern = loader.get_pattern('rust_oxidation')
 """
 
-from pathlib import Path
-from typing import Dict, Any, Optional, List
 import logging
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
-from shared.data.base_loader import BaseDataLoader
 from shared.cache.manager import cache_manager
+from shared.data.base_loader import BaseDataLoader
 
 logger = logging.getLogger(__name__)
 

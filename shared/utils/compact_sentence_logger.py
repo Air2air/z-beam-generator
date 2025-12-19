@@ -5,7 +5,7 @@ Provides essential sentence-level AI detection feedback for optimization
 while eliminating verbosity and focusing on actionable data.
 """
 
-from typing import Dict, List, Any, Optional
+from typing import Any, Dict, List, Optional
 
 
 def extract_compact_sentence_analysis(winston_details: Dict[str, Any]) -> Dict[str, Any]:

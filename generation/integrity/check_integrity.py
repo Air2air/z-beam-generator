@@ -11,9 +11,10 @@ Usage:
     python3 -m generation.integrity.check_integrity --json  # Output JSON
 """
 
-import sys
-import json
 import argparse
+import json
+import sys
+
 from generation.integrity import IntegrityChecker
 
 

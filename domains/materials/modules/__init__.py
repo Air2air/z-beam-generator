@@ -22,12 +22,14 @@ Architecture:
 - Single Source of Truth: Each module class defined in ONE file only
 """
 
+from .author_module import AuthorModule
+
 # Individual module imports (matches orchestrator pattern)
 from .metadata_module import MetadataModule
-from .author_module import AuthorModule
-from .properties_module import PropertiesModule
+
 # SettingsModule moved to domains/settings/modules/ (Nov 26, 2025)
 from .modules import ComplianceModule, MediaModule
+from .properties_module import PropertiesModule
 
 __all__ = [
     # Active modules

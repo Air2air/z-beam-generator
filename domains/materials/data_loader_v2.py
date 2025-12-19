@@ -28,12 +28,12 @@ Usage (Legacy - still works):
     materials = load_materials_yaml()
 """
 
-from pathlib import Path
-from typing import Dict, Any, Optional
 import logging
+from pathlib import Path
+from typing import Any, Dict, Optional
 
-from shared.data.base_loader import BaseDataLoader
 from shared.cache.manager import cache_manager
+from shared.data.base_loader import BaseDataLoader
 from shared.utils.file_io import read_yaml_file
 
 logger = logging.getLogger(__name__)

@@ -4,9 +4,10 @@ Loads hazardous compound data from Compounds.yaml
 """
 
 import logging
-from typing import Optional, Dict, Any, List
-from pathlib import Path
 from functools import lru_cache
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
 import yaml
 
 logger = logging.getLogger(__name__)

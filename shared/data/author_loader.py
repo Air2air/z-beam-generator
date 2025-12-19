@@ -3,10 +3,12 @@ Author Data Loader
 Centralized loading of normalized author data
 """
 
-import yaml
+from functools import lru_cache
 from pathlib import Path
 from typing import Dict, Optional
-from functools import lru_cache
+
+import yaml
+
 
 class AuthorLoader:
     """Loads and caches author data from Authors.yaml"""

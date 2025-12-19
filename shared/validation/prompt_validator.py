@@ -31,12 +31,12 @@ Author: AI Assistant
 Date: November 27, 2025
 """
 
+import logging
+import re
 import warnings
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import List, Dict, Optional, Literal
-import re
-import logging
+from typing import Dict, List, Literal, Optional
 
 logger = logging.getLogger(__name__)
 

@@ -28,7 +28,8 @@ COST SAVINGS:
 import logging
 import re
 from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
 import yaml
 
 from shared.text.validation.constants import ValidationConstants
@@ -330,7 +331,9 @@ class BatchGenerator:
             self.logger.info(f"Cost savings: ${cost_savings:.2f}")
             
             # Save batch report to markdown file
-            from postprocessing.reports.generation_report_writer import GenerationReportWriter
+            from postprocessing.reports.generation_report_writer import (
+                GenerationReportWriter,
+            )
             writer = GenerationReportWriter()
             
             # Prepare results list for report
@@ -471,7 +474,7 @@ BASE PROMPT:
         """
         # Use generator's API client with GenerationRequest
         from shared.api.client import GenerationRequest
-        
+
         # Fail-fast: Require proper configuration (GROK_INSTRUCTIONS.md Core Principle #3)
         if 'temperature' not in params:
             raise RuntimeError(
@@ -572,8 +575,8 @@ BASE PROMPT:
             raise RuntimeError(f"Text too short for Winston validation: {len(concatenated_text)}/300 chars required")
         
         # Create Winston detector for validation
-        from shared.api.client_factory import create_api_client
         from postprocessing.detection.ensemble import AIDetectorEnsemble
+        from shared.api.client_factory import create_api_client
         
         winston_client = create_api_client('winston')
         detector = AIDetectorEnsemble(winston_client=winston_client)

@@ -11,13 +11,14 @@ Unified AI research service consolidating:
 STRICT FAIL-FAST ARCHITECTURE - ZERO TOLERANCE for mocks/fallbacks
 """
 
-import sys
-import yaml
 import logging
+import sys
+from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Any, List, Optional
-from dataclasses import dataclass, field
+from typing import Any, Dict, List, Optional
+
+import yaml
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent.parent

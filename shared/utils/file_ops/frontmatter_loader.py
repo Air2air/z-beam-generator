@@ -5,11 +5,12 @@ Frontmatter Loader
 Utility for loading and parsing frontmatter data from saved files.
 """
 
-from pathlib import Path
-from typing import Dict, Optional
-import yaml
 import logging
 import re
+from pathlib import Path
+from typing import Dict, Optional
+
+import yaml
 
 logger = logging.getLogger(__name__)
 

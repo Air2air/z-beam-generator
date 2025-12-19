@@ -12,20 +12,21 @@ Services:
 Last Updated: October 22, 2025
 """
 
-from .orchestrator import ValidationOrchestrator, ComprehensiveValidationResult
+# Convenience functions
+from .orchestrator import (
+    ComprehensiveValidationResult,
+    ValidationOrchestrator,
+    validate_material,
+    validate_material_lifecycle,
+)
 from .schema_validator import (
+    SchemaType,
     UnifiedSchemaValidator,
     UnifiedValidationResult,
     ValidationMode,
-    SchemaType
-)
-
-# Convenience functions
-from .orchestrator import validate_material_lifecycle, validate_material
-from .schema_validator import (
+    validate_categories_yaml,
     validate_frontmatter,
     validate_materials_yaml,
-    validate_categories_yaml
 )
 
 __all__ = [

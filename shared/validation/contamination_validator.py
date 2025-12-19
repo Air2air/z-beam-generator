@@ -10,22 +10,23 @@ Date: November 25, 2025
 """
 
 import logging
-from typing import List, Dict, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
+
+from domains.contaminants.library import ContaminationLibrary, get_library
 
 # Import from contaminants domain (these remain domain-specific)
 from domains.contaminants.models import (
     ContaminantPattern,
+    MaterialCompatibility,
     MaterialProperties,
-    MaterialCompatibility
 )
-from domains.contaminants.library import get_library, ContaminationLibrary
 
 # Import from shared types (now in shared/)
 from shared.types.contamination import (
     ContaminationContext,
-    ValidationResult,
     ValidationIssue,
-    ValidationSeverity
+    ValidationResult,
+    ValidationSeverity,
 )
 
 logger = logging.getLogger(__name__)

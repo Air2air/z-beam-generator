@@ -8,8 +8,8 @@ No fallbacks, no hardcoded values, no environment variable overrides.
 CONSOLIDATION ENHANCEMENT: Added ConfigAdapter for unified access while preserving fail-fast behavior.
 """
 
-from typing import Any, Dict
 from dataclasses import dataclass
+from typing import Any, Dict
 
 
 @dataclass

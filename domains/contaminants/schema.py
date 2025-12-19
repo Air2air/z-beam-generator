@@ -9,8 +9,8 @@ Policy Compliance: Fail-fast validation, zero hardcoded values, physics constrai
 """
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple, Any
 from enum import Enum
+from typing import Any, Dict, List, Optional, Tuple
 
 
 class PropertyType(Enum):

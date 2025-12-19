@@ -17,11 +17,11 @@ Date: September 25, 2025
 """
 
 import logging
-import time
 import sys
-from typing import Dict, List, Optional, Any
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 # Import GenerationError for fail-fast behavior
 from shared.validation.errors import GenerationError
@@ -32,7 +32,9 @@ sys.path.insert(0, str(project_root))
 
 # Try to import research system
 try:
-    from research.material_property_research_system import MaterialPropertyResearchSystem
+    from research.material_property_research_system import (
+        MaterialPropertyResearchSystem,
+    )
     PROPERTY_DISCOVERY_AVAILABLE = True
 except ImportError:
     PROPERTY_DISCOVERY_AVAILABLE = False
@@ -343,7 +345,9 @@ class PropertyValueResearcher:
         """Look up property from Materials.yaml data"""
         try:
             from domains.materials.data_loader import load_material
-            from domains.materials.materials_cache import get_material_by_name_cached as get_material_by_name
+            from domains.materials.materials_cache import (
+                get_material_by_name_cached as get_material_by_name,
+            )
             
             material_data = get_material_by_name(material_name)
             if not material_data:
@@ -640,8 +644,10 @@ Format as JSON: {{"value": <number>, "unit": "<unit>", "confidence": <0-100>, "s
             raise GenerationError(f"API client required for comprehensive property discovery - cannot research {material_name}")
         
         try:
-            from .comprehensive_discovery_prompts import MATERIAL_PROPERTY_DISCOVERY_PROMPT
-            
+            from .comprehensive_discovery_prompts import (
+                MATERIAL_PROPERTY_DISCOVERY_PROMPT,
+            )
+
             # Format comprehensive discovery prompt  
             prompt = MATERIAL_PROPERTY_DISCOVERY_PROMPT.format(
                 material_name=material_name,
@@ -729,8 +735,10 @@ Format as JSON: {{"value": <number>, "unit": "<unit>", "confidence": <0-100>, "s
             raise GenerationError(f"API client required for machine settings discovery - cannot research {material_name}")
             
         try:
-            from .comprehensive_discovery_prompts import MACHINE_SETTINGS_DISCOVERY_PROMPT
-            
+            from .comprehensive_discovery_prompts import (
+                MACHINE_SETTINGS_DISCOVERY_PROMPT,
+            )
+
             # Format comprehensive machine settings prompt
             prompt = MACHINE_SETTINGS_DISCOVERY_PROMPT.format(
                 material_name=material_name,

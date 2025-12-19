@@ -17,15 +17,15 @@ Design: Component-based with Protocol extensibility.
         Works across all domains without domain-specific code.
 """
 
-from typing import Dict, Any, Optional
-from dataclasses import dataclass
 import logging
+from dataclasses import dataclass
 from pathlib import Path
+from typing import Any, Dict, Optional
 
-from generation.core.quality_orchestrator import QualityOrchestrator
+from generation.core.generator import Generator
 from generation.core.learning_integrator import LearningIntegrator
 from generation.core.parameter_manager import ParameterManager
-from generation.core.generator import Generator
+from generation.core.quality_orchestrator import QualityOrchestrator
 
 logger = logging.getLogger(__name__)
 

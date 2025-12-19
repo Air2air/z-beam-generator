@@ -37,7 +37,8 @@ Usage:
 """
 
 import logging
-from typing import Dict, List, Any, Optional
+from typing import Any, Dict, List, Optional
+
 from shared.validation.domain_associations import DomainAssociationsValidator
 
 logger = logging.getLogger(__name__)

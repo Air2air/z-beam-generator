@@ -8,7 +8,7 @@ the persistent cache by default for optimal performance.
 
 import logging
 import os
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Any, Dict, List, Optional, Tuple
 
 logger = logging.getLogger(__name__)
 
@@ -19,22 +19,22 @@ USE_PERSISTENT_CACHE = os.environ.get("Z_BEAM_NO_PERSISTENT_CACHE", "").lower() 
 if USE_PERSISTENT_CACHE:
     try:
         logger.info("🚀 Using persistent API client cache for optimal performance")
+        from .persistent_cache import PersistentAPIClientCache as CacheImplementation
         from .persistent_cache import (
-            PersistentAPIClientCache as CacheImplementation,
             get_cached_api_client,
             get_cached_client_for_component,
         )
     except ImportError as e:
         logger.warning(f"⚠️ Failed to import persistent cache: {e}, falling back to in-memory cache")
+        from .client_cache import APIClientCache as CacheImplementation
         from .client_cache import (
-            APIClientCache as CacheImplementation,
             get_cached_api_client,
             get_cached_client_for_component,
         )
 else:
     logger.info("⚠️ Using in-memory API client cache (persistent cache disabled)")
+    from .client_cache import APIClientCache as CacheImplementation
     from .client_cache import (
-        APIClientCache as CacheImplementation,
         get_cached_api_client,
         get_cached_client_for_component,
     )

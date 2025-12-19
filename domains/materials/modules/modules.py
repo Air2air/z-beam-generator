@@ -46,7 +46,7 @@ class MediaModule:
         not present in Materials.yaml source data.
         """
         import re
-        
+
         # Create URL-safe material name (lowercase, hyphens, handle special chars)
         material_slug = material_name.lower()
         material_slug = re.sub(r'[^a-z0-9\s-]', '', material_slug)  # Remove special chars except spaces and hyphens

@@ -22,11 +22,11 @@ Usage:
     #     "assembly_description": "rocket turbopump assembly with visible seals and fittings"
     # }
 """
-import os
-import json
 import hashlib
-from typing import Optional, Dict, Any, List
+import json
+import os
 from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 import google.generativeai as genai
 

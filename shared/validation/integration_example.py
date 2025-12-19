@@ -6,10 +6,12 @@ This example shows how to add reference validation to any generator.
 
 from pathlib import Path
 from typing import Dict, List
+
 import yaml
 
-from shared.validation.validator_mixin import ReferenceValidatorMixin
 from shared.validation.validation_schema import ValidationSchema
+from shared.validation.validator_mixin import ReferenceValidatorMixin
+
 
 class ValidatedMaterialsGenerator(ReferenceValidatorMixin):
     """

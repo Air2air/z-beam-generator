@@ -18,9 +18,10 @@ Usage:
 
 import logging
 import tempfile
-import yaml
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Any, Dict, Optional
+
+import yaml
 
 from generation.core.adapters.base import DataSourceAdapter
 
@@ -328,7 +329,7 @@ class DomainAdapter(DataSourceAdapter):
     def _extract_before_after(self, text: str) -> Dict[str, str]:
         """Extract before/after paragraph structure"""
         import re
-        
+
         # Clean the text
         text = text.strip()
         
@@ -353,7 +354,7 @@ class DomainAdapter(DataSourceAdapter):
         """Extract JSON list (for FAQ)"""
         import json
         import re
-        
+
         # Try to find JSON array in response
         json_match = re.search(r'\[[\s\S]*\]', text)
         if json_match:
@@ -378,7 +379,7 @@ class DomainAdapter(DataSourceAdapter):
     def _extract_yaml(self, text: str) -> Dict[str, Any]:
         """Extract YAML structure from response"""
         import re
-        
+
         # Try to find YAML block
         yaml_match = re.search(r'```yaml\s*([\s\S]*?)\s*```', text)
         if yaml_match:

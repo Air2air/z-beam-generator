@@ -15,10 +15,10 @@ from typing import Any, Dict, Optional, Tuple
 
 import yaml
 
-from domains.materials.image.material_generator import MaterialImageGenerator
 from domains.materials.image.material_config import MaterialImageConfig
-from shared.api.gemini_image_client import GeminiImageClient
+from domains.materials.image.material_generator import MaterialImageGenerator
 from shared.api.gemini_flash_image_client import GeminiFlashImageClient
+from shared.api.gemini_image_client import GeminiImageClient
 from shared.image.learning import create_logger
 
 logger = logging.getLogger(__name__)

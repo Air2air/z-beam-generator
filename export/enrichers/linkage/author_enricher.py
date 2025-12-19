@@ -12,7 +12,8 @@ This ensures frontmatter has rich author data for:
 
 import logging
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Any, Dict, Optional
+
 import yaml
 
 from export.enrichers.base import BaseEnricher

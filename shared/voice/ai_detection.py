@@ -21,12 +21,12 @@ Usage:
         print(f"Issues: {result['issues']}")
 """
 
-from typing import Dict, Any
+import logging
+import os
 import re
 import statistics
 from collections import Counter
-import logging
-import os
+from typing import Any, Dict
 
 logger = logging.getLogger(__name__)
 

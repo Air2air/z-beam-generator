@@ -3,6 +3,7 @@ DEPRECATED: Redirect wrapper for backward compatibility.
 Use validation.core.content instead.
 """
 import warnings
+
 from shared.validation.core.content import MicroIntegrationValidator
 from shared.validation.errors import ValidationResult
 

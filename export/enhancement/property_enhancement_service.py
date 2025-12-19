@@ -274,8 +274,9 @@ class PropertyEnhancementService:
             
         # Import Materials.yaml configuration
         try:
-            import yaml
             import os
+
+            import yaml
             materials_yaml_path = os.path.join(os.path.dirname(__file__), "../../../data/Materials.yaml")
             with open(materials_yaml_path, 'r') as f:
                 materials_config = yaml.safe_load(f)

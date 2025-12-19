@@ -35,11 +35,11 @@ Usage:
     # Settings integration now handled at orchestrator layer to avoid cross-domain imports
 """
 
-import yaml
-from pathlib import Path
-from typing import Dict, Any, Optional
 from functools import lru_cache
+from pathlib import Path
+from typing import Any, Dict, Optional
 
+import yaml
 
 # File paths - Point to data/materials directory
 PROJECT_ROOT = Path(__file__).parent.parent.parent

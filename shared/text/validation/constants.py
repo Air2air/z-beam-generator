@@ -19,10 +19,11 @@ Usage:
         print("Passes Winston validation")
 """
 
-from pathlib import Path
-from typing import Dict, Any, Optional
-import yaml
 import logging
+from pathlib import Path
+from typing import Any, Dict, Optional
+
+import yaml
 
 logger = logging.getLogger(__name__)
 

@@ -54,7 +54,7 @@ def generate_text(
         Generated text string or None if generation fails
     """
     from shared.api.client import GenerationRequest
-    
+
     # Get or create API client
     if api_client is None:
         api_client = get_api_client(provider)

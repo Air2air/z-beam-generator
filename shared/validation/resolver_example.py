@@ -7,6 +7,7 @@ No central registry - just read what you need when you need it.
 
 from shared.validation.domain_resolver import DomainResolver
 
+
 def example_materials_generator():
     """Example: Materials generator fetching contaminant links"""
     

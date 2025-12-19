@@ -27,31 +27,32 @@ Requirements Checked:
 - Terminal audit reporting after material generation
 """
 
-import sys
-import yaml
 import logging
-from pathlib import Path
-from typing import Dict, List, Set, Any
+import sys
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
+from pathlib import Path
+from typing import Any, Dict, List, Set
+
+import yaml
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from shared.validation.schema_validator import SchemaValidator
 from domains.materials.materials_cache import load_materials
 from shared.utils.requirements_loader import (
-    RequirementsLoader, 
-    is_prohibited_field_in_materials,
-    is_prohibited_source,
+    RequirementsLoader,
     get_author_voice_indicators,
     get_essential_properties,
     get_minimum_property_coverage,
+    get_terminal_report_config,
     get_text_quality_requirements,
-    get_terminal_report_config
+    is_prohibited_field_in_materials,
+    is_prohibited_source,
 )
+from shared.validation.schema_validator import SchemaValidator
 
 
 class AuditSeverity(Enum):

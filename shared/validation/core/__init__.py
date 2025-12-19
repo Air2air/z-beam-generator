@@ -17,19 +17,17 @@ Usage:
 from shared.validation.core.base_validator import (
     BaseValidator,
     CompositeValidator,
-    ValidationContext
+    ValidationContext,
 )
-
 from shared.validation.core.content import (
+    ContentQualityScore,
     ContentValidator,
     MicroIntegrationValidator,
-    ContentQualityScore
 )
-
 from shared.validation.core.schema import (
-    SchemaValidator,
     DuplicationDetector,
-    SchemaValidationResult
+    SchemaValidationResult,
+    SchemaValidator,
 )
 
 # Export all public classes

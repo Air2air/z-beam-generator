@@ -9,11 +9,11 @@ Author: AI Assistant
 Date: October 30, 2025
 """
 
-import os
 import base64
-from typing import Dict, Any, List, Optional
-from pathlib import Path
+import os
 from io import BytesIO
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 
 class GeminiImageClient:
@@ -53,9 +53,9 @@ class GeminiImageClient:
         """
         # Check for required SDK
         try:
+            import vertexai
             from google.cloud import aiplatform
             from vertexai.preview.vision_models import ImageGenerationModel
-            import vertexai
         except ImportError:
             raise RuntimeError(
                 "Vertex AI SDK not installed. "

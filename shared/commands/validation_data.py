@@ -10,10 +10,12 @@ Handles deployment to Next.js production site.
 def run_data_validation(report_file = None) -> bool:
     """Run comprehensive hierarchical validation and update system"""
     try:
-        from shared.validation.schema_validator import SchemaValidator
-        import yaml
         import os
         from pathlib import Path
+
+        import yaml
+
+        from shared.validation.schema_validator import SchemaValidator
         
         print("🔍 Running Comprehensive Data Validation")
         print("=" * 60)

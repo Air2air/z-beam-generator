@@ -10,7 +10,9 @@ This __init__.py provides backward compatibility.
 Last Updated: October 24, 2025
 """
 
-from domains.materials.research.services.ai_research_service import AIResearchEnrichmentService
+from domains.materials.research.services.ai_research_service import (
+    AIResearchEnrichmentService,
+)
 
 __all__ = [
     'AIResearchEnrichmentService',

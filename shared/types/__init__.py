@@ -6,11 +6,11 @@ No domain-specific logic - pure data types only.
 """
 
 from .contamination import (
-    ContaminationContext,
     ContaminantCategory,
-    ValidationSeverity,
+    ContaminationContext,
+    ValidationIssue,
     ValidationResult,
-    ValidationIssue
+    ValidationSeverity,
 )
 
 __all__ = [

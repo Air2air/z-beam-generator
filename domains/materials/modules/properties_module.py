@@ -11,9 +11,10 @@ Architecture:
 """
 
 import logging
-from typing import Dict
-import yaml
 from pathlib import Path
+from typing import Dict
+
+import yaml
 
 
 class PropertiesModule:

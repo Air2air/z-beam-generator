@@ -7,12 +7,13 @@ across testing and production environments.
 """
 
 import os
-import yaml
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from shared.api.client import APIClient
+import yaml
+
 from shared.api.cached_client import CachedAPIClient
+from shared.api.client import APIClient
 
 
 def get_api_providers():

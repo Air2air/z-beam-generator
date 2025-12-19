@@ -8,13 +8,17 @@ Handles deployment to Next.js production site.
 
 def deploy_to_production():
     """Deploy generated content to Next.js production site."""
-    import shutil
     import os
+    import shutil
     import subprocess
-    
-    # Clear ALL caches to ensure fresh data is used
-    from domains.materials.materials_cache import clear_materials_cache, invalidate_material_cache
+
     from domains.materials.data_loader import clear_cache
+
+    # Clear ALL caches to ensure fresh data is used
+    from domains.materials.materials_cache import (
+        clear_materials_cache,
+        invalidate_material_cache,
+    )
     clear_cache()  # Clear loader LRU caches
     clear_materials_cache()  # Clear materials cache
     invalidate_material_cache()  # Clear name lookup cache
@@ -52,8 +56,9 @@ def deploy_to_production():
         import sys
         from pathlib import Path
         sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-        from scripts.operations.regenerate_all_domains import main as regenerate_all
         import time
+
+        from scripts.operations.regenerate_all_domains import main as regenerate_all
         
         start_time = time.time()
         print("🔄 Exporting all domains: materials, contaminants, compounds, settings...")

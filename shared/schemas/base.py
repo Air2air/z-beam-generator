@@ -8,10 +8,10 @@ Author: AI Assistant
 Date: October 29, 2025
 """
 
-from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any, Tuple
 from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
 from enum import Enum
+from typing import Any, Dict, List, Optional, Tuple
 
 
 class ResearchMethod(Enum):

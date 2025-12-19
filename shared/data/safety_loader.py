@@ -3,10 +3,12 @@
 # Used by: exporters, generators, validation utilities
 # Last updated: December 15, 2025
 
-import yaml
-from pathlib import Path
 from functools import lru_cache
-from typing import Dict, List, Optional, Any
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import yaml
+
 
 class SafetyDataLoader:
     """Centralized loader for all modular safety and standards data."""

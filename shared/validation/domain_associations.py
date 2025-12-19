@@ -20,17 +20,18 @@ USAGE:
     compound_links = validator.get_compounds_for_contaminant('rust-oxidation-contamination')
 """
 
-import yaml
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Set
 
+import yaml
+
 from shared.utils.formatters import (
-    normalize_taxonomy,
     extract_slug,
+    format_display_name,
     format_image_url,
-    format_display_name
+    normalize_taxonomy,
 )
-from dataclasses import dataclass
 
 
 @dataclass

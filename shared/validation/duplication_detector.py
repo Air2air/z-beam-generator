@@ -3,6 +3,7 @@ DEPRECATED: Redirect wrapper for backward compatibility.
 Use validation.core.schema instead.
 """
 import warnings
+
 from shared.validation.core.schema import DuplicationDetector
 from shared.validation.errors import ValidationResult
 

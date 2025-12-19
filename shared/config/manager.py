@@ -15,10 +15,12 @@ FAIL-FAST DESIGN: No fallbacks, explicit validation, immediate failure on missin
 """
 
 import os
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, Optional
-from dataclasses import dataclass
+
 from dotenv import load_dotenv
+
 from shared.validation.errors import ConfigurationError
 
 

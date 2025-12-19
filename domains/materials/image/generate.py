@@ -26,13 +26,13 @@ from domains.materials.image.cli import main, parse_args
 
 # Re-export pipeline components for existing imports
 from domains.materials.image.pipeline import (
-    ImageGenerationPipeline,
+    GUIDANCE_SCALE_DEFAULT,
+    PASS_THRESHOLD,
     GenerationResult,
+    ImageGenerationPipeline,
+    build_feedback_text,
     load_image_config,
     load_material_properties,
-    build_feedback_text,
-    PASS_THRESHOLD,
-    GUIDANCE_SCALE_DEFAULT,
 )
 
 if __name__ == "__main__":

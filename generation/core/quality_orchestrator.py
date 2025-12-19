@@ -12,8 +12,8 @@ This module provides a flexible, extensible quality evaluation system that:
 - Supports dynamic evaluator registration
 """
 
-from typing import Dict, Any, List, Protocol, Optional
 import logging
+from typing import Any, Dict, List, Optional, Protocol
 
 logger = logging.getLogger(__name__)
 

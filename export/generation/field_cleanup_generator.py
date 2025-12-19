@@ -18,10 +18,11 @@ Created: December 19, 2025
 Part of: Changes 2 & 5 - Remove redundant fields
 """
 
-from typing import Dict, Any
-from export.generation.base import BaseGenerator
-from export.enrichers.cleanup.field_cleanup_enricher import FieldCleanupEnricher
 import logging
+from typing import Any, Dict
+
+from export.enrichers.cleanup.field_cleanup_enricher import FieldCleanupEnricher
+from export.generation.base import BaseGenerator
 
 logger = logging.getLogger(__name__)
 

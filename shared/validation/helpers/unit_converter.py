@@ -11,7 +11,7 @@ Per GROK_INSTRUCTIONS.md:
 - Explicit conversion rules only
 """
 
-from typing import Tuple, Optional
+from typing import Optional, Tuple
 
 
 class UnitConversionError(Exception):

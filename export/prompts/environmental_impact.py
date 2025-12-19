@@ -6,8 +6,8 @@ Two-phase prompting for environmental impact assessment within frontmatter gener
 """
 
 import logging
-from typing import Dict
 from pathlib import Path
+from typing import Dict
 
 logger = logging.getLogger(__name__)
 

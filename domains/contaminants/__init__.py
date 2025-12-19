@@ -14,26 +14,27 @@ Author: AI Assistant
 Date: November 25, 2025
 """
 
-from .models import (
-    ContaminantPattern,
-    MaterialProperties,
-    MaterialCompatibility,
-)
-# ✅ FIXED (Nov 26, 2025): Export shared types from shared/ to avoid cross-domain imports
-from shared.types.contamination import (
-    ContaminationContext,
-    ValidationResult,
-    ValidationIssue,
-    ContaminantCategory,
-    ValidationSeverity
-)
 # Re-export contamination_levels from shared for backward compatibility
 from shared.types import contamination_levels
 
-# Import validator locally (don't re-export to avoid circular import)
-from .validator import ContaminationValidator as _LocalValidator
+# ✅ FIXED (Nov 26, 2025): Export shared types from shared/ to avoid cross-domain imports
+from shared.types.contamination import (
+    ContaminantCategory,
+    ContaminationContext,
+    ValidationIssue,
+    ValidationResult,
+    ValidationSeverity,
+)
 
 from .library import ContaminationLibrary, get_library, reload_library
+from .models import (
+    ContaminantPattern,
+    MaterialCompatibility,
+    MaterialProperties,
+)
+
+# Import validator locally (don't re-export to avoid circular import)
+from .validator import ContaminationValidator as _LocalValidator
 
 __all__ = [
     'ContaminantPattern',

@@ -36,21 +36,23 @@ Usage:
         frontmatter = generator.generate(frontmatter)
 """
 
-from typing import Dict, Any, List
 import logging
 import re
+from typing import Any, Dict, List
 
 # Import base generator class
 from export.generation.base import BaseGenerator
 
-# Import domain linkages generator
-from export.generation.relationships_generator import DomainLinkagesGenerator
-
 # Import contaminant materials grouping generator
-from export.generation.contaminant_materials_grouping_generator import ContaminantMaterialsGroupingGenerator
+from export.generation.contaminant_materials_grouping_generator import (
+    ContaminantMaterialsGroupingGenerator,
+)
 
 # Import field cleanup generator
 from export.generation.field_cleanup_generator import FieldCleanupGenerator
+
+# Import domain linkages generator
+from export.generation.relationships_generator import DomainLinkagesGenerator
 
 logger = logging.getLogger(__name__)
 

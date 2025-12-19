@@ -22,17 +22,19 @@ Performance:
     - 10x speedup with C loader
 """
 
-import yaml
 from pathlib import Path
 from typing import Any, Union
 
+import yaml
+
 # Try to import C-based loaders (10x faster)
 try:
-    from yaml import CLoader as Loader, CDumper as Dumper
+    from yaml import CDumper as Dumper
+    from yaml import CLoader as Loader
     FAST_LOADER_AVAILABLE = True
     _LOADER_TYPE = "C-based (LibYAML)"
 except ImportError:
-    from yaml import Loader, Dumper
+    from yaml import Dumper, Loader
     FAST_LOADER_AVAILABLE = False
     _LOADER_TYPE = "Python (slower)"
 
