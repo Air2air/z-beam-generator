@@ -266,7 +266,6 @@ class DomainAssociationsValidator:
             if assoc.get('material_id') == material_id:
                 # Build linkage structure
                 contaminant_id = assoc['contaminant_id']
-                slug = contaminant_id.replace('-contamination', '')
                 
                 # Get contaminant details from Contaminants.yaml
                 # Note: Associations use shortened ID, but Contaminants.yaml uses full ID with suffix
@@ -277,11 +276,16 @@ class DomainAssociationsValidator:
                 category = contaminant_data.get('category', 'general').replace('_', '-')
                 subcategory = contaminant_data.get('subcategory', 'misc').replace('_', '-')
                 
+                # Extract display name for title
+                display_name = contaminant_id.replace('-contamination', '').replace('-', ' ').title()
+                
+                # Create slug for image path (without -contamination suffix)
+                slug = contaminant_id.replace('-contamination', '')
+                
                 results.append({
                     'id': contaminant_id,
-                    
-                    'title': contaminant_data.get('name', slug.replace('-', ' ').title()),
-                    'url': f"/contaminants/{slug}",
+                    'title': contaminant_data.get('name', display_name),
+                    'url': f"/contaminants/{category}/{subcategory}/{contaminant_id}",
                     'image': f"/images/contaminants/{slug}.jpg",
                     'category': category,
                     'subcategory': subcategory,
@@ -314,7 +318,6 @@ class DomainAssociationsValidator:
         for assoc in associations:
             if assoc.get('contaminant_id') == lookup_id:
                 material_id = assoc['material_id']
-                slug = material_id.replace('-laser-cleaning', '')
                 
                 # Get material details from Materials.yaml
                 # Note: Materials.yaml now uses full ID as key (with -laser-cleaning suffix)
@@ -324,11 +327,15 @@ class DomainAssociationsValidator:
                 category = material_data.get('category', 'general').replace('_', '-')
                 subcategory = material_data.get('subcategory', 'misc').replace('_', '-')
                 
+                # Extract display name and slug for title and image
+                slug = material_id.replace('-laser-cleaning', '')
+                display_name = slug.replace('-', ' ').title()
+                
                 results.append({
                     'id': material_id,
-                    'title': material_data.get('name', slug.replace('-', ' ').title()),
-                    'url': f"/materials/{slug}",
-                    'image': f"/images/materials/{slug}.jpg",
+                    'title': material_data.get('name', display_name),
+                    'url': f"/materials/{category}/{subcategory}/{material_id}",
+                    'image': f"/images/material/{material_id}-hero.jpg",
                     'category': category,
                     'subcategory': subcategory,
                     'frequency': assoc['frequency'],
@@ -351,8 +358,8 @@ class DomainAssociationsValidator:
         if not self.data:
             self.load()
         
-        # Strip suffix for lookup (associations use shortened IDs)
-        lookup_id = contaminant_id.replace('-contamination', '')
+        # Ensure full ID with suffix (associations use full IDs with -contamination)
+        lookup_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
         
         associations = self.data.get('contaminant_compound_associations', [])
         
@@ -365,10 +372,10 @@ class DomainAssociationsValidator:
         for assoc in associations:
             if assoc.get('contaminant_id') == lookup_id:
                 compound_id = assoc['compound_id']
-                slug = compound_id.replace('-compound', '')
                 
-                # Get compound details from Compounds.yaml
-                compound_data = self.compounds_data.get('compounds', {}).get(slug, {})
+                # Get compound details from Compounds.yaml (uses slug without suffix as key)
+                slug_without_suffix = compound_id.replace('-compound', '')
+                compound_data = self.compounds_data.get('compounds', {}).get(slug_without_suffix, {})
                 
                 # Build linkage per FRONTMATTER_GENERATOR_LINKAGE_SPEC.md
                 category = compound_data.get('category', 'general').replace('_', '-')
@@ -376,9 +383,8 @@ class DomainAssociationsValidator:
                 
                 results.append({
                     'id': compound_id,
-                    
-                    'url': f"/compounds/{slug}",
-                    'image': f"/images/compounds/{slug}.jpg",
+                    'url': f"/compounds/{category}/{subcategory}/{compound_id}",
+                    'image': f"/images/compounds/{slug_without_suffix}.jpg",
                     'category': category,
                     'subcategory': subcategory,
                     'frequency': assoc['frequency'],
@@ -408,7 +414,6 @@ class DomainAssociationsValidator:
         for assoc in associations:
             if assoc.get('compound_id') == compound_id:
                 contaminant_id = assoc['contaminant_id']
-                slug = contaminant_id.replace('-contamination', '')
                 
                 # Get contaminant details (associations use shortened ID)
                 full_contaminant_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
@@ -418,11 +423,16 @@ class DomainAssociationsValidator:
                 category = contaminant_data.get('category', 'general').replace('_', '-')
                 subcategory = contaminant_data.get('subcategory', 'misc').replace('_', '-')
                 
+                # Extract display name for title
+                display_name = contaminant_id.replace('-contamination', '').replace('-', ' ').title()
+                
+                # Create slug for image path (without -contamination suffix)
+                slug = contaminant_id.replace('-contamination', '')
+                
                 results.append({
                     'id': contaminant_id,
-                    
-                    'title': contaminant_data.get('name', slug.replace('-', ' ').title()),
-                    'url': f"/contaminants/{slug}",
+                    'title': contaminant_data.get('name', display_name),
+                    'url': f"/contaminants/{category}/{subcategory}/{contaminant_id}",
                     'image': f"/images/contaminants/{slug}.jpg",
                     'category': category,
                     'subcategory': subcategory,

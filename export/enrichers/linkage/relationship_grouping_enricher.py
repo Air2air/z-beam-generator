@@ -133,7 +133,7 @@ class RelationshipGroupingEnricher(BaseEnricher):
         grouped = {}
         
         # Group contaminants by category
-        contaminants = relationships.get('related_contaminants', [])
+        contaminants = relationships.get('contaminants', [])  # NEW KEY from DomainLinkagesService
         if contaminants:
             grouped['contaminants'] = {
                 'title': 'Common Contaminants',
@@ -215,7 +215,7 @@ class RelationshipGroupingEnricher(BaseEnricher):
         grouped = {}
         
         # Group materials by category
-        materials = relationships.get('related_materials', [])
+        materials = relationships.get('materials', [])  # NEW KEY from DomainLinkagesServiceKEY from DomainLinkagesService
         if materials:
             grouped['materials'] = {
                 'title': 'Affected Materials',
@@ -357,7 +357,7 @@ class RelationshipGroupingEnricher(BaseEnricher):
         grouped = {}
         
         # Materials (simple group - all in one)
-        materials = relationships.get('related_materials', [])
+        materials = relationships.get('materials', [])  # NEW KEY from DomainLinkagesService
         if materials:
             grouped['materials'] = {
                 'title': 'Applicable Materials',
@@ -372,7 +372,7 @@ class RelationshipGroupingEnricher(BaseEnricher):
             }
         
         # Contaminants (group by category)
-        contaminants = relationships.get('related_contaminants', [])
+        contaminants = relationships.get('contaminants', [])  # NEW KEY from DomainLinkagesService
         if contaminants:
             grouped['contaminants'] = {
                 'title': 'Target Contaminants',
