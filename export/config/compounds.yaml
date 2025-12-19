@@ -60,7 +60,10 @@ enrichments:
       - datePublished
       - dateModified
   
-  # 5. Generate breadcrumb navigation (array format)
+  # 5. Expand author field with full profile
+  - type: author
+  
+  # 6. Generate breadcrumb navigation (array format)
   - type: breadcrumb
     domain: compounds
     category_field: compound_category

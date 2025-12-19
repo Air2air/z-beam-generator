@@ -73,11 +73,14 @@ enrichments:
       - datePublished
       - dateModified
   
-  # 6. Populate relationships from DomainLinkagesService
+  # 6. Expand author field with full profile
+  - type: author
+  
+  # 7. Populate relationships from DomainLinkagesService
   - type: relationships
     domain: materials
   
-  # 7. Generate breadcrumb navigation (array format)
+  # 8. Generate breadcrumb navigation (array format)
   - type: breadcrumb
     domain: materials
     category_field: category

@@ -279,7 +279,7 @@ class DomainAssociationsValidator:
                 
                 results.append({
                     'id': contaminant_id,
-                    'slug': slug,
+                    
                     'title': contaminant_data.get('name', slug.replace('-', ' ').title()),
                     'url': f"/contaminants/{slug}",
                     'image': f"/images/contaminants/{slug}.jpg",
@@ -326,7 +326,6 @@ class DomainAssociationsValidator:
                 
                 results.append({
                     'id': material_id,
-                    'slug': slug,
                     'title': material_data.get('name', slug.replace('-', ' ').title()),
                     'url': f"/materials/{slug}",
                     'image': f"/images/materials/{slug}.jpg",
@@ -377,7 +376,7 @@ class DomainAssociationsValidator:
                 
                 results.append({
                     'id': compound_id,
-                    'slug': slug,
+                    
                     'url': f"/compounds/{slug}",
                     'image': f"/images/compounds/{slug}.jpg",
                     'category': category,
@@ -421,7 +420,7 @@ class DomainAssociationsValidator:
                 
                 results.append({
                     'id': contaminant_id,
-                    'slug': slug,
+                    
                     'title': contaminant_data.get('name', slug.replace('-', ' ').title()),
                     'url': f"/contaminants/{slug}",
                     'image': f"/images/contaminants/{slug}.jpg",
