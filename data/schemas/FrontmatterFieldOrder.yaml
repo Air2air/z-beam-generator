@@ -26,12 +26,15 @@ materials:
     - name
     - category
     - subcategory
-    - content_type
-    - schema_version
     
     # Publishing metadata
     - datePublished
     - dateModified
+    
+    # Page-related fields
+    - content_type
+    - schema_version
+    - breadcrumb
     
     # Author
     - author
@@ -42,7 +45,6 @@ materials:
     # Page content
     - title
     - description
-    - breadcrumb
     
     # Images
     - images
@@ -120,6 +122,11 @@ contaminants:
     # Publishing metadata
     - datePublished
     - dateModified
+    
+    # Page-related fields
+    - content_type
+    - schema_version
+    - breadcrumb
     
     # Physical properties
     - thickness_range
@@ -201,6 +208,11 @@ compounds:
     - datePublished
     - dateModified
     
+    # Page-related fields
+    - content_type
+    - schema_version
+    - breadcrumb
+    
     # Classification
     - category
     - subcategory
@@ -260,13 +272,15 @@ settings:
     # Classification
     - category
     - subcategory
-    - content_type
-    - schema_version
     - application_type
     
     # Publishing metadata
     - datePublished
     - dateModified
+    
+    # Page-related fields
+    - content_type
+    - schema_version
     
     # Laser parameters
     - wavelength
