@@ -68,6 +68,7 @@ from export.enrichers.linkage.universal_restructure_enricher import (
 )
 from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
 from export.enrichers.metadata.name_enricher import NameEnricher
+from export.enrichers.settings.material_category_enricher import MaterialCategoryEnricher  # Dec 19, 2025
 
 logger = logging.getLogger(__name__)
 
@@ -441,6 +442,7 @@ ENRICHER_REGISTRY = {
     'timestamp': TimestampEnricher,
     'author': AuthorEnricher,
     'name': NameEnricher,  # Adds name field from id if missing
+    'material_category': MaterialCategoryEnricher,  # Adds category/subcategory from Materials.yaml (Dec 19, 2025)
     'relationships': DomainLinkagesEnricher,
     'relationship_grouping': RelationshipGroupingEnricher,
     'relationships_slug': DomainLinkagesSlugEnricher,

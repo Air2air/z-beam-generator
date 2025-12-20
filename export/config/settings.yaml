@@ -68,10 +68,16 @@ enrichments:
   # 6. Add name field from id (Settings.yaml uses material name as key)
   - type: name
   
-  # 7. Generate breadcrumb navigation (array format)
+  # 7. Add category/subcategory from Materials.yaml (Dec 19, 2025)
+  # Required for hierarchical paths: /settings/metal/non-ferrous/aluminum-settings
+  - type: material_category
+  
+  # 8. Generate breadcrumb navigation (array format)
   - type: breadcrumb
     domain: settings
-    category_field: setting_category
+    # Use actual field names from MaterialCategoryEnricher (Dec 19, 2025)
+    category_field: category
+    subcategory_field: subcategory
     name_field: name
 
 

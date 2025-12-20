@@ -59,8 +59,13 @@ class NameEnricher(BaseEnricher):
         if 'name' in frontmatter and frontmatter['name']:
             return frontmatter
         
-        # If id exists, copy it to name
-        if 'id' in frontmatter:
+        # If original name was preserved (from slugification), use it
+        if '_original_name' in frontmatter:
+            frontmatter['name'] = frontmatter['_original_name']
+            del frontmatter['_original_name']  # Clean up temporary field
+            logger.debug(f"Added name field from original name: {frontmatter['name']}")
+        # Otherwise, if id exists, copy it to name
+        elif 'id' in frontmatter:
             frontmatter['name'] = frontmatter['id']
             logger.debug(f"Added name field from id: {frontmatter['id']}")
         else:

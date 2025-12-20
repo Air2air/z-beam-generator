@@ -199,8 +199,21 @@ class UniversalFrontmatterExporter:
         logger.debug(f"Exporting {item_id} to {output_file}")
         
         try:
-            # Build base frontmatter (pass item_id for 'id' field per guide)
-            frontmatter = self._build_base_frontmatter(item_data, item_id)
+            # Compute slugified ID if needed (ID should match filename base)
+            # Example: "Aluminum" with suffix "-settings" -> "aluminum-settings"
+            final_id = format_filename(
+                item_id=item_id,
+                suffix=self.filename_suffix,
+                slugify_id=self.slugify_filenames
+            ).replace('.yaml', '')  # Remove extension to get ID
+            
+            # Build base frontmatter (use final_id for 'id' field)
+            frontmatter = self._build_base_frontmatter(item_data, final_id)
+            
+            # Preserve original item_id as 'name' if slugification was applied
+            # Example: "Aluminum" stays as name even though id is "aluminum-settings"
+            if self.slugify_filenames and 'name' not in item_data:
+                frontmatter['_original_name'] = item_id  # Store for NameEnricher
             
             # Apply enrichments (auto-fill linked data)
             for enricher in self.enrichers:
