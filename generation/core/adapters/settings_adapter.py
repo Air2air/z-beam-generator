@@ -18,7 +18,7 @@ import tempfile
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-import yaml
+from shared.utils.yaml_utils import load_yaml
 
 from generation.core.adapters.base import DataSourceAdapter
 
