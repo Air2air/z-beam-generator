@@ -30,8 +30,7 @@ import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-import yaml
-
+from shared.utils.yaml_utils import load_yaml, save_yaml
 from shared.text.validation.constants import ValidationConstants
 
 logger = logging.getLogger(__name__)
@@ -52,7 +51,8 @@ class BatchGenerator:
             'chars_per_component': 140,  # Actual average (was 175 estimate)
             'min_batch_size': 3,         # Minimum 3 material descriptions = 420+ chars (was 2)
             'max_batch_size': 4,         # Maximum 4 material descriptions = 560+ chars (was 3)
-            'winston_min_chars': 300,n            'separator': '\n\n',         # Clear separation for Winston sentence analysis
+            'winston_min_chars': 300,
+            'separator': '\n\n',         # Clear separation for Winston sentence analysis
         },
         'micro': {
             'eligible': False,           # Already meets minimum individually
@@ -408,8 +408,7 @@ class BatchGenerator:
                 f"Materials config not found: {config_file}"
             )
         
-        with open(config_file, 'r') as f:
-            config_data = yaml.safe_load(f)
+        config_data = load_yaml(config_file)
         
         base_prompt = config_data.get('prompts', {}).get(component_type)
         if not base_prompt:
@@ -601,15 +600,12 @@ BASE PROMPT:
         """
         materials_path = Path("data/materials/Materials.yaml")
         
-        with open(materials_path, 'r') as f:
-            data = yaml.safe_load(f)
+        data = load_yaml(materials_path)
         
         # Update material's component
         if material_name in data['materials']:
             data['materials'][material_name][component_type] = content
-            
-            with open(materials_path, 'w') as f:
-                yaml.dump(data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+            save_yaml(data, materials_path)
             
             self.logger.info(f"💾 Saved {component_type} for {material_name}")
         else:
@@ -679,7 +675,6 @@ BASE PROMPT:
         """
         materials_path = Path("data/materials/Materials.yaml")
         
-        with open(materials_path, 'r') as f:
-            data = yaml.safe_load(f)
+        data = load_yaml(materials_path)
         
         return data['materials'].get(material_name, {})

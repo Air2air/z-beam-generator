@@ -26,8 +26,8 @@ import logging
 from pathlib import Path
 from typing import Dict, Optional
 
-import yaml
-from processing.config.config_loader import ProcessingConfig
+from shared.utils.yaml_utils import load_yaml, save_yaml
+from generation.config.config_loader import ProcessingConfig
 
 logger = logging.getLogger(__name__)
 
@@ -58,8 +58,7 @@ class AuthorConfigLoader:
             return {"authors": {}}
         
         try:
-            with open(self.profiles_path, 'r') as f:
-                self._profiles_cache = yaml.safe_load(f)
+            self._profiles_cache = load_yaml(self.profiles_path)
             return self._profiles_cache
         except Exception as e:
             logger.error(f"Failed to load author profiles: {e}")
@@ -112,8 +111,7 @@ class AuthorConfigLoader:
             return base_config
         
         # Load base config data
-        with open(base_config.config_path, 'r') as f:
-            config_data = yaml.safe_load(f)
+        config_data = load_yaml(base_config.config_path)
         
         # Apply offsets (with clamping to [1, 3] for 1-3 scale)
         slider_fields = [
@@ -156,11 +154,12 @@ class AuthorConfigLoader:
         
         # Create temporary config with modified values
         import tempfile
-        with tempfile.NamedTemporaryFile(
+        tmp = tempfile.NamedTemporaryFile(
             mode='w', suffix='.yaml', delete=False
-        ) as tmp:
-            yaml.dump(config_data, tmp)
-            tmp_path = tmp.name
+        )
+        save_yaml(config_data, tmp.name)
+        tmp_path = tmp.name
+        tmp.close()
         
         # Return new ProcessingConfig with modified values
         return ProcessingConfig(tmp_path)

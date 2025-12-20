@@ -27,7 +27,7 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
-import yaml
+from shared.utils.yaml_utils import load_yaml, save_yaml
 
 logger = logging.getLogger(__name__)
 
@@ -117,8 +117,7 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
     try:
         # Read existing frontmatter (or create minimal structure)
         if frontmatter_path.exists():
-            with open(frontmatter_path, 'r', encoding='utf-8') as f:
-                frontmatter_data = yaml.safe_load(f) or {}
+            frontmatter_data = load_yaml(frontmatter_path) or {}
         else:
             # Initialize minimal frontmatter structure
             frontmatter_data = {
@@ -134,21 +133,9 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
         print(f"   ✅ Updated {domain} frontmatter {field_name} for {item_name}")
         logger.info(f"   ✅ Updated {domain} frontmatter {field_name} for {item_name}")
         
-        # Atomic write: temp file → rename
+        # Atomic write using save_yaml
         frontmatter_path.parent.mkdir(parents=True, exist_ok=True)
-        
-        with tempfile.NamedTemporaryFile(
-            mode='w',
-            encoding='utf-8',
-            dir=frontmatter_path.parent,
-            delete=False,
-            suffix='.yaml'
-        ) as temp_f:
-            yaml.safe_dump(frontmatter_data, temp_f, default_flow_style=False, allow_unicode=True, sort_keys=False)
-            temp_path = temp_f.name
-        
-        # Atomic rename
-        Path(temp_path).replace(frontmatter_path)
+        save_yaml(frontmatter_data, frontmatter_path)
         
         print(f"   💾 Frontmatter synced: {frontmatter_path}")
         logger.info(f"   💾 Frontmatter synced: {frontmatter_path}")
