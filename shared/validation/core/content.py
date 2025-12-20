@@ -299,3 +299,255 @@ class MicroIntegrationValidator(BaseValidator):
         
         success = not self.has_errors()
         return self.create_result(success=success)
+
+
+# ============================================================================
+# Word Count & Text Structure Validation (Consolidated - Dec 19, 2025)
+# ============================================================================
+
+import re
+
+
+def validate_word_count(
+    text: str,
+    min_words: Optional[int] = None,
+    max_words: Optional[int] = None,
+    component_type: str = "content"
+) -> Dict:
+    """
+    Validate word count against min/max bounds.
+    
+    Consolidates word count validation from:
+    - scripts/validation/validate_faq_output.py
+    - Multiple generation validators
+    
+    Args:
+        text: Content to validate
+        min_words: Minimum word count (optional)
+        max_words: Maximum word count (optional)
+        component_type: Type of content for error messages
+    
+    Returns:
+        Dict with keys:
+            - valid: bool
+            - word_count: int
+            - errors: List[str]
+            - warnings: List[str]
+    
+    Example:
+        >>> result = validate_word_count("This is a test.", min_words=3, max_words=10)
+        >>> result['valid']
+        True
+        >>> result['word_count']
+        4
+    """
+    errors = []
+    warnings = []
+    
+    # Count words (split on whitespace)
+    words = text.split()
+    word_count = len(words)
+    
+    # Check minimum
+    if min_words is not None and word_count < min_words:
+        errors.append(
+            f"{component_type} too short: {word_count} words "
+            f"(minimum: {min_words})"
+        )
+    
+    # Check maximum
+    if max_words is not None and word_count > max_words:
+        errors.append(
+            f"{component_type} too long: {word_count} words "
+            f"(maximum: {max_words})"
+        )
+    
+    # Warning for very short content
+    if word_count < 3:
+        warnings.append(f"{component_type} is very short ({word_count} words)")
+    
+    return {
+        'valid': len(errors) == 0,
+        'word_count': word_count,
+        'errors': errors,
+        'warnings': warnings
+    }
+
+
+def validate_sentence_count(
+    text: str,
+    min_sentences: Optional[int] = None,
+    max_sentences: Optional[int] = None
+) -> Dict:
+    """
+    Validate sentence count in text.
+    
+    Args:
+        text: Content to validate
+        min_sentences: Minimum sentence count (optional)
+        max_sentences: Maximum sentence count (optional)
+    
+    Returns:
+        Dict with validation results
+    """
+    errors = []
+    warnings = []
+    
+    # Count sentences (split on . ! ?)
+    sentences = re.split(r'[.!?]+', text)
+    sentences = [s.strip() for s in sentences if s.strip()]
+    sentence_count = len(sentences)
+    
+    if min_sentences is not None and sentence_count < min_sentences:
+        errors.append(
+            f"Too few sentences: {sentence_count} (minimum: {min_sentences})"
+        )
+    
+    if max_sentences is not None and sentence_count > max_sentences:
+        errors.append(
+            f"Too many sentences: {sentence_count} (maximum: {max_sentences})"
+        )
+    
+    return {
+        'valid': len(errors) == 0,
+        'sentence_count': sentence_count,
+        'errors': errors,
+        'warnings': warnings
+    }
+
+
+def validate_character_count(
+    text: str,
+    min_chars: Optional[int] = None,
+    max_chars: Optional[int] = None,
+    component_type: str = "content"
+) -> Dict:
+    """
+    Validate character count against bounds.
+    
+    Args:
+        text: Content to validate
+        min_chars: Minimum character count (optional)
+        max_chars: Maximum character count (optional)
+        component_type: Type of content for error messages
+    
+    Returns:
+        Dict with validation results
+    """
+    errors = []
+    warnings = []
+    
+    char_count = len(text)
+    
+    if min_chars is not None and char_count < min_chars:
+        errors.append(
+            f"{component_type} too short: {char_count} chars "
+            f"(minimum: {min_chars})"
+        )
+    
+    if max_chars is not None and char_count > max_chars:
+        errors.append(
+            f"{component_type} too long: {char_count} chars "
+            f"(maximum: {max_chars})"
+        )
+    
+    return {
+        'valid': len(errors) == 0,
+        'character_count': char_count,
+        'errors': errors,
+        'warnings': warnings
+    }
+
+
+def validate_text_structure(
+    text: str,
+    require_punctuation: bool = True,
+    require_capitalization: bool = True
+) -> Dict:
+    """
+    Validate basic text structure and formatting.
+    
+    Args:
+        text: Content to validate
+        require_punctuation: Check for ending punctuation
+        require_capitalization: Check for proper capitalization
+    
+    Returns:
+        Dict with validation results
+    """
+    errors = []
+    warnings = []
+    
+    if not text or not text.strip():
+        errors.append("Text is empty")
+        return {'valid': False, 'errors': errors, 'warnings': warnings}
+    
+    text = text.strip()
+    
+    # Check ending punctuation
+    if require_punctuation:
+        if not text[-1] in '.!?':
+            warnings.append("Text does not end with punctuation")
+    
+    # Check capitalization
+    if require_capitalization:
+        if not text[0].isupper():
+            warnings.append("Text does not start with capital letter")
+    
+    # Check for all caps (likely error)
+    if text.isupper() and len(text) > 10:
+        warnings.append("Text is all uppercase")
+    
+    # Check for excessive whitespace
+    if '  ' in text:
+        warnings.append("Text contains excessive whitespace")
+    
+    return {
+        'valid': len(errors) == 0,
+        'errors': errors,
+        'warnings': warnings
+    }
+
+
+def validate_content_completeness(
+    text: str,
+    forbidden_phrases: Optional[List[str]] = None
+) -> Dict:
+    """
+    Validate content is complete and not placeholder text.
+    
+    Args:
+        text: Content to validate
+        forbidden_phrases: List of phrases indicating incomplete content
+    
+    Returns:
+        Dict with validation results
+    """
+    errors = []
+    warnings = []
+    
+    # Default forbidden phrases
+    if forbidden_phrases is None:
+        forbidden_phrases = [
+            'todo', 'tbd', 'coming soon', 'placeholder',
+            '[insert', 'xxx', 'lorem ipsum'
+        ]
+    
+    text_lower = text.lower()
+    
+    found_phrases = []
+    for phrase in forbidden_phrases:
+        if phrase.lower() in text_lower:
+            found_phrases.append(phrase)
+    
+    if found_phrases:
+        errors.append(
+            f"Content contains placeholder phrases: {', '.join(found_phrases)}"
+        )
+    
+    return {
+        'valid': len(errors) == 0,
+        'errors': errors,
+        'warnings': warnings,
+        'found_placeholders': found_phrases
+    }
