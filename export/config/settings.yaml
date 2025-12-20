@@ -16,9 +16,6 @@ slugify_filenames: true  # Settings use material names with spaces/parens as key
 # ENRICHMENTS (Applied in order)
 # ============================================================================
 enrichments:
-  # 0. Restructure: Move machine_settings into relationships (Phase 1 - Dec 19, 2025)
-  - type: settings_restructure
-  
   # 1. Enrich material linkages (materials)
   - type: material_linkage
     field: materials
