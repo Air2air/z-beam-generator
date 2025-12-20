@@ -129,11 +129,11 @@ def test_settings_export():
                 # Check for key fields
                 has_settings = 'machine_settings' in data
                 has_challenges = 'challenges' in data
-                has_description = 'settings_description' in data
+                has_description = 'description' in data
                 
                 print(f'   ✓ machine_settings: {has_settings}')
                 print(f'   ✓ challenges: {has_challenges}')
-                print(f'   ✓ settings_description: {has_description}')
+                print(f'   ✓ description: {has_description}')
                 
                 results.append((material, True, len(sections)))
             else:

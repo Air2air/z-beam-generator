@@ -58,7 +58,7 @@ FIELD_ORDER = [
     'contamination_description',
     'description',
     'compound_description',
-    'settings_description',
+    'description',
     'micro',
     
     # TECHNICAL DATA (type-specific)

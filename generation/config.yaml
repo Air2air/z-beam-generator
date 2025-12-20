@@ -103,8 +103,8 @@ component_extraction:
     extraction_strategy: before_after  # Extract before/after paragraphs
   description:
     extraction_strategy: raw            # Return text as-is
-  settings_description:
-    extraction_strategy: raw            # Return text as-is
+  description:
+    extraction_strategy: raw            # Return text as-is (settings descriptions)
   description:
     extraction_strategy: raw            # Return text as-is (contamination descriptions)
   component_summary:
@@ -130,7 +130,7 @@ component_extraction:
 component_lengths:
   description: 60                 # Contaminant descriptions (±70% = 18-102 range) → actual ~120-180 words
   description: 30        # Material subtitles (±70% = 9-51 range)
-  settings_description: 30        # Settings subtitles (±70% = 9-51 range)
+  description: 30        # Settings descriptions (±70% = 9-51 range)
   micro: 80                       # Before/after captions (±70% = 24-136 range)
   faq: 50                         # FAQ answers (±70% = 15-85 range)
 

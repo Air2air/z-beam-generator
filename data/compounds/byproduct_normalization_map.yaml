@@ -1,0 +1,171 @@
+# Byproduct Normalization Mapping
+# Maps various byproduct names in Contaminants.yaml to standard compound IDs in Compounds.yaml
+# Last Updated: 2025-12-19
+
+metadata:
+  version: 1.0.0
+  purpose: Normalize byproduct compound names for association linkage
+  last_updated: '2025-12-19'
+  total_mappings: 0
+
+# Format:
+# byproduct_name: compound_id
+
+# PHASE 1: Quick Wins (High-frequency variations of existing compounds)
+# =============================================================================
+
+# Water vapor variations (65 uses)
+H2O: water-vapor
+H₂O: water-vapor
+water vapor: water-vapor
+water: water-vapor
+
+# VOCs variations (already exists as 'vocs')
+VOCs: vocs
+Volatile Organic Compounds: vocs
+Volatile organic compounds: vocs
+Various organic volatiles: vocs
+
+# PAHs variations (already exists as 'pahs')
+PAHs: pahs
+PAH compounds: pahs
+Polycyclic Aromatic Hydrocarbons: pahs
+
+# Iron oxide variations (already exists as 'iron-oxide')
+Fe2O3: iron-oxide
+Fe3O4: iron-oxide
+Fe2O3 nanoparticles: iron-oxide
+Fe3O4 (iron oxide nanoparticles): iron-oxide
+
+# Nitrogen oxides variations (already exists as 'nitrogen-oxides')
+nitrogen-oxides: nitrogen-oxides
+
+# Carbon dioxide/monoxide (already exist)
+carbon-dioxide: carbon-dioxide
+carbon-monoxide: carbon-monoxide
+
+# Zinc oxide variations (already exists as 'zinc-oxide')
+ZnO: zinc-oxide
+Zn: zinc-oxide
+ZnO nanoparticles: zinc-oxide
+Zn vapor: zinc-oxide
+
+# Chromium VI variations (already exists as 'chromium-vi')
+CrO3: chromium-vi
+CrO2: chromium-vi
+Cr2O3 nanoparticles: chromium-vi
+Chromium compounds (if chromate coating): chromium-vi
+
+# PHASE 2: New Priority Compounds (To be added to Compounds.yaml)
+# =============================================================================
+
+# Carbon particulates (13 uses) - HIGH PRIORITY
+carbon_particulates: carbon-particulates
+carbon particulates: carbon-particulates
+Carbon nanoparticles: carbon-particulates
+C_nanoparticles: carbon-particulates
+C (nanoparticles): carbon-particulates
+carbon_soot: carbon-particulates
+C (soot): carbon-particulates
+carbon_black: carbon-particulates
+Carbon black: carbon-particulates
+Carbon char: carbon-particulates
+amorphous carbon: carbon-particulates
+amorphous_carbon: carbon-particulates
+
+# Carbon ash/char (5 uses)
+carbon_ash: carbon-ash
+Carbonaceous char: carbon-ash
+carbonaceous char: carbon-ash
+Carbonaceous particles: carbon-ash
+carbonaceous particles: carbon-ash
+Carbonaceous residue: carbon-ash
+carbonaceous residue: carbon-ash
+carbonized_residue: carbon-ash
+Graphite/soot particles: carbon-ash
+graphite/C: carbon-ash
+
+# Metal oxides - generic (20+ uses)
+metal oxides: metal-oxides-mixed
+Metal oxides: metal-oxides-mixed
+Metal oxides (various): metal-oxides-mixed
+Metal oxides (varies by coating): metal-oxides-mixed
+Metal oxides (varies by coating type): metal-oxides-mixed
+Metal oxides (from fillers): metal-oxides-mixed
+Metal oxides (from metallic fillers): metal-oxides-mixed
+Metal oxides (Fe2O3, Cr2O3, etc.): metal-oxides-mixed
+Metal oxide fumes: metal-oxides-mixed
+metal oxide fumes: metal-oxides-mixed
+Metal oxide nanoparticles: metal-oxides-mixed
+Metal oxides/nitrides: metal-oxides-mixed
+various oxides: metal-oxides-mixed
+
+# Nanoparticulates - generic (20+ uses)
+nanoparticles: nanoparticulates
+Nanoparticulate: nanoparticulates
+Nanoparticulate aerosol: nanoparticulates
+Nanoparticulate debris: nanoparticulates
+SiO2 nanoparticles: nanoparticulates
+silicon_dioxide_nanoparticles: nanoparticulates
+
+# Organic residues/fragments (10+ uses)
+organic fragments: organic-residues
+Organic fragments: organic-residues
+organic residues: organic-residues
+organic volatiles: organic-residues
+organic_vapors: organic-residues
+Various hydrocarbons: organic-residues
+various hydrocarbons: organic-residues
+hydrocarbons (CxHy): organic-residues
+hydrocarbon aerosols: organic-residues
+organic combustion products: organic-residues
+
+# PHASE 3: Specific Metal Compounds (To be added to Compounds.yaml)
+# =============================================================================
+
+# Copper oxide
+CuO: copper-oxide
+Cu2O: copper-oxide
+Cu₂O: copper-oxide
+Cu/CuO: copper-oxide
+Cu nanoparticles: copper-oxide
+Cu: copper-oxide
+
+# Aluminum oxide
+aluminum-oxide: aluminum-oxide
+Al vapor: aluminum-oxide
+Aluminum vapor: aluminum-oxide
+
+# Silicon dioxide
+SiO2: silicon-dioxide
+SiO₂: silicon-dioxide
+
+# Calcium oxide
+CaO: calcium-oxide
+CaO/MgO: calcium-oxide
+CaO/MgO (calcined minerals): calcium-oxide
+CaCO₃: calcium-oxide
+CaCO₃ nanoparticles: calcium-oxide
+
+# Tin oxide
+SnO: tin-oxide
+SnO2: tin-oxide
+Sn: tin-oxide
+
+# Lead oxide
+PbO: lead-oxide
+Pb: lead-oxide
+Pb-containing particulates: lead-oxide
+
+# Cadmium oxide
+CdO: cadmium-oxide
+Cd: cadmium-oxide
+
+# Other metal vapors (generic)
+Metal vapor: metal-vapors-mixed
+metal vapor plasma: metal-vapors-mixed
+Metal vapor/particulates: metal-vapors-mixed
+Brass vapor: metal-vapors-mixed
+Ni vapor: metal-vapors-mixed
+Ni: metal-vapors-mixed
+NiO: metal-vapors-mixed

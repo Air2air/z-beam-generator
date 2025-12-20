@@ -37,7 +37,7 @@ settings:
       thermal_management: [...]
       precision_requirements: [...]
       contamination_challenges: [...]
-    settings_description: "AI-generated description..."
+    description: "AI-generated description..."
 ```
 
 **Coverage**: 159/159 materials (100%)
@@ -126,7 +126,7 @@ settings = load_settings_cached()
 |-------|----------|--------|
 | machine_settings | 159/159 (100%) | ✅ COMPLETE |
 | challenges | 159/159 (100%) | ✅ COMPLETE |
-| settings_description | 159/159 (100%) | ✅ COMPLETE |
+| description | 159/159 (100%) | ✅ COMPLETE |
 
 **Last Verified**: November 26, 2025
 
@@ -136,7 +136,7 @@ settings = load_settings_cached()
 
 ### Settings Generation
 ```
-1. AI generates settings_description
+1. AI generates description
    ↓
 2. Saves to Settings.yaml
    ↓

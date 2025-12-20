@@ -1,146 +1,98 @@
-# Materials Domain Configuration
-# Configuration for UniversalFrontmatterExporter (Phase 2)
-# Created: December 17, 2025
-
-# ============================================================================
-# DOMAIN IDENTITY
-# ============================================================================
 domain: materials
 source_file: data/materials/Materials.yaml
 output_path: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/materials
 items_key: materials
-filename_suffix: ""
-
-# ============================================================================
-# ENRICHMENTS (Applied in order)
-# ============================================================================
+filename_suffix: ''
 enrichments:
-  # 0. Restructure: Consolidate root fields into relationships (Phase 3 - Dec 19, 2025)
-  - type: universal_restructure
-    domain: materials
-    cleanup_rules:
-      old_relationship_keys:
-        - related_contaminants
-        - related_materials
-        - related_compounds
-      legacy_fields:
-        - metadata
-        - eeat
-        - voice_enhanced
-      duplicate_fields:
-        regulatory_standards: regulatory  # root → relationships.regulatory
-  
-  # 1. Enrich compound linkages (produces_compounds)
-  - type: compound_linkage
-    field: produces_compounds
-    title: Compounds Produced
-    description: Hazardous fumes and particles generated when laser processing this material
-    source: data/compounds/Compounds.yaml
-    defaults:
-      - concentration_range
-      - hazard_class
-      - exposure_limits
-      - control_measures
-      - cas_number
-      - compound_category
-  
-  # 2. Enrich contaminant linkages (removes_contaminants)
-  - type: contaminant_linkage
-    field: removes_contaminants
-    title: Contaminants Removed
-    description: Types of contamination that can be effectively cleaned from this material
-    source: data/contaminants/Contaminants.yaml
-    defaults:
-      - category
-      - subcategory
-      - hazard_level
-      - contaminant_category
-      - commonality_score
-  
-  # 3. Enrich related material linkages
-  - type: material_linkage
-    field: related_materials
-    title: Related Materials
-    description: Similar materials with comparable laser cleaning properties and characteristics
-    source: data/materials/Materials.yaml
-    defaults:
-      - category
-      - subcategory
-      - material_type
-      - thermal_conductivity
-      - reflectivity
-  
-  # 4. Enrich related settings linkages
-  - type: settings_linkage
-    field: related_settings
-    title: Recommended Settings
-    description: Laser parameters and configurations optimized for cleaning this material
-    source: data/settings/Settings.yaml
-    defaults:
-      - setting_category
-      - power_watts
-      - pulse_frequency_hz
-      - recommended_for
-  
-  # 5. Add timestamps
-  - type: timestamp
-    fields:
-      - datePublished
-      - dateModified
-  
-  # 6. Expand author field with full profile
-  - type: author
-  
-  # 7. Populate relationships from DomainLinkagesService
-  - type: relationships
-    domain: materials
-  
-  # 8. Group relationships into semantic categories
-  - type: relationship_grouping
-    domain: materials
-  
-  # 9. Generate breadcrumb navigation (array format)
-  - type: breadcrumb
-    domain: materials
-    category_field: category
-    subcategory_field: subcategory
-    name_field: name
-
-# ============================================================================
-# LIBRARY ENRICHMENTS (New modular system)
-# ============================================================================
+- type: universal_restructure
+  domain: materials
+  cleanup_rules:
+    old_relationship_keys:
+    - related_contaminants
+    - related_materials
+    - related_compounds
+    legacy_fields:
+    - metadata
+    - eeat
+    - voice_enhanced
+    duplicate_fields:
+      regulatory_standards: regulatory
+- type: compound_linkage
+  field: produces_compounds
+  title: Compounds Produced
+  description: Hazardous fumes and particles generated when laser processing this
+    material
+  source: data/compounds/Compounds.yaml
+  defaults:
+  - concentration_range
+  - hazard_class
+  - exposure_limits
+  - control_measures
+  - cas_number
+  - compound_category
+- type: contaminant_linkage
+  field: removes_contaminants
+  title: Contaminants Removed
+  description: Types of contamination that can be effectively cleaned from this material
+  source: data/contaminants/Contaminants.yaml
+  defaults:
+  - category
+  - subcategory
+  - hazard_level
+  - contaminant_category
+  - commonality_score
+- type: material_linkage
+  field: related_materials
+  title: Related Materials
+  description: Similar materials with comparable laser cleaning properties and characteristics
+  source: data/materials/Materials.yaml
+  defaults:
+  - category
+  - subcategory
+  - material_type
+  - thermal_conductivity
+  - reflectivity
+- type: settings_linkage
+  field: related_settings
+  title: Recommended Settings
+  description: Laser parameters and configurations optimized for cleaning this material
+  source: data/settings/Settings.yaml
+  defaults:
+  - setting_category
+  - power_watts
+  - pulse_frequency_hz
+  - recommended_for
+- type: timestamp
+  fields:
+  - datePublished
+  - dateModified
+- type: author
+- type: relationships
+  domain: materials
+- type: relationship_grouping
+  domain: materials
+- type: breadcrumb
+  domain: materials
+  category_field: category
+  subcategory_field: subcategory
+  name_field: name
 library_enrichments:
   enabled: true
-  
   enrichments:
-    # Regulatory Standards
-    - type: regulatory_standards
-      relationship_field: relationships.regulatory_standards
-      output_field: regulatory_standards_detail
-      
-    # Disabled until library files are populated:
-    # Material Applications
-    # - type: material_applications
-    #   relationship_field: relationships.material_applications
-    #   output_field: material_applications_detail
-      
-    # Material Properties
-    # - type: material_properties
-    #   relationship_field: relationships.material_properties
-    #   output_field: material_properties_detail
-
-# ============================================================================
-# CONTENT GENERATORS (Applied in order)
-# ============================================================================
+  - type: regulatory_standards
+    relationship_field: relationships.regulatory_standards
+    output_field: regulatory_standards_detail
 generators:
-  # 1. Remove redundant fields (Changes 2 & 5 - Dec 19, 2025)
-  - type: field_cleanup
-  
-  # 2. Generate SEO meta description from description
-  - type: seo_description
-    source_field: description
-    output_field: seo_description
-    max_length: 160
-  
-  # Note: Breadcrumb navigation generated by TrivialFrontmatterExporter
-  # (already creates proper array structure with label/href objects)
+- type: field_cleanup
+- type: seo_description
+  source_field: description
+  output_field: seo_description
+  max_length: 160
+enrichers:
+- name: DomainLinkagesEnricher
+  enabled: true
+  config:
+    relationship_types:
+    - related_settings
+    - removes_contaminants
+    - produces_compounds

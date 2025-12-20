@@ -69,6 +69,8 @@ from export.enrichers.linkage.universal_restructure_enricher import (
 from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
 from export.enrichers.metadata.name_enricher import NameEnricher
 from export.enrichers.settings.material_category_enricher import MaterialCategoryEnricher  # Dec 19, 2025
+# DEPRECATED (Dec 19, 2025): RelationshipURLEnricher no longer needed - URLs come from full_path in source data
+# from export.enrichers.relationships.relationship_url_enricher import RelationshipURLEnricher
 
 logger = logging.getLogger(__name__)
 
@@ -443,6 +445,7 @@ ENRICHER_REGISTRY = {
     'author': AuthorEnricher,
     'name': NameEnricher,  # Adds name field from id if missing
     'material_category': MaterialCategoryEnricher,  # Adds category/subcategory from Materials.yaml (Dec 19, 2025)
+    # DEPRECATED (Dec 19, 2025): 'relationship_url': RelationshipURLEnricher - No longer needed, URLs from full_path
     'relationships': DomainLinkagesEnricher,
     'relationship_grouping': RelationshipGroupingEnricher,
     'relationships_slug': DomainLinkagesSlugEnricher,

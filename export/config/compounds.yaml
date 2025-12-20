@@ -1,163 +1,115 @@
-# Compounds Domain Configuration
-# Configuration for UniversalFrontmatterExporter (Phase 2)
-# Created: December 17, 2025
-
-# ============================================================================
-# DOMAIN IDENTITY
-# ============================================================================
 domain: compounds
 source_file: data/compounds/Compounds.yaml
 output_path: ../z-beam/frontmatter/compounds
 items_key: compounds
 id_field: id
 filename_suffix: -compound
-sluggify_filenames: true  # Ensure ID field gets slugified with suffix (Dec 19, 2025)
-
-# ============================================================================
-# ENRICHMENTS (Applied in order)
-# ============================================================================
+sluggify_filenames: true
 enrichments:
-  # 0. RESTRUCTURE: Move top-level fields to relationships (NEW - Phase 1)
-  - type: universal_restructure
-    domain: compounds
-    cleanup_rules:
-      old_relationship_keys:
-        - related_contaminants
-        - related_materials
-        - related_compounds
-      legacy_fields:
-        - metadata
-        - eeat
-        - voice_enhanced
-      move_to_relationships:
-        - chemical_properties
-        - physical_properties
-        - toxicity
-        - formation_sources
-        - health_effects
-        - exposure_monitoring
-        - personal_protection
-        - emergency_response
-        - occupational_exposure_limits
-        - regulatory_frameworks
-        - ventilation_systems
-        - engineering_controls
-        - safe_work_practices
-        - medical_surveillance
-        - risk_assessment
-  
-  # 1. Enrich contaminant linkages (source_contaminants)
-  - type: contaminant_linkage
-    field: source_contaminants
-    title: Found in Contaminants
-    description: Contamination patterns that contain or release this compound
-    source: data/contaminants/Contaminants.yaml
-    defaults:
-      - category
-      - subcategory
-      - hazard_level
-      - contaminant_category
-      - commonality_score
-  
-  # 2. Enrich material linkages (affected_materials)
-  - type: material_linkage
-    field: affected_materials
-    title: Produced from Materials
-    description: Materials that generate this compound when laser processed
-    source: data/materials/Materials.yaml
-    defaults:
-      - category
-      - subcategory
-      - material_type
-      - thermal_conductivity
-      - reflectivity
-  
-  # 3. Enrich related settings linkages
-  - type: settings_linkage
-    field: related_settings
-    title: Relevant Settings
-    description: Laser configurations where this compound safety data is applicable
-    source: data/settings/Settings.yaml
-    defaults:
-      - setting_category
-      - power_watts
-      - pulse_frequency_hz
-      - recommended_for
-  
-  # 4. Add timestamps
-  - type: timestamp
-    fields:
-      - datePublished
-      - dateModified
-  
-  # 5. Expand author field with full profile
-  - type: author
-  
-  # 6. Generate breadcrumb navigation (array format)
-  - type: breadcrumb
-    domain: compounds
-    category_field: category  # Fixed from compound_category (Dec 19, 2025)
-    subcategory_field: subcategory  # Added (Dec 19, 2025)
-    name_field: name  # Fixed from common_name (Dec 19, 2025)
-
-# ============================================================================
-# LIBRARY ENRICHMENTS (New modular system)
-# ============================================================================
+- type: universal_restructure
+  domain: compounds
+  cleanup_rules:
+    old_relationship_keys:
+    - related_contaminants
+    - related_materials
+    - related_compounds
+    legacy_fields:
+    - metadata
+    - eeat
+    - voice_enhanced
+    move_to_relationships:
+    - chemical_properties
+    - physical_properties
+    - toxicity
+    - formation_sources
+    - health_effects
+    - exposure_monitoring
+    - personal_protection
+    - emergency_response
+    - occupational_exposure_limits
+    - regulatory_frameworks
+    - ventilation_systems
+    - engineering_controls
+    - safe_work_practices
+    - medical_surveillance
+    - risk_assessment
+- type: contaminant_linkage
+  field: source_contaminants
+  title: Found in Contaminants
+  description: Contamination patterns that contain or release this compound
+  source: data/contaminants/Contaminants.yaml
+  defaults:
+  - category
+  - subcategory
+  - hazard_level
+  - contaminant_category
+  - commonality_score
+- type: material_linkage
+  field: affected_materials
+  title: Produced from Materials
+  description: Materials that generate this compound when laser processed
+  source: data/materials/Materials.yaml
+  defaults:
+  - category
+  - subcategory
+  - material_type
+  - thermal_conductivity
+  - reflectivity
+- type: settings_linkage
+  field: related_settings
+  title: Relevant Settings
+  description: Laser configurations where this compound safety data is applicable
+  source: data/settings/Settings.yaml
+  defaults:
+  - setting_category
+  - power_watts
+  - pulse_frequency_hz
+  - recommended_for
+- type: timestamp
+  fields:
+  - datePublished
+  - dateModified
+- type: author
+- type: breadcrumb
+  domain: compounds
+  category_field: category
+  subcategory_field: subcategory
+  name_field: name
 library_enrichments:
-  # Enable library-based enrichment for compounds
   enabled: true
-  
-  # Define enrichment mappings (relationship field → output field)
   enrichments:
-    # Chemical Properties
-    - type: chemical_properties
-      relationship_field: relationships.chemical_properties
-      output_field: chemical_properties_detail
-      
-    # Health Effects
-    - type: health_effects
-      relationship_field: relationships.health_effects
-      output_field: health_effects_detail
-      
-    # Environmental Impact
-    - type: environmental_impact
-      relationship_field: relationships.environmental_impact
-      output_field: environmental_impact_detail
-      
-    # Detection Methods
-    - type: detection_monitoring
-      relationship_field: relationships.detection_monitoring
-      output_field: detection_methods_detail
-      
-    # PPE Requirements
-    - type: ppe_requirements
-      relationship_field: relationships.ppe_requirements
-      output_field: ppe_requirements_detail
-      
-    # Emergency Response
-    - type: emergency_response
-      relationship_field: relationships.emergency_response
-      output_field: emergency_response_detail
-
-# ============================================================================
-# CONTENT GENERATORS (Applied in order)
-# ============================================================================
+  - type: chemical_properties
+    relationship_field: relationships.chemical_properties
+    output_field: chemical_properties_detail
+  - type: health_effects
+    relationship_field: relationships.health_effects
+    output_field: health_effects_detail
+  - type: environmental_impact
+    relationship_field: relationships.environmental_impact
+    output_field: environmental_impact_detail
+  - type: detection_monitoring
+    relationship_field: relationships.detection_monitoring
+    output_field: detection_methods_detail
+  - type: ppe_requirements
+    relationship_field: relationships.ppe_requirements
+    output_field: ppe_requirements_detail
+  - type: emergency_response
+    relationship_field: relationships.emergency_response
+    output_field: emergency_response_detail
 generators:
-  # 1. Remove redundant fields (Changes 2 & 5 - Dec 19, 2025)
-  - type: field_cleanup
-  
-  # 2. Generate SEO meta description from compound_description
-  - type: seo_description
-    source_field: compound_description
-    output_field: seo_description
-    max_length: 160
-  
-  # Note: Breadcrumb navigation generated by export process
-  # (creates proper array structure with label/href objects)
-  
-  # 2. Generate excerpt from compound_description
-  - type: excerpt
-    source_field: compound_description
-    output_field: excerpt
-    mode: sentences
-    length: 2
+- type: field_cleanup
+- type: seo_description
+  source_field: compound_description
+  output_field: seo_description
+  max_length: 160
+- type: excerpt
+  source_field: compound_description
+  output_field: excerpt
+  mode: sentences
+  length: 2
+enrichers:
+- name: DomainLinkagesEnricher
+  enabled: true
+  config:
+    relationship_types:
+    - produced_by_materials

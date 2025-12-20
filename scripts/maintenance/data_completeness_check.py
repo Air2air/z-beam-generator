@@ -18,7 +18,7 @@ from typing import Dict, List, Tuple
 FIELD_TIERS = {
     'critical_ai_content': {
         'materials': ['description', 'micro', 'faq'],
-        'settings': ['settings_description'],
+        'settings': ['description'],
         'description': 'AI-generated text content',
         'required': True,
         'blocking': True,
@@ -191,7 +191,7 @@ def check_settings_completeness() -> Dict:
                 value = setting_data.get(field)
                 
                 # Determine field type
-                if field in ['settings_description', 'name', 'category', 'title']:
+                if field in ['description', 'name', 'category', 'title']:
                     field_type = 'string'
                 elif field in ['author', 'images', 'machine_settings', 'challenges']:
                     field_type = 'dict'

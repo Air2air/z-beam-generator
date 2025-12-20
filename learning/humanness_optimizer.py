@@ -118,7 +118,7 @@ class HumannessOptimizer:
         # Compact template follows separation of concerns: voice from personas, structure from humanness
         # Micro prompts are ~5500 chars with compact template, would exceed limit with full
         # Settings_description also needs compact to avoid exceeding limits
-        # Material_description needs compact to prevent prompt bloat (full version causes 12k+ char prompts)
+        # Description field needs compact to prevent prompt bloat (full version causes 12k+ char prompts)
         # Contaminant descriptions need compact to prevent voice override issues
         self.compact_components = {
             'micro', 

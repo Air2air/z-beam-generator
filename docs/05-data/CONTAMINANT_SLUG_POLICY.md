@@ -210,9 +210,9 @@ def test_crosslink_to_contaminant():
 
 ### 3. URL Self-Documentation
 Users and search engines immediately understand the content type from the URL:
-- `/materials/aluminum` - Material page
-- `/settings/aluminum-settings` - Settings page
-- `/contamination/rust-formation-contamination` - Contamination page
+- `/materials/metal/non-ferrous/aluminum` - Material page (with categories)
+- `/settings/metal/non-ferrous/aluminum-settings` - Settings page (with categories)
+- `/contaminants/oxidation/ferrous/rust-formation-contamination` - Contamination page (with categories)
 
 ### 4. Future-Proofing
 If we add more contamination subcategories or related content types, the suffix provides clear namespace boundaries.

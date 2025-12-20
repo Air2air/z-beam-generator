@@ -28,8 +28,6 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
 
 from normalize_frontmatter_structure import (
-    load_yaml,
-    save_yaml,
     flatten_relationships,
     remove_duplicate_fields,
     reorder_fields,
@@ -37,6 +35,7 @@ from normalize_frontmatter_structure import (
     normalize_file,
     FIELD_ORDER
 )
+from shared.utils.file_io import read_yaml_file as load_yaml, write_yaml_file as save_yaml
 
 
 class TestYAMLLoading:

@@ -33,6 +33,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from export.enrichers.base import BaseEnricher
+from export.enrichers.validation import EnricherOutputValidator, ValidationError
 from shared.utils.yaml_utils import load_yaml
 
 logger = logging.getLogger(__name__)
@@ -88,6 +89,9 @@ class UniversalLinkageEnricher(BaseEnricher):
         # Lazy-loaded source data
         self._source_data: Optional[Dict] = None
         
+        # Initialize validator
+        self.validator = EnricherOutputValidator()
+        
         logger.info(
             f"Initialized UniversalLinkageEnricher: "
             f"field={self.field}, source_key={self.source_key}, "
@@ -135,6 +139,18 @@ class UniversalLinkageEnricher(BaseEnricher):
         logger.debug(
             f"Enriched {len(enriched_items)} items in field '{self.field}'"
         )
+        
+        # Validate output (optional - can be disabled with validate_output=False)
+        if self.config.get('validate_output', True):
+            try:
+                self.validator.validate_linkage_enrichment(
+                    frontmatter,
+                    self.field,
+                    expected_min=0  # Optional field
+                )
+            except ValidationError as e:
+                logger.error(f"Linkage enrichment validation failed: {e}")
+                # Log but don't fail - validation is informational
         
         return frontmatter
     

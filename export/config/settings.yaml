@@ -1,119 +1,77 @@
-# Settings Domain Configuration
-# Configuration for UniversalFrontmatterExporter (Phase 2)
-# Created: December 17, 2025
-
-# ============================================================================
-# DOMAIN IDENTITY
-# ============================================================================
 domain: settings
 source_file: data/settings/Settings.yaml
 output_path: ../z-beam/frontmatter/settings
 items_key: settings
 filename_suffix: -settings
-slugify_filenames: true  # Settings use material names with spaces/parens as keys
-
-# ============================================================================
-# ENRICHMENTS (Applied in order)
-# ============================================================================
+slugify_filenames: true
 enrichments:
-  # 1. Enrich material linkages (materials)
-  - type: material_linkage
-    field: materials
-    title: Applicable Materials
-    description: Materials that can be safely cleaned using these laser parameters
-    source: data/materials/Materials.yaml
-    defaults:
-      - category
-      - subcategory
-      - material_type
-      - thermal_conductivity
-      - reflectivity
-  
-  # 2. Enrich contaminant linkages (contaminants)
-  - type: contaminant_linkage
-    field: contaminants
-    title: Effective Against
-    description: Types of contamination that can be removed using these laser settings
-    source: data/contaminants/Contaminants.yaml
-    defaults:
-      - category
-      - subcategory
-      - hazard_level
-      - contaminant_category
-      - commonality_score
-  
-  # 3. Enrich compound linkages (relevant_compounds)
-  - type: compound_linkage
-    field: relevant_compounds
-    title: Safety Considerations
-    description: Hazardous compounds that may be generated when using these settings
-    source: data/compounds/Compounds.yaml
-    defaults:
-      - concentration_range
-      - hazard_class
-      - exposure_limits
-      - control_measures
-      - cas_number
-      - compound_category
-  
-  # 4. Add timestamps
-  - type: timestamp
-    fields:
-      - datePublished
-      - dateModified
-  
-  # 5. Expand author field with full profile
-  - type: author
-  
-  # 6. Add name field from id (Settings.yaml uses material name as key)
-  - type: name
-  
-  # 7. Add category/subcategory from Materials.yaml (Dec 19, 2025)
-  # Required for hierarchical paths: /settings/metal/non-ferrous/aluminum-settings
-  - type: material_category
-  
-  # 8. Generate breadcrumb navigation (array format)
-  - type: breadcrumb
-    domain: settings
-    # Use actual field names from MaterialCategoryEnricher (Dec 19, 2025)
-    category_field: category
-    subcategory_field: subcategory
-    name_field: name
-
-
-# ============================================================================
-# LIBRARY ENRICHMENTS (Expand library relationships with full data)
-# ============================================================================
+- type: material_linkage
+  field: materials
+  title: Applicable Materials
+  description: Materials that can be safely cleaned using these laser parameters
+  source: data/materials/Materials.yaml
+  defaults:
+  - category
+  - subcategory
+  - material_type
+  - thermal_conductivity
+  - reflectivity
+- type: contaminant_linkage
+  field: contaminants
+  title: Effective Against
+  description: Types of contamination that can be removed using these laser settings
+  source: data/contaminants/Contaminants.yaml
+  defaults:
+  - category
+  - subcategory
+  - hazard_level
+  - contaminant_category
+  - commonality_score
+- type: compound_linkage
+  field: relevant_compounds
+  title: Safety Considerations
+  description: Hazardous compounds that may be generated when using these settings
+  source: data/compounds/Compounds.yaml
+  defaults:
+  - concentration_range
+  - hazard_class
+  - exposure_limits
+  - control_measures
+  - cas_number
+  - compound_category
+- type: timestamp
+  fields:
+  - datePublished
+  - dateModified
+- type: author
+- type: name
+- type: material_category
+- type: breadcrumb
+  domain: settings
+  category_field: category
+  subcategory_field: subcategory
+  name_field: name
 library_enrichments:
-  # Enable library-based enrichment for settings
   enabled: true
-  
-  # Define enrichment mappings (relationship field → output field)
   enrichments:
-    # Regulatory Standards
-    - type: regulatory_standards
-      relationship_field: relationships.regulatory_standards
-      output_field: regulatory_standards_detail
-
-# ============================================================================
-# CONTENT GENERATORS (Applied in order)
-# ============================================================================
+  - type: regulatory_standards
+    relationship_field: relationships.regulatory_standards
+    output_field: regulatory_standards_detail
 generators:
-  # 1. Remove redundant fields (Changes 2 & 5 - Dec 19, 2025)
-  - type: field_cleanup
-  
-  # 2. Generate SEO meta description from settings_description
-  - type: seo_description
-    source_field: settings_description
-    output_field: seo_description
-    max_length: 160
-  
-  # Note: Breadcrumb navigation generated by export process
-  # (creates proper array structure with label/href objects)
-  
-  # 2. Generate excerpt from settings_description
-  - type: excerpt
-    source_field: settings_description
-    output_field: excerpt
-    mode: words
-    length: 50
+- type: field_cleanup
+- type: seo_description
+  source_field: description
+  output_field: seo_description
+  max_length: 160
+- type: excerpt
+  source_field: description
+  output_field: excerpt
+  mode: words
+  length: 50
+enrichers:
+- name: DomainLinkagesEnricher
+  enabled: true
+  config:
+    relationship_types:
+    - applies_to_materials
+    - effective_against_contaminants

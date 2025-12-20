@@ -62,7 +62,7 @@ Each component type should have appropriate constraints based on content depth:
 |-----------|----------------------|----------------|
 | description | (1-2 sentences) | 30-50 words |
 | contaminant description | (2-3 sentences) | 70-90 words |
-| settings_description | (1-2 sentences) | 30-50 words |
+| description | (1-2 sentences) | 30-50 words |
 | micro (before/after) | (2 short paragraphs) | 60-80 words |
 | faq answer | (2-4 sentences) | 40-80 words |
 
@@ -113,7 +113,7 @@ Write a concise technical description (1-2 sentences) about {material} for laser
 Write a concise technical description (2-3 sentences) about {identifier} contamination for laser cleaning applications.
 ```
 
-**Settings Domain** (`domains/settings/prompts/settings_description.txt`):
+**Settings Domain** (`domains/settings/prompts/description.txt`):
 ```
 Write a concise technical description (1-2 sentences) about {setting} for laser cleaning applications.
 ```

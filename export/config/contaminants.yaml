@@ -1,136 +1,97 @@
-# Contaminants Domain Configuration
-# Configuration for UniversalFrontmatterExporter (Phase 2)
-# Created: December 17, 2025
-
-# ============================================================================
-# DOMAIN IDENTITY
-# ============================================================================
 domain: contaminants
 source_file: data/contaminants/Contaminants.yaml
 output_path: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/contaminants
 items_key: contamination_patterns
 id_field: id
-filename_suffix: ""
-
-# ============================================================================
-# ENRICHMENTS (Applied in order)
-# ============================================================================
+filename_suffix: ''
 enrichments:
-  # 0. Restructure contaminant frontmatter (move technical data to relationships)
-  - type: universal_restructure
-    domain: contaminants
-    cleanup_rules:
-      old_relationship_keys:
-        - related_contaminants
-        - related_materials
-        - related_compounds
-      legacy_fields:
-        - metadata
-        - voice_enhanced
-      move_to_relationships:
-        - visual_characteristics
-        - laser_properties
-        - eeat
-        - valid_materials
-        - invalid_materials
-        - prohibited_materials
-        - regulatory_standards_detail
-        - context_notes
-        - realism_notes
-        - formation_conditions
-        - chemical_formula
-        - scientific_name
-        - required_elements
-  
-  # 1. Enrich compound linkages (produces_compounds when removed)
-  - type: compound_linkage
-    field: produces_compounds
-    title: Compounds Released
-    description: Hazardous fumes and particles generated when removing this contamination
-    source: data/compounds/Compounds.yaml
-    defaults:
-      - concentration_range
-      - hazard_class
-      - exposure_limits
-      - control_measures
-      - cas_number
-      - compound_category
-  
-  # 2. Enrich material linkages (materials)
-  - type: material_linkage
-    field: materials
-    title: Found on Materials
-    description: Materials commonly affected by this type of contamination
-    source: data/materials/Materials.yaml
-    defaults:
-      - category
-      - subcategory
-      - material_type
-      - thermal_conductivity
-      - reflectivity
-  
-  # 3. Enrich related settings linkages
-  - type: settings_linkage
-    field: related_settings
-    title: Effective Settings
-    description: Laser parameters optimized for removing this type of contamination
-    source: data/settings/Settings.yaml
-    defaults:
-      - setting_category
-      - power_watts
-      - pulse_frequency_hz
-      - recommended_for
-  
-  # 4. Add timestamps
-  - type: timestamp
-    fields:
-      - datePublished
-      - dateModified
-  
-  # 5. Expand author field with full profile
-  - type: author
-  
-  # 6. Generate breadcrumb navigation (array format)
-  - type: breadcrumb
-    domain: contaminants
-    category_field: category
-    subcategory_field: subcategory
-    name_field: name
-
-# ============================================================================
-# LIBRARY ENRICHMENTS (Expand library relationships with full data)
-# ============================================================================
+- type: universal_restructure
+  domain: contaminants
+  cleanup_rules:
+    old_relationship_keys:
+    - related_contaminants
+    - related_materials
+    - related_compounds
+    legacy_fields:
+    - metadata
+    - voice_enhanced
+    move_to_relationships:
+    - visual_characteristics
+    - laser_properties
+    - eeat
+    - valid_materials
+    - invalid_materials
+    - prohibited_materials
+    - regulatory_standards_detail
+    - context_notes
+    - realism_notes
+    - formation_conditions
+    - chemical_formula
+    - scientific_name
+    - required_elements
+- type: compound_linkage
+  field: produces_compounds
+  title: Compounds Released
+  description: Hazardous fumes and particles generated when removing this contamination
+  source: data/compounds/Compounds.yaml
+  defaults:
+  - concentration_range
+  - hazard_class
+  - exposure_limits
+  - control_measures
+  - cas_number
+  - compound_category
+- type: material_linkage
+  field: materials
+  title: Found on Materials
+  description: Materials commonly affected by this type of contamination
+  source: data/materials/Materials.yaml
+  defaults:
+  - category
+  - subcategory
+  - material_type
+  - thermal_conductivity
+  - reflectivity
+- type: settings_linkage
+  field: related_settings
+  title: Effective Settings
+  description: Laser parameters optimized for removing this type of contamination
+  source: data/settings/Settings.yaml
+  defaults:
+  - setting_category
+  - power_watts
+  - pulse_frequency_hz
+  - recommended_for
+- type: timestamp
+  fields:
+  - datePublished
+  - dateModified
+- type: author
+- type: breadcrumb
+  domain: contaminants
+  category_field: category
+  subcategory_field: subcategory
+  name_field: name
 library_enrichments:
-  # Enable library-based enrichment for contaminants
   enabled: true
-  
-  # Define enrichment mappings (relationship field → output field)
   enrichments:
-    # Regulatory Standards
-    - type: regulatory_standards
-      relationship_field: relationships.regulatory_standards
-      output_field: regulatory_standards_detail
-
-# ============================================================================
-# CONTENT GENERATORS (Applied in order)
-# ============================================================================
+  - type: regulatory_standards
+    relationship_field: relationships.regulatory_standards
+    output_field: regulatory_standards_detail
 generators:
-  # 1. Generate relationships from DomainAssociations.yaml
-  - type: relationships
-    domain: contaminants
-    output_field: relationships
-  
-  # 2. Group materials by category (Change 4 - Dec 19, 2025)
-  - type: contaminant_materials_grouping
-  
-  # 3. Remove redundant fields (Changes 2 & 5 - Dec 19, 2025)
-  - type: field_cleanup
-  
-  # 4. Generate SEO meta description from contaminant_description
-  - type: seo_description
-    source_field: contaminant_description
-    output_field: seo_description
-    max_length: 160
-  
-  # Note: Breadcrumb navigation generated by export process
-  # (creates proper array structure with label/href objects)
+- type: relationships
+  domain: contaminants
+  output_field: relationships
+- type: contaminant_materials_grouping
+- type: field_cleanup
+- type: seo_description
+  source_field: contaminant_description
+  output_field: seo_description
+  max_length: 160
+enrichers:
+- name: DomainLinkagesEnricher
+  enabled: true
+  config:
+    relationship_types:
+    - affects_materials
+    - found_on_materials

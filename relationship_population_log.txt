@@ -1,0 +1,248 @@
+================================================================================
+PHASE 1: DOMAIN ASSOCIATIONS AUDIT
+================================================================================
+
+📁 Loading data files...
+   Materials: 153 items
+   Contaminants: 98 items
+   Compounds: 34 items
+   Settings: 153 items
+
+📊 Current Association Coverage:
+--------------------------------------------------------------------------------
+   material_to_contaminant: 0 relationships
+   material_to_compound: 0 relationships
+   material_to_setting: 0 relationships
+   contaminant_to_material: 0 relationships
+   compound_to_material: 0 relationships
+   setting_to_material: 0 relationships
+
+   TOTAL CURRENT RELATIONSHIPS: 0
+
+🎯 Expected Relationships (Full Population):
+--------------------------------------------------------------------------------
+   material_to_contaminant: 1224 expected, 0 current (0.0% coverage)
+   material_to_compound: 459 expected, 0 current (0.0% coverage)
+   material_to_setting: 153 expected, 0 current (0.0% coverage)
+   contaminant_to_material: 1176 expected, 0 current (0.0% coverage)
+   compound_to_material: 408 expected, 0 current (0.0% coverage)
+   setting_to_material: 153 expected, 0 current (0.0% coverage)
+
+   TOTAL EXPECTED RELATIONSHIPS: 3573
+   CURRENT COVERAGE: 0/3573 (0.0%)
+   GAP: 3573 relationships missing
+
+🔍 Orphaned Items Analysis:
+--------------------------------------------------------------------------------
+   Orphaned Materials: 153/153 (100.0%)
+   Orphaned Contaminants: 98/98 (100.0%)
+   Orphaned Compounds: 34/34 (100.0%)
+   Orphaned Settings: 153/153 (100.0%)
+
+   TOTAL ORPHANED ITEMS: 438/438 (100.0%)
+
+💾 Saving detailed gap report...
+   Saved: /Users/todddunning/Desktop/Z-Beam/z-beam-generator/ASSOCIATION_AUDIT_REPORT_DEC20_2025.yaml
+
+================================================================================
+✅ PHASE 1 COMPLETE
+================================================================================
+
+📊 KEY FINDINGS:
+   • Current relationships: 0
+   • Expected relationships: 3573
+   • Coverage: 0.0%
+   • Orphaned items: 438 (100.0%)
+
+📁 Next: Phase 2 will auto-populate 3573 missing relationships
+
+================================================================================
+PHASE 2: AUTO-POPULATE RELATIONSHIPS
+================================================================================
+
+📁 Loading data files...
+   Materials: 153
+   Contaminants: 98
+   Compounds: 34
+   Settings: 153
+
+🔗 Strategy 1: Material ↔ Setting (1:1 Mapping)
+--------------------------------------------------------------------------------
+   Added 0 material→setting relationships
+   Added 0 setting→material relationships
+
+🔗 Strategy 2: Material → Contaminant (Pattern Matching)
+--------------------------------------------------------------------------------
+   Added 2142 material→contaminant relationships
+   Added 2142 contaminant→material relationships
+
+🔗 Strategy 3: Material → Compound (Production Matching)
+--------------------------------------------------------------------------------
+   Added 0 material→compound relationships
+   Added 0 compound→material relationships
+
+💾 Saving updated DomainAssociations.yaml...
+   Backup created: /Users/todddunning/Desktop/Z-Beam/z-beam-generator/data/associations/DomainAssociations.yaml.backup
+   Saved: /Users/todddunning/Desktop/Z-Beam/z-beam-generator/data/associations/DomainAssociations.yaml
+
+================================================================================
+✅ PHASE 2 COMPLETE
+================================================================================
+
+📊 RELATIONSHIPS ADDED: 4284
+   • Material → Setting: 0
+   • Setting → Material: 0
+   • Material → Contaminant: 2142
+   • Contaminant → Material: 2142
+   • Material → Compound: 0
+   • Compound → Material: 0
+
+📁 Next: Phase 3 will enable enrichers to use these relationships
+
+================================================================================
+PHASE 3: ENABLE ENRICHERS
+================================================================================
+
+📝 Updating export/config/materials.yaml...
+   ✅ Enabled: related_settings, removes_contaminants, produces_compounds
+
+📝 Updating export/config/contaminants.yaml...
+   ✅ Enabled: affects_materials, found_on_materials
+
+📝 Updating export/config/compounds.yaml...
+   ✅ Enabled: produced_by_materials
+
+📝 Updating export/config/settings.yaml...
+   ✅ Enabled: applies_to_materials, effective_against_contaminants
+
+================================================================================
+✅ PHASE 3 COMPLETE
+================================================================================
+
+📊 CONFIGS UPDATED: 4
+   • Materials: 3 relationship types enabled
+   • Contaminants: 2 relationship types enabled
+   • Compounds: 1 relationship type enabled
+   • Settings: 2 relationship types enabled
+
+📁 Next: Phase 4 will create comprehensive link validator
+
+================================================================================
+PHASE 4: COMPREHENSIVE LINK VALIDATION
+================================================================================
+
+📁 Scanning frontmatter directory: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter
+
+🔍 Building frontmatter index...
+   Indexed 438 files
+
+🔎 Validating links...
+--------------------------------------------------------------------------------
+
+🔄 Checking bidirectional consistency...
+
+================================================================================
+VALIDATION RESULTS
+================================================================================
+
+📊 FILES SCANNED: 438
+🔗 TOTAL LINKS: 1940
+
+✅ STRUCTURAL VALIDATION:
+   ❌ Errors: 1940
+      • /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/contaminants/water-stain-contamination.yaml: Missing fields: name, slug, full_path
+      • /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/contaminants/water-stain-contamination.yaml: Missing fields: name, slug, full_path
+      • /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/contaminants/water-stain-contamination.yaml: Link is not a dictionary
+      • /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/contaminants/water-stain-contamination.yaml: Link is not a dictionary
+      • /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/contaminants/water-stain-contamination.yaml: Link is not a dictionary
+      ... and 1935 more
+
+✅ TARGET EXISTENCE:
+   ✅ Valid: 1940/1940 (100%)
+
+✅ FULL PATH FORMAT:
+   ✅ Valid: 1940/1940 (100%)
+
+✅ BIDIRECTIONAL CONSISTENCY:
+   ✅ All relationships are bidirectional
+
+🎯 ORPHANED ITEMS: 0 (0.0%)
+
+📊 CROSS-DOMAIN STATISTICS:
+   • compounds_links: 150
+   • contaminants_links: 1484
+   • settings_links: 306
+
+================================================================================
+⚠️  VALIDATION ISSUES FOUND: 1940 errors
+================================================================================
+
+
+╔==============================================================================╗
+║                                                                              ║
+║           RELATIONSHIP POPULATION & LINK VALIDATION - FULL PIPELINE          ║
+║                                                                              ║
+║  Started: 2025-12-20 11:43:02                                                ║
+║                                                                              ║
+╚==============================================================================╝
+
+
+================================================================================
+STARTING PHASE 1: Association Auditor
+Time: 2025-12-20 11:43:02
+================================================================================
+
+
+✅ Phase 1 completed successfully
+
+================================================================================
+STARTING PHASE 2: Auto-Populate Relationships
+Time: 2025-12-20 11:43:12
+================================================================================
+
+
+✅ Phase 2 completed successfully
+
+================================================================================
+STARTING PHASE 3: Enable Enrichers
+Time: 2025-12-20 11:43:25
+================================================================================
+
+
+✅ Phase 3 completed successfully
+
+================================================================================
+STARTING PHASE 4: Comprehensive Link Validator
+Time: 2025-12-20 11:43:25
+================================================================================
+
+
+❌ Phase 4 failed with exit code 1
+
+================================================================================
+⚠️  PIPELINE STOPPED AT PHASE 4
+================================================================================
+
+
+╔==============================================================================╗
+║                                                                              ║
+║                                PIPELINE SUMMARY                              ║
+║                                                                              ║
+╚==============================================================================╝
+
+⏱️  Total Duration: 0:00:38.372169
+🏁 Completed: 2025-12-20 11:43:40
+
+📊 PHASE RESULTS:
+--------------------------------------------------------------------------------
+   Phase 1: Association Auditor                      ✅ PASS
+   Phase 2: Auto-Populate Relationships              ✅ PASS
+   Phase 3: Enable Enrichers                         ✅ PASS
+   Phase 4: Comprehensive Link Validator             ❌ FAIL
+
+================================================================================
+⚠️  PIPELINE INCOMPLETE - REVIEW ERRORS ABOVE
+================================================================================
+
+❌ Failed: Phase 4
+

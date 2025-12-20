@@ -1,0 +1,986 @@
+🔑 Successfully loaded 4 API keys from .env file
+================================================================================
+🚀 EXPORTING ALL DOMAINS TO PRODUCTION
+================================================================================
+
+================================================================================
+🔍 STEP 1: VALIDATING SOURCE DATA INTEGRITY
+================================================================================
+📂 Using project root: /Users/todddunning/Desktop/Z-Beam/z-beam-generator
+
+🔍 Validating data integrity in source files...
+
+🔍 Loading source data files...
+   ✅ materials: 153 items loaded from data/materials/Materials.yaml
+   ✅ contaminants: 98 items loaded from data/contaminants/contaminants.yaml
+   ✅ compounds: 34 items loaded from data/compounds/Compounds.yaml
+   ✅ settings: 153 items loaded from data/settings/Settings.yaml
+
+📂 Validating materials data...
+
+📂 Validating contaminants data...
+
+📂 Validating compounds data...
+
+📂 Validating settings data...
+
+🔄 Checking bidirectional consistency...
+
+🔍 Finding orphaned items...
+
+================================================================================
+📊 DATA INTEGRITY VALIDATION REPORT
+================================================================================
+
+📁 Source Files Validated: 4
+📦 Total Items: 438
+🔗 Total Relationships: 968
+
+⚠️  WARNINGS: 1576
+
+🟡 Missing Backlinks (899):
+   • materials/alumina-laser-cleaning → contaminants/adhesive-residue-contamination
+   • materials/alumina-laser-cleaning → contaminants/blood-residue-contamination
+   • materials/alumina-laser-cleaning → contaminants/carbon-buildup-contamination
+   • materials/alumina-laser-cleaning → contaminants/carbon-soot-contamination
+   • materials/alumina-laser-cleaning → contaminants/ceramic-glaze-contamination
+   • materials/alumina-laser-cleaning → contaminants/chemical-stains-contamination
+   • materials/alumina-laser-cleaning → contaminants/fire-damage-contamination
+   • materials/alumina-laser-cleaning → contaminants/graphite-marks-contamination
+   • materials/alumina-laser-cleaning → contaminants/lime-scale-contamination
+   • materials/alumina-laser-cleaning → contaminants/medical-disinfectant-contamination
+   ... and 889 more
+
+🟡 Orphaned Items (257):
+   • materials/yttria-stabilized-zirconia-laser-cleaning
+   • materials/polytetrafluoroethylene-ptfe-laser-cleaning
+   • materials/kevlar-reinforced-polymer-laser-cleaning
+   • materials/lead-crystal-laser-cleaning
+   • materials/manganese-laser-cleaning
+   • materials/beryllium-laser-cleaning
+   • materials/alabaster-laser-cleaning
+   • materials/breccia-laser-cleaning
+   • materials/molybdenum-laser-cleaning
+   • materials/cast-iron-laser-cleaning
+   ... and 247 more
+
+================================================================================
+
+
+✅ Source data integrity validated
+
+================================================================================
+🔄 STEP 2: EXPORTING ALL DOMAINS
+================================================================================
+
+📦 MATERIALS:
+🔧 DomainLinkagesEnricher.enrich() called for alabaster-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for alabaster-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for alumina-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for alumina-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for aluminum-laser-cleaning
+   Populated 2 linkage types, 52 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for aluminum-laser-cleaning
+   ✅ Created 2 sections with 7 total groups
+🔧 DomainLinkagesEnricher.enrich() called for ash-laser-cleaning
+   Populated 2 linkage types, 10 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for ash-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for bamboo-laser-cleaning
+   Populated 2 linkage types, 10 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for bamboo-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for basalt-laser-cleaning
+   Populated 2 linkage types, 16 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for basalt-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for beech-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for beech-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for beryllium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for beryllium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for birch-laser-cleaning
+   Populated 2 linkage types, 10 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for birch-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for bluestone-laser-cleaning
+   Populated 2 linkage types, 16 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for bluestone-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for borosilicate-glass-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for borosilicate-glass-laser-cleaning
+   ✅ Created 2 sections with 5 total groups
+🔧 DomainLinkagesEnricher.enrich() called for brass-laser-cleaning
+   Populated 2 linkage types, 44 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for brass-laser-cleaning
+   ✅ Created 2 sections with 7 total groups
+🔧 DomainLinkagesEnricher.enrich() called for breccia-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for breccia-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for brick-laser-cleaning
+   Populated 1 linkage types, 2 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for brick-laser-cleaning
+   ✅ Created 2 sections with 2 total groups
+🔧 DomainLinkagesEnricher.enrich() called for bronze-laser-cleaning
+   Populated 2 linkage types, 33 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for bronze-laser-cleaning
+   ✅ Created 2 sections with 7 total groups
+🔧 DomainLinkagesEnricher.enrich() called for calcite-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for calcite-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for carbon-fiber-reinforced-polymer-laser-cleaning
+   Populated 1 linkage types, 2 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for carbon-fiber-reinforced-polymer-laser-cleaning
+   ✅ Created 2 sections with 2 total groups
+🔧 DomainLinkagesEnricher.enrich() called for cast-iron-laser-cleaning
+   Populated 2 linkage types, 36 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for cast-iron-laser-cleaning
+   ✅ Created 2 sections with 7 total groups
+🔧 DomainLinkagesEnricher.enrich() called for cedar-laser-cleaning
+   Populated 2 linkage types, 11 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for cedar-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for cement-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for cement-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for ceramic-matrix-composites-cmcs-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for ceramic-matrix-composites-cmcs-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for cerium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for cerium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for cherry-laser-cleaning
+   Populated 2 linkage types, 11 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for cherry-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for chromium-laser-cleaning
+   Populated 2 linkage types, 30 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for chromium-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for cobalt-laser-cleaning
+   Populated 2 linkage types, 30 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for cobalt-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for concrete-laser-cleaning
+   Populated 2 linkage types, 34 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for concrete-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for copper-laser-cleaning
+   Populated 2 linkage types, 42 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for copper-laser-cleaning
+   ✅ Created 2 sections with 7 total groups
+🔧 DomainLinkagesEnricher.enrich() called for crown-glass-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for crown-glass-laser-cleaning
+   ✅ Created 2 sections with 5 total groups
+🔧 DomainLinkagesEnricher.enrich() called for dysprosium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for dysprosium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for epoxy-resin-composites-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for epoxy-resin-composites-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for europium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for europium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for fiber-reinforced-polyurethane-frpu-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for fiber-reinforced-polyurethane-frpu-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for fiberglass-laser-cleaning
+   Populated 1 linkage types, 3 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for fiberglass-laser-cleaning
+   ✅ Created 2 sections with 2 total groups
+🔧 DomainLinkagesEnricher.enrich() called for fir-laser-cleaning
+   Populated 2 linkage types, 10 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for fir-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for float-glass-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for float-glass-laser-cleaning
+   ✅ Created 2 sections with 5 total groups
+🔧 DomainLinkagesEnricher.enrich() called for fused-silica-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for fused-silica-laser-cleaning
+   ✅ Created 2 sections with 5 total groups
+🔧 DomainLinkagesEnricher.enrich() called for gallium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for gallium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for gallium-arsenide-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for gallium-arsenide-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for glass-fiber-reinforced-polymers-gfrp-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for glass-fiber-reinforced-polymers-gfrp-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for gold-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for gold-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for gorilla-glass-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for gorilla-glass-laser-cleaning
+   ✅ Created 2 sections with 5 total groups
+🔧 DomainLinkagesEnricher.enrich() called for granite-laser-cleaning
+   Populated 2 linkage types, 16 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for granite-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for hafnium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for hafnium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for hastelloy-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for hastelloy-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for hickory-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for hickory-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for inconel-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for inconel-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for indium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for indium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for iridium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for iridium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for iron-laser-cleaning
+   Populated 2 linkage types, 5 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for iron-laser-cleaning
+   ✅ Created 2 sections with 5 total groups
+🔧 DomainLinkagesEnricher.enrich() called for kevlar-reinforced-polymer-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for kevlar-reinforced-polymer-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for lanthanum-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for lanthanum-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for lead-laser-cleaning
+   Populated 2 linkage types, 30 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for lead-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for lead-crystal-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for lead-crystal-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for limestone-laser-cleaning
+   Populated 2 linkage types, 16 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for limestone-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for mdf-laser-cleaning
+   Populated 1 linkage types, 1 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for mdf-laser-cleaning
+   ✅ Created 2 sections with 2 total groups
+🔧 DomainLinkagesEnricher.enrich() called for magnesium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for magnesium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for mahogany-laser-cleaning
+   Populated 2 linkage types, 10 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for mahogany-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for manganese-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for manganese-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for maple-laser-cleaning
+   Populated 2 linkage types, 11 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for maple-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for marble-laser-cleaning
+   Populated 2 linkage types, 16 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for marble-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for metal-matrix-composites-mmcs-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for metal-matrix-composites-mmcs-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for molybdenum-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for molybdenum-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for mortar-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for mortar-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for neodymium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for neodymium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for nickel-laser-cleaning
+   Populated 2 linkage types, 31 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for nickel-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for niobium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for niobium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for oak-laser-cleaning
+   Populated 2 linkage types, 11 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for oak-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for onyx-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for onyx-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for palladium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for palladium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for phenolic-resin-composites-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for phenolic-resin-composites-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for pine-laser-cleaning
+   Populated 2 linkage types, 11 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for pine-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for plaster-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for plaster-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for platinum-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for platinum-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for plywood-laser-cleaning
+   Populated 1 linkage types, 1 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for plywood-laser-cleaning
+   ✅ Created 2 sections with 2 total groups
+🔧 DomainLinkagesEnricher.enrich() called for polycarbonate-laser-cleaning
+   Populated 2 linkage types, 8 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for polycarbonate-laser-cleaning
+   ✅ Created 2 sections with 5 total groups
+🔧 DomainLinkagesEnricher.enrich() called for polyester-resin-composites-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for polyester-resin-composites-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for polyethylene-laser-cleaning
+   Populated 1 linkage types, 1 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for polyethylene-laser-cleaning
+   ✅ Created 2 sections with 2 total groups
+🔧 DomainLinkagesEnricher.enrich() called for polypropylene-laser-cleaning
+   Populated 2 linkage types, 8 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for polypropylene-laser-cleaning
+   ✅ Created 2 sections with 5 total groups
+🔧 DomainLinkagesEnricher.enrich() called for polystyrene-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for polystyrene-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for polytetrafluoroethylene-ptfe-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for polytetrafluoroethylene-ptfe-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for polyvinyl-chloride-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for polyvinyl-chloride-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for poplar-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for poplar-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for porcelain-laser-cleaning
+   Populated 1 linkage types, 1 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for porcelain-laser-cleaning
+   ✅ Created 2 sections with 2 total groups
+🔧 DomainLinkagesEnricher.enrich() called for porphyry-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for porphyry-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for praseodymium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for praseodymium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for pyrex-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for pyrex-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for quartz-glass-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for quartz-glass-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for quartzite-laser-cleaning
+   Populated 2 linkage types, 16 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for quartzite-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for redwood-laser-cleaning
+   Populated 2 linkage types, 10 total entries
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Enricher returned empty data for chemical_properties
+   ⚠️  Enricher returned empty data for environmental_impact
+   ⚠️  Enricher returned empty data for detection_monitoring
+   ⚠️  Enricher returned empty data for emergency_response
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for redwood-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for rhenium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for rhenium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for rhodium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for rhodium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for rosewood-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for rosewood-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for rubber-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for rubber-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for ruthenium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for ruthenium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for sandstone-laser-cleaning
+   Populated 2 linkage types, 16 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for sandstone-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for sapphire-glass-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for sapphire-glass-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for schist-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for schist-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for serpentine-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for serpentine-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for shale-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for shale-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for silicon-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for silicon-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for silicon-carbide-sic-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for silicon-carbide-sic-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for silicon-germanium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for silicon-germanium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for silicon-nitride-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for silicon-nitride-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for silver-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for silver-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for slate-laser-cleaning
+   Populated 2 linkage types, 16 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for slate-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for soapstone-laser-cleaning
+   Populated 2 linkage types, 16 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for soapstone-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for soda-lime-glass-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for soda-lime-glass-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for stainless-steel-laser-cleaning
+   Populated 2 linkage types, 45 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for stainless-steel-laser-cleaning
+   ✅ Created 2 sections with 7 total groups
+🔧 DomainLinkagesEnricher.enrich() called for steel-laser-cleaning
+   Populated 2 linkage types, 74 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for steel-laser-cleaning
+   ✅ Created 2 sections with 7 total groups
+🔧 DomainLinkagesEnricher.enrich() called for stoneware-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for stoneware-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for stucco-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for stucco-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for tantalum-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for tantalum-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for teak-laser-cleaning
+   Populated 2 linkage types, 10 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for teak-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for tempered-glass-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for tempered-glass-laser-cleaning
+   ✅ Created 2 sections with 5 total groups
+🔧 DomainLinkagesEnricher.enrich() called for terbium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for terbium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for terracotta-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for terracotta-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for thermoplastic-elastomer-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for thermoplastic-elastomer-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for tin-laser-cleaning
+   Populated 2 linkage types, 30 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for tin-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for titanium-laser-cleaning
+   Populated 2 linkage types, 39 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for titanium-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for titanium-carbide-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for titanium-carbide-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for tool-steel-laser-cleaning
+   Populated 1 linkage types, 2 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for tool-steel-laser-cleaning
+   ✅ Created 2 sections with 3 total groups
+🔧 DomainLinkagesEnricher.enrich() called for travertine-laser-cleaning
+   Populated 2 linkage types, 16 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for travertine-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for tungsten-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for tungsten-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for tungsten-carbide-laser-cleaning
+   Populated 1 linkage types, 1 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for tungsten-carbide-laser-cleaning
+   ✅ Created 2 sections with 2 total groups
+🔧 DomainLinkagesEnricher.enrich() called for urethane-composites-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for urethane-composites-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for vanadium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for vanadium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for walnut-laser-cleaning
+   Populated 2 linkage types, 11 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for walnut-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for willow-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for willow-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for yttrium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for yttrium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for zinc-laser-cleaning
+   Populated 2 linkage types, 31 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for zinc-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for zirconia-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for zirconia-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for zirconium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for zirconium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for acrylic-pmma-laser-cleaning
+   Populated 2 linkage types, 8 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for acrylic-pmma-laser-cleaning
+   ✅ Created 2 sections with 5 total groups
+🔧 DomainLinkagesEnricher.enrich() called for aluminosilicate-glass-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for aluminosilicate-glass-laser-cleaning
+   ✅ Created 2 sections with 5 total groups
+🔧 DomainLinkagesEnricher.enrich() called for dolomite-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for dolomite-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for ebony-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for ebony-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for germanium-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for germanium-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for gneiss-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for gneiss-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for indium-phosphide-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for indium-phosphide-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for nylon-laser-cleaning
+   Populated 2 linkage types, 8 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for nylon-laser-cleaning
+   ✅ Created 2 sections with 5 total groups
+🔧 DomainLinkagesEnricher.enrich() called for peek-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for peek-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for pet-laser-cleaning
+   Populated 2 linkage types, 7 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for pet-laser-cleaning
+   ✅ Created 2 sections with 4 total groups
+🔧 DomainLinkagesEnricher.enrich() called for titanium-alloy-ti-6al-4v-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for titanium-alloy-ti-6al-4v-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for stainless-steel-316-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for stainless-steel-316-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for stainless-steel-304-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for stainless-steel-304-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for gallium-nitride-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for gallium-nitride-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for aluminum-bronze-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for aluminum-bronze-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for polyimide-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for polyimide-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for aluminum-nitride-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for aluminum-nitride-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for boron-carbide-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 2 existing relationship types: ['regulatory_standards', 'regulatory']
+🎯 RelationshipGroupingEnricher.enrich() for boron-carbide-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for boron-nitride-laser-cleaning
+   Populated 2 linkage types, 20 total entries
+   ⚠️  Merging with 1 existing relationship types: ['regulatory_standards']
+🎯 RelationshipGroupingEnricher.enrich() for boron-nitride-laser-cleaning
+   ✅ Created 2 sections with 6 total groups
+🔧 DomainLinkagesEnricher.enrich() called for titanium-nitride-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 1 existing relationship types: ['regulatory_standards']
+🎯 RelationshipGroupingEnricher.enrich() for titanium-nitride-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+🔧 DomainLinkagesEnricher.enrich() called for yttria-stabilized-zirconia-laser-cleaning
+   Populated 0 linkage types, 0 total entries
+   ⚠️  Merging with 1 existing relationship types: ['regulatory_standards']
+🎯 RelationshipGroupingEnricher.enrich() for yttria-stabilized-zirconia-laser-cleaning
+   ✅ Created 1 sections with 1 total groups
+   ✅ 153/153 files
+
+📦 CONTAMINANTS:
+   ✅ 98/98 files
+
+📦 COMPOUNDS:
+   ✅ 34/34 files
+
+📦 SETTINGS:
+   ✅ 153/153 files
+
+================================================================================
+✅ TOTAL: 438 files exported
+
+================================================================================
+🔍 STEP 3: VALIDATING EXPORTED FRONTMATTER
+================================================================================
+📂 Using frontmatter directory: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter
+
+
+🔍 Validating all internal links...
+
+📁 Checking domain directory structure...
+   ✅ Found: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/materials (153 files)
+   ✅ Found: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/contaminants (98 files)
+   ✅ Found: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/compounds (34 files)
+   ✅ Found: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/settings (153 files)
+🔍 Building index of all frontmatter files...
+   ✅ materials: 153 items indexed
+   ✅ contaminants: 98 items indexed
+   ✅ compounds: 34 items indexed
+   ✅ settings: 153 items indexed
+
+📂 Validating materials domain...
+
+📂 Validating contaminants domain...
+
+📂 Validating compounds domain...
+
+📂 Validating settings domain...
+
+🔄 Checking bidirectional link consistency...
+
+🔍 Finding orphaned items...
+
+================================================================================
+📊 FRONTMATTER LINK VALIDATION REPORT
+================================================================================
+
+📁 Files Scanned: 438
+🔗 Total Links: 85
+
+✅ No errors found!
+
+⚠️  WARNINGS: 1847
+
+🟡 Orphaned Items (394):
+   • materials/palladium-laser-cleaning
+   • materials/terbium-laser-cleaning
+   • materials/manganese-laser-cleaning
+   • materials/cerium-laser-cleaning
+   • materials/europium-laser-cleaning
+   ... and 389 more
+
+================================================================================
+
+
+✅ Frontmatter link integrity validated
+================================================================================
