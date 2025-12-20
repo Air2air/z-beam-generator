@@ -328,8 +328,16 @@ class DomainAssociationsValidator:
                 # Note: Materials.yaml now uses full ID as key (with -laser-cleaning suffix)
                 material_data = self.materials_data.get('materials', {}).get(material_id, {})
                 
-                # Build linkage per FRONTMATTER_GENERATOR_LINKAGE_SPEC.md
-                category, subcategory = normalize_taxonomy(material_data)
+                # Get URL from full_path (single source of truth)
+                url = material_data.get('full_path')
+                if not url:
+                    # Fallback: derive from category/subcategory
+                    category, subcategory = normalize_taxonomy(material_data)
+                    url = f"/materials/{category}/{subcategory}/{material_id}"
+                    logger.warning(f"Material '{material_id}' missing full_path, using derived URL: {url}")
+                else:
+                    # Get category/subcategory for linkage metadata
+                    category, subcategory = normalize_taxonomy(material_data)
                 
                 # Extract display name using formatters
                 display_name = format_display_name(material_id, '-laser-cleaning')
@@ -337,7 +345,7 @@ class DomainAssociationsValidator:
                 results.append({
                     'id': material_id,
                     'title': material_data.get('name', display_name),
-                    'url': f"/materials/{category}/{subcategory}/{material_id}",
+                    'url': url,
                     'image': format_image_url('materials', material_id),
                     'category': category,
                     'subcategory': subcategory,
@@ -377,15 +385,24 @@ class DomainAssociationsValidator:
                 compound_id = assoc['compound_id']
                 
                 # Get compound details from Compounds.yaml (uses slug without suffix as key)
-                slug_without_suffix = extract_slug(compound_id, '-compound')
+                slug_without_suffix = extract_slug(compound_id, 'compound')
                 compound_data = self.compounds_data.get('compounds', {}).get(slug_without_suffix, {})
                 
-                # Build linkage per FRONTMATTER_GENERATOR_LINKAGE_SPEC.md
-                category, subcategory = normalize_taxonomy(compound_data)
+                # Get URL from full_path in compound data (single source of truth)
+                # Fallback to derived URL only if full_path missing (shouldn't happen)
+                url = compound_data.get('full_path')
+                if not url:
+                    # Fallback: derive from category/subcategory (legacy behavior)
+                    category, subcategory = normalize_taxonomy(compound_data)
+                    url = f"/compounds/{category}/{subcategory}/{compound_id}"
+                    logger.warning(f"Compound '{compound_id}' missing full_path, using derived URL: {url}")
+                else:
+                    # Get category/subcategory from compound data for linkage metadata
+                    category, subcategory = normalize_taxonomy(compound_data)
                 
                 results.append({
                     'id': compound_id,
-                    'url': f"/compounds/{category}/{subcategory}/{compound_id}",
+                    'url': url,
                     'image': format_image_url('compounds', slug_without_suffix),
                     'category': category,
                     'subcategory': subcategory,
@@ -421,8 +438,16 @@ class DomainAssociationsValidator:
                 full_contaminant_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
                 contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
                 
-                # Build linkage per FRONTMATTER_GENERATOR_LINKAGE_SPEC.md
-                category, subcategory = normalize_taxonomy(contaminant_data)
+                # Get URL from full_path (single source of truth)
+                url = contaminant_data.get('full_path')
+                if not url:
+                    # Fallback: derive from category/subcategory
+                    category, subcategory = normalize_taxonomy(contaminant_data)
+                    url = f"/contaminants/{category}/{subcategory}/{full_contaminant_id}"
+                    logger.warning(f"Contaminant '{full_contaminant_id}' missing full_path, using derived URL: {url}")
+                else:
+                    # Get category/subcategory for linkage metadata
+                    category, subcategory = normalize_taxonomy(contaminant_data)
                 
                 # Extract display name and slug using formatters
                 display_name = format_display_name(contaminant_id, '-contamination')
@@ -431,7 +456,7 @@ class DomainAssociationsValidator:
                 results.append({
                     'id': contaminant_id,
                     'title': contaminant_data.get('name', display_name),
-                    'url': f"/contaminants/{category}/{subcategory}/{contaminant_id}",
+                    'url': url,
                     'image': format_image_url('contaminants', slug),
                     'category': category,
                     'subcategory': subcategory,
