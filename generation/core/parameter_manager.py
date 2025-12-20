@@ -17,7 +17,7 @@ import logging
 from pathlib import Path
 from typing import Any, Callable, Dict, Optional
 
-import yaml
+from shared.utils.yaml_utils import load_yaml
 
 logger = logging.getLogger(__name__)
 
@@ -231,8 +231,7 @@ class ParameterManager:
             return {}
         
         try:
-            with open(persona_path, 'r', encoding='utf-8') as f:
-                persona_data = yaml.safe_load(f)
+            persona_data = load_yaml(persona_path)
             
             # Cache for future use
             self._persona_cache[author_id] = persona_data

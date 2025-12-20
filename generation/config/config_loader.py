@@ -17,7 +17,7 @@ import os
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-import yaml
+from shared.utils.yaml_utils import load_yaml
 
 logger = logging.getLogger(__name__)
 
@@ -54,8 +54,7 @@ class ProcessingConfig:
             )
         
         try:
-            with open(self.config_path, 'r') as f:
-                config = yaml.safe_load(f)
+            config = load_yaml(self.config_path)
             
             if not isinstance(config, dict):
                 raise ValueError("Config file must contain a YAML dictionary")

@@ -28,7 +28,7 @@ import re
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-import yaml
+from shared.utils.yaml_utils import load_yaml
 
 logger = logging.getLogger(__name__)
 
@@ -104,11 +104,10 @@ class Generator:
             raise FileNotFoundError(f"Voice profiles directory not found: {personas_dir}")
         
         for persona_file in personas_dir.glob("*.yaml"):
-            with open(persona_file, 'r') as f:
-                persona_data = yaml.safe_load(f)
-                author_id = persona_data.get('id')  # Changed from 'author_id' to 'id'
-                if author_id:
-                    personas[author_id] = persona_data
+            persona_data = load_yaml(persona_file)
+            author_id = persona_data.get('id')  # Changed from 'author_id' to 'id'
+            if author_id:
+                personas[author_id] = persona_data
         
         self.logger.info(f"Loaded {len(personas)} personas")
         return personas

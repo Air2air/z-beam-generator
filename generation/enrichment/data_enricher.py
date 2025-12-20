@@ -9,7 +9,7 @@ import logging
 from pathlib import Path
 from typing import Dict, Optional
 
-import yaml
+from shared.utils.file_io import read_yaml_file
 
 logger = logging.getLogger(__name__)
 
@@ -39,10 +39,9 @@ class DataEnricher:
         """Lazy load materials database"""
         if self._materials is None:
             try:
-                with open(self.materials_path, 'r', encoding='utf-8') as f:
-                    data = yaml.safe_load(f)
-                    self._materials = data.get('materials', {})
-                    logger.info(f"Loaded {len(self._materials)} materials")
+                data = read_yaml_file(self.materials_path)
+                self._materials = data.get('materials', {})
+                logger.info(f"Loaded {len(self._materials)} materials")
             except Exception as e:
                 logger.error(f"Failed to load materials: {e}")
                 self._materials = {}
