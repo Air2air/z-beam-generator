@@ -7,10 +7,11 @@
 # ============================================================================
 domain: compounds
 source_file: data/compounds/Compounds.yaml
-output_path: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/compounds
+output_path: ../z-beam/frontmatter/compounds
 items_key: compounds
 id_field: id
 filename_suffix: -compound
+sluggify_filenames: true  # Ensure ID field gets slugified with suffix (Dec 19, 2025)
 
 # ============================================================================
 # ENRICHMENTS (Applied in order)
@@ -95,9 +96,9 @@ enrichments:
   # 6. Generate breadcrumb navigation (array format)
   - type: breadcrumb
     domain: compounds
-    category_field: compound_category
-    name_field: common_name
-    slug_field: slug
+    category_field: category  # Fixed from compound_category (Dec 19, 2025)
+    subcategory_field: subcategory  # Added (Dec 19, 2025)
+    name_field: name  # Fixed from common_name (Dec 19, 2025)
 
 # ============================================================================
 # LIBRARY ENRICHMENTS (New modular system)
