@@ -87,10 +87,12 @@ def format_domain_url(
     parts = [domain]
     
     if category:
-        parts.append(category.lower())
+        # Slugify category for URL-safe path (converts underscores to hyphens)
+        parts.append(slugify(category))
     
     if subcategory:
-        parts.append(subcategory.lower())
+        # Slugify subcategory for URL-safe path (converts underscores to hyphens)
+        parts.append(slugify(subcategory))
     
     parts.append(item_id)
     
