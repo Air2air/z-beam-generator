@@ -75,6 +75,10 @@ enrichments:
   category_field: category
   subcategory_field: subcategory
   name_field: name
+- type: title
+  template: "{name}"
+  use_display_name: true
+  skip_if_exists: true
 library_enrichments:
   enabled: true
   enrichments:
@@ -104,7 +108,7 @@ generators:
   max_length: 160
 - type: excerpt
   source_field: compound_description
-  output_field: excerpt
+  output_field: micro
   mode: sentences
   length: 2
 enrichers:

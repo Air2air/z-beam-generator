@@ -46,10 +46,20 @@ Thumbs.db
 
 # Logs
 *.log
-logs/
+logs/*.log
+logs/*.txt
+batch_output.log
+export_output.log
+enrichment_log.txt
+relationship_population_log.txt
+phase5_export_log.txt
+phase5_export_corrected_log.txt
 
 # Output and progress files
 output/
+output/*.log
+output/*.txt
+output/*.json
 progress/
 *.pid
 
@@ -93,8 +103,11 @@ dmypy.json
 # Temporary files
 *.tmp
 *.bak
+*.old
 *.swp
 *.swo
+test_slug.yaml
+nonexistent.db
 
 # Coverage reports
 coverage.xml
@@ -126,9 +139,13 @@ logs/*.log
 
 # Python cache
 *.py[cod]
-*$py.class
-__pycache__/
+*.db.backup
+*.db.bak
 
+# Research and audit files
+compound_metadata_research_template.json
+research_*.json
+*AUDIT*.yaml
 nonexistent.db
 *.db.backup
 *.db.bak

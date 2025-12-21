@@ -69,6 +69,7 @@ from export.enrichers.linkage.universal_restructure_enricher import (
 from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
 from export.enrichers.metadata.name_enricher import NameEnricher
 from export.enrichers.settings.material_category_enricher import MaterialCategoryEnricher  # Dec 19, 2025
+from export.enrichers.contaminants.removal_by_material_enricher import RemovalByMaterialEnricher  # Dec 20, 2025
 # DEPRECATED (Dec 19, 2025): RelationshipURLEnricher no longer needed - URLs come from full_path in source data
 # from export.enrichers.relationships.relationship_url_enricher import RelationshipURLEnricher
 
@@ -430,6 +431,9 @@ class TimestampEnricher(BaseEnricher):
         return frontmatter
 
 
+# Import title enricher
+from export.enrichers.metadata.title_enricher import TitleEnricher
+
 # Registry mapping enricher type → class
 ENRICHER_REGISTRY = {
     'universal_restructure': UniversalRestructureEnricher,  # Consolidates all restructure enrichers (Dec 19, 2025)
@@ -444,7 +448,9 @@ ENRICHER_REGISTRY = {
     'timestamp': TimestampEnricher,
     'author': AuthorEnricher,
     'name': NameEnricher,  # Adds name field from id if missing
+    'title': TitleEnricher,  # Generates title field from name (Dec 20, 2025)
     'material_category': MaterialCategoryEnricher,  # Adds category/subcategory from Materials.yaml (Dec 19, 2025)
+    'removal_by_material': RemovalByMaterialEnricher,  # Generates material-specific laser removal parameters (Dec 20, 2025)
     # DEPRECATED (Dec 19, 2025): 'relationship_url': RelationshipURLEnricher - No longer needed, URLs from full_path
     'relationships': DomainLinkagesEnricher,
     'relationship_grouping': RelationshipGroupingEnricher,

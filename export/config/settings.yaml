@@ -6,6 +6,8 @@ filename_suffix: -settings
 slugify_filenames: true
 enrichments:
 - type: material_linkage
+  module: export.enrichers.linkage.material_linkage_enricher
+  class: MaterialLinkageEnricher
   field: materials
   title: Applicable Materials
   description: Materials that can be safely cleaned using these laser parameters
@@ -17,6 +19,8 @@ enrichments:
   - thermal_conductivity
   - reflectivity
 - type: contaminant_linkage
+  module: export.enrichers.linkage.contaminant_linkage_enricher
+  class: ContaminantLinkageEnricher
   field: contaminants
   title: Effective Against
   description: Types of contamination that can be removed using these laser settings
@@ -28,6 +32,8 @@ enrichments:
   - contaminant_category
   - commonality_score
 - type: compound_linkage
+  module: export.enrichers.linkage.compound_linkage_enricher
+  class: CompoundLinkageEnricher
   field: relevant_compounds
   title: Safety Considerations
   description: Hazardous compounds that may be generated when using these settings
@@ -40,17 +46,32 @@ enrichments:
   - cas_number
   - compound_category
 - type: timestamp
+  module: export.enrichers.metadata.timestamp_enricher
+  class: TimestampEnricher
   fields:
   - datePublished
   - dateModified
 - type: author
+  module: export.enrichers.metadata.author_enricher
+  class: AuthorEnricher
 - type: name
+  module: export.enrichers.metadata.name_enricher
+  class: NameEnricher
 - type: material_category
+  module: export.enrichers.categorization.material_category_enricher
+  class: MaterialCategoryEnricher
 - type: breadcrumb
+  module: export.enrichers.navigation.breadcrumb_enricher
+  class: BreadcrumbEnricher
   domain: settings
   category_field: category
   subcategory_field: subcategory
   name_field: name
+- type: title
+  module: export.enrichers.metadata.title_enricher
+  class: TitleEnricher
+  template: "{name} Settings"
+  skip_if_exists: true
 library_enrichments:
   enabled: true
   enrichments:
@@ -59,15 +80,21 @@ library_enrichments:
     output_field: regulatory_standards_detail
 generators:
 - type: field_cleanup
+  module: export.generation.field_cleanup
+  class: FieldCleanupGenerator
 - type: seo_description
+  module: export.generation.seo
+  class: SEODescriptionGenerator
   source_field: description
   output_field: seo_description
   max_length: 160
 - type: excerpt
+  module: export.generation.excerpt
+  class: ExcerptGenerator
   source_field: description
-  output_field: excerpt
-  mode: words
-  length: 50
+  output_field: micro
+  mode: sentences
+  length: 2
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true

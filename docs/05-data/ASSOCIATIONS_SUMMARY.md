@@ -81,4 +81,4 @@ python3 tests/test_bidirectional_associations.py
 
 - \`PHASE1_COMPOUND_NORMALIZATION_COMPLETE_DEC19_2025.md\` - Normalization details
 - \`E2E_DATA_ARCHITECTURE_EVALUATION_DEC19_2025.md\` - Architecture overview
-- \`DATA_ARCHITECTURE_QUICK_REF.md\` - Quick reference
+- \`docs/05-data/DATA_ARCHITECTURE_QUICK_REF.md\` - Quick reference

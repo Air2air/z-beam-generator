@@ -7,6 +7,10 @@ Centralized loader for Settings.yaml:
 This module provides a unified interface to load settings data
 for all materials.
 
+**MIGRATION NOTICE**: This is the legacy function-based loader.
+New code should use `data_loader_v2.SettingsDataLoader` instead.
+See: docs/decisions/ADR-008-settings-data-loader-migration.md
+
 Usage:
     from domains.settings.data_loader import load_settings_yaml, get_settings_path
     

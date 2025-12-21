@@ -67,13 +67,17 @@ class UniversalRestructureEnricher(BaseEnricher):
         self.legacy_fields = self.cleanup_rules.get('legacy_fields', [])
         self.duplicate_fields = self.cleanup_rules.get('duplicate_fields', {})
         self.move_to_relationships = self.cleanup_rules.get('move_to_relationships', [])
+        self.extract_from_nested = self.cleanup_rules.get('extract_from_nested', {})
+        self.keep_at_top_level = self.cleanup_rules.get('keep_at_top_level', [])
         
         logger.info(
             f"Initialized UniversalRestructureEnricher for domain: {self.domain} "
             f"(old_keys={len(self.old_relationship_keys)}, "
             f"legacy={len(self.legacy_fields)}, "
             f"duplicates={len(self.duplicate_fields)}, "
-            f"moves={len(self.move_to_relationships)})"
+            f"moves={len(self.move_to_relationships)}, "
+            f"extract_nested={len(self.extract_from_nested)}, "
+            f"keep_top={len(self.keep_at_top_level)})"
         )
     
     def enrich(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:
@@ -91,10 +95,12 @@ class UniversalRestructureEnricher(BaseEnricher):
             frontmatter['relationships'] = {}
         
         # Apply cleanup operations in order
+        self._extract_from_nested_fields(frontmatter)
         self._remove_old_relationship_keys(frontmatter)
         self._remove_duplicate_fields(frontmatter)
         self._remove_legacy_fields(frontmatter)
         self._move_fields_to_relationships(frontmatter)
+        self._keep_fields_at_top_level(frontmatter)
         
         return frontmatter
     
@@ -212,3 +218,67 @@ class UniversalRestructureEnricher(BaseEnricher):
             logger.debug(
                 f"[{self.domain}] Moved {moved_count} fields to relationships"
             )
+    
+    def _extract_from_nested_fields(self, frontmatter: Dict[str, Any]) -> None:
+        """
+        Extract specific fields from nested structures before processing.
+        
+        Example: Extract safety_data from laser_properties.safety_data
+        
+        Args:
+            frontmatter: Frontmatter dict to restructure
+        """
+        if not self.extract_from_nested:
+            return
+        
+        extracted_count = 0
+        for parent_field, fields_to_extract in self.extract_from_nested.items():
+            if parent_field in frontmatter and isinstance(frontmatter[parent_field], dict):
+                parent_data = frontmatter[parent_field]
+                
+                for field in fields_to_extract:
+                    if field in parent_data:
+                        # Extract to root level temporarily
+                        frontmatter[field] = parent_data.pop(field)
+                        extracted_count += 1
+                        logger.debug(f"Extracted {parent_field}.{field} → root.{field}")
+        
+        if extracted_count > 0:
+            logger.debug(
+                f"[{self.domain}] Extracted {extracted_count} fields from nested structures"
+            )
+    
+    def _keep_fields_at_top_level(self, frontmatter: Dict[str, Any]) -> None:
+        """
+        Keep specified fields at both top level and in relationships.
+        
+        These fields will exist in both locations:
+        - Top-level for easy access
+        - In relationships for semantic grouping
+        
+        Args:
+            frontmatter: Frontmatter dict to process
+        """
+        if not self.keep_at_top_level:
+            return
+        
+        kept_count = 0
+        relationships = frontmatter.get('relationships', {})
+        
+        for field in self.keep_at_top_level:
+            # If field exists in relationships, copy to top level
+            if field in relationships:
+                frontmatter[field] = relationships[field]
+                kept_count += 1
+                logger.debug(f"Kept {field} at top level (also in relationships)")
+            # If field exists at top level, copy to relationships
+            elif field in frontmatter:
+                relationships[field] = frontmatter[field]
+                kept_count += 1
+                logger.debug(f"Copied {field} to relationships (also at top level)")
+        
+        if kept_count > 0:
+            logger.debug(
+                f"[{self.domain}] Kept {kept_count} fields at both top level and relationships"
+            )
+

@@ -1,6 +1,6 @@
 domain: materials
 source_file: data/materials/Materials.yaml
-output_path: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/materials
+output_path: ../z-beam/frontmatter/materials
 items_key: materials
 filename_suffix: ''
 enrichments:
@@ -88,6 +88,11 @@ generators:
   source_field: description
   output_field: seo_description
   max_length: 160
+- type: excerpt
+  source_field: description
+  output_field: micro
+  mode: sentences
+  length: 2
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true

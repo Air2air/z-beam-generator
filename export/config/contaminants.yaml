@@ -1,11 +1,13 @@
 domain: contaminants
 source_file: data/contaminants/Contaminants.yaml
-output_path: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/contaminants
+output_path: ../z-beam/frontmatter/contaminants
 items_key: contamination_patterns
 id_field: id
 filename_suffix: ''
 enrichments:
 - type: universal_restructure
+  module: export.enrichers.universal.universal_restructure_enricher
+  class: UniversalRestructureEnricher
   domain: contaminants
   cleanup_rules:
     old_relationship_keys:
@@ -15,6 +17,9 @@ enrichments:
     legacy_fields:
     - metadata
     - voice_enhanced
+    extract_from_nested:
+      laser_properties:
+        - safety_data
     move_to_relationships:
     - visual_characteristics
     - laser_properties
@@ -29,7 +34,11 @@ enrichments:
     - chemical_formula
     - scientific_name
     - required_elements
+    keep_at_top_level:
+    - safety_data
 - type: compound_linkage
+  module: export.enrichers.linkage.compound_linkage_enricher
+  class: CompoundLinkageEnricher
   field: produces_compounds
   title: Compounds Released
   description: Hazardous fumes and particles generated when removing this contamination
@@ -42,6 +51,8 @@ enrichments:
   - cas_number
   - compound_category
 - type: material_linkage
+  module: export.enrichers.linkage.material_linkage_enricher
+  class: MaterialLinkageEnricher
   field: materials
   title: Found on Materials
   description: Materials commonly affected by this type of contamination
@@ -52,7 +63,13 @@ enrichments:
   - material_type
   - thermal_conductivity
   - reflectivity
+- type: removal_by_material
+  module: export.enrichers.contaminants.removal_by_material_enricher
+  class: RemovalByMaterialEnricher
+  description: Material-specific laser removal parameters, efficiency, and safety guidance (Dec 20, 2025)
 - type: settings_linkage
+  module: export.enrichers.linkage.settings_linkage_enricher
+  class: SettingsLinkageEnricher
   field: related_settings
   title: Effective Settings
   description: Laser parameters optimized for removing this type of contamination
@@ -63,11 +80,17 @@ enrichments:
   - pulse_frequency_hz
   - recommended_for
 - type: timestamp
+  module: export.enrichers.metadata.timestamp_enricher
+  class: TimestampEnricher
   fields:
   - datePublished
   - dateModified
 - type: author
+  module: export.enrichers.metadata.author_enricher
+  class: AuthorEnricher
 - type: breadcrumb
+  module: export.enrichers.navigation.breadcrumb_enricher
+  class: BreadcrumbEnricher
   domain: contaminants
   category_field: category
   subcategory_field: subcategory
@@ -80,14 +103,29 @@ library_enrichments:
     output_field: regulatory_standards_detail
 generators:
 - type: relationships
+  module: shared.generation.relationships_generator
+  class: RelationshipsGenerator
   domain: contaminants
   output_field: relationships
 - type: contaminant_materials_grouping
+  module: export.enrichers.grouping.contaminant_materials_grouping_enricher
+  class: ContaminantMaterialsGroupingEnricher
 - type: field_cleanup
+  module: export.enrichers.cleanup.field_cleanup_enricher
+  class: FieldCleanupEnricher
 - type: seo_description
+  module: shared.generation.seo_description_generator
+  class: SEODescriptionGenerator
   source_field: contaminant_description
   output_field: seo_description
   max_length: 160
+- type: excerpt
+  module: shared.generation.excerpt_generator
+  class: ExcerptGenerator
+  source_field: contaminant_description
+  output_field: micro
+  mode: sentences
+  length: 2
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true

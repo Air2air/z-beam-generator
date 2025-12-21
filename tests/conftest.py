@@ -4,6 +4,8 @@ Pytest Configuration and Session-Scoped Fixtures
 
 This conftest.py provides session-scoped fixtures and pytest configuration
 to optimize test execution performance and reduce setup overhead.
+
+Added Dec 20, 2025: Shared exporter fixtures to eliminate duplication
 """
 
 import os
@@ -14,13 +16,17 @@ from pathlib import Path
 from typing import Dict, Any, List, Generator
 
 # Add project root to path
-project_root = Path(__file__).resolve().parent.parent
-if str(project_root) not in sys.path:
-    sys.path.insert(0, str(project_root))
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
-# Commented out obsolete test framework imports
-# from tests.test_framework import TestPathManager, TestDataFactory
-# from tests.test_utils import mock_api_calls, mock_file_operations
+# Import export system components for fixtures
+from export.config.loader import load_domain_config
+from export.core.universal_exporter import UniversalFrontmatterExporter
+
+# Production paths
+PROD_ROOT = PROJECT_ROOT.parent / 'z-beam'
+
 
 @pytest.fixture(scope="session", autouse=True)
 def session_setup():
@@ -34,12 +40,94 @@ def session_setup():
 
     # Change to project root to avoid path issues
     original_cwd = os.getcwd()
-    os.chdir(project_root)
+    os.chdir(str(PROJECT_ROOT))
 
     yield
 
     # Restore original directory
     os.chdir(original_cwd)
+
+
+# ============================================================================
+# Export System Fixtures (Added Dec 20, 2025)
+# ============================================================================
+
+@pytest.fixture
+def materials_config():
+    """Load materials domain configuration"""
+    return load_domain_config('materials')
+
+
+@pytest.fixture
+def contaminants_config():
+    """Load contaminants domain configuration"""
+    return load_domain_config('contaminants')
+
+
+@pytest.fixture
+def compounds_config():
+    """Load compounds domain configuration"""
+    return load_domain_config('compounds')
+
+
+@pytest.fixture
+def settings_config():
+    """Load settings domain configuration"""
+    return load_domain_config('settings')
+
+
+@pytest.fixture
+def materials_exporter(materials_config):
+    """Create materials exporter instance with proper config"""
+    return UniversalFrontmatterExporter(materials_config)
+
+
+@pytest.fixture
+def contaminants_exporter(contaminants_config):
+    """Create contaminants exporter instance with proper config"""
+    return UniversalFrontmatterExporter(contaminants_config)
+
+
+@pytest.fixture
+def compounds_exporter(compounds_config):
+    """Create compounds exporter instance with proper config"""
+    return UniversalFrontmatterExporter(compounds_config)
+
+
+@pytest.fixture
+def settings_exporter(settings_config):
+    """Create settings exporter instance with proper config"""
+    return UniversalFrontmatterExporter(settings_config)
+
+
+@pytest.fixture
+def project_root():
+    """Path to project root directory"""
+    return PROJECT_ROOT
+
+
+@pytest.fixture
+def prod_root():
+    """Path to production (z-beam) root directory"""
+    return PROD_ROOT
+
+
+@pytest.fixture
+def prod_frontmatter():
+    """Path to production frontmatter directory"""
+    return PROD_ROOT / 'frontmatter'
+
+
+@pytest.fixture(scope="session")
+def all_domain_configs():
+    """Load all domain configs once per test session"""
+    return {
+        'materials': load_domain_config('materials'),
+        'contaminants': load_domain_config('contaminants'),
+        'compounds': load_domain_config('compounds'),
+        'settings': load_domain_config('settings'),
+    }
+
 
 @pytest.fixture(scope="session")
 def session_temp_dir() -> Generator[Path, None, None]:
@@ -189,6 +277,9 @@ def pytest_configure(config):
     # Configure markers for better organization
     config.addinivalue_line("markers", "slow: marks tests as slow (deselect with '-m \"not slow\"')")
     config.addinivalue_line("markers", "parallel: marks tests safe for parallel execution")
+    config.addinivalue_line("markers", "integration: marks tests as integration tests")
+    config.addinivalue_line("markers", "smoke: marks tests as smoke tests (critical for deployment)")
+    config.addinivalue_line("markers", "legacy: marks tests testing old implementation (to be removed)")
 
 def pytest_collection_modifyitems(config, items):
     """Modify test collection for optimization."""

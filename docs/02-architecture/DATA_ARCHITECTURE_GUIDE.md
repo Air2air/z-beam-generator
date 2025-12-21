@@ -489,7 +489,7 @@ python3 run.py --data-gaps
 - **Data Separation**: (Consolidated into this document)
 
 ### Quick References
-- **Quick Reference**: `DATA_ARCHITECTURE_QUICK_REF.md` - Fast lookup for common patterns
+- **Quick Reference**: `docs/05-data/DATA_ARCHITECTURE_QUICK_REF.md` - Fast lookup for common patterns
 - **System Requirements**: `system-requirements.md` - Overall system design
 - **Export Architecture**: `EXPORT_SYSTEM_ARCHITECTURE.md` - How data becomes frontmatter
 

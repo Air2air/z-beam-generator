@@ -1,0 +1,24 @@
+# Development Tools Requirements
+# Install with: pip install -r requirements-dev.txt
+
+# Testing
+pytest>=8.4.0
+pytest-asyncio>=1.1.0
+pytest-cov>=6.2.0
+pytest-mock>=3.14.0
+pytest-xdist>=3.8.0  # Parallel test execution
+pytest-json-report>=1.5.0  # JSON test reports
+
+# Code Quality
+black>=24.0.0  # Code formatting
+flake8>=7.0.0  # Linting
+mypy>=1.8.0  # Type checking
+isort>=5.13.0  # Import sorting
+
+# Documentation
+mkdocs>=1.5.0  # Documentation generation
+mkdocs-material>=9.5.0  # Material theme
+
+# Development Tools
+ipython>=8.20.0  # Enhanced Python shell
+ipdb>=0.13.0  # Interactive debugger

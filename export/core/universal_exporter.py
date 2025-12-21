@@ -45,7 +45,7 @@ class UniversalFrontmatterExporter:
     Domain-specific behavior defined in YAML configs (export/config/*.yaml).
     """
     
-    def __init__(self, config: Dict[str, Any]):
+    def __init__(self, config: Dict[str, Any], validate: bool = True):
         """
         Initialize with domain configuration.
         
@@ -53,11 +53,21 @@ class UniversalFrontmatterExporter:
             config: Domain configuration dict loaded from export/config/{domain}.yaml
                 Required keys: domain, source_file, output_path, items_key
                 Optional keys: enrichments, generators, id_field
+            validate: Whether to run comprehensive config validation (default: True)
         
         Raises:
             ValueError: If required config keys missing
+            ConfigurationError: If config validation fails
         """
+        # Basic validation
         self._validate_config(config)
+        
+        # Comprehensive validation if requested
+        if validate:
+            from export.config.validator import validate_config
+            from pathlib import Path
+            config_dir = Path(__file__).parent.parent / 'config'
+            validate_config(config, config_dir)
         
         self.config = config
         self.domain = config['domain']
@@ -255,47 +265,95 @@ class UniversalFrontmatterExporter:
             logger.error(f"Failed to export {item_id}: {e}")
             raise
     
-    def export_all(self, force: bool = True) -> Dict[str, bool]:
+    def export_all(self, force: bool = True, show_progress: bool = True, dry_run: bool = False) -> Dict[str, bool]:
         """
         Export all items in domain to frontmatter files.
         
         Args:
             force: If True, overwrite existing files
+            show_progress: If True, print progress to stdout
+            dry_run: If True, simulate export without writing files
         
         Returns:
             Dict mapping item_id → success (True if exported, False if skipped)
         
         Example:
+            # Normal export
             results = exporter.export_all(force=True)
-            exported = sum(results.values())
-            print(f"Exported {exported}/{len(results)} items")
+            
+            # Dry-run (preview without writing)
+            results = exporter.export_all(dry_run=True)
+            print(f"Would export {sum(results.values())}/{len(results)} items")
         """
-        logger.info(f"Starting batch export for {self.domain} domain (force={force})")
+        mode = "DRY-RUN" if dry_run else "EXPORT"
+        logger.info(f"Starting batch {mode} for {self.domain} domain (force={force})")
+        
+        if show_progress:
+            if dry_run:
+                print(f"\n🔍 Dry-run: {self.domain} (preview only, no files written)")
+            else:
+                print(f"\n📦 Exporting {self.domain}...")
         
         results = {}
         data = self._load_domain_data()
         items = data[self.items_key]
         
         total = len(items)
+        logger.info(f"Found {total} items to {mode.lower()}")
+        
+        if show_progress:
+            print(f"  Items to process: {total}")
+        
+        exported_count = 0
+        skipped_count = 0
+        
         for idx, (item_id, item_data) in enumerate(items.items(), 1):
+            if show_progress and idx % 10 == 0:
+                print(f"  Progress: {idx}/{total} ({(idx/total)*100:.0f}%)")
+            
             try:
-                success = self.export_single(item_id, item_data, force)
+                if dry_run:
+                    # In dry-run, just check if would export
+                    filename = format_filename(
+                        item_id=item_id,
+                        suffix=self.filename_suffix,
+                        slugify_id=self.slugify_filenames
+                    )
+                    output_file = self.output_path / filename
+                    would_export = force or not output_file.exists()
+                    success = would_export
+                else:
+                    # Normal export
+                    success = self.export_single(item_id, item_data, force)
+                
                 results[item_id] = success
                 
-                if idx % 10 == 0:
-                    logger.info(f"Progress: {idx}/{total} items processed")
+                if success:
+                    exported_count += 1
+                    logger.debug(f"[{idx}/{total}] ✅ {item_id}")
+                else:
+                    skipped_count += 1
+                    logger.debug(f"[{idx}/{total}] ⏭️  {item_id} (skipped)")
                     
             except Exception as e:
-                logger.error(f"Failed to export {item_id}: {e}")
+                logger.error(f"Failed to {mode.lower()} {item_id}: {e}")
+                if show_progress:
+                    print(f"  ❌ Failed: {item_id} - {e}")
                 results[item_id] = False
         
         # Summary
-        exported = sum(results.values())
-        skipped = total - exported
+        action = "would export" if dry_run else "exported"
         logger.info(
-            f"Export complete: {exported} exported, {skipped} skipped, "
+            f"{mode} complete: {exported_count} {action}, {skipped_count} skipped, "
             f"{total} total"
         )
+        
+        if show_progress:
+            verb = "Would export" if dry_run else "Exported"
+            print(f"  ✅ {verb}: {exported_count}")
+            if skipped_count > 0:
+                print(f"  ⏭️  Skipped: {skipped_count}")
+            print(f"  📊 Total: {total}\n")
         
         return results
     

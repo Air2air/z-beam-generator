@@ -1,11 +1,27 @@
-# Z-Beam Generator Requirements
-# Core dependencies for content generation and learning systems
+# Z-Beam Generator - Core Requirements
+# Production dependencies required for content generation and learning systems
 
-# Scientific Computing (for Scoring Module)
-numpy>=1.24.0
-scipy>=1.11.0
+# AI/ML Libraries
+google-generativeai>=0.8.0  # Gemini API for content generation
+google-genai>=1.47.0  # Google Generative AI
+google-cloud-aiplatform>=1.124.0  # Vertex AI platform
 
-# Testing
-pytest>=7.4.0
-pytest-asyncio>=0.21.0
-pytest-cov>=4.1.0
+# Scientific Computing (scoring and optimization)
+numpy>=2.3.0
+scipy>=1.16.0
+
+# Data Processing
+PyYAML>=6.0.0  # YAML file handling
+
+# Testing (Core)
+pytest>=8.4.0
+pytest-asyncio>=1.1.0
+pytest-cov>=6.2.0
+
+# Optional Dependencies
+# Install with: pip install -r requirements-optional.txt
+# - jsonschema: Config schema validation
+# - psutil: Performance memory monitoring
+
+# Development Tools
+# Install with: pip install -r requirements-dev.txt

@@ -1,0 +1,142 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Z-Beam Export Configuration Schema",
+  "description": "Schema for domain export configuration files (export/config/*.yaml)",
+  "type": "object",
+  "required": ["domain", "source_file", "output_path"],
+  "properties": {
+    "domain": {
+      "type": "string",
+      "pattern": "^[a-z_]+$",
+      "description": "Domain name (lowercase, underscores allowed)",
+      "examples": ["materials", "contaminants", "compounds", "settings"]
+    },
+    "source_file": {
+      "type": "string",
+      "pattern": "^data/",
+      "description": "Path to source data file (must start with 'data/')",
+      "examples": ["data/materials/Materials.yaml", "data/contaminants/Contaminants.yaml"]
+    },
+    "output_path": {
+      "type": "string",
+      "pattern": "^\\.\\./",
+      "description": "Relative path to output directory (must start with '../')",
+      "examples": ["../z-beam/frontmatter/materials", "../z-beam/frontmatter/contaminants"]
+    },
+    "items_key": {
+      "type": "string",
+      "description": "Key in source data containing items to export (defaults to domain name)",
+      "examples": ["materials", "contaminants", "compounds"]
+    },
+    "id_field": {
+      "type": "string",
+      "description": "Field to use as item ID (defaults to 'id')",
+      "default": "id"
+    },
+    "filename_suffix": {
+      "type": "string",
+      "description": "Suffix to add to output filenames",
+      "examples": ["-settings", "-machine"]
+    },
+    "slugify_filenames": {
+      "type": "boolean",
+      "description": "Whether to slugify output filenames",
+      "default": false
+    },
+    "enrichments": {
+      "type": "array",
+      "description": "List of enrichment modules to apply",
+      "items": {
+        "type": "object",
+        "required": ["module", "class"],
+        "properties": {
+          "module": {
+            "type": "string",
+            "description": "Python module path",
+            "examples": ["export.enrichers.linkage.breadcrumb", "export.enrichers.metadata.name"]
+          },
+          "class": {
+            "type": "string",
+            "description": "Class name within module",
+            "examples": ["BreadcrumbEnricher", "NameEnricher"]
+          },
+          "params": {
+            "type": "object",
+            "description": "Parameters to pass to enricher constructor"
+          }
+        }
+      }
+    },
+    "generators": {
+      "type": "array",
+      "description": "List of generator modules to apply",
+      "items": {
+        "type": "object",
+        "required": ["module", "class"],
+        "properties": {
+          "module": {
+            "type": "string",
+            "description": "Python module path",
+            "examples": ["export.generation.slug", "export.generation.breadcrumb_text"]
+          },
+          "class": {
+            "type": "string",
+            "description": "Class name within module",
+            "examples": ["SlugGenerator", "BreadcrumbTextGenerator"]
+          },
+          "params": {
+            "type": "object",
+            "description": "Parameters to pass to generator constructor"
+          }
+        }
+      }
+    },
+    "library_enrichments": {
+      "type": "object",
+      "description": "Configuration for library enrichments",
+      "properties": {
+        "relationships": {
+          "type": "object",
+          "description": "Relationship fields to enrich",
+          "patternProperties": {
+            "^[a-z_]+$": {
+              "type": "object",
+              "required": ["domain", "fields"],
+              "properties": {
+                "domain": {
+                  "type": "string",
+                  "description": "Target domain for enrichment"
+                },
+                "fields": {
+                  "type": "array",
+                  "description": "Fields to copy from target domain",
+                  "items": {"type": "string"}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "domain": "materials",
+      "source_file": "data/materials/Materials.yaml",
+      "output_path": "../z-beam/frontmatter/materials",
+      "items_key": "materials",
+      "enrichments": [
+        {
+          "module": "export.enrichers.linkage.breadcrumb",
+          "class": "BreadcrumbEnricher"
+        }
+      ],
+      "generators": [
+        {
+          "module": "export.generation.slug",
+          "class": "SlugGenerator"
+        }
+      ]
+    }
+  ]
+}

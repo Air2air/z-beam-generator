@@ -30,11 +30,21 @@ Usage:
     # Returns dict with validated configuration
 """
 
+import json
 import logging
 from pathlib import Path
 from typing import Any, Dict, Optional
 
 import yaml
+
+try:
+    import jsonschema
+    from jsonschema import ValidationError as JSONValidationError
+    JSONSCHEMA_AVAILABLE = True
+except ImportError:
+    JSONSCHEMA_AVAILABLE = False
+
+from shared.exceptions import ConfigurationError
 
 logger = logging.getLogger(__name__)
 
@@ -87,39 +97,71 @@ def load_domain_config(domain: str, config_dir: Optional[Path] = None) -> Dict[s
 
 def validate_config(config: Dict[str, Any], domain: str) -> None:
     """
-    Validate domain configuration.
+    Validate domain configuration against JSON Schema.
     
     Args:
         config: Configuration dict
         domain: Domain name (for error messages)
     
     Raises:
-        ValueError: If configuration invalid
+        ConfigurationError: If configuration invalid
     """
-    # Check required keys
+    # First, validate against JSON Schema if available
+    if JSONSCHEMA_AVAILABLE:
+        try:
+            schema_file = CONFIG_DIR / "schema.json"
+            if schema_file.exists():
+                with open(schema_file, 'r', encoding='utf-8') as f:
+                    schema = json.load(f)
+                
+                jsonschema.validate(config, schema)
+                logger.debug(f"JSON Schema validation passed for domain: {domain}")
+            else:
+                logger.warning(f"Schema file not found: {schema_file}")
+        except JSONValidationError as e:
+            raise ConfigurationError(
+                f"Config validation failed for '{domain}': {e.message}",
+                fix=f"Fix the configuration in export/config/{domain}.yaml\nError path: {' -> '.join(str(p) for p in e.path) if e.path else 'root'}",
+                doc_link="docs/export/CONFIG_SCHEMA.md"
+            ) from e
+        except json.JSONDecodeError as e:
+            raise ConfigurationError(
+                f"Invalid schema file: {schema_file}",
+                fix="Fix the JSON syntax in export/config/schema.json",
+                doc_link="docs/export/CONFIG_SCHEMA.md"
+            ) from e
+    else:
+        logger.warning("jsonschema not installed - skipping JSON Schema validation")
+        logger.info("Install with: pip install jsonschema")
+    
+    # Check required keys (basic validation)
     required_keys = ['domain', 'source_file', 'output_path']
     missing_keys = [key for key in required_keys if key not in config]
     
     if missing_keys:
-        raise ValueError(
+        raise ConfigurationError(
             f"Invalid config for domain '{domain}': "
-            f"missing required keys: {', '.join(missing_keys)}\n"
-            f"Required keys: {', '.join(required_keys)}"
+            f"missing required keys: {', '.join(missing_keys)}",
+            fix=f"Add required keys to export/config/{domain}.yaml: {', '.join(missing_keys)}",
+            doc_link="docs/export/CONFIG_SCHEMA.md"
         )
     
     # Validate domain name matches
     if config['domain'] != domain:
-        raise ValueError(
+        raise ConfigurationError(
             f"Domain mismatch: config file is '{domain}.yaml' but "
-            f"'domain' field is '{config['domain']}'"
+            f"'domain' field is '{config['domain']}'",
+            fix=f"Change 'domain' field to '{domain}' in export/config/{domain}.yaml",
+            doc_link="docs/export/CONFIG_SCHEMA.md"
         )
     
     # Validate source file exists
     source_file = Path(config['source_file'])
     if not source_file.exists():
-        raise ValueError(
-            f"Source file not found: {source_file}\n"
-            f"Specified in config for domain: {domain}"
+        raise ConfigurationError(
+            f"Source file not found: {source_file}",
+            fix=f"Create the file or update source_file in export/config/{domain}.yaml",
+            doc_link="docs/data/"
         )
     
     # Validate enrichment configs

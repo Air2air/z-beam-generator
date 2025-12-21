@@ -35,6 +35,8 @@ Comprehensive guide for AI assistants (GitHub Copilot, Grok, Claude, etc.) conta
 ```bash
 # Install dependencies
 pip install -r requirements.txt
+pip install -r requirements-optional.txt  # Optional: jsonschema, psutil
+pip install -r requirements-dev.txt       # Development tools
 
 # Configure APIs (see docs/01-getting-started/SETUP_GUIDE.md)
 cp .env.example .env
@@ -54,6 +56,10 @@ python3 run.py --export --domain settings
 # 🔥 Validate data integrity & links (MANDATORY Dec 18, 2025)
 python3 scripts/validation/verify_data_integrity.py      # Check source data
 python3 scripts/validation/verify_frontmatter_links.py   # Check exported files
+
+# Maintenance (cleanup cache, logs, temp files)
+python3 scripts/maintenance/cleanup.py --dry-run  # See what would be removed
+python3 scripts/maintenance/cleanup.py             # Clean up workspace
 
 # Validate existing content (optional - runs 6-pass pipeline)
 python3 run.py --validate-content Aluminum caption
