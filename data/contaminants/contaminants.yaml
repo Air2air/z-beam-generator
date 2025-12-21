@@ -297,16 +297,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials: []
@@ -574,16 +574,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
-      - id: nitrogen-oxides
+      - id: nitrogen-oxides-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -826,10 +826,10 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: aluminum-oxide
+      - id: aluminum-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: aluminum-oxide
+      - id: aluminum-oxide-compound
         phase: gas
         hazard_level: low
       found_on_materials:
@@ -1061,13 +1061,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: iron-oxide
+      - id: iron-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: carbon-monoxide
+      - id: carbon-monoxide-compound
         phase: gas
         hazard_level: low
-      - id: metal-vapors-mixed
+      - id: metal-vapors-mixed-compound
         phase: plasma
         hazard_level: moderate
       found_on_materials: []
@@ -1285,10 +1285,10 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: aluminum-oxide
+      - id: aluminum-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: aluminum-oxide
+      - id: aluminum-oxide-compound
         phase: gas
         hazard_level: low
       found_on_materials: []
@@ -1515,19 +1515,19 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: solid
         hazard_level: moderate
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials: []
@@ -1748,10 +1748,10 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: silicon-dioxide
+      - id: silicon-dioxide-compound
         phase: solid
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
       found_on_materials:
@@ -1986,19 +1986,19 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: silicon-dioxide
+      - id: silicon-dioxide-compound
         phase: solid
         hazard_level: low
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -2223,7 +2223,7 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: zinc-oxide
+      - id: zinc-oxide-compound
         phase: solid
         hazard_level: low
       found_on_materials:
@@ -2724,16 +2724,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -2990,19 +2990,19 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-monoxide
+      - id: carbon-monoxide-compound
         phase: gas
         hazard_level: moderate
-      - id: pahs
+      - id: pahs-compound
         phase: gas
         hazard_level: high
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -3253,16 +3253,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: nitrogen-oxides
+      - id: nitrogen-oxides-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
       found_on_materials:
@@ -3504,16 +3504,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: iron-oxide
+      - id: iron-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: low
-      - id: copper-oxide
+      - id: copper-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
       found_on_materials: []
@@ -3727,13 +3727,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: zinc-oxide
+      - id: zinc-oxide-compound
         phase: gas/particulate
         hazard_level: moderate
-      - id: copper-oxide
+      - id: copper-oxide-compound
         phase: solid/particulate
         hazard_level: moderate
-      - id: metal-vapors-mixed
+      - id: metal-vapors-mixed-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -3959,19 +3959,19 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: copper-oxide
+      - id: copper-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: copper-oxide
+      - id: copper-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: tin-oxide
+      - id: tin-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: metal-vapors-mixed
+      - id: metal-vapors-mixed-compound
         phase: gas
         hazard_level: high
       found_on_materials:
@@ -4187,13 +4187,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: cadmium-oxide
+      - id: cadmium-oxide-compound
         phase: gas
         hazard_level: high
-      - id: cadmium-oxide
+      - id: cadmium-oxide-compound
         phase: gas
         hazard_level: high
-      - id: cadmium-oxide
+      - id: cadmium-oxide-compound
         phase: solid
         hazard_level: high
       found_on_materials:
@@ -4427,13 +4427,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: carbon-monoxide
+      - id: carbon-monoxide-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -4691,13 +4691,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: carbon-monoxide
+      - id: carbon-monoxide-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -4912,10 +4912,10 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: gas
         hazard_level: moderate
-      - id: nanoparticulates
+      - id: nanoparticulates-compound
         phase: solid
         hazard_level: high
       found_on_materials:
@@ -5151,7 +5151,7 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: nanoparticulates
+      - id: nanoparticulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -5418,13 +5418,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -5641,13 +5641,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: chromium-vi
+      - id: chromium-vi-compound
         phase: gas
         hazard_level: moderate
-      - id: chromium-vi
+      - id: chromium-vi-compound
         phase: gas
         hazard_level: high
-      - id: chromium-vi
+      - id: chromium-vi-compound
         phase: solid
         hazard_level: moderate
       found_on_materials:
@@ -5881,13 +5881,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: nanoparticulates
+      - id: nanoparticulates-compound
         phase: solid
         hazard_level: moderate
-      - id: calcium-oxide
+      - id: calcium-oxide-compound
         phase: solid
         hazard_level: low
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
       found_on_materials:
@@ -6108,13 +6108,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: solid
         hazard_level: moderate
-      - id: chromium-vi
+      - id: chromium-vi-compound
         phase: solid
         hazard_level: high
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
       found_on_materials:
@@ -6349,16 +6349,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: calcium-oxide
+      - id: calcium-oxide-compound
         phase: solid
         hazard_level: low
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -6688,16 +6688,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: copper-oxide
+      - id: copper-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: copper-oxide
+      - id: copper-oxide-compound
         phase: solid
         hazard_level: moderate
       found_on_materials:
@@ -6914,13 +6914,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: copper-oxide
+      - id: copper-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: copper-oxide
+      - id: copper-oxide-compound
         phase: gas
         hazard_level: moderate
-      - id: copper-oxide
+      - id: copper-oxide-compound
         phase: solid
         hazard_level: moderate
       found_on_materials:
@@ -7168,16 +7168,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: low
       found_on_materials:
@@ -7427,16 +7427,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -7664,13 +7664,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-monoxide
+      - id: carbon-monoxide-compound
         phase: gas
         hazard_level: high
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials:
@@ -7903,16 +7903,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: calcium-oxide
+      - id: calcium-oxide-compound
         phase: solid
         hazard_level: low
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: calcium-oxide
+      - id: calcium-oxide-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -8148,16 +8148,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: solid
         hazard_level: moderate
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: nitrogen-oxides
+      - id: nitrogen-oxides-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -8410,16 +8410,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: nanoparticulates
+      - id: nanoparticulates-compound
         phase: solid
         hazard_level: moderate
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -8676,19 +8676,19 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-monoxide
+      - id: carbon-monoxide-compound
         phase: gas
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: low
       found_on_materials: []
@@ -8920,16 +8920,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: pahs
+      - id: pahs-compound
         phase: solid
         hazard_level: high
       found_on_materials: []
@@ -9171,13 +9171,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: nitrogen-oxides
+      - id: nitrogen-oxides-compound
         phase: gas
         hazard_level: moderate
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: solid
         hazard_level: low
       found_on_materials: []
@@ -9437,16 +9437,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: pahs
+      - id: pahs-compound
         phase: gas
         hazard_level: high
       found_on_materials:
@@ -9663,13 +9663,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: iron-oxide
+      - id: iron-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: iron-oxide
+      - id: iron-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
       found_on_materials: []
@@ -9905,16 +9905,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials: []
@@ -10121,13 +10121,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: zinc-oxide
+      - id: zinc-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: zinc-oxide
+      - id: zinc-oxide-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
       found_on_materials:
@@ -10386,16 +10386,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials: []
@@ -10877,16 +10877,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials:
@@ -11132,13 +11132,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: carbon-monoxide
+      - id: carbon-monoxide-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -11383,16 +11383,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -11637,19 +11637,19 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-monoxide
+      - id: carbon-monoxide-compound
         phase: gas
         hazard_level: high
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: liquid
         hazard_level: moderate
       found_on_materials: []
@@ -12007,19 +12007,19 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-monoxide
+      - id: carbon-monoxide-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -12276,16 +12276,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials: []
@@ -12541,16 +12541,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
-      - id: nitrogen-oxides
+      - id: nitrogen-oxides-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -12781,13 +12781,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -13026,19 +13026,19 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: lead-oxide
+      - id: lead-oxide-compound
         phase: gas
         hazard_level: high
-      - id: lead-oxide
+      - id: lead-oxide-compound
         phase: gas
         hazard_level: high
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: lead-oxide
+      - id: lead-oxide-compound
         phase: solid
         hazard_level: high
       found_on_materials:
@@ -13283,13 +13283,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: calcium-oxide
+      - id: calcium-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: calcium-oxide
+      - id: calcium-oxide-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -13522,13 +13522,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
       found_on_materials: []
@@ -13754,7 +13754,7 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -13982,16 +13982,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -14242,10 +14242,10 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: calcium-oxide
+      - id: calcium-oxide-compound
         phase: solid
         hazard_level: low
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
       found_on_materials: []
@@ -14473,16 +14473,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: silicon-dioxide
+      - id: silicon-dioxide-compound
         phase: solid
         hazard_level: moderate
-      - id: iron-oxide
+      - id: iron-oxide-compound
         phase: solid
         hazard_level: low
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
       found_on_materials: []
@@ -14732,13 +14732,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -14970,13 +14970,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: metal-vapors-mixed
+      - id: metal-vapors-mixed-compound
         phase: solid
         hazard_level: moderate
-      - id: metal-vapors-mixed
+      - id: metal-vapors-mixed-compound
         phase: solid
         hazard_level: moderate
-      - id: metal-vapors-mixed
+      - id: metal-vapors-mixed-compound
         phase: gas
         hazard_level: high
       found_on_materials:
@@ -15268,16 +15268,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
       found_on_materials:
@@ -15499,13 +15499,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: solid
         hazard_level: low
-      - id: metal-vapors-mixed
+      - id: metal-vapors-mixed-compound
         phase: gas
         hazard_level: moderate
-      - id: nanoparticulates
+      - id: nanoparticulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -15738,19 +15738,19 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-monoxide
+      - id: carbon-monoxide-compound
         phase: gas
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -16000,16 +16000,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: nitrogen-oxides
+      - id: nitrogen-oxides-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -16245,16 +16245,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: nitrogen-oxides
+      - id: nitrogen-oxides-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -16473,16 +16473,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: iron-oxide
+      - id: iron-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: gas
         hazard_level: moderate
       found_on_materials: []
@@ -16696,10 +16696,10 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: solid
         hazard_level: moderate
-      - id: metal-vapors-mixed
+      - id: metal-vapors-mixed-compound
         phase: gas/plasma
         hazard_level: high
       found_on_materials: []
@@ -16960,16 +16960,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials: []
@@ -17211,16 +17211,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: low
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -17466,16 +17466,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials:
@@ -17710,16 +17710,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials:
@@ -17939,13 +17939,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: solid
         hazard_level: moderate
-      - id: metal-vapors-mixed
+      - id: metal-vapors-mixed-compound
         phase: gas
         hazard_level: moderate
-      - id: nanoparticulates
+      - id: nanoparticulates-compound
         phase: solid
         hazard_level: high
       found_on_materials:
@@ -18181,19 +18181,19 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-monoxide
+      - id: carbon-monoxide-compound
         phase: gas
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: low
       found_on_materials:
@@ -18424,13 +18424,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -18665,16 +18665,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
-      - id: silicon-dioxide
+      - id: silicon-dioxide-compound
         phase: solid
         hazard_level: low
       found_on_materials: []
@@ -18927,16 +18927,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -19243,7 +19243,7 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: iron-oxide
+      - id: iron-oxide-compound
         phase: solid
         hazard_level: moderate
       found_on_materials:
@@ -19761,13 +19761,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: calcium-oxide
+      - id: calcium-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: calcium-oxide
+      - id: calcium-oxide-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -20004,16 +20004,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
-      - id: nanoparticulates
+      - id: nanoparticulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -20264,16 +20264,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: silicon-dioxide
+      - id: silicon-dioxide-compound
         phase: solid
         hazard_level: low
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -20728,16 +20728,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
       found_on_materials: []
@@ -20963,16 +20963,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: low
       found_on_materials: []
@@ -21197,13 +21197,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: iron-oxide
+      - id: iron-oxide-compound
         phase: solid
         hazard_level: moderate
-      - id: iron-oxide
+      - id: iron-oxide-compound
         phase: solid
         hazard_level: low
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
       found_on_materials:
@@ -21447,13 +21447,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -21686,7 +21686,7 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: low
       found_on_materials: []
@@ -21922,16 +21922,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: low
-      - id: nanoparticulates
+      - id: nanoparticulates-compound
         phase: solid
         hazard_level: moderate
       found_on_materials: []
@@ -22162,16 +22162,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: low
       found_on_materials: []
@@ -22377,13 +22377,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: tin-oxide
+      - id: tin-oxide-compound
         phase: solid
         hazard_level: low
-      - id: tin-oxide
+      - id: tin-oxide-compound
         phase: gas
         hazard_level: moderate
-      - id: tin-oxide
+      - id: tin-oxide-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -22636,16 +22636,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials: []
@@ -22889,19 +22889,19 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
-      - id: metal-oxides-mixed
+      - id: metal-oxides-mixed-compound
         phase: solid
         hazard_level: moderate
       found_on_materials:
@@ -23385,16 +23385,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials: []
@@ -23626,10 +23626,10 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
       found_on_materials: []
@@ -23888,16 +23888,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: organic-residues
+      - id: organic-residues-compound
         phase: gas
         hazard_level: moderate
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: carbon-particulates
+      - id: carbon-particulates-compound
         phase: solid
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
       found_on_materials: []
@@ -24181,16 +24181,16 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: carbon-dioxide
+      - id: carbon-dioxide-compound
         phase: gas
         hazard_level: low
-      - id: water-vapor
+      - id: water-vapor-compound
         phase: gas
         hazard_level: low
-      - id: carbon-ash
+      - id: carbon-ash-compound
         phase: solid
         hazard_level: moderate
-      - id: vocs
+      - id: vocs-compound
         phase: gas
         hazard_level: moderate
       found_on_materials:
@@ -24407,13 +24407,13 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds:
-      - id: zinc-oxide
+      - id: zinc-oxide-compound
         phase: gas/plume
         hazard_level: moderate
-      - id: zinc-oxide
+      - id: zinc-oxide-compound
         phase: gas/plume
         hazard_level: moderate
-      - id: zinc-oxide
+      - id: zinc-oxide-compound
         phase: solid
         hazard_level: moderate
       found_on_materials:
