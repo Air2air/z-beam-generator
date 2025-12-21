@@ -7,6 +7,8 @@ filename_suffix: -compound
 sluggify_filenames: true
 enrichments:
 - type: universal_restructure
+  module: export.enrichers.universal.universal_restructure_enricher
+  class: UniversalRestructureEnricher
   domain: compounds
   cleanup_rules:
     old_relationship_keys:
@@ -34,6 +36,8 @@ enrichments:
     - medical_surveillance
     - risk_assessment
 - type: contaminant_linkage
+  module: export.enrichers.linkage.contaminant_linkage_enricher
+  class: ContaminantLinkageEnricher
   field: source_contaminants
   title: Found in Contaminants
   description: Contamination patterns that contain or release this compound
@@ -45,6 +49,8 @@ enrichments:
   - contaminant_category
   - commonality_score
 - type: material_linkage
+  module: export.enrichers.linkage.material_linkage_enricher
+  class: MaterialLinkageEnricher
   field: affected_materials
   title: Produced from Materials
   description: Materials that generate this compound when laser processed
@@ -56,6 +62,8 @@ enrichments:
   - thermal_conductivity
   - reflectivity
 - type: settings_linkage
+  module: export.enrichers.linkage.settings_linkage_enricher
+  class: SettingsLinkageEnricher
   field: related_settings
   title: Relevant Settings
   description: Laser configurations where this compound safety data is applicable
@@ -66,16 +74,24 @@ enrichments:
   - pulse_frequency_hz
   - recommended_for
 - type: timestamp
+  module: export.enrichers.metadata.timestamp_enricher
+  class: TimestampEnricher
   fields:
   - datePublished
   - dateModified
 - type: author
+  module: export.enrichers.metadata.author_enricher
+  class: AuthorEnricher
 - type: breadcrumb
+  module: export.enrichers.navigation.breadcrumb_enricher
+  class: BreadcrumbEnricher
   domain: compounds
   category_field: category
   subcategory_field: subcategory
   name_field: name
 - type: title
+  module: export.generation.title_generator
+  class: TitleGenerator
   template: "{name}"
   use_display_name: true
   skip_if_exists: true
@@ -102,11 +118,17 @@ library_enrichments:
     output_field: emergency_response_detail
 generators:
 - type: field_cleanup
+  module: export.enrichers.cleanup.field_cleanup_enricher
+  class: FieldCleanupEnricher
 - type: seo_description
+  module: shared.generation.seo_description_generator
+  class: SEODescriptionGenerator
   source_field: compound_description
   output_field: seo_description
   max_length: 160
 - type: excerpt
+  module: shared.generation.excerpt_generator
+  class: ExcerptGenerator
   source_field: compound_description
   output_field: micro
   mode: sentences

@@ -54,10 +54,12 @@ def get_materials_from_source() -> Tuple[Set[str], Dict[str, str]]:
     
     Returns:
         Tuple of (material_names set, material_to_category dict)
-    """    if not DATA_FILES["Materials.yaml"].exists():
+    """
+    if not DATA_FILES["Materials.yaml"].exists():
         print(f"⚠️  File not found: {DATA_FILES['Materials.yaml']}")
         return set(), {}
-        data = load_yaml(DATA_FILES["Materials.yaml"])
+    
+    data = load_yaml(DATA_FILES["Materials.yaml"])
     materials_section = data.get("materials", {})
     
     material_names = set()

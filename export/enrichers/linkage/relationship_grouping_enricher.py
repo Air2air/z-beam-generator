@@ -70,7 +70,7 @@ class RelationshipGroupingEnricher(BaseEnricher):
         Returns:
             Frontmatter with grouped relationships
         """
-        print(f"🎯 RelationshipGroupingEnricher.enrich() for {frontmatter.get('id', 'unknown')}")
+        # print(f"🎯 RelationshipGroupingEnricher.enrich() for {frontmatter.get('id', 'unknown')}")
         
         relationships = frontmatter.get('relationships', {})
         if not relationships:
@@ -99,7 +99,7 @@ class RelationshipGroupingEnricher(BaseEnricher):
             for section in grouped.values() 
             if isinstance(section, dict) and 'groups' in section
         )
-        print(f"   ✅ Created {len(grouped)} sections with {total_groups} total groups")
+        # print(f"   ✅ Created {len(grouped)} sections with {total_groups} total groups")
         
         return frontmatter
     

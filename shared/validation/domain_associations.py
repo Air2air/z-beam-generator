@@ -61,8 +61,8 @@ class DomainAssociationsValidator:
             associations_file: Path to associations YAML (auto-detected if None)
         """
         if associations_file is None:
-            # Use ExtractedLinkages.yaml (2,040 associations) not DomainAssociations.yaml (16 samples)
-            associations_file = Path(__file__).parent.parent.parent / 'data' / 'associations' / 'ExtractedLinkages.yaml'
+            # Use DomainAssociations.yaml (2,730 associations) - primary data source
+            associations_file = Path(__file__).parent.parent.parent / 'data' / 'associations' / 'DomainAssociations.yaml'
         
         self.associations_file = Path(associations_file)
         self.data: Optional[Dict] = None
@@ -259,7 +259,7 @@ class DomainAssociationsValidator:
         Get all contaminants associated with a material
         
         Args:
-            material_id: Material ID (e.g., 'aluminum-laser-cleaning')
+            material_id: Material ID (e.g., 'aluminum-laser-cleaning' or 'aluminum')
         
         Returns:
             List of contaminant linkage dictionaries with full metadata
@@ -267,37 +267,51 @@ class DomainAssociationsValidator:
         if not self.data:
             self.load()
         
-        associations = self.data.get('material_contaminant_associations', []) or []
+        # Strip -laser-cleaning suffix if present (lookup index uses base material ID)
+        base_material_id = material_id.replace('-laser-cleaning', '')
+        
+        # Use lookup index for fast access
+        contaminant_ids = self.data.get('material_to_contaminant', {}).get(base_material_id, [])
+        if not contaminant_ids:
+            return []
+        
         results = []
         
-        for assoc in associations:
-            if assoc.get('material_id') == material_id:
-                # Build linkage structure
-                contaminant_id = assoc['contaminant_id']
-                
-                # Get contaminant details from Contaminants.yaml
-                # Note: Associations use shortened ID, but Contaminants.yaml uses full ID with suffix
-                full_contaminant_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
-                contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
-                
-                # Build linkage per FRONTMATTER_GENERATOR_LINKAGE_SPEC.md
-                category, subcategory = normalize_taxonomy(contaminant_data)
-                
-                # Extract display name and slug using formatters
-                display_name = format_display_name(contaminant_id, '-contamination')
-                slug = extract_slug(contaminant_id, '-contamination')
-                
-                results.append({
-                    'id': contaminant_id,
-                    'title': contaminant_data.get('name', display_name),
-                    'url': f"/contaminants/{category}/{subcategory}/{contaminant_id}",
-                    'image': format_image_url('contaminants', slug),
-                    'category': category,
-                    'subcategory': subcategory,
-                    'frequency': assoc['frequency'],
-                    'severity': assoc['severity'],
-                    'typical_context': assoc.get('typical_context', '')
-                })
+        for contaminant_id in contaminant_ids:
+            # Find full association data in associations list
+            assoc = None
+            for a in self.data.get('associations', []):
+                if (a.get('source_domain') == 'materials' and 
+                    a.get('source_id') == base_material_id and
+                    a.get('target_domain') == 'contaminants' and
+                    a.get('target_id') == contaminant_id and
+                    a.get('relationship_type') == 'can_have_contamination'):
+                    assoc = a
+                    break
+            
+            # Get contaminant details from Contaminants.yaml
+            full_contaminant_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
+            contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
+            
+            # Build linkage per FRONTMATTER_GENERATOR_LINKAGE_SPEC.md
+            category, subcategory = normalize_taxonomy(contaminant_data)
+            
+            # Extract display name and slug using formatters
+            display_name = format_display_name(contaminant_id, '-contamination')
+            slug = extract_slug(contaminant_id, '-contamination')
+            
+            results.append({
+                'id': full_contaminant_id,
+                'title': contaminant_data.get('name', display_name),
+                'url': f"/contaminants/{category}/{subcategory}/{full_contaminant_id}",
+                'image': format_image_url('contaminants', slug),
+                'category': category,
+                'subcategory': subcategory,
+                # Default metadata since DomainAssociations doesn't have this yet
+                'frequency': 'common',
+                'severity': 'moderate',
+                'typical_context': ''
+            })
         
         return results
     
@@ -314,45 +328,48 @@ class DomainAssociationsValidator:
         if not self.data:
             self.load()
         
-        # Ensure contaminant ID has suffix (associations use full IDs with suffix)
-        lookup_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
+        # Ensure full ID with -contamination suffix (lookup index uses full IDs)
+        full_contaminant_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
         
-        associations = self.data.get('material_contaminant_associations', []) or []
+        # Use lookup index for fast access (uses full ID with suffix)
+        material_ids = self.data.get('contaminant_to_material', {}).get(full_contaminant_id, [])
+        if not material_ids:
+            return []
+        
         results = []
         
-        for assoc in associations:
-            if assoc.get('contaminant_id') == lookup_id:
-                material_id = assoc['material_id']
-                
-                # Get material details from Materials.yaml
-                # Note: Materials.yaml now uses full ID as key (with -laser-cleaning suffix)
-                material_data = self.materials_data.get('materials', {}).get(material_id, {})
-                
-                # Get URL from full_path (single source of truth)
-                url = material_data.get('full_path')
-                if not url:
-                    # Fallback: derive from category/subcategory
-                    category, subcategory = normalize_taxonomy(material_data)
-                    url = f"/materials/{category}/{subcategory}/{material_id}"
-                    logger.warning(f"Material '{material_id}' missing full_path, using derived URL: {url}")
-                else:
-                    # Get category/subcategory for linkage metadata
-                    category, subcategory = normalize_taxonomy(material_data)
-                
-                # Extract display name using formatters
-                display_name = format_display_name(material_id, '-laser-cleaning')
-                
-                results.append({
-                    'id': material_id,
-                    'title': material_data.get('name', display_name),
-                    'url': url,
-                    'image': format_image_url('materials', material_id),
-                    'category': category,
-                    'subcategory': subcategory,
-                    'frequency': assoc['frequency'],
-                    'severity': assoc['severity'],
-                    'typical_context': assoc.get('typical_context', '')
-                })
+        for material_id in material_ids:
+            # Add -laser-cleaning suffix for Materials.yaml lookup
+            full_material_id = material_id if material_id.endswith('-laser-cleaning') else f"{material_id}-laser-cleaning"
+            
+            # Get material details from Materials.yaml
+            material_data = self.materials_data.get('materials', {}).get(full_material_id, {})
+            
+            # Get URL from full_path (single source of truth)
+            url = material_data.get('full_path')
+            if not url:
+                # Fallback: derive from category/subcategory
+                category, subcategory = normalize_taxonomy(material_data)
+                url = f"/materials/{category}/{subcategory}/{full_material_id}"
+            else:
+                # Get category/subcategory for linkage metadata
+                category, subcategory = normalize_taxonomy(material_data)
+            
+            # Extract display name using formatters
+            display_name = format_display_name(full_material_id, '-laser-cleaning')
+            
+            results.append({
+                'id': full_material_id,
+                'title': material_data.get('name', display_name),
+                'url': url,
+                'image': format_image_url('materials', full_material_id),
+                'category': category,
+                'subcategory': subcategory,
+                # Default metadata
+                'frequency': 'common',
+                'severity': 'moderate',
+                'typical_context': ''
+            })
         
         return results
     
@@ -369,48 +386,50 @@ class DomainAssociationsValidator:
         if not self.data:
             self.load()
         
-        # Ensure full ID with suffix (associations use full IDs with -contamination)
-        lookup_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
+        # Strip -contamination suffix if present
+        base_contaminant_id = contaminant_id.replace('-contamination', '')
         
-        associations = self.data.get('contaminant_compound_associations', [])
+        # Find compound associations in associations list
+        compound_ids = []
+        for assoc in self.data.get('associations', []):
+            if (assoc.get('source_domain') == 'contaminants' and
+                assoc.get('source_id') == base_contaminant_id and
+                assoc.get('target_domain') == 'compounds' and
+                assoc.get('relationship_type') == 'generates_byproduct'):
+                compound_ids.append(assoc.get('target_id'))
         
-        # Handle None or missing associations
-        if not associations:
+        if not compound_ids:
             return []
         
         results = []
         
-        for assoc in associations:
-            if assoc.get('contaminant_id') == lookup_id:
-                compound_id = assoc['compound_id']
-                
-                # Get compound details from Compounds.yaml (uses slug without suffix as key)
-                slug_without_suffix = extract_slug(compound_id, 'compound')
-                compound_data = self.compounds_data.get('compounds', {}).get(slug_without_suffix, {})
-                
-                # Get URL from full_path in compound data (single source of truth)
-                # Fallback to derived URL only if full_path missing (shouldn't happen)
-                url = compound_data.get('full_path')
-                if not url:
-                    # Fallback: derive from category/subcategory (legacy behavior)
-                    category, subcategory = normalize_taxonomy(compound_data)
-                    url = f"/compounds/{category}/{subcategory}/{compound_id}"
-                    logger.warning(f"Compound '{compound_id}' missing full_path, using derived URL: {url}")
-                else:
-                    # Get category/subcategory from compound data for linkage metadata
-                    category, subcategory = normalize_taxonomy(compound_data)
-                
-                results.append({
-                    'id': compound_id,
-                    'url': url,
-                    'image': format_image_url('compounds', slug_without_suffix),
-                    'category': category,
-                    'subcategory': subcategory,
-                    'frequency': assoc['frequency'],
-                    'severity': assoc['severity'],
-                    'typical_context': assoc.get('typical_context', ''),
-                    'exposure_risk': assoc.get('severity', 'moderate')  # Map severity to exposure_risk
-                })
+        for compound_id in compound_ids:
+            # Get compound details from Compounds.yaml (uses slug without suffix as key)
+            slug_without_suffix = extract_slug(compound_id, 'compound')
+            compound_data = self.compounds_data.get('compounds', {}).get(slug_without_suffix, {})
+            
+            # Get URL from full_path in compound data (single source of truth)
+            url = compound_data.get('full_path')
+            if not url:
+                # Fallback: derive from category/subcategory
+                category, subcategory = normalize_taxonomy(compound_data)
+                url = f"/compounds/{category}/{subcategory}/{compound_id}"
+            else:
+                # Get category/subcategory from compound data for linkage metadata
+                category, subcategory = normalize_taxonomy(compound_data)
+            
+            results.append({
+                'id': compound_id,
+                'url': url,
+                'image': format_image_url('compounds', slug_without_suffix),
+                'category': category,
+                'subcategory': subcategory,
+                # Default metadata
+                'frequency': 'common',
+                'severity': 'moderate',
+                'typical_context': '',
+                'exposure_risk': 'moderate'
+            })
         
         return results
     

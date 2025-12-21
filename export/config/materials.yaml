@@ -5,6 +5,8 @@ items_key: materials
 filename_suffix: ''
 enrichments:
 - type: universal_restructure
+  module: export.enrichers.universal.universal_restructure_enricher
+  class: UniversalRestructureEnricher
   domain: materials
   cleanup_rules:
     old_relationship_keys:
@@ -18,6 +20,8 @@ enrichments:
     duplicate_fields:
       regulatory_standards: regulatory
 - type: compound_linkage
+  module: export.enrichers.linkage.compound_linkage_enricher
+  class: CompoundLinkageEnricher
   field: produces_compounds
   title: Compounds Produced
   description: Hazardous fumes and particles generated when laser processing this
@@ -31,6 +35,8 @@ enrichments:
   - cas_number
   - compound_category
 - type: contaminant_linkage
+  module: export.enrichers.linkage.contaminant_linkage_enricher
+  class: ContaminantLinkageEnricher
   field: removes_contaminants
   title: Contaminants Removed
   description: Types of contamination that can be effectively cleaned from this material
@@ -42,6 +48,8 @@ enrichments:
   - contaminant_category
   - commonality_score
 - type: material_linkage
+  module: export.enrichers.linkage.material_linkage_enricher
+  class: MaterialLinkageEnricher
   field: related_materials
   title: Related Materials
   description: Similar materials with comparable laser cleaning properties and characteristics
@@ -53,6 +61,8 @@ enrichments:
   - thermal_conductivity
   - reflectivity
 - type: settings_linkage
+  module: export.enrichers.linkage.settings_linkage_enricher
+  class: SettingsLinkageEnricher
   field: related_settings
   title: Recommended Settings
   description: Laser parameters and configurations optimized for cleaning this material
@@ -63,15 +73,25 @@ enrichments:
   - pulse_frequency_hz
   - recommended_for
 - type: timestamp
+  module: export.enrichers.metadata.timestamp_enricher
+  class: TimestampEnricher
   fields:
   - datePublished
   - dateModified
 - type: author
+  module: export.enrichers.metadata.author_enricher
+  class: AuthorEnricher
 - type: relationships
+  module: export.enrichers.relationships.relationships_enricher
+  class: RelationshipsEnricher
   domain: materials
 - type: relationship_grouping
+  module: export.enrichers.grouping.relationship_grouping_enricher
+  class: RelationshipGroupingEnricher
   domain: materials
 - type: breadcrumb
+  module: export.enrichers.navigation.breadcrumb_enricher
+  class: BreadcrumbEnricher
   domain: materials
   category_field: category
   subcategory_field: subcategory
@@ -84,11 +104,17 @@ library_enrichments:
     output_field: regulatory_standards_detail
 generators:
 - type: field_cleanup
+  module: export.enrichers.cleanup.field_cleanup_enricher
+  class: FieldCleanupEnricher
 - type: seo_description
+  module: shared.generation.seo_description_generator
+  class: SEODescriptionGenerator
   source_field: description
   output_field: seo_description
   max_length: 160
 - type: excerpt
+  module: shared.generation.excerpt_generator
+  class: ExcerptGenerator
   source_field: description
   output_field: micro
   mode: sentences

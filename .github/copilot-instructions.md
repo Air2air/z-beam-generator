@@ -1669,6 +1669,96 @@ Stage 5: Assembly → Final polish (balanced 0.5)
 
 See `docs/08-development/PROMPT_CHAINING_POLICY.md` for complete policy with examples.
 
+### 17. **Material Name Consistency Across Domains Policy** 🔥 **NEW (Dec 20, 2025) - CRITICAL**
+**ALL domains MUST use consistent material naming conventions based on their role.**
+
+**Single Source of Truth**: Materials.yaml defines ALL material identities.
+
+**Domain-Specific Formats** (MANDATORY):
+
+| Domain | Format | Example | Use Case |
+|--------|--------|---------|----------|
+| **Materials.yaml** | `{slug}-laser-cleaning` | `aluminum-laser-cleaning` | Dictionary keys (source of truth) |
+| **Settings.yaml** | `{slug}` (base only) | `aluminum` | Dictionary keys (matches material) |
+| **Contaminants.yaml** | `Display Name` | `Aluminum` | valid_materials lists (human-readable) |
+| **DomainAssociations.yaml** | `{slug}` (base only) | `aluminum` | Lookup keys (for associations) |
+
+**Format Conversion Rules**:
+```python
+# Materials.yaml → Settings.yaml
+'aluminum-laser-cleaning' → 'aluminum'  # Remove suffix
+
+# Materials.yaml → Contaminants.yaml
+'aluminum-laser-cleaning' → 'Aluminum'  # Display name
+'stainless-steel-316-laser-cleaning' → 'Stainless Steel 316'
+
+# Contaminants.yaml → Lookups
+'Aluminum' → 'aluminum'  # Lowercase, slugify
+'Stainless Steel 316' → 'stainless-steel-316'
+```
+
+**MANDATORY Implementation**:
+```python
+# ✅ CORRECT: Use appropriate format for domain
+from shared.utils.core.slug_utils import create_material_slug
+
+# For Materials.yaml operations
+material_key = f"{base_slug}-laser-cleaning"
+
+# For Settings.yaml operations  
+setting_key = base_slug  # No suffix
+
+# For Contaminants.yaml operations
+display_name = ' '.join(word.capitalize() for word in base_slug.split('-'))
+
+# ❌ WRONG: Mixing formats
+materials_data['materials']['Aluminum']  # Display name in Materials.yaml
+contaminants_data['valid_materials'] = ['aluminum-laser-cleaning']  # Slug in Contaminants
+```
+
+**Normalization Tool**:
+```bash
+# Check consistency across all domains
+python3 scripts/tools/normalize_all_domains.py --check
+
+# Fix inconsistencies
+python3 scripts/tools/normalize_all_domains.py --fix --dry-run
+python3 scripts/tools/normalize_all_domains.py --fix
+```
+
+**Why This Matters**:
+- ✅ **Cross-domain lookups work correctly**
+- ✅ **Consistent user experience** (display names match across UI)
+- ✅ **No broken associations** (material references resolve)
+- ✅ **Frontmatter generation accurate** (correct slugs for URLs)
+- ❌ **Mixing formats breaks everything** (lookups fail, associations break)
+
+**Common Mistakes to Avoid**:
+```python
+# ❌ Using display name in Materials.yaml
+materials_data['materials']['Aluminum'] = {...}  # WRONG
+
+# ❌ Using slug in Contaminants.yaml  
+pattern_data['valid_materials'] = ['aluminum-laser-cleaning']  # WRONG
+
+# ❌ Using full slug in Settings.yaml
+settings_data['settings']['aluminum-laser-cleaning'] = {...}  # WRONG
+
+# ✅ CORRECT formats for each domain
+materials_data['materials']['aluminum-laser-cleaning'] = {...}  # Materials
+settings_data['settings']['aluminum'] = {...}  # Settings
+pattern_data['valid_materials'] = ['Aluminum']  # Contaminants
+```
+
+**Enforcement**:
+- Automated tests: `tests/test_material_name_consistency.py` (to be created)
+- Validation script: `scripts/tools/normalize_all_domains.py`
+- Pre-commit hook: Check for format violations
+
+**Grade**: F violation if mixing formats or using wrong convention for domain
+
+See `docs/08-development/MATERIAL_NAME_CONSISTENCY_POLICY.md` for complete policy.
+
 
 
 ## Code Standards
@@ -1684,6 +1774,11 @@ See `docs/08-development/PROMPT_CHAINING_POLICY.md` for complete policy with exa
   - ❌ `UniversalImageGenerator` → ✅ `ImageGenerator`
   - ❌ `simple_validate()` → ✅ `validate()`
   - See `docs/08-development/NAMING_CONVENTIONS_POLICY.md` for complete rules
+- **Material naming conventions** - Use domain-appropriate format (MANDATORY)
+  - Materials.yaml: `aluminum-laser-cleaning` (slug with suffix)
+  - Settings.yaml: `aluminum` (base slug)
+  - Contaminants.yaml: `Aluminum` (display name)
+  - See Core Principle 17 for complete requirements
 - **NEVER add content instructions to code** - they belong ONLY in prompts/*.txt
 - **NEVER hardcode component types** - they're discovered from prompts/*.txt
 - **ALWAYS check documentation before implementing** - see Documentation Compliance Checklist

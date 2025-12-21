@@ -52,7 +52,7 @@ class DomainLinkagesEnricher(BaseEnricher):
         Returns:
             Frontmatter with relationships populated
         """
-        print(f"🔧 DomainLinkagesEnricher.enrich() called for {frontmatter.get('id', 'unknown')}")
+        # print(f"🔧 DomainLinkagesEnricher.enrich() called for {frontmatter.get('id', 'unknown')}")
         
         # Get item ID
         item_id = frontmatter.get('id')
@@ -65,12 +65,12 @@ class DomainLinkagesEnricher(BaseEnricher):
         
         # Count entries
         total = sum(len(v) if isinstance(v, list) else 0 for v in linkages.values())
-        print(f"   Populated {len(linkages)} linkage types, {total} total entries")
+        # print(f"   Populated {len(linkages)} linkage types, {total} total entries")
         
         # MERGE with existing relationships (preserve library relationships from source)
         existing_rels = frontmatter.get('relationships', {})
         if existing_rels:
-            print(f"   ⚠️  Merging with {len(existing_rels)} existing relationship types: {list(existing_rels.keys())}")
+            # print(f"   ⚠️  Merging with {len(existing_rels)} existing relationship types: {list(existing_rels.keys())}")
             # Merge: linkages takes priority for overlapping keys, but existing preserved
             merged_rels = dict(existing_rels)
             merged_rels.update(linkages)
