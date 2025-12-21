@@ -13,10 +13,12 @@
 |--------------|--------|------------------|-----------|
 | **Compounds** | ✅ COMPLETE | N/A (new structure) | `produced_from_contaminants` |
 | **Materials** | ✅ COMPLETE | -40% (722 → 429 lines) | `contaminated_by` |
-| **Settings** | ✅ COMPLETE | Field names normalized | `optimized_for_materials`, `removes_contaminants` |
-| **Contaminants** | ⏳ PENDING | N/A | `produces_compounds`, `found_on_materials` |
+| **Settings** | ✅ COMPLETE | N/A (keys added) | `optimized_for_materials`, `removes_contaminants` |
+| **Contaminants** | ✅ COMPLETE | N/A (98 patterns updated) | `produces_compounds`, `found_on_materials` |
 
 **Benefits**: Minimal reference architecture reduces frontmatter size by ~40%, eliminates data duplication, and enables server-side enrichment.
+
+**Note**: Settings and Contaminants files have correct key structure with relationship arrays ready for population.
 
 ---
 
@@ -213,12 +215,12 @@ const enrichedContaminants = await Promise.all(
 
 **You don't need to worry about this** - just provide the minimal references correctly.
 
-### Automatic Grouping (Server-Side)
+### Frontmatter Structure (Current Implementation)
 
-The export system automatically groups relationships by category in the final frontmatter:
+Frontmatter preserves the flat array structure with minimal references:
 
 ```yaml
-# What you provide (minimal refs):
+# What you provide in source data:
 relationships:
   contaminated_by:
   - id: rust-contamination
@@ -226,23 +228,16 @@ relationships:
   - id: oil-contamination
     frequency: common
 
-# What appears in frontmatter (grouped):
+# What appears in frontmatter (same structure):
 relationships:
-  contaminants:
-    groups:
-      metal_oxides:
-        items:
-        - id: rust-contamination
-          title: Metal Oxidation / Rust  # Auto-enriched
-          frequency: very_common
-      organic_residues:
-        items:
-        - id: oil-contamination
-          title: Oil Contamination  # Auto-enriched
-          frequency: common
+  contaminated_by:
+  - id: rust-contamination
+    frequency: very_common
+  - id: oil-contamination
+    frequency: common
 ```
 
-**Key Point**: You provide flat arrays, the system handles grouping and enrichment.
+**Key Point**: Frontmatter has flat minimal arrays. The frontend handles enrichment (fetching titles, categories, etc.) and optional grouping for display.
 
 ---
 
