@@ -97,14 +97,9 @@ class FrontmatterOrchestrator:
             self.register_generator('material', MaterialFrontmatterGenerator)
             self.logger.info("✅ Registered material generator (Phase 1 wrapper with author voice)")
         except ImportError as e:
-            # Fallback to legacy generator for backward compatibility
-            self.logger.warning(f"New material generator not available, using legacy: {e}")
-            try:
-                # NOTE: StreamlinedFrontmatterGenerator removed Dec 19, 2025 - use UniversalFrontmatterExporter
-                self.register_generator('material', StreamlinedFrontmatterGenerator)
-                self.logger.info("✅ Registered legacy material generator (streamlined)")
-            except ImportError as e2:
-                self.logger.warning(f"Material generator not available: {e2}")
+            # Fallback: Skip if not available (UniversalFrontmatterExporter is preferred)
+            self.logger.warning(f"Material generator not available: {e}")
+            self.logger.info("⚠️  Note: FrontmatterOrchestrator is deprecated - use UniversalFrontmatterExporter instead")
         
         # Register contaminant generator
         try:

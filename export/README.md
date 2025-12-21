@@ -655,3 +655,77 @@ environmentalImpact: []  # Empty
 - **v6.0.0**: Pure AI research system (deprecated)
 - **v3.0.0**: Root-level frontmatter architecture
 - **v2.0.0**: Streamlined generator implementation
+---
+
+## 📦 Module Consolidation (December 20, 2025)
+
+### Export Structure Simplified: 14 → 7 Directories (-50%)
+
+The export module was consolidated to reduce complexity and improve maintainability.
+
+### Active Directories (7)
+```
+export/
+├── config/           # Domain configurations and schema validation
+├── core/             # Universal exporter and base generator
+├── enrichers/        # Data enrichment (linkage, settings, contaminants, grouping)
+├── generation/       # Field generators (slugs, breadcrumbs, timestamps)
+├── utils/            # Shared utilities (data loader, YAML writer, author manager)
+├── archive/          # Archived/deprecated modules
+└── README.md         # This file
+```
+
+### Archived Modules (4)
+Moved to `export/archive/` during consolidation:
+
+- **enhancement/** - Property enhancement service (unused, superseded by enrichers)
+- **ordering/** - Field ordering service (unused, handled by config)
+- **prompts/** - Prompt generation (unused, only field names exist in data)
+- **research/** - Property value researcher (unused, functionality moved to shared/research/)
+
+### Removed Directories (3)
+Empty directories with no functionality:
+
+- **compounds/** - Empty directory (only `__init__.py`)
+- **contaminants/** - Empty module (only `__init__.py`)
+- **settings/** - Empty module (only `__init__.py`)
+
+### Fixes Applied
+- **FrontmatterOrchestrator** (Dec 20, 2025):
+  - Removed broken fallback to `StreamlinedFrontmatterGenerator` (removed Dec 19)
+  - Added deprecation warning: Use `UniversalFrontmatterExporter` instead
+  - Fixed test failure: `test_normalized_exports.py::test_settings_export` now passing ✅
+
+### Primary Export System
+✅ **UniversalFrontmatterExporter** - Preferred for all domains (materials, contaminants, settings, compounds)  
+⚠️ **FrontmatterOrchestrator** - Deprecated but functional (legacy system)
+
+### Migration Guidance
+**Before** (Deprecated):
+```python
+from export.core.orchestrator import FrontmatterOrchestrator
+orchestrator = FrontmatterOrchestrator()
+orchestrator.export_domain('materials')
+```
+
+**After** (Preferred):
+```python
+from export.core.universal_exporter import UniversalFrontmatterExporter
+exporter = UniversalFrontmatterExporter()
+result = exporter.export_all(domain='materials')
+print(f"Exported: {result['exported']}, Skipped: {result['skipped']}")
+```
+
+### Export Statistics (December 2025)
+- **Materials**: 159 files
+- **Contaminants**: 100 files
+- **Settings**: 153 files
+- **Compounds**: 26 files
+- **Total**: 438 frontmatter files
+
+### Documentation
+- **Configuration Schema**: `docs/export/CONFIG_SCHEMA.md`
+- **Data Architecture**: `docs/DATA_ARCHITECTURE.md`
+- **System Interactions**: `docs/SYSTEM_INTERACTIONS.md`
+
+---

@@ -1,1 +1,0 @@
-"""Contaminants export module."""
