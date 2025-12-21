@@ -7,6 +7,19 @@
 
 ---
 
+## 📊 Implementation Status
+
+| Content Type | Status | File Size Impact | Keys Used |
+|--------------|--------|------------------|-----------|
+| **Compounds** | ✅ COMPLETE | N/A (new structure) | `produced_from_contaminants` |
+| **Materials** | ✅ COMPLETE | -40% (722 → 429 lines) | `contaminated_by` |
+| **Settings** | ✅ COMPLETE | Field names normalized | `optimized_for_materials`, `removes_contaminants` |
+| **Contaminants** | ⏳ PENDING | N/A | `produces_compounds`, `found_on_materials` |
+
+**Benefits**: Minimal reference architecture reduces frontmatter size by ~40%, eliminates data duplication, and enables server-side enrichment.
+
+---
+
 ## 🎯 Core Principle
 
 **Store minimal references + relationship-specific metadata ONLY.**
@@ -450,6 +463,49 @@ Before generating any relationship data:
 
 ---
 
+## � Migration Guide
+
+### Old Structure → New Structure
+
+**Materials** (BEFORE - 722 lines):
+```yaml
+relationships:
+  contaminants:
+    title: Common Contaminants
+    description: Contaminants that frequently occur...
+    groups:
+      organic_residues:
+        title: Organic Residues
+        items:
+        - id: adhesive-residue-contamination
+          title: Adhesive Residue / Tape Marks
+          url: /contaminants/organic-residue/adhesive/...
+          image: /images/contaminants/adhesive-residue.jpg
+          frequency: common
+          severity: moderate
+```
+
+**Materials** (AFTER - 429 lines, -40% size):
+```yaml
+relationships:
+  contaminated_by:
+  - id: adhesive-residue-contamination
+  - id: anti-seize-contamination
+  - id: aviation-sealant-contamination
+```
+
+### Key Mappings
+
+| Old Key | New Key | Content Type |
+|---------|---------|--------------|
+| `contaminants` | `contaminated_by` | Materials |
+| `materials` | `found_on_materials` | Contaminants |
+| `source_contaminants` | `produced_from_contaminants` | Compounds |
+| `related_materials` | `optimized_for_materials` | Settings |
+| `related_contaminants` | `removes_contaminants` | Settings |
+
+---
+
 ## 🚀 Summary
 
 **DO**:
@@ -465,7 +521,8 @@ Before generating any relationship data:
 **WHY**:
 - Single source of truth
 - Easy maintenance
-- Small file sizes
+- Small file sizes (-40% reduction)
+- Enables server-side enrichment
 - Automatic data sync
 
 ---
