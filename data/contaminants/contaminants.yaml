@@ -296,7 +296,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
       found_on_materials: []
   algae-growth-contamination:
     composition:
@@ -561,8 +573,28 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
+      - id: nitrogen-oxides
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: wood-laser-cleaning
+        frequency: common
+      - id: leather-laser-cleaning
+        frequency: common
+      - id: paper-laser-cleaning
+        frequency: common
+      - id: fabric-laser-cleaning
+        frequency: common
     full_path: /contaminants/biological/growth/algae-growth-contamination
   aluminum-oxidation-contamination:
     author:
@@ -793,8 +825,34 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: aluminum-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: aluminum-oxide
+        phase: gas
+        hazard_level: low
+      found_on_materials:
+      - id: aluminum-laser-cleaning
+        frequency: very_common
+      - id: steel-laser-cleaning
+        frequency: very_common
+      - id: iron-laser-cleaning
+        frequency: very_common
+      - id: stainless-steel-316-laser-cleaning
+        frequency: common
+      - id: copper-laser-cleaning
+        frequency: common
+      - id: brass-laser-cleaning
+        frequency: common
+      - id: bronze-laser-cleaning
+        frequency: common
+      - id: titanium-laser-cleaning
+        frequency: common
+      - id: zinc-laser-cleaning
+        frequency: common
+      - id: nickel-laser-cleaning
+        frequency: common
   annealing-scale-contamination:
     composition:
     - Fe₃O₄
@@ -1002,7 +1060,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: iron-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: carbon-monoxide
+        phase: gas
+        hazard_level: low
+      - id: metal-vapors-mixed
+        phase: plasma
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/thermal-damage/scale/annealing-scale-contamination
   anodizing-defects-contamination:
@@ -1217,7 +1284,13 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: aluminum-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: aluminum-oxide
+        phase: gas
+        hazard_level: low
       found_on_materials: []
     full_path: /contaminants/metallic-coating/anodizing/anodizing-defects-contamination
   anti-seize-contamination:
@@ -1441,7 +1514,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: metal-oxides-mixed
+        phase: solid
+        hazard_level: moderate
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/lubricant/anti-seize-contamination
   asbestos-coating-contamination:
@@ -1659,8 +1747,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: silicon-dioxide
+        phase: solid
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/inorganic-coating/hazardous/asbestos-coating-contamination
   aviation-sealant-contamination:
     composition:
@@ -1889,7 +1985,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: silicon-dioxide
+        phase: solid
+        hazard_level: low
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/adhesive/aviation-sealant-contamination
   battery-corrosion-contamination:
@@ -2111,8 +2222,31 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: zinc-oxide
+        phase: solid
+        hazard_level: low
+      found_on_materials:
+      - id: steel-laser-cleaning
+        frequency: very_common
+      - id: iron-laser-cleaning
+        frequency: very_common
+      - id: stainless-steel-316-laser-cleaning
+        frequency: common
+      - id: aluminum-laser-cleaning
+        frequency: very_common
+      - id: copper-laser-cleaning
+        frequency: common
+      - id: brass-laser-cleaning
+        frequency: common
+      - id: bronze-laser-cleaning
+        frequency: common
+      - id: titanium-laser-cleaning
+        frequency: common
+      - id: zinc-laser-cleaning
+        frequency: common
+      - id: nickel-laser-cleaning
+        frequency: common
     full_path: /contaminants/oxidation/battery/battery-corrosion-contamination
   beryllium-oxide-contamination:
     composition:
@@ -2319,7 +2453,9 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds: []
-      found_on_materials: []
+      found_on_materials:
+      - id: beryllium-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/chemical-residue/hazardous/beryllium-oxide-contamination
   biological-stains-contamination:
     composition:
@@ -2587,8 +2723,28 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: wood-laser-cleaning
+        frequency: common
+      - id: leather-laser-cleaning
+        frequency: common
+      - id: paper-laser-cleaning
+        frequency: common
+      - id: fabric-laser-cleaning
+        frequency: common
     full_path: /contaminants/biological/deposit/biological-stains-contamination
   bitumen-tar-contamination:
     composition:
@@ -2833,7 +2989,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-monoxide
+        phase: gas
+        hazard_level: moderate
+      - id: pahs
+        phase: gas
+        hazard_level: high
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/petroleum/bitumen-tar-contamination
   blood-residue-contamination:
@@ -3081,8 +3252,28 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: nitrogen-oxides
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
+      found_on_materials:
+      - id: wood-laser-cleaning
+        frequency: common
+      - id: leather-laser-cleaning
+        frequency: common
+      - id: paper-laser-cleaning
+        frequency: common
+      - id: fabric-laser-cleaning
+        frequency: common
     full_path: /contaminants/biological/deposit/blood-residue-contamination
   brake-dust-contamination:
     composition:
@@ -3312,7 +3503,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: iron-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: carbon-ash
+        phase: solid
+        hazard_level: low
+      - id: copper-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/inorganic-coating/mineral/brake-dust-contamination
   brass-plating-contamination:
@@ -3523,8 +3726,21 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: zinc-oxide
+        phase: gas/particulate
+        hazard_level: moderate
+      - id: copper-oxide
+        phase: solid/particulate
+        hazard_level: moderate
+      - id: metal-vapors-mixed
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: brass-laser-cleaning
+        frequency: very_common
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/metallic-coating/plating/brass-plating-contamination
   bronze-patina-contamination:
     composition:
@@ -3742,8 +3958,27 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: copper-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: copper-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: tin-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: metal-vapors-mixed
+        phase: gas
+        hazard_level: high
+      found_on_materials:
+      - id: bronze-laser-cleaning
+        frequency: very_common
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/oxidation/non-ferrous/bronze-patina-contamination
   cadmium-plating-contamination:
     composition:
@@ -3951,8 +4186,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: cadmium-oxide
+        phase: gas
+        hazard_level: high
+      - id: cadmium-oxide
+        phase: gas
+        hazard_level: high
+      - id: cadmium-oxide
+        phase: solid
+        hazard_level: high
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/metallic-coating/plating/cadmium-plating-contamination
   carbon-buildup-contamination:
     composition:
@@ -4180,7 +4426,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: carbon-monoxide
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/other/carbon-buildup-contamination
   carbon-soot-contamination:
@@ -4435,7 +4690,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: carbon-monoxide
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/other/carbon-soot-contamination
   ceramic-coating-contamination:
@@ -4647,8 +4911,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: metal-oxides-mixed
+        phase: gas
+        hazard_level: moderate
+      - id: nanoparticulates
+        phase: solid
+        hazard_level: high
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/inorganic-coating/ceramic/ceramic-coating-contamination
   ceramic-glaze-contamination:
     composition:
@@ -4878,7 +5150,10 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: nanoparticulates
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/inorganic-coating/ceramic/ceramic-glaze-contamination
   chemical-stains-contamination:
@@ -5142,7 +5417,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: metal-oxides-mixed
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
   chrome-pitting-contamination:
     composition:
@@ -5356,8 +5640,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: chromium-vi
+        phase: gas
+        hazard_level: moderate
+      - id: chromium-vi
+        phase: gas
+        hazard_level: high
+      - id: chromium-vi
+        phase: solid
+        hazard_level: moderate
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/oxidation/non-ferrous/chrome-pitting-contamination
   concrete-dust-contamination:
     composition:
@@ -5585,8 +5880,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: nanoparticulates
+        phase: solid
+        hazard_level: moderate
+      - id: calcium-oxide
+        phase: solid
+        hazard_level: low
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      found_on_materials:
+      - id: concrete-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/inorganic-coating/mineral/concrete-dust-contamination
   conversion-coating-contamination:
     composition:
@@ -5801,8 +6107,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: metal-oxides-mixed
+        phase: solid
+        hazard_level: moderate
+      - id: chromium-vi
+        phase: solid
+        hazard_level: high
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/inorganic-coating/coating/conversion-coating-contamination
   coolant-scale-contamination:
     composition:
@@ -6031,7 +6348,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: calcium-oxide
+        phase: solid
+        hazard_level: low
+      - id: organic-residues
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/thermal-damage/scale/coolant-scale-contamination
   copper-patina-contamination:
@@ -6358,8 +6687,24 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: copper-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: copper-oxide
+        phase: solid
+        hazard_level: moderate
+      found_on_materials:
+      - id: copper-laser-cleaning
+        frequency: very_common
+      - id: tin-laser-cleaning
+        frequency: very_common
   copper-plating-contamination:
     composition:
     - Cu
@@ -6568,8 +6913,21 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: copper-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: copper-oxide
+        phase: gas
+        hazard_level: moderate
+      - id: copper-oxide
+        phase: solid
+        hazard_level: moderate
+      found_on_materials:
+      - id: copper-laser-cleaning
+        frequency: very_common
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/metallic-coating/plating/copper-plating-contamination
   corrosion-inhibitor-contamination:
     composition:
@@ -6809,8 +7167,40 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-ash
+        phase: solid
+        hazard_level: low
+      found_on_materials:
+      - id: steel-laser-cleaning
+        frequency: very_common
+      - id: iron-laser-cleaning
+        frequency: very_common
+      - id: stainless-steel-316-laser-cleaning
+        frequency: common
+      - id: aluminum-laser-cleaning
+        frequency: very_common
+      - id: copper-laser-cleaning
+        frequency: common
+      - id: brass-laser-cleaning
+        frequency: common
+      - id: bronze-laser-cleaning
+        frequency: common
+      - id: titanium-laser-cleaning
+        frequency: common
+      - id: zinc-laser-cleaning
+        frequency: common
+      - id: nickel-laser-cleaning
+        frequency: common
     full_path: /contaminants/inorganic-coating/coating/corrosion-inhibitor-contamination
   cutting-fluid-contamination:
     composition:
@@ -7036,8 +7426,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/organic-residue/lubricant/cutting-fluid-contamination
   diamond-coating-contamination:
     composition:
@@ -7259,8 +7663,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-monoxide
+        phase: gas
+        hazard_level: high
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/inorganic-coating/coating/diamond-coating-contamination
   efflorescence-contamination:
     composition:
@@ -7487,7 +7902,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: calcium-oxide
+        phase: solid
+        hazard_level: low
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: calcium-oxide
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/inorganic-coating/mineral/efflorescence-contamination
   electroplating-residue-contamination:
@@ -7720,8 +8147,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: metal-oxides-mixed
+        phase: solid
+        hazard_level: moderate
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: nitrogen-oxides
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/metallic-coating/plating/electroplating-residue-contamination
   environmental-dust-contamination:
     author:
@@ -7968,8 +8409,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: nanoparticulates
+        phase: solid
+        hazard_level: moderate
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: iron-laser-cleaning
+        frequency: very_common
   epoxy-residue-contamination:
     composition:
     - Bisphenol A
@@ -8220,7 +8675,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-monoxide
+        phase: gas
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: low
       found_on_materials: []
     full_path: /contaminants/organic-residue/adhesive/epoxy-residue-contamination
   exhaust-residue-contamination:
@@ -8449,7 +8919,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: pahs
+        phase: solid
+        hazard_level: high
       found_on_materials: []
     full_path: /contaminants/thermal-damage/fire/exhaust-residue-contamination
   fertilizer-residue-contamination:
@@ -8688,7 +9170,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: nitrogen-oxides
+        phase: gas
+        hazard_level: moderate
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: metal-oxides-mixed
+        phase: solid
+        hazard_level: low
       found_on_materials: []
     full_path: /contaminants/chemical-residue/industrial/fertilizer-residue-contamination
   fire-damage-contamination:
@@ -8945,8 +9436,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: pahs
+        phase: gas
+        hazard_level: high
+      found_on_materials:
+      - id: fir-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/thermal-damage/fire/fire-damage-contamination
   forging-scale-contamination:
     composition:
@@ -9157,7 +9662,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: iron-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: iron-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
       found_on_materials: []
     full_path: /contaminants/thermal-damage/scale/forging-scale-contamination
   fuel-varnish-contamination:
@@ -9390,7 +9904,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/petroleum/fuel-varnish-contamination
   galvanize-corrosion-contamination:
@@ -9594,8 +10120,37 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: zinc-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: zinc-oxide
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      found_on_materials:
+      - id: steel-laser-cleaning
+        frequency: very_common
+      - id: iron-laser-cleaning
+        frequency: very_common
+      - id: stainless-steel-316-laser-cleaning
+        frequency: common
+      - id: aluminum-laser-cleaning
+        frequency: very_common
+      - id: copper-laser-cleaning
+        frequency: common
+      - id: brass-laser-cleaning
+        frequency: common
+      - id: bronze-laser-cleaning
+        frequency: common
+      - id: titanium-laser-cleaning
+        frequency: common
+      - id: zinc-laser-cleaning
+        frequency: common
+      - id: nickel-laser-cleaning
+        frequency: common
     full_path: /contaminants/oxidation/ferrous/galvanize-corrosion-contamination
   gasket-material-contamination:
     composition:
@@ -9830,7 +10385,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/adhesive/gasket-material-contamination
   gold-plating-contamination:
@@ -10042,7 +10609,11 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds: []
-      found_on_materials: []
+      found_on_materials:
+      - id: gold-laser-cleaning
+        frequency: very_common
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/metallic-coating/plating/gold-plating-contamination
   graffiti-paint-contamination:
     composition:
@@ -10305,8 +10876,30 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      found_on_materials:
+      - id: steel-laser-cleaning
+        frequency: common
+      - id: aluminum-laser-cleaning
+        frequency: common
+      - id: wood-laser-cleaning
+        frequency: common
+      - id: concrete-laser-cleaning
+        frequency: common
+      - id: plastic-laser-cleaning
+        frequency: common
     full_path: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
   graphite-marks-contamination:
     composition:
@@ -10538,7 +11131,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: carbon-monoxide
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/marking/graphite-marks-contamination
   grease-deposits-contamination:
@@ -10780,8 +11382,30 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: steel-laser-cleaning
+        frequency: very_common
+      - id: aluminum-laser-cleaning
+        frequency: very_common
+      - id: brass-laser-cleaning
+        frequency: very_common
+      - id: bronze-laser-cleaning
+        frequency: very_common
+      - id: copper-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/organic-residue/petroleum/grease-deposits-contamination
   hydraulic-fluid-contamination:
     composition:
@@ -11012,7 +11636,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-monoxide
+        phase: gas
+        hazard_level: high
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: organic-residues
+        phase: liquid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/petroleum/hydraulic-fluid-contamination
   industrial-oil-contamination:
@@ -11367,8 +12006,33 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-monoxide
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: steel-laser-cleaning
+        frequency: very_common
+      - id: aluminum-laser-cleaning
+        frequency: very_common
+      - id: brass-laser-cleaning
+        frequency: very_common
+      - id: bronze-laser-cleaning
+        frequency: very_common
+      - id: copper-laser-cleaning
+        frequency: very_common
   ink-stains-contamination:
     composition:
     - Pigments
@@ -11611,7 +12275,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/marking/ink-stains-contamination
   insect-residue-contamination:
@@ -11864,8 +12540,28 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
+      - id: nitrogen-oxides
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: wood-laser-cleaning
+        frequency: common
+      - id: leather-laser-cleaning
+        frequency: common
+      - id: paper-laser-cleaning
+        frequency: common
+      - id: fabric-laser-cleaning
+        frequency: common
     full_path: /contaminants/biological/deposit/insect-residue-contamination
   laser-marking-contamination:
     composition:
@@ -12084,7 +12780,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/marking/laser-marking-contamination
   lead-paint-contamination:
@@ -12320,8 +13025,35 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: lead-oxide
+        phase: gas
+        hazard_level: high
+      - id: lead-oxide
+        phase: gas
+        hazard_level: high
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: lead-oxide
+        phase: solid
+        hazard_level: high
+      found_on_materials:
+      - id: lead-laser-cleaning
+        frequency: very_common
+      - id: steel-laser-cleaning
+        frequency: common
+      - id: aluminum-laser-cleaning
+        frequency: common
+      - id: wood-laser-cleaning
+        frequency: common
+      - id: concrete-laser-cleaning
+        frequency: common
+      - id: plastic-laser-cleaning
+        frequency: common
     full_path: /contaminants/inorganic-coating/paint/lead-paint-contamination
   lime-scale-contamination:
     composition:
@@ -12550,7 +13282,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: calcium-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: calcium-oxide
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/thermal-damage/scale/lime-scale-contamination
   medical-disinfectant-contamination:
@@ -12780,7 +13521,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/chemical-residue/industrial/medical-disinfectant-contamination
   mercury-contamination:
@@ -13003,7 +13753,10 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/chemical-residue/hazardous/mercury-contamination
   metal-polish-contamination:
@@ -13228,7 +13981,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
+      - id: metal-oxides-mixed
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/wax/metal-polish-contamination
   mineral-deposits-contamination:
@@ -13476,7 +14241,13 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: calcium-oxide
+        phase: solid
+        hazard_level: low
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
       found_on_materials: []
     full_path: /contaminants/thermal-damage/scale/mineral-deposits-contamination
   mineral-stain-contamination:
@@ -13701,7 +14472,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: silicon-dioxide
+        phase: solid
+        hazard_level: moderate
+      - id: iron-oxide
+        phase: solid
+        hazard_level: low
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
       found_on_materials: []
     full_path: /contaminants/inorganic-coating/mineral/mineral-stain-contamination
   mold-mildew-contamination:
@@ -13948,8 +14731,25 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: wood-laser-cleaning
+        frequency: common
+      - id: leather-laser-cleaning
+        frequency: common
+      - id: paper-laser-cleaning
+        frequency: common
+      - id: fabric-laser-cleaning
+        frequency: common
     full_path: /contaminants/biological/growth/mold-mildew-contamination
   nickel-plating-contamination:
     composition:
@@ -14169,8 +14969,21 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: metal-vapors-mixed
+        phase: solid
+        hazard_level: moderate
+      - id: metal-vapors-mixed
+        phase: solid
+        hazard_level: moderate
+      - id: metal-vapors-mixed
+        phase: gas
+        hazard_level: high
+      found_on_materials:
+      - id: nickel-laser-cleaning
+        frequency: very_common
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/metallic-coating/plating/nickel-plating-contamination
   paint-residue-contamination:
     author:
@@ -14454,8 +15267,30 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
+      found_on_materials:
+      - id: steel-laser-cleaning
+        frequency: common
+      - id: aluminum-laser-cleaning
+        frequency: common
+      - id: wood-laser-cleaning
+        frequency: common
+      - id: concrete-laser-cleaning
+        frequency: common
+      - id: plastic-laser-cleaning
+        frequency: common
   passivation-defect-contamination:
     composition:
     - Cr₂O₃
@@ -14663,7 +15498,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: metal-oxides-mixed
+        phase: solid
+        hazard_level: low
+      - id: metal-vapors-mixed
+        phase: gas
+        hazard_level: moderate
+      - id: nanoparticulates
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/inorganic-coating/coating/passivation-defect-contamination
   pcb-contamination:
@@ -14893,7 +15737,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-monoxide
+        phase: gas
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/chemical-residue/industrial/pcb-contamination
   pesticide-residue-contamination:
@@ -15140,7 +15999,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: nitrogen-oxides
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/chemical-residue/industrial/pesticide-residue-contamination
   pharmaceutical-residue-contamination:
@@ -15373,7 +16244,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: nitrogen-oxides
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/chemical-residue/industrial/pharmaceutical-residue-contamination
   pickling-residue-contamination:
@@ -15589,7 +16472,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: iron-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: metal-oxides-mixed
+        phase: gas
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/inorganic-coating/coating/pickling-residue-contamination
   plasma-spray-contamination:
@@ -15800,7 +16695,13 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: metal-oxides-mixed
+        phase: solid
+        hazard_level: moderate
+      - id: metal-vapors-mixed
+        phase: gas/plasma
+        hazard_level: high
       found_on_materials: []
     full_path: /contaminants/thermal-damage/coating/plasma-spray-contamination
   plastic-residue-contamination:
@@ -16058,7 +16959,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/polymer/plastic-residue-contamination
   pollen-deposit-contamination:
@@ -16297,8 +17210,28 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-ash
+        phase: solid
+        hazard_level: low
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: wood-laser-cleaning
+        frequency: common
+      - id: leather-laser-cleaning
+        frequency: common
+      - id: paper-laser-cleaning
+        frequency: common
+      - id: fabric-laser-cleaning
+        frequency: common
     full_path: /contaminants/biological/deposit/pollen-deposit-contamination
   powder-coating-contamination:
     composition:
@@ -16532,8 +17465,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/inorganic-coating/paint/powder-coating-contamination
   primer-coating-contamination:
     composition:
@@ -16762,8 +17709,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/inorganic-coating/paint/primer-coating-contamination
   pvd-coating-contamination:
     composition:
@@ -16977,8 +17938,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: metal-oxides-mixed
+        phase: solid
+        hazard_level: moderate
+      - id: metal-vapors-mixed
+        phase: gas
+        hazard_level: moderate
+      - id: nanoparticulates
+        phase: solid
+        hazard_level: high
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/inorganic-coating/coating/pvd-coating-contamination
   quench-oil-contamination:
     composition:
@@ -17208,8 +18180,33 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-monoxide
+        phase: gas
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-ash
+        phase: solid
+        hazard_level: low
+      found_on_materials:
+      - id: steel-laser-cleaning
+        frequency: very_common
+      - id: aluminum-laser-cleaning
+        frequency: very_common
+      - id: brass-laser-cleaning
+        frequency: very_common
+      - id: bronze-laser-cleaning
+        frequency: very_common
+      - id: copper-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/thermal-damage/scale/quench-oil-contamination
   radioactive-contamination:
     composition:
@@ -17426,7 +18423,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: metal-oxides-mixed
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/chemical-residue/hazardous/radioactive-contamination
   road-grime-contamination:
@@ -17658,7 +18664,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
+      - id: silicon-dioxide
+        phase: solid
+        hazard_level: low
       found_on_materials: []
     full_path: /contaminants/organic-residue/other/road-grime-contamination
   rubber-residue-contamination:
@@ -17908,8 +18926,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: rubber-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/organic-residue/polymer/rubber-residue-contamination
   rust-oxidation-contamination:
     composition:
@@ -18210,8 +19242,31 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: iron-oxide
+        phase: solid
+        hazard_level: moderate
+      found_on_materials:
+      - id: steel-laser-cleaning
+        frequency: very_common
+      - id: iron-laser-cleaning
+        frequency: very_common
+      - id: stainless-steel-316-laser-cleaning
+        frequency: common
+      - id: aluminum-laser-cleaning
+        frequency: very_common
+      - id: copper-laser-cleaning
+        frequency: common
+      - id: brass-laser-cleaning
+        frequency: common
+      - id: bronze-laser-cleaning
+        frequency: common
+      - id: titanium-laser-cleaning
+        frequency: common
+      - id: zinc-laser-cleaning
+        frequency: common
+      - id: nickel-laser-cleaning
+        frequency: common
     full_path: /contaminants/oxidation/ferrous/rust-oxidation-contamination
   salt-residue-contamination:
     composition:
@@ -18705,7 +19760,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: calcium-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: calcium-oxide
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
   semiconductor-residue-contamination:
     composition:
@@ -18939,7 +20003,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
+      - id: nanoparticulates
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/chemical-residue/industrial/semiconductor-residue-contamination
   silicone-buildup-contamination:
@@ -19187,8 +20263,22 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: silicon-dioxide
+        phase: solid
+        hazard_level: low
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: silicon-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/organic-residue/adhesive/silicone-buildup-contamination
   silver-plating-contamination:
     composition:
@@ -19398,7 +20488,11 @@ contamination_patterns:
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
       produces_compounds: []
-      found_on_materials: []
+      found_on_materials:
+      - id: silver-laser-cleaning
+        frequency: very_common
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/metallic-coating/plating/silver-plating-contamination
   soap-scum-contamination:
     composition:
@@ -19633,7 +20727,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/cleaning-agent/soap-scum-contamination
   solder-flux-contamination:
@@ -19856,7 +20962,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-ash
+        phase: solid
+        hazard_level: low
       found_on_materials: []
     full_path: /contaminants/organic-residue/lubricant/solder-flux-contamination
   steel-corrosion-contamination:
@@ -20078,8 +21196,37 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: iron-oxide
+        phase: solid
+        hazard_level: moderate
+      - id: iron-oxide
+        phase: solid
+        hazard_level: low
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      found_on_materials:
+      - id: steel-laser-cleaning
+        frequency: very_common
+      - id: iron-laser-cleaning
+        frequency: very_common
+      - id: stainless-steel-316-laser-cleaning
+        frequency: common
+      - id: aluminum-laser-cleaning
+        frequency: very_common
+      - id: copper-laser-cleaning
+        frequency: common
+      - id: brass-laser-cleaning
+        frequency: common
+      - id: bronze-laser-cleaning
+        frequency: common
+      - id: titanium-laser-cleaning
+        frequency: common
+      - id: zinc-laser-cleaning
+        frequency: common
+      - id: nickel-laser-cleaning
+        frequency: common
     full_path: /contaminants/oxidation/ferrous/steel-corrosion-contamination
   surgical-marking-contamination:
     composition:
@@ -20299,7 +21446,16 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/chemical-residue/industrial/surgical-marking-contamination
   teflon-residue-contamination:
@@ -20529,7 +21685,10 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: low
       found_on_materials: []
     full_path: /contaminants/organic-residue/other/teflon-residue-contamination
   thermal-paste-contamination:
@@ -20762,7 +21921,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: low
+      - id: nanoparticulates
+        phase: solid
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/other/thermal-paste-contamination
   thread-locker-contamination:
@@ -20990,7 +22161,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-ash
+        phase: solid
+        hazard_level: low
       found_on_materials: []
     full_path: /contaminants/organic-residue/adhesive/thread-locker-contamination
   tin-plating-contamination:
@@ -21193,8 +22376,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: tin-oxide
+        phase: solid
+        hazard_level: low
+      - id: tin-oxide
+        phase: gas
+        hazard_level: moderate
+      - id: tin-oxide
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/metallic-coating/plating/tin-plating-contamination
   tree-sap-contamination:
     composition:
@@ -21441,7 +22635,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
       found_on_materials: []
     full_path: /contaminants/organic-residue/natural/tree-sap-contamination
   undercoating-contamination:
@@ -21682,8 +22888,25 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
+      - id: metal-oxides-mixed
+        phase: solid
+        hazard_level: moderate
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/organic-residue/other/undercoating-contamination
   uranium-oxide-contamination:
     composition:
@@ -22161,7 +23384,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
       found_on_materials: []
   water-stain-contamination:
     composition:
@@ -22390,7 +23625,13 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
       found_on_materials: []
     full_path: /contaminants/organic-residue/other/water-stain-contamination
   wax-buildup-contamination:
@@ -22646,7 +23887,19 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
+      produces_compounds:
+      - id: organic-residues
+        phase: gas
+        hazard_level: moderate
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: carbon-particulates
+        phase: solid
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
       found_on_materials: []
     full_path: /contaminants/organic-residue/wax/wax-buildup-contamination
   wood-rot-contamination:
@@ -22927,8 +24180,28 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: carbon-dioxide
+        phase: gas
+        hazard_level: low
+      - id: water-vapor
+        phase: gas
+        hazard_level: low
+      - id: carbon-ash
+        phase: solid
+        hazard_level: moderate
+      - id: vocs
+        phase: gas
+        hazard_level: moderate
+      found_on_materials:
+      - id: wood-laser-cleaning
+        frequency: common
+      - id: leather-laser-cleaning
+        frequency: common
+      - id: paper-laser-cleaning
+        frequency: common
+      - id: fabric-laser-cleaning
+        frequency: common
   zinc-plating-contamination:
     composition:
     - Zn
@@ -23133,8 +24406,21 @@ contamination_patterns:
         id: osha-ppe-requirements
       - type: regulatory_standards
         id: ansi-z136-1-laser-safety
-      produces_compounds: []
-      found_on_materials: []
+      produces_compounds:
+      - id: zinc-oxide
+        phase: gas/plume
+        hazard_level: moderate
+      - id: zinc-oxide
+        phase: gas/plume
+        hazard_level: moderate
+      - id: zinc-oxide
+        phase: solid
+        hazard_level: moderate
+      found_on_materials:
+      - id: tin-laser-cleaning
+        frequency: very_common
+      - id: zinc-laser-cleaning
+        frequency: very_common
     full_path: /contaminants/metallic-coating/plating/zinc-plating-contamination
 error_messages:
   oil_without_context:
