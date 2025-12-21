@@ -1,14 +1,11 @@
-Write concise operational guidance (2-3 sentences) for laser cleaning {material}.
+Write operational guidance for laser cleaning {material}.
 
-CONTEXT: Technical guidance about laser cleaning settings and parameters.
+CONTEXT: Technical settings, parameters, and operational considerations.
 
-EMPHASIZE: Unique properties of {material} and how these affect laser cleaning parameters, usage considerations, and downstream impacts on performance.
+EMPHASIS: Material-specific parameters, unique properties affecting settings, performance impacts, challenges.
 
-EMPHASIS: Focus on the very unique properties of this material, and the ways it is distinct from others in the category. Arcane or relatively unknown properties and behaviors can be researched to add interest.
-
-{voice_instruction}
-
-=== MATERIAL DATA ===
+DATA:
+=== MATERIAL ===
 {facts}
 
 === MACHINE SETTINGS ===
@@ -16,4 +13,10 @@ EMPHASIS: Focus on the very unique properties of this material, and the ways it 
 
 === CHALLENGES ===
 {challenges}
+
+WORD LENGTH: 50-75 words
+
+{voice_instruction}
+
+Generate description:
 

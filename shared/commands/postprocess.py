@@ -360,8 +360,9 @@ class PostprocessCommand:
             print(f"📊 POLICY: Research and generate new content...")
             
             # Generate new content using standard generation
+            # Note: QualityEvaluatedGenerator expects 'material_name' as first arg (works for all domains)
             result = self.generator.generate(
-                item_name=item_name,
+                material_name=item_name,
                 component_type=self.field,
                 author_id=frontmatter.get('author', {}).get('id')
             )

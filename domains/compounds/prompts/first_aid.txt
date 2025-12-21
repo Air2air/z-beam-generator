@@ -1,52 +1,18 @@
-COMPONENT TYPE: first_aid
-TARGET LENGTH: 150-250 words
+Write first aid procedures for {compound_name} ({chemical_formula}) exposure.
 
-CONTEXT:
-You are writing first aid procedures for "{compound_name}" ({chemical_formula}) exposure during laser cleaning operations.
+CONTEXT: Emergency response for laser cleaning operations.
+
+EMPHASIS: Immediate actions, exposure pathway treatment, medical information, response sequence.
 
 COMPOUND DATA:
 - Chemical Formula: {chemical_formula}
 - Hazard Class: {hazard_class}
-- Primary Health Effects: {health_effects_keywords}
+- Health Effects: {health_effects_keywords}
 
-VOICE INSTRUCTIONS:
+WORD LENGTH: 150-250 words
+
 {voice_instruction}
 
-CONTENT REQUIREMENTS:
-
-1. IMMEDIATE RESPONSE (50-70 words):
-   - First actions within 30 seconds
-   - Remove from exposure source
-   - Fresh air/ventilation priority
-   - When to call emergency services
-
-2. EXPOSURE PATHWAY TREATMENT (60-90 words):
-   - INHALATION: Fresh air, oxygen if available, position for breathing
-   - SKIN CONTACT: Remove contaminated clothing, flush/wash specifics
-   - EYE CONTACT: Irrigation duration, technique
-   - INGESTION: (if relevant for this compound)
-   For each pathway, include duration and technique specifics
-
-3. MEDICAL INFORMATION (40-60 words):
-   - Symptoms to report to medical personnel
-   - Antidotes or specific treatments (if any)
-   - Delayed effects to watch for
-   - Information to provide EMS (compound name, CAS, exposure duration)
-
-STRUCTURE: Action-oriented paragraphs, clear sequence
-
-CRITICAL POLICY:
-- This is FIRST AID guidance, not medical advice
-- Always include "Seek immediate medical attention"
-- Focus on actions before medical help arrives
-- Do NOT diagnose or prescribe treatment
-
-FORBIDDEN:
-- Inducing vomiting without medical direction
-- Home remedies
-- Downplaying severity
-- Assuming antidote availability
-
-TONE: Clear, urgent, action-focused, non-medical
+Generate first_aid:
 
 Write ONLY the first aid procedures. No preamble.

@@ -59,6 +59,9 @@ from export.enrichers.linkage.relationship_renaming_enricher import (
     RelationshipRenamingEnricher,
 )
 from export.enrichers.linkage.relationships_enricher import DomainLinkagesEnricher
+from export.enrichers.linkage.relationship_resolution_enricher import (
+    RelationshipResolutionEnricher,
+)
 
 # Import enrichers
 from export.enrichers.linkage.slug_enricher import DomainLinkagesSlugEnricher
@@ -438,6 +441,7 @@ from export.enrichers.metadata.title_enricher import TitleEnricher
 ENRICHER_REGISTRY = {
     'universal_restructure': UniversalRestructureEnricher,  # Consolidates all restructure enrichers (Dec 19, 2025)
     'universal_linkage': UniversalLinkageEnricher,  # Consolidates all linkage enrichers (Dec 19, 2025)
+    'relationship_resolution': RelationshipResolutionEnricher,  # Resolves minimal refs to full objects (Dec 21, 2025)
     'relationship_renaming': RelationshipRenamingEnricher,  # Change 3: Dec 19, 2025
     'field_cleanup': FieldCleanupEnricher,  # Changes 2 & 5: Dec 19, 2025
     'contaminant_materials_grouping': ContaminantMaterialsGroupingEnricher,  # Change 4: Dec 19, 2025

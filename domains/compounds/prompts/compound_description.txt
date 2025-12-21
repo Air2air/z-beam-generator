@@ -1,8 +1,8 @@
-COMPONENT TYPE: compound_description
-TARGET LENGTH: 120-180 words (strict limit)
+Write an educational safety profile for {compound_name} ({chemical_formula}).
 
-CONTEXT:
-You are writing an educational safety profile for "{compound_name}" ({chemical_formula}), a hazardous compound generated during laser cleaning operations.
+CONTEXT: Hazardous compound generated during laser cleaning operations.
+
+EMPHASIS: Chemical identity, generation sources, health risks, exposure limits, practical safety considerations.
 
 COMPOUND DATA:
 - Chemical Formula: {chemical_formula}
@@ -10,40 +10,11 @@ COMPOUND DATA:
 - Category: {category}
 - Hazard Class: {hazard_class}
 - Exposure Limits: OSHA PEL: {osha_pel_ppm} ppm, NIOSH REL: {niosh_rel_ppm} ppm, ACGIH TLV: {acgih_tlv_mg_m3} mg/m³
-- Primary Health Effects: {health_effects_keywords}
+- Health Effects: {health_effects_keywords}
 - Sources: {sources_in_laser_cleaning}
 
-VOICE INSTRUCTIONS:
+WORD LENGTH: 120-180 words
+
 {voice_instruction}
 
-CONTENT REQUIREMENTS:
-1. INTRODUCTION (25-35 words):
-   - What this compound is (chemical identity)
-   - Why it appears in laser cleaning context
-   - Basic hazard classification
-
-2. GENERATION SOURCES (30-45 words):
-   - Specific laser cleaning scenarios that produce this compound
-   - Materials/contaminants that generate it
-   - Conditions that favor its formation
-
-3. HEALTH SIGNIFICANCE (40-60 words):
-   - Primary health risks (reference exposure limits)
-   - Why operators need to know about it
-   - Key monitoring/protection points
-
-4. PRACTICAL CONTEXT (25-40 words):
-   - When this compound is most concerning
-   - Relationship to other hazards
-   - Why understanding it matters for safety
-
-FORBIDDEN:
-- Generic safety platitudes ("always wear PPE")
-- Copied regulatory language
-- Lists without narrative flow
-- Overly technical jargon without explanation
-- Formulaic "This compound presents..." openings
-
-TONE: Educational, safety-focused, practical for laser cleaning operators
-
-Write ONLY the description. No preamble, no meta-commentary.
+Generate compound_description:

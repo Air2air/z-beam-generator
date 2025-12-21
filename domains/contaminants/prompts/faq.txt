@@ -1,12 +1,16 @@
 Write {faq_count} FAQ pairs about {contaminant} removal.
 
-CONTEXT: Practical questions and answers about laser cleaning {contaminant}.
+CONTEXT: Practical questions about laser cleaning this contaminant.
 
-EMPHASIS: Focus on the very unique properties of this contaminant, and the ways it is distinct from others in the category. Arcane or relatively unknown properties and behaviors can be researched to add interest.
+EMPHASIS: Unique properties, removal challenges, effectiveness, material compatibility, safety considerations.
 
-WORD LENGTH: 50 words
+DATA:
+{facts}
+
+WORD LENGTH: 50 words per answer
+
 {voice_instruction}
 
-{facts}
+FORMAT: JSON array with "question" and "answer" fields.
 
 Generate {faq_count} FAQ pairs:

@@ -1,46 +1,17 @@
-COMPONENT TYPE: detection_methods
-TARGET LENGTH: 120-180 words
+Write detection methods for {compound_name} ({chemical_formula}) exposure in laser cleaning.
 
-CONTEXT:
-You are writing practical detection methods for "{compound_name}" ({chemical_formula}) exposure in laser cleaning environments.
+CONTEXT: Practical monitoring and detection strategies.
+
+EMPHASIS: Detection technology, monitoring strategy, workplace application, sensitivity ranges, sampling frequency.
 
 COMPOUND DATA:
 - Chemical Formula: {chemical_formula}
 - Category: {category}
-- Typical Concentration: {typical_concentration_range}
+- Concentration Range: {typical_concentration_range}
 - Monitoring Required: {monitoring_required}
 
-VOICE INSTRUCTIONS:
+WORD LENGTH: 120-180 words
+
 {voice_instruction}
 
-CONTENT REQUIREMENTS:
-
-1. DETECTION TECHNOLOGY (40-60 words):
-   - Primary detection methods (real-time sensors, badges, tubes)
-   - Sensitivity ranges and detection limits
-   - Response time (instant vs time-integrated)
-   - Equipment availability and cost considerations
-
-2. MONITORING STRATEGY (40-60 words):
-   - When to deploy each detection method
-   - Personal vs area monitoring
-   - Sampling frequency recommendations
-   - Interpretation of readings (what levels mean)
-
-3. PRACTICAL APPLICATION (40-60 words):
-   - Setup for laser cleaning workstations
-   - Integration with ventilation systems
-   - Worker notification systems
-   - Record-keeping for compliance
-
-STRUCTURE: Natural paragraphs with practical focus
-
-FORBIDDEN:
-- Equipment brand recommendations
-- Detailed technical specs without context
-- Assuming monitoring budget
-- Regulatory requirements without interpretation
-
-TONE: Practical, operator-focused, safety monitoring
-
-Write ONLY the detection methods guide. No preamble.
+Generate detection_methods:

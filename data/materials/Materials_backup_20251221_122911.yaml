@@ -522,7 +522,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   alumina-laser-cleaning:
     name: Alumina
@@ -882,7 +882,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: blood-residue-contamination
       - id: carbon-buildup-contamination
@@ -1287,7 +1287,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: aluminum-oxidation-contamination
@@ -1659,7 +1659,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: industrial-oil-contamination
@@ -2007,7 +2007,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: industrial-oil-contamination
@@ -2331,7 +2331,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: algae-growth-contamination
       - id: biological-stains-contamination
       - id: bitumen-tar-contamination
@@ -2785,7 +2785,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   beryllium-laser-cleaning:
     name: Beryllium
@@ -3160,7 +3160,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   birch-laser-cleaning:
     name: Birch
@@ -3480,7 +3480,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: industrial-oil-contamination
@@ -3823,7 +3823,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: algae-growth-contamination
       - id: biological-stains-contamination
       - id: bitumen-tar-contamination
@@ -4145,7 +4145,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: biological-stains-contamination
       - id: blood-residue-contamination
@@ -4502,7 +4502,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: battery-corrosion-contamination
@@ -4893,7 +4893,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   brick-laser-cleaning:
     name: Brick
@@ -5260,7 +5260,7 @@ materials:
       _needs_review: true
       _note: Category "masonry" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: efflorescence-contamination
       - id: graffiti-paint-contamination
       - id: industrial-oil-contamination
@@ -5584,7 +5584,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: biological-stains-contamination
@@ -5932,7 +5932,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   carbon-fiber-reinforced-polymer-laser-cleaning:
     name: Carbon Fiber Reinforced Polymer
@@ -6318,7 +6318,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: aviation-sealant-contamination
       - id: epoxy-residue-contamination
       - id: industrial-oil-contamination
@@ -6709,7 +6709,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: biological-stains-contamination
@@ -7133,7 +7133,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: industrial-oil-contamination
@@ -7517,7 +7517,7 @@ materials:
       _needs_review: true
       _note: Category "masonry" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   ceramic-matrix-composites-cmcs-laser-cleaning:
     name: Ceramic Matrix Composites CMCs
@@ -7902,7 +7902,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   cerium-laser-cleaning:
     name: Cerium
@@ -8230,7 +8230,7 @@ materials:
       _needs_review: true
       _note: Category "rare-earth" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   cherry-laser-cleaning:
     name: Cherry
@@ -8602,7 +8602,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: industrial-oil-contamination
@@ -9007,7 +9007,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: biological-stains-contamination
@@ -9435,7 +9435,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: biological-stains-contamination
@@ -9832,7 +9832,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: algae-growth-contamination
       - id: asbestos-coating-contamination
       - id: biological-stains-contamination
@@ -10247,7 +10247,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: battery-corrosion-contamination
@@ -10657,7 +10657,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: biological-stains-contamination
       - id: blood-residue-contamination
@@ -10968,7 +10968,7 @@ materials:
       _needs_review: true
       _note: Category "rare-earth" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   epoxy-resin-composites-laser-cleaning:
     name: Epoxy Resin Composites
@@ -11351,7 +11351,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   europium-laser-cleaning:
     name: Europium
@@ -11671,7 +11671,7 @@ materials:
       _needs_review: true
       _note: Category "rare-earth" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   fiber-reinforced-polyurethane-frpu-laser-cleaning:
     name: Fiber Reinforced Polyurethane FRPU
@@ -12036,7 +12036,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   fiberglass-laser-cleaning:
     name: Fiberglass
@@ -12397,7 +12397,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: aviation-sealant-contamination
       - id: epoxy-residue-contamination
       - id: industrial-oil-contamination
@@ -12754,7 +12754,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: industrial-oil-contamination
@@ -13122,7 +13122,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: biological-stains-contamination
       - id: blood-residue-contamination
@@ -13492,7 +13492,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: biological-stains-contamination
       - id: blood-residue-contamination
@@ -13908,7 +13908,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: environmental-dust-contamination
       - id: industrial-oil-contamination
   gallium-arsenide-laser-cleaning:
@@ -14267,7 +14267,7 @@ materials:
       _needs_review: true
       _note: Category "semiconductor" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: environmental-dust-contamination
       - id: industrial-oil-contamination
   glass-fiber-reinforced-polymers-gfrp-laser-cleaning:
@@ -14638,7 +14638,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   gold-laser-cleaning:
     name: Gold
@@ -15031,7 +15031,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   gorilla-glass-laser-cleaning:
     name: Gorilla Glass
@@ -15396,7 +15396,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: biological-stains-contamination
       - id: blood-residue-contamination
@@ -15763,7 +15763,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: algae-growth-contamination
       - id: biological-stains-contamination
       - id: bitumen-tar-contamination
@@ -16145,7 +16145,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   hastelloy-laser-cleaning:
     name: Hastelloy
@@ -16538,7 +16538,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   hickory-laser-cleaning:
     name: Hickory
@@ -16894,7 +16894,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   inconel-laser-cleaning:
     name: Inconel
@@ -17303,7 +17303,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   indium-laser-cleaning:
     name: Indium
@@ -17697,7 +17697,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   iridium-laser-cleaning:
     name: Iridium
@@ -18089,7 +18089,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   iron-laser-cleaning:
     name: Iron
@@ -18479,7 +18479,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: forging-scale-contamination
       - id: grease-deposits-contamination
       - id: industrial-oil-contamination
@@ -18852,7 +18852,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   lanthanum-laser-cleaning:
     name: Lanthanum
@@ -19170,7 +19170,7 @@ materials:
       _needs_review: true
       _note: Category "rare-earth" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   lead-laser-cleaning:
     name: Lead
@@ -19587,7 +19587,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: biological-stains-contamination
@@ -19964,7 +19964,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: biological-stains-contamination
@@ -20381,7 +20381,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: algae-growth-contamination
       - id: biological-stains-contamination
       - id: bitumen-tar-contamination
@@ -20771,7 +20771,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
       - id: wood-rot-contamination
   magnesium-laser-cleaning:
@@ -21169,7 +21169,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   mahogany-laser-cleaning:
     name: Mahogany
@@ -21547,7 +21547,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: industrial-oil-contamination
@@ -21972,7 +21972,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   maple-laser-cleaning:
     name: Maple
@@ -22355,7 +22355,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: industrial-oil-contamination
@@ -22754,7 +22754,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: algae-growth-contamination
       - id: biological-stains-contamination
       - id: bitumen-tar-contamination
@@ -23146,7 +23146,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   molybdenum-laser-cleaning:
     name: Molybdenum
@@ -23537,7 +23537,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   mortar-laser-cleaning:
     name: Mortar
@@ -23920,7 +23920,7 @@ materials:
       _needs_review: true
       _note: Category "masonry" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   neodymium-laser-cleaning:
     name: Neodymium
@@ -24226,7 +24226,7 @@ materials:
       _needs_review: true
       _note: Category "rare-earth" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   nickel-laser-cleaning:
     name: Nickel
@@ -24625,7 +24625,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: biological-stains-contamination
@@ -25059,7 +25059,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   oak-laser-cleaning:
     name: Oak
@@ -25431,7 +25431,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: industrial-oil-contamination
@@ -25781,7 +25781,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   palladium-laser-cleaning:
     name: Palladium
@@ -26195,7 +26195,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: environmental-dust-contamination
       - id: industrial-oil-contamination
   phenolic-resin-composites-laser-cleaning:
@@ -26575,7 +26575,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   pine-laser-cleaning:
     name: Pine
@@ -26948,7 +26948,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: industrial-oil-contamination
@@ -27318,7 +27318,7 @@ materials:
       _needs_review: true
       _note: Category "masonry" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   platinum-laser-cleaning:
     name: Platinum
@@ -27717,7 +27717,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: biological-stains-contamination
@@ -28122,7 +28122,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
       - id: wood-rot-contamination
   polycarbonate-laser-cleaning:
@@ -28499,7 +28499,7 @@ materials:
         industrial_oil:
           context: machinery_parts_only
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: chemical-stains-contamination
       - id: industrial-oil-contamination
@@ -28877,7 +28877,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   polyethylene-laser-cleaning:
     name: Polyethylene
@@ -29258,7 +29258,7 @@ materials:
           context: machinery_parts_only
           note: Only if plastic is part of machinery (gears, housings)
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
       - id: uv-chalking-contamination
   polypropylene-laser-cleaning:
@@ -29636,7 +29636,7 @@ materials:
           context: machinery_parts_only
           note: Only if plastic is part of machinery (gears, housings)
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: chemical-stains-contamination
       - id: industrial-oil-contamination
@@ -30018,7 +30018,7 @@ materials:
           context: machinery_parts_only
           note: Only if plastic is part of machinery (gears, housings)
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   polytetrafluoroethylene-ptfe-laser-cleaning:
     name: Polytetrafluoroethylene (PTFE)
@@ -30390,7 +30390,7 @@ materials:
     abbreviations:
     - PTFE
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: chemical-stains-contamination
       - id: industrial-oil-contamination
@@ -30773,7 +30773,7 @@ materials:
           context: machinery_parts_only
           note: Only if plastic is part of machinery (gears, housings)
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: chemical-stains-contamination
       - id: industrial-oil-contamination
@@ -31148,7 +31148,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   porcelain-laser-cleaning:
     name: Porcelain
@@ -31514,7 +31514,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: ceramic-glaze-contamination
       - id: industrial-oil-contamination
   porphyry-laser-cleaning:
@@ -31896,7 +31896,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   praseodymium-laser-cleaning:
     name: Praseodymium
@@ -32206,7 +32206,7 @@ materials:
       _needs_review: true
       _note: Category "rare-earth" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   pyrex-laser-cleaning:
     name: Pyrex
@@ -32562,7 +32562,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   quartz-glass-laser-cleaning:
     name: Quartz Glass
@@ -32935,7 +32935,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   quartzite-laser-cleaning:
     name: Quartzite
@@ -33306,7 +33306,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: algae-growth-contamination
       - id: biological-stains-contamination
       - id: bitumen-tar-contamination
@@ -33697,7 +33697,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: environmental-dust-contamination
@@ -34097,7 +34097,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   rhodium-laser-cleaning:
     name: Rhodium
@@ -34487,7 +34487,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   rosewood-laser-cleaning:
     name: Rosewood
@@ -34870,7 +34870,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   rubber-laser-cleaning:
     name: Rubber
@@ -35247,7 +35247,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   ruthenium-laser-cleaning:
     name: Ruthenium
@@ -35648,7 +35648,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   sandstone-laser-cleaning:
     name: Sandstone
@@ -36035,7 +36035,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: algae-growth-contamination
       - id: biological-stains-contamination
       - id: bitumen-tar-contamination
@@ -36425,7 +36425,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   schist-laser-cleaning:
     name: Schist
@@ -36796,7 +36796,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   serpentine-laser-cleaning:
     name: Serpentine
@@ -37174,7 +37174,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: biological-stains-contamination
@@ -37583,7 +37583,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   silicon-laser-cleaning:
     name: Silicon
@@ -37973,7 +37973,7 @@ materials:
       _needs_review: true
       _note: Category "semiconductor" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   silicon-carbide-sic-laser-cleaning:
     name: Silicon Carbide (SiC)
@@ -38318,7 +38318,7 @@ materials:
     abbreviations:
     - SiC
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: blood-residue-contamination
       - id: carbon-buildup-contamination
@@ -38704,7 +38704,7 @@ materials:
       _needs_review: true
       _note: Category "semiconductor" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   silicon-nitride-laser-cleaning:
     name: Silicon Nitride
@@ -39085,7 +39085,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: blood-residue-contamination
       - id: carbon-buildup-contamination
@@ -39526,7 +39526,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   slate-laser-cleaning:
     name: Slate
@@ -39922,7 +39922,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: algae-growth-contamination
       - id: biological-stains-contamination
       - id: bitumen-tar-contamination
@@ -40307,7 +40307,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: algae-growth-contamination
       - id: biological-stains-contamination
       - id: bitumen-tar-contamination
@@ -40665,7 +40665,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   stainless-steel-laser-cleaning:
     name: Stainless Steel
@@ -41032,7 +41032,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: annealing-scale-contamination
@@ -41443,7 +41443,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: annealing-scale-contamination
@@ -41860,7 +41860,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   stucco-laser-cleaning:
     name: Stucco
@@ -42206,7 +42206,7 @@ materials:
       _needs_review: true
       _note: Category "masonry" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   tantalum-laser-cleaning:
     name: Tantalum
@@ -42606,7 +42606,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   teak-laser-cleaning:
     name: Teak
@@ -42948,7 +42948,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: industrial-oil-contamination
@@ -43313,7 +43313,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: biological-stains-contamination
       - id: blood-residue-contamination
@@ -43676,7 +43676,7 @@ materials:
       _needs_review: true
       _note: Category "rare-earth" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   terracotta-laser-cleaning:
     name: Terracotta
@@ -44023,7 +44023,7 @@ materials:
       _needs_review: true
       _note: Category "masonry" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   thermoplastic-elastomer-laser-cleaning:
     name: Thermoplastic Elastomer
@@ -44391,7 +44391,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   tin-laser-cleaning:
     name: Tin
@@ -44782,7 +44782,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: biological-stains-contamination
@@ -45174,7 +45174,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: annealing-scale-contamination
@@ -45564,7 +45564,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: annealing-scale-contamination
@@ -45984,7 +45984,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: annealing-scale-contamination
@@ -46413,7 +46413,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: biological-stains-contamination
@@ -46844,7 +46844,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   tungsten-carbide-laser-cleaning:
     name: Tungsten Carbide
@@ -47192,7 +47192,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: diamond-coating-contamination
       - id: industrial-oil-contamination
   urethane-composites-laser-cleaning:
@@ -47545,7 +47545,7 @@ materials:
           context: machinery_parts_only
           note: Only if composite is part of machinery
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   vanadium-laser-cleaning:
     name: Vanadium
@@ -47935,7 +47935,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   walnut-laser-cleaning:
     name: Walnut
@@ -48280,7 +48280,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: industrial-oil-contamination
@@ -48643,7 +48643,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   yttrium-laser-cleaning:
     name: Yttrium
@@ -48975,7 +48975,7 @@ materials:
       _needs_review: true
       _note: Category "rare-earth" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   zinc-laser-cleaning:
     name: Zinc
@@ -49299,7 +49299,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: biological-stains-contamination
@@ -49675,7 +49675,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: blood-residue-contamination
       - id: carbon-buildup-contamination
@@ -50085,7 +50085,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   acrylic-pmma-laser-cleaning:
     name: Acrylic (PMMA)
@@ -50330,7 +50330,7 @@ materials:
           context: machinery_parts_only
           note: Only if plastic is part of machinery (gears, housings)
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: chemical-stains-contamination
       - id: industrial-oil-contamination
@@ -50609,7 +50609,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: biological-stains-contamination
       - id: blood-residue-contamination
@@ -50900,7 +50900,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   ebony-laser-cleaning:
     name: Ebony
@@ -51172,7 +51172,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   germanium-laser-cleaning:
     name: Germanium
@@ -51439,7 +51439,7 @@ materials:
       _needs_review: true
       _note: Category "semiconductor" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   gneiss-laser-cleaning:
     name: Gneiss
@@ -51684,7 +51684,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   indium-phosphide-laser-cleaning:
     name: Indium Phosphide
@@ -51934,7 +51934,7 @@ materials:
       _needs_review: true
       _note: Category "semiconductor" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   nylon-laser-cleaning:
     name: Nylon
@@ -52212,7 +52212,7 @@ materials:
           context: machinery_parts_only
           note: Only if plastic is part of machinery (gears, housings)
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: chemical-stains-contamination
       - id: industrial-oil-contamination
@@ -52494,7 +52494,7 @@ materials:
           context: machinery_parts_only
           note: Only if plastic is part of machinery (gears, housings)
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   pet-laser-cleaning:
     name: PET
@@ -52770,7 +52770,7 @@ materials:
           context: machinery_parts_only
           note: Only if plastic is part of machinery (gears, housings)
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: chemical-stains-contamination
       - id: industrial-oil-contamination
@@ -53158,7 +53158,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: annealing-scale-contamination
@@ -53601,7 +53601,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: annealing-scale-contamination
@@ -54085,7 +54085,7 @@ materials:
       - aluminum_oxidation
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: annealing-scale-contamination
@@ -54431,7 +54431,7 @@ materials:
       _needs_review: true
       _note: Category "semiconductor" not recognized - conservative defaults applied
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: environmental-dust-contamination
       - id: industrial-oil-contamination
   aluminum-bronze-laser-cleaning:
@@ -54794,7 +54794,7 @@ materials:
       - copper_patina
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: aluminum-oxidation-contamination
@@ -55098,7 +55098,7 @@ materials:
           context: machinery_parts_only
           note: Only if plastic is part of machinery (gears, housings)
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: industrial-oil-contamination
   aluminum-nitride-laser-cleaning:
     name: Aluminum Nitride
@@ -55348,7 +55348,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: aluminum-oxidation-contamination
@@ -55665,7 +55665,7 @@ materials:
       - uv_chalking
       conditional: {}
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: blood-residue-contamination
       - id: carbon-buildup-contamination
@@ -56024,7 +56024,7 @@ materials:
       country_display: United Kingdom
       title: PhD
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: blood-residue-contamination
       - id: carbon-buildup-contamination
@@ -56385,7 +56385,7 @@ materials:
       country_display: United Kingdom
       title: PhD
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: algae-growth-contamination
       - id: annealing-scale-contamination
@@ -56775,7 +56775,7 @@ materials:
       country_display: United Kingdom
       title: PhD
     relationships:
-      contaminated_by:
+      applicable_contaminants:
       - id: adhesive-residue-contamination
       - id: blood-residue-contamination
       - id: carbon-buildup-contamination

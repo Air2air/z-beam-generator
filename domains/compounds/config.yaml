@@ -80,6 +80,19 @@ authors:
   distribution: balanced
   allow_regeneration_with_same_author: true
 
+# Component extraction strategies (required for generation)
+component_extraction:
+  compound_description:
+    extraction_strategy: raw
+  health_effects:
+    extraction_strategy: raw
+  exposure_guidelines:
+    extraction_strategy: raw
+  detection_methods:
+    extraction_strategy: raw
+  first_aid:
+    extraction_strategy: raw
+
 # Data sources
 data:
   primary: "data/compounds/Compounds.yaml"

@@ -213,30 +213,7 @@ compounds:
       odor_threshold: NO ODOR - Cannot be detected by smell. MUST use electronic monitors.
         Odorless nature makes CO extremely dangerous.
     relationships:
-      chemical_properties:
-      - type: chemical_properties
-        id: carbon-monoxide-physical-data
-      health_effects:
-      - type: health_effects
-        id: carbon-monoxide-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: carbon-monoxide-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: carbon-monoxide-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Carbon Monoxide
-          pel_ppm: 50
-      emergency_response:
-      - type: emergency_response
-        id: toxic-gas-extreme
-        overrides:
-          specific_compound: Carbon Monoxide
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: adhesive-residue-contamination
         frequency: very_common
         severity: high
@@ -293,6 +270,29 @@ compounds:
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Quenching Oil Residue
+      chemical_properties:
+      - type: chemical_properties
+        id: carbon-monoxide-physical-data
+      health_effects:
+      - type: health_effects
+        id: carbon-monoxide-toxicology
+      environmental_impact:
+      - type: environmental_impact
+        id: carbon-monoxide-environmental-data
+      detection_monitoring:
+      - type: detection_monitoring
+        id: carbon-monoxide-monitoring-methods
+      ppe_requirements:
+      - type: ppe_requirements
+        id: irritant-gas-low-concentration
+        overrides:
+          specific_compound: Carbon Monoxide
+          pel_ppm: 50
+      emergency_response:
+      - type: emergency_response
+        id: toxic-gas-extreme
+        overrides:
+          specific_compound: Carbon Monoxide
   formaldehyde:
     id: formaldehyde
     full_path: /compounds/carcinogen/aldehyde/formaldehyde-compound
@@ -516,6 +516,23 @@ compounds:
       odor_threshold: 0.05-1 ppm - provides early warning but olfactory fatigue occurs.
         Do not rely on odor alone.
     relationships:
+      produced_by_contaminants:
+      - id: adhesive-residue-contamination
+        frequency: common
+        severity: moderate
+        typical_context: Thermal breakdown of formaldehyde-based adhesives
+      - id: wood-rot-contamination
+        frequency: common
+        severity: moderate
+        typical_context: Decomposition of wood compounds
+      - id: paint-residue-contamination
+        frequency: occasional
+        severity: moderate
+        typical_context: Breakdown of melamine or urea-formaldehyde resins
+      - id: epoxy-residue-contamination
+        frequency: occasional
+        severity: low
+        typical_context: Thermal degradation of certain epoxy formulations
       chemical_properties:
       - type: chemical_properties
         id: formaldehyde-physical-data
@@ -539,23 +556,6 @@ compounds:
         id: flammable-gas-extremely
         overrides:
           specific_compound: Formaldehyde
-      produced_from_contaminants:
-      - id: adhesive-residue-contamination
-        frequency: common
-        severity: moderate
-        typical_context: Thermal breakdown of formaldehyde-based adhesives
-      - id: wood-rot-contamination
-        frequency: common
-        severity: moderate
-        typical_context: Decomposition of wood compounds
-      - id: paint-residue-contamination
-        frequency: occasional
-        severity: moderate
-        typical_context: Breakdown of melamine or urea-formaldehyde resins
-      - id: epoxy-residue-contamination
-        frequency: occasional
-        severity: low
-        typical_context: Thermal degradation of certain epoxy formulations
   benzene:
     id: benzene
     full_path: /compounds/carcinogen/aromatic-hydrocarbon/benzene-compound
@@ -775,6 +775,27 @@ compounds:
         safe exposure levels and varies greatly. Do not rely on odor - use monitoring
         equipment.
     relationships:
+      produced_by_contaminants:
+      - id: paint-residue-contamination
+        frequency: common
+        severity: high
+        typical_context: Thermal breakdown of aromatic paint solvents
+      - id: rubber-residue-contamination
+        frequency: common
+        severity: high
+        typical_context: Pyrolysis of styrene-butadiene rubber
+      - id: plastic-residue-contamination
+        frequency: common
+        severity: high
+        typical_context: Thermal decomposition of polystyrene and aromatic polymers
+      - id: industrial-oil-contamination
+        frequency: occasional
+        severity: moderate
+        typical_context: Thermal breakdown of aromatic hydrocarbons
+      - id: cutting-fluid-contamination
+        frequency: occasional
+        severity: moderate
+        typical_context: Decomposition of aromatic additives
       chemical_properties:
       - type: chemical_properties
         id: benzene-physical-data
@@ -798,27 +819,6 @@ compounds:
         id: flammable-gas-extremely
         overrides:
           specific_compound: Benzene
-      produced_from_contaminants:
-      - id: paint-residue-contamination
-        frequency: common
-        severity: high
-        typical_context: Thermal breakdown of aromatic paint solvents
-      - id: rubber-residue-contamination
-        frequency: common
-        severity: high
-        typical_context: Pyrolysis of styrene-butadiene rubber
-      - id: plastic-residue-contamination
-        frequency: common
-        severity: high
-        typical_context: Thermal decomposition of polystyrene and aromatic polymers
-      - id: industrial-oil-contamination
-        frequency: occasional
-        severity: moderate
-        typical_context: Thermal breakdown of aromatic hydrocarbons
-      - id: cutting-fluid-contamination
-        frequency: occasional
-        severity: moderate
-        typical_context: Decomposition of aromatic additives
   pahs:
     id: pahs
     full_path: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
@@ -856,30 +856,7 @@ compounds:
     - carbon_rich_contamination
     - high_temperature_pyrolysis
     relationships:
-      chemical_properties:
-      - type: chemical_properties
-        id: pahs-physical-data
-      health_effects:
-      - type: health_effects
-        id: pahs-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: pahs-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: pahs-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: particulate-carcinogen
-        overrides:
-          specific_compound: Polycyclic Aromatic Hydrocarbons
-          pel_ppm: null
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Polycyclic Aromatic Hydrocarbons
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: carbon-buildup-contamination
         frequency: very_common
         severity: high
@@ -912,6 +889,29 @@ compounds:
         frequency: unknown
         severity: high
         typical_context: Laser removal of Exhaust System Deposits
+      chemical_properties:
+      - type: chemical_properties
+        id: pahs-physical-data
+      health_effects:
+      - type: health_effects
+        id: pahs-toxicology
+      environmental_impact:
+      - type: environmental_impact
+        id: pahs-environmental-data
+      detection_monitoring:
+      - type: detection_monitoring
+        id: pahs-monitoring-methods
+      ppe_requirements:
+      - type: ppe_requirements
+        id: particulate-carcinogen
+        overrides:
+          specific_compound: Polycyclic Aromatic Hydrocarbons
+          pel_ppm: null
+      emergency_response:
+      - type: emergency_response
+        id: flammable-gas-extremely
+        overrides:
+          specific_compound: Polycyclic Aromatic Hydrocarbons
   hydrogen-cyanide:
     id: hydrogen-cyanide
     full_path: /compounds/toxic-gas/cyanide/hydrogen-cyanide-compound
@@ -1150,6 +1150,20 @@ compounds:
         Odor threshold (0.58-5 ppm) overlaps toxic range. NEVER rely on odor - MANDATORY
         continuous monitoring with alarms.
     relationships:
+      produced_by_contaminants:
+      - id: plastic-residue-contamination
+        frequency: occasional
+        severity: high
+        typical_context: Thermal decomposition of nitrogen-containing polymers (polyurethane,
+          nylon, acrylics)
+      - id: rubber-residue-contamination
+        frequency: occasional
+        severity: high
+        typical_context: Pyrolysis of nitrile rubber
+      - id: adhesive-residue-contamination
+        frequency: occasional
+        severity: moderate
+        typical_context: Breakdown of cyanoacrylate adhesives
       chemical_properties:
       - type: chemical_properties
         id: hydrogen-cyanide-physical-data
@@ -1173,20 +1187,6 @@ compounds:
         id: toxic-gas-extreme
         overrides:
           specific_compound: Hydrogen Cyanide
-      produced_from_contaminants:
-      - id: plastic-residue-contamination
-        frequency: occasional
-        severity: high
-        typical_context: Thermal decomposition of nitrogen-containing polymers (polyurethane,
-          nylon, acrylics)
-      - id: rubber-residue-contamination
-        frequency: occasional
-        severity: high
-        typical_context: Pyrolysis of nitrile rubber
-      - id: adhesive-residue-contamination
-        frequency: occasional
-        severity: moderate
-        typical_context: Breakdown of cyanoacrylate adhesives
   acetaldehyde:
     id: acetaldehyde
     full_path: /compounds/irritant/aldehyde/acetaldehyde-compound
@@ -1421,7 +1421,7 @@ compounds:
           specific_compound: acetaldehyde
           reportable_quantity: 1000 lbs
           iarc_classification: Group 2B (Possibly carcinogenic)
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: plastic-residue-contamination
         frequency: common
         severity: moderate
@@ -1653,6 +1653,23 @@ compounds:
       odor_threshold: 0.16-1.0 ppm - provides warning BUT overlaps toxic range. DO
         NOT rely on odor alone.
     relationships:
+      produced_by_contaminants:
+      - id: industrial-oil-contamination
+        frequency: common
+        severity: high
+        typical_context: Thermal decomposition of fats and oils
+      - id: quench-oil-contamination
+        frequency: common
+        severity: high
+        typical_context: Thermal decomposition of quenching oils
+      - id: cutting-fluid-contamination
+        frequency: common
+        severity: high
+        typical_context: Thermal breakdown of oil-based cutting fluids
+      - id: plastic-residue-contamination
+        frequency: occasional
+        severity: moderate
+        typical_context: Pyrolysis of certain polymers
       chemical_properties:
       - type: chemical_properties
         id: acrolein-physical-data
@@ -1676,23 +1693,6 @@ compounds:
         id: toxic-gas-extreme
         overrides:
           specific_compound: Acrolein
-      produced_from_contaminants:
-      - id: industrial-oil-contamination
-        frequency: common
-        severity: high
-        typical_context: Thermal decomposition of fats and oils
-      - id: quench-oil-contamination
-        frequency: common
-        severity: high
-        typical_context: Thermal decomposition of quenching oils
-      - id: cutting-fluid-contamination
-        frequency: common
-        severity: high
-        typical_context: Thermal breakdown of oil-based cutting fluids
-      - id: plastic-residue-contamination
-        frequency: occasional
-        severity: moderate
-        typical_context: Pyrolysis of certain polymers
   hydrogen-chloride:
     id: hydrogen-chloride
     full_path: /compounds/corrosive-gas/acid-gas/hydrogen-chloride-compound
@@ -1887,6 +1887,15 @@ compounds:
         detection_limit: 0.01 ppm
       odor_threshold: 0.8-5 ppm - provides adequate warning but close to toxic levels
     relationships:
+      produced_by_contaminants:
+      - id: plastic-residue-contamination
+        frequency: very_common
+        severity: high
+        typical_context: PVC thermal decomposition
+      - id: adhesive-residue-contamination
+        frequency: occasional
+        severity: moderate
+        typical_context: Chlorinated adhesive breakdown
       chemical_properties:
       - type: chemical_properties
         id: hydrogen-chloride-physical-data
@@ -1910,15 +1919,6 @@ compounds:
         id: corrosive-liquid-strong
         overrides:
           specific_compound: Hydrogen Chloride
-      produced_from_contaminants:
-      - id: plastic-residue-contamination
-        frequency: very_common
-        severity: high
-        typical_context: PVC thermal decomposition
-      - id: adhesive-residue-contamination
-        frequency: occasional
-        severity: moderate
-        typical_context: Chlorinated adhesive breakdown
   toluene:
     id: toluene
     full_path: /compounds/solvent/aromatic-hydrocarbon/toluene-compound
@@ -2125,6 +2125,23 @@ compounds:
       odor_threshold: 0.16-40 ppm - provides early warning but wide range. Olfactory
         adaptation occurs.
     relationships:
+      produced_by_contaminants:
+      - id: paint-residue-contamination
+        frequency: common
+        severity: moderate
+        typical_context: Vaporization of toluene-based paint solvents
+      - id: graffiti-paint-contamination
+        frequency: common
+        severity: moderate
+        typical_context: Release of toluene from spray paint
+      - id: adhesive-residue-contamination
+        frequency: common
+        severity: moderate
+        typical_context: Release of toluene from adhesive formulations
+      - id: rubber-residue-contamination
+        frequency: occasional
+        severity: low
+        typical_context: Thermal breakdown of aromatic rubber compounds
       chemical_properties:
       - type: chemical_properties
         id: toluene-physical-data
@@ -2148,23 +2165,6 @@ compounds:
         id: flammable-gas-extremely
         overrides:
           specific_compound: Toluene
-      produced_from_contaminants:
-      - id: paint-residue-contamination
-        frequency: common
-        severity: moderate
-        typical_context: Vaporization of toluene-based paint solvents
-      - id: graffiti-paint-contamination
-        frequency: common
-        severity: moderate
-        typical_context: Release of toluene from spray paint
-      - id: adhesive-residue-contamination
-        frequency: common
-        severity: moderate
-        typical_context: Release of toluene from adhesive formulations
-      - id: rubber-residue-contamination
-        frequency: occasional
-        severity: low
-        typical_context: Thermal breakdown of aromatic rubber compounds
   styrene:
     id: styrene
     full_path: /compounds/irritant/aromatic-hydrocarbon/styrene-compound
@@ -2377,6 +2377,15 @@ compounds:
       odor_threshold: '0.05-0.5 ppm - WARNING: Olfactory fatigue occurs. Cannot rely
         on odor for protection.'
     relationships:
+      produced_by_contaminants:
+      - id: plastic-residue-contamination
+        frequency: very_common
+        severity: high
+        typical_context: Thermal depolymerization of polystyrene
+      - id: rubber-residue-contamination
+        frequency: common
+        severity: moderate
+        typical_context: Pyrolysis of styrene-butadiene rubber
       chemical_properties:
       - type: chemical_properties
         id: styrene-physical-data
@@ -2400,15 +2409,6 @@ compounds:
         id: flammable-gas-extremely
         overrides:
           specific_compound: Styrene
-      produced_from_contaminants:
-      - id: plastic-residue-contamination
-        frequency: very_common
-        severity: high
-        typical_context: Thermal depolymerization of polystyrene
-      - id: rubber-residue-contamination
-        frequency: common
-        severity: moderate
-        typical_context: Pyrolysis of styrene-butadiene rubber
   zinc-oxide:
     id: zinc-oxide
     full_path: /compounds/metal-fume/metal-oxide/zinc-oxide-compound
@@ -2600,6 +2600,27 @@ compounds:
         detection_limit: 0.3 µg/sample
       odor_threshold: Not applicable - odorless
     relationships:
+      produced_by_contaminants:
+      - id: galvanize-corrosion-contamination
+        frequency: very_common
+        severity: high
+        typical_context: Vaporization from galvanized coatings
+      - id: zinc-plating-contamination
+        frequency: very_common
+        severity: high
+        typical_context: Direct vaporization of zinc electroplating
+      - id: brass-plating-contamination
+        frequency: common
+        severity: moderate
+        typical_context: Zinc component of brass alloy
+      - id: paint-residue-contamination
+        frequency: occasional
+        severity: low
+        typical_context: Zinc oxide pigments in paint
+      - id: battery-corrosion-contamination
+        frequency: unknown
+        severity: low
+        typical_context: Laser removal of Battery Leakage Corrosion
       chemical_properties:
       - type: chemical_properties
         id: zinc-oxide-physical-data
@@ -2623,27 +2644,6 @@ compounds:
         id: flammable-gas-extremely
         overrides:
           specific_compound: Zinc Oxide
-      produced_from_contaminants:
-      - id: galvanize-corrosion-contamination
-        frequency: very_common
-        severity: high
-        typical_context: Vaporization from galvanized coatings
-      - id: zinc-plating-contamination
-        frequency: very_common
-        severity: high
-        typical_context: Direct vaporization of zinc electroplating
-      - id: brass-plating-contamination
-        frequency: common
-        severity: moderate
-        typical_context: Zinc component of brass alloy
-      - id: paint-residue-contamination
-        frequency: occasional
-        severity: low
-        typical_context: Zinc oxide pigments in paint
-      - id: battery-corrosion-contamination
-        frequency: unknown
-        severity: low
-        typical_context: Laser removal of Battery Leakage Corrosion
   iron-oxide:
     id: iron-oxide
     full_path: /compounds/metal-fume/metal-oxide/iron-oxide-compound
@@ -2821,30 +2821,7 @@ compounds:
         detection_limit: 0.3 µg/sample
       odor_threshold: Not applicable - odorless
     relationships:
-      chemical_properties:
-      - type: chemical_properties
-        id: iron-oxide-physical-data
-      health_effects:
-      - type: health_effects
-        id: iron-oxide-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: iron-oxide-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: iron-oxide-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Iron Oxide Fume
-          pel_ppm: null
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Iron Oxide Fume
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: rust-oxidation-contamination
         frequency: very_common
         severity: high
@@ -2877,6 +2854,29 @@ compounds:
         frequency: unknown
         severity: low
         typical_context: Laser removal of Steel Surface Corrosion
+      chemical_properties:
+      - type: chemical_properties
+        id: iron-oxide-physical-data
+      health_effects:
+      - type: health_effects
+        id: iron-oxide-toxicology
+      environmental_impact:
+      - type: environmental_impact
+        id: iron-oxide-environmental-data
+      detection_monitoring:
+      - type: detection_monitoring
+        id: iron-oxide-monitoring-methods
+      ppe_requirements:
+      - type: ppe_requirements
+        id: irritant-gas-low-concentration
+        overrides:
+          specific_compound: Iron Oxide Fume
+          pel_ppm: null
+      emergency_response:
+      - type: emergency_response
+        id: flammable-gas-extremely
+        overrides:
+          specific_compound: Iron Oxide Fume
   chromium-vi:
     id: chromium-vi
     full_path: /compounds/carcinogen/heavy-metal/chromium-vi-compound
@@ -3099,6 +3099,23 @@ compounds:
         detection_limit: 0.05 µg/sample
       odor_threshold: Not applicable - no warning odor at hazardous levels
     relationships:
+      produced_by_contaminants:
+      - id: chrome-pitting-contamination
+        frequency: very_common
+        severity: high
+        typical_context: Oxidation of chromium creates Cr(VI)
+      - id: steel-corrosion-contamination
+        frequency: common
+        severity: high
+        typical_context: Oxidation of chromium in stainless steel
+      - id: paint-residue-contamination
+        frequency: occasional
+        severity: high
+        typical_context: Chromate pigments in some paints
+      - id: conversion-coating-contamination
+        frequency: unknown
+        severity: high
+        typical_context: Laser removal of Chemical Conversion Coating
       chemical_properties:
       - type: chemical_properties
         id: chromium-vi-physical-data
@@ -3122,23 +3139,6 @@ compounds:
         id: flammable-gas-extremely
         overrides:
           specific_compound: Hexavalent Chromium
-      produced_from_contaminants:
-      - id: chrome-pitting-contamination
-        frequency: very_common
-        severity: high
-        typical_context: Oxidation of chromium creates Cr(VI)
-      - id: steel-corrosion-contamination
-        frequency: common
-        severity: high
-        typical_context: Oxidation of chromium in stainless steel
-      - id: paint-residue-contamination
-        frequency: occasional
-        severity: high
-        typical_context: Chromate pigments in some paints
-      - id: conversion-coating-contamination
-        frequency: unknown
-        severity: high
-        typical_context: Laser removal of Chemical Conversion Coating
   nitrogen-oxides:
     id: nitrogen-oxides
     full_path: /compounds/toxic-gas/oxidizing-gas/nitrogen-oxides-compound
@@ -3349,30 +3349,7 @@ compounds:
       odor_threshold: 'NO2: 0.1-1 ppm (provides warning but overlaps toxic range).
         NO: odorless (NO WARNING).'
     relationships:
-      chemical_properties:
-      - type: chemical_properties
-        id: nitrogen-oxides-physical-data
-      health_effects:
-      - type: health_effects
-        id: nitrogen-oxides-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: nitrogen-oxides-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: nitrogen-oxides-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Nitrogen Oxides
-          pel_ppm: 25
-      emergency_response:
-      - type: emergency_response
-        id: toxic-gas-extreme
-        overrides:
-          specific_compound: Nitrogen Oxides
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: rust-oxidation-contamination
         frequency: common
         severity: low
@@ -3405,6 +3382,29 @@ compounds:
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Pharmaceutical Drug Residue
+      chemical_properties:
+      - type: chemical_properties
+        id: nitrogen-oxides-physical-data
+      health_effects:
+      - type: health_effects
+        id: nitrogen-oxides-toxicology
+      environmental_impact:
+      - type: environmental_impact
+        id: nitrogen-oxides-environmental-data
+      detection_monitoring:
+      - type: detection_monitoring
+        id: nitrogen-oxides-monitoring-methods
+      ppe_requirements:
+      - type: ppe_requirements
+        id: irritant-gas-low-concentration
+        overrides:
+          specific_compound: Nitrogen Oxides
+          pel_ppm: 25
+      emergency_response:
+      - type: emergency_response
+        id: toxic-gas-extreme
+        overrides:
+          specific_compound: Nitrogen Oxides
   sulfur-dioxide:
     id: sulfur-dioxide
     full_path: /compounds/toxic-gas/acid-gas/sulfur-dioxide-compound
@@ -3595,6 +3595,15 @@ compounds:
         detection_limit: 0.02 ppm
       odor_threshold: 0.3-1 ppm - provides adequate warning below toxic levels
     relationships:
+      produced_by_contaminants:
+      - id: rubber-residue-contamination
+        frequency: common
+        severity: moderate
+        typical_context: Vulcanized rubber contains sulfur compounds
+      - id: industrial-oil-contamination
+        frequency: occasional
+        severity: low
+        typical_context: Sulfur additives in some lubricants
       chemical_properties:
       - type: chemical_properties
         id: sulfur-dioxide-physical-data
@@ -3618,15 +3627,6 @@ compounds:
         id: toxic-gas-extreme
         overrides:
           specific_compound: Sulfur Dioxide
-      produced_from_contaminants:
-      - id: rubber-residue-contamination
-        frequency: common
-        severity: moderate
-        typical_context: Vulcanized rubber contains sulfur compounds
-      - id: industrial-oil-contamination
-        frequency: occasional
-        severity: low
-        typical_context: Sulfur additives in some lubricants
   phosgene:
     id: phosgene
     full_path: /compounds/toxic-gas/reactive-gas/phosgene-compound
@@ -3832,6 +3832,11 @@ compounds:
       odor_threshold: 0.4-1.5 ppm - UNRELIABLE. Odor threshold ABOVE safe exposure
         limits. NEVER rely on odor. MANDATORY continuous monitoring.
     relationships:
+      produced_by_contaminants:
+      - id: plastic-residue-contamination
+        frequency: rare
+        severity: high
+        typical_context: Thermal breakdown of certain chlorinated plastics
       chemical_properties:
       - type: chemical_properties
         id: phosgene-physical-data
@@ -3855,11 +3860,6 @@ compounds:
         id: toxic-gas-extreme
         overrides:
           specific_compound: Phosgene
-      produced_from_contaminants:
-      - id: plastic-residue-contamination
-        frequency: rare
-        severity: high
-        typical_context: Thermal breakdown of certain chlorinated plastics
   ammonia:
     id: ammonia
     full_path: /compounds/corrosive-gas/alkaline-gas/ammonia-compound
@@ -4063,6 +4063,11 @@ compounds:
         detection_limit: 0.02 ppm
       odor_threshold: 5-50 ppm - provides good warning below toxic levels
     relationships:
+      produced_by_contaminants:
+      - id: blood-residue-contamination
+        frequency: occasional
+        severity: low
+        typical_context: Breakdown of proteins
       chemical_properties:
       - type: chemical_properties
         id: ammonia-physical-data
@@ -4086,11 +4091,6 @@ compounds:
         id: corrosive-liquid-strong
         overrides:
           specific_compound: Ammonia
-      produced_from_contaminants:
-      - id: blood-residue-contamination
-        frequency: occasional
-        severity: low
-        typical_context: Breakdown of proteins
   carbon-dioxide:
     id: carbon-dioxide
     full_path: /compounds/asphyxiant/simple-asphyxiant/carbon-dioxide-compound
@@ -4278,30 +4278,7 @@ compounds:
       odor_threshold: Not applicable - odorless at all concentrations. No warning
         property. MUST use instruments.
     relationships:
-      chemical_properties:
-      - type: chemical_properties
-        id: carbon-dioxide-physical-data
-      health_effects:
-      - type: health_effects
-        id: carbon-dioxide-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: carbon-dioxide-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: carbon-dioxide-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Carbon Dioxide
-          pel_ppm: 5000
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Carbon Dioxide
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: paint-residue-contamination
         frequency: very_common
         severity: low
@@ -4586,6 +4563,29 @@ compounds:
         frequency: unknown
         severity: low
         typical_context: Laser removal of Wood Rot / Fungal Biodegradation
+      chemical_properties:
+      - type: chemical_properties
+        id: carbon-dioxide-physical-data
+      health_effects:
+      - type: health_effects
+        id: carbon-dioxide-toxicology
+      environmental_impact:
+      - type: environmental_impact
+        id: carbon-dioxide-environmental-data
+      detection_monitoring:
+      - type: detection_monitoring
+        id: carbon-dioxide-monitoring-methods
+      ppe_requirements:
+      - type: ppe_requirements
+        id: irritant-gas-low-concentration
+        overrides:
+          specific_compound: Carbon Dioxide
+          pel_ppm: 5000
+      emergency_response:
+      - type: emergency_response
+        id: flammable-gas-extremely
+        overrides:
+          specific_compound: Carbon Dioxide
   vocs:
     id: vocs
     full_path: /compounds/irritant/organic-vapor/vocs-compound
@@ -4783,30 +4783,7 @@ compounds:
       odor_threshold: Variable. Some VOCs odorless (benzene), others pungent at low
         ppm. Olfactory fatigue common. Do not rely on odor.
     relationships:
-      chemical_properties:
-      - type: chemical_properties
-        id: vocs-physical-data
-      health_effects:
-      - type: health_effects
-        id: vocs-toxicology
-      environmental_impact:
-      - type: environmental_impact
-        id: vocs-environmental-data
-      detection_monitoring:
-      - type: detection_monitoring
-        id: vocs-monitoring-methods
-      ppe_requirements:
-      - type: ppe_requirements
-        id: irritant-gas-low-concentration
-        overrides:
-          specific_compound: Volatile Organic Compounds
-          pel_ppm: null
-      emergency_response:
-      - type: emergency_response
-        id: flammable-gas-extremely
-        overrides:
-          specific_compound: Volatile Organic Compounds
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: paint-residue-contamination
         frequency: very_common
         severity: moderate
@@ -4899,6 +4876,29 @@ compounds:
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Wood Rot / Fungal Biodegradation
+      chemical_properties:
+      - type: chemical_properties
+        id: vocs-physical-data
+      health_effects:
+      - type: health_effects
+        id: vocs-toxicology
+      environmental_impact:
+      - type: environmental_impact
+        id: vocs-environmental-data
+      detection_monitoring:
+      - type: detection_monitoring
+        id: vocs-monitoring-methods
+      ppe_requirements:
+      - type: ppe_requirements
+        id: irritant-gas-low-concentration
+        overrides:
+          specific_compound: Volatile Organic Compounds
+          pel_ppm: null
+      emergency_response:
+      - type: emergency_response
+        id: flammable-gas-extremely
+        overrides:
+          specific_compound: Volatile Organic Compounds
   benzoapyrene:
     id: benzoapyrene
     full_path: /compounds/carcinogen/polycyclic-aromatic-hydrocarbon/benzoapyrene-compound
@@ -5103,6 +5103,27 @@ compounds:
       odor_threshold: Not applicable - no characteristic warning odor at hazardous
         levels
     relationships:
+      produced_by_contaminants:
+      - id: carbon-buildup-contamination
+        frequency: common
+        severity: high
+        typical_context: Pre-existing from incomplete combustion
+      - id: carbon-soot-contamination
+        frequency: common
+        severity: high
+        typical_context: Formed during original combustion event
+      - id: fire-damage-contamination
+        frequency: common
+        severity: high
+        typical_context: Formed during fire events
+      - id: bitumen-tar-contamination
+        frequency: common
+        severity: high
+        typical_context: Naturally present in bitumen/asphalt
+      - id: rubber-residue-contamination
+        frequency: occasional
+        severity: moderate
+        typical_context: Formed during high-temperature pyrolysis
       chemical_properties:
       - type: chemical_properties
         id: benzoapyrene-physical-data
@@ -5126,27 +5147,6 @@ compounds:
         id: flammable-gas-extremely
         overrides:
           specific_compound: Benzo[a]pyrene
-      produced_from_contaminants:
-      - id: carbon-buildup-contamination
-        frequency: common
-        severity: high
-        typical_context: Pre-existing from incomplete combustion
-      - id: carbon-soot-contamination
-        frequency: common
-        severity: high
-        typical_context: Formed during original combustion event
-      - id: fire-damage-contamination
-        frequency: common
-        severity: high
-        typical_context: Formed during fire events
-      - id: bitumen-tar-contamination
-        frequency: common
-        severity: high
-        typical_context: Naturally present in bitumen/asphalt
-      - id: rubber-residue-contamination
-        frequency: occasional
-        severity: moderate
-        typical_context: Formed during high-temperature pyrolysis
   water-vapor:
     id: water-vapor
     full_path: /compounds/vapor/water-vapor-compound
@@ -5175,7 +5175,7 @@ compounds:
     - organic_compound_decomposition
     - combustion_byproduct
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: adhesive-residue-contamination
         frequency: unknown
         severity: low
@@ -5445,7 +5445,7 @@ compounds:
     - polymer_decomposition
     - carbon_based_coating_removal
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: adhesive-residue-contamination
         frequency: unknown
         severity: moderate
@@ -5594,7 +5594,7 @@ compounds:
     - incomplete_ablation
     - char_formation
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: algae-growth-contamination
         frequency: unknown
         severity: moderate
@@ -5700,7 +5700,7 @@ compounds:
     - metal_oxidation
     - conversion_coating_removal
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: anti-seize-contamination
         frequency: unknown
         severity: moderate
@@ -5782,7 +5782,7 @@ compounds:
     - condensation_nucleation
     - ceramic_coating_ablation
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: ceramic-coating-contamination
         frequency: unknown
         severity: high
@@ -5844,7 +5844,7 @@ compounds:
     - polymer_degradation
     - incomplete_organic_combustion
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: aviation-sealant-contamination
         frequency: unknown
         severity: moderate
@@ -5937,7 +5937,7 @@ compounds:
     - anodizing_removal
     - aluminum_coating_ablation
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: aluminum-oxidation-contamination
         frequency: unknown
         severity: moderate
@@ -5983,7 +5983,7 @@ compounds:
     - copper_coating_ablation
     - brass_bronze_patina_removal
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: brake-dust-contamination
         frequency: unknown
         severity: moderate
@@ -6049,7 +6049,7 @@ compounds:
     - ceramic_ablation
     - mineral_contamination_removal
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: asbestos-coating-contamination
         frequency: unknown
         severity: low
@@ -6099,7 +6099,7 @@ compounds:
     - mineral_scale_removal
     - carbonate_decomposition
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: concrete-dust-contamination
         frequency: unknown
         severity: low
@@ -6164,7 +6164,7 @@ compounds:
     - bronze_patina_removal
     - solder_residue
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: bronze-patina-contamination
         frequency: unknown
         severity: moderate
@@ -6211,7 +6211,7 @@ compounds:
     - lead_coating_ablation
     - pewter_patina_removal
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: lead-paint-contamination
         frequency: unknown
         severity: high
@@ -6254,7 +6254,7 @@ compounds:
     - yellow_pigment_removal
     - aerospace_coating_ablation
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: cadmium-plating-contamination
         frequency: unknown
         severity: high
@@ -6296,7 +6296,7 @@ compounds:
     - high_power_ablation
     - metal_coating_removal
     relationships:
-      produced_from_contaminants:
+      produced_by_contaminants:
       - id: annealing-scale-contamination
         frequency: unknown
         severity: moderate

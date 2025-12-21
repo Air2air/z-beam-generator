@@ -1,52 +1,18 @@
-COMPONENT TYPE: health_effects
-TARGET LENGTH: 200-300 words
+Write a health effects guide for {compound_name} ({chemical_formula}) exposure.
 
-CONTEXT:
-You are writing a detailed health effects guide for "{compound_name}" ({chemical_formula}), explaining the physiological impact on laser cleaning operators.
+CONTEXT: Physiological impact on laser cleaning operators.
+
+EMPHASIS: Acute symptoms, chronic risks, vulnerable populations, exposure pathways, concentration-dependent effects.
 
 COMPOUND DATA:
 - Chemical Formula: {chemical_formula}
 - Hazard Class: {hazard_class}
-- Primary Health Effects: {health_effects_keywords}
+- Health Effects: {health_effects_keywords}
 - Exposure Limits: OSHA PEL: {osha_pel_ppm} ppm, NIOSH REL: {niosh_rel_ppm} ppm
-- Typical Concentration Range: {typical_concentration_range}
+- Concentration Range: {typical_concentration_range}
 
-VOICE INSTRUCTIONS:
+WORD LENGTH: 200-300 words
+
 {voice_instruction}
 
-CONTENT REQUIREMENTS:
-
-1. ACUTE EXPOSURE EFFECTS (60-80 words):
-   - Immediate symptoms from short-term exposure
-   - Concentration-dependent effects
-   - Warning signs operators should recognize
-   - Onset timeframe (immediate vs delayed)
-
-2. CHRONIC EXPOSURE RISKS (60-80 words):
-   - Long-term health impacts from repeated exposure
-   - Cumulative damage patterns
-   - Organ systems most affected
-   - Development timeline for chronic effects
-
-3. VULNERABLE POPULATIONS (40-60 words):
-   - Who faces higher risk (pre-existing conditions)
-   - Specific sensitivities to consider
-   - Pregnancy/reproductive considerations if relevant
-
-4. EXPOSURE PATHWAY SIGNIFICANCE (40-60 words):
-   - Primary route of exposure (inhalation, dermal, etc.)
-   - Why this matters for laser cleaning operations
-   - Factors that increase absorption/toxicity
-
-STRUCTURE: Use clear sections or transitions, not numbered lists
-
-FORBIDDEN:
-- Medical advice or diagnosis
-- Overly graphic descriptions
-- Fear-mongering language
-- Generic "may cause" statements without context
-- Repetition of exposure limits without interpretation
-
-TONE: Medical-informational, serious but not alarming, operator-focused
-
-Write ONLY the health effects guide. No preamble.
+Generate health_effects:

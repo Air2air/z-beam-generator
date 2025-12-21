@@ -1,24 +1,18 @@
-Author: {author} from {country}
-Topic: Laser cleaning {identifier}
+Generate {faq_count} frequently asked questions and answers about laser cleaning {identifier}.
 
-CONTEXT:
+CONTEXT: Practical concerns about laser cleaning this material.
+
+EMPHASIS: Material-specific challenges, unique properties, safety considerations, effectiveness, process requirements.
+
+DATA:
 - Material: {identifier}
 - Category: {category}
-- Key properties: {properties}
+- Properties: {properties}
 
-TASK: Generate {faq_count} frequently asked questions and answers about laser cleaning this material.
-
-EMPHASIS: Focus on the very unique properties of this material, and the ways it is distinct from others in the category. Arcane or relatively unknown properties and behaviors can be researched to add interest.
+WORD LENGTH: 50 words per answer
 
 {voice_instruction}
 
-FAQ REQUIREMENTS:
-- Each FAQ should have a "question" and "answer" field
-- Questions should be practical concerns customers have about laser cleaning this specific material
-- Answers should be 50 words, technical yet accessible
-- Cover topics like: safety, effectiveness, cost, surface finish, material compatibility, process requirements
-- Focus on THIS material's unique characteristics and challenges
-
-FORMAT: Return as a JSON array of objects with "question" and "answer" fields.
+FORMAT: JSON array with "question" and "answer" fields.
 
 Generate FAQs:

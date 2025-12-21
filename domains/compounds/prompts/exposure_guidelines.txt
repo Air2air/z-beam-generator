@@ -1,52 +1,21 @@
-COMPONENT TYPE: exposure_guidelines
-TARGET LENGTH: 150-250 words
+Write exposure guidelines for {compound_name} ({chemical_formula}) in laser cleaning.
 
-CONTEXT:
-You are writing practical exposure guidelines for "{compound_name}" ({chemical_formula}) to help laser cleaning operators stay within safe limits.
+CONTEXT: Practical limits and controls for operator safety.
+
+EMPHASIS: Regulatory limits, engineering controls, PPE requirements, monitoring strategy.
 
 COMPOUND DATA:
 - Chemical Formula: {chemical_formula}
 - Hazard Class: {hazard_class}
 - Exposure Limits: OSHA PEL: {osha_pel_ppm} ppm, NIOSH REL: {niosh_rel_ppm} ppm, ACGIH TLV: {acgih_tlv_mg_m3} mg/m³
-- Typical Concentration: {typical_concentration_range}
+- Concentration Range: {typical_concentration_range}
 - Monitoring Required: {monitoring_required}
 
-VOICE INSTRUCTIONS:
+WORD LENGTH: 150-250 words
+
 {voice_instruction}
 
-CONTENT REQUIREMENTS:
-
-1. REGULATORY LIMITS INTERPRETATION (40-60 words):
-   - What OSHA PEL, NIOSH REL, ACGIH TLV mean in practice
-   - Which limit is most protective (recommend following strictest)
-   - Time-weighted average (8-hour vs short-term)
-   - Margin of safety in typical laser cleaning scenarios
-
-2. ENGINEERING CONTROLS (50-80 words):
-   - Primary control methods (ventilation specifics)
-   - Capture velocity requirements
-   - HEPA vs carbon filtration effectiveness for this compound
-   - Work area isolation recommendations
-
-3. PPE REQUIREMENTS (40-60 words):
-   - Respiratory protection (specific cartridge types)
-   - When respirator is mandatory vs optional
-   - Eye/skin protection if relevant
-   - Fit testing requirements
-
-4. MONITORING STRATEGY (30-50 words):
-   - When air monitoring is needed
-   - Detection methods available
-   - Frequency of testing
-   - Action levels that trigger intervention
-
-STRUCTURE: Natural paragraphs with practical guidance flow
-
-FORBIDDEN:
-- Just listing exposure limits without interpretation
-- Generic "wear PPE" without specifics
-- Regulatory quotes without practical translation
-- Assuming monitoring equipment availability
+Generate exposure_guidelines:
 
 TONE: Practical, compliance-focused, operator safety oriented
 

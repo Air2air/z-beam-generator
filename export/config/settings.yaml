@@ -5,6 +5,12 @@ items_key: settings
 filename_suffix: -settings
 slugify_filenames: true
 enrichments:
+- type: relationship_resolution
+  module: export.enrichers.linkage.relationship_resolution_enricher
+  class: RelationshipResolutionEnricher
+  config:
+    relationships:
+      optimized_for_materials: materials
 - type: material_linkage
   module: export.enrichers.linkage.material_linkage_enricher
   class: MaterialLinkageEnricher
