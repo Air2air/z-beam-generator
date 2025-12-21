@@ -5,13 +5,7 @@ items_key: contamination_patterns
 id_field: id
 filename_suffix: ''
 enrichments:
-- type: relationship_resolution
-  module: export.enrichers.linkage.relationship_resolution_enricher
-  class: RelationshipResolutionEnricher
-  config:
-    relationships:
-      found_on_materials: materials
-      produces_compounds: compounds
+
 - type: universal_restructure
   module: export.enrichers.universal.universal_restructure_enricher
   class: UniversalRestructureEnricher

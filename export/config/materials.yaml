@@ -4,12 +4,6 @@ output_path: ../z-beam/frontmatter/materials
 items_key: materials
 filename_suffix: ''
 enrichments:
-- type: relationship_resolution
-  module: export.enrichers.linkage.relationship_resolution_enricher
-  class: RelationshipResolutionEnricher
-  config:
-    relationships:
-      contaminated_by: contaminants
 - type: universal_restructure
   module: export.enrichers.universal.universal_restructure_enricher
   class: UniversalRestructureEnricher
@@ -87,14 +81,6 @@ enrichments:
 - type: author
   module: export.enrichers.metadata.author_enricher
   class: AuthorEnricher
-- type: relationships
-  module: export.enrichers.relationships.relationships_enricher
-  class: RelationshipsEnricher
-  domain: materials
-- type: relationship_grouping
-  module: export.enrichers.grouping.relationship_grouping_enricher
-  class: RelationshipGroupingEnricher
-  domain: materials
 - type: breadcrumb
   module: export.enrichers.navigation.breadcrumb_enricher
   class: BreadcrumbEnricher

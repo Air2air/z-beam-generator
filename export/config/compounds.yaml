@@ -6,12 +6,6 @@ id_field: id
 filename_suffix: -compound
 sluggify_filenames: true
 enrichments:
-- type: relationship_resolution
-  module: export.enrichers.linkage.relationship_resolution_enricher
-  class: RelationshipResolutionEnricher
-  config:
-    relationships:
-      produced_from_contaminants: contaminants
 - type: universal_restructure
   module: export.enrichers.universal.universal_restructure_enricher
   class: UniversalRestructureEnricher
