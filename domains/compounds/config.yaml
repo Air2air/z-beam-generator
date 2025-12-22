@@ -6,17 +6,23 @@ domain:
   display_name: "Hazardous Compounds"
   description: "Chemical compounds generated during laser cleaning operations"
   version: "1.0.0"
+
+# Frontmatter filename pattern
+frontmatter_filename_pattern: "{slug}-compound.yaml"
+
+# Data path (normalized with other domains)
+data_path: "data/compounds/Compounds.yaml"
   
 # Content types that can be generated for compounds
 component_types:
-  compound_description:
+  description:
     display_name: "Compound Description"
     enabled: true
     default_length: 150  # Target word count (120-180 words)
     min_length: 120
     max_length: 180
     extraction_strategy: raw
-    prompt_template: "compound_description.txt"
+    prompt_template: "description.txt"
     
   health_effects:
     display_name: "Health Effects Guide"
@@ -82,7 +88,7 @@ authors:
 
 # Component extraction strategies (required for generation)
 component_extraction:
-  compound_description:
+  description:
     extraction_strategy: raw
   health_effects:
     extraction_strategy: raw

@@ -86,10 +86,13 @@ def get_data_loader(domain: DomainName) -> DataLoaderType:
             _loaders[domain] = ContaminantsDataLoader()
         elif domain == 'settings':
             _loaders[domain] = SettingsDataLoader()
+        elif domain == 'compounds':
+            from domains.compounds.data_loader_v2 import CompoundsDataLoader
+            _loaders[domain] = CompoundsDataLoader()
         else:
             raise ValueError(
                 f"Unknown domain: {domain}. "
-                f"Valid domains: 'materials', 'contaminants', 'settings'"
+                f"Valid domains: 'materials', 'contaminants', 'settings', 'compounds'"
             )
     
     return _loaders[domain]

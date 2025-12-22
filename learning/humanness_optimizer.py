@@ -120,13 +120,15 @@ class HumannessOptimizer:
         # Settings_description also needs compact to avoid exceeding limits
         # Description field needs compact to prevent prompt bloat (full version causes 12k+ char prompts)
         # Contaminant descriptions need compact to prevent voice override issues
+        # Compound_description also needs compact (9,600 char prompts exceed 8,000 limit)
         self.compact_components = {
             'micro', 
             'settings_description', 
             'component_summaries', 
             'description',
             'description',  # Generic description component (used by contaminants, materials, settings)
-            'frontmatter_description'  # Frontmatter-specific descriptions
+            'frontmatter_description',  # Frontmatter-specific descriptions
+            'description'  # Compound descriptions (added Dec 21, 2025)
         }
         
         # Load configuration for randomization targets (fail-fast)

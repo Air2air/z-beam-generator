@@ -57,7 +57,7 @@ FIELD_ORDER = [
     # CONTENT (type-specific)
     'contamination_description',
     'description',
-    'compound_description',
+    'description',
     'description',
     'micro',
     

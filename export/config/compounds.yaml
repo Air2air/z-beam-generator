@@ -95,6 +95,10 @@ enrichments:
   template: "{name}"
   use_display_name: true
   skip_if_exists: true
+- type: relationship_urls
+  module: export.enrichers.relationships.relationship_url_enricher
+  class: RelationshipURLEnricher
+  description: Adds url field to all relationship items based on target's full_path
 library_enrichments:
   enabled: true
   enrichments:
@@ -123,13 +127,13 @@ generators:
 - type: seo_description
   module: shared.generation.seo_description_generator
   class: SEODescriptionGenerator
-  source_field: compound_description
+  source_field: description
   output_field: seo_description
   max_length: 160
 - type: excerpt
   module: shared.generation.excerpt_generator
   class: ExcerptGenerator
-  source_field: compound_description
+  source_field: description
   output_field: micro
   mode: sentences
   length: 2
@@ -138,4 +142,5 @@ enrichers:
   enabled: true
   config:
     relationship_types:
-    - produced_by_materials
+    - produced_from_materials
+    - produced_from_contaminants

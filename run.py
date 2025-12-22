@@ -32,7 +32,7 @@ def postprocess_command(args):
         print("   Materials: description, micro, faq")
         print("   Contaminants: description, micro, faq")
         print("   Settings: settings_description, challenges")
-        print("   Compounds: compound_description, health_effects, exposure_guidelines")
+        print("   Compounds: description, health_effects, exposure_guidelines")
         sys.exit(1)
     
     # Create postprocess command

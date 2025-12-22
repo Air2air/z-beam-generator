@@ -79,7 +79,7 @@ class CompoundCoordinator:
         
         Args:
             compound_id: Compound identifier (e.g., "formaldehyde")
-            component_type: Type of content to generate (e.g., "compound_description")
+            component_type: Type of content to generate (e.g., "description")
             force_regenerate: Whether to regenerate even if content exists
             
         Returns:
