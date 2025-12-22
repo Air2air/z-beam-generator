@@ -219,99 +219,85 @@ compounds:
         severity: high
         typical_context: Incomplete combustion of organic adhesives
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: paint-residue-contamination
         frequency: very_common
         severity: high
         typical_context: Combustion of paint binders and solvents
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: rubber-residue-contamination
         frequency: very_common
         severity: high
         typical_context: Pyrolysis of rubber polymers
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: annealing-scale-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Heat Treatment Scale
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: bitumen-tar-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Bitumen and Tar Coatings
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: carbon-buildup-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Carbon Deposit Buildup
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: carbon-soot-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Carbon Soot Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: diamond-coating-contamination
         frequency: unknown
         severity: high
         typical_context: Laser removal of Diamond-Like Carbon Removal
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: epoxy-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Epoxy Resin Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: graphite-marks-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Graphite Deposit Traces
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: hydraulic-fluid-contamination
         frequency: unknown
         severity: high
         typical_context: Laser removal of Hydraulic Fluid Contamination
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: industrial-oil-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Industrial Oil / Grease Buildup
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: pcb-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of PCB Oil Contamination
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: quench-oil-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Quenching Oil Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
   formaldehyde:
     id: formaldehyde
     full_path: /compounds/carcinogen/aldehyde/formaldehyde-compound
@@ -537,29 +523,25 @@ compounds:
         severity: moderate
         typical_context: Thermal breakdown of formaldehyde-based adhesives
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: wood-rot-contamination
         frequency: common
         severity: moderate
         typical_context: Decomposition of wood compounds
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: paint-residue-contamination
         frequency: occasional
         severity: moderate
         typical_context: Breakdown of melamine or urea-formaldehyde resins
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: epoxy-residue-contamination
         frequency: occasional
         severity: low
         typical_context: Thermal degradation of certain epoxy formulations
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       produced_from_materials:
       - id: ceramic-matrix-composites-cmcs-laser-cleaning
         presentation: card
@@ -811,36 +793,31 @@ compounds:
         severity: high
         typical_context: Thermal breakdown of aromatic paint solvents
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: rubber-residue-contamination
         frequency: common
         severity: high
         typical_context: Pyrolysis of styrene-butadiene rubber
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: plastic-residue-contamination
         frequency: common
         severity: high
         typical_context: Thermal decomposition of polystyrene and aromatic polymers
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: industrial-oil-contamination
         frequency: occasional
         severity: moderate
         typical_context: Thermal breakdown of aromatic hydrocarbons
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: cutting-fluid-contamination
         frequency: occasional
         severity: moderate
         typical_context: Decomposition of aromatic additives
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
   pahs:
     id: pahs
     full_path: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
@@ -914,57 +891,49 @@ compounds:
         severity: high
         typical_context: Vaporization and reformation of existing PAHs
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: carbon-soot-contamination
         frequency: very_common
         severity: high
         typical_context: Pre-existing PAHs from incomplete combustion
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: fire-damage-contamination
         frequency: very_common
         severity: high
         typical_context: Pre-existing PAHs from fire events
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: rubber-residue-contamination
         frequency: common
         severity: high
         typical_context: Pyrolysis produces PAHs
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: paint-residue-contamination
         frequency: common
         severity: moderate
         typical_context: Incomplete combustion of organic binders
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: plastic-residue-contamination
         frequency: common
         severity: moderate
         typical_context: Thermal degradation of aromatic polymers
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: bitumen-tar-contamination
         frequency: very_common
         severity: high
         typical_context: Bitumen is rich in PAHs
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: exhaust-residue-contamination
         frequency: unknown
         severity: high
         typical_context: Laser removal of Exhaust System Deposits
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
   hydrogen-cyanide:
     id: hydrogen-cyanide
     full_path: /compounds/toxic-gas/cyanide/hydrogen-cyanide-compound
@@ -1194,22 +1163,19 @@ compounds:
         severity: high
         typical_context: Thermal decomposition of nitrogen-containing polymers (polyurethane, nylon, acrylics)
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: rubber-residue-contamination
         frequency: occasional
         severity: high
         typical_context: Pyrolysis of nitrile rubber
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: adhesive-residue-contamination
         frequency: occasional
         severity: moderate
         typical_context: Breakdown of cyanoacrylate adhesives
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       produced_from_materials:
       - id: ceramic-matrix-composites-cmcs-laser-cleaning
         presentation: card
@@ -1447,22 +1413,19 @@ compounds:
         severity: moderate
         typical_context: PET and PVC thermal degradation
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: adhesive-residue-contamination
         frequency: common
         severity: moderate
         typical_context: EVA and acrylic adhesive breakdown
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: paint-residue-contamination
         frequency: occasional
         severity: low
         typical_context: Acrylic paint thermal degradation
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       produced_from_materials:
       - id: ceramic-matrix-composites-cmcs-laser-cleaning
         presentation: card
@@ -1698,29 +1661,25 @@ compounds:
         severity: high
         typical_context: Thermal decomposition of fats and oils
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: quench-oil-contamination
         frequency: common
         severity: high
         typical_context: Thermal decomposition of quenching oils
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: cutting-fluid-contamination
         frequency: common
         severity: high
         typical_context: Thermal breakdown of oil-based cutting fluids
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: plastic-residue-contamination
         frequency: occasional
         severity: moderate
         typical_context: Pyrolysis of certain polymers
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       produced_from_materials:
       - id: ceramic-matrix-composites-cmcs-laser-cleaning
         presentation: card
@@ -1940,15 +1899,13 @@ compounds:
         severity: high
         typical_context: PVC thermal decomposition
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: adhesive-residue-contamination
         frequency: occasional
         severity: moderate
         typical_context: Chlorinated adhesive breakdown
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       produced_from_materials:
       - id: ceramic-matrix-composites-cmcs-laser-cleaning
         presentation: card
@@ -2187,29 +2144,25 @@ compounds:
         severity: moderate
         typical_context: Vaporization of toluene-based paint solvents
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: graffiti-paint-contamination
         frequency: common
         severity: moderate
         typical_context: Release of toluene from spray paint
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: adhesive-residue-contamination
         frequency: common
         severity: moderate
         typical_context: Release of toluene from adhesive formulations
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: rubber-residue-contamination
         frequency: occasional
         severity: low
         typical_context: Thermal breakdown of aromatic rubber compounds
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       produced_from_materials:
       - id: ceramic-matrix-composites-cmcs-laser-cleaning
         presentation: card
@@ -2445,15 +2398,13 @@ compounds:
         severity: high
         typical_context: Thermal depolymerization of polystyrene
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: rubber-residue-contamination
         frequency: common
         severity: moderate
         typical_context: Pyrolysis of styrene-butadiene rubber
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       produced_from_materials:
       - id: ceramic-matrix-composites-cmcs-laser-cleaning
         presentation: card
@@ -2678,36 +2629,31 @@ compounds:
         severity: high
         typical_context: Vaporization from galvanized coatings
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: zinc-plating-contamination
         frequency: very_common
         severity: high
         typical_context: Direct vaporization of zinc electroplating
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: brass-plating-contamination
         frequency: common
         severity: moderate
         typical_context: Zinc component of brass alloy
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: paint-residue-contamination
         frequency: occasional
         severity: low
         typical_context: Zinc oxide pigments in paint
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: battery-corrosion-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Battery Leakage Corrosion
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
   iron-oxide:
     id: iron-oxide
     full_path: /compounds/metal-fume/metal-oxide/iron-oxide-compound
@@ -2907,57 +2853,49 @@ compounds:
         severity: high
         typical_context: Vaporization of iron oxide
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: annealing-scale-contamination
         frequency: very_common
         severity: high
         typical_context: Iron oxide layer from heat treatment
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: forging-scale-contamination
         frequency: very_common
         severity: high
         typical_context: Iron oxide scale from forging operations
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: brake-dust-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Brake Pad Dust Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: mineral-stain-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Mineral Staining
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: pickling-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Acid Pickling Stains
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: steel-corrosion-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Steel Surface Corrosion
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: steel-corrosion-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Steel Surface Corrosion
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
   chromium-vi:
     id: chromium-vi
     full_path: /compounds/carcinogen/heavy-metal/chromium-vi-compound
@@ -3184,29 +3122,25 @@ compounds:
         severity: high
         typical_context: Oxidation of chromium creates Cr(VI)
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: steel-corrosion-contamination
         frequency: common
         severity: high
         typical_context: Oxidation of chromium in stainless steel
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: paint-residue-contamination
         frequency: occasional
         severity: high
         typical_context: Chromate pigments in some paints
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: conversion-coating-contamination
         frequency: unknown
         severity: high
         typical_context: Laser removal of Chemical Conversion Coating
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       produced_from_materials:
       - id: chromium-laser-cleaning
         presentation: card
@@ -3437,57 +3371,49 @@ compounds:
         severity: low
         typical_context: High-temperature iron oxide reactions with nitrogen
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: algae-growth-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Algae and Lichen Growth
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: blood-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Biological Blood Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: electroplating-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Electroplating Solution Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: fertilizer-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Fertilizer Salt Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: insect-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Insect Impact Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: pesticide-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Pesticide Chemical Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: pharmaceutical-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Pharmaceutical Drug Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
   sulfur-dioxide:
     id: sulfur-dioxide
     full_path: /compounds/toxic-gas/acid-gas/sulfur-dioxide-compound
@@ -3692,15 +3618,13 @@ compounds:
         severity: moderate
         typical_context: Vulcanized rubber contains sulfur compounds
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: industrial-oil-contamination
         frequency: occasional
         severity: low
         typical_context: Sulfur additives in some lubricants
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       produced_from_materials:
       - id: cast-iron-laser-cleaning
         presentation: card
@@ -3928,8 +3852,7 @@ compounds:
         severity: high
         typical_context: Thermal breakdown of certain chlorinated plastics
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       produced_from_materials:
       - id: ceramic-matrix-composites-cmcs-laser-cleaning
         presentation: card
@@ -4156,8 +4079,7 @@ compounds:
         severity: low
         typical_context: Breakdown of proteins
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       produced_from_materials:
       - id: ceramic-matrix-composites-cmcs-laser-cleaning
         presentation: card
@@ -4368,498 +4290,427 @@ compounds:
         severity: low
         typical_context: Complete combustion of organic paint
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: plastic-residue-contamination
         frequency: very_common
         severity: low
         typical_context: Complete combustion of polymers
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: rubber-residue-contamination
         frequency: very_common
         severity: low
         typical_context: Complete combustion of rubber
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: adhesive-residue-contamination
         frequency: very_common
         severity: low
         typical_context: Complete combustion of adhesives
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: industrial-oil-contamination
         frequency: very_common
         severity: low
         typical_context: Complete combustion of hydrocarbons
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: algae-growth-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Algae and Lichen Growth
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: anti-seize-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Anti-Seize Compound
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: aviation-sealant-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Aerospace Sealant Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: biological-stains-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Organic Biofilm Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: bitumen-tar-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Bitumen and Tar Coatings
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: blood-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Biological Blood Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: bronze-patina-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Bronze Patina and Corrosion
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: carbon-buildup-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Carbon Deposit Buildup
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: carbon-soot-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Carbon Soot Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: chemical-stains-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Chemical Stains / Acid Etching
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: concrete-dust-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Concrete Dust Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: conversion-coating-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Chemical Conversion Coating
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: coolant-scale-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Engine Coolant Scale
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: copper-patina-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Copper Patina / Verdigris
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: corrosion-inhibitor-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Corrosion Inhibitor Coating
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: cutting-fluid-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Machining Coolant Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: diamond-coating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Diamond-Like Carbon Removal
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: efflorescence-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Concrete Efflorescence
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: electroplating-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Electroplating Solution Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: environmental-dust-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Environmental Dust Layer
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: epoxy-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Epoxy Resin Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: exhaust-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Exhaust System Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: fire-damage-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Fire and Smoke Damage
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: forging-scale-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Forging Mill Scale
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: fuel-varnish-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Fuel System Varnish
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: galvanize-corrosion-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of White Rust on Galvanized Steel
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: gasket-material-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Gasket Material Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: graffiti-paint-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Graffiti and Spray Paint
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: graphite-marks-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Graphite Deposit Traces
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: grease-deposits-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Heavy Machinery Grease
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: hydraulic-fluid-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Hydraulic Fluid Contamination
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: ink-stains-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Printing Ink Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: insect-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Insect Impact Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: laser-marking-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Laser Marking Discoloration
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: lead-paint-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Lead-Based Paint Removal
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: lime-scale-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Limescale Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: medical-disinfectant-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Medical Disinfectant Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: metal-polish-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Metal Polish Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: mineral-deposits-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Hard Water Mineral Scale
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: mineral-stain-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Mineral Staining
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: mold-mildew-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Mold and Mildew Growth
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: pcb-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of PCB Oil Contamination
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: pesticide-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Pesticide Chemical Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: pharmaceutical-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Pharmaceutical Drug Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: pickling-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Acid Pickling Stains
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: pollen-deposit-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Pollen Accumulation
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: powder-coating-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Powder Coating Buildup
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: primer-coating-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Paint Primer Layers
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: quench-oil-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Quenching Oil Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: radioactive-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Surface Radioactive Contamination
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: road-grime-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Automotive Road Grime
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: scale-buildup-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Mineral Scale / Hard Water Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: semiconductor-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Semiconductor Processing Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: silicone-buildup-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Silicone Sealant Buildup
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: soap-scum-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Soap Scum Buildup
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: solder-flux-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Soldering Flux Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: steel-corrosion-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Steel Surface Corrosion
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: surgical-marking-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Surgical Ink Markings
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: thermal-paste-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Thermal Compound Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: thread-locker-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Threadlocker Adhesive
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: tree-sap-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Tree Sap and Resin
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: undercoating-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Automotive Undercoating
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: uv-chalking-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of UV Photodegradation / Polymer Chalking
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: water-stain-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Water Staining and Marks
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: wax-buildup-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Wax Coating Buildup
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: wood-rot-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Wood Rot / Fungal Biodegradation
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
   vocs:
     id: vocs
     full_path: /compounds/irritant/organic-vapor/vocs-compound
@@ -5064,162 +4915,139 @@ compounds:
         severity: moderate
         typical_context: Vaporization of paint solvents and binders
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: graffiti-paint-contamination
         frequency: very_common
         severity: moderate
         typical_context: Release of spray paint solvents
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: adhesive-residue-contamination
         frequency: very_common
         severity: moderate
         typical_context: Release of adhesive solvents
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: industrial-oil-contamination
         frequency: very_common
         severity: moderate
         typical_context: Vaporization of hydrocarbon compounds
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: silicone-buildup-contamination
         frequency: common
         severity: moderate
         typical_context: Thermal breakdown of silicone polymers
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: rubber-residue-contamination
         frequency: common
         severity: moderate
         typical_context: Pyrolysis products
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: plastic-residue-contamination
         frequency: common
         severity: moderate
         typical_context: Thermal decomposition products
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: anti-seize-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Anti-Seize Compound
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: biological-stains-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Organic Biofilm Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: cutting-fluid-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Machining Coolant Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: epoxy-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Epoxy Resin Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: fuel-varnish-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Fuel System Varnish
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: gasket-material-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Gasket Material Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: grease-deposits-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Heavy Machinery Grease
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: ink-stains-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Printing Ink Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: pcb-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of PCB Oil Contamination
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: powder-coating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Powder Coating Buildup
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: primer-coating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Paint Primer Layers
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: quench-oil-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Quenching Oil Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: solder-flux-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Soldering Flux Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: tree-sap-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Tree Sap and Resin
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: uv-chalking-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of UV Photodegradation / Polymer Chalking
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: wood-rot-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Wood Rot / Fungal Biodegradation
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
   benzoapyrene:
     id: benzoapyrene
     full_path: /compounds/carcinogen/polycyclic-aromatic-hydrocarbon/benzoapyrene-compound
@@ -5432,36 +5260,31 @@ compounds:
         severity: high
         typical_context: Pre-existing from incomplete combustion
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: carbon-soot-contamination
         frequency: common
         severity: high
         typical_context: Formed during original combustion event
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: fire-damage-contamination
         frequency: common
         severity: high
         typical_context: Formed during fire events
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: bitumen-tar-contamination
         frequency: common
         severity: high
         typical_context: Naturally present in bitumen/asphalt
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: rubber-residue-contamination
         frequency: occasional
         severity: moderate
         typical_context: Formed during high-temperature pyrolysis
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
   water-vapor:
     id: water-vapor
     full_path: /compounds/vapor/water-vapor-compound
@@ -5496,421 +5319,361 @@ compounds:
         severity: low
         typical_context: Laser removal of Adhesive Residue / Tape Marks
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: algae-growth-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Algae and Lichen Growth
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: anti-seize-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Anti-Seize Compound
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: asbestos-coating-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Asbestos-Containing Material
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: aviation-sealant-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Aerospace Sealant Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: biological-stains-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Organic Biofilm Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: bitumen-tar-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Bitumen and Tar Coatings
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: blood-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Biological Blood Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: chemical-stains-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Chemical Stains / Acid Etching
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: coolant-scale-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Engine Coolant Scale
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: copper-patina-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Copper Patina / Verdigris
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: corrosion-inhibitor-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Corrosion Inhibitor Coating
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: cutting-fluid-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Machining Coolant Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: efflorescence-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Concrete Efflorescence
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: electroplating-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Electroplating Solution Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: environmental-dust-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Environmental Dust Layer
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: epoxy-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Epoxy Resin Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: exhaust-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Exhaust System Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: fertilizer-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Fertilizer Salt Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: fire-damage-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Fire and Smoke Damage
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: fuel-varnish-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Fuel System Varnish
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: gasket-material-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Gasket Material Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: graffiti-paint-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Graffiti and Spray Paint
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: grease-deposits-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Heavy Machinery Grease
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: hydraulic-fluid-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Hydraulic Fluid Contamination
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: industrial-oil-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Industrial Oil / Grease Buildup
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: ink-stains-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Printing Ink Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: insect-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Insect Impact Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: laser-marking-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Laser Marking Discoloration
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: lead-paint-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Lead-Based Paint Removal
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: medical-disinfectant-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Medical Disinfectant Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: metal-polish-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Metal Polish Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: mineral-stain-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Mineral Staining
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: mold-mildew-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Mold and Mildew Growth
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: paint-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Paint Residue / Coating Failure
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: pcb-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of PCB Oil Contamination
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: pesticide-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Pesticide Chemical Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: pharmaceutical-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Pharmaceutical Drug Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: pickling-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Acid Pickling Stains
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: plastic-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Degraded Polymer Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: pollen-deposit-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Pollen Accumulation
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: powder-coating-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Powder Coating Buildup
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: primer-coating-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Paint Primer Layers
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: quench-oil-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Quenching Oil Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: radioactive-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Surface Radioactive Contamination
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: road-grime-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Automotive Road Grime
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: rubber-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Rubber Compound Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: semiconductor-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Semiconductor Processing Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: silicone-buildup-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Silicone Sealant Buildup
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: soap-scum-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Soap Scum Buildup
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: solder-flux-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Soldering Flux Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: surgical-marking-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Surgical Ink Markings
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: thermal-paste-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Thermal Compound Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: thread-locker-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Threadlocker Adhesive
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: tree-sap-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Tree Sap and Resin
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: undercoating-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Automotive Undercoating
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: uv-chalking-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of UV Photodegradation / Polymer Chalking
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: water-stain-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Water Staining and Marks
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: wax-buildup-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Wax Coating Buildup
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: wood-rot-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Wood Rot / Fungal Biodegradation
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
   carbon-particulates:
     id: carbon-particulates
     full_path: /compounds/particulate/carbon-particulates-compound
@@ -5946,211 +5709,181 @@ compounds:
         severity: moderate
         typical_context: Laser removal of Adhesive Residue / Tape Marks
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: biological-stains-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Organic Biofilm Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: bitumen-tar-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Bitumen and Tar Coatings
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: carbon-buildup-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Carbon Deposit Buildup
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: carbon-soot-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Carbon Soot Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: diamond-coating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Diamond-Like Carbon Removal
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: epoxy-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Epoxy Resin Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: exhaust-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Exhaust System Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: fire-damage-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Fire and Smoke Damage
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: fuel-varnish-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Fuel System Varnish
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: gasket-material-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Gasket Material Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: graffiti-paint-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Graffiti and Spray Paint
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: graphite-marks-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Graphite Deposit Traces
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: hydraulic-fluid-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Hydraulic Fluid Contamination
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: industrial-oil-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Industrial Oil / Grease Buildup
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: ink-stains-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Printing Ink Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: laser-marking-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Laser Marking Discoloration
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: mercury-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Mercury Spill Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: pcb-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of PCB Oil Contamination
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: plastic-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Degraded Polymer Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: powder-coating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Powder Coating Buildup
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: primer-coating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Paint Primer Layers
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: rubber-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Rubber Compound Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: soap-scum-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Soap Scum Buildup
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: surgical-marking-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Surgical Ink Markings
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: teflon-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of PTFE Coating Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: thermal-paste-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Thermal Compound Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: tree-sap-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Tree Sap and Resin
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: uv-chalking-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of UV Photodegradation / Polymer Chalking
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: wax-buildup-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Wax Coating Buildup
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
   carbon-ash:
     id: carbon-ash
     full_path: /compounds/particulate/carbon-ash-compound
@@ -6186,134 +5919,115 @@ compounds:
         severity: moderate
         typical_context: Laser removal of Algae and Lichen Growth
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: anti-seize-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Anti-Seize Compound
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: aviation-sealant-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Aerospace Sealant Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: blood-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Biological Blood Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: brake-dust-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Brake Pad Dust Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: corrosion-inhibitor-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Corrosion Inhibitor Coating
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: cutting-fluid-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Machining Coolant Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: grease-deposits-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Heavy Machinery Grease
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: insect-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Insect Impact Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: paint-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Paint Residue / Coating Failure
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: pesticide-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Pesticide Chemical Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: pharmaceutical-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Pharmaceutical Drug Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: pollen-deposit-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Pollen Accumulation
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: quench-oil-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Quenching Oil Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: road-grime-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Automotive Road Grime
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: solder-flux-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Soldering Flux Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: thread-locker-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Threadlocker Adhesive
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: undercoating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Automotive Undercoating
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: wood-rot-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Wood Rot / Fungal Biodegradation
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
   metal-oxides-mixed:
     id: metal-oxides-mixed
     full_path: /compounds/particulate/metal-oxides-mixed-compound
@@ -6350,92 +6064,79 @@ compounds:
         severity: moderate
         typical_context: Laser removal of Anti-Seize Compound
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: ceramic-coating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Ceramic Heat Barrier Coating
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: chemical-stains-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Chemical Stains / Acid Etching
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: conversion-coating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Chemical Conversion Coating
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: electroplating-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Electroplating Solution Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: fertilizer-residue-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Fertilizer Salt Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: metal-polish-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Metal Polish Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: passivation-defect-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Passivation Layer Irregularities
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: pickling-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Acid Pickling Stains
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: plasma-spray-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Thermal Spray Coating
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: pvd-coating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of PVD Coating Defects
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: radioactive-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Surface Radioactive Contamination
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: undercoating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Automotive Undercoating
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
   nanoparticulates:
     id: nanoparticulates
     full_path: /compounds/particulate/nanoparticulates-compound
@@ -6471,57 +6172,49 @@ compounds:
         severity: high
         typical_context: Laser removal of Ceramic Heat Barrier Coating
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: ceramic-glaze-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Ceramic Glaze Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: concrete-dust-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Concrete Dust Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: environmental-dust-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Environmental Dust Layer
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: passivation-defect-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Passivation Layer Irregularities
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: pvd-coating-contamination
         frequency: unknown
         severity: high
         typical_context: Laser removal of PVD Coating Defects
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: semiconductor-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Semiconductor Processing Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: thermal-paste-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Thermal Compound Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
   organic-residues:
     id: organic-residues
     full_path: /compounds/particulate/organic-residues-compound
@@ -6557,113 +6250,97 @@ compounds:
         severity: moderate
         typical_context: Laser removal of Aerospace Sealant Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: brake-dust-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Brake Pad Dust Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: coolant-scale-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Engine Coolant Scale
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: corrosion-inhibitor-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Corrosion Inhibitor Coating
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: environmental-dust-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Environmental Dust Layer
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: hydraulic-fluid-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Hydraulic Fluid Contamination
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: medical-disinfectant-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Medical Disinfectant Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: metal-polish-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Metal Polish Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: mold-mildew-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Mold and Mildew Growth
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: pollen-deposit-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Pollen Accumulation
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: rubber-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Rubber Compound Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: semiconductor-residue-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Semiconductor Processing Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: soap-scum-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Soap Scum Buildup
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: thread-locker-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Threadlocker Adhesive
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: undercoating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Automotive Undercoating
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: wax-buildup-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Wax Coating Buildup
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
   aluminum-oxide:
     id: aluminum-oxide
     full_path: /compounds/particulate/metal-oxide/aluminum-oxide-compound
@@ -6699,29 +6376,25 @@ compounds:
         severity: moderate
         typical_context: Laser removal of Aluminum Oxidation
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: aluminum-oxidation-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Aluminum Oxidation
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: anodizing-defects-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Anodizing Layer Irregularities
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: anodizing-defects-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Anodizing Layer Irregularities
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       produced_from_materials:
       - id: aluminum-bronze-laser-cleaning
         presentation: card
@@ -6769,64 +6442,55 @@ compounds:
         severity: moderate
         typical_context: Laser removal of Brake Pad Dust Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: brass-plating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Brass Coating Removal
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: bronze-patina-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Bronze Patina and Corrosion
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: bronze-patina-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Bronze Patina and Corrosion
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: copper-patina-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Copper Patina / Verdigris
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: copper-patina-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Copper Patina / Verdigris
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: copper-plating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Copper Electroplating
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: copper-plating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Copper Electroplating
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: copper-plating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Copper Electroplating
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
   silicon-dioxide:
     id: silicon-dioxide
     full_path: /compounds/particulate/mineral/silicon-dioxide-compound
@@ -6863,36 +6527,31 @@ compounds:
         severity: low
         typical_context: Laser removal of Asbestos-Containing Material
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: aviation-sealant-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Aerospace Sealant Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: mineral-stain-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Mineral Staining
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: road-grime-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Automotive Road Grime
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: silicone-buildup-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Silicone Sealant Buildup
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
   calcium-oxide:
     id: calcium-oxide
     full_path: /compounds/particulate/metal-oxide/calcium-oxide-compound
@@ -6929,64 +6588,55 @@ compounds:
         severity: low
         typical_context: Laser removal of Concrete Dust Deposits
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: coolant-scale-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Engine Coolant Scale
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: efflorescence-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Concrete Efflorescence
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: efflorescence-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Concrete Efflorescence
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: lime-scale-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Limescale Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: lime-scale-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Limescale Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: mineral-deposits-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Hard Water Mineral Scale
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: scale-buildup-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Mineral Scale / Hard Water Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: scale-buildup-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Mineral Scale / Hard Water Deposits
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
   tin-oxide:
     id: tin-oxide
     full_path: /compounds/particulate/metal-oxide/tin-oxide-compound
@@ -7021,29 +6671,25 @@ compounds:
         severity: moderate
         typical_context: Laser removal of Bronze Patina and Corrosion
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: tin-plating-contamination
         frequency: unknown
         severity: low
         typical_context: Laser removal of Tin Plating Residue
         presentation: card
-        level: low
-        valence: negative
+        intensity: slightly_negative
       - id: tin-plating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Tin Plating Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: tin-plating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Tin Plating Residue
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       produced_from_materials:
       - id: aluminum-bronze-laser-cleaning
         presentation: card
@@ -7093,22 +6739,19 @@ compounds:
         severity: high
         typical_context: Laser removal of Lead-Based Paint Removal
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: lead-paint-contamination
         frequency: unknown
         severity: high
         typical_context: Laser removal of Lead-Based Paint Removal
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: lead-paint-contamination
         frequency: unknown
         severity: high
         typical_context: Laser removal of Lead-Based Paint Removal
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       produced_from_materials:
       - id: aluminum-bronze-laser-cleaning
         presentation: card
@@ -7154,22 +6797,19 @@ compounds:
         severity: high
         typical_context: Laser removal of Cadmium Plating Removal
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: cadmium-plating-contamination
         frequency: unknown
         severity: high
         typical_context: Laser removal of Cadmium Plating Removal
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: cadmium-plating-contamination
         frequency: unknown
         severity: high
         typical_context: Laser removal of Cadmium Plating Removal
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       produced_from_materials:
       - id: cast-iron-laser-cleaning
         presentation: card
@@ -7224,61 +6864,52 @@ compounds:
         severity: moderate
         typical_context: Laser removal of Heat Treatment Scale
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: brass-plating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Brass Coating Removal
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: bronze-patina-contamination
         frequency: unknown
         severity: high
         typical_context: Laser removal of Bronze Patina and Corrosion
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: nickel-plating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Electroless Nickel Plating
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: nickel-plating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Electroless Nickel Plating
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: nickel-plating-contamination
         frequency: unknown
         severity: high
         typical_context: Laser removal of Electroless Nickel Plating
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: passivation-defect-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of Passivation Layer Irregularities
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
       - id: plasma-spray-contamination
         frequency: unknown
         severity: high
         typical_context: Laser removal of Thermal Spray Coating
         presentation: card
-        level: high
-        valence: negative
+        intensity: very_negative
       - id: pvd-coating-contamination
         frequency: unknown
         severity: moderate
         typical_context: Laser removal of PVD Coating Defects
         presentation: card
-        level: moderate
-        valence: negative
+        intensity: negative
