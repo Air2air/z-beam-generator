@@ -84,7 +84,7 @@ class UnifiedMaterialsGenerator:
     
     def _load_materials_data(self) -> Dict:
         """Load Materials.yaml using centralized loader"""
-        from domains.materials.data_loader import load_materials_data
+        from domains.materials.data_loader_v2 import load_materials_data
         return load_materials_data()
     
     def generate_eeat(self, material_name: str, material_data: Dict) -> Optional[Dict]:

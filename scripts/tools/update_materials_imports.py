@@ -35,9 +35,9 @@ class ImportUpdater:
         content = original_content
         changes_count = 0
         
-        # Pattern 1: from domains.materials.data_loader import ...
+        # Pattern 1: from domains.materials.data_loader_v2 import ...
         pattern1 = r'from data\.materials\.loader import'
-        replacement1 = 'from domains.materials.data_loader import'
+        replacement1 = 'from domains.materials.data_loader_v2 import'
         if re.search(pattern1, content):
             content = re.sub(pattern1, replacement1, content)
             changes_count += len(re.findall(pattern1, original_content))
@@ -55,7 +55,7 @@ class ImportUpdater:
         # Pattern 3: from data.materials import ... (generic, must be specific)
         # Only match specific imports to avoid breaking other things
         pattern3 = r'from data\.materials import load_materials_data'
-        replacement3 = 'from domains.materials.data_loader import load_materials_data'
+        replacement3 = 'from domains.materials.data_loader_v2 import load_materials_data'
         if re.search(pattern3, content):
             count = len(re.findall(pattern3, original_content))
             content = re.sub(pattern3, replacement3, content)

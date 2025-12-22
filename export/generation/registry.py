@@ -51,6 +51,9 @@ from export.generation.contaminant_materials_grouping_generator import (
 # Import field cleanup generator
 from export.generation.field_cleanup_generator import FieldCleanupGenerator
 
+# Import section metadata generator
+from export.generation.section_metadata_generator import SectionMetadataGenerator
+
 # Import domain linkages generator
 from export.generation.relationships_generator import DomainLinkagesGenerator
 
@@ -253,6 +256,7 @@ GENERATOR_REGISTRY = {
     'relationships': DomainLinkagesGenerator,
     'contaminant_materials_grouping': ContaminantMaterialsGroupingGenerator,  # Change 4: Dec 19, 2025
     'field_cleanup': FieldCleanupGenerator,  # Changes 2 & 5: Dec 19, 2025
+    'section_metadata': SectionMetadataGenerator,  # Dec 22, 2025 - Wrap relationships with display metadata
 }
 
 

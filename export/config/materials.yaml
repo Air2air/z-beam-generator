@@ -72,6 +72,22 @@ enrichments:
   - power_watts
   - pulse_frequency_hz
   - recommended_for
+- type: section_metadata
+  module: export.enrichers.metadata.section_metadata_enricher
+  class: SectionMetadataEnricher
+  sections:
+    contaminated_by:
+      title: "Common Contaminants"
+      description: "Types of contamination typically found on this material"
+      order: 1
+      variant: "relationship"
+      icon: "droplet"
+    regulatory:
+      title: "Regulatory Standards"
+      description: "Industry standards and regulations applicable to this material"
+      order: 2
+      variant: "reference"
+      icon: "book"
 - type: timestamp
   module: export.enrichers.metadata.timestamp_enricher
   class: TimestampEnricher
@@ -88,6 +104,10 @@ enrichments:
   category_field: category
   subcategory_field: subcategory
   name_field: name
+- type: relationship_urls
+  module: export.enrichers.relationships.relationship_url_enricher
+  class: RelationshipURLEnricher
+  description: Adds url field to all relationship items based on target's full_path
 library_enrichments:
   enabled: true
   enrichments:

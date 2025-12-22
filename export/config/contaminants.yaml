@@ -78,8 +78,6 @@ enrichments:
   defaults:
   - setting_category
   - power_watts
-  - pulse_frequency_hz
-  - recommended_for
 - type: timestamp
   module: export.enrichers.metadata.timestamp_enricher
   class: TimestampEnricher
@@ -96,6 +94,10 @@ enrichments:
   category_field: category
   subcategory_field: subcategory
   name_field: name
+- type: relationship_urls
+  module: export.enrichers.relationships.relationship_url_enricher
+  class: RelationshipURLEnricher
+  description: Adds url field to all relationship items based on target's full_path
 library_enrichments:
   enabled: true
   enrichments:
@@ -114,6 +116,58 @@ generators:
 - type: field_cleanup
   module: export.enrichers.cleanup.field_cleanup_enricher
   class: FieldCleanupEnricher
+- type: section_metadata
+  module: export.generation.section_metadata_generator
+  class: SectionMetadataGenerator
+  sections:
+    produces_compounds:
+      title: "Compounds Released"
+      description: "Hazardous fumes and particles generated when removing this contamination"
+      order: 1
+      variant: "warning"
+      icon: "flask"
+    materials:
+      title: "Found on Materials"
+      description: "Materials commonly affected by this type of contamination"
+      order: 2
+      variant: "relationship"
+      icon: "cube"
+    valid_materials:
+      title: "Safe for Materials"
+      description: "Materials where this contamination can be safely removed"
+      order: 3
+      variant: "relationship"
+      icon: "shield-check"
+    prohibited_materials:
+      title: "Unsafe for Materials"
+      description: "Materials where removal of this contamination is not recommended"
+      order: 4
+      variant: "warning"
+      icon: "alert-triangle"
+    visual_characteristics:
+      title: "Visual Characteristics"
+      description: "Appearance and identification features of this contamination"
+      order: 5
+      variant: "technical"
+      icon: "eye"
+    laser_properties:
+      title: "Laser Properties"
+      description: "Laser cleaning parameters and behavior for this contamination"
+      order: 6
+      variant: "technical"
+      icon: "zap"
+    safety_data:
+      title: "Safety Information"
+      description: "Safety hazards and protective measures for handling this contamination"
+      order: 7
+      variant: "warning"
+      icon: "shield"
+    regulatory_standards:
+      title: "Regulatory Standards"
+      description: "Industry standards and regulations applicable to this contamination"
+      order: 8
+      variant: "reference"
+      icon: "book"
 - type: seo_description
   module: shared.generation.seo_description_generator
   class: SEODescriptionGenerator
@@ -127,6 +181,58 @@ generators:
   output_field: micro
   mode: sentences
   length: 2
+- type: section_metadata
+  module: export.enrichers.metadata.section_metadata_enricher
+  class: SectionMetadataEnricher
+  sections:
+    produces_compounds:
+      title: "Compounds Released"
+      description: "Hazardous fumes and particles generated when removing this contamination"
+      order: 1
+      variant: "warning"
+      icon: "flask"
+    materials:
+      title: "Found on Materials"
+      description: "Materials commonly affected by this type of contamination"
+      order: 2
+      variant: "relationship"
+      icon: "cube"
+    valid_materials:
+      title: "Safe for Materials"
+      description: "Materials where this contamination can be safely removed"
+      order: 3
+      variant: "relationship"
+      icon: "shield-check"
+    prohibited_materials:
+      title: "Unsafe for Materials"
+      description: "Materials where removal of this contamination is not recommended"
+      order: 4
+      variant: "warning"
+      icon: "alert-triangle"
+    visual_characteristics:
+      title: "Visual Characteristics"
+      description: "Appearance and identification features of this contamination"
+      order: 5
+      variant: "technical"
+      icon: "eye"
+    laser_properties:
+      title: "Laser Properties"
+      description: "Laser cleaning parameters and behavior for this contamination"
+      order: 6
+      variant: "technical"
+      icon: "zap"
+    safety_data:
+      title: "Safety Information"
+      description: "Safety hazards and protective measures for handling this contamination"
+      order: 7
+      variant: "warning"
+      icon: "shield"
+    regulatory_standards:
+      title: "Regulatory Standards"
+      description: "Industry standards and regulations applicable to this contamination"
+      order: 8
+      variant: "reference"
+      icon: "book"
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true

@@ -18,8 +18,8 @@ Date: November 26, 2025
 from typing import Any, Dict
 
 # ✅ CORRECT: Orchestrator imports from multiple domains
-from domains.materials.data_loader import load_materials_yaml, load_properties_yaml
-from domains.settings.data_loader import load_settings_yaml
+from domains.materials.data_loader_v2 import load_materials_yaml, load_properties_yaml
+from domains.settings.data_loader_v2 import load_settings_yaml
 
 
 class DataOrchestrationError(Exception):

@@ -161,7 +161,7 @@ class CategoryDataLoader:
             Dict with machine_settingsRanges and machine_settingsDescriptions
         """
         # Load from ParameterDefinitions.yaml via loader (normalized architecture)
-        from domains.materials.data_loader import load_parameter_definitions_yaml
+        from domains.materials.data_loader_v2 import load_parameter_definitions_yaml
         
         param_defs = load_parameter_definitions_yaml()
         

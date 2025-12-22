@@ -43,7 +43,7 @@ import sys
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from domains.materials.data_loader import load_materials_data, get_property_definitions
+from domains.materials.data_loader_v2 import load_materials_data, get_property_definitions
 from shared.api.client_factory import create_api_client
 from shared.api.client import GenerationRequest
 
@@ -98,9 +98,7 @@ class DeepResearchPopulator:
         
         # Create backup
         if path.exists():
-            backup_path = path.parent / f"{path.stem}_backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}{path.suffix}"
-            import shutil
-            shutil.copy2(path, backup_path)
+            backup_path = create_timestamped_backup(path)
             print(f"  Created backup: {backup_path.name}")
         
         with open(path, 'w', encoding='utf-8') as f:

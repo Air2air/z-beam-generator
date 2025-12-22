@@ -4,8 +4,10 @@ YAML Utilities - Centralized YAML I/O with consistent error handling
 Provides standardized YAML loading and saving functions to replace repeated
 `with open() / yaml.safe_load()` and `yaml.safe_dump()` patterns across the codebase.
 
+Consolidates 27+ YAML loading functions across the codebase.
+
 Created: December 19, 2025
-Updated: December 19, 2025 - Added save_yaml() and save_yaml_atomic()
+Updated: December 21, 2025 - Enhanced with additional convenience functions
 Purpose: Code consolidation and DRY compliance
 """
 
@@ -152,3 +154,129 @@ def save_yaml_atomic(
     
     # Atomic rename
     tmp_path.replace(file_path)
+
+
+def load_yaml_with_backup(
+    file_path: Path,
+    backup_dir: Optional[Path] = None
+) -> Dict[str, Any]:
+    """
+    Load YAML and automatically create timestamped backup.
+    
+    Useful when loading file that will be modified and saved back.
+    
+    Args:
+        file_path: Path to YAML file
+        backup_dir: Directory for backup (default: same as file)
+    
+    Returns:
+        Loaded YAML data
+    
+    Example:
+        >>> # Load and auto-backup before modification
+        >>> data = load_yaml_with_backup(Path('data/Materials.yaml'))
+        >>> data['materials']['new_material'] = {...}
+        >>> save_yaml(Path('data/Materials.yaml'), data)
+    """
+    from shared.utils.backup_utils import create_timestamped_backup
+    
+    # Create backup first
+    create_timestamped_backup(file_path, backup_dir)
+    
+    # Then load
+    return load_yaml(file_path)
+
+
+def merge_yaml_files(*file_paths: Path) -> Dict[str, Any]:
+    """
+    Load and merge multiple YAML files.
+    
+    Later files override earlier ones for duplicate keys.
+    
+    Args:
+        *file_paths: Paths to YAML files to merge
+    
+    Returns:
+        Merged data dictionary
+    
+    Example:
+        >>> # Merge base config with overrides
+        >>> config = merge_yaml_files(
+        ...     Path('config/base.yaml'),
+        ...     Path('config/production.yaml')
+        ... )
+    """
+    result = {}
+    
+    for file_path in file_paths:
+        data = load_yaml_safe(file_path)
+        if data:
+            result.update(data)
+    
+    return result
+
+
+def validate_yaml_structure(
+    file_path: Path,
+    required_keys: list[str]
+) -> bool:
+    """
+    Validate YAML file has required top-level keys.
+    
+    Args:
+        file_path: Path to YAML file
+        required_keys: List of required keys
+    
+    Returns:
+        True if all required keys present, False otherwise
+    
+    Example:
+        >>> # Validate Materials.yaml structure
+        >>> valid = validate_yaml_structure(
+        ...     Path('data/Materials.yaml'),
+        ...     ['materials', 'categories']
+        ... )
+        >>> if not valid:
+        ...     raise ValueError("Invalid Materials.yaml structure")
+    """
+    try:
+        data = load_yaml(file_path)
+        return all(key in data for key in required_keys)
+    except (FileNotFoundError, yaml.YAMLError):
+        return False
+
+
+def get_yaml_size_stats(file_path: Path) -> Dict[str, Any]:
+    """
+    Get size statistics for YAML file.
+    
+    Args:
+        file_path: Path to YAML file
+    
+    Returns:
+        Dict with file size, item counts, and depth
+    
+    Example:
+        >>> stats = get_yaml_size_stats(Path('data/Materials.yaml'))
+        >>> print(f"File size: {stats['size_kb']} KB")
+        >>> print(f"Top-level keys: {stats['top_level_keys']}")
+    """
+    data = load_yaml(file_path)
+    file_size = file_path.stat().st_size
+    
+    def get_depth(obj, current_depth=0):
+        """Recursively calculate max depth."""
+        if not isinstance(obj, dict):
+            return current_depth
+        if not obj:
+            return current_depth
+        return max(get_depth(v, current_depth + 1) for v in obj.values())
+    
+    return {
+        'size_bytes': file_size,
+        'size_kb': file_size / 1024,
+        'size_mb': file_size / (1024 * 1024),
+        'top_level_keys': len(data),
+        'max_depth': get_depth(data),
+        'is_empty': not data
+    }

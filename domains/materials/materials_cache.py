@@ -151,7 +151,7 @@ def load_materials():
     
     # Use centralized loader that merges Materials.yaml + MaterialProperties.yaml + MachineSettings.yaml
     try:
-        from domains.materials.data_loader import load_materials_data
+        from domains.materials.data_loader_v2 import load_materials_data
         data = load_materials_data()
         
         # If optimized format detected, expand it for compatibility

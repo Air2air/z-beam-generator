@@ -73,8 +73,7 @@ from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
 from export.enrichers.metadata.name_enricher import NameEnricher
 from export.enrichers.settings.material_category_enricher import MaterialCategoryEnricher  # Dec 19, 2025
 from export.enrichers.contaminants.removal_by_material_enricher import RemovalByMaterialEnricher  # Dec 20, 2025
-# DEPRECATED (Dec 19, 2025): RelationshipURLEnricher no longer needed - URLs come from full_path in source data
-# from export.enrichers.relationships.relationship_url_enricher import RelationshipURLEnricher
+from export.enrichers.relationships.relationship_url_enricher import RelationshipURLEnricher  # Re-enabled Dec 21, 2025 - URLs NOT in relationship items
 
 logger = logging.getLogger(__name__)
 
@@ -436,6 +435,8 @@ class TimestampEnricher(BaseEnricher):
 
 # Import title enricher
 from export.enrichers.metadata.title_enricher import TitleEnricher
+# Import section metadata enricher (Dec 22, 2025 - Relationship Normalization V2)
+from export.enrichers.metadata.section_metadata_enricher import SectionMetadataEnricher
 
 # Registry mapping enricher type → class
 ENRICHER_REGISTRY = {
@@ -455,7 +456,8 @@ ENRICHER_REGISTRY = {
     'title': TitleEnricher,  # Generates title field from name (Dec 20, 2025)
     'material_category': MaterialCategoryEnricher,  # Adds category/subcategory from Materials.yaml (Dec 19, 2025)
     'removal_by_material': RemovalByMaterialEnricher,  # Generates material-specific laser removal parameters (Dec 20, 2025)
-    # DEPRECATED (Dec 19, 2025): 'relationship_url': RelationshipURLEnricher - No longer needed, URLs from full_path
+    'relationship_urls': RelationshipURLEnricher,  # Re-enabled Dec 21, 2025 - Adds url field to relationship items
+    'section_metadata': SectionMetadataEnricher,  # Dec 22, 2025 - Adds section display metadata to relationships
     'relationships': DomainLinkagesEnricher,
     'relationship_grouping': RelationshipGroupingEnricher,
     'relationships_slug': DomainLinkagesSlugEnricher,

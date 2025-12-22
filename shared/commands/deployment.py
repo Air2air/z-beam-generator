@@ -12,7 +12,7 @@ def deploy_to_production():
     import shutil
     import subprocess
 
-    from domains.materials.data_loader import clear_cache
+    from domains.materials.data_loader_v2 import clear_cache
 
     # Clear ALL caches to ensure fresh data is used
     from domains.materials.materials_cache import (

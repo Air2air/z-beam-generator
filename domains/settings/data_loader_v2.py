@@ -23,7 +23,7 @@ Usage (New):
     material_settings = loader.get_material_settings('Aluminum')
 
 Usage (Legacy - still works):
-    from domains.settings.data_loader import load_settings_yaml
+    from domains.settings.data_loader_v2 import load_settings_yaml
     
     settings = load_settings_yaml()
 """
@@ -228,3 +228,28 @@ class SettingsDataLoader(BaseDataLoader):
             Path object for Settings.yaml
         """
         return self.settings_file
+
+
+# ============================================================================
+# BACKWARD COMPATIBILITY (for v1 imports)
+# ============================================================================
+
+_loader_instance = None
+
+def get_loader() -> SettingsDataLoader:
+    """Get singleton SettingsDataLoader instance"""
+    global _loader_instance
+    if _loader_instance is None:
+        _loader_instance = SettingsDataLoader()
+    return _loader_instance
+
+
+def load_settings_data() -> Dict[str, Any]:
+    """Load all settings (backward compat)."""
+    return get_loader().load_settings()
+
+
+def load_setting(setting_id: str) -> Optional[Dict[str, Any]]:
+    """Load single setting (backward compat)."""
+    return get_loader().get_setting(setting_id)
+

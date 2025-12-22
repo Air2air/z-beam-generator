@@ -69,7 +69,7 @@ class PatternPropertyCache:
         Returns:
             Complete pattern data from Contaminants.yaml
         """
-        from domains.contaminants.data_loader import PatternDataLoader
+        from domains.contaminants.data_loader_v2 import PatternDataLoader
         
         loader = PatternDataLoader()
         return loader.get_pattern(pattern_id)

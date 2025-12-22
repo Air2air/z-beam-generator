@@ -72,6 +72,10 @@ enrichments:
   class: TitleEnricher
   template: "{name} Settings"
   skip_if_exists: true
+- type: relationship_urls
+  module: export.enrichers.relationships.relationship_url_enricher
+  class: RelationshipURLEnricher
+  description: Adds url field to all relationship items based on target's full_path
 library_enrichments:
   enabled: true
   enrichments:
@@ -95,6 +99,29 @@ generators:
   output_field: micro
   mode: sentences
   length: 2
+generators:
+- type: section_metadata
+  module: export.generation.section_metadata_generator
+  class: SectionMetadataGenerator
+  sections:
+    optimized_for_materials:
+      title: "Applicable Materials"
+      description: "Materials that can be safely cleaned using these laser parameters"
+      order: 1
+      variant: "relationship"
+      icon: "cube"
+    removes_contaminants:
+      title: "Effective Against"
+      description: "Contamination types that can be removed using these settings"
+      order: 2
+      variant: "relationship"
+      icon: "droplet"
+    regulatory_standards:
+      title: "Regulatory Compliance"
+      description: "Industry standards and regulations applicable to these settings"
+      order: 3
+      variant: "reference"
+      icon: "book"
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true

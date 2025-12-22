@@ -678,8 +678,11 @@ class PostprocessCommand:
         for yaml_file in Path(frontmatter_dir).glob("*.yaml"):
             with open(yaml_file, 'r', encoding='utf-8') as f:
                 data = yaml.safe_load(f)
-                # Check if field exists (even if empty, we'll generate it)
-                item_name = data.get('name', data.get('slug', yaml_file.stem))
-                items.append(item_name)
+                # Get the compound ID and strip domain-specific suffix
+                # For compounds: id is "carbon-monoxide-compound" but Compounds.yaml key is "carbon-monoxide"
+                compound_id = data.get('id', yaml_file.stem)
+                if self.domain == 'compounds' and compound_id.endswith('-compound'):
+                    compound_id = compound_id[:-len('-compound')]
+                items.append(compound_id)
         
         return sorted(items)

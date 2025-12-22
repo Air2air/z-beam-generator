@@ -23,7 +23,7 @@ Usage (New):
     pattern = loader.get_pattern('rust_oxidation')
 
 Usage (Legacy - still works):
-    from domains.contaminants.data_loader import PatternDataLoader
+    from domains.contaminants.data_loader_v2 import PatternDataLoader
     
     loader = PatternDataLoader()
     pattern = loader.get_pattern('rust_oxidation')
@@ -350,3 +350,32 @@ class ContaminantsDataLoader(BaseDataLoader):
 
 # Backward compatibility: Export alias for old name
 PatternDataLoaderV2 = ContaminantsDataLoader
+
+
+# ============================================================================
+# BACKWARD COMPATIBILITY (for v1 imports)
+# ============================================================================
+
+_loader_instance = None
+
+def get_loader() -> ContaminantsDataLoader:
+    """Get singleton ContaminantsDataLoader instance"""
+    global _loader_instance
+    if _loader_instance is None:
+        _loader_instance = ContaminantsDataLoader()
+    return _loader_instance
+
+
+# V1 compatibility class alias
+PatternDataLoader = ContaminantsDataLoader
+
+
+def load_pattern_data(pattern_id: str) -> Dict[str, Any]:
+    """Load single pattern data (backward compat)."""
+    return get_loader().get_pattern(pattern_id)
+
+
+def load_all_patterns() -> Dict[str, Any]:
+    """Load all patterns (backward compat)."""
+    return get_loader().load_patterns()
+

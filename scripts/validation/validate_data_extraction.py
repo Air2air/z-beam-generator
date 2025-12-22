@@ -12,7 +12,7 @@ Validates that:
 
 import yaml
 from pathlib import Path
-from domains.materials.data_loader import load_materials_data, load_material, get_material_names
+from domains.materials.data_loader_v2 import load_materials_data, load_material, get_material_names
 from domains.materials.materials_cache import load_materials_cached
 
 def load_backup() -> dict:

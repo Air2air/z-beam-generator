@@ -1,7 +1,7 @@
 """
-Materials Data Loader - NEW ARCHITECTURE (December 11, 2025)
+Compounds Data Loader - NEW ARCHITECTURE (December 21, 2025)
 
-This module provides BaseDataLoader-based loading for materials data.
+This module provides BaseDataLoader-based loading for compounds data.
 Maintains backward compatibility with existing function-based API.
 
 New Architecture:
@@ -16,16 +16,15 @@ Backward Compatibility:
 - Gradual migration path
 
 Usage (New):
-    from domains.materials.data_loader_v2 import MaterialsDataLoader
+    from domains.compounds.data_loader_v2 import CompoundsDataLoader
     
-    loader = MaterialsDataLoader()
-    materials = loader.load_materials()
-    properties = loader.load_properties()
+    loader = CompoundsDataLoader()
+    compounds = loader.load_compounds()
 
 Usage (Legacy - still works):
-    from domains.materials.data_loader_v2 import load_materials_yaml
+    from domains.compounds.data_loader_v2 import load_compounds_yaml
     
-    materials = load_materials_yaml()
+    compounds = load_compounds_yaml()
 """
 
 import logging
@@ -39,41 +38,30 @@ from shared.utils.file_io import read_yaml_file
 logger = logging.getLogger(__name__)
 
 
-class MaterialsDataLoader(BaseDataLoader):
+class CompoundsDataLoader(BaseDataLoader):
     """
-    Data loader for materials domain.
+    Data loader for compounds domain.
     
     Loads data from:
-    - Materials.yaml: Core material metadata
-    - MaterialProperties.yaml: Material properties with ranges
-    - IndustryApplications.yaml: Industry-specific guidance
-    - CategoryTaxonomy.yaml: Category hierarchies
-    - PropertyDefinitions.yaml: Property metadata
-    - ParameterDefinitions.yaml: Parameter definitions
-    - RegulatoryStandards.yaml: Regulatory frameworks
+    - Compounds.yaml: Core compound metadata, health effects, exposure limits
     """
     
     def __init__(self, project_root: Optional[Path] = None):
-        """Initialize materials data loader"""
+        """Initialize compounds data loader"""
         super().__init__(project_root)
-        self.data_dir = self.project_root / 'data' / 'materials'
+        self.data_dir = self.project_root / 'data' / 'compounds'
         
         # File paths
-        self.materials_file = self.data_dir / 'Materials.yaml'
-        self.properties_file = self.data_dir / 'MaterialProperties.yaml'
-        self.industry_file = self.data_dir / 'IndustryApplications.yaml'
-        self.categories_file = self.data_dir / 'CategoryTaxonomy.yaml'
-        self.property_defs_file = self.data_dir / 'PropertyDefinitions.yaml'
-        self.parameter_defs_file = self.data_dir / 'ParameterDefinitions.yaml'
-        self.regulatory_file = self.data_dir / 'RegulatoryStandards.yaml'
+        self.compounds_file = self.data_dir / 'Compounds.yaml'
+        self.data_path = self.compounds_file  # For compatibility
     
     def _get_data_file_path(self) -> Path:
-        """Return path to primary data file (Materials.yaml)"""
-        return self.materials_file
+        """Return path to primary data file (Compounds.yaml)"""
+        return self.compounds_file
     
     def _validate_loaded_data(self, data: Dict[str, Any]) -> bool:
         """
-        Validate Materials.yaml structure.
+        Validate Compounds.yaml structure.
         
         Args:
             data: Loaded YAML data
@@ -81,35 +69,35 @@ class MaterialsDataLoader(BaseDataLoader):
         Returns:
             True if valid structure
         """
-        # Materials.yaml should have 'materials' or 'categories' key
-        return 'materials' in data or 'categories' in data
+        # Compounds.yaml should have 'compounds' or 'categories' key
+        return 'compounds' in data or 'categories' in data
     
-    def load_materials(self) -> Dict[str, Any]:
+    def load_compounds(self) -> Dict[str, Any]:
         """
-        Load Materials.yaml (core metadata only).
+        Load Compounds.yaml (core metadata only).
         
         Returns:
-            Dict with 'materials', 'category_metadata', 'material_index', etc.
+            Dict with 'compounds', 'category_metadata', 'material_index', etc.
         
         Raises:
             ConfigurationError: If file cannot be loaded
         """
         # Check cache first
-        cached = cache_manager.get('materials', 'materials_yaml')
+        cached = cache_manager.get('compounds', 'compounds_yaml')
         if cached:
             return cached
         
         # Load using base class method
-        data = self._load_yaml_file(self.materials_file)
+        data = self._load_yaml_file(self.compounds_file)
         
         # Cache for 1 hour
-        cache_manager.set('materials', 'materials_yaml', data, ttl=3600)
+        cache_manager.set('compounds', 'compounds_yaml', data, ttl=3600)
         
         return data
     
     def load_properties(self) -> Dict[str, Dict[str, Any]]:
         """
-        Load MaterialProperties.yaml.
+        Load Compounds.yaml.
         
         Returns:
             Dict mapping material names to property data
@@ -118,7 +106,7 @@ class MaterialsDataLoader(BaseDataLoader):
             ConfigurationError: If file cannot be loaded
         """
         # Check cache
-        cached = cache_manager.get('materials', 'properties_yaml')
+        cached = cache_manager.get('compounds', 'properties_yaml')
         if cached:
             return cached
         
@@ -127,13 +115,13 @@ class MaterialsDataLoader(BaseDataLoader):
         properties = data.get('properties', {})
         
         # Cache for 1 hour
-        cache_manager.set('materials', 'properties_yaml', properties, ttl=3600)
+        cache_manager.set('compounds', 'properties_yaml', properties, ttl=3600)
         
         return properties
     
     def load_industry_applications(self) -> Dict[str, Any]:
         """
-        Load IndustryApplications.yaml (optional).
+        Load  (optional).
         
         Returns:
             Dict with industry guidance, or empty dict if not found
@@ -142,7 +130,7 @@ class MaterialsDataLoader(BaseDataLoader):
             return {}
         
         # Check cache
-        cached = cache_manager.get('materials', 'industry_yaml')
+        cached = cache_manager.get('compounds', 'industry_yaml')
         if cached:
             return cached
         
@@ -150,13 +138,13 @@ class MaterialsDataLoader(BaseDataLoader):
         data = read_yaml_file(self.industry_file)
         
         # Cache for 1 hour
-        cache_manager.set('materials', 'industry_yaml', data, ttl=3600)
+        cache_manager.set('compounds', 'industry_yaml', data, ttl=3600)
         
         return data
     
     def load_categories(self) -> Dict[str, Any]:
         """
-        Load CategoryTaxonomy.yaml.
+        Load .
         
         Returns:
             Dict with category hierarchies
@@ -165,7 +153,7 @@ class MaterialsDataLoader(BaseDataLoader):
             ConfigurationError: If file cannot be loaded
         """
         # Check cache
-        cached = cache_manager.get('materials', 'categories_yaml')
+        cached = cache_manager.get('compounds', 'categories_yaml')
         if cached:
             return cached
         
@@ -173,13 +161,13 @@ class MaterialsDataLoader(BaseDataLoader):
         data = read_yaml_file(self.categories_file)
         
         # Cache for 1 hour
-        cache_manager.set('materials', 'categories_yaml', data, ttl=3600)
+        cache_manager.set('compounds', 'categories_yaml', data, ttl=3600)
         
         return data
     
     def load_property_definitions(self) -> Dict[str, Any]:
         """
-        Load PropertyDefinitions.yaml.
+        Load .
         
         Returns:
             Dict with property metadata and definitions
@@ -188,7 +176,7 @@ class MaterialsDataLoader(BaseDataLoader):
             return {}
         
         # Check cache
-        cached = cache_manager.get('materials', 'property_defs_yaml')
+        cached = cache_manager.get('compounds', 'property_defs_yaml')
         if cached:
             return cached
         
@@ -196,13 +184,13 @@ class MaterialsDataLoader(BaseDataLoader):
         data = read_yaml_file(self.property_defs_file)
         
         # Cache for 1 hour
-        cache_manager.set('materials', 'property_defs_yaml', data, ttl=3600)
+        cache_manager.set('compounds', 'property_defs_yaml', data, ttl=3600)
         
         return data
     
     def load_parameter_definitions(self) -> Dict[str, Any]:
         """
-        Load ParameterDefinitions.yaml.
+        Load .
         
         Returns:
             Dict with parameter definitions
@@ -211,7 +199,7 @@ class MaterialsDataLoader(BaseDataLoader):
             return {}
         
         # Check cache
-        cached = cache_manager.get('materials', 'parameter_defs_yaml')
+        cached = cache_manager.get('compounds', 'parameter_defs_yaml')
         if cached:
             return cached
         
@@ -219,13 +207,13 @@ class MaterialsDataLoader(BaseDataLoader):
         data = read_yaml_file(self.parameter_defs_file)
         
         # Cache for 1 hour
-        cache_manager.set('materials', 'parameter_defs_yaml', data, ttl=3600)
+        cache_manager.set('compounds', 'parameter_defs_yaml', data, ttl=3600)
         
         return data
     
     def load_regulatory_standards(self) -> Dict[str, Any]:
         """
-        Load RegulatoryStandards.yaml.
+        Load .
         
         Returns:
             Dict with regulatory frameworks
@@ -234,7 +222,7 @@ class MaterialsDataLoader(BaseDataLoader):
             return {}
         
         # Check cache
-        cached = cache_manager.get('materials', 'regulatory_yaml')
+        cached = cache_manager.get('compounds', 'regulatory_yaml')
         if cached:
             return cached
         
@@ -242,7 +230,7 @@ class MaterialsDataLoader(BaseDataLoader):
         data = read_yaml_file(self.regulatory_file)
         
         # Cache for 1 hour
-        cache_manager.set('materials', 'regulatory_yaml', data, ttl=3600)
+        cache_manager.set('compounds', 'regulatory_yaml', data, ttl=3600)
         
         return data
     
@@ -253,16 +241,16 @@ class MaterialsDataLoader(BaseDataLoader):
         Returns:
             Dict with 'micros' mapping material names to captions
         """
-        content_dir = self.project_root / 'materials' / 'data' / 'content'
+        content_dir = self.project_root / 'compounds' / 'data' / 'content'
         micros_file = content_dir / 'Micros.yaml'
         
         if not micros_file.exists():
-            # Legacy file - content now stored in Materials.yaml
-            logger.debug(f"Legacy Micros.yaml not found (expected - content in Materials.yaml)")
+            # Legacy file - content now stored in Compounds.yaml
+            logger.debug(f"Legacy Micros.yaml not found (expected - content in Compounds.yaml)")
             return {}
         
         # Check cache
-        cached = cache_manager.get('materials', 'micros_yaml')
+        cached = cache_manager.get('compounds', 'micros_yaml')
         if cached:
             return cached
         
@@ -271,7 +259,7 @@ class MaterialsDataLoader(BaseDataLoader):
         micros = data.get('micros', {})
         
         # Cache for 1 hour
-        cache_manager.set('materials', 'micros_yaml', micros, ttl=3600)
+        cache_manager.set('compounds', 'micros_yaml', micros, ttl=3600)
         
         return micros
     
@@ -282,16 +270,16 @@ class MaterialsDataLoader(BaseDataLoader):
         Returns:
             Dict with 'faqs' mapping material names to FAQ lists
         """
-        content_dir = self.project_root / 'materials' / 'data' / 'content'
+        content_dir = self.project_root / 'compounds' / 'data' / 'content'
         faqs_file = content_dir / 'FAQs.yaml'
         
         if not faqs_file.exists():
-            # Legacy file - content now stored in Materials.yaml
-            logger.debug(f"Legacy FAQs.yaml not found (expected - content in Materials.yaml)")
+            # Legacy file - content now stored in Compounds.yaml
+            logger.debug(f"Legacy FAQs.yaml not found (expected - content in Compounds.yaml)")
             return {}
         
         # Check cache
-        cached = cache_manager.get('materials', 'faqs_yaml')
+        cached = cache_manager.get('compounds', 'faqs_yaml')
         if cached:
             return cached
         
@@ -300,31 +288,31 @@ class MaterialsDataLoader(BaseDataLoader):
         faqs = data.get('faqs', {})
         
         # Cache for 1 hour
-        cache_manager.set('materials', 'faqs_yaml', faqs, ttl=3600)
+        cache_manager.set('compounds', 'faqs_yaml', faqs, ttl=3600)
         
         return faqs
     
     def load_regulatory_standards_content(self) -> Dict[str, Any]:
         """
-        Load RegulatoryStandards.yaml (material-specific standards).
+        Load  (material-specific standards).
         
         Note: Different from load_regulatory_standards() which loads
-        from data/materials/RegulatoryStandards.yaml. This loads from
-        materials/data/content/RegulatoryStandards.yaml.
+        from data/compounds/. This loads from
+        compounds/data/content/.
         
         Returns:
             Dict with 'regulatory_standards' mapping material names to standards
         """
-        content_dir = self.project_root / 'materials' / 'data' / 'content'
-        regulatory_file = content_dir / 'RegulatoryStandards.yaml'
+        content_dir = self.project_root / 'compounds' / 'data' / 'content'
+        regulatory_file = content_dir / ''
         
         if not regulatory_file.exists():
-            # Legacy file - content now stored in Materials.yaml
-            logger.debug(f"Legacy RegulatoryStandards.yaml not found (expected - content in Materials.yaml)")
+            # Legacy file - content now stored in Compounds.yaml
+            logger.debug(f"Legacy  not found (expected - content in Compounds.yaml)")
             return {}
         
         # Check cache
-        cached = cache_manager.get('materials', 'regulatory_content_yaml')
+        cached = cache_manager.get('compounds', 'regulatory_content_yaml')
         if cached:
             return cached
         
@@ -333,7 +321,7 @@ class MaterialsDataLoader(BaseDataLoader):
         standards = data.get('regulatory_standards', {})
         
         # Cache for 1 hour
-        cache_manager.set('materials', 'regulatory_content_yaml', standards, ttl=3600)
+        cache_manager.set('compounds', 'regulatory_content_yaml', standards, ttl=3600)
         
         return standards
     
@@ -347,24 +335,24 @@ class MaterialsDataLoader(BaseDataLoader):
         Returns:
             Material data dict or None if not found
         """
-        materials_data = self.load_materials()
-        materials = materials_data.get('materials', {})
-        return materials.get(material_name)
+        compounds_data = self.load_compounds()
+        compounds = compounds_data.get('compounds', {})
+        return compounds.get(material_name)
     
     def clear_cache(self):
-        """Clear all materials cache"""
-        cache_manager.invalidate('materials')
-        logger.info("Cleared materials cache")
+        """Clear all compounds cache"""
+        cache_manager.invalidate('compounds')
+        logger.info("Cleared compounds cache")
 
 
 # Singleton instance for convenience
 _loader_instance = None
 
-def get_loader() -> MaterialsDataLoader:
-    """Get singleton MaterialsDataLoader instance"""
+def get_loader() -> CompoundsDataLoader:
+    """Get singleton CompoundsDataLoader instance"""
     global _loader_instance
     if _loader_instance is None:
-        _loader_instance = MaterialsDataLoader()
+        _loader_instance = CompoundsDataLoader()
     return _loader_instance
 
 
@@ -372,9 +360,9 @@ def get_loader() -> MaterialsDataLoader:
 # BACKWARD COMPATIBILITY FUNCTIONS (for v1 imports)
 # ============================================================================
 
-def load_materials_data() -> Dict[str, Any]:
-    """Load all materials from Materials.yaml (backward compat)."""
-    return get_loader().load_materials()
+def load_compounds_data() -> Dict[str, Any]:
+    """Load all compounds from Compounds.yaml (backward compat)."""
+    return get_loader().load_compounds()
 
 
 def load_material(material_name: str) -> Optional[Dict[str, Any]]:
@@ -384,16 +372,16 @@ def load_material(material_name: str) -> Optional[Dict[str, Any]]:
 
 def get_material_names() -> list:
     """Get list of all material names (backward compat)."""
-    return list(load_materials_data().keys())
+    return list(load_compounds_data().keys())
 
 
-def load_materials_yaml() -> Dict[str, Any]:
-    """Load Materials.yaml (backward compat)."""
+def load_compounds_yaml() -> Dict[str, Any]:
+    """Load Compounds.yaml (backward compat)."""
     return get_loader().load_item_data()
 
 
 def load_properties_yaml() -> Dict[str, Any]:
-    """Load MaterialProperties.yaml (backward compat)."""
+    """Load Compounds.yaml (backward compat)."""
     return get_loader().load_properties()
 
 
@@ -415,5 +403,5 @@ def get_category_ranges(category: str) -> Optional[Dict[str, Any]]:
 
 
 def clear_cache():
-    """Clear all materials caches (backward compat)."""
+    """Clear all compounds caches (backward compat)."""
     get_loader().clear_cache()

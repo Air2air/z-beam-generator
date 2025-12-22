@@ -99,11 +99,6 @@ enrichments:
   module: export.enrichers.relationships.relationship_url_enricher
   class: RelationshipURLEnricher
   description: Adds url field to all relationship items based on target's full_path
-library_enrichments:
-  enabled: true
-  enrichments:
-  - type: chemical_properties
-    relationship_field: relationships.chemical_properties
     output_field: chemical_properties_detail
   - type: health_effects
     relationship_field: relationships.health_effects
@@ -137,6 +132,46 @@ generators:
   output_field: micro
   mode: sentences
   length: 2
+- type: section_metadata
+  module: export.generation.section_metadata_generator
+  class: SectionMetadataEnricher
+  sections:
+    chemical_properties:
+      title: "Chemical Properties"
+      description: "Chemical and physical characteristics of this compound"
+      order: 1
+      variant: "technical"
+      icon: "atom"
+    produced_from_contaminants:
+      title: "Source Contaminants"
+      description: "Contamination types that generate this compound during laser cleaning"
+      order: 2
+      variant: "relationship"
+      icon: "droplet"
+    produced_from_materials:
+      title: "Source Materials"
+      description: "Materials that generate this compound when laser processed"
+      order: 3
+      variant: "relationship"
+      icon: "cube"
+    ppe_requirements:
+      title: "Personal Protective Equipment"
+      description: "Required safety equipment when this compound may be present"
+      order: 4
+      variant: "warning"
+      icon: "shield"
+    environmental_impact:
+      title: "Environmental Impact"
+      description: "Environmental effects and disposal considerations for this compound"
+      order: 5
+      variant: "warning"
+      icon: "leaf"
+    detection_monitoring:
+      title: "Detection & Monitoring"
+      description: "Methods and equipment for detecting and monitoring this compound"
+      order: 6
+      variant: "technical"
+      icon: "activity"
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true
