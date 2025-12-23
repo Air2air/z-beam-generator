@@ -76,6 +76,10 @@ enrichments:
   module: export.enrichers.relationships.relationship_url_enricher
   class: RelationshipURLEnricher
   description: Adds url field to all relationship items based on target's full_path
+- type: relationship_intensity
+  module: export.enrichers.relationships.intensity_enricher
+  class: IntensityEnricher
+  description: Dynamically derives intensity from severity/effectiveness/frequency
 library_enrichments:
   enabled: true
   enrichments:

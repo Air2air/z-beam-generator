@@ -74,6 +74,7 @@ from export.enrichers.metadata.name_enricher import NameEnricher
 from export.enrichers.settings.material_category_enricher import MaterialCategoryEnricher  # Dec 19, 2025
 from export.enrichers.contaminants.removal_by_material_enricher import RemovalByMaterialEnricher  # Dec 20, 2025
 from export.enrichers.relationships.relationship_url_enricher import RelationshipURLEnricher  # Re-enabled Dec 21, 2025 - URLs NOT in relationship items
+from export.enrichers.relationships.intensity_enricher import IntensityEnricher  # Dec 22, 2025 - Dynamically derives intensity from severity/effectiveness/frequency
 
 logger = logging.getLogger(__name__)
 
@@ -457,6 +458,7 @@ ENRICHER_REGISTRY = {
     'material_category': MaterialCategoryEnricher,  # Adds category/subcategory from Materials.yaml (Dec 19, 2025)
     'removal_by_material': RemovalByMaterialEnricher,  # Generates material-specific laser removal parameters (Dec 20, 2025)
     'relationship_urls': RelationshipURLEnricher,  # Re-enabled Dec 21, 2025 - Adds url field to relationship items
+    'relationship_intensity': IntensityEnricher,  # Dec 22, 2025 - Dynamically derives intensity from severity/effectiveness/frequency
     'section_metadata': SectionMetadataEnricher,  # Dec 22, 2025 - Adds section display metadata to relationships
     'relationships': DomainLinkagesEnricher,
     'relationship_grouping': RelationshipGroupingEnricher,
