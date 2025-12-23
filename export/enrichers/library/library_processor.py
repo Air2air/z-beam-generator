@@ -84,8 +84,20 @@ class LibraryEnrichmentProcessor:
                 logger.debug(f"   ⚠️  No data in relationships.{relationship_field}")
                 continue
                 
-            # Ensure it's a list
-            if not isinstance(rel_data, list):
+            # Handle new card restructure format: {presentation: 'X', items: [...]}
+            # Extract items array and preserve presentation key
+            presentation_key = None
+            if isinstance(rel_data, dict):
+                # New format: {presentation: 'card', items: [...]}
+                presentation_key = rel_data.get('presentation')
+                items = rel_data.get('items', [])
+                if not items:
+                    logger.debug(f"   ⚠️  No items in relationships.{relationship_field}")
+                    continue
+                rel_data = items
+                logger.debug(f"   Extracted {len(items)} items from presentation='{presentation_key}' wrapper")
+            elif not isinstance(rel_data, list):
+                # Old format: single item
                 rel_data = [rel_data]
             
             # Debug: Log what we're passing
@@ -103,8 +115,20 @@ class LibraryEnrichmentProcessor:
             try:
                 enriched_data = enricher.enrich(rel_data)
                 if enriched_data:
-                    enriched[output_field] = enriched_data
-                    logger.debug(f"✅ Enriched {output_field} with {len(enriched_data)} entries")
+                    # Preserve presentation structure if it existed
+                    if presentation_key:
+                        # Ensure enriched_data is a list for items array
+                        if not isinstance(enriched_data, list):
+                            enriched_data = [enriched_data] if enriched_data else []
+                        
+                        enriched[output_field] = {
+                            'presentation': presentation_key,
+                            'items': enriched_data
+                        }
+                        logger.debug(f"✅ Enriched {output_field} with {len(enriched_data)} entries (preserved presentation='{presentation_key}')")
+                    else:
+                        enriched[output_field] = enriched_data
+                        logger.debug(f"✅ Enriched {output_field} with {len(enriched_data) if isinstance(enriched_data, list) else 'N/A'} entries")
                 else:
                     logger.warning(f"   ⚠️  Enricher returned empty data for {library_type}")
             except Exception as e:

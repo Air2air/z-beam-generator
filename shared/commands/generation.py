@@ -60,7 +60,9 @@ def handle_generation(
         'settings_description': '⚙️',
         'component_summary': '📋',
         'faq': '❓',
-        'troubleshooter': '🔧'
+        'troubleshooter': '🔧',
+        'page_title': '🔍',
+        'meta_description': '📄'
     }
     icon = icon_map.get(component_type, '📝')
     

@@ -142,6 +142,9 @@ class UniversalRestructureEnricher(BaseEnricher):
         
         Example: regulatory_standards (root) duplicates relationships.regulatory
         
+        When migrating to relationships, wraps data in presentation structure:
+        {presentation: 'card', items: [...]}
+        
         Args:
             frontmatter: Frontmatter dict to clean
         """
@@ -153,10 +156,28 @@ class UniversalRestructureEnricher(BaseEnricher):
         
         for root_field, rel_field in self.duplicate_fields.items():
             if root_field in frontmatter:
+                root_data = frontmatter[root_field]
+                
                 # If relationships field doesn't exist, migrate data first
-                if rel_field not in relationships and frontmatter[root_field]:
-                    relationships[rel_field] = frontmatter[root_field]
-                    logger.debug(f"Migrated {root_field} → relationships.{rel_field}")
+                if rel_field not in relationships and root_data:
+                    # Wrap in presentation structure (card restructure format)
+                    if isinstance(root_data, list):
+                        relationships[rel_field] = {
+                            'presentation': 'card',
+                            'items': root_data
+                        }
+                        logger.debug(f"Migrated {root_field} → relationships.{rel_field} (wrapped with presentation='card')")
+                    elif isinstance(root_data, dict):
+                        # Wrap single dict as single-item array
+                        relationships[rel_field] = {
+                            'presentation': 'card',
+                            'items': [root_data]
+                        }
+                        logger.debug(f"Migrated {root_field} → relationships.{rel_field} (wrapped dict with presentation='card')")
+                    else:
+                        # Handle other types (shouldn't happen but be defensive)
+                        relationships[rel_field] = root_data
+                        logger.debug(f"Migrated {root_field} → relationships.{rel_field} (non-list/dict)")
                 
                 # Remove root duplicate
                 frontmatter.pop(root_field)

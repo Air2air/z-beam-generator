@@ -1,12 +1,9 @@
 """
 Section Metadata Enricher - Adds display metadata to relationship sections.
 
-This enricher wraps relationship arrays with section metadata:
-- title: Section heading text
-- description: Section description
-- order: Render order
-- variant: Display style
-- icon: Icon identifier
+This enricher wraps relationship arrays with presentation metadata:
+- presentation: Display variant (card, list, table, etc.)
+- items: Array of relationship items
 
 Example transformation:
     Before:
@@ -18,17 +15,13 @@ Example transformation:
     After:
         relationships:
           produces_compounds:
-            _section:
-              title: "Compounds Produced"
-              description: "Hazardous compounds released during laser cleaning"
-              order: 2
-              variant: "relationship"
-              icon: "flask"
+            presentation: card
             items:
               - id: pahs-compound
                 frequency: common
 
-Part of Relationship Normalization V2 implementation.
+Compatible with Card Restructure (December 2025).
+Migrated from _section structure to presentation structure.
 """
 
 import logging
@@ -41,7 +34,7 @@ logger = logging.getLogger(__name__)
 
 class SectionMetadataEnricher(BaseEnricher):
     """
-    Enricher that adds section metadata wrappers to relationship fields.
+    Enricher that adds presentation metadata wrappers to relationship fields.
     
     Configuration (in export/config/{domain}.yaml):
         - type: section_metadata
@@ -49,20 +42,14 @@ class SectionMetadataEnricher(BaseEnricher):
           class: SectionMetadataEnricher
           sections:
             produces_compounds:
-              title: "Compounds Produced"
-              description: "Hazardous compounds released during laser cleaning"
-              order: 2
-              variant: "relationship"
-              icon: "flask"
+              presentation: "card"
             produced_from_contaminants:
-              title: "Contaminant Sources"
-              description: "Contaminants that produce this compound"
-              order: 1
-              variant: "relationship"
-              icon: "droplet"
+              presentation: "list"
     
     This enricher should run LATE in the pipeline (after all relationship
     enrichment is complete) so we're wrapping fully-enriched relationship data.
+    
+    Compatible with Card Restructure (December 2025) - uses 'presentation' key.
     """
     
     def __init__(self, config: Dict[str, Any]):
@@ -102,43 +89,32 @@ class SectionMetadataEnricher(BaseEnricher):
             if field_name not in self.section_configs:
                 continue
             
-            # Skip if already wrapped (has _section key)
-            if isinstance(field_data, dict) and '_section' in field_data:
+            # Skip if already wrapped (has presentation key)
+            if isinstance(field_data, dict) and 'presentation' in field_data:
                 continue
             
-            # Skip if data is not a list or empty
-            if not isinstance(field_data, list) or len(field_data) == 0:
+            # Skip if data is not a list
+            if not isinstance(field_data, list):
                 continue
             
             # Get section config
             section_config = self.section_configs[field_name]
             
-            # Create wrapper structure
+            # Create wrapper structure with presentation (new format)
+            # Include empty lists for consistency
             wrapped_data = {
-                '_section': {
-                    'title': section_config.get('title', field_name.replace('_', ' ').title()),
-                    'description': section_config.get('description', ''),
-                    'order': section_config.get('order', 999),
-                    'variant': section_config.get('variant', 'relationship'),
-                    'icon': section_config.get('icon', '')
-                },
+                'presentation': section_config.get('presentation', 'card'),
                 'items': field_data
             }
-            
-            # Remove empty description/icon if not provided
-            if not wrapped_data['_section']['description']:
-                del wrapped_data['_section']['description']
-            if not wrapped_data['_section']['icon']:
-                del wrapped_data['_section']['icon']
             
             # Replace relationship field with wrapped version
             relationships[field_name] = wrapped_data
             wrapped_count += 1
             
-            logger.debug(f"Wrapped {field_name} for {item_id} with section metadata")
+            logger.debug(f"Wrapped {field_name} for {item_id} with presentation='{wrapped_data['presentation']}'")
         
         if wrapped_count > 0:
-            logger.info(f"Added section metadata to {wrapped_count} relationship fields in {item_id}")
+            logger.info(f"Added presentation metadata to {wrapped_count} relationship fields in {item_id}")
         
         return frontmatter
     

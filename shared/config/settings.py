@@ -120,9 +120,9 @@ PRODUCTION_CONFIG = {
         "USE_SIMPLE_PROMPTS": False,
         
         # API Response Caching Configuration
-        # DISABLED: Fresh evaluations every time to see critical tone changes
+        # ENABLED: Cache SEO generation to avoid duplicate API calls
         "RESPONSE_CACHE": {
-            "enabled": False,
+            "enabled": True,
             "storage_location": "/tmp/z-beam-response-cache",
             "ttl_seconds": 86400,  # 24 hours
             "max_size_mb": 1000,

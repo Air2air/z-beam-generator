@@ -189,3 +189,9 @@ prompts:
     - "[Abstract process subject] gains/enables..."
 
     Write the subtitle:
+
+  # SEO Meta Tags - Load from external file
+  # Both page_title and meta_description use the same SEO prompt
+  # The prompt file is at prompts/seo/material_page.txt
+  page_title: "@prompts/seo/material_page.txt"
+  meta_description: "@prompts/seo/material_page.txt"

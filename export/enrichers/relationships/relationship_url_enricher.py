@@ -149,16 +149,17 @@ class RelationshipURLEnricher(BaseEnricher):
             
             updated_count = 0
             
-            # Debug for fire-damage
-            item_id = frontmatter.get('id', 'unknown')
-            if item_id == 'fire-damage-contamination' and 'produces_compounds' in relationships:
-                print(f"\n🔍 DEBUG fire-damage-contamination:")
-                for item in relationships['produces_compounds']:
-                    print(f"  Item: {item.get('id')} → {item.get('url', 'NO_URL')}")
-            
             # Process each relationship type
-            for rel_type, rel_items in relationships.items():
-                if not isinstance(rel_items, list):
+            for rel_type, rel_data in relationships.items():
+                # Handle both card format {presentation, items} and legacy flat lists
+                if isinstance(rel_data, dict) and 'items' in rel_data:
+                    # Card format: extract items array
+                    rel_items = rel_data['items']
+                elif isinstance(rel_data, list):
+                    # Legacy flat list format
+                    rel_items = rel_data
+                else:
+                    # Not a relationship array (could be dict metadata)
                     continue
                 
                 # Process each item in the relationship array

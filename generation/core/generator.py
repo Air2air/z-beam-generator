@@ -225,6 +225,26 @@ class Generator:
         # Load item data using domain adapter
         item_data = self._get_item_data(identifier)
         
+        # Enrich with SEO-specific data if generating SEO components
+        if component_type in ['page_title', 'meta_description']:
+            print(f"🔍 SEO component detected: {component_type}")
+            self.logger.info(f"🔍 SEO component detected: {component_type}")
+            from generation.enrichment.seo_data_enricher import SEODataEnricher
+            try:
+                seo_context = SEODataEnricher.enrich_material_for_seo(item_data, identifier)
+                # Merge SEO context into item_data
+                item_data.update(seo_context)
+                print(f"📊 Enriched with SEO context ({len(seo_context)} fields)")
+                print(f"   Fields: {', '.join(sorted(seo_context.keys()))}")
+                self.logger.info(f"📊 Enriched with SEO context ({len(seo_context)} fields)")
+                self.logger.info(f"   Fields: {', '.join(sorted(seo_context.keys()))}")
+            except Exception as e:
+                print(f"❌ SEO enrichment failed: {e}")
+                self.logger.error(f"❌ SEO enrichment failed: {e}")
+                import traceback
+                traceback.print_exc()
+                raise
+        
         # Merge any additional context from kwargs (e.g., existing_content for postprocessing)
         # CRITICAL: Don't overwrite item_data keys, only add missing ones
         for key, value in kwargs.items():

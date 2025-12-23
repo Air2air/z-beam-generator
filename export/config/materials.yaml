@@ -77,17 +77,13 @@ enrichments:
   class: SectionMetadataEnricher
   sections:
     contaminated_by:
-      title: "Common Contaminants"
-      description: "Types of contamination typically found on this material"
-      order: 1
-      variant: "relationship"
-      icon: "droplet"
+      presentation: card
     regulatory:
-      title: "Regulatory Standards"
-      description: "Industry standards and regulations applicable to this material"
-      order: 2
-      variant: "reference"
-      icon: "book"
+      presentation: card
+    removes_contaminants:
+      presentation: card
+    produces_compounds:
+      presentation: card
 - type: timestamp
   module: export.enrichers.metadata.timestamp_enricher
   class: TimestampEnricher
@@ -104,12 +100,12 @@ enrichments:
   category_field: category
   subcategory_field: subcategory
   name_field: name
-- type: relationship_urls
-  module: export.enrichers.relationships.relationship_url_enricher
-  class: RelationshipURLEnricher
-  description: Adds url field to all relationship items based on target's full_path
+# - type: relationship_urls  # DISABLED - Frontend derives URLs from full_path (ID-based lookup)
+#   module: export.enrichers.relationships.relationship_url_enricher
+#   class: RelationshipURLEnricher
+#   description: Adds url field to all relationship items based on target's full_path
 library_enrichments:
-  enabled: true
+  enabled: false  # Disabled - regulatory data already complete in source
   enrichments:
   - type: regulatory_standards
     relationship_field: relationships.regulatory_standards
@@ -118,6 +114,12 @@ generators:
 - type: field_cleanup
   module: export.enrichers.cleanup.field_cleanup_enricher
   class: FieldCleanupEnricher
+- type: seo_metadata
+  module: export.generation.seo_metadata_generator
+  class: SEOMetadataGenerator
+  page_type: material
+  title_field: page_title
+  description_field: meta_description
 - type: seo_description
   module: shared.generation.seo_description_generator
   class: SEODescriptionGenerator

@@ -2,7 +2,7 @@ domain: settings
 source_file: data/settings/Settings.yaml
 output_path: ../z-beam/frontmatter/settings
 items_key: settings
-filename_suffix: -settings
+filename_suffix: ''  # IDs already have -settings suffix, no need to add again
 slugify_filenames: true
 enrichments:
 - type: material_linkage
@@ -72,21 +72,27 @@ enrichments:
   class: TitleEnricher
   template: "{name} Settings"
   skip_if_exists: true
-- type: relationship_urls
-  module: export.enrichers.relationships.relationship_url_enricher
-  class: RelationshipURLEnricher
-  description: Adds url field to all relationship items based on target's full_path
+# - type: relationship_urls  # DISABLED - Frontend derives URLs from full_path (ID-based lookup)
+#   module: export.enrichers.relationships.relationship_url_enricher
+#   class: RelationshipURLEnricher
+#   description: Adds url field to all relationship items based on target's full_path
 - type: relationship_intensity
   module: export.enrichers.relationships.intensity_enricher
   class: IntensityEnricher
   description: Dynamically derives intensity from severity/effectiveness/frequency
 library_enrichments:
-  enabled: true
+  enabled: false  # Disabled - incompatible with new relationship structure
   enrichments:
   - type: regulatory_standards
     relationship_field: relationships.regulatory_standards
     output_field: regulatory_standards_detail
 generators:
+- type: seo_metadata
+  module: export.generation.seo_metadata_generator
+  class: SEOMetadataGenerator
+  page_type: settings
+  title_field: page_title
+  description_field: meta_description
 - type: field_cleanup
   module: export.generation.field_cleanup
   class: FieldCleanupGenerator
@@ -109,23 +115,11 @@ generators:
   class: SectionMetadataGenerator
   sections:
     optimized_for_materials:
-      title: "Applicable Materials"
-      description: "Materials that can be safely cleaned using these laser parameters"
-      order: 1
-      variant: "relationship"
-      icon: "cube"
+      presentation: card
     removes_contaminants:
-      title: "Effective Against"
-      description: "Contamination types that can be removed using these settings"
-      order: 2
-      variant: "relationship"
-      icon: "droplet"
+      presentation: card
     regulatory_standards:
-      title: "Regulatory Compliance"
-      description: "Industry standards and regulations applicable to these settings"
-      order: 3
-      variant: "reference"
-      icon: "book"
+      presentation: card
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true

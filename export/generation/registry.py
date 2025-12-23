@@ -57,6 +57,9 @@ from export.generation.section_metadata_generator import SectionMetadataGenerato
 # Import domain linkages generator
 from export.generation.relationships_generator import DomainLinkagesGenerator
 
+# Import SEO metadata generator
+from export.generation.seo_metadata_generator import SEOMetadataGenerator
+
 logger = logging.getLogger(__name__)
 
 
@@ -252,6 +255,7 @@ class ExcerptGenerator(BaseGenerator):
 # Registry mapping generator type → class
 GENERATOR_REGISTRY = {
     'seo_description': SEODescriptionGenerator,
+    'seo_metadata': SEOMetadataGenerator,  # Dec 22, 2025 - Page title and meta description generation
     'excerpt': ExcerptGenerator,
     'relationships': DomainLinkagesGenerator,
     'contaminant_materials_grouping': ContaminantMaterialsGroupingGenerator,  # Change 4: Dec 19, 2025

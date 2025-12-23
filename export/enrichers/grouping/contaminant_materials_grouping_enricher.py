@@ -100,11 +100,14 @@ class ContaminantMaterialsGroupingEnricher(BaseEnricher):
         
         logger.info(f"Created {len(groups)} groups: {list(groups.keys())}")
         
-        # Create new grouped structure
+        # Create new grouped structure with card presentation wrapper
         relationships['materials'] = {
-            'title': 'Affected Materials',
-            'description': 'Materials where this contaminant commonly occurs and requires laser cleaning removal',
-            'groups': groups
+            'presentation': 'card',
+            'items': [{
+                'title': 'Affected Materials',
+                'description': 'Materials where this contaminant commonly occurs and requires laser cleaning removal',
+                'groups': groups
+            }]
         }
         
         logger.debug(f"Grouped {len(materials)} materials into {len(groups)} categories")

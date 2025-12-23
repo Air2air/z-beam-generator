@@ -226,14 +226,44 @@ class DomainAdapter(DataSourceAdapter):
         """
         Get prompt template for component type from domain config.
         
+        Supports two formats:
+        1. Inline prompt: prompt content directly in config YAML
+        2. External file: "@path/to/file.txt" loads from external file
+        
         Args:
-            component_type: Component type (e.g., 'micro', 'component_summary')
+            component_type: Component type (e.g., 'micro', 'component_summary', 'page_title')
             
         Returns:
             Prompt template string or None if not found
         """
         prompts = self.config.get('prompts', {})
-        return prompts.get(component_type)
+        prompt_value = prompts.get(component_type)
+        
+        if not prompt_value:
+            return None
+        
+        # Check if this is an external file reference (starts with @)
+        if isinstance(prompt_value, str) and prompt_value.startswith('@'):
+            # Remove @ and load from file
+            file_path = prompt_value[1:]  # Remove @ prefix
+            from pathlib import Path
+            
+            # Resolve relative to project root
+            # domain_adapter.py is at generation/core/adapters/
+            # Go up 3 levels to reach project root
+            project_root = Path(__file__).parent.parent.parent.parent
+            full_path = project_root / file_path
+            
+            if not full_path.exists():
+                logger.error(f"Prompt file not found: {full_path}")
+                raise FileNotFoundError(f"Prompt file referenced in config not found: {file_path}")
+            
+            # Load file content
+            with open(full_path, 'r', encoding='utf-8') as f:
+                return f.read()
+        
+        # Regular inline prompt
+        return prompt_value
     
     def write_component(
         self,

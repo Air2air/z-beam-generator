@@ -21,9 +21,10 @@ enrichments:
     extract_from_nested:
       laser_properties:
         - safety_data
+    duplicate_fields:
+      visual_characteristics: visual_characteristics
+      laser_properties: laser_properties
     move_to_relationships:
-    - visual_characteristics
-    - laser_properties
     - eeat
     - valid_materials
     - invalid_materials
@@ -32,6 +33,7 @@ enrichments:
     - context_notes
     - realism_notes
     - formation_conditions
+    - safety_data
     - chemical_formula
     - scientific_name
     - required_elements
@@ -94,17 +96,23 @@ enrichments:
   category_field: category
   subcategory_field: subcategory
   name_field: name
-- type: relationship_urls
-  module: export.enrichers.relationships.relationship_url_enricher
-  class: RelationshipURLEnricher
-  description: Adds url field to all relationship items based on target's full_path
+# - type: relationship_urls  # DISABLED - Frontend derives URLs from full_path (ID-based lookup)
+#   module: export.enrichers.relationships.relationship_url_enricher
+#   class: RelationshipURLEnricher
+#   description: Adds url field to all relationship items based on target's full_path
 library_enrichments:
-  enabled: true
+  enabled: false  # Disabled - incompatible with new relationship structure
   enrichments:
   - type: regulatory_standards
     relationship_field: relationships.regulatory_standards
     output_field: regulatory_standards_detail
 generators:
+- type: seo_metadata
+  module: export.generation.seo_metadata_generator
+  class: SEOMetadataGenerator
+  page_type: contaminant
+  title_field: page_title
+  description_field: meta_description
 - type: relationships
   module: shared.generation.relationships_generator
   class: RelationshipsGenerator
@@ -121,53 +129,21 @@ generators:
   class: SectionMetadataGenerator
   sections:
     produces_compounds:
-      title: "Compounds Released"
-      description: "Hazardous fumes and particles generated when removing this contamination"
-      order: 1
-      variant: "warning"
-      icon: "flask"
+      presentation: card
     materials:
-      title: "Found on Materials"
-      description: "Materials commonly affected by this type of contamination"
-      order: 2
-      variant: "relationship"
-      icon: "cube"
+      presentation: card
     valid_materials:
-      title: "Safe for Materials"
-      description: "Materials where this contamination can be safely removed"
-      order: 3
-      variant: "relationship"
-      icon: "shield-check"
+      presentation: card
     prohibited_materials:
-      title: "Unsafe for Materials"
-      description: "Materials where removal of this contamination is not recommended"
-      order: 4
-      variant: "warning"
-      icon: "alert-triangle"
+      presentation: card
     visual_characteristics:
-      title: "Visual Characteristics"
-      description: "Appearance and identification features of this contamination"
-      order: 5
-      variant: "technical"
-      icon: "eye"
+      presentation: card
     laser_properties:
-      title: "Laser Properties"
-      description: "Laser cleaning parameters and behavior for this contamination"
-      order: 6
-      variant: "technical"
-      icon: "zap"
+      presentation: card
     safety_data:
-      title: "Safety Information"
-      description: "Safety hazards and protective measures for handling this contamination"
-      order: 7
-      variant: "warning"
-      icon: "shield"
+      presentation: card
     regulatory_standards:
-      title: "Regulatory Standards"
-      description: "Industry standards and regulations applicable to this contamination"
-      order: 8
-      variant: "reference"
-      icon: "book"
+      presentation: card
 - type: seo_description
   module: shared.generation.seo_description_generator
   class: SEODescriptionGenerator
@@ -186,53 +162,26 @@ generators:
   class: SectionMetadataEnricher
   sections:
     produces_compounds:
-      title: "Compounds Released"
-      description: "Hazardous fumes and particles generated when removing this contamination"
-      order: 1
-      variant: "warning"
-      icon: "flask"
+      presentation: card
     materials:
-      title: "Found on Materials"
-      description: "Materials commonly affected by this type of contamination"
-      order: 2
-      variant: "relationship"
-      icon: "cube"
+      presentation: card
     valid_materials:
-      title: "Safe for Materials"
-      description: "Materials where this contamination can be safely removed"
-      order: 3
-      variant: "relationship"
+      presentation: card
       icon: "shield-check"
+    invalid_materials:
+      presentation: card
     prohibited_materials:
-      title: "Unsafe for Materials"
-      description: "Materials where removal of this contamination is not recommended"
-      order: 4
-      variant: "warning"
-      icon: "alert-triangle"
+      presentation: card
     visual_characteristics:
-      title: "Visual Characteristics"
-      description: "Appearance and identification features of this contamination"
-      order: 5
-      variant: "technical"
-      icon: "eye"
+      presentation: card
     laser_properties:
-      title: "Laser Properties"
-      description: "Laser cleaning parameters and behavior for this contamination"
-      order: 6
-      variant: "technical"
-      icon: "zap"
+      presentation: card
     safety_data:
-      title: "Safety Information"
-      description: "Safety hazards and protective measures for handling this contamination"
-      order: 7
-      variant: "warning"
-      icon: "shield"
+      presentation: card
+    eeat:
+      presentation: card
     regulatory_standards:
-      title: "Regulatory Standards"
-      description: "Industry standards and regulations applicable to this contamination"
-      order: 8
-      variant: "reference"
-      icon: "book"
+      presentation: card
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true

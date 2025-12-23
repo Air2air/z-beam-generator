@@ -113,6 +113,10 @@ component_extraction:
     extraction_strategy: yaml           # Parse as YAML (deprecated monolithic)
   faq:
     extraction_strategy: json_list      # Parse as JSON array
+  page_title:
+    extraction_strategy: raw            # Return text as-is (SEO page title)
+  meta_description:
+    extraction_strategy: raw            # Return text as-is (SEO meta description)
 
 # Component Token Targets - UPDATED (Dec 14, 2025)
 # Word count targets used by length calculation system
@@ -133,6 +137,8 @@ component_lengths:
   description: 30        # Settings descriptions (±70% = 9-51 range)
   micro: 80                       # Before/after captions (±70% = 24-136 range)
   faq: 50                         # FAQ answers (±70% = 15-85 range)
+  page_title: 10                  # SEO page titles (50-55 characters target)
+  meta_description: 32            # SEO meta descriptions (155-160 characters target)
 
 # Dynamic Calculation Parameters
 # Zero hardcoded values policy: All calculation factors configured here

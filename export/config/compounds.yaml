@@ -3,7 +3,7 @@ source_file: data/compounds/Compounds.yaml
 output_path: ../z-beam/frontmatter/compounds
 items_key: compounds
 id_field: id
-filename_suffix: -compound
+filename_suffix: ''  # IDs already have -compound suffix, no need to add again
 sluggify_filenames: true
 enrichments:
 - type: universal_restructure
@@ -19,15 +19,19 @@ enrichments:
     - metadata
     - eeat
     - voice_enhanced
+    duplicate_fields:
+      emergency_response: emergency_response
+      physical_properties: physical_properties
+      ppe_requirements: ppe_requirements
+      environmental_impact: environmental_impact
+      detection_monitoring: detection_monitoring
     move_to_relationships:
     - chemical_properties
-    - physical_properties
     - toxicity
     - formation_sources
-    - health_effects
+    # health_effects - REMOVED (already in relationships, don't move from root)
     - exposure_monitoring
     - personal_protection
-    - emergency_response
     - occupational_exposure_limits
     - regulatory_frameworks
     - ventilation_systems
@@ -95,15 +99,29 @@ enrichments:
   template: "{name}"
   use_display_name: true
   skip_if_exists: true
-- type: relationship_urls
-  module: export.enrichers.relationships.relationship_url_enricher
-  class: RelationshipURLEnricher
-  description: Adds url field to all relationship items based on target's full_path
+# - type: relationship_urls  # DISABLED - Frontend derives URLs from full_path (ID-based lookup)
+#   module: export.enrichers.relationships.relationship_url_enricher
+#   class: RelationshipURLEnricher
+#   description: Adds url field to all relationship items based on target's full_path
 - type: relationship_intensity
   module: export.enrichers.relationships.intensity_enricher
   class: IntensityEnricher
   description: Dynamically derives intensity from severity/effectiveness/frequency
+library_enrichments:
+  enabled: false  # Disabled - keep library references in card format (not enriched)
+  # Emergency response, health_effects, etc. stay as {presentation: 'card', items: [{type, id, overrides}]}
+  # Frontend will look up full data from library by ID at render time
+  enrichments:
+  - type: emergency_response
+    relationship_field: relationships.emergency_response
+    output_field: emergency_response_detail
 generators:
+- type: seo_metadata
+  module: export.generation.seo_metadata_generator
+  class: SEOMetadataGenerator
+  page_type: compound
+  title_field: page_title
+  description_field: meta_description
 - type: field_cleanup
   module: export.enrichers.cleanup.field_cleanup_enricher
   class: FieldCleanupEnricher
@@ -122,44 +140,24 @@ generators:
   length: 2
 - type: section_metadata
   module: export.generation.section_metadata_generator
-  class: SectionMetadataEnricher
+  class: SectionMetadataGenerator
   sections:
     chemical_properties:
-      title: "Chemical Properties"
-      description: "Chemical and physical characteristics of this compound"
-      order: 1
-      variant: "technical"
-      icon: "atom"
+      presentation: card
     produced_from_contaminants:
-      title: "Source Contaminants"
-      description: "Contamination types that generate this compound during laser cleaning"
-      order: 2
-      variant: "relationship"
-      icon: "droplet"
+      presentation: card
     produced_from_materials:
-      title: "Source Materials"
-      description: "Materials that generate this compound when laser processed"
-      order: 3
-      variant: "relationship"
-      icon: "cube"
+      presentation: card
     ppe_requirements:
-      title: "Personal Protective Equipment"
-      description: "Required safety equipment when this compound may be present"
-      order: 4
-      variant: "warning"
-      icon: "shield"
+      presentation: card
     environmental_impact:
-      title: "Environmental Impact"
-      description: "Environmental effects and disposal considerations for this compound"
-      order: 5
-      variant: "warning"
-      icon: "leaf"
+      presentation: card
     detection_monitoring:
-      title: "Detection & Monitoring"
-      description: "Methods and equipment for detecting and monitoring this compound"
-      order: 6
-      variant: "technical"
-      icon: "activity"
+      presentation: card
+    health_effects:
+      presentation: card
+    emergency_response:
+      presentation: card
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true
