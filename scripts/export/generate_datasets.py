@@ -346,43 +346,45 @@ class DatasetGenerator:
         """Build variableMeasured array for materials (min 20 required)"""
         variables = []
         
-        # Core properties
+        # Extract nested properties from category structure
+        # Properties are organized: properties -> category -> property_name -> {value, unit, min, max}
         properties = material_data.get('properties', {})
-        for prop_name, prop_value in properties.items():
-            if isinstance(prop_value, dict) and 'value' in prop_value:
-                variables.append({
-                    "@type": "PropertyValue",
-                    "name": prop_name.replace('_', ' ').title(),
-                    "description": f"Material property: {prop_name}"
-                })
+        for category_name, category_data in properties.items():
+            if isinstance(category_data, dict):
+                # Iterate through properties within this category
+                for prop_name, prop_value in category_data.items():
+                    # Skip metadata fields
+                    if prop_name in ['label', 'description', 'percentage']:
+                        continue
+                    # Check if this is a property with value/unit
+                    if isinstance(prop_value, dict) and ('value' in prop_value or 'unit' in prop_value):
+                        variables.append({
+                            "@type": "PropertyValue",
+                            "name": prop_name.replace('_', ' ').title(),
+                            "description": f"{category_data.get('label', category_name)}: {prop_name.replace('_', ' ')}",
+                            "value": str(prop_value.get('value', '')),
+                            "unitText": prop_value.get('unit', ''),
+                            "minValue": prop_value.get('min'),
+                            "maxValue": prop_value.get('max')
+                        })
         
-        # Machine settings
+        # Machine settings from Settings.yaml integration
+        # Note: Machine settings may not be present in all materials
         machine_settings = material_data.get('machine_settings', {})
-        for param_name in machine_settings.keys():
-            variables.append({
-                "@type": "PropertyValue",
-                "name": param_name.replace('_', ' ').title(),
-                "description": f"Laser parameter: {param_name}"
-            })
+        if machine_settings:
+            for param_name, param_value in machine_settings.items():
+                if isinstance(param_value, dict):
+                    variables.append({
+                        "@type": "PropertyValue",
+                        "name": param_name.replace('_', ' ').title(),
+                        "description": f"Laser cleaning parameter: {param_name.replace('_', ' ')}",
+                        "value": str(param_value.get('value', '')),
+                        "unitText": param_value.get('unit', ''),
+                        "minValue": param_value.get('min'),
+                        "maxValue": param_value.get('max')
+                    })
         
-        # Add standard variables if needed
-        standard_vars = [
-            ("Wavelength", "Optimal laser wavelength"),
-            ("Pulse Duration", "Laser pulse duration"),
-            ("Fluence", "Energy fluence per pulse"),
-            ("Repetition Rate", "Pulse repetition frequency"),
-            ("Spot Size", "Laser beam spot diameter")
-        ]
-        
-        for var_name, var_desc in standard_vars:
-            if len(variables) < 20:
-                variables.append({
-                    "@type": "PropertyValue",
-                    "name": var_name,
-                    "description": var_desc
-                })
-        
-        return variables[:30]  # Cap at 30
+        return variables[:50]  # Cap at 50 to include all available data
     
     def _extract_material_keywords(
         self,
@@ -422,29 +424,37 @@ class DatasetGenerator:
         
         # Machine settings (appear FIRST per ADR 005)
         machine_settings = material_data.get('machine_settings', {})
-        for param_name, param_value in machine_settings.items():
-            if isinstance(param_value, dict):
-                rows.append({
-                    "Category": "Machine Setting",
-                    "Property": param_name,
-                    "Value": param_value.get('value', ''),
-                    "Unit": param_value.get('unit', ''),
-                    "Min": param_value.get('min', ''),
-                    "Max": param_value.get('max', '')
-                })
+        if machine_settings:
+            for param_name, param_value in machine_settings.items():
+                if isinstance(param_value, dict):
+                    rows.append({
+                        "Category": "Machine Setting",
+                        "Property": param_name,
+                        "Value": param_value.get('value', ''),
+                        "Unit": param_value.get('unit', ''),
+                        "Min": param_value.get('min', ''),
+                        "Max": param_value.get('max', '')
+                    })
         
-        # Material properties
+        # Material properties (nested in categories)
         properties = material_data.get('properties', {})
-        for prop_name, prop_value in properties.items():
-            if isinstance(prop_value, dict):
-                rows.append({
-                    "Category": "Material Property",
-                    "Property": prop_name,
-                    "Value": prop_value.get('value', ''),
-                    "Unit": prop_value.get('unit', ''),
-                    "Min": prop_value.get('min', ''),
-                    "Max": prop_value.get('max', '')
-                })
+        for category_name, category_data in properties.items():
+            if isinstance(category_data, dict):
+                category_label = category_data.get('label', category_name)
+                for prop_name, prop_value in category_data.items():
+                    # Skip metadata fields
+                    if prop_name in ['label', 'description', 'percentage']:
+                        continue
+                    # Add property row
+                    if isinstance(prop_value, dict) and ('value' in prop_value or 'unit' in prop_value):
+                        rows.append({
+                            "Category": category_label,
+                            "Property": prop_name,
+                            "Value": prop_value.get('value', ''),
+                            "Unit": prop_value.get('unit', ''),
+                            "Min": prop_value.get('min', ''),
+                            "Max": prop_value.get('max', '')
+                        })
         
         # Atomic write
         temp_path = output_path.with_suffix('.csv.tmp')
@@ -477,19 +487,42 @@ class DatasetGenerator:
         
         # Machine settings
         machine_settings = material_data.get('machine_settings', {})
-        for param_name, param_value in machine_settings.items():
-            if isinstance(param_value, dict):
-                value_str = f"{param_value.get('value', '')} {param_value.get('unit', '')}".strip()
-                lines.append(f"  {param_name}: {value_str}")
+        if machine_settings:
+            for param_name, param_value in machine_settings.items():
+                if isinstance(param_value, dict):
+                    value = param_value.get('value', '')
+                    unit = param_value.get('unit', '')
+                    min_val = param_value.get('min', '')
+                    max_val = param_value.get('max', '')
+                    value_str = f"{value} {unit}".strip()
+                    if min_val and max_val:
+                        value_str += f" (range: {min_val}-{max_val} {unit})"
+                    lines.append(f"  {param_name}: {value_str}")
+        else:
+            lines.append("  (No machine settings available)")
         
         lines.extend(["", "MATERIAL PROPERTIES:", "-" * 80])
         
-        # Material properties
+        # Material properties (nested in categories)
         properties = material_data.get('properties', {})
-        for prop_name, prop_value in properties.items():
-            if isinstance(prop_value, dict):
-                value_str = f"{prop_value.get('value', '')} {prop_value.get('unit', '')}".strip()
-                lines.append(f"  {prop_name}: {value_str}")
+        for category_name, category_data in properties.items():
+            if isinstance(category_data, dict):
+                category_label = category_data.get('label', category_name)
+                lines.append(f"\n{category_label}:")
+                for prop_name, prop_value in category_data.items():
+                    # Skip metadata fields
+                    if prop_name in ['label', 'description', 'percentage']:
+                        continue
+                    # Add property
+                    if isinstance(prop_value, dict) and ('value' in prop_value or 'unit' in prop_value):
+                        value = prop_value.get('value', '')
+                        unit = prop_value.get('unit', '')
+                        min_val = prop_value.get('min', '')
+                        max_val = prop_value.get('max', '')
+                        value_str = f"{value} {unit}".strip()
+                        if min_val and max_val:
+                            value_str += f" (range: {min_val}-{max_val} {unit})"
+                        lines.append(f"  {prop_name}: {value_str}")
         
         # Atomic write
         temp_path = output_path.with_suffix('.txt.tmp')
