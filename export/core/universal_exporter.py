@@ -355,7 +355,53 @@ class UniversalFrontmatterExporter:
                 print(f"  ⏭️  Skipped: {skipped_count}")
             print(f"  📊 Total: {total}\n")
         
+        # Export datasets if not dry-run and domain is materials
+        if not dry_run and self.domain == 'materials' and exported_count > 0:
+            self._export_datasets(data, items, show_progress)
+        
         return results
+    
+    def _export_datasets(self, data: Dict[str, Any], items: Dict[str, Any], show_progress: bool = True):
+        """
+        Export datasets in JSON/CSV/TXT formats.
+        
+        Called after successful frontmatter export to generate datasets
+        for materials domain.
+        
+        Args:
+            data: Full domain data dict
+            items: Items dict from domain data
+            show_progress: If True, print progress
+        """
+        try:
+            from components.frontmatter.exporters.dataset_exporter import DatasetExporter
+            
+            # Get z-beam path (sibling directory to z-beam-generator)
+            generator_root = Path(__file__).parent.parent.parent
+            z_beam_path = generator_root.parent / "z-beam"
+            
+            if not z_beam_path.exists():
+                logger.warning(f"z-beam project not found at {z_beam_path}, skipping dataset export")
+                return
+            
+            if show_progress:
+                print("📦 Generating datasets...")
+            
+            # Initialize exporter
+            exporter = DatasetExporter(str(z_beam_path))
+            
+            # Export each material
+            for item_id, item_data in items.items():
+                exporter.export_material(item_data, item_id)
+            
+            # Print summary
+            if show_progress:
+                exporter.print_summary()
+            
+        except Exception as e:
+            logger.error(f"Dataset export failed: {e}")
+            if show_progress:
+                print(f"⚠️  Dataset export failed: {e}\n")
     
     def _build_base_frontmatter(
         self, 
