@@ -53,6 +53,11 @@ python3 run.py --export --domain contaminants
 python3 run.py --export --domain compounds
 python3 run.py --export --domain settings
 
+# Generate Schema.org datasets (JSON/CSV/TXT formats)
+python3 scripts/export/generate_datasets.py                  # All datasets (753 files)
+python3 scripts/export/generate_datasets.py --domain materials    # Materials only (459 files)
+python3 scripts/export/generate_datasets.py --domain contaminants # Contaminants only (294 files)
+
 # 🔥 Validate data integrity & links (MANDATORY Dec 18, 2025)
 python3 scripts/validation/verify_data_integrity.py      # Check source data
 python3 scripts/validation/verify_frontmatter_links.py   # Check exported files
@@ -103,6 +108,16 @@ python3 run.py --batch-test
 ---
 
 ## 🔄 Recent Updates (December 2025)
+
+### ✅ December 22: Standalone Dataset Generation from Source YAML 🔥 **NEW**
+- **Implementation**: Standalone script reading directly from Materials.yaml and Contaminants.yaml
+- **Output**: 753 files (251 datasets × 3 formats: JSON/CSV/TXT)
+- **Performance**: ~25 seconds for full generation, 100% success rate
+- **Architecture**: ADR 005 consolidation (materials+settings, contaminants+compounds)
+- **Formats**: Schema.org Dataset (JSON), tabular (CSV), human-readable (TXT)
+- **Script**: `scripts/export/generate_datasets.py`
+- **Tests**: Comprehensive test suite (14 classes, 30+ methods) in `tests/test_dataset_generation_source_yaml.py`
+- **Documentation**: [DATASET_GENERATION_SOURCE_YAML_IMPLEMENTATION_DEC22_2025.md](DATASET_GENERATION_SOURCE_YAML_IMPLEMENTATION_DEC22_2025.md)
 
 ### ✅ December 18: Link Integrity Validation System 🔥 **NEW**
 - **Two-Tier Validation**: Data integrity (source) + Frontmatter path validation (export)
