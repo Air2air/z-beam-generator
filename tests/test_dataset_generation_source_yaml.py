@@ -153,9 +153,11 @@ class TestADR005Consolidation:
         pass
 
 
+@pytest.mark.critical
 class TestVariableMeasuredArray:
     """Test variableMeasured array generation (≥20 required)"""
     
+    @pytest.mark.critical
     def test_materials_variable_measured_minimum(self):
         """CRITICAL: Test materials datasets have ≥20 variableMeasured items"""
         z_beam_path = project_root.parent / "z-beam"
@@ -177,6 +179,7 @@ class TestVariableMeasuredArray:
                     assert var_count >= 20, f"{material_file}: Expected ≥20 variables, got {var_count}"
                     print(f"✅ {material_file}: {var_count} variables")
     
+    @pytest.mark.critical
     def test_contaminants_variable_measured_minimum(self):
         """CRITICAL: Test contaminant datasets have ≥20 variableMeasured items"""
         z_beam_path = project_root.parent / "z-beam"
@@ -198,6 +201,7 @@ class TestVariableMeasuredArray:
                 assert var_count >= 5, f"{test_file.name}: Expected ≥5 variables, got {var_count}"
                 print(f"✅ {test_file.name}: {var_count} variables")
     
+    @pytest.mark.critical
     def test_variable_measured_structure(self):
         """CRITICAL: Test each variableMeasured item has required fields"""
         z_beam_path = project_root.parent / "z-beam"
