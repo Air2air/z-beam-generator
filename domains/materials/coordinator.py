@@ -14,6 +14,9 @@ Single-pass generation with quality logging for learning.
 - Cost: ~$0.015 per description
 - Quality scores logged for learning improvement
 
+REFACTORED (December 24, 2025):
+Now extends UniversalDomainCoordinator to eliminate duplication.
+
 Usage:
     generator = UnifiedMaterialsGenerator(api_client)
     generator.generate('Bronze', 'micro')
@@ -24,8 +27,7 @@ import random
 from pathlib import Path
 from typing import Dict, Optional
 
-from generation.core.evaluated_generator import QualityEvaluatedGenerator
-from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
+from shared.domain.base_coordinator import UniversalDomainCoordinator
 from shared.research.faq_topic_researcher import FAQTopicResearcher
 
 logger = logging.getLogger(__name__)
@@ -35,52 +37,44 @@ MATERIALS_DATA_PATH = Path("data/materials/Materials.yaml")
 PROMPTS_DIR = Path("prompts")
 
 
-class UnifiedMaterialsGenerator:
+class UnifiedMaterialsGenerator(UniversalDomainCoordinator):
     """
     Unified generator for all materials content types.
     
-    Single-pass production generation with quality logging for learning.
+    Extends UniversalDomainCoordinator to provide:
+    - QualityEvaluatedGenerator initialization
+    - Winston client integration
+    - SubjectiveEvaluator setup
+    - Domain config loading
     
-    Responsibilities:
-    - Generate content via Generator (single-pass)
-    - Handle FAQ topic enhancement (optional)
+    Domain-specific responsibilities:
     - Generate EEAT section (non-AI, random selection from regulatory_standards)
-    - Save to Materials.yaml
+    - Load materials data from Materials.yaml
+    - Save generated content to Materials.yaml
     """
     
-    def __init__(self, api_client):
-        """
-        Initialize unified generator with learning pipeline.
-        
-        Args:
-            api_client: API client for content generation (required)
-        """
-        if not api_client:
-            raise ValueError("API client required for content generation")
-        
-        self.api_client = api_client
-        self.logger = logging.getLogger(__name__)
-        
-        # Initialize SubjectiveEvaluator for quality learning
-        self.subjective_evaluator = SubjectiveEvaluator(api_client)
-        
-        # Initialize Winston client (optional - graceful degradation if not configured)
-        try:
-            from postprocessing.detection.winston_client import WinstonClient
-            self.winston_client = WinstonClient()
-            self.logger.info("✅ Winston client initialized")
-        except Exception as e:
-            self.winston_client = None
-            self.logger.warning(f"⚠️  Winston not configured (will continue without AI detection): {e}")
-        
-        # Initialize QualityEvaluatedGenerator with learning components
-        self.generator = QualityEvaluatedGenerator(
-            api_client=api_client,
-            subjective_evaluator=self.subjective_evaluator,
-            winston_client=self.winston_client
-        )
-        
-        self.logger.info("🚀 UnifiedMaterialsGenerator initialized with learning pipeline")
+    @property
+    def domain_name(self) -> str:
+        """Return domain name for config loading"""
+        return "materials"
+    
+    def _create_data_loader(self):
+        """Create materials data loader (lazy - not actually used)"""
+        # Materials coordinator loads data directly, no need for complex data loader
+        return None
+    
+    def _get_item_data(self, item_id: str) -> Dict:
+        """Get material data from Materials.yaml"""
+        materials_data = self._load_materials_data()
+        if item_id not in materials_data['materials']:
+            raise ValueError(f"Material '{item_id}' not found in Materials.yaml")
+        return materials_data['materials'][item_id]
+    
+    def _save_content(self, item_id: str, component_type: str, content: str, author_id: Optional[int] = None) -> None:
+        """Save content to Materials.yaml - handled by QualityEvaluatedGenerator"""
+        # Note: QualityEvaluatedGenerator already saves to Materials.yaml
+        # This method exists to satisfy abstract base class
+        pass
     
     def _load_materials_data(self) -> Dict:
         """Load Materials.yaml using centralized loader"""
