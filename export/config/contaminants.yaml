@@ -17,6 +17,7 @@ enrichments:
     legacy_fields:
     - metadata
     - voice_enhanced
+    - valid_materials
     extract_from_nested:
       laser_properties:
       - safety_data
@@ -25,7 +26,6 @@ enrichments:
       laser_properties: laser_properties
     move_to_relationships:
     - eeat
-    - valid_materials
     - caution_materials
     - prohibited_materials
     - regulatory_standards_detail
