@@ -140,9 +140,6 @@ generators:
   page_type: compound
   title_field: page_title
   description_field: meta_description
-- type: field_cleanup
-  module: export.enrichers.cleanup.field_cleanup_enricher
-  class: FieldCleanupEnricher
 - type: seo_description
   module: shared.generation.seo_description_generator
   class: SEODescriptionGenerator
@@ -265,6 +262,10 @@ enrichers:
     relationship_types:
     - produced_from_materials
     - produced_from_contaminants
+- type: field_cleanup
+  module: export.enrichers.cleanup.field_cleanup_enricher
+  class: FieldCleanupEnricher
+  description: Remove empty items arrays and redundant fields (runs after all generation)
 - type: field_order
   module: export.enrichers.metadata.field_order_enricher
   class: FieldOrderEnricher

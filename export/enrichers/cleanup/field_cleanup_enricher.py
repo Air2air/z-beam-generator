@@ -4,6 +4,7 @@ Field Cleanup Enricher - Removes redundant and unused fields from frontmatter.
 Purpose:
 - Remove redundant fields from relationship items (category, subcategory, slug)
 - Remove unused fields (typical_context when "general")
+- **Remove empty items arrays** (Dec 23, 2025) - Prevents null/empty relationship sections
 - Clean up data across all domains
 
 Target fields for removal:
@@ -11,6 +12,7 @@ Target fields for removal:
 - subcategory (duplicated in URL)
 - slug (duplicated in id)
 - typical_context (when value is "general")
+- Empty items arrays (prevents display issues)
 """
 
 from typing import Any, Dict, List
@@ -24,14 +26,28 @@ class FieldCleanupEnricher(BaseEnricher):
     REDUNDANT_FIELDS = ['category', 'subcategory', 'slug']
     
     def enrich(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        """Remove redundant fields from all relationship items."""
+        """Remove redundant fields from all relationship items and remove empty items arrays."""
         if 'relationships' not in data:
             return data
         
         relationships = data['relationships']
+        sections_to_remove = []
+        
+        # Debug logging
+        item_id = data.get('id', 'unknown')
         
         # Clean all relationship sections
         for section_key, section_value in relationships.items():
+            # Debug specific compound
+            if item_id == 'metal-vapors-mixed' and section_key == 'exposure_limits':
+                print(f"  [DEBUG] {item_id}.{section_key}:")
+                print(f"    Type: {type(section_value)}")
+                print(f"    Is dict: {isinstance(section_value, dict)}")
+                if isinstance(section_value, dict):
+                    print(f"    Keys: {section_value.keys()}")
+                    print(f"    Has items: {'items' in section_value}")
+                    print(f"    Has presentation: {'presentation' in section_value}")
+            
             if isinstance(section_value, dict):
                 # Handle grouped structure (e.g., materials.groups.metals.items)
                 if 'groups' in section_value:
@@ -41,11 +57,31 @@ class FieldCleanupEnricher(BaseEnricher):
                 
                 # Handle direct items (e.g., compounds.items)
                 elif 'items' in section_value:
+                    # Clean items
                     section_value['items'] = self._clean_items(section_value['items'])
+                    
+                    # Remove section if items array is now empty
+                    if not section_value['items']:
+                        sections_to_remove.append(section_key)
+                        print(f"  [FieldCleanup] {item_id}: Removing {section_key} (empty items)")
+                
+                # Remove section if it has presentation but no items field
+                # (This happens when items was removed from source)
+                elif 'presentation' in section_value and 'items' not in section_value:
+                    sections_to_remove.append(section_key)
+                    print(f"  [FieldCleanup] {item_id}: Removing {section_key} (no items field)")
             
             # Handle flat array (old pattern)
             elif isinstance(section_value, list):
                 relationships[section_key] = self._clean_items(section_value)
+                
+                # Remove section if list is empty
+                if not relationships[section_key]:
+                    sections_to_remove.append(section_key)
+        
+        # Remove empty sections
+        for section_key in sections_to_remove:
+            del relationships[section_key]
         
         return data
     

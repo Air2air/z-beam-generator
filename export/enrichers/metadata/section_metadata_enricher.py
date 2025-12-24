@@ -92,6 +92,10 @@ class SectionMetadataEnricher(BaseEnricher):
         item_id = frontmatter.get('id', 'unknown')
         wrapped_count = 0
         
+        # DEBUG: Log if this is metal-vapors-mixed
+        if item_id == 'metal-vapors-mixed':
+            logger.info(f"  [SectionMetadata] {item_id} - relationships keys BEFORE processing: {list(relationships.keys())}")
+        
         # Process each relationship field
         for field_name, field_data in list(relationships.items()):
             # Skip if no section config for this field
@@ -127,8 +131,12 @@ class SectionMetadataEnricher(BaseEnricher):
                     logger.debug(f"Added _section metadata to {field_name} for {item_id}")
                 continue
             
-            # Skip if data is not a list (not a relationship to wrap)
-            if not isinstance(field_data, list):
+            # Skip if data is None or not a list (not a relationship to wrap)
+            if field_data is None or not isinstance(field_data, list):
+                continue
+            
+            # Skip if list is empty
+            if not field_data:
                 continue
             
             # Create wrapper structure with presentation (new format)
