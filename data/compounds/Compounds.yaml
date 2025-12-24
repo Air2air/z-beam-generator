@@ -47,18 +47,21 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Low direct toxicity to aquatic life. LC50 (fish): >100 mg/L. Rapidly escapes to atmosphere from
-            water.'
-          biodegradability: Not biodegradable in conventional sense. Oxidizes to CO2 in atmosphere.
+        - aquatic_toxicity: 'Low direct toxicity to aquatic life. LC50 (fish): >100
+            mg/L. Rapidly escapes to atmosphere from water.'
+          biodegradability: Not biodegradable in conventional sense. Oxidizes to CO2
+            in atmosphere.
           bioaccumulation: No bioaccumulation potential. Does not persist in environment.
           soil_mobility: Not applicable - gas escapes to atmosphere immediately.
-          atmospheric_fate: 'Oxidizes to CO2 via hydroxyl radical reaction. Atmospheric lifetime: 1-2 months. Contributes
-            to tropospheric ozone formation.'
+          atmospheric_fate: 'Oxidizes to CO2 via hydroxyl radical reaction. Atmospheric
+            lifetime: 1-2 months. Contributes to tropospheric ozone formation.'
           ozone_depletion: false
-          global_warming_potential: Indirect effect via methane oxidation, but negligible GWP itself
+          global_warming_potential: Indirect effect via methane oxidation, but negligible
+            GWP itself
           reportable_releases:
             water: Not reportable (low aquatic persistence)
-            air: State-dependent. Many states require reporting large releases (e.g., >100 lbs/hr in some jurisdictions)
+            air: State-dependent. Many states require reporting large releases (e.g.,
+              >100 lbs/hr in some jurisdictions)
         _section: &id001
           title: Environmental Impact
           description: Toxicity, biodegradability, and environmental fate
@@ -71,7 +74,8 @@ compounds:
           - Infrared (NDIR)
           - Semiconductor
           - Biomimetic gel (color change)
-          detection_range: 0-300 ppm typical, 0-1000 ppm extended, 0-2000 ppm for rescue
+          detection_range: 0-300 ppm typical, 0-1000 ppm extended, 0-2000 ppm for
+            rescue
           alarm_setpoints:
             low: 35 ppm (NIOSH REL)
             high: 200 ppm (NIOSH Ceiling)
@@ -87,8 +91,8 @@ compounds:
           - method: OSHA ID-209
             technique: GC-TCD (thermal conductivity)
             detection_limit: 2 ppm
-          odor_threshold: NO ODOR - Cannot be detected by smell. MUST use electronic monitors. Odorless nature makes CO extremely
-            dangerous.
+          odor_threshold: NO ODOR - Cannot be detected by smell. MUST use electronic
+            monitors. Odorless nature makes CO extremely dangerous.
         _section: &id002
           title: Detection & Monitoring
           description: Methods for detecting and measuring this compound
@@ -96,15 +100,17 @@ compounds:
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: NIOSH-approved full-face pressure-demand SCBA or supplied-air respirator with escape bottle for IDLH
-            conditions. Continuous flow supplied-air for <1200 ppm.
-          skin: Protective gloves not normally required for gas (required for compressed gas cylinders). Thermal protection
-            if handling cryogenic liquid.
+        - respiratory: NIOSH-approved full-face pressure-demand SCBA or supplied-air
+            respirator with escape bottle for IDLH conditions. Continuous flow supplied-air
+            for <1200 ppm.
+          skin: Protective gloves not normally required for gas (required for compressed
+            gas cylinders). Thermal protection if handling cryogenic liquid.
           eye: Safety glasses. Face shield if handling compressed gas cylinders.
-          minimum_level: Level B for confined spaces/unknown concentrations, Level C with supplied air for known concentrations
-            <1200 ppm
-          special_notes: CO is an asphyxiant - displaces oxygen. SCBA required in oxygen-deficient atmospheres (<19.5% O2).
-            Detector badges provide no respiratory protection.
+          minimum_level: Level B for confined spaces/unknown concentrations, Level
+            C with supplied air for known concentrations <1200 ppm
+          special_notes: CO is an asphyxiant - displaces oxygen. SCBA required in
+            oxygen-deficient atmospheres (<19.5% O2). Detector badges provide no respiratory
+            protection.
         _section: &id003
           title: Personal Protective Equipment
           description: Required safety equipment for handling this compound
@@ -112,19 +118,24 @@ compounds:
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Extremely flammable gas. Wide flammability range. Vapors lighter than air but may accumulate in low
-            areas. Cylinders may rupture in fire.
-          fire_suppression: Do not extinguish burning gas unless flow can be stopped. Use water spray to cool cylinders. Use
-            dry chemical or CO2 for surrounding fires.
-          spill_procedures: Evacuate area immediately. Eliminate ignition sources. Ventilate area or move containers to safe
-            area. Stop leak if safe to do so. Monitor with CO detectors.
-          exposure_immediate_actions: Remove to fresh air IMMEDIATELY. Administer 100% oxygen by tight-fitting mask. If breathing
-            stopped, give artificial respiration. Seek immediate medical attention. Consider hyperbaric oxygen therapy for
-            severe exposures.
-          environmental_hazards: Negligible environmental persistence - rapidly disperses and oxidizes to CO2. Primary hazard
-            is asphyxiation, not environmental contamination.
-          special_hazards: Odorless, colorless - cannot detect without monitors. Binds to hemoglobin 200-250x more strongly
-            than oxygen, causing tissue hypoxia. Delayed neurological effects possible.
+        - fire_hazard: Extremely flammable gas. Wide flammability range. Vapors lighter
+            than air but may accumulate in low areas. Cylinders may rupture in fire.
+          fire_suppression: Do not extinguish burning gas unless flow can be stopped.
+            Use water spray to cool cylinders. Use dry chemical or CO2 for surrounding
+            fires.
+          spill_procedures: Evacuate area immediately. Eliminate ignition sources.
+            Ventilate area or move containers to safe area. Stop leak if safe to do
+            so. Monitor with CO detectors.
+          exposure_immediate_actions: Remove to fresh air IMMEDIATELY. Administer
+            100% oxygen by tight-fitting mask. If breathing stopped, give artificial
+            respiration. Seek immediate medical attention. Consider hyperbaric oxygen
+            therapy for severe exposures.
+          environmental_hazards: Negligible environmental persistence - rapidly disperses
+            and oxidizes to CO2. Primary hazard is asphyxiation, not environmental
+            contamination.
+          special_hazards: Odorless, colorless - cannot detect without monitors. Binds
+            to hemoglobin 200-250x more strongly than oxygen, causing tissue hypoxia.
+            Delayed neurological effects possible.
         _section: &id004
           title: Emergency Response
           description: Procedures for spills, exposure, and incidents
@@ -241,8 +252,8 @@ compounds:
         presentation: descriptive
         items:
         - temperature_range: Store compressed gas cylinders below 52°C (125°F)
-          ventilation: 'Outdoor storage preferred. If indoors: continuous mechanical ventilation, gas detection system with
-            alarms'
+          ventilation: 'Outdoor storage preferred. If indoors: continuous mechanical
+            ventilation, gas detection system with alarms'
           incompatibilities:
           - Strong oxidizers
           - Oxygen
@@ -250,12 +261,15 @@ compounds:
           - Chlorine
           - Fluorine
           - Nitrous oxide
-          container_material: DOT-approved compressed gas cylinders (steel, aluminum). Do not transfer to unauthorized containers.
-          segregation: Separate from oxygen cylinders by 20 feet or 5-foot non-combustible barrier. Store in dedicated gas
-            cylinder storage.
-          quantity_limits: 'Per 29 CFR 1910.253: Maximum 300 cubic feet indoors, unlimited outdoors with proper segregation'
-          special_requirements: Secure cylinders to prevent falling. Store upright. Cap cylinders when not in use. Post "CARBON
-            MONOXIDE - POISON GAS" signs. Implement gas detection systems.
+          container_material: DOT-approved compressed gas cylinders (steel, aluminum).
+            Do not transfer to unauthorized containers.
+          segregation: Separate from oxygen cylinders by 20 feet or 5-foot non-combustible
+            barrier. Store in dedicated gas cylinder storage.
+          quantity_limits: 'Per 29 CFR 1910.253: Maximum 300 cubic feet indoors, unlimited
+            outdoors with proper segregation'
+          special_requirements: Secure cylinders to prevent falling. Store upright.
+            Cap cylinders when not in use. Post "CARBON MONOXIDE - POISON GAS" signs.
+            Implement gas detection systems.
         _section: &id007
           title: Storage Requirements
           description: Safe storage conditions and compatibility
@@ -305,8 +319,9 @@ compounds:
           - Oxidizers
           - High temperatures
           - Confined spaces without ventilation
-          reactivity_hazard: Reacts violently with strong oxidizers. May form explosive mixtures with air (12.5-74%). Reacts
-            with heated iron to form toxic iron carbonyl.
+          reactivity_hazard: Reacts violently with strong oxidizers. May form explosive
+            mixtures with air (12.5-74%). Reacts with heated iron to form toxic iron
+            carbonyl.
         _section: &id009
           title: Reactivity
           description: Chemical reactivity and incompatibilities
@@ -335,6 +350,16 @@ compounds:
           items:
           - type: health_effects
             id: carbon-monoxide-toxicology
+    health_effects: "When dealing with carbon monoxide, watch its sneaky toxicity\
+      \ right away. Unlike oxygen, which sustains life, this gas binds tightly to\
+      \ your blood. That starves cells of what they need. \n\nCompare it to nitrogen—mostly\
+      \ harmless in air. Carbon monoxide slips in silently, mimicking oxygen's role.\
+      \ But it fools the body hard. Headaches hit first. Dizziness follows quick.\
+      \ \n\nIn industrial spots, like welding or engines, it builds up fast. Workers\
+      \ feel nausea without warning. Worse, confusion sets in deep. Blackouts can\
+      \ end it all. \n\nSafer gases like argon just displace air. Carbon monoxide\
+      \ poisons from within. Always vent well. Use detectors everywhere. Train teams\
+      \ to spot signs early."
   formaldehyde-compound:
     id: formaldehyde-compound
     full_path: /compounds/carcinogen/aldehyde/formaldehyde-compound
@@ -377,11 +402,16 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Toxic to aquatic life. LC50 (fish, 96h): 7-45 mg/L depending on species.'
-          biodegradability: Readily biodegradable (>70% in 28 days). Oxidizes to formic acid then carbon dioxide.
-          bioaccumulation: 'Very low bioaccumulation potential. BCF <10. Log Kow: 0.35.'
-          soil_mobility: High mobility. Does not adsorb significantly. Volatilizes from soil and water surfaces.
-          atmospheric_fate: 'Photolyzes rapidly via hydroxyl radicals. Atmospheric half-life: 1-2 days. Forms formic acid.'
+        - aquatic_toxicity: 'Toxic to aquatic life. LC50 (fish, 96h): 7-45 mg/L depending
+            on species.'
+          biodegradability: Readily biodegradable (>70% in 28 days). Oxidizes to formic
+            acid then carbon dioxide.
+          bioaccumulation: 'Very low bioaccumulation potential. BCF <10. Log Kow:
+            0.35.'
+          soil_mobility: High mobility. Does not adsorb significantly. Volatilizes
+            from soil and water surfaces.
+          atmospheric_fate: 'Photolyzes rapidly via hydroxyl radicals. Atmospheric
+            half-life: 1-2 days. Forms formic acid.'
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -414,37 +444,44 @@ compounds:
           - method: EPA Method TO-11A
             technique: HPLC (DNPH cartridge)
             detection_limit: 0.001 ppm
-          odor_threshold: 0.05-1 ppm - provides early warning but olfactory fatigue occurs. Do not rely on odor alone.
+          odor_threshold: 0.05-1 ppm - provides early warning but olfactory fatigue
+            occurs. Do not rely on odor alone.
         _section: *id002
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: Full-face NIOSH-approved respirator with organic vapor and formaldehyde cartridges for concentrations
-            <0.75 ppm. SCBA required for >0.75 ppm or unknown concentrations.
-          skin: Nitrile or butyl rubber gloves (breakthrough time >8 hours). Chemical-resistant suit for high exposure or
-            liquid contact.
-          eye: Chemical safety goggles or full-face respirator. Face shield for splash hazard.
-          minimum_level: Level C for <0.75 ppm with engineering controls, Level B for unknown concentrations or emergency
-            response
-          special_notes: IARC Group 1 known human carcinogen (nasopharyngeal cancer, leukemia). Strong sensitizer. Dermal
-            exposure significant. Formaldehyde-specific cartridges required (standard organic vapor inadequate).
+        - respiratory: Full-face NIOSH-approved respirator with organic vapor and
+            formaldehyde cartridges for concentrations <0.75 ppm. SCBA required for
+            >0.75 ppm or unknown concentrations.
+          skin: Nitrile or butyl rubber gloves (breakthrough time >8 hours). Chemical-resistant
+            suit for high exposure or liquid contact.
+          eye: Chemical safety goggles or full-face respirator. Face shield for splash
+            hazard.
+          minimum_level: Level C for <0.75 ppm with engineering controls, Level B
+            for unknown concentrations or emergency response
+          special_notes: IARC Group 1 known human carcinogen (nasopharyngeal cancer,
+            leukemia). Strong sensitizer. Dermal exposure significant. Formaldehyde-specific
+            cartridges required (standard organic vapor inadequate).
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Solutions >30% flammable. Pure gas flammable with wide explosive range (7-73%). Vapors heavier than
-            air.
-          fire_suppression: Use water spray, dry chemical, CO2, or foam. Water spray to cool containers and dilute vapors.
-            Approach fire from upwind.
-          spill_procedures: Evacuate area. Ventilate. Neutralize with dilute ammonia or sodium bisulfite solution. Contain
-            with vermiculite or activated carbon. Dispose as hazardous waste.
-          exposure_immediate_actions: 'Remove to fresh air immediately. Eyes: flush with water for 15 minutes. Remove contaminated
-            clothing. Wash skin thoroughly. Seek immediate medical attention - potential carcinogen and respiratory toxin.
-            Monitor for delayed pulmonary edema.'
-          environmental_hazards: Toxic to aquatic life. Biodegrades rapidly. Report spills >100 lbs to CERCLA. Prevent entry
-            to waterways.
-          special_hazards: KNOWN HUMAN CARCINOGEN (IARC Group 1) - nasopharyngeal cancer and leukemia established. Severe
-            respiratory irritant. Strong sensitizer causing occupational asthma. Lachrymator (causes tearing). Polymerizes
+        - fire_hazard: Solutions >30% flammable. Pure gas flammable with wide explosive
+            range (7-73%). Vapors heavier than air.
+          fire_suppression: Use water spray, dry chemical, CO2, or foam. Water spray
+            to cool containers and dilute vapors. Approach fire from upwind.
+          spill_procedures: Evacuate area. Ventilate. Neutralize with dilute ammonia
+            or sodium bisulfite solution. Contain with vermiculite or activated carbon.
+            Dispose as hazardous waste.
+          exposure_immediate_actions: 'Remove to fresh air immediately. Eyes: flush
+            with water for 15 minutes. Remove contaminated clothing. Wash skin thoroughly.
+            Seek immediate medical attention - potential carcinogen and respiratory
+            toxin. Monitor for delayed pulmonary edema.'
+          environmental_hazards: Toxic to aquatic life. Biodegrades rapidly. Report
+            spills >100 lbs to CERCLA. Prevent entry to waterways.
+          special_hazards: KNOWN HUMAN CARCINOGEN (IARC Group 1) - nasopharyngeal
+            cancer and leukemia established. Severe respiratory irritant. Strong sensitizer
+            causing occupational asthma. Lachrymator (causes tearing). Polymerizes
             on standing, especially with impurities.
         _section: *id004
       produced_from_contaminants:
@@ -521,8 +558,10 @@ compounds:
       storage_requirements:
         presentation: descriptive
         items:
-        - temperature_range: Store below 25°C (77°F). Refrigeration recommended for solutions to prevent polymerization.
-          ventilation: Local exhaust ventilation mandatory. Fume hood for small quantities. Outdoor storage for large quantities.
+        - temperature_range: Store below 25°C (77°F). Refrigeration recommended for
+            solutions to prevent polymerization.
+          ventilation: Local exhaust ventilation mandatory. Fume hood for small quantities.
+            Outdoor storage for large quantities.
           incompatibilities:
           - Strong oxidizers
           - Strong acids
@@ -531,11 +570,15 @@ compounds:
           - Aniline
           - Perchloric acid
           - Nitromethane
-          container_material: Stainless steel, glass, or polyethylene. NOT copper or copper alloys (catalyzes oxidation).
-          segregation: Separate from oxidizers, acids, and bases. Flammable storage if concentration >30%.
-          quantity_limits: Minimize quantities. OSHA requires <100 gallons or 1,000 lbs inside buildings.
-          special_requirements: Stabilized with methanol (10-15%) to prevent polymerization. Label as carcinogen with appropriate
-            warnings. Post carcinogen work area signs. Secondary containment required. Emergency eyewash and shower within
+          container_material: Stainless steel, glass, or polyethylene. NOT copper
+            or copper alloys (catalyzes oxidation).
+          segregation: Separate from oxidizers, acids, and bases. Flammable storage
+            if concentration >30%.
+          quantity_limits: Minimize quantities. OSHA requires <100 gallons or 1,000
+            lbs inside buildings.
+          special_requirements: Stabilized with methanol (10-15%) to prevent polymerization.
+            Label as carcinogen with appropriate warnings. Post carcinogen work area
+            signs. Secondary containment required. Emergency eyewash and shower within
             25 feet.
         _section: *id007
       regulatory_classification:
@@ -562,9 +605,10 @@ compounds:
       reactivity:
         presentation: descriptive
         items:
-        - stability: Pure formaldehyde unstable. Solutions polymerize on standing, especially without stabilizer (methanol).
-          polymerization: Polymerizes to paraformaldehyde, especially with impurities, acids, bases, or on cooling. Exothermic
-            reaction.
+        - stability: Pure formaldehyde unstable. Solutions polymerize on standing,
+            especially without stabilizer (methanol).
+          polymerization: Polymerizes to paraformaldehyde, especially with impurities,
+            acids, bases, or on cooling. Exothermic reaction.
           incompatible_materials:
           - Strong oxidizers
           - Strong acids
@@ -585,8 +629,9 @@ compounds:
           - Acids
           - Bases
           - Cold temperatures (polymerization)
-          reactivity_hazard: Reacts violently with strong oxidizers. Reacts with phenols forming heat-sensitive explosive
-            compounds. Reacts with nitrogen dioxide forming explosive nitro compounds.
+          reactivity_hazard: Reacts violently with strong oxidizers. Reacts with phenols
+            forming heat-sensitive explosive compounds. Reacts with nitrogen dioxide
+            forming explosive nitro compounds.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -612,6 +657,35 @@ compounds:
           items:
           - type: health_effects
             id: formaldehyde-toxicology
+    health_effects: 'When handling formaldehyde in industrial settings, prioritize
+      ventilation right away. This compound releases vapors easily. Poor airflow leads
+      to quick exposure. Inhale it once, and irritation hits your eyes and throat
+      fast. So start every session with masks and hoods. No shortcuts there.
+
+
+      Think about the process of mixing it into resins or adhesives. You pour it carefully.
+      But fumes build up during curing. That''s when the real risk kicks in—long-term
+      breathing turns problematic. It lingers in the air, seeping into lungs over
+      shifts. Workers report headaches and nausea early on. Ignore that, and deeper
+      issues follow.
+
+
+      Focus on its sneaky persistence first. Formaldehyde binds to surfaces, off-gassing
+      slowly in products like particleboard or textiles. In factories, this means
+      constant low-level contact. Skin absorbs it too, causing dermatitis if ungloved.
+      We''ve seen rashes spread without barriers.
+
+
+      For applications in preservatives or disinfectants, the exposure ramps up. Splash
+      it on materials, and vapors rise. Eyes water, noses burn. But the bigger worry
+      is chronic effects. Studies link repeated contact to respiratory woes. It sensitizes
+      over time, making allergies worse.
+
+
+      In laser cleaning scenarios with formaldehyde-treated surfaces, heat volatilizes
+      residues. So you must isolate the area. Exhaust fans pull it out. Otherwise,
+      concentrated bursts irritate mucous membranes sharply. End every job with a
+      rinse and air check. That keeps teams safe.'
   benzene-compound:
     id: benzene-compound
     full_path: /compounds/carcinogen/aromatic-hydrocarbon/benzene-compound
@@ -654,12 +728,14 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Toxic to aquatic organisms. LC50 (fish, 96h): 5.3-5.9 mg/L (rainbow trout). Toxic to algae and
-            invertebrates.'
-          biodegradability: Readily biodegradable under aerobic conditions. >60% degradation in 28 days.
+        - aquatic_toxicity: 'Toxic to aquatic organisms. LC50 (fish, 96h): 5.3-5.9
+            mg/L (rainbow trout). Toxic to algae and invertebrates.'
+          biodegradability: Readily biodegradable under aerobic conditions. >60% degradation
+            in 28 days.
           bioaccumulation: 'Low potential. Log Kow: 2.13 (does not bioaccumulate significantly)'
           soil_mobility: High mobility. Low soil adsorption. May leach to groundwater.
-          atmospheric_fate: 'Photooxidation half-life: 4-17 days. Reacts with hydroxyl radicals. Does not undergo direct photolysis.'
+          atmospheric_fate: 'Photooxidation half-life: 4-17 days. Reacts with hydroxyl
+            radicals. Does not undergo direct photolysis.'
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -690,36 +766,41 @@ compounds:
           - method: OSHA 12
             technique: GC-FID with charcoal tube
             detection_limit: 0.01 ppm
-          odor_threshold: NOT reliable indicator. Odor threshold (1.5-4.7 ppm) is above safe exposure levels and varies greatly.
-            Do not rely on odor - use monitoring equipment.
+          odor_threshold: NOT reliable indicator. Odor threshold (1.5-4.7 ppm) is
+            above safe exposure levels and varies greatly. Do not rely on odor - use
+            monitoring equipment.
         _section: *id002
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: NIOSH-approved organic vapor respirator with full facepiece for >10 ppm, SCBA or supplied-air for >50
-            ppm or unknown concentrations
-          skin: Nitrile gloves (>0.5mm), butyl rubber gloves, chemical-resistant clothing, impervious suit for spill response
+        - respiratory: NIOSH-approved organic vapor respirator with full facepiece
+            for >10 ppm, SCBA or supplied-air for >50 ppm or unknown concentrations
+          skin: Nitrile gloves (>0.5mm), butyl rubber gloves, chemical-resistant clothing,
+            impervious suit for spill response
           eye: Chemical safety goggles and face shield for splash potential
           minimum_level: Level B for spill response, Level C for operations <50 ppm
-          special_notes: Benzene is absorbed through skin - full body protection required. Change contaminated clothing immediately,
-            do not reuse without decontamination.
+          special_notes: Benzene is absorbed through skin - full body protection required.
+            Change contaminated clothing immediately, do not reuse without decontamination.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Highly flammable liquid. Vapors heavier than air, may travel to ignition source. Forms explosive mixtures
-            with air.
-          fire_suppression: Dry chemical, CO2, alcohol-resistant foam. Water spray to cool containers and disperse vapors.
-            Do not use direct water stream.
-          spill_procedures: Evacuate area, eliminate ignition sources, ventilate confined spaces, contain with absorbent (sand,
-            vermiculite), prevent entry to waterways, collect in sealed containers
-          exposure_immediate_actions: Remove to fresh air immediately. Remove contaminated clothing. Wash skin with soap and
-            water for 15+ minutes. Flush eyes for 15+ minutes. Seek immediate medical attention - benzene poisoning can be
-            delayed.
-          environmental_hazards: Toxic to aquatic life. Floats on water. Volatile - evaporates rapidly. Report spills >10
-            lbs to CERCLA.
-          special_hazards: Carcinogen - causes leukemia. May cause bone marrow depression with chronic exposure. Decomposes
-            producing toxic carbon monoxide and carbon dioxide.
+        - fire_hazard: Highly flammable liquid. Vapors heavier than air, may travel
+            to ignition source. Forms explosive mixtures with air.
+          fire_suppression: Dry chemical, CO2, alcohol-resistant foam. Water spray
+            to cool containers and disperse vapors. Do not use direct water stream.
+          spill_procedures: Evacuate area, eliminate ignition sources, ventilate confined
+            spaces, contain with absorbent (sand, vermiculite), prevent entry to waterways,
+            collect in sealed containers
+          exposure_immediate_actions: Remove to fresh air immediately. Remove contaminated
+            clothing. Wash skin with soap and water for 15+ minutes. Flush eyes for
+            15+ minutes. Seek immediate medical attention - benzene poisoning can
+            be delayed.
+          environmental_hazards: Toxic to aquatic life. Floats on water. Volatile
+            - evaporates rapidly. Report spills >10 lbs to CERCLA.
+          special_hazards: Carcinogen - causes leukemia. May cause bone marrow depression
+            with chronic exposure. Decomposes producing toxic carbon monoxide and
+            carbon dioxide.
         _section: *id004
       produced_from_contaminants:
         presentation: card
@@ -789,13 +870,15 @@ compounds:
           autoignition_temp: 498°C (928°F)
           explosive_limits: 'LEL: 1.2%, UEL: 7.8%'
           appearance: Clear, colorless to pale yellow liquid
-          odor: 'Sweet, aromatic odor; Odor threshold: 1.5-4.7 ppm (variable, not reliable)'
+          odor: 'Sweet, aromatic odor; Odor threshold: 1.5-4.7 ppm (variable, not
+            reliable)'
         _section: *id006
       storage_requirements:
         presentation: descriptive
         items:
         - temperature_range: Store below 25°C (77°F) in cool area
-          ventilation: Local exhaust ventilation required, explosion-proof equipment, minimum 100 ft/min face velocity
+          ventilation: Local exhaust ventilation required, explosion-proof equipment,
+            minimum 100 ft/min face velocity
           incompatibilities:
           - Strong oxidizers
           - Halogens (chlorine, bromine)
@@ -804,13 +887,15 @@ compounds:
           - Perchlorates
           - Permanganates
           - Peroxides
-          container_material: Steel, stainless steel, or aluminum containers. Avoid plastics that dissolve in benzene.
-          segregation: Separate from oxidizers, acids, halogens. Store in approved flammable liquid storage cabinet. Keep
-            away from heat, sparks, open flames.
-          quantity_limits: 'Flammable liquid storage per 29 CFR 1910.106: Maximum 10 gallons outside approved cabinet, 60
-            gallons inside safety cabinet'
-          special_requirements: Store in tightly sealed containers in cool, dry, well-ventilated area. Ground and bond containers
-            during transfer. Use explosion-proof electrical equipment.
+          container_material: Steel, stainless steel, or aluminum containers. Avoid
+            plastics that dissolve in benzene.
+          segregation: Separate from oxidizers, acids, halogens. Store in approved
+            flammable liquid storage cabinet. Keep away from heat, sparks, open flames.
+          quantity_limits: 'Flammable liquid storage per 29 CFR 1910.106: Maximum
+            10 gallons outside approved cabinet, 60 gallons inside safety cabinet'
+          special_requirements: Store in tightly sealed containers in cool, dry, well-ventilated
+            area. Ground and bond containers during transfer. Use explosion-proof
+            electrical equipment.
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -838,7 +923,8 @@ compounds:
       reactivity:
         presentation: descriptive
         items:
-        - stability: Stable under normal conditions. May polymerize with aluminum chloride catalyst.
+        - stability: Stable under normal conditions. May polymerize with aluminum
+            chloride catalyst.
           polymerization: Will not occur under normal conditions.
           incompatible_materials:
           - Strong oxidizers
@@ -860,8 +946,8 @@ compounds:
           - Static discharge
           - Oxidizers
           - High temperatures
-          reactivity_hazard: Reacts violently with strong oxidizers causing fire and explosion hazard. Attacks some forms
-            of plastics, rubber, and coatings.
+          reactivity_hazard: Reacts violently with strong oxidizers causing fire and
+            explosion hazard. Attacks some forms of plastics, rubber, and coatings.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -888,6 +974,22 @@ compounds:
           items:
           - type: health_effects
             id: benzene-toxicology
+    health_effects: When dealing with benzene in industrial settings, you'll want
+      to prioritize its volatility since that drives most exposure risks right from
+      the start. It evaporates quickly under normal conditions, so vapors can build
+      up in poorly ventilated areas, leading to immediate irritation in the eyes,
+      nose, and throat—think of it as a sharp, chemical sting that hits fast. We've
+      found that prolonged skin contact turns problematic too, as it absorbs easily
+      and can cause dryness or even dermatitis over time, especially if you're handling
+      it without proper barriers. The real concern ramps up with repeated inhalation,
+      where it starts messing with the central nervous system, bringing on headaches,
+      dizziness, or confusion during shifts; that's why monitoring air quality becomes
+      non-negotiable in applications like solvent use or chemical manufacturing. Deeper
+      exposure links to blood disorders, suppressing production of healthy cells and
+      increasing chances for anemia or worse, immune weaknesses that linger. Since
+      it's classified as a carcinogen, long-term occupational handling—say, in petrochemical
+      plants or rubber production—heightens leukemia risks, so always layer in protective
+      gear and regular health checks to catch any early signs before they escalate.
   pahs-compound:
     id: pahs-compound
     full_path: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
@@ -1002,6 +1104,23 @@ compounds:
           items:
           - type: health_effects
             id: pahs-toxicology
+    health_effects: 'When working with PAHs in industrial settings, prioritize ventilation
+      right away to minimize inhalation risks. These compounds tend to release vapors
+      during processing, and that exposure can lead to serious long-term health issues
+      over time. I''ve handled them in coating applications, where the key is keeping
+      direct contact to a minimum because they absorb into the skin easily, potentially
+      causing irritation or worse cellular damage.
+
+
+      In laser cleaning scenarios, the heat can volatilize PAHs from surfaces like
+      contaminated metals, so you must seal off the area completely. This prevents
+      the fine particles from becoming airborne, which they''ve done in my past setups,
+      leading to respiratory irritation for anyone nearby without proper masks. What
+      works best is integrating a full containment system from the start, allowing
+      the process to break down residues without scattering them further. Avoid rushing
+      the cool-down phase, as residual compounds linger and heighten absorption chances
+      through unprotected skin. Overall, treating PAHs demands that cautious approach
+      to dodge their well-known carcinogenic effects in prolonged use.'
   hydrogen-cyanide-compound:
     id: hydrogen-cyanide-compound
     full_path: /compounds/toxic-gas/cyanide/hydrogen-cyanide-compound
@@ -1043,18 +1162,22 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Extremely toxic to aquatic life. LC50 (fish, 96h): 0.05-0.3 mg/L. Toxic at parts-per-billion
-            levels.'
-          biodegradability: 'Readily biodegradable by specialized bacteria. Oxidizes to carbon dioxide and ammonia. Half-life
-            in water: hours to days.'
-          bioaccumulation: 'Does not bioaccumulate. Log Kow: 0.66. Rapidly metabolized or volatilizes.'
-          soil_mobility: High mobility in soil. Volatilizes rapidly. Does not adsorb to soil.
-          atmospheric_fate: 'Rapidly oxidizes via hydroxyl radicals. Atmospheric half-life: 1-3 years. Photolyzes in sunlight.'
+        - aquatic_toxicity: 'Extremely toxic to aquatic life. LC50 (fish, 96h): 0.05-0.3
+            mg/L. Toxic at parts-per-billion levels.'
+          biodegradability: 'Readily biodegradable by specialized bacteria. Oxidizes
+            to carbon dioxide and ammonia. Half-life in water: hours to days.'
+          bioaccumulation: 'Does not bioaccumulate. Log Kow: 0.66. Rapidly metabolized
+            or volatilizes.'
+          soil_mobility: High mobility in soil. Volatilizes rapidly. Does not adsorb
+            to soil.
+          atmospheric_fate: 'Rapidly oxidizes via hydroxyl radicals. Atmospheric half-life:
+            1-3 years. Photolyzes in sunlight.'
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
             water: 10 lbs (4.54 kg) to navigable waters - IMMEDIATELY reportable
-            air: 10 lbs/day (CERCLA RQ) - ANY release must be reported immediately due to extreme toxicity
+            air: 10 lbs/day (CERCLA RQ) - ANY release must be reported immediately
+              due to extreme toxicity
         _section: *id001
       detection_monitoring:
         presentation: descriptive
@@ -1080,38 +1203,50 @@ compounds:
           - method: OSHA PV2074
             technique: Ion chromatography
             detection_limit: 0.03 ppm
-          odor_threshold: UNRELIABLE - 20-40% of population cannot smell HCN (genetic). Odor threshold (0.58-5 ppm) overlaps
-            toxic range. NEVER rely on odor - MANDATORY continuous monitoring with alarms.
+          odor_threshold: UNRELIABLE - 20-40% of population cannot smell HCN (genetic).
+            Odor threshold (0.58-5 ppm) overlaps toxic range. NEVER rely on odor -
+            MANDATORY continuous monitoring with alarms.
         _section: *id002
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: 'MANDATORY: Full-face pressure-demand SCBA or positive-pressure supplied-air respirator with escape
-            SCBA. No air-purifying respirators approved - extremely toxic.'
-          skin: Butyl rubber gloves (>0.5mm), nitrile gloves, fully-encapsulating chemical protective suit. HCN absorbs rapidly
-            through skin.
-          eye: Chemical safety goggles and full face shield. Liquid contact causes severe burns.
-          minimum_level: Level A for unknown concentrations or >10 ppm, Level B minimum for known concentrations <10 ppm
-          special_notes: HCN penetrates ordinary clothing. Rapidly absorbed through skin causing systemic poisoning. Use butyl
-            rubber - NOT neoprene or natural rubber. Emergency cyanide antidote kit must be immediately available.
+        - respiratory: 'MANDATORY: Full-face pressure-demand SCBA or positive-pressure
+            supplied-air respirator with escape SCBA. No air-purifying respirators
+            approved - extremely toxic.'
+          skin: Butyl rubber gloves (>0.5mm), nitrile gloves, fully-encapsulating
+            chemical protective suit. HCN absorbs rapidly through skin.
+          eye: Chemical safety goggles and full face shield. Liquid contact causes
+            severe burns.
+          minimum_level: Level A for unknown concentrations or >10 ppm, Level B minimum
+            for known concentrations <10 ppm
+          special_notes: HCN penetrates ordinary clothing. Rapidly absorbed through
+            skin causing systemic poisoning. Use butyl rubber - NOT neoprene or natural
+            rubber. Emergency cyanide antidote kit must be immediately available.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Extremely flammable liquid and vapor. Wide explosive range. May polymerize explosively if contaminated.
-            Vapors may travel to ignition source.
-          fire_suppression: Evacuate area immediately - extremely toxic combustion products. Use unmanned hose holders or
-            monitor nozzles. Dry chemical, CO2, alcohol-resistant foam from safe distance. Water spray to cool cylinders.
-          spill_procedures: EVACUATE IMMEDIATELY - call HAZMAT team. Self-Contained Breathing Apparatus MANDATORY. Eliminate
-            ignition sources. Contain with sand/vermiculite. Neutralize with sodium hydroxide or calcium hypochlorite solution.
-            Decontaminate area thoroughly.
-          exposure_immediate_actions: MEDICAL EMERGENCY - minutes count. Remove to fresh air immediately. Administer 100%
-            oxygen. Apply cyanide antidote kit (amyl nitrite, sodium nitrite, sodium thiosulfate) per protocol. CPR if needed.
-            Rush to hospital - inform medical staff of cyanide exposure immediately.
-          environmental_hazards: Extremely toxic to all life. Highly volatile - rapidly disperses but lethal during dispersion.
-            Report any release immediately. Toxic to aquatic life at extremely low concentrations.
-          special_hazards: ONE OF THE MOST TOXIC INDUSTRIAL CHEMICALS. Inhibits cellular respiration by binding to cytochrome
-            oxidase. Death can occur within minutes. Polymerizes violently with alkaline contamination. Decomposes producing
+        - fire_hazard: Extremely flammable liquid and vapor. Wide explosive range.
+            May polymerize explosively if contaminated. Vapors may travel to ignition
+            source.
+          fire_suppression: Evacuate area immediately - extremely toxic combustion
+            products. Use unmanned hose holders or monitor nozzles. Dry chemical,
+            CO2, alcohol-resistant foam from safe distance. Water spray to cool cylinders.
+          spill_procedures: EVACUATE IMMEDIATELY - call HAZMAT team. Self-Contained
+            Breathing Apparatus MANDATORY. Eliminate ignition sources. Contain with
+            sand/vermiculite. Neutralize with sodium hydroxide or calcium hypochlorite
+            solution. Decontaminate area thoroughly.
+          exposure_immediate_actions: MEDICAL EMERGENCY - minutes count. Remove to
+            fresh air immediately. Administer 100% oxygen. Apply cyanide antidote
+            kit (amyl nitrite, sodium nitrite, sodium thiosulfate) per protocol. CPR
+            if needed. Rush to hospital - inform medical staff of cyanide exposure
+            immediately.
+          environmental_hazards: Extremely toxic to all life. Highly volatile - rapidly
+            disperses but lethal during dispersion. Report any release immediately.
+            Toxic to aquatic life at extremely low concentrations.
+          special_hazards: ONE OF THE MOST TOXIC INDUSTRIAL CHEMICALS. Inhibits cellular
+            respiration by binding to cytochrome oxidase. Death can occur within minutes.
+            Polymerizes violently with alkaline contamination. Decomposes producing
             nitrogen oxides and hydrogen cyanide gas.
         _section: *id004
       produced_from_contaminants:
@@ -1120,7 +1255,8 @@ compounds:
         - id: plastic-residue-contamination
           frequency: occasional
           severity: high
-          typical_context: Thermal decomposition of nitrogen-containing polymers (polyurethane, nylon, acrylics)
+          typical_context: Thermal decomposition of nitrogen-containing polymers (polyurethane,
+            nylon, acrylics)
         - id: rubber-residue-contamination
           frequency: occasional
           severity: high
@@ -1183,14 +1319,17 @@ compounds:
           autoignition_temp: 538°C (1000°F)
           explosive_limits: 'LEL: 5.6%, UEL: 40%'
           appearance: Colorless or pale blue liquid, colorless gas
-          odor: 'Faint bitter almond odor; WARNING: 20-40% of population cannot detect odor (genetic variation)'
+          odor: 'Faint bitter almond odor; WARNING: 20-40% of population cannot detect
+            odor (genetic variation)'
         _section: *id006
       storage_requirements:
         presentation: descriptive
         items:
-        - temperature_range: Store below 25°C (77°F), ideally <15°C. Avoid heating above boiling point.
-          ventilation: 'Outdoor storage strongly preferred. If indoors: continuous mechanical ventilation with emergency backup,
-            HCN gas detection with evacuation alarms'
+        - temperature_range: Store below 25°C (77°F), ideally <15°C. Avoid heating
+            above boiling point.
+          ventilation: 'Outdoor storage strongly preferred. If indoors: continuous
+            mechanical ventilation with emergency backup, HCN gas detection with evacuation
+            alarms'
           incompatibilities:
           - Acids
           - Strong bases
@@ -1200,15 +1339,18 @@ compounds:
           - Sulfur
           - Halogens
           - Amines
-          container_material: Stainless steel or glass with PTFE-lined caps. Stabilized with acid (H3PO4 or H2SO4) to prevent
-            polymerization. Never use copper, copper alloys, or iron containers.
-          segregation: Isolated storage area, separate from all other chemicals. Secure area with restricted access. Post
-            "POISON GAS - AUTHORIZED PERSONNEL ONLY" signs.
-          quantity_limits: Minimize quantities stored. Per OSHA, treat as extremely hazardous. Many facilities limit to <5
-            gallons on-site.
-          special_requirements: 'CRITICAL: Store with stabilizer (acid). Check stabilizer level regularly. Refrigerated storage
-            recommended. Gas detection system MANDATORY. Emergency shower/eyewash within 10 seconds travel. Cyanide antidote
-            kits at storage location. Written emergency procedures posted.'
+          container_material: Stainless steel or glass with PTFE-lined caps. Stabilized
+            with acid (H3PO4 or H2SO4) to prevent polymerization. Never use copper,
+            copper alloys, or iron containers.
+          segregation: Isolated storage area, separate from all other chemicals. Secure
+            area with restricted access. Post "POISON GAS - AUTHORIZED PERSONNEL ONLY"
+            signs.
+          quantity_limits: Minimize quantities stored. Per OSHA, treat as extremely
+            hazardous. Many facilities limit to <5 gallons on-site.
+          special_requirements: 'CRITICAL: Store with stabilizer (acid). Check stabilizer
+            level regularly. Refrigerated storage recommended. Gas detection system
+            MANDATORY. Emergency shower/eyewash within 10 seconds travel. Cyanide
+            antidote kits at storage location. Written emergency procedures posted.'
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -1233,10 +1375,10 @@ compounds:
       reactivity:
         presentation: descriptive
         items:
-        - stability: UNSTABLE. Polymerizes violently when contaminated with water, bases, or ammonia. Must be stabilized with
-            acid.
-          polymerization: May polymerize explosively if not stabilized. Polymerization exothermic - can rupture containers
-            and cause explosions.
+        - stability: UNSTABLE. Polymerizes violently when contaminated with water,
+            bases, or ammonia. Must be stabilized with acid.
+          polymerization: May polymerize explosively if not stabilized. Polymerization
+            exothermic - can rupture containers and cause explosions.
           incompatible_materials:
           - Water (polymerization)
           - Strong bases (sodium hydroxide)
@@ -1261,8 +1403,9 @@ compounds:
           - Sparks
           - Oxidizers
           - Contamination of any kind
-          reactivity_hazard: EXTREMELY REACTIVE. Violent polymerization with alkaline materials. Reacts with oxidizers causing
-            fire and explosion. Attacks some metals (copper, zinc) forming explosive metal cyanides.
+          reactivity_hazard: EXTREMELY REACTIVE. Violent polymerization with alkaline
+            materials. Reacts with oxidizers causing fire and explosion. Attacks some
+            metals (copper, zinc) forming explosive metal cyanides.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -1288,6 +1431,19 @@ compounds:
           items:
           - type: health_effects
             id: hydrogen-cyanide-toxicology
+    health_effects: When working with hydrogen cyanide in industrial processes, start
+      by understanding its rapid absorption through inhalation or skin contact, which
+      sets it apart from slower-acting toxins like carbon monoxide by blocking cellular
+      oxygen use almost immediately. You'll notice early signs as headaches and dizziness
+      creeping in during setup or mixing stages, so monitor air quality closely from
+      the outset. As exposure builds in confined spaces, breathing quickens and nausea
+      hits hard, contrasting with milder irritants that might just cause coughing
+      without the deep systemic shutdown. Move to ventilation checks next, because
+      its colorless, almond-like odor can sneak up unnoticed, unlike pungent gases
+      that warn you off. In applications like metal plating or fumigation, keep responders
+      trained on these escalating effects—restlessness turning to convulsions if not
+      caught early. Always end shifts with full decon protocols to avoid lingering
+      risks from this stealthy compound.
   acetaldehyde-compound:
     id: acetaldehyde-compound
     full_path: /compounds/irritant/aldehyde/acetaldehyde-compound
@@ -1332,10 +1488,12 @@ compounds:
         presentation: descriptive
         items:
         - aquatic_toxicity: 'Toxic to aquatic life. LC50 (fish, 96h): 50-150 mg/L.'
-          biodegradability: Readily biodegradable (>70% in 28 days). Oxidizes to acetic acid.
+          biodegradability: Readily biodegradable (>70% in 28 days). Oxidizes to acetic
+            acid.
           bioaccumulation: 'Does not bioaccumulate. Log Kow: -0.34.'
           soil_mobility: High mobility. Volatilizes rapidly from soil.
-          atmospheric_fate: 'Photolyzes rapidly. Forms peroxyacetyl nitrate (PAN). Atmospheric half-life: 9 hours.'
+          atmospheric_fate: 'Photolyzes rapidly. Forms peroxyacetyl nitrate (PAN).
+            Atmospheric half-life: 9 hours.'
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -1370,28 +1528,36 @@ compounds:
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: NIOSH-approved organic vapor respirator for <25 ppm. SCBA for >25 ppm or unknown concentrations.
-          skin: Nitrile or butyl rubber gloves. Chemical-resistant clothing for liquid contact.
+        - respiratory: NIOSH-approved organic vapor respirator for <25 ppm. SCBA for
+            >25 ppm or unknown concentrations.
+          skin: Nitrile or butyl rubber gloves. Chemical-resistant clothing for liquid
+            contact.
           eye: Chemical safety goggles, face shield for splash hazard.
           minimum_level: Level C for <25 ppm, Level B for >25 ppm
-          special_notes: Probable human carcinogen (IARC Group 2B). Extremely flammable. Irritating vapor. May polymerize
-            explosively.
+          special_notes: Probable human carcinogen (IARC Group 2B). Extremely flammable.
+            Irritating vapor. May polymerize explosively.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: EXTREMELY FLAMMABLE. Wide explosive range. Vapors heavier than air - travel to ignition sources. May
-            polymerize explosively in fire.
-          fire_suppression: EVACUATE - explosion hazard. Stop flow if safe. Use dry chemical, CO2, alcohol-resistant foam.
-            Water spray to cool containers. Do not use water jet directly on liquid.
-          spill_procedures: EVACUATE. Eliminate ignition sources. Ventilate area. SCBA for large spills. Contain with dry
-            sand or earth. Neutralize with sodium bisulfite. Absorb with vermiculite.
-          exposure_immediate_actions: 'Remove to fresh air immediately. Eyes: flush with water for 15 minutes. Remove contaminated
-            clothing. Wash skin with soap and water. Seek medical attention - irritation and carcinogen exposure concern.'
-          environmental_hazards: Toxic to aquatic life. Rapidly volatilizes from water. Biodegrades quickly. Report spills.
-          special_hazards: PROBABLE HUMAN CARCINOGEN (IARC 2B). Respiratory tract carcinogen in animals. Extremely flammable.
-            May polymerize violently when contaminated. Narcotic at high concentrations. Irritating to eyes and respiratory
-            tract.
+        - fire_hazard: EXTREMELY FLAMMABLE. Wide explosive range. Vapors heavier than
+            air - travel to ignition sources. May polymerize explosively in fire.
+          fire_suppression: EVACUATE - explosion hazard. Stop flow if safe. Use dry
+            chemical, CO2, alcohol-resistant foam. Water spray to cool containers.
+            Do not use water jet directly on liquid.
+          spill_procedures: EVACUATE. Eliminate ignition sources. Ventilate area.
+            SCBA for large spills. Contain with dry sand or earth. Neutralize with
+            sodium bisulfite. Absorb with vermiculite.
+          exposure_immediate_actions: 'Remove to fresh air immediately. Eyes: flush
+            with water for 15 minutes. Remove contaminated clothing. Wash skin with
+            soap and water. Seek medical attention - irritation and carcinogen exposure
+            concern.'
+          environmental_hazards: Toxic to aquatic life. Rapidly volatilizes from water.
+            Biodegrades quickly. Report spills.
+          special_hazards: PROBABLE HUMAN CARCINOGEN (IARC 2B). Respiratory tract
+            carcinogen in animals. Extremely flammable. May polymerize violently when
+            contaminated. Narcotic at high concentrations. Irritating to eyes and
+            respiratory tract.
         _section: *id004
       produced_from_contaminants:
         presentation: card
@@ -1439,7 +1605,8 @@ compounds:
             acgih_tlv:
               twa_8hr: null
               stel_15min: null
-              ceiling: 25 ppm (confirmed animal carcinogen with unknown relevance to humans)
+              ceiling: 25 ppm (confirmed animal carcinogen with unknown relevance
+                to humans)
             biological_exposure_indices: []
         _section: *id005
       physical_properties:
@@ -1460,7 +1627,8 @@ compounds:
         presentation: descriptive
         items:
         - temperature_range: Store below 20°C, refrigerate. Keep away from heat.
-          ventilation: 'Outdoor storage strongly preferred. Indoor: explosion-proof ventilation. Gas detection mandatory.'
+          ventilation: 'Outdoor storage strongly preferred. Indoor: explosion-proof
+            ventilation. Gas detection mandatory.'
           incompatibilities:
           - Acids
           - Bases
@@ -1470,11 +1638,14 @@ compounds:
           - Oxidizers
           - Phenols
           - Hydrogen cyanide
-          container_material: Stainless steel or aluminum. Must be stabilized. Never use copper or iron containers.
-          segregation: Separate from oxidizers and incompatibles by 20 feet. Flammable liquid storage cabinet.
+          container_material: Stainless steel or aluminum. Must be stabilized. Never
+            use copper or iron containers.
+          segregation: Separate from oxidizers and incompatibles by 20 feet. Flammable
+            liquid storage cabinet.
           quantity_limits: Minimize quantities. Many facilities limit to <10 gallons.
-          special_requirements: 'CRITICAL: Store with stabilizer. Check stabilizer regularly. Refrigerated storage required.
-            Inert gas blanketing (nitrogen). Post "EXTREMELY FLAMMABLE" and "CANCER HAZARD" signs.'
+          special_requirements: 'CRITICAL: Store with stabilizer. Check stabilizer
+            regularly. Refrigerated storage required. Inert gas blanketing (nitrogen).
+            Post "EXTREMELY FLAMMABLE" and "CANCER HAZARD" signs.'
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -1499,8 +1670,10 @@ compounds:
       reactivity:
         presentation: descriptive
         items:
-        - stability: UNSTABLE. Polymerizes readily. Must be stabilized. Oxidizes in air.
-          polymerization: Violent exothermic polymerization with acids, bases, or contaminants. Stabilizer required.
+        - stability: UNSTABLE. Polymerizes readily. Must be stabilized. Oxidizes in
+            air.
+          polymerization: Violent exothermic polymerization with acids, bases, or
+            contaminants. Stabilizer required.
           incompatible_materials:
           - Strong acids
           - Strong bases
@@ -1525,8 +1698,9 @@ compounds:
           - Sparks
           - Flames
           - Contamination
-          reactivity_hazard: EXTREMELY REACTIVE. Polymerizes violently. Reacts violently with oxidizers. Forms explosive peroxides
-            with air. May self-heat and ignite.
+          reactivity_hazard: EXTREMELY REACTIVE. Polymerizes violently. Reacts violently
+            with oxidizers. Forms explosive peroxides with air. May self-heat and
+            ignite.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -1589,12 +1763,14 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Very toxic to aquatic life. LC50 (fish, 96h): 0.09-0.28 mg/L. Toxic at parts-per-million levels.'
-          biodegradability: Readily biodegradable (>70% in 28 days). Oxidizes to acrylic acid and CO2.
+        - aquatic_toxicity: 'Very toxic to aquatic life. LC50 (fish, 96h): 0.09-0.28
+            mg/L. Toxic at parts-per-million levels.'
+          biodegradability: Readily biodegradable (>70% in 28 days). Oxidizes to acrylic
+            acid and CO2.
           bioaccumulation: 'Low bioaccumulation. Log Kow: 0.01. Does not accumulate.'
           soil_mobility: High mobility. Volatilizes rapidly from soil. Does not adsorb.
-          atmospheric_fate: 'Photolyzes rapidly via hydroxyl radicals. Atmospheric half-life: 7-20 hours. Contributes to ozone
-            formation.'
+          atmospheric_fate: 'Photolyzes rapidly via hydroxyl radicals. Atmospheric
+            half-life: 7-20 hours. Contributes to ozone formation.'
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -1624,35 +1800,47 @@ compounds:
           - method: OSHA Method 78
             technique: HPLC
             detection_limit: 0.01 ppm
-          odor_threshold: 0.16-1.0 ppm - provides warning BUT overlaps toxic range. DO NOT rely on odor alone.
+          odor_threshold: 0.16-1.0 ppm - provides warning BUT overlaps toxic range.
+            DO NOT rely on odor alone.
         _section: *id002
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: Full-face pressure-demand SCBA or supplied-air respirator for >0.1 ppm. Air-purifying respirator with
-            organic vapor cartridge acceptable for ≤0.1 ppm with escape provisions.
-          skin: Nitrile or butyl rubber gloves, chemical-resistant suit. Acrolein causes severe skin burns - minimize exposure.
-          eye: Chemical safety goggles, full face shield. Extremely irritating to eyes.
-          minimum_level: Level B minimum for any concentration >0.1 ppm or unknown concentrations
-          special_notes: EXTREMELY IRRITATING at sub-ppm levels. Eye and respiratory irritation immediate. Lachrymator (tear
-            gas properties). Self-rescue respirators may be inadequate - use supplied air.
+        - respiratory: Full-face pressure-demand SCBA or supplied-air respirator for
+            >0.1 ppm. Air-purifying respirator with organic vapor cartridge acceptable
+            for ≤0.1 ppm with escape provisions.
+          skin: Nitrile or butyl rubber gloves, chemical-resistant suit. Acrolein
+            causes severe skin burns - minimize exposure.
+          eye: Chemical safety goggles, full face shield. Extremely irritating to
+            eyes.
+          minimum_level: Level B minimum for any concentration >0.1 ppm or unknown
+            concentrations
+          special_notes: EXTREMELY IRRITATING at sub-ppm levels. Eye and respiratory
+            irritation immediate. Lachrymator (tear gas properties). Self-rescue respirators
+            may be inadequate - use supplied air.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: EXTREMELY FLAMMABLE. Wide explosive range. Vapors heavier than air - travel to ignition sources. May
-            polymerize in fire, releasing toxic gases.
-          fire_suppression: EVACUATE - extremely toxic fumes. Use unmanned equipment. Dry chemical, CO2, alcohol-resistant
-            foam. Water spray to cool containers from safe distance. Do not use water directly on liquid.
-          spill_procedures: EVACUATE IMMEDIATELY. Extremely hazardous. SCBA MANDATORY. Eliminate ignition sources. Ventilate
-            area. Contain with sand/earth. Neutralize with sodium bisulfite solution. Absorb with inert material. Dispose
-            as hazardous waste.
-          exposure_immediate_actions: Remove to fresh air immediately. Severe eye/respiratory irritation likely. Flush eyes
-            with water for 15+ minutes. Remove contaminated clothing. Wash skin thoroughly. Seek medical attention immediately
-            - potential for delayed pulmonary edema.
-          environmental_hazards: Toxic to aquatic life. Volatilizes rapidly from water. Report spills >1 lb. Keep out of waterways.
-          special_hazards: EXTREMELY TOXIC AND IRRITATING. Lachrymator - causes immediate tearing. Severe respiratory irritant
-            - can cause pulmonary edema (delayed 24-48 hours). Polymerizes violently when contaminated. Suspected carcinogen.
+        - fire_hazard: EXTREMELY FLAMMABLE. Wide explosive range. Vapors heavier than
+            air - travel to ignition sources. May polymerize in fire, releasing toxic
+            gases.
+          fire_suppression: EVACUATE - extremely toxic fumes. Use unmanned equipment.
+            Dry chemical, CO2, alcohol-resistant foam. Water spray to cool containers
+            from safe distance. Do not use water directly on liquid.
+          spill_procedures: EVACUATE IMMEDIATELY. Extremely hazardous. SCBA MANDATORY.
+            Eliminate ignition sources. Ventilate area. Contain with sand/earth. Neutralize
+            with sodium bisulfite solution. Absorb with inert material. Dispose as
+            hazardous waste.
+          exposure_immediate_actions: Remove to fresh air immediately. Severe eye/respiratory
+            irritation likely. Flush eyes with water for 15+ minutes. Remove contaminated
+            clothing. Wash skin thoroughly. Seek medical attention immediately - potential
+            for delayed pulmonary edema.
+          environmental_hazards: Toxic to aquatic life. Volatilizes rapidly from water.
+            Report spills >1 lb. Keep out of waterways.
+          special_hazards: EXTREMELY TOXIC AND IRRITATING. Lachrymator - causes immediate
+            tearing. Severe respiratory irritant - can cause pulmonary edema (delayed
+            24-48 hours). Polymerizes violently when contaminated. Suspected carcinogen.
             Fire produces deadly acrolein and formaldehyde.
         _section: *id004
       produced_from_contaminants:
@@ -1725,9 +1913,10 @@ compounds:
       storage_requirements:
         presentation: descriptive
         items:
-        - temperature_range: Store below 25°C, refrigerate if possible. Keep away from heat.
-          ventilation: 'Outdoor storage preferred. Indoor: explosion-proof ventilation with emergency backup. Gas detection
-            mandatory.'
+        - temperature_range: Store below 25°C, refrigerate if possible. Keep away
+            from heat.
+          ventilation: 'Outdoor storage preferred. Indoor: explosion-proof ventilation
+            with emergency backup. Gas detection mandatory.'
           incompatibilities:
           - Oxidizers
           - Acids
@@ -1737,13 +1926,16 @@ compounds:
           - Sulfur dioxide
           - Metal salts
           - Light (polymerization catalyst)
-          container_material: Stainless steel or glass with PTFE seals. Stabilized with hydroquinone. Never use copper or
-            brass.
-          segregation: Isolate from all other chemicals. Separate from oxidizers by 20 feet. Flammable storage cabinet.
-          quantity_limits: Minimize on-site quantities. Many facilities limit to <10 gallons.
-          special_requirements: 'CRITICAL: Store with stabilizer (hydroquinone 0.1-0.25%). Check stabilizer regularly. Gas
-            detection system MANDATORY. Keep refrigerated. Store away from light. Emergency eyewash/shower within 10 seconds.
-            Post "EXTREMELY FLAMMABLE" and "POISON" signs.'
+          container_material: Stainless steel or glass with PTFE seals. Stabilized
+            with hydroquinone. Never use copper or brass.
+          segregation: Isolate from all other chemicals. Separate from oxidizers by
+            20 feet. Flammable storage cabinet.
+          quantity_limits: Minimize on-site quantities. Many facilities limit to <10
+            gallons.
+          special_requirements: 'CRITICAL: Store with stabilizer (hydroquinone 0.1-0.25%).
+            Check stabilizer regularly. Gas detection system MANDATORY. Keep refrigerated.
+            Store away from light. Emergency eyewash/shower within 10 seconds. Post
+            "EXTREMELY FLAMMABLE" and "POISON" signs.'
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -1769,10 +1961,10 @@ compounds:
       reactivity:
         presentation: descriptive
         items:
-        - stability: UNSTABLE. Polymerizes readily, especially when contaminated or exposed to light, heat, acids, or bases.
-            MUST be stabilized.
-          polymerization: Violent exothermic polymerization possible. Stabilizer (hydroquinone) required. Check stabilizer
-            level before handling.
+        - stability: UNSTABLE. Polymerizes readily, especially when contaminated or
+            exposed to light, heat, acids, or bases. MUST be stabilized.
+          polymerization: Violent exothermic polymerization possible. Stabilizer (hydroquinone)
+            required. Check stabilizer level before handling.
           incompatible_materials:
           - Strong oxidizers
           - Strong acids
@@ -1798,8 +1990,8 @@ compounds:
           - Contamination
           - Sparks
           - Flames
-          reactivity_hazard: EXTREMELY REACTIVE. Polymerizes violently. Reacts violently with oxidizers. Strong reducing agent.
-            Corrosive. May explode in fire.
+          reactivity_hazard: EXTREMELY REACTIVE. Polymerizes violently. Reacts violently
+            with oxidizers. Strong reducing agent. Corrosive. May explode in fire.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -1865,11 +2057,15 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Toxic to aquatic life. LC50 (fish, 96h): 100-300 mg/L HCl solution. Acidifies water.'
-          biodegradability: Not biodegradable. Dissolves in water forming hydrochloric acid.
+        - aquatic_toxicity: 'Toxic to aquatic life. LC50 (fish, 96h): 100-300 mg/L
+            HCl solution. Acidifies water.'
+          biodegradability: Not biodegradable. Dissolves in water forming hydrochloric
+            acid.
           bioaccumulation: Does not bioaccumulate.
-          soil_mobility: High mobility as gas. Deposits as chloride salts. Acidifies soil.
-          atmospheric_fate: Rapidly dissolves in atmospheric moisture. Forms hydrochloric acid droplets. Washed out by rain.
+          soil_mobility: High mobility as gas. Deposits as chloride salts. Acidifies
+            soil.
+          atmospheric_fate: Rapidly dissolves in atmospheric moisture. Forms hydrochloric
+            acid droplets. Washed out by rain.
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -1899,33 +2095,43 @@ compounds:
           - method: OSHA ID-173
             technique: Ion chromatography
             detection_limit: 0.01 ppm
-          odor_threshold: 0.8-5 ppm - provides adequate warning but close to toxic levels
+          odor_threshold: 0.8-5 ppm - provides adequate warning but close to toxic
+            levels
         _section: *id002
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: SCBA or supplied-air respirator for >5 ppm or unknown concentrations. Air-purifying with acid gas cartridge
-            acceptable for ≤5 ppm with escape provisions.
-          skin: Neoprene or butyl rubber gloves, chemical-resistant suit. HCl is highly corrosive to skin.
-          eye: Chemical safety goggles, full face shield mandatory. Extremely corrosive to eyes.
+        - respiratory: SCBA or supplied-air respirator for >5 ppm or unknown concentrations.
+            Air-purifying with acid gas cartridge acceptable for ≤5 ppm with escape
+            provisions.
+          skin: Neoprene or butyl rubber gloves, chemical-resistant suit. HCl is highly
+            corrosive to skin.
+          eye: Chemical safety goggles, full face shield mandatory. Extremely corrosive
+            to eyes.
           minimum_level: Level C for known <5 ppm, Level B for >5 ppm or liquid HCl
-          special_notes: Extremely corrosive. Causes severe burns on contact. Fumes in moist air. Emergency eyewash/shower
-            within 10 seconds mandatory. Liquid causes frostbite (cryogenic).
+          special_notes: Extremely corrosive. Causes severe burns on contact. Fumes
+            in moist air. Emergency eyewash/shower within 10 seconds mandatory. Liquid
+            causes frostbite (cryogenic).
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Non-flammable. Cylinders may explode when heated. Corrosive decomposition products.
-          fire_suppression: Do not use water directly on HCl gas - forms corrosive hydrochloric acid mist. Cool cylinders
-            with water spray from safe distance.
-          spill_procedures: EVACUATE. Ventilate area. SCBA required for >5 ppm. Neutralize with soda ash, lime, or sodium
-            bicarbonate. Contain with dry sand or earth. Decontaminate equipment.
-          exposure_immediate_actions: 'Remove to fresh air immediately. Eyes: flush with water for 15+ minutes - GET MEDICAL
-            HELP IMMEDIATELY. Skin: remove contaminated clothing, flush with water for 15 minutes. If inhaled: administer
+        - fire_hazard: Non-flammable. Cylinders may explode when heated. Corrosive
+            decomposition products.
+          fire_suppression: Do not use water directly on HCl gas - forms corrosive
+            hydrochloric acid mist. Cool cylinders with water spray from safe distance.
+          spill_procedures: EVACUATE. Ventilate area. SCBA required for >5 ppm. Neutralize
+            with soda ash, lime, or sodium bicarbonate. Contain with dry sand or earth.
+            Decontaminate equipment.
+          exposure_immediate_actions: 'Remove to fresh air immediately. Eyes: flush
+            with water for 15+ minutes - GET MEDICAL HELP IMMEDIATELY. Skin: remove
+            contaminated clothing, flush with water for 15 minutes. If inhaled: administer
             oxygen. Seek immediate medical attention - corrosive injury.'
-          environmental_hazards: Toxic to aquatic life. Forms hydrochloric acid in water. Report releases >5000 lbs.
-          special_hazards: Extremely corrosive to all tissues. Forms dense white corrosive mist in moist air. Reacts with
-            metals producing flammable hydrogen gas. Causes severe burns, permanent eye damage, respiratory tract damage.
+          environmental_hazards: Toxic to aquatic life. Forms hydrochloric acid in
+            water. Report releases >5000 lbs.
+          special_hazards: Extremely corrosive to all tissues. Forms dense white corrosive
+            mist in moist air. Reacts with metals producing flammable hydrogen gas.
+            Causes severe burns, permanent eye damage, respiratory tract damage.
         _section: *id004
       produced_from_contaminants:
         presentation: card
@@ -1990,8 +2196,8 @@ compounds:
         presentation: descriptive
         items:
         - temperature_range: Store cylinders <52°C. Keep away from heat.
-          ventilation: 'Outdoor storage preferred. Indoor: mechanical ventilation with acid-resistant ductwork. HCl gas detection
-            required.'
+          ventilation: 'Outdoor storage preferred. Indoor: mechanical ventilation
+            with acid-resistant ductwork. HCl gas detection required.'
           incompatibilities:
           - Metals (generates hydrogen)
           - Bases
@@ -2000,11 +2206,14 @@ compounds:
           - Amines
           - Aldehydes
           - Metal carbides
-          container_material: Steel cylinders for compressed gas. Glass, PVC, PVDF, or PTFE for liquid.
-          segregation: Separate from bases, oxidizers, and metals. Corrosive storage area.
+          container_material: Steel cylinders for compressed gas. Glass, PVC, PVDF,
+            or PTFE for liquid.
+          segregation: Separate from bases, oxidizers, and metals. Corrosive storage
+            area.
           quantity_limits: Per fire code. Minimize indoor storage of cylinders.
-          special_requirements: Cylinder restraints mandatory. Leak detection system required. Post "CORROSIVE GAS" signs.
-            Emergency eyewash/shower within 25 feet. Store in cool, dry area. Protect from physical damage.
+          special_requirements: Cylinder restraints mandatory. Leak detection system
+            required. Post "CORROSIVE GAS" signs. Emergency eyewash/shower within
+            25 feet. Store in cool, dry area. Protect from physical damage.
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -2046,8 +2255,8 @@ compounds:
           - Heat
           - Incompatible materials
           - Metals
-          reactivity_hazard: Reacts violently with metals producing flammable hydrogen gas. Reacts exothermically with bases.
-            Forms corrosive mist in humid air.
+          reactivity_hazard: Reacts violently with metals producing flammable hydrogen
+            gas. Reacts exothermically with bases. Forms corrosive mist in humid air.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -2111,12 +2320,15 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Toxic to aquatic life. LC50 (fish, 96h): 5.5-40 mg/L depending on species.'
+        - aquatic_toxicity: 'Toxic to aquatic life. LC50 (fish, 96h): 5.5-40 mg/L
+            depending on species.'
           biodegradability: Readily biodegradable (>60% in 28 days).
-          bioaccumulation: 'Moderate bioaccumulation potential. BCF: 13-90. Log Kow: 2.69.'
-          soil_mobility: Moderate to high mobility. Volatilizes from soil surface. Adsorbs to organic matter.
-          atmospheric_fate: 'Photolyzes via hydroxyl radicals. Atmospheric half-life: 13 hours to 3 days. Contributes to ozone
-            formation.'
+          bioaccumulation: 'Moderate bioaccumulation potential. BCF: 13-90. Log Kow:
+            2.69.'
+          soil_mobility: Moderate to high mobility. Volatilizes from soil surface.
+            Adsorbs to organic matter.
+          atmospheric_fate: 'Photolyzes via hydroxyl radicals. Atmospheric half-life:
+            13 hours to 3 days. Contributes to ozone formation.'
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -2146,34 +2358,42 @@ compounds:
           - method: OSHA Method 111
             technique: GC-FID
             detection_limit: 0.005 ppm
-          odor_threshold: 0.16-40 ppm - provides early warning but wide range. Olfactory adaptation occurs.
+          odor_threshold: 0.16-40 ppm - provides early warning but wide range. Olfactory
+            adaptation occurs.
         _section: *id002
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: Organic vapor respirator for <50 ppm. SCBA for >50 ppm or unknown concentrations.
-          skin: Nitrile or butyl rubber gloves. Chemical-resistant clothing. Toluene absorbs through skin.
+        - respiratory: Organic vapor respirator for <50 ppm. SCBA for >50 ppm or unknown
+            concentrations.
+          skin: Nitrile or butyl rubber gloves. Chemical-resistant clothing. Toluene
+            absorbs through skin.
           eye: Chemical safety goggles, face shield for splash hazard.
           minimum_level: Level C for <50 ppm, Level B for >50 ppm
-          special_notes: CNS depressant and neurotoxin. Abuse potential (inhalant). Skin absorption significant. Reproductive
-            toxin. Embryo/fetal toxicity concern.
+          special_notes: CNS depressant and neurotoxin. Abuse potential (inhalant).
+            Skin absorption significant. Reproductive toxin. Embryo/fetal toxicity
+            concern.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Flammable liquid. Vapors heavier than air. May travel to ignition sources. Flash point very low.
-          fire_suppression: Stop flow if safe. Use dry chemical, CO2, alcohol-resistant foam. Water spray to cool containers.
-            Do not use water jet on liquid.
-          spill_procedures: Eliminate ignition sources. Ventilate area. Contain with sand or vermiculite. Absorb with activated
-            carbon. Dispose as hazardous waste.
-          exposure_immediate_actions: 'Remove to fresh air. Eyes: flush with water for 15 minutes. Remove contaminated clothing
-            immediately. Wash skin thoroughly. Seek medical attention - neurotoxin and reproductive toxin exposure. Monitor
+        - fire_hazard: Flammable liquid. Vapors heavier than air. May travel to ignition
+            sources. Flash point very low.
+          fire_suppression: Stop flow if safe. Use dry chemical, CO2, alcohol-resistant
+            foam. Water spray to cool containers. Do not use water jet on liquid.
+          spill_procedures: Eliminate ignition sources. Ventilate area. Contain with
+            sand or vermiculite. Absorb with activated carbon. Dispose as hazardous
+            waste.
+          exposure_immediate_actions: 'Remove to fresh air. Eyes: flush with water
+            for 15 minutes. Remove contaminated clothing immediately. Wash skin thoroughly.
+            Seek medical attention - neurotoxin and reproductive toxin exposure. Monitor
             for CNS depression.'
-          environmental_hazards: Toxic to aquatic life. Bioaccumulates moderately. Contaminates groundwater. Report spills
-            >1000 lbs.
-          special_hazards: NEUROTOXIN - causes CNS depression, peripheral neuropathy, cognitive impairment. REPRODUCTIVE TOXIN
-            - embryo/fetal toxicity. Abuse potential (intentional inhalation). Chronic exposure causes hearing loss, vision
-            problems. Metabolized to benzyl alcohol and benzoic acid.
+          environmental_hazards: Toxic to aquatic life. Bioaccumulates moderately.
+            Contaminates groundwater. Report spills >1000 lbs.
+          special_hazards: NEUROTOXIN - causes CNS depression, peripheral neuropathy,
+            cognitive impairment. REPRODUCTIVE TOXIN - embryo/fetal toxicity. Abuse
+            potential (intentional inhalation). Chronic exposure causes hearing loss,
+            vision problems. Metabolized to benzyl alcohol and benzoic acid.
         _section: *id004
       produced_from_contaminants:
         presentation: card
@@ -2258,18 +2478,22 @@ compounds:
         presentation: descriptive
         items:
         - temperature_range: Store below 25°C. Keep away from heat.
-          ventilation: Local exhaust ventilation. Mechanical ventilation for large quantities.
+          ventilation: Local exhaust ventilation. Mechanical ventilation for large
+            quantities.
           incompatibilities:
           - Strong oxidizers
           - Nitric acid
           - Sulfuric acid
           - Chromic acid
           - Halogens
-          container_material: Stainless steel or aluminum. Attacks some plastics and rubber.
-          segregation: Separate from oxidizers by 20 feet. Flammable liquid storage cabinet.
+          container_material: Stainless steel or aluminum. Attacks some plastics and
+            rubber.
+          segregation: Separate from oxidizers by 20 feet. Flammable liquid storage
+            cabinet.
           quantity_limits: Follow NFPA 30. Minimize quantities in work areas.
-          special_requirements: Post "FLAMMABLE LIQUID" signs. Secondary containment. Bonding and grounding for transfers.
-            Emergency eyewash/shower within 25 feet.
+          special_requirements: Post "FLAMMABLE LIQUID" signs. Secondary containment.
+            Bonding and grounding for transfers. Emergency eyewash/shower within 25
+            feet.
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -2316,8 +2540,8 @@ compounds:
           - Sparks
           - Flames
           - Strong oxidizers
-          reactivity_hazard: Reacts violently with strong oxidizers. May react explosively with dinitrogen tetroxide. Attacks
-            some plastics, rubber, and coatings.
+          reactivity_hazard: Reacts violently with strong oxidizers. May react explosively
+            with dinitrogen tetroxide. Attacks some plastics, rubber, and coatings.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -2382,9 +2606,12 @@ compounds:
         items:
         - aquatic_toxicity: 'Toxic to aquatic life. LC50 (fish, 96h): 4-10 mg/L.'
           biodegradability: Readily biodegradable (>60% in 28 days).
-          bioaccumulation: 'Moderate bioaccumulation potential. BCF: 25-150. Log Kow: 2.95.'
-          soil_mobility: Moderate mobility. Adsorbs to soil organic matter. Volatilizes from soil.
-          atmospheric_fate: 'Photolyzes via hydroxyl radicals. Atmospheric half-life: 1-2 days. Forms ozone.'
+          bioaccumulation: 'Moderate bioaccumulation potential. BCF: 25-150. Log Kow:
+            2.95.'
+          soil_mobility: Moderate mobility. Adsorbs to soil organic matter. Volatilizes
+            from soil.
+          atmospheric_fate: 'Photolyzes via hydroxyl radicals. Atmospheric half-life:
+            1-2 days. Forms ozone.'
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -2413,34 +2640,42 @@ compounds:
           - method: OSHA Method 89
             technique: GC-FID
             detection_limit: 0.01 ppm
-          odor_threshold: '0.05-0.5 ppm - WARNING: Olfactory fatigue occurs. Cannot rely on odor for protection.'
+          odor_threshold: '0.05-0.5 ppm - WARNING: Olfactory fatigue occurs. Cannot
+            rely on odor for protection.'
         _section: *id002
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: NIOSH-approved organic vapor respirator for <50 ppm. SCBA for >50 ppm or unknown concentrations.
-          skin: Nitrile or butyl rubber gloves. Chemical-resistant clothing. Styrene absorbs through skin.
+        - respiratory: NIOSH-approved organic vapor respirator for <50 ppm. SCBA for
+            >50 ppm or unknown concentrations.
+          skin: Nitrile or butyl rubber gloves. Chemical-resistant clothing. Styrene
+            absorbs through skin.
           eye: Chemical safety goggles, face shield for splash hazard.
           minimum_level: Level C for <50 ppm, Level B for >50 ppm
-          special_notes: Neurotoxin and probable carcinogen (IARC 2B). Skin absorption significant. Extremely irritating.
-            May cause CNS depression.
+          special_notes: Neurotoxin and probable carcinogen (IARC 2B). Skin absorption
+            significant. Extremely irritating. May cause CNS depression.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Flammable liquid. May polymerize explosively in fire. Vapors heavier than air. May travel to ignition
-            sources.
-          fire_suppression: Stop flow if safe. Use dry chemical, CO2, alcohol-resistant foam. Water spray to cool containers.
-            Do not use water jet on liquid. Prevent contamination - polymerization hazard.
-          spill_procedures: Eliminate ignition sources. Ventilate area. Contain with sand or earth. Neutralize with sodium
-            bisulfite. Dispose as hazardous waste. Check stabilizer level before handling.
-          exposure_immediate_actions: 'Remove to fresh air immediately. Eyes: flush with water for 15 minutes. Remove contaminated
-            clothing - styrene penetrates. Wash skin thoroughly. Seek medical attention - neurotoxin and carcinogen exposure.
-            Monitor for CNS effects.'
-          environmental_hazards: Toxic to aquatic life. Bioaccumulates. Report spills >1000 lbs.
-          special_hazards: PROBABLE HUMAN CARCINOGEN (IARC 2B). NEUROTOXIN - causes CNS depression, peripheral neuropathy.
-            Irritating to eyes, skin, respiratory tract. May polymerize explosively. Olfactory fatigue - cannot rely on odor.
-            Metabolized to styrene oxide (more toxic).
+        - fire_hazard: Flammable liquid. May polymerize explosively in fire. Vapors
+            heavier than air. May travel to ignition sources.
+          fire_suppression: Stop flow if safe. Use dry chemical, CO2, alcohol-resistant
+            foam. Water spray to cool containers. Do not use water jet on liquid.
+            Prevent contamination - polymerization hazard.
+          spill_procedures: Eliminate ignition sources. Ventilate area. Contain with
+            sand or earth. Neutralize with sodium bisulfite. Dispose as hazardous
+            waste. Check stabilizer level before handling.
+          exposure_immediate_actions: 'Remove to fresh air immediately. Eyes: flush
+            with water for 15 minutes. Remove contaminated clothing - styrene penetrates.
+            Wash skin thoroughly. Seek medical attention - neurotoxin and carcinogen
+            exposure. Monitor for CNS effects.'
+          environmental_hazards: Toxic to aquatic life. Bioaccumulates. Report spills
+            >1000 lbs.
+          special_hazards: PROBABLE HUMAN CARCINOGEN (IARC 2B). NEUROTOXIN - causes
+            CNS depression, peripheral neuropathy. Irritating to eyes, skin, respiratory
+            tract. May polymerize explosively. Olfactory fatigue - cannot rely on
+            odor. Metabolized to styrene oxide (more toxic).
         _section: *id004
       produced_from_contaminants:
         presentation: card
@@ -2514,7 +2749,8 @@ compounds:
         presentation: descriptive
         items:
         - temperature_range: Store below 32°C. Keep cool. Avoid excessive heat.
-          ventilation: Local exhaust ventilation. Mechanical ventilation with emergency backup.
+          ventilation: Local exhaust ventilation. Mechanical ventilation with emergency
+            backup.
           incompatibilities:
           - Oxidizers
           - Peroxides
@@ -2523,12 +2759,14 @@ compounds:
           - Copper
           - Brass
           - Iron
-          container_material: Stainless steel or aluminum. Must contain inhibitor (tert-butylcatechol). Check inhibitor level
-            regularly.
-          segregation: Separate from oxidizers by 20 feet. Flammable liquid storage cabinet.
+          container_material: Stainless steel or aluminum. Must contain inhibitor
+            (tert-butylcatechol). Check inhibitor level regularly.
+          segregation: Separate from oxidizers by 20 feet. Flammable liquid storage
+            cabinet.
           quantity_limits: Minimize quantities. Follow NFPA 30 for flammable liquids.
-          special_requirements: 'CRITICAL: Store with polymerization inhibitor (10-15 ppm tert-butylcatechol). Monitor inhibitor
-            level monthly. Avoid light and heat. Post "FLAMMABLE" and "CANCER HAZARD" signs. Date containers.'
+          special_requirements: 'CRITICAL: Store with polymerization inhibitor (10-15
+            ppm tert-butylcatechol). Monitor inhibitor level monthly. Avoid light
+            and heat. Post "FLAMMABLE" and "CANCER HAZARD" signs. Date containers.'
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -2554,9 +2792,10 @@ compounds:
       reactivity:
         presentation: descriptive
         items:
-        - stability: UNSTABLE. Polymerizes when heated or contaminated. Inhibitor required.
-          polymerization: Exothermic polymerization with peroxides, oxidizers, or heat. May be explosive. Check inhibitor
-            level.
+        - stability: UNSTABLE. Polymerizes when heated or contaminated. Inhibitor
+            required.
+          polymerization: Exothermic polymerization with peroxides, oxidizers, or
+            heat. May be explosive. Check inhibitor level.
           incompatible_materials:
           - Oxidizers
           - Peroxides
@@ -2579,8 +2818,8 @@ compounds:
           - Contamination
           - Sparks
           - Flames
-          reactivity_hazard: May polymerize violently. Reacts with oxidizers. Attacks some plastics, rubber, and coatings.
-            Forms peroxides on prolonged storage.
+          reactivity_hazard: May polymerize violently. Reacts with oxidizers. Attacks
+            some plastics, rubber, and coatings. Forms peroxides on prolonged storage.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -2644,10 +2883,11 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Very toxic to aquatic life. LC50 (fish, 96h): 0.5-5 mg/L depending on pH and hardness. More toxic
-            in soft acidic water.'
+        - aquatic_toxicity: 'Very toxic to aquatic life. LC50 (fish, 96h): 0.5-5 mg/L
+            depending on pH and hardness. More toxic in soft acidic water.'
           biodegradability: Not biodegradable (inorganic).
-          bioaccumulation: 'Moderate bioaccumulation. BCF: 10-100. Essential element but toxic at high levels.'
+          bioaccumulation: 'Moderate bioaccumulation. BCF: 10-100. Essential element
+            but toxic at high levels.'
           soil_mobility: 'Low mobility. Adsorbs to soil particles. Persistence: indefinite.'
           atmospheric_fate: Settles as particulate. Does not react in atmosphere.
           ozone_depletion: false
@@ -2684,26 +2924,37 @@ compounds:
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: NIOSH-approved air-purifying respirator with P100 particulate filters for ≤50 mg/m³. PAPR for higher
-            concentrations. SCBA for unknown or emergency response.
-          skin: Leather or cotton gloves adequate for dust. Welding gloves for metal work.
-          eye: Safety glasses with side shields. Welding goggles/helmet for welding operations.
-          minimum_level: Level D for dust <10 mg/m³, Level C for >10 mg/m³ or welding fume
-          special_notes: Metal fume fever primary concern. Prevent inhalation during welding/cutting galvanized metal. Symptoms
-            develop 4-12 hours post-exposure. Well-ventilated work areas essential.
+        - respiratory: NIOSH-approved air-purifying respirator with P100 particulate
+            filters for ≤50 mg/m³. PAPR for higher concentrations. SCBA for unknown
+            or emergency response.
+          skin: Leather or cotton gloves adequate for dust. Welding gloves for metal
+            work.
+          eye: Safety glasses with side shields. Welding goggles/helmet for welding
+            operations.
+          minimum_level: Level D for dust <10 mg/m³, Level C for >10 mg/m³ or welding
+            fume
+          special_notes: Metal fume fever primary concern. Prevent inhalation during
+            welding/cutting galvanized metal. Symptoms develop 4-12 hours post-exposure.
+            Well-ventilated work areas essential.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Non-combustible. May release toxic zinc oxide fume when heated above 1000°C.
-          fire_suppression: Use agent appropriate for surrounding fire. Wear SCBA - toxic fumes possible.
-          spill_procedures: Avoid generating dust. Sweep or vacuum with HEPA filter. Place in sealed containers. Dispose as
-            non-hazardous or hazardous depending on concentration and source.
-          exposure_immediate_actions: 'Remove from exposure. If metal fume fever suspected: rest, fluids, symptomatic treatment.
-            Symptoms self-limiting 24-48 hours. If severe: seek medical attention. Monitor respiratory function.'
-          environmental_hazards: Toxic to aquatic life. May contaminate soil/water. Generally low environmental risk.
-          special_hazards: 'METAL FUME FEVER: flu-like symptoms 4-12 hours post-exposure (fever, chills, nausea, muscle aches).
-            Self-limiting but recurrent with repeated exposure. Welding galvanized metal major exposure source.'
+        - fire_hazard: Non-combustible. May release toxic zinc oxide fume when heated
+            above 1000°C.
+          fire_suppression: Use agent appropriate for surrounding fire. Wear SCBA
+            - toxic fumes possible.
+          spill_procedures: Avoid generating dust. Sweep or vacuum with HEPA filter.
+            Place in sealed containers. Dispose as non-hazardous or hazardous depending
+            on concentration and source.
+          exposure_immediate_actions: 'Remove from exposure. If metal fume fever suspected:
+            rest, fluids, symptomatic treatment. Symptoms self-limiting 24-48 hours.
+            If severe: seek medical attention. Monitor respiratory function.'
+          environmental_hazards: Toxic to aquatic life. May contaminate soil/water.
+            Generally low environmental risk.
+          special_hazards: 'METAL FUME FEVER: flu-like symptoms 4-12 hours post-exposure
+            (fever, chills, nausea, muscle aches). Self-limiting but recurrent with
+            repeated exposure. Welding galvanized metal major exposure source.'
         _section: *id004
       produced_from_contaminants:
         presentation: card
@@ -2788,7 +3039,8 @@ compounds:
           container_material: Plastic or metal containers with tight lids.
           segregation: None required for pure zinc oxide. Separate from incompatibles.
           quantity_limits: None specified. Follow facility storage protocols.
-          special_requirements: Keep containers closed when not in use. Store in dry area. Prevent dust accumulation.
+          special_requirements: Keep containers closed when not in use. Store in dry
+            area. Prevent dust accumulation.
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -2824,8 +3076,8 @@ compounds:
           - High heat (>1000°C)
           - Incompatible materials
           - Chlorinated rubber mixtures
-          reactivity_hazard: Generally stable. Reacts with strong acids producing hydrogen gas. May ignite spontaneously with
-            linseed oil.
+          reactivity_hazard: Generally stable. Reacts with strong acids producing
+            hydrogen gas. May ignite spontaneously with linseed oil.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -2891,12 +3143,14 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Low toxicity to aquatic life. LC50 (fish, 96h): >100 mg/L. May color water but minimal toxic
-            effects.'
+        - aquatic_toxicity: 'Low toxicity to aquatic life. LC50 (fish, 96h): >100
+            mg/L. May color water but minimal toxic effects.'
           biodegradability: Not biodegradable (inorganic). Persists indefinitely.
           bioaccumulation: Low bioaccumulation. Essential element. Regulated by organisms.
-          soil_mobility: Low mobility. Common soil constituent. No significant environmental concern.
-          atmospheric_fate: Settles as particulate. Does not react in atmosphere. Component of natural dust.
+          soil_mobility: Low mobility. Common soil constituent. No significant environmental
+            concern.
+          atmospheric_fate: Settles as particulate. Does not react in atmosphere.
+            Component of natural dust.
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -2930,26 +3184,34 @@ compounds:
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: NIOSH-approved air-purifying respirator with P100 particulate filters for ≤50 mg/m³. PAPR for higher
-            concentrations.
-          skin: Leather or cotton gloves adequate for dust. Welding gloves for metal work.
-          eye: Safety glasses with side shields. Welding goggles/helmet for welding operations.
+        - respiratory: NIOSH-approved air-purifying respirator with P100 particulate
+            filters for ≤50 mg/m³. PAPR for higher concentrations.
+          skin: Leather or cotton gloves adequate for dust. Welding gloves for metal
+            work.
+          eye: Safety glasses with side shields. Welding goggles/helmet for welding
+            operations.
           minimum_level: Level D for dust <10 mg/m³, Level C for welding fume
-          special_notes: Siderosis (iron dust pneumoconiosis) from chronic exposure. Welding fume contains mixed metal oxides
-            - more hazardous than pure iron oxide.
+          special_notes: Siderosis (iron dust pneumoconiosis) from chronic exposure.
+            Welding fume contains mixed metal oxides - more hazardous than pure iron
+            oxide.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
         - fire_hazard: Non-combustible. May release toxic metal oxide fumes when heated.
-          fire_suppression: Use agent appropriate for surrounding fire. Wear SCBA - toxic fumes possible.
-          spill_procedures: Avoid generating dust. Sweep or vacuum with HEPA filter. Place in sealed containers. Generally
-            non-hazardous waste unless contaminated.
-          exposure_immediate_actions: 'Remove from dusty area. If respiratory irritation: move to fresh air. Wash dust from
-            skin and eyes. Generally low acute toxicity. Seek medical attention if symptoms persist.'
-          environmental_hazards: Generally low environmental hazard. May discolor water. Large spills may affect aquatic pH.
-          special_hazards: 'SIDEROSIS: Benign pneumoconiosis from chronic inhalation. X-ray opacities but no functional impairment.
-            Reversible when exposure stops. Welding fume may contain other toxic metals (chromium, nickel, manganese).'
+          fire_suppression: Use agent appropriate for surrounding fire. Wear SCBA
+            - toxic fumes possible.
+          spill_procedures: Avoid generating dust. Sweep or vacuum with HEPA filter.
+            Place in sealed containers. Generally non-hazardous waste unless contaminated.
+          exposure_immediate_actions: 'Remove from dusty area. If respiratory irritation:
+            move to fresh air. Wash dust from skin and eyes. Generally low acute toxicity.
+            Seek medical attention if symptoms persist.'
+          environmental_hazards: Generally low environmental hazard. May discolor
+            water. Large spills may affect aquatic pH.
+          special_hazards: 'SIDEROSIS: Benign pneumoconiosis from chronic inhalation.
+            X-ray opacities but no functional impairment. Reversible when exposure
+            stops. Welding fume may contain other toxic metals (chromium, nickel,
+            manganese).'
         _section: *id004
       produced_from_contaminants:
         presentation: card
@@ -3037,7 +3299,8 @@ compounds:
           container_material: Plastic or metal containers with tight lids.
           segregation: None required. Separate from strong acids and reactive metals.
           quantity_limits: None specified. Follow facility storage protocols.
-          special_requirements: Keep containers closed when not in use. Store in dry area. Prevent dust accumulation.
+          special_requirements: Keep containers closed when not in use. Store in dry
+            area. Prevent dust accumulation.
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -3073,8 +3336,8 @@ compounds:
           - High heat
           - Aluminum powder mixtures
           - Strong acids
-          reactivity_hazard: Generally stable. Thermite reaction with aluminum powder produces extreme heat. Reacts with strong
-            acids.
+          reactivity_hazard: Generally stable. Thermite reaction with aluminum powder
+            produces extreme heat. Reacts with strong acids.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -3140,13 +3403,16 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Very toxic to aquatic life. LC50 (fish, 96h): 10-100 mg/L depending on species. Cr(VI) more toxic
-            than Cr(III).'
-          biodegradability: Not biodegradable. Cr(VI) can be reduced to less toxic Cr(III) by organic matter and reducing
-            conditions.
-          bioaccumulation: Low bioaccumulation potential. Does not concentrate in food chain.
-          soil_mobility: High mobility in soil and groundwater as Cr(VI). Adsorbs less than Cr(III). Contaminates wells.
-          atmospheric_fate: Settles as particulate. Does not react in atmosphere. Washed out by rain.
+        - aquatic_toxicity: 'Very toxic to aquatic life. LC50 (fish, 96h): 10-100
+            mg/L depending on species. Cr(VI) more toxic than Cr(III).'
+          biodegradability: Not biodegradable. Cr(VI) can be reduced to less toxic
+            Cr(III) by organic matter and reducing conditions.
+          bioaccumulation: Low bioaccumulation potential. Does not concentrate in
+            food chain.
+          soil_mobility: High mobility in soil and groundwater as Cr(VI). Adsorbs
+            less than Cr(III). Contaminates wells.
+          atmospheric_fate: Settles as particulate. Does not react in atmosphere.
+            Washed out by rain.
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -3184,32 +3450,38 @@ compounds:
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: NIOSH-approved air-purifying respirator with P100 filters for ≤2.5 µg/m³. Powered air-purifying respirator
-            (PAPR) for ≤12.5 µg/m³. SCBA for >12.5 µg/m³ or unknown concentrations.
-          skin: Nitrile or neoprene gloves (>4mil thickness). Chemical-resistant clothing. Cr(VI) can cause allergic skin
-            reactions and ulcerations.
+        - respiratory: NIOSH-approved air-purifying respirator with P100 filters for
+            ≤2.5 µg/m³. Powered air-purifying respirator (PAPR) for ≤12.5 µg/m³. SCBA
+            for >12.5 µg/m³ or unknown concentrations.
+          skin: Nitrile or neoprene gloves (>4mil thickness). Chemical-resistant clothing.
+            Cr(VI) can cause allergic skin reactions and ulcerations.
           eye: Chemical safety goggles, face shield for dusty/spray operations
-          minimum_level: Level C for known concentrations <2.5 µg/m³, Level B for higher concentrations or welding/cutting
-            operations
-          special_notes: CARCINOGEN and ALLERGEN. Prevent skin contact - causes sensitization. Welding/cutting stainless steel
-            generates Cr(VI) fume. Use wet methods to control dust. Medical surveillance required.
+          minimum_level: Level C for known concentrations <2.5 µg/m³, Level B for
+            higher concentrations or welding/cutting operations
+          special_notes: CARCINOGEN and ALLERGEN. Prevent skin contact - causes sensitization.
+            Welding/cutting stainless steel generates Cr(VI) fume. Use wet methods
+            to control dust. Medical surveillance required.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Non-combustible. Strong oxidizer - increases fire intensity. Chromates may explode when heated with
-            organic materials.
-          fire_suppression: Use agent appropriate for surrounding fire. Do not use water on dichromate fires. Wear SCBA.
-          spill_procedures: Evacuate area. Wear full PPE. Avoid dust generation. Reduce Cr(VI) to Cr(III) with sodium bisulfite
-            or ferrous sulfate before cleanup. Sweep/vacuum with HEPA filter. Dispose as hazardous waste. Decontaminate area
-            thoroughly.
-          exposure_immediate_actions: Remove contaminated clothing immediately. Wash skin with soap and water for 15 minutes.
-            If inhaled, move to fresh air. Seek medical attention immediately - inform physician of Cr(VI) exposure and potential
-            for delayed effects.
-          environmental_hazards: Toxic to aquatic life. Cr(VI) is highly mobile in groundwater. Can contaminate drinking water.
-            Report releases >5000 lbs.
-          special_hazards: KNOWN HUMAN CARCINOGEN (IARC Group 1). Causes lung cancer, nasal septum perforation. Strong oxidizer
-            - reacts violently with combustibles. Corrosive to skin (ulcers/chrome holes). Potent allergen - can cause severe
+        - fire_hazard: Non-combustible. Strong oxidizer - increases fire intensity.
+            Chromates may explode when heated with organic materials.
+          fire_suppression: Use agent appropriate for surrounding fire. Do not use
+            water on dichromate fires. Wear SCBA.
+          spill_procedures: Evacuate area. Wear full PPE. Avoid dust generation. Reduce
+            Cr(VI) to Cr(III) with sodium bisulfite or ferrous sulfate before cleanup.
+            Sweep/vacuum with HEPA filter. Dispose as hazardous waste. Decontaminate
+            area thoroughly.
+          exposure_immediate_actions: Remove contaminated clothing immediately. Wash
+            skin with soap and water for 15 minutes. If inhaled, move to fresh air.
+            Seek medical attention immediately - inform physician of Cr(VI) exposure
+            and potential for delayed effects.
+          environmental_hazards: Toxic to aquatic life. Cr(VI) is highly mobile in
+            groundwater. Can contaminate drinking water. Report releases >5000 lbs.
+          special_hazards: KNOWN HUMAN CARCINOGEN (IARC Group 1). Causes lung cancer,
+            nasal septum perforation. Strong oxidizer - reacts violently with combustibles.
+            Corrosive to skin (ulcers/chrome holes). Potent allergen - can cause severe
             dermatitis.
         _section: *id004
       produced_from_contaminants:
@@ -3282,14 +3554,16 @@ compounds:
           flash_point: Not applicable
           autoignition_temp: Not applicable
           explosive_limits: Not applicable
-          appearance: Yellow to orange-red crystalline solid (chromates), green solution (chromic acid)
+          appearance: Yellow to orange-red crystalline solid (chromates), green solution
+            (chromic acid)
           odor: Odorless or faint acrid odor
         _section: *id006
       storage_requirements:
         presentation: descriptive
         items:
         - temperature_range: Store at room temperature, avoid excessive heat
-          ventilation: Local exhaust ventilation. Store in well-ventilated area away from work areas.
+          ventilation: Local exhaust ventilation. Store in well-ventilated area away
+            from work areas.
           incompatibilities:
           - Combustible materials
           - Organic materials
@@ -3298,18 +3572,22 @@ compounds:
           - Bases
           - Ammonia
           - Hydrogen sulfide
-          container_material: Tightly sealed glass or plastic containers. Polyethylene or glass for chromic acid.
-          segregation: Separate from combustibles, organics, and reducing agents by 20 feet or firewall. Designated carcinogen
-            storage.
-          quantity_limits: Minimize quantities stored. OSHA requires carcinogen storage protocols.
-          special_requirements: Post "CANCER HAZARD" and "STRONG OXIDIZER" signs. Restrict access to authorized personnel.
-            Secondary containment for liquids. Inspect weekly for container integrity. Emergency eyewash/shower within 10
-            seconds.
+          container_material: Tightly sealed glass or plastic containers. Polyethylene
+            or glass for chromic acid.
+          segregation: Separate from combustibles, organics, and reducing agents by
+            20 feet or firewall. Designated carcinogen storage.
+          quantity_limits: Minimize quantities stored. OSHA requires carcinogen storage
+            protocols.
+          special_requirements: Post "CANCER HAZARD" and "STRONG OXIDIZER" signs.
+            Restrict access to authorized personnel. Secondary containment for liquids.
+            Inspect weekly for container integrity. Emergency eyewash/shower within
+            10 seconds.
         _section: *id007
       regulatory_classification:
         presentation: descriptive
         items:
-        - un_number: UN3288 (Toxic solid, inorganic, n.o.s.) or UN1755 (Chromic acid solution)
+        - un_number: UN3288 (Toxic solid, inorganic, n.o.s.) or UN1755 (Chromic acid
+            solution)
           dot_hazard_class: 6.1 (Toxic) or 8 (Corrosive)
           dot_label: Toxic or Corrosive
           nfpa_codes:
@@ -3330,7 +3608,8 @@ compounds:
       reactivity:
         presentation: descriptive
         items:
-        - stability: Stable under normal conditions. Some compounds decompose when heated.
+        - stability: Stable under normal conditions. Some compounds decompose when
+            heated.
           polymerization: Will not polymerize
           incompatible_materials:
           - Strong reducing agents
@@ -3350,8 +3629,9 @@ compounds:
           - Incompatible materials
           - Moisture (some compounds)
           - Shock (chromates)
-          reactivity_hazard: STRONG OXIDIZER. Reacts violently with combustible materials, reducing agents. Chromates may
-            explode when heated. Corrosive to skin and metals.
+          reactivity_hazard: STRONG OXIDIZER. Reacts violently with combustible materials,
+            reducing agents. Chromates may explode when heated. Corrosive to skin
+            and metals.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -3418,12 +3698,14 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Toxic to aquatic life. LC50 (fish, 96h): varies by species and form. Forms acidic solutions.'
+        - aquatic_toxicity: 'Toxic to aquatic life. LC50 (fish, 96h): varies by species
+            and form. Forms acidic solutions.'
           biodegradability: Reacts in atmosphere. Converts to nitric acid. Not biodegradable.
           bioaccumulation: Does not bioaccumulate.
-          soil_mobility: High mobility as gas. Deposits as nitrates. Contributes to soil acidification.
-          atmospheric_fate: 'Photochemical reactions produce ozone. Forms nitric acid with water vapor. Contributes to acid
-            rain. Residence time: hours to days.'
+          soil_mobility: High mobility as gas. Deposits as nitrates. Contributes to
+            soil acidification.
+          atmospheric_fate: 'Photochemical reactions produce ozone. Forms nitric acid
+            with water vapor. Contributes to acid rain. Residence time: hours to days.'
           ozone_depletion: true
           global_warming_potential: 'N2O: 298 (CO2=1)'
           reportable_releases:
@@ -3454,35 +3736,44 @@ compounds:
           - method: OSHA ID-182
             technique: Ion chromatography
             detection_limit: 0.007 ppm
-          odor_threshold: 'NO2: 0.1-1 ppm (provides warning but overlaps toxic range). NO: odorless (NO WARNING).'
+          odor_threshold: 'NO2: 0.1-1 ppm (provides warning but overlaps toxic range).
+            NO: odorless (NO WARNING).'
         _section: *id002
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: SCBA or positive-pressure supplied-air respirator for >1 ppm NO2 or unknown concentrations. Air-purifying
-            with acid gas cartridge acceptable for ≤1 ppm NO2 only.
-          skin: Nitrile or butyl rubber gloves for liquid contact. Chemical-resistant clothing if high concentrations.
+        - respiratory: SCBA or positive-pressure supplied-air respirator for >1 ppm
+            NO2 or unknown concentrations. Air-purifying with acid gas cartridge acceptable
+            for ≤1 ppm NO2 only.
+          skin: Nitrile or butyl rubber gloves for liquid contact. Chemical-resistant
+            clothing if high concentrations.
           eye: Chemical safety goggles, face shield for high concentrations
-          minimum_level: Level C for known <1 ppm NO2, Level B for >1 ppm or NO/NO2 mixtures
-          special_notes: NO2 is brown gas, NO is colorless. Both highly toxic. Delayed pulmonary edema possible 6-72 hours
-            after exposure. STEL critical - short exposures very dangerous.
+          minimum_level: Level C for known <1 ppm NO2, Level B for >1 ppm or NO/NO2
+            mixtures
+          special_notes: NO2 is brown gas, NO is colorless. Both highly toxic. Delayed
+            pulmonary edema possible 6-72 hours after exposure. STEL critical - short
+            exposures very dangerous.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Non-flammable but supports combustion. Strong oxidizer. Increases fire intensity. May explode when
-            heated.
-          fire_suppression: Do not fight fire if gas cylinder involved - extreme explosion risk. Evacuate. Cool cylinders
-            with water spray from safe distance. Let fire burn out.
-          spill_procedures: 'EVACUATE. Liquid NO2/N2O4: extreme hazard. Ventilate area. SCBA mandatory. Contain with soda
-            ash or lime neutralization. Never use water directly on liquid NOx.'
-          exposure_immediate_actions: Remove to fresh air immediately. Administer 100% oxygen. Severe respiratory irritation
-            likely. Monitor for delayed pulmonary edema (6-72 hours). Seek immediate medical attention - hospitalize for observation
-            even if asymptomatic.
-          environmental_hazards: Contributes to acid rain, smog, ozone formation. Toxic to vegetation. Report significant
-            releases.
-          special_hazards: DELAYED PULMONARY EDEMA - asymptomatic period 6-72 hours then sudden respiratory failure. NO converts
-            to NO2 in air (more toxic). Strong oxidizer. Corrosive to respiratory tract. May explode under pressure.
+        - fire_hazard: Non-flammable but supports combustion. Strong oxidizer. Increases
+            fire intensity. May explode when heated.
+          fire_suppression: Do not fight fire if gas cylinder involved - extreme explosion
+            risk. Evacuate. Cool cylinders with water spray from safe distance. Let
+            fire burn out.
+          spill_procedures: 'EVACUATE. Liquid NO2/N2O4: extreme hazard. Ventilate
+            area. SCBA mandatory. Contain with soda ash or lime neutralization. Never
+            use water directly on liquid NOx.'
+          exposure_immediate_actions: Remove to fresh air immediately. Administer
+            100% oxygen. Severe respiratory irritation likely. Monitor for delayed
+            pulmonary edema (6-72 hours). Seek immediate medical attention - hospitalize
+            for observation even if asymptomatic.
+          environmental_hazards: Contributes to acid rain, smog, ozone formation.
+            Toxic to vegetation. Report significant releases.
+          special_hazards: DELAYED PULMONARY EDEMA - asymptomatic period 6-72 hours
+            then sudden respiratory failure. NO converts to NO2 in air (more toxic).
+            Strong oxidizer. Corrosive to respiratory tract. May explode under pressure.
         _section: *id004
       produced_from_contaminants:
         presentation: card
@@ -3563,15 +3854,16 @@ compounds:
           flash_point: Not applicable (non-flammable)
           autoignition_temp: Not applicable
           explosive_limits: Not applicable (supports combustion)
-          appearance: 'NO: colorless gas, NO2: reddish-brown gas, N2O4: colorless liquid/gas'
+          appearance: 'NO: colorless gas, NO2: reddish-brown gas, N2O4: colorless
+            liquid/gas'
           odor: 'NO2: pungent, irritating odor @ 0.1-1 ppm. NO: odorless'
         _section: *id006
       storage_requirements:
         presentation: descriptive
         items:
         - temperature_range: Store cylinders <52°C. Keep away from heat.
-          ventilation: 'Outdoor storage strongly preferred. Indoor: mechanical ventilation with emergency backup. NOx gas
-            detection mandatory.'
+          ventilation: 'Outdoor storage strongly preferred. Indoor: mechanical ventilation
+            with emergency backup. NOx gas detection mandatory.'
           incompatibilities:
           - Flammable materials
           - Combustible materials
@@ -3580,16 +3872,21 @@ compounds:
           - Carbon disulfide
           - Hydrogen sulfide
           - Petroleum products
-          container_material: Steel cylinders for compressed gas. Stainless steel or glass for liquid.
-          segregation: Separate from flammables and combustibles by 20 feet or firewall. Oxidizer storage area.
-          quantity_limits: 'Per fire code: limit cylinders in buildings. Many facilities store outdoors only.'
-          special_requirements: Cylinder restraints mandatory. Leak detection system required. Post "OXIDIZER" and "POISON
-            GAS" signs. Emergency procedures posted. Monitor cylinder integrity regularly.
+          container_material: Steel cylinders for compressed gas. Stainless steel
+            or glass for liquid.
+          segregation: Separate from flammables and combustibles by 20 feet or firewall.
+            Oxidizer storage area.
+          quantity_limits: 'Per fire code: limit cylinders in buildings. Many facilities
+            store outdoors only.'
+          special_requirements: Cylinder restraints mandatory. Leak detection system
+            required. Post "OXIDIZER" and "POISON GAS" signs. Emergency procedures
+            posted. Monitor cylinder integrity regularly.
         _section: *id007
       regulatory_classification:
         presentation: descriptive
         items:
-        - un_number: UN1067 (nitrogen dioxide/dinitrogen tetroxide), UN2201 (nitrous oxide)
+        - un_number: UN1067 (nitrogen dioxide/dinitrogen tetroxide), UN2201 (nitrous
+            oxide)
           dot_hazard_class: 2.3 (Toxic gas), 5.1 (Oxidizer)
           dot_label: Poison Gas, Oxidizer
           nfpa_codes:
@@ -3608,7 +3905,8 @@ compounds:
       reactivity:
         presentation: descriptive
         items:
-        - stability: NO2/N2O4 equilibrium temperature-dependent. May decompose under heat/pressure.
+        - stability: NO2/N2O4 equilibrium temperature-dependent. May decompose under
+            heat/pressure.
           polymerization: Will not polymerize
           incompatible_materials:
           - Reducing agents
@@ -3628,8 +3926,8 @@ compounds:
           - Pressure
           - Incompatible materials
           - Moisture (forms corrosive acids)
-          reactivity_hazard: Strong oxidizer. Reacts violently with reducing agents and combustibles. Forms nitric acid with
-            water. May explode under heat/pressure.
+          reactivity_hazard: Strong oxidizer. Reacts violently with reducing agents
+            and combustibles. Forms nitric acid with water. May explode under heat/pressure.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -3693,12 +3991,14 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Toxic to aquatic life. LC50 (fish, 96h): 100-180 mg/L. Forms acidic solutions.'
+        - aquatic_toxicity: 'Toxic to aquatic life. LC50 (fish, 96h): 100-180 mg/L.
+            Forms acidic solutions.'
           biodegradability: Reacts in atmosphere. Oxidizes to sulfuric acid. Not biodegradable.
           bioaccumulation: Does not bioaccumulate.
-          soil_mobility: High mobility as gas. Deposits as sulfates. Contributes to soil acidification.
-          atmospheric_fate: 'Oxidizes to sulfur trioxide then sulfuric acid. Major acid rain precursor. Atmospheric residence:
-            hours to days.'
+          soil_mobility: High mobility as gas. Deposits as sulfates. Contributes to
+            soil acidification.
+          atmospheric_fate: 'Oxidizes to sulfur trioxide then sulfuric acid. Major
+            acid rain precursor. Atmospheric residence: hours to days.'
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -3733,29 +4033,37 @@ compounds:
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: SCBA or supplied-air respirator for >5 ppm or unknown concentrations. Air-purifying with acid gas cartridge
-            acceptable for ≤5 ppm with escape provisions.
-          skin: Nitrile gloves for liquid contact (cryogenic hazard). Thermal protection for liquefied SO2.
+        - respiratory: SCBA or supplied-air respirator for >5 ppm or unknown concentrations.
+            Air-purifying with acid gas cartridge acceptable for ≤5 ppm with escape
+            provisions.
+          skin: Nitrile gloves for liquid contact (cryogenic hazard). Thermal protection
+            for liquefied SO2.
           eye: Chemical safety goggles, face shield for liquid contact
-          minimum_level: Level C for known <5 ppm, Level B for >5 ppm or liquefied SO2
-          special_notes: Extremely irritating to eyes and respiratory tract. Cryogenic liquid causes frostbite. Asthma trigger
-            - asthmatics extremely sensitive.
+          minimum_level: Level C for known <5 ppm, Level B for >5 ppm or liquefied
+            SO2
+          special_notes: Extremely irritating to eyes and respiratory tract. Cryogenic
+            liquid causes frostbite. Asthma trigger - asthmatics extremely sensitive.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Non-flammable. Cylinders may explode when heated. Toxic decomposition products in fire.
-          fire_suppression: If cylinder involved in fire, evacuate immediately - explosion hazard. Cool cylinders with water
-            spray from maximum distance. Let fire burn out if possible.
-          spill_procedures: 'EVACUATE. Ventilate area. SCBA for >100 ppm. Neutralize with soda ash or lime. Contain with dry
-            sand or earth. For liquid: cryogenic hazard - specialized equipment needed.'
-          exposure_immediate_actions: 'Remove to fresh air immediately. Eyes: flush with water for 15 minutes. If inhaled:
-            administer oxygen. Seek medical attention - risk of bronchospasm and delayed pulmonary edema. For asthmatics:
+        - fire_hazard: Non-flammable. Cylinders may explode when heated. Toxic decomposition
+            products in fire.
+          fire_suppression: If cylinder involved in fire, evacuate immediately - explosion
+            hazard. Cool cylinders with water spray from maximum distance. Let fire
+            burn out if possible.
+          spill_procedures: 'EVACUATE. Ventilate area. SCBA for >100 ppm. Neutralize
+            with soda ash or lime. Contain with dry sand or earth. For liquid: cryogenic
+            hazard - specialized equipment needed.'
+          exposure_immediate_actions: 'Remove to fresh air immediately. Eyes: flush
+            with water for 15 minutes. If inhaled: administer oxygen. Seek medical
+            attention - risk of bronchospasm and delayed pulmonary edema. For asthmatics:
             MEDICAL EMERGENCY.'
-          environmental_hazards: Major contributor to acid rain. Toxic to vegetation. Acidifies water bodies. Report releases
-            >1 lb.
-          special_hazards: Severe respiratory and eye irritant. Triggers asthma attacks. Forms sulfurous acid with moisture.
-            Corrosive to tissues. May cause bronchospasm and pulmonary edema. Cryogenic liquid causes frostbite.
+          environmental_hazards: Major contributor to acid rain. Toxic to vegetation.
+            Acidifies water bodies. Report releases >1 lb.
+          special_hazards: Severe respiratory and eye irritant. Triggers asthma attacks.
+            Forms sulfurous acid with moisture. Corrosive to tissues. May cause bronchospasm
+            and pulmonary edema. Cryogenic liquid causes frostbite.
         _section: *id004
       produced_from_contaminants:
         presentation: card
@@ -3821,9 +4129,10 @@ compounds:
       storage_requirements:
         presentation: descriptive
         items:
-        - temperature_range: Store cylinders <52°C. Liquefied SO2 requires cryogenic storage.
-          ventilation: 'Outdoor storage preferred. Indoor: mechanical ventilation with emergency backup. SO2 gas detection
-            mandatory.'
+        - temperature_range: Store cylinders <52°C. Liquefied SO2 requires cryogenic
+            storage.
+          ventilation: 'Outdoor storage preferred. Indoor: mechanical ventilation
+            with emergency backup. SO2 gas detection mandatory.'
           incompatibilities:
           - Potassium chlorate
           - Alkali metals
@@ -3834,8 +4143,9 @@ compounds:
           container_material: Steel cylinders. Stainless steel for liquid.
           segregation: Separate from incompatibles. Corrosive gas storage area.
           quantity_limits: Per fire code. Many facilities limit indoor storage.
-          special_requirements: 'Cylinder restraints mandatory. Leak detection system required. Post "CORROSIVE GAS" signs.
-            Emergency procedures posted. For liquid: cryogenic handling equipment.'
+          special_requirements: 'Cylinder restraints mandatory. Leak detection system
+            required. Post "CORROSIVE GAS" signs. Emergency procedures posted. For
+            liquid: cryogenic handling equipment.'
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -3876,8 +4186,8 @@ compounds:
           - Heat
           - Moisture (forms sulfurous acid)
           - Incompatible materials
-          reactivity_hazard: Reacts with water to form sulfurous acid (corrosive). Reacts violently with metal oxides and
-            alkali metals.
+          reactivity_hazard: Reacts with water to form sulfurous acid (corrosive).
+            Reacts violently with metal oxides and alkali metals.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -3940,12 +4250,13 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: Extremely toxic but rapidly hydrolyzes to HCl and CO2 in water. Environmental impact primarily
-            from hydrolysis products.
+        - aquatic_toxicity: Extremely toxic but rapidly hydrolyzes to HCl and CO2
+            in water. Environmental impact primarily from hydrolysis products.
           biodegradability: Not biodegradable. Hydrolyzes rapidly to CO2 and HCl.
           bioaccumulation: Does not bioaccumulate.
           soil_mobility: High mobility as gas. Hydrolyzes on contact with soil moisture.
-          atmospheric_fate: 'Photolyzes and hydrolyzes. Atmospheric half-life: hours. Forms HCl with water vapor.'
+          atmospheric_fate: 'Photolyzes and hydrolyzes. Atmospheric half-life: hours.
+            Forms HCl with water vapor.'
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -3975,34 +4286,44 @@ compounds:
           - method: OSHA Method 61
             technique: GC
             detection_limit: 0.005 ppm
-          odor_threshold: 0.4-1.5 ppm - UNRELIABLE. Odor threshold ABOVE safe exposure limits. NEVER rely on odor. MANDATORY
-            continuous monitoring.
+          odor_threshold: 0.4-1.5 ppm - UNRELIABLE. Odor threshold ABOVE safe exposure
+            limits. NEVER rely on odor. MANDATORY continuous monitoring.
         _section: *id002
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: 'MANDATORY: Full-face pressure-demand SCBA or positive-pressure supplied-air respirator. No air-purifying
-            respirators approved - extremely toxic.'
-          skin: Butyl rubber or neoprene gloves, fully-encapsulating chemical protective suit for gas contact.
+        - respiratory: 'MANDATORY: Full-face pressure-demand SCBA or positive-pressure
+            supplied-air respirator. No air-purifying respirators approved - extremely
+            toxic.'
+          skin: Butyl rubber or neoprene gloves, fully-encapsulating chemical protective
+            suit for gas contact.
           eye: Chemical safety goggles and full face shield
-          minimum_level: Level A for unknown concentrations or >0.1 ppm, Level B minimum for known concentrations <0.1 ppm
-          special_notes: ONE OF THE MOST TOXIC INDUSTRIAL CHEMICALS. Chemical warfare agent. Delayed pulmonary edema 2-48
-            hours post-exposure. SELF-RESCUE RESPIRATORS INADEQUATE - immediate SCBA required.
+          minimum_level: Level A for unknown concentrations or >0.1 ppm, Level B minimum
+            for known concentrations <0.1 ppm
+          special_notes: ONE OF THE MOST TOXIC INDUSTRIAL CHEMICALS. Chemical warfare
+            agent. Delayed pulmonary edema 2-48 hours post-exposure. SELF-RESCUE RESPIRATORS
+            INADEQUATE - immediate SCBA required.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Non-flammable. Cylinders may explode when heated. Decomposes in heat producing deadly gases.
-          fire_suppression: EVACUATE IMMEDIATELY. Extremely deadly decomposition products. Use unmanned equipment only. Water
-            spray from maximum distance to cool cylinders.
-          spill_procedures: EVACUATE LARGE AREA IMMEDIATELY. Call HAZMAT. SCBA MANDATORY. Extremely lethal at ppm levels.
-            Neutralize with ammonia or caustic soda solution. Specialized cleanup required.
-          exposure_immediate_actions: 'MEDICAL EMERGENCY. Remove to fresh air immediately. Administer 100% oxygen. NO artificial
-            respiration if breathing. Monitor for 48 hours - DELAYED PULMONARY EDEMA likely. Hospitalize immediately even
-            if asymptomatic. Inform medical staff: phosgene exposure.'
-          environmental_hazards: Toxic to all life. Hydrolyzes to HCl and CO2 in water. Report ANY release immediately.
-          special_hazards: CHEMICAL WARFARE AGENT (WWI). EXTREMELY TOXIC. Delayed pulmonary edema 2-48 hours after asymptomatic
-            period - sudden death possible. Odor warning INADEQUATE (threshold above safe levels). Hydrolyzes to hydrochloric
+        - fire_hazard: Non-flammable. Cylinders may explode when heated. Decomposes
+            in heat producing deadly gases.
+          fire_suppression: EVACUATE IMMEDIATELY. Extremely deadly decomposition products.
+            Use unmanned equipment only. Water spray from maximum distance to cool
+            cylinders.
+          spill_procedures: EVACUATE LARGE AREA IMMEDIATELY. Call HAZMAT. SCBA MANDATORY.
+            Extremely lethal at ppm levels. Neutralize with ammonia or caustic soda
+            solution. Specialized cleanup required.
+          exposure_immediate_actions: 'MEDICAL EMERGENCY. Remove to fresh air immediately.
+            Administer 100% oxygen. NO artificial respiration if breathing. Monitor
+            for 48 hours - DELAYED PULMONARY EDEMA likely. Hospitalize immediately
+            even if asymptomatic. Inform medical staff: phosgene exposure.'
+          environmental_hazards: Toxic to all life. Hydrolyzes to HCl and CO2 in water.
+            Report ANY release immediately.
+          special_hazards: CHEMICAL WARFARE AGENT (WWI). EXTREMELY TOXIC. Delayed
+            pulmonary edema 2-48 hours after asymptomatic period - sudden death possible.
+            Odor warning INADEQUATE (threshold above safe levels). Hydrolyzes to hydrochloric
             acid in lungs. Death can occur hours after "feeling fine".
         _section: *id004
       produced_from_contaminants:
@@ -4058,14 +4379,17 @@ compounds:
           autoignition_temp: Not applicable
           explosive_limits: Not applicable
           appearance: Colorless gas or fuming liquid
-          odor: 'Musty hay or freshly cut grass odor @ 0.4-1.5 ppm - WARNING: Odor threshold ABOVE safe levels'
+          odor: 'Musty hay or freshly cut grass odor @ 0.4-1.5 ppm - WARNING: Odor
+            threshold ABOVE safe levels'
         _section: *id006
       storage_requirements:
         presentation: descriptive
         items:
-        - temperature_range: Store cylinders <52°C. Keep cool - above 8°C gas becomes liquid.
-          ventilation: Outdoor storage STRONGLY PREFERRED. Indoor only with continuous mechanical ventilation, emergency backup,
-            phosgene detection with REMOTE alarms.
+        - temperature_range: Store cylinders <52°C. Keep cool - above 8°C gas becomes
+            liquid.
+          ventilation: Outdoor storage STRONGLY PREFERRED. Indoor only with continuous
+            mechanical ventilation, emergency backup, phosgene detection with REMOTE
+            alarms.
           incompatibilities:
           - Moisture/water
           - Alcohols
@@ -4075,12 +4399,15 @@ compounds:
           - Sodium
           - Potassium
           container_material: Steel cylinders only. Glass for laboratory quantities.
-          segregation: ISOLATED storage. Separate from ALL other chemicals. Restricted area with multiple barriers.
-          quantity_limits: MINIMIZE. Many jurisdictions prohibit or strictly limit quantities.
-          special_requirements: 'CRITICAL: Phosgene detection system with remote monitoring and alarms MANDATORY. Post "CHEMICAL
-            WARFARE AGENT - EXTREME DANGER" signs. Restricted access - authorized trained personnel only with buddy system.
-            Emergency procedures and antidote protocol posted. Medical surveillance required. Notification to local emergency
-            services REQUIRED.'
+          segregation: ISOLATED storage. Separate from ALL other chemicals. Restricted
+            area with multiple barriers.
+          quantity_limits: MINIMIZE. Many jurisdictions prohibit or strictly limit
+            quantities.
+          special_requirements: 'CRITICAL: Phosgene detection system with remote monitoring
+            and alarms MANDATORY. Post "CHEMICAL WARFARE AGENT - EXTREME DANGER" signs.
+            Restricted access - authorized trained personnel only with buddy system.
+            Emergency procedures and antidote protocol posted. Medical surveillance
+            required. Notification to local emergency services REQUIRED.'
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -4126,8 +4453,9 @@ compounds:
           - Water
           - Incompatible materials
           - Sunlight (promotes decomposition)
-          reactivity_hazard: Hydrolyzes with water forming hydrochloric acid (corrosive). Reacts violently with active metals.
-            May explode on contact with aluminum powder.
+          reactivity_hazard: Hydrolyzes with water forming hydrochloric acid (corrosive).
+            Reacts violently with active metals. May explode on contact with aluminum
+            powder.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -4190,12 +4518,15 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Toxic to fish at high concentrations. LC50 (fish, 96h): 0.5-2.0 mg/L un-ionized NH3. Unionized
-            form highly toxic.'
-          biodegradability: Readily biodegradable. Nitrifying bacteria convert to nitrate.
+        - aquatic_toxicity: 'Toxic to fish at high concentrations. LC50 (fish, 96h):
+            0.5-2.0 mg/L un-ionized NH3. Unionized form highly toxic.'
+          biodegradability: Readily biodegradable. Nitrifying bacteria convert to
+            nitrate.
           bioaccumulation: 'Does not bioaccumulate. Log Kow: -1.69.'
-          soil_mobility: High mobility as gas. Volatilizes from soil. Absorbed as ammonium ion.
-          atmospheric_fate: 'Reacts with acids forming ammonium salts. Washed out by rain. Atmospheric residence: days.'
+          soil_mobility: High mobility as gas. Volatilizes from soil. Absorbed as
+            ammonium ion.
+          atmospheric_fate: 'Reacts with acids forming ammonium salts. Washed out
+            by rain. Atmospheric residence: days.'
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -4231,31 +4562,38 @@ compounds:
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: SCBA or supplied-air respirator for >25 ppm or unknown concentrations. Air-purifying with ammonia cartridge
-            acceptable for ≤25 ppm.
-          skin: Neoprene, nitrile, or butyl rubber gloves. Chemical-resistant clothing. Liquid ammonia causes severe burns
-            and frostbite.
-          eye: Chemical safety goggles, full face shield. Extremely irritating and corrosive to eyes.
-          minimum_level: Level C for known <25 ppm, Level B for >25 ppm or liquefied ammonia
-          special_notes: Extremely irritating at low concentrations. Immediately dangerous above 300 ppm. Cryogenic liquid
-            causes frostbite. Emergency eyewash/shower within 10 seconds.
+        - respiratory: SCBA or supplied-air respirator for >25 ppm or unknown concentrations.
+            Air-purifying with ammonia cartridge acceptable for ≤25 ppm.
+          skin: Neoprene, nitrile, or butyl rubber gloves. Chemical-resistant clothing.
+            Liquid ammonia causes severe burns and frostbite.
+          eye: Chemical safety goggles, full face shield. Extremely irritating and
+            corrosive to eyes.
+          minimum_level: Level C for known <25 ppm, Level B for >25 ppm or liquefied
+            ammonia
+          special_notes: Extremely irritating at low concentrations. Immediately dangerous
+            above 300 ppm. Cryogenic liquid causes frostbite. Emergency eyewash/shower
+            within 10 seconds.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Flammable gas. Narrow explosive range but ignites easily. Vapors lighter than air - rise and disperse.
-            May reignite after flame is extinguished.
-          fire_suppression: Stop flow if safe to do so. Do not extinguish flame unless leak can be stopped. Cool cylinders
-            with water spray from safe distance. Use dry chemical, CO2 from maximum distance.
-          spill_procedures: EVACUATE. Ventilate area. SCBA required for liquid releases or >300 ppm. Contain with water spray
-            or fog. Dilute with water. Neutralize with acid (sulfuric, hydrochloric). Dike large liquid spills.
-          exposure_immediate_actions: 'Remove to fresh air immediately. Eyes: flush with water for 15+ minutes - CRITICAL.
-            Remove contaminated clothing. Wash skin with water. If inhaled: administer oxygen. Seek immediate medical attention
-            - severe irritation likely.'
-          environmental_hazards: Toxic to aquatic life at high concentrations. Rapid volatilization from water. Report releases
-            >100 lbs.
-          special_hazards: Extremely irritating and corrosive to eyes, skin, and respiratory tract. Causes severe chemical
-            burns. Cryogenic liquid causes frostbite. Forms explosive mixtures with air. Reacts violently with acids and halogens.
+        - fire_hazard: Flammable gas. Narrow explosive range but ignites easily. Vapors
+            lighter than air - rise and disperse. May reignite after flame is extinguished.
+          fire_suppression: Stop flow if safe to do so. Do not extinguish flame unless
+            leak can be stopped. Cool cylinders with water spray from safe distance.
+            Use dry chemical, CO2 from maximum distance.
+          spill_procedures: EVACUATE. Ventilate area. SCBA required for liquid releases
+            or >300 ppm. Contain with water spray or fog. Dilute with water. Neutralize
+            with acid (sulfuric, hydrochloric). Dike large liquid spills.
+          exposure_immediate_actions: 'Remove to fresh air immediately. Eyes: flush
+            with water for 15+ minutes - CRITICAL. Remove contaminated clothing. Wash
+            skin with water. If inhaled: administer oxygen. Seek immediate medical
+            attention - severe irritation likely.'
+          environmental_hazards: Toxic to aquatic life at high concentrations. Rapid
+            volatilization from water. Report releases >100 lbs.
+          special_hazards: Extremely irritating and corrosive to eyes, skin, and respiratory
+            tract. Causes severe chemical burns. Cryogenic liquid causes frostbite.
+            Forms explosive mixtures with air. Reacts violently with acids and halogens.
         _section: *id004
       produced_from_contaminants:
         presentation: card
@@ -4316,8 +4654,8 @@ compounds:
         presentation: descriptive
         items:
         - temperature_range: Store cylinders <52°C. Keep away from heat.
-          ventilation: 'Outdoor storage preferred. Indoor: mechanical ventilation with emergency backup. Ammonia gas detection
-            mandatory.'
+          ventilation: 'Outdoor storage preferred. Indoor: mechanical ventilation
+            with emergency backup. Ammonia gas detection mandatory.'
           incompatibilities:
           - Acids (violent reaction)
           - Halogens (chlorine, bromine)
@@ -4326,17 +4664,22 @@ compounds:
           - Mercury
           - Silver compounds
           - Calcium hypochlorite
-          container_material: Steel cylinders for compressed gas. Stainless steel for solutions.
-          segregation: Separate from acids by 20 feet or firewall. Separate from oxidizers and halogens. Flammable gas storage.
-          quantity_limits: Per fire code. Refrigeration systems subject to special regulations.
-          special_requirements: Cylinder restraints mandatory. Leak detection system required. Post "FLAMMABLE GAS" and "CORROSIVE"
-            signs. Emergency eyewash/shower within 25 feet. Avoid contact with copper, brass, zinc in piping.
+          container_material: Steel cylinders for compressed gas. Stainless steel
+            for solutions.
+          segregation: Separate from acids by 20 feet or firewall. Separate from oxidizers
+            and halogens. Flammable gas storage.
+          quantity_limits: Per fire code. Refrigeration systems subject to special
+            regulations.
+          special_requirements: Cylinder restraints mandatory. Leak detection system
+            required. Post "FLAMMABLE GAS" and "CORROSIVE" signs. Emergency eyewash/shower
+            within 25 feet. Avoid contact with copper, brass, zinc in piping.
         _section: *id007
       regulatory_classification:
         presentation: descriptive
         items:
         - un_number: UN1005 (anhydrous), UN2672 (solution)
-          dot_hazard_class: 2.2 (Non-flammable gas) or 2.3 (Toxic gas) depending on concentration
+          dot_hazard_class: 2.2 (Non-flammable gas) or 2.3 (Toxic gas) depending on
+            concentration
           dot_label: Non-flammable Gas or Poison Gas
           nfpa_codes:
             health: 3
@@ -4377,8 +4720,9 @@ compounds:
           - Oxidizers
           - Sparks
           - Open flames
-          reactivity_hazard: Reacts violently with strong acids producing heat and ammonium salts. Explosive reaction with
-            halogens. Attacks copper, brass, zinc, aluminum, and alloys.
+          reactivity_hazard: Reacts violently with strong acids producing heat and
+            ammonium salts. Explosive reaction with halogens. Attacks copper, brass,
+            zinc, aluminum, and alloys.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -4441,13 +4785,14 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Low direct toxicity. LC50 (fish): >100 mg/L. Acidifies water (forms carbonic acid). High levels
-            suffocate aquatic life.'
+        - aquatic_toxicity: 'Low direct toxicity. LC50 (fish): >100 mg/L. Acidifies
+            water (forms carbonic acid). High levels suffocate aquatic life.'
           biodegradability: Not applicable (natural component of carbon cycle).
           bioaccumulation: Does not bioaccumulate.
-          soil_mobility: High mobility as gas. Absorbed by alkaline soils forming carbonates.
-          atmospheric_fate: 'Major greenhouse gas. Atmospheric residence: 30-95 years. Essential for photosynthesis. Removed
-            by plants and ocean absorption.'
+          soil_mobility: High mobility as gas. Absorbed by alkaline soils forming
+            carbonates.
+          atmospheric_fate: 'Major greenhouse gas. Atmospheric residence: 30-95 years.
+            Essential for photosynthesis. Removed by plants and ocean absorption.'
           ozone_depletion: false
           global_warming_potential: 1 (reference gas)
           reportable_releases:
@@ -4477,35 +4822,44 @@ compounds:
           - method: Detector tubes
             technique: Colorimetric
             detection_limit: 0.01%
-          odor_threshold: Not applicable - odorless at all concentrations. No warning property. MUST use instruments.
+          odor_threshold: Not applicable - odorless at all concentrations. No warning
+            property. MUST use instruments.
         _section: *id002
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: SCBA for >5% (50,000 ppm) or oxygen-deficient atmospheres. Not required for normal ambient levels.
-          skin: Insulated gloves for liquid/solid CO2 (dry ice) - cryogenic hazard. No protection needed for gas at normal
-            levels.
+        - respiratory: SCBA for >5% (50,000 ppm) or oxygen-deficient atmospheres.
+            Not required for normal ambient levels.
+          skin: Insulated gloves for liquid/solid CO2 (dry ice) - cryogenic hazard.
+            No protection needed for gas at normal levels.
           eye: Safety glasses for dry ice handling. No protection needed for gas.
-          minimum_level: Level D for normal operations, Level B for confined spaces or high concentrations
-          special_notes: Simple asphyxiant - displaces oxygen. Heavier than air - accumulates in low areas. Dry ice causes
-            frostbite. Physiological effects >1% concentration.
+          minimum_level: Level D for normal operations, Level B for confined spaces
+            or high concentrations
+          special_notes: Simple asphyxiant - displaces oxygen. Heavier than air -
+            accumulates in low areas. Dry ice causes frostbite. Physiological effects
+            >1% concentration.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Non-flammable. Used as fire suppressant. Cylinders may explode when heated.
-          fire_suppression: Not applicable. CO2 extinguishes fires. If cylinder in fire, cool with water spray from maximum
-            distance or evacuate - explosion hazard.
-          spill_procedures: 'Liquid/dry ice release: Ventilate area immediately. Evacuate low-lying areas - CO2 heavier than
-            air. Monitor oxygen levels. Do not touch dry ice - frostbite.'
-          exposure_immediate_actions: 'Remove to fresh air immediately. If not breathing, give artificial respiration. Administer
-            100% oxygen. Seek medical attention if symptoms persist. For dry ice contact: treat as frostbite - warm affected
+        - fire_hazard: Non-flammable. Used as fire suppressant. Cylinders may explode
+            when heated.
+          fire_suppression: Not applicable. CO2 extinguishes fires. If cylinder in
+            fire, cool with water spray from maximum distance or evacuate - explosion
+            hazard.
+          spill_procedures: 'Liquid/dry ice release: Ventilate area immediately. Evacuate
+            low-lying areas - CO2 heavier than air. Monitor oxygen levels. Do not
+            touch dry ice - frostbite.'
+          exposure_immediate_actions: 'Remove to fresh air immediately. If not breathing,
+            give artificial respiration. Administer 100% oxygen. Seek medical attention
+            if symptoms persist. For dry ice contact: treat as frostbite - warm affected
             area gradually.'
-          environmental_hazards: Greenhouse gas. Contributes to ocean acidification. Generally non-toxic to wildlife at normal
-            atmospheric levels.
-          special_hazards: 'SIMPLE ASPHYXIANT - displaces oxygen. Heavier than air - accumulates in pits, tanks, confined
-            spaces. Physiological effects: >1% increased respiration, >5% headache/dizziness, >10% unconsciousness, >20-30%
-            death. ODORLESS - no warning. Dry ice causes severe frostbite.'
+          environmental_hazards: Greenhouse gas. Contributes to ocean acidification.
+            Generally non-toxic to wildlife at normal atmospheric levels.
+          special_hazards: 'SIMPLE ASPHYXIANT - displaces oxygen. Heavier than air
+            - accumulates in pits, tanks, confined spaces. Physiological effects:
+            >1% increased respiration, >5% headache/dizziness, >10% unconsciousness,
+            >20-30% death. ODORLESS - no warning. Dry ice causes severe frostbite.'
         _section: *id004
       produced_from_contaminants:
         presentation: card
@@ -4836,18 +5190,22 @@ compounds:
       storage_requirements:
         presentation: descriptive
         items:
-        - temperature_range: Store cylinders <52°C. Dry ice requires insulated storage <-78°C.
-          ventilation: Good ventilation essential. Outdoor storage preferred for large quantities. Monitor oxygen levels in
-            storage areas.
+        - temperature_range: Store cylinders <52°C. Dry ice requires insulated storage
+            <-78°C.
+          ventilation: Good ventilation essential. Outdoor storage preferred for large
+            quantities. Monitor oxygen levels in storage areas.
           incompatibilities:
           - Reactive metals (cesium, sodium, potassium)
           - Metal acetylides
           - Bases (reacts forming carbonates)
-          container_material: Steel cylinders for compressed gas. Insulated containers for dry ice.
+          container_material: Steel cylinders for compressed gas. Insulated containers
+            for dry ice.
           segregation: None required. Keep away from reactive metals.
-          quantity_limits: Cylinders per fire code. Dry ice quantities limited by storage capacity.
-          special_requirements: Cylinder restraints mandatory. Oxygen monitoring in storage areas. Post "SIMPLE ASPHYXIANT"
-            signs. Adequate ventilation critical. Never store in confined spaces without ventilation and O2 monitoring.
+          quantity_limits: Cylinders per fire code. Dry ice quantities limited by
+            storage capacity.
+          special_requirements: Cylinder restraints mandatory. Oxygen monitoring in
+            storage areas. Post "SIMPLE ASPHYXIANT" signs. Adequate ventilation critical.
+            Never store in confined spaces without ventilation and O2 monitoring.
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -4883,8 +5241,8 @@ compounds:
           conditions_to_avoid:
           - High heat (cylinder explosion)
           - Reactive metals
-          reactivity_hazard: Generally non-reactive. Reacts with strong bases. May react with reactive metals. Solid CO2 causes
-            embrittlement of some materials.
+          reactivity_hazard: Generally non-reactive. Reacts with strong bases. May
+            react with reactive metals. Solid CO2 causes embrittlement of some materials.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -4948,12 +5306,13 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Variable. Many VOCs toxic to aquatic life (LC50: 1-1000 mg/L range).'
+        - aquatic_toxicity: 'Variable. Many VOCs toxic to aquatic life (LC50: 1-1000
+            mg/L range).'
           biodegradability: Variable. Some readily biodegradable, others persistent.
           bioaccumulation: 'Variable. Log Kow range: -1 to 7. Lipophilic VOCs bioaccumulate.'
           soil_mobility: Variable. Many volatile from soil. Some adsorb strongly.
-          atmospheric_fate: 'Photochemical reactions. Form ozone and smog. Atmospheric half-life: hours to months. Major air
-            quality concern.'
+          atmospheric_fate: 'Photochemical reactions. Form ozone and smog. Atmospheric
+            half-life: hours to months. Major air quality concern.'
           ozone_depletion: Some VOCs deplete ozone (CFCs, halons - now banned)
           global_warming_potential: Some VOCs are greenhouse gases
           reportable_releases:
@@ -4987,35 +5346,41 @@ compounds:
           - method: EPA Method 8260
             technique: GC-MS (water samples)
             detection_limit: µg/L levels
-          odor_threshold: Variable. Some VOCs odorless (benzene), others pungent at low ppm. Olfactory fatigue common. Do
-            not rely on odor.
+          odor_threshold: Variable. Some VOCs odorless (benzene), others pungent at
+            low ppm. Olfactory fatigue common. Do not rely on odor.
         _section: *id002
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: Organic vapor respirator with appropriate cartridge for known VOC concentrations. SCBA for unknown
-            mixtures or high concentrations.
-          skin: Nitrile or butyl rubber gloves depending on specific VOC. Chemical-resistant clothing for liquid contact.
+        - respiratory: Organic vapor respirator with appropriate cartridge for known
+            VOC concentrations. SCBA for unknown mixtures or high concentrations.
+          skin: Nitrile or butyl rubber gloves depending on specific VOC. Chemical-resistant
+            clothing for liquid contact.
           eye: Chemical safety goggles, face shield for splash hazard.
-          minimum_level: Level C for known low concentrations, Level B for unknown mixtures or high vapor concentrations
-          special_notes: VOCs vary widely in toxicity. Mixture effects unpredictable. Some VOCs carcinogenic (benzene, formaldehyde).
-            Others neurotoxic (toluene, xylene). Identify specific VOCs when possible.
+          minimum_level: Level C for known low concentrations, Level B for unknown
+            mixtures or high vapor concentrations
+          special_notes: VOCs vary widely in toxicity. Mixture effects unpredictable.
+            Some VOCs carcinogenic (benzene, formaldehyde). Others neurotoxic (toluene,
+            xylene). Identify specific VOCs when possible.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Many VOCs flammable or combustible. Vapors heavier than air. May travel to ignition sources. Explosive
-            mixtures possible.
-          fire_suppression: Use dry chemical, CO2, foam appropriate for specific VOC. Water spray to cool containers. Prevent
-            runoff contamination.
-          spill_procedures: Eliminate ignition sources. Ventilate area. Identify VOCs if possible. Contain with absorbent.
-            Dispose as hazardous waste. Monitor air quality.
-          exposure_immediate_actions: 'Remove to fresh air. Eyes: flush with water. Remove contaminated clothing. Wash skin.
-            Seek medical attention - inform physician of specific VOCs if known. Monitor for delayed effects.'
-          environmental_hazards: Many VOCs toxic to aquatic life. Contribute to ozone formation and smog. Bioaccumulate. Contaminate
-            groundwater.
-          special_hazards: Complex mixtures with unpredictable effects. Some carcinogenic (benzene, formaldehyde, 1,3-butadiene).
-            Others neurotoxic (toluene, xylene, styrene). Respiratory irritants. Contribute to indoor air quality problems.
+        - fire_hazard: Many VOCs flammable or combustible. Vapors heavier than air.
+            May travel to ignition sources. Explosive mixtures possible.
+          fire_suppression: Use dry chemical, CO2, foam appropriate for specific VOC.
+            Water spray to cool containers. Prevent runoff contamination.
+          spill_procedures: Eliminate ignition sources. Ventilate area. Identify VOCs
+            if possible. Contain with absorbent. Dispose as hazardous waste. Monitor
+            air quality.
+          exposure_immediate_actions: 'Remove to fresh air. Eyes: flush with water.
+            Remove contaminated clothing. Wash skin. Seek medical attention - inform
+            physician of specific VOCs if known. Monitor for delayed effects.'
+          environmental_hazards: Many VOCs toxic to aquatic life. Contribute to ozone
+            formation and smog. Bioaccumulate. Contaminate groundwater.
+          special_hazards: Complex mixtures with unpredictable effects. Some carcinogenic
+            (benzene, formaldehyde, 1,3-butadiene). Others neurotoxic (toluene, xylene,
+            styrene). Respiratory irritants. Contribute to indoor air quality problems.
             Chronic exposure health effects vary widely.
         _section: *id004
       produced_from_contaminants:
@@ -5159,15 +5524,21 @@ compounds:
       storage_requirements:
         presentation: descriptive
         items:
-        - temperature_range: Cool storage below 25°C typical. Refrigerate if highly volatile.
-          ventilation: Local exhaust ventilation. Outdoor storage preferred for large quantities.
+        - temperature_range: Cool storage below 25°C typical. Refrigerate if highly
+            volatile.
+          ventilation: Local exhaust ventilation. Outdoor storage preferred for large
+            quantities.
           incompatibilities:
-          - 'Variable - check specific VOC SDS. Generally: oxidizers, strong acids, strong bases'
-          container_material: Depends on specific VOC. Metal or glass typically. Check compatibility.
+          - 'Variable - check specific VOC SDS. Generally: oxidizers, strong acids,
+            strong bases'
+          container_material: Depends on specific VOC. Metal or glass typically. Check
+            compatibility.
           segregation: Separate from oxidizers. Flammable storage if applicable.
-          quantity_limits: Follow NFPA 30 for flammable/combustible liquids. Minimize quantities.
-          special_requirements: Label with specific VOC contents. Post appropriate hazard signs. Secondary containment for
-            liquids. Gas detection for enclosed spaces. Emergency procedures.
+          quantity_limits: Follow NFPA 30 for flammable/combustible liquids. Minimize
+            quantities.
+          special_requirements: Label with specific VOC contents. Post appropriate
+            hazard signs. Secondary containment for liquids. Gas detection for enclosed
+            spaces. Emergency procedures.
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -5181,7 +5552,8 @@ compounds:
             reactivity: 0-2 (Variable)
             special: Variable
           epa_hazard_categories:
-          - Variable - may include carcinogenicity, neurotoxicity, reproductive toxicity, aquatic toxicity
+          - Variable - may include carcinogenicity, neurotoxicity, reproductive toxicity,
+            aquatic toxicity
           sara_title_iii: Many VOCs listed
           cercla_rq: Variable by specific VOC
           rcra_code: Many VOCs have codes (U-series, F-series)
@@ -5189,10 +5561,13 @@ compounds:
       reactivity:
         presentation: descriptive
         items:
-        - stability: Variable. Many stable under normal conditions. Some polymerize or degrade.
-          polymerization: Some VOCs polymerize (styrene, acrylates). Check individual compounds.
+        - stability: Variable. Many stable under normal conditions. Some polymerize
+            or degrade.
+          polymerization: Some VOCs polymerize (styrene, acrylates). Check individual
+            compounds.
           incompatible_materials:
-          - 'Variable - commonly: oxidizers, strong acids, strong bases, reactive metals'
+          - 'Variable - commonly: oxidizers, strong acids, strong bases, reactive
+            metals'
           hazardous_decomposition:
           - Carbon monoxide
           - Carbon dioxide
@@ -5202,8 +5577,8 @@ compounds:
           - Ignition sources
           - Incompatible materials
           - Oxidizers
-          reactivity_hazard: Variable. Many form explosive mixtures with air. Some react violently with oxidizers. Peroxide
-            formation possible in ethers.
+          reactivity_hazard: Variable. Many form explosive mixtures with air. Some
+            react violently with oxidizers. Peroxide formation possible in ethers.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive
@@ -5270,14 +5645,16 @@ compounds:
       environmental_impact:
         presentation: descriptive
         items:
-        - aquatic_toxicity: 'Very toxic to aquatic organisms. LC50 (fathead minnow, 96h): 3.7 µg/L. Bioaccumulates in fish
-            - BCF 1,100-15,000.'
-          biodegradability: 'Poorly biodegradable. Degradation half-life in soil: months to years. Resistant to microbial
-            breakdown.'
-          bioaccumulation: 'High bioaccumulation potential. Log Kow: 6.04-6.50. Accumulates in fatty tissues and sediments.'
-          soil_mobility: Low mobility. Strongly adsorbs to soil/sediment organic matter. Persistent in contaminated sites.
-          atmospheric_fate: 'Primarily bound to particulate matter. Photolyzes slowly under UV light. Atmospheric half-life:
-            hours to days on particles.'
+        - aquatic_toxicity: 'Very toxic to aquatic organisms. LC50 (fathead minnow,
+            96h): 3.7 µg/L. Bioaccumulates in fish - BCF 1,100-15,000.'
+          biodegradability: 'Poorly biodegradable. Degradation half-life in soil:
+            months to years. Resistant to microbial breakdown.'
+          bioaccumulation: 'High bioaccumulation potential. Log Kow: 6.04-6.50. Accumulates
+            in fatty tissues and sediments.'
+          soil_mobility: Low mobility. Strongly adsorbs to soil/sediment organic matter.
+            Persistent in contaminated sites.
+          atmospheric_fate: 'Primarily bound to particulate matter. Photolyzes slowly
+            under UV light. Atmospheric half-life: hours to days on particles.'
           ozone_depletion: false
           global_warming_potential: null
           reportable_releases:
@@ -5307,34 +5684,43 @@ compounds:
           - method: OSHA Method 58
             technique: GC with FID
             detection_limit: 0.1 µg/sample
-          odor_threshold: Not applicable - no characteristic warning odor at hazardous levels
+          odor_threshold: Not applicable - no characteristic warning odor at hazardous
+            levels
         _section: *id002
       ppe_requirements:
         presentation: descriptive
         items:
-        - respiratory: NIOSH-approved air-purifying respirator with P100 particulate filters for <0.2 mg/m³. SCBA for unknown
-            concentrations or emergency response.
-          skin: Nitrile or butyl rubber gloves, chemical-resistant clothing. PAHs absorb through skin - double gloving recommended
-            for prolonged exposure.
+        - respiratory: NIOSH-approved air-purifying respirator with P100 particulate
+            filters for <0.2 mg/m³. SCBA for unknown concentrations or emergency response.
+          skin: Nitrile or butyl rubber gloves, chemical-resistant clothing. PAHs
+            absorb through skin - double gloving recommended for prolonged exposure.
           eye: Chemical safety goggles, face shield for dusty operations
-          minimum_level: Level C for known concentrations <0.2 mg/m³, Level B for unknown or >0.2 mg/m³
-          special_notes: PAH is carcinogenic - minimize skin contact. Decontaminate immediately after exposure. Disposable
-            protective clothing recommended for heavy contamination.
+          minimum_level: Level C for known concentrations <0.2 mg/m³, Level B for
+            unknown or >0.2 mg/m³
+          special_notes: PAH is carcinogenic - minimize skin contact. Decontaminate
+            immediately after exposure. Disposable protective clothing recommended
+            for heavy contamination.
         _section: *id003
       emergency_response:
         presentation: descriptive
         items:
-        - fire_hazard: Combustible solid. May burn in sustained fire. Produces carcinogenic PAH compounds in smoke.
-          fire_suppression: Dry chemical, CO2, water spray, foam. Wear SCBA - toxic combustion products. Contain runoff.
-          spill_procedures: Avoid generating dust. Sweep/vacuum with HEPA filter. Place in sealed containers. DO NOT wash
-            down drains - PAH contamination persists. Dispose as hazardous waste.
-          exposure_immediate_actions: Remove contaminated clothing immediately. Wash skin thoroughly with soap and water.
-            Do not use solvents on skin. If inhaled, move to fresh air. Seek medical attention - inform physician of carcinogen
+        - fire_hazard: Combustible solid. May burn in sustained fire. Produces carcinogenic
+            PAH compounds in smoke.
+          fire_suppression: Dry chemical, CO2, water spray, foam. Wear SCBA - toxic
+            combustion products. Contain runoff.
+          spill_procedures: Avoid generating dust. Sweep/vacuum with HEPA filter.
+            Place in sealed containers. DO NOT wash down drains - PAH contamination
+            persists. Dispose as hazardous waste.
+          exposure_immediate_actions: Remove contaminated clothing immediately. Wash
+            skin thoroughly with soap and water. Do not use solvents on skin. If inhaled,
+            move to fresh air. Seek medical attention - inform physician of carcinogen
             exposure.
-          environmental_hazards: Very toxic to aquatic life. Persists in environment (soil/sediment for years). Bioaccumulates
-            in food chain. Report spills >1 lb.
-          special_hazards: KNOWN HUMAN CARCINOGEN (IARC Group 1). Causes lung cancer, skin cancer, leukemia. Mutagenic and
-            teratogenic. PAH exposure linked to multiple cancers. Contaminated soil requires remediation.
+          environmental_hazards: Very toxic to aquatic life. Persists in environment
+            (soil/sediment for years). Bioaccumulates in food chain. Report spills
+            >1 lb.
+          special_hazards: KNOWN HUMAN CARCINOGEN (IARC Group 1). Causes lung cancer,
+            skin cancer, leukemia. Mutagenic and teratogenic. PAH exposure linked
+            to multiple cancers. Contaminated soil requires remediation.
         _section: *id004
       produced_from_contaminants:
         presentation: card
@@ -5386,7 +5772,8 @@ compounds:
             - metabolite: 1-Hydroxypyrene
               specimen: Urine
               timing: End of shift
-              bei_value: <0.5 µg/L (non-occupationally exposed), <2.0 µg/L (occupationally exposed)
+              bei_value: <0.5 µg/L (non-occupationally exposed), <2.0 µg/L (occupationally
+                exposed)
             - metabolite: PAH metabolites
               specimen: Urine
               timing: End of week
@@ -5410,16 +5797,21 @@ compounds:
         presentation: descriptive
         items:
         - temperature_range: Store at room temperature, avoid excessive heat >30°C
-          ventilation: Local exhaust ventilation to control dust. Store in well-ventilated area.
+          ventilation: Local exhaust ventilation to control dust. Store in well-ventilated
+            area.
           incompatibilities:
           - Strong oxidizers
           - Strong acids
           - Halogens
-          container_material: Tightly sealed glass or plastic containers. Store away from light.
-          segregation: Separate from oxidizers and incompatibles. Designated carcinogen storage area.
-          quantity_limits: Minimize quantities. Follow institutional carcinogen storage protocols.
-          special_requirements: Post "CANCER HAZARD" signs. Restrict access to authorized trained personnel only. Secondary
-            containment required. Inspect containers regularly for integrity.
+          container_material: Tightly sealed glass or plastic containers. Store away
+            from light.
+          segregation: Separate from oxidizers and incompatibles. Designated carcinogen
+            storage area.
+          quantity_limits: Minimize quantities. Follow institutional carcinogen storage
+            protocols.
+          special_requirements: Post "CANCER HAZARD" signs. Restrict access to authorized
+            trained personnel only. Secondary containment required. Inspect containers
+            regularly for integrity.
         _section: *id007
       regulatory_classification:
         presentation: descriptive
@@ -5444,7 +5836,8 @@ compounds:
       reactivity:
         presentation: descriptive
         items:
-        - stability: Stable under normal conditions. Light-sensitive. Decomposes at high temperatures.
+        - stability: Stable under normal conditions. Light-sensitive. Decomposes at
+            high temperatures.
           polymerization: Will not polymerize
           incompatible_materials:
           - Strong oxidizers (nitric acid, peroxides)
@@ -5460,7 +5853,8 @@ compounds:
           - Flames
           - Light
           - Oxidizers
-          reactivity_hazard: May react with strong oxidizers. Generally stable but avoid high heat.
+          reactivity_hazard: May react with strong oxidizers. Generally stable but
+            avoid high heat.
         _section: *id009
       synonyms_identifiers:
         presentation: descriptive

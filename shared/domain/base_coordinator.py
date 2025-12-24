@@ -72,11 +72,12 @@ class UniversalDomainCoordinator(ABC):
                 self.winston_client = None
                 logger.warning(f"⚠️  Winston not configured (will continue without AI detection): {e}")
             
-            # Initialize QualityEvaluatedGenerator
+            # Initialize QualityEvaluatedGenerator with domain
             self.generator = QualityEvaluatedGenerator(
                 api_client=api_client,
                 subjective_evaluator=self.subjective_evaluator,
-                winston_client=self.winston_client
+                winston_client=self.winston_client,
+                domain=self.domain_name
             )
             
             logger.info(f"✅ {self.__class__.__name__} initialized with generation pipeline")
@@ -231,7 +232,8 @@ class UniversalDomainCoordinator(ABC):
         )
         
         if not result.success:
-            raise RuntimeError(f"Generation failed: {result.error}")
+            error_msg = result.error_message or "Unknown error"
+            raise RuntimeError(f"Generation failed: {error_msg}")
         
         # Save generated content
         try:

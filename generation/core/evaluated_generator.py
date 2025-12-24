@@ -64,7 +64,8 @@ class QualityEvaluatedGenerator:
         api_client,
         subjective_evaluator,
         winston_client=None,
-        structural_variation_checker=None
+        structural_variation_checker=None,
+        domain='materials'
     ):
         """
         Initialize quality-evaluated generator.
@@ -74,6 +75,7 @@ class QualityEvaluatedGenerator:
             subjective_evaluator: SubjectiveEvaluator instance (required)
             winston_client: Winston API client for AI detection (optional)
             structural_variation_checker: StructuralVariationChecker instance (optional)
+            domain: Domain name (e.g., 'materials', 'compounds', 'settings')
         
         Raises:
             ValueError: If required components missing (fail-fast)
@@ -87,10 +89,11 @@ class QualityEvaluatedGenerator:
         self.subjective_evaluator = subjective_evaluator
         self.winston_client = winston_client
         self.structural_variation_checker = structural_variation_checker
+        self.domain = domain
         
-        # Initialize Generator (single-pass)
+        # Initialize Generator (single-pass) with domain
         from generation.core.generator import Generator
-        self.generator = Generator(api_client)
+        self.generator = Generator(api_client, domain=domain)
         
         # Initialize DynamicConfig for parameters
         from generation.config.dynamic_config import DynamicConfig
