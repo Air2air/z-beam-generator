@@ -33,7 +33,7 @@ from .linkage import DomainLinkagesEnricher, DomainLinkagesSlugEnricher
 from .linkage.registry import create_enrichers
 
 # Metadata enrichers
-from .metadata import BreadcrumbEnricher
+from .metadata import BreadcrumbEnricher, FieldOrderEnricher
 
 __all__ = [
     # Base classes
@@ -55,6 +55,7 @@ __all__ = [
     
     # Metadata
     'BreadcrumbEnricher',
+    'FieldOrderEnricher',
     
     # Library
     'LibraryEnrichmentProcessor',

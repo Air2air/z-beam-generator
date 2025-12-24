@@ -52,14 +52,37 @@ class RelationshipPathValidator:
     def __init__(self, frontmatter_dir: str):
         self.frontmatter_dir = Path(frontmatter_dir)
         self.index = {}  # id → file_data
+        self.challenge_library = {}  # challenge id → pattern data
         self.errors = []
         self.warnings = []
         self.total_links = 0
         self.verified_links = 0
+        self.data_based_items = 0  # Count of data-based items (skipped)
         
+    def load_challenge_library(self):
+        """Load challenge patterns library."""
+        # Determine project root (go up from frontmatter to z-beam to parent)
+        project_root = self.frontmatter_dir.parent.parent / 'z-beam-generator'
+        challenge_lib_path = project_root / 'data' / 'challenges' / 'ChallengePatterns.yaml'
+        
+        if challenge_lib_path.exists():
+            try:
+                with open(challenge_lib_path, 'r', encoding='utf-8') as f:
+                    data = yaml.safe_load(f)
+                    if data and 'challenge_patterns' in data:
+                        self.challenge_library = data['challenge_patterns']
+                        print(f"   ✅ Loaded {len(self.challenge_library)} challenge patterns")
+            except Exception as e:
+                print(f"   ⚠️  Error loading challenge library: {e}")
+        else:
+            print(f"   ⚠️  Challenge library not found at {challenge_lib_path}")
+    
     def load_all_files(self):
         """Load all frontmatter files into memory."""
         print("🔍 Loading all frontmatter files...")
+        
+        # Load challenge library first
+        self.load_challenge_library()
         
         for domain_key, domain_dir in DOMAIN_DIRS.items():
             domain_path = self.frontmatter_dir / domain_dir
@@ -100,12 +123,22 @@ class RelationshipPathValidator:
                 continue
             
             # Check each relationship field
-            for field_name, items in relationships.items():
-                if not isinstance(items, list):
+            for field_name, relationship_data in relationships.items():
+                # Handle both old format (list) and new format (dict with 'items' key)
+                if isinstance(relationship_data, list):
+                    items = relationship_data
+                elif isinstance(relationship_data, dict) and 'items' in relationship_data:
+                    items = relationship_data['items']
+                else:
                     continue
                 
                 for item in items:
-                    if not isinstance(item, dict) or 'id' not in item:
+                    if not isinstance(item, dict):
+                        continue
+                    
+                    # Skip data-based items (items without 'id' field)
+                    if 'id' not in item:
+                        self.data_based_items += 1
                         continue
                     
                     self.total_links += 1
@@ -124,6 +157,24 @@ class RelationshipPathValidator:
                              target_id: str, relationship_field: str, 
                              link_data: dict):
         """Validate forward link: Source → Target"""
+        
+        # Check if this is a challenge reference
+        item_type = link_data.get('type')
+        if item_type == 'challenge':
+            # Validate against challenge library
+            if target_id in self.challenge_library:
+                self.verified_links += 1
+                return  # Valid challenge reference, no backlink validation needed
+            else:
+                self.errors.append({
+                    'type': 'missing_challenge_pattern',
+                    'source': source_id,
+                    'source_path': source_info['full_path'],
+                    'target': target_id,
+                    'field': relationship_field,
+                    'message': f"Challenge pattern '{target_id}' not found in ChallengePatterns.yaml"
+                })
+                return
         
         # Check if target exists
         if target_id not in self.index:
@@ -181,7 +232,15 @@ class RelationshipPathValidator:
             return
         
         target_relationships = target_info['data'].get('relationships', {})
-        backlink_items = target_relationships.get(backlink_field, [])
+        backlink_data = target_relationships.get(backlink_field)
+        
+        # Handle both old format (list) and new format (dict with 'items')
+        if isinstance(backlink_data, list):
+            backlink_items = backlink_data
+        elif isinstance(backlink_data, dict) and 'items' in backlink_data:
+            backlink_items = backlink_data['items']
+        else:
+            backlink_items = []
         
         # Check if source_id is in backlink_items
         found_backlink = False
@@ -234,8 +293,10 @@ class RelationshipPathValidator:
         print("="*80)
         
         print(f"\n📁 Files Scanned: {len(self.index)}")
-        print(f"🔗 Total Relationship Links: {self.total_links}")
-        print(f"✅ Verified Forward Links: {self.verified_links}")
+        print(f"🔗 Total Links: {self.total_links}")
+        if self.data_based_items > 0:
+            print(f"📋 Data-based items (skipped validation): {self.data_based_items}")
+        print(f"✅ Verified Links: {self.verified_links}")
         
         if self.errors:
             print(f"\n❌ ERRORS: {len(self.errors)}")

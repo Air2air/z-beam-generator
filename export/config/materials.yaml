@@ -3,6 +3,13 @@ source_file: data/materials/Materials.yaml
 output_path: ../z-beam/frontmatter/materials
 items_key: materials
 filename_suffix: ''
+relationship_groups:
+  technical:
+  - contaminated_by
+  safety:
+  - regulatory_standards
+  operational:
+  - industry_applications
 enrichments:
 - type: universal_restructure
   module: export.enrichers.universal.universal_restructure_enricher
@@ -18,14 +25,13 @@ enrichments:
     - eeat
     - voice_enhanced
     duplicate_fields:
-      regulatory_standards: regulatory
+      regulatory_standards: regulatory_standards
 - type: compound_linkage
   module: export.enrichers.linkage.compound_linkage_enricher
   class: CompoundLinkageEnricher
   field: produces_compounds
   title: Compounds Produced
-  description: Hazardous fumes and particles generated when laser processing this
-    material
+  description: Hazardous fumes and particles generated when laser processing this material
   source: data/compounds/Compounds.yaml
   defaults:
   - concentration_range
@@ -78,12 +84,25 @@ enrichments:
   sections:
     contaminated_by:
       presentation: card
-    regulatory:
+      title: Common Contaminants
+      description: Types of contamination typically found on this material that require laser cleaning
+      icon: droplet
+      order: 1
+      variant: default
+    regulatory_standards:
       presentation: card
-    removes_contaminants:
+      title: Regulatory Standards
+      description: Safety and compliance standards applicable to laser cleaning of this material
+      icon: file-text
+      order: 2
+      variant: default
+    industry_applications:
       presentation: card
-    produces_compounds:
-      presentation: card
+      title: Industry Applications
+      description: Industries and sectors where this material is commonly used
+      icon: building-2
+      order: 3
+      variant: default
 - type: timestamp
   module: export.enrichers.metadata.timestamp_enricher
   class: TimestampEnricher
@@ -91,7 +110,7 @@ enrichments:
   - datePublished
   - dateModified
 - type: author
-  module: export.enrichers.metadata.author_enricher
+  module: export.enrichers.linkage.author_enricher
   class: AuthorEnricher
 - type: breadcrumb
   module: export.enrichers.navigation.breadcrumb_enricher
@@ -100,12 +119,19 @@ enrichments:
   category_field: category
   subcategory_field: subcategory
   name_field: name
-# - type: relationship_urls  # DISABLED - Frontend derives URLs from full_path (ID-based lookup)
-#   module: export.enrichers.relationships.relationship_url_enricher
-#   class: RelationshipURLEnricher
-#   description: Adds url field to all relationship items based on target's full_path
+- type: relationship_group
+  module: export.enrichers.relationships.group_enricher
+  class: RelationshipGroupEnricher
+  description: Group relationships into technical/safety/operational categories
+  relationship_groups:
+    technical:
+    - contaminated_by
+    safety:
+    - regulatory_standards
+    operational:
+    - industry_applications
 library_enrichments:
-  enabled: false  # Disabled - regulatory data already complete in source
+  enabled: false
   enrichments:
   - type: regulatory_standards
     relationship_field: relationships.regulatory_standards
@@ -133,6 +159,10 @@ generators:
   output_field: micro
   mode: sentences
   length: 2
+- type: field_order
+  module: export.enrichers.metadata.field_order_enricher
+  class: FieldOrderEnricher
+  description: Normalize field order for consistency (must run last)
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true
@@ -141,3 +171,7 @@ enrichers:
     - related_settings
     - removes_contaminants
     - produces_compounds
+- type: field_order
+  module: export.enrichers.metadata.field_order_enricher
+  class: FieldOrderEnricher
+  description: Normalize field order for consistency (MUST be last)

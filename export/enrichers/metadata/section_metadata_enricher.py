@@ -3,6 +3,7 @@ Section Metadata Enricher - Adds display metadata to relationship sections.
 
 This enricher wraps relationship arrays with presentation metadata:
 - presentation: Display variant (card, list, table, etc.)
+- _section: Optional section metadata (title, description, icon)
 - items: Array of relationship items
 
 Example transformation:
@@ -16,12 +17,14 @@ Example transformation:
         relationships:
           produces_compounds:
             presentation: card
+            _section:
+              title: "Compounds Released"
+              description: "Hazardous fumes and particles generated..."
             items:
               - id: pahs-compound
                 frequency: common
 
 Compatible with Card Restructure (December 2025).
-Migrated from _section structure to presentation structure.
 """
 
 import logging
@@ -43,13 +46,16 @@ class SectionMetadataEnricher(BaseEnricher):
           sections:
             produces_compounds:
               presentation: "card"
+              title: "Compounds Released"
+              description: "Hazardous fumes generated..."
             produced_from_contaminants:
               presentation: "list"
     
     This enricher should run LATE in the pipeline (after all relationship
     enrichment is complete) so we're wrapping fully-enriched relationship data.
     
-    Compatible with Card Restructure (December 2025) - uses 'presentation' key.
+    Compatible with Card Restructure (December 2025) - adds presentation key
+    and optional _section metadata with title/description.
     """
     
     def __init__(self, config: Dict[str, Any]):
@@ -61,6 +67,9 @@ class SectionMetadataEnricher(BaseEnricher):
         """
         super().__init__(config)
         self.section_configs = config.get('sections', {})
+        # Store section titles and descriptions from config (if provided at enricher level)
+        self.section_titles = config.get('section_titles', {})
+        self.section_descriptions = config.get('section_descriptions', {})
         logger.info(f"Initialized SectionMetadataEnricher with {len(self.section_configs)} section configs")
     
     def enrich(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:
@@ -89,23 +98,67 @@ class SectionMetadataEnricher(BaseEnricher):
             if field_name not in self.section_configs:
                 continue
             
-            # Skip if already wrapped (has presentation key)
-            if isinstance(field_data, dict) and 'presentation' in field_data:
-                continue
-            
-            # Skip if data is not a list
-            if not isinstance(field_data, list):
-                continue
-            
             # Get section config
             section_config = self.section_configs[field_name]
             
+            # Check if already wrapped
+            if isinstance(field_data, dict) and 'presentation' in field_data:
+                # Already wrapped - add or update _section metadata if needed
+                title = section_config.get('title') or self.section_titles.get(field_name)
+                description = section_config.get('description') or self.section_descriptions.get(field_name)
+                icon = section_config.get('icon')
+                order = section_config.get('order')
+                variant = section_config.get('variant')
+                
+                if title or description or icon or order is not None or variant:
+                    if '_section' not in field_data:
+                        field_data['_section'] = {}
+                    if title:
+                        field_data['_section']['title'] = title
+                    if description:
+                        field_data['_section']['description'] = description
+                    if icon:
+                        field_data['_section']['icon'] = icon
+                    if order is not None:
+                        field_data['_section']['order'] = order
+                    if variant:
+                        field_data['_section']['variant'] = variant
+                    wrapped_count += 1
+                    logger.debug(f"Added _section metadata to {field_name} for {item_id}")
+                continue
+            
+            # Skip if data is not a list (not a relationship to wrap)
+            if not isinstance(field_data, list):
+                continue
+            
             # Create wrapper structure with presentation (new format)
-            # Include empty lists for consistency
             wrapped_data = {
                 'presentation': section_config.get('presentation', 'card'),
-                'items': field_data
             }
+            
+            # Add _section metadata if title or description is configured
+            title = section_config.get('title') or self.section_titles.get(field_name)
+            description = section_config.get('description') or self.section_descriptions.get(field_name)
+            icon = section_config.get('icon')
+            order = section_config.get('order')
+            variant = section_config.get('variant', 'default')
+            
+            if title or description or icon or order is not None or variant:
+                _section = {}
+                if title:
+                    _section['title'] = title
+                if description:
+                    _section['description'] = description
+                if icon:
+                    _section['icon'] = icon
+                if order is not None:
+                    _section['order'] = order
+                if variant:
+                    _section['variant'] = variant
+                wrapped_data['_section'] = _section
+            
+            # Add items array
+            wrapped_data['items'] = field_data
             
             # Replace relationship field with wrapped version
             relationships[field_name] = wrapped_data

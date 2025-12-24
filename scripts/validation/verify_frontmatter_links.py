@@ -86,12 +86,25 @@ class FrontmatterLinkValidator:
     def __init__(self, frontmatter_root: Path):
         self.frontmatter_root = frontmatter_root
         self.index: Dict[str, Set[str]] = {domain: set() for domain in self.DOMAINS}
+        self.challenge_library: Dict[str, Any] = {}
         self.link_graph: Dict[str, Dict[str, List[str]]] = defaultdict(lambda: defaultdict(list))
         self.report = ValidationReport()
+        self.data_based_items = 0  # Count of data-based items (skipped)
     
     def build_index(self):
         """Build index of all valid IDs across all domains"""
         print("🔍 Building index of all frontmatter files...")
+        
+        # Load challenge library
+        challenge_lib_path = self.frontmatter_root.parent / 'z-beam-generator' / 'data' / 'challenges' / 'ChallengePatterns.yaml'
+        if challenge_lib_path.exists():
+            try:
+                data = yaml.safe_load(challenge_lib_path.read_text())
+                if data and 'challenge_patterns' in data:
+                    self.challenge_library = data['challenge_patterns']
+                    print(f"   ✅ Loaded {len(self.challenge_library)} challenge patterns")
+            except Exception as e:
+                print(f"   ⚠️  Error loading challenge library: {e}")
         
         for domain in self.DOMAINS:
             domain_path = self.frontmatter_root / domain
@@ -234,20 +247,32 @@ class FrontmatterLinkValidator:
             if not isinstance(link, dict):
                 continue
             
+            # Skip data-based items (items without 'id' field)
             target_id = link.get('id')
             if not target_id:
-                self.report.broken_links.append(LinkIssue(
-                    severity='error',
-                    issue_type='missing_link_id',
-                    source_file=str(file_path),
-                    source_domain=source_domain,
-                    target_id='',
-                    target_domain=target_domain,
-                    message=f"Link in '{rel_type}' has no 'id' field"
-                ))
+                # Data-based item - skip validation
+                self.data_based_items += 1
                 continue
             
             self.report.total_links += 1
+            
+            # Handle challenge type references
+            link_type = link.get('type')
+            if link_type == 'challenge':
+                if target_id in self.challenge_library:
+                    # Valid challenge reference
+                    continue
+                else:
+                    self.report.broken_links.append(LinkIssue(
+                        severity='error',
+                        issue_type='missing_challenge_pattern',
+                        source_file=str(file_path),
+                        source_domain=source_domain,
+                        target_id=target_id,
+                        target_domain='challenges',
+                        message=f"Challenge pattern '{target_id}' not found in ChallengePatterns.yaml"
+                    ))
+                continue
             
             # Check if target domain directory exists
             target_domain_path = self.frontmatter_root / target_domain
@@ -425,6 +450,9 @@ class FrontmatterLinkValidator:
         
         print(f"\n📁 Files Scanned: {self.report.total_files}")
         print(f"🔗 Total Links: {self.report.total_links}")
+        
+        if self.data_based_items > 0:
+            print(f"📋 Data-based items (skipped validation): {self.data_based_items}")
         
         if self.report.has_errors:
             print(f"\n❌ ERRORS: {self.report.error_count}")

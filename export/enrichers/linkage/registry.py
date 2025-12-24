@@ -58,6 +58,7 @@ from export.enrichers.linkage.relationship_grouping_enricher import (
 from export.enrichers.linkage.relationship_renaming_enricher import (
     RelationshipRenamingEnricher,
 )
+from export.enrichers.relationships.group_enricher import RelationshipGroupEnricher
 from export.enrichers.linkage.relationships_enricher import DomainLinkagesEnricher
 from export.enrichers.linkage.relationship_resolution_enricher import (
     RelationshipResolutionEnricher,
@@ -70,6 +71,7 @@ from export.enrichers.linkage.universal_restructure_enricher import (
     UniversalRestructureEnricher,
 )
 from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
+from export.enrichers.metadata.field_order_enricher import FieldOrderEnricher  # Dec 23, 2025
 from export.enrichers.metadata.name_enricher import NameEnricher
 from export.enrichers.settings.material_category_enricher import MaterialCategoryEnricher  # Dec 19, 2025
 from export.enrichers.contaminants.removal_by_material_enricher import RemovalByMaterialEnricher  # Dec 20, 2025
@@ -438,6 +440,7 @@ class TimestampEnricher(BaseEnricher):
 from export.enrichers.metadata.title_enricher import TitleEnricher
 # Import section metadata enricher (Dec 22, 2025 - Relationship Normalization V2)
 from export.enrichers.metadata.section_metadata_enricher import SectionMetadataEnricher
+from export.enrichers.grouping.category_grouping_enricher import CategoryGroupingEnricher
 
 # Registry mapping enricher type → class
 ENRICHER_REGISTRY = {
@@ -447,6 +450,8 @@ ENRICHER_REGISTRY = {
     'relationship_renaming': RelationshipRenamingEnricher,  # Change 3: Dec 19, 2025
     'field_cleanup': FieldCleanupEnricher,  # Changes 2 & 5: Dec 19, 2025
     'contaminant_materials_grouping': ContaminantMaterialsGroupingEnricher,  # Change 4: Dec 19, 2025
+    'category_grouping': CategoryGroupingEnricher,  # Dec 23, 2025 - Groups relationship items by category
+    'relationship_group': RelationshipGroupEnricher,  # Dec 23, 2025 - Groups relationships into technical/safety/operational
     'compound_linkage': CompoundLinkageEnricher,  # Legacy - use universal_linkage
     'material_linkage': MaterialLinkageEnricher,  # Legacy - use universal_linkage
     'contaminant_linkage': ContaminantLinkageEnricher,  # Legacy - use universal_linkage
@@ -464,6 +469,7 @@ ENRICHER_REGISTRY = {
     'relationship_grouping': RelationshipGroupingEnricher,
     'relationships_slug': DomainLinkagesSlugEnricher,
     'breadcrumb': BreadcrumbEnricher,  # Generates breadcrumb navigation arrays
+    'field_order': FieldOrderEnricher,  # Dec 23, 2025 - Normalizes frontmatter field order
 }
 
 def create_enrichers(configs: List[Dict[str, Any]]) -> List[BaseEnricher]:

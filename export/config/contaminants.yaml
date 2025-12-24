@@ -5,7 +5,6 @@ items_key: contamination_patterns
 id_field: id
 filename_suffix: ''
 enrichments:
-
 - type: universal_restructure
   module: export.enrichers.universal.universal_restructure_enricher
   class: UniversalRestructureEnricher
@@ -20,14 +19,14 @@ enrichments:
     - voice_enhanced
     extract_from_nested:
       laser_properties:
-        - safety_data
+      - safety_data
     duplicate_fields:
       visual_characteristics: visual_characteristics
       laser_properties: laser_properties
     move_to_relationships:
     - eeat
     - valid_materials
-    - invalid_materials
+    - caution_materials
     - prohibited_materials
     - regulatory_standards_detail
     - context_notes
@@ -69,7 +68,8 @@ enrichments:
 - type: removal_by_material
   module: export.enrichers.contaminants.removal_by_material_enricher
   class: RemovalByMaterialEnricher
-  description: Material-specific laser removal parameters, efficiency, and safety guidance (Dec 20, 2025)
+  description: Material-specific laser removal parameters, efficiency, and safety
+    guidance (Dec 20, 2025)
 - type: settings_linkage
   module: export.enrichers.linkage.settings_linkage_enricher
   class: SettingsLinkageEnricher
@@ -87,7 +87,7 @@ enrichments:
   - datePublished
   - dateModified
 - type: author
-  module: export.enrichers.metadata.author_enricher
+  module: export.enrichers.linkage.author_enricher
   class: AuthorEnricher
 - type: breadcrumb
   module: export.enrichers.navigation.breadcrumb_enricher
@@ -96,12 +96,22 @@ enrichments:
   category_field: category
   subcategory_field: subcategory
   name_field: name
-# - type: relationship_urls  # DISABLED - Frontend derives URLs from full_path (ID-based lookup)
-#   module: export.enrichers.relationships.relationship_url_enricher
-#   class: RelationshipURLEnricher
-#   description: Adds url field to all relationship items based on target's full_path
+- type: relationship_group
+  module: export.enrichers.relationships.group_enricher
+  class: RelationshipGroupEnricher
+  description: Group relationships into technical/safety/operational categories
+  relationship_groups:
+    technical:
+    - affects_materials
+    - produces_compounds
+    safety:
+    - regulatory_standards
+    - caution_materials
+    operational:
+    - common_challenges
+    - industry_applications
 library_enrichments:
-  enabled: false  # Disabled - incompatible with new relationship structure
+  enabled: false
   enrichments:
   - type: regulatory_standards
     relationship_field: relationships.regulatory_standards
@@ -130,12 +140,21 @@ generators:
   sections:
     produces_compounds:
       presentation: card
-    materials:
+      title: Hazardous Compounds Generated
+      description: Chemical compounds released during laser removal of this contamination
+    affects_materials:
       presentation: card
+      title: Affects Materials
+      description: Materials commonly affected by this type of contamination
     valid_materials:
       presentation: card
+      title: Compatible Materials
+      description: Materials where this contamination can be safely removed with laser
+        cleaning
     prohibited_materials:
       presentation: card
+      title: Incompatible Materials
+      description: Materials where laser removal of this contamination is not recommended
     visual_characteristics:
       presentation: card
     laser_properties:
@@ -161,31 +180,126 @@ generators:
   module: export.enrichers.metadata.section_metadata_enricher
   class: SectionMetadataEnricher
   sections:
-    produces_compounds:
+    chemical_formula:
+      presentation: list
+      title: Chemical Formula
+      description: Molecular structure and composition of this contamination
+      icon: microscope
+      order: 1
+      variant: default
+    scientific_name:
+      presentation: list
+      title: Scientific Name
+      description: Formal scientific nomenclature and classification
+      icon: file-text
+      order: 2
+      variant: default
+    context_notes:
+      presentation: list
+      title: Context Notes
+      description: Additional context and important considerations for this contamination
+        type
+      icon: file-text
+      order: 3
+      variant: default
+    formation_conditions:
       presentation: card
-    materials:
+      title: Formation Conditions
+      description: Environmental and process conditions that create this contamination
+      icon: wind
+      order: 4
+      variant: default
+    required_elements:
       presentation: card
-    valid_materials:
+      title: Required Elements
+      description: Chemical elements necessary for this contamination to form
+      icon: microscope
+      order: 5
+      variant: default
+    caution_materials:
       presentation: card
-      icon: "shield-check"
-    invalid_materials:
-      presentation: card
+      title: Materials Requiring Caution
+      description: Materials that need special consideration for laser removal of
+        this contamination
+      icon: alert-triangle
+      order: 6
+      variant: warning
     prohibited_materials:
       presentation: card
-    visual_characteristics:
-      presentation: card
-    laser_properties:
-      presentation: card
-    safety_data:
-      presentation: card
+      title: Prohibited Materials
+      description: Materials where laser removal of this contamination is not recommended
+      icon: alert-triangle
+      order: 7
+      variant: danger
     eeat:
+      presentation: list
+      title: Evidence & Expertise
+      description: Supporting evidence, citations, and expert analysis for this contamination
+      icon: file-text
+      order: 8
+      variant: default
+    laser_properties:
+      presentation: list
+      title: Laser Parameters
+      description: Optimal laser settings and technical parameters for removal
+      icon: zap
+      order: 9
+      variant: default
+    visual_characteristics:
+      presentation: list
+      title: Visual Characteristics
+      description: Physical appearance and identification features of this contamination
+      icon: eye
+      order: 10
+      variant: default
+    realism_notes:
+      presentation: list
+      title: Realism Notes
+      description: Important considerations for accurate representation and understanding
+      icon: file-text
+      order: 11
+      variant: default
+    affects_materials:
       presentation: card
+      title: Affects Materials
+      description: Materials commonly affected by this type of contamination
+      icon: users
+      order: 12
+      variant: default
+    valid_materials:
+      presentation: card
+      title: Compatible Materials
+      description: Materials where this contamination can be safely removed with laser
+        cleaning
+      icon: shield-check
+      order: 13
+      variant: default
     regulatory_standards:
       presentation: card
+      title: Regulatory Standards
+      description: Safety standards and regulations for handling this contamination
+      icon: file-text
+      order: 14
+      variant: default
+    produces_compounds:
+      presentation: card
+      title: Hazardous Compounds Generated
+      description: Chemical compounds released during laser removal of this contamination
+      icon: flame
+      order: 15
+      variant: danger
+- type: field_order
+  module: export.enrichers.metadata.field_order_enricher
+  class: FieldOrderEnricher
+  description: Normalize field order for consistency (must run last)
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true
   config:
     relationship_types:
     - affects_materials
-    - found_on_materials
+    - affects_materials
+- type: field_order
+  module: export.enrichers.metadata.field_order_enricher
+  class: FieldOrderEnricher
+  description: Normalize field order for consistency (MUST be last)

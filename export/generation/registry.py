@@ -60,6 +60,9 @@ from export.generation.relationships_generator import DomainLinkagesGenerator
 # Import SEO metadata generator
 from export.generation.seo_metadata_generator import SEOMetadataGenerator
 
+# Import field order enricher
+from export.enrichers.metadata.field_order_enricher import FieldOrderEnricher
+
 logger = logging.getLogger(__name__)
 
 
@@ -261,6 +264,7 @@ GENERATOR_REGISTRY = {
     'contaminant_materials_grouping': ContaminantMaterialsGroupingGenerator,  # Change 4: Dec 19, 2025
     'field_cleanup': FieldCleanupGenerator,  # Changes 2 & 5: Dec 19, 2025
     'section_metadata': SectionMetadataGenerator,  # Dec 22, 2025 - Wrap relationships with display metadata
+    'field_order': FieldOrderEnricher,  # Dec 23, 2025 - Normalize frontmatter field order (must run last)
 }
 
 

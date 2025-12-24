@@ -2,5 +2,6 @@
 
 from .relationship_url_enricher import RelationshipURLEnricher
 from .intensity_enricher import IntensityEnricher
+from .group_enricher import RelationshipGroupEnricher
 
-__all__ = ['RelationshipURLEnricher', 'IntensityEnricher']
+__all__ = ['RelationshipURLEnricher', 'IntensityEnricher', 'RelationshipGroupEnricher']

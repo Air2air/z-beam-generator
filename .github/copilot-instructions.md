@@ -2525,13 +2525,19 @@ When suggesting code changes:
 7. Prioritize changing existing components, not creating new ones
 8. **ASK PERMISSION before removing any existing code**
 
-### 🚨 CRITICAL: Fix Root Causes, Not Symptoms
+### 🚨 CRITICAL: Frontmatter Source-of-Truth Policy 🔥 **MANDATORY (Dec 23, 2025)**
+
+**📖 REQUIRED READING**: `docs/08-development/FRONTMATTER_SOURCE_OF_TRUTH_POLICY.md`
+
+**THE FUNDAMENTAL RULE:**
+Frontmatter files are **GENERATED OUTPUT**, NOT source data. ALL changes MUST be made in source data or export configurations, NEVER in frontmatter files directly.
 
 **THE PROBLEM WITH TEMPORARY FIXES:**
-If you create a "fix script" that patches frontmatter files directly, the fix will be **OVERWRITTEN** on the next `--deploy` because:
-1. Frontmatter is **GENERATED FROM** Materials.yaml + Categories.yaml + DomainAssociations.yaml
-2. The exporter code runs on every deployment
-3. Patching output files is **TEMPORARY** - they get regenerated
+If you create a "fix script" that patches frontmatter files directly, the fix will be **OVERWRITTEN** on the next `--export` because:
+1. Frontmatter is **GENERATED FROM** data/*.yaml + export/config/*.yaml
+2. The export process runs regularly and regenerates ALL frontmatter
+3. Patching output files is **TEMPORARY** - they get regenerated on every export
+4. You're editing "compiled binaries" instead of "source code"
 
 **THE THREE-LAYER ARCHITECTURE:**
 ```
@@ -2546,35 +2552,53 @@ If you create a "fix script" that patches frontmatter files directly, the fix wi
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│ LAYER 2: EXPORT PROCESS (Transformation Logic)                  │
-│ • export/core/universal_exporter.py (PRODUCTION SYSTEM)         │
-│ • export/config/*.yaml (domain configurations)                  │
+│ LAYER 2: EXPORT CONFIGURATION & LOGIC                           │
+│ • export/config/*.yaml (domain configurations) ← FIX STRUCTURE  │
 │ • export/enrichers/**/*.py (enrichment logic)                   │
-│ • export/generation/registry.py (field generators)              │
-│ FIX HERE: When generation logic is wrong (format, structure)    │
+│ • export/generation/**/*.py (field generators)                  │
+│ • export/core/universal_exporter.py (orchestration)             │
+│ FIX HERE: When generation logic/format/structure is wrong       │
 └──────────────────────────┬──────────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│ LAYER 3: FRONTMATTER FILES (Generated Output)                   │
+│ LAYER 3: FRONTMATTER FILES (Generated Output) ⛔ READ-ONLY      │
 │ • ../z-beam/frontmatter/materials/*.yaml                        │
 │ • ../z-beam/frontmatter/contaminants/*.yaml                     │
 │ • ../z-beam/frontmatter/compounds/*.yaml                        │
-│ • ❌ NEVER EDIT DIRECTLY - These get regenerated                │
+│ • ../z-beam/frontmatter/settings/*.yaml                         │
+│ • ❌ NEVER EDIT DIRECTLY - These get regenerated on every export│
 └─────────────────────────────────────────────────────────────────┘
 ```
 
 **THE CORRECT APPROACH:**
-1. ✅ **Identify the layer** - Is this a data issue, generation logic issue, or config issue?
-2. ✅ **Fix at the source** - Edit the appropriate file in Layer 1 or Layer 2
-3. ✅ **Regenerate all frontmatter** - Run the export process to apply the fix
-4. ✅ **Verify the fix persists** - Check multiple files, ensure fix wasn't overwritten
-5. ❌ **NEVER create one-off patch scripts** that modify Layer 3 files directly
+1. ✅ **Identify the layer** - Is this a data issue, generation logic issue, or export config issue?
+2. ✅ **Fix at the source** - Edit the appropriate file in Layer 1 (data/*.yaml) or Layer 2 (export/config/*.yaml or export/**/*.py)
+3. ✅ **Regenerate domain** - Run `python3 run.py --export --domain {domain}` to apply the fix
+4. ✅ **Verify the fix persists** - Check multiple frontmatter files, ensure fix is present
+5. ✅ **Test regeneration** - Export again to confirm fix persists through repeated exports
+6. ❌ **NEVER create scripts that modify frontmatter files** - Layer 3 files directly
 
-**EXAMPLE 1 - Machine Settings Missing Min/Max:**
-- ❌ WRONG: Create script to add min/max to existing frontmatter files (Layer 3)
-- ✅ RIGHT: Fix `_enrich_machine_settings()` in trivial_exporter.py (Layer 2), then regenerate
-- WHY: Next deployment would overwrite the patched files with incomplete data
+**PROHIBITED PATTERNS** (Grade F violations):
+```bash
+# ❌ WRONG: Direct frontmatter editing
+sed -i '' 's/old/new/' frontmatter/materials/*.yaml
+python3 fix_frontmatter.py  # Script that modifies Layer 3 files
+# Result: Changes OVERWRITTEN on next export
+
+# ✅ CORRECT: Fix export configuration
+# Edit export/config/materials.yaml or export/enrichers/
+python3 run.py --export --domain materials
+# Result: Changes PERSIST through all future exports
+```
+
+**EXAMPLE 1 - Missing _section Metadata (Dec 23, 2025):**
+- **Issue**: Relationship blocks missing `_section: {title, description, icon, order, variant}` metadata
+- ❌ WRONG: Create script to add _section blocks to frontmatter/*.yaml files (tried v1, v2, normalize_relationships.py - all failed)
+- ✅ RIGHT: Update export/config/*.yaml with complete section_metadata configuration + enhance SectionMetadataEnricher
+- **Result**: Export generates frontmatter with complete _section metadata, persists through all future exports
+- **Verification**: 793/793 contaminants (100%), 2/2 materials (100%), 14/14 compounds sampled (100%)
+- WHY: Export config controls generation; changes to config affect ALL future exports
 
 **EXAMPLE 2 - Breadcrumbs Wrong Format (Dec 18, 2025):**
 - **Issue**: 422 frontmatter files had `breadcrumb_text: "Home / Materials / stone / Alabaster"` (text string)
@@ -2586,14 +2610,18 @@ If you create a "fix script" that patches frontmatter files directly, the fix wi
 - WHY: Fixing the config prevents the bad generator from running; fix persists through all future regenerations
 
 **VERIFICATION CHECKLIST - Did Your Fix Persist?**
-After fixing at source and regenerating:
+After fixing at source (Layer 1 or 2) and regenerating:
 - [ ] Check 3-5 files from each affected domain
 - [ ] Confirm fix appears in ALL checked files (not just one)
 - [ ] Verify old incorrect format is completely gone
-- [ ] Try regenerating again - does fix still persist?
-- [ ] If fix disappeared → You fixed the wrong layer!
+- [ ] Export the domain again - does fix still persist?
+- [ ] If fix disappeared → You fixed the wrong layer! (Edited Layer 3 instead of Layer 1/2)
 
-**RULE: If frontmatter has an issue, fix the GENERATOR, not the GENERATED files.**
+**CRITICAL RULE: If frontmatter has an issue, fix Layer 1 (data) or Layer 2 (export config/logic), NOT Layer 3 (frontmatter).**
+
+**Grade**: F violation if creating scripts that modify frontmatter files directly.
+
+**Full Policy**: See `docs/08-development/FRONTMATTER_SOURCE_OF_TRUTH_POLICY.md` for complete rules, examples, and enforcement.
 
 ---
 

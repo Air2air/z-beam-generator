@@ -2,7 +2,7 @@ domain: settings
 source_file: data/settings/Settings.yaml
 output_path: ../z-beam/frontmatter/settings
 items_key: settings
-filename_suffix: ''  # IDs already have -settings suffix, no need to add again
+filename_suffix: ''
 slugify_filenames: true
 enrichments:
 - type: material_linkage
@@ -52,7 +52,7 @@ enrichments:
   - datePublished
   - dateModified
 - type: author
-  module: export.enrichers.metadata.author_enricher
+  module: export.enrichers.linkage.author_enricher
   class: AuthorEnricher
 - type: name
   module: export.enrichers.metadata.name_enricher
@@ -67,59 +67,71 @@ enrichments:
   category_field: category
   subcategory_field: subcategory
   name_field: name
+- type: relationship_group
+  module: export.enrichers.relationships.group_enricher
+  class: RelationshipGroupEnricher
+  description: Group relationships into technical/safety/operational categories
+  relationship_groups:
+    technical:
+    - works_on_materials
+    - removes_contaminants
+    safety:
+    - regulatory_standards
+    operational:
+    - common_challenges
+    - equipment_requirements
 - type: title
   module: export.enrichers.metadata.title_enricher
   class: TitleEnricher
-  template: "{name} Settings"
+  template: '{name} Settings'
   skip_if_exists: true
-# - type: relationship_urls  # DISABLED - Frontend derives URLs from full_path (ID-based lookup)
-#   module: export.enrichers.relationships.relationship_url_enricher
-#   class: RelationshipURLEnricher
-#   description: Adds url field to all relationship items based on target's full_path
 - type: relationship_intensity
   module: export.enrichers.relationships.intensity_enricher
   class: IntensityEnricher
   description: Dynamically derives intensity from severity/effectiveness/frequency
+- type: field_order
+  module: export.enrichers.metadata.field_order_enricher
+  class: FieldOrderEnricher
+  description: Normalize field order for consistency
 library_enrichments:
-  enabled: false  # Disabled - incompatible with new relationship structure
+  enabled: false
   enrichments:
   - type: regulatory_standards
     relationship_field: relationships.regulatory_standards
     output_field: regulatory_standards_detail
 generators:
-- type: seo_metadata
-  module: export.generation.seo_metadata_generator
-  class: SEOMetadataGenerator
-  page_type: settings
-  title_field: page_title
-  description_field: meta_description
-- type: field_cleanup
-  module: export.generation.field_cleanup
-  class: FieldCleanupGenerator
-- type: seo_description
-  module: export.generation.seo
-  class: SEODescriptionGenerator
-  source_field: description
-  output_field: seo_description
-  max_length: 160
-- type: excerpt
-  module: export.generation.excerpt
-  class: ExcerptGenerator
-  source_field: description
-  output_field: micro
-  mode: sentences
-  length: 2
-generators:
 - type: section_metadata
   module: export.generation.section_metadata_generator
   class: SectionMetadataGenerator
   sections:
-    optimized_for_materials:
+    common_challenges:
       presentation: card
+      title: Common Challenges
+      description: Typical difficulties and considerations when using this setting
+      icon: alert-triangle
+      order: 1
+      variant: warning
+    works_on_materials:
+      presentation: card
+      title: Optimized Materials
+      description: Materials that work best with this laser cleaning setting
+      icon: users
+      order: 2
+      variant: success
     removes_contaminants:
       presentation: card
+      title: Removes Contaminants
+      description: Types of contamination effectively removed by this setting
+      icon: droplet
+      order: 3
+      variant: default
     regulatory_standards:
       presentation: card
+      title: Regulatory Standards
+      description: Safety and compliance standards applicable to this laser setting
+      icon: file-text
+      order: 4
+      variant: default
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true
@@ -127,3 +139,7 @@ enrichers:
     relationship_types:
     - applies_to_materials
     - effective_against_contaminants
+- type: field_order
+  module: export.enrichers.metadata.field_order_enricher
+  class: FieldOrderEnricher
+  description: Normalize field order for consistency (MUST be last)

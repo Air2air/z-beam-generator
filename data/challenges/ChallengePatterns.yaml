@@ -1,0 +1,195 @@
+# Challenge Patterns Library
+# Shared library of common laser cleaning challenges and solutions
+# Used by: Settings domain
+
+challenge_patterns:
+  # Thermal Management Challenges
+  high-thermal-conductivity:
+    id: high-thermal-conductivity
+    category: thermal_management
+    challenge: "High thermal conductivity and heat spread"
+    severity: medium
+    property_value: "4-400 W/(m·K) depending on metal"
+    impact: "Heat spreads rapidly causing large heat-affected zones"
+    solutions:
+      - "Use shorter pulse durations (picosecond/femtosecond) for localized heating"
+      - "Increase scan speed to minimize dwell time"
+      - "Apply cooling between passes"
+  
+  low-thermal-diffusivity:
+    id: low-thermal-diffusivity
+    category: thermal_management
+    challenge: "Low thermal diffusivity and heat accumulation"
+    severity: high
+    impact: "Heat accumulates, risk of substrate damage"
+    solutions:
+      - "Use pulsed mode with extended dwell-off time"
+      - "Reduce repetition rate to allow cooling"
+      - "Multiple light passes instead of single high-power pass"
+  
+  anisotropic-thermal:
+    id: anisotropic-thermal
+    category: thermal_management
+    challenge: "Anisotropic thermal properties"
+    severity: medium
+    impact: "Uneven heating and fiber/matrix damage risk"
+    solutions:
+      - "Optimize scan direction relative to fiber orientation"
+      - "Use lower fluence with multiple passes"
+      - "Monitor real-time temperature"
+  
+  moisture-spalling:
+    id: moisture-spalling
+    category: thermal_management
+    challenge: "Moisture-induced spalling and explosive failure"
+    severity: high
+    property_value: "0.5-5% moisture by weight in porous materials"
+    impact: "Rapid steam generation causes explosive material removal"
+    solutions:
+      - "Pre-dry material (80°C, 24h) before laser processing"
+      - "Use lower fluence (<1 J/cm²) to allow gradual moisture release"
+      - "Longer pulse durations (>100 ns) for gentler heating"
+  
+  charring-carbonization:
+    id: charring-carbonization
+    category: thermal_management
+    challenge: "Charring and carbonization"
+    severity: high
+    impact: "Surface degradation, aesthetic damage, structural weakening"
+    solutions:
+      - "Use ultrashort pulses (<10 ps) to minimize thermal diffusion"
+      - "Lower fluence (0.5-2 J/cm²) with multiple passes"
+      - "Assist gas (nitrogen) to remove pyrolysis products"
+  
+  melting-haz:
+    id: melting-haz
+    category: thermal_management
+    challenge: "Melting and heat-affected zone formation"
+    severity: high
+    impact: "Material property changes, aesthetic damage"
+    solutions:
+      - "Use shorter pulses (ns or ps regime)"
+      - "Increase scan speed >500 mm/s"
+      - "Optimize overlap to minimize accumulated heating"
+  
+  matrix-degradation:
+    id: matrix-degradation
+    category: thermal_management
+    challenge: "Matrix degradation and delamination"
+    severity: high
+    impact: "Structural integrity loss, fiber exposure"
+    solutions:
+      - "Use low fluence (<2 J/cm²) to stay below matrix damage threshold"
+      - "Short pulse durations (<50 ns) for surface-only interaction"
+      - "Multiple light passes instead of aggressive single pass"
+  
+  slow-thermal-diffusivity:
+    id: slow-thermal-diffusivity
+    category: thermal_management
+    challenge: "Slow thermal diffusivity"
+    severity: medium
+    impact: "Heat accumulation and substrate damage"
+    solutions:
+      - "Reduce duty cycle with longer cooling intervals"
+      - "Lower average power while maintaining peak fluence"
+      - "Multiple light passes with cooling between"
+  
+  # Contamination Removal Challenges
+  rust-oxide-removal:
+    id: rust-oxide-removal
+    category: contamination
+    challenge: "Rust and oxide layer removal"
+    severity: medium
+    impact: "Requires multiple passes; rust/oxide has different absorption than base metal"
+    solutions:
+      - "First pass at higher power (100-120W) to remove bulk oxide"
+      - "Second pass at lower power (60-80W) for final cleaning"
+      - "Monitor for base metal exposure to avoid over-processing"
+  
+  oil-grease-removal:
+    id: oil-grease-removal
+    category: contamination
+    challenge: "Oil and grease removal"
+    severity: low
+    impact: "Organic contaminants vaporize easily but can redeposit"
+    solutions:
+      - "Use air assist to blow away vaporized contaminants"
+      - "Clean in multiple light passes to prevent redeposition"
+      - "Consider pre-cleaning with solvent for heavy contamination"
+  
+  paint-coating-removal:
+    id: paint-coating-removal
+    category: contamination
+    challenge: "Paint and coating removal"
+    severity: medium
+    impact: "Thick coatings require multiple passes, risk of substrate damage"
+    solutions:
+      - "Use higher fluence (3-5 J/cm²) for first pass"
+      - "Reduce power progressively as coating thins"
+      - "Monitor substrate to prevent over-processing"
+  
+  paint-porous-removal:
+    id: paint-porous-removal
+    category: contamination
+    challenge: "Paint and coating removal from porous substrate"
+    severity: high
+    impact: "Paint penetrates pores, difficult to remove completely"
+    solutions:
+      - "Use lower fluence (1-3 J/cm²) to avoid surface damage"
+      - "Multiple passes with progressively lower power"
+      - "May require chemical assist for deep penetration"
+  
+  biological-growth:
+    id: biological-growth
+    category: contamination
+    challenge: "Biological growth and deep staining"
+    severity: high
+    impact: "Organic matter penetrates porous structure, difficult removal"
+    solutions:
+      - "Use multiple passes with low-to-medium fluence (1-3 J/cm²)"
+      - "May require biocide pre-treatment for deep penetration"
+      - "Monitor for surface erosion"
+  
+  adhesive-paint-removal:
+    id: adhesive-paint-removal
+    category: contamination
+    challenge: "Adhesive and paint removal"
+    severity: medium
+    impact: "Sticky residues can redeposit, multiple passes needed"
+    solutions:
+      - "Use air assist to remove vaporized material"
+      - "Multiple light passes better than single high-power"
+      - "Consider solvent pre-treatment for heavy buildup"
+  
+  resin-contaminant-removal:
+    id: resin-contaminant-removal
+    category: contamination
+    challenge: "Resin-based contaminant removal"
+    severity: medium
+    impact: "Resin carbonizes easily, requires careful power control"
+    solutions:
+      - "Use low fluence (1-2 J/cm²) to avoid carbonization"
+      - "Short pulse durations for precise removal"
+      - "Multiple passes with cooling between"
+  
+  coating-residue-removal:
+    id: coating-residue-removal
+    category: contamination
+    challenge: "Coating and residue removal"
+    severity: medium
+    impact: "Varied absorption characteristics require adaptive approach"
+    solutions:
+      - "Start with medium power and adjust based on response"
+      - "Monitor real-time to prevent substrate damage"
+      - "Use multiple passes with progressively lower power"
+  
+  varnish-coating-removal:
+    id: varnish-coating-removal
+    category: contamination
+    challenge: "Varnish and coating removal"
+    severity: medium
+    impact: "Organic coatings vaporize but can char if power too high"
+    solutions:
+      - "Use moderate fluence (2-4 J/cm²)"
+      - "Air assist to remove vaporized material"
+      - "Multiple passes if coating is thick"

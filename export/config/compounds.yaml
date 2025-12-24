@@ -3,7 +3,7 @@ source_file: data/compounds/Compounds.yaml
 output_path: ../z-beam/frontmatter/compounds
 items_key: compounds
 id_field: id
-filename_suffix: ''  # IDs already have -compound suffix, no need to add again
+filename_suffix: ''
 sluggify_filenames: true
 enrichments:
 - type: universal_restructure
@@ -29,7 +29,6 @@ enrichments:
     - chemical_properties
     - toxicity
     - formation_sources
-    # health_effects - REMOVED (already in relationships, don't move from root)
     - exposure_monitoring
     - personal_protection
     - occupational_exposure_limits
@@ -84,7 +83,7 @@ enrichments:
   - datePublished
   - dateModified
 - type: author
-  module: export.enrichers.metadata.author_enricher
+  module: export.enrichers.linkage.author_enricher
   class: AuthorEnricher
 - type: breadcrumb
   module: export.enrichers.navigation.breadcrumb_enricher
@@ -93,24 +92,43 @@ enrichments:
   category_field: category
   subcategory_field: subcategory
   name_field: name
+- type: relationship_group
+  module: export.enrichers.relationships.group_enricher
+  class: RelationshipGroupEnricher
+  description: Group relationships into technical/safety/operational categories
+  relationship_groups:
+    technical:
+    - produced_by_materials
+    - found_in_contaminants
+    - related_compounds
+    - forms
+    - decomposition_products
+    safety:
+    - regulatory_standards
+    - exposure_limits
+    - caution_materials
+    - emergency_response_procedures
+    - incompatible_materials
+    operational:
+    - detection_monitoring_methods
+    - control_measures
+    - health_effects
 - type: title
   module: export.generation.title_generator
   class: TitleGenerator
-  template: "{name}"
+  template: '{name}'
   use_display_name: true
   skip_if_exists: true
-# - type: relationship_urls  # DISABLED - Frontend derives URLs from full_path (ID-based lookup)
-#   module: export.enrichers.relationships.relationship_url_enricher
-#   class: RelationshipURLEnricher
-#   description: Adds url field to all relationship items based on target's full_path
 - type: relationship_intensity
   module: export.enrichers.relationships.intensity_enricher
   class: IntensityEnricher
   description: Dynamically derives intensity from severity/effectiveness/frequency
+- type: field_order
+  module: export.enrichers.metadata.field_order_enricher
+  class: FieldOrderEnricher
+  description: Normalize field order for consistency
 library_enrichments:
-  enabled: false  # Disabled - keep library references in card format (not enriched)
-  # Emergency response, health_effects, etc. stay as {presentation: 'card', items: [{type, id, overrides}]}
-  # Frontend will look up full data from library by ID at render time
+  enabled: false
   enrichments:
   - type: emergency_response
     relationship_field: relationships.emergency_response
@@ -143,21 +161,103 @@ generators:
   class: SectionMetadataGenerator
   sections:
     chemical_properties:
-      presentation: card
-    produced_from_contaminants:
-      presentation: card
-    produced_from_materials:
-      presentation: card
-    ppe_requirements:
-      presentation: card
-    environmental_impact:
-      presentation: card
-    detection_monitoring:
-      presentation: card
+      presentation: list
+      title: Chemical Properties
+      description: Fundamental chemical characteristics and behavior
+      icon: microscope
+      order: 1
+      variant: default
+    physical_properties:
+      presentation: list
+      title: Physical Properties
+      description: Physical characteristics and state information
+      icon: gauge
+      order: 2
+      variant: default
     health_effects:
       presentation: card
+      title: Health Effects
+      description: Potential health impacts and medical considerations
+      icon: alert-triangle
+      order: 3
+      variant: danger
+    exposure_limits:
+      presentation: card
+      title: Exposure Limits
+      description: Regulatory exposure thresholds and safe concentration levels
+      icon: gauge
+      order: 4
+      variant: warning
+    ppe_requirements:
+      presentation: card
+      title: PPE Requirements
+      description: Personal protective equipment needed for safe handling
+      icon: shield
+      order: 5
+      variant: warning
+    detection_monitoring:
+      presentation: card
+      title: Detection & Monitoring
+      description: Methods and equipment for detecting and monitoring this compound
+      icon: gauge
+      order: 6
+      variant: default
     emergency_response:
       presentation: card
+      title: Emergency Response
+      description: First aid and emergency procedures for exposure incidents
+      icon: alert-triangle
+      order: 7
+      variant: danger
+    environmental_impact:
+      presentation: card
+      title: Environmental Impact
+      description: Environmental effects and ecological considerations
+      icon: wind
+      order: 8
+      variant: warning
+    produced_from_contaminants:
+      presentation: card
+      title: Produced From Contaminants
+      description: Contaminants that generate this compound during laser cleaning
+      icon: droplet
+      order: 9
+      variant: default
+    produced_from_materials:
+      presentation: card
+      title: Produced From Materials
+      description: Materials that may release this compound during laser cleaning
+      icon: users
+      order: 10
+      variant: default
+    reactivity:
+      presentation: list
+      title: Reactivity
+      description: Chemical reactivity and compatibility with other substances
+      icon: flame
+      order: 11
+      variant: warning
+    regulatory_classification:
+      presentation: card
+      title: Regulatory Classification
+      description: Hazard classifications and regulatory designations
+      icon: file-text
+      order: 12
+      variant: default
+    storage_requirements:
+      presentation: list
+      title: Storage Requirements
+      description: Proper storage conditions and handling precautions
+      icon: alert-triangle
+      order: 13
+      variant: warning
+    synonyms_identifiers:
+      presentation: card
+      title: Synonyms & Identifiers
+      description: Alternative names and chemical identifiers (CAS numbers)
+      icon: file-text
+      order: 14
+      variant: default
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true
@@ -165,3 +265,7 @@ enrichers:
     relationship_types:
     - produced_from_materials
     - produced_from_contaminants
+- type: field_order
+  module: export.enrichers.metadata.field_order_enricher
+  class: FieldOrderEnricher
+  description: Normalize field order for consistency (MUST be last)
