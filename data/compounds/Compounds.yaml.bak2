@@ -6,7 +6,7 @@ metadata:
   last_updated: '2025-12-19'
 compounds:
   carbon-monoxide-compound:
-    id: carbon-monoxide-compound
+    id: carbon-monoxide
     full_path: /compounds/toxic-gas/asphyxiant/carbon-monoxide-compound
     name: Carbon Monoxide
     display_name: Carbon Monoxide (CO)
@@ -17,6 +17,18 @@ compounds:
     subcategory: asphyxiant
     author:
       id: 4
+    description: Carbon monoxide slips through industrial processes like a silent
+      partner, binding tightly to metals during reduction reactions that refine ores
+      into usable forms. This gas, with its colorless and odorless profile, demands
+      vigilant monitoring in factories where it fuels combustion or serves as a precursor
+      for synthesizing compounds, enhancing efficiency without leaving traces behind.
+      In laser cleaning setups, its affinity for surfaces plays a key role, allowing
+      targeted removal of contaminants through precise energy interactions that preserve
+      underlying structures. Workers handle it warily, as even low exposures can overwhelm
+      the body’s oxygen transport, turning routine operations into tests of safety
+      protocols. Beyond hazards, though, this compound drives innovations in chemical
+      manufacturing, where its reducing power strips away oxides from tough alloys,
+      yielding durable materials for construction and machinery.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -344,8 +356,33 @@ compounds:
           title: Alternative Names
           description: Synonyms and chemical identifiers
           icon: tag
+    card:
+      default:
+        heading: Carbon Monoxide
+        subtitle: toxic_gas / asphyxiant
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '50'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Carbon Monoxide
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '50'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   formaldehyde-compound:
-    id: formaldehyde-compound
+    id: formaldehyde
     full_path: /compounds/carcinogen/aldehyde/formaldehyde-compound
     name: Formaldehyde
     display_name: Formaldehyde (CH₂O)
@@ -356,6 +393,25 @@ compounds:
     subcategory: aldehyde
     author:
       id: 1
+    description: "Handling formaldehyde in industrial settings often starts with the\
+      \ headache of its sharp, lingering odor that irritates eyes and skin right away,\
+      \ yet this volatile compound proves essential for creating tough resins and\
+      \ adhesives that bind wood products together without cracking under stress.\
+      \ Because it mixes easily with water to form a stable solution, workers rely\
+      \ on it to preserve biological specimens or disinfect surfaces in labs, though\
+      \ the real trick lies in controlling exposure since prolonged contact heightens\
+      \ cancer risks over time. In manufacturing, formaldehyde steps up as a key player\
+      \ for producing durable plastics and foams that withstand everyday wear, enabling\
+      \ everything from furniture to car parts to hold shape through repeated use.\
+      \ \n\nWhen it comes to laser cleaning, this chemical's residue on metal or stone\
+      \ surfaces responds well to precise beams that vaporize traces without damaging\
+      \ the base material, leaving behind a clean finish ideal for restoration projects\
+      \ where contaminants like old adhesives must go. Engineers appreciate how such\
+      \ methods avoid harsh solvents, reducing the spread of harmful vapors during\
+      \ the process, and ensuring tools or artifacts emerge pristine yet intact. Still,\
+      \ the underlying danger as a carcinogen demands strict ventilation and protective\
+      \ gear, turning what could be a straightforward cleanup into a carefully orchestrated\
+      \ task that prioritizes safety above speed."
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -635,8 +691,33 @@ compounds:
             ec_number: 200-001-8
             pubchem_cid: '712'
         _section: *id010
+    card:
+      default:
+        heading: Formaldehyde
+        subtitle: carcinogen / aldehyde
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '0.75'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Formaldehyde
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '0.75'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   benzene-compound:
-    id: benzene-compound
+    id: benzene
     full_path: /compounds/carcinogen/aromatic-hydrocarbon/benzene-compound
     name: Benzene
     display_name: Benzene (C₆H₆)
@@ -647,6 +728,28 @@ compounds:
     subcategory: aromatic_hydrocarbon
     author:
       id: 2
+    description: 'Handling benzene starts with understanding its role in tough industrial
+      setups. Workers often encounter it as a clear, volatile liquid that mixes easily
+      with oils and fats. This makes it handy for dissolving stubborn residues in
+      manufacturing lines.
+
+
+      Flammable by nature, it ignites quickly under heat or sparks. Factories use
+      it to produce synthetic rubbers and plastics, where its solvent power dissolves
+      polymers without leaving harsh traces. In fuel blending, it boosts energy output
+      subtly.
+
+
+      As a carcinogen, exposure demands strict ventilation and protective gear to
+      avoid long-term health risks like leukemia. Its vapors spread fast, irritating
+      eyes and skin on contact.
+
+
+      For laser cleaning, benzene''s thin film on metal surfaces responds well to
+      precise beams. The process vaporizes it cleanly, minimizing toxic spread compared
+      to chemical wipes. This method suits contaminated tools in refineries, leaving
+      no oily buildup behind. Overall, its durability in reactions drives widespread
+      use, balanced by careful handling protocols.'
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -917,8 +1020,33 @@ compounds:
             ec_number: 200-753-7
             pubchem_cid: '241'
         _section: *id010
+    card:
+      default:
+        heading: Benzene
+        subtitle: carcinogen / aromatic_hydrocarbon
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '1'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Benzene
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '1'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   pahs-compound:
-    id: pahs-compound
+    id: pahs
     full_path: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
     name: Polycyclic Aromatic Hydrocarbons
     display_name: PAHs
@@ -929,6 +1057,21 @@ compounds:
     subcategory: aromatic_hydrocarbon
     author:
       id: 3
+    description: Unlike everyday fuels that burn away cleanly, polycyclic aromatic
+      hydrocarbons stand out with their rigid, ring-linked structures that cling stubbornly
+      to surfaces and soils, lingering far longer and posing bigger cleanup headaches.
+      These compounds, often born from incomplete burning in industries like steelmaking
+      or road paving, show up as sticky residues or fine particles. Harsh and oily
+      in feel, they resist water but dissolve easily in solvents, which makes handling
+      them tricky without spreading contamination. In factories, PAHs sneak into products
+      like paints and plastics as unintended additives, boosting durability yet raising
+      red flags for worker safety. Their real danger? As known carcinogens, even tiny
+      exposures over time can spark serious health issues, from skin irritations to
+      deeper cellular damage. When it comes to zapping them off historic buildings
+      or polluted gear, laser cleaning shines by targeting their light-absorbing traits—blasting
+      away layers without harsh chemicals, though it demands careful calibration to
+      avoid scattering the stuff further. Overall, these materials demand respect
+      in use, pushing industries toward greener alternatives to curb their toxic footprint.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -1025,8 +1168,33 @@ compounds:
           acgih_tlv_ppm: null
           acgih_tlv_mg_m3: 0.2
         _section: *id005
+    card:
+      default:
+        heading: Polycyclic Aromatic Hydrocarbons
+        subtitle: carcinogen / aromatic_hydrocarbon
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Polycyclic Aromatic Hydrocarbons
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   hydrogen-cyanide-compound:
-    id: hydrogen-cyanide-compound
+    id: hydrogen-cyanide
     full_path: /compounds/toxic-gas/cyanide/hydrogen-cyanide-compound
     name: Hydrogen Cyanide
     display_name: Hydrogen Cyanide (HCN)
@@ -1037,6 +1205,14 @@ compounds:
     subcategory: cyanide
     author:
       id: 4
+    description: Handling hydrogen cyanide starts with extreme caution. It's a colorless
+      gas that spreads quickly. Highly toxic, it attacks the body fast. Smells faintly
+      like bitter almonds to some. Dissolves easily in water, forming a dangerous
+      solution. In industry, it builds key chemicals for plastics and drugs. Fumigation
+      uses it too, wiping out pests in tight spaces. Reacts sharply with metals and
+      acids. For laser cleaning, its volatility aids precise vapor removal. Lasers
+      zap residues without spreading the gas wide. Keeps surfaces clean in high-stakes
+      labs. Always vent well to stay safe.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -1329,8 +1505,33 @@ compounds:
             ec_number: 200-821-6
             pubchem_cid: '768'
         _section: *id010
+    card:
+      default:
+        heading: Hydrogen Cyanide
+        subtitle: toxic_gas / cyanide
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '10'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Hydrogen Cyanide
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '10'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   acetaldehyde-compound:
-    id: acetaldehyde-compound
+    id: acetaldehyde
     full_path: /compounds/irritant/aldehyde/acetaldehyde-compound
     name: Acetaldehyde
     display_name: Acetaldehyde (C₂H₄O)
@@ -1341,6 +1542,18 @@ compounds:
     subcategory: aldehyde
     author:
       id: 1
+    description: Acetaldehyde's sharp, irritating vapor hits you first, marking it
+      as a potent irritant that demands careful handling in any workspace. This colorless
+      liquid flows easily, evaporating quickly into the air with a fruity yet pungent
+      scent that lingers uncomfortably. In industry, it serves as a building block
+      for creating resins and plastics, transforming raw inputs into flexible materials
+      used everywhere from packaging to adhesives. Factories also rely on it to produce
+      acetic acid, fueling processes that yield everyday vinegar and beyond. When
+      it comes to laser cleaning, acetaldehyde's volatile nature makes it responsive
+      to precise energy bursts, allowing contaminants laced with it to vaporize cleanly
+      without leaving stubborn residues on metal or glass surfaces. Workers appreciate
+      how this approach minimizes exposure risks, keeping the irritant at bay during
+      restoration tasks.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -1601,8 +1814,33 @@ compounds:
             ec_number: 200-836-8
             pubchem_cid: '177'
         _section: *id010
+    card:
+      default:
+        heading: Acetaldehyde
+        subtitle: irritant / aldehyde
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '200'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Acetaldehyde
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '200'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   acrolein-compound:
-    id: acrolein-compound
+    id: acrolein
     full_path: /compounds/toxic-gas/aldehyde/acrolein-compound
     name: Acrolein
     display_name: Acrolein (C₃H₄O)
@@ -1613,6 +1851,21 @@ compounds:
     subcategory: aldehyde
     author:
       id: 2
+    description: Acrolein's sharp, irritating odor hits first, marking it as a highly
+      reactive compound that demands careful handling in any setting. This volatility
+      turns it into a colorless gas under normal conditions, prone to rapid dispersion
+      and making containment a constant challenge during storage or transport. In
+      industrial realms, workers leverage its chemical punch for crafting resins and
+      plastics, where it serves as a building block that enhances durability without
+      compromising flexibility in end products. Beyond that, pharmaceutical synthesis
+      draws on its aldehyde group to form intermediates, boosting efficiency in drug
+      development processes that require precise reactivity. When it comes to laser
+      cleaning, acrolein's sensitivity to intense light pulses stands out; such treatments
+      can break it down swiftly, aiding in the removal of residues from surfaces while
+      minimizing toxic buildup, though the process generates fumes that require robust
+      ventilation to protect operators from prolonged exposure. Overall, its role
+      in these applications hinges on balancing potent reactivity with safety protocols,
+      ensuring benefits outweigh the inherent hazards of this pervasive gas.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -1889,8 +2142,33 @@ compounds:
             ec_number: 203-453-4
             pubchem_cid: '7847'
         _section: *id010
+    card:
+      default:
+        heading: Acrolein
+        subtitle: toxic_gas / aldehyde
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '0.1'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Acrolein
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '0.1'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   hydrogen-chloride-compound:
-    id: hydrogen-chloride-compound
+    id: hydrogen-chloride
     full_path: /compounds/corrosive-gas/acid-gas/hydrogen-chloride-compound
     name: Hydrogen Chloride
     display_name: Hydrogen Chloride (HCl)
@@ -1901,6 +2179,14 @@ compounds:
     subcategory: acid_gas
     author:
       id: 3
+    description: Hydrogen chloride stands out from milder gases—its sharp bite etches
+      metals fast. This corrosive nature dissolves rust without mercy. In factories,
+      it powers chemical reactions for plastics and fertilizers. Workers handle it
+      carefully; fumes irritate skin and eyes. For laser cleaning, it boosts beam
+      precision on grimy surfaces. The gas vaporizes contaminants swiftly during zaps.
+      Unlike water-based methods, it penetrates deep into alloys. Industries love
+      its efficiency in stripping old coatings. Yet, safety gear stays essential—leaks
+      spell trouble quick. Overall, it transforms tough jobs into smooth operations.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -2145,8 +2431,33 @@ compounds:
             ec_number: 231-595-7
             pubchem_cid: '313'
         _section: *id010
+    card:
+      default:
+        heading: Hydrogen Chloride
+        subtitle: corrosive_gas / acid_gas
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Hydrogen Chloride
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   toluene-compound:
-    id: toluene-compound
+    id: toluene
     full_path: /compounds/solvent/aromatic-hydrocarbon/toluene-compound
     name: Toluene
     display_name: Toluene (C₇H₈)
@@ -2157,6 +2468,20 @@ compounds:
     subcategory: aromatic_hydrocarbon
     author:
       id: 4
+    description: 'Dealing with stubborn grime on metal surfaces poses real headaches
+      for factories. Toluene steps in as a versatile solvent that dissolves tough
+      residues without much hassle. This clear liquid evaporates quickly, leaving
+      behind spotless results in applications like paint thinning or adhesive removal.
+      Workers appreciate its ability to blend seamlessly with other chemicals, boosting
+      efficiency in producing inks, coatings, and even pharmaceuticals.
+
+
+      In broader industrial settings, it shines for extracting oils or cleaning intricate
+      parts, where its strong solvency tackles grease that water-based options can''t
+      touch. When it comes to laser cleaning, toluene enhances the process by pre-treating
+      surfaces, softening contaminants so laser beams zap them away more effectively.
+      That combo reduces wear on equipment and speeds up restoration of delicate artifacts
+      or machinery, all while keeping things straightforward and cost-effective.'
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -2424,8 +2749,33 @@ compounds:
             ec_number: 203-625-9
             pubchem_cid: '1140'
         _section: *id010
+    card:
+      default:
+        heading: Toluene
+        subtitle: solvent / aromatic_hydrocarbon
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '200'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Toluene
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '200'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   styrene-compound:
-    id: styrene-compound
+    id: styrene
     full_path: /compounds/irritant/aromatic-hydrocarbon/styrene-compound
     name: Styrene
     display_name: Styrene (C₈H₈)
@@ -2436,6 +2786,18 @@ compounds:
     subcategory: aromatic_hydrocarbon
     author:
       id: 1
+    description: Volatile enough to evaporate quickly, styrene acts as a fundamental
+      monomer in crafting tough plastics like polystyrene. This clear, oily liquid
+      carries a sharp, sweet aroma that lingers in the air during use. Workers often
+      need protective gear since it irritates skin, eyes, and respiratory paths on
+      contact. In factories, it transforms into lightweight foams for insulation or
+      rigid sheets for packaging—everyday items that keep food fresh or homes cozy.
+      Beyond that, styrene blends into synthetic rubbers for tires and seals, or resins
+      for boat hulls and car bodies, boosting durability in harsh conditions. When
+      it comes to laser cleaning, pulses of light effectively strip away styrene residues
+      from metal surfaces without scratching the base material, ideal for prepping
+      tools in manufacturing. The process heats just the thin layer of buildup, vaporizing
+      irritants cleanly while leaving everything else intact.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -2697,8 +3059,33 @@ compounds:
             ec_number: 202-851-5
             pubchem_cid: '7501'
         _section: *id010
+    card:
+      default:
+        heading: Styrene
+        subtitle: irritant / aromatic_hydrocarbon
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '100'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Styrene
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '100'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   zinc-oxide-compound:
-    id: zinc-oxide-compound
+    id: zinc-oxide
     full_path: /compounds/metal-fume/metal-oxide/zinc-oxide-compound
     name: Zinc Oxide
     display_name: Zinc Oxide (ZnO)
@@ -2709,6 +3096,23 @@ compounds:
     subcategory: metal_oxide
     author:
       id: 2
+    description: When handling zinc oxide in workshop setups, workers often start
+      by sifting through its fine, powdery form that resists clumping under humid
+      conditions, making it straightforward to blend into coatings or fillers without
+      much hassle. This material stands out for its bright white hue and smooth texture,
+      which help it scatter light effectively in paints and sunscreens, providing
+      a natural barrier against harsh rays while keeping things lightweight and non-irritating
+      on skin. In rubber production, it acts as a toughener, boosting flexibility
+      and longevity in tires or seals that endure constant wear from roads and machinery
+      vibrations. Beyond that, its stable nature shines in electronics, where it forms
+      protective layers on circuits to ward off corrosion and maintain steady performance
+      amid heat buildup. For laser cleaning tasks involving metal surfaces, zinc oxide
+      emerges as a byproduct in fumes from vaporized residues, yet it aids the process
+      by absorbing energy efficiently, which helps strip away grime and rust without
+      deeply scarring the underlying metal, leaving a cleaner finish ready for reuse.
+      Overall, this versatile compound proves invaluable across factories, from enhancing
+      durability in ceramics to stabilizing pigments in textiles, always prioritizing
+      safety in airborne handling to minimize fume exposure during intense operations.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -2951,8 +3355,33 @@ compounds:
             ec_number: 215-222-5
             pubchem_cid: '14806'
         _section: *id010
+    card:
+      default:
+        heading: Zinc Oxide
+        subtitle: metal_fume / metal_oxide
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Zinc Oxide
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   iron-oxide-compound:
-    id: iron-oxide-compound
+    id: iron-oxide
     full_path: /compounds/metal-fume/metal-oxide/iron-oxide-compound
     name: Iron Oxide Fume
     display_name: Iron Oxide (Fe₂O₃)
@@ -2963,6 +3392,22 @@ compounds:
     subcategory: metal_oxide
     author:
       id: 3
+    description: From years tinkering with rusty relics in workshops, I've found iron
+      oxide tricky to manage yet invaluable, especially since it forms those fine
+      metal fumes during cutting or welding that demand careful ventilation; it clings
+      stubbornly to surfaces, offering a reddish-brown coating that's both protective
+      against further corrosion and a nuisance in precision work. Industrially, this
+      material shines in pigments for vibrant paints and coatings that endure harsh
+      environments, while also serving as a key ingredient in polishing compounds
+      for smoothing metals without scratching, and even in magnetic applications where
+      its ferrimagnetic nature helps in data storage or separation processes—though
+      you always want to avoid inhaling the airborne particles, as they settle like
+      dust devils in confined spaces. When it comes to laser cleaning, iron oxide
+      responds dramatically to targeted beams, vaporizing into harmless plumes that
+      leave substrates spotless, making it ideal for stripping rust from heavy machinery
+      or historical artifacts without the abrasiveness of mechanical methods, but
+      operators must watch for heat buildup that could warp underlying layers if not
+      controlled.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -3205,8 +3650,33 @@ compounds:
             ec_number: 215-168-2
             pubchem_cid: '518696'
         _section: *id010
+    card:
+      default:
+        heading: Iron Oxide Fume
+        subtitle: metal_fume / metal_oxide
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Iron Oxide Fume
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   chromium-vi-compound:
-    id: chromium-vi-compound
+    id: chromium-vi
     full_path: /compounds/carcinogen/heavy-metal/chromium-vi-compound
     name: Hexavalent Chromium
     display_name: Chromium(VI)
@@ -3217,6 +3687,21 @@ compounds:
     subcategory: heavy_metal
     author:
       id: 4
+    description: Handling chromium-VI materials demands careful consideration right
+      from the initial setup in industrial environments, where their vivid coloring
+      and strong oxidizing nature make them stand out during processing. Workers often
+      encounter these compounds in applications like surface treatments for metals,
+      where they provide a tough, corrosion-resistant layer that enhances durability
+      against harsh conditions, though their carcinogenic properties require strict
+      safety protocols to prevent exposure. When it comes to laser cleaning, the process
+      involves directing precise beams to ablate contaminants without spreading the
+      toxic residue, leveraging the material's sensitivity to thermal disruption for
+      effective removal while minimizing airborne particles that could pose health
+      risks. This approach shines in maintenance tasks for equipment coated with chromium-VI,
+      stripping away buildup through controlled vaporization that preserves underlying
+      structures. Beyond that, industries value how these materials contribute to
+      vibrant pigments in paints or sturdy finishes on tools, but always with ventilation
+      systems in place to mitigate the inherent dangers tied to their reactivity.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -3494,8 +3979,33 @@ compounds:
             ec_number: 231-889-5 (chromium trioxide)
             pubchem_cid: '24425'
         _section: *id010
+    card:
+      default:
+        heading: Hexavalent Chromium
+        subtitle: carcinogen / heavy_metal
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Hexavalent Chromium
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   nitrogen-oxides-compound:
-    id: nitrogen-oxides-compound
+    id: nitrogen-oxides
     full_path: /compounds/toxic-gas/oxidizing-gas/nitrogen-oxides-compound
     name: Nitrogen Oxides
     display_name: NOₓ
@@ -3506,6 +4016,26 @@ compounds:
     subcategory: oxidizing_gas
     author:
       id: 1
+    description: 'While carbon-based pollutants cling stubbornly to surfaces in industrial
+      exhausts, nitrogen oxides slip away more readily under targeted laser pulses,
+      their gaseous nature allowing for swift dispersal and minimal residue buildup.
+      These compounds, notorious for their sharp, irritating presence in the air,
+      exhibit a volatile reactivity that makes them both a hazard and a key player
+      in chemical processes. In factories churning out fertilizers or explosives,
+      they serve as vital intermediates, transforming raw inputs into high-yield products
+      through oxidation reactions that demand precise control to harness their energy
+      without unleashing toxicity.
+
+
+      Handling them calls for robust ventilation since their corrosive tendencies
+      can etch away at metals over time, yet this same aggressiveness proves useful
+      in etching circuits or treating wastewater. When lasers come into play for cleanup,
+      the gases respond dramatically—absorbing energy to break apart into less harmful
+      fragments, which then scatter harmlessly rather than redepositing like heavier
+      particulates. This interplay turns a cleanup chore into an efficient purge,
+      especially in confined spaces where traditional scrubbing falls short, though
+      operators must always prioritize sealed environments to curb any accidental
+      release.'
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -3781,8 +4311,33 @@ compounds:
             ec_number: 233-272-6 (NO2)
             pubchem_cid: 3032552 (NOx)
         _section: *id010
+    card:
+      default:
+        heading: Nitrogen Oxides
+        subtitle: toxic_gas / oxidizing_gas
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '25'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Nitrogen Oxides
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '25'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   sulfur-dioxide-compound:
-    id: sulfur-dioxide-compound
+    id: sulfur-dioxide
     full_path: /compounds/toxic-gas/acid-gas/sulfur-dioxide-compound
     name: Sulfur Dioxide
     display_name: Sulfur Dioxide (SO₂)
@@ -3793,6 +4348,17 @@ compounds:
     subcategory: acid_gas
     author:
       id: 2
+    description: Sulfur dioxide drifts as a colorless gas with a sharp, choking odor
+      that clings to the air, making it a notorious player in industrial atmospheres
+      where careful handling turns potential hazards into controlled assets. In factories
+      churning out paper and food preservatives, this gas steps in as a versatile
+      reagent, bleaching fabrics or inhibiting spoilage without leaving heavy residues
+      behind, while its reactivity helps refine metals through smelting processes
+      that demand quick, efficient sulfur transfers. When lasers pulse against grimy
+      surfaces in cleaning setups, sulfur dioxide's affinity for absorbing certain
+      wavelengths aids in breaking down contaminants, vaporizing dirt layers through
+      photochemical dances that leave underlying materials pristine yet unaltered
+      in their core structure.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -4034,8 +4600,33 @@ compounds:
             ec_number: 231-195-2
             pubchem_cid: '1119'
         _section: *id010
+    card:
+      default:
+        heading: Sulfur Dioxide
+        subtitle: toxic_gas / acid_gas
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '5'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Sulfur Dioxide
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '5'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   phosgene-compound:
-    id: phosgene-compound
+    id: phosgene
     full_path: /compounds/toxic-gas/reactive-gas/phosgene-compound
     name: Phosgene
     display_name: Phosgene (COCl₂)
@@ -4046,6 +4637,14 @@ compounds:
     subcategory: reactive_gas
     author:
       id: 3
+    description: Phosgene drifts as a colorless gas. Invisible danger lurks in its
+      form. Heavier than air, it hugs the ground. Pungent smell hits like rotten hay.
+      Toxicity strikes lungs fast and fierce. In factories, it builds plastics and
+      foams. Key player in dyes and drugs too. Reacts sharply with water, forming
+      acids. Laser cleaning? Its volatility dodges beams easily. Scatters under intense
+      light pulses. Leaves residues tough to zap away. Handles heat without breaking
+      down quick. Boosts processes needing precise reactions. Yet, safety gear stays
+      essential always.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -4296,8 +4895,33 @@ compounds:
             ec_number: 200-870-3
             pubchem_cid: '6371'
         _section: *id010
+    card:
+      default:
+        heading: Phosgene
+        subtitle: toxic_gas / reactive_gas
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '0.1'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Phosgene
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '0.1'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   ammonia-compound:
-    id: ammonia-compound
+    id: ammonia
     full_path: /compounds/corrosive-gas/alkaline-gas/ammonia-compound
     name: Ammonia
     display_name: Ammonia (NH₃)
@@ -4308,6 +4932,20 @@ compounds:
     subcategory: alkaline_gas
     author:
       id: 4
+    description: Handling ammonia in industrial settings demands respect for its sharp,
+      irritating odor that lingers and signals danger right away, while its colorless
+      nature as a gas makes it sneaky unless you're paying close attention. This stuff
+      dissolves readily in water to form solutions that pack a punch for cleaning
+      tough grime off metals or machinery, turning it into a go-to for stripping away
+      residues without much fuss. In bigger operations, factories churn it out for
+      boosting crop yields through fertilizers or chilling things down in refrigeration
+      systems where reliability counts on its efficient heat absorption. When it comes
+      to laser cleaning, though, watch out—its corrosive edge can etch surfaces if
+      vapors mix in during the process, so sealing off areas and ventilating aggressively
+      works best to avoid pitting or weakening the material under the beam; skipping
+      that step invites headaches like uneven finishes or weakened spots that compromise
+      durability later on. Overall, its reactivity shines in controlled environments
+      but bites back if mishandled around sensitive tools.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -4557,8 +5195,33 @@ compounds:
             ec_number: 231-635-3
             pubchem_cid: '222'
         _section: *id010
+    card:
+      default:
+        heading: Ammonia
+        subtitle: corrosive_gas / alkaline_gas
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '50'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Ammonia
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '50'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   carbon-dioxide-compound:
-    id: carbon-dioxide-compound
+    id: carbon-dioxide
     full_path: /compounds/asphyxiant/simple-asphyxiant/carbon-dioxide-compound
     name: Carbon Dioxide
     display_name: Carbon Dioxide (CO₂)
@@ -4569,6 +5232,17 @@ compounds:
     subcategory: simple_asphyxiant
     author:
       id: 1
+    description: Carbon dioxide acts as a silent thief in tight spaces, pushing out
+      breathable air without warning. That makes it a potent asphyxiant, deadly in
+      enclosed areas where it builds up fast. In industry, workers handle it with
+      care during storage or transport. Dry ice form offers a cold bite, sublimating
+      straight to gas for quick cooling tasks. Factories use the gas to shield metal
+      welds from nasty oxidation. Breweries fizz it into drinks for that sharp carbonation
+      kick. In laser cleaning, carbon dioxide powers beams that strip grime off surfaces
+      without harsh chemicals. Those pulses vaporize dirt layers gently on delicate
+      artifacts. The gas stays non-reactive, leaving metals shiny and untouched. Fire
+      suppression leans on it too, smothering flames by starving oxygen. Overall,
+      this compound juggles cooling, protection, and cleaning roles with eerie efficiency.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -5072,8 +5746,33 @@ compounds:
             ec_number: 204-696-9
             pubchem_cid: '280'
         _section: *id010
+    card:
+      default:
+        heading: Carbon Dioxide
+        subtitle: asphyxiant / simple_asphyxiant
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '5000'
+          unit: ppm
+          legend: OSHA PEL
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Carbon Dioxide
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: '5000'
+          unit: ppm
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   vocs-compound:
-    id: vocs-compound
+    id: vocs
     full_path: /compounds/irritant/organic-vapor/vocs-compound
     name: Volatile Organic Compounds
     display_name: VOCs
@@ -5084,6 +5783,16 @@ compounds:
     subcategory: organic_vapor
     author:
       id: 2
+    description: "Volatile organic compounds sneak into paints and adhesives everywhere.\
+      \ They evaporate quickly, leaving behind sharp odors that sting eyes and throats.\
+      \ In factories, workers mix them into varnishes for wood finishes or solvents\
+      \ for metal prep. These irritants build up fast, demanding good airflow to stay\
+      \ safe. \n\nLaser cleaning zaps away VOC-laden grime on surfaces like rusty\
+      \ beams or old machinery. Pulses vaporize the junk without harsh chemicals.\
+      \ It leaves metal clean and dry, dodging extra irritant release. Why bother?\
+      \ Speeds up jobs, cuts waste. Just watch for smoke—clear it quick to avoid breathing\
+      \ issues. Steer clear of dusty spots; lasers kick up particles that carry lingering\
+      \ fumes. Handles tough spots where scrubbers fail. Keeps sites running smooth."
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -5404,8 +6113,33 @@ compounds:
             ec_number: Specific to individual VOC
             pubchem_cid: Specific to individual VOC
         _section: *id010
+    card:
+      default:
+        heading: Volatile Organic Compounds
+        subtitle: irritant / organic_vapor
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Volatile Organic Compounds
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   benzoapyrene-compound:
-    id: benzoapyrene-compound
+    id: benzoapyrene
     full_path: /compounds/carcinogen/polycyclic-aromatic-hydrocarbon/benzoapyrene-compound
     name: Benzo[a]pyrene
     display_name: Benzo[a]pyrene (C₂₀H₁₂)
@@ -5416,6 +6150,21 @@ compounds:
     subcategory: polycyclic_aromatic_hydrocarbon
     author:
       id: 3
+    description: Benzo[a]pyrene sticks out as that stubborn crystalline solid you
+      encounter in environmental samples, glowing faintly under certain lights and
+      refusing to dissolve in plain water, which makes handling it a real chore unless
+      you're mixing it with organic solvents. Its waxy texture and tendency to cling
+      to surfaces highlight why it's such a persistent pollutant from incomplete combustion
+      in industries like steel production or asphalt manufacturing, where it sneaks
+      into the air and residues, complicating cleanup efforts. In laser cleaning setups,
+      this compound responds dramatically to targeted beams, vaporizing or fragmenting
+      without leaving much residue behind, though the process demands precise control
+      to avoid scattering particles that could spread contamination further. What
+      I've found works best is combining it with inert atmospheres during ablation
+      to minimize re-deposition, because rushing the job often leads to incomplete
+      removal and heightened exposure risks—especially since its carcinogenic reputation
+      means even trace amounts demand utmost caution in any industrial or remediation
+      scenario.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -5672,8 +6421,33 @@ compounds:
             ec_number: 200-028-5
             pubchem_cid: '2336'
         _section: *id010
+    card:
+      default:
+        heading: Benzo[a]pyrene
+        subtitle: carcinogen / polycyclic_aromatic_hydrocarbon
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Benzo[a]pyrene
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   water-vapor-compound:
-    id: water-vapor-compound
+    id: water-vapor
     full_path: /compounds/vapor/water-vapor-compound
     name: Water Vapor
     display_name: Water Vapor (H₂O)
@@ -5684,6 +6458,19 @@ compounds:
     subcategory: inert
     author:
       id: 4
+    description: "Working with water vapor in projects always starts simple—mix it\
+      \ into air streams for that quick humidity boost. It spreads effortlessly, carrying\
+      \ moisture without leaving residues behind, which keeps things light and adaptable\
+      \ in tight setups. Think about factories where it powers turbines by building\
+      \ pressure smoothly, turning heat into reliable motion for energy needs. \n\n\
+      Avoid letting it build up unchecked, though; that leads to foggy windows or\
+      \ slippery surfaces nobody wants. In laser cleaning jobs, I've seen it shine\
+      \ by softening grime on metals before the beam hits, making the process gentler\
+      \ on delicate parts without scratching. It evaporates fast under the light,\
+      \ pulling away dirt like rust or oils in one pass, leaving surfaces pristine.\
+      \ \n\nJust don't overdo the exposure—too much can scatter the laser's focus,\
+      \ slowing everything down. Overall, its clear, flexible nature makes it a go-to\
+      \ for blending into industrial flows or enhancing those precise cleaning tasks."
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -5941,8 +6728,33 @@ compounds:
           severity: low
           typical_context: Laser removal of Wood Rot / Fungal Biodegradation
       health_effects: null
+    card:
+      default:
+        heading: Water Vapor
+        subtitle: vapor / inert
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Water Vapor
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   carbon-particulates-compound:
-    id: carbon-particulates-compound
+    id: carbon-particulates
     full_path: /compounds/particulate/carbon-particulates-compound
     name: Carbon Particulates
     display_name: Carbon Particulates
@@ -5953,6 +6765,18 @@ compounds:
     subcategory: carbon_based
     author:
       id: 4
+    description: "Carbon particulates stand out from smoother powders like silica,\
+      \ which scatter light easily—these tiny carbon bits soak up energy instead,\
+      \ turning surfaces dark and heat-trapping in ways that boost insulation. Their\
+      \ fluffy, irregular shapes make them cling stubbornly to metals or stone, yet\
+      \ they remain lightweight enough for easy mixing into paints or rubbers. In\
+      \ factories, workers rely on them to strengthen tires against wear or darken\
+      \ inks for sharp printing. \n\nLaser cleaning shines here. Pulses from the beam\
+      \ vaporize these particles without scratching the base material underneath,\
+      \ a trick that saves time on rusty engines or graffiti-covered walls. \n\nWhat\
+      \ surprises many is their role in filters, trapping oils or gases where denser\
+      \ fillers might clog up fast. Overall, these specks transform mundane tasks\
+      \ into efficient ones across welding shops and art restoration."
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6091,8 +6915,33 @@ compounds:
           severity: low
           typical_context: Laser removal of Wax Coating Buildup
       health_effects: null
+    card:
+      default:
+        heading: Carbon Particulates
+        subtitle: particulate / carbon_based
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Carbon Particulates
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   carbon-ash-compound:
-    id: carbon-ash-compound
+    id: carbon-ash
     full_path: /compounds/particulate/carbon-ash-compound
     name: Carbon Ash
     display_name: Carbon Ash
@@ -6103,6 +6952,19 @@ compounds:
     subcategory: carbon_based
     author:
       id: 4
+    description: Carbon-ash stands apart from finer dusts by its gritty, irregular
+      particles that cling stubbornly to surfaces. Unlike smooth powders, this material
+      builds up in thick layers, demanding robust removal methods in factories. Its
+      porous texture traps oils and residues, making it a headache for machinery upkeep.
+      In construction, workers mix carbon-ash into concrete blends for added strength
+      without extra weight. That durability shines in road paving too, where it toughens
+      surfaces against wear. Heat from processing doesn't faze it much; the stuff
+      holds shape under high temperatures. For laser cleaning, beams slice through
+      those carbon-laden deposits effortlessly, vaporizing the mess while sparing
+      the underlying metal. Quick pulses loosen the particles, letting them blow away
+      like forgotten soot. Industries love this approach for boilers and engines,
+      restoring efficiency fast. Overall, carbon-ash proves versatile yet challenging,
+      fueling innovations in waste reuse and surface restoration.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6196,8 +7058,33 @@ compounds:
           severity: moderate
           typical_context: Laser removal of Wood Rot / Fungal Biodegradation
       health_effects: null
+    card:
+      default:
+        heading: Carbon Ash
+        subtitle: particulate / carbon_based
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Carbon Ash
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   metal-oxides-mixed-compound:
-    id: metal-oxides-mixed-compound
+    id: metal-oxides-mixed
     full_path: /compounds/particulate/metal-oxides-mixed-compound
     name: Metal Oxides (Mixed)
     display_name: Metal Oxides (Mixed)
@@ -6208,6 +7095,20 @@ compounds:
     subcategory: metal_oxide
     author:
       id: 4
+    description: Mixed metal oxide particulates stand out in tough industrial settings
+      because they blend the rugged qualities of various oxides, creating materials
+      that resist wear while holding up under intense heat and chemical exposure—think
+      of them as the workhorses for coatings that shield machinery from corrosion
+      or as fillers in composites that boost overall strength without adding bulk.
+      When it comes to laser cleaning, these particles respond particularly well to
+      pulsed beams, where the energy targets their surface bonds effectively, dislodging
+      contaminants like rust or grime from metal substrates while leaving the underlying
+      structure intact, a process that shines in restoring old equipment or prepping
+      surfaces for welding. Avoid rushing the setup, though; uneven mixing can lead
+      to clumping that scatters laser light unpredictably, reducing efficiency in
+      applications like automotive refinishing or aerospace part maintenance, but
+      once dialed in, they deliver reliable abrasion and thermal stability that keeps
+      operations smooth.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6278,8 +7179,33 @@ compounds:
           severity: moderate
           typical_context: Laser removal of Automotive Undercoating
       health_effects: null
+    card:
+      default:
+        heading: Metal Oxides (Mixed)
+        subtitle: particulate / metal_oxide
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Metal Oxides (Mixed)
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   nanoparticulates-compound:
-    id: nanoparticulates-compound
+    id: nanoparticulates
     full_path: /compounds/particulate/nanoparticulates-compound
     name: Nanoparticulates
     display_name: Nanoparticulates
@@ -6290,6 +7216,17 @@ compounds:
     subcategory: nanomaterial
     author:
       id: 4
+    description: "Nanoparticulates pack immense surface area into tiny realms. They\
+      \ cling and react fast. Strength surges when mixed into composites. Durability\
+      \ boosts everyday gear. Heat resistance shields against harsh environments.\
+      \ Conductivity sparks electronics alive. \n\nIndustries grab them for paints\
+      \ that repel water. Coatings toughen up metals. Catalysts speed chemical reactions\
+      \ clean. Filters trap pollutants with ease. Medical tools gain precision edges.\
+      \ \n\nLaser cleaning thrives on their quirks. Pulses vaporize grime fast around\
+      \ them. They absorb energy sharply. Surfaces emerge pristine without deep scars.\
+      \ Graffiti vanishes from walls. Rust lifts off relics. These bits enable targeted\
+      \ blasts. Efficiency rules the process. Waste stays low. Restoration feels swift\
+      \ and sure."
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6340,8 +7277,33 @@ compounds:
           severity: moderate
           typical_context: Laser removal of Thermal Compound Deposits
       health_effects: null
+    card:
+      default:
+        heading: Nanoparticulates
+        subtitle: particulate / nanomaterial
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Nanoparticulates
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   organic-residues-compound:
-    id: organic-residues-compound
+    id: organic-residues
     full_path: /compounds/particulate/organic-residues-compound
     name: Organic Residues
     display_name: Organic Residues
@@ -6352,6 +7314,17 @@ compounds:
     subcategory: organic
     author:
       id: 4
+    description: Dealing with organic residues in industrial setups often means tackling
+      sticky, fibrous bits left from food processing or biological waste. These particulates
+      cling stubbornly to surfaces, making removal a hassle without the right approach.
+      Laser cleaning shines here because it vaporizes the material quickly, leaving
+      no harsh chemicals behind and preserving the underlying substrate. In applications
+      like machinery maintenance or heritage restoration, this method excels at handling
+      the residues' uneven, absorbent nature without spreading contaminants. Avoid
+      high-heat alternatives, though—they can char the organics further, complicating
+      cleanup. Overall, the residues' softness and volatility make them responsive
+      to precise energy pulses, boosting efficiency in sectors from manufacturing
+      to environmental remediation.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6434,8 +7407,33 @@ compounds:
           severity: moderate
           typical_context: Laser removal of Wax Coating Buildup
       health_effects: null
+    card:
+      default:
+        heading: Organic Residues
+        subtitle: particulate / organic
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Organic Residues
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   aluminum-oxide-compound:
-    id: aluminum-oxide-compound
+    id: aluminum-oxide
     full_path: /compounds/particulate/metal-oxide/aluminum-oxide-compound
     name: Aluminum Oxide
     display_name: Aluminum Oxide (Al₂O₃)
@@ -6446,6 +7444,23 @@ compounds:
     subcategory: metal_oxide
     author:
       id: 4
+    description: Handling tough residues on metal surfaces often demands a material
+      that's both aggressive and reliable, which is where aluminum oxide particulates
+      shine in laser cleaning setups. These fine particles, known for their exceptional
+      hardness and durability, effectively abrade away contaminants without damaging
+      the underlying substrate, making them ideal for restoring industrial equipment
+      or historical artifacts through precise laser-assisted processes. In broader
+      industrial roles, aluminum oxide stands out as a go-to abrasive in grinding
+      wheels and sandblasting operations, where its sharp edges and chemical stability
+      ensure consistent performance under high-stress conditions. Engineers value
+      its heat resistance, allowing it to withstand intense thermal environments in
+      refractory linings for furnaces or kilns, while its inert nature prevents unwanted
+      reactions during ceramic production. When paired with laser technology, the
+      particles' reflective properties and toughness enhance cleaning efficiency,
+      scattering debris efficiently and leaving surfaces smooth and prepared for further
+      treatments, all without introducing harmful residues. This versatility extends
+      to polishing delicate components in aerospace or electronics, where controlled
+      abrasion yields a flawless finish.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6487,8 +7502,33 @@ compounds:
         - id: brass-laser-cleaning
         - id: bronze-laser-cleaning
       health_effects: null
+    card:
+      default:
+        heading: Aluminum Oxide
+        subtitle: particulate / metal_oxide
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Aluminum Oxide
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   copper-oxide-compound:
-    id: copper-oxide-compound
+    id: copper-oxide
     full_path: /compounds/particulate/metal-oxide/copper-oxide-compound
     name: Copper Oxide
     display_name: Copper Oxide (CuO)
@@ -6499,6 +7539,21 @@ compounds:
     subcategory: metal_oxide
     author:
       id: 4
+    description: Handling stubborn contaminants on metal surfaces often demands materials
+      that absorb energy efficiently without scattering. Copper oxide particulates
+      step in here, their dark, fine-grained form soaking up laser beams to vaporize
+      grime through targeted heat buildup. This makes them ideal for cleaning delicate
+      industrial tools, where precision trumps brute force, preventing damage to underlying
+      copper layers. In broader uses, these particles bolster ceramics by adding thermal
+      stability, letting potters craft pieces that endure high-heat firings without
+      cracking. Factories also mix them into batteries for better electron flow, enhancing
+      power delivery in devices that run hot and heavy. Their dense, adherent nature
+      clings to substrates during polishing processes, aiding in the removal of oxide
+      scales from pipes and fittings. Beyond that, welders appreciate how copper oxide
+      particulates facilitate smoother joins by promoting oxidation control, keeping
+      metals from pitting under stress. Overall, they shine in scenarios requiring
+      robust, heat-managing additives that support everything from electronics assembly
+      to surface restoration.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6553,8 +7608,33 @@ compounds:
           severity: moderate
           typical_context: Laser removal of Copper Electroplating
       health_effects: null
+    card:
+      default:
+        heading: Copper Oxide
+        subtitle: particulate / metal_oxide
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Copper Oxide
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   silicon-dioxide-compound:
-    id: silicon-dioxide-compound
+    id: silicon-dioxide
     full_path: /compounds/particulate/mineral/silicon-dioxide-compound
     name: Silicon Dioxide
     display_name: Silicon Dioxide (SiO₂)
@@ -6565,6 +7645,20 @@ compounds:
     subcategory: mineral
     author:
       id: 4
+    description: Silicon dioxide particulates stand out for their gritty resilience
+      in everyday industrial grind. Tough and unyielding, they resist wear from constant
+      friction, making them ideal for polishing surfaces without breaking down quickly.
+      Workers often rely on these fine grains to sharpen tools or smooth out rough
+      edges in manufacturing lines. Yet, handling them demands care—loose clouds can
+      irritate skin or lungs if not contained properly. In broader uses, they fill
+      composites to boost strength and stability, turning flimsy materials into durable
+      ones for construction or electronics. Their inert nature keeps reactions minimal,
+      so they suit environments with harsh chemicals. When it comes to laser cleaning,
+      these particles absorb energy efficiently, vaporizing contaminants on metals
+      without scorching the base layer underneath. This selective zap clears away
+      rust or paint effectively, especially on delicate machinery. Avoid overexposure
+      though; uneven beams might scatter the grains messily. Overall, their abrasive
+      edge shines in cleanup tasks, restoring shine to worn parts effortlessly.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6603,8 +7697,33 @@ compounds:
           severity: low
           typical_context: Laser removal of Silicone Sealant Buildup
       health_effects: null
+    card:
+      default:
+        heading: Silicon Dioxide
+        subtitle: particulate / mineral
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Silicon Dioxide
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   calcium-oxide-compound:
-    id: calcium-oxide-compound
+    id: calcium-oxide
     full_path: /compounds/particulate/metal-oxide/calcium-oxide-compound
     name: Calcium Oxide
     display_name: Calcium Oxide (CaO)
@@ -6615,6 +7734,22 @@ compounds:
     subcategory: metal_oxide
     author:
       id: 4
+    description: Unlike many softer compounds that crumble under heat, calcium oxide
+      endures extreme temperatures with remarkable stability, making it a go-to choice
+      for tough industrial environments where others might fail. This particulate
+      form, often appearing as a fine white powder, boasts a dense structure that
+      resists wear while reacting vigorously with moisture to form strong bonds in
+      construction mixes. In steel production, it plays a key role by purifying molten
+      metals, slagging off impurities to yield cleaner, more durable alloys that hold
+      up in demanding machinery. Builders rely on it too, blending the powder into
+      cement for foundations that withstand weathering and time without losing integrity.
+      When it comes to laser cleaning, calcium oxide particulates prove especially
+      useful; their reflective surface scatters intense light beams effectively, allowing
+      precise removal of grime from delicate surfaces like historical artifacts or
+      metal tools. The material's heat resistance ensures it doesn't degrade during
+      the process, preserving underlying layers while the laser vaporizes contaminants
+      cleanly. Overall, this versatility turns what could be a basic oxide into a
+      powerhouse for both heavy industry and meticulous restoration work.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6669,8 +7804,33 @@ compounds:
           severity: moderate
           typical_context: Laser removal of Mineral Scale / Hard Water Deposits
       health_effects: null
+    card:
+      default:
+        heading: Calcium Oxide
+        subtitle: particulate / metal_oxide
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Calcium Oxide
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   tin-oxide-compound:
-    id: tin-oxide-compound
+    id: tin-oxide
     full_path: /compounds/particulate/metal-oxide/tin-oxide-compound
     name: Tin Oxide
     display_name: Tin Oxide (SnO₂)
@@ -6681,6 +7841,15 @@ compounds:
     subcategory: metal_oxide
     author:
       id: 4
+    description: Tin oxide stands out for its remarkable durability in harsh environments.
+      Particles of this material resist wear and corrosion effectively, making them
+      ideal for coatings on glass and ceramics. In industrial settings, they enhance
+      transparency while providing a subtle conductivity boost for electronics. When
+      it comes to laser cleaning, these particulates absorb energy efficiently, breaking
+      down contaminants without damaging underlying surfaces. Their fine texture ensures
+      even distribution, aiding in polishing metals or restoring historical artifacts.
+      Heat resistance further supports high-temperature applications, like in flame-retardant
+      paints.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6723,8 +7892,33 @@ compounds:
         - id: tin-laser-cleaning
         - id: travertine-laser-cleaning
       health_effects: null
+    card:
+      default:
+        heading: Tin Oxide
+        subtitle: particulate / metal_oxide
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Tin Oxide
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   lead-oxide-compound:
-    id: lead-oxide-compound
+    id: lead-oxide
     full_path: /compounds/particulate/metal-oxide/lead-oxide-compound
     name: Lead Oxide
     display_name: Lead Oxide (PbO)
@@ -6735,6 +7929,17 @@ compounds:
     subcategory: metal_oxide
     author:
       id: 4
+    description: Handling lead oxide particulates often poses challenges in industrial
+      settings due to their sticky adhesion to surfaces and potential for environmental
+      buildup. These fine particles exhibit a dense, stable structure that resists
+      easy breakdown, making them durable for long-term use in battery production
+      where they form essential components for energy storage. In glass manufacturing,
+      lead oxide integrates smoothly to enhance clarity and weight, while ceramics
+      benefit from its strengthening effects against cracks. When it comes to laser
+      cleaning, the material's absorbent nature allows targeted beams to vaporize
+      layers without excessive heat spread, effectively removing accumulations from
+      metal parts or historical artifacts while preserving underlying integrity—though
+      care must ensure no toxic fumes linger in the process.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6773,8 +7978,33 @@ compounds:
         - id: lead-crystal-laser-cleaning
         - id: lead-laser-cleaning
       health_effects: null
+    card:
+      default:
+        heading: Lead Oxide
+        subtitle: particulate / metal_oxide
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Lead Oxide
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   cadmium-oxide-compound:
-    id: cadmium-oxide-compound
+    id: cadmium-oxide
     full_path: /compounds/particulate/metal-oxide/cadmium-oxide-compound
     name: Cadmium Oxide
     display_name: Cadmium Oxide (CdO)
@@ -6785,6 +8015,19 @@ compounds:
     subcategory: metal_oxide
     author:
       id: 4
+    description: Dealing with cadmium oxide in particulate form often starts with
+      its stubborn nature on surfaces, making removal tricky without the right methods.
+      This yellowish powder clings tightly due to its fine texture and chemical stability,
+      yet it shines in tough industrial roles. Think of it boosting conductivity in
+      electrodes or adding durability to ceramic coatings—essential for electronics
+      and protective layers in harsh environments. Its heat resistance keeps things
+      reliable under high temperatures, while the material's density helps in compact,
+      efficient setups. When it comes to laser cleaning, cadmium oxide responds well
+      to targeted beams that vaporize particles cleanly, minimizing residue and preserving
+      underlying structures. Short bursts of energy break down the bonds effectively,
+      leaving surfaces smooth and free of buildup. Overall, this versatile compound
+      balances strength with manageability, proving invaluable across manufacturing
+      lines.
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6825,8 +8068,33 @@ compounds:
         - id: tool-steel-laser-cleaning
         - id: stainless-steel-316-laser-cleaning
       health_effects: null
+    card:
+      default:
+        heading: Cadmium Oxide
+        subtitle: particulate / metal_oxide
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Cadmium Oxide
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle
   metal-vapors-mixed-compound:
-    id: metal-vapors-mixed-compound
+    id: metal-vapors-mixed
     full_path: /compounds/vapor/metal-vapors-mixed-compound
     name: Metal Vapors (Mixed)
     display_name: Metal Vapors (Mixed)
@@ -6837,6 +8105,19 @@ compounds:
     subcategory: metal
     author:
       id: 4
+    description: 'Mixed metal vapors blend seamlessly in high-heat setups. They form
+      versatile coatings fast. Reactivity spikes during deposition, locking onto surfaces
+      tight.
+
+
+      In factories, these vapors shine for protective layers on tools. Durability
+      ramps up against wear. Electronics get precise shielding too. Think circuit
+      boards staying corrosion-free.
+
+
+      Laser cleaning hits different here. Pulses vaporize grime without scattering
+      the mix. Edges stay sharp; no residue buildup. Works best on alloys needing
+      quick refresh. Steer clear of uneven flows—they clog nozzles quick.'
     exposure_guidelines: null
     detection_methods: null
     first_aid: null
@@ -6891,3 +8172,28 @@ compounds:
           severity: moderate
           typical_context: Laser removal of PVD Coating Defects
       health_effects: null
+    card:
+      default:
+        heading: Metal Vapors (Mixed)
+        subtitle: vapor / metal
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: flask
+      contamination_context:
+        heading: Metal Vapors (Mixed)
+        subtitle: Emission Product
+        badge:
+          text: Low Hazard
+          variant: info
+        metric:
+          value: N/A
+          unit: ''
+          legend: Exposure Limit
+        severity: low
+        icon: alert-triangle

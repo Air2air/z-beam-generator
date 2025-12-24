@@ -252,6 +252,57 @@ generators:
       icon: eye
       order: 10
       variant: default
+    # Top-level flat relationship (legacy structure)
+    materials:
+      presentation: card
+      title: Found On Materials
+      description: Materials where this contaminant is commonly found
+      icon: box
+      order: 10
+      variant: default
+    # Nested grouped relationships (technical.*, safety.*)
+    technical.affects_materials:
+      presentation: card
+      title: Affects Materials
+      description: Materials impacted by this contaminant
+      icon: box
+      order: 1
+      variant: default
+    technical.produces_compounds:
+      presentation: card
+      title: Produces Compounds
+      description: Hazardous compounds generated during laser removal
+      icon: flask
+      order: 3
+      variant: warning
+    safety.regulatory_standards:
+      presentation: card
+      title: Regulatory Standards
+      description: OSHA, ANSI, ISO, and industry safety standards
+      icon: shield-check
+      order: 1
+      variant: default    # Nested grouped relationships (technical.*, safety.*, operational.*)
+    technical.affects_materials:
+      presentation: card
+      title: Affects Materials
+      description: Materials impacted by this contaminant
+      icon: box
+      order: 1
+      variant: default
+    technical.produces_compounds:
+      presentation: card
+      title: Produces Compounds
+      description: Hazardous compounds generated during laser removal
+      icon: flask
+      order: 3
+      variant: warning
+    safety.regulatory_standards:
+      presentation: card
+      title: Regulatory Standards
+      description: OSHA, ANSI, ISO, and industry safety standards
+      icon: shield-check
+      order: 1
+      variant: default
     realism_notes:
       presentation: list
       title: Realism Notes

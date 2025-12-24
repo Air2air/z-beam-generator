@@ -78,31 +78,6 @@ enrichments:
   - power_watts
   - pulse_frequency_hz
   - recommended_for
-- type: section_metadata
-  module: export.enrichers.metadata.section_metadata_enricher
-  class: SectionMetadataEnricher
-  sections:
-    contaminated_by:
-      presentation: card
-      title: Common Contaminants
-      description: Types of contamination typically found on this material that require laser cleaning
-      icon: droplet
-      order: 1
-      variant: default
-    regulatory_standards:
-      presentation: card
-      title: Regulatory Standards
-      description: Safety and compliance standards applicable to laser cleaning of this material
-      icon: file-text
-      order: 2
-      variant: default
-    industry_applications:
-      presentation: card
-      title: Industry Applications
-      description: Industries and sectors where this material is commonly used
-      icon: building-2
-      order: 3
-      variant: default
 - type: timestamp
   module: export.enrichers.metadata.timestamp_enricher
   class: TimestampEnricher
@@ -130,6 +105,55 @@ enrichments:
     - regulatory_standards
     operational:
     - industry_applications
+- type: section_metadata
+  module: export.enrichers.metadata.section_metadata_enricher
+  class: SectionMetadataEnricher
+  description: Add _section metadata AFTER grouping (must run after relationship_group enricher)
+  sections:
+    # Top-level relationships (legacy, pre-grouping)
+    contaminated_by:
+      presentation: card
+      title: Common Contaminants
+      description: Types of contamination typically found on this material that require laser cleaning
+      icon: droplet
+      order: 1
+      variant: default
+    regulatory_standards:
+      presentation: card
+      title: Regulatory Standards
+      description: Safety and compliance standards applicable to laser cleaning of this material
+      icon: file-text
+      order: 2
+      variant: default
+    industry_applications:
+      presentation: card
+      title: Industry Applications
+      description: Industries and sectors where this material is commonly used
+      icon: building-2
+      order: 3
+      variant: default
+    # Nested grouped relationships (technical.*, safety.*, operational.*)
+    technical.contaminated_by:
+      presentation: card
+      title: Common Contaminants
+      description: Types of contamination typically found on this material that require laser cleaning
+      icon: droplet
+      order: 1
+      variant: default
+    safety.regulatory_standards:
+      presentation: card
+      title: Regulatory Standards
+      description: Safety and compliance standards applicable to laser cleaning of this material
+      icon: shield-check
+      order: 2
+      variant: default
+    operational.industry_applications:
+      presentation: card
+      title: Industry Applications
+      description: Industries and sectors where this material is commonly used
+      icon: building-2
+      order: 3
+      variant: default
 library_enrichments:
   enabled: false
   enrichments:

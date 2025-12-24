@@ -1,0 +1,361 @@
+
+======================================================================
+🔍 SOURCE DATA SCHEMA VALIDATION v2
+======================================================================
+
+Reference: docs/05-data/SOURCE_DATA_SCHEMA.md
+
+Domain Suffix Requirements:
+  materials:     {slug}-laser-cleaning
+  settings:      {slug}-settings
+  compounds:     {slug}-compound
+  contaminants:  {slug}-contamination
+
+======================================================================
+📄 MATERIALS: Materials.yaml
+======================================================================
+Items found: 153
+
+✅ All 153 items valid
+
+======================================================================
+📄 SETTINGS: Settings.yaml
+======================================================================
+Items found: 153
+
+✅ All 153 items valid
+
+======================================================================
+📄 COMPOUNDS: Compounds.yaml
+======================================================================
+Items found: 34
+
+✅ All 34 items valid
+
+======================================================================
+📄 CONTAMINANTS: Contaminants.yaml
+======================================================================
+Items found: 98
+
+❌ adhesive-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'eeat' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ algae-growth-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ aluminum-oxidation-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'eeat' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ annealing-scale-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ anodizing-defects-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ anti-seize-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ asbestos-coating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ aviation-sealant-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ battery-corrosion-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ beryllium-oxide-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ biological-stains-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ bitumen-tar-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ blood-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ brake-dust-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ brass-plating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ bronze-patina-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ cadmium-plating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ carbon-buildup-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ carbon-soot-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ ceramic-coating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ ceramic-glaze-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ chemical-stains-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'eeat' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ chrome-pitting-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ concrete-dust-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ conversion-coating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ coolant-scale-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ copper-patina-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'eeat' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ copper-plating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ corrosion-inhibitor-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ cutting-fluid-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ diamond-coating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ efflorescence-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ electroplating-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ environmental-dust-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'eeat' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ epoxy-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ exhaust-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ fertilizer-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ fire-damage-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ forging-scale-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ fuel-varnish-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ galvanize-corrosion-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ gasket-material-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ gold-plating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ graffiti-paint-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ graphite-marks-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ grease-deposits-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ hydraulic-fluid-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ industrial-oil-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'eeat' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ ink-stains-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ insect-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ laser-marking-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ lead-paint-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ lime-scale-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ medical-disinfectant-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ mercury-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ metal-polish-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ mineral-deposits-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ mineral-stain-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ mold-mildew-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ nickel-plating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ paint-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'eeat' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ passivation-defect-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ pcb-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ pesticide-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ pharmaceutical-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ pickling-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ plasma-spray-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ plastic-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ pollen-deposit-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ powder-coating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ primer-coating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ pvd-coating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ quench-oil-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ radioactive-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ road-grime-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ rubber-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ rust-oxidation-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ salt-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ scale-buildup-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'eeat' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ semiconductor-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ silicone-buildup-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ silver-plating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ soap-scum-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ solder-flux-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ steel-corrosion-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ surgical-marking-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ teflon-residue-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ thermal-paste-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ thread-locker-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ tin-plating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ tree-sap-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ undercoating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ uranium-oxide-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ uv-chalking-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'eeat' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ water-stain-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ wax-buildup-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ wood-rot-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'eeat' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+❌ zinc-plating-contamination
+   └─ Prohibited field: 'card' (should be in frontmatter only)
+   └─ Prohibited field: 'description' (should be in frontmatter only)
+
+⚠️  Found 206 issues in 98 items
+
+======================================================================
+📊 VALIDATION SUMMARY
+======================================================================
+
+Violation Statistics:
+  prohibited_fields: 206
+
+⚠️  Top Prohibited Fields:
+  card: 98 occurrences
+  description: 98 occurrences
+  eeat: 10 occurrences
+
+======================================================================
+❌ FAILURE: 206 issues found across 438 items
+======================================================================

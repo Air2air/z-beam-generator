@@ -96,14 +96,47 @@ class SectionMetadataEnricher(BaseEnricher):
         if item_id == 'metal-vapors-mixed':
             logger.info(f"  [SectionMetadata] {item_id} - relationships keys BEFORE processing: {list(relationships.keys())}")
         
-        # Process each relationship field
-        for field_name, field_data in list(relationships.items()):
-            # Skip if no section config for this field
-            if field_name not in self.section_configs:
+        # Process each relationship field (including nested groups)
+        wrapped_count += self._process_relationship_group(relationships, item_id)
+        
+        if wrapped_count > 0:
+            logger.info(f"Added presentation metadata to {wrapped_count} relationship fields in {item_id}")
+        
+        return frontmatter
+    
+    def _process_relationship_group(self, group: Dict[str, Any], item_id: str, parent_path: str = "") -> int:
+        """
+        Recursively process relationship fields, including nested groups.
+        
+        Args:
+            group: Relationship group dictionary
+            item_id: Item ID for logging
+            parent_path: Path to parent group (e.g., "safety" or "technical")
+        
+        Returns:
+            Count of wrapped fields
+        """
+        wrapped_count = 0
+        
+        for field_name, field_data in list(group.items()):
+            # Build full path (e.g., "safety.regulatory_standards")
+            full_path = f"{parent_path}.{field_name}" if parent_path else field_name
+            
+            # Check if this is a nested group (dict without 'items' or 'presentation')
+            if isinstance(field_data, dict) and 'items' not in field_data and 'presentation' not in field_data:
+                # This is a nested group (e.g., "safety", "technical"), recurse into it
+                wrapped_count += self._process_relationship_group(field_data, item_id, full_path)
                 continue
             
-            # Get section config
-            section_config = self.section_configs[field_name]
+            # Try both flat field name and full path in config
+            section_config = self.section_configs.get(field_name) or self.section_configs.get(full_path)
+            if not section_config:
+                continue
+            
+            # Try both flat field name and full path in config
+            section_config = self.section_configs.get(field_name) or self.section_configs.get(full_path)
+            if not section_config:
+                continue
             
             # Check if already wrapped
             if isinstance(field_data, dict) and 'presentation' in field_data:
@@ -128,7 +161,7 @@ class SectionMetadataEnricher(BaseEnricher):
                     if variant:
                         field_data['_section']['variant'] = variant
                     wrapped_count += 1
-                    logger.debug(f"Added _section metadata to {field_name} for {item_id}")
+                    logger.debug(f"Added _section metadata to {full_path} for {item_id}")
                 continue
             
             # Skip if data is None or not a list (not a relationship to wrap)
@@ -169,15 +202,12 @@ class SectionMetadataEnricher(BaseEnricher):
             wrapped_data['items'] = field_data
             
             # Replace relationship field with wrapped version
-            relationships[field_name] = wrapped_data
+            group[field_name] = wrapped_data
             wrapped_count += 1
             
-            logger.debug(f"Wrapped {field_name} for {item_id} with presentation='{wrapped_data['presentation']}'")
+            logger.debug(f"Wrapped {full_path} for {item_id} with presentation='{wrapped_data['presentation']}'")
         
-        if wrapped_count > 0:
-            logger.info(f"Added presentation metadata to {wrapped_count} relationship fields in {item_id}")
-        
-        return frontmatter
+        return wrapped_count
     
     @staticmethod
     def validate_config(config: Dict[str, Any]) -> List[str]:

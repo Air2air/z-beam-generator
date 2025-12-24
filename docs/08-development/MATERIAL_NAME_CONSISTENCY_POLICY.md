@@ -21,10 +21,10 @@
 | Domain | Dictionary Key Format | Example | Rationale |
 |--------|----------------------|---------|-----------|
 | **Materials.yaml** | `{slug}-laser-cleaning` | `aluminum-laser-cleaning` | Source of truth, URL-friendly with domain suffix |
-| **Settings.yaml** | `{slug}` (base only) | `aluminum` | Matches material without domain suffix |
-| **Contaminants.yaml** | `Display Name` | `Aluminum` | Human-readable in valid_materials lists |
-| **Compounds.yaml** | `{slug}` (base only) | `aluminum` | Lookup compatibility |
-| **DomainAssociations.yaml** | `{slug}` (base only) | `aluminum` | Universal lookup keys |
+| **Settings.yaml** | `{slug}-settings` | `aluminum-settings` | Domain-specific suffix for settings entities |
+| **Contaminants.yaml** | `{slug}-contamination` | `rust-oxidation-contamination` | Domain-specific suffix for contamination entities |
+| **Compounds.yaml** | `{slug}-compound` | `carbon-monoxide-compound` | Domain-specific suffix for compound entities |
+| **DomainAssociations.yaml** | `{slug}` (base only) | `aluminum` | Universal lookup keys (no suffix) |
 
 ### Format Specifications
 
@@ -52,13 +52,13 @@ materials:
 #### Settings.yaml Format
 ```yaml
 settings:
-  aluminum:  # Base slug, no suffix
+  aluminum-settings:  # Full slug with -settings suffix
     machine_settings:
       # ... settings
-  stainless-steel-316:  # Alloys include designation
+  stainless-steel-316-settings:  # Alloys include designation + suffix
     machine_settings:
       # ... settings
-  acrylic-pmma:  # Compounds include abbreviation
+  acrylic-pmma-settings:  # Compounds include abbreviation + suffix
     machine_settings:
       # ... settings
 ```
@@ -66,8 +66,25 @@ settings:
 **Rules**:
 - ✅ Always lowercase
 - ✅ Hyphen-separated words
-- ✅ NO `-laser-cleaning` suffix
-- ✅ Match Materials.yaml base slug exactly
+- ✅ Always ends with `-settings`
+- ✅ Match Materials.yaml base slug + `-settings` suffix
+
+#### Compounds.yaml Format
+```yaml
+compounds:
+  carbon-monoxide-compound:  # Full slug with -compound suffix
+    category: toxic-gas
+    # ... properties
+  formaldehyde-compound:  # Chemical formula in slug
+    category: organic-compound
+    # ... properties
+```
+
+**Rules**:
+- ✅ Always lowercase
+- ✅ Hyphen-separated words
+- ✅ Always ends with `-compound`
+- ✅ Use chemical names, not formulas (carbon-monoxide, not CO)
 
 #### Contaminants.yaml Format
 ```yaml
@@ -84,8 +101,10 @@ contamination_patterns:
 ```
 
 **Rules**:
-- ✅ Title case (capitalize each word)
-- ✅ Space-separated words
+- ✅ Dictionary key: Always ends with `-contamination`
+- ✅ valid_materials field ONLY: Display names (title case with spaces)
+- ✅ Title case (capitalize each word in display names)
+- ✅ Space-separated words in display names
 - ✅ Abbreviations in parentheses: `Acrylic (PMMA)`
 - ✅ Designations after name: `Stainless Steel 316`
 - ✅ Special value: `ALL` (all uppercase) for universal patterns
@@ -94,16 +113,23 @@ contamination_patterns:
 ```yaml
 associations:
   - source_domain: materials
-    source_id: aluminum  # Base slug
+    source_id: aluminum  # Base slug only (no domain suffix)
     target_domain: contaminants
-    target_id: rust-oxidation-contamination
+    target_id: rust-oxidation  # Base slug only (no -contamination)
     relationship_type: can_have_contamination
+  - source_domain: materials
+    source_id: aluminum  # Base slug only
+    target_domain: compounds
+    target_id: aluminum-oxide  # Base slug only (no -compound)
+    relationship_type: can_produce
 ```
 
 **Rules**:
-- ✅ Always base slug (no suffix)
-- ✅ Materials use base: `aluminum` not `aluminum-laser-cleaning`
-- ✅ Contaminants use full: `rust-oxidation-contamination`
+- ✅ Always base slug (no domain suffix)
+- ✅ Materials: `aluminum` not `aluminum-laser-cleaning`
+- ✅ Contaminants: `rust-oxidation` not `rust-oxidation-contamination`
+- ✅ Compounds: `carbon-monoxide` not `carbon-monoxide-compound`
+- ✅ Settings: `aluminum` not `aluminum-settings`
 - ✅ Lowercase, hyphen-separated
 
 ---
@@ -119,17 +145,46 @@ class MaterialNameMapper:
     """Convert between domain-specific material name formats."""
     
     @staticmethod
-    def full_to_base(full_slug: str) -> str:
-        """Materials.yaml → Settings.yaml / Associations"""
-        return full_slug.replace('-laser-cleaning', '')
+    def to_base_slug(full_id: str, domain: str) -> str:
+        """Any domain → Base slug (for associations/lookups)"""
+        suffixes = {
+            'materials': '-laser-cleaning',
+            'settings': '-settings',
+            'compounds': '-compound',
+            'contaminants': '-contamination'
+        }
+        suffix = suffixes.get(domain, '')
+        if suffix and full_id.endswith(suffix):
+            return full_id.replace(suffix, '')
+        return full_id
         # aluminum-laser-cleaning → aluminum
+        # aluminum-settings → aluminum
+        # carbon-monoxide-compound → carbon-monoxide
+        # rust-oxidation-contamination → rust-oxidation
     
     @staticmethod
-    def full_to_display(full_slug: str) -> str:
-        """Materials.yaml → Contaminants.yaml"""
-        base = full_slug.replace('-laser-cleaning', '')
-        words = base.split('-')
-        # Handle acronyms and special cases
+    def to_domain_id(base_slug: str, target_domain: str) -> str:
+        """Base slug → Domain-specific ID"""
+        suffixes = {
+            'materials': '-laser-cleaning',
+            'settings': '-settings',
+            'compounds': '-compound',
+            'contaminants': '-contamination'
+        }
+        suffix = suffixes.get(target_domain, '')
+        return f"{base_slug}{suffix}"
+        # aluminum → aluminum-laser-cleaning (materials)
+        # aluminum → aluminum-settings (settings)
+        # carbon-monoxide → carbon-monoxide-compound (compounds)
+    
+    @staticmethod
+    def to_display_name(id_or_slug: str) -> str:
+        """Any ID → Display name (for Contaminants valid_materials ONLY)"""
+        # Remove any domain suffix
+        for suffix in ['-laser-cleaning', '-settings', '-compound', '-contamination']:
+            id_or_slug = id_or_slug.replace(suffix, '')
+        
+        words = id_or_slug.split('-')
         display_words = []
         for word in words:
             if word.upper() in ['ABS', 'PMMA', 'PC', 'PVC', 'PET']:
@@ -140,12 +195,12 @@ class MaterialNameMapper:
                 display_words.append(word.capitalize())
         return ' '.join(display_words)
         # aluminum-laser-cleaning → Aluminum
-        # stainless-steel-316-laser-cleaning → Stainless Steel 316
-        # acrylic-pmma-laser-cleaning → Acrylic (PMMA)
+        # stainless-steel-316-settings → Stainless Steel 316
+        # acrylic-pmma-compound → Acrylic (PMMA)
     
     @staticmethod
-    def display_to_base(display_name: str) -> str:
-        """Contaminants.yaml → Settings.yaml / Associations"""
+    def from_display_name(display_name: str) -> str:
+        """Display name → Base slug"""
         # Remove parentheses and their content
         name = re.sub(r'\s*\([^)]+\)', '', display_name)
         # Lowercase and replace spaces with hyphens
@@ -153,14 +208,6 @@ class MaterialNameMapper:
         # Aluminum → aluminum
         # Stainless Steel 316 → stainless-steel-316
         # Acrylic (PMMA) → acrylic
-    
-    @staticmethod
-    def base_to_display(base_slug: str) -> str:
-        """Settings.yaml → Contaminants.yaml"""
-        words = base_slug.split('-')
-        return ' '.join(word.capitalize() for word in words)
-        # aluminum → Aluminum
-        # stainless-steel-316 → Stainless Steel 316
 ```
 
 ### Usage Examples

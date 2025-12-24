@@ -227,6 +227,14 @@ generators:
       icon: users
       order: 10
       variant: default
+    # Nested grouped relationships (operational.*)
+    operational.health_effects:
+      presentation: card
+      title: Health Effects
+      description: Potential health impacts from exposure
+      icon: activity
+      order: 1
+      variant: warning
     reactivity:
       presentation: list
       title: Reactivity

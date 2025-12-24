@@ -104,6 +104,7 @@ generators:
   module: export.generation.section_metadata_generator
   class: SectionMetadataGenerator
   sections:
+    # Top-level (flat) relationships
     common_challenges:
       presentation: card
       title: Common Challenges
@@ -115,9 +116,9 @@ generators:
       presentation: card
       title: Optimized Materials
       description: Materials that work best with this laser cleaning setting
-      icon: users
+      icon: box
       order: 2
-      variant: success
+      variant: default
     removes_contaminants:
       presentation: card
       title: Removes Contaminants
@@ -129,9 +130,38 @@ generators:
       presentation: card
       title: Regulatory Standards
       description: Safety and compliance standards applicable to this laser setting
-      icon: file-text
+      icon: shield-check
       order: 4
       variant: default
+    # Nested grouped relationships (technical.*, safety.*, operational.*)
+    technical.works_on_materials:
+      presentation: card
+      title: Works On Materials
+      description: Materials compatible with these laser settings
+      icon: box
+      order: 1
+      variant: default
+    technical.removes_contaminants:
+      presentation: card
+      title: Removes Contaminants
+      description: Contaminants effectively removed by these settings
+      icon: droplet
+      order: 2
+      variant: default
+    safety.regulatory_standards:
+      presentation: card
+      title: Regulatory Standards
+      description: OSHA, ANSI, ISO, and industry safety standards
+      icon: shield-check
+      order: 1
+      variant: default
+    operational.common_challenges:
+      presentation: card
+      title: Common Challenges
+      description: Typical difficulties and considerations when using this setting
+      icon: alert-triangle
+      order: 1
+      variant: warning
 enrichers:
 - name: DomainLinkagesEnricher
   enabled: true
