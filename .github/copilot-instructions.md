@@ -845,6 +845,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - 🚫 **NEVER bypass text processing pipeline** - ALL text uses QualityEvaluatedGenerator 🔥 **NEW (Dec 11, 2025)**
 - 🚫 **NEVER generate text with direct API calls** - Use pipeline ONLY 🔥 **NEW (Dec 11, 2025)**
 - 🚫 **NEVER put voice instructions outside personas/*.yaml** - Single source only 🔥 **NEW (Dec 11, 2025)**
+- 🚫 **NEVER restrict word counts using max_tokens** - Causes mid-sentence truncation 🔥 **NEW (Dec 24, 2025)**
 - 🚫 **NEVER use mocks/fallbacks in production code - NO EXCEPTIONS**
 - ✅ **ALLOW mocks/fallbacks in test code for proper testing**
 - 🚫 **NEVER add "skip" logic or dummy test results**
@@ -1668,6 +1669,53 @@ Stage 5: Assembly → Final polish (balanced 0.5)
 - Mandatory for ALL generation systems (text, image, future domains)
 
 See `docs/08-development/PROMPT_CHAINING_POLICY.md` for complete policy with examples.
+
+### 16.5. **Word Count Control Policy** 🔥 **NEW (Dec 24, 2025) - MANDATORY**
+**Word counts MUST NOT be restricted using token limits (max_tokens parameter).**
+
+**The Problem**: Using `max_tokens` to enforce word count limits causes mid-sentence truncation, creating broken/incomplete content.
+
+**PROHIBITED Approach** (Grade F):
+```python
+# ❌ WRONG: Using max_tokens to control word count
+response = api.generate(
+    prompt=prompt,
+    max_tokens=150  # This causes truncation!
+)
+# Result: "The laser cleaning process requires careful attention to surface" [CUT OFF]
+```
+
+**REQUIRED Approach**:
+```python
+# ✅ CORRECT: Use prompt instructions only, accept approximate word counts
+prompt = """
+Write a description about {material}.
+WORD LENGTH: 50-150 words
+"""
+response = api.generate(prompt=prompt)  # No max_tokens restriction
+# Result: Content may be 160-180 words (20% over), but COMPLETE sentences
+```
+
+**Architectural Reality**:
+- LLMs generate token-by-token and don't count words during generation
+- Prompt instructions provide approximate guidance (typically 20-30% variance)
+- This variance is acceptable and inherent to LLM architecture
+- Post-generation truncation also causes broken sentences (DO NOT USE)
+
+**Acceptable Solutions**:
+1. ✅ **Accept approximate word counts** - Prompts guide to roughly correct length
+2. ✅ **Use wide ranges** - 1x-3x ranges accommodate natural variance
+3. ✅ **Quality-gated mode** - Multiple attempts, select best length match
+4. ❌ **max_tokens limits** - FORBIDDEN (causes truncation)
+5. ❌ **Post-generation truncation** - FORBIDDEN (also causes truncation)
+
+**Requirements**:
+- All prompts MUST use 1x-3x word count ranges minimum
+- NO max_tokens restrictions in ANY generation code
+- Accept that LLMs produce approximate word counts
+- Post-processing can REGENERATE (not truncate) if too long
+
+**Grade**: F violation if using max_tokens or truncation to control word count
 
 ### 17. **Material Name Consistency Across Domains Policy** 🔥 **NEW (Dec 20, 2025) - CRITICAL**
 **ALL domains MUST use consistent material naming conventions based on their role.**

@@ -93,6 +93,7 @@ enrichments:
   module: export.enrichers.metadata.field_order_enricher
   class: FieldOrderEnricher
   description: Normalize field order for consistency
+# SEO/excerpt generators: use --postprocess with prompt templates (domains/settings/prompts/)
 library_enrichments:
   enabled: false
   enrichments:

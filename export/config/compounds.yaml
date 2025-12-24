@@ -112,7 +112,6 @@ enrichments:
     operational:
     - detection_monitoring_methods
     - control_measures
-    - health_effects
 - type: title
   module: export.generation.title_generator
   class: TitleGenerator
@@ -127,6 +126,7 @@ enrichments:
   module: export.enrichers.metadata.field_order_enricher
   class: FieldOrderEnricher
   description: Normalize field order for consistency
+# SEO/excerpt generators: use --postprocess with prompt templates (domains/compounds/prompts/)
 library_enrichments:
   enabled: false
   enrichments:
@@ -171,13 +171,6 @@ generators:
       icon: gauge
       order: 2
       variant: default
-    health_effects:
-      presentation: card
-      title: Health Effects
-      description: Potential health impacts and medical considerations
-      icon: alert-triangle
-      order: 3
-      variant: danger
     exposure_limits:
       presentation: card
       title: Exposure Limits

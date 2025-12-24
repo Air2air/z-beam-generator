@@ -160,29 +160,13 @@ library_enrichments:
   - type: regulatory_standards
     relationship_field: relationships.regulatory_standards
     output_field: regulatory_standards_detail
+# SEO/excerpt generators removed - now use --postprocess with prompt templates:
+#   python3 run.py --postprocess --domain materials --field seo_description --all
+#   python3 run.py --postprocess --domain materials --field excerpt --all
 generators:
 - type: field_cleanup
   module: export.enrichers.cleanup.field_cleanup_enricher
   class: FieldCleanupEnricher
-- type: seo_metadata
-  module: export.generation.seo_metadata_generator
-  class: SEOMetadataGenerator
-  page_type: material
-  title_field: page_title
-  description_field: meta_description
-- type: seo_description
-  module: shared.generation.seo_description_generator
-  class: SEODescriptionGenerator
-  source_field: description
-  output_field: seo_description
-  max_length: 160
-- type: excerpt
-  module: shared.generation.excerpt_generator
-  class: ExcerptGenerator
-  source_field: description
-  output_field: micro
-  mode: sentences
-  length: 2
 - type: field_order
   module: export.enrichers.metadata.field_order_enricher
   class: FieldOrderEnricher

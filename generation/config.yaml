@@ -117,6 +117,10 @@ component_extraction:
     extraction_strategy: raw            # Return text as-is (SEO page title)
   meta_description:
     extraction_strategy: raw            # Return text as-is (SEO meta description)
+  seo_description:
+    extraction_strategy: raw            # Return text as-is (SEO meta description)
+  excerpt:
+    extraction_strategy: raw            # Return text as-is (summary text)
 
 # Component Token Targets - UPDATED (Dec 14, 2025)
 # Word count targets used by length calculation system
@@ -139,6 +143,8 @@ component_lengths:
   faq: 50                         # FAQ answers (±70% = 15-85 range)
   page_title: 10                  # SEO page titles (50-55 characters target)
   meta_description: 32            # SEO meta descriptions (155-160 characters target)
+  seo_description: 50             # SEO meta descriptions (50-160 chars, ±70% = 15-85 range)
+  excerpt: 120                    # Summary excerpts (±70% = 36-204 range) → actual ~80-240 words
 
 # Dynamic Calculation Parameters
 # Zero hardcoded values policy: All calculation factors configured here
