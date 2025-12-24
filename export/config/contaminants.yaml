@@ -134,35 +134,6 @@ generators:
 - type: field_cleanup
   module: export.enrichers.cleanup.field_cleanup_enricher
   class: FieldCleanupEnricher
-- type: section_metadata
-  module: export.generation.section_metadata_generator
-  class: SectionMetadataGenerator
-  sections:
-    produces_compounds:
-      presentation: card
-      title: Hazardous Compounds Generated
-      description: Chemical compounds released during laser removal of this contamination
-    affects_materials:
-      presentation: card
-      title: Affects Materials
-      description: Materials commonly affected by this type of contamination
-    valid_materials:
-      presentation: card
-      title: Compatible Materials
-      description: Materials where this contamination can be safely removed with laser
-        cleaning
-    prohibited_materials:
-      presentation: card
-      title: Incompatible Materials
-      description: Materials where laser removal of this contamination is not recommended
-    visual_characteristics:
-      presentation: card
-    laser_properties:
-      presentation: card
-    safety_data:
-      presentation: card
-    regulatory_standards:
-      presentation: card
 - type: seo_description
   module: shared.generation.seo_description_generator
   class: SEODescriptionGenerator
@@ -281,27 +252,6 @@ generators:
       description: OSHA, ANSI, ISO, and industry safety standards
       icon: shield-check
       order: 1
-      variant: default    # Nested grouped relationships (technical.*, safety.*, operational.*)
-    technical.affects_materials:
-      presentation: card
-      title: Affects Materials
-      description: Materials impacted by this contaminant
-      icon: box
-      order: 1
-      variant: default
-    technical.produces_compounds:
-      presentation: card
-      title: Produces Compounds
-      description: Hazardous compounds generated during laser removal
-      icon: flask
-      order: 3
-      variant: warning
-    safety.regulatory_standards:
-      presentation: card
-      title: Regulatory Standards
-      description: OSHA, ANSI, ISO, and industry safety standards
-      icon: shield-check
-      order: 1
       variant: default
     realism_notes:
       presentation: list
@@ -310,35 +260,6 @@ generators:
       icon: file-text
       order: 11
       variant: default
-    affects_materials:
-      presentation: card
-      title: Affects Materials
-      description: Materials commonly affected by this type of contamination
-      icon: users
-      order: 12
-      variant: default
-    valid_materials:
-      presentation: card
-      title: Compatible Materials
-      description: Materials where this contamination can be safely removed with laser
-        cleaning
-      icon: shield-check
-      order: 13
-      variant: default
-    regulatory_standards:
-      presentation: card
-      title: Regulatory Standards
-      description: Safety standards and regulations for handling this contamination
-      icon: file-text
-      order: 14
-      variant: default
-    produces_compounds:
-      presentation: card
-      title: Hazardous Compounds Generated
-      description: Chemical compounds released during laser removal of this contamination
-      icon: flame
-      order: 15
-      variant: danger
 - type: field_order
   module: export.enrichers.metadata.field_order_enricher
   class: FieldOrderEnricher
