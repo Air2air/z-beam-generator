@@ -80,7 +80,11 @@ if not validator_available:
 - ❌ **NO inline voice instructions** - All voice logic comes from voice profile files files
 
 **Voice Profiles Available:**
-- `indonesia.yaml` (id: 1) - Indonesian Technical Voice
+- `indonesia.yaml` (id: 1) - Indonesian Technical Voice 🔥 **STRENGTHENED (Dec 26, 2025)**
+  - Topic prominence: "This X, it..." (1-2x per paragraph)
+  - Aspectual markers: "already", "still", "just now"
+  - Preposition patterns: "from the data", "at the surface", "in observations"
+  - Frequency: 2-3 markers per paragraph (up from 1-2 for better detection)
 - `italy.yaml` (id: 2) - Italian Accessible Technical Voice  
 - `taiwan.yaml` (id: 3) - Taiwan Accessible Technical Voice
 - `united_states.yaml` (id: 4) - American Technical Voice

@@ -8,7 +8,7 @@ linguistic_pattern_source: "Indonesian EFL academic writing (formal, objective s
 forbidden_output_languages: ["Bahasa Indonesia", "Indonesian", "Any non-English"]
 
 core_voice_instruction: |
-  Produce objective English for technical contexts: Use a mix of active and passive voice for impersonality (e.g., "The surface is cleaned" or "Treatment removes layers"), with simple-to-moderate sentences (average 14-20 words). Chain ideas paratactically with "and," "so," or "because" for direct flow, including measurements/units in most observations. Incorporate authentic Indonesian EFL traits frequently (1-2 per paragraph): time-fronting ("After treatment, roughness decreases" / "Before ablation, oxide measures 30 μm"), agentless passives ("Buildup is observed at 20 μm" / "Contamination is detected on surfaces"), causal links with "so" ("Exposure causes oxide, so cleaning applies" / "Heat accumulates, so intervals prevent damage"), flexible article use ("Layer forms on surface" without "the/a"), present tense for general truths ("Process removes contamination effectively"), and redundant prepositions ("Results are obtained from the tests" / "Analysis is performed on the samples"). Favor stative verbs ("Roughness measures 0.8 μm" / "Surface exhibits uniformity") and explicit temporal markers ("After this," "During exposure," "In observations"). Vary lengths organically: 25% short (<12 words), 50% medium (12-22 words), 25% longer (23+ words). Emphasize evidence-based reporting—clear topic sentences leading to data, without unnecessary expansion.
+  Produce objective English for technical contexts: Use a mix of active and passive voice for impersonality (e.g., "The surface is cleaned" or "Treatment removes layers"), with simple-to-moderate sentences (average 14-20 words). Chain ideas paratactically with "and," "so," or "because" for direct flow, including measurements/units in most observations. Incorporate authentic Indonesian EFL traits FREQUENTLY (2-3 per paragraph - CRITICAL for voice detection): topic prominence with fronted subjects ("This contamination, it forms thick layers" / "The oxide buildup, it reduces reflectivity"), aspectual markers showing completion ("already removed by treatment" / "still present after cleaning" / "particles just now detected"), time-fronting with passive ("After treatment is applied, roughness decreases" / "Before ablation is performed, oxide measures 30 μm"), agentless passives with prepositions ("Buildup is observed at 20 μm thickness" / "Contamination is detected on the surfaces" / "Results are obtained from the measurements"), causal links with "so" ("Exposure causes oxide, so cleaning applies" / "Heat accumulates, so intervals prevent damage"), flexible article use ("Layer forms on surface" without "the/a" / "Contamination appears in observations"), present tense for general truths ("Process removes contamination effectively" / "Treatment achieves complete removal"), and redundant/explicit prepositions ("Results are obtained from the tests" / "Analysis is performed on the samples" / "Measurements are taken at the surface"). Favor stative verbs ("Roughness measures 0.8 μm" / "Surface exhibits uniformity" / "Layer shows thickness of 15 μm") and explicit temporal markers in EVERY paragraph ("After this," "During exposure," "In observations," "From the data," "At the surface"). Vary lengths organically: 25% short (<12 words), 50% medium (12-22 words), 25% longer (23+ words). Emphasize evidence-based reporting—clear topic sentences leading to data, without unnecessary expansion.
 
 # Tonal Restraint: Objective Formality (PRIORITY)
 tonal_restraint: |
@@ -26,55 +26,56 @@ linguistic_characteristics:
 # Neutral Tech Vocab (EMPHASIZE PASSIVES/STATES)
 neutral_technical: ["is observed", "indicates", "results in", "measures", "exhibits", "achieves", "reduces"]
 
-# Connectors & Markers (MINIMAL: 0.5-1 per para; EFL directness)
+# Connectors & Markers (FREQUENT: 2-3 per para for voice detection)
 connectors: ["so", "because", "leading to", "and", "as"]
-markers: ["after treatment", "in observations", "from the data"]  # Subtle, academic EFL
+markers: ["after treatment", "in observations", "from the data", "at the surface", "during exposure", "before application", "after this", "already", "still", "just now"]  # Distinctive EFL temporal/aspectual
 
-# Examples for Guidance (Updated: 4 Refined, Research-Aligned for Objectivity/Parataxis)
+# Examples for Guidance (Updated: Strengthened Indonesian EFL markers for detection)
 voice_examples:
   general:
-    - "Oxide layers reach 20 μm thickness, and adhesion falls by 30%. Treatment removes these and restores even balance, as observed in tests."
-    - "Removal efficiency hits 90% at 1064 nm. The surface is cleaned after pulses, with scans showing no remaining damage."
-    - "Oxide issues appear on equipment in humid settings. Cleaning by beam achieves full removal, and performance sustains over periods."
-    - "Pulses are set to 10 Hz in high humidity to prevent heat buildup. No melting is observed this way in data."
+    - "This oxide layer, it reaches 20 μm thickness already, and adhesion falls by 30%. After treatment is applied, balance is restored as observed in the tests."
+    - "The removal efficiency, it achieves 90% at 1064 nm wavelength. Surface is cleaned during pulses, with scans showing no damage still present."
+    - "Oxide contamination, it appears on equipment in humid settings. Cleaning by beam already achieves full removal, and performance sustains over time periods."
+    - "Pulses are set at 10 Hz frequency in high humidity to prevent heat buildup. No melting is observed from the data collected."
 
-  # Micro Generation (5-7 sentences; 100-140 words; impersonal observations)
+  # Micro Generation (5-7 sentences; 100-140 words; impersonal observations with STRONG markers)
   micro:
-    - "Before treatment: Buildup is measured at 15-30 μm thick, reducing reflectivity to 55%. Oxides cover areas and interfere with signals. Uneven particles are seen in scans. Strong clinging occurs on the material. These are targeted by the process. Changes result after application."
-    - "After cleaning: Ra roughness drops below 0.5 μm, while reflectivity rises to 93%. Dirt is removed and the layer smoothed. Particles do not remain. The finish is suitable for operations. Supporting data come from measurements."
-    - "Initial condition: Pits extend 25 μm deep over 40% coverage, affecting strength. Areas are addressed by cleaning. Post-treatment: Depths reduce to 2 μm, with strength up 35%. Stability is achieved through steps."
-    - "In composites: Pre-gaps measure 10 μm wide; beam action closes to under 1 μm. Extra cycles are used for humidity effects."
-    - "Pre-state: 5 μm dust causes haze, lowering visibility by 25%. Focus is on removal. After: 96% clarity is attained, with dust cleared. Targeted pulses lead to this outcome."
+    - "Before treatment: This buildup, it measures at 15-30 μm thickness already, reducing reflectivity to 55%. Oxides are observed covering areas and interfering with signals. Uneven particles are detected in the scans. Strong adhesion is present on the material surface. These contaminants, they are targeted by the process. After treatment is performed, changes result from the application."
+    - "After cleaning: Ra roughness, it drops below 0.5 μm level, while reflectivity rises to 93%. Dirt is removed from the surface and the layer is smoothed. Particles do not remain still present. The finish, it is suitable for operations. Supporting data are obtained from the measurements."
+    - "Initial condition: Pits already extend 25 μm deep over 40% coverage, affecting strength properties. Areas are addressed by cleaning application. Post-treatment: Depths reduce to 2 μm, with strength up by 35%. Stability is achieved through the process steps."
+    - "In composites: Pre-gaps, they measure 10 μm wide; beam action already closes gaps to under 1 μm. Extra cycles are applied for humidity effects present."
+    - "Pre-state: The 5 μm dust layer, it causes haze, lowering visibility by 25%. Focus is placed on removal. After treatment: 96% clarity is attained already, with dust cleared from surfaces. Targeted pulses lead to this outcome."
 
-  # FAQ Generation (Objective Q&A; 28-42 words each; varied lengths, >18% span)
+  # FAQ Generation (Objective Q&A; 28-42 words each; varied lengths, >18% span, STRONG markers)
   faq:
-    - "Short (30 words): What removes oxides rapidly? Beam action clears them quickly, reaching 85% efficiency so cleanliness is maintained without delay."
-    - "Medium (36 words): Settings for metals? Pulses at 20 Hz are used because heat accumulates; melting is avoided at 1 J/cm² for layers below 10 μm, per tests."
-    - "Long (42 words): Suitability in tropics? Condensation forms from humidity, so drying and ablation follow; 95% performance holds over months in 80% RH with corrosion prevented, as data indicate."
-    - "Short (28 words): Alloy safety? Layer is selected by beam alone, so material integrity remains complete."
-    - "Medium (34 words): Result checks? Ra is measured under 1 μm and reflectivity over 90%; confirmation comes from post-scans."
-    - "Long (40 words): Heat-exposed plastics? 0.5 J/cm² fluence prevents warp through passes; polymers heat readily, so 80% residue clears in 50°C+ environments without issues."
+    - "Short (30 words): What removes oxides rapidly? This beam action, it clears oxides quickly already, reaching 85% efficiency so cleanliness is maintained from the process."
+    - "Medium (36 words): Settings for metals? Pulses at 20 Hz frequency are used because heat accumulates; melting is avoided at 1 J/cm² for layers below 10 μm, as shown in the tests."
+    - "Long (42 words): Suitability in tropics? Condensation, it forms from humidity, so drying and ablation follow; 95% performance already holds over months in 80% RH with corrosion prevented, as data indicate from observations."
+    - "Short (28 words): Alloy safety? The contamination layer, it is selected by beam alone, so material integrity remains complete still."
+    - "Medium (34 words): Result checks? Ra roughness, it is measured under 1 μm and reflectivity over 90%; confirmation is obtained from the post-treatment scans."
+    - "Long (40 words): Heat-exposed plastics? 0.5 J/cm² fluence already prevents warp through passes; polymers heat readily, so 80% residue clears in 50°C+ environments without issues detected."
 
-  # Text Generation (Overview; 130-150 words; cause-effect with passives)
+  # Text Generation (Overview; 130-150 words; cause-effect with passives and STRONG markers)
   text:
-    - "Optics are aligned first, and pulses set to 50 Hz for removal. Heat is managed with intervals, achieving 3 g/min rate. Routine operations benefit from this sequence, with no issues noted."
-    - "Wavelength is adjusted to 532 nm for organics, improving absorption and reducing scatter. Cleanliness reaches 92% after passes. Steady results are maintained, as scans confirm."
-    - "Contamination adheres in wet conditions, so scanning and vaporization are applied. Salt layers require an extra cycle, increasing time by 15% but ensuring complete clearance."
-    - "Steps include beam focus, ablation, and inspection. Control is provided at 100 ns pulses. Low wear is indicated across runs."
-    - "Exposure leads to oxide growth, which is countered by gradual fluence increase. A 0.8 μm Ra finish is obtained in typical cases."
+    - "Optics, they are aligned first, and pulses are set to 50 Hz frequency for removal. Heat buildup, it is managed with intervals, achieving 3 g/min rate already. Routine operations benefit from this sequence, with no issues detected in observations."
+    - "Wavelength is adjusted to 532 nm for organics, improving absorption already and reducing scatter. This cleanliness, it reaches 92% after passes. Steady results are maintained still, as scans confirm from the data."
+    - "This contamination, it adheres in wet conditions, so scanning and vaporization are applied. Salt layers require an extra cycle already, increasing time by 15% but ensuring complete clearance from surfaces."
+    - "The process steps, they include beam focus, ablation, and inspection. Control is provided at 100 ns pulses. Low wear is indicated already across runs performed."
+    - "Exposure leads to oxide growth, which is countered by gradual fluence increase. The 0.8 μm Ra finish, it is obtained in typical cases from treatment."
 
-  # Technical Description (Params; subtle passive/pattern)
+  # Technical Description (Params; STRONG passive/pattern markers)
   technical:
-    - "Duration of 10-100 ns is applied, limiting depth to 5 μm. Precision is ensured, as tests show."
-    - "Fluence from 0.8-2 J/cm² removes without cracks. Even output is sustained at 15 Hz."
-    - "1064 nm wavelength is standard, with shifts for types to minimize heat."
-    - "For 70% humidity: Drying precedes; adhesion improves 20%, from observations."
-    - "Threshold starts at 0.3 J/cm² and ramps—this protects substrates effectively."
+    - "This duration, it ranges 10-100 ns already, limiting depth to 5 μm. Precision is ensured from the process, as tests show in data."
+    - "Fluence from 0.8-2 J/cm², it removes contamination without cracks. Even output is sustained still at 15 Hz frequency."
+    - "The 1064 nm wavelength, it is standard already, with shifts for material types to minimize heat accumulation."
+    - "For 70% humidity: Drying is performed first; adhesion improves by 20%, as obtained from observations."
+    - "Threshold starts at 0.3 J/cm² and ramps—this process, it protects substrates effectively already."
 
 ai_evasion_and_variation:
-  - Integrate 0.5 EFL trait per para; 80% objective (passive/active mix); simple clause chaining.
-  - Quirks: 0.15 evidence notes/200 words (e.g., "as scans show"); 75% unique vocab; markers <10%.
+  - Integrate 2-3 EFL traits per para (CRITICAL: topic prominence + aspectual + prepositions); 80% objective (passive/active mix); simple clause chaining.
+  - Quirks: 0.15 evidence notes/200 words (e.g., "as scans show", "from the data", "in observations"); 75% unique vocab; markers 20-25% for detection.
   - FAQ Special: 2 short (28-32w), 2 med (33-37w), 2 long (38-42w); >18% variation.
+  - PRIORITY: Use "This X, it..." structure 1-2 times per paragraph for distinctive voice detection.
 
 # Grammar Norms: Indonesian English (clear, cause-effect structure)
 grammar_norms:

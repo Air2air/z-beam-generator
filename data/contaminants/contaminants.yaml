@@ -413,6 +413,27 @@ contamination_patterns:
         - id: aluminum-bronze-laser-cleaning
         - id: aluminum-nitride-laser-cleaning
         - id: titanium-nitride-laser-cleaning
+    page_description: 'Adhesive residue contamination forms during shipping or labeling
+      processes on manufactured items. Tape or stickers leave sticky layers after
+      removal, so surfaces exhibit uneven organic buildup. Before cleaning, residue
+      adheres tightly to substrates like metals and woods, causing discoloration and
+      reduced functionality.
+
+
+      This contamination shows patchy patterns, with thicker spots near edges. On
+      aluminum or glass, it penetrates slightly into pores, so removal demands careful
+      approach. During laser exposure, heat vaporizes organics effectively, but residue''s
+      tackiness leads to re-deposition if pulses are not spaced properly.
+
+
+      Challenges arise because incomplete ablation leaves films that attract dust,
+      and on polymers like nylon, overheating risks substrate damage. Laser cleaning
+      achieves clean surfaces on stainless steel or wood, as residue breaks down without
+      mechanical force. After treatment, uniformity is observed across materials such
+      as copper and oak.
+
+
+      Ikmanda Roswati, Ph.D.'
   algae-growth-contamination:
     composition:
     - Chlorophyll
@@ -762,6 +783,18 @@ contamination_patterns:
         - id: aluminosilicate-glass-laser-cleaning
     full_path: /contaminants/biological/growth/algae-growth-contamination
     id: algae-growth-contamination
+    page_description: Algae-growth contamination, it manifests uniquely in humid environments,
+      where biological layers adhere tenaciously to surfaces exposed to moisture.
+      This contamination, dependent from regional patterns like Mediterranean climates,
+      forms irregular patches that penetrate porous materials, such as stone facades,
+      leading to discoloration and structural weakening over time. On metals, the
+      growth exhibits a slimy matrix, which resists initial laser pulses by scattering
+      energy. Removal challenges arise from its regenerative nature; partial ablation
+      often prompts regrowth, demanding multiple passes with adjusted wavelengths.
+      It seems that adhesion varies across substrates, persisting more stubbornly
+      on organics than on synthetics, as confirmed by surface scans post-treatment.
+      The process yields cleaner results when humidity is controlled beforehand. Shows
+      effectiveness in preserving underlying textures without residue.
   aluminum-oxidation-contamination:
     author:
       id: 3
@@ -1064,6 +1097,19 @@ contamination_patterns:
     - Copper
     - Plastics
     - Wood
+    page_description: 'Aluminum oxidation contamination differs from steel rust, where
+      layers flake easily; here, oxide clings tightly to the metal surface and resists
+      breakdown. This contamination, it forms through natural regional patterns—exposure
+      to air and moisture creates uneven films, thicker in humid spots and thinner
+      elsewhere, thus complicating uniform coverage. Material-specific behaviors emerge,
+      as aluminum''s lightweight nature allows oxide to embed deeply without cracking,
+      and it already protects against further corrosion yet hinders adhesion in manufacturing.
+      For laser cleaning applications, removal challenges arise: pulses target the
+      layer, but heat buildup risks melting the base metal, so precise control follows
+      to avoid damage. Treatment applies energy selectively, roughness reduces on
+      cleaned areas, and contamination still persists in shadowed regions unless multiple
+      passes occur. Efficiency of the process, it improves with adjusted wavelengths,
+      thus ensuring surface smoothness without residue.'
   annealing-scale-contamination:
     composition:
     - Fe₃O₄
@@ -1402,6 +1448,15 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/thermal-damage/scale/annealing-scale-contamination
     id: annealing-scale-contamination
+    page_description: Annealing scale contamination forms when metals heat up during
+      processing. This thermal damage creates thick oxide layers that cling tightly
+      to surfaces. Engineers run into unique patterns here—crystalline structures
+      build up unevenly, often cracking in jagged lines. Removal poses distinct challenges;
+      lasers must dial in precise pulses to avoid re-annealing the base material.
+      In practice, steel shows stubborn adhesion that resists clean finishes, while
+      aluminum flakes off more readily but leaves residue behind. Overall, addressing
+      this demands tailored approaches to cut down on rework. Testing confirms these
+      behaviors vary by alloy, turning potential pitfalls into manageable outcomes.
   anodizing-defects-contamination:
     composition:
     - Al₂O₃
@@ -1716,6 +1771,23 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/metallic-coating/anodizing/anodizing-defects-contamination
     id: anodizing-defects-contamination
+    page_description: 'Anodizing defects contamination, it arises differently on aluminum
+      than steel surfaces. Aluminum oxide layers trap impurities unevenly, forming
+      patchy clusters and thus complicating laser cleaning. Steel shows denser buildup,
+      where contaminants embed deeply and resist ablation.
+
+
+      Formation patterns reveal unique streaks from electrolyte residues, especially
+      after immersion. This contamination still persists in pores, so laser pulses
+      must target precisely to avoid substrate damage.
+
+
+      Removal challenges intensify on porous anodized films; heat from lasers causes
+      cracking if intensity mismatches. Material behaviors vary—aluminum responds
+      with rapid vaporization, while alloys demand adjusted wavelengths for effective
+      detachment. Treatment applies, surface already exhibits cleaner profiles, yet
+      traces linger in crevices. Process yields improved adhesion, and cleaning enhances
+      durability.'
   anti-seize-contamination:
     composition:
     - Copper
@@ -2038,6 +2110,19 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/lubricant/anti-seize-contamination
     id: anti-seize-contamination
+    page_description: "Anti-seize contamination forms as sticky organic residue on\
+      \ metal surfaces during assembly processes. Before laser cleaning, layer adheres\
+      \ tightly because compounds include graphite and metals, so removal challenges\
+      \ increase. Contamination exhibits uneven patterns, thicker at joints and thinner\
+      \ on flat areas. In observations, residue resists initial pulses due to heat\
+      \ absorption, and buildup persists on aluminum more than steel. After treatment,\
+      \ surface shows partial carbon traces, so multiple passes achieve cleaner results.\
+      \ Process removes organic parts effectively, but metallic remnants demand adjusted\
+      \ energy. Material behaviors differ; residue on copper conducts heat quickly,\
+      \ leading to deeper penetration during exposure. Challenges arise from residue\
+      \ melting instead of vaporizing, so careful intervals prevent substrate damage.\
+      \ These patterns highlight need for tailored laser settings in industrial applications.\n\
+      \nIkmanda Roswati, Ph.D.  \nIndonesia"
   asbestos-coating-contamination:
     composition:
     - Mg₃Si₂O₅(OH)₄
@@ -2356,6 +2441,23 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/hazardous/asbestos-coating-contamination
     id: asbestos-coating-contamination
+    page_description: 'Asbestos-coating-contamination differs from organic residues
+      because it forms dense, fibrous layers on metal surfaces during industrial exposure.
+      Layer builds up tightly and resists initial breakdown, so laser cleaning faces
+      unique challenges in penetration. Before ablation, contamination embeds into
+      substrate pores and creates uneven patterns across regions. Process applies
+      pulsed energy, and heat causes fibers to fragment without scattering widely.
+      During removal, material exhibits brittleness specific to its inorganic nature,
+      so complete detachment requires controlled pulses to avoid residue re-adhesion.
+      After treatment, surface shows improved uniformity because fragments disperse
+      easily in air. Observations indicate that regional humidity influences formation
+      thickness, and cleaning achieves better results on coated steels than alloys.
+      Challenges arise from fiber durability, so intervals in laser passes prevent
+      overheating. Contamination removal proves effective in applications like shipyard
+      maintenance.
+
+
+      Ikmanda Roswati, Ph.D. from Indonesia'
   aviation-sealant-contamination:
     composition:
     - Polysulfide
@@ -2722,6 +2824,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/adhesive/aviation-sealant-contamination
     id: aviation-sealant-contamination
+    page_description: "Aviation sealants build up as tough, organic residues on aircraft\
+      \ surfaces. They form irregular patterns, oozing into joints and crevices during\
+      \ assembly. This creates sticky layers that harden unevenly, often cracking\
+      \ along edges. In practice, these contaminants cling tightly to metals like\
+      \ aluminum, resisting wipes and solvents. \n\nLaser cleaning tackles this head-on.\
+      \ Pulses target the sealant without harming the base material. On composites,\
+      \ though, removal demands careful control to avoid delamination. Turns out,\
+      \ the key point lies in dialing in pulse energy for clean finishes. Overall,\
+      \ this method clears contamination effectively while maintaining structural\
+      \ integrity."
   battery-corrosion-contamination:
     composition:
     - KOH
@@ -3021,6 +3133,21 @@ contamination_patterns:
           frequency: common
     full_path: /contaminants/oxidation/battery/battery-corrosion-contamination
     id: battery-corrosion-contamination
+    page_description: 'Battery-corrosion-contamination, this type arises from oxidation
+      in battery environments. Formation patterns, they follow natural regional paths
+      along electrode surfaces and electrolyte interfaces, where moisture and salts
+      accelerate layer buildup. Unique to batteries, contamination exhibits irregular
+      clustering and pitting, thus creates uneven adhesion on metal casings like aluminum
+      or steel. Material behaviors differ; on conductive surfaces, it promotes further
+      degradation and so resists laser penetration. Removal challenges emerge here,
+      as pulsed lasers struggle with embedded particles that scatter energy, leading
+      to incomplete stripping. After initial passes, residues still cling in crevices,
+      demanding adjusted fluence for efficacy. This contamination, it demands precise
+      scanning to avoid substrate damage, and thus enhances cleaning complexity in
+      applications.
+
+
+      Yi-Chun Lin, Ph.D. from Taiwan'
   beryllium-oxide-contamination:
     composition:
     - BeO
@@ -3350,6 +3477,23 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/chemical-residue/hazardous/beryllium-oxide-contamination
     id: beryllium-oxide-contamination
+    page_description: 'Beryllium oxide contamination forms during laser processing
+      of beryllium surfaces. Exposure to air causes oxide layer buildup, so it adheres
+      tightly and covers evenly. Before cleaning, layer exhibits ceramic-like hardness,
+      which resists standard removal methods.
+
+
+      In laser cleaning applications, unique patterns appear as thin films with irregular
+      edges from heat zones. Contamination behaves specifically on beryllium because
+      material toxicity adds handling risks, and oxide stability demands precise energy
+      control. So, removal challenges arise from potential substrate damage during
+      ablation.
+
+
+      After treatment, surface achieves cleanliness, but residue traces persist in
+      cracks. Process removes most contamination effectively, as scans show reduced
+      coverage. Observations indicate that intervals in laser pulses prevent re-oxidation,
+      so outcomes improve uniformity on samples.'
   biological-stains-contamination:
     composition:
     - Proteins
@@ -3735,6 +3879,22 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/biological/deposit/biological-stains-contamination
     id: biological-stains-contamination
+    page_description: 'Biological stains contamination, it arises from organic residues
+      like algae and mold in humid environments. Formation patterns show irregular
+      clusters, thus creating uneven layers on surfaces. These patterns follow natural
+      regional variations, such as denser growth in tropical areas and sparser in
+      arid zones. On metal substrates, contamination adheres tightly and penetrates
+      pores, while on stone, it forms porous films that trap moisture.
+
+
+      Removal challenges emerge during laser cleaning. Process applies pulses, and
+      biological matter absorbs energy unevenly, so charring occurs before detachment.
+      This contamination, it resists ablation due to volatile components that evaporate
+      and leave residues. Material-specific behaviors differ: metals heat rapidly
+      and risk substrate damage, thus requiring low fluence; stone surfaces exhibit
+      cracking from thermal stress. After treatment, some areas still show remnants,
+      so multiple passes become necessary. Efficiency of cleaning, it improves with
+      adjusted wavelengths targeting organic bonds.'
   bitumen-tar-contamination:
     composition:
     - Asphaltene
@@ -4110,6 +4270,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/petroleum/bitumen-tar-contamination
     id: bitumen-tar-contamination
+    page_description: 'Bitumen-tar contamination forms sticky organic residue on surfaces
+      during industrial exposure and road contact. Layer adheres strongly because
+      it penetrates pores and creates uneven buildup. After deposition, surface exhibits
+      dark, viscous coating that resists initial cleaning. In laser applications,
+      removal challenges arise so thermal expansion causes cracking but re-adhesion
+      occurs. Material behaviors differ: on metals, tar carbonizes easily and produces
+      smoke, while on stone, bitumen softens slowly without deep penetration. Process
+      demands pulsed lasers to avoid substrate damage. Results show effective ablation
+      on flat areas, yet crevices trap residue for prolonged treatment. During observations,
+      uniformity improves after multiple passes.'
   blood-residue-contamination:
     composition:
     - Hemoglobin
@@ -4464,6 +4634,19 @@ contamination_patterns:
         - id: aluminosilicate-glass-laser-cleaning
     full_path: /contaminants/biological/deposit/blood-residue-contamination
     id: blood-residue-contamination
+    page_description: "Blood-residue contamination, it forms through biological adhesion\
+      \ on surfaces. Proteins and cells bind tightly, creating layered patterns that\
+      \ vary by substrate. On metals, residue spreads unevenly and penetrates pores,\
+      \ thus resists initial laser pulses. Plastics show smoother films, yet they\
+      \ curl under heat, complicating uniform removal. This contamination, it challenges\
+      \ cleaning due to its organic nature—denatures slowly and leaves carbon traces.\
+      \ Laser application heats residue, causing vaporization, but incomplete ablation\
+      \ occurs on rough areas. Material behaviors differ: ceramics exhibit cracking\
+      \ from thermal stress, while glass surfaces develop haze after treatment. Removal\
+      \ demands pulse adjustment, so efficiency improves with sequential passes. Evidence\
+      \ from patterns confirms that biological residues demand tailored wavelengths\
+      \ for effective detachment, and thus minimize substrate damage. \n\nYi-Chun\
+      \ Lin, Ph.D., Taiwan"
   brake-dust-contamination:
     composition:
     - Fe
@@ -4806,6 +4989,15 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/mineral/brake-dust-contamination
     id: brake-dust-contamination
+    page_description: Brake dust contamination, it manifests as an inorganic coating
+      from frictional wear on vehicle components, which leads to layered deposits
+      tenaciously adherent to metal surfaces. These particles, they embed deeply into
+      substrates like steel or aluminum, influenced from environmental humidity and
+      mechanical stress, that demonstrates material-specific behaviors in formation.
+      It seems that removal challenges arise from the contamination's persistence
+      under laser exposure, where oxides resist ablation more than softer residues,
+      dependent from substrate roughness. The process yields effective cleaning, yet
+      it requires precise control to avoid surface alteration.
   brass-plating-contamination:
     composition:
     - Cu-Zn Alloy
@@ -5127,6 +5319,19 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/metallic-coating/plating/brass-plating-contamination
     id: brass-plating-contamination
+    page_description: Brass-plating contamination arises during exposure to humid
+      environments, and it forms unique patterns on the coated surface. This contamination,
+      it develops as thin oxide layers with patchy distributions, thus creating irregular
+      adhesion spots across brass regions. Material-specific behaviors emerge from
+      brass's alloy composition, where zinc content accelerates corrosion and binds
+      contaminants tightly, so removal proves challenging in laser cleaning applications.
+      Laser pulses interact with these layers, yet the contamination still resists
+      ablation due to its reflective nature on brass, and thus selective energy absorption
+      leads to uneven cleaning. Following laser treatment, underlying plating often
+      exhibits subtle discoloration, while persistent residues demand multiple passes
+      for complete elimination. Efficiency of the process, it depends on pulse adjustments,
+      and so optimized sequences reveal cleaner surfaces without substrate damage.
+      Yi-Chun Lin, Ph.D.
   bronze-patina-contamination:
     composition:
     - Cu₂O
@@ -5430,6 +5635,20 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/oxidation/non-ferrous/bronze-patina-contamination
     id: bronze-patina-contamination
+    page_description: 'Bronze patina contamination, it arises from oxidation on bronze
+      surfaces. Exposure to air and moisture causes this. Layer forms unevenly, with
+      green hues dominating. Unique patterns emerge regionally—natural variations
+      show thicker deposits in humid areas and thinner ones in dry spots. This contamination,
+      it adheres strongly to alloy structure. Material-specific behaviors reveal challenges;
+      bronze''s copper content accelerates patina growth, and tin elements make it
+      porous. Removal in laser cleaning demands precision. Laser pulses target layer,
+      but heat buildup risks substrate damage. After treatment, surface still shows
+      residues if fluence adjusts poorly. Challenges follow: patina resists ablation
+      due to its density, thus multiple passes become necessary. Process yields cleaner
+      finish, yet overexposure etches metal. Efficiency of cleaning, it depends on
+      wavelength selection. Contamination removal confirms patina''s durability—evidence
+      from tests establishes careful parameter control as key. Bronze responds uniquely,
+      so operators must monitor patterns closely.'
   cadmium-plating-contamination:
     composition:
     - Cd
@@ -5738,6 +5957,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/metallic-coating/plating/cadmium-plating-contamination
     id: cadmium-plating-contamination
+    page_description: Cadmium-plating contamination, it manifests as tenacious metallic
+      residues on substrates. This layer, dependent from environmental exposure, forms
+      irregular patterns that cling to surfaces. These contaminants, they exhibit
+      strong adhesion to ferrous materials, which complicates laser cleaning efforts.
+      It seems that removal requires precise energy modulation, as the plating persists
+      under initial pulses. The process, influenced from wavelength selection, yields
+      partial detachment on alloys. Challenges arise, particularly with underlying
+      corrosion that the contamination shields. In applications, this behavior demands
+      multi-pass strategies, where each scan disrupts the bond gradually. Surface
+      roughness, it varies post-treatment, showing uneven etch patterns. These oxides,
+      they resist full ablation, demanding optimized parameters for efficacy.
   carbon-buildup-contamination:
     composition:
     - C
@@ -6084,6 +6314,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/other/carbon-buildup-contamination
     id: carbon-buildup-contamination
+    page_description: Carbon buildup contamination, it manifests as tenacious organic
+      residues that accumulate unevenly on surfaces, influenced from prolonged exposure
+      to combustion byproducts. This layer, dependent from environmental humidity,
+      exhibits unique regional patterns, forming denser clusters in high-wear zones
+      of metals like steel, where it penetrates microstructures. On non-metals such
+      as ceramics, the contamination persists with fibrous textures, which resist
+      laser ablation due to its low thermal conductivity. Removal challenges arise,
+      it seems, from variable absorption rates that lead to incomplete vaporization,
+      demanding precise pulse adjustments. These behaviors, they demonstrate material-specific
+      tenacity, complicating cleaning efficiency in industrial applications.
   carbon-soot-contamination:
     composition:
     - C
@@ -6483,6 +6723,21 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/other/carbon-soot-contamination
     id: carbon-soot-contamination
+    page_description: 'Carbon-soot contamination, it emerges from incomplete combustion
+      processes and deposits as irregular, porous layers on material surfaces. Formation
+      patterns reveal unique regional variations, where soot clusters in dense patches
+      on metallic substrates and spreads thinly on polymers, thus creating uneven
+      adhesion profiles. This contamination, it absorbs laser energy efficiently yet
+      resists complete removal due to its volatile organic composition. Removal challenges
+      arise from thermal gradients during ablation; soot vaporizes rapidly, and residues
+      scatter, so secondary contamination risks increase on nearby areas. Material-specific
+      behaviors differ markedly—on steels, soot bonds tenaciously and demands pulsed
+      laser sequences for dislodgement, while on ceramics, it flakes off more readily
+      following initial irradiation. After treatment, surfaces exhibit reduced roughness,
+      yet traces persist in crevices, thus requiring multi-pass cleaning for uniformity.
+
+
+      Yi-Chun Lin, Ph.D., Taiwan'
   ceramic-coating-contamination:
     composition:
     - ZrO₂
@@ -6827,6 +7082,20 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/ceramic/ceramic-coating-contamination
     id: ceramic-coating-contamination
+    page_description: 'Ceramic-coating contamination, it manifests through unique
+      formation patterns that depend from environmental exposure, particularly in
+      industrial settings. This inorganic layer, which builds tenaciously on heat-resistant
+      surfaces, exhibits regional variations influenced from humidity and particulates.
+      The contamination, it persists with a dense adherence to ceramic substrates,
+      that demonstrates material-specific behaviors under laser cleaning.
+
+
+      Removal challenges arise distinctly, as the coating resists ablation due to
+      its durable composition. It seems that laser pulses, they struggle against this
+      persistence, leading to incomplete detachment on metals versus ceramics. The
+      process yields partial success, where surface smoothness improves selectively.
+      Shows effectiveness in targeted applications, yet demands optimized parameters
+      for thorough elimination.'
   ceramic-glaze-contamination:
     composition:
     - SiO₂
@@ -7167,6 +7436,22 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/ceramic/ceramic-glaze-contamination
     id: ceramic-glaze-contamination
+    page_description: 'During laser cleaning setup on ceramic surfaces, contamination
+      forms as inorganic coating layer on glaze. Buildup occurs because environmental
+      exposure traps particles, and so unique patterns emerge with irregular spreading
+      along glaze cracks. Surface exhibits uneven adhesion, where contaminants bond
+      strongly due to glaze porosity.
+
+
+      After formation, removal challenges arise from material-specific behaviors.
+      Glaze resists laser energy, so ablation demands precise control to avoid cracking.
+      Treatment removes layers effectively, but residue clings in textured areas,
+      requiring multiple passes. In observations, process achieves clean surface uniformity,
+      yet heat buildup so intervals prevent damage to underlying ceramic. Results
+      are obtained from tests on samples.
+
+
+      Ikmanda Roswati, Ph.D. from Indonesia'
   chemical-stains-contamination:
     author:
       id: 3
@@ -7499,6 +7784,20 @@ contamination_patterns:
         - id: aluminum-bronze-laser-cleaning
         - id: aluminum-nitride-laser-cleaning
         - id: titanium-nitride-laser-cleaning
+    page_description: Chemical stains contamination, it differs from oxide layers
+      on metals, thus poses unique challenges in laser cleaning applications. Formation
+      patterns of this contamination, they arise from residue buildup during chemical
+      exposure, and create irregular, adherent films on surfaces like ceramics and
+      polymers. On metals, stains exhibit patchy distribution, while on glass, they
+      form diffuse layers that penetrate deeply. Removal process, it demands precise
+      laser parameters to avoid substrate damage, so efficiency varies by material.
+      For instance, polymer surfaces show improved cleanliness after treatment, yet
+      residues still persist in crevices due to thermal sensitivity. This contamination,
+      it resists ablation because of its organic composition, and thus requires multi-pass
+      scanning for complete elimination. Challenges emerge from uneven vaporization,
+      leading to potential re-deposition on adjacent areas. Analysis confirms that
+      material-specific behaviors dictate success, with ceramics yielding smoother
+      results compared to flexible substrates.
   chrome-pitting-contamination:
     composition:
     - Cr₂O₃
@@ -7773,6 +8072,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/oxidation/non-ferrous/chrome-pitting-contamination
     id: chrome-pitting-contamination
+    page_description: "Chrome pitting contamination forms during exposure to oxidative\
+      \ environments on chrome surfaces, where localized pits develop irregularly\
+      \ and trap debris inside. After this, contamination builds up in those pits,\
+      \ so laser cleaning must target the spots precisely to avoid spreading damage.\
+      \ Pits exhibit unique clustered patterns on chrome, unlike smooth oxidation\
+      \ on other metals, and removal challenges arise because laser energy can deepen\
+      \ pits if not controlled. On chrome plating, behavior stays adherent yet brittle,\
+      \ so process applies pulsed beams for effective detachment without base material\
+      \ harm. Results indicate cleaner surfaces after treatment.\n\nIkmanda Roswati,\
+      \ Ph.D.  \nIndonesia"
   concrete-dust-contamination:
     composition:
     - CaCO₃
@@ -8120,6 +8429,18 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/mineral/concrete-dust-contamination
     id: concrete-dust-contamination
+    page_description: Adhesiveness of concrete dust contamination, it embeds deeply
+      into surfaces during construction exposure. This inorganic coating forms uneven
+      layers and thus clings to substrates like metal or stone, creating porous patterns
+      from airborne particles settling over time. Formation occurs through mechanical
+      abrasion and environmental settling, so contamination builds gradually and resists
+      dislodgement. In laser cleaning applications, removal challenges arise from
+      its dense structure, which absorbs energy unevenly and leads to incomplete ablation
+      on rough areas. Material-specific behaviors vary; on metals, it scatters laser
+      beams thus prolonging treatment, while on concrete bases, it merges with the
+      host material and demands precise pulse adjustments. After irradiation, residues
+      still persist in crevices, so post-process verification confirms surface recovery.
+      This contamination, it demands tailored parameters for effective clearance.
   conversion-coating-contamination:
     composition:
     - Zn₃(PO₄)₂
@@ -8438,6 +8759,18 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/coating/conversion-coating-contamination
     id: conversion-coating-contamination
+    page_description: Conversion-coating contamination, it manifests as thin inorganic
+      layers on metal surfaces, formed through chemical reactions with the substrate.
+      These coatings, they develop uniquely in humid environments, exhibiting patchy
+      patterns that depend from exposure duration and atmospheric agents. On aluminum
+      alloys, the contamination adheres tenaciously, which leads to persistent residues
+      during cleaning attempts. It appears that laser ablation faces distinct challenges
+      here, as the layers resist vaporization without substrate damage. For steel
+      substrates, the formation shows more uniform coverage, yet removal demands precise
+      pulse control to avoid re-deposition. This contamination, it persists under
+      initial laser passes, demonstrating material-specific behaviors that complicate
+      full eradication. The process yields cleaner surfaces eventually, though influenced
+      from coating thickness variations.
   coolant-scale-contamination:
     composition:
     - SiO₂
@@ -8770,6 +9103,14 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/thermal-damage/scale/coolant-scale-contamination
     id: coolant-scale-contamination
+    page_description: Coolant-scale-contamination forms through thermal deposition.
+      Scale builds on surfaces during coolant exposure, so layers adhere tightly.
+      Before cleaning, contamination exhibits irregular patterns like crystalline
+      buildup. In laser applications, removal challenges arise because heat intensifies
+      bonding. On metals, it resists ablation and causes surface cracking. Treatment
+      applies pulses, yet residue persists on alloys. After exposure, patterns vary
+      by material, so selective wavelengths help. Process demands careful control
+      to avoid damage. Results show uneven removal on substrates.
   copper-patina-contamination:
     author:
       id: 4
@@ -9287,6 +9628,16 @@ contamination_patterns:
     - Plastics
     - Ceramics
     - Wood
+    page_description: Copper patina forms as a green oxidation layer on surfaces exposed
+      to moist air. This contamination builds up unevenly, creating flaky patterns
+      that line up along edges and crevices in humid regions. In laser cleaning applications,
+      technicians run into distinct challenges removing it. The patina clings tightly
+      to the base metal, demanding precise laser settings to avoid damaging the conductive
+      copper underneath. Turns out, the layer absorbs energy variably, which can heat
+      spots and warp the material if not dialed in carefully. Overall, this setup
+      calls for short pulses to clear the patina cleanly without etching the substrate.
+      In practice, addressing these behaviors cuts rework and maintains a solid finish
+      on historical artifacts or wiring.
   copper-plating-contamination:
     composition:
     - Cu
@@ -9589,6 +9940,19 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/metallic-coating/plating/copper-plating-contamination
     id: copper-plating-contamination
+    page_description: Copper-plating contamination, it arises during electroplating
+      processes, where copper layers deposit unevenly on metallic substrates, influenced
+      from humidity and substrate roughness. This contamination manifests as thin,
+      adherent films that exhibit tenacious bonding, particularly on steel or aluminum
+      surfaces, which leads to irregular patterns resembling dendritic growths. In
+      laser cleaning applications, the removal challenges become evident, as the contamination
+      persists under pulsed irradiation, demanding higher fluence to dislodge it without
+      substrate damage. It appears that material-specific behaviors vary; on ferrous
+      alloys, the layer delaminates readily, yet on non-ferrous bases, adhesion strengthens,
+      complicating ablation. The process yields cleaner surfaces, that demonstrates
+      effectiveness in restoring conductivity, though residual pitting often remains.
+      Shows promise for industrial use, where precise control mitigates recontamination
+      risks.
   corrosion-inhibitor-contamination:
     composition:
     - Amines
@@ -9919,6 +10283,18 @@ contamination_patterns:
           frequency: common
     full_path: /contaminants/inorganic-coating/coating/corrosion-inhibitor-contamination
     id: corrosion-inhibitor-contamination
+    page_description: Corrosion inhibitors create thin, inorganic coatings that cling
+      tightly to metal surfaces, blocking rust in harsh environments. These contaminants
+      build up through gradual deposition, often lining up in irregular patterns along
+      exposed edges or joints where moisture ramps up exposure. In practice, they
+      form a stubborn barrier that protects underlying materials like steel or aluminum,
+      yet turns into a headache for laser cleaning setups. Lasers struggle to dial
+      in the right energy without risking substrate damage, as the inhibitors absorb
+      pulses unevenly and scatter debris. On ferrous metals, the coatings hold up
+      denser and more uniform, demanding precise beam control to clear them off cleanly.
+      For non-ferrous alloys, they flake more readily but leave residues that back
+      up cleaning efficiency. Overall, addressing these patterns calls for tailored
+      laser parameters to achieve solid removal without compromising surface integrity.
   cutting-fluid-contamination:
     composition:
     - Emulsified Oil
@@ -10277,6 +10653,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/lubricant/cutting-fluid-contamination
     id: cutting-fluid-contamination
+    page_description: Cutting fluid contamination builds up during machining operations,
+      creating sticky organic residues that cling to metal surfaces. These contaminants
+      form unique patterns, like thin films mixed with metal shavings, which ramp
+      up adhesion in high-heat zones. In laser cleaning applications, removal turns
+      out tricky; the fluid's oily nature resists vaporization, often leaving charred
+      spots that demand multiple passes. On steel, it penetrates pores tightly, while
+      aluminum shows looser buildup that clears more readily. Overall, addressing
+      this holds up production flow—lasers break it down effectively, yet material-specific
+      behaviors call for dialing in pulse settings to achieve a clean finish without
+      surface damage.
   diamond-coating-contamination:
     composition:
     - Amorphous Carbon
@@ -10619,6 +11005,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/coating/diamond-coating-contamination
     id: diamond-coating-contamination
+    page_description: "Diamond-coating contamination poses removal challenges in laser\
+      \ cleaning. Contaminants form unique patterns on diamond surfaces because heat\
+      \ resistance causes uneven buildup during exposure. Layer adheres strongly,\
+      \ so laser pulses struggle to detach it without damaging coating. After initial\
+      \ cleaning, residue persists on edges. Process targets inorganic layers effectively,\
+      \ yet material hardness demands precise control. Contamination exhibits dense\
+      \ attachment, and removal requires adjusted wavelengths for safety. In observations,\
+      \ patterns vary by substrate, so intervals prevent overheating. Buildup is detected\
+      \ early on polished areas. Treatment removes layers gradually, and surface regains\
+      \ uniformity afterward.\n\nIkmanda Roswati, Ph.D.  \nIndonesia"
   efflorescence-contamination:
     composition:
     - CaCO₃
@@ -10928,6 +11324,20 @@ contamination_patterns:
         - id: terracotta-laser-cleaning
     full_path: /contaminants/inorganic-coating/mineral/efflorescence-contamination
     id: efflorescence-contamination
+    page_description: 'Efflorescence contamination arises as salts migrate through
+      porous materials like stone or concrete. Water draws these minerals to the surface,
+      where they crystallize into white, powdery deposits. This process lines up uniquely
+      on masonry, creating flaky layers that trap dirt and weaken bonds over time.
+
+
+      Laser cleaning tackles this head-on, but challenges stand out. The deposits
+      often re-form if moisture lingers, demanding dry follow-up steps to hold up
+      results. On limestone, the pattern spreads unevenly, requiring operators to
+      dial in precise pulses to avoid etching the base. In practice, this inorganic
+      coating demands careful setup—too much energy risks cracking the substrate,
+      while weak hits leave residues. Overall, addressing efflorescence clears surfaces
+      effectively, yet material behaviors call for tailored approaches to cut down
+      regrowth.'
   electroplating-residue-contamination:
     composition:
     - Cyanides
@@ -11263,6 +11673,21 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/metallic-coating/plating/electroplating-residue-contamination
     id: electroplating-residue-contamination
+    page_description: 'Electroplating residue contamination forms during plating process.
+      It adheres tightly to metallic surfaces as thin, uneven layers. These residues,
+      they originate from electrolyte remnants and metal ions. Formation patterns
+      show clustering on edges and crevices, thus creating irregular deposits. On
+      copper substrates, contamination spreads broadly and resists initial cleaning.
+      Nickel surfaces exhibit denser buildup, so removal demands higher energy. Laser
+      cleaning faces challenges here. Residues bond strongly, thus ablation risks
+      substrate melting. Material behaviors differ: steel shows cracking under heat,
+      while aluminum softens quickly. After laser application, some areas still retain
+      spots. This contamination, it complicates uniform treatment and demands precise
+      pulse control. Challenges arise from thermal conductivity variations, so efficiency
+      drops on heat-sensitive bases.
+
+
+      Yi-Chun Lin, Ph.D. from Taiwan'
   environmental-dust-contamination:
     author:
       id: 3
@@ -11616,6 +12041,19 @@ contamination_patterns:
         - id: aluminum-bronze-laser-cleaning
         - id: aluminum-nitride-laser-cleaning
         - id: titanium-nitride-laser-cleaning
+    page_description: Environmental dust contamination forms when airborne particles
+      settle on surfaces in natural regional patterns, especially in humid areas of
+      Taiwan. This contamination, it accumulates unevenly and adheres tightly to materials
+      like metals or optics. Formation reveals unique layering, thus creates irregular
+      deposits that resist uniform exposure. Laser cleaning applies pulses, but dust
+      scatters energy and reduces efficiency on rough substrates. Removal challenges
+      arise from strong bonding, so multiple passes become necessary for complete
+      clearance. On conductive surfaces, contamination insulates and alters thermal
+      response; on delicate optics, it persists and demands precise control to avoid
+      damage. Treatment follows adjustment of parameters, thus enhances removal without
+      residue. Surface after cleaning exhibits smoothness, yet traces still linger
+      in crevices. This behavior demonstrates material-specific resistance, confirming
+      need for tailored approaches in applications.
   epoxy-residue-contamination:
     composition:
     - Bisphenol A
@@ -11974,6 +12412,15 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/adhesive/epoxy-residue-contamination
     id: epoxy-residue-contamination
+    page_description: Epoxy residue differs from inorganic contaminants so laser cleaning
+      faces unique challenges. Formation occurs during adhesive curing and leaves
+      sticky layers on metal surfaces. These layers bond tightly because of polymer
+      chains. Removal demands precise pulses to avoid substrate damage. After exposure,
+      residue hardens unevenly on composites and resists ablation. So, multi-pass
+      treatments apply for complete elimination. Surface exhibits residue patches
+      during inspections. Buildup forms irregularly on polymers because heat alters
+      epoxy flow. Cleaning achieves better results on metals yet struggles with flexible
+      materials. Process removes organic films effectively in observations.
   exhaust-residue-contamination:
     composition:
     - C
@@ -12321,6 +12768,19 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/thermal-damage/fire/exhaust-residue-contamination
     id: exhaust-residue-contamination
+    page_description: Exhaust residue contamination, it manifests as a tenacious layer
+      from vehicular emissions, which adheres strongly to metallic surfaces. This
+      contamination, dependent from humidity and temperature variations, forms irregular
+      patterns that resemble fractal deposits, particularly in urban regions where
+      exhaust accumulates naturally. On steel substrates, these residues exhibit thermal
+      damage resistance, persisting under laser exposure at near-infrared wavelengths.
+      The removal process, it challenges conventional methods, as the layer's carbon-rich
+      composition leads to incomplete ablation, requiring pulsed energies that avoid
+      substrate overheating. Aluminum surfaces show distinct behaviors; here, the
+      contamination delaminates more readily, yet it leaves residual pitting that
+      demands multi-pass cleaning. It appears that material-specific adhesion influences
+      efficacy, with oxides complicating the process on alloys. The laser yields cleaner
+      results on non-ferrous metals, demonstrating reduced recontamination risks.
   fertilizer-residue-contamination:
     composition:
     - KNO₃
@@ -12663,6 +13123,19 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/chemical-residue/industrial/fertilizer-residue-contamination
     id: fertilizer-residue-contamination
+    page_description: Fertilizer residue contamination, it forms through deposition
+      of crystalline salts and organic compounds on industrial surfaces, influenced
+      from environmental humidity and prolonged exposure. These residues, they exhibit
+      unique patterns, such as irregular, patchy films that adhere tenaciously to
+      metallic substrates, which leads to differential behaviors across materials.
+      On ferrous alloys, the contamination manifests as hardened layers, resistant
+      to initial laser pulses, that demonstrates persistence under thermal stress.
+      It seems that removal challenges arise from this adhesion, dependent from the
+      residue's hygroscopic nature, complicating uniform ablation. The process yields
+      effective cleaning when laser parameters target these patterns, though plastics
+      show smoother detachment compared to metals. Shows that material-specific traits,
+      like surface porosity, influence the overall efficacy, ensuring targeted restoration
+      without substrate damage.
   fire-damage-contamination:
     composition:
     - C
@@ -13012,6 +13485,19 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/thermal-damage/fire/fire-damage-contamination
     id: fire-damage-contamination
+    page_description: "Fire-damage-contamination, it arises from intense heat exposure\
+      \ and leaves charred residues on surfaces. Steel substrates versus wood materials,\
+      \ contamination patterns differ sharply—steel develops thin oxide scales with\
+      \ embedded soot, while wood forms thick, porous carbon layers that trap volatile\
+      \ compounds. This difference impacts laser cleaning; on metals, ablation proceeds\
+      \ evenly but risks subsurface cracking from thermal stress. Wood surfaces, contamination\
+      \ still clings deeply after initial pulses, thus requiring multi-pass treatments\
+      \ to avoid fiber charring. Formation follows rapid pyrolysis, and residues bond\
+      \ variably—adhesive on metals, crumbly yet persistent on organics. Removal challenges\
+      \ emerge in uneven energy absorption, so precise pulse control enhances efficacy\
+      \ without further degradation. Treatment applies, surface already shows reduced\
+      \ haze, and cleaning yields cleaner profiles across materials.\n\nYi-Chun Lin,\
+      \ Ph.D.  \nTaiwan"
   forging-scale-contamination:
     composition:
     - Fe₃O₄
@@ -13321,6 +13807,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/thermal-damage/scale/forging-scale-contamination
     id: forging-scale-contamination
+    page_description: Forging scale contamination, it arises from thermal damage in
+      metal processing. This contamination forms unique patterns, like layered oxide
+      buildup on steel surfaces and thus adheres strongly during high-heat forging.
+      Material behaviors differ; steel shows thick, irregular scales from rapid oxidation,
+      while aluminum develops thinner, porous ones and resists cracking less. Removal
+      challenges emerge, especially with laser cleaning. Scale resists ablation due
+      to its dense structure, so pulses must target precisely to avoid substrate damage.
+      After treatment, surface smoothness improves, yet remnants persist on irregular
+      areas. This contamination, it demands adjusted laser parameters for effective
+      detachment and thus enhances cleaning efficiency on varied metals.
   fuel-varnish-contamination:
     composition:
     - Gum
@@ -13647,6 +14143,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/petroleum/fuel-varnish-contamination
     id: fuel-varnish-contamination
+    page_description: "Fuel varnish contamination shows sticky adhesion on surfaces.\
+      \ It forms from degraded organic residues in fuel systems. After exposure to\
+      \ air and heat, layer builds unevenly and hardens. This creates unique patterns\
+      \ like patchy films on metals. Removal challenges arise because varnish resists\
+      \ laser pulses strongly. On aluminum, it peels slowly so multiple passes are\
+      \ needed. Steel surfaces exhibit tougher bonds during cleaning. Process demands\
+      \ careful energy control to avoid substrate damage. In observations, varnish\
+      \ softens under laser so efficiency improves with short intervals. Treatment\
+      \ removes contamination effectively from engine parts. \n\nIkmanda Roswati,\
+      \ Ph.D."
   galvanize-corrosion-contamination:
     composition:
     - ZnO
@@ -13928,6 +14434,19 @@ contamination_patterns:
           frequency: common
     full_path: /contaminants/oxidation/ferrous/galvanize-corrosion-contamination
     id: galvanize-corrosion-contamination
+    page_description: Galvanized surfaces, unlike bare steel that develops reddish
+      oxides, exhibit white corrosion products, which manifest as tenacious zinc-based
+      contaminants under humid exposure. This contamination, it forms in layered patterns
+      dependent from environmental moisture, creating adherent films that obscure
+      the underlying metal. The process, influenced from atmospheric factors, leads
+      to irregular deposits, often flaky yet persistent, that demonstrate unique adhesion
+      to the zinc coating. In laser cleaning applications, these contaminants pose
+      distinct removal challenges; the laser beam, it interacts selectively with the
+      zinc layer, risking substrate damage if pulses prove too intense. It appears
+      that material-specific behaviors vary, as galvanized alloys show heightened
+      sensitivity to thermal effects, which complicates efficient ablation. The surface,
+      post-cleaning, exhibits restored smoothness, though residual traces sometimes
+      persist, demanding optimized parameters for complete efficacy.
   gasket-material-contamination:
     composition:
     - Cellulose
@@ -14268,6 +14787,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/adhesive/gasket-material-contamination
     id: gasket-material-contamination
+    page_description: "Gasket material contamination hits laser cleaning setups hard\
+      \ in industrial sealing jobs. Engineers run through it when rubber or fiber\
+      \ seals break down, leaving organic residues that gum up metal surfaces. These\
+      \ contaminants form unique patterns—think patchy, adhesive films that cling\
+      \ tightly in crevices, essentially baking on under heat or pressure. \n\nIn\
+      \ practice, removal ramps up challenges because the material's elasticity makes\
+      \ it resist laser pulses without scattering. It works out best to dial in short\
+      \ bursts to loosen the grip, but overdo it and you risk scorching nearby parts.\
+      \ The key point stays material-specific: cork-based gaskets flake off cleaner\
+      \ than silicone ones, which smear and demand multiple passes. Overall, this\
+      \ cuts down on clean finishes if you skip pre-testing."
   gold-plating-contamination:
     composition:
     - Au
@@ -14569,6 +15099,18 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/metallic-coating/plating/gold-plating-contamination
     id: gold-plating-contamination
+    page_description: Gold plating contamination typically builds up in thin, uneven
+      layers during electroplating processes, often trapping oils or particles that
+      cling tightly to the base metal. This setup creates unique formation patterns,
+      like irregular spots or hazy films, which ramp up adhesion issues on delicate
+      surfaces. In laser cleaning applications, the gold's high reflectivity poses
+      a significant challenge, as it scatters laser energy and risks overheating the
+      underlying material. Turns out, this demands precise pulse control to avoid
+      damaging the plating while clearing contaminants effectively. Material-specific
+      behaviors show that softer gold layers peel away unevenly under laser impact,
+      requiring tailored wavelengths to achieve a clean finish without residue buildup.
+      Overall, addressing these patterns cuts down on rework and maintains surface
+      integrity in most cases.
   graffiti-paint-contamination:
     composition:
     - Acrylic
@@ -14954,6 +15496,21 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
     id: graffiti-paint-contamination
+    page_description: 'Graffiti paint contamination poses a tough challenge in urban
+      settings, where artists spray quick layers that build up unevenly on surfaces
+      like concrete walls or metal signs. This inorganic coating forms irregular patterns—thick
+      globs in some spots, thin films in others—adhering tightly through chemical
+      bonding and surface penetration. Turns out, the paint''s pigments and binders
+      create a layered structure that resists initial breakdown.
+
+
+      Laser cleaning tackles this head-on, but removal demands precise control to
+      avoid substrate damage. On porous materials such as brick, the contamination
+      soaks in deep, requiring multiple passes to clear it out completely. Metal surfaces
+      fare better; the paint flakes off more readily under focused beams, yielding
+      a clean finish without pitting. In practice, operators dial in pulse durations
+      to strip layers selectively, cutting down on rework. Overall, understanding
+      these patterns helps set up effective protocols that maintain surface integrity.'
   graphite-marks-contamination:
     composition:
     - C (Graphite)
@@ -15278,6 +15835,18 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/marking/graphite-marks-contamination
     id: graphite-marks-contamination
+    page_description: Graphite marks stand out from typical organic residues because
+      they form through direct pencil-like scoring on surfaces, leaving behind fine,
+      layered carbon streaks that cling tightly. These patterns line up along tool
+      paths or handling zones, creating uneven, smudged deposits that resist simple
+      wiping. In laser cleaning applications, removal turns out tricky; the marks'
+      conductive nature absorbs laser energy unevenly, risking substrate damage if
+      operators do not dial in the right pulse settings. Material-specific behaviors
+      add challenges—on metals, they embed deeply, demanding higher intensities to
+      clear without residue buildup, while plastics show bubbling from heat buildup.
+      Overall, addressing these holds up production lines until cleaners work out
+      precise scans. Testing confirms that targeted ablation achieves a clean finish,
+      cutting down on rework in most cases.
   grease-deposits-contamination:
     composition:
     - Mineral Oil
@@ -15592,6 +16161,16 @@ contamination_patterns:
           frequency: very_common
     full_path: /contaminants/organic-residue/petroleum/grease-deposits-contamination
     id: grease-deposits-contamination
+    page_description: Grease deposits contamination poses a tough challenge in laser
+      cleaning setups. These organic residues build up in uneven, sticky layers on
+      surfaces like metals or machinery parts. They form through repeated exposure
+      to oils and lubricants, often seeping into cracks and holding on tightly. In
+      practice, this creates unique patterns—think patchy films that resist even blasts
+      from lasers. Removal turns out tricky because grease absorbs energy unevenly,
+      sometimes carbonizing instead of clearing away cleanly. On steel, it typically
+      burns off with a solid finish, but on aluminum, it demands dialed-in pulses
+      to avoid spreading residue. Overall, operators must work out material-specific
+      strategies to cut down on rework and achieve reliable results.
   hydraulic-fluid-contamination:
     composition:
     - Mineral Oil
@@ -15914,6 +16493,18 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/petroleum/hydraulic-fluid-contamination
     id: hydraulic-fluid-contamination
+    page_description: Hydraulic fluid contamination, it arises primarily from leaks
+      in machinery, forming tenacious organic films on surfaces. This residue, dependent
+      from exposure to air and moisture, exhibits a viscous layering that penetrates
+      microscopic pores, especially on metallic substrates. On polymers, though, the
+      contamination spreads more diffusely, which leads to irregular patterns resembling
+      smeared veils. Removal challenges persist, as the organic bonds resist laser
+      ablation, demanding precise pulse durations to avoid substrate damage. It appears
+      that on ferrous metals, adhesion strengthens under thermal influence, complicating
+      clean detachment. The process yields cleaner results when contamination thickness
+      remains minimal, yet thicker deposits manifest stubborn remnants post-treatment.
+      These behaviors, they vary distinctly across materials, influencing overall
+      efficacy in industrial settings.
   industrial-oil-contamination:
     author:
       id: 2
@@ -16587,6 +17178,18 @@ contamination_patterns:
           frequency: very_common
         - id: copper-laser-cleaning
           frequency: very_common
+    page_description: Industrial oil contamination, it manifests as tenacious organic
+      residues in manufacturing environments, forming irregular films that cling to
+      metal surfaces, influenced from prolonged exposure to lubricants and coolants.
+      These patterns, they exhibit regional variations, such as thicker deposits in
+      high-friction zones, which leads to uneven adhesion dependent from substrate
+      roughness. In laser cleaning applications, the removal challenges arise because
+      this contamination persists under initial pulses, requiring modulated intensities
+      to vaporize without substrate damage. On ferrous materials, it shows stronger
+      bonding that demands higher energy thresholds, whereas on non-ferrous alloys,
+      the process yields cleaner ablation, though residues may redistribute if not
+      controlled. It appears that such behaviors complicate uniform treatment, emphasizing
+      the need for tailored parameters to achieve effective restoration.
   ink-stains-contamination:
     composition:
     - Pigments
@@ -16921,6 +17524,23 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/marking/ink-stains-contamination
     id: ink-stains-contamination
+    page_description: 'Ink stains contamination, it forms through droplet spreading
+      and penetration on surfaces. Unique patterns emerge as blotchy clusters and
+      irregular halos, especially on porous substrates like paper or stone. This contamination,
+      organic residue type, it adheres strongly via pigment binding and solvent evaporation.
+      Formation reveals color-specific diffusion, thus creates layered deposits that
+      vary by ink composition.
+
+
+      Removal challenges arise in laser cleaning applications. Ink resists ablation
+      due to thermal decomposition, so carbonization occurs and complicates full erasure.
+      On metals, stains bond tightly and demand precise pulse control to avoid substrate
+      damage. For plastics, surface melting happens easily, thus requires lower energy
+      to prevent deformation. Material behaviors differ: metals show rebound effects
+      after partial removal, while organics like wood exhibit charring persistence.
+      Treatment applies, contamination reduces gradually and leaves faint traces still.
+      Process confirms efficiency through pattern analysis, yet demands adjustment
+      for complete clearance.'
   insect-residue-contamination:
     composition:
     - Proteins
@@ -17269,6 +17889,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/biological/deposit/insect-residue-contamination
     id: insect-residue-contamination
+    page_description: Insect-residue contamination, it arises from biological impacts
+      on surfaces. Collisions cause splattering, and residue adheres irregularly.
+      Organic matter like chitin and proteins forms patchy layers, thus creating unique
+      patterns of uneven thickness. This contamination, it resists laser cleaning
+      due to sticky nature. Ablation attempts lead to charring, so removal challenges
+      intensify. On metallic materials, residue bonds tightly and demands higher energy
+      pulses. Polymers show embedding, where residue penetrates and complicates detachment.
+      After treatment, surfaces exhibit residues still persisting in crevices. Tailored
+      laser adjustments follow, thus enhancing efficiency without substrate damage.
+      Evidence from observations confirms these behaviors, so precise control establishes
+      clean results.
   laser-marking-contamination:
     composition:
     - Metal Oxides
@@ -17580,6 +18211,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/marking/laser-marking-contamination
     id: laser-marking-contamination
+    page_description: Laser-marking-contamination poses removal challenges in cleaning
+      applications because organic residues form irregularly during marking. After
+      exposure to laser energy, layer builds up on surfaces and adheres tightly to
+      metals, creating patchy patterns that resist uniform ablation. So, cleaning
+      requires precise pulses to avoid substrate damage. On polymers, contamination
+      spreads evenly but peels off easier because of lower adhesion. In observations,
+      material-specific behaviors show metals hold residues denser, while organics
+      loosen faster under heat. Treatment achieves clean surfaces effectively, and
+      results come from scans showing reduced buildup. This process handles patterns
+      well during short exposures.
   lead-paint-contamination:
     composition:
     - Pb₃O₄
@@ -17939,6 +18580,19 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/paint/lead-paint-contamination
     id: lead-paint-contamination
+    page_description: 'Lead-paint contamination forms as durable inorganic coating
+      on old surfaces. Before cleaning, layer adheres tightly to substrates like wood
+      or metal, so removal demands care. Process exhibits unique patterns because
+      paint flakes and bonds unevenly during aging. Exposure to weather causes cracking,
+      and buildup occurs in layers over time.
+
+
+      In laser applications, treatment removes contamination effectively, yet challenges
+      arise from toxicity. Heat vaporizes lead easily, so fumes develop during ablation.
+      On porous materials, residue lingers because absorption happens deeply. Surface
+      shows irregularity after partial removal. Results indicate that intervals prevent
+      substrate damage, and scanning reveals uniformity post-treatment. Contamination
+      behaves differently on smooth metals, where peeling occurs faster.'
   lime-scale-contamination:
     composition:
     - CaCO₃
@@ -18263,6 +18917,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/thermal-damage/scale/lime-scale-contamination
     id: lime-scale-contamination
+    page_description: Lime scale contamination builds up as hard, chalky deposits
+      from mineral-rich water, forming irregular layers on metal and stone surfaces
+      in humid environments. These patterns often show flaky, uneven crusts that cling
+      tightly, especially around joints or heat-exposed areas, creating a significant
+      challenge for laser cleaning. Lasers effectively vaporize the scale, but the
+      process demands precise control to avoid thermal damage underneath. On stainless
+      steel, it removes cleanly with minimal residue, while on porous stone, it risks
+      cracking if energy ramps up too quickly. In practice, operators dial in lower
+      intensities first, which clears the buildup without harming the base material.
+      Overall, this contamination responds well to pulsed lasers, achieving a clean
+      finish while preserving surface integrity.
   medical-disinfectant-contamination:
     composition:
     - NaOCl
@@ -18586,6 +19251,22 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/chemical-residue/industrial/medical-disinfectant-contamination
     id: medical-disinfectant-contamination
+    page_description: 'Medical disinfectant contamination forms stubborn, film-like
+      residues that cling tightly to surfaces in healthcare settings. These contaminants
+      arise when cleaning agents like quaternary ammonium compounds or alcohol-based
+      solutions dry unevenly, leaving behind irregular patterns of crystalline buildup
+      or sticky smears. In practice, they line up along equipment edges and crevices,
+      especially on metals and plastics, where they resist standard wiping and demand
+      specialized removal.
+
+
+      Laser cleaning tackles this head-on, but challenges emerge due to the residues''
+      sensitivity to heat. On stainless steel tools, lasers vaporize the films cleanly,
+      yet on delicate polymers, they risk melting the substrate if not dialed in precisely.
+      Overall, this contamination demonstrates unique behaviors—absorbing laser energy
+      variably—which calls for tailored pulse settings to achieve a clean finish without
+      damaging underlying materials. Testing confirms that short bursts work out best,
+      cutting down residue persistence effectively.'
   mercury-contamination:
     composition:
     - Hg
@@ -18907,6 +19588,19 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/chemical-residue/hazardous/mercury-contamination
     id: mercury-contamination
+    page_description: Mercury contamination forms during industrial processes on metal
+      surfaces, and residues deposit unevenly because vapor exposure creates thin
+      films. Before cleaning, contamination spreads in irregular patterns, so laser
+      application targets these layers carefully. Process removes mercury effectively
+      from conductive materials, but challenges arise on porous substrates where residues
+      bind tightly. During exposure, heat volatilizes the contaminant, yet incomplete
+      removal occurs because particles re-deposit nearby. Surface exhibits stickiness
+      after partial ablation, so multiple passes become necessary. In observations,
+      mercury behaves differently on alloys compared to pure metals; it evaporates
+      faster from the former, while buildup persists on the latter. Treatment achieves
+      cleaner results on non-reactive surfaces, and analysis shows reduced residue
+      adhesion post-process. Natural regional patterns influence formation in humid
+      areas, where moisture aids deposition.
   metal-polish-contamination:
     composition:
     - Al₂O₃
@@ -19224,6 +19918,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/wax/metal-polish-contamination
     id: metal-polish-contamination
+    page_description: 'Metal polish contamination stands out from typical rust or
+      dust buildup on metals, as it forms thin, oily organic residues during polishing
+      processes. These residues cling tightly to surfaces like steel or aluminum,
+      creating uneven patterns that trap particles and hinder clean finishes. In laser
+      cleaning, operators face distinct challenges: the organic layer absorbs laser
+      energy unevenly, often leading to incomplete removal without dialing in precise
+      pulse settings. Turns out, on copper alloys, it spreads more broadly due to
+      chemical interactions, ramping up the need for multi-pass treatments. Overall,
+      addressing this contamination achieves solid results by cutting down residue
+      remnants, though it demands careful setup to avoid surface damage.'
   mineral-deposits-contamination:
     composition:
     - CaCO₃
@@ -19599,6 +20303,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/thermal-damage/scale/mineral-deposits-contamination
     id: mineral-deposits-contamination
+    page_description: 'Mineral deposits contaminate surfaces unevenly across regions,
+      forming thick layers on metals while staying thin on stones, and this difference
+      affects cleaning outcomes. After exposure to moisture, buildup hardens quickly,
+      so laser cleaning faces challenges in avoiding thermal damage. Contamination
+      exhibits sticky patterns during formation, especially in humid areas. Treatment
+      removes layers effectively on durable materials, but softer ones show cracking
+      risks. Process achieves better uniformity on heat-resistant substrates.
+
+
+      Ikmanda Roswati, Ph.D. from Indonesia'
   mineral-stain-contamination:
     composition:
     - Fe₂O₃
@@ -19932,6 +20646,15 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/mineral/mineral-stain-contamination
     id: mineral-stain-contamination
+    page_description: Mineral-stain contamination, it manifests as inorganic coatings
+      from environmental deposition. These stains form unique patterns, dependent
+      from regional humidity and mineral sources, creating patchy, crystalline layers
+      on surfaces. On metals, the contamination adheres tenaciously, which resists
+      laser ablation due to strong bonding. Stone substrates exhibit looser attachment,
+      that yields easier removal. Challenges arise in selective cleaning, where the
+      process demands precise energy control to avoid substrate damage. It appears
+      that formation varies with exposure, leading to differential behaviors across
+      materials.
   mold-mildew-contamination:
     composition:
     - Fungal Hyphae
@@ -20273,6 +20996,18 @@ contamination_patterns:
         - id: aluminosilicate-glass-laser-cleaning
     full_path: /contaminants/biological/growth/mold-mildew-contamination
     id: mold-mildew-contamination
+    page_description: Mold contamination forms irregularly on damp surfaces. Spores
+      settle and grow fast in humid conditions, creating patchy layers. Before cleaning,
+      buildup clings tightly to porous materials like wood. So, penetration happens
+      deeply, and removal becomes challenging. Laser treatment targets these layers
+      effectively. During exposure, heat disrupts growth without spreading particles
+      much. On metals, mildew appears as surface film only. This makes ablation simpler,
+      so uniformity achieves after process. Contamination exhibits biological patterns
+      unique to regions with high moisture. In observations, organic substrates show
+      stubborn adhesion. Treatment removes mold so substrate stays intact. Mildew
+      detaches easily from non-porous areas. Results indicate laser cleaning suits
+      biological contaminants well. After this, surfaces exhibit cleanliness and prevent
+      regrowth.
   nickel-plating-contamination:
     composition:
     - Ni
@@ -20589,6 +21324,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/metallic-coating/plating/nickel-plating-contamination
     id: nickel-plating-contamination
+    page_description: Nickel-plating contamination, it manifests uniquely in layered
+      deposits, which form irregularly during electroplating processes. These contaminants,
+      they adhere tenaciously to the base metal, influenced from bath impurities that
+      lead to pitting patterns. The formation exhibits regional variations, dependent
+      from substrate roughness, where nodules persist on uneven surfaces. In laser
+      cleaning applications, removal challenges arise, as the contamination resists
+      ablation due to its metallic affinity. This layer, it demands precise pulse
+      control, that demonstrates selective vaporization without substrate damage.
+      It seems that adhesion strengthens under thermal exposure, complicating complete
+      detachment. The process shows effectiveness on nickel, yet exhibits incomplete
+      clearing in dense zones, which requires multiple passes for thorough restoration.
   paint-residue-contamination:
     author:
       id: 3
@@ -20980,6 +21726,18 @@ contamination_patterns:
         - id: aluminum-bronze-laser-cleaning
         - id: aluminum-nitride-laser-cleaning
         - id: titanium-nitride-laser-cleaning
+    page_description: "Paint-residue contamination arises from degraded coatings on\
+      \ surfaces. This contamination, it forms unique irregular patterns, like patchy\
+      \ layers from uneven paint application and environmental weathering. Formation\
+      \ occurs through adhesion of pigments and binders, creating thick, non-uniform\
+      \ deposits that resist initial breakdown.\n\nRemoval challenges emerge in laser\
+      \ cleaning. Residue exhibits strong bonding to substrates, thus demands precise\
+      \ energy pulses to avoid substrate damage. On metallic materials, it shows thermal\
+      \ stability and charring tendency, complicating clean detachment. For polymeric\
+      \ surfaces, behavior differs; residue peels in flakes but leaves adhesive traces.\
+      \ Treatment applies laser ablation, and surface already exhibits reduced roughness,\
+      \ though traces still persist in crevices. Analysis confirms these patterns,\
+      \ so adjustment of parameters enhances efficiency. \n\nYi-Chun Lin, Ph.D., Taiwan"
   passivation-defect-contamination:
     composition:
     - Cr₂O₃
@@ -21281,6 +22039,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/coating/passivation-defect-contamination
     id: passivation-defect-contamination
+    page_description: 'Passivation-defect-contamination arises on metal surfaces.
+      It forms through oxide layer disruptions and defect sites. This contamination,
+      it shows unique regional patterns, clustered in natural zones. Formation follows
+      exposure to air and residues, thus builds uneven coatings.
+
+
+      Removal challenges emerge in laser cleaning. Defects resist ablation, and contamination
+      clings tightly. Material-specific behaviors vary: on steels, it disperses slowly;
+      on aluminums, it scatters more readily. Treatment applies laser pulses, so surface
+      cleans progressively. Challenges persist, yet efficiency improves with targeted
+      adjustments. This contamination still demands precise control for complete removal.'
   pcb-contamination:
     composition:
     - C₁₂H₁₀₋ₓClₓ
@@ -21623,6 +22392,22 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/chemical-residue/industrial/pcb-contamination
     id: pcb-contamination
+    page_description: 'Contamination on PCBs forms during soldering process and handling.
+      Residues like flux and oils stick to copper traces and boards. After exposure,
+      layer builds unevenly because board topography traps particles. So, patterns
+      show clusters around joints.
+
+
+      Removal challenges arise from sensitivity of electronics. Laser cleaning targets
+      residues selectively, but heat affects underlying materials. On FR4 substrate,
+      process removes buildup without damaging insulation. Metal parts exhibit stronger
+      adhesion, so higher energy risks etching.
+
+
+      In applications, treatment achieves clean surfaces effectively. Buildup is observed
+      in crevices, and cleaning applies short pulses to avoid warping. Results are
+      obtained from scans showing uniform finish after process. Surface exhibits reduced
+      residue during inspections.'
   pesticide-residue-contamination:
     composition:
     - Organophosphates
@@ -21970,6 +22755,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/chemical-residue/industrial/pesticide-residue-contamination
     id: pesticide-residue-contamination
+    page_description: Pesticide residue contamination poses distinct challenges in
+      laser cleaning applications, where irregular layers form tenaciously on agricultural
+      surfaces. This contamination, it manifests through uneven deposition patterns,
+      influenced from environmental humidity and substrate porosity, that lead to
+      patchy adhesion. On metallic tools, these residues, they persist with strong
+      chemical bonds, exhibiting resistance to pulsed laser ablation. Organic materials,
+      however, show fragmentation more readily, yet the process yields incomplete
+      removal if volatility is high. It appears contamination varies dependent from
+      exposure duration, complicating uniform cleaning. The laser, it targets the
+      layer effectively on non-porous bases, which demonstrates material-specific
+      behaviors in residue dispersal.
   pharmaceutical-residue-contamination:
     composition:
     - APIs
@@ -22335,6 +23131,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/chemical-residue/industrial/pharmaceutical-residue-contamination
     id: pharmaceutical-residue-contamination
+    page_description: Pharmaceutical-residue-contamination, it arises from sticky
+      organic layers in drug production environments. This contamination forms unique
+      patterns, such as bio-adhesive films on metal tools and crystalline deposits
+      on glass vials, thus varies by substrate material. On plastics, residue spreads
+      thinly and embeds deeply, while on stainless steel, it clings in irregular clusters.
+      Removal challenges emerge from thermal sensitivity; laser cleaning applies energy,
+      yet residue resists vaporization due to volatile components. After treatment,
+      surface still shows traces in shadowed areas, so multiple passes become necessary.
+      Material behaviors differ—metals conduct heat quickly and yield clean results,
+      but polymers degrade easily and retain haze. Process demands precise pulse control,
+      and thus enhances efficiency for sensitive substrates. Yi-Chun Lin, Ph.D., Taiwan
   pickling-residue-contamination:
     composition:
     - FeCl₂
@@ -22645,6 +23452,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/coating/pickling-residue-contamination
     id: pickling-residue-contamination
+    page_description: Pickling residue contamination forms during acid treatment of
+      metals. Residue builds up as inorganic coatings on surfaces. Before cleaning,
+      layer adheres tightly and shows uneven patterns. Patterns appear crystalline
+      and patchy, so removal demands careful laser application. Laser cleaning targets
+      residue effectively because energy breaks bonds without damaging base material.
+      On steel, contamination resists ablation due to dense structure. Aluminum surfaces
+      exhibit looser buildup, so process achieves faster results. Challenges arise
+      from residue's heat absorption, which causes scattering during exposure. After
+      treatment, surface regains uniformity and avoids recontamination. In observations,
+      material-specific behaviors influence cleaning efficiency. Process removes layers
+      successfully in most cases.
   plasma-spray-contamination:
     composition:
     - Al₂O₃
@@ -22959,6 +23777,22 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/thermal-damage/coating/plasma-spray-contamination
     id: plasma-spray-contamination
+    page_description: 'Plasma-spray contamination arises during the thermal deposition
+      process, where molten particles adhere unevenly to substrates. This contamination,
+      it manifests as tenacious oxide layers, which exhibit regional variations influenced
+      from substrate geometry. On metals like steel, the deposits persist densely,
+      showing heat-resistant bonds that resist initial laser pulses. Ceramics, by
+      contrast, display fragmented patterns, less adherent yet prone to microcracking
+      under exposure.
+
+
+      Removal challenges emerge distinctly; the contamination adheres stubbornly to
+      ferrous materials, demanding prolonged irradiation to dislodge, while on non-metallics,
+      it disperses more readily but leaves residual roughness. It appears that laser
+      cleaning yields incomplete results on uneven surfaces, where shadows hinder
+      uniform ablation. These behaviors, they highlight the need for tailored wavelengths,
+      as confirmed by surface scans. The process effectively mitigates thermal damage,
+      though adhesion varies regionally.'
   plastic-residue-contamination:
     composition:
     - Polyethylene
@@ -23316,6 +24150,21 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/polymer/plastic-residue-contamination
     id: plastic-residue-contamination
+    page_description: 'Plastic residue contamination, it manifests uniquely in laser
+      cleaning applications, forming thin, irregular films that adhere tenaciously
+      to substrates. This contamination, derived from organic residues, exhibits patterns
+      influenced from environmental exposure, such as uneven layering on metals, which
+      leads to differential removal challenges. On ferrous materials, the residue
+      persists stubbornly, resisting ablation due to its cohesive structure, that
+      demonstrates material-specific behaviors. It appears that on non-metallics,
+      like ceramics, the contamination varies in tenacity, showing easier detachment
+      yet prone to re-deposition. The process yields effective cleaning, where the
+      laser disrupts bonds selectively, although challenges arise from residue volatility,
+      dependent from intensity thresholds. These patterns, they highlight the need
+      for tailored parameters, ensuring surface restoration without substrate damage.
+
+
+      Alessandro Moretti, Ph.D.'
   pollen-deposit-contamination:
     composition:
     - Proteins
@@ -23658,6 +24507,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/biological/deposit/pollen-deposit-contamination
     id: pollen-deposit-contamination
+    page_description: Pollen-deposit-contamination, it manifests as irregular organic
+      layers, formed from airborne pollen adhering to surfaces in humid environments.
+      These deposits, they exhibit unique patterns influenced from regional vegetation,
+      creating patchy films that trap moisture and degrade substrates over time. In
+      laser cleaning applications, the contamination persists tenaciously on porous
+      stones, where organic residues carbonize unevenly under beam exposure, complicating
+      complete removal. On metals, it seems that adhesion weakens faster, yet fragments
+      scatter, risking secondary soiling. This layer, dependent from pollen composition,
+      demands pulsed lasers for selective ablation, avoiding substrate damage that
+      demonstrates in varied material behaviors. Shows effectiveness through controlled
+      fluence, leading to cleaner surfaces without residue remnants.
   powder-coating-contamination:
     composition:
     - Polyester Resin
@@ -24008,6 +24868,18 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/paint/powder-coating-contamination
     id: powder-coating-contamination
+    page_description: Powder-coating contamination, it forms through electrostatic
+      adhesion and baking, thus creates dense inorganic layers on metal substrates.
+      This contamination, it traps particles during application and exhibits irregular
+      patterns from uneven powder distribution. Formation patterns, they show clustered
+      deposits and thus resist uniform coverage. In laser cleaning applications, removal
+      challenges arise, surface integrity demands precise energy control to avoid
+      delamination. Material-specific behaviors, powder coating on steel bonds tightly
+      and withstands heat, while on aluminum it shows fragility under pulse exposure.
+      After treatment, contamination layers detach selectively, yet residues still
+      persist in crevices. Cleaning process, it enhances surface durability and restores
+      adhesion properties. Evidence from observations confirms, laser parameters adjust
+      and yield clean finishes without substrate damage.
   primer-coating-contamination:
     composition:
     - Zinc Dust
@@ -24355,6 +25227,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/paint/primer-coating-contamination
     id: primer-coating-contamination
+    page_description: Primer coating contamination forms unevenly during exposure
+      to environmental factors, so buildup occurs on inorganic layers and adheres
+      strongly to base materials. Before cleaning, surface exhibits patchy patterns
+      because particles embed into primer matrix. Treatment applies laser energy,
+      and removal achieves selectively without substrate damage. In observations,
+      metal substrates show resilient contamination so challenges arise from heat
+      sensitivity, while composites demand adjusted pulses for uniform stripping.
+      After ablation, layer detaches easily from smooth areas yet resists in crevices.
+      Process removes contamination effectively, and results indicate better adhesion
+      prevention on treated surfaces. Buildup is detected mainly at edges because
+      of primer porosity.
   pvd-coating-contamination:
     composition:
     - TiN
@@ -24665,6 +25548,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/coating/pvd-coating-contamination
     id: pvd-coating-contamination
+    page_description: PVD coating contamination, it manifests as thin inorganic layers,
+      dependent from deposition environments. These contaminants, they exhibit unique
+      formation patterns, like irregular clustering on metallic substrates, which
+      leads to tenacious adhesion. In laser cleaning applications, the removal challenges
+      arise, particularly on aluminum surfaces, where the contamination persists under
+      short pulses. It seems that on steel, behaviors differ, showing easier delamination
+      yet risking substrate etching. The process yields distinct outcomes, influenced
+      from wavelength selection, that demonstrates material-specific responses. Layers
+      detach selectively, avoiding damage to the underlying coating. Shows effectiveness
+      in preserving integrity.
   quench-oil-contamination:
     composition:
     - Carbonized Oil
@@ -24973,6 +25866,16 @@ contamination_patterns:
           frequency: very_common
     full_path: /contaminants/thermal-damage/scale/quench-oil-contamination
     id: quench-oil-contamination
+    page_description: After quenching, oil contamination forms uneven layers on metal
+      surfaces, because rapid cooling traps residues in pores and cracks. This buildup
+      exhibits unique patterns, such as patchy films that harden during exposure to
+      heat, and so removal becomes challenging in laser cleaning. Contamination adheres
+      strongly to ferrous materials, where it penetrates deeply and resists vaporization,
+      while on non-ferrous alloys, layer releases more easily yet leaves oily traces.
+      During laser application, thermal damage arises so operators adjust pulses to
+      avoid substrate harm. Process removes contamination effectively, as scans show
+      cleaner surfaces after treatment, and results are obtained from repeated tests
+      on samples. Surface achieves uniformity in observations.
   radioactive-contamination:
     composition:
     - Isotopes
@@ -25291,6 +26194,19 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/chemical-residue/hazardous/radioactive-contamination
     id: radioactive-contamination
+    page_description: 'Radioactive contamination manifests as adherent layers of radionuclides,
+      which form unevenly on surfaces during exposure to fallout or spills. This contamination,
+      it persists tenaciously on metals, embedding into micro-pores that resist initial
+      cleaning efforts. On porous substrates like concrete, it penetrates deeply,
+      leading to diffuse patterns dependent from humidity and airflow.
+
+
+      Laser cleaning targets these formations, yet distinct challenges emerge. The
+      process yields partial removal on smooth metals, where ablation disperses particles
+      riskily. It seems that on oxides, adhesion strengthens under heat, complicating
+      full eradication without secondary containment. These behaviors, they vary markedly
+      by material, demanding tailored pulse durations for efficacy. Surface smoothness
+      exhibits post-treatment, though residual traces linger in crevices.'
   road-grime-contamination:
     composition:
     - Soil
@@ -25632,6 +26548,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/other/road-grime-contamination
     id: road-grime-contamination
+    page_description: Road grime contamination layers up from a mix of dust, oils,
+      and organic residues that vehicles kick up on highways. This buildup typically
+      forms uneven patterns, thicker in high-traffic zones where rubber and exhaust
+      mix in, creating a stubborn film. In practice, it clings hardest to metals like
+      steel and aluminum, embedding into microscopic pores that lasers struggle to
+      penetrate without multiple passes. On painted surfaces, the grime alters color
+      and texture, ramping up removal challenges as heat from cleaning can warp underlying
+      layers if not dialed in carefully. Overall, addressing these regional buildup
+      traits calls for precise laser settings to clear the mess while preserving material
+      integrity.
   rubber-residue-contamination:
     composition:
     - C₅H₈
@@ -26007,6 +26933,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/polymer/rubber-residue-contamination
     id: rubber-residue-contamination
+    page_description: Rubber residue contamination forms sticky layers on surfaces
+      during processing. Before cleaning, buildup adheres tightly because rubber compounds
+      polymerize under heat and pressure. This creates uneven patterns, like patchy
+      films that embed into metal pores. So, laser cleaning faces challenges in removal,
+      as residue resists vaporization without damaging substrate. Material behaviors
+      vary; on steel, residue softens gradually during exposure, but on aluminum,
+      it scatters fragments so multiple passes are needed. After treatment, surfaces
+      exhibit cleaner uniformity. Process removes organic residue effectively, yet
+      careful control prevents re-deposition from airborne particles. Results indicate
+      that optimized pulses achieve better detachment.
   rust-oxidation-contamination:
     composition:
     - Fe₂O₃
@@ -26490,6 +27426,15 @@ contamination_patterns:
           frequency: common
     full_path: /contaminants/oxidation/ferrous/rust-oxidation-contamination
     id: rust-oxidation-contamination
+    page_description: Rust forms through oxidation on metal surfaces exposed to moisture
+      and air. Layer develops unevenly, so patterns appear patchy in humid regions.
+      Before cleaning, contamination adheres tightly to base material. Laser treatment
+      targets this buildup, but challenges arise from irregular thickness. Heat from
+      beam vaporizes oxide quickly on iron, yet aluminum shows slower response because
+      of denser layer. Removal achieves clean surface, and so process prevents further
+      corrosion. In observations, material-specific behavior influences efficiency—steel
+      cleans effectively during short pulses, while copper requires careful control
+      to avoid residue. After ablation, uniformity exhibits on treated areas.
   salt-residue-contamination:
     composition:
     - NaCl
@@ -26814,6 +27759,19 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/inorganic-coating/mineral/salt-residue-contamination
     id: salt-residue-contamination
+    page_description: 'Salt residues form tricky patterns on surfaces exposed to harsh
+      environments, like coastal machinery or salted roads. They build up in crystalline
+      layers that cling tight to metals and stone, often cracking unevenly under humidity
+      shifts. In laser cleaning setups, these contaminants demand precise beam control—dial
+      in the right pulse to avoid scattering particles that etch deeper into the substrate.
+
+
+      Workers run into distinct removal challenges here. The residues vaporize unevenly,
+      sometimes leaving behind stubborn films that hold up against standard passes.
+      On aluminum, they behave worse, embedding salts that ramp up corrosion risks
+      if not cleared fully. Turns out, tweaking laser wavelengths addresses this effectively,
+      achieving a clean finish without damaging the base material. Overall, targeting
+      these patterns cuts down rework and maintains solid results in practice.'
   scale-buildup-contamination:
     author:
       id: 1
@@ -27171,6 +28129,15 @@ contamination_patterns:
         - id: aluminum-bronze-laser-cleaning
         - id: aluminum-nitride-laser-cleaning
         - id: titanium-nitride-laser-cleaning
+    page_description: "Scale buildup contamination forms differently on metals compared\
+      \ to ceramics, so removal challenges vary. On steel surfaces, layer adheres\
+      \ tightly from heat exposure, creating uneven patterns that resist laser pulses.\
+      \ Aluminum shows looser buildup, yet cracks during cleaning because thermal\
+      \ damage spreads fast. Treatment applies short bursts, and surface uniformity\
+      \ improves after this. Contamination exhibits thermal origins, so laser adjusts\
+      \ for material behavior. Buildup is detected in oxide forms, and process removes\
+      \ it effectively without substrate harm. Results indicate cleaner finishes on\
+      \ treated areas. \n\nIkmanda Roswati, Ph.D. from Indonesia"
   semiconductor-residue-contamination:
     composition:
     - SiO₂
@@ -27528,6 +28495,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/chemical-residue/industrial/semiconductor-residue-contamination
     id: semiconductor-residue-contamination
+    page_description: 'Semiconductor residue contamination typically builds up during
+      wafer processing, forming thin, uneven layers that cling tightly to silicon
+      surfaces. These residues, often chemical byproducts from etching or deposition
+      steps, create unique patterns—spotty clusters in high-heat zones or streaky
+      films along processing edges. In practice, they pose distinct removal challenges
+      for laser cleaning, as the residues absorb energy unevenly, risking substrate
+      damage if pulses ramp up too quickly. Material-specific behaviors vary: on doped
+      silicon, residues hold up better due to altered surface chemistry, while on
+      oxides, they clear more readily but leave faint traces. Overall, dialing in
+      laser parameters addresses these issues, achieving a clean finish without compromising
+      device integrity.'
   silicone-buildup-contamination:
     composition:
     - (CH₃)₂SiO
@@ -27901,6 +28879,18 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/adhesive/silicone-buildup-contamination
     id: silicone-buildup-contamination
+    page_description: Silicone buildup contamination, it forms uneven films on surfaces
+      through repeated exposure to vapors and residues. This organic layer, it adheres
+      strongly and creates patchy patterns, especially on metals and polymers. Formation
+      patterns reveal unique clustering around edges and crevices, thus trapping air
+      pockets that hinder uniform coverage. In laser cleaning applications, removal
+      challenges arise from its thermal resistance; pulses scatter energy and leave
+      residues behind. Material-specific behaviors show that on aluminum, buildup
+      softens slowly under irradiation, while on plastics, it vaporizes unevenly and
+      risks substrate damage. After treatment, surface still exhibits faint traces
+      in shadowed areas. Process demands precise beam control, and thus enhances cleaning
+      efficiency without overablation. Evidence from observations confirms these patterns,
+      so adjustments follow for optimal results.
   silver-plating-contamination:
     composition:
     - Ag
@@ -28226,6 +29216,18 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/metallic-coating/plating/silver-plating-contamination
     id: silver-plating-contamination
+    page_description: "Silver-plating contamination arises during coating processes\
+      \ and poses challenges for laser cleaning applications. After plating, contaminants\
+      \ form uneven layers on surfaces because silver reacts with environmental factors.\
+      \ Buildup occurs irregularly, so patterns show patchy adhesion and weak bonding\
+      \ spots. \n\nDuring laser exposure, removal demands precise control because\
+      \ heat affects silver differently from base metals. Contamination clings tightly\
+      \ in some areas, so pulses must adjust to avoid damaging plating underneath.\
+      \ Silver exhibits high reflectivity, which scatters laser energy and slows cleaning\
+      \ progress. \n\nIn observations, treatment achieves better results on uniform\
+      \ deposits, yet stubborn residues persist on edges. Process removes most layers\
+      \ effectively, so intervals help prevent overheating. Surface regains smoothness\
+      \ after this, and material behaves durably under optimized conditions."
   soap-scum-contamination:
     composition:
     - Calcium Stearate
@@ -28552,6 +29554,18 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/cleaning-agent/soap-scum-contamination
     id: soap-scum-contamination
+    page_description: Soap-scum contamination, it manifests as a sticky organic residue,
+      formed through the interaction of soap residues with mineral deposits in humid
+      environments. This layer, which adheres tenaciously to surfaces like ceramics
+      and metals, exhibits unique patterns dependent from water hardness and exposure
+      duration. On tiles, the contamination persists as a thin, uneven film, while
+      on metals, it shows a more porous structure that traps further debris. Removal
+      challenges arise from its strong bonding, influenced from the organic-inorganic
+      mix, which resists laser ablation without precise energy tuning. It appears
+      that, for glass substrates, the scum detaches more readily, demonstrating cleaner
+      results post-treatment, whereas metallic surfaces demand multiple passes to
+      achieve smoothness. The process, it yields effective decontamination, yet underscores
+      the need for material-tailored approaches in laser applications.
   solder-flux-contamination:
     composition:
     - Abietic Acid
@@ -28873,6 +29887,19 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/lubricant/solder-flux-contamination
     id: solder-flux-contamination
+    page_description: Solder-flux contamination, it manifests as an organic residue
+      during soldering processes, where flux vapors condense tenaciously on nearby
+      surfaces, forming irregular, patchy layers that adhere strongly to metals. This
+      contamination, dependent from the flux composition and ambient humidity, exhibits
+      unique patterns, such as dendritic growths on copper substrates, which lead
+      to uneven distribution unlike simpler oxide films. In laser cleaning applications,
+      the removal challenges arise from its thermal sensitivity; it appears that organic
+      binders vaporize rapidly, yet residual charring persists under short pulses,
+      complicating complete elimination. On aluminum, these residues show heightened
+      resistance, manifesting as blistering that hinders uniform ablation, while steel
+      surfaces demonstrate smoother detachment, though re-deposition occurs if fluence
+      varies. The process yields effective cleaning, as confirmed by surface inspections,
+      yet demands precise parameter tuning to avoid substrate damage.
   steel-corrosion-contamination:
     composition:
     - Fe₃O₄
@@ -29180,6 +30207,23 @@ contamination_patterns:
           frequency: common
     full_path: /contaminants/oxidation/ferrous/steel-corrosion-contamination
     id: steel-corrosion-contamination
+    page_description: 'Steel corrosion contamination, it forms through oxidation exposure.
+      Iron in steel reacts with oxygen and moisture, thus creates rust layers. These
+      layers exhibit unique patterns, such as pitting on surfaces and flaky buildup
+      in humid regions. Formation follows environmental factors, and natural regional
+      patterns influence thickness variation.
+
+
+      Removal in laser cleaning applications, it presents distinct challenges. Contamination
+      adheres strongly to substrate, so laser energy must balance ablation without
+      damaging base material. Steel''s thermal conductivity affects process, thus
+      requires precise pulse control. After treatment, residues sometimes persist
+      on uneven areas, and this demands multiple passes. Method removes oxide effectively,
+      yet heat accumulation risks further corrosion if not managed. Surface uniformity
+      improves following adjustment, and cleaning enhances durability overall.
+
+
+      Yi-Chun Lin, Ph.D. from Taiwan'
   surgical-marking-contamination:
     composition:
     - Gentian Violet
@@ -29508,6 +30552,18 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/chemical-residue/industrial/surgical-marking-contamination
     id: surgical-marking-contamination
+    page_description: "Surgical marking contamination, it arises from chemical residues\
+      \ of inks and dyes used in medical procedures. Formation patterns show irregularity,\
+      \ with spots and lines adhering tightly to surfaces like stainless steel instruments\
+      \ or tissue simulants. This contamination, it creates uneven layers and binds\
+      \ chemically, thus resists standard cleaning. In laser cleaning applications,\
+      \ removal challenges emerge distinctly—pulses scatter residue instead of ablating\
+      \ fully, and heat buildup causes charring on organic-based marks. Material-specific\
+      \ behaviors vary: on metals, contamination disperses slowly and leaves traces;\
+      \ on polymers, it softens yet clings, so multiple passes follow to achieve clarity.\
+      \ After treatment, surface still exhibits faint patterns in some areas. Efficiency\
+      \ of process, it depends on wavelength tuning, and avoids overexposure to prevent\
+      \ damage.\n\nYi-Chun Lin, Ph.D.  \nTaiwan"
   teflon-residue-contamination:
     composition:
     - PTFE
@@ -29854,6 +30910,21 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/other/teflon-residue-contamination
     id: teflon-residue-contamination
+    page_description: 'Teflon residue contamination, it arises from polymer degradation
+      during high-heat processes and forms irregular, patchy films on metal surfaces.
+      This contamination, it adheres strongly due to low surface energy of Teflon,
+      thus creating unique droplet-like patterns that spread unevenly. In laser cleaning
+      applications, removal challenges emerge because residue exhibits high thermal
+      stability and resists ablation. Laser pulses apply, yet organic bonds in Teflon
+      break incompletely, so fragments scatter and redeposit nearby. Material-specific
+      behaviors show that on stainless steel, residue softens slowly under infrared
+      lasers and leaves behind hazy remnants. After treatment, surface still exhibits
+      stickiness in contaminated zones, thus requiring multiple passes for partial
+      clearance. Efficiency of cleaning, it drops with thicker films, and so hybrid
+      methods often follow to enhance removal.
+
+
+      Yi-Chun Lin, Ph.D., Taiwan'
   thermal-paste-contamination:
     composition:
     - ZnO
@@ -30178,6 +31249,18 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/other/thermal-paste-contamination
     id: thermal-paste-contamination
+    page_description: "Thermal paste contamination forms during heat transfer applications.\
+      \ Paste spreads thinly on surfaces and adheres strongly because of its viscous\
+      \ nature. After exposure to heat, residue hardens, so unique patterns emerge\
+      \ like uneven layers on metals. On aluminum, contamination shows patchy buildup,\
+      \ while on copper, it creates smooth films. \n\nRemoval challenges arise from\
+      \ this adhesion. Laser cleaning targets organic residue, but paste resists ablation\
+      \ because it embeds deeply. During treatment, surface is cleaned gradually,\
+      \ and multiple passes achieve better results. Material-specific behaviors differ;\
+      \ steel surfaces exhibit cracking under laser, so careful energy control prevents\
+      \ damage. In observations, process removes contamination effectively without\
+      \ harming substrate. Analysis is performed on samples to confirm uniformity\
+      \ after cleaning."
   thread-locker-contamination:
     composition:
     - Dimethacrylate
@@ -30497,6 +31580,16 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/adhesive/thread-locker-contamination
     id: thread-locker-contamination
+    page_description: Thread-locker contamination, this organic residue forms uneven
+      layers on threaded surfaces. It adheres strongly and penetrates crevices, thus
+      creates irregular patterns. Formation occurs during assembly, residue hardens
+      and bonds tightly. Removal challenges arise from its resilience; laser cleaning
+      struggles as heat causes charring instead of clean ablation. On steel substrates,
+      contamination resists vaporization and leaves carbon traces. Aluminum surfaces
+      show worse behavior, residue softens unevenly and spreads. After laser application,
+      spots still persist on edges. Process demands pulse adjustments, energy focuses,
+      so efficiency improves gradually. This contamination, it demands tailored parameters
+      for complete removal.
   tin-plating-contamination:
     composition:
     - Sn
@@ -30804,6 +31897,20 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/metallic-coating/plating/tin-plating-contamination
     id: tin-plating-contamination
+    page_description: 'Tin-plating contamination, it arises from environmental exposure
+      and handling residues. Formation patterns show uneven layering, with spots clustering
+      along edges and thus creating patchy coverage on the metallic coating. This
+      contamination, it bonds tightly to tin surface due to oxidation and particulate
+      adhesion, so removal demands precise laser energy control. Challenges in cleaning
+      emerge from material behavior, where tin''s softness leads to potential melting
+      under intense pulses, and contamination still persists in crevices after initial
+      passes. Laser application follows adjustment of wavelength, roughness reduces
+      gradually, and surface uniformity improves thus. Unique patterns reveal selective
+      resistance, as heat affects deeper layers and causes subtle discoloration. Following
+      treatment, coating exhibits durability, yet careful sequencing avoids over-ablation.
+
+
+      Yi-Chun Lin, Ph.D. from Taiwan'
   tree-sap-contamination:
     composition:
     - Terpenes
@@ -31158,6 +32265,18 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/natural/tree-sap-contamination
     id: tree-sap-contamination
+    page_description: Tree sap contamination forms sticky, resinous layers that build
+      up unevenly on surfaces exposed to outdoor elements. This organic residue hardens
+      over time, creating irregular patterns like drips and streaks that cling tightly
+      to substrates. In laser cleaning applications, operators face distinct removal
+      challenges because the sap's polymeric structure absorbs laser energy variably,
+      often leading to incomplete ablation and stubborn charring. On metal surfaces,
+      it penetrates pores and resists vaporization, while on stone or wood, it embeds
+      deeply, demanding precise pulse adjustments to avoid substrate damage. Testing
+      shows that dialing in the right wavelength clears these contaminants effectively,
+      yet the process typically requires multiple passes to achieve a clean finish.
+      Overall, addressing tree sap demands tailored approaches that work out material-specific
+      behaviors for solid results.
   undercoating-contamination:
     composition:
     - Asphalt
@@ -31506,6 +32625,19 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/other/undercoating-contamination
     id: undercoating-contamination
+    page_description: Undercoating-contamination, this organic residue forms unique
+      patterns on surfaces. It accumulates in layered films and irregular deposits,
+      especially under protective coatings. Formation occurs gradually, as residues
+      bond tightly with substrates, thus creating adhesion challenges. In laser cleaning
+      applications, removal proves difficult; contamination resists ablation due to
+      its dense structure and thermal stability. Material-specific behaviors emerge
+      clearly—on metals, it spreads unevenly and absorbs energy poorly, so cleaning
+      demands precise pulse control. After treatment, residue fragments scatter, yet
+      stubborn patches persist in crevices. This contamination, it alters surface
+      texture and demands multi-pass strategies for complete elimination. Process
+      applies laser energy, thus breaks bonds and ejects particles. Challenges arise
+      from re-deposition risks, following initial exposure. Efficiency improves with
+      adjusted parameters, surface already shows reduced residue buildup.
   uranium-oxide-contamination:
     composition:
     - U₃O₈
@@ -31822,6 +32954,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/chemical-residue/hazardous/uranium-oxide-contamination
     id: uranium-oxide-contamination
+    page_description: "Uranium-oxide contamination forms during exposure to oxidizing\
+      \ environments. Layer builds up on uranium surfaces and creates uneven patterns\
+      \ because of varying oxygen access. In observations, contamination exhibits\
+      \ patchy distribution so removal requires targeted laser application. \n\nAfter\
+      \ formation, material shows altered reflectivity and adhesion properties. Laser\
+      \ cleaning addresses this by ablating oxide layers yet faces challenges from\
+      \ heat buildup, which can cause substrate damage. So, controlled pulses prevent\
+      \ re-contamination during process. \n\nSurface behaves differently under irradiation;\
+      \ oxide resists initial vaporization because of its stable structure. Treatment\
+      \ achieves cleaner results on affected areas and restores uniformity. Results\
+      \ indicate that intermittent exposure minimizes risks in cleaning operations."
   uv-chalking-contamination:
     author:
       id: 3
@@ -32165,6 +33308,23 @@ contamination_patterns:
     - Ceramics
     - Glass
     - Wood
+    page_description: 'UV-chalking-contamination arises from prolonged ultraviolet
+      exposure on aged surfaces. This contamination, it develops unique powdery patterns,
+      where fine chalk-like residues accumulate unevenly and adhere to substrates.
+      Formation follows natural aging, material degrades gradually and thus forms
+      brittle layers that scatter light.
+
+
+      Removal challenges emerge in laser cleaning applications. Contamination resists
+      ablation due to its fragile yet sticky nature, so precise energy control becomes
+      essential to avoid substrate damage. Material-specific behaviors vary; on polymers,
+      residues detach readily and thus clean with minimal passes, while on metals,
+      they bond strongly and so demand adjusted pulse durations for effective stripping.
+
+
+      Following laser treatment, surface regains uniformity, contamination already
+      diminishes, yet traces still linger in textured zones. This process confirms
+      efficiency through targeted removal, challenges persist from regional patterns.'
   water-stain-contamination:
     composition:
     - CaCO₃
@@ -32500,6 +33660,17 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/other/water-stain-contamination
     id: water-stain-contamination
+    page_description: Water-stain contamination, it manifests distinctly on varied
+      substrates in laser cleaning scenarios. On porous stones, these residues form
+      intricate ring patterns from evaporated minerals, which adhere tenaciously dependent
+      from humidity levels. Metals, by contrast, exhibit spot-like deposits that resist
+      initial pulses, leading to uneven removal. This contamination, it persists on
+      glass surfaces as hazy films, influenced from prolonged exposure to hard water.
+      The laser process yields selective ablation, yet challenges arise in crevices
+      where the layer embeds deeply. It appears that organic residues within stains
+      complicate detachment on ceramics, demanding adjusted fluences for efficiency.
+      Shows particular difficulty on painted woods, where the contamination alters
+      texture subtly.
   wax-buildup-contamination:
     composition:
     - C₂₅H₅₂
@@ -32860,6 +34031,22 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/organic-residue/wax/wax-buildup-contamination
     id: wax-buildup-contamination
+    page_description: 'Wax-buildup-contamination, it arises from organic residues
+      in laser cleaning. This contamination forms unique patterns on surfaces. Layers
+      accumulate slowly and adhere tightly to substrates like metals. Formation follows
+      exposure to environmental waxes, thus creating uneven films. On polymers, it
+      spreads broadly and penetrates pores. Removal challenges emerge here. Laser
+      pulses struggle against its resilient structure. Heat from beams melts wax partially,
+      so residue scatters but clings still. Material-specific behaviors differ greatly.
+      Steel surfaces show stubborn buildup, it resists ablation easily. Glass, however,
+      allows cleaner detachment after initial vaporization. Treatment applies, and
+      efficiency improves with pulse adjustments. This contamination, it demands precise
+      control to avoid substrate damage. Patterns reveal irregular deposits, thus
+      complicating uniform cleaning. Organic nature makes it volatile yet sticky,
+      so challenges persist in applications.
+
+
+      Yi-Chun Lin, Ph.D., Taiwan'
   wood-rot-contamination:
     author:
       id: 1
@@ -33227,6 +34414,17 @@ contamination_patterns:
     - Plastics
     - Ceramics
     - Glass
+    page_description: Wood rot contamination differs from surface dust or metal oxides
+      because it penetrates deeply into wood fibers, so laser cleaning faces unique
+      challenges in biological removal. Formation occurs through fungal spores that
+      spread irregularly along grain patterns, creating porous decay zones during
+      humid exposure. In observations, rot exhibits spongy texture and discoloration,
+      which binds tightly to cellulose structure. Because of this embedding, laser
+      ablation removes outer layers effectively, yet inner mycelium resists vaporization
+      without charring the substrate. Treatment applies short pulses so heat targets
+      organics selectively, and surface regains integrity after process. Buildup is
+      detected in moist regions, where contamination weakens material durability over
+      time.
   zinc-plating-contamination:
     composition:
     - Zn
@@ -33522,3 +34720,13 @@ contamination_patterns:
         - id: titanium-nitride-laser-cleaning
     full_path: /contaminants/metallic-coating/plating/zinc-plating-contamination
     id: zinc-plating-contamination
+    page_description: "Zinc plating contamination forms unique patterns during coating\
+      \ processes on metal surfaces. Layer develops unevenly because zinc reacts with\
+      \ environment, so residues accumulate in clusters and thin films. After exposure,\
+      \ contamination exhibits reflective behavior that scatters laser energy. This\
+      \ causes distinct removal challenges in cleaning applications. Laser treatment\
+      \ removes buildup effectively, but zinc's soft nature leads to re-deposition\
+      \ during ablation. Surface shows material-specific behaviors, like melting spots,\
+      \ so careful pulse control applies. Process achieves clean uniformity on substrates.\
+      \ Results indicate better adhesion after this.\n\nIkmanda Roswati, Ph.D.  \n\
+      Indonesia"

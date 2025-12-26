@@ -44,7 +44,7 @@ The z-beam-generator uses a **comprehensive voice architecture** with:
 
 | ID | Name | Country | Voice Characteristics |
 |----|------|---------|----------------------|
-| 1 | Ikmanda Roswati, Ph.D. | Indonesia | Passive constructions, formal tone, demonstrative clusters |
+| 1 | Ikmanda Roswati, Ph.D. | Indonesia | **STRENGTHENED (Dec 26, 2025)**: Topic prominence ("This X, it..."), aspectual markers ("already", "still"), preposition patterns ("from the data"), 2-3 markers per paragraph |
 | 2 | Alessandro Moretti, Ph.D. | Italy | Subjunctive mood, hedging language, word order inversion |
 | 3 | Yi-Chun Lin, Ph.D. | Taiwan | Topic-comment structure, systematic markers, measurement-first phrasing |
 | 4 | Todd Dunning, MA | United States | Phrasal verbs, active voice, direct language |

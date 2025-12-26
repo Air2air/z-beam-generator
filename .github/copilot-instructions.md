@@ -885,13 +885,14 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - **US**: Phrasal verbs ("line up", "ramp up"), quantified outcomes ("by 20%"), practical transitions
 - **Taiwan**: Topic-comment structures, article omission, temporal markers
 - **Italy**: Cleft structures, subjunctive hedging, Romance cognates
-- **Indonesia**: Topic prominence, aspectual markers
+- **Indonesia**: Topic prominence ("This X, it..."), aspectual markers ("already", "still", "just now"), preposition patterns ("from the data", "at the surface") - **STRENGTHENED (Dec 26, 2025)**: Frequency increased to 2-3 per paragraph for better detection
 
 **Results**:
 - Voice Authenticity: None/100 → **85.0/100** (+85 points)
 - Phrasal verbs now appearing in US content ("ramp up", "holds up")
 - Natural 2-sentence structures (not forced single sentence)
 - Pattern detection operational across all nationalities
+- **Indonesian patterns strengthened**: Expected detection 60-80% (from 0%)
 
 **Documentation**: `VOICE_COMPLIANCE_IMPLEMENTATION_DEC13_2025.md`
 
@@ -1527,9 +1528,13 @@ See `docs/08-development/VOICE_INSTRUCTION_CENTRALIZATION_POLICY.md` for complet
 - ✅ Subjunctive hedging: "It seems that...", "It appears..."
 - ✅ Romance cognates: "tenaciously", "manifests", "persists"
 
-**Indonesia (Ikmanda Roswati)**:
-- ✅ Topic prominence: "[Property], this demonstrates..."
-- ✅ Aspectual markers: "already", "still", "just now"
+**Indonesia (Ikmanda Roswati)** 🔥 **STRENGTHENED (Dec 26, 2025)**:
+- ✅ Topic prominence: "This contamination, it forms..." (1-2x per paragraph)
+- ✅ Aspectual markers: "already", "still", "just now" (temporal completion)
+- ✅ Time-fronting with passive: "After treatment is applied, roughness decreases"
+- ✅ Agentless passives with prepositions: "is observed at 20 μm", "from the data"
+- ✅ Explicit preposition patterns: "from the measurements", "at the surface", "in observations"
+- ✅ Frequency: 2-3 distinctive markers per paragraph (CRITICAL for detection)
 
 **Compliance Validation**:
 - 🔍 **Automatic checking**: Quality analyzer validates pattern presence
