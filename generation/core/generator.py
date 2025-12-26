@@ -305,7 +305,7 @@ class Generator:
         # 🎯 SIZE-AWARE DECISION: Compress humanness if base already large
         # API limit: 8,000 chars. Full humanness ~9K would push any base > 0 over limit
         # Compressed humanness ~1K allows base up to ~6.5K
-        SIZE_THRESHOLD = 2000  # If base exceeds this, use compressed humanness
+        SIZE_THRESHOLD = 800  # If base exceeds this, use compressed humanness (lowered Dec 24, 2025 for compounds)
         
         if base_size > SIZE_THRESHOLD:
             # Base prompt moderate - use COMPRESSED humanness (essential rules only ~1K)

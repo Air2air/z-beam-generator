@@ -1,13 +1,20 @@
 """
 Postprocessing command for quality validation and regeneration of existing text fields.
 
+🚨 MANDATORY POLICY (December 24, 2025): SOURCE DATA ONLY
+- Postprocessing ONLY works on source data (data/*.yaml files)
+- NEVER reads from or writes to frontmatter files directly
+- Frontmatter is GENERATED OUTPUT - only modified via export process
+- This enforces FRONTMATTER_SOURCE_OF_TRUTH_POLICY
+
 This module handles:
-1. Loading existing content from frontmatter
+1. Loading existing content from SOURCE DATA (data/*.yaml)
 2. Analyzing quality using QualityAnalyzer (AI detection, voice, structural)
 3. If quality < 60/100: Regenerate from scratch using original domain prompt template
 4. If quality >= 60/100: Keep original content
-5. Saving regenerated content to data YAML + frontmatter (dual-write)
-6. POLICY: Research and generate if field is empty
+5. Saving regenerated content to SOURCE DATA ONLY (data/*.yaml)
+6. User must run --export to update frontmatter after postprocessing
+7. POLICY: Research and generate if field is empty
 
 🔥 MANDATORY RETRY POLICY (December 14, 2025):
 - System MUST retry regeneration until requirements are met
@@ -46,6 +53,12 @@ MIN_CONTENT_LENGTH = 50  # Minimum content length in characters
 class PostprocessCommand:
     """
     Postprocess existing text fields: validate quality and regenerate if needed.
+    
+    🚨 SOURCE DATA ONLY (December 24, 2025):
+    - Reads from data/*.yaml files ONLY (never frontmatter)
+    - Writes to data/*.yaml files ONLY (never frontmatter)
+    - User must run --export after postprocessing to update frontmatter
+    - This enforces FRONTMATTER_SOURCE_OF_TRUTH_POLICY
     
     Quality validation checks:
     - AI detection score (Winston)
@@ -86,70 +99,63 @@ class PostprocessCommand:
         )
         self.generator.generator = domain_generator
     
-    def _load_frontmatter(self, item_name: str) -> Dict[str, Any]:
-        """Load frontmatter YAML file for item using domain config pattern"""
-        frontmatter_dir = f"frontmatter/{self.domain}"
+    def _load_source_data(self, item_id: str) -> Dict[str, Any]:
+        """
+        Load item data from SOURCE DATA file (data/*.yaml) - NOT frontmatter.
         
-        # Get filename pattern from domain config
-        from generation.core.adapters.domain_adapter import DomainAdapter
-        try:
-            adapter = DomainAdapter(self.domain)
-            pattern = adapter.config.get('frontmatter_filename_pattern', '{slug}.yaml')
-        except:
-            pattern = '{slug}.yaml'
+        🚨 MANDATORY: Only reads from data/*.yaml files (FRONTMATTER_SOURCE_OF_TRUTH_POLICY)
         
-        # Create slug (remove parentheses for consistency)
-        slug = item_name.lower().replace(' ', '-').replace('(', '').replace(')', '')
-        while '--' in slug:
-            slug = slug.replace('--', '-')
-        slug = slug.strip('-')
-        
-        # Apply pattern
-        filename = pattern.format(slug=slug)
-        yaml_file = f"{frontmatter_dir}/{filename}"
-        
-        if not os.path.exists(yaml_file):
-            # Try alternative naming patterns
-            for file in Path(frontmatter_dir).glob("*.yaml"):
-                with open(file, 'r', encoding='utf-8') as f:
-                    data = yaml.safe_load(f)
-                    if data.get('name') == item_name or data.get('slug') == slug:
-                        yaml_file = str(file)
-                        break
-        
-        if not os.path.exists(yaml_file):
-            raise FileNotFoundError(f"Frontmatter not found for {item_name} in {frontmatter_dir}")
-        
-        with open(yaml_file, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f), yaml_file
-    
-    def _save_frontmatter(self, yaml_file: str, data: Dict[str, Any]):
-        """Save updated frontmatter back to YAML file"""
-        with open(yaml_file, 'w', encoding='utf-8') as f:
-            yaml.dump(data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
-    
-    def _load_domain_config(self) -> Dict[str, Any]:
-        """Load domain config to get data paths"""
-        config_path = Path(f"domains/{self.domain}/config.yaml")
-        if not config_path.exists():
-            raise FileNotFoundError(f"Domain config not found: {config_path}")
-        
-        with open(config_path, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f)
-    
-    def _get_data_path(self) -> Path:
-        """Get path to domain data YAML file"""
-        config = self._load_domain_config()
-        data_path = config.get('data_path', f"data/{self.domain}/{self.domain.title()}.yaml")
-        return Path(data_path)
-    
-    def _save_to_data_yaml(self, item_name: str, content: str) -> None:
-        """Save content to data YAML file (dual-write requirement)"""
+        Args:
+            item_id: Item identifier (slug/key in source data)
+            
+        Returns:
+            Item data dictionary from source YAML
+            
+        Raises:
+            FileNotFoundError: If data file or item not found
+        """
         data_path = self._get_data_path()
         
         if not data_path.exists():
-            logger.warning(f"Data file not found: {data_path} - skipping data save")
-            return
+            raise FileNotFoundError(f"Source data file not found: {data_path}")
+        
+        # Load source data
+        with open(data_path, 'r', encoding='utf-8') as f:
+            all_data = yaml.safe_load(f)
+        
+        # Get root key from config
+        config = self._load_domain_config()
+        data_root_key = config.get('data_root_key', self.domain)
+        
+        # Get items dict
+        items = all_data.get(data_root_key, {})
+        
+        # Try exact match first
+        if item_id in items:
+            return items[item_id]
+        
+        # Try finding by name (case-insensitive)
+        for key, item_data in items.items():
+            if item_data.get('name', '').lower() == item_id.lower():
+                return item_data
+        
+        raise FileNotFoundError(f"Item '{item_id}' not found in {data_path}")
+    
+    def _save_to_source_data(self, item_id: str, content: str) -> None:
+        """
+        Save content to SOURCE DATA file (data/*.yaml) - NOT frontmatter.
+        
+        🚨 MANDATORY: Only writes to data/*.yaml files (FRONTMATTER_SOURCE_OF_TRUTH_POLICY)
+        User must run --export after postprocessing to update frontmatter.
+        
+        Args:
+            item_id: Item identifier (slug/key in source data)
+            content: Content to save
+        """
+        data_path = self._get_data_path()
+        
+        if not data_path.exists():
+            raise FileNotFoundError(f"Source data file not found: {data_path}")
         
         # Load current data
         with open(data_path, 'r', encoding='utf-8') as f:
@@ -159,16 +165,26 @@ class PostprocessCommand:
         config = self._load_domain_config()
         data_root_key = config.get('data_root_key', self.domain)
         
-        # Verify item exists
+        # Get items dict
         items = all_data.get(data_root_key, {})
-        if item_name not in items:
-            logger.warning(f"'{item_name}' not found in {data_path} - skipping data save")
-            return
+        
+        # Find item (exact match or by name)
+        target_key = None
+        if item_id in items:
+            target_key = item_id
+        else:
+            for key, item_data in items.items():
+                if item_data.get('name', '').lower() == item_id.lower():
+                    target_key = key
+                    break
+        
+        if not target_key:
+            raise FileNotFoundError(f"Item '{item_id}' not found in {data_path}")
         
         # Write content to item
-        items[item_name][self.field] = content
+        items[target_key][self.field] = content
         
-        # Atomic write with temp file (same pattern as DomainAdapter)
+        # Atomic write with temp file
         with tempfile.NamedTemporaryFile(
             mode='w',
             encoding='utf-8',
@@ -180,11 +196,26 @@ class PostprocessCommand:
             temp_path = temp_f.name
         
         Path(temp_path).replace(data_path)
-        logger.info(f"✅ {self.field} written to {data_path} → {data_root_key}.{item_name}.{self.field}")
+        logger.info(f"✅ {self.field} written to {data_path} → {data_root_key}.{target_key}.{self.field}")
     
-    def _get_field_content(self, frontmatter: Dict[str, Any]) -> Optional[str]:
-        """Extract field content from frontmatter"""
-        content = frontmatter.get(self.field)
+    def _load_domain_config(self) -> Dict[str, Any]:
+        """Load domain config to get data paths"""
+        config_path = Path(f"domains/{self.domain}/config.yaml")
+        if not config_path.exists():
+            raise FileNotFoundError(f"Domain config not found: {config_path}")
+        
+        with open(config_path, 'r', encoding='utf-8') as f:
+            return yaml.safe_load(f)
+    
+    def _get_data_path(self) -> Path:
+        """Get path to domain source data YAML file (data/*.yaml)"""
+        config = self._load_domain_config()
+        data_path = config.get('data_path', f"data/{self.domain}/{self.domain.title()}.yaml")
+        return Path(data_path)
+    
+    def _get_field_content(self, item_data: Dict[str, Any]) -> Optional[str]:
+        """Extract field content from source data item"""
+        content = item_data.get(self.field)
         
         # Handle different field types
         if content is None or content == 'null' or content == '':
@@ -195,39 +226,6 @@ class PostprocessCommand:
             return yaml.dump(content, default_flow_style=False)
         
         return str(content).strip() if content else None
-    
-    def _set_field_content(self, frontmatter: Dict[str, Any], content: str):
-        """Set field content in frontmatter"""
-        # FAQ needs to be parsed back to array
-        if self.field == 'faq':
-            frontmatter[self.field] = yaml.safe_load(content)
-        else:
-            frontmatter[self.field] = content
-    
-    def _build_postprocess_context(self, item_name: str, frontmatter: Dict[str, Any], existing_content: str) -> Dict[str, str]:
-        """Build context dictionary for postprocessing prompt"""
-        author = frontmatter.get('author', {})
-        
-        context = {
-            'existing_content': existing_content,
-            'author_name': author.get('name', 'Unknown'),
-            'author_country': author.get('country', 'Unknown'),
-        }
-        
-        # Domain-specific context
-        if self.domain == 'materials':
-            context['material_name'] = frontmatter.get('name', item_name)
-            context['category'] = frontmatter.get('category', 'unknown')
-            context['subcategory'] = frontmatter.get('subcategory', 'unknown')
-        elif self.domain == 'contaminants':
-            context['contaminant_name'] = frontmatter.get('name', item_name)
-            context['category'] = frontmatter.get('category', 'unknown')
-            context['context_notes'] = frontmatter.get('context', 'general')
-        elif self.domain == 'settings':
-            context['material_name'] = frontmatter.get('name', item_name)
-            context['category'] = frontmatter.get('category', 'unknown')
-        
-        return context
     
     def _check_winston(self, text: str) -> float:
         """Check Winston AI detection score (stub - uses generator's method)"""
@@ -331,52 +329,66 @@ class PostprocessCommand:
             }
         }
     
-    def postprocess_item(self, item_name: str, dry_run: bool = False) -> Dict[str, Any]:
+    def postprocess_item(self, item_id: str, dry_run: bool = False) -> Dict[str, Any]:
         """
         Postprocess single item's field.
+        
+        🚨 SOURCE DATA ONLY: Works on data/*.yaml files, NOT frontmatter.
+        User must run --export after postprocessing to update frontmatter.
         
         POLICY: If field is empty, research and generate it instead.
         
         Args:
-            item_name: Name of the item to postprocess
+            item_id: ID/slug of the item to postprocess (from source data)
             dry_run: If True, compare but don't save
             
         Returns:
             Dictionary with results and comparison
         """
         print(f"\n{'='*80}")
-        print(f"📝 POSTPROCESSING: {item_name} - {self.field}")
+        print(f"📝 POSTPROCESSING: {item_id} - {self.field}")
         print(f"{'='*80}")
+        print(f"🔍 Reading from SOURCE DATA: {self._get_data_path()}")
         
-        # Load frontmatter
-        frontmatter, yaml_file = self._load_frontmatter(item_name)
+        # Load item data from SOURCE DATA (not frontmatter)
+        try:
+            item_data = self._load_source_data(item_id)
+        except FileNotFoundError as e:
+            print(f"❌ Error: {e}")
+            return {
+                'item': item_id,
+                'field': self.field,
+                'action': 'LOAD_FAILED',
+                'improved': False,
+                'error': str(e)
+            }
         
         # Get existing content
-        existing_content = self._get_field_content(frontmatter)
+        existing_content = self._get_field_content(item_data)
         
         # POLICY: If empty, research and generate
         if not existing_content:
-            print(f"⚠️  Field '{self.field}' is EMPTY for {item_name}")
+            print(f"⚠️  Field '{self.field}' is EMPTY for {item_id}")
             print(f"📊 POLICY: Research and generate new content...")
             
             # Generate new content using standard generation
-            # Note: QualityEvaluatedGenerator expects 'material_name' as first arg (works for all domains)
+            # Note: Pass item_id (slug/key) not display name - generator expects ID
             result = self.generator.generate(
-                material_name=item_name,
+                material_name=item_id,
                 component_type=self.field,
-                author_id=frontmatter.get('author', {}).get('id')
+                author_id=item_data.get('author', {}).get('id')
             )
             
             if result.success:
-                self._set_field_content(frontmatter, result.content)
                 if not dry_run:
-                    self._save_frontmatter(yaml_file, frontmatter)
-                    print(f"✅ Generated and saved new content ({len(result.content)} chars)")
+                    self._save_to_source_data(item_id, result.content)
+                    print(f"✅ Generated and saved new content to SOURCE DATA ({len(result.content)} chars)")
+                    print(f"⚠️  Run `python3 run.py --export --domain {self.domain}` to update frontmatter")
                 else:
                     print(f"✅ Generated new content ({len(result.content)} chars) [DRY RUN - not saved]")
                 
                 return {
-                    'item': item_name,
+                    'item': item_id,
                     'field': self.field,
                     'action': 'GENERATED_NEW',
                     'improved': True,
@@ -384,13 +396,13 @@ class PostprocessCommand:
                     'dry_run': dry_run
                 }
             else:
-                print(f"❌ Failed to generate new content: {result.error}")
+                print(f"❌ Failed to generate new content: {result.error_message}")
                 return {
-                    'item': item_name,
+                    'item': item_id,
                     'field': self.field,
                     'action': 'GENERATION_FAILED',
                     'improved': False,
-                    'error': result.error
+                    'error': result.error_message
                 }
         
         # Existing content - evaluate using pipeline's QualityAnalyzer
@@ -400,8 +412,8 @@ class PostprocessCommand:
         from shared.voice.quality_analyzer import QualityAnalyzer
         analyzer = QualityAnalyzer(self.generator.api_client, strict_mode=False)
         
-        # Get author data for voice validation
-        author_data = self.generator._get_author_data(item_name)
+        # Get author data for voice validation (use item_id, not display name)
+        author_data = self.generator._get_author_data(item_id)
         
         print(f"🔍 Analyzing quality (using pipeline's validator)...")
         quality_analysis = analyzer.analyze(
@@ -426,7 +438,7 @@ class PostprocessCommand:
         elif quality_analysis['overall_score'] >= QUALITY_THRESHOLD:
             print(f"\n✅ Content meets quality threshold ({QUALITY_THRESHOLD}/100) - keeping original")
             return {
-                'item': item_name,
+                'item': item_id,
                 'field': self.field,
                 'action': 'KEPT_ORIGINAL',
                 'improved': False,
@@ -465,7 +477,7 @@ class PostprocessCommand:
                 # - Dual-write (data YAML + frontmatter sync)
                 
                 result = self.generator.generate(
-                    material_name=item_name,
+                    material_name=item_id,
                     component_type=self.field,
                     faq_count=None,
                     retry_session_id=retry_session_id,
@@ -480,7 +492,7 @@ class PostprocessCommand:
                         # Exhausted all attempts
                         print(f"\n❌ All {MAX_REGENERATION_ATTEMPTS} attempts failed")
                         return {
-                            'item': item_name,
+                            'item': item_id,
                             'field': self.field,
                             'action': 'REGENERATION_FAILED_ALL_ATTEMPTS',
                             'improved': False,
@@ -551,7 +563,7 @@ class PostprocessCommand:
         if not best_content:
             print(f"\n❌ All {MAX_REGENERATION_ATTEMPTS} attempts failed")
             return {
-                'item': item_name,
+                'item': item_id,
                 'field': self.field,
                 'action': 'REGENERATION_FAILED_ALL_ATTEMPTS',
                 'improved': False,
@@ -583,7 +595,7 @@ class PostprocessCommand:
             print(f"\n⚠️  No improvement after {attempt} attempts (keeping best version)")
         
         return {
-            'item': item_name,
+            'item': item_id,
             'field': self.field,
             'action': 'REGENERATED',
             'improved': improved,
@@ -678,11 +690,8 @@ class PostprocessCommand:
         for yaml_file in Path(frontmatter_dir).glob("*.yaml"):
             with open(yaml_file, 'r', encoding='utf-8') as f:
                 data = yaml.safe_load(f)
-                # Get the compound ID and strip domain-specific suffix
-                # For compounds: id is "carbon-monoxide-compound" but Compounds.yaml key is "carbon-monoxide"
+                # Get the compound ID (use full ID as stored in source YAML)
                 compound_id = data.get('id', yaml_file.stem)
-                if self.domain == 'compounds' and compound_id.endswith('-compound'):
-                    compound_id = compound_id[:-len('-compound')]
                 items.append(compound_id)
         
         return sorted(items)

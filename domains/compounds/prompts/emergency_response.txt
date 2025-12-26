@@ -1,0 +1,25 @@
+Write an emergency response guide for {compound_name} ({chemical_formula}) exposure or spill during laser cleaning operations.
+
+CONTEXT: Immediate actions for exposure incidents, spill containment, emergency contacts, evacuation procedures.
+
+EMPHASIS: First aid measures, spill response steps, evacuation triggers, emergency equipment, notification requirements.
+
+COMPOUND DATA:
+- Chemical Formula: {chemical_formula}
+- Hazard Class: {hazard_class}
+- Physical State: {state_at_stp}
+- Health Effects: {health_effects_keywords}
+- Exposure Limits: OSHA PEL: {osha_pel_ppm} ppm
+- Vapor Pressure: {vapor_pressure_pa} Pa
+
+STRUCTURE:
+- Exposure Response: Inhalation (move to fresh air, oxygen if needed), skin contact (flush with water, remove contaminated clothing), eye contact (flush 15+ minutes), ingestion (do not induce vomiting, seek medical attention)
+- Spill Containment: Evacuation radius, ventilation requirements, containment methods, neutralization (if applicable), cleanup procedures
+- Emergency Equipment: Required on-site equipment (eyewash, shower, respirators, spill kits, fire extinguishers)
+- Notification: When to call poison control, 911, hazmat teams; reporting to OSHA/EPA if threshold exceeded
+
+WORD LENGTH: 165-495 words
+
+{voice_instruction}
+
+Generate emergency_response:

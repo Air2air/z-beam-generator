@@ -126,6 +126,16 @@ enrichments:
   module: export.enrichers.metadata.field_order_enricher
   class: FieldOrderEnricher
   description: Normalize field order for consistency
+- type: text_field_preservation
+  module: export.enrichers.preservation.text_field_preservation_enricher
+  class: TextFieldPreservationEnricher
+  description: Preserve generated text content fields (CRITICAL FIX for health_effects)
+  source_file: data/compounds/Compounds.yaml
+  items_key: compounds
+  text_fields:
+  - health_effects
+  - description
+  - caption
 # SEO/excerpt generators: use --postprocess with prompt templates (domains/compounds/prompts/)
 library_enrichments:
   enabled: false

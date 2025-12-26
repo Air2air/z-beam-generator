@@ -1,0 +1,25 @@
+Write a PPE requirements guide for {compound_name} ({chemical_formula}) exposure during laser cleaning operations.
+
+CONTEXT: Personal protective equipment recommendations for operators handling materials contaminated with this compound.
+
+EMPHASIS: Respiratory protection levels, skin/eye protection, protective clothing requirements, equipment specifications, usage conditions, limitations.
+
+COMPOUND DATA:
+- Chemical Formula: {chemical_formula}
+- Hazard Class: {hazard_class}
+- Health Effects: {health_effects_keywords}
+- Exposure Limits: OSHA PEL: {osha_pel_ppm} ppm, NIOSH REL: {niosh_rel_ppm} ppm
+- Physical State: {state_at_stp}
+- Volatility: {vapor_pressure_pa} Pa
+
+STRUCTURE:
+- Respiratory Protection: NIOSH-approved respirator types, selection criteria based on concentration levels
+- Eye/Face Protection: Chemical splash goggles, face shields, specifications
+- Skin Protection: Gloves (material type, breakthrough time), protective clothing, barrier creams
+- Emergency Equipment: Eyewash stations, safety showers, spill kits
+
+WORD LENGTH: 165-495 words
+
+{voice_instruction}
+
+Generate ppe_requirements:

@@ -1,7 +1,7 @@
 # Frontmatter Source of Truth Policy
 
-**Version**: 1.0  
-**Date**: December 23, 2025  
+**Version**: 1.1  
+**Date**: December 24, 2025  
 **Status**: MANDATORY - CRITICAL ARCHITECTURAL POLICY
 
 ---
@@ -11,6 +11,17 @@
 **Frontmatter files are GENERATED OUTPUT, not source data.**
 
 **NEVER edit frontmatter files directly. ALL changes MUST be made in source data or export configurations.**
+
+## ⚠️ **POSTPROCESSING MANDATORY POLICY (December 24, 2025)**
+
+**Postprocessing MUST work on source data ONLY:**
+- ✅ Read from `data/*.yaml` files (source data)
+- ✅ Write to `data/*.yaml` files (source data)  
+- ❌ NEVER read from `frontmatter/*.yaml` files
+- ❌ NEVER write to `frontmatter/*.yaml` files
+- ✅ User runs `--export` after postprocessing to update frontmatter
+
+**Grade**: F violation if postprocessing touches frontmatter files directly.
 
 ---
 

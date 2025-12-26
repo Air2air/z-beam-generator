@@ -59,6 +59,60 @@ component_types:
     max_length: 250
     extraction_strategy: raw
     prompt_template: "first_aid.txt"
+    
+  ppe_requirements:
+    display_name: "PPE Requirements"
+    enabled: true
+    default_length: 250
+    min_length: 200
+    max_length: 300
+    extraction_strategy: raw
+    prompt_template: "ppe_requirements.txt"
+    
+  regulatory_standards:
+    display_name: "Regulatory Standards"
+    enabled: true
+    default_length: 250
+    min_length: 200
+    max_length: 300
+    extraction_strategy: raw
+    prompt_template: "regulatory_standards.txt"
+    
+  emergency_response:
+    display_name: "Emergency Response"
+    enabled: true
+    default_length: 250
+    min_length: 200
+    max_length: 300
+    extraction_strategy: raw
+    prompt_template: "emergency_response.txt"
+    
+  chemical_properties:
+    display_name: "Chemical Properties"
+    enabled: true
+    default_length: 250
+    min_length: 200
+    max_length: 300
+    extraction_strategy: raw
+    prompt_template: "chemical_properties.txt"
+    
+  environmental_impact:
+    display_name: "Environmental Impact"
+    enabled: true
+    default_length: 250
+    min_length: 200
+    max_length: 300
+    extraction_strategy: raw
+    prompt_template: "environmental_impact.txt"
+    
+  detection_monitoring:
+    display_name: "Detection & Monitoring"
+    enabled: true
+    default_length: 250
+    min_length: 200
+    max_length: 300
+    extraction_strategy: raw
+    prompt_template: "detection_monitoring.txt"
 
 # Generation settings
 generation:
@@ -97,6 +151,18 @@ component_extraction:
   detection_methods:
     extraction_strategy: raw
   first_aid:
+    extraction_strategy: raw
+  ppe_requirements:
+    extraction_strategy: raw
+  regulatory_standards:
+    extraction_strategy: raw
+  emergency_response:
+    extraction_strategy: raw
+  chemical_properties:
+    extraction_strategy: raw
+  environmental_impact:
+    extraction_strategy: raw
+  detection_monitoring:
     extraction_strategy: raw
 
 # Data sources

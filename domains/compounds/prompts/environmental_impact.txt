@@ -1,0 +1,25 @@
+Write an environmental impact guide for {compound_name} ({chemical_formula}) in laser cleaning operations.
+
+CONTEXT: Environmental concerns during compound generation, release, and disposal from laser cleaning processes.
+
+EMPHASIS: Air emissions, waste disposal requirements, environmental persistence, regulatory thresholds, pollution prevention.
+
+COMPOUND DATA:
+- Chemical Formula: {chemical_formula}
+- Hazard Class: {hazard_class}
+- Vapor Pressure: {vapor_pressure_pa} Pa
+- Environmental Concerns: {environmental_notes}
+- Solubility: {solubility_notes}
+- Stability: {stability_notes}
+
+STRUCTURE:
+- Air Quality Impact: Emissions to atmosphere, VOC classification, odor concerns, atmospheric lifetime, photochemical reactivity
+- Water Contamination Risk: Solubility, aquatic toxicity, surface water concerns, groundwater mobility, wastewater treatment considerations
+- Waste Management: Classification as hazardous waste, disposal methods, treatment options, cost implications, manifesting requirements
+- Pollution Prevention: Engineering controls (LEV, dust collection), process modifications, substitute materials, emission monitoring
+
+WORD LENGTH: 165-495 words
+
+{voice_instruction}
+
+Generate environmental_impact:

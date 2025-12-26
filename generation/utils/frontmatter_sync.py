@@ -55,11 +55,13 @@ def get_frontmatter_path(item_name: str, field_name: str, domain: str) -> Path:
         adapter = DomainAdapter(domain)
         config = adapter.config
         
-        # Get frontmatter directory from config
-        frontmatter_dir = config.get('frontmatter_directory', f'frontmatter/{domain}')
+        # Get frontmatter directory from config (check both root and export)
+        frontmatter_dir = config.get('frontmatter_directory') or \
+                         config.get('export', {}).get('frontmatter_directory', f'frontmatter/{domain}')
         
-        # Get filename pattern from config (e.g., "{slug}-laser-cleaning.yaml")
-        pattern = config.get('frontmatter_filename_pattern', '{slug}.yaml')
+        # Get filename pattern from config (check both root and export)
+        pattern = config.get('frontmatter_filename_pattern') or \
+                 config.get('export', {}).get('filename_pattern', '{slug}.yaml')
         
         # NEW: Legacy slug (parentheses REMOVED - old behavior)
         # Example: "Acrylic (PMMA)" → "acrylic-pmma"
@@ -133,9 +135,9 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
         print(f"   ✅ Updated {domain} frontmatter {field_name} for {item_name}")
         logger.info(f"   ✅ Updated {domain} frontmatter {field_name} for {item_name}")
         
-        # Atomic write using save_yaml
+        # Atomic write using save_yaml (path first, data second)
         frontmatter_path.parent.mkdir(parents=True, exist_ok=True)
-        save_yaml(frontmatter_data, frontmatter_path)
+        save_yaml(frontmatter_path, frontmatter_data)
         
         print(f"   💾 Frontmatter synced: {frontmatter_path}")
         logger.info(f"   💾 Frontmatter synced: {frontmatter_path}")
