@@ -56,7 +56,7 @@ title: Test Title
             data = load_yaml(temp_path)
             assert data['id'] == 'test-id'
             assert data['name'] == 'Test Name'
-            assert data['title'] == 'Test Title'
+            assert data['page_title'] == 'Test Title'
         finally:
             Path(temp_path).unlink()
     
@@ -75,7 +75,7 @@ schema_version: '4.0.0'
         try:
             data = load_yaml(temp_path)
             assert data['id'] == 'test-id'
-            assert data['title'] == 'Test Title'
+            assert data['page_title'] == 'Test Title'
             assert data['schema_version'] == '4.0.0'
         finally:
             Path(temp_path).unlink()
@@ -88,7 +88,7 @@ class TestDomainLinkagesFlattening:
         """Should extract all linkage types from nested structure"""
         data = {
             'id': 'test-id',
-            'title': 'Test',
+            'page_title': 'Test',
             'relationships': {
                 'produces_compounds': [{'id': 'compound-1'}],
                 'related_materials': [{'id': 'material-1'}],
@@ -142,7 +142,7 @@ class TestDomainLinkagesFlattening:
         """Should return unchanged if no relationships"""
         data = {
             'id': 'test-id',
-            'title': 'Test',
+            'page_title': 'Test',
             'produces_compounds': [{'id': 'compound-1'}]  # Already flat
         }
         
@@ -168,22 +168,22 @@ class TestDuplicateFieldRemoval:
     """Test removal of duplicate 'name' field"""
     
     def test_remove_name_when_title_exists(self):
-        """Should remove 'name' field if 'title' exists"""
+        """Should remove 'name' field if 'page_title' exists"""
         data = {
             'id': 'test-id',
             'name': 'Test Name',
-            'title': 'Test Title',
+            'page_title': 'Test Title',
             'slug': 'test-slug'
         }
         
         result = remove_duplicate_fields(data)
         
         assert 'name' not in result
-        assert 'title' in result
-        assert result['title'] == 'Test Title'
+        assert 'page_title' in result
+        assert result['page_title'] == 'Test Title'
     
     def test_keep_name_if_no_title(self):
-        """Should keep 'name' if 'title' doesn't exist"""
+        """Should keep 'name' if 'page_title' doesn't exist"""
         data = {
             'id': 'test-id',
             'name': 'Test Name',
@@ -199,7 +199,7 @@ class TestDuplicateFieldRemoval:
         """Should return unchanged if no 'name' field"""
         data = {
             'id': 'test-id',
-            'title': 'Test Title'
+            'page_title': 'Test Title'
         }
         
         result = remove_duplicate_fields(data)
@@ -216,7 +216,7 @@ class TestFieldReordering:
             'author': {'id': 'author-1'},
             'id': 'test-id',
             'schema_version': '5.0.0',
-            'title': 'Test Title',
+            'page_title': 'Test Title',
             'slug': 'test-slug',
             'category': 'test-category'
         }
@@ -226,7 +226,7 @@ class TestFieldReordering:
         
         # First 6 fields should be in canonical order
         assert keys[0] == 'id'
-        assert keys[1] == 'title'
+        assert keys[1] == 'page_title'
         assert keys[2] == 'slug'
         assert keys[3] == 'category'
         assert keys[4] == 'schema_version'
@@ -238,7 +238,7 @@ class TestFieldReordering:
         data = {
             'id': 'test-id',
             'unknown_field': 'value',
-            'title': 'Test Title',
+            'page_title': 'Test Title',
             'another_unknown': 'value2'
         }
         
@@ -246,7 +246,7 @@ class TestFieldReordering:
         keys = list(result.keys())
         
         assert keys[0] == 'id'
-        assert keys[1] == 'title'
+        assert keys[1] == 'page_title'
         # Unknown fields at end
         assert 'unknown_field' in keys[2:]
         assert 'another_unknown' in keys[2:]
@@ -285,7 +285,7 @@ class TestSchemaVersionUpdate:
         """Should add schema_version if not present"""
         data = {
             'id': 'test-id',
-            'title': 'Test'
+            'page_title': 'Test'
         }
         
         result = update_schema_version(data)
@@ -340,7 +340,7 @@ relationships:
             
             # Should have removed duplicate name
             assert 'name' not in data
-            assert 'title' in data
+            assert 'page_title' in data
             
             # Should be reordered (id first)
             keys = list(data.keys())
@@ -409,7 +409,7 @@ class TestFieldOrderSpecification:
     
     def test_field_order_has_required_fields(self):
         """Should contain all required fields in correct order"""
-        required_first = ['id', 'title', 'slug', 'category', 'subcategory']
+        required_first = ['id', 'page_title', 'slug', 'category', 'subcategory']
         
         for i, field in enumerate(required_first):
             assert FIELD_ORDER[i] == field

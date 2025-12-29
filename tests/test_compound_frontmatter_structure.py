@@ -156,7 +156,7 @@ class TestCompoundFrontmatterStructure:
             assert isinstance(pbc, dict), (
                 "produced_by_contaminants must be a dict"
             )
-            assert 'title' in pbc, "produced_by_contaminants must have 'title'"
+            assert 'page_title' in pbc, "produced_by_contaminants must have 'title'"
             assert 'description' in pbc, "produced_by_contaminants must have 'description'"
             assert 'items' in pbc, "produced_by_contaminants must have 'items'"
             assert isinstance(pbc['items'], list), (
@@ -169,7 +169,7 @@ class TestCompoundFrontmatterStructure:
             assert isinstance(fom, dict), (
                 "found_on_materials must be a dict"
             )
-            assert 'title' in fom, "found_on_materials must have 'title'"
+            assert 'page_title' in fom, "found_on_materials must have 'title'"
             assert 'description' in fom, "found_on_materials must have 'description'"
             assert 'items' in fom, "found_on_materials must have 'items'"
             assert isinstance(fom['items'], list), (

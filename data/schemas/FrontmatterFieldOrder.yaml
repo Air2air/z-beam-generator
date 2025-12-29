@@ -106,7 +106,6 @@ materials:
     # ─────────────────────────────────────────────────────
     - id
     - name
-    - title
     - category
     
     # ─────────────────────────────────────────────────────
@@ -452,7 +451,6 @@ relationships_structure:
 link_item_structure:
   - id
   - slug
-  - title
   - url
   - image
   - frequency  # or other context-specific fields
@@ -465,7 +463,6 @@ author_structure:
   - name
   - country
   - country_display
-  - title
   - sex
   - jobTitle
   - expertise

@@ -122,10 +122,11 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
             frontmatter_data = load_yaml(frontmatter_path) or {}
         else:
             # Initialize minimal frontmatter structure
+            # Note: 'title' field deprecated (Dec 29, 2025) - use 'page_title' instead
             frontmatter_data = {
                 'name': item_name,
                 'slug': item_name.lower().replace(' ', '-').replace('_', '-'),
-                'title': f"{item_name}"
+                'page_title': f"{item_name}"
             }
             logger.info(f"   📝 Creating new frontmatter file: {frontmatter_path}")
         
