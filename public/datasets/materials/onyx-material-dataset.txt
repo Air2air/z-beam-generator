@@ -1,0 +1,58 @@
+Onyx Laser Cleaning Dataset
+================================================================================
+
+Description: Unlike fragile marbles that splinter easily under laser beams, onyx withstands intense heat without cracking due to its solid density, allowing restorers to safely revive cultural artifacts.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : stone
+subcategory                   : sedimentary
+name                          : Onyx
+fractureToughness             : 0.78 MPa m^{1/2}
+youngsModulus                 : 78.0 GPa
+oxidationResistance           : 1.0 dimensionless (resistance index)
+density                       : 2.65 g/cm³
+hardness                      : 7.0 Mohs
+corrosionResistance           : 0.96 dimensionless
+compressiveStrength           : 85.0 MPa
+flexuralStrength              : 12.5 MPa
+tensileStrength               : 12.5 MPa
+porosity                      : 0.4 %
+laserDamageThreshold          : 8 J/cm²
+absorptivity                  : 0.2 dimensionless
+absorptionCoefficient         : 100 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.1 dimensionless
+thermalDestructionPoint       : 1983 K
+vaporPressure                 : 0.001 Pa
+thermalDestruction            : 1983.0 K
+specificHeat                  : 740.0 J/(kg·K)
+laserReflectivity             : 0.035 dimensionless
+thermalConductivity           : 2.04 W/m·K
+thermalExpansion              : 1.2e-05 K^{-1}
+laserAbsorption               : 0.32 
+thermalDiffusivity            : 1.05e-06 m²/s
+ablationThreshold             : 4.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for Nd:YAG lasers in stone cleaning to avoid thermal damage; starting at 100W for light contamination on Onyx (chalcedony-based, low thermal conductivity); max safe below 500W to prevent cracking (based on IPG Photonics specs and studies in J. Cult. Herit. 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Onyx absorption and minimal subsurface damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive thermal buildup
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

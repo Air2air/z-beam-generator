@@ -420,9 +420,10 @@ def normalize_relationship(
         
         # Add or update _section
         if '_section' not in normalized:
+            # Use section_description (new standard) instead of description
             normalized['_section'] = {
                 'title': rel_metadata['title'],
-                'description': rel_metadata['description'],
+                'section_description': rel_metadata['description'],
                 'icon': rel_metadata['icon'],
                 'order': rel_metadata['order'],
                 'variant': rel_metadata['variant']
@@ -432,8 +433,9 @@ def normalize_relationship(
             section = normalized['_section']
             if 'title' not in section:
                 section['title'] = rel_metadata['title']
-            if 'description' not in section:
-                section['description'] = rel_metadata['description']
+            if 'section_description' not in section and 'description' not in section:
+                # Use section_description (new standard)
+                section['section_description'] = rel_metadata['description']
             if 'icon' not in section:
                 section['icon'] = rel_metadata['icon']
             if 'order' not in section:

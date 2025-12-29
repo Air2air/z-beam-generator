@@ -1,0 +1,58 @@
+Beech Laser Cleaning Dataset
+================================================================================
+
+Description: Beech, this hardwood, exhibits balanced strength and porosity, which suits laser cleaning for cultural heritage artifacts. Contaminants, they yield to precise ablation, dependent from the material's moderate resilience, yielding clean surfaces without excessive charring.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : wood
+subcategory                   : hardwood
+name                          : Beech
+fractureToughness             : 0.39 MPa√m
+corrosionResistance           : 0.25 dimensionless (durability index)
+flexuralStrength              : 100.0 MPa
+oxidationResistance           : 19.7 vol% O2
+porosity                      : 0.59 fraction
+tensileStrength               : 100.0 MPa
+compressiveStrength           : 40.0 MPa
+youngsModulus                 : 11.4 GPa
+density                       : 720.0 kg/m³
+hardness                      : 5782.0 N
+laserDamageThreshold          : 1.5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 1000000 m⁻¹
+thermalShockResistance        : 1.2 MW/m
+reflectivity                  : 0.15 dimensionless
+thermalDestructionPoint       : 523 K
+vaporPressure                 : 1000 Pa
+laserReflectivity             : 0.42 dimensionless
+thermalDestruction            : 573.0 K
+thermalExpansion              : 4e-05 K^{-1}
+specificHeat                  : 1380.0 J/(kg·K)
+laserAbsorption               : 31000.0 m^{-1}
+thermalConductivity           : 0.17 W/m·K
+thermalDiffusivity            : 1.63e-07 m²/s
+ablationThreshold             : 2.3 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-300 W
+                                Typical range for 1064 nm laser cleaning of wood like Beech to remove contaminants without charring; starting at 150 W balances efficiency and safety. Max avoids thermal damage given Beech's low thermal conductivity (~0.15 W/mK). Source: Studies on Nd:YAG laser cleaning of wooden artifacts (e.g., J. Cult. Herit. 2015, vol. 16, pp. 680-687).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Beech absorption characteristics
+spotSize                      : 0.1-500 μm
+                                Focused spot size for precise cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning without thermal damage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete cleaning
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

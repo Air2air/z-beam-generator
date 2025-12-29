@@ -1,0 +1,58 @@
+MDF Laser Cleaning Dataset
+================================================================================
+
+Description: MDF distinguishes itself through its uniform density and smooth surface, which allow for exact machining and finishing in furniture and architectural projects—advantages that exceed the capabilities of natural hardwoods.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : wood
+subcategory                   : hardwood
+name                          : MDF
+fractureToughness             : 0.42 MPa m^{1/2}
+youngsModulus                 : 3.1 GPa
+oxidationResistance           : 0.25 dimensionless
+density                       : 750.0 kg/m³
+hardness                      : 4000.0 N
+corrosionResistance           : 0.25 
+compressiveStrength           : 25.0 MPa
+flexuralStrength              : 25.0 MPa
+tensileStrength               : 20.0 MPa
+porosity                      : 0.53 fraction
+laserDamageThreshold          : 5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 50000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.15 dimensionless
+thermalDestructionPoint       : 550 K
+vaporPressure                 : 100 Pa
+thermalDestruction            : 523.0 K
+specificHeat                  : 1700.0 J/(kg·K)
+laserReflectivity             : 0.12 dimensionless
+thermalConductivity           : 0.13 W/m·K
+thermalExpansion              : 5e-06 K^{-1}
+laserAbsorption               : 950000.0 m^{-1}
+thermalDiffusivity            : 1.07e-07 m²/s
+ablationThreshold             : 1.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for industrial laser cleaning of wood-based materials like MDF to avoid charring; starting at 100W for light contamination. Max safe before substrate damage (thermal degradation) is ~500W at 1064 nm. Source: IPG Photonics YLR series specs and studies on laser ablation of composites (e.g., J. Laser Appl. 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal MDF absorption and minimal substrate damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control
+repetitionRate                : 1-200 kHz
+                                High repetition rate for efficient surface cleaning
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled material removal
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform surface treatment
+passCount                     : 1-10 passes
+                                Number of cleaning passes for thorough contamination removal
+overlapRatio                  : 10-90 %
+                                Beam overlap percentage for complete surface coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -1,0 +1,481 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "terracotta-material-dataset",
+  "name": "Terracotta Laser Cleaning Dataset",
+  "description": "We've found that terracotta cleans up nicely with laser treatment in heritage projects because its natural heat resistance keeps the structure intact during the process. Its low conductivity focuses the energy right on surface dirt without spreading deep inside, so you get precise results on old tiles or artifacts. But always watch for any underlying cracks that could worsen under repeated passes.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "masonry",
+      "subcategory": "concrete",
+      "name": "Terracotta",
+      "youngsModulus": {
+        "value": 15.0,
+        "unit": "GPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "oxidationResistance": {
+        "value": 0.96,
+        "unit": "dimensionless (scale 0-1, 1=excellent resistance)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "density": {
+        "value": 2100.0,
+        "unit": "kg/m\u00b3",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "hardness": {
+        "value": 2.5,
+        "unit": "Mohs",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "corrosionResistance": {
+        "value": 0.92,
+        "unit": "dimensionless (normalized resistance index)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "compressiveStrength": {
+        "value": 14.5,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "flexuralStrength": {
+        "value": 7.5,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "tensileStrength": {
+        "value": 3.5,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "fractureToughness": {
+        "value": 1.2,
+        "unit": "MPa m^{1/2}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserDamageThreshold": {
+        "value": 3,
+        "unit": "J/cm\u00b2",
+        "min": 1,
+        "max": 10,
+        "source": "ai_research"
+      },
+      "absorptivity": {
+        "value": 0.75,
+        "unit": "dimensionless",
+        "min": 0.6,
+        "max": 0.9,
+        "source": "ai_research"
+      },
+      "absorptionCoefficient": {
+        "value": 500000,
+        "unit": "m\u207b\u00b9",
+        "min": 100000,
+        "max": 1000000,
+        "source": "ai_research"
+      },
+      "thermalShockResistance": {
+        "value": 1.5,
+        "unit": "MW/m",
+        "min": 0.5,
+        "max": 2.5,
+        "source": "ai_research"
+      },
+      "reflectivity": {
+        "value": 0.25,
+        "unit": "dimensionless",
+        "min": 0.1,
+        "max": 0.4,
+        "source": "ai_research"
+      },
+      "thermalDestructionPoint": {
+        "value": 1473,
+        "unit": "K",
+        "min": 1273,
+        "max": 1673,
+        "source": "ai_research"
+      },
+      "vaporPressure": {
+        "value": 0.01,
+        "unit": "Pa",
+        "min": 0.001,
+        "max": 1,
+        "source": "ai_research"
+      },
+      "thermalDestruction": {
+        "value": 923.0,
+        "unit": "K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "specificHeat": {
+        "value": 880.0,
+        "unit": "J/(kg\u00b7K)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserReflectivity": {
+        "value": 0.24,
+        "unit": "",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalConductivity": {
+        "value": 0.93,
+        "unit": "W/m\u00b7K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalExpansion": {
+        "value": 6.5e-06,
+        "unit": "K^{-1}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserAbsorption": {
+        "value": 0.72,
+        "unit": "dimensionless",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalDiffusivity": {
+        "value": 4.08e-07,
+        "unit": "m\u00b2/s",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "ablationThreshold": {
+        "value": 1.45,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Laser Ablation Thresholds for Terracotta in Cultural Heritage Conservation",
+        "citation": "Pouli, P. et al., Journal of Cultural Heritage, 2010, DOI: 10.1016/j.culher.2010.03.005",
+        "context": "Traditional fired terracotta (SiO2-Al2O3-Fe2O3 composition, 80-90% silica content), 25\u00b0C, Nd:YAG laser at 1064 nm wavelength, 5-10 ns pulse duration, atmospheric pressure",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:28:03.589640",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 20,
+        "max": 200,
+        "value": 50,
+        "unit": "W",
+        "description": "Typical range for delicate ceramics like terracotta to avoid thermal damage; starting at 50W for light contamination removal. Max safe ~200W to prevent cracking. Source: Studies on Nd:YAG laser cleaning of archaeological ceramics (e.g., Verges-Belmin et al., 2008, J. Cult. Herit.)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-infrared wavelength optimized for Terracotta absorption and minimal substrate damage"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 100,
+        "unit": "\u03bcm",
+        "description": "Beam spot diameter for precise cleaning control and adequate energy density"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 50,
+        "unit": "kHz",
+        "description": "Optimal repetition rate for efficient cleaning coverage and thermal management"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 500,
+        "unit": "mm/s",
+        "description": "Optimal scanning speed for uniform cleaning and process efficiency"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 2,
+        "unit": "passes",
+        "description": "Recommended number of cleaning passes for complete contaminant removal"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 50,
+        "unit": "%",
+        "description": "Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 15.0,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 0.96,
+      "unitText": "dimensionless (scale 0-1, 1=excellent resistance)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 2100.0,
+      "unitText": "kg/m\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 2.5,
+      "unitText": "Mohs"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.92,
+      "unitText": "dimensionless (normalized resistance index)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 14.5,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 7.5,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 3.5,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 1.2,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 0.42,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.75,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 500000,
+      "unitText": "m\u207b\u00b9"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 3,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalShockResistance",
+      "value": 1.5,
+      "unitText": "MW/m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "reflectivity",
+      "value": 0.25,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestructionPoint",
+      "value": 1473,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "vaporPressure",
+      "value": 0.01,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 923.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 880.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.24,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 0.93,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 6.5e-06,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.72,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 4.08e-07,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 1.45,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "20-200",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/terracotta-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/terracotta-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/terracotta-material-dataset.txt"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+Rhodium Laser Cleaning Dataset
+================================================================================
+
+Description: Rhodium offers excellent corrosion resistance, preserving surface integrity even during long-term exposure to harsh chemicals and high temperatures in aerospace and chemical processing applications
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : non-ferrous
+name                          : Rhodium
+electricalConductivity        : 23300000.0 S/m
+electricalResistivity         : 4.33e-08 Ω·m
+fractureToughness             : 2.2 MPa√m
+surfaceRoughness              : 0.15 μm
+youngsModulus                 : 380.0 GPa
+oxidationResistance           : 1273.0 K
+density                       : 12.41 g/cm³
+hardness                      : 206.0 HV
+corrosionResistance           : 1.0 dimensionless
+compressiveStrength           : 1000.0 MPa
+flexuralStrength              : 550.0 MPa
+tensileStrength               : 550.0 MPa
+porosity                      : 0.0 %
+absorptivity                  : 0.21 dimensionless
+boilingPoint                  : 3968.0 K
+absorptionCoefficient         : 10700000.0 m⁻¹
+meltingPoint                  : 2237.0 K
+vaporPressure                 : 0.00133 Pa
+thermalDestructionPoint       : 2237.0 K
+reflectivity                  : 0.82 dimensionless
+thermalShockResistance        : 380.0 °C
+laserDamageThreshold          : 0.85 J/cm²
+thermalDestruction            : 2237.0 K
+specificHeat                  : 243.0 J/kg·K
+laserReflectivity             : 0.7 dimensionless
+thermalConductivity           : 150.0 W/m·K
+thermalExpansion              : 8.3e-06 K^{-1}
+laserAbsorption               : 0.3 dimensionless
+thermalDiffusivity            : 4.97e-05 m²/s
+ablationThreshold             : 0.85 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for industrial Nd:YAG laser cleaners on reflective metals like Rhodium to balance efficiency and avoid thermal damage; recommended starting at 150W for contamination removal. Rhodium's high reflectivity (~65% at 1064 nm) requires higher power than less reflective substrates. Source: IPG Photonics YLR series specs and studies on PGM cleaning (e.g., Opt. Lasers Eng. 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Rhodium's moderate reflectivity and thermal absorption
+spotSize                      : 0.1-500 μm
+                                Optimal beam diameter for precision cleaning resolution
+repetitionRate                : 1-200 kHz
+                                High repetition rate for efficient cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Scanning speed for efficient area coverage
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning results
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

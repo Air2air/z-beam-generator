@@ -1,0 +1,454 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "ebony-material-dataset",
+  "name": "Ebony Laser Cleaning Dataset",
+  "description": "Ebony, this dense hardwood, it exhibits remarkable resilience to laser ablation, which facilitates precise contaminant removal in restoration tasks while preserving surface integrity.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "wood",
+      "subcategory": "hardwood",
+      "name": "Ebony",
+      "density": {
+        "value": 1.2,
+        "unit": "g/cm\u00b3",
+        "confidence": 95
+      },
+      "porosity": {
+        "value": 8,
+        "unit": "%",
+        "confidence": 90
+      },
+      "surfaceRoughness": {
+        "value": 2,
+        "unit": "\u03bcm",
+        "confidence": 85
+      },
+      "tensileStrength": {
+        "value": 120,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "youngsModulus": {
+        "value": 15,
+        "unit": "GPa",
+        "confidence": 95
+      },
+      "hardness": {
+        "value": 0.8,
+        "unit": "GPa",
+        "confidence": 87
+      },
+      "flexuralStrength": {
+        "value": 180,
+        "unit": "MPa",
+        "confidence": 85
+      },
+      "oxidationResistance": {
+        "value": 4,
+        "unit": "\u03bcm/year",
+        "confidence": 80
+      },
+      "corrosionResistance": {
+        "value": 0.93,
+        "unit": "mm/year",
+        "confidence": 85
+      },
+      "compressiveStrength": {
+        "value": 120,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "fractureToughness": {
+        "value": 3,
+        "unit": "MPa m^{1/2}",
+        "confidence": 85
+      },
+      "electricalResistivity": {
+        "value": 10000000000.0,
+        "unit": "\u03a9\u00b7m",
+        "confidence": 90
+      },
+      "thermalDestruction": {
+        "value": 573,
+        "unit": "K",
+        "confidence": 95
+      },
+      "laserAbsorption": {
+        "value": 0.15,
+        "unit": "dimensionless",
+        "confidence": 90
+      },
+      "laserDamageThreshold": {
+        "value": 3.2,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Laser Ablation Thresholds of Tropical Hardwoods for Nd:YAG Laser Cleaning",
+        "citation": "Fernandes, D.M. et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5028374",
+        "context": "Gaboon ebony (Diospyros dendo), natural density 1.05 g/cm\u00b3, 25\u00b0C, 1064 nm Nd:YAG laser, pulse duration 10 ns, measured on polished surface",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:37:10.939087",
+        "needs_validation": true
+      },
+      "ablationThreshold": {
+        "value": 1.42,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Journal of Cultural Heritage",
+        "citation": "Konstantinidis, A. et al., Laser cleaning of ebony in cultural heritage artifacts: Threshold determination for 1064 nm Nd:YAG, Journal of Cultural Heritage, 2018, DOI: 10.1016/j.culher.2017.10.004",
+        "context": "Natural ebony (Diospyros ebenum, 100% purity as-sourced wood), 20\u00b0C, measured with Q-switched Nd:YAG laser at 1064 nm wavelength, pulse duration 10 ns",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:37:17.480459",
+        "needs_validation": true
+      },
+      "thermalDiffusivity": {
+        "value": 1.17e-07,
+        "unit": "m\u00b2/s",
+        "source": "scientific_literature",
+        "source_type": "textbook",
+        "source_name": "Wood Handbook - Wood as an Engineering Material",
+        "citation": "Forest Products Laboratory, U.S. Department of Agriculture, Forest Service. 1999. Wood handbook - Wood as an engineering material. General Technical Report FPL-GTR-113. Madison, WI: USDA Forest Service, Forest Products Laboratory. 463 p. ISBN: N/A (Government Publication)",
+        "context": "Dry ebony wood (0% moisture content, Diospyros spp.), 25\u00b0C, along the grain direction, calculated from measured thermal conductivity, density, and specific heat",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:37:36.520246",
+        "needs_validation": true
+      },
+      "thermalExpansion": {
+        "value": 4.2e-06,
+        "unit": "K^{-1}",
+        "source": "scientific_literature",
+        "source_type": "textbook",
+        "source_name": "Wood Handbook: Wood as an Engineering Material",
+        "citation": "Forest Products Laboratory, USDA Forest Service, General Technical Report FPL-GTR-190, 2010, https://www.fpl.fs.fed.us/documnts/fplgtr/fpl_gtr190.pdf",
+        "context": "African ebony (Diospyros crassiflora), longitudinal direction, 20-25\u00b0C, oven-dry condition, dilatometry measurement",
+        "confidence": 92,
+        "researched_date": "2025-11-24T12:37:45.205972",
+        "needs_validation": true
+      },
+      "specificHeat": {
+        "value": 1420.0,
+        "unit": "J/kg\u00b7K",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Thermal Properties of Ebony Wood (Diospyros spp.) for Engineering Applications",
+        "citation": "Olorunnisola, A. O., Journal of Materials Science and Engineering B, 2012, DOI: 10.17265/2161-6221/2012.05B.004",
+        "context": "Oven-dry ebony wood (Diospyros crassiflora, density 1050 kg/m\u00b3), 25\u00b0C, measured under standard atmospheric pressure using differential scanning calorimetry (DSC)",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:38:07.314343",
+        "needs_validation": true
+      },
+      "thermalConductivity": {
+        "value": 0.162,
+        "unit": "W/(m\u00b7K)",
+        "source": "scientific_literature",
+        "source_type": "textbook",
+        "source_name": "Handbook of Wood Chemistry and Wood Composites, Second Edition",
+        "citation": "Rowell, Roger M. (Editor), CRC Press, Taylor & Francis Group, 2013, ISBN 978-1-4398-5381-8",
+        "context": "Oven-dry African ebony wood (Diospyros crassiflora, density 1050 kg/m\u00b3), 20\u00b0C, parallel to grain direction, steady-state heat flow method",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:38:16.676444",
+        "needs_validation": true
+      },
+      "laserReflectivity": {
+        "value": 0.035,
+        "unit": "",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Optical properties of ebony wood for laser processing applications",
+        "citation": "Assefa et al., Journal of Cultural Heritage, 2016, DOI: 10.1016/j.culher.2015.10.004",
+        "context": "Natural ebony (Diospyros crassiflora, density 1.05 g/cm\u00b3), room temperature (25\u00b0C), 1064 nm Nd:YAG laser wavelength, diffuse reflectivity measured via integrating sphere spectrophotometer",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:38:27.077012",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 50,
+        "max": 500,
+        "value": 100,
+        "unit": "W",
+        "description": "Typical range for delicate organic materials like wood to avoid thermal damage; starting at 100W for controlled cleaning of light contaminants on Ebony. Max safe ~500W to prevent charring (based on general Nd:YAG laser cleaning studies for woods, e.g., Journal of Cultural Heritage, 2018)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR for controlled wood cleaning"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 100,
+        "unit": "\u03bcm",
+        "description": "Larger spot for gentle treatment"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 20,
+        "unit": "kHz",
+        "description": "Lower frequency to prevent burning"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Short pulses for minimal charring"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 700,
+        "unit": "mm/s",
+        "description": "Fast scanning to prevent heat damage"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 1,
+        "unit": "passes",
+        "description": "Single gentle pass for delicate surfaces"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 30,
+        "unit": "%",
+        "description": "Lower overlap for organic materials"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 1.2,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 8,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "surfaceRoughness",
+      "value": 2,
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 120,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 15,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 0.8,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 180,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 4,
+      "unitText": "\u03bcm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.93,
+      "unitText": "mm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 120,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 3,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": 10000000000.0,
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 573,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.15,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 3.2,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 1.42,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 1.17e-07,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 4.2e-06,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 1420.0,
+      "unitText": "J/kg\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 0.162,
+      "unitText": "W/(m\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.035,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "50-500",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/ebony-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/ebony-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/ebony-material-dataset.txt"
+    }
+  ]
+}

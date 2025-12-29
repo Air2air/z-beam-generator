@@ -1,0 +1,58 @@
+Teak Laser Cleaning Dataset
+================================================================================
+
+Description: Laser cleaning teak brings out its natural resistance to corrosion and decay, the main reason it holds up so well in marine and outdoor uses without any chance of material breakdown.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : wood
+subcategory                   : hardwood
+name                          : Teak
+youngsModulus                 : 11.17 GPa
+oxidationResistance           : 0.92 dimensionless (normalized resistance index, 0-1)
+density                       : 660.0 kg/m³
+hardness                      : 4760.0 N
+corrosionResistance           : 0.95 dimensionless (durability index)
+compressiveStrength           : 54.0 MPa
+flexuralStrength              : 110.0 MPa
+tensileStrength               : 143.0 MPa
+fractureToughness             : 0.42 MPa·m^{1/2}
+porosity                      : 0.633 dimensionless
+laserDamageThreshold          : 2.5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.15 dimensionless
+thermalDestructionPoint       : 673 K
+vaporPressure                 : 10 Pa
+thermalDestruction            : 588.0 K
+specificHeat                  : 1380.0 J/kg·K
+laserReflectivity             : 0.12 dimensionless
+thermalConductivity           : 0.15 W/m·K
+thermalExpansion              : 3.8e-06 K^{-1}
+laserAbsorption               : 0.87 dimensionless
+thermalDiffusivity            : 1.43e-07 m²/s
+ablationThreshold             : 2.8 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-300 W
+                                Typical range for industrial Nd:YAG lasers cleaning organic contaminants from wood; starting at 100 W balances efficiency and safety to avoid charring Teak's low thermal conductivity surface (e.g., manufacturer specs from IPG Photonics and studies in Optics and Lasers in Engineering, 2018). Maximum limited to prevent substrate damage.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal absorption in Teak lignin and contaminants
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete surface cleaning
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning pattern
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -21,12 +21,12 @@ from .property.material_auditor import MaterialAuditor
 
 # Validation Services
 from .validation.orchestrator import ValidationOrchestrator
-from .validation.schema_validator import UnifiedSchemaValidator
+from .validation.schema_validator import SchemaValidator
 
 __all__ = [
     # Validation Services
     'ValidationOrchestrator',
-    'UnifiedSchemaValidator',
+    'SchemaValidator',
     
     # Research Services
     'AIResearchEnrichmentService',
@@ -43,7 +43,7 @@ __all__ = [
 SERVICE_REGISTRY = {
     'validation': {
         'orchestrator': ValidationOrchestrator,
-        'schema_validator': UnifiedSchemaValidator,
+        'schema_validator': SchemaValidator,
     },
     'research': {
         'ai_research': AIResearchEnrichmentService,

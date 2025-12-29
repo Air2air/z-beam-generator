@@ -1,0 +1,54 @@
+Gneiss Laser Cleaning Dataset
+================================================================================
+
+Description: Gneiss stands out with its durable structure and low porosity, allowing laser cleaning to strip away contaminants efficiently while safeguarding the stone's natural integrity.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : stone
+subcategory                   : metamorphic
+name                          : Gneiss
+density                       : 2.7 g/cm³
+porosity                      : 3 %
+surfaceRoughness              : 8 μm
+tensileStrength               : 120 MPa
+youngsModulus                 : 50 GPa
+hardness                      : 1.8 GPa
+flexuralStrength              : 180 MPa
+oxidationResistance           : 8 μm/year
+corrosionResistance           : 0.85 mm/year
+compressiveStrength           : 120 MPa
+fractureToughness             : 6 MPa m^{1/2}
+electricalResistivity         : 1000000000000.0 Ω·m
+thermalDestruction            : 1273 K
+laserAbsorption               : 0.3 dimensionless
+laserDamageThreshold          : 1.8 J/cm²
+ablationThreshold             : 2.3 J/cm²
+thermalDiffusivity            : 1.3e-06 m²/s
+thermalExpansion              : 9.2e-06 K^{-1}
+specificHeat                  : 840.0 J/(kg·K)
+thermalConductivity           : 2.3 W/m·K
+laserReflectivity             : 0.12 
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-1000 W
+                                Typical range for industrial cleaning of hard stones like Gneiss using 1064 nm lasers to remove contaminants without substrate damage; starting at 200 W balances efficiency and safety. Conservative max to avoid thermal cracking given Gneiss's low thermal conductivity (~2 W/mK). Source: IPG Photonics equipment specs for stone cleaning; academic review in 'Laser Cleaning of Stone Surfaces' (J. Appl. Phys., 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for stone cleaning
+spotSize                      : 0.1-500 μm
+                                Moderate spot for effective treatment
+repetitionRate                : 1-200 kHz
+                                Balanced frequency for stone cleaning
+pulseWidth                    : 0.1-1000 ns
+                                Controlled pulses for minimal damage
+scanSpeed                     : 10-5000 mm/s
+                                Steady scanning for uniform cleaning
+passCount                     : 1-10 passes
+                                Multiple passes for thorough treatment
+overlapRatio                  : 10-90 %
+                                Standard overlap for consistent results
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

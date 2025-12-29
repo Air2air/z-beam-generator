@@ -1,0 +1,63 @@
+Steel Laser Cleaning Dataset
+================================================================================
+
+Description: Steel, for laser cleaning applications, manifests tenacious oxidation resistance that safeguards the substrate during contaminant removal, which leads to efficient restoration without structural compromise. This durability, it sets steel apart from less resilient ferrous alloys, exhibiting practical benefits in demanding sectors such as manufacturing and shipbuilding where surface integrity persists under intense exposure.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : ferrous
+name                          : Steel
+density                       : 7.85 g/cm³
+porosity                      : 0.1 %
+surfaceRoughness              : 1.6 μm Ra
+tensileStrength               : 400.0 MPa
+youngsModulus                 : 200.0 GPa
+hardness                      : 1.47 GPa
+flexuralStrength              : 350 MPa
+oxidationResistance           : 8 scale (1-10)
+corrosionResistance           : 6 scale (1-10)
+compressiveStrength           : 250.0 MPa
+fractureToughness             : 60.0 MPa m^{1/2}
+electricalResistivity         : 1.7e-07 Ω·m
+boilingPoint                  : 3134.0 K
+electricalConductivity        : 6700000.0 S/m
+meltingPoint                  : 1723.0 K
+thermalConductivity           : 50.0 W/(m·K)
+thermalExpansion              : 12 ×10^{-6}/K
+thermalDiffusivity            : 1.4 ×10^{-5} m²/s
+specificHeat                  : 486.0 J/(kg·K)
+thermalShockResistance        : 250 W/m
+laserReflectivity             : 0.4 dimensionless (at 1064 nm)
+absorptionCoefficient         : 0.6 dimensionless (at 1064 nm)
+ablationThreshold             : 1.5 J/cm²
+laserDamageThreshold          : 2.0 J/cm²
+thermalDestruction            : 1773.0 K
+laserAbsorption               : 0.35 dimensionless
+absorptivity                  : 0.35 dimensionless
+vaporPressure                 : 10.0 Pa
+thermalDestructionPoint       : 1773.0 K
+reflectivity                  : 0.59 
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-1000 W
+                                Typical range for industrial 1064 nm fiber lasers cleaning steel; starting at 200 W for light contamination to avoid overheating due to steel's high thermal conductivity. Max safe ~1000 W with high scan speeds to prevent substrate melting (steel melting point ~1370°C). Source: CleanLaser CL 1000 specs and IPG Photonics YLR series manuals.
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength with good absorption in Steel oxides and contaminants
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for balanced cleaning efficiency and coverage area
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage and thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for effective contaminant removal without substrate damage
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning and process efficiency
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning coverage without excessive heat accumulation
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

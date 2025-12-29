@@ -1,0 +1,33 @@
+Property,Value,Unit,Description
+category,plastic,,
+subcategory,thermoplastic,,
+name,Nylon,,
+density,1.14,g/cm³,
+porosity,0,%,
+surfaceRoughness,1.2,μm,
+tensileStrength,75,MPa,
+youngsModulus,2.7,GPa,
+hardness,0.08,GPa,
+flexuralStrength,85,MPa,
+oxidationResistance,2,μm/year,
+corrosionResistance,0.9,mm/year,
+compressiveStrength,75,MPa,
+fractureToughness,7,MPa m^{1/2},
+electricalResistivity,10000000000000.0,Ω·m,
+thermalDestruction,533,K,
+laserAbsorption,0.65,dimensionless,
+laserDamageThreshold,1.8,J/cm²,
+ablationThreshold,1.2,J/cm²,
+thermalDiffusivity,1.29e-07,m²/s,
+thermalExpansion,8e-05,K^{-1},
+specificHeat,1700.0,J/(kg·K),
+thermalConductivity,0.25,W/m·K,
+laserReflectivity,0.044,dimensionless (fraction),
+power,10-100,W,Low to moderate power range for heat-sensitive polymers like Nylon to prevent melting (melting point ~220°C); typical for 1064 nm fiber lasers in industrial cleaning. Recommended starting value balances efficiency and safety. Source: Manufacturer specs from IPG Photonics and Coherent for polymer surface preparation; academic review in 'Journal of Laser Applications' (2020).
+wavelength,355-10640,nm,Near-IR wavelength for controlled absorption
+spotSize,0.1-500,μm,Larger spot for gentle surface treatment
+repetitionRate,1-200,kHz,Lower frequency to prevent thermal damage
+pulseWidth,0.1-1000,ns,Short pulses for minimal thermal impact
+scanSpeed,10-5000,mm/s,Fast scanning to reduce heat accumulation
+passCount,1-10,passes,Multiple gentle passes for gradual cleaning
+overlapRatio,10-90,%,Lower overlap to prevent overheating

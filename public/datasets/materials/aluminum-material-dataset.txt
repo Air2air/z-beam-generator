@@ -1,0 +1,63 @@
+Aluminum Laser Cleaning Dataset
+================================================================================
+
+Description: This is a TEST description for Aluminum, generated to verify domain-aware save functionality.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : non-ferrous
+name                          : Aluminum
+density                       : 2.7 g/cm³
+porosity                      : 0 %
+surfaceRoughness              : 0.8 μm
+tensileStrength               : 90.0 MPa
+youngsModulus                 : 70.0 GPa
+hardness                      : 0.2744 GPa
+flexuralStrength              : 95 MPa
+oxidationResistance           : 5 μm/year
+corrosionResistance           : 0.1 mm/year
+compressiveStrength           : 90.0 MPa
+fractureToughness             : 25.0 MPa m^{1/2}
+electricalResistivity         : 2.65e-08 Ω·m
+boilingPoint                  : 2792.0 K
+electricalConductivity        : 37700000.0 S/m
+meltingPoint                  : 933.47 K
+thermalConductivity           : 237.0 W/(m·K)
+thermalExpansion              : 23.1 ×10^{-6}/K
+thermalDiffusivity            : 9.7 ×10^{-5} m²/s
+specificHeat                  : 900.0 J/(kg·K)
+thermalShockResistance        : 250 K
+laserReflectivity             : 0.92 
+absorptionCoefficient         : 1.2 ×10^7 m^{-1}
+ablationThreshold             : 2.5 J/cm²
+laserDamageThreshold          : 1.8 J/cm²
+thermalDestruction            : 933.47 K
+laserAbsorption               : 0.06 dimensionless
+absorptivity                  : 0.06 dimensionless
+reflectivity                  : 0.95 dimensionless
+vaporPressure                 : 101325.0 Pa
+thermalDestructionPoint       : 933.47 K
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for industrial cleaning of aluminum to remove contaminants without melting; starting at 100W balances efficiency and safety. Max limited by aluminum's high reflectivity and thermal conductivity to avoid substrate damage. Source: IPG Photonics YLR series specs and study in Optics and Lasers in Engineering (2018) on metal cleaning thresholds.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal Aluminum absorption and minimal substrate damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for effective cleaning resolution and energy density
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning coverage with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient oxide removal without excessive thermal diffusion
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for efficient coverage and cleaning effectiveness
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal pulse overlap for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

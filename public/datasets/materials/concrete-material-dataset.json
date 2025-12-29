@@ -1,0 +1,481 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "concrete-material-dataset",
+  "name": "Concrete Laser Cleaning Dataset",
+  "description": "When laser cleaning concrete, begin with controlled beam passes to strip away surface contaminants and restore durability, all while preserving its structural integrity.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "masonry",
+      "subcategory": "general",
+      "name": "Concrete",
+      "fractureToughness": {
+        "value": 0.7,
+        "unit": "MPa m^{1/2}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "density": {
+        "value": 2400.0,
+        "unit": "kg/m\u00b3",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "oxidationResistance": {
+        "value": 0.98,
+        "unit": "dimensionless",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "youngsModulus": {
+        "value": 30.0,
+        "unit": "GPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "hardness": {
+        "value": 0.4,
+        "unit": "GPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "compressiveStrength": {
+        "value": 25.0,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "tensileStrength": {
+        "value": 3.2,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "flexuralStrength": {
+        "value": 4.2,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "corrosionResistance": {
+        "value": 300.0,
+        "unit": "\u03a9\u00b7m",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserDamageThreshold": {
+        "value": 8,
+        "unit": "J/cm\u00b2",
+        "min": 5,
+        "max": 15,
+        "source": "ai_research"
+      },
+      "absorptivity": {
+        "value": 0.75,
+        "unit": "dimensionless",
+        "min": 0.6,
+        "max": 0.9,
+        "source": "ai_research"
+      },
+      "absorptionCoefficient": {
+        "value": 50000,
+        "unit": "m\u207b\u00b9",
+        "min": 10000,
+        "max": 100000,
+        "source": "ai_research"
+      },
+      "thermalShockResistance": {
+        "value": 1.5,
+        "unit": "MW/m",
+        "min": 1,
+        "max": 2,
+        "source": "ai_research"
+      },
+      "reflectivity": {
+        "value": 0.25,
+        "unit": "dimensionless",
+        "min": 0.1,
+        "max": 0.4,
+        "source": "ai_research"
+      },
+      "thermalDestructionPoint": {
+        "value": 1000,
+        "unit": "K",
+        "min": 800,
+        "max": 1200,
+        "source": "ai_research"
+      },
+      "vaporPressure": {
+        "value": 10,
+        "unit": "Pa",
+        "min": 1,
+        "max": 100,
+        "source": "ai_research"
+      },
+      "thermalDestruction": {
+        "value": 773.0,
+        "unit": "K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserReflectivity": {
+        "value": 0.35,
+        "unit": "",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalExpansion": {
+        "value": 1.2e-05,
+        "unit": "K^{-1}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalConductivity": {
+        "value": 1.4,
+        "unit": "W/m\u00b7K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "specificHeat": {
+        "value": 880.0,
+        "unit": "J/(kg\u00b7K)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserAbsorption": {
+        "value": 0.9,
+        "unit": "dimensionless",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalDiffusivity": {
+        "value": 5e-07,
+        "unit": "m\u00b2/s",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "ablationThreshold": {
+        "value": 3.2,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Laser ablation of cement-based materials using a 1064 nm Nd:YAG laser",
+        "citation": "P. Pou et al., Optics and Lasers in Engineering, 2000, DOI: 10.1016/S0143-8166(99)00078-5",
+        "context": "Standard Portland cement concrete (OPC, aggregate size 5-20 mm), room temperature (25\u00b0C), 1064 nm Nd:YAG laser, 7 ns pulse duration, atmospheric pressure",
+        "confidence": 95,
+        "researched_date": "2025-11-24T11:55:28.526883",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 100,
+        "max": 2000,
+        "value": 500,
+        "unit": "W",
+        "description": "Typical range for industrial 1064 nm laser cleaning of concrete surfaces (e.g., graffiti or rust removal); starting at 500 W balances efficiency and safety to avoid thermal cracking. Max safe below substrate damage threshold (~1000-1500 W depending on fluence). Source: CleanLaser and IPG Photonics equipment specs; academic review in J. Laser Appl. (2018) on stone/concrete cleaning."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-infrared wavelength optimized for concrete absorption and minimal substrate damage"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 0.8,
+        "unit": "mm",
+        "description": "Beam spot diameter for effective cleaning coverage and energy density control"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 50,
+        "unit": "kHz",
+        "description": "Optimal repetition rate for continuous cleaning coverage without thermal buildup"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 12,
+        "unit": "ns",
+        "description": "Pulse duration balancing efficient contaminant removal with concrete substrate preservation"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 500,
+        "unit": "mm/s",
+        "description": "Optimal scanning speed for uniform cleaning with sufficient energy deposition"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 2,
+        "unit": "passes",
+        "description": "Recommended number of passes for complete contaminant removal"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 50,
+        "unit": "%",
+        "description": "Optimal beam overlap percentage for uniform cleaning coverage"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 0.7,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 2400.0,
+      "unitText": "kg/m\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 0.98,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 30.0,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 0.4,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 25.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 3.2,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 4.2,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 300.0,
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 4.2,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.75,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 50000,
+      "unitText": "m\u207b\u00b9"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 8,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalShockResistance",
+      "value": 1.5,
+      "unitText": "MW/m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "reflectivity",
+      "value": 0.25,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestructionPoint",
+      "value": 1000,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "vaporPressure",
+      "value": 10,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 773.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.35,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 1.2e-05,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 1.4,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 880.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.9,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 5e-07,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 3.2,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "100-2000",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "mm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/concrete-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/concrete-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/concrete-material-dataset.txt"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,non-ferrous,,
+name,Gold,,
+electricalConductivity,41000000.0,S/m,
+electricalResistivity,2.44e-08,Ω·m,
+fractureToughness,47.0,MPa√m,
+surfaceRoughness,2e-09,m,
+youngsModulus,79.0,GPa,
+oxidationResistance,1.5,V,
+density,19.32,g/cm³,
+hardness,25.0,HV,
+corrosionResistance,1.0,dimensionless (0-1 scale),
+compressiveStrength,30.0,MPa,
+flexuralStrength,120.0,MPa,
+tensileStrength,120.0,MPa,
+porosity,0.0,%,
+absorptivity,0.017,dimensionless,
+boilingPoint,3129.0,K,
+absorptionCoefficient,69000000.0,m⁻¹,
+meltingPoint,1337.33,K,
+vaporPressure,0.000172,Pa,
+thermalDestructionPoint,1337.33,K,
+reflectivity,0.985,dimensionless (reflectance ratio),
+thermalShockResistance,1.8,MW/m,
+laserDamageThreshold,0.45,J/cm²,
+thermalDestruction,1337.33,K,
+specificHeat,129.0,J/kg·K,
+laserReflectivity,0.98,fraction,
+thermalConductivity,317.0,W/m·K,
+thermalExpansion,1.42e-05,K^{-1},
+laserAbsorption,0.023,dimensionless,
+thermalDiffusivity,0.000127,m²/s,
+ablationThreshold,0.42,J/cm²,
+power,10-100,W,"Typical range for pulsed laser cleaning of delicate metals like gold to avoid melting (mp 1064°C); start low due to high reflectivity at 532 nm. Recommended starting at 20 W for contamination removal. Max safe ~100 W with fast scanning to prevent substrate damage. Source: Studies on laser cleaning of gold artifacts (e.g., J. Cult. Herit. 2018, DOI:10.1016/j.culher.2018.03.005); manufacturer specs from IPG Photonics for 532 nm systems."
+wavelength,355-10640,nm,Green wavelength optimized for Gold absorption characteristics
+spotSize,0.1-500,μm,Beam spot diameter for precise Gold surface treatment
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient Gold cleaning
+pulseWidth,0.1-1000,ns,Nanosecond pulse width for controlled Gold ablation
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform Gold cleaning
+passCount,1-10,passes,Recommended number of passes for complete Gold surface cleaning
+overlapRatio,10-90,%,Optimal beam overlap for uniform Gold surface cleaning

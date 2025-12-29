@@ -1,0 +1,33 @@
+# Industrial Oil / Grease Buildup
+
+Industrial Oil / Grease Buildup is a common contamination pattern in laser cleaning. This organic-residue/petroleum contamination affects surface integrity and requires specialized removal techniques.
+
+## Category
+ / 
+
+## Properties
+- absorptionRate: {'wavelength_1064nm': 1200, 'wavelength_355nm': 28000, 'wavelength_532nm': 4500}
+- reflectivity: {'wavelength_1064nm': 0.05, 'wavelength_355nm': 0.02, 'wavelength_532nm': 0.03}
+
+## Compounds (8 total)
+- Carbon Monoxide
+- Benzene
+- Acrolein
+- Sulfur Dioxide
+- Carbon Dioxide
+- Volatile Organic Compounds
+- Water Vapor
+- Carbon Particulates
+
+## Laser Removal Techniques
+- laserPower: {'max_j_cm2': 1.2, 'min_j_cm2': 0.3, 'recommended_j_cm2': 0.7}
+- wavelength: {'value': [1064, 532]}
+- pulseWidth: {'max_ns': 200, 'min_ns': 10, 'recommended_ns': 50}
+- scanSpeed: {'max': 2000, 'min': 500, 'recommended': 1000}
+- spotSize: {'max': 0.1, 'min': 0.02, 'recommended': 0.05}
+- frequency: {'max': 200, 'min': 20, 'recommended': 50}
+- overlapRatio: {'value': 50}
+- removalRate: {'diminishing_returns_after': 3, 'optimal_passes': 2, 'single_pass': 0.85}
+
+## Data Variables
+Total variables measured: 55

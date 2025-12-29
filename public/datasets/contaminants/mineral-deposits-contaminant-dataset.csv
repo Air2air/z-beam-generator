@@ -1,0 +1,20 @@
+Property,Value
+Name,Hard Water Mineral Scale
+Description,"Hard Water Mineral Scale (CaCO₃, MgCO₃, CaSO₄) is a common contamination pattern in laser cleaning. This thermal-damage/scale contamination affects surface integrity and requires specialized removal techniques. Commonly found on 38 different material types including metals, composites, and specialized substrates."
+Category,
+Subcategory,
+composition,"['CaCO₃', 'MgCO₃', 'CaSO₄']"
+absorptionRate,"{'wavelength_1064nm': 150, 'wavelength_355nm': 3200, 'wavelength_532nm': 850}"
+reflectivity,"{'wavelength_1064nm': 0.35, 'wavelength_355nm': 0.08, 'wavelength_532nm': 0.18}"
+Total Compounds,2
+Compound 1,Carbon Dioxide
+Compound 2,Calcium Oxide
+laserPower,"{'max_j_cm2': 1.2, 'min_j_cm2': 0.3, 'recommended_j_cm2': 0.8}"
+wavelength,"{'value': [1064, 532]}"
+pulseWidth,"{'max_ns': 200, 'min_ns': 10, 'recommended_ns': 100}"
+scanSpeed,"{'max': 2000, 'min': 500, 'recommended': 1000}"
+spotSize,"{'max': 0.2, 'min': 0.05, 'recommended': 0.1}"
+frequency,"{'max': 100, 'min': 20, 'recommended': 50}"
+overlapRatio,{'value': 50}
+removalRate,"{'diminishing_returns_after': 3, 'optimal_passes': 2, 'single_pass': 0.7}"
+Variable Measured Count,49

@@ -1,0 +1,58 @@
+Polyester Resin Composites Laser Cleaning Dataset
+================================================================================
+
+Description: Polyester resin composites offer solid strength and corrosion resistance at a much lower cost than epoxy-based options, enabling automotive and marine teams to create lightweight structures that withstand tough conditions without sacrificing performance or fabrication ease.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : composite
+subcategory                   : fiber-reinforced
+name                          : Polyester Resin Composites
+electricalResistivity         : 10000000000.0 Ω·m
+fractureToughness             : 2.4 MPa√m
+youngsModulus                 : 18.5 GPa
+oxidationResistance           : 210.0 °C
+density                       : 1.5 g/cm³
+hardness                      : 50.0 Barcol
+corrosionResistance           : 0.92 dimensionless
+compressiveStrength           : 250.0 MPa
+flexuralStrength              : 220.0 MPa
+tensileStrength               : 70.0 MPa
+laserDamageThreshold          : 3.0 J/cm²
+absorptivity                  : 0.25 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.7 dimensionless
+thermalDestructionPoint       : 673 K
+vaporPressure                 : 50 Pa
+thermalDestruction            : 673.0 K
+specificHeat                  : 1170.0 J/(kg·K)
+laserReflectivity             : 0.06 fraction
+thermalConductivity           : 0.35 W/m·K
+thermalExpansion              : 2.5e-05 K^{-1}
+laserAbsorption               : 0.12 
+thermalDiffusivity            : 1.1e-07 m²/s
+ablationThreshold             : 1.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-500 W
+                                Typical range for industrial 1064 nm laser cleaning of polymer composites to balance efficiency and heat input; starting at 100 W avoids thermal damage to polyester's low melting point (~260°C). Max safe ~300 W at high speeds to prevent substrate ablation. Source: Laserax manufacturer specs and studies in Optics and Lasers in Engineering (2018) on composite surface prep.
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength optimal for polyester resin composite processing
+spotSize                      : 0.1-500 μm
+                                Optimal beam spot diameter for precision cleaning
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning process
+pulseWidth                    : 0.1-1000 ns
+                                Optimal pulse duration for efficient material removal with minimal heat affected zone
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for efficient coverage and material removal
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap percentage for uniform cleaning
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

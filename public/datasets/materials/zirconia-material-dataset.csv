@@ -1,0 +1,38 @@
+Property,Value,Unit,Description
+category,ceramic,,
+subcategory,oxide,,
+name,Zirconia,,
+youngsModulus,210.0,GPa,
+oxidationResistance,0.0,mg/(cm²·h),
+density,5.68,g/cm³,
+hardness,13.2,GPa,
+corrosionResistance,0.0001,mm/year,
+compressiveStrength,2500.0,MPa,
+flexuralStrength,1000.0,MPa,
+tensileStrength,350.0,MPa,
+fractureToughness,5.5,MPa√m,
+porosity,0.3,%,
+electricalResistivity,1000000000000.0,Ω·m,
+laserDamageThreshold,10,J/cm²,
+absorptivity,0.05,dimensionless,
+absorptionCoefficient,1000,m⁻¹,
+thermalShockResistance,2.5,MW/m,
+reflectivity,0.2,dimensionless,
+thermalDestructionPoint,2988,K,
+vaporPressure,0.01,Pa,
+thermalDestruction,2988.0,K,
+specificHeat,454.8,J/(kg·K),
+laserReflectivity,0.133,fraction,
+thermalConductivity,2.14,W/m·K,
+thermalExpansion,1.05e-05,K^{-1},
+laserAbsorption,0.85,dimensionless,
+thermalDiffusivity,8.58e-07,m²/s,
+ablationThreshold,2.1,J/cm²,
+power,50-500,W,Typical range for industrial Nd:YAG laser cleaning of ceramics like Zirconia to remove contaminants without thermal damage; starting at 150 W for controlled ablation. Max safe ~500 W to avoid cracking due to low thermal conductivity. Source: IPG Photonics YLR series specs and study in Journal of Laser Applications (2018).
+wavelength,355-10640,nm,Near-IR wavelength with good absorption in Zirconia for efficient cleaning
+spotSize,0.1-500,μm,Optimal beam spot diameter for precision cleaning of Zirconia surfaces
+repetitionRate,1-200,kHz,High repetition rate for efficient cleaning coverage while maintaining thermal control
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Recommended number of cleaning passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap percentage for uniform cleaning without excessive heat accumulation

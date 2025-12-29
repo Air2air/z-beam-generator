@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,stone,,
+subcategory,sedimentary,,
+name,Quartzite,,
+fractureToughness,1.35,MPa√m,
+youngsModulus,86.0,GPa,
+oxidationResistance,1673.0,K,
+density,2.65,g/cm³,
+hardness,7.0,Mohs,
+corrosionResistance,0.98,dimensionless (resistance index 0-1),
+compressiveStrength,250.0,MPa,
+flexuralStrength,24.0,MPa,
+tensileStrength,15.0,MPa,
+porosity,0.8,%,
+laserDamageThreshold,8.5,J/cm²,
+absorptivity,0.2,dimensionless,
+absorptionCoefficient,10000,m⁻¹,
+thermalShockResistance,1.2,MW/m,
+reflectivity,0.25,dimensionless,
+thermalDestructionPoint,1700,K,
+vaporPressure,10,Pa,
+thermalDestruction,1710.0,°C,
+specificHeat,741.0,J/kg·K,
+laserReflectivity,0.034,dimensionless,
+thermalConductivity,6.0,W/m·K,
+thermalExpansion,1.2e-05,K^{-1},
+laserAbsorption,0.12,dimensionless,
+thermalDiffusivity,1.31e-06,m²/s,
+ablationThreshold,11.3,J/cm²,
+power,50-500,W,"Typical range for industrial laser cleaning of hard stones like quartzite to remove contaminants without substrate damage; starting at 200W balances efficiency and safety. Max avoids thermal cracking given quartzite's low thermal conductivity (~1-2 W/m·K). Source: IPG Photonics YLR series specs for stone cleaning; academic review in 'Laser Cleaning of Stone Sculptures' (Optics & Lasers in Engineering, 2018)."
+wavelength,355-10640,nm,Near-IR wavelength optimized for Quartzite absorption and minimal scattering
+spotSize,0.1-500,μm,Beam spot diameter for balanced cleaning efficiency and coverage area
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage and thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient contaminant removal with minimal substrate damage
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning and process efficiency
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap percentage for uniform cleaning coverage

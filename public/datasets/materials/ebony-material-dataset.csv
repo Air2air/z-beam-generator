@@ -1,0 +1,33 @@
+Property,Value,Unit,Description
+category,wood,,
+subcategory,hardwood,,
+name,Ebony,,
+density,1.2,g/cm³,
+porosity,8,%,
+surfaceRoughness,2,μm,
+tensileStrength,120,MPa,
+youngsModulus,15,GPa,
+hardness,0.8,GPa,
+flexuralStrength,180,MPa,
+oxidationResistance,4,μm/year,
+corrosionResistance,0.93,mm/year,
+compressiveStrength,120,MPa,
+fractureToughness,3,MPa m^{1/2},
+electricalResistivity,10000000000.0,Ω·m,
+thermalDestruction,573,K,
+laserAbsorption,0.15,dimensionless,
+laserDamageThreshold,3.2,J/cm²,
+ablationThreshold,1.42,J/cm²,
+thermalDiffusivity,1.17e-07,m²/s,
+thermalExpansion,4.2e-06,K^{-1},
+specificHeat,1420.0,J/kg·K,
+thermalConductivity,0.162,W/(m·K),
+laserReflectivity,0.035,,
+power,50-500,W,"Typical range for delicate organic materials like wood to avoid thermal damage; starting at 100W for controlled cleaning of light contaminants on Ebony. Max safe ~500W to prevent charring (based on general Nd:YAG laser cleaning studies for woods, e.g., Journal of Cultural Heritage, 2018)."
+wavelength,355-10640,nm,Near-IR for controlled wood cleaning
+spotSize,0.1-500,μm,Larger spot for gentle treatment
+repetitionRate,1-200,kHz,Lower frequency to prevent burning
+pulseWidth,0.1-1000,ns,Short pulses for minimal charring
+scanSpeed,10-5000,mm/s,Fast scanning to prevent heat damage
+passCount,1-10,passes,Single gentle pass for delicate surfaces
+overlapRatio,10-90,%,Lower overlap for organic materials

@@ -1,0 +1,63 @@
+Tantalum Laser Cleaning Dataset
+================================================================================
+
+Description: We've discovered that Tantalum shines in harsh chemical environments because of its exceptional corrosion resistance, letting it hold up against strong acids while metals like steel break down fast and give way, which is why we choose it for sturdy parts in processing gear and medical implants that need to last for the long haul.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : alloy
+name                          : Tantalum
+youngsModulus                 : 186.0 GPa
+oxidationResistance           : 573.0 K
+density                       : 16.65 g/cm³
+hardness                      : 0.92 GPa
+corrosionResistance           : 520000.0 ohm·cm²
+compressiveStrength           : 240.0 MPa
+flexuralStrength              : 310.0 MPa
+tensileStrength               : 207.0 MPa
+fractureToughness             : 28.0 MPa√m
+porosity                      : 0.0 %
+electricalResistivity         : 1.32e-07 Ω·m
+absorptivity                  : 0.35 dimensionless
+boilingPoint                  : 5731.0 K
+absorptionCoefficient         : 10000000 m⁻¹
+electricalConductivity        : 7610000.0 S/m
+meltingPoint                  : 3290.0 K
+vaporPressure                 : 10 Pa
+thermalDestructionPoint       : 3290 K
+reflectivity                  : 0.65 dimensionless
+thermalShockResistance        : 3.0 MW/m
+surfaceRoughness              : 0.8 μm
+laserDamageThreshold          : 2.5 J/cm²
+thermalDestruction            : 3290.0 K
+specificHeat                  : 140.7 J/(kg·K)
+laserReflectivity             : 0.48 
+thermalConductivity           : 57.5 W/m·K
+thermalExpansion              : 6.3e-06 K^{-1}
+laserAbsorption               : 0.31 dimensionless
+thermalDiffusivity            : 2.27e-05 m²/s
+ablationThreshold             : 2.1 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-1000 W
+                                Typical range for industrial cleaning of reflective refractory metals like Tantalum to overcome high reflectivity (~95% at 1064 nm) while avoiding melting (mp 3017°C); starting at 200W balances efficiency and safety. Source: Manufacturer specs from IPG Photonics and Coherent for Nd:YAG systems; academic review in 'Laser Cleaning of Metals' (Optics & Lasers in Engineering, 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Tantalum's high reflectivity and thermal conductivity
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise oxide layer removal
+repetitionRate                : 1-200 kHz
+                                High repetition rate for uniform cleaning coverage on Tantalum surfaces
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient oxide ablation with minimal heat affected zone
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for efficient area coverage without thermal buildup
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete oxide removal
+overlapRatio                  : 10-90 %
+                                Optimal pulse overlap for uniform cleaning without excessive heat input
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

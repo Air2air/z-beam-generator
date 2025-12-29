@@ -1,0 +1,38 @@
+Property,Value,Unit,Description
+category,ceramic,,
+subcategory,carbide,,
+name,Titanium Carbide,,
+youngsModulus,440.0,GPa,
+oxidationResistance,1073.0,K,
+density,4.93,g/cm³,
+hardness,29.4,GPa,
+corrosionResistance,0.95,,
+compressiveStrength,4000.0,MPa,
+flexuralStrength,400.0,MPa,
+tensileStrength,345.0,MPa,
+fractureToughness,3.8,MPa√m,
+porosity,0.0,%,
+electricalResistivity,6.8e-07,Ω·m,
+laserDamageThreshold,3.5,J/cm²,
+absorptivity,0.7,dimensionless,
+absorptionCoefficient,5000000.0,m⁻¹,
+thermalShockResistance,2.5,MW/m,
+reflectivity,0.3,dimensionless,
+thermalDestructionPoint,3340,K,
+vaporPressure,1.0,Pa,
+thermalDestruction,3340.0,K,
+specificHeat,569.0,J/kg·K,
+laserReflectivity,0.35,dimensionless,
+thermalConductivity,21.0,W/m·K,
+thermalExpansion,7.92e-06,K^{-1},
+laserAbsorption,0.7,dimensionless,
+thermalDiffusivity,1.33e-05,m²/s,
+ablationThreshold,12000.0,J/m²,
+power,50-300,W,"Typical range for industrial cleaning of hard ceramics like TiC to balance ablation and avoid thermal damage; starting at 100 W for light contamination. Max limited by substrate melting point (~3067°C). Source: IPG Photonics YLR series specs for 1064 nm cleaning heads; academic review in 'Laser Cleaning of Metals' (Optics & Lasers in Engineering, 2018)."
+wavelength,355-10640,nm,Near-IR wavelength optimized for Titanium Carbide absorption and minimal substrate interaction
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning of Titanium Carbide surfaces
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning coverage with thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient ablation of Titanium Carbide contaminants
+scanSpeed,10-5000,mm/s,Optimal scanning speed for efficient cleaning coverage
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without excessive thermal buildup

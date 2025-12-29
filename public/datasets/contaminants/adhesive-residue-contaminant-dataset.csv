@@ -1,0 +1,22 @@
+Property,Value
+Name,Adhesive Residue / Tape Marks
+Description,"Adhesive Residue / Tape Marks is a common contamination pattern in laser cleaning. This organic-residue/adhesive contamination affects surface integrity and requires specialized removal techniques. Commonly found on 46 different material types including metals, composites, and specialized substrates."
+Category,
+Subcategory,
+absorptionRate,"{'wavelength_1064nm': 850, 'wavelength_355nm': 18500, 'wavelength_532nm': 4200}"
+reflectivity,"{'wavelength_1064nm': 0.15, 'wavelength_355nm': 0.04, 'wavelength_532nm': 0.08}"
+Total Compounds,10
+Compound 1,Carbon Monoxide
+Compound 2,Formaldehyde
+Compound 3,Hydrogen Cyanide
+Compound 4,Acetaldehyde
+Compound 5,Hydrogen Chloride
+laserPower,"{'max_j_cm2': 1.2, 'min_j_cm2': 0.3, 'recommended_j_cm2': 0.8}"
+wavelength,"{'value': [1064, 532]}"
+pulseWidth,"{'max_ns': 100, 'min_ns': 10, 'recommended_ns': 30}"
+scanSpeed,"{'max': 2000, 'min': 500, 'recommended': 1000}"
+spotSize,"{'max': 0.1, 'min': 0.02, 'recommended': 0.05}"
+frequency,"{'max': 200, 'min': 20, 'recommended': 50}"
+overlapRatio,{'value': 50}
+removalRate,"{'diminishing_returns_after': 5, 'optimal_passes': 3, 'single_pass': 0.7}"
+Variable Measured Count,57

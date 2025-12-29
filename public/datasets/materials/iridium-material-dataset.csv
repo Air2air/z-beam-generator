@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,non-ferrous,,
+name,Iridium,,
+electricalConductivity,21230000.0,S/m,
+electricalResistivity,4.71e-08,Ω·m,
+fractureToughness,3.0,MPa√m,
+surfaceRoughness,0.05,μm,
+youngsModulus,528.0,GPa,
+oxidationResistance,1673.0,K,
+density,22560.0,kg/m³,
+hardness,1960.0,MPa,
+corrosionResistance,1.156,V,
+compressiveStrength,1400.0,MPa,
+flexuralStrength,1050.0,MPa,
+tensileStrength,1170.0,MPa,
+porosity,0.0,%,
+absorptivity,0.42,dimensionless,
+boilingPoint,4701.0,K,
+absorptionCoefficient,47200000.0,m⁻¹,
+meltingPoint,2719.0,K,
+vaporPressure,0.0001333,Pa,
+thermalDestructionPoint,2716.0,K,
+reflectivity,0.965,dimensionless (reflectance ratio),
+thermalShockResistance,1.8,MPa·m^0.5,
+laserDamageThreshold,0.45,J/cm²,
+thermalDestruction,2719.0,K,
+specificHeat,132.0,J/kg·K,
+laserReflectivity,0.67,dimensionless,
+thermalConductivity,147.0,W/m·K,
+thermalExpansion,6.8,×10^{-6} K^{-1},
+laserAbsorption,0.12,dimensionless,
+thermalDiffusivity,4.98e-05,m²/s,
+ablationThreshold,2.3,J/cm²,
+power,50-500,W,"Typical range for industrial Nd:YAG laser cleaning of refractory metals like Iridium, starting low due to high reflectivity (~90% at 1064 nm) to avoid excessive heating; max limited to prevent melting (mp 2446°C). Recommended start at 100 W for contamination removal. Source: IPG Photonics specs for YLR series; conservative estimate from metal cleaning studies (e.g., J. Laser Appl. 2018)."
+wavelength,355-10640,nm,Fundamental Nd:YAG wavelength with good Iridium absorption
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning control
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning coverage
+pulseWidth,0.1-1000,ns,Short pulse duration for efficient ablation with minimal heat diffusion
+scanSpeed,10-5000,mm/s,Optimal scanning speed for efficient area coverage
+passCount,1-10,passes,Recommended number of passes for complete contamination removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning results

@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,wood,,
+subcategory,hardwood,,
+name,Cherry,,
+fractureToughness,0.38,MPa m^{1/2},
+density,580.0,kg/m³,
+oxidationResistance,0.72,"dimensionless (relative scale 0-1, 1=excellent resistance)",
+youngsModulus,10.27,GPa,
+hardness,4226.0,N,
+compressiveStrength,40.3,MPa,
+tensileStrength,70.3,MPa,
+flexuralStrength,67.8,MPa,
+corrosionResistance,0.35,dimensionless (relative durability index),
+porosity,0.667,fraction,
+laserDamageThreshold,2.5,J/cm²,
+absorptivity,0.85,dimensionless,
+absorptionCoefficient,500000,m⁻¹,
+thermalShockResistance,1.2,MW/m,
+reflectivity,0.15,dimensionless,
+thermalDestructionPoint,500,K,
+vaporPressure,50,Pa,
+thermalDestruction,275.0,°C,
+laserReflectivity,0.23,dimensionless,
+thermalExpansion,3.2e-05,K^{-1},
+thermalConductivity,0.163,W/(m·K),
+specificHeat,1380.0,J/(kg·K),
+laserAbsorption,0.93,dimensionless,
+thermalDiffusivity,1.28e-07,m²/s,
+ablationThreshold,0.82,J/cm²,
+power,20-200,W,"Typical range for wood cleaning at 1064 nm to remove contaminants without charring; starting at 50 W for delicate hardwoods like cherry to minimize thermal damage. Max safe ~200 W to avoid substrate ablation. Source: Studies on laser cleaning of wood (e.g., Journal of Cultural Heritage, 2018); IPG Photonics YLR series specs for cleaning applications."
+wavelength,355-10640,nm,Near-infrared wavelength for optimal absorption in Cherry organic compounds
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning control
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning process
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient ablation of contaminants
+scanSpeed,10-5000,mm/s,Optimal scanning speed for efficient area coverage
+passCount,1-10,passes,Number of cleaning passes for complete surface treatment
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning coverage

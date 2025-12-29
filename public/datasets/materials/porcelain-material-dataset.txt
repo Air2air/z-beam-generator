@@ -1,0 +1,59 @@
+Porcelain Laser Cleaning Dataset
+================================================================================
+
+Description: We've found porcelain sets itself apart from standard ceramics with its impressively low porosity and excellent corrosion resistance, supporting dependable use in tough settings like medical devices and chemical processing, free from surface degradation, though we stay watchful for any cracking risks during sudden heating.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : ceramic
+subcategory                   : oxide
+name                          : Porcelain
+electricalResistivity         : 10000000000.0 Ω·m
+fractureToughness             : 0.9 MPa√m
+youngsModulus                 : 70.0 GPa
+oxidationResistance           : 0.0 mg/(cm²·h)
+density                       : 2.4 g/cm³
+hardness                      : 620.0 HV
+corrosionResistance           : 0.96 dimensionless
+compressiveStrength           : 414.0 MPa
+flexuralStrength              : 70.0 MPa
+tensileStrength               : 55.0 MPa
+porosity                      : 0.3 %
+laserDamageThreshold          : 3 J/cm²
+absorptivity                  : 0.25 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.7 dimensionless
+thermalDestructionPoint       : 1600 K
+vaporPressure                 : 0.1 Pa
+thermalDestruction            : 1573.0 K
+specificHeat                  : 880.0 J/(kg·K)
+laserReflectivity             : 0.85 dimensionless
+thermalConductivity           : 1.5 W/m·K
+thermalExpansion              : 5.5e-06 K^{-1}
+laserAbsorption               : 25000.0 m^{-1}
+thermalDiffusivity            : 6.9e-07 m²/s
+ablationThreshold             : 1.8 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 10-100 W
+                                Low power range for delicate ceramics like porcelain to avoid thermal cracking; typical for 1064 nm Nd:YAG systems in heritage and industrial cleaning. Recommended starting at 30 W for light contamination. Max safe ~100 W before risk of substrate damage due to low thermal conductivity (~1.5 W/mK). Source: Manufacturer specs (e.g., CleanLaser CL 50 model) and studies on ceramic restoration (e.g., J. Cult. Herit. 2018).
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength optimized for Porcelain absorption and minimal substrate damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control on Porcelain surfaces
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage and thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning efficiency
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

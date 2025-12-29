@@ -47,9 +47,27 @@ def contaminants_data():
 
 @pytest.fixture
 def frontmatter_files():
-    """Get all contaminant frontmatter files."""
-    frontmatter_dir = Path('frontmatter/contaminants')
-    return list(frontmatter_dir.glob('*.yaml'))
+    """
+    Get all contaminant frontmatter files from website export directory.
+    
+    NOTE: Tests check ../z-beam/frontmatter (website exports with complete metadata),
+    NOT local frontmatter/ (postprocessing output with minimal fields).
+    
+    Per FRONTMATTER_SOURCE_OF_TRUTH_POLICY: Local frontmatter/ is postprocessing
+    output (only generated content fields). Complete frontmatter with metadata 
+    (category, subcategory, etc.) is in ../z-beam/frontmatter after --export.
+    """
+    frontmatter_dir = Path('../z-beam/frontmatter/contaminants')
+    if not frontmatter_dir.exists():
+        pytest.skip(f"Website frontmatter directory not found: {frontmatter_dir}")
+    
+    # Get files with single suffix only (exclude postprocessing duplicates if any)
+    all_files = list(frontmatter_dir.glob('*.yaml'))
+    
+    # Filter: Keep -contamination.yaml, exclude -contamination-contamination.yaml
+    filtered_files = [f for f in all_files if not f.stem.endswith('-contamination-contamination')]
+    
+    return filtered_files
 
 
 class TestSourceDataCategories:

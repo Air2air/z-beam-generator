@@ -1,0 +1,58 @@
+Polyvinyl Chloride Laser Cleaning Dataset
+================================================================================
+
+Description: We've found that when laser cleaning Polyvinyl Chloride, we always start with reduced power and slower speeds to handle its poor heat dissipation from the initial setup, which avoids surface warping while effectively removing contaminants in tough applications like marine and construction settings where corrosion resistance remains essential.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : plastic
+subcategory                   : thermoplastic
+name                          : Polyvinyl Chloride
+electricalResistivity         : 10000000000000.0 Ω·m
+fractureToughness             : 3.2 MPa√m
+youngsModulus                 : 3.0 GPa
+oxidationResistance           : 47.0 %
+density                       : 1.4 g/cm³
+hardness                      : 115.0 Rockwell R
+corrosionResistance           : 0.95 dimensionless
+compressiveStrength           : 70.0 MPa
+flexuralStrength              : 75.0 MPa
+tensileStrength               : 50.0 MPa
+laserDamageThreshold          : 2.5 J/cm²
+absorptivity                  : 0.92 dimensionless
+absorptionCoefficient         : 300000 m⁻¹
+thermalShockResistance        : 0.8 MW/m
+reflectivity                  : 0.08 dimensionless
+thermalDestructionPoint       : 523 K
+vaporPressure                 : 10 Pa
+thermalDestruction            : 523.0 K
+specificHeat                  : 920.0 J/(kg·K)
+laserReflectivity             : 0.045 fraction
+thermalConductivity           : 0.19 W/m·K
+thermalExpansion              : 7.5e-05 K^{-1}
+laserAbsorption               : 0.92 dimensionless (absorptivity)
+thermalDiffusivity            : 1.2e-07 m²/s
+ablationThreshold             : 0.65 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 10-200 W
+                                Typical range for polymer cleaning to avoid thermal damage; starting at 50 W for PVC's low melting point (~160°C); max safe ~150 W to prevent substrate melting. Source: IPG Photonics specs for fiber lasers in polymer applications; studies in Optics and Lasers in Engineering (2018) on PVC ablation.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal PVC absorption and minimal substrate damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise PVC cleaning
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient PVC removal
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled PVC ablation
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform PVC removal
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete PVC removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform PVC cleaning
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

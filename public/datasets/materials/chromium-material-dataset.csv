@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,specialty,,
+name,Chromium,,
+electricalConductivity,7750000.0,S/m,
+electricalResistivity,1.29e-07,Ω·m,
+fractureToughness,0.77,MPa m^{1/2},
+surfaceRoughness,0.1,μm,
+density,7190.0,kg/m³,
+oxidationResistance,1273.0,K,
+youngsModulus,279.0,GPa,
+hardness,1050.0,HV,
+compressiveStrength,345.0,MPa,
+tensileStrength,414.0,MPa,
+flexuralStrength,380.0,MPa,
+corrosionResistance,500000.0,Ω·cm²,
+porosity,0.0,%,
+boilingPoint,2945.0,K,
+absorptivity,0.415,dimensionless,
+absorptionCoefficient,41200000.0,m⁻¹,
+reflectivity,0.64,dimensionless (ratio),
+vaporPressure,1.33,Pa,
+meltingPoint,2180.0,K,
+thermalDestructionPoint,1863.0,°C,
+thermalShockResistance,0.8,MPa·m^0.5,
+laserDamageThreshold,0.85,J/cm²,
+thermalDestruction,2180.0,K,
+laserReflectivity,0.7,fraction,
+thermalExpansion,4.9,×10^{-6} K^{-1},
+thermalConductivity,93.9,W/m·K,
+specificHeat,449.0,J/(kg·K),
+laserAbsorption,0.35,dimensionless,
+thermalDiffusivity,2.91e-05,m²/s,
+ablationThreshold,1.2,J/cm²,
+power,50-1000,W,Typical range for industrial laser cleaning of reflective metals like Chromium to avoid excessive heating; starting at 200W balances efficiency and safety. Max limited to prevent substrate melting (mp ~1907°C). Source: IPG Photonics specs for Yb-fiber lasers at 1064 nm; studies in Optics and Lasers in Engineering (2018) on metal cleaning.
+wavelength,355-10640,nm,Near-IR wavelength with good Chromium absorption for efficient cleaning
+spotSize,0.1-500,μm,Beam spot diameter for precise Chromium surface cleaning
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient Chromium cleaning throughput
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective Chromium oxide ablation
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform Chromium surface treatment
+passCount,1-10,passes,Recommended number of passes for complete Chromium oxide removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform Chromium surface cleaning

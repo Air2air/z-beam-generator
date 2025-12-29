@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,wood,,
+subcategory,hardwood,,
+name,Willow,,
+youngsModulus,10.2,GPa,
+oxidationResistance,0.72,dimensionless (relative resistance index),
+density,420.0,kg/m³,
+hardness,430.0,lbf,
+corrosionResistance,0.2,dimensionless (durability class normalized 0-1),
+compressiveStrength,35.0,MPa,
+flexuralStrength,46.9,MPa,
+tensileStrength,92.4,MPa,
+fractureToughness,0.32,MPa·m^{1/2},
+porosity,0.75,fraction,
+laserDamageThreshold,2.5,J/cm²,
+absorptivity,0.9,dimensionless,
+absorptionCoefficient,50000,m⁻¹,
+thermalShockResistance,1.2,MW/m,
+reflectivity,0.08,dimensionless,
+thermalDestructionPoint,600,K,
+vaporPressure,10,Pa,
+thermalDestruction,623.0,K,
+specificHeat,1460.0,J/(kg·K),
+laserReflectivity,0.12,fraction,
+thermalConductivity,0.14,W/m·K,
+thermalExpansion,4.5e-05,K^{-1},
+laserAbsorption,0.92,dimensionless (absorptivity),
+thermalDiffusivity,1.52e-07,m²/s,
+ablationThreshold,1.15,J/cm²,
+power,50-500,W,"Typical range for 1064 nm fiber lasers in wood cleaning to balance efficiency and avoid charring; starting at 150 W for willow's low thermal conductivity (~0.15 W/mK) prevents substrate damage. Source: IPG Photonics YLR series specs and studies on laser wood surface treatment (e.g., Journal of Cultural Heritage, 2018)."
+wavelength,355-10640,nm,Near-infrared wavelength optimized for Willow absorption and minimal penetration
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning with adequate energy density
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage and thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+scanSpeed,10-5000,mm/s,Optimal scanning speed for efficient area coverage and effective cleaning
+passCount,1-10,passes,Optimal number of passes for complete cleaning without excessive processing
+overlapRatio,10-90,%,Beam overlap percentage for uniform cleaning coverage

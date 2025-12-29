@@ -1,0 +1,58 @@
+Polyethylene Laser Cleaning Dataset
+================================================================================
+
+Description: Polyethylene, this thermoplastic, exhibits flexibility and corrosion resistance, which suits it for laser cleaning in heritage preservation. The material cleans readily, yet its sensitivity to heat poses challenges, necessitating precise control.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : plastic
+subcategory                   : thermoplastic
+name                          : Polyethylene
+electricalResistivity         : 1000000000000000.0 Ω·m
+fractureToughness             : 2.5 MPa m^{1/2}
+youngsModulus                 : 1.0 GPa
+oxidationResistance           : 25.0 min
+density                       : 940.0 kg/m³
+hardness                      : 65.0 Shore D
+corrosionResistance           : 0.98 
+compressiveStrength           : 25.0 MPa
+flexuralStrength              : 25.0 MPa
+tensileStrength               : 25.0 MPa
+laserDamageThreshold          : 2.0 J/cm²
+absorptivity                  : 0.7 dimensionless
+absorptionCoefficient         : 100000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.05 dimensionless
+thermalDestructionPoint       : 673 K
+vaporPressure                 : 0.1 Pa
+thermalDestruction            : 480.0 °C
+specificHeat                  : 2300.0 J/(kg·K)
+laserReflectivity             : 0.042 1
+thermalConductivity           : 0.38 W/m·K
+thermalExpansion              : 0.00015 K^{-1}
+laserAbsorption               : 50.0 m^{-1}
+thermalDiffusivity            : 1.6e-07 m²/s
+ablationThreshold             : 0.28 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for industrial fiber lasers cleaning polymers like polyethylene to avoid melting (melting point ~110-130°C); starting at 150W for light contamination. Max safe ~500W to prevent substrate damage. Source: IPG Photonics YLR series specs and studies on polymer ablation (e.g., Opt. Lasers Eng. 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength with good Polyethylene absorption for efficient cleaning
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled material removal
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform surface treatment
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

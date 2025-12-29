@@ -7,10 +7,10 @@ Universal Prompt Validator - Text and Image Generation
     
         from shared.validation.validator import (
             validate_prompt_quick,  # Quick validation
-            UnifiedValidator,       # Full validation
+            Validator,       # Full validation
         )
     
-    The UnifiedValidator provides:
+    The Validator provides:
     - 3-stage validation (early, prompt, post)
     - AI-friendly fix instructions
     - Auto-optimization capabilities

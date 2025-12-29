@@ -1,0 +1,32 @@
+Property,Value,Unit,Description
+category,ceramic,,
+subcategory,technical,,
+name,Boron Nitride,,
+compressiveStrength,414.0,MPa,
+fractureToughness,3.5,MPa√m,
+electricalResistivity,1000000000000.0,Ω·m,
+corrosionResistance,0.98,dimensionless (normalized resistance scale 0-1),
+tensileStrength,38.0,MPa,
+porosity,0.5,%,
+oxidationResistance,1173.0,K,
+youngsModulus,70.0,GPa,
+flexuralStrength,70.0,MPa,
+density,2.27,g/cm³,
+hardness,48.0,GPa,
+thermalConductivity,29.3,W/m·K,
+thermalDiffusivity,1.55e-05,m²/s,
+thermalDestruction,3273.0,K,
+laserDamageThreshold,15.2,J/cm²,
+laserAbsorption,25000.0,m^{-1},
+ablationThreshold,1.2,J/cm²,
+thermalExpansion,2e-06,K^{-1},
+laserReflectivity,0.92,,
+specificHeat,795.0,J/(kg·K),
+power,20-300,W,Typical range for pulsed Nd:YAG lasers in ceramic cleaning; starting at 50 W to avoid thermal damage to BN's high melting point substrate (~3000°C). Max safe below damage threshold. Source: IPG Photonics specs for cleaning systems; conservative for BN due to limited specific studies.
+wavelength,355-10640,nm,Near-IR wavelength for optimal absorption
+spotSize,0.1-500,μm,Beam spot diameter for effective cleaning resolution
+repetitionRate,1-200,kHz,Pulse frequency for controlled material removal
+pulseWidth,0.1-1000,ns,Pulse duration for minimal thermal penetration
+scanSpeed,10-5000,mm/s,Beam travel speed for uniform coverage
+passCount,1-10,passes,Number of cleaning cycles for complete removal
+overlapRatio,10-90,%,Beam overlap for consistent surface treatment

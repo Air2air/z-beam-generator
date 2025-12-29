@@ -1,0 +1,19 @@
+Property,Value
+Name,Mercury Spill Residue
+Description,"Mercury Spill Residue (Hg, Metal Amalgams) is a common contamination pattern in laser cleaning. This chemical-residue/hazardous contamination affects surface integrity and requires specialized removal techniques. Commonly found on 15 different material types including metals, composites, and specialized substrates."
+Category,
+Subcategory,
+composition,"['Hg', 'Metal Amalgams']"
+absorptionRate,"{'wavelength_1064nm': 85000, 'wavelength_355nm': 180000, 'wavelength_532nm': 120000}"
+reflectivity,"{'wavelength_1064nm': 0.75, 'wavelength_355nm': 0.15, 'wavelength_532nm': 0.65}"
+Total Compounds,1
+Compound 1,Carbon Particulates
+laserPower,"{'max_j_cm2': 1.2, 'min_j_cm2': 0.3, 'recommended_j_cm2': 0.6}"
+wavelength,"{'value': [1064, 532]}"
+pulseWidth,"{'max_ns': 50, 'min_ns': 5, 'recommended_ns': 20}"
+scanSpeed,"{'max': 2000, 'min': 500, 'recommended': 1000}"
+spotSize,"{'max': 0.2, 'min': 0.05, 'recommended': 0.1}"
+frequency,"{'max': 100, 'min': 20, 'recommended': 50}"
+overlapRatio,{'value': 50}
+removalRate,"{'diminishing_returns_after': 4, 'optimal_passes': 3, 'single_pass': 0.85}"
+Variable Measured Count,48

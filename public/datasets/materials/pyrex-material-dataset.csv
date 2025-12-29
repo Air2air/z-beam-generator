@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,glass,,
+subcategory,soda-lime,,
+name,Pyrex,,
+electricalResistivity,1000000000000.0,Ω·m,
+fractureToughness,0.75,MPa√m,
+youngsModulus,63.0,GPa,
+oxidationResistance,500.0,°C,
+density,2.23,g/cm³,
+hardness,530.0,HV,
+corrosionResistance,0.0008,mg/cm²/day,
+compressiveStrength,1000.0,MPa,
+flexuralStrength,69.0,MPa,
+tensileStrength,70.0,MPa,
+laserDamageThreshold,10,J/cm²,
+absorptivity,0.05,dimensionless,
+absorptionCoefficient,50,m⁻¹,
+thermalShockResistance,2,MW/m,
+reflectivity,0.08,dimensionless,
+thermalDestructionPoint,1500,K,
+vaporPressure,0.01,Pa,
+thermalDestruction,821.0,°C,
+specificHeat,835.0,J/kg·K,
+laserReflectivity,0.036,fraction,
+thermalConductivity,1.14,W/m·K,
+thermalExpansion,3.3e-06,K^{-1},
+laserAbsorption,8.76,m^{-1},
+thermalDiffusivity,5.8e-07,m^2/s,
+ablationThreshold,5.2,J/cm²,
+power,20-500,W,"Typical range for industrial cleaning of delicate glasses like Pyrex to avoid thermal cracking; starting at 100W for light contamination, max below damage threshold (~500W for short pulses). Source: Manufacturer specs from IPG Photonics and Coherent for 1064 nm systems; academic paper on glass cleaning (Opt. Lasers Eng., 2018)."
+wavelength,355-10640,nm,Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk Pyrex absorption
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning with adequate energy density
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage and thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Recommended number of cleaning passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap percentage for uniform cleaning without excessive thermal buildup

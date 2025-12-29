@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,wood,,
+subcategory,hardwood,,
+name,Poplar,,
+fractureToughness,0.35,MPa√m,
+youngsModulus,10.2,GPa,
+oxidationResistance,0.19,dimensionless,
+density,465.0,kg/m³,
+hardness,2402.0,N,
+corrosionResistance,0.25,normalized durability index (0-1),
+compressiveStrength,39.2,MPa,
+flexuralStrength,69.6,MPa,
+tensileStrength,82.7,MPa,
+porosity,0.72,,
+laserDamageThreshold,2.5,J/cm²,
+absorptivity,0.9,dimensionless,
+absorptionCoefficient,100000,m⁻¹,
+thermalShockResistance,1.2,MW/m,
+reflectivity,0.1,dimensionless,
+thermalDestructionPoint,550,K,
+vaporPressure,1000,Pa,
+thermalDestruction,628.0,K,
+specificHeat,1380.0,J/(kg·K),
+laserReflectivity,0.38,,
+thermalConductivity,0.13,W/m·K,
+thermalExpansion,3.125e-05,K^{-1},
+laserAbsorption,0.92,dimensionless,
+thermalDiffusivity,1.34e-07,m²/s,
+ablationThreshold,2.3,J/cm²,
+power,10-200,W,Typical range for wood cleaning at 1064 nm to avoid charring; starting at 50 W for light contamination on Poplar (low thermal conductivity ~0.1 W/m·K). Max ~200 W risks substrate damage. Based on CleanLaser equipment specs and studies in J. Laser Appl. (2018).
+wavelength,355-10640,nm,Near-infrared wavelength for optimal Poplar absorption and minimal subsurface damage
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning control on Poplar grain structure
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning coverage on Poplar surfaces
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient contaminant removal with minimal wood damage
+scanSpeed,10-5000,mm/s,Optimal scanning speed for efficient Poplar surface cleaning
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal from Poplar
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning coverage on Poplar surfaces

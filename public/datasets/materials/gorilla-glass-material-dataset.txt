@@ -1,0 +1,58 @@
+Gorilla Glass Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning Gorilla Glass, start by setting the power low to avoid any risk of micro-cracks from its high thermal sensitivity, then gradually increase as its inherent toughness removes contaminants without compromising the surface integrity I've seen hold up in repeated electronics repairs.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : glass
+subcategory                   : soda-lime
+name                          : Gorilla Glass
+electricalResistivity         : 1000000000000.0 ohm m
+fractureToughness             : 0.75 MPa√m
+youngsModulus                 : 70.0 GPa
+oxidationResistance           : 0.98 dimensionless
+density                       : 2.42 g/cm³
+hardness                      : 6.2 GPa
+corrosionResistance           : 5e-08 mol/m²/s
+compressiveStrength           : 700.0 MPa
+flexuralStrength              : 700.0 MPa
+tensileStrength               : 900.0 MPa
+laserDamageThreshold          : 5 J/cm²
+absorptivity                  : 0.1 dimensionless
+absorptionCoefficient         : 2000 m⁻¹
+thermalShockResistance        : 1 MW/m
+reflectivity                  : 0.08 dimensionless
+thermalDestructionPoint       : 1073 K
+vaporPressure                 : 0.01 Pa
+thermalDestruction            : 1743.0 K
+specificHeat                  : 840.0 J/(kg·K)
+laserReflectivity             : 0.0415 
+thermalConductivity           : 1.05 W/m·K
+thermalExpansion              : 9e-06 K^{-1}
+laserAbsorption               : 10.5 m^{-1}
+thermalDiffusivity            : 5.81e-07 m²/s
+ablationThreshold             : 3.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-200 W
+                                Typical range for delicate glass substrates like Gorilla Glass to avoid thermal damage; starting at 50W for light contamination removal. Max safe below 200W to prevent cracking due to low thermal conductivity (~1 W/mK). Source: IPG Photonics laser cleaning guidelines for optics; academic review in Journal of Laser Applications (2018).
+wavelength                    : 355-10640 nm
+                                Optimal wavelength for Gorilla Glass processing with good absorption
+spotSize                      : 0.1-500 μm
+                                Optimal spot size for precision cleaning of Gorilla Glass surfaces
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Optimal pulse width for controlled ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Optimal number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap ratio for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

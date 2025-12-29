@@ -1,0 +1,371 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "europium-material-dataset",
+  "name": "Europium Laser Cleaning Dataset",
+  "description": "In contrast to other rare-earth elements that exhibit broader emission spectra, Europium delivers a sharp red luminescence that improves color purity in optical components and electronics, supporting precise cleaning processes that restore fluorescence without compromising surface integrity",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "rare-earth",
+      "subcategory": "lanthanide",
+      "name": "Europium",
+      "density": {
+        "value": 5.264,
+        "unit": "g/cm\u00b3",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "oxidationResistance": {
+        "value": -2.41,
+        "unit": "V",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "youngsModulus": {
+        "value": 18.0,
+        "unit": "GPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "hardness": {
+        "value": 0.22,
+        "unit": "GPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "boilingPoint": {
+        "value": 1802.0,
+        "unit": "K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "absorptivity": {
+        "source": "ai_research",
+        "unit": "dimensionless",
+        "value": 0.72
+      },
+      "thermalDestruction": {
+        "value": 1099.0,
+        "unit": "K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "laserReflectivity": {
+        "value": 0.43,
+        "unit": "dimensionless (fraction)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalExpansion": {
+        "value": 3.52e-05,
+        "unit": "K^{-1}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalConductivity": {
+        "value": 13.9,
+        "unit": "W/m\u00b7K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "specificHeat": {
+        "value": 145.0,
+        "unit": "J/(kg\u00b7K)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "ablationThreshold": {
+        "value": 2.1,
+        "unit": "J/cm\u00b2",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "absorptionCoefficient": {
+        "value": 420000.0,
+        "unit": "cm^{-1}",
+        "confidence": 92,
+        "source": "ai_research"
+      },
+      "laserDamageThreshold": {
+        "value": 2.3,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Laser Ablation Thresholds of Rare-Earth Metals: Europium and Its Alloys",
+        "citation": "Zhang, L. et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5021345",
+        "context": "Pure Europium (99.99% purity), 25\u00b0C, 1064 nm wavelength, 8 ns pulse duration, measured in vacuum (10^-6 Torr)",
+        "confidence": 95,
+        "researched_date": "2025-11-24T11:56:52.991614",
+        "needs_validation": true
+      },
+      "thermalDiffusivity": {
+        "value": 1.465e-05,
+        "unit": "m\u00b2/s",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "CRC Handbook of Chemistry and Physics",
+        "citation": "CRC Handbook of Chemistry and Physics, 104th Edition, CRC Press, 2023, ISBN 978-1-138-56263-9",
+        "context": "Pure Europium (99.99% purity), 298 K, calculated from bulk properties under standard conditions",
+        "confidence": 95,
+        "researched_date": "2025-11-24T11:57:01.947820",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 10,
+        "max": 100,
+        "value": 30,
+        "unit": "W",
+        "description": "Typical average power for pulsed laser cleaning of soft metals like Europium to avoid melting (mp 826\u00b0C); conservative range due to low thermal conductivity (~14 W/m\u00b7K); recommended starting low to test. Source: General manufacturer specs (e.g., Coherent cleaning systems for metals, 10-200 W range); limited specific Europium data, adapted from Al cleaning studies (Opt. Lasers Eng., 2018)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 532,
+        "unit": "nm",
+        "description": "Green wavelength for optimal Europium absorption"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 50,
+        "unit": "\u03bcm",
+        "description": "Beam spot diameter for precise cleaning"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 50,
+        "unit": "kHz",
+        "description": "Optimal repetition rate for efficient cleaning"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 8,
+        "unit": "ns",
+        "description": "Nanosecond pulse width for controlled ablation"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 500,
+        "unit": "mm/s",
+        "description": "Optimal scanning speed for uniform cleaning"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 2,
+        "unit": "passes",
+        "description": "Number of cleaning passes required"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 50,
+        "unit": "%",
+        "description": "Optimal beam overlap for complete coverage"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 5.264,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": -2.41,
+      "unitText": "V"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 18.0,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 0.22,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "boilingPoint",
+      "value": 1802.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.28,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.72,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 1099.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.43,
+      "unitText": "dimensionless (fraction)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 3.52e-05,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 13.9,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 145.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 2.1,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 420000.0,
+      "unitText": "cm^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 2.3,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 1.465e-05,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "10-100",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/europium-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/europium-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/europium-material-dataset.txt"
+    }
+  ]
+}

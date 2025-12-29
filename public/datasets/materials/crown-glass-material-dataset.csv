@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,glass,,
+subcategory,soda-lime,,
+name,Crown Glass,,
+electricalResistivity,10000000000.0,Ω·m,
+fractureToughness,0.75,MPa√m,
+density,2.51,g/cm³,
+oxidationResistance,0.0,mg/cm²,
+youngsModulus,70000000000.0,Pa,
+hardness,5.4,GPa,
+compressiveStrength,900.0,MPa,
+tensileStrength,48.0,MPa,
+flexuralStrength,49.0,MPa,
+corrosionResistance,0.05,mg/100cm²,
+laserDamageThreshold,10,J/cm²,
+absorptivity,0.05,dimensionless,
+absorptionCoefficient,50,m⁻¹,
+thermalShockResistance,1.0,MW/m,
+reflectivity,0.04,dimensionless,
+thermalDestructionPoint,1000,K,
+vaporPressure,0.001,Pa,
+thermalDestruction,992.0,K,
+laserReflectivity,0.042,dimensionless,
+thermalExpansion,9e-06,K^{-1},
+thermalConductivity,1.11,W/m·K,
+specificHeat,840.0,J/(kg·K),
+laserAbsorption,0.5,m^{-1},
+thermalDiffusivity,5.69e-07,m²/s,
+ablationThreshold,2.3,J/cm²,
+power,20-200,W,"Typical range for 1064 nm laser cleaning of delicate glass substrates like Crown Glass to remove contaminants without inducing thermal stress; starting at 50 W allows controlled ablation. Max safe before damage ~200 W depending on fluence. Source: Manufacturer specs from IPG Photonics and Coherent for industrial cleaners; academic review in 'Laser Cleaning of Glass' (Optics and Lasers in Engineering, 2018)."
+wavelength,355-10640,nm,Near-IR wavelength providing optimal absorption in surface contaminants while minimizing glass substrate damage
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning with adequate energy density
+repetitionRate,1-200,kHz,Optimal repetition rate balancing cleaning efficiency and thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient contaminant removal with minimal thermal diffusion into glass substrate
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Recommended number of cleaning passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without excessive thermal buildup

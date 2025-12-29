@@ -1,0 +1,481 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "metal-matrix-composites-mmcs-material-dataset",
+  "name": "Metal Matrix Composites MMCs Laser Cleaning Dataset",
+  "description": "When laser cleaning Metal Matrix Composites, remember their superior strength-to-weight ratio compared to traditional metals, so lightweight parts can handle intense heat without deforming",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "composite",
+      "subcategory": "fiber-reinforced",
+      "name": "Metal Matrix Composites MMCs",
+      "electricalResistivity": {
+        "value": 4.8e-08,
+        "unit": "\u03a9\u00b7m",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "youngsModulus": {
+        "value": 105.0,
+        "unit": "GPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "oxidationResistance": {
+        "value": 0.015,
+        "unit": "mg/(cm\u00b2\u00b7h)",
+        "confidence": 92,
+        "source": "ai_research"
+      },
+      "density": {
+        "value": 2740.0,
+        "unit": "kg/m\u00b3",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "hardness": {
+        "value": 120.0,
+        "unit": "HV",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "corrosionResistance": {
+        "value": 0.72,
+        "unit": "dimensionless (relative corrosion resistance index)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "compressiveStrength": {
+        "value": 420.0,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "flexuralStrength": {
+        "value": 450.0,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "tensileStrength": {
+        "value": 420.0,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserDamageThreshold": {
+        "value": 2.5,
+        "unit": "J/cm\u00b2",
+        "min": 0.5,
+        "max": 10,
+        "source": "ai_research"
+      },
+      "absorptivity": {
+        "value": 0.15,
+        "unit": "dimensionless",
+        "min": 0.05,
+        "max": 0.3,
+        "source": "ai_research"
+      },
+      "absorptionCoefficient": {
+        "value": 5000000,
+        "unit": "m\u207b\u00b9",
+        "min": 100000,
+        "max": 10000000,
+        "source": "ai_research"
+      },
+      "thermalShockResistance": {
+        "value": 1.8,
+        "unit": "MW/m",
+        "min": 0.5,
+        "max": 3,
+        "source": "ai_research"
+      },
+      "reflectivity": {
+        "value": 0.85,
+        "unit": "dimensionless",
+        "min": 0.7,
+        "max": 0.95,
+        "source": "ai_research"
+      },
+      "thermalDestructionPoint": {
+        "value": 1200,
+        "unit": "K",
+        "min": 900,
+        "max": 2000,
+        "source": "ai_research"
+      },
+      "vaporPressure": {
+        "value": 10,
+        "unit": "Pa",
+        "min": 0.1,
+        "max": 1000,
+        "source": "ai_research"
+      },
+      "thermalDestruction": {
+        "value": 933.0,
+        "unit": "K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "specificHeat": {
+        "value": 850.0,
+        "unit": "J/kg\u00b7K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserReflectivity": {
+        "value": 0.82,
+        "unit": "",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalConductivity": {
+        "value": 170.0,
+        "unit": "W/(m\u00b7K)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalExpansion": {
+        "value": 15.2,
+        "unit": "\u00d710^{-6}/K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserAbsorption": {
+        "value": 0.28,
+        "unit": "dimensionless (absorptivity)",
+        "confidence": 92,
+        "source": "ai_research"
+      },
+      "thermalDiffusivity": {
+        "value": 8.5e-05,
+        "unit": "m\u00b2/s",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "ablationThreshold": {
+        "value": 2.8,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Optics and Lasers in Engineering",
+        "citation": "A. Riveiro, F. Quintero, J. Pou, R. Comesa\u02dcna, F. Lusquin\u02dcos, M. Boutinguiza, J. del Val, Laser ablation of metal matrix composites: Influence of the reinforcement on the ablation threshold, Optics and Lasers in Engineering, 2012, DOI: 10.1016/j.optlaseng.2012.03.005",
+        "context": "Al-15vol% SiC metal matrix composite (6061 aluminum alloy matrix), room temperature (25\u00b0C), nanosecond pulsed Nd:YAG laser at 1064 nm wavelength, atmospheric pressure",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:02:38.347318",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 50,
+        "max": 300,
+        "value": 100,
+        "unit": "W",
+        "description": "Typical range for industrial cleaning of MMCs at 1064 nm to remove contaminants without delaminating reinforcements; starting at 100 W for light contamination, max below 300 W to avoid substrate damage due to thermal sensitivity of composite interfaces (source: studies in Journal of Laser Applications, e.g., on Al/SiC MMCs)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR wavelength providing good absorption in metallic matrix while minimizing damage to ceramic reinforcements"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 50,
+        "unit": "\u03bcm",
+        "description": "Beam spot diameter balancing cleaning efficiency and spatial resolution"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 50,
+        "unit": "kHz",
+        "description": "High repetition rate for efficient cleaning while maintaining thermal management"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Nanosecond pulse duration for controlled ablation without excessive thermal diffusion"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 500,
+        "unit": "mm/s",
+        "description": "Optimal scanning speed for uniform cleaning coverage"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 3,
+        "unit": "passes",
+        "description": "Number of cleaning passes for thorough contaminant removal"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 50,
+        "unit": "%",
+        "description": "Beam overlap percentage ensuring complete coverage without excessive energy deposition"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": 4.8e-08,
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 105.0,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 0.015,
+      "unitText": "mg/(cm\u00b2\u00b7h)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 2740.0,
+      "unitText": "kg/m\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 120.0,
+      "unitText": "HV"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.72,
+      "unitText": "dimensionless (relative corrosion resistance index)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 420.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 450.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 420.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 2.8,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.15,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 5000000,
+      "unitText": "m\u207b\u00b9"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 2.5,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalShockResistance",
+      "value": 1.8,
+      "unitText": "MW/m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "reflectivity",
+      "value": 0.85,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestructionPoint",
+      "value": 1200,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "vaporPressure",
+      "value": 10,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 933.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 850.0,
+      "unitText": "J/kg\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.82,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 170.0,
+      "unitText": "W/(m\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 15.2,
+      "unitText": "\u00d710^{-6}/K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.28,
+      "unitText": "dimensionless (absorptivity)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 8.5e-05,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 2.8,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "50-300",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/metal-matrix-composites-mmcs-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/metal-matrix-composites-mmcs-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/metal-matrix-composites-mmcs-material-dataset.txt"
+    }
+  ]
+}

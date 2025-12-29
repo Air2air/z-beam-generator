@@ -27,7 +27,7 @@ import random
 from pathlib import Path
 from typing import Dict, Optional
 
-from shared.domain.base_coordinator import UniversalDomainCoordinator
+from shared.domain.base_coordinator import DomainCoordinator
 from shared.research.faq_topic_researcher import FAQTopicResearcher
 
 logger = logging.getLogger(__name__)
@@ -37,11 +37,11 @@ MATERIALS_DATA_PATH = Path("data/materials/Materials.yaml")
 PROMPTS_DIR = Path("prompts")
 
 
-class UnifiedMaterialsGenerator(UniversalDomainCoordinator):
+class MaterialsCoordinator(DomainCoordinator):
     """
-    Unified generator for all materials content types.
+    Coordinator for all materials content types.
     
-    Extends UniversalDomainCoordinator to provide:
+    Extends DomainCoordinator to provide:
     - QualityEvaluatedGenerator initialization
     - Winston client integration
     - SubjectiveEvaluator setup
@@ -189,3 +189,15 @@ class UnifiedMaterialsGenerator(UniversalDomainCoordinator):
         
         # QualityEvaluatedGenerator returns dict with 'content' key
         return result
+    
+    def list_materials(self) -> list:
+        """Get list of all material IDs."""
+        materials_data = self._load_materials_data()
+        return list(materials_data['materials'].keys())
+    
+    def get_material_data(self, material_id: str):
+        """Get material data for context."""
+        try:
+            return self._get_item_data(material_id)
+        except ValueError:
+            return None

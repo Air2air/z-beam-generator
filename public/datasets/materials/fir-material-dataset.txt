@@ -1,0 +1,57 @@
+Fir Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning Fir in heritage restoration or furniture manufacturing, we've found its strong energy absorption lets us remove contaminants efficiently while preserving the wood's natural grain and structural integrity without excessive heat buildup.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : wood
+subcategory                   : softwood
+name                          : Fir
+density                       : 450.0 kg/m³
+oxidationResistance           : 20.7 %
+youngsModulus                 : 13.4 GPa
+hardness                      : 660.0 lbf
+compressiveStrength           : 44.8 MPa
+tensileStrength               : 85.5 MPa
+flexuralStrength              : 85.5 MPa
+corrosionResistance           : 0.65 
+porosity                      : 0.7 fraction
+laserDamageThreshold          : 5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.15 dimensionless
+thermalDestructionPoint       : 500 K
+vaporPressure                 : 100 Pa
+thermalDestruction            : 573.0 K
+laserReflectivity             : 0.065 dimensionless (fraction)
+thermalExpansion              : 5.1e-05 K^{-1}
+thermalConductivity           : 0.112 W/(m·K)
+specificHeat                  : 1380.0 J/(kg·K)
+laserAbsorption               : 0.88 dimensionless
+thermalDiffusivity            : 1.3e-07 m^2/s
+ablationThreshold             : 1.25 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-200 W
+                                Typical range for pulsed Nd:YAG lasers in wood cleaning to avoid thermal damage; starting at 50 W for light contamination on softwoods like Fir. Max limited to prevent charring (Fir's low thermal conductivity ~0.12 W/mK increases heat buildup). Source: Manufacturer specs from IPG Photonics and Coherent for industrial cleaning heads; academic paper by Pou et al. (2004) in Optics and Lasers in Engineering.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal absorption in Fir wood contaminants
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control on Fir wood grain
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage on Fir surfaces
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient contaminant removal with minimal substrate damage
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning of Fir surfaces
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal from Fir
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap percentage for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

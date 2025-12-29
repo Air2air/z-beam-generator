@@ -1,0 +1,33 @@
+Property,Value,Unit,Description
+category,plastic,,
+subcategory,thermoplastic,,
+name,PEEK,,
+density,1.32,g/cm³,
+porosity,0,%,
+surfaceRoughness,0.6,μm,
+tensileStrength,100,MPa,
+youngsModulus,3.6,GPa,
+hardness,0.11,GPa,
+flexuralStrength,170,MPa,
+oxidationResistance,5,μm/year,
+corrosionResistance,0.95,mm/year,
+compressiveStrength,100,MPa,
+fractureToughness,8,MPa m^{1/2},
+electricalResistivity,1e+16,Ω·m,
+thermalDestruction,616,K,
+laserAbsorption,0.25,dimensionless,
+laserDamageThreshold,1.2,J/cm²,
+ablationThreshold,0.58,J/cm²,
+thermalDiffusivity,1.46e-07,m²/s,
+thermalExpansion,4.7e-05,10^{-6} K^{-1},
+specificHeat,1170.0,J/(kg·K),
+thermalConductivity,0.25,W/m·K,
+laserReflectivity,0.06,,
+power,10-200,W,"Typical range for polymer cleaning at 1064 nm to avoid thermal damage to PEEK (melting point ~343°C); starting at 50 W for light contamination. Max safe ~200 W based on low thermal conductivity. Source: IPG Photonics laser cleaning guidelines and studies on polymer ablation (e.g., J. Laser Appl. 2018)."
+wavelength,355-10640,nm,Near-IR wavelength for controlled absorption
+spotSize,0.1-500,μm,Larger spot for gentle surface treatment
+repetitionRate,1-200,kHz,Lower frequency to prevent thermal damage
+pulseWidth,0.1-1000,ns,Short pulses for minimal thermal impact
+scanSpeed,10-5000,mm/s,Fast scanning to reduce heat accumulation
+passCount,1-10,passes,Multiple gentle passes for gradual cleaning
+overlapRatio,10-90,%,Lower overlap to prevent overheating

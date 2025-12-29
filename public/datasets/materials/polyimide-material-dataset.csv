@@ -1,0 +1,33 @@
+Property,Value,Unit,Description
+category,plastic,,
+subcategory,thermoplastic,,
+name,Polyimide,,
+density,1.42,g/cm³,
+porosity,0,%,
+surfaceRoughness,1.0,μm,
+tensileStrength,231,MPa,
+youngsModulus,2.5,GPa,
+hardness,0.35,GPa,
+flexuralStrength,250,MPa,
+oxidationResistance,3,μm/year,
+corrosionResistance,0.88,mm/year,
+compressiveStrength,231,MPa,
+fractureToughness,6,MPa m^{1/2},
+electricalResistivity,1000000000000000.0,Ω·m,
+thermalDestruction,673,K,
+laserAbsorption,0.65,dimensionless,
+laserDamageThreshold,1.25,J/cm²,
+ablationThreshold,0.58,J/cm²,
+thermalDiffusivity,7.8e-08,m²/s,
+thermalExpansion,20.0,10^{-6}/K,
+specificHeat,1090.0,J/(kg·K),
+thermalConductivity,0.12,W/m·K,
+laserReflectivity,0.065,,
+power,20-200,W,"Typical range for industrial laser cleaning of polymers like polyimide to avoid thermal damage; starting at 50W for controlled contaminant removal. Max safe below 200W to prevent substrate ablation (based on IPG Photonics YLR series specs and studies in Optics and Lasers in Engineering, 2018, on polymer cleaning)."
+wavelength,355-10640,nm,Near-IR wavelength for controlled absorption
+spotSize,0.1-500,μm,Larger spot for gentle surface treatment
+repetitionRate,1-200,kHz,Lower frequency to prevent thermal damage
+pulseWidth,0.1-1000,ns,Short pulses for minimal thermal impact
+scanSpeed,10-5000,mm/s,Fast scanning to reduce heat accumulation
+passCount,1-10,passes,Multiple gentle passes for gradual cleaning
+overlapRatio,10-90,%,Lower overlap to prevent overheating

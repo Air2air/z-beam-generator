@@ -1,0 +1,36 @@
+Property,Value,Unit,Description
+category,masonry,,
+subcategory,general,,
+name,Cement,,
+fractureToughness,0.55,MPa m^{1/2},
+density,3150.0,kg/m³,
+oxidationResistance,1.0,dimensionless,
+youngsModulus,21.0,GPa,
+hardness,0.3,GPa,
+compressiveStrength,42.5,MPa,
+tensileStrength,3.2,MPa,
+flexuralStrength,7.5,MPa,
+corrosionResistance,0.92,dimensionless (normalized resistance index 0-1),
+laserDamageThreshold,8,J/cm²,
+absorptivity,0.85,dimensionless,
+absorptionCoefficient,500000,m⁻¹,
+thermalShockResistance,1.5,MW/m,
+reflectivity,0.15,dimensionless,
+thermalDestructionPoint,1000,K,
+vaporPressure,10,Pa,
+thermalDestruction,773.0,K,
+laserReflectivity,0.35,dimensionless,
+thermalExpansion,1.1e-05,K^{-1},
+thermalConductivity,0.72,W/m·K,
+specificHeat,880.0,J/(kg·K),
+laserAbsorption,0.42,dimensionless,
+thermalDiffusivity,5.26e-07,m^2/s,
+ablationThreshold,2.1,J/cm²,
+power,50-500,W,Typical range for industrial laser cleaning of cementitious materials like concrete to remove contaminants without thermal damage; starting at 100W balances efficiency and safety. Max safe below 500W to avoid cracking porous substrate. Source: Manufacturer specs from IPG Photonics YLR series for stone/concrete cleaning; academic paper by Marczak et al. (2012) on laser cleaning of historical concrete.
+wavelength,355-10640,nm,Near-IR wavelength optimized for cement absorption and minimal substrate damage
+spotSize,0.1-500,mm,Beam spot diameter for effective cleaning resolution
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning coverage
+pulseWidth,0.1-1000,ns,Short pulse duration for efficient contaminant removal with minimal heat diffusion
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning efficiency
+passCount,1-10,passes,Number of cleaning passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning coverage

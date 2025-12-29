@@ -3,11 +3,12 @@ source_file: data/compounds/Compounds.yaml
 output_path: ../z-beam/frontmatter/compounds
 items_key: compounds
 id_field: id
+title_field: title
 filename_suffix: ''
 sluggify_filenames: true
 enrichments:
 - type: universal_restructure
-  module: export.enrichers.universal.universal_restructure_enricher
+  module: export.enrichers.linkage.restructure_enricher
   class: UniversalRestructureEnricher
   domain: compounds
   cleanup_rules:
@@ -19,6 +20,7 @@ enrichments:
     - metadata
     - eeat
     - voice_enhanced
+    - description  # Frontend spec 5.0.0: Use page_description only
     duplicate_fields:
       emergency_response: emergency_response
       physical_properties: physical_properties
@@ -37,8 +39,8 @@ enrichments:
     - engineering_controls
     - safe_work_practices
     - medical_surveillance
-    - risk_assessment
-- type: contaminant_linkage
+    - risk_assessment  # keep_at_top_level
+    - images  # Frontend spec 5.0.0: Required nested object- type: contaminant_linkage
   module: export.enrichers.linkage.contaminant_linkage_enricher
   class: ContaminantLinkageEnricher
   field: source_contaminants
@@ -85,6 +87,10 @@ enrichments:
 - type: author
   module: export.enrichers.linkage.author_enricher
   class: AuthorEnricher
+- type: images
+  module: export.enrichers.media.image_enricher
+  class: ImageEnricher
+  domain: compounds
 - type: breadcrumb
   module: export.enrichers.navigation.breadcrumb_enricher
   class: BreadcrumbEnricher

@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,ferrous,,
+name,Iron,,
+electricalConductivity,10300000.0,S/m,
+electricalResistivity,9.71e-08,Ω·m,
+fractureToughness,65.0,MPa√m,
+surfaceRoughness,1.2,μm,
+youngsModulus,211.0,GPa,
+oxidationResistance,1.2e-11,g²/cm⁴/s,
+density,7874.0,kg/m³,
+hardness,80.0,HV,
+corrosionResistance,-0.44,V,
+compressiveStrength,350.0,MPa,
+flexuralStrength,275.0,MPa,
+tensileStrength,350.0,MPa,
+porosity,0.0,fraction,
+absorptivity,0.35,dimensionless,
+boilingPoint,3135.0,K,
+absorptionCoefficient,630000.0,m⁻¹,
+meltingPoint,1811.0,K,
+vaporPressure,0.000142,Pa,
+thermalDestructionPoint,1811.0,K,
+reflectivity,0.65,dimensionless,
+thermalShockResistance,1.2,MPa√m,
+laserDamageThreshold,2.5,J/cm²,
+thermalDestruction,1811.0,K,
+specificHeat,449.0,J/kg·K,
+laserReflectivity,0.62,dimensionless,
+thermalConductivity,80.2,W/m·K,
+thermalExpansion,1.18e-05,K^{-1},
+laserAbsorption,0.35,dimensionless,
+thermalDiffusivity,2.31e-05,m²/s,
+ablationThreshold,1.5,J/cm²,
+power,50-1000,W,Typical range for industrial Nd:YAG laser cleaning of metals like iron; starting at 200W balances efficiency and safety to avoid melting (iron melting point ~1538°C). Max limited to prevent substrate damage via thermal conduction. Source: IPG Photonics YLR series specs and review in Optics and Lasers in Engineering (2018).
+wavelength,355-10640,nm,Near-IR wavelength with good absorption in Iron oxides and minimal substrate damage
+spotSize,0.1-500,μm,Beam spot diameter for efficient cleaning resolution
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning coverage
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient oxide layer removal
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Number of cleaning passes for complete oxide removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without excessive heat accumulation

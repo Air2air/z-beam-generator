@@ -1,0 +1,63 @@
+Stainless Steel 316 Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning Stainless Steel 316, rely on its superior corrosion resistance to keep surfaces intact in salty or chemical environments, and always adjust the power to avoid unnecessary heat buildup.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : alloy
+name                          : Stainless Steel 316
+density                       : 8.0 g/cm³
+porosity                      : 0 %
+surfaceRoughness              : 0.8 μm
+tensileStrength               : 520 MPa
+youngsModulus                 : 193 GPa
+hardness                      : 2.17 GPa
+flexuralStrength              : 550 MPa
+oxidationResistance           : 8 μm/year
+corrosionResistance           : 0.75 mm/year
+compressiveStrength           : 520 MPa
+fractureToughness             : 120 MPa m^{1/2}
+electricalResistivity         : 7.4e-07 Ω·m
+electricalConductivity        : 1351000.0 S/m
+boilingPoint                  : 3000.0 K
+meltingPoint                  : 1390.0 °C
+thermalDestruction            : 1673 K
+laserAbsorption               : 0.35 dimensionless
+laserDamageThreshold          : 2.1 J/cm²
+ablationThreshold             : 1.25 J/cm²
+thermalDiffusivity            : 4.05e-06 m²/s
+thermalExpansion              : 1.6e-05 K^{-1}
+specificHeat                  : 500.0 J/(kg·K)
+thermalConductivity           : 16.3 W/m·K
+laserReflectivity             : 0.62 
+vaporPressure                 : 101325.0 Pa
+thermalDestructionPoint       : 1399.0 °C
+absorptionCoefficient         : 33000000.0 m^{-1}
+thermalShockResistance        : 119.0 K
+reflectivity                  : 0.62 fraction
+absorptivity                  : 0.37 dimensionless
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-1000 W
+                                Typical range for industrial fiber lasers cleaning metals like SS316; starting at 100 W avoids overheating due to SS316's reflectivity (~65% at 1064 nm); max limited to prevent melting (threshold ~500-1000 W depending on pulse); source: IPG Photonics YLR series specs and Anisimov et al. (2018) in Optics Express.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal metal absorption
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for effective cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Pulse frequency for controlled cleaning
+pulseWidth                    : 0.1-1000 ns
+                                Pulse duration for minimal heat-affected zone
+scanSpeed                     : 10-5000 mm/s
+                                Beam travel speed for uniform treatment
+passCount                     : 1-10 passes
+                                Number of cleaning cycles for complete removal
+overlapRatio                  : 10-90 %
+                                Beam overlap for consistent coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

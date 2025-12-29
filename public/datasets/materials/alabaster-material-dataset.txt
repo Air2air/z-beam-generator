@@ -1,0 +1,58 @@
+Alabaster Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning alabaster in art conservation, I've found it responds best to low-energy pulses that gently lift surface grime while preserving its soft, porous structure—so you start with slow scans to avoid thermal stress on delicate sculptures, and always follow up with a cool-down to keep the finish intact without cracking.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : stone
+subcategory                   : sedimentary
+name                          : Alabaster
+fractureToughness             : 0.22 MPa√m
+density                       : 2.32 g/cm³
+oxidationResistance           : 0.98 dimensionless (normalized scale 0-1)
+youngsModulus                 : 12.5 GPa
+hardness                      : 2.0 Mohs
+compressiveStrength           : 15.0 MPa
+tensileStrength               : 1.5 MPa
+flexuralStrength              : 3.45 MPa
+corrosionResistance           : 0.4 dimensionless
+porosity                      : 2.1 %
+laserDamageThreshold          : 2.5 J/cm²
+absorptivity                  : 0.15 dimensionless
+absorptionCoefficient         : 50000 m⁻¹
+thermalShockResistance        : 1.2 MW/m
+reflectivity                  : 0.85 dimensionless
+thermalDestructionPoint       : 650 K
+vaporPressure                 : 150 Pa
+thermalDestruction            : 423.0 K
+laserReflectivity             : 0.42 
+thermalExpansion              : 1.4e-05 K^{-1}
+thermalConductivity           : 0.86 W/(m·K)
+specificHeat                  : 1090.0 J/kg·K
+laserAbsorption               : 2500.0 m^{-1}
+thermalDiffusivity            : 1.82e-07 m²/s
+ablationThreshold             : 0.75 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-150 W
+                                Typical range for delicate stone cleaning like alabaster to avoid thermal damage; starting at 50 W for controlled ablation. Max safe ~150 W based on gypsum's low melting point (~150°C). Source: Manufacturer specs from IPG Photonics and academic studies on stone conservation (e.g., J. Cult. Herit. 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk material damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter providing sufficient energy density for cleaning with good resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning coverage while avoiding thermal accumulation
+pulseWidth                    : 0.1-1000 ns
+                                Short pulse duration for efficient contaminant removal with minimal heat diffusion
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap percentage for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

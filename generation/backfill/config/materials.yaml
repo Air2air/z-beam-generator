@@ -1,0 +1,11 @@
+domain: materials
+source_file: data/materials/Materials.yaml
+items_key: materials
+
+generators:
+  - type: description
+    module: generation.backfill.materials_description
+    class: MaterialDescriptionGenerator
+    field: description
+    source_file: data/materials/Materials.yaml
+    items_key: materials

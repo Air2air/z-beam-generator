@@ -1,0 +1,54 @@
+Dolomite Laser Cleaning Dataset
+================================================================================
+
+Description: Dolomite exhibits durable hardness and low porosity, so laser cleaning removes surface contaminants effectively while surface maintains integrity during treatment.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : stone
+subcategory                   : sedimentary
+name                          : Dolomite
+density                       : 2.85 g/cm³
+porosity                      : 5 %
+surfaceRoughness              : 6 μm
+tensileStrength               : 90 MPa
+youngsModulus                 : 65 GPa
+hardness                      : 1.5 GPa
+flexuralStrength              : 140 MPa
+oxidationResistance           : 6 μm/year
+corrosionResistance           : 0.88 mm/year
+compressiveStrength           : 90 MPa
+fractureToughness             : 5 MPa m^{1/2}
+electricalResistivity         : 10000000000000.0 Ω·m
+thermalDestruction            : 1073 K
+laserAbsorption               : 0.25 dimensionless
+laserDamageThreshold          : 1.15 J/cm²
+ablationThreshold             : 1.2 J/cm²
+thermalDiffusivity            : 1.14e-06 m²/s
+thermalExpansion              : 8.8e-06 K^{-1}
+specificHeat                  : 880.0 J/(kg·K)
+thermalConductivity           : 2.8 W/m·K
+laserReflectivity             : 0.067 
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for industrial cleaning of carbonate stones like dolomite to remove contaminants without thermal damage; start at 150W for controlled ablation. Max safe ~300-500W depending on fluence. Based on manufacturer specs from IPG Photonics and Coherent for 1064 nm systems used in heritage stone cleaning (e.g., avoids decomposition above 900°C).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for stone cleaning
+spotSize                      : 0.1-500 μm
+                                Moderate spot for effective treatment
+repetitionRate                : 1-200 kHz
+                                Balanced frequency for stone cleaning
+pulseWidth                    : 0.1-1000 ns
+                                Controlled pulses for minimal damage
+scanSpeed                     : 10-5000 mm/s
+                                Steady scanning for uniform cleaning
+passCount                     : 1-10 passes
+                                Multiple passes for thorough treatment
+overlapRatio                  : 10-90 %
+                                Standard overlap for consistent results
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

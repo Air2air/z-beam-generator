@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,specialty,,
+name,Magnesium,,
+electricalConductivity,22470000.0,S/m,
+electricalResistivity,4.45e-08,Ω·m,
+fractureToughness,23.0,MPa√m,
+surfaceRoughness,1.6,μm,
+youngsModulus,45.0,GPa,
+oxidationResistance,0.81,dimensionless,
+density,1738.0,kg/m³,
+hardness,38.0,HV,
+corrosionResistance,-2.37,V,
+compressiveStrength,160.0,MPa,
+flexuralStrength,170.0,MPa,
+tensileStrength,160.0,MPa,
+porosity,0.0,fraction,
+absorptivity,0.12,dimensionless,
+boilingPoint,1363.0,K,
+absorptionCoefficient,11200000.0,m⁻¹,
+meltingPoint,923.0,K,
+vaporPressure,36.1,Pa,
+thermalDestructionPoint,923.0,K,
+reflectivity,0.74,dimensionless (ratio),
+thermalShockResistance,1.8,W/m,
+laserDamageThreshold,0.15,J/cm²,
+thermalDestruction,923.0,K,
+specificHeat,1023.0,J/kg·K,
+laserReflectivity,0.94,,
+thermalConductivity,156.0,W/m·K,
+thermalExpansion,2.5e-05,K^{-1},
+laserAbsorption,0.058,dimensionless,
+thermalDiffusivity,8.78e-05,m²/s,
+ablationThreshold,1.8,J/cm²,
+power,50-1000,W,"Typical range for industrial laser cleaning of magnesium alloys to avoid melting (low melting point ~650°C); starting at 200W balances efficiency and safety. Max limited to prevent substrate damage due to high reflectivity at 1064 nm. Source: Studies on Mg alloy cleaning (e.g., J. Laser Appl. 2018, Vol. 30, IPG Photonics specs for Yb-fiber lasers)."
+wavelength,355-10640,nm,Optimal wavelength considering Magnesium's optical properties
+spotSize,0.1-500,μm,Optimal beam spot diameter for Magnesium surface treatment
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient Magnesium cleaning process
+pulseWidth,0.1-1000,ns,Optimal pulse duration for controlled ablation of Magnesium oxides
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform Magnesium surface cleaning
+passCount,1-10,passes,Recommended number of passes for thorough Magnesium cleaning
+overlapRatio,10-90,%,Optimal pulse overlap for complete Magnesium surface coverage

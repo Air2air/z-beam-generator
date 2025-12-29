@@ -7,14 +7,17 @@ Commands:
   --generate       Generate new content (future implementation)
   --export         Export frontmatter using Universal Exporter
   --export-all     Export all domains to production
+  --backfill       Populate source YAML data permanently
+  --backfill-all   Backfill all domains
 """
 
 import sys
 import argparse
 import subprocess
+import yaml
 from pathlib import Path
 from shared.commands.postprocess import PostprocessCommand
-from export.core.universal_exporter import UniversalFrontmatterExporter
+from export.core.frontmatter_exporter import UniversalFrontmatterExporter
 from export.config.loader import load_domain_config
 
 
@@ -203,6 +206,66 @@ def export_all_command(args):
     print("="*80)
 
 
+def backfill_command(args):
+    """Execute backfill command to populate source YAML permanently"""
+    
+    # Import registry and load generator
+    from generation.backfill.registry import BackfillRegistry
+    from generation.backfill.description_backfill import ContaminantDescriptionBackfillGenerator
+    
+    # Load backfill configuration
+    config_file = Path(f'generation/backfill/config/{args.domain}.yaml')
+    if not config_file.exists():
+        print(f"❌ Error: No backfill config for domain: {args.domain}")
+        print(f"   Available domains: materials, contaminants, compounds, settings")
+        sys.exit(1)
+    
+    with open(config_file, 'r') as f:
+        config = yaml.safe_load(f)
+    
+    # Run specific generator or all
+    if args.generator:
+        # Find generator config
+        generator_config = next(
+            (g for g in config['generators'] if g['type'] == args.generator),
+            None
+        )
+        if not generator_config:
+            print(f"❌ Error: Generator not found: {args.generator}")
+            print(f"   Available generators: {[g['type'] for g in config['generators']]}")
+            sys.exit(1)
+        
+        # Add dry-run flag
+        generator_config['dry_run'] = args.dry_run
+        
+        # Create and run generator
+        generator = BackfillRegistry.create(generator_config)
+        stats = generator.backfill_all()
+        
+        if not args.dry_run and stats['modified'] > 0:
+            print(f"\n✅ Backfill complete: {stats['modified']} items modified")
+        elif args.dry_run:
+            print(f"\n🔍 DRY RUN complete: Would modify {stats['modified']} items")
+        
+    else:
+        # Run all generators
+        print(f"\\n{'='*80}")
+        print(f"🚀 RUNNING ALL BACKFILL GENERATORS FOR: {args.domain.upper()}")
+        print(f"{'='*80}\\n")
+        
+        total_modified = 0
+        for gen_config in config['generators']:
+            gen_config['dry_run'] = args.dry_run
+            generator = BackfillRegistry.create(gen_config)
+            stats = generator.backfill_all()
+            total_modified += stats['modified']
+        
+        if not args.dry_run and total_modified > 0:
+            print(f"\\n✅ All backfills complete: {total_modified} total modifications")
+        elif args.dry_run:
+            print(f"\\n🔍 DRY RUN complete: Would modify {total_modified} total items")
+
+
 def main():
     """Main CLI entry point"""
     parser = argparse.ArgumentParser(
@@ -216,6 +279,11 @@ Examples:
 
   # Export all domains to production
   python3 run.py --export-all
+
+  # Backfill source data permanently
+  python3 run.py --backfill --domain contaminants --generator description --dry-run
+  python3 run.py --backfill --domain contaminants --generator description
+  python3 run.py --backfill --domain contaminants  # Run all generators
 
   # Postprocess single item
   python3 run.py --postprocess --domain materials --item "Aluminum" --field description
@@ -240,10 +308,18 @@ Examples:
                         help='Export frontmatter for specific domain using Universal Exporter')
     parser.add_argument('--export-all', action='store_true',
                         help='Export all domains to production')
+    parser.add_argument('--backfill', action='store_true',
+                        help='Populate source YAML data permanently')
+    parser.add_argument('--backfill-all', action='store_true',
+                        help='Backfill all domains (future implementation)')
     
     # Export arguments
     parser.add_argument('--skip-existing', action='store_true',
                         help='Skip existing files (default: overwrite)')
+    
+    # Backfill arguments
+    parser.add_argument('--generator', type=str,
+                        help='Specific backfill generator to run (e.g., description, compound_linkage)')
     
     # Postprocessing arguments
     parser.add_argument('--domain', type=str,
@@ -269,12 +345,19 @@ Examples:
         export_command(args)
     elif args.export_all:
         export_all_command(args)
+    elif args.backfill:
+        backfill_command(args)
+    elif args.backfill_all:
+        print("❌ --backfill-all not yet implemented")
+        print("   Use --backfill --domain <domain> instead")
+        sys.exit(1)
     else:
         parser.print_help()
         print("\n❌ Error: No command specified")
         print("   Use --postprocess to refine existing content")
         print("   Use --export to export frontmatter for a domain")
         print("   Use --export-all to export all domains")
+        print("   Use --backfill to populate source data permanently")
         sys.exit(1)
 
 

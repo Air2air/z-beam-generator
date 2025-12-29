@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,wood,,
+subcategory,hardwood,,
+name,Bamboo,,
+fractureToughness,2.47,MPa√m,
+density,700.0,kg/m³,
+oxidationResistance,168.0,kJ/mol,
+youngsModulus,21.5,GPa,
+hardness,6144.0,N,
+compressiveStrength,56.0,MPa,
+tensileStrength,180.0,MPa,
+flexuralStrength,140.0,MPa,
+corrosionResistance,0.75,dimensionless (durability index),
+porosity,0.58,fraction,
+laserDamageThreshold,5,J/cm²,
+absorptivity,0.85,dimensionless,
+absorptionCoefficient,500000,m⁻¹,
+thermalShockResistance,1.2,MW/m,
+reflectivity,0.12,dimensionless,
+thermalDestructionPoint,500,K,
+vaporPressure,100,Pa,
+thermalDestruction,588.0,K,
+laserReflectivity,0.15,dimensionless,
+thermalExpansion,3.2e-06,K^{-1},
+thermalConductivity,0.2,W/m·K,
+specificHeat,1380.0,J/(kg·K),
+laserAbsorption,0.92,dimensionless,
+thermalDiffusivity,1.26e-07,m²/s,
+ablationThreshold,1.85,J/cm²,
+power,20-200,W,"Typical range for delicate organic materials like bamboo to remove surface contaminants without charring; starting at 50 W for controlled ablation. Max safe to avoid substrate damage based on thermal sensitivity of lignocellulosic fibers. Source: Studies on laser cleaning of wood (e.g., Journal of Cultural Heritage, 2018, adapted for bamboo)."
+wavelength,355-10640,nm,Near-IR wavelength for optimal absorption in bamboo contaminants with minimal substrate damage
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning resolution on bamboo surface features
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning coverage with thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient contaminant removal with controlled thermal penetration
+scanSpeed,10-5000,mm/s,Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
+passCount,1-10,passes,Number of cleaning passes for complete contaminant removal without substrate damage
+overlapRatio,10-90,%,Beam overlap percentage for uniform cleaning coverage across bamboo surface

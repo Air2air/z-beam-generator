@@ -22,7 +22,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 # Import export system components for fixtures
 from export.config.loader import load_domain_config
-from export.core.universal_exporter import UniversalFrontmatterExporter
+from export.core.frontmatter_exporter import UniversalFrontmatterExporter
 
 # Production paths
 PROD_ROOT = PROJECT_ROOT.parent / 'z-beam'
@@ -159,7 +159,7 @@ def session_test_data() -> Dict[str, Any]:
 def session_mock_client():
     """Session-scoped mock API client."""
     try:
-        from tests.fixtures.mocks.simple_mock_client import MockAPIClient
+        from tests.fixtures.mocks.mock_client import MockAPIClient
         client = MockAPIClient("grok")
         # Configure for maximum speed
         client.response_delay = 0.0

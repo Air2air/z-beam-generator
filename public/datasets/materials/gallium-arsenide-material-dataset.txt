@@ -1,0 +1,57 @@
+Gallium Arsenide Laser Cleaning Dataset
+================================================================================
+
+Description: For laser cleaning Gallium Arsenide, begin with low power to protect its delicate semiconductor structure from damage, then slowly raise the power to strip away contaminants while keeping high electron mobility intact for solid electronics reliability
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : semiconductor
+subcategory                   : elemental
+name                          : Gallium Arsenide
+electricalResistivity         : 3300000.0 Ω m
+density                       : 5.317 g/cm³
+oxidationResistance           : 0.008 nm/min
+youngsModulus                 : 85.4 GPa
+hardness                      : 7.5 GPa
+compressiveStrength           : 1170.0 MPa
+tensileStrength               : 41.0 MPa
+flexuralStrength              : 140.0 MPa
+corrosionResistance           : 0.85 dimensionless (normalized resistance scale 0-1)
+laserDamageThreshold          : 4.5 J/cm²
+absorptivity                  : 0.68 dimensionless
+absorptionCoefficient         : 10000000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.32 dimensionless
+thermalDestructionPoint       : 1511 K
+vaporPressure                 : 5 Pa
+thermalDestruction            : 1511.0 K
+laserReflectivity             : 0.3 1
+thermalExpansion              : 5.73e-06 1/K
+thermalConductivity           : 55.0 W/m·K
+specificHeat                  : 322.0 J/(kg·K)
+laserAbsorption               : 0.68 dimensionless
+thermalDiffusivity            : 3.2e-05 m²/s
+ablationThreshold             : 0.85 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 5-50 W
+                                Typical range for 532 nm pulsed lasers in semiconductor cleaning to avoid thermal damage to GaAs (melting point ~1238°C, high reflectivity at green wavelengths). Starting at 20 W balances efficiency and safety; max limited to prevent substrate ablation. Source: Studies on laser cleaning of III-V semiconductors (e.g., J. Appl. Phys. 2018 on GaAs thresholds).
+wavelength                    : 355-10640 nm
+                                Green wavelength optimized for GaAs absorption characteristics
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

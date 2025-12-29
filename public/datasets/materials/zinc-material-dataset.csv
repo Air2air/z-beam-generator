@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,alloy,,
+name,Zinc,,
+youngsModulus,108.0,GPa,
+oxidationResistance,1.58,dimensionless,
+density,7140.0,kg/m³,
+hardness,35.0,HB,
+corrosionResistance,0.003,mm/year,
+compressiveStrength,28.0,MPa,
+flexuralStrength,110.0,MPa,
+tensileStrength,110.0,MPa,
+fractureToughness,15.0,MPa√m,
+porosity,0.0,%,
+electricalResistivity,5.9e-08,Ω·m,
+absorptivity,0.15,dimensionless,
+boilingPoint,1180.0,K,
+absorptionCoefficient,10000000,m⁻¹,
+electricalConductivity,16950000.0,S/m,
+meltingPoint,692.68,K,
+vaporPressure,10,Pa,
+thermalDestructionPoint,693,K,
+reflectivity,0.85,dimensionless,
+thermalShockResistance,2.5,MW/m,
+surfaceRoughness,1.6,μm,
+laserDamageThreshold,2.5,J/cm²,
+thermalDestruction,692.68,K,
+specificHeat,389.0,J/kg·K,
+laserReflectivity,0.72,dimensionless,
+thermalConductivity,116.0,W/m·K,
+thermalExpansion,3.02e-05,1/K,
+laserAbsorption,0.35,dimensionless,
+thermalDiffusivity,4.18e-05,m²/s,
+ablationThreshold,1.15,J/cm²,
+power,50-500,W,Typical range for industrial 1064 nm fiber lasers cleaning reflective metals like zinc to avoid excessive heat buildup; starting at 150 W balances efficiency and safety. Max limited to prevent melting (zinc MP ~419°C). Source: CleanLaser and IPG Photonics equipment specs for metal surface preparation.
+wavelength,355-10640,nm,Near-IR wavelength with good Zinc absorption and minimal reflectivity
+spotSize,0.1-500,μm,Beam spot diameter for effective Zinc oxide removal
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning with thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient Zinc ablation with thermal control
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform Zinc surface cleaning
+passCount,1-10,passes,Number of passes for thorough Zinc oxide removal
+overlapRatio,10-90,%,Optimal beam overlap for complete Zinc surface coverage

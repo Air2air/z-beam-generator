@@ -1,0 +1,577 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://www.z-beam.com/datasets/diamond-coating-contamination",
+  "identifier": "diamond-coating-contamination",
+  "name": "Diamond-Like Carbon Removal",
+  "description": "Diamond-Like Carbon Removal (Amorphous Carbon, Diamond) is a common contamination pattern in laser cleaning. This inorganic-coating/coating contamination affects surface integrity and requires specialized removal techniques. Commonly found on 3 different material types including metals, composites, and specialized substrates.",
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 1064Nm",
+      "value": "80000",
+      "unitText": "cm\u207b\u00b9",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 355Nm",
+      "value": "450000",
+      "unitText": "cm\u207b\u00b9",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 532Nm",
+      "value": "150000",
+      "unitText": "cm\u207b\u00b9",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 1064Nm",
+      "value": "0.25",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 355Nm",
+      "value": "0.12",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 532Nm",
+      "value": "0.18",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Imaginary Part",
+      "value": "0.15",
+      "unitText": "dimensionless",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Real Part",
+      "value": "2.4",
+      "unitText": "dimensionless",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Transmission Depth",
+      "value": "1.25",
+      "unitText": "\u03bcm",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Pulse Duration 100Ns",
+      "value": "1.2",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Pulse Duration 10Ns",
+      "value": "0.6",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Wavelength 1064Nm",
+      "value": "0.8",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Decomposition Temperature",
+      "value": "450",
+      "unitText": "\u00b0C",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Heat Affected Zone Depth",
+      "value": "2.5",
+      "unitText": "\u03bcm",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Melting Point",
+      "value": "N/A",
+      "unitText": "\u00b0C",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Specific Heat",
+      "value": "750",
+      "unitText": "J/(kg\u00b7K)",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Thermal Conductivity",
+      "value": "1.5",
+      "unitText": "W/(m\u00b7K)",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Thermal Diffusivity",
+      "value": "0.8",
+      "unitText": "mm\u00b2/s",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Vaporization Temperature",
+      "value": "1200",
+      "unitText": "\u00b0C",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Beam Profile",
+      "value": "gaussian",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Fluence Range",
+      "value": "{'max_j_cm2': 1.2, 'min_j_cm2': 0.4, 'recommended_j_cm2': 0.8}",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Overlap Percentage",
+      "value": "50",
+      "unitText": "%",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Polarization",
+      "value": "any",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Pulse Duration Range",
+      "value": "{'max_ns': 100, 'min_ns': 4, 'recommended_ns': 10}",
+      "unitText": "ns",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Repetition Rate Khz",
+      "value": "100",
+      "unitText": "kHz",
+      "minValue": 20,
+      "maxValue": 300
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Safety Margin Factor",
+      "value": "0.7",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Scan Speed Mm S",
+      "value": "1000",
+      "unitText": "mm/s",
+      "minValue": 500,
+      "maxValue": 2000
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Spot Size Mm",
+      "value": "0.05",
+      "unitText": "mm",
+      "minValue": 0.02,
+      "maxValue": 0.1
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Wavelength Preference",
+      "value": "1064, 355",
+      "unitText": "nm",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Damage Risk To Substrate",
+      "value": "low",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Primary Mechanism",
+      "value": "thermal_ablation",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Area Coverage Rate Cm2 Min",
+      "value": "120",
+      "unitText": "cm\u00b2/min",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Typical Scan Speed Mm S",
+      "value": "500",
+      "unitText": "mm/s",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Diminishing Returns After",
+      "value": "3",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Optimal Passes",
+      "value": "2",
+      "unitText": "passes",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Single Pass",
+      "value": "0.85",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Color Change",
+      "value": "no",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Residual Stress",
+      "value": "compressive",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Roughness Increase",
+      "value": "minimal",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Carbon Monoxide",
+      "value": "CO",
+      "description": "When dealing with carbon monoxide, watch its sneaky toxicity right away. Unlike oxygen, which sustains life, this gas binds tightly to your blood. That starves cells of what they need. \n\nCompare it to..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Carbon Dioxide",
+      "value": "CO\u2082",
+      "description": "When dealing with carbon dioxide compounds in industrial settings, the standout trait is its role as an asphyxiant, meaning it quietly pushes out breathable air without you noticing right away. This m..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Carbon Particulates",
+      "value": "C",
+      "description": "When handling carbon particulates in industrial settings, the key is understanding how they differ from larger dust particles. Those bigger ones settle quickly and rarely cause deep lung issues. Carbo..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal laserPower",
+      "value": null,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal wavelength",
+      "value": [
+        1064,
+        355
+      ],
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal pulseWidth",
+      "value": null,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal scanSpeed",
+      "value": null,
+      "minValue": 500,
+      "maxValue": 2000,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal spotSize",
+      "value": null,
+      "minValue": 0.02,
+      "maxValue": 0.1,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal frequency",
+      "value": null,
+      "minValue": 20,
+      "maxValue": 300,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal overlapRatio",
+      "value": 50,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal removalRate",
+      "value": null,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    }
+  ],
+  "keywords": [
+    "Diamond-Like Carbon Removal",
+    "laser cleaning",
+    "contaminant removal",
+    "surface cleaning",
+    "industrial cleaning",
+    "inorganic-coating",
+    "coating",
+    "Amorphous Carbon",
+    "Diamond"
+  ],
+  "dateModified": "",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/diamond-coating-contamination.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/diamond-coating-contamination.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/diamond-coating-contamination.txt"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Aluminum Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/aluminum-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Brass Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/brass-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Brick Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/brick-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Bronze Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/bronze-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Carbon Fiber Reinforced Polymer Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/carbon-fiber-reinforced-polymer-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Carbon Monoxide Hazardous Compound",
+      "url": "https://www.z-beam.com/compounds/carbon-monoxide-compound"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Carbon Dioxide Hazardous Compound",
+      "url": "https://www.z-beam.com/compounds/carbon-dioxide-compound"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Carbon Particulates Hazardous Compound",
+      "url": "https://www.z-beam.com/compounds/carbon-particulates-compound"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "OSHA PPE REQUIREMENTS",
+      "url": "https://www.z-beam.com/safety/regulatory_standards/osha-ppe-requirements"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "ANSI Z136 1 LASER SAFETY",
+      "url": "https://www.z-beam.com/safety/regulatory_standards/ansi-z136-1-laser-safety"
+    }
+  ],
+  "contaminant": {
+    "properties": {
+      "composition": [
+        "Amorphous Carbon",
+        "Diamond"
+      ],
+      "absorptionRate": {
+        "wavelength_1064nm": 80000,
+        "wavelength_355nm": 450000,
+        "wavelength_532nm": 150000
+      },
+      "reflectivity": {
+        "wavelength_1064nm": 0.25,
+        "wavelength_355nm": 0.12,
+        "wavelength_532nm": 0.18
+      }
+    },
+    "compounds": [
+      {
+        "name": "Carbon Monoxide",
+        "formula": "CO",
+        "casNumber": "630-08-0",
+        "hazardLevel": "toxic",
+        "healthEffects": "When dealing with carbon monoxide, watch its sneaky toxicity right away. Unlike oxygen, which sustains life, this gas binds tightly to your blood. That starves cells of what they need. \n\nCompare it to...",
+        "frequency": "unknown",
+        "severity": "high"
+      },
+      {
+        "name": "Carbon Dioxide",
+        "formula": "CO\u2082",
+        "casNumber": "124-38-9",
+        "hazardLevel": "asphyxiant",
+        "healthEffects": "When dealing with carbon dioxide compounds in industrial settings, the standout trait is its role as an asphyxiant, meaning it quietly pushes out breathable air without you noticing right away. This m...",
+        "frequency": "unknown",
+        "severity": "moderate"
+      },
+      {
+        "name": "Carbon Particulates",
+        "formula": "C",
+        "casNumber": "7440-44-0",
+        "hazardLevel": "nuisance_dust",
+        "healthEffects": "When handling carbon particulates in industrial settings, the key is understanding how they differ from larger dust particles. Those bigger ones settle quickly and rarely cause deep lung issues. Carbo...",
+        "frequency": "unknown",
+        "severity": "moderate"
+      }
+    ],
+    "removalTechniques": {
+      "laserPower": {
+        "max_j_cm2": 1.2,
+        "min_j_cm2": 0.4,
+        "recommended_j_cm2": 0.8
+      },
+      "wavelength": {
+        "value": [
+          1064,
+          355
+        ]
+      },
+      "pulseWidth": {
+        "max_ns": 100,
+        "min_ns": 4,
+        "recommended_ns": 10
+      },
+      "scanSpeed": {
+        "max": 2000,
+        "min": 500,
+        "recommended": 1000
+      },
+      "spotSize": {
+        "max": 0.1,
+        "min": 0.02,
+        "recommended": 0.05
+      },
+      "frequency": {
+        "max": 300,
+        "min": 20,
+        "recommended": 100
+      },
+      "overlapRatio": {
+        "value": 50
+      },
+      "removalRate": {
+        "diminishing_returns_after": 3,
+        "optimal_passes": 2,
+        "single_pass": 0.85
+      }
+    }
+  }
+}

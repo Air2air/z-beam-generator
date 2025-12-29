@@ -1,0 +1,63 @@
+Cobalt Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning cobalt, begin with lower power settings to account for its strong heat resistance—stronger than softer metals like nickel—but monitor for surface oxidation that may build up midway through passes to ensure a clean, durable finish.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : specialty
+name                          : Cobalt
+electricalConductivity        : 16025641.025641026 S/m
+electricalResistivity         : 6.24e-08 Ω·m
+fractureToughness             : 56.0 MPa√m
+surfaceRoughness              : 0.32 μm
+density                       : 8900.0 kg/m³
+oxidationResistance           : 873.0 K
+youngsModulus                 : 210.0 GPa
+hardness                      : 220.0 HV
+compressiveStrength           : 241.0 MPa
+tensileStrength               : 241.0 MPa
+flexuralStrength              : 310.0 MPa
+corrosionResistance           : 0.02 mm/year
+porosity                      : 0.0 fraction
+boilingPoint                  : 3200.0 K
+absorptivity                  : 0.35 dimensionless
+absorptionCoefficient         : 11200000.0 m⁻¹
+reflectivity                  : 0.66 dimensionless (reflectance)
+vaporPressure                 : 1.33 Pa
+meltingPoint                  : 1768.0 K
+thermalDestructionPoint       : 1768.0 K
+thermalShockResistance        : 4.2 MPa·m^0.5
+laserDamageThreshold          : 0.45 J/cm²
+thermalDestruction            : 1768.0 K
+laserReflectivity             : 0.68 dimensionless
+thermalExpansion              : 12.5 10^{-6} K^{-1}
+thermalConductivity           : 100.0 W/m·K
+specificHeat                  : 421.0 J/kg·K
+laserAbsorption               : 0.37 dimensionless
+thermalDiffusivity            : 2.67e-05 m^2/s
+ablationThreshold             : 1.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for industrial cleaning of reflective metals like cobalt to avoid thermal damage; starting at 100 W balances efficiency and safety. Max limited to prevent melting (cobalt MP ~1495°C). Source: IPG Photonics YLR series specs for metal cleaning.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal Cobalt absorption and thermal processing
+spotSize                      : 0.1-500 μm
+                                Optimal beam diameter for precision cleaning of Cobalt components
+repetitionRate                : 1-200 kHz
+                                High repetition rate for efficient cleaning coverage on Cobalt surfaces
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient Cobalt oxide ablation
+scanSpeed                     : 10-5000 mm/s
+                                Scanning speed for efficient Cobalt surface cleaning
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete Cobalt oxide removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform Cobalt surface cleaning
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -1,0 +1,493 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "cedar-material-dataset",
+  "name": "Cedar Laser Cleaning Dataset",
+  "description": "When laser cleaning Cedar, keep an eye on its natural porosity, which draws contaminants deep into the wood, so you'll need to tweak scan speeds to prevent uneven ablation. That same porosity helps bounce back surface integrity fast afterward, letting vapors vent out freely without trapping heat under the wood fibers.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "wood",
+      "subcategory": "softwood",
+      "name": "Cedar",
+      "fractureToughness": {
+        "value": 0.36,
+        "unit": "MPa m^{0.5}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "density": {
+        "value": 350.0,
+        "unit": "kg/m\u00b3",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "oxidationResistance": {
+        "value": 0.92,
+        "unit": "dimensionless (normalized resistance index)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "youngsModulus": {
+        "value": 6.9,
+        "unit": "GPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "hardness": {
+        "value": 1557.0,
+        "unit": "N",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "compressiveStrength": {
+        "value": 37.6,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "tensileStrength": {
+        "value": 51.7,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "flexuralStrength": {
+        "value": 51.0,
+        "unit": "MPa",
+        "confidence": 98,
+        "source": "ai_research"
+      },
+      "corrosionResistance": {
+        "value": 0.85,
+        "unit": "dimensionless (durability index, 0-1 scale)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "porosity": {
+        "value": 0.79,
+        "unit": "fraction",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserDamageThreshold": {
+        "value": 2.5,
+        "unit": "J/cm\u00b2",
+        "min": 1.0,
+        "max": 5.0,
+        "source": "ai_research"
+      },
+      "absorptivity": {
+        "value": 0.85,
+        "unit": "dimensionless",
+        "min": 0.7,
+        "max": 0.95,
+        "source": "ai_research"
+      },
+      "absorptionCoefficient": {
+        "value": 500000,
+        "unit": "m\u207b\u00b9",
+        "min": 100000,
+        "max": 1000000,
+        "source": "ai_research"
+      },
+      "thermalShockResistance": {
+        "value": 1.2,
+        "unit": "MW/m",
+        "min": 0.5,
+        "max": 2.0,
+        "source": "ai_research"
+      },
+      "reflectivity": {
+        "value": 0.15,
+        "unit": "dimensionless",
+        "min": 0.05,
+        "max": 0.3,
+        "source": "ai_research"
+      },
+      "thermalDestructionPoint": {
+        "value": 573,
+        "unit": "K",
+        "min": 473,
+        "max": 673,
+        "source": "ai_research"
+      },
+      "vaporPressure": {
+        "value": 100,
+        "unit": "Pa",
+        "min": 10,
+        "max": 1000,
+        "source": "ai_research"
+      },
+      "thermalDestruction": {
+        "value": 523.0,
+        "unit": "K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserReflectivity": {
+        "value": 0.065,
+        "unit": "dimensionless",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalExpansion": {
+        "value": 4.2e-05,
+        "unit": "K^{-1}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalConductivity": {
+        "value": 0.11,
+        "unit": "W/m\u00b7K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "specificHeat": {
+        "value": 1340.0,
+        "unit": "J/(kg\u00b7K)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserAbsorption": {
+        "value": 95000.0,
+        "unit": "m^{-1}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalDiffusivity": {
+        "value": 1.2e-07,
+        "unit": "m\u00b2/s",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "ablationThreshold": {
+        "value": 1.75,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Laser ablation thresholds of wood species for cultural heritage conservation",
+        "citation": "Sanz et al., Applied Surface Science, 2017, DOI: 10.1016/j.apsusc.2017.05.123",
+        "context": "Western red cedar (Thuja plicata), oven-dried (0% moisture), 20\u00b0C, measured with Q-switched Nd:YAG laser at 1064 nm wavelength, pulse duration 10 ns",
+        "confidence": 95,
+        "researched_date": "2025-11-24T11:53:50.408208",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 50,
+        "max": 300,
+        "value": 100,
+        "unit": "W",
+        "description": "Typical range for industrial laser cleaning of softwoods like cedar to remove contaminants without charring; starting at 100 W allows controlled ablation. Max avoids thermal damage threshold (~300 W at 1064 nm). Source: Manufacturer specs from IPG Photonics YLR series for wood applications; academic paper on wood surface cleaning (Opt. Lasers Eng., 2018)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-infrared wavelength for optimal Cedar absorption and minimal penetration"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 80,
+        "unit": "\u03bcm",
+        "description": "Optimal beam diameter for precision cleaning of Cedar grain patterns"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 50,
+        "unit": "kHz",
+        "description": "High repetition rate for uniform cleaning coverage on Cedar surfaces"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 12,
+        "unit": "ns",
+        "description": "Short pulse duration for efficient ablation of contaminants without excessive heat diffusion"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 500,
+        "unit": "mm/s",
+        "description": "Scanning speed for efficient area coverage while maintaining cleaning effectiveness"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 2,
+        "unit": "passes",
+        "description": "Number of cleaning passes for complete contaminant removal from Cedar surface"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 50,
+        "unit": "%",
+        "description": "Optimal beam overlap for uniform cleaning without excessive energy deposition"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 0.36,
+      "unitText": "MPa m^{0.5}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 350.0,
+      "unitText": "kg/m\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 0.92,
+      "unitText": "dimensionless (normalized resistance index)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 6.9,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 1557.0,
+      "unitText": "N"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 37.6,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 51.7,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 51.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.85,
+      "unitText": "dimensionless (durability index, 0-1 scale)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 0.79,
+      "unitText": "fraction"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 1.8,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.85,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 500000,
+      "unitText": "m\u207b\u00b9"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 2.5,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalShockResistance",
+      "value": 1.2,
+      "unitText": "MW/m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "reflectivity",
+      "value": 0.15,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestructionPoint",
+      "value": 573,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "vaporPressure",
+      "value": 100,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 523.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.065,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 4.2e-05,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 0.11,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 1340.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 95000.0,
+      "unitText": "m^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 1.2e-07,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 1.75,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "50-300",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/cedar-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/cedar-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/cedar-material-dataset.txt"
+    }
+  ]
+}

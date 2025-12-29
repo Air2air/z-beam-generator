@@ -1,0 +1,63 @@
+Tool Steel Laser Cleaning Dataset
+================================================================================
+
+Description: Tool steel excels with its exceptional hardness and heat resistance, allowing tools to keep sharp edges intact during intense machining operations without deforming or weakening.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : alloy
+name                          : Tool Steel
+youngsModulus                 : 200.0 GPa
+oxidationResistance           : 773.0 K
+density                       : 7850.0 kg/m³
+hardness                      : 60.0 HRC
+corrosionResistance           : 0.3 dimensionless (resistance index)
+compressiveStrength           : 1850.0 MPa
+flexuralStrength              : 1720.0 MPa
+tensileStrength               : 1520.0 MPa
+fractureToughness             : 22.0 MPa√m
+porosity                      : 0.0 %
+electricalResistivity         : 2.5e-07 Ω·m
+absorptivity                  : 0.3 dimensionless
+boilingPoint                  : 3134.0 K
+absorptionCoefficient         : 50000000.0 m⁻¹
+electricalConductivity        : 2130000.0 S/m
+meltingPoint                  : 1450.0 °C
+vaporPressure                 : 1 Pa
+thermalDestructionPoint       : 1723 K
+reflectivity                  : 0.7 dimensionless
+thermalShockResistance        : 2.5 MW/m
+surfaceRoughness              : 0.4 μm
+laserDamageThreshold          : 2.5 J/cm²
+thermalDestruction            : 1723.0 K
+specificHeat                  : 480.0 J/(kg·K)
+laserReflectivity             : 0.68 fraction
+thermalConductivity           : 25.0 W/m·K
+thermalExpansion              : 1.15e-05 K^{-1}
+laserAbsorption               : 0.35 
+thermalDiffusivity            : 5e-06 m²/s
+ablationThreshold             : 1.45 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-1000 W
+                                Typical range for industrial 1064 nm laser cleaning of tool steels to remove contaminants without excessive heating; recommended starting value balances efficiency and safety. Source: IPG Photonics YLR series specs for metal surface preparation (50-500 W common), with max limited to avoid melting (tool steel melting point ~1400-1500°C).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength with good absorption in Tool Steel oxides and contaminants
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for effective cleaning resolution and energy density control
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning coverage with controlled thermal input
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient contaminant ablation with minimal thermal diffusion
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal from Tool Steel surfaces
+overlapRatio                  : 10-90 %
+                                Optimal pulse overlap for uniform cleaning coverage without excessive thermal buildup
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

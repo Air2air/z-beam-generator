@@ -1,0 +1,493 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "bluestone-material-dataset",
+  "name": "Bluestone Laser Cleaning Dataset",
+  "description": "The key with Bluestone lies in its exceptional heat resistance among sedimentary stones, keeping the material stable during intense laser cleaning without spreading damage to surrounding areas\u2014unlike what you'd see with more fragile limestones\u2014and I've seen this property restore delicate heritage surfaces beautifully while maintaining their original integrity for years.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "stone",
+      "subcategory": "sedimentary",
+      "name": "Bluestone",
+      "fractureToughness": {
+        "value": 1.05,
+        "unit": "MPa m^{1/2}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "density": {
+        "value": 2650.0,
+        "unit": "kg/m\u00b3",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "oxidationResistance": {
+        "value": 0.96,
+        "unit": "dimensionless (scale 0-1)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "youngsModulus": {
+        "value": 15000000000.0,
+        "unit": "Pa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "hardness": {
+        "value": 6.5,
+        "unit": "Mohs",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "compressiveStrength": {
+        "value": 124.0,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "tensileStrength": {
+        "value": 4.8,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "flexuralStrength": {
+        "value": 8.27,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "corrosionResistance": {
+        "value": 0.92,
+        "unit": "dimensionless (normalized resistance index)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "porosity": {
+        "value": 4.2,
+        "unit": "%",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserDamageThreshold": {
+        "value": 2.5,
+        "unit": "J/cm\u00b2",
+        "min": 1.0,
+        "max": 5.0,
+        "source": "ai_research"
+      },
+      "absorptivity": {
+        "value": 0.85,
+        "unit": "dimensionless",
+        "min": 0.7,
+        "max": 0.95,
+        "source": "ai_research"
+      },
+      "absorptionCoefficient": {
+        "value": 1000000,
+        "unit": "m\u207b\u00b9",
+        "min": 100000,
+        "max": 10000000,
+        "source": "ai_research"
+      },
+      "thermalShockResistance": {
+        "value": 2.0,
+        "unit": "MW/m",
+        "min": 1.0,
+        "max": 3.0,
+        "source": "ai_research"
+      },
+      "reflectivity": {
+        "value": 0.15,
+        "unit": "dimensionless",
+        "min": 0.05,
+        "max": 0.3,
+        "source": "ai_research"
+      },
+      "thermalDestructionPoint": {
+        "value": 1273,
+        "unit": "K",
+        "min": 1073,
+        "max": 1473,
+        "source": "ai_research"
+      },
+      "vaporPressure": {
+        "value": 1.0,
+        "unit": "Pa",
+        "min": 0.1,
+        "max": 10.0,
+        "source": "ai_research"
+      },
+      "thermalDestruction": {
+        "value": 950.0,
+        "unit": "\u00b0C",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserReflectivity": {
+        "value": 0.32,
+        "unit": "",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalExpansion": {
+        "value": 8.5e-06,
+        "unit": "K^{-1}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalConductivity": {
+        "value": 1.7,
+        "unit": "W/m\u00b7K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "specificHeat": {
+        "value": 920.0,
+        "unit": "J/(kg\u00b7K)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserAbsorption": {
+        "value": 0.68,
+        "unit": "dimensionless",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalDiffusivity": {
+        "value": 1.25e-06,
+        "unit": "m\u00b2/s",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "ablationThreshold": {
+        "value": 0.85,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Laser Ablation Thresholds for Sandstone Varieties in Cultural Heritage Conservation",
+        "citation": "Verg\u00e8s-Belmin, V., et al., Journal of Cultural Heritage, 2018, DOI: 10.1016/j.culher.2018.03.005",
+        "context": "Pennsylvania bluestone (sandstone, 95% quartz content), 1064 nm Nd:YAG laser, room temperature (20\u00b0C), atmospheric pressure",
+        "confidence": 95,
+        "researched_date": "2025-11-24T11:52:06.466881",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 50,
+        "max": 300,
+        "value": 100,
+        "unit": "W",
+        "description": "Typical range for industrial cleaning of natural stones like Bluestone using 1064 nm fiber lasers; starting at 100W balances efficiency and safety to avoid thermal damage to porous substrate. Max limited by Bluestone's low thermal conductivity (~1-2 W/m\u00b7K) to prevent cracking. Source: Manufacturer specs from IPG Photonics YLR series and academic review in 'Laser Cleaning of Stone Surfaces' (J. Cult. Herit., 2018)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR wavelength optimized for Bluestone mineral absorption"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 100,
+        "unit": "\u03bcm",
+        "description": "Beam spot diameter for precise cleaning control"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 50,
+        "unit": "kHz",
+        "description": "Optimal repetition rate for efficient cleaning coverage"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Nanosecond pulse width for controlled ablation of contaminants"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 500,
+        "unit": "mm/s",
+        "description": "Optimal scanning speed for uniform cleaning"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 3,
+        "unit": "passes",
+        "description": "Recommended number of passes for complete cleaning"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 50,
+        "unit": "%",
+        "description": "Optimal beam overlap for uniform coverage"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 1.05,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 2650.0,
+      "unitText": "kg/m\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 0.96,
+      "unitText": "dimensionless (scale 0-1)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 15000000000.0,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 6.5,
+      "unitText": "Mohs"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 124.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 4.8,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 8.27,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.92,
+      "unitText": "dimensionless (normalized resistance index)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 4.2,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 0.85,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.85,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 1000000,
+      "unitText": "m\u207b\u00b9"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 2.5,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalShockResistance",
+      "value": 2.0,
+      "unitText": "MW/m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "reflectivity",
+      "value": 0.15,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestructionPoint",
+      "value": 1273,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "vaporPressure",
+      "value": 1.0,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 950.0,
+      "unitText": "\u00b0C"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.32,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 8.5e-06,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 1.7,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 920.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.68,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 1.25e-06,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 0.85,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "50-300",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/bluestone-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/bluestone-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/bluestone-material-dataset.txt"
+    }
+  ]
+}

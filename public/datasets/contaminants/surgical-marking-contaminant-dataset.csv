@@ -1,0 +1,21 @@
+Property,Value
+Name,Surgical Ink Markings
+Description,"Surgical Ink Markings (Gentian Violet, Dyes, Alcohol) is a common contamination pattern in laser cleaning. This chemical-residue/industrial contamination affects surface integrity and requires specialized removal techniques. Commonly found on 2 different material types including metals, composites, and specialized substrates."
+Category,
+Subcategory,
+composition,"['Gentian Violet', 'Dyes', 'Alcohol']"
+absorptionRate,"{'wavelength_1064nm': 8000, 'wavelength_355nm': 60000, 'wavelength_532nm': 25000}"
+reflectivity,"{'wavelength_1064nm': 0.15, 'wavelength_355nm': 0.02, 'wavelength_532nm': 0.08}"
+Total Compounds,3
+Compound 1,Carbon Dioxide
+Compound 2,Water Vapor
+Compound 3,Carbon Particulates
+laserPower,"{'max_j_cm2': 1.2, 'min_j_cm2': 0.3, 'recommended_j_cm2': 0.8}"
+wavelength,"{'value': [532, 1064]}"
+pulseWidth,"{'max_ns': 100, 'min_ns': 4, 'recommended_ns': 10}"
+scanSpeed,"{'max': 2000, 'min': 500, 'recommended': 1000}"
+spotSize,"{'max': 0.1, 'min': 0.02, 'recommended': 0.05}"
+frequency,"{'max': 200, 'min': 20, 'recommended': 50}"
+overlapRatio,{'value': 50}
+removalRate,"{'diminishing_returns_after': 3, 'optimal_passes': 2, 'single_pass': 0.85}"
+Variable Measured Count,50

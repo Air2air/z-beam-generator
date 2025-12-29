@@ -3,10 +3,11 @@ source_file: data/contaminants/Contaminants.yaml
 output_path: ../z-beam/frontmatter/contaminants
 items_key: contamination_patterns
 id_field: id
+title_field: title
 filename_suffix: ''
 enrichments:
 - type: universal_restructure
-  module: export.enrichers.universal.universal_restructure_enricher
+  module: export.enrichers.linkage.restructure_enricher
   class: UniversalRestructureEnricher
   domain: contaminants
   cleanup_rules:
@@ -18,6 +19,7 @@ enrichments:
     - metadata
     - voice_enhanced
     - valid_materials
+    - description  # Frontend spec 5.0.0: Use page_description only
     extract_from_nested:
       laser_properties:
       - safety_data
@@ -38,6 +40,9 @@ enrichments:
     - required_elements
     keep_at_top_level:
     - safety_data
+    - category
+    - subcategory
+    - images  # Frontend spec 5.0.0: Required nested object
 - type: compound_linkage
   module: export.enrichers.linkage.compound_linkage_enricher
   class: CompoundLinkageEnricher
@@ -89,6 +94,10 @@ enrichments:
 - type: author
   module: export.enrichers.linkage.author_enricher
   class: AuthorEnricher
+- type: images
+  module: export.enrichers.media.image_enricher
+  class: ImageEnricher
+  domain: contaminants
 - type: breadcrumb
   module: export.enrichers.navigation.breadcrumb_enricher
   class: BreadcrumbEnricher

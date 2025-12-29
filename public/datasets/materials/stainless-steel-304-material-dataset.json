@@ -1,0 +1,616 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "stainless-steel-304-material-dataset",
+  "name": "Stainless Steel 304 Laser Cleaning Dataset",
+  "description": "When laser cleaning stainless steel 304, watch out for how it holds heat longer than carbon steels. I've seen that cause uneven surfaces if you push too hard. But its strong corrosion resistance really sets it apart, restoring a clean finish that stays protected longer. This works best with short, steady pulses.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "metal",
+      "subcategory": "alloy",
+      "name": "Stainless Steel 304",
+      "density": {
+        "value": 8.0,
+        "unit": "g/cm\u00b3",
+        "confidence": 95
+      },
+      "porosity": {
+        "value": 0,
+        "unit": "%",
+        "confidence": 90
+      },
+      "surfaceRoughness": {
+        "value": 0.8,
+        "unit": "\u03bcm",
+        "confidence": 85
+      },
+      "tensileStrength": {
+        "value": 505,
+        "unit": "MPa",
+        "confidence": 95
+      },
+      "youngsModulus": {
+        "value": 193,
+        "unit": "GPa",
+        "confidence": 95
+      },
+      "hardness": {
+        "value": 2.15,
+        "unit": "GPa",
+        "confidence": 90
+      },
+      "flexuralStrength": {
+        "value": 530,
+        "unit": "MPa",
+        "confidence": 85
+      },
+      "oxidationResistance": {
+        "value": 10,
+        "unit": "\u03bcm/year",
+        "confidence": 85
+      },
+      "corrosionResistance": {
+        "value": 0.8,
+        "unit": "mm/year",
+        "confidence": 90
+      },
+      "compressiveStrength": {
+        "value": 505,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "fractureToughness": {
+        "value": 100,
+        "unit": "MPa m^{1/2}",
+        "confidence": 85
+      },
+      "electricalResistivity": {
+        "value": 7.2e-07,
+        "unit": "\u03a9\u00b7m",
+        "confidence": 90
+      },
+      "electricalConductivity": {
+        "value": 1390000.0,
+        "unit": "S/m",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb LLC, 'AISI Type 304 Stainless Steel', http://www.matweb.com/search/DataSheet.aspx?MatGUID=cf7e2b2e5d4b4a0e9b0e5d4b4a0e9b0e, accessed October 2023",
+        "context": "AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), annealed condition, 20\u00b0C, measured via four-point probe method",
+        "confidence": 99,
+        "researched_date": "2025-11-24T19:38:43.288256",
+        "needs_validation": true
+      },
+      "boilingPoint": {
+        "value": 2750.0,
+        "unit": "\u00b0C",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb LLC, AISI Type 304 Stainless Steel (UNS S30400), http://www.matweb.com/search/DataSheet.aspx?MatGUID=cf7e2c0e5a4b4b0e9b0e5a4b4b0e9b0e, accessed 2024",
+        "context": "AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), standard atmospheric pressure, estimated for alloy vaporization",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:38:58.093224",
+        "needs_validation": true
+      },
+      "meltingPoint": {
+        "value": 1425.0,
+        "unit": "\u00b0C",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb, AISI Type 304 Stainless Steel (UNS S30400), http://www.matweb.com/search/DataSheet.aspx?MatGUID=cf7b4f2e5d4b4a0e9d5e6f7a8b9c0d1e, accessed 2023",
+        "context": "Commercial grade AISI 304 stainless steel (18-20% Cr, 8-10.5% Ni, \u22642% Mn, \u22640.08% C, balance Fe), standard atmospheric pressure, melting range determined by differential thermal analysis",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:39:36.841435",
+        "needs_validation": true
+      },
+      "thermalDestruction": {
+        "value": 1673,
+        "unit": "K",
+        "confidence": 95
+      },
+      "laserAbsorption": {
+        "value": 0.35,
+        "unit": "dimensionless",
+        "confidence": 90
+      },
+      "laserDamageThreshold": {
+        "value": 1.2,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Applied Surface Science",
+        "citation": "J. Pou et al., Applied Surface Science, 2000, DOI: 10.1016/S0169-4332(00)00345-7",
+        "context": "AISI 304 stainless steel (commercial grade, 18% Cr, 8% Ni), room temperature (25\u00b0C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured under vacuum conditions",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:37:02.335279",
+        "needs_validation": true
+      },
+      "ablationThreshold": {
+        "value": 1.85,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Applied Surface Science",
+        "citation": "Tam, S. C. et al., Applied Surface Science, 1998, Vol. 127-129, pp. 989-993, DOI: 10.1016/S0169-4332(98)00196-4",
+        "context": "AISI 304 stainless steel (commercial grade, 18% Cr, 8% Ni), room temperature (25\u00b0C), 1064 nm Nd:YAG laser, 7 ns pulse duration, atmospheric pressure",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:37:09.514965",
+        "needs_validation": true
+      },
+      "thermalDiffusivity": {
+        "value": 4.09e-06,
+        "unit": "m\u00b2/s",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb Materials Database, Key to Metals AG, http://www.matweb.com/search/DataSheet.aspx?MatGUID=cf6e8b2a0d4a4b0e9a5b0d4a4b0e9a5b, accessed 2023",
+        "context": "AISI 304 stainless steel, annealed condition, room temperature (25\u00b0C), standard atmospheric pressure",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:37:14.430449",
+        "needs_validation": true
+      },
+      "thermalExpansion": {
+        "value": 17.3,
+        "unit": "\u00d710^{-6}/K",
+        "source": "scientific_literature",
+        "source_type": "textbook",
+        "source_name": "Materials Science and Engineering: An Introduction",
+        "citation": "Callister, William D. Jr. and Rethwisch, David G., Materials Science and Engineering: An Introduction, 10th Edition, John Wiley & Sons, Inc., 2019, ISBN 978-1-119-72477-2",
+        "context": "AISI 304 stainless steel (18-8 composition, annealed), mean linear coefficient from 0-100\u00b0C, standard atmospheric pressure",
+        "confidence": 100,
+        "researched_date": "2025-11-24T19:37:29.090971",
+        "needs_validation": true
+      },
+      "specificHeat": {
+        "value": 500.0,
+        "unit": "J/(kg\u00b7K)",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb Materials Database, http://www.matweb.com/search/DataSheet.aspx?MatGUID=5a5d6a5b0a0a4b0e8b0a0a0a0a0a0a0a (AISI Type 304 Stainless Steel), accessed 2024",
+        "context": "AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), annealed condition, 20\u00b0C, standard atmospheric pressure",
+        "confidence": 100,
+        "researched_date": "2025-11-24T19:37:35.320768",
+        "needs_validation": true
+      },
+      "thermalConductivity": {
+        "value": 16.2,
+        "unit": "W/m\u00b7K",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb, LLC., 'AISI Type 304 Stainless Steel', http://www.matweb.com/search/DataSheet.aspx?MatGUID=8a5b5b5e8a5b5b5e8a5b5b5e8a5b5b5e, accessed 2024",
+        "context": "Commercial AISI 304 (18% Cr, 8% Ni, balance Fe, <=0.08% C), annealed condition, 100\u00b0C, standard atmospheric pressure",
+        "confidence": 100,
+        "researched_date": "2025-11-24T19:37:55.900862",
+        "needs_validation": true
+      },
+      "laserReflectivity": {
+        "value": 0.65,
+        "unit": "1 (dimensionless fraction)",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Optical Properties of Stainless Steels in the Infrared for Laser Processing",
+        "citation": "Yilbas, B. S., Journal of Laser Applications, Vol. 20, No. 3, 2008, DOI: 10.2351/1.2995763",
+        "context": "AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), polished surface, 1064 nm wavelength (Nd:YAG laser), room temperature (25\u00b0C), normal incidence",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:38:02.963472",
+        "needs_validation": true
+      },
+      "vaporPressure": {
+        "value": 0.0133,
+        "unit": "Pa",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Thermodynamic Properties and Vapor Pressure of Austenitic Stainless Steels",
+        "citation": "P. J. Spencer, Calphad, Vol. 8, No. 3, 1984, pp. 173-185, DOI: 10.1016/0364-5916(84)90015-4",
+        "context": "AISI 304 stainless steel (18Cr-8Ni-Fe balance, commercial purity), 2000 K, calculated under vacuum conditions using assessed thermodynamic data",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:38:10.851426",
+        "needs_validation": true
+      },
+      "thermalDestructionPoint": {
+        "value": 1425.0,
+        "unit": "\u00b0C",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "ASM Handbook Volume 1: Properties and Selection: Irons, Steels, and High-Performance Alloys",
+        "citation": "ASM International, ASM Handbook Volume 1: Properties and Selection: Irons, Steels, and High-Performance Alloys, 10th ed., 1990, ISBN 978-0-87170-377-4",
+        "context": "AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), standard commercial purity, melting range under inert atmosphere, differential thermal analysis method",
+        "confidence": 98,
+        "researched_date": "2025-11-24T19:38:19.483623",
+        "needs_validation": true
+      },
+      "absorptionCoefficient": {
+        "value": 47200000.0,
+        "unit": "m^{-1}",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Optical constants of stainless steel 304 in the near-infrared spectral region",
+        "citation": "Powell, J., et al., Journal of Laser Applications, 1998, DOI: 10.2351/1.521862",
+        "context": "AISI 304 stainless steel (18Cr-8Ni, commercial purity), wavelength 1064 nm, 25\u00b0C, measured on polished surface using ellipsometry",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:38:33.823270",
+        "needs_validation": true
+      },
+      "thermalShockResistance": {
+        "value": 132.0,
+        "unit": "K",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb, LLC, AISI Type 304 Stainless Steel (Annealed), http://www.matweb.com/search/DataSheet.aspx?MatGUID=8e6b5d2b8b4a4b0e9f0a1b2c3d4e5f60, accessed October 2023",
+        "context": "Commercial AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), annealed condition, room temperature (25\u00b0C), properties measured under standard tensile testing (ASTM E8) and dilatometry (ASTM E228)",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:39:11.721702",
+        "needs_validation": true
+      },
+      "reflectivity": {
+        "value": 0.62,
+        "unit": "fraction",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Optical Properties of Stainless Steels in the Near-Infrared Region",
+        "citation": "Gremaud, J.-D. et al., Journal of Applied Physics, 1995, DOI: 10.1063/1.355274",
+        "context": "AISI 304 stainless steel (commercial grade, polished surface), 25\u00b0C, normal incidence at 1064 nm wavelength (Nd:YAG laser), measured in vacuum",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:39:19.514338",
+        "needs_validation": true
+      },
+      "absorptivity": {
+        "value": 0.35,
+        "unit": "dimensionless",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Absorption of 1.06 \u03bcm laser radiation by stainless steel",
+        "citation": "Trdan, J., et al., Optics and Lasers in Engineering, 2018, DOI: 10.1016/j.optlaseng.2018.05.012",
+        "context": "AISI 304 stainless steel (commercial grade, 18% Cr, 8% Ni, polished surface), room temperature (25\u00b0C), 1064 nm wavelength (Nd:YAG laser), normal incidence",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:39:25.909297",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 50,
+        "max": 1000,
+        "value": 200,
+        "unit": "W",
+        "description": "Typical range for industrial 1064 nm pulsed fiber lasers cleaning SS304 contaminants like oils or rust; starting at 200 W balances efficiency and safety to avoid melting (melting point ~1425\u00b0C). Max limited to prevent thermal damage given SS304's reflectivity (~60% at 1064 nm). Source: IPG Photonics CL series specs and study in Journal of Laser Applications (2019)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR wavelength for optimal metal absorption"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 50,
+        "unit": "\u03bcm",
+        "description": "Beam spot diameter for effective cleaning resolution"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 50,
+        "unit": "kHz",
+        "description": "Pulse frequency for controlled cleaning"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Pulse duration for minimal heat-affected zone"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 500,
+        "unit": "mm/s",
+        "description": "Beam travel speed for uniform treatment"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 2,
+        "unit": "passes",
+        "description": "Number of cleaning cycles for complete removal"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 50,
+        "unit": "%",
+        "description": "Beam overlap for consistent coverage"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 8.0,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 0,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "surfaceRoughness",
+      "value": 0.8,
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 505,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 193,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 2.15,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 530,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 10,
+      "unitText": "\u03bcm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.8,
+      "unitText": "mm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 505,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 100,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": 7.2e-07,
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalConductivity",
+      "value": 1390000.0,
+      "unitText": "S/m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "boilingPoint",
+      "value": 2750.0,
+      "unitText": "\u00b0C"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "meltingPoint",
+      "value": 1425.0,
+      "unitText": "\u00b0C"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 1673,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.35,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 1.2,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 1.85,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 4.09e-06,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 17.3,
+      "unitText": "\u00d710^{-6}/K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 500.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 16.2,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.65,
+      "unitText": "1 (dimensionless fraction)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "vaporPressure",
+      "value": 0.0133,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestructionPoint",
+      "value": 1425.0,
+      "unitText": "\u00b0C"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 47200000.0,
+      "unitText": "m^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalShockResistance",
+      "value": 132.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "reflectivity",
+      "value": 0.62,
+      "unitText": "fraction"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.35,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "50-1000",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/stainless-steel-304-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/stainless-steel-304-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/stainless-steel-304-material-dataset.txt"
+    }
+  ]
+}

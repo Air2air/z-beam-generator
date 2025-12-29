@@ -1,0 +1,594 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://www.z-beam.com/datasets/algae-growth-contamination",
+  "identifier": "algae-growth-contamination",
+  "name": "Algae and Lichen Growth",
+  "description": "Algae and Lichen Growth (Chlorophyll, Polysaccharides, Minerals) is a common contamination pattern in laser cleaning. This biological/growth contamination affects surface integrity and requires specialized removal techniques. Commonly found on 38 different material types including metals, composites, and specialized substrates.",
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 1064Nm",
+      "value": "120",
+      "unitText": "cm\u207b\u00b9",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 355Nm",
+      "value": "2200",
+      "unitText": "cm\u207b\u00b9",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 532Nm",
+      "value": "850",
+      "unitText": "cm\u207b\u00b9",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 1064Nm",
+      "value": "0.15",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 355Nm",
+      "value": "0.05",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 532Nm",
+      "value": "0.08",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Imaginary Part",
+      "value": "0.012",
+      "unitText": "dimensionless",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Real Part",
+      "value": "1.38",
+      "unitText": "dimensionless",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Transmission Depth",
+      "value": "45",
+      "unitText": "\u03bcm",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Pulse Duration 100Ns",
+      "value": "0.4",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Pulse Duration 10Ns",
+      "value": "0.6",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Wavelength 1064Nm",
+      "value": "0.8",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Decomposition Temperature",
+      "value": "180",
+      "unitText": "\u00b0C",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Heat Affected Zone Depth",
+      "value": "15",
+      "unitText": "\u03bcm",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Melting Point",
+      "value": "N/A",
+      "unitText": "\u00b0C",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Specific Heat",
+      "value": "4200",
+      "unitText": "J/(kg\u00b7K)",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Thermal Conductivity",
+      "value": "0.6",
+      "unitText": "W/(m\u00b7K)",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Thermal Diffusivity",
+      "value": "0.14",
+      "unitText": "mm\u00b2/s",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Vaporization Temperature",
+      "value": "250",
+      "unitText": "\u00b0C",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Beam Profile",
+      "value": "flat_top",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Fluence Range",
+      "value": "{'max_j_cm2': 1.2, 'min_j_cm2': 0.3, 'recommended_j_cm2': 0.8}",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Overlap Percentage",
+      "value": "50",
+      "unitText": "%",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Polarization",
+      "value": "any",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Pulse Duration Range",
+      "value": "{'max_ns': 200, 'min_ns': 10, 'recommended_ns': 50}",
+      "unitText": "ns",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Repetition Rate Khz",
+      "value": "50",
+      "unitText": "kHz",
+      "minValue": 20,
+      "maxValue": 200
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Safety Margin Factor",
+      "value": "0.7",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Scan Speed Mm S",
+      "value": "1000",
+      "unitText": "mm/s",
+      "minValue": 500,
+      "maxValue": 2000
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Spot Size Mm",
+      "value": "0.1",
+      "unitText": "mm",
+      "minValue": 0.05,
+      "maxValue": 0.3
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Wavelength Preference",
+      "value": "1064, 532",
+      "unitText": "nm",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Damage Risk To Substrate",
+      "value": "low",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Primary Mechanism",
+      "value": "thermal_ablation",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Area Coverage Rate Cm2 Min",
+      "value": "480",
+      "unitText": "cm\u00b2/min",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Typical Scan Speed Mm S",
+      "value": "800",
+      "unitText": "mm/s",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Diminishing Returns After",
+      "value": "3",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Optimal Passes",
+      "value": "2",
+      "unitText": "passes",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Single Pass",
+      "value": "0.85",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Color Change",
+      "value": "no",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Residual Stress",
+      "value": "none",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Roughness Increase",
+      "value": "minimal",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Nitrogen Oxides",
+      "value": "NOx",
+      "description": "When dealing with nitrogen oxides in industrial setups, always prioritize ventilation right from the start\u2014 these compounds are notorious for their irritant effects on the respiratory system, and even..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Carbon Dioxide",
+      "value": "CO\u2082",
+      "description": "When dealing with carbon dioxide compounds in industrial settings, the standout trait is its role as an asphyxiant, meaning it quietly pushes out breathable air without you noticing right away. This m..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Water Vapor",
+      "value": "H\u2082O",
+      "description": "When working with water vapor compounds in industrial setups, we've found that maintaining proper ventilation keeps exposure levels low and prevents any respiratory irritation from building up over ti..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Carbon Ash",
+      "value": "C",
+      "description": "When handling carbon-ash-compound particulates, always prioritize dust control. I've seen teams stay safe by using enclosed systems. This keeps fine particles from airborne spread. Why does it matter?..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal laserPower",
+      "value": null,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal wavelength",
+      "value": [
+        1064,
+        532
+      ],
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal pulseWidth",
+      "value": null,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal scanSpeed",
+      "value": null,
+      "minValue": 500,
+      "maxValue": 2000,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal spotSize",
+      "value": null,
+      "minValue": 0.05,
+      "maxValue": 0.3,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal frequency",
+      "value": null,
+      "minValue": 20,
+      "maxValue": 200,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal overlapRatio",
+      "value": 50,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal removalRate",
+      "value": null,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    }
+  ],
+  "keywords": [
+    "Algae and Lichen Growth",
+    "laser cleaning",
+    "contaminant removal",
+    "surface cleaning",
+    "industrial cleaning",
+    "biological",
+    "growth",
+    "Chlorophyll",
+    "Polysaccharides",
+    "Minerals"
+  ],
+  "dateModified": "",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/algae-growth-contamination.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/algae-growth-contamination.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/algae-growth-contamination.txt"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Borosilicate Glass Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/borosilicate-glass-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Brick Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/brick-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Ceramic Matrix Composites Cmcs Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/ceramic-matrix-composites-cmcs-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Concrete Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/concrete-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Crown Glass Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/crown-glass-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Water Vapor Hazardous Compound",
+      "url": "https://www.z-beam.com/compounds/water-vapor-compound"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Carbon Dioxide Hazardous Compound",
+      "url": "https://www.z-beam.com/compounds/carbon-dioxide-compound"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Carbon Ash Hazardous Compound",
+      "url": "https://www.z-beam.com/compounds/carbon-ash-compound"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "OSHA PPE REQUIREMENTS",
+      "url": "https://www.z-beam.com/safety/regulatory_standards/osha-ppe-requirements"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "ANSI Z136 1 LASER SAFETY",
+      "url": "https://www.z-beam.com/safety/regulatory_standards/ansi-z136-1-laser-safety"
+    }
+  ],
+  "contaminant": {
+    "properties": {
+      "composition": [
+        "Chlorophyll",
+        "Polysaccharides",
+        "Minerals"
+      ],
+      "absorptionRate": {
+        "wavelength_1064nm": 120,
+        "wavelength_355nm": 2200,
+        "wavelength_532nm": 850
+      },
+      "reflectivity": {
+        "wavelength_1064nm": 0.15,
+        "wavelength_355nm": 0.05,
+        "wavelength_532nm": 0.08
+      }
+    },
+    "compounds": [
+      {
+        "name": "Nitrogen Oxides",
+        "formula": "NOx",
+        "casNumber": "Various",
+        "hazardLevel": "toxic",
+        "healthEffects": "When dealing with nitrogen oxides in industrial setups, always prioritize ventilation right from the start\u2014 these compounds are notorious for their irritant effects on the respiratory system, and even...",
+        "frequency": "unknown",
+        "severity": "moderate"
+      },
+      {
+        "name": "Carbon Dioxide",
+        "formula": "CO\u2082",
+        "casNumber": "124-38-9",
+        "hazardLevel": "asphyxiant",
+        "healthEffects": "When dealing with carbon dioxide compounds in industrial settings, the standout trait is its role as an asphyxiant, meaning it quietly pushes out breathable air without you noticing right away. This m...",
+        "frequency": "unknown",
+        "severity": "low"
+      },
+      {
+        "name": "Water Vapor",
+        "formula": "H\u2082O",
+        "casNumber": "7732-18-5",
+        "hazardLevel": "inert",
+        "healthEffects": "When working with water vapor compounds in industrial setups, we've found that maintaining proper ventilation keeps exposure levels low and prevents any respiratory irritation from building up over ti...",
+        "frequency": "unknown",
+        "severity": "low"
+      },
+      {
+        "name": "Carbon Ash",
+        "formula": "C",
+        "casNumber": "7440-44-0",
+        "hazardLevel": "nuisance_dust",
+        "healthEffects": "When handling carbon-ash-compound particulates, always prioritize dust control. I've seen teams stay safe by using enclosed systems. This keeps fine particles from airborne spread. Why does it matter?...",
+        "frequency": "unknown",
+        "severity": "moderate"
+      }
+    ],
+    "removalTechniques": {
+      "laserPower": {
+        "max_j_cm2": 1.2,
+        "min_j_cm2": 0.3,
+        "recommended_j_cm2": 0.8
+      },
+      "wavelength": {
+        "value": [
+          1064,
+          532
+        ]
+      },
+      "pulseWidth": {
+        "max_ns": 200,
+        "min_ns": 10,
+        "recommended_ns": 50
+      },
+      "scanSpeed": {
+        "max": 2000,
+        "min": 500,
+        "recommended": 1000
+      },
+      "spotSize": {
+        "max": 0.3,
+        "min": 0.05,
+        "recommended": 0.1
+      },
+      "frequency": {
+        "max": 200,
+        "min": 20,
+        "recommended": 50
+      },
+      "overlapRatio": {
+        "value": 50
+      },
+      "removalRate": {
+        "diminishing_returns_after": 3,
+        "optimal_passes": 2,
+        "single_pass": 0.85
+      }
+    }
+  }
+}

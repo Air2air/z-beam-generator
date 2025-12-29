@@ -1,0 +1,58 @@
+Kevlar-Reinforced Polymer Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning Kevlar-reinforced polymer, keep an eye on its low thermal conductivity right away, since it traps heat on the surface to shield the underlying fibers—use precise pulses to remove contaminants without weakening the tough structure.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : composite
+subcategory                   : fiber-reinforced
+name                          : Kevlar-Reinforced Polymer
+electricalResistivity         : 1200000000000.0 Ω·m
+fractureToughness             : 2.5 MPa m^{1/2}
+youngsModulus                 : 76.0 GPa
+oxidationResistance           : 743.0 K
+density                       : 1.38 g/cm³
+hardness                      : 85.0 Shore D
+corrosionResistance           : 0.95 dimensionless (resistance index)
+compressiveStrength           : 240.0 MPa
+flexuralStrength              : 1050.0 MPa
+tensileStrength               : 1380.0 MPa
+laserDamageThreshold          : 3.5 J/cm²
+absorptivity                  : 0.25 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 1.2 MW/m
+reflectivity                  : 0.75 dimensionless
+thermalDestructionPoint       : 773 K
+vaporPressure                 : 5 Pa
+thermalDestruction            : 673.0 K
+specificHeat                  : 1180.0 J/kg·K
+laserReflectivity             : 0.12 
+thermalConductivity           : 0.3 W/m·K
+thermalExpansion              : 2.8e-05 K^{-1}
+laserAbsorption               : 520.0 m^{-1}
+thermalDiffusivity            : 1.65e-07 m²/s
+ablationThreshold             : 2.3 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 10-200 W
+                                Typical range for pulsed fiber lasers in polymer composite cleaning to avoid thermal damage; start at 50 W for initial tests on Kevlar-reinforced polymer due to its low thermal conductivity (~0.3 W/m·K). Max safe ~150-200 W to prevent matrix degradation. Source: IPG Photonics specs for YLR series; studies in J. Laser Appl. (2018) on composite surface prep.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength providing optimal absorption balance between Kevlar fibers and polymer matrix
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning pattern
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,stone,,
+subcategory,sedimentary,,
+name,Shale,,
+fractureToughness,0.92,MPa m^{1/2},
+youngsModulus,25000000000.0,Pa,
+oxidationResistance,0.88,dimensionless,
+density,2650.0,kg/m³,
+hardness,3.0,Mohs,
+corrosionResistance,0.92,dimensionless,
+compressiveStrength,35.0,MPa,
+flexuralStrength,10.0,MPa,
+tensileStrength,5.0,MPa,
+porosity,0.1,fraction,
+laserDamageThreshold,3.5,J/cm²,
+absorptivity,0.85,dimensionless,
+absorptionCoefficient,5000000.0,m⁻¹,
+thermalShockResistance,1.8,MW/m,
+reflectivity,0.15,dimensionless,
+thermalDestructionPoint,873,K,
+vaporPressure,10,Pa,
+thermalDestruction,1173.0,K,
+specificHeat,920.0,J/(kg·K),
+laserReflectivity,0.12,dimensionless (fraction),
+thermalConductivity,1.8,W/m·K,
+thermalExpansion,8e-06,K^{-1},
+laserAbsorption,250000.0,m^{-1},
+thermalDiffusivity,5.73e-07,m²/s,
+ablationThreshold,1.25,J/cm²,
+power,50-500,W,"Typical range for industrial ns-pulsed fiber lasers at 1064 nm cleaning soft rocks like shale; starting at 200 W balances efficiency and avoids thermal cracking due to shale's low thermal conductivity (~1-2 W/m·K). Max safe before damage ~500 W to prevent substrate ablation. Source: Manufacturer specs (e.g., IPG Photonics YLR series) and studies on laser cleaning of stone (Optics and Lasers in Engineering, 2018)."
+wavelength,355-10640,nm,Near-IR wavelength optimized for Shale mineral absorption characteristics
+spotSize,0.1-500,μm,Beam spot diameter for effective Shale cleaning resolution
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous Shale surface processing
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient Shale ablation with minimal heat diffusion
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform Shale surface treatment
+passCount,1-10,passes,Recommended number of passes for complete Shale surface cleaning
+overlapRatio,10-90,%,Optimal beam overlap for uniform Shale surface cleaning

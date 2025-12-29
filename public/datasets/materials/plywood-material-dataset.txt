@@ -1,0 +1,58 @@
+Plywood Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning plywood, I've found the best results come from starting with gentle passes to make the most of its layered absorbency, restoring surfaces cleanly without scorching the delicate grains
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : wood
+subcategory                   : hardwood
+name                          : Plywood
+fractureToughness             : 0.32 MPa√m
+youngsModulus                 : 10.3 GPa
+oxidationResistance           : 19.0 %
+density                       : 600.0 kg/m³
+hardness                      : 2937.0 N
+corrosionResistance           : 0.2 dimensionless (durability index 0-1)
+compressiveStrength           : 38.0 MPa
+flexuralStrength              : 38.0 MPa
+tensileStrength               : 48.0 MPa
+porosity                      : 0.65 fraction
+laserDamageThreshold          : 3.5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 4500000 m⁻¹
+thermalShockResistance        : 1.2 MW/m
+reflectivity                  : 0.12 dimensionless
+thermalDestructionPoint       : 550 K
+vaporPressure                 : 150 Pa
+thermalDestruction            : 250.0 °C
+specificHeat                  : 1700.0 J/(kg·K)
+laserReflectivity             : 0.035 dimensionless (fraction)
+thermalConductivity           : 0.13 W/m·K
+thermalExpansion              : 7e-06 1/K
+laserAbsorption               : 0.92 dimensionless
+thermalDiffusivity            : 1.2e-07 m²/s
+ablationThreshold             : 2.3 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-200 W
+                                Low to moderate power prevents charring of plywood's organic layers; starting at 50W for light contamination, max avoids substrate damage (source: studies on 1064 nm cleaning of wood composites, e.g., J. Laser Appl. 2018).
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength for optimal Plywood absorption and minimal penetration
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise Plywood surface treatment
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient Plywood cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled Plywood surface ablation
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform Plywood cleaning
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete Plywood cleaning
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform Plywood surface treatment
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

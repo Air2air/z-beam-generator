@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,plastic,,
+subcategory,thermoplastic,,
+name,Polypropylene,,
+electricalResistivity,100000000000000.0,Ω·m,
+fractureToughness,2.8,MPa m^{1/2},
+youngsModulus,1.5,GPa,
+oxidationResistance,30.0,minutes,
+density,0.907,g/cm³,
+hardness,75.0,Shore D,
+corrosionResistance,0.95,dimensionless (resistance index),
+compressiveStrength,40.0,MPa,
+flexuralStrength,41.0,MPa,
+tensileStrength,33.0,MPa,
+laserDamageThreshold,2,J/cm²,
+absorptivity,0.9,dimensionless,
+absorptionCoefficient,200000,m⁻¹,
+thermalShockResistance,1,MW/m,
+reflectivity,0.05,dimensionless,
+thermalDestructionPoint,650,K,
+vaporPressure,100,Pa,
+thermalDestruction,683.0,K,
+specificHeat,1920.0,J/(kg·K),
+laserReflectivity,0.039,fraction,
+thermalConductivity,0.17,W/m·K,
+thermalExpansion,0.00015,K^{-1},
+laserAbsorption,120.0,m^{-1},
+thermalDiffusivity,9.78e-08,m²/s,
+ablationThreshold,0.28,J/cm²,
+power,20-500,W,Typical range for ns pulsed lasers at 1064 nm on polymers like PP to remove contaminants without melting; starting at 100W for light contamination. Max safe below 500W to avoid thermal damage (melting point ~165°C). Source: Adapted from IPG Photonics specs for YLR series and paper by Lorenz et al. (2016) on polymer laser cleaning.
+wavelength,355-10640,nm,Near-infrared wavelength optimized for Polypropylene absorption characteristics and minimal thermal damage
+spotSize,0.1-500,μm,Beam spot diameter for effective cleaning resolution on Polypropylene surfaces
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning while maintaining thermal control
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for controlled ablation of contaminants from Polypropylene surface
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage without excessive thermal buildup
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal from Polypropylene
+overlapRatio,10-90,%,Optimal beam overlap percentage for uniform cleaning coverage

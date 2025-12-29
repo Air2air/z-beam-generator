@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,semiconductor,,
+subcategory,elemental,,
+name,Silicon,,
+electricalResistivity,2300.0,Ω·m,
+fractureToughness,0.75,MPa√m,
+youngsModulus,169000000000.0,Pa,
+oxidationResistance,2.27,dimensionless,
+density,2329.0,kg/m³,
+hardness,9.3,GPa,
+corrosionResistance,0.98,dimensionless (resistance index),
+compressiveStrength,7000.0,MPa,
+flexuralStrength,295.0,MPa,
+tensileStrength,7000.0,MPa,
+laserDamageThreshold,1.0,J/cm²,
+absorptivity,0.65,dimensionless,
+absorptionCoefficient,50000,m⁻¹,
+thermalShockResistance,1.2,MW/m,
+reflectivity,0.35,dimensionless,
+thermalDestructionPoint,1687,K,
+vaporPressure,0.1,Pa,
+thermalDestruction,1687.0,K,
+specificHeat,702.0,J/kg·K,
+laserReflectivity,0.36,dimensionless,
+thermalConductivity,148.0,W/m·K,
+thermalExpansion,2.6e-06,K^{-1},
+laserAbsorption,336000.0,m^{-1},
+thermalDiffusivity,8.8e-05,m²/s,
+ablationThreshold,2.5,J/cm²,
+power,10-200,W,Typical range for industrial laser cleaning of semiconductors like Silicon to balance efficiency and avoid thermal damage; starting at 50 W for light contamination. Max safe below ~200 W to prevent melting (Silicon melting point 1414°C). Source: IPG Photonics YLR series specs for cleaning applications; academic review in Optics and Lasers in Engineering (2018).
+wavelength,355-10640,nm,Near-IR wavelength with good Silicon absorption for contaminant removal
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning with adequate energy density
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage and process control
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective contaminant ablation with minimal thermal diffusion
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Number of cleaning passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without excessive thermal buildup

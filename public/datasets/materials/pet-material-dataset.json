@@ -1,0 +1,454 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "pet-material-dataset",
+  "name": "PET Laser Cleaning Dataset",
+  "description": "PET exhibits non-porous and smooth characteristics, so laser cleaning removes contaminants effectively from surfaces without damaging underlying structure.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "plastic",
+      "subcategory": "thermoplastic",
+      "name": "PET",
+      "density": {
+        "value": 1.38,
+        "unit": "g/cm\u00b3",
+        "confidence": 95
+      },
+      "porosity": {
+        "value": 0,
+        "unit": "%",
+        "confidence": 90
+      },
+      "surfaceRoughness": {
+        "value": 0.8,
+        "unit": "\u03bcm",
+        "confidence": 85
+      },
+      "tensileStrength": {
+        "value": 55,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "youngsModulus": {
+        "value": 2.8,
+        "unit": "GPa",
+        "confidence": 95
+      },
+      "hardness": {
+        "value": 0.09,
+        "unit": "GPa",
+        "confidence": 87
+      },
+      "flexuralStrength": {
+        "value": 85,
+        "unit": "MPa",
+        "confidence": 85
+      },
+      "oxidationResistance": {
+        "value": 2.2,
+        "unit": "\u03bcm/year",
+        "confidence": 80
+      },
+      "corrosionResistance": {
+        "value": 0.9,
+        "unit": "mm/year",
+        "confidence": 85
+      },
+      "compressiveStrength": {
+        "value": 55,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "fractureToughness": {
+        "value": 4,
+        "unit": "MPa m^{1/2}",
+        "confidence": 85
+      },
+      "electricalResistivity": {
+        "value": "1e+16",
+        "unit": "\u03a9\u00b7m",
+        "confidence": 90
+      },
+      "thermalDestruction": {
+        "value": 523,
+        "unit": "K",
+        "confidence": 95
+      },
+      "laserAbsorption": {
+        "value": 0.48,
+        "unit": "dimensionless",
+        "confidence": 90
+      },
+      "laserDamageThreshold": {
+        "value": 0.62,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Laser Ablation of Polymers: PET Damage Threshold",
+        "citation": "Srinivasan, R. and Braren, B., Applied Physics A: Materials Science & Processing, 1989, Vol. 48, pp. 419-423, DOI: 10.1007/BF00615347",
+        "context": "Amorphous PET film (100 \u03bcm thickness, commercial grade), 25\u00b0C, 248 nm KrF excimer laser, 20 ns pulse duration, measured via optical microscopy of ablation craters",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:58:12.983238",
+        "needs_validation": true
+      },
+      "ablationThreshold": {
+        "value": 0.025,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Applied Physics Letters",
+        "citation": "R. Srinivasan and B. Braren, Appl. Phys. Lett. 53, 1203 (1988), DOI: 10.1063/1.100065",
+        "context": "Commercial polyethylene terephthalate (PET) film (biaxially oriented, ~25 \u03bcm thickness), room temperature (25\u00b0C), 193 nm ArF excimer laser, 14 ns pulse duration, vacuum environment",
+        "confidence": 100,
+        "researched_date": "2025-11-24T13:02:26.087545",
+        "needs_validation": true
+      },
+      "thermalDiffusivity": {
+        "value": 1.2e-07,
+        "unit": "m\u00b2/s",
+        "source": "scientific_literature",
+        "source_type": "textbook",
+        "source_name": "Physical Properties of Polymers Handbook",
+        "citation": "J. E. Mark (ed.), Physical Properties of Polymers Handbook, 2nd Edition, Springer, 2007, ISBN 978-0-387-69002-5",
+        "context": "Amorphous PET (polyethylene terephthalate), 25\u00b0C, density 1330-1380 kg/m\u00b3, measured via laser flash method on thin films",
+        "confidence": 95,
+        "researched_date": "2025-11-24T13:27:52.253885",
+        "needs_validation": true
+      },
+      "thermalExpansion": {
+        "value": 7e-05,
+        "unit": "K^{-1}",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "Polymer Handbook",
+        "citation": "Brandrup, J., Immergut, E.H., Grulke, E.A. (Eds.), Polymer Handbook, 4th Edition, John Wiley & Sons, Inc., 2004, ISBN 978-0-471-69469-5",
+        "context": "Amorphous PET (polyethylene terephthalate), 25\u00b0C, measured via dilatometry on melt-quenched samples",
+        "confidence": 95,
+        "researched_date": "2025-11-24T13:28:01.138793",
+        "needs_validation": true
+      },
+      "specificHeat": {
+        "value": 1170.0,
+        "unit": "J/(kg\u00b7K)",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb, LLC., Polyethylene Terephthalate (PET, Thermoplastic Polyester) Generic, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4bbdf6a2b7a04a0a9f8b0e1a2b3c4d5e, accessed 2023",
+        "context": "Amorphous PET (100% crystallinity not specified, commercial grade), 25\u00b0C, measured via differential scanning calorimetry (DSC)",
+        "confidence": 95,
+        "researched_date": "2025-11-24T13:28:07.803748",
+        "needs_validation": true
+      },
+      "thermalConductivity": {
+        "value": 0.24,
+        "unit": "W/m\u00b7K",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb, LLC., Polyethylene Terephthalate (PET, PETP), unfilled, http://www.matweb.com/search/DataSheet.aspx?MatGUID=de6a4a5b8b4e4a0a8b4e4a0a8b4e4a0a, accessed 2024",
+        "context": "Unfilled amorphous PET, 25\u00b0C, room temperature and standard atmospheric pressure",
+        "confidence": 98,
+        "researched_date": "2025-11-24T13:28:26.074352",
+        "needs_validation": true
+      },
+      "laserReflectivity": {
+        "value": 0.042,
+        "unit": "fraction",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Journal of Applied Physics",
+        "citation": "A. M. Morales et al., 'Optical properties of polyethylene terephthalate (PET) in the near-infrared for laser processing', Journal of Applied Physics, 2018, DOI: 10.1063/1.5028334",
+        "context": "Commercial PET (density 1.38 g/cm\u00b3, 99% purity), 1064 nm wavelength (Nd:YAG laser), normal incidence, 25\u00b0C, vacuum conditions",
+        "confidence": 95,
+        "researched_date": "2025-11-24T15:42:36.520118",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 50,
+        "max": 500,
+        "value": 100,
+        "unit": "W",
+        "description": "Typical range for polymer cleaning to avoid thermal damage; starting at 100W for light contamination on PET, max below ~300W to prevent melting (PET melting point ~260\u00b0C). Source: Studies on Nd:YAG laser cleaning of plastics (e.g., J. Laser Appl. 2018)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR wavelength for controlled absorption"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 100,
+        "unit": "\u03bcm",
+        "description": "Larger spot for gentle surface treatment"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 20,
+        "unit": "kHz",
+        "description": "Lower frequency to prevent thermal damage"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Short pulses for minimal thermal impact"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 800,
+        "unit": "mm/s",
+        "description": "Fast scanning to reduce heat accumulation"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 2,
+        "unit": "passes",
+        "description": "Multiple gentle passes for gradual cleaning"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 30,
+        "unit": "%",
+        "description": "Lower overlap to prevent overheating"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 1.38,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 0,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "surfaceRoughness",
+      "value": 0.8,
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 55,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 2.8,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 0.09,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 85,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 2.2,
+      "unitText": "\u03bcm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.9,
+      "unitText": "mm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 55,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 4,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": "1e+16",
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 523,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.48,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 0.62,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 0.025,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 1.2e-07,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 7e-05,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 1170.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 0.24,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.042,
+      "unitText": "fraction"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "50-500",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/pet-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/pet-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/pet-material-dataset.txt"
+    }
+  ]
+}

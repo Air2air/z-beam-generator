@@ -30,7 +30,7 @@ from domains.materials.image.material_config import MaterialImageConfig
 # Local imports
 from domains.materials.image.material_generator import MaterialImageGenerator
 from shared.api.gemini_image_client import GeminiImageClient
-from shared.validation.validator import UnifiedValidator, ValidationStatus
+from shared.validation.validator import Validator, ValidationStatus
 
 
 @dataclass
@@ -72,7 +72,7 @@ class ImageGenerationHandler:
         """
         self.materials_data = self._load_materials_yaml()
         self.contaminants_data = self._load_contaminants_yaml()
-        self.validator = UnifiedValidator()
+        self.validator = Validator()
         
         # MaterialImageGenerator with category research
         self.generator = MaterialImageGenerator(

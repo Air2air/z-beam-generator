@@ -1,0 +1,63 @@
+Manganese Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning manganese, you'll want to kick off with moderate power levels and steady scan speeds to make the most of its low thermal conductivity, which keeps heat nicely localized but calls for close monitoring along the way to avoid uneven oxidation on any delicate parts.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : non-ferrous
+name                          : Manganese
+electricalConductivity        : 694444.0 S/m
+electricalResistivity         : 1.44e-06 Ω·m
+fractureToughness             : 18.0 MPa m^{1/2}
+surfaceRoughness              : 0.35 μm
+youngsModulus                 : 117.0 GPa
+oxidationResistance           : 923.0 K
+density                       : 7.44 g/cm³
+hardness                      : 2.75 GPa
+corrosionResistance           : -1.185 V
+compressiveStrength           : 310.0 MPa
+flexuralStrength              : 320.0 MPa
+tensileStrength               : 345.0 MPa
+porosity                      : 0.0 fraction
+absorptivity                  : 0.42 dimensionless
+boilingPoint                  : 2334.0 K
+absorptionCoefficient         : 14200000.0 m⁻¹
+meltingPoint                  : 1519.0 K
+vaporPressure                 : 121.0 Pa
+thermalDestructionPoint       : 1519.0 K
+reflectivity                  : 0.58 dimensionless (ratio)
+thermalShockResistance        : 0.8 MPa·m^0.5
+laserDamageThreshold          : 0.15 J/cm²
+thermalDestruction            : 1519.0 K
+specificHeat                  : 479.0 J/kg·K
+laserReflectivity             : 0.62 
+thermalConductivity           : 7.82 W/m·K
+thermalExpansion              : 21.7 10^{-6} K^{-1}
+laserAbsorption               : 0.35 dimensionless
+thermalDiffusivity            : 2.19e-06 m²/s
+ablationThreshold             : 1.05 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-1000 W
+                                Typical range for industrial 1064 nm laser cleaning of reflective metals like manganese; starting at 200 W for contamination removal without excessive heat input. Max safe before substrate melting (Mn melting point ~1246°C) is ~1000 W with proper scanning. Source: Manufacturer specs from IPG Photonics and Coherent for metal cleaning systems; academic review in Optics and Lasers in Engineering (2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal absorption in Manganese oxides
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient oxide layer ablation
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete oxide removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,alloy,,
+name,Vanadium,,
+youngsModulus,128.0,GPa,
+oxidationResistance,0.65,dimensionless,
+density,6110.0,kg/m³,
+hardness,175.0,HV,
+corrosionResistance,0.92,dimensionless (normalized corrosion resistance index),
+compressiveStrength,345.0,MPa,
+flexuralStrength,310.0,MPa,
+tensileStrength,345.0,MPa,
+fractureToughness,99.0,MPa√m,
+porosity,0.0,%,
+electricalResistivity,1.97e-07,Ω·m,
+absorptivity,0.3,dimensionless,
+boilingPoint,3680.0,K,
+absorptionCoefficient,5000000,m⁻¹,
+electricalConductivity,4030000.0,S/m,
+meltingPoint,2183.0,K,
+vaporPressure,10,Pa,
+thermalDestructionPoint,2183,K,
+reflectivity,0.7,dimensionless,
+thermalShockResistance,2.5,MW/m,
+surfaceRoughness,0.12,μm,
+laserDamageThreshold,2.5,J/cm²,
+thermalDestruction,2183.0,K,
+specificHeat,489.0,J/(kg·K),
+laserReflectivity,0.65,fraction,
+thermalConductivity,30.7,W/m·K,
+thermalExpansion,8.4,10^{-6} K^{-1},
+laserAbsorption,0.38,dimensionless,
+thermalDiffusivity,1.028e-05,m²/s,
+ablationThreshold,1.45,J/cm²,
+power,50-500,W,Typical range for pulsed laser cleaning of reflective metals like vanadium to avoid excessive heat input; starting at 100-200W recommended to prevent melting (melting point ~1910°C). Based on manufacturer specs from IPG Photonics and Coherent for 1064 nm systems used in metal surface preparation.
+wavelength,355-10640,nm,Near-IR wavelength for optimal Vanadium absorption and thermal processing
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning resolution
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning coverage
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient oxide layer ablation
+scanSpeed,10-5000,mm/s,Optimal scanning speed for efficient area coverage
+passCount,1-10,passes,Number of cleaning passes for complete oxide removal
+overlapRatio,10-90,%,Optimal pulse overlap for uniform cleaning

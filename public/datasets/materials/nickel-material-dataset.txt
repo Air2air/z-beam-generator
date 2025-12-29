@@ -1,0 +1,63 @@
+Nickel Laser Cleaning Dataset
+================================================================================
+
+Description: Nickel stands out in laser cleaning applications thanks to its solid balance of reflectivity and absorptivity, which lets operators dial in precise energy absorption without excessive heat buildup. This sets it apart from more reactive metals by delivering clean finishes on tough surfaces like those in aerospace or chemical processing, while holding up against corrosion and thermal shock in demanding setups.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : specialty
+name                          : Nickel
+electricalConductivity        : 14300000.0 S/m
+electricalResistivity         : 6.99e-08 Ω·m
+fractureToughness             : 55.0 MPa√m
+surfaceRoughness              : 0.12 μm
+youngsModulus                 : 200.0 GPa
+oxidationResistance           : 1.65 dimensionless
+density                       : 8908.0 kg/m³
+hardness                      : 150.0 HV
+corrosionResistance           : 0.005 mm/year
+compressiveStrength           : 345.0 MPa
+flexuralStrength              : 483.0 MPa
+tensileStrength               : 455.0 MPa
+porosity                      : 0.0 fraction
+absorptivity                  : 0.36 dimensionless
+boilingPoint                  : 3186.0 K
+absorptionCoefficient         : 680000.0 m⁻¹
+meltingPoint                  : 1728.0 K
+vaporPressure                 : 1.33 Pa
+thermalDestructionPoint       : 1726.0 K
+reflectivity                  : 0.68 dimensionless (ratio)
+thermalShockResistance        : 450.0 °C
+laserDamageThreshold          : 0.45 J/cm²
+thermalDestruction            : 1728.0 K
+specificHeat                  : 445.0 J/kg·K
+laserReflectivity             : 0.65 
+thermalConductivity           : 90.7 W/m·K
+thermalExpansion              : 1.33e-05 /K
+laserAbsorption               : 0.35 dimensionless
+thermalDiffusivity            : 2.29e-05 m²/s
+ablationThreshold             : 2.1 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-300 W
+                                Typical range for pulsed fiber lasers at 1064 nm used in industrial cleaning of reflective metals like nickel; starting at 100 W balances efficiency and safety to avoid thermal damage due to nickel's high reflectivity (~60% at 1064 nm) and thermal conductivity (90 W/m·K). Max safe before substrate melting (1455°C) is ~300 W with short pulses. Source: IPG Photonics YLR series specs and study in Optics and Lasers in Engineering (2018) on metal surface cleaning.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for efficient Nickel processing with good absorption
+spotSize                      : 0.1-500 μm
+                                Optimal beam diameter for precision cleaning
+repetitionRate                : 1-200 kHz
+                                High repetition rate for efficient cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for effective contaminant ablation without substrate damage
+scanSpeed                     : 10-5000 mm/s
+                                Scanning speed for efficient area coverage
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal overlap between adjacent scan lines for uniform cleaning
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

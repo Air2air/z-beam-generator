@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,specialty,,
+name,Hastelloy,,
+electricalConductivity,800000.0,S/m,
+electricalResistivity,1.3e-06,Ω·m,
+fractureToughness,55.0,MPa m^{1/2},
+surfaceRoughness,1.6,μm,
+youngsModulus,205.0,GPa,
+oxidationResistance,1477.0,K,
+density,8.89,g/cm³,
+hardness,92.0,HRB,
+corrosionResistance,450000.0,ohm·cm²,
+compressiveStrength,345.0,MPa,
+flexuralStrength,827.0,MPa,
+tensileStrength,690.0,MPa,
+porosity,0.0,fraction,
+absorptivity,0.42,dimensionless,
+boilingPoint,3003.0,K,
+absorptionCoefficient,3800000.0,m⁻¹,
+meltingPoint,1623.0,K,
+vaporPressure,1.33e-07,Pa,
+thermalDestructionPoint,1623.0,K,
+reflectivity,0.62,dimensionless,
+thermalShockResistance,325.0,°C,
+laserDamageThreshold,2.8,J/cm²,
+thermalDestruction,1621.0,K,
+specificHeat,544.0,J/(kg·K),
+laserReflectivity,0.68,fraction,
+thermalConductivity,9.8,W/m·K,
+thermalExpansion,1.12e-05,/K,
+laserAbsorption,0.32,dimensionless,
+thermalDiffusivity,2.88e-06,m²/s,
+ablationThreshold,2.15,J/cm²,
+power,50-1000,W,"Typical range for industrial cleaning of nickel-based superalloys like Hastelloy to remove contaminants without ablation; starting at 200W balances efficiency and safety to avoid thermal damage given Hastelloy's high melting point (~1350°C). Max limited to prevent substrate melting at high fluences. Source: Manufacturer specs from IPG Photonics pulsed fiber lasers for metal cleaning; academic review in 'Laser Cleaning of Metals' (Optics & Lasers in Engineering, 2018)."
+wavelength,355-10640,nm,Near-infrared wavelength optimized for Hastelloy absorption and minimal reflectivity
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning with adequate energy density
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning coverage with thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient contaminant removal with controlled thermal effects
+scanSpeed,10-5000,mm/s,Optimal scanning speed for efficient area coverage with effective cleaning
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without excessive thermal accumulation

@@ -1,0 +1,569 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "molybdenum-material-dataset",
+  "name": "Molybdenum Laser Cleaning Dataset",
+  "description": "Molybdenum exhibits high heat resistance, so laser cleaning removes contaminants effectively without surface damage. During processing, its reflectivity challenges energy absorption, yet strong thermal shock tolerance ensures durability for aerospace parts. Treatment achieves clean uniformity.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "metal",
+      "subcategory": "non-ferrous",
+      "name": "Molybdenum",
+      "electricalConductivity": {
+        "value": 18700000.0,
+        "unit": "S/m",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "electricalResistivity": {
+        "value": 5.2e-08,
+        "unit": "\u03a9\u00b7m",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "fractureToughness": {
+        "value": 0.9,
+        "unit": "MPa m^{1/2}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "surfaceRoughness": {
+        "value": 0.8,
+        "unit": "\u03bcm",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "youngsModulus": {
+        "value": 329.0,
+        "unit": "GPa",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "oxidationResistance": {
+        "value": 723.0,
+        "unit": "K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "density": {
+        "value": 10.28,
+        "unit": "g/cm\u00b3",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "hardness": {
+        "value": 150.0,
+        "unit": "HV",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "corrosionResistance": {
+        "value": 0.92,
+        "unit": "dimensionless (corrosion resistance index)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "compressiveStrength": {
+        "value": 830.0,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "flexuralStrength": {
+        "value": 690.0,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "tensileStrength": {
+        "value": 690.0,
+        "unit": "MPa",
+        "confidence": 98,
+        "source": "ai_research"
+      },
+      "porosity": {
+        "value": 0.0,
+        "unit": "%",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "absorptivity": {
+        "source": "ai_research",
+        "unit": "dimensionless",
+        "value": 0.41
+      },
+      "boilingPoint": {
+        "value": 4912.0,
+        "unit": "K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "absorptionCoefficient": {
+        "source": "ai_research",
+        "unit": "m^-1",
+        "value": 42000000.0
+      },
+      "meltingPoint": {
+        "value": 2896.0,
+        "unit": "K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "vaporPressure": {
+        "source": "ai_research",
+        "unit": "Pa",
+        "value": 1.33e-07
+      },
+      "thermalDestructionPoint": {
+        "source": "ai_research",
+        "unit": "K",
+        "value": 2896.0
+      },
+      "reflectivity": {
+        "source": "ai_research",
+        "unit": "dimensionless",
+        "value": 0.57
+      },
+      "thermalShockResistance": {
+        "source": "ai_research",
+        "unit": "W/m",
+        "value": 515.0
+      },
+      "laserDamageThreshold": {
+        "source": "ai_research",
+        "unit": "J/cm\u00b2",
+        "value": 0.45
+      },
+      "thermalDestruction": {
+        "value": 2896.0,
+        "unit": "K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "specificHeat": {
+        "value": 251.0,
+        "unit": "J/(kg\u00b7K)",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "laserReflectivity": {
+        "value": 0.61,
+        "unit": "fraction",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalConductivity": {
+        "value": 138.0,
+        "unit": "W/m\u00b7K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "thermalExpansion": {
+        "value": 4.8e-06,
+        "unit": "K^{-1}",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "laserAbsorption": {
+        "value": 0.43,
+        "unit": "dimensionless",
+        "confidence": 98,
+        "source": "ai_research"
+      },
+      "thermalDiffusivity": {
+        "value": 5.38e-05,
+        "unit": "m\u00b2/s",
+        "confidence": 98,
+        "source": "ai_research"
+      },
+      "ablationThreshold": {
+        "value": 2.1,
+        "unit": "J/cm\u00b2",
+        "confidence": 95,
+        "source": "ai_research"
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 50,
+        "max": 300,
+        "value": 100,
+        "unit": "W",
+        "description": "Typical range for 1064 nm pulsed lasers in metal cleaning; starting at 100 W balances efficiency and safety for Mo's high reflectivity and thermal conductivity, avoiding melting (threshold ~300 W). Source: IPG Photonics YLR series specs and studies on refractory metals (e.g., J. Laser Appl. 2018)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR wavelength providing good absorption for Molybdenum surface contaminants"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 50,
+        "unit": "\u03bcm",
+        "description": "Beam spot diameter for effective cleaning resolution and energy density"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 50,
+        "unit": "kHz",
+        "description": "Optimal repetition rate for continuous cleaning coverage with thermal management"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Nanosecond pulse duration for efficient contaminant ablation with minimal thermal diffusion"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 500,
+        "unit": "mm/s",
+        "description": "Optimal scanning speed for uniform cleaning with adequate overlap"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 3,
+        "unit": "passes",
+        "description": "Recommended number of passes for complete contaminant removal"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 50,
+        "unit": "%",
+        "description": "Optimal beam overlap percentage for uniform cleaning coverage"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "electricalConductivity",
+      "value": 18700000.0,
+      "unitText": "S/m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": 5.2e-08,
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 0.9,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "surfaceRoughness",
+      "value": 0.8,
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 329.0,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 723.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 10.28,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 150.0,
+      "unitText": "HV"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.92,
+      "unitText": "dimensionless (corrosion resistance index)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 830.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 690.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 690.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 0.0,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.4,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "boilingPoint",
+      "value": 4912.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 72300000.0,
+      "unitText": "m^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "meltingPoint",
+      "value": 2896.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "vaporPressure",
+      "value": 101325.0,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestructionPoint",
+      "value": 2896.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "reflectivity",
+      "value": 0.55,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalShockResistance",
+      "value": 402000.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 1.8,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 42000000.0,
+      "unitText": "m^-1"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.41,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 0.45,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "reflectivity",
+      "value": 0.57,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestructionPoint",
+      "value": 2896.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalShockResistance",
+      "value": 515.0,
+      "unitText": "W/m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "vaporPressure",
+      "value": 1.33e-07,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 2896.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 251.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.61,
+      "unitText": "fraction"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 138.0,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 4.8e-06,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.43,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 5.38e-05,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 2.1,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "50-300",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/molybdenum-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/molybdenum-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/molybdenum-material-dataset.txt"
+    }
+  ]
+}

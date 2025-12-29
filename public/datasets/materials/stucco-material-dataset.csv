@@ -1,0 +1,36 @@
+Property,Value,Unit,Description
+category,masonry,,
+subcategory,concrete,,
+name,Stucco,,
+youngsModulus,18.5,GPa,
+oxidationResistance,0.95,dimensionless (relative scale 0-1),
+density,1760.0,kg/m³,
+hardness,2.5,Mohs,
+corrosionResistance,0.92,dimensionless,
+compressiveStrength,10.3,MPa,
+flexuralStrength,4.2,MPa,
+tensileStrength,0.7,MPa,
+fractureToughness,0.42,MPa m^{0.5},
+laserDamageThreshold,2.5,J/cm²,
+absorptivity,0.8,dimensionless,
+absorptionCoefficient,500000,m⁻¹,
+thermalShockResistance,1.5,MW/m,
+reflectivity,0.2,dimensionless,
+thermalDestructionPoint,800,K,
+vaporPressure,50,Pa,
+thermalDestruction,773.0,K,
+specificHeat,880.0,J/(kg·K),
+laserReflectivity,0.28,dimensionless,
+thermalConductivity,0.72,W/m·K,
+thermalExpansion,1.04e-05,K^{-1},
+laserAbsorption,0.42,,
+thermalDiffusivity,4.5e-07,m²/s,
+ablationThreshold,1.8,J/cm²,
+power,50-500,W,"Typical range for industrial cleaning of porous, low-conductivity materials like stucco to avoid thermal damage; starting at 200W for controlled ablation. Max limited to prevent cracking. Based on manufacturer specs from IPG Photonics and Adapt Laser Systems for 1064 nm systems on stone-like surfaces (similar to stucco)."
+wavelength,355-10640,nm,Near-infrared wavelength optimized for Stucco absorption and minimal substrate interaction
+spotSize,0.1-500,mm,Beam spot diameter for balanced cleaning efficiency and resolution
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage and process speed
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning without thermal accumulation
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning coverage

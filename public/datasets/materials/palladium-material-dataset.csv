@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,non-ferrous,,
+name,Palladium,,
+electricalConductivity,9490000.0,S/m,
+electricalResistivity,1.08e-07,Ω·m,
+fractureToughness,28.0,MPa√m,
+surfaceRoughness,0.025,μm,
+youngsModulus,121.0,GPa,
+oxidationResistance,623.0,K,
+density,12.023,g/cm³,
+hardness,40.0,HV,
+corrosionResistance,0.987,V,
+compressiveStrength,340.0,MPa,
+flexuralStrength,250.0,MPa,
+tensileStrength,124.0,MPa,
+porosity,0.0,%,
+absorptivity,0.35,dimensionless,
+boilingPoint,3236.0,K,
+absorptionCoefficient,52000000.0,m^-1,
+meltingPoint,1828.0,K,
+vaporPressure,1.33,Pa,
+thermalDestructionPoint,1828.05,K,
+reflectivity,0.71,dimensionless,
+thermalShockResistance,1.8,MPa·m^0.5,
+laserDamageThreshold,0.45,J/cm²,
+thermalDestruction,1828.0,K,
+specificHeat,244.1,J/(kg·K),
+laserReflectivity,0.7,dimensionless (fraction),
+thermalConductivity,71.8,W/m·K,
+thermalExpansion,1.18e-05,K^{-1},
+laserAbsorption,0.38,dimensionless,
+thermalDiffusivity,2.446e-05,m²/s,
+ablationThreshold,1.1,J/cm²,
+power,50-500,W,Typical range for Nd:YAG laser cleaning of reflective metals like Pd to avoid thermal damage; starting at 200W balances efficiency and safety. Max limited by Pd's high reflectivity (~60% at 1064nm) to prevent melting (mp 1555°C). Source: IPG Photonics specs for YLR series; studies in Optics and Lasers in Engineering (2018) on precious metal cleaning.
+wavelength,355-10640,nm,Near-IR wavelength for efficient absorption by Palladium oxides and contaminants
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning control on Palladium surfaces
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without excessive heat accumulation

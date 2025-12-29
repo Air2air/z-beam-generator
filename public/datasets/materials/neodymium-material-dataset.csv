@@ -1,0 +1,27 @@
+Property,Value,Unit,Description
+category,rare-earth,,
+subcategory,lanthanide,,
+name,Neodymium,,
+youngsModulus,32.0,GPa,
+oxidationResistance,-2.323,V,
+density,7007.0,kg/m³,
+hardness,41.0,HV,
+absorptivity,0.72,dimensionless,
+boilingPoint,3347.0,K,
+thermalDestruction,1294.0,K,
+specificHeat,190.3,J/(kg·K),
+laserReflectivity,0.68,,
+thermalConductivity,16.73,W/m·K,
+thermalExpansion,12.5,10^{-6} K^{-1},
+ablationThreshold,1.75,J/cm²,
+absorptionCoefficient,32000000.0,m^{-1},
+laserDamageThreshold,1.25,J/cm²,
+thermalDiffusivity,1.24e-05,m²/s,
+power,50-500,W,Typical range for Nd:YAG laser cleaning of soft metals like Neodymium to avoid thermal damage due to its low melting point (1021°C) and moderate thermal conductivity (16.5 W/m·K); starting at 100W balances efficiency and safety. Source: IPG Photonics YLR series specs for industrial cleaning; academic review in Optics and Lasers in Engineering (2018) on metal surface preparation.
+wavelength,355-10640,nm,Fundamental Nd:YAG wavelength with good Neodymium absorption
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning control
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Recommended number of passes for complete surface cleaning
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without excessive heat accumulation

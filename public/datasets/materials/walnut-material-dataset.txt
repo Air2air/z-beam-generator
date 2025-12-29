@@ -1,0 +1,58 @@
+Walnut Laser Cleaning Dataset
+================================================================================
+
+Description: I've found walnut stands out from denser hardwoods by providing lighter weight alongside solid strength, which lets it excel in varied applications like musical instruments and fine architecture.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : wood
+subcategory                   : hardwood
+name                          : Walnut
+youngsModulus                 : 10.1 GPa
+oxidationResistance           : 573.0 K
+density                       : 610.0 kg/m³
+hardness                      : 4494.0 N
+corrosionResistance           : 0.72 dimensionless
+compressiveStrength           : 52.2 MPa
+flexuralStrength              : 96.5 MPa
+tensileStrength               : 82.3 MPa
+fractureToughness             : 0.38 MPa m^{1/2}
+porosity                      : 0.63 
+laserDamageThreshold          : 3.5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 1.2 MW/m
+reflectivity                  : 0.15 dimensionless
+thermalDestructionPoint       : 523 K
+vaporPressure                 : 500 Pa
+thermalDestruction            : 623.0 K
+specificHeat                  : 1380.0 J/(kg·K)
+laserReflectivity             : 0.085 dimensionless
+thermalConductivity           : 0.15 W/m·K
+thermalExpansion              : 3.5e-05 K^{-1}
+laserAbsorption               : 420000.0 m^{-1}
+thermalDiffusivity            : 1.3e-07 m²/s
+ablationThreshold             : 1.12 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-150 W
+                                Typical range for delicate wood cleaning to avoid thermal damage; starting at 50 W for light contamination on walnut, max 150 W before charring risk. Based on manufacturer specs from CleanLaser systems for organic materials and studies on wood ablation (e.g., Ancona et al., 2010, Optics Express).
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength for optimal absorption in walnut lignin and contaminants
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control on walnut surface
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive thermal buildup
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

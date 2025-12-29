@@ -6,7 +6,7 @@ Implements PROMPT_CHAINING_POLICY.md for image generation.
 SIMPLIFIED ARCHITECTURE (November 30, 2025):
     Stage 1: RESEARCH → Load/use provided research data
     Stage 2: ASSEMBLY → SharedPromptBuilder creates comprehensive prompt
-    Stage 3: VALIDATION → UnifiedValidator checks prompt quality
+    Stage 3: VALIDATION → Validator checks prompt quality
 
 Each stage:
 - ONE clear responsibility
@@ -18,7 +18,7 @@ Benefits:
 - Clear data flow
 - Easy debugging
 - SharedPromptBuilder handles all prompt assembly complexity
-- UnifiedValidator handles all validation (consolidated)
+- Validator handles all validation (consolidated)
 
 Legacy Note:
     Previous 6-stage design had stages 2-4 (Visual/Composition/Refinement)
@@ -79,7 +79,7 @@ class ImagePromptOrchestrator:
     SIMPLIFIED ARCHITECTURE (November 30, 2025):
     - Stage 1: RESEARCH - Load/use provided research data
     - Stage 2: ASSEMBLY - SharedPromptBuilder creates comprehensive prompt
-    - Stage 3: VALIDATION - UnifiedValidator checks prompt quality
+    - Stage 3: VALIDATION - Validator checks prompt quality
     
     SharedPromptBuilder handles all the complexity:
     - 4-layer templates (base + physics + contamination + micro)
@@ -87,7 +87,7 @@ class ImagePromptOrchestrator:
     - Prompt optimization for Imagen API limits
     - Research data retention verification
     
-    UnifiedValidator handles all validation:
+    Validator handles all validation:
     - Length limits
     - Contradictions and logic
     - Material-contamination compatibility
@@ -133,7 +133,7 @@ class ImagePromptOrchestrator:
         SIMPLIFIED CHAIN (November 30, 2025):
         1. RESEARCH: Use provided research_data or extract from data_loader
         2. ASSEMBLY: SharedPromptBuilder creates comprehensive prompt
-        3. VALIDATION: UnifiedValidator checks prompt quality
+        3. VALIDATION: Validator checks prompt quality
         
         Args:
             identifier: Material/contaminant/etc name
@@ -193,7 +193,7 @@ class ImagePromptOrchestrator:
         stage_outputs['assembly'] = final_prompt
         
         # ═══════════════════════════════════════════════════════════════════════
-        # STAGE 3: VALIDATION - UnifiedValidator checks prompt quality
+        # STAGE 3: VALIDATION - Validator checks prompt quality
         # ═══════════════════════════════════════════════════════════════════════
         print("\n🔍 STAGE 3/3: Validation")
         logger.info("🔍 STAGE 3/3: Validation")

@@ -1,0 +1,33 @@
+Property,Value,Unit,Description
+category,semiconductor,,
+subcategory,compound,,
+name,Indium Phosphide,,
+density,4.81,g/cm³,
+porosity,0,%,
+surfaceRoughness,0.2,μm,
+tensileStrength,41,MPa,
+youngsModulus,61,GPa,
+hardness,0.8,GPa,
+flexuralStrength,95,MPa,
+oxidationResistance,5,μm/year,
+corrosionResistance,0.65,mm/year,
+compressiveStrength,41,MPa,
+fractureToughness,4.5,MPa m^{1/2},
+electricalResistivity,10000000.0,Ω·m,
+thermalDestruction,1335,K,
+laserAbsorption,0.3,dimensionless,
+laserDamageThreshold,1.5,J/cm²,
+ablationThreshold,0.72,J/cm²,
+thermalDiffusivity,4.5e-05,m²/s,
+thermalExpansion,4.56e-06,K^{-1},
+specificHeat,310.0,J/(kg·K),
+thermalConductivity,68.0,W/m·K,
+laserReflectivity,0.28,dimensionless,
+power,10-100,W,"Typical range for ns-pulsed Nd:YAG lasers in semiconductor cleaning to balance efficiency and avoid thermal damage to InP (melting point ~1062°C, moderate reflectivity at 1064 nm). Recommended starting at 30W for light contamination; max safe below 100W to prevent substrate ablation. Source: Manufacturer specs from IPG Photonics and Coherent for industrial cleaners; ablation studies in J. Appl. Phys. (e.g., InP thresholds imply power limits)."
+wavelength,355-10640,nm,Near-IR for minimal lattice damage
+spotSize,0.1-500,μm,Small spot for high-precision cleaning
+repetitionRate,1-200,kHz,Moderate frequency for controlled removal
+pulseWidth,0.1-1000,ns,Ultra-short pulses for minimal thermal damage
+scanSpeed,10-5000,mm/s,Careful scanning for uniform treatment
+passCount,1-10,passes,Multiple passes for complete cleaning
+overlapRatio,10-90,%,High overlap for thorough coverage

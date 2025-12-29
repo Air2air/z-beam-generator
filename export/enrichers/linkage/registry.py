@@ -66,8 +66,8 @@ from export.enrichers.linkage.relationship_resolution_enricher import (
 
 # Import enrichers
 from export.enrichers.linkage.slug_enricher import DomainLinkagesSlugEnricher
-from export.enrichers.linkage.universal_linkage_enricher import UniversalLinkageEnricher
-from export.enrichers.linkage.universal_restructure_enricher import (
+from export.enrichers.linkage.linkage_enricher import UniversalLinkageEnricher
+from export.enrichers.linkage.restructure_enricher import (
     UniversalRestructureEnricher,
 )
 from export.enrichers.metadata.breadcrumb_enricher import BreadcrumbEnricher
@@ -77,6 +77,8 @@ from export.enrichers.settings.material_category_enricher import MaterialCategor
 from export.enrichers.contaminants.removal_by_material_enricher import RemovalByMaterialEnricher  # Dec 20, 2025
 from export.enrichers.relationships.relationship_url_enricher import RelationshipURLEnricher  # Re-enabled Dec 21, 2025 - URLs NOT in relationship items
 from export.enrichers.relationships.intensity_enricher import IntensityEnricher  # Dec 22, 2025 - Dynamically derives intensity from severity/effectiveness/frequency
+from export.enrichers.media.image_enricher import ImageEnricher  # Dec 26, 2025 - Enriches image metadata
+from export.enrichers.preservation.text_field_preservation_enricher import TextFieldPreservationEnricher  # Dec 26, 2025 - Preserves text fields during export
 
 logger = logging.getLogger(__name__)
 
@@ -458,6 +460,8 @@ ENRICHER_REGISTRY = {
     'settings_linkage': SettingsLinkageEnricher,  # Legacy - use universal_linkage
     'timestamp': TimestampEnricher,
     'author': AuthorEnricher,
+    'images': ImageEnricher,  # Dec 26, 2025 - Enriches image metadata
+    'text_field_preservation': TextFieldPreservationEnricher,  # Dec 26, 2025 - Preserves text fields
     'name': NameEnricher,  # Adds name field from id if missing
     'title': TitleEnricher,  # Generates title field from name (Dec 20, 2025)
     'material_category': MaterialCategoryEnricher,  # Adds category/subcategory from Materials.yaml (Dec 19, 2025)

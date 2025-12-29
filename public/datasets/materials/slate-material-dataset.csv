@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,stone,,
+subcategory,metamorphic,,
+name,Slate,,
+fractureToughness,0.92,MPa√m,
+youngsModulus,45.0,GPa,
+oxidationResistance,0.002,mm/year,
+density,2750.0,kg/m³,
+hardness,3.5,Mohs,
+corrosionResistance,0.95,dimensionless,
+compressiveStrength,150.0,MPa,
+flexuralStrength,42.5,MPa,
+tensileStrength,14.0,MPa,
+porosity,0.8,%,
+laserDamageThreshold,8,J/cm²,
+absorptivity,0.85,dimensionless,
+absorptionCoefficient,100000,m⁻¹,
+thermalShockResistance,2.5,MW/m,
+reflectivity,0.15,dimensionless,
+thermalDestructionPoint,1300,K,
+vaporPressure,0.01,Pa,
+thermalDestruction,1273.0,K,
+specificHeat,880.0,J/(kg·K),
+laserReflectivity,0.12,dimensionless,
+thermalConductivity,2.0,W/m·K,
+thermalExpansion,8.5e-06,K^{-1},
+laserAbsorption,0.88,dimensionless (absorptivity at 1064 nm),
+thermalDiffusivity,9.6e-07,m²/s,
+ablationThreshold,1.2,J/cm²,
+power,50-500,W,"Typical range for Nd:YAG laser cleaning of stone materials like slate to remove contaminants without thermal damage; starting at 200W for controlled ablation. Max safe ~500W to avoid cracking. Source: Manufacturer specs from IPG Photonics (e.g., YLR series for stone restoration) and academic paper by S. J. H. Lee et al. (Opt. Lasers Eng., 2018)."
+wavelength,355-10640,nm,Near-infrared wavelength optimized for Slate mineral absorption
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning control
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective contaminant removal
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning
+passCount,1-10,passes,Recommended number of cleaning passes for thorough removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning coverage

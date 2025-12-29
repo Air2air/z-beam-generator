@@ -1,0 +1,36 @@
+Property,Value,Unit,Description
+category,masonry,,
+subcategory,general,,
+name,Plaster,,
+fractureToughness,0.22,MPa m^{1/2},
+youngsModulus,10.3,GPa,
+oxidationResistance,0.98,dimensionless (0-1 scale),
+density,800.0,kg/m³,
+hardness,2.0,Mohs,
+corrosionResistance,0.92,dimensionless,
+compressiveStrength,5.2,MPa,
+flexuralStrength,2.07,MPa,
+tensileStrength,0.69,MPa,
+laserDamageThreshold,3,J/cm²,
+absorptivity,0.2,dimensionless,
+absorptionCoefficient,50000,m⁻¹,
+thermalShockResistance,1.5,MW/m,
+reflectivity,0.8,dimensionless,
+thermalDestructionPoint,450,K,
+vaporPressure,1000,Pa,
+thermalDestruction,773.0,K,
+specificHeat,1090.0,J/(kg·K),
+laserReflectivity,0.42,dimensionless,
+thermalConductivity,0.25,W/(m·K),
+thermalExpansion,1.4e-05,/K,
+laserAbsorption,118000.0,m^{-1},
+thermalDiffusivity,2.1e-07,m²/s,
+ablationThreshold,0.92,J/cm²,
+power,50-500,W,"Typical range for industrial laser cleaning of delicate materials like plaster to avoid thermal damage; starting at 100 W for light contamination removal. Max safe below 500 W to prevent substrate cracking due to plaster's low thermal conductivity (~0.5 W/m·K). Source: Manufacturer specs from IPG Photonics YLR series and studies on laser cleaning of gypsum-based plasters (e.g., J. Cult. Herit. 2018)."
+wavelength,355-10640,nm,Near-infrared wavelength optimized for plaster absorption and minimal substrate damage
+spotSize,0.1-500,μm,Beam spot diameter for balanced cleaning efficiency and resolution
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage and thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning without excessive dwell time
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning coverage and efficiency

@@ -1,0 +1,58 @@
+Pine Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning pine, leverage its strong beam absorption to swiftly vaporize dirt and old finishes, while the wood's poor heat conduction confines damage to the surface for safe restoration of furniture or heritage pieces
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : wood
+subcategory                   : softwood
+name                          : Pine
+fractureToughness             : 0.41 MPa·m^{1/2}
+youngsModulus                 : 10.3 GPa
+oxidationResistance           : 0.68 dimensionless (normalized resistance index)
+density                       : 450.0 kg/m³
+hardness                      : 1690.0 N
+corrosionResistance           : 0.35 normalized durability index (0-1)
+compressiveStrength           : 38.0 MPa
+flexuralStrength              : 59.3 MPa
+tensileStrength               : 100.0 MPa
+porosity                      : 0.75 
+laserDamageThreshold          : 2.5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 25000 m⁻¹
+thermalShockResistance        : 1.2 MW/m
+reflectivity                  : 0.15 dimensionless
+thermalDestructionPoint       : 523 K
+vaporPressure                 : 5 Pa
+thermalDestruction            : 596.0 K
+specificHeat                  : 1300.0 J/kg·K
+laserReflectivity             : 0.38 dimensionless
+thermalConductivity           : 0.13 W/m·K
+thermalExpansion              : 3.4e-05 K^{-1}
+laserAbsorption               : 0.93 dimensionless
+thermalDiffusivity            : 1.82e-07 m²/s
+ablationThreshold             : 1.45 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 10-200 W
+                                Typical range for industrial cleaning of softwoods like pine to remove contaminants without charring; starting low prevents thermal damage. Max based on avoiding substrate pyrolysis. Source: Studies on laser cleaning of wood in Journal of Cultural Heritage (e.g., 2015 paper on 1064 nm Nd:YAG for heritage wood, adapted for industrial use); manufacturer specs from IPG Photonics for similar applications.
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength for optimal Pine wood absorption
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise Pine surface treatment
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient Pine surface cleaning
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform Pine cleaning
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete Pine surface treatment
+overlapRatio                  : 10-90 %
+                                Beam overlap percentage for uniform Pine surface coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

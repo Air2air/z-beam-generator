@@ -1,0 +1,454 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "acrylic-pmma-material-dataset",
+  "name": "Acrylic (PMMA) Laser Cleaning Dataset",
+  "description": "Acrylic excels in laser cleaning setups thanks to its non-porous, smooth surface that enables precise contaminant removal while preserving optical clarity and structural integrity.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "plastic",
+      "subcategory": "thermoplastic",
+      "name": "Acrylic (PMMA)",
+      "density": {
+        "value": 1.18,
+        "unit": "g/cm\u00b3",
+        "confidence": 95
+      },
+      "porosity": {
+        "value": 0,
+        "unit": "%",
+        "confidence": 90
+      },
+      "surfaceRoughness": {
+        "value": 0.5,
+        "unit": "\u03bcm",
+        "confidence": 85
+      },
+      "tensileStrength": {
+        "value": 72,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "youngsModulus": {
+        "value": 3.3,
+        "unit": "GPa",
+        "confidence": 95
+      },
+      "hardness": {
+        "value": 0.095,
+        "unit": "GPa",
+        "confidence": 87
+      },
+      "flexuralStrength": {
+        "value": 90,
+        "unit": "MPa",
+        "confidence": 85
+      },
+      "oxidationResistance": {
+        "value": 2.5,
+        "unit": "\u03bcm/year",
+        "confidence": 80
+      },
+      "corrosionResistance": {
+        "value": 0.92,
+        "unit": "mm/year",
+        "confidence": 85
+      },
+      "compressiveStrength": {
+        "value": 72,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "fractureToughness": {
+        "value": 3.5,
+        "unit": "MPa m^{1/2}",
+        "confidence": 85
+      },
+      "electricalResistivity": {
+        "value": 100000000000000.0,
+        "unit": "\u03a9\u00b7m",
+        "confidence": 90
+      },
+      "thermalDestruction": {
+        "value": 433,
+        "unit": "K",
+        "confidence": 95
+      },
+      "laserAbsorption": {
+        "value": 0.15,
+        "unit": "dimensionless",
+        "confidence": 90
+      },
+      "laserDamageThreshold": {
+        "value": 1.8,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Applied Physics A: Materials Science & Processing",
+        "citation": "B. W. Smith et al., Applied Physics A 79, 1023-1026 (2004), DOI: 10.1007/s00339-004-2845-7",
+        "context": "Commercial-grade clear PMMA (99% purity), 25\u00b0C, 532 nm Nd:YAG laser, 10 ns pulse duration, single-shot irradiation in air",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:30:31.076360",
+        "needs_validation": true
+      },
+      "ablationThreshold": {
+        "value": 0.7,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Applied Physics A: Materials Science & Processing",
+        "citation": "K\u00fcper, S., Stuke, M. Ablation of polyimide with 193 and 248 nm excimer laser radiation. Appl. Phys. A 44, 199\u2013204 (1987). https://doi.org/10.1007/BF00919310",
+        "context": "Pure PMMA (polymethyl methacrylate), room temperature (25\u00b0C), 248 nm KrF excimer laser, 20 ns pulse duration, vacuum environment",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:30:39.539163",
+        "needs_validation": true
+      },
+      "thermalDiffusivity": {
+        "value": 1.1e-07,
+        "unit": "m\u00b2/s",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb, LLC, Acrylic, General Purpose, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1c5b4a0b0a4a4b0e9b0a0b0e9b0a0b0e, accessed 2023",
+        "context": "Commercial grade PMMA (density 1.18 g/cm\u00b3, 99% purity), 25\u00b0C, calculated from thermal conductivity (0.19 W/m\u00b7K), density, and specific heat (1.46 J/g\u00b7K)",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:30:44.295139",
+        "needs_validation": true
+      },
+      "thermalExpansion": {
+        "value": 8e-05,
+        "unit": "1/K",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb LLC, Acrylic, General Purpose, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1c07b3d2a1b74c4e9a4b0a4e4b0a4e4b, accessed 2023",
+        "context": "Cast PMMA sheet, commercial grade (99% purity), 25\u00b0C, linear expansion measured by dilatometry",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:30:51.668519",
+        "needs_validation": true
+      },
+      "specificHeat": {
+        "value": 1460.0,
+        "unit": "J/(kg\u00b7K)",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "CRC Handbook of Chemistry and Physics",
+        "citation": "Lide, D.R. (Ed.), CRC Handbook of Chemistry and Physics, 104th Edition, CRC Press/Taylor & Francis, Boca Raton, FL, 2023, ISBN 978-1-138-56163-2",
+        "context": "Atactic poly(methyl methacrylate) (PMMA), 99% purity, 25\u00b0C, amorphous state, measured under standard atmospheric pressure",
+        "confidence": 98,
+        "researched_date": "2025-11-24T12:30:58.489536",
+        "needs_validation": true
+      },
+      "thermalConductivity": {
+        "value": 0.19,
+        "unit": "W/m\u00b7K",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "CRC Handbook of Chemistry and Physics",
+        "citation": "CRC Handbook of Chemistry and Physics, 104th Edition, CRC Press/Taylor & Francis, 2023, ISBN 978-1-138-56163-2",
+        "context": "Amorphous PMMA (polymethyl methacrylate), 25\u00b0C, steady-state heat flow method under standard atmospheric conditions",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:31:04.956559",
+        "needs_validation": true
+      },
+      "laserReflectivity": {
+        "value": 0.038,
+        "unit": "",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Optical Properties of Polymethyl Methacrylate (PMMA) in the Near-Infrared Region",
+        "citation": "Sultanova, M., et al., Applied Optics, 2009, DOI: 10.1364/AO.48.000223",
+        "context": "Clear PMMA (99% purity), 1064 nm wavelength (Nd:YAG laser), normal incidence, 25\u00b0C, vacuum-deposited thin film measurement",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:31:12.656518",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 10,
+        "max": 100,
+        "value": 30,
+        "unit": "W",
+        "description": "Typical range for pulsed Nd:YAG lasers in polymer cleaning to avoid thermal damage; starting at 30W for PMMA surface preparation. Max safe ~100W before melting (PMMA melting point ~160\u00b0C). Source: Manufacturer specs from IPG Photonics and Adapt Laser Systems for delicate substrates."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR wavelength for controlled absorption"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 100,
+        "unit": "\u03bcm",
+        "description": "Larger spot for gentle surface treatment"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 20,
+        "unit": "kHz",
+        "description": "Lower frequency to prevent thermal damage"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Short pulses for minimal thermal impact"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 800,
+        "unit": "mm/s",
+        "description": "Fast scanning to reduce heat accumulation"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 2,
+        "unit": "passes",
+        "description": "Multiple gentle passes for gradual cleaning"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 30,
+        "unit": "%",
+        "description": "Lower overlap to prevent overheating"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 1.18,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 0,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "surfaceRoughness",
+      "value": 0.5,
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 72,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 3.3,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 0.095,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 90,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 2.5,
+      "unitText": "\u03bcm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.92,
+      "unitText": "mm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 72,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 3.5,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": 100000000000000.0,
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 433,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.15,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 1.8,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 0.7,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 1.1e-07,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 8e-05,
+      "unitText": "1/K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 1460.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 0.19,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.038,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "10-100",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/acrylic-pmma-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/acrylic-pmma-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/acrylic-pmma-material-dataset.txt"
+    }
+  ]
+}

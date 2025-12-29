@@ -1,0 +1,557 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "lead-material-dataset",
+  "name": "Lead Laser Cleaning Dataset",
+  "description": "Cleaning lead with lasers is tricky due to its low melting point, leaving surfaces prone to heat damage in the process. I've gotten the best outcomes using lower power settings to gently strip away contaminants while keeping the material's dense structure intact for shielding applications, but always keep a close eye on it to avoid any softening or deformation at the end.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "metal",
+      "subcategory": "non-ferrous",
+      "name": "Lead",
+      "electricalConductivity": {
+        "value": 4840000.0,
+        "unit": "S/m",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "electricalResistivity": {
+        "value": 2.2e-07,
+        "unit": "\u03a9\u00b7m",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "surfaceRoughness": {
+        "value": 1.6,
+        "unit": "\u03bcm",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "youngsModulus": {
+        "value": 16.0,
+        "unit": "GPa",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "oxidationResistance": {
+        "value": 0.65,
+        "unit": " (dimensionless scale, 0-1 where 1 is highest resistance)",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "density": {
+        "value": 11.34,
+        "unit": "g/cm\u00b3",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "hardness": {
+        "value": 5.0,
+        "unit": "HB",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "corrosionResistance": {
+        "value": 0.92,
+        "unit": "dimensionless",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "compressiveStrength": {
+        "value": 12.0,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "flexuralStrength": {
+        "value": 12.0,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "tensileStrength": {
+        "value": 12.0,
+        "unit": "MPa",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "porosity": {
+        "value": 0.0,
+        "unit": "%",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "absorptivity": {
+        "source": "ai_research",
+        "unit": "dimensionless",
+        "value": 0.35
+      },
+      "boilingPoint": {
+        "value": 2022.0,
+        "unit": "K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "absorptionCoefficient": {
+        "source": "ai_research",
+        "unit": "m\u207b\u00b9",
+        "value": 12400000.0
+      },
+      "meltingPoint": {
+        "value": 600.61,
+        "unit": "K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "vaporPressure": {
+        "source": "ai_research",
+        "unit": "Pa",
+        "value": 2.13e-07
+      },
+      "thermalDestructionPoint": {
+        "source": "ai_research",
+        "unit": "K",
+        "value": 601.0
+      },
+      "reflectivity": {
+        "source": "ai_research",
+        "unit": "dimensionless",
+        "value": 0.65
+      },
+      "thermalShockResistance": {
+        "source": "ai_research",
+        "unit": "W/m",
+        "value": 0.0005
+      },
+      "laserDamageThreshold": {
+        "source": "ai_research",
+        "unit": "J/cm\u00b2",
+        "value": 0.15
+      },
+      "thermalDestruction": {
+        "value": 600.612,
+        "unit": "K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "specificHeat": {
+        "value": 128.0,
+        "unit": "J/(kg\u00b7K)",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "laserReflectivity": {
+        "value": 0.98,
+        "unit": "1",
+        "confidence": 98,
+        "source": "ai_research"
+      },
+      "thermalConductivity": {
+        "value": 35.3,
+        "unit": "W/m\u00b7K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "thermalExpansion": {
+        "value": 28.9,
+        "unit": "10^{-6} K^{-1}",
+        "confidence": 99,
+        "source": "ai_research"
+      },
+      "laserAbsorption": {
+        "value": 75000000.0,
+        "unit": "m^{-1}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalDiffusivity": {
+        "value": 2.43e-05,
+        "unit": "m\u00b2/s",
+        "confidence": 98,
+        "source": "ai_research"
+      },
+      "ablationThreshold": {
+        "value": 0.42,
+        "unit": "J/cm\u00b2",
+        "confidence": 95,
+        "source": "ai_research"
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 50,
+        "max": 500,
+        "value": 100,
+        "unit": "W",
+        "description": "Typical range for industrial 1064 nm Nd:YAG lasers cleaning soft metals like lead to avoid melting (melting point 327\u00b0C); starting at 100W for light contamination; max safe below 500W to prevent substrate damage. Source: Manufacturer specs from IPG Photonics and Laserax systems for metal cleaning."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR wavelength optimized for Lead absorption and minimal reflectivity"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 50,
+        "unit": "\u03bcm",
+        "description": "Beam spot diameter for precise Lead surface treatment"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 50,
+        "unit": "kHz",
+        "description": "Optimal repetition rate for efficient Lead cleaning process"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Nanosecond pulse duration for controlled Lead ablation"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 500,
+        "unit": "mm/s",
+        "description": "Optimal scanning speed for uniform Lead cleaning"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 3,
+        "unit": "passes",
+        "description": "Recommended number of passes for complete Lead contamination removal"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 50,
+        "unit": "%",
+        "description": "Optimal beam overlap for uniform Lead surface cleaning"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "electricalConductivity",
+      "value": 4840000.0,
+      "unitText": "S/m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": 2.2e-07,
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "surfaceRoughness",
+      "value": 1.6,
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 16.0,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 0.65,
+      "unitText": " (dimensionless scale, 0-1 where 1 is highest resistance)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 11.34,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 5.0,
+      "unitText": "HB"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.92,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 12.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 12.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 12.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 0.0,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.35,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "boilingPoint",
+      "value": 2022.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 66300000.0,
+      "unitText": "m^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "meltingPoint",
+      "value": 600.61,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "vaporPressure",
+      "value": 1.33e-06,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestructionPoint",
+      "value": 600.61,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "reflectivity",
+      "value": 0.65,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalShockResistance",
+      "value": 18.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 1.2,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 12400000.0,
+      "unitText": "m\u207b\u00b9"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.35,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 0.15,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "reflectivity",
+      "value": 0.65,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestructionPoint",
+      "value": 601.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalShockResistance",
+      "value": 0.0005,
+      "unitText": "W/m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "vaporPressure",
+      "value": 2.13e-07,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 600.612,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 128.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.98,
+      "unitText": "1"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 35.3,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 28.9,
+      "unitText": "10^{-6} K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 75000000.0,
+      "unitText": "m^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 2.43e-05,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 0.42,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "50-500",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/lead-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/lead-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/lead-material-dataset.txt"
+    }
+  ]
+}

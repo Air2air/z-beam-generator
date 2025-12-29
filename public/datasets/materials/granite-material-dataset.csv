@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,stone,,
+subcategory,igneous,,
+name,Granite,,
+fractureToughness,1.2,MPa√m,
+youngsModulus,50000000000.0,Pa,
+oxidationResistance,0.98,dimensionless,
+density,2700.0,kg/m³,
+hardness,6.5,Mohs,
+corrosionResistance,9.7,"dimensionless (corrosion resistance index, scale 0-10)",
+compressiveStrength,211.0,MPa,
+flexuralStrength,15.0,MPa,
+tensileStrength,10.5,MPa,
+porosity,0.6,%,
+laserDamageThreshold,8,J/cm²,
+absorptivity,0.1,dimensionless,
+absorptionCoefficient,100000,m⁻¹,
+thermalShockResistance,1.5,MW/m,
+reflectivity,0.9,dimensionless,
+thermalDestructionPoint,1500,K,
+vaporPressure,1,Pa,
+thermalDestruction,773.0,K,
+specificHeat,790.0,J/kg·K,
+laserReflectivity,0.35,dimensionless,
+thermalConductivity,2.79,W/m·K,
+thermalExpansion,8e-06,K^{-1},
+laserAbsorption,0.42,dimensionless,
+thermalDiffusivity,1.32e-06,m²/s,
+ablationThreshold,1.2,J/cm²,
+power,50-300,W,Typical range for 1064 nm pulsed lasers in stone cleaning to avoid thermal damage to granite's low thermal conductivity (~1.5 W/m·K); starting at 100W for light contamination. Max safe below granite's damage threshold (~400°C melting point onset). Source: IPG Photonics YLR series specs and study in Optics and Lasers in Engineering (2018) on stone ablation.
+wavelength,355-10640,nm,Near-infrared wavelength optimized for granite mineral absorption
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning control
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without excessive thermal buildup

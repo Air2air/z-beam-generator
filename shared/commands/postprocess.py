@@ -85,19 +85,29 @@ class PostprocessCommand:
         self.field = field
         self.phrase_validator = ForbiddenPhraseValidator()
         
-        # Initialize API client and evaluator
+        # Initialize API client
         self.api_client = create_api_client()
-        self.evaluator = SubjectiveEvaluator(self.api_client)
         
-        # Create domain-specific generator
-        domain_generator = Generator(api_client=self.api_client, domain=domain)
+        # Use FieldRouter to determine generator type
+        from generation.field_router import FieldRouter
         
-        # Create evaluated generator
-        self.generator = QualityEvaluatedGenerator(
-            api_client=self.api_client,
-            subjective_evaluator=self.evaluator
-        )
-        self.generator.generator = domain_generator
+        self.field_type = FieldRouter.get_field_type(domain, field)
+        
+        if self.field_type == 'text':
+            # Text field - use full quality pipeline
+            self.evaluator = SubjectiveEvaluator(self.api_client)
+            domain_generator = Generator(api_client=self.api_client, domain=domain)
+            
+            self.generator = QualityEvaluatedGenerator(
+                api_client=self.api_client,
+                subjective_evaluator=self.evaluator
+            )
+            self.generator.generator = domain_generator
+        
+        elif self.field_type == 'data':
+            # Data field - use simple generator
+            self.generator = FieldRouter._create_data_generator(domain, field, self.api_client)
+            logger.info(f"Using simple data generator for '{field}' (no quality pipeline)")
     
     def _load_source_data(self, item_id: str) -> Dict[str, Any]:
         """
@@ -371,39 +381,77 @@ class PostprocessCommand:
             print(f"⚠️  Field '{self.field}' is EMPTY for {item_id}")
             print(f"📊 POLICY: Research and generate new content...")
             
-            # Generate new content using standard generation
-            # Note: Pass item_id (slug/key) not display name - generator expects ID
-            result = self.generator.generate(
-                material_name=item_id,
-                component_type=self.field,
-                author_id=item_data.get('author', {}).get('id')
-            )
-            
-            if result.success:
-                if not dry_run:
-                    self._save_to_source_data(item_id, result.content)
-                    print(f"✅ Generated and saved new content to SOURCE DATA ({len(result.content)} chars)")
-                    print(f"⚠️  Run `python3 run.py --export --domain {self.domain}` to update frontmatter")
-                else:
-                    print(f"✅ Generated new content ({len(result.content)} chars) [DRY RUN - not saved]")
+            # Route to appropriate generator based on field type
+            if self.field_type == 'text':
+                # Text field - use quality pipeline
+                print(f"   • Using QualityEvaluatedGenerator (voice + quality validation)")
+                result = self.generator.generate(
+                    material_name=item_id,
+                    component_type=self.field,
+                    author_id=item_data.get('author', {}).get('id')
+                )
                 
-                return {
-                    'item': item_id,
-                    'field': self.field,
-                    'action': 'GENERATED_NEW',
-                    'improved': True,
-                    'new_content': result.content,
-                    'dry_run': dry_run
-                }
-            else:
-                print(f"❌ Failed to generate new content: {result.error_message}")
-                return {
-                    'item': item_id,
-                    'field': self.field,
-                    'action': 'GENERATION_FAILED',
-                    'improved': False,
-                    'error': result.error_message
-                }
+                if result.success:
+                    content = result.content
+                    if not dry_run:
+                        self._save_to_source_data(item_id, content)
+                        print(f"✅ Generated and saved new content to SOURCE DATA ({len(content)} chars)")
+                        print(f"⚠️  Run `python3 run.py --export --domain {self.domain}` to update frontmatter")
+                    else:
+                        print(f"✅ Generated new content ({len(content)} chars) [DRY RUN - not saved]")
+                    
+                    return {
+                        'item': item_id,
+                        'field': self.field,
+                        'action': 'GENERATED_NEW',
+                        'improved': True,
+                        'new_content': content,
+                        'dry_run': dry_run
+                    }
+                else:
+                    print(f"❌ Failed to generate new content: {result.error_message}")
+                    return {
+                        'item': item_id,
+                        'field': self.field,
+                        'action': 'GENERATION_FAILED',
+                        'improved': False,
+                        'error': result.error_message
+                    }
+            
+            elif self.field_type == 'data':
+                # Data field - use simple generator
+                print(f"   • Using simple data generator (research + validate, no quality pipeline)")
+                result = self.generator.generate(item_id, dry_run=dry_run)
+                
+                if result['success']:
+                    value = result['value']
+                    if result.get('skipped'):
+                        print(f"⏭️  Field already populated, skipped")
+                    elif not dry_run:
+                        print(f"✅ Generated and saved {self.field} to SOURCE DATA")
+                        print(f"   Value: {value}")
+                        print(f"⚠️  Run `python3 run.py --export --domain {self.domain}` to update frontmatter")
+                    else:
+                        print(f"✅ Generated {self.field} [DRY RUN - not saved]")
+                        print(f"   Value: {value}")
+                    
+                    return {
+                        'item': item_id,
+                        'field': self.field,
+                        'action': 'GENERATED_NEW',
+                        'improved': True,
+                        'new_value': value,
+                        'dry_run': dry_run
+                    }
+                else:
+                    print(f"❌ Failed to generate {self.field}: {result.get('error')}")
+                    return {
+                        'item': item_id,
+                        'field': self.field,
+                        'action': 'GENERATION_FAILED',
+                        'improved': False,
+                        'error': result.get('error')
+                    }
         
         # Existing content - evaluate using pipeline's QualityAnalyzer
         print(f"📄 Current content: {len(existing_content)} chars")
@@ -637,6 +685,12 @@ class PostprocessCommand:
         print(f"Dry run: {dry_run}")
         print(f"{'='*80}\n")
         
+        # Guard against zero items
+        if len(items) == 0:
+            print(f"⚠️  No items found in domain '{self.domain}'")
+            print(f"   Check data_root_key in domains/{self.domain}/config.yaml")
+            return []
+        
         results = []
         improved_count = 0
         failed_count = 0
@@ -670,28 +724,47 @@ class PostprocessCommand:
                 })
                 failed_count += 1
         
-        # Final summary
+        # Final summary (guarded against zero division)
         print(f"\n{'='*80}")
         print(f"📊 FINAL SUMMARY")
         print(f"{'='*80}")
         print(f"Total processed: {len(items)}")
-        print(f"✅ Improved: {improved_count} ({improved_count/len(items)*100:.1f}%)")
-        print(f"⚠️  Kept original: {len(items) - improved_count - failed_count}")
-        print(f"❌ Failed: {failed_count}")
+        if len(items) > 0:
+            print(f"✅ Improved: {improved_count} ({improved_count/len(items)*100:.1f}%)")
+            print(f"⚠️  Kept original: {len(items) - improved_count - failed_count}")
+            print(f"❌ Failed: {failed_count}")
         print(f"{'='*80}\n")
         
         return results
     
     def _list_items_with_field(self) -> List[str]:
-        """List all items in domain that have this field"""
-        frontmatter_dir = f"frontmatter/{self.domain}"
-        items = []
+        """
+        List all items in domain that have this field.
         
-        for yaml_file in Path(frontmatter_dir).glob("*.yaml"):
-            with open(yaml_file, 'r', encoding='utf-8') as f:
-                data = yaml.safe_load(f)
-                # Get the compound ID (use full ID as stored in source YAML)
-                compound_id = data.get('id', yaml_file.stem)
-                items.append(compound_id)
+        🚨 MANDATORY: Reads from SOURCE DATA (data/*.yaml), NOT frontmatter
+        Returns item IDs/keys as they exist in source YAML files
+        """
+        data_path = self._get_data_path()
         
-        return sorted(items)
+        if not data_path.exists():
+            print(f"⚠️  Source data file not found: {data_path}")
+            return []
+        
+        # Load source data
+        with open(data_path, 'r', encoding='utf-8') as f:
+            all_data = yaml.safe_load(f)
+        
+        # Get root key from config
+        config = self._load_domain_config()
+        data_root_key = config.get('data_root_key', self.domain)
+        
+        # Get items dict
+        items_dict = all_data.get(data_root_key, {})
+        
+        if not items_dict:
+            print(f"⚠️  No items found under key '{data_root_key}' in {data_path}")
+            print(f"   Available keys: {list(all_data.keys())}")
+            return []
+        
+        # Return all item IDs (keys from the dict)
+        return sorted(items_dict.keys())

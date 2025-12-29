@@ -1,0 +1,58 @@
+Breccia Laser Cleaning Dataset
+================================================================================
+
+Description: Breccia sets itself apart from conglomerates and other clastic rocks with its sharp, angular fragments, indicating little transport and swift deposition, in contrast to the rounded, worn clasts of its smoother siblings.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : stone
+subcategory                   : sedimentary
+name                          : Breccia
+fractureToughness             : 0.85 MPa·m^{1/2}
+density                       : 2710.0 kg/m³
+oxidationResistance           : 0.87 dimensionless (resistance index)
+youngsModulus                 : 32.5 GPa
+hardness                      : 3.5 Mohs
+compressiveStrength           : 125.0 MPa
+tensileStrength               : 3.2 MPa
+flexuralStrength              : 11.2 MPa
+corrosionResistance           : 0.85 dimensionless (resistance index)
+porosity                      : 0.15 fraction
+laserDamageThreshold          : 2.5 J/cm²
+absorptivity                  : 0.75 dimensionless
+absorptionCoefficient         : 5000000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.25 dimensionless
+thermalDestructionPoint       : 1073 K
+vaporPressure                 : 10 Pa
+thermalDestruction            : 1673.0 K
+laserReflectivity             : 0.22 
+thermalExpansion              : 8.2e-06 K^{-1}
+thermalConductivity           : 2.3 W/m·K
+specificHeat                  : 880.0 J/(kg·K)
+laserAbsorption               : 4500.0 cm^{-1}
+thermalDiffusivity            : 1.05e-06 m²/s
+ablationThreshold             : 1.45 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-300 W
+                                Typical range for industrial cleaning of stone materials like Breccia (carbonate-based rock similar to marble) using 1064 nm lasers to remove contaminants without substrate damage; starting at 100 W allows controlled ablation. Max safe ~300 W to avoid cracking due to low thermal conductivity (~2 W/m·K). Source: Manufacturer specs from IPG Photonics fiber lasers for stone cleaning; academic papers on marble ablation (e.g., Pouli et al., Applied Physics A, 2010).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Breccia mineral absorption characteristics
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Short pulse duration for efficient ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for efficient area coverage
+passCount                     : 1-10 passes
+                                Recommended number of cleaning passes for complete surface treatment
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning results
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

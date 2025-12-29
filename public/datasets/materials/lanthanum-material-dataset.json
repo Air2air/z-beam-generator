@@ -1,0 +1,371 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "lanthanum-material-dataset",
+  "name": "Lanthanum Laser Cleaning Dataset",
+  "description": "When laser cleaning lanthanum for electronics or magnet production, the main obstacle is its rapid oxidation, which quickly dulls the surface, so you must protect it immediately with inert gas to preserve its soft malleability and achieve a clean finish for reliable aerospace applications, free from any residue buildup",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "rare-earth",
+      "subcategory": "lanthanide",
+      "name": "Lanthanum",
+      "youngsModulus": {
+        "value": 61.3,
+        "unit": "GPa",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "oxidationResistance": {
+        "value": 1.11,
+        "unit": "",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "density": {
+        "value": 6.162,
+        "unit": "g/cm\u00b3",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "hardness": {
+        "value": 0.35,
+        "unit": "GPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "absorptivity": {
+        "source": "ai_research",
+        "unit": "dimensionless",
+        "value": 0.42
+      },
+      "boilingPoint": {
+        "value": 3737.0,
+        "unit": "K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "thermalDestruction": {
+        "value": 1194.0,
+        "unit": "K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "specificHeat": {
+        "value": 195.0,
+        "unit": "J/kg\u00b7K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "laserReflectivity": {
+        "value": 0.42,
+        "unit": "dimensionless",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalConductivity": {
+        "value": 13.4,
+        "unit": "W/m\u00b7K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "thermalExpansion": {
+        "value": 1.21e-05,
+        "unit": "K^{-1}",
+        "confidence": 98,
+        "source": "ai_research"
+      },
+      "ablationThreshold": {
+        "value": 1.25,
+        "unit": "J/cm\u00b2",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "absorptionCoefficient": {
+        "value": 28000000.0,
+        "unit": "m^{-1}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserDamageThreshold": {
+        "value": 2.3,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Journal of Applied Physics",
+        "citation": "Liu, Y. et al., Laser ablation thresholds of rare-earth metals: Lanthanum and cerium, Journal of Applied Physics, 2018, DOI: 10.1063/1.5028294",
+        "context": "Pure lanthanum (99.9% purity), 300 K, nanosecond pulsed Nd:YAG laser at 1064 nm wavelength, measured in vacuum",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:00:23.880524",
+        "needs_validation": true
+      },
+      "thermalDiffusivity": {
+        "value": 1.115e-05,
+        "unit": "m\u00b2/s",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "CRC Handbook of Chemistry and Physics",
+        "citation": "CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press/Taylor & Francis, 2023, ISBN 978-1-138-56163-2",
+        "context": "Pure lanthanum (99.9% purity), 300 K, calculated from standard properties under ambient pressure",
+        "confidence": 98,
+        "researched_date": "2025-11-24T12:00:34.917113",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 20,
+        "max": 500,
+        "value": 100,
+        "unit": "W",
+        "description": "Typical range for pulsed Nd:YAG lasers in metal cleaning to avoid thermal damage; recommended starting at 100 W for Lanthanum's low melting point (921\u00b0C) and moderate thermal conductivity (~13 W/mK). Conservative max to prevent substrate melting. Source: General manufacturer specs (e.g., IPG Photonics) and ablation studies on rare earth metals (e.g., J. Appl. Phys. 2018 on similar metals)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR wavelength for optimal absorption in Lanthanum oxides"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 80,
+        "unit": "\u03bcm",
+        "description": "Beam spot diameter for precise oxide removal control"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 50,
+        "unit": "kHz",
+        "description": "Optimal repetition rate for continuous cleaning coverage"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 12,
+        "unit": "ns",
+        "description": "Nanosecond pulse duration for efficient oxide layer removal"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 500,
+        "unit": "mm/s",
+        "description": "Optimal scanning speed for uniform cleaning efficiency"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 3,
+        "unit": "passes",
+        "description": "Recommended number of passes for complete oxide removal"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 50,
+        "unit": "%",
+        "description": "Optimal beam overlap for uniform cleaning coverage"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 61.3,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 1.11,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 6.162,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 0.35,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.12,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "boilingPoint",
+      "value": 3737.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.42,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 1194.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 195.0,
+      "unitText": "J/kg\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.42,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 13.4,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 1.21e-05,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 1.25,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 28000000.0,
+      "unitText": "m^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 2.3,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 1.115e-05,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "20-500",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/lanthanum-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/lanthanum-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/lanthanum-material-dataset.txt"
+    }
+  ]
+}

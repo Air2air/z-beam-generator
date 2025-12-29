@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,glass,,
+subcategory,soda-lime,,
+name,Lead Crystal,,
+electricalResistivity,3160000000.0,Ω·m,
+fractureToughness,0.78,MPa m^{1/2},
+youngsModulus,58000000000.0,Pa,
+oxidationResistance,0.98,dimensionless (normalized scale 0-1),
+density,3.08,g/cm³,
+hardness,4.2,GPa,
+corrosionResistance,1.2,ml of 0.01 M HCl / 10 g glass,
+compressiveStrength,820.0,MPa,
+flexuralStrength,42.0,MPa,
+tensileStrength,41.0,MPa,
+laserDamageThreshold,8,J/cm²,
+absorptivity,0.05,dimensionless,
+absorptionCoefficient,5000,m⁻¹,
+thermalShockResistance,1.2,MW/m,
+reflectivity,0.08,dimensionless,
+thermalDestructionPoint,1100,K,
+vaporPressure,0.01,Pa,
+thermalDestruction,873.0,K,
+specificHeat,680.0,J/(kg·K),
+laserReflectivity,0.0459,fraction,
+thermalConductivity,0.9,W/m·K,
+thermalExpansion,8.9e-06,K^{-1},
+laserAbsorption,50.0,m^{-1},
+thermalDiffusivity,3.33e-07,m²/s,
+ablationThreshold,2.1,J/cm²,
+power,10-100,W,"Typical range for delicate glass-like materials to avoid thermal damage; starting low prevents cracking in lead crystal (thermal conductivity ~1 W/mK, melting point ~500-600°C). Max safe based on avoiding substrate ablation. Source: IPG Photonics laser cleaning guidelines for optics."
+wavelength,355-10640,nm,Near-IR wavelength for optimal absorption in Lead Crystal with minimal transmission
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning control on Lead Crystal surfaces
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Recommended number of cleaning passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning pattern

@@ -1,0 +1,63 @@
+Hafnium Laser Cleaning Dataset
+================================================================================
+
+Description: We've found hafnium distinguishes itself from other non-ferrous metals through its exceptional resistance to extreme heat, allowing sustained integrity in demanding aerospace and nuclear environments without deformation, so monitor exposure to oxidizing conditions to preserve its protective oxide layer
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : non-ferrous
+name                          : Hafnium
+electricalConductivity        : 3250000.0 S/m
+electricalResistivity         : 5.5e-08 Ω·m
+fractureToughness             : 2.0 MPa√m
+surfaceRoughness              : 0.8 μm
+youngsModulus                 : 78.0 GPa
+oxidationResistance           : 500.0 °C
+density                       : 13.31 g/cm³
+hardness                      : 160.0 HV
+corrosionResistance           : 0.92 
+compressiveStrength           : 241.0 MPa
+flexuralStrength              : 380.0 MPa
+tensileStrength               : 380.0 MPa
+porosity                      : 0.0 %
+absorptivity                  : 0.42 dimensionless
+boilingPoint                  : 4876.0 K
+absorptionCoefficient         : 3420000.0 m⁻¹
+meltingPoint                  : 2506.0 K
+vaporPressure                 : 0.00133 Pa
+thermalDestructionPoint       : 2222.0 K
+reflectivity                  : 0.56 dimensionless
+thermalShockResistance        : 1.2 MW/m
+laserDamageThreshold          : 3.2 J/cm²
+thermalDestruction            : 2506.0 K
+specificHeat                  : 144.2 J/(kg·K)
+laserReflectivity             : 0.42 dimensionless
+thermalConductivity           : 23.0 W/m·K
+thermalExpansion              : 5.9 10^{-6}/K
+laserAbsorption               : 0.35 dimensionless
+thermalDiffusivity            : 1.222e-05 m²/s
+ablationThreshold             : 2.15 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for industrial cleaning of reflective refractory metals like Hafnium using 1064 nm lasers; starting at 200 W balances efficiency and safety to avoid thermal damage given Hafnium's high melting point (2233°C) and reflectivity. Max limited to prevent substrate ablation. Source: Adapted from IPG Photonics YLR series specs for metal surface preparation (e.g., 100-1000 W systems).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Hafnium's absorption characteristics
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient oxide layer ablation
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform surface treatment
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete oxide removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

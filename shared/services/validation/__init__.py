@@ -7,7 +7,7 @@ Part of system consolidation to organize validation functionality.
 
 Services:
 - ValidationOrchestrator: Unified validation coordination
-- UnifiedSchemaValidator: Single schema validation system
+- SchemaValidator: Single schema validation system
 
 Last Updated: October 22, 2025
 """
@@ -21,8 +21,8 @@ from .orchestrator import (
 )
 from .schema_validator import (
     SchemaType,
-    UnifiedSchemaValidator,
-    UnifiedValidationResult,
+    SchemaValidator,
+    ValidationResult,
     ValidationMode,
     validate_categories_yaml,
     validate_frontmatter,
@@ -32,11 +32,11 @@ from .schema_validator import (
 __all__ = [
     # Primary Services
     'ValidationOrchestrator',
-    'UnifiedSchemaValidator',
+    'SchemaValidator',
     
     # Result Types
     'ComprehensiveValidationResult',
-    'UnifiedValidationResult',
+    'ValidationResult',
     
     # Enums
     'ValidationMode',

@@ -31,7 +31,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from shared.utils.yaml_loader import load_yaml_fast as load_yaml, dump_yaml_fast as save_yaml
 from shared.api.client_factory import create_api_client
-from domains.materials.coordinator import UnifiedMaterialsGenerator
+from domains.materials.coordinator import MaterialsCoordinator
 
 
 # Domain linkage field mappings
@@ -95,7 +95,7 @@ class LinkageDescriptionGenerator:
         
         # Use domain coordinator for materials domain
         if domain == 'materials':
-            self.generator = UnifiedMaterialsGenerator(self.api_client)
+            self.generator = MaterialsCoordinator(self.api_client)
         else:
             # For other domains, will need similar coordinators
             raise NotImplementedError(f"Domain '{domain}' not yet supported. Only 'materials' is currently implemented.")

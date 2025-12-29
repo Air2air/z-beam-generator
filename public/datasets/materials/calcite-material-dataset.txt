@@ -1,0 +1,58 @@
+Calcite Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning calcite, I've seen its perfect cleavage cause clean splits if you're not careful, but this very trait enables precise contaminant removal without harming the underlying stone structure.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : stone
+subcategory                   : sedimentary
+name                          : Calcite
+fractureToughness             : 0.25 MPa√m
+density                       : 2710.0 kg/m³
+oxidationResistance           : 0.98 dimensionless (relative resistance scale 0-1)
+youngsModulus                 : 69.0 GPa
+hardness                      : 3.0 Mohs
+compressiveStrength           : 150.0 MPa
+tensileStrength               : 23.0 MPa
+flexuralStrength              : 15.0 MPa
+corrosionResistance           : 0.25 dimensionless
+porosity                      : 0.6 %
+laserDamageThreshold          : 10 J/cm²
+absorptivity                  : 0.3 dimensionless
+absorptionCoefficient         : 10000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.06 dimensionless
+thermalDestructionPoint       : 1100 K
+vaporPressure                 : 100 Pa
+thermalDestruction            : 1098.0 K
+laserReflectivity             : 0.048 
+thermalExpansion              : 1.23e-05 K^{-1}
+thermalConductivity           : 2.9 W/m·K
+specificHeat                  : 831.3 J/kg·K
+laserAbsorption               : 800000.0 m^{-1}
+thermalDiffusivity            : 1.26e-06 m²/s
+ablationThreshold             : 2.1 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-200 W
+                                Typical range for ns-pulsed Nd:YAG lasers in stone cleaning applications; starting at 50W to avoid thermal damage to calcite (decomposition ~825°C). Max limited to prevent substrate ablation. Source: IPG Photonics YLR series specs and studies on carbonate cleaning (e.g., J. Cult. Herit. 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for efficient Calcite absorption with minimal transmission
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning resolution on Calcite surfaces
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of Calcite surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive energy deposition
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

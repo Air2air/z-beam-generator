@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,glass,,
+subcategory,soda-lime,,
+name,Sapphire Glass,,
+electricalResistivity,1000000000000.0,Ω·m,
+fractureToughness,2.2,MPa√m,
+youngsModulus,435.0,GPa,
+oxidationResistance,2317.0,K,
+density,3980.0,kg/m³,
+hardness,21.6,GPa,
+corrosionResistance,0.995,dimensionless,
+compressiveStrength,2100.0,MPa,
+flexuralStrength,400.0,MPa,
+tensileStrength,275.0,MPa,
+laserDamageThreshold,12,J/cm²,
+absorptivity,0.03,dimensionless,
+absorptionCoefficient,5,m⁻¹,
+thermalShockResistance,2.5,MW/m,
+reflectivity,0.08,dimensionless,
+thermalDestructionPoint,2300,K,
+vaporPressure,0.1,Pa,
+thermalDestruction,2323.0,K,
+specificHeat,775.0,J/kg·K,
+laserReflectivity,0.077,dimensionless,
+thermalConductivity,30.0,W/m·K,
+thermalExpansion,5.3e-06,K^{-1},
+laserAbsorption,5.0,m^{-1},
+thermalDiffusivity,1.07e-05,m²/s,
+ablationThreshold,2.8,J/cm²,
+power,20-200,W,"Typical range for industrial Nd:YAG lasers at 1064 nm used in delicate substrate cleaning; starting at 50 W balances efficiency and safety for sapphire's high melting point (~2040°C) and low absorption at this wavelength, avoiding thermal damage (IPG Photonics laser cleaning systems specs; J. Laser Appl. 2018 study on oxide ceramics)."
+wavelength,355-10640,nm,Optimal wavelength for Sapphire Glass processing with good absorption
+spotSize,0.1-500,μm,Optimal spot size for precision cleaning of Sapphire Glass surfaces
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth,0.1-1000,ns,Optimal pulse width for controlled ablation of contaminants
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Optimal number of passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal overlap ratio between adjacent laser tracks

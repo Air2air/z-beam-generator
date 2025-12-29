@@ -1,0 +1,29 @@
+# Power Intensity Research Prompt
+
+## Context
+Generate laser power intensity specifications for {{material_name}} based on material properties and laser cleaning requirements.
+
+## Task
+Research and provide optimal laser power intensity ranges for cleaning {{material_name}}. Consider:
+
+1. Material thermal properties and damage thresholds
+2. Typical contamination types and bonding strength
+3. Industry standards and best practices
+4. Safety margins and recommended parameters
+
+## Output Format
+Provide ONLY the numerical range in this exact format:
+```
+min_intensity: [number] W/cm²
+max_intensity: [number] W/cm²
+```
+
+## Requirements
+- Research actual industry specifications
+- Base on material thermal conductivity and damage threshold
+- Consider typical applications
+- NO FALLBACKS - Research specific to this material
+- Provide conservative safe ranges
+
+## Voice Instructions
+{voice_instruction}

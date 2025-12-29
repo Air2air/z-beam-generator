@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,alloy,,
+name,Tungsten,,
+youngsModulus,411.0,GPa,
+oxidationResistance,773.0,K,
+density,19.25,g/cm³,
+hardness,370.0,HV,
+corrosionResistance,0.96,dimensionless (normalized resistance index),
+compressiveStrength,2760.0,MPa,
+flexuralStrength,1200.0,MPa,
+tensileStrength,1510.0,MPa,
+fractureToughness,5.2,MPa m^{1/2},
+porosity,0.0,%,
+electricalResistivity,5.6e-08,Ω m,
+absorptivity,0.4,dimensionless,
+boilingPoint,6203.0,K,
+absorptionCoefficient,60000000,m⁻¹,
+electricalConductivity,18200000.0,S/m,
+meltingPoint,3695.0,K,
+vaporPressure,10,Pa,
+thermalDestructionPoint,3695,K,
+reflectivity,0.6,dimensionless,
+thermalShockResistance,3,MW/m,
+surfaceRoughness,0.8,μm,
+laserDamageThreshold,8,J/cm²,
+thermalDestruction,3695.0,K,
+specificHeat,132.0,J/kg·K,
+laserReflectivity,0.6,dimensionless,
+thermalConductivity,174.0,W/m·K,
+thermalExpansion,4.5e-06,K^{-1},
+laserAbsorption,0.4,dimensionless,
+thermalDiffusivity,6.8e-05,m²/s,
+ablationThreshold,1.8,J/cm²,
+power,50-2000,W,"Typical range for industrial 1064 nm fiber lasers used in metal cleaning; starting at 200 W balances efficiency and safety for reflective Tungsten to avoid excessive reflection losses. Max safe below substrate melting threshold (~3422°C). Source: IPG Photonics YLR series specs and studies on laser cleaning of refractory metals (e.g., J. Laser Appl. 2018)."
+wavelength,355-10640,nm,Near-IR wavelength optimized for Tungsten absorption and thermal processing
+spotSize,0.1-500,μm,Focused spot size for precise cleaning resolution
+repetitionRate,1-200,kHz,High repetition rate for efficient cleaning coverage
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without thermal damage

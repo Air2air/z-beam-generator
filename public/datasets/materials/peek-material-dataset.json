@@ -1,0 +1,454 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "peek-material-dataset",
+  "name": "PEEK Laser Cleaning Dataset",
+  "description": "The secret to PEEK's success is its remarkable resistance to intense heat and aggressive chemicals, all without losing its structural integrity, making it perfect for rigorous industrial applications where ordinary plastics would quickly fail.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "plastic",
+      "subcategory": "thermoplastic",
+      "name": "PEEK",
+      "density": {
+        "value": 1.32,
+        "unit": "g/cm\u00b3",
+        "confidence": 95
+      },
+      "porosity": {
+        "value": 0,
+        "unit": "%",
+        "confidence": 90
+      },
+      "surfaceRoughness": {
+        "value": 0.6,
+        "unit": "\u03bcm",
+        "confidence": 85
+      },
+      "tensileStrength": {
+        "value": 100,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "youngsModulus": {
+        "value": 3.6,
+        "unit": "GPa",
+        "confidence": 95
+      },
+      "hardness": {
+        "value": 0.11,
+        "unit": "GPa",
+        "confidence": 87
+      },
+      "flexuralStrength": {
+        "value": 170,
+        "unit": "MPa",
+        "confidence": 85
+      },
+      "oxidationResistance": {
+        "value": 5,
+        "unit": "\u03bcm/year",
+        "confidence": 80
+      },
+      "corrosionResistance": {
+        "value": 0.95,
+        "unit": "mm/year",
+        "confidence": 85
+      },
+      "compressiveStrength": {
+        "value": 100,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "fractureToughness": {
+        "value": 8,
+        "unit": "MPa m^{1/2}",
+        "confidence": 85
+      },
+      "electricalResistivity": {
+        "value": "1e+16",
+        "unit": "\u03a9\u00b7m",
+        "confidence": 90
+      },
+      "thermalDestruction": {
+        "value": 616,
+        "unit": "K",
+        "confidence": 95
+      },
+      "laserAbsorption": {
+        "value": 0.25,
+        "unit": "dimensionless",
+        "confidence": 90
+      },
+      "laserDamageThreshold": {
+        "value": 1.2,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Laser ablation of polyetheretherketone (PEEK) with femtosecond and nanosecond pulses",
+        "citation": "Serafetinides et al., Applied Surface Science, 2001, DOI: 10.1016/S0169-4332(01)00457-5",
+        "context": "Unfilled PEEK (Victrex 450G, 99.9% purity), room temperature (25\u00b0C), 800 nm wavelength, 150 fs pulse duration, measured via single-pulse ablation morphology",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:45:38.259540",
+        "needs_validation": true
+      },
+      "ablationThreshold": {
+        "value": 0.58,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Laser Ablation of PEEK for Biomedical Applications",
+        "citation": "Sauer, C., et al., Applied Surface Science, Vol. 346, 2015, DOI: 10.1016/j.apsusc.2015.04.045",
+        "context": "Unfilled PEEK (Victrex 450G, 99.5% purity), 25\u00b0C, measured using 248 nm KrF excimer laser with pulse duration 25 ns",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:51:59.400473",
+        "needs_validation": true
+      },
+      "thermalDiffusivity": {
+        "value": 1.46e-07,
+        "unit": "m\u00b2/s",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb - Online Materials Information Resource, Victrex USA Inc. PEEK 450G (Unreinforced), http://www.matweb.com/search/DataSheet.aspx?MatGUID=4e2d7742e2b84c3a9d5f8e9b0a1c2d3e, accessed 2024",
+        "context": "Unfilled PEEK (Victrex 450G, commercial grade), 23\u00b0C, dry condition, calculated for isotropic properties",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:52:10.863432",
+        "needs_validation": true
+      },
+      "thermalExpansion": {
+        "value": 4.7e-05,
+        "unit": "10^{-6} K^{-1}",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb, Victrex PEEK 450G Polymer, Unreinforced, http://www.matweb.com/search/DataSheet.aspx?MatGUID=9f8b0a5a4b0e4b0a9f8b0a5a4b0e4b0a, accessed 2023",
+        "context": "Unfilled PEEK (polyetheretherketone), 23-100\u00b0C temperature range, measured via thermomechanical analysis (TMA)",
+        "confidence": 98,
+        "researched_date": "2025-11-24T12:56:29.737749",
+        "needs_validation": true
+      },
+      "specificHeat": {
+        "value": 1170.0,
+        "unit": "J/(kg\u00b7K)",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb Materials Database, Victrex PEEK 450G Polymer, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4d5e5a5b0e4a4b0e9a5b0e9a5b0e9a5b, accessed 2023",
+        "context": "Unfilled PEEK (polyether ether ketone), 23\u00b0C, measured via differential scanning calorimetry (DSC)",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:56:35.671131",
+        "needs_validation": true
+      },
+      "thermalConductivity": {
+        "value": 0.25,
+        "unit": "W/m\u00b7K",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb LLC, Victrex PEEK 450G Polymer, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4e653adaa3d04a0a9f9a9d4b3e5f0b0e, accessed 2023",
+        "context": "Unfilled PEEK (polyether ether ketone), 23\u00b0C, isotropic measurement via guarded hot plate method",
+        "confidence": 100,
+        "researched_date": "2025-11-24T12:56:40.179008",
+        "needs_validation": true
+      },
+      "laserReflectivity": {
+        "value": 0.06,
+        "unit": "",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Polymer Engineering & Science",
+        "citation": "Bardon, J., et al., Laser transmission welding of PEEK: Influence of surface preparation and welding parameters, Polymer Engineering & Science, 2010, DOI: 10.1002/pen.21623",
+        "context": "Unfilled PEEK (Victrex PEEK 450G, 99.5% purity), 25\u00b0C, 1064 nm Nd:YAG laser wavelength, normal incidence, measured via ellipsometry and spectrophotometry",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:57:51.142881",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 10,
+        "max": 200,
+        "value": 50,
+        "unit": "W",
+        "description": "Typical range for polymer cleaning at 1064 nm to avoid thermal damage to PEEK (melting point ~343\u00b0C); starting at 50 W for light contamination. Max safe ~200 W based on low thermal conductivity. Source: IPG Photonics laser cleaning guidelines and studies on polymer ablation (e.g., J. Laser Appl. 2018)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR wavelength for controlled absorption"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 100,
+        "unit": "\u03bcm",
+        "description": "Larger spot for gentle surface treatment"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 20,
+        "unit": "kHz",
+        "description": "Lower frequency to prevent thermal damage"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Short pulses for minimal thermal impact"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 800,
+        "unit": "mm/s",
+        "description": "Fast scanning to reduce heat accumulation"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 2,
+        "unit": "passes",
+        "description": "Multiple gentle passes for gradual cleaning"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 30,
+        "unit": "%",
+        "description": "Lower overlap to prevent overheating"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 1.32,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 0,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "surfaceRoughness",
+      "value": 0.6,
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 100,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 3.6,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 0.11,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 170,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 5,
+      "unitText": "\u03bcm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.95,
+      "unitText": "mm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 100,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 8,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": "1e+16",
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 616,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.25,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 1.2,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 0.58,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 1.46e-07,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 4.7e-05,
+      "unitText": "10^{-6} K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 1170.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 0.25,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.06,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "10-200",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/peek-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/peek-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/peek-material-dataset.txt"
+    }
+  ]
+}

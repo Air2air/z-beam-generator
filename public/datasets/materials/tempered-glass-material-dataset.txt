@@ -1,0 +1,58 @@
+Tempered Glass Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning tempered glass, ensure you utilize its excellent thermal shock resistance to remove contaminants safely, without risking fractures.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : glass
+subcategory                   : specialty-glass
+name                          : Tempered Glass
+youngsModulus                 : 70000000000.0 Pa
+oxidationResistance           : 1.0 dimensionless (oxidation resistance scale 0-1)
+density                       : 2.5 g/cm³
+hardness                      : 6.0 GPa
+corrosionResistance           : 0.98 dimensionless
+compressiveStrength           : 1000.0 MPa
+flexuralStrength              : 200.0 MPa
+tensileStrength               : 150.0 MPa
+fractureToughness             : 0.75 MPa m^{1/2}
+electricalResistivity         : 1000000000000.0 Ω·m
+laserDamageThreshold          : 10 J/cm²
+absorptivity                  : 0.05 dimensionless
+absorptionCoefficient         : 80000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.04 dimensionless
+thermalDestructionPoint       : 1673 K
+vaporPressure                 : 0.01 Pa
+thermalDestruction            : 993.0 K
+specificHeat                  : 840.0 J/kg·K
+laserReflectivity             : 0.0425 fraction
+thermalConductivity           : 1.05 W/(m·K)
+thermalExpansion              : 9.0 ×10^{-6} K^{-1}
+laserAbsorption               : 35.0 m^{-1}
+thermalDiffusivity            : 5e-07 m²/s
+ablationThreshold             : 15.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for 1064 nm fiber lasers in delicate substrate cleaning; starting at 100 W avoids thermal stress on tempered glass (high reflectivity ~8% at 1064 nm, low thermal conductivity ~1 W/m·K); max limited to prevent cracking (melting point ~1400°C). Source: IPG Photonics YLR series specs and study in Optics and Lasers in Engineering (2018) on glass surface cleaning.
+wavelength                    : 355-10640 nm
+                                Optimal wavelength for Tempered Glass processing with good absorption
+spotSize                      : 0.1-500 μm
+                                Optimal spot size for precision cleaning on Tempered Glass surface
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Optimal pulse width for controlled ablation of contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Optimal number of passes for thorough cleaning
+overlapRatio                  : 10-90 %
+                                Optimal overlap ratio for complete coverage without excessive energy deposition
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

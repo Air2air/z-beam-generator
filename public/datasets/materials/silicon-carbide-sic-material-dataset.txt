@@ -1,0 +1,53 @@
+Silicon Carbide (SiC) Laser Cleaning Dataset
+================================================================================
+
+Description: We've discovered Silicon Carbide thrives in harsh environments, thanks to its superior hardness and heat resistance that hold structures together where other ceramics would crumble, making it essential for everything from aerospace components to power electronics without any breakdown.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : ceramic
+subcategory                   : carbide
+name                          : Silicon Carbide (SiC)
+electricalResistivity         : 0.0003 Ω·m
+fractureToughness             : 4.6 MPa√m
+youngsModulus                 : 450.0 GPa
+oxidationResistance           : 1600.0 °C
+density                       : 3.21 g/cm³
+hardness                      : 27.5 GPa
+corrosionResistance           : 1000000.0 Ω·cm²
+compressiveStrength           : 3900.0 MPa
+flexuralStrength              : 450.0 MPa
+tensileStrength               : 414.0 MPa
+porosity                      : 0.005 dimensionless
+ablationThreshold             : 3.0 J/cm²
+thermalDestruction            : 3103.0 K
+specificHeat                  : 671.0 J/(kg·K)
+laserReflectivity             : 0.204 dimensionless
+thermalConductivity           : 370.0 W/m·K
+thermalExpansion              : 4e-06 K^{-1}
+laserAbsorption               : 0.8 dimensionless
+thermalDiffusivity            : 0.00012 m^2/s
+laserDamageThreshold          : 25.3 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-2000 W
+                                Typical range for industrial 1064 nm fiber lasers used in ceramic cleaning; starting at 300 W balances efficiency and safety for SiC's high thermal conductivity (~120 W/m·K) to prevent overheating. Max avoids substrate ablation. Source: IPG Photonics YLR series specs and study in Optics and Lasers in Engineering (2018) on SiC surface preparation.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal SiC absorption and minimal substrate damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning with adequate energy density
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage and thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient contaminant removal with controlled thermal effects
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive thermal buildup
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -16,7 +16,7 @@ from .validator import (
     FixAction,
     IssueCategory,
     IssueSeverity,
-    UnifiedValidator,
+    Validator,
     ValidationIssue,
     ValidationReport,
     ValidationStage,
@@ -32,7 +32,7 @@ __all__ = [
     "FrontmatterDependencyValidator",
     "LayerValidator",
     # Unified validation
-    "UnifiedValidator",
+    "Validator",
     "ValidationReport",
     "ValidationStatus",
     "ValidationStage",

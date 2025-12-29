@@ -1,0 +1,58 @@
+Maple Laser Cleaning Dataset
+================================================================================
+
+Description: In our experience, Maple excels with its superior hardness, allowing precise laser cleaning in musical instrument restoration without any surface charring, so we typically adjust the power to prevent any risk of grain distortion in the process.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : wood
+subcategory                   : hardwood
+name                          : Maple
+fractureToughness             : 0.38 MPa√m
+youngsModulus                 : 12.6 GPa
+oxidationResistance           : 135.0 kJ/mol
+density                       : 705.0 kg/m³
+hardness                      : 6450.0 N
+corrosionResistance           : 0.25 dimensionless (durability index)
+compressiveStrength           : 54.1 MPa
+flexuralStrength              : 109.0 MPa
+tensileStrength               : 100.0 MPa
+porosity                      : 0.7 
+laserDamageThreshold          : 1.5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 100000 m⁻¹
+thermalShockResistance        : 1.2 MW/m
+reflectivity                  : 0.15 dimensionless
+thermalDestructionPoint       : 673 K
+vaporPressure                 : 50 Pa
+thermalDestruction            : 573.0 K
+specificHeat                  : 1380.0 J/kg·K
+laserReflectivity             : 0.072 dimensionless (fraction)
+thermalConductivity           : 0.17 W/m·K
+thermalExpansion              : 3.72e-05 K^{-1}
+laserAbsorption               : 8200.0 m^{-1}
+thermalDiffusivity            : 1.3e-07 m²/s
+ablationThreshold             : 2.8 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-200 W
+                                Typical range for ns fiber lasers cleaning delicate organics like wood to avoid charring; starting at 100W balances efficiency and safety. Source: Manufacturer specs from IPG Photonics for 1064 nm systems; academic review in 'Laser Cleaning of Wood Surfaces' (Journal of Cultural Heritage, 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for controlled wood ablation with minimal thermal damage
+spotSize                      : 0.1-500 μm
+                                Optimal beam diameter for precise cleaning control on wood surface
+repetitionRate                : 1-200 kHz
+                                Balanced repetition rate for efficient cleaning with controlled thermal input
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient contaminant removal with minimal substrate heating
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete surface cleaning
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive thermal buildup
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

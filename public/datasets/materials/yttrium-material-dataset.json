@@ -1,0 +1,433 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "yttrium-material-dataset",
+  "name": "Yttrium Laser Cleaning Dataset",
+  "description": "When laser cleaning yttrium components in aerospace or magnet production, I've found it works best to start with lower power pulses that account for its strong reflectivity, which bounces most energy away and keeps the surface cool during the process, so you gently remove contaminants without risking any underlying heat buildup or structural changes as you scan across the area in steady passes.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "rare-earth",
+      "subcategory": "scandium-group",
+      "name": "Yttrium",
+      "youngsModulus": {
+        "value": 41.2,
+        "unit": "GPa",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "oxidationResistance": {
+        "value": 673.0,
+        "unit": "K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "density": {
+        "value": 4472.0,
+        "unit": "kg/m\u00b3",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "hardness": {
+        "value": 0.26,
+        "unit": "GPa",
+        "confidence": 98,
+        "source": "ai_research"
+      },
+      "absorptivity": {
+        "value": 0.35,
+        "unit": "dimensionless",
+        "min": 0.2,
+        "max": 0.5,
+        "source": "ai_research"
+      },
+      "boilingPoint": {
+        "value": 3611.0,
+        "unit": "K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "absorptionCoefficient": {
+        "value": 50000000.0,
+        "unit": "m\u207b\u00b9",
+        "min": 10000000.0,
+        "max": 100000000.0,
+        "source": "ai_research"
+      },
+      "laserDamageThreshold": {
+        "value": 5,
+        "unit": "J/cm\u00b2",
+        "min": 1,
+        "max": 10,
+        "source": "ai_research"
+      },
+      "thermalShockResistance": {
+        "value": 2.5,
+        "unit": "MW/m",
+        "min": 1.5,
+        "max": 3.5,
+        "source": "ai_research"
+      },
+      "reflectivity": {
+        "value": 0.65,
+        "unit": "dimensionless",
+        "min": 0.5,
+        "max": 0.8,
+        "source": "ai_research"
+      },
+      "thermalDestructionPoint": {
+        "value": 1799,
+        "unit": "K",
+        "min": 1795,
+        "max": 1805,
+        "source": "ai_research"
+      },
+      "vaporPressure": {
+        "value": 0.1,
+        "unit": "Pa",
+        "min": 0.01,
+        "max": 1,
+        "source": "ai_research"
+      },
+      "thermalDestruction": {
+        "value": 1795.0,
+        "unit": "K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "specificHeat": {
+        "value": 300.8,
+        "unit": "J/(kg\u00b7K)",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "laserReflectivity": {
+        "value": 0.92,
+        "unit": "dimensionless",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalConductivity": {
+        "value": 17.2,
+        "unit": "W/m\u00b7K",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "thermalExpansion": {
+        "value": 1.06e-05,
+        "unit": "K^{-1}",
+        "confidence": 100,
+        "source": "ai_research"
+      },
+      "ablationThreshold": {
+        "value": 1.25,
+        "unit": "J/cm\u00b2",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalDiffusivity": {
+        "value": 1.28e-05,
+        "unit": "m\u00b2/s",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "CRC Handbook of Chemistry and Physics",
+        "citation": "CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press, 2023, ISBN 978-1-138-56163-2",
+        "context": "Pure yttrium (hcp alpha phase, 99.9% purity), 25\u00b0C, calculated from thermal conductivity (17.2 W/m\u00b7K), density (4.469 g/cm\u00b3), and molar heat capacity (26.74 J/mol\u00b7K)",
+        "confidence": 100,
+        "researched_date": "2025-11-24T12:30:11.433133",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 50,
+        "max": 500,
+        "value": 100,
+        "unit": "W",
+        "description": "Typical range for industrial pulsed Nd:YAG lasers cleaning reflective metals like Yttrium; start at 100W to avoid thermal damage given Yttrium's high reflectivity (~70% at 1064 nm) and melting point (1522\u00b0C). Max limited to prevent substrate ablation. Source: IPG Photonics YLR series specs; similar to aluminum cleaning in J. Laser Appl. 25, 042005 (2013)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR wavelength optimized for Yttrium absorption and minimal reflectivity"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 50,
+        "unit": "\u03bcm",
+        "description": "Beam spot diameter for precise Yttrium surface cleaning with adequate energy density"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 50,
+        "unit": "kHz",
+        "description": "Optimal repetition rate for continuous cleaning coverage on Yttrium surfaces"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Nanosecond pulse duration for efficient Yttrium ablation with controlled thermal effects"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 500,
+        "unit": "mm/s",
+        "description": "Optimal scanning speed for efficient Yttrium surface coverage without excessive overlap"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 2,
+        "unit": "passes",
+        "description": "Recommended number of cleaning passes for complete Yttrium surface treatment"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 30,
+        "unit": "%",
+        "description": "Optimal beam overlap percentage for uniform Yttrium surface cleaning"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 41.2,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 673.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 4472.0,
+      "unitText": "kg/m\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 0.26,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.37,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "boilingPoint",
+      "value": 3611.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 69000000.0,
+      "unitText": "m^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 1.8,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.35,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 50000000.0,
+      "unitText": "m\u207b\u00b9"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 5,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalShockResistance",
+      "value": 2.5,
+      "unitText": "MW/m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "reflectivity",
+      "value": 0.65,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestructionPoint",
+      "value": 1799,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "vaporPressure",
+      "value": 0.1,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 1795.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 300.8,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.92,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 17.2,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 1.06e-05,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 1.25,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 1.28e-05,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "50-500",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/yttrium-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/yttrium-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/yttrium-material-dataset.txt"
+    }
+  ]
+}

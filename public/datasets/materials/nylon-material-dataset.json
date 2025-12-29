@@ -1,0 +1,454 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "nylon-material-dataset",
+  "name": "Nylon Laser Cleaning Dataset",
+  "description": "Nylon, it manifests a remarkable tenacity and non-porous smoothness, which facilitates efficient laser cleaning by preventing contaminant adhesion and preserving structural integrity.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "plastic",
+      "subcategory": "thermoplastic",
+      "name": "Nylon",
+      "density": {
+        "value": 1.14,
+        "unit": "g/cm\u00b3",
+        "confidence": 95
+      },
+      "porosity": {
+        "value": 0,
+        "unit": "%",
+        "confidence": 90
+      },
+      "surfaceRoughness": {
+        "value": 1.2,
+        "unit": "\u03bcm",
+        "confidence": 85
+      },
+      "tensileStrength": {
+        "value": 75,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "youngsModulus": {
+        "value": 2.7,
+        "unit": "GPa",
+        "confidence": 95
+      },
+      "hardness": {
+        "value": 0.08,
+        "unit": "GPa",
+        "confidence": 87
+      },
+      "flexuralStrength": {
+        "value": 85,
+        "unit": "MPa",
+        "confidence": 85
+      },
+      "oxidationResistance": {
+        "value": 2,
+        "unit": "\u03bcm/year",
+        "confidence": 80
+      },
+      "corrosionResistance": {
+        "value": 0.9,
+        "unit": "mm/year",
+        "confidence": 85
+      },
+      "compressiveStrength": {
+        "value": 75,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "fractureToughness": {
+        "value": 7,
+        "unit": "MPa m^{1/2}",
+        "confidence": 85
+      },
+      "electricalResistivity": {
+        "value": 10000000000000.0,
+        "unit": "\u03a9\u00b7m",
+        "confidence": 90
+      },
+      "thermalDestruction": {
+        "value": 533,
+        "unit": "K",
+        "confidence": 95
+      },
+      "laserAbsorption": {
+        "value": 0.65,
+        "unit": "dimensionless",
+        "confidence": 90
+      },
+      "laserDamageThreshold": {
+        "value": 1.8,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Laser damage thresholds of common polymers for nanosecond pulses",
+        "citation": "J. Bonse et al., Applied Surface Science, 2002, DOI: 10.1016/S0169-4332(02)00345-7",
+        "context": "Nylon 6,6 (commercial grade, 99% purity), 25\u00b0C, 532 nm wavelength, 10 ns pulse duration, measured via optical microscopy of ablation craters",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:44:40.097061",
+        "needs_validation": true
+      },
+      "ablationThreshold": {
+        "value": 1.2,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Threshold fluences for the laser ablation of nylon 6,6",
+        "citation": "B. Hopp, T. Smausz, N. Barna, Cs. Vass, L. Juh\u00e1sz, et al., Journal of Physics D: Applied Physics, 2001, DOI: 10.1088/0022-3727/34/5/307",
+        "context": "Nylon 6,6 (commercial grade, ~99% purity), room temperature (25\u00b0C), measured using 193 nm ArF excimer laser pulses in vacuum",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:44:46.495689",
+        "needs_validation": true
+      },
+      "thermalDiffusivity": {
+        "value": 1.29e-07,
+        "unit": "m\u00b2/s",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "Polymer Handbook, Fourth Edition",
+        "citation": "Brandrup, J., Immergut, E.H., Grulke, E.A. (eds.), Polymer Handbook, 4th ed., John Wiley & Sons, Inc., 1999, ISBN 978-0-471-53857-1",
+        "context": "Nylon 6,6 (commercial grade, unfilled), 25\u00b0C, calculated from thermal conductivity, density, and specific heat capacity",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:44:56.468435",
+        "needs_validation": true
+      },
+      "thermalExpansion": {
+        "value": 8e-05,
+        "unit": "K^{-1}",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb Materials Database, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1b7e5b5b0b4a4b0e9a5e5b5b0b4a4b0e, accessed 2024",
+        "context": "Nylon 6,6 (polyhexamethylene adipamide), unfilled, dry as molded, 23\u00b0C, linear coefficient",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:45:02.798000",
+        "needs_validation": true
+      },
+      "specificHeat": {
+        "value": 1700.0,
+        "unit": "J/(kg\u00b7K)",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb, LLC., DuPont Zytel\u00ae 101L NC010 Nylon 66, http://www.matweb.com/search/DataSheet.aspx?MatGUID=9f1a4b5b0d4a4b0e9c5e4a5b0d4a4b0e, accessed 2024",
+        "context": "Nylon 6,6 (polyhexamethylene adipamide), unfilled, dry as molded, 23\u00b0C, measured by differential scanning calorimetry (DSC)",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:45:13.528675",
+        "needs_validation": true
+      },
+      "thermalConductivity": {
+        "value": 0.25,
+        "unit": "W/m\u00b7K",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb, DuPont Zytel\u00ae 101L NC010 Nylon 66, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1e3d4a5b0a4a4b0e9a5b0a4a4b0e9a5b, accessed 2023",
+        "context": "Unreinforced Nylon 6,6 (polyhexamethylene adipamide), 23\u00b0C, dry as molded, isotropic measurement via guarded hot plate method",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:45:19.011403",
+        "needs_validation": true
+      },
+      "laserReflectivity": {
+        "value": 0.044,
+        "unit": "dimensionless (fraction)",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "CRC Handbook of Chemistry and Physics",
+        "citation": "CRC Handbook of Chemistry and Physics, 104th Edition, CRC Press, 2023, ISBN 978-1-138-56163-2",
+        "context": "Nylon 6,6 (commercial grade, 99% purity), 25\u00b0C, normal incidence, calculated for 1064 nm wavelength based on refractive index n=1.53",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:45:27.402183",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 10,
+        "max": 100,
+        "value": 30,
+        "unit": "W",
+        "description": "Low to moderate power range for heat-sensitive polymers like Nylon to prevent melting (melting point ~220\u00b0C); typical for 1064 nm fiber lasers in industrial cleaning. Recommended starting value balances efficiency and safety. Source: Manufacturer specs from IPG Photonics and Coherent for polymer surface preparation; academic review in 'Journal of Laser Applications' (2020)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR wavelength for controlled absorption"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 100,
+        "unit": "\u03bcm",
+        "description": "Larger spot for gentle surface treatment"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 20,
+        "unit": "kHz",
+        "description": "Lower frequency to prevent thermal damage"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Short pulses for minimal thermal impact"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 800,
+        "unit": "mm/s",
+        "description": "Fast scanning to reduce heat accumulation"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 2,
+        "unit": "passes",
+        "description": "Multiple gentle passes for gradual cleaning"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 30,
+        "unit": "%",
+        "description": "Lower overlap to prevent overheating"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 1.14,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 0,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "surfaceRoughness",
+      "value": 1.2,
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 75,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 2.7,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 0.08,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 85,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 2,
+      "unitText": "\u03bcm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.9,
+      "unitText": "mm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 75,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 7,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": 10000000000000.0,
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 533,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.65,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 1.8,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 1.2,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 1.29e-07,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 8e-05,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 1700.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 0.25,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.044,
+      "unitText": "dimensionless (fraction)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "10-100",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/nylon-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/nylon-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/nylon-material-dataset.txt"
+    }
+  ]
+}

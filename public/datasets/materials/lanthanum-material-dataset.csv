@@ -1,0 +1,27 @@
+Property,Value,Unit,Description
+category,rare-earth,,
+subcategory,lanthanide,,
+name,Lanthanum,,
+youngsModulus,61.3,GPa,
+oxidationResistance,1.11,,
+density,6.162,g/cm³,
+hardness,0.35,GPa,
+absorptivity,0.42,dimensionless,
+boilingPoint,3737.0,K,
+thermalDestruction,1194.0,K,
+specificHeat,195.0,J/kg·K,
+laserReflectivity,0.42,dimensionless,
+thermalConductivity,13.4,W/m·K,
+thermalExpansion,1.21e-05,K^{-1},
+ablationThreshold,1.25,J/cm²,
+absorptionCoefficient,28000000.0,m^{-1},
+laserDamageThreshold,2.3,J/cm²,
+thermalDiffusivity,1.115e-05,m²/s,
+power,20-500,W,"Typical range for pulsed Nd:YAG lasers in metal cleaning to avoid thermal damage; recommended starting at 100 W for Lanthanum's low melting point (921°C) and moderate thermal conductivity (~13 W/mK). Conservative max to prevent substrate melting. Source: General manufacturer specs (e.g., IPG Photonics) and ablation studies on rare earth metals (e.g., J. Appl. Phys. 2018 on similar metals)."
+wavelength,355-10640,nm,Near-IR wavelength for optimal absorption in Lanthanum oxides
+spotSize,0.1-500,μm,Beam spot diameter for precise oxide removal control
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning coverage
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient oxide layer removal
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning efficiency
+passCount,1-10,passes,Recommended number of passes for complete oxide removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning coverage

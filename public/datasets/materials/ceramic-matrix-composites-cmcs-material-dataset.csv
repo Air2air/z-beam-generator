@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,composite,,
+subcategory,fiber-reinforced,,
+name,Ceramic Matrix Composites CMCs,,
+electricalResistivity,0.02,ohm-m,
+fractureToughness,25.0,MPa√m,
+density,2.6,g/cm³,
+oxidationResistance,1400.0,°C,
+youngsModulus,240.0,GPa,
+hardness,20.5,GPa,
+compressiveStrength,420.0,MPa,
+tensileStrength,310.0,MPa,
+flexuralStrength,350.0,MPa,
+corrosionResistance,0.005,mm/year,
+laserDamageThreshold,2,J/cm²,
+absorptivity,0.4,dimensionless,
+absorptionCoefficient,1000000,m⁻¹,
+thermalShockResistance,1.5,MW/m,
+reflectivity,0.6,dimensionless,
+thermalDestructionPoint,1700,K,
+vaporPressure,10,Pa,
+thermalDestruction,1473.0,K,
+laserReflectivity,0.36,,
+thermalExpansion,4.1e-06,K^{-1},
+thermalConductivity,2.8,W/m·K,
+specificHeat,780.0,J/(kg·K),
+laserAbsorption,0.85,dimensionless,
+thermalDiffusivity,5.2e-06,m²/s,
+ablationThreshold,3.2,J/cm²,
+power,50-500,W,"Typical range for industrial laser cleaning of composites to avoid thermal damage; starting at 100W for CMCs due to low thermal conductivity (e.g., SiC/SiC CMCs). Max safe below 500W to prevent cracking. Source: IPG Photonics specs for YLR series lasers adapted for ceramics; academic review in Optics and Lasers in Engineering (2018)."
+wavelength,355-10640,nm,Near-IR wavelength providing optimal absorption balance for CMC ceramic phases and contaminants
+spotSize,0.1-500,μm,Beam spot diameter optimized for precision cleaning of CMC surface features
+repetitionRate,1-200,kHz,High repetition rate for efficient area coverage while maintaining thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient contaminant ablation with minimal thermal diffusion into CMC substrate
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform contaminant removal across CMC surfaces
+passCount,1-10,passes,Number of cleaning passes for thorough contaminant removal with process control
+overlapRatio,10-90,%,Beam overlap percentage ensuring complete coverage without excessive heat accumulation

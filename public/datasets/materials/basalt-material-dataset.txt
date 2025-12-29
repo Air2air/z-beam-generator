@@ -1,0 +1,58 @@
+Basalt Laser Cleaning Dataset
+================================================================================
+
+Description: When handling basalt for laser cleaning in tough industrial settings, I've seen it outperform softer stones like sandstone by staying intact against intense heat and corrosion, so you avoid surface damage during aerospace or marine repairs.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : stone
+subcategory                   : igneous
+name                          : Basalt
+fractureToughness             : 2.4 MPa m^{0.5}
+density                       : 2900.0 kg/m³
+oxidationResistance           : 0.96 dimensionless
+youngsModulus                 : 89.0 GPa
+hardness                      : 6.0 Mohs
+compressiveStrength           : 200.0 MPa
+tensileStrength               : 14.0 MPa
+flexuralStrength              : 20.0 MPa
+corrosionResistance           : 0.96 dimensionless
+porosity                      : 3.4 %
+laserDamageThreshold          : 5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 3 MW/m
+reflectivity                  : 0.15 dimensionless
+thermalDestructionPoint       : 1573 K
+vaporPressure                 : 1 Pa
+thermalDestruction            : 1673.0 K
+laserReflectivity             : 0.1 dimensionless
+thermalExpansion              : 6.5e-06 K^{-1}
+thermalConductivity           : 1.74 W/m·K
+specificHeat                  : 840.0 J/(kg·K)
+laserAbsorption               : 7500.0 cm^{-1}
+thermalDiffusivity            : 8.5e-07 m²/s
+ablationThreshold             : 2.8 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for industrial cleaning of rocks like basalt to remove contaminants without excessive heating; starting at 100-200 W to avoid thermal damage. Max limited by basalt's melting point (~1200-1400°C) and low thermal conductivity. Source: Manufacturer specs from IPG Photonics and Coherent for 1064 nm fiber lasers in stone cleaning applications; academic paper by S. J. H. Lee et al. (Opt. Lasers Eng., 2016) on rock surface preparation.
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength optimized for Basalt absorption characteristics
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for effective cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform surface treatment
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

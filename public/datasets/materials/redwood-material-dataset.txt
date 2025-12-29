@@ -1,0 +1,58 @@
+Redwood Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning redwood, note its natural porosity that embeds contaminants deep inside, yet this same quality lets gentle pulses renew surfaces smoothly without splintering the soft grain.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : wood
+subcategory                   : hardwood
+name                          : Redwood
+fractureToughness             : 0.32 MPa m^{0.5}
+youngsModulus                 : 9.6 GPa
+oxidationResistance           : 0.85 dimensionless (scale 0-1)
+density                       : 450.0 kg/m³
+hardness                      : 1868.0 N
+corrosionResistance           : 0.92 dimensionless (relative durability index)
+compressiveStrength           : 33.1 MPa
+flexuralStrength              : 54.0 MPa
+tensileStrength               : 51.0 MPa
+porosity                      : 0.752 fraction
+laserDamageThreshold          : 5 J/cm²
+absorptivity                  : 0.9 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 1 MW/m
+reflectivity                  : 0.08 dimensionless
+thermalDestructionPoint       : 600 K
+vaporPressure                 : 10 Pa
+thermalDestruction            : 573.0 K
+specificHeat                  : 1385.0 J/(kg·K)
+laserReflectivity             : 0.032 dimensionless
+thermalConductivity           : 0.11 W/m·K
+thermalExpansion              : 3.6e-06 1/K
+laserAbsorption               : 0.88 dimensionless
+thermalDiffusivity            : 1.25e-07 m²/s
+ablationThreshold             : 1.05 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-300 W
+                                Typical range for wood cleaning at 1064 nm to remove contaminants without charring; starting at 100 W allows controlled ablation. Max safe ~300 W to avoid thermal damage to redwood's low thermal conductivity (~0.1 W/m·K). Source: Adapted from IPG Photonics YLR series specs for organic materials and study in J. Laser Appl. (2018) on wood surface cleaning.
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength optimized for Redwood lignin absorption
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse width for controlled ablation of contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete cleaning
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning pattern
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

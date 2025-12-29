@@ -1,0 +1,22 @@
+Property,Value
+Name,Gasket Material Residue
+Description,"Gasket Material Residue (Cellulose, Rubber, Silicone, Graphite) is a common contamination pattern in laser cleaning. This organic-residue/adhesive contamination affects surface integrity and requires specialized removal techniques. Commonly found on 3 different material types including metals, composites, and specialized substrates."
+Category,
+Subcategory,
+composition,"['Cellulose', 'Rubber', 'Silicone', 'Graphite']"
+absorptionRate,"{'wavelength_1064nm': 850, 'wavelength_355nm': 18500, 'wavelength_532nm': 4200}"
+reflectivity,"{'wavelength_1064nm': 0.15, 'wavelength_355nm': 0.03, 'wavelength_532nm': 0.08}"
+Total Compounds,4
+Compound 1,Carbon Dioxide
+Compound 2,Volatile Organic Compounds
+Compound 3,Water Vapor
+Compound 4,Carbon Particulates
+laserPower,"{'max_j_cm2': 1.2, 'min_j_cm2': 0.4, 'recommended_j_cm2': 0.8}"
+wavelength,"{'value': [1064, 355]}"
+pulseWidth,"{'max_ns': 200, 'min_ns': 10, 'recommended_ns': 100}"
+scanSpeed,"{'max': 2000, 'min': 500, 'recommended': 1000}"
+spotSize,"{'max': 0.2, 'min': 0.05, 'recommended': 0.1}"
+frequency,"{'max': 200, 'min': 20, 'recommended': 50}"
+overlapRatio,{'value': 50}
+removalRate,"{'diminishing_returns_after': 5, 'optimal_passes': 3, 'single_pass': 0.7}"
+Variable Measured Count,51

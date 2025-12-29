@@ -285,10 +285,10 @@ class ImageGenerationPipeline:
     def _run_early_validation(self, material: str, config: MaterialImageConfig):
         """Run early validation (pre-research)."""
         try:
-            from shared.validation import UnifiedValidator, ValidationStatus
+            from shared.validation import Validator, ValidationStatus
             
             prompts_dir = Path(__file__).parent / "prompts" / "shared"
-            validator = UnifiedValidator(prompts_dir=prompts_dir)
+            validator = Validator(prompts_dir=prompts_dir)
             
             report = validator.validate_early(
                 material=material,
@@ -315,10 +315,10 @@ class ImageGenerationPipeline:
     def _run_prompt_validation(self, material: str, prompt_package: Dict[str, Any]):
         """Run prompt validation (pre-generation)."""
         try:
-            from shared.validation import UnifiedValidator, ValidationStatus
+            from shared.validation import Validator, ValidationStatus
             
             prompts_dir = Path(__file__).parent / "prompts" / "shared"
-            validator = UnifiedValidator(prompts_dir=prompts_dir)
+            validator = Validator(prompts_dir=prompts_dir)
             
             report = validator.validate_prompt(
                 prompt=prompt_package["prompt"],

@@ -1,0 +1,57 @@
+Fused Silica Laser Cleaning Dataset
+================================================================================
+
+Description: Fused silica distinguishes itself among glasses with its minimal thermal expansion, preserving structural integrity under intense heat in aerospace and semiconductor applications
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : glass
+subcategory                   : soda-lime
+name                          : Fused Silica
+electricalResistivity         : 1e+16 Ω·m
+density                       : 2.203 g/cm³
+oxidationResistance           : 0.0 g/m²/s
+youngsModulus                 : 73.0 GPa
+hardness                      : 5.5 GPa
+compressiveStrength           : 1100.0 MPa
+tensileStrength               : 48.0 MPa
+flexuralStrength              : 50.0 MPa
+corrosionResistance           : 0.999 dimensionless
+laserDamageThreshold          : 15 J/cm²
+absorptivity                  : 0.03 dimensionless
+absorptionCoefficient         : 10 m⁻¹
+thermalShockResistance        : 2 MW/m
+reflectivity                  : 0.04 dimensionless
+thermalDestructionPoint       : 1800 K
+vaporPressure                 : 0.01 Pa
+thermalDestruction            : 1986.0 K
+laserReflectivity             : 0.035 
+thermalExpansion              : 5.5e-07 K^{-1}
+thermalConductivity           : 1.38 W/m·K
+specificHeat                  : 740.0 J/(kg·K)
+laserAbsorption               : 0.1 m^{-1}
+thermalDiffusivity            : 8.4e-07 m²/s
+ablationThreshold             : 9.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-500 W
+                                Typical range for industrial Nd:YAG lasers cleaning delicate optics like fused silica to avoid thermal damage; starting at 100 W for light contamination removal. Max safe below substrate ablation threshold (~10 J/cm² fluence limit). Source: Manufacturer specs from IPG Photonics YLR series and academic review in Optics Express (2018) on laser cleaning of silica optics.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength providing optimal absorption balance for Fused Silica contamination removal
+spotSize                      : 0.1-500 μm
+                                Optimal beam spot diameter for precision cleaning with sufficient energy density
+repetitionRate                : 1-200 kHz
+                                High repetition rate for efficient cleaning coverage while maintaining thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient contaminant ablation with minimal substrate heating
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage and process efficiency
+passCount                     : 1-10 passes
+                                Recommended number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap percentage for uniform cleaning without excessive energy deposition
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

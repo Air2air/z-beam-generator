@@ -1,0 +1,33 @@
+Property,Value,Unit,Description
+category,semiconductor,,
+subcategory,elemental,,
+name,Germanium,,
+density,5.323,g/cm³,
+porosity,0,%,
+surfaceRoughness,0.3,μm,
+tensileStrength,52,MPa,
+youngsModulus,103,GPa,
+hardness,1.2,GPa,
+flexuralStrength,130,MPa,
+oxidationResistance,8,μm/year,
+corrosionResistance,0.6,mm/year,
+compressiveStrength,52,MPa,
+fractureToughness,6,MPa m^{1/2},
+electricalResistivity,0.46,Ω·m,
+thermalDestruction,1211,K,
+laserAbsorption,0.55,dimensionless,
+laserDamageThreshold,10.2,J/cm²,
+ablationThreshold,0.42,J/cm²,
+thermalDiffusivity,3.6e-05,m²/s,
+thermalExpansion,5.9e-06,K^{-1},
+specificHeat,322.0,J/(kg·K),
+thermalConductivity,60.2,W/m·K,
+laserReflectivity,0.36,fraction,
+power,10-100,W,"Typical range for pulsed Nd:YAG lasers in semiconductor cleaning to avoid thermal damage; recommended starting at 50 W for balanced ablation of contaminants on Ge, which has moderate thermal conductivity (60 W/mK) and high reflectivity (~40% at 1064 nm). Source: Manufacturer specs from IPG Photonics and Coherent for industrial cleaners; academic review in 'Laser Cleaning' by Kononenko (2020)."
+wavelength,355-10640,nm,Near-IR for minimal lattice damage
+spotSize,0.1-500,μm,Small spot for high-precision cleaning
+repetitionRate,1-200,kHz,Moderate frequency for controlled removal
+pulseWidth,0.1-1000,ns,Ultra-short pulses for minimal thermal damage
+scanSpeed,10-5000,mm/s,Careful scanning for uniform treatment
+passCount,1-10,passes,Multiple passes for complete cleaning
+overlapRatio,10-90,%,High overlap for thorough coverage

@@ -12,7 +12,7 @@ relationship_groups:
   - industry_applications
 enrichments:
 - type: universal_restructure
-  module: export.enrichers.universal.universal_restructure_enricher
+  module: export.enrichers.linkage.restructure_enricher
   class: UniversalRestructureEnricher
   domain: materials
   cleanup_rules:
@@ -87,6 +87,10 @@ enrichments:
 - type: author
   module: export.enrichers.linkage.author_enricher
   class: AuthorEnricher
+- type: images
+  module: export.enrichers.media.image_enricher
+  class: ImageEnricher
+  domain: materials
 - type: breadcrumb
   module: export.enrichers.navigation.breadcrumb_enricher
   class: BreadcrumbEnricher
@@ -160,10 +164,16 @@ library_enrichments:
   - type: regulatory_standards
     relationship_field: relationships.regulatory_standards
     output_field: regulatory_standards_detail
-# SEO/excerpt generators removed - now use --postprocess with prompt templates:
-#   python3 run.py --postprocess --domain materials --field seo_description --all
-#   python3 run.py --postprocess --domain materials --field excerpt --all
+# Field configuration
+id_field: id
+title_field: title
 generators:
+- type: seo_metadata
+  module: export.generation.seo_metadata_generator
+  class: SEOMetadataGenerator
+  page_type: material
+  title_field: page_title
+  description_field: meta_description
 - type: field_cleanup
   module: export.enrichers.cleanup.field_cleanup_enricher
   class: FieldCleanupEnricher

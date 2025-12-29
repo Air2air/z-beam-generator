@@ -1,0 +1,58 @@
+Rubber Laser Cleaning Dataset
+================================================================================
+
+Description: Rubber's outstanding elasticity sets it apart from rigid composites, permitting repeated flexing without fracture and thus delivering dependable performance in rigorous automotive and aerospace applications.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : composite
+subcategory                   : fiber-reinforced
+name                          : Rubber
+electricalResistivity         : 10000.0 Ω·m
+fractureToughness             : 3.2 MPa m^{0.5}
+youngsModulus                 : 0.003 GPa
+oxidationResistance           : 36.0 h
+density                       : 1.15 g/cm³
+hardness                      : 65.0 Shore A
+corrosionResistance           : 0.95 dimensionless (normalized resistance index)
+compressiveStrength           : 16.5 MPa
+flexuralStrength              : 12.5 MPa
+tensileStrength               : 22.0 MPa
+laserDamageThreshold          : 2.5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 1.2 MW/m
+reflectivity                  : 0.12 dimensionless
+thermalDestructionPoint       : 673 K
+vaporPressure                 : 50 Pa
+thermalDestruction            : 673.0 K
+specificHeat                  : 1700.0 J/(kg·K)
+laserReflectivity             : 0.07 fraction
+thermalConductivity           : 0.17 W/m·K
+thermalExpansion              : 0.0002 K^{-1}
+laserAbsorption               : 120000.0 m^{-1}
+thermalDiffusivity            : 1.04e-07 m²/s
+ablationThreshold             : 0.75 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-150 W
+                                Low power to prevent thermal degradation of rubber (low melting point ~100-200°C); typical range from industrial fiber lasers for polymers. Recommended start at 50W for light contamination. Source: IPG Photonics specs for cleaning delicate substrates; academic review in Optics and Lasers in Engineering (2018) on polymer ablation.
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength for optimal rubber absorption and minimal substrate damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise rubber removal with adequate cleaning area
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient rubber cleaning with good process control
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for effective rubber ablation with controlled thermal effects
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform rubber removal without excessive heat accumulation
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete rubber removal with process control
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform rubber removal without excessive processing time
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

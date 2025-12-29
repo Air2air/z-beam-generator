@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,wood,,
+subcategory,hardwood,,
+name,Hickory,,
+fractureToughness,0.42,MPa√m,
+youngsModulus,14.9,GPa,
+oxidationResistance,18.2,% (volume),
+density,800.0,kg/m³,
+hardness,8096.0,N,
+corrosionResistance,0.75,dimensionless (normalized durability index),
+compressiveStrength,51.6,MPa,
+flexuralStrength,126.0,MPa,
+tensileStrength,86.2,MPa,
+porosity,0.52,,
+laserDamageThreshold,10,J/cm²,
+absorptivity,0.85,dimensionless,
+absorptionCoefficient,500000,m⁻¹,
+thermalShockResistance,1.5,MW/m,
+reflectivity,0.1,dimensionless,
+thermalDestructionPoint,700,K,
+vaporPressure,100,Pa,
+thermalDestruction,613.0,K,
+specificHeat,1380.0,J/(kg·K),
+laserReflectivity,0.142,dimensionless,
+thermalConductivity,0.163,W/m·K,
+thermalExpansion,3.4e-05,K^{-1},
+laserAbsorption,0.82,dimensionless,
+thermalDiffusivity,1.25e-07,m^2/s,
+ablationThreshold,1.2,J/cm²,
+power,10-200,W,"Typical range for 1064 nm pulsed lasers on wood; starting at 50W balances cleaning efficiency and heat input to prevent charring on low-conductivity hardwoods like Hickory. Max ~200W risks substrate damage. Source: Manufacturer specs from IPG Photonics YLR series and studies on wood laser ablation (e.g., Journal of Cultural Heritage, 2018)."
+wavelength,355-10640,nm,Near-IR wavelength optimized for Hickory absorption and minimal penetration
+spotSize,0.1-500,μm,Optimal beam diameter for precision cleaning resolution
+repetitionRate,1-200,kHz,High repetition rate for efficient cleaning coverage
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for controlled ablation of contaminants
+scanSpeed,10-5000,mm/s,Scanning speed for efficient area coverage without thermal damage
+passCount,1-10,passes,Number of cleaning passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without over-processing

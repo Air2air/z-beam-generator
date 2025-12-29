@@ -1,0 +1,58 @@
+Glass Fiber Reinforced Polymers GFRP Laser Cleaning Dataset
+================================================================================
+
+Description: I've seen corrosion eat away at metal structures in harsh marine environments, but GFRP resists it with its built-in corrosion resistance and lightweight strength that maintains structural integrity without extra weight
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : composite
+subcategory                   : fiber-reinforced
+name                          : Glass Fiber Reinforced Polymers GFRP
+electricalResistivity         : 1000000000000.0 Ω·m
+fractureToughness             : 2.1 MPa m^{0.5}
+density                       : 1.85 g/cm³
+oxidationResistance           : 220.0 °C
+youngsModulus                 : 38.0 GPa
+hardness                      : 85.0 Shore D
+compressiveStrength           : 280.0 MPa
+tensileStrength               : 570.0 MPa
+flexuralStrength              : 450.0 MPa
+corrosionResistance           : 0.95 dimensionless (retention factor)
+laserDamageThreshold          : 15 J/cm²
+absorptivity                  : 0.05 dimensionless
+absorptionCoefficient         : 5000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.05 dimensionless
+thermalDestructionPoint       : 673 K
+vaporPressure                 : 10 Pa
+thermalDestruction            : 623.0 K
+laserReflectivity             : 0.05 
+thermalExpansion              : 1.7e-05 K^{-1}
+thermalConductivity           : 0.35 W/m·K
+specificHeat                  : 930.0 J/(kg·K)
+laserAbsorption               : 4500.0 m^{-1}
+thermalDiffusivity            : 1.04e-07 m²/s
+ablationThreshold             : 3.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-300 W
+                                Typical range for industrial pulsed Nd:YAG lasers (1064 nm) cleaning composites like GFRP to remove contaminants without matrix degradation; starting at 100W balances efficiency and safety. Max safe ~300W to avoid thermal damage to polymer matrix (melting ~250°C). Source: Manufacturer specs (e.g., IPG Photonics YLR series); academic paper by Dupont et al. (2017) in Optics and Lasers in Engineering on composite surface prep.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal absorption in surface contaminants with minimal GFRP damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise surface cleaning control
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Beam overlap percentage for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

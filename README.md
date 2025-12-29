@@ -54,9 +54,15 @@ python3 run.py --export --domain compounds
 python3 run.py --export --domain settings
 
 # Generate Schema.org datasets (JSON/CSV/TXT formats)
-python3 scripts/export/generate_datasets.py                  # All datasets (753 files)
+# Note: Dataset generation reads from YAML and creates Schema.org files
+python3 scripts/export/generate_datasets.py                       # All datasets (753 files)
 python3 scripts/export/generate_datasets.py --domain materials    # Materials only (459 files)
 python3 scripts/export/generate_datasets.py --domain contaminants # Contaminants only (294 files)
+
+# Populate source YAML data (backfill system)
+# Note: Data population enriches YAML files, NOT dataset generation
+python3 run.py --backfill --domain contaminants --generator description --dry-run  # Preview
+python3 run.py --backfill --domain contaminants --generator description            # Execute
 
 # 🔥 Validate data integrity & links (MANDATORY Dec 18, 2025)
 python3 scripts/validation/verify_data_integrity.py      # Check source data

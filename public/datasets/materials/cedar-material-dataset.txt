@@ -1,0 +1,58 @@
+Cedar Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning Cedar, keep an eye on its natural porosity, which draws contaminants deep into the wood, so you'll need to tweak scan speeds to prevent uneven ablation. That same porosity helps bounce back surface integrity fast afterward, letting vapors vent out freely without trapping heat under the wood fibers.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : wood
+subcategory                   : softwood
+name                          : Cedar
+fractureToughness             : 0.36 MPa m^{0.5}
+density                       : 350.0 kg/m³
+oxidationResistance           : 0.92 dimensionless (normalized resistance index)
+youngsModulus                 : 6.9 GPa
+hardness                      : 1557.0 N
+compressiveStrength           : 37.6 MPa
+tensileStrength               : 51.7 MPa
+flexuralStrength              : 51.0 MPa
+corrosionResistance           : 0.85 dimensionless (durability index, 0-1 scale)
+porosity                      : 0.79 fraction
+laserDamageThreshold          : 2.5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 1.2 MW/m
+reflectivity                  : 0.15 dimensionless
+thermalDestructionPoint       : 573 K
+vaporPressure                 : 100 Pa
+thermalDestruction            : 523.0 K
+laserReflectivity             : 0.065 dimensionless
+thermalExpansion              : 4.2e-05 K^{-1}
+thermalConductivity           : 0.11 W/m·K
+specificHeat                  : 1340.0 J/(kg·K)
+laserAbsorption               : 95000.0 m^{-1}
+thermalDiffusivity            : 1.2e-07 m²/s
+ablationThreshold             : 1.75 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-300 W
+                                Typical range for industrial laser cleaning of softwoods like cedar to remove contaminants without charring; starting at 100 W allows controlled ablation. Max avoids thermal damage threshold (~300 W at 1064 nm). Source: Manufacturer specs from IPG Photonics YLR series for wood applications; academic paper on wood surface cleaning (Opt. Lasers Eng., 2018).
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength for optimal Cedar absorption and minimal penetration
+spotSize                      : 0.1-500 μm
+                                Optimal beam diameter for precision cleaning of Cedar grain patterns
+repetitionRate                : 1-200 kHz
+                                High repetition rate for uniform cleaning coverage on Cedar surfaces
+pulseWidth                    : 0.1-1000 ns
+                                Short pulse duration for efficient ablation of contaminants without excessive heat diffusion
+scanSpeed                     : 10-5000 mm/s
+                                Scanning speed for efficient area coverage while maintaining cleaning effectiveness
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete contaminant removal from Cedar surface
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive energy deposition
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

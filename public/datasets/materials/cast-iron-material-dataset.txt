@@ -1,0 +1,63 @@
+Cast Iron Laser Cleaning Dataset
+================================================================================
+
+Description: When cleaning cast iron, we've found its inherent porosity serves as a natural benefit, pulling in laser energy to break loose tough rust and scale on heavy industrial components, but you need to begin with careful power levels from the start to avoid any chance of surface cracking due to the material's relative brittleness, in the end bringing back its strength for automotive and machinery uses while keeping structural integrity intact
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : ferrous
+name                          : Cast Iron
+density                       : 7.2 g/cm³
+porosity                      : 1.5 %
+surfaceRoughness              : 25 μm
+tensileStrength               : 250.0 MPa
+youngsModulus                 : 110.0 GPa
+hardness                      : 200 HB
+flexuralStrength              : 400 MPa
+oxidationResistance           : 400 °C
+corrosionResistance           : 0.1 mm/year
+compressiveStrength           : 830.0 MPa
+fractureToughness             : 20.0 MPa m^{1/2}
+electricalResistivity         : 7.5e-07 Ω·m
+boilingPoint                  : 3134.0 K
+electricalConductivity        : 2300000.0 S/m
+meltingPoint                  : 1473.0 K
+thermalConductivity           : 46.0 W/(m·K)
+thermalExpansion              : 1.15e-05 K^{-1}
+thermalDiffusivity            : 14.0 mm²/s
+specificHeat                  : 460.0 J/(kg·K)
+thermalShockResistance        : 250 °C
+laserReflectivity             : 0.35 
+absorptionCoefficient         : 5000000.0 m^{-1}
+ablationThreshold             : 2.5 J/cm²
+laserDamageThreshold          : 3.0 J/cm²
+thermalDestruction            : 1423.0 K
+laserAbsorption               : 0.42 dimensionless
+absorptivity                  : 0.5 
+reflectivity                  : 0.37 dimensionless
+vaporPressure                 : 0.133 Pa
+thermalDestructionPoint       : 1473.0 K
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-1000 W
+                                Typical range for industrial cleaning of cast iron to remove rust or contaminants without substrate damage; starting at 200W balances efficiency and safety. Max limited to avoid melting (cast iron melting point ~1150-1300°C). Source: IPG Photonics laser cleaning systems specs for metal surfaces; academic review in Optics and Lasers in Engineering (2018).
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength optimized for Cast Iron absorption and rust removal
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for effective cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient oxide layer ablation
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete oxide removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform surface treatment
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

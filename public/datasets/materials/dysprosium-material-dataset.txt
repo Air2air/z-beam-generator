@@ -1,0 +1,48 @@
+Dysprosium Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning Dysprosium alloys in aerospace parts, keep a close eye on its dense structure and robust heat resistance from the outset to avoid surface warping or degradation of magnetic properties, delivering spotless results for dependable performance in demanding settings like turbine engines.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : rare-earth
+subcategory                   : lanthanide
+name                          : Dysprosium
+density                       : 8550.0 kg/m³
+oxidationResistance           : -2.32 V
+youngsModulus                 : 28.0 GPa
+hardness                      : 0.41 GPa
+boilingPoint                  : 2840.0 K
+absorptivity                  : 0.72 dimensionless
+thermalDestruction            : 1685.0 K
+laserReflectivity             : 0.925 dimensionless
+thermalExpansion              : 2.55e-05 K^{-1}
+thermalConductivity           : 10.7 W/m·K
+specificHeat                  : 171.5 J/(kg·K)
+ablationThreshold             : 0.82 J/cm²
+absorptionCoefficient         : 1250000.0 cm^{-1}
+thermalDiffusivity            : 7.4e-06 m²/s
+laserDamageThreshold          : 0.42 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for industrial laser cleaning of reflective metals like Dysprosium at 1064 nm to ablate contaminants without substrate melting (melting point ~1412°C). Starting at 200 W balances efficiency and safety; higher risks thermal damage due to moderate thermal conductivity (~10.7 W/m·K). Source: General Nd:YAG laser specs from IPG Photonics and studies on rare earth metal processing (e.g., J. Appl. Phys. on lanthanide ablation).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Dysprosium's absorption characteristics
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient oxide layer ablation
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning
+passCount                     : 1-10 passes
+                                Recommended number of passes for thorough cleaning
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for complete surface coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

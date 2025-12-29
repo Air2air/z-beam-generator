@@ -1,0 +1,20 @@
+Property,Value
+Name,Water Staining and Marks
+Description,"Water Staining and Marks (CaCO₃, Fe₂O₃, Organic Matter) is a common contamination pattern in laser cleaning. This organic-residue/other contamination affects surface integrity and requires specialized removal techniques. Commonly found on 32 different material types including metals, composites, and specialized substrates."
+Category,
+Subcategory,
+composition,"['CaCO₃', 'Fe₂O₃', 'Organic Matter']"
+absorptionRate,"{'wavelength_1064nm': 150, 'wavelength_355nm': 3200, 'wavelength_532nm': 850}"
+reflectivity,"{'wavelength_1064nm': 0.05, 'wavelength_355nm': 0.02, 'wavelength_532nm': 0.03}"
+Total Compounds,2
+Compound 1,Carbon Dioxide
+Compound 2,Water Vapor
+laserPower,"{'max_j_cm2': 1.2, 'min_j_cm2': 0.3, 'recommended_j_cm2': 0.8}"
+wavelength,"{'value': [1064, 532]}"
+pulseWidth,"{'max_ns': 200, 'min_ns': 10, 'recommended_ns': 50}"
+scanSpeed,"{'max': 2000, 'min': 500, 'recommended': 1000}"
+spotSize,"{'max': 0.1, 'min': 0.02, 'recommended': 0.05}"
+frequency,"{'max': 200, 'min': 20, 'recommended': 50}"
+overlapRatio,{'value': 50}
+removalRate,"{'diminishing_returns_after': 3, 'optimal_passes': 2, 'single_pass': 0.7}"
+Variable Measured Count,49

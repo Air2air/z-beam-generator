@@ -1,0 +1,36 @@
+Property,Value,Unit,Description
+category,masonry,,
+subcategory,general,,
+name,Brick,,
+fractureToughness,0.75,MPa√m,
+density,1920.0,kg/m³,
+oxidationResistance,0.98,"dimensionless (scale 0-1, where 1 indicates complete resistance)",
+youngsModulus,11.0,GPa,
+hardness,2.5,Mohs,
+compressiveStrength,20.0,MPa,
+tensileStrength,2.5,MPa,
+flexuralStrength,8.3,MPa,
+corrosionResistance,0.0005,mm/year,
+laserDamageThreshold,2.5,J/cm²,
+absorptivity,0.85,dimensionless,
+absorptionCoefficient,5000000,m⁻¹,
+thermalShockResistance,2.0,MW/m,
+reflectivity,0.15,dimensionless,
+thermalDestructionPoint,1473,K,
+vaporPressure,0.1,Pa,
+thermalDestruction,1323.0,K,
+laserReflectivity,0.28,dimensionless,
+thermalExpansion,6e-06,1/K,
+thermalConductivity,0.72,W/m·K,
+specificHeat,880.0,J/(kg·K),
+laserAbsorption,0.92,dimensionless,
+thermalDiffusivity,4.26e-07,m²/s,
+ablationThreshold,1.15,J/cm²,
+power,50-1000,W,"Typical range for 1064 nm Nd:YAG lasers in stone/brick cleaning to remove contaminants without thermal damage; starting at 200W balances efficiency and safety. Max avoids cracking due to brick's low thermal conductivity (~0.8 W/mK). Source: Manufacturer specs from IPG Photonics (e.g., YLR series for restoration); academic review in 'Laser Cleaning of Stone Surfaces' (Optics & Lasers in Engineering, 2015)."
+wavelength,355-10640,nm,Near-infrared wavelength for optimal brick absorption and minimal substrate damage
+spotSize,0.1-500,μm,Beam spot diameter for effective cleaning resolution on brick surface texture
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage and thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage and process efficiency
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal from porous brick surface
+overlapRatio,10-90,%,Optimal beam overlap percentage for uniform cleaning without excessive thermal accumulation

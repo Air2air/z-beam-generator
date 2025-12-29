@@ -1,0 +1,58 @@
+Quartz Glass Laser Cleaning Dataset
+================================================================================
+
+Description: Quartz glass shows transparency and heat resistance in laser cleaning. This material resists damage from beams, thus enables precise removal of contaminants on surfaces. Challenges arise from brittleness, so careful parameter adjustment follows for effective processing.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : glass
+subcategory                   : soda-lime
+name                          : Quartz Glass
+electricalResistivity         : 1e+16 Ω·m
+fractureToughness             : 0.75 MPa m^{1/2}
+youngsModulus                 : 73.0 GPa
+oxidationResistance           : 1473.0 K
+density                       : 2.2 g/cm³
+hardness                      : 6.0 GPa
+corrosionResistance           : 1.0 dimensionless
+compressiveStrength           : 1100.0 MPa
+flexuralStrength              : 70.0 MPa
+tensileStrength               : 48.0 MPa
+laserDamageThreshold          : 20 J/cm²
+absorptivity                  : 0.02 dimensionless
+absorptionCoefficient         : 10 m⁻¹
+thermalShockResistance        : 2.5 MW/m
+reflectivity                  : 0.04 dimensionless
+thermalDestructionPoint       : 2000 K
+vaporPressure                 : 0.01 Pa
+thermalDestruction            : 1986.0 K
+specificHeat                  : 740.0 J/(kg·K)
+laserReflectivity             : 0.035 fraction
+thermalConductivity           : 1.38 W/m·K
+thermalExpansion              : 5.5e-07 K^{-1}
+laserAbsorption               : 0.2 m^{-1}
+thermalDiffusivity            : 8.6e-07 m²/s
+ablationThreshold             : 20.0 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-500 W
+                                Typical range for industrial laser cleaning systems (e.g., CleanLaser CL 50-500 models) on delicate substrates like quartz glass to avoid thermal damage; starting at 100W for controlled ablation of contaminants. Max safe ~300-500W depending on fluence to prevent cracking (source: IPG Photonics specs and J. Laser Appl. 2018 study on glass cleaning).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength with good transmission through Quartz Glass for selective contaminant removal
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning with adequate energy density
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with controlled thermal accumulation
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for effective contaminant removal with minimal substrate heating
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap percentage for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

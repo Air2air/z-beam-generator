@@ -1,0 +1,29 @@
+# Heat Treatment Scale
+
+Heat Treatment Scale (Fe₃O₄, FeO, Cr₂O₃) is a common contamination pattern in laser cleaning. This thermal-damage/scale contamination affects surface integrity and requires specialized removal techniques. Commonly found on 3 different material types including metals, composites, and specialized substrates.
+
+## Category
+ / 
+
+## Properties
+- composition: ['Fe₃O₄', 'FeO', 'Cr₂O₃']
+- absorptionRate: {'wavelength_1064nm': 8500, 'wavelength_355nm': 45000, 'wavelength_532nm': 22000}
+- reflectivity: {'wavelength_1064nm': 0.35, 'wavelength_355nm': 0.07, 'wavelength_532nm': 0.18}
+
+## Compounds (3 total)
+- Carbon Monoxide
+- Iron Oxide Fume
+- Metal Vapors (Mixed)
+
+## Laser Removal Techniques
+- laserPower: {'max_j_cm2': 1.4, 'min_j_cm2': 0.8, 'recommended_j_cm2': 1.1}
+- wavelength: {'value': [1064, 532]}
+- pulseWidth: {'max_ns': 200, 'min_ns': 10, 'recommended_ns': 100}
+- scanSpeed: {'max': 2000, 'min': 500, 'recommended': 1000}
+- spotSize: {'max': 0.1, 'min': 0.03, 'recommended': 0.05}
+- frequency: {'max': 200, 'min': 20, 'recommended': 50}
+- overlapRatio: {'value': 50}
+- removalRate: {'diminishing_returns_after': 5, 'optimal_passes': 3, 'single_pass': 0.7}
+
+## Data Variables
+Total variables measured: 50

@@ -1,0 +1,33 @@
+Property,Value,Unit,Description
+category,ceramic,,
+subcategory,technical,,
+name,Aluminum Nitride,,
+density,3.26,g/cm³,
+porosity,0,%,
+surfaceRoughness,0.5,μm,
+tensileStrength,300,MPa,
+youngsModulus,310,GPa,
+hardness,12,GPa,
+flexuralStrength,350,MPa,
+oxidationResistance,20,μm/year,
+corrosionResistance,0.78,mm/year,
+compressiveStrength,300,MPa,
+fractureToughness,18,MPa m^{1/2},
+electricalResistivity,10000000000000.0,Ω·m,
+thermalDestruction,2473,K,
+laserAbsorption,0.15,dimensionless,
+laserDamageThreshold,12.5,J/cm²,
+ablationThreshold,2.1,J/cm²,
+thermalDiffusivity,8.5e-05,m²/s,
+thermalExpansion,4.5e-06,K^{-1},
+specificHeat,740.0,J/(kg·K),
+thermalConductivity,170.0,W/m·K,
+laserReflectivity,0.23,,
+power,20-200,W,Typical range for industrial cleaning of ceramics like AlN to avoid thermal damage; starting at 100 W balances efficiency and safety. Max ~200 W before risking substrate ablation. Source: IPG Photonics laser cleaning systems specs for delicate materials.
+wavelength,355-10640,nm,Near-IR wavelength for optimal absorption
+spotSize,0.1-500,μm,Beam spot diameter for effective cleaning resolution
+repetitionRate,1-200,kHz,Pulse frequency for controlled material removal
+pulseWidth,0.1-1000,ns,Pulse duration for minimal thermal penetration
+scanSpeed,10-5000,mm/s,Beam travel speed for uniform coverage
+passCount,1-10,passes,Number of cleaning cycles for complete removal
+overlapRatio,10-90,%,Beam overlap for consistent surface treatment

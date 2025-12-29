@@ -1,0 +1,63 @@
+Indium Laser Cleaning Dataset
+================================================================================
+
+Description: The key to Indium is its remarkably low melting point, which sets it apart from tougher metals by enabling soft, reliable seals in electronics and aerospace components. We've found it perfect for delicate soldering tasks where high heat could ruin sensitive parts, but always keep processing temperatures gentle to maintain its integrity.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : specialty
+name                          : Indium
+electricalConductivity        : 11905000.0 S/m
+electricalResistivity         : 8.37e-08 Ω·m
+fractureToughness             : 2.3 MPa m^{1/2}
+surfaceRoughness              : 0.12 μm
+youngsModulus                 : 41.0 GPa
+oxidationResistance           : 250.0 °C
+density                       : 7310.0 kg/m³
+hardness                      : 9.0 HV
+corrosionResistance           : 0.0012 mm/year
+compressiveStrength           : 24.5 MPa
+flexuralStrength              : 24.8 MPa
+tensileStrength               : 16.0 MPa
+porosity                      : 0.0 %
+absorptivity                  : 0.35 dimensionless
+boilingPoint                  : 2345.0 K
+absorptionCoefficient         : 12400000.0 m⁻¹
+meltingPoint                  : 429.75 K
+vaporPressure                 : 0.00133 Pa
+thermalDestructionPoint       : 429.75 K
+reflectivity                  : 0.935 dimensionless (reflectance)
+thermalShockResistance        : 0.0025 MPa·m¹/²
+laserDamageThreshold          : 0.15 J/cm²
+thermalDestruction            : 429.7485 K
+specificHeat                  : 233.0 J/(kg·K)
+laserReflectivity             : 0.92 dimensionless
+thermalConductivity           : 81.8 W/m·K
+thermalExpansion              : 32.1 ×10^{-6} K^{-1}
+laserAbsorption               : 0.42 dimensionless
+thermalDiffusivity            : 4.89e-05 m^2/s
+ablationThreshold             : 0.22 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for pulsed Nd:YAG lasers in metal cleaning; lower end for delicate soft metals like Indium to avoid melting (mp 156.6°C). Recommended start conservatively low. Source: IPG Photonics specs for cleaning heads; conservative for Indium's low thermal resistance (similar to Al studies in Opt. Lasers Eng. 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength providing good absorption in Indium oxide layer
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise oxide removal
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled oxide ablation
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete oxide removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

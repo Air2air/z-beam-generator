@@ -1034,7 +1034,7 @@ class PostStageValidator:
                     severity=IssueSeverity.MEDIUM,
                     category=IssueCategory.CONFIG,
                     message="Vision validator not configured - skipping image analysis",
-                    suggestion="Initialize UnifiedValidator with vision_validator for full post-validation"
+                    suggestion="Initialize Validator with vision_validator for full post-validation"
                 )
             )
             return report
@@ -1129,12 +1129,12 @@ class PostStageValidator:
 # UNIFIED VALIDATOR
 # =============================================================================
 
-class UnifiedValidator:
+class Validator:
     """
     Single entry point for all validation stages.
     
     Usage:
-        validator = UnifiedValidator()
+        validator = Validator()
         
         # Stage 1: Early validation (before research)
         report = validator.validate_early(material="Aluminum", config={...})
@@ -1254,9 +1254,9 @@ class UnifiedValidator:
 def create_validator(
     prompts_dir: Optional[Path] = None,
     vision_validator=None
-) -> UnifiedValidator:
+) -> Validator:
     """Factory function to create unified validator."""
-    return UnifiedValidator(prompts_dir, vision_validator)
+    return Validator(prompts_dir, vision_validator)
 
 
 def validate_prompt_quick(prompt: str, material: str = "") -> ValidationReport:

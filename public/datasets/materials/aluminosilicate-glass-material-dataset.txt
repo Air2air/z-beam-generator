@@ -1,0 +1,54 @@
+Aluminosilicate Glass Laser Cleaning Dataset
+================================================================================
+
+Description: Aluminosilicate glass demonstrates exceptional durability and corrosion resistance. This material, it withstands laser exposure tenaciously, enabling precise contaminant removal from surfaces. Its smooth texture aids efficiency, though toughness demands careful energy control to avoid microcracks.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : glass
+subcategory                   : specialty
+name                          : Aluminosilicate Glass
+density                       : 2.53 g/cm³
+porosity                      : 0 %
+surfaceRoughness              : 0.1 μm
+tensileStrength               : 750 MPa
+youngsModulus                 : 85 GPa
+hardness                      : 0.85 GPa
+flexuralStrength              : 900 MPa
+oxidationResistance           : 12 μm/year
+corrosionResistance           : 0.92 mm/year
+compressiveStrength           : 750 MPa
+fractureToughness             : 4.5 MPa m^{1/2}
+electricalResistivity         : 100000000000000.0 Ω·m
+thermalDestruction            : 1473 K
+laserAbsorption               : 0.05 dimensionless
+laserDamageThreshold          : 8.5 J/cm²
+ablationThreshold             : 2.8 J/cm²
+thermalDiffusivity            : 5.34e-07 m²/s
+thermalExpansion              : 3.8e-06 1/K
+specificHeat                  : 740.0 J/(kg·K)
+thermalConductivity           : 1.05 W/(m·K)
+laserReflectivity             : 0.042 
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-500 W
+                                Typical range for delicate glass substrates to avoid thermal damage; starting at 100W for initial tests on light contaminants. Max safe below 500W to prevent cracking (based on IPG Photonics specs for fiber lasers and studies in Optics and Lasers in Engineering, 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR for transparent material cleaning
+spotSize                      : 0.1-500 μm
+                                Spot size for effective glass treatment
+repetitionRate                : 1-200 kHz
+                                Moderate frequency for glass cleaning
+pulseWidth                    : 0.1-1000 ns
+                                Short pulses to prevent cracking
+scanSpeed                     : 10-5000 mm/s
+                                Faster scanning for thermal management
+passCount                     : 1-10 passes
+                                Careful passes for complete cleaning
+overlapRatio                  : 10-90 %
+                                Moderate overlap for glass surfaces
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

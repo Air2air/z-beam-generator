@@ -1,0 +1,63 @@
+Molybdenum Laser Cleaning Dataset
+================================================================================
+
+Description: Molybdenum exhibits high heat resistance, so laser cleaning removes contaminants effectively without surface damage. During processing, its reflectivity challenges energy absorption, yet strong thermal shock tolerance ensures durability for aerospace parts. Treatment achieves clean uniformity.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : non-ferrous
+name                          : Molybdenum
+electricalConductivity        : 18700000.0 S/m
+electricalResistivity         : 5.2e-08 Ω·m
+fractureToughness             : 0.9 MPa m^{1/2}
+surfaceRoughness              : 0.8 μm
+youngsModulus                 : 329.0 GPa
+oxidationResistance           : 723.0 K
+density                       : 10.28 g/cm³
+hardness                      : 150.0 HV
+corrosionResistance           : 0.92 dimensionless (corrosion resistance index)
+compressiveStrength           : 830.0 MPa
+flexuralStrength              : 690.0 MPa
+tensileStrength               : 690.0 MPa
+porosity                      : 0.0 %
+absorptivity                  : 0.41 dimensionless
+boilingPoint                  : 4912.0 K
+absorptionCoefficient         : 42000000.0 m^-1
+meltingPoint                  : 2896.0 K
+vaporPressure                 : 1.33e-07 Pa
+thermalDestructionPoint       : 2896.0 K
+reflectivity                  : 0.57 dimensionless
+thermalShockResistance        : 515.0 W/m
+laserDamageThreshold          : 0.45 J/cm²
+thermalDestruction            : 2896.0 K
+specificHeat                  : 251.0 J/(kg·K)
+laserReflectivity             : 0.61 fraction
+thermalConductivity           : 138.0 W/m·K
+thermalExpansion              : 4.8e-06 K^{-1}
+laserAbsorption               : 0.43 dimensionless
+thermalDiffusivity            : 5.38e-05 m²/s
+ablationThreshold             : 2.1 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-300 W
+                                Typical range for 1064 nm pulsed lasers in metal cleaning; starting at 100 W balances efficiency and safety for Mo's high reflectivity and thermal conductivity, avoiding melting (threshold ~300 W). Source: IPG Photonics YLR series specs and studies on refractory metals (e.g., J. Laser Appl. 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength providing good absorption for Molybdenum surface contaminants
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for effective cleaning resolution and energy density
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning coverage with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient contaminant ablation with minimal thermal diffusion
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning with adequate overlap
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap percentage for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

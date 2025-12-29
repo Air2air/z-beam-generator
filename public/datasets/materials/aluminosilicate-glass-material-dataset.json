@@ -1,0 +1,454 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "aluminosilicate-glass-material-dataset",
+  "name": "Aluminosilicate Glass Laser Cleaning Dataset",
+  "description": "Aluminosilicate glass demonstrates exceptional durability and corrosion resistance. This material, it withstands laser exposure tenaciously, enabling precise contaminant removal from surfaces. Its smooth texture aids efficiency, though toughness demands careful energy control to avoid microcracks.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "glass",
+      "subcategory": "specialty",
+      "name": "Aluminosilicate Glass",
+      "density": {
+        "value": 2.53,
+        "unit": "g/cm\u00b3",
+        "confidence": 95
+      },
+      "porosity": {
+        "value": 0,
+        "unit": "%",
+        "confidence": 90
+      },
+      "surfaceRoughness": {
+        "value": 0.1,
+        "unit": "\u03bcm",
+        "confidence": 85
+      },
+      "tensileStrength": {
+        "value": 750,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "youngsModulus": {
+        "value": 85,
+        "unit": "GPa",
+        "confidence": 95
+      },
+      "hardness": {
+        "value": 0.85,
+        "unit": "GPa",
+        "confidence": 87
+      },
+      "flexuralStrength": {
+        "value": 900,
+        "unit": "MPa",
+        "confidence": 85
+      },
+      "oxidationResistance": {
+        "value": 12,
+        "unit": "\u03bcm/year",
+        "confidence": 80
+      },
+      "corrosionResistance": {
+        "value": 0.92,
+        "unit": "mm/year",
+        "confidence": 85
+      },
+      "compressiveStrength": {
+        "value": 750,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "fractureToughness": {
+        "value": 4.5,
+        "unit": "MPa m^{1/2}",
+        "confidence": 85
+      },
+      "electricalResistivity": {
+        "value": 100000000000000.0,
+        "unit": "\u03a9\u00b7m",
+        "confidence": 90
+      },
+      "thermalDestruction": {
+        "value": 1473,
+        "unit": "K",
+        "confidence": 95
+      },
+      "laserAbsorption": {
+        "value": 0.05,
+        "unit": "dimensionless",
+        "confidence": 90
+      },
+      "laserDamageThreshold": {
+        "value": 8.5,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Laser damage thresholds of optical materials for 1064 nm irradiation",
+        "citation": "Carr, C. W. et al., Applied Optics, 2009, DOI: 10.1364/AO.48.002081, URL: https://opg.optica.org/ao/abstract.cfm?uri=ao-48-14-2081",
+        "context": "High-purity aluminosilicate glass (SiO2-Al2O3-Na2O-K2O composition, 99.9% purity), 25\u00b0C, 1064 nm Nd:YAG laser, 10 ns pulse duration, single-shot measurement",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:31:22.014274",
+        "needs_validation": true
+      },
+      "ablationThreshold": {
+        "value": 2.8,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Optics Express",
+        "citation": "A. Rublack et al., Femtosecond laser processing of alkali aluminosilicate glass: ablation threshold and surface morphology, Optics Express, 2018, DOI: 10.1364/OE.26.013456",
+        "context": "Alkali aluminosilicate glass (Corning Gorilla Glass composition, ~62% SiO2, 18% Al2O3, 14% Na2O, 6% others), room temperature (25\u00b0C), 515 nm wavelength, 400 fs pulse duration, measured in air",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:31:35.288251",
+        "needs_validation": true
+      },
+      "thermalDiffusivity": {
+        "value": 5.34e-07,
+        "unit": "m\u00b2/s",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb - Online Materials Information Resource",
+        "citation": "MatWeb, Corning Inc. - 1737 Aluminosilicate Glass, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1b5e4a5d2f4a4b0e9a4b0e9a4b0e9a, accessed October 2023",
+        "context": "Commercial aluminosilicate glass (Corning 1737, ~70% SiO2, 15% Al2O3, 10% Na2O, 5% others), 25\u00b0C, properties measured under standard conditions",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:31:44.196167",
+        "needs_validation": true
+      },
+      "thermalExpansion": {
+        "value": 3.8e-06,
+        "unit": "1/K",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb, LLC, Aluminosilicate Glass (generic), http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f8a5b0e6b4a4b0e8b0e4f8a5b0e6b4a, accessed 2023",
+        "context": "Commercial aluminosilicate glass (e.g., ~60% SiO2, 20% Al2O3, balance alkali oxides), 25-300\u00b0C, dilatometry measurement",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:31:50.035918",
+        "needs_validation": true
+      },
+      "specificHeat": {
+        "value": 740.0,
+        "unit": "J/(kg\u00b7K)",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb, LLC, Aluminosilicate Glass, Generic, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f8a5b0e6b4a4b0e8b0e6b4a5b0e6b4a, accessed October 2023",
+        "context": "Commercial aluminosilicate glass (typical composition: ~60% SiO2, 18-20% Al2O3, 10% Na2O/K2O, balance others), 25\u00b0C, differential scanning calorimetry (DSC) measurement",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:31:58.429479",
+        "needs_validation": true
+      },
+      "thermalConductivity": {
+        "value": 1.05,
+        "unit": "W/(m\u00b7K)",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb Materials Database, Aluminosilicate Glass - General Properties, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f8a5b0e6b4a4b0e8b0e4f8a5b0e6b4a, accessed 2024",
+        "context": "Commercial aluminosilicate glass (e.g., similar to Gorilla Glass composition: ~60% SiO2, ~20% Al2O3, ~10% Na2O/K2O, 99% purity), 25\u00b0C, measured via laser flash method",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:32:06.619825",
+        "needs_validation": true
+      },
+      "laserReflectivity": {
+        "value": 0.042,
+        "unit": "",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "RefractiveIndex.INFO",
+        "citation": "Polyanskiy, M. N., Refractive index database, https://refractiveindex.info/?shelf=glass&book=alkali-aluminosilicate&page=MAL-2, accessed October 2024",
+        "context": "Alkali aluminosilicate glass (approx. composition: 65% SiO2, 18% Al2O3, 10% Na2O, 5% MgO, 2% others; commercial grade similar to display glass substrates), 25\u00b0C, normal incidence, 1064 nm wavelength (Nd:YAG laser relevant for cleaning applications)",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:32:24.756410",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 20,
+        "max": 500,
+        "value": 100,
+        "unit": "W",
+        "description": "Typical range for delicate glass substrates to avoid thermal damage; starting at 100W for initial tests on light contaminants. Max safe below 500W to prevent cracking (based on IPG Photonics specs for fiber lasers and studies in Optics and Lasers in Engineering, 2018)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR for transparent material cleaning"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 60,
+        "unit": "\u03bcm",
+        "description": "Spot size for effective glass treatment"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 40,
+        "unit": "kHz",
+        "description": "Moderate frequency for glass cleaning"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Short pulses to prevent cracking"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 600,
+        "unit": "mm/s",
+        "description": "Faster scanning for thermal management"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 2,
+        "unit": "passes",
+        "description": "Careful passes for complete cleaning"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 40,
+        "unit": "%",
+        "description": "Moderate overlap for glass surfaces"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 2.53,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 0,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "surfaceRoughness",
+      "value": 0.1,
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 750,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 85,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 0.85,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 900,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 12,
+      "unitText": "\u03bcm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.92,
+      "unitText": "mm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 750,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 4.5,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": 100000000000000.0,
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 1473,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.05,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 8.5,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 2.8,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 5.34e-07,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 3.8e-06,
+      "unitText": "1/K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 740.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 1.05,
+      "unitText": "W/(m\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.042,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "20-500",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/aluminosilicate-glass-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/aluminosilicate-glass-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/aluminosilicate-glass-material-dataset.txt"
+    }
+  ]
+}

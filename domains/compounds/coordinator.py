@@ -10,17 +10,17 @@ import logging
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from shared.domain.base_coordinator import UniversalDomainCoordinator
+from shared.domain.base_coordinator import DomainCoordinator
 from domains.compounds.data_loader import CompoundDataLoader
 
 logger = logging.getLogger(__name__)
 
 
-class CompoundCoordinator(UniversalDomainCoordinator):
+class CompoundCoordinator(DomainCoordinator):
     """
     Coordinates content generation for the compounds domain.
     
-    Extends UniversalDomainCoordinator to provide:
+    Extends DomainCoordinator to provide:
     - QualityEvaluatedGenerator initialization
     - Winston client integration
     - SubjectiveEvaluator setup

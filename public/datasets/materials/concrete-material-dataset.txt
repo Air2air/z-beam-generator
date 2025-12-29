@@ -1,0 +1,57 @@
+Concrete Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning concrete, begin with controlled beam passes to strip away surface contaminants and restore durability, all while preserving its structural integrity.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : masonry
+subcategory                   : general
+name                          : Concrete
+fractureToughness             : 0.7 MPa m^{1/2}
+density                       : 2400.0 kg/m³
+oxidationResistance           : 0.98 dimensionless
+youngsModulus                 : 30.0 GPa
+hardness                      : 0.4 GPa
+compressiveStrength           : 25.0 MPa
+tensileStrength               : 3.2 MPa
+flexuralStrength              : 4.2 MPa
+corrosionResistance           : 300.0 Ω·m
+laserDamageThreshold          : 8 J/cm²
+absorptivity                  : 0.75 dimensionless
+absorptionCoefficient         : 50000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.25 dimensionless
+thermalDestructionPoint       : 1000 K
+vaporPressure                 : 10 Pa
+thermalDestruction            : 773.0 K
+laserReflectivity             : 0.35 
+thermalExpansion              : 1.2e-05 K^{-1}
+thermalConductivity           : 1.4 W/m·K
+specificHeat                  : 880.0 J/(kg·K)
+laserAbsorption               : 0.9 dimensionless
+thermalDiffusivity            : 5e-07 m²/s
+ablationThreshold             : 3.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 100-2000 W
+                                Typical range for industrial 1064 nm laser cleaning of concrete surfaces (e.g., graffiti or rust removal); starting at 500 W balances efficiency and safety to avoid thermal cracking. Max safe below substrate damage threshold (~1000-1500 W depending on fluence). Source: CleanLaser and IPG Photonics equipment specs; academic review in J. Laser Appl. (2018) on stone/concrete cleaning.
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength optimized for concrete absorption and minimal substrate damage
+spotSize                      : 0.1-500 mm
+                                Beam spot diameter for effective cleaning coverage and energy density control
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning coverage without thermal buildup
+pulseWidth                    : 0.1-1000 ns
+                                Pulse duration balancing efficient contaminant removal with concrete substrate preservation
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning with sufficient energy deposition
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap percentage for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

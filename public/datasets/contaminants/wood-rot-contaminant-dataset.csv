@@ -1,0 +1,22 @@
+Property,Value
+Name,Wood Rot / Fungal Biodegradation
+Description,"Wood Rot / Fungal Biodegradation is a common contamination pattern in laser cleaning. This biological/growth contamination affects surface integrity and requires specialized removal techniques. Commonly found on 9 different material types including metals, composites, and specialized substrates."
+Category,
+Subcategory,
+absorptionRate,"{'wavelength_1064nm': 120, 'wavelength_355nm': 2800, 'wavelength_532nm': 450}"
+reflectivity,"{'wavelength_1064nm': 0.15, 'wavelength_355nm': 0.03, 'wavelength_532nm': 0.08}"
+Total Compounds,5
+Compound 1,Formaldehyde
+Compound 2,Carbon Dioxide
+Compound 3,Volatile Organic Compounds
+Compound 4,Water Vapor
+Compound 5,Carbon Ash
+laserPower,"{'max_j_cm2': 1.2, 'min_j_cm2': 0.3, 'recommended_j_cm2': 0.8}"
+wavelength,"{'value': [1064, 532]}"
+pulseWidth,"{'max_ns': 200, 'min_ns': 10, 'recommended_ns': 100}"
+scanSpeed,"{'max': 2000, 'min': 500, 'recommended': 1000}"
+spotSize,"{'max': 0.5, 'min': 0.05, 'recommended': 0.2}"
+frequency,"{'max': 200, 'min': 20, 'recommended': 50}"
+overlapRatio,{'value': 50}
+removalRate,"{'diminishing_returns_after': 5, 'optimal_passes': 3, 'single_pass': 0.7}"
+Variable Measured Count,52

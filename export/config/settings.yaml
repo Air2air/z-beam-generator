@@ -54,6 +54,10 @@ enrichments:
 - type: author
   module: export.enrichers.linkage.author_enricher
   class: AuthorEnricher
+- type: images
+  module: export.enrichers.media.image_enricher
+  class: ImageEnricher
+  domain: settings
 - type: name
   module: export.enrichers.metadata.name_enricher
   class: NameEnricher
@@ -93,7 +97,9 @@ enrichments:
   module: export.enrichers.metadata.field_order_enricher
   class: FieldOrderEnricher
   description: Normalize field order for consistency
-# SEO/excerpt generators: use --postprocess with prompt templates (domains/settings/prompts/)
+# Field configuration
+id_field: id
+title_field: title
 library_enrichments:
   enabled: false
   enrichments:
@@ -101,6 +107,12 @@ library_enrichments:
     relationship_field: relationships.regulatory_standards
     output_field: regulatory_standards_detail
 generators:
+- type: seo_metadata
+  module: export.generation.seo_metadata_generator
+  class: SEOMetadataGenerator
+  page_type: settings
+  title_field: page_title
+  description_field: meta_description
 - type: section_metadata
   module: export.generation.section_metadata_generator
   class: SectionMetadataGenerator

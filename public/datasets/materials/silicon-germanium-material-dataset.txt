@@ -1,0 +1,58 @@
+Silicon Germanium Laser Cleaning Dataset
+================================================================================
+
+Description: Hardness of Silicon Germanium, it resists wear during laser cleaning processes. Density stays low, thus aids lightweight handling in electronics manufacturing. Suitability comes from semiconductor nature for precise contaminant removal, yet challenges from brittleness demand careful energy control, so damage avoids.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : semiconductor
+subcategory                   : elemental
+name                          : Silicon Germanium
+electricalResistivity         : 80.0 ohm·m
+fractureToughness             : 0.92 MPa m^{1/2}
+youngsModulus                 : 147000000000.0 Pa
+oxidationResistance           : 1.2e-17 m²/s
+density                       : 3.23 g/cm^3
+hardness                      : 10.2 GPa
+corrosionResistance           : 0.92 dimensionless
+compressiveStrength           : 8500.0 MPa
+flexuralStrength              : 280.0 MPa
+tensileStrength               : 3.2 GPa
+laserDamageThreshold          : 2.0 J/cm²
+absorptivity                  : 0.6 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.4 dimensionless
+thermalDestructionPoint       : 1400 K
+vaporPressure                 : 1.0 Pa
+thermalDestruction            : 1273.0 K
+specificHeat                  : 680.0 J/(kg·K)
+laserReflectivity             : 0.35 dimensionless
+thermalConductivity           : 10.2 W/(m·K)
+thermalExpansion              : 3.6e-06 K^{-1}
+laserAbsorption               : 25000.0 m^{-1}
+thermalDiffusivity            : 2.5e-05 m²/s
+ablationThreshold             : 0.85 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-500 W
+                                Typical range for semiconductor cleaning to avoid thermal damage; starting at 100W for light contamination on SiGe, max below damage threshold (~500W with short pulses). Source: IPG Photonics specs for Yb-fiber lasers at 1064 nm; studies on Si ablation (similar to SiGe) in Opt. Lasers Eng. (2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal SiGe absorption and minimal substrate damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive thermal buildup
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -1,0 +1,63 @@
+Stainless Steel Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning stainless steel, start by adjusting the power to manage its natural resistance to oxidation, which preserves surfaces in harsh marine or chemical environments. Be sure to avoid overheating that could warp the material, while effectively removing contaminants without harming its durable finish.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : ferrous
+name                          : Stainless Steel
+youngsModulus                 : 193.0 GPa
+oxidationResistance           : 1173.0 K
+density                       : 8000.0 kg/m³
+hardness                      : 170.0 HV
+corrosionResistance           : 0.005 mm/year
+compressiveStrength           : 215.0 MPa
+flexuralStrength              : 517.0 MPa
+tensileStrength               : 515.0 MPa
+fractureToughness             : 200.0 MPa√m
+porosity                      : 0.0 fraction
+electricalResistivity         : 7.2e-07 Ω·m
+absorptivity                  : 0.4 dimensionless
+boilingPoint                  : 3073.0 K
+absorptionCoefficient         : 50000000.0 m⁻¹
+electricalConductivity        : 1400000.0 S/m
+meltingPoint                  : 1425.0 °C
+vaporPressure                 : 1 Pa
+thermalDestructionPoint       : 1700 K
+reflectivity                  : 0.6 dimensionless
+thermalShockResistance        : 2.5 MW/m
+surfaceRoughness              : 1.6 μm
+laserDamageThreshold          : 5 J/cm²
+thermalDestruction            : 1673.0 K
+specificHeat                  : 500.0 J/kg·K
+laserReflectivity             : 0.65 dimensionless
+thermalConductivity           : 16.2 W/m·K
+thermalExpansion              : 17.3 10^{-6} K^{-1}
+laserAbsorption               : 0.35 dimensionless
+thermalDiffusivity            : 4e-06 m²/s
+ablationThreshold             : 1.5 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-1000 W
+                                Typical range for 1064 nm fiber lasers in industrial cleaning of stainless steel to remove contaminants without melting; starting at 200 W for balanced efficiency and safety. Max limited to avoid thermal damage given SS reflectivity (~60% at 1064 nm). Source: IPG Photonics YLR series specs and study in Optics and Lasers in Engineering (2018).
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength optimized for Stainless Steel absorption
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with minimal heat accumulation
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive processing
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

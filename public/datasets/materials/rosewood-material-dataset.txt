@@ -1,0 +1,58 @@
+Rosewood Laser Cleaning Dataset
+================================================================================
+
+Description: We've found Rosewood excels in laser cleaning, thanks to its dense structure and strong absorption compared to softer woods. This lets us strip away grime from cultural artifacts or instruments efficiently while preserving the natural oils that resist decay—just ensure controlled passes to avoid surface charring.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : wood
+subcategory                   : hardwood
+name                          : Rosewood
+fractureToughness             : 0.42 MPa√m
+youngsModulus                 : 11.0 GPa
+oxidationResistance           : 0.82 dimensionless
+density                       : 910.0 kg/m³
+hardness                      : 12000.0 N
+corrosionResistance           : 1.0 durability_class
+compressiveStrength           : 53.1 MPa
+flexuralStrength              : 110.0 MPa
+tensileStrength               : 128.0 MPa
+porosity                      : 0.38 
+laserDamageThreshold          : 2.5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 1.2 MW/m
+reflectivity                  : 0.1 dimensionless
+thermalDestructionPoint       : 550 K
+vaporPressure                 : 50 Pa
+thermalDestruction            : 553.0 K
+specificHeat                  : 1450.0 J/(kg·K)
+laserReflectivity             : 0.072 dimensionless (fraction)
+thermalConductivity           : 0.17 W/m·K
+thermalExpansion              : 4.2e-06 K^{-1}
+laserAbsorption               : 0.94 dimensionless
+thermalDiffusivity            : 1.25e-07 m²/s
+ablationThreshold             : 1.85 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 10-100 W
+                                Typical range for delicate wood cleaning to avoid thermal damage; starting at 30W balances efficiency and safety for rosewood's low thermal conductivity (~0.15 W/mK). Source: Adapted from wood restoration studies using Nd:YAG lasers (e.g., Journal of Cultural Heritage, 2015).
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength for optimal absorption in Rosewood lignin and cellulose
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled material removal
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform surface treatment
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete surface cleaning
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

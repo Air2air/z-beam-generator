@@ -23,7 +23,7 @@ from typing import Any, Callable, Dict, List, Optional, Set, Tuple, Type
 logger = logging.getLogger(__name__)
 
 
-class UnifiedImportManager:
+class ImportManager:
     """
     Unified import management system combining all import-related functionality.
     
@@ -383,7 +383,7 @@ def with_import_fallback(fallback_module: Any):
 # ===== GLOBAL INSTANCE =====
 
 # Global unified import manager instance
-import_manager = UnifiedImportManager()
+import_manager = ImportManager()
 
 # Setup component fallbacks on import
 import_manager.setup_component_fallbacks()
@@ -463,7 +463,7 @@ if __name__ == "__main__":
 
 
 __all__ = [
-    "UnifiedImportManager",
+    "ImportManager",
     "import_manager", 
     "with_import_fallback",
     "safe_import",

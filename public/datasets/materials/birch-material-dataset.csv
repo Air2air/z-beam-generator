@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,wood,,
+subcategory,hardwood,,
+name,Birch,,
+fractureToughness,0.35,MPa m^{0.5},
+density,650.0,kg/m³,
+oxidationResistance,0.72,1,
+youngsModulus,13.9,GPa,
+hardness,1260.0,lbf,
+compressiveStrength,42.1,MPa,
+tensileStrength,130.0,MPa,
+flexuralStrength,96.0,MPa,
+corrosionResistance,0.25,dimensionless (normalized durability index 0-1),
+porosity,0.587,,
+laserDamageThreshold,2.5,J/cm²,
+absorptivity,0.85,dimensionless,
+absorptionCoefficient,400000,m⁻¹,
+thermalShockResistance,0.8,MW/m,
+reflectivity,0.12,dimensionless,
+thermalDestructionPoint,573,K,
+vaporPressure,500,Pa,
+thermalDestruction,563.0,K,
+laserReflectivity,0.12,dimensionless,
+thermalExpansion,2.7e-05,K^{-1},
+thermalConductivity,0.163,W/m·K,
+specificHeat,1380.0,J/(kg·K),
+laserAbsorption,35000.0,m^{-1},
+thermalDiffusivity,1.3e-07,m²/s,
+ablationThreshold,1.2,J/cm²,
+power,20-200,W,"Typical range for wood cleaning at 1064 nm to avoid charring; start at 50 W for light contamination on birch (low thermal conductivity ~0.16 W/mK limits heat dissipation). Max safe below substrate damage threshold. Source: Studies on Nd:YAG laser cleaning of wood (e.g., Journal of Cultural Heritage, 2018)."
+wavelength,355-10640,nm,Near-IR wavelength for optimal Birch wood absorption and minimal subsurface damage
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning resolution on Birch surface features
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage while maintaining thermal control
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for controlled ablation of contaminants without excessive heat diffusion
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage without excessive dwell time
+passCount,1-10,passes,Recommended number of cleaning passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap percentage for uniform cleaning coverage

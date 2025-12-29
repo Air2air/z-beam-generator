@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,alloy,,
+name,Stainless Steel 304,,
+density,8.0,g/cm³,
+porosity,0,%,
+surfaceRoughness,0.8,μm,
+tensileStrength,505,MPa,
+youngsModulus,193,GPa,
+hardness,2.15,GPa,
+flexuralStrength,530,MPa,
+oxidationResistance,10,μm/year,
+corrosionResistance,0.8,mm/year,
+compressiveStrength,505,MPa,
+fractureToughness,100,MPa m^{1/2},
+electricalResistivity,7.2e-07,Ω·m,
+electricalConductivity,1390000.0,S/m,
+boilingPoint,2750.0,°C,
+meltingPoint,1425.0,°C,
+thermalDestruction,1673,K,
+laserAbsorption,0.35,dimensionless,
+laserDamageThreshold,1.2,J/cm²,
+ablationThreshold,1.85,J/cm²,
+thermalDiffusivity,4.09e-06,m²/s,
+thermalExpansion,17.3,×10^{-6}/K,
+specificHeat,500.0,J/(kg·K),
+thermalConductivity,16.2,W/m·K,
+laserReflectivity,0.65,1 (dimensionless fraction),
+vaporPressure,0.0133,Pa,
+thermalDestructionPoint,1425.0,°C,
+absorptionCoefficient,47200000.0,m^{-1},
+thermalShockResistance,132.0,K,
+reflectivity,0.62,fraction,
+absorptivity,0.35,dimensionless,
+power,50-1000,W,Typical range for industrial 1064 nm pulsed fiber lasers cleaning SS304 contaminants like oils or rust; starting at 200 W balances efficiency and safety to avoid melting (melting point ~1425°C). Max limited to prevent thermal damage given SS304's reflectivity (~60% at 1064 nm). Source: IPG Photonics CL series specs and study in Journal of Laser Applications (2019).
+wavelength,355-10640,nm,Near-IR wavelength for optimal metal absorption
+spotSize,0.1-500,μm,Beam spot diameter for effective cleaning resolution
+repetitionRate,1-200,kHz,Pulse frequency for controlled cleaning
+pulseWidth,0.1-1000,ns,Pulse duration for minimal heat-affected zone
+scanSpeed,10-5000,mm/s,Beam travel speed for uniform treatment
+passCount,1-10,passes,Number of cleaning cycles for complete removal
+overlapRatio,10-90,%,Beam overlap for consistent coverage

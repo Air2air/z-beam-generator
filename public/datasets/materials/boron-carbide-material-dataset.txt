@@ -1,0 +1,54 @@
+Boron Carbide Laser Cleaning Dataset
+================================================================================
+
+Description: We've discovered boron carbide shines in laser cleaning applications, thanks to its superior hardness that withstands abrasion and intense heat without cracking or deforming—outpacing softer ceramics by upholding structural integrity for armor and tooling in demanding environments
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : ceramic
+subcategory                   : carbide
+name                          : Boron Carbide
+density                       : 2.52 g/cm³
+porosity                      : 0 %
+surfaceRoughness              : 0.4 μm
+tensileStrength               : 350 MPa
+youngsModulus                 : 450 GPa
+hardness                      : 38 GPa
+flexuralStrength              : 400 MPa
+oxidationResistance           : 30 μm/year
+corrosionResistance           : 0.75 mm/year
+compressiveStrength           : 350 MPa
+fractureToughness             : 28 MPa m^{1/2}
+electricalResistivity         : 10 Ω·m
+thermalDestruction            : 2723 K
+laserAbsorption               : 0.18 dimensionless
+laserDamageThreshold          : 5.2 J/cm²
+ablationThreshold             : 2.8 J/cm²
+thermalDiffusivity            : 1.18e-05 m²/s
+thermalExpansion              : 5.6e-06 K^{-1}
+specificHeat                  : 1076.0 J/(kg·K)
+thermalConductivity           : 30.0 W/m·K
+laserReflectivity             : 0.32 dimensionless
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-300 W
+                                Typical range for industrial 1064 nm fiber lasers cleaning hard ceramics like B4C; starting at 100 W balances efficiency and safety to avoid thermal damage given B4C's low thermal conductivity (~30 W/m·K); max limited to prevent melting (mp ~2450°C). Source: IPG Photonics YLR series specs and laser cleaning studies on ceramics (e.g., J. Laser Appl. 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal absorption
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for effective cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Pulse frequency for controlled material removal
+pulseWidth                    : 0.1-1000 ns
+                                Pulse duration for minimal thermal penetration
+scanSpeed                     : 10-5000 mm/s
+                                Beam travel speed for uniform coverage
+passCount                     : 1-10 passes
+                                Number of cleaning cycles for complete removal
+overlapRatio                  : 10-90 %
+                                Beam overlap for consistent surface treatment
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

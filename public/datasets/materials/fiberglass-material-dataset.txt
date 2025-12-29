@@ -1,0 +1,57 @@
+Fiberglass Laser Cleaning Dataset
+================================================================================
+
+Description: I've seen fiberglass excel in marine and aerospace applications because it combines impressive strength with lightweight durability and resists corrosion far better than metals, so you avoid heavy rust issues over time
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : composite
+subcategory                   : fiber-reinforced
+name                          : Fiberglass
+electricalResistivity         : 1000000000000.0 Ω·m
+density                       : 1800.0 kg/m³
+oxidationResistance           : 0.0001 mg/cm²/year
+youngsModulus                 : 25.0 GPa
+hardness                      : 85.0 Shore D
+compressiveStrength           : 240.0 MPa
+tensileStrength               : 620.0 MPa
+flexuralStrength              : 200.0 MPa
+corrosionResistance           : 0.95 dimensionless
+laserDamageThreshold          : 3.5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 1000000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.08 dimensionless
+thermalDestructionPoint       : 650 K
+vaporPressure                 : 50 Pa
+thermalDestruction            : 673.0 K
+laserReflectivity             : 0.04 dimensionless
+thermalExpansion              : 1.5e-05 K^{-1}
+thermalConductivity           : 0.3 W/m·K
+specificHeat                  : 920.0 J/(kg·K)
+laserAbsorption               : 0.12 dimensionless
+thermalDiffusivity            : 1.8e-07 m²/s
+ablationThreshold             : 2.7 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for pulsed Nd:YAG lasers in composite cleaning to avoid thermal damage to polymer matrix; starting at 100W for light contamination (IPG Photonics specs for CL series cleaners; conservative for fiberglass melting point ~200-300°C).
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength for optimal Fiberglass absorption and minimal transmission
+spotSize                      : 0.1-500 μm
+                                Optimal spot diameter for precision cleaning resolution
+repetitionRate                : 1-200 kHz
+                                High repetition rate for efficient cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Scanning speed for efficient area coverage without thermal buildup
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

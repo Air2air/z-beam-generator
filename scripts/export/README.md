@@ -29,9 +29,20 @@ python3 scripts/export/generate_datasets.py --verbose
 ```
 
 **Output**:
-- **Materials**: `../z-beam/public/datasets/materials/*.{json,csv,txt}` (459 files)
-- **Contaminants**: `../z-beam/public/datasets/contaminants/*.{json,csv,txt}` (294 files)
+- **Materials**: `../z-beam/public/datasets/materials/{slug}-material-dataset.{json,csv,txt}` (459 files) ✅ GENERATED
+- **Contaminants**: `../z-beam/public/datasets/contaminants/{slug}-contaminant-dataset.{json,csv,txt}` (294 files) ✅ GENERATED
 - **Total**: 753 files (251 datasets × 3 formats)
+
+**Naming Convention** (per DATASET_GENERATOR_SPECIFICATION.md):
+- Materials: `{slug}-material-dataset.json` (e.g., `aluminum-material-dataset.json`)
+- Contaminants: `{slug}-contaminant-dataset.json` (e.g., `rust-oxidation-contaminant-dataset.json`)
+- **Note**: Compounds are INTEGRATED into contaminant datasets (no separate compound files)
+
+**URL Structure** (per DATASET_GENERATOR_SPECIFICATION.md):
+- Materials: `https://www.z-beam.com/datasets/materials/{slug}-material-dataset.{format}`
+- Contaminants: `https://www.z-beam.com/datasets/contaminants/{slug}-contaminant-dataset.{format}`
+- **@id**: Includes subdirectory + suffix + `#dataset` fragment
+- **identifier**: Uses `-material-dataset` or `-contaminant-dataset` suffix
 
 **Features**:
 - ✅ Direct YAML loading via domain data loaders

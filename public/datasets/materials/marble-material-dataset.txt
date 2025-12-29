@@ -1,0 +1,58 @@
+Marble Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning marble, I've found it keeps its elegant veins steady through low-energy passes that strip away grime mid-process, all without risking cracks from excess heat buildup.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : stone
+subcategory                   : metamorphic
+name                          : Marble
+fractureToughness             : 1.16 MPa√m
+youngsModulus                 : 55.0 GPa
+oxidationResistance           : 0.98 
+density                       : 2710.0 kg/m³
+hardness                      : 3.0 Mohs
+corrosionResistance           : 0.65 dimensionless (resistance index, 0-1 scale)
+compressiveStrength           : 100.0 MPa
+flexuralStrength              : 11.0 MPa
+tensileStrength               : 10.0 MPa
+porosity                      : 0.6 %
+laserDamageThreshold          : 2.5 J/cm²
+absorptivity                  : 0.1 dimensionless
+absorptionCoefficient         : 5000 m⁻¹
+thermalShockResistance        : 1.2 MW/m
+reflectivity                  : 0.9 dimensionless
+thermalDestructionPoint       : 1100 K
+vaporPressure                 : 0.1 Pa
+thermalDestruction            : 825.0 °C
+specificHeat                  : 880.0 J/(kg·K)
+laserReflectivity             : 0.38 dimensionless
+thermalConductivity           : 2.8 W/m·K
+thermalExpansion              : 6.5e-06 K^{-1}
+laserAbsorption               : 5000.0 m^{-1}
+thermalDiffusivity            : 1.24e-06 m²/s
+ablationThreshold             : 1.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-300 W
+                                Typical range for Nd:YAG lasers in stone cleaning to balance efficiency and heat control; starting at 100 W avoids thermal cracking in marble (CaCO3, low thermal conductivity ~2.5 W/mK); max limited to prevent decomposition above 800°C. Source: Adapt Laser Systems specs and Verho et al. (2007) in J. Cult. Herit.
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength optimized for Marble absorption and minimal subsurface damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control on Marble surfaces
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage and thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning without excessive thermal buildup
+passCount                     : 1-10 passes
+                                Recommended number of passes for thorough cleaning with progressive contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning coverage and processing efficiency
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

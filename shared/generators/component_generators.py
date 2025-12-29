@@ -345,7 +345,7 @@ class ComponentGeneratorFactory:
             # Import API generators dynamically
             if component_type == "frontmatter":
                 # NOTE: StreamlinedFrontmatterGenerator removed Dec 19, 2025
-                from export.core.universal_exporter import (
+                from export.core.frontmatter_exporter import (
                     StreamlinedFrontmatterGenerator,
                 )
 

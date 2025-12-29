@@ -57,6 +57,7 @@ class MaterialsDataLoader(BaseDataLoader):
         """Initialize materials data loader"""
         super().__init__(project_root)
         self.data_dir = self.project_root / 'data' / 'materials'
+        self.settings_dir = self.project_root / 'data' / 'settings'
         
         # File paths
         self.materials_file = self.data_dir / 'Materials.yaml'
@@ -66,6 +67,7 @@ class MaterialsDataLoader(BaseDataLoader):
         self.property_defs_file = self.data_dir / 'PropertyDefinitions.yaml'
         self.parameter_defs_file = self.data_dir / 'ParameterDefinitions.yaml'
         self.regulatory_file = self.data_dir / 'RegulatoryStandards.yaml'
+        self.settings_file = self.settings_dir / 'Settings.yaml'
     
     def _get_data_file_path(self) -> Path:
         """Return path to primary data file (Materials.yaml)"""
@@ -86,26 +88,73 @@ class MaterialsDataLoader(BaseDataLoader):
     
     def load_materials(self) -> Dict[str, Any]:
         """
-        Load Materials.yaml (core metadata only).
+        Load Materials.yaml merged with Settings.yaml (per ADR 005).
+        
+        Merges machine_settings from Settings.yaml into each material.
+        Per DATASET_SPECIFICATION.md: Materials datasets must include
+        both material properties AND machine settings.
         
         Returns:
             Dict with 'materials', 'category_metadata', 'material_index', etc.
+            Each material includes 'machine_settings' field.
         
         Raises:
             ConfigurationError: If file cannot be loaded
         """
         # Check cache first
-        cached = cache_manager.get('materials', 'materials_yaml')
+        cached = cache_manager.get('materials', 'materials_yaml_with_settings')
         if cached:
             return cached
         
-        # Load using base class method
+        # Load materials data
         data = self._load_yaml_file(self.materials_file)
         
-        # Cache for 1 hour
-        cache_manager.set('materials', 'materials_yaml', data, ttl=3600)
+        # Load Settings.yaml and merge (per ADR 005)
+        try:
+            settings_data = read_yaml_file(self.settings_file)
+            data = self._merge_machine_settings(data, settings_data)
+            logger.info(f"Merged machine settings from {self.settings_file}")
+        except FileNotFoundError:
+            logger.warning(f"Settings.yaml not found at {self.settings_file} - materials will not have machine_settings")
+        except Exception as e:
+            logger.error(f"Error loading Settings.yaml: {e} - continuing without machine settings")
+        
+        # Cache and return (1 hour TTL)
+        cache_manager.set('materials', 'materials_yaml_with_settings', data, ttl=3600)
         
         return data
+    
+    def _merge_machine_settings(self, materials_data: Dict[str, Any], settings_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Merge machine_settings from Settings.yaml into Materials.yaml.
+        
+        Matches by base slug: 'aluminum-laser-cleaning' material gets 'aluminum-settings' settings.
+        
+        Args:
+            materials_data: Materials.yaml data
+            settings_data: Settings.yaml data
+        
+        Returns:
+            Materials data with machine_settings merged
+        """
+        settings = settings_data.get('settings', {})
+        materials = materials_data.get('materials', {})
+        
+        merged_count = 0
+        for material_slug, material_data in materials.items():
+            # Get base slug (remove -laser-cleaning suffix)
+            base_slug = material_slug.replace('-laser-cleaning', '')
+            settings_slug = f"{base_slug}-settings"
+            
+            # Find matching settings
+            if settings_slug in settings:
+                setting_data = settings[settings_slug]
+                # Merge machine_settings into material
+                material_data['machine_settings'] = setting_data.get('machine_settings', {})
+                merged_count += 1
+        
+        logger.info(f"Merged machine_settings into {merged_count}/{len(materials)} materials")
+        return materials_data
     
     def load_properties(self) -> Dict[str, Dict[str, Any]]:
         """

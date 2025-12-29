@@ -1,0 +1,58 @@
+Fiber Reinforced Polyurethane FRPU Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning fiber reinforced polyurethane, always prioritize its excellent thermal stability from the outset to prevent any softening, since this lightweight composite offers outstanding strength and impact resistance that surpasses conventional plastics in tough settings like aerospace parts or automotive components, enabling you to clean surfaces effectively while safeguarding the core structure's soundness.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : composite
+subcategory                   : fiber-reinforced
+name                          : Fiber Reinforced Polyurethane FRPU
+electricalResistivity         : 1200000000000.0 Ω·m
+fractureToughness             : 2.1 MPa m^{1/2}
+density                       : 1.2 g/cm³
+oxidationResistance           : 0.02 %/hour
+youngsModulus                 : 3.2 GPa
+hardness                      : 65.0 Shore D
+compressiveStrength           : 145.0 MPa
+tensileStrength               : 48.0 MPa
+flexuralStrength              : 115.0 MPa
+corrosionResistance           : 9.2 dimensionless (corrosion resistance rating scale 0-10)
+laserDamageThreshold          : 5 J/cm²
+absorptivity                  : 0.2 dimensionless
+absorptionCoefficient         : 50000 m⁻¹
+thermalShockResistance        : 1 MW/m
+reflectivity                  : 0.7 dimensionless
+thermalDestructionPoint       : 600 K
+vaporPressure                 : 10 Pa
+thermalDestruction            : 573.0 K
+laserReflectivity             : 0.32 dimensionless
+thermalExpansion              : 3.5e-05 1/K
+thermalConductivity           : 0.32 W/m·K
+specificHeat                  : 1120.0 J/(kg·K)
+laserAbsorption               : 0.87 dimensionless
+thermalDiffusivity            : 1.28e-07 m²/s
+ablationThreshold             : 1.45 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-200 W
+                                Typical range for polymer composites like FRPU to balance cleaning efficiency and avoid thermal degradation; starting at 100W for light contamination. Max safe ~150-200W before substrate melting (polyurethane degrades ~200°C). Source: IPG Photonics fiber laser specs for cleaning; studies on polymer ablation (e.g., J. Appl. Phys. 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for polyurethane absorption while minimizing fiber damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control on FRPU surface
+repetitionRate                : 1-200 kHz
+                                High repetition rate for efficient cleaning with minimal thermal accumulation
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of polyurethane matrix
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for efficient coverage without excessive dwell time
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive thermal input
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

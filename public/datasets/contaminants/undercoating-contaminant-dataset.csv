@@ -1,0 +1,23 @@
+Property,Value
+Name,Automotive Undercoating
+Description,"Automotive Undercoating (Asphalt, Rubber, Solvents) is a common contamination pattern in laser cleaning. This organic-residue/other contamination affects surface integrity and requires specialized removal techniques. Commonly found on 1 different material types including metals, composites, and specialized substrates."
+Category,
+Subcategory,
+composition,"['Asphalt', 'Rubber', 'Solvents']"
+absorptionRate,"{'wavelength_1064nm': 850, 'wavelength_532nm': 12500}"
+reflectivity,"{'wavelength_1064nm': 0.15, 'wavelength_355nm': 0.05, 'wavelength_532nm': 0.08}"
+Total Compounds,5
+Compound 1,Carbon Dioxide
+Compound 2,Water Vapor
+Compound 3,Carbon Ash
+Compound 4,Metal Oxides (Mixed)
+Compound 5,Organic Residues
+laserPower,"{'max_j_cm2': 1.4, 'min_j_cm2': 0.8, 'recommended_j_cm2': 1.1}"
+wavelength,"{'value': [1064, 532]}"
+pulseWidth,"{'max_ns': 100, 'min_ns': 10, 'recommended_ns': 30}"
+scanSpeed,"{'max': 2000, 'min': 500, 'recommended': 1000}"
+spotSize,"{'max': 0.2, 'min': 0.05, 'recommended': 0.1}"
+frequency,"{'max': 100, 'min': 20, 'recommended': 50}"
+overlapRatio,{'value': 50}
+removalRate,"{'diminishing_returns_after': 4, 'optimal_passes': 3, 'single_pass': 0.4}"
+Variable Measured Count,51

@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,stone,,
+subcategory,sedimentary,,
+name,Porphyry,,
+fractureToughness,1.12,MPa m^{1/2},
+youngsModulus,62.5,GPa,
+oxidationResistance,0.96,dimensionless (normalized resistance index),
+density,2720.0,kg/m³,
+hardness,6.5,Mohs,
+corrosionResistance,0.94,dimensionless (normalized resistance index),
+compressiveStrength,180.0,MPa,
+flexuralStrength,18.2,MPa,
+tensileStrength,7.2,MPa,
+porosity,1.2,%,
+laserDamageThreshold,8.5,J/cm²,
+absorptivity,0.75,dimensionless,
+absorptionCoefficient,5000000.0,m⁻¹,
+thermalShockResistance,2.5,MW/m,
+reflectivity,0.25,dimensionless,
+thermalDestructionPoint,1473,K,
+vaporPressure,0.1,Pa,
+thermalDestruction,846.0,K,
+specificHeat,840.0,J/(kg·K),
+laserReflectivity,0.23,dimensionless,
+thermalConductivity,2.3,W/m·K,
+thermalExpansion,7.5e-06,/K,
+laserAbsorption,1250.0,m^{-1},
+thermalDiffusivity,1.15e-06,m²/s,
+ablationThreshold,1.15,J/cm²,
+power,50-500,W,"Typical range for industrial 1064 nm Nd:YAG lasers cleaning stone surfaces like porphyry; starting at 100 W for light contamination to avoid thermal damage given porphyry's low thermal conductivity (~2.5 W/mK); max safe below 500 W to prevent substrate cracking (e.g., IPG Photonics YLR series specs; academic review in J. Cult. Herit. 2018)."
+wavelength,355-10640,nm,Near-IR wavelength optimized for Porphyry mineral absorption characteristics
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning of Porphyry surface features
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without excessive thermal buildup

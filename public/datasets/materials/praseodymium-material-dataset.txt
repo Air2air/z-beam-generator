@@ -1,0 +1,48 @@
+Praseodymium Laser Cleaning Dataset
+================================================================================
+
+Description: Praseodymium suits laser cleaning through moderate energy absorption and strong heat resistance, which clear contaminants effectively without melting. Its softness challenges surface integrity, so teams dial in precise settings to maintain quality.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : rare-earth
+subcategory                   : lanthanide
+name                          : Praseodymium
+youngsModulus                 : 37.3 GPa
+oxidationResistance           : 1.16 dimensionless
+density                       : 6.773 g/cm³
+hardness                      : 26.0 HV
+absorptivity                  : 0.72 dimensionless
+boilingPoint                  : 3512.0 K
+thermalDestruction            : 1204.0 K
+specificHeat                  : 195.2 J/(kg·K)
+laserReflectivity             : 0.72 dimensionless
+thermalConductivity           : 17.0 W/(m·K)
+thermalExpansion              : 11.3 10^{-6} K^{-1}
+ablationThreshold             : 2.85 J/cm²
+absorptionCoefficient         : 63000000.0 m^{-1}
+laserDamageThreshold          : 1.85 J/cm²
+thermalDiffusivity            : 1.308e-05 m^2/s
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-200 W
+                                Typical range for Nd:YAG laser cleaning of reflective metals like rare earths; starting at 50W to avoid thermal damage given Praseodymium's low melting point (931°C) and moderate thermal conductivity (~17 W/m·K). Conservative max to prevent substrate melting. Based on manufacturer specs from IPG Photonics for metal cleaning systems; no Praseodymium-specific studies found, generalized from aluminum cleaning (Optics & Laser Technology, 2018).
+wavelength                    : 355-10640 nm
+                                Optimal wavelength for Praseodymium absorption characteristics
+spotSize                      : 0.1-500 μm
+                                Optimal beam spot diameter for Praseodymium surface processing
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient Praseodymium cleaning
+pulseWidth                    : 0.1-1000 ns
+                                Optimal pulse duration for Praseodymium thermal management
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform Praseodymium cleaning
+passCount                     : 1-10 passes
+                                Optimal number of passes for complete Praseodymium surface cleaning
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform Praseodymium processing
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -1,0 +1,58 @@
+Oak Laser Cleaning Dataset
+================================================================================
+
+Description: I've seen oak stand out in restoration work because its tough, dense grain absorbs laser energy without splintering or losing structural integrity, reviving aged surfaces in furniture and heritage pieces beautifully—though you must limit passes to prevent surface charring.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : wood
+subcategory                   : hardwood
+name                          : Oak
+fractureToughness             : 0.35 MPa m^{1/2}
+youngsModulus                 : 12.4 GPa
+oxidationResistance           : 0.85 J/cm²
+density                       : 720.0 kg/m³
+hardness                      : 5738.0 N
+corrosionResistance           : 0.75 dimensionless
+compressiveStrength           : 50.3 MPa
+flexuralStrength              : 95.1 MPa
+tensileStrength               : 99.0 MPa
+porosity                      : 0.55 fraction
+laserDamageThreshold          : 2.0 J/cm²
+absorptivity                  : 0.88 dimensionless
+absorptionCoefficient         : 450000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.12 dimensionless
+thermalDestructionPoint       : 650 K
+vaporPressure                 : 100 Pa
+thermalDestruction            : 280.0 °C
+specificHeat                  : 1380.0 J/kg·K
+laserReflectivity             : 0.12 dimensionless
+thermalConductivity           : 0.168 W/m·K
+thermalExpansion              : 4e-06 K^{-1}
+laserAbsorption               : 28000.0 m^{-1}
+thermalDiffusivity            : 1.25e-07 m²/s
+ablationThreshold             : 2.45 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-200 W
+                                Typical range for pulsed Nd:YAG lasers in wood cleaning to remove contaminants without charring; starting at 50 W for light soiling on oak, max limited by oak's low thermal conductivity (~0.17 W/m·K) to avoid substrate damage. Source: Studies on laser cleaning of wooden artifacts (e.g., Journal of Cultural Heritage, 2015).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal absorption in Oak cellulose and lignin
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete surface cleaning
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning pattern
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -1,0 +1,53 @@
+Yttria-Stabilized Zirconia Laser Cleaning Dataset
+================================================================================
+
+Description: Yttria-Stabilized Zirconia exhibits exceptional hardness and thermal stability, which renders it suitable for laser cleaning applications. This ceramic, it resists oxidation tenaciously, enabling precise contaminant removal without damage. Yet, its toughness, that demands careful beam control, presents processing challenges.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : ceramic
+subcategory                   : technical
+name                          : Yttria-Stabilized Zirconia
+youngsModulus                 : 210.0 GPa
+oxidationResistance           : 0.0 mg/(cm²·h)
+corrosionResistance           : 1.2e-08 kg/m²·s
+fractureToughness             : 5.7 MPa m^{1/2}
+porosity                      : 0.5 %
+electricalResistivity         : 1000000000000.0 Ω·m
+compressiveStrength           : 2000.0 MPa
+density                       : 6.0 g/cm³
+hardness                      : 12.5 GPa
+tensileStrength               : 250.0 MPa
+flexuralStrength              : 1050.0 MPa
+thermalDiffusivity            : 9.14e-07 m²/s
+thermalConductivity           : 2.0 W/m·K
+ablationThreshold             : 2.1 J/cm²
+thermalExpansion              : 10.5 10^{-6} K^{-1}
+laserAbsorption               : 0.15 dimensionless (absorptivity)
+laserDamageThreshold          : 12.5 J/cm²
+specificHeat                  : 480.0 J/(kg·K)
+thermalDestruction            : 2923.0 K
+laserReflectivity             : 0.28 
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for industrial Nd:YAG laser cleaning of ceramics like YSZ to ablate contaminants without thermal damage; starting at 200W for balanced efficiency. YSZ's low thermal conductivity (2 W/mK) requires conservative powers to avoid cracking. Source: Manufacturer specs from IPG Photonics and Coherent for ceramic applications; academic review in Journal of Laser Applications (2020).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal absorption
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for effective cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Pulse frequency for controlled material removal
+pulseWidth                    : 0.1-1000 ns
+                                Pulse duration for minimal thermal penetration
+scanSpeed                     : 10-5000 mm/s
+                                Beam travel speed for uniform coverage
+passCount                     : 1-10 passes
+                                Number of cleaning cycles for complete removal
+overlapRatio                  : 10-90 %
+                                Beam overlap for consistent surface treatment
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -1,0 +1,63 @@
+Gallium Laser Cleaning Dataset
+================================================================================
+
+Description: We've found that Gallium stands out among metals due to its low melting point near room temperature, enabling fluid handling in semiconductor manufacturing while requiring careful thermal control to avoid deformation
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : specialty
+name                          : Gallium
+electricalConductivity        : 6800000.0 S/m
+electricalResistivity         : 2.7e-07 Ω·m
+fractureToughness             : 0.65 MPa m^{1/2}
+surfaceRoughness              : 0.05 μm
+density                       : 5.91 g/cm³
+oxidationResistance           : 1.35 dimensionless
+youngsModulus                 : 11.0 GPa
+hardness                      : 80.0 MPa
+compressiveStrength           : 21.0 MPa
+tensileStrength               : 16.0 MPa
+flexuralStrength              : 16.5 MPa
+corrosionResistance           : 0.002 mm/year
+porosity                      : 0.0 %
+boilingPoint                  : 2676.0 K
+absorptivity                  : 0.42 dimensionless
+absorptionCoefficient         : 11200000.0 m⁻¹
+reflectivity                  : 0.71 dimensionless (ratio)
+vaporPressure                 : 1.33e-06 Pa
+meltingPoint                  : 302.9146 K
+thermalDestructionPoint       : 2477.0 K
+thermalShockResistance        : 0.0021 MPa·m²/W
+laserDamageThreshold          : 0.15 J/cm²
+thermalDestruction            : 302.9146 K
+laserReflectivity             : 0.72 
+thermalExpansion              : 1.8e-05 K^{-1}
+thermalConductivity           : 40.6 W/m·K
+specificHeat                  : 371.0 J/(kg·K)
+laserAbsorption               : 78500000.0 m^{-1}
+thermalDiffusivity            : 1.85e-05 m²/s
+ablationThreshold             : 0.42 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-150 W
+                                Typical range for pulsed Nd:YAG laser cleaning of soft metals; conservative max to avoid melting Gallium (mp 29.8°C, high reflectivity ~70-90% at 1064 nm reduces absorption); starting at 50 W for light contamination removal without substrate damage. Source: Generalized from metal cleaning studies (e.g., Laser Cleaning of Metals, SPIE proceedings); specific Ga data limited, conservative estimate.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for moderate Gallium absorption with good penetration
+spotSize                      : 0.1-500 μm
+                                Optimal spot diameter for precise cleaning of Gallium surfaces
+repetitionRate                : 1-200 kHz
+                                Balanced repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulses for controlled ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Scan speed for efficient area coverage while maintaining cleaning effectiveness
+passCount                     : 1-10 passes
+                                Number of passes for complete contaminant removal without substrate damage
+overlapRatio                  : 10-90 %
+                                Optimal overlap between adjacent laser tracks for uniform cleaning
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

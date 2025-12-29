@@ -1,6 +1,10 @@
 """
 Domain-Specific SEO Generators
 
+⚠️  DEPRECATED: Use simple_seo_generator.py (SEOGenerator class) instead.
+   This file contains legacy domain-specific generators that are no longer actively maintained.
+   SEOGenerator provides a unified interface for all domains with better maintainability.
+
 Each domain has unique user search intent and concerns.
 These generators create SEO optimized for what users actually search for.
 

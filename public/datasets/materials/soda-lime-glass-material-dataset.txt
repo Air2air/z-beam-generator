@@ -1,0 +1,52 @@
+Soda-Lime Glass Laser Cleaning Dataset
+================================================================================
+
+Description: Soda-lime glass exhibits moderate stiffness and low density. Oxidation resists fully on surface. Laser cleaning removes contaminants effectively because material absorbs heat sparingly. Brittleness challenges processing, so controlled pulses avoid cracks. Benefits include preservation in heritage applications.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : glass
+subcategory                   : specialty-glass
+name                          : Soda-Lime Glass
+youngsModulus                 : 70.0 GPa
+oxidationResistance           : 1.0 dimensionless (normalized scale 0-1, where 1 indicates complete resistance)
+density                       : 2.5 g/cm³
+hardness                      : 5.4 GPa
+corrosionResistance           : 0.1 g/m²
+compressiveStrength           : 1000.0 MPa
+flexuralStrength              : 50.0 MPa
+tensileStrength               : 50.0 MPa
+fractureToughness             : 0.75 MPa√m
+electricalResistivity         : 100000000000.0 Ω·m
+laserDamageThreshold          : 10 J/cm²
+absorptivity                  : 0.02 dimensionless
+absorptionCoefficient         : 500 m⁻¹
+thermalShockResistance        : 1.0 MW/m
+reflectivity                  : 0.04 dimensionless
+thermalDestructionPoint       : 1400 K
+vaporPressure                 : 0.001 Pa
+thermalDestruction            : 992.0 K
+specificHeat                  : 840.0 J/(kg·K)
+laserReflectivity             : 0.042 
+thermalConductivity           : 1.06 W/m·K
+thermalExpansion              : 9e-06 K^{-1}
+laserAbsorption               : 80.0 m^{-1}
+thermalDiffusivity            : 4.8e-07 m²/s
+ablationThreshold             : 18.5 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for 1064 nm pulsed lasers in industrial cleaning of delicate substrates like soda-lime glass to remove contaminants without thermal damage; starting at 100 W for controlled ablation. Max limited to avoid heat accumulation given glass's low thermal conductivity (~1 W/m·K). Source: Manufacturer specs from IPG Photonics and Coherent for YAG lasers; academic review in 'Laser Cleaning' by Kononenko et al. (Optics and Lasers in Engineering, 2016).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Soda-Lime Glass absorption and minimal subsurface damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning with adequate energy density
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage and thermal management
+scanSpeed                     : 10-5000 mm/s
+                                Scan velocity for effective cleaning with controlled thermal input
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

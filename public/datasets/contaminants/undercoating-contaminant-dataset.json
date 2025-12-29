@@ -1,0 +1,600 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://www.z-beam.com/datasets/undercoating-contamination",
+  "identifier": "undercoating-contamination",
+  "name": "Automotive Undercoating",
+  "description": "Automotive Undercoating (Asphalt, Rubber, Solvents) is a common contamination pattern in laser cleaning. This organic-residue/other contamination affects surface integrity and requires specialized removal techniques. Commonly found on 1 different material types including metals, composites, and specialized substrates.",
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 1064Nm",
+      "value": "850",
+      "unitText": "cm\u207b\u00b9",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 532Nm",
+      "value": "12500",
+      "unitText": "cm\u207b\u00b9",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 1064Nm",
+      "value": "0.15",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 355Nm",
+      "value": "0.05",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 532Nm",
+      "value": "0.08",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Imaginary Part",
+      "value": "0.12",
+      "unitText": "dimensionless",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Real Part",
+      "value": "1.55",
+      "unitText": "dimensionless",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Transmission Depth",
+      "value": "11.8",
+      "unitText": "\u03bcm",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Pulse Duration 100Ns",
+      "value": "2.5",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Pulse Duration 10Ns",
+      "value": "1.2",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Wavelength 1064Nm",
+      "value": "0.8",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Decomposition Temperature",
+      "value": "350",
+      "unitText": "\u00b0C",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Heat Affected Zone Depth",
+      "value": "15",
+      "unitText": "\u03bcm",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Melting Point",
+      "value": "None",
+      "unitText": "\u00b0C",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Specific Heat",
+      "value": "1500",
+      "unitText": "J/(kg\u00b7K)",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Thermal Conductivity",
+      "value": "0.25",
+      "unitText": "W/(m\u00b7K)",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Thermal Diffusivity",
+      "value": "0.17",
+      "unitText": "mm\u00b2/s",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Vaporization Temperature",
+      "value": "450",
+      "unitText": "\u00b0C",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Beam Profile",
+      "value": "flat_top",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Fluence Range",
+      "value": "{'max_j_cm2': 1.4, 'min_j_cm2': 0.8, 'recommended_j_cm2': 1.1}",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Overlap Percentage",
+      "value": "50",
+      "unitText": "%",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Polarization",
+      "value": "circular",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Pulse Duration Range",
+      "value": "{'max_ns': 100, 'min_ns': 10, 'recommended_ns': 30}",
+      "unitText": "ns",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Repetition Rate Khz",
+      "value": "50",
+      "unitText": "kHz",
+      "minValue": 20,
+      "maxValue": 100
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Safety Margin Factor",
+      "value": "0.7",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Scan Speed Mm S",
+      "value": "1000",
+      "unitText": "mm/s",
+      "minValue": 500,
+      "maxValue": 2000
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Spot Size Mm",
+      "value": "0.1",
+      "unitText": "mm",
+      "minValue": 0.05,
+      "maxValue": 0.2
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Wavelength Preference",
+      "value": "1064, 532",
+      "unitText": "nm",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Damage Risk To Substrate",
+      "value": "low",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Primary Mechanism",
+      "value": "thermal_ablation",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Area Coverage Rate Cm2 Min",
+      "value": "480",
+      "unitText": "cm\u00b2/min",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Typical Scan Speed Mm S",
+      "value": "800",
+      "unitText": "mm/s",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Diminishing Returns After",
+      "value": "4",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Optimal Passes",
+      "value": "3",
+      "unitText": "passes",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Single Pass",
+      "value": "0.4",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Color Change",
+      "value": "no",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Residual Stress",
+      "value": "none",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Roughness Increase",
+      "value": "minimal",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Carbon Dioxide",
+      "value": "CO\u2082",
+      "description": "When dealing with carbon dioxide compounds in industrial settings, the standout trait is its role as an asphyxiant, meaning it quietly pushes out breathable air without you noticing right away. This m..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Water Vapor",
+      "value": "H\u2082O",
+      "description": "When working with water vapor compounds in industrial setups, we've found that maintaining proper ventilation keeps exposure levels low and prevents any respiratory irritation from building up over ti..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Carbon Ash",
+      "value": "C",
+      "description": "When handling carbon-ash-compound particulates, always prioritize dust control. I've seen teams stay safe by using enclosed systems. This keeps fine particles from airborne spread. Why does it matter?..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Metal Oxides (Mixed)",
+      "value": "Various",
+      "description": "When dealing with metal-oxides-mixed-compound particulates in industrial settings, the biggest challenge often revolves around how these fine particles can affect respiratory health if not managed pro..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Organic Residues",
+      "value": "CxHyOz",
+      "description": "When dealing with organic residue compounds, prioritize airtight respirators right away. These particulates linger in the air like fine dust from burnt organics, and inhaling them without protection i..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal laserPower",
+      "value": null,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal wavelength",
+      "value": [
+        1064,
+        532
+      ],
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal pulseWidth",
+      "value": null,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal scanSpeed",
+      "value": null,
+      "minValue": 500,
+      "maxValue": 2000,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal spotSize",
+      "value": null,
+      "minValue": 0.05,
+      "maxValue": 0.2,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal frequency",
+      "value": null,
+      "minValue": 20,
+      "maxValue": 100,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal overlapRatio",
+      "value": 50,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal removalRate",
+      "value": null,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    }
+  ],
+  "keywords": [
+    "Automotive Undercoating",
+    "laser cleaning",
+    "contaminant removal",
+    "surface cleaning",
+    "industrial cleaning",
+    "organic-residue",
+    "other",
+    "Asphalt",
+    "Rubber",
+    "Solvents"
+  ],
+  "dateModified": "",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/undercoating-contamination.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/undercoating-contamination.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/undercoating-contamination.txt"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Aluminum Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/aluminum-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Brass Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/brass-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Brick Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/brick-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Bronze Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/bronze-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Carbon Fiber Reinforced Polymer Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/carbon-fiber-reinforced-polymer-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Carbon Dioxide Hazardous Compound",
+      "url": "https://www.z-beam.com/compounds/carbon-dioxide-compound"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Water Vapor Hazardous Compound",
+      "url": "https://www.z-beam.com/compounds/water-vapor-compound"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Organic Residues Hazardous Compound",
+      "url": "https://www.z-beam.com/compounds/organic-residues-compound"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "OSHA PPE REQUIREMENTS",
+      "url": "https://www.z-beam.com/safety/regulatory_standards/osha-ppe-requirements"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "ANSI Z136 1 LASER SAFETY",
+      "url": "https://www.z-beam.com/safety/regulatory_standards/ansi-z136-1-laser-safety"
+    }
+  ],
+  "contaminant": {
+    "properties": {
+      "composition": [
+        "Asphalt",
+        "Rubber",
+        "Solvents"
+      ],
+      "absorptionRate": {
+        "wavelength_1064nm": 850,
+        "wavelength_532nm": 12500
+      },
+      "reflectivity": {
+        "wavelength_1064nm": 0.15,
+        "wavelength_355nm": 0.05,
+        "wavelength_532nm": 0.08
+      }
+    },
+    "compounds": [
+      {
+        "name": "Carbon Dioxide",
+        "formula": "CO\u2082",
+        "casNumber": "124-38-9",
+        "hazardLevel": "asphyxiant",
+        "healthEffects": "When dealing with carbon dioxide compounds in industrial settings, the standout trait is its role as an asphyxiant, meaning it quietly pushes out breathable air without you noticing right away. This m...",
+        "frequency": "unknown",
+        "severity": "low"
+      },
+      {
+        "name": "Water Vapor",
+        "formula": "H\u2082O",
+        "casNumber": "7732-18-5",
+        "hazardLevel": "inert",
+        "healthEffects": "When working with water vapor compounds in industrial setups, we've found that maintaining proper ventilation keeps exposure levels low and prevents any respiratory irritation from building up over ti...",
+        "frequency": "unknown",
+        "severity": "low"
+      },
+      {
+        "name": "Carbon Ash",
+        "formula": "C",
+        "casNumber": "7440-44-0",
+        "hazardLevel": "nuisance_dust",
+        "healthEffects": "When handling carbon-ash-compound particulates, always prioritize dust control. I've seen teams stay safe by using enclosed systems. This keeps fine particles from airborne spread. Why does it matter?...",
+        "frequency": "unknown",
+        "severity": "moderate"
+      },
+      {
+        "name": "Metal Oxides (Mixed)",
+        "formula": "Various",
+        "casNumber": "Mixed - varies by composition",
+        "hazardLevel": "irritant",
+        "healthEffects": "When dealing with metal-oxides-mixed-compound particulates in industrial settings, the biggest challenge often revolves around how these fine particles can affect respiratory health if not managed pro...",
+        "frequency": "unknown",
+        "severity": "moderate"
+      },
+      {
+        "name": "Organic Residues",
+        "formula": "CxHyOz",
+        "casNumber": "Mixed - varies by composition",
+        "hazardLevel": "irritant",
+        "healthEffects": "When dealing with organic residue compounds, prioritize airtight respirators right away. These particulates linger in the air like fine dust from burnt organics, and inhaling them without protection i...",
+        "frequency": "unknown",
+        "severity": "moderate"
+      }
+    ],
+    "removalTechniques": {
+      "laserPower": {
+        "max_j_cm2": 1.4,
+        "min_j_cm2": 0.8,
+        "recommended_j_cm2": 1.1
+      },
+      "wavelength": {
+        "value": [
+          1064,
+          532
+        ]
+      },
+      "pulseWidth": {
+        "max_ns": 100,
+        "min_ns": 10,
+        "recommended_ns": 30
+      },
+      "scanSpeed": {
+        "max": 2000,
+        "min": 500,
+        "recommended": 1000
+      },
+      "spotSize": {
+        "max": 0.2,
+        "min": 0.05,
+        "recommended": 0.1
+      },
+      "frequency": {
+        "max": 100,
+        "min": 20,
+        "recommended": 50
+      },
+      "overlapRatio": {
+        "value": 50
+      },
+      "removalRate": {
+        "diminishing_returns_after": 4,
+        "optimal_passes": 3,
+        "single_pass": 0.4
+      }
+    }
+  }
+}

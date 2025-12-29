@@ -1,0 +1,31 @@
+Property,Value,Unit,Description
+category,rare-earth,,
+subcategory,scandium-group,,
+name,Yttrium,,
+youngsModulus,41.2,GPa,
+oxidationResistance,673.0,K,
+density,4472.0,kg/m³,
+hardness,0.26,GPa,
+absorptivity,0.35,dimensionless,
+boilingPoint,3611.0,K,
+absorptionCoefficient,50000000.0,m⁻¹,
+laserDamageThreshold,5,J/cm²,
+thermalShockResistance,2.5,MW/m,
+reflectivity,0.65,dimensionless,
+thermalDestructionPoint,1799,K,
+vaporPressure,0.1,Pa,
+thermalDestruction,1795.0,K,
+specificHeat,300.8,J/(kg·K),
+laserReflectivity,0.92,dimensionless,
+thermalConductivity,17.2,W/m·K,
+thermalExpansion,1.06e-05,K^{-1},
+ablationThreshold,1.25,J/cm²,
+thermalDiffusivity,1.28e-05,m²/s,
+power,50-500,W,"Typical range for industrial pulsed Nd:YAG lasers cleaning reflective metals like Yttrium; start at 100W to avoid thermal damage given Yttrium's high reflectivity (~70% at 1064 nm) and melting point (1522°C). Max limited to prevent substrate ablation. Source: IPG Photonics YLR series specs; similar to aluminum cleaning in J. Laser Appl. 25, 042005 (2013)."
+wavelength,355-10640,nm,Near-IR wavelength optimized for Yttrium absorption and minimal reflectivity
+spotSize,0.1-500,μm,Beam spot diameter for precise Yttrium surface cleaning with adequate energy density
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning coverage on Yttrium surfaces
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient Yttrium ablation with controlled thermal effects
+scanSpeed,10-5000,mm/s,Optimal scanning speed for efficient Yttrium surface coverage without excessive overlap
+passCount,1-10,passes,Recommended number of cleaning passes for complete Yttrium surface treatment
+overlapRatio,10-90,%,Optimal beam overlap percentage for uniform Yttrium surface cleaning

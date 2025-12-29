@@ -1,0 +1,14 @@
+domain: settings
+source_file: data/settings/Settings.yaml
+items_key: settings
+
+generators:
+  - type: description
+    module_path: generation.backfill.settings_population
+    class_name: SettingsDescriptionGenerator
+    target_field: description
+  
+  - type: recommendations
+    module_path: generation.backfill.settings_population
+    class_name: SettingsRecommendationsGenerator
+    target_field: recommendations

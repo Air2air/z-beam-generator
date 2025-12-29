@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,specialty,,
+name,Titanium,,
+youngsModulus,110.0,GPa,
+oxidationResistance,698.0,K,
+density,4510.0,kg/m³,
+hardness,160.0,HV,
+corrosionResistance,0.001,mm/year,
+compressiveStrength,414.0,MPa,
+flexuralStrength,345.0,MPa,
+tensileStrength,345.0,MPa,
+fractureToughness,55.0,MPa√m,
+porosity,0.0,fraction,
+electricalResistivity,4.2e-07,Ω·m,
+absorptivity,0.4,dimensionless,
+boilingPoint,3560.0,K,
+absorptionCoefficient,40000000,m⁻¹,
+electricalConductivity,2380000.0,S/m,
+meltingPoint,1941.0,K,
+vaporPressure,10,Pa,
+thermalDestructionPoint,1941,K,
+reflectivity,0.6,dimensionless,
+thermalShockResistance,2.5,MW/m,
+surfaceRoughness,1.6,μm,
+laserDamageThreshold,5,J/cm²,
+thermalDestruction,1941.0,K,
+specificHeat,522.0,J/kg·K,
+laserReflectivity,0.66,dimensionless,
+thermalConductivity,21.9,W/m·K,
+thermalExpansion,8.6e-06,K^{-1},
+laserAbsorption,0.42,dimensionless,
+thermalDiffusivity,9.29e-06,m²/s,
+ablationThreshold,1.5,J/cm²,
+power,20-500,W,"Typical range for industrial Nd:YAG laser cleaning systems; starting at 100W balances efficiency and safety for Ti's high reflectivity and melting point (~1668°C). Max avoids substrate damage via thermal accumulation. Source: IPG Photonics specs and studies on Ti alloy cleaning (e.g., J. Laser Appl. 2018)."
+wavelength,355-10640,nm,Optimal wavelength for Titanium absorption characteristics
+spotSize,0.1-500,μm,Optimal beam spot diameter for Titanium surface treatment
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient Titanium cleaning process
+pulseWidth,0.1-1000,ns,Optimal pulse duration for Titanium ablation without thermal damage
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform Titanium cleaning
+passCount,1-10,passes,Optimal number of passes for thorough Titanium cleaning
+overlapRatio,10-90,%,Optimal beam overlap for complete Titanium surface coverage

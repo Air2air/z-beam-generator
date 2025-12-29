@@ -1,0 +1,676 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://www.z-beam.com/datasets/adhesive-residue-contamination",
+  "identifier": "adhesive-residue-contamination",
+  "name": "Adhesive Residue / Tape Marks",
+  "description": "Adhesive Residue / Tape Marks is a common contamination pattern in laser cleaning. This organic-residue/adhesive contamination affects surface integrity and requires specialized removal techniques. Commonly found on 46 different material types including metals, composites, and specialized substrates.",
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 1064Nm",
+      "value": "850",
+      "unitText": "cm\u207b\u00b9",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 355Nm",
+      "value": "18500",
+      "unitText": "cm\u207b\u00b9",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 532Nm",
+      "value": "4200",
+      "unitText": "cm\u207b\u00b9",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 1064Nm",
+      "value": "0.15",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 355Nm",
+      "value": "0.04",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Wavelength 532Nm",
+      "value": "0.08",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Imaginary Part",
+      "value": "0.023",
+      "unitText": "dimensionless",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Real Part",
+      "value": "1.52",
+      "unitText": "dimensionless",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Optical Properties: Transmission Depth",
+      "value": "11.8",
+      "unitText": "\u03bcm",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Pulse Duration 100Ns",
+      "value": "1.2",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Pulse Duration 10Ns",
+      "value": "0.6",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Wavelength 1064Nm",
+      "value": "0.8",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Decomposition Temperature",
+      "value": "350",
+      "unitText": "\u00b0C",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Heat Affected Zone Depth",
+      "value": "15",
+      "unitText": "\u03bcm",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Melting Point",
+      "value": "None",
+      "unitText": "\u00b0C",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Specific Heat",
+      "value": "1500",
+      "unitText": "J/(kg\u00b7K)",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Thermal Conductivity",
+      "value": "0.15",
+      "unitText": "W/(m\u00b7K)",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Thermal Diffusivity",
+      "value": "0.1",
+      "unitText": "mm\u00b2/s",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Thermal Properties: Vaporization Temperature",
+      "value": "450",
+      "unitText": "\u00b0C",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Beam Profile",
+      "value": "flat_top",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Fluence Range",
+      "value": "{'max_j_cm2': 1.2, 'min_j_cm2': 0.3, 'recommended_j_cm2': 0.8}",
+      "unitText": "J/cm\u00b2",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Overlap Percentage",
+      "value": "50",
+      "unitText": "%",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Polarization",
+      "value": "circular",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Pulse Duration Range",
+      "value": "{'max_ns': 100, 'min_ns': 10, 'recommended_ns': 30}",
+      "unitText": "ns",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Repetition Rate Khz",
+      "value": "50",
+      "unitText": "kHz",
+      "minValue": 20,
+      "maxValue": 200
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Safety Margin Factor",
+      "value": "0.7",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Scan Speed Mm S",
+      "value": "1000",
+      "unitText": "mm/s",
+      "minValue": 500,
+      "maxValue": 2000
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Spot Size Mm",
+      "value": "0.05",
+      "unitText": "mm",
+      "minValue": 0.02,
+      "maxValue": 0.1
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Parameters: Wavelength Preference",
+      "value": "1064, 532",
+      "unitText": "nm",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Damage Risk To Substrate",
+      "value": "low",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Primary Mechanism",
+      "value": "thermal_ablation",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Area Coverage Rate Cm2 Min",
+      "value": "240",
+      "unitText": "cm\u00b2/min",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Typical Scan Speed Mm S",
+      "value": "800",
+      "unitText": "mm/s",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Diminishing Returns After",
+      "value": "5",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Optimal Passes",
+      "value": "3",
+      "unitText": "passes",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Single Pass",
+      "value": "0.7",
+      "unitText": "ratio",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Color Change",
+      "value": "no",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Residual Stress",
+      "value": "compressive",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal Characteristics: Roughness Increase",
+      "value": "minimal",
+      "unitText": "",
+      "minValue": null,
+      "maxValue": null
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Carbon Monoxide",
+      "value": "CO",
+      "description": "When dealing with carbon monoxide, watch its sneaky toxicity right away. Unlike oxygen, which sustains life, this gas binds tightly to your blood. That starves cells of what they need. \n\nCompare it to..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Formaldehyde",
+      "value": "CH\u2082O",
+      "description": "When handling formaldehyde in industrial settings, prioritize ventilation right away. This compound releases vapors easily. Poor airflow leads to quick exposure. Inhale it once, and irritation hits yo..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Hydrogen Cyanide",
+      "value": "HCN",
+      "description": "When working with hydrogen cyanide in industrial processes, start by understanding its rapid absorption through inhalation or skin contact, which sets it apart from slower-acting toxins like carbon mo..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Acetaldehyde",
+      "value": "C\u2082H\u2084O",
+      "description": "When handling acetaldehyde in industrial setups, start by ensuring good ventilation right away. This compound acts as a strong irritant, so you must prioritize protective gear to avoid direct skin or ..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Hydrogen Chloride",
+      "value": "HCl",
+      "description": "When working with hydrogen chloride compared to milder acids like acetic, the real kicker hits your respiratory system fast. It irritates eyes and skin right away, unlike those weaker ones that might ..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Toluene",
+      "value": "C\u2087H\u2088",
+      "description": "When handling toluene in industrial settings, you'll want to keep a close eye on how it differs from milder solvents like acetone, which mostly just dries out the skin without much deeper impact. Tolu..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Carbon Dioxide",
+      "value": "CO\u2082",
+      "description": "When dealing with carbon dioxide compounds in industrial settings, the standout trait is its role as an asphyxiant, meaning it quietly pushes out breathable air without you noticing right away. This m..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Volatile Organic Compounds",
+      "value": "Various",
+      "description": "When handling VOCs compounds in industrial settings, the standout trait is their easy evaporation into the air. This volatility turns them into airborne irritants fast. You'll breathe them in without ..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Water Vapor",
+      "value": "H\u2082O",
+      "description": "When working with water vapor compounds in industrial setups, we've found that maintaining proper ventilation keeps exposure levels low and prevents any respiratory irritation from building up over ti..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Compound: Carbon Particulates",
+      "value": "C",
+      "description": "When handling carbon particulates in industrial settings, the key is understanding how they differ from larger dust particles. Those bigger ones settle quickly and rarely cause deep lung issues. Carbo..."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal laserPower",
+      "value": null,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal wavelength",
+      "value": [
+        1064,
+        532
+      ],
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal pulseWidth",
+      "value": null,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal scanSpeed",
+      "value": null,
+      "minValue": 500,
+      "maxValue": 2000,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal spotSize",
+      "value": null,
+      "minValue": 0.02,
+      "maxValue": 0.1,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal frequency",
+      "value": null,
+      "minValue": 20,
+      "maxValue": 200,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal overlapRatio",
+      "value": 50,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Removal removalRate",
+      "value": null,
+      "minValue": null,
+      "maxValue": null,
+      "unitText": ""
+    }
+  ],
+  "keywords": [
+    "Adhesive Residue / Tape Marks",
+    "laser cleaning",
+    "contaminant removal",
+    "surface cleaning",
+    "industrial cleaning",
+    "organic-residue",
+    "adhesive"
+  ],
+  "dateModified": "",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/adhesive-residue-contamination.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/adhesive-residue-contamination.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/adhesive-residue-contamination.txt"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Aluminum Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/aluminum-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Brass Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/brass-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Brick Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/brick-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Bronze Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/bronze-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Cast Iron Laser Cleaning",
+      "url": "https://www.z-beam.com/materials/cast-iron-laser-cleaning"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Carbon Dioxide Hazardous Compound",
+      "url": "https://www.z-beam.com/compounds/carbon-dioxide-compound"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Water Vapor Hazardous Compound",
+      "url": "https://www.z-beam.com/compounds/water-vapor-compound"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Carbon Particulates Hazardous Compound",
+      "url": "https://www.z-beam.com/compounds/carbon-particulates-compound"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "OSHA PPE REQUIREMENTS",
+      "url": "https://www.z-beam.com/safety/regulatory_standards/osha-ppe-requirements"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "ANSI Z136 1 LASER SAFETY",
+      "url": "https://www.z-beam.com/safety/regulatory_standards/ansi-z136-1-laser-safety"
+    }
+  ],
+  "contaminant": {
+    "properties": {
+      "absorptionRate": {
+        "wavelength_1064nm": 850,
+        "wavelength_355nm": 18500,
+        "wavelength_532nm": 4200
+      },
+      "reflectivity": {
+        "wavelength_1064nm": 0.15,
+        "wavelength_355nm": 0.04,
+        "wavelength_532nm": 0.08
+      }
+    },
+    "compounds": [
+      {
+        "name": "Carbon Monoxide",
+        "formula": "CO",
+        "casNumber": "630-08-0",
+        "hazardLevel": "toxic",
+        "healthEffects": "When dealing with carbon monoxide, watch its sneaky toxicity right away. Unlike oxygen, which sustains life, this gas binds tightly to your blood. That starves cells of what they need. \n\nCompare it to...",
+        "frequency": "very_common",
+        "severity": "high"
+      },
+      {
+        "name": "Formaldehyde",
+        "formula": "CH\u2082O",
+        "casNumber": "50-00-0",
+        "hazardLevel": "carcinogenic",
+        "healthEffects": "When handling formaldehyde in industrial settings, prioritize ventilation right away. This compound releases vapors easily. Poor airflow leads to quick exposure. Inhale it once, and irritation hits yo...",
+        "frequency": "common",
+        "severity": "moderate"
+      },
+      {
+        "name": "Hydrogen Cyanide",
+        "formula": "HCN",
+        "casNumber": "74-90-8",
+        "hazardLevel": "toxic",
+        "healthEffects": "When working with hydrogen cyanide in industrial processes, start by understanding its rapid absorption through inhalation or skin contact, which sets it apart from slower-acting toxins like carbon mo...",
+        "frequency": "occasional",
+        "severity": "moderate"
+      },
+      {
+        "name": "Acetaldehyde",
+        "formula": "C\u2082H\u2084O",
+        "casNumber": "75-07-0",
+        "hazardLevel": "irritant",
+        "healthEffects": "When handling acetaldehyde in industrial setups, start by ensuring good ventilation right away. This compound acts as a strong irritant, so you must prioritize protective gear to avoid direct skin or ...",
+        "frequency": "common",
+        "severity": "moderate"
+      },
+      {
+        "name": "Hydrogen Chloride",
+        "formula": "HCl",
+        "casNumber": "7647-01-0",
+        "hazardLevel": "corrosive",
+        "healthEffects": "When working with hydrogen chloride compared to milder acids like acetic, the real kicker hits your respiratory system fast. It irritates eyes and skin right away, unlike those weaker ones that might ...",
+        "frequency": "occasional",
+        "severity": "moderate"
+      },
+      {
+        "name": "Toluene",
+        "formula": "C\u2087H\u2088",
+        "casNumber": "108-88-3",
+        "hazardLevel": "toxic",
+        "healthEffects": "When handling toluene in industrial settings, you'll want to keep a close eye on how it differs from milder solvents like acetone, which mostly just dries out the skin without much deeper impact. Tolu...",
+        "frequency": "common",
+        "severity": "moderate"
+      },
+      {
+        "name": "Carbon Dioxide",
+        "formula": "CO\u2082",
+        "casNumber": "124-38-9",
+        "hazardLevel": "asphyxiant",
+        "healthEffects": "When dealing with carbon dioxide compounds in industrial settings, the standout trait is its role as an asphyxiant, meaning it quietly pushes out breathable air without you noticing right away. This m...",
+        "frequency": "very_common",
+        "severity": "low"
+      },
+      {
+        "name": "Volatile Organic Compounds",
+        "formula": "Various",
+        "casNumber": "N/A",
+        "hazardLevel": "irritant",
+        "healthEffects": "When handling VOCs compounds in industrial settings, the standout trait is their easy evaporation into the air. This volatility turns them into airborne irritants fast. You'll breathe them in without ...",
+        "frequency": "very_common",
+        "severity": "moderate"
+      },
+      {
+        "name": "Water Vapor",
+        "formula": "H\u2082O",
+        "casNumber": "7732-18-5",
+        "hazardLevel": "inert",
+        "healthEffects": "When working with water vapor compounds in industrial setups, we've found that maintaining proper ventilation keeps exposure levels low and prevents any respiratory irritation from building up over ti...",
+        "frequency": "unknown",
+        "severity": "low"
+      },
+      {
+        "name": "Carbon Particulates",
+        "formula": "C",
+        "casNumber": "7440-44-0",
+        "hazardLevel": "nuisance_dust",
+        "healthEffects": "When handling carbon particulates in industrial settings, the key is understanding how they differ from larger dust particles. Those bigger ones settle quickly and rarely cause deep lung issues. Carbo...",
+        "frequency": "unknown",
+        "severity": "moderate"
+      }
+    ],
+    "removalTechniques": {
+      "laserPower": {
+        "max_j_cm2": 1.2,
+        "min_j_cm2": 0.3,
+        "recommended_j_cm2": 0.8
+      },
+      "wavelength": {
+        "value": [
+          1064,
+          532
+        ]
+      },
+      "pulseWidth": {
+        "max_ns": 100,
+        "min_ns": 10,
+        "recommended_ns": 30
+      },
+      "scanSpeed": {
+        "max": 2000,
+        "min": 500,
+        "recommended": 1000
+      },
+      "spotSize": {
+        "max": 0.1,
+        "min": 0.02,
+        "recommended": 0.05
+      },
+      "frequency": {
+        "max": 200,
+        "min": 20,
+        "recommended": 50
+      },
+      "overlapRatio": {
+        "value": 50
+      },
+      "removalRate": {
+        "diminishing_returns_after": 5,
+        "optimal_passes": 3,
+        "single_pass": 0.7
+      }
+    }
+  }
+}

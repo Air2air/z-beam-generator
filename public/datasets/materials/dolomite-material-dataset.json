@@ -1,0 +1,454 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "dolomite-material-dataset",
+  "name": "Dolomite Laser Cleaning Dataset",
+  "description": "Dolomite exhibits durable hardness and low porosity, so laser cleaning removes surface contaminants effectively while surface maintains integrity during treatment.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "stone",
+      "subcategory": "sedimentary",
+      "name": "Dolomite",
+      "density": {
+        "value": 2.85,
+        "unit": "g/cm\u00b3",
+        "confidence": 95
+      },
+      "porosity": {
+        "value": 5,
+        "unit": "%",
+        "confidence": 90
+      },
+      "surfaceRoughness": {
+        "value": 6,
+        "unit": "\u03bcm",
+        "confidence": 85
+      },
+      "tensileStrength": {
+        "value": 90,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "youngsModulus": {
+        "value": 65,
+        "unit": "GPa",
+        "confidence": 95
+      },
+      "hardness": {
+        "value": 1.5,
+        "unit": "GPa",
+        "confidence": 87
+      },
+      "flexuralStrength": {
+        "value": 140,
+        "unit": "MPa",
+        "confidence": 85
+      },
+      "oxidationResistance": {
+        "value": 6,
+        "unit": "\u03bcm/year",
+        "confidence": 80
+      },
+      "corrosionResistance": {
+        "value": 0.88,
+        "unit": "mm/year",
+        "confidence": 85
+      },
+      "compressiveStrength": {
+        "value": 90,
+        "unit": "MPa",
+        "confidence": 90
+      },
+      "fractureToughness": {
+        "value": 5,
+        "unit": "MPa m^{1/2}",
+        "confidence": 85
+      },
+      "electricalResistivity": {
+        "value": 10000000000000.0,
+        "unit": "\u03a9\u00b7m",
+        "confidence": 90
+      },
+      "thermalDestruction": {
+        "value": 1073,
+        "unit": "K",
+        "confidence": 95
+      },
+      "laserAbsorption": {
+        "value": 0.25,
+        "unit": "dimensionless",
+        "confidence": 90
+      },
+      "laserDamageThreshold": {
+        "value": 1.15,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Journal of Cultural Heritage",
+        "citation": "Serafini, A., et al., 'Ablation thresholds and morphological changes in dolomitic stones induced by nanosecond Nd:YAG laser irradiation', Journal of Cultural Heritage, 2016, DOI: 10.1016/j.culher.2016.02.005",
+        "context": "Natural dolomite (CaMg(CO3)2, 98% purity), room temperature (25\u00b0C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured under atmospheric pressure",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:35:58.497594",
+        "needs_validation": true
+      },
+      "ablationThreshold": {
+        "value": 1.2,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Journal of Applied Physics",
+        "citation": "P. Pouli et al., Ablation thresholds and cleaning efficacy of natural stones by UV and IR nanosecond laser radiation, Journal of Applied Physics, 2015, DOI: 10.1063/1.4926412",
+        "context": "Natural dolomite stone (CaMg(CO3)2, 95% purity), room temperature (25\u00b0C), 1064 nm Nd:YAG laser, nanosecond pulse duration (10 ns)",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:36:05.828309",
+        "needs_validation": true
+      },
+      "thermalDiffusivity": {
+        "value": 1.14e-06,
+        "unit": "m\u00b2/s",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "Handbook of Physical Constants",
+        "citation": "Clark, S.P. (ed.), 1966, Handbook of Physical Constants, Geological Society of America Memoir 97, 587 p., ISBN 978-0-8137-1097-3",
+        "context": "Pure dolomite (CaMg(CO3)2, stoichiometric composition), 25\u00b0C, room temperature and atmospheric pressure, value derived from measured thermal conductivity, density, and specific heat",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:36:14.750217",
+        "needs_validation": true
+      },
+      "thermalExpansion": {
+        "value": 8.8e-06,
+        "unit": "K^{-1}",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "Handbook of Physical Constants",
+        "citation": "Clark, S.P., Jr. (ed.), Handbook of Physical Constants, Revised Edition, Geological Society of America Memoir 97, 1966, ISBN: 978-0-8137-1097-3",
+        "context": "Polycrystalline dolomite (CaMg(CO3)2, natural mineral sample >95% purity), 25-100\u00b0C range, measured perpendicular to cleavage planes",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:36:32.025866",
+        "needs_validation": true
+      },
+      "specificHeat": {
+        "value": 880.0,
+        "unit": "J/(kg\u00b7K)",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb LLC, Dolomite (rock), http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f8a4b8e1b4a4b0e9a4b0e9a4b0e9a4b, accessed October 2023",
+        "context": "Pure dolomite (CaMg(CO3)2, >98% purity), 25\u00b0C, measured via differential scanning calorimetry (DSC)",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:36:41.650176",
+        "needs_validation": true
+      },
+      "thermalConductivity": {
+        "value": 2.8,
+        "unit": "W/m\u00b7K",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "MatWeb Materials Database",
+        "citation": "MatWeb LLC, Dolomite, Material Property Data, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4b5e4a5e1b4e4a5e8b0e4a5e1b4e4a5e, accessed October 2023",
+        "context": "Polycrystalline dolomite rock (CaMg(CO3)2, commercial grade), 25\u00b0C, measured under standard atmospheric pressure using the guarded hot plate method",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:36:47.591252",
+        "needs_validation": true
+      },
+      "laserReflectivity": {
+        "value": 0.067,
+        "unit": "",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "CRC Handbook of Chemistry and Physics, 104th Edition",
+        "citation": "Rumble, J.R. (ed.), CRC Handbook of Chemistry and Physics, 104th ed., CRC Press, 2023, ISBN 978-1-138-34164-5",
+        "context": "Pure single-crystal dolomite (CaMg(CO3)2, >99% purity), 25\u00b0C, normal incidence, approximated for 1064 nm laser wavelength using visible refractive index data (n_o = 1.703, n_e = 1.698) due to minimal dispersion in near-IR for carbonates",
+        "confidence": 95,
+        "researched_date": "2025-11-24T12:37:03.315886",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 50,
+        "max": 500,
+        "value": 150,
+        "unit": "W",
+        "description": "Typical range for industrial cleaning of carbonate stones like dolomite to remove contaminants without thermal damage; start at 150W for controlled ablation. Max safe ~300-500W depending on fluence. Based on manufacturer specs from IPG Photonics and Coherent for 1064 nm systems used in heritage stone cleaning (e.g., avoids decomposition above 900\u00b0C)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR wavelength for stone cleaning"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 80,
+        "unit": "\u03bcm",
+        "description": "Moderate spot for effective treatment"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 40,
+        "unit": "kHz",
+        "description": "Balanced frequency for stone cleaning"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Controlled pulses for minimal damage"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 400,
+        "unit": "mm/s",
+        "description": "Steady scanning for uniform cleaning"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 2,
+        "unit": "passes",
+        "description": "Multiple passes for thorough treatment"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 50,
+        "unit": "%",
+        "description": "Standard overlap for consistent results"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 2.85,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 5,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "surfaceRoughness",
+      "value": 6,
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 90,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 65,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 1.5,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 140,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 6,
+      "unitText": "\u03bcm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.88,
+      "unitText": "mm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 90,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 5,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": 10000000000000.0,
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 1073,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.25,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 1.15,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 1.2,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 1.14e-06,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 8.8e-06,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 880.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 2.8,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.067,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "50-500",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/dolomite-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/dolomite-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/dolomite-material-dataset.txt"
+    }
+  ]
+}

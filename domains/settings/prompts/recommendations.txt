@@ -1,0 +1,41 @@
+# Recommendations Research Prompt
+
+## Context
+Generate laser cleaning recommendations for {{setting_name}}.
+
+## Task
+Research and provide structured recommendations for laser cleaning with these settings. Cover:
+
+1. Pre-cleaning preparation (surface inspection, cleaning steps)
+2. Parameter optimization (power, frequency, speed adjustments)
+3. Safety considerations (PPE, ventilation, specific hazards)
+4. Quality control (inspection methods, success criteria)
+
+## Output Format
+Structured guidance with 2-3 specific recommendations per category:
+```
+Preparation:
+- [specific preparation step]
+- [specific preparation step]
+
+Optimization:
+- [specific parameter guidance]
+- [specific parameter guidance]
+
+Safety:
+- [specific safety requirement]
+- [specific safety requirement]
+
+Quality Control:
+- [specific inspection method]
+- [specific success criterion]
+```
+
+## Requirements
+- Provide actionable, specific guidance
+- Base on industry best practices
+- Include measurable criteria where applicable
+- NO FALLBACKS - Research specific to these settings
+
+## Voice Instructions
+{voice_instruction}

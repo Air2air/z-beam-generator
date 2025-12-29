@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,stone,,
+subcategory,sedimentary,,
+name,Limestone,,
+fractureToughness,0.92,MPa m^{1/2},
+youngsModulus,29000000000.0,Pa,
+oxidationResistance,0.98,dimensionless (scale 0-1),
+density,2710.0,kg/m³,
+hardness,3.0,Mohs,
+corrosionResistance,0.72,1,
+compressiveStrength,100.0,MPa,
+flexuralStrength,10.3,MPa,
+tensileStrength,7.5,MPa,
+porosity,15.0,%,
+laserDamageThreshold,5.0,J/cm²,
+absorptivity,0.85,dimensionless,
+absorptionCoefficient,5000,m⁻¹,
+thermalShockResistance,1.2,MW/m,
+reflectivity,0.15,dimensionless,
+thermalDestructionPoint,1100,K,
+vaporPressure,100,Pa,
+thermalDestruction,1173.0,K,
+specificHeat,880.0,J/(kg·K),
+laserReflectivity,0.35,dimensionless,
+thermalConductivity,2.15,W/m/K,
+thermalExpansion,8e-06,K^{-1},
+laserAbsorption,0.45,dimensionless,
+thermalDiffusivity,1.05e-06,m²/s,
+ablationThreshold,0.9,J/cm²,
+power,50-1000,W,"Typical range for industrial 1064 nm Nd:YAG lasers cleaning limestone; starting at 50-100 W to avoid thermal damage; max safe below 1000 W to prevent substrate cracking, based on manufacturer specs from Adapt Laser Systems and studies on stone ablation (e.g., Pou et al., Applied Surface Science, 2003)."
+wavelength,355-10640,nm,Near-IR wavelength optimized for limestone absorption and minimal scattering
+spotSize,0.1-500,μm,Beam spot diameter for balanced cleaning efficiency and resolution
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage and thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning without excessive overlap
+passCount,1-10,passes,Recommended number of passes for thorough cleaning of limestone surfaces
+overlapRatio,10-90,%,Optimal beam overlap percentage for uniform cleaning coverage

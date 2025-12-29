@@ -28,7 +28,7 @@ from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
 logger = logging.getLogger(__name__)
 
 
-class UniversalDomainCoordinator(ABC):
+class DomainCoordinator(ABC):
     """
     Base class for all domain coordinators (materials, compounds, contaminants, settings).
     

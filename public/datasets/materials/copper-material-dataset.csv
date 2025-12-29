@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,non-ferrous,,
+name,Copper,,
+density,8.96,g/cm³,
+porosity,0,%,
+surfaceRoughness,0.1,μm Ra,
+tensileStrength,220.0,MPa,
+youngsModulus,117.0,GPa,
+hardness,0.49,GPa,
+flexuralStrength,210,MPa,
+oxidationResistance,150,°C,
+corrosionResistance,0.05,mm/year,
+compressiveStrength,70.0,MPa,
+fractureToughness,47.0,MPa√m,
+electricalResistivity,1.68e-08,Ω·m,
+boilingPoint,2835.0,K,
+electricalConductivity,59600000.0,S/m,
+meltingPoint,1357.77,K,
+thermalConductivity,401.0,W/(m·K),
+thermalExpansion,16.5,10^{-6}/K,
+thermalDiffusivity,1.17,10^{-4} m²/s,
+specificHeat,385.0,J/(kg·K),
+thermalShockResistance,250,kW/m²,
+laserReflectivity,0.98,,
+absorptionCoefficient,9.5,10^6 cm^{-1},
+ablationThreshold,1.2,J/cm²,
+laserDamageThreshold,0.8,J/cm²,
+thermalDestruction,1357.77,K,
+laserAbsorption,0.035,,
+absorptivity,0.035,dimensionless,
+reflectivity,0.975,dimensionless,
+vaporPressure,101325.0,Pa,
+thermalDestructionPoint,1357.77,K,
+power,50-500,W,Typical range for industrial 1064 nm fiber lasers cleaning copper; start at 200 W to balance efficiency and avoid thermal damage due to copper's high reflectivity and conductivity. Max safe before substrate melting ~500 W with proper scanning. Source: IPG Photonics specs and study in Journal of Laser Applications (2018).
+wavelength,355-10640,nm,Near-IR wavelength optimized for Copper absorption and minimal substrate damage
+spotSize,0.1-500,μm,Optimal spot diameter for balancing cleaning efficiency and processing speed
+repetitionRate,1-200,kHz,High repetition rate for efficient cleaning coverage while maintaining process control
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective oxide removal without excessive thermal diffusion
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning with adequate energy deposition
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal pulse overlap for uniform cleaning without excessive heat accumulation

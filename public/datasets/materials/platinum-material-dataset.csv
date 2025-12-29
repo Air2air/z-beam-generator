@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,non-ferrous,,
+name,Platinum,,
+electricalConductivity,9430000.0,S/m,
+electricalResistivity,1.06e-07,Ω·m,
+fractureToughness,30.0,MPa√m,
+surfaceRoughness,0.05,μm,
+youngsModulus,168.0,GPa,
+oxidationResistance,1700.0,°C,
+density,21450.0,kg/m³,
+hardness,40.0,HV,
+corrosionResistance,9.9,dimensionless (rating scale 0-10),
+compressiveStrength,240.0,MPa,
+flexuralStrength,240.0,MPa,
+tensileStrength,125.0,MPa,
+porosity,0.0,%,
+absorptivity,0.065,dimensionless,
+boilingPoint,4098.0,K,
+absorptionCoefficient,42000000.0,m⁻¹,
+meltingPoint,2041.4,K,
+vaporPressure,2.51e-07,Pa,
+thermalDestructionPoint,2041.15,K,
+reflectivity,0.73,dimensionless,
+thermalShockResistance,1.8,MW/m,
+laserDamageThreshold,0.45,J/cm²,
+thermalDestruction,2041.4,K,
+specificHeat,133.0,J/(kg·K),
+laserReflectivity,0.65,,
+thermalConductivity,71.6,W/m·K,
+thermalExpansion,8.8e-06,K^{-1},
+laserAbsorption,0.11,dimensionless,
+thermalDiffusivity,2.51e-05,m²/s,
+ablationThreshold,1.2,J/cm²,
+power,50-500,W,"Typical range for industrial cleaning of precious metals like platinum to avoid thermal damage; starting at 100W for light contamination. Based on CleanLaser and IPG Photonics specs for 1064 nm systems (e.g., CL 100 series)."
+wavelength,355-10640,nm,Near-IR wavelength optimized for Platinum's moderate reflectivity and thermal processing
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning with adequate energy density
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage with controlled thermal input
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective contaminant removal while minimizing Platinum substrate heating
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Recommended number of passes for thorough cleaning of Platinum surfaces
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without excessive thermal accumulation

@@ -18,7 +18,7 @@ import yaml
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from export.core.universal_exporter import UniversalFrontmatterExporter
+from export.core.frontmatter_exporter import UniversalFrontmatterExporter
 
 
 def regenerate_domain(config_file: str, domain_name: str):

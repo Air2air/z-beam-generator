@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,stone,,
+subcategory,sedimentary,,
+name,Bluestone,,
+fractureToughness,1.05,MPa m^{1/2},
+density,2650.0,kg/m³,
+oxidationResistance,0.96,dimensionless (scale 0-1),
+youngsModulus,15000000000.0,Pa,
+hardness,6.5,Mohs,
+compressiveStrength,124.0,MPa,
+tensileStrength,4.8,MPa,
+flexuralStrength,8.27,MPa,
+corrosionResistance,0.92,dimensionless (normalized resistance index),
+porosity,4.2,%,
+laserDamageThreshold,2.5,J/cm²,
+absorptivity,0.85,dimensionless,
+absorptionCoefficient,1000000,m⁻¹,
+thermalShockResistance,2.0,MW/m,
+reflectivity,0.15,dimensionless,
+thermalDestructionPoint,1273,K,
+vaporPressure,1.0,Pa,
+thermalDestruction,950.0,°C,
+laserReflectivity,0.32,,
+thermalExpansion,8.5e-06,K^{-1},
+thermalConductivity,1.7,W/m·K,
+specificHeat,920.0,J/(kg·K),
+laserAbsorption,0.68,dimensionless,
+thermalDiffusivity,1.25e-06,m²/s,
+ablationThreshold,0.85,J/cm²,
+power,50-300,W,"Typical range for industrial cleaning of natural stones like Bluestone using 1064 nm fiber lasers; starting at 100W balances efficiency and safety to avoid thermal damage to porous substrate. Max limited by Bluestone's low thermal conductivity (~1-2 W/m·K) to prevent cracking. Source: Manufacturer specs from IPG Photonics YLR series and academic review in 'Laser Cleaning of Stone Surfaces' (J. Cult. Herit., 2018)."
+wavelength,355-10640,nm,Near-IR wavelength optimized for Bluestone mineral absorption
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning control
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage
+pulseWidth,0.1-1000,ns,Nanosecond pulse width for controlled ablation of contaminants
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning
+passCount,1-10,passes,Recommended number of passes for complete cleaning
+overlapRatio,10-90,%,Optimal beam overlap for uniform coverage

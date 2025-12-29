@@ -1,0 +1,38 @@
+Property,Value,Unit,Description
+category,ceramic,,
+subcategory,carbide,,
+name,Tungsten Carbide,,
+youngsModulus,650.0,GPa,
+oxidationResistance,1073.0,K,
+density,15.63,g/cm³,
+hardness,19.6,GPa,
+corrosionResistance,520000.0,Ω·cm²,
+compressiveStrength,4200.0,MPa,
+flexuralStrength,414.0,MPa,
+tensileStrength,345.0,MPa,
+fractureToughness,5.3,MPa m^{1/2},
+porosity,0.0,%,
+electricalResistivity,1.9e-07,Ω·m,
+laserDamageThreshold,12,J/cm²,
+absorptivity,0.35,dimensionless,
+absorptionCoefficient,5000000.0,m⁻¹,
+thermalShockResistance,2.5,MW/m,
+reflectivity,0.65,dimensionless,
+thermalDestructionPoint,3100,K,
+vaporPressure,1,Pa,
+thermalDestruction,3143.0,K,
+specificHeat,210.0,J/kg·K,
+laserReflectivity,0.68,dimensionless,
+thermalConductivity,84.0,W/m·K,
+thermalExpansion,4.7e-06,K^{-1},
+laserAbsorption,0.37,dimensionless,
+thermalDiffusivity,1.92e-05,m²/s,
+ablationThreshold,2.5,J/cm²,
+power,50-500,W,Typical range for industrial cleaning of hard materials like Tungsten Carbide to remove contaminants without ablation; starting at 100-200W to balance efficiency and safety. Max limited to avoid thermal damage given WC's high melting point (~2870°C) and reflectivity at 1064 nm. Source: IPG Photonics YLR series specs for cleaning applications; academic review in Optics and Lasers in Engineering (2018) on metal cleaning thresholds.
+wavelength,355-10640,nm,Near-infrared wavelength for optimal Tungsten Carbide absorption
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning resolution
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning without thermal damage
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform surface treatment
+passCount,1-10,passes,Number of cleaning passes for thorough contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for complete surface coverage

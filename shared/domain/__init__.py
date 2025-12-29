@@ -1,9 +1,9 @@
 """
 Shared domain coordination components.
 
-Provides universal base classes and utilities for domain coordinators.
+Provides base classes and utilities for domain coordinators.
 """
 
-from .base_coordinator import UniversalDomainCoordinator
+from .base_coordinator import DomainCoordinator
 
-__all__ = ['UniversalDomainCoordinator']
+__all__ = ['DomainCoordinator']

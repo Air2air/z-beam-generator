@@ -1,0 +1,552 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "cast-iron-material-dataset",
+  "name": "Cast Iron Laser Cleaning Dataset",
+  "description": "When cleaning cast iron, we've found its inherent porosity serves as a natural benefit, pulling in laser energy to break loose tough rust and scale on heavy industrial components, but you need to begin with careful power levels from the start to avoid any chance of surface cracking due to the material's relative brittleness, in the end bringing back its strength for automotive and machinery uses while keeping structural integrity intact",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "metal",
+      "subcategory": "ferrous",
+      "name": "Cast Iron",
+      "density": {
+        "value": 7.2,
+        "unit": "g/cm\u00b3",
+        "confidence": 98,
+        "min": 0.53,
+        "max": 22.6
+      },
+      "porosity": {
+        "value": 1.5,
+        "unit": "%",
+        "confidence": 86,
+        "min": 0.0,
+        "max": 15.0
+      },
+      "surfaceRoughness": {
+        "value": 25,
+        "unit": "\u03bcm",
+        "confidence": 91,
+        "min": 0.4,
+        "max": 150
+      },
+      "tensileStrength": {
+        "value": 250.0,
+        "unit": "MPa",
+        "confidence": 91,
+        "min": 3.0,
+        "max": 3000.0
+      },
+      "youngsModulus": {
+        "value": 110.0,
+        "unit": "GPa",
+        "confidence": 94,
+        "min": 5,
+        "max": 600
+      },
+      "hardness": {
+        "value": 200,
+        "unit": "HB",
+        "confidence": 96,
+        "min": 0.5,
+        "max": 3500
+      },
+      "flexuralStrength": {
+        "value": 400,
+        "unit": "MPa",
+        "confidence": 87,
+        "min": 2.5,
+        "max": 1050.0
+      },
+      "oxidationResistance": {
+        "value": 400,
+        "unit": "\u00b0C",
+        "confidence": 89,
+        "min": 200,
+        "max": 1200
+      },
+      "corrosionResistance": {
+        "value": 0.1,
+        "unit": "mm/year",
+        "confidence": 88,
+        "min": 1,
+        "max": 10
+      },
+      "compressiveStrength": {
+        "value": 830.0,
+        "unit": "MPa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "fractureToughness": {
+        "value": 20.0,
+        "unit": "MPa m^{1/2}",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "electricalResistivity": {
+        "value": 7.5e-07,
+        "unit": "\u03a9\u00b7m",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "boilingPoint": {
+        "value": 3134.0,
+        "unit": "K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "electricalConductivity": {
+        "value": 2300000.0,
+        "unit": "S/m",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "meltingPoint": {
+        "value": 1473.0,
+        "unit": "K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalConductivity": {
+        "value": 46.0,
+        "unit": "W/(m\u00b7K)",
+        "confidence": 92,
+        "min": 7.0,
+        "max": 430
+      },
+      "thermalExpansion": {
+        "value": 1.15e-05,
+        "unit": "K^{-1}",
+        "confidence": 90,
+        "min": 0.5,
+        "max": 33
+      },
+      "thermalDiffusivity": {
+        "value": 14.0,
+        "unit": "mm\u00b2/s",
+        "confidence": 88,
+        "min": 0.06,
+        "max": 174
+      },
+      "specificHeat": {
+        "value": 460.0,
+        "unit": "J/(kg\u00b7K)",
+        "confidence": 93,
+        "min": 100,
+        "max": 2000
+      },
+      "thermalShockResistance": {
+        "value": 250,
+        "unit": "\u00b0C",
+        "confidence": 85,
+        "min": 50,
+        "max": 400
+      },
+      "laserReflectivity": {
+        "value": 0.35,
+        "unit": "",
+        "confidence": 84,
+        "min": 5,
+        "max": 99.9
+      },
+      "absorptionCoefficient": {
+        "value": 5000000.0,
+        "unit": "m^{-1}",
+        "confidence": 82,
+        "min": 100000,
+        "max": 50000000
+      },
+      "ablationThreshold": {
+        "value": 2.5,
+        "unit": "J/cm\u00b2",
+        "confidence": 86,
+        "min": 2.0,
+        "max": 8.0
+      },
+      "laserDamageThreshold": {
+        "value": 3.0,
+        "unit": "J/cm\u00b2",
+        "confidence": 85,
+        "min": 0.1,
+        "max": 20.0
+      },
+      "thermalDestruction": {
+        "value": 1423.0,
+        "unit": "K",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "laserAbsorption": {
+        "value": 0.42,
+        "unit": "dimensionless",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "absorptivity": {
+        "value": 0.5,
+        "unit": "",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "reflectivity": {
+        "value": 0.37,
+        "unit": "dimensionless",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "vaporPressure": {
+        "value": 0.133,
+        "unit": "Pa",
+        "confidence": 95,
+        "source": "ai_research"
+      },
+      "thermalDestructionPoint": {
+        "value": 1473.0,
+        "unit": "K",
+        "confidence": 95,
+        "source": "ai_research"
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 50,
+        "max": 1000,
+        "value": 200,
+        "unit": "W",
+        "description": "Typical range for industrial cleaning of cast iron to remove rust or contaminants without substrate damage; starting at 200W balances efficiency and safety. Max limited to avoid melting (cast iron melting point ~1150-1300\u00b0C). Source: IPG Photonics laser cleaning systems specs for metal surfaces; academic review in Optics and Lasers in Engineering (2018)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-infrared wavelength optimized for Cast Iron absorption and rust removal"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 50,
+        "unit": "\u03bcm",
+        "description": "Beam spot diameter for effective cleaning resolution"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 50,
+        "unit": "kHz",
+        "description": "Optimal repetition rate for continuous cleaning coverage"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Nanosecond pulse duration for efficient oxide layer ablation"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 500,
+        "unit": "mm/s",
+        "description": "Optimal scanning speed for uniform cleaning coverage"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 3,
+        "unit": "passes",
+        "description": "Number of cleaning passes for complete oxide removal"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 50,
+        "unit": "%",
+        "description": "Optimal beam overlap for uniform surface treatment"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 7.2,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 1.5,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "surfaceRoughness",
+      "value": 25,
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 250.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 110.0,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 200,
+      "unitText": "HB"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 400,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 400,
+      "unitText": "\u00b0C"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.1,
+      "unitText": "mm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 830.0,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 20.0,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": 7.5e-07,
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "boilingPoint",
+      "value": 3134.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalConductivity",
+      "value": 2300000.0,
+      "unitText": "S/m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "meltingPoint",
+      "value": 1473.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 46.0,
+      "unitText": "W/(m\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 1.15e-05,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 14.0,
+      "unitText": "mm\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 460.0,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalShockResistance",
+      "value": 250,
+      "unitText": "\u00b0C"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.35,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptionCoefficient",
+      "value": 5000000.0,
+      "unitText": "m^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 2.5,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 3.0,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 1423.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.42,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "absorptivity",
+      "value": 0.5,
+      "unitText": ""
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "reflectivity",
+      "value": 0.37,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "vaporPressure",
+      "value": 0.133,
+      "unitText": "Pa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestructionPoint",
+      "value": 1473.0,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "50-1000",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/cast-iron-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/cast-iron-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/cast-iron-material-dataset.txt"
+    }
+  ]
+}

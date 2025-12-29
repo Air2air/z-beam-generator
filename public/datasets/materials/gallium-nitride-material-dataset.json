@@ -1,0 +1,454 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "identifier": "gallium-nitride-material-dataset",
+  "name": "Gallium Nitride Laser Cleaning Dataset",
+  "description": "Gallium Nitride shows hardness and density. This compound resists oxidation, thus maintains surface integrity during laser cleaning. Smoothness aids uniform contaminant removal, yet stiffness challenges precise ablation. Benefits include durability and corrosion resistance for semiconductor processing.",
+  "license": {
+    "@type": "CreativeWork",
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://www.z-beam.com"
+  },
+  "datePublished": "2025-12-26",
+  "dateModified": "2025-12-26",
+  "measurementTechnique": "Empirical measurements from industrial laser cleaning operations combined with materials science research",
+  "material": {
+    "materialProperties": {
+      "category": "semiconductor",
+      "subcategory": "compound",
+      "name": "Gallium Nitride",
+      "density": {
+        "value": 6.15,
+        "unit": "g/cm\u00b3",
+        "confidence": 95
+      },
+      "porosity": {
+        "value": 0,
+        "unit": "%",
+        "confidence": 90
+      },
+      "surfaceRoughness": {
+        "value": 0.2,
+        "unit": "\u03bcm",
+        "confidence": 85
+      },
+      "tensileStrength": {
+        "value": 300,
+        "unit": "MPa",
+        "confidence": 85
+      },
+      "youngsModulus": {
+        "value": 295,
+        "unit": "GPa",
+        "confidence": 90
+      },
+      "hardness": {
+        "value": 15,
+        "unit": "GPa",
+        "confidence": 90
+      },
+      "flexuralStrength": {
+        "value": 350,
+        "unit": "MPa",
+        "confidence": 80
+      },
+      "oxidationResistance": {
+        "value": 15,
+        "unit": "\u03bcm/year",
+        "confidence": 80
+      },
+      "corrosionResistance": {
+        "value": 0.7,
+        "unit": "mm/year",
+        "confidence": 80
+      },
+      "compressiveStrength": {
+        "value": 300,
+        "unit": "MPa",
+        "confidence": 85
+      },
+      "fractureToughness": {
+        "value": 8,
+        "unit": "MPa m^{1/2}",
+        "confidence": 80
+      },
+      "electricalResistivity": {
+        "value": 10000,
+        "unit": "\u03a9\u00b7m",
+        "confidence": 85
+      },
+      "thermalDestruction": {
+        "value": 2773,
+        "unit": "K",
+        "confidence": 95
+      },
+      "laserAbsorption": {
+        "value": 0.12,
+        "unit": "dimensionless",
+        "confidence": 85
+      },
+      "laserDamageThreshold": {
+        "value": 0.92,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Journal of Applied Physics",
+        "citation": "O. H. Nam et al., Journal of Applied Physics, 2001, DOI: 10.1063/1.1356423",
+        "context": "Bulk GaN single crystal (99.99% purity), 266 nm UV laser wavelength, 10 ns pulse duration, room temperature (25\u00b0C), measured in air",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:39:44.545004",
+        "needs_validation": true
+      },
+      "ablationThreshold": {
+        "value": 0.35,
+        "unit": "J/cm\u00b2",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Applied Physics Letters",
+        "citation": "Bonse, J., Baudach, S., Kr\u00fcger, J., Kautek, W., and Lenzner, M., Femtosecond laser ablation of gallium nitride, Applied Physics Letters, Vol. 77, No. 9, 2000, DOI: 10.1063/1.1290154",
+        "context": "Epitaxial GaN thin film (99.99% purity) on sapphire substrate, room temperature (25\u00b0C), femtosecond Ti:sapphire laser at 780 nm wavelength, 150 fs pulse duration, single-pulse irradiation in air",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:39:50.278930",
+        "needs_validation": true
+      },
+      "thermalDiffusivity": {
+        "value": 4.33e-05,
+        "unit": "m\u00b2/s",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "Ioffe Physico-Technical Institute New Semiconductor Materials Database",
+        "citation": "Ioffe Physico-Technical Institute, http://www.ioffe.ru/SVA/NSM/Semicond/GaN/thermal.html, accessed 2023",
+        "context": "Bulk wurtzite GaN (undoped, high-purity), 300 K, isotropic approximation from averaged properties",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:40:09.320526",
+        "needs_validation": true
+      },
+      "thermalExpansion": {
+        "value": 5.59e-06,
+        "unit": "K^{-1}",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "CRC Handbook of Chemistry and Physics",
+        "citation": "CRC Press/Taylor & Francis Group, 100th Edition, 2019, ISBN 978-1-138-56263-9",
+        "context": "Single crystal wurtzite GaN (undoped, high purity >99.99%), 300 K, along c-axis direction, measured via high-temperature X-ray diffraction",
+        "confidence": 100,
+        "researched_date": "2025-11-24T19:40:26.081288",
+        "needs_validation": true
+      },
+      "specificHeat": {
+        "value": 505.2,
+        "unit": "J/(kg\u00b7K)",
+        "source": "scientific_literature",
+        "source_type": "materials_database",
+        "source_name": "NIST Chemistry WebBook",
+        "citation": "NIST Chemistry WebBook, NIST Standard Reference Database Number 69, Eds. P.J. Linstrom and W.G. Mallard, June 2005 (updated 2024), https://doi.org/10.18434/T4D303 (for GaN thermochemical data)",
+        "context": "Pure stoichiometric GaN (wurtzite structure), 298.15 K, standard pressure, derived from molar heat capacity measurements",
+        "confidence": 100,
+        "researched_date": "2025-11-24T19:40:47.211967",
+        "needs_validation": true
+      },
+      "thermalConductivity": {
+        "value": 130.0,
+        "unit": "W/m\u00b7K",
+        "source": "scientific_literature",
+        "source_type": "reference_handbook",
+        "source_name": "CRC Handbook of Chemistry and Physics",
+        "citation": "CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press/Taylor & Francis, 2023, ISBN 978-1-138-56163-2",
+        "context": "Bulk single-crystal GaN (wurtzite structure, high purity >99.99%), 300 K, measured parallel to c-axis",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:40:55.916493",
+        "needs_validation": true
+      },
+      "laserReflectivity": {
+        "value": 0.18,
+        "unit": "dimensionless",
+        "source": "scientific_literature",
+        "source_type": "journal_article",
+        "source_name": "Optical Properties of GaN",
+        "citation": "Barker, A. S., et al., Physical Review B, 1978, DOI: 10.1103/PhysRevB.18.2567",
+        "context": "Epitaxial GaN thin film (99.9% purity), room temperature (25\u00b0C), normal incidence reflectivity at 500 nm wavelength (visible laser approximation), ellipsometry measurement",
+        "confidence": 95,
+        "researched_date": "2025-11-24T19:41:03.309949",
+        "needs_validation": true
+      }
+    },
+    "machineSettings": {
+      "power": {
+        "min": 10,
+        "max": 200,
+        "value": 50,
+        "unit": "W",
+        "description": "Typical range for pulsed fiber lasers in semiconductor cleaning; starting at 50 W balances efficiency and safety for GaN's sensitivity to heat (thermal conductivity ~130 W/mK); max avoids melting point (~2500\u00b0C). Source: IPG Photonics specs for YLR series; extrapolated from GaN ablation studies (e.g., J. Appl. Phys. 2015)."
+      },
+      "wavelength": {
+        "min": 355,
+        "max": 10640,
+        "value": 1064,
+        "unit": "nm",
+        "description": "Near-IR for minimal lattice damage"
+      },
+      "spotSize": {
+        "min": 0.1,
+        "max": 500,
+        "value": 30,
+        "unit": "\u03bcm",
+        "description": "Small spot for high-precision cleaning"
+      },
+      "repetitionRate": {
+        "min": 1,
+        "max": 200,
+        "value": 30,
+        "unit": "kHz",
+        "description": "Moderate frequency for controlled removal"
+      },
+      "pulseWidth": {
+        "min": 0.1,
+        "max": 1000,
+        "value": 10,
+        "unit": "ns",
+        "description": "Ultra-short pulses for minimal thermal damage"
+      },
+      "scanSpeed": {
+        "min": 10,
+        "max": 5000,
+        "value": 300,
+        "unit": "mm/s",
+        "description": "Careful scanning for uniform treatment"
+      },
+      "passCount": {
+        "min": 1,
+        "max": 10,
+        "value": 3,
+        "unit": "passes",
+        "description": "Multiple passes for complete cleaning"
+      },
+      "overlapRatio": {
+        "min": 10,
+        "max": 90,
+        "value": 60,
+        "unit": "%",
+        "description": "High overlap for thorough coverage"
+      }
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "density",
+      "value": 6.15,
+      "unitText": "g/cm\u00b3"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "porosity",
+      "value": 0,
+      "unitText": "%"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "surfaceRoughness",
+      "value": 0.2,
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tensileStrength",
+      "value": 300,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "youngsModulus",
+      "value": 295,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "hardness",
+      "value": 15,
+      "unitText": "GPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "flexuralStrength",
+      "value": 350,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "oxidationResistance",
+      "value": 15,
+      "unitText": "\u03bcm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "corrosionResistance",
+      "value": 0.7,
+      "unitText": "mm/year"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "compressiveStrength",
+      "value": 300,
+      "unitText": "MPa"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "fractureToughness",
+      "value": 8,
+      "unitText": "MPa m^{1/2}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "electricalResistivity",
+      "value": 10000,
+      "unitText": "\u03a9\u00b7m"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDestruction",
+      "value": 2773,
+      "unitText": "K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserAbsorption",
+      "value": 0.12,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserDamageThreshold",
+      "value": 0.92,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "ablationThreshold",
+      "value": 0.35,
+      "unitText": "J/cm\u00b2"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalDiffusivity",
+      "value": 4.33e-05,
+      "unitText": "m\u00b2/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalExpansion",
+      "value": 5.59e-06,
+      "unitText": "K^{-1}"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "specificHeat",
+      "value": 505.2,
+      "unitText": "J/(kg\u00b7K)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "thermalConductivity",
+      "value": 130.0,
+      "unitText": "W/m\u00b7K"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "laserReflectivity",
+      "value": 0.18,
+      "unitText": "dimensionless"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "power",
+      "value": "10-200",
+      "unitText": "W"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "wavelength",
+      "value": "355-10640",
+      "unitText": "nm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "spotSize",
+      "value": "0.1-500",
+      "unitText": "\u03bcm"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "repetitionRate",
+      "value": "1-200",
+      "unitText": "kHz"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "pulseWidth",
+      "value": "0.1-1000",
+      "unitText": "ns"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "scanSpeed",
+      "value": "10-5000",
+      "unitText": "mm/s"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "passCount",
+      "value": "1-10",
+      "unitText": "passes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "overlapRatio",
+      "value": "10-90",
+      "unitText": "%"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Industrial Laser Handbook",
+      "url": "https://www.z-beam.com/resources"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Materials Science and Engineering",
+      "url": "https://www.z-beam.com/research"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Laser Cleaning Technology Review",
+      "url": "https://www.z-beam.com/technology"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/gallium-nitride-material-dataset.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/gallium-nitride-material-dataset.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://www.z-beam.com/datasets/materials/gallium-nitride-material-dataset.txt"
+    }
+  ]
+}

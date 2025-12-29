@@ -3,7 +3,7 @@ Category Grouping Enricher - Groups relationship items by category with section 
 
 This enricher transforms flat relationship lists into categorized groups:
 - Groups items by their category field from source data
-- Adds _section metadata (title, description, icon) per group
+- Adds _section metadata (title, section_description, icon) per group
 - Preserves all existing item metadata
 - Reduces visual clutter by organizing 50+ items into 8-10 categories
 
@@ -256,7 +256,8 @@ class CategoryGroupingEnricher(BaseEnricher):
                     if 'title' in cat_meta:
                         group['_section']['title'] = cat_meta['title']
                     if 'description' in cat_meta:
-                        group['_section']['description'] = cat_meta['description']
+                        # Use section_description (new standard) for relationship metadata
+                        group['_section']['section_description'] = cat_meta['description']
                     if 'icon' in cat_meta:
                         group['_section']['icon'] = cat_meta['icon']
                 

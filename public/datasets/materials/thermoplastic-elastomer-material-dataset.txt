@@ -1,0 +1,58 @@
+Thermoplastic Elastomer Laser Cleaning Dataset
+================================================================================
+
+Description: We've found that thermoplastic elastomer responds well to laser cleaning, thanks to its rubber-like flexibility paired with plastic processability, allowing precise surface restoration without compromising structural integrity.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : composite
+subcategory                   : structural
+name                          : Thermoplastic Elastomer
+youngsModulus                 : 25.0 MPa
+oxidationResistance           : 1800.0 s
+density                       : 1.05 g/cm³
+hardness                      : 70.0 Shore A
+corrosionResistance           : 0.92 dimensionless (normalized resistance scale 0-1)
+compressiveStrength           : 18.5 MPa
+flexuralStrength              : 12.5 MPa
+tensileStrength               : 18.5 MPa
+fractureToughness             : 3.2 MPa m^{1/2}
+electricalResistivity         : 1000000000000.0 Ω·m
+laserDamageThreshold          : 2.0 J/cm²
+absorptivity                  : 0.6 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 0.8 MW/m
+reflectivity                  : 0.3 dimensionless
+thermalDestructionPoint       : 523 K
+vaporPressure                 : 0.01 Pa
+thermalDestruction            : 623.0 K
+specificHeat                  : 1800.0 J/kg·K
+laserReflectivity             : 0.06 
+thermalConductivity           : 0.2 W/m·K
+thermalExpansion              : 0.00018 1/K
+laserAbsorption               : 0.87 dimensionless (absorptivity)
+thermalDiffusivity            : 1.05e-07 m²/s
+ablationThreshold             : 0.75 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 10-100 W
+                                Typical range for polymer cleaning to avoid thermal damage; starting at 30W for light contamination on TPE, max below melting threshold (~150-200°C); based on IPG Photonics specs for YLR series lasers and studies in Optics and Lasers in Engineering (2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Thermoplastic Elastomer absorption and minimal substrate damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control on Thermoplastic Elastomer surfaces
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive thermal buildup
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

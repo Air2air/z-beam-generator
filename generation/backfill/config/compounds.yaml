@@ -1,0 +1,9 @@
+domain: compounds
+source_file: data/compounds/Compounds.yaml
+items_key: compounds
+
+generators:
+  - type: description
+    module_path: generation.backfill.compound_description
+    class_name: CompoundDescriptionGenerator
+    target_field: description

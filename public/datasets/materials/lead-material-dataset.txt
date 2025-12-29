@@ -1,0 +1,62 @@
+Lead Laser Cleaning Dataset
+================================================================================
+
+Description: Cleaning lead with lasers is tricky due to its low melting point, leaving surfaces prone to heat damage in the process. I've gotten the best outcomes using lower power settings to gently strip away contaminants while keeping the material's dense structure intact for shielding applications, but always keep a close eye on it to avoid any softening or deformation at the end.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : non-ferrous
+name                          : Lead
+electricalConductivity        : 4840000.0 S/m
+electricalResistivity         : 2.2e-07 Ω·m
+surfaceRoughness              : 1.6 μm
+youngsModulus                 : 16.0 GPa
+oxidationResistance           : 0.65  (dimensionless scale, 0-1 where 1 is highest resistance)
+density                       : 11.34 g/cm³
+hardness                      : 5.0 HB
+corrosionResistance           : 0.92 dimensionless
+compressiveStrength           : 12.0 MPa
+flexuralStrength              : 12.0 MPa
+tensileStrength               : 12.0 MPa
+porosity                      : 0.0 %
+absorptivity                  : 0.35 dimensionless
+boilingPoint                  : 2022.0 K
+absorptionCoefficient         : 12400000.0 m⁻¹
+meltingPoint                  : 600.61 K
+vaporPressure                 : 2.13e-07 Pa
+thermalDestructionPoint       : 601.0 K
+reflectivity                  : 0.65 dimensionless
+thermalShockResistance        : 0.0005 W/m
+laserDamageThreshold          : 0.15 J/cm²
+thermalDestruction            : 600.612 K
+specificHeat                  : 128.0 J/(kg·K)
+laserReflectivity             : 0.98 1
+thermalConductivity           : 35.3 W/m·K
+thermalExpansion              : 28.9 10^{-6} K^{-1}
+laserAbsorption               : 75000000.0 m^{-1}
+thermalDiffusivity            : 2.43e-05 m²/s
+ablationThreshold             : 0.42 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for industrial 1064 nm Nd:YAG lasers cleaning soft metals like lead to avoid melting (melting point 327°C); starting at 100W for light contamination; max safe below 500W to prevent substrate damage. Source: Manufacturer specs from IPG Photonics and Laserax systems for metal cleaning.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Lead absorption and minimal reflectivity
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise Lead surface treatment
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient Lead cleaning process
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled Lead ablation
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform Lead cleaning
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete Lead contamination removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform Lead surface cleaning
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

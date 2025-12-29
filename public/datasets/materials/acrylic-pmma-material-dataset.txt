@@ -1,0 +1,54 @@
+Acrylic (PMMA) Laser Cleaning Dataset
+================================================================================
+
+Description: Acrylic excels in laser cleaning setups thanks to its non-porous, smooth surface that enables precise contaminant removal while preserving optical clarity and structural integrity.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : plastic
+subcategory                   : thermoplastic
+name                          : Acrylic (PMMA)
+density                       : 1.18 g/cm³
+porosity                      : 0 %
+surfaceRoughness              : 0.5 μm
+tensileStrength               : 72 MPa
+youngsModulus                 : 3.3 GPa
+hardness                      : 0.095 GPa
+flexuralStrength              : 90 MPa
+oxidationResistance           : 2.5 μm/year
+corrosionResistance           : 0.92 mm/year
+compressiveStrength           : 72 MPa
+fractureToughness             : 3.5 MPa m^{1/2}
+electricalResistivity         : 100000000000000.0 Ω·m
+thermalDestruction            : 433 K
+laserAbsorption               : 0.15 dimensionless
+laserDamageThreshold          : 1.8 J/cm²
+ablationThreshold             : 0.7 J/cm²
+thermalDiffusivity            : 1.1e-07 m²/s
+thermalExpansion              : 8e-05 1/K
+specificHeat                  : 1460.0 J/(kg·K)
+thermalConductivity           : 0.19 W/m·K
+laserReflectivity             : 0.038 
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 10-100 W
+                                Typical range for pulsed Nd:YAG lasers in polymer cleaning to avoid thermal damage; starting at 30W for PMMA surface preparation. Max safe ~100W before melting (PMMA melting point ~160°C). Source: Manufacturer specs from IPG Photonics and Adapt Laser Systems for delicate substrates.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for controlled absorption
+spotSize                      : 0.1-500 μm
+                                Larger spot for gentle surface treatment
+repetitionRate                : 1-200 kHz
+                                Lower frequency to prevent thermal damage
+pulseWidth                    : 0.1-1000 ns
+                                Short pulses for minimal thermal impact
+scanSpeed                     : 10-5000 mm/s
+                                Fast scanning to reduce heat accumulation
+passCount                     : 1-10 passes
+                                Multiple gentle passes for gradual cleaning
+overlapRatio                  : 10-90 %
+                                Lower overlap to prevent overheating
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

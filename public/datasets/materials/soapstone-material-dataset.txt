@@ -1,0 +1,58 @@
+Soapstone Laser Cleaning Dataset
+================================================================================
+
+Description: Soapstone differs from hard stones. Softness allows gentle laser cleaning. Contaminants detach easily and surface preserves integrity. Treatment applies, thus restoration enhances for heritage. Challenges arise from sensitivity, so control matters.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : stone
+subcategory                   : sedimentary
+name                          : Soapstone
+fractureToughness             : 1.1 MPa√m
+youngsModulus                 : 10.3 GPa
+oxidationResistance           : 0.98 dimensionless (normalized resistance scale 0-1)
+density                       : 2750.0 kg/m³
+hardness                      : 1.0 Mohs
+corrosionResistance           : 0.0005 mm/year
+compressiveStrength           : 30.0 MPa
+flexuralStrength              : 15.0 MPa
+tensileStrength               : 6.5 MPa
+porosity                      : 1.2 %
+laserDamageThreshold          : 2.5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 5000000.0 m⁻¹
+thermalShockResistance        : 1.8 MW/m
+reflectivity                  : 0.15 dimensionless
+thermalDestructionPoint       : 1100 K
+vaporPressure                 : 0.05 Pa
+thermalDestruction            : 1123.0 K
+specificHeat                  : 880.0 J/(kg·K)
+laserReflectivity             : 0.12 
+thermalConductivity           : 2.5 W/m·K
+thermalExpansion              : 6.5e-06 K^{-1}
+laserAbsorption               : 45.2 m^{-1}
+thermalDiffusivity            : 1.2e-06 m²/s
+ablationThreshold             : 1.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-300 W
+                                Typical range for industrial cleaning of soft stones like soapstone to avoid thermal damage; starting at 100 W for controlled ablation. Max limited by soapstone's low thermal conductivity (~0.2 W/mK) to prevent cracking. Source: General Nd:YAG laser specs from manufacturers like IPG Photonics and academic reviews on stone conservation (e.g., J. Cult. Herit. 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Soapstone mineral absorption
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse width for controlled ablation of Soapstone surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning
+passCount                     : 1-10 passes
+                                Recommended number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -1,0 +1,59 @@
+Alumina Laser Cleaning Dataset
+================================================================================
+
+Description: In demanding industrial applications, alumina stands out for its superior heat resistance, which maintains the material's stability and strength even under extreme thermal stress—unlike softer ceramics that tend to crack or warp—delivering reliable performance in precision-dependent uses such as aerospace components and medical instruments.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : ceramic
+subcategory                   : oxide
+name                          : Alumina
+electricalResistivity         : 100000000000000.0 ohm-m
+fractureToughness             : 4.0 MPa m^{1/2}
+density                       : 3.95 g/cm³
+oxidationResistance           : 1923.0 K
+youngsModulus                 : 393.0 GPa
+hardness                      : 19.6 GPa
+compressiveStrength           : 2500.0 MPa
+tensileStrength               : 275.0 MPa
+flexuralStrength              : 310.0 MPa
+corrosionResistance           : 0.96 dimensionless (normalized resistance index 0-1)
+porosity                      : 0.5 %
+laserDamageThreshold          : 12 J/cm²
+absorptivity                  : 0.07 dimensionless
+absorptionCoefficient         : 50000 m⁻¹
+thermalShockResistance        : 2 MW/m
+reflectivity                  : 0.07 dimensionless
+thermalDestructionPoint       : 2300 K
+vaporPressure                 : 0.01 Pa
+thermalDestruction            : 2345.0 K
+laserReflectivity             : 0.075 dimensionless
+thermalExpansion              : 8.1e-06 K^{-1}
+thermalConductivity           : 25.0 W/m·K
+specificHeat                  : 880.0 J/(kg·K)
+laserAbsorption               : 50.0 m^{-1}
+thermalDiffusivity            : 8.57e-06 m²/s
+ablationThreshold             : 2.1 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for ns-pulsed fiber lasers in ceramic cleaning to avoid thermal damage; recommended starting at 100W for light contamination on alumina (high melting point ~2072°C but low thermal conductivity). Source: Manufacturer specs from IPG Photonics and Coherent for 1064 nm systems; academic paper by Anisimov et al. (2015) in J. Appl. Phys.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength providing good absorption in Alumina with minimal reflection
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for effective cleaning resolution and energy density
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate balancing cleaning efficiency and thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient material removal with controlled thermal effects
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive thermal buildup
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

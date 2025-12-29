@@ -1,0 +1,58 @@
+Carbon Fiber Reinforced Polymer Laser Cleaning Dataset
+================================================================================
+
+Description: In my experience, Carbon Fiber Reinforced Polymer works wonders in aerospace and automotive designs by combining incredible tensile strength with remarkably low weight compared to traditional metals, enabling lighter structures that perform better—though you should avoid sharp impacts to prevent fiber breakage.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : composite
+subcategory                   : fiber-reinforced
+name                          : Carbon Fiber Reinforced Polymer
+electricalResistivity         : 0.0015 Ω·m
+fractureToughness             : 1.2 MPa√m
+density                       : 1.55 g/cm³
+oxidationResistance           : 673.0 K
+youngsModulus                 : 150000000000.0 Pa
+hardness                      : 250.0 MPa
+compressiveStrength           : 1500.0 MPa
+tensileStrength               : 1480.0 MPa
+flexuralStrength              : 690.0 MPa
+corrosionResistance           : 0.98 dimensionless (normalized resistance index)
+laserDamageThreshold          : 3 J/cm²
+absorptivity                  : 0.3 dimensionless
+absorptionCoefficient         : 50000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.7 dimensionless
+thermalDestructionPoint       : 700 K
+vaporPressure                 : 100 Pa
+thermalDestruction            : 673.0 K
+laserReflectivity             : 0.35 dimensionless
+thermalExpansion              : 2.7e-07 K^{-1}
+thermalConductivity           : 0.92 W/m·K
+specificHeat                  : 920.0 J/(kg·K)
+laserAbsorption               : 0.92 dimensionless (absorptivity)
+thermalDiffusivity            : 5.7e-07 m²/s
+ablationThreshold             : 2.3 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 10-100 W
+                                Typical range for pulsed Nd:YAG lasers in CFRP cleaning to ablate contaminants without matrix degradation; starting at 30W for light contamination. Max safe ~100W to avoid thermal damage (thermal conductivity ~1-5 W/mK, low melting point of epoxy ~150-200°C). Source: Journal of Laser Applications (2018) on composite cleaning.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal carbon absorption and minimal polymer damage
+spotSize                      : 0.1-500 μm
+                                Focused spot size for precise cleaning resolution
+repetitionRate                : 1-200 kHz
+                                High repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive heating
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

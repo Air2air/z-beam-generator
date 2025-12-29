@@ -1,0 +1,48 @@
+Cerium Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning cerium, watch out for its relative softness that can cause surface deformation, though its strong reflectivity limits heat penetration and restores precision in optical components
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : rare-earth
+subcategory                   : lanthanide
+name                          : Cerium
+density                       : 6.77 g/cm³
+oxidationResistance           : -2.483 V
+youngsModulus                 : 33.0 GPa
+hardness                      : 27.0 HV
+boilingPoint                  : 3716.0 K
+absorptivity                  : 0.62 dimensionless
+thermalDestruction            : 1071.0 K
+laserReflectivity             : 0.92 dimensionless
+thermalExpansion              : 6.3e-06 K^{-1}
+thermalConductivity           : 11.3 W/m·K
+specificHeat                  : 192.1 J/(kg·K)
+ablationThreshold             : 1.5 J/cm²
+absorptionCoefficient         : 12500000.0 m^{-1}
+laserDamageThreshold          : 1.8 J/cm²
+thermalDiffusivity            : 8.67e-06 m²/s
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-200 W
+                                Typical range for Nd:YAG lasers in metal cleaning; lower end for sensitive substrates like Cerium to avoid melting (melting point ~795°C). Recommended starting at 50 W for contamination removal. Max safe before damage based on thermal conductivity (~11 W/m·K). Source: Manufacturer specs from IPG Photonics and Coherent for 1064 nm systems; academic review in 'Laser Cleaning of Metals' (Optics & Lasers in Engineering, 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal Cerium absorption and thermal processing
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control on Cerium surfaces
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of Cerium oxides
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal pulse overlap for uniform cleaning without excessive heating
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

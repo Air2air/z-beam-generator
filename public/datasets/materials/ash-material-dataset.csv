@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,wood,,
+subcategory,hardwood,,
+name,Ash,,
+fractureToughness,0.36,MPa√m,
+density,670.0,kg/m³,
+oxidationResistance,290.0,°C,
+youngsModulus,12.8,GPa,
+hardness,5870.0,N,
+compressiveStrength,69.0,MPa,
+tensileStrength,115.0,MPa,
+flexuralStrength,96.5,MPa,
+corrosionResistance,0.75,dimensionless,
+porosity,0.6,fraction,
+laserDamageThreshold,10,J/cm²,
+absorptivity,0.85,dimensionless,
+absorptionCoefficient,500000,m⁻¹,
+thermalShockResistance,1.5,MW/m,
+reflectivity,0.1,dimensionless,
+thermalDestructionPoint,550,K,
+vaporPressure,100,Pa,
+thermalDestruction,573.0,K,
+laserReflectivity,0.082,dimensionless (fraction),
+thermalExpansion,3.2e-05,1/°C,
+thermalConductivity,0.15,W/m·K,
+specificHeat,1380.0,J/(kg·K),
+laserAbsorption,0.82,dimensionless,
+thermalDiffusivity,1.4e-07,m²/s,
+ablationThreshold,1.15,J/cm²,
+power,50-1000,W,"Typical range for 1064 nm industrial cleaning of light powdery contaminants like ash on metals or stone; start at 200 W to balance efficiency and avoid thermal damage to low-conductivity substrates; max limited by substrate melting point (e.g., ~1000 W for steel); based on IPG Photonics and Laserax manufacturer specs for contamination removal."
+wavelength,355-10640,nm,Near-infrared wavelength optimized for Ash absorption and minimal substrate interaction
+spotSize,0.1-500,μm,Beam spot diameter for effective Ash removal resolution and processing efficiency
+repetitionRate,1-200,kHz,Optimal repetition rate for continuous cleaning coverage with thermal recovery
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for controlled Ash ablation and thermal management
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform Ash removal and process throughput
+passCount,1-10,passes,Recommended number of passes for complete Ash removal with process control
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup

@@ -3,7 +3,7 @@ Section Metadata Enricher - Adds display metadata to relationship sections.
 
 This enricher wraps relationship arrays with presentation metadata:
 - presentation: Display variant (card, list, table, etc.)
-- _section: Optional section metadata (title, description, icon)
+- _section: Optional section metadata (title, section_description, icon)
 - items: Array of relationship items
 
 Example transformation:
@@ -55,7 +55,7 @@ class SectionMetadataEnricher(BaseEnricher):
     enrichment is complete) so we're wrapping fully-enriched relationship data.
     
     Compatible with Card Restructure (December 2025) - adds presentation key
-    and optional _section metadata with title/description.
+    and optional _section metadata with title/section_description.
     """
     
     def __init__(self, config: Dict[str, Any]):
@@ -153,7 +153,8 @@ class SectionMetadataEnricher(BaseEnricher):
                     if title:
                         field_data['_section']['title'] = title
                     if description:
-                        field_data['_section']['description'] = description
+                        # Use section_description (new standard) instead of description
+                        field_data['_section']['section_description'] = description
                     if icon:
                         field_data['_section']['icon'] = icon
                     if order is not None:
@@ -177,7 +178,7 @@ class SectionMetadataEnricher(BaseEnricher):
                 'presentation': section_config.get('presentation', 'card'),
             }
             
-            # Add _section metadata if title or description is configured
+            # Add _section metadata if title or section_description is configured
             title = section_config.get('title') or self.section_titles.get(field_name)
             description = section_config.get('description') or self.section_descriptions.get(field_name)
             icon = section_config.get('icon')
@@ -189,7 +190,8 @@ class SectionMetadataEnricher(BaseEnricher):
                 if title:
                     _section['title'] = title
                 if description:
-                    _section['description'] = description
+                    # Use section_description (new standard) instead of description
+                    _section['section_description'] = description
                 if icon:
                     _section['icon'] = icon
                 if order is not None:

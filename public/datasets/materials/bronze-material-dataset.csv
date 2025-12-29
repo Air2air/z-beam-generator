@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,non-ferrous,,
+name,Bronze,,
+density,8.8,g/cm³,
+porosity,0.5,%,
+surfaceRoughness,0.8,μm,
+tensileStrength,400.0,MPa,
+youngsModulus,110.0,GPa,
+hardness,100,HB,
+flexuralStrength,450,MPa,
+oxidationResistance,8,scale 1-10,
+corrosionResistance,7,scale 1-10,
+compressiveStrength,345.0,MPa,
+fractureToughness,52.0,MPa m^{0.5},
+electricalResistivity,2e-07,Ω·m,
+boilingPoint,2840.0,K,
+electricalConductivity,6960000.0,S/m,
+meltingPoint,950.0,°C,
+thermalConductivity,60.0,W/(m·K),
+thermalExpansion,18,×10^{-6}/K,
+thermalDiffusivity,22.0,mm²/s,
+specificHeat,380.0,J/(kg·K),
+thermalShockResistance,150,W/m·K,
+laserReflectivity,0.65,,
+absorptionCoefficient,5.5,×10^6 /m,
+ablationThreshold,2.5,J/cm²,
+laserDamageThreshold,1.8,J/cm²,
+thermalDestruction,1223.0,K,
+laserAbsorption,78000000.0,m^{-1},
+absorptivity,0.35,dimensionless,
+reflectivity,0.65,,
+vaporPressure,0.14,Pa,
+thermalDestructionPoint,950.0,°C,
+power,50-1000,W,"Typical range for industrial 1064 nm fiber lasers cleaning metals like bronze; starting at 200W balances efficiency and safety to avoid overheating due to bronze's high reflectivity and thermal conductivity (~100-300 W/m·K). Max limited to prevent substrate melting (~950°C). Source: IPG Photonics YLR series specs and studies on copper alloys (e.g., J. Laser Appl. 2018)."
+wavelength,355-10640,nm,Near-IR wavelength with good absorption in Bronze oxides and moderate substrate absorption
+spotSize,0.1-500,μm,Optimal spot diameter for balancing cleaning efficiency and processing speed
+repetitionRate,1-200,kHz,High repetition rate for efficient cleaning coverage while maintaining pulse energy
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for efficient oxide layer ablation with minimal thermal diffusion
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform oxide removal without substrate damage
+passCount,1-10,passes,Recommended number of passes for complete oxide removal with safety margin
+overlapRatio,10-90,%,Optimal pulse overlap for uniform cleaning coverage without excessive thermal buildup

@@ -1,0 +1,63 @@
+Tin Laser Cleaning Dataset
+================================================================================
+
+Description: For laser cleaning of tin, begin with low power to carefully manage its low melting point, in contrast to tougher metals that endure higher intensities without deformation.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : alloy
+name                          : Tin
+youngsModulus                 : 50.0 GPa
+oxidationResistance           : 1.3 dimensionless
+density                       : 7310.0 kg/m^3
+hardness                      : 4.5 HB
+corrosionResistance           : 0.95 dimensionless (0-1 scale)
+compressiveStrength           : 35.0 MPa
+flexuralStrength              : 30.5 MPa
+tensileStrength               : 23.0 MPa
+fractureToughness             : 2.8 MPa√m
+porosity                      : 0.0 %
+electricalResistivity         : 1.15e-07 Ω·m
+absorptivity                  : 0.08 dimensionless
+boilingPoint                  : 2875.0 K
+absorptionCoefficient         : 60000000 m⁻¹
+electricalConductivity        : 8700000.0 S/m
+meltingPoint                  : 505.08 K
+vaporPressure                 : 0.001 Pa
+thermalDestructionPoint       : 505 K
+reflectivity                  : 0.92 dimensionless
+thermalShockResistance        : 1.2 MW/m
+surfaceRoughness              : 0.8 μm
+laserDamageThreshold          : 1.5 J/cm²
+thermalDestruction            : 505.08 K
+specificHeat                  : 227.0 J/kg·K
+laserReflectivity             : 0.71 dimensionless
+thermalConductivity           : 66.8 W/m·K
+thermalExpansion              : 2.35e-05 K^{-1}
+laserAbsorption               : 0.42 dimensionless
+thermalDiffusivity            : 4.03e-05 m²/s
+ablationThreshold             : 1.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-500 W
+                                Typical range for industrial 1064 nm pulsed laser cleaning of reflective metals like tin to balance efficiency and avoid melting (tin melting point ~232°C); starting at 100W for light contamination. Max safe ~300-500W with proper pulsing to prevent substrate damage due to high reflectivity (~70% at 1064 nm). Source: Manufacturer specs (e.g., IPG Photonics YLR series for metal cleaning); academic review in 'Laser Cleaning' by Kononenko et al. (Optics & Lasers in Engineering, 2016).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for efficient Tin oxide absorption with minimal substrate heating
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise Tin surface cleaning
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient Tin cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled Tin oxide ablation
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform Tin oxide removal
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete Tin oxide removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform Tin surface cleaning
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -1,0 +1,63 @@
+Beryllium Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning Beryllium parts for aerospace use, we've found the biggest hurdle is its slick surface that resists absorption of the beam, so we dial in steady pulses to strip away grime effectively while keeping heat spread even to dodge any warping in those lightweight frames.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : specialty
+name                          : Beryllium
+electricalConductivity        : 25000000.0 S/m
+electricalResistivity         : 1.06e-08 Ω·m
+fractureToughness             : 9.0 MPa√m
+surfaceRoughness              : 1.6 μm
+density                       : 1.848 g/cm³
+oxidationResistance           : 873.0 K
+youngsModulus                 : 287.0 GPa
+hardness                      : 167.0 HV
+compressiveStrength           : 345.0 MPa
+tensileStrength               : 345.0 MPa
+flexuralStrength              : 345.0 MPa
+corrosionResistance           : 0.001 mm/year
+porosity                      : 0.0 %
+boilingPoint                  : 2742.0 K
+absorptivity                  : 0.38 dimensionless
+absorptionCoefficient         : 0.42 dimensionless (fraction of incident radiation)
+reflectivity                  : 0.55 dimensionless
+vaporPressure                 : 133.0 Pa
+meltingPoint                  : 1560.0 K
+thermalDestructionPoint       : 1287.0 °C
+thermalShockResistance        : 1.8 W/m
+laserDamageThreshold          : 1.8 J/cm²
+thermalDestruction            : 1560.0 K
+laserReflectivity             : 0.95 dimensionless
+thermalExpansion              : 1.13e-05 K^{-1}
+thermalConductivity           : 216.0 W/m·K
+specificHeat                  : 1825.0 J/kg·K
+laserAbsorption               : 0.4 dimensionless
+thermalDiffusivity            : 6.42e-05 m²/s
+ablationThreshold             : 1.85 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for 1064 nm Nd:YAG lasers in metal cleaning to balance efficiency and heat input; starting at 150 W for Beryllium due to high reflectivity (~70% at 1064 nm) reducing absorption; max avoids substrate melting (1287°C) per studies on reflective metals (e.g., SPIE Proc. Vol. 10912, 2019). Source: IPG Photonics YLR series specs.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Beryllium thermal absorption characteristics
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control
+repetitionRate                : 1-200 kHz
+                                High repetition rate for efficient cleaning with minimal thermal damage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Beam overlap percentage for uniform cleaning pattern
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

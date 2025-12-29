@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,plastic,,
+subcategory,thermoplastic,,
+name,Polystyrene,,
+electricalResistivity,100000000000000.0,Ω·m,
+fractureToughness,0.9,MPa m^{1/2},
+youngsModulus,3.3,GPa,
+oxidationResistance,523.0,K,
+density,1.05,g/cm³,
+hardness,77.0,Shore D,
+corrosionResistance,0.65,dimensionless (normalized resistance index),
+compressiveStrength,70.0,MPa,
+flexuralStrength,50.0,MPa,
+tensileStrength,40.0,MPa,
+laserDamageThreshold,2.0,J/cm²,
+absorptivity,0.15,dimensionless,
+absorptionCoefficient,1000000,m⁻¹,
+thermalShockResistance,1.0,MW/m,
+reflectivity,0.05,dimensionless,
+thermalDestructionPoint,620,K,
+vaporPressure,10,Pa,
+thermalDestruction,623.0,K,
+specificHeat,1300.0,J/(kg·K),
+laserReflectivity,0.052,dimensionless,
+thermalConductivity,0.12,W/m·K,
+thermalExpansion,7e-05,K^{-1},
+laserAbsorption,100.0,m^{-1},
+thermalDiffusivity,1.02e-07,m²/s,
+ablationThreshold,0.25,J/cm²,
+power,20-200,W,"Typical range for polymer cleaning to avoid thermal damage; starting at 50W for light contamination on PS, max limited by PS melting point (~240°C) and low thermal conductivity. Source: Studies on Nd:YAG laser cleaning of plastics (e.g., J. Appl. Phys. 2018)."
+wavelength,355-10640,nm,Near-IR wavelength providing good absorption in Polystyrene with minimal thermal penetration
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning control on Polystyrene surfaces
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for controlled ablation of Polystyrene surface contaminants
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Recommended number of passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning pattern

@@ -1,0 +1,59 @@
+Stoneware Laser Cleaning Dataset
+================================================================================
+
+Description: I've found stoneware handles laser cleaning smoothly compared to fragile porcelains, absorbing heat evenly to strip away contaminants from heritage pieces or chemical gear without cracking the tough body underneath.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : ceramic
+subcategory                   : oxide
+name                          : Stoneware
+youngsModulus                 : 65.0 GPa
+oxidationResistance           : 1273.0 K
+density                       : 2.4 g/cm³
+hardness                      : 5.7 GPa
+corrosionResistance           : 0.98 dimensionless (fractional resistance)
+compressiveStrength           : 345.0 MPa
+flexuralStrength              : 55.0 MPa
+tensileStrength               : 35.0 MPa
+fractureToughness             : 1.1 MPa·m^{1/2}
+porosity                      : 2.0 %
+electricalResistivity         : 100000000.0 Ω·m
+laserDamageThreshold          : 2.5 J/cm²
+absorptivity                  : 0.8 dimensionless
+absorptionCoefficient         : 1000000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.2 dimensionless
+thermalDestructionPoint       : 1500 K
+vaporPressure                 : 0.1 Pa
+thermalDestruction            : 1473.0 K
+specificHeat                  : 880.0 J/(kg·K)
+laserReflectivity             : 0.15 fraction
+thermalConductivity           : 1.4 W/m·K
+thermalExpansion              : 5.8e-06 /K
+laserAbsorption               : 0.82 
+thermalDiffusivity            : 7.8e-07 m²/s
+ablationThreshold             : 2.1 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for industrial laser cleaning of ceramics like stoneware to avoid thermal damage; starting at 100W for light contamination removal. Max safe before substrate cracking or discoloration. Source: Manufacturer specs from CleanLaser systems and studies in Journal of Laser Applications (e.g., 2018 paper on ceramic surface preparation).
+wavelength                    : 355-10640 nm
+                                Near-infrared wavelength optimized for Stoneware mineral absorption
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning pattern
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

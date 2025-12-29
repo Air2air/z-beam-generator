@@ -1,0 +1,58 @@
+Travertine Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning travertine, I've gotten the best results by starting with low-power passes that honor its porous texture, letting contaminants lift off easily without heat penetrating too deeply and risking surface cracks.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : stone
+subcategory                   : natural
+name                          : Travertine
+youngsModulus                 : 25.3 GPa
+oxidationResistance           : 1.0 dimensionless (resistance index)
+density                       : 2.65 g/cm³
+hardness                      : 3.5 Mohs
+corrosionResistance           : 0.42 dimensionless
+compressiveStrength           : 30.0 MPa
+flexuralStrength              : 9.2 MPa
+tensileStrength               : 5.2 MPa
+fractureToughness             : 1.15 MPa m^{1/2}
+porosity                      : 20.0 %
+laserDamageThreshold          : 8.5 J/cm²
+absorptivity                  : 0.65 dimensionless
+absorptionCoefficient         : 5000000.0 m⁻¹
+thermalShockResistance        : 1.8 MW/m
+reflectivity                  : 0.35 dimensionless
+thermalDestructionPoint       : 1098 K
+vaporPressure                 : 0.1 Pa
+thermalDestruction            : 850.0 °C
+specificHeat                  : 850.0 J/(kg·K)
+laserReflectivity             : 0.38 dimensionless
+thermalConductivity           : 1.92 W/m·K
+thermalExpansion              : 6.5e-06 K^{-1}
+laserAbsorption               : 2800.0 m^{-1}
+thermalDiffusivity            : 1.12e-06 m²/s
+ablationThreshold             : 1.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-200 W
+                                Typical range for pulsed Nd:YAG lasers (1064 nm) on porous stones like travertine to remove contaminants without thermal damage; starting at 50 W for light soiling, max 200 W risks microcracking (source: IPG Photonics laser cleaning guidelines and studies on limestone ablation, e.g., J. Cult. Herit. 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Travertine absorption and minimal substrate damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for balanced cleaning efficiency and resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage and process speed
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning without overlapping damage
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for complete coverage without excessive energy deposition
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

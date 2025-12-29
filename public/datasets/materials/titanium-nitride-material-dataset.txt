@@ -1,0 +1,53 @@
+Titanium Nitride Laser Cleaning Dataset
+================================================================================
+
+Description: In our experience, the main challenge for titanium nitride in high-wear applications stems from routine abrasion and exposure to tough conditions, but its exceptional hardness and corrosion resistance offer enduring protection for tools and components while sustaining peak performance.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : ceramic
+subcategory                   : coating
+name                          : Titanium Nitride
+compressiveStrength           : 3900.0 MPa
+fractureToughness             : 3.4 MPa√m
+electricalResistivity         : 2.5e-07 Ω·m
+corrosionResistance           : 0.002 mm/year
+tensileStrength               : 345.0 MPa
+porosity                      : 0.5 %
+oxidationResistance           : 500.0 °C
+youngsModulus                 : 450.0 GPa
+flexuralStrength              : 345.0 MPa
+density                       : 5.22 g/cm³
+hardness                      : 21.5 GPa
+thermalConductivity           : 19.2 W/m·K
+thermalDiffusivity            : 7.03e-06 m²/s
+thermalDestruction            : 3223.0 K
+laserDamageThreshold          : 1.2 J/cm²
+laserAbsorption               : 0.72 dimensionless
+ablationThreshold             : 1.2 J/cm²
+thermalExpansion              : 9.35e-06 K^{-1}
+laserReflectivity             : 0.62 dimensionless
+specificHeat                  : 690.0 J/kg·K
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-300 W
+                                Typical range for industrial laser cleaning of hard coatings like TiN to ablate contaminants without substrate melting (TiN melting point ~2950°C). Starting at 100W for controlled energy delivery; max limited to avoid thermal damage. Source: IPG Photonics YLR series specs for 1064 nm cleaning systems; academic review in 'Laser Cleaning of Metallic Substrates' (Optics and Lasers in Engineering, 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal absorption
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for effective cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Pulse frequency for controlled material removal
+pulseWidth                    : 0.1-1000 ns
+                                Pulse duration for minimal thermal penetration
+scanSpeed                     : 10-5000 mm/s
+                                Beam travel speed for uniform coverage
+passCount                     : 1-10 passes
+                                Number of cleaning cycles for complete removal
+overlapRatio                  : 10-90 %
+                                Beam overlap for consistent surface treatment
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

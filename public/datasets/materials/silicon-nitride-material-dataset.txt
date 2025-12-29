@@ -1,0 +1,59 @@
+Silicon Nitride Laser Cleaning Dataset
+================================================================================
+
+Description: When handling Silicon Nitride in high-heat settings like aerospace parts, focus on its excellent thermal stability, which holds the material firm and undamaged amid extreme temperatures. Unlike common ceramics that crack under rapid heating or cooling, this makes it ideal for tough components in engines or cutting tools. Keep an eye during processing for any surface deposits that could disrupt uniform heating, and tweak your methods to deliver smooth, dependable results.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : ceramic
+subcategory                   : oxide
+name                          : Silicon Nitride
+electricalResistivity         : 100000000000000.0 Ω·m
+fractureToughness             : 6.0 MPa√m
+youngsModulus                 : 310.0 GPa
+oxidationResistance           : 1400.0 °C
+density                       : 3.2 g/cm³
+hardness                      : 15.0 GPa
+corrosionResistance           : 0.95 dimensionless
+compressiveStrength           : 3100.0 MPa
+flexuralStrength              : 900.0 MPa
+tensileStrength               : 310.0 MPa
+porosity                      : 0.3 %
+laserDamageThreshold          : 10 J/cm²
+absorptivity                  : 0.1 dimensionless
+absorptionCoefficient         : 50000 m⁻¹
+thermalShockResistance        : 2.5 MW/m
+reflectivity                  : 0.3 dimensionless
+thermalDestructionPoint       : 1900 K
+vaporPressure                 : 0.01 Pa
+thermalDestruction            : 2173.0 K
+specificHeat                  : 700.0 J/(kg·K)
+laserReflectivity             : 0.11 
+thermalConductivity           : 30.0 W/m·K
+thermalExpansion              : 3.2e-06 K^{-1}
+laserAbsorption               : 1200.0 m^{-1}
+thermalDiffusivity            : 1.2e-05 m²/s
+ablationThreshold             : 1.8 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-500 W
+                                Typical range for pulsed fiber lasers in industrial cleaning of ceramics like Si3N4 to remove contaminants without thermal damage; starting at 100W for controlled ablation. Max safe ~300-500W to avoid cracking due to low thermal conductivity (~25 W/mK). Source: IPG Photonics fiber laser specs for cleaning applications; academic review in 'Laser Cleaning of Ceramics' (Optics and Lasers in Engineering, 2018).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Silicon Nitride absorption characteristics
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning pattern
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

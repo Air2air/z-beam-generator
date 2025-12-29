@@ -9,7 +9,7 @@
 
 metadata:
   extracted_from: frontmatter/
-  total_associations: 0
+  total_associations: 69
   verified: 0
   verification_rate: "0%"
 
@@ -24,6 +24,626 @@ material_contaminant_associations:
 # =============================================================================
 contaminant_compound_associations:
 
+  # adhesive-residue-contamination → carbon-monoxide-compound
+  - contaminant_id: adhesive-residue-contamination
+    compound_id: carbon-monoxide-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Incomplete combustion of organic adhesives"
+    verified: false
+    verification_source: null
+
+  # paint-residue-contamination → carbon-monoxide-compound
+  - contaminant_id: paint-residue-contamination
+    compound_id: carbon-monoxide-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Combustion of paint binders and solvents"
+    verified: false
+    verification_source: null
+
+  # rubber-residue-contamination → carbon-monoxide-compound
+  - contaminant_id: rubber-residue-contamination
+    compound_id: carbon-monoxide-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Pyrolysis of rubber polymers"
+    verified: false
+    verification_source: null
+
+  # plastic-residue-contamination → acetaldehyde-compound
+  - contaminant_id: plastic-residue-contamination
+    compound_id: acetaldehyde-compound
+    frequency: common
+    severity: moderate
+    typical_context: "PET and PVC thermal degradation"
+    verified: false
+    verification_source: null
+
+  # adhesive-residue-contamination → acetaldehyde-compound
+  - contaminant_id: adhesive-residue-contamination
+    compound_id: acetaldehyde-compound
+    frequency: common
+    severity: moderate
+    typical_context: "EVA and acrylic adhesive breakdown"
+    verified: false
+    verification_source: null
+
+  # paint-residue-contamination → acetaldehyde-compound
+  - contaminant_id: paint-residue-contamination
+    compound_id: acetaldehyde-compound
+    frequency: occasional
+    severity: low
+    typical_context: "Acrylic paint thermal degradation"
+    verified: false
+    verification_source: null
+
+  # blood-residue-contamination → ammonia-compound
+  - contaminant_id: blood-residue-contamination
+    compound_id: ammonia-compound
+    frequency: occasional
+    severity: low
+    typical_context: "Breakdown of proteins"
+    verified: false
+    verification_source: null
+
+  # plastic-residue-contamination → hydrogen-chloride-compound
+  - contaminant_id: plastic-residue-contamination
+    compound_id: hydrogen-chloride-compound
+    frequency: very_common
+    severity: high
+    typical_context: "PVC thermal decomposition"
+    verified: false
+    verification_source: null
+
+  # adhesive-residue-contamination → hydrogen-chloride-compound
+  - contaminant_id: adhesive-residue-contamination
+    compound_id: hydrogen-chloride-compound
+    frequency: occasional
+    severity: moderate
+    typical_context: "Chlorinated adhesive breakdown"
+    verified: false
+    verification_source: null
+
+  # rust-oxidation-contamination → nitrogen-oxides-compound
+  - contaminant_id: rust-oxidation-contamination
+    compound_id: nitrogen-oxides-compound
+    frequency: common
+    severity: low
+    typical_context: "High-temperature iron oxide reactions with nitrogen"
+    verified: false
+    verification_source: null
+
+  # paint-residue-contamination → toluene-compound
+  - contaminant_id: paint-residue-contamination
+    compound_id: toluene-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Vaporization of toluene-based paint solvents"
+    verified: false
+    verification_source: null
+
+  # graffiti-paint-contamination → toluene-compound
+  - contaminant_id: graffiti-paint-contamination
+    compound_id: toluene-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Release of toluene from spray paint"
+    verified: false
+    verification_source: null
+
+  # adhesive-residue-contamination → toluene-compound
+  - contaminant_id: adhesive-residue-contamination
+    compound_id: toluene-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Release of toluene from adhesive formulations"
+    verified: false
+    verification_source: null
+
+  # rubber-residue-contamination → toluene-compound
+  - contaminant_id: rubber-residue-contamination
+    compound_id: toluene-compound
+    frequency: occasional
+    severity: low
+    typical_context: "Thermal breakdown of aromatic rubber compounds"
+    verified: false
+    verification_source: null
+
+  # galvanize-corrosion-contamination → zinc-oxide-compound
+  - contaminant_id: galvanize-corrosion-contamination
+    compound_id: zinc-oxide-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Vaporization from galvanized coatings"
+    verified: false
+    verification_source: null
+
+  # zinc-plating-contamination → zinc-oxide-compound
+  - contaminant_id: zinc-plating-contamination
+    compound_id: zinc-oxide-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Direct vaporization of zinc electroplating"
+    verified: false
+    verification_source: null
+
+  # brass-plating-contamination → zinc-oxide-compound
+  - contaminant_id: brass-plating-contamination
+    compound_id: zinc-oxide-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Zinc component of brass alloy"
+    verified: false
+    verification_source: null
+
+  # paint-residue-contamination → zinc-oxide-compound
+  - contaminant_id: paint-residue-contamination
+    compound_id: zinc-oxide-compound
+    frequency: occasional
+    severity: low
+    typical_context: "Zinc oxide pigments in paint"
+    verified: false
+    verification_source: null
+
+  # chrome-pitting-contamination → chromium-vi-compound
+  - contaminant_id: chrome-pitting-contamination
+    compound_id: chromium-vi-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Oxidation of chromium creates Cr(VI)"
+    verified: false
+    verification_source: null
+
+  # steel-corrosion-contamination → chromium-vi-compound
+  - contaminant_id: steel-corrosion-contamination
+    compound_id: chromium-vi-compound
+    frequency: common
+    severity: high
+    typical_context: "Oxidation of chromium in stainless steel"
+    verified: false
+    verification_source: null
+
+  # paint-residue-contamination → chromium-vi-compound
+  - contaminant_id: paint-residue-contamination
+    compound_id: chromium-vi-compound
+    frequency: occasional
+    severity: high
+    typical_context: "Chromate pigments in some paints"
+    verified: false
+    verification_source: null
+
+  # carbon-buildup-contamination → benzoapyrene-compound
+  - contaminant_id: carbon-buildup-contamination
+    compound_id: benzoapyrene-compound
+    frequency: common
+    severity: high
+    typical_context: "Pre-existing from incomplete combustion"
+    verified: false
+    verification_source: null
+
+  # carbon-soot-contamination → benzoapyrene-compound
+  - contaminant_id: carbon-soot-contamination
+    compound_id: benzoapyrene-compound
+    frequency: common
+    severity: high
+    typical_context: "Formed during original combustion event"
+    verified: false
+    verification_source: null
+
+  # fire-damage-contamination → benzoapyrene-compound
+  - contaminant_id: fire-damage-contamination
+    compound_id: benzoapyrene-compound
+    frequency: common
+    severity: high
+    typical_context: "Formed during fire events"
+    verified: false
+    verification_source: null
+
+  # bitumen-tar-contamination → benzoapyrene-compound
+  - contaminant_id: bitumen-tar-contamination
+    compound_id: benzoapyrene-compound
+    frequency: common
+    severity: high
+    typical_context: "Naturally present in bitumen/asphalt"
+    verified: false
+    verification_source: null
+
+  # rubber-residue-contamination → benzoapyrene-compound
+  - contaminant_id: rubber-residue-contamination
+    compound_id: benzoapyrene-compound
+    frequency: occasional
+    severity: moderate
+    typical_context: "Formed during high-temperature pyrolysis"
+    verified: false
+    verification_source: null
+
+  # adhesive-residue-contamination → formaldehyde-compound
+  - contaminant_id: adhesive-residue-contamination
+    compound_id: formaldehyde-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Thermal breakdown of formaldehyde-based adhesives"
+    verified: false
+    verification_source: null
+
+  # wood-rot-contamination → formaldehyde-compound
+  - contaminant_id: wood-rot-contamination
+    compound_id: formaldehyde-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Decomposition of wood compounds"
+    verified: false
+    verification_source: null
+
+  # paint-residue-contamination → formaldehyde-compound
+  - contaminant_id: paint-residue-contamination
+    compound_id: formaldehyde-compound
+    frequency: occasional
+    severity: moderate
+    typical_context: "Breakdown of melamine or urea-formaldehyde resins"
+    verified: false
+    verification_source: null
+
+  # epoxy-residue-contamination → formaldehyde-compound
+  - contaminant_id: epoxy-residue-contamination
+    compound_id: formaldehyde-compound
+    frequency: occasional
+    severity: low
+    typical_context: "Thermal degradation of certain epoxy formulations"
+    verified: false
+    verification_source: null
+
+  # carbon-buildup-contamination → pahs-compound
+  - contaminant_id: carbon-buildup-contamination
+    compound_id: pahs-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Vaporization and reformation of existing PAHs"
+    verified: false
+    verification_source: null
+
+  # carbon-soot-contamination → pahs-compound
+  - contaminant_id: carbon-soot-contamination
+    compound_id: pahs-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Pre-existing PAHs from incomplete combustion"
+    verified: false
+    verification_source: null
+
+  # fire-damage-contamination → pahs-compound
+  - contaminant_id: fire-damage-contamination
+    compound_id: pahs-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Pre-existing PAHs from fire events"
+    verified: false
+    verification_source: null
+
+  # rubber-residue-contamination → pahs-compound
+  - contaminant_id: rubber-residue-contamination
+    compound_id: pahs-compound
+    frequency: common
+    severity: high
+    typical_context: "Pyrolysis produces PAHs"
+    verified: false
+    verification_source: null
+
+  # paint-residue-contamination → pahs-compound
+  - contaminant_id: paint-residue-contamination
+    compound_id: pahs-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Incomplete combustion of organic binders"
+    verified: false
+    verification_source: null
+
+  # plastic-residue-contamination → pahs-compound
+  - contaminant_id: plastic-residue-contamination
+    compound_id: pahs-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Thermal degradation of aromatic polymers"
+    verified: false
+    verification_source: null
+
+  # bitumen-tar-contamination → pahs-compound
+  - contaminant_id: bitumen-tar-contamination
+    compound_id: pahs-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Bitumen is rich in PAHs"
+    verified: false
+    verification_source: null
+
+  # plastic-residue-contamination → hydrogen-cyanide-compound
+  - contaminant_id: plastic-residue-contamination
+    compound_id: hydrogen-cyanide-compound
+    frequency: occasional
+    severity: high
+    typical_context: "Thermal decomposition of nitrogen-containing polymers (polyurethane, nylon, acrylics)"
+    verified: false
+    verification_source: null
+
+  # rubber-residue-contamination → hydrogen-cyanide-compound
+  - contaminant_id: rubber-residue-contamination
+    compound_id: hydrogen-cyanide-compound
+    frequency: occasional
+    severity: high
+    typical_context: "Pyrolysis of nitrile rubber"
+    verified: false
+    verification_source: null
+
+  # adhesive-residue-contamination → hydrogen-cyanide-compound
+  - contaminant_id: adhesive-residue-contamination
+    compound_id: hydrogen-cyanide-compound
+    frequency: occasional
+    severity: moderate
+    typical_context: "Breakdown of cyanoacrylate adhesives"
+    verified: false
+    verification_source: null
+
+  # paint-residue-contamination → carbon-dioxide-compound
+  - contaminant_id: paint-residue-contamination
+    compound_id: carbon-dioxide-compound
+    frequency: very_common
+    severity: low
+    typical_context: "Complete combustion of organic paint"
+    verified: false
+    verification_source: null
+
+  # plastic-residue-contamination → carbon-dioxide-compound
+  - contaminant_id: plastic-residue-contamination
+    compound_id: carbon-dioxide-compound
+    frequency: very_common
+    severity: low
+    typical_context: "Complete combustion of polymers"
+    verified: false
+    verification_source: null
+
+  # rubber-residue-contamination → carbon-dioxide-compound
+  - contaminant_id: rubber-residue-contamination
+    compound_id: carbon-dioxide-compound
+    frequency: very_common
+    severity: low
+    typical_context: "Complete combustion of rubber"
+    verified: false
+    verification_source: null
+
+  # adhesive-residue-contamination → carbon-dioxide-compound
+  - contaminant_id: adhesive-residue-contamination
+    compound_id: carbon-dioxide-compound
+    frequency: very_common
+    severity: low
+    typical_context: "Complete combustion of adhesives"
+    verified: false
+    verification_source: null
+
+  # industrial-oil-contamination → carbon-dioxide-compound
+  - contaminant_id: industrial-oil-contamination
+    compound_id: carbon-dioxide-compound
+    frequency: very_common
+    severity: low
+    typical_context: "Complete combustion of hydrocarbons"
+    verified: false
+    verification_source: null
+
+  # rust-oxidation-contamination → iron-oxide-compound
+  - contaminant_id: rust-oxidation-contamination
+    compound_id: iron-oxide-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Vaporization of iron oxide"
+    verified: false
+    verification_source: null
+
+  # annealing-scale-contamination → iron-oxide-compound
+  - contaminant_id: annealing-scale-contamination
+    compound_id: iron-oxide-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Iron oxide layer from heat treatment"
+    verified: false
+    verification_source: null
+
+  # forging-scale-contamination → iron-oxide-compound
+  - contaminant_id: forging-scale-contamination
+    compound_id: iron-oxide-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Iron oxide scale from forging operations"
+    verified: false
+    verification_source: null
+
+  # plastic-residue-contamination → styrene-compound
+  - contaminant_id: plastic-residue-contamination
+    compound_id: styrene-compound
+    frequency: very_common
+    severity: high
+    typical_context: "Thermal depolymerization of polystyrene"
+    verified: false
+    verification_source: null
+
+  # rubber-residue-contamination → styrene-compound
+  - contaminant_id: rubber-residue-contamination
+    compound_id: styrene-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Pyrolysis of styrene-butadiene rubber"
+    verified: false
+    verification_source: null
+
+  # plastic-residue-contamination → phosgene-compound
+  - contaminant_id: plastic-residue-contamination
+    compound_id: phosgene-compound
+    frequency: rare
+    severity: high
+    typical_context: "Thermal breakdown of certain chlorinated plastics"
+    verified: false
+    verification_source: null
+
+  # paint-residue-contamination → vocs-compound
+  - contaminant_id: paint-residue-contamination
+    compound_id: vocs-compound
+    frequency: very_common
+    severity: moderate
+    typical_context: "Vaporization of paint solvents and binders"
+    verified: false
+    verification_source: null
+
+  # graffiti-paint-contamination → vocs-compound
+  - contaminant_id: graffiti-paint-contamination
+    compound_id: vocs-compound
+    frequency: very_common
+    severity: moderate
+    typical_context: "Release of spray paint solvents"
+    verified: false
+    verification_source: null
+
+  # adhesive-residue-contamination → vocs-compound
+  - contaminant_id: adhesive-residue-contamination
+    compound_id: vocs-compound
+    frequency: very_common
+    severity: moderate
+    typical_context: "Release of adhesive solvents"
+    verified: false
+    verification_source: null
+
+  # industrial-oil-contamination → vocs-compound
+  - contaminant_id: industrial-oil-contamination
+    compound_id: vocs-compound
+    frequency: very_common
+    severity: moderate
+    typical_context: "Vaporization of hydrocarbon compounds"
+    verified: false
+    verification_source: null
+
+  # silicone-buildup-contamination → vocs-compound
+  - contaminant_id: silicone-buildup-contamination
+    compound_id: vocs-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Thermal breakdown of silicone polymers"
+    verified: false
+    verification_source: null
+
+  # rubber-residue-contamination → vocs-compound
+  - contaminant_id: rubber-residue-contamination
+    compound_id: vocs-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Pyrolysis products"
+    verified: false
+    verification_source: null
+
+  # plastic-residue-contamination → vocs-compound
+  - contaminant_id: plastic-residue-contamination
+    compound_id: vocs-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Thermal decomposition products"
+    verified: false
+    verification_source: null
+
+  # paint-residue-contamination → benzene-compound
+  - contaminant_id: paint-residue-contamination
+    compound_id: benzene-compound
+    frequency: common
+    severity: high
+    typical_context: "Thermal breakdown of aromatic paint solvents"
+    verified: false
+    verification_source: null
+
+  # rubber-residue-contamination → benzene-compound
+  - contaminant_id: rubber-residue-contamination
+    compound_id: benzene-compound
+    frequency: common
+    severity: high
+    typical_context: "Pyrolysis of styrene-butadiene rubber"
+    verified: false
+    verification_source: null
+
+  # plastic-residue-contamination → benzene-compound
+  - contaminant_id: plastic-residue-contamination
+    compound_id: benzene-compound
+    frequency: common
+    severity: high
+    typical_context: "Thermal decomposition of polystyrene and aromatic polymers"
+    verified: false
+    verification_source: null
+
+  # industrial-oil-contamination → benzene-compound
+  - contaminant_id: industrial-oil-contamination
+    compound_id: benzene-compound
+    frequency: occasional
+    severity: moderate
+    typical_context: "Thermal breakdown of aromatic hydrocarbons"
+    verified: false
+    verification_source: null
+
+  # cutting-fluid-contamination → benzene-compound
+  - contaminant_id: cutting-fluid-contamination
+    compound_id: benzene-compound
+    frequency: occasional
+    severity: moderate
+    typical_context: "Decomposition of aromatic additives"
+    verified: false
+    verification_source: null
+
+  # rubber-residue-contamination → sulfur-dioxide-compound
+  - contaminant_id: rubber-residue-contamination
+    compound_id: sulfur-dioxide-compound
+    frequency: common
+    severity: moderate
+    typical_context: "Vulcanized rubber contains sulfur compounds"
+    verified: false
+    verification_source: null
+
+  # industrial-oil-contamination → sulfur-dioxide-compound
+  - contaminant_id: industrial-oil-contamination
+    compound_id: sulfur-dioxide-compound
+    frequency: occasional
+    severity: low
+    typical_context: "Sulfur additives in some lubricants"
+    verified: false
+    verification_source: null
+
+  # industrial-oil-contamination → acrolein-compound
+  - contaminant_id: industrial-oil-contamination
+    compound_id: acrolein-compound
+    frequency: common
+    severity: high
+    typical_context: "Thermal decomposition of fats and oils"
+    verified: false
+    verification_source: null
+
+  # quench-oil-contamination → acrolein-compound
+  - contaminant_id: quench-oil-contamination
+    compound_id: acrolein-compound
+    frequency: common
+    severity: high
+    typical_context: "Thermal decomposition of quenching oils"
+    verified: false
+    verification_source: null
+
+  # cutting-fluid-contamination → acrolein-compound
+  - contaminant_id: cutting-fluid-contamination
+    compound_id: acrolein-compound
+    frequency: common
+    severity: high
+    typical_context: "Thermal breakdown of oil-based cutting fluids"
+    verified: false
+    verification_source: null
+
+  # plastic-residue-contamination → acrolein-compound
+  - contaminant_id: plastic-residue-contamination
+    compound_id: acrolein-compound
+    frequency: occasional
+    severity: moderate
+    typical_context: "Pyrolysis of certain polymers"
+    verified: false
+    verification_source: null
 
 # =============================================================================
 # MATERIAL ↔ COMPOUND ASSOCIATIONS

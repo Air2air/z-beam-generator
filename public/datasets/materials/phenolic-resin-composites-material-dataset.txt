@@ -1,0 +1,58 @@
+Phenolic Resin Composites Laser Cleaning Dataset
+================================================================================
+
+Description: Phenolic resin composites excel with their outstanding heat resistance, preserving structural integrity under severe thermal exposure—unlike most other fiber-reinforced materials
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : composite
+subcategory                   : fiber-reinforced
+name                          : Phenolic Resin Composites
+electricalResistivity         : 1000000000000.0 Ω·m
+fractureToughness             : 1.8 MPa m^{1/2}
+youngsModulus                 : 10.0 GPa
+oxidationResistance           : 723.0 K
+density                       : 1.85 g/cm³
+hardness                      : 95.0 Rockwell M
+corrosionResistance           : 0.95 dimensionless (normalized resistance index)
+compressiveStrength           : 241.0 MPa
+flexuralStrength              : 140.0 MPa
+tensileStrength               : 69.0 MPa
+laserDamageThreshold          : 2.5 J/cm²
+absorptivity                  : 0.85 dimensionless
+absorptionCoefficient         : 5000000.0 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.1 dimensionless
+thermalDestructionPoint       : 723 K
+vaporPressure                 : 100 Pa
+thermalDestruction            : 653.0 K
+specificHeat                  : 1200.0 J/(kg·K)
+laserReflectivity             : 0.12 dimensionless
+thermalConductivity           : 0.28 W/m·K
+thermalExpansion              : 2.2e-05 K^{-1}
+laserAbsorption               : 25000.0 m^{-1}
+thermalDiffusivity            : 1.53e-07 m²/s
+ablationThreshold             : 2.3 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for pulsed Nd:YAG lasers in composite cleaning to avoid thermal damage; starting at 100W for light contamination on phenolics, which have low thermal conductivity (~0.2 W/m·K). Max safe ~300W to prevent charring (melting point ~200-300°C). Source: IPG Photonics specs and studies in Optics and Lasers in Engineering (2018) on polymer composites.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for phenolic resin absorption and minimal substrate damage
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control on composite surfaces
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of phenolic resin matrix
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete contaminant removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive heat accumulation
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

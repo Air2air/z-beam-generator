@@ -1,0 +1,63 @@
+Aluminum Bronze Laser Cleaning Dataset
+================================================================================
+
+Description: Aluminum Bronze acts as strong, corrosion-resistant alloy for laser cleaning. Its durability withstands heat during treatment, so contaminants remove easily from surface. Hardness poses challenge, because process needs careful control to avoid damage.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : alloy
+name                          : Aluminum Bronze
+density                       : 7.8 g/cm³
+porosity                      : 0 %
+surfaceRoughness              : 1.2 μm
+tensileStrength               : 655 MPa
+youngsModulus                 : 120 GPa
+hardness                      : 2.5 GPa
+flexuralStrength              : 680 MPa
+oxidationResistance           : 6 μm/year
+corrosionResistance           : 0.65 mm/year
+compressiveStrength           : 655 MPa
+fractureToughness             : 90 MPa m^{1/2}
+electricalResistivity         : 1.2e-07 Ω·m
+electricalConductivity        : 4060000.0 S/m
+boilingPoint                  : 2673.0 K
+meltingPoint                  : 1045.0 °C
+thermalDestruction            : 1323 K
+laserAbsorption               : 0.28 dimensionless
+laserDamageThreshold          : 2.1 J/cm²
+ablationThreshold             : 2.1 J/cm²
+thermalDiffusivity            : 1.78e-05 m^2/s
+thermalExpansion              : 1.62e-05 10^{-6}/K
+specificHeat                  : 380.0 J/kg·K
+thermalConductivity           : 59.0 W/m·K
+laserReflectivity             : 0.88 
+vaporPressure                 : 1.2e-08 Pa
+thermalDestructionPoint       : 1038.0 °C
+absorptionCoefficient         : 48000000.0 m^{-1}
+thermalShockResistance        : 210.0 °C
+reflectivity                  : 0.68 
+absorptivity                  : 0.072 dimensionless
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-1000 W
+                                Typical range for industrial cleaning of copper alloys like Aluminum Bronze to ablate contaminants without melting; starting at 200W balances efficiency and safety. Max limited to avoid thermal damage given alloy's ~1040°C melting point. Source: IPG Photonics YLR series specs and studies in Optics and Lasers in Engineering (2018) on metal surface cleaning.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal metal absorption
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for effective cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Pulse frequency for controlled cleaning
+pulseWidth                    : 0.1-1000 ns
+                                Pulse duration for minimal heat-affected zone
+scanSpeed                     : 10-5000 mm/s
+                                Beam travel speed for uniform treatment
+passCount                     : 1-10 passes
+                                Number of cleaning cycles for complete removal
+overlapRatio                  : 10-90 %
+                                Beam overlap for consistent coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

@@ -85,6 +85,7 @@ class FieldOrderEnricher(BaseEnricher):
         
         # SEO Metadata (page-level)
         'page_title',
+        'page_description',
         'meta_description',
         'seo_description',
         

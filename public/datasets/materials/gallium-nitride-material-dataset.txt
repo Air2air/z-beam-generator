@@ -1,0 +1,54 @@
+Gallium Nitride Laser Cleaning Dataset
+================================================================================
+
+Description: Gallium Nitride shows hardness and density. This compound resists oxidation, thus maintains surface integrity during laser cleaning. Smoothness aids uniform contaminant removal, yet stiffness challenges precise ablation. Benefits include durability and corrosion resistance for semiconductor processing.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : semiconductor
+subcategory                   : compound
+name                          : Gallium Nitride
+density                       : 6.15 g/cm³
+porosity                      : 0 %
+surfaceRoughness              : 0.2 μm
+tensileStrength               : 300 MPa
+youngsModulus                 : 295 GPa
+hardness                      : 15 GPa
+flexuralStrength              : 350 MPa
+oxidationResistance           : 15 μm/year
+corrosionResistance           : 0.7 mm/year
+compressiveStrength           : 300 MPa
+fractureToughness             : 8 MPa m^{1/2}
+electricalResistivity         : 10000 Ω·m
+thermalDestruction            : 2773 K
+laserAbsorption               : 0.12 dimensionless
+laserDamageThreshold          : 0.92 J/cm²
+ablationThreshold             : 0.35 J/cm²
+thermalDiffusivity            : 4.33e-05 m²/s
+thermalExpansion              : 5.59e-06 K^{-1}
+specificHeat                  : 505.2 J/(kg·K)
+thermalConductivity           : 130.0 W/m·K
+laserReflectivity             : 0.18 dimensionless
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 10-200 W
+                                Typical range for pulsed fiber lasers in semiconductor cleaning; starting at 50 W balances efficiency and safety for GaN's sensitivity to heat (thermal conductivity ~130 W/mK); max avoids melting point (~2500°C). Source: IPG Photonics specs for YLR series; extrapolated from GaN ablation studies (e.g., J. Appl. Phys. 2015).
+wavelength                    : 355-10640 nm
+                                Near-IR for minimal lattice damage
+spotSize                      : 0.1-500 μm
+                                Small spot for high-precision cleaning
+repetitionRate                : 1-200 kHz
+                                Moderate frequency for controlled removal
+pulseWidth                    : 0.1-1000 ns
+                                Ultra-short pulses for minimal thermal damage
+scanSpeed                     : 10-5000 mm/s
+                                Careful scanning for uniform treatment
+passCount                     : 1-10 passes
+                                Multiple passes for complete cleaning
+overlapRatio                  : 10-90 %
+                                High overlap for thorough coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

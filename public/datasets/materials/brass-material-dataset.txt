@@ -1,0 +1,63 @@
+Brass Laser Cleaning Dataset
+================================================================================
+
+Description: Brass, as non-ferrous metal, shows high reflectivity during laser cleaning, so treatment removes surface oxidation and contamination from marine or plumbing uses without deep substrate damage. Because of its good corrosion resistance and thermal shock tolerance, process restores uniformity on surfaces effectively, and this sets brass apart from ferrous alternatives that suffer more from heat buildup.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : metal
+subcategory                   : non-ferrous
+name                          : Brass
+electricalConductivity        : 15900000.0 S/m
+electricalResistivity         : 6.2e-08 Ω·m
+fractureToughness             : 52.0 MPa√m
+surfaceRoughness              : 1.6 μm
+density                       : 8530.0 kg/m³
+oxidationResistance           : 478.0 K
+youngsModulus                 : 110.0 GPa
+hardness                      : 65.0 HB
+compressiveStrength           : 345.0 MPa
+tensileStrength               : 315.0 MPa
+flexuralStrength              : 379.0 MPa
+corrosionResistance           : 0.75 dimensionless (0-1 scale)
+porosity                      : 0.0 %
+boilingPoint                  : 2013.0 K
+absorptivity                  : 0.38 dimensionless
+absorptionCoefficient         : 6700000.0 m⁻¹
+reflectivity                  : 0.62 dimensionless (ratio)
+vaporPressure                 : 1.33 Pa
+meltingPoint                  : 930.0 °C
+thermalDestructionPoint       : 920.0 °C
+thermalShockResistance        : 180.0 °C
+laserDamageThreshold          : 0.45 J/cm²
+thermalDestruction            : 1194.0 K
+laserReflectivity             : 0.94 dimensionless
+thermalExpansion              : 1.89e-05 10^{-6}/K
+thermalConductivity           : 109.0 W/m·K
+specificHeat                  : 385.0 J/(kg·K)
+laserAbsorption               : 0.12 dimensionless
+thermalDiffusivity            : 3.3e-05 m²/s
+ablationThreshold             : 2.1 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-300 W
+                                Typical range for industrial 1064 nm laser cleaning of reflective metals like brass to avoid thermal damage; starting at 100W for light contamination. Max limited by brass's high reflectivity and melting point (~900°C). Source: CleanLaser and IPG Photonics specs for metal cleaning systems.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength for optimal Brass absorption and minimal reflectivity
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning resolution
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of surface contaminants
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning coverage
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete oxide layer removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform cleaning without excessive heat accumulation
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

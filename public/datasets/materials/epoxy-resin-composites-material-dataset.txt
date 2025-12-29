@@ -1,0 +1,58 @@
+Epoxy Resin Composites Laser Cleaning Dataset
+================================================================================
+
+Description: For laser cleaning epoxy resin composites, begin by tuning the power to capitalize on their heat resistance and toughness, allowing thorough contaminant removal without surface harm while preserving structural integrity for aerospace components
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : composite
+subcategory                   : fiber-reinforced
+name                          : Epoxy Resin Composites
+electricalResistivity         : 100000000000000.0 ohm-m
+fractureToughness             : 1.2 MPa√m
+density                       : 1800.0 kg/m³
+oxidationResistance           : 310.0 °C
+youngsModulus                 : 25000000000.0 Pa
+hardness                      : 85.0 Shore D
+compressiveStrength           : 550.0 MPa
+tensileStrength               : 450.0 MPa
+flexuralStrength              : 420.0 MPa
+corrosionResistance           : 0.95 dimensionless
+laserDamageThreshold          : 4.5 J/cm²
+absorptivity                  : 0.25 dimensionless
+absorptionCoefficient         : 50000 m⁻¹
+thermalShockResistance        : 1.2 MW/m
+reflectivity                  : 0.05 dimensionless
+thermalDestructionPoint       : 600 K
+vaporPressure                 : 200 Pa
+thermalDestruction            : 623.0 K
+laserReflectivity             : 0.05 dimensionless
+thermalExpansion              : 2e-05 K^{-1}
+thermalConductivity           : 0.35 W/(m·K)
+specificHeat                  : 1100.0 J/(kg·K)
+laserAbsorption               : 35000.0 m^{-1}
+thermalDiffusivity            : 1.15e-07 m²/s
+ablationThreshold             : 1.2 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for 1064 nm Nd:YAG lasers in polymer composite cleaning to balance ablation efficiency and heat input; starting at 100 W minimizes thermal damage to epoxy matrix. Max safe ~300 W to avoid delamination (based on thermal conductivity ~0.2-0.5 W/mK). Source: Studies in Optics and Lasers in Engineering (2018) on laser ablation of CFRP; IPG Photonics YLR series specs.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength providing good absorption in epoxy resins with minimal substrate penetration
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise epoxy removal control
+repetitionRate                : 1-200 kHz
+                                High repetition rate for efficient cleaning with thermal management
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for controlled ablation of epoxy matrix
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform epoxy removal
+passCount                     : 1-10 passes
+                                Number of cleaning passes for complete epoxy removal
+overlapRatio                  : 10-90 %
+                                Beam overlap percentage for uniform cleaning coverage
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

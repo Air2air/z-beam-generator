@@ -111,14 +111,14 @@ def cache_with_logging(maxsize: int = 128, typed: bool = False):
     return decorator
 
 
-class SimpleCache:
+class Cache:
     """
-    Simple dict-based cache with optional size limit.
+    Dict-based cache with optional size limit.
     
     Use when you need more control than @lru_cache provides.
     
     Example:
-        >>> cache = SimpleCache(maxsize=100)
+        >>> cache = Cache(maxsize=100)
         >>> 
         >>> # Store data
         >>> cache.set('user_123', {'name': 'Alice', 'role': 'admin'})

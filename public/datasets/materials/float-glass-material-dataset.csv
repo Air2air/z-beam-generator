@@ -1,0 +1,37 @@
+Property,Value,Unit,Description
+category,glass,,
+subcategory,soda-lime,,
+name,Float Glass,,
+electricalResistivity,100000000000.0,Ω·m,
+fractureToughness,0.75,MPa√m,
+density,2500.0,kg/m³,
+oxidationResistance,1.0,dimensionless,
+youngsModulus,70.0,GPa,
+hardness,5.5,GPa,
+compressiveStrength,1000.0,MPa,
+tensileStrength,40.0,MPa,
+flexuralStrength,50.0,MPa,
+corrosionResistance,0.92,dimensionless,
+laserDamageThreshold,5,J/cm²,
+absorptivity,0.05,dimensionless,
+absorptionCoefficient,20,m⁻¹,
+thermalShockResistance,1,MW/m,
+reflectivity,0.08,dimensionless,
+thermalDestructionPoint,1700,K,
+vaporPressure,0.01,Pa,
+thermalDestruction,719.0,°C,
+laserReflectivity,0.04,dimensionless (fraction),
+thermalExpansion,9e-06,K^{-1},
+thermalConductivity,1.0,W/m·K,
+specificHeat,837.0,J/(kg·K),
+laserAbsorption,10.0,m^{-1},
+thermalDiffusivity,4.7e-07,m²/s,
+ablationThreshold,4.2,J/cm²,
+power,50-500,W,Typical range for industrial 1064 nm fiber lasers in glass cleaning to balance efficiency and safety; starting at 200 W for contamination removal without overheating. Max safe below 500 W to avoid thermal stress on float glass (melting point ~500°C). Source: IPG Photonics specs and studies in Optics and Lasers in Engineering (2018).
+wavelength,355-10640,nm,Near-IR wavelength optimized for Float Glass absorption and minimal subsurface damage
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning with adequate energy density
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning coverage and thermal management
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for effective contaminant removal without glass damage
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning coverage
+passCount,1-10,passes,Number of cleaning passes for complete contaminant removal
+overlapRatio,10-90,%,Optimal beam overlap for uniform cleaning without excessive thermal buildup

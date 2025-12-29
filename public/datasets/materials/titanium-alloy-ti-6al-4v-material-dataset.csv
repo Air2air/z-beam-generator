@@ -1,0 +1,42 @@
+Property,Value,Unit,Description
+category,metal,,
+subcategory,alloy,,
+name,Titanium Alloy (Ti-6Al-4V),,
+density,4.43,g/cm³,
+porosity,0,%,
+surfaceRoughness,0.8,μm,
+tensileStrength,900,MPa,
+youngsModulus,113.8,GPa,
+hardness,3.5,GPa,
+flexuralStrength,950,MPa,
+oxidationResistance,7,μm/year,
+corrosionResistance,0.85,mm/year,
+compressiveStrength,900,MPa,
+fractureToughness,110,MPa m^{1/2},
+electricalResistivity,1.68e-07,Ω·m,
+electricalConductivity,581000.0,S/m,
+boilingPoint,3588.0,K,
+meltingPoint,1632.0,°C,
+thermalDiffusivity,0.289,×10^{-5} m²/s,
+thermalDestruction,1933,K,
+laserAbsorption,0.45,dimensionless,
+laserDamageThreshold,2.5,J/cm²,
+ablationThreshold,1.05,J/cm²,
+thermalExpansion,8.6e-06,K^{-1},
+specificHeat,523.0,J/(kg·K),
+thermalConductivity,6.7,W/m·K,
+laserReflectivity,0.65,dimensionless (fraction),
+vaporPressure,3.8,Pa,
+thermalDestructionPoint,1660.0,°C,
+absorptionCoefficient,50000000.0,m^{-1},
+thermalShockResistance,637.0,K,
+reflectivity,0.4,fraction,
+absorptivity,0.36,dimensionless,
+power,50-300,W,"Typical range for 1064 nm ns-pulsed lasers in industrial cleaning of Ti-6Al-4V to remove contaminants without excessive heating; starting at 100 W for light oxidation, max limited by low thermal conductivity (6.7 W/m·K) to avoid melting (1660°C); source: CleanLaser CL 1000 manual and study in Optics and Lasers in Engineering (2018) on Ti alloys."
+wavelength,355-10640,nm,Near-IR wavelength for optimal metal absorption
+spotSize,0.1-500,μm,Beam spot diameter for effective cleaning resolution
+repetitionRate,1-200,kHz,Pulse frequency for controlled cleaning
+pulseWidth,0.1-1000,ns,Pulse duration for minimal heat-affected zone
+scanSpeed,10-5000,mm/s,Beam travel speed for uniform treatment
+passCount,1-10,passes,Number of cleaning cycles for complete removal
+overlapRatio,10-90,%,Beam overlap for consistent coverage

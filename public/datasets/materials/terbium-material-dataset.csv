@@ -1,0 +1,31 @@
+Property,Value,Unit,Description
+category,rare-earth,,
+subcategory,lanthanide,,
+name,Terbium,,
+youngsModulus,55.3,GPa,
+oxidationResistance,-2.31,V,
+density,8.234,g/cm³,
+hardness,863.0,MPa,
+absorptivity,0.25,dimensionless,
+boilingPoint,3503.0,K,
+absorptionCoefficient,50000000.0,m⁻¹,
+laserDamageThreshold,3.5,J/cm²,
+thermalShockResistance,1.8,MW/m,
+reflectivity,0.75,dimensionless,
+thermalDestructionPoint,1629,K,
+vaporPressure,10,Pa,
+thermalDestruction,1629.0,K,
+specificHeat,182.0,J/(kg·K),
+laserReflectivity,0.92,,
+thermalConductivity,11.5,W/m·K,
+thermalExpansion,1.1e-05,K^{-1},
+ablationThreshold,1.15,J/cm²,
+thermalDiffusivity,7.41e-06,m²/s,
+power,50-300,W,"Typical range for Nd:YAG laser cleaning of reflective metals; starting at 100W to balance ablation and heat input. Terbium's low thermal conductivity (~11 W/mK) requires conservative power to avoid melting (mp 1356°C). Source: Extrapolated from metal cleaning studies (e.g., Kumar et al., Opt. Lasers Eng. 2018); manufacturer specs like IPG Photonics YLR series limit max to prevent substrate damage."
+wavelength,355-10640,nm,Near-IR wavelength for optimal Terbium absorption
+spotSize,0.1-500,μm,Beam spot diameter for precise cleaning
+repetitionRate,1-200,kHz,Optimal repetition rate for efficient cleaning
+pulseWidth,0.1-1000,ns,Nanosecond pulse duration for controlled ablation
+scanSpeed,10-5000,mm/s,Optimal scanning speed for uniform cleaning
+passCount,1-10,passes,Number of cleaning passes for complete oxide removal
+overlapRatio,10-90,%,Optimal beam overlap for complete coverage

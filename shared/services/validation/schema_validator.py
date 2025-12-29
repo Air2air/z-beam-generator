@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-UnifiedSchemaValidator - Single Schema Validation System
+SchemaValidator - Single Schema Validation System
 
 Consolidates all schema validation functionality into a single, unified validator.
 Replaces multiple schema validators with consistent interface and behavior.
@@ -62,7 +62,7 @@ class SchemaType(Enum):
 
 
 @dataclass
-class UnifiedValidationError:
+class ValidationError:
     """Standardized validation error across all components"""
     field_path: str
     error_type: str
@@ -74,7 +74,7 @@ class UnifiedValidationError:
 
 
 @dataclass
-class UnifiedValidationResult:
+class ValidationResult:
     """Unified validation result supporting all existing interfaces"""
     
     # Core validation
@@ -84,9 +84,9 @@ class UnifiedValidationResult:
     material_name: Optional[str] = None
     
     # Error reporting
-    errors: List[UnifiedValidationError] = field(default_factory=list)
-    warnings: List[UnifiedValidationError] = field(default_factory=list)
-    info: List[UnifiedValidationError] = field(default_factory=list)
+    errors: List[ValidationError] = field(default_factory=list)
+    warnings: List[ValidationError] = field(default_factory=list)
+    info: List[ValidationError] = field(default_factory=list)
     
     # Quality metrics
     quality_score: Optional[float] = None
@@ -99,7 +99,7 @@ class UnifiedValidationResult:
     
     # Metadata
     validation_timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
-    validator_version: str = "UnifiedSchemaValidator-1.0"
+    validator_version: str = "SchemaValidator-1.0"
     
     @property
     def error_count(self) -> int:
@@ -116,7 +116,7 @@ class UnifiedValidationResult:
         """Total issues found"""
         return len(self.errors) + len(self.warnings) + len(self.info)
     
-    def get_issues_by_severity(self, severity: str) -> List[UnifiedValidationError]:
+    def get_issues_by_severity(self, severity: str) -> List[ValidationError]:
         """Get issues filtered by severity level"""
         if severity == "error":
             return self.errors
@@ -128,9 +128,9 @@ class UnifiedValidationResult:
             return []
 
 
-class UnifiedSchemaValidator:
+class SchemaValidator:
     """
-    Unified schema validator consolidating all schema validation functionality.
+    Schema validator consolidating all schema validation functionality.
     
     Provides single interface for:
     1. Frontmatter validation (component output)
@@ -181,7 +181,7 @@ class UnifiedSchemaValidator:
             'schema_types_validated': set()
         }
         
-        self.logger.info(f"✅ UnifiedSchemaValidator initialized (mode: {validation_mode.value})")
+        self.logger.info(f"✅ SchemaValidator initialized (mode: {validation_mode.value})")
     
     def _initialize_adapters(self) -> None:
         """Initialize component adapters for different schema types"""
@@ -235,7 +235,7 @@ class UnifiedSchemaValidator:
         schema_type: Union[SchemaType, str],
         material_name: Optional[str] = None,
         validation_mode: Optional[ValidationMode] = None
-    ) -> UnifiedValidationResult:
+    ) -> ValidationResult:
         """
         Universal validation method for all schema types.
         
@@ -264,7 +264,7 @@ class UnifiedSchemaValidator:
             self.logger.info(f"🔍 Validating {schema_type.value} data (mode: {validation_mode.value})")
             
             # Initialize result
-            result = UnifiedValidationResult(
+            result = ValidationResult(
                 is_valid=True,
                 schema_type=schema_type.value,
                 validation_mode=validation_mode.value,
@@ -279,7 +279,7 @@ class UnifiedSchemaValidator:
                     else:
                         data = yaml.safe_load(data)
                 except Exception as e:
-                    result.errors.append(UnifiedValidationError(
+                    result.errors.append(ValidationError(
                         field_path="root",
                         error_type="parse_error",
                         message=f"Failed to parse data: {e}",
@@ -308,12 +308,12 @@ class UnifiedSchemaValidator:
         except Exception as e:
             self.logger.error(f"❌ Critical validation failure: {e}")
             # Return error result instead of raising exception
-            result = UnifiedValidationResult(
+            result = ValidationResult(
                 is_valid=False,
                 schema_type=schema_type.value if isinstance(schema_type, SchemaType) else str(schema_type),
                 validation_mode=validation_mode.value if validation_mode else "unknown"
             )
-            result.errors.append(UnifiedValidationError(
+            result.errors.append(ValidationError(
                 field_path="validator",
                 error_type="infrastructure_failure",
                 message=f"Validation infrastructure failure: {e}",
@@ -325,8 +325,8 @@ class UnifiedSchemaValidator:
         self,
         data: Dict,
         schema_type: SchemaType,
-        result: UnifiedValidationResult
-    ) -> UnifiedValidationResult:
+        result: ValidationResult
+    ) -> ValidationResult:
         """Basic schema validation using jsonschema"""
         try:
             schema = self.schemas.get(schema_type, {"type": "object"})
@@ -337,7 +337,7 @@ class UnifiedSchemaValidator:
             result.schema_checks_performed += 1
             
         except jsonschema.ValidationError as e:
-            result.errors.append(UnifiedValidationError(
+            result.errors.append(ValidationError(
                 field_path='.'.join(str(p) for p in e.path) if e.path else "root",
                 error_type="schema_violation",
                 message=e.message,
@@ -347,7 +347,7 @@ class UnifiedSchemaValidator:
             result.is_valid = False
         
         except Exception as e:
-            result.errors.append(UnifiedValidationError(
+            result.errors.append(ValidationError(
                 field_path="schema",
                 error_type="validation_error",
                 message=f"Schema validation failed: {e}",
@@ -359,7 +359,7 @@ class UnifiedSchemaValidator:
     
     def _finalize_validation_result(
         self,
-        result: UnifiedValidationResult,
+        result: ValidationResult,
         start_time: datetime
     ) -> None:
         """Finalize validation result with performance metrics"""
@@ -388,7 +388,7 @@ class UnifiedSchemaValidator:
     
     def _update_validation_stats(
         self,
-        result: UnifiedValidationResult,
+        result: ValidationResult,
         schema_type: SchemaType
     ) -> None:
         """Update validation statistics"""
@@ -402,19 +402,19 @@ class UnifiedSchemaValidator:
     
     # === LEGACY COMPATIBILITY METHODS ===
     
-    def validate_frontmatter(self, data: Dict, material_name: str = None) -> UnifiedValidationResult:
+    def validate_frontmatter(self, data: Dict, material_name: str = None) -> ValidationResult:
         """Legacy compatibility - validate frontmatter data"""
         return self.validate(data, SchemaType.FRONTMATTER, material_name)
     
-    def validate_materials_yaml(self, data: Dict) -> UnifiedValidationResult:
+    def validate_materials_yaml(self, data: Dict) -> ValidationResult:
         """Validate Materials.yaml structure"""
         return self.validate(data, SchemaType.MATERIALS_YAML)
     
-    def validate_categories_yaml(self, data: Dict) -> UnifiedValidationResult:
+    def validate_categories_yaml(self, data: Dict) -> ValidationResult:
         """Validate Categories.yaml structure"""
         return self.validate(data, SchemaType.CATEGORIES_YAML)
     
-    def validate_component_output(self, data: Dict, component_type: str) -> UnifiedValidationResult:
+    def validate_component_output(self, data: Dict, component_type: str) -> ValidationResult:
         """Validate component-generated output"""
         return self.validate(data, SchemaType.COMPONENT_OUTPUT)
     
@@ -436,16 +436,16 @@ class UnifiedSchemaValidator:
 class SchemaAdapter:
     """Base class for schema-specific adapters"""
     
-    def __init__(self, validator: UnifiedSchemaValidator):
+    def __init__(self, validator: SchemaValidator):
         self.validator = validator
         self.logger = logging.getLogger(f"{__name__}.{self.__class__.__name__}")
     
     def validate(
         self,
         data: Dict,
-        result: UnifiedValidationResult,
+        result: ValidationResult,
         validation_mode: ValidationMode
-    ) -> UnifiedValidationResult:
+    ) -> ValidationResult:
         """Override in subclasses for schema-specific validation"""
         raise NotImplementedError
 
@@ -456,9 +456,9 @@ class FrontmatterAdapter(SchemaAdapter):
     def validate(
         self,
         data: Dict,
-        result: UnifiedValidationResult,
+        result: ValidationResult,
         validation_mode: ValidationMode
-    ) -> UnifiedValidationResult:
+    ) -> ValidationResult:
         """Validate frontmatter structure and content"""
         
         # Basic schema validation
@@ -473,14 +473,14 @@ class FrontmatterAdapter(SchemaAdapter):
         
         return result
     
-    def _validate_frontmatter_quality(self, data: Dict, result: UnifiedValidationResult) -> UnifiedValidationResult:
+    def _validate_frontmatter_quality(self, data: Dict, result: ValidationResult) -> ValidationResult:
         """Enhanced frontmatter quality validation"""
         
         # Check required sections
         required_sections = ['title', 'material_name', 'properties']
         for section in required_sections:
             if section not in data:
-                result.warnings.append(UnifiedValidationError(
+                result.warnings.append(ValidationError(
                     field_path=section,
                     error_type="missing_section",
                     message=f"Recommended section '{section}' is missing",
@@ -490,7 +490,7 @@ class FrontmatterAdapter(SchemaAdapter):
         
         return result
     
-    def _validate_research_grade_frontmatter(self, data: Dict, result: UnifiedValidationResult) -> UnifiedValidationResult:
+    def _validate_research_grade_frontmatter(self, data: Dict, result: ValidationResult) -> ValidationResult:
         """Research-grade frontmatter validation"""
         
         # Validate property sources and confidence levels
@@ -498,7 +498,7 @@ class FrontmatterAdapter(SchemaAdapter):
         for prop_name, prop_data in properties.items():
             if isinstance(prop_data, dict):
                 if 'confidence' not in prop_data:
-                    result.warnings.append(UnifiedValidationError(
+                    result.warnings.append(ValidationError(
                         field_path=f"properties.{prop_name}.confidence",
                         error_type="missing_confidence",
                         message=f"Property '{prop_name}' missing confidence score",
@@ -515,9 +515,9 @@ class MaterialsYamlAdapter(SchemaAdapter):
     def validate(
         self,
         data: Dict,
-        result: UnifiedValidationResult,
+        result: ValidationResult,
         validation_mode: ValidationMode
-    ) -> UnifiedValidationResult:
+    ) -> ValidationResult:
         """Validate Materials.yaml structure"""
         
         # Basic schema validation
@@ -527,7 +527,7 @@ class MaterialsYamlAdapter(SchemaAdapter):
         materials = data.get('materials', {})
         for material_name, material_data in materials.items():
             if not isinstance(material_data, dict):
-                result.errors.append(UnifiedValidationError(
+                result.errors.append(ValidationError(
                     field_path=f"materials.{material_name}",
                     error_type="invalid_structure",
                     message=f"Material '{material_name}' must be an object",
@@ -544,9 +544,9 @@ class CategoriesYamlAdapter(SchemaAdapter):
     def validate(
         self,
         data: Dict,
-        result: UnifiedValidationResult,
+        result: ValidationResult,
         validation_mode: ValidationMode
-    ) -> UnifiedValidationResult:
+    ) -> ValidationResult:
         """Validate Categories.yaml structure"""
         
         # Basic schema validation
@@ -556,7 +556,7 @@ class CategoriesYamlAdapter(SchemaAdapter):
         categories = data.get('categories', {})
         for category_name, category_data in categories.items():
             if not isinstance(category_data, dict):
-                result.errors.append(UnifiedValidationError(
+                result.errors.append(ValidationError(
                     field_path=f"categories.{category_name}",
                     error_type="invalid_structure",
                     message=f"Category '{category_name}' must be an object",
@@ -573,9 +573,9 @@ class ComponentOutputAdapter(SchemaAdapter):
     def validate(
         self,
         data: Dict,
-        result: UnifiedValidationResult,
+        result: ValidationResult,
         validation_mode: ValidationMode
-    ) -> UnifiedValidationResult:
+    ) -> ValidationResult:
         """Validate component-generated output"""
         
         # Basic schema validation
@@ -590,9 +590,9 @@ class ConfigurationAdapter(SchemaAdapter):
     def validate(
         self,
         data: Dict,
-        result: UnifiedValidationResult,
+        result: ValidationResult,
         validation_mode: ValidationMode
-    ) -> UnifiedValidationResult:
+    ) -> ValidationResult:
         """Validate configuration data"""
         
         # Basic schema validation
@@ -603,19 +603,19 @@ class ConfigurationAdapter(SchemaAdapter):
 
 # === CONVENIENCE FUNCTIONS ===
 
-def validate_frontmatter(data: Dict, material_name: str = None) -> UnifiedValidationResult:
+def validate_frontmatter(data: Dict, material_name: str = None) -> ValidationResult:
     """Convenience function for frontmatter validation"""
-    validator = UnifiedSchemaValidator()
+    validator = SchemaValidator()
     return validator.validate_frontmatter(data, material_name)
 
 
-def validate_materials_yaml(data: Dict) -> UnifiedValidationResult:
+def validate_materials_yaml(data: Dict) -> ValidationResult:
     """Convenience function for Materials.yaml validation"""
-    validator = UnifiedSchemaValidator()
+    validator = SchemaValidator()
     return validator.validate_materials_yaml(data)
 
 
-def validate_categories_yaml(data: Dict) -> UnifiedValidationResult:
+def validate_categories_yaml(data: Dict) -> ValidationResult:
     """Convenience function for Categories.yaml validation"""
-    validator = UnifiedSchemaValidator()
+    validator = SchemaValidator()
     return validator.validate_categories_yaml(data)

@@ -1,0 +1,57 @@
+Serpentine Laser Cleaning Dataset
+================================================================================
+
+Description: When laser cleaning serpentine, begin with a moderate power setting to make use of its good heat resistance, which helps avoid surface cracking in the process, then use steady scans to reveal contaminants without changing the stone's dense structure, but keep an eye out for porosity buildup if passes overlap too much
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : stone
+subcategory                   : sedimentary
+name                          : Serpentine
+youngsModulus                 : 48.3 GPa
+oxidationResistance           : 0.92 dimensionless (scale 0-1)
+density                       : 2650.0 kg/m³
+hardness                      : 3.5 Mohs
+corrosionResistance           : 0.87 dimensionless (normalized resistance scale 0-1)
+compressiveStrength           : 100.0 MPa
+flexuralStrength              : 9.8 MPa
+tensileStrength               : 5.2 MPa
+porosity                      : 0.8 %
+laserDamageThreshold          : 3 J/cm²
+absorptivity                  : 0.8 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 2 MW/m
+reflectivity                  : 0.15 dimensionless
+thermalDestructionPoint       : 1000 K
+vaporPressure                 : 1 Pa
+thermalDestruction            : 973.0 K
+specificHeat                  : 962.0 J/(kg·K)
+laserReflectivity             : 0.058 dimensionless (fraction)
+thermalConductivity           : 2.82 W/m·K
+thermalExpansion              : 8.5e-06 K^{-1}
+laserAbsorption               : 45000.0 m^{-1}
+thermalDiffusivity            : 1.2e-06 m²/s
+ablationThreshold             : 2.8 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 50-500 W
+                                Typical range for Nd:YAG laser cleaning of silicates like serpentine to remove contaminants without substrate ablation; starting at 100W for light contamination. Max avoids thermal damage given serpentine's low thermal conductivity (~2 W/m·K). Source: General manufacturer specs (e.g., IPG Photonics systems for stone cleaning) and studies on mineral ablation (e.g., Paljk et al., J. Cult. Herit., 2010).
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Serpentine mineral absorption
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise Serpentine surface cleaning
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for continuous cleaning coverage
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for efficient ablation of Serpentine layers
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for efficient Serpentine removal
+passCount                     : 1-10 passes
+                                Recommended number of passes for complete Serpentine removal
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap for uniform Serpentine cleaning
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)

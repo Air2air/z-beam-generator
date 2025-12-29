@@ -1,0 +1,58 @@
+Schist Laser Cleaning Dataset
+================================================================================
+
+Description: Schist's defining feature is its foliated layers, which distinguish it from more uniform stones and let us restore heritage surfaces via laser cleaning, all while keeping the underlying textures intact without any risk of cracking.
+
+MATERIAL PROPERTIES
+--------------------------------------------------------------------------------
+category                      : stone
+subcategory                   : sedimentary
+name                          : Schist
+fractureToughness             : 1.1 MPa√m
+youngsModulus                 : 45.2 GPa
+oxidationResistance           : 0.92 1
+density                       : 2750.0 kg/m³
+hardness                      : 4.0 Mohs
+corrosionResistance           : 0.85 dimensionless (normalized resistance index)
+compressiveStrength           : 120.0 MPa
+flexuralStrength              : 15.2 MPa
+tensileStrength               : 7.5 MPa
+porosity                      : 1.5 %
+laserDamageThreshold          : 3 J/cm²
+absorptivity                  : 0.75 dimensionless
+absorptionCoefficient         : 500000 m⁻¹
+thermalShockResistance        : 1.5 MW/m
+reflectivity                  : 0.25 dimensionless
+thermalDestructionPoint       : 1273 K
+vaporPressure                 : 1 Pa
+thermalDestruction            : 1073.0 K
+specificHeat                  : 840.0 J/(kg·K)
+laserReflectivity             : 0.18 
+thermalConductivity           : 2.15 W/m·K
+thermalExpansion              : 9.2e-06 K^{-1}
+laserAbsorption               : 0.72 dimensionless
+thermalDiffusivity            : 1e-06 m²/s
+ablationThreshold             : 1.45 J/cm²
+
+MACHINE SETTINGS
+--------------------------------------------------------------------------------
+power                         : 20-500 W
+                                Typical range for industrial laser cleaning of stones like schist to remove contaminants without excessive heat buildup; starting at 100W balances efficiency and safety. Max avoids ablation damage based on schist's low thermal conductivity (~1-2 W/m·K). Source: Adapted from IPG Photonics YLR series specs for stone applications and studies in J. Cult. Herit. (2018) on metamorphic rock cleaning.
+wavelength                    : 355-10640 nm
+                                Near-IR wavelength optimized for Schist mineral absorption characteristics
+spotSize                      : 0.1-500 μm
+                                Beam spot diameter for precise cleaning control on Schist mineral layers
+repetitionRate                : 1-200 kHz
+                                Optimal repetition rate for efficient cleaning coverage on Schist surfaces
+pulseWidth                    : 0.1-1000 ns
+                                Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+scanSpeed                     : 10-5000 mm/s
+                                Optimal scanning speed for uniform cleaning across Schist surface variations
+passCount                     : 1-10 passes
+                                Recommended number of passes for thorough cleaning of Schist mineral layers
+overlapRatio                  : 10-90 %
+                                Optimal beam overlap percentage for complete coverage on uneven Schist surfaces
+
+Dataset generated: 2025-12-26
+License: CC BY 4.0
+Publisher: Z-Beam (https://www.z-beam.com)
