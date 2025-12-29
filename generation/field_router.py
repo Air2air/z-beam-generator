@@ -27,21 +27,21 @@ class FieldRouter:
     # Field type mapping: domain → field → type
     FIELD_TYPES = {
         'materials': {
-            'description': 'text',
+            'page_description': 'text',
             'micro': 'text',
             'faq': 'text',
             'power_intensity': 'data',
             'context': 'data',
         },
         'contaminants': {
-            'description': 'text',
+            'page_description': 'text',
             'micro': 'text',
             'compounds': 'text',  # Structured text list
             'appearance': 'text',  # Structured text descriptions
             'context': 'data',
         },
         'compounds': {
-            'description': 'text',
+            'page_description': 'text',
             'health_effects': 'text',
             'exposure_guidelines': 'text',
         },
