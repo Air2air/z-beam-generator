@@ -9597,7 +9597,7 @@ compounds:
         each session and decontaminate equipment to avoid secondary exposure.
   water-vapor-compound:
     id: water-vapor-compound
-    full_path: /compounds/vapor/water-vapor-compound
+    full_path: /compounds/vapor/inert/water-vapor-compound
     name: Water Vapor
     display_name: Water Vapor (H₂O)
     chemical_formula: H₂O
@@ -10001,7 +10001,7 @@ compounds:
         for decontamination.
   carbon-particulates-compound:
     id: carbon-particulates-compound
-    full_path: /compounds/particulate/carbon-particulates-compound
+    full_path: /compounds/particulate/carbon_based/carbon-particulates-compound
     name: Carbon Particulates
     display_name: Carbon Particulates
     chemical_formula: C
@@ -10312,7 +10312,7 @@ compounds:
         to remove any settled particulates from skin and clothing.
   carbon-ash-compound:
     id: carbon-ash-compound
-    full_path: /compounds/particulate/carbon-ash-compound
+    full_path: /compounds/particulate/carbon_based/carbon-ash-compound
     name: Carbon Ash
     display_name: Carbon Ash
     chemical_formula: C
@@ -10586,7 +10586,7 @@ compounds:
         8-hour shift.
   metal-oxides-mixed-compound:
     id: metal-oxides-mixed-compound
-    full_path: /compounds/particulate/metal-oxides-mixed-compound
+    full_path: /compounds/particulate/metal_oxide/metal-oxides-mixed-compound
     name: Metal Oxides (Mixed)
     display_name: Metal Oxides (Mixed)
     chemical_formula: Various
@@ -10840,7 +10840,7 @@ compounds:
         and change filters frequently based on usage intensity.
   nanoparticulates-compound:
     id: nanoparticulates-compound
-    full_path: /compounds/particulate/nanoparticulates-compound
+    full_path: /compounds/particulate/nanomaterial/nanoparticulates-compound
     name: Nanoparticulates
     display_name: Nanoparticulates
     chemical_formula: Various
@@ -11079,7 +11079,7 @@ compounds:
         vacuums for cleanup, to minimize residual exposure.
   organic-residues-compound:
     id: organic-residues-compound
-    full_path: /compounds/particulate/organic-residues-compound
+    full_path: /compounds/particulate/organic/organic-residues-compound
     name: Organic Residues
     display_name: Organic Residues
     chemical_formula: CxHyOz
@@ -12954,7 +12954,7 @@ compounds:
         annual medical exams for early detection of cadmium-related health effects.
   metal-vapors-mixed-compound:
     id: metal-vapors-mixed-compound
-    full_path: /compounds/vapor/metal-vapors-mixed-compound
+    full_path: /compounds/vapor/metal/metal-vapors-mixed-compound
     name: Metal Vapors (Mixed)
     display_name: Metal Vapors (Mixed)
     chemical_formula: Various
