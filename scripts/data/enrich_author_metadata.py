@@ -104,10 +104,17 @@ def enrich_domain_authors(
     
     # Load data
     data = load_yaml(data_path)
-    items = data.get(domain, {})
+    
+    # Determine correct key for domain (contaminants uses 'contamination_patterns')
+    if domain == 'contaminants':
+        data_key = 'contamination_patterns'
+    else:
+        data_key = domain
+    
+    items = data.get(data_key, {})
     
     if not items:
-        print(f"⚠️  No items found in {domain} section")
+        print(f"⚠️  No items found in {data_key} section")
         return {'total': 0, 'enriched': 0, 'skipped': 0}
     
     total = len(items)
