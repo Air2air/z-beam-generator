@@ -126,18 +126,14 @@ class UniversalContentGenerator(BaseGenerator):
     
     def _task_author_linkage(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
-        Add complete author metadata from persona files.
+        Add complete author metadata from author registry.
         Replaces: AuthorEnricher
-        Populates: id, name, title, country, country_display, expertise, sex, bio, slug
+        Populates: ALL fields from registry including image, imageAlt, url, sameAs, etc.
         """
         # Get author from frontmatter (already present from source data)
         author_info = frontmatter.get('author', {})
         if not author_info:
             logger.debug("No author in frontmatter")
-            return frontmatter
-        
-        # If author is already a complete dict with all fields, return as-is
-        if isinstance(author_info, dict) and all(k in author_info for k in ['country', 'title', 'expertise']):
             return frontmatter
         
         # Get author ID
@@ -150,49 +146,61 @@ class UniversalContentGenerator(BaseGenerator):
             logger.debug("No author ID in frontmatter")
             return frontmatter
         
-        # Load persona file to get bio and additional metadata
-        persona_map = {
-            1: 'indonesia',
-            2: 'italy', 
-            3: 'taiwan',
-            4: 'united_states'
-        }
-        
-        persona_name = persona_map.get(author_id)
-        if not persona_name:
-            logger.warning(f"Unknown author ID: {author_id}")
-            return frontmatter
-        
-        persona_file = Path(f'shared/voice/profiles/{persona_name}.yaml')
-        if persona_file.exists():
-            with open(persona_file) as f:
-                persona = yaml.safe_load(f)
+        # Load complete author data from registry
+        try:
+            from data.authors.registry import get_author
+            registry_author = get_author(author_id)
             
-            # Build complete author data
-            # Note: author_info already has the complete data from source (Materials.yaml, etc.)
-            # We just ensure all fields are present
+            # Use registry as source of truth, preserve source data as fallback
+            complete_author = {
+                'id': author_id,
+                'name': registry_author.get('name'),
+                'country': registry_author.get('country'),
+                'country_display': registry_author.get('country_display'),
+                'title': registry_author.get('title'),
+                'sex': registry_author.get('sex'),
+                'jobTitle': registry_author.get('jobTitle'),
+                'expertise': registry_author.get('expertise', []),
+                'affiliation': registry_author.get('affiliation', {}),
+                'credentials': registry_author.get('credentials', []),
+                'email': registry_author.get('email'),
+                'image': registry_author.get('image'),
+                'imageAlt': registry_author.get('imageAlt'),
+                'url': registry_author.get('url'),
+                'sameAs': registry_author.get('sameAs', []),
+            }
+            
+            # Add optional fields if present
+            if registry_author.get('alumniOf'):
+                complete_author['alumniOf'] = registry_author['alumniOf']
+            if registry_author.get('languages'):
+                complete_author['languages'] = registry_author['languages']
+            
+            # Generate bio if not in registry
+            if not complete_author.get('bio'):
+                bio_parts = []
+                if complete_author.get('name'):
+                    bio_parts.append(f"{complete_author['name']}")
+                if complete_author.get('title'):
+                    bio_parts.append(f"holds a {complete_author['title']} degree")
+                if complete_author.get('expertise'):
+                    expertise = complete_author['expertise']
+                    if isinstance(expertise, list):
+                        bio_parts.append(f"with expertise in {', '.join(expertise)}")
+                if complete_author.get('country'):
+                    bio_parts.append(f"based in {complete_author['country']}")
+                
+                complete_author['bio'] = '. '.join(bio_parts) + '.' if bio_parts else None
+            
+            # Add slug
+            complete_author['slug'] = registry_author.get('url', '').split('/')[-1] if registry_author.get('url') else str(author_id)
+            
+            frontmatter['author'] = complete_author
+            
+        except (ImportError, KeyError) as e:
+            logger.warning(f"Failed to load author {author_id} from registry: {e}")
+            # Fallback: preserve existing author data
             if isinstance(author_info, dict):
-                # Add bio from persona if not present
-                if not author_info.get('bio'):
-                    # Generate bio from persona metadata
-                    bio_parts = []
-                    if author_info.get('name'):
-                        bio_parts.append(f"{author_info['name']}")
-                    if author_info.get('title'):
-                        bio_parts.append(f"holds a {author_info['title']} degree")
-                    if author_info.get('expertise'):
-                        expertise = author_info['expertise']
-                        if isinstance(expertise, list):
-                            bio_parts.append(f"with expertise in {', '.join(expertise)}")
-                    if author_info.get('country'):
-                        bio_parts.append(f"based in {author_info['country']}")
-                    
-                    author_info['bio'] = '. '.join(bio_parts) + '.' if bio_parts else None
-                
-                # Ensure slug is present
-                if not author_info.get('slug'):
-                    author_info['slug'] = str(author_id)
-                
                 frontmatter['author'] = author_info
         
         return frontmatter
