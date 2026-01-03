@@ -38,15 +38,15 @@ generators:
   domain: contaminants
   output_field: relationships
 - type: contaminant_materials_grouping
-  module: export.enrichers.grouping.contaminant_materials_grouping_enricher
-  class: ContaminantMaterialsGroupingEnricher
+  module: export.generation.contaminant_materials_grouping_generator
+  class: ContaminantMaterialsGroupingGenerator
 - type: safety_table_normalizer
-  module: export.enrichers.contaminants.safety_table_normalizer
+  module: export.generation.safety_table_normalizer
   class: SafetyTableNormalizer
   description: Normalize safety data tables to consistent presentation + items format
 - type: field_cleanup
-  module: export.enrichers.cleanup.field_cleanup_enricher
-  class: FieldCleanupEnricher
+  module: export.generation.field_cleanup_generator
+  class: FieldCleanupGenerator
 - type: seo_description
   module: shared.generation.seo_description_generator
   class: SEODescriptionGenerator
@@ -61,8 +61,8 @@ generators:
   mode: sentences
   length: 2
 - type: section_metadata
-  module: export.enrichers.metadata.section_metadata_enricher
-  class: SectionMetadataEnricher
+  module: export.generation.section_metadata_generator
+  class: SectionMetadataGenerator
   sections:
     chemical_formula:
       presentation: list
@@ -179,17 +179,8 @@ generators:
   module: export.enrichers.metadata.field_order_enricher
   class: FieldOrderEnricher
   description: Normalize field order for consistency (must run last)
-enrichers:
-- name: DomainLinkagesEnricher
-  enabled: true
-  config:
-    relationship_types:
-    - affects_materials
-    - affects_materials
-- type: field_order
-  module: export.enrichers.metadata.field_order_enricher
-  class: FieldOrderEnricher
-  description: Normalize field order for consistency (MUST be last)
+# Enrichers deprecated - all functionality moved to generators above
+# See: export/archive/enrichers-deprecated-dec29-2025/
 _deprecated_enrichments:
 - type: universal_restructure
   module: export.enrichers.linkage.restructure_enricher

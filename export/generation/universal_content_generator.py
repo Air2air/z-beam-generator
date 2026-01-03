@@ -126,20 +126,21 @@ class UniversalContentGenerator(BaseGenerator):
     
     def _task_author_linkage(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
-        Add author metadata from Authors.yaml.
+        Add complete author metadata from persona files.
         Replaces: AuthorEnricher
+        Populates: id, name, title, country, country_display, expertise, sex, bio, slug
         """
-        author_file = Path(config.get('author_file', 'data/authors/Authors.yaml'))
-        
-        if not author_file.exists():
-            logger.warning(f"Author file not found: {author_file}")
+        # Get author from frontmatter (already present from source data)
+        author_info = frontmatter.get('author', {})
+        if not author_info:
+            logger.debug("No author in frontmatter")
             return frontmatter
         
-        with open(author_file, 'r') as f:
-            authors_data = yaml.safe_load(f)
+        # If author is already a complete dict with all fields, return as-is
+        if isinstance(author_info, dict) and all(k in author_info for k in ['country', 'title', 'expertise']):
+            return frontmatter
         
-        # Get author from frontmatter
-        author_info = frontmatter.get('author', {})
+        # Get author ID
         if isinstance(author_info, dict):
             author_id = author_info.get('id')
         else:
@@ -149,21 +150,50 @@ class UniversalContentGenerator(BaseGenerator):
             logger.debug("No author ID in frontmatter")
             return frontmatter
         
-        # Find author in database
-        author_data = authors_data.get('authors', {}).get(author_id)
+        # Load persona file to get bio and additional metadata
+        persona_map = {
+            1: 'indonesia',
+            2: 'italy', 
+            3: 'taiwan',
+            4: 'united_states'
+        }
         
-        if not author_data:
-            logger.warning(f"Author not found: {author_id}")
+        persona_name = persona_map.get(author_id)
+        if not persona_name:
+            logger.warning(f"Unknown author ID: {author_id}")
             return frontmatter
         
-        # Enrich author field with full data
-        frontmatter['author'] = {
-            'id': author_id,
-            'name': author_data.get('name'),
-            'author_title': author_data.get('credentials'),
-            'bio': author_data.get('bio'),
-            'slug': author_data.get('slug', author_id)
-        }
+        persona_file = Path(f'shared/voice/profiles/{persona_name}.yaml')
+        if persona_file.exists():
+            with open(persona_file) as f:
+                persona = yaml.safe_load(f)
+            
+            # Build complete author data
+            # Note: author_info already has the complete data from source (Materials.yaml, etc.)
+            # We just ensure all fields are present
+            if isinstance(author_info, dict):
+                # Add bio from persona if not present
+                if not author_info.get('bio'):
+                    # Generate bio from persona metadata
+                    bio_parts = []
+                    if author_info.get('name'):
+                        bio_parts.append(f"{author_info['name']}")
+                    if author_info.get('title'):
+                        bio_parts.append(f"holds a {author_info['title']} degree")
+                    if author_info.get('expertise'):
+                        expertise = author_info['expertise']
+                        if isinstance(expertise, list):
+                            bio_parts.append(f"with expertise in {', '.join(expertise)}")
+                    if author_info.get('country'):
+                        bio_parts.append(f"based in {author_info['country']}")
+                    
+                    author_info['bio'] = '. '.join(bio_parts) + '.' if bio_parts else None
+                
+                # Ensure slug is present
+                if not author_info.get('slug'):
+                    author_info['slug'] = str(author_id)
+                
+                frontmatter['author'] = author_info
         
         return frontmatter
     

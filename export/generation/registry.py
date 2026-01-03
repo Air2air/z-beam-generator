@@ -66,8 +66,8 @@ from export.generation.relationships_generator import DomainLinkagesGenerator
 # Import SEO metadata generator
 from export.generation.seo_metadata_generator import SEOMetadataGenerator
 
-# Import safety table normalizer
-from export.enrichers.contaminants.safety_table_normalizer import SafetyTableNormalizer
+# Import safety table normalizer (moved from enrichers Dec 29, 2025)
+from export.generation.safety_table_normalizer import SafetyTableNormalizer
 
 # MIGRATION NOTE (Dec 29, 2025): FieldOrderEnricher moved to UniversalContentGenerator
 # Field ordering now handled by universal_content_generator task system
