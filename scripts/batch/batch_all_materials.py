@@ -49,8 +49,8 @@ for i, material in enumerate(materials, 1):
     
     test_start = time.time()
     
-    # Run caption generation
-    cmd = ["python3", "run.py", "--micro", material]
+    # Run caption generation using new API
+    cmd = ["python3", "run.py", "--backfill", "--domain", "materials", "--generator", "caption", "--item", material]
     
     try:
         result = subprocess.run(

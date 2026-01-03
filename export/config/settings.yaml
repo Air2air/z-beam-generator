@@ -4,7 +4,107 @@ output_path: ../z-beam/frontmatter/settings
 items_key: settings
 filename_suffix: ''
 slugify_filenames: true
-enrichments:
+id_field: id
+title_field: title
+generators:
+- type: universal_content
+  module: export.generation.universal_content_generator
+  class: UniversalContentGenerator
+  tasks:
+  - type: author_linkage
+    author_file: data/authors/Authors.yaml
+  - type: slug_generation
+  - type: timestamp
+  - type: relationships
+    domain: settings
+  - type: seo_description
+    source_field: settings_description
+    max_length: 160
+  - type: section_metadata
+    config_file: export/config/settings.yaml
+  - type: relationship_grouping
+  - type: breadcrumbs
+    domain: settings
+  - type: field_ordering
+    domain: settings
+- type: seo_metadata
+  module: export.generation.seo_metadata_generator
+  class: SEOMetadataGenerator
+  page_type: settings
+  title_field: page_title
+  description_field: meta_description
+- type: section_metadata
+  module: export.generation.section_metadata_generator
+  class: SectionMetadataGenerator
+  sections:
+    common_challenges:
+      presentation: card
+      title: Common Challenges
+      description: Typical difficulties and considerations when using this setting
+      icon: alert-triangle
+      order: 1
+      variant: warning
+    works_on_materials:
+      presentation: card
+      title: Optimized Materials
+      description: Materials that work best with this laser cleaning setting
+      icon: box
+      order: 2
+      variant: default
+    removes_contaminants:
+      presentation: card
+      title: Removes Contaminants
+      description: Types of contamination effectively removed by this setting
+      icon: droplet
+      order: 3
+      variant: default
+    regulatory_standards:
+      presentation: card
+      title: Regulatory Standards
+      description: Safety and compliance standards applicable to this laser setting
+      icon: shield-check
+      order: 4
+      variant: default
+    technical.works_on_materials:
+      presentation: card
+      title: Works On Materials
+      description: Materials compatible with these laser settings
+      icon: box
+      order: 1
+      variant: default
+    technical.removes_contaminants:
+      presentation: card
+      title: Removes Contaminants
+      description: Contaminants effectively removed by these settings
+      icon: droplet
+      order: 2
+      variant: default
+    safety.regulatory_standards:
+      presentation: card
+      title: Regulatory Standards
+      description: OSHA, ANSI, ISO, and industry safety standards
+      icon: shield-check
+      order: 1
+      variant: default
+    operational.common_challenges:
+      presentation: card
+      title: Common Challenges
+      description: Typical difficulties and considerations when using this setting
+      icon: alert-triangle
+      order: 1
+      variant: warning
+enrichers:
+- name: DomainLinkagesEnricher
+  enabled: true
+  config:
+    relationship_types:
+    - applies_to_materials
+    - effective_against_contaminants
+- type: field_order
+  module: export.enrichers.metadata.field_order_enricher
+  class: FieldOrderEnricher
+  description: Normalize field order for consistency (MUST be last)
+_deprecated_enrichments:
 - type: material_linkage
   module: export.enrichers.linkage.material_linkage_enricher
   class: MaterialLinkageEnricher
@@ -97,92 +197,9 @@ enrichments:
   module: export.enrichers.metadata.field_order_enricher
   class: FieldOrderEnricher
   description: Normalize field order for consistency
-# Field configuration
-id_field: id
-title_field: title
-library_enrichments:
+_deprecated_library_enrichments:
   enabled: false
   enrichments:
   - type: regulatory_standards
     relationship_field: relationships.regulatory_standards
     output_field: regulatory_standards_detail
-generators:
-- type: seo_metadata
-  module: export.generation.seo_metadata_generator
-  class: SEOMetadataGenerator
-  page_type: settings
-  title_field: page_title
-  description_field: meta_description
-- type: section_metadata
-  module: export.generation.section_metadata_generator
-  class: SectionMetadataGenerator
-  sections:
-    # Top-level (flat) relationships
-    common_challenges:
-      presentation: card
-      title: Common Challenges
-      description: Typical difficulties and considerations when using this setting
-      icon: alert-triangle
-      order: 1
-      variant: warning
-    works_on_materials:
-      presentation: card
-      title: Optimized Materials
-      description: Materials that work best with this laser cleaning setting
-      icon: box
-      order: 2
-      variant: default
-    removes_contaminants:
-      presentation: card
-      title: Removes Contaminants
-      description: Types of contamination effectively removed by this setting
-      icon: droplet
-      order: 3
-      variant: default
-    regulatory_standards:
-      presentation: card
-      title: Regulatory Standards
-      description: Safety and compliance standards applicable to this laser setting
-      icon: shield-check
-      order: 4
-      variant: default
-    # Nested grouped relationships (technical.*, safety.*, operational.*)
-    technical.works_on_materials:
-      presentation: card
-      title: Works On Materials
-      description: Materials compatible with these laser settings
-      icon: box
-      order: 1
-      variant: default
-    technical.removes_contaminants:
-      presentation: card
-      title: Removes Contaminants
-      description: Contaminants effectively removed by these settings
-      icon: droplet
-      order: 2
-      variant: default
-    safety.regulatory_standards:
-      presentation: card
-      title: Regulatory Standards
-      description: OSHA, ANSI, ISO, and industry safety standards
-      icon: shield-check
-      order: 1
-      variant: default
-    operational.common_challenges:
-      presentation: card
-      title: Common Challenges
-      description: Typical difficulties and considerations when using this setting
-      icon: alert-triangle
-      order: 1
-      variant: warning
-enrichers:
-- name: DomainLinkagesEnricher
-  enabled: true
-  config:
-    relationship_types:
-    - applies_to_materials
-    - effective_against_contaminants
-- type: field_order
-  module: export.enrichers.metadata.field_order_enricher
-  class: FieldOrderEnricher
-  description: Normalize field order for consistency (MUST be last)

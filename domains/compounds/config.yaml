@@ -18,101 +18,71 @@ component_types:
   description:
     display_name: "Compound Description"
     enabled: true
-    default_length: 150  # Target word count (120-180 words)
-    min_length: 120
-    max_length: 180
     extraction_strategy: raw
     prompt_template: "description.txt"
     
   health_effects:
     display_name: "Health Effects Guide"
     enabled: true
-    default_length: 250
-    min_length: 200
-    max_length: 300
     extraction_strategy: raw
     prompt_template: "health_effects.txt"
     
   exposure_guidelines:
     display_name: "Exposure Guidelines"
     enabled: true
-    default_length: 200
-    min_length: 150
-    max_length: 250
     extraction_strategy: raw
     prompt_template: "exposure_guidelines.txt"
     
   detection_methods:
     display_name: "Detection Methods"
     enabled: true
-    default_length: 150
-    min_length: 120
-    max_length: 180
     extraction_strategy: raw
     prompt_template: "detection_methods.txt"
     
   first_aid:
     display_name: "First Aid Procedures"
     enabled: true
-    default_length: 200
-    min_length: 150
-    max_length: 250
     extraction_strategy: raw
     prompt_template: "first_aid.txt"
     
   ppe_requirements:
     display_name: "PPE Requirements"
     enabled: true
-    default_length: 250
-    min_length: 200
-    max_length: 300
     extraction_strategy: raw
     prompt_template: "ppe_requirements.txt"
     
   regulatory_standards:
     display_name: "Regulatory Standards"
     enabled: true
-    default_length: 250
-    min_length: 200
-    max_length: 300
     extraction_strategy: raw
     prompt_template: "regulatory_standards.txt"
     
   emergency_response:
     display_name: "Emergency Response"
     enabled: true
-    default_length: 250
-    min_length: 200
-    max_length: 300
     extraction_strategy: raw
     prompt_template: "emergency_response.txt"
     
   chemical_properties:
     display_name: "Chemical Properties"
     enabled: true
-    default_length: 250
-    min_length: 200
-    max_length: 300
     extraction_strategy: raw
     prompt_template: "chemical_properties.txt"
     
   environmental_impact:
     display_name: "Environmental Impact"
     enabled: true
-    default_length: 250
-    min_length: 200
-    max_length: 300
     extraction_strategy: raw
     prompt_template: "environmental_impact.txt"
     
   detection_monitoring:
     display_name: "Detection & Monitoring"
     enabled: true
-    default_length: 250
-    min_length: 200
-    max_length: 300
     extraction_strategy: raw
     prompt_template: "detection_monitoring.txt"
+
+# NOTE: Word counts defined in domains/compounds/prompts/*.txt files
+# See docs/08-development/WORD_COUNT_IN_PROMPTS_POLICY.md
 
 # Generation settings
 generation:

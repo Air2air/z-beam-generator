@@ -10,7 +10,55 @@ relationship_groups:
   - regulatory_standards
   operational:
   - industry_applications
-enrichments:
+id_field: id
+title_field: title
+generators:
+- type: universal_content
+  module: export.generation.universal_content_generator
+  class: UniversalContentGenerator
+  tasks:
+  - type: author_linkage
+    author_file: data/authors/Authors.yaml
+  - type: slug_generation
+  - type: timestamp
+  - type: relationships
+    domain: materials
+  - type: seo_description
+    source_field: description
+    max_length: 160
+  - type: section_metadata
+    config_file: export/config/materials.yaml
+  - type: relationship_grouping
+  - type: breadcrumbs
+    domain: materials
+  - type: field_ordering
+    domain: materials
+- type: seo_metadata
+  module: export.generation.seo_metadata_generator
+  class: SEOMetadataGenerator
+  page_type: material
+  title_field: page_title
+  description_field: meta_description
+- type: field_cleanup
+  module: export.enrichers.cleanup.field_cleanup_enricher
+  class: FieldCleanupEnricher
+- type: field_order
+  module: export.enrichers.metadata.field_order_enricher
+  class: FieldOrderEnricher
+  description: Normalize field order for consistency (must run last)
+enrichers:
+- name: DomainLinkagesEnricher
+  enabled: true
+  config:
+    relationship_types:
+    - related_settings
+    - removes_contaminants
+    - produces_compounds
+- type: field_order
+  module: export.enrichers.metadata.field_order_enricher
+  class: FieldOrderEnricher
+  description: Normalize field order for consistency (MUST be last)
+_deprecated_enrichments:
 - type: universal_restructure
   module: export.enrichers.linkage.restructure_enricher
   class: UniversalRestructureEnricher
@@ -31,7 +79,8 @@ enrichments:
   class: CompoundLinkageEnricher
   field: produces_compounds
   title: Compounds Produced
-  description: Hazardous fumes and particles generated when laser processing this material
+  description: Hazardous fumes and particles generated when laser processing this
+    material
   source: data/compounds/Compounds.yaml
   defaults:
   - concentration_range
@@ -112,20 +161,22 @@ enrichments:
 - type: section_metadata
   module: export.enrichers.metadata.section_metadata_enricher
   class: SectionMetadataEnricher
-  description: Add _section metadata AFTER grouping (must run after relationship_group enricher)
+  description: Add _section metadata AFTER grouping (must run after relationship_group
+    enricher)
   sections:
-    # Top-level relationships (legacy, pre-grouping)
     contaminated_by:
       presentation: card
       title: Common Contaminants
-      description: Types of contamination typically found on this material that require laser cleaning
+      description: Types of contamination typically found on this material that require
+        laser cleaning
       icon: droplet
       order: 1
       variant: default
     regulatory_standards:
       presentation: card
       title: Regulatory Standards
-      description: Safety and compliance standards applicable to laser cleaning of this material
+      description: Safety and compliance standards applicable to laser cleaning of
+        this material
       icon: shield-check
       order: 2
       variant: default
@@ -136,18 +187,19 @@ enrichments:
       icon: building-2
       order: 3
       variant: default
-    # Nested grouped relationships (technical.*, safety.*, operational.*)
     technical.contaminated_by:
       presentation: card
       title: Common Contaminants
-      description: Types of contamination typically found on this material that require laser cleaning
+      description: Types of contamination typically found on this material that require
+        laser cleaning
       icon: droplet
       order: 1
       variant: default
     safety.regulatory_standards:
       presentation: card
       title: Regulatory Standards
-      description: Safety and compliance standards applicable to laser cleaning of this material
+      description: Safety and compliance standards applicable to laser cleaning of
+        this material
       icon: shield-check
       order: 2
       variant: default
@@ -158,38 +210,9 @@ enrichments:
       icon: building-2
       order: 3
       variant: default
-library_enrichments:
+_deprecated_library_enrichments:
   enabled: false
   enrichments:
   - type: regulatory_standards
     relationship_field: relationships.regulatory_standards
     output_field: regulatory_standards_detail
-# Field configuration
-id_field: id
-title_field: title
-generators:
-- type: seo_metadata
-  module: export.generation.seo_metadata_generator
-  class: SEOMetadataGenerator
-  page_type: material
-  title_field: page_title
-  description_field: meta_description
-- type: field_cleanup
-  module: export.enrichers.cleanup.field_cleanup_enricher
-  class: FieldCleanupEnricher
-- type: field_order
-  module: export.enrichers.metadata.field_order_enricher
-  class: FieldOrderEnricher
-  description: Normalize field order for consistency (must run last)
-enrichers:
-- name: DomainLinkagesEnricher
-  enabled: true
-  config:
-    relationship_types:
-    - related_settings
-    - removes_contaminants
-    - produces_compounds
-- type: field_order
-  module: export.enrichers.metadata.field_order_enricher
-  class: FieldOrderEnricher
-  description: Normalize field order for consistency (MUST be last)

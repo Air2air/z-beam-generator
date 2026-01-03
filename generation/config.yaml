@@ -1,10 +1,6 @@
 # Generation Configuration
 # Single-pass production generation
 
-# Feature Flags
-features:
-  use_new_architecture: false  # Set to true to use refactored components (QualityOrchestrator, LearningIntegrator, ParameterManager)
-
 # Quality Gate Settings (used for post-generation analysis)
 # Thresholds for logging and learning - generation always succeeds
 quality_gates:
@@ -40,27 +36,9 @@ voice_parameters:
 jargon_removal: 7                        # Reduce technical jargon (1=minimal, 10=maximum removal)
 professional_voice: 5                    # Professional tone level (1=casual, 10=highly professional)
 
-# Length Variation Control (1-10 scale)
-# This SINGLE slider controls variation for ALL components
-# Calculation: variation_pct = 10% + (slider * 5%)
-# Examples:
-#   1 = ±15% (target 100 → range 85-115)
-#   5 = ±35% (target 100 → range 65-135) 
-#   10 = ±60% (target 100 → range 40-160)
-length_variation_range: 10               # Maximum variation: ±60%
-
-# Word Count Variation for Structural Diversity (0.0-1.0 scale)
-# Applied in prompt_builder.py to create ranges instead of exact targets
-# Used by structural_variation_checker.py to validate batch diversity
-# Calculation: range = target ± (target * word_count_variation)
-# Examples:
-#   0.05 = ±5% (target 100 → range 95-105)
-#   0.10 = ±10% (target 100 → range 90-110)
-#   0.20 = ±20% (target 100 → range 80-120)
-#   0.40 = ±40% (target 100 → range 60-140)
-#   0.50 = ±50% (target 100 → range 50-150)
-# Recommended: 0.40-0.50 for maximum diversity
-word_count_variation: 0.70               # ±70% variation for maximum diversity
+# DEPRECATED (Dec 29, 2025): Word count parameters removed
+# Word counts now defined in prompt files. See docs/08-development/WORD_COUNT_IN_PROMPTS_POLICY.md
+# Legacy code accessing length_variation_range or word_count_variation will receive defaults (50%).
 
 # Temperature Variation Range (NEW - Dec 12, 2025)
 # Adds randomness to base temperature for each generation
@@ -102,50 +80,22 @@ component_extraction:
   micro:
     extraction_strategy: before_after  # Extract before/after paragraphs
   description:
-    extraction_strategy: raw            # Return text as-is
-  description:
-    extraction_strategy: raw            # Return text as-is (settings descriptions)
-  description:
-    extraction_strategy: raw            # Return text as-is (contamination descriptions)
+    extraction_strategy: raw            # Return text as-is (all domains)
   component_summary:
-    extraction_strategy: raw            # Return text as-is (single component description)
-  component_summaries:
-    extraction_strategy: yaml           # Parse as YAML (deprecated monolithic)
+    extraction_strategy: raw            # Return text as-is (single component)
   faq:
     extraction_strategy: json_list      # Parse as JSON array
   page_title:
-    extraction_strategy: raw            # Return text as-is (SEO page title)
+    extraction_strategy: raw            # Return text as-is (SEO)
   meta_description:
-    extraction_strategy: raw            # Return text as-is (SEO meta description)
+    extraction_strategy: raw            # Return text as-is (SEO)
   seo_description:
-    extraction_strategy: raw            # Return text as-is (SEO meta description)
+    extraction_strategy: raw            # Return text as-is (SEO)
   excerpt:
-    extraction_strategy: raw            # Return text as-is (summary text)
+    extraction_strategy: raw            # Return text as-is (summary)
 
-# Component Token Targets - UPDATED (Dec 14, 2025)
-# Word count targets used by length calculation system
-# These are BASE targets - word_count_variation (±70%) applies on top
-# Domain prompts receive calculated range, NOT these exact numbers
-# 
-# SEPARATION OF CONCERNS:
-# - generation/config.yaml: Defines base word count targets (technical config)
-# - Domain prompts: Describe WHAT to say (content requirements)
-# - Voice profiles: Describe HOW to say it (voice characteristics)
-# - Humanness layer: Provides structural variation (rhythm, openings)
-#
-# Flow: base_target → ±70% variation → prompt receives range → voice applied → humanness variation
-# MANDATORY: Keep targets SMALL - LLMs generate 2-3x over target consistently
-component_lengths:
-  description: 60                 # Contaminant descriptions (±70% = 18-102 range) → actual ~120-180 words
-  description: 30        # Material subtitles (±70% = 9-51 range)
-  description: 30        # Settings descriptions (±70% = 9-51 range)
-  micro: 80                       # Before/after captions (±70% = 24-136 range)
-  faq: 50                         # FAQ answers (±70% = 15-85 range)
-  health_effects: 250             # Compound health effects (±70% = 75-425 range) → actual ~165-495 words
-  page_title: 10                  # SEO page titles (50-55 characters target)
-  meta_description: 32            # SEO meta descriptions (155-160 characters target)
-  seo_description: 50             # SEO meta descriptions (50-160 chars, ±70% = 15-85 range)
-  excerpt: 120                    # Summary excerpts (±70% = 36-204 range) → actual ~80-240 words
+# Component Token Targets - DEPRECATED (Dec 29, 2025)
+# Word counts now in prompt files. See docs/08-development/WORD_COUNT_IN_PROMPTS_POLICY.md
 
 # Dynamic Calculation Parameters
 # Zero hardcoded values policy: All calculation factors configured here
@@ -195,21 +145,3 @@ dynamic_calculations:
     detection_max: 60
     confidence_adjustment_range: 10      # ±10 from base
     readability_adjustment_range: 10     # ±10 from base
-
-# What gets disabled in simple mode:
-disabled_features:
-  - temperature_advisor                  # No dynamic temperature learning
-  - pattern_learner                      # No risky pattern detection
-  - prompt_optimizer                     # No prompt enhancement
-  - weight_learner                       # No composite weight learning
-  - fix_strategy_manager                 # No adaptive fix strategies
-  - success_predictor                    # No success prediction
-  - stuck_pattern_detection              # No stuck pattern fresh regen
-  
-# What stays enabled:
-enabled_features:
-  - winston_detection                    # Winston AI quality check
-  - realism_evaluation                   # Realism scoring
-  - readability_check                    # Readability validation
-  - subjective_validation                # Subjective language check
-  - database_logging                     # Log results for later analysis

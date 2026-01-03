@@ -272,5 +272,3 @@ def test_migration_script_exists():
     Compounds now exported via UniversalFrontmatterExporter
     """
     pytest.skip("Migration completed - compounds use UniversalFrontmatterExporter")
-            f"Migration script is not executable: {script_path}"
-        )

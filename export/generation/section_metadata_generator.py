@@ -11,37 +11,34 @@ Purpose: Enable section metadata to wrap dynamically generated relationships
 import logging
 from typing import Any, Dict
 
-from export.enrichers.metadata.section_metadata_enricher import SectionMetadataEnricher
+# MIGRATION NOTE (Dec 29, 2025): SectionMetadataEnricher functionality moved to UniversalContentGenerator
+# This generator is now deprecated - use universal_content_generator task system instead
+# from export.enrichers.metadata.section_metadata_enricher import SectionMetadataEnricher
+from export.generation.base import BaseGenerator
 
 logger = logging.getLogger(__name__)
 
 
-class SectionMetadataGenerator:
+class SectionMetadataGenerator(BaseGenerator):
     """
-    Generator wrapper for SectionMetadataEnricher.
-    
-    Runs in generators phase (after RelationshipsGenerator) to wrap
-    relationship arrays with display metadata.
+    DEPRECATED: Section metadata now handled by UniversalContentGenerator.
+    This generator returns frontmatter unchanged for backwards compatibility.
     """
     
     def __init__(self, config: Dict[str, Any]):
-        """
-        Initialize generator with enricher.
-        
-        Args:
-            config: Generator configuration (passed to enricher)
-        """
-        self.enricher = SectionMetadataEnricher(config)
-        logger.info(f"Initialized SectionMetadataGenerator with {len(config.get('sections', {}))} sections")
+        """Initialize generator."""
+        super().__init__(config)
+        logger.warning("SectionMetadataGenerator deprecated - use UniversalContentGenerator instead")
     
     def generate(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Generate section metadata by delegating to enricher.
+        Pass through - functionality moved to UniversalContentGenerator.
         
         Args:
-            frontmatter: Frontmatter dict with relationships to wrap
+            frontmatter: Frontmatter dict
         
         Returns:
-            Frontmatter with relationships wrapped in _section metadata
+            Unchanged frontmatter
         """
-        return self.enricher.enrich(frontmatter)
+        logger.debug("SectionMetadataGenerator pass-through (deprecated)")
+        return frontmatter

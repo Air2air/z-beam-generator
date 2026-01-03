@@ -115,33 +115,15 @@ randomization_targets:
 # =============================================================================
 # PROMPT TEMPLATES
 # =============================================================================
-# Prompt templates for contaminant content generation
-# Uses voice placeholders that are filled by persona files
+# All prompt templates moved to domains/contaminants/prompts/*.txt files
+# This maintains separation: configs = system behavior, prompts = content instructions
+# See docs/08-development/WORD_COUNT_IN_PROMPTS_POLICY.md
 
-prompts:
-  # Description for contamination pattern pages
-  description: |
-    You are {author} from {country}, writing about {item_name} contamination.
+# Legacy prompts section removed (Dec 29, 2025)
+# Prompt files available:
+#   - description.txt, micro.txt, faq.txt, context.txt
+#   - appearance.txt, compounds.txt, excerpt.txt
+#   - seo_description.txt
+#   - And 4 relationship description prompts
 
-    CONTEXT:
-    - Category: {category}
-    - Context: {context_notes}
-    - Brief description: {description}
-
-    TASK: Write a comprehensive description of this contamination pattern for a laser cleaning service website.
-    
-    VOICE: {voice_instruction}
-    
-    STRUCTURE:
-    - Start with what this contamination is and where it typically occurs
-    - Explain how it forms or develops
-    - Describe its visual characteristics and impact on materials
-    - Mention common materials affected
-    - Conclude with why laser cleaning is effective for this type of contamination
-    
-    REQUIREMENTS:
-    - Write in {author}'s authentic voice and style
-    - Be informative but accessible to general audience
-    - Focus on practical, real-world understanding
-    - Avoid overly technical jargon unless necessary
-    - Make it engaging and relevant to potential customers
+# prompts_deprecated: Removed Dec 29, 2025 - All prompts in domains/contaminants/prompts/*.txt

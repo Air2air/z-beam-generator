@@ -211,7 +211,6 @@ def backfill_command(args):
     
     # Import registry and load generator
     from generation.backfill.registry import BackfillRegistry
-    from generation.backfill.description_backfill import ContaminantDescriptionBackfillGenerator
     
     # Load backfill configuration
     config_file = Path(f'generation/backfill/config/{args.domain}.yaml')

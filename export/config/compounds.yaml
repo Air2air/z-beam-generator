@@ -6,10 +6,178 @@ id_field: id
 title_field: title
 filename_suffix: ''
 sluggify_filenames: true
-enrichments:
+generators:
+- type: universal_content
+  module: export.generation.universal_content_generator
+  class: UniversalContentGenerator
+  tasks:
+  - type: author_linkage
+    author_file: data/authors/Authors.yaml
+  - type: slug_generation
+  - type: timestamp
+  - type: relationships
+    domain: compounds
+  - type: seo_description
+    source_field: description
+    max_length: 160
+  - type: section_metadata
+    config_file: export/config/compounds.yaml
+  - type: relationship_grouping
+  - type: breadcrumbs
+    domain: compounds
+  - type: field_ordering
+    domain: compounds
+- type: seo_metadata
+  module: export.generation.seo_metadata_generator
+  class: SEOMetadataGenerator
+  page_type: compound
+  title_field: page_title
+  description_field: meta_description
+- type: seo_description
+  module: shared.generation.seo_description_generator
+  class: SEODescriptionGenerator
+  source_field: description
+  output_field: seo_description
+  max_length: 160
+- type: excerpt
+  module: shared.generation.excerpt_generator
+  class: ExcerptGenerator
+  source_field: description
+  output_field: micro
+  mode: sentences
+  length: 2
+- type: section_metadata
+  module: export.generation.section_metadata_generator
+  class: SectionMetadataGenerator
+  config_file: export/config/compounds.yaml
+- type: field_order
+  module: export.generation.field_order_generator
+  class: FieldOrderGenerator
+  domain: compounds
+  class: SectionMetadataGenerator
+  sections:
+    chemical_properties:
+      presentation: list
+      title: Chemical Properties
+      description: Fundamental chemical characteristics and behavior
+      icon: microscope
+      order: 1
+      variant: default
+    physical_properties:
+      presentation: list
+      title: Physical Properties
+      description: Physical characteristics and state information
+      icon: gauge
+      order: 2
+      variant: default
+    exposure_limits:
+      presentation: card
+      title: Exposure Limits
+      description: Regulatory exposure thresholds and safe concentration levels
+      icon: gauge
+      order: 4
+      variant: warning
+    ppe_requirements:
+      presentation: card
+      title: PPE Requirements
+      description: Personal protective equipment needed for safe handling
+      icon: shield
+      order: 5
+      variant: warning
+    detection_monitoring:
+      presentation: card
+      title: Detection & Monitoring
+      description: Methods and equipment for detecting and monitoring this compound
+      icon: gauge
+      order: 6
+      variant: default
+    emergency_response:
+      presentation: card
+      title: Emergency Response
+      description: First aid and emergency procedures for exposure incidents
+      icon: alert-triangle
+      order: 7
+      variant: danger
+    environmental_impact:
+      presentation: card
+      title: Environmental Impact
+      description: Environmental effects and ecological considerations
+      icon: wind
+      order: 8
+      variant: warning
+    produced_from_contaminants:
+      presentation: card
+      title: Produced From Contaminants
+      description: Contaminants that generate this compound during laser cleaning
+      icon: droplet
+      order: 9
+      variant: default
+    produced_from_materials:
+      presentation: card
+      title: Produced From Materials
+      description: Materials that may release this compound during laser cleaning
+      icon: users
+      order: 10
+      variant: default
+    operational.health_effects:
+      presentation: card
+      title: Health Effects
+      description: Potential health impacts from exposure
+      icon: activity
+      order: 1
+      variant: warning
+    reactivity:
+      presentation: list
+      title: Reactivity
+      description: Chemical reactivity and compatibility with other substances
+      icon: flame
+      order: 11
+      variant: warning
+    regulatory_classification:
+      presentation: card
+      title: Regulatory Classification
+      description: Hazard classifications and regulatory designations
+      icon: file-text
+      order: 12
+      variant: default
+    storage_requirements:
+      presentation: list
+      title: Storage Requirements
+      description: Proper storage conditions and handling precautions
+      icon: alert-triangle
+      order: 13
+      variant: warning
+    synonyms_identifiers:
+      presentation: card
+      title: Synonyms & Identifiers
+      description: Alternative names and chemical identifiers (CAS numbers)
+      icon: file-text
+      order: 14
+      variant: default
+enrichers:
+- name: SafetyDataEnricher
+  enabled: true
+  module: export.enrichers.compounds.safety_data_enricher
+  class: SafetyDataEnricher
+  description: Structure safety data from prose to frontmatter format (preserves author voice)
+- name: DomainLinkagesEnricher
+  enabled: true
+  config:
+    relationship_types:
+    - produced_from_materials
+    - produced_from_contaminants
+- type: field_cleanup
+  module: export.enrichers.cleanup.field_cleanup_enricher
+  class: FieldCleanupEnricher
+  description: Remove empty items arrays and redundant fields (runs after all generation)
+- type: field_order
+  module: export.enrichers.metadata.field_order_enricher
+  class: FieldOrderEnricher
+  description: Normalize field order for consistency (MUST be last)
+_deprecated_enrichments:
 - type: universal_restructure
-  module: export.enrichers.linkage.restructure_enricher
-  class: UniversalRestructureEnricher
+  module: export.enrichers.linkage.contaminant_linkage_enricher
+  class: ContaminantLinkageEnricher
   domain: compounds
   cleanup_rules:
     old_relationship_keys:
@@ -20,7 +188,7 @@ enrichments:
     - metadata
     - eeat
     - voice_enhanced
-    - description  # Frontend spec 5.0.0: Use page_description only
+    - description
     duplicate_fields:
       emergency_response: emergency_response
       physical_properties: physical_properties
@@ -39,10 +207,8 @@ enrichments:
     - engineering_controls
     - safe_work_practices
     - medical_surveillance
-    - risk_assessment  # keep_at_top_level
-    - images  # Frontend spec 5.0.0: Required nested object- type: contaminant_linkage
-  module: export.enrichers.linkage.contaminant_linkage_enricher
-  class: ContaminantLinkageEnricher
+    - risk_assessment
+    - images
   field: source_contaminants
   title: Found in Contaminants
   description: Contamination patterns that contain or release this compound
@@ -142,148 +308,9 @@ enrichments:
   - health_effects
   - description
   - caption
-# SEO/excerpt generators: use --postprocess with prompt templates (domains/compounds/prompts/)
-library_enrichments:
+_deprecated_library_enrichments:
   enabled: false
   enrichments:
   - type: emergency_response
     relationship_field: relationships.emergency_response
     output_field: emergency_response_detail
-generators:
-- type: seo_metadata
-  module: export.generation.seo_metadata_generator
-  class: SEOMetadataGenerator
-  page_type: compound
-  title_field: page_title
-  description_field: meta_description
-- type: seo_description
-  module: shared.generation.seo_description_generator
-  class: SEODescriptionGenerator
-  source_field: description
-  output_field: seo_description
-  max_length: 160
-- type: excerpt
-  module: shared.generation.excerpt_generator
-  class: ExcerptGenerator
-  source_field: description
-  output_field: micro
-  mode: sentences
-  length: 2
-- type: section_metadata
-  module: export.generation.section_metadata_generator
-  class: SectionMetadataGenerator
-  sections:
-    chemical_properties:
-      presentation: list
-      title: Chemical Properties
-      description: Fundamental chemical characteristics and behavior
-      icon: microscope
-      order: 1
-      variant: default
-    physical_properties:
-      presentation: list
-      title: Physical Properties
-      description: Physical characteristics and state information
-      icon: gauge
-      order: 2
-      variant: default
-    exposure_limits:
-      presentation: card
-      title: Exposure Limits
-      description: Regulatory exposure thresholds and safe concentration levels
-      icon: gauge
-      order: 4
-      variant: warning
-    ppe_requirements:
-      presentation: card
-      title: PPE Requirements
-      description: Personal protective equipment needed for safe handling
-      icon: shield
-      order: 5
-      variant: warning
-    detection_monitoring:
-      presentation: card
-      title: Detection & Monitoring
-      description: Methods and equipment for detecting and monitoring this compound
-      icon: gauge
-      order: 6
-      variant: default
-    emergency_response:
-      presentation: card
-      title: Emergency Response
-      description: First aid and emergency procedures for exposure incidents
-      icon: alert-triangle
-      order: 7
-      variant: danger
-    environmental_impact:
-      presentation: card
-      title: Environmental Impact
-      description: Environmental effects and ecological considerations
-      icon: wind
-      order: 8
-      variant: warning
-    produced_from_contaminants:
-      presentation: card
-      title: Produced From Contaminants
-      description: Contaminants that generate this compound during laser cleaning
-      icon: droplet
-      order: 9
-      variant: default
-    produced_from_materials:
-      presentation: card
-      title: Produced From Materials
-      description: Materials that may release this compound during laser cleaning
-      icon: users
-      order: 10
-      variant: default
-    # Nested grouped relationships (operational.*)
-    operational.health_effects:
-      presentation: card
-      title: Health Effects
-      description: Potential health impacts from exposure
-      icon: activity
-      order: 1
-      variant: warning
-    reactivity:
-      presentation: list
-      title: Reactivity
-      description: Chemical reactivity and compatibility with other substances
-      icon: flame
-      order: 11
-      variant: warning
-    regulatory_classification:
-      presentation: card
-      title: Regulatory Classification
-      description: Hazard classifications and regulatory designations
-      icon: file-text
-      order: 12
-      variant: default
-    storage_requirements:
-      presentation: list
-      title: Storage Requirements
-      description: Proper storage conditions and handling precautions
-      icon: alert-triangle
-      order: 13
-      variant: warning
-    synonyms_identifiers:
-      presentation: card
-      title: Synonyms & Identifiers
-      description: Alternative names and chemical identifiers (CAS numbers)
-      icon: file-text
-      order: 14
-      variant: default
-enrichers:
-- name: DomainLinkagesEnricher
-  enabled: true
-  config:
-    relationship_types:
-    - produced_from_materials
-    - produced_from_contaminants
-- type: field_cleanup
-  module: export.enrichers.cleanup.field_cleanup_enricher
-  class: FieldCleanupEnricher
-  description: Remove empty items arrays and redundant fields (runs after all generation)
-- type: field_order
-  module: export.enrichers.metadata.field_order_enricher
-  class: FieldOrderEnricher
-  description: Normalize field order for consistency (MUST be last)

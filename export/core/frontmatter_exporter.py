@@ -65,7 +65,6 @@ class UniversalFrontmatterExporter:
         # Comprehensive validation if requested
         if validate:
             from export.config.validator import validate_config
-            from pathlib import Path
             config_dir = Path(__file__).parent.parent / 'config'
             validate_config(config, config_dir)
         
@@ -115,10 +114,13 @@ class UniversalFrontmatterExporter:
     
     @property
     def enrichers(self) -> List:
-        """Lazy-load enrichers from config."""
+        """
+        DEPRECATED: Enrichers replaced by UniversalContentGenerator.
+        Returns empty list for backwards compatibility.
+        """
         if self._enrichers is None:
-            from export.enrichers.linkage.registry import create_enrichers
-            self._enrichers = create_enrichers(self.enrichment_configs)
+            logger.warning("enrichers property deprecated - use generators instead")
+            self._enrichers = []
         return self._enrichers
     
     @property
@@ -139,11 +141,13 @@ class UniversalFrontmatterExporter:
     
     @property
     def library_processor(self):
-        """Lazy-load library enrichment processor."""
-        if self._library_processor is None and self.library_enrichment_config.get('enabled', False):
-            from export.enrichers.library import LibraryEnrichmentProcessor
-            self._library_processor = LibraryEnrichmentProcessor(self.config)
-        return self._library_processor
+        """
+        DEPRECATED: Library enrichment moved to UniversalContentGenerator.
+        Returns None for backwards compatibility.
+        """
+        if self._library_processor is None:
+            logger.warning("library_processor deprecated - use universal generator instead")
+        return None
     
     def _load_domain_data(self) -> Dict[str, Any]:
         """
@@ -225,26 +229,10 @@ class UniversalFrontmatterExporter:
             if self.slugify_filenames and 'name' not in item_data:
                 frontmatter['_original_name'] = item_id  # Store for NameEnricher
             
-            # Apply enrichments (auto-fill linked data)
-            for enricher in self.enrichers:
-                frontmatter = enricher.enrich(frontmatter)
-                logger.debug(f"Applied enricher: {enricher.__class__.__name__}")
+            # MIGRATION NOTE (Dec 29, 2025): Enrichers removed, all functionality in generators
+            # Old enricher code removed - UniversalContentGenerator handles all enrichment
             
-            # Apply library enrichments (expand library relationships with full data)
-            if self.library_processor:
-                logger.debug(f"🔍 BEFORE library enrichment - frontmatter keys: {list(frontmatter.keys())}")
-                if 'relationships' in frontmatter:
-                    logger.debug(f"   relationships keys: {list(frontmatter['relationships'].keys())}")
-                
-                frontmatter = self.library_processor.process_item(frontmatter)
-                logger.debug("Applied library enrichments")
-                
-                logger.debug(f"🔍 AFTER library enrichment - frontmatter keys: {list(frontmatter.keys())}")
-                # Check if enriched fields were added
-                enriched_fields = [k for k in frontmatter.keys() if k.endswith('_detail')]
-                logger.debug(f"Enriched fields added: {enriched_fields}")
-            
-            # Apply generators (create derived content)
+            # Apply generators (includes all former enricher functionality)
             for generator in self.generators:
                 frontmatter = generator.generate(frontmatter)
                 logger.debug(f"Applied generator: {generator.__class__.__name__}")

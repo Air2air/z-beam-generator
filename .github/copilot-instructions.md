@@ -845,9 +845,12 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - 🚫 **NEVER bypass text processing pipeline** - ALL text uses QualityEvaluatedGenerator 🔥 **NEW (Dec 11, 2025)**
 - 🚫 **NEVER generate text with direct API calls** - Use pipeline ONLY 🔥 **NEW (Dec 11, 2025)**
 - 🚫 **NEVER put voice instructions outside personas/*.yaml** - Single source only 🔥 **NEW (Dec 11, 2025)**
+- 🚫 **NEVER embed prompts in content generators** - Use template files ONLY 🔥 **NEW (Dec 29, 2025)**
 - 🚫 **NEVER restrict word counts using max_tokens** - Causes mid-sentence truncation 🔥 **NEW (Dec 24, 2025)**
+- 🚫 **NEVER use enrichers to add missing data** - Generate complete data during generation 🔥 **NEW (Jan 2, 2026)**
 - 🚫 **NEVER use mocks/fallbacks in production code - NO EXCEPTIONS**
 - ✅ **ALLOW mocks/fallbacks in test code for proper testing**
+- ✅ **ALLOW embedded prompts in research scripts** - Data discovery OK 🔥 **NEW (Dec 29, 2025)**
 - 🚫 **NEVER add "skip" logic or dummy test results**
 - 🚫 **NEVER put content instructions in /processing folder code**
 - 🚫 **NEVER hardcode component types in /processing code**
@@ -862,6 +865,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - ✅ **ALWAYS verify documentation matches reality with tests** 🔥 **NEW**
 - ✅ **ALWAYS sync Materials.yaml updates to frontmatter (dual-write)** 🔥 **NEW (Nov 22, 2025)**
 - ✅ **ALWAYS save to frontmatter whenever you save to data** 🔥 **MANDATORY (Dec 12, 2025)**
+- ✅ **ALWAYS generate complete data to YAML** - Enrichers format, not add data 🔥 **NEW (Jan 2, 2026)**
 
 ---
 
@@ -1038,6 +1042,61 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - Technical mechanisms only → processing/
 - See: `docs/prompts/CONTENT_INSTRUCTION_POLICY.md`
 
+### 📝 Embedded Prompts Policy 🔥 **NEW (Dec 29, 2025) - CRITICAL**
+**MANDATORY: Distinguish between CONTENT generation and DATA research.**
+
+**❌ FORBIDDEN - User-Facing Content Generation:**
+Content displayed on website MUST use prompt templates ONLY:
+```python
+# ❌ WRONG: Embedded prompt for content
+def generate_description(material):
+    prompt = f"You are {author}. Write a description..."
+    return api.generate(prompt)
+
+# ✅ CORRECT: Load from template
+def generate_description(material):
+    template = self._load_prompt_template('description.txt')
+    return self.generator.generate(material, 'description')
+```
+
+**Applies to:**
+- ✅ Descriptions, FAQs, micros, excerpts
+- ✅ Any text displayed on website
+- ✅ Content with author voice/style
+- ✅ All components in `domains/*/prompts/*.txt`
+
+**✅ ALLOWED - Technical Data Research:**
+Research scripts for property discovery can use inline prompts:
+```python
+# ✅ CORRECT: Research script for data population
+def research_melting_point(material):
+    prompt = f"What is the melting point of {material}? Return only numeric value."
+    return api.generate(prompt)
+```
+
+**Applies to:**
+- ✅ Property discovery (melting points, thermal conductivity, NFPA codes)
+- ✅ One-time data population scripts (`scripts/research/*.py`)
+- ✅ Backfill operations (`generation/backfill/*.py`)
+- ✅ Research infrastructure (`domains/*/research/*.py`)
+
+**Key Distinction:**
+- **CONTENT** = What users read → Template files ONLY
+- **DATA** = Technical properties → Inline prompts OK
+
+**Verification:**
+```bash
+# Check for violations in content generators
+grep -r "prompt.*=.*You are" generation/core/ domains/*/coordinator.py
+# Result should be: 0 matches
+
+# Research scripts can have embedded prompts (acceptable)
+grep -r "prompt.*=.*You are" scripts/research/
+# Result: Multiple matches (acceptable for data research)
+```
+
+**Grade:** F violation if content generators have embedded prompts
+
 ---
 
 ## 📖 Core Principles
@@ -1062,6 +1121,62 @@ ALL text generation MUST go through the standardized processing pipeline. **ZERO
 **Grade:** F violation if ANY text bypasses this pipeline
 
 **Documentation:** `docs/02-architecture/processing-pipeline.md`
+
+### 0.5. **Generate to Data, Not Enrichers** 🔥 **MANDATORY POLICY (Jan 2, 2026)**
+**ALL metadata and content MUST be generated directly to data files during generation phase, NOT added later by enrichers during export.**
+
+**MANDATORY ARCHITECTURE:**
+- ✅ **Generate complete data to source YAML** - Write full metadata to Materials.yaml, Contaminants.yaml, etc.
+- ✅ **Enrich during write** - Generation pipeline enriches data before saving (e.g., author metadata)
+- ✅ **Export reads complete data** - Export/frontmatter generation uses data files as-is
+- ❌ **NO enrichers adding missing data** - Enrichers can format/transform, but NOT add essential fields
+- ❌ **NO lazy enrichment** - Data must be complete when saved, not completed later
+
+**Why This Matters:**
+- Single source of truth: Data files contain complete information
+- Export works immediately without complex enrichment pipelines
+- Quality evaluation sees complete data (no "None (None)" issues)
+- Clear separation: Generation creates data, Export formats/presents data
+
+**Examples:**
+
+✅ **CORRECT - Generate Complete Data**:
+```python
+# During generation, write FULL author metadata
+material_data['author'] = {
+    'id': 2,
+    'name': 'Alessandro Moretti',
+    'country': 'Italy',
+    'title': 'Ph.D.',
+    'expertise': [...]
+}
+save_to_materials_yaml(material_data)
+
+# Export just reads and formats
+author = material_data['author']  # Already complete
+frontmatter['author'] = author    # No enrichment needed
+```
+
+❌ **WRONG - Lazy Enrichment**:
+```python
+# Generation writes minimal data
+material_data['author'] = {'id': 2}  # Incomplete!
+save_to_materials_yaml(material_data)
+
+# Export has to enrich (BAD - violates policy)
+author_id = material_data['author']['id']
+full_author = lookup_in_registry(author_id)  # Should have been done during generation
+frontmatter['author'] = full_author
+```
+
+**Implementation Locations:**
+- `generation/core/adapters/domain_adapter.py` - Enriches data during write
+- `generation/core/evaluated_generator.py` - Generates complete content
+- All data must be complete BEFORE export phase
+
+**Grade:** F violation if enrichers add essential metadata that should have been generated
+
+**Related:** Author Attribution Refactor (Dec 30, 2025) - Implements this policy for author metadata
 
 ### 1. **No Mocks or Fallbacks in Production Code** 🔥 **MANDATORY FIRM POLICY (Dec 11, 2025)**
 System must fail immediately if dependencies are missing. **ZERO TOLERANCE** for:

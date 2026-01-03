@@ -21,32 +21,35 @@ Part of: Change 4 - Group Contaminants Relationships
 import logging
 from typing import Any, Dict
 
-from export.enrichers.grouping.contaminant_materials_grouping_enricher import (
-    ContaminantMaterialsGroupingEnricher,
-)
+# MIGRATION NOTE (Dec 29, 2025): ContaminantMaterialsGroupingEnricher moved to UniversalContentGenerator
+# from export.enrichers.grouping.contaminant_materials_grouping_enricher import (
+#     ContaminantMaterialsGroupingEnricher,
+# )
 from export.generation.base import BaseGenerator
 
 logger = logging.getLogger(__name__)
 
 
 class ContaminantMaterialsGroupingGenerator(BaseGenerator):
-    """Group contaminant materials into semantic categories."""
+    """
+    DEPRECATED: Material grouping now handled by UniversalContentGenerator.
+    This generator returns frontmatter unchanged for backwards compatibility.
+    """
     
     def __init__(self, config: Dict[str, Any]):
-        """Initialize generator (reuses enricher logic)."""
+        """Initialize generator."""
         super().__init__(config)
-        # Reuse enricher logic
-        self.enricher = ContaminantMaterialsGroupingEnricher(config)
+        logger.warning("ContaminantMaterialsGroupingGenerator deprecated - use UniversalContentGenerator")
     
     def generate(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Group materials in relationships by category.
+        Pass through - functionality moved to UniversalContentGenerator.
         
         Args:
-            frontmatter: Frontmatter dict with relationships.materials
+            frontmatter: Frontmatter dict
         
         Returns:
-            Frontmatter with grouped materials
+            Unchanged frontmatter
         """
-        # Delegate to enricher (it has all the logic)
-        return self.enricher.enrich(frontmatter)
+        logger.debug("ContaminantMaterialsGroupingGenerator pass-through (deprecated)")
+        return frontmatter

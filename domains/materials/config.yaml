@@ -84,114 +84,15 @@ randomization_targets:
 # =============================================================================
 # PROMPT TEMPLATES
 # =============================================================================
-# Usage:
-#   from shared.generation.yaml_helper import load_yaml_file
-#   config = load_yaml_file("domains/materials/config.yaml")
-#   template = config['prompts']['micro']
+# All prompt templates moved to domains/materials/prompts/*.txt files
+# This maintains separation: configs = system behavior, prompts = content instructions
+# See docs/08-development/WORD_COUNT_IN_PROMPTS_POLICY.md
 
-prompts:
-  # Micro for before/after images at 1000x magnification
-  micro: |
-    You are {author} from {country}, writing a micro about {material}.
+# Legacy prompts section removed (Dec 29, 2025)
+# Prompt files available:
+#   - micro.txt, faq.txt, description.txt
+#   - excerpt.txt, context.txt, power_intensity.txt
+#   - page_title.txt, meta_description.txt, seo_description.txt
+#   - And 4 more relationship description prompts
 
-    TASK: Write two short paragraphs describing {material} at 1000x magnification.
-    - Paragraph 1: Contaminated surface before laser cleaning  
-    - Paragraph 2: Clean surface after laser treatment
-
-    VOICE & APPROACH:
-    Write like you're explaining results to a colleague - direct, practical, grounded in what you see. Use active voice and straightforward descriptions.
-
-    {technical_guidance}
-
-    {sentence_guidance}
-
-    FORMATTING:
-    - Complete sentences (no fragments)
-    - Vary sentence lengths (mix short, medium, longer)
-    - Start each sentence differently
-    - Separate the two paragraphs with ONE blank line
-    - NO labels like "Before:", "After:"
-
-    AVOID:
-    - Corporate jargon: "facilitates", "leverages", "demonstrates"
-    - Theatrical: "zapped clean", "stares back", "changes everything"
-    - Academic: "results suggest", "testament to"
-    - Repetitive openings
-
-    OUTPUT: Just the two paragraphs.
-
-    Generate micro for {material}:
-
-  # FAQ questions and answers for material page
-  faq: |
-    You are {author} from {country}, writing a FAQ about {material}.
-
-    TASK: Write {faq_count} practical questions and answers about laser cleaning {material}.
-    - Questions that users actually ask (troubleshooting, best practices, material behavior)
-    - Direct, helpful answers with specific details
-
-    VOICE & APPROACH:
-    Write like you're answering colleague questions - direct, practical, grounded in real-world use. Use active voice and conversational tone.
-
-    {technical_guidance}
-
-    {sentence_guidance}
-
-    FORMATTING:
-    For each question, format as:
-
-    **[Question text ending with ?]**
-
-    [Answer paragraph - vary length naturally]
-
-    [Blank line before next question]
-
-    AVOID:
-    - Corporate jargon: "facilitates", "leverages", "optimal solutions"
-    - Theatrical: "game-changer", "revolutionary", "transforms everything"
-    - Academic: "it is worth noting", "one might consider"
-    - Repetitive openings
-    - Uniform answer lengths
-
-    CONTEXT:
-    {facts}
-
-    OUTPUT: Just the Q&A pairs, formatted as shown above.
-
-    Generate {faq_count} FAQ pairs for {material}:
-
-  description: |
-    You are {author}, writing a professional technical subtitle about {material}.
-
-    CONTENT STRATEGY:
-    - Focus on: The material's PRIMARY advantage (e.g., aluminum = lightweight, silver = conductivity, titanium = strength-to-weight)
-    - Secondary mention: Laser cleaning characteristics ONLY if they're the material's most distinctive trait
-    - Logic: Focus on practical outcome ("what it does", "why it's popular") not technical cause ("what it measures")
-
-    STRUCTURE REQUIREMENTS:
-    - Format: Direct declarative statement  
-    - NO questions, NO "What makes...", NO "Why choose..."
-    - VARY sentence openings - avoid repetitive patterns
-    - End without period (concise statement)
-
-    FORMATTING:
-    - Single sentence
-
-    CONTENT APPROACH:
-    - Describe differences with materials in the same category 
-    - Avoid raw technical specifications (Ω·m, g/cm³, MPa, W)
-    - Explain advantages in plain terms
-
-    BANNED OPENING PATTERNS:
-    - "[Material] enables/achieves/delivers/provides..."
-    - "Laser cleaning of [material]..."
-    - "[Gerund phrase] with [material]..."
-    - "[Abstract process subject] gains/enables..."
-
-    Write the subtitle:
-
-  # SEO Meta Tags - Load from external file
-  # Both page_title and meta_description use the same SEO prompt
-  # The prompt file is at prompts/seo/material_page.txt
-  page_title: "@prompts/seo/material_page.txt"
-  meta_description: "@prompts/seo/material_page.txt"
+# prompts_deprecated: Removed Dec 29, 2025 - All prompts in domains/materials/prompts/*.txt

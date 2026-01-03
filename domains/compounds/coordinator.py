@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 from shared.domain.base_coordinator import DomainCoordinator
-from domains.compounds.data_loader import CompoundDataLoader
+from domains.compounds.data_loader_v2 import CompoundsDataLoader
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +39,7 @@ class CompoundCoordinator(DomainCoordinator):
     
     def _create_data_loader(self):
         """Create compounds data loader"""
-        return CompoundDataLoader()
+        return CompoundsDataLoader()
     
     def _get_item_data(self, item_id: str) -> Dict:
         """Get compound data from Compounds.yaml"""

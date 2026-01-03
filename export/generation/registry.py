@@ -48,6 +48,12 @@ from export.generation.contaminant_materials_grouping_generator import (
     ContaminantMaterialsGroupingGenerator,
 )
 
+# Import universal content generator (replaces all enrichers)
+from export.generation.universal_content_generator import UniversalContentGenerator
+
+# Import field order generator (standalone, no enricher dependencies)
+from export.generation.field_order_generator import FieldOrderGenerator
+
 # Import field cleanup generator
 from export.generation.field_cleanup_generator import FieldCleanupGenerator
 
@@ -60,8 +66,12 @@ from export.generation.relationships_generator import DomainLinkagesGenerator
 # Import SEO metadata generator
 from export.generation.seo_metadata_generator import SEOMetadataGenerator
 
-# Import field order enricher
-from export.enrichers.metadata.field_order_enricher import FieldOrderEnricher
+# Import safety table normalizer
+from export.enrichers.contaminants.safety_table_normalizer import SafetyTableNormalizer
+
+# MIGRATION NOTE (Dec 29, 2025): FieldOrderEnricher moved to UniversalContentGenerator
+# Field ordering now handled by universal_content_generator task system
+# from export.enrichers.metadata.field_order_enricher import FieldOrderEnricher
 
 logger = logging.getLogger(__name__)
 
@@ -258,13 +268,15 @@ class ExcerptGenerator(BaseGenerator):
 # Registry mapping generator type → class
 GENERATOR_REGISTRY = {
     'seo_description': SEODescriptionGenerator,
-    'seo_metadata': SEOMetadataGenerator,  # Dec 22, 2025 - Page title and meta description generation
+    'seo_metadata': SEOMetadataGenerator,
     'excerpt': ExcerptGenerator,
     'relationships': DomainLinkagesGenerator,
-    'contaminant_materials_grouping': ContaminantMaterialsGroupingGenerator,  # Change 4: Dec 19, 2025
-    'field_cleanup': FieldCleanupGenerator,  # Changes 2 & 5: Dec 19, 2025
-    'section_metadata': SectionMetadataGenerator,  # Dec 22, 2025 - Wrap relationships with display metadata
-    'field_order': FieldOrderEnricher,  # Dec 23, 2025 - Normalize frontmatter field order (must run last)
+    'contaminant_materials_grouping': ContaminantMaterialsGroupingGenerator,
+    'field_cleanup': FieldCleanupGenerator,
+    'section_metadata': SectionMetadataGenerator,
+    'universal_content': UniversalContentGenerator,  # Dec 29, 2025 - Replaces all enrichers
+    'field_order': FieldOrderGenerator,  # Dec 29, 2025 - Standalone field ordering (no enricher dependencies)
+    'safety_table_normalizer': SafetyTableNormalizer,  # Jan 2, 2026 - Normalize safety table formats
 }
 
 

@@ -291,6 +291,12 @@ class DomainAdapter(DataSourceAdapter):
         # Write content to item
         items[identifier][component_type] = content_data
         
+        # AUTHOR ENRICHMENT (Dec 30, 2025): Enrich author field with full metadata
+        # Ensures Materials.yaml has author.name and author.country for display/evaluation
+        if 'author' in items[identifier]:
+            items[identifier]['author'] = self._enrich_author_field(items[identifier]['author'])
+            logger.debug(f"✅ Author metadata enriched for {identifier}")
+        
         # Atomic write with temp file
         with tempfile.NamedTemporaryFile(
             mode='w',
@@ -478,3 +484,66 @@ class DomainAdapter(DataSourceAdapter):
                 enrichment[key] = item_data[key]
         
         return enrichment
+    
+    def _enrich_author_field(self, author_field: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Enrich minimal author field with full metadata from registry.
+        
+        Transforms author: {id: 2} into author: {id: 2, name: "...", country: "...", ...}
+        This ensures Materials.yaml has complete author data for display/evaluation.
+        
+        Args:
+            author_field: Minimal author dict (may only have 'id')
+            
+        Returns:
+            Enriched author dict with name, country, and other essential fields
+            
+        Implementation:
+            - Checks if already enriched (has name and country)
+            - Looks up full data in data/authors/registry.py
+            - Returns essential fields (id, name, country, title, sex, expertise)
+            - Omits internal fields (persona_file, formatting_file)
+        
+        Created: December 30, 2025 - Author Attribution Refactor
+        """
+        # Validate input
+        if not isinstance(author_field, dict):
+            logger.warning(f"Author field not a dict: {type(author_field)}")
+            return author_field
+        
+        if 'id' not in author_field:
+            logger.warning("Author field missing 'id' - cannot enrich")
+            return author_field
+        
+        # Check if already enriched
+        if 'name' in author_field and 'country' in author_field:
+            logger.debug(f"Author {author_field['id']} already enriched")
+            return author_field
+        
+        # Enrich from registry
+        try:
+            from data.authors.registry import get_author
+            full_author = get_author(author_field['id'])
+            
+            # Return essential fields only (no internal prompt files)
+            enriched = {
+                'id': full_author['id'],
+                'name': full_author['name'],
+                'country': full_author['country'],
+                'country_display': full_author['country_display'],
+                'title': full_author['title'],
+                'sex': full_author['sex'],
+                'expertise': full_author['expertise'],
+            }
+            
+            logger.info(f"✅ Enriched author {enriched['id']}: {enriched['name']} ({enriched['country']})")
+            return enriched
+            
+        except KeyError as e:
+            logger.error(f"❌ Author ID {author_field['id']} not found in registry: {e}")
+            return author_field  # Return original on error
+        except Exception as e:
+            logger.error(f"❌ Error enriching author field: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
+            return author_field  # Return original on error

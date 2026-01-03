@@ -27,26 +27,31 @@ class FieldRouter:
     # Field type mapping: domain → field → type
     FIELD_TYPES = {
         'materials': {
-            'page_description': 'text',
+            'description': 'text',  # Maps to description.txt, saves as page_description
             'micro': 'text',
             'faq': 'text',
             'power_intensity': 'data',
             'context': 'data',
         },
         'contaminants': {
-            'page_description': 'text',
+            'description': 'text',  # Maps to description.txt, saves as page_description
             'micro': 'text',
-            'compounds': 'text',  # Structured text list
-            'appearance': 'text',  # Structured text descriptions
+            'compounds': 'text',
+            'appearance': 'text',
             'context': 'data',
         },
         'compounds': {
-            'page_description': 'text',
+            'description': 'text',  # Maps to description.txt, saves as page_description
             'health_effects': 'text',
             'exposure_guidelines': 'text',
+            'detection_methods': 'text',
+            'first_aid': 'text',
+            'ppe_requirements': 'text',
+            'regulatory_standards': 'text',
         },
         'settings': {
-            'settings_description': 'text',
+            'description': 'text',  # Maps to page_description.txt (settings uses different name)
+            'component_summary': 'text',
             'recommendations': 'text',
             'challenges': 'text',
         }
