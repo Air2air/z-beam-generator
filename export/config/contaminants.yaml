@@ -172,18 +172,18 @@ generators:
       order: 11
       variant: default
 - type: safety_table_normalizer
-  module: export.enrichers.contaminants.safety_table_normalizer
+  module: export.archive.enrichers-deprecated-dec29-2025.contaminants.safety_table_normalizer
   class: SafetyTableNormalizer
   description: Normalize safety table formats (fumes_generated, particulate_generation)
 - type: field_order
-  module: export.enrichers.metadata.field_order_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.metadata.field_order_enricher
   class: FieldOrderEnricher
   description: Normalize field order for consistency (must run last)
 # Enrichers deprecated - all functionality moved to generators above
 # See: export/archive/enrichers-deprecated-dec29-2025/
 _deprecated_enrichments:
 - type: universal_restructure
-  module: export.enrichers.linkage.restructure_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.restructure_enricher
   class: UniversalRestructureEnricher
   domain: contaminants
   cleanup_rules:
@@ -220,7 +220,7 @@ _deprecated_enrichments:
     - subcategory
     - images
 - type: compound_linkage
-  module: export.enrichers.linkage.compound_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.compound_linkage_enricher
   class: CompoundLinkageEnricher
   field: produces_compounds
   title: Compounds Released
@@ -234,7 +234,7 @@ _deprecated_enrichments:
   - cas_number
   - compound_category
 - type: material_linkage
-  module: export.enrichers.linkage.material_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.material_linkage_enricher
   class: MaterialLinkageEnricher
   field: materials
   title: Found on Materials
@@ -247,12 +247,12 @@ _deprecated_enrichments:
   - thermal_conductivity
   - reflectivity
 - type: removal_by_material
-  module: export.enrichers.contaminants.removal_by_material_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.contaminants.removal_by_material_enricher
   class: RemovalByMaterialEnricher
   description: Material-specific laser removal parameters, efficiency, and safety
     guidance (Dec 20, 2025)
 - type: settings_linkage
-  module: export.enrichers.linkage.settings_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.settings_linkage_enricher
   class: SettingsLinkageEnricher
   field: related_settings
   title: Effective Settings
@@ -262,27 +262,27 @@ _deprecated_enrichments:
   - setting_category
   - power_watts
 - type: timestamp
-  module: export.enrichers.metadata.timestamp_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.metadata.timestamp_enricher
   class: TimestampEnricher
   fields:
   - datePublished
   - dateModified
 - type: author
-  module: export.enrichers.linkage.author_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.author_enricher
   class: AuthorEnricher
 - type: images
-  module: export.enrichers.media.image_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.media.image_enricher
   class: ImageEnricher
   domain: contaminants
 - type: breadcrumb
-  module: export.enrichers.navigation.breadcrumb_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.navigation.breadcrumb_enricher
   class: BreadcrumbEnricher
   domain: contaminants
   category_field: category
   subcategory_field: subcategory
   name_field: name
 - type: relationship_group
-  module: export.enrichers.relationships.group_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.relationships.group_enricher
   class: RelationshipGroupEnricher
   description: Group relationships into technical/safety/operational categories
   relationship_groups:

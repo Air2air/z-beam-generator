@@ -40,27 +40,17 @@ generators:
   title_field: page_title
   description_field: meta_description
 - type: field_cleanup
-  module: export.enrichers.cleanup.field_cleanup_enricher
-  class: FieldCleanupEnricher
+  module: export.generation.field_cleanup_generator
+  class: FieldCleanupGenerator
 - type: field_order
-  module: export.enrichers.metadata.field_order_enricher
-  class: FieldOrderEnricher
+  module: export.generation.field_order_generator
+  class: FieldOrderGenerator
   description: Normalize field order for consistency (must run last)
-enrichers:
-- name: DomainLinkagesEnricher
-  enabled: true
-  config:
-    relationship_types:
-    - related_settings
-    - removes_contaminants
-    - produces_compounds
-- type: field_order
-  module: export.enrichers.metadata.field_order_enricher
-  class: FieldOrderEnricher
-  description: Normalize field order for consistency (MUST be last)
+# Enrichers deprecated - all functionality moved to generators above
+# See: export/archive/enrichers-deprecated-dec29-2025/
 _deprecated_enrichments:
 - type: universal_restructure
-  module: export.enrichers.linkage.restructure_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.restructure_enricher
   class: UniversalRestructureEnricher
   domain: materials
   cleanup_rules:
@@ -75,7 +65,7 @@ _deprecated_enrichments:
     duplicate_fields:
       regulatory_standards: regulatory_standards
 - type: compound_linkage
-  module: export.enrichers.linkage.compound_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.compound_linkage_enricher
   class: CompoundLinkageEnricher
   field: produces_compounds
   title: Compounds Produced
@@ -90,7 +80,7 @@ _deprecated_enrichments:
   - cas_number
   - compound_category
 - type: contaminant_linkage
-  module: export.enrichers.linkage.contaminant_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.contaminant_linkage_enricher
   class: ContaminantLinkageEnricher
   field: removes_contaminants
   title: Contaminants Removed
@@ -103,7 +93,7 @@ _deprecated_enrichments:
   - contaminant_category
   - commonality_score
 - type: material_linkage
-  module: export.enrichers.linkage.material_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.material_linkage_enricher
   class: MaterialLinkageEnricher
   field: related_materials
   title: Related Materials
@@ -116,7 +106,7 @@ _deprecated_enrichments:
   - thermal_conductivity
   - reflectivity
 - type: settings_linkage
-  module: export.enrichers.linkage.settings_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.settings_linkage_enricher
   class: SettingsLinkageEnricher
   field: related_settings
   title: Recommended Settings
@@ -128,27 +118,27 @@ _deprecated_enrichments:
   - pulse_frequency_hz
   - recommended_for
 - type: timestamp
-  module: export.enrichers.metadata.timestamp_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.metadata.timestamp_enricher
   class: TimestampEnricher
   fields:
   - datePublished
   - dateModified
 - type: author
-  module: export.enrichers.linkage.author_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.author_enricher
   class: AuthorEnricher
 - type: images
-  module: export.enrichers.media.image_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.media.image_enricher
   class: ImageEnricher
   domain: materials
 - type: breadcrumb
-  module: export.enrichers.navigation.breadcrumb_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.navigation.breadcrumb_enricher
   class: BreadcrumbEnricher
   domain: materials
   category_field: category
   subcategory_field: subcategory
   name_field: name
 - type: relationship_group
-  module: export.enrichers.relationships.group_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.relationships.group_enricher
   class: RelationshipGroupEnricher
   description: Group relationships into technical/safety/operational categories
   relationship_groups:
@@ -159,7 +149,7 @@ _deprecated_enrichments:
     operational:
     - industry_applications
 - type: section_metadata
-  module: export.enrichers.metadata.section_metadata_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.metadata.section_metadata_enricher
   class: SectionMetadataEnricher
   description: Add _section metadata AFTER grouping (must run after relationship_group
     enricher)

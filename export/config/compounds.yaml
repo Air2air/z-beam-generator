@@ -154,29 +154,12 @@ generators:
       icon: file-text
       order: 14
       variant: default
-enrichers:
-- name: SafetyDataEnricher
-  enabled: true
-  module: export.enrichers.compounds.safety_data_enricher
-  class: SafetyDataEnricher
-  description: Structure safety data from prose to frontmatter format (preserves author voice)
-- name: DomainLinkagesEnricher
-  enabled: true
-  config:
-    relationship_types:
-    - produced_from_materials
-    - produced_from_contaminants
-- type: field_cleanup
-  module: export.enrichers.cleanup.field_cleanup_enricher
-  class: FieldCleanupEnricher
-  description: Remove empty items arrays and redundant fields (runs after all generation)
-- type: field_order
-  module: export.enrichers.metadata.field_order_enricher
-  class: FieldOrderEnricher
-  description: Normalize field order for consistency (MUST be last)
+# Enrichers deprecated - all functionality moved to generators above
+# SafetyDataEnricher moved to export/archive/enrichers-deprecated-dec29-2025/
+# See: export/archive/enrichers-deprecated-dec29-2025/
 _deprecated_enrichments:
 - type: universal_restructure
-  module: export.enrichers.linkage.contaminant_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.contaminant_linkage_enricher
   class: ContaminantLinkageEnricher
   domain: compounds
   cleanup_rules:
@@ -220,7 +203,7 @@ _deprecated_enrichments:
   - contaminant_category
   - commonality_score
 - type: material_linkage
-  module: export.enrichers.linkage.material_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.material_linkage_enricher
   class: MaterialLinkageEnricher
   field: affected_materials
   title: Produced from Materials
@@ -233,7 +216,7 @@ _deprecated_enrichments:
   - thermal_conductivity
   - reflectivity
 - type: settings_linkage
-  module: export.enrichers.linkage.settings_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.settings_linkage_enricher
   class: SettingsLinkageEnricher
   field: related_settings
   title: Relevant Settings
@@ -245,27 +228,27 @@ _deprecated_enrichments:
   - pulse_frequency_hz
   - recommended_for
 - type: timestamp
-  module: export.enrichers.metadata.timestamp_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.metadata.timestamp_enricher
   class: TimestampEnricher
   fields:
   - datePublished
   - dateModified
 - type: author
-  module: export.enrichers.linkage.author_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.author_enricher
   class: AuthorEnricher
 - type: images
-  module: export.enrichers.media.image_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.media.image_enricher
   class: ImageEnricher
   domain: compounds
 - type: breadcrumb
-  module: export.enrichers.navigation.breadcrumb_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.navigation.breadcrumb_enricher
   class: BreadcrumbEnricher
   domain: compounds
   category_field: category
   subcategory_field: subcategory
   name_field: name
 - type: relationship_group
-  module: export.enrichers.relationships.group_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.relationships.group_enricher
   class: RelationshipGroupEnricher
   description: Group relationships into technical/safety/operational categories
   relationship_groups:
@@ -291,15 +274,15 @@ _deprecated_enrichments:
   use_display_name: true
   skip_if_exists: true
 - type: relationship_intensity
-  module: export.enrichers.relationships.intensity_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.relationships.intensity_enricher
   class: IntensityEnricher
   description: Dynamically derives intensity from severity/effectiveness/frequency
 - type: field_order
-  module: export.enrichers.metadata.field_order_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.metadata.field_order_enricher
   class: FieldOrderEnricher
   description: Normalize field order for consistency
 - type: text_field_preservation
-  module: export.enrichers.preservation.text_field_preservation_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.preservation.text_field_preservation_enricher
   class: TextFieldPreservationEnricher
   description: Preserve generated text content fields (CRITICAL FIX for health_effects)
   source_file: data/compounds/Compounds.yaml

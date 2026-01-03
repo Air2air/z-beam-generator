@@ -93,20 +93,11 @@ generators:
       icon: alert-triangle
       order: 1
       variant: warning
-enrichers:
-- name: DomainLinkagesEnricher
-  enabled: true
-  config:
-    relationship_types:
-    - applies_to_materials
-    - effective_against_contaminants
-- type: field_order
-  module: export.enrichers.metadata.field_order_enricher
-  class: FieldOrderEnricher
-  description: Normalize field order for consistency (MUST be last)
+# Enrichers deprecated - all functionality moved to generators above
+# See: export/archive/enrichers-deprecated-dec29-2025/
 _deprecated_enrichments:
 - type: material_linkage
-  module: export.enrichers.linkage.material_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.material_linkage_enricher
   class: MaterialLinkageEnricher
   field: materials
   title: Applicable Materials
@@ -119,7 +110,7 @@ _deprecated_enrichments:
   - thermal_conductivity
   - reflectivity
 - type: contaminant_linkage
-  module: export.enrichers.linkage.contaminant_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.contaminant_linkage_enricher
   class: ContaminantLinkageEnricher
   field: contaminants
   title: Effective Against
@@ -132,7 +123,7 @@ _deprecated_enrichments:
   - contaminant_category
   - commonality_score
 - type: compound_linkage
-  module: export.enrichers.linkage.compound_linkage_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.compound_linkage_enricher
   class: CompoundLinkageEnricher
   field: relevant_compounds
   title: Safety Considerations
@@ -146,33 +137,33 @@ _deprecated_enrichments:
   - cas_number
   - compound_category
 - type: timestamp
-  module: export.enrichers.metadata.timestamp_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.metadata.timestamp_enricher
   class: TimestampEnricher
   fields:
   - datePublished
   - dateModified
 - type: author
-  module: export.enrichers.linkage.author_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.linkage.author_enricher
   class: AuthorEnricher
 - type: images
-  module: export.enrichers.media.image_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.media.image_enricher
   class: ImageEnricher
   domain: settings
 - type: name
-  module: export.enrichers.metadata.name_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.metadata.name_enricher
   class: NameEnricher
 - type: material_category
-  module: export.enrichers.categorization.material_category_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.categorization.material_category_enricher
   class: MaterialCategoryEnricher
 - type: breadcrumb
-  module: export.enrichers.navigation.breadcrumb_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.navigation.breadcrumb_enricher
   class: BreadcrumbEnricher
   domain: settings
   category_field: category
   subcategory_field: subcategory
   name_field: name
 - type: relationship_group
-  module: export.enrichers.relationships.group_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.relationships.group_enricher
   class: RelationshipGroupEnricher
   description: Group relationships into technical/safety/operational categories
   relationship_groups:
@@ -185,16 +176,16 @@ _deprecated_enrichments:
     - common_challenges
     - equipment_requirements
 - type: title
-  module: export.enrichers.metadata.title_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.metadata.title_enricher
   class: TitleEnricher
   template: '{name} Settings'
   skip_if_exists: true
 - type: relationship_intensity
-  module: export.enrichers.relationships.intensity_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.relationships.intensity_enricher
   class: IntensityEnricher
   description: Dynamically derives intensity from severity/effectiveness/frequency
 - type: field_order
-  module: export.enrichers.metadata.field_order_enricher
+  module: export.archive.enrichers-deprecated-dec29-2025.metadata.field_order_enricher
   class: FieldOrderEnricher
   description: Normalize field order for consistency
 _deprecated_library_enrichments:
