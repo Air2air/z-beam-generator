@@ -63,7 +63,6 @@ base_fields:
     - page_title
     - page_description
     - meta_description
-    - seo_description
   
   # ─────────────────────────────────────────────────────
   # 5. CONTENT FIELDS (Commonly Used)
@@ -128,7 +127,6 @@ materials:
     - page_title
     - page_description
     - meta_description
-    - seo_description
     
     # ─────────────────────────────────────────────────────
     # 5. CONTENT FIELDS (AI-Generated)
@@ -150,11 +148,9 @@ materials:
     # 8. DOMAIN-SPECIFIC FIELDS
     # ─────────────────────────────────────────────────────
     - subcategory
-    - applications
     - characteristics
     - properties
     - components
-    - settings_description
     - contamination
     
     # ─────────────────────────────────────────────────────
@@ -163,7 +159,7 @@ materials:
     - card
     
     # ─────────────────────────────────────────────────────
-    # 10. RELATIONSHIPS (Last Section - includes regulatory_standards)
+    # 10. RELATIONSHIPS (Last Section - includes applications, regulatory_standards)
     # ─────────────────────────────────────────────────────
     - relationships
   
@@ -206,7 +202,6 @@ contaminants:
     - page_title
     - page_description
     - meta_description
-    - seo_description
     
     # ─────────────────────────────────────────────────────
     # 5. CONTENT FIELDS
@@ -282,10 +277,9 @@ compounds:
     - page_title
     - page_description
     - meta_description
-    - seo_description
     
     # ─────────────────────────────────────────────────────
-    # 4. CHEMICAL IDENTIFIERS
+    # 5. CHEMICAL IDENTIFIERS
     # ─────────────────────────────────────────────────────
     - chemical_formula
     - cas_number
@@ -366,7 +360,6 @@ settings:
     - page_title
     - page_description
     - meta_description
-    - seo_description
     
     # ─────────────────────────────────────────────────────
     # 5. CONTENT

@@ -3,7 +3,7 @@ source_file: data/compounds/Compounds.yaml
 output_path: ../z-beam/frontmatter/compounds
 items_key: compounds
 id_field: id
-title_field: title
+# title_field removed - SEOMetadataGenerator creates page_title instead
 filename_suffix: ''
 sluggify_filenames: true
 generators:
@@ -15,6 +15,7 @@ generators:
     author_file: data/authors/Authors.yaml
   - type: slug_generation
   - type: timestamp
+  - type: normalize_compounds
   - type: relationships
     domain: compounds
   - type: seo_description
@@ -56,6 +57,7 @@ generators:
   domain: compounds
   class: SectionMetadataGenerator
   sections:
+    # Identity sections (already in data)
     chemical_properties:
       presentation: list
       title: Chemical Properties
@@ -70,90 +72,142 @@ generators:
       icon: gauge
       order: 2
       variant: default
-    exposure_limits:
+    synonyms_identifiers:
+      presentation: card
+      title: Synonyms & Identifiers
+      description: Alternative names and chemical identifiers (CAS numbers)
+      icon: file-text
+      order: 3
+      variant: default
+    
+    # Safety sections (moved from top-level by normalize_compounds)
+    safety.health_impacts:
+      presentation: descriptive
+      title: Health Impacts
+      description: Health effects and risks from exposure to this compound
+      icon: heart-pulse
+      order: 1
+      variant: warning
+    safety.exposure_guidance:
+      presentation: descriptive
+      title: Exposure Guidelines
+      description: Safe exposure limits and handling precautions
+      icon: shield-exclamation
+      order: 2
+      variant: warning
+    safety.personal_protection:
+      presentation: descriptive
+      title: Personal Protection
+      description: Required protective equipment for handling this compound
+      icon: shield-check
+      order: 3
+      variant: warning
+    safety.emergency_procedures:
+      presentation: descriptive
+      title: Emergency Procedures
+      description: First aid and emergency response for exposure incidents
+      icon: first-aid
+      order: 4
+      variant: danger
+    safety.health_effects:
+      presentation: card
+      title: Health Effects
+      description: Specific health effects by exposure route
+      icon: activity
+      order: 5
+      variant: warning
+    safety.ppe_requirements:
+      presentation: card
+      title: PPE Requirements
+      description: Personal protective equipment specifications
+      icon: shield
+      order: 6
+      variant: warning
+    safety.emergency_response:
+      presentation: card
+      title: Emergency Response
+      description: Emergency procedures and incident response
+      icon: alert-triangle
+      order: 7
+      variant: danger
+    safety.exposure_limits:
       presentation: card
       title: Exposure Limits
       description: Regulatory exposure thresholds and safe concentration levels
       icon: gauge
-      order: 4
+      order: 8
       variant: warning
-    ppe_requirements:
-      presentation: card
-      title: PPE Requirements
-      description: Personal protective equipment needed for safe handling
-      icon: shield
-      order: 5
-      variant: warning
-    detection_monitoring:
+    
+    # Detection sections (moved from top-level by normalize_compounds)
+    detection.methods:
+      presentation: descriptive
+      title: Detection Methods
+      description: Techniques and equipment for detecting this compound
+      icon: microscope
+      order: 1
+      variant: default
+    detection.detection_monitoring:
       presentation: card
       title: Detection & Monitoring
-      description: Methods and equipment for detecting and monitoring this compound
+      description: Monitoring equipment and detection techniques
       icon: gauge
-      order: 6
+      order: 2
       variant: default
-    emergency_response:
+    
+    # Operational sections
+    operational.expert_answers:
+      presentation: collapsible
+      title: Expert Q&A
+      description: Common questions about this compound answered by experts
+      icon: user-tie
+      order: 1
+      variant: default
+    
+    # Formation sections
+    formation.produced_from_contaminants:
       presentation: card
-      title: Emergency Response
-      description: First aid and emergency procedures for exposure incidents
-      icon: alert-triangle
-      order: 7
-      variant: danger
+      title: Produced From Contaminants
+      description: Contaminants that generate this compound during laser cleaning
+      icon: droplet
+      order: 1
+      variant: default
+    formation.produced_from_materials:
+      presentation: card
+      title: Produced From Materials
+      description: Materials that may release this compound during laser cleaning
+      icon: users
+      order: 2
+      variant: default
+    
+    # Other sections
     environmental_impact:
       presentation: card
       title: Environmental Impact
       description: Environmental effects and ecological considerations
       icon: wind
-      order: 8
-      variant: warning
-    produced_from_contaminants:
-      presentation: card
-      title: Produced From Contaminants
-      description: Contaminants that generate this compound during laser cleaning
-      icon: droplet
-      order: 9
-      variant: default
-    produced_from_materials:
-      presentation: card
-      title: Produced From Materials
-      description: Materials that may release this compound during laser cleaning
-      icon: users
-      order: 10
-      variant: default
-    operational.health_effects:
-      presentation: card
-      title: Health Effects
-      description: Potential health impacts from exposure
-      icon: activity
-      order: 1
+      order: 20
       variant: warning
     reactivity:
       presentation: list
       title: Reactivity
       description: Chemical reactivity and compatibility with other substances
       icon: flame
-      order: 11
+      order: 21
       variant: warning
     regulatory_classification:
       presentation: card
       title: Regulatory Classification
       description: Hazard classifications and regulatory designations
       icon: file-text
-      order: 12
+      order: 22
       variant: default
     storage_requirements:
       presentation: list
       title: Storage Requirements
       description: Proper storage conditions and handling precautions
       icon: alert-triangle
-      order: 13
+      order: 23
       variant: warning
-    synonyms_identifiers:
-      presentation: card
-      title: Synonyms & Identifiers
-      description: Alternative names and chemical identifiers (CAS numbers)
-      icon: file-text
-      order: 14
-      variant: default
 # Enrichers deprecated - all functionality moved to generators above
 # SafetyDataEnricher moved to export/archive/enrichers-deprecated-dec29-2025/
 # See: export/archive/enrichers-deprecated-dec29-2025/

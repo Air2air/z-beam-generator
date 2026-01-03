@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://www.z-beam.com/schemas/frontmatter.json",
+  "title": "Z-Beam Frontmatter Schema",
+  "description": "Validation schema for frontmatter files enforcing naming conventions and required fields",
+  "version": "1.0.0",
+  "type": "object",
+  "required": [
+    "id",
+    "page_title",
+    "meta_description",
+    "page_description",
+    "content_type",
+    "datePublished",
+    "dateModified"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Unique identifier for the item"
+    },
+    "page_title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "SEO-optimized page title for <title> tag and H1"
+    },
+    "meta_description": {
+      "type": "string",
+      "minLength": 50,
+      "maxLength": 160,
+      "description": "SEO meta description for search engine snippets (50-160 chars)"
+    },
+    "page_description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Content paragraph for page body (longer than meta_description)"
+    },
+    "content_type": {
+      "type": "string",
+      "enum": ["materials", "contaminants", "compounds", "settings"],
+      "description": "Domain/content type classification"
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime of first publication"
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime of last modification"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Item name (not for display, use page_title for display)"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Human-readable display name"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "URL-safe slug"
+    },
+    "category": {
+      "type": "string",
+      "description": "Primary category classification"
+    },
+    "breadcrumb": {
+      "type": "array",
+      "description": "Breadcrumb navigation array",
+      "items": {
+        "type": "object",
+        "required": ["label", "href"],
+        "properties": {
+          "label": {"type": "string"},
+          "href": {"type": "string"}
+        }
+      }
+    },
+    "author": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": {"type": "integer"},
+        "name": {"type": "string"},
+        "country": {"type": "string"},
+        "title": {"type": "string"},
+        "expertise": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  },
+  "patternProperties": {
+    "^title$": {
+      "description": "FORBIDDEN: Use 'page_title' instead of generic 'title'",
+      "not": {}
+    },
+    "^description$": {
+      "description": "FORBIDDEN: Use 'meta_description' or 'page_description' instead",
+      "not": {}
+    }
+  },
+  "additionalProperties": true,
+  "definitions": {
+    "naming_conventions": {
+      "description": "Naming convention rules enforced by this schema",
+      "rules": {
+        "page_title": "SEO-optimized page title (required, 1-200 chars)",
+        "meta_description": "SEO meta description (required, 50-160 chars)",
+        "page_description": "Content paragraph (required, >1 char)",
+        "FORBIDDEN_title": "Generic 'title' field not allowed at root level",
+        "FORBIDDEN_description": "Generic 'description' field not allowed at root level"
+      }
+    }
+  }
+}

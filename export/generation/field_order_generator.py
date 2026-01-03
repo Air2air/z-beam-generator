@@ -48,7 +48,7 @@ class FieldOrderGenerator(BaseGenerator):
             frontmatter: Frontmatter dict with unordered fields
         
         Returns:
-            Frontmatter with fields in standard order
+            Frontmatter with fields in standard order (as OrderedDict)
         """
         from shared.validation.field_order import FrontmatterFieldOrderValidator
         
@@ -57,5 +57,6 @@ class FieldOrderGenerator(BaseGenerator):
         
         logger.debug(f"Reordered {len(frontmatter)} fields for {self.domain}")
         
-        # Convert OrderedDict to regular dict for YAML serialization
-        return dict(ordered)
+        # CRITICAL: Return OrderedDict to preserve field order
+        # Do NOT convert to regular dict - ordering will be lost
+        return ordered

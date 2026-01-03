@@ -203,9 +203,10 @@ class BaseTrivialExporter(ABC):
             frontmatter = self.apply_field_order(frontmatter)
         
         # Write with consistent YAML formatting
+        # CRITICAL: Keep as OrderedDict to preserve field order
         with open(output_path, 'w', encoding='utf-8') as f:
             yaml.dump(
-                dict(frontmatter),  # Convert OrderedDict to dict if needed
+                frontmatter,  # Preserve OrderedDict for correct field ordering
                 f,
                 default_flow_style=False,
                 allow_unicode=True,

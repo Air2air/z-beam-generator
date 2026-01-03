@@ -30,8 +30,9 @@ dateModified: '2025-12-15T00:00:00.000Z'
 author: {...}
 _metadata:
   voice: {...}
-title: Aluminum Laser Cleaning
-description: ...
+page_title: Aluminum Laser Cleaning  # SEO-optimized title
+meta_description: ...                 # SEO meta (50-160 chars)
+page_description: ...                 # Content paragraph
 breadcrumb: [...]
 images: {...}
 properties: {...}

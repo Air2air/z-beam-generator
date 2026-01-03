@@ -136,9 +136,10 @@ class ContaminantsDataset(BaseDataset):
         """
         fields = []
         
-        # Get laser_properties from relationships
+        # Get laser_properties from relationships.operational
         relationships = item_data.get('relationships', {})
-        laser_props = relationships.get('laser_properties', {})
+        operational = relationships.get('operational', {})
+        laser_props = operational.get('laser_properties', {})
         laser_items = laser_props.get('items', [])
         
         if not laser_items:
@@ -756,26 +757,26 @@ class ContaminantsDataset(BaseDataset):
         if 'composition' in item_data:
             properties['composition'] = item_data['composition']
         
-        # Extract from visual_characteristics relationship
+        # Extract from visual.appearance_on_categories relationship
         relationships = item_data.get('relationships', {})
-        visual_chars = relationships.get('visual_characteristics', {})
-        visual_items = visual_chars.get('items', [])
+        visual = relationships.get('visual', {})
+        appearance_on_cats = visual.get('appearance_on_categories', {})
+        visual_items = appearance_on_cats.get('items', [])
         
         if visual_items:
             visual_data = visual_items[0]
             
-            # Extract visual properties
-            if 'appearance' in visual_data:
-                appearance = visual_data['appearance']
-                if 'color' in appearance:
-                    properties['color'] = appearance['color']
-                if 'texture' in appearance:
-                    properties['texture'] = appearance['texture']
-                if 'thickness' in appearance:
-                    properties['thickness'] = appearance['thickness']
+            # Extract visual properties (at top level of item)
+            if 'color_range' in visual_data:
+                properties['color'] = visual_data['color_range']
+            if 'texture' in visual_data:
+                properties['texture'] = visual_data['texture']
+            if 'thickness' in visual_data:
+                properties['thickness'] = visual_data['thickness']
         
         # Extract from optical_properties in laser_properties
-        laser_props = relationships.get('laser_properties', {})
+        operational = relationships.get('operational', {})
+        laser_props = operational.get('laser_properties', {})
         laser_items = laser_props.get('items', [])
         
         if laser_items:
@@ -833,7 +834,8 @@ class ContaminantsDataset(BaseDataset):
         # Search all compounds for those that reference this contaminant
         for compound_id, compound_data in self.compounds.items():
             relationships = compound_data.get('relationships', {})
-            produced_from = relationships.get('produced_from_contaminants', {})
+            interactions = relationships.get('interactions', {})
+            produced_from = interactions.get('produced_from_contaminants', {})
             items = produced_from.get('items', [])
             
             # Check if this compound is produced from current contaminant
@@ -869,9 +871,10 @@ class ContaminantsDataset(BaseDataset):
         """
         removal_techniques = {}
         
-        # Get laser_properties from relationships
+        # Get laser_properties from relationships.operational
         relationships = item_data.get('relationships', {})
-        laser_props = relationships.get('laser_properties', {})
+        operational = relationships.get('operational', {})
+        laser_props = operational.get('laser_properties', {})
         laser_items = laser_props.get('items', [])
         
         if not laser_items:

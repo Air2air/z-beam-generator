@@ -5,7 +5,6 @@ items_key: settings
 filename_suffix: ''
 slugify_filenames: true
 id_field: id
-title_field: title
 generators:
 - type: universal_content
   module: export.generation.universal_content_generator
@@ -20,9 +19,12 @@ generators:
   - type: seo_description
     source_field: settings_description
     max_length: 160
+  - type: normalize_prevention
+    challenge_file: data/challenges/ChallengePatterns.yaml
+    target_field: operational.prevention
+  - type: relationship_grouping
   - type: section_metadata
     config_file: export/config/settings.yaml
-  - type: relationship_grouping
   - type: breadcrumbs
     domain: settings
   - type: field_ordering

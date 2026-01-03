@@ -45,21 +45,21 @@ def write_yaml(
     if create_dirs:
         file_path.parent.mkdir(parents=True, exist_ok=True)
     
-    # Convert OrderedDict to regular dict to avoid Python tags
-    if hasattr(data, 'items'):
-        data = dict(data)
+    # CRITICAL: Do NOT convert OrderedDict to dict
+    # SafeDumper handles OrderedDict properly without Python tags
+    # Converting to dict loses field ordering
     
     # Serialize to YAML string
     # 🚨 CRITICAL: Use SafeDumper to prevent Python-specific tags
-    # Without SafeDumper, OrderedDict creates !!python/object tags
-    # that break JavaScript parsers (js-yaml cannot read them)
+    # SafeDumper handles OrderedDict without !!python/object tags
+    # AND preserves insertion order for correct field arrangement
     yaml_string = yaml.dump(
-        data,
+        data,  # Keep as OrderedDict to preserve field order
         default_flow_style=False,
         allow_unicode=True,
         sort_keys=False,  # Preserve field order
         width=width,
-        Dumper=yaml.SafeDumper  # MANDATORY - prevents Python tags
+        Dumper=yaml.SafeDumper  # MANDATORY - prevents Python tags, handles OrderedDict
     )
     
     # Write to file
@@ -116,9 +116,8 @@ def serialize_yaml(
         yaml_str = serialize_yaml(frontmatter)
         print(yaml_str)
     """
-    # Convert OrderedDict to regular dict
-    if hasattr(data, 'items'):
-        data = dict(data)
+    # CRITICAL: Do NOT convert OrderedDict to dict
+    # SafeDumper handles OrderedDict properly without Python tags
     
     return yaml.dump(
         data,

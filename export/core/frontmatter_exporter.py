@@ -454,8 +454,8 @@ class UniversalFrontmatterExporter:
         Raises:
             IOError: If write fails
         """
-        # Convert OrderedDict to regular dict
-        frontmatter = dict(frontmatter)
+        # CRITICAL: Preserve OrderedDict for correct field ordering
+        # Do NOT convert to regular dict - ordering will be lost
         
         # Use centralized YAML writer with SafeDumper
         write_frontmatter(output_file, frontmatter, create_dirs=True)
