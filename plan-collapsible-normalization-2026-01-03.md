@@ -451,7 +451,7 @@ After implementation:
 1. Update docs/COLLAPSIBLE_NORMALIZATION_SCHEMA-2.md status to IMPLEMENTED
 2. Add entry to CHANGELOG.md
 3. Update export/README.md with new tasks
-4. Create COLLAPSIBLE_NORMALIZATION_COMPLETE_JAN3_2026.md summary
+4. Create implementation-collapsible-normalization-2026-01-03.md summary
 
 ---
 

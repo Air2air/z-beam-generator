@@ -239,7 +239,7 @@ def run_command(cmd: str, description: str) -> tuple[bool, str]:
 
 
 def export_all_domains(dry_run: bool = False):
-    """Export all domains to frontmatter using UniversalFrontmatterExporter"""
+    """Export all domains to frontmatter using FrontmatterExporter"""
     mode_text = "DRY-RUN: Preview" if dry_run else "EXPORTING"
     print("\n" + "="*80)
     print(f"🚀 STEP 2: {mode_text} ALL DOMAINS TO FRONTMATTER")
@@ -263,7 +263,7 @@ def export_all_domains(dry_run: bool = False):
     
     for domain in domains:
         dry_run_arg = ', dry_run=True' if dry_run else ''
-        cmd = f'python3 -c "from export.config.loader import load_domain_config; from export.core.universal_exporter import UniversalFrontmatterExporter; config = load_domain_config(\'{domain}\'); e = UniversalFrontmatterExporter(config); e.export_all(show_progress=True{dry_run_arg}); print(\\"\\\\n✅ {domain.title()} {"preview" if dry_run else "export"} successful\\")"'
+        cmd = f'python3 -c "from export.config.loader import load_domain_config; from export.core.universal_exporter import FrontmatterExporter; config = load_domain_config(\'{domain}\'); e = FrontmatterExporter(config); e.export_all(show_progress=True{dry_run_arg}); print(\\"\\\\n✅ {domain.title()} {"preview" if dry_run else "export"} successful\\")"'
         success, _ = run_command(cmd, f"{'Preview' if dry_run else 'Export'} {domain}")
         
         if not success:

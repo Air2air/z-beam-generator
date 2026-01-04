@@ -22,7 +22,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 # Import export system components for fixtures
 from export.config.loader import load_domain_config
-from export.core.frontmatter_exporter import UniversalFrontmatterExporter
+from export.core.frontmatter_exporter import FrontmatterExporter
 
 # Production paths
 PROD_ROOT = PROJECT_ROOT.parent / 'z-beam'
@@ -79,25 +79,25 @@ def settings_config():
 @pytest.fixture
 def materials_exporter(materials_config):
     """Create materials exporter instance with proper config"""
-    return UniversalFrontmatterExporter(materials_config)
+    return FrontmatterExporter(materials_config)
 
 
 @pytest.fixture
 def contaminants_exporter(contaminants_config):
     """Create contaminants exporter instance with proper config"""
-    return UniversalFrontmatterExporter(contaminants_config)
+    return FrontmatterExporter(contaminants_config)
 
 
 @pytest.fixture
 def compounds_exporter(compounds_config):
     """Create compounds exporter instance with proper config"""
-    return UniversalFrontmatterExporter(compounds_config)
+    return FrontmatterExporter(compounds_config)
 
 
 @pytest.fixture
 def settings_exporter(settings_config):
     """Create settings exporter instance with proper config"""
-    return UniversalFrontmatterExporter(settings_config)
+    return FrontmatterExporter(settings_config)
 
 
 @pytest.fixture

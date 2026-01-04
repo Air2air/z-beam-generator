@@ -49,7 +49,7 @@ from export.generation.contaminant_materials_grouping_generator import (
 )
 
 # Import universal content generator (replaces all enrichers)
-from export.generation.universal_content_generator import UniversalContentGenerator
+from export.generation.universal_content_generator import ContentGenerator
 
 # Import field order generator (standalone, no enricher dependencies)
 from export.generation.field_order_generator import FieldOrderGenerator
@@ -69,7 +69,7 @@ from export.generation.seo_metadata_generator import SEOMetadataGenerator
 # Import safety table normalizer (moved from enrichers Dec 29, 2025)
 from export.generation.safety_table_normalizer import SafetyTableNormalizer
 
-# MIGRATION NOTE (Dec 29, 2025): FieldOrderEnricher moved to UniversalContentGenerator
+# MIGRATION NOTE (Dec 29, 2025): FieldOrderEnricher moved to ContentGenerator
 # Field ordering now handled by universal_content_generator task system
 # from export.enrichers.metadata.field_order_enricher import FieldOrderEnricher
 
@@ -274,7 +274,7 @@ GENERATOR_REGISTRY = {
     'contaminant_materials_grouping': ContaminantMaterialsGroupingGenerator,
     'field_cleanup': FieldCleanupGenerator,
     'section_metadata': SectionMetadataGenerator,
-    'universal_content': UniversalContentGenerator,  # Dec 29, 2025 - Replaces all enrichers
+    'universal_content': ContentGenerator,  # Dec 29, 2025 - Replaces all enrichers
     'field_order': FieldOrderGenerator,  # Dec 29, 2025 - Standalone field ordering (no enricher dependencies)
     'safety_table_normalizer': SafetyTableNormalizer,  # Jan 2, 2026 - Normalize safety table formats
 }

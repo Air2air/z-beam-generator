@@ -461,7 +461,7 @@ return {
 ### Files Created/Updated
 
 **Created**:
-- `FRONTEND_GUIDE_IMPLEMENTATION_JAN3_2026.md` (this document)
+- `implementation-frontend-guide-2026-01-03.md` (this document)
 
 **Updated**:
 - `export/generation/universal_content_generator.py` (2 new tasks)
@@ -469,8 +469,8 @@ return {
 - `export/config/materials.yaml` (task config)
 
 **Referenced**:
-- `FRONTMATTER_FRONTEND_GUIDE_JAN3_2026.md` (source requirements)
-- `SECTION_ORGANIZATION_ASSESSMENT_JAN3_2026.md` (original analysis)
+- `docs/guide-frontmatter-frontend-2026-01-03.md` (source requirements)
+- `assessment-section-organization-2026-01-03.md` (original analysis)
 - `COLLAPSIBLE_NORMALIZATION_SCHEMA-2.md` (collapsible schema)
 
 ---

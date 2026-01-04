@@ -16,7 +16,7 @@ Usage:
     python3 scripts/migration/migrate_contaminant_frontmatter.py
 
 Architecture:
-    Uses UniversalFrontmatterExporter with contaminant_restructure enricher
+    Uses FrontmatterExporter with contaminant_restructure enricher
     to regenerate all contaminant files. The enricher moves technical sections
     from top-level to relationships.* during export.
 
@@ -34,7 +34,7 @@ import yaml
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from export.core.universal_exporter import UniversalFrontmatterExporter
+from export.core.universal_exporter import FrontmatterExporter
 
 
 def migrate_contaminants(dry_run: bool = False, verbose: bool = False) -> dict:
@@ -73,9 +73,9 @@ def migrate_contaminants(dry_run: bool = False, verbose: bool = False) -> dict:
     logger.debug(f"Config validation passed for domain: {config['domain']}")
     
     # Initialize exporter with config dict
-    exporter = UniversalFrontmatterExporter(config)
+    exporter = FrontmatterExporter(config)
     logger.info(f"Loaded config for domain: contaminants")
-    logger.info(f"Initialized UniversalFrontmatterExporter for domain: contaminants")
+    logger.info(f"Initialized FrontmatterExporter for domain: contaminants")
     
     # Get existing frontmatter files
     frontmatter_dir = Path(exporter.config['output_path'])

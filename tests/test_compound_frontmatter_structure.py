@@ -269,6 +269,6 @@ class TestCompoundFrontmatterValidation:
 def test_migration_script_exists():
     """
     SKIPPED: Migration completed, script no longer needed in this repo
-    Compounds now exported via UniversalFrontmatterExporter
+    Compounds now exported via FrontmatterExporter
     """
-    pytest.skip("Migration completed - compounds use UniversalFrontmatterExporter")
+    pytest.skip("Migration completed - compounds use FrontmatterExporter")

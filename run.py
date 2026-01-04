@@ -17,7 +17,7 @@ import subprocess
 import yaml
 from pathlib import Path
 from shared.commands.postprocess import PostprocessCommand
-from export.core.frontmatter_exporter import UniversalFrontmatterExporter
+from export.core.frontmatter_exporter import FrontmatterExporter
 from export.config.loader import load_domain_config
 
 
@@ -86,7 +86,7 @@ def export_command(args):
         print(f"✅ Loaded config: export/config/{args.domain}.yaml")
         
         # Create exporter
-        exporter = UniversalFrontmatterExporter(config)
+        exporter = FrontmatterExporter(config)
         print(f"✅ Exporter initialized")
         print(f"   Source: {exporter.source_file}")
         print(f"   Output: {exporter.output_path}")
@@ -169,7 +169,7 @@ def export_all_command(args):
         
         try:
             config = load_domain_config(domain)
-            exporter = UniversalFrontmatterExporter(config)
+            exporter = FrontmatterExporter(config)
             results = exporter.export_all(force=True)
             
             exported = sum(1 for success in results.values() if success)

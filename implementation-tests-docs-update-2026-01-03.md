@@ -62,7 +62,7 @@ Updated test suite and documentation to reflect the completed collapsible normal
 - ✅ Test suite updated (11 unit tests + 2 integration tests passing)
 - ✅ Implementation: export/generation/universal_content_generator.py (lines 508-634)
 - ✅ Configuration: export/config/materials.yaml (line 48)
-- ✅ Documentation: COLLAPSIBLE_NORMALIZATION_COMPLETE_JAN3_2026.md
+- ✅ Documentation: implementation-collapsible-normalization-2026-01-03.md
 
 **Structure Verified:**
 [YAML example showing actual structure]
@@ -113,7 +113,7 @@ apps = result['relationships']['operational']['industry_applications']['items'][
 
 ## Related Documentation
 
-- **Implementation Summary**: `COLLAPSIBLE_NORMALIZATION_COMPLETE_JAN3_2026.md`
+- **Implementation Summary**: `implementation-collapsible-normalization-2026-01-03.md`
 - **Schema Definition**: `docs/COLLAPSIBLE_NORMALIZATION_SCHEMA.md` (888 lines)
 - **Test Suite**: `tests/export/test_industry_applications_normalization.py` (336 lines)
 - **Implementation**: `export/generation/universal_content_generator.py` (lines 508-634)

@@ -24,7 +24,7 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from export.core.universal_exporter import UniversalFrontmatterExporter
+from export.core.universal_exporter import FrontmatterExporter
 from export.config.loader import load_domain_config
 
 logger = logging.getLogger(__name__)
@@ -63,7 +63,7 @@ def migrate_compounds(dry_run: bool = False, verbose: bool = False) -> dict:
     config = load_domain_config('compounds')
     
     # Create exporter
-    exporter = UniversalFrontmatterExporter(config)
+    exporter = FrontmatterExporter(config)
     
     # Count files before
     existing_files = list(exporter.output_path.glob("*.yaml"))

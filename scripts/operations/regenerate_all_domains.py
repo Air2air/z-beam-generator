@@ -18,7 +18,7 @@ import yaml
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from export.core.frontmatter_exporter import UniversalFrontmatterExporter
+from export.core.frontmatter_exporter import FrontmatterExporter
 
 
 def regenerate_domain(config_file: str, domain_name: str):
@@ -31,7 +31,7 @@ def regenerate_domain(config_file: str, domain_name: str):
     with open(config_file, 'r', encoding='utf-8') as f:
         config = yaml.safe_load(f)
     
-    exporter = UniversalFrontmatterExporter(config)
+    exporter = FrontmatterExporter(config)
     results = exporter.export_all()
     
     # Count successes and failures

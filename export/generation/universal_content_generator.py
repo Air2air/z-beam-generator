@@ -11,13 +11,13 @@ Migration from Enrichers to Generators (Dec 29, 2025):
 - Maintains backwards compatibility during transition
 
 Architecture:
-- UniversalContentGenerator: Main orchestrator
+- ContentGenerator: Main orchestrator
 - Task-based processing: Each task is a mini-generator
 - Task types: linkage, metadata, relationships, seo, library, etc.
 - Configuration-driven: All behavior defined in config YAML
 
 Usage:
-    from export.generation.universal_content_generator import UniversalContentGenerator
+    from export.generation.universal_content_generator import ContentGenerator
     
     config = {
         'tasks': [
@@ -28,7 +28,7 @@ Usage:
         ]
     }
     
-    generator = UniversalContentGenerator(config)
+    generator = ContentGenerator(config)
     frontmatter = generator.generate(frontmatter)
 """
 
@@ -43,7 +43,7 @@ from export.generation.base import BaseGenerator
 logger = logging.getLogger(__name__)
 
 
-class UniversalContentGenerator(BaseGenerator):
+class ContentGenerator(BaseGenerator):
     """
     Universal content generator that replaces all enrichers.
     
@@ -70,7 +70,7 @@ class UniversalContentGenerator(BaseGenerator):
         self.tasks = config.get('tasks', [])
         self._task_handlers = self._register_task_handlers()
         
-        logger.info(f"Initialized UniversalContentGenerator with {len(self.tasks)} tasks")
+        logger.info(f"Initialized ContentGenerator with {len(self.tasks)} tasks")
     
     def _register_task_handlers(self) -> Dict[str, callable]:
         """Register all task type handlers."""
@@ -1317,15 +1317,15 @@ class UniversalContentGenerator(BaseGenerator):
         return frontmatter
 
 
-def create_universal_generator(config: Dict[str, Any]) -> UniversalContentGenerator:
+def create_universal_generator(config: Dict[str, Any]) -> ContentGenerator:
     """
-    Factory function to create UniversalContentGenerator.
+    Factory function to create ContentGenerator.
     
     Args:
         config: Configuration dict with tasks
     
     Returns:
-        Configured UniversalContentGenerator instance
+        Configured ContentGenerator instance
     
     Example:
         config = {
@@ -1342,4 +1342,4 @@ def create_universal_generator(config: Dict[str, Any]) -> UniversalContentGenera
         }
         generator = create_universal_generator(config)
     """
-    return UniversalContentGenerator(config)
+    return ContentGenerator(config)

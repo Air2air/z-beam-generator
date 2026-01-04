@@ -18,11 +18,11 @@ Architecture:
 - Universal field ordering and validation
 
 Usage:
-    from export.core.frontmatter_exporter import UniversalFrontmatterExporter
+    from export.core.frontmatter_exporter import FrontmatterExporter
     from export.config.loader import load_domain_config
     
     config = load_domain_config('materials')
-    exporter = UniversalFrontmatterExporter(config)
+    exporter = FrontmatterExporter(config)
     exporter.export_all()
 """
 
@@ -37,7 +37,7 @@ from export.utils.url_formatter import format_filename
 logger = logging.getLogger(__name__)
 
 
-class UniversalFrontmatterExporter:
+class FrontmatterExporter:
     """
     Universal configuration-driven frontmatter exporter.
     
@@ -89,7 +89,7 @@ class UniversalFrontmatterExporter:
         self._domain_data: Optional[Dict] = None
         self._field_validator = None
         
-        logger.info(f"Initialized UniversalFrontmatterExporter for domain: {self.domain}")
+        logger.info(f"Initialized FrontmatterExporter for domain: {self.domain}")
     
     def _validate_config(self, config: Dict) -> None:
         """
