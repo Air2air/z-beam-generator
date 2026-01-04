@@ -48,7 +48,7 @@ class ContaminantCoordinator(DomainCoordinator):
     
     def _get_item_data(self, item_id: str) -> Dict:
         """Get contaminant data from Contaminants.yaml"""
-        contaminants_data = self._load_contaminants_data()
+        contaminants_data = self._load_domain_data()
         if item_id not in contaminants_data['contamination_patterns']:
             raise ValueError(f"Contaminant '{item_id}' not found in Contaminants.yaml")
         return contaminants_data['contamination_patterns'][item_id]
@@ -58,12 +58,6 @@ class ContaminantCoordinator(DomainCoordinator):
         # Note: QualityEvaluatedGenerator already saves to Contaminants.yaml
         # This method exists to satisfy abstract base class
         pass
-    
-    def _load_contaminants_data(self) -> Dict:
-        """Load Contaminants.yaml directly"""
-        contaminants_path = Path('data/contaminants/Contaminants.yaml')
-        with open(contaminants_path, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f)
     
     def generate_contaminant_content(
         self,

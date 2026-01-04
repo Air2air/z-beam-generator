@@ -34,7 +34,7 @@ import yaml
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from export.core.universal_exporter import FrontmatterExporter
+from export.core.frontmatter_exporter import FrontmatterExporter
 
 
 def migrate_contaminants(dry_run: bool = False, verbose: bool = False) -> dict:

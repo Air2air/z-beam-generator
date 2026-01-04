@@ -415,20 +415,20 @@ def test_generate_setting_content_wrapper():
 ```python
 # OLD IMPORTS (Find and replace):
 from generation.seo.simple_seo_generator import SEOGenerator
-from export.core.universal_exporter import UniversalFrontmatterExporter
+from export.core.frontmatter_exporter import FrontmatterExporter
 from export.enrichers.linkage.universal_linkage_enricher import UniversalLinkageEnricher
 from export.enrichers.linkage.universal_restructure_enricher import UniversalRestructureEnricher
 
 # NEW IMPORTS (Replace with):
 from generation.seo.seo_generator import SEOGenerator
-from export.core.frontmatter_exporter import UniversalFrontmatterExporter
+from export.core.frontmatter_exporter import FrontmatterExporter
 from export.enrichers.linkage.linkage_enricher import UniversalLinkageEnricher
 from export.enrichers.linkage.restructure_enricher import UniversalRestructureEnricher
 ```
 
 #### Search Command:
 ```bash
-grep -r "simple_seo_generator\|universal_exporter\|universal_linkage_enricher\|universal_restructure_enricher" tests/
+grep -r "simple_seo_generator\|frontmatter_exporter\|universal_linkage_enricher\|universal_restructure_enricher" tests/
 ```
 
 ---
@@ -577,7 +577,7 @@ touch tests/domains/test_settings_coordinator.py
 
 # 2. Find and fix renamed imports
 grep -r "simple_seo_generator" tests/ -l | xargs sed -i '' 's/simple_seo_generator/seo_generator/g'
-grep -r "universal_exporter" tests/ -l | xargs sed -i '' 's/universal_exporter/frontmatter_exporter/g'
+grep -r "frontmatter_exporter" tests/ -l | xargs sed -i '' 's/frontmatter_exporter/frontmatter_exporter/g'
 
 # 3. Run new tests
 pytest tests/domains/ -v --cov=shared/domain --cov=domains/*/coordinator.py

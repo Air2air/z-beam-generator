@@ -307,25 +307,34 @@ class SEOMetadataGenerator(BaseGenerator):
         power_max: Optional[int],
         removal_target: str
     ) -> str:
-        """Build SEO description for settings with power/wavelength."""
+        """
+        Build SEO description for settings with power/wavelength.
         
-        parts = [f"{name}:"]
+        Format: "{Material} laser cleaning parameters {optimized for|designed for} {use_case}. 
+                 {Key_benefit}. {Quality_indicator}."
+        Character limit: 120-155 (optimal for Google snippets)
+        """
         
-        # Add wavelength/power
+        # Extract clean target (remove "Removal" suffix if present)
+        target = removal_target.replace(' Removal', '').replace(' Treatment', '').lower()
+        
+        # Build opening with parameters
         if wavelength and power_min and power_max:
-            parts.append(f"{power_min}-{power_max}W, {wavelength}nm")
+            opening = f"{name} laser cleaning parameters optimized for {target}."
         elif wavelength:
-            parts.append(f"{wavelength}nm")
+            opening = f"{name} laser cleaning parameters ({wavelength}nm) designed for {target}."
         elif power_min and power_max:
-            parts.append(f"{power_min}-{power_max}W")
+            opening = f"{name} laser cleaning parameters ({power_min}-{power_max}W) engineered for {target}."
+        else:
+            opening = f"{name} laser cleaning parameters optimized for {target}."
         
-        # Add removal target
-        parts.append(f"removes {removal_target.lower()}.")
+        # Add benefit and quality
+        benefit = "Industrial-grade settings preserve substrate integrity."
+        quality = self._get_quality_indicator_for_settings(name)
         
-        # Add quality/speed metric
-        parts.append("Industrial-grade parameters. No substrate damage.")
+        description = f"{opening} {benefit} {quality}"
         
-        return " ".join(parts)
+        return description
     
     def _build_contaminant_description(
         self,
@@ -504,6 +513,21 @@ class SEOMetadataGenerator(BaseGenerator):
             return "Industrial-rated."
         else:
             return "Professional-grade."
+    
+    def _get_quality_indicator_for_settings(self, name: str) -> str:
+        """Get quality indicator phrase for settings descriptions."""
+        name_lower = name.lower()
+        
+        if 'aluminum' in name_lower or 'titanium' in name_lower:
+            return "Aerospace-quality results."
+        elif 'stainless' in name_lower:
+            return "Food-grade quality results."
+        elif 'steel' in name_lower:
+            return "Professional-quality results."
+        elif 'copper' in name_lower or 'brass' in name_lower:
+            return "High-purity results."
+        else:
+            return "Industrial-quality results."
     
     def _validate_and_truncate_title(self, title: str) -> str:
         """Validate title character count and truncate if needed."""

@@ -666,13 +666,21 @@ self._log_to_learning_db(
 
 **Configuration**: `domains/materials/config.yaml`
 ```yaml
-data_path: "data/materials/Materials.yaml"
-data_root_key: "materials"
-author_key: "author.id"
-context_keys: [category, properties.hardness, properties.melting_point]
-prompts:
-  description: {template: "description.txt"}
-  micro: {template: "micro.txt"}
+# Standardized nested structure (Jan 2026)
+domain:
+  name: materials
+  display_name: "Laser Cleaning Materials"
+  version: "1.0.0"
+
+data_adapter:
+  data_path: "data/materials/Materials.yaml"
+  data_root_key: "materials"
+  author_key: "author.id"
+  context_keys: [category, properties.hardness, properties.melting_point]
+
+frontmatter:
+  directory: "frontmatter/materials"
+  filename_pattern: "{slug}-laser-cleaning.yaml"
 ```
 
 **Usage**:
@@ -684,12 +692,21 @@ python3 run.py --domain materials --item aluminum --component description
 
 **Configuration**: `domains/contaminants/config.yaml`
 ```yaml
-data_path: "data/contaminants/Contaminants.yaml"
-data_root_key: "contaminants"
-author_key: "author.id"
-context_keys: [category, removal_difficulty, health_risk]
-prompts:
-  description: {template: "description.txt"}
+# Standardized nested structure (Jan 2026)
+domain:
+  name: contaminants
+  display_name: "Contamination Patterns"
+  version: "1.0.0"
+
+data_adapter:
+  data_path: "data/contaminants/Contaminants.yaml"
+  data_root_key: "contamination_patterns"
+  author_key: "author.id"
+  context_keys: [category, removal_difficulty, health_risk]
+
+frontmatter:
+  directory: "frontmatter/contaminants"
+  filename_pattern: "{slug}-contamination.yaml"
 ```
 
 **Usage**:
@@ -701,12 +718,21 @@ python3 run.py --domain contaminants --item oil-residue --component description
 
 **Configuration**: `domains/settings/config.yaml`
 ```yaml
-data_path: "data/settings/Settings.yaml"
-data_root_key: "settings"
-author_key: "author.id"
-context_keys: [material_category, process_type]
-prompts:
-  description: {template: "description.txt"}
+# Standardized nested structure (Jan 2026)
+domain:
+  name: settings
+  display_name: "Laser Parameter Settings"
+  version: "1.0.0"
+
+data_adapter:
+  data_path: "data/settings/Settings.yaml"
+  data_root_key: "settings"
+  author_key: "author.id"
+  context_keys: [material_category, process_type]
+
+frontmatter:
+  directory: "frontmatter/settings"
+  filename_pattern: "{slug}-settings.yaml"
 ```
 
 **Usage**:

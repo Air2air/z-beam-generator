@@ -7,7 +7,6 @@ metadata:
 compounds:
   carbon-monoxide-compound:
     id: carbon-monoxide-compound
-    full_path: /compounds/toxic-gas/asphyxiant/carbon-monoxide-compound
     name: Carbon Monoxide
     display_name: Carbon Monoxide (CO)
     chemical_formula: CO
@@ -476,9 +475,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Carbon monoxide slips through industrial processes like a silent
-      partner, binding tightly to metals during reduction reactions that refine ores
-      into usable form.
     images:
       hero:
         url: /images/compound/carbon-monoxide-compound-hero.jpg
@@ -502,9 +498,14 @@ compounds:
         maintain equipment to minimize incomplete combustion sources, and follow OSHA's
         permissible exposure limit of 50 ppm over an 8-hour workday to avoid symptoms
         like headaches or dizziness.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Carbon Monoxide
+    metaDescription: Carbon Monoxide Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/toxic-gas/asphyxiant/carbon-monoxide-compound
   formaldehyde-compound:
     id: formaldehyde-compound
-    full_path: /compounds/carcinogen/aldehyde/formaldehyde-compound
     name: Formaldehyde
     display_name: Formaldehyde (CH₂O)
     chemical_formula: CH₂O
@@ -986,9 +987,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Handling formaldehyde in industrial settings often starts with
-      the headache of its sharp, lingering odor that irritates eyes and skin right
-      away, yet this volat.
     images:
       hero:
         url: /images/compound/formaldehyde-compound-hero.jpg
@@ -1012,9 +1010,14 @@ compounds:
         exposure limit. If levels approach or exceed these thresholds, immediately
         stop work, increase ventilation, and evacuate if necessary to prevent carcinogenic
         risks.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Formaldehyde
+    metaDescription: Formaldehyde Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/carcinogen/aldehyde/formaldehyde-compound
   benzene-compound:
     id: benzene-compound
-    full_path: /compounds/carcinogen/aromatic-hydrocarbon/benzene-compound
     name: Benzene
     display_name: Benzene (C₆H₆)
     chemical_formula: C₆H₆
@@ -1446,8 +1449,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Handling benzene starts with understanding its role in tough
-      industrial setups.
     images:
       hero:
         url: /images/compound/benzene-compound-hero.jpg
@@ -1473,9 +1474,14 @@ compounds:
         air quality with a photoionization detector (PID) calibrated for benzene to
         ensure levels remain safe and trigger immediate evacuation if thresholds are
         approached.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Benzene
+    metaDescription: Benzene Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/carcinogen/aromatic-hydrocarbon/benzene-compound
   pahs-compound:
     id: pahs-compound
-    full_path: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
     name: Polycyclic Aromatic Hydrocarbons
     display_name: PAHs
     chemical_formula: Various
@@ -1734,9 +1740,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Unlike everyday fuels that burn away cleanly, polycyclic aromatic
-      hydrocarbons stand out with their rigid, ring-linked structures that cling stubbornly
-      to surfa.
     images:
       hero:
         url: /images/compound/pahs-compound-hero.jpg
@@ -1764,9 +1767,14 @@ compounds:
         and ensure exposure stays below OSHA's permissible limits (e.g., 0.2 mg/m³
         for coal tar pitch volatiles as a proxy), stopping work if levels approach
         thresholds.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Polycyclic Aromatic Hydrocarbons
+    metaDescription: Pahs Compound safety information for laser cleaning. Health hazards,
+      exposure limits, and protective equipment requirements.
+    fullPath: /compounds/carcinogen/aromatic-hydrocarbon/pahs-compound
   hydrogen-cyanide-compound:
     id: hydrogen-cyanide-compound
-    full_path: /compounds/toxic-gas/cyanide/hydrogen-cyanide-compound
     name: Hydrogen Cyanide
     display_name: Hydrogen Cyanide (HCN)
     chemical_formula: HCN
@@ -2240,7 +2248,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Handling hydrogen cyanide starts with extreme caution.
     images:
       hero:
         url: /images/compound/hydrogen-cyanide-compound-hero.jpg
@@ -2264,9 +2271,14 @@ compounds:
         detectors to keep exposures below the OSHA ceiling limit of 10 ppm. If HCN
         levels approach the limit, immediately evacuate and decontaminate any exposed
         skin with a dilute sodium hypochlorite solution followed by thorough rinsing.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Hydrogen Cyanide
+    metaDescription: Hydrogen Cyanide Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/toxic-gas/cyanide/hydrogen-cyanide-compound
   acetaldehyde-compound:
     id: acetaldehyde-compound
-    full_path: /compounds/irritant/aldehyde/acetaldehyde-compound
     name: Acetaldehyde
     display_name: Acetaldehyde (C₂H₄O)
     chemical_formula: C₂H₄O
@@ -2674,8 +2686,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Acetaldehyde's sharp, irritating vapor hits you first, marking
-      it as a potent irritant that demands careful handling in any workspace.
     images:
       hero:
         url: /images/compound/acetaldehyde-compound-hero.jpg
@@ -2701,9 +2711,14 @@ compounds:
         gas detectors specific to acetaldehyde to ensure exposure stays within safe
         limits and conduct regular training on spill response and emergency eyewash
         stations.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Acetaldehyde
+    metaDescription: Acetaldehyde Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/irritant/aldehyde/acetaldehyde-compound
   acrolein-compound:
     id: acrolein-compound
-    full_path: /compounds/toxic-gas/aldehyde/acrolein-compound
     name: Acrolein
     display_name: Acrolein (C₃H₄O)
     chemical_formula: C₃H₄O
@@ -3190,8 +3205,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Acrolein's sharp, irritating odor hits first, marking it as
-      a highly reactive compound that demands careful handling in any setting.
     images:
       hero:
         url: /images/compound/acrolein-compound-hero.jpg
@@ -3215,9 +3228,14 @@ compounds:
         ventilation or local exhaust systems to minimize exposure. Always follow OSHA
         guidelines, keeping exposures below the permissible limit of 0.1 ppm over
         an 8-hour workday, and conduct regular air monitoring to verify safety.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Acrolein
+    metaDescription: Acrolein Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/toxic-gas/aldehyde/acrolein-compound
   hydrogen-chloride-compound:
     id: hydrogen-chloride-compound
-    full_path: /compounds/corrosive-gas/acid-gas/hydrogen-chloride-compound
     name: Hydrogen Chloride
     display_name: Hydrogen Chloride (HCl)
     chemical_formula: HCl
@@ -3643,8 +3661,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Hydrogen chloride stands out from milder gases—its sharp bite
-      etches metals fast.
     images:
       hero:
         url: /images/compound/hydrogen-chloride-compound-hero.jpg
@@ -3670,9 +3686,14 @@ compounds:
         than milder acids like acetic. If levels approach the PEL, immediately don
         a full-face respirator with acid gas cartridges and enhance local exhaust
         ventilation to dilute the corrosive gas.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Hydrogen Chloride
+    metaDescription: Hydrogen Chloride Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/corrosive-gas/acid-gas/hydrogen-chloride-compound
   toluene-compound:
     id: toluene-compound
-    full_path: /compounds/solvent/aromatic-hydrocarbon/toluene-compound
     name: Toluene
     display_name: Toluene (C₇H₈)
     chemical_formula: C₇H₈
@@ -4146,8 +4167,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Dealing with stubborn grime on metal surfaces poses real headaches
-      for factories.
     images:
       hero:
         url: /images/compound/toluene-compound-hero.jpg
@@ -4174,9 +4193,14 @@ compounds:
         TLV) for added safety. Always maintain local exhaust ventilation and wear
         NIOSH-approved organic vapor respirators if levels approach limits, rotating
         shifts to minimize cumulative exposure.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Toluene
+    metaDescription: Toluene Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/solvent/aromatic-hydrocarbon/toluene-compound
   styrene-compound:
     id: styrene-compound
-    full_path: /compounds/irritant/aromatic-hydrocarbon/styrene-compound
     name: Styrene
     display_name: Styrene (C₈H₈)
     chemical_formula: C₈H₈
@@ -4634,8 +4658,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Volatile enough to evaporate quickly, styrene acts as a fundamental
-      monomer in crafting tough plastics like polystyrene.
     images:
       hero:
         url: /images/compound/styrene-compound-hero.jpg
@@ -4660,9 +4682,14 @@ compounds:
         if ventilation is inadequate, ensuring airborne exposure stays below the OSHA
         PEL of 100 ppm (8-hour TWA). Always perform a skin check after shifts and
         wash exposed areas immediately with soap and water if contact occurs.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Styrene
+    metaDescription: Styrene Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/irritant/aromatic-hydrocarbon/styrene-compound
   zinc-oxide-compound:
     id: zinc-oxide-compound
-    full_path: /compounds/metal-fume/metal-oxide/zinc-oxide-compound
     name: Zinc Oxide
     display_name: Zinc Oxide (ZnO)
     chemical_formula: ZnO
@@ -5081,9 +5108,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: When handling zinc oxide in workshop setups, workers often start
-      by sifting through its fine, powdery form that resists clumping under humid
-      conditions, making .
     images:
       hero:
         url: /images/compound/zinc-oxide-compound-hero.jpg
@@ -5110,9 +5134,14 @@ compounds:
         below the OSHA PEL of 5 mg/m³ (as ZnO) over an 8-hour shift. Perform regular
         air sampling and medical check-ups if working in high-fume environments to
         detect early signs of irritation.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Zinc Oxide
+    metaDescription: Zinc Oxide Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/metal-fume/metal-oxide/zinc-oxide-compound
   iron-oxide-compound:
     id: iron-oxide-compound
-    full_path: /compounds/metal-fume/metal-oxide/iron-oxide-compound
     name: Iron Oxide Fume
     display_name: Iron Oxide (Fe₂O₃)
     chemical_formula: Fe₂O₃
@@ -5556,9 +5585,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: From years tinkering with rusty relics in workshops, I've found
-      iron oxide tricky to manage yet invaluable, especially since it forms those
-      fine metal fumes dur.
     images:
       hero:
         url: /images/compound/iron-oxide-compound-hero.jpg
@@ -5583,9 +5609,14 @@ compounds:
         like P100, for prolonged work). Regularly monitor air quality with real-time
         particle counters or personal sampling pumps to ensure compliance and adjust
         controls as needed.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Iron Oxide Fume
+    metaDescription: Iron Oxide Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/metal-fume/metal-oxide/iron-oxide-compound
   chromium-vi-compound:
     id: chromium-vi-compound
-    full_path: /compounds/carcinogen/heavy-metal/chromium-vi-compound
     name: Hexavalent Chromium
     display_name: Chromium(VI)
     chemical_formula: Cr(VI)
@@ -6038,9 +6069,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Handling chromium-VI materials demands careful consideration
-      right from the initial setup in industrial environments, where their vivid coloring
-      and strong oxid.
     images:
       hero:
         url: /images/compound/chromium-vi-compound-hero.jpg
@@ -6066,9 +6094,14 @@ compounds:
         airborne particles. Regularly inspect and replace PPE, and follow OSHA's permissible
         exposure limit of 5 µg/m³ for Cr(VI) over an 8-hour shift to stay within safe
         thresholds.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Hexavalent Chromium
+    metaDescription: Chromium Vi Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/carcinogen/heavy-metal/chromium-vi-compound
   nitrogen-oxides-compound:
     id: nitrogen-oxides-compound
-    full_path: /compounds/toxic-gas/oxidizing-gas/nitrogen-oxides-compound
     name: Nitrogen Oxides
     display_name: NOₓ
     chemical_formula: NOx
@@ -6522,9 +6555,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: While carbon-based pollutants cling stubbornly to surfaces in
-      industrial exhausts, nitrogen oxides slip away more readily under targeted laser
-      pulses, their gas.
     images:
       hero:
         url: /images/compound/nitrogen-oxides-compound-hero.jpg
@@ -6549,9 +6579,14 @@ compounds:
         NO and NO2. Adhere to OSHA exposure limits of 25 ppm for NO and 5 ppm for
         NO2 over an 8-hour shift to prevent respiratory irritation or long-term lung
         damage.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Nitrogen Oxides
+    metaDescription: Nitrogen Oxides Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/toxic-gas/oxidizing-gas/nitrogen-oxides-compound
   sulfur-dioxide-compound:
     id: sulfur-dioxide-compound
-    full_path: /compounds/toxic-gas/acid-gas/sulfur-dioxide-compound
     name: Sulfur Dioxide
     display_name: Sulfur Dioxide (SO₂)
     chemical_formula: SO₂
@@ -6981,9 +7016,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Sulfur dioxide drifts as a colorless gas with a sharp, choking
-      odor that clings to the air, making it a notorious player in industrial atmospheres
-      where careful.
     images:
       hero:
         url: /images/compound/sulfur-dioxide-compound-hero.jpg
@@ -7007,9 +7039,14 @@ compounds:
         equipment like gloves and protective clothing to avoid skin contact. Regularly
         monitor air quality with SO₂ detectors or badges, and evacuate if levels exceed
         5 ppm, seeking fresh air immediately if irritation occurs.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Sulfur Dioxide
+    metaDescription: Sulfur Dioxide Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/toxic-gas/acid-gas/sulfur-dioxide-compound
   phosgene-compound:
     id: phosgene-compound
-    full_path: /compounds/toxic-gas/reactive-gas/phosgene-compound
     name: Phosgene
     display_name: Phosgene (COCl₂)
     chemical_formula: COCl₂
@@ -7414,7 +7451,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Phosgene drifts as a colorless gas.
     images:
       hero:
         url: /images/compound/phosgene-compound-hero.jpg
@@ -7440,9 +7476,14 @@ compounds:
         under 0.1 ppm and evacuate if levels approach 2 ppm. If exposure is suspected,
         seek immediate medical attention, as symptoms like chest tightness may be
         delayed up to 48 hours.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Phosgene
+    metaDescription: Phosgene Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/toxic-gas/reactive-gas/phosgene-compound
   ammonia-compound:
     id: ammonia-compound
-    full_path: /compounds/corrosive-gas/alkaline-gas/ammonia-compound
     name: Ammonia
     display_name: Ammonia (NH₃)
     chemical_formula: NH₃
@@ -7875,9 +7916,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Handling ammonia in industrial settings demands respect for
-      its sharp, irritating odor that lingers and signals danger right away, while
-      its colorless nature as.
     images:
       hero:
         url: /images/compound/ammonia-compound-hero.jpg
@@ -7902,9 +7940,14 @@ compounds:
         effects. If exposure is suspected, immediately evacuate the area, seek fresh
         air, and monitor for symptoms like eye irritation or respiratory distress
         before resuming work.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Ammonia
+    metaDescription: Ammonia Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/corrosive-gas/alkaline-gas/ammonia-compound
   carbon-dioxide-compound:
     id: carbon-dioxide-compound
-    full_path: /compounds/asphyxiant/simple-asphyxiant/carbon-dioxide-compound
     name: Carbon Dioxide
     display_name: Carbon Dioxide (CO₂)
     chemical_formula: CO₂
@@ -8558,8 +8601,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Carbon dioxide acts as a silent thief in tight spaces, pushing
-      out breathable air without warning.
     images:
       hero:
         url: /images/compound/carbon-dioxide-compound-hero.jpg
@@ -8584,9 +8625,14 @@ compounds:
         or poorly ventilated areas during laser cleaning. Always ensure oxygen levels
         remain above 19.5% and integrate alarms that trigger at or below these limits
         to prevent asphyxiation risks.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Carbon Dioxide
+    metaDescription: Carbon Dioxide Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/asphyxiant/simple-asphyxiant/carbon-dioxide-compound
   vocs-compound:
     id: vocs-compound
-    full_path: /compounds/irritant/organic-vapor/vocs-compound
     name: Volatile Organic Compounds
     display_name: VOCs
     chemical_formula: Various
@@ -9081,7 +9127,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Volatile organic compounds sneak into paints and adhesives everywhere.
     images:
       hero:
         url: /images/compound/vocs-compound-hero.jpg
@@ -9107,9 +9152,14 @@ compounds:
         detectors to ensure levels stay below occupational exposure limits like the
         OSHA PEL of 100 ppm for many common VOCs, and take breaks in fresh air if
         concentrations rise.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Volatile Organic Compounds
+    metaDescription: Vocs Compound safety information for laser cleaning. Health hazards,
+      exposure limits, and protective equipment requirements.
+    fullPath: /compounds/irritant/organic-vapor/vocs-compound
   benzoapyrene-compound:
     id: benzoapyrene-compound
-    full_path: /compounds/carcinogen/polycyclic-aromatic-hydrocarbon/benzoapyrene-compound
     name: Benzo[a]pyrene
     display_name: Benzo[a]pyrene (C₂₀H₁₂)
     chemical_formula: C₂₀H₁₂
@@ -9571,9 +9621,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Benzo[a]pyrene sticks out as that stubborn crystalline solid
-      you encounter in environmental samples, glowing faintly under certain lights
-      and refusing to dissol.
     images:
       hero:
         url: /images/compound/benzoapyrene-compound-hero.jpg
@@ -9595,9 +9642,14 @@ compounds:
         (PAPR) with organic vapor cartridges rated for PAHs to protect against inhalation,
         as Benzo[a]pyrene can persist in the air after cleaning. Change PPE after
         each session and decontaminate equipment to avoid secondary exposure.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Benzo[a]pyrene
+    metaDescription: Benzoapyrene Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/carcinogen/polycyclic-aromatic-hydrocarbon/benzoapyrene-compound
   water-vapor-compound:
     id: water-vapor-compound
-    full_path: /compounds/vapor/inert/water-vapor-compound
     name: Water Vapor
     display_name: Water Vapor (H₂O)
     chemical_formula: H₂O
@@ -9974,8 +10026,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Working with water vapor in projects always starts simple—mix
-      it into air streams for that quick humidity boost.
     images:
       hero:
         url: /images/compound/water-vapor-compound-hero.jpg
@@ -9999,9 +10049,14 @@ compounds:
         humidity sensors to stay below 80% relative humidity. If exposure is suspected,
         relocate to fresh air immediately and follow your site's emergency protocols
         for decontamination.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Water Vapor
+    metaDescription: Water Vapor Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/vapor/inert/water-vapor-compound
   carbon-particulates-compound:
     id: carbon-particulates-compound
-    full_path: /compounds/particulate/carbon-based/carbon-particulates-compound
     name: Carbon Particulates
     display_name: Carbon Particulates
     chemical_formula: C
@@ -10284,9 +10339,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Carbon particulates stand out from smoother powders like silica,
-      which scatter light easily—these tiny carbon bits soak up energy instead, turning
-      surfaces dark.
     images:
       hero:
         url: /images/compound/carbon-particulates-compound-hero.jpg
@@ -10310,9 +10362,14 @@ compounds:
         exposure limit of 3.5 mg/m³ for respirable carbon black dust. Change filters
         frequently based on usage and conduct post-shift hygiene practices like showering
         to remove any settled particulates from skin and clothing.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Carbon Particulates
+    metaDescription: Carbon Particulates Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/particulate/carbon-based/carbon-particulates-compound
   carbon-ash-compound:
     id: carbon-ash-compound
-    full_path: /compounds/particulate/carbon-based/carbon-ash-compound
     name: Carbon Ash
     display_name: Carbon Ash
     chemical_formula: C
@@ -10558,8 +10615,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Carbon-ash stands apart from finer dusts by its gritty, irregular
-      particles that cling stubbornly to surfaces.
     images:
       hero:
         url: /images/compound/carbon-ash-compound-hero.jpg
@@ -10584,9 +10639,14 @@ compounds:
         work area with particulate detectors and follow OSHA guidelines to keep exposure
         below the permissible limit of 3.5 mg/m³ for respirable carbon dust over an
         8-hour shift.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Carbon Ash
+    metaDescription: Carbon Ash Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/particulate/carbon-based/carbon-ash-compound
   metal-oxides-mixed-compound:
     id: metal-oxides-mixed-compound
-    full_path: /compounds/particulate/metal-oxide/metal-oxides-mixed-compound
     name: Metal Oxides (Mixed)
     display_name: Metal Oxides (Mixed)
     chemical_formula: Various
@@ -10811,9 +10871,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Mixed metal oxide particulates stand out in tough industrial
-      settings because they blend the rugged qualities of various oxides, creating
-      materials that resist .
     images:
       hero:
         url: /images/compound/metal-oxides-mixed-compound-hero.jpg
@@ -10838,9 +10895,14 @@ compounds:
         5 mg/m³ for total dust. Additionally, perform operations in enclosed booths
         or with engineering controls like fume extractors to minimize dispersion,
         and change filters frequently based on usage intensity.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Metal Oxides (Mixed)
+    metaDescription: Metal Oxides Mixed Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/particulate/metal-oxide/metal-oxides-mixed-compound
   nanoparticulates-compound:
     id: nanoparticulates-compound
-    full_path: /compounds/particulate/nanomaterial/nanoparticulates-compound
     name: Nanoparticulates
     display_name: Nanoparticulates
     chemical_formula: Various
@@ -11053,7 +11115,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Nanoparticulates pack immense surface area into tiny realms.
     images:
       hero:
         url: /images/compound/nanoparticulates-compound-hero.jpg
@@ -11077,9 +11138,14 @@ compounds:
         (LEV) systems capturing fumes at the source. Regularly monitor air quality
         with particle counters and follow decontamination protocols, such as HEPA-filtered
         vacuums for cleanup, to minimize residual exposure.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Nanoparticulates
+    metaDescription: Nanoparticulates Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/particulate/nanomaterial/nanoparticulates-compound
   organic-residues-compound:
     id: organic-residues-compound
-    full_path: /compounds/particulate/organic/organic-residues-compound
     name: Organic Residues
     display_name: Organic Residues
     chemical_formula: CxHyOz
@@ -11333,8 +11399,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Dealing with organic residues in industrial setups often means
-      tackling sticky, fibrous bits left from food processing or biological waste.
     images:
       hero:
         url: /images/compound/organic-residues-compound-hero.jpg
@@ -11360,9 +11424,14 @@ compounds:
         reduce airborne concentrations below general particulate exposure limits (e.g.,
         5 mg/m³ for respirable dust per OSHA guidelines, though specific limits vary
         by composition).
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Organic Residues
+    metaDescription: Organic Residues Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/particulate/organic/organic-residues-compound
   aluminum-oxide-compound:
     id: aluminum-oxide-compound
-    full_path: /compounds/particulate/metal-oxide/aluminum-oxide-compound
     name: Aluminum Oxide
     display_name: Aluminum Oxide (Al₂O₃)
     chemical_formula: Al₂O₃
@@ -11542,9 +11611,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Handling tough residues on metal surfaces often demands a material
-      that's both aggressive and reliable, which is where aluminum oxide particulates
-      shine in lase.
     images:
       hero:
         url: /images/compound/aluminum-oxide-compound-hero.jpg
@@ -11569,9 +11635,14 @@ compounds:
         to minimize particle generation and inhalation risks from these fine, potentially
         irritating particulates. Conduct regular air monitoring to verify protection
         effectiveness and comply with site-specific safety protocols.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Aluminum Oxide
+    metaDescription: Aluminum Oxide Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/particulate/metal-oxide/aluminum-oxide-compound
   copper-oxide-compound:
     id: copper-oxide-compound
-    full_path: /compounds/particulate/metal-oxide/copper-oxide-compound
     name: Copper Oxide
     display_name: Copper Oxide (CuO)
     chemical_formula: CuO
@@ -11759,8 +11830,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Handling stubborn contaminants on metal surfaces often demands
-      materials that absorb energy efficiently without scattering.
     images:
       hero:
         url: /images/compound/copper-oxide-compound-hero.jpg
@@ -11784,9 +11853,14 @@ compounds:
         has local exhaust ventilation to capture airborne particles. Conduct fit-testing
         for the respirator annually and replace filters when breathing becomes difficult
         or after each shift involving heavy dust generation.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Copper Oxide
+    metaDescription: Copper Oxide Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/particulate/metal-oxide/copper-oxide-compound
   silicon-dioxide-compound:
     id: silicon-dioxide-compound
-    full_path: /compounds/particulate/mineral/silicon-dioxide-compound
     name: Silicon Dioxide
     display_name: Silicon Dioxide (SiO₂)
     chemical_formula: SiO₂
@@ -11983,8 +12057,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Silicon dioxide particulates stand out for their gritty resilience
-      in everyday industrial grind.
     images:
       hero:
         url: /images/compound/silicon-dioxide-compound-hero.jpg
@@ -12008,9 +12080,14 @@ compounds:
         with gloves, safety goggles, and a coverall to prevent skin and eye contact.
         Regularly monitor air quality with particulate samplers and follow decontamination
         procedures after shifts to avoid secondary exposure.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Silicon Dioxide
+    metaDescription: Silicon Dioxide Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/particulate/mineral/silicon-dioxide-compound
   calcium-oxide-compound:
     id: calcium-oxide-compound
-    full_path: /compounds/particulate/metal-oxide/calcium-oxide-compound
     name: Calcium Oxide
     display_name: Calcium Oxide (CaO)
     chemical_formula: CaO
@@ -12224,9 +12301,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Unlike many softer compounds that crumble under heat, calcium
-      oxide endures extreme temperatures with remarkable stability, making it a go-to
-      choice for tough i.
     images:
       hero:
         url: /images/compound/calcium-oxide-compound-hero.jpg
@@ -12251,9 +12325,14 @@ compounds:
         Ensure your workspace has good ventilation to minimize airborne particulate
         exposure, and follow OSHA guidelines limiting CaO dust to 5 mg/m³ as an 8-hour
         TWA.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Calcium Oxide
+    metaDescription: Calcium Oxide Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/particulate/metal-oxide/calcium-oxide-compound
   tin-oxide-compound:
     id: tin-oxide-compound
-    full_path: /compounds/particulate/metal-oxide/tin-oxide-compound
     name: Tin Oxide
     display_name: Tin Oxide (SnO₂)
     chemical_formula: SnO₂
@@ -12473,8 +12552,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Tin oxide stands out for its remarkable durability in harsh
-      environments.
     images:
       hero:
         url: /images/compound/tin-oxide-compound-hero.jpg
@@ -12497,9 +12574,14 @@ compounds:
         operations in a well-ventilated area to keep exposure below the OSHA PEL of
         0.5 mg/m³ (as Sn). After each session, clean up any settled dust with HEPA-vacuuming
         rather than sweeping to prevent re-suspension.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Tin Oxide
+    metaDescription: Tin Oxide Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/particulate/metal-oxide/tin-oxide-compound
   lead-oxide-compound:
     id: lead-oxide-compound
-    full_path: /compounds/particulate/metal-oxide/lead-oxide-compound
     name: Lead Oxide
     display_name: Lead Oxide (PbO)
     chemical_formula: PbO
@@ -12692,9 +12774,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Handling lead oxide particulates often poses challenges in industrial
-      settings due to their sticky adhesion to surfaces and potential for environmental
-      buildup.
     images:
       hero:
         url: /images/compound/lead-oxide-compound-hero.jpg
@@ -12719,9 +12798,14 @@ compounds:
         for lead over an 8-hour shift. Combine this with engineering controls like
         local exhaust ventilation at the laser cleaning site to minimize airborne
         particulates from the start.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Lead Oxide
+    metaDescription: Lead Oxide Compound safety information for laser cleaning. Health
+      hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/particulate/metal-oxide/lead-oxide-compound
   cadmium-oxide-compound:
     id: cadmium-oxide-compound
-    full_path: /compounds/particulate/metal-oxide/cadmium-oxide-compound
     name: Cadmium Oxide
     display_name: Cadmium Oxide (CdO)
     chemical_formula: CdO
@@ -12926,9 +13010,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Dealing with cadmium oxide in particulate form often starts
-      with its stubborn nature on surfaces, making removal tricky without the right
-      methods.
     images:
       hero:
         url: /images/compound/cadmium-oxide-compound-hero.jpg
@@ -12952,9 +13033,14 @@ compounds:
         protocol like showering and laundering PPE after each shift. Conduct air monitoring
         with real-time particulate samplers to verify controls are effective and schedule
         annual medical exams for early detection of cadmium-related health effects.
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Cadmium Oxide
+    metaDescription: Cadmium Oxide Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/particulate/metal-oxide/cadmium-oxide-compound
   metal-vapors-mixed-compound:
     id: metal-vapors-mixed-compound
-    full_path: /compounds/vapor/metal/metal-vapors-mixed-compound
     name: Metal Vapors (Mixed)
     display_name: Metal Vapors (Mixed)
     chemical_formula: Various
@@ -13172,7 +13258,6 @@ compounds:
           legend: Exposure Limit
         severity: low
         icon: alert-triangle
-    page_description: Mixed metal vapors blend seamlessly in high-heat setups.
     images:
       hero:
         url: /images/compound/metal-vapors-mixed-compound-hero.jpg
@@ -13197,3 +13282,9 @@ compounds:
         workspace maintains good general ventilation to keep concentrations below
         applicable exposure limits, such as those set by OSHA for specific metals
         like zinc oxide (5 mg/m³ as ceiling).
+    schemaVersion: 5.0.0
+    contentType: compound
+    pageTitle: Metal Vapors (Mixed)
+    metaDescription: Metal Vapors Mixed Compound safety information for laser cleaning.
+      Health hazards, exposure limits, and protective equipment requirements.
+    fullPath: /compounds/vapor/metal/metal-vapors-mixed-compound

@@ -42,13 +42,13 @@ class SettingCoordinator(DomainCoordinator):
         Create settings data loader.
         
         Note: Settings use load_settings_data() function, not class-based loader.
-        Returns None since data loading is handled via _load_settings_data().
+        Returns None since data loading is handled via _load_domain_data() (base class).
         """
         return None
     
     def _get_item_data(self, item_id: str) -> Dict:
         """Get setting data from Settings.yaml"""
-        settings_data = self._load_settings_data()
+        settings_data = self._load_domain_data()
         if item_id not in settings_data['settings']:
             raise ValueError(f"Setting '{item_id}' not found in Settings.yaml")
         return settings_data['settings'][item_id]
@@ -58,12 +58,6 @@ class SettingCoordinator(DomainCoordinator):
         # Note: QualityEvaluatedGenerator already saves to Settings.yaml
         # This method exists to satisfy abstract base class
         pass
-    
-    def _load_settings_data(self) -> Dict:
-        """Load Settings.yaml directly"""
-        settings_path = Path('data/settings/Settings.yaml')
-        with open(settings_path, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f)
     
     def generate_setting_content(
         self,
@@ -140,5 +134,5 @@ class SettingCoordinator(DomainCoordinator):
     
     def list_settings(self) -> list:
         """Get list of all setting IDs."""
-        settings_data = self._load_settings_data()
+        settings_data = self._load_domain_data()
         return list(settings_data['settings'].keys())

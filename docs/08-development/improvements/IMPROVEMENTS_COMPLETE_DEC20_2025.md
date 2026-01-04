@@ -126,7 +126,7 @@ Successfully implemented **10 major improvements** to the Z-Beam Generator expor
 5. **Deployment Script**: deploy_all.py exists and valid
 
 **Integration**: 
-- Integrated into `UniversalFrontmatterExporter.__init__()` (optional validation)
+- Integrated into `FrontmatterExporter.__init__()` (optional validation)
 - Added to `scripts/operations/deploy_all.py` as pre-flight check
 
 **Usage**:
@@ -178,7 +178,7 @@ domains = [f.stem for f in domain_files if f.stem != 'validator']
 **Problem**: Deployment operations ran silently, hard to debug  
 **Solution**: Added comprehensive progress logging
 
-**File**: `export/core/universal_exporter.py`
+**File**: `export/core/frontmatter_exporter.py`
 
 **Improvements**:
 - Added `show_progress` parameter to `export_all()`
@@ -225,7 +225,7 @@ domains = [f.stem for f in domain_files if f.stem != 'validator']
 **Solution**: Added dry-run mode to export system
 
 **Files**:
-- `export/core/universal_exporter.py`: Added `dry_run` parameter
+- `export/core/frontmatter_exporter.py`: Added `dry_run` parameter
 - `scripts/operations/deploy_all.py`: Added `--dry-run` flag
 
 **Usage**:

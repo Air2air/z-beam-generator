@@ -24,7 +24,7 @@ The Z-Beam export system follows a three-layer architecture:
                            ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │ LAYER 2: EXPORT PROCESS (Transformation Logic)                  │
-│ • export/core/universal_exporter.py (orchestrator)              │
+│ • export/core/frontmatter_exporter.py (orchestrator)              │
 │ • export/config/*.yaml (domain configurations)                  │
 │ • export/enrichers/**/*.py (enrichment logic)                   │
 │ • shared/validation/domain_associations.py (relationships)      │
@@ -141,7 +141,7 @@ The Z-Beam export system follows a three-layer architecture:
        subcategory: sedimentary
    ```
 
-2. **ENRICHMENT** (`export/core/universal_exporter.py` - BreadcrumbEnricher):
+2. **ENRICHMENT** (`export/core/frontmatter_exporter.py` - BreadcrumbEnricher):
    ```python
    # Build breadcrumb from category hierarchy
    breadcrumb = [
@@ -253,7 +253,7 @@ enrichers:
 
 ### 3. Final Output Validation
 
-**Location**: `export/core/universal_exporter.py`  
+**Location**: `export/core/frontmatter_exporter.py`  
 **Timing**: Before writing frontmatter  
 **Checks**:
 - All required fields present

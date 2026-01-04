@@ -15,10 +15,10 @@ Single-pass generation with quality logging for learning.
 - Quality scores logged for learning improvement
 
 REFACTORED (December 24, 2025):
-Now extends UniversalDomainCoordinator to eliminate duplication.
+Now extends DomainCoordinator to eliminate duplication.
 
 Usage:
-    generator = UnifiedMaterialsGenerator(api_client)
+    generator = MaterialCoordinator(api_client)
     generator.generate('Bronze', 'micro')
 """
 
@@ -65,7 +65,7 @@ class MaterialsCoordinator(DomainCoordinator):
     
     def _get_item_data(self, item_id: str) -> Dict:
         """Get material data from Materials.yaml"""
-        materials_data = self._load_materials_data()
+        materials_data = self._load_domain_data()
         if item_id not in materials_data['materials']:
             raise ValueError(f"Material '{item_id}' not found in Materials.yaml")
         return materials_data['materials'][item_id]
@@ -75,11 +75,6 @@ class MaterialsCoordinator(DomainCoordinator):
         # Note: QualityEvaluatedGenerator already saves to Materials.yaml
         # This method exists to satisfy abstract base class
         pass
-    
-    def _load_materials_data(self) -> Dict:
-        """Load Materials.yaml using centralized loader"""
-        from domains.materials.data_loader_v2 import load_materials_data
-        return load_materials_data()
     
     def generate_eeat(self, material_name: str, material_data: Dict) -> Optional[Dict]:
         """

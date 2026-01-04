@@ -55,13 +55,17 @@ def get_frontmatter_path(item_name: str, field_name: str, domain: str) -> Path:
         adapter = DomainAdapter(domain)
         config = adapter.config
         
-        # Get frontmatter directory from config (check both root and export)
-        frontmatter_dir = config.get('frontmatter_directory') or \
-                         config.get('export', {}).get('frontmatter_directory', f'frontmatter/{domain}')
-        
-        # Get filename pattern from config (check both root and export)
-        pattern = config.get('frontmatter_filename_pattern') or \
-                 config.get('export', {}).get('filename_pattern', '{slug}.yaml')
+        # Get frontmatter directory from config (support both old flat and new nested structure)
+        if 'frontmatter' in config:
+            # New nested structure
+            frontmatter_dir = config['frontmatter'].get('directory', f'frontmatter/{domain}')
+            pattern = config['frontmatter'].get('filename_pattern', '{slug}.yaml')
+        else:
+            # Old flat structure (backward compatibility)
+            frontmatter_dir = config.get('frontmatter_directory') or \
+                             config.get('export', {}).get('frontmatter_directory', f'frontmatter/{domain}')
+            pattern = config.get('frontmatter_filename_pattern') or \
+                     config.get('export', {}).get('filename_pattern', '{slug}.yaml')
         
         # NEW: Legacy slug (parentheses REMOVED - old behavior)
         # Example: "Acrylic (PMMA)" → "acrylic-pmma"

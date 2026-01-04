@@ -211,7 +211,7 @@ DEPLOYMENT ENVIRONMENT
 
 Generator Directory: /Users/todddunning/Desktop/Z-Beam/z-beam-generator
 Production Directory: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter
-Export System: Universal Exporter (export/core/universal_exporter.py)
+Export System: FrontmatterExporter (export/core/frontmatter_exporter.py)
 
 Data Sources:
   • data/materials/Materials.yaml (153 materials)

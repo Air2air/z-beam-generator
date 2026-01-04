@@ -29,7 +29,7 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 
-class UnifiedLearningAnalyzer:
+class LearningAnalyzer:
     """
     Cross-module analyzer for Winston + Subjective learning insights
     

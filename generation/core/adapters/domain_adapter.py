@@ -63,13 +63,20 @@ class DomainAdapter(DataSourceAdapter):
         else:
             self.config = self._load_domain_config()
         
-        # Extract required paths from config
-        self.data_path = Path(self.config.get('data_path', f"data/{domain}/{domain.title()}.yaml"))
-        self.data_root_key = self.config.get('data_root_key', domain)
-        
-        # Optional configuration with defaults
-        self.author_key = self.config.get('author_key', 'author.id')
-        self.context_keys = self.config.get('context_keys', ['category'])
+        # Extract required paths from config (support both old flat and new nested structure)
+        if 'data_adapter' in self.config:
+            # New nested structure
+            adapter_config = self.config['data_adapter']
+            self.data_path = Path(adapter_config.get('data_path', f"data/{domain}/{domain.title()}.yaml"))
+            self.data_root_key = adapter_config.get('data_root_key', domain)
+            self.author_key = adapter_config.get('author_key', 'author.id')
+            self.context_keys = adapter_config.get('context_keys', ['category'])
+        else:
+            # Old flat structure (backward compatibility)
+            self.data_path = Path(self.config.get('data_path', f"data/{domain}/{domain.title()}.yaml"))
+            self.data_root_key = self.config.get('data_root_key', domain)
+            self.author_key = self.config.get('author_key', 'author.id')
+            self.context_keys = self.config.get('context_keys', ['category'])
         
         # Cache for loaded data
         self._data_cache = None

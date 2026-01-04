@@ -1,3 +1,7 @@
+# Materials Domain Export Configuration
+# Cross-references: domains/materials/config.yaml (generation settings)
+# Schema: export/config/schema.yaml
+
 domain: materials
 source_file: data/materials/Materials.yaml
 output_path: ../z-beam/frontmatter/materials
@@ -73,9 +77,6 @@ generators:
     domain: materials
   - type: section_metadata
     config_file: export/config/materials.yaml
-  - type: seo_description
-    source_field: description
-    max_length: 160
   - type: normalize_applications
     presentation: collapsible
   - type: normalize_expert_answers
@@ -93,15 +94,12 @@ generators:
   - type: field_mapping
     mappings:
       title: ['page_title', 'name']
-      description: 'meta_description'
+      metaDescription: 'description'  # Use camelCase for consistency
+      contentType: 'content_type'  # Convert snake_case to camelCase
+      fullPath: 'full_path'  # Convert snake_case to camelCase
   - type: field_ordering
     domain: materials
-- type: seo_metadata
-  module: export.generation.seo_metadata_generator
-  class: SEOMetadataGenerator
-  page_type: material
-  title_field: page_title
-  description_field: meta_description
+# SEOMetadataGenerator removed - metadata now in source data (Core Principle 0.6)
 - type: field_cleanup
   module: export.generation.field_cleanup_generator
   class: FieldCleanupGenerator

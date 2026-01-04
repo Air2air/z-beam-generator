@@ -2,7 +2,7 @@
 
 **Date**: December 20, 2025 (Consolidated)  
 **Status**: Production Architecture  
-**Current Version**: UniversalFrontmatterExporter
+**Current Version**: FrontmatterExporter
 
 ---
 
@@ -22,8 +22,8 @@ The export system transforms source data (Materials.yaml, Contaminants.yaml, etc
 
 ### 1. Universal Exporter (Current Production System)
 
-**Location**: `export/core/universal_exporter.py`  
-**Class**: `UniversalFrontmatterExporter`  
+**Location**: `export/core/frontmatter_exporter.py`  
+**Class**: `FrontmatterExporter`  
 **Purpose**: Configuration-driven export for all domains
 
 **Key Principles**:
@@ -34,17 +34,17 @@ The export system transforms source data (Materials.yaml, Contaminants.yaml, etc
 
 **Usage**:
 ```python
-from export.core.universal_exporter import UniversalFrontmatterExporter
+from export.core.frontmatter_exporter import FrontmatterExporter
 
 # Export materials
-exporter = UniversalFrontmatterExporter(domain='materials')
+exporter = FrontmatterExporter(domain='materials')
 exporter.export_item('aluminum')
 
 # Export all materials
 exporter.export_all()
 
 # Export contaminants
-contam_exporter = UniversalFrontmatterExporter(domain='contaminants')
+contam_exporter = FrontmatterExporter(domain='contaminants')
 contam_exporter.export_all()
 ```
 
@@ -219,10 +219,10 @@ FRONTMATTER OUTPUT (Website)
 
 **Current System**:
 ```python
-✅ from export.core.universal_exporter import UniversalFrontmatterExporter
+✅ from export.core.frontmatter_exporter import FrontmatterExporter
 ✅ from shared.validation import SchemaValidator
 
-exporter = UniversalFrontmatterExporter(domain='compounds')
+exporter = FrontmatterExporter(domain='compounds')
 exporter.export_all()
 ```
 
@@ -240,10 +240,10 @@ def test_compound_export():
 
 **New Test Pattern**:
 ```python
-from export.core.universal_exporter import UniversalFrontmatterExporter
+from export.core.frontmatter_exporter import FrontmatterExporter
 
 def test_compound_export():
-    exporter = UniversalFrontmatterExporter(domain='compounds')
+    exporter = FrontmatterExporter(domain='compounds')
     result = exporter.export_item('benzene')
     assert result is not None
 ```
@@ -258,20 +258,20 @@ def test_compound_export():
 python3 export/core/orchestrator.py --all
 
 # Individual domains
-python3 -c "from export.core.universal_exporter import UniversalFrontmatterExporter; \
-UniversalFrontmatterExporter(domain='materials').export_all()"
+python3 -c "from export.core.frontmatter_exporter import FrontmatterExporter; \
+FrontmatterExporter(domain='materials').export_all()"
 ```
 
 ### Export Single Item
 ```python
-from export.core.universal_exporter import UniversalFrontmatterExporter
+from export.core.frontmatter_exporter import FrontmatterExporter
 
 # Export specific material
-exporter = UniversalFrontmatterExporter(domain='materials')
+exporter = FrontmatterExporter(domain='materials')
 exporter.export_item('aluminum')
 
 # Export specific contaminant
-contam_exporter = UniversalFrontmatterExporter(domain='contaminants')
+contam_exporter = FrontmatterExporter(domain='contaminants')
 contam_exporter.export_item('rust')
 ```
 
@@ -280,7 +280,7 @@ contam_exporter.export_item('rust')
 1. Create domain config: `export/config/new_domain.yaml`
 2. Define source file, output directory, enrichers
 3. Register any domain-specific enrichers (if needed)
-4. Export: `UniversalFrontmatterExporter(domain='new_domain')`
+4. Export: `FrontmatterExporter(domain='new_domain')`
 
 **No code changes required** - fully configuration-driven
 
@@ -350,7 +350,7 @@ python3 export/core/orchestrator.py --all
 
 ### Version History
 
-**v9.1.0** (December 2025) - UniversalFrontmatterExporter
+**v9.1.0** (December 2025) - FrontmatterExporter
 - Single exporter handles all domains
 - Configuration-driven behavior
 - 16-enricher pipeline system
@@ -377,7 +377,7 @@ python3 export/core/orchestrator.py --all
 
 **Implementation Details**:
 - `export/README.md` - Comprehensive export documentation (657 lines)
-- `export/core/universal_exporter.py` - Primary exporter implementation
+- `export/core/frontmatter_exporter.py` - Primary exporter implementation
 - `export/config/*.yaml` - Domain configurations
 - `export/enrichers/` - Enricher implementations
 

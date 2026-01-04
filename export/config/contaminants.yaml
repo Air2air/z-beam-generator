@@ -1,3 +1,7 @@
+# Contaminants Domain Export Configuration
+# Cross-references: domains/contaminants/config.yaml (generation settings)
+# Schema: export/config/schema.yaml
+
 domain: contaminants
 source_file: data/contaminants/Contaminants.yaml
 output_path: ../z-beam/frontmatter/contaminants
@@ -160,7 +164,7 @@ generators:
   - type: seo_description
     source_field: contamination_description
     max_length: 160
-    output_field: meta_description
+    output_field: metaDescription  # Use camelCase for consistency
   - type: section_metadata
     config_file: export/config/contaminants.yaml
   - type: relationship_grouping
@@ -169,7 +173,10 @@ generators:
   - type: field_mapping
     mappings:
       title: ['page_title', 'name']
-      description: 'meta_description'
+      metaDescription: 'description'  # Use camelCase for consistency
+      contentType: 'content_type'  # Convert snake_case to camelCase
+      chemicalFormula: 'chemical_formula'  # Convert snake_case to camelCase
+      fullPath: 'full_path'  # Convert snake_case to camelCase
   - type: field_ordering
     domain: contaminants
 - type: seo_metadata
@@ -177,7 +184,7 @@ generators:
   class: SEOMetadataGenerator
   page_type: contaminant
   title_field: page_title
-  description_field: meta_description
+  description_field: metaDescription  # Use camelCase for consistency
 - type: relationships
   module: shared.generation.relationships_generator
   class: RelationshipsGenerator
@@ -197,7 +204,7 @@ generators:
   module: shared.generation.seo_description_generator
   class: SEODescriptionGenerator
   source_field: contaminant_description
-  output_field: meta_description
+  output_field: metaDescription  # Use camelCase for consistency
   max_length: 160
 - type: excerpt
   module: shared.generation.excerpt_generator

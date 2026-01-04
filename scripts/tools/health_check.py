@@ -49,7 +49,7 @@ def check_dependencies() -> Dict[str, Any]:
     
     # Check export system imports
     try:
-        from export.core.universal_exporter import FrontmatterExporter
+        from export.core.frontmatter_exporter import FrontmatterExporter
         from export.config.loader import load_domain_config
     except ImportError as e:
         result['valid'] = False

@@ -39,7 +39,7 @@ class APIConfig:
     retry_delay: float
 
 
-class UnifiedConfigManager:
+class ConfigManager:
     """
     Centralized configuration management with fail-fast validation.
     
@@ -61,7 +61,7 @@ class UnifiedConfigManager:
             self._component_config = None
             self._api_keys = None
             self._load_configuration()
-            UnifiedConfigManager._initialized = True
+            ConfigManager._initialized = True
     
     def _load_configuration(self):
         """Load all configuration with fail-fast validation"""
@@ -278,7 +278,7 @@ class UnifiedConfigManager:
 
 
 # Global instance for backward compatibility
-_config_manager = UnifiedConfigManager()
+_config_manager = ConfigManager()
 
 # Backward compatibility functions (maintain existing interfaces)
 

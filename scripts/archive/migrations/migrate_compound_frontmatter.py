@@ -24,7 +24,7 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from export.core.universal_exporter import FrontmatterExporter
+from export.core.frontmatter_exporter import FrontmatterExporter
 from export.config.loader import load_domain_config
 
 logger = logging.getLogger(__name__)

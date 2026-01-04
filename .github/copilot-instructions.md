@@ -849,6 +849,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - 🚫 **NEVER restrict word counts using max_tokens** - Causes mid-sentence truncation 🔥 **NEW (Dec 24, 2025)**
 - 🚫 **NEVER use enrichers to add missing data** - Generate complete data during generation 🔥 **NEW (Jan 2, 2026)**
 - 🚫 **NEVER create standalone enricher classes** - Use tasks in UniversalContentGenerator 🔥 **NEW (Jan 4, 2026)**
+- 🚫 **NEVER add data/metadata/structure at build time** - Generate complete data at source 🔥 **MANDATORY (Jan 4, 2026)**
 - 🚫 **NEVER use mocks/fallbacks in production code - NO EXCEPTIONS**
 - ✅ **ALLOW mocks/fallbacks in test code for proper testing**
 - ✅ **ALLOW embedded prompts in research scripts** - Data discovery OK 🔥 **NEW (Dec 29, 2025)**
@@ -868,6 +869,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - ✅ **ALWAYS save to frontmatter whenever you save to data** 🔥 **MANDATORY (Dec 12, 2025)**
 - ✅ **ALWAYS generate complete data to YAML** - Enrichers format, not add data 🔥 **NEW (Jan 2, 2026)**
 - ✅ **ALWAYS use task-based pattern in UniversalContentGenerator** - Not enrichers 🔥 **NEW (Jan 4, 2026)**
+- ✅ **ALWAYS generate complete data at source** - Export transforms, never creates 🔥 **MANDATORY (Jan 4, 2026)**
 
 ---
 
@@ -1233,6 +1235,81 @@ def _task_my_task(self, frontmatter, config):
 - Enricher Migration Complete (Dec 30, 2025) - Architectural consolidation
 - Export Task Documentation: `export/generation/universal_content_generator.py` docstrings
 
+### 0.6. **No Build-Time Data Enhancement** 🔥 **MANDATORY POLICY (Jan 4, 2026) - CRITICAL**
+**ALL data enhancement (structure, metadata, relationships) MUST happen during generation, NOT at build/export time.**
+
+**The Fundamental Rule:**
+Export/build processes should ONLY transform existing data for presentation, NEVER create or enhance data.
+
+**PROHIBITED at Build/Export Time** (Grade F violations):
+- ❌ Adding section metadata (titles, descriptions, icons) during export
+- ❌ Creating relationship groupings (technical/safety/operational) during export
+- ❌ Adding frequency/severity metadata to relationships during export
+- ❌ Converting data formats (FAQ → expert_answers, lists → collapsible) during export
+- ❌ Generating breadcrumbs, slugs, timestamps during export
+- ❌ Creating prevention sections from challenge patterns during export
+- ❌ Any task that adds fields not present in source YAML
+
+**REQUIRED During Generation Time:**
+- ✅ Write complete data to source YAML (Materials.yaml, Contaminants.yaml, etc.)
+- ✅ Include ALL metadata, structure, relationships when saving
+- ✅ Store data in final presentation format (collapsible, grouped, enriched)
+- ✅ Generate complete records that require ZERO enhancement later
+
+**ALLOWED at Build/Export Time:**
+- ✅ Field mapping (renaming fields for consistency)
+- ✅ Field ordering (organizing output structure)
+- ✅ Cleanup (removing temporary/deprecated fields)
+- ✅ Format transformation (YAML → frontmatter YAML)
+- ✅ Path resolution (relative paths, slug generation for URLs only)
+
+**Why This Matters:**
+- **Single source of truth** - Data files contain complete, ready-to-use information
+- **No hidden transformations** - What's in YAML is what gets displayed
+- **Reproducible builds** - Export produces identical output from same source
+- **Testable data** - Can validate data completeness without running export
+- **Clear separation** - Generation creates, Export presents
+
+**Migration Required (Jan 4, 2026):**
+Current export tasks that VIOLATE this policy:
+1. `normalize_applications` - Should write collapsible format during generation
+2. `normalize_expert_answers` - Should write expert_answers during generation
+3. `enrich_material_relationships` - Should add frequency/severity during generation
+4. `normalize_prevention` - Should create prevention sections during generation
+5. `section_metadata` - Should be embedded in source data during generation
+6. `relationship_grouping` - Should group during generation
+
+**Correct Implementation:**
+```python
+# ❌ WRONG - Enhancement during export
+def _task_normalize_applications(frontmatter):
+    # Converting list → collapsible during export
+    frontmatter['applications'] = convert_to_collapsible(
+        frontmatter['applications']
+    )
+
+# ✅ CORRECT - Complete data during generation
+def save_material_data(material):
+    # Write already-collapsible format to source
+    material_data['operational']['industry_applications'] = {
+        '_collapsible': True,
+        'items': [
+            {'title': 'Aerospace', 'description': '...', '_open': True},
+            {'title': 'Automotive', 'description': '...', '_open': False}
+        ]
+    }
+    save_to_materials_yaml(material_data)
+```
+
+**Enforcement:**
+- Export tasks limited to: field_mapping, field_ordering, field_cleanup, format conversion
+- NO tasks that add, create, or enhance data content
+- Code review required for any new export tasks
+- Automated tests verify source YAML contains complete data
+
+**Grade:** F violation if export tasks create/enhance data instead of just transforming existing data
+
+**Documentation:** `docs/02-architecture/GENERATION_VS_EXPORT_SEPARATION.md` (to be created)
 
 ### 1. **No Mocks or Fallbacks in Production Code** 🔥 **MANDATORY FIRM POLICY (Dec 11, 2025)**
 System must fail immediately if dependencies are missing. **ZERO TOLERANCE** for:

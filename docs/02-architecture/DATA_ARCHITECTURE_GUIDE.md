@@ -54,7 +54,7 @@ Frontmatter         →  OUTPUT ONLY - displays complete property data
                        ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ LAYER 2: EXPORT PROCESS (Transformation Logic)              │
-│ • export/core/universal_exporter.py (orchestration)          │
+│ • export/core/frontmatter_exporter.py (orchestration)          │
 │ • export/config/*.yaml (domain configurations)               │
 │ • export/enrichers/**/*.py (enrichment logic)                │
 │ FIX HERE: When generation logic is wrong                    │

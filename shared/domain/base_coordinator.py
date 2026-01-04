@@ -1,5 +1,5 @@
 """
-Universal Domain Coordinator Base Class
+Domain Coordinator Base Class
 
 Provides common initialization and generation orchestration for all domains.
 Eliminates duplication across materials, compounds, contaminants, settings coordinators.
@@ -157,6 +157,56 @@ class DomainCoordinator(ABC):
             self.domain_config = yaml.safe_load(f)
         
         logger.debug(f"Loaded config from {domain_config_path}")
+    
+    def _load_domain_data(self) -> Dict[str, Any]:
+        """
+        Load domain data from configured data file.
+        
+        Uses domain config's data_adapter.data_path to locate and load data.
+        Provides unified data loading across all domains (eliminates duplicate methods).
+        
+        Returns:
+            Dict containing full domain data from YAML file
+        
+        Raises:
+            FileNotFoundError: If data file doesn't exist
+            ValueError: If config missing data_adapter or data_path
+        
+        Example:
+            >>> # MaterialsCoordinator
+            >>> data = self._load_domain_data()
+            >>> materials = data['materials']
+            
+            >>> # ContaminantCoordinator  
+            >>> data = self._load_domain_data()
+            >>> patterns = data['contamination_patterns']
+        """
+        # Get data path from config (supports both nested and flat structure)
+        if 'data_adapter' in self.domain_config:
+            data_path = self.domain_config['data_adapter'].get('data_path')
+        elif 'data_path' in self.domain_config:
+            data_path = self.domain_config['data_path']
+        else:
+            raise ValueError(
+                f"Domain config missing data_adapter.data_path or data_path: {self.domain_name}"
+            )
+        
+        if not data_path:
+            raise ValueError(f"Empty data_path in config for domain: {self.domain_name}")
+        
+        # Resolve path relative to project root
+        project_root = Path(__file__).parent.parent.parent
+        full_path = project_root / data_path
+        
+        if not full_path.exists():
+            raise FileNotFoundError(f"Domain data file not found: {full_path}")
+        
+        # Load YAML
+        with open(full_path, 'r', encoding='utf-8') as f:
+            data = yaml.safe_load(f)
+        
+        logger.debug(f"Loaded domain data from {full_path}")
+        return data
     
     def generate_content(
         self,

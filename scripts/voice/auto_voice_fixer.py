@@ -87,7 +87,7 @@ class FileStats:
         return ", ".join(parts) if parts else "clean"
 
 
-class UniversalVoiceFixer:
+class VoiceFixer:
     """
     Universal voice fixer that works across ALL content types.
     

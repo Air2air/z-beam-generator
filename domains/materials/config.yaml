@@ -5,20 +5,33 @@
 # NOTE: Extraction strategies are centralized in generation/config.yaml
 
 # =============================================================================
-# DOMAIN ADAPTER CONFIGURATION (Required for DomainAdapter)
+# DOMAIN METADATA
 # =============================================================================
-data_path: "data/materials/Materials.yaml"
-data_root_key: "materials"
-author_key: "author.id"  # Author assigned ONCE, never changes (immutable)
-context_keys:
-  - category
-  - subcategory
-  - properties.density
-  - properties.melting_point
+domain:
+  name: materials
+  display_name: "Laser Cleaning Materials"
+  description: "Material-specific laser cleaning guidance and property profiles"
+  version: "1.0.0"
 
-# Frontmatter sync configuration (domain-agnostic architecture)
-frontmatter_directory: "frontmatter/materials"
-frontmatter_filename_pattern: "{slug}-laser-cleaning.yaml"
+# =============================================================================
+# DATA ADAPTER CONFIGURATION (Required for DomainAdapter)
+# =============================================================================
+data_adapter:
+  data_path: "data/materials/Materials.yaml"
+  data_root_key: "materials"
+  author_key: "author.id"  # Author assigned ONCE, never changes (immutable)
+  context_keys:
+    - category
+    - subcategory
+    - properties.density
+    - properties.melting_point
+
+# =============================================================================
+# FRONTMATTER CONFIGURATION (Domain-agnostic architecture)
+# =============================================================================
+frontmatter:
+  directory: "frontmatter/materials"
+  filename_pattern: "{slug}-laser-cleaning.yaml"
 
 # Materials-specific randomization targets
 # NOTE: Length targets REMOVED - now in prompts

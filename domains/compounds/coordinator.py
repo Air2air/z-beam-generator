@@ -3,7 +3,7 @@ Compounds Domain Coordinator
 Orchestrates content generation for hazardous compound safety profiles.
 
 REFACTORED (December 24, 2025):
-Now extends UniversalDomainCoordinator to eliminate duplication.
+Now extends DomainCoordinator to eliminate duplication.
 """
 
 import logging

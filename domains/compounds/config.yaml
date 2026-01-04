@@ -1,19 +1,38 @@
 # Compounds Domain Configuration
-# Last updated: December 15, 2025
+# Last updated: January 4, 2026
 
+# =============================================================================
+# DOMAIN METADATA
+# =============================================================================
 domain:
   name: compounds
   display_name: "Hazardous Compounds"
   description: "Chemical compounds generated during laser cleaning operations"
   version: "1.0.0"
 
-# Frontmatter filename pattern
-frontmatter_filename_pattern: "{slug}-compound.yaml"
+# =============================================================================
+# DATA ADAPTER CONFIGURATION (Required for DomainAdapter)
+# =============================================================================
+data_adapter:
+  data_path: "data/compounds/Compounds.yaml"
+  data_root_key: "compounds"
+  author_key: "author.id"
+  context_keys:
+    - category
+    - hazard_class
+    - chemical_formula
+    - cas_number
 
-# Data path (normalized with other domains)
-data_path: "data/compounds/Compounds.yaml"
-  
-# Content types that can be generated for compounds
+# =============================================================================
+# FRONTMATTER CONFIGURATION (Domain-agnostic architecture)
+# =============================================================================
+frontmatter:
+  directory: "frontmatter/compounds"
+  filename_pattern: "{slug}-compound.yaml"
+
+# =============================================================================
+# COMPONENT TYPES (Content that can be generated)
+# =============================================================================
 component_types:
   description:
     display_name: "Compound Description"
@@ -81,10 +100,70 @@ component_types:
     extraction_strategy: raw
     prompt_template: "detection_monitoring.txt"
 
-# NOTE: Word counts defined in domains/compounds/prompts/*.txt files
-# See docs/08-development/WORD_COUNT_IN_PROMPTS_POLICY.md
+# =============================================================================
+# RANDOMIZATION TARGETS (Structural variety)
+# =============================================================================
+randomization_targets:
+  # Structural approaches for compound descriptions
+  structures:
+    chemical_properties:
+      label: "Chemical Properties Focus"
+      description: "Start with chemical composition → bonding → how it forms"
+      probability: 0.20
+    health_hazards:
+      label: "Health Hazards Focus"
+      description: "Lead with health risks → exposure routes → safety measures"
+      probability: 0.20
+    formation_process:
+      label: "Formation Process"
+      description: "Explain how compound forms during laser cleaning → materials affected"
+      probability: 0.20
+    exposure_scenarios:
+      label: "Exposure Scenarios"
+      description: "Real-world exposure situations → risks → prevention"
+      probability: 0.20
+    regulatory_compliance:
+      label: "Regulatory Compliance"
+      description: "Standards and limits → monitoring requirements → compliance"
+      probability: 0.20
+  
+  # Property integration strategies
+  property_strategies:
+    scattered:
+      label: "SCATTERED INTEGRATION"
+      description: "Distribute chemical properties throughout narrative"
+      probability: 0.25
+    hazard_focused:
+      label: "HAZARD-FOCUSED"
+      description: "Emphasize health hazards and safety concerns"
+      probability: 0.25
+    comparative:
+      label: "COMPARATIVE"
+      description: "Compare to similar compounds, highlight differences"
+      probability: 0.25
+    practical:
+      label: "PRACTICAL"
+      description: "Focus on detection, monitoring, and prevention"
+      probability: 0.25
+  
+  # Warning placement options
+  warning_placements:
+    early:
+      label: "EARLY WARNING"
+      description: "Start with critical safety concern"
+      probability: 0.33
+    mid_flow:
+      label: "MID-FLOW WARNING"
+      description: "Embed warning naturally in middle"
+      probability: 0.33
+    concluding:
+      label: "CONCLUDING WARNING"
+      description: "End with critical safety reminder"
+      probability: 0.34
 
-# Generation settings
+# =============================================================================
+# GENERATION SETTINGS (Inherited from generation/config.yaml)
+# =============================================================================
 generation:
   model: "grok-beta"
   default_attempts: 5
@@ -103,86 +182,9 @@ generation:
     max_tokens: 2000
     top_p: 0.95
 
-# Author assignment
-authors:
-  # Compounds distributed across all 4 authors
-  enabled: true
-  distribution: balanced
-  allow_regeneration_with_same_author: true
-
-# Component extraction strategies (required for generation)
-component_extraction:
-  description:
-    extraction_strategy: raw
-  health_effects:
-    extraction_strategy: raw
-  exposure_guidelines:
-    extraction_strategy: raw
-  detection_methods:
-    extraction_strategy: raw
-  first_aid:
-    extraction_strategy: raw
-  ppe_requirements:
-    extraction_strategy: raw
-  regulatory_standards:
-    extraction_strategy: raw
-  emergency_response:
-    extraction_strategy: raw
-  chemical_properties:
-    extraction_strategy: raw
-  environmental_impact:
-    extraction_strategy: raw
-  detection_monitoring:
-    extraction_strategy: raw
-
-# Data sources
-data:
-  primary: "data/compounds/Compounds.yaml"
-  safety_library: "data/safety/Fume_Compounds.yaml"
-  citations: "data/standards/Citations.yaml"
-  
-# Crosslinking with other domains (DISABLED - feature removed)
-# crosslinks:
-#   materials:
-#     enabled: true
-#     fields: ["sources_in_laser_cleaning"]
-#     bidirectional: true
-#     
-#   contaminants:
-#     enabled: true
-#     fields: ["sources_in_laser_cleaning"]
-#     bidirectional: true
-
-# Export configuration
-export:
-  frontmatter_directory: "frontmatter/compounds"
-  filename_pattern: "{slug}-compound.yaml"
-  include_breadcrumbs: true
-  hydrate_authors: true
-  hydrate_crosslinks: false  # Disabled - feature removed
-  
-  # Required frontmatter fields
-  required_fields:
-    - id
-    - name
-    - display_name
-    - slug
-    - chemical_formula
-    - category
-    - hazard_class
-    - author
-    
-  # Optional enriched fields
-  optional_fields:
-    - cas_number
-    - molecular_weight
-    - exposure_limits
-    - health_effects_keywords
-    - sources_in_laser_cleaning
-    - monitoring_required
-    - typical_concentration_range
-
-# Postprocessing
+# =============================================================================
+# POSTPROCESSING
+# =============================================================================
 postprocessing:
   enabled: true
   retry_until_requirements_met: true

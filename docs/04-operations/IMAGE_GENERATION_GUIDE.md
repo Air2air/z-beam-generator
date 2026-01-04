@@ -467,7 +467,7 @@ python3 domains/materials/image/generate.py "Steel"
 
 ### For AI Assistants
 1. **Always use domain adapter pattern** - Don't pass domain-specific params to orchestrator
-2. **Validate before generation** - Use UniversalPromptValidator before API calls
+2. **Validate before generation** - Use PromptValidator before API calls
 3. **Log ALL attempts** - Success and failure both valuable for learning
 4. **Respect contamination levels** - 1=minimal, 5=moderate, 10=severe
 5. **Check YAML data completeness** - Verify visual_appearance and contamination_patterns exist

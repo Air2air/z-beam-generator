@@ -70,7 +70,7 @@ domains/contaminants/image/          ← Domain adapter (ContaminantImageConfig 
                        ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ LAYER 2: PROCESSING (Transformation Logic)                  │
-│ • export/core/universal_exporter.py (orchestration)          │
+│ • export/core/frontmatter_exporter.py (orchestration)          │
 │ • export/config/*.yaml (domain configurations)               │
 │ • export/enrichers/**/*.py (enrichment logic)                │
 │ • generation/core/evaluated_generator.py (text generation)   │
@@ -180,7 +180,7 @@ z-beam-generator/
 │       └── schema_validator.py
 ├── export/                         # Export system (Layer 2)
 │   ├── core/
-│   │   └── universal_exporter.py  # Universal export orchestrator
+│   │   └── frontmatter_exporter.py  # Export orchestrator
 │   ├── config/                    # Domain export configs
 │   │   ├── materials.yaml
 │   │   ├── contaminants.yaml
@@ -256,7 +256,7 @@ Result: Validated image saved
 ```
 User: run.py --export materials
    ↓
-UniversalFrontmatterExporter.export(domain='materials')
+FrontmatterExporter.export(domain='materials')
    ↓
 Load config: export/config/materials.yaml
    ↓

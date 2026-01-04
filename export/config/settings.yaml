@@ -1,3 +1,7 @@
+# Settings Domain Export Configuration
+# Cross-references: domains/settings/config.yaml (generation settings)
+# Schema: export/config/schema.yaml
+
 domain: settings
 source_file: data/settings/Settings.yaml
 output_path: ../z-beam/frontmatter/settings
@@ -67,10 +71,6 @@ generators:
   - type: timestamp
   - type: relationships
     domain: settings
-  - type: seo_description
-    source_field: settings_description
-    max_length: 160
-    output_field: meta_description
   - type: normalize_prevention
     challenge_file: data/challenges/ChallengePatterns.yaml
     target_field: operational.prevention
@@ -82,15 +82,12 @@ generators:
   - type: field_mapping
     mappings:
       title: ['page_title', 'name']
-      description: 'meta_description'
+      metaDescription: 'description'  # Use camelCase for consistency
+      contentType: 'content_type'  # Convert snake_case to camelCase
+      fullPath: 'full_path'  # Convert snake_case to camelCase
   - type: field_ordering
     domain: settings
-- type: seo_metadata
-  module: export.generation.seo_metadata_generator
-  class: SEOMetadataGenerator
-  page_type: settings
-  title_field: page_title
-  description_field: meta_description
+# SEOMetadataGenerator removed - metadata now in source data (Core Principle 0.6)
 - type: section_metadata
   module: export.generation.section_metadata_generator
   class: SectionMetadataGenerator

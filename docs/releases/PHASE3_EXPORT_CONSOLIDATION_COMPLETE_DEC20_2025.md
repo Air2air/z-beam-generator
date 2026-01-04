@@ -174,7 +174,7 @@ ls -1 docs/archive/2025-12/export/*.md | wc -l
 # Result: 2 files
 
 # Total export docs (active)
-find . -path "./docs/archive" -prune -o -name "*.md" -exec grep -l "UniversalFrontmatterExporter\|export.*universal" {} \; | grep -v ".git" | wc -l
+find . -path "./docs/archive" -prune -o -name "*.md" -exec grep -l "FrontmatterExporter\|export.*frontmatter" {} \; | grep -v ".git" | wc -l
 # Result: 2 active files (README + architecture)
 ```
 

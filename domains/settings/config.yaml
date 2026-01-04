@@ -5,18 +5,31 @@
 # NOTE: Extraction strategies are centralized in generation/config.yaml
 
 # =============================================================================
-# DOMAIN ADAPTER CONFIGURATION (Required for DomainAdapter)
+# DOMAIN METADATA
 # =============================================================================
-data_path: "data/settings/Settings.yaml"
-data_root_key: "settings"
-author_key: "author.id"
-context_keys:
-  - material
-  - machine_settings
+domain:
+  name: settings
+  display_name: "Laser Parameter Settings"
+  description: "Machine parameter settings and optimization guidance"
+  version: "1.0.0"
 
-# Frontmatter sync configuration (domain-agnostic architecture)
-frontmatter_directory: "frontmatter/settings"
-frontmatter_filename_pattern: "{slug}-settings.yaml"
+# =============================================================================
+# DATA ADAPTER CONFIGURATION (Required for DomainAdapter)
+# =============================================================================
+data_adapter:
+  data_path: "data/settings/Settings.yaml"
+  data_root_key: "settings"
+  author_key: "author.id"
+  context_keys:
+    - material
+    - machine_settings
+
+# =============================================================================
+# FRONTMATTER CONFIGURATION (Domain-agnostic architecture)
+# =============================================================================
+frontmatter:
+  directory: "frontmatter/settings"
+  filename_pattern: "{slug}-settings.yaml"
 
 # =============================================================================
 # AUTHOR VOICE ARCHITECTURE (Dec 6, 2025)

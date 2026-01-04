@@ -1,0 +1,159 @@
+# Export Configuration Schema
+# Defines the standard structure for all domain export configurations
+# Created: January 4, 2026
+# Purpose: Enforce consistency across export configs
+
+# All export configs must conform to this schema structure
+
+schema_version: "1.0.0"
+
+# Required fields for all export configs
+required_fields:
+  - domain          # Domain name (materials|contaminants|compounds|settings)
+  - source_file     # Path to source YAML data file
+  - output_path     # Path to frontmatter output directory
+  - items_key       # Root key in source YAML containing items
+
+# Optional fields
+optional_fields:
+  - id_field        # Key used for item identification (default: name or slug)
+  - filename_suffix # Suffix added to filenames (default: '')
+  - relationship_groups  # Grouped relationship types
+  - section_metadata     # Section display configuration
+
+# Field definitions
+fields:
+  domain:
+    type: string
+    description: "Domain identifier matching domains/{domain}/ directory"
+    allowed_values: [materials, contaminants, compounds, settings]
+    
+  source_file:
+    type: string
+    description: "Relative path to source YAML data file"
+    pattern: "^data/[a-z]+/[A-Z][a-z]+\\.yaml$"
+    examples:
+      - "data/materials/Materials.yaml"
+      - "data/contaminants/Contaminants.yaml"
+      - "data/compounds/Compounds.yaml"
+      - "data/settings/Settings.yaml"
+  
+  output_path:
+    type: string
+    description: "Relative path to frontmatter output directory"
+    pattern: "^\\.\\./z-beam/frontmatter/[a-z]+$"
+    examples:
+      - "../z-beam/frontmatter/materials"
+      - "../z-beam/frontmatter/contaminants"
+  
+  items_key:
+    type: string
+    description: "Root key in source YAML containing array/dict of items"
+    examples:
+      - "materials"
+      - "contamination_patterns"
+      - "compounds"
+      - "settings"
+  
+  id_field:
+    type: string
+    description: "Field name used for item identification (optional)"
+    default: "name"
+    examples:
+      - "name"
+      - "id"
+      - "slug"
+  
+  filename_suffix:
+    type: string
+    description: "Suffix appended to output filenames (optional)"
+    default: ""
+    examples:
+      - ""
+      - "-laser-cleaning"
+  
+  relationship_groups:
+    type: object
+    description: "Grouped relationship types for organization"
+    structure:
+      category_name:
+        type: array
+        items: string
+    examples:
+      technical:
+        - contaminated_by
+        - related_materials
+      safety:
+        - regulatory_standards
+        - health_effects
+      operational:
+        - industry_applications
+        - use_cases
+  
+  section_metadata:
+    type: object
+    description: "Display metadata for relationship sections"
+    structure:
+      "section_path":  # e.g., "safety.regulatory_standards"
+        section_title: string       # User-facing title
+        section_description: string # User-facing description
+        icon: string               # Lucide icon name
+        order: integer             # Display order within category
+        variant: string            # Visual variant (default|warning|info)
+        section_metadata:          # Internal developer notes
+          notes: string
+          relationship_type: string
+          presentation_type: string
+          features: string
+
+# Standard field order (for consistency)
+field_order:
+  1: domain
+  2: source_file
+  3: output_path
+  4: items_key
+  5: id_field
+  6: filename_suffix
+  7: relationship_groups
+  8: section_metadata
+  9: tasks              # Export tasks configuration
+  10: field_mapping     # Field transformation rules
+  11: field_ordering    # Field display order
+
+# Validation rules
+validation:
+  - "domain must match directory name in domains/"
+  - "source_file must exist in filesystem"
+  - "output_path directory must be writable"
+  - "items_key must exist in source YAML"
+  - "All section_metadata keys must reference valid relationship paths"
+  - "icon names must be valid Lucide icons"
+  - "order must be positive integer"
+  - "variant must be one of: default, warning, info, success, error"
+
+# Examples of valid export configs
+examples:
+  minimal:
+    domain: materials
+    source_file: data/materials/Materials.yaml
+    output_path: ../z-beam/frontmatter/materials
+    items_key: materials
+  
+  complete:
+    domain: contaminants
+    source_file: data/contaminants/Contaminants.yaml
+    output_path: ../z-beam/frontmatter/contaminants
+    items_key: contamination_patterns
+    id_field: id
+    filename_suffix: ''
+    relationship_groups:
+      safety:
+        - regulatory_standards
+        - health_effects
+    section_metadata:
+      safety.regulatory_standards:
+        section_title: Regulatory Standards
+        section_description: Safety and compliance standards
+        icon: shield-check
+        order: 1
+        variant: default

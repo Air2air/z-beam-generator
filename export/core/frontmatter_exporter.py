@@ -1,5 +1,4 @@
-"""
-Universal Frontmatter Exporter
+"""Frontmatter Exporter
 
 Configuration-driven exporter that replaces all domain-specific exporters.
 Part of Export System Consolidation (Phase 1).
@@ -39,7 +38,7 @@ logger = logging.getLogger(__name__)
 
 class FrontmatterExporter:
     """
-    Universal configuration-driven frontmatter exporter.
+    Configuration-driven frontmatter exporter.
     
     Single class that handles all domain exports through configuration.
     Domain-specific behavior defined in YAML configs (export/config/*.yaml).
@@ -428,9 +427,9 @@ class FrontmatterExporter:
         # Add id field (per FRONTMATTER_FORMATTING_GUIDE.md - should be first field)
         frontmatter['id'] = item_id
         
-        # Ensure required Schema 5.0.0 fields
-        frontmatter.setdefault('schema_version', '5.0.0')
-        frontmatter.setdefault('content_type', self.domain)
+        # NOTE: schemaVersion, contentType, pageTitle, metaDescription, fullPath
+        # are now required in source data (Core Principle 0.6: No Build-Time Data Enhancement)
+        # Do NOT add defaults here - source data must be complete
         
         # Add timestamps if missing
         now = datetime.utcnow().isoformat() + 'Z'

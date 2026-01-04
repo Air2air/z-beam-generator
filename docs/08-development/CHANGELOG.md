@@ -115,7 +115,7 @@ Comprehensive history of improvements, consolidations, and architectural changes
 **Focus**: Export system consolidation, voice unification, policy documentation
 
 ### Phase 1: Export System Normalization
-- ✅ Consolidated 12 exporters into UniversalExporter
+- ✅ Consolidated 12 exporters into FrontmatterExporter
 - ✅ Created config-driven architecture
 - ✅ Eliminated 5,000+ lines of duplicate code
 

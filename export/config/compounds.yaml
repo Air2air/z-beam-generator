@@ -213,7 +213,14 @@ generators:
   - type: field_mapping
     mappings:
       title: ['page_title', 'name']
-      description: 'meta_description'
+      metaDescription: 'description'  # Use camelCase for consistency
+      displayName: 'display_name'  # Convert snake_case to camelCase
+      contentType: 'content_type'  # Convert snake_case to camelCase
+      casNumber: 'cas_number'  # Convert snake_case to camelCase
+      chemicalFormula: 'chemical_formula'  # Convert snake_case to camelCase
+      hazardClass: 'hazard_class'  # Convert snake_case to camelCase
+      molecularWeight: 'molecular_weight'  # Convert snake_case to camelCase
+      fullPath: 'full_path'  # Convert snake_case to camelCase
   - type: field_ordering
     domain: compounds
 - type: seo_metadata
@@ -221,12 +228,12 @@ generators:
   class: SEOMetadataGenerator
   page_type: compound
   title_field: page_title
-  description_field: meta_description
+  description_field: metaDescription  # Use camelCase for consistency
 - type: seo_description
   module: shared.generation.seo_description_generator
   class: SEODescriptionGenerator
   source_field: description
-  output_field: meta_description
+  output_field: metaDescription  # Use camelCase for consistency
   max_length: 160
 - type: excerpt
   module: shared.generation.excerpt_generator

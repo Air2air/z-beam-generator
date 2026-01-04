@@ -1,5 +1,4 @@
-"""
-Universal Content Generator
+"""Content Generator
 
 Consolidates all enricher functionality into a single generator-based system.
 Replaces 51 enricher files with one unified generator.
@@ -45,7 +44,7 @@ logger = logging.getLogger(__name__)
 
 class ContentGenerator(BaseGenerator):
     """
-    Universal content generator that replaces all enrichers.
+    Content generator that replaces all enrichers.
     
     Performs all frontmatter enrichment tasks through configuration:
     - Author linkage
@@ -445,28 +444,46 @@ class ContentGenerator(BaseGenerator):
     
     def _task_field_mapping(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
-        Create aliased fields for consistency.
+        Create aliased fields for consistency and rename fields.
         Maps common fields to standardized names for frontend.
         
         Example mappings:
         - 'title' from 'name' or 'page_title'
         - 'description' from appropriate source field
+        - 'displayName' from 'display_name' (field rename)
+        
+        If the target field starts with an uppercase letter or contains uppercase,
+        it's considered a rename operation (not an alias), and the source field is removed.
         """
         mappings = config.get('mappings', {})
         
         for target_field, source_config in mappings.items():
-            # Skip if target already exists
-            if target_field in frontmatter and frontmatter[target_field]:
-                continue
-            
             # Get source field(s) - can be string or list
             sources = source_config if isinstance(source_config, list) else [source_config]
+            
+            # Check if this is a rename operation (target has different casing than source)
+            is_rename = False
+            for source_field in sources:
+                if isinstance(source_field, str):
+                    # If target != source and source exists, it's a rename
+                    if target_field != source_field and source_field in frontmatter:
+                        is_rename = True
+                        break
+            
+            # Skip if target already exists (for aliases only)
+            if not is_rename and target_field in frontmatter and frontmatter[target_field]:
+                continue
             
             # Try each source in order
             for source_field in sources:
                 if source_field in frontmatter and frontmatter[source_field]:
                     frontmatter[target_field] = frontmatter[source_field]
                     logger.debug(f"Mapped '{target_field}' from '{source_field}'")
+                    
+                    # Remove source field if this is a rename operation
+                    if is_rename and source_field != target_field:
+                        del frontmatter[source_field]
+                        logger.debug(f"Renamed '{source_field}' to '{target_field}'")
                     break
         
         return frontmatter

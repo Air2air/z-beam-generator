@@ -48,7 +48,7 @@ User Request → Domain Coordinator → QualityEvaluatedGenerator
 
 ### 2. Export Pipeline
 ```
-Deploy Command → UniversalExporter → Load Source Data
+Deploy Command → FrontmatterExporter → Load Source Data
 → Apply Enrichers → Order Fields → Write Frontmatter
 ```
 

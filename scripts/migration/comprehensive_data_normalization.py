@@ -24,7 +24,7 @@ from pathlib import Path
 from typing import Dict, Any, List, Tuple
 from datetime import datetime
 
-class UniversalDataNormalizer:
+class DataNormalizer:
     """Comprehensive normalizer for all domains."""
     
     # Domain configurations
@@ -368,7 +368,7 @@ def main():
     
     args = parser.parse_args()
     
-    normalizer = UniversalDataNormalizer()
+    normalizer = DataNormalizer()
     normalizer.run(dry_run=args.dry_run)
 
 
