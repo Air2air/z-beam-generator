@@ -569,11 +569,25 @@ class ContentGenerator(BaseGenerator):
             },
             items: [{applications: [{id, name, description}, ...]}]
         }
+        
+        UPDATED (Jan 3, 2026): Now handles top-level 'applications' field from Materials.yaml
         """
+        # Initialize relationships if it doesn't exist
         if 'relationships' not in frontmatter:
-            return frontmatter
+            frontmatter['relationships'] = {}
         
         relationships = frontmatter['relationships']
+        
+        # Initialize operational category if needed
+        if 'operational' not in relationships:
+            relationships['operational'] = {}
+        
+        # STEP 1: Move top-level 'applications' to relationships.operational.industry_applications
+        if 'applications' in frontmatter and isinstance(frontmatter['applications'], list):
+            logger.info(f"📦 Moving top-level 'applications' ({len(frontmatter['applications'])} items) to relationships.operational.industry_applications")
+            relationships['operational']['industry_applications'] = frontmatter['applications']
+            # Remove from top level
+            del frontmatter['applications']
         
         # Check for industry_applications in operational group
         if 'operational' in relationships and isinstance(relationships['operational'], dict):
