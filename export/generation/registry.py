@@ -26,7 +26,7 @@ Usage:
         {
             'type': 'seo_description',
             'source_field': 'contamination_description',
-            'output_field': 'seo_description',
+            'output_field': 'meta_description',
             'max_length': 160
         }
     ]
@@ -98,7 +98,7 @@ class SEODescriptionGenerator(BaseGenerator):
         Args:
             config: Config with keys:
                 - source_field: Field to read from (e.g., 'description')
-                - output_field: Field to write to (e.g., 'seo_description')
+                - output_field: Field to write to (e.g., 'meta_description')
                 - max_length: Maximum characters (default: 160)
         
         Raises:
@@ -299,7 +299,7 @@ def create_generators(configs: List[Dict[str, Any]]) -> List[BaseGenerator]:
             {
                 'type': 'seo_description',
                 'source_field': 'description',
-                'output_field': 'seo_description'
+                'output_field': 'meta_description'
             },
             {
                 'type': 'breadcrumb',

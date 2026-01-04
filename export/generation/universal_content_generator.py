@@ -83,6 +83,7 @@ class ContentGenerator(BaseGenerator):
             'seo_description': self._task_seo_description,
             'seo_excerpt': self._task_seo_excerpt,
             'breadcrumbs': self._task_breadcrumbs,
+            'field_mapping': self._task_field_mapping,
             'field_cleanup': self._task_field_cleanup,
             'field_ordering': self._task_field_ordering,
             'library_enrichment': self._task_library_enrichment,
@@ -93,6 +94,8 @@ class ContentGenerator(BaseGenerator):
             'normalize_prevention': self._task_normalize_prevention,
             'normalize_expert_answers': self._task_normalize_expert_answers,
             'normalize_compounds': self._task_normalize_compounds,
+            'remove_duplicate_safety_fields': self._task_remove_duplicate_safety_fields,
+            'remove_storage_requirements': self._task_remove_storage_requirements,
             'enrich_material_relationships': self._task_enrich_material_relationships,
         }
     
@@ -272,9 +275,9 @@ class ContentGenerator(BaseGenerator):
     
     def _task_section_metadata(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
-        Add sectionMetadata to ALL relationship sections.
+        Add _section metadata to ALL relationship sections.
         Replaces: SectionMetadataEnricher
-        Priority: Adds sectionMetadata from config OR generates default metadata
+        Priority: Adds _section from config OR generates default metadata
         """
         config_file = config.get('config_file')
         
@@ -296,23 +299,26 @@ class ContentGenerator(BaseGenerator):
                 'section_title': 'Safety Standards & Compliance',
                 'section_description': 'OSHA, ANSI, ISO requirements and compliance standards',
                 'icon': 'shield-check',
-                'order': 10
+                'order': 10,
+                'variant': 'default'
             },
             'removes_contaminants': {
                 'section_title': 'Effective Contaminants',
                 'section_description': 'Contamination types successfully removed',
                 'icon': 'droplet',
-                'order': 20
+                'order': 20,
+                'variant': 'default'
             },
             'works_on_materials': {
                 'section_title': 'Compatible Materials',
                 'section_description': 'Materials optimized for these settings',
                 'icon': 'box',
-                'order': 30
+                'order': 30,
+                'variant': 'default'
             }
         }
         
-        # Add sectionMetadata to each relationship section
+        # Add/update _section metadata for each relationship section
         for category, sections in frontmatter['relationships'].items():
             if not isinstance(sections, dict):
                 continue
@@ -321,11 +327,7 @@ class ContentGenerator(BaseGenerator):
                 if not isinstance(section_data, dict):
                     continue
                 
-                # Skip if already has sectionMetadata
-                if 'sectionMetadata' in section_data:
-                    continue
-                
-                # Try to get from config first
+                # Try to get from config first (use category.section_key format)
                 metadata_key = f"{category}.{section_key}"
                 metadata = configured_metadata.get(metadata_key) or configured_metadata.get(section_key)
                 
@@ -333,14 +335,20 @@ class ContentGenerator(BaseGenerator):
                 if not metadata:
                     metadata = default_metadata.get(section_key)
                 
-                # Add sectionMetadata if we have it
+                # If we have metadata, create or update _section
                 if metadata:
-                    section_data['sectionMetadata'] = {
-                        'section_title': metadata.get('title', metadata.get('section_title', section_key.replace('_', ' ').title())),
-                        'section_description': metadata.get('description', metadata.get('section_description', '')),
+                    # Get existing _section or create new one
+                    if '_section' not in section_data:
+                        section_data['_section'] = {}
+                    
+                    # Update with complete metadata (overwrites partial metadata)
+                    section_data['_section'].update({
+                        'title': metadata.get('section_title', section_key.replace('_', ' ').title()),
+                        'description': metadata.get('section_description', ''),
                         'icon': metadata.get('icon', 'circle-info'),
-                        'order': metadata.get('order', 100)
-                    }
+                        'order': metadata.get('order', 100),
+                        'variant': metadata.get('variant', 'default')
+                    })
         
         return frontmatter
     
@@ -350,7 +358,7 @@ class ContentGenerator(BaseGenerator):
         Replaces: SEODescriptionGenerator
         """
         source_field = config.get('source_field', 'description')
-        output_field = config.get('output_field', 'seo_description')
+        output_field = config.get('output_field', 'meta_description')
         max_length = config.get('max_length', 160)
         
         source_text = frontmatter.get(source_field, '')
@@ -406,8 +414,10 @@ class ContentGenerator(BaseGenerator):
     
     def _task_breadcrumbs(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
-        Generate breadcrumb navigation.
+        Generate breadcrumb navigation array.
         Replaces: BreadcrumbGenerator
+        
+        Creates 'breadcrumbs' (plural) array for frontend navigation.
         """
         domain = config.get('domain')
         
@@ -429,7 +439,36 @@ class ContentGenerator(BaseGenerator):
                 'href': ''  # Current page
             })
         
-        frontmatter['breadcrumb'] = breadcrumbs
+        # Use plural 'breadcrumbs' for consistency with frontend
+        frontmatter['breadcrumbs'] = breadcrumbs
+        return frontmatter
+    
+    def _task_field_mapping(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
+        """
+        Create aliased fields for consistency.
+        Maps common fields to standardized names for frontend.
+        
+        Example mappings:
+        - 'title' from 'name' or 'page_title'
+        - 'description' from appropriate source field
+        """
+        mappings = config.get('mappings', {})
+        
+        for target_field, source_config in mappings.items():
+            # Skip if target already exists
+            if target_field in frontmatter and frontmatter[target_field]:
+                continue
+            
+            # Get source field(s) - can be string or list
+            sources = source_config if isinstance(source_config, list) else [source_config]
+            
+            # Try each source in order
+            for source_field in sources:
+                if source_field in frontmatter and frontmatter[source_field]:
+                    frontmatter[target_field] = frontmatter[source_field]
+                    logger.debug(f"Mapped '{target_field}' from '{source_field}'")
+                    break
+        
         return frontmatter
     
     def _task_field_cleanup(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
@@ -1084,11 +1123,12 @@ class ContentGenerator(BaseGenerator):
         if health_effects and isinstance(health_effects, str):
             safety['health_impacts'] = {
                 'presentation': 'descriptive',
-                'sectionMetadata': {
-                    'section_title': 'Health Impacts',
-                    'section_description': 'Health effects and risks from exposure to this compound',
+                '_section': {
+                    'title': 'Health Impacts',
+                    'description': 'Health effects and risks from exposure to this compound',
                     'icon': 'heart-pulse',
-                    'order': 1
+                    'order': 1,
+                    'variant': 'warning'
                 },
                 'items': [{'content': health_effects}]
             }
@@ -1098,11 +1138,12 @@ class ContentGenerator(BaseGenerator):
         if exposure_guidelines and isinstance(exposure_guidelines, str):
             safety['exposure_guidance'] = {
                 'presentation': 'descriptive',
-                'sectionMetadata': {
-                    'section_title': 'Exposure Guidelines',
-                    'section_description': 'Safe exposure limits and handling precautions',
+                '_section': {
+                    'title': 'Exposure Guidelines',
+                    'description': 'Safe exposure limits and handling precautions',
                     'icon': 'shield-exclamation',
-                    'order': 2
+                    'order': 2,
+                    'variant': 'warning'
                 },
                 'items': [{'content': exposure_guidelines}]
             }
@@ -1112,11 +1153,12 @@ class ContentGenerator(BaseGenerator):
         if ppe_requirements and isinstance(ppe_requirements, str):
             safety['personal_protection'] = {
                 'presentation': 'descriptive',
-                'sectionMetadata': {
-                    'section_title': 'Personal Protection',
-                    'section_description': 'Required protective equipment for handling this compound',
+                '_section': {
+                    'title': 'Personal Protection',
+                    'description': 'Required protective equipment for handling this compound',
                     'icon': 'shield-check',
-                    'order': 3
+                    'order': 3,
+                    'variant': 'warning'
                 },
                 'items': [{'content': ppe_requirements}]
             }
@@ -1126,11 +1168,12 @@ class ContentGenerator(BaseGenerator):
         if first_aid and isinstance(first_aid, str):
             safety['emergency_procedures'] = {
                 'presentation': 'descriptive',
-                'sectionMetadata': {
-                    'section_title': 'Emergency Procedures',
-                    'section_description': 'First aid and emergency response for exposure incidents',
+                '_section': {
+                    'title': 'Emergency Procedures',
+                    'description': 'First aid and emergency response for exposure incidents',
                     'icon': 'first-aid',
-                    'order': 4
+                    'order': 4,
+                    'variant': 'danger'
                 },
                 'items': [{'content': first_aid}]
             }
@@ -1143,11 +1186,12 @@ class ContentGenerator(BaseGenerator):
             
             relationships['detection']['methods'] = {
                 'presentation': 'descriptive',
-                'sectionMetadata': {
-                    'section_title': 'Detection Methods',
-                    'section_description': 'Techniques and equipment for detecting this compound',
+                '_section': {
+                    'title': 'Detection Methods',
+                    'description': 'Techniques and equipment for detecting this compound',
                     'icon': 'microscope',
-                    'order': 1
+                    'order': 1,
+                    'variant': 'default'
                 },
                 'items': [{'content': detection_methods}]
             }
@@ -1202,11 +1246,12 @@ class ContentGenerator(BaseGenerator):
             if expert_items:
                 relationships['operational']['expert_answers'] = {
                     'presentation': 'collapsible',
-                    'sectionMetadata': {
-                        'section_title': 'Expert Q&A',
-                        'section_description': 'Common questions about this compound answered by experts',
+                    '_section': {
+                        'title': 'Expert Q&A',
+                        'description': 'Common questions about this compound answered by experts',
                         'icon': 'user-tie',
-                        'order': 1
+                        'order': 1,
+                        'variant': 'default'
                     },
                     'items': expert_items,
                     'options': {
@@ -1240,6 +1285,74 @@ class ContentGenerator(BaseGenerator):
         if fields_to_remove:
             print(f"🗑️  Removed {len(fields_to_remove)} top-level fields: {', '.join(fields_to_remove)}")
             logger.info(f"✅ Restructured compound: moved and removed {len(fields_to_remove)} scattered fields")
+        
+        return frontmatter
+    
+    def _task_remove_duplicate_safety_fields(self, frontmatter: Dict[str, Any], task_config: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Remove legacy duplicate safety fields from compounds.
+        
+        Compounds domain has both old and new field names for the same data:
+        - health_effects (old) vs health_impacts (new)
+        - ppe_requirements (old) vs personal_protection (new)
+        - emergency_response (old) vs emergency_procedures (new)
+        - exposure_limits (old) vs exposure_guidance (new)
+        
+        This task removes the OLD fields, keeping only the NEW standardized names.
+        
+        Added: January 4, 2026 - Section categorization cleanup
+        """
+        if 'relationships' not in frontmatter:
+            return frontmatter
+        
+        relationships = frontmatter['relationships']
+        
+        if 'safety' not in relationships or not isinstance(relationships['safety'], dict):
+            return frontmatter
+        
+        safety = relationships['safety']
+        
+        # Define old → new mappings
+        duplicates_to_remove = [
+            'health_effects',        # Keep: health_impacts
+            'ppe_requirements',      # Keep: personal_protection
+            'emergency_response',    # Keep: emergency_procedures
+            'exposure_limits'        # Keep: exposure_guidance
+        ]
+        
+        removed_count = 0
+        for old_field in duplicates_to_remove:
+            if old_field in safety:
+                del safety[old_field]
+                removed_count += 1
+        
+        if removed_count > 0:
+            logger.info(f"🗑️  Removed {removed_count} duplicate safety fields")
+        
+        return frontmatter
+    
+    def _task_remove_storage_requirements(self, frontmatter: Dict[str, Any], task_config: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Remove storage_requirements section from compounds.
+        
+        Storage requirements are too generic and not specific to laser cleaning operations.
+        This section adds no value to the user experience.
+        
+        Added: January 4, 2026 - Section cleanup
+        """
+        if 'relationships' not in frontmatter:
+            return frontmatter
+        
+        relationships = frontmatter['relationships']
+        
+        if 'safety' not in relationships or not isinstance(relationships['safety'], dict):
+            return frontmatter
+        
+        safety = relationships['safety']
+        
+        if 'storage_requirements' in safety:
+            del safety['storage_requirements']
+            logger.info(f"🗑️  Removed storage_requirements section")
         
         return frontmatter
     

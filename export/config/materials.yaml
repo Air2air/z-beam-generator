@@ -10,31 +10,55 @@ relationship_groups:
   - regulatory_standards
   operational:
   - industry_applications
+# Section metadata configuration
+# Note: section_title and section_description are DISPLAYED to users
+#       section_metadata is for INTERNAL reference only (developer notes)
 section_metadata:
-  operational.industry_applications:
-    title: Industry Applications
-    description: Industries and sectors where this material is commonly used
-    icon: building-2
-    order: 3
-    variant: default
-  operational.expert_answers:
-    title: Expert Q&A
-    description: Frequently asked questions answered by laser cleaning experts
-    icon: user-tie
-    order: 4
-    variant: default
+  # INTERACTIONS category
   interactions.contaminated_by:
-    title: Common Contaminants
-    description: Types of contamination typically found on this material that require laser cleaning
+    section_title: Common Contaminants
+    section_description: Types of contamination typically found on this material that require laser cleaning
     icon: droplet
     order: 1
     variant: default
-  safety.regulatory_standards:
-    title: Regulatory Standards
-    description: Safety and compliance standards applicable to laser cleaning of this material
-    icon: shield-check
+    section_metadata:
+      notes: Cross-references to contaminant pages
+      relationship_type: contaminated_by
+      presentation_type: card
+  
+  # OPERATIONAL category
+  operational.industry_applications:
+    section_title: Industry Applications
+    section_description: Industries and sectors where this material is commonly used
+    icon: building-2
+    order: 1
+    variant: default
+    section_metadata:
+      notes: Real-world use cases in collapsible format
+      presentation_type: collapsible
+      features: auto_open_first
+  
+  operational.expert_answers:
+    section_title: Expert Q&A
+    section_description: Frequently asked questions answered by laser cleaning experts
+    icon: message-circle-question
     order: 2
     variant: default
+    section_metadata:
+      notes: Q&A format expert insights
+      presentation_type: collapsible
+      features: auto_open_first
+  
+  # SAFETY category
+  safety.regulatory_standards:
+    section_title: Regulatory Standards
+    section_description: Safety and compliance standards applicable to laser cleaning of this material
+    icon: shield-check
+    order: 1
+    variant: default
+    section_metadata:
+      notes: Compliance requirements
+      presentation_type: card
 id_field: id
 generators:
 - type: universal_content
@@ -47,6 +71,8 @@ generators:
   - type: timestamp
   - type: relationships
     domain: materials
+  - type: section_metadata
+    config_file: export/config/materials.yaml
   - type: seo_description
     source_field: description
     max_length: 160
@@ -64,6 +90,10 @@ generators:
     config_file: export/config/materials.yaml
   - type: breadcrumbs
     domain: materials
+  - type: field_mapping
+    mappings:
+      title: ['page_title', 'name']
+      description: 'meta_description'
   - type: field_ordering
     domain: materials
 - type: seo_metadata

@@ -4,6 +4,148 @@ output_path: ../z-beam/frontmatter/contaminants
 items_key: contamination_patterns
 id_field: id
 filename_suffix: ''
+
+# Section metadata configuration
+# Note: section_title and section_description are DISPLAYED to users
+#       section_metadata is for INTERNAL reference only (developer notes)
+section_metadata:
+  # SAFETY category (9 sections - primary focus for contaminants)
+  safety.regulatory_standards:
+    section_title: Regulatory Standards
+    section_description: Safety and compliance standards for handling this contaminant
+    icon: shield-check
+    order: 1
+    variant: default
+    section_metadata:
+      notes: Compliance requirements
+      presentation_type: card
+  
+  safety.fire_explosion_risk:
+    section_title: Fire & Explosion Risk
+    section_description: Flammability and explosion hazards associated with this contaminant
+    icon: flame
+    order: 2
+    variant: warning
+    section_metadata:
+      notes: Critical fire safety information
+      presentation_type: card
+  
+  safety.fumes_generated:
+    section_title: Fumes Generated
+    section_description: Types of fumes produced when laser cleaning this contaminant
+    icon: cloud
+    order: 3
+    variant: warning
+    section_metadata:
+      notes: Vapor hazards
+      presentation_type: card
+  
+  safety.particulate_generation:
+    section_title: Particulate Generation
+    section_description: Airborne particles produced during laser cleaning process
+    icon: wind
+    order: 4
+    variant: warning
+    section_metadata:
+      notes: Dust and particle hazards
+      presentation_type: card
+  
+  safety.ppe_requirements:
+    section_title: PPE Requirements
+    section_description: Personal protective equipment needed when cleaning this contaminant
+    icon: shield
+    order: 5
+    variant: default
+    section_metadata:
+      notes: Required safety gear
+      presentation_type: card
+  
+  safety.substrate_compatibility_warnings:
+    section_title: Substrate Compatibility
+    section_description: Materials that may be damaged or incompatible with cleaning this contaminant
+    icon: alert-triangle
+    order: 6
+    variant: warning
+    section_metadata:
+      notes: Material damage risks
+      presentation_type: card
+  
+  safety.toxic_gas_risk:
+    section_title: Toxic Gas Risk
+    section_description: Hazardous gases that may be produced during laser cleaning
+    icon: skull
+    order: 7
+    variant: danger
+    section_metadata:
+      notes: Critical toxicity warnings
+      presentation_type: card
+  
+  safety.ventilation_requirements:
+    section_title: Ventilation Requirements
+    section_description: Air handling and exhaust systems needed for safe cleaning
+    icon: fan
+    order: 8
+    variant: default
+    section_metadata:
+      notes: Airflow requirements
+      presentation_type: card
+  
+  safety.visibility_hazard:
+    section_title: Visibility Hazards
+    section_description: Smoke, dust, or other factors that may impair operator vision
+    icon: eye-off
+    order: 9
+    variant: warning
+    section_metadata:
+      notes: Vision impairment risks
+      presentation_type: card
+  
+  # INTERACTIONS category (2 sections)
+  interactions.produces_compounds:
+    section_title: Produces Compounds
+    section_description: Chemical compounds formed when laser cleaning this contaminant
+    icon: flask
+    order: 1
+    variant: default
+    section_metadata:
+      notes: Cross-references to compound pages
+      relationship_type: produces_compounds
+      presentation_type: card
+  
+  interactions.affects_materials:
+    section_title: Found On Materials
+    section_description: Materials commonly contaminated with this substance
+    icon: box
+    order: 2
+    variant: default
+    section_metadata:
+      notes: Cross-references to material pages
+      relationship_type: affects_materials
+      presentation_type: card
+  
+  # VISUAL category (1 section)
+  visual.appearance_on_categories:
+    section_title: Visual Appearance
+    section_description: How this contaminant appears on different material types
+    icon: eye
+    order: 1
+    variant: default
+    section_metadata:
+      notes: Category-specific appearance descriptions
+      presentation_type: collapsible
+      features: auto_open_first
+  
+  # OPERATIONAL category (1 section)
+  operational.laser_properties:
+    section_title: Laser Properties
+    section_description: Absorption characteristics and laser interaction data
+    icon: zap
+    order: 1
+    variant: default
+    section_metadata:
+      notes: Technical laser parameters
+      presentation_type: card
+
 generators:
 - type: universal_content
   module: export.generation.universal_content_generator
@@ -18,11 +160,16 @@ generators:
   - type: seo_description
     source_field: contamination_description
     max_length: 160
+    output_field: meta_description
   - type: section_metadata
     config_file: export/config/contaminants.yaml
   - type: relationship_grouping
   - type: breadcrumbs
     domain: contaminants
+  - type: field_mapping
+    mappings:
+      title: ['page_title', 'name']
+      description: 'meta_description'
   - type: field_ordering
     domain: contaminants
 - type: seo_metadata
@@ -50,7 +197,7 @@ generators:
   module: shared.generation.seo_description_generator
   class: SEODescriptionGenerator
   source_field: contaminant_description
-  output_field: seo_description
+  output_field: meta_description
   max_length: 160
 - type: excerpt
   module: shared.generation.excerpt_generator

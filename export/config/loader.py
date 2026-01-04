@@ -371,7 +371,7 @@ def create_default_config(domain: str) -> Dict[str, Any]:
             {
                 'type': 'seo_description',
                 'source_field': f'{domain}_description',
-                'output_field': 'seo_description',
+                'output_field': 'meta_description',
                 'max_length': 160
             }
         ]

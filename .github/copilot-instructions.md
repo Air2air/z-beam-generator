@@ -848,6 +848,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - 🚫 **NEVER embed prompts in content generators** - Use template files ONLY 🔥 **NEW (Dec 29, 2025)**
 - 🚫 **NEVER restrict word counts using max_tokens** - Causes mid-sentence truncation 🔥 **NEW (Dec 24, 2025)**
 - 🚫 **NEVER use enrichers to add missing data** - Generate complete data during generation 🔥 **NEW (Jan 2, 2026)**
+- 🚫 **NEVER create standalone enricher classes** - Use tasks in UniversalContentGenerator 🔥 **NEW (Jan 4, 2026)**
 - 🚫 **NEVER use mocks/fallbacks in production code - NO EXCEPTIONS**
 - ✅ **ALLOW mocks/fallbacks in test code for proper testing**
 - ✅ **ALLOW embedded prompts in research scripts** - Data discovery OK 🔥 **NEW (Dec 29, 2025)**
@@ -866,6 +867,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - ✅ **ALWAYS sync Materials.yaml updates to frontmatter (dual-write)** 🔥 **NEW (Nov 22, 2025)**
 - ✅ **ALWAYS save to frontmatter whenever you save to data** 🔥 **MANDATORY (Dec 12, 2025)**
 - ✅ **ALWAYS generate complete data to YAML** - Enrichers format, not add data 🔥 **NEW (Jan 2, 2026)**
+- ✅ **ALWAYS use task-based pattern in UniversalContentGenerator** - Not enrichers 🔥 **NEW (Jan 4, 2026)**
 
 ---
 
@@ -1122,27 +1124,47 @@ ALL text generation MUST go through the standardized processing pipeline. **ZERO
 
 **Documentation:** `docs/02-architecture/processing-pipeline.md`
 
-### 0.5. **Generate to Data, Not Enrichers** 🔥 **MANDATORY POLICY (Jan 2, 2026)**
+### 0.5. **Generate to Data, Not Enrichers** 🔥 **MANDATORY POLICY (Jan 2, 2026) - UPDATED (Jan 4, 2026)**
 **ALL metadata and content MUST be generated directly to data files during generation phase, NOT added later by enrichers during export.**
 
 **MANDATORY ARCHITECTURE:**
 - ✅ **Generate complete data to source YAML** - Write full metadata to Materials.yaml, Contaminants.yaml, etc.
-- ✅ **Enrich during write** - Generation pipeline enriches data before saving (e.g., author metadata)
+- ✅ **Export tasks transform, don't create** - Tasks format/normalize/reorganize existing data
 - ✅ **Export reads complete data** - Export/frontmatter generation uses data files as-is
-- ❌ **NO enrichers adding missing data** - Enrichers can format/transform, but NOT add essential fields
+- ❌ **NO enrichers adding missing data** - Tasks can format/transform, but NOT add essential fields
 - ❌ **NO lazy enrichment** - Data must be complete when saved, not completed later
+- ❌ **NO enricher pattern** - Use task-based generation in UniversalContentGenerator instead
 
 **Why This Matters:**
 - Single source of truth: Data files contain complete information
 - Export works immediately without complex enrichment pipelines
 - Quality evaluation sees complete data (no "None (None)" issues)
 - Clear separation: Generation creates data, Export formats/presents data
+- Architectural consistency: One pattern (task-based) replaces multiple patterns (enrichers, generators, processors)
+
+**Architectural Evolution (Jan 2026):**
+```
+OLD ARCHITECTURE (Deprecated):
+  Generation → Incomplete Data → Export → Enrichers Add Data → Frontmatter
+  Problem: Data incomplete until export, enrichers duplicating generation logic
+
+NEW ARCHITECTURE (Current):
+  Generation → Complete Data → Export → Tasks Transform → Frontmatter
+  Benefit: Single source of truth, consistent task-based pattern
+```
+
+**Export Task Types (UniversalContentGenerator):**
+- ✅ **Transformation Tasks**: section_metadata, field_mapping, field_ordering, breadcrumbs
+- ✅ **Normalization Tasks**: normalize_compounds, normalize_applications, normalize_prevention
+- ✅ **Cleanup Tasks**: remove_duplicate_fields, field_cleanup
+- ✅ **Enrichment Tasks**: author_linkage (expands author ID to full registry data)
+- ❌ **FORBIDDEN**: Tasks that add data not present in source YAML
 
 **Examples:**
 
 ✅ **CORRECT - Generate Complete Data**:
 ```python
-# During generation, write FULL author metadata
+# During generation, write FULL metadata
 material_data['author'] = {
     'id': 2,
     'name': 'Alessandro Moretti',
@@ -1152,9 +1174,19 @@ material_data['author'] = {
 }
 save_to_materials_yaml(material_data)
 
-# Export just reads and formats
-author = material_data['author']  # Already complete
-frontmatter['author'] = author    # No enrichment needed
+# Export task just expands registry reference
+frontmatter = _task_author_linkage(frontmatter, config)
+# Adds: author.image, author.sameAs, author.url from registry
+```
+
+✅ **CORRECT - Transform Existing Data**:
+```python
+# Source data has section with relationships
+material_data['relationships']['operational']['industry_applications'] = [...]
+
+# Export task adds display metadata
+frontmatter = _task_section_metadata(frontmatter, config)
+# Adds: _section.title, _section.description, _section.icon
 ```
 
 ❌ **WRONG - Lazy Enrichment**:
@@ -1163,20 +1195,44 @@ frontmatter['author'] = author    # No enrichment needed
 material_data['author'] = {'id': 2}  # Incomplete!
 save_to_materials_yaml(material_data)
 
-# Export has to enrich (BAD - violates policy)
+# Export has to create data (BAD - violates policy)
 author_id = material_data['author']['id']
 full_author = lookup_in_registry(author_id)  # Should have been done during generation
 frontmatter['author'] = full_author
 ```
 
+❌ **WRONG - Enricher Pattern**:
+```python
+# OLD: Separate enricher class
+class MyEnricher:
+    def enrich(self, frontmatter):
+        frontmatter['new_field'] = calculate()  # Creating data during export!
+        
+# NEW: Task in UniversalContentGenerator
+def _task_my_task(self, frontmatter, config):
+    frontmatter['formatted_field'] = format_existing(frontmatter['existing_field'])
+```
+
 **Implementation Locations:**
-- `generation/core/adapters/domain_adapter.py` - Enriches data during write
-- `generation/core/evaluated_generator.py` - Generates complete content
+- `generation/core/adapters/domain_adapter.py` - Enriches data during write (generation phase)
+- `generation/core/evaluated_generator.py` - Generates complete content (generation phase)
+- `export/generation/universal_content_generator.py` - Task-based transformations (export phase)
+- `export/config/*.yaml` - Define export tasks, NOT enrichers
 - All data must be complete BEFORE export phase
 
-**Grade:** F violation if enrichers add essential metadata that should have been generated
+**Migration Complete (Jan 4, 2026):**
+- ✅ All enrichers moved to export/archive/
+- ✅ All domains use UniversalContentGenerator task pattern
+- ✅ 25+ tasks implemented (author_linkage, section_metadata, breadcrumbs, field_mapping, etc.)
+- ✅ Zero standalone enricher classes in active use
 
-**Related:** Author Attribution Refactor (Dec 30, 2025) - Implements this policy for author metadata
+**Grade:** F violation if tasks add essential metadata that should have been generated
+
+**Related:** 
+- Author Attribution Refactor (Dec 30, 2025) - Implements this policy for author metadata
+- Enricher Migration Complete (Dec 30, 2025) - Architectural consolidation
+- Export Task Documentation: `export/generation/universal_content_generator.py` docstrings
+
 
 ### 1. **No Mocks or Fallbacks in Production Code** 🔥 **MANDATORY FIRM POLICY (Dec 11, 2025)**
 System must fail immediately if dependencies are missing. **ZERO TOLERANCE** for:

@@ -5,6 +5,57 @@ items_key: settings
 filename_suffix: ''
 slugify_filenames: true
 id_field: id
+
+# Section metadata configuration
+# Note: section_title and section_description are DISPLAYED to users
+#       section_metadata is for INTERNAL reference only (developer notes)
+section_metadata:
+  # SAFETY category (1 section)
+  safety.regulatory_standards:
+    section_title: Regulatory Standards
+    section_description: Safety and compliance standards related to this laser setting
+    icon: shield-check
+    order: 1
+    variant: default
+    section_metadata:
+      notes: Compliance requirements
+      presentation_type: card
+  
+  # INTERACTIONS category (2 sections)
+  interactions.removes_contaminants:
+    section_title: Removes Contaminants
+    section_description: Types of contamination effectively removed by this setting
+    icon: droplet-off
+    order: 1
+    variant: default
+    section_metadata:
+      notes: Cross-references to contaminant pages
+      relationship_type: removes_contaminants
+      presentation_type: card
+  
+  interactions.works_on_materials:
+    section_title: Works On Materials
+    section_description: Materials compatible with this laser setting
+    icon: box
+    order: 2
+    variant: default
+    section_metadata:
+      notes: Cross-references to material pages
+      relationship_type: works_on_materials
+      presentation_type: card
+  
+  # OPERATIONAL category (1 section)
+  operational.prevention:
+    section_title: Common Challenges
+    section_description: Typical difficulties and best practices when using this setting
+    icon: alert-triangle
+    order: 1
+    variant: warning
+    section_metadata:
+      notes: Challenge patterns in collapsible format
+      presentation_type: collapsible
+      features: auto_open_first
+
 generators:
 - type: universal_content
   module: export.generation.universal_content_generator
@@ -19,6 +70,7 @@ generators:
   - type: seo_description
     source_field: settings_description
     max_length: 160
+    output_field: meta_description
   - type: normalize_prevention
     challenge_file: data/challenges/ChallengePatterns.yaml
     target_field: operational.prevention
@@ -27,6 +79,10 @@ generators:
     config_file: export/config/settings.yaml
   - type: breadcrumbs
     domain: settings
+  - type: field_mapping
+    mappings:
+      title: ['page_title', 'name']
+      description: 'meta_description'
   - type: field_ordering
     domain: settings
 - type: seo_metadata
