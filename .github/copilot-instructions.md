@@ -1311,6 +1311,27 @@ def save_material_data(material):
 
 **Documentation:** `docs/02-architecture/GENERATION_VS_EXPORT_SEPARATION.md` (to be created)
 
+---
+
+**🚨 GRANDFATHER CLAUSE** (January 5, 2026) - **DOCUMENTED EXCEPTION**:
+
+Existing data created before January 5, 2026 uses build-time normalization tasks:
+- **Tasks**: `normalize_applications`, `normalize_expert_answers`, `normalize_safety_standards`
+- **Scope**: 591 fields across 438 items (153 materials, 34 compounds, 98 contaminants)
+- **Reason**: Bulk regeneration not feasible; tasks perform format transformations only
+- **NEW CONTENT** (after Jan 5, 2026): **MUST** use collapsible format at generation time (MANDATORY)
+
+**Migration Strategy**:
+- ✅ Keep normalization tasks for pre-Jan 5 data (grandfather clause)
+- ✅ Update generation to output collapsible format for new content
+- ✅ Natural migration as content regenerated over time
+- ❌ Bulk regeneration not required
+
+**Technical Debt**: See `docs/TECHNICAL_DEBT_BUILD_TIME_NORMALIZATION.md`  
+**Fix Plan**: See `BUILD_TIME_VIOLATION_FIX_PLAN_JAN5_2026.md` (root)
+
+---
+
 ### 1. **No Mocks or Fallbacks in Production Code** 🔥 **MANDATORY FIRM POLICY (Dec 11, 2025)**
 System must fail immediately if dependencies are missing. **ZERO TOLERANCE** for:
 - MockAPIClient or mock responses in production
