@@ -281,6 +281,10 @@ class DomainAdapter(DataSourceAdapter):
         """
         Write generated content to domain data YAML atomically.
         
+        CORE PRINCIPLE 0.6 COMPLIANCE (Jan 5, 2026):
+        Enriches data at GENERATION TIME, not export time.
+        Adds: expanded author, timestamps, id, breadcrumbs.
+        
         Args:
             identifier: Item name/ID
             component_type: Component type
@@ -298,11 +302,12 @@ class DomainAdapter(DataSourceAdapter):
         # Write content to item
         items[identifier][component_type] = content_data
         
-        # AUTHOR ENRICHMENT (Dec 30, 2025): Enrich author field with full metadata
-        # Ensures Materials.yaml has author.name and author.country for display/evaluation
-        if 'author' in items[identifier]:
-            items[identifier]['author'] = self._enrich_author_field(items[identifier]['author'])
-            logger.debug(f"✅ Author metadata enriched for {identifier}")
+        # GENERATION-TIME ENRICHMENT (Jan 5, 2026): Add ALL metadata at generation time
+        # Complies with Core Principle 0.6: "No Build-Time Data Enhancement"
+        logger.info(f"🔧 Enriching {identifier} with generation-time metadata...")
+        from generation.enrichment.generation_time_enricher import enrich_for_generation
+        items[identifier] = enrich_for_generation(items[identifier], identifier, self.domain)
+        logger.info(f"✅ Generation-time enrichment complete for {identifier}")
         
         # Atomic write with temp file
         with tempfile.NamedTemporaryFile(

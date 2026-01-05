@@ -61,43 +61,35 @@ section_metadata:
       features: auto_open_first
 
 generators:
+# Core Principle 0.6 Compliance (Jan 5, 2026):
+# ALL data enhancement tasks moved to source enrichment (scripts/enrichment/enrich_source_data.py)
+# Export now ONLY transforms format, does NOT create/enhance data
 - type: universal_content
   module: export.generation.universal_content_generator
   class: UniversalContentGenerator
   tasks:
-  - type: author_linkage
-    author_file: data/authors/Authors.yaml
-  - type: slug_generation
-  - type: timestamp
-  - type: relationships
-    domain: settings
-  - type: normalize_prevention
-    challenge_file: data/challenges/ChallengePatterns.yaml
-    target_field: operational.prevention
-  - type: relationship_grouping
-  - type: section_metadata
-    config_file: export/config/settings.yaml
-  - type: breadcrumbs
-    domain: settings
+  # ALLOWED: Format-only transformation tasks
   - type: field_mapping
     mappings:
       title: ['page_title', 'name']
-      metaDescription: ['meta_description', 'description']  # Normalize to camelCase
-      contentType: 'content_type'  # Convert snake_case to camelCase
-      fullPath: 'full_path'  # Convert snake_case to camelCase
-      pageTitle: 'page_title'  # Convert snake_case to camelCase
-      schemaVersion: 'schema_version'  # Convert snake_case to camelCase
-      datePublished: 'datePublished'  # Keep camelCase
-      dateModified: 'dateModified'  # Keep camelCase
+      metaDescription: ['meta_description', 'description']
+      contentType: 'content_type'
+      fullPath: 'full_path'
+      pageTitle: 'page_title'
+      schemaVersion: 'schema_version'
+      datePublished: 'datePublished'
+      dateModified: 'dateModified'
+    description: Map field names for consistency
   - type: camelcase_normalization
-    description: Normalize all snake_case fields to camelCase recursively
+    description: Convert snake_case → camelCase for software metadata fields
   - type: field_ordering
     domain: settings
-# SEOMetadataGenerator removed - metadata now in source data (Core Principle 0.6)
-- type: section_metadata
-  module: export.generation.section_metadata_generator
-  class: SectionMetadataGenerator
-  sections:
+    description: Organize output structure
+# ALLOWED: Cleanup (format transformation only)
+- type: field_cleanup
+  module: export.generation.field_cleanup_generator
+  class: FieldCleanupGenerator
+  description: Remove deprecated/temporary fields
     common_challenges:
       presentation: card
       title: Common Challenges
