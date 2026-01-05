@@ -199,6 +199,12 @@ generators:
   # ALLOWED: Format-only transformation tasks
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
+  - type: normalize_expert_answers
+    target_field: operational.expert_answers
+    description: Convert FAQ to expert_answers collapsible format
+  - type: normalize_safety_standards
+    target_field: safety.regulatory_standards
+    description: Convert regulatory standards to collapsible format
   - type: field_ordering
     domain: compounds
     description: Organize output structure

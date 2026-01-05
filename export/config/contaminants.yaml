@@ -161,6 +161,9 @@ generators:
   # ALLOWED: Format-only transformation tasks
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
+  - type: normalize_safety_standards
+    target_field: safety.regulatory_standards
+    description: Convert regulatory standards to collapsible format
   - type: field_ordering
     domain: contaminants
     description: Organize output structure

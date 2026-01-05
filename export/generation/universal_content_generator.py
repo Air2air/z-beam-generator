@@ -93,6 +93,7 @@ class ContentGenerator(BaseGenerator):
             'normalize_applications': self._task_normalize_applications,
             'normalize_prevention': self._task_normalize_prevention,
             'normalize_expert_answers': self._task_normalize_expert_answers,
+            'normalize_safety_standards': self._task_normalize_safety_standards,
             'normalize_compounds': self._task_normalize_compounds,
             'remove_duplicate_safety_fields': self._task_remove_duplicate_safety_fields,
             'remove_storage_requirements': self._task_remove_storage_requirements,
@@ -1068,36 +1069,33 @@ class ContentGenerator(BaseGenerator):
     
     def _task_normalize_expert_answers(self, frontmatter: Dict[str, Any], task_config: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Transform FAQ data to expert_answers collapsible structure per COLLAPSIBLE_NORMALIZATION_SCHEMA-2.md.
+        Transform FAQ data to unified collapsible structure.
         
         Reads 'faq' field from frontmatter, enriches with author expertise,
-        and creates a collapsible expert_answers section.
+        and creates a collapsible expert_answers section following the unified pattern:
+        - title: Question text (what you see when collapsed)
+        - content: Answer text (what you see when expanded)
+        - metadata: Domain-specific fields (expertInfo, severity, etc.)
         
         Task config:
             - target_field: Where to put expert_answers section (default: operational.expert_answers)
         
-        Expected structure:
+        Unified structure:
         {
             'presentation': 'collapsible',
-            'sectionMetadata': {
-                'section_title': 'Expert Q&A',
-                'section_description': 'Frequently asked questions answered by laser cleaning experts',
-                'icon': 'user-tie',
-                'order': 40
-            },
+            'sectionMetadata': {...},
             'items': [
                 {
                     'id': 'safely-remove-dirt',
-                    'question': '...',
-                    'answer': '...',
-                    'topic': 'safely remove dirt',
-                    'expertInfo': {
-                        'name': 'Todd Dunning',
-                        'title': 'Ph.D.',
-                        'expertise': ['Laser Physics', ...]
+                    'title': 'How does laser cleaning safely remove dirt?',  # Question
+                    'content': 'Laser cleaning employs precise...',          # Answer
+                    'metadata': {
+                        'topic': 'safely remove dirt',
+                        'severity': 'medium',
+                        'acceptedAnswer': True,
+                        'expertInfo': {...}
                     },
-                    'severity': 'medium',  # Inferred from topic keywords
-                    'acceptedAnswer': True
+                    '_display': {'_open': False, 'order': 1}
                 }
             ],
             'options': {'autoOpenFirst': True, 'sortBy': 'severity'}
@@ -1129,9 +1127,9 @@ class ContentGenerator(BaseGenerator):
             'low': ['maintain', 'typical', 'common', 'regular']
         }
         
-        # Convert FAQ items to expert_answers format
+        # Convert FAQ items to unified collapsible format
         expert_items = []
-        for faq in faq_items:
+        for idx, faq in enumerate(faq_items, 1):
             if not isinstance(faq, dict):
                 continue
             
@@ -1155,10 +1153,8 @@ class ContentGenerator(BaseGenerator):
                     severity = sev
                     break
             
-            expert_item = {
-                'id': item_id,
-                'question': question,
-                'answer': answer,
+            # Build metadata object for domain-specific fields
+            metadata = {
                 'topic': topic_keyword if topic_keyword else question[:50],
                 'severity': severity,
                 'acceptedAnswer': True
@@ -1166,11 +1162,23 @@ class ContentGenerator(BaseGenerator):
             
             # Add expert info if available
             if expert_info:
-                expert_item['expertInfo'] = expert_info
+                metadata['expertInfo'] = expert_info
+            
+            # Unified collapsible item: title/content/metadata/_display
+            expert_item = {
+                'id': item_id,
+                'title': question,      # Question is the title (collapsed state)
+                'content': answer,      # Answer is the content (expanded state)
+                'metadata': metadata,   # Domain-specific fields
+                '_display': {
+                    '_open': idx == 1,  # Auto-open first item
+                    'order': idx
+                }
+            }
             
             expert_items.append(expert_item)
         
-        # Create collapsible structure
+        # Create unified collapsible structure
         collapsible_structure = {
             'presentation': 'collapsible',
             'sectionMetadata': {
@@ -1205,6 +1213,194 @@ class ContentGenerator(BaseGenerator):
         
         logger.info(f"✅ Normalized {len(expert_items)} FAQ items to expert_answers collapsible format")
         print(f"✅ Converted {len(expert_items)} FAQ items to expert_answers collapsible format")
+        
+        return frontmatter
+    
+    def _task_normalize_safety_standards(self, frontmatter: Dict[str, Any], task_config: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Transform regulatory_standards to unified collapsible structure.
+        
+        Reads 'regulatory_standards' from safety relationship section and converts
+        to collapsible format following the unified pattern:
+        - title: Standard name/number (what you see when collapsed)
+        - content: Full description and compliance info (what you see when expanded)
+        - metadata: Domain-specific fields (organization, url, logo, etc.)
+        
+        Task config:
+            - target_field: Where to put standards section (default: safety.regulatory_standards)
+        
+        Unified structure:
+        {
+            'presentation': 'collapsible',
+            'sectionMetadata': {...},
+            'items': [
+                {
+                    'id': 'ansi-z136-1',
+                    'title': 'ANSI Z136.1 - Safe Use of Lasers',  # Standard name
+                    'content': 'Comprehensive safety guidelines...',  # Description
+                    'metadata': {
+                        'organization': 'ANSI',
+                        'orgFullName': 'American National Standards Institute',
+                        'url': 'https://...',
+                        'image': '/images/logo/logo-org-ansi.png',
+                        'category': 'laser-safety'
+                    },
+                    '_display': {'_open': False, 'order': 1}
+                }
+            ],
+            'options': {'autoOpenFirst': True}
+        }
+        """
+        target_field = task_config.get('target_field', 'safety.regulatory_standards')
+        
+        # Navigate to safety section
+        if 'relationships' not in frontmatter:
+            logger.debug("No relationships in frontmatter")
+            return frontmatter
+        
+        relationships = frontmatter['relationships']
+        if 'safety' not in relationships:
+            logger.debug("No safety section in relationships")
+            return frontmatter
+        
+        safety = relationships['safety']
+        if 'regulatory_standards' not in safety:
+            logger.debug("No regulatory_standards in safety section")
+            return frontmatter
+        
+        standards_data = safety['regulatory_standards']
+        
+        # If already in collapsible format, skip
+        if isinstance(standards_data, dict) and standards_data.get('presentation') == 'collapsible':
+            logger.debug("regulatory_standards already in collapsible format")
+            return frontmatter
+        
+        # Extract items from various formats
+        standard_items = []
+        if isinstance(standards_data, dict):
+            if 'items' in standards_data:
+                standard_items = standards_data.get('items', [])
+            # If has presentation but not collapsible, it's card format - convert it
+            elif standards_data.get('presentation') == 'card':
+                # This shouldn't happen as we check for items above, but handle it
+                logger.debug("Found card presentation without items")
+                return frontmatter
+        elif isinstance(standards_data, list):
+            standard_items = standards_data
+        else:
+            logger.debug(f"Unexpected regulatory_standards format: {type(standards_data)}")
+            return frontmatter
+        
+        if not standard_items:
+            logger.debug("No standard items to normalize")
+            return frontmatter
+        
+        # Category keywords for classification
+        category_keywords = {
+            'laser-safety': ['laser', 'iec 60825', 'ansi z136', 'optical radiation'],
+            'industrial-safety': ['osha', 'industrial', 'workplace', 'occupational'],
+            'environmental': ['epa', 'environmental', 'emissions', 'air quality'],
+            'medical': ['fda', 'medical device', 'healthcare'],
+            'electrical': ['electrical', 'iec 61010', 'nec', 'nfpa 70'],
+            'chemical': ['chemical', 'hazardous materials', 'msds', 'sds']
+        }
+        
+        # Convert standards to unified collapsible format
+        collapsible_items = []
+        for idx, standard in enumerate(standard_items, 1):
+            if not isinstance(standard, dict):
+                continue
+            
+            name = standard.get('name', '')
+            description = standard.get('description', '')
+            long_name = standard.get('longName', '')
+            url = standard.get('url', '')
+            image = standard.get('image', '')
+            
+            if not name and not description:
+                continue
+            
+            # Generate ID from name or description
+            id_source = name if name else description
+            item_id = id_source.lower().replace(' ', '-').replace('.', '').replace('/', '-')
+            item_id = item_id[:50]  # Limit length
+            
+            # Infer category from name/description
+            category = 'general'
+            search_text = f"{name} {description}".lower()
+            for cat, keywords in category_keywords.items():
+                if any(keyword.lower() in search_text for keyword in keywords):
+                    category = cat
+                    break
+            
+            # Build title (collapsed state) - prefer full description over just name
+            title = description if description else name
+            
+            # Build content (expanded state) with full details
+            content_parts = []
+            if long_name:
+                content_parts.append(f"**Organization:** {long_name}")
+            if url:
+                content_parts.append(f"**Standard URL:** {url}")
+            if description and name and description != name:
+                content_parts.append(f"**Overview:** {description}")
+            
+            content = '\n\n'.join(content_parts) if content_parts else description
+            
+            # Build metadata object for domain-specific fields
+            metadata = {
+                'category': category
+            }
+            
+            # Add organization info if available
+            if name:
+                # Extract org abbreviation (e.g., "ANSI" from "ANSI Z136.1")
+                org_abbrev = name.split()[0] if name else ''
+                metadata['organization'] = org_abbrev
+            
+            if long_name:
+                metadata['orgFullName'] = long_name
+            
+            if url:
+                metadata['url'] = url
+            
+            if image:
+                metadata['image'] = image
+            
+            # Unified collapsible item: title/content/metadata/_display
+            collapsible_item = {
+                'id': item_id,
+                'title': title,         # Standard name/description (collapsed)
+                'content': content,     # Full details (expanded)
+                'metadata': metadata,   # Domain-specific fields
+                '_display': {
+                    '_open': idx == 1,  # Auto-open first item
+                    'order': idx
+                }
+            }
+            
+            collapsible_items.append(collapsible_item)
+        
+        # Create unified collapsible structure
+        collapsible_structure = {
+            'presentation': 'collapsible',
+            'sectionMetadata': {
+                'section_title': 'Regulatory Standards',
+                'section_description': 'Safety and compliance standards applicable to laser cleaning',
+                'icon': 'shield-check',
+                'order': 10
+            },
+            'items': collapsible_items,
+            'options': {
+                'autoOpenFirst': True
+            }
+        }
+        
+        # Set back to safety section
+        safety['regulatory_standards'] = collapsible_structure
+        
+        logger.info(f"✅ Normalized {len(collapsible_items)} regulatory standards to collapsible format")
+        print(f"✅ Converted {len(collapsible_items)} safety standards to collapsible format")
         
         return frontmatter
     
