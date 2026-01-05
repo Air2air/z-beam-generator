@@ -54,15 +54,13 @@ def format_numeric_value(value: Optional[float], unit: str = '') -> Optional[Uni
     
     # Rule 1: Very small numbers (< 0.01) - scientific notation
     if abs_val < 0.01 and abs_val > 0:
-        # Use 2 significant figures
-        formatted = f"{value:.2g}"
-        return formatted
+        # Return as float for calculations (scientific notation preserved)
+        return value
     
     # Rule 5: Very large numbers (≥ 1,000,000) - scientific notation
     if abs_val >= 1_000_000:
-        # Use 2 significant figures
-        formatted = f"{value:.2g}"
-        return formatted
+        # Return as float for calculations (scientific notation preserved)
+        return value
     
     # Rule 2: Small numbers (0.01 to 0.99) - 2 decimal places max
     if abs_val < 1:
@@ -70,7 +68,8 @@ def format_numeric_value(value: Optional[float], unit: str = '') -> Optional[Uni
         # Return int if it's a whole number after rounding
         if rounded == int(rounded):
             return int(rounded)
-        return rounded
+        # Trim trailing zeros from decimal places
+        return float(f"{rounded:.2f}".rstrip('0').rstrip('.'))
     
     # Rule 3: Numbers 1 to 999 - whole or 1 decimal
     if abs_val < 1000:
@@ -81,7 +80,8 @@ def format_numeric_value(value: Optional[float], unit: str = '') -> Optional[Uni
         rounded = round(value, 1)
         if rounded == int(rounded):
             return int(rounded)
-        return rounded
+        # Trim trailing zeros from decimal places
+        return float(f"{rounded:.1f}".rstrip('0').rstrip('.'))
     
     # Rule 4: Large numbers (1000 to 999999) - whole numbers
     return int(round(value))
