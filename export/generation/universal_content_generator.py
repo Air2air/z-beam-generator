@@ -505,6 +505,8 @@ class ContentGenerator(BaseGenerator):
         - Breadcrumb href paths (e.g., /settings/plastic/...)
         - URLs and file paths
         """
+        logger.info("🔄 Running camelCase normalization...")
+        
         def normalize_dict(d):
             if not isinstance(d, dict):
                 return d
@@ -519,6 +521,7 @@ class ContentGenerator(BaseGenerator):
                 # Convert snake_case to camelCase if key contains underscore
                 if '_' in key:
                     new_key = self._to_camel_case(key)
+                    logger.debug(f"   {key} → {new_key}")
                     normalized[new_key] = normalize_value(value)
                 else:
                     normalized[key] = normalize_value(value)
@@ -533,7 +536,9 @@ class ContentGenerator(BaseGenerator):
             else:
                 return value
         
-        return normalize_dict(frontmatter)
+        result = normalize_dict(frontmatter)
+        logger.info("✅ camelCase normalization complete")
+        return result
     
     def _task_field_cleanup(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """

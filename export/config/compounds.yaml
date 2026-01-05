@@ -210,21 +210,6 @@ generators:
   - type: relationship_grouping
   - type: breadcrumbs
     domain: compounds
-  - type: field_mapping
-    mappings:
-      title: ['page_title', 'name']
-      metaDescription: ['meta_description', 'description']  # Normalize to camelCase
-      displayName: 'display_name'  # Convert snake_case to camelCase
-      contentType: 'content_type'  # Convert snake_case to camelCase
-      casNumber: 'cas_number'  # Convert snake_case to camelCase
-      chemicalFormula: 'chemical_formula'  # Convert snake_case to camelCase
-      hazardClass: 'hazard_class'  # Convert snake_case to camelCase
-      molecularWeight: 'molecular_weight'  # Convert snake_case to camelCase
-      fullPath: 'full_path'  # Convert snake_case to camelCase
-      pageTitle: 'page_title'  # Convert snake_case to camelCase
-      schemaVersion: 'schema_version'  # Convert snake_case to camelCase
-      datePublished: 'datePublished'  # Keep camelCase
-      dateModified: 'dateModified'  # Keep camelCase
   - type: camelcase_normalization
     description: Normalize all snake_case fields to camelCase recursively
   - type: field_ordering
@@ -233,8 +218,8 @@ generators:
   module: export.generation.seo_metadata_generator
   class: SEOMetadataGenerator
   page_type: compound
-  title_field: page_title
-  description_field: metaDescription  # Use camelCase for consistency
+  title_field: pageTitle
+  description_field: metaDescription
 - type: seo_description
   module: shared.generation.seo_description_generator
   class: SEODescriptionGenerator

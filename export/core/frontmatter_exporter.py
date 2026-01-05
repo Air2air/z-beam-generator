@@ -376,8 +376,9 @@ class FrontmatterExporter:
         
         try:
             # Run consolidated dataset generator for this domain
+            domain = self.config.get('domain') if isinstance(self.config, dict) else self.config.domain
             result = subprocess.run(
-                ['python3', str(script_path), '--domain', self.config.domain],
+                ['python3', str(script_path), '--domain', domain],
                 capture_output=True,
                 text=True,
                 cwd=str(generator_root)

@@ -91,16 +91,6 @@ generators:
     config_file: export/config/materials.yaml
   - type: breadcrumbs
     domain: materials
-  - type: field_mapping
-    mappings:
-      title: ['page_title', 'name']
-      metaDescription: ['meta_description', 'description']  # Normalize to camelCase
-      contentType: 'content_type'  # Convert snake_case to camelCase
-      fullPath: 'full_path'  # Convert snake_case to camelCase
-      pageTitle: 'page_title'  # Convert snake_case to camelCase
-      schemaVersion: 'schema_version'  # Convert snake_case to camelCase
-      datePublished: 'datePublished'  # Keep camelCase
-      dateModified: 'dateModified'  # Keep camelCase
   - type: camelcase_normalization
     description: Normalize all snake_case fields to camelCase recursively
   - type: field_ordering

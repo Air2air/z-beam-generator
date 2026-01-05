@@ -2830,6 +2830,12 @@ When suggesting code changes:
 
 **📖 REQUIRED READING**: `docs/08-development/FRONTMATTER_SOURCE_OF_TRUTH_POLICY.md`
 
+**CORRECT EXPORT PATH**: `/Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/`
+- Materials: `/Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/materials/`
+- Contaminants: `/Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/contaminants/`
+- Compounds: `/Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/compounds/`
+- Settings: `/Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/settings/`
+
 **THE FUNDAMENTAL RULE:**
 Frontmatter files are **GENERATED OUTPUT**, NOT source data. ALL changes MUST be made in source data or export configurations, NEVER in frontmatter files directly.
 
