@@ -497,17 +497,68 @@ class ContentGenerator(BaseGenerator):
     
     def _task_camelcase_normalization(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
-        Recursively convert all snake_case field names to camelCase.
-        Applies globally to normalize YAML output.
+        Convert software metadata fields from snake_case to camelCase.
+        
+        Software Metadata (camelCase): contentType, schemaVersion, fullPath, pageTitle, metaDescription, displayName
+        Domain Data (snake_case): machine_settings, chemical_formula, cas_number, exposure_limits, etc.
         
         Excludes:
         - Fields starting with underscore (_section, _collapsible, _open)
-        - Breadcrumb href paths (e.g., /settings/plastic/...)
-        - URLs and file paths
+        - Domain-specific data fields (scientific, technical, regulatory)
+        - Nested fields within domain data structures
         """
-        logger.info("🔄 Running camelCase normalization...")
+        logger.info("🔄 Running camelCase normalization (software metadata only)...")
         
-        def normalize_dict(d):
+        # Software metadata fields that should be camelCase
+        SOFTWARE_FIELDS = {
+            'content_type': 'contentType',
+            'schema_version': 'schemaVersion',
+            'full_path': 'fullPath',
+            'page_title': 'pageTitle',
+            'meta_description': 'metaDescription',
+            'page_description': 'pageDescription',
+            'date_published': 'datePublished',
+            'date_modified': 'dateModified',
+            'display_name': 'displayName',
+            'image_url': 'imageUrl',
+            'image_alt': 'imageAlt',
+            'image_width': 'imageWidth',
+            'image_height': 'imageHeight',
+        }
+        
+        # Domain data structures that should remain snake_case
+        DOMAIN_DATA_FIELDS = {
+            'machine_settings',
+            'chemical_formula',
+            'cas_number',
+            'molecular_weight',
+            'exposure_limits',
+            'hazard_class',
+            'detection_methods',
+            'first_aid',
+            'exposure_guidelines',
+            'health_effects',
+            'health_effects_keywords',
+            'environmental_effects',
+            'prohibited_materials',
+            'regulatory_standards',
+            'monitoring_required',
+            'typical_concentration_range',
+            'sources_in_laser_cleaning',
+            'ppe_requirements',
+            'osha_pel_ppm',
+            'osha_pel_mg_m3',
+            'niosh_rel_ppm',
+            'niosh_rel_mg_m3',
+            'acgih_tlv_ppm',
+            'acgih_tlv_mg_m3',
+            'nfpa_health',
+            'nfpa_flammability',
+            'nfpa_instability',
+            'nfpa_special',
+        }
+        
+        def normalize_dict(d, is_domain_data=False):
             if not isinstance(d, dict):
                 return d
             
@@ -515,29 +566,40 @@ class ContentGenerator(BaseGenerator):
             for key, value in d.items():
                 # Skip fields starting with underscore
                 if key.startswith('_'):
-                    normalized[key] = normalize_value(value)
+                    normalized[key] = normalize_value(value, is_domain_data)
                     continue
                 
-                # Convert snake_case to camelCase if key contains underscore
-                if '_' in key:
-                    new_key = self._to_camel_case(key)
+                # If we're inside domain data structure, preserve snake_case
+                if is_domain_data:
+                    normalized[key] = normalize_value(value, is_domain_data=True)
+                    continue
+                
+                # Check if this is a domain data field that should remain snake_case
+                if key in DOMAIN_DATA_FIELDS:
+                    normalized[key] = normalize_value(value, is_domain_data=True)
+                    continue
+                
+                # Convert software metadata fields to camelCase
+                if key in SOFTWARE_FIELDS:
+                    new_key = SOFTWARE_FIELDS[key]
                     logger.debug(f"   {key} → {new_key}")
-                    normalized[new_key] = normalize_value(value)
+                    normalized[new_key] = normalize_value(value, is_domain_data)
                 else:
-                    normalized[key] = normalize_value(value)
+                    # Keep field as-is if not in software fields list
+                    normalized[key] = normalize_value(value, is_domain_data)
             
             return normalized
         
-        def normalize_value(value):
+        def normalize_value(value, is_domain_data=False):
             if isinstance(value, dict):
-                return normalize_dict(value)
+                return normalize_dict(value, is_domain_data)
             elif isinstance(value, list):
-                return [normalize_value(item) for item in value]
+                return [normalize_value(item, is_domain_data) for item in value]
             else:
                 return value
         
         result = normalize_dict(frontmatter)
-        logger.info("✅ camelCase normalization complete")
+        logger.info("✅ camelCase normalization complete (software metadata converted, domain data preserved)")
         return result
     
     def _task_field_cleanup(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:

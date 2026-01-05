@@ -1,6 +1,5 @@
 # Backend Frontmatter Requirements & Improvement Requests
-**Date**: January 4, 2026  
-**Last Updated**: January 5, 2026 - Phase 1 COMPLETE ✅  
+**Date**: January 4, 2026 (Updated: January 5, 2026)  
 **Audience**: Backend Development Team / Content Generation Systems  
 **Purpose**: Specify required changes and improvements for automated frontmatter generation
 
@@ -9,42 +8,6 @@
 ## 🎯 Overview
 
 This document specifies frontmatter field requirements, quality improvements, and structural changes needed from backend content generation systems.
-
-**Status Update (Jan 5, 2026)**:
-- ✅ Phase 1 COMPLETE: All camelCase normalization implemented
-- ✅ All 600+ frontmatter files now use camelCase for software fields
-- ✅ Recursive normalization applied to all nested fields
-- ✅ Tests updated for camelCase compliance (413 passing)
-- 🎉 Zero snake_case fields remain (except scientific standards)
-
-### Implementation Details
-
-**Architecture**: Recursive camelCase normalization task in UniversalContentGenerator
-- **Location**: `export/generation/universal_content_generator.py`
-- **Method**: `_task_camelcase_normalization()` with `_to_camel_case()` helper
-- **Scope**: Processes ALL nested dictionaries and lists recursively
-- **Preservation**: Fields starting with underscore (_section, _collapsible, _open) preserved
-
-**Domain Coverage**:
-- ✅ Materials: 159 files (contentType, schemaVersion, fullPath, pageTitle, metaDescription)
-- ✅ Contaminants: 100 files (contentType, schemaVersion, chemicalFormula, pageTitle, metaDescription)
-- ✅ Compounds: 50 files (contentType, schemaVersion, displayName, casNumber, molecularWeight)
-- ✅ Settings: 159 files (contentType, schemaVersion, jobTitle, countryDisplay, imageAlt)
-
-**Test Compliance**: 413 tests passing, all test files updated to expect camelCase
-- ✅ tests/test_exporter.py: 2 schemaVersion assertions updated
-- ✅ tests/test_schema_5_normalization.py: 7 schemaVersion assertions updated
-- ✅ tests/test_compound_frontmatter_structure.py: displayName, contentType, schemaVersion updated
-
-**Verification Commands**:
-```bash
-# Verify no snake_case software fields (only scientific standards remain)
-grep -E "^[a-z_]+_[a-z_]+:" ../z-beam/frontmatter/settings/*.yaml | grep -v "cas_number\|nfpa_"
-
-# Verify camelCase fields present
-head -n 30 ../z-beam/frontmatter/settings/todd-dunning-laser-cleaning-expert.yaml
-# Shows: contentType, schemaVersion, fullPath, pageTitle, metaDescription, jobTitle, countryDisplay, etc.
-```
 
 ---
 
@@ -81,22 +44,18 @@ metaDescription: 'Aluminum: Optimized laser parameters...'
 - ✅ GraphQL standard
 
 **Action Required**:
-1. ✅ **COMPLETE** - Update generator to output `contentType` not `content_type`
-2. ✅ **COMPLETE** - Update generator to output `schemaVersion` not `schema_version`
-3. ✅ **COMPLETE** - Update generator to output `fullPath` not `full_path`
-4. ✅ **COMPLETE** - Update generator to output `pageTitle` not `page_title`
-5. ✅ **COMPLETE** - Update generator to output `metaDescription` not `meta_description`
-6. ✅ **COMPLETE** - Update generator to output `pageDescription` not `page_description`
-7. ✅ **COMPLETE** - Regenerate ALL frontmatter files (600+ files)
+1. ✅ Update generator to output `contentType` not `content_type`
+2. ✅ Update generator to output `schemaVersion` not `schema_version`
+3. ✅ Update generator to output `fullPath` not `full_path`
+4. ✅ Update generator to output `pageTitle` not `page_title`
+5. ✅ Update generator to output `metaDescription` not `meta_description`
+6. ✅ Update generator to output `pageDescription` not `page_description`
+7. ✅ Keep `machine_settings` as snake_case (domain data, not software metadata)
+8. ✅ Regenerate ALL frontmatter files (600+ files)
 
-**Implementation Details (Jan 5, 2026)**:
-- Added `camelcase_normalization` task to UniversalContentGenerator
-- Recursive conversion of all snake_case fields to camelCase
-- Preserves underscore-prefixed fields (_section, _collapsible, _open)
-- Applied to all 4 domains: materials, contaminants, compounds, settings
-- Tests updated to expect camelCase field names
+**Verification**: Run `npm test` - Type Safety test will pass when fixed
 
-**Verification**: ✅ All frontmatter files now use camelCase - Type Safety tests passing
+**Important**: See "Field Naming Rules" section below for complete snake_case vs camelCase guide
 
 ---
 
@@ -145,24 +104,22 @@ metaDescription: 'Aluminum laser cleaning parameters optimized for oxide removal
 
 ---
 
-### 3. **display_name → displayName (Compounds)** ✅ COMPLETE
+### 3. **display_name → displayName (Compounds)**
 **Priority**: 🟡 MEDIUM  
 **Files Affected**: ~50 compound files  
-**Status**: ✅ COMPLETE (Jan 5, 2026)
+**Current State**: Using snake_case for software field  
 
 ```yaml
 # ❌ Current (Inconsistent)
 display_name: Ammonia (NH₃)
 
-# ✅ Required (Consistent camelCase) - NOW IMPLEMENTED
+# ✅ Required (Consistent camelCase)
 displayName: Ammonia (NH₃)
 ```
 
 **Action Required**:
-1. ✅ **COMPLETE** - Update generation code: `display_name` → `displayName`
-2. ✅ **COMPLETE** - Regenerate all compound files with corrected field name
-
-**Implementation**: Handled by camelcase_normalization task in all exports
+1. Update generation code: `display_name` → `displayName`
+2. Regenerate all compound files with corrected field name
 
 ---
 
@@ -325,6 +282,83 @@ detection_methods: string|null
 first_aid: string|null
 ```
 
+#### Settings
+```yaml
+# Machine Parameters (Domain Data)
+machine_settings:            # ✅ snake_case (equipment/parameter data)
+  pulse_duration: number
+  beam_diameter: number
+  scanning_speed: number
+  # ... other machine parameters
+```
+
+---
+
+## ⚠️ Field Naming Rules: snake_case vs camelCase
+
+**Critical Distinction**: Software metadata uses camelCase, domain/scientific data uses snake_case
+
+### ✅ Use camelCase (Software/Metadata Fields):
+These are **software concerns** - routing, SEO, system metadata:
+- `contentType` - System classification
+- `schemaVersion` - Data schema version
+- `fullPath` - URL routing
+- `pageTitle` - SEO/display title
+- `metaDescription` - SEO meta tag
+- `pageDescription` - Page content
+- `datePublished` - Timestamp
+- `dateModified` - Timestamp
+- `displayName` - UI display (compounds)
+
+### ✅ Use snake_case (Scientific/Domain Fields):
+These are **domain-specific data** - scientific, technical, regulatory:
+- `machine_settings` - Equipment parameters (Settings)
+- `chemical_formula` - Scientific notation (NH₃, H₂O)
+- `cas_number` - CAS Registry standard
+- `molecular_weight` - Scientific measurement
+- `exposure_limits` - OSHA/NIOSH regulatory standard
+- `hazard_class` - GHS classification standard
+- `pulse_duration` - Technical parameter
+- `beam_diameter` - Technical parameter
+- `scanning_speed` - Technical parameter
+
+### 🎯 Rule of Thumb:
+```
+IF field affects software behavior (routing, SEO, UI) → camelCase
+IF field represents domain knowledge (science, tech specs) → snake_case
+```
+
+### ✅ Examples (Correct Usage):
+```yaml
+# Settings file
+contentType: settings              # ✅ Software metadata (camelCase)
+schemaVersion: 5.0.0              # ✅ Software metadata (camelCase)
+machine_settings:                 # ✅ Domain data (snake_case)
+  pulse_duration: 100             # ✅ Technical spec (snake_case)
+  beam_diameter: 1.5              # ✅ Technical spec (snake_case)
+
+# Compound file
+contentType: compound             # ✅ Software metadata (camelCase)
+displayName: Ammonia (NH₃)        # ✅ Software metadata (camelCase)
+chemical_formula: NH₃             # ✅ Scientific data (snake_case)
+cas_number: 7664-41-7            # ✅ Registry standard (snake_case)
+exposure_limits:                  # ✅ Regulatory data (snake_case)
+  osha_pel_ppm: 50               # ✅ Regulatory standard (snake_case)
+```
+
+### ❌ Examples (Incorrect Usage):
+```yaml
+# ❌ WRONG: Software field in snake_case
+content_type: settings            # Should be: contentType
+schema_version: 5.0.0            # Should be: schemaVersion
+full_path: /settings/aluminum    # Should be: fullPath
+
+# ❌ WRONG: Domain field in camelCase
+machineSettings:                  # Should be: machine_settings
+  pulseDuration: 100             # Should be: pulse_duration
+chemicalFormula: NH₃             # Should be: chemical_formula
+```
+
 ---
 
 ## 🎨 Quality Standards
@@ -372,6 +406,7 @@ first_aid: string|null
 
 | Issue | Priority | Files | Effort | Impact |
 |-------|----------|-------|--------|--------|
+| camelCase field names | 🔴 CRITICAL | 600+ | 8-10 hours | 308 test failures + industry standard |
 | metaDescription quality | 🔴 HIGH | 153 | 2-3 hours | High SEO impact |
 | display_name → displayName | 🟡 MEDIUM | 50 | 30 mins | Consistency |
 | Static pages meta_description | 🟡 MEDIUM | 7 | 15 mins | Consistency |
@@ -381,13 +416,54 @@ first_aid: string|null
 
 ---
 
+## 🧪 Verification Commands
+
+After making changes, verify with automated tests:
+
+```bash
+# Run full test suite (all 2891 tests)
+npm run test:all
+
+# Run specific validation tests
+npm run validate:naming          # Check naming conventions
+npm run validate:frontmatter     # Validate YAML structure
+npm run validate:types           # Check TypeScript type imports
+
+# Integration tests (verify camelCase compliance)
+npm test tests/integration/yaml-typescript-integration.test.ts
+
+# Expected result after fixes:
+# ✅ 2663+ tests passing
+# ✅ Type Safety test passes (0 violations)
+# ✅ No snake_case violations in frontmatter files
+```
+
+**Success Indicators**:
+- ✅ "should use camelCase for software fields" test passes
+- ✅ No "content_type (should be camelCase: contentType)" violations
+- ✅ No "schema_version (should be camelCase: schemaVersion)" violations
+
+---
+
 ## 🚀 Recommended Implementation Order
 
-### Phase 1: Critical Fixes (Week 1)
-1. ✅ Fix metaDescription generation template
-2. ✅ Regenerate all 153 settings metaDescription
-3. ✅ Update display_name → displayName in compounds
-4. ✅ Update static pages meta_description → metaDescription
+### Phase 1: Critical Fixes (Week 1) - Estimated 10-12 hours
+1. ✅ **Convert all fields to camelCase** (8-10 hours)
+   - Update generator: `content_type` → `contentType`
+   - Update generator: `schema_version` → `schemaVersion`
+   - Update generator: `full_path` → `fullPath`
+   - Update generator: `page_title` → `pageTitle`
+   - Update generator: `meta_description` → `metaDescription`
+   - Update generator: `page_description` → `pageDescription`
+   - Regenerate 600+ files (materials, contaminants, compounds, settings)
+   - **Verify**: Run `npm test` - Type Safety test should pass (0 violations)
+2. ✅ Fix metaDescription generation template (1-2 hours)
+   - Eliminate "removes oxide removal" grammatical error
+   - Enforce 120-155 character limit
+   - Prevent mid-sentence line breaks
+3. ✅ Regenerate all 153 settings metaDescription
+4. ✅ Update display_name → displayName in compounds
+5. ✅ Update static pages meta_description → metaDescription
 
 ### Phase 2: Quality Improvements (Week 2-3)
 5. 📝 Optimize pageTitle generation
@@ -436,11 +512,17 @@ first_aid: string|null
 ## ✅ Success Criteria
 
 **Phase 1 Complete When**:
+- ✅ All 600+ files use camelCase for software fields (contentType, schemaVersion, etc.)
+- ✅ Test suite shows: 2663+ passing, 0 snake_case violations
 - ✅ All 153 settings have grammatically correct metaDescriptions (120-155 chars)
 - ✅ All compounds use `displayName` (not `display_name`)
 - ✅ All static pages use `metaDescription` (not `meta_description`)
-- ✅ Zero snake_case fields for software properties
 - ✅ All breadcrumb hrefs use hyphens (not underscores)
+
+**Automated Verification**:
+```bash
+npm run test:all  # Must pass with 0 Type Safety violations
+```
 
 **Overall Success**:
 - 100% naming consistency (camelCase for software, snake_case for scientific)
