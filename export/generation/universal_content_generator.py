@@ -873,21 +873,44 @@ class ContentGenerator(BaseGenerator):
                         'order': 50
                     }
                 
-                # Create collapsible structure per COLLAPSIBLE_NORMALIZATION_SCHEMA.md
+                # Convert to unified collapsible format: title/content/metadata/_display
+                collapsible_items = []
+                for idx, app_obj in enumerate(app_objects, 1):
+                    app_id = app_obj.get('id', '')
+                    app_name = app_obj.get('name', '')
+                    app_description = app_obj.get('description', '')
+                    
+                    # Build unified collapsible item
+                    collapsible_item = {
+                        'id': app_id,
+                        'title': app_name,           # Industry name (collapsed view)
+                        'content': app_description,  # Description (expanded view)
+                        'metadata': {
+                            'category': 'Industrial Applications',
+                            'commonality': 'common'
+                        },
+                        '_display': {
+                            '_open': idx == 1,       # Auto-open first item
+                            'order': idx
+                        }
+                    }
+                    
+                    collapsible_items.append(collapsible_item)
+                
+                # Create unified collapsible structure
                 collapsible_structure = {
                     'presentation': 'collapsible',
                     'sectionMetadata': section_metadata,
-                    'items': [
-                        {
-                            'applications': app_objects
-                        }
-                    ] if app_objects else []
+                    'items': collapsible_items,
+                    'options': {
+                        'autoOpenFirst': True
+                    }
                 }
                 
                 # Replace with collapsible structure
                 relationships['operational']['industry_applications'] = collapsible_structure
-                print(f"✅ Converted to collapsible format with {len(app_objects)} applications")
-                logger.info(f"✅ Normalized to collapsible format: {len(app_objects)} industry applications")
+                print(f"✅ Converted to collapsible format with {len(collapsible_items)} applications")
+                logger.info(f"✅ Normalized to collapsible format: {len(collapsible_items)} industry applications")
         
         return frontmatter
     
