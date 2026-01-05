@@ -263,7 +263,9 @@ def export_all_domains(dry_run: bool = False):
     
     for domain in domains:
         dry_run_arg = ', dry_run=True' if dry_run else ''
-        cmd = f'python3 -c "from export.config.loader import load_domain_config; from export.core.frontmatter_exporter import FrontmatterExporter; config = load_domain_config(\'{domain}\'); e = FrontmatterExporter(config); e.export_all(show_progress=True{dry_run_arg}); print(\"\\n✅ {domain.title()} {"preview" if dry_run else "export"} successful\")"'
+        success_msg = f"{domain.title()} {'preview' if dry_run else 'export'} successful"
+        cmd = f'python3 -c "from export.config.loader import load_domain_config; from export.core.frontmatter_exporter import FrontmatterExporter; config = load_domain_config(\'{domain}\'); e = FrontmatterExporter(config); e.export_all(show_progress=True{dry_run_arg}); print(\'\\n[SUCCESS] {success_msg}\')"
+'
         success, _ = run_command(cmd, f"{'Preview' if dry_run else 'Export'} {domain}")
         
         if not success:

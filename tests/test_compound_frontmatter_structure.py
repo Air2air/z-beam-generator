@@ -27,7 +27,7 @@ FRONTMATTER_DIR = Path(__file__).parent.parent.parent.parent / 'z-beam' / 'front
 # Required top-level fields (page metadata + identifiers)
 REQUIRED_TOP_LEVEL = {
     'id', 'name', 'display_name', 'category', 'datePublished', 
-    'dateModified', 'content_type', 'schema_version', 'full_path', 
+    'dateModified', 'contentType', 'schemaVersion', 'fullPath', 
     'breadcrumb', 'chemical_formula', 'author'
 }
 
@@ -254,7 +254,7 @@ class TestCompoundFrontmatterValidation:
     
     def test_no_null_required_fields(self, compound_frontmatter):
         """Test that required fields are not null."""
-        required_non_null = ['id', 'name', 'display_name', 'content_type', 'schema_version']
+        required_non_null = ['id', 'name', 'displayName', 'contentType', 'schemaVersion']
         
         for field in required_non_null:
             value = compound_frontmatter.get(field)

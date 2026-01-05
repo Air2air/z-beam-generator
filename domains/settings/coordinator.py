@@ -46,6 +46,10 @@ class SettingCoordinator(DomainCoordinator):
         """
         return None
     
+    def _load_settings_data(self) -> Dict:
+        """Load settings data - wrapper for _load_domain_data for backwards compatibility"""
+        return self._load_domain_data()
+    
     def _get_item_data(self, item_id: str) -> Dict:
         """Get setting data from Settings.yaml"""
         settings_data = self._load_domain_data()

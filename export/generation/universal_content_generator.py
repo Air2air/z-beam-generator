@@ -83,6 +83,7 @@ class ContentGenerator(BaseGenerator):
             'seo_excerpt': self._task_seo_excerpt,
             'breadcrumbs': self._task_breadcrumbs,
             'field_mapping': self._task_field_mapping,
+            'camelcase_normalization': self._task_camelcase_normalization,
             'field_cleanup': self._task_field_cleanup,
             'field_ordering': self._task_field_ordering,
             'library_enrichment': self._task_library_enrichment,
@@ -165,7 +166,7 @@ class ContentGenerator(BaseGenerator):
                 'id': author_id,
                 'name': registry_author.get('name'),
                 'country': registry_author.get('country'),
-                'country_display': registry_author.get('country_display'),
+                'countryDisplay': registry_author.get('country_display') or registry_author.get('countryDisplay'),  # Normalize to camelCase
                 'title': registry_author.get('title'),
                 'sex': registry_author.get('sex'),
                 'jobTitle': registry_author.get('jobTitle'),
@@ -487,6 +488,52 @@ class ContentGenerator(BaseGenerator):
                     break
         
         return frontmatter
+    
+    def _to_camel_case(self, snake_str: str) -> str:
+        """Convert snake_case string to camelCase"""
+        components = snake_str.split('_')
+        # Keep first component as-is, capitalize the rest
+        return components[0] + ''.join(x.title() for x in components[1:])
+    
+    def _task_camelcase_normalization(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
+        """
+        Recursively convert all snake_case field names to camelCase.
+        Applies globally to normalize YAML output.
+        
+        Excludes:
+        - Fields starting with underscore (_section, _collapsible, _open)
+        - Breadcrumb href paths (e.g., /settings/plastic/...)
+        - URLs and file paths
+        """
+        def normalize_dict(d):
+            if not isinstance(d, dict):
+                return d
+            
+            normalized = {}
+            for key, value in d.items():
+                # Skip fields starting with underscore
+                if key.startswith('_'):
+                    normalized[key] = normalize_value(value)
+                    continue
+                
+                # Convert snake_case to camelCase if key contains underscore
+                if '_' in key:
+                    new_key = self._to_camel_case(key)
+                    normalized[new_key] = normalize_value(value)
+                else:
+                    normalized[key] = normalize_value(value)
+            
+            return normalized
+        
+        def normalize_value(value):
+            if isinstance(value, dict):
+                return normalize_dict(value)
+            elif isinstance(value, list):
+                return [normalize_value(item) for item in value]
+            else:
+                return value
+        
+        return normalize_dict(frontmatter)
     
     def _task_field_cleanup(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """

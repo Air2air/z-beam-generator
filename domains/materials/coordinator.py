@@ -63,6 +63,10 @@ class MaterialsCoordinator(DomainCoordinator):
         # Materials coordinator loads data directly, no need for complex data loader
         return None
     
+    def _load_materials_data(self) -> Dict:
+        """Load materials data - wrapper for _load_domain_data for backwards compatibility"""
+        return self._load_domain_data()
+    
     def _get_item_data(self, item_id: str) -> Dict:
         """Get material data from Materials.yaml"""
         materials_data = self._load_domain_data()

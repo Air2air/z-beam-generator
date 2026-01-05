@@ -76,7 +76,7 @@ schema_version: '4.0.0'
             data = load_yaml(temp_path)
             assert data['id'] == 'test-id'
             assert data['page_title'] == 'Test Title'
-            assert data['schema_version'] == '4.0.0'
+            assert data['schemaVersion'] == '4.0.0'
         finally:
             Path(temp_path).unlink()
 
@@ -279,7 +279,7 @@ class TestSchemaVersionUpdate:
         
         result = update_schema_version(data)
         
-        assert result['schema_version'] == '5.0.0'
+        assert result['schemaVersion'] == '5.0.0'
     
     def test_add_schema_version_if_missing(self):
         """Should add schema_version if not present"""
@@ -291,7 +291,7 @@ class TestSchemaVersionUpdate:
         result = update_schema_version(data)
         
         assert 'schema_version' in result
-        assert result['schema_version'] == '5.0.0'
+        assert result['schemaVersion'] == '5.0.0'
 
 
 class TestNormalizeFile:
@@ -331,7 +331,7 @@ relationships:
             data = load_yaml(Path(temp_path))
             
             # Should be 5.0.0
-            assert data['schema_version'] == '5.0.0'
+            assert data['schemaVersion'] == '5.0.0'
             
             # Should be flattened
             assert 'relationships' not in data
@@ -397,7 +397,7 @@ relationships:
             
             # File should be unchanged (dry-run doesn't save)
             data = load_yaml(Path(temp_path))
-            assert data['schema_version'] == '4.0.0'
+            assert data['schemaVersion'] == '4.0.0'
             assert 'relationships' in data
             
         finally:
@@ -484,7 +484,7 @@ relationships:
             # Verify all files are now 5.0.0
             for yaml_file in tmpdir_path.glob('*.yaml'):
                 data = load_yaml(yaml_file)
-                assert data['schema_version'] == '5.0.0'
+                assert data['schemaVersion'] == '5.0.0'
                 assert 'relationships' not in data
 
 

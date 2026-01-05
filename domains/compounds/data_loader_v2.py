@@ -339,6 +339,29 @@ class CompoundsDataLoader(BaseDataLoader):
         compounds = compounds_data.get('compounds', {})
         return compounds.get(material_name)
     
+    def get_all_compounds(self) -> Dict[str, Any]:
+        """
+        Get all compounds.
+        
+        Returns:
+            Dict mapping compound IDs to compound data
+        """
+        compounds_data = self.load_compounds()
+        return compounds_data.get('compounds', {})
+    
+    def get_compound(self, compound_id: str) -> Optional[Dict[str, Any]]:
+        """
+        Get specific compound by ID.
+        
+        Args:
+            compound_id: ID of compound (e.g., "formaldehyde-compound")
+        
+        Returns:
+            Compound data dict or None if not found
+        """
+        compounds = self.get_all_compounds()
+        return compounds.get(compound_id)
+    
     def clear_cache(self):
         """Clear all compounds cache"""
         cache_manager.invalidate('compounds')

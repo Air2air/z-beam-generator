@@ -132,6 +132,10 @@ class ContaminantCoordinator(DomainCoordinator):
         except ValueError:
             return None
     
+    def _load_contaminants_data(self) -> Dict:
+        """Load contaminants data - wrapper for _load_domain_data for backwards compatibility"""
+        return self._load_domain_data()
+    
     def list_contaminants(self) -> list:
         """Get list of all contaminant IDs."""
         contaminants_data = self._load_contaminants_data()

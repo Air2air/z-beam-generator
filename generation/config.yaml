@@ -39,7 +39,7 @@ professional_voice: 5                    # Professional tone level (1=casual, 10
 # DEPRECATED (Dec 29, 2025): Word count parameters removed
 # Word counts now defined in prompt files. See docs/08-development/WORD_COUNT_IN_PROMPTS_POLICY.md
 # Legacy code accessing length_variation_range or word_count_variation will receive defaults (50%).
-length_variation_range: 0.50             # Default 50% variation for backwards compatibility
+length_variation_range: 5                # Default 5/10 (50% variation) for backwards compatibility (valid range: 1-10)
 
 # Temperature Variation Range (NEW - Dec 12, 2025)
 # Adds randomness to base temperature for each generation
