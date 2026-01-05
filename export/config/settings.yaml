@@ -69,6 +69,23 @@ generators:
   class: UniversalContentGenerator
   tasks:
   # ALLOWED: Format-only transformation tasks
+  - type: camelcase_normalization
+    description: Convert snake_case → camelCase for software metadata fields
+  - type: field_ordering
+    domain: settings
+    description: Organize output structure
+# ALLOWED: Cleanup and ordering (format transformation only)
+- type: field_cleanup
+  module: export.generation.field_cleanup_generator
+  class: FieldCleanupGenerator
+  description: Remove deprecated/temporary fields
+- type: field_order
+  module: export.generation.field_order_generator
+  class: FieldOrderGenerator
+  description: Normalize field order for consistency (must run last)
+# Enrichers deprecated - all functionality moved to generators above
+# See: export/archive/enrichers-deprecated-dec29-2025/
+_deprecated_enrichments:
   - type: field_mapping
     mappings:
       title: ['page_title', 'name']
@@ -79,168 +96,99 @@ generators:
       schemaVersion: 'schema_version'
       datePublished: 'datePublished'
       dateModified: 'dateModified'
-    description: Map field names for consistency
-  - type: camelcase_normalization
-    description: Convert snake_case → camelCase for software metadata fields
-  - type: field_ordering
+    description: Map field names for consistency (deprecated - moved to tasks)
+  - type: material_linkage
+    module: export.archive.enrichers-deprecated-dec29-2025.linkage.material_linkage_enricher
+    class: MaterialLinkageEnricher
+    field: materials
+    title: Applicable Materials
+    description: Materials that can be safely cleaned using these laser parameters
+    source: data/materials/Materials.yaml
+    defaults:
+    - category
+    - subcategory
+    - material_type
+    - thermal_conductivity
+    - reflectivity
+  - type: contaminant_linkage
+    module: export.archive.enrichers-deprecated-dec29-2025.linkage.contaminant_linkage_enricher
+    class: ContaminantLinkageEnricher
+    field: contaminants
+    title: Effective Against
+    description: Types of contamination that can be removed using these laser settings
+    source: data/contaminants/Contaminants.yaml
+    defaults:
+    - category
+    - subcategory
+    - hazard_level
+    - contaminant_category
+    - commonality_score
+  - type: compound_linkage
+    module: export.archive.enrichers-deprecated-dec29-2025.linkage.compound_linkage_enricher
+    class: CompoundLinkageEnricher
+    field: relevant_compounds
+    title: Safety Considerations
+    description: Hazardous compounds that may be generated when using these settings
+    source: data/compounds/Compounds.yaml
+    defaults:
+    - concentration_range
+    - hazard_class
+    - exposure_limits
+    - control_measures
+    - cas_number
+    - compound_category
+  - type: timestamp
+    module: export.archive.enrichers-deprecated-dec29-2025.metadata.timestamp_enricher
+    class: TimestampEnricher
+    fields:
+    - datePublished
+    - dateModified
+  - type: author
+    module: export.archive.enrichers-deprecated-dec29-2025.linkage.author_enricher
+    class: AuthorEnricher
+  - type: images
+    module: export.archive.enrichers-deprecated-dec29-2025.media.image_enricher
+    class: ImageEnricher
     domain: settings
-    description: Organize output structure
-# ALLOWED: Cleanup (format transformation only)
-- type: field_cleanup
-  module: export.generation.field_cleanup_generator
-  class: FieldCleanupGenerator
-  description: Remove deprecated/temporary fields
-    common_challenges:
-      presentation: card
-      title: Common Challenges
-      description: Typical difficulties and considerations when using this setting
-      icon: alert-triangle
-      order: 1
-      variant: warning
-    works_on_materials:
-      presentation: card
-      title: Optimized Materials
-      description: Materials that work best with this laser cleaning setting
-      icon: box
-      order: 2
-      variant: default
-    removes_contaminants:
-      presentation: card
-      title: Removes Contaminants
-      description: Types of contamination effectively removed by this setting
-      icon: droplet
-      order: 3
-      variant: default
-    regulatory_standards:
-      presentation: card
-      title: Regulatory Standards
-      description: Safety and compliance standards applicable to this laser setting
-      icon: shield-check
-      order: 4
-      variant: default
-    technical.works_on_materials:
-      presentation: card
-      title: Works On Materials
-      description: Materials compatible with these laser settings
-      icon: box
-      order: 1
-      variant: default
-    technical.removes_contaminants:
-      presentation: card
-      title: Removes Contaminants
-      description: Contaminants effectively removed by these settings
-      icon: droplet
-      order: 2
-      variant: default
-    safety.regulatory_standards:
-      presentation: card
-      title: Regulatory Standards
-      description: OSHA, ANSI, ISO, and industry safety standards
-      icon: shield-check
-      order: 1
-      variant: default
-    operational.common_challenges:
-      presentation: card
-      title: Common Challenges
-      description: Typical difficulties and considerations when using this setting
-      icon: alert-triangle
-      order: 1
-      variant: warning
-# Enrichers deprecated - all functionality moved to generators above
-# See: export/archive/enrichers-deprecated-dec29-2025/
-_deprecated_enrichments:
-- type: material_linkage
-  module: export.archive.enrichers-deprecated-dec29-2025.linkage.material_linkage_enricher
-  class: MaterialLinkageEnricher
-  field: materials
-  title: Applicable Materials
-  description: Materials that can be safely cleaned using these laser parameters
-  source: data/materials/Materials.yaml
-  defaults:
-  - category
-  - subcategory
-  - material_type
-  - thermal_conductivity
-  - reflectivity
-- type: contaminant_linkage
-  module: export.archive.enrichers-deprecated-dec29-2025.linkage.contaminant_linkage_enricher
-  class: ContaminantLinkageEnricher
-  field: contaminants
-  title: Effective Against
-  description: Types of contamination that can be removed using these laser settings
-  source: data/contaminants/Contaminants.yaml
-  defaults:
-  - category
-  - subcategory
-  - hazard_level
-  - contaminant_category
-  - commonality_score
-- type: compound_linkage
-  module: export.archive.enrichers-deprecated-dec29-2025.linkage.compound_linkage_enricher
-  class: CompoundLinkageEnricher
-  field: relevant_compounds
-  title: Safety Considerations
-  description: Hazardous compounds that may be generated when using these settings
-  source: data/compounds/Compounds.yaml
-  defaults:
-  - concentration_range
-  - hazard_class
-  - exposure_limits
-  - control_measures
-  - cas_number
-  - compound_category
-- type: timestamp
-  module: export.archive.enrichers-deprecated-dec29-2025.metadata.timestamp_enricher
-  class: TimestampEnricher
-  fields:
-  - datePublished
-  - dateModified
-- type: author
-  module: export.archive.enrichers-deprecated-dec29-2025.linkage.author_enricher
-  class: AuthorEnricher
-- type: images
-  module: export.archive.enrichers-deprecated-dec29-2025.media.image_enricher
-  class: ImageEnricher
-  domain: settings
-- type: name
-  module: export.archive.enrichers-deprecated-dec29-2025.metadata.name_enricher
-  class: NameEnricher
-- type: material_category
-  module: export.archive.enrichers-deprecated-dec29-2025.categorization.material_category_enricher
-  class: MaterialCategoryEnricher
-- type: breadcrumb
-  module: export.archive.enrichers-deprecated-dec29-2025.navigation.breadcrumb_enricher
-  class: BreadcrumbEnricher
-  domain: settings
-  category_field: category
-  subcategory_field: subcategory
-  name_field: name
-- type: relationship_group
-  module: export.archive.enrichers-deprecated-dec29-2025.relationships.group_enricher
-  class: RelationshipGroupEnricher
-  description: Group relationships into technical/safety/operational categories
-  relationship_groups:
-    technical:
-    - works_on_materials
-    - removes_contaminants
-    safety:
-    - regulatory_standards
-    operational:
-    - common_challenges
-    - equipment_requirements
-- type: title
-  module: export.archive.enrichers-deprecated-dec29-2025.metadata.title_enricher
-  class: TitleEnricher
-  template: '{name} Settings'
-  skip_if_exists: true
-- type: relationship_intensity
-  module: export.archive.enrichers-deprecated-dec29-2025.relationships.intensity_enricher
-  class: IntensityEnricher
-  description: Dynamically derives intensity from severity/effectiveness/frequency
-- type: field_order
-  module: export.archive.enrichers-deprecated-dec29-2025.metadata.field_order_enricher
-  class: FieldOrderEnricher
-  description: Normalize field order for consistency
+  - type: name
+    module: export.archive.enrichers-deprecated-dec29-2025.metadata.name_enricher
+    class: NameEnricher
+  - type: material_category
+    module: export.archive.enrichers-deprecated-dec29-2025.categorization.material_category_enricher
+    class: MaterialCategoryEnricher
+  - type: breadcrumb
+    module: export.archive.enrichers-deprecated-dec29-2025.navigation.breadcrumb_enricher
+    class: BreadcrumbEnricher
+    domain: settings
+    category_field: category
+    subcategory_field: subcategory
+    name_field: name
+  - type: relationship_group
+    module: export.archive.enrichers-deprecated-dec29-2025.relationships.group_enricher
+    class: RelationshipGroupEnricher
+    description: Group relationships into technical/safety/operational categories
+    relationship_groups:
+      technical:
+      - works_on_materials
+      - removes_contaminants
+      safety:
+      - regulatory_standards
+      operational:
+      - common_challenges
+      - equipment_requirements
+  - type: title
+    module: export.archive.enrichers-deprecated-dec29-2025.metadata.title_enricher
+    class: TitleEnricher
+    template: '{name} Settings'
+    skip_if_exists: true
+  - type: relationship_intensity
+    module: export.archive.enrichers-deprecated-dec29-2025.relationships.intensity_enricher
+    class: IntensityEnricher
+    description: Dynamically derives intensity from severity/effectiveness/frequency
+  - type: field_order
+    module: export.archive.enrichers-deprecated-dec29-2025.metadata.field_order_enricher
+    class: FieldOrderEnricher
+    description: Normalize field order for consistency
 _deprecated_library_enrichments:
   enabled: false
   enrichments:
