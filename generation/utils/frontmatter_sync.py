@@ -123,7 +123,9 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
     try:
         # Read existing frontmatter (or create minimal structure)
         if frontmatter_path.exists():
-            frontmatter_data = load_yaml(frontmatter_path) or {}
+            frontmatter_data = load_yaml(frontmatter_path)
+            if frontmatter_data is None:
+                raise ValueError(f"Corrupted YAML file: {frontmatter_path}")
         else:
             # Initialize minimal frontmatter structure
             # Note: 'title' field deprecated (Dec 29, 2025) - use 'page_title' instead

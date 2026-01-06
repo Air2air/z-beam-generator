@@ -28,7 +28,9 @@ class PowerIntensityGenerator(BaseDataGenerator):
             Dict with 'min_intensity' and 'max_intensity' keys (W/cm²)
         """
         # Build research prompt
-        display_name = item_data.get('name', item_name.replace('-laser-cleaning', ''))
+        if 'name' not in item_data:
+            raise ValueError(f"Missing 'name' field for item {item_name}")
+        display_name = item_data['name']
         
         prompt = f"""Research the optimal laser power intensity range for cleaning {display_name}.
 

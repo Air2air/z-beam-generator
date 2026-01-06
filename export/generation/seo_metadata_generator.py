@@ -90,9 +90,16 @@ class SEOMetadataGenerator(BaseGenerator):
         """
         super().__init__(config)
         
-        self.page_type = config.get('page_type', 'material')
-        self.title_field = config.get('title_field', 'page_title')
-        self.description_field = config.get('description_field', 'meta_description')
+        if 'page_type' not in config:
+            raise ValueError("Missing required config key: page_type")
+        if 'title_field' not in config:
+            raise ValueError("Missing required config key: title_field")
+        if 'description_field' not in config:
+            raise ValueError("Missing required config key: description_field")
+        
+        self.page_type = config['page_type']
+        self.title_field = config['title_field']
+        self.description_field = config['description_field']
         
         # Character limits
         self.title_min = 50
@@ -143,9 +150,11 @@ class SEOMetadataGenerator(BaseGenerator):
     
     def _generate_material_seo(self, frontmatter: Dict[str, Any]) -> tuple[str, str]:
         """Generate title and description for material pages."""
-        name = frontmatter.get('name', 'Material')
-        category = frontmatter.get('category', '')
-        subcategory = frontmatter.get('subcategory', '')
+        if 'name' not in frontmatter:
+            raise ValueError("Missing required field: name")
+        name = frontmatter['name']
+        category = frontmatter.get('category')
+        subcategory = frontmatter.get('subcategory')
         
         # Get properties for context
         props = frontmatter.get('properties', {})
@@ -169,7 +178,8 @@ class SEOMetadataGenerator(BaseGenerator):
     
     def _generate_settings_seo(self, frontmatter: Dict[str, Any]) -> tuple[str, str]:
         """Generate title and description for settings pages."""
-        name = frontmatter.get('name', 'Material')
+        if 'name' not in frontmatter:
+            raise ValueError(\"Missing required field: name\")\n        name = frontmatter['name']
         
         # Get wavelength and power from settings
         wavelength = frontmatter.get('wavelength_nm')
@@ -196,8 +206,10 @@ class SEOMetadataGenerator(BaseGenerator):
     
     def _generate_contaminant_seo(self, frontmatter: Dict[str, Any]) -> tuple[str, str]:
         """Generate title and description for contaminant pages."""
-        name = frontmatter.get('name', 'Contaminant')
-        category = frontmatter.get('category', '')
+        if 'name' not in frontmatter:
+            raise ValueError("Missing required field: name")
+        name = frontmatter['name']
+        category = frontmatter.get('category')
         
         # Infer key benefit based on contaminant type
         benefit = self._infer_contaminant_benefit(name, category)
@@ -212,9 +224,13 @@ class SEOMetadataGenerator(BaseGenerator):
     
     def _generate_compound_seo(self, frontmatter: Dict[str, Any]) -> tuple[str, str]:
         """Generate title and description for compound pages."""
-        name = frontmatter.get('name', 'Compound')
-        hazard_class = frontmatter.get('hazard_class', 'Hazardous')
-        cas_number = frontmatter.get('cas_number', '')
+        if 'name' not in frontmatter:
+            raise ValueError("Missing required field: name")
+        if 'hazard_class' not in frontmatter:
+            raise ValueError("Missing required field: hazard_class")
+        name = frontmatter['name']
+        hazard_class = frontmatter['hazard_class']
+        cas_number = frontmatter.get('cas_number')
         
         # Infer hazard type from hazard_class
         hazard_type = self._infer_hazard_type(hazard_class, name)

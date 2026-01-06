@@ -27,7 +27,9 @@ class ContextGenerator(BaseDataGenerator):
         Returns:
             Dict with 'indoor', 'outdoor', 'industrial', 'marine' keys
         """
-        display_name = item_data.get('name', item_name)
+        if 'name' not in item_data:
+            raise ValueError(f"Missing 'name' field for item {item_name}")
+        display_name = item_data['name']
         
         # Build domain-specific prompt
         if self.domain == 'materials':

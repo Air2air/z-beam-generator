@@ -55,7 +55,9 @@ class DomainLinkagesGenerator(BaseGenerator):
         if not self.domain:
             raise ValueError("Missing required config key: 'domain'")
         
-        self.output_field = config.get('output_field', 'relationships')
+        if 'output_field' not in config:
+            raise ValueError("Missing required config key: output_field")
+        self.output_field = config['output_field']
         
         # Initialize linkages service
         self.linkages_service = DomainLinkagesService()
