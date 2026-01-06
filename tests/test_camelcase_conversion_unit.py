@@ -105,67 +105,73 @@ class TestCamelCaseConversionUnit:
         assert 'schema_version' not in result
     
     def test_nested_dict_conversion(self, generator):
-        """Test converting nested dictionaries."""
+        """Test converting nested dictionaries (software metadata only)."""
         input_dict = {
-            'outer_field': 'value',
-            'nested_object': {
-                'inner_field': 'nested_value',
-                'another_field': 123
+            'page_title': 'Test Title',
+            'content_type': 'material',
+            'nested_metadata': {
+                'display_name': 'Display Name',
+                'image_url': 'https://example.com/image.jpg'
             }
         }
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
-        assert 'outerField' in result
-        assert 'nestedObject' in result
-        assert 'innerField' in result['nestedObject']
-        assert 'anotherField' in result['nestedObject']
-        assert result['nestedObject']['innerField'] == 'nested_value'
+        # Software metadata should be camelCase
+        assert 'pageTitle' in result
+        assert 'contentType' in result
+        assert result['pageTitle'] == 'Test Title'
+        assert result['contentType'] == 'material'
+        
+        # Nested fields that aren't in SOFTWARE_FIELDS should be preserved
+        # (nested_metadata is not a known field, so stays as-is)
+        assert 'nested_metadata' in result
     
     def test_deeply_nested_structures(self, generator):
-        """Test 5+ levels of nesting."""
+        """Test deeply nested structures preserve domain data snake_case."""
         input_dict = {
-            'level_1': {
-                'level_2': {
-                    'level_3': {
-                        'level_4': {
-                            'level_5': {
-                                'deep_field': 'deep_value'
-                            }
-                        }
-                    }
+            'schema_version': '5.0.0',
+            'machine_settings': {  # Domain data - should preserve snake_case
+                'power_range': {
+                    'min_watts': 100,
+                    'max_watts': 500,
+                    'pulse_duration': '10-50ns'
                 }
             }
         }
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
-        assert 'level1' in result
-        assert 'level2' in result['level1']
-        assert 'level3' in result['level1']['level2']
-        assert 'level4' in result['level1']['level2']['level3']
-        assert 'level5' in result['level1']['level2']['level3']['level4']
-        assert 'deepField' in result['level1']['level2']['level3']['level4']['level5']
-        assert result['level1']['level2']['level3']['level4']['level5']['deepField'] == 'deep_value'
+        # Software metadata converted
+        assert 'schemaVersion' in result
+        assert result['schemaVersion'] == '5.0.0'
+        
+        # Domain data preserved as snake_case
+        assert 'machine_settings' in result
+        assert 'power_range' in result['machine_settings']
+        assert 'min_watts' in result['machine_settings']['power_range']
+        assert 'max_watts' in result['machine_settings']['power_range']
+        assert 'pulse_duration' in result['machine_settings']['power_range']
     
     def test_list_of_dicts_conversion(self, generator):
-        """Test converting lists containing dictionaries."""
+        """Test converting lists containing dictionaries (domain data preserved).""" 
         input_dict = {
-            'item_list': [
-                {'field_name': 'value1'},
-                {'field_name': 'value2'},
-                {'another_field': 'value3'}
+            'regulatory_standards': [  # Domain data field - preserved
+                {'standard_name': 'OSHA 1926.57'},
+                {'standard_name': 'ISO 11553-2'},
+                {'exposure_limit': '5 mg/m3'}
             ]
         }
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
-        assert 'itemList' in result
-        assert len(result['itemList']) == 3
-        assert 'fieldName' in result['itemList'][0]
-        assert 'fieldName' in result['itemList'][1]
-        assert 'anotherField' in result['itemList'][2]
-        assert result['itemList'][0]['fieldName'] == 'value1'
+        # Domain data field preserved as snake_case
+        assert 'regulatory_standards' in result
+        assert len(result['regulatory_standards']) == 3
+        # Nested fields within domain data also preserved
+        assert 'standard_name' in result['regulatory_standards'][0]
+        assert 'standard_name' in result['regulatory_standards'][1]
+        assert 'exposure_limit' in result['regulatory_standards'][2]
     
     def test_underscore_prefix_preserved(self, generator):
         """Test that fields starting with underscore are preserved."""
@@ -173,7 +179,7 @@ class TestCamelCaseConversionUnit:
             '_section': {'title': 'Test'},
             '_collapsible': True,
             '_open': False,
-            'regular_field': 'value'
+            'page_title': 'My Page'  # Software metadata
         }
         
         result = generator._task_camelcase_normalization(input_dict, {})
@@ -183,34 +189,38 @@ class TestCamelCaseConversionUnit:
         assert '_collapsible' in result
         assert '_open' in result
         
-        # Regular fields should be converted
-        assert 'regularField' in result
-        assert 'regular_field' not in result
+        # Software metadata converted to camelCase
+        assert 'pageTitle' in result
+        assert 'page_title' not in result
         
-        # Nested values in underscore fields should still be converted
+        # Nested values in underscore fields should be preserved
         assert result['_section'] == {'title': 'Test'}
     
     def test_mixed_data_types(self, generator):
-        """Test handling of various data types."""
+        """Test handling of various data types (software metadata)."""
         input_dict = {
-            'string_field': 'text',
-            'number_field': 42,
-            'float_field': 3.14,
-            'bool_field': True,
-            'none_field': None,
-            'list_field': [1, 2, 3],
-            'dict_field': {'nested': 'value'}
+            'page_title': 'text',
+            'schema_version': '5.0.0',
+            'date_published': '2026-01-05',
+            'content_type': 'material',
+            'machine_settings': {  # Domain data - preserved
+                'power_min': 100,
+                'power_max': 500
+            }
         }
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
-        assert result['stringField'] == 'text'
-        assert result['numberField'] == 42
-        assert result['floatField'] == 3.14
-        assert result['boolField'] is True
-        assert result['noneField'] is None
-        assert result['listField'] == [1, 2, 3]
-        assert 'nested' in result['dictField']
+        # Software metadata converted to camelCase
+        assert result['pageTitle'] == 'text'
+        assert result['schemaVersion'] == '5.0.0'
+        assert result['datePublished'] == '2026-01-05'
+        assert result['contentType'] == 'material'
+        
+        # Domain data preserved as snake_case
+        assert 'machine_settings' in result
+        assert 'power_min' in result['machine_settings']
+        assert 'power_max' in result['machine_settings']
     
     def test_empty_dict(self, generator):
         """Test empty dictionary handling."""
@@ -220,70 +230,65 @@ class TestCamelCaseConversionUnit:
     def test_empty_nested_structures(self, generator):
         """Test empty nested dicts and lists."""
         input_dict = {
-            'empty_dict': {},
-            'empty_list': [],
-            'dict_with_empty': {
-                'nested_empty': {}
-            }
+            'page_title': 'Test',
+            'relationships': {},  # Empty domain data structure
+            'metadata': []
         }
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
-        assert result['emptyDict'] == {}
-        assert result['emptyList'] == []
-        assert result['dictWithEmpty']['nestedEmpty'] == {}
+        assert result['pageTitle'] == 'Test'
+        assert result['relationships'] == {}
+        assert result['metadata'] == []
     
     def test_special_characters_no_underscores(self, generator):
-        """Test fields with hyphens, dots (no underscores - should remain unchanged)."""
+        """Test fields with hyphens, dots stay as-is (not software metadata)."""
         input_dict = {
             'field-with-hyphens': 'value1',
             'field.with.dots': 'value2',
             'field@special': 'value3',
-            'normal_field': 'value4'
+            'page_title': 'My Page'  # Software metadata
         }
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
-        # No underscores = unchanged
+        # Special chars = unchanged (not in SOFTWARE_FIELDS)
         assert 'field-with-hyphens' in result
         assert 'field.with.dots' in result
         assert 'field@special' in result
         
-        # Has underscore = converted
-        assert 'normalField' in result
-        assert 'normal_field' not in result
+        # Software metadata converted
+        assert 'pageTitle' in result
+        assert 'page_title' not in result
     
     def test_complex_real_world_structure(self, generator):
-        """Test with a realistic frontmatter structure."""
+        """Test with a realistic frontmatter structure (dual-case)."""
         input_dict = {
             'id': 'test-material',
-            'page_title': 'Test Material',
-            'content_type': 'material',
-            'schema_version': '5.0.0',
-            'date_published': '2026-01-05',
-            'date_modified': '2026-01-05',
+            'page_title': 'Test Material',  # Software metadata → camelCase
+            'content_type': 'material',  # Software metadata → camelCase
+            'schema_version': '5.0.0',  # Software metadata → camelCase
+            'date_published': '2026-01-05',  # Software metadata → camelCase
+            'date_modified': '2026-01-05',  # Software metadata → camelCase
             'author': {
-                'author_id': 1,
-                'full_name': 'John Doe'
+                'id': 1,
+                'name': 'John Doe'
             },
-            'technical_specs': {
-                'melting_point': 1000,
-                'thermal_conductivity': 200
+            'machine_settings': {  # Domain data → snake_case preserved
+                'power_min': 100,
+                'power_max': 500,
+                'pulse_duration': '10-50ns'
             },
-            'safety': {
-                'health_effects': [
-                    {'symptom_name': 'Irritation', 'severity_level': 'low'}
-                ]
-            },
+            'chemical_formula': 'Al2O3',  # Domain data → snake_case preserved
             '_section': {
-                'section_title': 'Overview',
-                'order_number': 1
+                'title': 'Overview',
+                'order': 1
             }
         }
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
-        # Top level
+        # Top level - software metadata converted to camelCase
         assert result['id'] == 'test-material'
         assert result['pageTitle'] == 'Test Material'
         assert result['contentType'] == 'material'
@@ -291,95 +296,100 @@ class TestCamelCaseConversionUnit:
         assert result['datePublished'] == '2026-01-05'
         assert result['dateModified'] == '2026-01-05'
         
-        # Nested author
-        assert result['author']['authorId'] == 1
-        assert result['author']['fullName'] == 'John Doe'
+        # Author - regular nested structure (not in SOFTWARE_FIELDS, preserved)
+        assert result['author']['id'] == 1
+        assert result['author']['name'] == 'John Doe'
         
-        # Nested technical_specs
-        assert result['technicalSpecs']['meltingPoint'] == 1000
-        assert result['technicalSpecs']['thermalConductivity'] == 200
+        # Domain data preserved as snake_case
+        assert 'machine_settings' in result
+        assert 'power_min' in result['machine_settings']
+        assert 'power_max' in result['machine_settings']
+        assert 'pulse_duration' in result['machine_settings']
+        assert 'chemical_formula' in result
+        assert result['chemical_formula'] == 'Al2O3'
         
-        # Nested list with dict
-        assert result['safety']['healthEffects'][0]['symptomName'] == 'Irritation'
-        assert result['safety']['healthEffects'][0]['severityLevel'] == 'low'
-        
-        # Underscore-prefixed preserved but nested converted
+        # Underscore-prefixed preserved
         assert '_section' in result
-        assert result['_section']['sectionTitle'] == 'Overview'
-        assert result['_section']['orderNumber'] == 1
+        assert result['_section']['title'] == 'Overview'
+        assert result['_section']['order'] == 1
         
-        # Old snake_case keys should NOT exist
+        # Old snake_case software metadata keys should NOT exist
         assert 'page_title' not in result
         assert 'content_type' not in result
-        assert 'author_id' not in result['author']
-        assert 'melting_point' not in result['technicalSpecs']
+        assert 'schema_version' not in result
     
     def test_idempotency(self, generator):
         """Test that running conversion twice produces same result."""
         input_dict = {
-            'field_name': 'value',
-            'another_field': 123
+            'page_title': 'Test',  # Software metadata
+            'schema_version': '5.0.0'
         }
         
         result1 = generator._task_camelcase_normalization(input_dict, {})
         result2 = generator._task_camelcase_normalization(result1, {})
         
         assert result1 == result2
-        assert 'fieldName' in result2
-        assert 'anotherField' in result2
+        assert 'pageTitle' in result2
+        assert 'schemaVersion' in result2
     
     def test_null_values_preserved(self, generator):
-        """Test that None/null values are preserved."""
+        """Test that None/null values are preserved (software metadata)."""
         input_dict = {
-            'field_with_none': None,
-            'nested_dict': {
-                'null_field': None
-            },
-            'list_with_none': [None, 'value', None]
-        }
-        
-        result = generator._task_camelcase_normalization(input_dict, {})
-        
-        assert result['fieldWithNone'] is None
-        assert result['nestedDict']['nullField'] is None
-        assert result['listWithNone'] == [None, 'value', None]
-    
-    def test_boolean_values_preserved(self, generator):
-        """Test that boolean values are correctly preserved."""
-        input_dict = {
-            'is_active': True,
-            'is_deleted': False,
-            'nested': {
-                'has_permission': True
+            'page_description': None,  # Software metadata 
+            'content_type': 'material',
+            'machine_settings': {  # Domain data
+                'optional_field': None
             }
         }
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
-        assert result['isActive'] is True
-        assert result['isDeleted'] is False
-        assert result['nested']['hasPermission'] is True
+        # Software metadata converted, None preserved
+        assert result['pageDescription'] is None
+        assert result['contentType'] == 'material'
+        
+        # Domain data preserved
+        assert 'machine_settings' in result
+        assert result['machine_settings']['optional_field'] is None
     
-    def test_list_of_primitives_unchanged(self, generator):
-        """Test that lists of primitive values remain unchanged."""
+    def test_boolean_values_preserved(self, generator):
+        """Test that boolean values are correctly preserved."""
         input_dict = {
-            'string_list': ['a', 'b', 'c'],
-            'number_list': [1, 2, 3],
-            'mixed_list': ['text', 123, True, None]
+            '_collapsible': True,  # Underscore prefix - preserved
+            '_open': False,
+            'page_title': 'Test'
         }
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
-        assert result['stringList'] == ['a', 'b', 'c']
-        assert result['numberList'] == [1, 2, 3]
-        assert result['mixedList'] == ['text', 123, True, None]
+        # Underscore fields preserved
+        assert result['_collapsible'] is True
+        assert result['_open'] is False
+        
+        # Software metadata converted
+        assert result['pageTitle'] == 'Test'
+    
+    def test_list_of_primitives_unchanged(self, generator):
+        """Test that lists of primitive values remain unchanged."""
+        input_dict = {
+            'metadata': ['tag1', 'tag2', 'tag3'],  # Regular field
+            'regulatory_standards': ['OSHA', 'ISO']  # Domain data field
+        }
+        
+        result = generator._task_camelcase_normalization(input_dict, {})
+        
+        # Regular fields preserved (not in SOFTWARE_FIELDS)
+        assert result['metadata'] == ['tag1', 'tag2', 'tag3']
+        
+        # Domain data preserved
+        assert result['regulatory_standards'] == ['OSHA', 'ISO']
     
     def test_multiple_underscore_prefixes(self, generator):
         """Test fields with multiple leading underscores."""
         input_dict = {
             '__private': 'value1',
             '___triple': 'value2',
-            'regular_field': 'value3'
+            'page_title': 'My Page'  # Software metadata
         }
         
         result = generator._task_camelcase_normalization(input_dict, {})
@@ -388,8 +398,8 @@ class TestCamelCaseConversionUnit:
         assert '__private' in result
         assert '___triple' in result
         
-        # Regular field converted
-        assert 'regularField' in result
+        # Software metadata converted
+        assert 'pageTitle' in result
 
 
 class TestCamelCaseEdgeCases:
