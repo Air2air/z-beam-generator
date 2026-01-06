@@ -139,4 +139,4 @@ class ContaminantCoordinator(DomainCoordinator):
     def list_contaminants(self) -> list:
         """Get list of all contaminant IDs."""
         contaminants_data = self._load_contaminants_data()
-        return list(contaminants_data['contamination_patterns'].keys())
+        return list(contaminants_data['contaminants'].keys())

@@ -56,7 +56,7 @@ def handle_generation(
     component_label = component_type.upper().replace('_', ' ')
     icon_map = {
         'micro': '📝',
-        'description': '📌',
+        'pageDescription': '📌',
         'settings_description': '⚙️',
         'component_summary': '📋',
         'faq': '❓',

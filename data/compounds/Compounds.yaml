@@ -22,12 +22,12 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: &id001
+      expertise: &id003
       - Optical Materials for Laser Systems
-      affiliation: &id002
+      affiliation: &id004
         name: Coherent Inc.
         type: Organization
-      credentials: &id003
+      credentials: &id005
       - BA Physics, UC Irvine, 2017
       - Hands-on at JPL optics internship, 2018
       - MA Optics and Photonics, UC Irvine, 2019
@@ -38,7 +38,7 @@ compounds:
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: &id004
+      sameAs: &id006
       - https://linkedin.com/in/todd-dunning-optics
       - https://spie.org/profile/Todd.Dunning
       persona_file: usa_persona.yaml
@@ -153,6 +153,17 @@ compounds:
           items:
           - type: chemical_properties
             id: carbon-monoxide-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: &id001
+              notes: Core chemical identity data from Compounds.yaml
+              source_field: chemical_properties
+              presentation_type: descriptive
         physical_properties:
           presentation: descriptive
           items:
@@ -455,6 +466,17 @@ compounds:
             frequency: unknown
             severity: moderate
             typical_context: Laser removal of Quenching Oil Residue
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: &id002
+              notes: Links to contaminant pages
+              relationship_type: produced_from
+              presentation_type: card
         reactivity:
           presentation: descriptive
           items:
@@ -538,12 +560,12 @@ compounds:
       title: Ph.D.
       sex: f
       jobTitle: Laser Processing Engineer
-      expertise: &id005
+      expertise: &id008
       - Laser Materials Processing
-      affiliation: &id006
+      affiliation: &id009
         name: National Taiwan University
         type: EducationalOrganization
-      credentials: &id007
+      credentials: &id010
       - Ph.D. Materials Engineering, National Taiwan University, 2018
       - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
       - 3+ years in laser processing R&D
@@ -553,7 +575,7 @@ compounds:
       imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
         in lab setting
       url: https://z-beam.com/authors/yi-chun-lin
-      sameAs: &id008
+      sameAs: &id011
       - https://scholar.google.com/citations?user=ghi789
       - https://linkedin.com/in/yi-chun-lin-engineer
       - https://www.researchgate.net/profile/Yi-Chun-Lin-2
@@ -703,6 +725,14 @@ compounds:
           items:
           - type: chemical_properties
             id: formaldehyde-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -969,6 +999,14 @@ compounds:
             frequency: occasional
             severity: low
             typical_context: Thermal degradation of certain epoxy formulations
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -978,6 +1016,17 @@ compounds:
           - id: phenolic-resin-composites-laser-cleaning
           - id: polyester-resin-composites-laser-cleaning
           - id: urethane-composites-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: &id007
+              notes: Links to material pages
+              relationship_type: produced_from
+              presentation_type: card
         reactivity:
           presentation: descriptive
           items:
@@ -1067,15 +1116,15 @@ compounds:
       title: Ph.D.
       sex: m
       jobTitle: Materials Engineer
-      expertise: &id009
+      expertise: &id012
       - Laser-Based Additive Manufacturing
-      affiliation: &id010
+      affiliation: &id013
         name: Politecnico di Milano's Materials Dept.
         type: EducationalOrganization
-      alumniOf: &id011
+      alumniOf: &id014
         name: University of Bologna
         type: EducationalOrganization
-      credentials: &id012
+      credentials: &id015
       - Ph.D. Materials Science, TU Milano, 2015
       - 5+ years industrial ceramics experience
       - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
@@ -1084,7 +1133,7 @@ compounds:
       imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
         Materials Dept., in research lab
       url: https://z-beam.com/authors/alessandro-moretti-phd
-      sameAs: &id013
+      sameAs: &id016
       - https://scholar.google.com/citations?user=def456
       - https://linkedin.com/in/alessandro-moretti-engineer
       persona_file: italy_persona.yaml
@@ -1191,6 +1240,14 @@ compounds:
           items:
           - type: chemical_properties
             id: benzene-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -1460,6 +1517,14 @@ compounds:
             frequency: occasional
             severity: moderate
             typical_context: Decomposition of aromatic additives
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         reactivity:
           presentation: descriptive
           items:
@@ -1549,16 +1614,16 @@ compounds:
       title: Ph.D.
       sex: m
       jobTitle: Junior Research Scientist in Laser Physics
-      expertise: &id014
+      expertise: &id017
       - Ultrafast Laser Physics and Material Interactions
-      affiliation: &id015
+      affiliation: &id018
         name: Bandung Institute of Technology
         type: EducationalOrganization
-      credentials: &id016
+      credentials: &id019
       - Ph.D. Physics, ITB, 2020
       - 2+ years in ultrafast laser research including ASEAN optics workshops
       - Assisted in international optics projects
-      languages: &id017
+      languages: &id020
       - English
       - Bahasa Indonesia
       email: info@z-beam.com
@@ -1566,7 +1631,7 @@ compounds:
       imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
         at Bandung Institute of Technology, fieldwork optics setup
       url: https://z-beam.com/authors/ikmanda-roswati
-      sameAs: &id018
+      sameAs: &id021
       - https://linkedin.com/in/ikmanda-roswati-physicist
       - https://www.academia.edu/profile/IkmandaRoswati
       persona_file: indonesia_persona.yaml
@@ -1706,6 +1771,14 @@ compounds:
           items:
           - type: chemical_properties
             id: pahs-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
       safety:
         health_effects:
           presentation: card
@@ -1761,12 +1834,34 @@ compounds:
           items:
           - type: environmental_impact
             id: pahs-environmental-data
+          _section:
+            sectionTitle: Environmental Impact
+            sectionDescription: Environmental hazards, ecological effects, and disposal
+              considerations
+            icon: leaf
+            order: 1
+            variant: warning
+            sectionMetadata:
+              notes: Environmental and ecological concerns
+              source_field: environmental_impact
+              presentation_type: descriptive
       detection_monitoring:
         detection_monitoring:
           presentation: descriptive
           items:
           - type: detection_monitoring
             id: pahs-monitoring-methods
+          _section:
+            sectionTitle: Monitoring Systems
+            sectionDescription: Real-time monitoring equipment and workplace air sampling
+              methods
+            icon: activity
+            order: 2
+            variant: default
+            sectionMetadata:
+              notes: Continuous monitoring and sampling systems
+              source_field: detection_monitoring
+              presentation_type: descriptive
       interactions:
         produced_from_contaminants:
           presentation: card
@@ -1803,6 +1898,14 @@ compounds:
             frequency: unknown
             severity: high
             typical_context: Laser removal of Exhaust System Deposits
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
     card:
       default:
         heading: Polycyclic Aromatic Hydrocarbons
@@ -1860,15 +1963,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -1992,6 +2095,14 @@ compounds:
           items:
           - type: chemical_properties
             id: hydrogen-cyanide-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -2270,6 +2381,14 @@ compounds:
             frequency: occasional
             severity: moderate
             typical_context: Breakdown of cyanoacrylate adhesives
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -2279,6 +2398,14 @@ compounds:
           - id: phenolic-resin-composites-laser-cleaning
           - id: polyester-resin-composites-laser-cleaning
           - id: urethane-composites-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
         reactivity:
           presentation: descriptive
           items:
@@ -2372,15 +2499,15 @@ compounds:
       title: Ph.D.
       sex: f
       jobTitle: Laser Processing Engineer
-      expertise: *id005
-      affiliation: *id006
-      credentials: *id007
+      expertise: *id008
+      affiliation: *id009
+      credentials: *id010
       email: info@z-beam.com
       image: /images/author/yi-chun-lin.jpg
       imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
         in lab setting
       url: https://z-beam.com/authors/yi-chun-lin
-      sameAs: *id008
+      sameAs: *id011
       persona_file: taiwan_persona.yaml
       formatting_file: taiwan_formatting.yaml
       slug: yi-chun-lin
@@ -2476,6 +2603,14 @@ compounds:
           - type: chemical_properties
             id: acetaldehyde-physical-data
             notes: Standard physical/chemical data from NIST
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -2716,6 +2851,14 @@ compounds:
             frequency: occasional
             severity: low
             typical_context: Acrylic paint thermal degradation
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -2725,6 +2868,14 @@ compounds:
           - id: phenolic-resin-composites-laser-cleaning
           - id: polyester-resin-composites-laser-cleaning
           - id: urethane-composites-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
         reactivity:
           presentation: descriptive
           items:
@@ -2820,16 +2971,16 @@ compounds:
       title: Ph.D.
       sex: m
       jobTitle: Materials Engineer
-      expertise: *id009
-      affiliation: *id010
-      alumniOf: *id011
-      credentials: *id012
+      expertise: *id012
+      affiliation: *id013
+      alumniOf: *id014
+      credentials: *id015
       email: info@z-beam.com
       image: /images/author/alessandro-moretti.jpg
       imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
         Materials Dept., in research lab
       url: https://z-beam.com/authors/alessandro-moretti-phd
-      sameAs: *id013
+      sameAs: *id016
       persona_file: italy_persona.yaml
       formatting_file: italy_formatting.yaml
       slug: alessandro-moretti
@@ -2984,6 +3135,14 @@ compounds:
           items:
           - type: chemical_properties
             id: acrolein-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -3244,6 +3403,14 @@ compounds:
             frequency: occasional
             severity: moderate
             typical_context: Pyrolysis of certain polymers
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -3253,6 +3420,14 @@ compounds:
           - id: phenolic-resin-composites-laser-cleaning
           - id: polyester-resin-composites-laser-cleaning
           - id: urethane-composites-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
         reactivity:
           presentation: descriptive
           items:
@@ -3346,16 +3521,16 @@ compounds:
       title: Ph.D.
       sex: m
       jobTitle: Junior Research Scientist in Laser Physics
-      expertise: *id014
-      affiliation: *id015
-      credentials: *id016
-      languages: *id017
+      expertise: *id017
+      affiliation: *id018
+      credentials: *id019
+      languages: *id020
       email: info@z-beam.com
       image: /images/author/ikmanda-roswati.jpg
       imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
         at Bandung Institute of Technology, fieldwork optics setup
       url: https://z-beam.com/authors/ikmanda-roswati
-      sameAs: *id018
+      sameAs: *id021
       persona_file: indonesia_persona.yaml
       formatting_file: indonesia_formatting.yaml
       slug: ikmanda-roswati
@@ -3478,6 +3653,14 @@ compounds:
           items:
           - type: chemical_properties
             id: hydrogen-chloride-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -3719,6 +3902,14 @@ compounds:
             frequency: occasional
             severity: moderate
             typical_context: Chlorinated adhesive breakdown
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -3728,6 +3919,14 @@ compounds:
           - id: phenolic-resin-composites-laser-cleaning
           - id: polyester-resin-composites-laser-cleaning
           - id: urethane-composites-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
         reactivity:
           presentation: descriptive
           items:
@@ -3813,15 +4012,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -3975,6 +4174,14 @@ compounds:
           items:
           - type: chemical_properties
             id: toluene-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -4231,6 +4438,14 @@ compounds:
             frequency: occasional
             severity: low
             typical_context: Thermal breakdown of aromatic rubber compounds
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -4240,6 +4455,14 @@ compounds:
           - id: phenolic-resin-composites-laser-cleaning
           - id: polyester-resin-composites-laser-cleaning
           - id: urethane-composites-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
         reactivity:
           presentation: descriptive
           items:
@@ -4328,15 +4551,15 @@ compounds:
       title: Ph.D.
       sex: f
       jobTitle: Laser Processing Engineer
-      expertise: *id005
-      affiliation: *id006
-      credentials: *id007
+      expertise: *id008
+      affiliation: *id009
+      credentials: *id010
       email: info@z-beam.com
       image: /images/author/yi-chun-lin.jpg
       imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
         in lab setting
       url: https://z-beam.com/authors/yi-chun-lin
-      sameAs: *id008
+      sameAs: *id011
       persona_file: taiwan_persona.yaml
       formatting_file: taiwan_formatting.yaml
       slug: yi-chun-lin
@@ -4480,6 +4703,14 @@ compounds:
           items:
           - type: chemical_properties
             id: styrene-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -4724,6 +4955,14 @@ compounds:
             frequency: common
             severity: moderate
             typical_context: Pyrolysis of styrene-butadiene rubber
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -4734,6 +4973,14 @@ compounds:
           - id: phenolic-resin-composites-laser-cleaning
           - id: polyester-resin-composites-laser-cleaning
           - id: urethane-composites-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
         reactivity:
           presentation: descriptive
           items:
@@ -4825,16 +5072,16 @@ compounds:
       title: Ph.D.
       sex: m
       jobTitle: Materials Engineer
-      expertise: *id009
-      affiliation: *id010
-      alumniOf: *id011
-      credentials: *id012
+      expertise: *id012
+      affiliation: *id013
+      alumniOf: *id014
+      credentials: *id015
       email: info@z-beam.com
       image: /images/author/alessandro-moretti.jpg
       imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
         Materials Dept., in research lab
       url: https://z-beam.com/authors/alessandro-moretti-phd
-      sameAs: *id013
+      sameAs: *id016
       persona_file: italy_persona.yaml
       formatting_file: italy_formatting.yaml
       slug: alessandro-moretti
@@ -4955,6 +5202,14 @@ compounds:
           items:
           - type: chemical_properties
             id: zinc-oxide-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -5205,6 +5460,14 @@ compounds:
             frequency: unknown
             severity: low
             typical_context: Laser removal of Battery Leakage Corrosion
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         reactivity:
           presentation: descriptive
           items:
@@ -5286,16 +5549,16 @@ compounds:
       title: Ph.D.
       sex: m
       jobTitle: Junior Research Scientist in Laser Physics
-      expertise: *id014
-      affiliation: *id015
-      credentials: *id016
-      languages: *id017
+      expertise: *id017
+      affiliation: *id018
+      credentials: *id019
+      languages: *id020
       email: info@z-beam.com
       image: /images/author/ikmanda-roswati.jpg
       imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
         at Bandung Institute of Technology, fieldwork optics setup
       url: https://z-beam.com/authors/ikmanda-roswati
-      sameAs: *id018
+      sameAs: *id021
       persona_file: indonesia_persona.yaml
       formatting_file: indonesia_formatting.yaml
       slug: ikmanda-roswati
@@ -5441,6 +5704,14 @@ compounds:
           items:
           - type: chemical_properties
             id: iron-oxide-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -5691,6 +5962,14 @@ compounds:
             frequency: unknown
             severity: low
             typical_context: Laser removal of Steel Surface Corrosion
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         reactivity:
           presentation: descriptive
           items:
@@ -5770,15 +6049,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -5899,6 +6178,14 @@ compounds:
           items:
           - type: chemical_properties
             id: chromium-vi-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -6168,6 +6455,14 @@ compounds:
             frequency: unknown
             severity: high
             typical_context: Laser removal of Chemical Conversion Coating
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -6175,6 +6470,14 @@ compounds:
           - id: stainless-steel-304-laser-cleaning
           - id: stainless-steel-316-laser-cleaning
           - id: stainless-steel-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
         reactivity:
           presentation: descriptive
           items:
@@ -6263,15 +6566,15 @@ compounds:
       title: Ph.D.
       sex: f
       jobTitle: Laser Processing Engineer
-      expertise: *id005
-      affiliation: *id006
-      credentials: *id007
+      expertise: *id008
+      affiliation: *id009
+      credentials: *id010
       email: info@z-beam.com
       image: /images/author/yi-chun-lin.jpg
       imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
         in lab setting
       url: https://z-beam.com/authors/yi-chun-lin
-      sameAs: *id008
+      sameAs: *id011
       persona_file: taiwan_persona.yaml
       formatting_file: taiwan_formatting.yaml
       slug: yi-chun-lin
@@ -6396,6 +6699,14 @@ compounds:
           items:
           - type: chemical_properties
             id: nitrogen-oxides-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -6670,6 +6981,14 @@ compounds:
             frequency: unknown
             severity: moderate
             typical_context: Laser removal of Pharmaceutical Drug Residue
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         reactivity:
           presentation: descriptive
           items:
@@ -6756,16 +7075,16 @@ compounds:
       title: Ph.D.
       sex: m
       jobTitle: Materials Engineer
-      expertise: *id009
-      affiliation: *id010
-      alumniOf: *id011
-      credentials: *id012
+      expertise: *id012
+      affiliation: *id013
+      alumniOf: *id014
+      credentials: *id015
       email: info@z-beam.com
       image: /images/author/alessandro-moretti.jpg
       imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
         Materials Dept., in research lab
       url: https://z-beam.com/authors/alessandro-moretti-phd
-      sameAs: *id013
+      sameAs: *id016
       persona_file: italy_persona.yaml
       formatting_file: italy_formatting.yaml
       slug: alessandro-moretti
@@ -6896,6 +7215,14 @@ compounds:
           items:
           - type: chemical_properties
             id: sulfur-dioxide-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -7133,6 +7460,14 @@ compounds:
             frequency: occasional
             severity: low
             typical_context: Sulfur additives in some lubricants
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -7144,6 +7479,14 @@ compounds:
           - id: stainless-steel-laser-cleaning
           - id: steel-laser-cleaning
           - id: tool-steel-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
         reactivity:
           presentation: descriptive
           items:
@@ -7225,16 +7568,16 @@ compounds:
       title: Ph.D.
       sex: m
       jobTitle: Junior Research Scientist in Laser Physics
-      expertise: *id014
-      affiliation: *id015
-      credentials: *id016
-      languages: *id017
+      expertise: *id017
+      affiliation: *id018
+      credentials: *id019
+      languages: *id020
       email: info@z-beam.com
       image: /images/author/ikmanda-roswati.jpg
       imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
         at Bandung Institute of Technology, fieldwork optics setup
       url: https://z-beam.com/authors/ikmanda-roswati
-      sameAs: *id018
+      sameAs: *id021
       persona_file: indonesia_persona.yaml
       formatting_file: indonesia_formatting.yaml
       slug: ikmanda-roswati
@@ -7332,6 +7675,14 @@ compounds:
           items:
           - type: chemical_properties
             id: phosgene-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -7572,6 +7923,14 @@ compounds:
             frequency: rare
             severity: high
             typical_context: Thermal breakdown of certain chlorinated plastics
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -7581,6 +7940,14 @@ compounds:
           - id: phenolic-resin-composites-laser-cleaning
           - id: polyester-resin-composites-laser-cleaning
           - id: urethane-composites-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
         reactivity:
           presentation: descriptive
           items:
@@ -7671,15 +8038,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -7806,6 +8173,14 @@ compounds:
           items:
           - type: chemical_properties
             id: ammonia-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -8046,6 +8421,14 @@ compounds:
             frequency: occasional
             severity: low
             typical_context: Breakdown of proteins
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -8055,6 +8438,14 @@ compounds:
           - id: phenolic-resin-composites-laser-cleaning
           - id: polyester-resin-composites-laser-cleaning
           - id: urethane-composites-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
         reactivity:
           presentation: descriptive
           items:
@@ -8143,15 +8534,15 @@ compounds:
       title: Ph.D.
       sex: f
       jobTitle: Laser Processing Engineer
-      expertise: *id005
-      affiliation: *id006
-      credentials: *id007
+      expertise: *id008
+      affiliation: *id009
+      credentials: *id010
       email: info@z-beam.com
       image: /images/author/yi-chun-lin.jpg
       imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
         in lab setting
       url: https://z-beam.com/authors/yi-chun-lin
-      sameAs: *id008
+      sameAs: *id011
       persona_file: taiwan_persona.yaml
       formatting_file: taiwan_formatting.yaml
       slug: yi-chun-lin
@@ -8242,6 +8633,14 @@ compounds:
           items:
           - type: chemical_properties
             id: carbon-dioxide-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -8758,6 +9157,14 @@ compounds:
             frequency: unknown
             severity: low
             typical_context: Laser removal of Wood Rot / Fungal Biodegradation
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         reactivity:
           presentation: descriptive
           items:
@@ -8836,16 +9243,16 @@ compounds:
       title: Ph.D.
       sex: m
       jobTitle: Materials Engineer
-      expertise: *id009
-      affiliation: *id010
-      alumniOf: *id011
-      credentials: *id012
+      expertise: *id012
+      affiliation: *id013
+      alumniOf: *id014
+      credentials: *id015
       email: info@z-beam.com
       image: /images/author/alessandro-moretti.jpg
       imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
         Materials Dept., in research lab
       url: https://z-beam.com/authors/alessandro-moretti-phd
-      sameAs: *id013
+      sameAs: *id016
       persona_file: italy_persona.yaml
       formatting_file: italy_formatting.yaml
       slug: alessandro-moretti
@@ -8964,6 +9371,14 @@ compounds:
           items:
           - type: chemical_properties
             id: vocs-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -9291,6 +9706,14 @@ compounds:
             frequency: unknown
             severity: moderate
             typical_context: Laser removal of Wood Rot / Fungal Biodegradation
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         reactivity:
           presentation: descriptive
           items:
@@ -9372,16 +9795,16 @@ compounds:
       title: Ph.D.
       sex: m
       jobTitle: Junior Research Scientist in Laser Physics
-      expertise: *id014
-      affiliation: *id015
-      credentials: *id016
-      languages: *id017
+      expertise: *id017
+      affiliation: *id018
+      credentials: *id019
+      languages: *id020
       email: info@z-beam.com
       image: /images/author/ikmanda-roswati.jpg
       imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
         at Bandung Institute of Technology, fieldwork optics setup
       url: https://z-beam.com/authors/ikmanda-roswati
-      sameAs: *id018
+      sameAs: *id021
       persona_file: indonesia_persona.yaml
       formatting_file: indonesia_formatting.yaml
       slug: ikmanda-roswati
@@ -9534,6 +9957,14 @@ compounds:
           items:
           - type: chemical_properties
             id: benzoapyrene-physical-data
+          _section:
+            sectionTitle: Chemical Properties
+            sectionDescription: Molecular formula, CAS number, molecular weight, and
+              chemical structure
+            icon: atom
+            order: 1
+            variant: default
+            sectionMetadata: *id001
         physical_properties:
           presentation: descriptive
           items:
@@ -9792,6 +10223,14 @@ compounds:
             frequency: occasional
             severity: moderate
             typical_context: Formed during high-temperature pyrolysis
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         reactivity:
           presentation: descriptive
           items:
@@ -9871,15 +10310,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -10213,6 +10652,14 @@ compounds:
             frequency: unknown
             severity: low
             typical_context: Laser removal of Wood Rot / Fungal Biodegradation
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
       safety:
         health_effects:
         - route: inhalation
@@ -10286,15 +10733,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -10533,6 +10980,14 @@ compounds:
             frequency: unknown
             severity: low
             typical_context: Laser removal of Wax Coating Buildup
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
       safety:
         health_effects:
         - route: inhalation
@@ -10607,15 +11062,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -10816,6 +11271,14 @@ compounds:
             frequency: unknown
             severity: moderate
             typical_context: Laser removal of Wood Rot / Fungal Biodegradation
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
       safety:
         health_effects:
         - route: inhalation
@@ -10892,15 +11355,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -11081,6 +11544,14 @@ compounds:
             frequency: unknown
             severity: moderate
             typical_context: Laser removal of Automotive Undercoating
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
       safety:
         health_effects:
         - route: inhalation
@@ -11156,15 +11627,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -11328,6 +11799,14 @@ compounds:
             frequency: unknown
             severity: moderate
             typical_context: Laser removal of Thermal Compound Deposits
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
       safety:
         health_effects:
         - route: inhalation
@@ -11407,15 +11886,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -11625,6 +12104,14 @@ compounds:
             frequency: unknown
             severity: moderate
             typical_context: Laser removal of Wax Coating Buildup
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
       safety:
         health_effects:
         - route: inhalation
@@ -11701,15 +12188,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -11837,6 +12324,14 @@ compounds:
             frequency: unknown
             severity: low
             typical_context: Laser removal of Anodizing Layer Irregularities
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -11845,6 +12340,14 @@ compounds:
           - id: aluminum-nitride-laser-cleaning
           - id: brass-laser-cleaning
           - id: bronze-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
       safety:
         health_effects:
         - route: inhalation
@@ -11920,15 +12423,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -12072,6 +12575,14 @@ compounds:
             frequency: unknown
             severity: moderate
             typical_context: Laser removal of Copper Electroplating
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
       safety:
         health_effects:
         - route: inhalation
@@ -12146,15 +12657,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -12304,6 +12815,14 @@ compounds:
             frequency: unknown
             severity: low
             typical_context: Laser removal of Silicone Sealant Buildup
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
       safety:
         health_effects:
         - route: inhalation
@@ -12381,15 +12900,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -12557,6 +13076,14 @@ compounds:
             frequency: unknown
             severity: moderate
             typical_context: Laser removal of Mineral Scale / Hard Water Deposits
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
       safety:
         health_effects:
         - route: inhalation
@@ -12634,15 +13161,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -12809,6 +13336,14 @@ compounds:
             frequency: unknown
             severity: moderate
             typical_context: Laser removal of Tin Plating Residue
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -12818,6 +13353,14 @@ compounds:
           - id: serpentine-laser-cleaning
           - id: tin-laser-cleaning
           - id: travertine-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
       safety:
         health_effects:
         - route: inhalation
@@ -12891,15 +13434,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -13040,6 +13583,14 @@ compounds:
             frequency: unknown
             severity: high
             typical_context: Laser removal of Lead-Based Paint Removal
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -13047,6 +13598,14 @@ compounds:
           - id: bronze-laser-cleaning
           - id: lead-crystal-laser-cleaning
           - id: lead-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
       safety:
         health_effects:
         - route: inhalation
@@ -13123,15 +13682,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -13283,6 +13842,14 @@ compounds:
             frequency: unknown
             severity: high
             typical_context: Laser removal of Cadmium Plating Removal
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
         produced_from_materials:
           presentation: card
           items:
@@ -13292,6 +13859,14 @@ compounds:
           - id: steel-laser-cleaning
           - id: tool-steel-laser-cleaning
           - id: stainless-steel-316-laser-cleaning
+          _section:
+            sectionTitle: Source Materials
+            sectionDescription: Materials that may release this compound when laser
+              cleaned
+            icon: box
+            order: 2
+            variant: default
+            sectionMetadata: *id007
       safety:
         health_effects:
         - route: inhalation
@@ -13366,15 +13941,15 @@ compounds:
       title: MA
       sex: m
       jobTitle: Junior Optical Materials Specialist
-      expertise: *id001
-      affiliation: *id002
-      credentials: *id003
+      expertise: *id003
+      affiliation: *id004
+      credentials: *id005
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
       imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
         Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
-      sameAs: *id004
+      sameAs: *id006
       persona_file: usa_persona.yaml
       formatting_file: usa_formatting.yaml
       slug: todd-dunning
@@ -13542,6 +14117,14 @@ compounds:
             frequency: unknown
             severity: moderate
             typical_context: Laser removal of PVD Coating Defects
+          _section:
+            sectionTitle: Source Contaminants
+            sectionDescription: Contaminants that generate this compound during laser
+              cleaning
+            icon: droplet
+            order: 1
+            variant: default
+            sectionMetadata: *id002
       safety:
         health_effects:
         - route: inhalation

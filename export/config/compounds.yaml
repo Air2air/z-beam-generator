@@ -204,6 +204,8 @@ generators:
   # ALLOWED: Format-only transformation tasks
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
+  - type: section_metadata
+    description: Add _section metadata to relationship sections (title, description, icon, order, variant)
   - type: field_ordering
     domain: compounds
     description: Organize output structure

@@ -111,7 +111,7 @@ class BaseDataGenerator(ABC):
             with open(self.data_file, 'r') as f:
                 data = yaml.safe_load(f)
             
-            # Get domain key (materials, contamination_patterns, compounds, settings)
+            # Get domain key (materials, contaminants, compounds, settings)
             domain_key = self._get_domain_key()
             items = data.get(domain_key, {})
             
@@ -175,7 +175,7 @@ class BaseDataGenerator(ABC):
         """Get the YAML key for this domain's data."""
         domain_keys = {
             'materials': 'materials',
-            'contaminants': 'contamination_patterns',
+            'contaminants': 'contaminants',
             'compounds': 'compounds',
             'settings': 'settings'
         }

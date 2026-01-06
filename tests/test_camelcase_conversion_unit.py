@@ -176,7 +176,7 @@ class TestCamelCaseConversionUnit:
     def test_underscore_prefix_preserved(self, generator):
         """Test that fields starting with underscore are preserved."""
         input_dict = {
-            '_section': {'title': 'Test'},
+            '_section': {'sectionTitle': 'Test'},
             '_collapsible': True,
             '_open': False,
             'page_title': 'My Page'  # Software metadata
@@ -194,7 +194,7 @@ class TestCamelCaseConversionUnit:
         assert 'page_title' not in result
         
         # Nested values in underscore fields should be preserved
-        assert result['_section'] == {'title': 'Test'}
+        assert result['_section'] == {'sectionTitle': 'Test'}
     
     def test_mixed_data_types(self, generator):
         """Test handling of various data types (software metadata)."""
@@ -281,7 +281,7 @@ class TestCamelCaseConversionUnit:
             },
             'chemical_formula': 'Al2O3',  # Domain data → snake_case preserved
             '_section': {
-                'title': 'Overview',
+                'sectionTitle': 'Overview',
                 'order': 1
             }
         }
@@ -310,7 +310,7 @@ class TestCamelCaseConversionUnit:
         
         # Underscore-prefixed preserved
         assert '_section' in result
-        assert result['_section']['title'] == 'Overview'
+        assert result['_section']['sectionTitle'] == 'Overview'
         assert result['_section']['order'] == 1
         
         # Old snake_case software metadata keys should NOT exist

@@ -135,16 +135,11 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
             logger.info(f"   📝 Creating new frontmatter file: {frontmatter_path}")
         
         # Update ONLY the specified field (NEVER update author - immutability policy)
-        # DEPRECATED: 'description' field at root level is deprecated in favor of 'page_description'
-        # All new content goes to 'page_description' field. Legacy 'description' preserved if it exists.
-        if field_name == 'description':
-            # ALL description content goes to page_description (new standard)
+        # Component type 'pageDescription' saves to 'page_description' field in frontmatter
+        if field_name == 'pageDescription':
+            # pageDescription component saves to page_description field
             frontmatter_data['page_description'] = field_value
-            # Legacy description preserved if it exists (don't overwrite)
-            if 'description' in frontmatter_data:
-                logger.info(f"   🔄 Using page_description (legacy description preserved)")
-            else:
-                logger.info(f"   ✨ Using page_description (new standard field)")
+            logger.info(f"   ✨ Saved pageDescription component to page_description field")
         else:
             # Normal field update
             frontmatter_data[field_name] = field_value

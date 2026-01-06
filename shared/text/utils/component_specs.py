@@ -63,7 +63,7 @@ class ComponentRegistry:
     # Component type to domain mapping
     # Used to load domain-specific configs from domains/{domain}/config.yaml
     _component_domain_map = {
-        'description': 'materials',
+        'pageDescription': 'materials',
         'micro': 'materials',
         'faq': 'materials',
         'settings_description': 'settings',

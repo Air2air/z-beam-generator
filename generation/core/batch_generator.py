@@ -166,7 +166,7 @@ class BatchGenerator:
                 'cost_savings': float
             }
         """
-        component_type = 'description'
+        component_type = 'pageDescription'
         batch_size = len(materials)
         
         self.logger.info(f"\n{'='*80}")

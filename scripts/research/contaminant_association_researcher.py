@@ -45,7 +45,7 @@ class ContaminantAssociationResearcher:
         """Load all contaminants from Contaminants.yaml."""
         with open(self.contaminants_file, 'r') as f:
             data = yaml.safe_load(f)
-        return data.get('contamination_patterns', {})
+        return data.get('contaminants', {})
     
     def load_associations(self) -> Dict[str, Any]:
         """Load existing associations from DomainAssociations.yaml."""

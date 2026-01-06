@@ -75,7 +75,7 @@ class TestSourceDataCategories:
     
     def test_all_patterns_have_category(self, contaminants_data):
         """All patterns must have a category field."""
-        patterns = contaminants_data['contamination_patterns']
+        patterns = contaminants_data['contaminants']
         missing_category = []
         
         for pattern_id, pattern_data in patterns.items():
@@ -89,7 +89,7 @@ class TestSourceDataCategories:
     
     def test_all_patterns_have_subcategory(self, contaminants_data):
         """All patterns must have a subcategory field."""
-        patterns = contaminants_data['contamination_patterns']
+        patterns = contaminants_data['contaminants']
         missing_subcategory = []
         
         for pattern_id, pattern_data in patterns.items():
@@ -103,7 +103,7 @@ class TestSourceDataCategories:
     
     def test_categories_are_valid(self, contaminants_data):
         """All category values must be in allowed list."""
-        patterns = contaminants_data['contamination_patterns']
+        patterns = contaminants_data['contaminants']
         invalid_categories = {}
         
         for pattern_id, pattern_data in patterns.items():
@@ -118,7 +118,7 @@ class TestSourceDataCategories:
     
     def test_subcategories_match_category(self, contaminants_data):
         """Subcategory values must match their parent category's allowed list."""
-        patterns = contaminants_data['contamination_patterns']
+        patterns = contaminants_data['contaminants']
         invalid_subcategories = {}
         
         for pattern_id, pattern_data in patterns.items():
@@ -145,7 +145,7 @@ class TestCategoryDistribution:
     
     def test_category_counts(self, contaminants_data):
         """Verify expected number of patterns per category."""
-        patterns = contaminants_data['contamination_patterns']
+        patterns = contaminants_data['contaminants']
         by_category = {}
         
         for pattern_data in patterns.values():
@@ -173,7 +173,7 @@ class TestCategoryDistribution:
     
     def test_no_missing_categories(self, contaminants_data):
         """All 8 categories should have at least one pattern."""
-        patterns = contaminants_data['contamination_patterns']
+        patterns = contaminants_data['contaminants']
         by_category = {}
         
         for pattern_data in patterns.values():
@@ -194,7 +194,7 @@ class TestQuestionablePatterns:
     
     def test_brass_plating_moved_to_metallic_coating(self, contaminants_data):
         """brass-plating-contamination should be in metallic-coating/plating."""
-        patterns = contaminants_data['contamination_patterns']
+        patterns = contaminants_data['contaminants']
         assert 'brass-plating-contamination' in patterns
         
         pattern = patterns['brass-plating-contamination']
@@ -209,7 +209,7 @@ class TestQuestionablePatterns:
     
     def test_chrome_pitting_moved_to_oxidation(self, contaminants_data):
         """chrome-pitting-contamination should be in oxidation/non-ferrous."""
-        patterns = contaminants_data['contamination_patterns']
+        patterns = contaminants_data['contaminants']
         assert 'chrome-pitting-contamination' in patterns
         
         pattern = patterns['chrome-pitting-contamination']
@@ -224,7 +224,7 @@ class TestQuestionablePatterns:
     
     def test_chemical_stains_moved_to_chemical_residue(self, contaminants_data):
         """chemical-stains-contamination should be in chemical-residue/industrial."""
-        patterns = contaminants_data['contamination_patterns']
+        patterns = contaminants_data['contaminants']
         assert 'chemical-stains-contamination' in patterns
         
         pattern = patterns['chemical-stains-contamination']
@@ -292,7 +292,7 @@ class TestFrontmatterCategories:
     
     def test_frontmatter_matches_source(self, contaminants_data, frontmatter_files):
         """Frontmatter categories should match source data."""
-        patterns = contaminants_data['contamination_patterns']
+        patterns = contaminants_data['contaminants']
         mismatches = []
         
         for file_path in frontmatter_files:
@@ -328,7 +328,7 @@ class TestRemovedPatterns:
     
     def test_natural_weathering_removed_from_source(self, contaminants_data):
         """natural-weathering pattern should not exist in source data."""
-        patterns = contaminants_data['contamination_patterns']
+        patterns = contaminants_data['contaminants']
         assert 'natural-weathering' not in patterns, (
             "Pattern 'natural-weathering' should have been removed "
             "(had no name in source data)"

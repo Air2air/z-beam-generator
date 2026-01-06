@@ -138,7 +138,7 @@ DOMAIN_CONFIG = {
     },
     'contaminants': {
         'file': 'data/contaminants/Contaminants.yaml',
-        'root_key': 'contamination_patterns',
+        'root_key': 'contaminants',
     },
     'compounds': {
         'file': 'data/compounds/Compounds.yaml',

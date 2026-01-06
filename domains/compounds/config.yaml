@@ -34,11 +34,11 @@ frontmatter:
 # COMPONENT TYPES (Content that can be generated)
 # =============================================================================
 component_types:
-  description:
+  pageDescription:
     display_name: "Compound Description"
     enabled: true
     extraction_strategy: raw
-    prompt_template: "description.txt"
+    prompt_template: "pageDescription.txt"
     
   health_effects:
     display_name: "Health Effects Guide"

@@ -290,14 +290,21 @@ Icons use [Lucide](https://lucide.dev/) icon set. Common patterns:
 
 ### Task Execution Order (Compounds Example)
 
+**ARCHITECTURE (Core Principle 0.6 - Jan 5, 2026):**
+- Section metadata (_section) MUST exist in source data BEFORE export
+- Source enrichment: `scripts/enrichment/add_section_metadata_to_source.py`
+- Export task preserves existing _section metadata from source
+
 1. **normalize_compounds**: Consolidate scattered fields into structured relationships
 2. **remove_duplicate_safety_fields**: Remove legacy field names (health_effects, ppe_requirements, etc.)
-3. **add_section_metadata**: Apply display metadata (section_title, section_description, icon, order)
+3. **section_metadata**: Preserve display metadata (sectionTitle, sectionDescription, icon, order) from source
 4. **enrich_relationships**: Add cross-domain relationship metadata
 
 ---
 
 ## Adding New Sections
+
+**REQUIRED: Section metadata must be in source data (Core Principle 0.6)**
 
 To add a new section to any domain:
 
@@ -306,31 +313,34 @@ To add a new section to any domain:
    relationships:
      {category}:
        {section_key}:
-         # ... section data
+         _section:  # MUST include sectionTitle, sectionDescription
+           sectionTitle: "Display Title"
+           sectionDescription: "Optional description"
+           icon: lucide-icon-name
+           order: 1
+           variant: default
+           sectionMetadata:  # Optional internal notes
+             notes: "Implementation details"
+         # ... section data (items, presentation, etc.)
    ```
 
-2. **Add section metadata** (`export/config/{domain}.yaml`):
+2. **Define metadata config** (`export/config/{domain}.yaml`) - for enrichment reference:
    ```yaml
    section_metadata:
      {category}.{section_key}:
-       section_title: "Display Title"
+       section_title: "Display Title"  # Note: Config uses snake_case
        section_description: "Optional description"
        icon: lucide-icon-name
        order: 1
-       variant: default|warning|danger
-       section_metadata:
-         notes: "Internal context"
-         source_field: field_name
-         presentation_type: card|collapsible|table|descriptive
-         relationship_type: produced_from|suitable_for|etc
-         features: auto_open_first|other_features
+       variant: default
+       section_metadata:  # Optional internal developer notes
+         notes: "Implementation details"
    ```
 
-3. **Configure enrichment** (if needed):
-   - Add enricher in `export/enrichers/` directory
-   - Register in `export/config/{domain}.yaml` enrichers list
-
-4. **Test export**:
+3. **Enrich source data** (if adding to existing items):
+   ```bash
+   python3 scripts/enrichment/add_section_metadata_to_source.py
+   ```
    ```bash
    python3 run.py --export --domain {domain}
    ```

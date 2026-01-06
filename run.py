@@ -32,10 +32,10 @@ def postprocess_command(args):
     
     if not args.field:
         print("❌ Error: --field is required for postprocessing")
-        print("   Materials: description, micro, faq")
-        print("   Contaminants: description, micro, faq")
+        print("   Materials: pageDescription, micro, faq")
+        print("   Contaminants: pageDescription, micro, faq")
         print("   Settings: settings_description, challenges")
-        print("   Compounds: description, health_effects, exposure_guidelines")
+        print("   Compounds: pageDescription, health_effects, exposure_guidelines")
         sys.exit(1)
     
     # Create postprocess command
@@ -280,21 +280,21 @@ Examples:
   python3 run.py --export-all
 
   # Backfill source data permanently
-  python3 run.py --backfill --domain contaminants --generator description --dry-run
-  python3 run.py --backfill --domain contaminants --generator description
+  python3 run.py --backfill --domain contaminants --generator pageDescription --dry-run
+  python3 run.py --backfill --domain contaminants --generator pageDescription
   python3 run.py --backfill --domain contaminants  # Run all generators
 
   # Postprocess single item
-  python3 run.py --postprocess --domain materials --item "Aluminum" --field description
+  python3 run.py --postprocess --domain materials --item "Aluminum" --field pageDescription
 
   # Postprocess all items (dry run)
   python3 run.py --postprocess --domain materials --field micro --all --dry-run
 
   # Batch postprocess with checkpoint every 5 items
-  python3 run.py --postprocess --domain contaminants --field description --all --batch-size 5
+  python3 run.py --postprocess --domain contaminants --field pageDescription --all --batch-size 5
 
   # Postprocess all fields for one item
-  python3 run.py --postprocess --domain materials --item "Steel" --field description
+  python3 run.py --postprocess --domain materials --item "Steel" --field pageDescription
   python3 run.py --postprocess --domain materials --item "Steel" --field micro
   python3 run.py --postprocess --domain materials --item "Steel" --field faq
         """
@@ -318,14 +318,14 @@ Examples:
     
     # Backfill arguments
     parser.add_argument('--generator', type=str,
-                        help='Specific backfill generator to run (e.g., description, compound_linkage)')
+                        help='Specific backfill generator to run (e.g., pageDescription, compound_linkage)')
     
     # Postprocessing arguments
     parser.add_argument('--domain', type=str,
                         choices=['materials', 'contaminants', 'settings', 'compounds'],
                         help='Domain to postprocess')
     parser.add_argument('--field', type=str,
-                        help='Field type to postprocess (e.g., description, micro, faq)')
+                        help='Field type to postprocess (e.g., pageDescription, micro, faq)')
     parser.add_argument('--item', type=str,
                         help='Specific item name to postprocess')
     parser.add_argument('--all', action='store_true',

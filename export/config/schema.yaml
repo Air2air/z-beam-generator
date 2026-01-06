@@ -92,11 +92,12 @@ fields:
   
   section_metadata:
     type: object
-    description: "Display metadata for relationship sections"
+    description: "Display metadata for relationship sections (input: snake_case, output: camelCase)"
     structure:
       "section_path":  # e.g., "safety.regulatory_standards"
-        section_title: string       # User-facing title
-        section_description: string # User-facing description
+        section_title: string       # User-facing title (output: sectionTitle)
+        section_description: string # User-facing description (output: sectionDescription)
+        section_metadata: object    # Internal developer notes (output: sectionMetadata)
         icon: string               # Lucide icon name
         order: integer             # Display order within category
         variant: string            # Visual variant (default|warning|info)

@@ -128,7 +128,7 @@ class DomainAssociationsValidator:
             if not self.contaminants_data:
                 self._valid_contaminant_ids = set()
             else:
-                contaminants = self.contaminants_data.get('contamination_patterns', {})
+                contaminants = self.contaminants_data.get('contaminants', {})
                 # IDs already include -contamination suffix
                 self._valid_contaminant_ids = set(contaminants.keys())
         return self._valid_contaminant_ids
