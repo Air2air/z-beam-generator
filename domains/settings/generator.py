@@ -179,6 +179,12 @@ class SettingsFrontmatterGenerator(BaseFrontmatterGenerator):
             metadata = self.metadata_module.generate(identifier)
             frontmatter.update(metadata)
             
+            # 1.5. Category and Subcategory (from Settings.yaml)
+            if 'category' in settings_data:
+                frontmatter['category'] = settings_data['category']
+            if 'subcategory' in settings_data:
+                frontmatter['subcategory'] = settings_data['subcategory']
+            
             # 2. Machine Settings
             if 'machine_settings' in settings_data:
                 # Note: SettingsModule expects material_data structure,

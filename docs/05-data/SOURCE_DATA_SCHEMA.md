@@ -149,7 +149,92 @@ voice_enhanced: "..."               # ❌ Generation timestamp
 
 ---
 
-## 🔄 Relationship Field Specification
+## � Settings.yaml Schema
+
+### Top-Level Structure
+```yaml
+schema_version: "2.0.0"
+last_updated: "YYYY-MM-DD"
+settings:
+  {material-settings}:
+    # Settings fields (see below)
+```
+
+### Settings Entry Structure
+
+#### ✅ REQUIRED Core Fields
+```yaml
+name: "Aluminum"                     # Display name (no suffix)
+id: "aluminum-settings"              # Unique identifier with -settings suffix
+category: "metal"                    # Primary category (matches material)
+subcategory: "non-ferrous"           # Secondary classification (matches material)
+```
+
+**Note**: `category` and `subcategory` **MUST** match the corresponding material in Materials.yaml. These fields enable proper breadcrumb and URL generation for settings pages.
+
+#### ✅ REQUIRED Content Fields
+```yaml
+author:
+  id: 1                              # Author ID (1-4)
+
+images:                              # Image metadata
+  hero:
+    url: "/images/settings/aluminum-settings-hero.jpg"
+    alt: "..."
+
+card:                                # Card display metadata
+  heading: "Aluminum Settings"
+  tagline: "..."
+  image:
+    url: "/images/card/aluminum-settings-card.jpg"
+
+component_summary:                   # Component metadata
+  micro: "..."                       # Brief description
+  faq: 5                            # Number of FAQ items
+  description: "Settings overview"
+
+pageDescription: "..."               # AI-generated subtitle text (150-200 chars)
+```
+
+#### ✅ REQUIRED Machine Settings
+```yaml
+machine_settings:                    # Technical parameters
+  power_range:
+    min: 100
+    max: 500
+    unit: "W"
+  pulse_duration:
+    min: 10
+    max: 100
+    unit: "ns"
+  wavelength:
+    value: 1064
+    unit: "nm"
+  # ... other technical parameters
+```
+
+#### ✅ REQUIRED Relationships
+```yaml
+relationships:                       # Cross-domain linkages
+  suitable_materials:
+    - id: "aluminum-laser-cleaning"
+    - id: "steel-laser-cleaning"
+  effective_contaminants:
+    - id: "rust-oxidation"
+    - id: "paint-contamination"
+```
+
+**Key Differences from Materials.yaml**:
+- ❌ NO `properties` field (that's in Materials.yaml)
+- ✅ HAS `machine_settings` (technical parameters)
+- ✅ HAS `category` and `subcategory` (taxonomy for navigation)
+- ✅ Settings use `-settings` suffix, materials use `-laser-cleaning` suffix
+
+**ID Format**: `{base-slug}-settings` (e.g., `aluminum-settings` not `aluminum` or `aluminum-laser-cleaning`)
+
+---
+
+## �🔄 Relationship Field Specification
 
 ### Structure Rules
 

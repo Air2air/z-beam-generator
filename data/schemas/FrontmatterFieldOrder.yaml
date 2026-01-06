@@ -335,10 +335,12 @@ compounds:
 settings:
   field_order:
     # ─────────────────────────────────────────────────────
-    # 1. IDENTITY
+    # 1. IDENTITY & CLASSIFICATION
     # ─────────────────────────────────────────────────────
     - id
     - name
+    - category
+    - subcategory
     
     # ─────────────────────────────────────────────────────
     # 2. PAGE METADATA

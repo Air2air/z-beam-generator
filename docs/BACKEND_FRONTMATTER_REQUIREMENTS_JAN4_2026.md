@@ -142,9 +142,57 @@ metaDescription: "Precision laser cleaning with zero chemicals..."
 
 ---
 
+---
+
+### 5. **Settings Taxonomy Fields (category & subcategory)**
+**Priority**: ✅ COMPLETED (January 5, 2026)  
+**Files Affected**: 153 settings files  
+**Status**: Implemented and regenerated
+
+**Purpose**: Enable proper navigation and breadcrumb generation for settings pages.
+
+```yaml
+# ✅ Required Structure (ALL settings)
+id: alabaster-settings
+name: Alabaster
+category: stone              # ← NEW: Matches material category
+subcategory: sedimentary     # ← NEW: Matches material subcategory
+datePublished: '2025-01-05T10:30:00-08:00'
+# ... rest of fields
+```
+
+**Benefits**:
+- ✅ Proper breadcrumb generation: `Home > Settings > Stone > Alabaster`
+- ✅ Consistent URL structure: `/settings/stone/sedimentary/alabaster-settings`
+- ✅ Enables category-based filtering and navigation
+- ✅ Matches taxonomy structure across all domains
+
+**Implementation Details**:
+1. ✅ Category/subcategory copied from Materials.yaml to Settings.yaml (153/153 matches)
+2. ✅ Generator updated to include fields in frontmatter export
+3. ✅ All 153 settings frontmatter files regenerated
+4. ✅ Tests added to verify taxonomy presence
+5. ✅ Schema updated (FrontmatterFieldOrder.yaml)
+
+**Verification**:
+```bash
+# Check alabaster-settings has taxonomy
+python3 -c "import yaml; \
+f = open('../z-beam/frontmatter/settings/alabaster-settings.yaml'); \
+data = yaml.safe_load(f); \
+print(f'Category: {data.get(\"category\")}'); \
+print(f'Subcategory: {data.get(\"subcategory\")}')"
+
+# Output:
+# Category: stone
+# Subcategory: sedimentary
+```
+
+---
+
 ## 🟢 NICE TO HAVE: Quality Improvements
 
-### 4. **pageTitle Optimization (All Content Types)**
+### 6. **pageTitle Optimization (All Content Types)**
 **Priority**: 🟢 LOW  
 **Current State**: Functional but could be more SEO-optimized  
 
