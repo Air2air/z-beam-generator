@@ -181,8 +181,9 @@ class BaseDataLoader(ABC):
         # Validate data structure
         if not self._validate_loaded_data(data):
             raise ValidationError(
-                f"Invalid data structure in {filepath}\n"
-                f"Failed validation check."
+                message=f"Invalid data structure in {filepath}",
+                fix="Check file format matches expected schema",
+                context={"filepath": str(filepath)}
             )
         
         # Cache the result (thread-safe)

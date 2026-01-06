@@ -49,9 +49,9 @@ class ContaminantCoordinator(DomainCoordinator):
     def _get_item_data(self, item_id: str) -> Dict:
         """Get contaminant data from Contaminants.yaml"""
         contaminants_data = self._load_domain_data()
-        if item_id not in contaminants_data['contamination_patterns']:
+        if item_id not in contaminants_data['contaminants']:
             raise ValueError(f"Contaminant '{item_id}' not found in Contaminants.yaml")
-        return contaminants_data['contamination_patterns'][item_id]
+        return contaminants_data['contaminants'][item_id]
     
     def _save_content(self, item_id: str, component_type: str, content: str, author_id: Optional[int] = None) -> None:
         """Save content to Contaminants.yaml - handled by QualityEvaluatedGenerator"""

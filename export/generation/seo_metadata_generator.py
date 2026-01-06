@@ -179,7 +179,8 @@ class SEOMetadataGenerator(BaseGenerator):
     def _generate_settings_seo(self, frontmatter: Dict[str, Any]) -> tuple[str, str]:
         """Generate title and description for settings pages."""
         if 'name' not in frontmatter:
-            raise ValueError(\"Missing required field: name\")\n        name = frontmatter['name']
+            raise ValueError("Missing required field: name")
+        name = frontmatter['name']
         
         # Get wavelength and power from settings
         wavelength = frontmatter.get('wavelength_nm')

@@ -411,18 +411,18 @@ class TestCamelCaseEdgeCases:
         return ContentGenerator({})
     
     def test_unicode_characters(self, generator):
-        """Test handling of unicode characters in values."""
+        """Test that unicode characters are preserved, but only software fields are converted."""
         input_dict = {
-            'field_name': 'café',
-            'another_field': '日本語',
-            'emoji_field': '🔥'
+            'content_type': 'café',  # Software field - will be converted
+            'another_field': '日本語',  # Not a software field - stays snake_case
+            'emoji_field': '🔥'  # Not a software field - stays snake_case
         }
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
-        assert result['fieldName'] == 'café'
-        assert result['anotherField'] == '日本語'
-        assert result['emojiField'] == '🔥'
+        assert result['contentType'] == 'café'  # Software field converted
+        assert result['another_field'] == '日本語'  # Domain field preserved
+        assert result['emoji_field'] == '🔥'  # Domain field preserved
     
     def test_very_long_field_name(self, generator):
         """Test conversion of very long field names."""
