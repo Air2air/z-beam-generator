@@ -141,7 +141,7 @@ class ContentGenerator(BaseGenerator):
         - contentType: From domain
         - pageTitle: From name/title
         - metaDescription: From micro/description
-        - pageDescription: From description (if exists)
+        - pageDescription: Preserved from source (AI-generated subtitle, restored Jan 5)
         - fullPath: Generated from category/subcategory/id
         - breadcrumb: Generated from category hierarchy
         - datePublished: From metadata or current
@@ -182,9 +182,8 @@ class ContentGenerator(BaseGenerator):
                 name = frontmatter.get('name', 'item')
                 frontmatter['metaDescription'] = f"{name} laser cleaning guide. Technical specifications and applications."
         
-        # 5. pageDescription (if description exists)
-        if frontmatter.get('description') and not frontmatter.get('pageDescription'):
-            frontmatter['pageDescription'] = frontmatter['description']
+        # 5. pageDescription (preserved from source - already in source data)
+        # Note: pageDescription is now stored in source YAML files, not generated
         
         # 6. fullPath (from category/subcategory/id)
         if not frontmatter.get('fullPath'):
