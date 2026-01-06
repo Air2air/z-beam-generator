@@ -394,30 +394,34 @@ class ContentGenerator(BaseGenerator):
     
     def _task_section_metadata(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
-        Preserve _section metadata from source data (Materials.yaml, etc.)
+        Add _section metadata blocks to ALL relationship sections.
         
-        ARCHITECTURE (Core Principle 0.6 - Jan 5, 2026):
-        - _section metadata MUST exist in source data BEFORE export
-        - This task validates and preserves existing metadata
-        - Does NOT add metadata (source enrichment script handles that)
+        Per BACKEND_RELATIONSHIP_REQUIREMENTS_JAN5_2026.md:
+        - ALL relationship sections MUST have _section metadata
+        - Required fields: sectionTitle, sectionDescription, icon, order
+        - Optional fields: variant
         
+        Metadata source: export/config/{domain}.yaml section_metadata definitions
         Replaces: SectionMetadataEnricher (deprecated)
         """
         config_file = config.get('config_file')
         
         if not config_file or not Path(config_file).exists():
+            print(f"⚠️  section_metadata: No config file")
             return frontmatter
         
         with open(config_file, 'r') as f:
             domain_config = yaml.safe_load(f)
         
-        # Get section metadata definitions (for reference only - actual data is in source)
+        # Get section metadata definitions from config
         configured_metadata = domain_config.get('section_metadata', {})
+        print(f"📋 section_metadata: {len(configured_metadata)} definitions loaded")
         
         if 'relationships' not in frontmatter:
+            print(f"⚠️  section_metadata: No relationships")
             return frontmatter
         
-        # Fallback metadata ONLY for sections missing from source (should be rare)
+        # Fallback metadata ONLY for sections missing from config (should not happen)
         default_metadata = {
             'regulatory_standards': {
                 'section_title': 'Safety Standards & Compliance',
@@ -442,7 +446,7 @@ class ContentGenerator(BaseGenerator):
             }
         }
         
-        # Add/update _section metadata for each relationship section
+        # Add _section metadata to each relationship section
         for category, sections in frontmatter['relationships'].items():
             if not isinstance(sections, dict):
                 continue
@@ -451,39 +455,32 @@ class ContentGenerator(BaseGenerator):
                 if not isinstance(section_data, dict):
                     continue
                 
-                # Preserve existing _section from source data (Core Principle 0.6)
-                if '_section' in section_data:
-                    # Source data has _section - preserve it (no changes)
-                    continue
-                
-                # Fallback ONLY if _section missing from source (add from config)
+                # Build metadata key (category.section_key)
                 metadata_key = f"{category}.{section_key}"
+                
+                # Lookup metadata from config (try full key first, then just section_key)
                 metadata = configured_metadata.get(metadata_key) or configured_metadata.get(section_key)
                 
                 # Fall back to default if not in config
                 if not metadata:
                     metadata = default_metadata.get(section_key)
                 
-                # Add _section ONLY if missing from source (should be rare after enrichment)
+                # ADD _section metadata to section (ALWAYS - overwrite if exists)
                 if metadata:
-                    # Get existing _section or create new one
-                    if '_section' not in section_data:
-                        section_data['_section'] = {}
-                    
-                    # Update with complete metadata (overwrites partial metadata)
                     # Using camelCase naming per backend requirements
-                    section_data['_section'].update({
+                    section_data['_section'] = {
                         'sectionTitle': metadata.get('section_title', section_key.replace('_', ' ').title()),
                         'sectionDescription': metadata.get('section_description', ''),
                         'icon': metadata.get('icon', 'circle-info'),
                         'order': metadata.get('order', 100),
                         'variant': metadata.get('variant', 'default')
-                    })
+                    }
                     
                     # Add sectionMetadata if present (internal developer notes)
                     if 'section_metadata' in metadata:
                         section_data['_section']['sectionMetadata'] = metadata['section_metadata']
         
+        print(f"✅ section_metadata: Added to {len([s for c in frontmatter['relationships'].values() if isinstance(c, dict) for s in c.values() if isinstance(s, dict) and '_section' in s])} sections")
         return frontmatter
     
     def _task_seo_description(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:

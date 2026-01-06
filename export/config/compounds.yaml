@@ -7,186 +7,104 @@ id_field: id
 filename_suffix: ''
 sluggify_filenames: true
 
-# Section metadata configuration
-# Note: section_title and section_description are DISPLAYED to users
-#       section_metadata is for INTERNAL reference only (developer notes)
+# Section metadata configuration (13 section types - Jan 5, 2026)
+# Per BACKEND_RELATIONSHIP_REQUIREMENTS_JAN5_2026.md: ALL sections MUST have _section metadata
 section_metadata:
-  # IDENTITY category - What this compound is
+  # IDENTITY (3 sections)
   identity.chemical_properties:
-    section_title: Chemical Properties
-    section_description: Molecular formula, CAS number, molecular weight, and chemical structure
+    section_title: "Chemical Properties"
+    section_description: "Molecular formula, CAS number, molecular weight"
     icon: atom
-    order: 1
+    order: 60
     variant: default
-    section_metadata:
-      notes: Core chemical identity data from Compounds.yaml
-      source_field: chemical_properties
-      presentation_type: descriptive
   
   identity.physical_properties:
-    section_title: Physical Properties
-    section_description: Physical state, appearance, color, odor, boiling/melting points
+    section_title: "Physical Properties"
+    section_description: "Physical state, appearance, boiling/melting points"
     icon: thermometer
-    order: 2
+    order: 61
     variant: default
-    section_metadata:
-      notes: Observable physical characteristics
-      source_field: physical_properties
-      presentation_type: descriptive
   
   identity.synonyms_identifiers:
-    section_title: Synonyms & Identifiers
-    section_description: Alternative names, trade names, and chemical identifiers
+    section_title: "Synonyms & Identifiers"
+    section_description: "Alternative names and chemical identifiers"
     icon: tag
-    order: 3
+    order: 62
     variant: default
-    section_metadata:
-      notes: Used for search and cross-referencing
-      source_field: synonyms_identifiers
-      presentation_type: descriptive
   
-  # SAFETY category - Health and safety information
+  # SAFETY (5 sections - health_effects renamed to health_impacts, exposure_limits renamed to exposure_guidance, ppe_requirements renamed to personal_protection, emergency_response renamed to emergency_procedures)
   safety.health_impacts:
-    section_title: Health Impacts
-    section_description: Health effects from exposure including acute and chronic impacts
+    section_title: "Health Impacts"
+    section_description: "Health effects from exposure"
     icon: heart-pulse
-    order: 1
+    order: 20
     variant: warning
-    section_metadata:
-      notes: Primary health effects section (NEW - replaces health_effects)
-      source_field: health_effects (from Compounds.yaml)
-      moved_from: top-level by normalize_compounds task
-      presentation_type: descriptive
   
   safety.exposure_guidance:
-    section_title: Exposure Guidelines
-    section_description: OSHA PEL, NIOSH REL, ACGIH TLV, and safe exposure limits
+    section_title: "Exposure Guidelines"
+    section_description: "OSHA PEL, NIOSH REL, ACGIH TLV limits"
     icon: shield-alert
-    order: 2
+    order: 21
     variant: warning
-    section_metadata:
-      notes: Regulatory exposure thresholds (NEW - replaces exposure_limits)
-      source_field: exposure_guidelines (from Compounds.yaml)
-      moved_from: top-level by normalize_compounds task
-      presentation_type: descriptive
   
   safety.personal_protection:
-    section_title: Personal Protection Equipment
-    section_description: Required PPE including respirators, gloves, eye protection, and protective clothing
+    section_title: "Personal Protection"
+    section_description: "Required PPE and protective equipment"
     icon: shield-check
-    order: 3
+    order: 22
     variant: warning
-    section_metadata:
-      notes: PPE specifications and requirements (NEW - replaces ppe_requirements)
-      source_field: ppe_requirements (from Compounds.yaml)
-      moved_from: top-level by normalize_compounds task
-      presentation_type: descriptive
   
   safety.emergency_procedures:
-    section_title: Emergency Procedures
-    section_description: First aid measures, emergency response, and incident management
+    section_title: "Emergency Procedures"
+    section_description: "First aid and emergency response"
     icon: siren
-    order: 4
+    order: 23
     variant: danger
-    section_metadata:
-      notes: Emergency response protocols (NEW - replaces emergency_response)
-      source_field: first_aid (from Compounds.yaml)
-      moved_from: top-level by normalize_compounds task
-      presentation_type: descriptive
   
   safety.regulatory_classification:
-    section_title: Regulatory Classification
-    section_description: OSHA hazard classification, GHS pictograms, and regulatory status
+    section_title: "Regulatory Classification"
+    section_description: "OSHA hazard classification and GHS pictograms"
     icon: file-badge
-    order: 6
+    order: 24
     variant: default
-    section_metadata:
-      notes: Regulatory and hazard classification data
-      source_field: regulatory_classification
-      presentation_type: descriptive
   
-  # ENVIRONMENTAL category
+  # ENVIRONMENTAL (1 section)
   environmental.environmental_impact:
-    section_title: Environmental Impact
-    section_description: Environmental hazards, ecological effects, and disposal considerations
+    section_title: "Environmental Impact"
+    section_description: "Environmental hazards and disposal"
     icon: leaf
-    order: 1
+    order: 70
     variant: warning
-    section_metadata:
-      notes: Environmental and ecological concerns
-      source_field: environmental_impact
-      presentation_type: descriptive
   
-  # DETECTION category
+  # DETECTION_MONITORING (1 section - detection.methods not detection_monitoring.detection_monitoring)
   detection.methods:
-    section_title: Detection Methods
-    section_description: Analytical techniques and instruments for detecting this compound
+    section_title: "Detection Methods"
+    section_description: "Analytical techniques for detecting this compound"
     icon: microscope
-    order: 1
+    order: 80
     variant: default
-    section_metadata:
-      notes: Detection and monitoring techniques (NEW)
-      source_field: detection_methods (from Compounds.yaml)
-      moved_from: top-level by normalize_compounds task
-      presentation_type: descriptive
   
-  detection_monitoring.detection_monitoring:
-    section_title: Monitoring Systems
-    section_description: Real-time monitoring equipment and workplace air sampling methods
-    icon: activity
-    order: 2
-    variant: default
-    section_metadata:
-      notes: Continuous monitoring and sampling systems
-      source_field: detection_monitoring
-      presentation_type: descriptive
-  
-  # INTERACTIONS category
+  # INTERACTIONS (3 sections)
   interactions.produced_from_contaminants:
-    section_title: Source Contaminants
-    section_description: Contaminants that generate this compound during laser cleaning
+    section_title: "Source Contaminants"
+    section_description: "Contaminants that generate this compound"
     icon: droplet
-    order: 1
+    order: 10
     variant: default
-    section_metadata:
-      notes: Links to contaminant pages
-      relationship_type: produced_from
-      presentation_type: card
   
   interactions.produced_from_materials:
-    section_title: Source Materials
-    section_description: Materials that may release this compound when laser cleaned
+    section_title: "Source Materials"
+    section_description: "Materials that release this compound"
     icon: box
-    order: 2
+    order: 11
     variant: default
-    section_metadata:
-      notes: Links to material pages
-      relationship_type: produced_from
-      presentation_type: card
   
   interactions.reactivity:
-    section_title: Chemical Reactivity
-    section_description: Reactivity hazards, incompatible substances, and chemical stability
+    section_title: "Chemical Reactivity"
+    section_description: "Reactivity hazards and incompatibilities"
     icon: flask-conical
-    order: 3
+    order: 12
     variant: warning
-    section_metadata:
-      notes: Chemical compatibility and reaction hazards
-      source_field: reactivity
-      presentation_type: descriptive
-  
-  # OPERATIONAL category
-  operational.expert_answers:
-    section_title: Expert Q&A
-    section_description: Frequently asked questions about this compound answered by laser cleaning experts
-    icon: message-circle-question
-    order: 1
-    variant: default
-    section_metadata:
-      notes: Converted from FAQ field by normalize_compounds task
-      source_field: faq (from Compounds.yaml)
-      presentation_type: collapsible
-      features: auto_open_first, expert_info, search
 
 generators:
 # Core Principle 0.6 Compliance (Jan 5, 2026):
@@ -204,8 +122,8 @@ generators:
   # ALLOWED: Format-only transformation tasks
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
-  - type: section_metadata
-    description: Add _section metadata to relationship sections (title, description, icon, order, variant)
+  # NOTE (Jan 5, 2026): section_metadata task removed - _section metadata now exists in source data
+  # Per Core Principle 0.6: No Build-Time Data Enhancement
   - type: field_ordering
     domain: compounds
     description: Organize output structure
@@ -221,10 +139,8 @@ generators:
   output_field: micro
   mode: sentences
   length: 2
-- type: section_metadata
-  module: export.generation.section_metadata_generator
-  class: SectionMetadataGenerator
-  config_file: export/config/compounds.yaml
+# NOTE (Jan 5, 2026): section_metadata generator removed - _section metadata now exists in source data
+# Per Core Principle 0.6: No Build-Time Data Enhancement
 - type: field_order
   module: export.generation.field_order_generator
   class: FieldOrderGenerator

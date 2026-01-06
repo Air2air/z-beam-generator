@@ -10,195 +10,103 @@ id_field: id
 filename_suffix: ''
 
 # Section metadata configuration
-# Note: section_title and section_description are DISPLAYED to users
-#       section_metadata is for INTERNAL reference only (developer notes)
+# Section metadata configuration (13 section types - Jan 5, 2026)
+# Per BACKEND_RELATIONSHIP_REQUIREMENTS_JAN5_2026.md: ALL sections MUST have _section metadata
 section_metadata:
-  # SAFETY category (9 sections - primary focus for contaminants)
+  # SAFETY (9 sections)
   safety.regulatory_standards:
-    section_title: Regulatory Standards
-    section_description: Safety and compliance standards for handling this contaminant
+    section_title: "Regulatory Standards"
+    section_description: "Safety and compliance standards for handling this contaminant"
     icon: shield-check
-    order: 1
+    order: 20
     variant: default
-    section_metadata:
-      notes: Compliance requirements
-      presentation_type: card
   
   safety.fire_explosion_risk:
-    section_title: Fire & Explosion Risk
-    section_description: Flammability and explosion hazards associated with this contaminant
+    section_title: "Fire & Explosion Risk"
+    section_description: "Flammability and explosion hazards"
     icon: flame
-    order: 2
+    order: 21
     variant: warning
-    section_metadata:
-      notes: Critical fire safety information
-      presentation_type: card
   
   safety.fumes_generated:
-    section_title: Fumes Generated
-    section_description: Types of fumes produced when laser cleaning this contaminant
+    section_title: "Fumes Generated"
+    section_description: "Types of fumes produced during laser cleaning"
     icon: cloud
-    order: 3
+    order: 22
     variant: warning
-    section_metadata:
-      notes: Vapor hazards
-      presentation_type: card
   
   safety.particulate_generation:
-    section_title: Particulate Generation
-    section_description: Airborne particles produced during laser cleaning process
+    section_title: "Particulate Generation"
+    section_description: "Airborne particles produced during cleaning"
     icon: wind
-    order: 4
+    order: 23
     variant: warning
-    section_metadata:
-      notes: Dust and particle hazards
-      presentation_type: card
   
   safety.ppe_requirements:
-    section_title: PPE Requirements
-    section_description: Personal protective equipment needed when cleaning this contaminant
+    section_title: "PPE Requirements"
+    section_description: "Personal protective equipment needed"
     icon: shield
-    order: 5
+    order: 24
     variant: default
-    section_metadata:
-      notes: Required safety gear
-      presentation_type: card
   
   safety.substrate_compatibility_warnings:
-    section_title: Substrate Compatibility
-    section_description: Materials that may be damaged or incompatible with cleaning this contaminant
+    section_title: "Substrate Compatibility"
+    section_description: "Materials that may be damaged"
     icon: alert-triangle
-    order: 6
+    order: 25
     variant: warning
-    section_metadata:
-      notes: Material damage risks
-      presentation_type: card
   
   safety.toxic_gas_risk:
-    section_title: Toxic Gas Risk
-    section_description: Hazardous gases that may be produced during laser cleaning
+    section_title: "Toxic Gas Risk"
+    section_description: "Hazardous gases produced during cleaning"
     icon: skull
-    order: 7
+    order: 26
     variant: danger
-    section_metadata:
-      notes: Critical toxicity warnings
-      presentation_type: card
   
   safety.ventilation_requirements:
-    section_title: Ventilation Requirements
-    section_description: Air handling and exhaust systems needed for safe cleaning
+    section_title: "Ventilation Requirements"
+    section_description: "Air handling systems needed"
     icon: fan
-    order: 8
+    order: 27
     variant: default
-    section_metadata:
-      notes: Airflow requirements
-      presentation_type: card
   
   safety.visibility_hazard:
-    section_title: Visibility Hazards
-    section_description: Smoke, dust, or other factors that may impair operator vision
+    section_title: "Visibility Hazards"
+    section_description: "Smoke or dust that may impair vision"
     icon: eye-off
-    order: 9
+    order: 28
     variant: warning
-    section_metadata:
-      notes: Vision impairment risks
-      presentation_type: card
   
-  # INTERACTIONS category
+  # INTERACTIONS (2 sections)
   interactions.produces_compounds:
-    section_title: Compounds Produced
-    section_description: Chemical compounds generated when laser cleaning this contaminant
+    section_title: "Compounds Produced"
+    section_description: "Chemical compounds generated when cleaning"
     icon: flask-conical
-    order: 1
+    order: 10
     variant: default
-    section_metadata:
-      notes: Byproduct compounds from laser cleaning process
-      relationship_type: produces_compounds
-      presentation_type: card
   
   interactions.affects_materials:
-    section_title: Materials Affected
-    section_description: Substrate materials commonly contaminated by this substance
+    section_title: "Materials Affected"
+    section_description: "Materials commonly contaminated by this substance"
     icon: layers
-    order: 2
+    order: 11
     variant: default
-    section_metadata:
-      notes: Materials typically requiring cleaning from this contaminant
-      relationship_type: affects_materials
-      presentation_type: card
   
-  # VISUAL category
+  # VISUAL (1 section)
   visual.appearance_on_categories:
-    section_title: Appearance on Materials
-    section_description: Visual characteristics of this contaminant on different material categories
+    section_title: "Appearance on Materials"
+    section_description: "Visual characteristics on different materials"
     icon: eye
-    order: 1
+    order: 50
     variant: default
-    section_metadata:
-      notes: Category-specific appearance data
-      presentation_type: descriptive
   
-  # OPERATIONAL category
+  # OPERATIONAL (1 section)
   operational.laser_properties:
-    section_title: Laser Cleaning Properties
-    section_description: Optimal laser parameters and cleaning characteristics for this contaminant
+    section_title: "Laser Properties"
+    section_description: "Optimal laser parameters and cleaning characteristics"
     icon: zap
-    order: 1
+    order: 40
     variant: default
-    section_metadata:
-      notes: Wavelength absorption, ablation thresholds, removal efficiency
-      presentation_type: descriptive
-    order: 9
-    variant: warning
-    section_metadata:
-      notes: Vision impairment risks
-      presentation_type: card
-  
-  # INTERACTIONS category (2 sections)
-  interactions.produces_compounds:
-    section_title: Produces Compounds
-    section_description: Chemical compounds formed when laser cleaning this contaminant
-    icon: flask
-    order: 1
-    variant: default
-    section_metadata:
-      notes: Cross-references to compound pages
-      relationship_type: produces_compounds
-      presentation_type: card
-  
-  interactions.affects_materials:
-    section_title: Found On Materials
-    section_description: Materials commonly contaminated with this substance
-    icon: box
-    order: 2
-    variant: default
-    section_metadata:
-      notes: Cross-references to material pages
-      relationship_type: affects_materials
-      presentation_type: card
-  
-  # VISUAL category (1 section)
-  visual.appearance_on_categories:
-    section_title: Visual Appearance
-    section_description: How this contaminant appears on different material types
-    icon: eye
-    order: 1
-    variant: default
-    section_metadata:
-      notes: Category-specific appearance descriptions
-      presentation_type: collapsible
-      features: auto_open_first
-  
-  # OPERATIONAL category (1 section)
-  operational.laser_properties:
-    section_title: Laser Properties
-    section_description: Absorption characteristics and laser interaction data
-    icon: zap
-    order: 1
-    variant: default
-    section_metadata:
-      notes: Technical laser parameters
-      presentation_type: card
 
 generators:
 # Core Principle 0.6 Compliance (Jan 5, 2026):
@@ -216,8 +124,8 @@ generators:
   # ALLOWED: Format-only transformation tasks
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
-  - type: section_metadata
-    description: Add _section metadata to relationship sections (title, description, icon, order, variant)
+  # NOTE (Jan 5, 2026): section_metadata task removed - _section metadata now exists in source data
+  # Per Core Principle 0.6: No Build-Time Data Enhancement
   - type: field_ordering
     domain: contaminants
     description: Organize output structure
@@ -236,117 +144,8 @@ generators:
   output_field: micro
   mode: sentences
   length: 2
-- type: section_metadata
-  module: export.generation.section_metadata_generator
-  class: SectionMetadataGenerator
-  sections:
-    chemical_formula:
-      presentation: list
-      title: Chemical Formula
-      description: Molecular structure and composition of this contamination
-      icon: microscope
-      order: 1
-      variant: default
-    scientific_name:
-      presentation: list
-      title: Scientific Name
-      description: Formal scientific nomenclature and classification
-      icon: file-text
-      order: 2
-      variant: default
-    context_notes:
-      presentation: list
-      title: Context Notes
-      description: Additional context and important considerations for this contamination
-        type
-      icon: file-text
-      order: 3
-      variant: default
-    formation_conditions:
-      presentation: card
-      title: Formation Conditions
-      description: Environmental and process conditions that create this contamination
-      icon: wind
-      order: 4
-      variant: default
-    required_elements:
-      presentation: card
-      title: Required Elements
-      description: Chemical elements necessary for this contamination to form
-      icon: microscope
-      order: 5
-      variant: default
-    caution_materials:
-      presentation: card
-      title: Materials Requiring Caution
-      description: Materials that need special consideration for laser removal of
-        this contamination
-      icon: alert-triangle
-      order: 6
-      variant: warning
-    prohibited_materials:
-      presentation: card
-      title: Prohibited Materials
-      description: Materials where laser removal of this contamination is not recommended
-      icon: alert-triangle
-      order: 7
-      variant: danger
-    eeat:
-      presentation: list
-      title: Evidence & Expertise
-      description: Supporting evidence, citations, and expert analysis for this contamination
-      icon: file-text
-      order: 8
-      variant: default
-    laser_properties:
-      presentation: list
-      title: Laser Parameters
-      description: Optimal laser settings and technical parameters for removal
-      icon: zap
-      order: 9
-      variant: default
-    visual_characteristics:
-      presentation: list
-      title: Visual Characteristics
-      description: Physical appearance and identification features of this contamination
-      icon: eye
-      order: 10
-      variant: default
-    materials:
-      presentation: card
-      title: Found On Materials
-      description: Materials where this contaminant is commonly found
-      icon: box
-      order: 10
-      variant: default
-    technical.affects_materials:
-      presentation: card
-      title: Affects Materials
-      description: Materials impacted by this contaminant
-      icon: box
-      order: 1
-      variant: default
-    technical.produces_compounds:
-      presentation: card
-      title: Produces Compounds
-      description: Hazardous compounds generated during laser removal
-      icon: flask
-      order: 3
-      variant: warning
-    safety.regulatory_standards:
-      presentation: card
-      title: Regulatory Standards
-      description: OSHA, ANSI, ISO, and industry safety standards
-      icon: shield-check
-      order: 1
-      variant: default
-    realism_notes:
-      presentation: list
-      title: Realism Notes
-      description: Important considerations for accurate representation and understanding
-      icon: file-text
-      order: 11
-      variant: default
+# NOTE (Jan 5, 2026): section_metadata generator removed - _section metadata now exists in source data
+# Per Core Principle 0.6: No Build-Time Data Enhancement - all metadata must exist in source YAML
 - type: safety_table_normalizer
   module: export.archive.enrichers-deprecated-dec29-2025.contaminants.safety_table_normalizer
   class: SafetyTableNormalizer

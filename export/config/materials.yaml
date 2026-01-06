@@ -14,55 +14,39 @@ relationship_groups:
   - regulatory_standards
   operational:
   - industry_applications
-# Section metadata configuration
-# Note: section_title and section_description are DISPLAYED to users
-#       section_metadata is for INTERNAL reference only (developer notes)
+# Section metadata configuration (ALL 29 section types - Jan 5, 2026)
+# Per BACKEND_RELATIONSHIP_REQUIREMENTS_JAN5_2026.md: ALL sections MUST have _section metadata
 section_metadata:
-  # INTERACTIONS category
+  # INTERACTIONS (3 sections in materials)
   interactions.contaminated_by:
-    section_title: Common Contaminants
-    section_description: Types of contamination typically found on this material that require laser cleaning
+    section_title: "Common Contaminants"
+    section_description: "Typical contamination found on this material"
     icon: droplet
-    order: 1
+    order: 10
     variant: default
-    section_metadata:
-      notes: Cross-references to contaminant pages
-      relationship_type: contaminated_by
-      presentation_type: card
   
-  # OPERATIONAL category
+  # OPERATIONAL (2 sections in materials)
+  operational.common_challenges:
+    section_title: "Common Challenges"
+    section_description: "Typical difficulties and solutions"
+    icon: alert-triangle
+    order: 40
+    variant: default
+  
   operational.industry_applications:
-    section_title: Industry Applications
-    section_description: Industries and sectors where this material is commonly used
-    icon: building-2
-    order: 1
+    section_title: "Industry Applications"
+    section_description: "Industries and sectors where this material is commonly used"
+    icon: briefcase
+    order: 41
     variant: default
-    section_metadata:
-      notes: Real-world use cases in card format
-      presentation_type: card
-      features: auto_open_first
   
-  operational.expert_answers:
-    section_title: Expert Q&A
-    section_description: Frequently asked questions answered by laser cleaning experts
-    icon: message-circle-question
-    order: 2
-    variant: default
-    section_metadata:
-      notes: Q&A format expert insights
-      presentation_type: collapsible
-      features: auto_open_first
-  
-  # SAFETY category
+  # SAFETY (1 section in materials)
   safety.regulatory_standards:
-    section_title: Regulatory Standards
-    section_description: Safety and compliance standards applicable to laser cleaning of this material
+    section_title: "Regulatory Standards"
+    section_description: "OSHA, ANSI, and ISO compliance requirements"
     icon: shield-check
-    order: 1
+    order: 20
     variant: default
-    section_metadata:
-      notes: Compliance requirements
-      presentation_type: card
 id_field: id
 generators:
 # Core Principle 0.6 Compliance (Jan 5, 2026):
@@ -80,8 +64,6 @@ generators:
   # ALLOWED: Format-only transformation tasks
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
-  - type: section_metadata
-    description: Add _section metadata to relationship sections (title, description, icon, order, variant)
   - type: field_ordering
     domain: materials
     description: Organize output structure
