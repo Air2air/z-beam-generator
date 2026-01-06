@@ -74,6 +74,7 @@ class ContentGenerator(BaseGenerator):
     def _register_task_handlers(self) -> Dict[str, callable]:
         """Register all task type handlers."""
         return {
+            'export_metadata': self._task_export_metadata,  # NEW: Generate export-time metadata
             'author_linkage': self._task_author_linkage,
             'slug_generation': self._task_slug_generation,
             'timestamp': self._task_timestamp,
@@ -130,6 +131,128 @@ class ContentGenerator(BaseGenerator):
     # ================================================================
     # TASK HANDLERS (replace enrichers)
     # ================================================================
+    
+    def _task_export_metadata(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
+        """
+        Generate export metadata fields that should NOT exist in source data.
+        
+        Adds fields removed during source normalization (Jan 5, 2026):
+        - schemaVersion: From config
+        - contentType: From domain
+        - pageTitle: From name/title
+        - metaDescription: From micro/description
+        - pageDescription: From description (if exists)
+        - fullPath: Generated from category/subcategory/id
+        - breadcrumb: Generated from category hierarchy
+        - datePublished: From metadata or current
+        - dateModified: Current timestamp
+        
+        Related: SOURCE_DATA_NORMALIZATION_PLAN_JAN5_2026.md, Core Principle 0.6
+        """
+        domain = config.get('domain', 'unknown')
+        schema_version = config.get('schema_version', '5.0.0')
+        
+        # 1. schemaVersion (from config)
+        frontmatter['schemaVersion'] = schema_version
+        
+        # 2. contentType (from domain)
+        content_type_map = {
+            'materials': 'material',
+            'contaminants': 'contaminant',
+            'compounds': 'compound',
+            'settings': 'setting',
+        }
+        frontmatter['contentType'] = content_type_map.get(domain, domain.rstrip('s'))
+        
+        # 3. pageTitle (from name or title)
+        if not frontmatter.get('pageTitle'):
+            frontmatter['pageTitle'] = frontmatter.get('title') or frontmatter.get('name') or frontmatter.get('id', '').replace('-', ' ').title()
+        
+        # 4. metaDescription (from micro.before or description)
+        if not frontmatter.get('metaDescription'):
+            if frontmatter.get('micro', {}).get('before'):
+                # Use first 160 chars of micro.before
+                micro_text = frontmatter['micro']['before']
+                frontmatter['metaDescription'] = micro_text[:157] + '...' if len(micro_text) > 160 else micro_text
+            elif frontmatter.get('description'):
+                desc = frontmatter['description']
+                frontmatter['metaDescription'] = desc[:157] + '...' if len(desc) > 160 else desc
+            else:
+                # Fallback: generic description
+                name = frontmatter.get('name', 'item')
+                frontmatter['metaDescription'] = f"{name} laser cleaning guide. Technical specifications and applications."
+        
+        # 5. pageDescription (if description exists)
+        if frontmatter.get('description') and not frontmatter.get('pageDescription'):
+            frontmatter['pageDescription'] = frontmatter['description']
+        
+        # 6. fullPath (from category/subcategory/id)
+        if not frontmatter.get('fullPath'):
+            item_id = frontmatter.get('id', '')
+            category = frontmatter.get('category', '')
+            subcategory = frontmatter.get('subcategory', '')
+            
+            path_parts = [domain]
+            if category:
+                path_parts.append(category)
+            if subcategory:
+                path_parts.append(subcategory)
+            path_parts.append(item_id)
+            
+            frontmatter['fullPath'] = '/' + '/'.join(path_parts)
+        
+        # 7. breadcrumb (from category hierarchy)
+        if not frontmatter.get('breadcrumb'):
+            breadcrumbs = [
+                {'label': 'Home', 'href': '/'}
+            ]
+            
+            # Add domain breadcrumb
+            domain_labels = {
+                'materials': 'Materials',
+                'contaminants': 'Contaminants',
+                'compounds': 'Compounds',
+                'settings': 'Settings',
+            }
+            breadcrumbs.append({
+                'label': domain_labels.get(domain, domain.title()),
+                'href': f'/{domain}'
+            })
+            
+            # Add category breadcrumb
+            if frontmatter.get('category'):
+                category = frontmatter['category']
+                breadcrumbs.append({
+                    'label': category.replace('-', ' ').title(),
+                    'href': f'/{domain}/{category}'
+                })
+                
+                # Add subcategory breadcrumb
+                if frontmatter.get('subcategory'):
+                    subcategory = frontmatter['subcategory']
+                    breadcrumbs.append({
+                        'label': subcategory.replace('-', ' ').title(),
+                        'href': f'/{domain}/{category}/{subcategory}'
+                    })
+            
+            frontmatter['breadcrumb'] = breadcrumbs
+        
+        # 8. datePublished (from metadata or current)
+        if not frontmatter.get('datePublished'):
+            # Try to get from metadata first
+            metadata = frontmatter.get('metadata', {})
+            if isinstance(metadata, dict) and metadata.get('created_date'):
+                frontmatter['datePublished'] = metadata['created_date']
+            else:
+                # Use current timestamp
+                frontmatter['datePublished'] = datetime.utcnow().isoformat() + '+00:00'
+        
+        # 9. dateModified (current timestamp)
+        frontmatter['dateModified'] = datetime.utcnow().isoformat() + '+00:00'
+        
+        logger.debug(f"Added export metadata for {frontmatter.get('id', 'unknown')}")
+        
+        return frontmatter
     
     def _task_author_linkage(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """

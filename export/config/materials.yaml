@@ -72,6 +72,11 @@ generators:
   module: export.generation.universal_content_generator
   class: UniversalContentGenerator
   tasks:
+  # NEW (Jan 5, 2026): Regenerate export metadata removed from source
+  - type: export_metadata
+    domain: materials
+    schema_version: "5.0.0"
+    description: Add software metadata fields (schemaVersion, contentType, fullPath, breadcrumb, timestamps)
   # ALLOWED: Format-only transformation tasks
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
