@@ -7,7 +7,7 @@
 # 
 # STANDARDIZED FIELD ORDER PRINCIPLES:
 #   1. IDENTITY & CLASSIFICATION - Top (id, name, category, etc.)
-#   2. PAGE METADATA - Core (dates, content_type, schema_version)
+#   2. PAGE METADATA - Core (dates, contentType, schemaVersion)
 #   3. NAVIGATION - Breadcrumb structure
 #   4. CHEMICAL IDENTIFIERS - Compounds only (formula, CAS, molecular weight)
 #   5. CONTENT FIELDS - AI-generated text (description, micro, faq, etc.)
@@ -46,23 +46,23 @@ base_fields:
   page_metadata:
     - datePublished
     - dateModified
-    - content_type
-    - schema_version
+    - contentType
+    - schemaVersion
   
   # ─────────────────────────────────────────────────────
   # 3. NAVIGATION (Universal)
   # ─────────────────────────────────────────────────────
   navigation:
-    - full_path
+    - fullPath
     - breadcrumb
   
   # ─────────────────────────────────────────────────────
   # 4. SEO METADATA (Universal)
   # ─────────────────────────────────────────────────────
   seo_metadata:
-    - page_title
-    - page_description
-    - meta_description
+    - pageTitle
+    - pageDescription
+    - metaDescription
   
   # ─────────────────────────────────────────────────────
   # 5. CONTENT FIELDS (Commonly Used)
@@ -112,21 +112,21 @@ materials:
     # ─────────────────────────────────────────────────────
     - datePublished
     - dateModified
-    - content_type
-    - schema_version
+    - contentType
+    - schemaVersion
     
     # ─────────────────────────────────────────────────────
     # 3. NAVIGATION
     # ─────────────────────────────────────────────────────
-    - full_path
+    - fullPath
     - breadcrumb
     
     # ─────────────────────────────────────────────────────
     # 4. SEO METADATA
     # ─────────────────────────────────────────────────────
-    - page_title
-    - page_description
-    - meta_description
+    - pageTitle
+    - pageDescription
+    - metaDescription
     
     # ─────────────────────────────────────────────────────
     # 5. CONTENT FIELDS (AI-Generated)
@@ -167,7 +167,7 @@ materials:
     - id
     - name
     - category
-    - content_type
+    - contentType
     - author
 
 # =============================================================================
@@ -187,21 +187,21 @@ contaminants:
     # ─────────────────────────────────────────────────────
     - datePublished
     - dateModified
-    - content_type
-    - schema_version
+    - contentType
+    - schemaVersion
     
     # ─────────────────────────────────────────────────────
     # 3. NAVIGATION
     # ─────────────────────────────────────────────────────
-    - full_path
+    - fullPath
     - breadcrumb
     
     # ─────────────────────────────────────────────────────
     # 4. SEO METADATA
     # ─────────────────────────────────────────────────────
-    - page_title
-    - page_description
-    - meta_description
+    - pageTitle
+    - pageDescription
+    - metaDescription
     
     # ─────────────────────────────────────────────────────
     # 5. CONTENT FIELDS
@@ -241,7 +241,7 @@ contaminants:
     - id
     - name
     - category
-    - content_type
+    - contentType
 
 # =============================================================================
 # COMPOUNDS DOMAIN
@@ -253,7 +253,7 @@ compounds:
     # ─────────────────────────────────────────────────────
     - id
     - name
-    - display_name
+    - displayName
     - category
     - hazard_class
     
@@ -262,21 +262,21 @@ compounds:
     # ─────────────────────────────────────────────────────
     - datePublished
     - dateModified
-    - content_type
-    - schema_version
+    - contentType
+    - schemaVersion
     
     # ─────────────────────────────────────────────────────
     # 3. NAVIGATION
     # ─────────────────────────────────────────────────────
-    - full_path
+    - fullPath
     - breadcrumb
     
     # ─────────────────────────────────────────────────────
     # 4. SEO METADATA
     # ─────────────────────────────────────────────────────
-    - page_title
-    - page_description
-    - meta_description
+    - pageTitle
+    - pageDescription
+    - metaDescription
     
     # ─────────────────────────────────────────────────────
     # 5. CHEMICAL IDENTIFIERS
@@ -327,7 +327,7 @@ compounds:
     - name
     - chemical_formula
     - category
-    - content_type
+    - contentType
 
 # =============================================================================
 # SETTINGS DOMAIN
@@ -345,21 +345,21 @@ settings:
     # ─────────────────────────────────────────────────────
     - datePublished
     - dateModified
-    - content_type
-    - schema_version
+    - contentType
+    - schemaVersion
     
     # ─────────────────────────────────────────────────────
     # 3. NAVIGATION
     # ─────────────────────────────────────────────────────
-    - full_path
+    - fullPath
     - breadcrumb
     
     # ─────────────────────────────────────────────────────
     # 4. SEO METADATA
     # ─────────────────────────────────────────────────────
-    - page_title
-    - page_description
-    - meta_description
+    - pageTitle
+    - pageDescription
+    - metaDescription
     
     # ─────────────────────────────────────────────────────
     # 5. CONTENT
@@ -490,7 +490,7 @@ field_types:
     - id
     - name
     - slug
-    - display_name
+    - displayName
     - category
     - description
     - micro
@@ -531,12 +531,12 @@ field_types:
   
   # Nullable fields (can be null)
   nullable_fields:
-    - display_name
+    - displayName
     - scientific_name
     - description
     - micro
     - faq
-    - last_updated
+    - lastUpdated
 
 # =============================================================================
 # VALIDATION RULES
