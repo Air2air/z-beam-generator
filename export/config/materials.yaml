@@ -75,8 +75,7 @@ generators:
   # ALLOWED: Format-only transformation tasks
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
-  - type: normalize_applications
-    description: Convert applications to collapsible format with section metadata
+  # normalize_applications removed - data already in card format at operational.industry_applications
   - type: normalize_expert_answers
     target_field: operational.expert_answers
     description: Convert FAQ to expert_answers collapsible format
