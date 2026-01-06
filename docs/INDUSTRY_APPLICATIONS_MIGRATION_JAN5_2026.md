@@ -1,46 +1,6 @@
 # Industry Applications Migration - January 5, 2026
 
-**✅ MIGRATION COMPLETE (January 6, 2026)**
-
-## Completion Summary
-
-**Status:** ✅ 100% Complete  
-**Materials Migrated:** 153/153  
-**Method:** Source data fix (Core Principle 0.6 compliance)  
-**Files Modified:**
-- `data/materials/Materials.yaml` - Source data corrected
-- `data/materials/Materials.yaml.backup-industry-apps` - Backup created
-- 153 frontmatter files regenerated via `--export`
-
-**Verification Results:**
-- ✅ All 153 frontmatter files have correct relationship structure
-- ✅ All have `_section` metadata with 5 required fields
-- ✅ All industry names converted to slugified IDs
-- ✅ All use `presentation: card` format
-- ✅ Build validation: 0 errors
-- ✅ Link validation: PASSED
-
-**Commands Used:**
-```bash
-# 1. Migrate source data
-python3 scripts/migrations/migrate_industry_applications_source.py
-
-# 2. Re-export to regenerate frontmatter
-python3 run.py --export --domain materials
-
-# 3. Verification
-cd /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/materials
-python3 -c "..." # Verification script
-```
-
-**Compliance:**
-- Core Principle 0.6: Fixed source data (Layer 1), NOT frontmatter (Layer 3)
-- FRONTMATTER_SOURCE_OF_TRUTH_POLICY: All changes via export regeneration
-- Changes persist through all future exports
-
----
-
-## Original Problem Statement
+## Problem Statement
 
 All 153 materials files have `operational.industry_applications` in the **old flat list format** instead of the required relationship section structure with `_section` metadata.
 
@@ -101,7 +61,9 @@ operational:
     presentation: card
     items:
       - id: aerospace        # Lowercase, hyphenated slug
+        name: Aerospace      # Display name (required)
       - id: automotive       # Generated from display name
+        name: Automotive     # Display name (required)
     _section:
       sectionTitle: Industry Applications
       sectionDescription: Industries and sectors where this material is commonly processed with laser cleaning
@@ -112,18 +74,16 @@ operational:
 
 ### 2. ID Generation Rules
 
-Convert display names to slugified IDs:
-- **Aerospace** → `aerospace`
-- **Automotive** → `automotive`
-- **Electronics Manufacturing** → `electronics-manufacturing`
-- **Food and Beverage Processing** → `food-and-beverage-processing`
-- **Marine** → `marine`
+Convert display names to slugified IDs **AND preserve original name**:
+- **Aerospace** → `id: aerospace`, `name: Aerospace`
+- **Automotive** → `id: automotive`, `name: Automotive`
+- **Electronics Manufacturing** → `id: electronics-manufacturing`, `name: Electronics Manufacturing`
+- **Food and Beverage Processing** → `id: food-and-beverage-processing`, `name: Food and Beverage Processing`
+- **Marine** → `id: marine`, `name: Marine`
 
 **Algorithm:**
-1. Convert to lowercase
-2. Replace spaces with hyphens
-3. Remove special characters (keep only a-z, 0-9, hyphens)
-4. Remove leading/trailing hyphens
+1. **name**: Keep original display text exactly as-is
+2. **id**: Convert to lowercase → Replace spaces with hyphens → Remove special characters (keep only a-z, 0-9, hyphens) → Remove leading/trailing hyphens
 
 ### 3. Standard _section Metadata
 
@@ -188,8 +148,8 @@ def migrate_file(file_path):
     if isinstance(industry_apps, list):
         # Convert to relationship structure
         items = [{'id': slugify(name)} for name in industry_apps]
-        
-        data['operational']['industry_applications'] = {
+         with both id AND name
+        items = [{'id': slugify(name), 'name': name_applications'] = {
             'presentation': 'card',
             'items': items,
             '_section': {
@@ -328,14 +288,23 @@ operational:
     presentation: card
     items:
       - id: aerospace
+        name: Aerospace
       - id: automotive
+        name: Automotive
       - id: construction
+        name: Construction
       - id: electronics-manufacturing
+        name: Electronics Manufacturing
       - id: food-and-beverage-processing
+        name: Food and Beverage Processing
       - id: marine
+        name: Marine
       - id: packaging
+        name: Packaging
       - id: rail-transport
+        name: Rail Transport
       - id: renewable-energy
+        name: Renewable Energy
     _section:
       sectionTitle: Industry Applications
       sectionDescription: Industries and sectors where this material is commonly processed with laser cleaning
@@ -358,14 +327,23 @@ operational:
   - Food Processing
   - Chemical Processing
   - Semiconductor Manufacturing
-```
-
-**After:**
-```yaml
-operational:
-  industry_applications:
-    presentation: card
-    items:
+```  name: Cultural Heritage
+      - id: medical-devices
+        name: Medical Devices
+      - id: electronics-manufacturing
+        name: Electronics Manufacturing
+      - id: aerospace
+        name: Aerospace
+      - id: energy-sector
+        name: Energy Sector
+      - id: automotive-manufacturing
+        name: Automotive Manufacturing
+      - id: food-processing
+        name: Food Processing
+      - id: chemical-processing
+        name: Chemical Processing
+      - id: semiconductor-manufacturing
+        name: Semiconductor M
       - id: cultural-heritage
       - id: medical-devices
       - id: electronics-manufacturing
@@ -377,7 +355,7 @@ operational:
       - id: semiconductor-manufacturing
     _section:
       sectionTitle: Industry Applications
-      sectionDescription: Industries and sectors where this material is commonly processed with laser cleaning
+      sectitems have both `id` (slugified) AND `name` (display text) fieldsommonly processed with laser cleaning
       icon: building
       order: 1
       variant: default
@@ -436,8 +414,7 @@ Questions or issues during migration:
 
 ---
 
-**Status:** ✅ COMPLETE (January 6, 2026)  
-**Result:** 153/153 materials migrated successfully  
-**Method:** Source data fix (Materials.yaml) + re-export  
-**Compliance:** Core Principle 0.6 - No Build-Time Data Enhancement  
-**Verification:** 100% frontmatter files have correct structure
+**Status:** PENDING MIGRATION  
+**Priority:** HIGH - Blocking frontend rendering  
+**Assigned To:** Backend Team  
+**Due Date:** January 6, 2026
