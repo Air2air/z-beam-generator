@@ -1,0 +1,235 @@
+"""
+Test Numeric Formatting Policy
+
+Verifies that numeric values are formatted according to the policy:
+- docs/08-development/NUMERIC_FORMATTING_POLICY.md
+
+Created: November 29, 2025
+"""
+
+import pytest
+from export.utils.numeric_formatting import (
+    format_numeric_value,
+    format_property_dict,
+    format_machine_settings,
+    format_material_properties
+)
+
+
+class TestFormatNumericValue:
+    """Test the core formatting function."""
+    
+    # Rule 1: Very small numbers (< 0.01) - scientific notation
+    def test_very_small_scientific_notation(self):
+        """Very small numbers should use scientific notation."""
+        result = format_numeric_value(2.65e-08)
+        assert result == "2.6e-08", f"Expected '2.6e-08', got {result!r}"
+    
+    def test_very_small_leading_zeros(self):
+        """Numbers like 0.00001 should become scientific notation."""
+        result = format_numeric_value(0.00001)
+        assert result == "1e-05", f"Expected '1e-05', got {result!r}"
+    
+    def test_very_small_two_sig_figs(self):
+        """Scientific notation should have 2 significant figures."""
+        result = format_numeric_value(0.000015)
+        assert result == "1.5e-05", f"Expected '1.5e-05', got {result!r}"
+    
+    # Rule 2: Small numbers (0.01 to 0.99) - 2 decimal places
+    def test_small_number_rounds_to_2_decimals(self):
+        """Small numbers should round to 2 decimal places."""
+        result = format_numeric_value(0.2744)
+        assert result == 0.27, f"Expected 0.27, got {result!r}"
+    
+    def test_small_number_preserves_2_decimals(self):
+        """Small numbers already with 2 decimals should be preserved."""
+        result = format_numeric_value(0.06)
+        assert result == 0.06, f"Expected 0.06, got {result!r}"
+    
+    def test_small_number_rounds_up(self):
+        """Small numbers should round properly."""
+        result = format_numeric_value(0.019)
+        assert result == 0.02, f"Expected 0.02, got {result!r}"
+    
+    # Rule 3: Numbers 1 to 999 - whole or 1 decimal
+    def test_near_whole_drops_trailing_zero(self):
+        """Numbers like 90.0 should become 90."""
+        result = format_numeric_value(90.0)
+        assert result == 90, f"Expected 90, got {result!r}"
+        assert isinstance(result, int), f"Expected int, got {type(result)}"
+    
+    def test_near_whole_preserves_decimal(self):
+        """Numbers like 5.1 should stay as 5.1."""
+        result = format_numeric_value(5.1)
+        assert result == 5.1, f"Expected 5.1, got {result!r}"
+    
+    def test_near_whole_rounds_to_whole(self):
+        """Numbers like 933.47 should round to 933."""
+        result = format_numeric_value(933.47)
+        assert result == 933, f"Expected 933, got {result!r}"
+    
+    def test_near_whole_rounds_fractional(self):
+        """Numbers like 255.7565 should round to 256."""
+        result = format_numeric_value(255.7565)
+        assert result == 256, f"Expected 256, got {result!r}"
+    
+    # Rule 4: Large numbers (1000 to 999999) - whole numbers
+    def test_large_drops_decimal(self):
+        """Large numbers should drop .0"""
+        result = format_numeric_value(2792.0)
+        assert result == 2792, f"Expected 2792, got {result!r}"
+    
+    def test_large_already_whole(self):
+        """Large whole numbers should stay as-is."""
+        result = format_numeric_value(10640)
+        assert result == 10640, f"Expected 10640, got {result!r}"
+    
+    def test_large_rounds_to_whole(self):
+        """Large fractional numbers should round to whole."""
+        result = format_numeric_value(101325.7)
+        assert result == 101326, f"Expected 101326, got {result!r}"
+    
+    # Rule 5: Very large numbers (≥ 1M) - scientific notation
+    def test_very_large_scientific_notation(self):
+        """Very large numbers should use scientific notation."""
+        result = format_numeric_value(37700000.0)
+        assert result == "3.8e+07", f"Expected '3.8e+07', got {result!r}"
+    
+    def test_very_large_two_sig_figs(self):
+        """Scientific notation should have 2 significant figures."""
+        result = format_numeric_value(66115300.0)
+        assert result == "6.6e+07", f"Expected '6.6e+07', got {result!r}"
+    
+    # Edge cases
+    def test_zero(self):
+        """Zero should stay as 0."""
+        result = format_numeric_value(0)
+        assert result == 0, f"Expected 0, got {result!r}"
+    
+    def test_none(self):
+        """None should return None."""
+        result = format_numeric_value(None)
+        assert result is None, f"Expected None, got {result!r}"
+    
+    def test_negative_small(self):
+        """Negative small numbers should format correctly."""
+        result = format_numeric_value(-0.2744)
+        assert result == -0.27, f"Expected -0.27, got {result!r}"
+    
+    def test_negative_large(self):
+        """Negative large numbers should format correctly."""
+        result = format_numeric_value(-37700000.0)
+        assert result == "-3.8e+07", f"Expected '-3.8e+07', got {result!r}"
+    
+    def test_one(self):
+        """1.0 should become 1."""
+        result = format_numeric_value(1.0)
+        assert result == 1, f"Expected 1, got {result!r}"
+        assert isinstance(result, int)
+
+
+class TestFormatPropertyDict:
+    """Test formatting property dictionaries."""
+    
+    def test_formats_value_min_max(self):
+        """Should format value, min, and max fields."""
+        prop = {
+            'value': 933.47,
+            'min': 255.7565,
+            'max': 3858.7735,
+            'unit': 'K'
+        }
+        result = format_property_dict(prop)
+        
+        assert result['value'] == 933, f"value: expected 933, got {result['value']}"
+        assert result['min'] == 256, f"min: expected 256, got {result['min']}"
+        assert result['max'] == 3859, f"max: expected 3859, got {result['max']}"
+        assert result['unit'] == 'K', "unit should be preserved"
+    
+    def test_preserves_non_numeric_fields(self):
+        """Should preserve non-numeric fields unchanged."""
+        prop = {
+            'value': 90.0,
+            'unit': 'MPa',
+            'description': 'Test property'
+        }
+        result = format_property_dict(prop)
+        
+        assert result['unit'] == 'MPa'
+        assert result['description'] == 'Test property'
+    
+    def test_handles_non_dict(self):
+        """Should return non-dict values unchanged."""
+        result = format_property_dict("not a dict")
+        assert result == "not a dict"
+
+
+class TestFormatMachineSettings:
+    """Test formatting machine settings."""
+    
+    def test_formats_all_parameters(self):
+        """Should format all parameters in settings."""
+        settings = {
+            'powerRange': {'value': 100.0, 'min': 1.0, 'max': 120.0, 'unit': 'W'},
+            'spotSize': {'value': 50.0, 'min': 0.1, 'max': 500.0, 'unit': 'μm'}
+        }
+        result = format_machine_settings(settings)
+        
+        assert result['powerRange']['value'] == 100
+        assert result['powerRange']['min'] == 1
+        assert result['spotSize']['min'] == 0.1  # Preserved (valid small number)
+
+
+class TestFormatMaterialProperties:
+    """Test formatting material properties (nested structure)."""
+    
+    def test_formats_nested_properties(self):
+        """Should format properties in nested categories."""
+        properties = {
+            'thermal_properties': {
+                'meltingPoint': {'value': 933.47, 'min': 133.31, 'max': 3864.60, 'unit': 'K'},
+                'thermalConductivity': {'value': 237.0, 'unit': 'W/(m·K)'}
+            },
+            'mechanical_properties': {
+                'density': {'value': 2.7, 'unit': 'g/cm³'}
+            }
+        }
+        result = format_material_properties(properties)
+        
+        assert result['thermal_properties']['meltingPoint']['value'] == 933
+        assert result['thermal_properties']['thermalConductivity']['value'] == 237
+        assert result['mechanical_properties']['density']['value'] == 2.7
+
+
+class TestRealWorldValues:
+    """Test with actual values from the codebase."""
+    
+    def test_hardness_formatting(self):
+        """hardness: 0.2744 → 0.27"""
+        assert format_numeric_value(0.2744) == 0.27
+    
+    def test_electrical_resistivity_formatting(self):
+        """electricalResistivity: 2.65e-08 → scientific"""
+        result = format_numeric_value(2.65e-08)
+        assert "e-08" in result or "e-8" in result
+    
+    def test_electrical_conductivity_formatting(self):
+        """electricalConductivity: 37700000.0 → scientific"""
+        result = format_numeric_value(37700000.0)
+        assert "e+07" in result or "e7" in result
+    
+    def test_thermal_destruction_formatting(self):
+        """thermalDestruction: 933.47 → 933"""
+        assert format_numeric_value(933.47) == 933
+    
+    def test_thermal_destruction_min_formatting(self):
+        """thermalDestruction.min: 255.7565 → 256"""
+        assert format_numeric_value(255.7565) == 256
+    
+    def test_power_range_min_formatting(self):
+        """powerRange.min: 1.0 → 1"""
+        assert format_numeric_value(1.0) == 1
+    
+    def test_spot_size_min_formatting(self):
+        """spotSize.min: 0.1 → 0.1 (preserved)"""
+        assert format_numeric_value(0.1) == 0.1

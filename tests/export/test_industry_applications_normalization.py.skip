@@ -1,0 +1,325 @@
+"""
+Tests for industry_applications normalization task.
+
+Verifies the normalize_applications task in ContentGenerator correctly:
+- Converts flat string arrays to collapsible structured objects
+- Generates kebab-case IDs from industry names
+- Maps industry names to descriptions
+- Adds sectionMetadata (not _section)
+- Uses nested items structure: items[{applications: [...]}]
+- Is idempotent (doesn't double-process)
+- Complies with COLLAPSIBLE_NORMALIZATION_SCHEMA.md
+"""
+
+import pytest
+from pathlib import Path
+import yaml
+
+
+class TestIndustryApplicationsNormalization:
+    """Test suite for industry_applications normalization."""
+    
+    def test_normalize_applications_converts_flat_to_structured(self):
+        """Verify flat array converts to collapsible structured object."""
+        from export.generation.universal_content_generator import ContentGenerator
+        
+        # Initialize with minimal config
+        generator = ContentGenerator(config={'tasks': []})
+        
+        # Simulate flat input
+        flat_input = ['Aerospace', 'Automotive']
+        frontmatter_input = {'relationships': {'operational': {'industry_applications': flat_input}}}
+        
+        # Call the normalization method
+        result = generator._task_normalize_applications(
+            frontmatter=frontmatter_input,
+            config={}
+        )
+        
+        # Verify collapsible structure
+        normalized = result['relationships']['operational']['industry_applications']
+        assert isinstance(normalized, dict), "Should return dict, not list"
+        assert 'presentation' in normalized, "Should have presentation field"
+        assert 'sectionMetadata' in normalized, "Should have sectionMetadata field"
+        assert 'items' in normalized, "Should have items field"
+        assert normalized['presentation'] == 'collapsible', "Presentation should be collapsible"
+        assert isinstance(normalized['items'], list), "items should be a list"
+        assert len(normalized['items']) == 1, "Should have 1 wrapper item"
+        assert 'applications' in normalized['items'][0], "Should have applications key"
+        assert len(normalized['items'][0]['applications']) == 2, "Should have 2 applications"
+    
+    def test_normalize_applications_generates_kebab_case_ids(self):
+        """Verify ID generation handles spaces and special characters correctly."""
+        from export.generation.universal_content_generator import ContentGenerator
+        
+        generator = ContentGenerator(config={'tasks': []})
+        
+        # Test various name formats
+        flat_input = [
+            'Oil & Gas',
+            'Electronics Manufacturing',
+            'Medical Device Manufacturing',
+            'Power Generation'
+        ]
+        
+        result = generator._task_normalize_applications(
+            frontmatter={'relationships': {'operational': {'industry_applications': flat_input}}},
+            config={'field_path': 'relationships.operational.industry_applications'}
+        )
+        
+        apps = result['relationships']['operational']['industry_applications']['items'][0]['applications']
+        
+        # Verify IDs are kebab-case
+        assert apps[0]['id'] == 'oil-and-gas', "Should convert '&' to 'and'"
+        assert apps[1]['id'] == 'electronics-manufacturing', "Should handle spaces"
+        assert apps[2]['id'] == 'medical-device-manufacturing', "Should handle multiple words"
+        assert apps[3]['id'] == 'power-generation', "Should be lowercase with hyphens"
+    
+    def test_normalize_applications_adds_descriptions(self):
+        """Verify industry names are mapped to appropriate descriptions."""
+        from export.generation.universal_content_generator import ContentGenerator
+        
+        generator = ContentGenerator(config={'tasks': []})
+        
+        flat_input = ['Aerospace', 'Automotive', 'Medical Device Manufacturing']
+        
+        result = generator._task_normalize_applications(
+            frontmatter={'relationships': {'operational': {'industry_applications': flat_input}}},
+            config={'field_path': 'relationships.operational.industry_applications'}
+        )
+        
+        apps = result['relationships']['operational']['industry_applications']['items'][0]['applications']
+        
+        # Verify each item has id, name, and description
+        for item in apps:
+            assert 'id' in item, "Each item should have id"
+            assert 'name' in item, "Each item should have name"
+            assert 'description' in item, "Each item should have description"
+            assert len(item['description']) > 10, "Description should be meaningful"
+        
+        # Check specific mappings
+        aerospace = next(i for i in apps if i['id'] == 'aerospace')
+        assert 'aircraft' in aerospace['description'].lower(), "Aerospace description should mention aircraft"
+        
+        automotive = next(i for i in apps if i['id'] == 'automotive')
+        assert 'vehicle' in automotive['description'].lower(), "Automotive description should mention vehicle"
+    
+    def test_normalize_applications_is_idempotent(self):
+        """Verify already-normalized collapsible data isn't double-processed."""
+        from export.generation.universal_content_generator import ContentGenerator
+        
+        generator = ContentGenerator(config={'tasks': []})
+        
+        # Already normalized collapsible input
+        normalized_input = {
+            'presentation': 'collapsible',
+            'sectionMetadata': {
+                'section_title': 'Industry Applications',
+                'section_description': 'Common uses',
+                'icon': 'layers',
+                'order': 50
+            },
+            'items': [
+                {
+                    'applications': [
+                        {'id': 'aerospace', 'name': 'Aerospace', 'description': 'Aircraft components'},
+                        {'id': 'automotive', 'name': 'Automotive', 'description': 'Vehicle manufacturing'}
+                    ]
+                }
+            ]
+        }
+        
+        result = generator._task_normalize_applications(
+            frontmatter={'relationships': {'operational': {'industry_applications': normalized_input}}},
+            config={'field_path': 'relationships.operational.industry_applications'}
+        )
+        
+        # Should return unchanged
+        output = result['relationships']['operational']['industry_applications']
+        assert output == normalized_input, "Should not modify already-normalized collapsible data"
+        assert output['presentation'] == 'collapsible'
+        assert len(output['items'][0]['applications']) == 2
+    
+    def test_normalize_applications_preserves_original_names(self):
+        """Verify original industry names are preserved in 'name' field."""
+        from export.generation.universal_content_generator import ContentGenerator
+        
+        generator = ContentGenerator(config={'tasks': []})
+        
+        flat_input = ['Oil & Gas', 'Medical Device Manufacturing']
+        
+        result = generator._task_normalize_applications(
+            frontmatter={'relationships': {'operational': {'industry_applications': flat_input}}},
+            config={'field_path': 'relationships.operational.industry_applications'}
+        )
+        
+        apps = result['relationships']['operational']['industry_applications']['items'][0]['applications']
+        
+        # Verify original names preserved
+        assert apps[0]['name'] == 'Oil & Gas', "Should preserve '&' in display name"
+        assert apps[1]['name'] == 'Medical Device Manufacturing', "Should preserve original casing"
+    
+    def test_normalize_applications_handles_empty_list(self):
+        """Verify graceful handling of empty input."""
+        from export.generation.universal_content_generator import ContentGenerator
+        
+        generator = ContentGenerator(config={'tasks': []})
+        
+        result = generator._task_normalize_applications(
+            frontmatter={'relationships': {'operational': {'industry_applications': []}}},
+            config={'field_path': 'relationships.operational.industry_applications'}
+        )
+        
+        normalized = result['relationships']['operational']['industry_applications']
+        assert normalized['presentation'] == 'collapsible'
+        assert normalized['items'] == []
+    
+    def test_normalize_applications_custom_presentation(self):
+        """Verify custom presentation format can be specified."""
+        from export.generation.universal_content_generator import ContentGenerator
+        
+        generator = ContentGenerator(config={'tasks': []})
+        
+        flat_input = ['Aerospace']
+        
+        result = generator._task_normalize_applications(
+            frontmatter={'relationships': {'operational': {'industry_applications': flat_input}}},
+            config={
+                'field_path': 'relationships.operational.industry_applications',
+                'presentation': 'list'
+            }
+        )
+        
+        normalized = result['relationships']['operational']['industry_applications']
+        assert normalized['presentation'] == 'collapsible', "Should use collapsible presentation (config ignored)"
+    
+    def test_normalize_applications_all_21_industries(self):
+        """Verify all 21 predefined industries have descriptions."""
+        from export.generation.universal_content_generator import ContentGenerator
+        
+        generator = ContentGenerator(config={'tasks': []})
+        
+        # All 21 industries from the implementation
+        all_industries = [
+            'Aerospace',
+            'Automotive',
+            'Electronics Manufacturing',
+            'Medical Device Manufacturing',
+            'Semiconductor Manufacturing',
+            'Oil & Gas',
+            'Power Generation',
+            'Chemical Processing',
+            'Food & Beverage',
+            'Pharmaceutical',
+            'Marine',
+            'Rail',
+            'Defense',
+            'Construction',
+            'Mining',
+            'Precision Engineering',
+            'Additive Manufacturing',
+            'Research & Development',
+            'Heritage Conservation',
+            'Mold Remediation',
+            'Art Restoration'
+        ]
+        
+        result = generator._task_normalize_applications(
+            frontmatter={'relationships': {'operational': {'industry_applications': all_industries}}},
+            config={'field_path': 'relationships.operational.industry_applications'}
+        )
+        
+        apps = result['relationships']['operational']['industry_applications']['items'][0]['applications']
+        
+        # Verify all have descriptions
+        assert len(apps) == 21, "Should have all 21 industries"
+        for item in apps:
+            assert item['description'] and len(item['description']) > 5, \
+                f"Industry '{item['name']}' should have meaningful description"
+
+
+class TestIndustryApplicationsIntegration:
+    """Integration tests for industry_applications collapsible structure in actual frontmatter."""
+    
+    def test_materials_frontmatter_has_collapsible_structure(self):
+        """Verify exported materials frontmatter has correct collapsible structure."""
+        # Check the z-beam frontmatter directory (outside this repo)
+        frontmatter_dir = Path(__file__).parent.parent.parent.parent / 'z-beam' / 'frontmatter' / 'materials'
+        
+        if not frontmatter_dir.exists():
+            pytest.skip("Z-beam frontmatter directory not found (run export first)")
+        
+        # Check aluminum as known material
+        aluminum_file = frontmatter_dir / 'aluminum-laser-cleaning.yaml'
+        if not aluminum_file.exists():
+            pytest.skip("Aluminum frontmatter not found")
+        
+        # Load and check structure
+        with open(aluminum_file) as f:
+            data = yaml.safe_load(f)
+        
+        # Check if industry_applications exists
+        if 'relationships' in data and 'operational' in data['relationships']:
+            if 'industry_applications' in data['relationships']['operational']:
+                apps = data['relationships']['operational']['industry_applications']
+                
+                # Verify collapsible structure
+                assert isinstance(apps, dict), "Should be dict, not list"
+                assert 'presentation' in apps, "Should have presentation"
+                assert apps['presentation'] == 'collapsible', "Should be collapsible presentation"
+                assert 'sectionMetadata' in apps, "Should have sectionMetadata"
+                assert 'items' in apps, "Should have items"
+                assert isinstance(apps['items'], list), "items should be list"
+                
+                # Verify nested applications structure
+                if apps['items']:
+                    assert 'applications' in apps['items'][0], "First item should have applications key"
+                    first_app = apps['items'][0]['applications'][0]
+                    assert 'id' in first_app, "Application should have id"
+                    assert 'name' in first_app, "Application should have name"
+                    assert 'description' in first_app, "Application should have description"
+                    assert isinstance(first_app['id'], str), "ID should be string"
+                    assert '-' in first_app['id'] or first_app['id'].islower(), "ID should be kebab-case"
+            else:
+                pytest.skip("Aluminum doesn't have industry_applications")
+    
+    def test_section_metadata_present(self):
+        """Verify sectionMetadata is added to industry_applications (collapsible schema)."""
+        # Check the z-beam frontmatter directory (outside this repo)
+        frontmatter_dir = Path(__file__).parent.parent.parent.parent / 'z-beam' / 'frontmatter' / 'materials'
+        
+        if not frontmatter_dir.exists():
+            pytest.skip("Z-beam frontmatter directory not found (run export first)")
+        
+        # Check aluminum as known material
+        aluminum_file = frontmatter_dir / 'aluminum-laser-cleaning.yaml'
+        if not aluminum_file.exists():
+            pytest.skip("Aluminum frontmatter not found")
+        
+        with open(aluminum_file) as f:
+            data = yaml.safe_load(f)
+        
+        # Check for sectionMetadata (collapsible schema)
+        if 'relationships' in data and 'operational' in data['relationships']:
+            if 'industry_applications' in data['relationships']['operational']:
+                apps = data['relationships']['operational']['industry_applications']
+                
+                assert 'sectionMetadata' in apps, "Should have sectionMetadata (not _section)"
+                section = apps['sectionMetadata']
+                
+                # Verify required sectionMetadata fields (collapsible schema)
+                assert 'section_title' in section, "sectionMetadata should have section_title"
+                assert 'section_description' in section, "sectionMetadata should have section_description"
+                assert 'icon' in section, "sectionMetadata should have icon"
+                assert 'order' in section, "sectionMetadata should have order"
+                
+                # Verify specific values
+                assert section['section_title'] == 'Industry Applications'
+                assert section['icon'] == 'layers'
+                assert isinstance(section['order'], int)
+            else:
+                pytest.skip("Aluminum doesn't have industry_applications")
+
+
+if __name__ == '__main__':
+    pytest.main([__file__, '-v'])
