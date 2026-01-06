@@ -285,6 +285,10 @@ class DomainAdapter(DataSourceAdapter):
         Enriches data at GENERATION TIME, not export time.
         Adds: expanded author, timestamps, id, breadcrumbs.
         
+        PHASE 2 FIX (Jan 5, 2026):
+        Converts collapsible components (FAQ, applications, standards) to unified format
+        BEFORE saving to source YAML. Export tasks will eventually become no-ops.
+        
         Args:
             identifier: Item name/ID
             component_type: Component type
@@ -299,8 +303,29 @@ class DomainAdapter(DataSourceAdapter):
         if identifier not in items:
             raise ValueError(f"'{identifier}' not found in {self.data_path}")
         
-        # Write content to item
-        items[identifier][component_type] = content_data
+        # PHASE 2: Convert to collapsible format if applicable (NEW Jan 5, 2026)
+        content_to_save = self._convert_to_collapsible_if_needed(
+            content_data, 
+            component_type, 
+            identifier
+        )
+        
+        # Determine target field (may differ from component_type)
+        target_field = self._get_target_field(component_type)
+        
+        # Write content to target field
+        if '.' in target_field:
+            # Nested field (e.g., 'operational.expert_answers')
+            parts = target_field.split('.')
+            current = items[identifier]
+            for part in parts[:-1]:
+                if part not in current:
+                    current[part] = {}
+                current = current[part]
+            current[parts[-1]] = content_to_save
+        else:
+            # Top-level field
+            items[identifier][target_field] = content_to_save
         
         # GENERATION-TIME ENRICHMENT (Jan 5, 2026): Add ALL metadata at generation time
         # Complies with Core Principle 0.6: "No Build-Time Data Enhancement"
@@ -337,6 +362,217 @@ class DomainAdapter(DataSourceAdapter):
             logger.error(traceback.format_exc())
             # Don't fail the whole generation - sync failure is non-fatal
             logger.warning("⚠️  Continuing despite sync failure - frontmatter can be manually updated")
+    
+    def _get_target_field(self, component_type: str) -> str:
+        """
+        Get target field name for component type.
+        
+        Maps component types to their storage location in data YAML.
+        Some components save to different field names.
+        """
+        # Component type → target field mapping
+        FIELD_MAPPING = {
+            'faq': 'operational.expert_answers',  # FAQ saves as expert_answers
+            # Add other mappings as needed
+        }
+        
+        return FIELD_MAPPING.get(component_type, component_type)
+    
+    def _convert_to_collapsible_if_needed(
+        self, 
+        content_data: Any, 
+        component_type: str, 
+        identifier: str
+    ) -> Any:
+        """
+        Convert content to collapsible format if component type requires it.
+        
+        PHASE 2 FIX (Jan 5, 2026): Implements build-time policy compliance.
+        New content generated after Jan 5, 2026 will be saved in collapsible format.
+        
+        Args:
+            content_data: Raw content from generation
+            component_type: Component type
+            identifier: Material/item name
+            
+        Returns:
+            Content in appropriate format (collapsible or original)
+        """
+        # Check if data already has presentation format (already structured)
+        if isinstance(content_data, dict) and 'presentation' in content_data:
+            logger.debug(f"✅ {component_type} already in structured format (presentation: {content_data.get('presentation')})")
+            return content_data
+        
+        # If data is already structured but missing presentation field, infer it
+        if isinstance(content_data, dict) and 'items' in content_data:
+            logger.debug(f"✅ {component_type} has items structure, returning as-is")
+            return content_data
+        
+        # Data is raw (list/simple format) - needs conversion
+        # Infer conversion type from data structure
+        if isinstance(content_data, list):
+            # Check if it's FAQ format (list of Q&A dicts)
+            if content_data and isinstance(content_data[0], dict) and 'question' in content_data[0]:
+                logger.info(f"🔄 Converting FAQ data to collapsible format for {identifier}")
+                return self._convert_faq_to_collapsible(content_data)
+            # Simple string list - could be applications or other
+            else:
+                logger.debug(f"Raw list data for {component_type}, returning as-is")
+                return content_data
+        
+        # Unknown format, return as-is
+        return content_data
+    
+    def _convert_faq_to_collapsible(self, faq_data: list) -> Dict[str, Any]:
+        """
+        Convert FAQ list to unified collapsible structure.
+        
+        Input format (from generation):
+        [
+            {'question': 'Q1?', 'answer': 'A1'},
+            {'question': 'Q2?', 'answer': 'A2'}
+        ]
+        
+        Output format (collapsible):
+        {
+            'presentation': 'collapsible',
+            'items': [
+                {
+                    'title': 'Q1?',
+                    'content': 'A1',
+                    'metadata': {'category': 'Technical', 'difficulty': 'intermediate'},
+                    '_display': {'_open': True, 'order': 1}
+                }
+            ]
+        }
+        """
+        if not isinstance(faq_data, list):
+            logger.warning(f"FAQ data not a list, returning as-is: {type(faq_data)}")
+            return faq_data
+        
+        items = []
+        for idx, faq in enumerate(faq_data):
+            if not isinstance(faq, dict):
+                continue
+            
+            question = faq.get('question', '')
+            answer = faq.get('answer', '')
+            
+            if not question or not answer:
+                continue
+            
+            items.append({
+                'title': question,
+                'content': answer,
+                'metadata': {
+                    'category': 'Technical',
+                    'difficulty': 'intermediate'
+                },
+                '_display': {
+                    '_open': idx == 0,  # First item open
+                    'order': idx + 1
+                }
+            })
+        
+        logger.info(f"✅ Converted {len(items)} FAQ items to collapsible format")
+        
+        return {
+            'presentation': 'collapsible',
+            'items': items
+        }
+    
+    def _convert_applications_to_card(self, apps_data: list) -> Dict[str, Any]:
+        """
+        Convert applications list to card format structure.
+        
+        Input: ['Aerospace', 'Automotive', 'Medical']
+        
+        Output: Card format with items
+        """
+        if not isinstance(apps_data, list):
+            logger.warning(f"Applications data not a list, returning as-is: {type(apps_data)}")
+            return apps_data
+        
+        items = []
+        for idx, app_name in enumerate(apps_data):
+            if not isinstance(app_name, str):
+                continue
+            
+            # Generate brief description (placeholder - could be enhanced with AI)
+            description = f"{app_name} industry applications and manufacturing requirements for laser cleaning."
+            
+            items.append({
+                'title': app_name,
+                'description': description,
+                'metadata': {
+                    'category': 'Industrial Applications',
+                    'commonality': 'common'
+                },
+                'order': idx + 1
+            })
+        
+        logger.info(f"✅ Converted {len(items)} applications to card format")
+        
+        return {
+            'presentation': 'card',
+            'items': items
+        }
+    
+    def _convert_standards_to_collapsible(self, standards_data: Any) -> Dict[str, Any]:
+        """
+        Convert regulatory standards to unified collapsible structure.
+        
+        Input could be:
+        - List of standard objects
+        - Dict with 'items' key
+        - Already collapsible format
+        """
+        # If already collapsible, return as-is
+        if isinstance(standards_data, dict) and standards_data.get('presentation') == 'collapsible':
+            logger.info("Standards already in collapsible format")
+            return standards_data
+        
+        # Extract items
+        if isinstance(standards_data, dict) and 'items' in standards_data:
+            items_list = standards_data['items']
+        elif isinstance(standards_data, list):
+            items_list = standards_data
+        else:
+            logger.warning(f"Standards data format unknown, returning as-is: {type(standards_data)}")
+            return standards_data
+        
+        items = []
+        for idx, standard in enumerate(items_list):
+            if not isinstance(standard, dict):
+                continue
+            
+            name = standard.get('name', '')
+            long_name = standard.get('longName', '')
+            description = standard.get('description', '')
+            
+            title = f"{name} - {long_name}" if name and long_name else name or long_name or 'Standard'
+            
+            items.append({
+                'title': title,
+                'content': description,
+                'metadata': {
+                    'organization': name,
+                    'category': 'laser-safety',
+                    'url': standard.get('url', ''),
+                    'image': standard.get('image', '')
+                },
+                '_display': {
+                    '_open': idx == 0,  # First item open
+                    'order': idx + 1
+                }
+            })
+        
+        logger.info(f"✅ Converted {len(items)} standards to collapsible format")
+        
+        return {
+            'presentation': 'collapsible',
+            'items': items
+        }
     
     def extract_content(self, raw_response: str, component_type: str) -> Any:
         """
