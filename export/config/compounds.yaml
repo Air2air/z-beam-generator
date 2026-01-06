@@ -199,12 +199,11 @@ generators:
   # ALLOWED: Format-only transformation tasks
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
-  - type: normalize_expert_answers
-    target_field: operational.expert_answers
-    description: Convert FAQ to expert_answers collapsible format
   - type: field_ordering
     domain: compounds
     description: Organize output structure
+  # normalize_expert_answers removed (Jan 5, 2026) - FAQ → expert_answers conversion
+  # must happen during source data generation, not at export time (Core Principle 0.6)
 # ALLOWED: Cleanup (format transformation only)
 - type: field_cleanup
   module: export.generation.field_cleanup_generator
