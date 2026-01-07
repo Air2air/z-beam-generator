@@ -2,20 +2,26 @@
 # =============================================================================
 # 
 # PURPOSE: Centralized template defining standard field order for all domains
-# DATE: December 18, 2025
+# DATE: January 6, 2026
 # VERSION: 5.0.0
+# COMPLIANCE: docs/BACKEND_FRONTMATTER_FIELD_ORDER_JAN6_2026.md
 # 
-# STANDARDIZED FIELD ORDER PRINCIPLES:
-#   1. IDENTITY & CLASSIFICATION - Top (id, name, category, etc.)
-#   2. PAGE METADATA - Core (dates, contentType, schemaVersion)
-#   3. NAVIGATION - Breadcrumb structure
-#   4. CHEMICAL IDENTIFIERS - Compounds only (formula, CAS, molecular weight)
-#   5. CONTENT FIELDS - AI-generated text (description, micro, faq, etc.)
-#   6. IMAGES & MEDIA - Visual assets
-#   7. AUTHOR INFORMATION - Complete author object
-#   8. EXPOSURE DATA - Compounds only (limits, monitoring)
-#   9. MACHINE SETTINGS - Settings domain only
-#   10. RELATIONSHIPS - Last section (all cross-references)
+# STANDARDIZED FIELD ORDER PRINCIPLES (Updated Jan 6, 2026):
+#   Priority 1: CRITICAL ROUTING (First 10 lines)
+#     - id, name, displayName, category, subcategory, hazard_class (if applicable)
+#     - datePublished, dateModified, contentType, schemaVersion
+#   Priority 2: NAVIGATION & SEO (Lines 11-30)
+#     - fullPath, breadcrumb, pageTitle, pageDescription, metaDescription
+#   Priority 3: TECHNICAL PROPERTIES (After metadata)
+#     - Chemical formulas, physical properties, measurements
+#   Priority 4: CONTENT FIELDS (After technical)
+#     - micro, description, subtitle, health_effects, exposure_guidelines
+#   Priority 5: MEDIA ASSETS (After content)
+#     - images
+#   Priority 6: RELATIONSHIPS (After images)
+#     - industry_applications, relatedMaterial, compatible_materials
+#   Priority 7: COMPLEX OBJECTS (End of file)
+#     - author, card, safety_data, regulatory_standards
 # 
 # USAGE:
 #   - Exporters use this to generate frontmatter in correct order
@@ -34,15 +40,16 @@
 
 base_fields:
   # ─────────────────────────────────────────────────────
-  # 1. IDENTITY & CLASSIFICATION (Base)
+  # Priority 1: CRITICAL ROUTING (First 10 lines)
   # ─────────────────────────────────────────────────────
   identity_base:
     - id
     - name
+    - displayName
+    - category
+    - subcategory
   
-  # ─────────────────────────────────────────────────────
-  # 2. PAGE METADATA (Universal)
-  # ─────────────────────────────────────────────────────
+  # Still in Priority 1 (must complete first 10 lines)
   page_metadata:
     - datePublished
     - dateModified
@@ -50,15 +57,12 @@ base_fields:
     - schemaVersion
   
   # ─────────────────────────────────────────────────────
-  # 3. NAVIGATION (Universal)
+  # Priority 2: NAVIGATION & SEO (Lines 11-30)
   # ─────────────────────────────────────────────────────
   navigation:
     - fullPath
     - breadcrumb
   
-  # ─────────────────────────────────────────────────────
-  # 4. SEO METADATA (Universal)
-  # ─────────────────────────────────────────────────────
   seo_metadata:
     - pageTitle
     - pageDescription
@@ -70,102 +74,87 @@ base_fields:
   # Note: 'micro' appears in most domains (not compounds)
   content_common:
     - micro
+  Priority 4: CONTENT FIELDS (After technical properties)
+  # ─────────────────────────────────────────────────────
+  content_common:
+    - micro
   
   # ─────────────────────────────────────────────────────
-  # 6. IMAGES & MEDIA (Universal)
+  # Priority 5: MEDIA ASSETS (After content)
   # ─────────────────────────────────────────────────────
   media:
     - images
   
   # ─────────────────────────────────────────────────────
-  # 7. AUTHOR INFORMATION (Universal)
+  # Priority 6: RELATIONSHIPS (After images)
+  # ─────────────────────────────────────────────────────
+  relationships:
+    - relationships
+  
+  # ─────────────────────────────────────────────────────
+  # Priority 7: COMPLEX OBJECTS (End of file)
   # ─────────────────────────────────────────────────────
   author_info:
     - author
   
-  # ─────────────────────────────────────────────────────
-  # 8. CARD DISPLAY METADATA (Universal)
-  # ─────────────────────────────────────────────────────
   card_metadata:
     - card
-  
-  # ─────────────────────────────────────────────────────
-  # 9. RELATIONSHIPS (Universal - Always Last)
-  # ─────────────────────────────────────────────────────
-  relationships:
-    - relationships
-
-# =============================================================================
-# MATERIALS DOMAIN
-# =============================================================================
-materials:
   field_order:
     # ─────────────────────────────────────────────────────
     # 1. IDENTITY & CLASSIFICATION
     # ─────────────────────────────────────────────────────
     - id
     - name
+    - Priority 1: CRITICAL ROUTING (First 10 lines)
+    # ─────────────────────────────────────────────────────
+    - id
+    - name
+    - displayName
     - category
-    
-    # ─────────────────────────────────────────────────────
-    # 2. PAGE METADATA
-    # ─────────────────────────────────────────────────────
+    - subcategory
     - datePublished
     - dateModified
     - contentType
     - schemaVersion
     
     # ─────────────────────────────────────────────────────
-    # 3. NAVIGATION
+    # Priority 2: NAVIGATION & SEO (Lines 11-30)
     # ─────────────────────────────────────────────────────
     - fullPath
     - breadcrumb
-    
-    # ─────────────────────────────────────────────────────
-    # 4. SEO METADATA
-    # ─────────────────────────────────────────────────────
     - pageTitle
     - pageDescription
     - metaDescription
     
     # ─────────────────────────────────────────────────────
-    # 5. CONTENT FIELDS (AI-Generated)
+    # Priority 3: TECHNICAL PROPERTIES
     # ─────────────────────────────────────────────────────
-    - micro
-    - faq
-    
-    # ─────────────────────────────────────────────────────
-    # 6. IMAGES & MEDIA
-    # ─────────────────────────────────────────────────────
-    - images
-    
-    # ─────────────────────────────────────────────────────
-    # 7. AUTHOR INFORMATION
-    # ─────────────────────────────────────────────────────
-    - author
-    
-    # ─────────────────────────────────────────────────────
-    # 8. DOMAIN-SPECIFIC FIELDS
-    # ─────────────────────────────────────────────────────
-    - subcategory
     - characteristics
     - properties
     - components
     - contamination
     
     # ─────────────────────────────────────────────────────
-    # 9. CARD DISPLAY METADATA
+    # Priority 4: CONTENT FIELDS (AI-Generated)
     # ─────────────────────────────────────────────────────
-    - card
+    - micro
+    - faq
     
     # ─────────────────────────────────────────────────────
-    # 10. RELATIONSHIPS (Last Section - includes applications, regulatory_standards)
+    # Priority 5: MEDIA ASSETS
+    # ─────────────────────────────────────────────────────
+    - images
+    
+    # ─────────────────────────────────────────────────────
+    # Priority 6: RELATIONSHIPS
     # ─────────────────────────────────────────────────────
     - relationships
-  
-  required_fields:
-    - id
-    - name
+    
+    # ─────────────────────────────────────────────────────
+    # Priority 7: COMPLEX OBJECTS (End)
+    # ─────────────────────────────────────────────────────
+    - author
+    - card
     - category
     - contentType
     - author
