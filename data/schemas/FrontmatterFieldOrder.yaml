@@ -64,7 +64,6 @@ base_fields:
     - breadcrumb
   
   seo_metadata:
-    - pageTitle
     - pageDescription
     - metaDescription
   
@@ -99,65 +98,6 @@ base_fields:
   
   card_metadata:
     - card
-  field_order:
-    # ─────────────────────────────────────────────────────
-    # 1. IDENTITY & CLASSIFICATION
-    # ─────────────────────────────────────────────────────
-    - id
-    - name
-    - Priority 1: CRITICAL ROUTING (First 10 lines)
-    # ─────────────────────────────────────────────────────
-    - id
-    - name
-    - displayName
-    - category
-    - subcategory
-    - datePublished
-    - dateModified
-    - contentType
-    - schemaVersion
-    
-    # ─────────────────────────────────────────────────────
-    # Priority 2: NAVIGATION & SEO (Lines 11-30)
-    # ─────────────────────────────────────────────────────
-    - fullPath
-    - breadcrumb
-    - pageTitle
-    - pageDescription
-    - metaDescription
-    
-    # ─────────────────────────────────────────────────────
-    # Priority 3: TECHNICAL PROPERTIES
-    # ─────────────────────────────────────────────────────
-    - characteristics
-    - properties
-    - components
-    - contamination
-    
-    # ─────────────────────────────────────────────────────
-    # Priority 4: CONTENT FIELDS (AI-Generated)
-    # ─────────────────────────────────────────────────────
-    - micro
-    - faq
-    
-    # ─────────────────────────────────────────────────────
-    # Priority 5: MEDIA ASSETS
-    # ─────────────────────────────────────────────────────
-    - images
-    
-    # ─────────────────────────────────────────────────────
-    # Priority 6: RELATIONSHIPS
-    # ─────────────────────────────────────────────────────
-    - relationships
-    
-    # ─────────────────────────────────────────────────────
-    # Priority 7: COMPLEX OBJECTS (End)
-    # ─────────────────────────────────────────────────────
-    - author
-    - card
-    - category
-    - contentType
-    - author
 
 # =============================================================================
 # CONTAMINANTS DOMAIN
@@ -188,7 +128,6 @@ contaminants:
     # ─────────────────────────────────────────────────────
     # 4. SEO METADATA
     # ─────────────────────────────────────────────────────
-    - pageTitle
     - pageDescription
     - metaDescription
     
@@ -264,7 +203,6 @@ compounds:
     # ─────────────────────────────────────────────────────
     # 4. SEO METADATA
     # ─────────────────────────────────────────────────────
-    - pageTitle
     - pageDescription
     - metaDescription
     
@@ -350,7 +288,6 @@ settings:
     # ─────────────────────────────────────────────────────
     # 4. SEO METADATA
     # ─────────────────────────────────────────────────────
-    - pageTitle
     - pageDescription
     - metaDescription
     
