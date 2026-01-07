@@ -425,23 +425,28 @@ class TestCamelCaseEdgeCases:
         assert result['emoji_field'] == '🔥'  # Domain field preserved
     
     def test_very_long_field_name(self, generator):
-        """Test conversion of very long field names."""
-        long_name = '_'.join([f'part{i}' for i in range(20)])
-        input_dict = {long_name: 'value'}
+        """Test handling of very long field names."""
+        # Only software fields are converted
+        input_dict = {
+            'schema_version': '5.0.0',
+            'very_long_domain_field_name': 'value'
+        }
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
-        # Should have camelCase version
-        expected_name = 'part0' + ''.join([f'Part{i}' for i in range(1, 20)])
-        assert expected_name in result
-        assert result[expected_name] == 'value'
+        # Software field converted
+        assert 'schemaVersion' in result
+        assert result['schemaVersion'] == '5.0.0'
+        # Domain field preserved
+        assert 'very_long_domain_field_name' in result
+        assert result['very_long_domain_field_name'] == 'value'
     
     def test_circular_reference_prevention(self, generator):
         """Test that circular references don't cause infinite loops."""
         # Note: This test verifies the function doesn't crash with circular refs
         # (though in practice, YAML serialization would prevent these)
         input_dict = {
-            'field_name': 'value',
+            'page_title': 'value',  # Software field
             'nested': {}
         }
         # Don't actually create circular ref (would break YAML anyway)
@@ -449,28 +454,37 @@ class TestCamelCaseEdgeCases:
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
-        assert 'fieldName' in result
+        assert 'pageTitle' in result
         assert 'nested' in result
     
     def test_large_dictionary(self, generator):
         """Test performance with large dictionary (1000+ fields)."""
-        input_dict = {f'field_{i}': f'value_{i}' for i in range(1000)}
+        # Mix of software and domain fields
+        input_dict = {
+            'content_type': 'material',
+            'schema_version': '5.0.0',
+            **{f'field_{i}': f'value_{i}' for i in range(998)}  # Domain fields
+        }
         
         result = generator._task_camelcase_normalization(input_dict, {})
         
         assert len(result) == 1000
-        assert 'field500' in result
-        assert result['field500'] == 'value_500'
+        # Software fields converted
+        assert 'contentType' in result
+        assert 'schemaVersion' in result
+        # Domain fields preserved as snake_case
+        assert 'field_500' in result
+        assert result['field_500'] == 'value_500'
     
     def test_config_parameter_ignored(self, generator):
         """Test that the config parameter (required by task interface) doesn't affect conversion."""
-        input_dict = {'field_name': 'value'}
+        input_dict = {'page_title': 'value'}
         
         result1 = generator._task_camelcase_normalization(input_dict, {})
         result2 = generator._task_camelcase_normalization(input_dict, {'some_config': 'value'})
         
         assert result1 == result2
-        assert 'fieldName' in result1
+        assert 'pageTitle' in result1
 
 
 if __name__ == '__main__':

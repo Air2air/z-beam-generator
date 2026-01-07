@@ -645,7 +645,7 @@ class ContentGenerator(BaseGenerator):
             'content_type': 'contentType',
             'schema_version': 'schemaVersion',
             'full_path': 'fullPath',
-
+            'page_title': 'pageTitle',
             'meta_description': 'metaDescription',
             'page_description': 'pageDescription',
             'date_published': 'datePublished',
