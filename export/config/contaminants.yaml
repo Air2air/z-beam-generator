@@ -119,6 +119,10 @@ generators:
   # NEW (Jan 5, 2026): Regenerate export metadata removed from source
  (schemaVersion, contentType, fullPath, breadcrumb, timestamps)
   # ALLOWED: Format-only transformation tasks
+  - type: export_metadata
+    domain: contaminants
+    schema_version: "5.0.0"
+    description: Add presentation fields (pageTitle for frontend compatibility)
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
   # NOTE (Jan 5, 2026): section_metadata task removed - _section metadata now exists in source data

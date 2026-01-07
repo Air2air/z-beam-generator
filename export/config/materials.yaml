@@ -50,15 +50,20 @@ section_metadata:
 id_field: id
 generators:
 # Core Principle 0.6 Compliance (Jan 7, 2026):
-# ALL data complete in source - export ONLY transforms format
+# ALL data complete in source - export adds presentation fields only
 # Phase 1 (Jan 6): Backfilled all 438 items with fullPath, breadcrumb, metaDescription
 # Phase 2 (Jan 7): Generation layer adds metadata to NEW items via enrich_on_save()
-# Phase 3 (Jan 7): Removed export_metadata task - data now in source
+# Phase 3 (Jan 7): Export adds presentation fields (pageTitle for frontend compatibility)
 - type: universal_content
   module: export.generation.universal_content_generator
   class: UniversalContentGenerator
   tasks:
-  # TRANSFORM-ONLY tasks (no data creation)
+  # Presentation fields (frontend compatibility)
+  - type: export_metadata
+    domain: materials
+    schema_version: "5.0.0"
+    description: Add presentation fields (pageTitle for frontend)
+  # TRANSFORM-ONLY tasks
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields (legacy data only)
   - type: field_ordering
