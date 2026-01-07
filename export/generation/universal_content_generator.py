@@ -164,9 +164,8 @@ class ContentGenerator(BaseGenerator):
         }
         frontmatter['contentType'] = content_type_map.get(domain, domain.rstrip('s'))
         
-        # 3. pageTitle (for frontend compatibility - different from displayName)
-        if not frontmatter.get('pageTitle'):
-            frontmatter['pageTitle'] = frontmatter.get('title') or frontmatter.get('name') or frontmatter.get('id', '').replace('-', ' ').title()
+        # 3. schemaVersion
+        frontmatter['schemaVersion'] = schema_version
         
         # 4. metaDescription (from micro.before or description)
         if not frontmatter.get('metaDescription'):
@@ -183,7 +182,7 @@ class ContentGenerator(BaseGenerator):
                 frontmatter['metaDescription'] = f"{name} laser cleaning guide. Technical specifications and applications."
         
         # 5. pageDescription (preserved from source - already in source data)
-        # Note: pageDescription is now stored in source YAML files, not generated
+        # Note: pageDescription and pageTitle are now stored in source YAML files, not generated
         
         # 6. fullPath (from category/subcategory/id)
         if not frontmatter.get('fullPath'):

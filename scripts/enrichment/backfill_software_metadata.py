@@ -9,6 +9,7 @@ DATE: January 6, 2026
 FIELDS ADDED:
 - contentType: 'material' | 'contaminant' | 'compound' | 'setting'
 - schemaVersion: '5.0.0'
+- pageTitle: Page title for frontend (from title or name)
 - fullPath: '/materials/metal/aluminum-laser-cleaning'
 - breadcrumb: [{label, href}, ...]
 - metaDescription: Generated from micro/description
@@ -148,7 +149,15 @@ class SoftwareMetadataBackfiller:
             fields_added += 1
             print(f"  + fullPath: {item_data['fullPath']}")
         
-        # 4. breadcrumb
+        # 4. pageTitle (for frontend compatibility)
+        if 'pageTitle' not in item_data:
+            # Use title if available, otherwise name
+            page_title = item_data.get('title') or item_data.get('name') or item_data.get('id', '').replace('-', ' ').title()
+            item_data['pageTitle'] = page_title
+            fields_added += 1
+            print(f"  + pageTitle: {page_title}")
+        
+        # 5. breadcrumb
         if 'breadcrumb' not in item_data:
             item_data['breadcrumb'] = self.generate_breadcrumbs(item_data, domain)
             fields_added += 1

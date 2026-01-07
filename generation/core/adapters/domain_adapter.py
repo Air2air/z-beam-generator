@@ -809,6 +809,7 @@ class DomainAdapter(DataSourceAdapter):
         
         Fields added (if missing):
         - fullPath: Generated from category/subcategory/id
+        - pageTitle: Page title for frontend (from title or name)
         - breadcrumb: Navigation hierarchy array
         - metaDescription: SEO description from micro/description
         - dateModified: Current timestamp
@@ -836,7 +837,14 @@ class DomainAdapter(DataSourceAdapter):
             item_data['fullPath'] = '/' + '/'.join(path_parts)
             logger.debug(f"  + fullPath: {item_data['fullPath']}")
         
-        # 2. breadcrumb (from category hierarchy)
+        # 2. pageTitle (for frontend compatibility)
+        if 'pageTitle' not in item_data:
+            # Use title if available, otherwise name
+            page_title = item_data.get('title') or item_data.get('name') or identifier.replace('-', ' ').title()
+            item_data['pageTitle'] = page_title
+            logger.debug(f"  + pageTitle: {page_title}")
+        
+        # 3. breadcrumb (from category hierarchy)
         if 'breadcrumb' not in item_data:
             breadcrumbs = [{'label': 'Home', 'href': '/'}]
             
@@ -871,7 +879,7 @@ class DomainAdapter(DataSourceAdapter):
             item_data['breadcrumb'] = breadcrumbs
             logger.debug(f"  + breadcrumb: {len(breadcrumbs)} levels")
         
-        # 3. metaDescription (from micro or description)
+        # 4. metaDescription (from micro or description)
         if 'metaDescription' not in item_data:
             # Try micro.before first
             if isinstance(item_data.get('micro'), dict):
@@ -891,7 +899,7 @@ class DomainAdapter(DataSourceAdapter):
             
             logger.debug(f"  + metaDescription: {len(item_data['metaDescription'])} chars")
         
-        # 4. datePublished (preserve existing or use current)
+        # 5. datePublished (preserve existing or use current)
         if 'datePublished' not in item_data:
             # Check for legacy metadata.created_date
             metadata = item_data.get('metadata', {})
@@ -901,7 +909,7 @@ class DomainAdapter(DataSourceAdapter):
                 item_data['datePublished'] = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z')
             logger.debug(f"  + datePublished: {item_data['datePublished']}")
         
-        # 5. dateModified (always update to current)
+        # 6. dateModified (always update to current)
         item_data['dateModified'] = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z')
         logger.debug(f"  + dateModified: {item_data['dateModified']}")
         
