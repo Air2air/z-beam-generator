@@ -334,6 +334,11 @@ class DomainAdapter(DataSourceAdapter):
         items[identifier] = enrich_for_generation(items[identifier], identifier, self.domain)
         logger.info(f"✅ Generation-time enrichment complete for {identifier}")
         
+        # PHASE 2 (Jan 7, 2026): Add complete software metadata at generation time
+        logger.info(f"🔧 Adding software metadata for {identifier}...")
+        items[identifier] = self.enrich_on_save(items[identifier], identifier)
+        logger.info(f"✅ Software metadata complete for {identifier}")
+        
         # Atomic write with temp file
         with tempfile.NamedTemporaryFile(
             mode='w',
@@ -794,4 +799,110 @@ class DomainAdapter(DataSourceAdapter):
             logger.error(f"❌ Error enriching author field: {e}")
             import traceback
             logger.error(traceback.format_exc())
-            return author_field  # Return original on error
+            return author_field  # Return original on error    
+    def enrich_on_save(self, item_data: Dict[str, Any], identifier: str) -> Dict[str, Any]:
+        """
+        Add complete software metadata to item before saving to source YAML.
+        
+        PHASE 2 IMPLEMENTATION (Jan 7, 2026):
+        Ensures NEW items generated after Jan 7, 2026 have complete metadata in source.
+        
+        Fields added (if missing):
+        - fullPath: Generated from category/subcategory/id
+        - breadcrumb: Navigation hierarchy array
+        - metaDescription: SEO description from micro/description
+        - dateModified: Current timestamp
+        - datePublished: Preserved or current timestamp
+        
+        Args:
+            item_data: Item data dict to enrich
+            identifier: Item ID (e.g., 'aluminum-laser-cleaning')
+            
+        Returns:
+            Enriched item data with complete software metadata
+            
+        Compliance: Core Principle 0.6 - Maximum Formatting at Source
+        """
+        from datetime import datetime
+        
+        # 1. fullPath (from category/subcategory/id)
+        if 'fullPath' not in item_data:
+            path_parts = [self.domain]
+            if item_data.get('category'):
+                path_parts.append(item_data['category'])
+            if item_data.get('subcategory'):
+                path_parts.append(item_data['subcategory'])
+            path_parts.append(identifier)
+            item_data['fullPath'] = '/' + '/'.join(path_parts)
+            logger.debug(f"  + fullPath: {item_data['fullPath']}")
+        
+        # 2. breadcrumb (from category hierarchy)
+        if 'breadcrumb' not in item_data:
+            breadcrumbs = [{'label': 'Home', 'href': '/'}]
+            
+            # Add domain breadcrumb
+            domain_labels = {
+                'materials': 'Materials',
+                'contaminants': 'Contaminants',
+                'compounds': 'Compounds',
+                'settings': 'Settings',
+            }
+            breadcrumbs.append({
+                'label': domain_labels.get(self.domain, self.domain.title()),
+                'href': f'/{self.domain}'
+            })
+            
+            # Add category breadcrumb
+            if item_data.get('category'):
+                category = item_data['category']
+                breadcrumbs.append({
+                    'label': category.replace('-', ' ').title(),
+                    'href': f'/{self.domain}/{category}'
+                })
+                
+                # Add subcategory breadcrumb
+                if item_data.get('subcategory'):
+                    subcategory = item_data['subcategory']
+                    breadcrumbs.append({
+                        'label': subcategory.replace('-', ' ').title(),
+                        'href': f'/{self.domain}/{category}/{subcategory}'
+                    })
+            
+            item_data['breadcrumb'] = breadcrumbs
+            logger.debug(f"  + breadcrumb: {len(breadcrumbs)} levels")
+        
+        # 3. metaDescription (from micro or description)
+        if 'metaDescription' not in item_data:
+            # Try micro.before first
+            if isinstance(item_data.get('micro'), dict):
+                micro_text = item_data['micro'].get('before', '')
+                if micro_text:
+                    item_data['metaDescription'] = micro_text[:157] + '...' if len(micro_text) > 160 else micro_text
+            
+            # Try description if no micro
+            if 'metaDescription' not in item_data and item_data.get('description'):
+                desc = item_data['description']
+                item_data['metaDescription'] = desc[:157] + '...' if len(desc) > 160 else desc
+            
+            # Fallback: generic description
+            if 'metaDescription' not in item_data:
+                name = item_data.get('name', identifier)
+                item_data['metaDescription'] = f"{name} laser cleaning guide. Technical specifications and applications."
+            
+            logger.debug(f"  + metaDescription: {len(item_data['metaDescription'])} chars")
+        
+        # 4. datePublished (preserve existing or use current)
+        if 'datePublished' not in item_data:
+            # Check for legacy metadata.created_date
+            metadata = item_data.get('metadata', {})
+            if isinstance(metadata, dict) and metadata.get('created_date'):
+                item_data['datePublished'] = metadata['created_date']
+            else:
+                item_data['datePublished'] = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z')
+            logger.debug(f"  + datePublished: {item_data['datePublished']}")
+        
+        # 5. dateModified (always update to current)
+        item_data['dateModified'] = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z')
+        logger.debug(f"  + dateModified: {item_data['dateModified']}")
+        
+        return item_data
