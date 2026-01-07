@@ -164,9 +164,7 @@ class ContentGenerator(BaseGenerator):
         }
         frontmatter['contentType'] = content_type_map.get(domain, domain.rstrip('s'))
         
-        # 3. pageTitle (from name or title)
-        if not frontmatter.get('pageTitle'):
-            frontmatter['pageTitle'] = frontmatter.get('title') or frontmatter.get('name') or frontmatter.get('id', '').replace('-', ' ').title()
+
         
         # 4. metaDescription (from micro.before or description)
         if not frontmatter.get('metaDescription'):
@@ -645,7 +643,7 @@ class ContentGenerator(BaseGenerator):
             'content_type': 'contentType',
             'schema_version': 'schemaVersion',
             'full_path': 'fullPath',
-            'page_title': 'pageTitle',
+
             'meta_description': 'metaDescription',
             'page_description': 'pageDescription',
             'date_published': 'datePublished',
