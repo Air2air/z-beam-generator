@@ -52,9 +52,6 @@ generators:
   module: export.generation.universal_content_generator
   class: UniversalContentGenerator
   tasks:
-  # NEW (Jan 5, 2026): Regenerate export metadata removed from source
- (schemaVersion, contentType, fullPath, breadcrumb, timestamps)
-  # ALLOWED: Format-only transformation tasks
   - type: export_metadata
     domain: settings
     schema_version: "5.0.0"
