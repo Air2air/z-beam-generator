@@ -7,105 +7,6 @@ id_field: id
 filename_suffix: ''
 sluggify_filenames: true
 
-# Section metadata configuration (13 section types - Jan 5, 2026)
-# Per BACKEND_RELATIONSHIP_REQUIREMENTS_JAN5_2026.md: ALL sections MUST have _section metadata
-section_metadata:
-  # IDENTITY (3 sections)
-  identity.chemical_properties:
-    section_title: "Chemical Properties"
-    section_description: "Molecular formula, CAS number, molecular weight"
-    icon: atom
-    order: 60
-    variant: default
-  
-  identity.physical_properties:
-    section_title: "Physical Properties"
-    section_description: "Physical state, appearance, boiling/melting points"
-    icon: thermometer
-    order: 61
-    variant: default
-  
-  identity.synonyms_identifiers:
-    section_title: "Synonyms & Identifiers"
-    section_description: "Alternative names and chemical identifiers"
-    icon: tag
-    order: 62
-    variant: default
-  
-  # SAFETY (5 sections - health_effects renamed to health_impacts, exposure_limits renamed to exposure_guidance, ppe_requirements renamed to personal_protection, emergency_response renamed to emergency_procedures)
-  safety.health_impacts:
-    section_title: "Health Impacts"
-    section_description: "Health effects from exposure"
-    icon: heart-pulse
-    order: 20
-    variant: warning
-  
-  safety.exposure_guidance:
-    section_title: "Exposure Guidelines"
-    section_description: "OSHA PEL, NIOSH REL, ACGIH TLV limits"
-    icon: shield-alert
-    order: 21
-    variant: warning
-  
-  safety.personal_protection:
-    section_title: "Personal Protection"
-    section_description: "Required PPE and protective equipment"
-    icon: shield-check
-    order: 22
-    variant: warning
-  
-  safety.emergency_procedures:
-    section_title: "Emergency Procedures"
-    section_description: "First aid and emergency response"
-    icon: siren
-    order: 23
-    variant: danger
-  
-  safety.regulatory_classification:
-    section_title: "Regulatory Classification"
-    section_description: "OSHA hazard classification and GHS pictograms"
-    icon: file-badge
-    order: 24
-    variant: default
-  
-  # ENVIRONMENTAL (1 section)
-  environmental.environmental_impact:
-    section_title: "Environmental Impact"
-    section_description: "Environmental hazards and disposal"
-    icon: leaf
-    order: 70
-    variant: warning
-  
-  # DETECTION_MONITORING (1 section - detection.methods not detectionMonitoring.detectionMonitoring)
-  detection.methods:
-    section_title: "Detection Methods"
-    section_description: "Analytical techniques for detecting this compound"
-    icon: microscope
-    order: 80
-    variant: default
-  
-  # INTERACTIONS (3 sections)
-  interactions.produced_from_contaminants:
-    section_title: "Source Contaminants"
-    section_description: "Contaminants that generate this compound"
-    icon: droplet
-    order: 10
-    variant: default
-  
-  interactions.produced_from_materials:
-    section_title: "Source Materials"
-    section_description: "Materials that release this compound"
-    icon: box
-    order: 11
-    variant: default
-  
-  interactions.reactivity:
-    section_title: "Chemical Reactivity"
-    section_description: "Reactivity hazards and incompatibilities"
-    icon: flask-conical
-    order: 12
-    variant: warning
-
 generators:
 # Core Principle 0.6 Compliance (Jan 5, 2026):
 # ALL data enhancement tasks moved to source enrichment (scripts/enrichment/enrich_source_data.py)
@@ -125,18 +26,13 @@ generators:
     description: Organize output structure
   # normalize_expert_answers removed (Jan 5, 2026) - FAQ → expert_answers conversion
   # must happen during source data generation, not at export time (Core Principle 0.6)
-# ALLOWED: Cleanup (format transformation only)
-- type: field_cleanup
-  module: export.generation.field_cleanup_generator
-  class: FieldCleanupGenerator
-  description: Remove deprecated/temporary fields
+- type: excerpt
+  module: shared.generation.excerpt_generator
   class: ExcerptGenerator
   source_field: description
   output_field: micro
   mode: sentences
   length: 2
-# NOTE (Jan 5, 2026): section_metadata generator removed - _section metadata now exists in source data
-# Per Core Principle 0.6: No Build-Time Data Enhancement
 - type: field_order
   module: export.generation.field_order_generator
   class: FieldOrderGenerator

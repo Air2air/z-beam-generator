@@ -10,40 +10,6 @@ filename_suffix: ''
 slugify_filenames: true
 id_field: id
 
-# Section metadata configuration (4 section types - Jan 5, 2026)
-# Per BACKEND_RELATIONSHIP_REQUIREMENTS_JAN5_2026.md: ALL sections MUST have _section metadata
-section_metadata:
-  # SAFETY (1 section)
-  safety.regulatory_standards:
-    section_title: "Regulatory Standards"
-    section_description: "Safety and compliance standards"
-    icon: shield-check
-    order: 20
-    variant: default
-  
-  # INTERACTIONS (2 sections)
-  interactions.removes_contaminants:
-    section_title: "Removes Contaminants"
-    section_description: "Contamination effectively removed"
-    icon: droplet
-    order: 10
-    variant: default
-  
-  interactions.works_on_materials:
-    section_title: "Works On Materials"
-    section_description: "Compatible materials"
-    icon: box
-    order: 11
-    variant: default
-  
-  # OPERATIONAL (1 section - prevention not common_challenges)
-  operational.prevention:
-    section_title: "Common Challenges"
-    section_description: "Typical difficulties and best practices"
-    icon: alert-triangle
-    order: 40
-    variant: warning
-
 generators:
 # Core Principle 0.6 Compliance (Jan 5, 2026):
 # ALL data enhancement tasks moved to source enrichment (scripts/enrichment/enrich_source_data.py)
@@ -61,11 +27,6 @@ generators:
   - type: field_ordering
     domain: settings
     description: Organize output structure
-# ALLOWED: Cleanup and ordering (format transformation only)
-- type: field_cleanup
-  module: export.generation.field_cleanup_generator
-  class: FieldCleanupGenerator
-  description: Remove deprecated/temporary fields
 - type: field_order
   module: export.generation.field_order_generator
   class: FieldOrderGenerator
