@@ -1,0 +1,166 @@
+# Section Display Metadata Schema
+# Defines icon, order, and variant for all section types
+# Used during content generation to populate _section.sectionMetadata
+# 
+# Core Principle 0.6 Compliance:
+# - This schema is referenced during GENERATION (when creating sections)
+# - Display metadata is saved to source YAML at creation time
+# - Export reads from source data, NOT from this schema
+
+sections:
+  # INTERACTIONS GROUP
+  interactions.contaminatedBy:
+    icon: droplet
+    order: 10
+    variant: default
+    description: "Common contaminants found on this material"
+  
+  interactions.producedByMaterials:
+    icon: layers
+    order: 11
+    variant: default
+    description: "Materials that produce this contaminant during processing"
+  
+  interactions.producedFromContaminants:
+    icon: box
+    order: 12
+    variant: default
+    description: "Contaminants that produce this compound"
+  
+  interactions.relatedContaminants:
+    icon: link
+    order: 13
+    variant: default
+    description: "Related contamination patterns"
+  
+  interactions.relatedCompounds:
+    icon: atom
+    order: 14
+    variant: default
+    description: "Related chemical compounds"
+  
+  interactions.reactivity:
+    icon: zap
+    order: 15
+    variant: default
+    description: "Chemical reactivity and interactions"
+  
+  # SAFETY GROUP
+  safety.regulatoryStandards:
+    icon: shield-check
+    order: 20
+    variant: default
+    description: "OSHA, ANSI, and ISO compliance requirements"
+  
+  safety.healthEffects:
+    icon: heart-pulse
+    order: 21
+    variant: warning
+    description: "Health hazards and exposure effects"
+  
+  safety.ppeRequirements:
+    icon: hard-hat
+    order: 22
+    variant: default
+    description: "Personal protective equipment needed"
+  
+  safety.emergencyResponse:
+    icon: ambulance
+    order: 23
+    variant: danger
+    description: "Emergency procedures and first aid"
+  
+  safety.exposureLimits:
+    icon: gauge
+    order: 24
+    variant: warning
+    description: "Occupational exposure limits"
+  
+  safety.storageRequirements:
+    icon: warehouse
+    order: 25
+    variant: default
+    description: "Safe storage conditions"
+  
+  safety.regulatoryClassification:
+    icon: file-badge
+    order: 26
+    variant: default
+    description: "Regulatory classification and hazard codes"
+  
+  # OPERATIONAL GROUP
+  operational.industryApplications:
+    icon: briefcase
+    order: 40
+    variant: default
+    description: "Industries and sectors where commonly used"
+  
+  operational.commonChallenges:
+    icon: alert-triangle
+    order: 41
+    variant: default
+    description: "Typical difficulties and solutions"
+  
+  operational.removalMethods:
+    icon: tool
+    order: 42
+    variant: default
+    description: "Effective cleaning and removal techniques"
+  
+  operational.detectionMethods:
+    icon: search
+    order: 43
+    variant: default
+    description: "Methods to detect and identify presence"
+  
+  operational.preventionStrategies:
+    icon: shield
+    order: 44
+    variant: default
+    description: "How to prevent formation or contamination"
+  
+  # ENVIRONMENTAL GROUP
+  environmental.environmentalImpact:
+    icon: leaf
+    order: 50
+    variant: default
+    description: "Environmental effects and disposal considerations"
+  
+  # VISUAL GROUP
+  visual.appearanceVariations:
+    icon: eye
+    order: 60
+    variant: default
+    description: "Visual characteristics and variations"
+  
+  # IDENTITY GROUP
+  identity.chemicalProperties:
+    icon: flask
+    order: 70
+    variant: default
+    description: "Chemical composition and properties"
+  
+  identity.physicalProperties:
+    icon: thermometer
+    order: 71
+    variant: default
+    description: "Physical characteristics and behavior"
+  
+  identity.synonymsIdentifiers:
+    icon: tag
+    order: 72
+    variant: default
+    description: "Alternative names and identifiers"
+  
+  # DETECTION_MONITORING GROUP
+  detectionMonitoring.detectionMonitoring:
+    icon: radar
+    order: 80
+    variant: default
+    description: "Detection and monitoring methods"
+
+# Default values for undefined sections
+defaults:
+  icon: circle-help
+  order: 999
+  variant: default
