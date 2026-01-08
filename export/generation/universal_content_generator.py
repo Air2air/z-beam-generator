@@ -464,8 +464,9 @@ class ContentGenerator(BaseGenerator):
                 if not metadata:
                     metadata = default_metadata.get(section_key)
                 
-                # ADD _section metadata to section (ALWAYS - overwrite if exists)
-                if metadata:
+                # ONLY ADD _section metadata if missing from source (respect source data)
+                # Per Core Principle 0.6: Maximum data population at source
+                if metadata and '_section' not in section_data:
                     # Using camelCase naming per backend requirements
                     section_data['_section'] = {
                         'sectionTitle': metadata.get('section_title', section_key.replace('_', ' ').title()),
@@ -858,7 +859,15 @@ class ContentGenerator(BaseGenerator):
         """
         Transform FAQ data to unified collapsible structure.
         
-        Reads 'faq' field from frontmatter, enriches with author expertise,
+        🚨 GRANDFATHER CLAUSE (Jan 5, 2026):
+        This task enriches FAQ data during export for PRE-JAN 5 2026 content.
+        NEW content (after Jan 5, 2026) MUST be generated in complete collapsible format
+        at source with ALL metadata (expertInfo, severity, etc.) included during generation.
+        
+        Per Core Principle 0.6: Maximum data population at source.
+        This normalization exists ONLY for legacy data migration.
+        
+        Reads 'faq' field (simple list format) from frontmatter, enriches with author expertise,
         and creates a collapsible expert_answers section following the unified pattern:
         - title: Question text (what you see when collapsed)
         - content: Answer text (what you see when expanded)
