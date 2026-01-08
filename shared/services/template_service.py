@@ -22,7 +22,7 @@ import logging
 from functools import lru_cache
 from typing import Dict, Optional
 
-from shared.validation.errors import ConfigurationError
+from shared.exceptions import ConfigurationError
 
 logger = logging.getLogger(__name__)
 

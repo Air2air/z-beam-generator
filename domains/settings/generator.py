@@ -22,7 +22,7 @@ from typing import Any, Dict, Optional
 import yaml
 
 from export.core.base_generator import BaseFrontmatterGenerator, GenerationContext
-from shared.validation.errors import ConfigurationError, GenerationError
+from shared.exceptions import ConfigurationError, GenerationError
 
 logger = logging.getLogger(__name__)
 

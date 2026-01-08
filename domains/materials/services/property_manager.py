@@ -41,7 +41,8 @@ from export.qualitative_properties import (
 )
 
 # from domains.materials.research.unified_material_research import UnifiedMaterialResearch
-from shared.validation.errors import ConfigurationError, PropertyDiscoveryError
+from shared.exceptions import ConfigurationError
+from shared.validation.errors import PropertyDiscoveryError
 from shared.validation.helpers.unit_converter import UnitConverter
 
 logger = logging.getLogger(__name__)

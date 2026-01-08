@@ -28,7 +28,8 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
 
 # Import validation results and errors
-from shared.validation.errors import ErrorSeverity, ValidationError, ValidationResult
+from shared.exceptions import ValidationError
+from shared.validation.errors import ErrorSeverity, ValidationResult
 
 # Lazy imports to avoid circular dependencies - services imported at runtime
 

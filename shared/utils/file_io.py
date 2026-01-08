@@ -22,7 +22,7 @@ from typing import Any, Dict, List
 
 import yaml
 
-from shared.validation.errors import ConfigurationError
+from shared.exceptions import ConfigurationError
 
 logger = logging.getLogger(__name__)
 

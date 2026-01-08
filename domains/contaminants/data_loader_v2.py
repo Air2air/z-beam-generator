@@ -129,7 +129,7 @@ class ContaminantsDataLoader(BaseDataLoader):
         patterns = self.load_patterns()
         
         if pattern_id not in patterns:
-            from shared.validation.errors import ConfigurationError
+            from shared.exceptions import ConfigurationError
             available = list(patterns.keys())[:10]  # Show first 10
             raise ConfigurationError(
                 f"Pattern '{pattern_id}' not found in Contaminants.yaml. "
@@ -202,7 +202,7 @@ class ContaminantsDataLoader(BaseDataLoader):
         """
         pattern_data = self.get_pattern(pattern_id, resolve_author=False)
         
-        from shared.validation.errors import ConfigurationError
+        from shared.exceptions import ConfigurationError
         
         laser_props = pattern_data.get('laser_properties', {})
         if not laser_props:
@@ -212,7 +212,7 @@ class ContaminantsDataLoader(BaseDataLoader):
         
         optical = laser_props.get('optical_properties', {})
         if not optical:
-            from shared.validation.errors import ConfigurationError
+            from shared.exceptions import ConfigurationError
             raise ConfigurationError(
                 f"Pattern '{pattern_id}' has no optical_properties in laser_properties"
             )
@@ -236,14 +236,14 @@ class ContaminantsDataLoader(BaseDataLoader):
         
         laser_props = pattern_data.get('laser_properties', {})
         if not laser_props:
-            from shared.validation.errors import ConfigurationError
+            from shared.exceptions import ConfigurationError
             raise ConfigurationError(
                 f"Pattern '{pattern_id}' has no laser_properties section"
             )
         
         params = laser_props.get('recommended_parameters', {})
         if not params:
-            from shared.validation.errors import ConfigurationError
+            from shared.exceptions import ConfigurationError
             raise ConfigurationError(
                 f"Pattern '{pattern_id}' has no recommended_parameters in laser_properties"
             )
@@ -267,14 +267,14 @@ class ContaminantsDataLoader(BaseDataLoader):
         
         laser_props = pattern_data.get('laser_properties', {})
         if not laser_props:
-            from shared.validation.errors import ConfigurationError
+            from shared.exceptions import ConfigurationError
             raise ConfigurationError(
                 f"Pattern '{pattern_id}' has no laser_properties section"
             )
         
         safety = laser_props.get('safety_considerations', {})
         if not safety:
-            from shared.validation.errors import ConfigurationError
+            from shared.exceptions import ConfigurationError
             raise ConfigurationError(
                 f"Pattern '{pattern_id}' has no safety_considerations in laser_properties"
             )

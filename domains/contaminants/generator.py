@@ -23,7 +23,7 @@ import yaml
 
 from export.core.base_generator import BaseFrontmatterGenerator, GenerationContext
 from shared.generators.component_generators import ComponentResult
-from shared.validation.errors import ConfigurationError, GenerationError
+from shared.exceptions import ConfigurationError, GenerationError
 
 logger = logging.getLogger(__name__)
 

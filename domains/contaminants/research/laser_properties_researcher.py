@@ -13,7 +13,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
 from shared.api.client import GenerationRequest
-from shared.validation.errors import GenerationError
+from shared.exceptions import GenerationError
 
 logger = logging.getLogger(__name__)
 
