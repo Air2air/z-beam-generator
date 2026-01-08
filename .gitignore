@@ -150,9 +150,17 @@ nonexistent.db
 *.db.backup
 *.db.bak
 
-# TEST-ONLY: Generator repo frontmatter directory (not production)
-# Production frontmatter is at: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/
-frontmatter/
+# Frontmatter YAML files (Generated Output - Layer 3)
+# Per FRONTMATTER_SOURCE_OF_TRUTH_POLICY.md: These are READ-ONLY generated files
+# NEVER edit directly - all changes must be made in source data (Layer 1) or export config (Layer 2)
 
-# Z-Beam production repository (sibling directory)
-../z-beam/
+# Local frontmatter directory (test/development only)
+frontmatter/
+frontmatter/**/*.yaml
+frontmatter/**/*.yml
+
+# Production frontmatter in sibling z-beam repository
+# Path: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/
+../z-beam/frontmatter/
+../z-beam/frontmatter/**/*.yaml
+../z-beam/frontmatter/**/*.yml
