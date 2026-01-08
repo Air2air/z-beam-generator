@@ -86,12 +86,18 @@ class MaterialsDataLoader(BaseDataLoader):
         # Materials.yaml should have 'materials' or 'categories' key
         return 'materials' in data or 'categories' in data
     
-    def load_materials(self) -> Dict[str, Any]:
+    def load_materials(self, include_machine_settings: bool = False) -> Dict[str, Any]:
         """
-        Load Materials.yaml without merging settings.
+        Load Materials.yaml with optional machine settings merge.
         
-        machineSettings remain in the Settings domain as separate data.
+        By default, machineSettings remain in the Settings domain as separate data.
         Materials contain only material properties and metadata.
+        
+        For dataset generation (Materials + Settings cross-domain dataset), use
+        include_machine_settings=True to merge Settings.yaml data.
+        
+        Args:
+            include_machine_settings: If True, merge machineSettings from Settings.yaml
         
         Returns:
             Dict with 'materials', 'category_metadata', 'material_index', etc.
@@ -99,16 +105,24 @@ class MaterialsDataLoader(BaseDataLoader):
         Raises:
             ConfigurationError: If file cannot be loaded
         """
+        # Use different cache keys for merged vs non-merged
+        cache_key = 'materials_yaml_with_settings' if include_machine_settings else 'materials_yaml'
+        
         # Check cache first
-        cached = cache_manager.get('materials', 'materials_yaml')
+        cached = cache_manager.get('materials', cache_key)
         if cached:
             return cached
         
-        # Load materials data (no merge with Settings)
+        # Load materials data
         data = self._load_yaml_file(self.materials_file)
         
+        # Optionally merge settings for dataset generation
+        if include_machine_settings:
+            settings_data = read_yaml_file(self.settings_file)
+            data = self._merge_machine_settings(data, settings_data)
+        
         # Cache and return (1 hour TTL)
-        cache_manager.set('materials', 'materials_yaml', data, ttl=3600)
+        cache_manager.set('materials', cache_key, data, ttl=3600)
         
         return data
     
@@ -137,8 +151,8 @@ class MaterialsDataLoader(BaseDataLoader):
             # Find matching settings
             if settings_slug in settings:
                 setting_data = settings[settings_slug]
-                # Merge machineSettings into material (camelCase for consistency with validator)
-                material_data['machineSettings'] = setting_data.get('machineSettings', {})
+                # Merge machineSettings into material as machine_settings (snake_case for dataset validator)
+                material_data['machine_settings'] = setting_data.get('machineSettings', {})
                 merged_count += 1
         
         logger.info(f"Merged machineSettings into {merged_count}/{len(materials)} materials")

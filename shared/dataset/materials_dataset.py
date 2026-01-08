@@ -70,12 +70,12 @@ class MaterialsDataset(BaseDataset):
     
     def _load_yaml(self) -> Dict[str, Any]:
         """
-        Load Materials.yaml.
+        Load Materials.yaml with machineSettings merged (for dataset generation).
         
         Returns:
-            Parsed materials data
+            Parsed materials data with machineSettings from Settings.yaml
         """
-        return self.loader.load_materials()
+        return self.loader.load_materials(include_machine_settings=True)
     
     def _get_dataset_type(self) -> str:
         """Return dataset type for materials."""
@@ -241,11 +241,12 @@ class MaterialsDataset(BaseDataset):
             return {}
         
         # Map YAML keys to specification keys (try multiple variants)
+        # Settings.yaml already uses correct camelCase names (laserPower, frequency, etc.)
         key_mapping = {
-            'laserPower': ['power', 'powerRange'],
+            'laserPower': ['laserPower', 'power', 'powerRange'],  # Try direct match first
             'wavelength': ['wavelength'],
             'spotSize': ['spotSize', 'spot_size'],
-            'frequency': ['repetitionRate', 'repetition_rate'],
+            'frequency': ['frequency', 'repetitionRate', 'repetition_rate'],  # Try direct match first
             'pulseWidth': ['pulseWidth', 'pulse_width'],
             'scanSpeed': ['scanSpeed', 'scan_speed'],
             'passCount': ['passCount', 'pass_count'],
