@@ -1,32 +1,5 @@
-# Context Environment Research Prompt
+WORD COUNT: 15 words
 
-## Context
-Generate environmental context metadata for {{contaminant_name}} contamination occurrence.
+CONTEXT: Generate environmental context metadata for {{contaminant_name}} contamination. Research where {{contaminant_name}} typically appears.
 
-## Task
-Research where {{contaminant_name}} typically forms and which environments it's most common in. Analyze:
-
-1. Indoor vs outdoor occurrence
-2. Industrial settings prevalence
-3. Marine/coastal exposure patterns
-4. Temperature/humidity conditions
-
-WORD LENGTH: 10-30 words (structured metadata only)
-
-## Output Format
-Provide ONLY a structured assessment:
-```
-indoor: [high/medium/low/none]
-outdoor: [high/medium/low/none]
-industrial: [high/medium/low/none]
-marine: [high/medium/low/none]
-```
-
-## Requirements
-- Research actual occurrence patterns
-- Base on environmental conditions that promote formation
-- Consider geographical and industrial factors
-- NO FALLBACKS - Research specific to this contamination
-
-## Voice Instructions
 {voice_instruction}

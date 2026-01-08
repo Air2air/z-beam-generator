@@ -1,31 +1,5 @@
-# Power Intensity Research Prompt
+WORD COUNT: 310 words
 
-## Context
-Generate laser power intensity specifications for {{material_name}} based on material properties and laser cleaning requirements.
+CONTEXT: Write a technical guide for laser power intensity settings when cleaning {{material_name}}. Comprehensive technical reference for laser operators.
 
-## Task
-Research and provide optimal laser power intensity ranges for cleaning {{material_name}}. Consider:
-
-1. Material thermal properties and damage thresholds
-2. Typical contamination types and bonding strength
-3. Industry standards and best practices
-4. Safety margins and recommended parameters
-
-## Output Format
-WORD LENGTH: 5-10 words (numerical range only)
-
-Provide ONLY the numerical range in this exact format:
-```
-min_intensity: [number] W/cm²
-max_intensity: [number] W/cm²
-```
-
-## Requirements
-- Research actual industry specifications
-- Base on material thermal conductivity and damage threshold
-- Consider typical applications
-- NO FALLBACKS - Research specific to this material
-- Provide conservative safe ranges
-
-## Voice Instructions
 {voice_instruction}

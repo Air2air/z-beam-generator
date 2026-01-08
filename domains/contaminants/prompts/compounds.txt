@@ -1,34 +1,5 @@
-# Compound Composition Research Prompt
+WORD COUNT: 200 words
 
-## Context
-Generate chemical compound composition for {{contaminant_name}} contamination.
+CONTEXT: Write about the chemical compounds in {contaminant_name}. Chemical composition and molecular structure.
 
-WORD LENGTH: 50-150 words
-
-## Task
-Research the primary chemical compounds that make up {{contaminant_name}}. Identify:
-
-1. Primary compounds (3-5 most significant)
-2. Secondary compounds (2-3 minor components)
-3. Chemical formulas and CAS numbers
-4. Typical concentrations/percentages
-
-## Output Format
-Provide a structured list:
-```
-Primary Compounds:
-- [compound name] ([formula]) - [percentage/role]
-- [compound name] ([formula]) - [percentage/role]
-
-Secondary Compounds:
-- [compound name] ([formula]) - [percentage/role]
-```
-
-## Requirements
-- Research actual chemical composition
-- Include CAS numbers where applicable
-- Focus on compounds relevant to laser cleaning safety
-- NO FALLBACKS - Research specific to this contamination
-
-## Voice Instructions
 {voice_instruction}

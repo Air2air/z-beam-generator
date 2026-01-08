@@ -164,7 +164,6 @@ settings:
             variant: default
             sectionMetadata: &id001
               notes: Compliance requirements
-              presentation_type: card
       interactions:
         removes_contaminants:
           presentation: card
@@ -182,7 +181,6 @@ settings:
             sectionMetadata: &id002
               notes: Cross-references to contaminant pages
               relationship_type: removes_contaminants
-              presentation_type: card
         works_on_materials:
           presentation: card
           items:
@@ -201,7 +199,6 @@ settings:
             sectionMetadata: &id003
               notes: Cross-references to material pages
               relationship_type: works_on_materials
-              presentation_type: card
       operational:
         common_challenges:
           presentation: descriptive

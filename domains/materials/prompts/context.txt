@@ -1,32 +1,5 @@
-# Context Metadata Research Prompt
+WORD COUNT: 20 words
 
-## Context
-Generate environmental context metadata for {{material_name}} laser cleaning applications.
+CONTEXT: Generate environmental context metadata for {{material_name}} laser cleaning applications. Research where {{material_name}} is typically used and cleaned with lasers.
 
-## Task
-Research where {{material_name}} is typically used and cleaned with lasers. Analyze:
-
-1. Indoor vs outdoor usage patterns
-2. Industrial settings and applications  
-3. Marine/coastal exposure likelihood
-4. Environmental conditions affecting contamination
-
-## Output Format
-WORD LENGTH: 10-30 words (structured metadata only)
-
-Provide ONLY a structured assessment in this format:
-```
-indoor: [high/medium/low]
-outdoor: [high/medium/low]
-industrial: [high/medium/low]
-marine: [high/medium/low]
-```
-
-## Requirements
-- Research actual application environments
-- Base on typical industry usage
-- Consider contamination patterns
-- NO FALLBACKS - Research specific to this material
-
-## Voice Instructions
 {voice_instruction}

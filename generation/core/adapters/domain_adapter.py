@@ -304,10 +304,12 @@ class DomainAdapter(DataSourceAdapter):
             raise ValueError(f"'{identifier}' not found in {self.data_path}")
         
         # PHASE 2: Convert to collapsible format if applicable (NEW Jan 5, 2026)
+        # Pass item data for metadata enrichment (author info, etc.)
         content_to_save = self._convert_to_collapsible_if_needed(
             content_data, 
             component_type, 
-            identifier
+            identifier,
+            items.get(identifier)  # Pass item data for author/metadata
         )
         
         # Determine target field (may differ from component_type)
@@ -387,7 +389,8 @@ class DomainAdapter(DataSourceAdapter):
         self, 
         content_data: Any, 
         component_type: str, 
-        identifier: str
+        identifier: str,
+        item_data: Optional[Dict] = None
     ) -> Any:
         """
         Convert content to collapsible format if component type requires it.
@@ -419,7 +422,7 @@ class DomainAdapter(DataSourceAdapter):
             # Check if it's FAQ format (list of Q&A dicts)
             if content_data and isinstance(content_data[0], dict) and 'question' in content_data[0]:
                 logger.info(f"🔄 Converting FAQ data to collapsible format for {identifier}")
-                return self._convert_faq_to_collapsible(content_data)
+                return self._convert_faq_to_collapsible(content_data, item_data)
             # Simple string list - could be applications or other
             else:
                 logger.debug(f"Raw list data for {component_type}, returning as-is")
@@ -428,9 +431,15 @@ class DomainAdapter(DataSourceAdapter):
         # Unknown format, return as-is
         return content_data
     
-    def _convert_faq_to_collapsible(self, faq_data: list) -> Dict[str, Any]:
+    def _convert_faq_to_collapsible(self, faq_data: list, item_data: Optional[Dict] = None) -> Dict[str, Any]:
         """
-        Convert FAQ list to unified collapsible structure.
+        Convert FAQ list to unified collapsible structure with complete metadata.
+        
+        MAXIMUM FORMATTING AT SOURCE (Jan 7, 2026):
+        Generates complete collapsible FAQ structure during generation, not during export.
+        Includes ALL metadata: expertInfo, severity, topic, acceptedAnswer.
+        
+        Per Core Principle 0.6: Maximum data population at source.
         
         Input format (from generation):
         [
@@ -438,22 +447,48 @@ class DomainAdapter(DataSourceAdapter):
             {'question': 'Q2?', 'answer': 'A2'}
         ]
         
-        Output format (collapsible):
+        Output format (collapsible with full metadata):
         {
             'presentation': 'collapsible',
             'items': [
                 {
+                    'id': 'suitable-for-industrial',
                     'title': 'Q1?',
                     'content': 'A1',
-                    'metadata': {'category': 'Technical', 'difficulty': 'intermediate'},
+                    'metadata': {
+                        'topic': 'suitable for industrial',
+                        'severity': 'medium',
+                        'acceptedAnswer': True,
+                        'expertInfo': {...}
+                    },
                     '_display': {'_open': True, 'order': 1}
                 }
-            ]
+            ],
+            'options': {'autoOpenFirst': True, 'sortBy': 'severity'}
         }
         """
         if not isinstance(faq_data, list):
             logger.warning(f"FAQ data not a list, returning as-is: {type(faq_data)}")
             return faq_data
+        
+        # Get author info for expert metadata
+        expert_info = None
+        if item_data and isinstance(item_data, dict):
+            author_data = item_data.get('author', {})
+            if author_data and isinstance(author_data, dict):
+                expert_info = {
+                    'name': author_data.get('name', ''),
+                    'title': author_data.get('title', ''),
+                    'expertise': author_data.get('expertise', [])
+                }
+        
+        # Severity keywords for classification
+        severity_keywords = {
+            'critical': ['damage', 'safety', 'hazard', 'prevent', 'fragile', 'sensitive'],
+            'high': ['suitable', 'ideal', 'restore', 'optimize', 'proper'],
+            'medium': ['effective', 'clean', 'remove', 'work', 'use'],
+            'low': ['maintain', 'typical', 'common', 'regular']
+        }
         
         items = []
         for idx, faq in enumerate(faq_data):
@@ -466,24 +501,56 @@ class DomainAdapter(DataSourceAdapter):
             if not question or not answer:
                 continue
             
-            items.append({
+            # Generate ID from question
+            faq_id = question.lower()
+            faq_id = ''.join(c if c.isalnum() or c.isspace() else '' for c in faq_id)
+            faq_id = '-'.join(faq_id.split()[:6])  # First 6 words
+            
+            # Extract topic (first few meaningful words from question)
+            topic = question.lower().replace('?', '')
+            for word in ['what', 'how', 'why', 'when', 'where', 'does', 'is', 'are', 'can']:
+                topic = topic.replace(word, '')
+            topic = ' '.join(topic.split()[:5]).strip()
+            
+            # Classify severity based on keywords in question and answer
+            text_combined = (question + ' ' + answer).lower()
+            severity = 'medium'  # default
+            for sev, keywords in severity_keywords.items():
+                if any(keyword in text_combined for keyword in keywords):
+                    severity = sev
+                    break
+            
+            # Build item with complete metadata
+            item = {
+                'id': faq_id,
                 'title': question,
                 'content': answer,
                 'metadata': {
-                    'category': 'Technical',
-                    'difficulty': 'intermediate'
+                    'topic': topic,
+                    'severity': severity,
+                    'acceptedAnswer': True
                 },
                 '_display': {
                     '_open': idx == 0,  # First item open
                     'order': idx + 1
                 }
-            })
+            }
+            
+            # Add expert info if available
+            if expert_info:
+                item['metadata']['expertInfo'] = expert_info
+            
+            items.append(item)
         
-        logger.info(f"✅ Converted {len(items)} FAQ items to collapsible format")
+        logger.info(f"✅ Converted {len(items)} FAQ items to collapsible format with full metadata")
         
         return {
             'presentation': 'collapsible',
-            'items': items
+            'items': items,
+            'options': {
+                'autoOpenFirst': True,
+                'sortBy': 'severity'
+            }
         }
     
     def _convert_applications_to_card(self, apps_data: list) -> Dict[str, Any]:

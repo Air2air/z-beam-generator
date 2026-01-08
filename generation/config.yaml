@@ -98,6 +98,29 @@ component_extraction:
 # Component Token Targets - DEPRECATED (Dec 29, 2025)
 # Word counts now in prompt files. See docs/08-development/WORD_COUNT_IN_PROMPTS_POLICY.md
 
+# Domain Configuration (Consolidated from domains/*/config.yaml - Jan 7, 2026)
+# Defines data locations and frontmatter naming for each domain
+domains:
+  materials:
+    data_path: "data/materials/Materials.yaml"
+    data_root_key: "materials"
+    frontmatter_pattern: "{slug}-laser-cleaning.yaml"
+  
+  contaminants:
+    data_path: "data/contaminants/Contaminants.yaml"
+    data_root_key: "contamination_patterns"
+    frontmatter_pattern: "{slug}-contamination.yaml"
+  
+  compounds:
+    data_path: "data/compounds/Compounds.yaml"
+    data_root_key: "compounds"
+    frontmatter_pattern: "{slug}-compound.yaml"
+  
+  settings:
+    data_path: "data/settings/Settings.yaml"
+    data_root_key: "settings"
+    frontmatter_pattern: "{slug}-settings.yaml"
+
 # Dynamic Calculation Parameters
 # Zero hardcoded values policy: All calculation factors configured here
 dynamic_calculations:

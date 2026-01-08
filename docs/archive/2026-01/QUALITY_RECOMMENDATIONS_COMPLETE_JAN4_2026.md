@@ -44,9 +44,11 @@ section_metadata:
     variant: default|warning|danger
     section_metadata:
       notes: Internal developer notes
-      presentation_type: card|collapsible
+      relationship_type: relationship_name
       features: auto_open_first (optional)
 ```
+
+Note: `presentation` (card|collapsible) is specified at the section level, not in sectionMetadata.
 
 ### Result
 - ✅ Materials: 0/4 → 4/4 (100%)

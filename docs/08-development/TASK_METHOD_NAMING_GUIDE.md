@@ -163,7 +163,7 @@ def _task_transform_faq(self, frontmatter, config):
       faq: ["Q: ...", "A: ..."]
     To:
       expert_answers:
-        presentation_type: collapsible
+        presentation: collapsible
         items: [{question: "...", answer: "..."}]
     
     Action: transform (format conversion)
