@@ -88,39 +88,27 @@ class MaterialsDataLoader(BaseDataLoader):
     
     def load_materials(self) -> Dict[str, Any]:
         """
-        Load Materials.yaml merged with Settings.yaml (per ADR 005).
+        Load Materials.yaml without merging settings.
         
-        Merges machine_settings from Settings.yaml into each material.
-        Per DATASET_SPECIFICATION.md: Materials datasets must include
-        both material properties AND machine settings.
+        machineSettings remain in the Settings domain as separate data.
+        Materials contain only material properties and metadata.
         
         Returns:
             Dict with 'materials', 'category_metadata', 'material_index', etc.
-            Each material includes 'machine_settings' field.
         
         Raises:
             ConfigurationError: If file cannot be loaded
         """
         # Check cache first
-        cached = cache_manager.get('materials', 'materials_yaml_with_settings')
+        cached = cache_manager.get('materials', 'materials_yaml')
         if cached:
             return cached
         
-        # Load materials data
+        # Load materials data (no merge with Settings)
         data = self._load_yaml_file(self.materials_file)
         
-        # Load Settings.yaml and merge (per ADR 005)
-        try:
-            settings_data = read_yaml_file(self.settings_file)
-            data = self._merge_machine_settings(data, settings_data)
-            logger.info(f"Merged machine settings from {self.settings_file}")
-        except FileNotFoundError:
-            logger.warning(f"Settings.yaml not found at {self.settings_file} - materials will not have machine_settings")
-        except Exception as e:
-            logger.error(f"Error loading Settings.yaml: {e} - continuing without machine settings")
-        
         # Cache and return (1 hour TTL)
-        cache_manager.set('materials', 'materials_yaml_with_settings', data, ttl=3600)
+        cache_manager.set('materials', 'materials_yaml', data, ttl=3600)
         
         return data
     

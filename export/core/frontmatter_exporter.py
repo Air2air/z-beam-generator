@@ -343,8 +343,10 @@ class FrontmatterExporter:
             print(f"  📊 Total: {total}\n")
         
         # Export datasets if not dry-run and domain is materials
-        if not dry_run and self.domain == 'materials' and exported_count > 0:
-            self._export_datasets(data, items, show_progress)
+        # DISABLED: Dataset generation requires machineSettings to be in Materials.yaml
+        # Currently machineSettings is in Settings domain, not Materials
+        # if not dry_run and self.domain == 'materials' and exported_count > 0:
+        #     self._export_datasets(data, items, show_progress)
         
         return results
     
