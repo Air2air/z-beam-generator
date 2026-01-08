@@ -537,12 +537,11 @@ class ContentGenerator(BaseGenerator):
         Convert software metadata fields from snake_case to camelCase.
         
         Software Metadata (camelCase): contentType, schemaVersion, fullPath, pageTitle, metaDescription, displayName
-        Domain Data (snake_case): machine_settings, chemical_formula, cas_number, exposure_limits, etc.
+        Domain Data (camelCase): machineSettings, chemicalFormula, casNumber, exposureLimits, etc.
         
         Excludes:
         - Fields starting with underscore (_section, _collapsible, _open)
-        - Domain-specific data fields (scientific, technical, regulatory)
-        - Nested fields within domain data structures
+        - Nested fields within complex data structures
         """
         logger.info("🔄 Running camelCase normalization (software metadata only)...")
         
@@ -563,37 +562,10 @@ class ContentGenerator(BaseGenerator):
             'image_height': 'imageHeight',
         }
         
-        # Domain data structures that should remain snake_case
-        DOMAIN_DATA_FIELDS = {
-            'machine_settings',
-            'chemical_formula',
-            'cas_number',
-            'molecular_weight',
-            'exposure_limits',
-            'hazard_class',
-            'detection_methods',
-            'first_aid',
-            'exposure_guidelines',
-            'health_effects',
-            'health_effects_keywords',
-            'environmental_effects',
-            'prohibited_materials',
-            'regulatory_standards',
-            'monitoring_required',
-            'typical_concentration_range',
-            'sources_in_laser_cleaning',
-            'ppe_requirements',
-            'osha_pel_ppm',
-            'osha_pel_mg_m3',
-            'niosh_rel_ppm',
-            'niosh_rel_mg_m3',
-            'acgih_tlv_ppm',
-            'acgih_tlv_mg_m3',
-            'nfpa_health',
-            'nfpa_flammability',
-            'nfpa_instability',
-            'nfpa_special',
-        }
+        # Domain data structures (now in camelCase after source normalization)
+        # These fields are no longer converted - they pass through as-is from source
+        # Empty set means all fields follow normal camelCase conversion rules
+        DOMAIN_DATA_FIELDS = set()
         
         def normalize_dict(d, is_domain_data=False):
             if not isinstance(d, dict):

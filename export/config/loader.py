@@ -21,7 +21,7 @@ Example config file (export/config/materials.yaml):
       - type: compound_linkage
         field: produces_compounds
         source: data/compounds/Compounds.yaml
-        defaults: [concentration_range, hazard_class]
+        defaults: [concentrationRange, hazardClass]
 
 Usage:
     from export.config.loader import load_domain_config

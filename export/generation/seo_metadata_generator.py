@@ -227,11 +227,11 @@ class SEOMetadataGenerator(BaseGenerator):
         """Generate title and description for compound pages."""
         if 'name' not in frontmatter:
             raise ValueError("Missing required field: name")
-        if 'hazard_class' not in frontmatter:
-            raise ValueError("Missing required field: hazard_class")
+        if 'hazardClass' not in frontmatter:
+            raise ValueError("Missing required field: hazardClass")
         name = frontmatter['name']
-        hazard_class = frontmatter['hazard_class']
-        cas_number = frontmatter.get('cas_number')
+        hazard_class = frontmatter['hazardClass']
+        cas_number = frontmatter.get('casNumber')
         
         # Infer hazard type from hazard_class
         hazard_type = self._infer_hazard_type(hazard_class, name)

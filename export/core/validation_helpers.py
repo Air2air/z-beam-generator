@@ -145,9 +145,9 @@ class ValidationHelpers:
                 logger.info("Added missing properties section")
             
             # Ensure machine settings section exists
-            if 'machine_settings' not in corrected_data:
-                corrected_data['machine_settings'] = {}
-                logger.info("Added missing machine_settings section")
+            if 'machineSettings' not in corrected_data:
+                corrected_data['machineSettings'] = {}
+                logger.info("Added missing machineSettings section")
             
             return corrected_data
             
