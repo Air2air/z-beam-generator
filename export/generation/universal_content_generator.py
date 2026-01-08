@@ -281,7 +281,7 @@ class ContentGenerator(BaseGenerator):
         relationships = frontmatter['relationships']
         modern_categories = {
             'identity', 'interactions', 'operational', 'safety',
-            'environmental', 'detection_monitoring', 'visual',
+            'environmental', 'detectionMonitoring', 'visual',
             'quality_control', 'performance'
         }
         
@@ -738,7 +738,7 @@ class ContentGenerator(BaseGenerator):
         # Modern categories (8 total after Phase 4 completion)
         modern_categories = {
             'identity', 'interactions', 'operational', 'safety',
-            'environmental', 'detection_monitoring', 'visual',
+            'environmental', 'detectionMonitoring', 'visual',
             'quality_control', 'performance'
         }
         

@@ -103,7 +103,7 @@ class MaterialsCoordinator(DomainCoordinator):
         self.logger.info(f"📊 Generating EEAT section for {material_name}")
         
         # Get regulatory_standards
-        regulatory_standards = material_data.get('regulatory_standards', [])
+        regulatory_standards = material_data.get('regulatoryStandards', [])
         
         # Filter to dict entries only (skip any legacy string entries)
         dict_standards = [

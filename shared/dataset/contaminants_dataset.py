@@ -453,7 +453,7 @@ class ContaminantsDataset(BaseDataset):
                 })
         
         # Add regulatory standards (also at root level)
-        regulatory = relationships.get('regulatory_standards', {})
+        regulatory = relationships.get('regulatoryStandards', {})
         regulatory_items = regulatory.get('items', [])
         for item in regulatory_items[:2]:  # Top 2 standards
             if isinstance(item, dict):

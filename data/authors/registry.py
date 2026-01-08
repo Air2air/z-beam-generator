@@ -27,7 +27,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
         "id": 1,
         "name": "Yi-Chun Lin",
         "country": "Taiwan",  # Title case for voice profile lookup and display
-        "country_display": "Taiwan",
+        "countryDisplay": "Taiwan",
         "title": "Ph.D.",
         "sex": "f",
         "jobTitle": "Laser Processing Engineer",
@@ -53,14 +53,14 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
             "https://linkedin.com/in/yi-chun-lin-engineer",
             "https://www.researchgate.net/profile/Yi-Chun-Lin-2"
         ],
-        "persona_file": "taiwan_persona.yaml",
+        "personaFile": "taiwan_persona.yaml",
         "formatting_file": "taiwan_formatting.yaml",
     },
     2: {
         "id": 2,
         "name": "Alessandro Moretti",
         "country": "Italy",
-        "country_display": "Italy",
+        "countryDisplay": "Italy",
         "title": "Ph.D.",
         "sex": "m",
         "jobTitle": "Materials Engineer",
@@ -88,14 +88,14 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
             "https://scholar.google.com/citations?user=def456",
             "https://linkedin.com/in/alessandro-moretti-engineer"
         ],
-        "persona_file": "italy_persona.yaml",
+        "personaFile": "italy_persona.yaml",
         "formatting_file": "italy_formatting.yaml",
     },
     3: {
         "id": 3,
         "name": "Ikmanda Roswati",
         "country": "Indonesia",
-        "country_display": "Indonesia",
+        "countryDisplay": "Indonesia",
         "title": "Ph.D.",
         "sex": "m",
         "jobTitle": "Junior Research Scientist in Laser Physics",
@@ -123,14 +123,14 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
             "https://linkedin.com/in/ikmanda-roswati-physicist",
             "https://www.academia.edu/profile/IkmandaRoswati"
         ],
-        "persona_file": "indonesia_persona.yaml",
+        "personaFile": "indonesia_persona.yaml",
         "formatting_file": "indonesia_formatting.yaml",
     },
     4: {
         "id": 4,
         "name": "Todd Dunning",
         "country": "United States",
-        "country_display": "United States",
+        "countryDisplay": "United States",
         "title": "MA",
         "sex": "m",
         "jobTitle": "Junior Optical Materials Specialist",
@@ -156,7 +156,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
             "https://linkedin.com/in/todd-dunning-optics",
             "https://spie.org/profile/Todd.Dunning"
         ],
-        "persona_file": "usa_persona.yaml",
+        "personaFile": "usa_persona.yaml",
         "formatting_file": "usa_formatting.yaml",
     },
 }
@@ -215,7 +215,7 @@ def get_persona_files(author_id: int) -> Tuple[str, str]:
         KeyError: If author_id not in registry
     """
     author = get_author(author_id)
-    return (author["persona_file"], author["formatting_file"])
+    return (author["personaFile"], author["formattingFile"])
 
 
 def validate_author_id(author_id: int) -> bool:

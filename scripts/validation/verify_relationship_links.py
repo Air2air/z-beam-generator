@@ -34,7 +34,7 @@ def check_materials_links(materials, contaminants):
     
     for material_id, material_data in materials['materials'].items():
         rel = material_data.get('relationships', {})
-        contaminated_by = rel.get('contaminated_by', [])
+        contaminatedBy = rel.get('contaminatedBy', [])
         
         for link in contaminated_by:
             total_links += 1

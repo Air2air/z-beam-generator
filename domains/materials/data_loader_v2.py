@@ -379,7 +379,7 @@ class MaterialsDataLoader(BaseDataLoader):
         
         # Load file
         data = read_yaml_file(regulatory_file)
-        standards = data.get('regulatory_standards', {})
+        standards = data.get('regulatoryStandards', {})
         
         # Cache for 1 hour
         cache_manager.set('materials', 'regulatory_content_yaml', standards, ttl=3600)

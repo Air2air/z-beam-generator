@@ -76,7 +76,7 @@ class DataEnricher:
         
         # Extract property values from nested structure
         material_props = material_data.get('properties', {})
-        material_chars = material_props.get('material_characteristics', {})
+        material_chars = material_props.get('materialCharacteristics', {})
         for prop_name, prop_data in material_chars.items():
             if isinstance(prop_data, dict) and 'value' in prop_data:
                 value = prop_data.get('value')

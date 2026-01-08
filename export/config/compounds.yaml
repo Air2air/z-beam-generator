@@ -76,7 +76,7 @@ section_metadata:
     order: 70
     variant: warning
   
-  # DETECTION_MONITORING (1 section - detection.methods not detection_monitoring.detection_monitoring)
+  # DETECTION_MONITORING (1 section - detection.methods not detectionMonitoring.detectionMonitoring)
   detection.methods:
     section_title: "Detection Methods"
     section_description: "Analytical techniques for detecting this compound"
@@ -232,7 +232,7 @@ generators:
       icon: microscope
       order: 1
       variant: default
-    detection.detection_monitoring:
+    detection.detectionMonitoring:
       presentation: card
       title: Detection & Monitoring
       description: Monitoring equipment and detection techniques
@@ -317,7 +317,7 @@ _deprecated_enrichments:
       physical_properties: physical_properties
       ppe_requirements: ppe_requirements
       environmental_impact: environmental_impact
-      detection_monitoring: detection_monitoring
+      detectionMonitoring: detectionMonitoring
     move_to_relationships:
     - chemical_properties
     - toxicity
@@ -405,7 +405,7 @@ _deprecated_enrichments:
     - emergency_response_procedures
     - incompatible_materials
     operational:
-    - detection_monitoring_methods
+    - detectionMonitoring_methods
     - control_measures
 - type: title
   module: export.generation.title_generator
