@@ -115,13 +115,11 @@ generators:
   class: UniversalContentGenerator
   tasks:
   - type: export_metadata
-    domain: compounds
-    schema_version: "5.0.0"
-    description: Add presentation fields (pageTitle for frontend compatibility)
+    description: Add ONLY export-time fields (dateModified, pageTitle if missing)
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
-  # NOTE (Jan 5, 2026): section_metadata task removed - _section metadata now exists in source data
-  # Per Core Principle 0.6: No Build-Time Data Enhancement
+  # NOTE (Jan 7, 2026): section_metadata task removed - _section metadata now exists in source data
+  # Per Core Principle 0.6: ✅ COMPLETE - Export adds ONLY export-time fields
   - type: field_ordering
     domain: compounds
     description: Organize output structure
