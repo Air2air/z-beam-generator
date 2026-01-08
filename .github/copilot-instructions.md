@@ -2980,6 +2980,142 @@ After fixing at source (Layer 1 or 2) and regenerating:
 
 ---
 
+## 🔍 **How to Investigate Deep Architectural Problems** 🔥 **NEW (Jan 7, 2026)**
+
+When you encounter complex architectural issues, use these strategies to conduct thorough investigations:
+
+### **1. Start with Observable Symptoms**
+Provide clear, measurable failure points:
+```
+"Dataset generation is failing with X error. Can you trace the complete data flow 
+from Materials.yaml → MaterialsDataLoader → MaterialsDataset → validation to find 
+where the disconnect is?"
+```
+
+### **2. Request Comparative Analysis**
+Compare implementations across subsystems:
+```
+"Compare how machineSettings are handled in:
+- Export pipeline (frontmatter_exporter.py)
+- Dataset generation (generate_datasets.py)
+- Data loading (MaterialsDataLoader)
+
+Find inconsistencies in naming conventions, data structures, or assumptions."
+```
+
+### **3. Ask for Cross-Domain Investigation**
+Trace interactions between domains:
+```
+"Trace all places where Materials and Settings domains interact. Show me:
+- Where they're merged vs kept separate
+- What each subsystem expects (camelCase vs snake_case)
+- Document the actual vs intended architecture"
+```
+
+### **4. Request Dependency Mapping**
+Get the complete call chain:
+```
+"Map the complete dependency chain for dataset generation:
+- What files are involved?
+- What does each file assume about data structure?
+- Where are the points of failure?
+- Show me the call stack with file paths and line numbers"
+```
+
+### **5. Ask for Policy Compliance Audit**
+Check documentation vs implementation:
+```
+"Check if the dataset generation architecture violates any policies in:
+- .github/copilot-instructions.md (Core Principles 0-17)
+- docs/08-development/*.md
+Show me where documented policies conflict with actual implementation."
+```
+
+### **6. Request Historical Analysis**
+Use git history for context:
+```
+"Search git history for when machineSettings merge logic was last working. 
+What changed? Show me the commits and explain why it broke."
+```
+
+### **Effective Investigation Prompt Structure**
+
+Use this template for complex problems:
+
+```
+PROBLEM: [Observable failure - error message, unexpected behavior]
+SCOPE: [Which domains/subsystems to investigate]
+GOAL: [What you need to understand or fix]
+CONSTRAINTS: [What must be preserved - architectural decisions, policies]
+EVIDENCE NEEDED: [Code paths, data flows, config files, line numbers]
+```
+
+**Example:**
+```
+PROBLEM: Dataset generation expects machine_settings but MaterialsDataLoader provides machineSettings
+SCOPE: All data loading, merging, and validation code for Materials + Settings cross-domain dataset
+GOAL: Understand the complete data transformation pipeline and find all case mismatches
+CONSTRAINTS: Must preserve domain separation (Materials ≠ Settings) per commit 9454c764
+EVIDENCE NEEDED: Show me every file that touches this data, trace the key names through each transformation
+```
+
+### **What Makes Investigations Effective**
+
+✅ **DO:**
+- Ask for file paths and line numbers
+- Request code examples from actual files  
+- Ask to trace specific variables/keys through transformations
+- Request comparison of multiple implementations
+- Ask for architectural diagrams in text form
+- Request policy compliance checks
+- Provide commit hashes for recent changes
+- Include context about what you've already tried
+
+❌ **AVOID:**
+- Vague questions like "Why isn't this working?"
+- Asking to "fix everything" without scope
+- Questions without context
+- Assuming AI knows recent changes without providing them
+- Single-file focus when problem is architectural
+- Missing the big picture by only looking at symptoms
+
+### **Investigation Example: Data Flow Tracing**
+
+**Instead of:** "Why is dataset generation failing?"
+
+**Ask:**
+```
+"We have a Materials + Settings cross-domain dataset architecture issue:
+
+CURRENT STATE:
+- MaterialsDataLoader.load_materials() has include_machine_settings flag
+- When True, merges Settings.yaml into Materials.yaml for dataset generation
+- Recent commit 9454c764 separated domains for frontmatter export
+
+PROBLEM:
+- Dataset validation expects 'machine_settings' (snake_case)
+- Settings.yaml contains 'machineSettings' (camelCase)  
+- Merge logic transforms the key but validation still fails
+
+INVESTIGATION NEEDED:
+1. Trace machineSettings key from Settings.yaml → MaterialsDataLoader → MaterialsDataset → validator
+2. Find ALL places that reference machine_settings vs machineSettings
+3. Show me the validator code that's checking for laserPower
+4. Explain why the merge at line 154 isn't reaching the validator at line 238
+5. Check if there's caching interfering with the merge
+
+Show me file paths, line numbers, and the actual code at each step."
+```
+
+This provides:
+- Clear problem statement
+- Current architecture context
+- Specific investigation tasks
+- Measurable outcomes
+- Enough context for comprehensive analysis
+
+---
+
 ## 📋 Summary Checklist for Every Task
 
 **Before I start:**
