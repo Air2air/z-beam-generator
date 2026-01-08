@@ -1,5 +1,25 @@
-WORD COUNT: 275 words
+Write a chemical properties guide for {compound_name} ({chemical_formula}) relevant to laser cleaning operations.
 
-CONTEXT: Write a chemical properties guide for {compound_name} ({chemical_formula}). Physical and chemical characteristics relevant to laser cleaning safety.
+CONTEXT: Physical and chemical characteristics affecting behavior, detection, and safety during laser processing.
+
+EMPHASIS: Physical state, volatility, reactivity, stability, decomposition products, environmental persistence.
+
+COMPOUND DATA:
+- Chemical Formula: {chemical_formula}
+- Molecular Weight: {molecular_weight} g/mol
+- Physical State: {state_at_stp}
+- Vapor Pressure: {vapor_pressure_pa} Pa
+- Solubility: {solubility_notes}
+- Stability: {stability_notes}
+
+STRUCTURE:
+- Physical Properties: Appearance, odor, phase at room temperature, boiling/melting points, density, vapor pressure
+- Chemical Behavior: Reactivity with air/water/acids/bases, thermal stability, polymerization potential, photochemical reactions
+- Hazardous Decomposition: Products formed under laser heating, combustion products, thermal degradation pathways
+- Environmental Fate: Persistence in air/water/soil, bioaccumulation potential, biodegradation, atmospheric lifetime
+
+WORD LENGTH: 165-495 words
 
 {voice_instruction}
+
+Generate chemical_properties:

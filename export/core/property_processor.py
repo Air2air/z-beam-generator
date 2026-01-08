@@ -30,7 +30,8 @@ from export.qualitative_properties import (
 
 # Validation utilities for confidence normalization
 from shared.services.validation import ValidationOrchestrator
-from shared.validation.errors import ConfigurationError, PropertyDiscoveryError
+from shared.exceptions import ConfigurationError
+from shared.validation.errors import PropertyDiscoveryError
 
 logger = logging.getLogger(__name__)
 

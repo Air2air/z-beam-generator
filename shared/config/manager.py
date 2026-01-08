@@ -21,7 +21,7 @@ from typing import Any, Dict, Optional
 
 from dotenv import load_dotenv
 
-from shared.validation.errors import ConfigurationError
+from shared.exceptions import ConfigurationError
 
 
 @dataclass

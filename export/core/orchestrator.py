@@ -44,7 +44,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from shared.generators.component_generators import ComponentResult
-from shared.validation.errors import ConfigurationError, GenerationError
+from shared.exceptions import ConfigurationError, GenerationError
 
 logger = logging.getLogger(__name__)
 

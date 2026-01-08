@@ -17,11 +17,10 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 # Import unified error types
+from shared.exceptions import ConfigurationError, ValidationError
 from shared.validation.errors import (
-    ConfigurationError,
     ErrorSeverity,
     ErrorType,
-    ValidationError,
     ValidationResult,
 )
 

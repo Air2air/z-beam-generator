@@ -26,7 +26,7 @@ workspace_root = project_root.parent  # Go up one more to get actual workspace r
 sys.path.append(str(project_root))
 
 from shared.api.client_factory import create_api_client
-from shared.validation.errors import ConfigurationError
+from shared.exceptions import ConfigurationError
 
 logger = logging.getLogger(__name__)
 

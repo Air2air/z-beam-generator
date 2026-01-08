@@ -34,11 +34,8 @@ from shared.generators.component_generators import (
     APIComponentGenerator,
     ComponentResult,
 )
-from shared.validation.errors import (
-    ConfigurationError,
-    GenerationError,
-    MaterialDataError,
-)
+from shared.exceptions import ConfigurationError, GenerationError
+from shared.validation.errors import MaterialDataError
 
 logger = logging.getLogger(__name__)
 

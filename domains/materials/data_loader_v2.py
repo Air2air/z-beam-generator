@@ -149,11 +149,11 @@ class MaterialsDataLoader(BaseDataLoader):
             # Find matching settings
             if settings_slug in settings:
                 setting_data = settings[settings_slug]
-                # Merge machine_settings into material
-                material_data['machine_settings'] = setting_data.get('machine_settings', {})
+                # Merge machineSettings into material (camelCase for consistency with validator)
+                material_data['machineSettings'] = setting_data.get('machineSettings', {})
                 merged_count += 1
         
-        logger.info(f"Merged machine_settings into {merged_count}/{len(materials)} materials")
+        logger.info(f"Merged machineSettings into {merged_count}/{len(materials)} materials")
         return materials_data
     
     def load_properties(self) -> Dict[str, Dict[str, Any]]:

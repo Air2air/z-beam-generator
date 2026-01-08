@@ -14,7 +14,7 @@ import sys
 import yaml
 from pathlib import Path
 from typing import Dict, List
-from shared.validation.errors import ConfigurationError
+from shared.exceptions import ConfigurationError
 
 class MaterialsValidationError(Exception):
     """Materials database validation failure - system cannot operate"""

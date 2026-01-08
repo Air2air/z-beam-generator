@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 # Import GenerationError from centralized validation.errors
-from shared.validation.errors import GenerationError
+from shared.exceptions import GenerationError
 
 # Import material-aware prompt system
 try:

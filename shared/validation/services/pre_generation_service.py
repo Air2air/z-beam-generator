@@ -39,14 +39,14 @@ from scripts.validation.comprehensive_validation_agent import (
 )
 
 # Import unified error types
+from shared.exceptions import ConfigurationError
 from shared.validation.errors import (
-    ConfigurationError,
     ErrorSeverity,
     ErrorType,
     MaterialsValidationError,
+    ValidationError as VError,
+    ValidationResult,
 )
-from shared.validation.errors import ValidationError as VError
-from shared.validation.errors import ValidationResult
 
 # Import validation helpers
 from shared.validation.helpers.property_validators import PropertyValidators
