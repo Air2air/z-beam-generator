@@ -22,6 +22,7 @@ sys.path.insert(0, str(project_root))
 
 from shared.dataset.base_dataset import BaseDataset
 from domains.materials.data_loader_v2 import MaterialsDataLoader
+from shared.exceptions import DataError
 import logging
 
 logger = logging.getLogger(__name__)
@@ -319,7 +320,7 @@ class MaterialsDataset(BaseDataset):
             material_object: Nested material object
         
         Raises:
-            ValueError: If Tier 1 requirements not met
+            DataError: If Tier 1 requirements not met
         """
         required_params = [
             'laserPower', 'wavelength', 'spotSize', 'frequency',
@@ -330,19 +331,28 @@ class MaterialsDataset(BaseDataset):
         
         for param in required_params:
             if param not in settings:
-                raise ValueError(
-                    f"Tier 1 violation: Missing required machine parameter '{param}'. "
-                    f"Per DATASET_SPECIFICATION.md: 8 machine parameters required."
+                raise DataError(
+                    f"Tier 1 violation: Missing required machine parameter '{param}'",
+                    fix=f"Add '{param}' to machine_settings in Materials.yaml",
+                    doc_link="docs/05-data/DATASET_SPECIFICATION.md",
+                    context={"missing_parameter": param, "tier": 1}
                 )
             
             param_data = settings[param]
             if not isinstance(param_data, dict):
-                raise ValueError(f"Tier 1 violation: Parameter '{param}' must be a dict with min/max")
+                raise DataError(
+                    f"Tier 1 violation: Parameter '{param}' must be a dict with min/max",
+                    fix=f"Change '{param}' to dict format with min/max values",
+                    doc_link="docs/05-data/DATASET_SPECIFICATION.md",
+                    context={"parameter": param, "current_type": type(param_data).__name__}
+                )
             
             if 'min' not in param_data or 'max' not in param_data:
-                raise ValueError(
-                    f"Tier 1 violation: Parameter '{param}' missing min/max values. "
-                    f"Per DATASET_SPECIFICATION.md: All 8 parameters must have min/max ranges."
+                raise DataError(
+                    f"Tier 1 violation: Parameter '{param}' missing min/max values",
+                    fix=f"Add 'min' and 'max' fields to '{param}' in machine_settings",
+                    doc_link="docs/05-data/DATASET_SPECIFICATION.md",
+                    context={"parameter": param, "has_min": 'min' in param_data, "has_max": 'max' in param_data}
                 )
     
     def to_csv_rows(self, item_data: Dict[str, Any], metadata: Dict[str, Any] = None) -> List[Dict[str, str]]:

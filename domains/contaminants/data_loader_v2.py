@@ -82,8 +82,8 @@ class ContaminantsDataLoader(BaseDataLoader):
         Returns:
             True if valid structure
         """
-        # Contaminants.yaml should have 'contamination_patterns' key
-        return 'contamination_patterns' in data
+        # Accept both old (contamination_patterns) and new (contaminants) structure
+        return 'contamination_patterns' in data or 'contaminants' in data
     
     def load_patterns(self) -> Dict[str, Any]:
         """
@@ -103,7 +103,9 @@ class ContaminantsDataLoader(BaseDataLoader):
         
         # Load using base class method
         data = self._load_yaml_file(self.contaminants_file)
-        patterns = data.get('contamination_patterns', {})
+        
+        # Handle both old (contamination_patterns) and new (contaminants) structure
+        patterns = data.get('contaminants', data.get('contamination_patterns', {}))
         
         # Cache for 1 hour
         cache_manager.set('contaminants', 'patterns', patterns, ttl=3600)
