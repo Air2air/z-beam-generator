@@ -269,7 +269,7 @@ class MaterialsDataset(BaseDataset):
         
         Per DATASET_SPECIFICATION.md:
         - Includes nested 'material' object with materialProperties + machineSettings
-        - Includes machine parameters in variableMeasured
+        - Includes machine parameters in variableMeasured (via detect_fields)
         - Enforces Tier 1: 8 machine parameters required
         
         Args:
@@ -289,23 +289,12 @@ class MaterialsDataset(BaseDataset):
         self._validate_tier1_requirements(material_object)
         
         # Get base dataset structure from parent
+        # NOTE: super().to_schema_org_json() already processes machineSettings via detect_fields()
+        # No need to manually append - that was causing duplication
         dataset = super().to_schema_org_json(item_id, item_data)
         
         # Add nested material object (per specification)
         dataset['material'] = material_object
-        
-        # Add machine parameters to variableMeasured
-        machine_settings = material_object.get('machineSettings', {})
-        for param_name, param_data in machine_settings.items():
-            if isinstance(param_data, dict):
-                dataset['variableMeasured'].append({
-                    '@type': 'PropertyValue',
-                    'name': f"Laser {param_name.replace('laser', '').replace('Power', 'Power')}",
-                    'value': param_data.get('value'),
-                    'minValue': param_data.get('min'),
-                    'maxValue': param_data.get('max'),
-                    'unitText': param_data.get('unit', '')
-                })
         
         return dataset
     

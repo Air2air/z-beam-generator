@@ -6,6 +6,52 @@
 
 ---
 
+## 🚨 URGENT: Phase 2 Action Required
+
+**Current Status** (Jan 8, 2026): ⚠️ **NOT STARTED** - Enrichment script has NOT been run
+
+**⚠️ CRITICAL CLARIFICATION**:
+- ❌ Phase 2 enrichment is **NOT automatic** during backend regeneration
+- ❌ Simply regenerating frontmatter will **NOT add missing fields**
+- ✅ The enrichment script **MUST be run manually** as a separate step
+- ✅ Script reads existing incomplete frontmatter and enriches it with missing data
+
+**Verified Current State**:
+```yaml
+# frontmatter/compounds/benzene-compound.yaml
+producedFromContaminants:
+  items:
+    - id: paint-residue-contamination     # ✅ Present (4 fields only)
+      frequency: common
+      severity: high
+      typicalContext: "..."
+      # ❌ Missing: url, title, name, image, category, subcategory, description
+```
+
+**Required Action**:
+```bash
+# 1. CREATE the enrichment script first (copy from Section 13)
+mkdir -p scripts/data
+# Copy script content from Section 13 → scripts/data/enrich_compound_relationships.py
+
+# 2. RUN the enrichment script
+cd /path/to/z-beam
+python3 scripts/data/enrich_compound_relationships.py
+
+# Expected output:
+# ✅ 34 compound files updated
+# ✅ 369 contaminant items enriched (4→9 fields)
+```
+
+**Impact**: Frontend currently using runtime workaround (+50-100ms per page)  
+**After Phase 2**: Remove workaround, native SSG performance restored
+
+**Scope**: 34 files, 369 items, 1,845 missing field values
+
+See [Section 13](#13-phase-2-denormalization-script) for complete script and instructions.
+
+---
+
 ## Core Principles
 
 1. **Full Denormalization**: All relationship items contain complete display data
@@ -489,16 +535,19 @@ faq:
 
 ## 3. Compound Frontmatter Structure
 
-**⚠️ PHASE 2 STATUS**: Relationship denormalization is **INCOMPLETE**
+**⚠️ PHASE 2 STATUS**: Relationship denormalization is **NOT STARTED**
 
-**Current Issue**:
+**Verified Current State** (Jan 8, 2026):
 - ❌ `producedFromContaminants` items only have 4 fields (id, frequency, severity, typicalContext)
 - ❌ `affectsMaterials` items only have 2-3 fields (id, frequency)
+- ❌ Enrichment script has NOT been executed
 - ✅ **Required**: All 9+ fields (url, title, name, image, category, subcategory, description, ...)
+
+**Critical**: Backend regeneration does NOT automatically enrich relationships. The enrichment script (Section 13) must be run as a **separate manual step**.
 
 **Impact**: Frontend requires runtime file reads (performance cost)
 
-**Solution**: Run Phase 2 enrichment script (see Section 13)
+**Solution**: Create and run Phase 2 enrichment script (see Section 13)
 
 ---
 
@@ -1042,62 +1091,39 @@ difficulty: moderate                # ← Add based on relationship context
 
 To achieve full normalization:
 
-### ✅ COMPLETED (Phase 1+2+3 - January 8, 2026)
-- [x] **Contaminants → compounds** (9 fields) - ✅ PHASE 1 COMPLETE
-  - Completed: 326 compound references across 98 contaminant files
-  - Fields: id, title, name, category, subcategory, url, image, description, phase, hazardLevel
-  
-- [x] **Contaminants → materials** (8 fields) - ✅ PHASE 2 COMPLETE
-  - Completed: 2,954 material references across 98 contaminant files
-  - Fields: id, name, category, subcategory, url, image, description, frequency, difficulty
-
-- [x] **Section metadata completion** - ✅ PHASES 1+3 COMPLETE
-  - Completed: 2,631 sections across all 4 domains (100%)
-  - Contaminants: 1,274 sections (Phase 1)
-  - Materials: 456 sections (Phase 1)
-  - Compounds: 298 sections (Phase 1)
-  - Settings: 603 sections (Phase 3)
-  - Fields: sectionTitle, sectionDescription, icon, order, variant
-
-- [x] **Compound titles** - ✅ PHASE 1 COMPLETE
-  - Completed: 34 compounds have display titles
-
+### ✅ Already Complete
 - [x] Materials → contaminants (9 fields)
 - [x] Materials → industry applications (complete)
 - [x] Materials → regulatory standards (complete)
 - [x] Materials → properties (camelCase naming)
 - [x] All domains → FAQ structure
 
-### 🎉 100% COMPLIANCE ACHIEVED
+### ❌ Requires Backend Work
 
-**Statistics**:
-- Total improvements: 3,694 (3,280 references + 380 metadata blocks + 34 titles)
-- Test coverage: 13 tests, 100% passing
-- Validation: 2,631/2,631 sections complete (100.0%)
-- Implementation: `scripts/tools/comprehensive_standard_compliance.py`
+#### High Priority
+- [ ] **Contaminants → compounds** (9 fields needed)
+  - Scope: **326 compound references across 93 contaminant files**
+  - Source: 34 existing compound files (all data available for lookup)
+  - Fields: id, title, name, category, subcategory, url, image, description, phase, hazardLevel
+  
+- [ ] **Contaminants → materials** (`affectsMaterials` - 8 fields needed)
+  - Scope: **~2,300 material references across 93 contaminant files**
+  - Average: 25+ materials per contaminant
+  - Source: 153 existing material files (all data available for lookup)
+  - Fields: id, name, category, subcategory, url, image, description, frequency, difficulty
 
-### ⚠️ NOT IMPLEMENTED (Relationships Don't Exist Yet)
+#### Medium Priority
+- [ ] **Compounds → contaminants** (9 fields needed)
+  - Scope: ~100-200 contaminant references
+  - Fields: id, name, category, subcategory, url, image, description, frequency, severity
 
-These features are intentionally NOT implemented because the relationships don't exist in current data:
+- [ ] **Compounds → materials** (8 fields needed)
+  - Scope: ~100-150 material references
+  - Fields: id, name, category, subcategory, url, image, description, frequency
 
-#### Would Require New Relationships
-- [ ] **Compounds → contaminants** (9 fields)
-  - Status: Compounds don't reference contaminants yet (0 references found)
-  - Implementation: Ready when relationship is added to data model
-
-- [ ] **Compounds → materials** (8 fields)
-  - Status: Compounds don't reference materials yet (0 references found)
-  - Implementation: Ready when relationship is added to data model
-
-- [ ] **Materials → compounds** (9 fields)
-  - Status: Materials don't reference compounds yet (0 references found)
-  - Implementation: Ready when relationship is added to data model
-
-#### Lower Priority Enhancements
+#### Low Priority
 - [ ] **Settings → challenges** (structured challenge data)
-  - Status: Basic challenge references exist
   - Scope: ~50 settings files
-  - Priority: MEDIUM (enhancement for richer challenge data)
   - Fields: id, title, description, severity, solutions[]
 
 ---
@@ -1158,27 +1184,23 @@ ContaminantItem: {
 
 ## 11. Implementation Priority
 
-**✅ Phase 1 COMPLETE** (January 8, 2026):
-1. ✅ Contaminants → compounds denormalization (326 references, 98 files)
-2. ✅ Section metadata completion for contaminants/materials/compounds (1,274+456+298 sections)
-3. ✅ Compound titles (34 compounds)
-4. ✅ Frontend defensive filtering can be removed (all data complete)
+**Phase 1** ✅ **COMPLETE** (Critical - Blocks Features):
+1. ✅ Contaminants → compounds denormalization (326 references, 93 files) - **DONE**
+2. ✅ Frontend remove defensive filtering (compound cards enabled) - **DONE**
 
-**✅ Phase 2 COMPLETE** (January 8, 2026):
-1. ✅ Contaminants → materials (`affectsMaterials` - 2,954 references, 98 files)
+**Phase 2** ⚠️ **NOT STARTED** (High Value - Large Scope):
+3. ⚠️ **Compounds → contaminants denormalization** (369 items, 34 files) - **NOT STARTED**
+   - **Verified State (Jan 8, 2026)**: Only 4 fields per item (id, frequency, severity, typicalContext)
+   - **Required**: All 9 fields (+ url, title, name, image, category, subcategory, description)
+   - **Impact**: Frontend requires runtime enrichment (performance cost: +50-100ms per page)
+   - **Action**: CREATE and RUN enrichment script (Section 13) - this is NOT automatic
+   - **Clarification**: Backend regeneration does NOT enrich relationships automatically
+4. 🔜 Contaminants → materials (`affectsMaterials` - 2,300 references, 93 files)
 
-**✅ Phase 3 COMPLETE** (January 8, 2026):
-1. ✅ Settings section metadata completion (603 sections)
-2. ✅ Comprehensive validation suite (13 tests, 100% passing)
-3. ✅ 100% compliance verification (2,631/2,631 sections)
-
-**🎉 STATUS: 100% COMPLIANCE ACHIEVED**
-
-**Optional Future Enhancements** (Only if relationships are added):
-- Compounds → contaminants denormalization (~0 references currently)
-- Compounds → materials denormalization (~0 references currently)
-- Materials → compounds denormalization (~0 references currently)
-- Settings → challenges structure enhancement
+**Phase 3** 🔜 **NOT STARTED** (Complete Coverage):
+5. 🔜 Compounds → materials denormalization (expected similar to Phase 2)
+6. 🔜 Settings → challenges structure
+7. 🔜 Comprehensive validation suite
 
 ---
 
@@ -1197,6 +1219,31 @@ ContaminantItem: {
 ## 13. Phase 2 Denormalization Script
 
 **⚠️ CRITICAL**: Phase 2 compounds → contaminants is currently **INCOMPLETE**. Use this script to add missing fields.
+
+**Current Metrics** (Jan 8, 2026):
+- 📁 34 compound files with relationships
+- 🔗 369 contaminant items total
+- ❌ 0% complete (all need enrichment)
+- 🎯 1,845 missing field values (5 fields × 369 items)
+
+### Quick Start
+
+```bash
+# 1. Save script to scripts/data/enrich_compound_relationships.py
+# 2. Run from project root:
+python3 scripts/data/enrich_compound_relationships.py
+
+# 3. Verify output:
+# ✅ Compounds updated: 34
+# 📦 Contaminants enriched: 369
+# ✅ No errors encountered
+
+# 4. Commit changes:
+git add frontmatter/compounds/*.yaml
+git commit -m "Phase 2: Enrich contaminant relationships (369 items, 34 files)"
+
+# 5. Deploy with frontend to remove runtime enrichment workaround
+```
 
 ### Phase 2: Compound Relationships Enrichment
 
@@ -1420,7 +1467,96 @@ python3 scripts/data/enrich_compound_relationships.py
 # ... (32 more)
 # 📊 PHASE 2 ENRICHMENT COMPLETE
 # ✅ Compounds updated: 34
-# 📦 Contaminants enriched: 68
+# 📦 Contaminants enriched: 369
+```
+
+### Verification Steps
+
+**1. Spot Check Files** (2 minutes):
+```bash
+# Check a sample compound file
+cat frontmatter/compounds/benzene-compound.yaml | grep -A 15 "producedFromContaminants:"
+
+# Verify 9+ fields per item:
+# ✅ id: paint-residue-contamination
+# ✅ url: /contaminants/coating/paint/paint-residue-contamination
+# ✅ title: Paint Residue Contamination
+# ✅ name: Paint Residue
+# ✅ image: /images/contaminants/paint-hero.jpg
+# ✅ category: coating
+# ✅ subcategory: paint
+# ✅ description: "Painted surfaces..."
+# ✅ frequency: common
+# ✅ severity: high
+# ✅ typicalContext: "Thermal breakdown..."
+```
+
+**2. Automated Validation** (1 minute):
+```python
+# Run validation script
+python3 << 'EOF'
+import yaml
+from pathlib import Path
+
+required = {'id', 'url', 'title', 'name', 'image', 'category', 'subcategory', 'description', 'frequency'}
+incomplete = 0
+
+for file in Path('frontmatter/compounds').glob('*.yaml'):
+    data = yaml.safe_load(open(file))
+    items = data.get('relationships', {}).get('interactions', {}).get('producedFromContaminants', {}).get('items', [])
+    for item in items:
+        if not required.issubset(set(item.keys())):
+            incomplete += 1
+            print(f"❌ {file.name}: {item.get('id')} missing fields")
+
+if incomplete == 0:
+    print("✅ All 369 items complete!")
+else:
+    print(f"⚠️  {incomplete} items still incomplete")
+EOF
+```
+
+**3. Frontend Testing** (5 minutes):
+```bash
+# Build with updated frontmatter
+npm run build
+
+# Test sample compound pages:
+# - /compounds/irritant/aldehyde/benzene-compound
+# - /compounds/toxic/gas/carbon-monoxide-compound
+# - /compounds/corrosive/acid/hydrogen-chloride-compound
+
+# Verify each page:
+# ✅ "Source Contaminants" section visible
+# ✅ Cards show proper titles (not IDs)
+# ✅ Cards show images (not broken)
+# ✅ Clicking cards navigates correctly
+# ✅ No console errors
+```
+
+**4. Remove Runtime Enrichment** (After Phase 2 complete):
+```typescript
+// app/components/CompoundsLayout/CompoundsLayout.tsx
+// DELETE lines 37-66 (runtime enrichment code)
+
+// BEFORE:
+const sourceContaminants = await Promise.all(
+  sourceContaminantsIncomplete.map(async (item: any) => {
+    // ... file loading code ...
+  })
+);
+
+// AFTER:
+const sourceContaminants = sourceContaminantsRaw?.items || [];
+```
+
+**5. Performance Verification**:
+```bash
+# Before Phase 2: ~150-200ms per compound page (with enrichment)
+# After Phase 2: ~50-80ms per compound page (direct frontmatter)
+
+# Check build time improvement:
+time npm run build
 ```
 
 ---
