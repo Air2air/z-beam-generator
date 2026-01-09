@@ -1412,9 +1412,10 @@ class IntegrityChecker:
                                 })
                                 break  # Only report first match per line
                 
-                except Exception:
+                except (OSError, IOError, UnicodeDecodeError) as e:
                     # Don't fail the whole check on file read errors
-                    pass
+                    logger.warning(f"Could not read file {py_file}: {e}")
+                    continue
         
         if violations:
             violation_summary = []

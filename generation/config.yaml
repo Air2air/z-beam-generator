@@ -67,9 +67,32 @@ structural_diversity_factor: 0.8         # High diversity for distinct outputs
 # 
 # Shared randomization targets (used across all domains):
 randomization_targets:
-  # Voice styles and rhythms now in domain configs
-  # Material-specific structures now in domains/materials/config.yaml
-  # Settings-specific voices now in domains/settings/config.yaml
+  # Opening patterns and structural elements
+  opening_patterns:
+    - "technical_direct"
+    - "challenge_focus"
+    - "property_emphasis"
+    - "comparative"
+  
+  # Rhythm patterns for sentence variation
+  rhythm_patterns:
+    - "varied"
+    - "balanced"
+    - "short_punch"
+    - "flowing"
+  
+  # Voice intensities (1-10 scale)
+  voice_intensities:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
   
 # Winston Feedback Database
 winston_feedback_db_path: "z-beam.db"    # SQLite database for Winston feedback

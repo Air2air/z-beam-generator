@@ -25,6 +25,8 @@ Usage:
 from abc import ABC, abstractmethod
 from typing import Any, Dict
 
+from shared.type_aliases import FrontmatterData
+
 
 class BaseGenerator(ABC):
     """
@@ -45,7 +47,7 @@ class BaseGenerator(ABC):
         self.config = config
     
     @abstractmethod
-    def generate(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:
+    def generate(self, frontmatter: FrontmatterData) -> FrontmatterData:
         """
         Generate content and add to frontmatter.
         

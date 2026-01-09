@@ -362,6 +362,39 @@ class CompoundsDataLoader(BaseDataLoader):
         compounds = self.get_all_compounds()
         return compounds.get(compound_id)
     
+    def get_compounds_by_hazard_class(self, hazard_class: str) -> Dict[str, Any]:
+        """
+        Get compounds filtered by hazard class.
+        
+        Args:
+            hazard_class: Hazard class to filter by (e.g., "carcinogenic")
+        
+        Returns:
+            Dict of matching compounds
+        """
+        all_compounds = self.get_all_compounds()
+        # Filter by hazardClass or hazard_class field
+        return {
+            cid: cdata for cid, cdata in all_compounds.items()
+            if cdata.get('hazardClass') == hazard_class or cdata.get('hazard_class') == hazard_class
+        }
+    
+    def get_compounds_by_category(self, category: str) -> Dict[str, Any]:
+        """
+        Get compounds filtered by category.
+        
+        Args:
+            category: Category to filter by (e.g., "toxic_gas")
+        
+        Returns:
+            Dict of matching compounds
+        """
+        all_compounds = self.get_all_compounds()
+        return {
+            cid: cdata for cid, cdata in all_compounds.items()
+            if cdata.get('category') == category
+        }
+    
     def clear_cache(self):
         """Clear all compounds cache"""
         cache_manager.invalidate('compounds')

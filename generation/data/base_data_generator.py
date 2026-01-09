@@ -18,6 +18,8 @@ from typing import Any, Dict, Optional
 
 import yaml
 
+from shared.type_aliases import GenerationResult
+
 logger = logging.getLogger(__name__)
 
 
@@ -93,7 +95,7 @@ class BaseDataGenerator(ABC):
         """
         pass
     
-    def generate(self, item_name: str, dry_run: bool = False) -> Dict[str, Any]:
+    def generate(self, item_name: str, dry_run: bool = False) -> GenerationResult:
         """
         Generate field value for an item.
         

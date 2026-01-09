@@ -178,6 +178,14 @@ def get_prompt_for_domain(domain: str, context: Dict[str, str]) -> str:
     
     Args:
         domain: 'materials', 'contaminants', 'settings', or 'compounds'
+        context: Context data with domain-specific keys
+    
+    Returns:
+        Formatted prompt string for SEO generation
+        
+    Raises:
+        ValueError: If domain is not recognized
+    """
         context: Domain-specific context data
     
     Returns:

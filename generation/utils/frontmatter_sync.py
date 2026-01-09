@@ -96,7 +96,7 @@ def get_frontmatter_path(item_name: str, field_name: str, domain: str) -> Path:
         return Path(f"frontmatter/{domain}") / f"{slug}.yaml"
 
 
-def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any, domain: str):
+def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any, domain: str) -> None:
     """
     Update a single field in frontmatter file (partial update).
     

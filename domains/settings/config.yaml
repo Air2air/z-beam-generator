@@ -1,0 +1,19 @@
+# Settings Domain Configuration
+# Minimal config for coordinator initialization
+
+domain_name: "settings"
+data_path: "data/settings/Settings.yaml"
+data_root_key: "settings"
+frontmatter_pattern: "{slug}-settings.yaml"
+
+# Component types (discovered from prompts/*.txt files)
+components:
+  - "description"
+  - "micro"
+
+# Validation rules
+validation:
+  require_author: true
+  require_slug: true
+  min_description_words: 30
+  max_description_words: 200

@@ -152,6 +152,7 @@ class BaseParameter(ABC):
         return data.get('prompts', {})
     
     def __repr__(self) -> str:
+        """Return string representation of parameter instance."""
         meta = self.get_metadata()
         return f"{meta['name']}(config={self.config_value}, normalized={self.normalized_value:.3f}, tier={self.tier.value})"
 

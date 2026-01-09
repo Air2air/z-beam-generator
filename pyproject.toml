@@ -1,0 +1,172 @@
+[project]
+name = "z-beam-generator"
+version = "1.0.0"
+description = "Content generation system for Z-Beam laser cleaning platform"
+requires-python = ">=3.10"
+
+[tool.mypy]
+# Python version
+python_version = "3.10"
+
+# Import discovery
+mypy_path = "."
+namespace_packages = true
+explicit_package_bases = true
+
+# Warnings and errors
+warn_return_any = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = false  # Start permissive
+warn_no_return = true
+warn_unreachable = true
+
+# Type checking strictness (start permissive, gradually increase)
+disallow_untyped_defs = false  # Would require 100% coverage
+disallow_incomplete_defs = true  # Require return types if any args typed
+disallow_untyped_calls = false  # Too strict for gradual adoption
+check_untyped_defs = true  # Check bodies of untyped functions
+
+# Optional strictness (enable gradually)
+strict_optional = true
+strict_equality = true
+
+# Error presentation
+show_error_context = true
+show_column_numbers = true
+show_error_codes = true
+pretty = true
+color_output = true
+
+# Incremental checking
+incremental = true
+cache_dir = ".mypy_cache"
+
+# Platform
+platform = "darwin"  # macOS
+
+# Ignore missing imports for third-party libraries without stubs
+[[tool.mypy.overrides]]
+module = [
+    "yaml.*",
+    "pytest.*",
+]
+ignore_missing_imports = true
+
+# Stricter checking for core modules (lead by example)
+[[tool.mypy.overrides]]
+module = "shared.types"
+disallow_untyped_defs = true
+disallow_any_explicit = false
+
+[[tool.mypy.overrides]]
+module = "shared.exceptions"
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = "export.generation.base"
+disallow_untyped_defs = true
+
+# More permissive for legacy modules
+[[tool.mypy.overrides]]
+module = [
+    "data.materials.backups.*",
+    "scripts.archive.*",
+]
+ignore_errors = true
+
+[tool.pyright]
+# Pyright configuration (alternative to mypy)
+include = [
+    "generation",
+    "export",
+    "shared",
+    "domains"
+]
+exclude = [
+    "**/__pycache__",
+    "**/node_modules",
+    ".mypy_cache",
+    ".pytest_cache",
+    "**/.venv",
+    "data/materials/backups",
+    "scripts/archive"
+]
+
+typeCheckingMode = "basic"  # Options: "off", "basic", "standard", "strict"
+reportMissingImports = true
+reportMissingTypeStubs = false  # Too noisy for gradual adoption
+reportUnusedImport = true
+reportUnusedVariable = true
+reportDuplicateImport = true
+
+# Gradually increase strictness
+reportOptionalMemberAccess = "warning"
+reportOptionalSubscript = "warning"
+reportPrivateImportUsage = "warning"
+
+pythonVersion = "3.10"
+pythonPlatform = "Darwin"
+
+[tool.ruff]
+# Ruff linter configuration (fast Python linter)
+line-length = 120
+target-version = "py310"
+
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort (import sorting)
+    "N",   # pep8-naming
+    "UP",  # pyupgrade (modernize syntax)
+    "B",   # flake8-bugbear (likely bugs)
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+]
+
+ignore = [
+    "E501",  # Line too long (handled by formatter)
+    "B008",  # Do not perform function calls in argument defaults
+    "B904",  # Within an except clause, raise exceptions with raise ... from err
+]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]  # Allow unused imports in __init__.py
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--verbose",
+    "--strict-markers",
+    "--disable-warnings",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+[tool.coverage.run]
+source = ["generation", "export", "shared", "domains"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__pycache__/*",
+    "*/backups/*",
+    "*/archive/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "@abstractmethod",
+]

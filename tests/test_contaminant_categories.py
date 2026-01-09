@@ -348,6 +348,9 @@ class TestFlatStructure:
     def test_no_category_subdirectories(self):
         """Frontmatter should not have category subdirectories."""
         frontmatter_dir = Path('frontmatter/contaminants')
+        if not frontmatter_dir.exists():
+            pytest.skip(f"Frontmatter directory not found: {frontmatter_dir} - run export first")
+        
         subdirs = [d for d in frontmatter_dir.iterdir() if d.is_dir()]
         
         assert not subdirs, (

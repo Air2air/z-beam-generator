@@ -54,7 +54,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
             "https://www.researchgate.net/profile/Yi-Chun-Lin-2"
         ],
         "personaFile": "taiwan_persona.yaml",
-        "formatting_file": "taiwan_formatting.yaml",
+        "formattingFile": "taiwan_formatting.yaml",
     },
     2: {
         "id": 2,
@@ -89,7 +89,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
             "https://linkedin.com/in/alessandro-moretti-engineer"
         ],
         "personaFile": "italy_persona.yaml",
-        "formatting_file": "italy_formatting.yaml",
+        "formattingFile": "italy_formatting.yaml",
     },
     3: {
         "id": 3,
@@ -124,7 +124,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
             "https://www.academia.edu/profile/IkmandaRoswati"
         ],
         "personaFile": "indonesia_persona.yaml",
-        "formatting_file": "indonesia_formatting.yaml",
+        "formattingFile": "indonesia_formatting.yaml",
     },
     4: {
         "id": 4,
@@ -157,7 +157,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
             "https://spie.org/profile/Todd.Dunning"
         ],
         "personaFile": "usa_persona.yaml",
-        "formatting_file": "usa_formatting.yaml",
+        "formattingFile": "usa_formatting.yaml",
     },
 }
 

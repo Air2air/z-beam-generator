@@ -1,0 +1,21 @@
+# Materials Domain Configuration
+# Minimal config for coordinator initialization
+
+domain_name: "materials"
+data_path: "data/materials/Materials.yaml"
+data_root_key: "materials"
+frontmatter_pattern: "{slug}-laser-cleaning.yaml"
+
+# Component types (discovered from prompts/*.txt files)
+components:
+  - "description"
+  - "micro"
+  - "faq"
+  - "excerpt"
+
+# Validation rules
+validation:
+  require_author: true
+  require_slug: true
+  min_description_words: 30
+  max_description_words: 200

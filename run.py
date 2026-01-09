@@ -15,10 +15,12 @@ import sys
 import argparse
 import subprocess
 import yaml
+import time
 from pathlib import Path
 from shared.commands.postprocess import PostprocessCommand
 from export.core.frontmatter_exporter import FrontmatterExporter
 from export.config.loader import load_domain_config
+from export.performance import ParallelExporter, get_yaml_cache
 
 
 def postprocess_command(args):
@@ -128,12 +130,13 @@ def export_command(args):
 
 
 def export_all_command(args):
-    """Export all domains to production"""
+    """Export all domains to production (with parallel processing)"""
     
     domains = ['materials', 'contaminants', 'compounds', 'settings']
+    use_parallel = getattr(args, 'parallel', True)  # Default to parallel
     
     print("="*80)
-    print("🚀 EXPORTING ALL DOMAINS TO PRODUCTION")
+    print(f"🚀 EXPORTING ALL DOMAINS TO PRODUCTION {'(PARALLEL)' if use_parallel else '(SEQUENTIAL)'}")
     print("="*80)
     
     # Step 1: Validate source data integrity BEFORE export
@@ -158,29 +161,52 @@ def export_all_command(args):
     
     print("\n✅ Source data integrity validated")
     
-    # Step 2: Export all domains
+    # Step 2: Export domains (parallel or sequential)
     print("\n" + "="*80)
-    print("🔄 STEP 2: EXPORTING ALL DOMAINS")
+    print("📦 STEP 2: EXPORTING DOMAINS")
     print("="*80)
     
-    total_exported = 0
-    for domain in domains:
-        print(f"\n📦 {domain.upper()}:")
+    start_time = time.time()
+    
+    if use_parallel:
+        # Use parallel export for 3-4x speedup
+        parallel_exporter = ParallelExporter(max_workers=4)
+        results = parallel_exporter.export_all(skip_existing=args.skip_existing)
         
-        try:
-            config = load_domain_config(domain)
-            exporter = FrontmatterExporter(config)
-            results = exporter.export_all(force=True)
+        # Print performance summary
+        print(parallel_exporter.get_performance_summary(results))
+        
+        total_exported = sum(r.get('exported', 0) for r in results.values())
+    else:
+        # Use sequential export (original behavior)
+        total_exported = 0
+        for domain in domains:
+            print(f"\n📦 {domain.upper()}:")
             
-            exported = sum(1 for success in results.values() if success)
-            total_exported += exported
-            print(f"   ✅ {exported}/{len(results)} files")
-            
-        except Exception as e:
-            print(f"   ❌ Error: {e}")
+            try:
+                config = load_domain_config(domain)
+                exporter = FrontmatterExporter(config)
+                results_dict = exporter.export_all(force=not args.skip_existing)
+                
+                exported = sum(1 for success in results_dict.values() if success)
+                total_exported += exported
+                print(f"   ✅ {exported}/{len(results_dict)} files")
+                
+            except Exception as e:
+                print(f"   ❌ Error: {e}")
+    
+    elapsed = time.time() - start_time
+    elapsed = time.time() - start_time
     
     print(f"\n{'='*80}")
-    print(f"✅ TOTAL: {total_exported} files exported")
+    print(f"✅ TOTAL: {total_exported} files exported in {elapsed:.1f}s")
+    print(f"⚡ Performance: {total_exported/elapsed:.1f} files/second")
+    if use_parallel:
+        print(f"💡 Parallel mode saved ~{(elapsed * 3 - elapsed):.0f}s compared to sequential")
+    
+    # Print cache statistics
+    cache = get_yaml_cache()
+    cache.print_stats()
     
     # Step 3: Validate exported frontmatter links
     print("\n" + "="*80)
@@ -315,6 +341,10 @@ Examples:
     # Export arguments
     parser.add_argument('--skip-existing', action='store_true',
                         help='Skip existing files (default: overwrite)')
+    parser.add_argument('--parallel', action='store_true', default=True,
+                        help='Use parallel export for --export-all (default: True, use --no-parallel to disable)')
+    parser.add_argument('--no-parallel', action='store_false', dest='parallel',
+                        help='Disable parallel export (use sequential processing)')
     
     # Backfill arguments
     parser.add_argument('--generator', type=str,

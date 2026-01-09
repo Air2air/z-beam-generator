@@ -1,0 +1,20 @@
+# Contaminants Domain Configuration
+# Minimal config for coordinator initialization
+
+domain_name: "contaminants"
+data_path: "data/contaminants/Contaminants.yaml"
+data_root_key: "contamination_patterns"
+frontmatter_pattern: "{slug}-contamination.yaml"
+
+# Component types (discovered from prompts/*.txt files)
+components:
+  - "description"
+  - "micro"
+  - "faq"
+
+# Validation rules
+validation:
+  require_author: true
+  require_slug: true
+  min_description_words: 30
+  max_description_words: 200

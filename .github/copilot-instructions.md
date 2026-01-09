@@ -870,6 +870,8 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - ✅ **ALWAYS generate complete data to YAML** - Enrichers format, not add data 🔥 **NEW (Jan 2, 2026)**
 - ✅ **ALWAYS use task-based pattern in UniversalContentGenerator** - Not enrichers 🔥 **NEW (Jan 4, 2026)**
 - ✅ **ALWAYS generate complete data at source** - Export transforms, never creates 🔥 **MANDATORY (Jan 4, 2026)**
+- ✅ **ALWAYS denormalize relationships in source data** - No runtime enrichment 🔥 **MANDATORY (Jan 8, 2026)**
+- ✅ **ALWAYS validate source data before export** - Run validation scripts 🔥 **MANDATORY (Jan 8, 2026)**
 
 ---
 
@@ -1240,6 +1242,68 @@ def _task_my_task(self, frontmatter, config):
 
 **The Fundamental Rule:**
 Export/build processes should ONLY transform existing data for presentation, NEVER create or enhance data.
+
+### 0.7. **Source Data Completeness & Normalization** 🔥 **MANDATORY POLICY (Jan 8, 2026) - CRITICAL**
+**ALL source data files MUST be fully normalized and complete BEFORE export. Export should be near-instantaneous with minimal processing.**
+
+**MANDATORY Requirements:**
+- ✅ **Complete denormalization** - All relationship references include full display data (name, url, category, image, etc.)
+- ✅ **No metadata wrappers** - Remove deprecated/duplicate data structures
+- ✅ **Type safety** - All collections are properly typed arrays
+- ✅ **CamelCase consistency** - All keys use JavaScript convention (contaminatedBy, not contaminated_by)
+- ✅ **Field ordering** - Proper field order applied at source
+- ✅ **Export speed** - Export completes in seconds, not minutes (no complex enrichment)
+
+**Why This Matters:**
+- **Single source of truth** - Data files contain everything needed
+- **Export reliability** - No runtime enrichment = no enrichment failures
+- **Performance** - Export is simple transformation, not data generation
+- **Testability** - Can validate source data completeness independently
+
+**Implementation Pattern:**
+```python
+# ❌ WRONG - Enrichment during export
+def export_material(material):
+    # Loading contaminant data during export
+    for ref in material['contaminatedBy']:
+        contaminant = load_contaminant(ref['id'])  # BAD!
+        ref['name'] = contaminant['name']
+        ref['url'] = build_url(contaminant)
+
+# ✅ CORRECT - Complete data in source
+def save_material(material_data):
+    # Denormalize BEFORE saving to source
+    for ref in material_data['contaminatedBy']:
+        contaminant = load_contaminant(ref['id'])
+        ref['name'] = contaminant['name']
+        ref['category'] = contaminant['category']
+        ref['url'] = f"/contaminants/{contaminant['category']}/{ref['id']}"
+        ref['image'] = contaminant['images']['hero']['url']
+    
+    # Save complete, normalized data
+    save_to_yaml('data/materials/Materials.yaml', material_data)
+
+# Export just reads and formats
+def export_material(material):
+    # Data already complete - just format for output
+    return format_frontmatter(material)
+```
+
+**Validation:**
+```bash
+# Check source data completeness
+python3 scripts/tools/validate_frontmatter_structure.py --domain all
+
+# Should show:
+# ✅ ALL VALIDATION CHECKS PASSED
+# ✓ Naming convention: All keys use camelCase  
+# ✓ Display data: All references denormalized
+# ✓ Type safety: All items are arrays
+```
+
+**Grade:** F violation if export process adds substantial data instead of just formatting existing complete data
+
+**Documentation:** `docs/FRONTMATTER_FIXES_REQUIRED.md` - Complete implementation guide
 
 **PROHIBITED at Build/Export Time** (Grade F violations):
 - ❌ Adding section metadata (titles, descriptions, icons) during export
