@@ -439,5 +439,109 @@ class TestPhase1Summary:
         print(f"{'='*80}\n")
 
 
+class TestPhase3SettingsCompletion:
+    """Test Phase 3: Settings section metadata completion"""
+    
+    @pytest.fixture
+    def settings_data(self):
+        """Load settings source data"""
+        path = Path('data/settings/Settings.yaml')
+        with open(path) as f:
+            data = yaml.safe_load(f)
+        return data.get('settings', {})
+    
+    def test_all_settings_sections_have_complete_metadata(self, settings_data):
+        """Verify all settings sections have complete 5-field metadata"""
+        required_fields = ['sectionTitle', 'sectionDescription', 'icon', 'order', 'variant']
+        
+        total_sections = 0
+        complete_sections = 0
+        incomplete_sections = []
+        
+        for setting_id, setting in settings_data.items():
+            relationships = setting.get('relationships', {})
+            
+            for group_name, group_data in relationships.items():
+                if isinstance(group_data, dict):
+                    for rel_type, rel_data in group_data.items():
+                        if isinstance(rel_data, dict):
+                            total_sections += 1
+                            section = rel_data.get('_section', {})
+                            
+                            missing = [f for f in required_fields if f not in section]
+                            
+                            if not missing:
+                                complete_sections += 1
+                            else:
+                                if len(incomplete_sections) < 5:
+                                    incomplete_sections.append({
+                                        'setting': setting_id,
+                                        'group': group_name,
+                                        'rel_type': rel_type,
+                                        'missing': missing
+                                    })
+        
+        completion_rate = (complete_sections / total_sections * 100) if total_sections > 0 else 0
+        
+        # Assert 100% completion
+        assert completion_rate == 100.0, (
+            f"Expected 100% section metadata completion, found {completion_rate:.1f}% "
+            f"({complete_sections}/{total_sections} complete)\n"
+            f"Sample incomplete: {incomplete_sections[:3]}"
+        )
+        
+        print(f"\n{'='*80}")
+        print("PHASE 3: SETTINGS SECTION METADATA COMPLETION")
+        print(f"{'='*80}")
+        print(f"✅ Total sections: {total_sections}")
+        print(f"✅ Complete sections: {complete_sections} (100%)")
+        print(f"{'='*80}")
+    
+    def test_settings_section_metadata_has_proper_values(self, settings_data):
+        """Verify section metadata fields have proper values"""
+        total_sections = 0
+        valid_variants = ['default', 'warning', 'danger', 'info', 'success']
+        invalid_sections = []
+        
+        for setting_id, setting in settings_data.items():
+            relationships = setting.get('relationships', {})
+            
+            for group_data in relationships.values():
+                if isinstance(group_data, dict):
+                    for rel_data in group_data.values():
+                        if isinstance(rel_data, dict):
+                            section = rel_data.get('_section', {})
+                            if section:
+                                total_sections += 1
+                                
+                                # Check variant is valid
+                                variant = section.get('variant')
+                                if variant and variant not in valid_variants:
+                                    if len(invalid_sections) < 5:
+                                        invalid_sections.append({
+                                            'setting': setting_id,
+                                            'variant': variant,
+                                            'allowed': valid_variants
+                                        })
+                                
+                                # Check order is numeric
+                                order = section.get('order')
+                                if order is not None and not isinstance(order, (int, float)):
+                                    if len(invalid_sections) < 5:
+                                        invalid_sections.append({
+                                            'setting': setting_id,
+                                            'order': order,
+                                            'type': type(order).__name__
+                                        })
+        
+        assert len(invalid_sections) == 0, (
+            f"Found {len(invalid_sections)} sections with invalid values:\n"
+            f"{invalid_sections[:3]}"
+        )
+        
+        print(f"✅ All {total_sections} sections have valid metadata values")
+
+
 if __name__ == '__main__':
     pytest.main([__file__, '-v'])
+

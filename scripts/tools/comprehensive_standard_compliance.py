@@ -14,6 +14,10 @@ Phase 2 High-Value Features:
 - Denormalize compounds in materials/settings (if applicable)
 - Complete section metadata in settings domain
 
+Phase 3 Completion Features:
+- Complete remaining section metadata in settings domain (153 sections missing order/variant)
+- Validate all domains for comprehensive compliance
+
 Date: January 8, 2026
 """
 
@@ -580,6 +584,58 @@ class ComprehensiveStandardFixer:
                 print(f"  📊 Would add {titles_added} titles")
                 print(f"  📊 Would add {section_added} section metadata blocks")
     
+    def process_settings_domain(self) -> None:
+        """Process settings domain - complete section metadata"""
+        print(f"\n{'='*80}")
+        print("PROCESSING SETTINGS DOMAIN")
+        print(f"{'='*80}")
+        
+        filepath = Path('data/settings/Settings.yaml')
+        if not filepath.exists():
+            print(f"  ⚠️  Settings file not found: {filepath}")
+            return
+        
+        with open(filepath) as f:
+            data = yaml.safe_load(f)
+        
+        if 'settings' not in data:
+            print(f"  ⚠️  No 'settings' key found in file")
+            return
+        
+        settings = data['settings']
+        print(f"Found {len(settings)} settings")
+        
+        total_section_fixed = 0
+        files_with_changes = 0
+        
+        # Process each setting
+        for setting_id, setting_data in settings.items():
+            section_fixed = self.add_complete_section_metadata(setting_data)
+            
+            if section_fixed > 0:
+                files_with_changes += 1
+                if files_with_changes <= 10:
+                    print(f"  ✅ {setting_id}: Fixed {section_fixed} sections")
+            
+            total_section_fixed += section_fixed
+            self.stats['files_processed'] += 1
+        
+        if files_with_changes > 10:
+            print(f"  ✅ Fixed {files_with_changes - 10} more settings...")
+        
+        self.stats['section_metadata_added'] += total_section_fixed
+        
+        # Write back
+        if total_section_fixed > 0:
+            if not self.dry_run:
+                with open(filepath, 'w') as f:
+                    yaml.dump(data, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
+                print(f"\n  💾 Saved changes to {filepath}")
+                print(f"  📊 Section metadata completed: {total_section_fixed}")
+            else:
+                print(f"\n  💡 Dry run - no changes saved")
+                print(f"  📊 Would complete {total_section_fixed} section metadata blocks")
+    
     def process_materials_domain(self) -> None:
         """Process materials domain for section metadata"""
         print(f"\n{'='*80}")
@@ -666,8 +722,8 @@ def main():
     parser = argparse.ArgumentParser(
         description='Implement comprehensive normalization standard compliance'
     )
-    parser.add_argument('--phase', choices=['1', '2', 'all'], default='1',
-                        help='Phase to execute (1=compounds+metadata, 2=materials+compounds, all=everything)')
+    parser.add_argument('--phase', choices=['1', '2', '3', 'all'], default='1',
+                        help='Phase to execute (1=compounds+metadata, 2=materials, 3=settings completion, all=everything)')
     parser.add_argument('--apply', action='store_true',
                         help='Apply changes (default is dry-run)')
     
@@ -677,7 +733,10 @@ def main():
     fixer = ComprehensiveStandardFixer(dry_run=not args.apply)
     
     # Determine phase number
-    phase_num = 1 if args.phase == '1' else 2 if args.phase == '2' else 2
+    if args.phase == 'all':
+        phase_num = 3
+    else:
+        phase_num = int(args.phase)
     
     # Print mode
     mode = "APPLYING CHANGES" if args.apply else "DRY RUN (use --apply to make changes)"
@@ -696,19 +755,31 @@ def main():
     if phase_num >= 2:
         print("\nPhase 2 Features:")
         print("  ✅ Denormalize materials in contaminants (8 fields)")
-        print("  ✅ Complete section metadata in settings domain")
+    
+    if phase_num >= 3:
+        print("\nPhase 3 Features:")
+        print("  ✅ Complete section metadata in settings domain (153 sections)")
     
     # Execute phases
-    fixer.process_contaminants_domain(phase=phase_num)
-    fixer.process_compounds_domain()
-    fixer.process_materials_domain()
+    if phase_num >= 1:
+        fixer.process_contaminants_domain(phase=1 if phase_num == 1 else 2)
+        fixer.process_compounds_domain()
+        fixer.process_materials_domain()
+    
+    if phase_num >= 2 and phase_num < 3:
+        # Phase 2 only
+        fixer.process_contaminants_domain(phase=2)
+    
+    if phase_num >= 3:
+        # Phase 3: settings completion
+        fixer.process_settings_domain()
     
     # Print summary
     fixer.print_summary()
     
     if not args.apply:
         print("\n💡 Run with --apply to make changes permanent")
-        print("   Example: python3 scripts/tools/comprehensive_standard_compliance.py --phase 1 --apply")
+        print("   Example: python3 scripts/tools/comprehensive_standard_compliance.py --phase 3 --apply")
 
 
 if __name__ == '__main__':
