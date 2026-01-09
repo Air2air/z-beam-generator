@@ -48,6 +48,51 @@ fields:
   
   items_key:
     type: string
+    description: "Root key in source YAML containing domain items"
+    examples: [materials, contaminants, compounds, settings]
+
+# Relationship Item Structures (Phase 1 - Jan 8, 2026)
+relationship_items:
+  
+  compound_item:
+    description: "Compound reference in contaminant/material relationships"
+    required_fields:
+      - id              # kebab-case identifier
+      - title           # Display title for cards
+      - name            # Full compound name
+      - category        # Classification (toxic_gas, carcinogen, etc)
+      - subcategory     # Sub-classification
+      - url             # Full path: /compounds/{category}/{subcategory}/{id}
+      - image           # Hero image path
+      - description     # 1-2 sentence summary (max 200 chars)
+      - phase           # solid|liquid|gas|unknown
+      - hazardLevel     # high|moderate|low|unknown
+    example:
+      id: carbon-dioxide-compound
+      title: Carbon Dioxide
+      name: Carbon Dioxide
+      category: asphyxiant
+      subcategory: simple_asphyxiant
+      url: /compounds/asphyxiant/simple_asphyxiant/carbon-dioxide-compound
+      image: /images/compound/carbon-dioxide-compound-hero.jpg
+      description: Carbon dioxide safety information for laser cleaning...
+      phase: gas
+      hazardLevel: low
+  
+  section_metadata:
+    description: "Complete _section metadata for relationship sections"
+    required_fields:
+      - sectionTitle        # Human-readable section title
+      - sectionDescription  # Brief explanation of section content
+      - icon               # Icon identifier (flask-conical, layers, etc)
+      - order              # Numeric display order (5, 10, 15...)
+      - variant            # Visual style: default|warning|info|technical
+    example:
+      sectionTitle: Produced Compounds
+      sectionDescription: Hazardous compounds generated during laser cleaning
+      icon: flask-conical
+      order: 10
+      variant: warning
     description: "Root key in source YAML containing array/dict of items"
     examples:
       - "materials"
