@@ -399,9 +399,14 @@ class DomainAdapter(DataSourceAdapter):
         # CHECK FOR SCHEMA-BASED GENERATION (NEW Jan 13, 2026)
         schema_metadata = self.get_section_metadata(component_type)
         if schema_metadata and self._is_schema_based_component(component_type):
-            # Parse LLM output for title and description
-            content_to_save = self._parse_schema_output(content_data, schema_metadata)
-            logger.info(f"📝 Schema-based generation for {component_type}: parsed title + description")
+            # Check if this is new generation or conversion of existing content
+            if isinstance(content_data, dict) and 'title' in content_data:
+                # Already schema-formatted content (from new generation)
+                content_to_save = content_data
+            else:
+                # Convert existing content with embedded titles to schema format
+                content_to_save = self._convert_existing_to_schema_format(content_data, schema_metadata)
+                logger.info(f"📝 Schema-based conversion for {component_type}: separated title + description")
         else:
             # LEGACY: Convert to collapsible format if applicable
             content_to_save = self._convert_to_collapsible_if_needed(
@@ -1191,4 +1196,94 @@ class DomainAdapter(DataSourceAdapter):
         if not result['description']:
             result['description'] = content
             
+        return result
+
+    def _convert_existing_to_schema_format(self, content: str, schema_metadata: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Convert existing content with embedded titles to proper schema format.
+        
+        Handles content like '### Related Ferrous Metals Steel shares...' 
+        and separates into title and description.
+        
+        Args:
+            content: Existing content string with embedded title
+            schema_metadata: Schema metadata for the component
+            
+        Returns:
+            Dict with separated title, description, and metadata
+        """
+        import re
+        
+        # Initialize result with metadata
+        result = {
+            'title': '',
+            'description': '',
+            '_metadata': {
+                'icon': schema_metadata.get('icon', 'file-text'),
+                'order': schema_metadata.get('order', 0),
+                'variant': schema_metadata.get('variant', 'default'),
+                'convertedAt': datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z')
+            }
+        }
+        
+        # Clean the content
+        content = str(content).strip()
+        
+        # Look for markdown heading (### Title)
+        heading_match = re.search(r'^###\s+(.+?)(?:\n|$)', content, re.MULTILINE)
+        if heading_match:
+            # Extract the full heading line
+            heading_line = heading_match.group(1).strip()
+            
+            # If heading is very long (> 50 chars), extract just the first 3-5 words as title
+            if len(heading_line) > 50:
+                # Split into words and take first 3-5 words
+                words = heading_line.split()
+                result['title'] = ' '.join(words[:4])  # Take first 4 words as title
+                # Everything else (including remaining words from heading) becomes description
+                remaining_words = ' '.join(words[4:])
+                heading_end = heading_match.end()
+                after_heading = content[heading_end:].strip()
+                result['description'] = (remaining_words + ' ' + after_heading).strip()
+            else:
+                # Short heading - use as-is for title
+                result['title'] = heading_line
+                # Get everything after the heading line
+                heading_end = heading_match.end()
+                result['description'] = content[heading_end:].strip() or heading_line
+        else:
+            # Try to find title at start of content
+            lines = content.split('\n', 1)
+            if len(lines) >= 2:
+                # First line might be title
+                potential_title = lines[0].strip()
+                # Check if first line looks like a title (short, no punctuation at end)
+                if len(potential_title) < 80 and not potential_title.endswith(('.', '!', '?')):
+                    result['title'] = potential_title
+                    result['description'] = lines[1].strip()
+                else:
+                    # Extract first sentence as title
+                    sentences = content.split('. ', 1)
+                    if len(sentences) >= 2:
+                        result['title'] = sentences[0].strip() + '.'
+                        result['description'] = sentences[1].strip()
+                    else:
+                        # Use default title from schema
+                        result['title'] = schema_metadata.get('title', 'Section Title')
+                        result['description'] = content
+            else:
+                # Single block - use default title
+                result['title'] = schema_metadata.get('title', 'Section Title')
+                result['description'] = content
+        
+        # Clean up title (remove extra punctuation)
+        result['title'] = re.sub(r'[:#\-]+$', '', result['title']).strip()
+        
+        # Ensure we have content
+        if not result['title']:
+            result['title'] = schema_metadata.get('title', 'Section Title')
+        if not result['description']:
+            result['description'] = content
+            
+        return result
         return result
