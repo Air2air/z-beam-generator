@@ -11,13 +11,17 @@ Unlike export enrichers (temporary), backfill generators:
 Architecture:
 - Atomic writes (temp file + rename)
 - Dry-run support
-- Skip already-populated items
+- ALWAYS overwrite existing content (mandatory for structural variation)
 - Progress tracking and statistics
 
 Policy Compliance:
 - YAML source is single source of truth
 - No hardcoded values
 - Fail-fast on errors
+
+IMPORTANT: Backfill generators ALWAYS regenerate content, even if fields
+already exist. This ensures distinctive properties and structural patterns
+are applied to all materials consistently.
 - Preserve existing data
 
 Usage:

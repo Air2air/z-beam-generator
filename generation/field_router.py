@@ -27,33 +27,77 @@ class FieldRouter:
     # Field type mapping: domain → field → type
     FIELD_TYPES = {
         'materials': {
-            'pageDescription': 'text',  # Maps to pageDescription.txt
-            'micro': 'text',
+            # Legacy fields
+            'pageDescription': 'text',
+            'micro': 'text', 
             'faq': 'text',
             'power_intensity': 'data',
             'context': 'data',
+            # Schema-based relationship fields
+            'contaminatedBy': 'text',
+            'relatedMaterials': 'text',
+            'industryApplications': 'text',
+            'commonChallenges': 'text',
+            'removalMethods': 'text',
+            'preventionStrategies': 'text',
+            # Schema-based property sections
+            'materialCharacteristics': 'text',
+            'laserMaterialInteraction': 'text',
+            'physicalProperties': 'text',
+            'appearanceVariations': 'text',
+            'environmentalImpact': 'text',
         },
         'contaminants': {
-            'pageDescription': 'text',  # Maps to pageDescription.txt
+            # Legacy fields
+            'pageDescription': 'text',
             'micro': 'text',
             'compounds': 'text',
             'appearance': 'text',
             'context': 'data',
+            # Schema-based relationship fields
+            'producedByMaterials': 'text',
+            'relatedContaminants': 'text',
+            'detectionMethods': 'text',
+            'removalMethods': 'text',
+            'preventionStrategies': 'text',
+            # Schema-based safety sections
+            'healthEffects': 'text',
+            'exposureLimits': 'text',
+            'ppeRequirements': 'text',
+            'emergencyResponse': 'text',
+            'continuousMonitoring': 'text',
         },
         'compounds': {
-            'pageDescription': 'text',  # Maps to pageDescription.txt
+            # Legacy fields
+            'pageDescription': 'text',
             'health_effects': 'text',
             'exposure_guidelines': 'text',
             'detection_methods': 'text',
             'first_aid': 'text',
             'ppe_requirements': 'text',
             'regulatory_standards': 'text',
+            # Schema-based relationship fields
+            'producedFromContaminants': 'text',
+            'relatedCompounds': 'text',
+            # Schema-based safety sections
+            'healthEffects': 'text',
+            'exposureLimits': 'text',
+            'ppeRequirements': 'text',
+            'emergencyResponse': 'text',
+            'storageRequirements': 'text',
+            'regulatoryClassification': 'text',
+            'reactivity': 'text',
         },
         'settings': {
-            'pageDescription': 'text',  # Maps to pageDescription.txt
+            # Legacy fields
+            'pageDescription': 'text',
             'component_summary': 'text',
             'recommendations': 'text',
             'challenges': 'text',
+            # Schema-based sections
+            'industryApplications': 'text',
+            'commonChallenges': 'text',
+            'operationalConsiderations': 'text',
         }
     }
     

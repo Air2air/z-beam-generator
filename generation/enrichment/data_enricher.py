@@ -6,6 +6,7 @@ Reduces generic, AI-like descriptions by injecting specific, verifiable data.
 """
 
 import logging
+import random
 from pathlib import Path
 from typing import Dict, Optional
 
@@ -34,6 +35,7 @@ class DataEnricher:
         
         self.materials_path = Path(materials_path)
         self._materials = None
+        self._schema_cache = None  # Cache for section_display_schema.yaml
     
     def _load_materials(self):
         """Lazy load materials database"""
@@ -46,12 +48,58 @@ class DataEnricher:
                 logger.error(f"Failed to load materials: {e}")
                 self._materials = {}
     
-    def fetch_real_facts(self, material: str) -> Dict[str, any]:
+    def _load_schema(self):
+        """Lazy load section display schema"""
+        if self._schema_cache is None:
+            try:
+                schema_path = Path(__file__).parent.parent.parent / "data" / "schemas" / "section_display_schema.yaml"
+                self._schema_cache = read_yaml_file(schema_path)
+                logger.debug(f"Loaded section display schema")
+            except Exception as e:
+                logger.error(f"Failed to load schema: {e}")
+                self._schema_cache = {}
+    
+    def get_structural_pattern(self, component_type: str) -> Optional[str]:
+        """
+        Select a random structural pattern for the given component type.
+        
+        Provides variety in opening structures to prevent repetitive "Property X, Y, and Z..." patterns.
+        Uses weighted random selection based on pattern weights in schema.
+        
+        Args:
+            component_type: Component type (e.g., 'materialCharacteristics_description')
+            
+        Returns:
+            Structural pattern instruction string, or None if no patterns defined
+        """
+        self._load_schema()
+        
+        # Get property pool for this component type
+        property_pools = self._schema_cache.get('property_pools', {})
+        pool_config = property_pools.get(component_type, {})
+        patterns = pool_config.get('structural_patterns', [])
+        
+        if not patterns:
+            logger.debug(f"No structural patterns defined for {component_type}")
+            return None
+        
+        # Weighted random selection
+        weights = [p.get('weight', 10) for p in patterns]
+        selected = random.choices(patterns, weights=weights, k=1)[0]
+        
+        logger.info(f"Selected structural pattern '{selected['id']}' for {component_type}")
+        return selected['instruction']
+    
+    def fetch_real_facts(self, material: str, component_type: str = None) -> Dict[str, any]:
         """
         Fetch real facts about material from database.
         
+        READS pre-populated distinctive properties from source data.
+        DOES NOT calculate them on-the-fly (Core Principle 0.6 compliance).
+        
         Args:
             material: Material name
+            component_type: Component type for section-specific property reading (optional)
             
         Returns:
             Dict with properties, applications, machine settings, etc.
@@ -69,10 +117,16 @@ class DataEnricher:
             'category': material_data.get('category', ''),
             'subcategory': material_data.get('subcategory', ''),
             'properties': {},
+            'distinctive_properties': [],  # Read from source data, not calculated
             'applications': material_data.get('applications', ''),
             'machine_settings': {},
-            'key_challenges': ''
+            'key_challenges': '',
+            'structural_pattern': None  # Structural variety instruction
         }
+        
+        # Select structural pattern for variety (if component_type provided)
+        if component_type:
+            facts['structural_pattern'] = self.get_structural_pattern(component_type)
         
         # Extract property values from nested structure
         material_props = material_data.get('properties', {})
@@ -83,6 +137,17 @@ class DataEnricher:
                 unit = prop_data.get('unit', '')
                 if value is not None:
                     facts['properties'][prop_name] = f"{value} {unit}".strip()
+        
+        # READ pre-populated distinctive properties from source data (if available)
+        # These should be written by backfill/research scripts, NOT calculated here
+        if component_type:
+            # Check for section-specific distinctive properties in source data
+            section_key = f"_distinctive_{component_type}"
+            if section_key in material_data:
+                facts['distinctive_properties'] = material_data[section_key]
+                logger.info(f"Read {len(facts['distinctive_properties'])} pre-populated distinctive properties for {material}.{component_type}")
+            else:
+                logger.debug(f"No pre-populated distinctive properties found for {material}.{component_type} (run backfill to populate)")
         
         # Extract machine settings from nested structure
         settings_section = material_data.get('machine_settings', {})
@@ -131,6 +196,12 @@ class DataEnricher:
             engagement = 0.22  # 0.0-1.0 normalized (slider 3 on 1-10 scale)
         lines = []
         
+        # NEW: Include structural pattern instruction first (drives opening variety)
+        if facts.get('structural_pattern'):
+            lines.append("STRUCTURAL APPROACH:")
+            lines.append(f"  {facts['structural_pattern']}")
+            lines.append("")  # Blank line for separation
+        
         # Always include category with context detail
         if facts.get('category'):
             category_line = f"Category: {facts['category']}"
@@ -138,6 +209,20 @@ class DataEnricher:
             if context_detail >= 2 and facts.get('subcategory'):
                 category_line += f" ({facts['subcategory']})"
             lines.append(category_line)
+        
+        # NEW: Include distinctive properties first (most important for variation)
+        if facts.get('distinctive_properties'):
+            lines.append("\nDISTINCTIVE PROPERTIES (most unique to this material):")
+            for prop in facts['distinctive_properties']:
+                name_display = prop['name'].replace('_', ' ').title()
+                value_str = f"{prop['value']} {prop['unit']}".strip()
+                
+                # Add comparison if highly distinctive (z-score > 1.5)
+                if prop.get('distinctiveness_score', 0) > 1.5:
+                    comparison = 'significantly higher' if float(prop['value']) > prop.get('category_mean', 0) else 'significantly lower'
+                    lines.append(f"  • {name_display}: {value_str} ({comparison} than category average)")
+                else:
+                    lines.append(f"  • {name_display}: {value_str}")
         
         # Check jargon_removal level - if high, exclude ALL technical specs
         jargon_removal = voice_params.get('jargon_removal', 0.5) if voice_params else 0.5

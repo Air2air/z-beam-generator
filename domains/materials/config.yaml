@@ -10,6 +10,44 @@ frontmatter_pattern: "{slug}-laser-cleaning.yaml"
 # Components are dynamically detected at runtime - no hardcoded lists needed
 # See: domains/materials/prompts/ directory for actual component definitions
 
+# Component lengths (word count targets)
+component_lengths:
+  pageDescription:
+    default: 50
+    min: 40
+    max: 80
+    extraction_strategy: raw
+  micro:
+    default: 50
+    min: 30
+    max: 140
+    extraction_strategy: before_after
+  faq:
+    default: 100
+    min: 80
+    max: 150
+    extraction_strategy: json_list
+  materialCharacteristics_description:
+    default: 60
+    min: 40
+    max: 80
+    extraction_strategy: raw
+  laserMaterialInteraction_description:
+    default: 60
+    min: 40
+    max: 80
+    extraction_strategy: raw
+  related_materials:
+    default: 45
+    min: 30
+    max: 60
+    extraction_strategy: raw
+  micro_before_after:
+    default: 85
+    min: 30
+    max: 140
+    extraction_strategy: before_after
+
 # Validation rules (inherits shared defaults)
 validation:
   inherit_shared_defaults: true

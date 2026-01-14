@@ -92,6 +92,9 @@ class Generator:
         # Load personas
         self.personas = self._load_all_personas()
         
+        # Humanness cache (session-level to avoid regenerating for each field)
+        self._humanness_cache = {}
+        
         self.logger.info(f"Generator initialized for '{domain}' domain (single-pass with research)")
     
     def _load_all_personas(self) -> Dict[int, Dict[str, Any]]:
@@ -251,22 +254,33 @@ class Generator:
             if key not in item_data and value is not None:
                 item_data[key] = value
         
-        # Generate humanness layer if not provided
+        # Generate humanness layer if not provided (with session-level caching)
         if humanness_layer is None:
-            from learning.humanness_optimizer import HumannessOptimizer
-            humanness_optimizer = HumannessOptimizer()
-            humanness_layer = humanness_optimizer.generate_humanness_instructions(
-                component_type=component_type
-            )
-            print(f"🧠 Generating humanness instructions...")
-            self.logger.info(f"🧠 Generated humanness layer ({len(humanness_layer)} chars)")
+            cache_key = f"{component_type}"
+            
+            # Check cache first (avoid regenerating for each field)
+            if cache_key in self._humanness_cache:
+                humanness_layer = self._humanness_cache[cache_key]
+                print(f"♻️  Using cached humanness instructions ({len(humanness_layer)} chars)")
+                self.logger.info(f"♻️  Using cached humanness layer from previous generation")
+            else:
+                from learning.humanness_optimizer import HumannessOptimizer
+                humanness_optimizer = HumannessOptimizer()
+                humanness_layer = humanness_optimizer.generate_humanness_instructions(
+                    component_type=component_type
+                )
+                print(f"🧠 Generating humanness instructions...")
+                self.logger.info(f"🧠 Generated humanness layer ({len(humanness_layer)} chars)")
+                
+                # Cache for subsequent fields in this session
+                self._humanness_cache[cache_key] = humanness_layer
         
         # Get author ID using adapter (domain-agnostic)
         author_id = self.adapter.get_author_id(item_data)
         voice = self._get_persona_by_author_id(author_id)
         
-        # Get facts and context
-        facts = self.enricher.fetch_real_facts(identifier)
+        # Get facts and context (pass component_type for section-specific property selection)
+        facts = self.enricher.fetch_real_facts(identifier, component_type=component_type)
         context = self._build_context(item_data)
         
         # Get base parameters
@@ -559,10 +573,22 @@ class Generator:
         self.logger.info("📡 Making API request...")
         from shared.api.client import GenerationRequest
         
+        # Calculate optimal max_tokens based on target length (reduces token waste)
+        component_lengths = self.config.get('component_lengths', {})
+        if isinstance(component_lengths.get(component_type), dict):
+            target_words = component_lengths[component_type].get('default', 150)
+        else:
+            target_words = component_lengths.get(component_type, 150)
+        
+        # Allow 2.5x target for natural completion + safety margin
+        # Average: 1 token ≈ 0.75 words, so words * 1.33 ≈ tokens
+        optimal_max_tokens = int(target_words * 2.5 * 1.33)
+        optimal_max_tokens = max(200, min(optimal_max_tokens, 4096))  # Clamp 200-4096
+        
         try:
             request = GenerationRequest(
                 prompt=prompt,
-                max_tokens=4096,  # Large limit to allow natural completion (Grok max context)
+                max_tokens=optimal_max_tokens,  # Dynamic based on target length (was 4096)
                 temperature=params['temperature'],
                 **params.get('api_penalties', {})
             )

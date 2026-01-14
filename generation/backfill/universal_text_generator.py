@@ -109,17 +109,15 @@ class UniversalTextGenerator(BaseBackfillGenerator):
         display_name = item_data.get('display_name', item_data.get('name', item_id))
         
         logger.info(f"  🎨 Generating {len(self.field_mappings)} field(s) for {display_name}")
+        logger.info(f"  📋 Field mappings: {[m['field'] for m in self.field_mappings]}")
         
         for mapping in self.field_mappings:
             field = mapping['field']
             component_type = mapping['component_type']
             
-            # Skip if field already populated (multi-field mode)
-            if self.mode == 'multi':
-                existing_value = item_data.get(field)
-                if existing_value and (not isinstance(existing_value, str) or len(existing_value) > 10):
-                    logger.info(f"    ⏭️  {field}: already populated")
-                    continue
+            # MANDATORY: Always overwrite existing text (structural variation requirement)
+            # This ensures distinctive properties and structural patterns are applied
+            # No skip logic - regeneration updates stale/generic content
             
             try:
                 # Use QualityEvaluatedGenerator with schema-based prompts
@@ -133,8 +131,9 @@ class UniversalTextGenerator(BaseBackfillGenerator):
                 )
                 
                 if result.success and result.content:
-                    # Update item data with generated content
-                    item_data[field] = result.content
+                    # Update item data with generated content (handle nested paths)
+                    self._set_nested_field(item_data, field, result.content)
+                    logger.info(f"{prefix}   📝 Set {field} = '{result.content[:50]}...'")
                     
                     # Extract quality score (try different possible locations)
                     quality_score = 0.0
@@ -157,6 +156,33 @@ class UniversalTextGenerator(BaseBackfillGenerator):
                 traceback.print_exc()
         
         return item_data
+
+
+    def _set_nested_field(self, data: dict, path: str, value: str):
+        """Set a field value in nested dict using dot-notation path."""
+        parts = path.split('.')
+        current = data
+        
+        # Navigate to the parent of the target field
+        for part in parts[:-1]:
+            if part not in current:
+                current[part] = {}
+            current = current[part]
+        
+        # Set the final field
+        current[parts[-1]] = value
+
+
+    def _should_skip(self, item_data: dict) -> bool:
+        """
+        MANDATORY: Always return False - Never skip generation.
+        
+        This ensures structural patterns and distinctive properties
+        are applied consistently, even if fields already have content.
+        
+        See: docs/08-development/MANDATORY_OVERWRITE_POLICY.md
+        """
+        return False
 
 
 # Register for common component types

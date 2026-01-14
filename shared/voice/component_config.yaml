@@ -144,6 +144,44 @@ quality_control:
   target_audience: "quality engineers"
   word_count_range: [80, 160]
 
+# Material Characteristics section description
+materialCharacteristics_description:
+  intensity_level: "level_3_moderate"  # Physical and mechanical properties
+  formality: "professional-technical"
+  target_audience: "materials engineers"
+  word_count_range: [40, 80]  # 1-2 sentences
+  
+  style_notes:
+    - "Ground in distinctive material properties"
+    - "Use structural variety (comparative, causal, property-isolation openings)"
+    - "Connect properties to laser cleaning outcomes"
+
+# Laser-Material Interaction section description
+laserMaterialInteraction_description:
+  intensity_level: "level_3_moderate"  # Optical and thermal properties
+  formality: "professional-technical"
+  target_audience: "laser technicians and materials engineers"
+  word_count_range: [40, 80]  # 1-2 sentences
+  
+  style_notes:
+    - "Focus on energy absorption, heat dissipation, wavelength response"
+    - "Use structural variety (thermal cascade, power requirements, threshold focus)"
+    - "Explain how properties drive cleaning parameters"
+
+# Related Materials relationship description
+related_materials:
+  intensity_level: "level_2_light"
+  formality: "professional"
+  target_audience: "technical professionals"
+  word_count_range: [30, 60]
+
+# Micro Before/After composite
+micro_before_after:
+  intensity_level: "level_4_plus_enhanced"
+  formality: "professional-technical"
+  target_audience: "engineers and materials specialists"
+  word_count_range: [30, 140]
+
 # ============================================================================
 # INTENSITY LEVEL REFERENCE
 # ============================================================================

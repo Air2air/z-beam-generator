@@ -349,8 +349,12 @@ class QualityAnalyzer:
                 persona = yaml.safe_load(f)
                 forbidden = persona.get('forbidden', {})
                 
-                # Check ALL forbidden categories uniformly
+                # Check forbidden categories but SKIP direct_address (allow "we", "you", etc.)
                 for category, phrases in forbidden.items():
+                    # Skip direct_address blocking (user requested this)
+                    if category == 'direct_address':
+                        continue
+                        
                     for phrase in phrases:
                         if phrase.lower() in text_lower:
                             violations.append(f"{category}: '{phrase}'")

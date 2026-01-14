@@ -19,6 +19,7 @@ Usage:
 import logging
 import tempfile
 import yaml
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -233,16 +234,23 @@ class DomainAdapter(DataSourceAdapter):
         """
         Get prompt template for component type from domain config.
         
-        Supports two formats:
-        1. Inline prompt: prompt content directly in config YAML
-        2. External file: "@path/to/file.txt" loads from external file
+        Supports three formats:
+        1. Schema-based: Load from section_display_schema.yaml
+        2. Inline prompt: prompt content directly in config YAML
+        3. External file: "@path/to/file.txt" loads from external file
         
         Args:
-            component_type: Component type (e.g., 'micro', 'component_summary', 'page_title')
+            component_type: Component type (e.g., 'micro', 'contaminatedBy', 'materialCharacteristics')
             
         Returns:
             Prompt template string or None if not found
         """
+        # First try schema-based prompts (NEW)
+        schema_prompt = self._get_schema_prompt(component_type)
+        if schema_prompt:
+            return schema_prompt
+        
+        # Fallback to config-based prompts (LEGACY)
         prompts = self.config.get('prompts', {})
         prompt_value = prompts.get(component_type)
         
@@ -272,6 +280,88 @@ class DomainAdapter(DataSourceAdapter):
         # Regular inline prompt
         return prompt_value
     
+    def _get_schema_prompt(self, component_type: str) -> Optional[str]:
+        """
+        Load prompt from section_display_schema.yaml.
+        
+        Args:
+            component_type: Component type to look up
+            
+        Returns:
+            Prompt string or None if not found in schema
+        """
+        try:
+            # Load schema (cache it for performance)
+            if not hasattr(self, '_schema_cache'):
+                schema_path = Path("data/schemas/section_display_schema.yaml")
+                with open(schema_path, 'r', encoding='utf-8') as f:
+                    import yaml
+                    self._schema_cache = yaml.safe_load(f)
+            
+            # Look up component in sections
+            sections = self._schema_cache.get('sections', {})
+            if component_type in sections:
+                return sections[component_type].get('prompt')
+            
+            return None
+            
+        except Exception as e:
+            logger.debug(f"Schema prompt lookup failed for {component_type}: {e}")
+            return None
+
+    def get_section_metadata(self, component_type: str) -> Dict[str, Any]:
+        """
+        Get section metadata (title, description, icon, etc.) from schema.
+        
+        Args:
+            component_type: Component type to look up
+            
+        Returns:
+            Dict with title, description, icon, order, variant, wordCount
+        """
+        try:
+            # Load schema (reuse cache)
+            if not hasattr(self, '_schema_cache'):
+                schema_path = Path("data/schemas/section_display_schema.yaml")
+                with open(schema_path, 'r', encoding='utf-8') as f:
+                    import yaml
+                    self._schema_cache = yaml.safe_load(f)
+            
+            # Look up component in sections
+            sections = self._schema_cache.get('sections', {})
+            if component_type in sections:
+                section_data = sections[component_type]
+                return {
+                    'title': section_data.get('title', component_type.title()),
+                    'description': section_data.get('description', ''),
+                    'icon': section_data.get('icon', 'file-text'),
+                    'order': section_data.get('order', 0),
+                    'variant': section_data.get('variant', 'default'),
+                    'wordCount': section_data.get('wordCount', 200)
+                }
+            
+            # Fallback for unknown components
+            return {
+                'title': component_type.replace('_', ' ').title(),
+                'description': f'{component_type} description',
+                'icon': 'file-text',
+                'order': 99,
+                'variant': 'default',
+                'wordCount': 200
+            }
+            
+        except Exception as e:
+            logger.error(f"Failed to load section metadata for {component_type}: {e}")
+            # Return fallback metadata
+            return {
+                'title': component_type.replace('_', ' ').title(),
+                'description': f'{component_type} description', 
+                'icon': 'file-text',
+                'order': 99,
+                'variant': 'default',
+                'wordCount': 200
+            }
+    
     def write_component(
         self,
         identifier: str,
@@ -280,6 +370,9 @@ class DomainAdapter(DataSourceAdapter):
     ) -> None:
         """
         Write generated content to domain data YAML atomically.
+        
+        SCHEMA INTEGRATION (Jan 13, 2026):
+        Supports schema-based generation with title/description parsing.
         
         CORE PRINCIPLE 0.6 COMPLIANCE (Jan 5, 2026):
         Enriches data at GENERATION TIME, not export time.
@@ -292,7 +385,7 @@ class DomainAdapter(DataSourceAdapter):
         Args:
             identifier: Item name/ID
             component_type: Component type
-            content_data: Content to write
+            content_data: Content to write (may be parsed into title/description)
         """
         # Reload fresh data
         self.invalidate_cache()
@@ -303,14 +396,20 @@ class DomainAdapter(DataSourceAdapter):
         if identifier not in items:
             raise ValueError(f"'{identifier}' not found in {self.data_path}")
         
-        # PHASE 2: Convert to collapsible format if applicable (NEW Jan 5, 2026)
-        # Pass item data for metadata enrichment (author info, etc.)
-        content_to_save = self._convert_to_collapsible_if_needed(
-            content_data, 
-            component_type, 
-            identifier,
-            items.get(identifier)  # Pass item data for author/metadata
-        )
+        # CHECK FOR SCHEMA-BASED GENERATION (NEW Jan 13, 2026)
+        schema_metadata = self.get_section_metadata(component_type)
+        if schema_metadata and self._is_schema_based_component(component_type):
+            # Parse LLM output for title and description
+            content_to_save = self._parse_schema_output(content_data, schema_metadata)
+            logger.info(f"📝 Schema-based generation for {component_type}: parsed title + description")
+        else:
+            # LEGACY: Convert to collapsible format if applicable
+            content_to_save = self._convert_to_collapsible_if_needed(
+                content_data, 
+                component_type, 
+                identifier,
+                items.get(identifier)  # Pass item data for author/metadata
+            )
         
         # Determine target field (may differ from component_type)
         target_field = self._get_target_field(component_type)
@@ -354,6 +453,20 @@ class DomainAdapter(DataSourceAdapter):
         
         Path(temp_path).replace(self.data_path)
         self.invalidate_cache()
+        
+        logger.info(f"✅ {component_type} written to {self.data_path} → {self.data_root_key}.{identifier}.{component_type}")
+        
+        # DUAL-WRITE POLICY (MANDATORY): Immediately sync field to frontmatter
+        logger.info(f"🔄 Syncing {component_type} to frontmatter for {identifier}...")
+        
+        # Sync field to frontmatter after successful save
+        try:
+            from shared.frontmatter.field_sync import sync_field_to_frontmatter
+            sync_field_to_frontmatter(identifier, component_type, domain=self.domain)
+            logger.info(f"✅ Frontmatter sync complete for {identifier}.{component_type}")
+        except Exception as sync_error:
+            logger.warning(f"⚠️  Frontmatter sync failed for {identifier}.{component_type}: {sync_error}")
+            # Don't fail the main operation for frontmatter sync issues
         
         logger.info(f"✅ {component_type} written to {self.data_path} → {self.data_root_key}.{identifier}.{component_type}")
         
@@ -981,3 +1094,101 @@ class DomainAdapter(DataSourceAdapter):
         logger.debug(f"  + dateModified: {item_data['dateModified']}")
         
         return item_data
+
+    def _is_schema_based_component(self, component_type: str) -> bool:
+        """
+        Check if component type is schema-based (uses title/description structure).
+        
+        Args:
+            component_type: Component type to check
+            
+        Returns:
+            True if component uses schema-based generation
+        """
+        # List of schema-based components that generate title + description
+        schema_components = {
+            'contaminatedBy', 'relatedMaterials', 'materialCharacteristics',
+            'laserMaterialInteraction', 'physicalProperties', 'appearanceVariations',
+            'healthEffects', 'exposureLimits', 'ppeRequirements', 'emergencyResponse',
+            'storageRequirements', 'regulatoryStandards', 'regulatoryClassification',
+            'industryApplications', 'commonChallenges', 'detectionMethods',
+            'preventionStrategies', 'removalMethods', 'environmentalImpact',
+            'continuousMonitoring', 'reactivity', 'producedByMaterials',
+            'producedFromContaminants', 'relatedContaminants', 'relatedCompounds'
+        }
+        return component_type in schema_components
+
+    def _parse_schema_output(self, content_data: str, schema_metadata: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Parse LLM output into title and description fields.
+        
+        The LLM generates content like:
+        "Title: Steel Contamination Issues
+        
+        Description: Steel surfaces typically accumulate rust, oils, and industrial debris..."
+        
+        Args:
+            content_data: Raw LLM output string
+            schema_metadata: Schema metadata with expected structure
+            
+        Returns:
+            Dict with title, description, and metadata
+        """
+        import re
+        
+        # Initialize result with metadata
+        result = {
+            'title': '',
+            'description': '',
+            '_metadata': {
+                'icon': schema_metadata.get('icon', 'file-text'),
+                'order': schema_metadata.get('order', 0),
+                'variant': schema_metadata.get('variant', 'default'),
+                'generatedAt': datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z')
+            }
+        }
+        
+        # Clean the content
+        content = str(content_data).strip()
+        
+        # Try to parse structured output (Title: ... Description: ...)
+        title_match = re.search(r'(?:^|\n)\s*(?:Title|TITLE):\s*(.+?)(?:\n|$)', content, re.MULTILINE)
+        if title_match:
+            result['title'] = title_match.group(1).strip()
+            
+            # Extract description after title
+            desc_match = re.search(r'(?:Description|DESCRIPTION):\s*(.+)', content, re.DOTALL)
+            if desc_match:
+                result['description'] = desc_match.group(1).strip()
+            else:
+                # Everything after title line
+                remaining = content[title_match.end():].strip()
+                result['description'] = remaining
+        else:
+            # Fallback: split on first line break or use heuristics
+            lines = content.split('\n', 1)
+            if len(lines) >= 2:
+                # First line as title, rest as description
+                result['title'] = lines[0].strip()
+                result['description'] = lines[1].strip()
+            else:
+                # Single block - extract first sentence as title
+                sentences = content.split('. ', 1)
+                if len(sentences) >= 2:
+                    result['title'] = sentences[0].strip() + '.'
+                    result['description'] = sentences[1].strip()
+                else:
+                    # Very short content - use as description with generic title
+                    result['title'] = f"{schema_metadata.get('title', 'Details')}"
+                    result['description'] = content
+        
+        # Clean up title (remove colons, extra punctuation)
+        result['title'] = re.sub(r'[:\-]+$', '', result['title']).strip()
+        
+        # Ensure we have content
+        if not result['title']:
+            result['title'] = schema_metadata.get('title', 'Section Title')
+        if not result['description']:
+            result['description'] = content
+            
+        return result

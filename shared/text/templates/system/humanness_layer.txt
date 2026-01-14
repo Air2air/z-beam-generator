@@ -13,14 +13,14 @@
 • Academic transitions: "Furthermore", "Moreover", "Additionally"
 • Passive voice: "can be seen", "is observed", "presents challenges"
 • Perfect parallel structures or uniform sentence lengths
+• **REPEATING THE SAME OPENING** across multiple fields (low variation detected)
 
-✅ **SUCCESSFUL OPENINGS**:
-• "When laser cleaning [material], you'll want to..."
-• "The key with [material] is..."
-• "When cleaning [material], watch..."
-• "If you're cleaning [material], start by..."
+🚫 **OVERUSED PATTERNS - DO NOT USE**:
+{overused_opening_patterns}
 
-**CRITICAL**: Write as an experienced technician explaining to an apprentice.
+**CRITICAL REQUIREMENT**: Each field in this generation session MUST use a DIFFERENT opening structure.
+If you just wrote "When laser cleaning [material]...", you CANNOT start the next field with the same pattern.
+VARY YOUR STRUCTURE across all fields generated in this batch.
 
 **NOTE**: Voice and tone come from VOICE INSTRUCTIONS above.
 This section provides structural variation ONLY.
@@ -34,9 +34,15 @@ This section provides structural variation ONLY.
 **CONVERSATIONAL MARKERS**:
 {conversational_markers}
 
-**STRUCTURAL DIVERSITY**:
-{structural_diversity_patterns}
-{winston_success_patterns}
+**STRUCTURAL DIVERSITY** ({structural_sample_count} verified patterns):
+{successful_structural_patterns}
+
+🎯 **STRUCTURAL VARIATION ENFORCEMENT**:
+If generating multiple fields in one session:
+• Field 1: Use opening structure A
+• Field 2: Use DIFFERENT opening structure B  
+• Field 3: Use DIFFERENT opening structure C
+NEVER repeat the same opening pattern across fields in the same generation session.
 
 **THEATRICAL PHRASES - NEVER USE** (MANDATORY EXCLUSION):
 {theatrical_phrases_list}

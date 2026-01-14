@@ -190,6 +190,8 @@ sections:
     order: 12
     variant: default
     wordCount: 175
+    title: "Physical Properties"
+    description: "Essential physical characteristics and behavior"
     prompt: "Generate title and description for THIS ITEM'S physical properties. Title should be concise (3-5 words) and item-specific. Description must specify WHAT makes THIS item's physical state/transitions unique, HOW THIS item's density/thermal/mechanical properties drive ITS behavior, WHY THIS item requires PARTICULAR handling based on ITS physics (not chemistry), and WHICH properties distinguish THIS item physically."
   
   page:
@@ -209,6 +211,8 @@ sections:
     order: 20
     variant: default
     wordCount: 125
+    title: "Visual Appearance"
+    description: "Physical appearance and visual characteristics"
     prompt: "Generate title and description for THIS ITEM'S appearance. Title should be concise (3-5 words) and item-specific. Description must specify HOW this item looks based on ITS composition, WHAT visual changes occur with THIS item under different conditions (unique to it, not generic aging), WHICH features distinguish THIS item from similar ones, and WHY THIS item's appearance matters for identification."
   
   # SAFETY GROUP (30-39): Health, regulatory, and emergency information
@@ -217,6 +221,8 @@ sections:
     order: 30
     variant: warning
     wordCount: 250
+    title: "Health Effects"
+    description: "Health impacts and biological effects"
     prompt: "Generate title and description for THIS ITEM'S health impacts. Title should be concise (3-5 words) and item-specific. Description must detail HOW this item's SPECIFIC chemistry causes health effects, WHICH organs/systems THIS item targets based on ITS molecular properties, WHAT dose-response is UNIQUE to this substance, and WHY THIS item creates PARTICULAR acute and chronic risks."
   
   exposureLimits:
@@ -224,6 +230,8 @@ sections:
     order: 31
     variant: warning
     wordCount: 200
+    title: "Exposure Limits"
+    description: "Regulatory exposure thresholds and monitoring"
     prompt: "Generate title and description for THIS ITEM'S exposure limits. Title should be concise (3-5 words) and item-specific. Description must specify WHAT exposure levels THIS item allows, WHY these limits are set for THIS substance (toxicity, target organs, dose-response), HOW THIS item's limits compare to similar substances, and WHICH monitoring THIS item requires based on ITS exposure dynamics."
   
   ppeRequirements:
@@ -231,6 +239,8 @@ sections:
     order: 32
     variant: default
     wordCount: 200
+    title: "PPE Requirements"
+    description: "Personal protective equipment and safety measures"
     prompt: "Generate title and description for PPE requirements FOR THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH protection levels THIS item requires based on ITS hazard profile, WHAT makes THIS item need PARTICULAR respiratory/eye/skin protection (volatility, pH, reactivity specific to it), and WHY standard PPE may be insufficient for THIS substance's UNIQUE penetration risks."
   
   emergencyResponse:
@@ -238,6 +248,8 @@ sections:
     order: 33
     variant: danger
     wordCount: 225
+    title: "Emergency Response"
+    description: "Emergency procedures and first aid"
     prompt: "Generate title and description for emergency procedures WITH THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHAT makes THIS item's exposures require SPECIFIC first aid (not generic), WHICH treatments counter THIS item's PARTICULAR effects, WHY timing matters for THIS substance (reactivity, absorption rate), and HOW containment differs for THIS item's UNIQUE properties."
   
   storageRequirements:
@@ -245,6 +257,8 @@ sections:
     order: 34
     variant: default
     wordCount: 200
+    title: "Storage Requirements"
+    description: "Storage conditions and container compatibility"
     prompt: "Generate title and description for STORING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHY this item needs SPECIFIC storage conditions (instability, reactivity, vapor pressure), WHAT makes THIS item incompatible with certain materials (reactions unique to it), WHICH containers suit THIS item's properties, and HOW THIS item's storage differs from similar substances."
   
   regulatoryStandards:
@@ -252,6 +266,8 @@ sections:
     order: 35
     variant: default
     wordCount: 225
+    title: "Regulatory Standards"
+    description: "Compliance requirements and regulatory framework"
     prompt: "Generate title and description for standards GOVERNING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH regulations apply to THIS item's SPECIFIC hazards, WHAT makes THIS item require PARTICULAR compliance measures (toxicity, flammability, reactivity unique to it), and HOW THIS item's characteristics determine ITS regulatory classification."
   
   regulatoryClassification:
@@ -259,6 +275,8 @@ sections:
     order: 36
     variant: default
     wordCount: 225
+    title: "Regulatory Classification"
+    description: "GHS classification and hazard codes"
     prompt: "Generate title and description for THIS ITEM'S classifications. Title should be concise (3-5 words) and item-specific. Description must specify WHICH GHS classes THIS item falls into based on ITS properties, WHAT H-codes/P-codes reflect THIS item's SPECIFIC hazards (not generic), HOW THIS item is classified for transport, and WHY THIS item requires PARTICULAR designations."
   
   # OPERATIONAL GROUP (40-49): Practical usage and handling information
@@ -267,6 +285,8 @@ sections:
     order: 40
     variant: default
     wordCount: 175
+    title: "Industry Applications"
+    description: "Industrial uses and application contexts"
     prompt: "Generate title and description for WHERE THIS ITEM appears. Title should be concise (3-5 words) and item-specific. Description must detail WHICH industries use/encounter THIS item, WHY THIS item's SPECIFIC properties suit or challenge these applications (thermal, mechanical, chemical characteristics unique to it), and HOW THIS item's behavior differs from alternatives in THESE contexts."
   
   commonChallenges:
@@ -274,6 +294,8 @@ sections:
     order: 41
     variant: default
     wordCount: 175
+    title: "Common Challenges"
+    description: "Handling difficulties and operational issues"
     prompt: "Generate title and description for CHALLENGES WITH THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHAT makes THIS item difficult to handle (properties unique to it), WHY these challenges arise from THIS item's SPECIFIC characteristics, HOW operators solve problems UNIQUE to this item (not generic solutions), and WHICH proven strategies work for THIS item."
   
   detectionMethods:
@@ -281,6 +303,8 @@ sections:
     order: 42
     variant: default
     wordCount: 175
+    title: "Detection Methods"
+    description: "Identification and measurement techniques"
     prompt: "Generate title and description for DETECTING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHICH detection methods work for THIS item based on ITS properties (spectral, chemical, physical signatures), WHY THIS item requires SPECIFIC techniques (detection challenges unique to it), HOW reliable each method is for THIS item, and WHAT distinguishes THIS item from similar substances."
   
   preventionStrategies:
@@ -288,6 +312,8 @@ sections:
     order: 43
     variant: default
     wordCount: 175
+    title: "Prevention Strategies"
+    description: "Prevention methods and control measures"
     prompt: "Generate title and description for PREVENTING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify HOW to stop THIS item's formation based on ITS SPECIFIC mechanisms (chemistry, environmental factors unique to it), WHICH controls target THIS item's formation pathways, WHY standard prevention may fail for THIS item, and WHAT conditions favor THIS item specifically."
   
   removalMethods:
@@ -295,6 +321,8 @@ sections:
     order: 44
     variant: default
     wordCount: 200
+    title: "Removal Methods"
+    description: "Cleaning and remediation techniques"
     prompt: "Generate title and description for REMOVING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH methods work for THIS item based on ITS bonding/adhesion properties, WHY THIS item requires PARTICULAR techniques (chemistry, mechanical bonds unique to it), HOW removal approaches compare for THIS item, and WHAT makes THIS item easier or harder to remove than similar items."
   
   environmentalImpact:
@@ -302,6 +330,8 @@ sections:
     order: 45
     variant: default
     wordCount: 200
+    title: "Environmental Impact"
+    description: "Environmental effects and disposal considerations"
     prompt: "Generate title and description for THIS ITEM'S environmental effects. Title should be concise (3-5 words) and item-specific. Description must detail HOW this item impacts environment based on ITS properties (persistence, bioaccumulation, degradation unique to it), WHY THIS item poses PARTICULAR risks to air/water/soil, WHICH disposal methods suit THIS item's chemistry, and HOW THIS item differs environmentally from alternatives."
   
   faq:
@@ -321,6 +351,8 @@ sections:
     order: 50
     variant: default
     wordCount: 200
+    title: "Continuous Monitoring"
+    description: "Real-time detection and monitoring systems"
     prompt: "Generate title and description for CONTINUOUS MONITORING of THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH real-time instruments monitor THIS item based on ITS signatures (spectral, electrochemical), HOW to set up continuous sampling for THIS item given ITS state/volatility, WHAT monitoring intervals THIS item requires based on ITS exposure dynamics, and WHICH automated thresholds trigger alerts for THIS substance."
   
   # INTERACTIONS GROUP (60-69): Chemical reactions and material relationships
@@ -329,6 +361,8 @@ sections:
     order: 60
     variant: default
     wordCount: 200
+    title: "Chemical Reactivity"
+    description: "Chemical reactions and reactivity patterns"
     prompt: "Generate title and description for THIS ITEM'S chemical reactivity. Title should be concise (3-5 words) and item-specific. Description must detail HOW this item's SPECIFIC molecular structure drives ITS reactions, WHICH substances it reacts with based on ITS unique chemistry, WHAT conditions trigger THIS item's reactions, and WHY THIS item's reactivity requires SPECIFIC handling."
   
   contaminatedBy:
@@ -336,6 +370,8 @@ sections:
     order: 61
     variant: default
     wordCount: 175
+    title: "Contaminated By"
+    description: "Common contaminants affecting this material"
     prompt: "Generate title and description emphasizing THIS MATERIAL'S specific contamination vulnerabilities. Title should be concise (3-5 words) and item-specific. Description should explain WHY these contaminants target THIS material's unique properties (surface chemistry, porosity, reactivity) and HOW they accumulate based on ITS DISTINCT characteristics, not generic contamination patterns."
   
   producedByMaterials:
@@ -343,6 +379,8 @@ sections:
     order: 62
     variant: default
     wordCount: 175
+    title: "Produced By Materials"
+    description: "Materials that create this contaminant"
     prompt: "Generate title and description identifying materials that CREATE THIS CONTAMINANT. Title should be concise (3-5 words) and item-specific. Description must specify WHAT makes these materials produce THIS contaminant (unique chemical reactions, thermal decomposition, oxidation pathways specific to THIS contaminant), WHICH conditions favor ITS formation, and HOW material properties drive THIS particular contamination."
   
   producedFromContaminants:
@@ -350,6 +388,8 @@ sections:
     order: 63
     variant: default
     wordCount: 175
+    title: "Produced From Contaminants"
+    description: "Contaminants that form this compound"
     prompt: "Generate title and description showing contaminants that FORM THIS COMPOUND. Title should be concise (3-5 words) and item-specific. Description must detail THE SPECIFIC REACTIONS creating THIS compound, ITS UNIQUE formation chemistry (not general pathways), WHY this compound's structure creates PARTICULAR safety risks, and WHAT makes THIS compound's formation conditions distinctive."
   
   relatedContaminants:
@@ -357,6 +397,8 @@ sections:
     order: 64
     variant: default
     wordCount: 150
+    title: "Related Contaminants"
+    description: "Similar or associated contaminants"
     prompt: "Generate title and description highlighting contaminants RELATED TO THIS ONE. Title should be concise (3-5 words) and item-specific. Description must explain WHAT connects THIS contaminant to related ones (shared chemistry, co-formation mechanisms), WHY they appear together in THIS context, and HOW understanding THIS contaminant's relationships informs cleaning strategies SPECIFIC to its profile."
   
   relatedCompounds:
@@ -364,4 +406,6 @@ sections:
     order: 65
     variant: default
     wordCount: 150
+    title: "Related Compounds"
+    description: "Similar or associated chemical compounds"
     prompt: "Generate title and description identifying compounds RELATED TO THIS ONE. Title should be concise (3-5 words) and item-specific. Description must specify WHAT makes these compounds similar to THIS one (functional groups, molecular structure, reactivity), WHICH properties THIS compound shares with them, and WHY these relationships matter for understanding THIS compound's behavior and potential substitutes."
