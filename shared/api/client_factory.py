@@ -130,8 +130,20 @@ class APIClientFactory:
             print(f"⚠️  [CLIENT FACTORY] Error loading cache config: {e}")
             cache_config = None
         
+        # WINSTON SPECIAL CASE: Always use regular API client (not cached)
+        # Winston requires direct API access for check_text() method
+        if provider.lower() == 'winston':
+            print(f"🚀 [CLIENT FACTORY] Initializing {provider_config['name']} API client (WINSTON - NO CACHE)...")
+            client = APIClient(**client_kwargs)
+            print("✅ [CLIENT FACTORY] Winston API client created successfully")
+        # WINSTON SPECIAL CASE: Always use regular API client (not cached)
+        # Winston requires direct API access for check_text() method
+        if provider.lower() == 'winston':
+            print(f"🚀 [CLIENT FACTORY] Initializing {provider_config['name']} API client (WINSTON - NO CACHE)...")
+            client = APIClient(**client_kwargs)
+            print("✅ [CLIENT FACTORY] Winston API client created successfully")
         # Create cached client if cache config exists, otherwise regular client
-        if cache_config is not None:
+        elif cache_config is not None:
             client_kwargs["cache_config"] = cache_config
             print(f"🚀 [CLIENT FACTORY] Initializing CACHED {provider_config['name']} API client...")
             client = CachedAPIClient(**client_kwargs)

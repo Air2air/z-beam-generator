@@ -56,7 +56,7 @@ Copilot will automatically:
 ```
 prompts/
 ├── subtitle.txt        ← 21-63 word subtitle instructions
-├── micro.txt         ← 25-word caption instructions
+├── micro.txt         ← 25-word micro instructions
 ├── description.txt     ← 60-word base target (actual: ~120-180 words)
 ├── faq.txt            ← FAQ generation instructions
 └── troubleshooter.txt ← Troubleshooting guide instructions
@@ -81,7 +81,7 @@ data/materials/Materials.yaml   ← Generated content saved here
 
 Aluminum:
   subtitle: "Generated subtitle appears here"
-  micro: "Generated caption appears here"
+  micro: "Generated micro content appears here"
   faq:
     - question: "Generated question"
       answer: "Generated answer"

@@ -41,6 +41,15 @@ professional_voice: 5                    # Professional tone level (1=casual, 10
 # Legacy code accessing length_variation_range or word_count_variation will receive defaults (50%).
 length_variation_range: 5                # Default 5/10 (50% variation) for backwards compatibility (valid range: 1-10)
 
+# Length Control Settings (NEW - Jan 9, 2026)
+# Smart truncation system for precise word count compliance
+length_control:
+  enable_smart_truncation: true          # Apply smart truncation to meet word targets (100% accuracy)
+  default_target_words: 50               # Fallback target if no prompt guidance found
+  tolerance: 0.1                         # Allow 10% overage before aggressive truncation
+  preserve_sentences: true               # Prefer sentence boundaries when truncating
+  log_truncation: true                   # Display truncation statistics in terminal
+
 # Temperature Variation Range (NEW - Dec 12, 2025)
 # Adds randomness to base temperature for each generation
 # Base temperature from dynamic_config, then add random variation
@@ -74,12 +83,69 @@ randomization_targets:
     - "property_emphasis"
     - "comparative"
   
+  # Sentence structures for variety
+  structures:
+    simple:
+      label: "Simple Structure"
+      description: "Single independent clause with clear, direct expression"
+      probability: 0.3
+    compound:
+      label: "Compound Structure"
+      description: "Two independent clauses joined by coordinating conjunction"
+      probability: 0.3
+    complex:
+      label: "Complex Structure"
+      description: "Independent clause with dependent clause for depth"
+      probability: 0.25
+    compound_complex:
+      label: "Compound-Complex Structure"
+      description: "Multiple clauses combining coordination and subordination"
+      probability: 0.15
+  
   # Rhythm patterns for sentence variation
-  rhythm_patterns:
-    - "varied"
-    - "balanced"
-    - "short_punch"
-    - "flowing"
+  rhythms:
+    varied:
+      label: "Varied Rhythm"
+      description: "Mix of short and long sentences for dynamic flow"
+    balanced:
+      label: "Balanced Rhythm"
+      description: "Consistent sentence lengths for steady pacing"
+    short_punch:
+      label: "Short Punchy"
+      description: "Brief, impactful sentences for direct communication"
+    flowing:
+      label: "Flowing Rhythm"
+      description: "Longer sentences with natural, continuous movement"
+
+  # Property integration strategies
+  property_strategies:
+    technical_focus:
+      label: "Technical Focus"
+      description: "Emphasize specific technical properties and measurements"
+    comparative:
+      label: "Comparative Approach"
+      description: "Compare properties to other materials or standards"
+    practical_emphasis:
+      label: "Practical Emphasis"
+      description: "Focus on real-world applications and use cases"
+    balanced_integration:
+      label: "Balanced Integration"
+      description: "Mix technical details with practical applications"
+
+  # Warning placement strategies
+  warning_placements:
+    upfront:
+      label: "Upfront Warnings"
+      description: "Place important warnings and considerations early"
+    contextual:
+      label: "Contextual Warnings"
+      description: "Integrate warnings within relevant technical context"
+    summary:
+      label: "Summary Warnings"
+      description: "Consolidate key warnings at the end"
+    distributed:
+      label: "Distributed Warnings"
+      description: "Spread warnings throughout content naturally"
   
   # Voice intensities (1-10 scale)
   voice_intensities:
@@ -105,6 +171,8 @@ component_extraction:
     extraction_strategy: before_after  # Extract before/after paragraphs
   description:
     extraction_strategy: raw            # Return text as-is (all domains)
+  pageDescription:
+    extraction_strategy: raw            # Return text as-is (page description)
   component_summary:
     extraction_strategy: raw            # Return text as-is (single component)
   faq:
@@ -115,8 +183,18 @@ component_extraction:
     extraction_strategy: raw            # Return text as-is (SEO)
   seo_description:
     extraction_strategy: raw            # Return text as-is (SEO)
-  excerpt:
+  # excerpt: # DEPRECATED - field removed
     extraction_strategy: raw            # Return text as-is (summary)
+  section_description:
+    extraction_strategy: raw            # Return text as-is (section descriptions)
+  materialCharacteristics_description:
+    extraction_strategy: raw            # Return text as-is (property descriptions)
+  laserMaterialInteraction_description:
+    extraction_strategy: raw            # Return text as-is (property descriptions)
+  related_materials:
+    extraction_strategy: json_list      # Parse as JSON array (list of materials)
+  micro_before_after:
+    extraction_strategy: before_after   # Extract before/after paragraphs
 
 # Component Token Targets - DEPRECATED (Dec 29, 2025)
 # Word counts now in prompt files. See docs/08-development/WORD_COUNT_IN_PROMPTS_POLICY.md

@@ -3,9 +3,22 @@ source_file: data/materials/Materials.yaml
 items_key: materials
 
 generators:
-  - type: description
-    module: generation.backfill.materials_description
-    class: MaterialDescriptionGenerator
-    field: description
+  # Single multi-field generator - handles all text components in one pass
+  - type: multi_field_text
+    module: generation.backfill.universal_text_generator
+    class: UniversalTextGenerator
     source_file: data/materials/Materials.yaml
     items_key: materials
+    fields:
+      - field: pageDescription
+        component_type: pageDescription
+      - field: faq
+        component_type: faq
+      - field: properties.materialCharacteristics.description
+        component_type: materialCharacteristics_description
+      - field: properties.laserMaterialInteraction.description
+        component_type: laserMaterialInteraction_description
+      - field: relationships.relatedMaterials
+        component_type: related_materials
+      - field: components.micro
+        component_type: micro_before_after

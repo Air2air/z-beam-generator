@@ -7,7 +7,7 @@ reference validation, and other validation tasks.
 
 from .frontmatter_validator import FrontmatterDependencyValidator
 from .layer_validator import LayerValidator
-from .quality_validator import QualityScoreValidator
+from .content.quality_validator import QualityScoreValidator
 
 # Reference validation (new)
 from .reference_registry import ReferenceInfo, ReferenceRegistry

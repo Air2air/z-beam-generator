@@ -63,7 +63,7 @@ WORD LENGTH: 50-160 characters (strict maximum for SEO)
 # Page Title
 WORD LENGTH: 8-12 words for page_title (50-55 characters)
 
-# Micro Caption
+# Micro Content
 WORD LENGTH: 80-240 words
 ```
 
@@ -89,8 +89,8 @@ WORD LENGTH: 80-240 words
 | **Material descriptions** | 50-150 words | Technical subtitles |
 | **Contaminant descriptions** | 40-180 words | Vary naturally |
 | **Settings descriptions** | 65-195 words | Operational guidance |
-| **Micro captions** | 80-240 words | Before/after imagery |
-| **Excerpts** | 80-240 words | Summary text |
+| **Micro content** | 80-240 words | Before/after imagery |
+| **Excerpts** | 80-240 words | Summary text (DEPRECATED) |
 | **Health effects** | 165-495 words | Detailed safety |
 | **Compound sections** | 165-495 words | Emergency response, regulatory, etc. |
 

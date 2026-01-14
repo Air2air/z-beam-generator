@@ -1,0 +1,139 @@
+# Component Prompt Schema
+# Single source of truth for ALL component generation prompts
+# Replaces domains/*/prompts/*.txt files
+#
+# Core Principle 0 Compliance:
+# - ALL text generation uses these prompts
+# - NO prompts embedded in code
+# - Voice instructions injected via {voice_instruction} placeholder
+# - Material/item names via {material_name}, {contaminant_name}, etc.
+
+# MATERIALS DOMAIN
+materials:
+  micro:
+    wordCount: 100
+    prompt: "WORD COUNT: 100 words\n\nCONTEXT: Write a concise technical caption for laser cleaning {material_name}. Brief technical overview for image captions and previews.\n\n{voice_instruction}"
+  
+  pageDescription:
+    wordCount: 160
+    prompt: "WORD COUNT: 160 words\n\nCONTEXT: Write a comprehensive page description for laser cleaning {material_name}. Main content introduction for landing page.\n\n{voice_instruction}"
+  
+  faq:
+    wordCount: 400
+    prompt: "WORD COUNT: 400 words\n\nCONTEXT: Generate frequently asked questions about laser cleaning {material_name}. Comprehensive FAQ addressing common concerns and technical questions.\n\n{voice_instruction}"
+  
+  excerpt:
+    wordCount: 80
+    prompt: "WORD COUNT: 80 words\n\nCONTEXT: Write a compelling excerpt for laser cleaning {material_name}. Hook readers with key benefits and applications.\n\n{voice_instruction}"
+  
+  seo_description:
+    wordCount: 160
+    prompt: "WORD COUNT: 160 words\n\nCONTEXT: Write an SEO-optimized meta description for laser cleaning {material_name}. Focus on search intent and key benefits.\n\n{voice_instruction}"
+  
+  meta_description:
+    wordCount: 155
+    prompt: "WORD COUNT: 155 characters maximum\n\nCONTEXT: Write a concise meta description for laser cleaning {material_name}. Optimize for search results display.\n\n{voice_instruction}"
+  
+  page_title:
+    wordCount: 60
+    prompt: "WORD COUNT: 60 characters maximum\n\nCONTEXT: Write an SEO-optimized page title for laser cleaning {material_name}. Include key terms for search visibility.\n\n{voice_instruction}"
+  
+  power_intensity:
+    wordCount: 120
+    prompt: "WORD COUNT: 120 words\n\nCONTEXT: Explain power and intensity requirements for laser cleaning {material_name}. Technical guidance on optimal parameters.\n\n{voice_instruction}"
+
+# CONTAMINANTS DOMAIN
+contaminants:
+  micro:
+    wordCount: 100
+    prompt: "WORD COUNT: 100 words\n\nCONTEXT: Write a concise technical description of {contaminant_name}. Brief overview for image captions and previews.\n\n{voice_instruction}"
+  
+  pageDescription:
+    wordCount: 160
+    prompt: "WORD COUNT: 160 words\n\nCONTEXT: Write a comprehensive description of {contaminant_name}. Explain formation, characteristics, and removal challenges.\n\n{voice_instruction}"
+  
+  faq:
+    wordCount: 400
+    prompt: "WORD COUNT: 400 words\n\nCONTEXT: Generate frequently asked questions about {contaminant_name}. Address identification, risks, and removal methods.\n\n{voice_instruction}"
+  
+  excerpt:
+    wordCount: 80
+    prompt: "WORD COUNT: 80 words\n\nCONTEXT: Write a compelling excerpt about {contaminant_name}. Hook readers with key challenges and solutions.\n\n{voice_instruction}"
+  
+  seo_description:
+    wordCount: 160
+    prompt: "WORD COUNT: 160 words\n\nCONTEXT: Write an SEO-optimized description for {contaminant_name}. Focus on identification and removal guidance.\n\n{voice_instruction}"
+  
+  appearance:
+    wordCount: 120
+    prompt: "WORD COUNT: 120 words\n\nCONTEXT: Describe the visual appearance of {contaminant_name}. Detail colors, textures, patterns, and identification markers.\n\n{voice_instruction}"
+  
+  compounds:
+    wordCount: 150
+    prompt: "WORD COUNT: 150 words\n\nCONTEXT: Explain the chemical compounds related to {contaminant_name}. Describe composition and chemical properties.\n\n{voice_instruction}"
+
+# COMPOUNDS DOMAIN
+compounds:
+  pageDescription:
+    wordCount: 160
+    prompt: "WORD COUNT: 160 words\n\nCONTEXT: Write a comprehensive description of {compound_name}. Explain chemical properties, formation, and industrial relevance.\n\n{voice_instruction}"
+  
+  health_effects:
+    wordCount: 200
+    prompt: "WORD COUNT: 200 words\n\nCONTEXT: Describe the health effects of {compound_name} exposure. Detail acute and chronic effects, exposure routes, and severity.\n\n{voice_instruction}"
+  
+  detection_methods:
+    wordCount: 150
+    prompt: "WORD COUNT: 150 words\n\nCONTEXT: Explain detection methods for {compound_name}. Describe available testing techniques and sensitivity.\n\n{voice_instruction}"
+  
+  emergency_response:
+    wordCount: 180
+    prompt: "WORD COUNT: 180 words\n\nCONTEXT: Outline emergency response procedures for {compound_name} exposure. Detail first aid, containment, and medical intervention.\n\n{voice_instruction}"
+  
+  exposure_guidelines:
+    wordCount: 160
+    prompt: "WORD COUNT: 160 words\n\nCONTEXT: Detail occupational exposure guidelines for {compound_name}. Include exposure limits and protective measures.\n\n{voice_instruction}"
+  
+  micro:
+    wordCount: 100
+    prompt: "WORD COUNT: 100 words\n\nCONTEXT: Write a concise technical description of {compound_name}. Brief overview for image captions and previews.\n\n{voice_instruction}"
+  
+  faq:
+    wordCount: 400
+    prompt: "WORD COUNT: 400 words\n\nCONTEXT: Generate frequently asked questions about {compound_name}. Address safety, handling, and regulatory concerns.\n\n{voice_instruction}"
+
+# SETTINGS DOMAIN
+settings:
+  settings_description:
+    wordCount: 160
+    prompt: "WORD COUNT: 160 words\n\nCONTEXT: Write a comprehensive description of {setting_name} in laser cleaning. Explain technical parameters and applications.\n\n{voice_instruction}"
+  
+  challenges:
+    wordCount: 200
+    prompt: "WORD COUNT: 200 words\n\nCONTEXT: Describe the challenges and considerations for {setting_name} in laser cleaning. Detail common issues and solutions.\n\n{voice_instruction}"
+  
+  micro:
+    wordCount: 100
+    prompt: "WORD COUNT: 100 words\n\nCONTEXT: Write a concise technical overview of {setting_name}. Brief explanation for captions and previews.\n\n{voice_instruction}"
+  
+  faq:
+    wordCount: 400
+    prompt: "WORD COUNT: 400 words\n\nCONTEXT: Generate frequently asked questions about {setting_name}. Address technical parameters and optimization.\n\n{voice_instruction}"
+
+# PLACEHOLDER SUBSTITUTION RULES
+# {material_name} → Item name from Materials.yaml
+# {contaminant_name} → Item name from Contaminants.yaml
+# {compound_name} → Item name from Compounds.yaml
+# {setting_name} → Item name from Settings.yaml
+# {voice_instruction} → Injected from shared/voice/profiles/*.yaml (author-specific)
+
+# WORD COUNT ENFORCEMENT
+# Approximate guidance only (LLMs don't count during generation)
+# Typical variance: 20-30% over target
+# Quality-gated mode: Multiple attempts, select best length match
+
+# FUTURE ENHANCEMENTS
+# - Per-material prompt overrides (e.g., materials.micro.overrides.aluminum)
+# - Context-specific prompts (e.g., industrial vs artistic applications)
+# - Multi-language support
+# - Seasonal/trending content variations

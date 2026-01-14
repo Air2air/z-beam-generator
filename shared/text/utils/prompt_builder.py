@@ -255,33 +255,63 @@ distinctive markers per paragraph as specified in your voice instructions."""
     @staticmethod
     def _load_component_template(component_type: str, domain: str = "materials") -> Optional[str]:
         """
-        Load component-specific prompt template.
+        Load component-specific prompt template from section_display_schema.yaml.
         
-        Priority:
-        1. Domain-specific: domains/{domain}/prompts/{component}.txt
-        2. Shared (deprecated): prompts/components/{component}.txt
+        SCHEMA-ONLY APPROACH:
+        Source: data/schemas/section_display_schema.yaml (REQUIRED)
+        Loads from sections.{component_type}.prompt field
         
         Args:
-            component_type: Component type (micro, faq, description, etc.)
+            component_type: Component type (contaminatedBy, healthEffects, etc.)
             domain: Domain name (materials, contaminants, settings)
             
         Returns:
-            Template string or None if file doesn't exist
+            Template string or None if not found in schema
+            
+        Raises:
+            FileNotFoundError: If schema doesn't exist or can't be loaded
         """
-        # Try domain-specific path first (NEW)
-        domain_path = os.path.join('domains', domain, 'prompts', f'{component_type}.txt')
-        if os.path.exists(domain_path):
-            with open(domain_path, 'r', encoding='utf-8') as f:
-                return f.read().strip()
+        from pathlib import Path
         
-        # Fall back to shared path (deprecated)
-        shared_path = os.path.join('prompts', 'components', f'{component_type}.txt')
-        if os.path.exists(shared_path):
-            logger.warning(f"Using deprecated shared prompt path: {shared_path}. Move to domains/{domain}/prompts/")
-            with open(shared_path, 'r', encoding='utf-8') as f:
-                return f.read().strip()
+        # SCHEMA ONLY: Load from section display schema (REQUIRED)
+        schema_path = Path('data/schemas/section_display_schema.yaml')
+        if not schema_path.exists():
+            raise FileNotFoundError(
+                f"Section display schema REQUIRED at {schema_path}. "
+                f"NO FALLBACKS permitted per Core Principle #1."
+            )
         
-        return None
+        try:
+            from shared.utils.yaml_utils import load_yaml
+            schema = load_yaml(schema_path)
+            
+            # Navigate to sections.component_type or sections.group.component_type
+            if 'sections' in schema:
+                # Try direct lookup first (e.g., "contaminatedBy")
+                section_key = component_type
+                if section_key in schema['sections']:
+                    prompt_text = schema['sections'][section_key].get('prompt')
+                    if prompt_text:
+                        logger.debug(f"✅ Loaded prompt from schema: {section_key}")
+                        return prompt_text.strip()
+                
+                # Try with group prefix (e.g., "interactions.contaminatedBy")
+                for key, section_data in schema['sections'].items():
+                    if key.endswith(f".{component_type}") or key == component_type:
+                        prompt_text = section_data.get('prompt')
+                        if prompt_text:
+                            logger.debug(f"✅ Loaded prompt from schema: {key}")
+                            return prompt_text.strip()
+            else:
+                logger.debug(f"Component not in schema: {domain}.{component_type}")
+                return None
+        except Exception as e:
+            logger.error(f"Failed to load section display schema: {e}")
+            raise FileNotFoundError(
+                f"Could not load section display schema at {schema_path}. "
+                f"This file is REQUIRED for all text generation. "
+                f"Error: {e}"
+            )
     
     @staticmethod
     def build_unified_prompt(

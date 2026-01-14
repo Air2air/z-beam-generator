@@ -14,7 +14,7 @@
 # Generate material description
 python3 run.py --material "Steel" --component description
 
-# Generate micro (caption)
+# Generate micro content
 python3 run.py --material "Aluminum" --component micro
 
 # Generate FAQ

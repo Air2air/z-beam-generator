@@ -55,6 +55,7 @@ class BaseBackfillGenerator(ABC):
         self.items_key = config.get('items_key', 'materials')
         self.field = config.get('field')
         self.dry_run = config.get('dry_run', False)
+        self.item_filter = config.get('item_filter')
         
         # Validate source file exists
         if not self.source_file.exists():
@@ -96,6 +97,10 @@ class BaseBackfillGenerator(ABC):
         
         # Process each item
         for item_id, item_data in items.items():
+            # Skip if item_filter specified and doesn't match
+            if self.item_filter and item_id != self.item_filter:
+                continue
+                
             try:
                 # Check if already populated
                 if self._should_skip(item_data):

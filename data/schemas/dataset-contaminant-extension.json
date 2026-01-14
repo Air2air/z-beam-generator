@@ -1,0 +1,201 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://www.z-beam.com/schemas/dataset-contaminant-extension.json",
+  "title": "Z-Beam Contaminant Dataset Extension",
+  "description": "Contaminant-specific dataset schema extending base schema with contamination properties and chemical safety data",
+  "version": "2.0.0",
+  "allOf": [
+    {
+      "$ref": "dataset-base.json"
+    },
+    {
+      "type": "object",
+      "required": ["contaminant"],
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+-contaminant-dataset$",
+          "description": "Unique identifier for contaminant dataset"
+        },
+        "contaminant": {
+          "type": "object",
+          "required": ["category", "properties"],
+          "description": "Core dataset content: contamination characteristics, removal parameters, and chemical safety data",
+          "properties": {
+            "category": {
+              "type": "string",
+              "enum": [
+                "aging", "biological", "coating", "contamination", "corrosion", "damage",
+                "deposit", "organic-residue", "oxidation", "particulate", "toxic_gas",
+                "irritant_gas", "voc", "particulate_matter", "chemical_byproduct"
+              ]
+            },
+            "subcategory": {"type": "string"},
+            "properties": {
+              "type": "object",
+              "properties": {
+                "appearance": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^(metal|ceramic|glass|stone|wood|plastic|composite|masonry|concrete|fabric)$": {
+                      "type": "object",
+                      "required": ["appearance", "coverage", "pattern"],
+                      "properties": {
+                        "appearance": {"type": "string"},
+                        "coverage": {"type": "string"},
+                        "pattern": {"type": "string"},
+                        "texture": {"type": "string"},
+                        "color": {"type": "string"}
+                      }
+                    }
+                  }
+                },
+                "composition": {
+                  "type": "array",
+                  "items": {"type": "string"}
+                },
+                "hazardLevel": {
+                  "type": "string",
+                  "enum": ["low", "medium", "high", "severe"]
+                },
+                "removalDifficulty": {
+                  "type": "string",
+                  "enum": ["easy", "medium", "hard", "very_hard"]
+                },
+                "contextNotes": {"type": "string"},
+                "realismNotes": {"type": "string"}
+              }
+            },
+            "removalTechniques": {
+              "type": "object",
+              "properties": {
+                "laserPower": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "wavelength": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "fluence": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "passCount": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "removalRate": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "technique": {"type": "string"}
+              }
+            },
+            "compounds": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "formula", "hazardLevel"],
+                "properties": {
+                  "id": {"type": "string"},
+                  "name": {"type": "string"},
+                  "displayName": {"type": "string"},
+                  "formula": {"type": "string"},
+                  "casNumber": {"type": "string", "pattern": "^[0-9]{1,7}-[0-9]{2}-[0-9]$"},
+                  "molecularWeight": {"type": "number"},
+                  "phase": {"type": "string", "enum": ["solid", "liquid", "gas", "aerosol"]},
+                  "hazardLevel": {"type": "string", "enum": ["low", "medium", "high", "severe"]},
+                  "hazardClass": {"type": "string", "enum": ["toxic", "irritant", "corrosive", "flammable", "carcinogenic", "inert"]},
+                  "healthEffects": {
+                    "type": "object",
+                    "properties": {
+                      "exposureRoutes": {
+                        "type": "object",
+                        "properties": {
+                          "inhalation": {"$ref": "dataset-base.json#/definitions/exposureRoute"},
+                          "skinContact": {"$ref": "dataset-base.json#/definitions/exposureRoute"},
+                          "eyeContact": {"$ref": "dataset-base.json#/definitions/exposureRoute"},
+                          "ingestion": {"$ref": "dataset-base.json#/definitions/exposureRoute"}
+                        }
+                      },
+                      "acuteEffects": {
+                        "type": "object",
+                        "properties": {
+                          "symptoms": {"type": "array", "items": {"type": "string"}},
+                          "onset": {"type": "string"},
+                          "duration": {"type": "string"}
+                        }
+                      },
+                      "chronicEffects": {
+                        "type": "object",
+                        "properties": {
+                          "longTermExposure": {"type": "array", "items": {"type": "string"}},
+                          "latency": {"type": "string"}
+                        }
+                      },
+                      "toxicologyData": {
+                        "type": "object",
+                        "properties": {
+                          "ld50Oral": {"$ref": "dataset-base.json#/definitions/toxicityValue"},
+                          "lc50Inhalation": {"$ref": "dataset-base.json#/definitions/toxicityValue"}
+                        }
+                      },
+                      "carcinogenicity": {
+                        "type": "object",
+                        "properties": {
+                          "iarc": {"type": "string"},
+                          "ntp": {"type": "string"},
+                          "osha": {"type": "string"},
+                          "evidence": {"type": "string"}
+                        }
+                      },
+                      "exposureLimits": {
+                        "type": "object",
+                        "properties": {
+                          "oshaPEL": {"$ref": "dataset-base.json#/definitions/exposureLimit"},
+                          "nioshREL": {"$ref": "dataset-base.json#/definitions/exposureLimit"},
+                          "acgihTLV": {"$ref": "dataset-base.json#/definitions/exposureLimit"}
+                        }
+                      }
+                    }
+                  },
+                  "ppeRequirements": {"type": "string", "minLength": 50},
+                  "detectionMethods": {"type": "string", "minLength": 50},
+                  "firstAid": {"type": "string", "minLength": 50},
+                  "exposureGuidelines": {"type": "string"},
+                  "environmentalImpact": {
+                    "type": "object",
+                    "properties": {
+                      "aquaticToxicity": {"type": "string"},
+                      "biodegradability": {"type": "string"},
+                      "bioaccumulation": {"type": "string"},
+                      "soilMobility": {"type": "string"},
+                      "atmosphericFate": {"type": "string"},
+                      "ozoneDepletion": {"type": "boolean"},
+                      "globalWarmingPotential": {"type": "string"},
+                      "reportableReleases": {
+                        "type": "object",
+                        "properties": {
+                          "water": {"type": "string"},
+                          "air": {"type": "string"},
+                          "soil": {"type": "string"}
+                        }
+                      }
+                    }
+                  },
+                  "sources": {"type": "array", "items": {"type": "string"}},
+                  "typicalConcentration": {"type": "string"},
+                  "monitoringRequired": {"type": "boolean"}
+                }
+              }
+            },
+            "validMaterials": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "regulatoryStandards": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "title", "authority"],
+                "properties": {
+                  "id": {"type": "string"},
+                  "title": {"type": "string"},
+                  "authority": {"type": "string"},
+                  "url": {"type": "string", "format": "uri"},
+                  "compliance_level": {"type": "string", "enum": ["mandatory", "recommended", "optional"]}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

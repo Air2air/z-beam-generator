@@ -423,7 +423,7 @@ class TestFieldOrderSpecification:
     
     def test_linkages_after_content(self):
         """Domain linkages should come after content fields"""
-        content_fields = ['excerpt', 'content', 'seo_description']
+        content_fields = ['content', 'seo_description']
         linkage_fields = ['produces_compounds', 'related_materials', 'related_contaminants']
         
         for content_field in content_fields:

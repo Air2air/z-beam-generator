@@ -25,6 +25,22 @@ generators:
   module: export.generation.universal_content_generator
   class: UniversalContentGenerator
   tasks:
+  # Optimization Phase (Jan 13, 2026): Remove unused fields per FRONTMATTER_OPTIMIZATION_GUIDE.md
+  - type: field_cleanup
+    description: Remove unused fields not consumed by MaterialsLayout components
+    deprecated_fields:
+      - characteristics  # Legacy section - superseded by properties
+      - pageDescription  # Not consumed by MaterialsLayout
+      - excerpt         # Not consumed by MaterialsLayout
+      # author - PRESERVE: Used by metadata/SEO systems (do NOT remove)
+      - breadcrumb      # Not consumed by MaterialsLayout
+      - keywords        # Not consumed by MaterialsLayout
+      - technicalSpecifications  # Not referenced anywhere
+      - chemicalProperties       # Not referenced anywhere
+      - safetyGuidelines        # Not referenced anywhere
+      - dataValidation          # Not displayed to users
+      - generatedDate           # Not displayed to users
+      - lastModified            # Not displayed to users
   # Export-time metadata ONLY (dateModified timestamp, pageTitle for frontend)
   - type: export_metadata
     description: Add ONLY export-time fields (dateModified, pageTitle if missing)

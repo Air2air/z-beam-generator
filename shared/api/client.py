@@ -576,6 +576,35 @@ class APIClient:
         )
 
         return self.generate(request)
+    
+    def check_text(self, text: str) -> Dict[str, Any]:
+        """
+        Check text for AI detection (Winston API compatibility).
+        
+        This method is designed for Winston API clients that support AI detection.
+        Default implementation returns neutral score.
+        
+        Args:
+            text: Text to analyze for AI patterns
+            
+        Returns:
+            Dict with Winston-compatible format:
+            {
+                'score': float,      # 0.0-1.0 (higher = more human)
+                'human_score': float, # 0-100 percentage
+                'ai_score': float,    # 0-100 percentage
+                'cached': bool        # Whether result was cached
+            }
+        """
+        # Base implementation - Winston provider should override this
+        logger.info(f"check_text not implemented for {self.__class__.__name__} - returning neutral score")
+        return {
+            'score': 0.70,
+            'human_score': 70.0,
+            'ai_score': 30.0,
+            'cached': False,
+            'method': 'neutral_fallback'
+        }
 
     def get_statistics(self) -> Dict[str, Any]:
         """Get client usage statistics"""

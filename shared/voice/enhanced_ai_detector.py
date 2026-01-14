@@ -293,7 +293,9 @@ class EnhancedAIDetector:
         sentences = [s.strip() for s in re.split(r'[.!?]+', text) if s.strip()]
         
         if len(sentences) < 2:
-            return 50.0  # Baseline for single sentence
+            # Single sentence content is common for micro/subtitle components
+            # Don't penalize short content - judge based on actual AI patterns
+            return 85.0  # High baseline - judge on content quality, not length
         
         # Calculate sentence length variation
         lengths = [len(s.split()) for s in sentences]

@@ -30,4 +30,22 @@ Implementation Status:
 from generation.backfill.base import BaseBackfillGenerator
 from generation.backfill.registry import BackfillRegistry
 
+# Import generators to trigger registration
+from generation.backfill.universal_text_generator import UniversalTextGenerator
+# MultiFieldTextGenerator functionality merged into UniversalTextGenerator
+from generation.backfill.compound_description import CompoundDescriptionGenerator
+
+# TODO: Fix these generators to not use non-existent grok_client
+# from generation.backfill.settings_population import (
+#     SettingsDescriptionGenerator,
+#     SettingsRecommendationsGenerator
+# )
+# from generation.backfill.contaminant_population import (
+#     ContaminantAppearanceGenerator,
+#     ContaminantCompoundsGenerator,
+#     ContaminantContextGenerator,
+#     ContaminantDescriptionGenerator
+# )
+from generation.backfill.registry import BackfillRegistry
+
 __all__ = ['BaseBackfillGenerator', 'BackfillRegistry']

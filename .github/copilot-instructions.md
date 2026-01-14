@@ -1066,7 +1066,7 @@ def generate_description(material):
 ```
 
 **Applies to:**
-- ✅ Descriptions, FAQs, micros, excerpts
+- ✅ Descriptions, FAQs, micros (excerpts deprecated)
 - ✅ Any text displayed on website
 - ✅ Content with author voice/style
 - ✅ All components in `domains/*/prompts/*.txt`
@@ -2054,6 +2054,78 @@ response = api.generate(prompt=prompt)  # No max_tokens restriction
 - Post-processing can REGENERATE (not truncate) if too long
 
 **Grade**: F violation if using max_tokens or truncation to control word count
+
+## 🔧 **System Simplification Recommendations** 🔥 **NEW (Jan 13, 2026)**
+**Based on operational issues and complexity analysis**
+
+### **A. Command Interface Simplification**
+```bash
+# CURRENT (Complex): Multiple command types with different parameters
+python3 run.py --postprocess --domain materials --item "aluminum-laser-cleaning" --field pageDescription
+python3 run.py --backfill --domain materials --generator multi_field_text --item "aluminum-laser-cleaning"
+
+# PROPOSED (Simple): Unified generation command with smart resolution
+python3 run.py --generate "Aluminum" --field description
+python3 run.py --test "Aluminum"  # Quick voice/length verification
+python3 run.py --generate "Aluminum" --all-fields  # Generate all components
+```
+
+### **B. Smart Material Resolution**
+```python
+# Auto-resolve common formats:
+"Aluminum" → "aluminum-laser-cleaning"
+"Steel" → "steel-laser-cleaning" 
+"Stainless Steel 316" → "stainless-steel-316-laser-cleaning"
+
+# Error messages suggest corrections:
+"Material 'Steel-316' not found. Did you mean 'Stainless Steel 316'?"
+```
+
+### **C. Generator Name Clarity**
+```bash
+# CURRENT (Confusing): Technical internal names
+--generator multi_field_text
+--generator pageDescription
+
+# PROPOSED (Clear): Purpose-based names
+--generator text  # All text content
+--generator description  # Single field
+--generator complete  # All fields for material
+```
+
+### **D. Quick Quality Testing**
+```bash
+# PROPOSED: Built-in voice and length analysis
+python3 run.py --test "Aluminum" --analyze-voice
+python3 run.py --test "Aluminum" --analyze-length
+python3 run.py --test "Aluminum" --analyze-all  # Voice + length + AI detection
+```
+
+### **E. Error Message Enhancement**
+```bash
+# CURRENT (Unhelpful):
+"Item 'Aluminum' not found in materials data"
+
+# PROPOSED (Helpful):
+"Material 'Aluminum' not found. Available options:
+  - aluminum-laser-cleaning (Aluminum)
+  - steel-laser-cleaning (Steel)
+  - titanium-laser-cleaning (Titanium)
+  
+Try: python3 run.py --generate 'aluminum-laser-cleaning' --field pageDescription"
+```
+
+### **F. Robustness Improvements**
+1. **Auto-detect material format**: Try display name, then slug, then full key
+2. **Validate before generation**: Check author assignment, required fields
+3. **Progress indicators**: Show generation progress for long operations
+4. **Graceful degradation**: Continue with warnings instead of hard failures
+5. **Better logging**: Include suggested fixes in error messages
+
+**Implementation Priority**:
+1. **High**: Smart material resolution (A, B) - Fixes immediate usability
+2. **Medium**: Command simplification (A, C) - Improves developer experience  
+3. **Low**: Quality testing (D) - Enhances verification workflow
 
 ### 17. **Material Name Consistency Across Domains Policy** 🔥 **NEW (Dec 20, 2025) - CRITICAL**
 **ALL domains MUST use consistent material naming conventions based on their role.**

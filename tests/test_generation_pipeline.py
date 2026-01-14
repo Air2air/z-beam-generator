@@ -100,7 +100,7 @@ class TestFailFastBehavior:
         
         # Note: generate() does NOT take author_id parameter (it's read from YAML)
         with pytest.raises((ValueError, KeyError, FileNotFoundError)):
-            generator.generate("NonexistentMaterial12345", "caption")
+            generator.generate("NonexistentMaterial12345", "micro")
     
     def test_generator_fails_on_invalid_author_id(self):
         """Verify Generator fails on invalid author ID"""
@@ -143,7 +143,7 @@ class TestConfigurationLoading:
         """Verify max_tokens calculation works"""
         config = DynamicConfig()
         
-        for component_type in ['caption', 'description', 'faq']:
+        for component_type in ['micro', 'pageDescription', 'faq']:
             max_tokens = config.calculate_max_tokens(component_type)
             
             assert max_tokens is not None, f"max_tokens None for {component_type}"

@@ -17,6 +17,58 @@ import subprocess
 import yaml
 import time
 from pathlib import Path
+from shared.utils.material_resolver import material_resolver
+from shared.utils.quality_analyzer import quality_analyzer
+
+# Configuration required by ConfigManager
+API_PROVIDERS = {
+    'grok': {
+        'name': 'Grok',
+        'model': 'grok-4-0709',
+        'default_model': 'grok-4-0709',
+        'env_var': 'GROK_API_KEY',
+        'base_url': 'https://api.x.ai',
+        'max_tokens': 4096,
+        'temperature': 0.7,
+        'timeout_connect': 30.0,
+        'timeout_read': 300.0,
+        'max_retries': 3,
+        'retry_delay': 1.0
+    },
+    'deepseek': {
+        'name': 'DeepSeek',
+        'model': 'deepseek-chat',
+        'default_model': 'deepseek-chat',
+        'env_var': 'DEEPSEEK_API_KEY',
+        'base_url': 'https://api.deepseek.com',
+        'max_tokens': 4096,
+        'temperature': 0.7,
+        'timeout_connect': 30.0,
+        'timeout_read': 300.0,
+        'max_retries': 3,
+        'retry_delay': 1.0
+    },
+    'openai': {
+        'name': 'OpenAI',
+        'model': 'gpt-4',
+        'default_model': 'gpt-4',
+        'env_var': 'OPENAI_API_KEY',
+        'base_url': 'https://api.openai.com/v1',
+        'max_tokens': 4096,
+        'temperature': 0.7,
+        'timeout_connect': 30.0,
+        'timeout_read': 300.0,
+        'max_retries': 3,
+        'retry_delay': 1.0
+    }
+}
+
+COMPONENT_CONFIG = {
+    'micro': {'enabled': True, 'priority': 1},
+    'description': {'enabled': True, 'priority': 2},
+    'faq': {'enabled': True, 'priority': 3}
+}
+
 from shared.commands.postprocess import PostprocessCommand
 from export.core.frontmatter_exporter import FrontmatterExporter
 from export.config.loader import load_domain_config
@@ -96,7 +148,23 @@ def export_command(args):
         # Export
         force = not args.skip_existing
         print(f"\n🔄 Exporting {args.domain}...")
-        results = exporter.export_all(force=force)
+        
+        # Export single item or all items
+        if args.item:
+            print(f"   Filtering: {args.item}")
+            # Load source data to get item data
+            import yaml
+            with open(exporter.source_file, 'r', encoding='utf-8') as f:
+                data = yaml.safe_load(f)
+            items = data.get(exporter.items_key, {})
+            if args.item in items:
+                success = exporter.export_single(args.item, items[args.item], force)
+                results = {args.item: success}
+            else:
+                print(f"❌ Item not found: {args.item}")
+                sys.exit(1)
+        else:
+            results = exporter.export_all(force=force)
         
         # Summary
         exported = sum(1 for success in results.values() if success)
@@ -260,8 +328,10 @@ def backfill_command(args):
             print(f"   Available generators: {[g['type'] for g in config['generators']]}")
             sys.exit(1)
         
-        # Add dry-run flag
+        # Add dry-run flag and item filter
         generator_config['dry_run'] = args.dry_run
+        if args.item:
+            generator_config['item_filter'] = args.item
         
         # Create and run generator
         generator = BackfillRegistry.create(generator_config)
@@ -281,6 +351,8 @@ def backfill_command(args):
         total_modified = 0
         for gen_config in config['generators']:
             gen_config['dry_run'] = args.dry_run
+            if args.item:
+                gen_config['item_filter'] = args.item
             generator = BackfillRegistry.create(gen_config)
             stats = generator.backfill_all()
             total_modified += stats['modified']
@@ -365,28 +437,263 @@ Examples:
     parser.add_argument('--dry-run', action='store_true',
                         help='Compare versions without saving (preview mode)')
     
+    # Simplified interface (NEW - Jan 13, 2026)
+    parser.add_argument('--generate', type=str, metavar='MATERIAL',
+                        help='Generate content for material (auto-resolves name)')
+    parser.add_argument('--test', type=str, metavar='MATERIAL',
+                        help='Test material content for voice/length compliance')
+    parser.add_argument('--list-materials', action='store_true',
+                        help='List all available materials')
+    parser.add_argument('--analyze-voice', action='store_true',
+                        help='Analyze voice distinctiveness (use with --test)')
+    parser.add_argument('--analyze-length', action='store_true',
+                        help='Analyze length variation (use with --test)')
+    parser.add_argument('--analyze-all', action='store_true',
+                        help='Analyze all quality metrics (use with --test)')
+    parser.add_argument('--all-fields', action='store_true',
+                        help='Generate all component types (use with --generate)')
+    
     args = parser.parse_args()
     
-    # Execute command
+    # Handle simplified commands first (NEW - Jan 13, 2026)
+    if args.list_materials:
+        list_materials_command(args)
+        return
+    elif args.generate:
+        generate_command(args)
+        return
+    elif args.test:
+        test_command(args)
+        return
+    
+    # Execute command (backfill is default if --domain/--item provided without other flags)
     if args.postprocess:
         postprocess_command(args)
     elif args.export:
         export_command(args)
     elif args.export_all:
         export_all_command(args)
-    elif args.backfill:
+    elif args.backfill or args.backfill_all:
+        if args.backfill_all:
+            print("❌ --backfill-all not yet implemented")
+            print("   Use --backfill --domain <domain> instead")
+            sys.exit(1)
         backfill_command(args)
-    elif args.backfill_all:
-        print("❌ --backfill-all not yet implemented")
-        print("   Use --backfill --domain <domain> instead")
-        sys.exit(1)
+    elif args.domain or args.item:
+        # Default to backfill when domain/item specified without explicit command
+        backfill_command(args)
     else:
         parser.print_help()
         print("\n❌ Error: No command specified")
+        print("   Use --domain and --item to generate content (backfill)")
         print("   Use --postprocess to refine existing content")
         print("   Use --export to export frontmatter for a domain")
         print("   Use --export-all to export all domains")
-        print("   Use --backfill to populate source data permanently")
+        sys.exit(1)
+
+
+def list_materials_command(args):
+    """List all available materials with smart formatting"""
+    print("📋 AVAILABLE MATERIALS:")
+    print("="*60)
+    
+    try:
+        materials = material_resolver.list_materials()
+        
+        # Group by category
+        by_category = {}
+        for material in materials:
+            category = material['category']
+            if category not in by_category:
+                by_category[category] = []
+            by_category[category].append(material)
+        
+        for category, mats in sorted(by_category.items()):
+            print(f"\n🔧 {category.upper()}:")
+            for mat in mats:
+                subcategory = f" / {mat['subcategory']}" if mat['subcategory'] else ""
+                print(f"  - {mat['name']:<20} ({mat['key']}{subcategory})")
+        
+        print(f"\n✅ Total: {len(materials)} materials available")
+        print("\n💡 Usage:")
+        print("  python3 run.py --generate 'Aluminum' --field pageDescription")
+        print("  python3 run.py --test 'Steel' --analyze-all")
+        
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        sys.exit(1)
+
+
+def generate_command(args):
+    """Generate content for material with smart resolution"""
+    print("🚀 SIMPLIFIED GENERATION:")
+    print("="*60)
+    
+    # Resolve material name
+    material_key, error = material_resolver.resolve_material(args.generate)
+    if error:
+        print(f"❌ {error}")
+        sys.exit(1)
+    
+    print(f"📝 Resolved '{args.generate}' → '{material_key}'")
+    
+    # Determine what to generate
+    if args.all_fields:
+        generator_type = "multi_field_text"
+        field_type = None
+        print(f"🔄 Generating ALL fields for {material_key}")
+    else:
+        # Default to pageDescription if no field specified
+        generator_type = "multi_field_text"  # Use unified generator
+        field_type = getattr(args, 'field', 'pageDescription')
+        print(f"🔄 Generating {field_type} for {material_key}")
+    
+    try:
+        # Build backfill command
+        cmd = [
+            'python3', 'run.py', 
+            '--backfill', 
+            '--domain', 'materials',
+            '--generator', generator_type,
+            '--item', material_key
+        ]
+        
+        if hasattr(args, 'dry_run') and args.dry_run:
+            cmd.append('--dry-run')
+        
+        print(f"⚡ Running: {' '.join(cmd)}")
+        print("-" * 60)
+        
+        # Execute backfill
+        result = subprocess.run(cmd, capture_output=False, text=True)
+        
+        if result.returncode == 0:
+            print("\n✅ Generation completed successfully!")
+            
+            # Suggest follow-up commands
+            print("\n💡 Next steps:")
+            print(f"  python3 run.py --test '{args.generate}' --analyze-all")
+            print(f"  python3 run.py --export --domain materials")
+        else:
+            print(f"\n❌ Generation failed (exit code: {result.returncode})")
+            
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        sys.exit(1)
+
+
+def test_command(args):
+    """Test material content for quality compliance"""
+    print("🧪 QUALITY TESTING:")
+    print("="*60)
+    
+    # Resolve material name
+    material_key, error = material_resolver.resolve_material(args.test)
+    if error:
+        print(f"❌ {error}")
+        sys.exit(1)
+    
+    print(f"🔍 Testing '{args.test}' → '{material_key}'")
+    
+    # Determine what to analyze
+    analyze_voice = args.analyze_voice or args.analyze_all
+    analyze_length = args.analyze_length or args.analyze_all
+    analyze_ai = args.analyze_all
+    
+    if not (analyze_voice or analyze_length or analyze_ai):
+        # Default to all if none specified
+        analyze_voice = analyze_length = analyze_ai = True
+    
+    try:
+        # Load material data to get content and author
+        with open('data/materials/Materials.yaml', 'r') as f:
+            materials_data = yaml.safe_load(f)
+        
+        material_data = materials_data.get('materials', {}).get(material_key)
+        if not material_data:
+            print(f"❌ Material data not found: {material_key}")
+            sys.exit(1)
+        
+        # Get author country
+        author_data = material_data.get('author', {})
+        author_country = author_data.get('country', 'Unknown')
+        
+        # Test pageDescription content
+        content = material_data.get('pageDescription', '')
+        if not content:
+            print(f"⚠️  No pageDescription content found for {material_key}")
+            print("   Generate content first:")
+            print(f"   python3 run.py --generate '{args.test}' --field pageDescription")
+            return
+        
+        print(f"👤 Author: {author_country}")
+        print(f"📝 Content: {len(content)} characters, {len(content.split())} words")
+        print("-" * 60)
+        
+        # Analyze content
+        result = quality_analyzer.analyze_content(
+            content=content,
+            author_country=author_country,
+            target_words=50,  # Default target
+            variation_percent=50,  # 50% variation
+            ai_threshold=0.70
+        )
+        
+        # Display results
+        if analyze_voice:
+            voice = result.voice_analysis
+            status = "✅ PASS" if voice.voice_authentic else "❌ FAIL"
+            print(f"🗣️  VOICE ANALYSIS: {status}")
+            print(f"   Country: {voice.author_country}")
+            print(f"   Pattern Score: {voice.pattern_score:.1%}")
+            print(f"   Patterns Detected: {len(voice.patterns_detected)}")
+            
+            if voice.patterns_detected:
+                print(f"   Examples: {voice.patterns_detected[:2]}")
+            
+            if voice.missing_patterns:
+                print(f"   Missing: {len(voice.missing_patterns)} pattern types")
+            print()
+        
+        if analyze_length:
+            length = result.length_analysis
+            status = "✅ PASS" if length.length_compliant else "❌ FAIL"
+            print(f"📏 LENGTH ANALYSIS: {status}")
+            print(f"   Word Count: {length.word_count}")
+            print(f"   Target Range: {length.target_range[0]}-{length.target_range[1]} words")
+            print(f"   Variation: {length.variation_factor:.1%}")
+            print()
+        
+        if analyze_ai:
+            ai = result.ai_analysis
+            status = "✅ PASS" if ai.passes_detection else "❌ FAIL"
+            print(f"🤖 AI DETECTION: {status}")
+            print(f"   AI Score: {ai.ai_score:.1%}")
+            print(f"   Threshold: {ai.human_threshold:.1%} human")
+            
+            if ai.ai_phrases_detected:
+                print(f"   AI Phrases: {len(ai.ai_phrases_detected)}")
+                for phrase in ai.ai_phrases_detected[:2]:
+                    print(f"     - '{phrase}'")
+            print()
+        
+        # Overall summary
+        status = "✅ ALL PASS" if result.passes_all_checks else "⚠️  NEEDS WORK"
+        print(f"📊 OVERALL QUALITY: {status} ({result.overall_quality:.1%})")
+        
+        if result.recommendations:
+            print("\n💡 RECOMMENDATIONS:")
+            for rec in result.recommendations:
+                print(f"   • {rec}")
+        
+        if result.passes_all_checks:
+            print("\n🎉 Content meets all quality standards!")
+        else:
+            print(f"\n🔄 Regenerate to improve:")
+            print(f"   python3 run.py --generate '{args.test}' --field pageDescription")
+        
+    except Exception as e:
+        print(f"❌ Error: {e}")
         sys.exit(1)
 
 

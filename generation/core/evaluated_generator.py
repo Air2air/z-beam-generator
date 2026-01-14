@@ -192,10 +192,60 @@ class QualityEvaluatedGenerator:
             content = result['content']
             print(f"\n✅ Generated: {result['length']} chars, {result['word_count']} words")
             
+            # Apply smart truncation if enabled
+            length_controlled = False
+            
+            # Load generation config to check length control settings
+            import yaml
+            from pathlib import Path
+            config_path = Path(__file__).parent.parent / 'config.yaml'
+            
+            try:
+                with open(config_path, 'r', encoding='utf-8') as f:
+                    config_data = yaml.safe_load(f)
+            except Exception as e:
+                print(f"⚠️  Could not load config.yaml: {e}")
+                config_data = {}
+            
+            if config_data.get('length_control', {}).get('enable_smart_truncation', True):
+                from shared.text.utils.length_control import apply_length_control
+                
+                # Get the original prompt for word count extraction
+                final_prompt = getattr(result, 'prompt_used', '') or str(current_params.get('prompt', ''))
+                
+                print(f"\n✂️  Applying smart length control...")
+                control_result = apply_length_control(
+                    content=self._content_to_text(content, component_type),
+                    prompt=final_prompt,
+                    fallback_target=config_data.get('length_control', {}).get('default_target_words', 50)
+                )
+                
+                # Update content if truncation occurred
+                if control_result['truncated']:
+                    controlled_content = control_result['content']
+                    result['content'] = controlled_content
+                    content = controlled_content
+                    length_controlled = True
+                    
+                    print(f"📏 Length Control: {control_result['original_words']} → {control_result['final_words']} words")
+                    print(f"🎯 Target: {control_result['target_words']}, Accuracy: {100-control_result['compliance']['variance_percent']:.1f}%")
+                    print(f"✂️  Truncated: {control_result['reduction']} words removed")
+                    
+                    # Update result metrics
+                    result['length'] = len(controlled_content)
+                    result['word_count'] = control_result['final_words']
+                    result['length_controlled'] = True
+                    result['original_words'] = control_result['original_words']
+                    result['truncated'] = True
+                else:
+                    print(f"📏 Length Control: {control_result['final_words']} words (no truncation needed)")
+                    result['length_controlled'] = False
+                    result['truncated'] = False
+            
             # Display content preview
             content_text = self._content_to_text(content, component_type)
             print(f"\n{'─'*80}")
-            print(f"📄 GENERATED CONTENT:")
+            print(f"📄 GENERATED CONTENT{' (LENGTH CONTROLLED)' if length_controlled else ''}:")
             print(f"{'─'*80}")
             print(content_text[:500] + ("..." if len(content_text) > 500 else ""))
             print(f"{'─'*80}\n")
@@ -217,6 +267,9 @@ class QualityEvaluatedGenerator:
             try:
                 print(f"\n🎭 Analyzing quality (unified system)...")
                 author_data = self._get_author_data(material_name)
+                print(f"📝 MATERIAL: {material_name}")
+                print(f"👤 ASSIGNED AUTHOR: {author_data['name']} ({author_data['country']})")
+                print(f"🎯 AUTHOR ID: {self._get_author_id(material_name)}")
                 
                 # Use unified quality analyzer with learned weights
                 from shared.voice.quality_analyzer import QualityAnalyzer
@@ -234,7 +287,8 @@ class QualityEvaluatedGenerator:
                 quality_analysis = analyzer.analyze(
                     text=content_text,
                     author=author_data,
-                    include_recommendations=True
+                    include_recommendations=True,
+                    component_type=component_type  # Context-aware forbidden phrases
                 )
                 
                 print(f"   ✅ Quality Analysis Complete:")
@@ -350,6 +404,14 @@ class QualityEvaluatedGenerator:
         winston_result = self._check_winston_detection(content, material_name, component_type)
         quality_scores['winston_human_score'] = winston_result.get('human_score')
         quality_scores['winston_ai_score'] = winston_result.get('ai_score')
+        
+        # Log Winston client type for debugging
+        if self.winston_client:
+            client_type = type(self.winston_client).__name__
+            if 'Cached' in client_type:
+                logger.warning(f"Winston using {client_type} - may not have proper check_text support")
+            else:
+                logger.info(f"Winston using {client_type} - full API support available")
         
         # Structural variation
         structural_analysis = None

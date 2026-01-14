@@ -1,0 +1,27 @@
+TASK: Generate before and after microscopic descriptions for {material_name} laser cleaning
+
+CONTEXT: You are writing detailed microscopic observations showing the material surface before and after laser cleaning treatment.
+
+FOCUS:
+- BEFORE: Contamination, surface roughness, defects visible at 1000x magnification
+- AFTER: Clean surface, improved finish, restored material properties
+- Specific visual details that would be observable under microscope
+- Changes in surface texture, contamination removal, structural improvements
+
+GUIDELINES:
+- Write two distinct paragraphs: BEFORE and AFTER
+- Each paragraph: 45-65 words
+- Technical but accessible language
+- Mention specific magnification levels, measurements, visual characteristics
+- Use material-specific properties and typical contaminants
+- Show clear contrast between contaminated and cleaned states
+
+{voice_instruction}
+
+MATERIAL: {material_name}
+
+BEFORE:
+[Write before paragraph here]
+
+AFTER:
+[Write after paragraph here]

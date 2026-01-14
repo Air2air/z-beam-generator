@@ -28,7 +28,7 @@
 
 **FIELD UPDATE RULES:**
 - ✅ `--description` → Updates ONLY `description` field (preserves subtitle, micro, faq, author, properties, etc.)
-- ✅ `--micro` → Updates ONLY `caption` field (preserves description, subtitle, faq, author, properties, etc.)
+- ✅ `--micro` → Updates ONLY `micro` field (preserves description, subtitle, faq, author, properties, etc.)
 - ✅ `--subtitle` → Updates ONLY `subtitle` field (preserves description, micro, faq, author, properties, etc.)
 - ✅ `--faq` → Updates ONLY `faq` field (preserves description, micro, subtitle, author, properties, etc.)
 

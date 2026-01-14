@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://www.z-beam.com/schemas/dataset-material-extension.json",
+  "title": "Z-Beam Material Dataset Extension",
+  "description": "Material-specific dataset schema extending base schema with material properties and machine settings",
+  "version": "2.0.0",
+  "allOf": [
+    {
+      "$ref": "dataset-base.json"
+    },
+    {
+      "type": "object",
+      "required": ["material"],
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+-material-dataset$",
+          "description": "Unique identifier for material dataset"
+        },
+        "material": {
+          "type": "object",
+          "required": ["materialProperties", "machineSettings"],
+          "description": "Core dataset content: material characteristics and laser cleaning parameters",
+          "properties": {
+            "materialProperties": {
+              "type": "object",
+              "required": ["category", "subcategory"],
+              "description": "Physical, thermal, optical, and mechanical material characteristics",
+              "properties": {
+                "category": {
+                  "type": "string",
+                  "enum": ["metal", "ceramic", "glass", "stone", "wood", "plastic", "composite", "masonry", "semiconductor", "rare-earth"]
+                },
+                "subcategory": {"type": "string"},
+                "density": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "meltingPoint": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "boilingPoint": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "thermalConductivity": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "specificHeat": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "thermalExpansion": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "thermalDiffusivity": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "laserAbsorption": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "laserReflectivity": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "absorptivity": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "reflectivity": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "emissivity": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "ablationThreshold": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "laserDamageThreshold": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "tensileStrength": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "youngsModulus": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "hardness": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "porosity": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "surfaceRoughness": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "corrosionResistance": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "oxidationResistance": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "electricalConductivity": {"$ref": "dataset-base.json#/definitions/measuredValue"},
+                "electricalResistivity": {"$ref": "dataset-base.json#/definitions/measuredValue"}
+              }
+            },
+            "machineSettings": {
+              "type": "object",
+              "required": ["power", "wavelength", "spotSize", "repetitionRate", "pulseWidth", "scanSpeed", "passCount", "overlapRatio"],
+              "description": "Tier 1 CRITICAL laser cleaning parameters",
+              "properties": {
+                "power": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "wavelength": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "spotSize": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "repetitionRate": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "pulseWidth": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "scanSpeed": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "passCount": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "overlapRatio": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "fluenceThreshold": {"$ref": "dataset-base.json#/definitions/parameterRange"},
+                "energyDensity": {"$ref": "dataset-base.json#/definitions/parameterRange"}
+              }
+            },
+            "industryApplications": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "regulatoryStandards": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "title", "authority"],
+                "properties": {
+                  "id": {"type": "string"},
+                  "title": {"type": "string"},
+                  "authority": {"type": "string"},
+                  "url": {"type": "string", "format": "uri"},
+                  "compliance_level": {"type": "string", "enum": ["mandatory", "recommended", "optional"]}
+                }
+              }
+            },
+            "commonContaminants": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

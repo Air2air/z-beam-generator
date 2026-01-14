@@ -3,12 +3,16 @@ source_file: data/settings/Settings.yaml
 items_key: settings
 
 generators:
-  - type: description
-    module_path: generation.backfill.settings_population
-    class_name: SettingsDescriptionGenerator
-    target_field: description
-  
-  - type: recommendations
-    module_path: generation.backfill.settings_population
-    class_name: SettingsRecommendationsGenerator
-    target_field: recommendations
+  # Single multi-field generator - handles all text components in one pass
+  - type: multi_field_text
+    module: generation.backfill.universal_text_generator
+    class: UniversalTextGenerator
+    source_file: data/settings/Settings.yaml
+    items_key: settings
+    fields:
+      - field: pageDescription
+        component_type: settings_description
+      - field: faq
+        component_type: faq
+      - field: challenges
+        component_type: challenges

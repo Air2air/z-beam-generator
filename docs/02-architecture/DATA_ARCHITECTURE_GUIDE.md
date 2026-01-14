@@ -133,7 +133,7 @@ materials:
           source: "Materials Database 2024"
         # ... more material characteristics
     description: "[Generated text from QualityEvaluatedGenerator]"
-    caption: "[Generated text from QualityEvaluatedGenerator]"
+    micro: "[Generated text from QualityEvaluatedGenerator]"
     faq: "[Generated text from QualityEvaluatedGenerator]"
     settings_description: "[Generated text from QualityEvaluatedGenerator]"
   # ... 120 more materials

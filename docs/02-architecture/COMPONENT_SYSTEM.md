@@ -252,7 +252,7 @@ component_lengths:
 
 **Extraction Strategies**:
 - **`raw`**: Return API response directly
-- **`before_after`**: Extract "Before" and "After" sections (for micro captions)
+- **`before_after`**: Extract "Before" and "After" sections (for micro content)
 - **`qa_pairs`**: Extract Q&A pairs (for FAQ)
 
 ### Voice/Technical Intensity
@@ -347,7 +347,7 @@ def test_component_generation():
 
 | Component | Purpose | Structure | Word Count | Sections |
 |-----------|---------|-----------|------------|----------|
-| **Micro** | Hero captions | Before/After | 30-70/section | 2 |
+| **Micro** | Hero micro content | Before/After | 30-70/section | 2 |
 | **Description** | Technical subtitle | Single paragraph | 50-150 total | 1 |
 | **FAQ** | Q&A | Question-Answer pairs | 15-45/answer | 3-9 |
 | **Subtitle** | Short tagline | Single sentence | 7-12 total | 1 |
@@ -377,7 +377,7 @@ return self._generate_content(material, prompt)
 ```python
 # ❌ WRONG: Content instructions in code
 if component_type == 'micro':
-    prompt += "\nCRITICAL: Write ONLY before/after captions..."
+prompt += "\nCRITICAL: Write ONLY before/after micro content..."
 
 # ✅ CORRECT: Load from template
 prompt = self._load_prompt_template('micro.txt')  # Instructions in file

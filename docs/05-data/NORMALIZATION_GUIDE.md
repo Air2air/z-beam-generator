@@ -130,7 +130,7 @@ author:
 
 # 3. Content
 description: "Comprehensive description..."
-caption: "Brief caption..."
+micro: "Brief micro content..."
 
 # 4. Properties (if applicable)
 properties:
@@ -301,8 +301,8 @@ description: |
   Second paragraph with more detail.
 
 # Multiline folded (single line output)
-caption: >
-  This is a long caption that wraps
+micro: >
+  This is a long micro content that wraps
   but will be output as single line.
 ```
 

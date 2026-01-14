@@ -311,7 +311,7 @@ def extract_content(self, text, component_type):
 ```python
 def _build_micro_prompt(self, ...):
     return f"""You are {author}, describing...
-    CAPTION-SPECIFIC INSTRUCTIONS...
+    MICRO-SPECIFIC INSTRUCTIONS...
     """
 ```
 
@@ -434,7 +434,7 @@ if spec.name == "micro":
 ```python
 # ❌ WRONG - Component-specific method
 def _build_micro_prompt(self, ...):
-    return f"""Caption-specific prompt..."""
+    return f"""Micro-specific prompt..."""
 ```
 
 ---

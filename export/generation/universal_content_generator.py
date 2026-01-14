@@ -377,7 +377,7 @@ class ContentGenerator(BaseGenerator):
                     section_data['_section'] = {
                         'sectionTitle': metadata.get('section_title', section_key.replace('_', ' ').title()),
                         'sectionDescription': metadata.get('section_description', ''),
-                        'icon': metadata.get('icon', 'circle-info'),
+                        'icon': metadata.get('icon', 'info'),
                         'order': metadata.get('order', 100),
                         'variant': metadata.get('variant', 'default')
                     }
@@ -858,7 +858,7 @@ class ContentGenerator(BaseGenerator):
             'sectionMetadata': {
                 'section_title': 'Expert Q&A',
                 'section_description': 'Frequently asked questions answered by laser cleaning experts',
-                'icon': 'user-tie',
+                'icon': 'user',
                 'order': 40
             },
             'items': expert_items,

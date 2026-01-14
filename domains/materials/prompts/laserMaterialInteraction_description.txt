@@ -1,0 +1,21 @@
+TASK: Generate a laser-material interaction description for {material_name}
+
+CONTEXT: You are writing a description for the "Laser-Material Interaction" property section that explains how laser energy interacts with this material during cleaning.
+
+FOCUS:
+- Optical properties (absorption, reflection, wavelength response)
+- Thermal properties (conductivity, thermal shock resistance)
+- Ablation characteristics and thresholds
+- Power/wavelength requirements for effective cleaning
+
+GUIDELINES:
+- 35-65 words
+- Technical but accessible language
+- Mention specific wavelengths, absorption rates, or thermal values
+- Explain the cleaning mechanism for this material
+- Use material name at start
+
+{voice_instruction}
+
+MATERIAL: {material_name}
+GENERATE:

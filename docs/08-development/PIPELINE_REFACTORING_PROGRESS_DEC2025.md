@@ -40,7 +40,7 @@ Created `tests/test_generation_pipeline.py` with **28 tests across 8 test classe
 - ✅ `test_dynamic_config_loads` - Verify DynamicConfig initializes
 - ✅ `test_dynamic_config_has_required_methods` - Verify calculate_temperature, calculate_max_tokens
 - ✅ `test_temperature_calculation` - Verify returns float 0.0-2.0
-- ✅ `test_max_tokens_calculation` - Verify returns positive int for caption/description/faq
+- ✅ `test_max_tokens_calculation` - Verify returns positive int for micro/description/faq
 
 #### 4. TestDomainCompatibility (2 tests) ✅
 - ✅ `test_generator_initializes_for_domain` - Parametrized test for materials/contaminants/settings

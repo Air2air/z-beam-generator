@@ -3,22 +3,18 @@ source_file: data/contaminants/Contaminants.yaml
 items_key: contaminants
 
 generators:
-  - type: description
-    module_path: generation.backfill.contaminant_population
-    class_name: ContaminantDescriptionGenerator
-    target_field: description
-  
-  - type: appearance
-    module_path: generation.backfill.contaminant_population
-    class_name: ContaminantAppearanceGenerator
-    target_field: appearance
-  
-  - type: compounds
-    module_path: generation.backfill.contaminant_population
-    class_name: ContaminantCompoundsGenerator
-    target_field: compounds
-  
-  - type: context
-    module_path: generation.backfill.contaminant_population
-    class_name: ContaminantContextGenerator
-    target_field: context
+  # Single multi-field generator - handles all text components in one pass
+  - type: multi_field_text
+    module: generation.backfill.universal_text_generator
+    class: UniversalTextGenerator
+    source_file: data/contaminants/Contaminants.yaml
+    items_key: contaminants
+    fields:
+      - field: pageDescription
+        component_type: pageDescription
+      - field: faq
+        component_type: faq
+      - field: appearance
+        component_type: appearance
+      - field: compounds
+        component_type: compounds

@@ -3,7 +3,22 @@ source_file: data/compounds/Compounds.yaml
 items_key: compounds
 
 generators:
-  - type: description
-    module_path: generation.backfill.compound_description
-    class_name: CompoundDescriptionGenerator
-    target_field: description
+  # Single multi-field generator - handles all text components in one pass
+  - type: multi_field_text
+    module: generation.backfill.universal_text_generator
+    class: UniversalTextGenerator
+    source_file: data/compounds/Compounds.yaml
+    items_key: compounds
+    fields:
+      - field: pageDescription
+        component_type: pageDescription
+      - field: faq
+        component_type: faq
+      - field: health_effects
+        component_type: health_effects
+      - field: detection_methods
+        component_type: detection_methods
+      - field: emergency_response
+        component_type: emergency_response
+      - field: exposure_guidelines
+        component_type: exposure_guidelines

@@ -1,0 +1,22 @@
+TASK: Generate a list of related materials for {material_name}
+
+CONTEXT: You are creating a list of materials that are similar to, compatible with, or frequently used alongside this material in laser cleaning applications.
+
+FOCUS:
+- Materials with similar properties (density, thermal conductivity, hardness)
+- Materials from the same category or subcategory
+- Materials used in similar industrial applications
+- Materials that require similar laser cleaning parameters
+- Alloys or composites that include this material
+
+GUIDELINES:
+- Return 4-6 related materials
+- Use exact material names that exist in the system
+- Format as JSON array of objects with name and relationship reason
+- Example: [{"name": "Steel", "reason": "similar_properties"}, {"name": "Titanium", "reason": "aerospace_applications"}]
+- Relationship types: similar_properties, same_category, similar_applications, compatible_alloy, requires_similar_settings
+
+{voice_instruction}
+
+MATERIAL: {material_name}
+GENERATE JSON:

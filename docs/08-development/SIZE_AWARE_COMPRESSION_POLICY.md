@@ -13,7 +13,7 @@
 **Impact**:
 - Prompts: 12,000+ chars (51% over limit)
 - API rejection of oversized prompts
-- Generation failures for small components (descriptions, captions)
+- Generation failures for small components (descriptions, micros)
 
 **Example**:
 ```
@@ -246,7 +246,7 @@ python3 run.py --contaminant "adhesive-residue" --description
 
 ### Compressed Humanness Used
 
-✅ Small components (descriptions, captions, micros)  
+✅ Small components (descriptions, micros, micros)  
 ✅ Complex persona profiles (long voice instructions)  
 ✅ Rich context (many facts, detailed requirements)  
 ✅ Base prompt > 2,000 chars  

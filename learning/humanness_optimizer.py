@@ -615,7 +615,7 @@ class HumannessOptimizer:
         for idx, (key, value) in enumerate(structure_config.items(), 1):
             prob_pct = int(value['probability'] * 100)
             structure_options.append(
-                f"{idx}. {value['label']} ({prob_pct}% chance): {value['description']}"
+                f"{value['label']} ({prob_pct}% chance): {value['description']}"
             )
         selected_structure = random.choice(structure_options)
         
@@ -692,6 +692,11 @@ class HumannessOptimizer:
         # Full template with all placeholders
         instructions = template.format(
             component_type=component_type,
+            selected_length=selected_length,
+            selected_structure=selected_structure,
+            selected_rhythm=selected_rhythm,
+            selected_property_strategy=selected_property_strategy,
+            selected_warning=selected_warning,
             passing_sample_count=winston_patterns.sample_count,
             total_evaluations=self._get_total_evaluations(),
             winston_success_patterns=winston_section,
@@ -701,7 +706,8 @@ class HumannessOptimizer:
             structural_sample_count=structural_patterns.sample_count,
             successful_structural_patterns=structural_section,
             overused_opening_patterns=overused_section,
-            diverse_linguistic_patterns=diverse_structures_section
+            diverse_linguistic_patterns=diverse_structures_section,
+            structural_diversity_patterns=structural_section
         )
         
         # Append randomization selections to instructions (template placeholder approach)

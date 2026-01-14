@@ -29,6 +29,15 @@ except ImportError:
         "All configurations must be defined in config/settings.py with no fallbacks."
     )
 
+# Import unified config loader
+from .unified_loader import (
+    load_config,
+    load_domain_config,
+    load_export_config,
+    load_system_config,
+    get_config_manager,
+)
+
 __all__ = [
     'API_PROVIDERS',
     'COMPONENT_CONFIG',
@@ -42,4 +51,9 @@ __all__ = [
     'get_persona_config',
     'get_dynamic_config_for_component',
     'create_dynamic_ai_detection_config',
+    'load_config',
+    'load_domain_config',
+    'load_export_config',
+    'load_system_config',
+    'get_config_manager',
 ]

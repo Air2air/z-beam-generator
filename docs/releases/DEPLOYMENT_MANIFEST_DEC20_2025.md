@@ -24,7 +24,7 @@ DOMAIN BREAKDOWN
    Completeness: 100%
    Content:
      ✅ Descriptions (AI-generated, author-specific)
-     ✅ Micro captions (AI-generated, 50 words)
+     ✅ Micro content (AI-generated, 50 words)
      ✅ FAQs (AI-generated, material-specific)
      ✅ Properties (comprehensive material data)
      ✅ Characteristics (physical properties)

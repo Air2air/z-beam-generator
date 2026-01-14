@@ -4,18 +4,33 @@
 
 This directory contains shared prompt resources used across the generation system.
 
-## Current Structure
+## Consolidated Structure (Jan 13, 2026)
 
 ```
 shared/prompts/
 ├── README.md           # This file
 ├── __init__.py         # Module exports
+├── common/             # Common prompt templates (base versions) 🆕
+│   ├── pageDescription_base.txt
+│   ├── excerpt_base.txt
+│   ├── faq_base.txt
+│   └── micro_base.txt
 └── personas/           # Author voice personas
     ├── indonesia.yaml
     ├── italy.yaml
     ├── taiwan.yaml
     └── united_states.yaml
 ```
+
+## Common Templates 🆕
+
+Templates appearing in 2+ domains are documented here as base versions:
+- **pageDescription**: materials, contaminants, compounds, settings (4 domains)
+- **excerpt**: DEPRECATED (was materials, contaminants, settings)  
+- **faq**: materials, contaminants (2 domains)
+- **micro**: materials, contaminants (2 domains)
+
+Domain-specific files override these bases as needed.
 
 ## Author Personas
 

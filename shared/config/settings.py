@@ -199,7 +199,7 @@ API_PROVIDERS = {
         "type": "grok",
         "env_var": "GROK_API_KEY",
         "base_url": "https://api.x.ai",
-        "model": "grok-4-fast",
+        "model": "grok-4-0709",
         "max_tokens": 550,  # Final optimized setting to consistently produce 400-500 total words
         "temperature": 0.2,  # Slightly higher for creative micro generation
         "timeout_connect": 30,
