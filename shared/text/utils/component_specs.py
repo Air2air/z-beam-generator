@@ -292,6 +292,53 @@ class ComponentRegistry:
                     'prompt_template_file': relative_path
                 }
         
+        # ALSO discover schema-based components from section_display_schema.yaml
+        schema_specs = cls._discover_schema_components()
+        specs.update(schema_specs)
+        
+        return specs
+
+    @classmethod
+    def _discover_schema_components(cls) -> Dict[str, Dict]:
+        """Discover components defined in section_display_schema.yaml.
+        
+        Returns:
+            Dict of component specs for schema-based components
+        """
+        specs = {}
+        
+        try:
+            # Load the schema file
+            project_root = Path(__file__).parent.parent.parent.parent
+            schema_path = project_root / 'data' / 'schemas' / 'section_display_schema.yaml'
+            
+            if not schema_path.exists():
+                # Fallback: try relative path from cwd
+                schema_path = Path('data/schemas/section_display_schema.yaml')
+            
+            if not schema_path.exists():
+                return specs
+                
+            with open(schema_path, 'r', encoding='utf-8') as f:
+                schema = yaml.safe_load(f)
+                
+            # Extract component types from sections
+            sections = schema.get('sections', {})
+            for component_type, section_config in sections.items():
+                # Skip if missing required prompt field
+                if not section_config.get('prompt'):
+                    continue
+                    
+                specs[component_type] = {
+                    'end_punctuation': True,  # Default
+                    'schema_based': True,  # Flag to indicate schema source
+                    'wordCount': section_config.get('wordCount', 100)  # Default word count
+                }
+                
+        except Exception as e:
+            # Don't fail if schema can't be loaded - just don't add schema components
+            pass
+            
         return specs
     
     @classmethod
@@ -328,8 +375,19 @@ class ComponentRegistry:
                 f"Available: {available}"
             )
         
-        # Get lengths from config
-        lengths = cls._get_component_lengths(component_type)
+        # Get lengths - handle schema-based components differently
+        if spec_def.get('schema_based'):
+            # For schema-based components, use wordCount from schema if available
+            schema_word_count = spec_def.get('wordCount', 100)
+            lengths = {
+                'default': schema_word_count,
+                'min': max(int(schema_word_count * 0.8), schema_word_count - 20),
+                'max': min(int(schema_word_count * 1.2), schema_word_count + 20),
+                'extraction_strategy': 'raw'  # Default for schema components
+            }
+        else:
+            # Regular components use config.yaml
+            lengths = cls._get_component_lengths(component_type)
         
         # Get extraction strategy from config (default to 'raw')
         extraction_strategy = 'raw'

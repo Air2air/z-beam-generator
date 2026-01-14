@@ -409,3 +409,49 @@ sections:
     title: "Related Compounds"
     description: "Similar or associated chemical compounds"
     prompt: "Generate title and description identifying compounds RELATED TO THIS ONE. Title should be concise (3-5 words) and item-specific. Description must specify WHAT makes these compounds similar to THIS one (functional groups, molecular structure, reactivity), WHICH properties THIS compound shares with them, and WHY these relationships matter for understanding THIS compound's behavior and potential substitutes."
+
+  # MATERIALS-SPECIFIC SECTIONS
+  materialCharacteristics:
+    icon: wrench
+    order: 70
+    variant: default
+    wordCount: 175
+    title: "Material Characteristics" 
+    description: "Physical and mechanical properties"
+    prompt: "Generate title and description for THIS MATERIAL'S characteristics. Title should be concise (3-5 words) and material-specific. Description should explain WHAT makes this material's physical properties distinctive, HOW these characteristics affect laser cleaning behavior, and WHY these properties matter for cleaning strategy and parameter selection for THIS specific material."
+    
+  laserMaterialInteraction:
+    icon: zap
+    order: 71
+    variant: default  
+    wordCount: 200
+    title: "Laser Material Interaction"
+    description: "How laser energy interacts with this material"
+    prompt: "Generate title and description for laser interaction with THIS MATERIAL. Title should be concise (3-5 words) and material-specific. Description should detail HOW laser energy affects THIS material specifically, WHAT absorption and reflection characteristics are unique to THIS material, and WHY these interactions determine optimal cleaning parameters for THIS material."
+    
+  relatedMaterials:
+    icon: layers
+    order: 72
+    variant: default
+    wordCount: 150
+    title: "Related Materials"  
+    description: "Similar materials and alloy variants"
+    prompt: "Generate title and description for materials RELATED TO THIS ONE. Title should be concise (3-5 words) and material-specific. Description should identify WHAT materials are similar to THIS one in composition or cleaning behavior, HOW cleaning strategies for THIS material apply to related materials, and WHY understanding these relationships helps optimize cleaning approaches."
+    
+  micro:
+    icon: camera
+    order: 73
+    variant: default
+    wordCount: 50
+    title: "Micro Description"
+    description: "Brief before/after cleaning description"  
+    prompt: "Generate title and description for before/after cleaning of THIS MATERIAL. Title should be concise (2-3 words) and material-specific. Description should be very brief, describing the visual transformation during cleaning process for THIS material - what the surface looks like before cleaning and after cleaning."
+    
+  pageDescription:
+    icon: file-text
+    order: 74
+    variant: default
+    wordCount: 100
+    title: "Page Description"
+    description: "Overall page summary"
+    prompt: "Generate title and description providing an overview of THIS MATERIAL. Title should be concise (3-5 words) and material-specific. Description should provide a comprehensive summary of WHAT this material is, WHY it's important for laser cleaning applications, HOW it behaves during cleaning, and WHICH key considerations matter for THIS material."

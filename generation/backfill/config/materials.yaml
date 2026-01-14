@@ -14,11 +14,13 @@ generators:
         component_type: pageDescription
       - field: faq
         component_type: faq
-      - field: properties.materialCharacteristics.description
-        component_type: materialCharacteristics_description
-      - field: properties.laserMaterialInteraction.description
-        component_type: laserMaterialInteraction_description
-      - field: relationships.relatedMaterials
-        component_type: related_materials
+      - field: relationships.contaminatedBy
+        component_type: contaminatedBy
+      - field: relationships.relatedMaterials  
+        component_type: relatedMaterials
+      - field: properties.materialCharacteristics
+        component_type: materialCharacteristics
+      - field: properties.laserMaterialInteraction
+        component_type: laserMaterialInteraction
       - field: components.micro
-        component_type: micro_before_after
+        component_type: micro
