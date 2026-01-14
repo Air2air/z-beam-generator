@@ -22,226 +22,346 @@
 # - Export processes read from source data, NOT from this schema
 # - Ordering follows logical progression: Identity → Properties → Safety → Operations → Interactions
 
+# ============================================================================
+# PROPERTY POOLS FOR SECTION-SPECIFIC FACT SELECTION
+# ============================================================================
+# Defines which properties are relevant for each section type
+# Used by PropertySelector to provide section-specific factual grounding
+
+property_pools:
+  
+  # Material Characteristics Section - Physical and Mechanical Properties
+  materialCharacteristics_description:
+    title: "Material Characteristics Properties"
+    icon: wrench
+    order: 1
+    variant: default
+    wordCount: 175
+    description: "Physical and mechanical properties affecting laser cleaning behavior"
+    prompt: "Generate property pool for material characteristics. Select the most distinctive physical and mechanical properties that differentiate THIS material from others in its category, focusing on properties that directly impact laser cleaning performance."
+    properties:
+      - density                    # g/cm³ - Mass per unit volume
+      - tensile_strength          # MPa - Maximum stress before failure
+      - hardness                  # Various scales - Resistance to deformation
+      - yield_strength            # MPa - Stress at permanent deformation
+      - surface_roughness         # μm - Surface texture measurement
+      - thermal_expansion         # 10⁻⁶/K - Dimensional change with temperature
+      - porosity                  # % - Void fraction in material
+      - elastic_modulus           # GPa - Stiffness measurement
+      - compressive_strength      # MPa - Resistance to compression
+    selection_count: 3            # Select 3 most distinctive properties
+    
+    # Structural patterns for variety (prevent repetitive openings)
+    structural_patterns:
+      - id: "comparative_opening"
+        weight: 20
+        instruction: "Start by comparing THIS material to its category average, highlighting how its distinctive properties deviate"
+      - id: "consequence_first"
+        weight: 20
+        instruction: "Begin with the practical outcome, then explain which distinctive properties cause it"
+      - id: "property_isolation"
+        weight: 15
+        instruction: "Open by isolating the MOST distinctive property with its specific value, then connect to others"
+      - id: "causal_chain"
+        weight: 15
+        instruction: "Start with a causal 'because' or 'due to' clause linking properties to outcomes"
+      - id: "contrast_framing"
+        weight: 15
+        instruction: "Begin with 'unlike' or 'while' to contrast with similar materials"
+      - id: "property_interaction"
+        weight: 15
+        instruction: "Open by describing how 2-3 distinctive properties interact or combine effects"
+  
+  # Laser-Material Interaction Section - Optical and Thermal Properties
+  laserMaterialInteraction_description:
+    title: "Laser-Material Interaction Properties"
+    icon: zap
+    order: 2
+    variant: default
+    wordCount: 200
+    description: "Optical and thermal properties governing laser interaction"
+    prompt: "Generate property pool for laser-material interactions. Select optical and thermal properties that define how THIS material responds to laser energy, emphasizing properties that create unique cleaning challenges or advantages."
+    properties:
+      - thermal_conductivity      # W/(m·K) - Heat transfer efficiency
+      - melting_point            # K or °C - Temperature of phase transition
+      - boiling_point            # K or °C - Vaporization temperature
+      - specific_heat            # J/(kg·K) - Energy to raise temperature
+      - thermal_diffusivity      # mm²/s - Heat spread rate
+      - emissivity               # unitless - Thermal radiation efficiency
+      - absorption_1064nm        # % - Laser energy absorption at 1064nm
+      - reflectivity             # % - Laser energy reflection
+      - ablation_threshold       # J/cm² - Minimum fluence for material removal
+    selection_count: 3
+    
+    # Structural patterns for variety (prevent repetitive openings)
+    structural_patterns:
+      - id: "power_requirement_first"
+        weight: 20
+        instruction: "Start with power/energy requirements, then explain which optical/thermal properties drive them"
+      - id: "challenge_solution"
+        weight: 20
+        instruction: "Begin by stating the laser cleaning challenge, then show how properties create or solve it"
+      - id: "thermal_cascade"
+        weight: 15
+        instruction: "Open with heat flow dynamics (absorption → conduction → dissipation) using distinctive thermal properties"
+      - id: "wavelength_response"
+        weight: 15
+        instruction: "Start with how THIS material responds to laser wavelengths differently than category average"
+      - id: "threshold_focus"
+        weight: 15
+        instruction: "Begin by isolating the ablation or damage threshold, connecting to underlying thermal properties"
+      - id: "comparative_efficiency"
+        weight: 15
+        instruction: "Open by comparing cleaning efficiency to similar materials, explaining property-based differences"
+  
+  # Generic Section - Broader Property Pool
+  section_description:
+    title: "General Section Properties"
+    icon: layers
+    order: 3
+    variant: default
+    wordCount: 150
+    description: "General material properties for generic sections"
+    prompt: "Generate property pool for generic sections. Select a broad range of material properties that provide general context about THIS material's characteristics across multiple domains."
+    properties:
+      - density
+      - tensile_strength
+      - hardness
+      - thermal_conductivity
+      - melting_point
+      - surface_roughness
+      - thermal_expansion
+      - absorption_1064nm
+    selection_count: 2
+  
+  # Physical Properties Section
+  physicalProperties:
+    title: "Physical Properties Selection"
+    icon: thermometer
+    order: 4
+    variant: default
+    wordCount: 175
+    description: "Physical state and thermal properties"
+    prompt: "Generate property pool for physical properties. Select fundamental physical characteristics that define THIS material's state, thermal behavior, and mechanical properties."
+    properties:
+      - density
+      - melting_point
+      - boiling_point
+      - thermal_conductivity
+      - thermal_expansion
+      - specific_heat
+    selection_count: 3
+  
+  # Chemical Properties Section
+  chemicalProperties:
+    title: "Chemical Properties Selection"
+    icon: flask
+    order: 5
+    variant: default
+    wordCount: 150
+    description: "Chemical reactivity and stability"
+    prompt: "Generate property pool for chemical properties. Select chemical characteristics that define THIS material's reactivity, stability, and interactions with other substances."
+    properties:
+      - reactivity_oxygen        # Oxidation behavior
+      - reactivity_water         # Hydrolysis behavior
+      - corrosion_resistance     # Chemical stability
+      - electronegativity        # Electron affinity
+    selection_count: 2
+
 sections:
   
   # IDENTITY GROUP (10-19): Core identification and classification
-  identity.synonymsIdentifiers:
+  synonymsIdentifiers:
     icon: tag
     order: 10
     variant: default
     wordCount: 150
-    description: "Synonyms & Identifiers"
-    metadata: "Generate title listing THIS ITEM'S identifiers. Description must include THIS item's CAS number, molecular formula, IUPAC name, common trade names, historical names, and industry terms, explaining WHY THIS item has multiple names and WHICH contexts use which names for THIS substance."
-    prompt: "Generate title listing THIS ITEM'S identifiers. Description must include THIS item's CAS number, molecular formula, IUPAC name, common trade names, historical names, and industry terms, explaining WHY THIS item has multiple names and WHICH contexts use which names for THIS substance."
+    prompt: "Generate title and description for THIS ITEM'S identifiers. Title should be concise (3-5 words) and item-specific. Description must include THIS item's CAS number, molecular formula, IUPAC name, common trade names, historical names, and industry terms, explaining WHY THIS item has multiple names and WHICH contexts use which names for THIS substance."
   
-  identity.chemicalProperties:
+  chemicalProperties:
     icon: flask
     order: 11
     variant: default
     wordCount: 200
-    description: "Chemical Properties"
-    metadata: "Generate title about THIS ITEM'S chemistry. Description must detail WHAT makes THIS item's molecular structure unique, HOW THIS item's chemical bonds drive ITS reactivity, WHICH thermodynamic properties define THIS item's behavior, and WHY THIS item's chemistry creates SPECIFIC application constraints or advantages."
-    prompt: "Generate title about THIS ITEM'S chemistry. Description must detail WHAT makes THIS item's molecular structure unique, HOW THIS item's chemical bonds drive ITS reactivity, WHICH thermodynamic properties define THIS item's behavior, and WHY THIS item's chemistry creates SPECIFIC application constraints or advantages."
+    prompt: "Generate title and description for THIS ITEM'S chemistry. Title should be concise (3-5 words) and item-specific. Description must detail WHAT makes THIS item's molecular structure unique, HOW THIS item's chemical bonds drive ITS reactivity, WHICH thermodynamic properties define THIS item's behavior, and WHY THIS item's chemistry creates SPECIFIC application constraints or advantages."
   
-  identity.physicalProperties:
+  physicalProperties:
     icon: thermometer
     order: 12
     variant: default
     wordCount: 175
-    description: "Physical Properties"
-    metadata: "Generate title about THIS ITEM'S physical properties. Description must specify WHAT makes THIS item's physical state/transitions unique, HOW THIS item's density/thermal/mechanical properties drive ITS behavior, WHY THIS item requires PARTICULAR handling based on ITS physics (not chemistry), and WHICH properties distinguish THIS item physically."
-    prompt: "Generate title about THIS ITEM'S physical properties. Description must specify WHAT makes THIS item's physical state/transitions unique, HOW THIS item's density/thermal/mechanical properties drive ITS behavior, WHY THIS item requires PARTICULAR handling based on ITS physics (not chemistry), and WHICH properties distinguish THIS item physically."
+    prompt: "Generate title and description for THIS ITEM'S physical properties. Title should be concise (3-5 words) and item-specific. Description must specify WHAT makes THIS item's physical state/transitions unique, HOW THIS item's density/thermal/mechanical properties drive ITS behavior, WHY THIS item requires PARTICULAR handling based on ITS physics (not chemistry), and WHICH properties distinguish THIS item physically."
+  
+  page:
+    title: "Page Overview"
+    icon: file-text
+    order: 13
+    variant: default
+    wordCount: 100
+    description: "Page Overview"
+    sectionTitle: "Page Title"
+    sectionDescription: "Page Description"
+    prompt: "Generate page title and description for THIS ITEM. Title should be concise and descriptive. Description must provide a comprehensive overview of THIS item, including WHAT it is, WHY it matters for laser cleaning applications, HOW it behaves during cleaning processes, and WHICH key considerations operators should know about THIS item."
   
   # VISUAL GROUP (20-29): Appearance and identification characteristics
-  visual.appearanceVariations:
+  appearanceVariations:
     icon: eye
     order: 20
     variant: default
     wordCount: 125
-    description: "Appearance Variations"
-    metadata: "Generate title about THIS ITEM'S appearance. Description must specify HOW this item looks based on ITS composition, WHAT visual changes occur with THIS item under different conditions (unique to it, not generic aging), WHICH features distinguish THIS item from similar ones, and WHY THIS item's appearance matters for identification."
-    prompt: "Generate title about THIS ITEM'S appearance. Description must specify HOW this item looks based on ITS composition, WHAT visual changes occur with THIS item under different conditions (unique to it, not generic aging), WHICH features distinguish THIS item from similar ones, and WHY THIS item's appearance matters for identification."
+    prompt: "Generate title and description for THIS ITEM'S appearance. Title should be concise (3-5 words) and item-specific. Description must specify HOW this item looks based on ITS composition, WHAT visual changes occur with THIS item under different conditions (unique to it, not generic aging), WHICH features distinguish THIS item from similar ones, and WHY THIS item's appearance matters for identification."
   
   # SAFETY GROUP (30-39): Health, regulatory, and emergency information
-  safety.healthEffects:
+  healthEffects:
     icon: heart-pulse
     order: 30
     variant: warning
     wordCount: 250
-    description: "Health Effects"
-    metadata: "Generate title about THIS ITEM'S health impacts. Description must detail HOW this item's SPECIFIC chemistry causes health effects, WHICH organs/systems THIS item targets based on ITS molecular properties, WHAT dose-response is UNIQUE to this substance, and WHY THIS item creates PARTICULAR acute and chronic risks."
-    prompt: "Generate title about THIS ITEM'S health impacts. Description must detail HOW this item's SPECIFIC chemistry causes health effects, WHICH organs/systems THIS item targets based on ITS molecular properties, WHAT dose-response is UNIQUE to this substance, and WHY THIS item creates PARTICULAR acute and chronic risks."
+    prompt: "Generate title and description for THIS ITEM'S health impacts. Title should be concise (3-5 words) and item-specific. Description must detail HOW this item's SPECIFIC chemistry causes health effects, WHICH organs/systems THIS item targets based on ITS molecular properties, WHAT dose-response is UNIQUE to this substance, and WHY THIS item creates PARTICULAR acute and chronic risks."
   
-  safety.exposureLimits:
+  exposureLimits:
     icon: gauge
     order: 31
     variant: warning
     wordCount: 200
-    description: "Exposure Limits"
-    metadata: "Generate title about THIS ITEM'S exposure limits. Description must specify WHAT exposure levels THIS item allows, WHY these limits are set for THIS substance (toxicity, target organs, dose-response), HOW THIS item's limits compare to similar substances, and WHICH monitoring THIS item requires based on ITS exposure dynamics."
-    prompt: "Generate title about THIS ITEM'S exposure limits. Description must specify WHAT exposure levels THIS item allows, WHY these limits are set for THIS substance (toxicity, target organs, dose-response), HOW THIS item's limits compare to similar substances, and WHICH monitoring THIS item requires based on ITS exposure dynamics."
+    prompt: "Generate title and description for THIS ITEM'S exposure limits. Title should be concise (3-5 words) and item-specific. Description must specify WHAT exposure levels THIS item allows, WHY these limits are set for THIS substance (toxicity, target organs, dose-response), HOW THIS item's limits compare to similar substances, and WHICH monitoring THIS item requires based on ITS exposure dynamics."
   
-  safety.ppeRequirements:
+  ppeRequirements:
     icon: hard-hat
     order: 32
     variant: default
     wordCount: 200
-    description: "PPE Requirements"
-    metadata: "Generate title about PPE FOR THIS ITEM. Description must specify WHICH protection levels THIS item requires based on ITS hazard profile, WHAT makes THIS item need PARTICULAR respiratory/eye/skin protection (volatility, pH, reactivity specific to it), and WHY standard PPE may be insufficient for THIS substance's UNIQUE penetration risks."
-    prompt: "Generate title about PPE FOR THIS ITEM. Description must specify WHICH protection levels THIS item requires based on ITS hazard profile, WHAT makes THIS item need PARTICULAR respiratory/eye/skin protection (volatility, pH, reactivity specific to it), and WHY standard PPE may be insufficient for THIS substance's UNIQUE penetration risks."
+    prompt: "Generate title and description for PPE requirements FOR THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH protection levels THIS item requires based on ITS hazard profile, WHAT makes THIS item need PARTICULAR respiratory/eye/skin protection (volatility, pH, reactivity specific to it), and WHY standard PPE may be insufficient for THIS substance's UNIQUE penetration risks."
   
-  safety.emergencyResponse:
+  emergencyResponse:
     icon: ambulance
     order: 33
     variant: danger
     wordCount: 225
-    description: "Emergency Response"
-    metadata: "Generate title about emergencies WITH THIS ITEM. Description must detail WHAT makes THIS item's exposures require SPECIFIC first aid (not generic), WHICH treatments counter THIS item's PARTICULAR effects, WHY timing matters for THIS substance (reactivity, absorption rate), and HOW containment differs for THIS item's UNIQUE properties."
-    prompt: "Generate title about emergencies WITH THIS ITEM. Description must detail WHAT makes THIS item's exposures require SPECIFIC first aid (not generic), WHICH treatments counter THIS item's PARTICULAR effects, WHY timing matters for THIS substance (reactivity, absorption rate), and HOW containment differs for THIS item's UNIQUE properties."
+    prompt: "Generate title and description for emergency procedures WITH THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHAT makes THIS item's exposures require SPECIFIC first aid (not generic), WHICH treatments counter THIS item's PARTICULAR effects, WHY timing matters for THIS substance (reactivity, absorption rate), and HOW containment differs for THIS item's UNIQUE properties."
   
-  safety.storageRequirements:
+  storageRequirements:
     icon: warehouse
     order: 34
     variant: default
     wordCount: 200
-    description: "Storage Requirements"
-    metadata: "Generate title about STORING THIS ITEM. Description must detail WHY this item needs SPECIFIC storage conditions (instability, reactivity, vapor pressure), WHAT makes THIS item incompatible with certain materials (reactions unique to it), WHICH containers suit THIS item's properties, and HOW THIS item's storage differs from similar substances."
-    prompt: "Generate title about STORING THIS ITEM. Description must detail WHY this item needs SPECIFIC storage conditions (instability, reactivity, vapor pressure), WHAT makes THIS item incompatible with certain materials (reactions unique to it), WHICH containers suit THIS item's properties, and HOW THIS item's storage differs from similar substances."
+    prompt: "Generate title and description for STORING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHY this item needs SPECIFIC storage conditions (instability, reactivity, vapor pressure), WHAT makes THIS item incompatible with certain materials (reactions unique to it), WHICH containers suit THIS item's properties, and HOW THIS item's storage differs from similar substances."
   
-  safety.regulatoryStandards:
+  regulatoryStandards:
     icon: shield-check
     order: 35
     variant: default
     wordCount: 225
-    description: "Regulatory Standards"
-    metadata: "Generate title about standards GOVERNING THIS ITEM. Description must specify WHICH regulations apply to THIS item's SPECIFIC hazards, WHAT makes THIS item require PARTICULAR compliance measures (toxicity, flammability, reactivity unique to it), and HOW THIS item's characteristics determine ITS regulatory classification."
-    prompt: "Generate title about standards GOVERNING THIS ITEM. Description must specify WHICH regulations apply to THIS item's SPECIFIC hazards, WHAT makes THIS item require PARTICULAR compliance measures (toxicity, flammability, reactivity unique to it), and HOW THIS item's characteristics determine ITS regulatory classification."
+    prompt: "Generate title and description for standards GOVERNING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH regulations apply to THIS item's SPECIFIC hazards, WHAT makes THIS item require PARTICULAR compliance measures (toxicity, flammability, reactivity unique to it), and HOW THIS item's characteristics determine ITS regulatory classification."
   
-  safety.regulatoryClassification:
+  regulatoryClassification:
     icon: file-check-2
     order: 36
     variant: default
     wordCount: 225
-    description: "Regulatory Classification"
-    metadata: "Generate title about THIS ITEM'S classifications. Description must specify WHICH GHS classes THIS item falls into based on ITS properties, WHAT H-codes/P-codes reflect THIS item's SPECIFIC hazards (not generic), HOW THIS item is classified for transport, and WHY THIS item requires PARTICULAR designations."
-    prompt: "Generate title about THIS ITEM'S classifications. Description must specify WHICH GHS classes THIS item falls into based on ITS properties, WHAT H-codes/P-codes reflect THIS item's SPECIFIC hazards (not generic), HOW THIS item is classified for transport, and WHY THIS item requires PARTICULAR designations."
+    prompt: "Generate title and description for THIS ITEM'S classifications. Title should be concise (3-5 words) and item-specific. Description must specify WHICH GHS classes THIS item falls into based on ITS properties, WHAT H-codes/P-codes reflect THIS item's SPECIFIC hazards (not generic), HOW THIS item is classified for transport, and WHY THIS item requires PARTICULAR designations."
   
   # OPERATIONAL GROUP (40-49): Practical usage and handling information
-  operational.industryApplications:
+  industryApplications:
     icon: briefcase
     order: 40
     variant: default
     wordCount: 175
-    description: "Industry Applications"
-    metadata: "Generate title about WHERE THIS ITEM appears. Description must detail WHICH industries use/encounter THIS item, WHY THIS item's SPECIFIC properties suit or challenge these applications (thermal, mechanical, chemical characteristics unique to it), and HOW THIS item's behavior differs from alternatives in THESE contexts."
-    prompt: "Generate title about WHERE THIS ITEM appears. Description must detail WHICH industries use/encounter THIS item, WHY THIS item's SPECIFIC properties suit or challenge these applications (thermal, mechanical, chemical characteristics unique to it), and HOW THIS item's behavior differs from alternatives in THESE contexts."
+    prompt: "Generate title and description for WHERE THIS ITEM appears. Title should be concise (3-5 words) and item-specific. Description must detail WHICH industries use/encounter THIS item, WHY THIS item's SPECIFIC properties suit or challenge these applications (thermal, mechanical, chemical characteristics unique to it), and HOW THIS item's behavior differs from alternatives in THESE contexts."
   
-  operational.commonChallenges:
+  commonChallenges:
     icon: alert-triangle
     order: 41
     variant: default
     wordCount: 175
-    description: "Common Challenges"
-    metadata: "Generate title about CHALLENGES WITH THIS ITEM. Description must detail WHAT makes THIS item difficult to handle (properties unique to it), WHY these challenges arise from THIS item's SPECIFIC characteristics, HOW operators solve problems UNIQUE to this item (not generic solutions), and WHICH proven strategies work for THIS item."
-    prompt: "Generate title about CHALLENGES WITH THIS ITEM. Description must detail WHAT makes THIS item difficult to handle (properties unique to it), WHY these challenges arise from THIS item's SPECIFIC characteristics, HOW operators solve problems UNIQUE to this item (not generic solutions), and WHICH proven strategies work for THIS item."
+    prompt: "Generate title and description for CHALLENGES WITH THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHAT makes THIS item difficult to handle (properties unique to it), WHY these challenges arise from THIS item's SPECIFIC characteristics, HOW operators solve problems UNIQUE to this item (not generic solutions), and WHICH proven strategies work for THIS item."
   
-  operational.detectionMethods:
+  detectionMethods:
     icon: search
     order: 42
     variant: default
     wordCount: 175
-    description: "Detection Methods"
-    metadata: "Generate title about DETECTING THIS ITEM. Description must detail WHICH detection methods work for THIS item based on ITS properties (spectral, chemical, physical signatures), WHY THIS item requires SPECIFIC techniques (detection challenges unique to it), HOW reliable each method is for THIS item, and WHAT distinguishes THIS item from similar substances."
-    prompt: "Generate title about DETECTING THIS ITEM. Description must detail WHICH detection methods work for THIS item based on ITS properties (spectral, chemical, physical signatures), WHY THIS item requires SPECIFIC techniques (detection challenges unique to it), HOW reliable each method is for THIS item, and WHAT distinguishes THIS item from similar substances."
+    prompt: "Generate title and description for DETECTING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHICH detection methods work for THIS item based on ITS properties (spectral, chemical, physical signatures), WHY THIS item requires SPECIFIC techniques (detection challenges unique to it), HOW reliable each method is for THIS item, and WHAT distinguishes THIS item from similar substances."
   
-  operational.preventionStrategies:
+  preventionStrategies:
     icon: shield
     order: 43
     variant: default
     wordCount: 175
-    description: "Prevention Strategies"
-    metadata: "Generate title about PREVENTING THIS ITEM. Description must specify HOW to stop THIS item's formation based on ITS SPECIFIC mechanisms (chemistry, environmental factors unique to it), WHICH controls target THIS item's formation pathways, WHY standard prevention may fail for THIS item, and WHAT conditions favor THIS item specifically."
-    prompt: "Generate title about PREVENTING THIS ITEM. Description must specify HOW to stop THIS item's formation based on ITS SPECIFIC mechanisms (chemistry, environmental factors unique to it), WHICH controls target THIS item's formation pathways, WHY standard prevention may fail for THIS item, and WHAT conditions favor THIS item specifically."
+    prompt: "Generate title and description for PREVENTING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify HOW to stop THIS item's formation based on ITS SPECIFIC mechanisms (chemistry, environmental factors unique to it), WHICH controls target THIS item's formation pathways, WHY standard prevention may fail for THIS item, and WHAT conditions favor THIS item specifically."
   
-  operational.removalMethods:
+  removalMethods:
     icon: wrench
     order: 44
     variant: default
     wordCount: 200
-    description: "Removal Methods"
-    metadata: "Generate title about REMOVING THIS ITEM. Description must specify WHICH methods work for THIS item based on ITS bonding/adhesion properties, WHY THIS item requires PARTICULAR techniques (chemistry, mechanical bonds unique to it), HOW removal approaches compare for THIS item, and WHAT makes THIS item easier or harder to remove than similar items."
-    prompt: "Generate title about REMOVING THIS ITEM. Description must specify WHICH methods work for THIS item based on ITS bonding/adhesion properties, WHY THIS item requires PARTICULAR techniques (chemistry, mechanical bonds unique to it), HOW removal approaches compare for THIS item, and WHAT makes THIS item easier or harder to remove than similar items."
+    prompt: "Generate title and description for REMOVING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH methods work for THIS item based on ITS bonding/adhesion properties, WHY THIS item requires PARTICULAR techniques (chemistry, mechanical bonds unique to it), HOW removal approaches compare for THIS item, and WHAT makes THIS item easier or harder to remove than similar items."
   
-  operational.environmentalImpact:
+  environmentalImpact:
     icon: globe
     order: 45
     variant: default
     wordCount: 200
-    description: "Environmental Impact"
-    metadata: "Generate title about THIS ITEM'S environmental effects. Description must detail HOW this item impacts environment based on ITS properties (persistence, bioaccumulation, degradation unique to it), WHY THIS item poses PARTICULAR risks to air/water/soil, WHICH disposal methods suit THIS item's chemistry, and HOW THIS item differs environmentally from alternatives."
-    prompt: "Generate title about THIS ITEM'S environmental effects. Description must detail HOW this item impacts environment based on ITS properties (persistence, bioaccumulation, degradation unique to it), WHY THIS item poses PARTICULAR risks to air/water/soil, WHICH disposal methods suit THIS item's chemistry, and HOW THIS item differs environmentally from alternatives."
+    prompt: "Generate title and description for THIS ITEM'S environmental effects. Title should be concise (3-5 words) and item-specific. Description must detail HOW this item impacts environment based on ITS properties (persistence, bioaccumulation, degradation unique to it), WHY THIS item poses PARTICULAR risks to air/water/soil, WHICH disposal methods suit THIS item's chemistry, and HOW THIS item differs environmentally from alternatives."
+  
+  faq:
+    title: "FAQ"
+    icon: help-circle
+    order: 46
+    variant: default
+    wordCount: 300
+    description: "Frequently Asked Questions"
+    sectionTitle: "FAQ"
+    sectionDescription: "Common Questions and Answers"
+    prompt: "Generate frequently asked questions and answers about THIS ITEM for laser cleaning applications. Create 3-4 practical questions that professionals commonly ask about THIS item, covering safety considerations, process parameters, effectiveness, and best practices. Provide detailed, technical answers that address the specific properties and behaviors of THIS item, not generic responses."
   
   # MONITORING GROUP (50-59): Detection and continuous monitoring systems
-  detectionMonitoring.continuousMonitoring:
+  continuousMonitoring:
     icon: activity
     order: 50
     variant: default
     wordCount: 200
-    description: "Continuous Monitoring"
-    metadata: "Generate title about CONTINUOUS MONITORING of THIS ITEM. Description must specify WHICH real-time instruments monitor THIS item based on ITS signatures (spectral, electrochemical), HOW to set up continuous sampling for THIS item given ITS state/volatility, WHAT monitoring intervals THIS item requires based on ITS exposure dynamics, and WHICH automated thresholds trigger alerts for THIS substance."
-    prompt: "Generate title about CONTINUOUS MONITORING of THIS ITEM. Description must specify WHICH real-time instruments monitor THIS item based on ITS signatures (spectral, electrochemical), HOW to set up continuous sampling for THIS item given ITS state/volatility, WHAT monitoring intervals THIS item requires based on ITS exposure dynamics, and WHICH automated thresholds trigger alerts for THIS substance."
+    prompt: "Generate title and description for CONTINUOUS MONITORING of THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH real-time instruments monitor THIS item based on ITS signatures (spectral, electrochemical), HOW to set up continuous sampling for THIS item given ITS state/volatility, WHAT monitoring intervals THIS item requires based on ITS exposure dynamics, and WHICH automated thresholds trigger alerts for THIS substance."
   
   # INTERACTIONS GROUP (60-69): Chemical reactions and material relationships
-  interactions.reactivity:
+  reactivity:
     icon: zap
     order: 60
     variant: default
     wordCount: 200
-    description: "Chemical Reactivity"
-    metadata: "Generate title about THIS ITEM'S chemical reactivity. Description must detail HOW this item's SPECIFIC molecular structure drives ITS reactions, WHICH substances it reacts with based on ITS unique chemistry, WHAT conditions trigger THIS item's reactions, and WHY THIS item's reactivity requires SPECIFIC handling."
-    prompt: "Generate title about THIS ITEM'S chemical reactivity. Description must detail HOW this item's SPECIFIC molecular structure drives ITS reactions, WHICH substances it reacts with based on ITS unique chemistry, WHAT conditions trigger THIS item's reactions, and WHY THIS item's reactivity requires SPECIFIC handling."
+    prompt: "Generate title and description for THIS ITEM'S chemical reactivity. Title should be concise (3-5 words) and item-specific. Description must detail HOW this item's SPECIFIC molecular structure drives ITS reactions, WHICH substances it reacts with based on ITS unique chemistry, WHAT conditions trigger THIS item's reactions, and WHY THIS item's reactivity requires SPECIFIC handling."
   
-  interactions.contaminatedBy:
+  contaminatedBy:
     icon: droplet
     order: 61
     variant: default
     wordCount: 175
-    description: "Common Contaminants"
-    metadata: "Generate title emphasizing THIS MATERIAL'S specific contamination vulnerabilities. Description should explain WHY these contaminants target THIS material's unique properties (surface chemistry, porosity, reactivity) and HOW they accumulate based on ITS DISTINCT characteristics, not generic contamination patterns."
-    prompt: "Generate title emphasizing THIS MATERIAL'S specific contamination vulnerabilities. Description should explain WHY these contaminants target THIS material's unique properties (surface chemistry, porosity, reactivity) and HOW they accumulate based on ITS DISTINCT characteristics, not generic contamination patterns."
+    prompt: "Generate title and description emphasizing THIS MATERIAL'S specific contamination vulnerabilities. Title should be concise (3-5 words) and item-specific. Description should explain WHY these contaminants target THIS material's unique properties (surface chemistry, porosity, reactivity) and HOW they accumulate based on ITS DISTINCT characteristics, not generic contamination patterns."
   
-  interactions.producedByMaterials:
+  producedByMaterials:
     icon: layers
     order: 62
     variant: default
     wordCount: 175
-    description: "Source Materials"
-    metadata: "Generate title identifying materials that CREATE THIS CONTAMINANT. Description must specify WHAT makes these materials produce THIS contaminant (unique chemical reactions, thermal decomposition, oxidation pathways specific to THIS contaminant), WHICH conditions favor ITS formation, and HOW material properties drive THIS particular contamination."
-    prompt: "Generate title identifying materials that CREATE THIS CONTAMINANT. Description must specify WHAT makes these materials produce THIS contaminant (unique chemical reactions, thermal decomposition, oxidation pathways specific to THIS contaminant), WHICH conditions favor ITS formation, and HOW material properties drive THIS particular contamination."
+    prompt: "Generate title and description identifying materials that CREATE THIS CONTAMINANT. Title should be concise (3-5 words) and item-specific. Description must specify WHAT makes these materials produce THIS contaminant (unique chemical reactions, thermal decomposition, oxidation pathways specific to THIS contaminant), WHICH conditions favor ITS formation, and HOW material properties drive THIS particular contamination."
   
-  interactions.producedFromContaminants:
+  producedFromContaminants:
     icon: box
     order: 63
     variant: default
     wordCount: 175
-    description: "Source Contaminants"
-    metadata: "Generate title showing contaminants that FORM THIS COMPOUND. Description must detail THE SPECIFIC REACTIONS creating THIS compound, ITS UNIQUE formation chemistry (not general pathways), WHY this compound's structure creates PARTICULAR safety risks, and WHAT makes THIS compound's formation conditions distinctive."
-    prompt: "Generate title showing contaminants that FORM THIS COMPOUND. Description must detail THE SPECIFIC REACTIONS creating THIS compound, ITS UNIQUE formation chemistry (not general pathways), WHY this compound's structure creates PARTICULAR safety risks, and WHAT makes THIS compound's formation conditions distinctive."
+    prompt: "Generate title and description showing contaminants that FORM THIS COMPOUND. Title should be concise (3-5 words) and item-specific. Description must detail THE SPECIFIC REACTIONS creating THIS compound, ITS UNIQUE formation chemistry (not general pathways), WHY this compound's structure creates PARTICULAR safety risks, and WHAT makes THIS compound's formation conditions distinctive."
   
-  interactions.relatedContaminants:
+  relatedContaminants:
     icon: link
     order: 64
     variant: default
     wordCount: 150
-    description: "Related Contaminants"
-    metadata: "Generate title highlighting contaminants RELATED TO THIS ONE. Description must explain WHAT connects THIS contaminant to related ones (shared chemistry, co-formation mechanisms), WHY they appear together in THIS context, and HOW understanding THIS contaminant's relationships informs cleaning strategies SPECIFIC to its profile."
-    prompt: "Generate title highlighting contaminants RELATED TO THIS ONE. Description must explain WHAT connects THIS contaminant to related ones (shared chemistry, co-formation mechanisms), WHY they appear together in THIS context, and HOW understanding THIS contaminant's relationships informs cleaning strategies SPECIFIC to its profile."
+    prompt: "Generate title and description highlighting contaminants RELATED TO THIS ONE. Title should be concise (3-5 words) and item-specific. Description must explain WHAT connects THIS contaminant to related ones (shared chemistry, co-formation mechanisms), WHY they appear together in THIS context, and HOW understanding THIS contaminant's relationships informs cleaning strategies SPECIFIC to its profile."
   
-  interactions.relatedCompounds:
+  relatedCompounds:
     icon: atom
     order: 65
     variant: default
     wordCount: 150
-    description: "Related Compounds"
-    metadata: "Generate title identifying compounds RELATED TO THIS ONE. Description must specify WHAT makes these compounds similar to THIS one (functional groups, molecular structure, reactivity), WHICH properties THIS compound shares with them, and WHY these relationships matter for understanding THIS compound's behavior and potential substitutes."
-    prompt: "Generate title identifying compounds RELATED TO THIS ONE. Description must specify WHAT makes these compounds similar to THIS one (functional groups, molecular structure, reactivity), WHICH properties THIS compound shares with them, and WHY these relationships matter for understanding THIS compound's behavior and potential substitutes."
+    prompt: "Generate title and description identifying compounds RELATED TO THIS ONE. Title should be concise (3-5 words) and item-specific. Description must specify WHAT makes these compounds similar to THIS one (functional groups, molecular structure, reactivity), WHICH properties THIS compound shares with them, and WHY these relationships matter for understanding THIS compound's behavior and potential substitutes."
