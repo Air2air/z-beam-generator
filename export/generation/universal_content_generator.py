@@ -613,15 +613,36 @@ class ContentGenerator(BaseGenerator):
     
     def _task_field_cleanup(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
-        Remove deprecated or empty fields.
-        Replaces: FieldCleanupEnricher
+        Remove deprecated or empty fields per FRONTMATTER_REORGANIZATION_REQUIRED.md
+        Handles both root-level and nested field cleanup.
         """
         deprecated_fields = config.get('deprecated_fields', [])
         
         for field in deprecated_fields:
-            if field in frontmatter:
-                del frontmatter[field]
-                logger.debug(f"Removed deprecated field: {field}")
+            # Handle nested field paths (e.g., "properties.materialCharacteristics.description")
+            if '.' in field:
+                parts = field.split('.')
+                current = frontmatter
+                for part in parts[:-1]:
+                    if part in current and isinstance(current[part], dict):
+                        current = current[part]
+                    else:
+                        current = None
+                        break
+                
+                if current and parts[-1] in current:
+                    del current[parts[-1]]
+                    logger.debug(f"Removed deprecated nested field: {field}")
+            else:
+                # Handle root-level fields
+                if field in frontmatter:
+                    # Special case: only remove root 'micro' if 'components.micro' exists
+                    if field == 'micro' and 'components' in frontmatter and isinstance(frontmatter['components'], dict) and 'micro' in frontmatter['components']:
+                        del frontmatter[field]
+                        logger.debug(f"Removed deprecated field: {field} (components.micro exists)")
+                    elif field != 'micro':  # Remove all other deprecated fields
+                        del frontmatter[field]
+                        logger.debug(f"Removed deprecated field: {field}")
         
         # Remove empty relationships
         if 'relationships' in frontmatter:
@@ -631,6 +652,16 @@ class ContentGenerator(BaseGenerator):
             ]
             for cat in empty_cats:
                 del frontmatter['relationships'][cat]
+        
+        # Remove empty arrays
+        empty_arrays = [
+            key for key, value in frontmatter.items()
+            if isinstance(value, list) and len(value) == 0
+        ]
+        for key in empty_arrays:
+            if key in ['related_materials']:  # Only remove specific empty arrays
+                del frontmatter[key]
+                logger.debug(f"Removed empty array: {key}")
         
         return frontmatter
     

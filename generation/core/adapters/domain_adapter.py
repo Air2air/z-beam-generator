@@ -770,6 +770,10 @@ class DomainAdapter(DataSourceAdapter):
         
         Strategy is determined by generation/config.yaml component_extraction settings.
         
+        SCHEMA-BASED COMPONENTS (NEW Jan 14, 2026):
+        For schema-based components (contaminatedBy, relatedMaterials, etc.),
+        automatically parses "Title: ... Description: ..." format into structured dict.
+        
         Args:
             raw_response: Raw API response text
             component_type: Component type for strategy lookup
@@ -777,7 +781,35 @@ class DomainAdapter(DataSourceAdapter):
         Returns:
             Extracted content (string, dict, or list depending on strategy)
         """
-        # Load extraction strategy from central config
+        # CHECK FOR SCHEMA-BASED COMPONENT FIRST (Priority over config strategy)
+        if self._is_schema_based_component(component_type):
+            # Parse Title/Description format into structured dict
+            import re
+            
+            # Try to extract Title and Description from formatted output
+            title_match = re.search(r'(?:^|\n)\s*Title:\s*(.+?)(?:\n|$)', raw_response, re.MULTILINE)
+            desc_match = re.search(r'(?:^|\n)\s*Description:\s*(.+?)(?=\n\n|\Z)', raw_response, re.MULTILINE | re.DOTALL)
+            
+            if title_match and desc_match:
+                # Successful parse - return structured dict
+                schema_metadata = self.get_section_metadata(component_type)
+                return {
+                    'title': title_match.group(1).strip(),
+                    'description': desc_match.group(1).strip(),
+                    '_metadata': {
+                        'icon': schema_metadata.get('icon', 'file-text'),
+                        'order': schema_metadata.get('order', 0),
+                        'variant': schema_metadata.get('variant', 'default'),
+                        'generatedAt': datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z')
+                    }
+                }
+            else:
+                # Fallback: LLM didn't follow format - use parser to extract from content
+                logger.warning(f"Schema component {component_type} didn't use Title/Description format - parsing anyway")
+                schema_metadata = self.get_section_metadata(component_type)
+                return self._parse_schema_output(raw_response, schema_metadata)
+        
+        # Load extraction strategy from central config for non-schema components
         from generation.config.config_loader import get_config
         config = get_config()
         extraction_config = config.config.get('component_extraction', {})

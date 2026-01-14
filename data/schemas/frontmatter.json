@@ -7,12 +7,12 @@
   "type": "object",
   "required": [
     "id",
-    "page_title",
-    "meta_description",
-    "page_description",
-    "content_type",
+    "name",
+    "contentType",
+    "schemaVersion",
     "datePublished",
-    "dateModified"
+    "dateModified",
+    "author"
   ],
   "properties": {
     "id": {
@@ -20,27 +20,36 @@
       "minLength": 1,
       "description": "Unique identifier for the item"
     },
-    "page_title": {
+    "displayName": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable display name"
+    },
+    "contentType": {
+      "type": "string",
+      "enum": ["material", "contaminant", "compound", "setting"],
+      "description": "Domain/content type classification"
+    },
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version (e.g., '5.0.0')"
+    },
+    "fullPath": {
+      "type": "string",
+      "description": "Full path for navigation"
+    },
+    "pageTitle": {
       "type": "string",
       "minLength": 1,
       "maxLength": 200,
       "description": "SEO-optimized page title for <title> tag and H1"
     },
-    "meta_description": {
+    "metaDescription": {
       "type": "string",
       "minLength": 50,
       "maxLength": 160,
       "description": "SEO meta description for search engine snippets (50-160 chars)"
-    },
-    "page_description": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Content paragraph for page body (longer than meta_description)"
-    },
-    "content_type": {
-      "type": "string",
-      "enum": ["materials", "contaminants", "compounds", "settings"],
-      "description": "Domain/content type classification"
     },
     "datePublished": {
       "type": "string",
@@ -57,18 +66,85 @@
       "minLength": 1,
       "description": "Item name (not for display, use page_title for display)"
     },
-    "display_name": {
+    "category": {
       "type": "string",
-      "description": "Human-readable display name"
+      "description": "Primary category classification"
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Secondary category classification"
     },
     "slug": {
       "type": "string",
       "pattern": "^[a-z0-9-]+$",
       "description": "URL-safe slug"
     },
-    "category": {
+    "card": {
+      "type": "object",
+      "properties": {
+        "title": {"type": "string"},
+        "description": {"type": "string"},
+        "image": {"type": "string"},
+        "badge": {
+          "type": "object",
+          "properties": {
+            "text": {"type": "string"},
+            "variant": {"type": "string"}
+          }
+        }
+      }
+    },
+    "eeat": {
+      "type": "object",
+      "properties": {
+        "experience": {"type": "string"},
+        "expertise": {"type": "string"},
+        "authoritativeness": {"type": "string"},
+        "trustworthiness": {"type": "string"}
+      }
+    },
+    "images": {
+      "type": "object",
+      "properties": {
+        "hero": {
+          "type": "object",
+          "properties": {
+            "url": {"type": "string"},
+            "alt": {"type": "string"},
+            "width": {"type": "integer"},
+            "height": {"type": "integer"}
+          }
+        },
+        "micro": {
+          "type": "object",
+          "properties": {
+            "url": {"type": "string"},
+            "alt": {"type": "string"},
+            "width": {"type": "integer"},
+            "height": {"type": "integer"}
+          }
+        }
+      }
+    },
+    "components": {
+      "type": "object",
+      "description": "Generated content components"
+    },
+    "properties": {
+      "type": "object",
+      "description": "Material-specific properties with title/description structure"
+    },
+    "faq": {
       "type": "string",
-      "description": "Primary category classification"
+      "description": "FAQ content"
+    },
+    "relationships": {
+      "type": "object",
+      "description": "Cross-domain relationships"
+    },
+    "contamination": {
+      "type": "object",
+      "description": "Taxonomy information (optional/legacy)"
     },
     "breadcrumb": {
       "type": "array",
@@ -99,11 +175,19 @@
   },
   "patternProperties": {
     "^title$": {
-      "description": "FORBIDDEN: Use 'page_title' instead of generic 'title'",
+      "description": "FORBIDDEN: Use 'pageTitle' instead of generic 'title'",
       "not": {}
     },
     "^description$": {
-      "description": "FORBIDDEN: Use 'meta_description' or 'page_description' instead",
+      "description": "FORBIDDEN: Use 'metaDescription' instead of generic 'description'",
+      "not": {}
+    },
+    ".*_description$": {
+      "description": "FORBIDDEN: Legacy fields like 'materialCharacteristics_description' should be removed",
+      "not": {}
+    },
+    "^micro$": {
+      "description": "FORBIDDEN: Root-level 'micro' - use 'components.micro' instead",
       "not": {}
     }
   },
@@ -112,11 +196,14 @@
     "naming_conventions": {
       "description": "Naming convention rules enforced by this schema",
       "rules": {
-        "page_title": "SEO-optimized page title (required, 1-200 chars)",
-        "meta_description": "SEO meta description (required, 50-160 chars)",
-        "page_description": "Content paragraph (required, >1 char)",
+        "pageTitle": "SEO-optimized page title (camelCase, 1-200 chars)",
+        "metaDescription": "SEO meta description (camelCase, 50-160 chars)",
+        "contentType": "Domain classification (camelCase: material, contaminant, etc.)",
+        "schemaVersion": "Version string (format: 'X.Y.Z')",
         "FORBIDDEN_title": "Generic 'title' field not allowed at root level",
-        "FORBIDDEN_description": "Generic 'description' field not allowed at root level"
+        "FORBIDDEN_description": "Generic 'description' field not allowed at root level",
+        "FORBIDDEN_legacy_fields": "Fields ending in '_description' are deprecated",
+        "FORBIDDEN_root_micro": "Use 'components.micro' instead of root-level 'micro'"
       }
     }
   }

@@ -131,12 +131,24 @@ class DataEnricher:
         # Extract property values from nested structure
         material_props = material_data.get('properties', {})
         material_chars = material_props.get('materialCharacteristics', {})
-        for prop_name, prop_data in material_chars.items():
-            if isinstance(prop_data, dict) and 'value' in prop_data:
-                value = prop_data.get('value')
-                unit = prop_data.get('unit', '')
-                if value is not None:
-                    facts['properties'][prop_name] = f"{value} {unit}".strip()
+        
+        # COMPATIBILITY: Handle both old string format and new dict format (Jan 14, 2026)
+        if isinstance(material_chars, dict):
+            # New structured format with title/description
+            if 'title' in material_chars or 'description' in material_chars:
+                # Schema-based format - skip property extraction
+                logger.debug(f"Skipping property extraction for {material} - materialCharacteristics is schema-formatted")
+            else:
+                # Dict with actual properties
+                for prop_name, prop_data in material_chars.items():
+                    if isinstance(prop_data, dict) and 'value' in prop_data:
+                        value = prop_data.get('value')
+                        unit = prop_data.get('unit', '')
+                        if value is not None:
+                            facts['properties'][prop_name] = f"{value} {unit}".strip()
+        else:
+            # Old embedded markdown string format - skip property extraction
+            logger.debug(f"Skipping property extraction for {material} - materialCharacteristics is old string format")
         
         # READ pre-populated distinctive properties from source data (if available)
         # These should be written by backfill/research scripts, NOT calculated here
@@ -153,12 +165,17 @@ class DataEnricher:
         settings_section = material_data.get('machine_settings', {})
         laser_settings = settings_section.get('laser_settings', {})
         settings = laser_settings if laser_settings else settings_section
-        for setting_name, setting_data in settings.items():
-            if isinstance(setting_data, dict):
-                value = setting_data.get('value')
-                unit = setting_data.get('unit', '')
-                if value:
-                    facts['machine_settings'][setting_name] = f"{value} {unit}".strip()
+        
+        # COMPATIBILITY: Handle both dict and string formats (Jan 14, 2026)
+        if isinstance(settings, dict):
+            for setting_name, setting_data in settings.items():
+                if isinstance(setting_data, dict):
+                    value = setting_data.get('value')
+                    unit = setting_data.get('unit', '')
+                    if value:
+                        facts['machine_settings'][setting_name] = f"{value} {unit}".strip()
+        else:
+            logger.debug(f"Skipping settings extraction for {material} - machine_settings is non-dict format")
         
         logger.info(f"Enriched {material} with {len(facts['properties'])} properties, {len(facts['machine_settings'])} settings")
         

@@ -25,15 +25,29 @@ generators:
   module: export.generation.universal_content_generator
   class: UniversalContentGenerator
   tasks:
-  # Optimization Phase (Jan 13, 2026): Remove unused fields per FRONTMATTER_OPTIMIZATION_GUIDE.md
+  # Phase 1: Remove Duplicate/Legacy Fields (FRONTMATTER_REORGANIZATION_REQUIRED.md)
   - type: field_cleanup
-    description: Remove unused fields not consumed by MaterialsLayout components
+    description: Remove duplicate and legacy fields per reorganization requirements
     deprecated_fields:
+      # DELETE - Superseded by properties.materialCharacteristics
+      - materialCharacteristics_description
+      # DELETE - Superseded by properties.laserMaterialInteraction  
+      - laserMaterialInteraction_description
+      # DELETE - Duplicate of properties.materialCharacteristics.description
+      - properties.materialCharacteristics.description
+      # DELETE - Duplicate of properties.laserMaterialInteraction.description
+      - properties.laserMaterialInteraction.description
+      # DELETE - Should be structured array in relationships, not text
+      - relationships.relatedMaterials
+      # DELETE - Duplicate of components.micro (when it appears at root level)
+      - micro  # Only if components.micro exists
+      # DELETE - Empty/unused arrays
+      - related_materials
+      # DELETE - General cleanup for reorganization
       - characteristics  # Legacy section - superseded by properties
       - pageDescription  # Not consumed by MaterialsLayout
       - excerpt         # Not consumed by MaterialsLayout
-      # author - PRESERVE: Used by metadata/SEO systems (do NOT remove)
-      - breadcrumb      # Not consumed by MaterialsLayout
+      - breadcrumb      # Not consumed by MaterialsLayout per optimization
       - keywords        # Not consumed by MaterialsLayout
       - technicalSpecifications  # Not referenced anywhere
       - chemicalProperties       # Not referenced anywhere

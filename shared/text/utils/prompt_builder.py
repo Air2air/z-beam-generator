@@ -607,6 +607,30 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
         if humanness_layer:
             humanness_section = f"\n\n{humanness_layer}\n"
         
+        # Schema-based components require explicit OUTPUT FORMAT
+        # List of schema-based components that use title/description structure
+        schema_components = {
+            'contaminatedBy', 'relatedMaterials', 'materialCharacteristics',
+            'laserMaterialInteraction', 'physicalProperties', 'appearanceVariations',
+            'healthEffects', 'exposureLimits', 'ppeRequirements', 'emergencyResponse',
+            'storageRequirements', 'regulatoryStandards', 'regulatoryClassification',
+            'industryApplications', 'commonChallenges', 'detectionMethods',
+            'preventionStrategies', 'removalMethods', 'environmentalImpact',
+            'continuousMonitoring', 'reactivity', 'producedByMaterials',
+            'producedFromContaminants', 'relatedContaminants', 'relatedCompounds'
+        }
+        
+        output_format_section = ""
+        if spec.name in schema_components:
+            output_format_section = """
+
+OUTPUT FORMAT (MANDATORY - DO NOT DEVIATE):
+Title: [Write a 3-5 word concise title here]
+
+Description: [Write the full description here]
+
+CRITICAL: You MUST use exactly this format. The title line starts with "Title:" and the description line starts with "Description:". This is a strict requirement."""
+        
         # Assemble complete prompt
         # NOTE: Voice instructions already in context_section via {voice_instruction} placeholder
         # No generic "be unique" override that negates specific voice rules
@@ -615,6 +639,7 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
 {humanness_section}
 REQUIREMENTS:
 {requirements_section}
+{output_format_section}
 
 {anti_ai}{enrichment_hints}{variation_note}
 
