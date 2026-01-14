@@ -194,7 +194,9 @@ def validate_category_ranges() -> List[str]:
     violations = []
     
     try:
-        from domains.materials.data_loader_v2 import get_category_ranges
+        from shared.data.loader_factory import MaterialsDataLoader
+        loader = MaterialsDataLoader()
+        get_category_ranges = loader.get_category_ranges
         
         # Get category ranges from new architecture
         category_ranges_data = get_category_ranges()

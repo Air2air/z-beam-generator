@@ -31,9 +31,7 @@ Date: December 11, 2025
 import logging
 from typing import Literal, Union
 
-from domains.contaminants.data_loader_v2 import ContaminantsDataLoader
-from domains.materials.data_loader_v2 import MaterialsDataLoader
-from domains.settings.data_loader_v2 import SettingsDataLoader
+from shared.data.loader_factory import ContaminantsDataLoader, MaterialsDataLoader, SettingsDataLoader
 
 logger = logging.getLogger(__name__)
 
@@ -87,7 +85,7 @@ def get_data_loader(domain: DomainName) -> DataLoaderType:
         elif domain == 'settings':
             _loaders[domain] = SettingsDataLoader()
         elif domain == 'compounds':
-            from domains.compounds.data_loader_v2 import CompoundsDataLoader
+            from domains.compounds.loaders.data_loader_v2 import CompoundsDataLoader
             _loaders[domain] = CompoundsDataLoader()
         else:
             raise ValueError(

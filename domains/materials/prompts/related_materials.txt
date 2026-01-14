@@ -10,13 +10,13 @@ FOCUS:
 - Alloys or composites that include this material
 
 GUIDELINES:
-- Return 4-6 related materials
+- Return 4-6 related materials as a simple comma-separated list
 - Use exact material names that exist in the system
-- Format as JSON array of objects with name and relationship reason
-- Example: [{"name": "Steel", "reason": "similar_properties"}, {"name": "Titanium", "reason": "aerospace_applications"}]
-- Relationship types: similar_properties, same_category, similar_applications, compatible_alloy, requires_similar_settings
+- Format as: Material1, Material2, Material3, Material4
+- Focus on materials with similar laser cleaning requirements
+- Examples: Steel, Titanium, Copper, Brass
 
 {voice_instruction}
 
 MATERIAL: {material_name}
-GENERATE JSON:
+GENERATE:

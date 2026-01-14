@@ -21,7 +21,10 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, '/Users/todddunning/Desktop/Z-Beam/z-beam-generator')
 
-from domains.contaminants.data_loader_v2 import PatternDataLoader
+from shared.data.loader_factory import ContaminantsDataLoader
+
+# Initialize loader - PatternDataLoader alias
+PatternDataLoader = ContaminantsDataLoader
 from domains.contaminants.schema import (
     ContaminationPattern,
     LaserPropertyValue,

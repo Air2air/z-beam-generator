@@ -164,37 +164,27 @@ randomization_targets:
 winston_feedback_db_path: "z-beam.db"    # SQLite database for Winston feedback
 
 # Component Extraction Strategies
-# Word counts are defined in domain prompts (Option B: Prompts Only)
-# Config only defines HOW to parse the LLM output
+# DEFAULT: raw (return text as-is) for most components
+# EXCEPTIONS: Specialized extraction for specific formats
+component_extraction_defaults:
+  default_strategy: raw                  # Return text as-is (covers 90% of components)
+
+# Shared Domain Validation Defaults (NEW - Jan 13, 2026)
+# All domains inherit these unless overridden
+shared_domain_validation:
+  require_author: true
+  require_slug: true
+  min_description_words: 30
+  max_description_words: 200
+
+# Override extraction only for special cases:
 component_extraction:
   micro:
-    extraction_strategy: before_after  # Extract before/after paragraphs
-  description:
-    extraction_strategy: raw            # Return text as-is (all domains)
-  pageDescription:
-    extraction_strategy: raw            # Return text as-is (page description)
-  component_summary:
-    extraction_strategy: raw            # Return text as-is (single component)
-  faq:
-    extraction_strategy: json_list      # Parse as JSON array
-  page_title:
-    extraction_strategy: raw            # Return text as-is (SEO)
-  meta_description:
-    extraction_strategy: raw            # Return text as-is (SEO)
-  seo_description:
-    extraction_strategy: raw            # Return text as-is (SEO)
-  # excerpt: # DEPRECATED - field removed
-    extraction_strategy: raw            # Return text as-is (summary)
-  section_description:
-    extraction_strategy: raw            # Return text as-is (section descriptions)
-  materialCharacteristics_description:
-    extraction_strategy: raw            # Return text as-is (property descriptions)
-  laserMaterialInteraction_description:
-    extraction_strategy: raw            # Return text as-is (property descriptions)
-  related_materials:
-    extraction_strategy: json_list      # Parse as JSON array (list of materials)
+    extraction_strategy: before_after   # Extract before/after paragraphs
   micro_before_after:
     extraction_strategy: before_after   # Extract before/after paragraphs
+  faq:
+    extraction_strategy: json_list      # Parse as JSON array
 
 # Component Token Targets - DEPRECATED (Dec 29, 2025)
 # Word counts now in prompt files. See docs/08-development/WORD_COUNT_IN_PROMPTS_POLICY.md

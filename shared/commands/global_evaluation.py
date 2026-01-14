@@ -17,7 +17,11 @@ Benefits:
 import logging
 from typing import Optional
 
-from domains.materials.loaders.data_loader_v2 import load_material
+from shared.data.loader_factory import MaterialsDataLoader
+
+# Initialize loader
+_loader = MaterialsDataLoader()
+load_material = _loader.load_material
 from generation.config.config_loader import get_config
 from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
 from shared.api.client_factory import create_api_client

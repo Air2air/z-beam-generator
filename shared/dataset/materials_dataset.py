@@ -21,7 +21,7 @@ project_root = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(project_root))
 
 from shared.dataset.base_dataset import BaseDataset
-from domains.materials.data_loader_v2 import MaterialsDataLoader
+from shared.data.loader_factory import MaterialsDataLoader
 from shared.exceptions import DataError
 import logging
 

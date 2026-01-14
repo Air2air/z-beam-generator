@@ -121,7 +121,9 @@ class SettingsAdapter(DataSourceAdapter):
         material_name = item_data.get('name', '')
         if material_name:
             try:
-                from domains.materials.data_loader_v2 import load_material
+                from shared.data.loader_factory import MaterialsDataLoader
+                loader = MaterialsDataLoader()
+                material = loader.load_material
                 material_data = load_material(material_name)
                 if material_data:
                     material_author = material_data.get('author', {})

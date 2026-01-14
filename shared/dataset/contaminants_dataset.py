@@ -21,8 +21,8 @@ project_root = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(project_root))
 
 from shared.dataset.base_dataset import BaseDataset
-from domains.contaminants.data_loader_v2 import ContaminantsDataLoader
-from domains.compounds.data_loader_v2 import CompoundsDataLoader
+from domains.contaminants.loaders.data_loader_v2 import ContaminantsDataLoader
+from domains.compounds.loaders.data_loader_v2 import CompoundsDataLoader
 
 
 class ContaminantsDataset(BaseDataset):

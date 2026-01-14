@@ -6,14 +6,11 @@ data_path: "data/settings/Settings.yaml"
 data_root_key: "settings"
 frontmatter_pattern: "{slug}-settings.yaml"
 
-# Component types (discovered from prompts/*.txt files)
-components:
-  - "description"
-  - "micro"
+# Component types (auto-discovered from prompts/*.txt files)
+# Components are dynamically detected at runtime - no hardcoded lists needed
+# See: domains/settings/prompts/ directory for actual component definitions
 
-# Validation rules
+# Validation rules (inherits shared defaults)
 validation:
-  require_author: true
-  require_slug: true
-  min_description_words: 30
-  max_description_words: 200
+  inherit_shared_defaults: true
+  # Domain-specific overrides can be added here
