@@ -41,7 +41,7 @@ This guide consolidates all prompt system architecture, policies, and best pract
 **Prompt Templates** (authoritative sources):
 - `domains/*/prompts/*.txt` - Component-specific content requirements
 - `shared/voice/profiles/*.yaml` - Author personas and voice instructions
-- `shared/text/templates/system/humanness_layer*.txt` - Structural variation
+- `prompts/core/humanness_layer*.txt` - Structural variation
 
 **Generator Code** (technical mechanisms only):
 - `generation/core/generator.py` - Orchestration and API calls
@@ -644,7 +644,7 @@ content = self.api_client.generate(final_prompt, temperature=temp)
 |------|-------|
 | **Prompt Templates** | `domains/*/prompts/*.txt` |
 | **Voice Profiles** | `shared/voice/profiles/*.yaml` |
-| **Humanness Templates** | `shared/text/templates/system/humanness_layer*.txt` |
+| **Humanness Templates** | `prompts/core/humanness_layer*.txt` |
 | **Generator** | `generation/core/generator.py` |
 | **Evaluated Generator** | `generation/core/evaluated_generator.py` |
 | **Prompt Builder** | `shared/text/utils/prompt_builder.py` |

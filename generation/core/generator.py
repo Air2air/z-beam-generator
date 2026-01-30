@@ -98,11 +98,11 @@ class Generator:
         self.logger.info(f"Generator initialized for '{domain}' domain (single-pass with research)")
     
     def _load_all_personas(self) -> Dict[int, Dict[str, Any]]:
-        """Load all author voice profiles from shared/voice/profiles/"""
+        """Load all author voice profiles from prompts/profiles/voice/"""
         personas = {}
         
         # Use shared/voice location (correct path per policy)
-        personas_dir = Path("shared/voice/profiles")
+        personas_dir = Path("prompts/profiles/voice")
         if not personas_dir.exists():
             raise FileNotFoundError(f"Voice profiles directory not found: {personas_dir}")
         
@@ -314,37 +314,8 @@ class Generator:
             item_data=item_data  # Pass item_data for template placeholders
         )
         
-        base_size = len(base_prompt)
-        
-        # 🎯 SIZE-AWARE DECISION: Compress humanness if base already large
-        # API limit: 8,000 chars. Full humanness ~9K would push any base > 0 over limit
-        # Compressed humanness ~1K allows base up to ~6.5K
-        SIZE_THRESHOLD = 800  # If base exceeds this, use compressed humanness (lowered Dec 24, 2025 for compounds)
-        
-        if base_size > SIZE_THRESHOLD:
-            # Base prompt moderate - use COMPRESSED humanness (essential rules only ~1K)
-            print(f"📦 Base prompt {base_size:,} chars > {SIZE_THRESHOLD:,} - using COMPRESSED humanness")
-            self.logger.info(f"📦 Base prompt {base_size:,} chars > {SIZE_THRESHOLD:,} - using COMPRESSED humanness")
-            # Generate compressed version (10-15% of normal size, learning-optimized)
-            from learning.humanness_optimizer import HumannessOptimizer
-            optimizer = HumannessOptimizer(winston_db_path='z-beam.db')
-            
-            # Get base word count target from config
-            component_lengths = self.config.get('component_lengths', {})
-            if isinstance(component_lengths.get(component_type), dict):
-                length_target = component_lengths[component_type].get('default')
-            else:
-                length_target = component_lengths.get(component_type)
-            
-            final_humanness = optimizer.generate_compressed_humanness(
-                component_type=component_type,
-                length_target=length_target
-            )
-        else:
-            # Base prompt small - use FULL humanness layer
-            print(f"✅ Base prompt {base_size:,} chars < {SIZE_THRESHOLD:,} - using FULL humanness")
-            self.logger.info(f"✅ Base prompt {base_size:,} chars < {SIZE_THRESHOLD:,} - using FULL humanness")
-            final_humanness = humanness_layer
+        # Use already-generated humanness layer (HumannessOptimizer auto-selects compact template for micro/caption)
+        final_humanness = humanness_layer
         
         # Rebuild prompt with appropriate humanness
         prompt = PromptBuilder.build_unified_prompt(
@@ -361,8 +332,8 @@ class Generator:
             item_data=item_data  # Pass item_data for template placeholders
         )
         
-        print(f"📊 Final prompt: {len(prompt):,} chars (base: {base_size:,}, humanness: {len(final_humanness):,})")
-        self.logger.info(f"📊 Final prompt: {len(prompt):,} chars (base: {base_size:,}, humanness: {len(final_humanness):,})")
+        print(f"📊 Final prompt: {len(prompt):,} chars (base: {len(base_prompt):,}, humanness: {len(final_humanness):,})")
+        self.logger.info(f"📊 Final prompt: {len(prompt):,} chars (base: {len(base_prompt):,}, humanness: {len(final_humanness):,})")
         self.logger.info(f"📝 Prompt built for {component_type}")
         
         # CRITICAL: Validate FULL ASSEMBLED PROMPT before API call

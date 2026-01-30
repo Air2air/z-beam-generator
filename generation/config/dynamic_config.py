@@ -100,6 +100,33 @@ class DynamicConfig:
         # Ensure minimum of 0.7 for human-like content, max of 1.1
         return max(0.7, min(1.1, calculated_temp))
     
+    def calculate_penalties(self, component_type: str = 'default') -> Dict[str, float]:
+        """
+        Calculate API penalties based on humanness intensity slider.
+        
+        Returns dict with frequency_penalty and presence_penalty (0.0-2.0 range)
+        """
+        humanness = self.base_config.get_humanness_intensity()  # 1-10
+        penalties_config = self.base_config.config.get('dynamic_calculations', {}).get('penalties', {})
+        
+        if humanness <= 3:
+            frequency_penalty = penalties_config.get('low_humanness', {}).get('frequency', 0.0)
+            presence_penalty = penalties_config.get('low_humanness', {}).get('presence', 0.0)
+        elif humanness <= 7:
+            medium_max = penalties_config.get('medium_humanness', {}).get('frequency_max', 0.6)
+            frequency_penalty = (humanness - 3) / 4.0 * medium_max
+            presence_penalty = (humanness - 3) / 4.0 * medium_max
+        else:
+            high_min = penalties_config.get('high_humanness', {}).get('frequency_min', 0.6)
+            high_max = penalties_config.get('high_humanness', {}).get('frequency_max', 1.2)
+            frequency_penalty = high_min + (humanness - 7) / 3.0 * (high_max - high_min)
+            presence_penalty = high_min + (humanness - 7) / 3.0 * (high_max - high_min)
+        
+        return {
+            'frequency_penalty': round(frequency_penalty, 2),
+            'presence_penalty': round(presence_penalty, 2)
+        }
+    
     def calculate_max_tokens(self, component_type: str) -> int:
         """
         Return effectively unlimited max_tokens to allow natural variation.

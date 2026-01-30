@@ -1,0 +1,32 @@
+template_composition:
+  - "shared/common_structure.txt"
+  - "shared/writing_principles.txt"
+
+variables:
+  template_name: "Process Documentation"
+  purpose: "document laser cleaning procedures and parameters"
+  process_type: "{procedure_category}"
+
+specific_requirements: |
+  Document the laser cleaning process for "{material}" with focus on {procedure_category}.
+  
+  Process documentation areas:
+  1. Pre-cleaning preparation and setup
+  2. Laser parameter configuration
+  3. Safety protocols and equipment
+  4. Step-by-step procedure execution
+  5. Quality control and verification
+  6. Post-cleaning inspection and finishing
+  
+  Technical specifications to include:
+  - Laser power settings and pulse parameters
+  - Scanning patterns and coverage techniques
+  - Environmental controls (temperature, humidity)
+  - Expected timeframes and efficiency metrics
+  - Success criteria and acceptance standards
+  
+  Context: {procedure_category}
+  Material: {material}
+  Application: {specific_application}
+  
+  Create comprehensive procedural documentation suitable for technical operators and quality assurance.

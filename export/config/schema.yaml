@@ -1,6 +1,7 @@
 # Export Configuration Schema
 # Defines the standard structure for all domain export configurations
 # Created: January 4, 2026
+# Updated: January 29, 2026 - Breadcrumb preservation policy
 # Purpose: Enforce consistency across export configs
 
 # All export configs must conform to this schema structure
@@ -20,6 +21,16 @@ optional_fields:
   - filename_suffix # Suffix added to filenames (default: '')
   - relationship_groups  # Grouped relationship types
   - section_metadata     # Section display configuration
+
+# Protected fields (MUST NOT be in deprecated_fields list)
+# These fields are critical for site functionality and should be preserved during export
+protected_fields:
+  - breadcrumb      # Navigation breadcrumb data (added Jan 29, 2026)
+                    # Critical for SEO (Schema.org BreadcrumbList)
+                    # Required for rich results in search
+                    # 438 files have explicit breadcrumbs (100% coverage)
+  - fullPath        # Complete URL path for routing
+  - id              # Unique identifier for items
 
 # Field definitions
 fields:

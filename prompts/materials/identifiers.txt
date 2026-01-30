@@ -1,0 +1,49 @@
+# SECTION: Identifiers
+# PURPOSE: Generate complete section with title, description, and content
+
+## 1. SECTION TITLE GENERATION
+Generate a concise, material-specific title (3-7 words) that:
+- Identifies THIS specific material's identification system
+- Distinguishes from similar materials' naming patterns
+- Uses systematic language (e.g., "Steel Classification Codes", "Aluminum Grade Standards")
+- Avoids generic terms like "Identifiers" or "Names"
+
+## 2. SECTION DESCRIPTION GENERATION
+Generate 1-2 sentences that:
+- Explain what identification systems this section covers
+- Highlight why these identifiers are specifically important for THIS material
+- Set context for industry usage and standardization
+
+## 3. SECTION CONTENT GENERATION
+Generate comprehensive identifiers content including:
+
+### Primary Identification Systems
+- CAS numbers and regulatory identifiers
+- IUPAC nomenclature and chemical names
+- Industry standard designations and codes
+- Trade names and commercial identifiers
+
+### Classification Standards
+- International standard organizations (ISO, ASTM, EN)
+- Industry-specific classification systems
+- Grade designations and quality standards
+- Regional and national standard variations
+
+### Naming Conventions
+- Historical naming evolution and context
+- Context-specific usage patterns
+- Common abbreviations and acronyms
+- Cross-reference relationships between systems
+
+### Usage Guidelines
+- When to use specific identifier types
+- Industry and application context requirements
+- Documentation and specification standards
+- Quality and authenticity verification methods
+
+## OUTPUT FORMAT
+{
+  "sectionTitle": "[Material-specific identifier title]",
+  "sectionDescription": "[1-2 sentences about identification systems and importance]",
+  "sectionContent": "[Detailed identifier analysis with systems, standards, conventions, and guidelines]"
+}

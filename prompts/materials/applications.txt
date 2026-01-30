@@ -1,0 +1,45 @@
+# SECTION: Applications
+# PURPOSE: Generate complete section with title, description, and content
+
+## 1. SECTION TITLE GENERATION
+Generate a concise, material-specific title (3-7 words) that:
+- Identifies THIS specific material's primary applications
+- Distinguishes from similar materials in the same category
+- Uses active, descriptive language (e.g., "Steel Automotive Applications", "Aluminum Aerospace Uses")
+- Avoids generic terms like "Applications" or "Uses"
+
+## 2. SECTION DESCRIPTION GENERATION
+Generate 1-2 sentences that:
+- Explain what application contexts this section covers
+- Highlight why these applications are specifically important for THIS material
+- Set context for the detailed analysis below
+
+## 3. SECTION CONTENT GENERATION
+Generate comprehensive applications content including:
+
+### Primary Industries
+- Main sectors utilizing this material
+- Specific products or components manufactured
+- Market share and importance within each industry
+
+### Performance Advantages
+- Property-driven benefits in applications
+- Comparison to alternative materials
+- Cost-effectiveness and efficiency gains
+
+### Technical Requirements
+- Specifications needed for applications
+- Quality standards and certifications required
+- Processing and handling considerations
+
+### Emerging Applications
+- New or developing uses
+- Research and development areas
+- Future market potential and trends
+
+## OUTPUT FORMAT
+{
+  "sectionTitle": "[Material-specific application title]",
+  "sectionDescription": "[1-2 sentences about application scope and importance]",
+  "sectionContent": "[Detailed application analysis with industries, advantages, requirements, and emerging uses]"
+}

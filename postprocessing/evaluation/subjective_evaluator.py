@@ -110,8 +110,8 @@ class SubjectiveEvaluator:
         self.evaluation_temperature = evaluation_temperature
         
         # Template and pattern file paths
-        self.template_file = Path('shared/text/templates/evaluation/subjective_quality.txt')
-        self.patterns_file = Path('shared/text/templates/evaluation/learned_patterns.yaml')
+        self.template_file = Path('prompts/quality/evaluation.txt')
+        self.patterns_file = Path('prompts/quality/learned_patterns.yaml')
         self._pattern_learner = None
     
     @validate_scores

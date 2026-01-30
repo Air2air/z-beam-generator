@@ -11,8 +11,19 @@ When the user says:
 - "Create micro for Steel"
 - "Generate FAQ for Brass"
 - "Make a description for Copper"
+- "Regenerate Aluminum"
 
 **You should automatically execute the appropriate command.**
+
+## 🔄 **CRITICAL: Complete Section Regeneration**
+
+**EVERY generation request completely regenerates:**
+1. **Page title and description** - Material-specific content
+2. **Each section title and description** - All relationship sections, properties, applications
+
+**Not just the requested field** - The entire material profile is refreshed with AI-generated, material-specific content replacing any generic schema descriptions.
+
+**This means:** A single `--micro "Aluminum"` command will regenerate micro text PLUS all section metadata throughout the material's data.
 
 ---
 
@@ -30,7 +41,7 @@ prompts/
 ├── troubleshooter.txt    # Troubleshooting guide prompts
 └── voice_rules.txt       # Voice enhancement rules
 
-# Note: Anti-AI rules are now in shared/text/templates/system/base.txt
+# Note: Anti-AI rules are now in prompts/core/base.txt
 ```
 
 ### Processing Configuration

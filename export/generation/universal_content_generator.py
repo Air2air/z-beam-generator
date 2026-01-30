@@ -75,6 +75,7 @@ class ContentGenerator(BaseGenerator):
         """Register all task type handlers."""
         return {
             'export_metadata': self._task_export_metadata,  # NEW: Generate export-time metadata
+            'flatten_properties': self._task_flatten_properties,  # NEW: Flatten properties structure
             'author_linkage': self._task_author_linkage,
             'slug_generation': self._task_slug_generation,
             'timestamp': self._task_timestamp,
@@ -155,6 +156,66 @@ class ContentGenerator(BaseGenerator):
             frontmatter['pageTitle'] = frontmatter.get('name') or frontmatter.get('title') or frontmatter.get('displayName', 'Untitled')
         
         logger.debug(f"Added export-time metadata for {frontmatter.get('id', 'unknown')}")
+        
+        return frontmatter
+    
+    def _task_flatten_properties(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
+        """
+        Flatten properties.materialCharacteristics -> materialCharacteristics for frontend compatibility.
+        
+        Problem: Frontend expects materialCharacteristics with direct property values:
+        ```typescript
+        const hasActualProperties = materialChars && Object.keys(materialChars).some(
+          key => key !== 'label' && key !== 'percentage' && key !== 'description' &&
+                 materialChars[key]?.value !== undefined
+        );
+        ```
+        
+        Solution: Move structured property data from nested properties section to root sections.
+        
+        BEFORE:
+        ```yaml
+        properties:
+          materialCharacteristics:
+            title: ...
+            description: ...
+            density:
+              value: 2.7
+              unit: g/cm³
+        materialCharacteristics:
+          title: ...  # OLD section with just title/description
+        ```
+        
+        AFTER:
+        ```yaml
+        materialCharacteristics:
+          title: ...
+          description: ...
+          density:
+            value: 2.7
+            unit: g/cm³
+        ```
+        """
+        source_sections = config.get('source_sections', [])
+        
+        for section_config in source_sections:
+            source_path = section_config['source']
+            target_section = section_config['target']
+            
+            # Get nested source data (e.g., properties.materialCharacteristics)
+            source_data = frontmatter
+            path_parts = source_path.split('.')
+            for part in path_parts:
+                source_data = source_data.get(part, {})
+                if not isinstance(source_data, dict):
+                    source_data = {}
+                    break
+            
+            if not source_data:
+                continue
+            
+            # COMPLETELY REPLACE target section (don't merge!)
+            frontmatter[target_section] = dict(source_data)
         
         return frontmatter
     
@@ -299,14 +360,18 @@ class ContentGenerator(BaseGenerator):
     
     def _task_section_metadata(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
-        Add _section metadata blocks to ALL relationship sections.
+        Add _section metadata blocks to ALL sections that need it.
+        
+        Handles BOTH:
+        1. Relationship sections (technical, safety, operational categories)
+        2. Root-level sections (materialCharacteristics, laserMaterialInteraction)
         
         Per BACKEND_RELATIONSHIP_REQUIREMENTS_JAN5_2026.md:
         - ALL relationship sections MUST have _section metadata
         - Required fields: sectionTitle, sectionDescription, icon, order
         - Optional fields: variant
         
-        Metadata source: export/config/{domain}.yaml section_metadata definitions
+        Metadata source: data/schemas/section_display_schema.yaml
         Replaces: SectionMetadataEnricher (deprecated)
         """
         config_file = config.get('config_file')
@@ -319,74 +384,171 @@ class ContentGenerator(BaseGenerator):
             domain_config = yaml.safe_load(f)
         
         # Get section metadata definitions from config
-        configured_metadata = domain_config.get('section_metadata', {})
+        configured_metadata = domain_config.get('sections', {})
         print(f"📋 section_metadata: {len(configured_metadata)} definitions loaded")
         
-        if 'relationships' not in frontmatter:
-            print(f"⚠️  section_metadata: No relationships")
-            return frontmatter
+        sections_added = 0
         
-        # Fallback metadata ONLY for sections missing from config (should not happen)
-        default_metadata = {
-            'regulatory_standards': {
-                'section_title': 'Safety Standards & Compliance',
-                'section_description': 'OSHA, ANSI, ISO requirements and compliance standards',
-                'icon': 'shield-check',
-                'order': 10,
-                'variant': 'default'
-            },
-            'removes_contaminants': {
-                'section_title': 'Effective Contaminants',
-                'section_description': 'Contamination types successfully removed',
-                'icon': 'droplet',
-                'order': 20,
-                'variant': 'default'
-            },
-            'works_on_materials': {
-                'section_title': 'Compatible Materials',
-                'section_description': 'Materials optimized for these settings',
-                'icon': 'box',
-                'order': 30,
-                'variant': 'default'
+        # ROOT-LEVEL SECTIONS: Handle materialCharacteristics, laserMaterialInteraction, components, etc.
+        root_level_sections = ['materialCharacteristics', 'laserMaterialInteraction', 'components']
+        
+        for section_key in root_level_sections:
+            if section_key in frontmatter and isinstance(frontmatter[section_key], dict):
+                section_data = frontmatter[section_key]
+                
+                # Lookup metadata from config
+                metadata = configured_metadata.get(section_key)
+                
+                # ADD or UPDATE _section metadata
+                if metadata:
+                    if '_section' not in section_data:
+                        # Create new _section block
+                        section_data['_section'] = {}
+                        sections_added += 1
+                    
+                    # Get existing _section or empty dict
+                    section_meta = section_data['_section']
+                    
+                    # Add missing required fields (don't overwrite existing)
+                    if 'sectionTitle' not in section_meta:
+                        section_meta['sectionTitle'] = metadata.get('title', section_key.replace('_', ' ').title())
+                    if 'sectionDescription' not in section_meta:
+                        section_meta['sectionDescription'] = section_data.get('description', metadata.get('description', ''))
+                    if 'icon' not in section_meta:
+                        section_meta['icon'] = metadata.get('icon', 'info')
+                    if 'order' not in section_meta:
+                        section_meta['order'] = metadata.get('order', 100)
+                    if 'variant' not in section_meta:
+                        section_meta['variant'] = metadata.get('variant', 'default')
+        
+        # PROPERTIES SECTIONS: Handle properties.materialCharacteristics, properties.laserMaterialInteraction
+        if 'properties' in frontmatter and isinstance(frontmatter['properties'], dict):
+            for prop_key, prop_data in frontmatter['properties'].items():
+                if isinstance(prop_data, dict):
+                    # Build metadata key (properties.prop_key)
+                    metadata_key = f"properties.{prop_key}"
+                    metadata = configured_metadata.get(metadata_key)
+                    
+                    if metadata:
+                        # ADD or UPDATE _section metadata
+                        if '_section' not in prop_data:
+                            # Create new _section block
+                            prop_data['_section'] = {}
+                            sections_added += 1
+                        
+                        # Get existing _section or empty dict
+                        section_meta = prop_data['_section']
+                        
+                        # Add missing required fields
+                        if 'sectionTitle' not in section_meta:
+                            section_meta['sectionTitle'] = metadata.get('sectionTitle', prop_key.replace('_', ' ').title())
+                        if 'sectionDescription' not in section_meta:
+                            section_meta['sectionDescription'] = metadata.get('sectionDescription', '')
+                        if 'icon' not in section_meta:
+                            section_meta['icon'] = metadata.get('icon', 'info')
+                        if 'order' not in section_meta:
+                            section_meta['order'] = metadata.get('order', 100)
+                        if 'variant' not in section_meta:
+                            section_meta['variant'] = metadata.get('variant', 'default')
+        
+        # COMPONENT SECTIONS: Handle components.micro, components.subtitle, etc.
+        if 'components' in frontmatter and isinstance(frontmatter['components'], dict):
+            for component_key, component_data in frontmatter['components'].items():
+                if isinstance(component_data, dict) and '_section' in component_data:
+                    # Build metadata key (components.component_key)
+                    metadata_key = f"components.{component_key}"
+                    metadata = configured_metadata.get(metadata_key)
+                    
+                    if metadata:
+                        section_meta = component_data['_section']
+                        
+                        # Add missing required fields
+                        if 'sectionTitle' not in section_meta:
+                            section_meta['sectionTitle'] = metadata.get('sectionTitle', component_key.replace('_', ' ').title())
+                        if 'sectionDescription' not in section_meta:
+                            section_meta['sectionDescription'] = metadata.get('sectionDescription', '')
+                        if 'icon' not in section_meta:
+                            section_meta['icon'] = metadata.get('icon', 'info')
+                        if 'order' not in section_meta:
+                            section_meta['order'] = metadata.get('order', 100)
+                        if 'variant' not in section_meta:
+                            section_meta['variant'] = metadata.get('variant', 'default')
+                        
+                        sections_added += 1
+        
+        # RELATIONSHIP SECTIONS: Handle technical, safety, operational categories
+        if 'relationships' in frontmatter:
+            # Fallback metadata ONLY for sections missing from config (should not happen)
+            default_metadata = {
+                'regulatory_standards': {
+                    'section_title': 'Safety Standards & Compliance',
+                    'section_description': 'OSHA, ANSI, ISO requirements and compliance standards',
+                    'icon': 'shield-check',
+                    'order': 10,
+                    'variant': 'default'
+                },
+                'removes_contaminants': {
+                    'section_title': 'Effective Contaminants',
+                    'section_description': 'Contamination types successfully removed',
+                    'icon': 'droplet',
+                    'order': 20,
+                    'variant': 'default'
+                },
+                'works_on_materials': {
+                    'section_title': 'Compatible Materials',
+                    'section_description': 'Materials optimized for these settings',
+                    'icon': 'box',
+                    'order': 30,
+                    'variant': 'default'
+                }
             }
-        }
         
-        # Add _section metadata to each relationship section
-        for category, sections in frontmatter['relationships'].items():
-            if not isinstance(sections, dict):
-                continue
-            
-            for section_key, section_data in sections.items():
-                if not isinstance(section_data, dict):
+            # Add _section metadata to each relationship section
+            for category, sections in frontmatter['relationships'].items():
+                if not isinstance(sections, dict):
                     continue
                 
-                # Build metadata key (category.section_key)
-                metadata_key = f"{category}.{section_key}"
-                
-                # Lookup metadata from config (try full key first, then just section_key)
-                metadata = configured_metadata.get(metadata_key) or configured_metadata.get(section_key)
-                
-                # Fall back to default if not in config
-                if not metadata:
-                    metadata = default_metadata.get(section_key)
-                
-                # ONLY ADD _section metadata if missing from source (respect source data)
-                # Per Core Principle 0.6: Maximum data population at source
-                if metadata and '_section' not in section_data:
-                    # Using camelCase naming per backend requirements
-                    section_data['_section'] = {
-                        'sectionTitle': metadata.get('section_title', section_key.replace('_', ' ').title()),
-                        'sectionDescription': metadata.get('section_description', ''),
-                        'icon': metadata.get('icon', 'info'),
-                        'order': metadata.get('order', 100),
-                        'variant': metadata.get('variant', 'default')
-                    }
+                for section_key, section_data in sections.items():
+                    if not isinstance(section_data, dict):
+                        continue
                     
-                    # Add sectionMetadata if present (internal developer notes)
-                    if 'section_metadata' in metadata:
-                        section_data['_section']['sectionMetadata'] = metadata['section_metadata']
+                    # Build metadata key (category.section_key)
+                    metadata_key = f"{category}.{section_key}"
+                    
+                    # Lookup metadata from config (try full key first, then just section_key)
+                    metadata = configured_metadata.get(metadata_key) or configured_metadata.get(section_key)
+                    
+                    # Fall back to default if not in config
+                    if not metadata:
+                        metadata = default_metadata.get(section_key)
+                    
+                    # ADD or UPDATE _section metadata
+                    # Per Core Principle 0.6: Maximum data population at source
+                    if metadata:
+                        if '_section' not in section_data:
+                            # Create new _section block
+                            section_data['_section'] = {}
+                            sections_added += 1
+                        
+                        # Get existing _section or empty dict
+                        section_meta = section_data['_section']
+                        
+                        # Add missing required fields (don't overwrite existing)
+                        if 'sectionTitle' not in section_meta:
+                            section_meta['sectionTitle'] = metadata.get('title', section_key.replace('_', ' ').title())
+                        if 'sectionDescription' not in section_meta:
+                            section_meta['sectionDescription'] = section_data.get('description', metadata.get('description', ''))
+                        if 'icon' not in section_meta:
+                            section_meta['icon'] = metadata.get('icon', 'info')
+                        if 'order' not in section_meta:
+                            section_meta['order'] = metadata.get('order', 100)
+                        if 'variant' not in section_meta:
+                            section_meta['variant'] = metadata.get('variant', 'default')
+                        
+                        # Note: sectionMetadata field is deprecated as of Jan 2026
+                        # All metadata should be directly in _section, not nested in sectionMetadata
         
-        print(f"✅ section_metadata: Added to {len([s for c in frontmatter['relationships'].values() if isinstance(c, dict) for s in c.values() if isinstance(s, dict) and '_section' in s])} sections")
+        print(f"✅ section_metadata: Added to {sections_added} sections")
         return frontmatter
     
     def _task_seo_description(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
@@ -788,7 +950,12 @@ class ContentGenerator(BaseGenerator):
         Unified structure:
         {
             'presentation': 'collapsible',
-            'sectionMetadata': {...},
+            '_section': {
+                'sectionTitle': 'Expert Q&A',
+                'sectionDescription': 'Frequently asked questions answered by laser cleaning experts',
+                'icon': 'user',
+                'order': 40
+            },
             'items': [
                 {
                     'id': 'safely-remove-dirt',
@@ -886,9 +1053,9 @@ class ContentGenerator(BaseGenerator):
         # Create unified collapsible structure
         collapsible_structure = {
             'presentation': 'collapsible',
-            'sectionMetadata': {
-                'section_title': 'Expert Q&A',
-                'section_description': 'Frequently asked questions answered by laser cleaning experts',
+            '_section': {
+                'sectionTitle': 'Expert Q&A',
+                'sectionDescription': 'Frequently asked questions answered by laser cleaning experts',
                 'icon': 'user',
                 'order': 40
             },

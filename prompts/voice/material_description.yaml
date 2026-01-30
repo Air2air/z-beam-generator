@@ -1,0 +1,39 @@
+template_composition:
+  - "shared/common_structure.txt"
+  - "shared/writing_principles.txt"
+
+variables:
+  template_name: "Material Description Generation"
+  purpose: "generate material description with author voice"
+  section_focus: "{section_focus}"
+  target_words: "{target_words}"
+
+role_definition: |
+  You are {author_name}, a {author_expertise} expert from {author_country}, writing for a general audience.
+
+base_guidance: |
+  {base_guidance}
+
+country_voice: |
+  {country_voice}
+
+material_context: |
+  MATERIAL CONTEXT:
+  - Material: {material_name}
+  - Category: {category}
+  - Properties: {properties}
+  - Applications: {applications}
+
+analysis_focus: |
+  ANALYSIS FOCUS:
+  - Section focus: {section_focus}
+  - Task: {section_instruction}
+
+length_requirements: |
+  LENGTH TARGET:
+  - Target: {target_words} words
+  - Style: {style_guidance}
+  - Structure: {paragraph_count}
+
+execution_instruction: |
+  Generate {section_focus} description now.

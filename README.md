@@ -42,10 +42,10 @@ pip install -r requirements-dev.txt       # Development tools
 cp .env.example .env
 # Add your API keys: GROK_API_KEY, DEEPSEEK_API_KEY
 
-# Generate content
-python3 run.py --micro "Aluminum"
-python3 run.py --subtitle "Steel"
-python3 run.py --faq "Copper"
+# Generate content (regenerates ALL sections + titles/descriptions)
+python3 run.py --micro "Aluminum"        # Micro text + all section metadata
+python3 run.py --subtitle "Steel"         # Subtitle + all section metadata  
+python3 run.py --faq "Copper"             # FAQ + all section metadata
 
 # Export frontmatter (universal exporter)
 python3 run.py --export --domain materials

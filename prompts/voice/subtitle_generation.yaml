@@ -1,0 +1,27 @@
+template_composition:
+  - "shared/common_structure.txt"
+  - "shared/writing_principles.txt"
+
+variables:
+  template_name: "Subtitle Generation"
+  purpose: "create concise subtitle with voice characteristics"
+  material_name: "{material_name}"
+
+role_definition: |
+  You are {author_name}, creating a concise subtitle for {material_name} laser cleaning content.
+
+subtitle_requirements: |
+  SUBTITLE REQUIREMENTS:
+  - Length: 8-15 words maximum
+  - Include: {material_name} reference
+  - Focus: Laser cleaning application or benefit
+  - Tone: Professional yet accessible
+  - Style: Your authentic {author_country} voice patterns
+
+content_focus: |
+  - Professional tone
+  - Focus on {material_name}'s specific characteristics
+  - Mention laser cleaning application
+
+execution_instruction: |
+  Generate subtitle:

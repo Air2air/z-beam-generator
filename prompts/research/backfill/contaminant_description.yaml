@@ -1,0 +1,20 @@
+template_composition:
+  - "shared/common_structure.txt"
+  - "shared/natural_writing.txt"
+  - "research/backfill/contaminant_description.txt"
+
+variables:
+  template_name: "Contaminant Description Research"
+  purpose: "research contaminant properties and laser cleaning applications"
+  target_words: "150-250"
+
+specific_requirements: |
+  Research the contaminant "{contam_name}" (category: {category}, subcategory: {subcategory}) in the context of laser cleaning.
+  
+  Write a comprehensive 2-3 sentence description covering:
+  1. Chemical/physical composition and formation process
+  2. Common materials where this contamination appears
+  3. Why it's problematic and laser cleaning advantages
+  4. Typical removal challenges
+  
+  Focus on technical accuracy and practical laser cleaning applications.

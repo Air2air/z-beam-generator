@@ -116,8 +116,8 @@ class ImagePromptOrchestrator:
         self.prompt_builder = prompt_builder
         
         # Template paths (fallback if no prompt_builder)
-        self.shared_templates = Path('shared/image/templates')
-        self.domain_templates = Path(f'domains/{domain}/image/templates')
+        self.shared_templates = Path('prompts/shared')
+        self.domain_templates = Path(f'prompts/{domain}')
     
     def generate_hero_prompt(
         self,

@@ -1,0 +1,33 @@
+template_composition:
+  - "shared/common_structure.txt"
+  - "shared/writing_principles.txt"
+
+variables:
+  template_name: "Application Research"
+  purpose: "research industrial applications for material"
+  application_context: "{domain_context}"
+
+specific_requirements: |
+  Research the primary industrial and commercial applications for "{material}" where laser cleaning is relevant.
+  
+  Application categories to investigate:
+  1. Aerospace and aviation components
+  2. Automotive and transportation parts
+  3. Marine and offshore equipment
+  4. Industrial manufacturing tools
+  5. Energy and power generation systems
+  6. Electronics and semiconductor devices
+  7. Medical and pharmaceutical equipment
+  8. Construction and infrastructure
+  
+  For each relevant application:
+  - Specific use cases and components
+  - Why this material is chosen
+  - Common contamination types encountered
+  - Cleaning requirements and standards
+  - Economic or performance benefits
+  
+  Context focus: {domain_context}
+  Material: {material}
+  
+  Provide 5-8 primary applications with brief descriptions of laser cleaning relevance.

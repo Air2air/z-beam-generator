@@ -179,13 +179,17 @@ class AIDetector:
         self.strict_mode = strict_mode
         self.config = load_patterns(patterns_file)
         
-        # Use thresholds from config if available, otherwise defaults
-        if self.config['thresholds']:
-            default_threshold = self.config['thresholds'].get('ai_detection', 70)
-            strict_threshold = self.config['thresholds'].get('strict_mode', 60)
-            self.ai_threshold = strict_threshold if strict_mode else default_threshold
-        else:
-            self.ai_threshold = 60.0 if strict_mode else 70.0  # Fallback defaults
+        # FAIL-FAST: Thresholds must be configured, no defaults
+        if not self.config.get('thresholds'):
+            raise ValueError("AI detection thresholds must be configured in patterns file")
+        
+        thresholds = self.config['thresholds']
+        if 'ai_detection' not in thresholds or 'strict_mode' not in thresholds:
+            raise ValueError("Both 'ai_detection' and 'strict_mode' thresholds required in config")
+            
+        default_threshold = thresholds['ai_detection']
+        strict_threshold = thresholds['strict_mode']
+        self.ai_threshold = strict_threshold if strict_mode else default_threshold
     
     def detect_grammatical_errors(self, text: str) -> Dict[str, Any]:
         """

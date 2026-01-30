@@ -1,0 +1,49 @@
+# SECTION: Challenges
+# PURPOSE: Generate complete section with title, description, and content
+
+## 1. SECTION TITLE GENERATION
+Generate a concise, contaminant-specific title (3-7 words) that:
+- Identifies THIS specific contaminant's primary challenge areas
+- Distinguishes from similar contaminants' difficulties
+- Uses descriptive language (e.g., "Oil Film Removal Challenges", "Rust Adhesion Issues")
+- Avoids generic terms like "Challenges" or "Problems"
+
+## 2. SECTION DESCRIPTION GENERATION
+Generate 1-2 sentences that:
+- Explain what challenge categories this section addresses
+- Highlight why these challenges are specifically problematic for THIS contaminant
+- Set context for removal and management difficulties
+
+## 3. SECTION CONTENT GENERATION
+Generate comprehensive contaminant challenges content including:
+
+### Removal Difficulties
+- Adhesion strength and bonding characteristics
+- Chemical resistance to cleaning agents
+- Physical removal barriers and complications
+- Layer thickness and penetration challenges
+
+### Detection Challenges
+- Visual identification complications
+- Instrumentation and analysis difficulties
+- Hidden or embedded contamination
+- Differentiation from similar contaminants
+
+### Environmental Factors
+- Temperature and humidity effects
+- Aging and weathering impacts
+- Chemical interaction with substrates
+- Cross-contamination potential
+
+### Management Solutions
+- Proven removal strategies and techniques
+- Specialized equipment and tools required
+- Process optimization and efficiency improvements
+- Quality control and verification methods
+
+## OUTPUT FORMAT
+{
+  "sectionTitle": "[Contaminant-specific challenge title]",
+  "sectionDescription": "[1-2 sentences about challenge scope and complexity]",
+  "sectionContent": "[Detailed challenge analysis with removal, detection, environmental, and solution aspects]"
+}

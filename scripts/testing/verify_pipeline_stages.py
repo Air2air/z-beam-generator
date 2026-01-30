@@ -205,14 +205,14 @@ def main():
     print(f"   ✅ Winston patterns: {winston_patterns} stored")
     
     # Check if humanness_layer.txt exists
-    humanness_template = Path('shared/text/templates/system/humanness_layer.txt')
+    humanness_template = Path('prompts/core/humanness_layer.txt')
     if humanness_template.exists():
         print(f"   ✅ Humanness template: {humanness_template}")
     else:
         print(f"   ⚠️  Humanness template: NOT FOUND")
     
     # Check subjective patterns YAML
-    subjective_patterns = Path('shared/text/templates/evaluation/learned_patterns.yaml')
+    subjective_patterns = Path('prompts/quality/learned_patterns.yaml')
     if subjective_patterns.exists():
         print(f"   ✅ Subjective patterns: {subjective_patterns}")
     else:

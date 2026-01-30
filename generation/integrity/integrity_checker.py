@@ -2296,7 +2296,7 @@ class IntegrityChecker:
             Path('domains/settings/prompts'),
             Path('domains/contaminants/prompts')
         ]
-        personas_dir = Path('shared/voice/profiles')
+        personas_dir = Path('prompts/profiles/voice')
         
         # Voice keywords that should ONLY be in persona templates
         voice_keywords = [

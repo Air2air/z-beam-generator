@@ -37,11 +37,15 @@
 - ❌ NO mocks/fallbacks in production code (tests OK)
 - ❌ NO hardcoded values/defaults (use config/dynamic calc)
 - ❌ NO rewriting working code (minimal surgical fixes only)
+- ❌ **NO hardcoded sectionTitle/sectionDescription** (read from frontmatter _section metadata) 🔥 **MANDATORY (Jan 15, 2026)**
+- ❌ **NO fallback values for section metadata** (fail-fast immediately) 🔥 **MANDATORY (Jan 15, 2026)**
 
 **TIER 2: Quality-Critical** (Will cause bugs)
 - ❌ NO expanding scope (fix X means fix ONLY X)
 - ✅ ALWAYS fail-fast on config (throw exceptions)
 - ✅ ALWAYS log to terminal (comprehensive dual logging)
+- ✅ **ALWAYS use BaseSection architecture** (no SectionContainer/GridSection) 🔥 **MANDATORY (Jan 15, 2026)**
+- ✅ **ALWAYS read title/description from frontmatter data** (never hardcode) 🔥 **MANDATORY (Jan 15, 2026)**
 
 **TIER 3: Evidence & Honesty** (Will lose trust)
 - ✅ ALWAYS provide evidence (test output, commits)
@@ -2936,7 +2940,7 @@ fi
 **BEFORE** making ANY changes to text component code, you MUST:
 1. **READ** the complete documentation: `docs/03-components/text/README.md`
 2. **UNDERSTAND** the architecture: `docs/02-architecture/processing-pipeline.md`
-3. **STUDY** the prompt system: `domains/*/prompts/` and `shared/text/templates/`
+3. **STUDY** the prompt system: `prompts/{domain}/` and `prompts/shared/`
 4. **REFERENCE** the generation code: `generation/core/evaluated_generator.py`
 
 ### Text Component Forbidden Actions

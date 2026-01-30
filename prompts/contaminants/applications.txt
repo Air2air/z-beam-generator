@@ -1,0 +1,49 @@
+# SECTION: Applications
+# PURPOSE: Generate complete section with title, description, and content
+
+## 1. SECTION TITLE GENERATION
+Generate a concise, contaminant-specific title (3-7 words) that:
+- Identifies THIS specific contaminant's application contexts
+- Distinguishes from similar contaminants' usage patterns
+- Uses descriptive language (e.g., "Oil Film Industrial Uses", "Rust Protective Applications")
+- Avoids generic terms like "Applications" or "Uses"
+
+## 2. SECTION DESCRIPTION GENERATION
+Generate 1-2 sentences that:
+- Explain what application contexts this section covers
+- Highlight why these applications create specific contamination patterns
+- Set context for industrial and environmental presence
+
+## 3. SECTION CONTENT GENERATION
+Generate comprehensive contaminant applications content including:
+
+### Source Industries
+- Primary industries generating this contaminant
+- Specific processes producing contamination
+- Volume and frequency of generation
+- Geographic concentration patterns
+
+### Contamination Pathways
+- How contaminant reaches target materials
+- Transport and deposition mechanisms
+- Environmental factors affecting spread
+- Cross-contamination potential
+
+### Application-Specific Behavior
+- Performance characteristics in different contexts
+- Interaction with host materials
+- Persistence and removal difficulty
+- Environmental stability factors
+
+### Management Approaches
+- Industry-specific control strategies
+- Regulatory requirements and compliance
+- Best practices for contamination prevention
+- Cleanup and remediation methods
+
+## OUTPUT FORMAT
+{
+  "sectionTitle": "[Contaminant-specific application title]",
+  "sectionDescription": "[1-2 sentences about contamination sources and pathways]",
+  "sectionContent": "[Detailed contamination analysis with sources, pathways, behavior, and management]"
+}

@@ -68,7 +68,7 @@ class QualityEvaluatedGenerator:
         domain='materials'
     ):
         """
-        Initialize quality-evaluated generator.
+        Initialize quality-evaluated generator with SIMPLIFIED architecture.
         
         Args:
             api_client: API client for content generation (required)
@@ -95,28 +95,21 @@ class QualityEvaluatedGenerator:
         from generation.core.generator import Generator
         self.generator = Generator(api_client, domain=domain)
         
-        # Initialize DynamicConfig for parameters
-        from generation.config.dynamic_config import DynamicConfig
-        self.dynamic_config = DynamicConfig()
+        # ✅ SIMPLIFIED: Unified parameter provider (replaces 5 separate sources)
+        from generation.config.unified_parameter_provider import UnifiedParameterProvider
+        self.parameter_provider = UnifiedParameterProvider(db_path='z-beam.db')
         
         # Initialize HumannessOptimizer for Universal Humanness Layer
         from learning.humanness_optimizer import HumannessOptimizer
         self.humanness_optimizer = HumannessOptimizer()
         
-        # Initialize learning modules for continuous improvement
-        from pathlib import Path
-
-        from learning.sweet_spot_analyzer import SweetSpotAnalyzer
-        from learning.validation_winston_correlator import ValidationWinstonCorrelator
-        from learning.weight_learner import WeightLearner
+        # ✅ SIMPLIFIED: Consolidated learning system (replaces 3 separate systems)
+        from learning.consolidated_learning_system import ConsolidatedLearningSystem
+        self.learning_system = ConsolidatedLearningSystem(db_path='z-beam.db')
         
-        db_path = Path('z-beam.db')
-        self.sweet_spot_analyzer = SweetSpotAnalyzer(db_path=str(db_path))
-        self.weight_learner = WeightLearner(db_path=db_path)
-        self.validation_correlator = ValidationWinstonCorrelator(db_path=str(db_path))
-        
-        logger.info(f"QualityEvaluatedGenerator initialized (single-pass with learning)")
-        logger.info(f"   - Learning modules: SweetSpot, WeightLearner, ValidationCorrelator")
+        logger.info(f"QualityEvaluatedGenerator initialized (SIMPLIFIED ARCHITECTURE)")
+        logger.info(f"   ✅ Unified parameter provider (1 interface)")
+        logger.info(f"   ✅ Consolidated learning system (1 database)")
 
     
     def generate(
@@ -155,23 +148,11 @@ class QualityEvaluatedGenerator:
         print(f"📝 SINGLE-PASS GENERATION: {component_type} for {material_name}")
         print(f"{'='*80}\n")
         
-        # Get base parameters with sweet spot learning
-        current_params = self._get_base_parameters(component_type)
+        # ✅ SIMPLIFIED: Get all parameters from unified provider (was 5 separate calls)
+        params = self.parameter_provider.get_parameters(component_type, target_words=kwargs.get('target_words'))
         
-        # Log parameters
-        print("🌡️  Generation Parameters:")
-        for param, value in current_params.items():
-            print(f"   • {param}: {value}")
-        
-        # Check for learned insights from validation-winston correlation
-        try:
-            insights = self.validation_correlator.get_top_issues(lookback_days=7, limit=3)
-            if insights:
-                print(f"\n💡 Recent Quality Insights:")
-                for insight in insights:
-                    print(f"   ⚠️  {insight['issue']}: {insight['impact']:+.1f} impact on Winston")
-        except Exception as e:
-            logger.debug(f"Could not load validation insights: {e}")
+        # Display parameters with insights
+        self.parameter_provider.display_insights(params)
         
         # Generate humanness layer (learning-optimized, structural variation only)
         print(f"\n🧠 Generating humanness instructions...")
@@ -185,7 +166,7 @@ class QualityEvaluatedGenerator:
             result = self._generate_content_only(
                 material_name, 
                 component_type,
-                current_params,
+                params,  # ✅ SIMPLIFIED: Pass unified params object
                 humanness_layer=humanness_instructions,
                 **kwargs
             )
@@ -211,7 +192,7 @@ class QualityEvaluatedGenerator:
                 from shared.text.utils.length_control import apply_length_control
                 
                 # Get the original prompt for word count extraction
-                final_prompt = getattr(result, 'prompt_used', '') or str(current_params.get('prompt', ''))
+                final_prompt = getattr(result, 'prompt_used', '') or str(getattr(params, 'prompt', ''))
                 
                 print(f"\n✂️  Applying smart length control...")
                 control_result = apply_length_control(
@@ -271,16 +252,14 @@ class QualityEvaluatedGenerator:
                 print(f"👤 ASSIGNED AUTHOR: {author_data['name']} ({author_data['country']})")
                 print(f"🎯 AUTHOR ID: {self._get_author_id(material_name)}")
                 
-                # Use unified quality analyzer with learned weights
+                # ✅ SIMPLIFIED: Get learned weights from consolidated learning system
                 from shared.voice.quality_analyzer import QualityAnalyzer
-
-                # Get learned weights from weight_learner
-                learned_weights = self._get_learned_quality_weights()
+                learned_weights = self.learning_system.get_quality_weights(component_type)
                 
                 analyzer = QualityAnalyzer(
                     self.api_client, 
                     strict_mode=False,
-                    weights=learned_weights  # Use learned weights if available
+                    weights=learned_weights  # Use learned weights from consolidated system
                 )
                 
                 # Single comprehensive analysis
@@ -448,7 +427,7 @@ class QualityEvaluatedGenerator:
                     material_name=material_name,
                     component_type=component_type,
                     content=eval_text,
-                    current_params=current_params,
+                    current_params=params,
                     evaluation=evaluation,
                     winston_result=winston_result,
                     structural_analysis=structural_analysis,
@@ -472,78 +451,10 @@ class QualityEvaluatedGenerator:
             evaluation_logged=evaluation_logged
         )
     
-    def _get_base_parameters(self, component_type: str) -> Dict[str, Any]:
-        """
-        Get base generation parameters from config and sweet spot learning.
-        
-        Now integrates learned parameter ranges from database:
-        1. Load sweet spot recommendations from SweetSpotAnalyzer
-        2. Use median values from top 25% performers
-        3. Filter out negatively correlated parameters
-        4. Fall back to config.yaml only if insufficient learning data
-        """
-        from generation.config.config_loader import get_config
-        config = get_config()
-        
-        # Try to load learned sweet spot parameters with correlation filtering
-        learned_params = self._load_sweet_spot_parameters_with_filtering()
-        
-        # Get voice parameters from config (fail-fast if missing)
-        voice_params = config.config.get('voice_parameters', {})
-        
-        # Fail-fast if any voice parameter missing
-        required_voice_params = [
-            'emotional_tone', 'opinion_rate', 'structural_predictability',
-            'sentence_rhythm_variation', 'imperfection_tolerance', 'trait_frequency',
-            'colloquialism_frequency', 'technical_intensity'
-        ]
-        
-        for param in required_voice_params:
-            if param not in voice_params:
-                raise ValueError(
-                    f"voice_parameters.{param} missing in config.yaml - fail-fast architecture. "
-                    "All voice parameters must be explicitly configured."
-                )
-        
-        # Use learned parameters if available, otherwise config defaults
-        return {
-            # API parameters - use learned if available, else dynamic calculation
-            'temperature': learned_params.get('temperature') or self.dynamic_config.calculate_temperature(component_type),
-            'max_tokens': self.dynamic_config.calculate_max_tokens(component_type),
-            
-            # Voice parameters - use learned if available, else config
-            'emotional_tone': learned_params.get('emotional_tone') or voice_params['emotional_tone'],
-            'opinion_rate': learned_params.get('opinion_rate') or voice_params['opinion_rate'],
-            'structural_predictability': learned_params.get('structural_predictability') or voice_params['structural_predictability'],
-            'sentence_rhythm_variation': learned_params.get('sentence_rhythm_variation') or voice_params['sentence_rhythm_variation'],
-            'imperfection_tolerance': learned_params.get('imperfection_tolerance') or voice_params['imperfection_tolerance'],
-            'trait_frequency': learned_params.get('trait_frequency') or voice_params['trait_frequency'],
-            'colloquialism_frequency': learned_params.get('colloquialism_frequency') or voice_params['colloquialism_frequency'],
-            'technical_intensity': voice_params['technical_intensity']
-        }
-    
-    def _get_learned_quality_weights(self) -> Optional[Dict[str, float]]:
-        """
-        Get learned quality metric weights from WeightLearner.
-        
-        Returns learned weights if sufficient data exists, otherwise None
-        to fall back to QualityAnalyzer defaults.
-        """
-        try:
-            weights = self.weight_learner.get_optimal_weights()
-            if weights and weights.sample_count >= self.weight_learner.MIN_GLOBAL_SAMPLES:
-                logger.info(f"   Using learned weights: W={weights.winston_weight:.2f}, S={weights.subjective_weight:.2f}, R={weights.readability_weight:.2f}")
-                return {
-                    'winston': weights.winston_weight,
-                    'subjective': weights.subjective_weight,
-                    'readability': weights.readability_weight
-                }
-            else:
-                logger.debug(f"Insufficient data for learned weights ({weights.sample_count if weights else 0} samples)")
-                return None
-        except Exception as e:
-            logger.debug(f"Could not load learned weights: {e}")
-            return None
+    # OBSOLETE METHODS - Replaced by simplified systems
+    # These methods kept for reference but should not be used
+    # Use self.parameter_provider.get_parameters() instead of _get_base_parameters()
+    # Use self.learning_system.get_quality_weights() instead of _get_learned_quality_weights()
     
     def _load_sweet_spot_parameters_with_filtering(self) -> Dict[str, float]:
         """
@@ -878,21 +789,14 @@ class QualityEvaluatedGenerator:
         is_retry: bool = False
     ):
         """
-        Log EVERY generation attempt to database for learning, not just successes.
+        Log generation attempt to unified learning system.
         
-        NOW WITH RETRY TRACKING: Groups retry attempts together via retry_session_id
-        to enable retry-specific learning analysis:
-        - Parameter drift across attempts
-        - Quality progression patterns  
-        - Success rate by attempt number
-        - Optimal retry strategies
+        SIMPLIFIED VERSION: Uses ConsolidatedLearningSystem for single-write logging.
         
-        This is the KEY fix for learning system - we need data from ALL attempts to:
-        1. Learn what parameters correlate negatively with success
-        2. Understand realistic threshold distributions
-        3. Identify structural patterns that fail vs succeed
-        4. Build sufficient corpus for sweet spot analysis
-        5. **NEW**: Analyze retry effectiveness and parameter adjustments
+        Tracks:
+        - Generation parameters and quality scores
+        - Success/failure patterns for learning
+        - Retry session tracking for effectiveness analysis
         
         Args:
             material_name: Material being generated
@@ -908,123 +812,48 @@ class QualityEvaluatedGenerator:
             is_retry: Whether this is a retry (not first generation)
         """
         try:
-            # Only log if we have Winston database available
-            if not self.winston_client:
-                return
+            from learning.consolidated_learning_system import GenerationResult
+            from learning.consolidated_learning_system import GenerationResult
             
-            # Get database path from config
-            from generation.config.config_loader import get_config
-            from postprocessing.detection.winston_feedback_db import (
-                WinstonFeedbackDatabase,
-            )
-            config = get_config()
-            db_path = config.config.get('winston_feedback_db_path', 'z-beam.db')
-            
-            db = WinstonFeedbackDatabase(db_path)
-            
-            # Prepare Winston result for logging
-            winston_log = {
-                'human_score': winston_result.get('human_score', 0.0),
-                'ai_score': winston_result.get('ai_score', 1.0),
-                'readability_score': winston_result.get('readability_score'),
-                'credits_used': winston_result.get('credits_used', 0),
-                'sentences': winston_result.get('sentences', [])
-            }
-            
-            # Calculate composite quality score (Winston 40% + Realism 60%)
+            # Calculate quality scores
             realism_score = evaluation.realism_score or evaluation.overall_score
             realism_normalized = realism_score / 10.0  # 0-10 scale → 0-1.0
-            composite_score = (
-                winston_result.get('human_score', 0.0) * 0.4 +
-                realism_normalized * 0.6
-            )
+            winston_human_score = winston_result.get('human_score', 0.0)
             
-            # Log detection result (includes attempt data)
-            detection_id = db.log_detection(
-                material=material_name,
+            # Composite score: Winston 40% + Realism 60%
+            overall_quality_score = (winston_human_score * 0.4) + (realism_normalized * 0.6)
+            
+            # Create unified generation result object
+            result = GenerationResult(
+                material_name=material_name,
                 component_type=component_type,
-                generated_text=content,
-                winston_result=winston_log,
-                temperature=current_params.get('temperature', 0.0),
-                attempt=attempt,
-                success=passed_all_gates,  # Mark success ONLY if passed all gates
-                failure_analysis={
-                    'failure_type': 'quality_gate_failed' if not passed_all_gates else None,
-                    'realism_score': realism_score,
-                    'diversity_score': structural_analysis.diversity_score if structural_analysis else 10.0,
-                    'winston_passed': winston_result.get('passed', False),
-                    'structural_passed': structural_analysis.passes if structural_analysis else True,
-                    'ai_tendencies': evaluation.ai_tendencies or []
-                },
-                composite_quality_score=composite_score,
-                retry_session_id=retry_session_id,
-                is_retry=is_retry
+                content=content,
+                temperature=params.temperature,
+                frequency_penalty=params.frequency_penalty,
+                presence_penalty=params.presence_penalty,
+                max_tokens=params.max_tokens,
+                winston_human_score=winston_human_score,
+                winston_ai_score=winston_result.get('ai_score', 1.0),
+                realism_score=realism_score,
+                voice_authenticity=evaluation.voice_authenticity,
+                tonal_consistency=evaluation.tonal_consistency,
+                diversity_score=structural_analysis.diversity_score if structural_analysis else None,
+                overall_quality_score=overall_quality_score,
+                success=passed_all_gates,
+                attempt_number=attempt,
+                retry_session_id=retry_session_id
             )
             
-            # Log generation parameters (enables correlation analysis)
-            params_for_db = {
-                'material_name': material_name,
-                'component_type': component_type,
-                'attempt': attempt,
-                'api': {
-                    'temperature': current_params.get('temperature'),
-                    'max_tokens': current_params.get('max_tokens'),
-                    'frequency_penalty': current_params.get('frequency_penalty', 0.0),
-                    'presence_penalty': current_params.get('presence_penalty', 0.0)
-                },
-                'voice': {
-                    'trait_frequency': current_params.get('trait_frequency'),
-                    'opinion_rate': current_params.get('opinion_rate'),
-                    'reader_address_rate': current_params.get('reader_address_rate', 0.3),  # Default if missing
-                    'colloquialism_frequency': current_params.get('colloquialism_frequency'),
-                    'structural_predictability': current_params.get('structural_predictability'),
-                    'emotional_tone': current_params.get('emotional_tone'),
-                    'imperfection_tolerance': current_params.get('imperfection_tolerance'),
-                    'sentence_rhythm_variation': current_params.get('sentence_rhythm_variation')
-                },
-                'enrichment': {
-                    'technical_intensity': current_params.get('technical_intensity', 2),
-                    'context_detail_level': 2,
-                    'fact_formatting_style': 1,  # Default style
-                    'engagement_level': 2
-                },
-                'validation': {
-                    'detection_threshold': self.ai_threshold if hasattr(self, 'ai_threshold') else 0.33,
-                    'readability_min': 0,
-                    'readability_max': 100,
-                    'grammar_strictness': 0.7,
-                    'confidence_high': 0.8,
-                    'confidence_medium': 0.5
-                },
-                'retry': {
-                    'max_attempts': self.max_attempts if hasattr(self, 'max_attempts') else 5,
-                    'retry_temperature_increase': 0.15
-                }
-            }
-            
-            db.log_generation_parameters(
-                detection_result_id=detection_id,
-                params=params_for_db
-            )
-            
-            # Log to subjective evaluations table (pass the evaluation object directly)
-            db.log_subjective_evaluation(
-                topic=material_name,
-                component_type=component_type,
-                generated_text=content,
-                evaluation_result=evaluation,  # Pass the evaluation object
-                domain="materials",
-                author_id=None,  # Could enhance this later
-                attempt_number=attempt
-            )
+            # Single unified logging call (replaces 3 separate database writes)
+            generation_id = self.learning_system.log_generation(result)
             
             logger.info(
-                f"   📊 Logged attempt {attempt} to database "
-                f"(detection_id={detection_id}, passed={passed_all_gates})"
+                f"   📊 Logged attempt {attempt} to learning system "
+                f"(generation_id={generation_id}, quality={overall_quality_score:.2f})"
             )
             print(
-                f"   📊 Logged attempt {attempt} to database "
-                f"(detection_id={detection_id}, passed={passed_all_gates})"
+                f"   📊 Logged attempt {attempt} to learning system "
+                f"(generation_id={generation_id}, quality={overall_quality_score:.2f})"
             )
             
         except Exception as e:

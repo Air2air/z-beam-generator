@@ -100,13 +100,13 @@ class HumannessOptimizer:
         self._current_variation = None  # Store randomized variation for access
         
         if patterns_file is None:
-            self.patterns_file = Path('shared/text/templates/evaluation/learned_patterns.yaml')
+            self.patterns_file = Path('prompts/quality/learned_patterns.yaml')
         else:
             self.patterns_file = patterns_file
         
         # Validate template files exist (fail-fast)
-        self.template_file = Path('shared/text/templates/system/humanness_layer.txt')
-        self.template_file_compact = Path('shared/text/templates/system/humanness_layer_compact.txt')
+        self.template_file = Path('prompts/core/humanness_layer.txt')
+        self.template_file_compact = Path('prompts/core/humanness_layer_compact.txt')
         if not self.template_file.exists():
             raise FileNotFoundError(
                 f"Humanness layer template not found: {self.template_file}. "
@@ -253,32 +253,6 @@ class HumannessOptimizer:
         logger.info(f"{'='*70}\n")
         
         return instructions
-    
-    def generate_compressed_humanness(
-        self,
-        component_type: str,
-        length_target: int = None
-    ) -> str:
-        """
-        Generate COMPRESSED humanness instructions (10-20% of full size).
-        
-        Delegates to generate_humanness_instructions() which automatically uses compact
-        template for components in self.compact_components list.
-        
-        Template-only approach - zero hardcoded prompts.
-        
-        Args:
-            component_type: Type of component
-            length_target: Base word count target from generation config
-        
-        Returns:
-            Compressed humanness instructions from template file
-        """
-        # Delegate to main method - it handles compact vs full template selection
-        return self.generate_humanness_instructions(
-            component_type=component_type,
-            length_target=length_target
-        )
     
     def _extract_winston_patterns(self) -> WinstonPatterns:
         """

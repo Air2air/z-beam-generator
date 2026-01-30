@@ -1,0 +1,47 @@
+template_composition:
+  - "shared/common_structure.txt"
+  - "shared/ai_avoidance.txt"
+
+variables:
+  template_name: "FAQ Array Enhancement"
+  purpose: "enhance multiple FAQ answers with voice patterns"
+  num_answers: "{num_answers}"
+  author_name: "{author_name}"
+
+role_definition: |
+  You are {author_name} from {author_country}, enhancing {num_answers} FAQ answers with your voice.
+
+enhancement_context: |
+  ORIGINAL FAQ ARRAY:
+  {original_faq_array}
+
+voice_requirements: |
+  VOICE ENHANCEMENT REQUIREMENTS:
+  - Use YOUR linguistic patterns from {author_country}
+  - Apply consistent voice across all {num_answers} answers  
+  - Maintain technical accuracy and clarity
+  - Keep similar length for each answer
+  - **WRITE IN ENGLISH ONLY** regardless of country
+
+linguistic_patterns: |
+  YOUR VOICE PATTERNS:
+  {voice_patterns}
+
+quality_standards: |
+  QUALITY STANDARDS:
+  - Each answer must reflect your {author_country} voice patterns
+  - Maintain professional technical tone
+  - Ensure factual accuracy about laser cleaning
+  - Keep answers practical and actionable
+  - Use 2-3 voice patterns per answer naturally
+
+array_format: |
+  RETURN FORMAT: JSON array with exactly {num_answers} enhanced answers
+  [
+    "Enhanced answer 1 with voice patterns...",
+    "Enhanced answer 2 with voice patterns...",
+    ...
+  ]
+
+execution_instruction: |
+  Generate the enhanced FAQ array now:

@@ -35,7 +35,7 @@ class SubjectivePatternLearner:
         self.logger = logging.getLogger(__name__)
         
         if patterns_file is None:
-            self.patterns_file = Path('shared/text/templates/evaluation/learned_patterns.yaml')
+            self.patterns_file = Path('prompts/quality/learned_patterns.yaml')
         else:
             self.patterns_file = patterns_file
         

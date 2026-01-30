@@ -186,7 +186,7 @@ python3 tests/test_ai_detection_localization_chain.py
 
 ### Existing Files Preserved
 - `components/text/localization/` - **Unchanged** - localization system remains intact
-- `shared/text/templates/evaluation/` - AI detection evaluation prompts
+- `prompts/quality/` - AI detection evaluation prompts
 
 ## Future Enhancements
 

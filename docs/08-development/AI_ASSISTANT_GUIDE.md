@@ -56,18 +56,24 @@
 
 ### **Generate Content**
 ```bash
-# Micro
+# Micro (regenerates ALL sections + titles/descriptions)
 python3 run.py --micro "MaterialName"
 
-# Subtitle
+# Subtitle (regenerates ALL sections + titles/descriptions)
 python3 run.py --subtitle "MaterialName"
 
-# Description
+# Description (regenerates ALL sections + titles/descriptions)
 python3 run.py --description "MaterialName"
 
-# FAQ
+# FAQ (regenerates ALL sections + titles/descriptions)
 python3 run.py --faq "MaterialName"
 ```
+
+**🔄 CRITICAL: Complete Section Regeneration**
+EVERY generation request completely regenerates:
+1. **Page title and description** - Material-specific content
+2. **Each section title and description** - All relationship sections, properties, applications
+
 **Documentation**: `.github/COPILOT_GENERATION_GUIDE.md`
 
 ---

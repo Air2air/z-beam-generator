@@ -1,0 +1,29 @@
+template_composition:
+  - "shared/ai_avoidance.txt"
+  - "shared/natural_writing.txt"
+  - "research/visual/appearance_base.txt"
+
+variables:
+  template_name: "Surface Condition Analysis"
+  purpose: "analyze before/after surface states for laser cleaning"
+  analysis_type: "{condition_state}"
+
+specific_requirements: |
+  Analyze the surface condition of "{material}" in the {condition_state} state for laser cleaning documentation.
+  
+  Surface analysis parameters:
+  1. Visual appearance and color characteristics
+  2. Surface roughness and texture details
+  3. Contamination presence and distribution
+  4. Reflectivity and optical properties
+  5. Physical integrity and defects
+  
+  Analysis context:
+  - Material: {material}
+  - State: {condition_state} (before/after cleaning)
+  - Focus: {analysis_focus}
+  
+  For before state: Document contamination type, severity, distribution patterns
+  For after state: Document cleaning effectiveness, surface restoration, remaining traces
+  
+  Provide detailed visual description suitable for technical documentation and image generation.

@@ -274,17 +274,24 @@ class VoiceOrchestrator:
         5. Section-specific focus
         6. Output requirements
         """
-        # Extract parameters
-        section_focus = kwargs.get('section_focus', 'surface analysis')
-        section_instruction = kwargs.get('section_instruction', '')
-        target_words = kwargs.get('target_words', 30)
-        style_guidance = kwargs.get('style_guidance', 'focused description')
-        paragraph_count = kwargs.get('paragraph_count', '1 paragraph')
+        # Extract parameters - FAIL-FAST: Required parameters must be provided
+        section_focus = kwargs.get('section_focus') or 'surface analysis'  # Reasonable default
+        section_instruction = kwargs.get('section_instruction') or ''      # Optional field
+        target_words = kwargs.get('target_words') or 30                   # Reasonable default
+        style_guidance = kwargs.get('style_guidance') or 'focused description'  # Reasonable default
+        paragraph_count = kwargs.get('paragraph_count') or '1 paragraph'  # Reasonable default
         
-        # 1. ROLE DEFINITION
-        author_name = author.get('name', 'Technical Expert')
-        author_country = author.get('country', 'usa')
-        author_expertise = author.get('expertise', 'laser cleaning technology')
+        # 1. ROLE DEFINITION - FAIL-FAST: Author must have required fields
+        if not author.get('name'):
+            raise ValueError("Author must have 'name' field for voice generation")
+        if not author.get('country'):
+            raise ValueError("Author must have 'country' field for voice generation")
+        if not author.get('expertise'):
+            raise ValueError("Author must have 'expertise' field for voice generation")
+            
+        author_name = author['name']
+        author_country = author['country']
+        author_expertise = author['expertise']
         
         role_section = f"""You are {author_name}, a {author_expertise} expert from {author_country}, writing for a general audience."""
         
@@ -306,11 +313,16 @@ class VoiceOrchestrator:
         linguistic = country_profile.get('linguistic_characteristics', {})
         country_voice = self._format_country_voice(linguistic, author_country)
         
-        # 4. MATERIAL CONTEXT
-        material_name = material_context.get('material_name', 'material')
-        category = material_context.get('category', 'material')
-        properties = material_context.get('properties', 'Standard material characteristics')
-        applications = material_context.get('applications', 'General cleaning applications')
+        # 4. MATERIAL CONTEXT - FAIL-FAST: Critical fields must be provided
+        if not material_context.get('material_name'):
+            raise ValueError("Material context must include 'material_name' field")
+        if not material_context.get('category'):
+            raise ValueError("Material context must include 'category' field")
+            
+        material_name = material_context['material_name']
+        category = material_context['category']
+        properties = material_context.get('properties') or 'Standard material characteristics'  # Optional
+        applications = material_context.get('applications') or 'General cleaning applications'  # Optional
         
         # 5. BUILD COMPLETE PROMPT FROM YAML ONLY
         prompt = f"""{role_section}

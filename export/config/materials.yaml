@@ -29,14 +29,6 @@ generators:
   - type: field_cleanup
     description: Remove duplicate and legacy fields per reorganization requirements
     deprecated_fields:
-      # DELETE - Superseded by properties.materialCharacteristics
-      - materialCharacteristics_description
-      # DELETE - Superseded by properties.laserMaterialInteraction  
-      - laserMaterialInteraction_description
-      # DELETE - Duplicate of properties.materialCharacteristics.description
-      - properties.materialCharacteristics.description
-      # DELETE - Duplicate of properties.laserMaterialInteraction.description
-      - properties.laserMaterialInteraction.description
       # DELETE - Should be structured array in relationships, not text
       - relationships.relatedMaterials
       # DELETE - Duplicate of components.micro (when it appears at root level)
@@ -45,9 +37,9 @@ generators:
       - related_materials
       # DELETE - General cleanup for reorganization
       - characteristics  # Legacy section - superseded by properties
-      - pageDescription  # Not consumed by MaterialsLayout
+      # NOTE: pageDescription REMOVED from deprecated_fields (Jan 14, 2026) - Now used for SEO
       - excerpt         # Not consumed by MaterialsLayout
-      - breadcrumb      # Not consumed by MaterialsLayout per optimization
+      - section_description  # Not consumed by MaterialsLayout (Jan 15, 2026)
       - keywords        # Not consumed by MaterialsLayout
       - technicalSpecifications  # Not referenced anywhere
       - chemicalProperties       # Not referenced anywhere
@@ -55,9 +47,38 @@ generators:
       - dataValidation          # Not displayed to users
       - generatedDate           # Not displayed to users
       - lastModified            # Not displayed to users
+      # DELETE - Legacy descriptive fields (replaced by structured properties)
+      - materialCharacteristics_description
+      - laserMaterialInteraction_description
+      - micro_before_after      # Not consumed by MaterialsLayout (Jan 15, 2026)
+      # faq REMOVED from deprecated list (Jan 15, 2026) - Structured FAQ format IS consumed
+      - properties.materialCharacteristics.description
+      - properties.laserMaterialInteraction.description
+      - relationships.relatedMaterials  # Legacy text field
+      - _distinctive_materialCharacteristics_description  # Legacy distinctiveness data
+      # NOTE: components.micro REMOVED from deprecated_fields (Jan 14, 2026)
+      # Content now properly structured with before/after descriptions
+      # DELETE - Root-level property sections (should be nested under properties:)
+      - materialCharacteristics
+      - laserMaterialInteraction
+      # DELETE - Legacy unstructured sections (Jan 15, 2026)
+      - contaminatedBy     # Flat format not consumed (structured version in relationships used)
+      - relatedMaterials   # Flat format not consumed (structured version in relationships used)
   # Export-time metadata ONLY (dateModified timestamp, pageTitle for frontend)
   - type: export_metadata
     description: Add ONLY export-time fields (dateModified, pageTitle if missing)
+  # Flatten nested properties to root level (preserves _section metadata)
+  - type: flatten_properties
+    description: Move properties.materialCharacteristics → materialCharacteristics (with _section)
+    source_sections:
+    - source: properties.materialCharacteristics
+      target: materialCharacteristics
+    - source: properties.laserMaterialInteraction
+      target: laserMaterialInteraction
+  # Add _section metadata to all sections that need it
+  - type: section_metadata
+    description: Add _section metadata with sectionTitle and sectionDescription to all sections
+    config_file: data/schemas/section_display_schema.yaml
   # TRANSFORM-ONLY tasks
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields (legacy data only)

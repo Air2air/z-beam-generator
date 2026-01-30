@@ -135,7 +135,7 @@ class MaterialsAdapter(DataSourceAdapter):
         # If no author specified, rotate based on material name for consistency
         # This ensures each material consistently gets the same author
         # but distributes all 4 authors across materials
-        material_name = item_data.get('name', '')
+        material_name = item_data.get('name')
         if not material_name:
             # Try to infer from data structure
             all_data = self.load_all_data()
@@ -225,11 +225,17 @@ class MaterialsAdapter(DataSourceAdapter):
         """
         item_data = self.get_item_data(identifier)
         
+        # FAIL-FAST: Validate required fields exist
+        if 'category' not in item_data:
+            raise ValueError(f"Material missing required 'category' field")
+        if 'applications' not in item_data:
+            raise ValueError(f"Material missing required 'applications' field")
+            
         facts = {
-            'category': item_data.get('category', ''),
-            'subcategory': item_data.get('subcategory', ''),
+            'category': item_data['category'],
+            'subcategory': item_data.get('subcategory') or '',  # Optional field
             'properties': {},
-            'applications': item_data.get('applications', ''),
+            'applications': item_data['applications'],
             'machine_settings': {},
             'key_challenges': ''
         }
@@ -240,7 +246,7 @@ class MaterialsAdapter(DataSourceAdapter):
         for prop_name, prop_data in material_chars.items():
             if isinstance(prop_data, dict) and 'value' in prop_data:
                 value = prop_data.get('value')
-                unit = prop_data.get('unit', '')
+                unit = prop_data.get('unit') or ''  # Unit is optional, can be empty
                 if value is not None:
                     facts['properties'][prop_name] = f"{value} {unit}".strip()
         
@@ -251,7 +257,7 @@ class MaterialsAdapter(DataSourceAdapter):
         for setting_name, setting_data in settings.items():
             if isinstance(setting_data, dict):
                 value = setting_data.get('value')
-                unit = setting_data.get('unit', '')
+                unit = setting_data.get('unit') or ''  # Unit is optional, can be empty
                 if value:
                     facts['machine_settings'][setting_name] = f"{value} {unit}".strip()
         

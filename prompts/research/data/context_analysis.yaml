@@ -1,0 +1,24 @@
+template_composition:
+  - "shared/common_structure.txt"
+  - "research/data/context_analysis.txt"
+
+variables:
+  template_name: "Context Analysis Research"
+  purpose: "analyze environmental usage patterns for laser cleaning applications"
+  output_format: "structured assessment"
+
+specific_requirements: |
+  Research where {display_name} is typically used and cleaned with lasers.
+  
+  Analyze:
+  1. Indoor vs outdoor usage patterns
+  2. Industrial settings and applications
+  3. Marine/coastal exposure likelihood
+  
+  Provide ONLY a structured assessment in this format:
+  indoor: [high/medium/low]
+  outdoor: [high/medium/low]
+  industrial: [high/medium/low]
+  marine: [high/medium/low]
+  
+  Respond with ONLY the four lines above, no additional text.

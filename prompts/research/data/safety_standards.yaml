@@ -1,0 +1,29 @@
+template_composition:
+  - "shared/common_structure.txt"
+  - "research/base_research_structure.txt"
+
+variables:
+  template_name: "Safety Standards Research"
+  purpose: "research safety standards and regulations for material"
+  standard_type: "{standard_category}"
+
+specific_requirements: |
+  Research safety standards and regulations for "{material}" in industrial laser cleaning applications.
+  
+  Categories to investigate:
+  1. OSHA workplace safety requirements
+  2. NFPA (National Fire Protection Association) ratings
+  3. EPA environmental regulations
+  4. Industry-specific standards (ANSI, ISO, etc.)
+  5. Material handling and storage guidelines
+  
+  For each applicable standard:
+  - Standard designation (e.g., NFPA 704, OSHA 29 CFR)
+  - Specific ratings or classifications
+  - Relevance to laser cleaning operations
+  - Compliance requirements
+  
+  Focus on standards directly related to: {standard_category}
+  Material: {material}
+  
+  Return structured data with standard names, ratings, and brief compliance notes.

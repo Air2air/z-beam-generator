@@ -176,14 +176,14 @@ sections:
     order: 10
     variant: default
     wordCount: 150
-    prompt: "Generate title and description for THIS ITEM'S identifiers. Title should be concise (3-5 words) and item-specific. Description must include THIS item's CAS number, molecular formula, IUPAC name, common trade names, historical names, and industry terms, explaining WHY THIS item has multiple names and WHICH contexts use which names for THIS substance."
+    prompt_file: "prompts/{domain}/identifiers.txt"
   
   chemicalProperties:
     icon: flask
     order: 11
     variant: default
     wordCount: 200
-    prompt: "Generate title and description for THIS ITEM'S chemistry. Title should be concise (3-5 words) and item-specific. Description must detail WHAT makes THIS item's molecular structure unique, HOW THIS item's chemical bonds drive ITS reactivity, WHICH thermodynamic properties define THIS item's behavior, and WHY THIS item's chemistry creates SPECIFIC application constraints or advantages."
+    prompt_file: "prompts/{domain}/chemicalProperties.txt"
   
   physicalProperties:
     icon: thermometer
@@ -192,7 +192,7 @@ sections:
     wordCount: 175
     title: "Physical Properties"
     description: "Essential physical characteristics and behavior"
-    prompt: "Generate title and description for THIS ITEM'S physical properties. Title should be concise (3-5 words) and item-specific. Description must specify WHAT makes THIS item's physical state/transitions unique, HOW THIS item's density/thermal/mechanical properties drive ITS behavior, WHY THIS item requires PARTICULAR handling based on ITS physics (not chemistry), and WHICH properties distinguish THIS item physically."
+    prompt_file: "prompts/{domain}/physicalProperties.txt"
   
   page:
     title: "Page Overview"
@@ -203,7 +203,7 @@ sections:
     description: "Page Overview"
     sectionTitle: "Page Title"
     sectionDescription: "Page Description"
-    prompt: "Generate page title and description for THIS ITEM. Title should be concise and descriptive. Description must provide a comprehensive overview of THIS item, including WHAT it is, WHY it matters for laser cleaning applications, HOW it behaves during cleaning processes, and WHICH key considerations operators should know about THIS item."
+    prompt_file: "prompts/{domain}/pageDescription.txt"
   
   # VISUAL GROUP (20-29): Appearance and identification characteristics
   appearanceVariations:
@@ -213,7 +213,7 @@ sections:
     wordCount: 125
     title: "Visual Appearance"
     description: "Physical appearance and visual characteristics"
-    prompt: "Generate title and description for THIS ITEM'S appearance. Title should be concise (3-5 words) and item-specific. Description must specify HOW this item looks based on ITS composition, WHAT visual changes occur with THIS item under different conditions (unique to it, not generic aging), WHICH features distinguish THIS item from similar ones, and WHY THIS item's appearance matters for identification."
+    prompt_file: "prompts/{domain}/appearanceVariations.txt"
   
   # SAFETY GROUP (30-39): Health, regulatory, and emergency information
   healthEffects:
@@ -223,7 +223,7 @@ sections:
     wordCount: 250
     title: "Health Effects"
     description: "Health impacts and biological effects"
-    prompt: "Generate title and description for THIS ITEM'S health impacts. Title should be concise (3-5 words) and item-specific. Description must detail HOW this item's SPECIFIC chemistry causes health effects, WHICH organs/systems THIS item targets based on ITS molecular properties, WHAT dose-response is UNIQUE to this substance, and WHY THIS item creates PARTICULAR acute and chronic risks."
+    prompt_file: "prompts/{domain}/healthEffects.txt"
   
   exposureLimits:
     icon: gauge
@@ -287,7 +287,7 @@ sections:
     wordCount: 175
     title: "Industry Applications"
     description: "Industrial uses and application contexts"
-    prompt: "Generate title and description for WHERE THIS ITEM appears. Title should be concise (3-5 words) and item-specific. Description must detail WHICH industries use/encounter THIS item, WHY THIS item's SPECIFIC properties suit or challenge these applications (thermal, mechanical, chemical characteristics unique to it), and HOW THIS item's behavior differs from alternatives in THESE contexts."
+    prompt_file: "prompts/{domain}/applications.txt"
   
   commonChallenges:
     icon: alert-triangle
@@ -296,7 +296,7 @@ sections:
     wordCount: 175
     title: "Common Challenges"
     description: "Handling difficulties and operational issues"
-    prompt: "Generate title and description for CHALLENGES WITH THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHAT makes THIS item difficult to handle (properties unique to it), WHY these challenges arise from THIS item's SPECIFIC characteristics, HOW operators solve problems UNIQUE to this item (not generic solutions), and WHICH proven strategies work for THIS item."
+    prompt_file: "prompts/{domain}/challenges.txt"
   
   detectionMethods:
     icon: search
@@ -314,7 +314,7 @@ sections:
     wordCount: 175
     title: "Prevention Strategies"
     description: "Prevention methods and control measures"
-    prompt: "Generate title and description for PREVENTING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify HOW to stop THIS item's formation based on ITS SPECIFIC mechanisms (chemistry, environmental factors unique to it), WHICH controls target THIS item's formation pathways, WHY standard prevention may fail for THIS item, and WHAT conditions favor THIS item specifically."
+    prompt_file: "prompts/{domain}/prevention.txt"
   
   removalMethods:
     icon: wrench
@@ -426,7 +426,7 @@ sections:
     variant: default  
     wordCount: 200
     title: "Laser Material Interaction"
-    description: "How laser energy interacts with this material"
+    description: "Material-specific laser energy interaction properties and cleaning behavior"
     prompt: "Generate title and description for laser interaction with THIS MATERIAL. Title should be concise (3-5 words) and material-specific. Description should detail HOW laser energy affects THIS material specifically, WHAT absorption and reflection characteristics are unique to THIS material, and WHY these interactions determine optimal cleaning parameters for THIS material."
     
   relatedMaterials:
@@ -455,3 +455,49 @@ sections:
     title: "Page Description"
     description: "Overall page summary"
     prompt: "Generate title and description providing an overview of THIS MATERIAL. Title should be concise (3-5 words) and material-specific. Description should provide a comprehensive summary of WHAT this material is, WHY it's important for laser cleaning applications, HOW it behaves during cleaning, and WHICH key considerations matter for THIS material."
+  
+  # Relationship sections under operational category
+  machineSettings:
+    icon: settings
+    order: 75
+    variant: default
+    wordCount: 120
+    title: "Machine Settings"
+    description: "Optimal laser parameters and equipment specifications"
+    prompt: "Generate title and description for machine settings. Title should be concise (2-3 words). Description should detail optimal laser parameters, power settings, wavelength selections, and equipment configurations for THIS material."
+  
+  # Relationship sections that appear in both properties and relationships
+  # When used in relationships.operational.laserMaterialInteraction
+  operational.laserMaterialInteraction:
+    icon: zap
+    order: 76
+    variant: default
+    wordCount: 200
+    title: "Laser-Material Interaction"
+    description: "Dynamics of laser energy absorption and thermal response specific to this material"
+    prompt: "Generate title and description for laser-material interaction. Title should be concise (3-5 words). Description should explain how laser energy interacts with THIS material's surface, absorption characteristics, and thermal response patterns."
+  
+  # COMPONENT SECTIONS: Presentational components with before/after content
+  components.micro:
+    icon: microscope
+    order: 5
+    variant: default
+    wordCount: 75
+    sectionTitle: "Before & After Laser Cleaning"
+    sectionDescription: "Microscopic comparison showing surface transformation through laser treatment"
+    prompt: "Generate title and description for microscopic before/after comparison. Title should emphasize transformation. Description should highlight what microscopic examination reveals about the cleaning process effectiveness."
+
+  # PROPERTIES SECTIONS: Property groupings within frontmatter.properties
+  properties.materialCharacteristics:
+    icon: wrench
+    order: 70
+    variant: default
+    sectionTitle: "Material Characteristics"
+    sectionDescription: "Physical and mechanical properties defining this material"
+  
+  properties.laserMaterialInteraction:
+    icon: zap
+    order: 76
+    variant: default
+    sectionTitle: "Laser-Material Interaction"
+    sectionDescription: "How laser energy interacts with this material during cleaning"

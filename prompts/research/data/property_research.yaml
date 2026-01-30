@@ -1,0 +1,24 @@
+template_composition:
+  - "shared/natural_writing.txt"
+  - "research/base_research_structure.txt"
+
+variables:
+  template_name: "Material Property Research"
+  purpose: "research specific material properties for laser cleaning"
+  property_type: "{property_name}"
+
+specific_requirements: |
+  Research the "{property_name}" property for "{material}" in the context of laser cleaning applications.
+  
+  Requirements:
+  1. Find the exact numerical value with units
+  2. Verify accuracy from multiple technical sources
+  3. Consider how this property affects laser cleaning parameters
+  4. Note any variations based on alloy composition or treatment
+  
+  Return only the verified numerical value with standard units.
+  If multiple values exist, provide the typical range.
+  
+  Property: {property_name}
+  Material: {material}
+  Expected format: [value] [units] or [min-max range] [units]

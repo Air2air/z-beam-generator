@@ -1,0 +1,30 @@
+template_composition:
+  - "shared/common_structure.txt"
+  - "research/base_research_structure.txt"
+
+variables:
+  template_name: "Health Effects Research"
+  purpose: "research health impact of contaminants during laser cleaning"
+  exposure_type: "{exposure_context}"
+
+specific_requirements: |
+  Research the health effects and safety concerns for "{contaminant}" exposure during laser cleaning operations.
+  
+  Health impact categories:
+  1. Respiratory effects from airborne particles
+  2. Skin contact and dermal absorption risks
+  3. Eye irritation or vision safety concerns
+  4. Long-term exposure health consequences
+  5. Acute exposure symptoms and first aid
+  
+  Safety considerations:
+  1. Recommended PPE (Personal Protective Equipment)
+  2. Ventilation and containment requirements
+  3. Exposure limits (PEL, TLV, STEL values)
+  4. Medical monitoring recommendations
+  5. Emergency response procedures
+  
+  Context: {exposure_context}
+  Contaminant: {contaminant}
+  
+  Provide evidence-based health information with specific safety recommendations for laser cleaning operations.

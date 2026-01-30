@@ -337,7 +337,10 @@ class QualityAnalyzer:
         """
         violations = []
         text_lower = text.lower()
-        country = author.get('country', '').lower().replace(' ', '_')
+        # FAIL-FAST: Author must have country for pattern compliance check
+        if not author.get('country'):
+            raise ValueError("Author must have 'country' field for pattern compliance analysis")
+        country = author['country'].lower().replace(' ', '_')
         
         # Load persona file for this author
         persona_path = Path(__file__).parent / 'profiles' / f'{country}.yaml'
@@ -374,7 +377,10 @@ class QualityAnalyzer:
         Validates that the author's voice instructions were actually followed.
         Returns dict with found patterns and compliance score.
         """
-        country = author.get('country', '').lower()
+        # FAIL-FAST: Author must have country for voice authenticity check
+        if not author.get('country'):
+            raise ValueError("Author must have 'country' field for voice authenticity analysis")
+        country = author['country'].lower()
         author_id = author.get('id', 0)
         
         # Define author-specific patterns to check
@@ -707,7 +713,10 @@ class QualityAnalyzer:
         issues = []
         
         # Check 1: Mentions category
-        category = item_data.get('category', '').lower()
+        # Category validation - fail fast if missing
+        if not item_data.get('category'):
+            raise ValueError("Item data must have 'category' field for context analysis")
+        category = item_data['category'].lower()
         if category:
             checks['mentions_category'] = category in text_lower
             if not checks['mentions_category']:

@@ -1,0 +1,22 @@
+template_composition:
+  - "shared/common_structure.txt"
+  - "shared/ai_avoidance.txt"
+  - "research/visual/appearance_base.txt"
+
+variables:
+  template_name: "Contamination Appearance Analysis"
+  purpose: "analyze visual characteristics of contaminated surfaces"
+  analysis_depth: "detailed"
+
+specific_requirements: |
+  Analyze the visual appearance of "{contaminant}" contamination on "{material}" surfaces.
+  
+  Provide detailed visual characteristics:
+  1. Color changes: Describe hue, saturation, brightness variations
+  2. Texture modifications: Surface roughness, smoothness, patterns
+  3. Physical distribution: How contamination spreads across surface
+  4. Optical properties: Reflectivity, transparency, opacity changes
+  5. Thickness indicators: Visual cues about contamination depth
+  
+  Focus on observable characteristics that help identify contamination severity and laser cleaning requirements.
+  Use precise descriptive language for accurate image generation prompts.

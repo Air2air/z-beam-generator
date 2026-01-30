@@ -46,7 +46,7 @@ class PromptBuilder:
         """Load technical profiles from YAML file (cached)."""
         if PromptBuilder._technical_profiles_cache is None:
             import yaml
-            profiles_path = os.path.join('shared', 'text', 'templates', 'profiles', 'technical_profiles.yaml')
+            profiles_path = os.path.join('prompts', 'profiles', 'technical.yaml')
             if os.path.exists(profiles_path):
                 with open(profiles_path, 'r', encoding='utf-8') as f:
                     PromptBuilder._technical_profiles_cache = yaml.safe_load(f)
@@ -61,7 +61,7 @@ class PromptBuilder:
         """Load rhythm profiles from YAML file (cached)."""
         if PromptBuilder._rhythm_profiles_cache is None:
             import yaml
-            profiles_path = os.path.join('shared', 'text', 'templates', 'profiles', 'rhythm_profiles.yaml')
+            profiles_path = os.path.join('prompts', 'profiles', 'rhythm.yaml')
             if os.path.exists(profiles_path):
                 with open(profiles_path, 'r', encoding='utf-8') as f:
                     PromptBuilder._rhythm_profiles_cache = yaml.safe_load(f)
@@ -90,7 +90,7 @@ class PromptBuilder:
         # FAIL-FAST: No fallbacks permitted per .github/copilot-instructions.md
         if not profiles or 'profiles' not in profiles:
             raise FileNotFoundError(
-                f"Technical profiles file not found or invalid at shared/text/templates/profiles/technical_profiles.yaml. "
+                f"Technical profiles file not found or invalid at prompts/profiles/technical.yaml. "
                 f"This file is REQUIRED for all text generation. NO FALLBACKS permitted."
             )
         
@@ -121,7 +121,7 @@ class PromptBuilder:
             raise ValueError(
                 f"No '{level}' technical guidance found for component '{component_type}'. "
                 f"Profile exists but missing technical_approach.{level} entry. "
-                f"Fix shared/text/templates/profiles/technical_profiles.yaml. "
+                f"Fix prompts/profiles/technical.yaml. "
                 f"NO FALLBACKS permitted."
             )
         
@@ -147,7 +147,7 @@ class PromptBuilder:
         # FAIL-FAST: No fallbacks permitted per .github/copilot-instructions.md
         if not profiles or 'profiles' not in profiles:
             raise FileNotFoundError(
-                f"Rhythm profiles file not found or invalid at shared/text/templates/profiles/rhythm_profiles.yaml. "
+                f"Rhythm profiles file not found or invalid at prompts/profiles/rhythm.yaml. "
                 f"This file is REQUIRED for all text generation. NO FALLBACKS permitted."
             )
         
@@ -312,6 +312,54 @@ distinctive markers per paragraph as specified in your voice instructions."""
                 f"This file is REQUIRED for all text generation. "
                 f"Error: {e}"
             )
+    
+    @staticmethod
+    def build(context: 'PromptContext', **kwargs) -> str:
+        """
+        Build prompt using PromptContext object (NEW unified interface).
+        
+        This is the preferred method for new code. Extracts parameters from
+        PromptContext and delegates to build_unified_prompt().
+        
+        Args:
+            context: PromptContext object with all generation parameters
+            **kwargs: Additional parameters to override context values
+            
+        Returns:
+            Complete prompt string
+            
+        Example:
+            >>> from shared.text.prompt_context import PromptContext
+            >>> context = PromptContext(
+            ...     topic="Aluminum",
+            ...     voice=voice_dict,
+            ...     length=50,
+            ...     component_type="description",
+            ...     domain="materials"
+            ... )
+            >>> prompt = PromptBuilder.build(context)
+        """
+        # Extract parameters from context
+        params = {
+            'topic': context.topic,
+            'voice': context.voice,
+            'length': context.length,
+            'component_type': context.component_type,
+            'domain': context.domain,
+            'facts': context.facts or "",
+            'context': context.context or "",
+            'voice_params': context.voice_params,
+            'enrichment_params': context.enrichment_params,
+            'variation_seed': context.variation_seed,
+            'humanness_layer': context.humanness_layer,
+            'faq_count': context.faq_count,
+            'item_data': context.item_data
+        }
+        
+        # Allow kwargs to override context values
+        params.update(kwargs)
+        
+        return PromptBuilder.build_unified_prompt(**params)
     
     @staticmethod
     def build_unified_prompt(

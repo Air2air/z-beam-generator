@@ -126,16 +126,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -151,14 +141,6 @@ compounds:
             odor: Odorless - Cannot be detected by smell (DANGEROUS!)
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -179,14 +161,6 @@ compounds:
               pubchemCid: '281'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -218,14 +192,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -246,14 +212,6 @@ compounds:
               respiratory protection.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -281,14 +239,6 @@ compounds:
               hypoxia. Delayed neurological effects possible.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -323,14 +273,6 @@ compounds:
                 beiValue: <3.5% of hemoglobin for non-smokers, <10% post-shift
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -359,14 +301,6 @@ compounds:
               Implement gas detection systems.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -394,14 +328,6 @@ compounds:
             rcraCode: Not listed as hazardous waste
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -427,14 +353,6 @@ compounds:
                 >100 lbs/hr in some jurisdictions)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -469,14 +387,6 @@ compounds:
               monitors. Odorless nature makes CO extremely dangerous.
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -661,15 +571,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         reactivity:
           presentation: descriptive
           items:
@@ -696,14 +597,6 @@ compounds:
               iron carbonyl.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -970,16 +863,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -995,14 +878,6 @@ compounds:
             odor: Pungent, irritating odor @ 0.05-1 ppm (provides warning)
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -1026,14 +901,6 @@ compounds:
               pubchemCid: '712'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -1063,14 +930,6 @@ compounds:
             onset: long-term
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -1092,14 +951,6 @@ compounds:
               cartridges required (standard organic vapor inadequate).
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -1126,14 +977,6 @@ compounds:
               Polymerizes on standing, especially with impurities.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -1168,14 +1011,6 @@ compounds:
                 beiValue: 80 mg/g creatinine
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -1207,14 +1042,6 @@ compounds:
               within 25 feet.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -1242,14 +1069,6 @@ compounds:
             rcraCode: U122
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -1275,14 +1094,6 @@ compounds:
               air: 100 lbs/day
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -1318,14 +1129,6 @@ compounds:
               occurs. Do not rely on odor alone.
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -1400,15 +1203,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -1425,14 +1219,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
         reactivity:
           presentation: descriptive
           items:
@@ -1465,14 +1251,6 @@ compounds:
               dioxide forming explosive nitro compounds.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -1697,16 +1475,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -1723,14 +1491,6 @@ compounds:
               reliable)'
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -1755,14 +1515,6 @@ compounds:
               pubchemCid: '241'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -1789,14 +1541,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -1815,14 +1559,6 @@ compounds:
               decontamination.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -1848,14 +1584,6 @@ compounds:
               carbon dioxide.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -1894,14 +1622,6 @@ compounds:
                 beiValue: 500 µg/g creatinine
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -1932,14 +1652,6 @@ compounds:
               explosion-proof electrical equipment.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -1969,14 +1681,6 @@ compounds:
             rcraCode: U019
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -2001,14 +1705,6 @@ compounds:
               air: 10 lbs/day (CERCLA RQ)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -2043,14 +1739,6 @@ compounds:
               use monitoring equipment.
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -2121,15 +1809,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         reactivity:
           presentation: descriptive
           items:
@@ -2160,14 +1839,6 @@ compounds:
               and explosion hazard. Attacks some forms of plastics, rubber, and coatings.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -2427,16 +2098,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
       safety:
         healthEffects:
           presentation: card
@@ -2460,14 +2121,6 @@ compounds:
             onset: long-term
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -2482,14 +2135,6 @@ compounds:
               pelPpm: null
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 10
@@ -2503,14 +2148,6 @@ compounds:
               specificCompound: Polycyclic Aromatic Hydrocarbons
           _section:
             icon: triangle-exclamation
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for handling emergencies involving this
               compound
@@ -2527,14 +2164,6 @@ compounds:
             acgihTlvMgM3: 0.2
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 20
@@ -2552,16 +2181,6 @@ compounds:
             icon: leaf
             order: 1
             variant: warning
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
-              notes: Environmental and ecological concerns
-              sourceField: environmental_impact
       detectionMonitoring:
         detectionMonitoring:
           presentation: descriptive
@@ -2575,16 +2194,6 @@ compounds:
             icon: activity
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
-              notes: Continuous monitoring and sampling systems
-              sourceField: detectionMonitoring
       interactions:
         producedFromContaminants:
           presentation: card
@@ -2684,15 +2293,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
     author:
       id: 3
       name: Ikmanda Roswati
@@ -2935,16 +2535,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -2961,14 +2551,6 @@ compounds:
               detect odor (genetic variation)'
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -2992,14 +2574,6 @@ compounds:
               pubchemCid: '768'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -3030,14 +2604,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -3059,14 +2625,6 @@ compounds:
               natural rubber. Emergency cyanide antidote kit must be immediately available.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -3099,14 +2657,6 @@ compounds:
               producing nitrogen oxides and hydrogen cyanide gas.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -3145,14 +2695,6 @@ compounds:
                 beiValue: <0.5 µg/mL (toxic >1 µg/mL, lethal >3 µg/mL)
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -3188,14 +2730,6 @@ compounds:
               antidote kits at storage location. Written emergency procedures posted.'
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -3222,14 +2756,6 @@ compounds:
             rcraCode: P063
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -3256,14 +2782,6 @@ compounds:
                 due to extreme toxicity
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -3298,14 +2816,6 @@ compounds:
               - MANDATORY continuous monitoring with alarms.
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -3370,15 +2880,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -3395,14 +2896,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
         reactivity:
           presentation: descriptive
           items:
@@ -3439,14 +2932,6 @@ compounds:
               some metals (copper, zinc) forming explosive metal cyanides.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -3663,16 +3148,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -3688,14 +3163,6 @@ compounds:
             odor: Pungent, fruity odor @ 0.05-1 ppm
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -3715,14 +3182,6 @@ compounds:
               pubchemCid: '177'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -3750,14 +3209,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -3775,14 +3226,6 @@ compounds:
               Irritating vapor. May polymerize explosively.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -3811,14 +3254,6 @@ compounds:
               and respiratory tract.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -3849,14 +3284,6 @@ compounds:
               biologicalExposureIndices: []
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -3886,14 +3313,6 @@ compounds:
               Post "EXTREMELY FLAMMABLE" and "CANCER HAZARD" signs.'
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -3920,14 +3339,6 @@ compounds:
             rcraCode: U001
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -3950,14 +3361,6 @@ compounds:
               air: 1000 lbs/day (CERCLA RQ)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -3989,14 +3392,6 @@ compounds:
             odorThreshold: 0.05-1 ppm - provides early warning
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -4060,15 +3455,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -4085,14 +3471,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
         reactivity:
           presentation: descriptive
           items:
@@ -4129,14 +3507,6 @@ compounds:
               ignite.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -4413,16 +3783,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -4438,14 +3798,6 @@ compounds:
             odor: Pungent, acrid, disagreeable odor - IMMEDIATE WARNING at 0.1 ppm
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -4468,14 +3820,6 @@ compounds:
               pubchemCid: '7847'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -4504,14 +3848,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -4533,14 +3869,6 @@ compounds:
               respirators may be inadequate - use supplied air.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -4570,14 +3898,6 @@ compounds:
               Fire produces deadly acrolein and formaldehyde.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -4608,14 +3928,6 @@ compounds:
               biologicalExposureIndices: []
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -4648,14 +3960,6 @@ compounds:
               "EXTREMELY FLAMMABLE" and "POISON" signs.'
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -4683,14 +3987,6 @@ compounds:
             rcraCode: P003
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -4714,14 +4010,6 @@ compounds:
               air: 1 lb/day (CERCLA RQ)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -4754,14 +4042,6 @@ compounds:
               DO NOT rely on odor alone.
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -4821,15 +4101,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -4846,14 +4117,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
         reactivity:
           presentation: descriptive
           items:
@@ -4890,14 +4153,6 @@ compounds:
               with oxidizers. Strong reducing agent. Corrosive. May explode in fire.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -5141,16 +4396,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -5166,14 +4411,6 @@ compounds:
             odor: Pungent, irritating odor @ 0.8-5 ppm
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -5193,14 +4430,6 @@ compounds:
               pubchemCid: '313'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -5230,14 +4459,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -5258,14 +4479,6 @@ compounds:
               Liquid causes frostbite (cryogenic).
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -5292,14 +4505,6 @@ compounds:
               tract damage.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -5330,14 +4535,6 @@ compounds:
               biologicalExposureIndices: []
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -5366,14 +4563,6 @@ compounds:
               25 feet. Store in cool, dry area. Protect from physical damage.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -5399,14 +4588,6 @@ compounds:
             rcraCode: null
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -5431,14 +4612,6 @@ compounds:
               air: 5000 lbs/day (CERCLA RQ)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -5471,14 +4644,6 @@ compounds:
               levels
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -5531,15 +4696,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -5556,14 +4712,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
         reactivity:
           presentation: descriptive
           items:
@@ -5590,14 +4738,6 @@ compounds:
               air.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -5873,16 +5013,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -5898,14 +5028,6 @@ compounds:
             odor: Sweet, pungent, benzene-like odor @ 0.16-40 ppm
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -5925,14 +5047,6 @@ compounds:
               pubchemCid: '1140'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -5960,14 +5074,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -5986,14 +5092,6 @@ compounds:
               concern.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -6020,14 +5118,6 @@ compounds:
               loss, vision problems. Metabolized to benzyl alcohol and benzoic acid.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -6070,14 +5160,6 @@ compounds:
                 beiValue: 0.05 mg/L
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -6104,14 +5186,6 @@ compounds:
               25 feet.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -6139,14 +5213,6 @@ compounds:
             rcraCode: U220
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -6171,14 +5237,6 @@ compounds:
               air: 1000 lbs/day (CERCLA RQ)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -6211,14 +5269,6 @@ compounds:
               adaptation occurs.
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -6293,15 +5343,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -6318,14 +5359,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
         reactivity:
           presentation: descriptive
           items:
@@ -6354,14 +5387,6 @@ compounds:
               with dinitrogen tetroxide. Attacks some plastics, rubber, and coatings.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -6627,16 +5652,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -6652,14 +5667,6 @@ compounds:
             odor: Sweet, floral odor @ 0.05-0.5 ppm (odor fatigue occurs)
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -6680,14 +5687,6 @@ compounds:
               pubchemCid: '7501'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -6714,14 +5713,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -6739,14 +5730,6 @@ compounds:
               significant. Extremely irritating. May cause CNS depression.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -6774,14 +5757,6 @@ compounds:
               odor. Metabolized to styrene oxide (more toxic).
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -6820,14 +5795,6 @@ compounds:
                 beiValue: 0.2 mg/L
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -6856,14 +5823,6 @@ compounds:
               and heat. Post "FLAMMABLE" and "CANCER HAZARD" signs. Date containers.'
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -6891,14 +5850,6 @@ compounds:
             rcraCode: null
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -6922,14 +5873,6 @@ compounds:
               air: 1000 lbs/day (CERCLA RQ)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -6961,14 +5904,6 @@ compounds:
               rely on odor for protection.'
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -7006,15 +5941,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -7032,14 +5958,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
         reactivity:
           presentation: descriptive
           items:
@@ -7073,14 +5991,6 @@ compounds:
               some plastics, rubber, and coatings. Forms peroxides on prolonged storage.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -7321,16 +6231,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -7346,14 +6246,6 @@ compounds:
             odor: Odorless
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -7376,14 +6268,6 @@ compounds:
               pubchemCid: '14806'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -7411,14 +6295,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -7440,14 +6316,6 @@ compounds:
               Well-ventilated work areas essential.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -7472,14 +6340,6 @@ compounds:
               repeated exposure. Welding galvanized metal major exposure source.'
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -7518,14 +6378,6 @@ compounds:
                 beiValue: <1.0 mg/L
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -7547,14 +6399,6 @@ compounds:
               dry area. Prevent dust accumulation.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -7578,14 +6422,6 @@ compounds:
             rcraCode: null
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -7608,14 +6444,6 @@ compounds:
               air: 1000 lbs/day zinc compounds (CERCLA RQ)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -7647,14 +6475,6 @@ compounds:
             odorThreshold: Not applicable - odorless
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -7725,15 +6545,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         reactivity:
           presentation: descriptive
           items:
@@ -7755,14 +6566,6 @@ compounds:
               hydrogen gas. May ignite spontaneously with linseed oil.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -8032,16 +6835,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -8057,14 +6850,6 @@ compounds:
             odor: Odorless
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -8087,14 +6872,6 @@ compounds:
               pubchemCid: '518696'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -8122,14 +6899,6 @@ compounds:
             onset: short-term
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -8149,14 +6918,6 @@ compounds:
               iron oxide.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -8181,14 +6942,6 @@ compounds:
               manganese).'
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -8219,14 +6972,6 @@ compounds:
               biologicalExposureIndices: []
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -8247,14 +6992,6 @@ compounds:
               dry area. Prevent dust accumulation.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -8278,14 +7015,6 @@ compounds:
             rcraCode: null
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -8310,14 +7039,6 @@ compounds:
               air: Not reportable
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -8348,14 +7069,6 @@ compounds:
             odorThreshold: Not applicable - odorless
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -8459,15 +7172,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         reactivity:
           presentation: descriptive
           items:
@@ -8489,14 +7193,6 @@ compounds:
               produces extreme heat. Reacts with strong acids.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -8739,16 +7435,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -8765,14 +7451,6 @@ compounds:
             odor: Odorless or faint acrid odor
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -8796,14 +7474,6 @@ compounds:
               pubchemCid: '24425'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -8832,14 +7502,6 @@ compounds:
             onset: short-term
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -8860,14 +7522,6 @@ compounds:
               to control dust. Medical surveillance required.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -8895,14 +7549,6 @@ compounds:
               severe dermatitis.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -8941,14 +7587,6 @@ compounds:
                 beiValue: <0.5 µg/L
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -8979,14 +7617,6 @@ compounds:
               10 seconds.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -9014,14 +7644,6 @@ compounds:
             rcraCode: D007 (chromium)
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -9047,14 +7669,6 @@ compounds:
               air: 5000 lbs/day (CERCLA RQ for soluble Cr(VI))
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -9089,14 +7703,6 @@ compounds:
             odorThreshold: Not applicable - no warning odor at hazardous levels
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -9156,15 +7762,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -9179,14 +7776,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
         reactivity:
           presentation: descriptive
           items:
@@ -9216,14 +7805,6 @@ compounds:
               and metals.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -9470,16 +8051,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -9496,14 +8067,6 @@ compounds:
             odor: 'NO2: pungent, irritating odor @ 0.1-1 ppm. NO: odorless'
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -9524,14 +8087,6 @@ compounds:
               pubchemCid: 3032552 (NOx)
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -9559,14 +8114,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -9587,14 +8134,6 @@ compounds:
               short exposures very dangerous.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -9621,14 +8160,6 @@ compounds:
               Strong oxidizer. Corrosive to respiratory tract. May explode under pressure.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -9667,14 +8198,6 @@ compounds:
                 beiValue: Establish baseline
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -9704,14 +8227,6 @@ compounds:
               posted. Monitor cylinder integrity regularly.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -9737,14 +8252,6 @@ compounds:
             rcraCode: P078 (nitrogen dioxide)
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -9769,14 +8276,6 @@ compounds:
               air: 10 lbs/day NO2 (CERCLA RQ)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -9810,14 +8309,6 @@ compounds:
               NO: odorless (NO WARNING).'
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -9921,15 +8412,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         reactivity:
           presentation: descriptive
           items:
@@ -9958,14 +8440,6 @@ compounds:
               and combustibles. Forms nitric acid with water. May explode under heat/pressure.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -10217,16 +8691,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -10242,14 +8706,6 @@ compounds:
             odor: Pungent, suffocating odor @ 0.3-1 ppm
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -10269,14 +8725,6 @@ compounds:
               pubchemCid: '1119'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -10307,14 +8755,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -10334,14 +8774,6 @@ compounds:
               liquid causes frostbite. Asthma trigger - asthmatics extremely sensitive.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -10368,14 +8800,6 @@ compounds:
               bronchospasm and pulmonary edema. Cryogenic liquid causes frostbite.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -10406,14 +8830,6 @@ compounds:
               biologicalExposureIndices: []
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -10440,14 +8856,6 @@ compounds:
               liquid: cryogenic handling equipment.'
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -10473,14 +8881,6 @@ compounds:
             rcraCode: null
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -10505,14 +8905,6 @@ compounds:
               air: 1 lb/day (CERCLA RQ)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -10544,14 +8936,6 @@ compounds:
             odorThreshold: 0.3-1 ppm - provides adequate warning below toxic levels
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -10589,15 +8973,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -10616,14 +8991,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
         reactivity:
           presentation: descriptive
           items:
@@ -10648,14 +9015,6 @@ compounds:
               Reacts violently with metal oxides and alkali metals.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -10874,16 +9233,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -10900,14 +9249,6 @@ compounds:
               threshold ABOVE safe levels'
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -10927,14 +9268,6 @@ compounds:
               pubchemCid: '6371'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -10962,14 +9295,6 @@ compounds:
             onset: short-term
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -10990,14 +9315,6 @@ compounds:
               RESPIRATORS INADEQUATE - immediate SCBA required.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -11026,14 +9343,6 @@ compounds:
               fine".
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -11064,14 +9373,6 @@ compounds:
               biologicalExposureIndices: []
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -11105,14 +9406,6 @@ compounds:
               REQUIRED.'
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -11138,14 +9431,6 @@ compounds:
             rcraCode: P095
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -11168,14 +9453,6 @@ compounds:
               air: 10 lbs/day - IMMEDIATELY reportable due to extreme toxicity
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -11208,14 +9485,6 @@ compounds:
               limits. NEVER rely on odor. MANDATORY continuous monitoring.
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -11242,15 +9511,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -11267,14 +9527,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
         reactivity:
           presentation: descriptive
           items:
@@ -11306,14 +9558,6 @@ compounds:
               powder.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -11562,16 +9806,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -11587,14 +9821,6 @@ compounds:
             odor: Sharp, pungent, suffocating odor @ 5-50 ppm
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -11614,14 +9840,6 @@ compounds:
               pubchemCid: '222'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -11650,14 +9868,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -11678,14 +9888,6 @@ compounds:
               eyewash/shower within 10 seconds.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -11714,14 +9916,6 @@ compounds:
               acids and halogens.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -11752,14 +9946,6 @@ compounds:
               biologicalExposureIndices: []
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -11789,14 +9975,6 @@ compounds:
               within 25 feet. Avoid contact with copper, brass, zinc in piping.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -11824,14 +10002,6 @@ compounds:
             rcraCode: null
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -11856,14 +10026,6 @@ compounds:
               air: 100 lbs/day (CERCLA RQ)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -11896,14 +10058,6 @@ compounds:
             odorThreshold: 5-50 ppm - provides good warning below toxic levels
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -11930,15 +10084,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -11955,14 +10100,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
         reactivity:
           presentation: descriptive
           items:
@@ -11993,14 +10130,6 @@ compounds:
               zinc, aluminum, and alloys.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -12211,16 +10340,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -12236,14 +10355,6 @@ compounds:
             odor: Odorless
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -12264,14 +10375,6 @@ compounds:
               pubchemCid: '280'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -12305,14 +10408,6 @@ compounds:
             onset: immediate
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -12332,14 +10427,6 @@ compounds:
               >1% concentration.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -12367,14 +10454,6 @@ compounds:
               >20-30% death. ODORLESS - no warning. Dry ice causes severe frostbite.'
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -12405,14 +10484,6 @@ compounds:
               biologicalExposureIndices: []
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -12439,14 +10510,6 @@ compounds:
               monitoring.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -12470,14 +10533,6 @@ compounds:
             rcraCode: null
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -12501,14 +10556,6 @@ compounds:
               air: Not reportable (natural atmospheric component)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -12541,14 +10588,6 @@ compounds:
               property. MUST use instruments.
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -13360,15 +11399,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         reactivity:
           presentation: descriptive
           items:
@@ -13389,14 +11419,6 @@ compounds:
               react with reactive metals. Solid CO2 causes embrittlement of some materials.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -13636,16 +11658,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -13661,14 +11673,6 @@ compounds:
             odor: Variable - sweet, pungent, solvent-like, or odorless
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -13691,14 +11695,6 @@ compounds:
               pubchemCid: Specific to individual VOC
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -13730,14 +11726,6 @@ compounds:
             onset: short-term
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -13757,14 +11745,6 @@ compounds:
               xylene). Identify specific VOCs when possible.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -13790,14 +11770,6 @@ compounds:
               problems. Chronic exposure health effects vary widely.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -13832,14 +11804,6 @@ compounds:
                 beiValue: Specific to individual VOC
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -13864,14 +11828,6 @@ compounds:
               spaces. Emergency procedures.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -13895,14 +11851,6 @@ compounds:
             rcraCode: Many VOCs have codes (U-series, F-series)
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -13925,14 +11873,6 @@ compounds:
               air: Variable by specific VOC. VOC emissions regulated.
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -13969,14 +11909,6 @@ compounds:
               at low ppm. Olfactory fatigue common. Do not rely on odor.
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -14260,15 +12192,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         reactivity:
           presentation: descriptive
           items:
@@ -14292,14 +12215,6 @@ compounds:
               react violently with oxidizers. Peroxide formation possible in ethers.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -14574,16 +12489,6 @@ compounds:
             icon: atom
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: chemicalProperties
-              group: identity
-              domain: compounds
-              icon: flask
-              order: 70
-              variant: default
-              schemaDescription: Chemical composition and properties
-              notes: Core chemical identity data from Compounds.yaml
-              sourceField: chemical_properties
         physicalProperties:
           presentation: descriptive
           items:
@@ -14599,14 +12504,6 @@ compounds:
             odor: Faint aromatic odor
           _section:
             icon: flask
-            sectionMetadata:
-              relationshipType: physicalProperties
-              group: identity
-              domain: compounds
-              icon: thermometer
-              order: 71
-              variant: default
-              schemaDescription: Physical characteristics and behavior
             sectionTitle: Physical Properties
             sectionDescription: Chemical and physical characteristics
             order: 5
@@ -14627,14 +12524,6 @@ compounds:
               pubchemCid: '2336'
           _section:
             icon: tag
-            sectionMetadata:
-              relationshipType: synonymsIdentifiers
-              group: identity
-              domain: compounds
-              icon: tag
-              order: 72
-              variant: default
-              schemaDescription: Alternative names and identifiers
             sectionTitle: Alternative Names
             sectionDescription: Synonyms and chemical identifiers
             order: 10
@@ -14661,14 +12550,6 @@ compounds:
             onset: long-term
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 15
@@ -14689,14 +12570,6 @@ compounds:
               for heavy contamination.
           _section:
             icon: shield-check
-            sectionMetadata:
-              relationshipType: ppeRequirements
-              group: safety
-              domain: compounds
-              icon: hard-hat
-              order: 22
-              variant: default
-              schemaDescription: Personal protective equipment needed
             sectionTitle: Personal Protective Equipment
             sectionDescription: Required safety equipment for handling this compound
             order: 20
@@ -14723,14 +12596,6 @@ compounds:
               to multiple cancers. Contaminated soil requires remediation.
           _section:
             icon: exclamation-triangle
-            sectionMetadata:
-              relationshipType: emergencyResponse
-              group: safety
-              domain: compounds
-              icon: ambulance
-              order: 23
-              variant: danger
-              schemaDescription: Emergency procedures and first aid
             sectionTitle: Emergency Response
             sectionDescription: Procedures for spills, exposure, and incidents
             order: 25
@@ -14770,14 +12635,6 @@ compounds:
                 beiValue: Establish baseline, monitor trends
           _section:
             icon: gauge
-            sectionMetadata:
-              relationshipType: exposureLimits
-              group: safety
-              domain: compounds
-              icon: gauge
-              order: 24
-              variant: warning
-              schemaDescription: Occupational exposure limits
             sectionTitle: Exposure Limits
             sectionDescription: OSHA, NIOSH, and ACGIH exposure thresholds
             order: 30
@@ -14803,14 +12660,6 @@ compounds:
               regularly for integrity.
           _section:
             icon: warehouse
-            sectionMetadata:
-              relationshipType: storageRequirements
-              group: safety
-              domain: compounds
-              icon: warehouse
-              order: 25
-              variant: default
-              schemaDescription: Safe storage conditions
             sectionTitle: Storage Requirements
             sectionDescription: Safe storage conditions and compatibility
             order: 35
@@ -14837,14 +12686,6 @@ compounds:
             rcraCode: U022
           _section:
             icon: book-law
-            sectionMetadata:
-              relationshipType: regulatoryClassification
-              group: safety
-              domain: compounds
-              icon: file-badge
-              order: 26
-              variant: default
-              schemaDescription: Regulatory classification and hazard codes
             sectionTitle: Regulatory Classification
             sectionDescription: DOT, UN, and NFPA hazard classifications
             order: 40
@@ -14870,14 +12711,6 @@ compounds:
               air: 1 lb/day - reportable to EPA (CERCLA RQ)
           _section:
             icon: leaf
-            sectionMetadata:
-              relationshipType: environmentalImpact
-              group: environmental
-              domain: compounds
-              icon: leaf
-              order: 50
-              variant: default
-              schemaDescription: Environmental effects and disposal considerations
             sectionTitle: Environmental Impact
             sectionDescription: Toxicity, biodegradability, and environmental fate
             order: 45
@@ -14910,14 +12743,6 @@ compounds:
               levels
           _section:
             icon: radar
-            sectionMetadata:
-              relationshipType: detectionMonitoring
-              group: detectionMonitoring
-              domain: compounds
-              icon: radar
-              order: 80
-              variant: default
-              schemaDescription: Detection and monitoring methods
             sectionTitle: Detection & Monitoring
             sectionDescription: Methods for detecting and measuring this compound
             order: 50
@@ -14988,15 +12813,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         reactivity:
           presentation: descriptive
           items:
@@ -15021,14 +12837,6 @@ compounds:
               avoid high heat.
           _section:
             icon: atom
-            sectionMetadata:
-              relationshipType: reactivity
-              group: interactions
-              domain: compounds
-              icon: zap
-              order: 15
-              variant: default
-              schemaDescription: Chemical reactivity and interactions
             sectionTitle: Reactivity
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
@@ -15917,15 +13725,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
       safety:
         healthEffects:
           items:
@@ -15948,14 +13747,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -16539,15 +14330,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
       safety:
         healthEffects:
           items:
@@ -16571,14 +14353,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -17033,15 +14807,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
       safety:
         healthEffects:
           items:
@@ -17066,14 +14831,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -17466,15 +15223,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
       safety:
         healthEffects:
           items:
@@ -17499,14 +15247,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -17847,15 +15587,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
       safety:
         healthEffects:
           items:
@@ -17884,14 +15615,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -18333,15 +16056,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
       safety:
         healthEffects:
           items:
@@ -18365,14 +16079,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -18650,15 +16356,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -18674,14 +16371,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
       safety:
         healthEffects:
           items:
@@ -18705,14 +16394,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -19041,15 +16722,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
       safety:
         healthEffects:
           items:
@@ -19073,14 +16745,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -19384,15 +17048,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
       safety:
         healthEffects:
           items:
@@ -19419,14 +17074,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -19777,15 +17424,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
       safety:
         healthEffects:
           items:
@@ -19811,14 +17449,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -20134,15 +17764,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -20159,14 +17780,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
       safety:
         healthEffects:
           items:
@@ -20190,14 +17803,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -20478,15 +18083,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -20501,14 +18097,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
       safety:
         healthEffects:
           items:
@@ -20533,14 +18121,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -20834,15 +18414,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
         producedFromMaterials:
           presentation: card
           items:
@@ -20859,14 +18430,6 @@ compounds:
             icon: box
             order: 2
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromMaterials
-              group: interactions
-              domain: compounds
-              icon: circle-help
-              order: 999
-              variant: default
-              notes: Links to material pages
       safety:
         healthEffects:
           items:
@@ -20890,14 +18453,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5
@@ -21249,15 +18804,6 @@ compounds:
             icon: droplet
             order: 1
             variant: default
-            sectionMetadata:
-              relationshipType: producedFromContaminants
-              group: interactions
-              domain: compounds
-              icon: box
-              order: 12
-              variant: default
-              schemaDescription: Contaminants that produce this compound
-              notes: Links to contaminant pages
       safety:
         healthEffects:
           items:
@@ -21287,14 +18833,6 @@ compounds:
           presentation: card
           _section:
             icon: heart-pulse
-            sectionMetadata:
-              relationshipType: healthEffects
-              group: safety
-              domain: compounds
-              icon: heart-pulse
-              order: 21
-              variant: warning
-              schemaDescription: Health hazards and exposure effects
             sectionTitle: Health Effects
             sectionDescription: Adverse health impacts from exposure to this compound
             order: 5

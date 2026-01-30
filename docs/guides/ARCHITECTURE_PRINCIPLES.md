@@ -139,7 +139,7 @@ linguistic_patterns:
 
 ### Layer 2: Humanness Optimizer (Structural Variation)
 
-**Location**: `learning/humanness_optimizer.py` + `shared/text/templates/system/humanness_layer*.txt`
+**Location**: `learning/humanness_optimizer.py` + `prompts/core/humanness_layer*.txt`
 
 **Purpose**: Structural diversity ONLY (NOT voice)
 
