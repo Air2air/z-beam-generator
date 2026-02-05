@@ -2,7 +2,21 @@
 
 This directory contains **actively maintained** reusable tools for the z-beam-generator project.
 
-## Active Tools (34 scripts)
+## Recently Added (Consolidation, Feb 2026)
+
+### consolidate_materials.py
+Merges duplicate or split material entries in Materials.yaml.
+- Input: Materials.yaml with potential duplicates
+- Output: Consolidated Materials.yaml
+- Use case: Data cleanup, manual merge operations
+
+### generate_seo_titles.py
+Batch generates SEO-optimized titles for materials/compounds/contaminants.
+- Input: Domain YAML files (Materials.yaml, Compounds.yaml, etc.)
+- Output: Updated YAML files with `seoTitle` fields
+- Use case: Initial SEO setup, bulk regeneration
+
+## Active Tools (36 scripts)
 
 ### Data Quality & Fixes (Keep - Recent/Active)
 - ✅ `fix_missing_ranges.py` - Fixes missing min/max ranges in Settings.yaml (Dec 2025)
