@@ -5,7 +5,7 @@
 ## Current State Analysis
 
 ### 1. Relationship Severity Fields ✅ COMPLIANT
-**Location**: `frontmatter/materials/*.yaml` → `relationships.contaminants[].severity`
+**Location**: `frontmatter/materials/*.yaml` → `relationships.interactions.contaminatedBy.items[].severity`
 
 **Current values found**: `low`, `high`, `moderate`  
 **Status**: ✅ Already using standardized schema values
@@ -14,14 +14,14 @@
 **Example (porcelain-laser-cleaning.yaml)**:
 ```yaml
 relationships:
-  contaminants:
-    groups:
-      organic_residues:
-        items:
-        - id: environmental-dust-contamination
-          severity: low        # ✅ Schema compliant
-        - id: paint-removal-contamination  
-          severity: high       # ✅ Schema compliant
+  interactions:
+    contaminatedBy:
+      presentation: card
+      items:
+      - id: environmental-dust-contamination
+        severity: low        # ✅ Schema compliant
+      - id: paint-removal-contamination  
+        severity: high       # ✅ Schema compliant
 ```
 
 **Action**: ✅ No changes needed - already compliant
