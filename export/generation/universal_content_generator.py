@@ -151,9 +151,12 @@ class ContentGenerator(BaseGenerator):
         # 1. dateModified (current timestamp - legitimate export-time field)
         frontmatter['dateModified'] = datetime.utcnow().isoformat() + '+00:00'
         
-        # 2. pageTitle (frontend compatibility - only if not in source)
-        if not frontmatter.get('pageTitle'):
-            frontmatter['pageTitle'] = frontmatter.get('name') or frontmatter.get('title') or frontmatter.get('displayName', 'Untitled')
+        # 2. pageTitle MUST come from source data only - no generation during export
+        # Source data (Materials.yaml, Contaminants.yaml, etc.) should contain proper page_title
+        # Note: We check for page_title (snake_case) since camelcase_normalization runs after this task
+        if not frontmatter.get('pageTitle') and not frontmatter.get('page_title'):
+            raise ValueError(f"Missing page_title in source data for {frontmatter.get('id', 'unknown')}. "
+                           f"SEO generators should write page_title to source data, not generate during export.")
         
         logger.debug(f"Added export-time metadata for {frontmatter.get('id', 'unknown')}")
         
@@ -221,84 +224,19 @@ class ContentGenerator(BaseGenerator):
     
     def _task_author_linkage(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
-        Add complete author metadata from author registry.
-        Replaces: AuthorEnricher
-        Populates: ALL fields from registry including image, imageAlt, url, sameAs, etc.
+        Author enrichment task (currently disabled in config).
+        
+        Architecture:
+        - Source data (Materials.yaml): Contains authorId (1-4)
+        - This task would enrich to full author object
+        - Currently NOT in task list, so authorId passes through unchanged
+        - Real enrichment happens in another layer
         """
-        # Get author from frontmatter (already present from source data)
-        author_info = frontmatter.get('author', {})
-        if not author_info:
-            logger.debug("No author in frontmatter")
-            return frontmatter
-        
-        # Get author ID
-        if isinstance(author_info, dict):
-            author_id = author_info.get('id')
-        else:
-            author_id = author_info
-        
-        if not author_id:
-            logger.debug("No author ID in frontmatter")
-            return frontmatter
-        
-        # Load complete author data from registry
-        try:
-            from data.authors.registry import get_author
-            registry_author = get_author(author_id)
-            
-            # Use registry as source of truth, preserve source data as fallback
-            complete_author = {
-                'id': author_id,
-                'name': registry_author.get('name'),
-                'country': registry_author.get('country'),
-                'countryDisplay': registry_author.get('country_display') or registry_author.get('countryDisplay'),  # Normalize to camelCase
-                'title': registry_author.get('title'),
-                'sex': registry_author.get('sex'),
-                'jobTitle': registry_author.get('jobTitle'),
-                'expertise': registry_author.get('expertise', []),
-                'affiliation': registry_author.get('affiliation', {}),
-                'credentials': registry_author.get('credentials', []),
-                'email': registry_author.get('email'),
-                'image': registry_author.get('image'),
-                'imageAlt': registry_author.get('imageAlt'),
-                'url': registry_author.get('url'),
-                'sameAs': registry_author.get('sameAs', []),
-            }
-            
-            # Add optional fields if present
-            if registry_author.get('alumniOf'):
-                complete_author['alumniOf'] = registry_author['alumniOf']
-            if registry_author.get('languages'):
-                complete_author['languages'] = registry_author['languages']
-            
-            # Generate bio if not in registry
-            if not complete_author.get('bio'):
-                bio_parts = []
-                if complete_author.get('name'):
-                    bio_parts.append(f"{complete_author['name']}")
-                if complete_author.get('title'):
-                    bio_parts.append(f"holds a {complete_author['title']} degree")
-                if complete_author.get('expertise'):
-                    expertise = complete_author['expertise']
-                    if isinstance(expertise, list):
-                        bio_parts.append(f"with expertise in {', '.join(expertise)}")
-                if complete_author.get('country'):
-                    bio_parts.append(f"based in {complete_author['country']}")
-                
-                complete_author['bio'] = '. '.join(bio_parts) + '.' if bio_parts else None
-            
-            # Add slug
-            complete_author['slug'] = registry_author.get('url', '').split('/')[-1] if registry_author.get('url') else str(author_id)
-            
-            frontmatter['author'] = complete_author
-            
-        except (ImportError, KeyError) as e:
-            logger.warning(f"Failed to load author {author_id} from registry: {e}")
-            # Fallback: preserve existing author data
-            if isinstance(author_info, dict):
-                frontmatter['author'] = author_info
-        
+        # This task is not in the active task list (see export/config/*.yaml)
+        # Author enrichment happens elsewhere in the pipeline
+        # This is just a placeholder pass-through
         return frontmatter
+
     
     def _task_slug_generation(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """

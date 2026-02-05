@@ -29,6 +29,7 @@ class FieldRouter:
         'materials': {
             # Legacy fields
             'pageDescription': 'text',
+            'pageTitle': 'text',
             'micro': 'text', 
             'faq': 'text',
             'power_intensity': 'data',
@@ -50,6 +51,7 @@ class FieldRouter:
         'contaminants': {
             # Legacy fields
             'pageDescription': 'text',
+            'pageTitle': 'text',
             'micro': 'text',
             'compounds': 'text',
             'appearance': 'text',
@@ -70,6 +72,7 @@ class FieldRouter:
         'compounds': {
             # Legacy fields
             'pageDescription': 'text',
+            'pageTitle': 'text',
             'health_effects': 'text',
             'exposure_guidelines': 'text',
             'detection_methods': 'text',
@@ -91,6 +94,7 @@ class FieldRouter:
         'settings': {
             # Legacy fields
             'pageDescription': 'text',
+            'pageTitle': 'text',
             'component_summary': 'text',
             'recommendations': 'text',
             'challenges': 'text',

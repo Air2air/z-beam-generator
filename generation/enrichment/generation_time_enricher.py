@@ -62,10 +62,11 @@ class GenerationTimeEnricher:
         Returns:
             Enriched item_data (same object, modified in-place)
         """
-        # 1. Expand author (if present)
+        # 1. Extract authorId (V6 Schema: reference only, not full object)
         if 'author' in item_data:
-            item_data['author'] = self._expand_author(item_data['author'])
-            logger.debug(f"  ✅ Author expanded for {identifier}")
+            item_data['authorId'] = self._extract_author_id(item_data['author'])
+            del item_data['author']  # V6: Remove full author object
+            logger.debug(f"  ✅ Author ID extracted for {identifier} (V6 format)")
         
         # 2. Add timestamps
         item_data = self._add_timestamps(item_data)
@@ -81,34 +82,32 @@ class GenerationTimeEnricher:
         
         return item_data
     
-    def _expand_author(self, author_data: Dict) -> Dict:
+    def _extract_author_id(self, author_data) -> int:
         """
-        Expand author ID to full author registry object.
+        Extract author ID from author data (V6 Schema).
         
-        Replaces author.id with complete author metadata from registry.
+        Source Data Architecture:
+        - Materials.yaml etc.: Store authorId (numeric reference: 1-4)
+        - Export enriches to full author object for frontmatter
+        - Frontend uses full author object from frontmatter
+        
+        Args:
+            author_data: Either dict with 'id' key or direct int
+            
+        Returns:
+            Author ID (1-4)
         """
-        if not isinstance(author_data, dict):
-            return author_data
+        if isinstance(author_data, dict):
+            author_id = author_data.get('id')
+        elif isinstance(author_data, int):
+            author_id = author_data
+        else:
+            author_id = None
         
-        author_id = author_data.get('id')
         if not author_id:
-            return author_data
+            raise ValueError(f"Invalid author data: {author_data}. Must have 'id' field.")
         
-        # Look up full author data
-        if author_id not in self.authors:
-            logger.warning(f"  ⚠️  Author ID {author_id} not found in registry")
-            return author_data
-        
-        registry_author = self.authors[author_id]
-        
-        # Merge: registry data + any custom overrides in item
-        expanded = {**registry_author, **author_data}
-        
-        # Add author slug if not present
-        if 'name' in expanded and 'slug' not in expanded:
-            expanded['slug'] = expanded['name'].lower().replace(' ', '-')
-        
-        return expanded
+        return author_id
     
     def _add_timestamps(self, item_data: Dict) -> Dict:
         """Add datePublished and dateModified timestamps."""

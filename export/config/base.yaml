@@ -1,0 +1,51 @@
+# Base Export Configuration
+# Shared configuration for all domain exports
+# Referenced by: materials.yaml, contaminants.yaml, compounds.yaml, settings.yaml
+# Purpose: Eliminate configuration duplication (100% task duplication identified Feb 4, 2026)
+
+# Core Principle 0.6 Compliance (Jan 7, 2026): ✅ COMPLETE
+# ALL data enhancement tasks moved to source enrichment (scripts/enrichment/enrich_source_data.py)
+# Export now ONLY transforms format, adds ONLY export-time fields (dateModified, pageTitle)
+
+# Shared generator configurations
+base_generators:
+  # Universal content generator with standard tasks
+  - type: universal_content
+    module: export.generation.universal_content_generator
+    class: UniversalContentGenerator
+    tasks:
+      # Export-time metadata ONLY
+      - type: export_metadata
+        description: Add ONLY export-time fields (dateModified, pageTitle if missing)
+      
+      # Transform snake_case → camelCase for software metadata
+      - type: camelcase_normalization
+        description: Convert snake_case → camelCase for software metadata fields
+      
+      # Organize output structure (domain-specific, configured per domain)
+      - type: field_ordering
+        description: Organize output structure
+  
+  # Excerpt generator for creating micro content
+  - type: excerpt
+    module: shared.generation.excerpt_generator
+    class: ExcerptGenerator
+    mode: sentences
+    length: 2
+  
+  # Field order generator for consistency (must run last)
+  - type: field_order
+    module: export.generation.field_order_generator
+    class: FieldOrderGenerator
+    description: Normalize field order for consistency (must run last)
+
+# Standard fields (can be overridden by domain configs)
+standard_fields:
+  filename_suffix: ''
+  sluggify_filenames: true
+
+# Notes:
+# - Domain configs extend this base and override specific fields (source_file, output_path, etc.)
+# - field_ordering task requires domain parameter - set in domain config
+# - excerpt generator requires source_field/output_field - set in domain config
+# - All archived enrichers functionality moved to UniversalContentGenerator (Dec 29, 2025)

@@ -498,6 +498,7 @@ class DomainAdapter(DataSourceAdapter):
         # Component type → target field mapping
         FIELD_MAPPING = {
             'faq': 'operational.expert_answers',  # FAQ saves as expert_answers
+            'pageTitle': 'page_title',  # pageTitle component saves as page_title field
             # Add other mappings as needed
         }
         
@@ -1056,8 +1057,12 @@ class DomainAdapter(DataSourceAdapter):
         
         # 2. pageTitle (for frontend compatibility)
         if 'pageTitle' not in item_data:
-            # Use title if available, otherwise name
-            page_title = item_data.get('title') or item_data.get('name') or identifier.replace('-', ' ').title()
+            # First priority: Use SEO-generated page_title from SEO generators
+            if 'page_title' in item_data:
+                page_title = item_data['page_title']
+            # Fallback: Use title if available, otherwise name
+            else:
+                page_title = item_data.get('title') or item_data.get('name') or identifier.replace('-', ' ').title()
             item_data['pageTitle'] = page_title
             logger.debug(f"  + pageTitle: {page_title}")
         

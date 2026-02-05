@@ -36,6 +36,7 @@ Create SEO that answers user questions:
 1. page_title: "{context['material_name']}: [Key Technical Benefit] Laser Cleaning" (under 60 chars)
    - Include specific property (e.g., "High Reflectivity", "Damage-Free", "Precise Control")
    - Make it actionable and technical
+   - MUST end with exactly "Laser Cleaning" (no additional suffixes like "| Z-Beam")
 
 2. meta_description: (under 160 chars)
    - Start with "{context['material_name']} laser cleaning"
@@ -72,9 +73,10 @@ Technical Data:
 • Alternative methods: {context.get('alternatives', 'Chemical, abrasive, thermal')}
 
 Create SEO that answers user questions:
-1. page_title: "{context['contaminant_name']} Laser Removal: [Key Benefit]" (under 60 chars)
+1. page_title: "{context['contaminant_name']}: [Key Benefit] Contaminants" (under 60 chars)
    - Include removal efficacy term (e.g., "Complete", "Precision", "Safe", "Non-Abrasive")
    - Make it solution-focused
+   - MUST end with exactly "Contaminants"
 
 2. meta_description: (under 160 chars)
    - Start with "{context['contaminant_name']} laser removal"
@@ -113,9 +115,10 @@ Technical Data:
 • Common challenges: {context.get('challenges', 'Parameter optimization')}
 
 Create SEO that answers user questions:
-1. page_title: "{context['setting_name']}: [Power/Wavelength] Laser Settings" (under 60 chars)
+1. page_title: "{context['setting_name']}: [Power/Wavelength] Settings" (under 60 chars)
    - Include specific parameter range (e.g., "100-300W", "1064nm")
    - Make it parameter-focused
+   - MUST end with exactly "Settings"
 
 2. meta_description: (under 160 chars)
    - Start with "{context['setting_name']} laser settings"
@@ -154,9 +157,10 @@ Technical Data:
 • Safety protocols: {context.get('safety_protocols', 'Ventilation and monitoring required')}
 
 Create SEO that answers user questions:
-1. page_title: "{context['compound_name']}: [Safety/Hazard Term] Laser Cleaning" (under 60 chars)
+1. page_title: "{context['compound_name']}: [Safety/Hazard Term] Compound" (under 60 chars)
    - Include safety/hazard term (e.g., "Toxic Gas", "Exposure Risks", "Safety Protocols")
    - Make it safety-focused
+   - MUST end with exactly "Compound"
 
 2. meta_description: (under 160 chars)
    - Start with "{context['compound_name']} ({context.get('chemical_formula', '')})"
@@ -185,11 +189,6 @@ def get_prompt_for_domain(domain: str, context: Dict[str, str]) -> str:
         
     Raises:
         ValueError: If domain is not recognized
-    """
-        context: Domain-specific context data
-    
-    Returns:
-        Optimized prompt string for that domain
     """
     prompts = {
         'materials': get_materials_prompt,

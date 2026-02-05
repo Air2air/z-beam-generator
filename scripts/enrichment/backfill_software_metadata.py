@@ -65,7 +65,23 @@ class SoftwareMetadataBackfiller:
         }
     
     def generate_breadcrumbs(self, item_data: Dict[str, Any], domain: str) -> List[Dict[str, str]]:
-        """Generate breadcrumb navigation from category hierarchy."""
+        """
+        Generate breadcrumb navigation from category hierarchy.
+        
+        CRITICAL: URLs must use slugified categories/subcategories (hyphens not underscores).
+        Display labels can use proper titles.
+        """
+        # Import here to avoid path issues
+        import sys
+        from pathlib import Path
+        
+        # Add project root to path if not already present
+        project_root = Path(__file__).parent.parent.parent
+        if str(project_root) not in sys.path:
+            sys.path.insert(0, str(project_root))
+        
+        from export.utils.url_formatter import slugify
+        
         breadcrumbs = [{'label': 'Home', 'href': '/'}]
         
         # Add domain breadcrumb
@@ -83,29 +99,51 @@ class SoftwareMetadataBackfiller:
         # Add category breadcrumb
         if item_data.get('category'):
             category = item_data['category']
+            # Slugify URL: toxic_gas → toxic-gas
+            category_slug = slugify(category)
             breadcrumbs.append({
-                'label': category.replace('-', ' ').title(),
-                'href': f'/{domain}/{category}'
+                'label': category.replace('_', ' ').replace('-', ' ').title(),
+                'href': f'/{domain}/{category_slug}'
             })
             
             # Add subcategory breadcrumb
             if item_data.get('subcategory'):
                 subcategory = item_data['subcategory']
+                # Slugify URL: acid_gas → acid-gas
+                subcategory_slug = slugify(subcategory)
                 breadcrumbs.append({
-                    'label': subcategory.replace('-', ' ').title(),
-                    'href': f'/{domain}/{category}/{subcategory}'
+                    'label': subcategory.replace('_', ' ').replace('-', ' ').title(),
+                    'href': f'/{domain}/{category_slug}/{subcategory_slug}'
                 })
         
         return breadcrumbs
     
     def generate_full_path(self, item_data: Dict[str, Any], domain: str) -> str:
-        """Generate fullPath from category hierarchy and ID."""
+        """
+        Generate fullPath from category hierarchy and ID.
+        
+        CRITICAL: Categories/subcategories with underscores (toxic_gas, corrosive_gas)
+        must be slugified to hyphens (toxic-gas, corrosive-gas) for Next.js URL compatibility.
+        """
+        # Import here to avoid path issues
+        import sys
+        from pathlib import Path
+        
+        # Add project root to path if not already present
+        project_root = Path(__file__).parent.parent.parent
+        if str(project_root) not in sys.path:
+            sys.path.insert(0, str(project_root))
+        
+        from export.utils.url_formatter import slugify
+        
         path_parts = [domain]
         
         if item_data.get('category'):
-            path_parts.append(item_data['category'])
+            # Slugify category: toxic_gas → toxic-gas, metal_fume → metal-fume
+            path_parts.append(slugify(item_data['category']))
         if item_data.get('subcategory'):
-            path_parts.append(item_data['subcategory'])
+            # Slugify subcategory: acid_gas → acid-gas, alkaline_gas → alkaline-gas
+            path_parts.append(slugify(item_data['subcategory']))
         path_parts.append(item_data['id'])
         
         return '/' + '/'.join(path_parts)
@@ -143,11 +181,12 @@ class SoftwareMetadataBackfiller:
             fields_added += 1
             print(f"  + schemaVersion: 5.0.0")
         
-        # 3. fullPath
-        if 'fullPath' not in item_data:
-            item_data['fullPath'] = self.generate_full_path(item_data, domain)
+        # 3. fullPath (ALWAYS regenerate for URL safety - fixes toxic_gas → toxic-gas)
+        old_path = item_data.get('fullPath')
+        item_data['fullPath'] = self.generate_full_path(item_data, domain)
+        if old_path != item_data['fullPath']:
             fields_added += 1
-            print(f"  + fullPath: {item_data['fullPath']}")
+            print(f"  ✏️  fullPath: {old_path} → {item_data['fullPath']}")
         
         # 4. pageTitle (for frontend compatibility)
         if 'pageTitle' not in item_data:
@@ -157,11 +196,12 @@ class SoftwareMetadataBackfiller:
             fields_added += 1
             print(f"  + pageTitle: {page_title}")
         
-        # 5. breadcrumb
-        if 'breadcrumb' not in item_data:
-            item_data['breadcrumb'] = self.generate_breadcrumbs(item_data, domain)
+        # 5. breadcrumb (ALWAYS regenerate for URL safety - fixes toxic_gas → toxic-gas)
+        old_breadcrumb = item_data.get('breadcrumb')
+        item_data['breadcrumb'] = self.generate_breadcrumbs(item_data, domain)
+        if old_breadcrumb != item_data['breadcrumb']:
             fields_added += 1
-            print(f"  + breadcrumb: {len(item_data['breadcrumb'])} levels")
+            print(f"  ✏️  breadcrumb: {len(item_data['breadcrumb'])} levels (URLs updated)")
         
         # 6. pageDescription
         if 'pageDescription' not in item_data:

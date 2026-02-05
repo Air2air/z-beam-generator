@@ -190,13 +190,8 @@ class SEOMetadataGenerator(BaseGenerator):
         # Get removal targets (from description or common contaminants)
         removal_target = self._infer_removal_target(name, frontmatter)
         
-        # Build title: "{Material} Settings: {Wavelength}nm {Target}"
-        if wavelength:
-            title = f"{name} Settings: {wavelength}nm {removal_target}"
-        elif power_min and power_max:
-            title = f"{name} Settings: {power_min}-{power_max}W {removal_target}"
-        else:
-            title = f"{name} Settings: Laser Parameters"
+        # Build title: "{Material} Settings"
+        title = f"{name} Settings"
         
         # Build description
         description = self._build_settings_description(
@@ -215,8 +210,8 @@ class SEOMetadataGenerator(BaseGenerator):
         # Infer key benefit based on contaminant type
         benefit = self._infer_contaminant_benefit(name, category)
         
-        # Build title: "{Contaminant} Removal: {Method} {Benefit}"
-        title = f"{name} Removal: Laser Ablation {benefit}"
+        # Build title: "{Contaminant} Contaminants"
+        title = f"{name} Contaminants"
         
         # Build description
         description = self._build_contaminant_description(name, category, benefit)
@@ -236,8 +231,8 @@ class SEOMetadataGenerator(BaseGenerator):
         # Infer hazard type from hazard_class
         hazard_type = self._infer_hazard_type(hazard_class, name)
         
-        # Build title: "{Compound}: {Hazard Type} {Formation}"
-        title = f"{name}: {hazard_type}"
+        # Build title: "{Compound} Compound"
+        title = f"{name} Compound"
         
         # Build description
         description = self._build_compound_description(name, hazard_class, hazard_type, cas_number)
