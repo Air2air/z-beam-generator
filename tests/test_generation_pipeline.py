@@ -226,7 +226,7 @@ class TestDataFlowIntegrity:
     """Test data flows correctly through pipeline"""
     
     def test_generator_has_enricher(self):
-        """Verify Generator has DataEnricher"""
+        """Verify Generator has DataProvider"""
         mock_api = Mock()
         generator = Generator(mock_api, domain='materials')
         

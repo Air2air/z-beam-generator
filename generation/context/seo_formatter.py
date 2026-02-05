@@ -1,10 +1,10 @@
 """
-SEO Data Enricher
+SEO Context Formatter
 
-Extracts and formats material data for SEO prompt templates.
+Formats material data for SEO prompt templates.
 Provides all the context needed to generate spec-compliant page titles and meta descriptions.
 
-The enricher extracts:
+The formatter extracts:
 - Material properties (reflectivity, absorption, thermal conductivity, etc.)
 - Laser interaction characteristics (wavelength, power range, challenges)
 - Common contaminants
@@ -12,7 +12,7 @@ The enricher extracts:
 - Machine settings summary
 
 Data flows:
-  Materials.yaml → SEODataEnricher → Formatted context dict → SEO prompt template
+  Materials.yaml → SEOContextFormatter → Formatted context dict → SEO prompt template
 """
 
 from typing import Dict, Any, List, Optional
@@ -21,8 +21,8 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class SEODataEnricher:
-    """Extract and format material data for SEO generation."""
+class SEOContextFormatter:
+    """Formats material data for SEO generation."""
     
     @staticmethod
     def enrich_material_for_seo(item_data: Dict[str, Any], identifier: str) -> Dict[str, str]:
@@ -63,7 +63,7 @@ class SEODataEnricher:
         density = all_props.get('density', {}).get('value', 'N/A')
         
         # Format properties context using all flattened properties
-        properties_context = SEODataEnricher._format_properties_list(all_props)
+        properties_context = SEOContextFormatter._format_properties_list(all_props)
         
         # Extract laser characteristics from flattened properties
         wavelength = all_props.get('optimal_wavelength', {})
@@ -86,18 +86,18 @@ class SEODataEnricher:
         primary_challenge = all_props.get('primary_challenge', 'Material-specific laser interaction challenges')
         damage_risk = all_props.get('damage_risk', 'Thermal damage, surface integrity risks')
         
-        laser_context = SEODataEnricher._format_laser_context(all_props)
+        laser_context = SEOContextFormatter._format_laser_context(all_props)
         
         # Extract contaminants
         contaminants = item_data.get('common_contaminants', [])
-        contaminants_list = SEODataEnricher._format_contaminants_list(contaminants)
+        contaminants_list = SEOContextFormatter._format_contaminants_list(contaminants)
         
         # Extract applications
         applications = item_data.get('applications', [])
-        applications_list = SEODataEnricher._format_applications_list(applications)
+        applications_list = SEOContextFormatter._format_applications_list(applications)
         
         # Settings summary
-        settings_context = SEODataEnricher._format_settings_summary(item_data)
+        settings_context = SEOContextFormatter._format_settings_summary(item_data)
         
         return {
             'material_name': material_name,

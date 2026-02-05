@@ -1,7 +1,7 @@
 """
-Material Data Enrichment
+Material Data Context Provider
 
-Fetches real-world facts about materials to ground AI generation in reality.
+Provides real-world facts about materials to ground AI generation in reality.
 Reduces generic, AI-like descriptions by injecting specific, verifiable data.
 """
 
@@ -15,9 +15,9 @@ from shared.utils.file_io import read_yaml_file
 logger = logging.getLogger(__name__)
 
 
-class DataEnricher:
+class DataProvider:
     """
-    Enriches material context with real data from Materials.yaml.
+    Provides material context data from Materials.yaml.
     
     Uses existing material database instead of web search to ensure
     accuracy and avoid external API dependencies.
@@ -25,7 +25,7 @@ class DataEnricher:
     
     def __init__(self, materials_path: Optional[Path] = None):
         """
-        Initialize enricher.
+        Initialize data provider.
         
         Args:
             materials_path: Path to Materials.yaml (default: data/materials/Materials.yaml)

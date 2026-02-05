@@ -436,7 +436,7 @@ class DomainAdapter(DataSourceAdapter):
         # GENERATION-TIME ENRICHMENT (Jan 5, 2026): Add ALL metadata at generation time
         # Complies with Core Principle 0.6: "No Build-Time Data Enhancement"
         logger.info(f"🔧 Enriching {identifier} with generation-time metadata...")
-        from generation.enrichment.generation_time_enricher import enrich_for_generation
+        from generation.context.generation_metadata import enrich_for_generation
         items[identifier] = enrich_for_generation(items[identifier], identifier, self.domain)
         logger.info(f"✅ Generation-time enrichment complete for {identifier}")
         

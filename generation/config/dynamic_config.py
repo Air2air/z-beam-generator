@@ -451,7 +451,7 @@ class DynamicConfig:
     
     def calculate_enrichment_params(self) -> Dict[str, Any]:
         """
-        Calculate all parameters for DataEnricher fact formatting.
+        Calculate all parameters for DataProvider fact formatting.
         Uses 1-10 scale normalized to 0.0-1.0 (consistent with voice params)
         
         Returns:

@@ -8,7 +8,7 @@ Tests cover:
 - DomainContext  
 - PromptBuilder
 - AuthorVoiceStore
-- DataEnricher
+- DataProvider
 - AIDetectorEnsemble
 - ReadabilityValidator
 - Integration workflows

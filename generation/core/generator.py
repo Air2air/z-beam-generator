@@ -72,9 +72,9 @@ class Generator:
         else:
             self.adapter = adapter
         
-        # Initialize enricher for real facts
-        from generation.enrichment.data_enricher import DataEnricher
-        self.enricher = DataEnricher()
+        # Initialize data provider for real facts
+        from generation.context.data_provider import DataProvider
+        self.data_provider = DataProvider()
         
         # Initialize research capabilities (NEW - Dec 11, 2025)
         from shared.text.research import SystemDataResearcher
@@ -228,13 +228,13 @@ class Generator:
         # Load item data using domain adapter
         item_data = self._get_item_data(identifier)
         
-        # Enrich with SEO-specific data if generating SEO components
+        # Format with SEO-specific data if generating SEO components
         if component_type in ['page_title', 'meta_description']:
             print(f"🔍 SEO component detected: {component_type}")
             self.logger.info(f"🔍 SEO component detected: {component_type}")
-            from generation.enrichment.seo_data_enricher import SEODataEnricher
+            from generation.context.seo_formatter import SEOContextFormatter
             try:
-                seo_context = SEODataEnricher.enrich_material_for_seo(item_data, identifier)
+                seo_context = SEOContextFormatter.enrich_material_for_seo(item_data, identifier)
                 # Merge SEO context into item_data
                 item_data.update(seo_context)
                 print(f"📊 Enriched with SEO context ({len(seo_context)} fields)")

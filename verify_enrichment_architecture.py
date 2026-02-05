@@ -31,7 +31,7 @@ else:
 
 # 2. Verify enricher reads from source
 print('\n2️⃣ DataEnricher Read Test:')
-from generation.enrichment.data_enricher import DataEnricher
+from generation.context.data_provider import DataProvider
 enricher = DataEnricher()
 facts = enricher.fetch_real_facts(
     'aluminum-laser-cleaning',

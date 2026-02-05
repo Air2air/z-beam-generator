@@ -1,7 +1,7 @@
 """
-Generation-Time Data Enricher
+Generation-Time Metadata Provider
 
-Enriches data at the moment it's generated and saved to source YAML files.
+Adds metadata at the moment data is generated and saved to source YAML files.
 Complies with Core Principle 0.6: "No Build-Time Data Enhancement"
 
 This module adds ALL metadata that was previously added during export:
@@ -16,7 +16,7 @@ ARCHITECTURE:
 - No fallbacks - fails fast if required data missing
 
 Usage:
-    from generation.enrichment.generation_time_enricher import enrich_for_generation
+    from generation.context.generation_metadata import enrich_for_generation
     
     item_data = {...}  # Incomplete data
     enrich_for_generation(item_data, identifier, domain)
@@ -32,11 +32,11 @@ from typing import Dict, Any
 logger = logging.getLogger(__name__)
 
 
-class GenerationTimeEnricher:
-    """Enriches data during generation, not at export time."""
+class GenerationMetadata:
+    """Provides generation-time metadata, not at export time."""
     
     def __init__(self):
-        """Initialize enricher with author registry."""
+        """Initialize metadata provider with author registry."""
         self.authors = self._load_authors()
         
     def _load_authors(self) -> Dict:
@@ -168,20 +168,20 @@ class GenerationTimeEnricher:
 
 
 # Singleton instance
-_enricher = None
+_metadata_provider = None
 
 
-def get_enricher() -> GenerationTimeEnricher:
-    """Get singleton enricher instance."""
-    global _enricher
-    if _enricher is None:
-        _enricher = GenerationTimeEnricher()
-    return _enricher
+def get_metadata_provider() -> GenerationMetadata:
+    """Get singleton metadata provider instance."""
+    global _metadata_provider
+    if _metadata_provider is None:
+        _metadata_provider = GenerationMetadata()
+    return _metadata_provider
 
 
 def enrich_for_generation(item_data: Dict[str, Any], identifier: str, domain: str) -> Dict[str, Any]:
     """
-    Convenience function to enrich data at generation time.
+    Convenience function to add generation-time metadata.
     
     Args:
         item_data: Item data dict (modified in-place)
@@ -189,7 +189,7 @@ def enrich_for_generation(item_data: Dict[str, Any], identifier: str, domain: st
         domain: Domain name
         
     Returns:
-        Enriched item_data (same object)
+        Enhanced item_data (same object)
     """
-    enricher = get_enricher()
-    return enricher.enrich(item_data, identifier, domain)
+    provider = get_metadata_provider()
+    return provider.enrich(item_data, identifier, domain)
