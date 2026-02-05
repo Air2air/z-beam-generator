@@ -32,282 +32,174 @@
 
 
 # =============================================================================
-# BASE FIELDS (Shared by All Domains)
+# UNIFIED BASE SCHEMA (Shared by All Domains)
 # =============================================================================
-# These fields appear at the top of every domain's frontmatter in this order.
-# Individual domains may add additional fields to section 1 (Identity).
+# Core fields that appear in standardized order across all domain frontmatter.
+# This unified schema normalizes the appearance of shared data.
+# 
+# UNIVERSAL FIELDS (appear in ALL 4 domains):
+#   - id, name, breadcrumb (confirmed via cross-domain analysis)
+#
+# NEAR-UNIVERSAL FIELDS (appear in 3-4 domains):
+#   - displayName, category, subcategory, datePublished, dateModified,
+#     contentType, schemaVersion, fullPath, pageTitle, pageDescription, metaDescription
+#
+# DOMAIN EXTENSIONS:
+#   - Each domain can extend identity_base and technical_properties sections
+#   - Domain-specific fields are appended after base schema
 # =============================================================================
 
 base_fields:
   # ─────────────────────────────────────────────────────
-  # Priority 1: CRITICAL ROUTING (First 10 lines)
+  # TIER 1: UNIVERSAL IDENTITY (First 5 lines - ALL domains)
   # ─────────────────────────────────────────────────────
-  identity_base:
+  universal_core:
     - id
     - name
+  
+  # TIER 2: COMMON IDENTITY (Lines 6-10 - Most domains)  
+  identity_extensions:
     - displayName
     - category
     - subcategory
   
-  # Still in Priority 1 (must complete first 10 lines)
-  page_metadata:
+  # TIER 3: SYSTEM METADATA (Lines 11-15 - Standard across domains)
+  system_metadata:
     - datePublished
     - dateModified
     - contentType
     - schemaVersion
   
   # ─────────────────────────────────────────────────────
-  # Priority 2: NAVIGATION & SEO (Lines 11-30)
+  # TIER 4: NAVIGATION & ROUTING (Lines 16-20)
   # ─────────────────────────────────────────────────────
-  navigation:
+  navigation_core:
     - fullPath
     - breadcrumb
   
+  # TIER 5: SEO STANDARDIZATION (Lines 21-25)
   seo_metadata:
     - pageTitle
     - pageDescription
     - metaDescription
   
   # ─────────────────────────────────────────────────────
-  # 5. CONTENT FIELDS (Commonly Used)
-  # ─────────────────────────────────────────────────────
-  # Note: 'micro' appears in most domains (not compounds)
-  content_common:
-    - micro
-  Priority 4: CONTENT FIELDS (After technical properties)
+  # TIER 6: CONTENT STANDARDIZATION (Lines 26-30)
   # ─────────────────────────────────────────────────────
   content_common:
     - micro
   
   # ─────────────────────────────────────────────────────
-  # Priority 5: MEDIA ASSETS (After content)
+  # TIER 7: MEDIA ASSETS (After content)
   # ─────────────────────────────────────────────────────
-  media:
+  media_standard:
     - images
   
   # ─────────────────────────────────────────────────────
-  # Priority 6: RELATIONSHIPS (After images)
+  # TIER 8: RELATIONSHIPS & CONNECTIONS (After images)
   # ─────────────────────────────────────────────────────
-  relationships:
+  relationships_standard:
     - relationships
   
   # ─────────────────────────────────────────────────────
-  # Priority 7: COMPLEX OBJECTS (End of file)
+  # TIER 9: AUTHOR & METADATA (End of file)
   # ─────────────────────────────────────────────────────
-  author_info:
+  author_standard:
     - author
   
-  card_metadata:
+  card_standard:
+    - card
+
+# =============================================================================
+# DOMAIN-SPECIFIC EXTENSIONS
+# =============================================================================
+# Each domain extends the base schema with specialized fields.
+# The universal base fields ensure consistent data appearance across domains.
+# =============================================================================
     - card
 
 # =============================================================================
 # MATERIALS DOMAIN
 # =============================================================================
 materials:
-  field_order:
-    # ─────────────────────────────────────────────────────
-    # SECTION 1: CORE IDENTIFICATION (Lines 1-10)
-    # ─────────────────────────────────────────────────────
-    - id
-    - name
-    - displayName
-    - category
-    - subcategory
+  # Uses unified base schema + domain-specific extensions
+  base_schema: true
+  
+  # Domain-specific extensions to base tiers
+  extensions:
+    # Adds after identity_extensions (category, subcategory)
+    identity_additions:
+      - formula          # Chemical formula (if applicable)
+      - melting_point    # Physical property
     
-    # ─────────────────────────────────────────────────────
-    # SECTION 2: CONTENT METADATA (Lines 11-20)
-    # ─────────────────────────────────────────────────────
-    - contentType
-    - schemaVersion
-    - datePublished
-    - dateModified
-    - fullPath
+    # Adds after content_common (micro)
+    content_additions:
+      - description      # Long-form content
+      - properties       # Technical properties  
+      - faq             # Frequently asked questions
     
-    # ─────────────────────────────────────────────────────
-    # SECTION 3: SEO & PAGE PRESENTATION (Lines 21-35)
-    # ─────────────────────────────────────────────────────
-    - pageTitle
-    - metaDescription
-    - card
-    
-    # ─────────────────────────────────────────────────────
-    # SECTION 4: AUTHOR & EXPERTISE (Lines 36-60)
-    # ─────────────────────────────────────────────────────
-    - author
-    - eeat
-    
-    # ─────────────────────────────────────────────────────
-    # SECTION 5: MEDIA ASSETS (Lines 61-75)
-    # ─────────────────────────────────────────────────────
-    - images
-    
-    # ─────────────────────────────────────────────────────
-    # SECTION 6: CONTENT COMPONENTS (Lines 76-150)
-    # ─────────────────────────────────────────────────────
-    - components
-    - properties
-    - faq
-    
-    # ─────────────────────────────────────────────────────
-    # SECTION 7: RELATIONSHIPS (Lines 151-650)
-    # ─────────────────────────────────────────────────────
-    - relationships
-    
-    # ─────────────────────────────────────────────────────
-    # SECTION 8: TAXONOMY - Optional/Legacy (Lines 651-680)
-    # ─────────────────────────────────────────────────────
-    - contamination
+    # Specialized sections (after base tiers)
+    domain_sections:
+      - components       # Material components
+      - contamination    # Legacy contamination data
+      - eeat            # Expertise signals
   
   required_fields:
-    - id
-    - name
     - category
-    - contentType
-    - schemaVersion
-    - author
+    - formula
 
 # =============================================================================
 # CONTAMINANTS DOMAIN
 # =============================================================================
 contaminants:
-  field_order:
-    # ─────────────────────────────────────────────────────
-    # 1. IDENTITY & CLASSIFICATION
-    # ─────────────────────────────────────────────────────
-    - id
-    - name
-    - category
+  base_schema: true
+  extensions:
+    identity_additions:
+      - category
     
-    # ─────────────────────────────────────────────────────
-    # 2. PAGE METADATA
-    # ─────────────────────────────────────────────────────
-    - datePublished
-    - dateModified
-    - contentType
-    - schemaVersion
-    
-    # ─────────────────────────────────────────────────────
-    # 3. NAVIGATION
-    # ─────────────────────────────────────────────────────
-    - fullPath
-    - breadcrumb
-    
-    # ─────────────────────────────────────────────────────
-    # 4. SEO METADATA
-    # ─────────────────────────────────────────────────────
-    - pageTitle
-    - pageDescription
-    - metaDescription
-    
-    # ─────────────────────────────────────────────────────
-    # 5. CONTENT FIELDS
-    # ─────────────────────────────────────────────────────
-    - micro
-    
-    # ─────────────────────────────────────────────────────
-    # 6. IMAGES & MEDIA
-    # ─────────────────────────────────────────────────────
-    - images
-    
-    # ─────────────────────────────────────────────────────
-    # 7. AUTHOR
-    # ─────────────────────────────────────────────────────
-    - author
-    
-    # ─────────────────────────────────────────────────────
-    # 8. DOMAIN-SPECIFIC FIELDS
-    # ─────────────────────────────────────────────────────
-    - contamination_type
-    - removal_difficulty
-    - health_hazards
-    - detection_methods
-    - affected_materials
-    
-    # ─────────────────────────────────────────────────────
-    # 9. CARD DISPLAY METADATA
-    # ─────────────────────────────────────────────────────
-    - card
-    
-    # ─────────────────────────────────────────────────────
-    # 10. RELATIONSHIPS
-    # ─────────────────────────────────────────────────────
-    - relationships
+    domain_sections:
+      - contamination_type
+      - removal_difficulty
+      - health_hazards
+      - detection_methods
+      - affected_materials
   
   required_fields:
-    - id
-    - name
     - category
-    - contentType
 
 # =============================================================================
 # COMPOUNDS DOMAIN
 # =============================================================================
 compounds:
-  field_order:
-    # ─────────────────────────────────────────────────────
-    # 1. IDENTITY & CLASSIFICATION
-    # ─────────────────────────────────────────────────────
-    - id
-    - name
-    - displayName
-    - category
-    - subcategory
-    - hazard_class
+  base_schema: true
+  extensions:
+    identity_additions:
+      - category
+      - subcategory
+      - hazard_class
     
-    # ─────────────────────────────────────────────────────
-    # 2. PAGE METADATA
-    # ─────────────────────────────────────────────────────
-    - datePublished
-    - dateModified
-    - contentType
-    - schemaVersion
+    content_additions:
+      - health_effects
+      - exposure_guidelines
+      - detection_methods
+      - first_aid
     
-    # ─────────────────────────────────────────────────────
-    # 3. NAVIGATION
-    # ─────────────────────────────────────────────────────
-    - fullPath
-    - breadcrumb
-    
-    # ─────────────────────────────────────────────────────
-    # 4. SEO METADATA
-    # ─────────────────────────────────────────────────────
-    - pageTitle
-    - pageDescription
-    - metaDescription
-    
-    # ─────────────────────────────────────────────────────
-    # 5. CHEMICAL IDENTIFIERS
-    # ─────────────────────────────────────────────────────
+    domain_sections:
+      # Chemical Identifiers
+      - chemical_formula
+      - cas_number
+      - molecular_weight
+      
+      # Exposure Data
+      - exposure_limits
+      - health_effects_keywords
+      - monitoring_required
+      - typical_concentration_range
+      - sources_in_laser_cleaning
+  
+  required_fields:
     - chemical_formula
-    - cas_number
-    - molecular_weight
-    
-    # ─────────────────────────────────────────────────────
-    # 5. CONTENT FIELDS
-    # ─────────────────────────────────────────────────────
-    - health_effects
-    - exposure_guidelines
-    - detection_methods
-    - first_aid
-    
-    # ─────────────────────────────────────────────────────
-    # 6. IMAGES & MEDIA
-    # ─────────────────────────────────────────────────────
-    - images
-    
-    # ─────────────────────────────────────────────────────
-    # 7. AUTHOR
-    # ─────────────────────────────────────────────────────
-    - author
-    
-    # ─────────────────────────────────────────────────────
-    # 8. EXPOSURE DATA
-    # ─────────────────────────────────────────────────────
-    - exposure_limits
-    - health_effects_keywords
-    - monitoring_required
-    - typical_concentration_range
-    - sources_in_laser_cleaning
+    - category
     
     # ─────────────────────────────────────────────────────
     # 9. CARD DISPLAY METADATA
@@ -329,80 +221,30 @@ compounds:
 # =============================================================================
 # SETTINGS DOMAIN
 # =============================================================================
+# =============================================================================
+# SETTINGS DOMAIN
+# =============================================================================
 settings:
-  field_order:
-    # ─────────────────────────────────────────────────────
-    # 1. IDENTITY & CLASSIFICATION
-    # ─────────────────────────────────────────────────────
-    - id
-    - name
-    - displayName
-    - category
-    - subcategory
+  base_schema: true
+  extensions:
+    identity_additions:
+      - category
+      - subcategory
     
-    # ─────────────────────────────────────────────────────
-    # 2. PAGE METADATA
-    # ─────────────────────────────────────────────────────
-    - datePublished
-    - dateModified
-    - contentType
-    - schemaVersion
+    content_additions:
+      - faq  # Settings has FAQ in addition to micro
     
-    # ─────────────────────────────────────────────────────
-    # 3. NAVIGATION
-    # ─────────────────────────────────────────────────────
-    - fullPath
-    - breadcrumb
-    
-    # ─────────────────────────────────────────────────────
-    # 4. SEO METADATA
-    # ─────────────────────────────────────────────────────
-    - pageTitle
-    - pageDescription
-    - metaDescription
-    
-    # ─────────────────────────────────────────────────────
-    # 5. CONTENT
-    # ─────────────────────────────────────────────────────
-    - micro
-    - faq
-    
-    # ─────────────────────────────────────────────────────
-    # 6. IMAGES & MEDIA
-    # ─────────────────────────────────────────────────────
-    - images
-    
-    # ─────────────────────────────────────────────────────
-    # 7. AUTHOR INFORMATION
-    # ─────────────────────────────────────────────────────
-    - author
-    
-    # ─────────────────────────────────────────────────────
-    # 8. MACHINE SETTINGS (domain-specific)
-    # ─────────────────────────────────────────────────────
-    - laser_type
-    - power_range
-    - pulse_duration
-    - wavelength
-    - application
-    
-    # ─────────────────────────────────────────────────────
-    # 9. CARD DISPLAY METADATA
-    # ─────────────────────────────────────────────────────
-    - card
-    
-    # ─────────────────────────────────────────────────────
-    # 10. RELATIONSHIPS (Last Section - includes machine_settings)
-    # ─────────────────────────────────────────────────────
-    - relationships
+    domain_sections:
+      # Machine Settings
+      - laser_type
+      - power_range
+      - pulse_duration
+      - wavelength
+      - application
   
   required_fields:
-    - id
-    - name
     - category
     - wavelength
-    - relationships
-    - author
     - type
     - domain
 

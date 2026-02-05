@@ -430,7 +430,7 @@ class FrontmatterExporter:
         # Add id field (per FRONTMATTER_FORMATTING_GUIDE.md - should be first field)
         frontmatter['id'] = item_id
         
-        # NOTE: schemaVersion, contentType, pageTitle, metaDescription, fullPath
+        # NOTE: schemaVersion, contentType, pageTitle, pageDescription, fullPath
         # are now required in source data (Core Principle 0.6: No Build-Time Data Enhancement)
         # Do NOT add defaults here - source data must be complete
         

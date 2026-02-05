@@ -64,7 +64,53 @@ class FrontmatterFieldOrderValidator:
             self.load_schema()
         
         domain_spec = self.schema.get(domain, {})
+        
+        # NEW: Support unified base schema architecture
+        if domain_spec.get('base_schema', False):
+            return self._build_unified_field_order(domain, domain_spec)
+        
+        # Legacy: Direct field_order list
         return domain_spec.get('field_order', [])
+    
+    def _build_unified_field_order(self, domain: str, domain_spec: Dict) -> List[str]:
+        """Build field order from base schema + domain extensions"""
+        if not self.schema:
+            self.load_schema()
+            
+        base_fields = self.schema.get('base_fields', {})
+        extensions = domain_spec.get('extensions', {})
+        
+        # Build unified order following tier hierarchy
+        field_order = []
+        
+        # TIER 1-2: Universal + Common Identity
+        field_order.extend(base_fields.get('universal_core', []))
+        field_order.extend(base_fields.get('identity_extensions', []))
+        
+        # Add domain-specific identity additions
+        field_order.extend(extensions.get('identity_additions', []))
+        
+        # TIER 3: System Metadata
+        field_order.extend(base_fields.get('system_metadata', []))
+        
+        # TIER 4-5: Navigation & SEO
+        field_order.extend(base_fields.get('navigation_core', []))
+        field_order.extend(base_fields.get('seo_metadata', []))
+        
+        # TIER 6: Content
+        field_order.extend(base_fields.get('content_common', []))
+        field_order.extend(extensions.get('content_additions', []))
+        
+        # TIER 7-9: Media, Relationships, Author
+        field_order.extend(base_fields.get('media_standard', []))
+        field_order.extend(base_fields.get('relationships_standard', []))
+        field_order.extend(base_fields.get('author_standard', []))
+        field_order.extend(base_fields.get('card_standard', []))
+        
+        # Domain-specific sections
+        field_order.extend(extensions.get('domain_sections', []))
+        
+        return field_order
     
     def get_required_fields(self, domain: str) -> Set[str]:
         """Get required fields for a domain"""
@@ -72,7 +118,14 @@ class FrontmatterFieldOrderValidator:
             self.load_schema()
         
         domain_spec = self.schema.get(domain, {})
-        return set(domain_spec.get('required_fields', []))
+        
+        # Default required fields from base schema
+        base_required = {'id', 'name', 'contentType', 'schemaVersion'}
+        
+        # Add domain-specific required fields
+        domain_required = set(domain_spec.get('required_fields', []))
+        
+        return base_required.union(domain_required)
     
     def validate_field_order(self, data: Dict, domain: str) -> Tuple[bool, List[str]]:
         """

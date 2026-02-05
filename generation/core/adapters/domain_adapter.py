@@ -1028,7 +1028,7 @@ class DomainAdapter(DataSourceAdapter):
         - fullPath: Generated from category/subcategory/id
         - pageTitle: Page title for frontend (from title or name)
         - breadcrumb: Navigation hierarchy array
-        - metaDescription: SEO description from micro/description
+        - pageDescription: SEO description from micro/description
         - dateModified: Current timestamp
         - datePublished: Preserved or current timestamp
         
@@ -1096,25 +1096,25 @@ class DomainAdapter(DataSourceAdapter):
             item_data['breadcrumb'] = breadcrumbs
             logger.debug(f"  + breadcrumb: {len(breadcrumbs)} levels")
         
-        # 4. metaDescription (from micro or description)
-        if 'metaDescription' not in item_data:
+        # 4. pageDescription (from micro or description)
+        if 'pageDescription' not in item_data:
             # Try micro.before first
             if isinstance(item_data.get('micro'), dict):
                 micro_text = item_data['micro'].get('before', '')
                 if micro_text:
-                    item_data['metaDescription'] = micro_text[:157] + '...' if len(micro_text) > 160 else micro_text
+                    item_data['pageDescription'] = micro_text[:157] + '...' if len(micro_text) > 160 else micro_text
             
             # Try description if no micro
-            if 'metaDescription' not in item_data and item_data.get('description'):
+            if 'pageDescription' not in item_data and item_data.get('description'):
                 desc = item_data['description']
-                item_data['metaDescription'] = desc[:157] + '...' if len(desc) > 160 else desc
+                item_data['pageDescription'] = desc[:157] + '...' if len(desc) > 160 else desc
             
             # Fallback: generic description
-            if 'metaDescription' not in item_data:
+            if 'pageDescription' not in item_data:
                 name = item_data.get('name', identifier)
-                item_data['metaDescription'] = f"{name} laser cleaning guide. Technical specifications and applications."
+                item_data['pageDescription'] = f"{name} laser cleaning guide. Technical specifications and applications."
             
-            logger.debug(f"  + metaDescription: {len(item_data['metaDescription'])} chars")
+            logger.debug(f"  + pageDescription: {len(item_data['pageDescription'])} chars")
         
         # 5. datePublished (preserve existing or use current)
         if 'datePublished' not in item_data:

@@ -12,7 +12,7 @@ FIELDS ADDED:
 - pageTitle: Page title for frontend (from title or name)
 - fullPath: '/materials/metal/aluminum-laser-cleaning'
 - breadcrumb: [{label, href}, ...]
-- metaDescription: Generated from micro/description
+- pageDescription: Generated from micro/description
 - datePublished: Preserved or current timestamp
 - dateModified: Current timestamp
 
@@ -110,8 +110,8 @@ class SoftwareMetadataBackfiller:
         
         return '/' + '/'.join(path_parts)
     
-    def generate_meta_description(self, item_data: Dict[str, Any]) -> str:
-        """Generate metaDescription from micro or description."""
+    def generate_page_description(self, item_data: Dict[str, Any]) -> str:
+        """Generate pageDescription from micro or description."""
         # Try micro.before first
         if isinstance(item_data.get('micro'), dict):
             micro_text = item_data['micro'].get('before', '')
@@ -163,11 +163,11 @@ class SoftwareMetadataBackfiller:
             fields_added += 1
             print(f"  + breadcrumb: {len(item_data['breadcrumb'])} levels")
         
-        # 5. metaDescription
-        if 'metaDescription' not in item_data:
-            item_data['metaDescription'] = self.generate_meta_description(item_data)
+        # 6. pageDescription
+        if 'pageDescription' not in item_data:
+            item_data['pageDescription'] = self.generate_page_description(item_data)
             fields_added += 1
-            print(f"  + metaDescription: {len(item_data['metaDescription'])} chars")
+            print(f"  + pageDescription: {len(item_data['pageDescription'])} chars")
         
         # 6. datePublished (preserve existing or use current)
         if 'datePublished' not in item_data:
