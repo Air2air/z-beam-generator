@@ -174,7 +174,7 @@ pytest tests/domains/materials/image/test_shared_prompt_builder.py::TestGenerati
 
 ### Run with Coverage
 ```bash
-pytest tests/domains/materials/image/ --cov=domains.materials.image.prompts --cov-report=html
+pytest tests/domains/materials/image/ --cov=domains.materials.image.research --cov-report=html
 ```
 
 ---

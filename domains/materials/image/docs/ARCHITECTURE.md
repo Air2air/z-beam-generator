@@ -152,25 +152,25 @@ if config is None:
 
 ---
 
-### 2. **CategoryContaminationResearcher** (Research Engine)
+### 2. **ContaminationPatternSelector** (Pattern Selection Engine)
 
-**File**: `prompts/category_contamination_researcher.py`
+**File**: `research/contamination_pattern_selector.py`
 
 **Responsibilities**:
-- Map materials to categories (wood_hardwood, metals_ferrous, etc.)
-- Research contamination AND aging patterns via Gemini 2.0 Flash
-- Cache results at category level (reusable across materials)
-- Return comprehensive pattern data (11 dimensions)
+- Map materials to categories (metal, wood, polymer, etc.)
+- Select contamination and aging patterns from `Contaminants.yaml`
+- Apply compatibility rules and material-specific filtering
+- Return appearance-rich pattern data for prompt assembly
 
 **Category Mapping**:
 ```python
-CATEGORY_MAP = {
-    "Oak": "wood_hardwood",
-    "Maple": "wood_hardwood",
-    "Steel": "metals_ferrous",
-    "Iron": "metals_ferrous",
-    "Aluminum": "metals_non_ferrous",
-    "Copper": "metals_non_ferrous",
+MATERIAL_CATEGORIES = {
+    "oak": "wood",
+    "maple": "wood",
+    "steel": "metal",
+    "iron": "metal",
+    "aluminum": "metal",
+    "copper": "metal",
     # ... etc
 }
 ```
@@ -188,11 +188,11 @@ CATEGORY_MAP = {
 10. Prevalence & frequency
 11. Realism red flags
 
-**LRU Cache**:
+**Cache Strategy**:
 ```python
-@lru_cache(maxsize=32)
-def research_category_contamination(category: str):
-    """Cache at category level - reusable across materials"""
+# Lazy-loaded cached YAML data in selector instance
+selector = ContaminationPatternSelector()
+patterns = selector.get_patterns_for_image_gen("Oak")
 ```
 
 **Material-Specific Priorities**:
@@ -205,7 +205,7 @@ def research_category_contamination(category: str):
 
 ### 3. **Prompt Builder** (Template System)
 
-**File**: `prompts/material_prompts.py`
+**File**: `research/material_prompts.py`
 
 **Responsibilities**:
 - Load ultra-concise base template (600 chars)

@@ -185,20 +185,20 @@ After: "Steel Steel object. Industrial oil buildup: dark brown, glossy.
    - Enforced explicit config requirement
    - Fail-fast on research failures
 
-2. `domains/materials/image/prompts/category_contamination_researcher.py`
-   - Added wood categories (hardwood, softwood, engineered)
-   - Removed _get_fallback_category_data() method
-   - Enhanced photo reference requirements
+2. `domains/materials/image/research/contamination_pattern_selector.py`
+   - Added category/material contamination selection refinements
+   - Removed fallback-style contamination selection paths
+   - Enhanced material compatibility handling
 
-3. `domains/materials/image/prompts/material_prompts.py`
+3. `domains/materials/image/research/material_prompts.py`
    - Simplified build_material_cleaning_prompt()
    - Added _build_concise_contamination_section()
    - Removed verbose research sections
 
-4. `domains/materials/image/prompts/base_prompt.txt`
-   - Ultra-concise template (600 chars base)
-   - Removed redundant explanations
-   - Kept critical instructions only
+4. `shared/image/utils/prompt_builder.py`
+   - Consolidated prompt assembly through shared builder
+   - Reduced redundant sections during composition
+   - Preserved critical realism instructions
 
 ---
 

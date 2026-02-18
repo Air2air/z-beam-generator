@@ -52,7 +52,7 @@ The PayloadMonitor provides:
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│         CategoryContaminationResearcher                    │
+│         ContaminationPatternSelector                        │
 │  ┌──────────────────────────────────────────────────────┐  │
 │  │  1. Build Prompt                                     │  │
 │  │     ↓                                                 │  │
@@ -92,7 +92,7 @@ The PayloadMonitor provides:
 ### Basic Integration
 
 ```python
-from domains.materials.image.prompts.payload_monitor import get_payload_monitor
+from domains.materials.image.research.payload_monitor import get_payload_monitor
 
 # Get global monitor instance
 monitor = get_payload_monitor()
@@ -403,7 +403,7 @@ Data survives system restarts and is loaded automatically on next use.
 Test the monitoring system:
 
 ```python
-from domains.materials.image.prompts.payload_monitor import get_payload_monitor
+from domains.materials.image.research.payload_monitor import get_payload_monitor
 
 monitor = get_payload_monitor()
 
@@ -445,6 +445,6 @@ print(monitor.get_monitoring_report())
 ## See Also
 
 - `image_pipeline_monitor.py` - Comprehensive pipeline monitoring
-- `category_contamination_researcher.py` - Full integration example
+- `contamination_pattern_selector.py` - Full integration example
 - `PIPELINE_MONITORING.md` - End-to-end monitoring documentation
 - `test_image_pipeline_monitoring.py` - Test suite

@@ -300,7 +300,7 @@ if not validation['valid']:
 
 ```python
 # Skip validation for quick testing
-from domains.materials.image.prompts.material_prompts import build_material_cleaning_prompt
+from domains.materials.image.research.material_prompts import build_material_cleaning_prompt
 
 prompt = build_material_cleaning_prompt(
     material_name="Oak",
@@ -316,7 +316,7 @@ prompt = build_material_cleaning_prompt(
 ### Inspect Validation Details
 
 ```python
-from domains.materials.image.prompts.material_prompts import validate_prompt
+from domains.materials.image.research.material_prompts import validate_prompt
 
 validation = validate_prompt(prompt, research_data)
 
@@ -330,13 +330,14 @@ print(f"Duplication: {validation['metrics']['duplication_score']}%")
 
 ```python
 # Check if category is cached
-from domains.materials.image.prompts.category_contamination_researcher import research_category_contamination
+from domains.materials.image.research.contamination_pattern_selector import ContaminationPatternSelector
 
-# This will use cache if available
-research = research_category_contamination("wood_hardwood")
+# This will use selector caching if available
+selector = ContaminationPatternSelector()
+research = selector.get_patterns_for_image_gen("Oak")
 
 # Force cache refresh (not recommended in production)
-research_category_contamination.cache_clear()
+selector._data = None
 ```
 
 ---

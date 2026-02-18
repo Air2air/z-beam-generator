@@ -12,7 +12,7 @@ Eliminate JSON parsing errors and provide comprehensive monitoring across the en
 ## 🚀 What Was Built
 
 ### 1. Progressive JSON Repair System
-**Location**: `domains/materials/image/prompts/category_contamination_researcher.py`
+**Location**: `domains/materials/image/research/contamination_pattern_selector.py`
 
 **3-Level Strategy**:
 - **Level 1 (Light)**: Trailing comma removal
@@ -24,7 +24,7 @@ Eliminate JSON parsing errors and provide comprehensive monitoring across the en
 ---
 
 ### 2. JSON Payload Monitoring System
-**Location**: `domains/materials/image/prompts/payload_monitor.py`
+**Location**: `domains/materials/image/research/payload_monitor.py`
 
 **Features**:
 - ✅ Success/failure rate tracking (rolling 100-attempt window)
@@ -44,7 +44,7 @@ Eliminate JSON parsing errors and provide comprehensive monitoring across the en
 ---
 
 ### 3. Comprehensive Pipeline Monitoring System
-**Location**: `domains/materials/image/prompts/image_pipeline_monitor.py`
+**Location**: `shared/image/utils/image_pipeline_monitor.py`
 
 **Architecture**:
 - **5 Pipeline Stages**: research, prompt_building, imagen_generation, validation, post_processing
@@ -77,7 +77,7 @@ Eliminate JSON parsing errors and provide comprehensive monitoring across the en
 
 | Component | What Was Added | Status |
 |-----------|----------------|--------|
-| **CategoryContaminationResearcher** | Full payload monitoring cycle:<br>• Adaptive guidance before API call<br>• Progressive JSON repair (3 strategies)<br>• Schema validation after parse<br>• Failure/success recording<br>• Monitoring report on final failure | ✅ Complete |
+| **ContaminationPatternSelector** | Full payload monitoring cycle:<br>• Adaptive guidance before API call<br>• Progressive JSON repair (3 strategies)<br>• Schema validation after parse<br>• Failure/success recording<br>• Monitoring report on final failure | ✅ Complete |
 | **MaterialImageGenerator** | Research phase monitoring:<br>• Pipeline monitor instance<br>• JSON error separation and recording<br>• General error tracking | ✅ Complete |
 
 ### ⏳ Pending Integration
@@ -187,7 +187,7 @@ Eliminate JSON parsing errors and provide comprehensive monitoring across the en
 
 ### 1. Before Generation - Check Predictions
 ```python
-from domains.materials.image.prompts.image_pipeline_monitor import get_pipeline_monitor
+from shared.image.utils.image_pipeline_monitor import get_pipeline_monitor
 
 monitor = get_pipeline_monitor()
 predictions = monitor.predict_likely_failures("Steel")
@@ -199,7 +199,7 @@ for pred in predictions:
 
 ### 2. During Research - Adaptive Guidance
 ```python
-from domains.materials.image.prompts.payload_monitor import get_payload_monitor
+from domains.materials.image.research.payload_monitor import get_payload_monitor
 
 monitor = get_payload_monitor()
 guidance = monitor.get_adaptive_prompt_guidance()
@@ -239,7 +239,7 @@ print(monitor.get_monitoring_report())
    - Complete test suite (17 tests)
 
 ### Modified Files (2)
-1. **category_contamination_researcher.py**
+1. **contamination_pattern_selector.py**
    - Integrated payload monitoring throughout research cycle
    - Progressive JSON repair strategies
    - Adaptive prompt guidance
@@ -284,7 +284,7 @@ print(monitor.get_monitoring_report())
 - [x] Progressive JSON repair (3 strategies)
 - [x] Payload monitoring system (JSON-specific)
 - [x] Pipeline monitoring system (end-to-end)
-- [x] CategoryContaminationResearcher integration
+- [x] ContaminationPatternSelector integration
 - [x] MaterialImageGenerator integration (partial)
 - [x] Comprehensive test suite (17 tests)
 - [x] Full documentation (2 guides)
@@ -325,7 +325,7 @@ print(monitor.get_monitoring_report())
 - `tests/test_image_pipeline_monitoring.py` - All test scenarios
 
 **Code Examples**:
-- See integration in `category_contamination_researcher.py`
+- See integration in `contamination_pattern_selector.py`
 - See usage in `material_generator.py`
 
 **Questions?** All monitoring systems are fully documented with usage examples and integration guides.

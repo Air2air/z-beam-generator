@@ -117,7 +117,7 @@ Prompt contains contradictory descriptions that violate physics.
 
 **Review research prompt guidance**:
 
-Check `category_contamination_researcher.py` for contradictory instructions.
+Check `contamination_pattern_selector.py` for contradictory pattern/rule selection.
 
 **Example fix**:
 
@@ -165,26 +165,28 @@ Material name not in `CATEGORY_MAP` dictionary.
 **Check supported materials**:
 
 ```python
-from domains.materials.image.prompts.category_contamination_researcher import CATEGORY_MAP
+from domains.materials.image.research.contamination_pattern_selector import ContaminationPatternSelector
+
+selector = ContaminationPatternSelector()
 
 # List all supported materials
-print(CATEGORY_MAP.keys())
+print(selector.MATERIAL_CATEGORIES.keys())
 
 # Check if material supported
-if "MyMaterial" in CATEGORY_MAP:
-    print(f"Supported: maps to {CATEGORY_MAP['MyMaterial']}")
+if "MyMaterial".lower() in selector.MATERIAL_CATEGORIES:
+    print(f"Supported: maps to {selector.MATERIAL_CATEGORIES['MyMaterial'.lower()]}")
 else:
     print("Not supported")
 ```
 
 **Add new material** (if needed):
 
-1. Open `category_contamination_researcher.py`
+1. Open `contamination_pattern_selector.py`
 2. Add mapping:
    ```python
-   CATEGORY_MAP = {
+   MATERIAL_CATEGORIES = {
        ...
-       "MyMaterial": "appropriate_category",
+       "mymaterial": "appropriate_category",
    }
    ```
 3. Restart application
@@ -214,10 +216,12 @@ LRU cache returning stale data after research prompt modifications.
 **Clear cache**:
 
 ```python
-from domains.materials.image.prompts.category_contamination_researcher import research_category_contamination
+from domains.materials.image.research.contamination_pattern_selector import ContaminationPatternSelector
+
+selector = ContaminationPatternSelector()
 
 # Clear all cached research
-research_category_contamination.cache_clear()
+selector._data = None
 
 # Re-generate (will fetch fresh research)
 result = generator.generate_complete("Oak", config=config)
@@ -227,10 +231,7 @@ result = generator.generate_complete("Oak", config=config)
 
 ```python
 # Check cache info
-cache_info = research_category_contamination.cache_info()
-print(f"Cache hits: {cache_info.hits}")
-print(f"Cache misses: {cache_info.misses}")
-print(f"Cache size: {cache_info.currsize}")
+print("Cache reset complete (selector data cache cleared)")
 
 # After clearing, size should be 0
 ```
@@ -373,7 +374,7 @@ for term in vague_terms:
 
 **Refine research prompt**:
 
-Modify research prompt in `category_contamination_researcher.py` to request specific details:
+Modify pattern/rule selection in `contamination_pattern_selector.py` to request specific details:
 
 ```
 ❌ BAD: "Some rust patterns appear"
@@ -529,11 +530,12 @@ print(f"Duplication: {validation['metrics']['duplication_score']}%")
 
 ```python
 # Test research only
-from domains.materials.image.prompts.category_contamination_researcher import research_category_contamination
-research = research_category_contamination("wood_hardwood")
+from domains.materials.image.research.contamination_pattern_selector import ContaminationPatternSelector
+selector = ContaminationPatternSelector()
+research = selector.get_patterns_for_image_gen("Oak")
 
 # Test prompt building only
-from domains.materials.image.prompts.material_prompts import build_material_cleaning_prompt
+from domains.materials.image.research.material_prompts import build_material_cleaning_prompt
 prompt = build_material_cleaning_prompt(
     material_name="Oak",
     research_data=research,
@@ -545,7 +547,7 @@ prompt = build_material_cleaning_prompt(
 )
 
 # Test validation only
-from domains.materials.image.prompts.material_prompts import validate_prompt
+from domains.materials.image.research.material_prompts import validate_prompt
 validation = validate_prompt(prompt, research)
 ```
 

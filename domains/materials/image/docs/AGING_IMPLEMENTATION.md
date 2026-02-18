@@ -264,7 +264,7 @@ All patterns must explain:
 ## 📝 Files Modified
 
 ### **Enhanced**
-- `domains/materials/image/prompts/category_contamination_researcher.py`
+- `domains/materials/image/research/contamination_pattern_selector.py`
   - `_build_category_research_prompt()`: Expanded from 100 to 300+ lines
   - Added 11 research dimensions with detailed sub-requirements
   - Added material-specific aging priorities

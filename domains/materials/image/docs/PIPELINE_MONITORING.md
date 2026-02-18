@@ -70,7 +70,7 @@ The Image Pipeline Monitoring System provides end-to-end visibility into the mat
 ### Basic Integration
 
 ```python
-from domains.materials.image.prompts.image_pipeline_monitor import (
+from shared.image.utils.image_pipeline_monitor import (
     get_pipeline_monitor, FailureStage, FailureType
 )
 

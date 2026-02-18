@@ -19,7 +19,8 @@ Automated AI-powered image generation system that creates scientifically accurat
 ## Architecture
 
 ### Research System (Gemini 2.0 Flash)
-- **CategoryContaminationResearcher**: Researches contamination AND aging patterns at category level
+- **ContaminationPatternSelector**: Selects contamination and aging patterns from Contaminants.yaml (zero API calls)
+- **ShapeResearcher**: Performs optional object/shape research via Gemini
 - **Enhanced Research Protocol**: 11 dimensions (expanded from 9)
   1. Pattern name & type (contamination|aging|combined)
   2. Photo reference descriptions (conservation docs, weathering studies)
@@ -130,11 +131,11 @@ domains/materials/image/
 │   ├── CONFIGURATION.md             # Configuration options guide
 │   ├── TESTING.md                   # Test coverage & validation
 │   └── TROUBLESHOOTING.md           # Common issues & solutions
-├── prompts/
-│   ├── base_prompt.txt              # Ultra-concise template (~600 chars)
-│   ├── category_contamination_researcher.py  # Category-level aging research
-│   ├── material_researcher.py       # Material-specific research (legacy)
-│   └── material_prompts.py          # Prompt builder with validation
+├── research/
+│   ├── contamination_pattern_selector.py  # Pattern selection from Contaminants.yaml
+│   ├── shape_researcher.py                # Optional shape/object research
+│   ├── payload_monitor.py                 # JSON payload monitoring
+│   └── material_prompts.py                # Prompt builder with validation
 ├── material_generator.py            # Main generator (fail-fast architecture)
 ├── material_config.py               # Configuration dataclass with validation
 ├── contamination_levels.py          # Level descriptions (1-5 scales)

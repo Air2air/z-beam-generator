@@ -246,8 +246,8 @@ EXAMPLES: Birch, Oak, Maple all showed uniform grain
 ## 📖 **Related Documentation**
 
 - **Feedback File**: `prompts/shared/feedback/user_corrections.txt`
-- **Prompt Builder**: `prompts/prompt_builder.py` (automatic integration)
-- **Category Map**: `prompts/category_contamination_researcher.py`
+- **Prompt Builder**: `shared/image/utils/prompt_builder.py` (automatic integration)
+- **Category Map**: `domains/materials/image/research/contamination_pattern_selector.py`
 - **Testing**: `tests/test_shared_prompt_builder.py::TestFeedbackIntegration`
 
 ---

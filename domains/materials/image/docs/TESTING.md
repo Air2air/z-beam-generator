@@ -13,7 +13,7 @@ Comprehensive test coverage for prompt validation, research system, and prompt b
 | Component | Test File | Tests | Status |
 |-----------|-----------|-------|--------|
 | **Prompt Validation** | `test_image_prompt_validation.py` | 20+ | ✅ COMPLETE |
-| **Aging Research** | `test_category_contamination_researcher.py` | 8 | ✅ COMPLETE |
+| **Pattern Selection** | `test_contamination_policy_enforcement.py` | 10+ | ✅ COMPLETE |
 | **Prompt Building** | `test_material_prompts.py` | 12 | ✅ COMPLETE |
 | **Config Validation** | `test_material_config.py` | 6 | ✅ COMPLETE |
 | **Integration** | `test_material_generator_integration.py` | 5 | ✅ COMPLETE |
@@ -105,7 +105,7 @@ test_validation_with_distribution_physics()
 
 ## 🧬 Test: Aging Research System
 
-**File**: `tests/test_category_contamination_researcher.py`
+**File**: `tests/domains/materials/image/test_contamination_policy_enforcement.py`
 
 ### Test Coverage
 
@@ -140,7 +140,7 @@ test_11_dimension_research()
 
 ## 🏗️ Test: Prompt Building
 
-**File**: `tests/test_material_prompts.py`
+**File**: `tests/domains/materials/image/test_prompt_optimizer.py`
 
 ### Test Coverage
 
@@ -232,8 +232,8 @@ test_validation_integration()
 
 ```bash
 pytest tests/test_image_prompt_validation.py -v
-pytest tests/test_category_contamination_researcher.py -v
-pytest tests/test_material_prompts.py -v
+pytest tests/domains/materials/image/test_contamination_policy_enforcement.py -v
+pytest tests/domains/materials/image/test_prompt_optimizer.py -v
 pytest tests/test_material_config.py -v
 pytest tests/test_material_generator_integration.py -v
 ```
@@ -276,12 +276,14 @@ tests/test_image_prompt_validation.py::TestPromptValidation::test_validation_det
 
 **Aging Research Tests**:
 ```
-tests/test_category_contamination_researcher.py::test_research_wood_hardwood PASSED
-tests/test_category_contamination_researcher.py::test_research_metals_ferrous PASSED
-tests/test_category_contamination_researcher.py::test_research_polymers PASSED
-tests/test_category_contamination_researcher.py::test_material_category_mapping PASSED
-tests/test_category_contamination_researcher.py::test_lru_cache_behavior PASSED
-tests/test_category_contamination_researcher.py::test_11_dimension_research PASSED
+tests/domains/materials/image/test_contamination_policy_enforcement.py::test_titanium_alloy_matches_titanium_patterns PASSED
+tests/domains/materials/image/test_contamination_policy_enforcement.py::test_stainless_steel_variants_match_steel_patterns PASSED
+tests/domains/materials/image/test_contamination_policy_enforcement.py::test_aluminum_bronze_matches_aluminum_or_bronze_patterns PASSED
+tests/domains/materials/image/test_contamination_policy_enforcement.py::test_pattern_selection_uses_contaminants_yaml PASSED
+tests/domains/materials/image/test_contamination_policy_enforcement.py::test_selected_patterns_have_rich_data PASSED
+tests/domains/materials/image/test_contamination_policy_enforcement.py::test_industrial_context_selects_appropriate_patterns PASSED
+tests/domains/materials/image/test_contamination_policy_enforcement.py::test_material_matching_helper_works PASSED
+tests/domains/materials/image/test_contamination_policy_enforcement.py::test_no_generic_fallback_message_for_known_materials PASSED
 
 ======================== 8 passed in 2.34s ========================
 ```
