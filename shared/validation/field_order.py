@@ -109,8 +109,21 @@ class FrontmatterFieldOrderValidator:
         
         # Domain-specific sections
         field_order.extend(extensions.get('domain_sections', []))
+
+        # Optional domain-specific removals from unified base
+        removals = set(extensions.get('content_removals', []))
+        if removals:
+            field_order = [field for field in field_order if field not in removals]
+
+        # De-duplicate while preserving order
+        seen = set()
+        deduped = []
+        for field in field_order:
+            if field not in seen:
+                seen.add(field)
+                deduped.append(field)
         
-        return field_order
+        return deduped
     
     def get_required_fields(self, domain: str) -> Set[str]:
         """Get required fields for a domain"""
@@ -221,6 +234,8 @@ class FrontmatterFieldOrderValidator:
                 domain = 'compounds'
             elif 'settings' in parts:
                 domain = 'settings'
+            elif 'applications' in parts:
+                domain = 'applications'
             else:
                 return False, [f"Cannot determine domain for file: {file_path}"]
         
@@ -252,6 +267,8 @@ class FrontmatterFieldOrderValidator:
                 domain = 'compounds'
             elif 'settings' in parts:
                 domain = 'settings'
+            elif 'applications' in parts:
+                domain = 'applications'
         
         # Reorder
         ordered_data = self.reorder_fields(data, domain)
@@ -364,7 +381,7 @@ def main():
     import sys
     
     parser = argparse.ArgumentParser(description='Validate/reorder frontmatter field order')
-    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings'],
+    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
                        help='Domain to validate/reorder')
     parser.add_argument('--reorder', action='store_true',
                        help='Reorder files to match specification')

@@ -3,7 +3,7 @@
   "$id": "https://www.z-beam.com/schemas/frontmatter.json",
   "title": "Z-Beam Frontmatter Schema",
   "description": "Validation schema for frontmatter files enforcing naming conventions and required fields",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "object",
   "required": [
     "id",
@@ -27,7 +27,7 @@
     },
     "contentType": {
       "type": "string",
-      "enum": ["material", "contaminant", "compound", "setting"],
+      "enum": ["material", "contaminant", "compound", "setting", "application"],
       "description": "Domain/content type classification"
     },
     "schemaVersion": {
@@ -50,6 +50,11 @@
       "minLength": 50,
       "maxLength": 160,
       "description": "SEO meta description for search engine snippets (50-160 chars)"
+    },
+    "page_description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Normalized page description body text synchronized from pageDescription generation output"
     },
     "datePublished": {
       "type": "string",
@@ -84,7 +89,18 @@
       "properties": {
         "title": {"type": "string"},
         "description": {"type": "string"},
-        "image": {"type": "string"},
+        "image": {
+          "oneOf": [
+            {"type": "string"},
+            {
+              "type": "object",
+              "properties": {
+                "url": {"type": "string"},
+                "alt": {"type": "string"}
+              }
+            }
+          ]
+        },
         "badge": {
           "type": "object",
           "properties": {
@@ -182,15 +198,28 @@
       "description": "FORBIDDEN: Use 'metaDescription' instead of generic 'description'",
       "not": {}
     },
-    ".*_description$": {
-      "description": "FORBIDDEN: Legacy fields like 'materialCharacteristics_description' should be removed",
-      "not": {}
-    },
-    "^micro$": {
-      "description": "FORBIDDEN: Root-level 'micro' - use 'components.micro' instead",
+    "^(?!page_description$).*_description$": {
+      "description": "FORBIDDEN: Legacy fields like 'materialCharacteristics_description' should be removed (page_description is the only allowed exception)",
       "not": {}
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "contentType": {
+            "const": "application"
+          }
+        },
+        "required": ["contentType"]
+      },
+      "then": {
+        "not": {
+          "required": ["micro"]
+        }
+      }
+    }
+  ],
   "additionalProperties": true,
   "definitions": {
     "naming_conventions": {
@@ -202,8 +231,8 @@
         "schemaVersion": "Version string (format: 'X.Y.Z')",
         "FORBIDDEN_title": "Generic 'title' field not allowed at root level",
         "FORBIDDEN_description": "Generic 'description' field not allowed at root level",
-        "FORBIDDEN_legacy_fields": "Fields ending in '_description' are deprecated",
-        "FORBIDDEN_root_micro": "Use 'components.micro' instead of root-level 'micro'"
+        "page_description": "Allowed exception for canonical synchronized description body field",
+        "FORBIDDEN_legacy_fields": "Fields ending in '_description' are deprecated except page_description"
       }
     }
   }

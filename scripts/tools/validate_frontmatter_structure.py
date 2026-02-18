@@ -236,7 +236,7 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Validate frontmatter structure')
-    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'all'],
+    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'applications', 'all'],
                         default='all', help='Domain to validate')
     
     args = parser.parse_args()
@@ -245,7 +245,7 @@ def main():
     
     # Validate domains
     if args.domain == 'all':
-        for domain in ['materials', 'contaminants', 'compounds', 'settings']:
+        for domain in ['materials', 'contaminants', 'compounds', 'settings', 'applications']:
             validator.validate_domain(domain)
     else:
         validator.validate_domain(args.domain)

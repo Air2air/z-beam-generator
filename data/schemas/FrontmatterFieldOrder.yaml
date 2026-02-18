@@ -116,7 +116,6 @@ base_fields:
 # Each domain extends the base schema with specialized fields.
 # The universal base fields ensure consistent data appearance across domains.
 # =============================================================================
-    - card
 
 # =============================================================================
 # MATERIALS DOMAIN
@@ -196,27 +195,15 @@ compounds:
       - monitoring_required
       - typical_concentration_range
       - sources_in_laser_cleaning
-  
-  required_fields:
-    - chemical_formula
-    - category
-    
-    # ─────────────────────────────────────────────────────
-    # 9. CARD DISPLAY METADATA
-    # ─────────────────────────────────────────────────────
-    - card
-    
-    # ─────────────────────────────────────────────────────
-    # 10. RELATIONSHIPS
-    # ─────────────────────────────────────────────────────
-    - relationships
-  
+
   required_fields:
     - id
     - name
     - chemical_formula
     - category
     - contentType
+    - card
+    - relationships
 
 # =============================================================================
 # SETTINGS DOMAIN
@@ -247,6 +234,29 @@ settings:
     - wavelength
     - type
     - domain
+
+# =============================================================================
+# APPLICATIONS DOMAIN
+# =============================================================================
+applications:
+  base_schema: true
+  extensions:
+    identity_additions:
+      - subcategory
+
+    content_additions:
+      - faq
+
+    content_removals:
+      - micro
+
+    domain_sections:
+      - contentCards
+      - keywords
+      - slug
+
+  required_fields:
+    - category
 
 # =============================================================================
 # COMMON NESTED STRUCTURES

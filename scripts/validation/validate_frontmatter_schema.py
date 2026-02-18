@@ -78,7 +78,7 @@ def validate_file(filepath: str, validator: Draft7Validator) -> Tuple[bool, List
 
 def main():
     parser = argparse.ArgumentParser(description='Validate frontmatter files against schema')
-    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings'],
+    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
                         help='Validate specific domain only')
     parser.add_argument('--strict', action='store_true',
                         help='Exit with code 1 if any validation errors found')
@@ -103,7 +103,7 @@ def main():
     if args.domain:
         domains = [args.domain]
     else:
-        domains = ['materials', 'contaminants', 'compounds', 'settings']
+        domains = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
     
     # Validate each domain
     total_files = 0

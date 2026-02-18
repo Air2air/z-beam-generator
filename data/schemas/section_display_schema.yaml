@@ -454,7 +454,7 @@ sections:
     wordCount: 100
     title: "Page Description"
     description: "Overall page summary"
-    prompt: "Generate title and description providing an overview of THIS MATERIAL. Title should be concise (3-5 words) and material-specific. Description should provide a comprehensive summary of WHAT this material is, WHY it's important for laser cleaning applications, HOW it behaves during cleaning, and WHICH key considerations matter for THIS material."
+    prompt: "Generate ONLY a single page description paragraph for THIS MATERIAL (no title). Write 2-4 complete sentences in plain prose that explain WHAT this material is, WHY laser cleaning is relevant, HOW it responds during cleaning, and WHICH operator considerations matter most. Do NOT output labels, markdown headings, bullet points, JSON, or template wrappers. Do NOT start with 'Title:' or 'Description:'. End with a full sentence."
   
   # Relationship sections under operational category
   machineSettings:

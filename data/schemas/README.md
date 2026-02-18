@@ -1,7 +1,7 @@
 # Z-Beam Dataset Schema Consolidation
 
-**Date**: January 13, 2026  
-**Version**: 2.0.0
+**Date**: February 16, 2026  
+**Version**: 2.1.0
 
 ## Schema Architecture
 
@@ -142,6 +142,7 @@ Adding new domain schemas (settings, compounds) is straightforward:
 
 ## Version History
 
+- **v2.1.0** (Feb 16, 2026): Frontmatter schema update to explicitly allow `page_description` while preserving legacy `_description` field deprecation for all other fields
 - **v2.0.0** (Jan 13, 2026): Consolidated into base + extensions architecture
 - **v1.0.0** (Dec 26, 2025): Separate material and contaminant schemas
 
