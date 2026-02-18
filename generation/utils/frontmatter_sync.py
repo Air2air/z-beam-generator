@@ -32,6 +32,27 @@ from shared.utils.yaml_utils import load_yaml, save_yaml
 logger = logging.getLogger(__name__)
 
 
+def _get_frontmatter_directory_from_export_config(domain: str) -> Path | None:
+    """Get frontmatter output directory from export/config/{domain}.yaml if available."""
+    export_config_path = Path("export/config") / f"{domain}.yaml"
+    if not export_config_path.exists():
+        return None
+
+    try:
+        export_config = load_yaml(export_config_path)
+        if not isinstance(export_config, dict):
+            return None
+
+        output_path = export_config.get('output_path')
+        if not output_path:
+            return None
+
+        return Path(output_path)
+    except Exception as e:
+        logger.warning(f"Could not read export config for {domain}: {e}")
+        return None
+
+
 def get_frontmatter_path(item_name: str, field_name: str, domain: str) -> Path:
     """
     Get frontmatter file path using domain config (domain-agnostic).
@@ -63,9 +84,20 @@ def get_frontmatter_path(item_name: str, field_name: str, domain: str) -> Path:
         else:
             # Old flat structure (backward compatibility)
             frontmatter_dir = config.get('frontmatter_directory') or \
-                             config.get('export', {}).get('frontmatter_directory', f'frontmatter/{domain}')
+                             config.get('export', {}).get('frontmatter_directory')
             pattern = config.get('frontmatter_filename_pattern') or \
                      config.get('export', {}).get('filename_pattern', '{slug}.yaml')
+
+        # If domain config does not define frontmatter directory, fall back to export config output_path.
+        # This ensures dual-write sync targets the canonical site frontmatter location.
+        if not frontmatter_dir:
+            export_frontmatter_dir = _get_frontmatter_directory_from_export_config(domain)
+            if export_frontmatter_dir is not None:
+                frontmatter_dir = str(export_frontmatter_dir)
+
+        # Final fallback for legacy/local workflows
+        if not frontmatter_dir:
+            frontmatter_dir = f'frontmatter/{domain}'
         
         # NEW: Legacy slug (parentheses REMOVED - old behavior)
         # Example: "Acrylic (PMMA)" → "acrylic-pmma"
@@ -152,11 +184,17 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
         # Atomic write using save_yaml (path first, data second)
         frontmatter_path.parent.mkdir(parents=True, exist_ok=True)
         save_yaml(frontmatter_path, frontmatter_data)
+
+        # Verify persistence (fail-fast)
+        persisted = load_yaml(frontmatter_path)
+        persisted_field = 'page_description' if field_name == 'pageDescription' else field_name
+        if persisted is None or persisted.get(persisted_field) != frontmatter_data.get(persisted_field):
+            raise RuntimeError(
+                f"Frontmatter persistence verification failed for {frontmatter_path} ({persisted_field})"
+            )
         
         print(f"   💾 Frontmatter synced: {frontmatter_path}")
         logger.info(f"   💾 Frontmatter synced: {frontmatter_path}")
         
     except Exception as e:
-        logger.warning(f"   ⚠️  Failed to sync frontmatter for {item_name}: {e}")
-        logger.warning(f"   Data YAML is still updated correctly (source of truth)")
-        # Don't raise - frontmatter sync failure shouldn't break generation
+        raise RuntimeError(f"Failed to sync frontmatter for {item_name}.{field_name}: {e}") from e

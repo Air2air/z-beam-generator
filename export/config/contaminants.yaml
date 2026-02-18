@@ -19,6 +19,11 @@ generators:
   tasks:
   - type: export_metadata
     description: Add ONLY export-time fields (dateModified, pageTitle if missing)
+  - type: text_field_normalization
+    description: Normalize text wrapper artifacts in description fields
+    fields:
+      - page_description
+      - pageDescription
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
   # NOTE (Jan 5, 2026): section_metadata task removed - _section metadata now exists in source data

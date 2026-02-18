@@ -40,7 +40,6 @@ generators:
       # NOTE: pageDescription REMOVED from deprecated_fields (Jan 14, 2026) - Now used for SEO
       - excerpt         # Not consumed by MaterialsLayout
       - section_description  # Not consumed by MaterialsLayout (Jan 15, 2026)
-      - keywords        # Not consumed by MaterialsLayout
       - technicalSpecifications  # Not referenced anywhere
       - chemicalProperties       # Not referenced anywhere
       - safetyGuidelines        # Not referenced anywhere
@@ -67,6 +66,16 @@ generators:
   # Export-time metadata ONLY (dateModified timestamp, pageTitle for frontend)
   - type: export_metadata
     description: Add ONLY export-time fields (dateModified, pageTitle if missing)
+  - type: text_field_normalization
+    description: Normalize text wrapper artifacts in description fields
+    fields:
+      - page_description
+      - pageDescription
+  # Hydrate authorId -> full author object from Authors.yaml
+  - type: author_linkage
+    description: Expand authorId to full author object for frontend compatibility
+    author_id_field: authorId
+    remove_author_id: false
   # Flatten nested properties to root level (preserves _section metadata)
   - type: flatten_properties
     description: Move properties.materialCharacteristics → materialCharacteristics (with _section)

@@ -32,6 +32,8 @@ Usage:
 """
 
 import logging
+import json
+import re
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -75,6 +77,7 @@ class ContentGenerator(BaseGenerator):
         """Register all task type handlers."""
         return {
             'export_metadata': self._task_export_metadata,  # NEW: Generate export-time metadata
+            'text_field_normalization': self._task_text_field_normalization,
             'flatten_properties': self._task_flatten_properties,  # NEW: Flatten properties structure
             'author_linkage': self._task_author_linkage,
             'slug_generation': self._task_slug_generation,
@@ -161,6 +164,110 @@ class ContentGenerator(BaseGenerator):
         logger.debug(f"Added export-time metadata for {frontmatter.get('id', 'unknown')}")
         
         return frontmatter
+
+    def _task_text_field_normalization(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
+        """
+        Normalize text wrappers/markers in configured plain-text fields.
+
+        This is a transform-only cleanup task for legacy/generated text artifacts,
+        such as:
+        - markdown heading prefixes (### ...)
+        - template labels (Title:, Description:)
+        - JSON string payload wrappers with sectionDescription fields
+        """
+        fields = config.get('fields', [])
+        if not fields:
+            return frontmatter
+
+        for field in fields:
+            if field in frontmatter and isinstance(frontmatter[field], str):
+                original = frontmatter[field]
+                normalized = self._normalize_text_output(original)
+                if normalized != original:
+                    frontmatter[field] = normalized
+                    logger.debug(f"Normalized text field: {field}")
+
+        return frontmatter
+
+    def _normalize_text_output(self, content: Any) -> Any:
+        """Normalize plain text output by removing common wrapper artifacts."""
+        if not isinstance(content, str):
+            return content
+
+        text = content.strip()
+        if not text:
+            return text
+
+        # Extract useful text when content is a JSON string payload.
+        if text.startswith('{') and text.endswith('}'):
+            try:
+                payload = json.loads(text)
+                extracted = (
+                    payload.get('sectionContent')
+                    or payload.get('sectionDescription')
+                    or payload.get('description')
+                )
+                if isinstance(extracted, str) and extracted.strip():
+                    text = extracted.strip()
+            except Exception:
+                pass
+
+        # Prefer description payload when template includes both title/description.
+        inline_description = re.split(r"(?i)(?:^|\n)\s*(?:#{1,6}\s*)?description\s*:?[ \t]*", text, maxsplit=1)
+        if len(inline_description) == 2 and inline_description[1].strip():
+            text = inline_description[1].strip()
+
+        # Handle single-line markdown wrapper: "### Title ... ### Description ..."
+        inline_markdown_description = re.split(r"(?i)#{1,6}\s*description\s*:?[ \t]*", text, maxsplit=1)
+        if len(inline_markdown_description) == 2 and inline_markdown_description[1].strip():
+            text = inline_markdown_description[1].strip()
+
+        # Remove explicit title/description labels and markdown label forms.
+        text = re.sub(r"(?im)^\s*#{1,6}\s*title\s*:?[ \t]*", "", text)
+        text = re.sub(r"(?im)^\s*#{1,6}\s*description\s*:?[ \t]*", "", text)
+        text = re.sub(r"(?im)^\s*title\s*:?[ \t]*", "", text)
+        text = re.sub(r"(?im)^\s*description\s*:?[ \t]*", "", text)
+
+        # Handle inline wrapper form: "<title> Description: <content>"
+        inline_description_tail = re.split(r"(?i)\bdescription\s*:\s*", text, maxsplit=1)
+        if (
+            len(inline_description_tail) == 2
+            and inline_description_tail[1].strip()
+            and len(inline_description_tail[0].strip()) <= 120
+        ):
+            text = inline_description_tail[1].strip()
+
+        # Remove markdown heading token if present at the start.
+        text = re.sub(r"\A\s*#{1,6}\s*", "", text)
+        text = re.sub(r"\A\s*(?:title|description)\s*:?[ \t]*", "", text, flags=re.IGNORECASE)
+
+        # Drop first line if it looks like a heading and remaining lines contain content.
+        lines = [line.strip() for line in text.splitlines() if line.strip()]
+        if len(lines) >= 2:
+            first = lines[0]
+            if (
+                len(first) <= 90
+                and not re.search(r"[.!?]$", first)
+                and (
+                    re.search(r"(?i)laser\s+cleaning", first)
+                    or re.search(r"(?i)overview|guide|summary", first)
+                )
+            ):
+                lines = lines[1:]
+        text = " ".join(lines)
+
+        # Remove leading "<Material> Laser Cleaning" heading fragments in single-line output.
+        text = re.sub(
+            r"^\s*(?:[A-Z][A-Za-z0-9()&/\-+,]*\s+){0,8}Laser\s+Cleaning(?:\s+(?:Overview|Guide|Description))?\s+",
+            "",
+            text,
+        )
+
+        # Final whitespace/punctuation cleanup.
+        text = re.sub(r"\s{2,}", " ", text).strip()
+        text = text.replace('..', '.')
+
+        return text
     
     def _task_flatten_properties(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
@@ -224,17 +331,49 @@ class ContentGenerator(BaseGenerator):
     
     def _task_author_linkage(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
-        Author enrichment task (currently disabled in config).
-        
-        Architecture:
-        - Source data (Materials.yaml): Contains authorId (1-4)
-        - This task would enrich to full author object
-        - Currently NOT in task list, so authorId passes through unchanged
-        - Real enrichment happens in another layer
+        Hydrate `authorId` to full `author` object from Authors.yaml.
+
+        Input:
+        - frontmatter['authorId'] (int or numeric string)
+
+        Output:
+        - frontmatter['author'] (full author object)
+
+        Notes:
+        - Keeps `authorId` by default for backward compatibility.
+        - If `remove_author_id: true` is passed in task config, removes `authorId`.
         """
-        # This task is not in the active task list (see export/config/*.yaml)
-        # Author enrichment happens elsewhere in the pipeline
-        # This is just a placeholder pass-through
+        # If already hydrated, preserve existing data.
+        if isinstance(frontmatter.get('author'), dict) and frontmatter['author'].get('id'):
+            return frontmatter
+
+        author_id_field = config.get('author_id_field', 'authorId')
+        author_ref = frontmatter.get(author_id_field)
+
+        # No author reference available: no-op.
+        if author_ref is None:
+            return frontmatter
+
+        try:
+            author_id = int(author_ref)
+        except (TypeError, ValueError) as exc:
+            raise RuntimeError(
+                f"Invalid {author_id_field} value '{author_ref}' for item '{frontmatter.get('id', 'unknown')}'"
+            ) from exc
+
+        from shared.data.specialized.author_loader import get_author
+
+        author_data = get_author(author_id)
+        if not isinstance(author_data, dict) or not author_data:
+            raise RuntimeError(
+                f"Failed to hydrate author for author ID {author_id} (item '{frontmatter.get('id', 'unknown')}')"
+            )
+
+        frontmatter['author'] = author_data
+
+        if config.get('remove_author_id', False):
+            frontmatter.pop(author_id_field, None)
+
         return frontmatter
 
     

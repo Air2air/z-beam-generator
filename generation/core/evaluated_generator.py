@@ -147,6 +147,10 @@ class QualityEvaluatedGenerator:
         print(f"\n{'='*80}")
         print(f"📝 SINGLE-PASS GENERATION: {component_type} for {material_name}")
         print(f"{'='*80}\n")
+
+        # Runtime controls for orchestration callers (e.g., postprocess retries)
+        # Pop here so control flags are NOT forwarded into prompt item_data.
+        skip_learning_evaluation = bool(kwargs.pop('skip_learning_evaluation', False))
         
         # ✅ SIMPLIFIED: Get all parameters from unified provider (was 5 separate calls)
         params = self.parameter_provider.get_parameters(component_type, target_words=kwargs.get('target_words'))
@@ -155,11 +159,20 @@ class QualityEvaluatedGenerator:
         self.parameter_provider.display_insights(params)
         
         # Generate humanness layer (learning-optimized, structural variation only)
-        print(f"\n🧠 Generating humanness instructions...")
-        humanness_instructions = self.humanness_optimizer.generate_humanness_instructions(
-            component_type=component_type
-        )
-        print(f"   ✅ Humanness layer generated ({len(humanness_instructions)} chars)")
+        # Retry speed mode: keep COMPACT humanness for variation without prompt bloat.
+        if skip_learning_evaluation:
+            print(f"\n⚡ Retry speed mode: using compact humanness layer")
+            humanness_instructions = self.humanness_optimizer.generate_humanness_instructions(
+                component_type=component_type,
+                length_target=kwargs.get('target_words')
+            )
+            print(f"   ✅ Compact humanness generated ({len(humanness_instructions)} chars)")
+        else:
+            print(f"\n🧠 Generating humanness instructions...")
+            humanness_instructions = self.humanness_optimizer.generate_humanness_instructions(
+                component_type=component_type
+            )
+            print(f"   ✅ Humanness layer generated ({len(humanness_instructions)} chars)")
         
         # Generate content
         try:
@@ -188,40 +201,52 @@ class QualityEvaluatedGenerator:
                 print(f"⚠️  Could not load config.yaml: {e}")
                 config_data = {}
             
-            if config_data.get('length_control', {}).get('enable_smart_truncation', True):
-                from shared.text.utils.length_control import apply_length_control
-                
-                # Get the original prompt for word count extraction
-                final_prompt = getattr(result, 'prompt_used', '') or str(getattr(params, 'prompt', ''))
-                
-                print(f"\n✂️  Applying smart length control...")
-                control_result = apply_length_control(
-                    content=self._content_to_text(content, component_type),
-                    prompt=final_prompt,
-                    fallback_target=config_data.get('length_control', {}).get('default_target_words', 50)
-                )
-                
-                # Update content if truncation occurred
-                if control_result['truncated']:
-                    controlled_content = control_result['content']
-                    result['content'] = controlled_content
-                    content = controlled_content
-                    length_controlled = True
-                    
-                    print(f"📏 Length Control: {control_result['original_words']} → {control_result['final_words']} words")
-                    print(f"🎯 Target: {control_result['target_words']}, Accuracy: {100-control_result['compliance']['variance_percent']:.1f}%")
-                    print(f"✂️  Truncated: {control_result['reduction']} words removed")
-                    
-                    # Update result metrics
-                    result['length'] = len(controlled_content)
-                    result['word_count'] = control_result['final_words']
-                    result['length_controlled'] = True
-                    result['original_words'] = control_result['original_words']
-                    result['truncated'] = True
+            length_control_config = config_data.get('length_control', {})
+            if length_control_config.get('enable_smart_truncation', False):
+                if component_type == 'pageDescription':
+                    print("\n✂️  Skipping smart length truncation for pageDescription (sentence integrity policy)")
                 else:
-                    print(f"📏 Length Control: {control_result['final_words']} words (no truncation needed)")
-                    result['length_controlled'] = False
-                    result['truncated'] = False
+                    from shared.text.utils.length_control import apply_length_control
+                    default_target_words = length_control_config.get('default_target_words')
+                    if default_target_words is None:
+                        raise ValueError(
+                            "length_control.default_target_words is required when smart truncation is enabled"
+                        )
+
+                    # Get the original prompt for word count extraction
+                    final_prompt = getattr(result, 'prompt_used', '') or str(getattr(params, 'prompt', ''))
+
+                    runtime_target_words = kwargs.get('target_words')
+                    fallback_target_words = runtime_target_words if isinstance(runtime_target_words, int) and runtime_target_words > 0 else default_target_words
+
+                    print(f"\n✂️  Applying smart length control...")
+                    control_result = apply_length_control(
+                        content=self._content_to_text(content, component_type),
+                        prompt=final_prompt,
+                        fallback_target=fallback_target_words
+                    )
+
+                    # Update content if truncation occurred
+                    if control_result['truncated']:
+                        controlled_content = control_result['content']
+                        result['content'] = controlled_content
+                        content = controlled_content
+                        length_controlled = True
+
+                        print(f"📏 Length Control: {control_result['original_words']} → {control_result['final_words']} words")
+                        print(f"🎯 Target: {control_result['target_words']}, Accuracy: {100-control_result['compliance']['variance_percent']:.1f}%")
+                        print(f"✂️  Truncated: {control_result['reduction']} words removed")
+
+                        # Update result metrics
+                        result['length'] = len(controlled_content)
+                        result['word_count'] = control_result['final_words']
+                        result['length_controlled'] = True
+                        result['original_words'] = control_result['original_words']
+                        result['truncated'] = True
+                    else:
+                        print(f"📏 Length Control: {control_result['final_words']} words (no truncation needed)")
+                        result['length_controlled'] = False
+                        result['truncated'] = False
             
             # Display content preview
             content_text = self._content_to_text(content, component_type)
@@ -350,30 +375,26 @@ class QualityEvaluatedGenerator:
         evaluation_logged = False
         
         # Run quality evaluations (for learning, not gating)
-        # Made async to avoid blocking generation pipeline (saves 22-25s per field)
-        print(f"\n🔍 Running quality evaluations (for learning)...")
-        print(f"   ⚡ Running in background to avoid blocking...")
-        
-        import threading
+        # NOTE: Keep synchronous for deterministic behavior and crash-free logging.
+        eval_text = self._content_to_text(content, component_type)
         evaluation = None
-        
-        def run_quality_evaluation():
-            """Background thread for quality evaluation (non-blocking)"""
-            nonlocal evaluation
+
+        if skip_learning_evaluation:
+            print(f"\n⏩ Skipping subjective learning evaluation (retry speed mode)")
+        else:
+            print(f"\n🔍 Running quality evaluations (for learning)...")
             try:
-                # Subjective evaluation
-                eval_text = self._content_to_text(content, component_type)
                 evaluation = self.subjective_evaluator.evaluate(
                     content=eval_text,
                     material_name=material_name,
                     component_type=component_type
                 )
-                
+
                 quality_scores['realism_score'] = evaluation.realism_score or evaluation.overall_score
                 quality_scores['voice_authenticity'] = evaluation.voice_authenticity
                 quality_scores['tonal_consistency'] = evaluation.tonal_consistency
                 quality_scores['ai_tendencies'] = evaluation.ai_tendencies or []
-                
+
                 print(f"\n📊 QUALITY SCORES (for learning):")
                 print(f"   • Realism: {quality_scores['realism_score']:.1f}/10")
                 print(f"   • Voice Authenticity: {quality_scores['voice_authenticity'] or 0:.1f}/10")
@@ -384,12 +405,6 @@ class QualityEvaluatedGenerator:
                     print(f"   • AI Tendencies: None detected")
             except Exception as e:
                 logger.warning(f"   ⚠️  Subjective evaluation failed: {e}")
-        
-        # Start evaluation in background
-        eval_thread = threading.Thread(target=run_quality_evaluation, daemon=True)
-        eval_thread.start()
-        
-        # Don't wait - continue immediately with pipeline
         
         # Winston detection (also run in background for consistency)
         winston_result = self._check_winston_detection(content, material_name, component_type)
@@ -813,7 +828,7 @@ class QualityEvaluatedGenerator:
         """
         try:
             from learning.consolidated_learning_system import GenerationResult
-            from learning.consolidated_learning_system import GenerationResult
+            from datetime import datetime
             
             # Calculate quality scores
             realism_score = evaluation.realism_score or evaluation.overall_score
@@ -822,26 +837,36 @@ class QualityEvaluatedGenerator:
             
             # Composite score: Winston 40% + Realism 60%
             overall_quality_score = (winston_human_score * 0.4) + (realism_normalized * 0.6)
+
+            # Normalize structural score to 0-100 scale expected by learning system
+            structural_score = 50.0
+            if structural_analysis and getattr(structural_analysis, 'diversity_score', None) is not None:
+                structural_score = float(structural_analysis.diversity_score) * 10.0
+
+            ai_tendencies = evaluation.ai_tendencies or []
+            ai_pattern_score = max(0.0, 100.0 - (len(ai_tendencies) * 20.0))
+
+            author_id = self._get_author_id(material_name)
+            word_count = len(content.split())
+            char_count = len(content)
             
             # Create unified generation result object
             result = GenerationResult(
                 material_name=material_name,
                 component_type=component_type,
                 content=content,
-                temperature=params.temperature,
-                frequency_penalty=params.frequency_penalty,
-                presence_penalty=params.presence_penalty,
-                max_tokens=params.max_tokens,
-                winston_human_score=winston_human_score,
-                winston_ai_score=winston_result.get('ai_score', 1.0),
+                winston_score=winston_human_score,
                 realism_score=realism_score,
-                voice_authenticity=evaluation.voice_authenticity,
-                tonal_consistency=evaluation.tonal_consistency,
-                diversity_score=structural_analysis.diversity_score if structural_analysis else None,
-                overall_quality_score=overall_quality_score,
-                success=passed_all_gates,
-                attempt_number=attempt,
-                retry_session_id=retry_session_id
+                voice_authenticity_score=evaluation.voice_authenticity or 0.0,
+                structural_quality_score=structural_score,
+                ai_pattern_score=ai_pattern_score,
+                temperature=current_params.temperature,
+                frequency_penalty=current_params.frequency_penalty,
+                presence_penalty=current_params.presence_penalty,
+                word_count=word_count,
+                char_count=char_count,
+                author_id=author_id,
+                timestamp=datetime.now()
             )
             
             # Single unified logging call (replaces 3 separate database writes)
@@ -868,7 +893,7 @@ class QualityEvaluatedGenerator:
     
     def _get_author_id(self, material_name: str) -> int:
         """Get author_id for item from domain data file - FAIL-FAST if missing"""
-        from data.authors.registry import resolve_author_for_generation
+        from data.authors.registry import get_author
 
         # Use generator's domain adapter to load data
         all_data = self.generator.adapter.load_all_data()
@@ -880,9 +905,29 @@ class QualityEvaluatedGenerator:
         if not item_data:
             raise ValueError(f"Item '{material_name}' not found in {domain} data")
         
-        # FAIL-FAST: No fallbacks - item must have valid author.id
-        author_info = resolve_author_for_generation(item_data)
-        return author_info['id']
+        # FAIL-FAST: Support canonical author.id and legacy authorId; reject anything else.
+        author_id = None
+        author_field = item_data.get('author')
+        if isinstance(author_field, dict):
+            author_id = author_field.get('id')
+        elif 'authorId' in item_data:
+            author_id = item_data.get('authorId')
+
+        if author_id is None:
+            raise ValueError(
+                f"Item '{material_name}' missing author identity. "
+                f"Expected author.id or authorId in {domain} data."
+            )
+
+        if not isinstance(author_id, int):
+            raise ValueError(
+                f"Item '{material_name}' author id must be integer, "
+                f"got {type(author_id).__name__}"
+            )
+
+        # Validate author exists in registry (raises KeyError if invalid)
+        get_author(author_id)
+        return author_id
     
     def _get_author_data(self, material_name: str) -> Dict[str, Any]:
         """
@@ -890,7 +935,7 @@ class QualityEvaluatedGenerator:
         
         Returns dict with 'name' and 'country' keys required by VoicePostProcessor.
         """
-        from data.authors.registry import resolve_author_for_generation
+        from data.authors.registry import get_author
 
         # Use generator's domain adapter to load data
         all_data = self.generator.adapter.load_all_data()
@@ -902,12 +947,40 @@ class QualityEvaluatedGenerator:
         if not item_data:
             raise ValueError(f"Item '{material_name}' not found in {domain} data")
         
-        # Get full author info
-        author_info = resolve_author_for_generation(item_data)
+        # Resolve author id with strict validation (author.id or legacy authorId)
+        author_id = None
+        author_field = item_data.get('author')
+        if isinstance(author_field, dict):
+            author_id = author_field.get('id')
+        elif 'authorId' in item_data:
+            author_id = item_data.get('authorId')
+
+        if author_id is None:
+            raise ValueError(
+                f"Item '{material_name}' missing author identity. "
+                f"Expected author.id or authorId in {domain} data."
+            )
+
+        if not isinstance(author_id, int):
+            raise ValueError(
+                f"Item '{material_name}' author id must be integer, "
+                f"got {type(author_id).__name__}"
+            )
+
+        # Get full author info (raises KeyError if invalid)
+        author_info = get_author(author_id)
         
+        author_name = author_info.get('name')
+        author_country = author_info.get('country')
+
+        if not author_name:
+            raise ValueError(f"Author name missing for '{material_name}'")
+        if not author_country:
+            raise ValueError(f"Author country missing for '{material_name}'")
+
         return {
-            'name': author_info.get('name', 'Unknown'),
-            'country': author_info.get('country', 'United States')
+            'name': author_name,
+            'country': author_country
         }
 
 

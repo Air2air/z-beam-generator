@@ -126,7 +126,7 @@ PRODUCTION_CONFIG = {
             "storage_location": "/tmp/z-beam-response-cache",
             "ttl_seconds": 86400,  # 24 hours
             "max_size_mb": 1000,
-            "key_strategy": "prompt_hash_with_model",
+            "key_strategy": "full_request_hash",
         },
     },
     

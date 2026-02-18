@@ -18,7 +18,7 @@ This module handles:
 
 🔥 MANDATORY RETRY POLICY (December 14, 2025):
 - System MUST retry regeneration until requirements are met
-- Maximum attempts: 5 (configurable via MAX_REGENERATION_ATTEMPTS)
+- Maximum attempts: 3 (configurable via MAX_REGENERATION_ATTEMPTS)
 - Each attempt uses fresh generation with randomized parameters
 - Only stops when: quality threshold met OR max attempts exhausted
 - Keeps best version across all attempts (highest quality score)
@@ -28,6 +28,7 @@ CRITICAL: Regeneration = Fresh generation from original prompt, NOT refinement o
 
 import logging
 import os
+import re
 import tempfile
 import uuid
 from pathlib import Path
@@ -40,14 +41,13 @@ from generation.core.generator import Generator
 from generation.utils.frontmatter_sync import sync_field_to_frontmatter
 from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
 from shared.api.client_factory import create_api_client
-from shared.text.validation.forbidden_phrase_validator import ForbiddenPhraseValidator
 
 logger = logging.getLogger(__name__)
 
 # MANDATORY RETRY POLICY CONSTANTS
-MAX_REGENERATION_ATTEMPTS = 5  # Must retry until requirements met or max reached
-QUALITY_THRESHOLD = 50  # Minimum acceptable quality score (lowered from 60 Dec 14, 2025)
-MIN_CONTENT_LENGTH = 50  # Minimum content length in characters
+MAX_REGENERATION_ATTEMPTS = 3  # Must retry until requirements met or max reached
+QUALITY_THRESHOLD = 60  # Minimum acceptable quality score for postprocessing acceptance
+MIN_CONTENT_LENGTH = 150  # Minimum content length in characters
 
 
 class PostprocessCommand:
@@ -83,8 +83,6 @@ class PostprocessCommand:
         """
         self.domain = domain
         self.field = field
-        self.phrase_validator = ForbiddenPhraseValidator()
-        
         # Initialize API client
         self.api_client = create_api_client()
         
@@ -242,103 +240,6 @@ class PostprocessCommand:
         # This will be integrated with actual Winston API
         return 0.95  # Placeholder
     
-    def _check_readability(self, text: str) -> dict:
-        """Check forbidden phrases and patterns"""
-        is_valid, violations = self.phrase_validator.validate(text)  # FIX: validate() returns tuple
-        
-        # DIAGNOSTIC OUTPUT: Show what failed (Option A - Dec 14, 2025)
-        if violations:
-            print(f"   ⚠️  Forbidden phrases detected ({len(violations)} total):")
-            for v in violations[:5]:  # Show first 5
-                print(f"      • {v}")
-            if len(violations) > 5:
-                print(f"      ... and {len(violations) - 5} more")
-        
-        return {
-            'status': 'pass' if is_valid else 'fail',
-            'violations': violations
-        }
-    
-    def _detect_ai_patterns(self, text: str) -> List[str]:
-        """Detect AI-like patterns in text"""
-        ai_patterns = [
-            'presents a challenge',
-            'presents a unique challenge',
-            'critical aspect',
-            'critical pitfall',
-            'it is essential',
-            'it is important to note',
-            'furthermore',
-            'moreover',
-            'in conclusion',
-        ]
-        
-        found_patterns = []
-        text_lower = text.lower()
-        
-        for pattern in ai_patterns:
-            if pattern in text_lower:
-                found_patterns.append(pattern)
-        
-        return found_patterns
-    
-    def _compare_versions(self, old: str, new: str) -> Dict[str, Any]:
-        """Compare old vs new content quality"""
-        old_readability = self._check_readability(old)
-        new_readability = self._check_readability(new)
-        
-        old_ai_patterns = self._detect_ai_patterns(old)
-        new_ai_patterns = self._detect_ai_patterns(new)
-        
-        length_change = len(new) - len(old)
-        length_change_pct = (length_change / len(old)) * 100 if len(old) > 0 else 0
-        
-        scores = {
-            'old_readability': old_readability.get('status', 'unknown'),
-            'new_readability': new_readability.get('status', 'unknown'),
-            'old_ai_patterns': old_ai_patterns,
-            'new_ai_patterns': new_ai_patterns,
-            'length_change': length_change,
-            'length_change_pct': length_change_pct,
-            'old_length': len(old),
-            'new_length': len(new)
-        }
-        
-        # Determine if improvement
-        # Readability: Must improve OR stay same (neutral)
-        readability_improved = (
-            new_readability.get('status') == 'pass' and 
-            old_readability.get('status') != 'pass'
-        )
-        readability_neutral = (
-            new_readability.get('status') == old_readability.get('status')
-        )
-        readability_ok = readability_improved or readability_neutral
-        
-        # AI patterns: Must reduce OR stay at zero (neutral)
-        ai_patterns_reduced = len(new_ai_patterns) < len(old_ai_patterns)
-        ai_patterns_neutral = (
-            len(new_ai_patterns) == 0 and len(old_ai_patterns) == 0
-        )
-        ai_patterns_ok = ai_patterns_reduced or ai_patterns_neutral
-        
-        # Overall improvement: All criteria must pass (improved OR neutral)
-        # NOTE: Length criteria removed per user request (Dec 13, 2025)
-        improved = (
-            readability_ok and
-            ai_patterns_ok
-        )
-        
-        return {
-            'quality_improved': improved,
-            'scores': scores,
-            'recommendation': 'REPLACE' if improved else 'KEEP_ORIGINAL',
-            'criteria': {
-                'Readability OK': readability_ok,
-                'AI Patterns OK': ai_patterns_ok,
-            }
-        }
-    
     def postprocess_item(self, item_id: str, dry_run: bool = False) -> Dict[str, Any]:
         """
         Postprocess single item's field.
@@ -474,12 +375,6 @@ class PostprocessCommand:
         print(f"   • AI Patterns: {quality_analysis['ai_patterns']['score']}/100")
         print(f"   • Voice Authenticity: {quality_analysis['voice_authenticity']['score']}/100")
         
-        # Use pipeline's threshold (60/100 allows concise content to pass)
-        # Lowered from 70 to account for single-sentence description content
-        # which appropriately scores lower on structural variation metrics
-        QUALITY_THRESHOLD = 60
-        MIN_CONTENT_LENGTH = 150  # Minimum characters for acceptable content
-        
         # Check minimum length first
         if len(existing_content) < MIN_CONTENT_LENGTH:
             print(f"\n⚠️  Content too short ({len(existing_content)} chars < {MIN_CONTENT_LENGTH} minimum) - regenerating...")
@@ -494,8 +389,20 @@ class PostprocessCommand:
             }
         
         # Store old quality metrics BEFORE regenerating
-        old_ai_patterns = self._detect_ai_patterns(existing_content)
-        old_readability = self._check_readability(existing_content)
+        old_quality_score = quality_analysis['overall_score']
+        old_ai_issues = quality_analysis['ai_patterns'].get('issues', [])
+        old_ai_like = quality_analysis['ai_patterns'].get('is_ai_like', False)
+        old_voice_score = quality_analysis['voice_authenticity'].get('score')
+        old_pattern_compliance = quality_analysis['voice_authenticity'].get('pattern_compliance', {})
+        old_pattern_count = old_pattern_compliance.get('found_count', 0) or 0
+        old_forbidden_violations = quality_analysis['voice_authenticity'].get('forbidden_violations', []) or []
+
+        old_structural = quality_analysis.get('structural_quality', {})
+        old_structural_avg = (
+            old_structural.get('sentence_variation', 0) +
+            old_structural.get('rhythm_score', 0) +
+            old_structural.get('complexity_variation', 0)
+        ) / 3
         
         # 🔥 MANDATORY RETRY LOOP - Keep trying until requirements met
         print(f"\n🔧 Quality score {quality_analysis['overall_score']}/100 below threshold")
@@ -504,17 +411,47 @@ class PostprocessCommand:
         # Generate unique session ID for grouping all retry attempts together
         retry_session_id = str(uuid.uuid4())
         print(f"📊 Retry session ID: {retry_session_id}\n")
+
+        # Attempt-level target words for controlled length variation
+        # Uses domain config component_lengths when available.
+        attempt_targets = [None] * MAX_REGENERATION_ATTEMPTS
+        try:
+            domain_config = self._load_domain_config()
+            component_cfg = domain_config.get('component_lengths', {}).get(self.field, {})
+            if isinstance(component_cfg, dict):
+                min_words = component_cfg.get('min')
+                max_words = component_cfg.get('max')
+            else:
+                min_words = None
+                max_words = None
+
+            if isinstance(min_words, int) and isinstance(max_words, int) and max_words > min_words:
+                step_denominator = max(1, MAX_REGENERATION_ATTEMPTS - 1)
+                attempt_targets = [
+                    min_words + int((max_words - min_words) * idx / step_denominator)
+                    for idx in range(MAX_REGENERATION_ATTEMPTS)
+                ]
+                print(f"📏 Length targets by attempt: {attempt_targets}")
+        except Exception as e:
+            logger.warning(f"Could not load per-attempt length targets: {e}")
         
         best_result = None
+        best_quality_analysis = None
         best_quality_score = 0
+        best_selection_score = -1.0
         best_content = None
-        best_readability = None
-        best_ai_patterns = None
+        best_ai_issues = None
+        best_pattern_count = 0
+        best_forbidden_count = 0
         
         for attempt in range(1, MAX_REGENERATION_ATTEMPTS + 1):
             print(f"\n{'='*80}")
             print(f"🔄 ATTEMPT {attempt}/{MAX_REGENERATION_ATTEMPTS}")
             print(f"{'='*80}")
+
+            attempt_target_words = attempt_targets[attempt - 1]
+            if isinstance(attempt_target_words, int):
+                print(f"🎯 Attempt target words: {attempt_target_words}")
             
             try:
                 # Use existing generator.generate() which includes ALL quality checks:
@@ -529,7 +466,9 @@ class PostprocessCommand:
                     component_type=self.field,
                     faq_count=None,
                     retry_session_id=retry_session_id,
-                    is_retry=(attempt > 1)
+                    is_retry=(attempt > 1),
+                    skip_learning_evaluation=True,
+                    target_words=attempt_target_words
                 )
                 
                 # Result is a QualityEvaluatedResult dataclass, not a dict
@@ -558,43 +497,111 @@ class PostprocessCommand:
                 # Note: generator.generate() already saved via dual-write
                 print(f"\n✨ Generated: {len(new_content)} chars")
                 
-                # Check new quality
-                new_ai_patterns = self._detect_ai_patterns(new_content)
-                new_readability = self._check_readability(new_content)
-                
-                # Calculate quality score (Option B: partial credit for readability - Dec 14, 2025)
-                # Old: readability fail = 0 points (too harsh)
-                # New: readability fail = 40 points (acknowledges AI-pattern-free content has value)
-                readability_score = 100 if new_readability.get('status') == 'pass' else 40
-                ai_score = max(0, 100 - (len(new_ai_patterns) * 20))  # -20 per pattern
-                attempt_quality = (readability_score + ai_score) / 2
+                # Check new quality using the SAME unified analyzer as generation pipeline
+                new_quality_analysis = analyzer.analyze(
+                    text=new_content,
+                    author=author_data,
+                    include_recommendations=False
+                )
+
+                attempt_quality = new_quality_analysis['overall_score']
+                attempt_ai_issues = new_quality_analysis['ai_patterns'].get('issues', [])
+                attempt_ai_like = new_quality_analysis['ai_patterns'].get('is_ai_like', False)
+                attempt_voice_score = new_quality_analysis['voice_authenticity'].get('score')
+                pattern_compliance = new_quality_analysis['voice_authenticity'].get('pattern_compliance', {})
+                attempt_pattern_count = pattern_compliance.get('found_count', 0) or 0
+                attempt_pattern_found = bool(pattern_compliance.get('authentic')) or attempt_pattern_count > 0
+                attempt_forbidden_violations = new_quality_analysis['voice_authenticity'].get('forbidden_violations', []) or []
+                attempt_forbidden_count = len(attempt_forbidden_violations)
+
+                # Stricter output-shape validation for pageDescription
+                page_description_clean = True
+                page_description_issues = []
+                if self.field == 'pageDescription':
+                    lowered = new_content.lower()
+                    artifact_patterns = [
+                        r"^\s*title\s*:",
+                        r"^\s*description\s*:",
+                        r"^\s*sectiontitle\s*:",
+                        r"^\s*sectiondescription\s*:",
+                        r"^\s*\{",
+                        r"^\s*\[",
+                        r"^\s*#{1,6}\s+",
+                    ]
+                    if any(re.search(pattern, lowered, flags=re.IGNORECASE | re.MULTILINE) for pattern in artifact_patterns):
+                        page_description_clean = False
+                        page_description_issues.append("template wrapper/label detected")
+
+                    if new_content.strip().endswith(':'):
+                        page_description_clean = False
+                        page_description_issues.append("dangling colon at end")
+
+                    sentence_count = len([s for s in re.split(r"[.!?]+", new_content) if s.strip()])
+                    if sentence_count < 2:
+                        page_description_clean = False
+                        page_description_issues.append("too few complete sentences")
+
+                attempt_structural = new_quality_analysis.get('structural_quality', {})
+                attempt_structural_avg = (
+                    attempt_structural.get('sentence_variation', 0) +
+                    attempt_structural.get('rhythm_score', 0) +
+                    attempt_structural.get('complexity_variation', 0)
+                ) / 3
                 
                 print(f"🔍 Attempt {attempt} quality:")
                 print(f"   • Overall: {attempt_quality}/100")
-                print(f"   • Readability: {new_readability.get('status', 'unknown')}")
-                print(f"   • AI patterns: {len(new_ai_patterns)} detected")
+                print(f"   • AI-like: {'YES' if attempt_ai_like else 'NO'}")
+                print(f"   • AI issues: {len(attempt_ai_issues)}")
+                print(f"   • Voice authenticity: {attempt_voice_score if attempt_voice_score is not None else 'N/A'}/100")
+                print(f"   • Voice patterns found: {attempt_pattern_count}")
+                print(f"   • Forbidden phrases: {attempt_forbidden_count}")
+                print(f"   • Structural avg: {attempt_structural_avg:.1f}/100")
+                if self.field == 'pageDescription':
+                    print(f"   • Output format clean: {'YES' if page_description_clean else 'NO'}")
+                    if page_description_issues:
+                        print(f"   • Format issues: {', '.join(page_description_issues)}")
                 
                 # Track best result
-                if attempt_quality > best_quality_score:
-                    best_quality_score = attempt_quality
+                attempt_selection_score = float(attempt_quality)
+                # Strongly prefer attempts with detectable nationality patterns
+                attempt_selection_score += float(attempt_pattern_count) * 20.0
+                if attempt_pattern_found:
+                    attempt_selection_score += 10.0
+                # Heavily penalize forbidden phrase recurrence
+                attempt_selection_score -= float(attempt_forbidden_count) * 50.0
+
+                if attempt_selection_score > best_selection_score:
+                    best_selection_score = attempt_selection_score
+                    best_quality_score = float(attempt_quality)
                     best_result = result
                     best_content = new_content
-                    best_readability = new_readability
-                    best_ai_patterns = new_ai_patterns
-                    print(f"   ✅ NEW BEST (score: {attempt_quality}/100)")
+                    best_quality_analysis = new_quality_analysis
+                    best_ai_issues = attempt_ai_issues
+                    best_pattern_count = attempt_pattern_count
+                    best_forbidden_count = attempt_forbidden_count
+                    print(f"   ✅ NEW BEST (quality: {attempt_quality}/100, selection: {attempt_selection_score:.1f})")
                 
                 # Check if requirements met
                 requirements_met = (
-                    new_readability.get('status') == 'pass' and
-                    len(new_ai_patterns) == 0 and
-                    attempt_quality >= QUALITY_THRESHOLD
+                    attempt_quality >= QUALITY_THRESHOLD and
+                    not attempt_ai_like and
+                    len(attempt_ai_issues) == 0 and
+                    attempt_forbidden_count == 0 and
+                    (attempt_voice_score is None or attempt_voice_score >= 60) and
+                    attempt_pattern_found and
+                    attempt_structural_avg >= 50 and
+                    page_description_clean
                 )
                 
                 if requirements_met:
                     print(f"\n✅ REQUIREMENTS MET on attempt {attempt}!")
                     print(f"   • Quality: {attempt_quality}/100 (threshold: {QUALITY_THRESHOLD})")
-                    print(f"   • Readability: PASS")
-                    print(f"   • AI patterns: 0")
+                    print(f"   • AI-like: NO")
+                    print(f"   • AI issues: 0")
+                    print(f"   • Voice authenticity: {attempt_voice_score if attempt_voice_score is not None else 'N/A'}/100")
+                    print(f"   • Voice patterns found: {attempt_pattern_count}")
+                    print(f"   • Forbidden phrases: 0")
+                    print(f"   • Structural avg: {attempt_structural_avg:.1f}/100")
                     break
                 else:
                     print(f"\n⚠️  Attempt {attempt} below threshold")
@@ -622,25 +629,64 @@ class PostprocessCommand:
         print(f"\n{'='*80}")
         print(f"📊 FINAL QUALITY COMPARISON (Best of {attempt} attempts)")
         print(f"{'='*80}")
-        print(f"   Old readability: {old_readability.get('status', 'unknown')}")
-        print(f"   Best readability: {best_readability.get('status', 'unknown')}")
-        print(f"   Old AI patterns: {len(old_ai_patterns)}")
-        print(f"   Best AI patterns: {len(best_ai_patterns)}")
-        print(f"   Length change: {len(existing_content)} → {len(best_content)} chars")
+        print(f"   Old quality score: {old_quality_score}/100")
         print(f"   Best quality score: {best_quality_score}/100")
+        print(f"   Old AI issues: {len(old_ai_issues)}")
+        print(f"   Best AI issues: {len(best_ai_issues) if best_ai_issues is not None else 'N/A'}")
+        print(f"   Old forbidden phrases: {len(old_forbidden_violations)}")
+        print(f"   Best forbidden phrases: {best_forbidden_count}")
+        print(f"   Old voice patterns found: {old_pattern_count}")
+        print(f"   Best voice patterns found: {best_pattern_count}")
+        print(f"   Old voice authenticity: {old_voice_score if old_voice_score is not None else 'N/A'}/100")
+        if best_quality_analysis:
+            best_voice_score = best_quality_analysis['voice_authenticity'].get('score')
+            best_structural = best_quality_analysis.get('structural_quality', {})
+            best_structural_avg = (
+                best_structural.get('sentence_variation', 0) +
+                best_structural.get('rhythm_score', 0) +
+                best_structural.get('complexity_variation', 0)
+            ) / 3
+            print(f"   Best voice authenticity: {best_voice_score if best_voice_score is not None else 'N/A'}/100")
+            print(f"   Old structural avg: {old_structural_avg:.1f}/100")
+            print(f"   Best structural avg: {best_structural_avg:.1f}/100")
+        print(f"   Length change: {len(existing_content)} → {len(best_content)} chars")
         
         # Determine if improved
-        readability_improved = (
-            best_readability.get('status') == 'pass' and
-            old_readability.get('status') != 'pass'
+        ai_issues_improved = (
+            best_ai_issues is not None and len(best_ai_issues) < len(old_ai_issues)
         )
-        ai_patterns_improved = len(best_ai_patterns) < len(old_ai_patterns)
-        improved = readability_improved or ai_patterns_improved or best_quality_score >= QUALITY_THRESHOLD
+        forbidden_improved = best_forbidden_count < len(old_forbidden_violations)
+        pattern_improved = best_pattern_count > old_pattern_count
+        quality_improved = best_quality_score > old_quality_score
+        improved = (
+            quality_improved or
+            ai_issues_improved or
+            forbidden_improved or
+            pattern_improved or
+            (
+                best_quality_score >= QUALITY_THRESHOLD and
+                best_forbidden_count == 0
+            )
+        )
         
         if improved:
             print(f"\n✅ Content IMPROVED after {attempt} attempts (dual-write complete)")
         else:
-            print(f"\n⚠️  No improvement after {attempt} attempts (keeping best version)")
+            print(f"\n⚠️  No improvement after {attempt} attempts (keeping original version)")
+
+        # Ensure persisted content matches selected result without regressions.
+        # If not improved, restore original content.
+        if not dry_run:
+            content_to_persist = best_content if improved else existing_content
+            try:
+                self.generator.generator.adapter.write_component(item_id, self.field, content_to_persist)
+                if improved:
+                    print("✅ Best attempt persisted to source and frontmatter")
+                else:
+                    print("✅ Original content restored to source and frontmatter")
+            except Exception as persist_error:
+                print(f"❌ Failed to persist best attempt: {persist_error}")
+                raise
         
         return {
             'item': item_id,
@@ -652,12 +698,18 @@ class PostprocessCommand:
             'new_content': best_content,
             'best_quality_score': best_quality_score,
             'old_quality': {
-                'readability': old_readability.get('status'),
-                'ai_patterns': len(old_ai_patterns)
+                'overall_score': old_quality_score,
+                'ai_like': old_ai_like,
+                'ai_issues': len(old_ai_issues),
+                'voice_authenticity': old_voice_score,
+                'structural_avg': old_structural_avg
             },
             'new_quality': {
-                'readability': best_readability.get('status'),
-                'ai_patterns': len(best_ai_patterns)
+                'overall_score': best_quality_score,
+                'ai_like': best_quality_analysis['ai_patterns'].get('is_ai_like') if best_quality_analysis else None,
+                'ai_issues': len(best_ai_issues) if best_ai_issues is not None else None,
+                'voice_authenticity': best_quality_analysis['voice_authenticity'].get('score') if best_quality_analysis else None,
+                'structural_avg': best_structural_avg if best_quality_analysis else None
             }
         }
     

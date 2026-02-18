@@ -504,16 +504,46 @@ class PromptValidator:
         confuse the AI and produce poor output.
         """
         prompt_lower = prompt.lower()
+
+        # Exclude VOICE INSTRUCTIONS section from AI-clarity contradiction checks.
+        # Persona examples can include words like "detailed" and numeric examples
+        # that are not output-length directives.
+        lines = prompt.split('\n')
+        voice_start = None
+        voice_end = None
+        for idx, line in enumerate(lines):
+            upper = line.upper()
+            if 'VOICE INSTRUCTIONS:' in upper or line.startswith('VOICE:'):
+                voice_start = idx
+                continue
+            if voice_start is not None and idx > voice_start:
+                if line.startswith('REQUIREMENTS:') or '=== HUMANNESS' in upper or 'OUTPUT FORMAT:' in upper:
+                    voice_end = idx - 1
+                    break
+
+        if voice_start is not None:
+            if voice_end is None:
+                voice_end = len(lines) - 1
+            clarity_scan_text = '\n'.join(
+                line for idx, line in enumerate(lines)
+                if not (voice_start <= idx <= voice_end)
+            )
+        else:
+            clarity_scan_text = prompt
+
+        clarity_scan_lower = clarity_scan_text.lower()
         
         # AI confusion patterns - contradictory instructions
         ai_confusion_patterns = [
             (r'(short|brief|concise).*\b(detailed|comprehensive|thorough)\b', 'Length contradiction: short vs detailed'),
-            (r'(formal|professional).*\b(casual|conversational|informal)\b', 'Tone contradiction: formal vs casual'),
-            (r'(technical|precise).*\b(simple|plain|accessible)\b', 'Style contradiction: technical vs simple'),
+            # Tone/style contradictions should be detected only for explicit directives,
+            # not incidental vocabulary in examples or context sections.
+            (r'(formal\s+tone|professional\s+tone|keep\s+it\s+formal).*\b(casual\s+tone|conversational\s+tone|informal\s+tone|keep\s+it\s+casual)\b', 'Tone contradiction: formal vs casual'),
+            (r'(technical\s+style|technical\s+tone|highly\s+technical|precise\s+style).*\b(simple\s+style|plain\s+language|accessible\s+style|simple\s+language)\b', 'Style contradiction: technical vs simple'),
         ]
         
         for pattern, issue_desc in ai_confusion_patterns:
-            if re.search(pattern, prompt_lower, re.IGNORECASE | re.DOTALL):
+            if re.search(pattern, clarity_scan_lower, re.IGNORECASE | re.DOTALL):
                 result.add_issue(ValidationIssue(
                     severity=ValidationSeverity.WARNING,
                     category=ValidationCategory.LOGIC,
@@ -522,7 +552,7 @@ class PromptValidator:
                 ))
         
         # Check for multiple word count targets
-        word_counts = re.findall(r'(\d+)\s*(?:to|-)?\s*(\d+)?\s*words?', prompt_lower)
+        word_counts = re.findall(r'(\d+)\s*(?:to|-)?\s*(\d+)?\s*words?', clarity_scan_lower)
         if len(word_counts) > 1:
             result.add_issue(ValidationIssue(
                 severity=ValidationSeverity.WARNING,

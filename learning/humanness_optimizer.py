@@ -127,6 +127,7 @@ class HumannessOptimizer:
             'settings_description', 
             'component_summaries', 
             'description',
+            'pageDescription',
             'frontmatter_description',  # Frontmatter-specific descriptions
             # Compound component types (all need compact to stay under 8k limit)
             'health_effects',
@@ -579,6 +580,12 @@ class HumannessOptimizer:
             variation_pct = int(randomized_variation * 100)
             selected_length_key = "RANDOMIZED"
             selected_length = f"±{variation_pct}% variation (base: ±{int(base_variation*100)}%, adjusted: {variation_adjustment:+.2f})"
+
+        # pageDescription uses sentence-count constraints from schema prompt.
+        # Avoid introducing extra word-count targets in humanness layer.
+        if component_type == 'pageDescription':
+            selected_length_key = "SENTENCE_BASED"
+            selected_length = "2-4 complete sentences (no explicit word target)"
         
         # Store randomized variation for prompt_builder to use
         self._current_variation = randomized_variation
@@ -606,6 +613,8 @@ class HumannessOptimizer:
         for key, value in property_config.items():
             property_options.append(f"{value['label']}: {value['description']}")
         selected_property_strategy = random.choice(property_options)
+        if component_type == 'pageDescription':
+            selected_property_strategy = "Practical Clarity: Explain behavior and operator implications in plain prose"
         
         # 🎲 RANDOMIZE WARNING PLACEMENT (from config)
         warning_config = self.config['randomization_targets']['warning_placements']
@@ -685,14 +694,19 @@ class HumannessOptimizer:
         )
         
         # Append randomization selections to instructions (template placeholder approach)
+        length_guideline_line = f"📏 **LENGTH GUIDELINE**: ~{selected_length} words (approximate target)"
+        length_guideline_note = "    Note: This is a guideline, not a strict requirement\n    Write naturally until the content is complete"
+        if component_type == 'pageDescription':
+            length_guideline_line = f"📏 **LENGTH GUIDELINE**: {selected_length}"
+            length_guideline_note = "    Follow sentence-count guidance only; keep full, natural sentences"
+
         randomization_addendum = f"""
 
 🎲 **YOUR RANDOMIZED TARGETS FOR THIS GENERATION** 🎲
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📏 **LENGTH GUIDELINE**: ~{selected_length} words (approximate target)
-    Note: This is a guideline, not a strict requirement
-    Write naturally until the content is complete
+{length_guideline_line}
+{length_guideline_note}
 
 🏗️ **STRUCTURAL APPROACH**: {selected_structure}
 

@@ -98,11 +98,11 @@ class Generator:
         self.logger.info(f"Generator initialized for '{domain}' domain (single-pass with research)")
     
     def _load_all_personas(self) -> Dict[int, Dict[str, Any]]:
-        """Load all author voice profiles from prompts/profiles/voice/"""
+        """Load all author voice profiles from shared/voice/profiles/."""
         personas = {}
         
-        # Use shared/voice location (correct path per policy)
-        personas_dir = Path("prompts/profiles/voice")
+        # Canonical voice source per policy
+        personas_dir = Path("shared/voice/profiles")
         if not personas_dir.exists():
             raise FileNotFoundError(f"Voice profiles directory not found: {personas_dir}")
         
@@ -254,11 +254,11 @@ class Generator:
             if key not in item_data and value is not None:
                 item_data[key] = value
         
-        # Generate humanness layer if not provided (with session-level caching)
+        # Generate humanness layer if not provided (with item-aware session-level caching)
         if humanness_layer is None:
-            cache_key = f"{component_type}"
+            cache_key = f"{identifier}:{component_type}"
             
-            # Check cache first (avoid regenerating for each field)
+            # Check cache first (avoid regenerating for the SAME item+field)
             if cache_key in self._humanness_cache:
                 humanness_layer = self._humanness_cache[cache_key]
                 print(f"♻️  Using cached humanness instructions ({len(humanness_layer)} chars)")
@@ -280,7 +280,7 @@ class Generator:
         voice = self._get_persona_by_author_id(author_id)
         
         # Get facts and context (pass component_type for section-specific property selection)
-        facts = self.enricher.fetch_real_facts(identifier, component_type=component_type)
+        facts = self.data_provider.fetch_real_facts(identifier, component_type=component_type)
         context = self._build_context(item_data)
         
         # Get base parameters
@@ -299,6 +299,9 @@ class Generator:
         }
         
         # 🎯 SIZE-AWARE HUMANNESS LAYER: Check base prompt size BEFORE adding humanness
+        # Use explicit per-generation variation seed to avoid deterministic repetition.
+        generation_variation_seed = random.SystemRandom().randint(0, 2**31 - 1)
+
         # Build base prompt WITHOUT humanness first
         base_prompt = PromptBuilder.build_unified_prompt(
             topic=identifier,
@@ -309,6 +312,7 @@ class Generator:
             component_type=component_type,
             domain=self.domain,
             enrichment_params=enrichment_params,
+            variation_seed=generation_variation_seed,
             humanness_layer="",  # Empty first to measure base size
             faq_count=faq_count,
             item_data=item_data  # Pass item_data for template placeholders
@@ -327,6 +331,7 @@ class Generator:
             component_type=component_type,
             domain=self.domain,
             enrichment_params=enrichment_params,
+            variation_seed=generation_variation_seed,
             humanness_layer=final_humanness,
             faq_count=faq_count,
             item_data=item_data  # Pass item_data for template placeholders
@@ -345,10 +350,10 @@ class Generator:
         self.logger.info("="*80)
         
         try:
-            from shared.validation.prompt_coherence_validator import (
+            from shared.validation.content.prompt_coherence_validator import (
                 validate_prompt_coherence,
             )
-            from shared.validation.prompt_validator import validate_text_prompt
+            from shared.validation.content.prompt_validator import validate_text_prompt
 
             # Stage 1: Standard validation (length, format, technical)
             validation_result = validate_text_prompt(prompt)

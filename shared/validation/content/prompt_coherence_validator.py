@@ -220,8 +220,8 @@ class PromptCoherenceValidator:
                 sections['context'] = (i, self._find_section_end(lines, i))
             
             # Voice section
-            if line.startswith('VOICE:') or 'VOICE CHARACTERISTICS:' in line_upper:
-                sections['voice'] = (i, self._find_section_end(lines, i))
+            if line.startswith('VOICE:') or 'VOICE CHARACTERISTICS:' in line_upper or 'VOICE INSTRUCTIONS:' in line_upper:
+                sections['voice'] = (i, self._find_voice_section_end(lines, i))
             
             # Humanness layer (between voice and requirements)
             if 'HUMANNESS' in line_upper or 'ANTI-AI' in line_upper:
@@ -243,6 +243,15 @@ class PromptCoherenceValidator:
         
         for i in range(start + 1, len(lines)):
             if any(marker in lines[i] for marker in major_markers):
+                return i - 1
+        return len(lines) - 1
+
+    def _find_voice_section_end(self, lines: List[str], start: int) -> int:
+        """Find end of voice section using robust boundaries for long persona blocks."""
+        voice_end_markers = ['REQUIREMENTS:', '=== HUMANNESS', 'OUTPUT FORMAT:']
+        for i in range(start + 1, len(lines)):
+            upper = lines[i].upper()
+            if any(marker in upper for marker in voice_end_markers):
                 return i - 1
         return len(lines) - 1
     
@@ -305,6 +314,17 @@ class PromptCoherenceValidator:
         result: CoherenceValidationResult
     ):
         """Check for contradictory instructions"""
+        lines = prompt.split('\n')
+
+        # Exclude VOICE section from contradiction checks to avoid false positives
+        # from persona examples (e.g., "patterns detailed for nationality").
+        if 'voice' in sections:
+            voice_start, voice_end = sections['voice']
+            scan_lines = [line for idx, line in enumerate(lines) if not (voice_start <= idx <= voice_end)]
+            contradiction_scan_text = '\n'.join(scan_lines)
+        else:
+            contradiction_scan_text = prompt
+
         # Check for opposing length instructions
         length_patterns = [
             (r'(\d+)\s*words', 'word count'),
@@ -315,7 +335,7 @@ class PromptCoherenceValidator:
         
         found_lengths = []
         for pattern, label in length_patterns:
-            matches = re.finditer(pattern, prompt, re.IGNORECASE)
+            matches = re.finditer(pattern, contradiction_scan_text, re.IGNORECASE)
             for match in matches:
                 found_lengths.append((label, match.group(), match.start()))
         
@@ -335,18 +355,51 @@ class PromptCoherenceValidator:
                     suggestion="Choose one length target and remove conflicting instructions"
                 ))
         
-        # Check for tone contradictions
-        tone_keywords = {
-            'formal': ['formal', 'professional', 'technical', 'objective'],
-            'casual': ['casual', 'conversational', 'friendly', 'approachable'],
-            'neutral': ['neutral', 'balanced', 'detached']
+        # Check for tone contradictions using explicit tone directives only.
+        # Avoid broad keyword matching that creates false positives from examples.
+        tone_patterns = {
+            'formal': [
+                r'\bformal\s+tone\b',
+                r'\bprofessional\s+tone\b',
+                r'\bobjective\s+tone\b',
+                r'\bkeep\s+it\s+formal\b',
+            ],
+            'casual': [
+                r'\bcasual\s+tone\b',
+                r'\bconversational\s+tone\b',
+                r'\bfriendly\s+tone\b',
+                r'\bapproachable\s+tone\b',
+                r'\bkeep\s+it\s+casual\b',
+            ],
+            'neutral': [
+                r'\bneutral\s+tone\b',
+                r'\bbalanced\s+tone\b',
+                r'\bdetached\s+tone\b',
+            ]
         }
-        
+
+        def _has_positive_tone_signal(pattern: str) -> bool:
+            """Return True only when tone directive appears as a positive instruction (not negated/forbidden)."""
+            for match in re.finditer(pattern, contradiction_scan_text, re.IGNORECASE):
+                start = match.start()
+                context_window = contradiction_scan_text[max(0, start - 60):start].lower()
+
+                # Ignore negated/forbidden mentions (e.g., "no conversational tone")
+                negation_markers = [
+                    'no ', 'not ', 'never ', 'avoid ', 'forbidden',
+                    'do not ', "don't ", 'must not ', 'without '
+                ]
+                if any(marker in context_window for marker in negation_markers):
+                    continue
+
+                return True
+            return False
+
         found_tones = []
-        for tone_type, keywords in tone_keywords.items():
-            for keyword in keywords:
-                if re.search(rf'\b{keyword}\b', prompt, re.IGNORECASE):
-                    found_tones.append((tone_type, keyword))
+        for tone_type, patterns in tone_patterns.items():
+            for pattern in patterns:
+                if _has_positive_tone_signal(pattern):
+                    found_tones.append((tone_type, pattern))
                     break
         
         # Formal and casual are contradictory

@@ -271,7 +271,7 @@ class QualityAnalyzer:
         )
         
         # NEW: Check for author-specific pattern compliance
-        pattern_compliance = self._check_pattern_compliance(text, author)
+        pattern_compliance = self._check_pattern_compliance(text, author, component_type)
         
         # Calculate voice authenticity score (0-100)
         voice_score = self._calculate_voice_score(
@@ -295,9 +295,10 @@ class QualityAnalyzer:
             issues.append("Incorrect nationality linguistic patterns")
         
         # NEW: Add pattern compliance issues
-        if pattern_compliance['found_count'] < 2:
+        required_pattern_count = pattern_compliance.get('required_pattern_count', 2)
+        if pattern_compliance['found_count'] < required_pattern_count:
             issues.append(
-                f"Missing author-specific patterns: found {pattern_compliance['found_count']}/2 required "
+                f"Missing author-specific patterns: found {pattern_compliance['found_count']}/{required_pattern_count} required "
                 f"({', '.join(pattern_compliance['found_patterns']) if pattern_compliance['found_patterns'] else 'none'})"
             )
         
@@ -370,7 +371,12 @@ class QualityAnalyzer:
             'violations': violations
         }
     
-    def _check_pattern_compliance(self, text: str, author: Dict[str, str]) -> Dict[str, Any]:
+    def _check_pattern_compliance(
+        self,
+        text: str,
+        author: Dict[str, str],
+        component_type: Optional[str] = None
+    ) -> Dict[str, Any]:
         """
         Check if text uses author-specific linguistic patterns.
         
@@ -408,9 +414,13 @@ class QualityAnalyzer:
                     r'\bFollowing \w+\b',
                     r'\b(already|still|just) \w+\b'
                 ],
+                'logical_linking': [r'\bthus\b', r'\bas follows\b'],
             },
             'italy': {
-                'cleft_structures': [r'\w+, it (persists|resists|adheres|leads|demonstrates|manifests)'],
+                'cleft_structures': [
+                    r'\w+, it (persists|resists|adheres|leads|demonstrates|manifests)',
+                    r'\b(This|These|The) [\w\s\-]{1,30}, it \w+'
+                ],
                 'subjunctive_hedging': [r'\bIt seems that\b', r'\bIt appears\b', r'\bIt would seem\b'],
                 'romance_cognates': [
                     r'\btenaciously\b', r'\bmanifests\b', r'\bpersists\b', r'\bexhibits\b',
@@ -420,7 +430,12 @@ class QualityAnalyzer:
             'indonesia': {
                 'reduplication': [r'\b(\w+)-\1\b'],  # Partial reduplication patterns
                 'aspectual_markers': [r'\balready\b', r'\bstill\b', r'\bjust now\b', r'\blater on\b'],
-                'topic_prominence': [r'\w+, (it|this|that) \w+'],
+                'topic_prominence': [r'\w+, (it|this|that) \w+', r'\bThis [\w\s\-]{1,30}, it \w+'],
+                'temporal_prepositional_markers': [
+                    r'\bfrom the data\b', r'\bin observations\b', r'\bat the surface\b',
+                    r'\bafter treatment\b', r'\bduring exposure\b', r'\bbefore (treatment|application|ablation)\b'
+                ],
+                'causal_so': [r'\bso\b'],
             }
         }
         
@@ -450,14 +465,19 @@ class QualityAnalyzer:
         total_pattern_types = len(author_patterns)
         found_count = len(found_patterns)
         
-        # Require at least 2 pattern types present for authenticity
-        authentic = found_count >= 2
+        # Short-form components (e.g., pageDescription) need a lower threshold.
+        short_form_components = {'pageDescription', 'description', 'micro', 'caption'}
+        required_pattern_count = 1 if (component_type in short_form_components) else 2
+
+        # Require threshold pattern types present for authenticity
+        authentic = found_count >= required_pattern_count
         
         return {
             'country': country,
             'found_patterns': found_patterns,
             'found_count': found_count,
             'total_patterns': total_pattern_types,
+            'required_pattern_count': required_pattern_count,
             'authentic': authentic,
             'score': (found_count / total_pattern_types * 100) if total_pattern_types > 0 else 0
         }

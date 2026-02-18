@@ -61,14 +61,14 @@ def deploy_to_production():
         from scripts.operations.regenerate_all_domains import main as regenerate_all
         
         start_time = time.time()
-        print("🔄 Exporting all domains: materials, contaminants, compounds, settings...")
+        print("🔄 Exporting all domains: materials, contaminants, compounds, settings, applications...")
         
         exit_code = regenerate_all()
         
         elapsed = time.time() - start_time
         
         if exit_code == 0:
-            print(f"\n✅ Frontmatter regeneration complete (all 424 files)")
+            print(f"\n✅ Frontmatter regeneration complete (all domains exported)")
             print(f"   • Time: {elapsed:.1f}s")
         else:
             print(f"❌ Frontmatter regeneration had errors (exit code: {exit_code})")
