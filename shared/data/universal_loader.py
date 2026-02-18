@@ -213,7 +213,8 @@ class UniversalDataLoader:
             'materials': 'materials',
             'contaminants': 'contamination_patterns',
             'compounds': 'compounds',
-            'settings': 'settings'
+            'settings': 'settings',
+            'applications': 'applications'
         }
         
         if domain_name in root_keys:

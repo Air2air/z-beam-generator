@@ -75,13 +75,26 @@ from export.config.loader import load_domain_config
 from export.performance import ParallelExporter, get_yaml_cache
 
 
+def _enable_terminal_streaming() -> None:
+    """Configure stdout/stderr for immediate line-by-line terminal updates."""
+    try:
+        # Python 3.7+: force line buffering so generation progress appears immediately.
+        sys.stdout.reconfigure(line_buffering=True)
+        sys.stderr.reconfigure(line_buffering=True)
+    except Exception:
+        # Fail-safe: streaming configuration should never block command execution.
+        pass
+
+
 def postprocess_command(args):
     """Execute postprocessing command"""
+
+    print("📺 Streaming progress updates to terminal (live)")
     
     # Validate required arguments
     if not args.domain:
         print("❌ Error: --domain is required for postprocessing")
-        print("   Available: materials, contaminants, settings, compounds")
+        print("   Available: materials, contaminants, settings, compounds, applications")
         sys.exit(1)
     
     if not args.field:
@@ -90,6 +103,7 @@ def postprocess_command(args):
         print("   Contaminants: pageDescription, micro, faq")
         print("   Settings: settings_description, challenges")
         print("   Compounds: pageDescription, health_effects, exposure_guidelines")
+        print("   Applications: pageTitle, pageDescription, micro, faq")
         sys.exit(1)
     
     # Create postprocess command
@@ -131,7 +145,7 @@ def export_command(args):
     # Validate domain
     if not args.domain:
         print("❌ Error: --domain is required for export")
-        print("   Available: materials, contaminants, compounds, settings")
+        print("   Available: materials, contaminants, compounds, settings, applications")
         sys.exit(1)
     
     try:
@@ -200,7 +214,7 @@ def export_command(args):
 def export_all_command(args):
     """Export all domains to production (with parallel processing)"""
     
-    domains = ['materials', 'contaminants', 'compounds', 'settings']
+    domains = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
     use_parallel = getattr(args, 'parallel', True)  # Default to parallel
     
     print("="*80)
@@ -236,39 +250,52 @@ def export_all_command(args):
     
     start_time = time.time()
     
-    if use_parallel:
-        # Use parallel export for 3-4x speedup
-        parallel_exporter = ParallelExporter(max_workers=4)
-        results = parallel_exporter.export_all(skip_existing=args.skip_existing)
-        
-        # Print performance summary
-        print(parallel_exporter.get_performance_summary(results))
-        
-        total_exported = sum(r.get('exported', 0) for r in results.values())
-    else:
-        # Use sequential export (original behavior)
-        total_exported = 0
+    def _run_sequential_export() -> int:
+        total = 0
         for domain in domains:
             print(f"\n📦 {domain.upper()}:")
-            
+
             try:
                 config = load_domain_config(domain)
                 exporter = FrontmatterExporter(config)
                 results_dict = exporter.export_all(force=not args.skip_existing)
-                
+
                 exported = sum(1 for success in results_dict.values() if success)
-                total_exported += exported
+                total += exported
                 print(f"   ✅ {exported}/{len(results_dict)} files")
-                
+
             except Exception as e:
                 print(f"   ❌ Error: {e}")
+        return total
+
+    if use_parallel:
+        # Use parallel export for 3-4x speedup (fallback to sequential on failure)
+        try:
+            parallel_exporter = ParallelExporter(max_workers=4)
+            results = parallel_exporter.export_all(skip_existing=args.skip_existing)
+
+            total_exported = sum(r.get('exported', 0) for r in results.values())
+            if total_exported > 0:
+                print(parallel_exporter.get_performance_summary(results))
+            else:
+                print("⚠️  Parallel export produced 0 files; falling back to sequential mode.")
+                total_exported = _run_sequential_export()
+                use_parallel = False
+        except Exception as e:
+            print(f"⚠️  Parallel export failed: {e}")
+            print("↪️  Falling back to sequential export mode...")
+            total_exported = _run_sequential_export()
+            use_parallel = False
+    else:
+        # Use sequential export (original behavior)
+        total_exported = _run_sequential_export()
     
-    elapsed = time.time() - start_time
     elapsed = time.time() - start_time
     
     print(f"\n{'='*80}")
     print(f"✅ TOTAL: {total_exported} files exported in {elapsed:.1f}s")
-    print(f"⚡ Performance: {total_exported/elapsed:.1f} files/second")
+    throughput = (total_exported / elapsed) if elapsed > 0 else 0.0
+    print(f"⚡ Performance: {throughput:.1f} files/second")
     if use_parallel:
         print(f"💡 Parallel mode saved ~{(elapsed * 3 - elapsed):.0f}s compared to sequential")
     
@@ -302,6 +329,8 @@ def export_all_command(args):
 
 def backfill_command(args):
     """Execute backfill command to populate source YAML permanently"""
+
+    print("📺 Streaming progress updates to terminal (live)")
     
     # Import registry and load generator
     from generation.backfill.registry import BackfillRegistry
@@ -310,7 +339,7 @@ def backfill_command(args):
     config_file = Path(f'generation/backfill/config/{args.domain}.yaml')
     if not config_file.exists():
         print(f"❌ Error: No backfill config for domain: {args.domain}")
-        print(f"   Available domains: materials, contaminants, compounds, settings")
+        print(f"   Available domains: materials, contaminants, compounds, settings, applications")
         sys.exit(1)
     
     with open(config_file, 'r') as f:
@@ -334,8 +363,19 @@ def backfill_command(args):
             generator_config['item_filter'] = args.item
         
         # Create and run generator
+        print("\n" + "="*80)
+        print(f"🚀 BACKFILL GENERATOR: {args.generator} ({args.domain})")
+        if args.item:
+            print(f"🎯 Item filter: {args.item}")
+        print(f"🧪 Dry run: {args.dry_run}")
+        print("="*80)
+
         generator = BackfillRegistry.create(generator_config)
         stats = generator.backfill_all()
+
+        print("\n📊 Generator stats:")
+        for key, value in stats.items():
+            print(f"   • {key}: {value}")
         
         if not args.dry_run and stats['modified'] > 0:
             print(f"\n✅ Backfill complete: {stats['modified']} items modified")
@@ -349,13 +389,17 @@ def backfill_command(args):
         print(f"{'='*80}\\n")
         
         total_modified = 0
-        for gen_config in config['generators']:
+        total_generators = len(config['generators'])
+        for idx, gen_config in enumerate(config['generators'], start=1):
+            generator_name = gen_config.get('type', 'unknown')
+            print(f"\n[{idx}/{total_generators}] 🔄 Running generator: {generator_name}")
             gen_config['dry_run'] = args.dry_run
             if args.item:
                 gen_config['item_filter'] = args.item
             generator = BackfillRegistry.create(gen_config)
             stats = generator.backfill_all()
             total_modified += stats['modified']
+            print(f"   ✅ {generator_name} complete: modified={stats.get('modified', 0)}")
         
         if not args.dry_run and total_modified > 0:
             print(f"\\n✅ All backfills complete: {total_modified} total modifications")
@@ -365,6 +409,8 @@ def backfill_command(args):
 
 def main():
     """Main CLI entry point"""
+    _enable_terminal_streaming()
+
     parser = argparse.ArgumentParser(
         description='Z-Beam Generator - Content generation and management',
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -424,7 +470,7 @@ Examples:
     
     # Postprocessing arguments
     parser.add_argument('--domain', type=str,
-                        choices=['materials', 'contaminants', 'settings', 'compounds'],
+                        choices=['materials', 'contaminants', 'settings', 'compounds', 'applications'],
                         help='Domain to postprocess')
     parser.add_argument('--field', type=str,
                         help='Field type to postprocess (e.g., pageDescription, micro, faq)')

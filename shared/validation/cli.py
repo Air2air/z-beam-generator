@@ -68,7 +68,7 @@ Examples:
             help='Validate frontmatter files'
         )
         fm_parser.add_argument('--domain', 
-                              choices=['materials', 'contaminants', 'compounds', 'settings', 'all'],
+                              choices=['materials', 'contaminants', 'compounds', 'settings', 'applications', 'all'],
                               default='all', help='Domain to validate')
         fm_parser.add_argument('--check', 
                               choices=['structure', 'links', 'fields', 'all'],
@@ -94,7 +94,7 @@ Examples:
             help='Validate export configuration and output'
         )
         export_parser.add_argument('--domain',
-                                  choices=['materials', 'contaminants', 'compounds', 'settings', 'all'],
+                                  choices=['materials', 'contaminants', 'compounds', 'settings', 'applications', 'all'],
                                   default='all', help='Domain to validate')
         export_parser.add_argument('--verbose', action='store_true',
                                   help='Verbose output')
@@ -105,7 +105,7 @@ Examples:
             help='Validate no null/empty values in data'
         )
         nulls_parser.add_argument('--domain',
-                                 choices=['materials', 'contaminants', 'compounds', 'settings', 'all'],
+                                 choices=['materials', 'contaminants', 'compounds', 'settings', 'applications', 'all'],
                                  default='all', help='Domain to check')
         
         # Card structure validation
@@ -114,7 +114,7 @@ Examples:
             help='Validate card structure in frontmatter'
         )
         card_parser.add_argument('--domain',
-                                choices=['materials', 'contaminants', 'compounds', 'settings', 'all'],
+                                choices=['materials', 'contaminants', 'compounds', 'settings', 'applications', 'all'],
                                 default='all', help='Domain to check')
     
     def run(self, args=None):

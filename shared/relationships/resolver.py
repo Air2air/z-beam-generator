@@ -39,7 +39,8 @@ class RelationshipResolver:
             'materials': ('materials/Materials.yaml', 'materials'),
             'contaminants': ('contaminants/Contaminants.yaml', 'contamination_patterns'),
             'compounds': ('compounds/Compounds.yaml', 'compounds'),
-            'settings': ('settings/Settings.yaml', 'settings')
+            'settings': ('settings/Settings.yaml', 'settings'),
+            'applications': ('applications/Applications.yaml', 'applications')
         }
         
         if domain not in domain_map:
@@ -115,7 +116,9 @@ class RelationshipResolver:
         
     def _get_title(self, page: Dict[str, Any]) -> str:
         """Extract title from page data (handles different field names)."""
-        return (page.get('display_name') or 
+        return (page.get('displayName') or
+            page.get('display_name') or 
+            page.get('pageTitle') or
                 page.get('title') or 
                 page.get('name') or 
                 'Unknown')
@@ -129,6 +132,12 @@ class RelationshipResolver:
             
         # Check images array
         images = page.get('images', [])
+        if isinstance(images, dict):
+            hero = images.get('hero')
+            if isinstance(hero, dict):
+                return hero.get('url')
+            if isinstance(hero, str):
+                return hero
         if images and len(images) > 0:
             return images[0] if isinstance(images[0], str) else images[0].get('src')
             

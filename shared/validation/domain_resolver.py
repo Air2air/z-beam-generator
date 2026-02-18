@@ -46,6 +46,7 @@ class DomainResolver:
         'contaminants': 'data/contaminants/contaminants.yaml',
         'compounds': 'data/compounds/Compounds.yaml',
         'settings': 'data/settings/Settings.yaml',
+        'applications': 'data/applications/Applications.yaml',
     }
     
     DOMAIN_KEYS = {
@@ -53,6 +54,7 @@ class DomainResolver:
         'contaminants': 'contamination_patterns',
         'compounds': 'compounds',
         'settings': 'settings',
+        'applications': 'applications',
     }
     
     def __init__(self, project_root: Optional[Path] = None):
@@ -161,6 +163,9 @@ class DomainResolver:
             laser_type = item.get('laser_type', '')
             if laser_type:
                 return f'/settings/{laser_type}/{item_id}'
+        elif domain == 'applications':
+            # /applications/id
+            return f'/applications/{item_id}'
         
         # Fallback
         return f'/{domain}/{item_id}'

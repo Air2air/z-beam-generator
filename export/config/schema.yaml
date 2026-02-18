@@ -10,7 +10,7 @@ schema_version: "1.0.0"
 
 # Required fields for all export configs
 required_fields:
-  - domain          # Domain name (materials|contaminants|compounds|settings)
+  - domain          # Domain name (materials|contaminants|compounds|settings|applications)
   - source_file     # Path to source YAML data file
   - output_path     # Path to frontmatter output directory
   - items_key       # Root key in source YAML containing items
@@ -37,7 +37,7 @@ fields:
   domain:
     type: string
     description: "Domain identifier matching domains/{domain}/ directory"
-    allowed_values: [materials, contaminants, compounds, settings]
+    allowed_values: [materials, contaminants, compounds, settings, applications]
     
   source_file:
     type: string
@@ -60,7 +60,7 @@ fields:
   items_key:
     type: string
     description: "Root key in source YAML containing domain items"
-    examples: [materials, contaminants, compounds, settings]
+    examples: [materials, contaminants, compounds, settings, applications]
 
 # Relationship Item Structures (Phase 1 - Jan 8, 2026)
 relationship_items:

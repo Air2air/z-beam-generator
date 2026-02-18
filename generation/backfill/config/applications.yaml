@@ -1,0 +1,17 @@
+domain: applications
+source_file: data/applications/Applications.yaml
+items_key: applications
+
+generators:
+  - type: multi_field_text
+    module: generation.backfill.universal_text_generator
+    class: UniversalTextGenerator
+    source_file: data/applications/Applications.yaml
+    items_key: applications
+    fields:
+      - field: pageDescription
+        component_type: pageDescription
+      - field: micro
+        component_type: micro
+      - field: faq
+        component_type: faq

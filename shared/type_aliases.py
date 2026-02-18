@@ -142,7 +142,7 @@ Keys: parameters, scores, patterns, attempt_data, etc.
 # Literal Types for Constants
 # ============================================================================
 
-DomainType: TypeAlias = Literal['materials', 'contaminants', 'compounds', 'settings']
+DomainType: TypeAlias = Literal['materials', 'contaminants', 'compounds', 'settings', 'applications']
 """Valid domain types in the system for compile-time validation."""
 
 ComponentType: TypeAlias = Literal['description', 'micro', 'faq', 'excerpt', 'caption']

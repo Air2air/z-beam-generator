@@ -1,0 +1,33 @@
+# Applications Domain Export Configuration
+# Cross-references: domains/applications/config.yaml (generation settings)
+# Schema: export/config/schema.yaml
+
+domain: applications
+source_file: data/applications/Applications.yaml
+output_path: ../z-beam/frontmatter/applications
+items_key: applications
+filename_suffix: ''
+slugify_filenames: true
+id_field: id
+
+generators:
+- type: universal_content
+  module: export.generation.universal_content_generator
+  class: UniversalContentGenerator
+  tasks:
+  - type: export_metadata
+    description: Add ONLY export-time fields (dateModified, pageTitle if missing)
+  - type: text_field_normalization
+    description: Normalize text wrapper artifacts in description fields
+    fields:
+      - page_description
+      - pageDescription
+  - type: camelcase_normalization
+    description: Convert snake_case → camelCase for software metadata fields
+  - type: field_ordering
+    domain: applications
+    description: Organize output structure
+- type: field_order
+  module: export.generation.field_order_generator
+  class: FieldOrderGenerator
+  description: Normalize field order for consistency (must run last)

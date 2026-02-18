@@ -118,7 +118,7 @@ def validate_all_configs() -> None:
     from export.config.loader import load_domain_config
     
     all_errors = []
-    domains = ['materials', 'contaminants', 'compounds', 'settings']
+    domains = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
     
     for domain in domains:
         try:
@@ -161,7 +161,7 @@ def check_config_health() -> Dict[str, Any]:
         'domains_checked': 0
     }
     
-    domains = ['materials', 'contaminants', 'compounds', 'settings']
+    domains = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
     
     for domain in domains:
         try:

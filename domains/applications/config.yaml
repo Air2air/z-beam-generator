@@ -1,0 +1,29 @@
+# Applications Domain Configuration
+# Minimal config for coordinator initialization
+
+domain_name: "applications"
+data_path: "data/applications/Applications.yaml"
+data_root_key: "applications"
+frontmatter_pattern: "{slug}-applications.yaml"
+
+# Component lengths (word count targets)
+component_lengths:
+  pageDescription:
+    default: 80
+    min: 50
+    max: 130
+    extraction_strategy: raw
+  micro:
+    default: 60
+    min: 30
+    max: 120
+    extraction_strategy: raw
+  faq:
+    default: 100
+    min: 80
+    max: 150
+    extraction_strategy: json_list
+
+# Validation rules (inherits shared defaults)
+validation:
+  inherit_shared_defaults: true

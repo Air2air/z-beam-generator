@@ -102,6 +102,12 @@ class FieldRouter:
             'industryApplications': 'text',
             'commonChallenges': 'text',
             'operationalConsiderations': 'text',
+        },
+        'applications': {
+            'pageTitle': 'text',
+            'pageDescription': 'text',
+            'micro': 'text',
+            'faq': 'text',
         }
     }
     

@@ -76,7 +76,7 @@ Examples:
             help='Research domain associations'
         )
         assoc_parser.add_argument('--domain', required=True,
-                                 choices=['materials', 'contaminants', 'compounds', 'settings'],
+                                 choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
                                  help='Domain to research')
         assoc_parser.add_argument('--regenerate', action='store_true',
                                  help='Force regeneration')
@@ -87,7 +87,7 @@ Examples:
             help='Populate missing data fields'
         )
         pop_parser.add_argument('--domain', required=True,
-                               choices=['materials', 'contaminants', 'compounds', 'settings'],
+                               choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
                                help='Domain to populate')
         pop_parser.add_argument('--field', required=True,
                                help='Field to populate (or "all")')

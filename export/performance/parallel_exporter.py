@@ -37,7 +37,7 @@ def _export_single_domain(domain: DomainType, skip_existing: bool = False) -> Ge
     This function is defined at module level to be picklable for multiprocessing.
     
     Args:
-        domain: Domain to export ('materials', 'contaminants', 'compounds', 'settings')
+        domain: Domain to export ('materials', 'contaminants', 'compounds', 'settings', 'applications')
         skip_existing: Skip items that already have frontmatter files
         
     Returns:
@@ -82,9 +82,9 @@ class ParallelExporter:
         Initialize parallel exporter.
         
         Args:
-            max_workers: Maximum parallel processes (default: 4 for 4 domains)
+            max_workers: Maximum parallel processes (default: 5 for 5 domains)
         """
-        self.max_workers = max_workers or 4
+        self.max_workers = max_workers or 5
         self.logger = logging.getLogger(__name__)
     
     def export_domains(
@@ -154,7 +154,7 @@ class ParallelExporter:
         Returns:
             Dictionary mapping domain names to export results
         """
-        domains: List[DomainType] = ['materials', 'contaminants', 'compounds', 'settings']
+        domains: List[DomainType] = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
         return self.export_domains(domains, skip_existing=skip_existing)
     
     def get_performance_summary(self, results: Dict[str, GenerationResult]) -> str:

@@ -46,6 +46,7 @@ class ReferenceRegistry:
         'contaminants': 'data/contaminants/contaminants.yaml',
         'compounds': 'data/compounds/Compounds.yaml',
         'settings': 'data/settings/Settings.yaml',
+        'applications': 'data/applications/Applications.yaml',
     }
     
     # Root keys for each domain
@@ -54,6 +55,7 @@ class ReferenceRegistry:
         'contaminants': 'contamination_patterns',
         'compounds': 'compounds',
         'settings': 'settings',
+        'applications': 'applications',
     }
     
     # Suffix rules
@@ -277,6 +279,8 @@ class ReferenceRegistry:
             link_data['url'] = f"/compounds/{final_id}"
         elif domain == 'settings':
             link_data['url'] = f"/settings/{final_id}"
+        elif domain == 'applications':
+            link_data['url'] = f"/applications/{final_id}"
         
         return link_data
     
