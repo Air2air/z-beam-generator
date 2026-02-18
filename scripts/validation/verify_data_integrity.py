@@ -54,14 +54,15 @@ class DataValidationReport:
 class DataIntegrityValidator:
     """Validates relationships within source data files"""
     
-    DOMAINS = ['materials', 'contaminants', 'compounds', 'settings']
+    DOMAINS = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
     
     # Valid relationship types per domain
     VALID_RELATIONSHIPS = {
         'materials': ['related_contaminants', 'related_compounds', 'related_settings', 'regulatory_standards'],
         'contaminants': ['related_materials', 'produces_compounds', 'recommended_settings'],
         'compounds': ['produced_by_contaminants', 'related_materials'],
-        'settings': ['suitable_materials', 'effective_contaminants']
+        'settings': ['suitable_materials', 'effective_contaminants'],
+        'applications': []
     }
     
     # Bidirectional relationship mappings
@@ -78,7 +79,8 @@ class DataIntegrityValidator:
         'materials': 'data/materials/Materials.yaml',
         'contaminants': 'data/contaminants/contaminants.yaml',  # lowercase filename
         'compounds': 'data/compounds/Compounds.yaml',
-        'settings': 'data/settings/Settings.yaml'
+        'settings': 'data/settings/Settings.yaml',
+        'applications': 'data/applications/Applications.yaml'
     }
     
     def __init__(self, project_root: Path):
@@ -115,6 +117,8 @@ class DataIntegrityValidator:
                     items = content['compounds']
                 elif domain == 'settings' and 'settings' in content:
                     items = content['settings']
+                elif domain == 'applications' and 'applications' in content:
+                    items = content['applications']
                 else:
                     items = content
                 
@@ -356,7 +360,7 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Validate data integrity in source YAML files')
-    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings'],
+    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
                        help='Validate only specific domain')
     
     args = parser.parse_args()

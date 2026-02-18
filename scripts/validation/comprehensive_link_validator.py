@@ -41,7 +41,7 @@ def main():
     # Build index of all frontmatter files
     print("🔍 Building frontmatter index...")
     file_index = {}
-    for domain in ['materials', 'contaminants', 'compounds', 'settings']:
+    for domain in ['materials', 'contaminants', 'compounds', 'settings', 'applications']:
         domain_dir = frontmatter_dir / domain
         if domain_dir.exists():
             for yaml_file in domain_dir.glob('*.yaml'):
@@ -74,7 +74,8 @@ def main():
         'materials': r'^/materials/[\w-]+/[\w-]+/[\w-]+$',
         'settings': r'^/settings/[\w-]+/[\w-]+/[\w-]+-settings$',
         'contaminants': r'^/contaminants/[\w-]+/[\w-]+/[\w-]+$',
-        'compounds': r'^/compounds/[\w-]+/[\w-]+/[\w-]+-compound$'
+        'compounds': r'^/compounds/[\w-]+/[\w-]+/[\w-]+-compound$',
+        'applications': r'^/applications/[\w-]+$'
     }
     
     # Relationship tracking for bidirectional check

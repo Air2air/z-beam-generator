@@ -39,7 +39,7 @@ def main():
     validator.frontmatter_dir = frontmatter_dir  # Override default
     validator.load_schema()
     
-    domains = ['materials', 'contaminants', 'compounds', 'settings']
+    domains = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
     
     total_valid = 0
     total_files = 0

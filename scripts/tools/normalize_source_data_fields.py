@@ -128,6 +128,22 @@ FIELD_ORDER_TEMPLATES = {
         'safety_notes',
         'relationships',
     ],
+    'applications': [
+        'id',
+        'name',
+        'displayName',
+        'category',
+        'subcategory',
+        'author',
+        'micro',
+        'images',
+        'contentCards',
+        'relationships',
+        'card',
+        'keywords',
+        'slug',
+        'faq',
+    ],
 }
 
 # Domain configuration
@@ -147,6 +163,10 @@ DOMAIN_CONFIG = {
     'settings': {
         'file': 'data/settings/Settings.yaml',
         'root_key': 'settings',
+    },
+    'applications': {
+        'file': 'data/applications/Applications.yaml',
+        'root_key': 'applications',
     },
 }
 
@@ -307,7 +327,7 @@ Examples:
     
     parser.add_argument(
         '--domain',
-        choices=['materials', 'contaminants', 'compounds', 'settings'],
+        choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
         help='Domain to normalize'
     )
     parser.add_argument(

@@ -64,14 +64,15 @@ class ValidationReport:
 class FrontmatterLinkValidator:
     """Validates internal links across all frontmatter files"""
     
-    DOMAINS = ['materials', 'contaminants', 'compounds', 'settings']
+    DOMAINS = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
     
     # Valid relationship types for each domain
     VALID_RELATIONSHIPS = {
         'materials': ['related_contaminants', 'related_compounds', 'related_settings', 'regulatory_standards'],
         'contaminants': ['related_materials', 'produces_compounds', 'recommended_settings'],
         'compounds': ['produced_by_contaminants', 'related_materials'],
-        'settings': ['suitable_materials', 'effective_contaminants']
+        'settings': ['suitable_materials', 'effective_contaminants'],
+        'applications': []
     }
     
     # Bidirectional relationship mappings
@@ -534,7 +535,7 @@ class FrontmatterLinkValidator:
 
 def main():
     parser = argparse.ArgumentParser(description='Validate internal links in frontmatter files')
-    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings'],
+    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
                        help='Validate only specific domain')
     parser.add_argument('--report', type=str, help='Export detailed report to markdown file')
     parser.add_argument('--fix', action='store_true', help='Attempt to auto-fix simple issues (not implemented)')

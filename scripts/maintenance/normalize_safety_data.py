@@ -35,7 +35,7 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 FRONTMATTER_BASE = project_root.parent / "z-beam" / "frontmatter"
-AVAILABLE_DOMAINS = ['materials', 'contaminants', 'compounds', 'settings']
+AVAILABLE_DOMAINS = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
 
 RISK_LEVELS = ['none', 'low', 'moderate', 'high', 'critical']
 

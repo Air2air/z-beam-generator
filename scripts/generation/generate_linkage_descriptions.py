@@ -4,7 +4,7 @@ Generate Linkage Descriptions
 ==============================
 
 Generates contextual descriptions for domain linkages using the text generation system.
-Uses prompts from domains/{domain}/prompts/*_description.txt files.
+Uses prompts from prompts/{domain}/*_description.txt files.
 
 Usage:
     # Generate for specific domain and linkage field
@@ -143,19 +143,18 @@ class LinkageDescriptionGenerator:
         # Generate using text generation system
         print(f"\n🎨 Generating {field} description for {item_name}")
         print(f"   Author: {author_id}")
-        print(f"   Prompt: domains/{self.domain}/prompts/{field}_description.txt")
+        print(f"   Prompt: prompts/{self.domain}/{field}_description.txt")
         
         try:
             result = self.generator.generate(
                 material_name=item_name,  # Generator uses material_name parameter
-                component_type=f"{field}
                 component_type=f"{field}_description"
             )
             
             if result and hasattr(result, 'content') and result.content:
                 return result.content
             else:
-                print(f"❌ Generation failed or returned empty content
+                print("❌ Generation failed or returned empty content")
                 
         except Exception as e:
             print(f"❌ Error generating description: {e}")
@@ -296,7 +295,7 @@ def main():
     parser.add_argument(
         '--domain',
         required=True,
-        choices=['materials', 'contaminants', 'compounds', 'settings'],
+        choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
         help='Domain to generate linkages for'
     )
     

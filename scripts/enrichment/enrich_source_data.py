@@ -78,7 +78,7 @@ class SourceDataEnricher:
     def _load_section_configs(self) -> Dict:
         """Load section metadata configurations from export configs."""
         configs = {}
-        for domain in ['materials', 'contaminants', 'compounds', 'settings']:
+        for domain in ['materials', 'contaminants', 'compounds', 'settings', 'applications']:
             with open(f'export/config/{domain}.yaml') as f:
                 configs[domain] = yaml.safe_load(f)
         return configs
@@ -90,6 +90,7 @@ class SourceDataEnricher:
             'contaminants': 'data/contaminants/Contaminants.yaml',
             'compounds': 'data/compounds/Compounds.yaml',
             'settings': 'data/settings/Settings.yaml',
+            'applications': 'data/applications/Applications.yaml',
         }
         
         file_path = file_map.get(domain)
@@ -106,6 +107,7 @@ class SourceDataEnricher:
             'contaminants': 'data/contaminants/Contaminants.yaml',
             'compounds': 'data/compounds/Compounds.yaml',
             'settings': 'data/settings/Settings.yaml',
+            'applications': 'data/applications/Applications.yaml',
         }
         
         file_path = file_map.get(domain)
@@ -283,7 +285,7 @@ class SourceDataEnricher:
     
     def enrich_all(self):
         """Enrich all domains."""
-        domains = ['materials', 'contaminants', 'compounds', 'settings']
+        domains = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
         
         for domain in domains:
             try:
@@ -295,7 +297,7 @@ class SourceDataEnricher:
 
 def main():
     parser = argparse.ArgumentParser(description='Enrich source data files with metadata')
-    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings'],
+    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
                        help='Domain to enrich (if not specified with --all)')
     parser.add_argument('--all', action='store_true', help='Enrich all domains')
     parser.add_argument('--dry-run', action='store_true', help='Preview changes without writing')

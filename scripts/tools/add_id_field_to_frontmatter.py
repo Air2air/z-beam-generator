@@ -92,7 +92,7 @@ def main():
     """Process all frontmatter domains."""
     frontmatter_dir = Path(__file__).parent.parent.parent / 'frontmatter'
     
-    domains = ['materials', 'contaminants', 'compounds', 'settings']
+    domains = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
     
     total_stats = {
         'total': 0,

@@ -6,7 +6,7 @@ cd ../z-beam/frontmatter
 echo "=== VALIDATION: _section Completeness ==="
 echo ""
 
-for domain in materials contaminants compounds settings; do
+for domain in materials contaminants compounds settings applications; do
     echo "=== $domain domain ==="
     
     total_relationships=0

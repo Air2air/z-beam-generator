@@ -52,6 +52,7 @@ class LinkRepairer:
         'contaminants': 'data/contaminants/contaminants.yaml',
         'compounds': 'data/compounds/Compounds.yaml',
         'settings': 'data/settings/Settings.yaml',
+        'applications': 'data/applications/Applications.yaml',
     }
     
     RELATIONSHIP_FIELDS = {
@@ -59,6 +60,7 @@ class LinkRepairer:
         'contaminants': ['related_materials', 'produces_compounds', 'recommended_settings'],
         'compounds': ['produced_by_contaminants', 'related_materials'],
         'settings': ['suitable_materials', 'effective_contaminants'],
+        'applications': [],
     }
     
     # Map relationship field to target domain
@@ -293,6 +295,8 @@ class LinkRepairer:
                 items = data['compounds']
             elif domain == 'settings' and 'settings' in data:
                 items = data['settings']
+            elif domain == 'applications' and 'applications' in data:
+                items = data['applications']
             else:
                 print(f"   ⚠️  No expected key found in file")
                 return
@@ -355,7 +359,7 @@ Examples:
     )
     parser.add_argument('--dry-run', action='store_true',
                        help='Show what would be fixed without making changes')
-    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings'],
+    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
                        help='Only repair specific domain')
     
     args = parser.parse_args()

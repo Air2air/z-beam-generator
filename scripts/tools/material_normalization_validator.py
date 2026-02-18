@@ -37,13 +37,13 @@ DATA_FILES = {
     "Settings.yaml": PROJECT_ROOT / "data" / "settings" / "Settings.yaml",
     "MachineSettings.yaml": PROJECT_ROOT / "data" / "materials" / "MachineSettings.yaml",
     "MaterialProperties.yaml": PROJECT_ROOT / "data" / "materials" / "MaterialProperties.yaml",
-    "contaminants.yaml": PROJECT_ROOT / "data" / "contaminants" / "contaminants.yaml",
+    "Contaminants.yaml": PROJECT_ROOT / "data" / "contaminants" / "Contaminants.yaml",
     "IndustryApplications.yaml": PROJECT_ROOT / "data" / "materials" / "IndustryApplications.yaml",
 }
 
 # Code files with hardcoded material mappings
 CODE_FILES = {
-    "category_contamination_researcher.py": PROJECT_ROOT / "domains" / "materials" / "image" / "research" / "category_contamination_researcher.py",
+    "contamination_pattern_selector.py": PROJECT_ROOT / "domains" / "materials" / "image" / "research" / "contamination_pattern_selector.py",
     "shape_researcher.py": PROJECT_ROOT / "domains" / "materials" / "image" / "research" / "shape_researcher.py",
 }
 
@@ -97,7 +97,7 @@ def get_materials_from_file(path: Path, file_type: str) -> Set[str]:
             if isinstance(key, str) and key[0].isupper() and key not in ["schema_version", "last_updated", "description"]:
                 materials.add(key)
     
-    elif file_type == "contaminants.yaml":
+    elif file_type == "Contaminants.yaml":
         # Contaminants have valid_materials and prohibited_materials lists
         patterns = data.get("contamination_patterns", {})
         for pattern_data in patterns.values():
@@ -116,30 +116,38 @@ def get_materials_from_file(path: Path, file_type: str) -> Set[str]:
     return materials
 
 
-def check_category_map_sync(canonical_materials: Set[str], material_categories: Dict[str, str]) -> List[str]:
-    """Check if CATEGORY_MAP in category_contamination_researcher.py is in sync."""
+def check_selector_map_sync(canonical_materials: Set[str], material_categories: Dict[str, str]) -> List[str]:
+    """Check if MATERIAL_CATEGORIES in contamination_pattern_selector.py is present and aligned."""
     issues = []
     
-    code_path = CODE_FILES["category_contamination_researcher.py"]
+    code_path = CODE_FILES["contamination_pattern_selector.py"]
     if not code_path.exists():
         return [f"File not found: {code_path}"]
     
     content = code_path.read_text()
     
-    # Find materials in CATEGORY_MAP
+    # Fail-fast check for expected mapping constant
+    if "MATERIAL_CATEGORIES" not in content:
+        return ["MATERIAL_CATEGORIES constant not found in contamination_pattern_selector.py"]
+
+    # Find lowercase material keys in MATERIAL_CATEGORIES
     import re
-    map_materials = set(re.findall(r'"([A-Z][a-zA-Z0-9 ]+)":\s*"[a-z_]+"', content))
+    map_materials = set(re.findall(r"'([a-z0-9\-\s]+)'\s*:\s*'[^']+'", content))
+    if not map_materials:
+        map_materials = set(re.findall(r'"([a-z0-9\-\s]+)"\s*:\s*"[^"]+"', content))
+
+    canonical_lower = {m.lower() for m in canonical_materials}
     
     # Check for materials in YAML but not in code
-    missing_in_code = canonical_materials - map_materials
+    missing_in_code = canonical_lower - map_materials
     if missing_in_code:
         # Filter to just important plastics/metals that should be mapped
         important_missing = {m for m in missing_in_code if any(
-            cat in material_categories.get(m, "").lower() 
+            cat in material_categories.get(next((k for k in material_categories if k.lower() == m), m), "").lower() 
             for cat in ["plastic", "metal", "polymer", "ceramic", "glass", "wood"]
         )}
         if important_missing:
-            issues.append(f"Materials in YAML but not in CATEGORY_MAP: {sorted(important_missing)[:10]}...")
+            issues.append(f"Materials in YAML but not in MATERIAL_CATEGORIES: {sorted(important_missing)[:10]}...")
     
     return issues
 
@@ -192,14 +200,14 @@ def generate_report(canonical: Set[str], material_categories: Dict[str, str]) ->
     report.append("\n" + "-" * 70)
     report.append("CODE FILE SYNC STATUS:")
     
-    code_issues = check_category_map_sync(canonical, material_categories)
+    code_issues = check_selector_map_sync(canonical, material_categories)
     if code_issues:
-        report.append("❌ category_contamination_researcher.py:")
+        report.append("❌ contamination_pattern_selector.py:")
         for issue in code_issues:
             report.append(f"   {issue}")
         all_issues.extend(code_issues)
     else:
-        report.append("✅ category_contamination_researcher.py: In sync")
+        report.append("✅ contamination_pattern_selector.py: In sync")
     
     # Summary
     report.append("\n" + "=" * 70)

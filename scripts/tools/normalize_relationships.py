@@ -526,7 +526,7 @@ def main():
     )
     parser.add_argument(
         '--domain',
-        choices=['materials', 'contaminants', 'compounds', 'settings', 'all'],
+        choices=['materials', 'contaminants', 'compounds', 'settings', 'applications', 'all'],
         required=True,
         help='Domain to process'
     )
@@ -552,7 +552,7 @@ def main():
     
     # Determine domains to process
     if args.domain == 'all':
-        domains = ['materials', 'contaminants', 'compounds', 'settings']
+        domains = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
     else:
         domains = [args.domain]
     

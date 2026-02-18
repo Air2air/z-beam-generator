@@ -27,7 +27,7 @@ from typing import Dict, Any, List, Optional
 
 # Configuration
 SOURCE_DATA_BASE = Path(__file__).parent.parent.parent / 'data'
-AVAILABLE_DOMAINS = ['materials', 'contaminants', 'compounds', 'settings']
+AVAILABLE_DOMAINS = ['materials', 'contaminants', 'compounds', 'settings', 'applications']
 
 # Risk descriptions by severity
 FIRE_RISK_DESCRIPTIONS = {

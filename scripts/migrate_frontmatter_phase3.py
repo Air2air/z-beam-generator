@@ -43,7 +43,7 @@ class Phase3Enhancer:
         """Load all frontmatter files for analysis."""
         print("📚 Loading all frontmatter files...")
         
-        for content_type in ['materials', 'contaminants', 'compounds', 'settings']:
+        for content_type in ['materials', 'contaminants', 'compounds', 'settings', 'applications']:
             type_path = base_path / content_type
             if not type_path.exists():
                 continue

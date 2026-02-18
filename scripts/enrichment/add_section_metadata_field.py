@@ -20,7 +20,8 @@ DOMAIN_FILES = {
     'materials': ('data/materials/Materials.yaml', 'materials'),
     'contaminants': ('data/contaminants/Contaminants.yaml', 'contaminants'),
     'compounds': ('data/compounds/Compounds.yaml', 'compounds'),
-    'settings': ('data/settings/Settings.yaml', 'settings')
+    'settings': ('data/settings/Settings.yaml', 'settings'),
+    'applications': ('data/applications/Applications.yaml', 'applications')
 }
 
 
@@ -125,7 +126,7 @@ def process_domain(domain: str, dry_run: bool = False) -> dict:
 def main():
     parser = argparse.ArgumentParser(description='Add sectionMetadata field to all _section blocks')
     parser.add_argument('--dry-run', action='store_true', help='Preview changes without saving')
-    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings'],
+    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
                         help='Process specific domain only')
     
     args = parser.parse_args()

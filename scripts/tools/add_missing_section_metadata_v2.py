@@ -484,7 +484,7 @@ def process_file(filepath: Path, domain: str, dry_run: bool = False) -> int:
 
 def main():
     parser = argparse.ArgumentParser(description='Add missing _section metadata to frontmatter relationships')
-    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'all'],
+    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'applications', 'all'],
                        help='Domain to process')
     parser.add_argument('--file', type=Path, help='Process single file')
     parser.add_argument('--dry-run', action='store_true', help='Show what would be changed without modifying files')
@@ -509,7 +509,7 @@ def main():
         total_added = process_file(args.file, domain, args.dry_run)
     else:
         # Process domain(s)
-        domains = ['materials', 'contaminants', 'compounds', 'settings'] if args.domain == 'all' else [args.domain]
+        domains = ['materials', 'contaminants', 'compounds', 'settings', 'applications'] if args.domain == 'all' else [args.domain]
         
         for domain in domains:
             print(f"\n{'='*70}")

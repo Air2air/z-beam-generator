@@ -233,7 +233,7 @@ def main():
     )
     parser.add_argument(
         '--type',
-        choices=['materials', 'contaminants', 'compounds', 'settings'],
+        choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
         help='Migrate only files of this content type'
     )
     parser.add_argument(
@@ -283,7 +283,7 @@ def main():
             return 1
     
     elif args.all:
-        for content_type in ['materials', 'contaminants', 'compounds', 'settings']:
+        for content_type in ['materials', 'contaminants', 'compounds', 'settings', 'applications']:
             type_dir = frontmatter_base / content_type
             if type_dir.exists():
                 files_to_process.extend(type_dir.glob('*.yaml'))

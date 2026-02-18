@@ -135,6 +135,15 @@ import os
 import sys
 import argparse
 
+
+def _enable_terminal_streaming() -> None:
+    """Configure stdout/stderr for live line-by-line terminal updates."""
+    try:
+        sys.stdout.reconfigure(line_buffering=True)
+        sys.stderr.reconfigure(line_buffering=True)
+    except Exception:
+        pass
+
 # Import command handlers from modular structure
 from shared.commands import (
     handle_micro_generation,
@@ -166,6 +175,7 @@ from shared.commands.workflow import (
 
 def main():
     """Main application entry point with basic command line interface."""
+    _enable_terminal_streaming()
     
     # Argument parser setup
     parser = argparse.ArgumentParser(description="Z-Beam Content Generator")
@@ -253,6 +263,24 @@ def main():
     parser.add_argument("--verbose", action="store_true", help="Show detailed output for tests and checks")
     
     args = parser.parse_args()
+
+    generation_requested = any([
+        args.run,
+        args.run_region,
+        args.run_application,
+        args.run_thesaurus,
+        args.material,
+        args.all,
+        args.micro,
+        args.material_description,
+        args.settings_description,
+        args.component_summaries,
+        args.faq,
+        args.batch_material_description,
+        args.batch_caption,
+    ])
+    if generation_requested:
+        print("📺 Streaming progress updates to terminal (live)")
     
     # ========================================================================
     # UNIFIED WORKFLOW COMMANDS (Priority - handle first)

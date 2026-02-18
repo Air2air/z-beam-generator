@@ -47,6 +47,7 @@ class SoftwareMetadataBackfiller:
         'contaminants': 'data/contaminants/Contaminants.yaml',
         'compounds': 'data/compounds/Compounds.yaml',
         'settings': 'data/settings/Settings.yaml',
+        'applications': 'data/applications/Applications.yaml',
     }
     
     CONTENT_TYPE_MAP = {
@@ -54,6 +55,7 @@ class SoftwareMetadataBackfiller:
         'contaminants': 'contaminant',
         'compounds': 'compound',
         'settings': 'setting',
+        'applications': 'application',
     }
     
     def __init__(self, dry_run: bool = True):
@@ -90,6 +92,7 @@ class SoftwareMetadataBackfiller:
             'contaminants': 'Contaminants',
             'compounds': 'Compounds',
             'settings': 'Settings',
+            'applications': 'Applications',
         }
         breadcrumbs.append({
             'label': domain_labels.get(domain, domain.title()),
@@ -326,7 +329,7 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__
     )
-    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings'],
+    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'applications'],
                        help='Backfill specific domain only')
     parser.add_argument('--all', action='store_true',
                        help='Backfill all domains')

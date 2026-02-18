@@ -437,7 +437,7 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Fix frontmatter structure issues')
-    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'all'],
+    parser.add_argument('--domain', choices=['materials', 'contaminants', 'compounds', 'settings', 'applications', 'all'],
                         default='all', help='Domain to process')
     parser.add_argument('--apply', action='store_true', help='Apply changes (default is dry-run)')
     
@@ -454,7 +454,7 @@ def main():
     
     # Process domains
     if args.domain == 'all':
-        for domain in ['materials', 'contaminants', 'compounds', 'settings']:
+        for domain in ['materials', 'contaminants', 'compounds', 'settings', 'applications']:
             fixer.process_domain(domain)
     else:
         fixer.process_domain(args.domain)

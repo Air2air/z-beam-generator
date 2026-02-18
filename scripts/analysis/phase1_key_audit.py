@@ -100,7 +100,7 @@ def main():
     
     # Collect all YAML files
     all_files = []
-    for domain in ['materials', 'contaminants', 'compounds', 'settings']:
+    for domain in ['materials', 'contaminants', 'compounds', 'settings', 'applications']:
         domain_path = FRONTMATTER_DIR / domain
         if domain_path.exists():
             all_files.extend(domain_path.glob("*.yaml"))

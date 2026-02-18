@@ -123,7 +123,7 @@ def add_intensity_to_relationships(data: Dict[str, Any]) -> tuple[int, int]:
     removed_count = 0
     
     # Handle different domain structures
-    for domain_key in ['materials', 'contaminants', 'compounds', 'settings']:
+    for domain_key in ['materials', 'contaminants', 'compounds', 'settings', 'applications']:
         if domain_key not in data:
             continue
             
@@ -231,6 +231,7 @@ def main():
         data_dir / 'contaminants' / 'contaminants.yaml',
         data_dir / 'compounds' / 'Compounds.yaml',
         data_dir / 'settings' / 'Settings.yaml',
+        data_dir / 'applications' / 'Applications.yaml',
     ]
     
     # Process each file
