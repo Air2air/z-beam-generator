@@ -344,7 +344,7 @@ Four distinct authors via **offset-based system**:
 
 1. **Create domain structure**:
 ```bash
-mkdir -p domains/new_domain/prompts
+mkdir -p prompts/new_domain
 touch domains/new_domain/config.yaml
 ```
 
@@ -364,7 +364,7 @@ component_lengths:
     extraction_strategy: "before_after"
 ```
 
-3. **Create prompts** (`domains/new_domain/prompts/description.txt`):
+3. **Create prompts** (`prompts/new_domain/description.txt`):
 ```
 Write about {item_name} in the context of {category}.
 

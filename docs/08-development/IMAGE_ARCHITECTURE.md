@@ -103,7 +103,7 @@ The image generation system creates before/after laser cleaning images using a l
 
 ## Template System
 
-Prompts are built from 4 layers in `domains/materials/image/prompts/shared/generation/`:
+Prompts are built from 4 layers in `prompts/shared/generation/`:
 
 | Layer | File | Purpose |
 |-------|------|---------|

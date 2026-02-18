@@ -8,7 +8,7 @@
 
 ## Policy Statement
 
-**ALL word count specifications MUST be defined in prompt files (`domains/**/prompts/*.txt`). Zero tolerance for word counts in configuration files.**
+**ALL word count specifications MUST be defined in prompt files (`prompts/{domain}/*.txt`). Zero tolerance for word counts in configuration files.**
 
 ---
 
@@ -149,14 +149,14 @@ WORD LENGTH: 80-240 words
 - Standardized format across all 51 text generation prompts
 
 **Files Updated:**
-- `domains/materials/prompts/page_title.txt` - Added 8-12 words spec
-- `domains/materials/prompts/meta_description.txt` - Added 25-35 words spec
-- `domains/materials/prompts/power_intensity.txt` - Added 5-10 words spec
-- `domains/materials/prompts/context.txt` - Added 10-30 words spec
-- `domains/settings/prompts/recommendations.txt` - Added 200-600 words spec
-- `domains/contaminants/prompts/context.txt` - Added 10-30 words spec
-- `domains/contaminants/prompts/appearance.txt` - Added 100-300 words spec
-- `domains/contaminants/prompts/compounds.txt` - Added 50-150 words spec
+- `prompts/materials/page_title.txt` - Added 8-12 words spec
+- `prompts/materials/meta_description.txt` - Added 25-35 words spec
+- `prompts/materials/power_intensity.txt` - Added 5-10 words spec
+- `prompts/materials/context.txt` - Added 10-30 words spec
+- `prompts/settings/recommendations.txt` - Added 200-600 words spec
+- `prompts/contaminants/context.txt` - Added 10-30 words spec
+- `prompts/contaminants/appearance.txt` - Added 100-300 words spec
+- `prompts/contaminants/compounds.txt` - Added 50-150 words spec
 
 **Config Parameters Removed:**
 - `length_variation_range` (was: 10 → ±60%) - DEPRECATED, ranges now in prompts
@@ -166,7 +166,7 @@ WORD LENGTH: 80-240 words
 
 **Backward Compatibility**: Legacy code accessing these parameters will receive default values (50% variation) to prevent breakage. Code should be migrated to read ranges from prompt files directly.
 
-**Image prompts excluded:** Image generation prompts in `domains/materials/image/prompts/` are not text generation and correctly don't need word counts.
+**Image prompts excluded:** Image generation prompt systems in `domains/materials/image/research/` and `shared/image/utils/` are not text generation and correctly don't need word counts.
 
 ---
 
@@ -179,10 +179,10 @@ WORD LENGTH: 80-240 words
 def test_all_text_prompts_have_word_length():
     """Verify WORD LENGTH specification in all text generation prompts."""
     text_prompt_dirs = [
-        'domains/materials/prompts',
-        'domains/contaminants/prompts', 
-        'domains/compounds/prompts',
-        'domains/settings/prompts'
+        'prompts/materials',
+        'prompts/contaminants', 
+        'prompts/compounds',
+        'prompts/settings'
     ]
     
     for prompt_dir in text_prompt_dirs:
@@ -300,7 +300,7 @@ grep -c "You are|TASK:" domains/*/config.yaml
 # Result: 0 matches in all 4 configs ✅
 
 # All prompt files exist
-ls -1 domains/*/prompts/*.txt | wc -l
+ls -1 prompts/*/*.txt | wc -l
 # Result: 51+ prompt files verified ✅
 ```
 
@@ -318,7 +318,7 @@ ls -1 domains/*/prompts/*.txt | wc -l
 
 ### Architectural Separation Achieved
 
-**PROMPTS (`domains/*/prompts/*.txt`)**
+**PROMPTS (`prompts/{domain}/*.txt`)**
 - ✅ WHAT to generate (content instructions)
 - ✅ HOW to format (style, structure, tone)
 - ✅ Word count ranges (`WORD LENGTH: 50-150 words`)

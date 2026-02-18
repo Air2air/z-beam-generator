@@ -9,16 +9,16 @@
 ## ✅ Already Implemented
 
 ### Shared Infrastructure
-- ✅ `shared/image/prompts/prompt_builder.py` - Template loading
-- ✅ `shared/image/prompts/prompt_optimizer.py` - Imagen limit enforcement
+- ✅ `shared/image/utils/prompt_builder.py` - Template loading
+- ✅ `shared/image/utils/prompt_optimizer.py` - Imagen limit enforcement
 - ✅ `shared/image/learning/image_generation_logger.py` - Generation tracking
 - ✅ `shared/validation/contamination_validator.py` - Material compatibility validation
 - ✅ `shared/types/contamination_levels.py` - Contamination level descriptions
 
 ### Materials Domain
 - ✅ `domains/materials/image/material_generator.py` - Image generation orchestration
-- ✅ `domains/materials/image/prompts/material_researcher.py` - Material research
-- ✅ `domains/materials/image/prompts/category_contamination_researcher.py` - Category research
+- ✅ `domains/materials/image/research/shape_researcher.py` - Material/shape research
+- ✅ `domains/materials/image/research/contamination_pattern_selector.py` - Category/material pattern research
 - ✅ `domains/materials/image/material_config.py` - Configuration dataclass
 
 ### Contaminants Domain
@@ -313,7 +313,7 @@ def populate_all_appearances():
 
 **3.1 Material-Specific Prompt Templates**
 
-**File**: `shared/image/prompts/shared/generation/material_specific_layer.txt` (NEW)
+**File**: `prompts/shared/generation/material_specific_layer.txt` (NEW)
 
 Create template that uses material-specific appearance data:
 
@@ -333,7 +333,7 @@ CONTAMINATION APPEARANCE ON {MATERIAL_NAME}:
 
 **3.2 Update SharedPromptBuilder**
 
-**File**: `shared/image/prompts/prompt_builder.py`
+**File**: `shared/image/utils/prompt_builder.py`
 
 Enhance to use material-specific appearance data:
 

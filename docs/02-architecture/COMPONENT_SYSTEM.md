@@ -61,11 +61,11 @@ Z-Beam Generator supports multiple content types with **equal architectural trea
    ↓
 2. ComponentRegistry._discover_components()
    ↓
-3. Scans domains/{domain}/prompts/*.txt files
+3. Scans prompts/{domain}/*.txt files
    ↓
 4. For each .txt file (excluding system prompts):
    - Component type = filename without .txt
-   - Prompt file = domains/{domain}/prompts/{filename}.txt
+    - Prompt file = prompts/{domain}/{filename}.txt
    ↓
 5. Loads lengths from domains/{domain}/config.yaml
    ↓
@@ -80,22 +80,22 @@ Z-Beam Generator supports multiple content types with **equal architectural trea
 
 ```
 z-beam-generator/
+├── prompts/
+│   ├── materials/
+│   │   ├── micro.txt          # Defines 'micro' component
+│   │   ├── description.txt    # Defines 'description' component
+│   │   ├── faq.txt            # Defines 'faq' component
+│   │   └── {custom}.txt       # Add any new component here
+│   └── contaminants/
+│       └── description.txt    # Contaminant-specific
+│
 ├── domains/
 │   ├── materials/
-│   │   ├── prompts/
-│   │   │   ├── micro.txt          # Defines 'micro' component
-│   │   │   ├── description.txt     # Defines 'description' component
-│   │   │   ├── faq.txt             # Defines 'faq' component
-│   │   │   └── {custom}.txt        # Add any new component here
-│   │   │
-│   │   └── config.yaml             # Component lengths only
+│   │   └── config.yaml        # Component lengths only
 │   │       component_lengths:
 │   │         micro: {default: 50, min: 30, max: 70}
 │   │         description: {default: 150, min: 50, max: 200}
-│   │
 │   └── contaminants/
-│       ├── prompts/
-│       │   └── description.txt     # Contaminant-specific
 │       └── config.yaml
 │
 ├── generation/
@@ -168,7 +168,7 @@ class ComponentGenerator:
 ```
 
 **Key Points**:
-- Fixed prompt templates (loaded from `domains/{domain}/prompts/`)
+- Fixed prompt templates (loaded from `prompts/{domain}/`)
 - Material name injection only
 - Config constants at module top
 - Voice handled by universal pipeline
@@ -180,7 +180,7 @@ class ComponentGenerator:
 
 ### Step 1: Create Prompt File
 
-Create `domains/{domain}/prompts/{component_name}.txt`:
+Create `prompts/{domain}/{component_name}.txt`:
 
 ```txt
 You are generating a {component_name} for laser cleaning materials.
@@ -270,7 +270,7 @@ component_lengths:
 ```
 Material Name + Component Type → QualityEvaluatedGenerator
                                         ↓
-                        Load prompt: domains/{domain}/prompts/{component}.txt
+                        Load prompt: prompts/{domain}/{component}.txt
                                         ↓
                         Load persona: shared/voice/profiles/{author}.yaml
                                         ↓

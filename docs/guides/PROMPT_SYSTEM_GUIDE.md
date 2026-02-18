@@ -39,7 +39,7 @@ This guide consolidates all prompt system architecture, policies, and best pract
 **ALL content generation instructions MUST exist ONLY in prompt template files.**
 
 **Prompt Templates** (authoritative sources):
-- `domains/*/prompts/*.txt` - Component-specific content requirements
+- `prompts/{domain}/*.txt` - Component-specific content requirements
 - `shared/voice/profiles/*.yaml` - Author personas and voice instructions
 - `prompts/core/humanness_layer*.txt` - Structural variation
 
@@ -82,7 +82,7 @@ Each layer has ONE responsibility:
 |-------|---------|----------|----------|
 | **Voice** | Author characteristics | `shared/voice/profiles/*.yaml` | Voice instruction, tone, forbidden phrases |
 | **Humanness** | Structural variation | `learning/humanness_optimizer.py` | Opening patterns, rhythm, property strategies |
-| **Domain** | Content requirements | `domains/*/prompts/*.txt` | Task, word count, `{voice_instruction}` placeholder |
+| **Domain** | Content requirements | `prompts/{domain}/*.txt` | Task, word count, `{voice_instruction}` placeholder |
 
 **NO overlap, NO duplication, NO confusion.**
 
@@ -117,7 +117,7 @@ prompt = template.format(
 
 **✅ CORRECT - Put instruction IN TEMPLATE**:
 ```
-# In domains/materials/prompts/micro.txt:
+# In prompts/materials/micro.txt:
 Write about {material_name} properties.
 
 CRITICAL: Never use numbers, measurements, or units.
@@ -126,7 +126,7 @@ Focus on qualitative descriptions only.
 
 ### What Belongs Where
 
-**In Prompt Templates** (`domains/*/prompts/*.txt`):
+**In Prompt Templates** (`prompts/{domain}/*.txt`):
 - ✅ Content instructions ("Write about X")
 - ✅ Style requirements ("Use qualitative terms")
 - ✅ Format rules ("Single paragraph, 50 words")
@@ -642,7 +642,7 @@ content = self.api_client.generate(final_prompt, temperature=temp)
 
 | What | Where |
 |------|-------|
-| **Prompt Templates** | `domains/*/prompts/*.txt` |
+| **Prompt Templates** | `prompts/{domain}/*.txt` |
 | **Voice Profiles** | `shared/voice/profiles/*.yaml` |
 | **Humanness Templates** | `prompts/core/humanness_layer*.txt` |
 | **Generator** | `generation/core/generator.py` |
@@ -663,7 +663,7 @@ pytest tests/test_prompt_validation.py -v
 pytest tests/test_prompt_purity_policy.py -v
 
 # Check prompt file sizes
-find domains/*/prompts -name "*.txt" -exec wc -c {} \;
+find prompts/* -name "*.txt" -exec wc -c {} \;
 ```
 
 ---

@@ -473,7 +473,7 @@ Before documenting as "COMPLETE":
 
 **TIER 1 (NEVER TOUCH without explicit permission)**:
 - `shared/voice/profiles/*.yaml` - Author voice definitions
-- `domains/*/prompts/*.txt` - Domain prompt templates
+- `prompts/{domain}/*.txt` - Domain prompt templates
 - `generation/core/evaluated_generator.py` - Main generation orchestrator (25KB+)
 - `generation/core/generator.py` - Core generation logic
 - `shared/text/utils/prompt_builder.py` - Prompt assembly (has known bug, needs surgical fix only)
@@ -891,7 +891,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 2. **Pattern Compliance Validation**: Automated checking for nationality-specific linguistic patterns
 
 **Implementation**:
-- `domains/materials/prompts/description.txt`: Relaxed constraint + voice emphasis
+- `prompts/materials/description.txt`: Relaxed constraint + voice emphasis
 - `shared/voice/quality_analyzer.py`: New `_check_pattern_compliance()` method
 - `tests/test_voice_pattern_compliance.py`: 11 tests validating all 4 nationalities
 
@@ -1073,7 +1073,7 @@ def generate_description(material):
 - ✅ Descriptions, FAQs, micros (excerpts deprecated)
 - ✅ Any text displayed on website
 - ✅ Content with author voice/style
-- ✅ All components in `domains/*/prompts/*.txt`
+- ✅ All components in `prompts/{domain}/*.txt`
 
 **✅ ALLOWED - Technical Data Research:**
 Research scripts for property discovery can use inline prompts:
@@ -1691,7 +1691,7 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
 ### 9. **Template-Only Policy** 🔥 **NEW (Nov 18, 2025) - CRITICAL**
 **ONLY prompt templates determine content and formatting. NO component-specific methods.**
 
-- ✅ **domains/*/prompts/*.txt** - ALL content instructions and formatting rules
+- ✅ **prompts/{domain}/*.txt** - ALL content instructions and formatting rules
   - Structure guidelines, style requirements, forbidden phrases
   - Format specifications, example outputs, voice/tone rules
   - COMPLETE content strategy for each component type
@@ -1726,7 +1726,7 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
 4. ❌ Add content instructions to code
 
 # NEW WAY (COMPLIANT): 1 config + 1 template = ZERO CODE CHANGES
-1. ✅ Create domains/{domain}/prompts/new_component.txt (all instructions)
+1. ✅ Create prompts/{domain}/new_component.txt (all instructions)
 2. ✅ Add to config.yaml: component_lengths: { new_component: {default: 100, extraction_strategy: raw} }
 ```
 
@@ -1772,7 +1772,7 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 **Separation of Concerns**:
 - **Author Personas** (`shared/voice/profiles/*.yaml`) - Define ALL voice characteristics (ONLY source)
 - **Humanness Optimizer** (`learning/humanness_optimizer.py`) - Structural variation ONLY (rhythm, opening, diversity) NOT voice
-- **Domain Prompts** (`domains/*/prompts/*.txt`) - Content requirements + `{voice_instruction}` placeholder
+- **Domain Prompts** (`prompts/{domain}/*.txt`) - Content requirements + `{voice_instruction}` placeholder
 - **Prompt Assembly**: Domain prompt → inject voice from persona → add humanness (structure) → send to LLM
 
 **Grade**: F violation if voice/author changes on regeneration
@@ -1824,7 +1824,7 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 **Single Source of Truth**: `shared/voice/profiles/*.yaml`
 
 **Zero Tolerance** for voice instructions in:
-- ❌ Domain prompt templates (`domains/*/prompts/*.txt`)
+- ❌ Domain prompt templates (`prompts/{domain}/*.txt`)
 - ❌ Generation code (`generation/**/*.py`)
 - ❌ Configuration files (any config.yaml)
 - ❌ Shared templates outside personas/
@@ -1886,7 +1886,7 @@ See `docs/08-development/VOICE_INSTRUCTION_CENTRALIZATION_POLICY.md` for complet
 
 **Implementation**:
 - `shared/voice/quality_analyzer.py`: `_check_pattern_compliance()` method
-- `domains/materials/prompts/description.txt`: Relaxed prompt with voice emphasis
+- `prompts/materials/description.txt`: Relaxed prompt with voice emphasis
 - Enforcement: Automated tests in `tests/test_voice_pattern_compliance.py` (11 tests, all passing)
 
 **Results**:

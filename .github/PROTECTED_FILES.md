@@ -13,8 +13,10 @@
 **Why**: Contains carefully crafted linguistic patterns, cultural nuances, voice characteristics. Modifications break author authenticity.
 
 ### Domain Prompt Templates
-- `domains/settings/prompts/settings_description.txt` - Settings generation template
-- `domains/materials/prompts/*.txt` - Material generation templates
+- `prompts/settings/*.txt` - Settings generation templates
+- `prompts/materials/*.txt` - Material generation templates
+- `prompts/contaminants/*.txt` - Contaminant generation templates
+- `prompts/compounds/*.txt` - Compound generation templates
 
 **Why**: These define content structure and formatting. Currently not loading due to bug, but registered and will be used once fixed.
 
@@ -146,7 +148,10 @@ Add to `.git/hooks/pre-commit`:
 # Check for modifications to protected files
 PROTECTED_FILES=(
     "shared/voice/profiles/*.yaml"
-    "domains/*/prompts/*.txt"
+    "prompts/materials/*.txt"
+    "prompts/contaminants/*.txt"
+    "prompts/compounds/*.txt"
+    "prompts/settings/*.txt"
     "generation/core/evaluated_generator.py"
 )
 

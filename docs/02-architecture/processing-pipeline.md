@@ -705,21 +705,18 @@ def add_cross_links(content: str, current_item: str, domain: str) -> str:
 
 ## 🗂️ Domain Prompt Structure
 
-**Location:** `domains/{domain}/prompts/{component_type}.txt`
+**Location:** `prompts/{domain}/{component_type}.txt`
 
 **Available Domain Prompts:**
 
 **Materials Domain:**
-- Currently: No text prompts (uses shared templates only)
-- Future: Add material-specific context templates
+- Current path: `prompts/materials/`
 
 **Contaminants Domain:**
-- `domains/contaminants/prompts/micro.txt` - Contamination micro descriptions
-- `domains/contaminants/prompts/faq.txt` - Contamination FAQs
-- `domains/contaminants/prompts/description.txt` - Contamination descriptions
+- Current path: `prompts/contaminants/`
 
 **Settings Domain:**
-- `domains/settings/prompts/description.txt` - Laser setting descriptions
+- Current path: `prompts/settings/`
 
 **Domain Prompt Structure Example:**
 ```plaintext

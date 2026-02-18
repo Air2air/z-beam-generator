@@ -36,10 +36,10 @@ template = self._load_prompt_template('description.txt')
 **Location**: `.github/PROTECTED_FILES.md`
 
 **TIER 1 Protection** (Never touch without permission):
-- `domains/materials/prompts/*.txt`
-- `domains/contaminants/prompts/*.txt`
-- `domains/compounds/prompts/*.txt`
-- `domains/settings/prompts/*.txt`
+- `prompts/materials/*.txt`
+- `prompts/contaminants/*.txt`
+- `prompts/compounds/*.txt`
+- `prompts/settings/*.txt`
 - `shared/voice/profiles/*.yaml`
 
 ## 🛡️ **ENFORCEMENT MECHANISMS**
@@ -68,7 +68,7 @@ grep -r "system_prompt\s*=" generation/ --include="*.py"
 echo "🔍 Checking for policy violations..."
 
 # Check 1: Protected prompt file modifications
-if git diff --cached --name-only | grep -E 'domains/.*/prompts/.*\.txt|shared/voice/profiles/.*\.yaml'; then
+if git diff --cached --name-only | grep -E 'prompts/(materials|contaminants|compounds|settings)/.*\.txt|shared/voice/profiles/.*\.yaml'; then
     echo ""
     echo "⚠️  WARNING: Modifying protected prompt files!"
     echo "📋 Policy: TIER 1 - Never touch without explicit user permission"
@@ -120,17 +120,17 @@ exit 0
 **Make prompt files read-only**:
 ```bash
 # Lock all prompt files (user can still edit with explicit chmod)
-find domains/*/prompts -name "*.txt" -exec chmod 444 {} \;
+find prompts/{materials,contaminants,compounds,settings} -name "*.txt" -exec chmod 444 {} \;
 find shared/voice/profiles -name "*.yaml" -exec chmod 444 {} \;
 
 # To edit (user must explicitly unlock)
-chmod 644 domains/materials/prompts/micro.txt  # edit
-chmod 444 domains/materials/prompts/micro.txt  # lock again
+chmod 644 prompts/materials/micro.txt  # edit
+chmod 444 prompts/materials/micro.txt  # lock again
 ```
 
 ### **Level 5: Code Review Checklist** 🔥 **NEW**
 **For AI-generated PRs, verify**:
-- [ ] No new .txt files in domains/*/prompts/
+- [ ] No new .txt files in prompts/{materials,contaminants,compounds,settings}/
 - [ ] No new .yaml files in shared/voice/profiles/
 - [ ] No "prompt =" patterns in generation/core/
 - [ ] No "system_prompt =" in generators
@@ -147,7 +147,7 @@ chmod 444 domains/materials/prompts/micro.txt  # lock again
 
 ### **Scenario 2: "Need a new component type"**
 ```
-❌ DON'T: Create domains/materials/prompts/new_component.txt
+❌ DON'T: Create prompts/materials/new_component.txt
 ✅ DO: Ask "Should I create a new prompt file for [component]?"
 ✅ DO: Wait for explicit "yes" before creating
 ```
@@ -178,7 +178,7 @@ grep -r "prompt.*=.*You are" generation/core/ domains/*/coordinator.py
 grep -r "system_prompt\s*=" generation/core/ --include="*.py"
 
 # 3. List all prompt files (should match expected 34 files)
-find domains/*/prompts -name "*.txt" -type f | wc -l
+find prompts/{materials,contaminants,compounds,settings} -name "*.txt" -type f | wc -l
 
 # 4. Check if prompts are protected (should show in PROTECTED_FILES.md)
 grep -A 5 "Domain Prompt Templates" .github/PROTECTED_FILES.md
@@ -214,10 +214,10 @@ grep -r "_load_prompt_template" generation/core/
 - **Prompt Purity Policy**: `.github/copilot-instructions.md` line 1667
 - **Embedded Prompts Policy**: `.github/copilot-instructions.md` line 1049
 - **Prompt File Locations**: 
-  - Materials: `domains/materials/prompts/` (9 files)
-  - Contaminants: `domains/contaminants/prompts/` (9 files)
-  - Compounds: `domains/compounds/prompts/` (11 files)
-  - Settings: `domains/settings/prompts/` (5 files)
+    - Materials: `prompts/materials/` (domain templates)
+    - Contaminants: `prompts/contaminants/` (domain templates)
+    - Compounds: `prompts/compounds/` (domain templates)
+    - Settings: `prompts/settings/` (domain templates)
   - Voice: `shared/voice/profiles/` (4 files)
 
 ## 🏆 **GRADE IMPACTS**

@@ -43,7 +43,7 @@ This guide consolidates all system architecture principles, patterns, and best p
 |-------|---------------|----------|
 | **Voice** | Author characteristics | `shared/voice/profiles/*.yaml` |
 | **Humanness** | Structural variation | `learning/humanness_optimizer.py` |
-| **Domain** | Content requirements | `domains/*/prompts/*.txt` |
+| **Domain** | Content requirements | `prompts/{domain}/*.txt` |
 | **Generation** | API orchestration | `generation/core/` |
 | **Quality** | Evaluation and learning | `learning/` + `shared/text/quality/` |
 
@@ -54,7 +54,7 @@ This guide consolidates all system architecture principles, patterns, and best p
 Each piece of information exists in EXACTLY ONE authoritative location:
 
 - **Author voice** → `shared/voice/profiles/*.yaml` ONLY
-- **Component specs** → `domains/*/prompts/*.txt` + `domains/*/config.yaml`
+- **Component specs** → `prompts/{domain}/*.txt` + `domains/*/config.yaml`
 - **Data** → `data/{domain}/Data.yaml` (Materials, Contaminants, Settings, etc.)
 - **Configuration** → `generation/config.yaml` + `domains/*/config.yaml`
 
@@ -66,7 +66,7 @@ Each piece of information exists in EXACTLY ONE authoritative location:
 
 **Example**: Adding new domain requires:
 - ✅ Create `domains/new_domain/config.yaml` (data paths, context keys)
-- ✅ Create `domains/new_domain/prompts/*.txt` (component templates)
+- ✅ Create `prompts/new_domain/*.txt` (component templates)
 - ❌ NO code changes in `generation/core/`
 - ❌ NO modifications to generator classes
 
@@ -176,7 +176,7 @@ NOTE: Voice style comes from assigned author persona (specified above).
 
 ### Layer 3: Domain Prompts (Content Requirements)
 
-**Location**: `domains/*/prompts/*.txt`
+**Location**: `prompts/{domain}/*.txt`
 
 **Purpose**: Component-specific content requirements
 
@@ -195,7 +195,7 @@ NOTE: Voice style comes from assigned author persona (specified above).
 
 **Example Template**:
 ```
-# domains/materials/prompts/description.txt
+# prompts/materials/description.txt
 
 TASK: Write a focused technical description of {material_name}.
 
@@ -286,7 +286,7 @@ Output
 | **Prompt Builder** | `shared/text/utils/prompt_builder.py` | Assembles prompts | ❌ NO (template-driven) |
 | **Voice Profiles** | `shared/voice/profiles/*.yaml` | Author personas | ❌ NO (shared) |
 | **Domain Config** | `domains/{domain}/config.yaml` | Data paths, context keys | ✅ YES |
-| **Prompt Templates** | `domains/{domain}/prompts/*.txt` | Content structure | ✅ YES |
+| **Prompt Templates** | `prompts/{domain}/*.txt` | Content structure | ✅ YES |
 
 **2 domain-specific files, 4 shared components. All processing code reusable.**
 
@@ -394,7 +394,7 @@ Now write similar content for: {material_name}
 ✅ **RIGHT**: Strong voice instructions, no examples
 
 ```
-# domains/materials/prompts/description.txt
+# prompts/materials/description.txt
 
 TASK: Write a focused description of {material_name}.
 
@@ -478,7 +478,7 @@ done
 | Component | Pattern | Example |
 |-----------|---------|---------|
 | **Config** | `domains/{domain}/config.yaml` | `domains/materials/config.yaml` |
-| **Prompts** | `domains/{domain}/prompts/*.txt` | `domains/materials/prompts/description.txt` |
+| **Prompts** | `prompts/{domain}/*.txt` | `prompts/materials/description.txt` |
 | **Data** | `data/{domain}/Data.yaml` | `data/materials/Materials.yaml` |
 
 ### Dependency Pattern
@@ -556,7 +556,7 @@ prompts:
 
 #### Step 2: Create Prompt Templates
 
-**File**: `domains/{new_domain}/prompts/description.txt`
+**File**: `prompts/{new_domain}/description.txt`
 
 ```
 TASK: Write a focused description of {topic}.
@@ -814,13 +814,13 @@ Now write similar content for: {material_name}
 
 **WRONG**:
 ```
-# domains/materials/prompts/description.txt
+# prompts/materials/description.txt
 Write with paratactic chains...  ← Hardcoded voice
 ```
 
 **Correct**:
 ```
-# domains/materials/prompts/description.txt
+# prompts/materials/description.txt
 {voice_instruction}  ← Placeholder filled from persona
 ```
 
@@ -869,7 +869,7 @@ if not author_id:
 
 **Checklist for New Domains**:
 - [ ] Configuration file created (`domains/{domain}/config.yaml`)
-- [ ] Prompt templates created (`domains/{domain}/prompts/*.txt`)
+- [ ] Prompt templates created (`prompts/{domain}/*.txt`)
 - [ ] Data file created (`data/{domain}/Data.yaml`)
 - [ ] NO code changes in `generation/core/`
 - [ ] NO domain-specific methods added

@@ -63,7 +63,7 @@ files, not hardcoded in Python code.
 
 The generation pipeline now uses:
 
-1. **Domain prompt templates** (`domains/*/prompts/*.txt`) - Content instructions
+1. **Domain prompt templates** (`prompts/{domain}/*.txt`) - Content instructions
 2. **Humanness optimizer** (`learning/humanness_optimizer.py`) - Voice variation
 3. **Single-pass generation** - No post-processing voice enhancement
 4. **Direct save** - Content saved immediately to YAML files

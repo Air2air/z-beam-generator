@@ -319,7 +319,7 @@ python3 domains/materials/image/learning/analytics.py attempts
 ### Template-Only Policy
 **Document**: `docs/08-development/TEMPLATE_ONLY_POLICY.md`
 
-- ✅ `domains/*/prompts/*.txt` - ALL content and formatting
+- ✅ `prompts/{domain}/*.txt` - ALL content and formatting
 - ❌ `processing/*.py` - ZERO component-specific methods
 - ✅ Add new component = template file + config entry ONLY (zero code changes)
 

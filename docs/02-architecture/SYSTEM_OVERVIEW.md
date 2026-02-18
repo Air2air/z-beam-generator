@@ -212,7 +212,7 @@ CLI validates material exists in Materials.yaml
    ↓
 QualityEvaluatedGenerator.generate(material, component_type, author)
    ↓
-Load prompt template: domains/materials/prompts/description.txt
+Load prompt template: prompts/materials/description.txt
    ↓
 Load author persona: shared/voice/profiles/{author}.yaml
    ↓
