@@ -413,15 +413,13 @@ distinctive markers per paragraph as specified in your voice instructions."""
         if length is None:
             length = spec.default_length if spec else 100
         
-        # SINGLE SOURCE OF TRUTH: Length variation calculated here ONLY
-        # ±80% randomization for dramatic length differences
-        # Use material name hash as seed for consistent but varied results per material
+        # SINGLE SOURCE OF TRUTH: Length variation calculated here ONLY.
+        # Use call-provided seed when present (for traceability); otherwise use fresh entropy.
         if variation_seed is None:
-            # Generate seed from topic name for per-material consistency
-            variation_seed = hash(topic) % (2**31)
-        
-        random.seed(variation_seed)
-        variation_factor = random.uniform(0.2, 1.8)  # ±80% range (0.2 = -80%, 1.8 = +80%)
+            variation_seed = random.SystemRandom().randint(0, 2**31 - 1)
+
+        rng = random.Random(variation_seed)
+        variation_factor = rng.uniform(0.2, 1.8)  # ±80% range (0.2 = -80%, 1.8 = +80%)
         length = int(length * variation_factor)
         logger.info(f"📏 Length variation: {length} words (base × {variation_factor:.2f}, seed={variation_seed})")
         
@@ -525,6 +523,7 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
         
         # Load component-specific template if available (domain-specific first)
         component_template = PromptBuilder._load_component_template(spec.name, domain_ctx.domain)
+        voice_injected_via_template = False
         if component_template:
             # NEW: Build dynamic guidance sections based on config
             technical_guidance = PromptBuilder._get_technical_guidance(
@@ -584,10 +583,19 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
             # FAIL-FAST: No try/except fallback. If template requires a placeholder not in
             # template_params, generation MUST fail with KeyError.
             component_context = component_template.format(**template_params)
+            voice_injected_via_template = '{voice_instruction}' in component_template
             # Template contains all content instructions (focus, format, style)
             context_section = f"""{component_context}
 
 {context_section}"""
+
+        # Ensure voice instructions are ALWAYS present (centralized source of truth).
+        # If a component template omits {voice_instruction}, inject the rendered persona block here.
+        if not voice_injected_via_template:
+            context_section = f"""{context_section}
+
+VOICE INSTRUCTIONS:
+{voice_instruction}"""
         
         # Build requirements section with dynamic sentence structure guidance
         # Override terminology based on technical_intensity (0.0-1.0 normalized)
@@ -627,6 +635,11 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
         
         if not spec.end_punctuation:
             requirements.append("- NO period at end")
+
+        # PageDescription-specific phrase guardrails to reduce repeated quality failures.
+        if spec.name == 'pageDescription':
+            requirements.append("- Do NOT use these phrases: 'stands out', 'in practice', 'presents a challenge', 'critical pitfall'")
+            requirements.append("- Use direct, concrete phrasing without transition clichés")
         
         requirements_section = "\n".join(requirements)
         
@@ -672,12 +685,12 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
         if spec.name in schema_components:
             output_format_section = """
 
-OUTPUT FORMAT (MANDATORY - DO NOT DEVIATE):
+    OUTPUT FORMAT:
 Title: [Write a 3-5 word concise title here]
 
 Description: [Write the full description here]
 
-CRITICAL: You MUST use exactly this format. The title line starts with "Title:" and the description line starts with "Description:". This is a strict requirement."""
+    Use exactly two labeled lines. The first line must start with "Title:" and the second line must start with "Description:"."""
         
         # Assemble complete prompt
         # NOTE: Voice instructions already in context_section via {voice_instruction} placeholder

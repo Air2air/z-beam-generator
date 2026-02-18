@@ -324,6 +324,7 @@ class DomainCoordinator(ABC):
             True if valid, False otherwise
         """
         # Check if prompt template exists
-        prompt_dir = Path(__file__).parent.parent / self.domain_name / "prompts"
+        project_root = Path(__file__).parent.parent.parent
+        prompt_dir = project_root / "prompts" / self.domain_name
         prompt_file = prompt_dir / f"{component_type}.txt"
         return prompt_file.exists()

@@ -2292,9 +2292,11 @@ class IntegrityChecker:
         start = time.time()
         # Domain-specific component prompts
         components_dirs = [
-            Path('domains/materials/prompts'),
-            Path('domains/settings/prompts'),
-            Path('domains/contaminants/prompts')
+            Path('prompts/materials'),
+            Path('prompts/settings'),
+            Path('prompts/contaminants'),
+            Path('prompts/compounds'),
+            Path('prompts/applications')
         ]
         personas_dir = Path('prompts/profiles/voice')
         

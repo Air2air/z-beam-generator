@@ -242,42 +242,41 @@ class ComponentRegistry:
     
     @classmethod
     def _discover_components(cls) -> Dict[str, Dict]:
-        """Discover available components from all domain prompts directories.
+        """Discover available components from top-level prompts domain directories.
         
-        Returns component specs by scanning domains/*/prompts/*.txt files.
+        Returns component specs by scanning prompts/*/*.txt files.
         Each .txt file defines a component type.
         
         Directory structure:
-        domains/
-        ├── materials/prompts/micro.txt, faq.txt, description.txt
-        ├── settings/prompts/settings_description.txt, component_summaries.txt
-        ├── contaminants/prompts/micro.txt
+        prompts/
+        ├── materials/micro.txt, faq.txt, description.txt
+        ├── settings/settings_description.txt, component_summaries.txt
+        ├── contaminants/micro.txt
         └── etc.
         """
         specs = {}
         # Path from shared/text/utils/ -> project root is 4 levels up
-        # shared/text/utils/component_specs.py -> shared/text/utils -> shared/text -> shared -> project_root
         project_root = Path(__file__).parent.parent.parent.parent
-        domains_dir = project_root / 'domains'
+        prompts_root = project_root / 'prompts'
         
-        if not domains_dir.exists():
+        if not prompts_root.exists():
             # Fallback: try relative path from cwd
-            domains_dir = Path('domains')
+            prompts_root = Path('prompts')
         
-        if not domains_dir.exists():
+        if not prompts_root.exists():
             return specs
         
-        # Scan each domain's prompts directory
-        for domain_dir in domains_dir.iterdir():
+        # Scan each domain directory under top-level prompts/
+        for domain_dir in prompts_root.iterdir():
             if not domain_dir.is_dir():
                 continue
-            
-            prompts_dir = domain_dir / 'prompts'
-            if not prompts_dir.exists():
+
+            # Skip non-domain prompt folders
+            if domain_dir.name in {'core', 'quality', 'shared', 'profiles', 'voice', 'evaluation', 'research'}:
                 continue
-            
-            # Scan for .txt files in this domain's prompts directory
-            for prompt_file in prompts_dir.glob('*.txt'):
+
+            # Scan for .txt files directly in prompts/<domain>/
+            for prompt_file in domain_dir.glob('*.txt'):
                 component_type = prompt_file.stem  # filename without .txt
                 
                 # Skip system/utility prompts (shouldn't be any, but just in case)
@@ -285,7 +284,7 @@ class ComponentRegistry:
                     continue
                 
                 # Store relative path from workspace root
-                relative_path = f'domains/{domain_dir.name}/prompts/{prompt_file.name}'
+                relative_path = f'prompts/{domain_dir.name}/{prompt_file.name}'
                 
                 specs[component_type] = {
                     'end_punctuation': True,  # Default, can be overridden in config
@@ -487,6 +486,17 @@ class DomainContext:
             example_facts='Hardness: 2.5-3 Mohs; Melting point: 660°C; Applications: Aerospace, automotive',
             terminology_style='Descriptive and precise; focus on visual characteristics; explain formation and behavior'
         )
+
+    @classmethod
+    def applications(cls) -> 'DomainContext':
+        """Context for applications domain"""
+        return cls(
+            domain='applications',
+            focus_template='Use-case context, operational outcomes, deployment constraints, and safety/compliance implications',
+            enrichment_strategy='Extract from Applications.yaml: category, subcategory, contentCards, keywords, and operational details',
+            example_facts='Use case: Aerospace MRO; Typical fluence: 2-8 J/cm²; Outcomes: 50-80% faster turnaround',
+            terminology_style='Operationally precise and outcome-focused; include concrete deployment constraints and measurable results'
+        )
     
     @classmethod
     def get_domain(cls, domain: str) -> 'DomainContext':
@@ -502,7 +512,8 @@ class DomainContext:
         method_map = {
             'materials': cls.materials,
             'settings': cls.settings,
-            'contaminants': cls.contaminants
+            'contaminants': cls.contaminants,
+            'applications': cls.applications
         }
         
         factory = method_map.get(domain)

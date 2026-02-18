@@ -17,6 +17,8 @@ Usage:
 """
 
 import logging
+import json
+import re
 import tempfile
 import yaml
 from datetime import datetime
@@ -198,6 +200,13 @@ class DomainAdapter(DataSourceAdapter):
                 value = None
                 break
         
+        # If not found and domain is materials, support legacy authorId field.
+        # This is schema compatibility, not a fallback default.
+        if value is None and self.domain == 'materials':
+            legacy_author_id = item_data.get('authorId')
+            if legacy_author_id is not None:
+                value = legacy_author_id
+
         # If not found and domain is settings, check Materials.yaml
         if value is None and self.domain == 'settings':
             material_name = item_data.get('material')
@@ -212,7 +221,13 @@ class DomainAdapter(DataSourceAdapter):
                         
                         material = materials_data.get('materials', {}).get(material_name, {})
                         author_data = material.get('author', {})
-                        author_id = author_data.get('id')
+                        author_id = None
+
+                        if isinstance(author_data, dict):
+                            author_id = author_data.get('id')
+
+                        if author_id is None:
+                            author_id = material.get('authorId')
                         
                         if author_id:
                             logger.info(f"Using author {author_id} from Materials.yaml for {material_name}")
@@ -415,6 +430,10 @@ class DomainAdapter(DataSourceAdapter):
                 identifier,
                 items.get(identifier)  # Pass item data for author/metadata
             )
+
+        # Normalize pageDescription to clean prose (no markdown/template wrappers)
+        if component_type == 'pageDescription':
+            content_to_save = self._normalize_page_description_output(content_to_save)
         
         # Determine target field (may differ from component_type)
         target_field = self._get_target_field(component_type)
@@ -460,33 +479,17 @@ class DomainAdapter(DataSourceAdapter):
         self.invalidate_cache()
         
         logger.info(f"✅ {component_type} written to {self.data_path} → {self.data_root_key}.{identifier}.{component_type}")
-        
-        # DUAL-WRITE POLICY (MANDATORY): Immediately sync field to frontmatter
-        logger.info(f"🔄 Syncing {component_type} to frontmatter for {identifier}...")
-        
-        # Sync field to frontmatter after successful save
-        try:
-            from shared.frontmatter.field_sync import sync_field_to_frontmatter
-            sync_field_to_frontmatter(identifier, component_type, domain=self.domain)
-            logger.info(f"✅ Frontmatter sync complete for {identifier}.{component_type}")
-        except Exception as sync_error:
-            logger.warning(f"⚠️  Frontmatter sync failed for {identifier}.{component_type}: {sync_error}")
-            # Don't fail the main operation for frontmatter sync issues
-        
-        logger.info(f"✅ {component_type} written to {self.data_path} → {self.data_root_key}.{identifier}.{component_type}")
-        
+
         # DUAL-WRITE POLICY (MANDATORY): Immediately sync field to frontmatter
         logger.info(f"🔄 Syncing {component_type} to frontmatter for {identifier}...")
         try:
             from generation.utils.frontmatter_sync import sync_field_to_frontmatter
-            sync_field_to_frontmatter(identifier, component_type, content_data, domain=self.domain)
-            logger.info(f"✅ Frontmatter sync complete for {identifier}")
+            sync_field_to_frontmatter(identifier, component_type, content_to_save, domain=self.domain)
+            logger.info(f"✅ Frontmatter sync complete for {identifier}.{component_type}")
         except Exception as sync_error:
-            logger.error(f"❌ Frontmatter sync FAILED: {sync_error}")
-            import traceback
-            logger.error(traceback.format_exc())
-            # Don't fail the whole generation - sync failure is non-fatal
-            logger.warning("⚠️  Continuing despite sync failure - frontmatter can be manually updated")
+            raise RuntimeError(
+                f"Frontmatter sync failed for {identifier}.{component_type}: {sync_error}"
+            ) from sync_error
     
     def _get_target_field(self, component_type: str) -> str:
         """
@@ -549,6 +552,59 @@ class DomainAdapter(DataSourceAdapter):
         
         # Unknown format, return as-is
         return content_data
+
+    def _normalize_page_description_output(self, content: Any) -> Any:
+        """
+        Normalize pageDescription output to clean prose.
+
+        Handles common generator outputs:
+        - JSON section payloads with sectionContent/sectionDescription
+        - Markdown headings (e.g., "### Laser Cleaning Aluminum")
+        - Template labels (e.g., "### Title:", "### Description:")
+        """
+        if not isinstance(content, str):
+            return content
+
+        text = content.strip()
+        if not text:
+            return text
+
+        # Try JSON payload extraction first
+        if text.startswith('{') and text.endswith('}'):
+            try:
+                payload = json.loads(text)
+                extracted = (
+                    payload.get('sectionContent')
+                    or payload.get('sectionDescription')
+                    or payload.get('description')
+                )
+                if isinstance(extracted, str) and extracted.strip():
+                    text = extracted.strip()
+            except Exception:
+                pass
+
+        # Remove explicit template labels
+        text = re.sub(r"(?im)^\s*#{1,6}\s*title\s*:\s*", "", text)
+        text = re.sub(r"(?im)^\s*#{1,6}\s*description\s*:\s*", "", text)
+
+        # If description marker appears inline, keep only the description segment
+        inline_desc = re.split(r"(?i)#{1,6}\s*description\s*:\s*", text, maxsplit=1)
+        if len(inline_desc) == 2:
+            text = inline_desc[1].strip()
+
+        # Remove leading markdown heading line only
+        text = re.sub(r"\A\s*#{1,6}\s+[^\n]+\n+", "", text)
+
+        # Remove any remaining markdown heading tokens inline
+        text = re.sub(r"(?i)#{1,6}\s*title\s*:\s*", "", text)
+        text = re.sub(r"(?i)#{1,6}\s*description\s*:\s*", "", text)
+
+        # Normalize spacing and punctuation artifacts
+        text = re.sub(r"\n{2,}", " ", text)
+        text = re.sub(r"\s{2,}", " ", text).strip()
+        text = text.replace('..', '.')
+
+        return text
     
     def _convert_faq_to_collapsible(self, faq_data: list, item_data: Optional[Dict] = None) -> Dict[str, Any]:
         """
