@@ -30,7 +30,7 @@ class SubjectivePatternLearner:
         Initialize subjective pattern learner.
         
         Args:
-            patterns_file: Path to learned_patterns.yaml (default: prompts/evaluation/learned_patterns.yaml)
+            patterns_file: Path to learned_patterns.yaml (default: prompts/quality/learned_patterns.yaml)
         """
         self.logger = logging.getLogger(__name__)
         

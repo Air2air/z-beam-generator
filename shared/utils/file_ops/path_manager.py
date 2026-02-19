@@ -65,11 +65,6 @@ class PathManager:
             if (parent / "requirements.txt").exists() and (parent / "data").exists():
                 return parent
 
-        # Fallback: use current working directory
-        cwd = Path.cwd()
-        if (cwd / "requirements.txt").exists():
-            return cwd
-
         return None
 
     @classmethod

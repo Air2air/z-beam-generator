@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Dict, Optional
 
 from shared.utils.file_io import read_yaml_file
+from shared.text.utils.prompt_registry_service import PromptRegistryService
 
 logger = logging.getLogger(__name__)
 
@@ -52,8 +53,7 @@ class DataProvider:
         """Lazy load section display schema"""
         if self._schema_cache is None:
             try:
-                schema_path = Path(__file__).parent.parent.parent / "data" / "schemas" / "section_display_schema.yaml"
-                self._schema_cache = read_yaml_file(schema_path)
+                self._schema_cache = PromptRegistryService.get_schema()
                 logger.debug(f"Loaded section display schema")
             except Exception as e:
                 logger.error(f"Failed to load schema: {e}")

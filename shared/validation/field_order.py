@@ -32,8 +32,17 @@ import yaml
 
 class FrontmatterFieldOrderValidator:
     """Validates and reorders frontmatter fields"""
+
+    REQUIRED_FIELD_ALIASES = {
+        'chemical_formula': {'chemicalFormula'},
+        'page_title': {'pageTitle', 'title'},
+        'schema_version': {'schemaVersion'},
+        'content_type': {'contentType'},
+        'cas_number': {'casNumber'},
+        'molecular_weight': {'molecularWeight'},
+    }
     
-    def __init__(self, schema_file: Optional[Path] = None):
+    def __init__(self, schema_file: Optional[Path] = None, allow_unexpected_fields: bool = True):
         """
         Initialize validator
         
@@ -45,7 +54,13 @@ class FrontmatterFieldOrderValidator:
         
         self.schema_file = Path(schema_file)
         self.schema: Optional[Dict] = None
-        self.frontmatter_dir = Path(__file__).parent.parent.parent / 'frontmatter'
+        self.allow_unexpected_fields = allow_unexpected_fields
+        project_root = Path(__file__).parent.parent.parent
+        local_frontmatter = project_root / 'frontmatter'
+        sibling_frontmatter = project_root.parent / 'z-beam' / 'frontmatter'
+
+        # Prefer local frontmatter when available; otherwise use canonical sibling project frontmatter
+        self.frontmatter_dir = local_frontmatter if local_frontmatter.exists() else sibling_frontmatter
     
     def load_schema(self) -> None:
         """Load field order schema"""
@@ -62,56 +77,107 @@ class FrontmatterFieldOrderValidator:
         """Get field order specification for a domain"""
         if not self.schema:
             self.load_schema()
-        
-        domain_spec = self.schema.get(domain, {})
+
+        if domain not in self.schema:
+            raise KeyError(f"Domain '{domain}' is not defined in field-order schema")
+
+        domain_spec = self.schema[domain]
+        if not isinstance(domain_spec, dict):
+            raise RuntimeError(f"Invalid domain spec for '{domain}': expected dictionary")
         
         # NEW: Support unified base schema architecture
-        if domain_spec.get('base_schema', False):
+        if 'base_schema' not in domain_spec:
+            raise RuntimeError(f"Domain spec for '{domain}' missing required 'base_schema' flag")
+
+        if domain_spec['base_schema']:
             return self._build_unified_field_order(domain, domain_spec)
         
         # Legacy: Direct field_order list
-        return domain_spec.get('field_order', [])
+        if 'field_order' not in domain_spec:
+            raise RuntimeError(f"Legacy domain spec for '{domain}' missing required 'field_order' list")
+        if not isinstance(domain_spec['field_order'], list):
+            raise RuntimeError(f"Domain spec field_order for '{domain}' must be a list")
+        return domain_spec['field_order']
     
     def _build_unified_field_order(self, domain: str, domain_spec: Dict) -> List[str]:
         """Build field order from base schema + domain extensions"""
         if not self.schema:
             self.load_schema()
-            
-        base_fields = self.schema.get('base_fields', {})
-        extensions = domain_spec.get('extensions', {})
+
+        if 'base_fields' not in self.schema:
+            raise RuntimeError("Field-order schema missing required 'base_fields' section")
+        base_fields = self.schema['base_fields']
+        if not isinstance(base_fields, dict):
+            raise RuntimeError("Schema 'base_fields' must be a dictionary")
+
+        if 'extensions' not in domain_spec:
+            raise RuntimeError(f"Domain spec for '{domain}' missing required 'extensions' section")
+        extensions = domain_spec['extensions']
+        if not isinstance(extensions, dict):
+            raise RuntimeError(f"Domain spec extensions for '{domain}' must be a dictionary")
+
+        required_base_groups = [
+            'universal_core',
+            'identity_extensions',
+            'system_metadata',
+            'navigation_core',
+            'seo_metadata',
+            'content_common',
+            'media_standard',
+            'relationships_standard',
+            'author_standard',
+            'card_standard',
+        ]
+        for group in required_base_groups:
+            if group not in base_fields:
+                raise RuntimeError(f"Schema base_fields missing required group '{group}'")
+            if not isinstance(base_fields[group], list):
+                raise RuntimeError(f"Schema base_fields['{group}'] must be a list")
+
+        required_extension_groups = [
+            'identity_additions',
+            'content_additions',
+            'domain_sections',
+            'content_removals',
+        ]
+        for group in required_extension_groups:
+            if group not in extensions:
+                raise RuntimeError(f"Domain extensions for '{domain}' missing required group '{group}'")
+            if not isinstance(extensions[group], list):
+                raise RuntimeError(f"Domain extensions['{group}'] for '{domain}' must be a list")
         
         # Build unified order following tier hierarchy
         field_order = []
         
         # TIER 1-2: Universal + Common Identity
-        field_order.extend(base_fields.get('universal_core', []))
-        field_order.extend(base_fields.get('identity_extensions', []))
+        field_order.extend(base_fields['universal_core'])
+        field_order.extend(base_fields['identity_extensions'])
         
         # Add domain-specific identity additions
-        field_order.extend(extensions.get('identity_additions', []))
+        field_order.extend(extensions['identity_additions'])
         
         # TIER 3: System Metadata
-        field_order.extend(base_fields.get('system_metadata', []))
+        field_order.extend(base_fields['system_metadata'])
         
         # TIER 4-5: Navigation & SEO
-        field_order.extend(base_fields.get('navigation_core', []))
-        field_order.extend(base_fields.get('seo_metadata', []))
+        field_order.extend(base_fields['navigation_core'])
+        field_order.extend(base_fields['seo_metadata'])
         
         # TIER 6: Content
-        field_order.extend(base_fields.get('content_common', []))
-        field_order.extend(extensions.get('content_additions', []))
+        field_order.extend(base_fields['content_common'])
+        field_order.extend(extensions['content_additions'])
         
         # TIER 7-9: Media, Relationships, Author
-        field_order.extend(base_fields.get('media_standard', []))
-        field_order.extend(base_fields.get('relationships_standard', []))
-        field_order.extend(base_fields.get('author_standard', []))
-        field_order.extend(base_fields.get('card_standard', []))
+        field_order.extend(base_fields['media_standard'])
+        field_order.extend(base_fields['relationships_standard'])
+        field_order.extend(base_fields['author_standard'])
+        field_order.extend(base_fields['card_standard'])
         
         # Domain-specific sections
-        field_order.extend(extensions.get('domain_sections', []))
+        field_order.extend(extensions['domain_sections'])
 
         # Optional domain-specific removals from unified base
-        removals = set(extensions.get('content_removals', []))
+        removals = set(extensions['content_removals'])
         if removals:
             field_order = [field for field in field_order if field not in removals]
 
@@ -129,14 +195,22 @@ class FrontmatterFieldOrderValidator:
         """Get required fields for a domain"""
         if not self.schema:
             self.load_schema()
-        
-        domain_spec = self.schema.get(domain, {})
+
+        if domain not in self.schema:
+            raise KeyError(f"Domain '{domain}' is not defined in field-order schema")
+        domain_spec = self.schema[domain]
+        if not isinstance(domain_spec, dict):
+            raise RuntimeError(f"Invalid domain spec for '{domain}': expected dictionary")
         
         # Default required fields from base schema
         base_required = {'id', 'name', 'contentType', 'schemaVersion'}
         
         # Add domain-specific required fields
-        domain_required = set(domain_spec.get('required_fields', []))
+        if 'required_fields' not in domain_spec:
+            raise RuntimeError(f"Domain spec for '{domain}' missing required 'required_fields' list")
+        if not isinstance(domain_spec['required_fields'], list):
+            raise RuntimeError(f"Domain spec required_fields for '{domain}' must be a list")
+        domain_required = set(domain_spec['required_fields'])
         
         return base_required.union(domain_required)
     
@@ -158,7 +232,13 @@ class FrontmatterFieldOrderValidator:
         
         # Check for missing required fields
         required_fields = self.get_required_fields(domain)
-        missing_required = required_fields - set(actual_fields)
+        def _has_required_field(field_name: str) -> bool:
+            if field_name in actual_fields:
+                return True
+            aliases = self.REQUIRED_FIELD_ALIASES[field_name] if field_name in self.REQUIRED_FIELD_ALIASES else set()
+            return any(alias in actual_fields for alias in aliases)
+
+        missing_required = {field for field in required_fields if not _has_required_field(field)}
         if missing_required:
             issues.append(f"Missing required fields: {', '.join(sorted(missing_required))}")
         
@@ -175,10 +255,11 @@ class FrontmatterFieldOrderValidator:
                 previous_position = current_position
         
         # Check for unexpected fields
-        expected_set = set(expected_order)
-        unexpected = set(actual_fields) - expected_set
-        if unexpected:
-            issues.append(f"Unexpected fields (not in spec): {', '.join(sorted(unexpected))}")
+        if not self.allow_unexpected_fields:
+            expected_set = set(expected_order)
+            unexpected = set(actual_fields) - expected_set
+            if unexpected:
+                issues.append(f"Unexpected fields (not in spec): {', '.join(sorted(unexpected))}")
         
         return len(issues) == 0, issues
     

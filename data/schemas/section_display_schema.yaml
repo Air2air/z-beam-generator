@@ -176,14 +176,14 @@ sections:
     order: 10
     variant: default
     wordCount: 150
-    prompt_file: "prompts/{domain}/identifiers.txt"
+    prompt_ref: synonymsIdentifiers
   
   chemicalProperties:
     icon: flask
     order: 11
     variant: default
     wordCount: 200
-    prompt_file: "prompts/{domain}/chemicalProperties.txt"
+    prompt_ref: chemicalProperties
   
   physicalProperties:
     icon: thermometer
@@ -192,7 +192,7 @@ sections:
     wordCount: 175
     title: "Physical Properties"
     description: "Essential physical characteristics and behavior"
-    prompt_file: "prompts/{domain}/physicalProperties.txt"
+    prompt_ref: physicalProperties
   
   page:
     title: "Page Overview"
@@ -203,7 +203,7 @@ sections:
     description: "Page Overview"
     sectionTitle: "Page Title"
     sectionDescription: "Page Description"
-    prompt_file: "prompts/{domain}/pageDescription.txt"
+    prompt_ref: page
   
   # VISUAL GROUP (20-29): Appearance and identification characteristics
   appearanceVariations:
@@ -213,7 +213,7 @@ sections:
     wordCount: 125
     title: "Visual Appearance"
     description: "Physical appearance and visual characteristics"
-    prompt_file: "prompts/{domain}/appearanceVariations.txt"
+    prompt_ref: appearanceVariations
   
   # SAFETY GROUP (30-39): Health, regulatory, and emergency information
   healthEffects:
@@ -223,7 +223,7 @@ sections:
     wordCount: 250
     title: "Health Effects"
     description: "Health impacts and biological effects"
-    prompt_file: "prompts/{domain}/healthEffects.txt"
+    prompt_ref: healthEffects
   
   exposureLimits:
     icon: gauge
@@ -232,7 +232,7 @@ sections:
     wordCount: 200
     title: "Exposure Limits"
     description: "Regulatory exposure thresholds and monitoring"
-    prompt: "Generate title and description for THIS ITEM'S exposure limits. Title should be concise (3-5 words) and item-specific. Description must specify WHAT exposure levels THIS item allows, WHY these limits are set for THIS substance (toxicity, target organs, dose-response), HOW THIS item's limits compare to similar substances, and WHICH monitoring THIS item requires based on ITS exposure dynamics."
+    prompt_ref: exposureLimits
   
   ppeRequirements:
     icon: hard-hat
@@ -241,7 +241,7 @@ sections:
     wordCount: 200
     title: "PPE Requirements"
     description: "Personal protective equipment and safety measures"
-    prompt: "Generate title and description for PPE requirements FOR THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH protection levels THIS item requires based on ITS hazard profile, WHAT makes THIS item need PARTICULAR respiratory/eye/skin protection (volatility, pH, reactivity specific to it), and WHY standard PPE may be insufficient for THIS substance's UNIQUE penetration risks."
+    prompt_ref: ppeRequirements
   
   emergencyResponse:
     icon: ambulance
@@ -250,7 +250,7 @@ sections:
     wordCount: 225
     title: "Emergency Response"
     description: "Emergency procedures and first aid"
-    prompt: "Generate title and description for emergency procedures WITH THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHAT makes THIS item's exposures require SPECIFIC first aid (not generic), WHICH treatments counter THIS item's PARTICULAR effects, WHY timing matters for THIS substance (reactivity, absorption rate), and HOW containment differs for THIS item's UNIQUE properties."
+    prompt_ref: emergencyResponse
   
   storageRequirements:
     icon: warehouse
@@ -259,7 +259,7 @@ sections:
     wordCount: 200
     title: "Storage Requirements"
     description: "Storage conditions and container compatibility"
-    prompt: "Generate title and description for STORING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHY this item needs SPECIFIC storage conditions (instability, reactivity, vapor pressure), WHAT makes THIS item incompatible with certain materials (reactions unique to it), WHICH containers suit THIS item's properties, and HOW THIS item's storage differs from similar substances."
+    prompt_ref: storageRequirements
   
   regulatoryStandards:
     icon: shield-check
@@ -268,7 +268,7 @@ sections:
     wordCount: 225
     title: "Regulatory Standards"
     description: "Compliance requirements and regulatory framework"
-    prompt: "Generate title and description for standards GOVERNING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH regulations apply to THIS item's SPECIFIC hazards, WHAT makes THIS item require PARTICULAR compliance measures (toxicity, flammability, reactivity unique to it), and HOW THIS item's characteristics determine ITS regulatory classification."
+    prompt_ref: regulatoryStandards
   
   regulatoryClassification:
     icon: file-check-2
@@ -277,7 +277,7 @@ sections:
     wordCount: 225
     title: "Regulatory Classification"
     description: "GHS classification and hazard codes"
-    prompt: "Generate title and description for THIS ITEM'S classifications. Title should be concise (3-5 words) and item-specific. Description must specify WHICH GHS classes THIS item falls into based on ITS properties, WHAT H-codes/P-codes reflect THIS item's SPECIFIC hazards (not generic), HOW THIS item is classified for transport, and WHY THIS item requires PARTICULAR designations."
+    prompt_ref: regulatoryClassification
   
   # OPERATIONAL GROUP (40-49): Practical usage and handling information
   industryApplications:
@@ -287,7 +287,7 @@ sections:
     wordCount: 175
     title: "Industry Applications"
     description: "Industrial uses and application contexts"
-    prompt_file: "prompts/{domain}/applications.txt"
+    prompt_ref: industryApplications
   
   commonChallenges:
     icon: alert-triangle
@@ -296,7 +296,7 @@ sections:
     wordCount: 175
     title: "Common Challenges"
     description: "Handling difficulties and operational issues"
-    prompt_file: "prompts/{domain}/challenges.txt"
+    prompt_ref: commonChallenges
   
   detectionMethods:
     icon: search
@@ -305,7 +305,7 @@ sections:
     wordCount: 175
     title: "Detection Methods"
     description: "Identification and measurement techniques"
-    prompt: "Generate title and description for DETECTING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHICH detection methods work for THIS item based on ITS properties (spectral, chemical, physical signatures), WHY THIS item requires SPECIFIC techniques (detection challenges unique to it), HOW reliable each method is for THIS item, and WHAT distinguishes THIS item from similar substances."
+    prompt_ref: detectionMethods
   
   preventionStrategies:
     icon: shield
@@ -314,7 +314,7 @@ sections:
     wordCount: 175
     title: "Prevention Strategies"
     description: "Prevention methods and control measures"
-    prompt_file: "prompts/{domain}/prevention.txt"
+    prompt_ref: preventionStrategies
   
   removalMethods:
     icon: wrench
@@ -323,7 +323,7 @@ sections:
     wordCount: 200
     title: "Removal Methods"
     description: "Cleaning and remediation techniques"
-    prompt: "Generate title and description for REMOVING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH methods work for THIS item based on ITS bonding/adhesion properties, WHY THIS item requires PARTICULAR techniques (chemistry, mechanical bonds unique to it), HOW removal approaches compare for THIS item, and WHAT makes THIS item easier or harder to remove than similar items."
+    prompt_ref: removalMethods
   
   environmentalImpact:
     icon: globe
@@ -332,7 +332,7 @@ sections:
     wordCount: 200
     title: "Environmental Impact"
     description: "Environmental effects and disposal considerations"
-    prompt: "Generate title and description for THIS ITEM'S environmental effects. Title should be concise (3-5 words) and item-specific. Description must detail HOW this item impacts environment based on ITS properties (persistence, bioaccumulation, degradation unique to it), WHY THIS item poses PARTICULAR risks to air/water/soil, WHICH disposal methods suit THIS item's chemistry, and HOW THIS item differs environmentally from alternatives."
+    prompt_ref: environmentalImpact
   
   faq:
     title: "FAQ"
@@ -343,7 +343,7 @@ sections:
     description: "Frequently Asked Questions"
     sectionTitle: "FAQ"
     sectionDescription: "Common Questions and Answers"
-    prompt: "Generate frequently asked questions and answers about THIS ITEM for laser cleaning applications. Create 3-4 practical questions that professionals commonly ask about THIS item, covering safety considerations, process parameters, effectiveness, and best practices. Provide detailed, technical answers that address the specific properties and behaviors of THIS item, not generic responses."
+    prompt_ref: faq
   
   # MONITORING GROUP (50-59): Detection and continuous monitoring systems
   continuousMonitoring:
@@ -353,7 +353,7 @@ sections:
     wordCount: 200
     title: "Continuous Monitoring"
     description: "Real-time detection and monitoring systems"
-    prompt: "Generate title and description for CONTINUOUS MONITORING of THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH real-time instruments monitor THIS item based on ITS signatures (spectral, electrochemical), HOW to set up continuous sampling for THIS item given ITS state/volatility, WHAT monitoring intervals THIS item requires based on ITS exposure dynamics, and WHICH automated thresholds trigger alerts for THIS substance."
+    prompt_ref: continuousMonitoring
   
   # INTERACTIONS GROUP (60-69): Chemical reactions and material relationships
   reactivity:
@@ -363,7 +363,7 @@ sections:
     wordCount: 200
     title: "Chemical Reactivity"
     description: "Chemical reactions and reactivity patterns"
-    prompt: "Generate title and description for THIS ITEM'S chemical reactivity. Title should be concise (3-5 words) and item-specific. Description must detail HOW this item's SPECIFIC molecular structure drives ITS reactions, WHICH substances it reacts with based on ITS unique chemistry, WHAT conditions trigger THIS item's reactions, and WHY THIS item's reactivity requires SPECIFIC handling."
+    prompt_ref: reactivity
   
   contaminatedBy:
     icon: droplet
@@ -372,7 +372,7 @@ sections:
     wordCount: 175
     title: "Contaminated By"
     description: "Common contaminants affecting this material"
-    prompt: "Generate title and description emphasizing THIS MATERIAL'S specific contamination vulnerabilities. Title should be concise (3-5 words) and item-specific. Description should explain WHY these contaminants target THIS material's unique properties (surface chemistry, porosity, reactivity) and HOW they accumulate based on ITS DISTINCT characteristics, not generic contamination patterns."
+    prompt_ref: contaminatedBy
   
   producedByMaterials:
     icon: layers
@@ -381,7 +381,7 @@ sections:
     wordCount: 175
     title: "Produced By Materials"
     description: "Materials that create this contaminant"
-    prompt: "Generate title and description identifying materials that CREATE THIS CONTAMINANT. Title should be concise (3-5 words) and item-specific. Description must specify WHAT makes these materials produce THIS contaminant (unique chemical reactions, thermal decomposition, oxidation pathways specific to THIS contaminant), WHICH conditions favor ITS formation, and HOW material properties drive THIS particular contamination."
+    prompt_ref: producedByMaterials
   
   producedFromContaminants:
     icon: box
@@ -390,7 +390,7 @@ sections:
     wordCount: 175
     title: "Produced From Contaminants"
     description: "Contaminants that form this compound"
-    prompt: "Generate title and description showing contaminants that FORM THIS COMPOUND. Title should be concise (3-5 words) and item-specific. Description must detail THE SPECIFIC REACTIONS creating THIS compound, ITS UNIQUE formation chemistry (not general pathways), WHY this compound's structure creates PARTICULAR safety risks, and WHAT makes THIS compound's formation conditions distinctive."
+    prompt_ref: producedFromContaminants
   
   relatedContaminants:
     icon: link
@@ -399,7 +399,7 @@ sections:
     wordCount: 150
     title: "Related Contaminants"
     description: "Similar or associated contaminants"
-    prompt: "Generate title and description highlighting contaminants RELATED TO THIS ONE. Title should be concise (3-5 words) and item-specific. Description must explain WHAT connects THIS contaminant to related ones (shared chemistry, co-formation mechanisms), WHY they appear together in THIS context, and HOW understanding THIS contaminant's relationships informs cleaning strategies SPECIFIC to its profile."
+    prompt_ref: relatedContaminants
   
   relatedCompounds:
     icon: atom
@@ -408,7 +408,7 @@ sections:
     wordCount: 150
     title: "Related Compounds"
     description: "Similar or associated chemical compounds"
-    prompt: "Generate title and description identifying compounds RELATED TO THIS ONE. Title should be concise (3-5 words) and item-specific. Description must specify WHAT makes these compounds similar to THIS one (functional groups, molecular structure, reactivity), WHICH properties THIS compound shares with them, and WHY these relationships matter for understanding THIS compound's behavior and potential substitutes."
+    prompt_ref: relatedCompounds
 
   # MATERIALS-SPECIFIC SECTIONS
   materialCharacteristics:
@@ -418,7 +418,7 @@ sections:
     wordCount: 175
     title: "Material Characteristics" 
     description: "Physical and mechanical properties"
-    prompt: "Generate title and description for THIS MATERIAL'S characteristics. Title should be concise (3-5 words) and material-specific. Description should explain WHAT makes this material's physical properties distinctive, HOW these characteristics affect laser cleaning behavior, and WHY these properties matter for cleaning strategy and parameter selection for THIS specific material."
+    prompt_ref: materialCharacteristics
     
   laserMaterialInteraction:
     icon: zap
@@ -427,7 +427,7 @@ sections:
     wordCount: 200
     title: "Laser Material Interaction"
     description: "Material-specific laser energy interaction properties and cleaning behavior"
-    prompt: "Generate title and description for laser interaction with THIS MATERIAL. Title should be concise (3-5 words) and material-specific. Description should detail HOW laser energy affects THIS material specifically, WHAT absorption and reflection characteristics are unique to THIS material, and WHY these interactions determine optimal cleaning parameters for THIS material."
+    prompt_ref: laserMaterialInteraction
     
   relatedMaterials:
     icon: layers
@@ -436,7 +436,7 @@ sections:
     wordCount: 150
     title: "Related Materials"  
     description: "Similar materials and alloy variants"
-    prompt: "Generate title and description for materials RELATED TO THIS ONE. Title should be concise (3-5 words) and material-specific. Description should identify WHAT materials are similar to THIS one in composition or cleaning behavior, HOW cleaning strategies for THIS material apply to related materials, and WHY understanding these relationships helps optimize cleaning approaches."
+    prompt_ref: relatedMaterials
     
   micro:
     icon: images
@@ -445,7 +445,7 @@ sections:
     wordCount: 50
     title: "Micro Description"
     description: "Brief before/after cleaning description"  
-    prompt: "Generate title and description for before/after cleaning of THIS MATERIAL. Title should be concise (2-3 words) and material-specific. Description should be very brief, describing the visual transformation during cleaning process for THIS material - what the surface looks like before cleaning and after cleaning."
+    prompt_ref: micro
     
   pageDescription:
     icon: file-text
@@ -454,7 +454,7 @@ sections:
     wordCount: 100
     title: "Page Description"
     description: "Overall page summary"
-    prompt: "Generate ONLY a single page description paragraph for THIS MATERIAL (no title). Write 2-4 complete sentences in plain prose that explain WHAT this material is, WHY laser cleaning is relevant, HOW it responds during cleaning, and WHICH operator considerations matter most. Do NOT output labels, markdown headings, bullet points, JSON, or template wrappers. Do NOT start with 'Title:' or 'Description:'. End with a full sentence."
+    prompt_ref: pageDescription
   
   # Relationship sections under operational category
   machineSettings:
@@ -464,7 +464,7 @@ sections:
     wordCount: 120
     title: "Machine Settings"
     description: "Optimal laser parameters and equipment specifications"
-    prompt: "Generate title and description for machine settings. Title should be concise (2-3 words). Description should detail optimal laser parameters, power settings, wavelength selections, and equipment configurations for THIS material."
+    prompt_ref: machineSettings
   
   # Relationship sections that appear in both properties and relationships
   # When used in relationships.operational.laserMaterialInteraction
@@ -475,7 +475,7 @@ sections:
     wordCount: 200
     title: "Laser-Material Interaction"
     description: "Dynamics of laser energy absorption and thermal response specific to this material"
-    prompt: "Generate title and description for laser-material interaction. Title should be concise (3-5 words). Description should explain how laser energy interacts with THIS material's surface, absorption characteristics, and thermal response patterns."
+    prompt_ref: operational.laserMaterialInteraction
   
   # COMPONENT SECTIONS: Presentational components with before/after content
   components.micro:
@@ -485,7 +485,7 @@ sections:
     wordCount: 75
     sectionTitle: "Before & After Laser Cleaning"
     sectionDescription: "Microscopic comparison showing surface transformation through laser treatment"
-    prompt: "Generate title and description for microscopic before/after comparison. Title should emphasize transformation. Description should highlight what microscopic examination reveals about the cleaning process effectiveness."
+    prompt_ref: components.micro
 
   # PROPERTIES SECTIONS: Property groupings within frontmatter.properties
   properties.materialCharacteristics:

@@ -201,16 +201,16 @@ class ValidationResult:
         self.timestamp = timestamp or datetime.now().isoformat()
         
         # Handle legacy dict-based format
-        self.issues = issues or []
-        self.warnings = warnings or []
+        self.issues = [] if issues is None else issues
+        self.warnings = [] if warnings is None else warnings
         
-        if errors and len(errors) > 0 and isinstance(errors[0], dict):
+        if errors is not None and len(errors) > 0 and isinstance(errors[0], dict):
             # Legacy dict format - store separately
-            self._errors_dicts = errors or []
+            self._errors_dicts = errors
             self.errors = []
         else:
             # New VError format
-            self.errors = errors or []
+            self.errors = [] if errors is None else errors
             self._errors_dicts = []
     
     @property

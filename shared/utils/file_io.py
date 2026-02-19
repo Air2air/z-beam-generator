@@ -18,7 +18,7 @@ Date: December 11, 2025
 import json
 import logging
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Union
 
 import yaml
 
@@ -27,7 +27,7 @@ from shared.exceptions import ConfigurationError
 logger = logging.getLogger(__name__)
 
 
-def read_yaml_file(filepath: Path) -> Dict[str, Any]:
+def read_yaml_file(filepath: Union[Path, str]) -> Dict[str, Any]:
     """
     Read YAML file with standardized error handling.
     
@@ -43,6 +43,8 @@ def read_yaml_file(filepath: Path) -> Dict[str, Any]:
     Example:
         data = read_yaml_file(Path('data/materials/Materials.yaml'))
     """
+    filepath = Path(filepath)
+
     if not filepath.exists():
         raise ConfigurationError(
             f"File not found: {filepath}\n"
@@ -55,6 +57,13 @@ def read_yaml_file(filepath: Path) -> Dict[str, Any]:
         
         if data is None:
             raise ConfigurationError(f"Empty YAML file: {filepath}")
+
+        # Backward-compatibility aliases for legacy key names used in tests/tools
+        if isinstance(data, dict):
+            if 'title' in data and 'page_title' not in data:
+                data['page_title'] = data['title']
+            if 'schema_version' in data and 'schemaVersion' not in data:
+                data['schemaVersion'] = data['schema_version']
         
         return data
         

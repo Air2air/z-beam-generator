@@ -96,11 +96,16 @@ class APIClient:
         self.base_url = getattr(self.config, "base_url", None) or (
             self.config.get("base_url") if hasattr(self.config, "get") else base_url
         )
+        if not self.base_url:
+            raise ValueError("base_url must be configured explicitly - no defaults allowed")
+
         self.model = getattr(self.config, "model", None) or (
             self.config.get("model")
             if hasattr(self.config, "get")
-            else model or "grok-beta"
+            else model
         )
+        if not self.model:
+            raise ValueError("model must be configured explicitly - no defaults allowed")
 
         # Set timeout values - FAIL-FAST: Must be explicitly configured
         self.timeout_connect = getattr(self.config, "timeout_connect", None) or (
@@ -456,20 +461,31 @@ class APIClient:
             content = data["choices"][0]["message"]["content"]
 
             # Log successful API response details
-            usage = data.get("usage", {})
+            if "usage" not in data or not isinstance(data["usage"], dict):
+                raise RuntimeError("API response missing required 'usage' object")
+            usage = data["usage"]
+
+            required_usage_keys = ["total_tokens", "prompt_tokens", "completion_tokens"]
+            for key in required_usage_keys:
+                if key not in usage:
+                    raise RuntimeError(f"API response usage missing required key '{key}'")
+
+            if "model" not in data:
+                raise RuntimeError("API response missing required 'model' field")
+
             logger.info(f"✅ API response successful ({response.status_code})")
             logger.info(f"⏱️  Response time: {response_time:.2f}s")
             logger.info(
-                f"📊 Tokens used: {usage.get('total_tokens', 'N/A')} (prompt: {usage.get('prompt_tokens', 'N/A')}, completion: {usage.get('completion_tokens', 'N/A')})"
+                f"📊 Tokens used: {usage['total_tokens']} (prompt: {usage['prompt_tokens']}, completion: {usage['completion_tokens']})"
             )
             logger.info(f"📄 Content length: {len(content)} chars")
 
             # API Terminal Messaging - Success
             print(f"\n✅ [API SUCCESS] Request completed")
             print(f"⏱️  [API] Total time: {response_time:.2f}s")
-            prompt_tokens = usage.get('prompt_tokens', 0)
-            completion_tokens = usage.get('completion_tokens', 0)
-            total_tokens = usage.get('total_tokens', 0)
+            prompt_tokens = usage['prompt_tokens']
+            completion_tokens = usage['completion_tokens']
+            total_tokens = usage['total_tokens']
             print(f"📊 [API] Tokens: {total_tokens:,} total ({prompt_tokens:,} prompt + {completion_tokens:,} completion)")
             print(f"📄 [API] Generated: {len(content):,} chars, ~{len(content.split()):,} words")
             print(f"{'─'*80}\n")
@@ -477,13 +493,16 @@ class APIClient:
             # Handle empty content from reasoning models like grok-4
             if (
                 not content
-                and data.get("choices", [{}])[0].get("message", {}).get("content") == ""
+                and data["choices"][0]["message"]["content"] == ""
             ):
-                completion_tokens = (
-                    data.get("usage", {})
-                    .get("completion_tokens_details", {})
-                    .get("reasoning_tokens", 0)
-                )
+                if "completion_tokens_details" not in usage:
+                    raise RuntimeError("API response usage missing required 'completion_tokens_details' for empty content handling")
+                completion_tokens_details = usage["completion_tokens_details"]
+                if not isinstance(completion_tokens_details, dict):
+                    raise RuntimeError("API response usage 'completion_tokens_details' must be an object")
+                if "reasoning_tokens" not in completion_tokens_details:
+                    raise RuntimeError("API response usage completion_tokens_details missing required 'reasoning_tokens'")
+                completion_tokens = completion_tokens_details["reasoning_tokens"]
                 if completion_tokens > 0:
                     print(
                         "❌ [API CLIENT] Model produced reasoning tokens but no completion content"
@@ -496,21 +515,18 @@ class APIClient:
                         content="",
                         error="Model produced reasoning tokens but no completion content. This may indicate the model needs different parameters.",
                         response_time=response_time,
-                        token_count=data.get("usage", {}).get("total_tokens"),
-                        model_used=data.get("model", self.model),
+                        token_count=usage["total_tokens"],
+                        model_used=data["model"],
                     )
-
-            # Extract usage information
-            usage = data.get("usage", {})
 
             return APIResponse(
                 success=True,
                 content=content,
                 response_time=response_time,
-                token_count=usage.get("total_tokens"),
-                prompt_tokens=usage.get("prompt_tokens"),
-                completion_tokens=usage.get("completion_tokens"),
-                model_used=data.get("model", self.model),
+                token_count=usage["total_tokens"],
+                prompt_tokens=usage["prompt_tokens"],
+                completion_tokens=usage["completion_tokens"],
+                model_used=data["model"],
                 request_id=response.headers.get("x-request-id"),
             )
         else:

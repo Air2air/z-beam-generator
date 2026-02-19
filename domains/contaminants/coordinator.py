@@ -134,7 +134,13 @@ class ContaminantCoordinator(DomainCoordinator):
     
     def _load_contaminants_data(self) -> Dict:
         """Load contaminants data - wrapper for _load_domain_data for backwards compatibility"""
-        return self._load_domain_data()
+        data = self._load_domain_data()
+
+        # Backward compatibility: legacy callers/tests expect contamination_patterns
+        if 'contamination_patterns' not in data and 'contaminants' in data:
+            data['contamination_patterns'] = data['contaminants']
+
+        return data
     
     def list_contaminants(self) -> list:
         """Get list of all contaminant IDs."""

@@ -18,6 +18,7 @@ Date: November 29, 2025
 import logging
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+import re
 
 import yaml
 
@@ -406,7 +407,35 @@ class ContaminationPatternSelector:
             True if material matches any entry in valid_materials
         """
         material_lower = material_name.lower()
-        
+
+        def _variants(value: str) -> List[str]:
+            normalized = value.lower().strip().replace('_', '-').replace(' ', '-')
+            items = {normalized}
+
+            if '(' in normalized:
+                items.add(normalized.split('(')[0].strip('- '))
+
+            for suffix in ('-laser-cleaning', '-settings'):
+                if normalized.endswith(suffix):
+                    items.add(normalized[: -len(suffix)].strip('- '))
+
+            expanded = set(items)
+            for item in list(items):
+                expanded.add(item.replace('-', ' '))
+
+            return [item for item in expanded if item]
+
+        def _tokens(value: str) -> set[str]:
+            stop_words = {'laser', 'cleaning', 'settings', 'setting', 'material'}
+            return {
+                token
+                for token in re.split(r'[^a-z0-9]+', value)
+                if token and token not in stop_words and not token.isdigit()
+            }
+
+        material_variants = _variants(material_lower)
+        material_tokens = set().union(*[_tokens(v) for v in material_variants]) if material_variants else set()
+
         for vm in valid_materials:
             vm_lower = vm.lower()
             
@@ -414,27 +443,22 @@ class ContaminationPatternSelector:
             if vm_lower == 'all':
                 return True
             
-            # Exact match
-            if material_lower == vm_lower:
+            vm_variants = _variants(vm_lower)
+
+            # Exact/contains matching across normalized variants
+            for material_variant in material_variants:
+                for vm_variant in vm_variants:
+                    if material_variant == vm_variant:
+                        return True
+                    if vm_variant and vm_variant in material_variant:
+                        return True
+                    if material_variant and material_variant in vm_variant:
+                        return True
+
+            # Token overlap fallback for slug variants
+            vm_tokens = set().union(*[_tokens(v) for v in vm_variants]) if vm_variants else set()
+            if vm_tokens and vm_tokens.issubset(material_tokens):
                 return True
-            
-            # Check if valid_material is a base component of the material name
-            # e.g., "Titanium" is in "Titanium Alloy (Ti-6Al-4V)"
-            # e.g., "Steel" is in "Stainless Steel 316"
-            if vm_lower in material_lower:
-                return True
-            
-            # Check if material name starts with valid_material
-            # e.g., "Stainless Steel" matches "Stainless Steel 304"
-            if material_lower.startswith(vm_lower):
-                return True
-            
-            # Extract base name (before parenthesis) and check
-            # e.g., "Titanium Alloy" from "Titanium Alloy (Ti-6Al-4V)"
-            if '(' in material_lower:
-                base_name = material_lower.split('(')[0].strip()
-                if vm_lower in base_name or base_name.startswith(vm_lower):
-                    return True
         
         return False
     

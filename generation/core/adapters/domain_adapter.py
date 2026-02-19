@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 from shared.utils.yaml_utils import load_yaml
+from shared.text.utils.prompt_registry_service import PromptRegistryService
 
 from generation.core.adapters.base import DataSourceAdapter
 
@@ -66,20 +67,24 @@ class DomainAdapter(DataSourceAdapter):
         else:
             self.config = self._load_domain_config()
         
-        # Extract required paths from config (support both old flat and new nested structure)
-        if 'data_adapter' in self.config:
-            # New nested structure
-            adapter_config = self.config['data_adapter']
-            self.data_path = Path(adapter_config.get('data_path', f"data/{domain}/{domain.title()}.yaml"))
-            self.data_root_key = adapter_config.get('data_root_key', domain)
-            self.author_key = adapter_config.get('author_key', 'author.id')
-            self.context_keys = adapter_config.get('context_keys', ['category'])
-        else:
-            # Old flat structure (backward compatibility)
-            self.data_path = Path(self.config.get('data_path', f"data/{domain}/{domain.title()}.yaml"))
-            self.data_root_key = self.config.get('data_root_key', domain)
-            self.author_key = self.config.get('author_key', 'author.id')
-            self.context_keys = self.config.get('context_keys', ['category'])
+        # Extract required paths from nested config (fail-fast)
+        if 'data_adapter' not in self.config or not isinstance(self.config['data_adapter'], dict):
+            raise ValueError(
+                f"Domain '{domain}' config must define 'data_adapter' object with required keys"
+            )
+
+        adapter_config = self.config['data_adapter']
+        required_keys = ['data_path', 'data_root_key', 'author_key', 'context_keys']
+        missing = [key for key in required_keys if key not in adapter_config]
+        if missing:
+            raise KeyError(
+                f"Domain '{domain}' data_adapter missing required keys: {', '.join(missing)}"
+            )
+
+        self.data_path = Path(adapter_config['data_path'])
+        self.data_root_key = adapter_config['data_root_key']
+        self.author_key = adapter_config['author_key']
+        self.context_keys = adapter_config['context_keys']
         
         # Cache for loaded data
         self._data_cache = None
@@ -114,11 +119,45 @@ class DomainAdapter(DataSourceAdapter):
             
             with open(self.data_path, 'r', encoding='utf-8') as f:
                 self._data_cache = yaml.safe_load(f)
-            
-            item_count = len(self._data_cache.get(self.data_root_key, {}))
+
+            items = self._get_items_root(self._data_cache)
+            item_count = len(items)
             logger.debug(f"Loaded {item_count} items from {self.data_path}")
         
         return self._data_cache
+
+    def _get_items_root(self, all_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Resolve configured root key with backward-compatible aliases."""
+        if not isinstance(all_data, dict):
+            raise ValueError(f"Expected domain data to be dict, got: {type(all_data)}")
+
+        if self.data_root_key in all_data:
+            items = all_data[self.data_root_key]
+            if not isinstance(items, dict):
+                raise ValueError(
+                    f"Root key '{self.data_root_key}' in {self.data_path} must map to dict, got: {type(items)}"
+                )
+            return items
+
+        root_key_aliases = {
+            'contamination_patterns': ['contaminants'],
+            'contaminants': ['contamination_patterns'],
+        }
+
+        for alias in root_key_aliases.get(self.data_root_key, []):
+            if alias in all_data:
+                items = all_data[alias]
+                if not isinstance(items, dict):
+                    raise ValueError(
+                        f"Alias root key '{alias}' in {self.data_path} must map to dict, got: {type(items)}"
+                    )
+                return items
+
+        searched_keys = [self.data_root_key, *root_key_aliases.get(self.data_root_key, [])]
+        raise KeyError(
+            f"Could not resolve items root in {self.data_path}. "
+            f"Expected one of keys: {searched_keys}"
+        )
     
     def invalidate_cache(self):
         """Clear data cache to force reload on next access"""
@@ -138,7 +177,7 @@ class DomainAdapter(DataSourceAdapter):
             ValueError: If item not found
         """
         all_data = self.load_all_data()
-        items = all_data.get(self.data_root_key, {})
+        items = self._get_items_root(all_data)
         
         if identifier not in items:
             raise ValueError(
@@ -200,9 +239,8 @@ class DomainAdapter(DataSourceAdapter):
                 value = None
                 break
         
-        # If not found and domain is materials, support legacy authorId field.
-        # This is schema compatibility, not a fallback default.
-        if value is None and self.domain == 'materials':
+        # Schema compatibility: support canonical top-level authorId across domains
+        if value is None:
             legacy_author_id = item_data.get('authorId')
             if legacy_author_id is not None:
                 value = legacy_author_id
@@ -218,9 +256,16 @@ class DomainAdapter(DataSourceAdapter):
                         import yaml
                         with open(materials_path, 'r') as f:
                             materials_data = yaml.safe_load(f)
-                        
-                        material = materials_data.get('materials', {}).get(material_name, {})
-                        author_data = material.get('author', {})
+
+                        if not isinstance(materials_data, dict) or 'materials' not in materials_data:
+                            raise KeyError("Materials.yaml missing required root key 'materials'")
+                        if material_name not in materials_data['materials']:
+                            raise KeyError(
+                                f"Material '{material_name}' not found in Materials.yaml for author resolution"
+                            )
+
+                        material = materials_data['materials'][material_name]
+                        author_data = material.get('author')
                         author_id = None
 
                         if isinstance(author_data, dict):
@@ -233,7 +278,9 @@ class DomainAdapter(DataSourceAdapter):
                             logger.info(f"Using author {author_id} from Materials.yaml for {material_name}")
                             return int(author_id)
                 except Exception as e:
-                    logger.debug(f"Could not load author from Materials.yaml: {e}")
+                    raise RuntimeError(
+                        f"Failed resolving author from Materials.yaml for settings material '{material_name}': {e}"
+                    ) from e
         
         # Fail fast - author assignment is mandatory
         if value is None:
@@ -247,53 +294,25 @@ class DomainAdapter(DataSourceAdapter):
     
     def get_prompt_template(self, component_type: str) -> Optional[str]:
         """
-        Get prompt template for component type from domain config.
-        
-        Supports three formats:
-        1. Schema-based: Load from section_display_schema.yaml
-        2. Inline prompt: prompt content directly in config YAML
-        3. External file: "@path/to/file.txt" loads from external file
+        Get prompt template for component type from schema registry.
         
         Args:
             component_type: Component type (e.g., 'micro', 'contaminatedBy', 'materialCharacteristics')
             
         Returns:
-            Prompt template string or None if not found
+            Prompt template string
+
+        Raises:
+            ValueError: If prompt cannot be resolved from schema/registry
         """
-        # First try schema-based prompts (NEW)
         schema_prompt = self._get_schema_prompt(component_type)
         if schema_prompt:
             return schema_prompt
-        
-        # Fallback to config-based prompts (LEGACY)
-        prompts = self.config.get('prompts', {})
-        prompt_value = prompts.get(component_type)
-        
-        if not prompt_value:
-            return None
-        
-        # Check if this is an external file reference (starts with @)
-        if isinstance(prompt_value, str) and prompt_value.startswith('@'):
-            # Remove @ and load from file
-            file_path = prompt_value[1:]  # Remove @ prefix
-            from pathlib import Path
-            
-            # Resolve relative to project root
-            # domain_adapter.py is at generation/core/adapters/
-            # Go up 3 levels to reach project root
-            project_root = Path(__file__).parent.parent.parent.parent
-            full_path = project_root / file_path
-            
-            if not full_path.exists():
-                logger.error(f"Prompt file not found: {full_path}")
-                raise FileNotFoundError(f"Prompt file referenced in config not found: {file_path}")
-            
-            # Load file content
-            with open(full_path, 'r', encoding='utf-8') as f:
-                return f.read()
-        
-        # Regular inline prompt
-        return prompt_value
+
+        raise ValueError(
+            f"No schema prompt resolved for component '{component_type}' in domain '{self.domain}'. "
+            "Fail-fast prompt architecture requires schema/registry prompt resolution."
+        )
     
     def _get_schema_prompt(self, component_type: str) -> Optional[str]:
         """
@@ -305,24 +324,11 @@ class DomainAdapter(DataSourceAdapter):
         Returns:
             Prompt string or None if not found in schema
         """
-        try:
-            # Load schema (cache it for performance)
-            if not hasattr(self, '_schema_cache'):
-                schema_path = Path("data/schemas/section_display_schema.yaml")
-                with open(schema_path, 'r', encoding='utf-8') as f:
-                    import yaml
-                    self._schema_cache = yaml.safe_load(f)
-            
-            # Look up component in sections
-            sections = self._schema_cache.get('sections', {})
-            if component_type in sections:
-                return sections[component_type].get('prompt')
-            
-            return None
-            
-        except Exception as e:
-            logger.debug(f"Schema prompt lookup failed for {component_type}: {e}")
-            return None
+        return PromptRegistryService.get_schema_prompt(
+            domain=self.domain,
+            component_type=component_type,
+            include_descriptor=True,
+        )
 
     def get_section_metadata(self, component_type: str) -> Dict[str, Any]:
         """
@@ -334,48 +340,25 @@ class DomainAdapter(DataSourceAdapter):
         Returns:
             Dict with title, description, icon, order, variant, wordCount
         """
-        try:
-            # Load schema (reuse cache)
-            if not hasattr(self, '_schema_cache'):
-                schema_path = Path("data/schemas/section_display_schema.yaml")
-                with open(schema_path, 'r', encoding='utf-8') as f:
-                    import yaml
-                    self._schema_cache = yaml.safe_load(f)
-            
-            # Look up component in sections
-            sections = self._schema_cache.get('sections', {})
-            if component_type in sections:
-                section_data = sections[component_type]
-                return {
-                    'title': section_data.get('title', component_type.title()),
-                    'description': section_data.get('description', ''),
-                    'icon': section_data.get('icon', 'file-text'),
-                    'order': section_data.get('order', 0),
-                    'variant': section_data.get('variant', 'default'),
-                    'wordCount': section_data.get('wordCount', 200)
-                }
-            
-            # Fallback for unknown components
-            return {
-                'title': component_type.replace('_', ' ').title(),
-                'description': f'{component_type} description',
-                'icon': 'file-text',
-                'order': 99,
-                'variant': 'default',
-                'wordCount': 200
-            }
-            
-        except Exception as e:
-            logger.error(f"Failed to load section metadata for {component_type}: {e}")
-            # Return fallback metadata
-            return {
-                'title': component_type.replace('_', ' ').title(),
-                'description': f'{component_type} description', 
-                'icon': 'file-text',
-                'order': 99,
-                'variant': 'default',
-                'wordCount': 200
-            }
+        section_data = PromptRegistryService.get_section(component_type)
+        if not section_data:
+            raise ValueError(f"No section metadata found for component '{component_type}'")
+
+        required_keys = ['title', 'description', 'icon', 'order', 'variant', 'wordCount']
+        missing = [key for key in required_keys if key not in section_data]
+        if missing:
+            raise KeyError(
+                f"Section metadata for '{component_type}' missing required keys: {', '.join(missing)}"
+            )
+
+        return {
+            'title': section_data['title'],
+            'description': section_data['description'],
+            'icon': section_data['icon'],
+            'order': section_data['order'],
+            'variant': section_data['variant'],
+            'wordCount': section_data['wordCount']
+        }
     
     def write_component(
         self,
@@ -407,7 +390,7 @@ class DomainAdapter(DataSourceAdapter):
         all_data = self.load_all_data()
         
         # Verify item exists
-        items = all_data.get(self.data_root_key, {})
+        items = self._get_items_root(all_data)
         if identifier not in items:
             raise ValueError(f"'{identifier}' not found in {self.data_path}")
         
@@ -580,8 +563,8 @@ class DomainAdapter(DataSourceAdapter):
                 )
                 if isinstance(extracted, str) and extracted.strip():
                     text = extracted.strip()
-            except Exception:
-                pass
+            except json.JSONDecodeError as exc:
+                raise ValueError("Invalid JSON payload in pageDescription output") from exc
 
         # Remove explicit template labels
         text = re.sub(r"(?im)^\s*#{1,6}\s*title\s*:\s*", "", text)
@@ -649,12 +632,18 @@ class DomainAdapter(DataSourceAdapter):
         # Get author info for expert metadata
         expert_info = None
         if item_data and isinstance(item_data, dict):
-            author_data = item_data.get('author', {})
+            author_data = item_data.get('author')
             if author_data and isinstance(author_data, dict):
+                required_author_fields = ['name', 'title', 'expertise']
+                missing_author_fields = [field for field in required_author_fields if field not in author_data]
+                if missing_author_fields:
+                    raise KeyError(
+                        f"Author data missing required fields for FAQ conversion: {', '.join(missing_author_fields)}"
+                    )
                 expert_info = {
-                    'name': author_data.get('name', ''),
-                    'title': author_data.get('title', ''),
-                    'expertise': author_data.get('expertise', [])
+                    'name': author_data['name'],
+                    'title': author_data['title'],
+                    'expertise': author_data['expertise']
                 }
         
         # Severity keywords for classification
@@ -668,13 +657,17 @@ class DomainAdapter(DataSourceAdapter):
         items = []
         for idx, faq in enumerate(faq_data):
             if not isinstance(faq, dict):
-                continue
+                raise ValueError(f"FAQ item at index {idx} must be dict, got: {type(faq)}")
             
-            question = faq.get('question', '')
-            answer = faq.get('answer', '')
+            if 'question' not in faq or 'answer' not in faq:
+                raise KeyError(f"FAQ item at index {idx} missing required keys 'question' and/or 'answer'")
+            question = faq['question']
+            answer = faq['answer']
             
-            if not question or not answer:
-                continue
+            if not isinstance(question, str) or not question.strip():
+                raise ValueError(f"FAQ item at index {idx} has invalid question value")
+            if not isinstance(answer, str) or not answer.strip():
+                raise ValueError(f"FAQ item at index {idx} has invalid answer value")
             
             # Generate ID from question
             faq_id = question.lower()
@@ -791,23 +784,48 @@ class DomainAdapter(DataSourceAdapter):
         items = []
         for idx, standard in enumerate(items_list):
             if not isinstance(standard, dict):
-                continue
+                raise ValueError(f"Standard item at index {idx} must be dict, got: {type(standard)}")
             
-            name = standard.get('name', '')
-            long_name = standard.get('longName', '')
-            description = standard.get('description', '')
+            if 'description' not in standard:
+                raise KeyError(f"Standard item at index {idx} missing required key 'description'")
+
+            name = standard.get('name')
+            long_name = standard.get('longName')
+            description = standard['description']
+
+            if not isinstance(description, str) or not description.strip():
+                raise ValueError(f"Standard item at index {idx} has invalid description")
+
+            if name is not None and not isinstance(name, str):
+                raise ValueError(f"Standard item at index {idx} has non-string name")
+            if long_name is not None and not isinstance(long_name, str):
+                raise ValueError(f"Standard item at index {idx} has non-string longName")
+
+            if not (isinstance(name, str) and name.strip()) and not (isinstance(long_name, str) and long_name.strip()):
+                raise ValueError(f"Standard item at index {idx} must include non-empty 'name' or 'longName'")
             
-            title = f"{name} - {long_name}" if name and long_name else name or long_name or 'Standard'
+            if isinstance(name, str) and name.strip() and isinstance(long_name, str) and long_name.strip():
+                title = f"{name} - {long_name}"
+            else:
+                title = name if isinstance(name, str) and name.strip() else long_name
+
+            if title is None:
+                raise ValueError(f"Failed to build title for standard item at index {idx}")
+
+            metadata = {
+                'organization': name,
+                'category': 'laser-safety'
+            }
+
+            if 'url' in standard:
+                metadata['url'] = standard['url']
+            if 'image' in standard:
+                metadata['image'] = standard['image']
             
             items.append({
                 'title': title,
                 'content': description,
-                'metadata': {
-                    'organization': name,
-                    'category': 'laser-safety',
-                    'url': standard.get('url', ''),
-                    'image': standard.get('image', '')
-                },
+                'metadata': metadata,
                 '_display': {
                     '_open': idx == 0,  # First item open
                     'order': idx + 1
@@ -854,24 +872,21 @@ class DomainAdapter(DataSourceAdapter):
                     'title': title_match.group(1).strip(),
                     'description': desc_match.group(1).strip(),
                     '_metadata': {
-                        'icon': schema_metadata.get('icon', 'file-text'),
-                        'order': schema_metadata.get('order', 0),
-                        'variant': schema_metadata.get('variant', 'default'),
+                        'icon': schema_metadata['icon'],
+                        'order': schema_metadata['order'],
+                        'variant': schema_metadata['variant'],
                         'generatedAt': datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z')
                     }
                 }
             else:
-                # Fallback: LLM didn't follow format - use parser to extract from content
-                logger.warning(f"Schema component {component_type} didn't use Title/Description format - parsing anyway")
-                schema_metadata = self.get_section_metadata(component_type)
-                return self._parse_schema_output(raw_response, schema_metadata)
+                raise ValueError(
+                    f"Schema component '{component_type}' response missing required Title/Description format"
+                )
         
         # Load extraction strategy from central config for non-schema components
         from generation.config.config_loader import get_config
         config = get_config()
-        extraction_config = config.config.get('component_extraction', {})
-        component_config = extraction_config.get(component_type, {})
-        strategy = component_config.get('extraction_strategy', 'raw')
+        strategy = config.get_extraction_strategy(component_type)
         
         # Apply extraction strategy
         if strategy == 'raw':
@@ -887,8 +902,7 @@ class DomainAdapter(DataSourceAdapter):
             return self._extract_yaml(raw_response)
         
         else:
-            logger.warning(f"Unknown extraction strategy '{strategy}', using raw")
-            return raw_response.strip()
+            raise ValueError(f"Unknown extraction strategy '{strategy}' for component '{component_type}'")
     
     def _extract_before_after(self, text: str) -> Dict[str, str]:
         """Extract before/after paragraph structure"""
@@ -925,20 +939,9 @@ class DomainAdapter(DataSourceAdapter):
             try:
                 return json.loads(json_match.group())
             except json.JSONDecodeError:
-                pass
-        
-        # Fallback: parse Q&A format
-        qa_pairs = []
-        pattern = r'\*\*(.+?)\*\*\s*\n\s*(.+?)(?=\n\n|\n\*\*|$)'
-        matches = re.findall(pattern, text, re.DOTALL)
-        
-        for question, answer in matches:
-            qa_pairs.append({
-                'question': question.strip().rstrip('?') + '?',
-                'answer': answer.strip()
-            })
-        
-        return qa_pairs
+                raise ValueError("Invalid JSON array format in response")
+
+        raise ValueError("Could not find JSON array in response")
     
     def _extract_yaml(self, text: str) -> Dict[str, Any]:
         """Extract YAML structure from response"""
@@ -956,10 +959,7 @@ class DomainAdapter(DataSourceAdapter):
         try:
             return yaml.safe_load(text)
         except yaml.YAMLError:
-            pass
-        
-        # Fallback: return as raw string wrapped in dict
-        return {'content': text.strip()}
+            raise ValueError("Could not extract valid YAML from response")
     
     # =========================================================================
     # Abstract method implementations required by DataSourceAdapter
@@ -1068,12 +1068,15 @@ class DomainAdapter(DataSourceAdapter):
             
         except KeyError as e:
             logger.error(f"❌ Author ID {author_field['id']} not found in registry: {e}")
-            return author_field  # Return original on error
+            raise KeyError(
+                f"Author enrichment failed for author ID {author_field['id']}: {e}"
+            ) from e
         except Exception as e:
             logger.error(f"❌ Error enriching author field: {e}")
             import traceback
             logger.error(traceback.format_exc())
-            return author_field  # Return original on error    
+            raise RuntimeError(f"Author enrichment failed: {e}") from e
+
     def enrich_on_save(self, item_data: Dict[str, Any], identifier: str) -> Dict[str, Any]:
         """
         Add complete software metadata to item before saving to source YAML.
@@ -1116,9 +1119,13 @@ class DomainAdapter(DataSourceAdapter):
             # First priority: Use SEO-generated page_title from SEO generators
             if 'page_title' in item_data:
                 page_title = item_data['page_title']
-            # Fallback: Use title if available, otherwise name
+            # Use title or name from source data
             else:
-                page_title = item_data.get('title') or item_data.get('name') or identifier.replace('-', ' ').title()
+                page_title = item_data.get('title') or item_data.get('name')
+            if not page_title:
+                raise ValueError(
+                    f"Missing page title source for '{identifier}': require page_title, title, or name"
+                )
             item_data['pageTitle'] = page_title
             logger.debug(f"  + pageTitle: {page_title}")
         
@@ -1133,8 +1140,10 @@ class DomainAdapter(DataSourceAdapter):
                 'compounds': 'Compounds',
                 'settings': 'Settings',
             }
+            if self.domain not in domain_labels:
+                raise KeyError(f"Missing domain label mapping for domain '{self.domain}'")
             breadcrumbs.append({
-                'label': domain_labels.get(self.domain, self.domain.title()),
+                'label': domain_labels[self.domain],
                 'href': f'/{self.domain}'
             })
             
@@ -1161,7 +1170,15 @@ class DomainAdapter(DataSourceAdapter):
         if 'pageDescription' not in item_data:
             # Try micro.before first
             if isinstance(item_data.get('micro'), dict):
-                micro_text = item_data['micro'].get('before', '')
+                if 'before' not in item_data['micro']:
+                    raise KeyError(
+                        f"Invalid micro structure for '{identifier}': missing required key 'before'"
+                    )
+                micro_text = item_data['micro']['before']
+                if not isinstance(micro_text, str):
+                    raise ValueError(
+                        f"Invalid micro.before value for '{identifier}': expected string, got {type(micro_text)}"
+                    )
                 if micro_text:
                     item_data['pageDescription'] = micro_text[:157] + '...' if len(micro_text) > 160 else micro_text
             
@@ -1170,10 +1187,10 @@ class DomainAdapter(DataSourceAdapter):
                 desc = item_data['description']
                 item_data['pageDescription'] = desc[:157] + '...' if len(desc) > 160 else desc
             
-            # Fallback: generic description
             if 'pageDescription' not in item_data:
-                name = item_data.get('name', identifier)
-                item_data['pageDescription'] = f"{name} laser cleaning guide. Technical specifications and applications."
+                raise ValueError(
+                    f"Missing pageDescription source for '{identifier}': require micro.before or description"
+                )
             
             logger.debug(f"  + pageDescription: {len(item_data['pageDescription'])} chars")
         
@@ -1239,9 +1256,9 @@ class DomainAdapter(DataSourceAdapter):
             'title': '',
             'description': '',
             '_metadata': {
-                'icon': schema_metadata.get('icon', 'file-text'),
-                'order': schema_metadata.get('order', 0),
-                'variant': schema_metadata.get('variant', 'default'),
+                'icon': schema_metadata['icon'],
+                'order': schema_metadata['order'],
+                'variant': schema_metadata['variant'],
                 'generatedAt': datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z')
             }
         }
@@ -1249,45 +1266,22 @@ class DomainAdapter(DataSourceAdapter):
         # Clean the content
         content = str(content_data).strip()
         
-        # Try to parse structured output (Title: ... Description: ...)
+        # Parse structured output (Title: ... Description: ...)
         title_match = re.search(r'(?:^|\n)\s*(?:Title|TITLE):\s*(.+?)(?:\n|$)', content, re.MULTILINE)
-        if title_match:
-            result['title'] = title_match.group(1).strip()
-            
-            # Extract description after title
-            desc_match = re.search(r'(?:Description|DESCRIPTION):\s*(.+)', content, re.DOTALL)
-            if desc_match:
-                result['description'] = desc_match.group(1).strip()
-            else:
-                # Everything after title line
-                remaining = content[title_match.end():].strip()
-                result['description'] = remaining
-        else:
-            # Fallback: split on first line break or use heuristics
-            lines = content.split('\n', 1)
-            if len(lines) >= 2:
-                # First line as title, rest as description
-                result['title'] = lines[0].strip()
-                result['description'] = lines[1].strip()
-            else:
-                # Single block - extract first sentence as title
-                sentences = content.split('. ', 1)
-                if len(sentences) >= 2:
-                    result['title'] = sentences[0].strip() + '.'
-                    result['description'] = sentences[1].strip()
-                else:
-                    # Very short content - use as description with generic title
-                    result['title'] = f"{schema_metadata.get('title', 'Details')}"
-                    result['description'] = content
+        desc_match = re.search(r'(?:Description|DESCRIPTION):\s*(.+)', content, re.DOTALL)
+
+        if not title_match or not desc_match:
+            raise ValueError("Schema output must include both Title and Description fields")
+
+        result['title'] = title_match.group(1).strip()
+        result['description'] = desc_match.group(1).strip()
         
         # Clean up title (remove colons, extra punctuation)
         result['title'] = re.sub(r'[:\-]+$', '', result['title']).strip()
         
         # Ensure we have content
-        if not result['title']:
-            result['title'] = schema_metadata.get('title', 'Section Title')
-        if not result['description']:
-            result['description'] = content
+        if not result['title'] or not result['description']:
+            raise ValueError("Parsed schema output is missing title or description content")
             
         return result
 
@@ -1312,15 +1306,19 @@ class DomainAdapter(DataSourceAdapter):
             'title': '',
             'description': '',
             '_metadata': {
-                'icon': schema_metadata.get('icon', 'file-text'),
-                'order': schema_metadata.get('order', 0),
-                'variant': schema_metadata.get('variant', 'default'),
+                'icon': schema_metadata['icon'],
+                'order': schema_metadata['order'],
+                'variant': schema_metadata['variant'],
                 'convertedAt': datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z')
             }
         }
         
         # Clean the content
         content = str(content).strip()
+
+        if 'title' not in schema_metadata or not isinstance(schema_metadata['title'], str) or not schema_metadata['title'].strip():
+            raise KeyError("Schema metadata missing required non-empty 'title'")
+        default_title = schema_metadata['title'].strip()
         
         # Look for markdown heading (### Title)
         heading_match = re.search(r'^###\s+(.+?)(?:\n|$)', content, re.MULTILINE)
@@ -1362,11 +1360,11 @@ class DomainAdapter(DataSourceAdapter):
                         result['description'] = sentences[1].strip()
                     else:
                         # Use default title from schema
-                        result['title'] = schema_metadata.get('title', 'Section Title')
+                        result['title'] = default_title
                         result['description'] = content
             else:
                 # Single block - use default title
-                result['title'] = schema_metadata.get('title', 'Section Title')
+                result['title'] = default_title
                 result['description'] = content
         
         # Clean up title (remove extra punctuation)
@@ -1374,7 +1372,7 @@ class DomainAdapter(DataSourceAdapter):
         
         # Ensure we have content
         if not result['title']:
-            result['title'] = schema_metadata.get('title', 'Section Title')
+            result['title'] = default_title
         if not result['description']:
             result['description'] = content
             

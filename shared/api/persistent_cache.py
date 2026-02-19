@@ -107,10 +107,26 @@ class PersistentAPIClientCache:
         # Import component config to get provider mapping
         try:
             from run import COMPONENT_CONFIG
-            component_config = COMPONENT_CONFIG.get(component_type, {})
-            provider = component_config.get("api_provider")
-            
-            if not provider or provider == "none":
+
+            if component_type not in COMPONENT_CONFIG:
+                raise ValueError(
+                    f"COMPONENT_CONFIG missing entry for component '{component_type}' - no defaults allowed in fail-fast architecture"
+                )
+
+            component_config = COMPONENT_CONFIG[component_type]
+            if "api_provider" not in component_config:
+                raise ValueError(
+                    f"API provider must be explicitly configured for component '{component_type}' - no defaults allowed in fail-fast architecture"
+                )
+
+            provider = component_config["api_provider"]
+
+            if not provider:
+                raise ValueError(
+                    f"API provider value must be non-empty for component '{component_type}' - no defaults allowed in fail-fast architecture"
+                )
+
+            if provider == "none":
                 return None
                 
         except ImportError:

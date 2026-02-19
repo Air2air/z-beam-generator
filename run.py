@@ -5,6 +5,7 @@ Z-Beam Generator - Main CLI Entry Point
 Commands:
   --postprocess    Refine existing populated text fields
   --generate       Generate new content (future implementation)
+    --batch-generate Batch generate a field for any domain
   --export         Export frontmatter using Universal Exporter
   --export-all     Export all domains to production
   --backfill       Populate source YAML data permanently
@@ -17,6 +18,7 @@ import subprocess
 import yaml
 import time
 from pathlib import Path
+from typing import List
 from shared.utils.material_resolver import material_resolver
 from shared.utils.quality_analyzer import quality_analyzer
 
@@ -407,6 +409,155 @@ def backfill_command(args):
             print(f"\\n🔍 DRY RUN complete: Would modify {total_modified} total items")
 
 
+def _load_domain_items(domain: str) -> List[str]:
+    """Load all item IDs for a domain from the configured source YAML."""
+    config_path = Path(f'domains/{domain}/config.yaml')
+    if not config_path.exists():
+        raise FileNotFoundError(f"Domain config not found: {config_path}")
+
+    with open(config_path, 'r', encoding='utf-8') as f:
+        config = yaml.safe_load(f)
+
+    data_path = config.get('data_path')
+    data_root_key = config.get('data_root_key')
+    if not data_path or not data_root_key:
+        raise ValueError(
+            f"Domain config missing required keys data_path/data_root_key: {config_path}"
+        )
+
+    source_path = Path(data_path)
+    if not source_path.exists():
+        raise FileNotFoundError(f"Domain source file not found: {source_path}")
+
+    with open(source_path, 'r', encoding='utf-8') as f:
+        source_data = yaml.safe_load(f)
+
+    items = source_data.get(data_root_key, {})
+    if not isinstance(items, dict):
+        raise ValueError(
+            f"Expected dict at root key '{data_root_key}' in {source_path}, got {type(items).__name__}"
+        )
+
+    return list(items.keys())
+
+
+def _create_domain_coordinator(domain: str, api_client):
+    """Create the domain-specific coordinator for text generation."""
+    if domain == 'materials':
+        from domains.materials.coordinator import MaterialsCoordinator
+        return MaterialsCoordinator(api_client=api_client)
+    if domain == 'contaminants':
+        from domains.contaminants.coordinator import ContaminantCoordinator
+        return ContaminantCoordinator(api_client=api_client)
+    if domain == 'compounds':
+        from domains.compounds.coordinator import CompoundCoordinator
+        return CompoundCoordinator(api_client=api_client)
+    if domain == 'settings':
+        from domains.settings.coordinator import SettingCoordinator
+        return SettingCoordinator(api_client=api_client)
+    if domain == 'applications':
+        from domains.applications.coordinator import ApplicationsCoordinator
+        return ApplicationsCoordinator(api_client=api_client)
+
+    raise ValueError(f"Unsupported domain: {domain}")
+
+
+def batch_generate_command(args):
+    """Batch generate a single field for any domain."""
+    if not args.domain:
+        print("❌ Error: --domain is required for --batch-generate")
+        sys.exit(1)
+    if not args.field:
+        print("❌ Error: --field is required for --batch-generate")
+        sys.exit(1)
+
+    if args.all:
+        target_items = _load_domain_items(args.domain)
+    elif args.items:
+        target_items = [value.strip() for value in args.items.split(',') if value.strip()]
+        if not target_items:
+            print("❌ Error: --items provided but no valid IDs were parsed")
+            sys.exit(1)
+    elif args.item:
+        target_items = [args.item]
+    else:
+        print("❌ Error: Use one of --all, --item, or --items with --batch-generate")
+        sys.exit(1)
+
+    from generation.field_router import FieldRouter
+    from shared.api.client_factory import create_api_client
+
+    api_client = create_api_client('grok')
+
+    # Try router classification first; fallback to text path for domain prompt components.
+    try:
+        field_type = FieldRouter.get_field_type(args.domain, args.field)
+    except ValueError:
+        field_type = 'text'
+
+    print("=" * 80)
+    print("🚀 BATCH GENERATE")
+    print("=" * 80)
+    print(f"Domain: {args.domain}")
+    print(f"Field: {args.field}")
+    print(f"Field type: {field_type}")
+    print(f"Items: {len(target_items)}")
+    print(f"Dry run: {args.dry_run}")
+    print(f"Force regenerate: {args.force_regenerate}")
+
+    success_count = 0
+    skipped_count = 0
+    failed_count = 0
+
+    coordinator = _create_domain_coordinator(args.domain, api_client) if field_type == 'text' else None
+
+    for index, item_id in enumerate(target_items, start=1):
+        print(f"\n[{index}/{len(target_items)}] {item_id}")
+        try:
+            if field_type == 'text':
+                result = coordinator.generate_content(
+                    item_id=item_id,
+                    component_type=args.field,
+                    force_regenerate=args.force_regenerate
+                )
+                if result.get('success'):
+                    success_count += 1
+                    print("   ✅ Generated")
+                else:
+                    failed_count += 1
+                    print(f"   ❌ Failed: {result.get('error', 'unknown error')}")
+            else:
+                result = FieldRouter.generate_field(
+                    domain=args.domain,
+                    field=args.field,
+                    item_name=item_id,
+                    api_client=api_client,
+                    dry_run=args.dry_run,
+                    force_regenerate=args.force_regenerate
+                )
+                if result.get('success'):
+                    if result.get('skipped'):
+                        skipped_count += 1
+                        print("   ⏭️  Skipped (existing value)")
+                    else:
+                        success_count += 1
+                        print("   ✅ Generated")
+                else:
+                    failed_count += 1
+                    print(f"   ❌ Failed: {result.get('error', 'unknown error')}")
+        except Exception as exc:
+            failed_count += 1
+            print(f"   ❌ Failed: {exc}")
+
+    print("\n" + "=" * 80)
+    print("📊 BATCH GENERATE SUMMARY")
+    print("=" * 80)
+    print(f"✅ Generated: {success_count}")
+    print(f"⏭️  Skipped: {skipped_count}")
+    print(f"❌ Failed: {failed_count}")
+    print(f"📦 Total: {len(target_items)}")
+
+
 def main():
     """Main CLI entry point"""
     _enable_terminal_streaming()
@@ -437,6 +588,10 @@ Examples:
   # Batch postprocess with checkpoint every 5 items
   python3 run.py --postprocess --domain contaminants --field pageDescription --all --batch-size 5
 
+    # Batch generate any field in any domain
+    python3 run.py --batch-generate --domain materials --field pageDescription --all
+    python3 run.py --batch-generate --domain materials --field context --items "aluminum-laser-cleaning,steel-laser-cleaning" --force-regenerate
+
   # Postprocess all fields for one item
   python3 run.py --postprocess --domain materials --item "Steel" --field pageDescription
   python3 run.py --postprocess --domain materials --item "Steel" --field micro
@@ -455,6 +610,8 @@ Examples:
                         help='Populate source YAML data permanently')
     parser.add_argument('--backfill-all', action='store_true',
                         help='Backfill all domains (future implementation)')
+    parser.add_argument('--batch-generate', action='store_true',
+                        help='Batch generate one field across items for any domain')
     
     # Export arguments
     parser.add_argument('--skip-existing', action='store_true',
@@ -476,12 +633,16 @@ Examples:
                         help='Field type to postprocess (e.g., pageDescription, micro, faq)')
     parser.add_argument('--item', type=str,
                         help='Specific item name to postprocess')
+    parser.add_argument('--items', type=str,
+                        help='Comma-separated item IDs for batch generation')
     parser.add_argument('--all', action='store_true',
                         help='Postprocess all items in domain')
     parser.add_argument('--batch-size', type=int, default=10,
                         help='Checkpoint interval for batch operations (default: 10)')
     parser.add_argument('--dry-run', action='store_true',
                         help='Compare versions without saving (preview mode)')
+    parser.add_argument('--force-regenerate', action='store_true',
+                        help='Regenerate even if field already populated (structured fields require this)')
     
     # Simplified interface (NEW - Jan 13, 2026)
     parser.add_argument('--generate', type=str, metavar='MATERIAL',
@@ -515,6 +676,8 @@ Examples:
     # Execute command (backfill is default if --domain/--item provided without other flags)
     if args.postprocess:
         postprocess_command(args)
+    elif args.batch_generate:
+        batch_generate_command(args)
     elif args.export:
         export_command(args)
     elif args.export_all:

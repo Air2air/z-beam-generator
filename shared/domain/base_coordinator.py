@@ -220,15 +220,14 @@ class DomainCoordinator(ABC):
         Universal generation flow:
         1. Validate generator is available
         2. Load item data
-        3. Check if content exists (skip if not force_regenerate)
-        4. Call QualityEvaluatedGenerator.generate()
-        5. Save generated content
-        6. Return results
+        3. Call QualityEvaluatedGenerator.generate() (always regenerates)
+        4. Save generated content
+        5. Return results
         
         Args:
             item_id: Item identifier (material name, compound id, etc.)
             component_type: Type of content to generate (description, micro, faq, etc.)
-            force_regenerate: Whether to regenerate even if content exists
+            force_regenerate: Legacy compatibility flag (generation always regenerates)
             
         Returns:
             Dict with generation results:
@@ -255,19 +254,6 @@ class DomainCoordinator(ABC):
             item_data = self._get_item_data(item_id)
         except Exception as e:
             raise ValueError(f"Failed to load {self.domain_name} item '{item_id}': {e}")
-        
-        # Check if content already exists
-        existing_content = item_data.get(component_type)
-        if existing_content and not force_regenerate:
-            logger.info(f"Content already exists for {item_id}.{component_type}, skipping (use force_regenerate=True to override)")
-            return {
-                'success': True,
-                'content': existing_content,
-                'component_type': component_type,
-                'item_id': item_id,
-                'skipped': True,
-                'reason': 'content_exists'
-            }
         
         # Get author ID from item data
         author_id = item_data.get('author', {}).get('id') if isinstance(item_data.get('author'), dict) else item_data.get('author')

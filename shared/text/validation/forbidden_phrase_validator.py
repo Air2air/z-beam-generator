@@ -39,7 +39,7 @@ class ForbiddenPhraseValidator:
             learn_from_db: If True, extract phrases from Winston failures
         """
         if patterns_file is None:
-            patterns_file = Path('prompts/evaluation/learned_patterns.yaml')
+            patterns_file = Path('prompts/quality/learned_patterns.yaml')
         
         self.patterns_file = patterns_file
         self.winston_db = winston_db

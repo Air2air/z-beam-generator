@@ -22,12 +22,11 @@ USAGE:
 
 import argparse
 from pathlib import Path
-from collections import OrderedDict
 from typing import Dict, Any, List
 import logging
 
 # Use shared YAML utilities
-from shared.utils.file_io import read_yaml_file, write_yaml_file
+from shared.utils.file_io import read_yaml_file as load_yaml, write_yaml_file as save_yaml
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
@@ -40,7 +39,7 @@ logger = logging.getLogger(__name__)
 FIELD_ORDER = [
     # IDENTITY
     'id',
-    'title',
+    'page_title',
     'slug',
     'category',
     'subcategory',
@@ -56,8 +55,6 @@ FIELD_ORDER = [
     
     # CONTENT (type-specific)
     'contamination_description',
-    'description',
-    'description',
     'description',
     'micro',
     
@@ -142,22 +139,22 @@ def remove_duplicate_fields(data: Dict) -> Dict:
     AFTER: id, title, slug
     """
     if 'name' in data:
-        # Only remove if title exists
-        if 'title' in data:
+        # Only remove if canonical page title exists
+        if 'page_title' in data:
             del data['name']
             logger.debug(f"   Removed duplicate 'name' field")
     
     return data
 
 
-def reorder_fields(data: Dict) -> OrderedDict:
+def reorder_fields(data: Dict) -> Dict[str, Any]:
     """
     Reorder fields according to specification.
     
     Uses FIELD_ORDER list to ensure consistent ordering.
     Fields not in FIELD_ORDER are appended at the end.
     """
-    ordered = OrderedDict()
+    ordered: Dict[str, Any] = {}
     
     # Add fields in specified order
     for field in FIELD_ORDER:
@@ -176,6 +173,7 @@ def reorder_fields(data: Dict) -> OrderedDict:
 def update_schema_version(data: Dict) -> Dict:
     """Update schema_version to 5.0.0."""
     data['schema_version'] = '5.0.0'
+    data['schemaVersion'] = '5.0.0'
     return data
 
 
@@ -196,7 +194,7 @@ def normalize_file(file_path: Path, dry_run: bool = False) -> Dict[str, Any]:
         original_keys = set(data.keys())
         had_relationships = 'relationships' in data
         had_name_field = 'name' in data
-        original_schema = data.get('schema_version', 'unknown')
+        original_schema = data.get('schema_version', data.get('schemaVersion', 'unknown'))
         
         # Apply transformations
         data = flatten_relationships(data)
@@ -220,7 +218,7 @@ def normalize_file(file_path: Path, dry_run: bool = False) -> Dict[str, Any]:
         
         # Save if not dry run
         if not dry_run and changes:
-            write_yaml_file(file_path, data, sort_keys=False)
+            save_yaml(file_path, data, sort_keys=False)
         
         return {
             'success': True,

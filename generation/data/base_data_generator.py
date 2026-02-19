@@ -7,8 +7,11 @@ For non-text fields (numerical ranges, metadata, structured data):
 - Validate format
 - Save to data/*.yaml
 
-NO quality evaluation, NO voice processing, NO humanness layer.
-These are for factual data lookups, not creative text generation.
+NO quality evaluation, NO voice processing, NO humanness layer,
+and NO postprocessing pipeline.
+
+Structured fields can be regenerated on explicit request via
+force_regenerate=True; otherwise existing values are preserved.
 """
 
 import logging
@@ -95,7 +98,12 @@ class BaseDataGenerator(ABC):
         """
         pass
     
-    def generate(self, item_name: str, dry_run: bool = False) -> GenerationResult:
+    def generate(
+        self,
+        item_name: str,
+        dry_run: bool = False,
+        force_regenerate: bool = False
+    ) -> GenerationResult:
         """
         Generate field value for an item.
         
@@ -128,12 +136,17 @@ class BaseDataGenerator(ABC):
             # Check if field already populated
             existing = item_data.get(self.field)
             if existing and existing != 'null' and existing != '':
-                logger.info(f"Field '{self.field}' already populated, skipping")
-                return {
-                    'success': True,
-                    'value': existing,
-                    'skipped': True
-                }
+                if not force_regenerate:
+                    logger.info(f"Field '{self.field}' already populated, skipping")
+                    return {
+                        'success': True,
+                        'value': existing,
+                        'skipped': True,
+                        'regenerated': False
+                    }
+                logger.info(
+                    f"Field '{self.field}' already populated, force_regenerate=True - researching replacement"
+                )
             
             # Research value
             logger.info(f"Researching {self.field}...")
@@ -163,7 +176,8 @@ class BaseDataGenerator(ABC):
             return {
                 'success': True,
                 'value': yaml_value,
-                'skipped': False
+                'skipped': False,
+                'regenerated': force_regenerate
             }
             
         except Exception as e:

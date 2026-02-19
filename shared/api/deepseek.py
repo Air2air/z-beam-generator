@@ -60,14 +60,27 @@ class DeepSeekClient(APIClient):
         # Component-specific optimizations
         optimizations = self._get_component_optimizations(component_type)
 
+        required_optimization_keys = [
+            "max_tokens",
+            "temperature",
+            "top_p",
+            "frequency_penalty",
+            "presence_penalty",
+        ]
+        for key in required_optimization_keys:
+            if key not in optimizations:
+                raise RuntimeError(
+                    f"CONFIGURATION ERROR: Missing required optimization key '{key}' for component '{component_type}'"
+                )
+
         # Build the request with optimizations
         request = GenerationRequest(
             prompt=prompt_template,
-            max_tokens=optimizations.get("max_tokens", self.config.max_tokens),
-            temperature=optimizations.get("temperature", self.config.temperature),
-            top_p=optimizations.get("top_p", 1.0),
-            frequency_penalty=optimizations.get("frequency_penalty", 0.0),
-            presence_penalty=optimizations.get("presence_penalty", 0.0),
+            max_tokens=optimizations["max_tokens"],
+            temperature=optimizations["temperature"],
+            top_p=optimizations["top_p"],
+            frequency_penalty=optimizations["frequency_penalty"],
+            presence_penalty=optimizations["presence_penalty"],
         )
 
         # Add system prompt for component type
@@ -96,31 +109,56 @@ class DeepSeekClient(APIClient):
             import yaml
             
             component_prompt_path = Path(f"components/{component_type}/prompt.yaml")
-            if component_prompt_path.exists():
-                with open(component_prompt_path, 'r') as f:
-                    prompt_config = yaml.safe_load(f)
-                
-                # Extract generation parameters from prompt.yaml
-                if 'generation_parameters' in prompt_config:
-                    params = prompt_config['generation_parameters']
-                    logger.info(f"Using prompt.yaml config for {component_type}: {params}")
-                    return {
-                        "max_tokens": params.get("max_tokens", 4000),
-                        "temperature": params.get("temperature", 0.1),
-                        "top_p": params.get("top_p", 0.95),
-                        "frequency_penalty": params.get("frequency_penalty", 0.0),
-                        "presence_penalty": params.get("presence_penalty", 0.0),
-                    }
-                elif 'parameters' in prompt_config:
-                    params = prompt_config['parameters']
-                    logger.info(f"Using prompt.yaml parameters for {component_type}: {params}")
-                    return {
-                        "max_tokens": params.get("max_tokens", 4000),
-                        "temperature": params.get("temperature", 0.1),
-                        "top_p": params.get("top_p", 0.95),
-                        "frequency_penalty": params.get("frequency_penalty", 0.0),
-                        "presence_penalty": params.get("presence_penalty", 0.0),
-                    }
+            if not component_prompt_path.exists():
+                raise RuntimeError(
+                    f"CONFIGURATION ERROR: Missing required prompt configuration file for component '{component_type}': {component_prompt_path}"
+                )
+
+            with open(component_prompt_path, 'r') as f:
+                prompt_config = yaml.safe_load(f)
+
+            if not isinstance(prompt_config, dict):
+                raise RuntimeError(
+                    f"CONFIGURATION ERROR: Invalid prompt.yaml format for component '{component_type}' - expected dictionary"
+                )
+
+            # Extract generation parameters from prompt.yaml
+            if 'generation_parameters' in prompt_config:
+                params = prompt_config['generation_parameters']
+                logger.info(f"Using prompt.yaml config for {component_type}: {params}")
+            elif 'parameters' in prompt_config:
+                params = prompt_config['parameters']
+                logger.info(f"Using prompt.yaml parameters for {component_type}: {params}")
+            else:
+                raise RuntimeError(
+                    f"CONFIGURATION ERROR: Missing required 'generation_parameters' or 'parameters' section in {component_prompt_path}"
+                )
+
+            if not isinstance(params, dict):
+                raise RuntimeError(
+                    f"CONFIGURATION ERROR: Parameters section must be a dictionary in {component_prompt_path}"
+                )
+
+            required_param_keys = [
+                "max_tokens",
+                "temperature",
+                "top_p",
+                "frequency_penalty",
+                "presence_penalty",
+            ]
+            for key in required_param_keys:
+                if key not in params:
+                    raise RuntimeError(
+                        f"CONFIGURATION ERROR: Missing required parameter '{key}' in {component_prompt_path}"
+                    )
+
+            return {
+                "max_tokens": params["max_tokens"],
+                "temperature": params["temperature"],
+                "top_p": params["top_p"],
+                "frequency_penalty": params["frequency_penalty"],
+                "presence_penalty": params["presence_penalty"],
+            }
         except Exception as e:
             raise RuntimeError(f"CONFIGURATION ERROR: Could not load prompt.yaml config for {component_type}: {e}. No fallbacks allowed in fail-fast architecture.")
 
@@ -181,9 +219,12 @@ Generate high-quality, accurate, and professional content that follows industry 
 - Ensure all values are technically accurate and properly formatted""",
         }
 
-        instruction = component_instructions.get(
-            component_type, "Generate high-quality technical content."
-        )
+        if component_type not in component_instructions:
+            raise RuntimeError(
+                f"CONFIGURATION ERROR: Unsupported component type '{component_type}' for DeepSeek system prompt"
+            )
+
+        instruction = component_instructions[component_type]
 
         return (
             f"{base_prompt}\n\nSpecific instructions for {component_type}:{instruction}"

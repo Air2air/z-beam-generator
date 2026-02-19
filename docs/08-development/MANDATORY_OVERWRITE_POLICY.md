@@ -1,6 +1,6 @@
 # Mandatory Overwrite Policy
 
-**Status**: ✅ IMPLEMENTED (January 13, 2026)
+**Status**: ✅ IMPLEMENTED (January 13, 2026) / ✅ EXPANDED (February 2026)
 
 **Purpose**: Ensure structural variety and distinctive properties are consistently applied.
 
@@ -11,6 +11,19 @@ ALL backfill text generation MUST overwrite existing content, regardless of whet
 1. **Structural Variety**: Applying randomized structural patterns to prevent repetitive openings
 2. **Distinctive Properties**: Incorporating material-specific quantitative values
 3. **Quality Improvements**: Replacing generic placeholder text with rich content
+
+## Scope Expansion (February 2026)
+
+Mandatory overwrite now applies to coordinator-driven and postprocess text generation paths, not only backfill.
+
+- `shared/domain/base_coordinator.py`
+  - `generate_content()` now always regenerates/saves text, even when a component already has content.
+  - Legacy `force_regenerate` parameter remains for compatibility but does not gate generation.
+- `shared/commands/postprocess.py`
+  - Existing text is always regenerated through the pipeline.
+  - Best regenerated attempt is always persisted (no keep-original short-circuit when field is populated).
+
+This enforces a single policy across text generation workflows: populated text fields must not block regeneration and overwrite.
 
 ## The Problem This Solves
 

@@ -6,7 +6,9 @@ Routes field generation to appropriate generator based on field type:
 - Data fields → Simple data generators (research + parse + validate)
 
 This eliminates waste: structured data doesn't need Winston AI, voice compliance,
-humanness layers, or quality scoring.
+humanness layers, quality scoring, or postprocessing.
+
+Structured fields may still be researched/regenerated when explicitly requested.
 """
 
 import logging
@@ -110,6 +112,40 @@ class FieldRouter:
             'faq': 'text',
         }
     }
+
+    FIELD_ALIASES = {
+        'materials': {
+            'page_description': 'pageDescription',
+            'description': 'pageDescription',
+            'page_title': 'pageTitle',
+        },
+        'contaminants': {
+            'page_description': 'pageDescription',
+            'description': 'pageDescription',
+            'page_title': 'pageTitle',
+        },
+        'compounds': {
+            'page_description': 'pageDescription',
+            'description': 'pageDescription',
+            'page_title': 'pageTitle',
+        },
+        'settings': {
+            'page_description': 'pageDescription',
+            'description': 'pageDescription',
+            'page_title': 'pageTitle',
+        },
+        'applications': {
+            'page_description': 'pageDescription',
+            'description': 'pageDescription',
+            'page_title': 'pageTitle',
+        },
+    }
+
+    @classmethod
+    def normalize_field_name(cls, domain: str, field: str) -> str:
+        """Normalize legacy/alias field names to canonical component field names."""
+        aliases = cls.FIELD_ALIASES.get(domain, {})
+        return aliases.get(field, field)
     
     @classmethod
     def get_field_type(cls, domain: str, field: str) -> str:
@@ -128,11 +164,13 @@ class FieldRouter:
         """
         if domain not in cls.FIELD_TYPES:
             raise ValueError(f"Unknown domain: {domain}")
-        
-        if field not in cls.FIELD_TYPES[domain]:
+
+        normalized_field = cls.normalize_field_name(domain, field)
+
+        if normalized_field not in cls.FIELD_TYPES[domain]:
             raise ValueError(f"Unknown field '{field}' for domain '{domain}'")
-        
-        return cls.FIELD_TYPES[domain][field]
+
+        return cls.FIELD_TYPES[domain][normalized_field]
     
     @classmethod
     def create_generator(cls, domain: str, field: str, api_client, **kwargs):
@@ -148,17 +186,18 @@ class FieldRouter:
         Returns:
             Generator instance (QualityEvaluatedGenerator or data generator)
         """
+        normalized_field = cls.normalize_field_name(domain, field)
         field_type = cls.get_field_type(domain, field)
         
         if field_type == 'text':
             # Text field - use full quality pipeline
             logger.info(f"📝 Text field '{field}' → QualityEvaluatedGenerator")
-            return cls._create_text_generator(domain, field, api_client, **kwargs)
+            return cls._create_text_generator(domain, normalized_field, api_client, **kwargs)
         
         elif field_type == 'data':
             # Data field - use simple generator
             logger.info(f"📊 Data field '{field}' → Simple data generator")
-            return cls._create_data_generator(domain, field, api_client)
+            return cls._create_data_generator(domain, normalized_field, api_client)
         
         else:
             raise ValueError(f"Unknown field type: {field_type}")
@@ -220,30 +259,40 @@ class FieldRouter:
         Returns:
             Result dict with 'success', 'value'/'content', 'field_type' keys
         """
+        normalized_field = cls.normalize_field_name(domain, field)
         field_type = cls.get_field_type(domain, field)
-        generator = cls.create_generator(domain, field, api_client, **kwargs)
+        generator = cls.create_generator(domain, normalized_field, api_client, **kwargs)
         
         if field_type == 'text':
             # Text generation
             result = generator.generate(
                 material_name=item_name,
-                component_type=field,
+                component_type=normalized_field,
                 **kwargs
             )
             return {
                 'success': result.success,
                 'content': result.content if result.success else None,
                 'field_type': 'text',
+                'postprocessing_applied': True,
                 'error': result.error_message
             }
         
         elif field_type == 'data':
             # Data generation
-            result = generator.generate(item_name, dry_run=dry_run)
+            force_regenerate = bool(kwargs.get('force_regenerate', False))
+            result = generator.generate(
+                item_name,
+                dry_run=dry_run,
+                force_regenerate=force_regenerate
+            )
             return {
                 'success': result['success'],
                 'value': result.get('value'),
                 'field_type': 'data',
+                'postprocessing_applied': False,
+                'force_regenerate': force_regenerate,
                 'error': result.get('error'),
-                'skipped': result.get('skipped', False)
+                'skipped': result.get('skipped', False),
+                'regenerated': result.get('regenerated', False)
             }

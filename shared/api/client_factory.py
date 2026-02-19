@@ -175,10 +175,22 @@ class APIClientFactory:
         # Import component config to get provider mapping
         try:
             from run import COMPONENT_CONFIG
-            component_config = COMPONENT_CONFIG.get(component_type, {})
-            provider = component_config.get("api_provider")
+            if component_type not in COMPONENT_CONFIG:
+                raise ValueError(
+                    f"COMPONENT_CONFIG missing entry for component '{component_type}' - no defaults allowed in fail-fast architecture"
+                )
+
+            component_config = COMPONENT_CONFIG[component_type]
+            if "api_provider" not in component_config:
+                raise ValueError(
+                    f"API provider must be explicitly configured for component '{component_type}' - no defaults allowed in fail-fast architecture"
+                )
+
+            provider = component_config["api_provider"]
             if not provider:
-                raise ValueError(f"API provider must be configured for component '{component_type}' - no defaults allowed in fail-fast architecture")
+                raise ValueError(
+                    f"API provider value must be non-empty for component '{component_type}' - no defaults allowed in fail-fast architecture"
+                )
         except ImportError:
             raise ValueError(f"COMPONENT_CONFIG must be available for component '{component_type}' - no defaults allowed in fail-fast architecture")
 
@@ -200,11 +212,16 @@ class APIClientFactory:
         for provider_id, config in API_PROVIDERS.items():
             is_configured = is_provider_available(provider_id)
 
+            if "model" not in config:
+                raise RuntimeError(
+                    f"CONFIGURATION ERROR: Missing required 'model' for provider '{provider_id}'"
+                )
+
             results["providers"][provider_id] = {
                 "configured": is_configured,
                 "env_var": config["env_var"],
                 "base_url": config["base_url"],
-                "model": config.get("model") or config.get("default_model")
+                "model": config["model"],
             }
 
             if not is_configured:

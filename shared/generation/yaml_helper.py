@@ -57,7 +57,13 @@ def load_yaml_file(path: str | Path) -> Dict[str, Any]:
         raise FileNotFoundError(f"YAML file not found: {path}")
     
     with open(path, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f) or {}
+        data = yaml.safe_load(f)
+
+    if data is None:
+        raise ValueError(f"YAML file is empty: {path}")
+    if not isinstance(data, dict):
+        raise ValueError(f"YAML root must be a mapping: {path}")
+    return data
 
 
 def save_yaml_file(

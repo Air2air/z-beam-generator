@@ -70,32 +70,47 @@ class DomainResolver:
         """Load domain data from file"""
         if domain in self._cache:
             return self._cache[domain]
-        
-        file_path = self.DATA_FILES.get(domain)
-        if not file_path:
-            return {}
+
+        if domain not in self.DATA_FILES:
+            raise KeyError(f"Unknown domain: {domain}. Valid domains: {list(self.DATA_FILES.keys())}")
+
+        file_path = self.DATA_FILES[domain]
         
         full_path = self.project_root / file_path
         if not full_path.exists():
-            return {}
+            raise FileNotFoundError(f"Domain data file not found for domain '{domain}': {full_path}")
         
         try:
             with open(full_path, 'r') as f:
                 content = yaml.safe_load(f)
+
+            if not isinstance(content, dict):
+                raise RuntimeError(
+                    f"Invalid domain data format for '{domain}': expected dictionary"
+                )
             
             # Get items based on domain structure
-            root_key = self.DOMAIN_KEYS.get(domain)
-            if root_key and root_key in content:
-                items = content[root_key]
-            else:
-                items = content
-            
-            self._cache[domain] = items if isinstance(items, dict) else {}
+            if domain not in self.DOMAIN_KEYS:
+                raise KeyError(f"Missing root-key mapping for domain '{domain}'")
+
+            root_key = self.DOMAIN_KEYS[domain]
+            if root_key not in content:
+                raise RuntimeError(
+                    f"Invalid domain data format for '{domain}': missing required root key '{root_key}'"
+                )
+
+            items = content[root_key]
+
+            if not isinstance(items, dict):
+                raise RuntimeError(
+                    f"Invalid domain data format for '{domain}': root key '{root_key}' must map to a dictionary"
+                )
+
+            self._cache[domain] = items
             return self._cache[domain]
             
         except Exception as e:
-            print(f"⚠️  Error loading {domain}: {e}")
-            return {}
+            raise RuntimeError(f"Failed loading domain '{domain}': {e}") from e
     
     def get_link_info(self, domain: str, item_id: str) -> LinkInfo:
         """

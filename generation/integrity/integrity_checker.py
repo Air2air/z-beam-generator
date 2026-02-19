@@ -394,9 +394,23 @@ class IntegrityChecker:
         
         # Check 1.1: Slider values in valid range (1-10)
         start = time.time()
+        missing_slider_keys = [
+            key for key in ('jargon_removal', 'professional_voice')
+            if key not in self.config.config
+        ]
+        if missing_slider_keys:
+            results.append(IntegrityResult(
+                check_name="Config: Slider Range Validation",
+                status=IntegrityStatus.FAIL,
+                message=f"Missing required slider config keys: {missing_slider_keys}",
+                details={'missing_keys': missing_slider_keys},
+                duration_ms=(time.time() - start) * 1000
+            ))
+            return results
+
         slider_values = {
-            'jargon_removal': self.config.config.get('jargon_removal', 7),
-            'professional_voice': self.config.config.get('professional_voice', 7),
+            'jargon_removal': self.config.config['jargon_removal'],
+            'professional_voice': self.config.config['professional_voice'],
             'rhythm': self.config.get_sentence_rhythm_variation(),
             'structural': self.config.get_structural_predictability(),
             'imperfection': self.config.get_imperfection_tolerance(),
@@ -418,7 +432,7 @@ class IntegrityChecker:
             results.append(IntegrityResult(
                 check_name="Config: Slider Range Validation",
                 status=IntegrityStatus.PASS,
-                message=f"All {len(slider_values)} sliders in valid range (1-10) [includes jargon_removal={slider_values.get('jargon_removal')}, professional_voice={slider_values.get('professional_voice')}]",
+                message=f"All {len(slider_values)} sliders in valid range (1-10) [includes jargon_removal={slider_values['jargon_removal']}, professional_voice={slider_values['professional_voice']}]",
                 details={'slider_values': slider_values},
                 duration_ms=(time.time() - start) * 1000
             ))
@@ -662,7 +676,11 @@ class IntegrityChecker:
                 )
         
         # Check 3: Modular parameter validation (if enabled)
-        use_modular = self.config.config.get('use_modular_parameters', False)
+        if 'use_modular_parameters' not in self.config.config:
+            issues.append("❌ use_modular_parameters: NOT DEFINED in config.yaml")
+            use_modular = False
+        else:
+            use_modular = self.config.config['use_modular_parameters']
         modular_available = [name for name, info in required_params.items() if info['modular']]
         modular_pending = [name for name, info in required_params.items() if not info['modular']]
         
@@ -1789,8 +1807,18 @@ class IntegrityChecker:
         config_dict = self.config.config
         if 'subjective_thresholds' in config_dict:
             thresholds = config_dict['subjective_thresholds']
-            max_violations = thresholds.get('max_violations', 0)
-            max_commas = thresholds.get('max_commas', 0)
+            if 'max_violations' not in thresholds or 'max_commas' not in thresholds:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Threshold Reasonableness",
+                    status=IntegrityStatus.FAIL,
+                    message="❌ subjective_thresholds missing required keys 'max_violations' and/or 'max_commas'",
+                    details={'thresholds': thresholds},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+                return results
+
+            max_violations = thresholds['max_violations']
+            max_commas = thresholds['max_commas']
             
             # Thresholds that are too strict will block high-quality content
             # Based on Nov 16 batch test: 94-99% human content had 5-8 violations, 5-9 commas

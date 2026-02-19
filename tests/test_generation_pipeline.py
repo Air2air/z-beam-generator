@@ -198,7 +198,7 @@ class TestEndToEndFlow:
         assert generator.personas is not None
         assert len(generator.personas) == 4
         assert generator.adapter is not None
-        assert generator.enricher is not None
+        assert generator.data_provider is not None
     
     def test_evaluated_generator_initialization(self):
         """Verify QualityEvaluatedGenerator initializes correctly"""
@@ -225,13 +225,13 @@ class TestEndToEndFlow:
 class TestDataFlowIntegrity:
     """Test data flows correctly through pipeline"""
     
-    def test_generator_has_enricher(self):
+    def test_generator_has_data_provider(self):
         """Verify Generator has DataProvider"""
         mock_api = Mock()
         generator = Generator(mock_api, domain='materials')
         
-        assert hasattr(generator, 'enricher')
-        assert generator.enricher is not None
+        assert hasattr(generator, 'data_provider')
+        assert generator.data_provider is not None
     
     def test_generator_has_researcher(self):
         """Verify Generator has SystemDataResearcher"""
@@ -241,13 +241,13 @@ class TestDataFlowIntegrity:
         assert hasattr(generator, 'researcher')
         assert generator.researcher is not None
     
-    def test_generator_has_link_builder(self):
-        """Verify Generator has CrossLinkBuilder"""
+    def test_generator_has_adapter(self):
+        """Verify Generator has adapter for domain-specific data access"""
         mock_api = Mock()
         generator = Generator(mock_api, domain='materials')
         
-        assert hasattr(generator, 'link_builder')
-        assert generator.link_builder is not None
+        assert hasattr(generator, 'adapter')
+        assert generator.adapter is not None
     
     def test_generator_has_dynamic_config(self):
         """Verify Generator has DynamicConfig"""

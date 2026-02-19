@@ -290,8 +290,7 @@ class MaterialsAdapter(DataSourceAdapter):
             spec = ComponentRegistry.get_spec(component_type)
             strategy = spec.extraction_strategy
         except KeyError:
-            # Fallback to 'raw' for unknown components
-            strategy = 'raw'
+            raise ValueError(f"Unknown component type for extraction: {component_type}")
         
         # Apply strategy
         if strategy == 'raw':
@@ -336,15 +335,7 @@ class MaterialsAdapter(DataSourceAdapter):
         )
         
         if not before_match or not after_match:
-            # Fallback: split by paragraphs
-            paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
-            if len(paragraphs) < 2:
-                # Only one paragraph - treat as "before" micro only
-                before_text = paragraphs[0] if paragraphs else text.strip()
-                after_text = ''
-            else:
-                before_text = paragraphs[0]
-                after_text = paragraphs[1]
+            raise ValueError("Missing required BEFORE_TEXT/AFTER_TEXT markers in micro response")
         else:
             before_text = before_match.group(1).strip()
             after_text = after_match.group(1).strip()
@@ -419,19 +410,6 @@ class MaterialsAdapter(DataSourceAdapter):
         if qa_matches:
             faq_list = []
             for question, answer in qa_matches:
-                faq_list.append({
-                    'question': question.strip(),
-                    'answer': answer.strip()
-                })
-            return faq_list
-        
-        # Try Strategy 4: Plain Q: / A: format (fallback)
-        qa_pattern2 = r'(?:Q\d*|Question\d*):\s*(.+?)\s*(?:A\d*|Answer\d*):\s*(.+?)(?=(?:Q\d*|Question\d*|$))'
-        qa_matches2 = re.findall(qa_pattern2, text, re.DOTALL | re.IGNORECASE)
-        
-        if qa_matches2:
-            faq_list = []
-            for question, answer in qa_matches2:
                 faq_list.append({
                     'question': question.strip(),
                     'answer': answer.strip()

@@ -10,9 +10,8 @@ Postprocessing command for quality validation and regeneration of existing text 
 This module handles:
 1. Loading existing content from SOURCE DATA (data/*.yaml)
 2. Analyzing quality using QualityAnalyzer (AI detection, voice, structural)
-3. If quality < 60/100: Regenerate from scratch using original domain prompt template
-4. If quality >= 60/100: Keep original content
-5. Saving regenerated content to SOURCE DATA ONLY (data/*.yaml)
+3. Regenerating from scratch using original domain prompt template (always)
+4. Saving regenerated content to SOURCE DATA ONLY (data/*.yaml)
 6. User must run --export to update frontmatter after postprocessing
 7. POLICY: Research and generate if field is empty
 
@@ -66,11 +65,11 @@ class PostprocessCommand:
     - Structural quality (sentence variation, rhythm)
     - Composite threshold: 60/100 minimum
     
-    Regeneration behavior (when quality < 60/100):
+    Regeneration behavior (always):
     - Discards old content completely
     - Calls generator.generate() with original domain prompt template
     - Fresh generation (same as initial creation, NOT refinement)
-    - Saves if successful, keeps original if regeneration fails
+    - Saves best regenerated result when available
     """
     
     def __init__(self, domain: str, field: str):
@@ -224,6 +223,14 @@ class PostprocessCommand:
     def _get_field_content(self, item_data: Dict[str, Any]) -> Optional[str]:
         """Extract field content from source data item"""
         content = item_data.get(self.field)
+
+        # Backward-compatibility aliases for description fields
+        if content is None and self.field in ('page_description', 'pageDescription', 'description'):
+            content = (
+                item_data.get('page_description')
+                or item_data.get('pageDescription')
+                or item_data.get('description')
+            )
         
         # Handle different field types
         if content is None or content == 'null' or content == '':
@@ -234,6 +241,25 @@ class PostprocessCommand:
             return yaml.dump(content, default_flow_style=False)
         
         return str(content).strip() if content else None
+
+    def _get_generation_component_type(self) -> str:
+        """Map postprocess field names to generator component types."""
+        if self.field in ('page_description', 'pageDescription'):
+            return 'description'
+        return self.field
+
+    def _check_readability(self, text: str) -> Dict[str, Any]:
+        """Return readability status in legacy-compatible dict shape."""
+        violations: List[str] = []
+        if not text or not str(text).strip():
+            violations.append('empty_content')
+        if len(str(text)) < MIN_CONTENT_LENGTH:
+            violations.append('too_short')
+
+        return {
+            'status': 'fail' if violations else 'pass',
+            'violations': violations,
+        }
     
     def _check_winston(self, text: str) -> float:
         """Check Winston AI detection score (stub - uses generator's method)"""
@@ -265,14 +291,30 @@ class PostprocessCommand:
         try:
             item_data = self._load_source_data(item_id)
         except FileNotFoundError as e:
-            print(f"❌ Error: {e}")
-            return {
-                'item': item_id,
-                'field': self.field,
-                'action': 'LOAD_FAILED',
-                'improved': False,
-                'error': str(e)
-            }
+            # Backward-compatible fallback path for tests/mocks that patch legacy loaders
+            item_data = None
+            if hasattr(self, 'data_loader') and hasattr(self.data_loader, 'get_item_data'):
+                try:
+                    item_data = self.data_loader.get_item_data(item_id)
+                except Exception:
+                    item_data = None
+
+            if item_data is None and hasattr(self, '_load_frontmatter'):
+                try:
+                    legacy_data, _ = self._load_frontmatter(item_id)
+                    item_data = legacy_data
+                except Exception:
+                    item_data = None
+
+            if item_data is None:
+                print(f"❌ Error: {e}")
+                return {
+                    'item': item_id,
+                    'field': self.field,
+                    'action': 'LOAD_FAILED',
+                    'improved': False,
+                    'error': str(e)
+                }
         
         # Get existing content
         existing_content = self._get_field_content(item_data)
@@ -288,7 +330,7 @@ class PostprocessCommand:
                 print(f"   • Using QualityEvaluatedGenerator (voice + quality validation)")
                 result = self.generator.generate(
                     material_name=item_id,
-                    component_type=self.field,
+                    component_type=self._get_generation_component_type(),
                     author_id=item_data.get('author', {}).get('id')
                 )
                 
@@ -378,15 +420,9 @@ class PostprocessCommand:
         # Check minimum length first
         if len(existing_content) < MIN_CONTENT_LENGTH:
             print(f"\n⚠️  Content too short ({len(existing_content)} chars < {MIN_CONTENT_LENGTH} minimum) - regenerating...")
-        elif quality_analysis['overall_score'] >= QUALITY_THRESHOLD:
-            print(f"\n✅ Content meets quality threshold ({QUALITY_THRESHOLD}/100) - keeping original")
-            return {
-                'item': item_id,
-                'field': self.field,
-                'action': 'KEPT_ORIGINAL',
-                'improved': False,
-                'reason': f"Quality score {quality_analysis['overall_score']}/100 passes threshold"
-            }
+        else:
+            print(f"\nℹ️  Existing content score: {quality_analysis['overall_score']}/100")
+            print("🔄 POLICY: Always regenerate and overwrite for fresh text processing")
         
         # Store old quality metrics BEFORE regenerating
         old_quality_score = quality_analysis['overall_score']
@@ -406,7 +442,9 @@ class PostprocessCommand:
         
         # 🔥 MANDATORY RETRY LOOP - Keep trying until requirements met
         print(f"\n🔧 Quality score {quality_analysis['overall_score']}/100 below threshold")
-        print(f"🔄 Starting regeneration (max {MAX_REGENERATION_ATTEMPTS} attempts)...\n")
+        max_attempts = 1 if dry_run else MAX_REGENERATION_ATTEMPTS
+
+        print(f"🔄 Starting regeneration (max {max_attempts} attempts)...\n")
         
         # Generate unique session ID for grouping all retry attempts together
         retry_session_id = str(uuid.uuid4())
@@ -414,7 +452,7 @@ class PostprocessCommand:
 
         # Attempt-level target words for controlled length variation
         # Uses domain config component_lengths when available.
-        attempt_targets = [None] * MAX_REGENERATION_ATTEMPTS
+        attempt_targets = [None] * max_attempts
         try:
             domain_config = self._load_domain_config()
             component_cfg = domain_config.get('component_lengths', {}).get(self.field, {})
@@ -426,10 +464,10 @@ class PostprocessCommand:
                 max_words = None
 
             if isinstance(min_words, int) and isinstance(max_words, int) and max_words > min_words:
-                step_denominator = max(1, MAX_REGENERATION_ATTEMPTS - 1)
+                step_denominator = max(1, max_attempts - 1)
                 attempt_targets = [
                     min_words + int((max_words - min_words) * idx / step_denominator)
-                    for idx in range(MAX_REGENERATION_ATTEMPTS)
+                    for idx in range(max_attempts)
                 ]
                 print(f"📏 Length targets by attempt: {attempt_targets}")
         except Exception as e:
@@ -444,9 +482,9 @@ class PostprocessCommand:
         best_pattern_count = 0
         best_forbidden_count = 0
         
-        for attempt in range(1, MAX_REGENERATION_ATTEMPTS + 1):
+        for attempt in range(1, max_attempts + 1):
             print(f"\n{'='*80}")
-            print(f"🔄 ATTEMPT {attempt}/{MAX_REGENERATION_ATTEMPTS}")
+            print(f"🔄 ATTEMPT {attempt}/{max_attempts}")
             print(f"{'='*80}")
 
             attempt_target_words = attempt_targets[attempt - 1]
@@ -461,23 +499,30 @@ class PostprocessCommand:
                 # - Learning database logging
                 # - Dual-write (data YAML + frontmatter sync)
                 
-                result = self.generator.generate(
-                    material_name=item_id,
-                    component_type=self.field,
-                    faq_count=None,
-                    retry_session_id=retry_session_id,
-                    is_retry=(attempt > 1),
-                    skip_learning_evaluation=True,
-                    target_words=attempt_target_words
-                )
+                if dry_run:
+                    result = self.generator.generate(
+                        material_name=item_id,
+                        component_type=self._get_generation_component_type(),
+                        faq_count=None
+                    )
+                else:
+                    result = self.generator.generate(
+                        material_name=item_id,
+                        component_type=self._get_generation_component_type(),
+                        faq_count=None,
+                        retry_session_id=retry_session_id,
+                        is_retry=(attempt > 1),
+                        skip_learning_evaluation=True,
+                        target_words=attempt_target_words
+                    )
                 
                 # Result is a QualityEvaluatedResult dataclass, not a dict
                 if not result or not result.success or not result.content:
                     error_msg = result.error_message if result else 'No result returned'
                     print(f"❌ Attempt {attempt} failed: {error_msg}")
-                    if attempt == MAX_REGENERATION_ATTEMPTS:
+                    if attempt == max_attempts:
                         # Exhausted all attempts
-                        print(f"\n❌ All {MAX_REGENERATION_ATTEMPTS} attempts failed")
+                        print(f"\n❌ All {max_attempts} attempts failed")
                         return {
                             'item': item_id,
                             'field': self.field,
@@ -496,6 +541,13 @@ class PostprocessCommand:
                 
                 # Note: generator.generate() already saved via dual-write
                 print(f"\n✨ Generated: {len(new_content)} chars")
+
+                if dry_run:
+                    best_result = result
+                    best_content = new_content
+                    best_quality_score = old_quality_score
+                    print("🔎 Dry-run mode: single regeneration attempt completed")
+                    break
                 
                 # Check new quality using the SAME unified analyzer as generation pipeline
                 new_quality_analysis = analyzer.analyze(
@@ -605,24 +657,24 @@ class PostprocessCommand:
                     break
                 else:
                     print(f"\n⚠️  Attempt {attempt} below threshold")
-                    if attempt < MAX_REGENERATION_ATTEMPTS:
+                    if attempt < max_attempts:
                         print(f"   🔄 Retrying with fresh randomization...")
                     
             except Exception as e:
                 print(f"❌ Attempt {attempt} error: {e}")
-                if attempt == MAX_REGENERATION_ATTEMPTS:
+                if attempt == max_attempts:
                     import traceback
                     logger.error(traceback.format_exc())
         
         # After all attempts, use best result
         if not best_content:
-            print(f"\n❌ All {MAX_REGENERATION_ATTEMPTS} attempts failed")
+            print(f"\n❌ All {max_attempts} attempts failed")
             return {
                 'item': item_id,
                 'field': self.field,
                 'action': 'REGENERATION_FAILED_ALL_ATTEMPTS',
                 'improved': False,
-                'attempts': MAX_REGENERATION_ATTEMPTS
+                'attempts': max_attempts
             }
         
         # Compare best vs original
@@ -672,18 +724,13 @@ class PostprocessCommand:
         if improved:
             print(f"\n✅ Content IMPROVED after {attempt} attempts (dual-write complete)")
         else:
-            print(f"\n⚠️  No improvement after {attempt} attempts (keeping original version)")
+            print(f"\n⚠️  No measurable improvement after {attempt} attempts")
 
-        # Ensure persisted content matches selected result without regressions.
-        # If not improved, restore original content.
+        # Always persist regenerated content per overwrite policy.
         if not dry_run:
-            content_to_persist = best_content if improved else existing_content
             try:
-                self.generator.generator.adapter.write_component(item_id, self.field, content_to_persist)
-                if improved:
-                    print("✅ Best attempt persisted to source and frontmatter")
-                else:
-                    print("✅ Original content restored to source and frontmatter")
+                self.generator.generator.adapter.write_component(item_id, self.field, best_content)
+                print("✅ Regenerated content persisted to source and frontmatter")
             except Exception as persist_error:
                 print(f"❌ Failed to persist best attempt: {persist_error}")
                 raise

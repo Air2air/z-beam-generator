@@ -67,7 +67,7 @@ class HumannessOptimizer:
     
     Analyzes:
     - Winston passing samples (database: detection_results table)
-    - Subjective learned patterns (YAML: prompts/evaluation/learned_patterns.yaml)
+    - Subjective learned patterns (YAML: prompts/quality/learned_patterns.yaml)
     - Structural diversity patterns (database: structural_patterns table)
     
     Produces:
@@ -87,7 +87,7 @@ class HumannessOptimizer:
         
         Args:
             winston_db_path: Path to Winston feedback database
-            patterns_file: Path to learned_patterns.yaml (default: prompts/evaluation/learned_patterns.yaml)
+            patterns_file: Path to learned_patterns.yaml (default: prompts/quality/learned_patterns.yaml)
             structural_db_path: Path to structural patterns database (default: data/winston_feedback.db)
             config_path: Path to config.yaml for randomization targets (default: generation/config.yaml)
         

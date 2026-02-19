@@ -24,17 +24,26 @@ def get_component_mode(component_type: str, api_client=None) -> str:
     Returns:
         str: The mode to use: "hybrid", "static", or "frontmatter"
     """
-    # Get component configuration from central source
-    component_config = COMPONENT_CONFIG.get(component_type, {})
-    
-    # Get the data provider setting
-    configured_mode = component_config.get("data_provider", "hybrid")
-    
-    # If the configured mode is hybrid but no API client is provided, fall back to static
+    if component_type not in COMPONENT_CONFIG:
+        raise ValueError(f"Unknown component type: {component_type}")
+
+    component_config = COMPONENT_CONFIG[component_type]
+    if "data_provider" not in component_config:
+        raise ValueError(
+            f"Component '{component_type}' missing required config key: data_provider"
+        )
+
+    configured_mode = component_config["data_provider"]
+    if configured_mode not in {"hybrid", "static", "frontmatter"}:
+        raise ValueError(
+            f"Invalid data_provider '{configured_mode}' for component '{component_type}'"
+        )
+
     if configured_mode == "hybrid" and api_client is None:
-        logger.warning(f"Component {component_type} is configured for hybrid mode but no API client provided. Falling back to static mode.")
-        return "static"
-    
+        raise ValueError(
+            f"Component '{component_type}' requires api_client for hybrid mode"
+        )
+
     return configured_mode
 
 def should_use_api(component_type: str, api_client=None) -> bool:

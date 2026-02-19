@@ -500,7 +500,7 @@ class TestPhase3SettingsCompletion:
     def test_settings_section_metadata_has_proper_values(self, settings_data):
         """Verify section metadata fields have proper values"""
         total_sections = 0
-        valid_variants = ['default', 'warning', 'danger', 'info', 'success']
+        valid_variants = ['default', 'warning', 'danger', 'info', 'success', 'technical']
         invalid_sections = []
         
         for setting_id, setting in settings_data.items():

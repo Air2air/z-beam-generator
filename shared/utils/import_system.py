@@ -16,9 +16,8 @@ import importlib
 import logging
 import sys
 from collections import defaultdict
-from functools import wraps
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Set, Tuple, Type
+from typing import Any, Dict, List, Optional, Set, Tuple, Type
 
 logger = logging.getLogger(__name__)
 
@@ -29,7 +28,7 @@ class ImportManager:
     
     Features:
     - Safe imports with caching
-    - Error handling and fallbacks
+    - Fail-fast error handling
     - Import validation and AST parsing
     - Import organization checking
     - Dependency validation
@@ -50,23 +49,21 @@ class ImportManager:
 
     # ===== SAFE IMPORT FUNCTIONALITY =====
 
-    def safe_import(self, module_path: str, fallback: Any = None) -> Optional[Any]:
+    def safe_import(self, module_path: str) -> Optional[Any]:
         """
-        Safely import a module with caching and fallback.
+        Safely import a module with caching.
         
         Args:
             module_path: Module path to import
-            fallback: Fallback value if import fails
-            
         Returns:
-            Imported module or fallback
+            Imported module
         """
         if module_path in self._import_cache:
             return self._import_cache[module_path]
 
         if module_path in self._failed_imports:
-            logger.debug(f"Using cached failure for {module_path}: {self._failed_imports[module_path]}")
-            return fallback or self._fallbacks.get(module_path)
+            error_msg = self._failed_imports[module_path]
+            raise ImportError(error_msg)
 
         try:
             module = importlib.import_module(module_path)
@@ -77,24 +74,22 @@ class ImportManager:
             error_msg = f"Failed to import {module_path}: {e}"
             self._failed_imports[module_path] = error_msg
             logger.warning(error_msg)
-            return fallback or self._fallbacks.get(module_path)
+            raise ImportError(error_msg) from e
         except Exception as e:
             error_msg = f"Unexpected error importing {module_path}: {e}"
             self._failed_imports[module_path] = error_msg
             logger.error(error_msg)
-            return fallback or self._fallbacks.get(module_path)
+            raise ImportError(error_msg) from e
 
-    def safe_import_class(self, module_path: str, class_name: str, fallback: Any = None) -> Optional[Type]:
+    def safe_import_class(self, module_path: str, class_name: str) -> Optional[Type]:
         """
         Safely import a class from a module.
         
         Args:
             module_path: Module path
             class_name: Class name to import
-            fallback: Fallback class if import fails
-            
         Returns:
-            Imported class or fallback
+            Imported class
         """
         cache_key = f"{module_path}.{class_name}"
 
@@ -102,7 +97,8 @@ class ImportManager:
             return self._import_cache[cache_key]
 
         if cache_key in self._failed_imports:
-            return fallback
+            error_msg = self._failed_imports[cache_key]
+            raise ImportError(error_msg)
 
         try:
             module = importlib.import_module(module_path)
@@ -114,28 +110,12 @@ class ImportManager:
             error_msg = f"Failed to import {cache_key}: {e}"
             self._failed_imports[cache_key] = error_msg
             logger.warning(error_msg)
-            return fallback
+            raise ImportError(error_msg) from e
         except Exception as e:
             error_msg = f"Unexpected error importing {cache_key}: {e}"
             self._failed_imports[cache_key] = error_msg
             logger.error(error_msg)
-            return fallback
-
-    # ===== FALLBACK FUNCTIONALITY DISABLED FOR GROK COMPLIANCE =====
-
-    def register_fallback(self, module_name: str, fallback_module: Any) -> None:
-        """GROK COMPLIANCE: Fallbacks disabled - fail-fast architecture required."""
-        raise ValueError(f"Fallbacks are disabled for GROK compliance - cannot register fallback for {module_name}")
-
-    def setup_component_fallbacks(self):
-        """
-        GROK COMPLIANCE: No fallbacks in production.
-        This method is disabled to enforce fail-fast architecture.
-        Components must be explicitly imported or system fails immediately.
-        """
-        # REMOVED: All fallback/mock logic violates GROK fail-fast principles
-        # System must fail immediately if components are missing
-        pass
+            raise ImportError(error_msg) from e
 
     # ===== VALIDATION FUNCTIONALITY =====
 
@@ -309,7 +289,6 @@ class ImportManager:
             "critical_imports_ok": self.validate_critical_imports(),
             "failed_imports": self._failed_imports.copy(),
             "cached_imports": len(self._import_cache),
-            "registered_fallbacks": len(self._fallbacks),
         }
 
     def print_validation_report(self, report: Dict[str, Any]) -> None:
@@ -322,7 +301,6 @@ class ImportManager:
         print(f"Total issues: {report['total_issues']}")
         print(f"Critical imports OK: {report['critical_imports_ok']}")
         print(f"Cached imports: {report['cached_imports']}")
-        print(f"Registered fallbacks: {report['registered_fallbacks']}")
 
         if report["issue_counts"]:
             print("\nIssue breakdown:")
@@ -354,30 +332,8 @@ class ImportManager:
         return {
             "cached_imports": len(self._import_cache),
             "failed_imports": len(self._failed_imports), 
-            "registered_fallbacks": len(self._fallbacks),
             "validation_issues": len(self.issues),
         }
-
-
-# ===== DECORATOR FOR FALLBACK FUNCTIONALITY =====
-
-def with_import_fallback(fallback_module: Any):
-    """Decorator to provide import fallback for functions."""
-    def decorator(func: Callable) -> Callable:
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            try:
-                return func(*args, **kwargs)
-            except ImportError as e:
-                logger.warning(f"Import error in {func.__name__}: {e}")
-                logger.info(f"Using fallback for {func.__name__}")
-                if hasattr(fallback_module, func.__name__):
-                    fallback_func = getattr(fallback_module, func.__name__)
-                    return fallback_func(*args, **kwargs)
-                else:
-                    raise e
-        return wrapper
-    return decorator
 
 
 # ===== GLOBAL INSTANCE =====
@@ -385,19 +341,16 @@ def with_import_fallback(fallback_module: Any):
 # Global unified import manager instance
 import_manager = ImportManager()
 
-# Setup component fallbacks on import
-import_manager.setup_component_fallbacks()
-
 
 # ===== CONVENIENCE FUNCTIONS FOR BACKWARD COMPATIBILITY =====
 
-def safe_import(module_path: str, fallback: Any = None) -> Optional[Any]:
+def safe_import(module_path: str) -> Optional[Any]:
     """Convenience function for safe imports."""
-    return import_manager.safe_import(module_path, fallback)
+    return import_manager.safe_import(module_path)
 
-def safe_import_class(module_path: str, class_name: str, fallback: Any = None) -> Optional[Type]:
+def safe_import_class(module_path: str, class_name: str) -> Optional[Type]:
     """Convenience function for safe class imports."""
-    return import_manager.safe_import_class(module_path, class_name, fallback)
+    return import_manager.safe_import_class(module_path, class_name)
 
 def validate_critical_imports() -> bool:
     """Convenience function for critical import shared.validation."""
@@ -465,7 +418,6 @@ if __name__ == "__main__":
 __all__ = [
     "ImportManager",
     "import_manager", 
-    "with_import_fallback",
     "safe_import",
     "safe_import_class",
     "validate_critical_imports",

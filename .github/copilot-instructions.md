@@ -981,7 +981,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 **What**: Complete pipeline for template-based evaluation with continuous learning
 **Components**:
 - `prompts/evaluation/subjective_quality.txt` - Template for evaluation prompts (no hardcoded prompts in code)
-- `prompts/evaluation/learned_patterns.yaml` - Auto-updating learned patterns from evaluations
+- `prompts/quality/learned_patterns.yaml` - Auto-updating learned patterns from evaluations
 - `processing/learning/subjective_pattern_learner.py` - Learning system with exponential moving averages
 - Integration: SubjectiveEvaluator loads templates, generator updates patterns after each evaluation
 
@@ -995,7 +995,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 
 **Files Changed**:
 - NEW: `prompts/evaluation/subjective_quality.txt` (template)
-- NEW: `prompts/evaluation/learned_patterns.yaml` (learning data)
+- NEW: `prompts/quality/learned_patterns.yaml` (learning data)
 - NEW: `processing/learning/subjective_pattern_learner.py` (learner)
 - NEW: `tests/test_learned_evaluation_pipeline.py` (17 tests ✅)
 - MODIFIED: `processing/subjective/evaluator.py` (template integration)

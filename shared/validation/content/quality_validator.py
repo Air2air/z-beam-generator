@@ -16,7 +16,7 @@ See: docs/CONTENT_VALIDATION_SYSTEM.md for migration details
 
 Legacy Implementation:
 Implements circuit breaker pattern for AI detection services to ensure
-resilient quality assurance. Supports Winston.ai primary with GPTZero fallback.
+resilient quality assurance.
 """
 
 import time
@@ -58,18 +58,18 @@ class AIDetectionCircuitBreaker:
     """Circuit breaker for AI detection services"""
 
     def __init__(self):
-        self.service_failures = {"winston": 0, "gptzero": 0}
+        self.service_failures = {"winston": 0}
         self.failure_threshold = 5
         
         # Get timeout configuration from run.py - FAIL FAST if unavailable
         from run import get_validation_config
         validation_config = get_validation_config()
         self.recovery_timeout = validation_config["quality_validator_recovery_timeout"]
-        self.fallback_chain = ["winston", "gptzero"]
+        self.service_chain = ["winston"]
 
     def get_available_service(self) -> Optional[str]:
         """Get next available AI detection service"""
-        for service in self.fallback_chain:
+        for service in self.service_chain:
             if self._can_use_service(service):
                 return service
         return None
@@ -88,11 +88,15 @@ class AIDetectionCircuitBreaker:
 
     def record_service_failure(self, service: str):
         """Record service failure"""
+        if service not in self.service_failures:
+            raise ValueError(f"Unknown service: {service}")
         self.service_failures[service] += 1
         setattr(self, f"{service}_failure_time", time.time())
 
     def record_service_success(self, service: str):
         """Record service success"""
+        if service not in self.service_failures:
+            raise ValueError(f"Unknown service: {service}")
         if self.service_failures[service] > 0:
             self.service_failures[service] = max(0, self.service_failures[service] - 1)
 
@@ -133,8 +137,10 @@ class QualityScoreValidator:
         """Get recommendations for improving score"""
         recommendations = []
 
-        thresholds = self.persona_thresholds.get(author_id, {})
-        target_score = thresholds.get("target_score", 80)
+        thresholds = self.persona_thresholds.get(author_id)
+        if not thresholds:
+            raise ValueError(f"No thresholds configured for author {author_id}")
+        target_score = thresholds["target_score"]
 
         if score < target_score:
             gap = target_score - score

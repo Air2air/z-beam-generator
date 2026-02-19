@@ -16,6 +16,7 @@ import random
 from typing import Dict, Optional
 
 from shared.text.utils.component_specs import ComponentRegistry, DomainContext
+from shared.text.utils.prompt_registry_service import PromptRegistryService
 from shared.text.utils.sentence_calculator import SentenceCalculator
 
 logger = logging.getLogger(__name__)
@@ -47,13 +48,14 @@ class PromptBuilder:
         if PromptBuilder._technical_profiles_cache is None:
             import yaml
             profiles_path = os.path.join('prompts', 'profiles', 'technical.yaml')
-            if os.path.exists(profiles_path):
-                with open(profiles_path, 'r', encoding='utf-8') as f:
-                    PromptBuilder._technical_profiles_cache = yaml.safe_load(f)
-                logger.debug(f"Loaded technical profiles from {profiles_path}")
-            else:
-                logger.warning(f"Technical profiles not found at {profiles_path}, using fallback")
-                PromptBuilder._technical_profiles_cache = {}
+            if not os.path.exists(profiles_path):
+                raise FileNotFoundError(
+                    f"Technical profiles not found at {profiles_path}. "
+                    "Fail-fast architecture requires this file."
+                )
+            with open(profiles_path, 'r', encoding='utf-8') as f:
+                PromptBuilder._technical_profiles_cache = yaml.safe_load(f)
+            logger.debug(f"Loaded technical profiles from {profiles_path}")
         return PromptBuilder._technical_profiles_cache
     
     @staticmethod
@@ -62,13 +64,14 @@ class PromptBuilder:
         if PromptBuilder._rhythm_profiles_cache is None:
             import yaml
             profiles_path = os.path.join('prompts', 'profiles', 'rhythm.yaml')
-            if os.path.exists(profiles_path):
-                with open(profiles_path, 'r', encoding='utf-8') as f:
-                    PromptBuilder._rhythm_profiles_cache = yaml.safe_load(f)
-                logger.debug(f"Loaded rhythm profiles from {profiles_path}")
-            else:
-                logger.warning(f"Rhythm profiles not found at {profiles_path}, using fallback")
-                PromptBuilder._rhythm_profiles_cache = {}
+            if not os.path.exists(profiles_path):
+                raise FileNotFoundError(
+                    f"Rhythm profiles not found at {profiles_path}. "
+                    "Fail-fast architecture requires this file."
+                )
+            with open(profiles_path, 'r', encoding='utf-8') as f:
+                PromptBuilder._rhythm_profiles_cache = yaml.safe_load(f)
+            logger.debug(f"Loaded rhythm profiles from {profiles_path}")
         return PromptBuilder._rhythm_profiles_cache
     
     @staticmethod
@@ -169,8 +172,10 @@ class PromptBuilder:
         guidance = rhythm_patterns.get(pattern, '')
         
         if not guidance:
-            logger.warning(f"No {pattern} rhythm pattern for {component_type}, using fallback")
-            return "Mix sentence lengths naturally."
+            raise ValueError(
+                f"No '{pattern}' rhythm pattern for component '{component_type}'. "
+                "Fix prompts/profiles/rhythm.yaml. NO FALLBACKS permitted."
+            )
         
         logger.debug(f"Using {pattern} rhythm pattern for {component_type} ({length} words)")
         return guidance.strip()
@@ -271,46 +276,23 @@ distinctive markers per paragraph as specified in your voice instructions."""
         Raises:
             FileNotFoundError: If schema doesn't exist or can't be loaded
         """
-        from pathlib import Path
-        
-        # SCHEMA ONLY: Load from section display schema (REQUIRED)
-        schema_path = Path('data/schemas/section_display_schema.yaml')
-        if not schema_path.exists():
-            raise FileNotFoundError(
-                f"Section display schema REQUIRED at {schema_path}. "
-                f"NO FALLBACKS permitted per Core Principle #1."
-            )
-        
         try:
-            from shared.utils.yaml_utils import load_yaml
-            schema = load_yaml(schema_path)
-            
-            # Navigate to sections.component_type or sections.group.component_type
-            if 'sections' in schema:
-                # Try direct lookup first (e.g., "contaminatedBy")
-                section_key = component_type
-                if section_key in schema['sections']:
-                    prompt_text = schema['sections'][section_key].get('prompt')
-                    if prompt_text:
-                        logger.debug(f"✅ Loaded prompt from schema: {section_key}")
-                        return prompt_text.strip()
-                
-                # Try with group prefix (e.g., "interactions.contaminatedBy")
-                for key, section_data in schema['sections'].items():
-                    if key.endswith(f".{component_type}") or key == component_type:
-                        prompt_text = section_data.get('prompt')
-                        if prompt_text:
-                            logger.debug(f"✅ Loaded prompt from schema: {key}")
-                            return prompt_text.strip()
-            else:
-                logger.debug(f"Component not in schema: {domain}.{component_type}")
-                return None
+            prompt_text = PromptRegistryService.get_schema_prompt(
+                domain=domain,
+                component_type=component_type,
+                include_descriptor=False,
+            )
+            if prompt_text:
+                logger.debug(f"✅ Loaded prompt from schema registry service: {domain}.{component_type}")
+                return prompt_text.strip()
+
+            logger.debug(f"Component not in schema: {domain}.{component_type}")
+            return None
         except Exception as e:
-            logger.error(f"Failed to load section display schema: {e}")
+            logger.error(f"Failed to load section prompt for {domain}.{component_type}: {e}")
             raise FileNotFoundError(
-                f"Could not load section display schema at {schema_path}. "
-                f"This file is REQUIRED for all text generation. "
-                f"Error: {e}"
+                "Could not load section prompt via PromptRegistryService. "
+                f"Domain: {domain}, component: {component_type}, error: {e}"
             )
     
     @staticmethod
@@ -395,23 +377,15 @@ distinctive markers per paragraph as specified in your voice instructions."""
         Returns:
             Complete prompt string
         """
-        # Get component specification
-        try:
-            spec = ComponentRegistry.get_spec(component_type)
-        except KeyError as e:
-            logger.warning(f"{e}. Falling back to generic template.")
-            spec = None
-        
-        # Get domain context
-        try:
-            domain_ctx = DomainContext.get_domain(domain)
-        except ValueError as e:
-            logger.warning(f"{e}. Using default materials domain.")
-            domain_ctx = DomainContext.materials()
+        # Get component specification (fail-fast)
+        spec = ComponentRegistry.get_spec(component_type)
+
+        # Get domain context (fail-fast)
+        domain_ctx = DomainContext.get_domain(domain)
         
         # Use component default length if not specified
         if length is None:
-            length = spec.default_length if spec else 100
+            length = spec.default_length
         
         # SINGLE SOURCE OF TRUTH: Length variation calculated here ONLY.
         # Use call-provided seed when present (for traceability); otherwise use fresh entropy.
@@ -436,38 +410,31 @@ distinctive markers per paragraph as specified in your voice instructions."""
         sentence_structure = voice.get('sentence_structure', {})
         sentence_style = sentence_structure.get(component_type, '')
         
-        # Fallback to old location for backward compatibility
         if not sentence_style:
-            generation_constraints = voice.get('generation_constraints', {})
-            component_constraints = generation_constraints.get(component_type, {})
-            sentence_style = component_constraints.get('sentence_style', '')
+            raise ValueError(
+                f"Missing sentence_structure for component '{component_type}' in voice profile. "
+                "Fail-fast architecture requires explicit component sentence style."
+            )
         
-        # Build prompt using spec-driven template
-        if spec:
-            return PromptBuilder._build_spec_driven_prompt(
-                topic=topic,
-                author=author,
-                country=country,
-                esl_traits=esl_traits,
-                sentence_style=sentence_style,
-                length=length,
-                facts=facts,
-                context=context,
-                spec=spec,
-                domain_ctx=domain_ctx,
-                voice_params=voice_params,  # NEW: Pass to spec builder
-                enrichment_params=enrichment_params,  # Phase 3+: Technical intensity
-                variation_seed=variation_seed,
-                voice=voice,  # NEW: Pass full voice profile for grammar_norms access
-                humanness_layer=humanness_layer,  # NEW: Universal Humanness Layer
-                faq_count=faq_count,  # Pass FAQ count
-                item_data=item_data  # NEW: Pass item_data for template placeholders
-            )
-        else:
-            # Fallback to legacy generic prompt
-            return PromptBuilder._build_generic_prompt(
-                topic, author, country, esl_traits, length, facts, context
-            )
+        return PromptBuilder._build_spec_driven_prompt(
+            topic=topic,
+            author=author,
+            country=country,
+            esl_traits=esl_traits,
+            sentence_style=sentence_style,
+            length=length,
+            facts=facts,
+            context=context,
+            spec=spec,
+            domain_ctx=domain_ctx,
+            voice_params=voice_params,  # NEW: Pass to spec builder
+            enrichment_params=enrichment_params,  # Phase 3+: Technical intensity
+            variation_seed=variation_seed,
+            voice=voice,  # NEW: Pass full voice profile for grammar_norms access
+            humanness_layer=humanness_layer,  # NEW: Universal Humanness Layer
+            faq_count=faq_count,  # Pass FAQ count
+            item_data=item_data  # NEW: Pass item_data for template placeholders
+        )
     
     @staticmethod
     def _build_spec_driven_prompt(

@@ -94,18 +94,36 @@ class CachedAPIClient(APIClient):
         # Check cache first
         cached_response = self.cache.get(request_data)
         if cached_response is not None:
+            required_cached_keys = [
+                'success',
+                'content',
+                'error',
+                'response_time',
+                'token_count',
+                'prompt_tokens',
+                'completion_tokens',
+                'model_used',
+                'request_id',
+                'retry_count',
+            ]
+            missing_cached_keys = [key for key in required_cached_keys if key not in cached_response]
+            if missing_cached_keys:
+                raise RuntimeError(
+                    f"CACHE DATA ERROR: Cached response is missing required keys: {missing_cached_keys}"
+                )
+
             # Cache hit - return cached response
             return APIResponse(
                 success=cached_response['success'],
                 content=cached_response['content'],
-                error=cached_response.get('error'),
-                response_time=cached_response.get('response_time'),
-                token_count=cached_response.get('token_count'),
-                prompt_tokens=cached_response.get('prompt_tokens'),
-                completion_tokens=cached_response.get('completion_tokens'),
-                model_used=cached_response.get('model_used'),
-                request_id=cached_response.get('request_id'),
-                retry_count=cached_response.get('retry_count', 0)
+                error=cached_response['error'],
+                response_time=cached_response['response_time'],
+                token_count=cached_response['token_count'],
+                prompt_tokens=cached_response['prompt_tokens'],
+                completion_tokens=cached_response['completion_tokens'],
+                model_used=cached_response['model_used'],
+                request_id=cached_response['request_id'],
+                retry_count=cached_response['retry_count']
             )
         
         # Cache miss - call API
@@ -152,21 +170,14 @@ class CachedAPIClient(APIClient):
         """
         Check text for AI detection (Winston API compatibility).
         
-        This method is required for Winston API compatibility but not implemented
-        in the cached client. Returns neutral score to avoid blocking content.
+        This method is not supported in CachedAPIClient.
         
         Args:
             text: Text to analyze
             
-        Returns:
-            Dict with 'score' (0.0-1.0, where higher = more human)
+        Raises:
+            RuntimeError: Always - Winston detection must use non-cached client
         """
-        logger.warning("CachedAPIClient.check_text: Winston API not available in cached client")
-        logger.warning("Returning neutral score to avoid blocking content generation")
-        return {
-            'score': 0.70,  # Neutral score (above typical 0.69 threshold)
-            'human_score': 70.0,
-            'ai_score': 30.0,
-            'cached': True,
-            'note': 'Winston API unavailable - using cached client neutral score'
-        }
+        raise RuntimeError(
+            "CachedAPIClient.check_text is not supported. Use non-cached Winston client for AI detection."
+        )

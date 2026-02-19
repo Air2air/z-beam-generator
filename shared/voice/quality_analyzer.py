@@ -196,12 +196,23 @@ class QualityAnalyzer:
         overall_score = self._calculate_overall_score_enhanced(
             enhanced_ai_result, ai_result, voice_result, structural_result
         )
+
+        # Fail-fast score for content below minimum length threshold.
+        # Keep detailed diagnostics, but force overall quality to 0.0.
+        if content_too_short:
+            overall_score = 0.0
         
         # 6. Generate recommendations
         recommendations = []
         if include_recommendations:
             recommendations = self._generate_recommendations_enhanced(
                 enhanced_ai_result, ai_result, voice_result, structural_result
+            )
+
+        if content_too_short:
+            recommendations = recommendations or []
+            recommendations.append(
+                f"Content is too short for reliable quality evaluation (minimum {MIN_CONTENT_LENGTH} characters)."
             )
         
         return {

@@ -23,7 +23,6 @@ Usage:
 """
 
 import logging
-import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -32,25 +31,16 @@ from shared.utils.yaml_utils import load_yaml, save_yaml
 logger = logging.getLogger(__name__)
 
 
-def _get_frontmatter_directory_from_export_config(domain: str) -> Path | None:
-    """Get frontmatter output directory from export/config/{domain}.yaml if available."""
-    export_config_path = Path("export/config") / f"{domain}.yaml"
-    if not export_config_path.exists():
-        return None
+def _load_domain_config(domain: str) -> dict:
+    """Load and validate domain config for frontmatter routing."""
+    domain_config_path = Path("domains") / domain / "config.yaml"
+    if not domain_config_path.exists():
+        raise FileNotFoundError(f"Domain config not found: {domain_config_path}")
 
-    try:
-        export_config = load_yaml(export_config_path)
-        if not isinstance(export_config, dict):
-            return None
-
-        output_path = export_config.get('output_path')
-        if not output_path:
-            return None
-
-        return Path(output_path)
-    except Exception as e:
-        logger.warning(f"Could not read export config for {domain}: {e}")
-        return None
+    config = load_yaml(domain_config_path)
+    if not isinstance(config, dict):
+        raise ValueError(f"Invalid domain config format (expected dict): {domain_config_path}")
+    return config
 
 
 def get_frontmatter_path(item_name: str, field_name: str, domain: str) -> Path:
@@ -69,63 +59,46 @@ def get_frontmatter_path(item_name: str, field_name: str, domain: str) -> Path:
     Returns:
         Path to frontmatter file (existing legacy file or new normalized path)
     """
-    # Use DomainAdapter to get frontmatter config
-    from generation.core.adapters.domain_adapter import DomainAdapter
-    
-    try:
-        adapter = DomainAdapter(domain)
-        config = adapter.config
-        
-        # Get frontmatter directory from config (support both old flat and new nested structure)
-        if 'frontmatter' in config:
-            # New nested structure
-            frontmatter_dir = config['frontmatter'].get('directory', f'frontmatter/{domain}')
-            pattern = config['frontmatter'].get('filename_pattern', '{slug}.yaml')
-        else:
-            # Old flat structure (backward compatibility)
-            frontmatter_dir = config.get('frontmatter_directory') or \
-                             config.get('export', {}).get('frontmatter_directory')
-            pattern = config.get('frontmatter_filename_pattern') or \
-                     config.get('export', {}).get('filename_pattern', '{slug}.yaml')
+    config = _load_domain_config(domain)
 
-        # If domain config does not define frontmatter directory, fall back to export config output_path.
-        # This ensures dual-write sync targets the canonical site frontmatter location.
-        if not frontmatter_dir:
-            export_frontmatter_dir = _get_frontmatter_directory_from_export_config(domain)
-            if export_frontmatter_dir is not None:
-                frontmatter_dir = str(export_frontmatter_dir)
+    # Get frontmatter directory from config (support both old flat and new nested structure)
+    if 'frontmatter' in config:
+        # New nested structure
+        frontmatter_cfg = config['frontmatter']
+        if not isinstance(frontmatter_cfg, dict):
+            raise ValueError(f"Invalid frontmatter config for domain '{domain}': expected dict")
+        frontmatter_dir = frontmatter_cfg.get('directory')
+        pattern = frontmatter_cfg.get('filename_pattern')
+    else:
+        # Old flat structure (legacy explicit config)
+        frontmatter_dir = config.get('frontmatter_directory')
+        pattern = config.get('frontmatter_filename_pattern')
 
-        # Final fallback for legacy/local workflows
-        if not frontmatter_dir:
-            frontmatter_dir = f'frontmatter/{domain}'
+    # Require explicit domain config values (fail-fast)
+    if not frontmatter_dir or not pattern:
+        raise ValueError(
+            f"Domain '{domain}' missing required frontmatter configuration: "
+            f"frontmatter directory and filename pattern must be defined"
+        )
         
-        # NEW: Legacy slug (parentheses REMOVED - old behavior)
-        # Example: "Acrylic (PMMA)" → "acrylic-pmma"
-        slug_legacy = item_name.lower().replace(' ', '-').replace('_', '-').replace('(', '').replace(')', '')
-        # Remove consecutive hyphens that result from removing parentheses
-        while '--' in slug_legacy:
-            slug_legacy = slug_legacy.replace('--', '-')
-        slug_legacy = slug_legacy.strip('-')
-        
-        filename_legacy = pattern.format(slug=slug_legacy)
-        path_legacy = Path(frontmatter_dir) / filename_legacy
-        
-        # If legacy file exists, use it (preserve existing complete files)
-        if path_legacy.exists():
-            logger.info(f"   📂 Using existing file: {path_legacy.name}")
-            return path_legacy
-        
-        # Otherwise create new file with same normalization
+    # NEW: Legacy slug (parentheses REMOVED - old behavior)
+    # Example: "Acrylic (PMMA)" → "acrylic-pmma"
+    slug_legacy = item_name.lower().replace(' ', '-').replace('_', '-').replace('(', '').replace(')', '')
+    # Remove consecutive hyphens that result from removing parentheses
+    while '--' in slug_legacy:
+        slug_legacy = slug_legacy.replace('--', '-')
+    slug_legacy = slug_legacy.strip('-')
+
+    filename_legacy = pattern.format(slug=slug_legacy)
+    path_legacy = Path(frontmatter_dir) / filename_legacy
+
+    # If legacy file exists, use it (preserve existing complete files)
+    if path_legacy.exists():
+        logger.info(f"   📂 Using existing file: {path_legacy.name}")
         return path_legacy
-        
-    except Exception as e:
-        # Fallback to legacy behavior if config not found
-        logger.warning(f"Could not load domain config for {domain}, using fallback: {e}")
-        slug = item_name.lower().replace(' ', '-').replace('_', '-').replace('(', '').replace(')', '')
-        while '--' in slug:
-            slug = slug.replace('--', '-')
-        slug = slug.strip('-')
-        return Path(f"frontmatter/{domain}") / f"{slug}.yaml"
+
+    # Otherwise create new file with same normalization
+    return path_legacy
 
 
 def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any, domain: str) -> None:
@@ -169,14 +142,16 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
             logger.info(f"   📝 Creating new frontmatter file: {frontmatter_path}")
         
         # Update ONLY the specified field (NEVER update author - immutability policy)
-        # Component type 'pageDescription' saves to 'page_description' field in frontmatter
-        if field_name == 'pageDescription':
-            # pageDescription component saves to page_description field
-            frontmatter_data['page_description'] = field_value
-            logger.info(f"   ✨ Saved pageDescription component to page_description field")
-        else:
-            # Normal field update
-            frontmatter_data[field_name] = field_value
+        # Normalize description aliases to canonical frontmatter field name
+        persisted_field = (
+            'page_description'
+            if field_name in ('pageDescription', 'description', 'page_description')
+            else field_name
+        )
+
+        frontmatter_data[persisted_field] = field_value
+        if persisted_field == 'page_description':
+            logger.info(f"   ✨ Saved description component to page_description field")
         
         print(f"   ✅ Updated {domain} frontmatter {field_name} for {item_name}")
         logger.info(f"   ✅ Updated {domain} frontmatter {field_name} for {item_name}")
@@ -187,7 +162,6 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
 
         # Verify persistence (fail-fast)
         persisted = load_yaml(frontmatter_path)
-        persisted_field = 'page_description' if field_name == 'pageDescription' else field_name
         if persisted is None or persisted.get(persisted_field) != frontmatter_data.get(persisted_field):
             raise RuntimeError(
                 f"Frontmatter persistence verification failed for {frontmatter_path} ({persisted_field})"

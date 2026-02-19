@@ -223,7 +223,9 @@ class ProcessingConfig:
         """
         # Get target word count from component_lengths
         lengths = self.config.get('component_lengths', {})
-        component_config = lengths.get(component_type, {})
+        if component_type not in lengths:
+            raise KeyError(f"Missing component_lengths entry for component_type='{component_type}'")
+        component_config = lengths[component_type]
         
         if isinstance(component_config, dict):
             target_words = component_config.get('target')
@@ -231,12 +233,13 @@ class ProcessingConfig:
             # Legacy: component_config might be int (word count)
             target_words = component_config
         
-        if target_words:
-            # Convert words to tokens (1.3 tokens per word approximation)
-            return int(target_words * 1.3)
-        
-        # Fallback for unknown component types
-        return 130  # ~100 words default
+        if not isinstance(target_words, int) or target_words <= 0:
+            raise ValueError(
+                f"Invalid target word count for component_type='{component_type}': {target_words}"
+            )
+
+        # Convert words to tokens (1.3 tokens per word approximation)
+        return int(target_words * 1.3)
     
     def get_max_attempts(self) -> int:
         """Get maximum generation attempts."""
@@ -253,35 +256,38 @@ class ProcessingConfig:
     # =========================================================================
     
     def get_extraction_strategy(self, component_type: str) -> str:
-        """Get extraction strategy for component type.
-        
-        Looks in component_extraction (new) then component_lengths (legacy).
-        """
-        # Try new location first
+        """Get extraction strategy for component type from component_extraction."""
         extraction = self.config.get('component_extraction', {})
         if component_type in extraction:
-            return extraction[component_type].get('extraction_strategy', 'raw')
-        
-        # Fall back to legacy location
-        lengths = self.config.get('component_lengths', {})
-        if component_type in lengths and isinstance(lengths[component_type], dict):
-            return lengths[component_type].get('extraction_strategy', 'raw')
-        
-        return 'raw'  # Default
+            strategy = extraction[component_type].get('extraction_strategy')
+            if not strategy:
+                raise ValueError(
+                    f"Missing extraction_strategy for component_type='{component_type}' in component_extraction"
+                )
+            return strategy
+
+        raise KeyError(
+            f"Missing component_extraction entry for component_type='{component_type}'"
+        )
     
     def get_component_length(self, component_type: str) -> int:
-        """Get target word count for component type.
-        
-        NOTE: Word counts are now defined in prompts (Option B).
-        This returns a legacy fallback value only.
-        """
+        """Get target word count for component type from component_lengths."""
         lengths = self.config.get('component_lengths', {})
-        if component_type in lengths:
-            val = lengths[component_type]
-            if isinstance(val, dict):
-                return val.get('target', 100)
-            return val
-        return 100  # Default fallback
+        if component_type not in lengths:
+            raise KeyError(f"Missing component_lengths entry for component_type='{component_type}'")
+        val = lengths[component_type]
+        if isinstance(val, dict):
+            target = val.get('target')
+            if not isinstance(target, int) or target <= 0:
+                raise ValueError(
+                    f"Invalid target word count for component_type='{component_type}': {target}"
+                )
+            return target
+        if not isinstance(val, int) or val <= 0:
+            raise ValueError(
+                f"Invalid component_lengths value for component_type='{component_type}': {val}"
+            )
+        return val
     
     # =========================================================================
     # DATA SOURCES
@@ -290,12 +296,16 @@ class ProcessingConfig:
     def get_materials_yaml_path(self) -> str:
         """Get path to Materials.yaml."""
         sources = self.config.get('data_sources', {})
-        return sources.get('materials_yaml', 'data/materials/Materials.yaml')
+        if 'materials_yaml' not in sources:
+            raise KeyError("Missing required config key: data_sources.materials_yaml")
+        return sources['materials_yaml']
     
     def get_categories_yaml_path(self) -> str:
         """Get path to Categories.yaml."""
         sources = self.config.get('data_sources', {})
-        return sources.get('categories_yaml', 'data/materials/Categories.yaml')
+        if 'categories_yaml' not in sources:
+            raise KeyError("Missing required config key: data_sources.categories_yaml")
+        return sources['categories_yaml']
     
     # =========================================================================
     # OUTPUT SETTINGS
@@ -304,17 +314,23 @@ class ProcessingConfig:
     def get_output_dir(self) -> str:
         """Get frontmatter output directory."""
         output = self.config.get('output', {})
-        return output.get('frontmatter_dir', 'frontmatter/materials')
+        if 'frontmatter_dir' not in output:
+            raise KeyError("Missing required config key: output.frontmatter_dir")
+        return output['frontmatter_dir']
     
     def get_backup_dir(self) -> str:
         """Get backup directory."""
         output = self.config.get('output', {})
-        return output.get('backup_dir', 'frontmatter/materials/.backup')
+        if 'backup_dir' not in output:
+            raise KeyError("Missing required config key: output.backup_dir")
+        return output['backup_dir']
     
     def should_create_backup(self) -> bool:
         """Check if backups should be created."""
         output = self.config.get('output', {})
-        return output.get('create_backup', True)
+        if 'create_backup' not in output:
+            raise KeyError("Missing required config key: output.create_backup")
+        return output['create_backup']
     
     # =========================================================================
     # VALIDATION

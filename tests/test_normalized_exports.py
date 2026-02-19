@@ -25,7 +25,7 @@ from shared.api.client_factory import create_api_client
 import yaml
 
 
-def test_contaminants_export():
+def run_contaminants_export():
     """Test contaminant frontmatter export"""
     print('\n' + '=' * 80)
     print('TESTING CONTAMINANTS EXPORT')
@@ -92,7 +92,7 @@ def test_contaminants_export():
     return results
 
 
-def test_settings_export():
+def run_settings_export():
     """Test settings frontmatter export"""
     print('\n' + '=' * 80)
     print('TESTING SETTINGS EXPORT')
@@ -184,10 +184,10 @@ def print_summary(contaminant_results, settings_results):
 if __name__ == '__main__':
     try:
         # Test contaminants
-        contaminant_results = test_contaminants_export()
+        contaminant_results = run_contaminants_export()
         
         # Test settings
-        settings_results = test_settings_export()
+        settings_results = run_settings_export()
         
         # Print summary
         print_summary(contaminant_results, settings_results)

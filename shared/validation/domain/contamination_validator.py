@@ -176,7 +176,16 @@ class ContaminationValidator:
         # Check conditional contamination
         if pattern.id in material.conditional_contamination:
             condition = material.conditional_contamination[pattern.id]
-            required_context = condition.get('context', '')
+            if 'context' not in condition:
+                raise RuntimeError(
+                    f"CONFIGURATION ERROR: Conditional contamination for '{pattern.id}' missing required 'context'"
+                )
+
+            required_context = condition['context']
+            if not isinstance(required_context, str):
+                raise RuntimeError(
+                    f"CONFIGURATION ERROR: Conditional contamination context for '{pattern.id}' must be a string"
+                )
             
             # Check if context matches
             if 'machinery' in required_context.lower():
@@ -315,19 +324,29 @@ class ContaminationValidator:
                 f"{pattern.realism_notes}"
             )
         else:
-            explanation = error_msg.get(
-                'explanation',
-                f"{pattern.name} is physically impossible on {material.name}. {pattern.realism_notes}"
+            if 'explanation' not in error_msg:
+                raise RuntimeError(
+                    f"CONFIGURATION ERROR: Error message template '{error_code}' missing required 'explanation'"
+                )
+            explanation = error_msg['explanation']
+
+        if 'message' not in error_msg:
+            raise RuntimeError(
+                f"CONFIGURATION ERROR: Error message template '{error_code}' missing required 'message'"
+            )
+        if 'suggestion' not in error_msg:
+            raise RuntimeError(
+                f"CONFIGURATION ERROR: Error message template '{error_code}' missing required 'suggestion'"
             )
         
         return ValidationIssue(
             severity=ValidationSeverity.ERROR,
             code=error_code,
-            message=error_msg.get('message', f"{pattern.name} incompatible with {material.name}"),
+            message=error_msg['message'],
             explanation=explanation,
             contamination_id=pattern.id,
             material_name=material.name,
-            suggestion=error_msg.get('suggestion', recommendation)
+            suggestion=error_msg['suggestion']
         )
     
     def _get_error_code(self, pattern: ContaminantPattern, reason: str) -> str:
@@ -454,20 +473,46 @@ class ContaminationValidator:
         Returns:
             ValidationResult
         """
+        if not isinstance(research_data, dict):
+            raise RuntimeError("CONFIGURATION ERROR: research_data must be a dictionary")
+        if 'contamination_patterns' not in research_data:
+            raise RuntimeError("CONFIGURATION ERROR: research_data missing required 'contamination_patterns' key")
+        if not isinstance(research_data['contamination_patterns'], list):
+            raise RuntimeError("CONFIGURATION ERROR: research_data['contamination_patterns'] must be a list")
+
         # Extract pattern names from research data
-        patterns = research_data.get('contamination_patterns', [])
-        pattern_names = [
-            p.get('pattern_name', p.get('name', ''))
-            for p in patterns
-        ]
+        patterns = research_data['contamination_patterns']
+        pattern_names = []
+        for pattern in patterns:
+            if not isinstance(pattern, dict):
+                raise RuntimeError("CONFIGURATION ERROR: Each contamination pattern entry must be a dictionary")
+
+            if 'pattern_name' in pattern:
+                pattern_name = pattern['pattern_name']
+            elif 'name' in pattern:
+                pattern_name = pattern['name']
+            else:
+                raise RuntimeError("CONFIGURATION ERROR: Pattern entry missing required 'pattern_name' or 'name'")
+
+            if not isinstance(pattern_name, str) or not pattern_name.strip():
+                raise RuntimeError("CONFIGURATION ERROR: Pattern name must be a non-empty string")
+
+            pattern_names.append(pattern_name)
         
         # Build context object
         ctx = None
         if context:
+            required_context_keys = ['environment', 'usage', 'exposure']
+            missing_context_keys = [key for key in required_context_keys if key not in context]
+            if missing_context_keys:
+                raise RuntimeError(
+                    f"CONFIGURATION ERROR: Context missing required keys: {missing_context_keys}"
+                )
+
             ctx = ContaminationContext(
-                environment=context.get('environment', 'general'),
-                usage=context.get('usage', 'general'),
-                exposure=context.get('exposure', [])
+                environment=context['environment'],
+                usage=context['usage'],
+                exposure=context['exposure']
             )
         
         return self.validate_patterns_for_material(

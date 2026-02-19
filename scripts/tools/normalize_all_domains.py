@@ -8,7 +8,7 @@ domain's requirements.
 
 Naming Conventions by Domain:
 - Materials.yaml: aluminum-laser-cleaning (slugified with suffix) - SOURCE OF TRUTH
-- Settings.yaml: aluminum (base slug) - matches material
+- Settings.yaml: aluminum-settings (settings slug with suffix)
 - Contaminants.yaml: Aluminum (display name) - human-readable
 - DomainAssociations.yaml: aluminum (base slug) - for lookups
 
@@ -23,6 +23,7 @@ Date: December 20, 2025
 
 import argparse
 import sys
+import re
 from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
@@ -81,6 +82,7 @@ class MaterialNameMapper:
         self.display_to_base = {}  # Aluminum → aluminum
         self.base_to_display = {}  # aluminum → Aluminum
         self.display_to_full = {}  # Aluminum → aluminum-laser-cleaning
+        self.settings_to_base = {}  # aluminum-settings (or aluminum) → aluminum
         
         self._build_mappings()
     
@@ -105,6 +107,8 @@ class MaterialNameMapper:
             self.display_to_base[display_name] = base_slug
             self.base_to_display[base_slug] = display_name
             self.display_to_full[display_name] = full_slug
+            self.settings_to_base[f"{base_slug}-settings"] = base_slug
+            self.settings_to_base[base_slug] = base_slug  # Legacy compatibility
             
             # Also handle lowercase display names
             self.display_to_base[display_name.lower()] = base_slug
@@ -160,13 +164,17 @@ class MaterialNameMapper:
             # aluminum-laser-cleaning
             base_slug = self.full_slug_to_base.get(value)
         elif source_domain == 'settings':
-            # aluminum
-            base_slug = value if value in self.base_to_display else None
+            # aluminum-settings (preferred) or aluminum (legacy)
+            base_slug = self.settings_to_base.get(value)
         elif source_domain == 'contaminants':
-            # Aluminum or aluminum (case-insensitive)
+            # Supports display name, full materials slug, or base slug
             base_slug = self.display_to_base.get(value)
             if not base_slug:
                 base_slug = self.display_to_base.get(value.lower())
+            if not base_slug and value in self.full_slug_to_base:
+                base_slug = self.full_slug_to_base.get(value)
+            if not base_slug and value in self.base_to_display:
+                base_slug = value
         elif source_domain == 'associations':
             # Could be any format, try to detect
             if value in self.full_slug_to_base:
@@ -183,7 +191,7 @@ class MaterialNameMapper:
         if target_domain == 'materials':
             return f"{base_slug}-laser-cleaning"
         elif target_domain == 'settings':
-            return base_slug
+            return f"{base_slug}-settings"
         elif target_domain == 'contaminants':
             return self.base_to_display.get(base_slug, value)
         elif target_domain == 'associations':
@@ -198,6 +206,7 @@ def check_domain_consistency(mapper: MaterialNameMapper) -> Dict[str, any]:
         'settings': check_settings_consistency(mapper),
         'contaminants': check_contaminants_consistency(mapper),
         'associations': check_associations_consistency(mapper),
+        'applications': check_applications_consistency(),
     }
     
     total_issues = sum(r['issues_count'] for r in results.values())
@@ -215,7 +224,13 @@ def check_domain_consistency(mapper: MaterialNameMapper) -> Dict[str, any]:
     # Settings.yaml
     print(f"🔍 Settings.yaml: {results['settings']['total_entries']} entries")
     if results['settings']['issues_count'] == 0:
-        print(f"   ✅ All keys match Materials.yaml (base slug format)")
+        print(f"   ✅ All keys map to Materials.yaml")
+        noncanonical_count = results['settings'].get('noncanonical_count', 0)
+        if noncanonical_count > 0:
+            print(f"   ⚠️  {noncanonical_count} keys use legacy/noncanonical format")
+            print(f"   Examples: {results['settings'].get('noncanonical', [])[:3]}")
+        else:
+            print(f"   ✅ Keys follow canonical settings format (-settings suffix)")
     else:
         print(f"   ❌ {results['settings']['issues_count']} inconsistencies found")
         print(f"   Issues: {results['settings']['issues'][:3]}")
@@ -237,6 +252,15 @@ def check_domain_consistency(mapper: MaterialNameMapper) -> Dict[str, any]:
     else:
         print(f"   ❌ {results['associations']['issues_count']} invalid material IDs")
     print()
+
+    # Applications.yaml
+    print(f"🔍 Applications.yaml: {results['applications']['total_entries']} entries")
+    if results['applications']['issues_count'] == 0:
+        print(f"   ✅ All application keys and IDs normalized")
+    else:
+        print(f"   ❌ {results['applications']['issues_count']} inconsistencies found")
+        print(f"   Issues: {results['applications']['issues'][:3]}")
+    print()
     
     print("=" * 80)
     if total_issues > 0:
@@ -257,16 +281,36 @@ def check_settings_consistency(mapper: MaterialNameMapper) -> Dict:
     
     settings = data.get('settings', {})
     issues = []
+    noncanonical = []
     
     for setting_key in settings.keys():
-        # Settings should use base slug format
-        if setting_key not in mapper.base_to_display:
+        # Settings should use -settings suffix (legacy base-slug accepted)
+        if setting_key in mapper.settings_to_base:
+            if not setting_key.endswith('-settings'):
+                noncanonical.append(
+                    f"Legacy key without suffix: {setting_key} (preferred: {setting_key}-settings)"
+                )
+            continue
+
+        # Handle uncommon-but-recoverable keys ending with -laser-cleaning
+        if setting_key.endswith('-laser-cleaning'):
+            base_slug = setting_key.replace('-laser-cleaning', '')
+            if base_slug in mapper.base_to_display:
+                noncanonical.append(
+                    f"Unexpected -laser-cleaning key in settings: {setting_key} (preferred: {base_slug}-settings)"
+                )
+                continue
+
+        # Unknown setting key
+        if setting_key not in mapper.settings_to_base:
             issues.append(f"Unknown material: {setting_key}")
     
     return {
         'total_entries': len(settings),
         'issues_count': len(issues),
-        'issues': issues
+        'issues': issues,
+        'noncanonical_count': len(noncanonical),
+        'noncanonical': noncanonical[:10]
     }
 
 
@@ -274,25 +318,41 @@ def check_contaminants_consistency(mapper: MaterialNameMapper) -> Dict:
     """Check Contaminants.yaml material references."""
     path = PROJECT_ROOT / "data" / "contaminants" / "Contaminants.yaml"
     data = load_yaml(path)
-    
-    patterns = data.get('contamination_patterns', {})
+
+    patterns = data.get('contamination_patterns')
+    if not isinstance(patterns, dict) or not patterns:
+        patterns = data.get('contaminants', {})
+
     issues = []
     affected_patterns = set()
+
+    def _is_valid_material_reference(material: str) -> bool:
+        if material in KNOWN_EXCEPTIONS:
+            return True
+        if material in mapper.full_slug_to_base:
+            return True
+        if material in mapper.base_to_display:
+            return True
+        if material in mapper.display_to_base:
+            return True
+        if material.lower() in mapper.display_to_base:
+            return True
+        return False
     
     for pattern_id, pattern_data in patterns.items():
-        # Check valid_materials
-        for material in pattern_data.get('valid_materials', []):
-            if material in KNOWN_EXCEPTIONS:
-                continue
-            if material not in mapper.display_to_base and material.lower() not in mapper.display_to_base:
+        valid_materials = pattern_data.get('valid_materials')
+        if valid_materials is None:
+            valid_materials = pattern_data.get('validMaterials', [])
+        for material in valid_materials:
+            if not _is_valid_material_reference(material):
                 issues.append(f"{pattern_id}: Unknown material '{material}'")
                 affected_patterns.add(pattern_id)
         
-        # Check prohibited_materials
-        for material in pattern_data.get('prohibited_materials', []):
-            if material in KNOWN_EXCEPTIONS:
-                continue
-            if material not in mapper.display_to_base and material.lower() not in mapper.display_to_base:
+        prohibited_materials = pattern_data.get('prohibited_materials')
+        if prohibited_materials is None:
+            prohibited_materials = pattern_data.get('prohibitedMaterials', [])
+        for material in prohibited_materials:
+            if not _is_valid_material_reference(material):
                 issues.append(f"{pattern_id}: Unknown material '{material}'")
                 affected_patterns.add(pattern_id)
     
@@ -340,6 +400,36 @@ def check_associations_consistency(mapper: MaterialNameMapper) -> Dict:
         'total_associations': len(associations),
         'issues_count': len(issues),
         'issues': issues[:10]
+    }
+
+
+def check_applications_consistency() -> Dict:
+    """Check Applications.yaml key/id naming consistency."""
+    path = PROJECT_ROOT / "data" / "applications" / "Applications.yaml"
+    if not path.exists():
+        return {'total_entries': 0, 'issues_count': 0, 'issues': []}
+
+    data = load_yaml(path)
+    applications = data.get('applications', {})
+    issues = []
+    slug_pattern = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
+
+    for key, item in applications.items():
+        if key != key.lower():
+            issues.append(f"Key not lowercase: {key}")
+        if ' ' in key:
+            issues.append(f"Key contains spaces: {key}")
+        if not slug_pattern.match(key):
+            issues.append(f"Key not slug-formatted: {key}")
+
+        item_id = item.get('id')
+        if item_id != key:
+            issues.append(f"ID mismatch: key='{key}' id='{item_id}'")
+
+    return {
+        'total_entries': len(applications),
+        'issues_count': len(issues),
+        'issues': issues[:10],
     }
 
 
@@ -391,16 +481,25 @@ def fix_contaminants(mapper: MaterialNameMapper, dry_run: bool = True) -> Dict:
     """Fix material references in Contaminants.yaml."""
     path = PROJECT_ROOT / "data" / "contaminants" / "Contaminants.yaml"
     data = load_yaml(path)
-    
-    patterns = data.get('contamination_patterns', {})
+
+    patterns = data.get('contamination_patterns')
+    if not isinstance(patterns, dict) or not patterns:
+        patterns = data.get('contaminants', {})
+
     fixed_count = 0
     patterns_updated = set()
     
     for pattern_id, pattern_data in patterns.items():
-        # Fix valid_materials
+        valid_key = None
         if 'valid_materials' in pattern_data:
+            valid_key = 'valid_materials'
+        elif 'validMaterials' in pattern_data:
+            valid_key = 'validMaterials'
+
+        # Fix valid materials list while preserving existing key style
+        if valid_key:
             fixed_materials = []
-            for material in pattern_data['valid_materials']:
+            for material in pattern_data[valid_key]:
                 if material == 'ALL':
                     fixed_materials.append(material)
                     continue
@@ -416,12 +515,18 @@ def fix_contaminants(mapper: MaterialNameMapper, dry_run: bool = True) -> Dict:
                     # Keep original with flag for review
                     fixed_materials.append(material)
             
-            pattern_data['valid_materials'] = sorted(set(fixed_materials))
+            pattern_data[valid_key] = sorted(set(fixed_materials))
         
-        # Fix prohibited_materials
+        prohibited_key = None
         if 'prohibited_materials' in pattern_data:
+            prohibited_key = 'prohibited_materials'
+        elif 'prohibitedMaterials' in pattern_data:
+            prohibited_key = 'prohibitedMaterials'
+
+        # Fix prohibited materials list while preserving existing key style
+        if prohibited_key:
             fixed_materials = []
-            for material in pattern_data['prohibited_materials']:
+            for material in pattern_data[prohibited_key]:
                 normalized = mapper.normalize_for_domain(material, 'contaminants', 'contaminants')
                 if '[UNKNOWN]' not in normalized:
                     fixed_materials.append(normalized)
@@ -431,7 +536,7 @@ def fix_contaminants(mapper: MaterialNameMapper, dry_run: bool = True) -> Dict:
                 else:
                     fixed_materials.append(material)
             
-            pattern_data['prohibited_materials'] = sorted(set(fixed_materials))
+            pattern_data[prohibited_key] = sorted(set(fixed_materials))
     
     if not dry_run:
         save_yaml(path, data)

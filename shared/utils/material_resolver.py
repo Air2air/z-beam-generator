@@ -8,23 +8,23 @@ Created: January 13, 2026
 Purpose: Simplify command interface by auto-resolving material names
 """
 
-import yaml
-from pathlib import Path
-from typing import Optional, List, Dict, Tuple
 import difflib
+from pathlib import Path
+
+import yaml
 
 
 class MaterialResolver:
     """Resolves user-friendly material names to correct YAML keys"""
     
-    def __init__(self, materials_yaml_path: Optional[str] = None):
+    def __init__(self, materials_yaml_path: str | None = None):
         if materials_yaml_path is None:
             materials_yaml_path = "data/materials/Materials.yaml"
         
         self.materials_yaml_path = Path(materials_yaml_path)
         self._material_mappings = None
         
-    def _load_material_mappings(self) -> Dict[str, Dict[str, str]]:
+    def _load_material_mappings(self) -> dict[str, dict[str, str]]:
         """Load and cache material mappings from Materials.yaml"""
         if self._material_mappings is not None:
             return self._material_mappings
@@ -32,29 +32,74 @@ class MaterialResolver:
         if not self.materials_yaml_path.exists():
             raise FileNotFoundError(f"Materials.yaml not found: {self.materials_yaml_path}")
             
-        with open(self.materials_yaml_path, 'r') as f:
+        with open(self.materials_yaml_path) as f:
             data = yaml.safe_load(f)
-            
-        materials = data.get('materials', {})
+
+        if not isinstance(data, dict):
+            raise RuntimeError(
+                f"Invalid Materials.yaml format in {self.materials_yaml_path}: expected top-level dictionary"
+            )
+        if 'materials' not in data:
+            raise RuntimeError(
+                f"Invalid Materials.yaml format in {self.materials_yaml_path}: missing required 'materials' key"
+            )
+
+        materials = data['materials']
+        if not isinstance(materials, dict):
+            raise RuntimeError(
+                f"Invalid Materials.yaml format in {self.materials_yaml_path}: 'materials' must be a dictionary"
+            )
+
         mappings = {}
         
         for key, material_data in materials.items():
-            name = material_data.get('name', '')
-            display_name = material_data.get('displayName', '')
+            if not isinstance(material_data, dict):
+                raise RuntimeError(
+                    f"Invalid material entry for key '{key}': expected dictionary"
+                )
+
+            required_fields = ['name', 'displayName', 'category', 'subcategory']
+            missing_fields = [field for field in required_fields if field not in material_data]
+            if missing_fields:
+                raise RuntimeError(
+                    f"Invalid material entry '{key}': missing required fields {missing_fields}"
+                )
+
+            name = material_data['name']
+            display_name = material_data['displayName']
+            category = material_data['category']
+            subcategory = material_data['subcategory']
+
+            if not isinstance(name, str) or not name.strip():
+                raise RuntimeError(
+                    f"Invalid material entry '{key}': 'name' must be a non-empty string"
+                )
+            if not isinstance(display_name, str) or not display_name.strip():
+                raise RuntimeError(
+                    f"Invalid material entry '{key}': 'displayName' must be a non-empty string"
+                )
+            if not isinstance(category, str) or not category.strip():
+                raise RuntimeError(
+                    f"Invalid material entry '{key}': 'category' must be a non-empty string"
+                )
+            if not isinstance(subcategory, str) or not subcategory.strip():
+                raise RuntimeError(
+                    f"Invalid material entry '{key}': 'subcategory' must be a non-empty string"
+                )
             
             # Create multiple mapping entries
             mappings[key] = {
                 'key': key,
                 'name': name,
                 'display_name': display_name,
-                'category': material_data.get('category', ''),
-                'subcategory': material_data.get('subcategory', '')
+                'category': category,
+                'subcategory': subcategory
             }
             
         self._material_mappings = mappings
         return mappings
     
-    def resolve_material(self, input_name: str) -> Tuple[Optional[str], Optional[str]]:
+    def resolve_material(self, input_name: str) -> tuple[str | None, str | None]:
         """
         Resolve material name to correct YAML key.
         
@@ -126,7 +171,7 @@ class MaterialResolver:
         error_msg += "Use --list-materials to see all options."
         return None, error_msg
         
-    def list_materials(self, category_filter: Optional[str] = None) -> List[Dict[str, str]]:
+    def list_materials(self, category_filter: str | None = None) -> list[dict[str, str]]:
         """List all available materials, optionally filtered by category"""
         mappings = self._load_material_mappings()
         

@@ -40,8 +40,7 @@ class YAMLParser:
         file_path = Path(file_path)
         
         if not file_path.exists():
-            logger.warning(f"Component file not found: {file_path}")
-            return {}
+            raise FileNotFoundError(f"Component file not found: {file_path}")
         
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -53,11 +52,13 @@ class YAMLParser:
             else:
                 # Single document YAML
                 with open(file_path, 'r', encoding='utf-8') as f:
-                    return yaml.safe_load(f) or {}
+                    parsed = yaml.safe_load(f)
+                    if not isinstance(parsed, dict):
+                        raise ValueError(f"YAML file must contain a dictionary: {file_path}")
+                    return parsed
                     
         except Exception as e:
-            logger.error(f"Failed to load component file {file_path}: {e}")
-            return {}
+            raise RuntimeError(f"Failed to load component file {file_path}: {e}") from e
     
     def _load_multi_document_yaml(self, content: str, file_path: Path) -> Dict[str, Any]:
         """Load YAML content with multiple documents."""
@@ -67,7 +68,10 @@ class YAMLParser:
             documents = list(yaml.safe_load_all(content))
             
             if len(documents) == 1:
-                return documents[0] or {}
+                doc = documents[0]
+                if not isinstance(doc, dict):
+                    raise ValueError(f"Single YAML document must be a dictionary: {file_path}")
+                return doc
             
             # Merge multiple documents intelligently
             merged_data = {}
@@ -80,13 +84,14 @@ class YAMLParser:
                     
                     # Merge content documents
                     merged_data.update(doc)
+
+            if not merged_data:
+                raise ValueError(f"No content documents found in multi-document YAML: {file_path}")
             
             return merged_data
             
         except yaml.YAMLError as e:
-            logger.error(f"YAML parsing error in {file_path}: {e}")
-            # Fallback: try to extract content from first non-metadata section
-            return self._fallback_parse(content, file_path)
+            raise ValueError(f"YAML parsing error in {file_path}: {e}") from e
     
     def _is_metadata_document(self, doc: Dict[str, Any]) -> bool:
         """Check if a document is just metadata (skip these)."""
@@ -105,48 +110,22 @@ class YAMLParser:
         
         return False
     
-    def _fallback_parse(self, content: str, file_path: Path) -> Dict[str, Any]:
-        """Fallback parser for problematic YAML files."""
-        
-        try:
-            # Split by document separators and try to parse the main content section
-            sections = content.split('---')
-            
-            for section in sections:
-                section = section.strip()
-                if not section:
-                    continue
-                
-                try:
-                    parsed = yaml.safe_load(section)
-                    if parsed and isinstance(parsed, dict) and len(parsed) > 3:
-                        # This looks like the main content section
-                        return parsed
-                except Exception:
-                    continue
-            
-            logger.warning(f"Could not parse any section from {file_path}")
-            return {}
-            
-        except Exception as e:
-            logger.error(f"Fallback parsing failed for {file_path}: {e}")
-            return {}
-    
     def load_json_component(self, file_path: Union[str, Path]) -> Dict[str, Any]:
         """Load JSON component files (like JSON-LD)."""
         
         file_path = Path(file_path)
         
         if not file_path.exists():
-            logger.warning(f"JSON component file not found: {file_path}")
-            return {}
+            raise FileNotFoundError(f"JSON component file not found: {file_path}")
         
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
-                return json.load(f)
+                parsed = json.load(f)
+                if not isinstance(parsed, dict):
+                    raise ValueError(f"JSON file must contain an object: {file_path}")
+                return parsed
         except Exception as e:
-            logger.error(f"Failed to load JSON component file {file_path}: {e}")
-            return {}
+            raise RuntimeError(f"Failed to load JSON component file {file_path}: {e}") from e
     
     def get_component_file_path(self, material_name: str, component_type: str) -> Optional[Path]:
         """Get the file path for a specific component."""

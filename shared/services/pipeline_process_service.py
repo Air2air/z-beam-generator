@@ -218,9 +218,6 @@ class PipelineProcessService:
             # Check for standards in metadata (optimized structure)
             if 'metadata' in material_data and 'regulatory_standards' in material_data['metadata']:
                 material_specific_standards = material_data['metadata']['regulatory_standards']
-            # Fallback to direct field (legacy structure)
-            elif 'regulatory_standards' in material_data:
-                material_specific_standards = material_data['regulatory_standards']
             
             if material_specific_standards:
                 all_regulatory_standards.extend(material_specific_standards)
@@ -238,9 +235,7 @@ class PipelineProcessService:
             
         except Exception as e:
             self.logger.error(f"Failed to add regulatory standards: {e}")
-            # Ensure universal standards are preserved even on error
-            frontmatter['regulatory_standards'] = self.universal_regulatory_standards
-            return frontmatter
+            raise MaterialDataError(f"Failed to add regulatory standards: {e}") from e
     
     def generate_applications_from_unified_industry_data(
         self,

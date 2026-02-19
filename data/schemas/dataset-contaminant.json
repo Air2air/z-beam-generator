@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://www.z-beam.com/schemas/dataset-contaminant.json",
+  "title": "Z-Beam Contaminant Dataset Schema",
+  "description": "Schema for contaminant datasets with chemical safety and health effects data.",
+  "version": "1.0.0",
+  "type": "object",
+  "required": [
+    "@context",
+    "@type",
+    "identifier",
+    "name",
+    "description",
+    "license",
+    "creator",
+    "publisher",
+    "contaminant",
+    "variableMeasured",
+    "citation",
+    "distribution"
+  ],
+  "properties": {
+    "@context": { "type": "string", "const": "https://schema.org" },
+    "@type": { "type": "string", "const": "Dataset" },
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+-contaminant-dataset$"
+    },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "license": {
+      "type": "object",
+      "required": ["@type", "name", "url"],
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "creator": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "publisher": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "contaminant": {
+      "type": "object",
+      "required": ["category", "properties"],
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": [
+            "aging",
+            "biological",
+            "coating",
+            "corrosion",
+            "oxidation",
+            "toxic_gas",
+            "contamination",
+            "damage",
+            "deposit"
+          ]
+        },
+        "properties": { "type": "object" },
+        "compounds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "formula", "hazardLevel"],
+            "properties": {
+              "name": { "type": "string" },
+              "formula": { "type": "string" },
+              "hazardLevel": { "type": "string" },
+              "healthEffects": {
+                "type": "object",
+                "properties": {
+                  "exposureRoutes": { "type": "object" },
+                  "acuteEffects": { "type": "object" },
+                  "chronicEffects": { "type": "object" },
+                  "toxicologyData": { "type": "object" },
+                  "carcinogenicity": { "type": "object" },
+                  "exposureLimits": { "type": "object" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "variableMeasured": {
+      "type": "array",
+      "minItems": 20,
+      "items": { "type": "object" }
+    },
+    "citation": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "type": "object" }
+    },
+    "distribution": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "type": "object" }
+    }
+  },
+  "definitions": {
+    "parameterRange": {
+      "type": "object",
+      "required": ["min", "max", "unit"],
+      "properties": {
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "unit": { "type": "string" }
+      }
+    },
+    "measuredValue": {
+      "type": "object",
+      "required": ["value", "unit"],
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "type": "string" }
+      }
+    },
+    "exposureLimit": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "type": "string" }
+      }
+    },
+    "toxicityValue": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "type": "string" },
+        "species": { "type": "string" }
+      }
+    }
+  }
+}

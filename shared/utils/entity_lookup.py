@@ -110,12 +110,8 @@ class EntityLookup:
                 print(material['name'])
                 print(material['full_path'])
         """
-        try:
-            domain_data = self._load_domain_data(entity_type)
-            return domain_data.get(entity_id)
-        except (ValueError, FileNotFoundError) as e:
-            print(f"Warning: Failed to lookup {entity_id}: {e}")
-            return None
+        domain_data = self._load_domain_data(entity_type)
+        return domain_data.get(entity_id)
     
     def get_entity_card(
         self,
@@ -124,7 +120,7 @@ class EntityLookup:
         context: Optional[str] = None
     ) -> Optional[Dict[str, Any]]:
         """
-        Get card data for entity with context fallback.
+        Get card data for entity.
         
         Args:
             entity_id: Entity ID
@@ -136,7 +132,7 @@ class EntityLookup:
         
         Example:
             card = lookup.get_entity_card('aluminum-laser-cleaning', 'material', 'contamination_context')
-            # Returns card.contamination_context if exists, else card.default
+            # Returns the requested context card if provided, otherwise default card
         """
         entity = self.get_entity(entity_id, entity_type)
         if not entity or 'card' not in entity:
@@ -144,12 +140,18 @@ class EntityLookup:
         
         card = entity['card']
         
-        # Try context-specific variant first
-        if context and context in card:
+        if context:
+            if context not in card:
+                raise KeyError(
+                    f"Card context '{context}' not found for entity '{entity_id}' ({entity_type})"
+                )
             return card[context]
-        
-        # Fall back to default
-        return card.get('default')
+
+        if 'default' not in card:
+            raise KeyError(
+                f"Default card not found for entity '{entity_id}' ({entity_type})"
+            )
+        return card['default']
     
     def get_entity_url(self, entity_id: str, entity_type: str) -> Optional[str]:
         """
@@ -190,8 +192,10 @@ class EntityLookup:
         entity = self.get_entity(entity_id, entity_type)
         if not entity:
             return None
-        
-        return entity.get('name', entity_id)
+
+        if 'name' not in entity:
+            raise KeyError(f"Entity '{entity_id}' ({entity_type}) missing required field: name")
+        return entity['name']
     
     def batch_get_entities(
         self,

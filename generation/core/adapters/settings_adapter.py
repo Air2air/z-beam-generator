@@ -117,22 +117,18 @@ class SettingsAdapter(DataSourceAdapter):
         if isinstance(author, dict) and 'id' in author:
             return author['id']
         
-        # Fall back to looking up in Materials.yaml
+        # Resolve author from Materials.yaml
         material_name = item_data.get('name', '')
         if material_name:
-            try:
-                from shared.data.loader_factory import MaterialsDataLoader
-                loader = MaterialsDataLoader()
-                material = loader.load_material
-                material_data = load_material(material_name)
-                if material_data:
-                    material_author = material_data.get('author', {})
-                    if isinstance(material_author, dict):
-                        author_id = material_author.get('id')
-                        if author_id:
-                            return author_id
-            except Exception as e:
-                logger.debug(f"Could not load author from Materials.yaml: {e}")
+            from shared.data.loader_factory import MaterialsDataLoader
+            loader = MaterialsDataLoader()
+            material_data = loader.load_material(material_name)
+            if material_data:
+                material_author = material_data.get('author', {})
+                if isinstance(material_author, dict):
+                    author_id = material_author.get('id')
+                    if author_id:
+                        return author_id
         
         # Fail fast - no default author
         raise ValueError(

@@ -61,6 +61,15 @@ def validate_generated_content(
         ```
     """
     validator = ContentValidationService()
+
+    if not isinstance(author_info, dict):
+        raise RuntimeError("CONFIGURATION ERROR: author_info must be a dictionary with required keys 'name' and 'country'")
+    if 'name' not in author_info or 'country' not in author_info:
+        raise RuntimeError("CONFIGURATION ERROR: author_info missing required keys 'name' and/or 'country'")
+    if not isinstance(author_info['name'], str) or not author_info['name'].strip():
+        raise RuntimeError("CONFIGURATION ERROR: author_info['name'] must be a non-empty string")
+    if not isinstance(author_info['country'], str) or not author_info['country'].strip():
+        raise RuntimeError("CONFIGURATION ERROR: author_info['country'] must be a non-empty string")
     
     # Normalize content format
     if isinstance(content, str):
@@ -76,8 +85,8 @@ def validate_generated_content(
         content=content_dict,
         component_type=component_type,
         material_name=material_name,
-        author_name=author_info.get('name', 'Unknown'),
-        author_country=author_info.get('country', 'Unknown'),
+        author_name=author_info['name'],
+        author_country=author_info['country'],
         voice_profile=voice_profile
     )
     
@@ -161,12 +170,21 @@ def should_regenerate(result: ContentValidationResult, strict_mode: bool = False
         ```
     """
     from shared.validation.content_validator import PERSONA_THRESHOLDS
-    
-    thresholds = PERSONA_THRESHOLDS.get(result.author_country, {})
+
+    if result.author_country not in PERSONA_THRESHOLDS:
+        raise RuntimeError(
+            f"CONFIGURATION ERROR: Missing persona thresholds for author country '{result.author_country}'"
+        )
+
+    thresholds = PERSONA_THRESHOLDS[result.author_country]
+    if 'target_score' not in thresholds or 'min_score' not in thresholds:
+        raise RuntimeError(
+            f"CONFIGURATION ERROR: Persona thresholds for '{result.author_country}' missing required keys 'target_score' and/or 'min_score'"
+        )
     
     if strict_mode:
-        target = thresholds.get('target_score', 80)
+        target = thresholds['target_score']
         return result.overall_score < target
     else:
-        minimum = thresholds.get('min_score', 70)
+        minimum = thresholds['min_score']
         return result.overall_score < minimum or not result.success

@@ -71,7 +71,11 @@ class APIKeyManager:
         # Load API key from environment
         api_key = os.getenv(env_var)
         if not api_key:
-            provider_name = config.get("name", provider)
+            if "name" not in config:
+                raise ValueError(
+                    f"Missing required provider display name in config for provider: {provider}"
+                )
+            provider_name = config["name"]
             raise ValueError(
                 f"{provider_name} API key not found. "
                 f"Please set the {env_var} environment variable."

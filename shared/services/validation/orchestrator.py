@@ -330,8 +330,14 @@ class ValidationOrchestrator:
             from export.utils.author_manager import get_author_info_for_material
             author_info = get_author_info_for_material(material_info)
             
-            if not author_info:
-                author_info = {'name': 'Unknown', 'country': 'Unknown'}
+            if not isinstance(author_info, dict):
+                raise RuntimeError(
+                    f"CONFIGURATION ERROR: Missing or invalid author info for material '{material_name}'"
+                )
+            if 'name' not in author_info or 'country' not in author_info:
+                raise RuntimeError(
+                    f"CONFIGURATION ERROR: Author info must contain 'name' and 'country' for material '{material_name}'"
+                )
             
             # Validate components if they exist
             validation_results = []
@@ -354,13 +360,31 @@ class ValidationOrchestrator:
                         result.medium_issues += 1
             
             # Validate Caption
-            micro_data = material_info.get('micro', {})
+            if 'micro' in material_info:
+                micro_data = material_info['micro']
+                if not isinstance(micro_data, dict):
+                    raise RuntimeError(
+                        f"CONFIGURATION ERROR: Invalid micro format for material '{material_name}' - expected object"
+                    )
+
+            else:
+                micro_data = None
+
             if isinstance(micro_data, dict) and ('before' in micro_data or 'after' in micro_data):
+                if 'before' not in micro_data or 'after' not in micro_data:
+                    raise RuntimeError(
+                        f"CONFIGURATION ERROR: Micro data must contain both 'before' and 'after' for material '{material_name}'"
+                    )
+                if not isinstance(micro_data['before'], str) or not isinstance(micro_data['after'], str):
+                    raise RuntimeError(
+                        f"CONFIGURATION ERROR: Micro 'before' and 'after' must be strings for material '{material_name}'"
+                    )
+
                 from shared.validation.integration import validate_generated_content
                 micro_result = validate_generated_content(
                     content={
-                        'before': micro_data.get('before', ''),
-                        'after': micro_data.get('after', '')
+                        'before': micro_data['before'],
+                        'after': micro_data['after']
                     },
                     component_type='micro',
                     material_name=material_name,

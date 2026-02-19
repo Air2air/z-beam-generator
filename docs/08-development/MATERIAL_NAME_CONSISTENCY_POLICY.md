@@ -235,7 +235,7 @@ for material_display in pattern_data['valid_materials']:
     # base_slug = 'aluminum'
     
     # Look up in Settings.yaml
-    setting = settings_data['settings'][base_slug]
+    setting = settings_data['settings'][f"{base_slug}-settings"]
     
     # Look up in Materials.yaml
     full_slug = f"{base_slug}-laser-cleaning"
@@ -296,10 +296,12 @@ def validate_material_references(domain: str, data: dict) -> List[str]:
                 errors.append(f"Materials.yaml: '{key}' contains spaces")
     
     elif domain == 'settings':
-        # Check keys are base slugs (no suffix)
+      # Check keys use -settings suffix
         for key in data['settings'].keys():
             if key.endswith('-laser-cleaning'):
-                errors.append(f"Settings.yaml: '{key}' has -laser-cleaning suffix (should be base slug)")
+          errors.append(f"Settings.yaml: '{key}' has -laser-cleaning suffix (should end with -settings)")
+        if not key.endswith('-settings'):
+          errors.append(f"Settings.yaml: '{key}' missing -settings suffix")
             if key != key.lower():
                 errors.append(f"Settings.yaml: '{key}' not lowercase")
             if ' ' in key:
@@ -334,11 +336,14 @@ def test_cross_domain_material_consistency():
         for key in materials['materials'].keys()
     }
     
-    setting_keys = set(settings['settings'].keys())
+    setting_keys = {
+      key.replace('-settings', '')
+      for key in settings['settings'].keys()
+    }
     
-    # Assert Settings.yaml matches Materials.yaml base slugs
+    # Assert Settings.yaml keys (without -settings suffix) match Materials.yaml base slugs
     assert material_base_slugs == setting_keys, \
-        "Settings.yaml keys must match Materials.yaml base slugs"
+      "Settings.yaml keys (normalized) must match Materials.yaml base slugs"
     
     # Assert Contaminants.yaml references are valid
     mapper = MaterialNameMapper()
@@ -380,7 +385,7 @@ settings:
 
 # ✅ CORRECT
 settings:
-  aluminum:  # Base slug
+  aluminum-settings:  # Settings slug with suffix
     machine_settings: {...}
 ```
 
@@ -419,9 +424,9 @@ valid_materials:
 
 # ✅ CORRECT (Settings.yaml)
 settings:
-  aluminum:  # Lowercase
-  steel:  # Lowercase
-  bronze:  # Lowercase
+  aluminum-settings:  # Lowercase + suffix
+  steel-settings:  # Lowercase + suffix
+  bronze-settings:  # Lowercase + suffix
 ```
 
 ---
@@ -440,7 +445,7 @@ settings:
 Before committing changes that touch material names:
 
 - [ ] Materials.yaml uses `{slug}-laser-cleaning` format
-- [ ] Settings.yaml uses `{slug}` (base only) format
+- [ ] Settings.yaml uses `{slug}-settings` format
 - [ ] Contaminants.yaml uses `Display Name` format
 - [ ] DomainAssociations.yaml uses `{slug}` (base only) format
 - [ ] All slugs are lowercase with hyphens
@@ -462,8 +467,8 @@ materials_data['materials']['titanium-alloy-ti-6al-4v-laser-cleaning'] = {
     'properties': {...}
 }
 
-# 2. Add to Settings.yaml (base slug)
-settings_data['settings']['titanium-alloy-ti-6al-4v'] = {
+# 2. Add to Settings.yaml (settings suffix)
+settings_data['settings']['titanium-alloy-ti-6al-4v-settings'] = {
     'machine_settings': {...}
 }
 
@@ -491,7 +496,7 @@ user_input = "Stainless Steel 316"
 base_slug = user_input.lower().replace(' ', '-')  # stainless-steel-316
 
 # Look up settings
-setting = settings_data['settings'][base_slug]
+setting = settings_data['settings'][f"{base_slug}-settings"]
 
 # Look up in Materials.yaml
 full_slug = f"{base_slug}-laser-cleaning"

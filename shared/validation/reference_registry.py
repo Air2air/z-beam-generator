@@ -68,6 +68,11 @@ class ReferenceRegistry:
         self.index: Dict[str, Set[str]] = defaultdict(set)
         self.metadata: Dict[str, Dict[str, dict]] = defaultdict(dict)
         self._loaded = False
+
+    def _validate_domain(self, domain: str):
+        """Validate domain is explicitly configured"""
+        if domain not in self.DATA_FILES:
+            raise KeyError(f"Unknown domain: {domain}. Valid domains: {list(self.DATA_FILES.keys())}")
     
     def _find_project_root(self) -> Path:
         """Find project root from current file location"""
@@ -87,6 +92,7 @@ class ReferenceRegistry:
     
     def load_domain(self, domain: str, file_path: str):
         """Load a single domain into registry"""
+        self._validate_domain(domain)
         full_path = self.project_root / file_path
         
         if not full_path.exists():
@@ -97,8 +103,11 @@ class ReferenceRegistry:
                 content = yaml.safe_load(f)
             
             # Get items based on domain structure
-            root_key = self.DOMAIN_KEYS.get(domain)
-            if root_key and root_key in content:
+            if domain not in self.DOMAIN_KEYS:
+                raise KeyError(f"Missing root-key configuration for domain: {domain}")
+
+            root_key = self.DOMAIN_KEYS[domain]
+            if root_key in content:
                 items = content[root_key]
             else:
                 items = content
@@ -122,10 +131,11 @@ class ReferenceRegistry:
     
     def is_valid(self, domain: str, reference_id: str) -> bool:
         """Check if a reference ID is valid"""
+        self._validate_domain(domain)
         if not self._loaded:
             self.load_all()
         
-        return reference_id in self.index.get(domain, set())
+        return reference_id in self.index[domain]
     
     def validate_reference(self, domain: str, reference_id: str, 
                           auto_fix: bool = False) -> ReferenceInfo:
@@ -140,6 +150,7 @@ class ReferenceRegistry:
         Returns:
             ReferenceInfo with validation results and suggestions
         """
+        self._validate_domain(domain)
         if not self._loaded:
             self.load_all()
         
@@ -210,13 +221,15 @@ class ReferenceRegistry:
     
     def get_all_ids(self, domain: str) -> Set[str]:
         """Get all valid IDs for a domain"""
+        self._validate_domain(domain)
         if not self._loaded:
             self.load_all()
         
-        return self.index.get(domain, set()).copy()
+        return self.index[domain].copy()
     
     def suggest_fixes(self, domain: str, broken_id: str, max_suggestions: int = 3) -> List[str]:
         """Get fix suggestions for a broken reference"""
+        self._validate_domain(domain)
         info = self.validate_reference(domain, broken_id)
         return info.suggestions[:max_suggestions] if info.suggestions else []
     

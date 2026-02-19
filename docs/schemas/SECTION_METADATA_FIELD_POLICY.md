@@ -9,7 +9,7 @@
 - `sectionDescription` - Generated contextual content about the section
 - `sectionMetadata` - Technical metadata for the section
 
-**Note**: `data/schemas/section_display_schema.yaml` exists but is deprecated - `section_display_schema.yaml` is the authoritative source used by all scripts and export processes.
+**Note**: `data/schemas/section_display_schema.yaml` is the authoritative schema source used by generation and export pipelines.
 
 ---
 
@@ -31,7 +31,7 @@ Section metadata in `section_display_schema.yaml` defines three distinct fields 
 - **Example**: "Common Contaminants", "Industry Applications"
 
 ### 2. sectionDescription (REQUIRED)
-- **Source**: AI-generated content using `sections.{section_key}.prompt`
+- **Source**: AI-generated content using prompt resolution via `PromptRegistryService` from schema `prompt_ref` (preferred) or `prompt`/`prompt_file` fallback
 - **Export As**: `_section.sectionDescription`
 - **Purpose**: Contextual description explaining what the section contains
 - **Validation**: Must be present and non-empty, minimum 5 words
@@ -50,7 +50,7 @@ Section metadata in `section_display_schema.yaml` defines three distinct fields 
 
 **Export Failure**: If any section lacks required fields, the export process should fail with clear error messages indicating which section and which field is missing.
 
-**Schema Compliance**: All sections in section_display_schema.yaml must have description, prompt, and metadata fields populated to meet mandatory requirements.
+**Schema Compliance**: All sections must include required display metadata (`icon`, `order`, `variant`) and either `prompt_ref` (preferred) or `prompt`/`prompt_file` for generation-time prompt resolution.
 
 ---
 
@@ -80,17 +80,17 @@ Section metadata in `section_display_schema.yaml` defines three distinct fields 
 - `"OSHA, ANSI, and ISO compliance requirements governing handling and workplace safety"`
 - `"Industries and sectors where commonly encountered, including specific processes and application suitability"`
 
-### 3. `prompt` - Generation Instructions (NOT EXPORTED)
+### 3. `prompt_ref` / `prompt` / `prompt_file` - Generation Prompt Source (NOT EXPORTED)
 
 **Purpose**: Instructions for AI content generation  
 **Export Behavior**: ❌ NOT EXPORTED - generation-time only  
-**Content Format**: Question or instruction for content generation  
-**Usage**: Content generation, AI prompts, data population
+**Content Format**: Reference-based prompt lookup (preferred) or inline/file fallback  
+**Usage**: Content generation, AI prompts, data population via `PromptRegistryService`
 
 **Examples**:
-- `"What contaminants typically appear on {material} during use and storage?"`
-- `"What are the regulatory standards governing safe handling of {material}?"`
-- `"Which industries commonly use {material} and why?"`
+- `prompt_ref: "contaminatedBy"`
+- `prompt_ref: "regulatoryStandards"`
+- `prompt_ref: "industryApplications"`
 
 ---
 
@@ -106,7 +106,7 @@ sections:
     variant: default                # Visual variant (default/warning/danger)
     description: "Common Contaminants"  # ✅ EXPORTED - Section title
     metadata: "Lists contaminants that commonly appear on this material during use and storage, explaining why they cause problems and how they accumulate"  # ❌ NOT EXPORTED - Internal reference
-    prompt: "What contaminants typically appear on {material}?"  # ❌ NOT EXPORTED - Generation instructions
+    prompt_ref: contaminatedBy  # ❌ NOT EXPORTED - Generation prompt source (preferred)
 ```
 
 ---
@@ -120,7 +120,7 @@ sections:
 | `variant` | ✅ Yes | ✅ Yes | Visual styling |
 | `description` | ✅ Yes | ✅ Yes | Section title |
 | `metadata` | ❌ No | ❌ No | Documentation |
-| `prompt` | ❌ No | ❌ No | Generation |
+| `prompt_ref` / `prompt` / `prompt_file` | ❌ No | ❌ No | Generation |
 
 **In Exported Frontmatter**:
 ```yaml
@@ -144,7 +144,7 @@ relationships:
 ### For Schema Updates:
 - ✅ `description` must be short title (2-4 words)
 - ✅ `metadata` must be single descriptive sentence
-- ✅ `prompt` must be generation instruction or question
+- ✅ define generation source using `prompt_ref` (preferred) or `prompt`/`prompt_file`
 - ❌ DO NOT put long sentences in `description` field
 - ❌ DO NOT export `metadata` field to frontmatter
 - ❌ DO NOT confuse `metadata` with `sectionDescription` (they're different!)
@@ -152,7 +152,7 @@ relationships:
 ### For Export Code:
 - ✅ Read `description` field for `sectionTitle` in frontmatter
 - ✅ Ignore `metadata` field during export (internal documentation only)
-- ✅ Use `prompt` field only during content generation phase
+- ✅ Use prompt source fields (`prompt_ref`/`prompt`/`prompt_file`) only during content generation phase
 - ❌ DO NOT export `metadata` to frontmatter
 - ❌ DO NOT use `metadata` as `sectionDescription` (that's generated content!)
 
@@ -194,7 +194,7 @@ section_meta = {
     'icon': schema['icon'],
     'order': schema['order'],
     'variant': schema['variant']
-    # metadata and prompt fields are NOT exported
+    # metadata and prompt source fields are NOT exported
 }
 ```
 
@@ -257,7 +257,6 @@ _section:
 
 ### Schema Definition
 - `data/schemas/section_display_schema.yaml` (sections.* entries) - Authoritative source for all section metadata
-- `data/schemas/section_display_schema.yaml` - DEPRECATED (not used by scripts or export)
 
 ### Export Code (Reads schema)
 - `export/enrichers/section_metadata_enricher.py` - Adds _section blocks during export

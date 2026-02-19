@@ -18,13 +18,12 @@ from typing import Any, Dict, Optional
 import yaml
 
 
-def load_yaml(file_path: Path, default: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+def load_yaml(file_path: Path) -> Dict[str, Any]:
     """
     Load YAML file with consistent error handling.
     
     Args:
         file_path: Path to YAML file
-        default: Default value if file empty (default: {})
     
     Returns:
         Loaded YAML data as dict
@@ -37,40 +36,17 @@ def load_yaml(file_path: Path, default: Optional[Dict[str, Any]] = None) -> Dict
         >>> data = load_yaml(Path('data/materials/Materials.yaml'))
         >>> materials = data.get('materials', {})
     """
-    if default is None:
-        default = {}
-    
     if not file_path.exists():
         raise FileNotFoundError(f"File not found: {file_path}")
     
     with open(file_path, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f) or default
+        data = yaml.safe_load(f)
 
-
-def load_yaml_safe(file_path: Path, default: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-    """
-    Load YAML file with error suppression (returns default on error).
-    
-    Use this when a missing/invalid file should not stop execution.
-    
-    Args:
-        file_path: Path to YAML file
-        default: Default value if file missing/empty/invalid (default: {})
-    
-    Returns:
-        Loaded YAML data or default
-    
-    Example:
-        >>> # Won't raise if file missing
-        >>> data = load_yaml_safe(Path('optional_config.yaml'), default={'enabled': False})
-    """
-    if default is None:
-        default = {}
-    
-    try:
-        return load_yaml(file_path, default)
-    except (FileNotFoundError, yaml.YAMLError):
-        return default
+    if data is None:
+        raise ValueError(f"YAML file is empty: {file_path}")
+    if not isinstance(data, dict):
+        raise ValueError(f"YAML root must be a dictionary: {file_path}")
+    return data
 
 
 def save_yaml(
@@ -209,9 +185,8 @@ def merge_yaml_files(*file_paths: Path) -> Dict[str, Any]:
     result = {}
     
     for file_path in file_paths:
-        data = load_yaml_safe(file_path)
-        if data:
-            result.update(data)
+        data = load_yaml(file_path)
+        result.update(data)
     
     return result
 
@@ -242,7 +217,7 @@ def validate_yaml_structure(
     try:
         data = load_yaml(file_path)
         return all(key in data for key in required_keys)
-    except (FileNotFoundError, yaml.YAMLError):
+    except (FileNotFoundError, yaml.YAMLError, ValueError):
         return False
 
 

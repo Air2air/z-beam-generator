@@ -16,8 +16,8 @@ Usage:
     # Fast loading with C-based parser (default)
     data = load_yaml('data/materials/Materials.yaml')
     
-    # Safe loading with fallback default
-    config = load_yaml('config.yaml', default={}, safe=True)
+    # Fail-fast loading
+    config = load_yaml('config.yaml')
     
     # Atomic saving with backup
     save_yaml('output.yaml', data, atomic=True, backup=True)
@@ -46,9 +46,7 @@ except ImportError:
 
 def load_yaml(
     file_path: Union[str, Path],
-    default: Optional[Dict[str, Any]] = None,
     fast: bool = True,
-    safe: bool = True,
     encoding: str = 'utf-8'
 ) -> Dict[str, Any]:
     """
@@ -56,37 +54,28 @@ def load_yaml(
     
     Args:
         file_path: Path to YAML file
-        default: Default value if file empty or missing (when safe=True)
         fast: Use C-based loader if available (10x faster)
-        safe: Return default instead of raising on missing file
         encoding: File encoding (default: utf-8)
     
     Returns:
         Loaded YAML data as dict
     
     Raises:
-        FileNotFoundError: If file doesn't exist and safe=False
+        FileNotFoundError: If file doesn't exist
+        ValueError: If YAML file is empty or not a dictionary
         yaml.YAMLError: If YAML parsing fails
     
     Examples:
         >>> # Fast loading (default)
         >>> data = load_yaml('Materials.yaml')
         
-        >>> # Safe loading with default
-        >>> config = load_yaml('config.yaml', default={}, safe=True)
-        
         >>> # Python loader (for compatibility)
         >>> data = load_yaml('file.yaml', fast=False)
     """
-    if default is None:
-        default = {}
-    
     file_path = Path(file_path)
     
     # Handle missing file
     if not file_path.exists():
-        if safe:
-            return default
         raise FileNotFoundError(f"File not found: {file_path}")
     
     # Select loader
@@ -95,7 +84,11 @@ def load_yaml(
     # Load YAML
     with open(file_path, 'r', encoding=encoding) as f:
         data = yaml.load(f, Loader=loader)
-        return data if data is not None else default
+        if data is None:
+            raise ValueError(f"YAML file is empty: {file_path}")
+        if not isinstance(data, dict):
+            raise ValueError(f"YAML root must be a dictionary: {file_path}")
+        return data
 
 
 def save_yaml(
@@ -296,9 +289,8 @@ def validate_yaml_structure(
     return True
 
 
-# Convenience aliases for backward compatibility
+# Convenience aliases
 load_yaml_fast = load_yaml  # Default is fast=True
-load_yaml_safe = lambda path, default=None: load_yaml(path, default=default, safe=True)
 dump_yaml_fast = save_yaml  # Default is fast=True
 
 # Module info
@@ -309,7 +301,6 @@ __all__ = [
     'load_yaml_with_retry',
     'validate_yaml_structure',
     'load_yaml_fast',
-    'load_yaml_safe',
     'dump_yaml_fast',
     'YAML_LOADER_TYPE',
     'FAST_LOADER_AVAILABLE'

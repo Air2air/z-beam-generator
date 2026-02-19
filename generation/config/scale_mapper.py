@@ -61,7 +61,7 @@ def normalize_sliders(values: List[int], min_val: int = 1, max_val: int = 10) ->
         >>> normalize_sliders([8, 5, 8])      # Returns 0.630...
     """
     if not values:
-        return 0.5  # Default to middle if no values provided
+        raise ValueError("normalize_sliders requires at least one slider value")
     
     normalized = [normalize_slider(v, min_val, max_val) for v in values]
     return sum(normalized) / len(normalized)

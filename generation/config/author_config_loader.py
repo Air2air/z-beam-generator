@@ -131,9 +131,15 @@ class AuthorConfigLoader:
         applied_offsets = []
         for field in slider_fields:
             if field in offsets:
-                # Default to 5 (moderate) if field missing - INTENTIONAL
-                # Authors inherit balanced baseline, then offsets are applied
-                base_value = config_data.get(field, 5)  # Default to middle of 1-10 scale
+                if field not in config_data:
+                    raise KeyError(
+                        f"Missing required slider field '{field}' in base config: {base_config.config_path}"
+                    )
+                base_value = config_data[field]
+                if not isinstance(base_value, int):
+                    raise ValueError(
+                        f"Invalid slider value for '{field}' in base config: {base_value}"
+                    )
                 offset = offsets[field]
                 
                 # Clamp to [1, 10] for 1-10 scale (normalized Nov 16, 2025)

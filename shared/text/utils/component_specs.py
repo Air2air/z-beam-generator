@@ -69,6 +69,10 @@ class ComponentRegistry:
         'settings_description': 'settings',
         'component_summaries': 'settings',
     }
+
+    LEGACY_COMPONENT_ALIASES = {
+        'description': 'pageDescription',
+    }
     
     @classmethod
     def _deep_merge(cls, base: Dict, override: Dict) -> Dict:
@@ -364,7 +368,8 @@ class ComponentRegistry:
             KeyError: If component type not found in prompts/ or config
         """
         spec_defs = cls._get_spec_definitions()
-        spec_def = spec_defs.get(component_type)
+        canonical_component_type = cls.LEGACY_COMPONENT_ALIASES.get(component_type, component_type)
+        spec_def = spec_defs.get(canonical_component_type)
         
         if not spec_def:
             available = ', '.join(spec_defs.keys())
@@ -386,7 +391,7 @@ class ComponentRegistry:
             }
         else:
             # Regular components use config.yaml
-            lengths = cls._get_component_lengths(component_type)
+            lengths = cls._get_component_lengths(canonical_component_type)
         
         # Get extraction strategy from config (default to 'raw')
         extraction_strategy = 'raw'
@@ -395,7 +400,7 @@ class ComponentRegistry:
         
         # Build ComponentSpec with config lengths and prompt template file
         return ComponentSpec(
-            name=component_type,
+            name=canonical_component_type,
             default_length=lengths['default'],
             min_length=lengths['min'],
             max_length=lengths['max'],

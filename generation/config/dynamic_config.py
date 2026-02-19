@@ -107,20 +107,38 @@ class DynamicConfig:
         Returns dict with frequency_penalty and presence_penalty (0.0-2.0 range)
         """
         humanness = self.base_config.get_humanness_intensity()  # 1-10
-        penalties_config = self.base_config.config.get('dynamic_calculations', {}).get('penalties', {})
+        dynamic_calculations = self.base_config.config.get('dynamic_calculations')
+        if not isinstance(dynamic_calculations, dict):
+            raise KeyError("Missing required config section: dynamic_calculations")
+
+        penalties_config = dynamic_calculations.get('penalties')
+        if not isinstance(penalties_config, dict):
+            raise KeyError("Missing required config section: dynamic_calculations.penalties")
         
         if humanness <= 3:
-            frequency_penalty = penalties_config.get('low_humanness', {}).get('frequency', 0.0)
-            presence_penalty = penalties_config.get('low_humanness', {}).get('presence', 0.0)
+            low_humanness = penalties_config.get('low_humanness')
+            if not isinstance(low_humanness, dict):
+                raise KeyError("Missing required config section: dynamic_calculations.penalties.low_humanness")
+            frequency_penalty = low_humanness['frequency']
+            presence_penalty = low_humanness['presence']
         elif humanness <= 7:
-            medium_max = penalties_config.get('medium_humanness', {}).get('frequency_max', 0.6)
-            frequency_penalty = (humanness - 3) / 4.0 * medium_max
-            presence_penalty = (humanness - 3) / 4.0 * medium_max
+            medium_humanness = penalties_config.get('medium_humanness')
+            if not isinstance(medium_humanness, dict):
+                raise KeyError("Missing required config section: dynamic_calculations.penalties.medium_humanness")
+            frequency_max = medium_humanness['frequency_max']
+            presence_max = medium_humanness['presence_max']
+            frequency_penalty = (humanness - 3) / 4.0 * frequency_max
+            presence_penalty = (humanness - 3) / 4.0 * presence_max
         else:
-            high_min = penalties_config.get('high_humanness', {}).get('frequency_min', 0.6)
-            high_max = penalties_config.get('high_humanness', {}).get('frequency_max', 1.2)
-            frequency_penalty = high_min + (humanness - 7) / 3.0 * (high_max - high_min)
-            presence_penalty = high_min + (humanness - 7) / 3.0 * (high_max - high_min)
+            high_humanness = penalties_config.get('high_humanness')
+            if not isinstance(high_humanness, dict):
+                raise KeyError("Missing required config section: dynamic_calculations.penalties.high_humanness")
+            frequency_min = high_humanness['frequency_min']
+            frequency_max = high_humanness['frequency_max']
+            presence_min = high_humanness['presence_min']
+            presence_max = high_humanness['presence_max']
+            frequency_penalty = frequency_min + (humanness - 7) / 3.0 * (frequency_max - frequency_min)
+            presence_penalty = presence_min + (humanness - 7) / 3.0 * (presence_max - presence_min)
         
         return {
             'frequency_penalty': round(frequency_penalty, 2),
@@ -168,11 +186,18 @@ class DynamicConfig:
         persistence_factor = (ai_avoidance + imperfection) / 200.0  # 0.0-1.0
         
         # Get retry ranges from config
-        retry_config = self.base_config.config.get('dynamic_calculations', {}).get('retry', {})
-        attempts_min = retry_config.get('attempts_min', 3)
-        attempts_max = retry_config.get('attempts_max', 7)
-        temp_min = retry_config.get('temp_increase_min', 0.05)
-        temp_max = retry_config.get('temp_increase_max', 0.15)
+        dynamic_calculations = self.base_config.config.get('dynamic_calculations')
+        if not isinstance(dynamic_calculations, dict):
+            raise KeyError("Missing required config section: dynamic_calculations")
+
+        retry_config = dynamic_calculations.get('retry')
+        if not isinstance(retry_config, dict):
+            raise KeyError("Missing required config section: dynamic_calculations.retry")
+
+        attempts_min = retry_config['attempts_min']
+        attempts_max = retry_config['attempts_max']
+        temp_min = retry_config['temp_increase_min']
+        temp_max = retry_config['temp_increase_max']
         
         # Adjust attempts using config range
         max_attempts = int(attempts_min + (persistence_factor * (attempts_max - attempts_min)))
@@ -216,10 +241,17 @@ class DynamicConfig:
         strictness_factor = (ai_avoidance - imperfection) / 100.0  # -1.0 to +1.0
         
         # Get threshold ranges from config
-        threshold_config = self.base_config.config.get('dynamic_calculations', {}).get('thresholds', {})
-        adjustment_range = threshold_config.get('detection_adjustment_range', 15)
-        min_threshold = threshold_config.get('detection_min', 20)
-        max_threshold = threshold_config.get('detection_max', 60)
+        dynamic_calculations = self.base_config.config.get('dynamic_calculations')
+        if not isinstance(dynamic_calculations, dict):
+            raise KeyError("Missing required config section: dynamic_calculations")
+
+        threshold_config = dynamic_calculations.get('thresholds')
+        if not isinstance(threshold_config, dict):
+            raise KeyError("Missing required config section: dynamic_calculations.thresholds")
+
+        adjustment_range = threshold_config['detection_adjustment_range']
+        min_threshold = threshold_config['detection_min']
+        max_threshold = threshold_config['detection_max']
         
         # Adjust threshold using config range
         threshold_adjustment = strictness_factor * adjustment_range
@@ -279,8 +311,15 @@ class DynamicConfig:
         base = self.base_config.get_confidence_thresholds()
         
         # Get confidence adjustment range from config
-        threshold_config = self.base_config.config.get('dynamic_calculations', {}).get('thresholds', {})
-        adjustment_range = threshold_config.get('confidence_adjustment_range', 10)
+        dynamic_calculations = self.base_config.config.get('dynamic_calculations')
+        if not isinstance(dynamic_calculations, dict):
+            raise KeyError("Missing required config section: dynamic_calculations")
+
+        threshold_config = dynamic_calculations.get('thresholds')
+        if not isinstance(threshold_config, dict):
+            raise KeyError("Missing required config section: dynamic_calculations.thresholds")
+
+        adjustment_range = threshold_config['confidence_adjustment_range']
         
         # Higher AI avoidance → require higher confidence to accept
         # Scale ai_avoidance (0-100) to adjustment range (e.g., -10 to +10)
@@ -311,8 +350,15 @@ class DynamicConfig:
         base = self.base_config.get_readability_thresholds()
         
         # Get readability adjustment range from config
-        threshold_config = self.base_config.config.get('dynamic_calculations', {}).get('thresholds', {})
-        adjustment_range = threshold_config.get('readability_adjustment_range', 10)
+        dynamic_calculations = self.base_config.config.get('dynamic_calculations')
+        if not isinstance(dynamic_calculations, dict):
+            raise KeyError("Missing required config section: dynamic_calculations")
+
+        threshold_config = dynamic_calculations.get('thresholds')
+        if not isinstance(threshold_config, dict):
+            raise KeyError("Missing required config section: dynamic_calculations.thresholds")
+
+        adjustment_range = threshold_config['readability_adjustment_range']
         
         # High technical → lower min score OK (harder text acceptable)
         # High engagement → higher min score wanted (easier text)
@@ -422,8 +468,13 @@ class DynamicConfig:
         emotional = self.base_config.get_emotional_intensity()  # 1-10
         sentence_rhythm = self.base_config.get_sentence_rhythm_variation()  # 1-10
         imperfection = self.base_config.get_imperfection_tolerance()  # 1-10
-        jargon = self.base_config.config.get('jargon_removal', 7)  # 1-10
-        professional = self.base_config.config.get('professional_voice', 5)  # 1-10
+        if 'jargon_removal' not in self.base_config.config:
+            raise KeyError("Missing required config key: jargon_removal")
+        if 'professional_voice' not in self.base_config.config:
+            raise KeyError("Missing required config key: professional_voice")
+
+        jargon = self.base_config.config['jargon_removal']  # 1-10
+        professional = self.base_config.config['professional_voice']  # 1-10
         
         # Map 1-10 to 0.0-1.0 for all parameters
         def map_10_to_float(value: int) -> float:
@@ -506,31 +557,7 @@ class DynamicConfig:
             - voice_params: trait_frequency, opinion_rate, etc.
             - validation_params: readability, grammar, detection thresholds
         """
-        # Calculate API penalties dynamically based on humanness_intensity
-        # Higher humanness = higher penalties to reduce repetition (which AI detectors flag)
-        humanness = self.base_config.get_humanness_intensity()  # 1-10
-        
-        # Get penalty ranges from config
-        penalties_config = self.base_config.config.get('dynamic_calculations', {}).get('penalties', {})
-        
-        # Map humanness to penalty range using config values
-        # Low humanness (1-3): 0.0 penalties (fast, predictable)
-        # Medium humanness (4-7): 0.0 to medium_max penalties (balanced)
-        # High humanness (8-10): high_min to high_max penalties (aggressive, varied)
-        if humanness <= 3:
-            frequency_penalty = penalties_config.get('low_humanness', {}).get('frequency', 0.0)
-            presence_penalty = penalties_config.get('low_humanness', {}).get('presence', 0.0)
-        elif humanness <= 7:
-            # Linear scale from 0.0 to medium_max
-            medium_max = penalties_config.get('medium_humanness', {}).get('frequency_max', 0.6)
-            frequency_penalty = (humanness - 3) / 4.0 * medium_max
-            presence_penalty = (humanness - 3) / 4.0 * medium_max
-        else:
-            # Linear scale from high_min to high_max
-            high_min = penalties_config.get('high_humanness', {}).get('frequency_min', 0.6)
-            high_max = penalties_config.get('high_humanness', {}).get('frequency_max', 1.2)
-            frequency_penalty = high_min + (humanness - 7) / 3.0 * (high_max - high_min)
-            presence_penalty = high_min + (humanness - 7) / 3.0 * (high_max - high_min)
+        penalties = self.calculate_penalties(component_type)
         
         return {
             'api_params': {
@@ -538,8 +565,8 @@ class DynamicConfig:
                 'max_tokens': self.calculate_max_tokens(component_type),
                 'retry_behavior': self.calculate_retry_behavior(),
                 'penalties': {
-                    'frequency_penalty': round(frequency_penalty, 2),
-                    'presence_penalty': round(presence_penalty, 2)
+                    'frequency_penalty': penalties['frequency_penalty'],
+                    'presence_penalty': penalties['presence_penalty']
                 }
             },
             'enrichment_params': self.calculate_enrichment_params(),

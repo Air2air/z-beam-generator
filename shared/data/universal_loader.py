@@ -7,7 +7,7 @@ Eliminates duplicate data loading logic across domain coordinators.
 
 Architecture:
 - Uses domain config (domains/{domain}/config.yaml) to determine data path
-- Supports both nested (data_adapter.data_path) and flat (data_path) structure
+- Requires flat config key (data_path)
 - Provides caching for performance
 - Handles all YAML domains: materials, contaminants, compounds, settings
 
@@ -46,7 +46,7 @@ class UniversalDataLoader:
     
     Features:
     - Auto-discovers data path from domain config
-    - Supports both nested and flat config structures
+    - Uses strict flat config structure
     - Optional caching for performance
     - Unified interface for all domains
     """
@@ -177,7 +177,9 @@ class UniversalDataLoader:
         """
         data = self.load_domain_data(domain_name)
         root_key = self._get_root_key(domain_name, data)
-        return list(data.get(root_key, {}).keys())
+        if root_key not in data:
+            raise ValueError(f"Root key '{root_key}' not found in {domain_name} data")
+        return list(data[root_key].keys())
     
     def _load_domain_config(self, domain_name: str) -> Dict[str, Any]:
         """Load domain configuration file."""
@@ -193,18 +195,12 @@ class UniversalDataLoader:
             return yaml.safe_load(f)
     
     def _get_data_path(self, config: Dict[str, Any], domain_name: str) -> str:
-        """Extract data path from domain config (supports both nested and flat structure)."""
-        # Try nested structure first (current standard)
-        if 'data_adapter' in config and 'data_path' in config['data_adapter']:
-            return config['data_adapter']['data_path']
-        
-        # Fall back to flat structure (legacy)
-        if 'data_path' in config:
-            return config['data_path']
-        
-        raise ValueError(
-            f"Domain config missing data_adapter.data_path or data_path: {domain_name}"
-        )
+        """Extract data path from strict domain config."""
+        if 'data_path' not in config:
+            raise ValueError(
+                f"Domain config missing required key 'data_path': {domain_name}"
+            )
+        return config['data_path']
     
     def _get_root_key(self, domain_name: str, data: Dict[str, Any]) -> str:
         """Determine root key for items in domain data."""

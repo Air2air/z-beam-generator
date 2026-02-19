@@ -722,8 +722,12 @@ class ContaminantsDataset(BaseDataset):
         Returns:
             Nested contaminant object
         """
-        contaminant_obj = {}
-        
+        contaminant_obj = {
+            'properties': {},
+            'compounds': [],
+            'removalTechniques': {}
+        }
+
         # Extract contaminant properties
         properties = self._extract_contaminant_properties(item_data)
         if properties:
@@ -871,10 +875,16 @@ class ContaminantsDataset(BaseDataset):
         """
         removal_techniques = {}
         
-        # Get laser_properties from relationships.operational
+        def _get_first(mapping: Dict[str, Any], *keys: str, default=None):
+            for key in keys:
+                if key in mapping:
+                    return mapping[key]
+            return default
+
+        # Get laser properties from relationships.operational (supports snake_case + camelCase)
         relationships = item_data.get('relationships', {})
         operational = relationships.get('operational', {})
-        laser_props = operational.get('laser_properties', {})
+        laser_props = _get_first(operational, 'laser_properties', 'laserProperties', default={})
         laser_items = laser_props.get('items', [])
         
         if not laser_items:
@@ -884,17 +894,24 @@ class ContaminantsDataset(BaseDataset):
         laser_data = laser_items[0]
         
         # Extract laser parameters with actual field names
-        laser_params = laser_data.get('laser_parameters', {})
+        laser_params = _get_first(laser_data, 'laser_parameters', 'laserParameters', default={})
         
         # Map actual YAML fields to specification fields
         field_mapping = {
             'fluence_range': 'laserPower',
+            'fluenceRange': 'laserPower',
             'wavelength_preference': 'wavelength',
+            'wavelengthPreference': 'wavelength',
             'pulse_duration_range': 'pulseWidth',
+            'pulseDurationRange': 'pulseWidth',
             'scan_speed_mm_s': 'scanSpeed',
+            'scanSpeedMmS': 'scanSpeed',
             'spot_size_mm': 'spotSize',
+            'spotSizeMm': 'spotSize',
             'repetition_rate_khz': 'frequency',
-            'overlap_percentage': 'overlapRatio'
+            'repetitionRateKhz': 'frequency',
+            'overlap_percentage': 'overlapRatio',
+            'overlapPercentage': 'overlapRatio'
         }
         
         for yaml_key, spec_key in field_mapping.items():
@@ -908,11 +925,17 @@ class ContaminantsDataset(BaseDataset):
                     removal_techniques[spec_key] = {'value': value}
         
         # Extract removal characteristics
-        removal_chars = laser_data.get('removal_characteristics', {})
+        removal_chars = _get_first(laser_data, 'removal_characteristics', 'removalCharacteristics', default={})
         
         # Extract efficiency
+        efficiency_key = None
         if 'removal_efficiency' in removal_chars:
-            eff = removal_chars['removal_efficiency']
+            efficiency_key = 'removal_efficiency'
+        elif 'removalEfficiency' in removal_chars:
+            efficiency_key = 'removalEfficiency'
+
+        if efficiency_key:
+            eff = removal_chars[efficiency_key]
             if isinstance(eff, dict):
                 removal_techniques['removalRate'] = eff
             else:
@@ -961,6 +984,31 @@ class ContaminantsDataset(BaseDataset):
         
         # Add nested contaminant object (per specification)
         dataset['contaminant'] = contaminant_object
+
+        # Add contaminant properties to variableMeasured
+        properties = contaminant_object.get('properties', {})
+        for prop_name, prop_value in properties.items():
+            if isinstance(prop_value, dict):
+                dataset['variableMeasured'].append({
+                    '@type': 'PropertyValue',
+                    'name': f"Property {prop_name}",
+                    'value': prop_value.get('value'),
+                    'minValue': prop_value.get('min'),
+                    'maxValue': prop_value.get('max'),
+                    'unitText': prop_value.get('unit', '')
+                })
+            elif isinstance(prop_value, list):
+                dataset['variableMeasured'].append({
+                    '@type': 'PropertyValue',
+                    'name': f"Property {prop_name}",
+                    'value': ', '.join(str(v) for v in prop_value)
+                })
+            else:
+                dataset['variableMeasured'].append({
+                    '@type': 'PropertyValue',
+                    'name': f"Property {prop_name}",
+                    'value': prop_value
+                })
         
         # Add compound information to variableMeasured
         compounds = contaminant_object.get('compounds', [])
@@ -986,4 +1034,49 @@ class ContaminantsDataset(BaseDataset):
                     'unitText': param_data.get('unit', '')
                 })
         
+        # Add additional operational measurements for richer schema coverage
+        relationships = item_data.get('relationships', {})
+        operational = relationships.get('operational', {})
+        laser_props = operational.get('laserProperties') or operational.get('laser_properties') or {}
+        laser_items = laser_props.get('items', []) if isinstance(laser_props, dict) else []
+
+        if laser_items and isinstance(laser_items[0], dict):
+            laser_data = laser_items[0]
+            sections = [
+                ('opticalProperties', 'Optical'),
+                ('optical_properties', 'Optical'),
+                ('thermalProperties', 'Thermal'),
+                ('thermal_properties', 'Thermal'),
+                ('safetyData', 'Safety'),
+                ('safety_data', 'Safety'),
+            ]
+
+            for section_key, section_label in sections:
+                section_data = laser_data.get(section_key, {})
+                if not isinstance(section_data, dict):
+                    continue
+
+                for metric_name, metric_value in section_data.items():
+                    if isinstance(metric_value, dict):
+                        dataset['variableMeasured'].append({
+                            '@type': 'PropertyValue',
+                            'name': f"{section_label} {metric_name}",
+                            'value': metric_value.get('value'),
+                            'minValue': metric_value.get('min'),
+                            'maxValue': metric_value.get('max'),
+                            'unitText': metric_value.get('unit', '')
+                        })
+                    elif isinstance(metric_value, list):
+                        dataset['variableMeasured'].append({
+                            '@type': 'PropertyValue',
+                            'name': f"{section_label} {metric_name}",
+                            'value': ', '.join(str(v) for v in metric_value)
+                        })
+                    else:
+                        dataset['variableMeasured'].append({
+                            '@type': 'PropertyValue',
+                            'name': f"{section_label} {metric_name}",
+                            'value': metric_value
+                        })
+
         return dataset

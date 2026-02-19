@@ -92,9 +92,31 @@ class PropertyValidators:
                                prop_data: Dict, property_rule) -> List[Dict]:
         """Validate individual property value against rules"""
         issues = []
-        
-        value = prop_data.get('value')
-        unit = prop_data.get('unit', '')
+
+        if 'value' not in prop_data:
+            issues.append({
+                'severity': 'ERROR',
+                'type': 'missing_property_field',
+                'material': material,
+                'property': prop_name,
+                'field': 'value',
+                'message': f"Property '{prop_name}' missing required field 'value'"
+            })
+            return issues
+
+        if 'unit' not in prop_data:
+            issues.append({
+                'severity': 'ERROR',
+                'type': 'missing_property_field',
+                'material': material,
+                'property': prop_name,
+                'field': 'unit',
+                'message': f"Property '{prop_name}' missing required field 'unit'"
+            })
+            return issues
+
+        value = prop_data['value']
+        unit = prop_data['unit']
         
         if value is None:
             return issues

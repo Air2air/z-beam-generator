@@ -1,6 +1,6 @@
 # Prompt System Comprehensive Guide
 
-**Last Updated**: December 20, 2025  
+**Last Updated**: February 18, 2026  
 **Consolidates**: 6 prompt-related policy documents  
 **Status**: ✅ ACTIVE - Single Source of Truth
 
@@ -85,6 +85,39 @@ Each layer has ONE responsibility:
 | **Domain** | Content requirements | `prompts/{domain}/*.txt` | Task, word count, `{voice_instruction}` placeholder |
 
 **NO overlap, NO duplication, NO confusion.**
+
+### 4. Descriptor Chain Contract (Normalization)
+
+The descriptor layer is now centralized through `PromptRegistryService` and domain YAML registries (`prompts/{domain}/content_prompts.yaml`, typically extending `prompts/shared/content_prompts.yaml`). It must remain normalized across domains and must never overlap with other descriptor responsibilities.
+
+**Required descriptor files per domain (`prompts/{domain}/`)**:
+- `identifiers.txt`
+- `chemicalProperties.txt`
+- `physicalProperties.txt`
+- `pageDescription.txt`
+- `appearanceVariations.txt`
+- `healthEffects.txt`
+- `applications.txt`
+- `challenges.txt`
+- `prevention.txt`
+
+**Contract rules**:
+1. **Single-field scope**: each descriptor prompt defines one field only.
+2. **Explicit exclusion**: each descriptor prompt must include a `DO NOT:` boundary listing out-of-scope fields.
+3. **No replacement of field prompts**: descriptor prompts are additive and prepended to field prompts resolved by schema (`prompt_ref` or `prompt_file`).
+4. **Cross-domain parity**: all active domains must resolve the same descriptor key set, with domain overrides only when truly necessary.
+5. **Fail-fast**: missing prompt references (`prompt_ref` mapping or descriptor source) are configuration errors and must not silently degrade.
+
+**Purpose**:
+- Keep descriptor prompts short and reusable.
+- Preserve specificity in the existing field prompt text.
+- Prevent chain-stage overlap and contradictory instructions.
+
+**Current Resolution Path (simplified)**:
+1. `PromptRegistryService.get_schema_prompt(domain, component_type, include_descriptor=True)`
+2. Descriptor prompt from domain/shared `content_prompts.yaml`
+3. Field prompt from schema `prompt_ref` (preferred) or `prompt`/`prompt_file` fallback
+4. Combined prompt returned to adapter/builder without inline code overrides
 
 ---
 

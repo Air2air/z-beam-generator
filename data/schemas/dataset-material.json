@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://www.z-beam.com/schemas/dataset-material.json",
+  "title": "Z-Beam Material Dataset Schema",
+  "description": "Schema for material datasets with Schema.org metadata and laser cleaning machine settings.",
+  "version": "1.0.0",
+  "type": "object",
+  "required": [
+    "@context",
+    "@type",
+    "identifier",
+    "name",
+    "description",
+    "license",
+    "creator",
+    "publisher",
+    "material",
+    "variableMeasured",
+    "citation",
+    "distribution"
+  ],
+  "properties": {
+    "@context": { "type": "string", "const": "https://schema.org" },
+    "@type": { "type": "string", "const": "Dataset" },
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+-material-dataset$"
+    },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "license": {
+      "type": "object",
+      "required": ["@type", "name", "url"],
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "creator": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "publisher": {
+      "type": "object",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "material": {
+      "type": "object",
+      "required": ["machineSettings"],
+      "properties": {
+        "machineSettings": {
+          "type": "object",
+          "required": [
+            "power",
+            "wavelength",
+            "spotSize",
+            "repetitionRate",
+            "pulseWidth",
+            "scanSpeed",
+            "passCount",
+            "overlapRatio"
+          ],
+          "properties": {
+            "power": { "$ref": "#/definitions/parameterRange" },
+            "wavelength": { "$ref": "#/definitions/parameterRange" },
+            "spotSize": { "$ref": "#/definitions/parameterRange" },
+            "repetitionRate": { "$ref": "#/definitions/parameterRange" },
+            "pulseWidth": { "$ref": "#/definitions/parameterRange" },
+            "scanSpeed": { "$ref": "#/definitions/parameterRange" },
+            "passCount": { "$ref": "#/definitions/parameterRange" },
+            "overlapRatio": { "$ref": "#/definitions/parameterRange" }
+          }
+        }
+      }
+    },
+    "variableMeasured": {
+      "type": "array",
+      "minItems": 20,
+      "items": { "type": "object" }
+    },
+    "citation": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "type": "object" }
+    },
+    "distribution": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "type": "object" }
+    }
+  },
+  "definitions": {
+    "parameterRange": {
+      "type": "object",
+      "required": ["min", "max", "unit"],
+      "properties": {
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "unit": { "type": "string" },
+        "value": { "type": "number" }
+      }
+    },
+    "measuredValue": {
+      "type": "object",
+      "required": ["value", "unit"],
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "type": "string" }
+      }
+    },
+    "exposureLimit": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "type": "string" }
+      }
+    },
+    "toxicityValue": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "type": "string" },
+        "species": { "type": "string" }
+      }
+    }
+  }
+}

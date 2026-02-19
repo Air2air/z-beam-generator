@@ -2,7 +2,7 @@
 
 **Purpose**: Complete component architecture and discovery system  
 **Audience**: AI assistants, component developers  
-**Last Updated**: December 20, 2025  
+**Last Updated**: February 18, 2026  
 **Status**: Consolidated from 3 component architecture documents
 
 ---
@@ -56,6 +56,8 @@ Z-Beam Generator supports multiple content types with **equal architectural trea
 
 ### Discovery Flow
 
+Note: This flow describes component template discovery (`ComponentRegistry`) for component templates. Section metadata prompt resolution for schema-driven fields is handled separately by `PromptRegistryService` (`prompt_ref` preferred, with `prompt`/`prompt_file` fallback).
+
 ```
 1. Application requests component (e.g., "micro")
    ↓
@@ -72,7 +74,7 @@ Z-Beam Generator supports multiple content types with **equal architectural trea
 6. Returns ComponentSpec with:
    - name: from filename
    - lengths: from config.yaml
-   - prompt_file: from discovery
+    - prompt_template_file: from discovery
    - punctuation: from config or default
 ```
 
@@ -421,7 +423,7 @@ result = self.generator.generate(material, component_type, author)
 
 ---
 
-**Last Updated**: December 20, 2025  
+**Last Updated**: February 18, 2026  
 **Consolidated From**:
 - COMPONENT_ARCHITECTURE.md (493 lines)
 - COMPONENT_DISCOVERY.md (250 lines)

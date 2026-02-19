@@ -88,6 +88,8 @@ def list_services(domain: str = None) -> dict:
         Dictionary of available services
     """
     if domain:
-        return SERVICE_REGISTRY.get(domain, {})
+        if domain not in SERVICE_REGISTRY:
+            raise KeyError(f"Unknown service domain: {domain}")
+        return SERVICE_REGISTRY[domain]
     
     return SERVICE_REGISTRY

@@ -77,6 +77,9 @@ def clean_python_cache(root_dir: Path, dry_run: bool = False) -> Tuple[int, List
     for pattern in ['**/*.pyc', '**/*.pyo']:
         for pyc_file in root_dir.rglob(pattern.split('/')[-1]):
             if pyc_file.is_file() and pattern.split('/')[-1].endswith(pyc_file.suffix):
+                # Skip files inside __pycache__ directories (already accounted for above)
+                if '__pycache__' in pyc_file.parts:
+                    continue
                 size = pyc_file.stat().st_size
                 bytes_freed += size
                 removed.append(str(pyc_file.relative_to(root_dir)))

@@ -217,17 +217,13 @@ class SchemaValidator:
                         self.schemas[schema_type] = json.load(f)
                     self.logger.debug(f"✅ Loaded schema: {schema_file}")
                 else:
-                    self.logger.warning(f"⚠️  Schema file not found: {schema_path}")
-                    # Create minimal schema as fallback
-                    self.schemas[schema_type] = {"type": "object"}
+                    raise FileNotFoundError(f"Required schema file not found: {schema_path}")
             
             self.logger.info(f"✅ Loaded {len(self.schemas)} schemas")
             
         except Exception as e:
             self.logger.error(f"❌ Failed to load schemas: {e}")
-            # Create minimal schemas as fallback
-            for schema_type in SchemaType:
-                self.schemas[schema_type] = {"type": "object"}
+            raise RuntimeError(f"Failed to load schema definitions: {e}") from e
     
     def validate(
         self,
@@ -294,8 +290,7 @@ class SchemaValidator:
                 adapter = self.adapters[schema_type]
                 result = adapter.validate(data, result, validation_mode)
             else:
-                # Fallback to basic schema validation
-                result = self._validate_basic_schema(data, schema_type, result)
+                raise ValueError(f"No validation adapter registered for schema type: {schema_type.value}")
             
             # Finalize result
             self._finalize_validation_result(result, start_time)
@@ -307,19 +302,7 @@ class SchemaValidator:
             
         except Exception as e:
             self.logger.error(f"❌ Critical validation failure: {e}")
-            # Return error result instead of raising exception
-            result = ValidationResult(
-                is_valid=False,
-                schema_type=schema_type.value if isinstance(schema_type, SchemaType) else str(schema_type),
-                validation_mode=validation_mode.value if validation_mode else "unknown"
-            )
-            result.errors.append(ValidationError(
-                field_path="validator",
-                error_type="infrastructure_failure",
-                message=f"Validation infrastructure failure: {e}",
-                severity="error"
-            ))
-            return result
+            raise RuntimeError(f"Validation infrastructure failure: {e}") from e
     
     def _validate_basic_schema(
         self,
@@ -329,7 +312,9 @@ class SchemaValidator:
     ) -> ValidationResult:
         """Basic schema validation using jsonschema"""
         try:
-            schema = self.schemas.get(schema_type, {"type": "object"})
+            if schema_type not in self.schemas:
+                raise KeyError(f"Schema definition not loaded for schema type: {schema_type.value}")
+            schema = self.schemas[schema_type]
             
             # Validate against schema
             jsonschema.validate(data, schema)
@@ -494,7 +479,29 @@ class FrontmatterAdapter(SchemaAdapter):
         """Research-grade frontmatter validation"""
         
         # Validate property sources and confidence levels
-        properties = data.get('properties', {})
+        if 'properties' not in data:
+            result.errors.append(ValidationError(
+                field_path="properties",
+                error_type="missing_section",
+                message="Required section 'properties' is missing for research-grade validation",
+                severity="error",
+                suggestion="Add properties section to frontmatter"
+            ))
+            result.is_valid = False
+            return result
+
+        properties = data['properties']
+        if not isinstance(properties, dict):
+            result.errors.append(ValidationError(
+                field_path="properties",
+                error_type="invalid_structure",
+                message="Section 'properties' must be an object",
+                severity="error",
+                suggestion="Set properties to a key-value object"
+            ))
+            result.is_valid = False
+            return result
+
         for prop_name, prop_data in properties.items():
             if isinstance(prop_data, dict):
                 if 'confidence' not in prop_data:
@@ -524,7 +531,27 @@ class MaterialsYamlAdapter(SchemaAdapter):
         result = self.validator._validate_basic_schema(data, SchemaType.MATERIALS_YAML, result)
         
         # Materials-specific validation
-        materials = data.get('materials', {})
+        if 'materials' not in data:
+            result.errors.append(ValidationError(
+                field_path="materials",
+                error_type="missing_section",
+                message="Required section 'materials' is missing",
+                severity="error"
+            ))
+            result.is_valid = False
+            return result
+
+        materials = data['materials']
+        if not isinstance(materials, dict):
+            result.errors.append(ValidationError(
+                field_path="materials",
+                error_type="invalid_structure",
+                message="Section 'materials' must be an object",
+                severity="error"
+            ))
+            result.is_valid = False
+            return result
+
         for material_name, material_data in materials.items():
             if not isinstance(material_data, dict):
                 result.errors.append(ValidationError(
@@ -553,7 +580,27 @@ class CategoriesYamlAdapter(SchemaAdapter):
         result = self.validator._validate_basic_schema(data, SchemaType.CATEGORIES_YAML, result)
         
         # Categories-specific validation
-        categories = data.get('categories', {})
+        if 'categories' not in data:
+            result.errors.append(ValidationError(
+                field_path="categories",
+                error_type="missing_section",
+                message="Required section 'categories' is missing",
+                severity="error"
+            ))
+            result.is_valid = False
+            return result
+
+        categories = data['categories']
+        if not isinstance(categories, dict):
+            result.errors.append(ValidationError(
+                field_path="categories",
+                error_type="invalid_structure",
+                message="Section 'categories' must be an object",
+                severity="error"
+            ))
+            result.is_valid = False
+            return result
+
         for category_name, category_data in categories.items():
             if not isinstance(category_data, dict):
                 result.errors.append(ValidationError(

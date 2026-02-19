@@ -112,9 +112,16 @@ class ResponseCache:
             # Load cached response
             with open(cache_file, 'r') as f:
                 cached_data = json.load(f)
+
+            if not isinstance(cached_data, dict):
+                raise RuntimeError("Cached entry must be a dictionary")
+            if 'cached_at' not in cached_data:
+                raise RuntimeError("Cached entry missing required 'cached_at' field")
+            if 'response' not in cached_data:
+                raise RuntimeError("Cached entry missing required 'response' field")
             
             # Check if expired
-            cached_time = cached_data.get('cached_at', 0)
+            cached_time = cached_data['cached_at']
             age_seconds = time.time() - cached_time
             
             if age_seconds > self.ttl_seconds:
@@ -131,7 +138,7 @@ class ResponseCache:
                 f"Hit rate: {hit_rate:.1f}% ({self.stats['hits']}/{self.stats['hits'] + self.stats['misses']})"
             )
             
-            return cached_data.get('response')
+            return cached_data['response']
             
         except Exception as e:
             self.stats['errors'] += 1
@@ -157,13 +164,20 @@ class ResponseCache:
             cache_file = self.storage_location / f"{cache_key}.json"
             
             # Prepare cache entry
+            required_request_keys = ['model', 'temperature', 'max_tokens', 'prompt']
+            missing_request_keys = [key for key in required_request_keys if key not in request_data]
+            if missing_request_keys:
+                raise RuntimeError(
+                    f"Request data missing required keys for caching: {missing_request_keys}"
+                )
+
             cache_entry = {
                 'cached_at': time.time(),
                 'request_data': {
-                    'model': request_data.get('model'),
-                    'temperature': request_data.get('temperature'),
-                    'max_tokens': request_data.get('max_tokens'),
-                    'prompt_length': len(str(request_data.get('prompt', '')))
+                    'model': request_data['model'],
+                    'temperature': request_data['temperature'],
+                    'max_tokens': request_data['max_tokens'],
+                    'prompt_length': len(str(request_data['prompt']))
                 },
                 'response': response
             }
@@ -197,11 +211,19 @@ class ResponseCache:
         """
         if self.key_strategy == 'prompt_hash':
             # Hash only the prompt
-            key_data = str(request_data.get('prompt', ''))
+            if 'prompt' not in request_data:
+                raise RuntimeError("Request data missing required key 'prompt' for key_strategy 'prompt_hash'")
+            key_data = str(request_data['prompt'])
             
         elif self.key_strategy == 'prompt_hash_with_model':
             # Hash prompt + model + temperature
-            key_data = f"{request_data.get('model', '')}|{request_data.get('prompt', '')}|{request_data.get('temperature', '')}"
+            required_keys = ['model', 'prompt', 'temperature']
+            missing_keys = [key for key in required_keys if key not in request_data]
+            if missing_keys:
+                raise RuntimeError(
+                    f"Request data missing required keys for key_strategy 'prompt_hash_with_model': {missing_keys}"
+                )
+            key_data = f"{request_data['model']}|{request_data['prompt']}|{request_data['temperature']}"
             
         elif self.key_strategy == 'full_request_hash':
             # Hash entire request (most strict)

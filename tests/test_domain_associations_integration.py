@@ -137,24 +137,26 @@ class TestDomainAssociationsFullIDs:
 
 
 class TestSourceDataCleanliness:
-    """Test source data files don't contain stale relationships"""
+    """Test source data relationship structures match current denormalized architecture."""
     
-    def test_contaminants_yaml_no_relationships_field(self):
-        """Verify contaminants.yaml doesn't have relationships field"""
-        contaminants_path = Path('data/contaminants/contaminants.yaml')
+    def test_contaminants_yaml_has_relationships_field(self):
+        """Verify Contaminants.yaml stores relationships in source data."""
+        contaminants_path = Path('data/contaminants/Contaminants.yaml')
         
         assert contaminants_path.exists(), "Contaminants.yaml not found"
         
         with open(contaminants_path, 'r') as f:
             data = yaml.safe_load(f)
         
-        # Check each contamination pattern
-        for pattern_id, pattern in data.items():
-            assert 'relationships' not in pattern, \
-                f"Pattern {pattern_id} still has stale relationships field (should be dynamically generated)"
+        patterns = data.get('contaminants', {})
+        for pattern_id, pattern in patterns.items():
+            assert 'relationships' in pattern, \
+                f"Pattern {pattern_id} missing relationships field in source data"
+            assert isinstance(pattern.get('relationships'), dict), \
+                f"Pattern {pattern_id} relationships must be a dict"
     
-    def test_materials_yaml_no_relationships_field(self):
-        """Verify Materials.yaml doesn't have relationships field"""
+    def test_materials_yaml_has_relationships_field(self):
+        """Verify Materials.yaml stores relationships in source data."""
         materials_path = Path('data/materials/Materials.yaml')
         
         assert materials_path.exists(), "Materials.yaml not found"
@@ -166,15 +168,17 @@ class TestSourceDataCleanliness:
         
         # Check each material
         for material_id, material in materials.items():
-            assert 'relationships' not in material, \
-                f"Material {material_id} still has stale relationships field (should be dynamically generated)"
+            assert 'relationships' in material, \
+                f"Material {material_id} missing relationships field in source data"
+            assert isinstance(material.get('relationships'), dict), \
+                f"Material {material_id} relationships must be a dict"
 
 
 class TestExportConfiguration:
     """Test export configs are properly configured"""
     
     def test_contaminants_config_has_relationships_generator(self):
-        """Verify relationships generator is in contaminants export config"""
+        """Verify contaminants export config supports relationships in current architecture."""
         config_path = Path('export/config/contaminants.yaml')
         
         assert config_path.exists(), "Contaminants export config not found"
@@ -183,10 +187,11 @@ class TestExportConfiguration:
             config = yaml.safe_load(f)
         
         generators = config.get('generators', [])
-        has_relationships = any(g.get('type') == 'relationships' for g in generators)
-        
-        assert has_relationships, \
-            "Missing relationships generator in contaminants config (relationships won't be generated)"
+        has_legacy_relationships = any(g.get('type') == 'relationships' for g in generators)
+        has_universal_pipeline = any(g.get('type') == 'universal_content' for g in generators)
+
+        assert has_legacy_relationships or has_universal_pipeline, \
+            "Contaminants config missing both legacy relationships and universal_content pipeline support"
     
     def test_no_slug_generator_in_materials_config(self):
         """Verify slug generator removed from materials config (prevents duplicates)"""

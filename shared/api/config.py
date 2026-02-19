@@ -140,11 +140,16 @@ class ConfigAdapter:
         
         # For other providers, build config from provider data
         config_data = ConfigAdapter.get_provider_config(provider)
+
+        if "model" not in config_data:
+            raise RuntimeError(
+                f"CONFIGURATION ERROR: Provider '{provider}' missing required 'model'"
+            )
         
         return APIConfig(
             name=config_data["name"],
             base_url=config_data["base_url"],
-            model=config_data.get("model", config_data.get("default_model", "unknown")),
+            model=config_data["model"],
             api_key="",  # Will be set by client
             max_tokens=config_data["max_tokens"],  # FAIL-FAST: Required per GROK_INSTRUCTIONS.md
             temperature=config_data["temperature"],  # FAIL-FAST: Required per GROK_INSTRUCTIONS.md
