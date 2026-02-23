@@ -73,8 +73,8 @@ class WeightLearner:
     # Minimum samples needed for reliable weight learning
     MIN_GLOBAL_SAMPLES = 110  # Need 110+ generations for learned weights
     
-    # Default fallback weights (used only if insufficient data)
-    DEFAULT_WEIGHTS = {
+    # Initial optimization seed (not used as runtime fallback)
+    INITIAL_WEIGHTS = {
         'winston_weight': 0.6,
         'subjective_weight': 0.3,
         'readability_weight': 0.1
@@ -91,7 +91,7 @@ class WeightLearner:
             # Use legacy z-beam.db database (root of project)
             db_path = Path('z-beam.db')
         
-        self.db_path = db_path
+        self.db_path = Path(db_path)
         self._ensure_database()
         
         # Cache for learned weights to avoid repeated DB queries
@@ -102,9 +102,9 @@ class WeightLearner:
     def _ensure_database(self):
         """Verify database exists and has required tables."""
         if not self.db_path.exists():
-            logger.warning(
+            raise FileNotFoundError(
                 f"Learning database not found at {self.db_path}. "
-                "Will use default weights until data available."
+                "Weight learning requires an existing database."
             )
     
     def get_optimal_weights(self) -> Tuple[float, float, float]:
@@ -122,17 +122,30 @@ class WeightLearner:
         global_weights = self._get_global_weights()
         if global_weights:
             return (global_weights.winston_weight, global_weights.subjective_weight, global_weights.readability_weight)
-        
-        # Fallback to defaults if insufficient data
-        logger.warning(
-            "Insufficient data for weight learning. Using default weights. "
-            f"Need {self.MIN_GLOBAL_SAMPLES}+ generations for learning."
+
+        stats = self.get_weight_statistics()
+        total_samples = stats.get('total_samples', 0)
+        raise RuntimeError(
+            "Insufficient data for weight learning. "
+            f"Need {self.MIN_GLOBAL_SAMPLES}+ generations, found {total_samples}."
         )
-        return (
-            self.DEFAULT_WEIGHTS['winston_weight'],
-            self.DEFAULT_WEIGHTS['subjective_weight'],
-            self.DEFAULT_WEIGHTS['readability_weight']
-        )
+
+    def get_learned_quality_weights(self) -> Dict[str, float]:
+        """
+        Compatibility accessor for UnifiedParameterProvider.
+
+        Returns unified quality-weight keys used by generation components.
+        """
+        winston_weight, subjective_weight, readability_weight = self.get_optimal_weights()
+
+        return {
+            'winston_ai': float(winston_weight),
+            'realism': float(subjective_weight),
+            'voice_authenticity': 0.3,
+            'structural_quality': 0.2,
+            'ai_patterns': 0.3,
+            'readability': float(readability_weight)
+        }
     
     def _get_global_weights(self) -> Optional[WeightSet]:
         """
@@ -195,7 +208,6 @@ class WeightLearner:
                 FROM detection_results r
                 WHERE r.human_score IS NOT NULL
                     AND r.composite_quality_score IS NOT NULL
-                    AND r.readability_score IS NOT NULL
                     AND r.success IS NOT NULL
             """
             
@@ -209,68 +221,111 @@ class WeightLearner:
             # Convert to numpy arrays
             winston_scores = np.array([r[0] for r in rows])
             subjective_scores = np.array([r[1] for r in rows])
-            readability_scores = np.array([r[2] for r in rows])
+            readability_scores = np.array([r[2] for r in rows], dtype=object)
             actual_success = np.array([r[3] for r in rows])
             
             # Normalize scores to 0-1 range for fair comparison
             winston_norm = winston_scores / 100.0
             subjective_norm = subjective_scores / 10.0  # Subjective is 0-10 scale
-            readability_norm = readability_scores / 100.0
-            
-            # Optimization objective: find weights that maximize prediction accuracy
-            def objective(weights):
-                """
-                Calculate prediction error for given weights.
-                Lower error = better weights.
-                """
-                w_winston, w_subjective, w_readability = weights
-                
-                # Calculate composite predictions
-                predictions = (
-                    w_winston * winston_norm +
-                    w_subjective * subjective_norm +
-                    w_readability * readability_norm
+            has_readability = np.array([v is not None for v in readability_scores], dtype=bool)
+
+            if np.all(~has_readability):
+                # Explicit 2-metric learning mode (no readability data available)
+                def objective(weights):
+                    w_winston, w_subjective = weights
+                    predictions = (
+                        w_winston * winston_norm +
+                        w_subjective * subjective_norm
+                    )
+                    return np.mean((predictions - actual_success) ** 2)
+
+                constraints = [
+                    {'type': 'eq', 'fun': lambda w: np.sum(w) - 1.0}
+                ]
+                bounds = [(0.0, 1.0), (0.0, 1.0)]
+
+                two_metric_sum = (
+                    self.INITIAL_WEIGHTS['winston_weight'] +
+                    self.INITIAL_WEIGHTS['subjective_weight']
                 )
-                
-                # Calculate mean squared error
-                mse = np.mean((predictions - actual_success) ** 2)
-                return mse
-            
-            # Constraints: weights must sum to 1.0 and be positive
-            constraints = [
-                {'type': 'eq', 'fun': lambda w: np.sum(w) - 1.0}  # Sum to 1.0
-            ]
-            bounds = [(0.0, 1.0), (0.0, 1.0), (0.0, 1.0)]  # Each weight 0-1
-            
-            # Initial guess (current defaults)
-            initial_weights = [
-                self.DEFAULT_WEIGHTS['winston_weight'],
-                self.DEFAULT_WEIGHTS['subjective_weight'],
-                self.DEFAULT_WEIGHTS['readability_weight']
-            ]
-            
-            # Optimize
-            result = minimize(
-                objective,
-                initial_weights,
-                method='SLSQP',
-                bounds=bounds,
-                constraints=constraints,
-                options={'maxiter': 100}
-            )
+                initial_weights = [
+                    self.INITIAL_WEIGHTS['winston_weight'] / two_metric_sum,
+                    self.INITIAL_WEIGHTS['subjective_weight'] / two_metric_sum,
+                ]
+
+                result = minimize(
+                    objective,
+                    initial_weights,
+                    method='SLSQP',
+                    bounds=bounds,
+                    constraints=constraints,
+                    options={'maxiter': 100}
+                )
+            else:
+                # Require complete readability values for 3-metric learning
+                winston_norm = winston_norm[has_readability]
+                subjective_norm = subjective_norm[has_readability]
+                readability_norm = np.array([float(v) for v in readability_scores[has_readability]]) / 100.0
+                actual_success = actual_success[has_readability]
+
+                if len(actual_success) < self.MIN_GLOBAL_SAMPLES:
+                    return None
+
+                def objective(weights):
+                    """
+                    Calculate prediction error for given weights.
+                    Lower error = better weights.
+                    """
+                    w_winston, w_subjective, w_readability = weights
+
+                    predictions = (
+                        w_winston * winston_norm +
+                        w_subjective * subjective_norm +
+                        w_readability * readability_norm
+                    )
+                    return np.mean((predictions - actual_success) ** 2)
+
+                constraints = [
+                    {'type': 'eq', 'fun': lambda w: np.sum(w) - 1.0}
+                ]
+                bounds = [(0.0, 1.0), (0.0, 1.0), (0.0, 1.0)]
+
+                initial_weights = [
+                    self.INITIAL_WEIGHTS['winston_weight'],
+                    self.INITIAL_WEIGHTS['subjective_weight'],
+                    self.INITIAL_WEIGHTS['readability_weight']
+                ]
+
+                result = minimize(
+                    objective,
+                    initial_weights,
+                    method='SLSQP',
+                    bounds=bounds,
+                    constraints=constraints,
+                    options={'maxiter': 100}
+                )
             
             if not result.success:
                 logger.warning(f"Weight optimization failed: {result.message}")
                 return None
             
-            optimal_weights = result.x
+            if np.all(~has_readability):
+                optimal_weights = np.array([result.x[0], result.x[1], 0.0])
+            else:
+                optimal_weights = result.x
             
             # Calculate R² (prediction accuracy)
-            predictions = (
-                optimal_weights[0] * winston_norm +
-                optimal_weights[1] * subjective_norm +
-                optimal_weights[2] * readability_norm
-            )
+            if np.all(~has_readability):
+                predictions = (
+                    optimal_weights[0] * winston_norm +
+                    optimal_weights[1] * subjective_norm
+                )
+            else:
+                predictions = (
+                    optimal_weights[0] * winston_norm +
+                    optimal_weights[1] * subjective_norm +
+                    optimal_weights[2] * readability_norm
+                )
             ss_res = np.sum((actual_success - predictions) ** 2)
             ss_tot = np.sum((actual_success - np.mean(actual_success)) ** 2)
             r_squared = 1 - (ss_res / ss_tot) if ss_tot > 0 else 0
@@ -280,7 +335,7 @@ class WeightLearner:
                 winston_weight=float(optimal_weights[0]),
                 subjective_weight=float(optimal_weights[1]),
                 readability_weight=float(optimal_weights[2]),
-                sample_count=len(rows),
+                sample_count=len(actual_success),
                 prediction_accuracy=float(r_squared),
                 context="global"
             )
@@ -323,7 +378,6 @@ class WeightLearner:
                 FROM detection_results 
                 WHERE human_score IS NOT NULL 
                     AND composite_quality_score IS NOT NULL
-                    AND readability_score IS NOT NULL
                     AND success IS NOT NULL
             """)
             total_samples = cursor.fetchone()[0]

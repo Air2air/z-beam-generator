@@ -30,6 +30,7 @@ from pathlib import Path
 from typing import Callable, Dict, List, Optional, Set, Tuple
 
 import yaml
+from generation.config.config_loader import ProcessingConfig
 
 # Qualitative property definitions
 from export.qualitative_properties import (
@@ -87,9 +88,6 @@ class PropertyManager:
         'rare-earth': {'thermalConductivity', 'density', 'hardness', 'laserReflectivity'}  # Removed thermalDestruction (structured property)
     }
     
-    # Confidence thresholds
-    YAML_CONFIDENCE_THRESHOLD = 0.85  # 85%
-    
     def __init__(
         self,
         property_researcher: Optional[any] = None,  # UnifiedMaterialResearch
@@ -116,6 +114,11 @@ class PropertyManager:
         # FAIL-FAST: categories_data is REQUIRED - no fallback to {}
         if not categories_data:
             raise ValueError("CRITICAL: categories_data is required - cannot operate without category definitions")
+
+        self.config = ProcessingConfig()
+        self.yaml_confidence_threshold = float(
+            self.config.get_required_config('constants.materials_property_manager.yaml_confidence_threshold')
+        )
         
         self.property_researcher = property_researcher
         self.get_category_ranges = get_category_ranges_func
@@ -497,7 +500,7 @@ class PropertyManager:
             if confidence > 1:
                 confidence = confidence / 100.0
             
-            if confidence >= self.YAML_CONFIDENCE_THRESHOLD:
+            if confidence >= self.yaml_confidence_threshold:
                 high_confidence[prop_name] = prop_data
         
         return high_confidence

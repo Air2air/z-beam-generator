@@ -293,15 +293,10 @@ class ConsolidatedLearningSystem:
                     'structural_quality': row[3],
                     'ai_patterns': row[4]
                 }
-            
-            # Return defaults if no learned weights
-            return {
-                'winston_ai': 0.4,
-                'realism': 0.6,
-                'voice_authenticity': 0.3,
-                'structural_quality': 0.2,
-                'ai_patterns': 0.3
-            }
+
+            raise RuntimeError(
+                f"No learned quality weights found for component_type='{component_type}'"
+            )
     
     def get_recent_insights(self, lookback_days: int = 7, limit: int = 3) -> List[Dict]:
         """
@@ -354,6 +349,19 @@ class ConsolidatedLearningSystem:
         """
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
+
+            required_keys = [
+                'winston_ai',
+                'realism',
+                'voice_authenticity',
+                'structural_quality',
+                'ai_patterns',
+            ]
+            missing = [key for key in required_keys if key not in weights]
+            if missing:
+                raise KeyError(
+                    f"weights missing required keys: {', '.join(missing)}"
+                )
             
             cursor.execute("""
                 INSERT OR REPLACE INTO quality_weights (
@@ -362,11 +370,11 @@ class ConsolidatedLearningSystem:
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
             """, (
                 component_type,
-                weights.get('winston_ai', 0.4),
-                weights.get('realism', 0.6),
-                weights.get('voice_authenticity', 0.3),
-                weights.get('structural_quality', 0.2),
-                weights.get('ai_patterns', 0.3),
+                weights['winston_ai'],
+                weights['realism'],
+                weights['voice_authenticity'],
+                weights['structural_quality'],
+                weights['ai_patterns'],
                 sample_count
             ))
             

@@ -30,6 +30,7 @@ import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+from generation.config.config_loader import ProcessingConfig
 from shared.utils.yaml_utils import load_yaml, save_yaml
 from shared.text.validation.constants import ValidationConstants
 
@@ -87,6 +88,29 @@ class BatchGenerator:
         """
         self.generator = generator
         self.logger = logging.getLogger(__name__)
+        self.config = ProcessingConfig()
+        self.batch_tokens_per_material = int(
+            self.config.get_required_config('constants.batch_generator.tokens_per_material')
+        )
+
+    def _get_batch_config(self, component_type: str) -> Dict[str, Any]:
+        if component_type not in self.BATCH_CONFIG:
+            raise KeyError(f"No batch config defined for component_type='{component_type}'")
+
+        config = self.BATCH_CONFIG[component_type]
+        required_keys = [
+            'eligible',
+            'chars_per_component',
+            'min_batch_size',
+            'max_batch_size',
+            'winston_min_chars',
+        ]
+        missing = [key for key in required_keys if key not in config]
+        if missing:
+            raise KeyError(
+                f"Batch config for '{component_type}' missing required keys: {', '.join(missing)}"
+            )
+        return config
         
     def is_batch_eligible(self, component_type: str) -> bool:
         """
@@ -98,8 +122,8 @@ class BatchGenerator:
         Returns:
             True if component should use batch generation
         """
-        config = self.BATCH_CONFIG.get(component_type, {})
-        return config.get('eligible', False)
+        config = self._get_batch_config(component_type)
+        return config['eligible']
     
     def calculate_batch_size(self, component_type: str, total_materials: int) -> int:
         """
@@ -112,11 +136,11 @@ class BatchGenerator:
         Returns:
             Optimal batch size (number of materials per batch)
         """
-        config = self.BATCH_CONFIG.get(component_type, {})
-        chars_per = config.get('chars_per_component', 200)
-        winston_min = config.get('winston_min_chars', 300)
-        min_size = config.get('min_batch_size', 2)
-        max_size = config.get('max_batch_size', 5)
+        config = self._get_batch_config(component_type)
+        chars_per = config['chars_per_component']
+        winston_min = config['winston_min_chars']
+        min_size = config['min_batch_size']
+        max_size = config['max_batch_size']
         
         # Calculate minimum batch size to meet Winston requirement
         required_size = max(min_size, int(winston_min / chars_per) + 1)
@@ -176,9 +200,9 @@ class BatchGenerator:
         self.logger.info(f"Batch size: {batch_size}")
         
         # Validate batch size
-        config = self.BATCH_CONFIG.get(component_type, {})
-        min_size = config.get('min_batch_size', 2)
-        max_size = config.get('max_batch_size', 5)
+        config = self._get_batch_config(component_type)
+        min_size = config['min_batch_size']
+        max_size = config['max_batch_size']
         
         if batch_size < min_size:
             self.logger.warning(f"⚠️  Batch size {batch_size} below minimum {min_size}")
@@ -201,7 +225,9 @@ class BatchGenerator:
                 if batch_result['success']:
                     all_results.update(batch_result['results'])
                 else:
-                    self.logger.error(f"Batch {i//max_size + 1} failed: {batch_result.get('error')}")
+                    if 'error' not in batch_result:
+                        raise KeyError("Batch result missing required key: 'error'")
+                    self.logger.error(f"Batch {i//max_size + 1} failed: {batch_result['error']}")
             
             return {
                 'success': len(all_results) == len(materials),
@@ -251,15 +277,19 @@ class BatchGenerator:
                     self.logger.error(f"   ❌ Generation failed: {e}")
             
             # Concatenate all generated content for Winston validation
-            concatenated_text = config.get('separator', '\n\n').join([
+            if 'separator' not in config:
+                raise KeyError("Batch config missing required key: 'separator'")
+            separator = config['separator']
+
+            concatenated_text = separator.join([
                 result['content'] for result in individual_results.values() 
-                if result.get('content')
+                if 'content' in result and result['content']
             ])
             
             self.logger.info(f"\n📏 Batch statistics:")
             self.logger.info(f"   • Generated: {len(individual_results)}/{len(materials)} materials")
             self.logger.info(f"   • Concatenated length: {len(concatenated_text)} chars")
-            self.logger.info(f"   • Winston minimum: {config.get('winston_min_chars', 300)} chars")
+            self.logger.info(f"   • Winston minimum: {config['winston_min_chars']} chars")
             
             # Conditionally validate with Winston based on skip_integrity_check flag
             if not skip_integrity_check:
@@ -271,7 +301,9 @@ class BatchGenerator:
                 )
                 
                 # Determine if batch passes Winston threshold
-                ai_score = winston_result.get('ai_score')
+                if 'ai_score' not in winston_result:
+                    raise KeyError("Winston validation result missing required key: 'ai_score'")
+                ai_score = winston_result['ai_score']
                 if ai_score is None:
                     raise RuntimeError("Winston validation returned no AI score - cannot proceed")
                 passes_threshold = ValidationConstants.passes_winston(ai_score)
@@ -300,7 +332,12 @@ class BatchGenerator:
             # Save successful components to Materials.yaml
             saved_count = 0
             for material, result in individual_results.items():
-                if result.get('passes_winston', False) and result.get('content'):
+                if 'passes_winston' not in result:
+                    raise KeyError(f"Result for '{material}' missing required key: 'passes_winston'")
+                if 'content' not in result:
+                    raise KeyError(f"Result for '{material}' missing required key: 'content'")
+
+                if result['passes_winston'] and result['content']:
                     self._save_component_to_yaml(
                         material,
                         component_type,
@@ -322,7 +359,9 @@ class BatchGenerator:
             self.logger.info(f"Success rate: {saved_count}/{batch_size} materials")
             
             if not skip_integrity_check and 'winston_result' in locals():
-                ai_score = winston_result.get('ai_score')
+                if 'ai_score' not in winston_result:
+                    raise KeyError("Winston validation result missing required key: 'ai_score'")
+                ai_score = winston_result['ai_score']
                 if ai_score is not None:
                     self.logger.info(f"Winston AI Score: {ai_score:.3f} (threshold: {ValidationConstants.WINSTON_AI_THRESHOLD})")
                     self.logger.info(f"Human Score: {ValidationConstants.ai_to_human_score(ai_score):.1f}%")
@@ -339,19 +378,25 @@ class BatchGenerator:
             # Prepare results list for report
             results_list = []
             for material, result in individual_results.items():
+                if 'passes_winston' not in result:
+                    raise KeyError(f"Result for '{material}' missing required key: 'passes_winston'")
+                if 'content' not in result:
+                    raise KeyError(f"Result for '{material}' missing required key: 'content'")
                 results_list.append({
                     'material': material,
-                    'success': result.get('passes_winston', False),
-                    'content': result.get('content', ''),
-                    'winston_score': result.get('winston_score'),
-                    'error': result.get('error')
+                    'success': result['passes_winston'],
+                    'content': result['content'],
+                    'winston_score': result['winston_score'] if 'winston_score' in result else None,
+                    'error': result['error'] if 'error' in result else None
                 })
             
             # Determine winston_score for summary
             winston_score_value = None
             if not skip_integrity_check:
                 if 'winston_result' in locals() and winston_result:
-                    winston_score_value = winston_result.get('ai_score')
+                    if 'ai_score' not in winston_result:
+                        raise KeyError("Winston validation result missing required key: 'ai_score'")
+                    winston_score_value = winston_result['ai_score']
             
             # Prepare summary for report
             summary = {
@@ -410,9 +455,16 @@ class BatchGenerator:
         
         config_data = load_yaml(config_file)
         
-        base_prompt = config_data.get('prompts', {}).get(component_type)
-        if not base_prompt:
+        if not isinstance(config_data, dict):
+            raise TypeError("domains/materials/config.yaml must parse to a dictionary")
+        if 'prompts' not in config_data:
+            raise KeyError("domains/materials/config.yaml missing required key: 'prompts'")
+        prompts = config_data['prompts']
+        if not isinstance(prompts, dict):
+            raise TypeError("domains/materials/config.yaml key 'prompts' must be a dictionary")
+        if component_type not in prompts:
             raise KeyError(f"Prompt 'prompts.{component_type}' not found in materials/config.yaml")
+        base_prompt = prompts[component_type]
         
         # Substitute placeholders in base prompt
         base_prompt = base_prompt.replace('{material}', '[MATERIAL_NAME]')
@@ -481,7 +533,12 @@ BASE PROMPT:
                 "Required: params['temperature']"
             )
         
-        api_penalties = params.get('api_penalties')
+        if 'api_penalties' not in params:
+            raise RuntimeError(
+                "Missing API penalties in batch generation config. "
+                "Required: params['api_penalties']"
+            )
+        api_penalties = params['api_penalties']
         if not api_penalties or 'frequency_penalty' not in api_penalties or 'presence_penalty' not in api_penalties:
             raise RuntimeError(
                 "Missing API penalties in batch generation config. "
@@ -490,7 +547,7 @@ BASE PROMPT:
         
         request = GenerationRequest(
             prompt=prompt,
-            max_tokens=500 * len(materials),  # Scale with batch size
+            max_tokens=self.batch_tokens_per_material * len(materials),
             temperature=params['temperature'],
             frequency_penalty=api_penalties['frequency_penalty'],
             presence_penalty=api_penalties['presence_penalty']
@@ -625,11 +682,17 @@ BASE PROMPT:
             component_type: Type of component
             result: Generation result with content and metrics
         """
-        content = result.get('content', '')
-        winston_score = result.get('winston_score')
-        human_score = result.get('human_score')
-        passes = result.get('passes_winston', False)
-        batch_validated = result.get('batch_validated', False)
+        if 'content' not in result:
+            raise KeyError("Generation report result missing required key: 'content'")
+        content = result['content']
+        winston_score = result['winston_score'] if 'winston_score' in result else None
+        human_score = result['human_score'] if 'human_score' in result else None
+        if 'passes_winston' not in result:
+            raise KeyError("Generation report result missing required key: 'passes_winston'")
+        if 'batch_validated' not in result:
+            raise KeyError("Generation report result missing required key: 'batch_validated'")
+        passes = result['passes_winston']
+        batch_validated = result['batch_validated']
         
         print("\n" + "="*80)
         print(f"📊 GENERATION COMPLETE REPORT: {material_name}")
@@ -677,4 +740,14 @@ BASE PROMPT:
         
         data = load_yaml(materials_path)
         
-        return data['materials'].get(material_name, {})
+        if not isinstance(data, dict):
+            raise TypeError("Materials.yaml must parse to a dictionary")
+        if 'materials' not in data:
+            raise KeyError("Materials.yaml missing required top-level key: 'materials'")
+        materials = data['materials']
+        if not isinstance(materials, dict):
+            raise TypeError("Materials.yaml key 'materials' must be a dictionary")
+        if material_name not in materials:
+            raise KeyError(f"Material not found in Materials.yaml: {material_name}")
+
+        return materials[material_name]

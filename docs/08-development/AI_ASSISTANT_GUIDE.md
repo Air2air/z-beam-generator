@@ -29,6 +29,11 @@
 
 ## 📋 **Critical Rules (Read Before ANY Change)**
 
+### **Execution Environment Rule**
+1. ✅ ALWAYS run tasks directly with `python3` from repo root.
+2. ❌ NEVER create/activate a virtual environment for standard project tasks.
+3. ✅ Apply this to generation, postprocess, export, integrity checks, and tests.
+
 ### **TIER 1: System-Breaking** (Will cause failures)
 1. ❌ NO mocks/fallbacks in production code (tests OK)
 2. ❌ NO hardcoded values/defaults (use config/dynamic calc)
@@ -186,9 +191,9 @@ Generate → Evaluate → Save → Improve Continuously (Option C)
 ### **Policy Documents** (`docs/08-development/`)
 - `HARDCODED_VALUE_POLICY.md` - Zero hardcoded values enforcement
 - `TERMINAL_LOGGING_POLICY.md` - Comprehensive terminal output requirements
-- `TEMPLATE_ONLY_POLICY.md` - All content in .txt files, not code
+- `TEMPLATE_ONLY_POLICY.md` - All content in prompt catalog entries, not code
 - `PROMPT_PURITY_POLICY.md` - Zero prompt text in generators
-- `CONTENT_INSTRUCTION_POLICY.md` - Content rules ONLY in prompts/*.txt
+- `CONTENT_INSTRUCTION_POLICY.md` - Content rules ONLY in prompt catalog entries
 
 ### **Architecture Documents** (`docs/02-architecture/`)
 - `COMPONENT_DISCOVERY.md` - How components are discovered dynamically

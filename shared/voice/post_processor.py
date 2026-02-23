@@ -27,8 +27,9 @@ Usage:
 import logging
 import re
 import statistics
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
+from generation.config.config_loader import ProcessingConfig
 from shared.voice.orchestrator import VoiceOrchestrator
 
 logger = logging.getLogger(__name__)
@@ -46,7 +47,7 @@ class VoicePostProcessor:
     - Configurable: All behavior controlled by caller
     """
     
-    def __init__(self, api_client, temperature: float = 0.4):
+    def __init__(self, api_client, temperature: Optional[float] = None):
         """
         Initialize voice post-processor.
         
@@ -58,7 +59,17 @@ class VoicePostProcessor:
             raise ValueError("API client is required for voice enhancement")
         
         self.api_client = api_client
-        self.temperature = temperature
+        self.config = ProcessingConfig()
+        configured_temperature = float(
+            self.config.get_required_config('constants.voice_post_processor.temperature')
+        )
+        self.batch_faq_max_tokens = int(
+            self.config.get_required_config('constants.voice_post_processor.batch_faq_max_tokens')
+        )
+        self.subtitle_transform_max_tokens = int(
+            self.config.get_required_config('constants.voice_post_processor.subtitle_transform_max_tokens')
+        )
+        self.temperature = temperature if temperature is not None else configured_temperature
     
     def detect_language(self, text: str) -> Dict[str, Any]:
         """
@@ -1206,7 +1217,7 @@ Generate the enhanced FAQ array now:"""
             logger.info(f"🎭 Batch enhancing {num_answers} FAQ answers with {author_country} voice...")
             response = self.api_client.generate_simple(
                 prompt,
-                max_tokens=6000,  # Larger for batch
+                max_tokens=self.batch_faq_max_tokens,
                 temperature=self.temperature
             )
             
@@ -1341,7 +1352,7 @@ Generate transformed subtitle:"""
                 prompt=prompt,
                 system_prompt="You are a text transformation specialist. Transform structure while preserving meaning.",
                 temperature=dynamic_config.calculate_temperature('default'),
-                max_tokens=50
+                max_tokens=self.subtitle_transform_max_tokens
             )
             
             if not response.success:

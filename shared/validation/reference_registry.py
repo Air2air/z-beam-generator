@@ -101,19 +101,28 @@ class ReferenceRegistry:
         try:
             with open(full_path, 'r') as f:
                 content = yaml.safe_load(f)
+
+            if not isinstance(content, dict):
+                raise RuntimeError(
+                    f"Invalid YAML structure for domain '{domain}': expected dictionary root"
+                )
             
             # Get items based on domain structure
             if domain not in self.DOMAIN_KEYS:
                 raise KeyError(f"Missing root-key configuration for domain: {domain}")
 
             root_key = self.DOMAIN_KEYS[domain]
-            if root_key in content:
-                items = content[root_key]
-            else:
-                items = content
+            if root_key not in content:
+                raise KeyError(
+                    f"Missing required root key '{root_key}' for domain '{domain}' in {full_path}"
+                )
+
+            items = content[root_key]
             
             if not isinstance(items, dict):
-                return
+                raise RuntimeError(
+                    f"Invalid items structure for domain '{domain}': root key '{root_key}' must map to dictionary"
+                )
             
             # Build index
             for item_id, item_data in items.items():
@@ -121,13 +130,21 @@ class ReferenceRegistry:
                 
                 # Store metadata
                 if isinstance(item_data, dict):
+                    if 'name' not in item_data or not isinstance(item_data['name'], str) or not item_data['name'].strip():
+                        raise KeyError(
+                            f"Missing required non-empty 'name' for domain '{domain}' item '{item_id}'"
+                        )
                     self.metadata[domain][item_id] = {
-                        'name': item_data.get('name', item_id),
-                        'title': item_data.get('title', ''),
+                        'name': item_data['name'],
+                        'title': item_data['title'] if 'title' in item_data else item_data['name'],
                     }
+                else:
+                    raise RuntimeError(
+                        f"Invalid item structure for domain '{domain}' item '{item_id}': expected dictionary"
+                    )
         
         except Exception as e:
-            print(f"⚠️  Error loading {domain}: {e}")
+            raise RuntimeError(f"Failed loading reference registry domain '{domain}': {e}") from e
     
     def is_valid(self, domain: str, reference_id: str) -> bool:
         """Check if a reference ID is valid"""
@@ -156,10 +173,14 @@ class ReferenceRegistry:
         
         # Check if valid
         if self.is_valid(domain, reference_id):
+            if reference_id not in self.metadata[domain]:
+                raise KeyError(
+                    f"Metadata missing for valid reference '{reference_id}' in domain '{domain}'"
+                )
             return ReferenceInfo(
                 domain=domain,
                 id=reference_id,
-                name=self.metadata[domain][reference_id].get('name', reference_id),
+                name=self.metadata[domain][reference_id]['name'],
                 exists=True
             )
         
@@ -257,6 +278,7 @@ class ReferenceRegistry:
         Returns:
             Dict with {id, title, url, ...} or None if invalid
         """
+        self._validate_domain(domain)
         if not self._loaded:
             self.load_all()
         
@@ -270,15 +292,20 @@ class ReferenceRegistry:
         final_id = info.suggestions[0] if info.suggestions else reference_id
         
         # Get metadata
-        if final_id not in self.metadata.get(domain, {}):
+        if final_id not in self.metadata[domain]:
             return None
         
         meta = self.metadata[domain][final_id]
+
+        if 'name' not in meta:
+            raise KeyError(
+                f"Metadata for '{final_id}' in domain '{domain}' missing required field 'name'"
+            )
         
         # Build link object
         link_data = {
             'id': final_id,
-            'title': meta.get('title') or meta.get('name', final_id),
+            'title': meta['title'] if 'title' in meta and isinstance(meta['title'], str) and meta['title'].strip() else meta['name'],
         }
         
         # Add URL based on domain

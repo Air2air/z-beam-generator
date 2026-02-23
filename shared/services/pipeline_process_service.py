@@ -20,6 +20,7 @@ Follows fail-fast principles:
 import logging
 from typing import Dict, List
 
+from generation.config.config_loader import ProcessingConfig
 from shared.exceptions import ConfigurationError
 from shared.validation.errors import MaterialDataError
 
@@ -69,6 +70,7 @@ class PipelineProcessService:
         self.environmental_impact_templates = environmental_impact_templates
         self.standard_outcome_metrics = standard_outcome_metrics
         self.universal_regulatory_standards = universal_regulatory_standards
+        self.config = ProcessingConfig()
         self.logger = logger
     
     def add_environmental_impact_section(self, frontmatter: Dict, material_data: Dict) -> Dict:
@@ -84,11 +86,23 @@ class PipelineProcessService:
             Updated frontmatter with environmentalImpact section
         """
         try:
-            material_name = material_data.get('name', 'Unknown')
+            if 'name' not in material_data or not isinstance(material_data['name'], str) or not material_data['name'].strip():
+                raise MaterialDataError("Material data missing required non-empty 'name' for environmental impact generation")
+
+            material_name = material_data['name']
             environmental_impact = []
             
             # Generate AI descriptions for each impact type (NO TEMPLATE TEXT)
             for impact_type, template in self.environmental_impact_templates.items():
+                if not isinstance(template, dict):
+                    raise MaterialDataError(
+                        f"Invalid environmental impact template for '{impact_type}': expected dictionary"
+                    )
+                if 'applicable_industries' not in template or not isinstance(template['applicable_industries'], list):
+                    raise MaterialDataError(
+                        f"Environmental impact template '{impact_type}' missing required list 'applicable_industries'"
+                    )
+
                 benefit_name = impact_type.replace('_', ' ').title()
                 
                 # Generate material-specific description using AI
@@ -96,7 +110,7 @@ class PipelineProcessService:
                     material_name=material_name,
                     material_data=material_data,
                     benefit_type=benefit_name,
-                    industries=template.get('applicable_industries', [])
+                    industries=template['applicable_industries']
                 )
                 
                 if not description:
@@ -105,7 +119,7 @@ class PipelineProcessService:
                 
                 impact_entry = {
                     'benefit': benefit_name,
-                    'applicableIndustries': template.get('applicable_industries', []),
+                    'applicableIndustries': template['applicable_industries'],
                     'description': description  # AI-generated, material-specific
                 }
                 
@@ -146,11 +160,26 @@ class PipelineProcessService:
             Updated frontmatter with outcomeMetrics section
         """
         try:
-            material_name = material_data.get('name', 'Unknown')
+            if 'name' not in material_data or not isinstance(material_data['name'], str) or not material_data['name'].strip():
+                raise MaterialDataError("Material data missing required non-empty 'name' for outcome metrics generation")
+
+            material_name = material_data['name']
             outcome_metrics = []
             
             # Generate AI descriptions for each metric (NO TEMPLATE TEXT)
             for metric_type, metric_def in self.standard_outcome_metrics.items():
+                if not isinstance(metric_def, dict):
+                    raise MaterialDataError(
+                        f"Invalid outcome metric definition for '{metric_type}': expected dictionary"
+                    )
+
+                required_metric_lists = ['measurement_methods', 'factors_affecting', 'units']
+                missing_metric_keys = [key for key in required_metric_lists if key not in metric_def or not isinstance(metric_def[key], list)]
+                if missing_metric_keys:
+                    raise MaterialDataError(
+                        f"Outcome metric definition '{metric_type}' missing required list fields: {', '.join(missing_metric_keys)}"
+                    )
+
                 metric_name = metric_type.replace('_', ' ').title()
                 
                 # Generate material-specific description using AI
@@ -158,8 +187,8 @@ class PipelineProcessService:
                     material_name=material_name,
                     material_data=material_data,
                     metric_type=metric_name,
-                    measurement_methods=metric_def.get('measurement_methods', []),
-                    factors_affecting=metric_def.get('factors_affecting', [])
+                    measurement_methods=metric_def['measurement_methods'],
+                    factors_affecting=metric_def['factors_affecting']
                 )
                 
                 if not description:
@@ -169,9 +198,9 @@ class PipelineProcessService:
                 metric_entry = {
                     'metric': metric_name,
                     'description': description,  # AI-generated, material-specific
-                    'measurementMethods': metric_def.get('measurement_methods', []),
-                    'factorsAffecting': metric_def.get('factors_affecting', []),
-                    'units': metric_def.get('units', [])
+                    'measurementMethods': metric_def['measurement_methods'],
+                    'factorsAffecting': metric_def['factors_affecting'],
+                    'units': metric_def['units']
                 }
                 
                 # Include typical ranges if provided
@@ -338,11 +367,24 @@ class PipelineProcessService:
         Returns:
             Dict with counts for each pipeline section
         """
+        required_sections = ['environmentalImpact', 'outcomeMetrics', 'regulatory_standards', 'applications']
+        missing_sections = [section for section in required_sections if section not in frontmatter]
+        if missing_sections:
+            raise MaterialDataError(
+                f"Frontmatter missing required pipeline sections for statistics: {', '.join(missing_sections)}"
+            )
+
+        for section in required_sections:
+            if not isinstance(frontmatter[section], list):
+                raise MaterialDataError(
+                    f"Frontmatter section '{section}' must be a list for statistics calculation"
+                )
+
         return {
-            'environmental_impact_count': len(frontmatter.get('environmentalImpact', [])),
-            'outcome_metrics_count': len(frontmatter.get('outcomeMetrics', [])),
-            'regulatory_standards_count': len(frontmatter.get('regulatory_standards', [])),
-            'applications_count': len(frontmatter.get('applications', []))
+            'environmental_impact_count': len(frontmatter['environmentalImpact']),
+            'outcome_metrics_count': len(frontmatter['outcomeMetrics']),
+            'regulatory_standards_count': len(frontmatter['regulatory_standards']),
+            'applications_count': len(frontmatter['applications'])
         }
     
     def _generate_environmental_impact_description(
@@ -365,14 +407,37 @@ class PipelineProcessService:
         Returns:
             AI-generated description
         """
-        prompt = f"""Generate a concise technical description (1-2 sentences) for the environmental benefit "{benefit_type}" specifically for {material_name} laser cleaning.
+        if 'properties' not in material_data or not isinstance(material_data['properties'], dict):
+            raise MaterialDataError(
+                f"Material '{material_name}' missing required 'properties' dictionary for environmental impact generation"
+            )
+
+        properties = material_data['properties']
+        required_properties = ['thermalConductivity', 'meltingPoint']
+        missing_properties = [key for key in required_properties if key not in properties]
+        if missing_properties:
+            raise MaterialDataError(
+                f"Material '{material_name}' missing required properties for environmental impact generation: {', '.join(missing_properties)}"
+            )
+
+        if 'category' not in material_data or not isinstance(material_data['category'], str) or not material_data['category'].strip():
+            raise MaterialDataError(
+                f"Material '{material_name}' missing required non-empty 'category' for environmental impact generation"
+            )
+
+        if not industries:
+            raise MaterialDataError(
+                f"Environmental impact benefit '{benefit_type}' for material '{material_name}' missing applicable industries"
+            )
+
+        prompt = f"""Generate a concise technical description for the environmental benefit "{benefit_type}" specifically for {material_name} laser cleaning.
 
 Material properties:
-- Thermal conductivity: {material_data.get('properties', {}).get('thermalConductivity', 'N/A')}
-- Melting point: {material_data.get('properties', {}).get('meltingPoint', 'N/A')}
-- Material category: {material_data.get('category', 'Metal')}
+- Thermal conductivity: {properties['thermalConductivity']}
+- Melting point: {properties['meltingPoint']}
+- Material category: {material_data['category']}
 
-Applicable industries: {', '.join(industries) if industries else 'General industrial'}
+Applicable industries: {', '.join(industries)}
 
 Focus on material-specific aspects of this environmental benefit. Be technical and specific.
 Output ONLY the description text, no prefix or explanation."""
@@ -383,7 +448,7 @@ Output ONLY the description text, no prefix or explanation."""
             
             response = self.api_client.generate_simple(
                 prompt=prompt,
-                max_tokens=150,
+                max_tokens=int(self.config.get_required_config('constants.pipeline_process_service.environmental_impact_description_max_tokens')),
                 temperature=dynamic_config.calculate_temperature('default')
             )
             
@@ -424,7 +489,7 @@ Output ONLY the statement, no prefix or explanation."""
             
             response = self.api_client.generate_simple(
                 prompt=prompt,
-                max_tokens=80,
+                max_tokens=int(self.config.get_required_config('constants.pipeline_process_service.quantified_benefits_max_tokens')),
                 temperature=dynamic_config.calculate_temperature('default')
             )
             
@@ -456,15 +521,43 @@ Output ONLY the statement, no prefix or explanation."""
         Returns:
             AI-generated description
         """
-        prompt = f"""Generate a concise technical description (1-2 sentences) for the outcome metric "{metric_type}" specifically for {material_name} laser cleaning.
+        if 'properties' not in material_data or not isinstance(material_data['properties'], dict):
+            raise MaterialDataError(
+                f"Material '{material_name}' missing required 'properties' dictionary for outcome metric generation"
+            )
+
+        properties = material_data['properties']
+        required_properties = ['hardness', 'surfaceRoughness']
+        missing_properties = [key for key in required_properties if key not in properties]
+        if missing_properties:
+            raise MaterialDataError(
+                f"Material '{material_name}' missing required properties for outcome metric generation: {', '.join(missing_properties)}"
+            )
+
+        if 'category' not in material_data or not isinstance(material_data['category'], str) or not material_data['category'].strip():
+            raise MaterialDataError(
+                f"Material '{material_name}' missing required non-empty 'category' for outcome metric generation"
+            )
+
+        if not measurement_methods:
+            raise MaterialDataError(
+                f"Outcome metric '{metric_type}' for material '{material_name}' missing measurement methods"
+            )
+
+        if not factors_affecting:
+            raise MaterialDataError(
+                f"Outcome metric '{metric_type}' for material '{material_name}' missing factors affecting data"
+            )
+
+        prompt = f"""Generate a concise technical description for the outcome metric "{metric_type}" specifically for {material_name} laser cleaning.
 
 Material properties:
-- Hardness: {material_data.get('properties', {}).get('hardness', 'N/A')}
-- Surface properties: {material_data.get('properties', {}).get('surfaceRoughness', 'N/A')}
-- Material category: {material_data.get('category', 'Metal')}
+- Hardness: {properties['hardness']}
+- Surface properties: {properties['surfaceRoughness']}
+- Material category: {material_data['category']}
 
-Measurement methods available: {', '.join(measurement_methods) if measurement_methods else 'Standard methods'}
-Key factors affecting outcome: {', '.join(factors_affecting[:3]) if factors_affecting else 'Process parameters'}
+Measurement methods available: {', '.join(measurement_methods)}
+Key factors affecting outcome: {', '.join(factors_affecting[:3])}
 
 Focus on material-specific measurement considerations. Be technical and specific.
 Output ONLY the description text, no prefix or explanation."""
@@ -475,7 +568,7 @@ Output ONLY the description text, no prefix or explanation."""
             
             response = self.api_client.generate_simple(
                 prompt=prompt,
-                max_tokens=150,
+                max_tokens=int(self.config.get_required_config('constants.pipeline_process_service.outcome_metric_description_max_tokens')),
                 temperature=dynamic_config.calculate_temperature('default')
             )
             

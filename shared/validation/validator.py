@@ -338,12 +338,15 @@ class ValidationReport:
         return "\n".join(lines)
     
     def _status_icon(self) -> str:
-        return {
+        icon_map = {
             ValidationStatus.PASS: "✅",
             ValidationStatus.WARN: "⚠️",
             ValidationStatus.FAIL: "❌",
             ValidationStatus.CRITICAL: "🚨"
-        }.get(self.status, "❓")
+        }
+        if self.status not in icon_map:
+            raise ValueError(f"Unknown validation status for icon mapping: {self.status}")
+        return icon_map[self.status]
 
 
 # =============================================================================
@@ -414,7 +417,18 @@ class EarlyStageValidator:
             )
         
         # Check uniformity range
-        uniformity = config.get('contamination_uniformity', 3)
+        if 'contamination_uniformity' not in config:
+            report.add_issue(
+                ValidationIssue(
+                    severity=IssueSeverity.HIGH,
+                    category=IssueCategory.CONFIG,
+                    message="Missing required config key: contamination_uniformity",
+                    suggestion="Set contamination_uniformity to a value between 1 and 5"
+                )
+            )
+            return
+
+        uniformity = config['contamination_uniformity']
         if not isinstance(uniformity, int) or uniformity < 1 or uniformity > 5:
             report.add_issue(
                 ValidationIssue(
@@ -469,12 +483,17 @@ class EarlyStageValidator:
             
             if result.get('conflicts'):
                 for conflict in result['conflicts'][:3]:
+                    if 'description' not in conflict or not isinstance(conflict['description'], str) or not conflict['description'].strip():
+                        raise ValueError("Feedback conflict missing required non-empty 'description'")
+                    if 'file' not in conflict or not isinstance(conflict['file'], str) or not conflict['file'].strip():
+                        raise ValueError("Feedback conflict missing required non-empty 'file'")
+
                     report.add_issue(
                         ValidationIssue(
                             severity=IssueSeverity.HIGH,
                             category=IssueCategory.FEEDBACK,
-                            message=f"Feedback contradiction: {conflict.get('description', 'Unknown')}",
-                            location=conflict.get('file', ''),
+                            message=f"Feedback contradiction: {conflict['description']}",
+                            location=conflict['file'],
                             suggestion="Resolve contradicting feedback rules"
                         )
                     )
@@ -801,7 +820,9 @@ class PromptStageValidator:
         header_counts = {}
         for header in section_headers:
             header_clean = header.strip().upper()
-            header_counts[header_clean] = header_counts.get(header_clean, 0) + 1
+            if header_clean not in header_counts:
+                header_counts[header_clean] = 0
+            header_counts[header_clean] += 1
         
         for header, count in header_counts.items():
             if count > 1:

@@ -25,7 +25,7 @@ Complies with:
 import sqlite3
 import logging
 from pathlib import Path
-from typing import Dict, Optional, Tuple
+from typing import Dict, Optional
 from datetime import datetime
 import statistics
 
@@ -52,7 +52,7 @@ class ThresholdManager:
         self,
         db_path: str,
         min_samples: int = MIN_SAMPLES_FOR_LEARNING,
-        config_fallbacks: dict = None
+        config_fallbacks: Optional[Dict[str, float]] = None
     ):
         """
         Initialize threshold manager with database connection.
@@ -76,30 +76,41 @@ class ThresholdManager:
         if config_fallbacks is None:
             from generation.config.config_loader import get_config
             config = get_config()
-            quality_gates = config.config.get('quality_gates', {})
-            
-            # Load fallback thresholds from config (fail-fast if missing)
-            if 'realism_threshold_fallback' not in quality_gates:
+            if 'quality_gates' not in config.config:
                 raise ValueError(
-                    "quality_gates.realism_threshold_fallback missing in config.yaml - "
-                    "fail-fast architecture requires explicit config fallbacks"
+                    "quality_gates missing in config.yaml - fail-fast architecture requires explicit thresholds"
+                )
+            quality_gates = config.config['quality_gates']
+            
+            required_keys = [
+                'realism_threshold',
+                'voice_authenticity_threshold',
+                'tonal_consistency_threshold',
+                'winston_threshold',
+            ]
+            missing = [key for key in required_keys if key not in quality_gates]
+            if missing:
+                raise ValueError(
+                    f"Missing required quality_gates keys in config.yaml: {', '.join(missing)}"
                 )
             
-            self.fallback_realism = quality_gates['realism_threshold_fallback']
-            self.fallback_voice = quality_gates.get('voice_authenticity_threshold_fallback', 4.0)
-            self.fallback_tonal = quality_gates.get('tonal_consistency_threshold_fallback', 4.0)
-            
-            # Winston threshold fallback - check config first, then ValidationConstants
-            if 'winston_threshold_fallback' in quality_gates:
-                self.fallback_winston = quality_gates['winston_threshold_fallback']
-            else:
-                from shared.text.validation.constants import ValidationConstants
-                self.fallback_winston = ValidationConstants.DEFAULT_WINSTON_AI_THRESHOLD
+            self.fallback_realism = quality_gates['realism_threshold']
+            self.fallback_voice = quality_gates['voice_authenticity_threshold']
+            self.fallback_tonal = quality_gates['tonal_consistency_threshold']
+            self.fallback_winston = quality_gates['winston_threshold']
+            self.fallback_diversity = quality_gates['voice_authenticity_threshold']
         else:
-            self.fallback_realism = config_fallbacks.get('realism', 5.5)
-            self.fallback_voice = config_fallbacks.get('voice', 5.5)
-            self.fallback_tonal = config_fallbacks.get('tonal', 5.5)
-            self.fallback_winston = config_fallbacks.get('winston', 0.33)
+            required_keys = ['realism', 'voice', 'tonal', 'winston', 'diversity']
+            missing = [key for key in required_keys if key not in config_fallbacks]
+            if missing:
+                raise ValueError(
+                    f"config_fallbacks missing required keys: {', '.join(missing)}"
+                )
+            self.fallback_realism = config_fallbacks['realism']
+            self.fallback_voice = config_fallbacks['voice']
+            self.fallback_tonal = config_fallbacks['tonal']
+            self.fallback_winston = config_fallbacks['winston']
+            self.fallback_diversity = config_fallbacks['diversity']
         
         logger.info(
             f"[THRESHOLD MANAGER] Initialized "
@@ -261,9 +272,9 @@ class ThresholdManager:
         except Exception as e:
             logger.warning(
                 f"[REALISM THRESHOLD] Learning failed: {e}, "
-                f"using default {self.DEFAULT_REALISM_THRESHOLD}"
+                f"using config fallback {self.fallback_realism}"
             )
-            return self.DEFAULT_REALISM_THRESHOLD
+            return self.fallback_realism
     
     def get_diversity_threshold(
         self,
@@ -287,7 +298,7 @@ class ThresholdManager:
             Diversity threshold (0-10 scale)
         """
         if not use_learned:
-            return 4.5  # Fallback for testing
+            return self.fallback_diversity
         
         try:
             conn = sqlite3.connect(self.db_path)
@@ -315,9 +326,9 @@ class ThresholdManager:
             if len(scores) < self.min_samples:
                 logger.info(
                     f"[DIVERSITY THRESHOLD] Insufficient data ({len(scores)} samples), "
-                    f"using fallback 3.0"
+                    f"using config fallback {self.fallback_diversity}"
                 )
-                return 3.0
+                return self.fallback_diversity
             
             # Use 25th percentile (lower = more lenient than 75th)
             learned_threshold = statistics.quantiles(scores, n=100)[24]  # 25th percentile
@@ -337,9 +348,9 @@ class ThresholdManager:
             
         except Exception as e:
             logger.debug(
-                f"[DIVERSITY THRESHOLD] Learning failed: {e}, using fallback 3.0"
+                f"[DIVERSITY THRESHOLD] Learning failed: {e}, using config fallback {self.fallback_diversity}"
             )
-            return 3.0
+            return self.fallback_diversity
     
     def get_voice_threshold(
         self,
@@ -354,7 +365,7 @@ class ThresholdManager:
         
         Design decision: Use static default until learning data quality validated.
         """
-        return self.DEFAULT_VOICE_THRESHOLD
+        return self.fallback_voice
     
     def get_tonal_threshold(
         self,
@@ -369,7 +380,7 @@ class ThresholdManager:
         
         Design decision: Use static default until learning data quality validated.
         """
-        return self.DEFAULT_TONAL_THRESHOLD
+        return self.fallback_tonal
     
     def get_all_thresholds(
         self,

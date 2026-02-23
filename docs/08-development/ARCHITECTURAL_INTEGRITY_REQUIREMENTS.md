@@ -233,7 +233,7 @@ for attempt in range(1, max_attempts + 1):
 ## How to Add New Architectural Requirements
 
 1. **Document the pattern** in this file
-2. **Add integrity check** in `processing/integrity/integrity_checker.py`
+2. **Add integrity check** in `generation/integrity/integrity_checker.py`
 3. **Add behavioral test** in `tests/test_architectural_behavior.py`
 4. **Update CI/CD** to run new checks
 5. **Update code review checklist**

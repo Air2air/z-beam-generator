@@ -17,7 +17,6 @@ from typing import Dict, Optional
 
 from shared.text.utils.component_specs import ComponentRegistry, DomainContext
 from shared.text.utils.prompt_registry_service import PromptRegistryService
-from shared.text.utils.sentence_calculator import SentenceCalculator
 
 logger = logging.getLogger(__name__)
 
@@ -41,6 +40,9 @@ class PromptBuilder:
     
     _technical_profiles_cache = None  # Cache for technical profiles
     _rhythm_profiles_cache = None  # Cache for rhythm profiles
+    _text_field_config_cache = None  # Cache for generation/text_field_config.yaml
+    _shared_text_prompt_core_cache = None  # Cache for catalog.shared.textPromptCore
+    _sentence_structure_cache = None  # Cache for shared/config/sentence_structure.yaml
     
     @staticmethod
     def _load_technical_profiles() -> Dict:
@@ -73,6 +75,64 @@ class PromptBuilder:
                 PromptBuilder._rhythm_profiles_cache = yaml.safe_load(f)
             logger.debug(f"Loaded rhythm profiles from {profiles_path}")
         return PromptBuilder._rhythm_profiles_cache
+
+    @staticmethod
+    def _load_text_field_config() -> Dict:
+        """Load centralized text field config from YAML file (cached)."""
+        if PromptBuilder._text_field_config_cache is None:
+            import yaml
+
+            config_path = os.path.join('generation', 'text_field_config.yaml')
+            if not os.path.exists(config_path):
+                raise FileNotFoundError(
+                    f"Text field config not found at {config_path}. "
+                    "Fail-fast architecture requires this file."
+                )
+
+            with open(config_path, 'r', encoding='utf-8') as file_handle:
+                PromptBuilder._text_field_config_cache = yaml.safe_load(file_handle)
+
+            if not PromptBuilder._text_field_config_cache:
+                raise ValueError(f"Text field config is empty: {config_path}")
+
+        return PromptBuilder._text_field_config_cache
+
+    @staticmethod
+    def _load_shared_text_prompt_core() -> str:
+        """Load reusable centralized text prompting core from prompt catalog (cached)."""
+        if PromptBuilder._shared_text_prompt_core_cache is None:
+            PromptBuilder._shared_text_prompt_core_cache = PromptRegistryService.get_shared_text_prompt_core().strip()
+
+            if not PromptBuilder._shared_text_prompt_core_cache:
+                raise ValueError("Shared text prompt core is empty in prompts/registry/prompt_catalog.yaml")
+
+        return PromptBuilder._shared_text_prompt_core_cache
+
+    @staticmethod
+    def _load_sentence_structure_config() -> Dict:
+        """Load centralized sentence structure config (cached)."""
+        if PromptBuilder._sentence_structure_cache is None:
+            import yaml
+
+            config_path = os.path.join('shared', 'config', 'sentence_structure.yaml')
+            if not os.path.exists(config_path):
+                raise FileNotFoundError(
+                    f"Sentence structure config not found at {config_path}. "
+                    "Fail-fast architecture requires this file."
+                )
+
+            with open(config_path, 'r', encoding='utf-8') as file_handle:
+                PromptBuilder._sentence_structure_cache = yaml.safe_load(file_handle)
+
+            if not PromptBuilder._sentence_structure_cache:
+                raise ValueError(f"Sentence structure config is empty: {config_path}")
+
+            if not isinstance(PromptBuilder._sentence_structure_cache, dict):
+                raise TypeError(
+                    f"Sentence structure config must be a mapping: {config_path}"
+                )
+
+        return PromptBuilder._sentence_structure_cache
     
     @staticmethod
     def _get_technical_guidance(voice_params: Optional[Dict[str, float]], enrichment_params: Optional[Dict], component_type: str = "micro") -> str:
@@ -258,7 +318,7 @@ distinctive markers per paragraph as specified in your voice instructions."""
         return voice_section
 
     @staticmethod
-    def _load_component_template(component_type: str, domain: str = "materials") -> Optional[str]:
+    def _load_component_template(component_type: str, domain: str) -> Optional[str]:
         """
         Load component-specific prompt template from section_display_schema.yaml.
         
@@ -276,6 +336,9 @@ distinctive markers per paragraph as specified in your voice instructions."""
         Raises:
             FileNotFoundError: If schema doesn't exist or can't be loaded
         """
+        if not domain:
+            raise ValueError("Domain is required to load component templates")
+
         try:
             prompt_text = PromptRegistryService.get_schema_prompt(
                 domain=domain,
@@ -393,7 +456,25 @@ distinctive markers per paragraph as specified in your voice instructions."""
             variation_seed = random.SystemRandom().randint(0, 2**31 - 1)
 
         rng = random.Random(variation_seed)
-        variation_factor = rng.uniform(0.2, 1.8)  # ±80% range (0.2 = -80%, 1.8 = +80%)
+        text_field_config = PromptBuilder._load_text_field_config()
+        randomization_cfg = text_field_config.get('randomization_range')
+        if not isinstance(randomization_cfg, dict):
+            raise ValueError(
+                "Missing required config block: randomization_range in generation/text_field_config.yaml"
+            )
+
+        min_factor = randomization_cfg.get('min_factor')
+        max_factor = randomization_cfg.get('max_factor')
+        if not isinstance(min_factor, (int, float)) or not isinstance(max_factor, (int, float)):
+            raise ValueError(
+                "text_length_randomization.min_factor and max_factor must be numeric"
+            )
+        if min_factor <= 0 or max_factor <= 0 or min_factor > max_factor:
+            raise ValueError(
+                f"Invalid text_length_randomization range: min_factor={min_factor}, max_factor={max_factor}"
+            )
+
+        variation_factor = rng.uniform(float(min_factor), float(max_factor))
         length = int(length * variation_factor)
         logger.info(f"📏 Length variation: {length} words (base × {variation_factor:.2f}, seed={variation_seed})")
         
@@ -405,10 +486,56 @@ distinctive markers per paragraph as specified in your voice instructions."""
         sentence_patterns = linguistic.get('sentence_structure', {}).get('patterns', [])
         esl_traits = "; ".join(sentence_patterns[:2]) if sentence_patterns else "Natural regional patterns"
         
-        # Extract sentence style guidance from voice profile for this component
+        # Extract sentence style guidance from shared config + voice profile
         # NEW LOCATION: voice.sentence_structure.{component_type}
-        sentence_structure = voice.get('sentence_structure', {})
-        sentence_style = sentence_structure.get(component_type, '')
+        sentence_config = PromptBuilder._load_sentence_structure_config()
+        shared_sentence_structure = sentence_config.get('components')
+        if not isinstance(shared_sentence_structure, dict):
+            raise TypeError(
+                "shared/config/sentence_structure.yaml must contain 'components' mapping"
+            )
+
+        sentence_structure = dict(shared_sentence_structure)
+        voice_sentence_structure = voice.get('sentence_structure', {})
+        if voice_sentence_structure:
+            if not isinstance(voice_sentence_structure, dict):
+                raise TypeError("voice.sentence_structure must be a dictionary when provided")
+            sentence_structure.update(voice_sentence_structure)
+        sentence_key_candidates = [component_type]
+        if component_type in ('pageDescription', 'page_description'):
+            sentence_key_candidates.append('description')
+        if component_type == 'caption':
+            sentence_key_candidates.append('micro')
+
+        sentence_style = ''
+        for key in sentence_key_candidates:
+            value = sentence_structure.get(key, '')
+            if value:
+                sentence_style = value
+                break
+
+        if not sentence_style:
+            generation_constraints = voice.get('generation_constraints', {})
+            if not isinstance(generation_constraints, dict):
+                raise TypeError("voice.generation_constraints must be a dictionary when provided")
+
+            constraint_aliases = []
+            if component_type in ('pageDescription', 'page_description', 'description'):
+                constraint_aliases.append('text')
+            if component_type in ('micro', 'caption'):
+                constraint_aliases.append('micro')
+            if component_type == 'faq':
+                constraint_aliases.append('faq')
+
+            for key in constraint_aliases:
+                constraint_value = generation_constraints.get(key)
+                if constraint_value:
+                    if isinstance(constraint_value, dict):
+                        parts = [f"{k}={v}" for k, v in constraint_value.items()]
+                        sentence_style = f"Use {key} sentence style constraints: " + ", ".join(parts)
+                    else:
+                        sentence_style = f"Use {key} sentence style constraints: {constraint_value}"
+                    break
         
         if not sentence_style:
             raise ValueError(
@@ -563,6 +690,8 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
 
 VOICE INSTRUCTIONS:
 {voice_instruction}"""
+
+        shared_text_prompt_core = PromptBuilder._load_shared_text_prompt_core()
         
         # Build requirements section with dynamic sentence structure guidance
         # Override terminology based on technical_intensity (0.0-1.0 normalized)
@@ -664,6 +793,9 @@ Description: [Write the full description here]
         # No generic "be unique" override that negates specific voice rules
         # NOTE: Template already includes author context - no "You are" prefix needed
         prompt = f"""{context_section}
+
+    SHARED CORE GUIDANCE:
+    {shared_text_prompt_core}
 {humanness_section}
 REQUIREMENTS:
 {requirements_section}

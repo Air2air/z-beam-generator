@@ -19,9 +19,9 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import yaml
+from generation.config.config_loader import ProcessingConfig
 
 logger = logging.getLogger(__name__)
-
 
 @dataclass
 class StructuralAnalysis:
@@ -70,6 +70,26 @@ class StructuralVariationChecker:
         self.db_path = db_path
         self.min_diversity_score = min_diversity_score  # Can be None - will use dynamic
         self._threshold_manager = None  # Lazy-loaded when needed
+
+        config = ProcessingConfig()
+        self.cross_item_opening_weight = float(
+            config.get_required_config('constants.structural_variation.cross_item_opening_weight')
+        )
+        self.cross_item_starter_weight = float(
+            config.get_required_config('constants.structural_variation.cross_item_starter_weight')
+        )
+        self.cross_item_trigram_weight = float(
+            config.get_required_config('constants.structural_variation.cross_item_trigram_weight')
+        )
+        self.cross_item_length_weight = float(
+            config.get_required_config('constants.structural_variation.cross_item_length_weight')
+        )
+        self.cross_item_near_duplicate_threshold = float(
+            config.get_required_config('constants.structural_variation.cross_item_near_duplicate_threshold')
+        )
+        self.author_voice_preservation_threshold = float(
+            config.get_required_config('constants.structural_variation.author_voice_preservation_threshold')
+        )
         
         # Initialize database table for tracking patterns
         self._init_database()
@@ -386,6 +406,153 @@ class StructuralVariationChecker:
         
         matches = sum(1 for w1, w2 in zip(words1, words2) if w1 == w2)
         return matches >= 4  # At least 4 of first 5 words match
+
+    @staticmethod
+    def _tokenize_words(text: str) -> List[str]:
+        """Tokenize text into lowercase word tokens."""
+        return re.findall(r"[a-zA-Z']+", (text or "").lower())
+
+    @staticmethod
+    def _sentence_list(text: str) -> List[str]:
+        """Split text into sentence-like chunks."""
+        chunks = re.split(r"[.!?]+", text or "")
+        return [chunk.strip() for chunk in chunks if chunk.strip()]
+
+    @staticmethod
+    def _jaccard_similarity(left: List[str], right: List[str]) -> float:
+        """Compute Jaccard similarity between token collections."""
+        left_set = set(left)
+        right_set = set(right)
+        if not left_set and not right_set:
+            return 1.0
+        if not left_set or not right_set:
+            return 0.0
+        intersection = len(left_set & right_set)
+        union = len(left_set | right_set)
+        return intersection / union if union else 0.0
+
+    @staticmethod
+    def _word_trigrams(words: List[str]) -> List[str]:
+        """Create word trigram shingles from tokenized words."""
+        if len(words) < 3:
+            return words
+        return [" ".join(words[i:i + 3]) for i in range(len(words) - 2)]
+
+    def _cross_item_similarity(self, text: str, peer_text: str) -> Dict[str, float]:
+        """Calculate structural similarity metrics between two field values."""
+        text_words = self._tokenize_words(text)
+        peer_words = self._tokenize_words(peer_text)
+
+        text_opening = self._extract_opening_pattern(text)
+        peer_opening = self._extract_opening_pattern(peer_text)
+        opening_similarity = self._jaccard_similarity(
+            self._tokenize_words(text_opening),
+            self._tokenize_words(peer_opening),
+        )
+
+        text_starters = [
+            self._tokenize_words(sentence)[0]
+            for sentence in self._sentence_list(text)
+            if self._tokenize_words(sentence)
+        ]
+        peer_starters = [
+            self._tokenize_words(sentence)[0]
+            for sentence in self._sentence_list(peer_text)
+            if self._tokenize_words(sentence)
+        ]
+        starter_similarity = self._jaccard_similarity(text_starters, peer_starters)
+
+        text_trigrams = self._word_trigrams(text_words)
+        peer_trigrams = self._word_trigrams(peer_words)
+        trigram_similarity = self._jaccard_similarity(text_trigrams, peer_trigrams)
+
+        max_word_count = max(len(text_words), len(peer_words), 1)
+        length_similarity = 1.0 - (abs(len(text_words) - len(peer_words)) / max_word_count)
+
+        weighted_similarity = (
+            self.cross_item_opening_weight * opening_similarity
+            + self.cross_item_starter_weight * starter_similarity
+            + self.cross_item_trigram_weight * trigram_similarity
+            + self.cross_item_length_weight * length_similarity
+        )
+
+        return {
+            'opening_similarity': opening_similarity,
+            'starter_similarity': starter_similarity,
+            'trigram_similarity': trigram_similarity,
+            'length_similarity': length_similarity,
+            'weighted_similarity': weighted_similarity,
+        }
+
+    def check_cross_item_variation(
+        self,
+        content: str,
+        peer_contents: List[str],
+        near_duplicate_threshold: Optional[float] = None,
+    ) -> Dict[str, object]:
+        """
+        Validate structural variation against other values of the same field.
+
+        Args:
+            content: Candidate text to validate.
+            peer_contents: Other texts from the same domain/field.
+            near_duplicate_threshold: Weighted similarity score considered too close.
+
+        Returns:
+            Dict with pass/fail status, aggregate metrics, and violations.
+        """
+        comparable_peers = [
+            value for value in (peer_contents or [])
+            if isinstance(value, str) and value.strip()
+        ]
+
+        threshold = (
+            float(near_duplicate_threshold)
+            if near_duplicate_threshold is not None
+            else self.cross_item_near_duplicate_threshold
+        )
+
+        if not comparable_peers:
+            return {
+                'status': 'pass',
+                'violations': [],
+                'metrics': {
+                    'peer_count': 0,
+                    'near_duplicate_count': 0,
+                    'max_weighted_similarity': 0.0,
+                    'avg_weighted_similarity': 0.0,
+                },
+            }
+
+        similarities: List[float] = []
+        near_duplicate_count = 0
+
+        for peer_text in comparable_peers:
+            metrics = self._cross_item_similarity(content, peer_text)
+            weighted_similarity = float(metrics['weighted_similarity'])
+            similarities.append(weighted_similarity)
+            if weighted_similarity >= threshold:
+                near_duplicate_count += 1
+
+        max_similarity = max(similarities)
+        avg_similarity = sum(similarities) / len(similarities)
+
+        violations: List[str] = []
+        if near_duplicate_count > 0:
+            violations.append('near_duplicate_structure')
+        if max_similarity >= threshold + 0.08:
+            violations.append('high_structural_overlap')
+
+        return {
+            'status': 'fail' if violations else 'pass',
+            'violations': violations,
+            'metrics': {
+                'peer_count': len(comparable_peers),
+                'near_duplicate_count': near_duplicate_count,
+                'max_weighted_similarity': round(max_similarity, 4),
+                'avg_weighted_similarity': round(avg_similarity, 4),
+            },
+        }
     
     def _load_author_signature(self, author_id: int) -> Dict:
         """
@@ -470,8 +637,7 @@ class StructuralVariationChecker:
         expected += 1
         
         # Voice preserved if ≥60% signature traits present
-        preservation_threshold = 0.6
-        preserved = (matches / expected) >= preservation_threshold if expected > 0 else True
+        preserved = (matches / expected) >= self.author_voice_preservation_threshold if expected > 0 else True
         
         return {
             'preserved': preserved,

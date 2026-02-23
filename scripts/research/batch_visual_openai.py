@@ -148,7 +148,7 @@ For EACH of these {len(categories)} material categories:
 {chr(10).join(category_sections)}
 
 Provide these details:
-1. **description**: Overall visual appearance (2-3 sentences)
+1. **description**: Overall visual appearance (concise)
 2. **color_variations**: Range of colors observed
 3. **texture_details**: Surface texture when contaminated
 4. **common_patterns**: Typical visual patterns (spots, streaks, films, etc.)

@@ -248,9 +248,9 @@ class TextConfig:
     presence_penalty: float = 0.1
     
     # Prompt construction
-    base_prompt_path: str = "prompts/text_base.txt"
-    persona_prompt_path: str = "prompts/text_personas.txt"
-    formatting_prompt_path: str = "prompts/text_formatting.txt"
+    base_prompt_path: str = "prompts/text_base.txt"  # prompt catalog key (catalog.byPath)
+    persona_prompt_path: str = "prompts/text_personas.txt"  # prompt catalog key (catalog.byPath)
+    formatting_prompt_path: str = "prompts/text_formatting.txt"  # prompt catalog key (catalog.byPath)
     
     # Quality control
     min_quality_score: float = 0.7

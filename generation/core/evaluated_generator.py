@@ -73,7 +73,7 @@ class QualityEvaluatedGenerator:
         Args:
             api_client: API client for content generation (required)
             subjective_evaluator: SubjectiveEvaluator instance (required)
-            winston_client: Winston API client for AI detection (optional)
+            winston_client: Winston API client for AI detection (required)
             structural_variation_checker: StructuralVariationChecker instance (optional)
             domain: Domain name (e.g., 'materials', 'compounds', 'settings')
         
@@ -84,6 +84,8 @@ class QualityEvaluatedGenerator:
             raise ValueError("API client required for quality-evaluated generation")
         if not subjective_evaluator:
             raise ValueError("SubjectiveEvaluator required for quality-evaluated generation")
+        if not winston_client:
+            raise ValueError("Winston client required for quality-evaluated generation")
         
         self.api_client = api_client
         self.subjective_evaluator = subjective_evaluator
@@ -198,13 +200,22 @@ class QualityEvaluatedGenerator:
                 with open(config_path, 'r', encoding='utf-8') as f:
                     config_data = yaml.safe_load(f)
             except Exception as e:
-                print(f"⚠️  Could not load config.yaml: {e}")
-                config_data = {}
-            
-            length_control_config = config_data.get('length_control', {})
-            if length_control_config.get('enable_smart_truncation', False):
-                if component_type == 'pageDescription':
-                    print("\n✂️  Skipping smart length truncation for pageDescription (sentence integrity policy)")
+                raise RuntimeError(f"Could not load config.yaml: {e}") from e
+
+            if not isinstance(config_data, dict):
+                raise TypeError("config.yaml must parse to a dictionary")
+            if 'length_control' not in config_data:
+                raise KeyError("config.yaml missing required key: 'length_control'")
+            length_control_config = config_data['length_control']
+            if not isinstance(length_control_config, dict):
+                raise TypeError("config.yaml key 'length_control' must be a dictionary")
+            if 'enable_smart_truncation' not in length_control_config:
+                raise KeyError("length_control missing required key: 'enable_smart_truncation'")
+
+            if length_control_config['enable_smart_truncation']:
+                skip_components = self._get_domain_generation_list('length_control', 'skip_components')
+                if component_type in skip_components:
+                    print("\n✂️  Skipping smart length truncation (per domain config)")
                 else:
                     from shared.text.utils.length_control import apply_length_control
                     default_target_words = length_control_config.get('default_target_words')
@@ -390,10 +401,20 @@ class QualityEvaluatedGenerator:
                     component_type=component_type
                 )
 
-                quality_scores['realism_score'] = evaluation.realism_score or evaluation.overall_score
+                realism_score = evaluation.realism_score
+                if realism_score is None:
+                    realism_score = evaluation.overall_score
+                if realism_score is None:
+                    raise ValueError("Subjective evaluation missing both realism_score and overall_score")
+
+                quality_scores['realism_score'] = realism_score
                 quality_scores['voice_authenticity'] = evaluation.voice_authenticity
                 quality_scores['tonal_consistency'] = evaluation.tonal_consistency
-                quality_scores['ai_tendencies'] = evaluation.ai_tendencies or []
+                if evaluation.ai_tendencies is None:
+                    raise ValueError("Subjective evaluation missing required ai_tendencies")
+                if not isinstance(evaluation.ai_tendencies, list):
+                    raise TypeError("Subjective evaluation ai_tendencies must be a list")
+                quality_scores['ai_tendencies'] = evaluation.ai_tendencies
 
                 print(f"\n📊 QUALITY SCORES (for learning):")
                 print(f"   • Realism: {quality_scores['realism_score']:.1f}/10")
@@ -488,13 +509,22 @@ class QualityEvaluatedGenerator:
                 return {}
             
             sweet_spots = analysis['sweet_spots']
-            correlations = {param: corr for param, corr in analysis.get('correlations', [])}
+            if 'correlations' not in analysis:
+                raise KeyError("Sweet spot analysis missing required key: 'correlations'")
+            correlations_data = analysis['correlations']
+            if not isinstance(correlations_data, list):
+                raise TypeError("Sweet spot analysis key 'correlations' must be a list")
+            correlations = {param: corr for param, corr in correlations_data}
             
             learned = {}
             filtered_count = 0
             
             for param_name, sweet_spot in sweet_spots.items():
-                correlation = correlations.get(param_name, 0)
+                if param_name not in correlations:
+                    raise KeyError(
+                        f"Missing correlation for sweet spot parameter '{param_name}'"
+                    )
+                correlation = correlations[param_name]
                 
                 # Filter out negatively correlated parameters
                 if correlation < -0.3:
@@ -550,20 +580,65 @@ class QualityEvaluatedGenerator:
         """Convert content to text string for evaluation"""
         if isinstance(content, dict):
             # Micro: before/after structure
-            before = content.get('before', '')
-            after = content.get('after', '')
+            if 'before' not in content or 'after' not in content:
+                try:
+                    import yaml
+
+                    yaml_text = yaml.safe_dump(
+                        content,
+                        sort_keys=False,
+                        default_flow_style=False
+                    )
+                    return yaml_text.strip()
+                except Exception:
+                    return str(content)
+            before = content['before']
+            after = content['after']
             return f"BEFORE:\n{before}\n\nAFTER:\n{after}"
         elif isinstance(content, list):
             # FAQ: list of Q&A
             parts = []
             for qa in content:
-                q = qa.get('question', '')
-                a = qa.get('answer', '')
+                if not isinstance(qa, dict):
+                    raise TypeError("FAQ content entries must be dictionaries")
+                if 'question' not in qa or 'answer' not in qa:
+                    raise KeyError("FAQ entry missing required keys: 'question' and 'answer'")
+                q = qa['question']
+                a = qa['answer']
                 parts.append(f"Q: {q}\nA: {a}")
             return "\n\n".join(parts)
         else:
             # String content (description, etc.)
             return str(content)
+
+    def _get_domain_generation_list(self, *path_parts: str) -> list:
+        if not self.generator:
+            raise RuntimeError("Generator not initialized; cannot read domain config")
+
+        from generation.config.config_loader import get_config
+
+        config = get_config().config
+        domain_generation = config.get('domain_generation')
+        if not isinstance(domain_generation, dict):
+            raise KeyError("Missing required config block: domain_generation")
+        if self.generator.domain not in domain_generation:
+            raise KeyError(
+                f"Missing domain_generation config for domain '{self.generator.domain}'"
+            )
+
+        node: Any = domain_generation[self.generator.domain]
+        for part in path_parts:
+            if not isinstance(node, dict) or part not in node:
+                raise KeyError(
+                    f"Missing required config key: domain_generation.{self.generator.domain}.{'.'.join(path_parts)}"
+                )
+            node = node[part]
+
+        if not isinstance(node, list):
+            raise TypeError(
+                f"domain_generation.{self.generator.domain}.{'.'.join(path_parts)} must be a list"
+            )
+        return node
     
     def _load_sweet_spot_parameters(self) -> Dict[str, float]:
         """
@@ -707,10 +782,9 @@ class QualityEvaluatedGenerator:
                 'message': str
             }
         """
-        # Winston is optional - if not configured, pass by default
+        # Winston is required - fail-fast if not configured
         if not self.winston_client:
-            logger.info("   ⚠️  Winston API not configured - skipping AI detection")
-            return {'passed': True, 'human_score': 1.0, 'ai_score': 0.0, 'message': 'Winston not configured'}
+            raise RuntimeError("Winston client is required for AI detection")
         
         try:
             from generation.config.config_loader import get_config
@@ -718,11 +792,14 @@ class QualityEvaluatedGenerator:
                 WinstonFeedbackDatabase,
             )
             from postprocessing.detection.winston_integration import WinstonIntegration
-            from shared.text.validation.constants import ValidationConstants
             
             config = get_config()
-            db_path = config.config.get('winston_feedback_db_path')
-            feedback_db = WinstonFeedbackDatabase(db_path) if db_path else None
+            if 'winston_feedback_db_path' not in config.config:
+                raise KeyError("Missing required config key: winston_feedback_db_path")
+            db_path = config.config['winston_feedback_db_path']
+            if not db_path:
+                raise ValueError("winston_feedback_db_path must be configured and non-empty")
+            feedback_db = WinstonFeedbackDatabase(db_path)
             
             # Initialize Winston integration
             winston = WinstonIntegration(
@@ -776,18 +853,7 @@ class QualityEvaluatedGenerator:
             }
                 
         except Exception as e:
-            # Winston optional for short content
-            error_msg = str(e)
-            if 'Text too short' in error_msg:
-                logger.info(f"   ⚠️  Winston skipped: {e}")
-                return {'passed': True, 'human_score': 1.0, 'ai_score': 0.0, 'message': 'Text too short for Winston'}
-            elif 'not configured' in error_msg:
-                logger.info(f"   ⚠️  Winston not configured: {e}")
-                return {'passed': True, 'human_score': 1.0, 'ai_score': 0.0, 'message': 'Winston not configured'}
-            else:
-                # Other errors - still retry (treat as Winston fail for safety)
-                logger.error(f"   ❌ Winston detection error: {e}")
-                return {'passed': False, 'human_score': 0.0, 'ai_score': 1.0, 'message': f'Winston error: {e}'}
+            raise RuntimeError(f"Winston detection failed: {e}") from e
     
     def _log_attempt_for_learning(
         self,
@@ -831,9 +897,17 @@ class QualityEvaluatedGenerator:
             from datetime import datetime
             
             # Calculate quality scores
-            realism_score = evaluation.realism_score or evaluation.overall_score
+            realism_score = evaluation.realism_score
+            if realism_score is None:
+                realism_score = evaluation.overall_score
+            if realism_score is None:
+                raise ValueError("Learning log missing both realism_score and overall_score")
             realism_normalized = realism_score / 10.0  # 0-10 scale → 0-1.0
-            winston_human_score = winston_result.get('human_score', 0.0)
+            if 'human_score' not in winston_result:
+                raise KeyError("Winston result missing required key: 'human_score'")
+            winston_human_score = winston_result['human_score']
+            if winston_human_score is None:
+                raise ValueError("Winston human_score must not be None")
             
             # Composite score: Winston 40% + Realism 60%
             overall_quality_score = (winston_human_score * 0.4) + (realism_normalized * 0.6)
@@ -843,7 +917,11 @@ class QualityEvaluatedGenerator:
             if structural_analysis and getattr(structural_analysis, 'diversity_score', None) is not None:
                 structural_score = float(structural_analysis.diversity_score) * 10.0
 
-            ai_tendencies = evaluation.ai_tendencies or []
+            if evaluation.ai_tendencies is None:
+                raise ValueError("Learning log missing required ai_tendencies")
+            if not isinstance(evaluation.ai_tendencies, list):
+                raise TypeError("Learning ai_tendencies must be a list")
+            ai_tendencies = evaluation.ai_tendencies
             ai_pattern_score = max(0.0, 100.0 - (len(ai_tendencies) * 20.0))
 
             author_id = self._get_author_id(material_name)
@@ -900,18 +978,29 @@ class QualityEvaluatedGenerator:
         data_root_key = self.generator.adapter.data_root_key
         domain = self.generator.domain
         
-        item_data = all_data.get(data_root_key, {}).get(material_name)
+        if data_root_key not in all_data:
+            raise KeyError(
+                f"Domain data missing required root key '{data_root_key}' for domain '{domain}'"
+            )
+        root_data = all_data[data_root_key]
+        if not isinstance(root_data, dict):
+            raise TypeError(
+                f"Domain data root '{data_root_key}' must be a dictionary, got {type(root_data).__name__}"
+            )
+        item_data = root_data[material_name] if material_name in root_data else None
         
         if not item_data:
             raise ValueError(f"Item '{material_name}' not found in {domain} data")
         
         # FAIL-FAST: Support canonical author.id and legacy authorId; reject anything else.
         author_id = None
-        author_field = item_data.get('author')
+        author_field = item_data['author'] if 'author' in item_data else None
         if isinstance(author_field, dict):
-            author_id = author_field.get('id')
+            if 'id' not in author_field:
+                raise KeyError(f"Item '{material_name}' author object missing required key: 'id'")
+            author_id = author_field['id']
         elif 'authorId' in item_data:
-            author_id = item_data.get('authorId')
+            author_id = item_data['authorId']
 
         if author_id is None:
             raise ValueError(
@@ -942,18 +1031,29 @@ class QualityEvaluatedGenerator:
         data_root_key = self.generator.adapter.data_root_key
         domain = self.generator.domain
         
-        item_data = all_data.get(data_root_key, {}).get(material_name)
+        if data_root_key not in all_data:
+            raise KeyError(
+                f"Domain data missing required root key '{data_root_key}' for domain '{domain}'"
+            )
+        root_data = all_data[data_root_key]
+        if not isinstance(root_data, dict):
+            raise TypeError(
+                f"Domain data root '{data_root_key}' must be a dictionary, got {type(root_data).__name__}"
+            )
+        item_data = root_data[material_name] if material_name in root_data else None
         
         if not item_data:
             raise ValueError(f"Item '{material_name}' not found in {domain} data")
         
         # Resolve author id with strict validation (author.id or legacy authorId)
         author_id = None
-        author_field = item_data.get('author')
+        author_field = item_data['author'] if 'author' in item_data else None
         if isinstance(author_field, dict):
-            author_id = author_field.get('id')
+            if 'id' not in author_field:
+                raise KeyError(f"Item '{material_name}' author object missing required key: 'id'")
+            author_id = author_field['id']
         elif 'authorId' in item_data:
-            author_id = item_data.get('authorId')
+            author_id = item_data['authorId']
 
         if author_id is None:
             raise ValueError(
@@ -970,8 +1070,13 @@ class QualityEvaluatedGenerator:
         # Get full author info (raises KeyError if invalid)
         author_info = get_author(author_id)
         
-        author_name = author_info.get('name')
-        author_country = author_info.get('country')
+        if 'name' not in author_info:
+            raise KeyError(f"Author registry entry missing required key: 'name' for item '{material_name}'")
+        if 'country' not in author_info:
+            raise KeyError(f"Author registry entry missing required key: 'country' for item '{material_name}'")
+
+        author_name = author_info['name']
+        author_country = author_info['country']
 
         if not author_name:
             raise ValueError(f"Author name missing for '{material_name}'")

@@ -2,6 +2,20 @@
 
 Developer guides for contributing to and extending the Z-Beam Generator.
 
+## Execution Environment Policy
+
+- Always run project commands with `python3` from the repository root.
+- Do not create or activate a virtual environment (`venv`/`virtualenv`) for standard development, generation, postprocess, export, or test workflows.
+- Examples:
+  - `python3 run.py --description "Steel"`
+  - `python3 -m pytest tests/`
+
+## Text Length Policy
+
+- Length variation is multiplier-based and centralized in `generation/text_field_config.yaml` under `randomization_range`.
+- Do not introduce new `min_length`/`max_length` bounds for generation targeting.
+- `length_variation_range` in legacy config paths is compatibility-only and should not be used for new logic.
+
 ## Getting Started
 
 - **[new_component_guide.md](new_component_guide.md)** - Guide for creating new components

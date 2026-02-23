@@ -5,6 +5,8 @@ Runs system integrity checks before component generation.
 Includes per-iteration learning architecture validation.
 """
 
+import os
+
 from generation.integrity import IntegrityChecker
 
 
@@ -28,6 +30,11 @@ def run_pre_generation_check(skip_check: bool = False, quick: bool = True, verbo
         True if checks passed (or were skipped), False if checks failed
     """
     if skip_check:
+        if os.getenv("ALLOW_INTEGRITY_BYPASS") != "1":
+            raise RuntimeError(
+                "Integrity bypass denied: --skip-integrity-check requires ALLOW_INTEGRITY_BYPASS=1"
+            )
+        print("⚠️  Integrity checks skipped (ALLOW_INTEGRITY_BYPASS=1)")
         return True
     
     print("🔍 Running pre-generation integrity check...")

@@ -13,13 +13,20 @@ class CompoundDescriptionGenerator(UniversalTextGenerator):
     
     def __init__(self, config: dict):
         """Initialize with component_type='description' for compounds."""
-        super().__init__(
-            source_file=config.get('source_file', 'data/compounds/Compounds.yaml'),
-            items_key=config.get('items_key', 'compounds'),
-            target_field=config.get('field', 'description'),
-            component_type='description',
-            dry_run=config.get('dry_run', False)
-        )
+        required_keys = ['source_file', 'items_key', 'field', 'dry_run']
+        missing = [key for key in required_keys if key not in config]
+        if missing:
+            raise KeyError(f"Missing required config keys: {', '.join(missing)}")
+
+        if not isinstance(config['dry_run'], bool):
+            raise TypeError(
+                f"Invalid config type for dry_run: expected bool, got {type(config['dry_run']).__name__}"
+            )
+
+        generator_config = dict(config)
+        generator_config['component_type'] = 'description'
+
+        super().__init__(generator_config)
 
 
 # Register generator

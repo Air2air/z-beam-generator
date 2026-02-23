@@ -7,47 +7,21 @@ data_path: "data/materials/Materials.yaml"
 data_root_key: "materials"
 frontmatter_pattern: "{slug}-laser-cleaning.yaml"
 
+frontmatter:
+  directory: "../z-beam/frontmatter/materials"
+  filename_pattern: "{slug}.yaml"
+
+# DomainAdapter contract (required for generation/core/adapters/domain_adapter.py)
+data_adapter:
+  data_path: "data/materials/Materials.yaml"
+  data_root_key: "materials"
+  author_key: "author.id"
+  context_keys:
+    - "category"
+
 # Component types (auto-discovered from prompts/*.txt files)
 # Components are dynamically detected at runtime - no hardcoded lists needed
 # See: prompts/materials/ directory for actual component definitions
-
-# Component lengths (word count targets)
-component_lengths:
-  pageDescription:
-    default: 50
-    min: 40
-    max: 80
-    extraction_strategy: raw
-  micro:
-    default: 50
-    min: 30
-    max: 140
-    extraction_strategy: before_after
-  faq:
-    default: 100
-    min: 80
-    max: 150
-    extraction_strategy: json_list
-  materialCharacteristics_description:
-    default: 60
-    min: 40
-    max: 80
-    extraction_strategy: raw
-  laserMaterialInteraction_description:
-    default: 60
-    min: 40
-    max: 80
-    extraction_strategy: raw
-  related_materials:
-    default: 45
-    min: 30
-    max: 60
-    extraction_strategy: raw
-  micro_before_after:
-    default: 85
-    min: 30
-    max: 140
-    extraction_strategy: before_after
 
 # Validation rules (inherits shared defaults)
 validation:

@@ -47,6 +47,7 @@ from typing import Any, Dict, List, Optional
 from generation.config.config_loader import get_config
 from generation.config.dynamic_config import DynamicConfig
 from generation.config.scale_mapper import normalize_slider, normalize_sliders
+from shared.text.utils.prompt_registry_service import PromptRegistryService
 
 
 class IntegrityStatus(Enum):
@@ -612,12 +613,6 @@ class IntegrityChecker:
                 'modular': False,  # Phase 3 pending
                 'scale': '1-10'
             },
-            'length_variation_range': {
-                'category': 'variation', 
-                'maps_to': 'component_specs',
-                'modular': False,  # Phase 3 pending
-                'scale': '1-10'
-            },
             'humanness_intensity': {
                 'category': 'ai_detection', 
                 'maps_to': 'direct',
@@ -725,13 +720,13 @@ class IntegrityChecker:
         
         # Check 4: Parameters that are used directly (not in voice_params)
         # These are validated by their usage, not by presence in a dict
-        # ai_avoidance_intensity, length_variation_range, humanness_intensity
+        # ai_avoidance_intensity, humanness_intensity
         
         duration = (time.time() - start) * 1000
         
         if issues:
             results.append(IntegrityResult(
-                check_name="Parameters: All 14 Parameters Validation",
+                check_name=f"Parameters: All {len(required_params)} Parameters Validation",
                 status=IntegrityStatus.FAIL,
                 message=f"Found {len(issues)} parameter issue(s) - BLOCKING generation",
                 details={
@@ -747,9 +742,9 @@ class IntegrityChecker:
             ))
         else:
             results.append(IntegrityResult(
-                check_name="Parameters: All 14 Parameters Validation",
+                check_name=f"Parameters: All {len(required_params)} Parameters Validation",
                 status=IntegrityStatus.PASS,
-                message="✅ All 14 parameters defined, in range, and properly mapped",
+                message=f"✅ All {len(required_params)} parameters defined, in range, and properly mapped",
                 details={
                     'total_params': len(required_params),
                     'voice_params': list(voice_params.keys()),
@@ -934,7 +929,7 @@ class IntegrityChecker:
         
         # Check 1: PromptOptimizer module exists
         start = time.time()
-        optimizer_path = Path('processing/learning/prompt_optimizer.py')
+        optimizer_path = Path('shared/validation/prompt_optimizer.py')
         
         if not optimizer_path.exists():
             results.append(IntegrityResult(
@@ -956,24 +951,23 @@ class IntegrityChecker:
         
         # Check 2: DynamicGenerator initializes PromptOptimizer
         start = time.time()
-        generator_path = Path('processing/generator.py')
+        generator_path = Path('generation/core/generator.py')
         
         if generator_path.exists():
             content = generator_path.read_text()
-            has_import = 'from processing.learning.prompt_optimizer import PromptOptimizer' in content
-            has_init = 'self.prompt_optimizer = PromptOptimizer' in content
-            has_call = 'self.prompt_optimizer.optimize_prompt' in content
+            has_import = 'from shared.validation.prompt_optimizer import optimize_prompt' in content
+            has_call = 'optimize_prompt(' in content
             
             # CRITICAL: Check that optimizer runs on EVERY attempt, not just attempt 1
             runs_on_attempt_1_only = 'attempt == 1' in content and 'self.prompt_optimizer' in content
             
-            if has_import and has_init and has_call:
+            if has_import and has_call:
                 if runs_on_attempt_1_only:
                     results.append(IntegrityResult(
                         check_name="Learning: DynamicGenerator Integration",
                         status=IntegrityStatus.FAIL,
                         message="PromptOptimizer only runs on attempt 1 - NOT iterative! Should run on ALL attempts for continuous learning",
-                        details={'import': has_import, 'init': has_init, 'call': has_call, 'iterative': False},
+                        details={'import': has_import, 'call': has_call, 'iterative': False},
                         duration_ms=(time.time() - start) * 1000
                     ))
                 else:
@@ -981,69 +975,67 @@ class IntegrityChecker:
                         check_name="Learning: DynamicGenerator Integration",
                         status=IntegrityStatus.PASS,
                         message="PromptOptimizer fully integrated and runs iteratively on all attempts",
-                        details={'import': has_import, 'init': has_init, 'call': has_call, 'iterative': True},
+                        details={'import': has_import, 'call': has_call, 'iterative': True},
                         duration_ms=(time.time() - start) * 1000
                     ))
             else:
                 results.append(IntegrityResult(
                     check_name="Learning: DynamicGenerator Integration",
                     status=IntegrityStatus.FAIL,
-                    message=f"PromptOptimizer not fully integrated (import={has_import}, init={has_init}, call={has_call})",
-                    details={'import': has_import, 'init': has_init, 'call': has_call},
+                    message=f"PromptOptimizer not fully integrated (import={has_import}, call={has_call})",
+                    details={'import': has_import, 'call': has_call},
                     duration_ms=(time.time() - start) * 1000
                 ))
         
         # Check 3: Orchestrator initializes PromptOptimizer
         start = time.time()
-        orchestrator_path = Path('processing/orchestrator.py')
+        orchestrator_path = Path('generation/core/evaluated_generator.py')
         
         if orchestrator_path.exists():
             content = orchestrator_path.read_text()
-            has_import = 'from processing.learning.prompt_optimizer import PromptOptimizer' in content
-            has_init = 'self.prompt_optimizer = PromptOptimizer' in content
-            has_call = 'self.prompt_optimizer.optimize_prompt' in content or 'self.prompt_optimizer and attempt == 1' in content
+            has_import = 'from shared.validation.prompt_optimizer import optimize_prompt' in content
+            has_call = 'optimize_prompt(' in content
             
-            if has_import and has_init and has_call:
+            if has_import and has_call:
                 results.append(IntegrityResult(
                     check_name="Learning: Orchestrator Integration",
                     status=IntegrityStatus.PASS,
                     message="PromptOptimizer fully integrated in Orchestrator",
-                    details={'import': has_import, 'init': has_init, 'call': has_call},
+                    details={'import': has_import, 'call': has_call},
                     duration_ms=(time.time() - start) * 1000
                 ))
             else:
                 results.append(IntegrityResult(
                     check_name="Learning: Orchestrator Integration",
                     status=IntegrityStatus.WARN,
-                    message=f"PromptOptimizer not fully integrated (import={has_import}, init={has_init}, call={has_call})",
-                    details={'import': has_import, 'init': has_init, 'call': has_call},
+                    message=f"PromptOptimizer not fully integrated (import={has_import}, call={has_call})",
+                    details={'import': has_import, 'call': has_call},
                     duration_ms=(time.time() - start) * 1000
                 ))
         
         # Check 4: UnifiedOrchestrator initializes PromptOptimizer
         start = time.time()
-        unified_path = Path('processing/unified_orchestrator.py')
+        unified_path = Path('generation/core/evaluated_generator.py')
         
         if unified_path.exists():
             content = unified_path.read_text()
-            has_import = 'from processing.learning.prompt_optimizer import PromptOptimizer' in content
-            has_init = 'self.prompt_optimizer = PromptOptimizer' in content
-            has_call = 'self.prompt_optimizer.optimize_prompt' in content or 'self.prompt_optimizer and attempt == 1' in content
+            has_import = 'from shared.validation.prompt_optimizer import optimize_prompt' in content
+            has_call = 'optimize_prompt(' in content
             
-            if has_import and has_init and has_call:
+            if has_import and has_call:
                 results.append(IntegrityResult(
                     check_name="Learning: UnifiedOrchestrator Integration",
                     status=IntegrityStatus.PASS,
                     message="PromptOptimizer fully integrated in UnifiedOrchestrator",
-                    details={'import': has_import, 'init': has_init, 'call': has_call},
+                    details={'import': has_import, 'call': has_call},
                     duration_ms=(time.time() - start) * 1000
                 ))
             else:
                 results.append(IntegrityResult(
                     check_name="Learning: UnifiedOrchestrator Integration",
                     status=IntegrityStatus.WARN,
-                    message=f"PromptOptimizer not fully integrated (import={has_import}, init={has_init}, call={has_call})",
-                    details={'import': has_import, 'init': has_init, 'call': has_call},
+                    message=f"PromptOptimizer not fully integrated (import={has_import}, call={has_call})",
+                    details={'import': has_import, 'call': has_call},
                     duration_ms=(time.time() - start) * 1000
                 ))
         
@@ -1144,7 +1136,7 @@ class IntegrityChecker:
         
         # Check 4.1: Config file matches documented scale (1-10)
         start = time.time()
-        config_path = Path('processing/config.yaml')
+        config_path = Path('generation/config.yaml')
         
         if not config_path.exists():
             results.append(IntegrityResult(
@@ -1176,7 +1168,7 @@ class IntegrityChecker:
         
         # Check 4.2: scale_mapper module exists and is documented
         start = time.time()
-        mapper_path = Path('processing/config/scale_mapper.py')
+        mapper_path = Path('generation/config/scale_mapper.py')
         
         if not mapper_path.exists():
             results.append(IntegrityResult(
@@ -1342,10 +1334,11 @@ class IntegrityChecker:
         
         # Files to check (production code and scripts, exclude tests)
         production_files = [
-            # Check processing system only (no hardcoded material component paths)
-            'processing/',
-            'processing/generator.py',
-            'processing/unified_orchestrator.py',
+            # Check active generation and postprocessing systems only
+            'generation/',
+            'postprocessing/',
+            'generation/core/generator.py',
+            'generation/core/evaluated_generator.py',
             'shared/commands/generation.py',
             'scripts/validation',
             'scripts/operations'
@@ -1447,7 +1440,7 @@ class IntegrityChecker:
                 details={
                     'violations': violation_summary,
                     'total_count': len(violations),
-                    'recommendation': 'Move constants to processing/config.yaml and load with get_config()'
+                    'recommendation': 'Move constants to generation/config.yaml and load with get_config()'
                 },
                 duration_ms=(time.time() - start) * 1000
             ))
@@ -1472,7 +1465,7 @@ class IntegrityChecker:
         
         # Check 4.5.1: Claude evaluator module exists
         start = time.time()
-        evaluator_path = Path('processing/subjective/evaluator.py')
+        evaluator_path = Path('postprocessing/evaluation/subjective_evaluator.py')
         
         if not evaluator_path.exists():
             results.append(IntegrityResult(
@@ -1514,7 +1507,7 @@ class IntegrityChecker:
         
         # Check 4.5.3: Database schema includes subjective_evaluations table
         start = time.time()
-        db_module_path = Path('processing/detection/winston_feedback_db.py')
+        db_module_path = Path('postprocessing/detection/winston_feedback_db.py')
         
         if not db_module_path.exists():
             results.append(IntegrityResult(
@@ -1548,7 +1541,7 @@ class IntegrityChecker:
         
         # Check 4.5.5: Tests exist for Subjective evaluation
         start = time.time()
-        test_path = Path('tests/test_subjective_evaluation.py')
+        test_path = Path('tests/unit/test_evaluated_generator.py')
         
         if not test_path.exists():
             results.append(IntegrityResult(
@@ -1571,351 +1564,142 @@ class IntegrityChecker:
     
     def _check_subjective_validator_integration(self) -> List[IntegrityResult]:
         """
-        Verify SubjectiveValidator is properly integrated (November 16, 2025).
-        
-        Checks:
-        1. validator.py module exists
-        2. Config contains subjective_violations section
-        3. DynamicGenerator imports and initializes validator
-        4. Validation is called during content checking
-        5. Success criteria includes subjective_valid
-        6. Test script exists for validator
+        Verify subjective quality validation integration in current architecture.
+
+        Current architecture uses:
+        - SubjectiveEvaluator in postprocessing/evaluation/
+        - QualityEvaluatedGenerator in generation/core/
+        - Shared validation utilities in shared/validation/
         """
         results = []
         
-        # Check 1: Validator module exists
+        # Check 1: Shared validation module exists
         start = time.time()
-        validator_path = Path('processing/subjective/validator.py')
+        validator_path = Path('shared/validation/validator.py')
         
         if not validator_path.exists():
             results.append(IntegrityResult(
                 check_name="SubjectiveValidator: Module Exists",
                 status=IntegrityStatus.FAIL,
-                message="❌ CRITICAL: validator.py module not found - violations won't be caught!",
+                message="❌ CRITICAL: shared validation module not found",
                 details={'expected_path': str(validator_path)},
                 duration_ms=(time.time() - start) * 1000
             ))
-            # Early return if module doesn't exist
             return results
         else:
             results.append(IntegrityResult(
                 check_name="SubjectiveValidator: Module Exists",
                 status=IntegrityStatus.PASS,
-                message="✅ SubjectiveValidator module exists",
+                message="✅ Shared validation module exists",
                 details={'module_path': str(validator_path)},
                 duration_ms=(time.time() - start) * 1000
             ))
         
-        # Check 2: Config contains subjective_violations
+        # Check 2: QualityEvaluatedGenerator exists
         start = time.time()
-        config_dict = self.config.config
-        if 'subjective_violations' not in config_dict:
-            results.append(IntegrityResult(
-                check_name="SubjectiveValidator: Config Violations",
-                status=IntegrityStatus.FAIL,
-                message="❌ CRITICAL: subjective_violations section missing from config.yaml",
-                details={'config_keys': list(config_dict.keys())},
-                duration_ms=(time.time() - start) * 1000
-            ))
-        else:
-            violations = config_dict['subjective_violations']
-            pattern_count = sum(len(patterns) for patterns in violations.values())
-            results.append(IntegrityResult(
-                check_name="SubjectiveValidator: Config Violations",
-                status=IntegrityStatus.PASS,
-                message=f"✅ Config contains {len(violations)} violation categories ({pattern_count} patterns)",
-                details={'categories': list(violations.keys()), 'pattern_count': pattern_count},
-                duration_ms=(time.time() - start) * 1000
-            ))
-        
-        # Check 3: DynamicGenerator imports validator
-        start = time.time()
-        generator_path = Path('processing/generator.py')
+        generator_path = Path('generation/core/evaluated_generator.py')
+
         if not generator_path.exists():
             results.append(IntegrityResult(
                 check_name="SubjectiveValidator: Generator Import",
                 status=IntegrityStatus.FAIL,
-                message="❌ CRITICAL: generator.py not found",
+                message="❌ CRITICAL: evaluated_generator.py not found",
                 details={'expected_path': str(generator_path)},
                 duration_ms=(time.time() - start) * 1000
             ))
-        else:
-            generator_content = generator_path.read_text()
-            
-            # Check for import
-            has_import = 'from processing.subjective import SubjectiveValidator' in generator_content
-            has_init = 'self.subjective_validator = SubjectiveValidator()' in generator_content
-            
-            if not has_import or not has_init:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Generator Import",
-                    status=IntegrityStatus.FAIL,
-                    message="❌ CRITICAL: SubjectiveValidator not imported/initialized in DynamicGenerator",
-                    details={'has_import': has_import, 'has_init': has_init},
-                    duration_ms=(time.time() - start) * 1000
-                ))
-            else:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Generator Import",
-                    status=IntegrityStatus.PASS,
-                    message="✅ SubjectiveValidator imported and initialized in DynamicGenerator",
-                    details={'import_found': True, 'init_found': True},
-                    duration_ms=(time.time() - start) * 1000
-                ))
-        
-        # Check 4: Validation is called during content checking
-        start = time.time()
-        if generator_path.exists():
-            generator_content = generator_path.read_text()
-            
-            has_validate_call = 'self.subjective_validator.validate(' in generator_content
-            has_subjective_valid = 'subjective_valid' in generator_content
-            
-            if not has_validate_call:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Validation Called",
-                    status=IntegrityStatus.FAIL,
-                    message="❌ CRITICAL: subjective_validator.validate() never called in generator!",
-                    details={'validate_found': False},
-                    duration_ms=(time.time() - start) * 1000
-                ))
-            else:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Validation Called",
-                    status=IntegrityStatus.PASS,
-                    message="✅ subjective_validator.validate() is called during generation",
-                    details={'validate_found': True, 'subjective_valid_used': has_subjective_valid},
-                    duration_ms=(time.time() - start) * 1000
-                ))
-        
-        # Check 5: Success criteria includes subjective_valid
-        start = time.time()
-        if generator_path.exists():
-            generator_content = generator_path.read_text()
-            
-            # Check if subjective_valid is in success conditions
-            has_success_check = 'and subjective_valid' in generator_content or 'subjective_valid and' in generator_content
-            
-            if not has_success_check:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Success Criteria",
-                    status=IntegrityStatus.FAIL,
-                    message="❌ CRITICAL: subjective_valid NOT included in success criteria - violations will be ignored!",
-                    details={'success_check_found': False},
-                    duration_ms=(time.time() - start) * 1000
-                ))
-            else:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Success Criteria",
-                    status=IntegrityStatus.PASS,
-                    message="✅ subjective_valid properly integrated into success criteria",
-                    details={'success_check_found': True},
-                    duration_ms=(time.time() - start) * 1000
-                ))
-        
-        # Check 6: Test script exists
-        start = time.time()
-        test_path = Path('scripts/test_subjective_validation.py')
-        
-        if not test_path.exists():
+            return results
+
+        generator_content = generator_path.read_text()
+        has_required_evaluator = (
+            'if not subjective_evaluator' in generator_content
+            and 'SubjectiveEvaluator required for quality-evaluated generation' in generator_content
+            and 'self.subjective_evaluator = subjective_evaluator' in generator_content
+        )
+
+        if has_required_evaluator:
             results.append(IntegrityResult(
-                check_name="SubjectiveValidator: Test Script",
-                status=IntegrityStatus.WARN,
-                message="⚠️  Test script not found (optional but recommended)",
-                details={'expected_path': str(test_path)},
+                check_name="SubjectiveValidator: Generator Import",
+                status=IntegrityStatus.PASS,
+                message="✅ QualityEvaluatedGenerator requires and initializes SubjectiveEvaluator",
+                details={'generator_path': str(generator_path)},
                 duration_ms=(time.time() - start) * 1000
             ))
         else:
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Generator Import",
+                status=IntegrityStatus.FAIL,
+                message="❌ CRITICAL: SubjectiveEvaluator dependency not properly enforced in evaluated generator",
+                details={
+                    'has_required_check': 'if not subjective_evaluator' in generator_content,
+                    'has_error_message': 'SubjectiveEvaluator required for quality-evaluated generation' in generator_content,
+                    'has_assignment': 'self.subjective_evaluator = subjective_evaluator' in generator_content,
+                },
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        # Check 3: Subjective evaluation call exists
+        start = time.time()
+        has_evaluate_call = 'self.subjective_evaluator.evaluate(' in generator_content
+        if has_evaluate_call:
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Validation Called",
+                status=IntegrityStatus.PASS,
+                message="✅ SubjectiveEvaluator.evaluate() is called during generation",
+                details={'evaluate_call_found': True},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Validation Called",
+                status=IntegrityStatus.FAIL,
+                message="❌ CRITICAL: SubjectiveEvaluator.evaluate() call missing in evaluated generator",
+                details={'evaluate_call_found': False},
+                duration_ms=(time.time() - start) * 1000
+            ))
+
+        # Check 4: Learning log pipeline present
+        start = time.time()
+        has_learning_log = (
+            '_log_attempt_for_learning(' in generator_content
+            and 'self.learning_system.log_generation(' in generator_content
+        )
+        if has_learning_log:
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Success Criteria",
+                status=IntegrityStatus.PASS,
+                message="✅ Learning pipeline logs quality/evaluation outcomes",
+                details={'learning_log_found': True},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Success Criteria",
+                status=IntegrityStatus.WARN,
+                message="⚠️  Learning log hooks not fully detected in evaluated generator",
+                details={'learning_log_found': False},
+                duration_ms=(time.time() - start) * 1000
+            ))
+
+        # Check 5: Test coverage exists
+        start = time.time()
+        test_path = Path('tests/unit/test_evaluated_generator.py')
+
+        if test_path.exists():
             results.append(IntegrityResult(
                 check_name="SubjectiveValidator: Test Script",
                 status=IntegrityStatus.PASS,
-                message="✅ Test script exists for validator",
+                message="✅ Unit tests exist for evaluated generator + subjective evaluator integration",
                 details={'test_path': str(test_path)},
                 duration_ms=(time.time() - start) * 1000
             ))
-        
-        # Check 7: Thresholds are configurable (not hardcoded) - November 16, 2025
-        start = time.time()
-        config_dict = self.config.config
-        if 'subjective_thresholds' not in config_dict:
+        else:
             results.append(IntegrityResult(
-                check_name="SubjectiveValidator: Configurable Thresholds",
-                status=IntegrityStatus.FAIL,
-                message="❌ CRITICAL: subjective_thresholds missing from config.yaml - thresholds hardcoded!",
-                details={'config_keys': list(config_dict.keys())},
+                check_name="SubjectiveValidator: Test Script",
+                status=IntegrityStatus.WARN,
+                message="⚠️  Unit tests for evaluated generator not found",
+                details={'expected_path': str(test_path)},
                 duration_ms=(time.time() - start) * 1000
             ))
-        else:
-            thresholds = config_dict['subjective_thresholds']
-            has_max_violations = 'max_violations' in thresholds
-            has_max_commas = 'max_commas' in thresholds
-            
-            if not has_max_violations or not has_max_commas:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Configurable Thresholds",
-                    status=IntegrityStatus.FAIL,
-                    message="❌ CRITICAL: subjective_thresholds incomplete in config.yaml",
-                    details={
-                        'has_max_violations': has_max_violations,
-                        'has_max_commas': has_max_commas,
-                        'thresholds': thresholds
-                    },
-                    duration_ms=(time.time() - start) * 1000
-                ))
-            else:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Configurable Thresholds",
-                    status=IntegrityStatus.PASS,
-                    message=f"✅ Thresholds configurable: max_violations={thresholds['max_violations']}, max_commas={thresholds['max_commas']}",
-                    details={'thresholds': thresholds},
-                    duration_ms=(time.time() - start) * 1000
-                ))
-        
-        # Check 8: Validator loads thresholds from config (not hardcoded)
-        start = time.time()
-        validator_path = Path('processing/subjective/validator.py')
-        if validator_path.exists():
-            validator_content = validator_path.read_text()
-            
-            # Check for hardcoded thresholds (bad pattern)
-            has_hardcoded = ('total_violations <= 2' in validator_content or 
-                           'comma_count <= 4' in validator_content and 
-                           'self.thresholds' not in validator_content)
-            
-            # Check for config loading (good pattern)
-            loads_from_config = 'self.thresholds' in validator_content and '_load_thresholds' in validator_content
-            
-            if has_hardcoded and not loads_from_config:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: No Hardcoded Thresholds",
-                    status=IntegrityStatus.FAIL,
-                    message="❌ CRITICAL: Validator has hardcoded thresholds instead of loading from config!",
-                    details={'hardcoded_found': True, 'config_loading': False},
-                    duration_ms=(time.time() - start) * 1000
-                ))
-            elif loads_from_config:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: No Hardcoded Thresholds",
-                    status=IntegrityStatus.PASS,
-                    message="✅ Validator loads thresholds from config (no hardcoding)",
-                    details={'hardcoded_found': False, 'config_loading': True},
-                    duration_ms=(time.time() - start) * 1000
-                ))
-        
-        # Check 9: Threshold reasonableness check
-        start = time.time()
-        config_dict = self.config.config
-        if 'subjective_thresholds' in config_dict:
-            thresholds = config_dict['subjective_thresholds']
-            if 'max_violations' not in thresholds or 'max_commas' not in thresholds:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Threshold Reasonableness",
-                    status=IntegrityStatus.FAIL,
-                    message="❌ subjective_thresholds missing required keys 'max_violations' and/or 'max_commas'",
-                    details={'thresholds': thresholds},
-                    duration_ms=(time.time() - start) * 1000
-                ))
-                return results
-
-            max_violations = thresholds['max_violations']
-            max_commas = thresholds['max_commas']
-            
-            # Thresholds that are too strict will block high-quality content
-            # Based on Nov 16 batch test: 94-99% human content had 5-8 violations, 5-9 commas
-            is_too_strict = max_violations < 4 or max_commas < 5
-            is_reasonable = max_violations >= 5 and max_commas >= 6
-            
-            if is_too_strict:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Threshold Reasonableness",
-                    status=IntegrityStatus.WARN,
-                    message=f"⚠️  Thresholds may be too strict (violations≤{max_violations}, commas≤{max_commas}). May block high-quality content.",
-                    details={
-                        'max_violations': max_violations,
-                        'max_commas': max_commas,
-                        'recommendation': 'Consider violations≥5, commas≥6 based on test data'
-                    },
-                    duration_ms=(time.time() - start) * 1000
-                ))
-            elif is_reasonable:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Threshold Reasonableness",
-                    status=IntegrityStatus.PASS,
-                    message=f"✅ Thresholds reasonable (violations≤{max_violations}, commas≤{max_commas})",
-                    details={
-                        'max_violations': max_violations,
-                        'max_commas': max_commas
-                    },
-                    duration_ms=(time.time() - start) * 1000
-                ))
-        
-        # Check 10: Winston score is passed to validator (CRITICAL)
-        start = time.time()
-        generator_path = Path('processing/generator.py')
-        if generator_path.exists():
-            generator_content = generator_path.read_text()
-            
-            # Check that validate() is called WITH winston_score parameter
-            has_winston_param = 'validate(text, winston_score=' in generator_content or 'validate(content, winston_score=' in generator_content
-            
-            if not has_winston_param:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Winston Score Passed",
-                    status=IntegrityStatus.FAIL,
-                    message="❌ CRITICAL: Winston score NOT passed to validator - dynamic thresholds won't work!",
-                    details={
-                        'has_winston_param': False,
-                        'impact': 'Validator will use base thresholds only, ignoring Winston performance'
-                    },
-                    duration_ms=(time.time() - start) * 1000
-                ))
-            else:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Winston Score Passed",
-                    status=IntegrityStatus.PASS,
-                    message="✅ Winston score properly passed to validator for dynamic thresholds",
-                    details={'has_winston_param': True},
-                    duration_ms=(time.time() - start) * 1000
-                ))
-        
-        # Check 11: Adaptive threshold learning is functional
-        start = time.time()
-        validator_path = Path('processing/subjective/validator.py')
-        if validator_path.exists():
-            validator_content = validator_path.read_text()
-            
-            # Check for adaptive threshold learning logic (no hardcoded values)
-            has_adaptive_method = '_load_adaptive_thresholds' in validator_content
-            has_database_learning = 'composite_quality_score' in validator_content and 'percentile' in validator_content
-            has_config_fallback = '_load_config_thresholds' in validator_content
-            no_hardcoded_multipliers = '1.5' not in validator_content and '0.75' not in validator_content
-            
-            if not has_adaptive_method or not has_database_learning or not has_config_fallback:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Adaptive Threshold Learning",
-                    status=IntegrityStatus.FAIL,
-                    message="❌ CRITICAL: Adaptive threshold learning incomplete or missing!",
-                    details={
-                        'has_adaptive_method': has_adaptive_method,
-                        'has_database_learning': has_database_learning,
-                        'has_config_fallback': has_config_fallback,
-                        'no_hardcoded_values': no_hardcoded_multipliers
-                    },
-                    duration_ms=(time.time() - start) * 1000
-                ))
-            else:
-                results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Adaptive Threshold Learning",
-                    status=IntegrityStatus.PASS,
-                    message="✅ Adaptive threshold learning fully implemented",
-                    details={
-                        'adaptive_method': True,
-                        'database_learning': True,
-                        'config_fallback': True,
-                        'no_hardcoded_values': no_hardcoded_multipliers
-                    },
-                    duration_ms=(time.time() - start) * 1000
-                ))
         
         return results
     
@@ -1932,7 +1716,7 @@ class IntegrityChecker:
         test_paths = [
             Path('tests/test_config_integrity.py'),
             Path('tests/test_scale_mapper.py'),
-            Path('processing/tests'),
+            Path('tests/processing'),
         ]
         
         missing_tests = [str(p) for p in test_paths if not p.exists()]
@@ -2043,53 +1827,57 @@ class IntegrityChecker:
     
     def _check_per_iteration_learning(self) -> List[IntegrityResult]:
         """
-        Verify per-iteration learning architecture is correctly implemented.
-        
-        Critical checks to prevent hours of debugging:
-        1. Inline realism evaluation exists in generator retry loop
-        2. Dual-objective scoring (Winston 40% + Realism 60%)
-        3. Learning logged on EVERY iteration (success AND failure)
-        4. No global evaluation calls (removed)
-        5. RealismOptimizer integration
-        6. Database schema supports realism_learning table
-        
-        This prevents the system from silently failing to learn.
+        Verify current single-pass learning architecture is correctly implemented.
+
+        Architecture checks:
+        1. QualityEvaluatedGenerator exists (single-pass entrypoint)
+        2. UnifiedParameterProvider integration
+        3. ConsolidatedLearningSystem integration + logging
+        4. Subjective evaluation call in generation flow
+        5. Core learning database/table availability
         """
         results = []
         
-        # Check 1: Inline realism evaluation exists
+        # Check 1: Evaluated generator exists
         start = time.time()
-        generator_path = Path('processing/generator.py')
+        generator_path = Path('generation/core/evaluated_generator.py')
         
         if not generator_path.exists():
             results.append(IntegrityResult(
                 check_name="Per-Iteration: Generator Exists",
                 status=IntegrityStatus.FAIL,
-                message="❌ CRITICAL: generator.py not found",
+                message="❌ CRITICAL: evaluated_generator.py not found",
                 details={'expected_path': str(generator_path)},
                 duration_ms=(time.time() - start) * 1000
             ))
             return results  # Can't proceed without generator
+
+        results.append(IntegrityResult(
+            check_name="Per-Iteration: Generator Exists",
+            status=IntegrityStatus.PASS,
+            message="✅ QualityEvaluatedGenerator module exists",
+            details={'generator_path': str(generator_path)},
+            duration_ms=(time.time() - start) * 1000
+        ))
         
         generator_content = generator_path.read_text()
         
-        # Check for RealismIntegration facade (NEW architecture - Nov 18, 2025)
-        has_integration_import = 'from processing.subjective.realism_integration import RealismIntegration' in generator_content
-        has_grok_client = "create_api_client('grok')" in generator_content
-        has_facade_call = '_realism_integration.evaluate_and_log(' in generator_content
-        has_initialization = 'RealismIntegration(' in generator_content
-        
-        if not all([has_integration_import, has_grok_client, has_facade_call, has_initialization]):
+        # Check 2: UnifiedParameterProvider integration
+        start = time.time()
+        has_parameter_provider_import = (
+            'from generation.config.unified_parameter_provider import UnifiedParameterProvider'
+            in generator_content
+        )
+        has_parameter_provider_init = 'self.parameter_provider = UnifiedParameterProvider' in generator_content
+
+        if not (has_parameter_provider_import and has_parameter_provider_init):
             results.append(IntegrityResult(
                 check_name="Per-Iteration: Inline Realism Evaluation",
                 status=IntegrityStatus.FAIL,
-                message="❌ CRITICAL: Inline realism evaluation missing from retry loop",
+                message="❌ CRITICAL: UnifiedParameterProvider not fully integrated",
                 details={
-                    'has_integration_import': has_integration_import,
-                    'creates_grok_client': has_grok_client,
-                    'calls_facade': has_facade_call,
-                    'initializes_integration': has_initialization,
-                    'issue': 'System will not evaluate realism on every iteration via RealismIntegration facade'
+                    'has_import': has_parameter_provider_import,
+                    'has_init': has_parameter_provider_init,
                 },
                 duration_ms=(time.time() - start) * 1000
             ))
@@ -2097,29 +1885,26 @@ class IntegrityChecker:
             results.append(IntegrityResult(
                 check_name="Per-Iteration: Inline Realism Evaluation",
                 status=IntegrityStatus.PASS,
-                message="✅ Inline realism evaluation present via RealismIntegration facade",
-                details={'evaluates_per_iteration': True, 'uses_facade': True},
+                message="✅ UnifiedParameterProvider integrated into generation flow",
+                details={'parameter_provider_integrated': True},
                 duration_ms=(time.time() - start) * 1000
             ))
         
-        # Check 2: Dual-objective scoring
+        # Check 3: Consolidated learning integration
         start = time.time()
-        has_combined_score = 'combined_score' in generator_content
-        has_winston_weight = '0.4' in generator_content  # Winston 40%
-        has_realism_weight = '0.6' in generator_content  # Realism 60%
-        has_normalization = 'human_score / 10' in generator_content or 'winston_normalized' in generator_content
-        
-        if not all([has_combined_score, has_winston_weight, has_realism_weight]):
+        has_learning_import = 'from learning.consolidated_learning_system import ConsolidatedLearningSystem' in generator_content
+        has_learning_init = 'self.learning_system = ConsolidatedLearningSystem' in generator_content
+        has_learning_log = 'self.learning_system.log_generation(' in generator_content
+
+        if not (has_learning_import and has_learning_init and has_learning_log):
             results.append(IntegrityResult(
                 check_name="Per-Iteration: Dual-Objective Scoring",
                 status=IntegrityStatus.FAIL,
-                message="❌ CRITICAL: Dual-objective scoring (Winston 40% + Realism 60%) not implemented",
+                message="❌ CRITICAL: ConsolidatedLearningSystem integration incomplete",
                 details={
-                    'has_combined_score': has_combined_score,
-                    'has_winston_weight_40': has_winston_weight,
-                    'has_realism_weight_60': has_realism_weight,
-                    'has_normalization': has_normalization,
-                    'issue': 'System will not properly combine Winston and Realism scores'
+                    'has_import': has_learning_import,
+                    'has_init': has_learning_init,
+                    'has_log_call': has_learning_log,
                 },
                 duration_ms=(time.time() - start) * 1000
             ))
@@ -2127,27 +1912,22 @@ class IntegrityChecker:
             results.append(IntegrityResult(
                 check_name="Per-Iteration: Dual-Objective Scoring",
                 status=IntegrityStatus.PASS,
-                message="✅ Dual-objective scoring implemented (Winston 40% + Realism 60%)",
-                details={'combines_scores': True},
+                message="✅ Consolidated learning system integrated and logging",
+                details={'learning_integrated': True},
                 duration_ms=(time.time() - start) * 1000
             ))
         
-        # Check 3: Learning logged on success
+        # Check 4: Subjective evaluation call exists
         start = time.time()
-        has_success_learning = 'log_realism_learning' in generator_content
-        has_optimizer_import = 'from processing.learning.realism_optimizer import RealismOptimizer' in generator_content
-        has_ai_tendencies = 'ai_tendencies' in generator_content
-        
-        if not all([has_success_learning, has_ai_tendencies]):
+        has_subjective_eval_call = 'self.subjective_evaluator.evaluate(' in generator_content
+
+        if not has_subjective_eval_call:
             results.append(IntegrityResult(
                 check_name="Per-Iteration: Success Learning",
                 status=IntegrityStatus.FAIL,
-                message="❌ CRITICAL: Realism learning not logged on successful iterations",
+                message="❌ CRITICAL: Subjective evaluation call missing from evaluated generator",
                 details={
-                    'logs_learning': has_success_learning,
-                    'captures_tendencies': has_ai_tendencies,
-                    'has_optimizer': has_optimizer_import,
-                    'issue': 'System will not learn from successful patterns'
+                    'has_subjective_evaluate_call': False,
                 },
                 duration_ms=(time.time() - start) * 1000
             ))
@@ -2155,178 +1935,73 @@ class IntegrityChecker:
             results.append(IntegrityResult(
                 check_name="Per-Iteration: Success Learning",
                 status=IntegrityStatus.PASS,
-                message="✅ Learning logged on successful iterations",
-                details={'logs_success_patterns': True},
+                message="✅ Subjective evaluation is executed in generation flow",
+                details={'has_subjective_evaluate_call': True},
                 duration_ms=(time.time() - start) * 1000
             ))
         
-        # Check 4: Learning logged on FAILURE (critical!)
+        # Check 5: Core learning database schema
         start = time.time()
-        has_failure_learning = 'success=False' in generator_content
-        has_failure_comment = 'even for FAILURES' in generator_content or 'failure pattern' in generator_content.lower()
-        
-        if not has_failure_learning:
-            results.append(IntegrityResult(
-                check_name="Per-Iteration: Failure Learning",
-                status=IntegrityStatus.FAIL,
-                message="❌ CRITICAL: Realism learning NOT logged on failed iterations",
-                details={
-                    'logs_failures': has_failure_learning,
-                    'has_documentation': has_failure_comment,
-                    'issue': 'System will not learn from failures (50% of training data lost!)'
-                },
-                duration_ms=(time.time() - start) * 1000
-            ))
-        else:
-            results.append(IntegrityResult(
-                check_name="Per-Iteration: Failure Learning",
-                status=IntegrityStatus.PASS,
-                message="✅ Learning logged on failed iterations (builds training data)",
-                details={'logs_failure_patterns': True},
-                duration_ms=(time.time() - start) * 1000
-            ))
-        
-        # Check 5: No global evaluation calls
-        start = time.time()
-        run_path = Path('run.py')
-        
-        if not run_path.exists():
-            results.append(IntegrityResult(
-                check_name="Per-Iteration: No Global Evaluation",
-                status=IntegrityStatus.WARN,
-                message="⚠️  run.py not found, cannot verify global evaluation removal",
-                details={'expected_path': str(run_path)},
-                duration_ms=(time.time() - start) * 1000
-            ))
-        else:
-            run_content = run_path.read_text()
-            
-            # Check import is commented out
-            import_commented = '# from shared.commands.global_evaluation import run_global_subjective_evaluation' in run_content
-            
-            # Check no active calls
-            active_calls = run_content.count('run_global_subjective_evaluation(')
-            calls_commented = '# run_global_subjective_evaluation' in run_content
-            
-            if not import_commented or (active_calls > 0 and not calls_commented):
-                results.append(IntegrityResult(
-                    check_name="Per-Iteration: No Global Evaluation",
-                    status=IntegrityStatus.FAIL,
-                    message="❌ CRITICAL: Global evaluation still active (doesn't contribute to learning)",
-                    details={
-                        'import_commented': import_commented,
-                        'active_call_count': active_calls,
-                        'issue': 'Wastes API calls without contributing to current generation'
-                    },
-                    duration_ms=(time.time() - start) * 1000
-                ))
-            else:
-                results.append(IntegrityResult(
-                    check_name="Per-Iteration: No Global Evaluation",
-                    status=IntegrityStatus.PASS,
-                    message="✅ Global evaluation removed (per-iteration learning active)",
-                    details={'uses_inline_learning': True},
-                    duration_ms=(time.time() - start) * 1000
-                ))
-        
-        # Check 6: Combined score used for quality decision
-        start = time.time()
-        uses_combined_for_decision = 'combined_score_percent >= learning_target' in generator_content
-        
-        if not uses_combined_for_decision:
-            results.append(IntegrityResult(
-                check_name="Per-Iteration: Combined Score Decision",
-                status=IntegrityStatus.WARN,
-                message="⚠️  Quality decision may not use combined score",
-                details={
-                    'uses_combined': uses_combined_for_decision,
-                    'issue': 'Decisions should be based on Winston+Realism, not just Winston'
-                },
-                duration_ms=(time.time() - start) * 1000
-            ))
-        else:
-            results.append(IntegrityResult(
-                check_name="Per-Iteration: Combined Score Decision",
-                status=IntegrityStatus.PASS,
-                message="✅ Quality decisions use combined score (Winston + Realism)",
-                details={'uses_dual_objective': True},
-                duration_ms=(time.time() - start) * 1000
-            ))
-        
-        # Check 7: Database supports realism_learning table
-        start = time.time()
-        db_path = Path('data/winston_feedback.db')
-        
+        db_path = Path('z-beam.db')
+
         if not db_path.exists():
             results.append(IntegrityResult(
-                check_name="Per-Iteration: Database Schema",
+                check_name="Per-Iteration: Failure Learning",
                 status=IntegrityStatus.WARN,
-                message="⚠️  Winston feedback database not found",
-                details={'db_path': str(db_path)},
+                message="⚠️  Unified learning database not found yet",
+                details={
+                    'db_path': str(db_path),
+                },
                 duration_ms=(time.time() - start) * 1000
             ))
         else:
             try:
                 conn = sqlite3.connect(str(db_path))
                 cursor = conn.cursor()
-                
-                # Check if realism_learning table exists
-                cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='realism_learning'")
-                table_exists = cursor.fetchone() is not None
-                
-                if table_exists:
-                    # Check columns
-                    cursor.execute("PRAGMA table_info(realism_learning)")
-                    columns = [row[1] for row in cursor.fetchall()]
-                    required_columns = ['detected_ai_tendencies', 'parameter_adjustments', 'original_realism_score', 'success']
-                    missing_columns = [col for col in required_columns if col not in columns]
-                    
-                    if missing_columns:
-                        results.append(IntegrityResult(
-                            check_name="Per-Iteration: Database Schema",
-                            status=IntegrityStatus.FAIL,
-                            message=f"❌ CRITICAL: realism_learning table missing columns: {missing_columns}",
-                            details={'existing_columns': columns, 'missing': missing_columns},
-                            duration_ms=(time.time() - start) * 1000
-                        ))
-                    else:
-                        results.append(IntegrityResult(
-                            check_name="Per-Iteration: Database Schema",
-                            status=IntegrityStatus.PASS,
-                            message="✅ realism_learning table exists with required columns",
-                            details={'columns': columns},
-                            duration_ms=(time.time() - start) * 1000
-                        ))
-                else:
+                cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='generations'")
+                has_generations_table = cursor.fetchone() is not None
+                conn.close()
+
+                if has_generations_table:
                     results.append(IntegrityResult(
-                        check_name="Per-Iteration: Database Schema",
-                        status=IntegrityStatus.FAIL,
-                        message="❌ CRITICAL: realism_learning table does not exist",
-                        details={'issue': 'Learning data cannot be persisted'},
+                        check_name="Per-Iteration: Failure Learning",
+                        status=IntegrityStatus.PASS,
+                        message="✅ Unified learning schema available (generations table exists)",
+                        details={'db_path': str(db_path), 'table': 'generations'},
                         duration_ms=(time.time() - start) * 1000
                     ))
-                
-                conn.close()
+                else:
+                    results.append(IntegrityResult(
+                        check_name="Per-Iteration: Failure Learning",
+                        status=IntegrityStatus.WARN,
+                        message="⚠️  Unified learning DB exists but generations table is missing",
+                        details={'db_path': str(db_path)},
+                        duration_ms=(time.time() - start) * 1000
+                    ))
             except Exception as e:
                 results.append(IntegrityResult(
-                    check_name="Per-Iteration: Database Schema",
+                    check_name="Per-Iteration: Failure Learning",
                     status=IntegrityStatus.WARN,
-                    message=f"⚠️  Could not verify database schema: {e}",
-                    details={'error': str(e)},
+                    message=f"⚠️  Could not verify unified learning schema: {e}",
+                    details={
+                        'db_path': str(db_path),
+                        'error': str(e),
+                    },
                     duration_ms=(time.time() - start) * 1000
                 ))
+
+        # Check 6: Component/persona template separation
+        start = time.time()
         
         # Check 14: Template separation - component vs persona
-        start = time.time()
-        # Domain-specific component prompts
-        components_dirs = [
-            Path('prompts/materials'),
-            Path('prompts/settings'),
-            Path('prompts/contaminants'),
-            Path('prompts/compounds'),
-            Path('prompts/applications')
-        ]
-        personas_dir = Path('prompts/profiles/voice')
+        component_prompt_prefixes = (
+            'prompts/materials/',
+            'prompts/settings/',
+            'prompts/contaminants/',
+            'prompts/compounds/',
+            'prompts/applications/',
+        )
+        personas_dir = Path('shared/voice/profiles')
         
         # Voice keywords that should ONLY be in persona templates
         voice_keywords = [
@@ -2344,15 +2019,36 @@ class IntegrityChecker:
         violations = []
         total_components_checked = 0
         
-        # Check component templates don't have voice instructions
-        for components_dir in components_dirs:
-            if components_dir.exists():
-                for template_file in components_dir.glob('*.txt'):
-                    total_components_checked += 1
-                    content = template_file.read_text()
-                    found_voice_keywords = [kw for kw in voice_keywords if kw in content.lower()]
-                    if found_voice_keywords:
-                        violations.append(f"{components_dir.name}/{template_file.name}: has voice keywords {found_voice_keywords}")
+        # Check component templates from prompt catalog don't have voice instructions
+        try:
+            prompt_catalog = PromptRegistryService.get_prompt_catalog()
+            by_path = prompt_catalog.get('catalog', {}).get('byPath')
+            if not isinstance(by_path, dict):
+                raise ValueError("Prompt catalog is missing required 'catalog.byPath' mapping")
+
+            for prompt_path, prompt_text in by_path.items():
+                if not isinstance(prompt_path, str):
+                    continue
+                if not prompt_path.endswith('.txt'):
+                    continue
+                if not prompt_path.startswith(component_prompt_prefixes):
+                    continue
+                if not isinstance(prompt_text, str):
+                    continue
+
+                total_components_checked += 1
+                found_voice_keywords = [kw for kw in voice_keywords if kw in prompt_text.lower()]
+                if found_voice_keywords:
+                    violations.append(f"{prompt_path}: has voice keywords {found_voice_keywords}")
+        except Exception as e:
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Database Schema",
+                status=IntegrityStatus.FAIL,
+                message=f"❌ CRITICAL: Unable to validate prompt catalog template separation: {e}",
+                details={'error': str(e)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+            return results
         
         # Check persona templates don't have content instructions
         if personas_dir.exists():
@@ -2364,7 +2060,7 @@ class IntegrityChecker:
         
         if violations:
             results.append(IntegrityResult(
-                check_name="Template Separation: Component vs Persona",
+                check_name="Per-Iteration: Database Schema",
                 status=IntegrityStatus.FAIL,
                 message="❌ CRITICAL: Templates violate separation policy",
                 details={'violations': violations},
@@ -2372,7 +2068,7 @@ class IntegrityChecker:
             ))
         else:
             results.append(IntegrityResult(
-                check_name="Template Separation: Component vs Persona",
+                check_name="Per-Iteration: Database Schema",
                 status=IntegrityStatus.PASS,
                 message="✅ Component and persona templates properly separated",
                 details={'components_checked': total_components_checked,

@@ -264,6 +264,12 @@ def main():
     
     args = parser.parse_args()
 
+    if args.skip_integrity_check and os.getenv("ALLOW_INTEGRITY_BYPASS") != "1":
+        print("❌ Integrity bypass denied")
+        print("   --skip-integrity-check requires ALLOW_INTEGRITY_BYPASS=1")
+        print("   Example: ALLOW_INTEGRITY_BYPASS=1 python3 run.py --micro \"Aluminum\" --skip-integrity-check")
+        return False
+
     generation_requested = any([
         args.run,
         args.run_region,

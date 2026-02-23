@@ -41,7 +41,7 @@ python3 run.py --field pageDescription --material "Aluminum"
 - `generation/core/evaluated_generator.py`
 - `generation/field_router.py`
 - `generation/config/dynamic_config.py`
-- `prompts/{domain}/*.txt` (template files named by component_type)
+- Prompt catalog entries (catalog.byPath keys like `prompts/{domain}/*.txt`)
 
 ---
 

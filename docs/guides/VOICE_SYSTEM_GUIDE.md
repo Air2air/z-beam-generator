@@ -91,7 +91,7 @@ forbidden:
 
 #### ❌ Zero Tolerance Violations
 
-**FORBIDDEN in domain prompts** (`prompts/{domain}/*.txt`):
+**FORBIDDEN in domain prompts** (prompt catalog `catalog.byPath` entries like `prompts/{domain}/*.txt`):
 ```
 ❌ "Write in conversational professional English"
 ❌ "Use active voice (75%)"
@@ -295,7 +295,7 @@ Before ANY content generation work:
 
 ### Violation 1: Voice Instructions in Domain Prompts
 
-**Symptom**: Text like "Use active voice" or "NO conversational tone" in `prompts/{domain}/*.txt`
+**Symptom**: Text like "Use active voice" or "NO conversational tone" in prompt catalog entries `prompts/{domain}/*.txt`
 
 **Fix**:
 ```bash

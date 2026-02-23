@@ -70,7 +70,9 @@ class PropertySelector:
             return []
         
         material = materials_data[material_name]
-        category = material.get('category', 'unknown')
+        if 'category' not in material:
+            raise KeyError(f"Material '{material_name}' missing required key: 'category'")
+        category = material['category']
         
         # Get property pool for this section type
         property_pool = self._get_property_pool_for_section(section_type)
@@ -91,7 +93,9 @@ class PropertySelector:
             if prop_name not in category_stats:
                 continue  # Skip if no category baseline
             
-            value = prop_data.get('value')
+            if 'value' not in prop_data:
+                raise KeyError(f"Property '{prop_name}' missing required key: 'value'")
+            value = prop_data['value']
             if value is None:
                 continue
             
@@ -110,7 +114,7 @@ class PropertySelector:
             scored_properties.append({
                 'name': prop_name,
                 'value': value,
-                'unit': prop_data.get('unit', ''),
+                'unit': prop_data['unit'] if 'unit' in prop_data else '',
                 'distinctiveness_score': z_score,
                 'category_mean': stats['mean'],
                 'category_range': f"{stats['min']:.2f}-{stats['max']:.2f}"
@@ -174,16 +178,26 @@ class PropertySelector:
         properties = {}
         
         # Navigate nested structure: properties.materialCharacteristics.{prop}
-        material_props = material.get('properties', {})
-        material_chars = material_props.get('materialCharacteristics', {})
+        if 'properties' not in material:
+            raise KeyError("Material missing required key: 'properties'")
+        material_props = material['properties']
+        if not isinstance(material_props, dict):
+            raise TypeError("Material key 'properties' must be a dictionary")
+        if 'materialCharacteristics' not in material_props:
+            raise KeyError("Material properties missing required key: 'materialCharacteristics'")
+        material_chars = material_props['materialCharacteristics']
+        if not isinstance(material_chars, dict):
+            raise TypeError("Material properties.materialCharacteristics must be a dictionary")
         
         for prop_name in property_names:
             if prop_name in material_chars:
                 prop_data = material_chars[prop_name]
                 if isinstance(prop_data, dict):
+                    if 'value' not in prop_data:
+                        raise KeyError(f"Property '{prop_name}' missing required key: 'value'")
                     properties[prop_name] = {
-                        'value': prop_data.get('value'),
-                        'unit': prop_data.get('unit', '')
+                        'value': prop_data['value'],
+                        'unit': prop_data['unit'] if 'unit' in prop_data else ''
                     }
         
         return properties
@@ -210,7 +224,7 @@ class PropertySelector:
         # Filter to category
         category_materials = {
             name: data for name, data in materials_data.items()
-            if data.get('category') == category
+            if isinstance(data, dict) and 'category' in data and data['category'] == category
         }
         
         if not category_materials:
@@ -223,7 +237,9 @@ class PropertySelector:
         for material_name, material_data in category_materials.items():
             props = self._extract_properties(material_data, property_names)
             for prop_name, prop_data in props.items():
-                value = prop_data.get('value')
+                if 'value' not in prop_data:
+                    raise KeyError(f"Extracted property '{prop_name}' missing required key: 'value'")
+                value = prop_data['value']
                 if value is not None:
                     try:
                         property_values[prop_name].append(float(value))

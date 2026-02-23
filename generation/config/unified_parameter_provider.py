@@ -26,7 +26,7 @@ Purpose: Simplify generation pipeline by reducing parameter resolution complexit
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -41,10 +41,10 @@ class GenerationParameters:
     max_tokens: int
     
     # Quality weights (for evaluation)
-    quality_weights: Dict[str, float]
+    quality_weights: dict[str, float]
     
     # Quality insights (for context)
-    recent_issues: List[Dict[str, any]]
+    recent_issues: list[dict[str, Any]]
     
     # Learning context
     learned_from_samples: int
@@ -78,31 +78,33 @@ class UnifiedParameterProvider:
         from generation.config.dynamic_config import DynamicConfig
         self.dynamic_config = DynamicConfig()
         
-        # Initialize learning modules (lazy - only if database exists)
+        # Initialize learning modules
         self._sweet_spot_analyzer = None
         self._weight_learner = None
         self._validation_correlator = None
-        
-        if self.db_path.exists():
-            try:
-                from learning.sweet_spot_analyzer import SweetSpotAnalyzer
-                from learning.validation_winston_correlator import ValidationWinstonCorrelator
-                from learning.weight_learner import WeightLearner
-                
-                self._sweet_spot_analyzer = SweetSpotAnalyzer(db_path=str(self.db_path))
-                self._weight_learner = WeightLearner(db_path=self.db_path)
-                self._validation_correlator = ValidationWinstonCorrelator(db_path=str(self.db_path))
-                
-                logger.info(f"✅ Learning systems initialized from {db_path}")
-            except Exception as e:
-                logger.warning(f"⚠️  Learning systems unavailable: {e}")
-        else:
-            logger.info(f"Learning database not found: {db_path} (using base config only)")
+
+        if not self.db_path.exists():
+            raise FileNotFoundError(
+                f"Learning database not found: {db_path} - fail-fast architecture requires learning data"
+            )
+
+        try:
+            from learning.sweet_spot_analyzer import SweetSpotAnalyzer
+            from learning.validation_winston_correlator import ValidationWinstonCorrelator
+            from learning.weight_learner import WeightLearner
+
+            self._sweet_spot_analyzer = SweetSpotAnalyzer(db_path=str(self.db_path))
+            self._weight_learner = WeightLearner(db_path=self.db_path)
+            self._validation_correlator = ValidationWinstonCorrelator(db_path=str(self.db_path))
+
+            logger.info(f"✅ Learning systems initialized from {db_path}")
+        except Exception as e:
+            raise RuntimeError(f"Failed to initialize learning systems: {e}") from e
     
     def get_parameters(
         self,
         component_type: str,
-        target_words: Optional[int] = None
+        target_words: int | None = None
     ) -> GenerationParameters:
         """
         Get unified parameters with all learning integrated.
@@ -126,16 +128,30 @@ class UnifiedParameterProvider:
         learned_samples = 0
         confidence = 0.0
         
-        if self._sweet_spot_analyzer:
-            try:
-                learned_params = self._sweet_spot_analyzer.get_learned_parameters(component_type)
-                if learned_params and 'temperature' in learned_params:
-                    learned_temp = learned_params['temperature']
-                    learned_samples = learned_params.get('sample_count', 0)
-                    confidence = learned_params.get('confidence', 0.0)
-                    logger.debug(f"Applied learned temperature: {learned_temp:.3f} (from {learned_samples} samples)")
-            except Exception as e:
-                logger.debug(f"Could not load learned parameters: {e}")
+        if not self._sweet_spot_analyzer:
+            raise RuntimeError("SweetSpotAnalyzer unavailable - cannot resolve learned parameters")
+
+        learned_params = self._sweet_spot_analyzer.get_learned_parameters(component_type)
+        if not learned_params:
+            raise RuntimeError(
+                f"No learned parameters available for component_type='{component_type}'"
+            )
+
+        required_keys = ['temperature', 'sample_count', 'confidence']
+        missing = [key for key in required_keys if key not in learned_params]
+        if missing:
+            raise KeyError(f"Learned parameters missing required keys: {', '.join(missing)}")
+
+        learned_temp = learned_params['temperature']
+        learned_samples = learned_params['sample_count']
+        confidence = learned_params['confidence']
+        if not isinstance(learned_temp, int | float):
+            raise TypeError("Learned parameter 'temperature' must be numeric")
+        if not isinstance(learned_samples, int):
+            raise TypeError("Learned parameter 'sample_count' must be an integer")
+        if not isinstance(confidence, int | float):
+            raise TypeError("Learned parameter 'confidence' must be numeric")
+        logger.debug(f"Applied learned temperature: {learned_temp:.3f} (from {learned_samples} samples)")
         
         # 3. Get quality weights
         quality_weights = self._get_quality_weights()
@@ -144,18 +160,33 @@ class UnifiedParameterProvider:
         recent_issues = self._get_recent_issues()
         
         # 5. Calculate optimal max_tokens
-        if target_words:
-            # Allow 2.5x target for natural completion + safety margin
-            # 1 token ≈ 0.75 words, so words * 1.33 ≈ tokens
-            max_tokens = int(target_words * 2.5 * 1.33)
-            max_tokens = max(200, min(max_tokens, 4096))  # Clamp 200-4096
-        else:
-            max_tokens = 2000  # Reasonable default
+        if target_words is None:
+            target_words = self.dynamic_config.base_config.get_component_length(component_type)
+
+        if not isinstance(target_words, int):
+            raise TypeError(
+                f"Invalid target_words type for component_type='{component_type}': expected int, got {type(target_words).__name__}"
+            )
+
+        if target_words <= 0:
+            raise ValueError(
+                f"Invalid target_words for component_type='{component_type}': {target_words}"
+            )
+
+        # Allow 2.5x target for natural completion + safety margin
+        # 1 token ≈ 0.75 words, so words * 1.33 ≈ tokens
+        max_tokens = int(target_words * 2.5 * 1.33)
+        max_tokens = max(200, min(max_tokens, 4096))  # Clamp 200-4096
         
+        if 'frequency_penalty' not in learned_penalties:
+            raise KeyError("Missing required key in learned_penalties: frequency_penalty")
+        if 'presence_penalty' not in learned_penalties:
+            raise KeyError("Missing required key in learned_penalties: presence_penalty")
+
         return GenerationParameters(
             temperature=learned_temp,
-            frequency_penalty=learned_penalties.get('frequency_penalty', 0.0),
-            presence_penalty=learned_penalties.get('presence_penalty', 0.0),
+            frequency_penalty=learned_penalties['frequency_penalty'],
+            presence_penalty=learned_penalties['presence_penalty'],
             max_tokens=max_tokens,
             quality_weights=quality_weights,
             recent_issues=recent_issues,
@@ -163,36 +194,40 @@ class UnifiedParameterProvider:
             confidence_score=confidence
         )
     
-    def _get_quality_weights(self) -> Dict[str, float]:
-        """Get learned quality weights or defaults"""
-        default_weights = {
-            'winston_ai': 0.4,
-            'realism': 0.6,
-            'voice_authenticity': 0.3,
-            'structural_quality': 0.2,
-            'ai_patterns': 0.3
-        }
-        
-        if self._weight_learner:
-            try:
-                learned_weights = self._weight_learner.get_learned_quality_weights()
-                if learned_weights:
-                    return learned_weights
-            except Exception as e:
-                logger.debug(f"Could not load learned weights: {e}")
-        
-        return default_weights
+    def _get_quality_weights(self) -> dict[str, float]:
+        """Get learned quality weights"""
+        if not self._weight_learner:
+            raise RuntimeError("WeightLearner unavailable - cannot resolve quality weights")
+
+        learned_weights = self._weight_learner.get_learned_quality_weights()
+        if not learned_weights:
+            raise RuntimeError("WeightLearner returned empty quality weights")
+
+        required_keys = [
+            'winston_ai',
+            'realism',
+            'voice_authenticity',
+            'structural_quality',
+            'ai_patterns',
+            'readability',
+        ]
+        missing = [key for key in required_keys if key not in learned_weights]
+        if missing:
+            raise KeyError(f"Learned quality weights missing required keys: {', '.join(missing)}")
+
+        return learned_weights
     
-    def _get_recent_issues(self) -> List[Dict[str, any]]:
+    def _get_recent_issues(self) -> list[dict[str, Any]]:
         """Get recent quality issues from correlation analysis"""
-        if self._validation_correlator:
-            try:
-                insights = self._validation_correlator.get_top_issues(lookback_days=7, limit=3)
-                return insights or []
-            except Exception as e:
-                logger.debug(f"Could not load quality insights: {e}")
-        
-        return []
+        if not self._validation_correlator:
+            raise RuntimeError("ValidationWinstonCorrelator unavailable - cannot resolve quality insights")
+
+        insights = self._validation_correlator.get_top_issues(lookback_days=7, limit=3)
+        if insights is None:
+            raise ValueError("ValidationWinstonCorrelator.get_top_issues() returned None")
+        if not isinstance(insights, list):
+            raise ValueError("ValidationWinstonCorrelator.get_top_issues() must return a list")
+        return insights
     
     def display_insights(self, params: GenerationParameters) -> None:
         """
@@ -201,7 +236,7 @@ class UnifiedParameterProvider:
         Args:
             params: GenerationParameters to display
         """
-        print(f"🌡️  Generation Parameters:")
+        print("🌡️  Generation Parameters:")
         print(f"   • temperature: {params.temperature:.3f}")
         print(f"   • frequency_penalty: {params.frequency_penalty:.2f}")
         print(f"   • presence_penalty: {params.presence_penalty:.2f}")
@@ -211,6 +246,6 @@ class UnifiedParameterProvider:
             print(f"   • Learned from {params.learned_from_samples} samples (confidence: {params.confidence_score:.1%})")
         
         if params.recent_issues:
-            print(f"\n💡 Recent Quality Insights:")
+            print("\n💡 Recent Quality Insights:")
             for insight in params.recent_issues:
                 print(f"   ⚠️  {insight['issue']}: {insight['impact']:+.1f} impact on Winston")

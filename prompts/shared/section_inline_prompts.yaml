@@ -1,70 +1,47 @@
 schemaVersion: 1.0.0
+shared_section_prompt: &shared_section_prompt |-
+  Write a context-specific section description focused on THIS ITEM'S challenges as they relate to the section topic.
+  Discuss the effects of the section topic (practical impacts, failure modes, or operational consequences).
+  Include special considerations that are specific to THIS ITEM in the context of this section topic.
+  Keep it concise and concrete.
+
 section_prompts:
-  synonymsIdentifiers: |
-    Generate title and description for identifiers and aliases of THIS ITEM. Title should be concise (3-5 words). Description must specify the canonical name, key aliases, and operational lookup identifiers used by operators and documentation systems.
-  chemicalProperties: |
-    Generate title and description for chemical properties of THIS ITEM. Title should be concise (3-5 words). Description must explain composition, reactivity profile, and chemistry-specific behavior relevant to handling and cleaning outcomes.
-  physicalProperties: |
-    Generate title and description for physical properties of THIS ITEM. Title should be concise (3-5 words). Description must cover measurable physical characteristics and how they influence practical processing behavior.
+  synonymsIdentifiers: *shared_section_prompt
+  chemicalProperties: *shared_section_prompt
+  physicalProperties: *shared_section_prompt
   page: |
-    Generate title and description for the page overview of THIS ITEM. Title should be concise (3-5 words). Description must summarize what this item is, why it matters operationally, and what users should expect from the page content.
-  appearanceVariations: |
-    Generate title and description for visual appearance variations of THIS ITEM. Title should be concise (3-5 words). Description must focus on observable color, texture, and morphology patterns relevant to identification.
-  healthEffects: |
-    Generate title and description for health effects of THIS ITEM. Title should be concise (3-5 words). Description must address exposure-related biological impacts, risk severity, and practical safety implications.
-  industryApplications: |
-    Generate title and description for industry applications of THIS ITEM. Title should be concise (3-5 words). Description must identify key sectors, typical use contexts, and why this item is selected for those workflows.
-  commonChallenges: |
-    Generate title and description for common operational challenges with THIS ITEM. Title should be concise (3-5 words). Description must explain key constraints, failure modes, and handling difficulties encountered in practice.
-  preventionStrategies: |
-    Generate title and description for prevention strategies for THIS ITEM. Title should be concise (3-5 words). Description must detail risk-reduction controls, preventive actions, and practical mitigation practices.
-  exposureLimits: |
-    Generate title and description for THIS ITEM'S exposure limits. Title should be concise (3-5 words) and item-specific. Description must specify WHAT exposure levels THIS item allows, WHY these limits are set for THIS substance (toxicity, target organs, dose-response), HOW THIS item's limits compare to similar substances, and WHICH monitoring THIS item requires based on ITS exposure dynamics.
-  ppeRequirements: |
-    Generate title and description for PPE requirements FOR THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH protection levels THIS item requires based on ITS hazard profile, WHAT makes THIS item need PARTICULAR respiratory/eye/skin protection (volatility, pH, reactivity specific to it), and WHY standard PPE may be insufficient for THIS substance's UNIQUE penetration risks.
-  emergencyResponse: |
-    Generate title and description for emergency procedures WITH THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHAT makes THIS item's exposures require SPECIFIC first aid (not generic), WHICH treatments counter THIS item's PARTICULAR effects, WHY timing matters for THIS substance (reactivity, absorption rate), and HOW containment differs for THIS item's UNIQUE properties.
-  storageRequirements: |
-    Generate title and description for STORING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHY this item needs SPECIFIC storage conditions (instability, reactivity, vapor pressure), WHAT makes THIS item incompatible with certain materials (reactions unique to it), WHICH containers suit THIS item's properties, and HOW THIS item's storage differs from similar substances.
-  regulatoryStandards: |
-    Generate title and description for standards GOVERNING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH regulations apply to THIS item's SPECIFIC hazards, WHAT makes THIS item require PARTICULAR compliance measures (toxicity, flammability, reactivity unique to it), and HOW THIS item's characteristics determine ITS regulatory classification.
-  regulatoryClassification: |
-    Generate title and description for THIS ITEM'S classifications. Title should be concise (3-5 words) and item-specific. Description must specify WHICH GHS classes THIS item falls into based on ITS properties, WHAT H-codes/P-codes reflect THIS item's SPECIFIC hazards (not generic), HOW THIS item is classified for transport, and WHY THIS item requires PARTICULAR designations.
-  detectionMethods: |
-    Generate title and description for DETECTING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must detail WHICH detection methods work for THIS item based on ITS properties (spectral, chemical, physical signatures), WHY THIS item requires SPECIFIC techniques (detection challenges unique to it), HOW reliable each method is for THIS item, and WHAT distinguishes THIS item from similar substances.
-  removalMethods: |
-    Generate title and description for REMOVING THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH methods work for THIS item based on ITS bonding/adhesion properties, WHY THIS item requires PARTICULAR techniques (chemistry, mechanical bonds unique to it), HOW removal approaches compare for THIS item, and WHAT makes THIS item easier or harder to remove than similar items.
-  environmentalImpact: |
-    Generate title and description for THIS ITEM'S environmental effects. Title should be concise (3-5 words) and item-specific. Description must detail HOW this item impacts environment based on ITS properties (persistence, bioaccumulation, degradation unique to it), WHY THIS item poses PARTICULAR risks to air/water/soil, WHICH disposal methods suit THIS item's chemistry, and HOW THIS item differs environmentally from alternatives.
+    Summarize what THIS ITEM is and why it matters operationally.
+  appearanceVariations: *shared_section_prompt
+  healthEffects: *shared_section_prompt
+  industryApplications: *shared_section_prompt
+  commonChallenges: *shared_section_prompt
+  preventionStrategies: *shared_section_prompt
+  exposureLimits: *shared_section_prompt
+  ppeRequirements: *shared_section_prompt
+  emergencyResponse: *shared_section_prompt
+  storageRequirements: *shared_section_prompt
+  regulatoryStandards: *shared_section_prompt
+  regulatoryClassification: *shared_section_prompt
+  detectionMethods: *shared_section_prompt
+  removalMethods: *shared_section_prompt
+  environmentalImpact: *shared_section_prompt
   faq: |
-    Generate frequently asked questions and answers about THIS ITEM for laser cleaning applications. Create 3-4 practical questions that professionals commonly ask about THIS item, covering safety considerations, process parameters, effectiveness, and best practices. Provide detailed, technical answers that address the specific properties and behaviors of THIS item, not generic responses.
-  continuousMonitoring: |
-    Generate title and description for CONTINUOUS MONITORING of THIS ITEM. Title should be concise (3-5 words) and item-specific. Description must specify WHICH real-time instruments monitor THIS item based on ITS signatures (spectral, electrochemical), HOW to set up continuous sampling for THIS item given ITS state/volatility, WHAT monitoring intervals THIS item requires based on ITS exposure dynamics, and WHICH automated thresholds trigger alerts for THIS substance.
-  reactivity: |
-    Generate title and description for THIS ITEM'S chemical reactivity. Title should be concise (3-5 words) and item-specific. Description must detail HOW this item's SPECIFIC molecular structure drives ITS reactions, WHICH substances it reacts with based on ITS unique chemistry, WHAT conditions trigger THIS item's reactions, and WHY THIS item's reactivity requires SPECIFIC handling.
-  contaminatedBy: |
-    Generate title and description emphasizing THIS MATERIAL'S specific contamination vulnerabilities. Title should be concise (3-5 words) and item-specific. Description should explain WHY these contaminants target THIS material's unique properties (surface chemistry, porosity, reactivity) and HOW they accumulate based on ITS DISTINCT characteristics, not generic contamination patterns.
-  producedByMaterials: |
-    Generate title and description identifying materials that CREATE THIS CONTAMINANT. Title should be concise (3-5 words) and item-specific. Description must specify WHAT makes these materials produce THIS contaminant (unique chemical reactions, thermal decomposition, oxidation pathways specific to THIS contaminant), WHICH conditions favor ITS formation, and HOW material properties drive THIS particular contamination.
-  producedFromContaminants: |
-    Generate title and description showing contaminants that FORM THIS COMPOUND. Title should be concise (3-5 words) and item-specific. Description must detail THE SPECIFIC REACTIONS creating THIS compound, ITS UNIQUE formation chemistry (not general pathways), WHY this compound's structure creates PARTICULAR safety risks, and WHAT makes THIS compound's formation conditions distinctive.
-  relatedContaminants: |
-    Generate title and description highlighting contaminants RELATED TO THIS ONE. Title should be concise (3-5 words) and item-specific. Description must explain WHAT connects THIS contaminant to related ones (shared chemistry, co-formation mechanisms), WHY they appear together in THIS context, and HOW understanding THIS contaminant's relationships informs cleaning strategies SPECIFIC to its profile.
-  relatedCompounds: |
-    Generate title and description identifying compounds RELATED TO THIS ONE. Title should be concise (3-5 words) and item-specific. Description must specify WHAT makes these compounds similar to THIS one (functional groups, molecular structure, reactivity), WHICH properties THIS compound shares with them, and WHY these relationships matter for understanding THIS compound's behavior and potential substitutes.
-  materialCharacteristics: |
-    Generate title and description for THIS MATERIAL'S characteristics. Title should be concise (3-5 words) and material-specific. Description should explain WHAT makes this material's physical properties distinctive, HOW these characteristics affect laser cleaning behavior, and WHY these properties matter for cleaning strategy and parameter selection for THIS specific material.
-  laserMaterialInteraction: |
-    Generate title and description for laser interaction with THIS MATERIAL. Title should be concise (3-5 words) and material-specific. Description should detail HOW laser energy affects THIS material specifically, WHAT absorption and reflection characteristics are unique to THIS material, and WHY these interactions determine optimal cleaning parameters for THIS material.
-  relatedMaterials: |
-    Generate title and description for materials RELATED TO THIS ONE. Title should be concise (3-5 words) and material-specific. Description should identify WHAT materials are similar to THIS one in composition or cleaning behavior, HOW cleaning strategies for THIS material apply to related materials, and WHY understanding these relationships helps optimize cleaning approaches.
+    Provide practical FAQ content for THIS ITEM in laser cleaning workflows.
+  continuousMonitoring: *shared_section_prompt
+  reactivity: *shared_section_prompt
+  contaminatedBy: *shared_section_prompt
+  producedByMaterials: *shared_section_prompt
+  producedFromContaminants: *shared_section_prompt
+  relatedContaminants: *shared_section_prompt
+  relatedCompounds: *shared_section_prompt
+  materialCharacteristics: *shared_section_prompt
+  laserMaterialInteraction: *shared_section_prompt
+  relatedMaterials: *shared_section_prompt
   micro: |
-    Generate title and description for before/after cleaning of THIS MATERIAL. Title should be concise (2-3 words) and material-specific. Description should be very brief, describing the visual transformation during cleaning process for THIS material - what the surface looks like before cleaning and after cleaning.
+    Describe the before-and-after surface transformation for THIS MATERIAL.
   pageDescription: |
-    Generate ONLY a single page description paragraph for THIS MATERIAL (no title). Write 2-4 complete sentences in plain prose that explain WHAT this material is, WHY laser cleaning is relevant, HOW it responds during cleaning, and WHICH operator considerations matter most. Do NOT output labels, markdown headings, bullet points, JSON, or template wrappers. Do NOT start with 'Title:' or 'Description:'. End with a full sentence.
-  machineSettings: |
-    Generate title and description for machine settings. Title should be concise (2-3 words). Description should detail optimal laser parameters, power settings, wavelength selections, and equipment configurations for THIS material.
-  "operational.laserMaterialInteraction": |
-    Generate title and description for laser-material interaction. Title should be concise (3-5 words). Description should explain how laser energy interacts with THIS material's surface, absorption characteristics, and thermal response patterns.
+    Describe THIS MATERIAL at page level in one concise operationally useful paragraph.
+  machineSettings: *shared_section_prompt
+  "operational.laserMaterialInteraction": *shared_section_prompt
   "components.micro": |
-    Generate title and description for microscopic before/after comparison. Title should emphasize transformation. Description should highlight what microscopic examination reveals about the cleaning process effectiveness.
+    Describe the microscopic before-and-after cleaning transformation.

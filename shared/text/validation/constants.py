@@ -35,7 +35,7 @@ class ValidationConstants:
     Thresholds adapt based on learned success patterns from database.
     """
     
-    # Static defaults (ONLY used when database learning unavailable)
+    # Static defaults (legacy/testing only)
     DEFAULT_WINSTON_AI_THRESHOLD = 0.33          # AI score must be < 0.33 (33% AI, 67%+ human)
     DEFAULT_WINSTON_HUMAN_THRESHOLD = 0.67       # Human score must be >= 67%
     WINSTON_MIN_CHARS = 300                       # Minimum characters for Winston API
@@ -51,8 +51,7 @@ class ValidationConstants:
                 from learning.threshold_manager import ThresholdManager
                 cls._threshold_manager = ThresholdManager(db_path='z-beam.db')
             except Exception as e:
-                logger.warning(f"[VALIDATION] ThresholdManager unavailable: {e}")
-                cls._threshold_manager = None
+                raise RuntimeError(f"[VALIDATION] ThresholdManager unavailable: {e}") from e
         return cls._threshold_manager
     
     @classmethod
@@ -68,8 +67,9 @@ class ValidationConstants:
         """
         if use_learned:
             manager = cls._get_threshold_manager()
-            if manager:
-                return manager.get_winston_threshold(use_learned=True)
+            if manager is None:
+                raise RuntimeError("[VALIDATION] ThresholdManager unavailable for learned Winston threshold")
+            return manager.get_winston_threshold(use_learned=True)
         
         return cls.DEFAULT_WINSTON_AI_THRESHOLD
     
@@ -81,7 +81,7 @@ class ValidationConstants:
             "[VALIDATION] WINSTON_AI_THRESHOLD constant is deprecated, "
             "use get_winston_threshold() for dynamic learning"
         )
-        return self.DEFAULT_WINSTON_AI_THRESHOLD
+        return self.get_winston_threshold(use_learned=True)
     
     # Keep as class variable for backward compatibility
     WINSTON_HUMAN_THRESHOLD = DEFAULT_WINSTON_HUMAN_THRESHOLD

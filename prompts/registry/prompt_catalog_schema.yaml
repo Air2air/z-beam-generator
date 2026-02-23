@@ -1,0 +1,41 @@
+schemaVersion: 1.0.0
+name: prompt-catalog-schema
+description: >-
+  Canonical YAML schema for consolidated prompt templates. This schema is
+  intentionally documentation-first for fail-fast migration and validation.
+required:
+  - schemaVersion
+  - generatedAt
+  - sourceRoot
+  - catalog
+catalogRequired:
+  - shared
+  - core
+  - quality
+  - domains
+  - extras
+  - byPath
+catalogShape:
+  shared:
+    textPromptCore: string
+    components: map<string,string>
+  core:
+    humanness:
+      full: string
+      compact: string
+  quality:
+    evaluation: string
+  domains:
+    materials: map<string,string>
+    settings: map<string,string>
+    contaminants: map<string,string>
+    compounds: map<string,string>
+    applications: map<string,string>
+  extras:
+    map<string,string>: any unmapped prompts preserved verbatim
+  byPath:
+    map<string,string>: lossless mirror of every prompts/**/*.txt file
+notes:
+  - No runtime fallback from YAML to TXT is allowed in production migration mode.
+  - byPath MUST include all discovered TXT files to guarantee full fidelity.
+  - Domain prompt keys should use filename stem (e.g., pageDescription from pageDescription.txt).

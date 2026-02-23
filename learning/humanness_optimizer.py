@@ -26,6 +26,8 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
 
+from shared.text.utils.prompt_registry_service import PromptRegistryService
+
 
 logger = logging.getLogger(__name__)
 
@@ -104,15 +106,9 @@ class HumannessOptimizer:
         else:
             self.patterns_file = patterns_file
         
-        # Validate template files exist (fail-fast)
-        self.template_file = Path('prompts/core/humanness_layer.txt')
-        self.template_file_compact = Path('prompts/core/humanness_layer_compact.txt')
-        if not self.template_file.exists():
-            raise FileNotFoundError(
-                f"Humanness layer template not found: {self.template_file}. "
-                f"Cannot operate without template per template-only policy."
-            )
-        # Compact template is optional - will use full template if not found
+        # Validate required templates in consolidated prompt catalog (fail-fast)
+        PromptRegistryService.get_humanness_template(compact=False)
+        PromptRegistryService.get_humanness_template(compact=True)
         
         # Components using compact humanness layer (structural variation ONLY, no voice)
         # Compact template follows separation of concerns: voice from personas, structure from humanness
@@ -152,6 +148,18 @@ class HumannessOptimizer:
         
         with open(self.config_path, 'r', encoding='utf-8') as f:
             self.config = yaml.safe_load(f)
+
+        # Load centralized text length randomization config (single source of truth)
+        self.text_field_config_path = Path('generation/text_field_config.yaml')
+        if not self.text_field_config_path.exists():
+            raise FileNotFoundError(
+                f"Text field config not found: {self.text_field_config_path}. "
+                "Cannot resolve randomization_range without centralized config."
+            )
+        with open(self.text_field_config_path, 'r', encoding='utf-8') as f:
+            self.text_field_config = yaml.safe_load(f)
+        if not isinstance(self.text_field_config, dict):
+            raise ValueError("generation/text_field_config.yaml must contain a YAML dictionary")
         
         # Merge domain-specific configs (randomization_targets moved to domain configs)
         # Load materials domain config for structures, property_strategies, length, etc.
@@ -189,6 +197,25 @@ class HumannessOptimizer:
         self._pattern_learner = None
         
         logger.info(f"✅ HumannessOptimizer initialized (Winston DB: {winston_db_path}, Config: {config_path})")
+
+    def _get_randomization_factors(self) -> tuple[float, float]:
+        """Get centralized length randomization factors from text_field_config.yaml."""
+        randomization_cfg = self.text_field_config.get('randomization_range')
+        if not isinstance(randomization_cfg, dict):
+            raise ValueError(
+                "Missing required config block: randomization_range in generation/text_field_config.yaml"
+            )
+
+        min_factor = randomization_cfg.get('min_factor')
+        max_factor = randomization_cfg.get('max_factor')
+        if not isinstance(min_factor, (int, float)) or not isinstance(max_factor, (int, float)):
+            raise TypeError("randomization_range.min_factor and max_factor must be numeric")
+        if min_factor <= 0 or max_factor <= 0 or min_factor > max_factor:
+            raise ValueError(
+                f"Invalid randomization_range: min_factor={min_factor}, max_factor={max_factor}"
+            )
+
+        return float(min_factor), float(max_factor)
     
     def generate_humanness_instructions(
         self,
@@ -272,14 +299,28 @@ class HumannessOptimizer:
         
         # Use new method from enhanced winston_feedback_db.py
         patterns_dict = self._winston_db.get_passing_sample_patterns()
+
+        required_keys = [
+            'sample_count',
+            'best_score',
+            'average_score',
+            'conversational_markers',
+            'number_patterns',
+            'sample_excerpts',
+        ]
+        missing = [key for key in required_keys if key not in patterns_dict]
+        if missing:
+            raise KeyError(
+                f"Winston passing patterns missing required keys: {', '.join(missing)}"
+            )
         
         return WinstonPatterns(
-            sample_count=patterns_dict.get('sample_count', 0),
-            best_score=patterns_dict.get('best_score', 1.0),
-            average_score=patterns_dict.get('average_score', 1.0),
-            conversational_markers=patterns_dict.get('conversational_markers', []),
-            number_patterns=patterns_dict.get('number_patterns', []),
-            sample_excerpts=patterns_dict.get('sample_excerpts', [])
+            sample_count=patterns_dict['sample_count'],
+            best_score=patterns_dict['best_score'],
+            average_score=patterns_dict['average_score'],
+            conversational_markers=patterns_dict['conversational_markers'],
+            number_patterns=patterns_dict['number_patterns'],
+            sample_excerpts=patterns_dict['sample_excerpts']
         )
     
     def _extract_subjective_patterns(self) -> SubjectivePatterns:
@@ -303,12 +344,19 @@ class HumannessOptimizer:
         # Use new methods from enhanced subjective_pattern_learner.py
         avoidance = self._pattern_learner.get_avoidance_patterns()
         success = self._pattern_learner.get_success_patterns()
+
+        required_avoidance_keys = ['theatrical_phrases', 'ai_tendencies', 'penalty_weights']
+        missing_avoidance_keys = [key for key in required_avoidance_keys if key not in avoidance]
+        if missing_avoidance_keys:
+            raise KeyError(
+                f"Subjective avoidance patterns missing required keys: {', '.join(missing_avoidance_keys)}"
+            )
         
         return SubjectivePatterns(
-            theatrical_phrases=avoidance.get('theatrical_phrases', []),
-            ai_tendencies=avoidance.get('ai_tendencies', []),
+            theatrical_phrases=avoidance['theatrical_phrases'],
+            ai_tendencies=avoidance['ai_tendencies'],
             success_patterns=success,
-            penalty_weights=avoidance.get('penalty_weights', {})
+            penalty_weights=avoidance['penalty_weights']
         )
     
     def _extract_validation_feedback(self, domain: str = None) -> Dict[str, Any]:
@@ -541,54 +589,38 @@ class HumannessOptimizer:
             Formatted humanness instructions with randomization
         """
         # Select template: compact for micro (8000 char API limit), full for others
-        use_compact = component_type in self.compact_components and self.template_file_compact.exists()
+        use_compact = component_type in self.compact_components
         
         if use_compact:
-            template = self.template_file_compact.read_text(encoding='utf-8')
+            template = PromptRegistryService.get_humanness_template(compact=True)
             logger.info(f"📝 Using COMPACT humanness template for {component_type}")
         else:
-            template = self.template_file.read_text(encoding='utf-8')
+            template = PromptRegistryService.get_humanness_template(compact=False)
             logger.info(f"📝 Using humanness template for {component_type}")
         
-        # 🎲 RANDOMIZE WORD COUNT VARIATION (NEW - Dec 12, 2025)
-        # NOTE: This generates the INSTRUCTION text for the humanness layer ONLY
-        # Actual length multiplication happens in prompt_builder.py (single source of truth)
-        # Calculate actual numeric length target with variation
-        # Base variation from config, then add randomization for each generation
-        # This creates unpredictable variation percentages (not just fixed ±50%)
-        base_variation = self.config.get('word_count_variation', 0.80)  # ±80% default
-        
-        # Random adjustment: ±20% of base variation
-        # Examples: base 0.80 → range 0.64-0.96 (±64% to ±96%)
-        variation_adjustment = random.uniform(-0.20, 0.20) * base_variation
-        randomized_variation = base_variation + variation_adjustment
-        
-        # Clamp to reasonable bounds (20% to 100%)
-        randomized_variation = max(0.20, min(1.0, randomized_variation))
-        
-        # Calculate actual numeric target from base (e.g., 50 ± 70% = 15-85 range)
+        # 🎲 RANDOMIZE WORD COUNT TARGET (multiplier-only)
+        # NOTE: This generates instruction guidance for humanness layer only.
+        # PromptBuilder remains responsible for final prompt-level target injection.
+        min_factor, max_factor = self._get_randomization_factors()
+        randomized_multiplier = random.uniform(min_factor, max_factor)
+
         if length_target:
-            # Apply randomized variation to base target
-            min_length = int(length_target * (1 - randomized_variation))
-            max_length = int(length_target * (1 + randomized_variation))
-            # Select a random target within the range
-            selected_length_value = random.randint(min_length, max_length)
+            selected_length_value = max(1, int(length_target * randomized_multiplier))
             selected_length_key = "RANDOMIZED"
             selected_length = selected_length_value
         else:
-            # Fallback if no length_target provided
-            variation_pct = int(randomized_variation * 100)
+            variation_pct = int(abs(randomized_multiplier - 1.0) * 100)
             selected_length_key = "RANDOMIZED"
-            selected_length = f"±{variation_pct}% variation (base: ±{int(base_variation*100)}%, adjusted: {variation_adjustment:+.2f})"
+            selected_length = f"x{randomized_multiplier:.2f} multiplier (≈±{variation_pct}% from base)"
 
         # pageDescription uses sentence-count constraints from schema prompt.
         # Avoid introducing extra word-count targets in humanness layer.
         if component_type == 'pageDescription':
             selected_length_key = "SENTENCE_BASED"
-            selected_length = "2-4 complete sentences (no explicit word target)"
+            selected_length = "single focused paragraph (no explicit word target)"
         
-        # Store randomized variation for prompt_builder to use
-        self._current_variation = randomized_variation
+        # Store normalized variation magnitude for reporting/legacy access
+        self._current_variation = abs(randomized_multiplier - 1.0)
         
         # 🎲 RANDOMIZE STRUCTURAL APPROACH (from config)
         structure_config = self.config['randomization_targets']['structures']
@@ -871,7 +903,9 @@ NOTE: Voice style comes from assigned author persona (specified in VOICE INSTRUC
             5: "FINAL ATTEMPT: Content MUST pass as human-written. Apply all learned patterns with full emphasis."
         }
         
-        return guidance_map.get(level, guidance_map[1])
+        if level not in guidance_map:
+            raise ValueError(f"Invalid strictness level: {level}. Expected one of {sorted(guidance_map.keys())}")
+        return guidance_map[level]
     
     def _format_previous_feedback(self, ai_tendencies: List[str], level: int) -> str:
         """Format feedback from previous failed attempt"""
@@ -892,18 +926,22 @@ NOTE: Voice style comes from assigned author persona (specified in VOICE INSTRUC
             return 0
         
         patterns = self._pattern_learner.get_current_patterns()
-        return patterns.get('total_evaluations', 0)
+        if 'total_evaluations' not in patterns:
+            raise KeyError("Current patterns missing required key: total_evaluations")
+        return patterns['total_evaluations']
     
     def get_current_variation(self) -> float:
         """
         Get the randomized word count variation for current generation.
         
         Returns:
-            Current variation (0.0-1.0), or base from config if not yet randomized
+            Current variation magnitude (0.0-1.0), derived from randomization multiplier.
         """
         if self._current_variation is not None:
             return self._current_variation
-        return self.config.get('word_count_variation', 0.80)  # ±80% default
+        min_factor, max_factor = self._get_randomization_factors()
+        midpoint_multiplier = (min_factor + max_factor) / 2.0
+        return abs(midpoint_multiplier - 1.0)
 
 
 # Convenience function for standalone usage

@@ -16,6 +16,8 @@ import json
 import logging
 from typing import Dict, List, Optional
 
+from generation.config.config_loader import ProcessingConfig
+
 logger = logging.getLogger(__name__)
 
 
@@ -39,6 +41,10 @@ class FAQTopicResearcher:
         """
         self.api_client = api_client
         self.logger = logging.getLogger(__name__)
+        self.config = ProcessingConfig()
+        self.topic_max_tokens = int(
+            self.config.get_required_config('constants.research.faq_topic_max_tokens')
+        )
     
     def enhance_faq_topics(
         self,
@@ -126,7 +132,7 @@ class FAQTopicResearcher:
             # Generate with Grok
             response = self.api_client.generate_simple(
                 prompt,
-                max_tokens=200,  # Short response
+                max_tokens=self.topic_max_tokens,
                 temperature=dynamic_config.calculate_temperature('research')
             )
             

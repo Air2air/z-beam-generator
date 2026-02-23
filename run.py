@@ -37,6 +37,19 @@ API_PROVIDERS = {
         'max_retries': 3,
         'retry_delay': 1.0
     },
+    'winston': {
+        'name': 'Winston AI Detection',
+        'model': 'winston-ai-detector',
+        'default_model': 'winston-ai-detector',
+        'env_var': 'WINSTON_API_KEY',
+        'base_url': 'https://api.gowinston.ai',
+        'max_tokens': 1000,
+        'temperature': 0.1,
+        'timeout_connect': 30.0,
+        'timeout_read': 120.0,
+        'max_retries': 5,
+        'retry_delay': 2.0
+    },
     'deepseek': {
         'name': 'DeepSeek',
         'model': 'deepseek-chat',
@@ -659,6 +672,12 @@ Examples:
                         help='Analyze all quality metrics (use with --test)')
     parser.add_argument('--all-fields', action='store_true',
                         help='Generate all component types (use with --generate)')
+    parser.add_argument('--integrity-check', action='store_true',
+                        help='Run system integrity checks')
+    parser.add_argument('--quick', action='store_true',
+                        help='Quick mode (with --integrity-check, skips slow checks)')
+    parser.add_argument('--verbose', action='store_true',
+                        help='Show detailed output for tests and checks')
     
     args = parser.parse_args()
     
@@ -671,6 +690,9 @@ Examples:
         return
     elif args.test:
         test_command(args)
+        return
+    elif args.integrity_check:
+        integrity_check_command(args)
         return
     
     # Execute command (backfill is default if --domain/--item provided without other flags)
@@ -904,6 +926,29 @@ def test_command(args):
     except Exception as e:
         print(f"❌ Error: {e}")
         sys.exit(1)
+
+
+def integrity_check_command(args):
+    """Run system integrity checks."""
+    from generation.integrity import IntegrityChecker
+
+    print("\n🔍 Running System Integrity Checks...")
+    checker = IntegrityChecker()
+
+    if args.quick:
+        results = checker.run_quick_checks()
+    else:
+        results = checker.run_all_checks()
+
+    checker.print_report(results, verbose=args.verbose)
+
+    if checker.has_failures(results):
+        print("\n❌ System integrity check FAILED. Fix issues before generating content.")
+        sys.exit(1)
+    elif checker.has_warnings(results):
+        print("\n⚠️  System integrity check passed with warnings.")
+    else:
+        print("\n✅ System integrity check PASSED. All systems healthy.")
 
 
 if __name__ == '__main__':

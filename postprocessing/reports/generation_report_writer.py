@@ -81,7 +81,9 @@ class GenerationReportWriter:
             if 'winston_score' in metrics:
                 winston_score = metrics['winston_score']
                 human_score = (1.0 - winston_score) * 100
-                threshold = metrics.get('winston_threshold', 0.33)
+                if 'winston_threshold' not in metrics:
+                    raise KeyError("metrics missing required key: winston_threshold")
+                threshold = metrics['winston_threshold']
                 status = "✅ PASS" if winston_score < threshold else "❌ FAIL"
                 lines.extend([
                     f"- **Winston AI Score**: {winston_score:.3f} (threshold: {threshold:.3f})",
@@ -141,7 +143,9 @@ class GenerationReportWriter:
         Returns:
             Path to report file
         """
-        success_count = summary.get('success_count', 0)
+        if 'success_count' not in summary:
+            raise KeyError("summary missing required key: success_count")
+        success_count = summary['success_count']
         total_count = len(materials)
         
         # Build report content
@@ -187,9 +191,13 @@ class GenerationReportWriter:
         ])
         
         for result in results:
-            material = result.get('material', 'Unknown')
-            success = result.get('success', False)
-            content = result.get('content', '')
+            required_result_keys = ['material', 'success', 'content']
+            missing = [key for key in required_result_keys if key not in result]
+            if missing:
+                raise KeyError(f"result missing required keys: {', '.join(missing)}")
+            material = result['material']
+            success = result['success']
+            content = result['content']
             
             lines.extend([
                 f"### {material}",
@@ -215,7 +223,9 @@ class GenerationReportWriter:
                 if 'realism_score' in result and result['realism_score'] is not None:
                     lines.append(f"- Realism Score: {result['realism_score']:.1f}/10")
             else:
-                error = result.get('error', 'Unknown error')
+                if 'error' not in result:
+                    raise KeyError("failed result missing required key: error")
+                error = result['error']
                 lines.extend([
                     "**Status**: ❌ FAILED",
                     "",

@@ -273,8 +273,8 @@ grep -A 8 "discovery:" frontmatter/materials/aluminum-laser-cleaning.yaml
 **Browser Test**:
 1. Scroll to bottom of page (before Schedule section)
 2. Verify title is "Similar Non-Ferrous Metals"
-3. Verify description appears
-4. Verify material cards display
+3. Verify section description appears
+4. Verify material cards display (no item-level `relatedMaterials.description` field)
 
 ---
 

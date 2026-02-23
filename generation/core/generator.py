@@ -83,6 +83,7 @@ class Generator:
         # Load config for base parameters
         from generation.config.config_loader import get_config
         config = get_config()
+        self.processing_config = config
         self.config = config.config
         
         # Dynamic config for parameter baseline
@@ -114,6 +115,32 @@ class Generator:
         
         self.logger.info(f"Loaded {len(personas)} personas")
         return personas
+
+    def _get_domain_generation_list(self, *path_parts: str) -> list:
+        from generation.config.config_loader import get_config
+
+        config = get_config().config
+        domain_generation = config.get('domain_generation')
+        if not isinstance(domain_generation, dict):
+            raise KeyError("Missing required config block: domain_generation")
+        if self.domain not in domain_generation:
+            raise KeyError(
+                f"Missing domain_generation config for domain '{self.domain}'"
+            )
+        node: Any = domain_generation[self.domain]
+
+        for part in path_parts:
+            if not isinstance(node, dict) or part not in node:
+                raise KeyError(
+                    f"Missing required config key: domain_generation.{self.domain}.{'.'.join(path_parts)}"
+                )
+            node = node[part]
+
+        if not isinstance(node, list):
+            raise TypeError(
+                f"domain_generation.{self.domain}.{'.'.join(path_parts)} must be a list"
+            )
+        return node
     
     def _get_persona_by_author_id(self, author_id: int) -> Dict[str, Any]:
         """Get persona by author ID"""
@@ -135,9 +162,16 @@ class Generator:
     
     def _get_base_parameters(self, component_type: str) -> Dict[str, Any]:
         """Get base generation parameters from dynamic config"""
+        penalties = self.dynamic_config.calculate_penalties(component_type)
+        if 'frequency_penalty' not in penalties:
+            raise KeyError("Dynamic penalties missing required key: frequency_penalty")
+        if 'presence_penalty' not in penalties:
+            raise KeyError("Dynamic penalties missing required key: presence_penalty")
+
         return {
             'temperature': self.dynamic_config.calculate_temperature(),
-            'max_tokens': self.dynamic_config.calculate_max_tokens(component_type)
+            'max_tokens': self.dynamic_config.calculate_max_tokens(component_type),
+            'api_penalties': penalties,
         }
     
     def generate(
@@ -165,12 +199,8 @@ class Generator:
         from learning.humanness_optimizer import HumannessOptimizer
         humanness_optimizer = HumannessOptimizer()
         
-        # Get base word count target from config
-        component_lengths = self.config.get('component_lengths', {})
-        if isinstance(component_lengths.get(component_type), dict):
-            length_target = component_lengths[component_type].get('default')
-        else:
-            length_target = component_lengths.get(component_type)
+        # Get base word count target from validated config
+        length_target = self.processing_config.get_component_length(component_type)
         
         humanness_layer = humanness_optimizer.generate_humanness_instructions(
             component_type=component_type,
@@ -229,7 +259,8 @@ class Generator:
         item_data = self._get_item_data(identifier)
         
         # Format with SEO-specific data if generating SEO components
-        if component_type in ['page_title', 'meta_description']:
+        seo_components = self._get_domain_generation_list('seo_components')
+        if component_type in seo_components:
             print(f"🔍 SEO component detected: {component_type}")
             self.logger.info(f"🔍 SEO component detected: {component_type}")
             from generation.context.seo_formatter import SEOContextFormatter
@@ -291,7 +322,17 @@ class Generator:
         from shared.text.utils.prompt_builder import PromptBuilder
 
         # Get technical intensity from config and normalize to 0.0-1.0 scale
-        config_technical_intensity = self.config.get('voice_parameters', {}).get('technical_intensity', 2)
+        voice_parameters = self.config.get('voice_parameters')
+        if not isinstance(voice_parameters, dict):
+            raise TypeError("Missing or invalid config section: voice_parameters")
+        if 'technical_intensity' not in voice_parameters:
+            raise KeyError("Missing required config key: voice_parameters.technical_intensity")
+        config_technical_intensity = voice_parameters['technical_intensity']
+        if not isinstance(config_technical_intensity, (int, float)):
+            raise TypeError(
+                "Invalid config type for voice_parameters.technical_intensity: "
+                f"{type(config_technical_intensity).__name__}"
+            )
         normalized_intensity = (config_technical_intensity - 1) / 2.0  # 1→0.0, 2→0.5, 3→1.0
         
         enrichment_params = {
@@ -374,16 +415,16 @@ class Generator:
             self.logger.info(f"   • Status: {validation_result.get_summary()}")
             
             # Display FULL PROMPT STRUCTURE (TERMINAL + FILE LOGGING)
+            prompt_lines = prompt.splitlines()
             print(f"\n📜 FULL PROMPT STRUCTURE:")
-            print(f"   • Total lines: {len(prompt.split('\n'))}")
+            print(f"   • Total lines: {len(prompt_lines)}")
             print(f"   • First 15 lines:")
-            for i, line in enumerate(prompt.split('\n')[:15], 1):
+            for i, line in enumerate(prompt_lines[:15], 1):
                 print(f"      {i:2d}. {line[:100]}{'...' if len(line) > 100 else ''}")
-            if len(prompt.split('\n')) > 15:
-                print(f"   • ... ({len(prompt.split('\n')) - 15} more lines)")
+            if len(prompt_lines) > 15:
+                print(f"   • ... ({len(prompt_lines) - 15} more lines)")
             
             self.logger.info(f"\n📜 FULL PROMPT STRUCTURE:")
-            prompt_lines = prompt.split('\n')
             self.logger.info(f"   • Total lines: {len(prompt_lines)}")
             self.logger.info(f"   • First 10 lines:")
             for i, line in enumerate(prompt_lines[:10], 1):
@@ -541,20 +582,16 @@ class Generator:
                 print(f"   ✅ Coherence validated successfully")
                 self.logger.info("   ✅ Coherence validated successfully")
         except ImportError as e:
-            print(f"\n⚠️  Prompt validator not available - skipping validation")
-            print(f"   Error: {e}")
-            self.logger.warning(f"⚠️  UniversalPromptValidator not available - skipping validation: {e}")
+            raise RuntimeError(
+                f"UniversalPromptValidator import failed - fail-fast architecture requires validation: {e}"
+            ) from e
         
         # Make API call
         self.logger.info("📡 Making API request...")
         from shared.api.client import GenerationRequest
         
         # Calculate optimal max_tokens based on target length (reduces token waste)
-        component_lengths = self.config.get('component_lengths', {})
-        if isinstance(component_lengths.get(component_type), dict):
-            target_words = component_lengths[component_type].get('default', 150)
-        else:
-            target_words = component_lengths.get(component_type, 150)
+        target_words = self.processing_config.get_component_length(component_type)
         
         # Allow 2.5x target for natural completion + safety margin
         # Average: 1 token ≈ 0.75 words, so words * 1.33 ≈ tokens
@@ -566,7 +603,7 @@ class Generator:
                 prompt=prompt,
                 max_tokens=optimal_max_tokens,  # Dynamic based on target length (was 4096)
                 temperature=params['temperature'],
-                **params.get('api_penalties', {})
+                **params['api_penalties']
             )
             
             response = self.api_client.generate(request)
@@ -590,8 +627,15 @@ class Generator:
             char_count = sum(len(str(v)) for v in content.values() if v)
         elif isinstance(content, list):
             # FAQ has list of Q&A dicts
-            word_count = sum(len(qa.get('answer', '').split()) for qa in content)
-            char_count = sum(len(qa.get('answer', '')) for qa in content)
+            for qa in content:
+                if not isinstance(qa, dict):
+                    raise ValueError("FAQ content entries must be dictionaries")
+                if 'answer' not in qa:
+                    raise KeyError("FAQ entry missing required key: answer")
+                if not isinstance(qa['answer'], str):
+                    raise TypeError("FAQ entry 'answer' must be a string")
+            word_count = sum(len(qa['answer'].split()) for qa in content)
+            char_count = sum(len(qa['answer']) for qa in content)
         else:
             # String content (description, etc.)
             word_count = len(str(content).split())
@@ -670,9 +714,9 @@ class Generator:
                 is_valid=getattr(validation_result, 'is_valid', True) or 
                         getattr(validation_result, 'is_coherent', True),
                 issues=issues,
-                prompt_length=getattr(validation_result, 'prompt_length', None) or 0,
-                word_count=getattr(validation_result, 'word_count', None) or 0,
-                estimated_tokens=getattr(validation_result, 'estimated_tokens', None) or 0,
+                prompt_length=getattr(validation_result, 'prompt_length', None),
+                word_count=getattr(validation_result, 'word_count', None),
+                estimated_tokens=getattr(validation_result, 'estimated_tokens', None),
                 material=material,
                 component_type=component_type,
                 domain=domain

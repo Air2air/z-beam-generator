@@ -725,20 +725,20 @@ SubjectiveEvaluationResult(
 
 ### Phase 2A: Integrate Composite Scoring into Pipeline
 
-**File**: `processing/unified_orchestrator.py`
+**File**: `generation/core/evaluated_generator.py`
 
 ```python
 # After Winston detection (line ~360)
 if readability['is_readable']:
     # Calculate composite score if subjective eval available
-    from processing.evaluation import CompositeScorer
+    from postprocessing.evaluation import CompositeScorer
     
     composite_scorer = CompositeScorer()
     
     # Get subjective score if available
     subjective_score = None
     if self.config.get('enable_subjective_evaluation', False):
-        from processing.evaluation import SubjectiveEvaluator
+        from postprocessing.evaluation import SubjectiveEvaluator
         evaluator = SubjectiveEvaluator(api_client=self.api_client)
         
         subjective_result = evaluator.evaluate(
@@ -779,7 +779,7 @@ if readability['is_readable']:
 
 ### Phase 2B: Add Database Update Methods
 
-**File**: `processing/detection/winston_feedback_db.py`
+**File**: `postprocessing/detection/winston_feedback_db.py`
 
 ```python
 def update_detection_composite(
@@ -812,10 +812,10 @@ Add periodic correlation analysis to optimize parameters:
 # In UnifiedOrchestrator or separate script
 def analyze_and_optimize_parameters(self):
     """Run correlation analysis and generate recommendations."""
-    from processing.learning import GranularParameterCorrelator
+    from learning.validation_winston_correlator import ValidationWinstonCorrelator
     
     correlator = GranularParameterCorrelator(
-        db_path='processing/winston_feedback.db',
+        db_path='data/winston_feedback.db',
         min_samples=30,
         significance_level=0.05
     )

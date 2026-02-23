@@ -4,8 +4,8 @@ Convert full author objects to authorId in all domain YAML files.
 V6 Schema Normalization.
 """
 
+import argparse
 import yaml
-import sys
 from pathlib import Path
 
 def convert_file(filepath):
@@ -44,21 +44,39 @@ def convert_file(filepath):
     return changes
 
 def main():
-    base_dir = Path(__file__).parent / 'data'
-    files = [
-        base_dir / 'materials' / 'Materials.yaml',
-        base_dir / 'contaminants' / 'Contaminants.yaml',
-        base_dir / 'compounds' / 'Compounds.yaml',
-        base_dir / 'settings' / 'Settings.yaml',
-    ]
-    
+    parser = argparse.ArgumentParser(
+        description="Convert author objects to authorId in domain YAML files"
+    )
+    parser.add_argument(
+        '--domain',
+        choices=['materials', 'contaminants', 'compounds', 'settings', 'applications', 'all'],
+        default='all',
+        help='Domain to convert (default: all)'
+    )
+    args = parser.parse_args()
+
+    repo_root = Path(__file__).resolve().parents[2]
+    base_dir = repo_root / 'data'
+    domain_files = {
+        'materials': base_dir / 'materials' / 'Materials.yaml',
+        'contaminants': base_dir / 'contaminants' / 'Contaminants.yaml',
+        'compounds': base_dir / 'compounds' / 'Compounds.yaml',
+        'settings': base_dir / 'settings' / 'Settings.yaml',
+        'applications': base_dir / 'applications' / 'Applications.yaml',
+    }
+
+    if args.domain == 'all':
+        files = list(domain_files.values())
+    else:
+        files = [domain_files[args.domain]]
+
     total_changes = 0
     for filepath in files:
         if filepath.exists():
             total_changes += convert_file(filepath)
         else:
             print(f"⚠️  File not found: {filepath}")
-    
+
     print(f"\n✅ Total conversions: {total_changes}")
     print("📋 V6 Schema normalization complete")
 

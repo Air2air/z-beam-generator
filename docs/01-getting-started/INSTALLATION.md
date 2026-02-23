@@ -149,8 +149,8 @@ GROK_API_KEY=gsk_your_grok_key_here
 
 ##### AI Detection (Local System)
 **Note**: We use a local pattern-based AI detection system.
-- **Module**: `processing/detection/ai_detection.py`
-- **Patterns**: `prompts/ai_detection_patterns.txt`
+- **Module**: `postprocessing/detection/winston_analyzer.py`
+- **Patterns**: prompt catalog entry `prompts/ai_detection_patterns.txt` in `prompts/registry/prompt_catalog.yaml`
 - **No API keys required** for AI detection
 - See `docs/QUICK_REFERENCE.md` for usage details
 
@@ -161,7 +161,7 @@ DEEPSEEK_API_KEY=sk-your_deepseek_key_here
 GROK_API_KEY=gsk_your_grok_key_here
 
 # AI Detection: Local system (no API keys needed)
-# Detection configured in prompts/ai_detection_patterns.txt
+# Detection configured in prompt catalog entry prompts/ai_detection_patterns.txt
 ```
 
 ### Step 5: Verification & Testing

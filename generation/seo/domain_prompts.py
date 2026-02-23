@@ -11,6 +11,14 @@ Each domain has unique properties that users search for:
 from typing import Dict
 
 
+def _require_context_keys(context: Dict[str, str], keys: list[str], domain: str) -> None:
+    missing = [key for key in keys if key not in context]
+    if missing:
+        raise KeyError(
+            f"SEO prompt context for domain '{domain}' missing required keys: {', '.join(missing)}"
+        )
+
+
 def get_materials_prompt(context: Dict[str, str]) -> str:
     """
     Materials domain SEO prompt - User searches focus on:
@@ -21,16 +29,27 @@ def get_materials_prompt(context: Dict[str, str]) -> str:
     
     Highlights: Reflectivity%, absorption%, wavelength(nm), power(W), damage prevention
     """
+    required_keys = [
+        'material_name',
+        'reflectivity',
+        'absorption',
+        'wavelength',
+        'power_min',
+        'power_max',
+        'primary_challenge',
+    ]
+    _require_context_keys(context, required_keys, 'materials')
+
     return f"""Generate SEO metadata for laser cleaning of: {context['material_name']}
 
 User Search Intent: Users search for "{context['material_name'].lower()} laser cleaning", "high reflectivity metal cleaning", "laser cleaning {context['material_name'].lower()} without damage", "wavelength for {context['material_name'].lower()}"
 
 Technical Data:
-• Reflectivity: {context.get('reflectivity', 'N/A')}% (affects laser effectiveness)
-• Absorption: {context.get('absorption', 'N/A')}% (energy transfer rate)
-• Optimal wavelength: {context.get('wavelength', 'N/A')}nm
-• Power range: {context.get('power_min', 'N/A')}-{context.get('power_max', 'N/A')}W (prevents damage)
-• Primary challenge: {context.get('primary_challenge', 'N/A')}
+• Reflectivity: {context['reflectivity']}% (affects laser effectiveness)
+• Absorption: {context['absorption']}% (energy transfer rate)
+• Optimal wavelength: {context['wavelength']}nm
+• Power range: {context['power_min']}-{context['power_max']}W (prevents damage)
+• Primary challenge: {context['primary_challenge']}
 
 Create SEO that answers user questions:
 1. page_title: "{context['material_name']}: [Key Technical Benefit] Laser Cleaning" (under 60 chars)
@@ -61,16 +80,26 @@ def get_contaminants_prompt(context: Dict[str, str]) -> str:
     
     Highlights: Removal efficacy, surfaces affected, safety, alternative methods
     """
+    required_keys = [
+        'contaminant_name',
+        'contaminant_type',
+        'affected_materials',
+        'removal_difficulty',
+        'safety_notes',
+        'alternatives',
+    ]
+    _require_context_keys(context, required_keys, 'contaminants')
+
     return f"""Generate SEO metadata for laser removal of: {context['contaminant_name']}
 
 User Search Intent: Users search for "{context['contaminant_name'].lower()} removal laser", "laser cleaning {context['contaminant_name'].lower()}", "how to remove {context['contaminant_name'].lower()} laser", "industrial {context['contaminant_name'].lower()} cleaning"
 
 Technical Data:
-• Contaminant type: {context.get('contaminant_type', 'N/A')}
-• Common on surfaces: {context.get('affected_materials', 'Various metals and substrates')}
-• Removal difficulty: {context.get('removal_difficulty', 'Moderate to challenging')}
-• Safety considerations: {context.get('safety_notes', 'Standard laser safety protocols')}
-• Alternative methods: {context.get('alternatives', 'Chemical, abrasive, thermal')}
+• Contaminant type: {context['contaminant_type']}
+• Common on surfaces: {context['affected_materials']}
+• Removal difficulty: {context['removal_difficulty']}
+• Safety considerations: {context['safety_notes']}
+• Alternative methods: {context['alternatives']}
 
 Create SEO that answers user questions:
 1. page_title: "{context['contaminant_name']}: [Key Benefit] Contaminants" (under 60 chars)
@@ -102,17 +131,29 @@ def get_settings_prompt(context: Dict[str, str]) -> str:
     
     Highlights: Parameter ranges (power, wavelength, frequency), success rates, troubleshooting
     """
+    required_keys = [
+        'setting_name',
+        'material',
+        'contaminant',
+        'power_min',
+        'power_max',
+        'wavelength',
+        'frequency',
+        'challenges',
+    ]
+    _require_context_keys(context, required_keys, 'settings')
+
     return f"""Generate SEO metadata for laser cleaning settings: {context['setting_name']}
 
-User Search Intent: Users search for "laser settings for {context.get('material', 'materials')}", "power range {context.get('contaminant', 'contaminant')} removal", "optimal parameters {context.get('material', 'material')}", "troubleshooting laser cleaning {context.get('material', 'material')}"
+User Search Intent: Users search for "laser settings for {context['material']}", "power range {context['contaminant']} removal", "optimal parameters {context['material']}", "troubleshooting laser cleaning {context['material']}"
 
 Technical Data:
-• Material: {context.get('material', 'N/A')}
-• Target contaminant: {context.get('contaminant', 'Various')}
-• Power range: {context.get('power_min', 'N/A')}-{context.get('power_max', 'N/A')}W
-• Wavelength: {context.get('wavelength', 'N/A')}nm
-• Pulse frequency: {context.get('frequency', 'N/A')}kHz
-• Common challenges: {context.get('challenges', 'Parameter optimization')}
+• Material: {context['material']}
+• Target contaminant: {context['contaminant']}
+• Power range: {context['power_min']}-{context['power_max']}W
+• Wavelength: {context['wavelength']}nm
+• Pulse frequency: {context['frequency']}kHz
+• Common challenges: {context['challenges']}
 
 Create SEO that answers user questions:
 1. page_title: "{context['setting_name']}: [Power/Wavelength] Settings" (under 60 chars)
@@ -144,17 +185,28 @@ def get_compounds_prompt(context: Dict[str, str]) -> str:
     
     Highlights: Chemical formula, hazard class, safety protocols, exposure limits
     """
+    required_keys = [
+        'compound_name',
+        'chemical_formula',
+        'cas_number',
+        'hazard_class',
+        'exposure_limit',
+        'source',
+        'safety_protocols',
+    ]
+    _require_context_keys(context, required_keys, 'compounds')
+
     return f"""Generate SEO metadata for compound exposure in laser cleaning: {context['compound_name']}
 
 User Search Intent: Users search for "{context['compound_name'].lower()} laser cleaning hazards", "safety protocols {context['compound_name'].lower()}", "{context['compound_name'].lower()} exposure limits", "VOC emissions laser cleaning", "toxic fumes laser ablation"
 
 Technical Data:
-• Chemical formula: {context.get('chemical_formula', 'N/A')}
-• CAS number: {context.get('cas_number', 'N/A')}
-• Hazard class: {context.get('hazard_class', 'Industrial chemical')}
-• Exposure limit: {context.get('exposure_limit', 'OSHA guidelines')}
-• Source: {context.get('source', 'Material ablation byproduct')}
-• Safety protocols: {context.get('safety_protocols', 'Ventilation and monitoring required')}
+• Chemical formula: {context['chemical_formula']}
+• CAS number: {context['cas_number']}
+• Hazard class: {context['hazard_class']}
+• Exposure limit: {context['exposure_limit']}
+• Source: {context['source']}
+• Safety protocols: {context['safety_protocols']}
 
 Create SEO that answers user questions:
 1. page_title: "{context['compound_name']}: [Safety/Hazard Term] Compound" (under 60 chars)
@@ -163,7 +215,7 @@ Create SEO that answers user questions:
    - MUST end with exactly "Compound"
 
 2. meta_description: (under 160 chars)
-   - Start with "{context['compound_name']} ({context.get('chemical_formula', '')})"
+    - Start with "{context['compound_name']} ({context['chemical_formula']})"
    - Mention hazard type (toxic gas, VOC, particulate)
    - Include safety requirements (ventilation, monitoring, PPE)
    - Highlight regulatory compliance (OSHA, EPA)

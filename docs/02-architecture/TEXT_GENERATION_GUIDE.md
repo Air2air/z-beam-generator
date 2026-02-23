@@ -364,7 +364,7 @@ component_lengths:
     extraction_strategy: "before_after"
 ```
 
-3. **Create prompts** (`prompts/new_domain/description.txt`):
+3. **Create prompt catalog entry** (`prompts/new_domain/description.txt` in `prompts/registry/prompt_catalog.yaml`):
 ```
 Write about {item_name} in the context of {category}.
 

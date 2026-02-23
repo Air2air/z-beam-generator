@@ -10,6 +10,12 @@
 - API keys for DeepSeek, Grok, and Winston.ai
 - Basic command line knowledge
 
+## ⚠️ Execution Requirement (No venv)
+
+- Run all project tasks directly with `python3` from the repository root.
+- Do **not** create or activate a virtual environment for routine generation, postprocess, export, integrity, or test commands.
+- Example: `python3 run.py --integrity-check --quick`
+
 ---
 
 ## 🚀 Installation

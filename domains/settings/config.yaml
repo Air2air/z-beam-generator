@@ -7,6 +7,13 @@ data_path: "data/settings/Settings.yaml"
 data_root_key: "settings"
 frontmatter_pattern: "{slug}-settings.yaml"
 
+data_adapter:
+  data_path: "data/settings/Settings.yaml"
+  data_root_key: "settings"
+  author_key: "author.id"
+  context_keys:
+    - "category"
+
 # Component types (auto-discovered from prompts/*.txt files)
 # Components are dynamically detected at runtime - no hardcoded lists needed
 # See: prompts/settings/ directory for actual component definitions

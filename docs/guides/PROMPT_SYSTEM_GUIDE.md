@@ -38,10 +38,10 @@ This guide consolidates all prompt system architecture, policies, and best pract
 
 **ALL content generation instructions MUST exist ONLY in prompt template files.**
 
-**Prompt Templates** (authoritative sources):
-- `prompts/{domain}/*.txt` - Component-specific content requirements
+**Prompt Templates** (authoritative sources, stored in `prompt_catalog.yaml`):
+- `prompts/registry/prompt_catalog.yaml` (`catalog.byPath`) - Component-specific content requirements
 - `shared/voice/profiles/*.yaml` - Author personas and voice instructions
-- `prompts/core/humanness_layer*.txt` - Structural variation
+- `prompts/core/humanness_layer*.txt` (catalog entries) - Structural variation
 
 **Generator Code** (technical mechanisms only):
 - `generation/core/generator.py` - Orchestration and API calls
@@ -82,7 +82,7 @@ Each layer has ONE responsibility:
 |-------|---------|----------|----------|
 | **Voice** | Author characteristics | `shared/voice/profiles/*.yaml` | Voice instruction, tone, forbidden phrases |
 | **Humanness** | Structural variation | `learning/humanness_optimizer.py` | Opening patterns, rhythm, property strategies |
-| **Domain** | Content requirements | `prompts/{domain}/*.txt` | Task, word count, `{voice_instruction}` placeholder |
+| **Domain** | Content requirements | `prompt_catalog.yaml` `catalog.byPath` entries (e.g., `prompts/{domain}/*.txt`) | Task, word count, `{voice_instruction}` placeholder |
 
 **NO overlap, NO duplication, NO confusion.**
 
@@ -90,7 +90,7 @@ Each layer has ONE responsibility:
 
 The descriptor layer is now centralized through `PromptRegistryService` and domain YAML registries (`prompts/{domain}/content_prompts.yaml`, typically extending `prompts/shared/content_prompts.yaml`). It must remain normalized across domains and must never overlap with other descriptor responsibilities.
 
-**Required descriptor files per domain (`prompts/{domain}/`)**:
+**Required descriptor entries per domain (catalog `catalog.byPath`, keys like `prompts/{domain}/`)**:
 - `identifiers.txt`
 - `chemicalProperties.txt`
 - `physicalProperties.txt`
@@ -150,7 +150,7 @@ prompt = template.format(
 
 **✅ CORRECT - Put instruction IN TEMPLATE**:
 ```
-# In prompts/materials/micro.txt:
+# In prompt catalog entry prompts/materials/micro.txt:
 Write about {material_name} properties.
 
 CRITICAL: Never use numbers, measurements, or units.
@@ -159,7 +159,7 @@ Focus on qualitative descriptions only.
 
 ### What Belongs Where
 
-**In Prompt Templates** (`prompts/{domain}/*.txt`):
+**In Prompt Templates** (prompt catalog `catalog.byPath` entries like `prompts/{domain}/*.txt`):
 - ✅ Content instructions ("Write about X")
 - ✅ Style requirements ("Use qualitative terms")
 - ✅ Format rules ("Single paragraph, 50 words")
@@ -675,7 +675,7 @@ content = self.api_client.generate(final_prompt, temperature=temp)
 
 | What | Where |
 |------|-------|
-| **Prompt Templates** | `prompts/{domain}/*.txt` |
+| **Prompt Templates** | Prompt catalog `catalog.byPath` entries like `prompts/{domain}/*.txt` |
 | **Voice Profiles** | `shared/voice/profiles/*.yaml` |
 | **Humanness Templates** | `prompts/core/humanness_layer*.txt` |
 | **Generator** | `generation/core/generator.py` |

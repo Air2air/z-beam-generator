@@ -101,7 +101,7 @@ Be specific and technical."""
 Category: {category}
 
 Provide:
-- definition: Clear technical definition (1-2 sentences)
+- definition: Clear technical definition
 - related_terms: 3-5 related concepts
 - technical_details: Relevant technical information (units, ranges, formulas)
 - applications: Where this concept is used

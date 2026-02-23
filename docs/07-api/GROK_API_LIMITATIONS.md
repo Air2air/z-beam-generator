@@ -91,7 +91,7 @@ Potential architecture for testing penalties:
 ## Testing
 
 ### Test Coverage
-Location: `processing/tests/test_method_chain_robustness.py`
+Location: `tests/test_method_chain_robustness.py`
 
 ```python
 def test_api_penalties_calculated_for_logging(self):
@@ -109,8 +109,8 @@ def test_api_penalties_calculated_for_logging(self):
 ## References
 
 - **API Client**: `shared/api/client.py` (lines 350-357)
-- **Generator**: `processing/generator.py` (lines 370-386)
-- **Database Schema**: `processing/detection/winston_feedback_db.py` (generation_parameters table)
+- **Generator**: `generation/core/generator.py` (single-pass generation)
+- **Database Schema**: `postprocessing/detection/winston_feedback_db.py` (generation_parameters table)
 - **X.AI Documentation**: https://docs.x.ai/api
 
 ## Related Issues

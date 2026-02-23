@@ -65,7 +65,7 @@ prompts/
 ### Where Settings Are Controlled
 
 ```
-processing/config.yaml  ← 10 sliders control ALL generation
+generation/config.yaml  ← 10 sliders control ALL generation
 
 author_voice_intensity: 50      # How strong the regional voice
 sentence_rhythm_variation: 80   # How varied the sentence structure
@@ -147,8 +147,9 @@ Saved to Materials.yaml at materials.Aluminum.subtitle
 **Copilot does:**
 ```bash
 # Step 1: Adjust settings
-python3 -m processing.intensity.intensity_cli set rhythm 75
-python3 -m processing.intensity.intensity_cli set imperfection 65
+# Edit generation/config.yaml:
+# sentence_rhythm_variation: 75
+# imperfection_tolerance: 65
 
 # Step 2: Generate
 python3 run.py --subtitle "Steel"
@@ -189,8 +190,9 @@ python3 run.py --faq "Brass"
 
 **Copilot does:**
 ```bash
-python3 -m processing.intensity.intensity_cli set technical 70
-python3 -m processing.intensity.intensity_cli set context 65
+# Edit generation/config.yaml:
+# technical_language_intensity: 70
+# context_specificity: 65
 ```
 
 ### Make it More Natural/Human
@@ -200,9 +202,10 @@ python3 -m processing.intensity.intensity_cli set context 65
 
 **Copilot does:**
 ```bash
-python3 -m processing.intensity.intensity_cli set rhythm 80
-python3 -m processing.intensity.intensity_cli set imperfection 70
-python3 -m processing.intensity.intensity_cli set personality 55
+# Edit generation/config.yaml:
+# sentence_rhythm_variation: 80
+# imperfection_tolerance: 70
+# personality_intensity: 55
 ```
 
 ### Check Current Settings
@@ -212,7 +215,7 @@ python3 -m processing.intensity.intensity_cli set personality 55
 
 **Copilot does:**
 ```bash
-python3 -m processing.intensity.intensity_cli status
+python3 run.py --integrity-check --quick
 ```
 
 **Shows you:**
@@ -281,8 +284,8 @@ When you ask to "generate a subtitle for Aluminum", here's what happens:
 2. **Identifies** component type (subtitle) and material (Aluminum)
 3. **Runs command** `python3 run.py --subtitle "Aluminum"`
 4. **System loads**:
-   - Prompt template from `prompts/subtitle.txt`
-   - Settings from `processing/config.yaml`
+   - Prompt template from prompt catalog (catalog.byPath: `prompts/subtitle.txt`)
+   - Settings from `generation/config.yaml`
    - Material data from `data/materials/Materials.yaml`
 5. **Grok API** generates content based on instructions
 6. **System validates**:
@@ -329,8 +332,8 @@ Just start asking Copilot to generate content. Examples:
 ## 📖 More Information
 
 - **For Copilot**: Read `.github/COPILOT_GENERATION_GUIDE.md`
-- **System Architecture**: Read `processing/docs/ARCHITECTURE.md`
-- **Slider System**: Read `processing/docs/INTENSITY_CONTROLS.md`
+- **System Architecture**: Read `docs/02-architecture/processing-pipeline.md`
+- **Slider System**: Read `generation/config.yaml`
 - **All Commands**: Run `python3 run.py --help`
 
 ---

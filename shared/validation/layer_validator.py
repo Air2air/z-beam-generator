@@ -63,7 +63,9 @@ class LayerValidator:
             return ValidationResult(False, f"Missing base sections: {missing}")
 
         # Validate author configurations
-        authors = base_config.get("author_configurations", {})
+        authors = base_config["author_configurations"]
+        if not isinstance(authors, dict):
+            return ValidationResult(False, "author_configurations must be a dictionary")
         for author_id in [1, 2, 3, 4]:  # Taiwan, Italy, Indonesia, USA
             if str(author_id) not in authors:
                 return ValidationResult(False, f"Missing author {author_id} config")
@@ -94,10 +96,10 @@ class LayerValidator:
             return ValidationResult(False, f"Missing persona fields: {missing}")
 
         # Validate author ID consistency
-        if persona_config.get("author_id") != author_id:
+        if persona_config["author_id"] != author_id:
             return ValidationResult(
                 False,
-                f"Author ID mismatch: expected {author_id}, got {persona_config.get('author_id')}",
+                f"Author ID mismatch: expected {author_id}, got {persona_config['author_id']}",
             )
 
         return ValidationResult(True, "Persona layer validation passed")
@@ -111,7 +113,9 @@ class LayerValidator:
             return ValidationResult(False, f"Missing formatting fields: {missing}")
 
         # Validate markdown formatting structure
-        md_format = formatting_config.get("markdown_formatting", {})
+        md_format = formatting_config["markdown_formatting"]
+        if not isinstance(md_format, dict):
+            return ValidationResult(False, "markdown_formatting must be a dictionary")
         if "headers" not in md_format or "emphasis" not in md_format:
             return ValidationResult(
                 False, "Incomplete markdown formatting configuration"

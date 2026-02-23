@@ -40,6 +40,7 @@ generators:
       # NOTE: pageDescription REMOVED from deprecated_fields (Jan 14, 2026) - Now used for SEO
       - excerpt         # Not consumed by MaterialsLayout
       - section_description  # Not consumed by MaterialsLayout (Jan 15, 2026)
+      - page_description     # Legacy snake_case duplicate - canonical is pageDescription
       - technicalSpecifications  # Not referenced anywhere
       - chemicalProperties       # Not referenced anywhere
       - safetyGuidelines        # Not referenced anywhere
@@ -99,5 +100,6 @@ generators:
 - type: field_order
   module: export.generation.field_order_generator
   class: FieldOrderGenerator
+  domain: materials
   description: Normalize field order for consistency (must run last)
 # Enrichers deprecated - all functionality moved to generators above

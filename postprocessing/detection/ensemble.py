@@ -7,7 +7,6 @@ Composite scoring reduces false positives/negatives.
 
 import logging
 from typing import Dict, List
-from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
@@ -58,14 +57,25 @@ class AIDetectorEnsemble:
         """
         try:
             winston_result = self._winston_client.detect_ai_content(text)
+
+            required_top_level = ['success', 'ai_score', 'human_score', 'sentences']
+            missing = [key for key in required_top_level if key not in winston_result]
+            if missing:
+                raise KeyError(
+                    f"Winston response missing required keys: {', '.join(missing)}"
+                )
             
-            if not winston_result.get('success'):
-                error_msg = winston_result.get('error', 'Unknown error')
+            if not winston_result['success']:
+                error_msg = winston_result['error'] if 'error' in winston_result else 'Unspecified Winston error'
                 logger.error(f"Winston API failed: {error_msg}")
                 raise RuntimeError(f"Winston API detection failed: {error_msg}")
             
             ai_score = winston_result['ai_score']
-            human_score = winston_result.get('human_score', (1.0 - ai_score) * 100)
+            human_score = winston_result['human_score']
+            sentences = winston_result['sentences']
+
+            if not isinstance(sentences, list):
+                raise ValueError("Winston response key 'sentences' must be a list")
             
             logger.info(f"Winston API detection: AI={ai_score:.3f}, Human={human_score:.1f}%")
             
@@ -73,7 +83,7 @@ class AIDetectorEnsemble:
                 'ai_score': round(ai_score, 3),
                 'human_score': round(human_score, 1),
                 'is_ai_like': ai_score > 0.3,
-                'sentences': winston_result.get('sentences', []),
+                'sentences': sentences,
                 'method': 'winston_api'
             }
             

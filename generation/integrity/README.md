@@ -2,7 +2,7 @@
 
 ## Overview
 
-The System Integrity Module provides comprehensive end-to-end validation of the Z-Beam Generator processing pipeline. It runs pre-generation health checks to ensure value mapping accuracy, parameter propagation, API connectivity, and system cohesion.
+The System Integrity Module provides comprehensive end-to-end validation of the Z-Beam Generator generation pipeline. It runs pre-generation health checks to ensure value mapping accuracy, parameter propagation, API connectivity, and system cohesion.
 
 ## Quick Start
 
@@ -14,9 +14,9 @@ python3 run.py --integrity-check --quick
 python3 run.py --integrity-check
 
 # Standalone module
-python3 -m processing.integrity.check_integrity
-python3 -m processing.integrity.check_integrity --quick
-python3 -m processing.integrity.check_integrity --json > report.json
+python3 -m generation.integrity.check_integrity
+python3 -m generation.integrity.check_integrity --quick
+python3 -m generation.integrity.check_integrity --json > report.json
 ```
 
 ## What It Checks
@@ -101,7 +101,7 @@ Add to CI/CD pipeline:
 ```yaml
 # .github/workflows/ci.yml
 - name: System Integrity Check
-  run: python3 -m processing.integrity.check_integrity --fail-on-warn
+  run: python3 -m generation.integrity.check_integrity --fail-on-warn
 ```
 
 ## Check Results
@@ -122,7 +122,7 @@ Each check returns an `IntegrityResult` with:
 ## Architecture
 
 ```
-processing/integrity/
+generation/integrity/
 ├── __init__.py                  # Module exports
 ├── integrity_checker.py         # Main checker class
 └── check_integrity.py           # CLI tool
@@ -188,5 +188,5 @@ Total check time: 0.1ms
 
 - `docs/DATA_ARCHITECTURE.md` - Data flow and storage policy
 - `docs/QUICK_REFERENCE.md` - Common commands and troubleshooting
-- `processing/config/scale_mapper.py` - Scale normalization utilities
-- `processing/config/dynamic_config.py` - Parameter calculation
+- `generation/config/scale_mapper.py` - Scale normalization utilities
+- `generation/config/dynamic_config.py` - Parameter calculation

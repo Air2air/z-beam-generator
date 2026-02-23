@@ -39,7 +39,7 @@ class SubjectivePatternAnalyzer:
     4. Author voice quality (which authors score best?)
     """
     
-    def __init__(self, db_path: str = "processing/detection/winston_feedback.db"):
+    def __init__(self, db_path: str = "data/winston_feedback.db"):
         self.db_path = db_path
         self.conn = None
     
@@ -366,7 +366,7 @@ def main():
     )
     parser.add_argument('--days', type=int, help='Analyze last N days')
     parser.add_argument('--material', type=str, help='Filter by material')
-    parser.add_argument('--db', type=str, default='processing/detection/winston_feedback.db')
+    parser.add_argument('--db', type=str, default='data/winston_feedback.db')
     
     args = parser.parse_args()
     

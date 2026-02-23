@@ -85,6 +85,8 @@ class DomainAdapter(DataSourceAdapter):
         self.data_root_key = adapter_config['data_root_key']
         self.author_key = adapter_config['author_key']
         self.context_keys = adapter_config['context_keys']
+        self.domain_generation = self._get_domain_generation_config()
+        self.author_resolution = self._get_author_resolution_config(self.domain_generation)
         
         # Cache for loaded data
         self._data_cache = None
@@ -106,10 +108,48 @@ class DomainAdapter(DataSourceAdapter):
         
         logger.debug(f"Loaded domain config from {self.config_path}")
         return config
+
+    def _get_domain_generation_config(self) -> Dict[str, Any]:
+        from generation.config.config_loader import get_config
+
+        config = get_config().config
+        domain_generation = config.get('domain_generation')
+        if not isinstance(domain_generation, dict):
+            raise KeyError("Missing required config block: domain_generation")
+        if self.domain not in domain_generation:
+            raise KeyError(
+                f"Missing domain_generation config for domain '{self.domain}'"
+            )
+        domain_config = domain_generation[self.domain]
+        if not isinstance(domain_config, dict):
+            raise TypeError(
+                f"domain_generation.{self.domain} must be a dictionary"
+            )
+        return domain_config
+
+    def _get_author_resolution_config(self, domain_generation: Dict[str, Any]) -> Dict[str, Any]:
+        author_resolution = domain_generation.get('author_resolution')
+        if not isinstance(author_resolution, dict):
+            raise KeyError(
+                f"domain_generation.{self.domain}.author_resolution must be a dictionary"
+            )
+        if 'strategy' not in author_resolution:
+            raise KeyError(
+                f"domain_generation.{self.domain}.author_resolution missing required key: strategy"
+            )
+        if not isinstance(author_resolution['strategy'], str):
+            raise TypeError(
+                f"domain_generation.{self.domain}.author_resolution.strategy must be a string"
+            )
+        return author_resolution
     
     def get_data_path(self) -> Path:
         """Get path to domain data YAML"""
         return self.data_path
+
+    def get_items_root(self, all_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Public wrapper for resolving domain items root."""
+        return self._get_items_root(all_data)
     
     def load_all_data(self) -> Dict[str, Any]:
         """Load complete data structure from domain YAML"""
@@ -144,7 +184,8 @@ class DomainAdapter(DataSourceAdapter):
             'contaminants': ['contamination_patterns'],
         }
 
-        for alias in root_key_aliases.get(self.data_root_key, []):
+        alias_keys = root_key_aliases[self.data_root_key] if self.data_root_key in root_key_aliases else []
+        for alias in alias_keys:
             if alias in all_data:
                 items = all_data[alias]
                 if not isinstance(items, dict):
@@ -153,7 +194,7 @@ class DomainAdapter(DataSourceAdapter):
                     )
                 return items
 
-        searched_keys = [self.data_root_key, *root_key_aliases.get(self.data_root_key, [])]
+        searched_keys = [self.data_root_key, *alias_keys]
         raise KeyError(
             f"Could not resolve items root in {self.data_path}. "
             f"Expected one of keys: {searched_keys}"
@@ -204,9 +245,13 @@ class DomainAdapter(DataSourceAdapter):
                 # Handle nested keys like "properties.density"
                 value = item_data
                 for part in key.split('.'):
-                    value = value.get(part, {}) if isinstance(value, dict) else None
-                    if value is None:
+                    if not isinstance(value, dict):
+                        value = None
                         break
+                    if part not in value:
+                        value = None
+                        break
+                    value = value[part]
             else:
                 value = item_data.get(key)
             
@@ -245,42 +290,63 @@ class DomainAdapter(DataSourceAdapter):
             if legacy_author_id is not None:
                 value = legacy_author_id
 
-        # If not found and domain is settings, check Materials.yaml
-        if value is None and self.domain == 'settings':
-            material_name = item_data.get('material')
-            if material_name:
-                try:
-                    # Load material data to get author
-                    materials_path = Path('data/materials/Materials.yaml')
-                    if materials_path.exists():
+        if value is None:
+            strategy = self.author_resolution['strategy']
+            if strategy == 'inherit_from_material':
+                material_key = self.author_resolution.get('material_key')
+                source_path = self.author_resolution.get('source_data_path')
+                source_root_key = self.author_resolution.get('source_root_key')
+                source_author_key = self.author_resolution.get('source_author_key')
+
+                missing = [
+                    key for key in ['material_key', 'source_data_path', 'source_root_key', 'source_author_key']
+                    if self.author_resolution.get(key) in [None, '']
+                ]
+                if missing:
+                    raise KeyError(
+                        f"Author resolution strategy 'inherit_from_material' missing keys: {', '.join(missing)}"
+                    )
+
+                material_name = item_data.get(material_key)
+                if material_name:
+                    try:
+                        materials_path = Path(source_path)
+                        if not materials_path.exists():
+                            raise FileNotFoundError(f"Author source data not found: {materials_path}")
+
                         import yaml
                         with open(materials_path, 'r') as f:
                             materials_data = yaml.safe_load(f)
 
-                        if not isinstance(materials_data, dict) or 'materials' not in materials_data:
-                            raise KeyError("Materials.yaml missing required root key 'materials'")
-                        if material_name not in materials_data['materials']:
+                        if not isinstance(materials_data, dict) or source_root_key not in materials_data:
                             raise KeyError(
-                                f"Material '{material_name}' not found in Materials.yaml for author resolution"
+                                f"Source data missing required root key '{source_root_key}': {materials_path}"
+                            )
+                        if material_name not in materials_data[source_root_key]:
+                            raise KeyError(
+                                f"Material '{material_name}' not found in {materials_path} for author resolution"
                             )
 
-                        material = materials_data['materials'][material_name]
-                        author_data = material.get('author')
-                        author_id = None
+                        material = materials_data[source_root_key][material_name]
+                        author_data = material
+                        for part in str(source_author_key).split('.'):
+                            if isinstance(author_data, dict):
+                                author_data = author_data.get(part)
+                            else:
+                                author_data = None
+                                break
 
-                        if isinstance(author_data, dict):
-                            author_id = author_data.get('id')
-
-                        if author_id is None:
-                            author_id = material.get('authorId')
-                        
-                        if author_id:
-                            logger.info(f"Using author {author_id} from Materials.yaml for {material_name}")
-                            return int(author_id)
-                except Exception as e:
-                    raise RuntimeError(
-                        f"Failed resolving author from Materials.yaml for settings material '{material_name}': {e}"
-                    ) from e
+                        if author_data is not None:
+                            logger.info(f"Using author {author_data} from {materials_path} for {material_name}")
+                            return int(author_data)
+                    except Exception as e:
+                        raise RuntimeError(
+                            f"Failed resolving author from {source_path} for '{material_name}': {e}"
+                        ) from e
+            elif strategy != 'direct':
+                raise ValueError(
+                    f"Unknown author resolution strategy '{strategy}' for domain '{self.domain}'"
+                )
         
         # Fail fast - author assignment is mandatory
         if value is None:
@@ -414,8 +480,12 @@ class DomainAdapter(DataSourceAdapter):
                 items.get(identifier)  # Pass item data for author/metadata
             )
 
-        # Normalize pageDescription to clean prose (no markdown/template wrappers)
-        if component_type == 'pageDescription':
+        normalize_components = self.domain_generation.get('normalize_components')
+        if not isinstance(normalize_components, list):
+            raise KeyError(
+                f"domain_generation.{self.domain}.normalize_components must be a list"
+            )
+        if component_type in normalize_components:
             content_to_save = self._normalize_page_description_output(content_to_save)
         
         # Determine target field (may differ from component_type)
@@ -481,14 +551,14 @@ class DomainAdapter(DataSourceAdapter):
         Maps component types to their storage location in data YAML.
         Some components save to different field names.
         """
-        # Component type → target field mapping
-        FIELD_MAPPING = {
-            'faq': 'operational.expert_answers',  # FAQ saves as expert_answers
-            'pageTitle': 'page_title',  # pageTitle component saves as page_title field
-            # Add other mappings as needed
-        }
-        
-        return FIELD_MAPPING.get(component_type, component_type)
+        field_mappings = self.domain_generation.get('field_mappings')
+        if not isinstance(field_mappings, dict):
+            raise KeyError(
+                f"domain_generation.{self.domain}.field_mappings must be a dictionary"
+            )
+        if component_type in field_mappings:
+            return field_mappings[component_type]
+        return component_type
     
     def _convert_to_collapsible_if_needed(
         self, 
@@ -1105,13 +1175,16 @@ class DomainAdapter(DataSourceAdapter):
         
         # 1. fullPath (from category/subcategory/id)
         if 'fullPath' not in item_data:
-            path_parts = [self.domain]
-            if item_data.get('category'):
-                path_parts.append(item_data['category'])
-            if item_data.get('subcategory'):
-                path_parts.append(item_data['subcategory'])
-            path_parts.append(identifier)
-            item_data['fullPath'] = '/' + '/'.join(path_parts)
+            if self.domain == 'applications':
+                item_data['fullPath'] = f"/{self.domain}/{identifier}"
+            else:
+                path_parts = [self.domain]
+                if item_data.get('category'):
+                    path_parts.append(item_data['category'])
+                if item_data.get('subcategory'):
+                    path_parts.append(item_data['subcategory'])
+                path_parts.append(identifier)
+                item_data['fullPath'] = '/' + '/'.join(path_parts)
             logger.debug(f"  + fullPath: {item_data['fullPath']}")
         
         # 2. pageTitle (for frontend compatibility)
@@ -1139,6 +1212,7 @@ class DomainAdapter(DataSourceAdapter):
                 'contaminants': 'Contaminants',
                 'compounds': 'Compounds',
                 'settings': 'Settings',
+                'applications': 'Applications',
             }
             if self.domain not in domain_labels:
                 raise KeyError(f"Missing domain label mapping for domain '{self.domain}'")
@@ -1147,21 +1221,22 @@ class DomainAdapter(DataSourceAdapter):
                 'href': f'/{self.domain}'
             })
             
-            # Add category breadcrumb
-            if item_data.get('category'):
-                category = item_data['category']
-                breadcrumbs.append({
-                    'label': category.replace('-', ' ').title(),
-                    'href': f'/{self.domain}/{category}'
-                })
-                
-                # Add subcategory breadcrumb
-                if item_data.get('subcategory'):
-                    subcategory = item_data['subcategory']
+            if self.domain != 'applications':
+                # Add category breadcrumb
+                if item_data.get('category'):
+                    category = item_data['category']
                     breadcrumbs.append({
-                        'label': subcategory.replace('-', ' ').title(),
-                        'href': f'/{self.domain}/{category}/{subcategory}'
+                        'label': category.replace('-', ' ').title(),
+                        'href': f'/{self.domain}/{category}'
                     })
+                    
+                    # Add subcategory breadcrumb
+                    if item_data.get('subcategory'):
+                        subcategory = item_data['subcategory']
+                        breadcrumbs.append({
+                            'label': subcategory.replace('-', ' ').title(),
+                            'href': f'/{self.domain}/{category}/{subcategory}'
+                        })
             
             item_data['breadcrumb'] = breadcrumbs
             logger.debug(f"  + breadcrumb: {len(breadcrumbs)} levels")
@@ -1169,12 +1244,13 @@ class DomainAdapter(DataSourceAdapter):
         # 4. pageDescription (from micro or description)
         if 'pageDescription' not in item_data:
             # Try micro.before first
-            if isinstance(item_data.get('micro'), dict):
-                if 'before' not in item_data['micro']:
+            micro_value = item_data['micro'] if 'micro' in item_data else None
+            if isinstance(micro_value, dict):
+                if 'before' not in micro_value:
                     raise KeyError(
                         f"Invalid micro structure for '{identifier}': missing required key 'before'"
                     )
-                micro_text = item_data['micro']['before']
+                micro_text = micro_value['before']
                 if not isinstance(micro_text, str):
                     raise ValueError(
                         f"Invalid micro.before value for '{identifier}': expected string, got {type(micro_text)}"
@@ -1197,8 +1273,8 @@ class DomainAdapter(DataSourceAdapter):
         # 5. datePublished (preserve existing or use current)
         if 'datePublished' not in item_data:
             # Check for legacy metadata.created_date
-            metadata = item_data.get('metadata', {})
-            if isinstance(metadata, dict) and metadata.get('created_date'):
+            metadata = item_data['metadata'] if 'metadata' in item_data else None
+            if isinstance(metadata, dict) and 'created_date' in metadata and metadata['created_date']:
                 item_data['datePublished'] = metadata['created_date']
             else:
                 item_data['datePublished'] = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z')

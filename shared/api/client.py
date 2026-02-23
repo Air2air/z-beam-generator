@@ -542,7 +542,7 @@ class APIClient:
                 if isinstance(error_data, dict):
                     error_details = error_data.get("error", {})
                     if isinstance(error_details, dict):
-                        detailed_msg = error_details.get('message', 'Unknown error')
+                        detailed_msg = error_details['message'] if 'message' in error_details else str(error_details)
                         error_msg += f": {detailed_msg}"
                         print(f"🚨 [API ERROR] {detailed_msg}")
                         # Log additional error details
@@ -555,7 +555,12 @@ class APIClient:
                     elif isinstance(error_details, str):
                         error_msg += f": {error_details}"
                     else:
-                        error_msg += f": {error_data.get('message', error_data.get('error', 'Unknown error'))}"
+                        if 'message' in error_data:
+                            error_msg += f": {error_data['message']}"
+                        elif 'error' in error_data:
+                            error_msg += f": {error_data['error']}"
+                        else:
+                            error_msg += f": {error_data}"
                 elif isinstance(error_data, str):
                     error_msg += f": {error_data}"
                 else:
@@ -612,15 +617,10 @@ class APIClient:
                 'cached': bool        # Whether result was cached
             }
         """
-        # Base implementation - Winston provider should override this
-        logger.info(f"check_text not implemented for {self.__class__.__name__} - returning neutral score")
-        return {
-            'score': 0.70,
-            'human_score': 70.0,
-            'ai_score': 30.0,
-            'cached': False,
-            'method': 'neutral_fallback'
-        }
+        raise RuntimeError(
+            f"check_text is not implemented for {self.__class__.__name__}. "
+            "Use a Winston-configured client with detect_ai_content()."
+        )
 
     def get_statistics(self) -> Dict[str, Any]:
         """Get client usage statistics"""
@@ -675,8 +675,6 @@ class APIClient:
             return {
                 'success': False,
                 'error': f'Text too short for Winston API (minimum 300 chars, got {len(text)})',
-                'ai_score': 0.5,  # Neutral score for short text
-                'is_ai_like': False,
                 'skip_reason': 'text_too_short'
             }
         
@@ -684,9 +682,7 @@ class APIClient:
         if not self.base_url or 'winston' not in self.base_url.lower():
             return {
                 'success': False,
-                'error': 'Winston API not configured - base_url must contain winston',
-                'ai_score': 1.0,  # Fail-safe: assume AI-like on error
-                'is_ai_like': True
+                'error': 'Winston API not configured - base_url must contain winston'
             }
         
         # Get API key from various sources
@@ -701,9 +697,7 @@ class APIClient:
         if not api_key:
             return {
                 'success': False,
-                'error': 'Winston API key not configured',
-                'ai_score': 1.0,
-                'is_ai_like': True
+                'error': 'Winston API key not configured'
             }
         
         try:
@@ -735,10 +729,19 @@ class APIClient:
             
             if response.status_code == 200:
                 data = response.json()
+
+                if not isinstance(data, dict):
+                    raise RuntimeError("Winston API response must be a JSON object")
+                if 'score' not in data:
+                    raise RuntimeError("Winston API response missing required 'score' field")
                 
                 # Winston returns a 'score' field representing human probability (0-100)
                 # Higher score = more human-like
-                human_score_raw = data.get('score', 0)
+                human_score_raw = data['score']
+                if not isinstance(human_score_raw, (int, float)):
+                    raise RuntimeError(f"Winston API score must be numeric, got {type(human_score_raw).__name__}")
+                if human_score_raw < 0 or human_score_raw > 100:
+                    raise RuntimeError(f"Winston API score out of range [0,100]: {human_score_raw}")
                 
                 # Normalize to 0-1.0 scale for consistency across system
                 human_score = human_score_raw / 100.0
@@ -748,27 +751,47 @@ class APIClient:
                 ai_score = 1.0 - human_score
                 
                 # Extract detailed analysis
-                sentences = data.get('sentences', [])
-                attack_detected = data.get('attack_detected', {})
+                sentences = data.get('sentences')
+                if sentences is None:
+                    sentences = []
+                if not isinstance(sentences, list):
+                    raise RuntimeError("Winston API 'sentences' field must be a list when present")
+
+                attack_detected = data.get('attack_detected')
+                if attack_detected is None:
+                    attack_detected = {}
+                if not isinstance(attack_detected, dict):
+                    raise RuntimeError("Winston API 'attack_detected' field must be an object when present")
                 readability_score = data.get('readability_score')
                 
                 print(f"✅ [WINSTON API] Detection complete in {response_time:.2f}s")
                 print(f"   Human Score: {human_score*100:.1f}% (normalized: {human_score:.3f})")
                 print(f"   AI Score: {ai_score*100:.1f}% (normalized: {ai_score:.3f})")
-                print(f"   Credits Used: {data.get('credits_used', 'N/A')}")
-                print(f"   Credits Remaining: {data.get('credits_remaining', 'N/A')}")
+                credits_used = data.get('credits_used')
+                credits_remaining = data.get('credits_remaining')
+                print(f"   Credits Used: {credits_used if credits_used is not None else 'N/A'}")
+                print(f"   Credits Remaining: {credits_remaining if credits_remaining is not None else 'N/A'}")
                 
                 # Display sentence-level analysis if available
                 if sentences and len(sentences) > 0:
                     print(f"   📊 Sentence Analysis ({len(sentences)} sentences):")
                     
                     # Find most AI-like sentences (lowest human scores)
-                    sorted_sentences = sorted(sentences, key=lambda s: s.get('score', 100))
+                    normalized_sentences = []
+                    for sentence_entry in sentences:
+                        if not isinstance(sentence_entry, dict):
+                            continue
+                        score = sentence_entry.get('score')
+                        sentence_text = sentence_entry.get('text')
+                        if isinstance(score, (int, float)) and isinstance(sentence_text, str):
+                            normalized_sentences.append({'score': score, 'text': sentence_text})
+
+                    sorted_sentences = sorted(normalized_sentences, key=lambda s: s['score'])
                     worst_sentences = sorted_sentences[:3]  # Show 3 most AI-like
                     
                     for i, sent in enumerate(worst_sentences, 1):
-                        score = sent.get('score', 0)
-                        text = sent.get('text', '')[:60]  # Truncate long sentences
+                        score = sent['score']
+                        text = sent['text'][:60]  # Truncate long sentences
                         if score < 50:  # Flag AI-like sentences
                             print(f"      🚨 #{i}: {score}% human - \"{text}...\"")
                         else:
@@ -792,8 +815,8 @@ class APIClient:
                     'is_ai_like': ai_score > 0.3,  # Threshold: >70% AI detection
                     'response_time': response_time,
                     'method': 'winston_api',
-                    'credits_used': data.get('credits_used'),
-                    'credits_remaining': data.get('credits_remaining'),
+                    'credits_used': credits_used,
+                    'credits_remaining': credits_remaining,
                     'version': data.get('version'),
                     'language': data.get('language'),
                     # Enhanced detailed analysis
@@ -806,8 +829,16 @@ class APIClient:
                 error_msg = f"Winston API returned status {response.status_code}"
                 try:
                     error_data = response.json()
-                    error_msg += f": {error_data.get('error', error_data)}"
-                except:
+                    if isinstance(error_data, dict):
+                        if 'error' in error_data:
+                            error_msg += f": {error_data['error']}"
+                        elif 'message' in error_data:
+                            error_msg += f": {error_data['message']}"
+                        else:
+                            error_msg += f": {error_data}"
+                    else:
+                        error_msg += f": {error_data}"
+                except json.JSONDecodeError:
                     error_msg += f": {response.text}"
                 
                 print(f"❌ [WINSTON API] {error_msg}")
@@ -815,8 +846,6 @@ class APIClient:
                 return {
                     'success': False,
                     'error': error_msg,
-                    'ai_score': 1.0,  # Fail-safe: assume AI-like on error
-                    'is_ai_like': True,
                     'response_time': response_time
                 }
                 
@@ -824,18 +853,14 @@ class APIClient:
             print(f"⏰ [WINSTON API] Request timeout after {time.time() - start_time:.1f}s")
             return {
                 'success': False,
-                'error': 'Request timeout',
-                'ai_score': 1.0,
-                'is_ai_like': True
+                'error': 'Request timeout'
             }
         except Exception as e:
             print(f"💥 [WINSTON API] Error: {str(e)}")
             logger.error(f"Winston API detection failed: {e}")
             return {
                 'success': False,
-                'error': str(e),
-                'ai_score': 1.0,
-                'is_ai_like': True
+                'error': str(e)
             }
     
     def reset_statistics(self):

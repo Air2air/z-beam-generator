@@ -337,8 +337,31 @@ class WinstonFeedbackDatabase:
                 CREATE INDEX IF NOT EXISTS idx_params_timestamp ON generation_parameters(timestamp);
                 CREATE INDEX IF NOT EXISTS idx_sweet_spot_lookup ON sweet_spot_recommendations(material, component_type);
             """)
+
+            self._ensure_detection_results_columns(cursor)
             
             conn.commit()
+
+    def _ensure_detection_results_columns(self, cursor: sqlite3.Cursor) -> None:
+        """Ensure required detection_results columns exist for schema compatibility."""
+        cursor.execute("PRAGMA table_info(detection_results)")
+        existing_columns = {str(row[1]) for row in cursor.fetchall()}
+
+        required_columns = {
+            'retry_session_id': 'TEXT',
+            'is_retry': 'BOOLEAN DEFAULT 0',
+        }
+
+        for column_name, column_definition in required_columns.items():
+            if column_name in existing_columns:
+                continue
+            cursor.execute(
+                f"ALTER TABLE detection_results ADD COLUMN {column_name} {column_definition}"
+            )
+            logger.info(
+                "✅ [WINSTON DB] Added missing detection_results column: %s",
+                column_name,
+            )
     
     def log_detection(
         self,
@@ -374,10 +397,17 @@ class WinstonFeedbackDatabase:
             detection_result_id for linking corrections
         """
         timestamp = datetime.utcnow().isoformat()
+
+        required_winston_keys = ['human_score', 'ai_score', 'sentences']
+        missing_winston_keys = [key for key in required_winston_keys if key not in winston_result]
+        if missing_winston_keys:
+            raise KeyError(
+                f"winston_result missing required keys: {', '.join(missing_winston_keys)}"
+            )
         
         # Validate scores are 0-1.0 normalized (fail-fast on invalid data)
-        human_score = winston_result.get('human_score', 0)
-        ai_score = winston_result.get('ai_score', 1.0)
+        human_score = winston_result['human_score']
+        ai_score = winston_result['ai_score']
         readability_score = winston_result.get('readability_score')
         
         if not 0.0 <= human_score <= 1.0:
@@ -430,8 +460,15 @@ class WinstonFeedbackDatabase:
             result_id = cursor.lastrowid
             
             # Insert sentence-level data
-            sentences = winston_result.get('sentences', [])
+            sentences = winston_result['sentences']
+            if not isinstance(sentences, list):
+                raise ValueError("winston_result['sentences'] must be a list")
+
             for idx, sentence in enumerate(sentences, 1):
+                if 'text' not in sentence:
+                    raise KeyError("Sentence entry missing required key: text")
+                if 'score' not in sentence:
+                    raise KeyError("Sentence entry missing required key: score")
                 cursor.execute("""
                     INSERT INTO sentence_analysis
                     (detection_result_id, sentence_number, sentence_text, human_score)
@@ -439,8 +476,8 @@ class WinstonFeedbackDatabase:
                 """, (
                     result_id,
                     idx,
-                    sentence.get('text', ''),
-                    sentence.get('score', 0)
+                    sentence['text'],
+                    sentence['score']
                 ))
             
             # Insert detected AI patterns
@@ -651,6 +688,23 @@ class WinstonFeedbackDatabase:
             score.dimension.value: score.score 
             for score in evaluation_result.dimension_scores
         }
+
+        required_dimensions = [
+            'clarity',
+            'professionalism',
+            'technical_accuracy',
+            'human_likeness',
+            'engagement',
+            'jargon_free',
+        ]
+        missing_dimensions = [
+            key for key in required_dimensions if key not in dimension_scores
+        ]
+        if missing_dimensions:
+            raise KeyError(
+                "evaluation_result.dimension_scores missing required dimensions: "
+                + ", ".join(missing_dimensions)
+            )
         
         # Convert lists to JSON strings
         strengths_json = json.dumps(evaluation_result.strengths)
@@ -684,12 +738,12 @@ class WinstonFeedbackDatabase:
                 domain,
                 generated_text,
                 evaluation_result.overall_score,
-                dimension_scores.get('clarity', 0.0),
-                dimension_scores.get('professionalism', 0.0),
-                dimension_scores.get('technical_accuracy', 0.0),
-                dimension_scores.get('human_likeness', 0.0),
-                dimension_scores.get('engagement', 0.0),
-                dimension_scores.get('jargon_free', 0.0),
+                dimension_scores['clarity'],
+                dimension_scores['professionalism'],
+                dimension_scores['technical_accuracy'],
+                dimension_scores['human_likeness'],
+                dimension_scores['engagement'],
+                dimension_scores['jargon_free'],
                 evaluation_result.passes_quality_gate,
                 7.0,  # Default threshold (can be parameterized)
                 evaluation_result.evaluation_time_ms,

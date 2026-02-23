@@ -520,20 +520,21 @@ Output: Highly varied, natural-looking text
 
 ```bash
 # View current settings
-python3 -m processing.intensity.intensity_cli status
+python3 run.py --integrity-check --quick
 
 # Adjust sliders (0-100)
-python3 -m processing.intensity.intensity_cli set rhythm 70
-python3 -m processing.intensity.intensity_cli set imperfection 65
+# Edit generation/config.yaml:
+# sentence_rhythm_variation: 70
+# imperfection_tolerance: 65
 
 # Test prompt instructions
-python3 -m processing.intensity.intensity_cli test
+python3 run.py --integrity-check --quick
 ```
 
 ### **Direct Configuration**
 
 ```yaml
-# Edit processing/config.yaml
+# Edit generation/config.yaml
 sentence_rhythm_variation: 75  # Increase variation
 imperfection_tolerance: 60      # Allow more quirks
 ```
@@ -541,7 +542,7 @@ imperfection_tolerance: 60      # Allow more quirks
 ### **Programmatic Access**
 
 ```python
-from processing.config.dynamic_config import DynamicConfig
+from generation.config.dynamic_config import DynamicConfig
 
 config = DynamicConfig()
 temp = config.calculate_temperature('subtitle')
@@ -705,18 +706,18 @@ def add_cross_links(content: str, current_item: str, domain: str) -> str:
 
 ## 🗂️ Domain Prompt Structure
 
-**Location:** `prompts/{domain}/{component_type}.txt`
+**Location:** prompt catalog `prompts/registry/prompt_catalog.yaml` (catalog.byPath key `prompts/{domain}/{component_type}.txt`)
 
 **Available Domain Prompts:**
 
 **Materials Domain:**
-- Current path: `prompts/materials/`
+- Catalog keys: `prompts/materials/*`
 
 **Contaminants Domain:**
-- Current path: `prompts/contaminants/`
+- Catalog keys: `prompts/contaminants/*`
 
 **Settings Domain:**
-- Current path: `prompts/settings/`
+- Catalog keys: `prompts/settings/*`
 
 **Domain Prompt Structure Example:**
 ```plaintext

@@ -35,5 +35,6 @@ generators:
 - type: field_order
   module: export.generation.field_order_generator
   class: FieldOrderGenerator
+  domain: settings
   description: Normalize field order for consistency (must run last)
 # Enrichers deprecated - all functionality moved to generators above

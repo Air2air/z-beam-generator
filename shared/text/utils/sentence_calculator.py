@@ -69,7 +69,7 @@ class SentenceCalculator:
         base_sentences = word_count / avg_words
         
         # Add EXTREME variation range (±50% for maximum structural variety)
-        # This creates dramatic sentence count ranges (e.g., 30w → 1-3 sentences)
+        # This creates dramatic structure variation across outputs.
         variation_pct = 0.50  # ±50% variation (increased from 25%)
         variation_range = max(1, int(base_sentences * variation_pct))
         
@@ -128,7 +128,7 @@ class SentenceCalculator:
             
         Example:
             >>> get_sentence_guidance(100, grammar_norms)
-            "Target 5-7 sentences (avg 16 words/sentence). Mix: 2 short (<12w), 3 medium (12-18w), 1-2 long (19+w)"
+            "Use varied sentence lengths with a balanced mix of short, medium, and long sentences."
         """
         min_sent, max_sent, distribution = SentenceCalculator.calculate_sentence_target(
             word_count, grammar_norms
@@ -136,7 +136,7 @@ class SentenceCalculator:
         
         avg_words = grammar_norms.get('avg_words_per_sentence', 15) if grammar_norms else 15
         
-        return f"Target {min_sent}-{max_sent} sentences (avg {avg_words} words/sentence). {distribution}"
+        return f"Use varied sentence lengths (avg {avg_words} words/sentence). {distribution}"
     
     @staticmethod
     def validate_sentence_count(

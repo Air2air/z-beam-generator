@@ -41,5 +41,6 @@ generators:
 - type: field_order
   module: export.generation.field_order_generator
   class: FieldOrderGenerator
+  domain: contaminants
   description: Normalize field order for consistency (must run last)
 # Archived enrichers (Dec 29, 2025): All functionality moved to UniversalContentGenerator

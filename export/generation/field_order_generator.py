@@ -37,7 +37,9 @@ class FieldOrderGenerator(BaseGenerator):
             config: Generator config with 'domain' key
         """
         super().__init__(config)
-        self.domain = config.get('domain', 'materials')
+        self.domain = config.get('domain')
+        if not self.domain:
+            raise KeyError("FieldOrderGenerator requires config key: domain")
         logger.info(f"Initialized FieldOrderGenerator for domain: {self.domain}")
     
     def generate(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:

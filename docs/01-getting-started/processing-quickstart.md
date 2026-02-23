@@ -2,7 +2,7 @@
 
 ## 🚀 What Was Built
 
-A complete re-architecture of the content generation system into `/processing` folder with:
+A complete re-architecture of the content generation system into `/generation`, `/postprocessing`, and `/shared` with:
 
 - **Single-pass generation** (reduces AI layers)
 - **Real data enrichment** (grounds content in facts)
@@ -14,7 +14,7 @@ A complete re-architecture of the content generation system into `/processing` f
 ## 📂 Structure
 
 ```
-/processing/
+/generation/
 ├── orchestrator.py          # Main coordinator
 ├── config.yaml              # All settings
 ├── test_pipeline.py         # Test script
@@ -39,7 +39,7 @@ A complete re-architecture of the content generation system into `/processing` f
 
 ```bash
 # Test the new pipeline
-python3 processing/test_pipeline.py
+python3 run.py --integrity-check --quick
 ```
 
 Expected output:
@@ -53,14 +53,14 @@ Readability: pass (Flesch: 72.3)
 ## 🔧 Basic Usage
 
 ```python
-from processing.orchestrator import Orchestrator
-from processing.config.dynamic_config import DynamicConfig
+from generation.core.evaluated_generator import QualityEvaluatedGenerator
+from generation.config.dynamic_config import DynamicConfig
 from shared.api.grok_client import GrokClient
 
 # Initialize with dynamic configuration
 # All parameters calculated from config.yaml sliders
 dynamic_config = DynamicConfig()
-orchestrator = Orchestrator(
+orchestrator = QualityEvaluatedGenerator(
     api_client=GrokClient(),
     dynamic_config=dynamic_config  # Uses slider-driven parameters
 )
@@ -132,7 +132,7 @@ Ensures content remains accessible:
 
 ## ⚙️ Configuration
 
-Edit `processing/config.yaml` - **10 user-facing sliders** (0-100 scale):
+Edit `generation/config.yaml` - **10 user-facing sliders** (0-100 scale):
 
 ```yaml
 # USER CONFIGS - The ONLY section you adjust
@@ -154,8 +154,8 @@ length_variation_range: 50         # Length flexibility (±%)
 
 **Adjust sliders via CLI:**
 ```bash
-python3 -m processing.intensity.intensity_cli status
-python3 -m processing.intensity.intensity_cli set rhythm 70
+python3 run.py --integrity-check --quick
+# Then edit generation/config.yaml values directly
 ```
 
 ## 📊 Expected Results
@@ -177,17 +177,17 @@ python3 -m processing.intensity.intensity_cli set rhythm 70
 
 ### 1. Test New System
 ```bash
-python3 processing/test_pipeline.py
+python3 run.py --integrity-check --quick
 ```
 
 ### 2. Integrate with Existing Scripts
 Update `scripts/regenerate_subtitles.py`:
 
 ```python
-from processing.orchestrator import Orchestrator
+from generation.core.evaluated_generator import QualityEvaluatedGenerator
 
 # Replace old generator calls with:
-orchestrator = Orchestrator(api_client)
+orchestrator = QualityEvaluatedGenerator(api_client)
 result = orchestrator.generate(material, "subtitle", author_id, 15)
 ```
 
@@ -195,7 +195,7 @@ result = orchestrator.generate(material, "subtitle", author_id, 15)
 These are replaced by new system:
 - ❌ `shared/voice/post_processor.py` → Orchestrator
 - ❌ `shared/voice/orchestrator.py` → PromptBuilder
-- ❌ `component_config.yaml` → processing/config.yaml
+- ❌ `component_config.yaml` → generation/config.yaml
 - ❌ Multiple scattered configs → Single unified config
 
 ### 4. Run Full Test
@@ -220,7 +220,7 @@ Without these, system works fine with pattern-based detection only.
 ```bash
 # Make sure you're in project root
 cd /Users/todddunning/Desktop/Z-Beam/z-beam-generator
-python3 processing/test_pipeline.py
+python3 run.py --integrity-check --quick
 ```
 
 ### API Errors
@@ -231,7 +231,7 @@ client = GrokClient()  # Should not raise errors
 ```
 
 ### High AI Scores
-- Check `processing/config.yaml` forbidden_patterns
+- Check `generation/config.yaml` forbidden_patterns
 - Lower `ai_threshold` to be more strict
 - Enable ML detection: `use_ml_model: true`
 

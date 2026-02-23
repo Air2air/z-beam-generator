@@ -20,7 +20,13 @@ Usage:
 import logging
 from typing import Optional
 
+from generation.config.config_loader import ProcessingConfig
+
 logger = logging.getLogger(__name__)
+
+
+def _get_api_helper_config() -> ProcessingConfig:
+    return ProcessingConfig()
 
 
 def get_api_client(provider: str = 'grok'):
@@ -31,10 +37,10 @@ def get_api_client(provider: str = 'grok'):
 
 def generate_text(
     prompt: str,
-    max_tokens: int = 150,
-    temperature: float = 0.7,
-    frequency_penalty: float = 0.0,
-    presence_penalty: float = 0.0,
+    max_tokens: Optional[int] = None,
+    temperature: Optional[float] = None,
+    frequency_penalty: Optional[float] = None,
+    presence_penalty: Optional[float] = None,
     api_client=None,
     provider: str = 'grok'
 ) -> Optional[str]:
@@ -55,6 +61,20 @@ def generate_text(
     """
     from shared.api.client import GenerationRequest
 
+    config = _get_api_helper_config()
+    resolved_max_tokens = max_tokens if max_tokens is not None else int(
+        config.get_required_config('constants.api_helper.max_tokens')
+    )
+    resolved_temperature = temperature if temperature is not None else float(
+        config.get_required_config('constants.api_helper.temperature')
+    )
+    resolved_frequency_penalty = frequency_penalty if frequency_penalty is not None else float(
+        config.get_required_config('constants.api_helper.frequency_penalty')
+    )
+    resolved_presence_penalty = presence_penalty if presence_penalty is not None else float(
+        config.get_required_config('constants.api_helper.presence_penalty')
+    )
+
     # Get or create API client
     if api_client is None:
         api_client = get_api_client(provider)
@@ -62,10 +82,10 @@ def generate_text(
     # Build request
     request = GenerationRequest(
         prompt=prompt,
-        max_tokens=max_tokens,
-        temperature=temperature,
-        frequency_penalty=frequency_penalty,
-        presence_penalty=presence_penalty
+        max_tokens=resolved_max_tokens,
+        temperature=resolved_temperature,
+        frequency_penalty=resolved_frequency_penalty,
+        presence_penalty=resolved_presence_penalty
     )
     
     try:
@@ -87,9 +107,9 @@ def generate_text(
 
 def generate_with_retry(
     prompt: str,
-    max_tokens: int = 150,
-    temperature: float = 0.7,
-    max_retries: int = 3,
+    max_tokens: Optional[int] = None,
+    temperature: Optional[float] = None,
+    max_retries: Optional[int] = None,
     api_client=None,
     provider: str = 'grok'
 ) -> Optional[str]:
@@ -107,7 +127,12 @@ def generate_with_retry(
     Returns:
         Generated text or None after all retries exhausted
     """
-    for attempt in range(max_retries):
+    config = _get_api_helper_config()
+    resolved_max_retries = max_retries if max_retries is not None else int(
+        config.get_required_config('constants.api_helper.max_retries')
+    )
+
+    for attempt in range(resolved_max_retries):
         result = generate_text(
             prompt=prompt,
             max_tokens=max_tokens,
@@ -118,7 +143,7 @@ def generate_with_retry(
         if result:
             return result
         
-        if attempt < max_retries - 1:
-            logger.info(f"Retry {attempt + 2}/{max_retries}...")
+        if attempt < resolved_max_retries - 1:
+            logger.info(f"Retry {attempt + 2}/{resolved_max_retries}...")
     
     return None

@@ -14,6 +14,7 @@ class PromptRegistryService:
     _schema_cache: Optional[Dict[str, Any]] = None
     _domain_registry_cache: Dict[str, Dict[str, Any]] = {}
     _shared_inline_prompts_cache: Optional[Dict[str, str]] = None
+    _prompt_catalog_cache: Optional[Dict[str, Any]] = None
 
     @classmethod
     def _project_root(cls) -> Path:
@@ -51,6 +52,46 @@ class PromptRegistryService:
             schema_path = cls._project_root() / "data" / "schemas" / "section_display_schema.yaml"
             cls._schema_cache = cls._load_yaml_file(schema_path)
         return cls._schema_cache
+
+    @classmethod
+    def get_prompt_catalog(cls) -> Dict[str, Any]:
+        """Load consolidated prompt catalog (fail-fast)."""
+        if cls._prompt_catalog_cache is None:
+            catalog_path = cls._project_root() / "prompts" / "registry" / "prompt_catalog.yaml"
+            cls._prompt_catalog_cache = cls._load_yaml_file(catalog_path)
+        return cls._prompt_catalog_cache
+
+    @classmethod
+    def _get_catalog_value(cls, keys: tuple[str, ...]) -> str:
+        """Read required string value from prompt catalog by nested path."""
+        value: Any = cls.get_prompt_catalog()
+        traversed: list[str] = []
+
+        for key in keys:
+            traversed.append(key)
+            if not isinstance(value, dict) or key not in value:
+                dotted = ".".join(traversed)
+                raise KeyError(f"Missing required prompt catalog key: {dotted}")
+            value = value[key]
+
+        if not isinstance(value, str) or not value.strip():
+            dotted = ".".join(keys)
+            raise ValueError(f"Prompt catalog value must be non-empty string: {dotted}")
+
+        return value
+
+    @classmethod
+    def get_shared_text_prompt_core(cls) -> str:
+        return cls._get_catalog_value(("catalog", "shared", "textPromptCore"))
+
+    @classmethod
+    def get_humanness_template(cls, compact: bool = False) -> str:
+        variant = "compact" if compact else "full"
+        return cls._get_catalog_value(("catalog", "core", "humanness", variant))
+
+    @classmethod
+    def get_quality_evaluation_prompt(cls) -> str:
+        return cls._get_catalog_value(("catalog", "quality", "evaluation"))
 
     @classmethod
     def get_section(cls, component_type: str) -> Optional[Dict[str, Any]]:

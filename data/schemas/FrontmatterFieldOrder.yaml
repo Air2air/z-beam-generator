@@ -136,6 +136,9 @@ materials:
       - description      # Long-form content
       - properties       # Technical properties  
       - faq             # Frequently asked questions
+
+    # Optional removals from unified base ordering (required by validator contract)
+    content_removals: []
     
     # Specialized sections (after base tiers)
     domain_sections:
@@ -244,8 +247,7 @@ applications:
     identity_additions:
       - subcategory
 
-    content_additions:
-      - faq
+    content_additions: []
 
     content_removals:
       - micro
@@ -253,6 +255,7 @@ applications:
     domain_sections:
       - contentCards
       - keywords
+      - relationships
       - slug
 
   required_fields:

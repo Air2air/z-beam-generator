@@ -6,6 +6,13 @@ data_path: "data/contaminants/Contaminants.yaml"
 data_root_key: "contamination_patterns"
 frontmatter_pattern: "{slug}-contamination.yaml"
 
+data_adapter:
+  data_path: "data/contaminants/Contaminants.yaml"
+  data_root_key: "contamination_patterns"
+  author_key: "author.id"
+  context_keys:
+    - "category"
+
 # Component types (auto-discovered from prompts/*.txt files)
 # Components are dynamically detected at runtime - no hardcoded lists needed
 # See: prompts/contaminants/ directory for actual component definitions

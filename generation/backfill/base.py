@@ -56,9 +56,17 @@ class BaseBackfillGenerator(ABC):
         """
         self.config = config
         self.source_file = Path(config['source_file'])
-        self.items_key = config.get('items_key', 'materials')
+        if 'items_key' not in config:
+            raise KeyError("Missing required config key: items_key")
+        self.items_key = config['items_key']
         self.field = config.get('field')
-        self.dry_run = config.get('dry_run', False)
+        if 'dry_run' not in config:
+            raise KeyError("Missing required config key: dry_run")
+        if not isinstance(config['dry_run'], bool):
+            raise TypeError(
+                f"Invalid config type for dry_run: expected bool, got {type(config['dry_run']).__name__}"
+            )
+        self.dry_run = config['dry_run']
         self.item_filter = config.get('item_filter')
         
         # Validate source file exists
@@ -95,7 +103,16 @@ class BaseBackfillGenerator(ABC):
         
         # Load source YAML
         data = self._load_source()
-        items = data.get(self.items_key, {})
+        if self.items_key not in data:
+            raise KeyError(
+                f"Missing required top-level key '{self.items_key}' in source file: {self.source_file}"
+            )
+
+        items = data[self.items_key]
+        if not isinstance(items, dict):
+            raise ValueError(
+                f"Expected '{self.items_key}' to be a dictionary in {self.source_file}, got {type(items).__name__}"
+            )
         
         stats = {'processed': 0, 'modified': 0, 'skipped': 0, 'errors': 0}
         

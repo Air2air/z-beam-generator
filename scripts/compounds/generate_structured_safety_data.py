@@ -118,13 +118,13 @@ eye_protection: [Type of eye protection]
 skin_protection: [Gloves, coveralls, specific materials]
 minimum_level: [PPE level if applicable - e.g., Level B]
 special_notes: [Critical safety considerations]
-rationale: [Why this PPE is needed - 1-2 sentences]
+rationale: [Why this PPE is needed]
 
 Requirements:
 - Be specific about equipment (e.g., "NIOSH-approved full-face SCBA" not "respirator")
 - Include minimum ratings/certifications where applicable
 - Express in your authentic voice (use natural phrasing, avoid formulaic language)
-- 2-3 sentences for rationale, expressed naturally
+- brief rationale, expressed naturally
 
 Generate ONLY the YAML structure above with specific values."""
 
@@ -168,7 +168,7 @@ special_handling: [Any special storage notes]
 Requirements:
 - Be specific about containers, materials, conditions
 - Express in your authentic voice (natural phrasing)
-- 1-2 sentences per field
+- concise text per field
 
 Generate ONLY the YAML structure above."""
 

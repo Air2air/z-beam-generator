@@ -78,12 +78,16 @@ class ValidationSchema:
     @classmethod
     def get_relationships(cls, source_domain: str) -> List[str]:
         """Get all relationship fields for a domain"""
-        return cls.DOMAIN_RELATIONSHIPS.get(source_domain, [])
+        if source_domain not in cls.DOMAIN_RELATIONSHIPS:
+            raise ValueError(f"Unknown source domain for relationships: {source_domain}")
+        return cls.DOMAIN_RELATIONSHIPS[source_domain]
     
     @classmethod
     def get_suffix(cls, domain: str) -> str:
         """Get required suffix for a domain (or empty string)"""
-        return cls.DOMAIN_SUFFIXES.get(domain, '')
+        if domain not in cls.DOMAIN_SUFFIXES:
+            raise ValueError(f"Unknown domain for suffix lookup: {domain}")
+        return cls.DOMAIN_SUFFIXES[domain]
     
     @classmethod
     def is_bidirectional(cls, source_domain: str, rel_field: str) -> bool:
@@ -93,4 +97,9 @@ class ValidationSchema:
     @classmethod
     def get_reverse_relationship(cls, source_domain: str, rel_field: str) -> tuple:
         """Get the reverse relationship pair"""
-        return cls.BIDIRECTIONAL_PAIRS.get((source_domain, rel_field))
+        key = (source_domain, rel_field)
+        if key not in cls.BIDIRECTIONAL_PAIRS:
+            raise ValueError(
+                f"No bidirectional reverse relationship configured for ({source_domain}, {rel_field})"
+            )
+        return cls.BIDIRECTIONAL_PAIRS[key]

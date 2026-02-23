@@ -63,7 +63,11 @@ class FrontmatterDependencyValidator:
         all_issues = []
 
         for component in components:
-            requirements = self.component_requirements.get(component, [])
+            if component not in self.component_requirements:
+                all_issues.append(f"Unknown component requirements: {component}")
+                continue
+
+            requirements = self.component_requirements[component]
             component_issues = []
 
             for field in requirements:
@@ -98,7 +102,11 @@ class FrontmatterDependencyValidator:
         report = {}
 
         for component in components:
-            requirements = self.component_requirements.get(component, [])
+            if component not in self.component_requirements:
+                report[component] = ["Unknown component requirements"]
+                continue
+
+            requirements = self.component_requirements[component]
             missing = []
 
             for field in requirements:
@@ -183,9 +191,12 @@ class CascadingFailurePreventer:
 
     def _recover_missing_frontmatter(self, frontmatter_data: Dict) -> Dict:
         """Recover from missing frontmatter"""
-        # Provide minimal frontmatter structure
+        if 'name' not in frontmatter_data or not isinstance(frontmatter_data['name'], str) or not frontmatter_data['name'].strip():
+            raise ValueError("Cannot recover missing frontmatter: required non-empty 'name' is missing")
+
+        # Provide minimal frontmatter structure from required input only
         return {
-            "name": frontmatter_data.get("name", "Unknown Material"),
+            "name": frontmatter_data["name"],
             "category": "material",
             "properties": {"type": "unknown"},
             "applications": ["general use"],
@@ -206,7 +217,7 @@ class CascadingFailurePreventer:
             "thermalConductivity": {"value": "Unknown", "unit": "W/(m·K)"},
         }
 
-        mat_char = frontmatter_data["properties"].get("material_characteristics", {})
+        mat_char = frontmatter_data["properties"]["material_characteristics"]
         for key, value in defaults.items():
             if key not in mat_char or key in ['label', 'description', 'percentage']:
                 mat_char[key] = value
@@ -217,7 +228,10 @@ class CascadingFailurePreventer:
     def _recover_invalid_category(self, frontmatter_data: Dict) -> Dict:
         """Recover from invalid category"""
         valid_categories = ["metal", "ceramic", "polymer", "composite"]
-        current_category = frontmatter_data.get("category", "").lower()
+        if 'category' not in frontmatter_data or not isinstance(frontmatter_data['category'], str) or not frontmatter_data['category'].strip():
+            raise ValueError("Cannot recover invalid category: required non-empty 'category' is missing")
+
+        current_category = frontmatter_data["category"].lower()
 
         if current_category not in valid_categories:
             frontmatter_data["category"] = "material"  # Safe default

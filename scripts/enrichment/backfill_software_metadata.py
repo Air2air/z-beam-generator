@@ -99,8 +99,8 @@ class SoftwareMetadataBackfiller:
             'href': f'/{domain}'
         })
         
-        # Add category breadcrumb
-        if item_data.get('category'):
+        # Add category breadcrumb (skip for applications)
+        if domain != 'applications' and item_data.get('category'):
             category = item_data['category']
             # Slugify URL: toxic_gas → toxic-gas
             category_slug = slugify(category)
@@ -139,6 +139,9 @@ class SoftwareMetadataBackfiller:
         
         from export.utils.url_formatter import slugify
         
+        if domain == 'applications':
+            return f"/{domain}/{item_data['id']}"
+
         path_parts = [domain]
         
         if item_data.get('category'):
@@ -163,12 +166,76 @@ class SoftwareMetadataBackfiller:
         if item_data.get('description'):
             desc = item_data['description']
             return desc[:157] + '...' if len(desc) > 160 else desc
-        
-        # Fallback: generic description
-        name = item_data.get('name', item_data.get('id', 'item'))
-        return f"{name} laser cleaning guide. Technical specifications and applications."
+
+        # Fail fast if no source text is available
+        raise ValueError("Missing pageDescription source: require micro.before or description")
+
+    def _normalize_keyword(self, value: str) -> str:
+        """Normalize keyword strings for de-duplication."""
+        return ' '.join(value.strip().split())
+
+    def generate_keywords(self, item_data: Dict[str, Any]) -> List[str]:
+        """Generate deterministic keywords from existing fields (no hardcoded phrases)."""
+        candidates = []
+
+        page_title = item_data.get('pageTitle')
+        if page_title:
+            candidates.append(page_title)
+
+        display_name = item_data.get('displayName')
+        if display_name:
+            candidates.append(display_name)
+
+        name = item_data.get('name')
+        if name:
+            candidates.append(name)
+
+        subcategory = item_data.get('subcategory')
+        if subcategory:
+            candidates.append(subcategory.replace('-', ' ').title())
+
+        slug = item_data.get('slug')
+        if slug:
+            candidates.append(slug.replace('-', ' '))
+
+        normalized = []
+        seen = set()
+        for value in candidates:
+            if not isinstance(value, str):
+                continue
+            cleaned = self._normalize_keyword(value)
+            if cleaned and cleaned.lower() not in seen:
+                normalized.append(cleaned)
+                seen.add(cleaned.lower())
+
+        if not normalized:
+            raise ValueError("Missing keyword sources: require pageTitle, displayName, name, subcategory, or slug")
+
+        return normalized
+
+    def generate_card(self, item_data: Dict[str, Any]) -> Dict[str, str]:
+        """Generate a minimal card object from existing fields."""
+        title = item_data.get('pageTitle')
+        if not title:
+            raise ValueError("Missing pageTitle required to derive card.title")
+
+        description = item_data.get('metaDescription')
+        if not description:
+            raise ValueError("Missing metaDescription required to derive card.description")
+
+        return {
+            'title': title,
+            'description': description,
+        }
+
+    def _get_schema_version(self, data: Dict[str, Any], domain: str) -> str:
+        """Get schemaVersion from the source file root (fail-fast if missing)."""
+        schema_version = data.get('schemaVersion')
+        if not schema_version:
+            raise ValueError(f"Missing schemaVersion at root of {self.DOMAIN_FILES[domain]}")
+        return schema_version
     
-    def enrich_item(self, item_data: Dict[str, Any], domain: str) -> tuple[Dict[str, Any], int]:
+    def enrich_item(self, item_data: Dict[str, Any], domain: str, schema_version: str) -> tuple[Dict[str, Any], int]:
         """Add software metadata fields to item data."""
         fields_added = 0
         
@@ -180,9 +247,9 @@ class SoftwareMetadataBackfiller:
         
         # 2. schemaVersion
         if 'schemaVersion' not in item_data:
-            item_data['schemaVersion'] = '5.0.0'
+            item_data['schemaVersion'] = schema_version
             fields_added += 1
-            print(f"  + schemaVersion: 5.0.0")
+            print(f"  + schemaVersion: {schema_version}")
         
         # 3. fullPath (ALWAYS regenerate for URL safety - fixes toxic_gas → toxic-gas)
         old_path = item_data.get('fullPath')
@@ -211,8 +278,29 @@ class SoftwareMetadataBackfiller:
             item_data['pageDescription'] = self.generate_page_description(item_data)
             fields_added += 1
             print(f"  + pageDescription: {len(item_data['pageDescription'])} chars")
-        
-        # 6. datePublished (preserve existing or use current)
+
+        # 7. metaDescription (derive from pageDescription)
+        if 'metaDescription' not in item_data:
+            page_desc = item_data.get('pageDescription')
+            if not page_desc:
+                raise ValueError("Missing pageDescription required to derive metaDescription")
+            item_data['metaDescription'] = page_desc[:157] + '...' if len(page_desc) > 160 else page_desc
+            fields_added += 1
+            print(f"  + metaDescription: {len(item_data['metaDescription'])} chars")
+
+        # 7a. keywords (applications only)
+        if domain == 'applications' and 'keywords' not in item_data:
+            item_data['keywords'] = self.generate_keywords(item_data)
+            fields_added += 1
+            print(f"  + keywords: {len(item_data['keywords'])} items")
+
+        # 7b. card (applications only)
+        if domain == 'applications' and 'card' not in item_data:
+            item_data['card'] = self.generate_card(item_data)
+            fields_added += 1
+            print("  + card: title/description")
+
+        # 8. datePublished (preserve existing or use current)
         if 'datePublished' not in item_data:
             # Check for legacy metadata.created_date
             metadata = item_data.get('metadata', {})
@@ -223,7 +311,7 @@ class SoftwareMetadataBackfiller:
             fields_added += 1
             print(f"  + datePublished: {item_data['datePublished']}")
         
-        # 7. dateModified (always update to current)
+        # 9. dateModified (always update to current)
         item_data['dateModified'] = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z')
         if fields_added > 0:  # Only count as added if other fields were added
             fields_added += 1
@@ -248,10 +336,12 @@ class SoftwareMetadataBackfiller:
         with open(file_path, 'r') as f:
             data = yaml.safe_load(f)
         
-        items_key = domain  # materials, contaminants, compounds, settings
+        items_key = domain  # materials, contaminants, compounds, settings, applications
         if items_key not in data:
             print(f"❌ Key '{items_key}' not found in {file_path}")
             return
+
+        schema_version = self._get_schema_version(data, domain)
         
         items = data[items_key]
         total_items = len(items)
@@ -268,7 +358,7 @@ class SoftwareMetadataBackfiller:
             
             print(f"📝 {item_name}")
             
-            enriched_data, fields_added = self.enrich_item(item_data, domain)
+            enriched_data, fields_added = self.enrich_item(item_data, domain, schema_version)
             
             if fields_added > 0:
                 items_modified += 1

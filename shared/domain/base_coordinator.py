@@ -63,14 +63,10 @@ class DomainCoordinator(ABC):
             # Initialize SubjectiveEvaluator
             self.subjective_evaluator = SubjectiveEvaluator(api_client)
             
-            # Initialize Winston client (optional - graceful degradation)
-            try:
-                from postprocessing.detection.winston_client import WinstonClient
-                self.winston_client = WinstonClient()
-                logger.info("✅ Winston client initialized")
-            except Exception as e:
-                self.winston_client = None
-                logger.warning(f"⚠️  Winston not configured (will continue without AI detection): {e}")
+            # Initialize Winston client (fail-fast)
+            from shared.api.client_factory import APIClientFactory
+            self.winston_client = APIClientFactory.create_client(provider="winston")
+            logger.info("✅ Winston client initialized")
             
             # Initialize QualityEvaluatedGenerator with domain
             self.generator = QualityEvaluatedGenerator(

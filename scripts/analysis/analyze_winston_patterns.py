@@ -39,7 +39,7 @@ class WinstonPatternAnalyzer:
     4. Author performance (which authors pass Winston most?)
     """
     
-    def __init__(self, db_path: str = "processing/detection/winston_feedback.db"):
+    def __init__(self, db_path: str = "data/winston_feedback.db"):
         self.db_path = db_path
         self.conn = None
     
@@ -673,7 +673,7 @@ def main():
     parser.add_argument(
         '--db',
         type=str,
-        default='processing/detection/winston_feedback.db',
+        default='data/winston_feedback.db',
         help='Path to feedback database'
     )
     

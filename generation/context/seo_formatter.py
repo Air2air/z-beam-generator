@@ -23,6 +23,24 @@ logger = logging.getLogger(__name__)
 
 class SEOContextFormatter:
     """Formats material data for SEO generation."""
+
+    @staticmethod
+    def _require_key(data: Dict[str, Any], key: str, context: str) -> Any:
+        if key not in data:
+            raise KeyError(f"Missing required key '{key}' in {context}")
+        return data[key]
+
+    @staticmethod
+    def _extract_property_value(all_props: Dict[str, Any], key: str) -> Any:
+        if key not in all_props:
+            raise KeyError(f"Missing required property '{key}'")
+
+        value = all_props[key]
+        if isinstance(value, dict):
+            if 'value' not in value:
+                raise KeyError(f"Property '{key}' missing required key 'value'")
+            return value['value']
+        return value
     
     @staticmethod
     def enrich_material_for_seo(item_data: Dict[str, Any], identifier: str) -> Dict[str, str]:
@@ -37,15 +55,17 @@ class SEOContextFormatter:
             Dict with formatted context for SEO prompt placeholders
         """
         # Extract basic info
-        material_name = item_data.get('name', identifier.replace('-laser-cleaning', '').replace('-', ' ').title())
-        category = item_data.get('category', 'Unknown')
-        subcategory = item_data.get('subcategory', '')
+        material_name = SEOContextFormatter._require_key(item_data, 'name', f"item_data for {identifier}")
+        category = SEOContextFormatter._require_key(item_data, 'category', f"item_data for {identifier}")
+        subcategory = SEOContextFormatter._require_key(item_data, 'subcategory', f"item_data for {identifier}")
         
         # Get full path (already in data)
-        full_path = item_data.get('full_path', f"{category} / {material_name}")
+        full_path = SEOContextFormatter._require_key(item_data, 'full_path', f"item_data for {identifier}")
         
         # Extract properties - navigate nested structure
-        properties = item_data.get('properties', {})
+        properties = SEOContextFormatter._require_key(item_data, 'properties', f"item_data for {identifier}")
+        if not isinstance(properties, dict):
+            raise TypeError(f"Key 'properties' must be a dict for {identifier}")
         
         # Get all properties from nested categories
         all_props = {}
@@ -56,44 +76,44 @@ class SEOContextFormatter:
                         all_props[prop_name] = prop_val
         
         # Extract specific properties
-        reflectivity = all_props.get('reflectivity', {}).get('value', 'N/A')
-        absorption = all_props.get('absorption', {}).get('value', 'N/A')
-        thermal_conductivity = all_props.get('thermal_conductivity', {}).get('value', 'N/A')
-        melting_point = all_props.get('melting_point', {}).get('value', 'N/A')
-        density = all_props.get('density', {}).get('value', 'N/A')
+        reflectivity = SEOContextFormatter._extract_property_value(all_props, 'reflectivity')
+        absorption = SEOContextFormatter._extract_property_value(all_props, 'absorption')
+        thermal_conductivity = SEOContextFormatter._extract_property_value(all_props, 'thermal_conductivity')
+        melting_point = SEOContextFormatter._extract_property_value(all_props, 'melting_point')
+        density = SEOContextFormatter._extract_property_value(all_props, 'density')
         
         # Format properties context using all flattened properties
         properties_context = SEOContextFormatter._format_properties_list(all_props)
         
         # Extract laser characteristics from flattened properties
-        wavelength = all_props.get('optimal_wavelength', {})
-        if isinstance(wavelength, dict):
-            wavelength = wavelength.get('value', 'N/A')
+        wavelength = SEOContextFormatter._extract_property_value(all_props, 'optimal_wavelength')
         
         # Try different power property names
-        power_min = 'N/A'
-        power_max = 'N/A'
-        if 'power_min' in all_props:
-            power_min = all_props['power_min'].get('value', 'N/A') if isinstance(all_props['power_min'], dict) else all_props['power_min']
-        if 'power_max' in all_props:
-            power_max = all_props['power_max'].get('value', 'N/A') if isinstance(all_props['power_max'], dict) else all_props['power_max']
+        power_min = SEOContextFormatter._extract_property_value(all_props, 'power_min')
+        power_max = SEOContextFormatter._extract_property_value(all_props, 'power_max')
         if 'power_range' in all_props:
             power_range = all_props['power_range']
             if isinstance(power_range, dict):
-                power_min = power_range.get('min', power_min)
-                power_max = power_range.get('max', power_max)
-        
-        primary_challenge = all_props.get('primary_challenge', 'Material-specific laser interaction challenges')
-        damage_risk = all_props.get('damage_risk', 'Thermal damage, surface integrity risks')
+                if 'min' not in power_range or 'max' not in power_range:
+                    raise KeyError("Property 'power_range' must contain 'min' and 'max'")
+                power_min = power_range['min']
+                power_max = power_range['max']
+
+        primary_challenge = SEOContextFormatter._extract_property_value(all_props, 'primary_challenge')
+        damage_risk = SEOContextFormatter._extract_property_value(all_props, 'damage_risk')
         
         laser_context = SEOContextFormatter._format_laser_context(all_props)
         
         # Extract contaminants
-        contaminants = item_data.get('common_contaminants', [])
+        contaminants = SEOContextFormatter._require_key(item_data, 'common_contaminants', f"item_data for {identifier}")
+        if not isinstance(contaminants, list):
+            raise TypeError(f"Key 'common_contaminants' must be a list for {identifier}")
         contaminants_list = SEOContextFormatter._format_contaminants_list(contaminants)
         
         # Extract applications
-        applications = item_data.get('applications', [])
+        applications = SEOContextFormatter._require_key(item_data, 'applications', f"item_data for {identifier}")
+        if not isinstance(applications, list):
+            raise TypeError(f"Key 'applications' must be a list for {identifier}")
         applications_list = SEOContextFormatter._format_applications_list(applications)
         
         # Settings summary
@@ -132,7 +152,7 @@ class SEOContextFormatter:
             if isinstance(data, dict) and 'value' in data:
                 name = key.replace('_', ' ').title()
                 value = data['value']
-                unit = data.get('unit', '')
+                unit = data['unit'] if 'unit' in data else ''
                 lines.append(f"- {name}: {value} {unit}".strip())
         
         return '\n'.join(lines) if lines else "Properties data available"
@@ -149,7 +169,7 @@ class SEOContextFormatter:
                 name = key.replace('_', ' ').title()
                 if 'value' in data:
                     value = data['value']
-                    unit = data.get('unit', '')
+                    unit = data['unit'] if 'unit' in data else ''
                     lines.append(f"- {name}: {value} {unit}".strip())
                 elif 'min' in data and 'max' in data:
                     lines.append(f"- {name}: {data['min']}-{data['max']}")
@@ -160,7 +180,7 @@ class SEOContextFormatter:
     def _format_contaminants_list(contaminants: List) -> str:
         """Format contaminants list."""
         if not contaminants:
-            return "Various industrial contaminants"
+            raise ValueError("Contaminants list is empty")
         
         # Handle list of strings or list of dicts
         items = []
@@ -168,16 +188,23 @@ class SEOContextFormatter:
             if isinstance(cont, str):
                 items.append(f"- {cont}")
             elif isinstance(cont, dict):
-                name = cont.get('name', cont.get('type', 'Unknown'))
+                if 'name' in cont:
+                    name = cont['name']
+                elif 'type' in cont:
+                    name = cont['type']
+                else:
+                    raise KeyError("Contaminant entry must contain 'name' or 'type'")
                 items.append(f"- {name}")
         
-        return '\n'.join(items) if items else "Standard contaminants"
+        if not items:
+            raise ValueError("No valid contaminant entries found")
+        return '\n'.join(items)
     
     @staticmethod
     def _format_applications_list(applications: List) -> str:
         """Format applications list."""
         if not applications:
-            return "Industrial cleaning applications"
+            raise ValueError("Applications list is empty")
         
         # Handle list of strings or list of dicts
         items = []
@@ -185,17 +212,26 @@ class SEOContextFormatter:
             if isinstance(app, str):
                 items.append(f"- {app}")
             elif isinstance(app, dict):
-                name = app.get('name', app.get('industry', 'Industrial'))
+                if 'name' in app:
+                    name = app['name']
+                elif 'industry' in app:
+                    name = app['industry']
+                else:
+                    raise KeyError("Application entry must contain 'name' or 'industry'")
                 items.append(f"- {name}")
         
-        return '\n'.join(items) if items else "Various industrial applications"
+        if not items:
+            raise ValueError("No valid application entries found")
+        return '\n'.join(items)
     
     @staticmethod
     def _format_settings_summary(item_data: Dict) -> str:
         """Format machine settings summary."""
-        settings = item_data.get('machine_settings', {})
+        settings = SEOContextFormatter._require_key(item_data, 'machine_settings', 'item_data')
+        if not isinstance(settings, dict):
+            raise TypeError("Key 'machine_settings' must be a dictionary")
         if not settings:
-            return "Standard machine settings apply"
+            raise ValueError("Machine settings are empty")
         
         lines = []
         for key, data in settings.items():
@@ -203,9 +239,11 @@ class SEOContextFormatter:
                 name = key.replace('_', ' ').title()
                 if 'value' in data:
                     value = data['value']
-                    unit = data.get('unit', '')
+                    unit = data['unit'] if 'unit' in data else ''
                     lines.append(f"- {name}: {value} {unit}".strip())
                 elif 'min' in data and 'max' in data:
                     lines.append(f"- {name}: {data['min']}-{data['max']}")
         
-        return '\n'.join(lines) if lines else "Machine settings configured"
+        if not lines:
+            raise ValueError("No valid machine setting entries found")
+        return '\n'.join(lines)

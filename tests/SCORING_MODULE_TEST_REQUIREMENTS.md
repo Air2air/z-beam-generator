@@ -26,7 +26,7 @@ pip install -r requirements.txt
 pytest tests/test_composite_scorer.py -v
 
 # Run with coverage
-pytest tests/test_composite_scorer.py --cov=processing.evaluation.composite_scorer --cov-report=html
+pytest tests/test_composite_scorer.py --cov=postprocessing.evaluation.composite_scorer --cov-report=html
 ```
 
 **Test Categories**:
@@ -79,7 +79,7 @@ pytest tests/test_composite_scorer.py tests/test_granular_correlator.py -v
 
 # With coverage report
 pytest tests/test_composite_scorer.py tests/test_granular_correlator.py \
-    --cov=processing.evaluation --cov=processing.learning \
+    --cov=postprocessing.evaluation --cov=learning \
     --cov-report=html --cov-report=term
 
 # Quick smoke test
@@ -104,7 +104,7 @@ The scoring module tests should be included in CI/CD:
 ## Known Issues
 
 1. **Import errors**: Ensure numpy and scipy are installed before running tests
-2. **Database not found**: GranularParameterCorrelator tests require `processing/winston_feedback.db`
+2. **Database not found**: GranularParameterCorrelator tests require `data/winston_feedback.db`
 3. **Insufficient data**: Correlation tests may be skipped if <30 samples available
 4. **Floating point precision**: Some tests use `round()` for comparison (±0.001 tolerance)
 
@@ -117,7 +117,7 @@ To generate test data for correlation analysis:
 import sqlite3
 import numpy as np
 
-db_path = 'processing/winston_feedback.db'
+db_path = 'data/winston_feedback.db'
 conn = sqlite3.connect(db_path)
 
 # Generate 100 samples with realistic parameter distributions
@@ -150,5 +150,5 @@ Documentation should include:
 **Validation command**:
 ```bash
 # Extract and test all code blocks from README
-python scripts/test_readme_examples.py processing/evaluation/SCORING_MODULE_README.md
+python scripts/test_readme_examples.py postprocessing/evaluation/SCORING_MODULE_README.md
 ```

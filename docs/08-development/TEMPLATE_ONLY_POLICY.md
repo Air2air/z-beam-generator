@@ -7,17 +7,17 @@
 
 ## Policy Statement
 
-**ALL content instructions and formatting rules MUST exist ONLY in prompt template files (`prompts/*.txt`). The `/processing` system MUST be completely reusable across all domains with ZERO component-specific code.**
+**ALL content instructions and formatting rules MUST exist ONLY in prompt templates stored in the consolidated prompt catalog (`prompts/registry/prompt_catalog.yaml`). The `/processing` system MUST be completely reusable across all domains with ZERO component-specific code.**
 
 ---
 
 ## Core Principles
 
 ### 1. Template-Driven Content
-- **ALL** content instructions → `prompts/components/{component}.txt`
-- **ALL** format requirements → `prompts/components/{component}.txt`
-- **ALL** style guidelines → `prompts/components/{component}.txt`
-- **ALL** structural rules → `prompts/components/{component}.txt`
+- **ALL** content instructions → prompt catalog `catalog.byPath` entries (e.g., `prompts/components/{component}.txt`)
+- **ALL** format requirements → prompt catalog `catalog.byPath` entries
+- **ALL** style guidelines → prompt catalog `catalog.byPath` entries
+- **ALL** structural rules → prompt catalog `catalog.byPath` entries
 
 ### 2. Generic Processing Code
 - **NO** `if component_type == 'micro':` checks
@@ -37,7 +37,7 @@
 
 ## What Goes Where
 
-### ✅ In Prompt Templates (`prompts/components/*.txt`)
+### ✅ In Prompt Templates (prompt catalog `catalog.byPath` entries like `prompts/components/*.txt`)
 - Content focus areas (what to emphasize)
 - Format requirements (structure, length, punctuation)
 - Style guidelines (voice, tone, formality)
@@ -46,7 +46,7 @@
 - Structural variations
 - Example outputs
 
-**Example** (`prompts/components/micro.txt`):
+**Example** (`prompts/components/micro.txt` stored in `prompt_catalog.yaml`):
 ```
 # Micro Generation Template
 
@@ -73,7 +73,7 @@
 {generation_instructions}
 ```
 
-### ✅ In Config Files (`processing/config.yaml`)
+### ✅ In Config Files (`generation/config.yaml`)
 - Component word counts (default, min, max)
 - Extraction strategies (raw, before_after, json_list)
 - End punctuation settings
@@ -92,7 +92,7 @@ component_lengths:
     extraction_strategy: raw
 ```
 
-### ✅ In Code (`processing/*.py`)
+### ✅ In Code (`generation/*.py`, `postprocessing/*.py`, `learning/*.py`)
 - Generic template loading
 - Parameter application (temperature, penalties)
 - Strategy-based extraction dispatch
@@ -127,7 +127,7 @@ def generate(self, identifier: str, component_type: str):
 
 ## Implementation Requirements
 
-### For Generators (`processing/generator.py`, etc.)
+### For Generators (`generation/core/generator.py`, etc.)
 
 **✅ REQUIRED**:
 ```python
@@ -145,7 +145,7 @@ def _extract_content(self, text: str, component_type: str):
         return self._extract_faq(text)      # ❌ HARDCODED DISPATCH
 ```
 
-### For Prompt Builders (`processing/generation/prompt_builder.py`)
+### For Prompt Builders (`shared/text/utils/prompt_builder.py`)
 
 **✅ REQUIRED**:
 ```python
@@ -162,7 +162,7 @@ def build_prompt(self, component_type: str, **kwargs):
         return self._build_micro_prompt(**kwargs)  # ❌ COMPONENT-SPECIFIC METHOD
 ```
 
-### For Domain Adapters (`processing/adapters/*.py`)
+### For Domain Adapters (`generation/core/adapters/*.py`)
 
 **✅ REQUIRED**:
 ```python
@@ -198,14 +198,14 @@ def extract_content(self, text: str, component_type: str):
 2. ❌ Edit materials_adapter.py - add _extract_description() method
 3. ❌ Edit prompt_builder.py - add _build_description_prompt() method
 4. ❌ Add content instructions to code
-5. ✅ Create prompts/components/description.txt
+5. ✅ Create prompt catalog entry `prompts/components/description.txt` in `prompts/registry/prompt_catalog.yaml`
 Result: 4 code files + 1 template = NOT REUSABLE
 ```
 
 ### After (COMPLIANT - Zero Code Changes)
 ```bash
 # To add "description" component
-1. ✅ Create prompts/components/description.txt (all content instructions)
+1. ✅ Create prompt catalog entry `prompts/components/description.txt` (all content instructions)
 2. ✅ Add to config.yaml:
    component_lengths:
      description:
@@ -224,15 +224,15 @@ python3 run.py --integrity-check
 ```
 
 **Checks**:
-- ✅ No `if component_type ==` in processing/*.py
+- ✅ No `if component_type ==` in generation/postprocessing/learning Python modules
 - ✅ No component-specific methods in generators
 - ✅ No hardcoded component lists
-- ✅ All content instructions in prompts/*.txt
+- ✅ All content instructions in prompt catalog entries
 - ✅ All extraction strategies in config.yaml
 
 ### Manual Review Checklist
-- [ ] All component types discoverable from `prompts/components/*.txt`
-- [ ] Zero hardcoded component names in `/processing`
+- [ ] All component types discoverable from prompt catalog entries (`prompts/components/*.txt` keys)
+- [ ] Zero hardcoded component names in generation/postprocessing/learning modules
 - [ ] All content instructions in template files
 - [ ] All extraction strategies in config.yaml
 - [ ] Generic method names (`_extract_before_after`, not `_extract_micro`)
@@ -244,17 +244,17 @@ python3 run.py --integrity-check
 ## Benefits
 
 ### 1. Full Reusability
-- `/processing` works for **ANY** domain:
+- Generation and postprocessing modules work for **ANY** domain:
   - ✅ Materials (micro, subtitle, faq, description)
   - ✅ Contaminants (subtitle, troubleshooter)
   - ✅ Applications (description, use_case)
   - ✅ Regions (overview, regulations)
-- Add new domain = zero /processing changes
+- Add new domain = zero generator engine rewrites
 
 ### 2. Easy Extension
 - New component = create template + config entry
 - No code changes required
-- No testing of /processing code
+- No generator-engine rewrites needed
 - Instant availability across all domains
 
 ### 3. Maintainability
@@ -318,7 +318,7 @@ def _build_micro_prompt(self, ...):
 **After**:
 ```python
 # REMOVED - Use generic template loading
-# Content instructions now in prompts/components/micro.txt
+# Content instructions now in prompt catalog entry prompts/components/micro.txt
 ```
 
 ### Phase 4: Move Content Instructions to Templates
@@ -333,7 +333,7 @@ if spec.name == "subtitle":
 
 **After** (in template):
 ```
-# prompts/components/subtitle.txt
+# prompt catalog entry: prompts/components/subtitle.txt
 ## Structure Guidelines
 - Lead with benefit, NOT raw specs
 - Vary structure: questions, comparisons, facts
@@ -344,13 +344,13 @@ if spec.name == "subtitle":
 ## Enforcement
 
 ### Pre-Commit Hooks
-- Scan for `if component_type ==` in processing/*.py
+- Scan for `if component_type ==` in generation/postprocessing/learning modules
 - Scan for component-specific method names
 - Verify no content instructions in code
 
 ### Code Review Requirements
 - All new components must follow template-only pattern
-- No component-specific code in /processing
+- No component-specific code in generation/postprocessing/learning modules
 - All content rules in template files
 
 ### Documentation
@@ -366,7 +366,7 @@ if spec.name == "subtitle":
 
 **Step 1**: Create template with ALL content instructions
 ```bash
-# File: prompts/components/troubleshooter.txt
+# Prompt catalog entry: prompts/components/troubleshooter.txt
 # Troubleshooter Generation Template
 
 ## Voice & Tone
@@ -392,7 +392,7 @@ Write troubleshooting guide...
 
 **Step 2**: Add config entry
 ```yaml
-# File: processing/config.yaml
+# File: generation/config.yaml
 component_lengths:
   troubleshooter:
     default: 150

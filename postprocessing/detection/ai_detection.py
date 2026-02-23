@@ -34,7 +34,7 @@ from generation.config.config_loader import get_config
 
 logger = logging.getLogger(__name__)
 
-# Get the directory containing this file (processing/detection/)
+# Get the directory containing this file (postprocessing/detection/)
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 # Path to centralized patterns file in /prompts
 PATTERNS_FILE = os.path.join(CURRENT_DIR, 'patterns', 'ai_detection_patterns.txt')
@@ -68,8 +68,7 @@ def load_patterns(patterns_file: str = PATTERNS_FILE) -> Dict[str, Any]:
     }
     
     if not os.path.exists(patterns_file):
-        logger.warning(f"Patterns file not found: {patterns_file}. Using defaults.")
-        return config
+        raise FileNotFoundError(f"AI detection patterns file not found: {patterns_file}")
     
     try:
         with open(patterns_file, 'r') as f:
@@ -185,22 +184,23 @@ class AIDetector:
         """
         self.strict_mode = strict_mode
         self.config = load_patterns(patterns_file)
-        
-        # Load threshold from centralized config if available, otherwise use patterns file
-        try:
-            from generation.config.config_loader import get_config
-            proc_config = get_config()
-            self.ai_threshold = proc_config.get_ai_threshold(strict_mode=strict_mode)
-            logger.info(f"Using AI threshold from processing/config.yaml: {self.ai_threshold}")
-        except Exception as e:
-            logger.warning(f"Could not load from processing/config.yaml: {e}, using patterns file")
-            # Fallback to patterns file or hardcoded defaults
-            if self.config['thresholds']:
-                default_threshold = self.config['thresholds'].get('ai_detection', 40)
-                strict_threshold = self.config['thresholds'].get('strict_mode', 30)
-                self.ai_threshold = strict_threshold if strict_mode else default_threshold
-            else:
-                self.ai_threshold = 30.0 if strict_mode else 40.0  # Last resort defaults
+
+        proc_config = get_config()
+        self.ai_threshold = proc_config.get_ai_threshold(strict_mode=strict_mode)
+        logger.info(f"Using AI threshold from generation/config.yaml: {self.ai_threshold}")
+
+    def _require_pattern_values(self, section: str, required_keys: list[str]) -> dict[str, Any]:
+        if section not in self.config:
+            raise KeyError(f"Missing pattern configuration section: {section}")
+        values = self.config[section]
+        if not isinstance(values, dict):
+            raise TypeError(
+                f"Pattern configuration section '{section}' must be dict, got {type(values).__name__}"
+            )
+        for key in required_keys:
+            if key not in values:
+                raise KeyError(f"Missing pattern configuration key: {section}.{key}")
+        return values
     
     def detect(self, text: str) -> Dict:
         """
@@ -269,23 +269,14 @@ class AIDetector:
         words = re.findall(r'\b\w+\b', text_lower)
         word_counts = Counter(words)
         
-        # Use exclude words from config or defaults
-        common_words = self.config['exclude_words'] if self.config['exclude_words'] else {
-            'the', 'a', 'an', 'and', 'or', 'but', 'is', 'are', 'was', 'were',
-            'of', 'to', 'in', 'for', 'on', 'with', 'from', 'by', 'at', 'as'
-        }
-        
-        # Get thresholds from centralized config, fallback to patterns file
-        try:
-            from generation.config.config_loader import get_config
-            proc_config = get_config()
-            thresholds = proc_config.get_repetition_thresholds()
-            word_freq_threshold = thresholds['word_frequency']
-            word_freq_critical = thresholds['word_frequency_critical']
-        except Exception:
-            # Fallback to patterns file defaults
-            word_freq_threshold = 3  # Default from patterns file
-            word_freq_critical = 5   # Critical threshold from patterns file
+        common_words = self.config['exclude_words']
+        if not common_words:
+            raise ValueError("Pattern configuration 'exclude_words' cannot be empty")
+
+        proc_config = get_config()
+        thresholds = proc_config.get_repetition_thresholds()
+        word_freq_threshold = thresholds['word_frequency']
+        word_freq_critical = thresholds['word_frequency_critical']
         
         content_word_counts = {
             word: count for word, count in word_counts.items()
@@ -322,14 +313,9 @@ class AIDetector:
                     sentence_patterns.append(pattern)
             
             pattern_counts = Counter(sentence_patterns)
-            # Get threshold from centralized config, fallback to default
-            try:
-                from generation.config.config_loader import get_config
-                proc_config = get_config()
-                thresholds = proc_config.get_repetition_thresholds()
-                struct_repetition_threshold = thresholds['structural_repetition']
-            except Exception:
-                struct_repetition_threshold = 2  # Fallback default
+            proc_config = get_config()
+            thresholds = proc_config.get_repetition_thresholds()
+            struct_repetition_threshold = thresholds['structural_repetition']
             
             repeated_structures = sum(1 for count in pattern_counts.values() if count >= struct_repetition_threshold)
             
@@ -486,53 +472,40 @@ class AIDetector:
         # Calculate AI score using weights from config
         score = 0.0
         
-        severity_scores = self.config.get('severities', {
-            'critical': 100,
-            'severe': 50,
-            'moderate': 30,
-            'minor': 15,
-            'low': 5
-        })
-        
-        weights = self.config.get('weights', {
-            'grammar': 20,
-            'repetition': 25,
-            'phrasing': 35,
-            'linguistic_dimensions': 15,
-            'stylistic': 5
-        })
+        severity_scores = self._require_pattern_values(
+            'severities',
+            ['critical', 'severe', 'moderate', 'minor', 'low']
+        )
+
+        weights = self._require_pattern_values(
+            'weights',
+            ['grammar', 'repetition', 'phrasing', 'linguistic_dimensions']
+        )
         
         # Grammar errors
         if grammar['severity'] in severity_scores:
-            score += severity_scores[grammar['severity']] * (weights.get('grammar', 20) / 100)
+            score += severity_scores[grammar['severity']] * (weights['grammar'] / 100)
         
         # Repetition
-        score += repetition['repetition_score'] * (weights.get('repetition', 25) / 100)
+        score += repetition['repetition_score'] * (weights['repetition'] / 100)
         
         # Unnatural phrasing
         if phrasing['severity'] in severity_scores:
-            score += severity_scores[phrasing['severity']] * (weights.get('phrasing', 35) / 100)
+            score += severity_scores[phrasing['severity']] * (weights['phrasing'] / 100)
         
         # Linguistic dimensions
         if linguistic['severity'] in severity_scores:
-            score += severity_scores[linguistic['severity']] * (weights.get('linguistic_dimensions', 15) / 100)
+            score += severity_scores[linguistic['severity']] * (weights['linguistic_dimensions'] / 100)
         
         score = min(100.0, score)
         
         # Determine if AI-like (use threshold from centralized config)
         is_ai_like = score >= self.ai_threshold
         
-        # Determine confidence (use thresholds from centralized config if available)
-        try:
-            from generation.config.config_loader import get_config
-            proc_config = get_config()
-            conf_thresholds = proc_config.get_confidence_thresholds()
-            high_conf_threshold = conf_thresholds['high']
-            medium_conf_threshold = conf_thresholds['medium']
-        except Exception:
-            # Fallback to patterns file or defaults
-            high_conf_threshold = self.config.get('thresholds', {}).get('quality_minimum', 70)
-            medium_conf_threshold = 50
+        proc_config = get_config()
+        conf_thresholds = proc_config.get_confidence_thresholds()
+        high_conf_threshold = conf_thresholds['high']
+        medium_conf_threshold = conf_thresholds['medium']
         
         if score >= high_conf_threshold:
             confidence = 'high'
@@ -565,17 +538,9 @@ class AIDetector:
         else:
             overall_severity = 'none'
         
-        # Recommendation (use thresholds from centralized config if available)
-        try:
-            from generation.config.config_loader import get_config
-            proc_config = get_config()
-            rec_thresholds = proc_config.get_recommendation_thresholds()
-            regenerate_threshold = rec_thresholds['regenerate']
-            revise_threshold = rec_thresholds['revise']
-        except Exception:
-            # Fallback to patterns file or defaults
-            regenerate_threshold = self.config.get('thresholds', {}).get('quality_minimum', 70)
-            revise_threshold = 50
+        rec_thresholds = proc_config.get_recommendation_thresholds()
+        regenerate_threshold = rec_thresholds['regenerate']
+        revise_threshold = rec_thresholds['revise']
         
         if score >= regenerate_threshold:
             recommendation = 'regenerate'

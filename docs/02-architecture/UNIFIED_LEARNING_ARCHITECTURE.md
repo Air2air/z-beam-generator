@@ -198,7 +198,7 @@ python3 scripts/analyze_unified_learning.py --days 7
 
 1. **Unified Learning Library**
    ```python
-   # processing/learning/unified_learning_library.py
+    # learning/consolidated_learning_system.py
    
    class UnifiedLearningLibrary:
        def __init__(self, feedback_db):

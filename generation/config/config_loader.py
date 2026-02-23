@@ -1,11 +1,11 @@
 """
 Processing Configuration Loader
 
-Single source of truth for ALL processing configuration.
-Loads from processing/config.yaml and provides typed access.
+Single source of truth for ALL generation configuration.
+Loads from generation/config.yaml and provides typed access.
 
 Usage:
-    from processing.config_loader import ProcessingConfig
+    from generation.config.config_loader import ProcessingConfig
     
     config = ProcessingConfig()
     threshold = config.get_ai_threshold()
@@ -22,16 +22,16 @@ from shared.utils.yaml_utils import load_yaml
 logger = logging.getLogger(__name__)
 
 # Path to config file
-CONFIG_DIR = Path(__file__).parent.parent  # processing/ directory
+CONFIG_DIR = Path(__file__).parent.parent  # generation/ directory
 CONFIG_FILE = CONFIG_DIR / "config.yaml"
 
 
 class ProcessingConfig:
     """
-    Central configuration manager for processing pipeline.
+    Central configuration manager for generation pipeline.
     
-    Loads from processing/config.yaml and provides typed accessors.
-    All processing components should use this instead of hardcoded values.
+    Loads from generation/config.yaml and provides typed accessors.
+    All generation components should use this instead of hardcoded values.
     """
     
     def __init__(self, config_path: Optional[str] = None):
@@ -41,16 +41,76 @@ class ProcessingConfig:
         Args:
             config_path: Optional custom config file path
         """
-        self.config_path = config_path or CONFIG_FILE
+        self.config_path = Path(config_path) if config_path else CONFIG_FILE
         self.config = self._load_config()
+        self._text_field_config: Optional[Dict[str, Any]] = None
         logger.info(f"Loaded processing config from {self.config_path}")
+
+    def _load_text_field_config(self) -> Dict[str, Any]:
+        """Load centralized text field configuration."""
+        if self._text_field_config is None:
+            config_path = Path(__file__).parent.parent / "text_field_config.yaml"
+            if not config_path.exists():
+                raise FileNotFoundError(
+                    f"Text field config not found: {config_path}. "
+                    "Expected location: generation/text_field_config.yaml"
+                )
+
+            config = load_yaml(config_path)
+            if not isinstance(config, dict):
+                raise ValueError("Text field config must contain a YAML dictionary")
+
+            self._text_field_config = config
+
+        return self._text_field_config
+
+    def _resolve_text_field_name(self, component_type: str) -> str:
+        """Resolve component aliases to canonical field name."""
+        text_cfg = self._load_text_field_config()
+        aliases = text_cfg.get('aliases', {})
+        if aliases and not isinstance(aliases, dict):
+            raise ValueError("Invalid aliases block in generation/text_field_config.yaml")
+        return aliases.get(component_type, component_type)
+
+    def _get_text_field_length_spec(self, component_type: str) -> Dict[str, Any]:
+        """Get centralized base length spec for a text field name."""
+        text_cfg = self._load_text_field_config()
+        defaults = text_cfg.get('defaults')
+        if not isinstance(defaults, dict):
+            raise ValueError("Missing defaults block in generation/text_field_config.yaml")
+
+        fields = text_cfg.get('fields')
+        if not isinstance(fields, dict):
+            raise ValueError("Missing fields block in generation/text_field_config.yaml")
+
+        field_name = self._resolve_text_field_name(component_type)
+        if field_name not in fields:
+            raise KeyError(
+                f"Missing centralized field config for component_type='{component_type}' "
+                f"(resolved field: '{field_name}')"
+            )
+
+        field_cfg = fields[field_name] or {}
+        if not isinstance(field_cfg, dict):
+            raise ValueError(
+                f"Invalid field config for '{field_name}' in generation/text_field_config.yaml"
+            )
+
+        target = field_cfg.get('base_length', defaults.get('base_length'))
+
+        if not isinstance(target, int) or target <= 0:
+            raise ValueError(f"Invalid base_length for '{field_name}': {target}")
+
+        return {
+            'target': target,
+        }
     
     def _load_config(self) -> Dict[str, Any]:
         """Load YAML configuration file."""
         if not os.path.exists(self.config_path):
             raise FileNotFoundError(
                 f"Processing config not found: {self.config_path}\n"
-                f"Expected location: processing/config.yaml"
+                f"Expected location: generation/config.yaml"
             )
         
         try:
@@ -62,6 +122,55 @@ class ProcessingConfig:
             return config
         except Exception as e:
             raise RuntimeError(f"Failed to load config from {self.config_path}: {e}")
+
+    def _require_value(self, path: str, expected_type: Optional[type] = None) -> Any:
+        """
+        Require a configuration value at dot-path and optionally validate type.
+
+        Args:
+            path: Dot-separated config path (e.g. "api.base_temperature")
+            expected_type: Optional expected Python type
+
+        Returns:
+            Configuration value
+
+        Raises:
+            KeyError: If required key path is missing
+            ValueError: If value type is invalid
+        """
+        keys = path.split('.')
+        value: Any = self.config
+
+        for key in keys:
+            if not isinstance(value, dict):
+                raise KeyError(
+                    f"Invalid config structure while resolving '{path}': "
+                    f"'{key}' parent is not a dictionary"
+                )
+            if key not in value:
+                raise KeyError(f"Missing required config key: {path}")
+            value = value[key]
+
+        if expected_type is not None and not isinstance(value, expected_type):
+            raise ValueError(
+                f"Invalid config type for '{path}': expected {expected_type.__name__}, "
+                f"got {type(value).__name__}"
+            )
+
+        return value
+
+    def get_required_config(self, path: str, expected_type: Optional[type] = None) -> Any:
+        """
+        Public accessor for required config values by dot-path.
+
+        Args:
+            path: Dot-separated config path (e.g. "constants.api_helper.max_tokens")
+            expected_type: Optional expected Python type
+
+        Returns:
+            Configuration value
+        """
+        return self._require_value(path, expected_type)
     
     # =========================================================================
     # INTENSITY SLIDERS (User-facing controls) - NOW 1-10 SCALE
@@ -69,47 +178,66 @@ class ProcessingConfig:
     
     def get_author_voice_intensity(self) -> int:
         """Get author voice intensity (1-10)."""
-        return self.config.get('author_voice_intensity', 5)
+        return self._require_value('author_voice_intensity', int)
     
     def get_personality_intensity(self) -> int:
         """Get personality intensity (1-10)."""
-        return self.config.get('personality_intensity', 5)
+        return self._require_value('personality_intensity', int)
     
     def get_engagement_style(self) -> int:
         """Get engagement style (1-10)."""
-        return self.config.get('engagement_style', 5)
+        return self._require_value('engagement_style', int)
     
     def get_emotional_intensity(self) -> int:
         """Get emotional intensity (1-10)."""
-        return self.config.get('emotional_intensity', 5)
+        return self._require_value('emotional_intensity', int)
     
     def get_technical_language_intensity(self) -> int:
         """Get technical language intensity (1-10)."""
-        return self.config.get('technical_language_intensity', 5)
+        return self._require_value('technical_language_intensity', int)
     
     def get_context_specificity(self) -> int:
         """Get context specificity (1-10)."""
-        return self.config.get('context_specificity', 5)
+        return self._require_value('context_specificity', int)
     
     def get_sentence_rhythm_variation(self) -> int:
         """Get sentence rhythm variation (1-10)."""
-        return self.config.get('sentence_rhythm_variation', 5)
+        return self._require_value('sentence_rhythm_variation', int)
     
     def get_imperfection_tolerance(self) -> int:
         """Get imperfection tolerance (1-10)."""
-        return self.config.get('imperfection_tolerance', 5)
+        return self._require_value('imperfection_tolerance', int)
     
     def get_structural_predictability(self) -> int:
         """Get structural predictability (1-10)."""
-        return self.config.get('structural_predictability', 5)
+        return self._require_value('structural_predictability', int)
     
     def get_ai_avoidance_intensity(self) -> int:
         """Get AI avoidance intensity (1-10)."""
-        return self.config.get('ai_avoidance_intensity', 5)
+        return self._require_value('ai_avoidance_intensity', int)
     
     def get_length_variation_range(self) -> int:
-        """Get length variation range (1-10)."""
-        return self.config.get('length_variation_range', 5)
+        """
+        Get legacy-compatible length variation range (1-10).
+
+        Compatibility shim: derives value from centralized
+        generation/text_field_config.yaml randomization_range.
+        """
+        text_cfg = self._load_text_field_config()
+        randomization_cfg = text_cfg.get('randomization_range')
+        if not isinstance(randomization_cfg, dict):
+            raise ValueError(
+                "Missing required config block: randomization_range in generation/text_field_config.yaml"
+            )
+
+        min_factor = randomization_cfg.get('min_factor')
+        max_factor = randomization_cfg.get('max_factor')
+        if not isinstance(min_factor, (int, float)) or not isinstance(max_factor, (int, float)):
+            raise ValueError("randomization_range.min_factor and max_factor must be numeric")
+
+        max_deviation = max(abs(float(min_factor) - 1.0), abs(float(max_factor) - 1.0))
+        derived_slider = int(round(max_deviation * 10))
+        return max(1, min(10, derived_slider))
     
     def get_learning_target(self) -> float:
         """
@@ -118,7 +246,13 @@ class ProcessingConfig:
         Returns:
             Target human score (0-100) that system tries to achieve through learning
         """
-        return self.config.get('human_score_learning_target', 50)
+        value = self._require_value('human_score_learning_target')
+        if not isinstance(value, (int, float)):
+            raise ValueError(
+                f"Invalid config type for 'human_score_learning_target': "
+                f"expected number, got {type(value).__name__}"
+            )
+        return float(value)
     
     def get_humanness_intensity(self) -> int:
         """
@@ -127,7 +261,7 @@ class ProcessingConfig:
         Returns:
             1 = Minimal (fast, weak penalties) → 10 = Maximum (aggressive, high penalties)
         """
-        return self.config.get('humanness_intensity', 5)
+        return self._require_value('humanness_intensity', int)
     
     # =========================================================================
     # DETECTION SETTINGS
@@ -143,40 +277,57 @@ class ProcessingConfig:
         Returns:
             Threshold value (0-100 scale)
         """
-        detection = self.config.get('detection', {})
+        detection = self._require_value('detection', dict)
         if strict_mode:
-            return detection.get('strict_mode_threshold', 25)
-        return detection.get('ai_threshold', 30)  # Lowered from 40 to 30 based on phrasely.ai validation
+            value = self._require_value('detection.strict_mode_threshold')
+        else:
+            value = self._require_value('detection.ai_threshold')
+        if not isinstance(value, (int, float)):
+            raise ValueError(
+                f"Invalid AI threshold type: expected number, got {type(value).__name__}"
+            )
+        return float(value)
     
     def get_confidence_thresholds(self) -> Dict[str, float]:
         """Get AI confidence thresholds."""
-        detection = self.config.get('detection', {})
+        detection = self._require_value('detection', dict)
+        high = self._require_value('detection.high_confidence_threshold')
+        medium = self._require_value('detection.medium_confidence_threshold')
+        if not isinstance(high, (int, float)) or not isinstance(medium, (int, float)):
+            raise ValueError("detection confidence thresholds must be numeric")
         return {
-            'high': detection.get('high_confidence_threshold', 70),
-            'medium': detection.get('medium_confidence_threshold', 50)
+            'high': float(high),
+            'medium': float(medium)
         }
     
     def get_recommendation_thresholds(self) -> Dict[str, float]:
         """Get recommendation thresholds."""
-        detection = self.config.get('detection', {})
+        detection = self._require_value('detection', dict)
+        regenerate = self._require_value('detection.regenerate_threshold')
+        revise = self._require_value('detection.revise_threshold')
+        if not isinstance(regenerate, (int, float)) or not isinstance(revise, (int, float)):
+            raise ValueError("detection recommendation thresholds must be numeric")
         return {
-            'regenerate': detection.get('regenerate_threshold', 70),
-            'revise': detection.get('revise_threshold', 50)
+            'regenerate': float(regenerate),
+            'revise': float(revise)
         }
     
     def get_repetition_thresholds(self) -> Dict[str, int]:
         """Get repetition detection thresholds."""
-        detection = self.config.get('detection', {})
+        detection = self._require_value('detection', dict)
+        word_frequency = self._require_value('detection.word_frequency_threshold', int)
+        word_frequency_critical = self._require_value('detection.word_frequency_critical', int)
+        structural_repetition = self._require_value('detection.structural_repetition_threshold', int)
         return {
-            'word_frequency': detection.get('word_frequency_threshold', 3),
-            'word_frequency_critical': detection.get('word_frequency_critical', 5),
-            'structural_repetition': detection.get('structural_repetition_threshold', 2)
+            'word_frequency': word_frequency,
+            'word_frequency_critical': word_frequency_critical,
+            'structural_repetition': structural_repetition
         }
     
     def use_ml_detection(self) -> bool:
         """Check if ML-based detection is enabled."""
-        detection = self.config.get('detection', {})
-        return detection.get('use_ml_model', False)
+        value = self._require_value('detection.use_ml_model', bool)
+        return value
     
     # =========================================================================
     # READABILITY SETTINGS
@@ -184,10 +335,14 @@ class ProcessingConfig:
     
     def get_readability_thresholds(self) -> Dict[str, float]:
         """Get readability score thresholds."""
-        readability = self.config.get('readability', {})
+        readability = self._require_value('readability', dict)
+        min_score = self._require_value('readability.min_flesch_score')
+        max_score = self._require_value('readability.max_flesch_score')
+        if not isinstance(min_score, (int, float)) or not isinstance(max_score, (int, float)):
+            raise ValueError("readability thresholds must be numeric")
         return {
-            'min': readability.get('min_flesch_score', 60.0),
-            'max': readability.get('max_flesch_score', 100.0)
+            'min': float(min_score),
+            'max': float(max_score)
         }
     
     # =========================================================================
@@ -204,15 +359,18 @@ class ProcessingConfig:
         Returns:
             Temperature value (0.0-1.0)
         """
-        api = self.config.get('api', {})
+        api = self._require_value('api', dict)
         # Could add component-specific temps in future
-        return api.get('base_temperature', 0.8)
+        value = self._require_value('api.base_temperature')
+        if not isinstance(value, (int, float)):
+            raise ValueError("api.base_temperature must be numeric")
+        return float(value)
     
     def get_max_tokens(self, component_type: str = 'default') -> int:
         """
         Get max tokens for component type based on word count target.
         
-        Converts component_lengths.target (word count) to tokens.
+        Converts centralized text field base_length (word count) to tokens.
         Token estimation: words × 1.3 (approximate tokens per word)
         
         Args:
@@ -221,17 +379,8 @@ class ProcessingConfig:
         Returns:
             Max tokens value (converted from word count)
         """
-        # Get target word count from component_lengths
-        lengths = self.config.get('component_lengths', {})
-        if component_type not in lengths:
-            raise KeyError(f"Missing component_lengths entry for component_type='{component_type}'")
-        component_config = lengths[component_type]
-        
-        if isinstance(component_config, dict):
-            target_words = component_config.get('target')
-        else:
-            # Legacy: component_config might be int (word count)
-            target_words = component_config
+        length_spec = self._get_text_field_length_spec(component_type)
+        target_words = length_spec['target']
         
         if not isinstance(target_words, int) or target_words <= 0:
             raise ValueError(
@@ -243,13 +392,15 @@ class ProcessingConfig:
     
     def get_max_attempts(self) -> int:
         """Get maximum generation attempts."""
-        api = self.config.get('api', {})
-        return api.get('max_attempts', 5)
+        value = self._require_value('api.max_attempts', int)
+        return value
     
     def get_retry_temperature_increase(self) -> float:
         """Get temperature increase per retry."""
-        api = self.config.get('api', {})
-        return api.get('retry_temperature_increase', 0.1)
+        value = self._require_value('api.retry_temperature_increase')
+        if not isinstance(value, (int, float)):
+            raise ValueError("api.retry_temperature_increase must be numeric")
+        return float(value)
     
     # =========================================================================
     # COMPONENT EXTRACTION STRATEGIES
@@ -257,37 +408,47 @@ class ProcessingConfig:
     
     def get_extraction_strategy(self, component_type: str) -> str:
         """Get extraction strategy for component type from component_extraction."""
-        extraction = self.config.get('component_extraction', {})
+        extraction = self._require_value('component_extraction', dict)
         if component_type in extraction:
-            strategy = extraction[component_type].get('extraction_strategy')
+            component_entry = extraction[component_type]
+            if not isinstance(component_entry, dict):
+                raise ValueError(
+                    f"Invalid component_extraction entry for '{component_type}': expected dictionary"
+                )
+            if 'extraction_strategy' not in component_entry:
+                raise KeyError(
+                    f"Missing required config key: component_extraction.{component_type}.extraction_strategy"
+                )
+            strategy = component_entry['extraction_strategy']
             if not strategy:
                 raise ValueError(
                     f"Missing extraction_strategy for component_type='{component_type}' in component_extraction"
                 )
             return strategy
 
+        # Fallback to component registry as canonical source for standard components.
+        # This preserves fail-fast behavior for unknown components while avoiding
+        # redundant config entries for components that already declare strategy in specs.
+        try:
+            from shared.text.utils.component_specs import ComponentRegistry
+
+            spec = ComponentRegistry.get_spec(component_type)
+            if not spec.extraction_strategy:
+                raise ValueError(
+                    f"Component spec for '{component_type}' missing extraction_strategy"
+                )
+            return spec.extraction_strategy
+        except Exception:
+            pass
+
         raise KeyError(
             f"Missing component_extraction entry for component_type='{component_type}'"
         )
     
     def get_component_length(self, component_type: str) -> int:
-        """Get target word count for component type from component_lengths."""
-        lengths = self.config.get('component_lengths', {})
-        if component_type not in lengths:
-            raise KeyError(f"Missing component_lengths entry for component_type='{component_type}'")
-        val = lengths[component_type]
-        if isinstance(val, dict):
-            target = val.get('target')
-            if not isinstance(target, int) or target <= 0:
-                raise ValueError(
-                    f"Invalid target word count for component_type='{component_type}': {target}"
-                )
-            return target
-        if not isinstance(val, int) or val <= 0:
-            raise ValueError(
-                f"Invalid component_lengths value for component_type='{component_type}': {val}"
-            )
-        return val
+        """Get target word count for component type from centralized text field config."""
+        length_spec = self._get_text_field_length_spec(component_type)
+        return length_spec['target']
     
     # =========================================================================
     # DATA SOURCES
@@ -295,17 +456,13 @@ class ProcessingConfig:
     
     def get_materials_yaml_path(self) -> str:
         """Get path to Materials.yaml."""
-        sources = self.config.get('data_sources', {})
-        if 'materials_yaml' not in sources:
-            raise KeyError("Missing required config key: data_sources.materials_yaml")
-        return sources['materials_yaml']
+        value = self._require_value('data_sources.materials_yaml', str)
+        return value
     
     def get_categories_yaml_path(self) -> str:
         """Get path to Categories.yaml."""
-        sources = self.config.get('data_sources', {})
-        if 'categories_yaml' not in sources:
-            raise KeyError("Missing required config key: data_sources.categories_yaml")
-        return sources['categories_yaml']
+        value = self._require_value('data_sources.categories_yaml', str)
+        return value
     
     # =========================================================================
     # OUTPUT SETTINGS
@@ -313,24 +470,18 @@ class ProcessingConfig:
     
     def get_output_dir(self) -> str:
         """Get frontmatter output directory."""
-        output = self.config.get('output', {})
-        if 'frontmatter_dir' not in output:
-            raise KeyError("Missing required config key: output.frontmatter_dir")
-        return output['frontmatter_dir']
+        value = self._require_value('output.frontmatter_dir', str)
+        return value
     
     def get_backup_dir(self) -> str:
         """Get backup directory."""
-        output = self.config.get('output', {})
-        if 'backup_dir' not in output:
-            raise KeyError("Missing required config key: output.backup_dir")
-        return output['backup_dir']
+        value = self._require_value('output.backup_dir', str)
+        return value
     
     def should_create_backup(self) -> bool:
         """Check if backups should be created."""
-        output = self.config.get('output', {})
-        if 'create_backup' not in output:
-            raise KeyError("Missing required config key: output.create_backup")
-        return output['create_backup']
+        value = self._require_value('output.create_backup', bool)
+        return value
     
     # =========================================================================
     # VALIDATION
@@ -352,7 +503,7 @@ class ProcessingConfig:
         # Check required sections exist
         required_sections = [
             'detection', 'readability', 'api', 
-            'component_lengths', 'data_sources', 'output'
+            'data_sources', 'output'
         ]
         for section in required_sections:
             if section not in self.config:
@@ -364,14 +515,14 @@ class ProcessingConfig:
             'engagement_style', 'technical_language_intensity',
             'context_specificity', 'sentence_rhythm_variation',
             'imperfection_tolerance', 'structural_predictability',
-            'ai_avoidance_intensity', 'length_variation_range'
+            'ai_avoidance_intensity'
         ]
         for field in intensity_fields:
             value = self.config.get(field)
             if value is None:
                 errors.append(f"Missing intensity slider: {field}")
-            elif not isinstance(value, int) or not 0 <= value <= 100:
-                errors.append(f"{field} must be integer 0-100, got: {value}")
+            elif not isinstance(value, int) or not 1 <= value <= 10:
+                errors.append(f"{field} must be integer 1-10, got: {value}")
         
         # Check thresholds are reasonable
         if 'detection' in self.config:
@@ -389,6 +540,12 @@ class ProcessingConfig:
             materials_path = self.get_materials_yaml_path()
             if not os.path.exists(materials_path):
                 errors.append(f"Materials file not found: {materials_path}")
+
+        # Check centralized text field config exists and has required blocks
+        try:
+            self._get_text_field_length_spec('pageDescription')
+        except Exception as e:
+            errors.append(f"Centralized text field config invalid: {e}")
         
         return {
             'valid': len(errors) == 0,

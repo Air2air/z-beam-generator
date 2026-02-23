@@ -144,14 +144,19 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
         # Update ONLY the specified field (NEVER update author - immutability policy)
         # Normalize description aliases to canonical frontmatter field name
         persisted_field = (
-            'page_description'
+            'pageDescription'
             if field_name in ('pageDescription', 'description', 'page_description')
             else field_name
         )
 
         frontmatter_data[persisted_field] = field_value
-        if persisted_field == 'page_description':
-            logger.info(f"   ✨ Saved description component to page_description field")
+        if persisted_field == 'pageDescription':
+            logger.info(f"   ✨ Saved description component to pageDescription field")
+
+            # Remove legacy snake_case duplicate if present
+            if 'page_description' in frontmatter_data:
+                del frontmatter_data['page_description']
+                logger.info("   🧹 Removed legacy page_description field")
         
         print(f"   ✅ Updated {domain} frontmatter {field_name} for {item_name}")
         logger.info(f"   ✅ Updated {domain} frontmatter {field_name} for {item_name}")

@@ -72,14 +72,9 @@ class UniversalTextGenerator(BaseBackfillGenerator):
         # Initialize SubjectiveEvaluator
         subjective_evaluator = SubjectiveEvaluator(api_client)
         
-        # Initialize Winston client (optional - graceful degradation)
-        try:
-            from postprocessing.detection.winston_client import WinstonClient
-            winston_client = WinstonClient()
-            logger.info("✅ Winston client initialized")
-        except Exception as e:
-            winston_client = None
-            logger.warning(f"⚠️  Winston not configured: {e}")
+        # Initialize Winston client (fail-fast)
+        winston_client = APIClientFactory.create_client(provider="winston")
+        logger.info("✅ Winston client initialized")
         
         # Extract domain from items_key
         # materials → materials, contaminants → contaminants (keep plural)
@@ -104,9 +99,12 @@ class UniversalTextGenerator(BaseBackfillGenerator):
         Returns:
             Modified item dict with generated content in target field(s)
         """
-        # Extract item identifier and display name
-        item_id = item_data.get('id', item_data.get('name', 'unknown'))
-        display_name = item_data.get('display_name', item_data.get('name', item_id))
+        # Extract item identifier and display name (fail-fast on missing identity)
+        item_id = item_data.get('id') or item_data.get('name')
+        if not item_id:
+            raise KeyError("Item missing required identity fields: expected 'id' or 'name'")
+
+        display_name = item_data.get('display_name') or item_data.get('name') or item_id
         
         logger.info(f"  🎨 Generating {len(self.field_mappings)} field(s) for {display_name}")
         logger.info(f"  📋 Field mappings: {[m['field'] for m in self.field_mappings]}")
@@ -126,26 +124,29 @@ class UniversalTextGenerator(BaseBackfillGenerator):
                 
                 result = self.generator.generate(
                     material_name=material_name,
-                    component_type=component_type,
-                    author_id=item_data.get('author', {}).get('id', 1)  # Default to author 1
+                    component_type=component_type
                 )
                 
                 if result.success and result.content:
                     # Update item data with generated content (handle nested paths)
                     self._set_nested_field(item_data, field, result.content)
+                    prefix = f"    " if self.mode == 'multi' else "  "
                     logger.info(f"{prefix}   📝 Set {field} = '{result.content[:50]}...'")
                     
                     # Extract quality score (try different possible locations)
-                    quality_score = 0.0
+                    quality_score: Optional[float] = None
                     if hasattr(result, 'quality_scores') and result.quality_scores:
-                        quality_score = result.quality_scores.get('overall_realism', result.quality_score if hasattr(result, 'quality_score') else 0.0)
+                        if 'overall_realism' in result.quality_scores:
+                            quality_score = result.quality_scores['overall_realism']
                     elif hasattr(result, 'quality_score'):
                         quality_score = result.quality_score
-                        
-                    prefix = f"    " if self.mode == 'multi' else "  "
-                    logger.info(f"{prefix}✅ {field}: generated ({len(result.content)} chars, quality: {quality_score:.1f}/10)")
+
+                    quality_display = f"{quality_score:.1f}/10" if quality_score is not None else "n/a"
+                    logger.info(f"{prefix}✅ {field}: generated ({len(result.content)} chars, quality: {quality_display})")
                 else:
-                    error_msg = getattr(result, 'error_message', getattr(result, 'error', 'Unknown error'))
+                    error_msg = getattr(result, 'error_message', None) or getattr(result, 'error', None)
+                    if not error_msg:
+                        error_msg = "Generation failed without error details"
                     prefix = f"    " if self.mode == 'multi' else "  "
                     logger.error(f"{prefix}❌ {field}: Generation failed - {error_msg}")
                     

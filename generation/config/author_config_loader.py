@@ -11,13 +11,13 @@ Architecture:
 - Final values = base + author_offset (clamped to [0, 100])
 
 Usage:
-    from processing.author_config_loader import get_author_config
+    from generation.config.author_config_loader import get_author_config
     
     # Get config with author-specific offsets applied
     config = get_author_config(author_id=1)  # Yi-Chun Lin
     
     # Use dynamic config with author-specific values
-    from processing.dynamic_config import DynamicConfig
+    from generation.config.dynamic_config import DynamicConfig
     dynamic = DynamicConfig(base_config=config)
     temp = dynamic.calculate_temperature('micro')
 """
@@ -43,7 +43,7 @@ class AuthorConfigLoader:
             author_profiles_path: Path to author_profiles.yaml (optional)
         """
         if author_profiles_path is None:
-            author_profiles_path = Path(__file__).parent / "author_profiles.yaml"  # processing/config/author_profiles.yaml
+            author_profiles_path = Path(__file__).parent / "author_profiles.yaml"  # generation/config/author_profiles.yaml
         
         self.profiles_path = Path(author_profiles_path)
         self._profiles_cache: Optional[Dict] = None
@@ -54,15 +54,19 @@ class AuthorConfigLoader:
             return self._profiles_cache
         
         if not self.profiles_path.exists():
-            logger.warning(f"Author profiles not found: {self.profiles_path}")
-            return {"authors": {}}
+            raise FileNotFoundError(f"Author profiles not found: {self.profiles_path}")
         
         try:
             self._profiles_cache = load_yaml(self.profiles_path)
+            if not isinstance(self._profiles_cache, dict):
+                raise ValueError("author_profiles.yaml must parse to a dictionary")
+            if 'authors' not in self._profiles_cache:
+                raise KeyError("author_profiles.yaml missing required key: authors")
+            if not isinstance(self._profiles_cache['authors'], dict):
+                raise ValueError("author_profiles.yaml key 'authors' must be a dictionary")
             return self._profiles_cache
         except Exception as e:
-            logger.error(f"Failed to load author profiles: {e}")
-            return {"authors": {}}
+            raise RuntimeError(f"Failed to load author profiles: {e}") from e
     
     def get_author_profile(self, author_id: int) -> Optional[Dict]:
         """
@@ -75,7 +79,11 @@ class AuthorConfigLoader:
             Author profile dict with offsets, or None if not found
         """
         profiles = self._load_profiles()
-        authors = profiles.get("authors", {})
+        if 'authors' not in profiles:
+            raise KeyError("Loaded profiles missing required key: authors")
+        authors = profiles['authors']
+        if not isinstance(authors, dict):
+            raise ValueError("Loaded profiles key 'authors' must be a dictionary")
         
         # Find profile by author_id
         for key, profile in authors.items():
@@ -105,7 +113,11 @@ class AuthorConfigLoader:
             logger.info(f"No offsets for author {author_id}, using base config")
             return base_config
         
-        offsets = profile.get("offsets", {})
+        if 'offsets' not in profile:
+            raise KeyError(f"Author profile missing required key: offsets (author_id={author_id})")
+        offsets = profile['offsets']
+        if not isinstance(offsets, dict):
+            raise ValueError(f"Author profile offsets must be a dictionary (author_id={author_id})")
         if not offsets:
             logger.info(f"No offsets defined for author {author_id}")
             return base_config
@@ -113,7 +125,7 @@ class AuthorConfigLoader:
         # Load base config data
         config_data = load_yaml(base_config.config_path)
         
-        # Apply offsets (with clamping to [1, 3] for 1-3 scale)
+        # Apply offsets (clamped to [1, 10] for 1-10 scale)
         slider_fields = [
             'author_voice_intensity',
             'personality_intensity',
@@ -124,8 +136,7 @@ class AuthorConfigLoader:
             'sentence_rhythm_variation',
             'imperfection_tolerance',
             'structural_predictability',
-            'ai_avoidance_intensity',
-            'length_variation_range'
+            'ai_avoidance_intensity'
         ]
         
         applied_offsets = []
@@ -152,7 +163,9 @@ class AuthorConfigLoader:
                     )
         
         if applied_offsets:
-            author_name = profile.get("name", f"Author {author_id}")
+            if 'name' not in profile or not isinstance(profile['name'], str) or not profile['name'].strip():
+                raise KeyError(f"Author profile missing required non-empty key: name (author_id={author_id})")
+            author_name = profile['name']
             logger.info(
                 f"Applied {len(applied_offsets)} offsets for {author_name}:\n  " +
                 "\n  ".join(applied_offsets)
@@ -163,7 +176,7 @@ class AuthorConfigLoader:
         tmp = tempfile.NamedTemporaryFile(
             mode='w', suffix='.yaml', delete=False
         )
-        save_yaml(config_data, tmp.name)
+        save_yaml(Path(tmp.name), config_data)
         tmp_path = tmp.name
         tmp.close()
         
@@ -225,7 +238,7 @@ def compare_author_configs(
     Returns:
         Formatted comparison report
     """
-    from processing.dynamic_config import DynamicConfig
+    from generation.config.dynamic_config import DynamicConfig
     
     config1 = get_author_config(author_id_1)
     config2 = get_author_config(author_id_2)
@@ -237,8 +250,16 @@ def compare_author_configs(
     loader = get_author_config_loader()
     profile1 = loader.get_author_profile(author_id_1)
     profile2 = loader.get_author_profile(author_id_2)
-    name1 = profile1.get("name", f"Author {author_id_1}") if profile1 else f"Author {author_id_1}"
-    name2 = profile2.get("name", f"Author {author_id_2}") if profile2 else f"Author {author_id_2}"
+    if profile1 is None:
+        raise ValueError(f"No author profile found for author_id={author_id_1}")
+    if profile2 is None:
+        raise ValueError(f"No author profile found for author_id={author_id_2}")
+    if 'name' not in profile1 or not isinstance(profile1['name'], str) or not profile1['name'].strip():
+        raise KeyError(f"Author profile missing required non-empty key: name (author_id={author_id_1})")
+    if 'name' not in profile2 or not isinstance(profile2['name'], str) or not profile2['name'].strip():
+        raise KeyError(f"Author profile missing required non-empty key: name (author_id={author_id_2})")
+    name1 = profile1['name']
+    name2 = profile2['name']
     
     lines = [
         "=" * 80,
@@ -260,7 +281,6 @@ def compare_author_configs(
         ('Imperfection Tolerance', 'get_imperfection_tolerance'),
         ('Structural Predictability', 'get_structural_predictability'),
         ('AI Avoidance', 'get_ai_avoidance_intensity'),
-        ('Length Variation', 'get_length_variation_range'),
     ]
     
     lines.append("BASE SLIDERS:")
@@ -324,7 +344,7 @@ if __name__ == "__main__":
             print(f"  Technical Language: {config.get_technical_language_intensity()}")
             print(f"  AI Avoidance: {config.get_ai_avoidance_intensity()}")
     else:
-        print("Usage: python3 processing/author_config_loader.py <author_id>")
+        print("Usage: python3 generation/config/author_config_loader.py <author_id>")
         print("\nAvailable authors:")
         print("  1 - Yi-Chun Lin (Taiwan)")
         print("  2 - Alessandro Moretti (Italy)")

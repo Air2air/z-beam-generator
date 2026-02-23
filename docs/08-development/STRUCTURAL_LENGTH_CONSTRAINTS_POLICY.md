@@ -103,17 +103,17 @@ CONTENT REQUIREMENTS (WHAT to say):
 
 ### Domain-Specific Examples
 
-**Materials Domain** (`prompts/materials/description.txt`):
+**Materials Domain** (prompt catalog `catalog.byPath: prompts/materials/description.txt`):
 ```
 Write a concise technical description (1-2 sentences) about {material} for laser cleaning applications.
 ```
 
-**Contaminants Domain** (`prompts/contaminants/description.txt`):
+**Contaminants Domain** (prompt catalog `catalog.byPath: prompts/contaminants/description.txt`):
 ```
 Write a concise technical description (2-3 sentences) about {identifier} contamination for laser cleaning applications.
 ```
 
-**Settings Domain** (`prompts/settings/description.txt`):
+**Settings Domain** (prompt catalog `catalog.byPath: prompts/settings/description.txt`):
 ```
 Write a concise technical description (1-2 sentences) about {setting} for laser cleaning applications.
 ```
@@ -196,8 +196,8 @@ Before merging any prompt template changes:
 
 **Step 1: Identify Current State**
 ```bash
-# Check for structural constraint
-grep -n "sentence" prompts/*/*.txt
+# Check for structural constraint in the prompt catalog
+grep -n "sentence" prompts/registry/prompt_catalog.yaml
 ```
 
 **Step 2: Add Constraint (if missing)**

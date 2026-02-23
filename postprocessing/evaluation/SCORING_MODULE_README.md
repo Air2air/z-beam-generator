@@ -1,6 +1,6 @@
 # Scoring Module - Comprehensive Quality Assessment & Parameter Correlation
 
-**Location**: `processing/evaluation/` (with correlation analysis in `processing/learning/`)
+**Location**: `postprocessing/evaluation/` (with correlation analysis in `learning/`)
 
 The Scoring Module provides highly granular quality assessment and parameter correlation analysis, enabling precise parameter tuning and relationship discovery for optimal content generation.
 
@@ -9,7 +9,7 @@ The Scoring Module provides highly granular quality assessment and parameter cor
 ## 🎯 Core Components
 
 ### 1. CompositeScorer
-**File**: `processing/evaluation/composite_scorer.py`
+**File**: `postprocessing/evaluation/composite_scorer.py`
 
 Calculates unified quality metric combining multiple dimensions:
 - **Winston AI Score** (60% weight) - AI detection avoidance
@@ -24,7 +24,7 @@ Calculates unified quality metric combining multiple dimensions:
 
 **Usage**:
 ```python
-from processing.evaluation import CompositeScorer
+from postprocessing.evaluation import CompositeScorer
 
 scorer = CompositeScorer(
     winston_weight=0.6,
@@ -49,7 +49,7 @@ quality = scorer.interpret_score(composite)  # "good", "excellent", etc.
 ---
 
 ### 2. GranularParameterCorrelator
-**File**: `processing/learning/granular_correlator.py`
+**File**: `learning/granular_correlator.py`
 
 Performs fine-grained correlation analysis between parameters and quality metrics.
 
@@ -94,10 +94,10 @@ Performs fine-grained correlation analysis between parameters and quality metric
 
 **Usage**:
 ```python
-from processing.learning import GranularParameterCorrelator
+from learning import GranularParameterCorrelator
 
 correlator = GranularParameterCorrelator(
-    db_path='processing/winston_feedback.db',
+    db_path='data/winston_feedback.db',
     min_samples=30,
     significance_level=0.05
 )
@@ -122,7 +122,7 @@ for name, corr in correlations.items():
 ---
 
 ### 3. SubjectiveEvaluator
-**File**: `processing/evaluation/subjective_evaluator.py`
+**File**: `postprocessing/evaluation/subjective_evaluator.py`
 
 Human-like quality assessment across multiple dimensions.
 
@@ -135,7 +135,7 @@ Human-like quality assessment across multiple dimensions.
 
 **Usage**:
 ```python
-from processing.evaluation import SubjectiveEvaluator
+from postprocessing.evaluation import SubjectiveEvaluator
 
 evaluator = SubjectiveEvaluator()
 result = evaluator.evaluate(content, material_name)
@@ -342,7 +342,7 @@ CompositeScorer(
 ### Correlator Parameters
 ```python
 GranularParameterCorrelator(
-    db_path='processing/winston_feedback.db',
+    db_path='data/winston_feedback.db',
     min_samples=30,           # Minimum for reliable correlation
     significance_level=0.05   # P-value threshold
 )
@@ -447,7 +447,7 @@ recommendations = correlator.generate_adjustment_recommendations(
 - **Comprehensive Learning Integration**: `docs/proposals/COMPREHENSIVE_LEARNING_INTEGRATION.md`
 - **E2E Parameter Flow**: `docs/architecture/E2E_PARAMETER_FLOW.md`
 - **Parameter Schema**: `processing/schemas/parameter_schema.py`
-- **Database Schema**: `processing/detection/winston_feedback_db.py`
+- **Database Schema**: `postprocessing/detection/winston_feedback_db.py`
 
 ---
 

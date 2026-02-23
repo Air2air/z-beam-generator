@@ -6,47 +6,20 @@ chain:
   notes: Descriptor prompt is reusable and brief; field prompt remains source-specific.
 descriptor_prompts:
   synonymsIdentifiers: |
-    FIELD: Identifiers and aliases for THIS ITEM.
-    WORD LENGTH: 12-24 words.
-    TASK: State canonical name, key aliases, and lookup IDs only.
-    DO NOT: include chemistry, physical properties, visuals, applications, health effects, challenges, or prevention.
+    Describe THIS ITEM'S canonical identifiers and aliases only.
   chemicalProperties: |
-    FIELD: Chemical behavior for THIS ITEM.
-    WORD LENGTH: 18-32 words.
-    TASK: Describe composition, reactivity, and chemistry-specific behavior only.
-    DO NOT: include physical metrics, visuals, applications, health effects, challenges, or prevention.
+    Describe THIS ITEM'S chemical behavior only.
   physicalProperties: |
-    FIELD: Physical characteristics for THIS ITEM.
-    WORD LENGTH: 18-32 words.
-    TASK: Describe measurable physical traits only.
-    DO NOT: include chemistry, visuals, applications, health effects, challenges, or prevention.
+    Describe THIS ITEM'S physical characteristics only.
   page: |
-    FIELD: Page overview description.
-    WORD LENGTH: 20-40 words.
-    TASK: Provide a concise high-level overview of what this item is and why it matters.
-    DO NOT: include detailed field-specific data from other sections.
+    Summarize what THIS ITEM is and why it matters.
   appearanceVariations: |
-    FIELD: Visual and appearance variations for THIS ITEM.
-    WORD LENGTH: 18-32 words.
-    TASK: Describe observable appearance patterns only.
-    DO NOT: include identifiers, chemistry, physical metrics, applications, health effects, challenges, or prevention.
+    Describe THIS ITEM'S appearance variations only.
   healthEffects: |
-    FIELD: Health and safety effects for THIS ITEM.
-    WORD LENGTH: 18-32 words.
-    TASK: Describe direct health/safety implications and exposure-relevant effects only.
-    DO NOT: include identifiers, chemistry, physical properties, visuals, applications, challenges, or prevention.
+    Describe health and safety effects of THIS ITEM only.
   industryApplications: |
-    FIELD: Industry/use-case applications for THIS ITEM.
-    WORD LENGTH: 16-32 words.
-    TASK: Describe where and why this item is used in practice.
-    DO NOT: include identifiers, chemistry, physical properties, visuals, health effects, challenges, or prevention.
+    Describe industry applications of THIS ITEM only.
   commonChallenges: |
-    FIELD: Operational challenges for THIS ITEM.
-    WORD LENGTH: 16-32 words.
-    TASK: Describe key constraints, failure modes, or implementation difficulties only.
-    DO NOT: include identifiers, chemistry, physical properties, visuals, health effects, applications, or prevention.
+    Describe common operational challenges for THIS ITEM only.
   preventionStrategies: |
-    FIELD: Prevention and control guidance for THIS ITEM.
-    WORD LENGTH: 16-32 words.
-    TASK: Describe preventive controls, risk-reduction actions, and mitigation practices only.
-    DO NOT: include identifiers, chemistry, physical properties, visuals, health effects, applications, or challenge diagnostics.
+    Describe prevention strategies for THIS ITEM only.

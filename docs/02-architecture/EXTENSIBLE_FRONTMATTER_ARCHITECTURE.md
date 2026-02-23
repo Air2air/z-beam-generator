@@ -219,7 +219,7 @@ class BaseFrontmatterGenerator(ABC):
     
     def generate(self, identifier: str, **kwargs) -> 'ComponentResult':
         """
-        Main generation entry point with mandatory author voice processing.
+        Main generation entry point with mandatory author voice application.
         
         PIPELINE:
         1. Generate raw content

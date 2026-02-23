@@ -147,7 +147,7 @@ class DeepSeekBatchResearcher:
         
         prompt = f"""Describe how "{pattern_name}" contamination appears on these materials: {category_list}
 
-For each material, provide 3 fields (1-2 sentences each):
+For each material, provide 3 concise fields:
 
 1. appearance: Visual description - colors, texture, finish
 2. pattern: How it's distributed - spots, streaks, patches, uniform, etc.
@@ -156,7 +156,7 @@ For each material, provide 3 fields (1-2 sentences each):
 Return JSON:
 {{"metal":{{"appearance":"...","pattern":"...","coverage":"..."}},...}}
 
-Keep each field to 1-2 sentences max."""
+Keep each field concise and focused."""
 
         return prompt
     
@@ -174,7 +174,7 @@ Keep each field to 1-2 sentences max."""
             response = self.client.chat.completions.create(
                 model="deepseek-chat",
                 messages=[
-                    {"role": "system", "content": "Return valid JSON. Keep each field to 1-2 sentences."},
+                    {"role": "system", "content": "Return valid JSON. Keep each field concise and focused."},
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.5,

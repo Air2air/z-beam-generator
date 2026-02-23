@@ -45,12 +45,19 @@ class MaterialsAdapter(DataSourceAdapter):
         return self.materials_path
     
     def load_all_data(self) -> Dict[str, Any]:
+        from generation.utils.frontmatter_sync import sync_field_to_frontmatter
         """Load complete Materials.yaml structure"""
         if self._data_cache is None:
             try:
                 with open(self.materials_path, 'r', encoding='utf-8') as f:
                     self._data_cache = yaml.safe_load(f)
-                logger.debug(f"Loaded {len(self._data_cache.get('materials', {}))} materials")
+                if not isinstance(self._data_cache, dict):
+                    raise TypeError("Materials.yaml must parse to a dictionary")
+                if 'materials' not in self._data_cache:
+                    raise KeyError("Materials.yaml missing required top-level key: 'materials'")
+                if not isinstance(self._data_cache['materials'], dict):
+                    raise TypeError("Materials.yaml key 'materials' must be a dictionary")
+                logger.debug(f"Loaded {len(self._data_cache['materials'])} materials")
             except Exception as e:
                 logger.error(f"Failed to load Materials.yaml: {e}")
                 raise ValueError(f"Cannot load Materials.yaml: {e}")
@@ -71,7 +78,9 @@ class MaterialsAdapter(DataSourceAdapter):
             ValueError: If material not found
         """
         all_data = self.load_all_data()
-        materials = all_data.get('materials', {})
+        if 'materials' not in all_data:
+            raise KeyError("Materials.yaml missing required top-level key: 'materials'")
+        materials = all_data['materials']
         
         if identifier not in materials:
             raise ValueError(f"Material '{identifier}' not found in Materials.yaml")
@@ -102,11 +111,12 @@ class MaterialsAdapter(DataSourceAdapter):
         # Only provide category/subcategory for classification context
         
         # Extract key properties
-        properties = item_data.get('properties', {})
+        properties = item_data['properties'] if 'properties' in item_data else None
         key_props = []
-        for prop in ['hardness', 'thermalConductivity', 'density', 'meltingPoint']:
-            if prop in properties:
-                key_props.append(f"{prop}: {properties[prop]}")
+        if isinstance(properties, dict):
+            for prop in ['hardness', 'thermalConductivity', 'density', 'meltingPoint']:
+                if prop in properties:
+                    key_props.append(f"{prop}: {properties[prop]}")
         
         if key_props:
             context_parts.append("Properties: " + ", ".join(key_props[:5]))
@@ -126,11 +136,12 @@ class MaterialsAdapter(DataSourceAdapter):
         Returns:
             Author ID (1-4)
         """
-        author_data = item_data.get('author', {})
-        if isinstance(author_data, dict) and 'id' in author_data:
-            return author_data['id']
-        elif isinstance(author_data, int):
-            return author_data
+        if 'author' in item_data:
+            author_data = item_data['author']
+            if isinstance(author_data, dict) and 'id' in author_data:
+                return author_data['id']
+            if isinstance(author_data, int):
+                return author_data
         
         # If no author specified, rotate based on material name for consistency
         # This ensures each material consistently gets the same author
@@ -139,7 +150,9 @@ class MaterialsAdapter(DataSourceAdapter):
         if not material_name:
             # Try to infer from data structure
             all_data = self.load_all_data()
-            materials = all_data.get('materials', {})
+            if 'materials' not in all_data:
+                raise KeyError("Materials.yaml missing required top-level key: 'materials'")
+            materials = all_data['materials']
             # Find this material in the list
             for name, data in materials.items():
                 if data is item_data:
@@ -206,6 +219,14 @@ class MaterialsAdapter(DataSourceAdapter):
             
             # Invalidate cache
             self._data_cache = None
+
+            # Dual-write: sync updated field to frontmatter immediately
+            sync_field_to_frontmatter(
+                item_name=identifier,
+                field_name=component_type,
+                field_value=content_data,
+                domain='materials'
+            )
             
             logger.info(f"✅ {component_type} written to Materials.yaml → materials.{identifier}.{component_type}")
             
@@ -233,7 +254,7 @@ class MaterialsAdapter(DataSourceAdapter):
             
         facts = {
             'category': item_data['category'],
-            'subcategory': item_data.get('subcategory') or '',  # Optional field
+            'subcategory': item_data['subcategory'] if 'subcategory' in item_data else '',
             'properties': {},
             'applications': item_data['applications'],
             'machine_settings': {},
@@ -241,23 +262,35 @@ class MaterialsAdapter(DataSourceAdapter):
         }
         
         # Extract property values from nested structure
-        material_props = item_data.get('properties', {})
-        material_chars = material_props.get('materialCharacteristics', {})
+        if 'properties' not in item_data:
+            raise KeyError("Material missing required key: 'properties'")
+        material_props = item_data['properties']
+        if not isinstance(material_props, dict):
+            raise TypeError("Material key 'properties' must be a dictionary")
+        if 'materialCharacteristics' not in material_props:
+            raise KeyError("Material properties missing required key: 'materialCharacteristics'")
+        material_chars = material_props['materialCharacteristics']
+        if not isinstance(material_chars, dict):
+            raise TypeError("Material properties.materialCharacteristics must be a dictionary")
         for prop_name, prop_data in material_chars.items():
             if isinstance(prop_data, dict) and 'value' in prop_data:
-                value = prop_data.get('value')
-                unit = prop_data.get('unit') or ''  # Unit is optional, can be empty
+                value = prop_data['value']
+                unit = prop_data['unit'] if 'unit' in prop_data else ''
                 if value is not None:
                     facts['properties'][prop_name] = f"{value} {unit}".strip()
         
         # Extract machine settings from nested structure
-        settings_section = item_data.get('machine_settings', {})
-        laser_settings = settings_section.get('laser_settings', {})
+        if 'machine_settings' not in item_data:
+            raise KeyError("Material missing required key: 'machine_settings'")
+        settings_section = item_data['machine_settings']
+        if not isinstance(settings_section, dict):
+            raise TypeError("Material key 'machine_settings' must be a dictionary")
+        laser_settings = settings_section['laser_settings'] if 'laser_settings' in settings_section else {}
         settings = laser_settings if laser_settings else settings_section
         for setting_name, setting_data in settings.items():
             if isinstance(setting_data, dict):
-                value = setting_data.get('value')
-                unit = setting_data.get('unit') or ''  # Unit is optional, can be empty
+                value = setting_data['value'] if 'value' in setting_data else None
+                unit = setting_data['unit'] if 'unit' in setting_data else ''
                 if value:
                     facts['machine_settings'][setting_name] = f"{value} {unit}".strip()
         
@@ -380,7 +413,11 @@ class MaterialsAdapter(DataSourceAdapter):
             
             try:
                 data = json.loads(json_str)
-                faq_list = data.get('faq', [])
+                if 'faq' not in data:
+                    raise KeyError("JSON payload missing required key: 'faq'")
+                faq_list = data['faq']
+                if not isinstance(faq_list, list):
+                    raise TypeError("JSON payload key 'faq' must be a list")
                 
                 if faq_list:
                     return faq_list

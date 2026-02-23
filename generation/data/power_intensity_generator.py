@@ -9,6 +9,7 @@ import logging
 import re
 from typing import Any, Dict
 
+from generation.config.config_loader import ProcessingConfig
 from generation.data.base_data_generator import BaseDataGenerator
 
 logger = logging.getLogger(__name__)
@@ -51,11 +52,12 @@ Respond with ONLY the two lines above, no additional text."""
         
         # API call (no quality evaluation needed for data lookup)
         from shared.api.client import GenerationRequest
+        config = ProcessingConfig()
         
         request = GenerationRequest(
             prompt=prompt,
-            temperature=0.3,  # Low temp for factual research
-            max_tokens=100
+            temperature=float(config.get_required_config('constants.data_generators.power_intensity.temperature')),
+            max_tokens=int(config.get_required_config('constants.data_generators.power_intensity.max_tokens'))
         )
         
         response = self.api_client.generate(request)

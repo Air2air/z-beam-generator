@@ -9,6 +9,7 @@ import logging
 import re
 from typing import Any, Dict
 
+from generation.config.config_loader import ProcessingConfig
 from generation.data.base_data_generator import BaseDataGenerator
 
 logger = logging.getLogger(__name__)
@@ -19,6 +20,58 @@ class ContextGenerator(BaseDataGenerator):
     
     def __init__(self, api_client, domain: str):
         super().__init__(api_client, domain, 'context')
+
+        self.context_config = self._get_context_config()
+
+    def _get_context_config(self) -> Dict[str, Any]:
+        from generation.config.config_loader import get_config
+
+        config = get_config().config
+        data_generators = config.get('data_generators')
+        if not isinstance(data_generators, dict):
+            raise KeyError("Missing required config block: data_generators")
+
+        context_cfg = data_generators.get('context')
+        if not isinstance(context_cfg, dict):
+            raise KeyError("Missing required config block: data_generators.context")
+
+        prompt_templates = context_cfg.get('prompt_templates')
+        allowed_values_map = context_cfg.get('allowed_values')
+        if not isinstance(prompt_templates, dict):
+            raise KeyError("Missing required config block: data_generators.context.prompt_templates")
+        if not isinstance(allowed_values_map, dict):
+            raise KeyError("Missing required config block: data_generators.context.allowed_values")
+
+        if self.domain not in prompt_templates:
+            raise KeyError(
+                f"Missing context prompt template for domain '{self.domain}'"
+            )
+        if self.domain not in allowed_values_map:
+            raise KeyError(
+                f"Missing context allowed_values for domain '{self.domain}'"
+            )
+
+        prompt_template = prompt_templates[self.domain]
+        if not isinstance(prompt_template, str) or not prompt_template.strip():
+            raise ValueError(
+                f"Context prompt template for domain '{self.domain}' must be a string"
+            )
+
+        allowed_values = allowed_values_map[self.domain]
+        if not isinstance(allowed_values, list) or not allowed_values:
+            raise ValueError(
+                f"Context allowed_values for domain '{self.domain}' must be a list"
+            )
+        for value in allowed_values:
+            if not isinstance(value, str) or not value:
+                raise ValueError(
+                    f"Context allowed_values for domain '{self.domain}' must be non-empty strings"
+                )
+
+        return {
+            'prompt_template': prompt_template,
+            'allowed_values': allowed_values
+        }
     
     def research(self, item_name: str, item_data: Dict) -> Dict[str, str]:
         """
@@ -31,45 +84,17 @@ class ContextGenerator(BaseDataGenerator):
             raise ValueError(f"Missing 'name' field for item {item_name}")
         display_name = item_data['name']
         
-        # Build domain-specific prompt
-        if self.domain == 'materials':
-            prompt = f"""Research where {display_name} is typically used and cleaned with lasers.
-
-Analyze:
-1. Indoor vs outdoor usage patterns
-2. Industrial settings and applications
-3. Marine/coastal exposure likelihood
-
-Provide ONLY a structured assessment in this format:
-indoor: [high/medium/low]
-outdoor: [high/medium/low]
-industrial: [high/medium/low]
-marine: [high/medium/low]
-
-Respond with ONLY the four lines above, no additional text."""
-        else:  # contaminants
-            prompt = f"""Research where {display_name} typically forms and which environments it's most common in.
-
-Analyze:
-1. Indoor vs outdoor occurrence
-2. Industrial settings prevalence
-3. Marine/coastal exposure patterns
-
-Provide ONLY a structured assessment:
-indoor: [high/medium/low/none]
-outdoor: [high/medium/low/none]
-industrial: [high/medium/low/none]
-marine: [high/medium/low/none]
-
-Respond with ONLY the four lines above, no additional text."""
+        prompt_template = self.context_config['prompt_template']
+        prompt = prompt_template.format(display_name=display_name)
         
         # API call (low temp for factual research)
         from shared.api.client import GenerationRequest
+        config = ProcessingConfig()
         
         request = GenerationRequest(
             prompt=prompt,
-            temperature=0.3,
-            max_tokens=100
+            temperature=float(config.get_required_config('constants.data_generators.context.temperature')),
+            max_tokens=int(config.get_required_config('constants.data_generators.context.max_tokens'))
         )
         
         response = self.api_client.generate(request)
@@ -81,9 +106,11 @@ Respond with ONLY the four lines above, no additional text."""
         
         # Parse response
         result = {}
+        allowed_values = self.context_config['allowed_values']
+        allowed_pattern = '|'.join(re.escape(value) for value in allowed_values)
         for context_type in ['indoor', 'outdoor', 'industrial', 'marine']:
             match = re.search(
-                rf'{context_type}:\s*(high|medium|low|none)',
+                rf'{context_type}:\s*({allowed_pattern})',
                 content,
                 re.IGNORECASE
             )

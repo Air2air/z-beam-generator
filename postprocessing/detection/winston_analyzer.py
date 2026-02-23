@@ -57,20 +57,10 @@ class WinstonFeedbackAnalyzer:
             - patterns: Detected AI patterns in text
             - guidance: Human-readable explanation
         """
-        sentences = winston_response.get('sentences', [])
-        
-        if not sentences:
-            logger.warning("[WINSTON ANALYZER] No sentence data available")
-            return {
-                'failure_type': 'unknown',
-                'recommendation': 'retry',
-                'retry_worth': True,
-                'reason': 'no_sentence_data',
-                'guidance': 'No sentence-level data to analyze'
-            }
+        sentences = self._validate_sentences(winston_response)
         
         # Extract scores
-        scores = [s.get('score', 0) for s in sentences]
+        scores = [s['score'] for s in sentences]
         avg_score = sum(scores) / len(scores) if scores else 0
         min_score = min(scores) if scores else 0
         max_score = max(scores) if scores else 0
@@ -79,15 +69,15 @@ class WinstonFeedbackAnalyzer:
         logger.info(f"[WINSTON ANALYZER] Total sentences: {len(sentences)}")
         
         # Count sentences by quality
-        excellent = [s for s in sentences if s.get('score', 0) >= 70]
-        good = [s for s in sentences if 50 <= s.get('score', 0) < 70]
-        poor = [s for s in sentences if 30 <= s.get('score', 0) < 50]
-        terrible = [s for s in sentences if s.get('score', 0) < 30]
+        excellent = [s for s in sentences if s['score'] >= 70]
+        good = [s for s in sentences if 50 <= s['score'] < 70]
+        poor = [s for s in sentences if 30 <= s['score'] < 50]
+        terrible = [s for s in sentences if s['score'] < 30]
         
         logger.info(f"[WINSTON ANALYZER] Distribution: excellent={len(excellent)}, good={len(good)}, poor={len(poor)}, terrible={len(terrible)}")
         
         # Detect AI patterns in worst sentences
-        worst_sentences = sorted(sentences, key=lambda s: s.get('score', 100))[:3]
+        worst_sentences = sorted(sentences, key=lambda s: s['score'])[:3]
         detected_patterns = self._detect_ai_patterns(worst_sentences)
         
         # Determine failure type and recommendation
@@ -180,6 +170,28 @@ class WinstonFeedbackAnalyzer:
                 }
             }
         }
+
+    def _validate_sentences(self, winston_response: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """Validate Winston response sentence schema and return normalized sentence list."""
+        if 'sentences' not in winston_response:
+            raise KeyError("winston_response missing required key: sentences")
+
+        sentences = winston_response['sentences']
+        if not isinstance(sentences, list):
+            raise ValueError("winston_response['sentences'] must be a list")
+        if not sentences:
+            raise ValueError("winston_response['sentences'] must not be empty")
+
+        for idx, sentence in enumerate(sentences, 1):
+            if 'score' not in sentence:
+                raise KeyError(f"Sentence #{idx} missing required key: score")
+            if 'text' not in sentence:
+                raise KeyError(f"Sentence #{idx} missing required key: text")
+            score = sentence['score']
+            if not isinstance(score, (int, float)):
+                raise TypeError(f"Sentence #{idx} score must be numeric, got {type(score).__name__}")
+
+        return sentences
     
     def _detect_ai_patterns(self, sentences: List[Dict[str, Any]]) -> List[str]:
         """
@@ -194,7 +206,7 @@ class WinstonFeedbackAnalyzer:
         detected = []
         
         for sentence in sentences:
-            text = sentence.get('text', '').lower()
+            text = sentence['text'].lower()
             for pattern in self.AI_PATTERNS:
                 if re.search(pattern, text, re.IGNORECASE):
                     match = re.search(pattern, text, re.IGNORECASE)
@@ -231,7 +243,10 @@ class WinstonFeedbackAnalyzer:
         analysis = self.analyze_failure(winston_result)
         
         # Only extend if retry is worth it
-        if not analysis.get('retry_worth', False):
+        if 'retry_worth' not in analysis:
+            raise KeyError("analyze_failure() result missing required key: retry_worth")
+
+        if not analysis['retry_worth']:
             logger.info(f"[WINSTON ANALYZER] Retry not worth it: {analysis['failure_type']}")
             return False
         

@@ -27,6 +27,7 @@ sys.path.append(str(project_root))
 
 from shared.api.client_factory import create_api_client
 from shared.exceptions import ConfigurationError
+from generation.config.config_loader import ProcessingConfig
 
 logger = logging.getLogger(__name__)
 
@@ -112,6 +113,13 @@ class AIResearchEnrichmentService:
         self.api_client = None
         self.api_provider = api_provider
         self.materials_file = workspace_root / "data" / "materials" / "Materials.yaml"
+        self.config = ProcessingConfig()
+        self.property_research_max_tokens = int(
+            self.config.get_required_config('constants.research.ai_research_property_max_tokens')
+        )
+        self.verification_confidence_threshold = float(
+            self.config.get_required_config('constants.research.ai_research_verification_confidence_threshold')
+        )
         
         self.research_stats = {
             'total_researched': 0,
@@ -202,7 +210,7 @@ class AIResearchEnrichmentService:
             # Execute AI research - FAIL immediately if API unavailable
             response = self.api_client.generate_simple(
                 prompt=research_prompt,
-                max_tokens=1000,
+                max_tokens=self.property_research_max_tokens,
                 temperature=dynamic_config.calculate_temperature('research')
             )
             
@@ -436,7 +444,7 @@ CRITICAL: Provide COMPLETE citations with ISBN/DOI/URL."""
             property_name=property_name,
             category=category or "unknown",
             current_value=current_value,
-            confidence_threshold=0.7  # Lower threshold for verification
+            confidence_threshold=self.verification_confidence_threshold
         )
         
         if not research_result.success:

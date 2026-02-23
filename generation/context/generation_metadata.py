@@ -47,8 +47,15 @@ class GenerationMetadata:
         
         with open(authors_file, 'r') as f:
             data = yaml.safe_load(f)
-        
-        return data.get('authors', {})
+
+        if not isinstance(data, dict):
+            raise ValueError("Authors.yaml must parse to a dictionary")
+        if 'authors' not in data:
+            raise KeyError("Authors.yaml missing required top-level key: 'authors'")
+        if not isinstance(data['authors'], dict):
+            raise TypeError("Authors.yaml key 'authors' must be a dictionary")
+
+        return data['authors']
     
     def enrich(self, item_data: Dict[str, Any], identifier: str, domain: str) -> Dict[str, Any]:
         """
@@ -146,8 +153,8 @@ class GenerationMetadata:
         domain_label = domain.capitalize()
         breadcrumbs.append({'label': domain_label, 'href': f'/{domain}'})
         
-        # Add category if present
-        if 'category' in item_data:
+        # Add category if present (skip for applications)
+        if domain != 'applications' and 'category' in item_data:
             category = item_data['category']
             category_label = category.replace('-', ' ').title()
             breadcrumbs.append({

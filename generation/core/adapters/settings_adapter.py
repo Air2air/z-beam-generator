@@ -18,7 +18,7 @@ import tempfile
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from shared.utils.yaml_utils import load_yaml
+import yaml
 
 from generation.core.adapters.base import DataSourceAdapter
 
@@ -73,7 +73,11 @@ class SettingsAdapter(DataSourceAdapter):
             ValueError: If material not found in Settings.yaml
         """
         data = self.load_all_data()
-        settings = data.get('settings', {})
+        if 'settings' not in data:
+            raise KeyError("Settings.yaml missing required top-level key: 'settings'")
+        settings = data['settings']
+        if not isinstance(settings, dict):
+            raise TypeError("Settings.yaml key 'settings' must be a dictionary")
         
         if identifier not in settings:
             raise ValueError(f"Material '{identifier}' not found in Settings.yaml")
@@ -96,12 +100,16 @@ class SettingsAdapter(DataSourceAdapter):
         # Add any machine settings ranges
         if 'machine_settings' in item_data:
             settings = item_data['machine_settings']
+            if not isinstance(settings, dict):
+                raise TypeError("item_data.machine_settings must be a dictionary")
             context_parts.append("\nMachine Settings Ranges:")
             for param, values in settings.items():
                 if isinstance(values, dict):
-                    min_val = values.get('min', 'N/A')
-                    max_val = values.get('max', 'N/A')
-                    unit = values.get('unit', '')
+                    if 'min' not in values or 'max' not in values:
+                        raise KeyError(f"machine_settings.{param} must include 'min' and 'max'")
+                    min_val = values['min']
+                    max_val = values['max']
+                    unit = values['unit'] if 'unit' in values else ''
                     context_parts.append(f"  - {param}: {min_val}-{max_val} {unit}".strip())
         
         return "\n".join(context_parts)
@@ -113,22 +121,38 @@ class SettingsAdapter(DataSourceAdapter):
         Settings inherit author from Materials.yaml, so we look it up there.
         """
         # First check if author is in settings data
-        author = item_data.get('author', {})
-        if isinstance(author, dict) and 'id' in author:
-            return author['id']
+        if 'author' in item_data:
+            author = item_data['author']
+            if isinstance(author, dict) and 'id' in author:
+                return author['id']
+            if isinstance(author, int):
+                return author
         
         # Resolve author from Materials.yaml
-        material_name = item_data.get('name', '')
-        if material_name:
-            from shared.data.loader_factory import MaterialsDataLoader
-            loader = MaterialsDataLoader()
-            material_data = loader.load_material(material_name)
-            if material_data:
-                material_author = material_data.get('author', {})
-                if isinstance(material_author, dict):
-                    author_id = material_author.get('id')
-                    if author_id:
-                        return author_id
+        if 'name' not in item_data:
+            raise KeyError("Settings item missing required key: 'name' for author resolution")
+
+        material_name = item_data['name']
+        from shared.data.loader_factory import MaterialsDataLoader
+        loader = MaterialsDataLoader()
+        material_data = loader.load_material(material_name)
+        if not material_data:
+            raise ValueError(f"Material '{material_name}' not found in Materials.yaml for author resolution")
+
+        if 'author' not in material_data:
+            raise KeyError(f"Material '{material_name}' missing required key: 'author'")
+
+        material_author = material_data['author']
+        if isinstance(material_author, dict):
+            if 'id' not in material_author:
+                raise KeyError(f"Material '{material_name}' author missing required key: 'id'")
+            return material_author['id']
+        if isinstance(material_author, int):
+            return material_author
+
+        raise TypeError(
+            f"Material '{material_name}' author must be dict or int, got {type(material_author).__name__}"
+        )
         
         # Fail fast - no default author
         raise ValueError(

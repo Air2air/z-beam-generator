@@ -437,6 +437,13 @@ sections:
     title: "Related Materials"  
     description: "Similar materials and alloy variants"
     prompt_ref: relatedMaterials
+    item_fields:
+      - id
+      - name
+      - category
+      - subcategory
+      - url
+      - image
     
   micro:
     icon: images

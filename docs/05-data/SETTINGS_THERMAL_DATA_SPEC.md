@@ -626,7 +626,7 @@ Before deploying settings YAML changes:
 
 ### 8. Files to Modify in Generator
 
-1. **`processing/exporters/settings_exporter.py`** (or equivalent)
+1. **`export/generation/settings_generator.py`** (or equivalent)
    - Add `_export_thermal_properties()` method
    - Add `_export_laser_interaction()` method
    - Add unit conversion utilities
@@ -635,7 +635,7 @@ Before deploying settings YAML changes:
    - Store category-level default thermal properties
    - Store category-level default laser thresholds
 
-3. **`processing/validation/settings_schema.yaml`** (or equivalent)
+3. **`data/schemas/settings_schema.yaml`** (or equivalent)
    - Add schema for new blocks
    - Add range validation
 

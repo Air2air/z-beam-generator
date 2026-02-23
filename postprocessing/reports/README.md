@@ -25,7 +25,7 @@ The report system provides standardized templates for documenting generation res
 
 **Example**:
 ```python
-from processing.reports import GenerationReport, GenerationStatus, WinstonMetrics
+from postprocessing.reports import GenerationReport, GenerationStatus, WinstonMetrics
 
 report = GenerationReport(
     material="Steel",
@@ -44,26 +44,17 @@ report = GenerationReport(
 print(report.to_markdown())
 ```
 
----
 
 ### 2. BatchReport
 **Purpose**: Aggregate analysis of multiple material generations.
 
 **Use Cases**:
-- Testing parameter changes across materials
-- Author persona comparisons
-- System validation after code changes
-- Performance benchmarking
 
 **Key Features**:
-- Executive summary with aggregate statistics
-- Quick results table for all materials
-- Detailed individual reports
-- Automatic recommendations generation
 
 **Example**:
 ```python
-from processing.reports import BatchReport, GenerationReport
+from postprocessing.reports import BatchReport, GenerationReport
 
 batch = BatchReport(
     batch_name="Batch Caption Test - Parameter Optimization",
@@ -84,26 +75,17 @@ batch.recommendations.append("Aluminum-Titanium-Copper parameter set is optimal"
 print(batch.to_markdown())
 ```
 
----
 
 ### 3. QualityReport
 **Purpose**: Deep dive into quality scoring breakdown and interpretation.
 
 **Use Cases**:
-- Understanding why content scored high/low
-- Identifying specific improvement areas
-- Analyzing scoring component balance
-- Optimization opportunity discovery
 
 **Key Features**:
-- Score decomposition (Winston, Subjective, Readability)
-- Weighted contribution analysis
-- Automatic strength/weakness identification
-- Optimization opportunity recommendations
 
 **Example**:
 ```python
-from processing.reports import QualityReport
+from postprocessing.reports import QualityReport
 
 quality = QualityReport(
     material="Steel",
@@ -122,28 +104,17 @@ quality = QualityReport(
 print(quality.to_markdown())
 ```
 
----
 
 ### 4. ParameterReport
 **Purpose**: Statistical correlation analysis and parameter optimization insights.
 
 **Use Cases**:
-- Discovering which parameters affect quality most
-- Finding optimal parameter ranges
-- Detecting parameter interactions (synergies)
-- Generating data-driven tuning recommendations
 
 **Key Features**:
-- Parameter-quality correlation coefficients
-- Statistical significance testing (p-values)
-- Confidence intervals (bootstrap)
-- Optimal range identification
-- Two-way interaction analysis
-- Actionable optimization recommendations
 
 **Example**:
 ```python
-from processing.reports import ParameterReport, ParameterCorrelation, ParameterRecommendation
+from postprocessing.reports import ParameterReport, ParameterCorrelation, ParameterRecommendation
 
 report = ParameterReport(
     title="Parameter Correlation Analysis - Caption Generation",
@@ -176,7 +147,6 @@ report.recommendations.append(ParameterRecommendation(
 print(report.to_markdown())
 ```
 
----
 
 ## 🔧 Data Classes Reference
 
@@ -227,7 +197,6 @@ class CompositeScoring:
     interpretation: str             # Human-readable quality tier
 ```
 
----
 
 ## 📊 Report Integration Examples
 
@@ -235,7 +204,7 @@ class CompositeScoring:
 ```python
 def generate_post_report(material: str, result: dict):
     """Generate report after content generation."""
-    from processing.reports import GenerationReport, GenerationStatus, WinstonMetrics
+    from postprocessing.reports import GenerationReport, GenerationStatus, WinstonMetrics
     
     report = GenerationReport(
         material=material,
@@ -264,7 +233,7 @@ def generate_post_report(material: str, result: dict):
 ```python
 def run_batch_test(materials: List[str]) -> str:
     """Run batch test and generate comprehensive report."""
-    from processing.reports import BatchReport, GenerationReport
+    from postprocessing.reports import BatchReport, GenerationReport
     
     batch = BatchReport(
         batch_name=f"Batch Caption Test - {datetime.now().strftime('%Y-%m-%d')}",
@@ -297,7 +266,7 @@ def run_batch_test(materials: List[str]) -> str:
 ```python
 def analyze_quality(material: str, metrics: dict):
     """Generate quality analysis report."""
-    from processing.reports import QualityReport
+    from postprocessing.reports import QualityReport
     
     report = QualityReport(
         material=material,
@@ -322,8 +291,8 @@ def analyze_quality(material: str, metrics: dict):
 ```python
 def analyze_parameters(db_results: List[dict]):
     """Run correlation analysis and generate report."""
-    from processing.reports import ParameterReport, ParameterCorrelation
-    from processing.learning import GranularParameterCorrelator
+    from postprocessing.reports import ParameterReport, ParameterCorrelation
+    from learning import GranularParameterCorrelator
     
     # Run correlation analysis
     correlator = GranularParameterCorrelator(db_results)
@@ -357,7 +326,6 @@ def analyze_parameters(db_results: List[dict]):
     return report.to_markdown()
 ```
 
----
 
 ## 🚀 Quick Start
 
@@ -373,7 +341,7 @@ python3 run.py --batch-test materials.txt --report-output reports/batch_test.md
 
 ### 3. Analyze Quality Post-Generation
 ```python
-from processing.reports import QualityReport
+from postprocessing.reports import QualityReport
 
 # After generation
 quality_report = QualityReport(
@@ -388,12 +356,11 @@ quality_report = QualityReport(
 print(quality_report.to_markdown())
 ```
 
----
 
 ## 📁 Report Storage Convention
 
 ```
-processing/reports/
+postprocessing/reports/
 ├── __init__.py                 # Report system exports
 ├── generation_report.py        # GenerationReport & BatchReport
 ├── quality_report.py          # QualityReport
@@ -412,35 +379,19 @@ processing/reports/
     └── optimization_report_20251116.md
 ```
 
----
 
 ## 💡 Best Practices
 
 ### 1. **Always Include Context**
-- Timestamp every report
-- Document purpose/goal
-- Note any special conditions (parameter changes, prompt updates, etc.)
 
 ### 2. **Use Consistent Naming**
-- Format: `{report_type}_{material}_{YYYYMMDD_HHMMSS}.md`
-- Examples: `batch_test_20251116_143022.md`, `quality_steel_20251116.md`
 
 ### 3. **Preserve Raw Data**
-- Reports are documentation, not primary data storage
-- Always save database records for re-analysis
-- Link reports to database IDs for traceability
 
 ### 4. **Aggregate Before Analysis**
-- Use BatchReport for multi-material tests
-- Calculate summary statistics automatically
-- Compare across batches for trend analysis
 
 ### 5. **Action-Oriented Recommendations**
-- Focus on specific, actionable next steps
-- Prioritize by expected impact
-- Include confidence levels for recommendations
 
----
 
 ## 🔗 Integration Points
 
@@ -454,7 +405,7 @@ report.subjective_metrics.evaluation_id = subjective_eval.id
 
 ### With Scoring Module
 ```python
-from processing.evaluation import CompositeScorer
+from postprocessing.evaluation import CompositeScorer
 
 scorer = CompositeScorer()
 composite = scorer.calculate(
@@ -471,25 +422,17 @@ report.composite_scoring = CompositeScoring(
 
 ### With Learning System
 ```python
-from processing.learning import GranularParameterCorrelator
+from learning import GranularParameterCorrelator
 
 # Generate parameter report from database
 correlator = GranularParameterCorrelator(db_records)
 param_report = correlator.generate_report()
 ```
 
----
 
 ## 🎯 Future Enhancements
 
-- [ ] **HTML Reports**: Rich interactive reports with charts
-- [ ] **Report Comparison**: Diff two reports side-by-side
-- [ ] **Trend Analysis**: Track metrics over time
-- [ ] **Export Formats**: JSON, CSV, PDF output options
-- [ ] **Automated Insights**: ML-based pattern detection
-- [ ] **Real-time Dashboards**: Live monitoring during generation
 
----
 
 **Last Updated**: November 16, 2025  
 **Version**: 1.0.0  

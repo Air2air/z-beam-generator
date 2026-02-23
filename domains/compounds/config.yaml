@@ -1,0 +1,18 @@
+# Compounds Domain Configuration
+# Minimal config for coordinator initialization
+
+domain_name: "compounds"
+data_path: "data/compounds/Compounds.yaml"
+data_root_key: "compounds"
+frontmatter_pattern: "{slug}-compound.yaml"
+
+data_adapter:
+  data_path: "data/compounds/Compounds.yaml"
+  data_root_key: "compounds"
+  author_key: "author.id"
+  context_keys:
+    - "category"
+
+# Validation rules (inherits shared defaults)
+validation:
+  inherit_shared_defaults: true

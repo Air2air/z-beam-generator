@@ -52,7 +52,11 @@ class BaseDataGenerator(ABC):
         self.api_client = api_client
         self.domain = domain
         self.field = field
-        self.data_file = Path(f'data/{domain}/{domain.title()}.yaml')
+
+        from generation.core.adapters.domain_adapter import DomainAdapter
+        self.domain_adapter = DomainAdapter(domain)
+        self.data_file = self.domain_adapter.get_data_path()
+        self.data_root_key = self.domain_adapter.data_root_key
         
         # Validate data file exists
         if not self.data_file.exists():
@@ -121,9 +125,10 @@ class BaseDataGenerator(ABC):
             with open(self.data_file, 'r') as f:
                 data = yaml.safe_load(f)
             
-            # Get domain key (materials, contaminants, compounds, settings)
-            domain_key = self._get_domain_key()
-            items = data.get(domain_key, {})
+            if not isinstance(data, dict):
+                raise TypeError(f"Data file must parse to a dictionary: {self.data_file}")
+
+            items = self.domain_adapter.get_items_root(data)
             
             if item_name not in items:
                 return {
@@ -189,10 +194,4 @@ class BaseDataGenerator(ABC):
     
     def _get_domain_key(self) -> str:
         """Get the YAML key for this domain's data."""
-        domain_keys = {
-            'materials': 'materials',
-            'contaminants': 'contaminants',
-            'compounds': 'compounds',
-            'settings': 'settings'
-        }
-        return domain_keys.get(self.domain, self.domain)
+        return self.data_root_key

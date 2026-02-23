@@ -135,17 +135,26 @@ class DomainResolver:
             )
         
         item = items[item_id]
+
+        if not isinstance(item, dict):
+            raise RuntimeError(
+                f"Invalid item structure for domain '{domain}' item '{item_id}': expected dictionary"
+            )
+        if 'name' not in item or not isinstance(item['name'], str) or not item['name'].strip():
+            raise KeyError(
+                f"Missing required non-empty 'name' for domain '{domain}' item '{item_id}'"
+            )
         
         # Build URL (handle different domain structures)
         url = self._build_url(domain, item_id, item)
         
         return LinkInfo(
             id=item_id,
-            name=item.get('name', item_id),
+            name=item['name'],
             url=url,
-            title=item.get('title', item.get('name', item_id)),
+            title=item['title'] if 'title' in item and isinstance(item['title'], str) and item['title'].strip() else item['name'],
             exists=True,
-            category=item.get('category', ''),
+            category=item['category'] if 'category' in item and isinstance(item['category'], str) else '',
             image=self._get_image_url(item)
         )
     
@@ -156,8 +165,8 @@ class DomainResolver:
             return item['url']
         
         # Build URL based on domain and category
-        category = item.get('category', '')
-        subcategory = item.get('subcategory', '')
+        category = item['category'] if 'category' in item and isinstance(item['category'], str) else ''
+        subcategory = item['subcategory'] if 'subcategory' in item and isinstance(item['subcategory'], str) else ''
         
         if domain == 'contaminants':
             # /contaminants/category/subcategory/id
@@ -175,7 +184,7 @@ class DomainResolver:
                 return f'/compounds/{category}/{item_id}'
         elif domain == 'settings':
             # /settings/laser-type/id
-            laser_type = item.get('laser_type', '')
+            laser_type = item['laser_type'] if 'laser_type' in item and isinstance(item['laser_type'], str) else ''
             if laser_type:
                 return f'/settings/{laser_type}/{item_id}'
         elif domain == 'applications':

@@ -19,7 +19,7 @@ Error in subjective evaluation: CachedAPIClient.generate() got an unexpected key
 **Impact**: Subjective evaluation fell back to rule-based scoring instead of using Grok API for accurate quality assessment.
 
 ### Root Cause
-**File**: `processing/evaluation/subjective_evaluator.py`  
+**File**: `postprocessing/evaluation/subjective_evaluator.py`  
 **Method**: `_get_subjective_evaluation()` (lines ~205-225)
 
 The method was calling the API client with individual keyword arguments:
@@ -44,7 +44,7 @@ Changed to use `GenerationRequest` object per correct API signature:
 
 ```python
 # CORRECT - New API signature
-from processing.api import GenerationRequest
+from shared.api.client import GenerationRequest
 
 request = GenerationRequest(
     prompt=evaluation_prompt,
@@ -57,7 +57,7 @@ content = response.content  # Access content from response object
 ```
 
 ### Key Changes
-1. **Import GenerationRequest**: Added `from processing.api import GenerationRequest`
+1. **Import GenerationRequest**: Added `from shared.api.client import GenerationRequest`
 2. **Create request object**: Wrap parameters in GenerationRequest
 3. **Extract content**: Use `response.content` instead of treating response as string
 4. **Consistent pattern**: Matches usage in `DynamicGenerator` and other components
@@ -66,7 +66,7 @@ content = response.content  # Access content from response object
 
 ## File Modifications
 
-### File: `processing/evaluation/subjective_evaluator.py`
+### File: `postprocessing/evaluation/subjective_evaluator.py`
 
 **Lines Modified**: ~205-225 (in `_get_subjective_evaluation()` method)
 
@@ -93,7 +93,7 @@ except Exception as e:
 ```python
 try:
     # Use GenerationRequest object per API signature
-    from processing.api import GenerationRequest
+    from shared.api.client import GenerationRequest
     
     request = GenerationRequest(
         prompt=evaluation_prompt,
@@ -123,7 +123,7 @@ except Exception as e:
 **All API calls in the system should follow this pattern:**
 
 ```python
-from processing.api import GenerationRequest
+from shared.api.client import GenerationRequest
 
 # 1. Create request object with all parameters
 request = GenerationRequest(
@@ -179,20 +179,20 @@ if response.status == 'success':
 ### Components Using Correct API Signature
 All these components correctly use `GenerationRequest`:
 
-1. **DynamicGenerator** (`processing/generator.py`)
+1. **DynamicGenerator** (`generation/core/generator.py`)
    - Uses GenerationRequest for all content generation
    - Reference implementation for API calls
 
 2. **TextComponentGenerator** (`components/text/core/text_component_generator.py`)
    - Wraps DynamicGenerator, inherits correct usage
 
-3. **SubjectiveEvaluator** (`processing/evaluation/subjective_evaluator.py`)
+3. **SubjectiveEvaluator** (`postprocessing/evaluation/subjective_evaluator.py`)
    - NOW FIXED - Uses GenerationRequest as of November 16, 2025
 
 ### API Client Implementations
 **Files**: 
-- `processing/api/direct_api_client.py` - Direct Grok API calls
-- `processing/api/cached_api_client.py` - Caching wrapper around DirectAPIClient
+- `shared/api/client.py` - Direct Grok API calls
+- `shared/api/cached_client.py` - Caching wrapper around API client
 
 **Expected Signature**:
 ```python
@@ -219,7 +219,7 @@ def generate(self, request: GenerationRequest) -> GenerationResponse:
 def test_subjective_evaluator_uses_generation_request():
     """Verify SubjectiveEvaluator uses correct API signature"""
     import inspect
-    from processing.evaluation.subjective_evaluator import SubjectiveEvaluator
+    from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
     
     # Check that _get_subjective_evaluation uses GenerationRequest
     source = inspect.getsource(SubjectiveEvaluator._get_subjective_evaluation)
@@ -229,7 +229,7 @@ def test_subjective_evaluator_uses_generation_request():
 def test_subjective_evaluator_extracts_response_content():
     """Verify response.content is used, not raw response"""
     import inspect
-    from processing.evaluation.subjective_evaluator import SubjectiveEvaluator
+    from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
     
     source = inspect.getsource(SubjectiveEvaluator._get_subjective_evaluation)
     assert 'response.content' in source
@@ -340,8 +340,8 @@ if result:
 ### Still Seeing "Falling back to rule-based evaluation"
 **Symptom**: Error message persists after fix  
 **Diagnosis**:
-1. Check if fix was applied: `grep -n "GenerationRequest" processing/evaluation/subjective_evaluator.py`
-2. Verify imports: `from processing.api import GenerationRequest`
+1. Check if fix was applied: `grep -n "GenerationRequest" postprocessing/evaluation/subjective_evaluator.py`
+2. Verify imports: `from shared.api.client import GenerationRequest`
 3. Check Grok API key: `echo $GROK_API_KEY`
 
 **Solution**: 
@@ -369,12 +369,12 @@ sqlite3 data/winston_feedback.db "SELECT has_claude_api, COUNT(*) FROM subjectiv
 ```
 
 ### Import Error: "Cannot import name GenerationRequest"
-**Symptom**: `ImportError: cannot import name 'GenerationRequest' from 'processing.api'`  
+**Symptom**: `ImportError: cannot import name 'GenerationRequest' from 'shared.api.client'`  
 **Diagnosis**: Import path incorrect or GenerationRequest not exported  
-**Solution**: Check `processing/api/__init__.py` exports GenerationRequest:
+**Solution**: Check `shared/api/client.py` defines GenerationRequest:
 
 ```python
-# processing/api/__init__.py
+# shared/api/client.py
 from .generation_request import GenerationRequest
 from .generation_response import GenerationResponse
 

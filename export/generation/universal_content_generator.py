@@ -465,6 +465,14 @@ class ContentGenerator(BaseGenerator):
         print(f"📋 section_metadata: {len(configured_metadata)} definitions loaded")
         
         sections_added = 0
+
+        def _normalize_section_description(section_meta: Dict[str, Any]) -> None:
+            if 'sectionDescription' not in section_meta and 'pageDescription' in section_meta:
+                section_meta['sectionDescription'] = section_meta.get('pageDescription', '')
+            if 'pageDescription' in section_meta:
+                del section_meta['pageDescription']
+            if 'sectionDescription' not in section_meta:
+                section_meta['sectionDescription'] = ''
         
         # ROOT-LEVEL SECTIONS: Handle materialCharacteristics, laserMaterialInteraction, components, etc.
         root_level_sections = ['materialCharacteristics', 'laserMaterialInteraction', 'components']
@@ -497,6 +505,7 @@ class ContentGenerator(BaseGenerator):
                         section_meta['order'] = metadata.get('order', 100)
                     if 'variant' not in section_meta:
                         section_meta['variant'] = metadata.get('variant', 'default')
+                    _normalize_section_description(section_meta)
         
         # PROPERTIES SECTIONS: Handle properties.materialCharacteristics, properties.laserMaterialInteraction
         if 'properties' in frontmatter and isinstance(frontmatter['properties'], dict):
@@ -527,6 +536,7 @@ class ContentGenerator(BaseGenerator):
                             section_meta['order'] = metadata.get('order', 100)
                         if 'variant' not in section_meta:
                             section_meta['variant'] = metadata.get('variant', 'default')
+                        _normalize_section_description(section_meta)
         
         # COMPONENT SECTIONS: Handle components.micro, components.subtitle, etc.
         if 'components' in frontmatter and isinstance(frontmatter['components'], dict):
@@ -550,6 +560,7 @@ class ContentGenerator(BaseGenerator):
                             section_meta['order'] = metadata.get('order', 100)
                         if 'variant' not in section_meta:
                             section_meta['variant'] = metadata.get('variant', 'default')
+                        _normalize_section_description(section_meta)
                         
                         sections_added += 1
         
@@ -621,6 +632,7 @@ class ContentGenerator(BaseGenerator):
                             section_meta['order'] = metadata.get('order', 100)
                         if 'variant' not in section_meta:
                             section_meta['variant'] = metadata.get('variant', 'default')
+                        _normalize_section_description(section_meta)
                         
                         # Note: sectionMetadata field is deprecated as of Jan 2026
                         # All metadata should be directly in _section, not nested in sectionMetadata
@@ -798,6 +810,9 @@ class ContentGenerator(BaseGenerator):
             'image_alt': 'imageAlt',
             'image_width': 'imageWidth',
             'image_height': 'imageHeight',
+            'country_display': 'countryDisplay',
+            'persona_file': 'personaFile',
+            'formatting_file': 'formattingFile',
         }
         
         # Domain data structures (now in camelCase after source normalization)

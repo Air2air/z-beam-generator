@@ -1,0 +1,37 @@
+# Centralized Text Field Configuration
+# Single source of truth for all text-field lengths and randomization behavior.
+
+version: 1
+
+defaults:
+  base_length: 50
+  extraction_strategy: raw
+
+randomization_range:
+  min_factor: 0.1
+  max_factor: 2.6
+
+# Field-name keyed configuration shared across ALL domains.
+# Same field name => same base length/range/extraction everywhere.
+fields:
+  appearanceVariations: {}
+  applications: {}
+  challenges: {}
+  chemicalProperties: {}
+  contaminatedBy: {}
+  faq:
+    base_length: 300
+  healthEffects: {}
+  identifiers: {}
+  micro:
+    base_length: 50
+  pageDescription:
+    base_length: 100
+  pageTitle:
+    base_length: 12
+  physicalProperties: {}
+  prevention: {}
+  relatedMaterials: {}
+
+aliases:
+  description: pageDescription

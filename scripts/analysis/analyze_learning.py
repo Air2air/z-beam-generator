@@ -40,7 +40,7 @@ class LearningAnalyzer:
     4. What parameters optimize BOTH metrics?
     """
     
-    def __init__(self, db_path: str = "processing/detection/winston_feedback.db"):
+    def __init__(self, db_path: str = "data/winston_feedback.db"):
         self.db_path = db_path
         self.conn = None
     
@@ -498,7 +498,7 @@ def main():
     )
     parser.add_argument('--days', type=int, default=7, help='Analyze last N days (default: 7)')
     parser.add_argument('--prove-correlation', action='store_true', help='Run correlation proof analysis')
-    parser.add_argument('--db', type=str, default='processing/detection/winston_feedback.db')
+    parser.add_argument('--db', type=str, default='data/winston_feedback.db')
     
     args = parser.parse_args()
     

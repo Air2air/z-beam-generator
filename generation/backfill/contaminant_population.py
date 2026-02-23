@@ -6,6 +6,7 @@ NO FALLBACKS OR DEFAULTS - Pure AI research per copilot-instructions.md
 
 from generation.backfill.base import BaseBackfillGenerator
 from generation.backfill.registry import BackfillRegistry
+from generation.config.config_loader import ProcessingConfig
 from shared.api.grok_client import GrokClient
 from typing import Optional
 import time
@@ -17,13 +18,21 @@ class ContaminantDescriptionGenerator(BaseBackfillGenerator):
     def __init__(self, source_file: str, items_key: str, target_field: str, dry_run: bool = False):
         super().__init__(source_file, items_key, target_field, dry_run)
         self.api_client = GrokClient()
+        self._config = ProcessingConfig()
     
     def populate(self, item_id: str, item_data: dict) -> Optional[str]:
         """Research and generate contaminant description."""
-        
-        contam_name = item_data.get('name', item_id.replace('-contamination', '').replace('-', ' ').title())
-        category = item_data.get('category', '')
-        subcategory = item_data.get('subcategory', '')
+
+        if 'name' not in item_data or not isinstance(item_data['name'], str) or not item_data['name'].strip():
+            raise KeyError(f"Item '{item_id}' missing required non-empty field: name")
+        if 'category' not in item_data or not isinstance(item_data['category'], str):
+            raise KeyError(f"Item '{item_id}' missing required field: category")
+        if 'subcategory' not in item_data or not isinstance(item_data['subcategory'], str):
+            raise KeyError(f"Item '{item_id}' missing required field: subcategory")
+
+        contam_name = item_data['name']
+        category = item_data['category']
+        subcategory = item_data['subcategory']
         
         prompt = f"""Research the contaminant "{contam_name}" (category: {category}, subcategory: {subcategory}) in the context of laser cleaning.
 
@@ -38,17 +47,19 @@ Focus on technical accuracy and practical laser cleaning applications."""
         try:
             response = self.api_client.generate(
                 prompt=prompt,
-                temperature=0.7,
-                max_tokens=500
+                temperature=float(self._config.get_required_config('constants.backfill_generators.contaminant_description.temperature')),
+                max_tokens=int(self._config.get_required_config('constants.backfill_generators.contaminant_description.max_tokens'))
             )
             
-            description = response.get('text', '').strip()
+            if 'text' not in response or not isinstance(response['text'], str):
+                raise KeyError("API response missing required string key: text")
+            description = response['text'].strip()
             
             if not description:
                 print(f"  ⚠️  {item_id}: API returned empty response")
                 return None
             
-            time.sleep(0.5)
+            time.sleep(float(self._config.get_required_config('constants.backfill_generators.contaminant_description.request_delay_seconds')))
             return description
             
         except Exception as e:
@@ -62,11 +73,14 @@ class ContaminantAppearanceGenerator(BaseBackfillGenerator):
     def __init__(self, source_file: str, items_key: str, target_field: str, dry_run: bool = False):
         super().__init__(source_file, items_key, target_field, dry_run)
         self.api_client = GrokClient()
+        self._config = ProcessingConfig()
     
     def populate(self, item_id: str, item_data: dict) -> Optional[dict]:
         """Research and generate appearance characteristics."""
-        
-        contam_name = item_data.get('name', item_id)
+
+        if 'name' not in item_data or not isinstance(item_data['name'], str) or not item_data['name'].strip():
+            raise KeyError(f"Item '{item_id}' missing required non-empty field: name")
+        contam_name = item_data['name']
         
         prompt = f"""Research the visual appearance of "{contam_name}" contamination.
 
@@ -82,11 +96,13 @@ Be specific and technical. Avoid generic descriptions."""
         try:
             response = self.api_client.generate(
                 prompt=prompt,
-                temperature=0.6,
-                max_tokens=400
+                temperature=float(self._config.get_required_config('constants.backfill_generators.contaminant_appearance.temperature')),
+                max_tokens=int(self._config.get_required_config('constants.backfill_generators.contaminant_appearance.max_tokens'))
             )
             
-            appearance_text = response.get('text', '').strip()
+            if 'text' not in response or not isinstance(response['text'], str):
+                raise KeyError("API response missing required string key: text")
+            appearance_text = response['text'].strip()
             
             if not appearance_text:
                 print(f"  ⚠️  {item_id}: API returned empty response")
@@ -110,7 +126,7 @@ Be specific and technical. Avoid generic descriptions."""
                         appearance['color'] = line.split(':', 1)[-1].strip() if ':' in line else line.strip()
                         break
             
-            time.sleep(0.5)
+            time.sleep(float(self._config.get_required_config('constants.backfill_generators.contaminant_appearance.request_delay_seconds')))
             return appearance
             
         except Exception as e:
@@ -124,11 +140,14 @@ class ContaminantCompoundsGenerator(BaseBackfillGenerator):
     def __init__(self, source_file: str, items_key: str, target_field: str, dry_run: bool = False):
         super().__init__(source_file, items_key, target_field, dry_run)
         self.api_client = GrokClient()
+        self._config = ProcessingConfig()
     
     def populate(self, item_id: str, item_data: dict) -> Optional[dict]:
         """Research chemical compounds in this contamination."""
-        
-        contam_name = item_data.get('name', item_id)
+
+        if 'name' not in item_data or not isinstance(item_data['name'], str) or not item_data['name'].strip():
+            raise KeyError(f"Item '{item_id}' missing required non-empty field: name")
+        contam_name = item_data['name']
         
         prompt = f"""Research the chemical composition of "{contam_name}" contamination.
 
@@ -144,11 +163,13 @@ Focus on compounds relevant to laser cleaning safety and fume generation."""
         try:
             response = self.api_client.generate(
                 prompt=prompt,
-                temperature=0.5,
-                max_tokens=600
+                temperature=float(self._config.get_required_config('constants.backfill_generators.contaminant_compounds.temperature')),
+                max_tokens=int(self._config.get_required_config('constants.backfill_generators.contaminant_compounds.max_tokens'))
             )
             
-            compounds_text = response.get('text', '').strip()
+            if 'text' not in response or not isinstance(response['text'], str):
+                raise KeyError("API response missing required string key: text")
+            compounds_text = response['text'].strip()
             
             if not compounds_text:
                 print(f"  ⚠️  {item_id}: API returned empty response")
@@ -176,7 +197,7 @@ Focus on compounds relevant to laser cleaning safety and fume generation."""
                     if compound:
                         compounds[current_category].append(compound)
             
-            time.sleep(0.5)
+            time.sleep(float(self._config.get_required_config('constants.backfill_generators.contaminant_compounds.request_delay_seconds')))
             return compounds
             
         except Exception as e:
@@ -190,11 +211,14 @@ class ContaminantContextGenerator(BaseBackfillGenerator):
     def __init__(self, source_file: str, items_key: str, target_field: str, dry_run: bool = False):
         super().__init__(source_file, items_key, target_field, dry_run)
         self.api_client = GrokClient()
+        self._config = ProcessingConfig()
     
     def populate(self, item_id: str, item_data: dict) -> Optional[dict]:
         """Research environmental context for contamination."""
-        
-        contam_name = item_data.get('name', item_id)
+
+        if 'name' not in item_data or not isinstance(item_data['name'], str) or not item_data['name'].strip():
+            raise KeyError(f"Item '{item_id}' missing required non-empty field: name")
+        contam_name = item_data['name']
         
         prompt = f"""Research where "{contam_name}" contamination typically occurs.
 
@@ -209,11 +233,13 @@ Rate likelihood: high, medium, low, none"""
         try:
             response = self.api_client.generate(
                 prompt=prompt,
-                temperature=0.5,
-                max_tokens=400
+                temperature=float(self._config.get_required_config('constants.backfill_generators.contaminant_context.temperature')),
+                max_tokens=int(self._config.get_required_config('constants.backfill_generators.contaminant_context.max_tokens'))
             )
             
-            context_text = response.get('text', '').strip().lower()
+            if 'text' not in response or not isinstance(response['text'], str):
+                raise KeyError("API response missing required string key: text")
+            context_text = response['text'].strip().lower()
             
             if not context_text:
                 print(f"  ⚠️  {item_id}: API returned empty response")
@@ -238,7 +264,7 @@ Rate likelihood: high, medium, low, none"""
             if 'marine' in context_text or 'coastal' in context_text:
                 context['marine'] = 'high' if 'common' in context_text else 'medium'
             
-            time.sleep(0.5)
+            time.sleep(float(self._config.get_required_config('constants.backfill_generators.contaminant_context.request_delay_seconds')))
             return context
             
         except Exception as e:

@@ -20,8 +20,8 @@ This document defines the 7 critical requirements that the Z-Beam processing sys
 - **Readability**: Appropriate for technical audience
 
 ### Implementation
-- **File**: `processing/generator.py` - Winston API integration
-- **File**: `processing/learning/winston_analyzer.py` - Sentence-level analysis
+- **File**: `generation/core/generator.py` - Winston API integration
+- **File**: `postprocessing/detection/winston_analyzer.py` - Sentence-level analysis
 - **File**: `data/winston_feedback.db` - Result storage
 
 ### Validation
@@ -60,50 +60,39 @@ sqlite3 data/winston_feedback.db "SELECT material, AVG(human_score), AVG(ai_scor
 - **Pattern Learning**: Risky/safe patterns identified and used
 - **Temperature Optimization**: Material-specific temperature recommendations
 - **Prompt Enhancement**: Dynamic prompt optimization from feedback
-- **Success Prediction**: Predict generation success probability
+- **Success Correlation**: Correlate parameter bundles with quality outcomes
 - **Post-Generation Integrity**: Automated verification of database writes after each generation
 
 ### Implementation
 #### Database Storage
-- **File**: `processing/learning/winston_db.py` - Database operations
-- **Schema**: `generation_parameters` table with 25+ fields
+- **File**: `postprocessing/detection/winston_feedback_db.py` - Database operations
 - **Storage**: All parameters (temperature, penalties, voice, enrichment)
 
 #### Pattern Learning
-- **File**: `processing/learning/pattern_learner.py`
+- **File**: `learning/subjective_pattern_learner.py`
 - **Function**: Identifies patterns correlated with AI detection
-- **Usage**: 1030+ risky patterns, 54 safe patterns learned
 
 #### Temperature Advisor
-- **File**: `processing/learning/temperature_advisor.py`
+- **File**: `learning/sweet_spot_analyzer.py`
 - **Function**: Recommends optimal temperature per material
 - **Method**: Statistical analysis of temp vs human_score
 
 #### Prompt Optimizer
-- **File**: `processing/learning/prompt_optimizer.py`
+- **File**: `shared/validation/prompt_optimizer.py`
 - **Function**: Enhances prompts with learned patterns
 - **Integration**: Runs on every generation attempt
 
 #### Success Predictor
-- **File**: `processing/learning/success_predictor.py`
+- **File**: `learning/validation_winston_correlator.py`
 - **Function**: Predicts success probability before generation
-- **Usage**: Min 10 samples for reliable predictions
 
 ### Validation
 ```bash
 # Check learning system status
 sqlite3 data/winston_feedback.db "SELECT COUNT(*) as total, COUNT(DISTINCT material) as materials FROM detection_results"
 
-# Verify parameter storage
-sqlite3 data/winston_feedback.db "SELECT COUNT(*) FROM generation_parameters"
-
-# Check pattern learning
-python3 -c "
-from processing.learning.pattern_learner import PatternLearner
-learner = PatternLearner('data/winston_feedback.db')
-patterns = learner.get_learned_patterns('Steel', 'micro')
-print(f'Risky: {len(patterns[\"risky\"])}, Safe: {len(patterns[\"safe\"])}')
-"
+# Verify pattern learning table activity
+sqlite3 data/winston_feedback.db "SELECT COUNT(*) FROM subjective_evaluations"
 ```
 
 ### Tests
@@ -119,7 +108,7 @@ print(f'Risky: {len(patterns[\"risky\"])}, Safe: {len(patterns[\"safe\"])}')
 - **54 safe patterns** identified
 
 ### Post-Generation Integrity Checks
-- **File**: `processing/integrity/integrity_checker.py`
+- **File**: `generation/integrity/integrity_checker.py`
 - **Method**: `IntegrityChecker.run_post_generation_checks()`
 - **Integration**: All generation commands (micro, subtitle, FAQ)
 - **Checks**:
@@ -130,7 +119,7 @@ print(f'Risky: {len(patterns[\"risky\"])}, Safe: {len(patterns[\"safe\"])}')
   5. Subjective evaluation logged
 - **Status**: PASS/WARN/FAIL per check
 - **Execution**: Automatic after every generation
-
+ 
 **Example Output**:
 ```
 🔍 Running post-generation integrity check...
@@ -148,8 +137,6 @@ print(f'Risky: {len(patterns[\"risky\"])}, Safe: {len(patterns[\"safe\"])}')
 - `docs/development/PARAMETER_LOGGING_QUICK_START.md` - Logging guide
 - `docs/system/POST_GENERATION_INTEGRITY.md` - **NEW**: Post-generation check documentation
 
----
-
 ## 3. 🔍 Proactive Self-Diagnosis
 
 ### Requirements
@@ -161,7 +148,7 @@ print(f'Risky: {len(patterns[\"risky\"])}, Safe: {len(patterns[\"safe\"])}')
 - **Module Integration**: All learning modules properly integrated
 
 ### Implementation
-- **File**: `processing/integrity/integrity_checker.py` (1014 lines)
+- **File**: `generation/integrity/integrity_checker.py`
 - **Checks**: 15 automated checks
 - **Execution**: Runs before every generation (quick mode)
 
@@ -199,18 +186,13 @@ print(f'Risky: {len(patterns[\"risky\"])}, Safe: {len(patterns[\"safe\"])}')
 ```bash
 # Run quick integrity checks
 python3 -c "
-from processing.integrity.integrity_checker import IntegrityChecker
+from generation.integrity import IntegrityChecker
 checker = IntegrityChecker()
 results = checker.run_quick_checks()
 print(f'{len([r for r in results if r.status.value == \"pass\"])}/{len(results)} passed')
-"
-
-# Run full integrity checks
-python3 run.py --integrity-check
 ```
-
 ### Tests
-- `tests/test_integrity_checker.py` - Integrity checker validation
+- `tests/unit/test_integrity_bypass_guard.py` - Integrity bypass guard validation
 - `tests/test_config_validation.py` - Configuration validation
 - `tests/test_parameter_propagation.py` - Pipeline value stability
 
@@ -224,7 +206,6 @@ python3 run.py --integrity-check
 - `docs/system/INTEGRITY_CHECKER.md` - Complete checker documentation
 - `docs/troubleshooting/DIAGNOSTIC_TOOLS.md` - Diagnostic commands
 - `COPILOT_QUICK_START.md` - Quick diagnosis guide
-
 ---
 
 ## 4. 🚫 Prohibited Fallbacks & Defaults
@@ -240,37 +221,37 @@ python3 run.py --integrity-check
 ### Implementation
 #### Enforcement Mechanisms
 1. **Integrity Checker**: Automated detection
-   - File: `processing/integrity/integrity_checker.py`
+   - File: `generation/integrity/integrity_checker.py`
    - Method: `_check_hardcoded_values()`
    - Scans: All production code files
 
 2. **Database-First Policy**: Config contains ONLY word counts
-   - File: `processing/config.yaml`
+   - File: `generation/config.yaml`
    - Allowed: Word count parameters
    - Forbidden: temperature, max_tokens, penalties
 
 3. **Dynamic Configuration**: Fallback calculations
-   - File: `processing/config/dynamic_config.py`
+   - File: `generation/config/dynamic_config.py`
    - Purpose: FALLBACK ONLY when no DB history
    - Usage: First generation of new materials
 
 ### Validation
 ```bash
 # Scan for prohibited patterns
-grep -r "MockAPIClient" processing/ --include="*.py" | grep -v "test_"
+grep -r "MockAPIClient" generation/ --include="*.py" | grep -v "test_"
 # Expected: No matches
 
 # Check for default bypasses
-grep -r "or {}" processing/ --include="*.py" | grep -v "test_"
+grep -r "or {}" generation/ --include="*.py" | grep -v "test_"
 # Expected: Only legitimate empty dict returns
 
 # Verify config structure
-grep -E "generation_temperature|max_tokens" processing/config.yaml
+grep -E "generation_temperature|max_tokens" generation/config.yaml
 # Expected: No matches (only word counts)
 
 # Run hardcoded value detection
 python3 -c "
-from processing.integrity.integrity_checker import IntegrityChecker
+from generation.integrity import IntegrityChecker
 checker = IntegrityChecker()
 results = checker._check_hardcoded_values()
 for r in results:
@@ -285,7 +266,7 @@ for r in results:
 - `tests/test_config_structure.py` - Config validation
 
 ### Violations to Report
-- `processing/**/*.py` with MockAPIClient
+- `generation/**/*.py`, `postprocessing/**/*.py`, `learning/**/*.py` with MockAPIClient
 - Production code with `or {}`, `or "default"`
 - Config files with temperature, penalties
 - Skip logic bypassing validation
@@ -308,12 +289,12 @@ for r in results:
 
 ### Implementation
 #### Configuration Validation
-- **File**: `processing/config/config_loader.py`
+- **File**: `generation/config/config_loader.py`
 - **Method**: `validate_config()`
 - **Checks**: Required keys, value ranges, types
 
 #### Schema Validation
-- **File**: `processing/unified_orchestrator.py`
+- **File**: `generation/core/evaluated_generator.py`
 - **Method**: `_validate_parameter_schema()`
 - **Validation**: Temperature, penalties, types
 
@@ -345,7 +326,7 @@ def _validate_parameter_schema(params: Dict) -> bool:
 ```bash
 # Validate configuration
 python3 -c "
-from processing.config.config_loader import get_config
+from generation.config.config_loader import get_config
 config = get_config()
 print('Config loaded successfully')
 "
@@ -355,7 +336,7 @@ python3 run.py --data-completeness-report
 
 # Verify schema validation
 python3 -c "
-from processing.unified_orchestrator import UnifiedOrchestrator
+from generation.core.evaluated_generator import QualityEvaluatedGenerator
 # Schema validation runs automatically
 print('Schema validation integrated')
 "
@@ -451,8 +432,8 @@ WHERE timestamp >= datetime('now', '-7 days')
 
 # Check feedback completeness
 python3 -c "
-from processing.learning.winston_db import WinstonDB
-db = WinstonDB('data/winston_feedback.db')
+from postprocessing.detection.winston_feedback_db import WinstonFeedbackDB
+db = WinstonFeedbackDB('data/winston_feedback.db')
 stats = db.get_statistics()
 print(f'Total generations: {stats[\"total_generations\"]}')
 print(f'With full params: {stats[\"with_parameters\"]}')
@@ -493,23 +474,26 @@ print(f'With Claude eval: {stats[\"with_evaluations\"]}')
 ### Implementation
 #### File Structure
 ```
-processing/
+generation/
 ├── config/                  # Configuration management
 │   ├── config_loader.py    # Config file loading
 │   ├── dynamic_config.py   # Parameter calculation (FALLBACK)
 │   └── scale_mapper.py     # Slider normalization
-├── learning/                # Self-learning systems
-│   ├── pattern_learner.py  # Pattern detection
-│   ├── temperature_advisor.py  # Temperature optimization
-│   ├── prompt_optimizer.py # Prompt enhancement
-│   └── success_predictor.py # Success prediction
-├── integrity/               # System health monitoring
-│   └── integrity_checker.py # Automated validation
-├── enrichment/              # Data enrichment
-│   └── data_enricher.py    # Material data loading
-├── generator.py             # Core generation logic
-├── unified_orchestrator.py  # Main orchestration (DB-first)
-└── orchestrator.py          # Legacy orchestrator
+├── core/                    # Core generation systems
+│   ├── generator.py         # Core generation logic
+│   └── evaluated_generator.py  # Main orchestration
+postprocessing/
+├── detection/               # Detection and scoring
+│   └── winston_analyzer.py  # AI detection analysis
+└── evaluation/
+   └── subjective_evaluator.py # Subjective quality evaluation
+learning/                    # Self-learning systems
+├── sweet_spot_analyzer.py
+├── subjective_pattern_learner.py
+├── validation_winston_correlator.py
+└── weight_learner.py
+generation/integrity/
+└── integrity_checker.py     # Automated validation
 
 Total: 52 Python files
 Tests: 130 test files
@@ -547,19 +531,19 @@ Total: 100+ documentation files
 ### Validation
 ```bash
 # Check file organization
-find processing -name "*.py" | head -20
+find generation postprocessing learning -name "*.py" | head -20
 
 # Count lines of code
-find processing -name "*.py" -exec wc -l {} + | sort -n | tail -10
+find generation postprocessing learning -name "*.py" -exec wc -l {} + | sort -n | tail -10
 
 # Check test coverage
-pytest --cov=processing --cov-report=term-missing
+pytest --cov=generation --cov=postprocessing --cov=learning --cov-report=term-missing
 
 # Verify documentation completeness
 find docs -name "*.md" | wc -l
 
 # Check for TODOs and FIXMEs
-grep -r "TODO\|FIXME" processing/ --include="*.py" | wc -l
+grep -r "TODO\|FIXME" generation/ postprocessing/ learning/ --include="*.py" | wc -l
 ```
 
 ### Tests

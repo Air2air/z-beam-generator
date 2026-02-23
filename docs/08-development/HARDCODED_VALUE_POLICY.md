@@ -199,10 +199,15 @@ The integrity checker automatically scans production code for:
 Run check:
 ```bash
 python3 -c "
-from processing.integrity.integrity_checker import IntegrityChecker
+from generation.integrity import IntegrityChecker
 checker = IntegrityChecker()
 results = checker.run_quick_checks()
 "
+```
+
+Preferred CLI command:
+```bash
+python3 run.py --integrity-check --quick
 ```
 
 ### Pre-Generation Validation
@@ -212,6 +217,11 @@ The integrity check runs automatically before every generation:
 python3 run.py --micro "Aluminum"
 # 🔍 Running pre-generation integrity check...
 # ❌ Integrity check FAILED - Found 36 hardcoded values
+```
+
+Bypass is development-only and explicitly gated:
+```bash
+ALLOW_INTEGRITY_BYPASS=1 python3 run.py --micro "Aluminum" --skip-integrity-check
 ```
 
 ### Continuous Integration
@@ -308,7 +318,7 @@ class SubjectiveEvaluator:
 Run the integrity checker:
 ```bash
 python3 -c "
-from processing.integrity.integrity_checker import IntegrityChecker
+from generation.integrity import IntegrityChecker
 checker = IntegrityChecker()
 results = checker._check_hardcoded_values()
 for v in results[0].details.get('violations', []):
@@ -331,7 +341,7 @@ For each violation:
 Run tests and integrity check:
 ```bash
 pytest tests/test_hardcoded_value_detection.py
-python3 -c "from processing.integrity.integrity_checker import IntegrityChecker; IntegrityChecker().run_quick_checks()"
+python3 -c "from generation.integrity import IntegrityChecker; IntegrityChecker().run_quick_checks()"
 ```
 
 ---
@@ -353,9 +363,9 @@ Before merging any PR:
 
 ## 🔗 Related Documentation
 
-- **Integrity Checker**: `processing/integrity/integrity_checker.py`
-- **Dynamic Config**: `processing/config/dynamic_config.py`
-- **Config Loader**: `processing/config/config_loader.py`
+- **Integrity Checker**: `generation/integrity/integrity_checker.py`
+- **Dynamic Config**: `generation/config/dynamic_config.py`
+- **Config Loader**: `generation/config/config_loader.py`
 - **Fail-Fast Policy**: `.github/copilot-instructions.md`
 - **Test Suite**: `tests/test_hardcoded_value_detection.py`
 

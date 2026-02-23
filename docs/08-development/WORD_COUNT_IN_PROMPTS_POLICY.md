@@ -8,7 +8,7 @@
 
 ## Policy Statement
 
-**ALL word count specifications MUST be defined in prompt files (`prompts/{domain}/*.txt`). Zero tolerance for word counts in configuration files.**
+**ALL word count specifications MUST be defined in prompt templates stored in the prompt catalog (`prompts/registry/prompt_catalog.yaml`, under `catalog.byPath` entries like `prompts/{domain}/*.txt`). Zero tolerance for word counts in configuration files.**
 
 ---
 
@@ -148,7 +148,7 @@ WORD LENGTH: 80-240 words
 - Added word counts to 8 files that were missing them
 - Standardized format across all 51 text generation prompts
 
-**Files Updated:**
+**Files Updated (prompt catalog entries):**
 - `prompts/materials/page_title.txt` - Added 8-12 words spec
 - `prompts/materials/meta_description.txt` - Added 25-35 words spec
 - `prompts/materials/power_intensity.txt` - Added 5-10 words spec
@@ -162,7 +162,7 @@ WORD LENGTH: 80-240 words
 - `length_variation_range` (was: 10 → ±60%) - DEPRECATED, ranges now in prompts
 - `word_count_variation` (was: 0.70 → ±70%) - DEPRECATED, ranges now in prompts
 
-**Rationale for Removal**: Created duplication and confusion. Prompt files now contain COMPLETE range specifications with sufficient natural variation (3x-4x multipliers common). No additional calculation needed.
+**Rationale for Removal**: Created duplication and confusion. Prompt catalog entries now contain COMPLETE range specifications with sufficient natural variation (3x-4x multipliers common). No additional calculation needed.
 
 **Backward Compatibility**: Legacy code accessing these parameters will receive default values (50% variation) to prevent breakage. Code should be migrated to read ranges from prompt files directly.
 
@@ -299,9 +299,9 @@ grep -c "default_length|min_length|max_length" domains/*/config.yaml
 grep -c "You are|TASK:" domains/*/config.yaml
 # Result: 0 matches in all 4 configs ✅
 
-# All prompt files exist
-ls -1 prompts/*/*.txt | wc -l
-# Result: 51+ prompt files verified ✅
+# All prompt catalog entries exist
+grep -c "^\s\+prompts/" prompts/registry/prompt_catalog.yaml
+# Result: 51+ prompt entries verified ✅
 ```
 
 ### Policy Compliance Status
@@ -318,7 +318,7 @@ ls -1 prompts/*/*.txt | wc -l
 
 ### Architectural Separation Achieved
 
-**PROMPTS (`prompts/{domain}/*.txt`)**
+**PROMPTS (prompt catalog `catalog.byPath` entries like `prompts/{domain}/*.txt`)**
 - ✅ WHAT to generate (content instructions)
 - ✅ HOW to format (style, structure, tone)
 - ✅ Word count ranges (`WORD LENGTH: 50-150 words`)

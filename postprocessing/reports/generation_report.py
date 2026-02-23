@@ -139,8 +139,12 @@ class GenerationReport:
                 lines.append("")
                 lines.append("**Sentence Analysis**:")
                 for i, sent in enumerate(self.winston_metrics.sentence_analysis, 1):
-                    score = sent.get('human_score', 0)
-                    text = sent.get('text', '')[:60] + "..."
+                    if 'human_score' not in sent:
+                        raise KeyError("sentence_analysis entry missing required key: human_score")
+                    if 'text' not in sent:
+                        raise KeyError("sentence_analysis entry missing required key: text")
+                    score = sent['human_score']
+                    text = sent['text'][:60] + "..."
                     emoji = "✅" if score > 70 else "⚠️" if score > 40 else "🚨"
                     lines.append(f"  {emoji} #{i}: {score:.0f}% human - \"{text}\"")
             

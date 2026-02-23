@@ -74,6 +74,11 @@ jobs:
         find tests/ -name "*.py" -exec python -m py_compile {} \;
         echo "All test files compile successfully!"
 
+    - name: Run integrity policy checks
+      run: |
+        echo "Running integrity checks (fail-fast + no-fallback enforcement)..."
+        python3 run.py --integrity-check --quick
+
   test:
     runs-on: ubuntu-latest
     strategy:

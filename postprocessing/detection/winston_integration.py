@@ -83,7 +83,7 @@ class WinstonIntegration:
         Returns:
             Mode string: 'always', 'smart', 'disabled', 'final_only'
         """
-        return self.config.get('winston_usage_mode', 'smart')
+        return 'always'
     
     def should_use_winston(self, attempt: int, max_attempts: int) -> bool:
         """
@@ -214,10 +214,6 @@ class WinstonIntegration:
         Returns:
             True if attempts should be extended
         """
-        # Check if adaptive retry is enabled
-        if not self.config.get('winston_adaptive_retry', True):
-            return False
-        
         # Only in 'always' mode
         mode = self.get_usage_mode()
         if mode != 'always':

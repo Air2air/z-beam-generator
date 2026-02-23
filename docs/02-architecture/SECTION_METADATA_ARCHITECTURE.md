@@ -171,7 +171,7 @@ aluminum-laser-cleaning:
           icon: layers
           order: 72
           variant: default
-        # Items array or description
+        # Items array
     
     interactions:
       contaminatedBy:

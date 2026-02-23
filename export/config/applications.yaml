@@ -17,6 +17,12 @@ generators:
   tasks:
   - type: export_metadata
     description: Add ONLY export-time fields (dateModified, pageTitle if missing)
+  - type: author_linkage
+    author_file: data/authors/Authors.yaml
+    description: Hydrate authorId to full author object
+  - type: author_linkage
+    author_file: data/authors/Authors.yaml
+    remove_author_id: true
   - type: text_field_normalization
     description: Normalize text wrapper artifacts in description fields
     fields:
@@ -30,4 +36,5 @@ generators:
 - type: field_order
   module: export.generation.field_order_generator
   class: FieldOrderGenerator
+  domain: applications
   description: Normalize field order for consistency (must run last)

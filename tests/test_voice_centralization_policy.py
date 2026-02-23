@@ -9,6 +9,7 @@ Grade: F violation if any test fails
 import pytest
 import re
 from pathlib import Path
+import yaml
 
 
 class TestVoiceInstructionCentralization:
@@ -21,9 +22,35 @@ class TestVoiceInstructionCentralization:
     
     @pytest.fixture
     def domain_prompts(self, project_root):
-        """Get all domain prompt template files"""
-        domains_dir = project_root / "domains"
-        return list(domains_dir.glob("*/prompts/*.txt"))
+        """Get all domain prompt templates from consolidated catalog."""
+        catalog_path = project_root / "prompts" / "registry" / "prompt_catalog.yaml"
+        if not catalog_path.exists():
+            pytest.skip(f"Prompt catalog not found at {catalog_path}")
+
+        with open(catalog_path, 'r') as f:
+            catalog_data = yaml.safe_load(f) or {}
+
+        by_path = (
+            catalog_data.get('catalog', {}).get('byPath', {})
+            if isinstance(catalog_data, dict)
+            else {}
+        )
+
+        if not isinstance(by_path, dict):
+            pytest.fail("Invalid prompt catalog format: catalog.byPath must be a mapping")
+
+        domain_prefixes = (
+            'prompts/materials/',
+            'prompts/contaminants/',
+            'prompts/settings/',
+            'prompts/compounds/',
+            'prompts/applications/',
+        )
+        return {
+            rel_path: content
+            for rel_path, content in by_path.items()
+            if rel_path.startswith(domain_prefixes) and rel_path.endswith('.txt')
+        }
     
     @pytest.fixture
     def generation_code(self, project_root):
@@ -59,8 +86,7 @@ class TestVoiceInstructionCentralization:
         
         violations = []
         
-        for prompt_file in domain_prompts:
-            content = prompt_file.read_text()
+        for prompt_path, content in domain_prompts.items():
             
             # Check for forbidden patterns
             for pattern in forbidden_patterns:
@@ -76,7 +102,7 @@ class TestVoiceInstructionCentralization:
                     context = content[start:end].replace('\n', ' ')
                     
                     violations.append({
-                        'file': str(prompt_file.relative_to(prompt_file.parent.parent.parent.parent)),
+                        'file': prompt_path,
                         'pattern': pattern,
                         'context': context
                     })
@@ -97,17 +123,14 @@ class TestVoiceInstructionCentralization:
         """
         missing_placeholder = []
         
-        for prompt_file in domain_prompts:
-            content = prompt_file.read_text()
+        for prompt_path, content in domain_prompts.items():
             
             # Check if file references voice/author but lacks placeholder
             has_author = "{author}" in content or "{country}" in content
             has_placeholder = "{voice_instruction}" in content
             
             if has_author and not has_placeholder:
-                missing_placeholder.append(str(prompt_file.relative_to(
-                    prompt_file.parent.parent.parent.parent
-                )))
+                missing_placeholder.append(prompt_path)
         
         if missing_placeholder:
             error_msg = "\n\n⚠️ MISSING {voice_instruction} PLACEHOLDER:\n\n"

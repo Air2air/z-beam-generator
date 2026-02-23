@@ -2,7 +2,7 @@
 Component Type Specifications
 
 Defines characteristics and prompt templates for different content types.
-Dynamically loads component lengths from config.yaml instead of hardcoding.
+Dynamically loads component lengths from generation/text_field_config.yaml.
 """
 
 from dataclasses import dataclass
@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Dict, Optional
 
 import yaml
+from shared.text.utils.prompt_registry_service import PromptRegistryService
 
 
 @dataclass
@@ -24,8 +25,6 @@ class ComponentSpec:
         name: Component identifier (matches prompts/{name}.txt)
         default_length: Target word count
         end_punctuation: Whether to include period at end
-        min_length: Minimum word count (from config)
-        max_length: Maximum word count (from config)
         prompt_template_file: Path to prompt template file
         extraction_strategy: How to extract content from generated text
             - 'raw': Return text as-is (description)
@@ -35,221 +34,102 @@ class ComponentSpec:
     name: str
     default_length: int
     end_punctuation: bool = True
-    min_length: Optional[int] = None
-    max_length: Optional[int] = None
     prompt_template_file: Optional[str] = None
     extraction_strategy: str = 'raw'
-    
-    def __post_init__(self):
-        # Set defaults if not provided (backward compatibility)
-        if self.min_length is None:
-            self.min_length = max(int(self.default_length * 0.9), self.default_length - 5)
-        if self.max_length is None:
-            self.max_length = min(int(self.default_length * 1.1), self.default_length + 5)
 
 
 class ComponentRegistry:
     """
     Registry of all component types and their specifications.
     
-    Dynamically loads component lengths from config.yaml.
-    Component specs define content characteristics while config.yaml controls lengths.
+    Dynamically loads component lengths from centralized text field config.
+    Component specs define content characteristics while centralized config controls lengths.
     """
     
-    # Config cache
-    _config = None
-    _config_path = None
-    
-    # Component type to domain mapping
-    # Used to load domain-specific configs from domains/{domain}/config.yaml
-    _component_domain_map = {
-        'pageDescription': 'materials',
-        'micro': 'materials',
-        'faq': 'materials',
-        'settings_description': 'settings',
-        'component_summaries': 'settings',
-    }
+    # Centralized text field config cache
+    _text_field_config = None
 
     LEGACY_COMPONENT_ALIASES = {
         'description': 'pageDescription',
     }
     
     @classmethod
-    def _deep_merge(cls, base: Dict, override: Dict) -> Dict:
-        """Deep merge override dict into base dict.
-        
-        Args:
-            base: Base dictionary
-            override: Override dictionary (takes precedence)
-            
-        Returns:
-            Merged dictionary (base + override)
-        """
-        result = base.copy()
-        for key, value in override.items():
-            if key in result and isinstance(result[key], dict) and isinstance(value, dict):
-                result[key] = cls._deep_merge(result[key], value)
-            else:
-                result[key] = value
-        return result
-    
-    @classmethod
-    def _load_domain_config(cls, domain: str) -> Optional[Dict]:
-        """Load domain-specific config from domains/{domain}/config.yaml.
-        
-        Args:
-            domain: Domain name (e.g., 'materials', 'settings')
-            
-        Returns:
-            Domain config dict or None if not found
-        """
-        # Path from shared/text/utils/ -> project root is 4 levels up
-        project_root = Path(__file__).parent.parent.parent.parent
-        domain_config_path = project_root / 'domains' / domain / 'config.yaml'
-        
-        if not domain_config_path.exists():
-            # Fallback: try relative path from cwd
-            domain_config_path = Path('domains') / domain / 'config.yaml'
-        
-        if not domain_config_path.exists():
-            return None
-        
-        try:
-            with open(domain_config_path, 'r', encoding='utf-8') as f:
-                return yaml.safe_load(f)
-        except Exception:
-            return None
-    
-    @classmethod
-    def _load_config(cls) -> Dict:
-        """Load config.yaml and merge domain-specific configs.
-        
-        Loading strategy:
-        1. Load generation/config.yaml (global config)
-        2. For each domain with config file, merge domain config
-        3. Domain configs override global configs (domain takes precedence)
-        
-        Returns:
-            Merged config dict
-        """
-        if cls._config is None:
-            if cls._config_path is None:
-                # Path to generation/config.yaml from shared/text/utils/
-                # shared/text/utils/ -> parent.parent.parent = shared
-                # Need to go up to project root then into generation/
-                project_root = Path(__file__).parent.parent.parent.parent
-                cls._config_path = project_root / "generation" / "config.yaml"
-            
-            # Load global config - FAIL-FAST: No fallbacks
-            if not cls._config_path.exists():
-                raise FileNotFoundError(
-                    f"Config file not found: {cls._config_path}. "
-                    f"Cannot operate without configuration - fail-fast architecture."
-                )
-            
-            with open(cls._config_path, 'r', encoding='utf-8') as f:
-                cls._config = yaml.safe_load(f)
-            
-            if not cls._config:
-                raise ValueError(f"Config file is empty: {cls._config_path}")
-            
-            # Merge domain-specific configs
-            # Discover all domains with config files
-            # Path: shared/text/utils/ -> parent.parent.parent.parent = project root
+    def _load_text_field_config(cls) -> Dict:
+        """Load centralized text field config from generation/text_field_config.yaml."""
+        if cls._text_field_config is None:
             project_root = Path(__file__).parent.parent.parent.parent
-            domains_dir = project_root / 'domains'
-            if domains_dir.exists():
-                for domain_dir in domains_dir.iterdir():
-                    if domain_dir.is_dir():
-                        domain_name = domain_dir.name
-                        domain_config = cls._load_domain_config(domain_name)
-                        if domain_config:
-                            # Deep merge domain config into global config
-                            cls._config = cls._deep_merge(cls._config, domain_config)
-        
-        return cls._config
+            config_path = project_root / 'generation' / 'text_field_config.yaml'
+
+            if not config_path.exists():
+                config_path = Path('generation') / 'text_field_config.yaml'
+
+            if not config_path.exists():
+                raise FileNotFoundError(
+                    f"Text field config not found: {config_path}. "
+                    "Cannot resolve text field lengths without centralized config."
+                )
+
+            with open(config_path, 'r', encoding='utf-8') as file_handle:
+                cls._text_field_config = yaml.safe_load(file_handle)
+
+            if not isinstance(cls._text_field_config, dict):
+                raise ValueError("generation/text_field_config.yaml must contain a YAML dictionary")
+
+        return cls._text_field_config
     
     @classmethod
     def _get_component_lengths(cls, component_type: str) -> Dict[str, int]:
-        """Get length configuration for component type from config.yaml.
-        
-        NOTE: Word counts are now in prompts (Option B: Prompts Only).
-        This function now primarily returns extraction_strategy.
-        Default word count is used only for legacy compatibility.
-        
-        Looks for config in:
-        1. component_extraction (new - extraction_strategy only)
-        2. component_lengths (legacy - backward compatibility)
+        """Get length configuration for component type from centralized text_field_config.yaml.
+
+        Field config is keyed by component name globally and shared across all domains.
         """
-        config = cls._load_config()
-        
-        # Try new config location first (extraction_strategy only)
-        extraction_config = config.get('component_extraction', {}).get(component_type, {})
-        
-        # Fall back to legacy location
-        lengths = config.get('component_lengths', {}).get(component_type, {})
-        
-        # Get extraction_strategy - FAIL-FAST: Must be explicitly configured
-        if isinstance(extraction_config, dict) and 'extraction_strategy' in extraction_config:
-            extraction_strategy = extraction_config['extraction_strategy']
-        elif isinstance(lengths, dict) and 'extraction_strategy' in lengths:
-            extraction_strategy = lengths['extraction_strategy']
-        else:
+        config = cls._load_text_field_config()
+
+        defaults = config.get('defaults')
+        if not isinstance(defaults, dict):
+            raise ValueError("Missing required 'defaults' block in generation/text_field_config.yaml")
+
+        fields_cfg = config.get('fields')
+        if not isinstance(fields_cfg, dict):
+            raise ValueError("Missing required fields block in generation/text_field_config.yaml")
+
+        if component_type not in fields_cfg:
             raise ValueError(
-                f"No extraction_strategy found for component '{component_type}'. "
-                f"Must be defined in component_extraction.{component_type}.extraction_strategy - fail-fast architecture."
+                f"Missing field '{component_type}' under fields in generation/text_field_config.yaml"
             )
-        
-        # Word count is now in prompts (Option B: Prompts Only)
-        # Use a nominal default for range calculation only - actual length from prompt
-        default = 100  # Nominal value for range calculation
-        
-        # Calculate dynamic range from length_variation_range slider
-        try:
-            if 'length_variation_range' not in config:
-                raise ValueError("Config missing 'length_variation_range' - required for dynamic length calculation")
-            length_variation = config['length_variation_range']  # 1-10 scale (normalized Nov 16, 2025)
-            
-            # Normalize 1-10 scale to variation percentages:
-            # 1 = ±10% (tightest)
-            # 5.5 = ±35% (moderate)
-            # 10 = ±60% (loosest/maximum)
-            # Linear mapping: variation_pct = 0.10 + ((slider - 1) / 9) * 0.50
-            if not isinstance(length_variation, (int, float)) or length_variation < 1 or length_variation > 10:
-                raise ValueError(f"length_variation_range must be 1-10, got: {length_variation}")
-            
-            variation_pct = 0.10 + ((length_variation - 1) / 9.0) * 0.50
-            variation_words = int(default * variation_pct)
-            
-            result = {
-                'default': default,
-                'min': max(1, default - variation_words),
-                'max': default + variation_words
-            }
-            
-            # Add extraction_strategy if present
-            if extraction_strategy is not None:
-                result['extraction_strategy'] = extraction_strategy
-            
-            return result
-        except Exception as e:
-            # FAIL-FAST: No fallback calculation
+
+        field_cfg = fields_cfg.get(component_type) or {}
+        if not isinstance(field_cfg, dict):
             raise ValueError(
-                f"Failed to calculate length range for '{component_type}': {e}. "
-                f"Check 'length_variation_range' in config.yaml - fail-fast architecture."
+                f"Invalid field config for '{component_type}' in generation/text_field_config.yaml"
             )
+
+        default = field_cfg.get('base_length', defaults.get('base_length'))
+        extraction_strategy = field_cfg.get('extraction_strategy', defaults.get('extraction_strategy'))
+
+        if not isinstance(default, int) or default <= 0:
+            raise ValueError(
+                f"Invalid base_length for '{component_type}': {default}"
+            )
+        if not isinstance(extraction_strategy, str) or not extraction_strategy:
+            raise ValueError(
+                f"Invalid extraction_strategy for '{component_type}': {extraction_strategy}"
+            )
+
+        return {
+            'default': default,
+            'extraction_strategy': extraction_strategy,
+        }
     
-    # Component specifications discovered dynamically from:
-    # 1. prompts/*.txt files (content instructions)
-    # 2. config.yaml component_lengths section (word counts)
-    # NO hardcoded component types - all defined externally
+    # Component specifications discovered dynamically from prompt catalog YAML.
+    # No hardcoded component types - all defined externally.
     
     @classmethod
     def _discover_components(cls) -> Dict[str, Dict]:
-        """Discover available components from top-level prompts domain directories.
+        """Discover available components from consolidated prompt catalog.
         
-        Returns component specs by scanning prompts/*/*.txt files.
-        Each .txt file defines a component type.
+        Returns component specs by scanning catalog.byPath entries for
+        prompts/<domain>/*.txt templates.
         
         Directory structure:
         prompts/
@@ -259,41 +139,80 @@ class ComponentRegistry:
         └── etc.
         """
         specs = {}
-        # Path from shared/text/utils/ -> project root is 4 levels up
         project_root = Path(__file__).parent.parent.parent.parent
-        prompts_root = project_root / 'prompts'
+
+        prompt_catalog = PromptRegistryService.get_prompt_catalog()
+        by_path = prompt_catalog.get('catalog', {}).get('byPath')
+        if not isinstance(by_path, dict):
+            raise ValueError("Prompt catalog is missing required 'catalog.byPath' mapping")
+
+        shared_components = prompt_catalog.get('catalog', {}).get('shared', {}).get('components')
+        if not isinstance(shared_components, dict):
+            raise ValueError("Prompt catalog is missing required 'catalog.shared.components' mapping")
         
-        if not prompts_root.exists():
-            # Fallback: try relative path from cwd
-            prompts_root = Path('prompts')
-        
-        if not prompts_root.exists():
-            return specs
-        
-        # Scan each domain directory under top-level prompts/
-        for domain_dir in prompts_root.iterdir():
-            if not domain_dir.is_dir():
+        component_sources: Dict[str, list] = {}
+
+        # Scan domain prompt entries in catalog.byPath (prompts/<domain>/*.txt)
+        for relative_path, content in sorted(by_path.items(), key=lambda item: item[0]):
+            if not isinstance(relative_path, str):
+                continue
+            if not relative_path.startswith('prompts/') or not relative_path.endswith('.txt'):
                 continue
 
-            # Skip non-domain prompt folders
-            if domain_dir.name in {'core', 'quality', 'shared', 'profiles', 'voice', 'evaluation', 'research'}:
+            parts = relative_path.split('/')
+            if len(parts) != 3:
                 continue
 
-            # Scan for .txt files directly in prompts/<domain>/
-            for prompt_file in domain_dir.glob('*.txt'):
-                component_type = prompt_file.stem  # filename without .txt
-                
-                # Skip system/utility prompts (shouldn't be any, but just in case)
-                if component_type.startswith('_'):
-                    continue
-                
-                # Store relative path from workspace root
-                relative_path = f'prompts/{domain_dir.name}/{prompt_file.name}'
-                
+            domain_name = parts[1]
+            if domain_name not in {'materials', 'settings', 'contaminants', 'compounds', 'applications'}:
+                continue
+
+            component_type = Path(parts[2]).stem
+            if component_type.startswith('_'):
+                continue
+
+            if not isinstance(content, str):
+                raise ValueError(f"Prompt catalog byPath entry is not a string: {relative_path}")
+
+            component_sources.setdefault(component_type, []).append({
+                'domain': domain_name,
+                'relative_path': relative_path,
+                'content': content.strip(),
+            })
+
+        # Resolve discovered sources per component.
+        # If a component exists in multiple domains:
+        # - identical content => route to shared/components/<component>.txt
+        # - divergent content => fail-fast (domain-agnostic registry cannot choose safely)
+        for component_type, sources in sorted(component_sources.items(), key=lambda item: item[0]):
+            if len(sources) == 1:
                 specs[component_type] = {
-                    'end_punctuation': True,  # Default, can be overridden in config
-                    'prompt_template_file': relative_path
+                    'end_punctuation': True,
+                    'prompt_template_file': sources[0]['relative_path']
                 }
+                continue
+
+            unique_contents = {source['content'] for source in sources}
+            if len(unique_contents) == 1:
+                shared_relative_path = f'prompts/shared/components/{component_type}.txt'
+                shared_content = shared_components.get(component_type)
+                if not isinstance(shared_content, str) or not shared_content.strip():
+                    raise FileNotFoundError(
+                        f"Centralized shared prompt not found for '{component_type}' in prompt catalog. "
+                        "Populate catalog.shared.components.<component> for identical multi-domain templates."
+                    )
+
+                specs[component_type] = {
+                    'end_punctuation': True,
+                    'prompt_template_file': shared_relative_path
+                }
+                continue
+
+            variant_paths = ', '.join(source['relative_path'] for source in sources)
+            raise ValueError(
+                f"Ambiguous prompt templates for component '{component_type}' across domains: {variant_paths}. "
+                "Either unify content or introduce explicit domain-aware prompt resolution."
+            )
         
         # ALSO discover schema-based components from section_display_schema.yaml
         schema_specs = cls._discover_schema_components()
@@ -328,8 +247,8 @@ class ComponentRegistry:
             # Extract component types from sections
             sections = schema.get('sections', {})
             for component_type, section_config in sections.items():
-                # Skip if missing required prompt field
-                if not section_config.get('prompt'):
+                # Skip if missing required prompt reference
+                if not section_config.get('prompt') and not section_config.get('prompt_ref'):
                     continue
                     
                 specs[component_type] = {
@@ -355,14 +274,14 @@ class ComponentRegistry:
     def get_spec(cls, component_type: str) -> ComponentSpec:
         """Get specification for component type.
         
-        Dynamically discovers components from prompts/*.txt files.
-        Loads lengths from config.yaml component_lengths section.
+        Dynamically discovers components from prompt catalog YAML.
+        Loads lengths from generation/text_field_config.yaml.
         
         Args:
             component_type: Component identifier (must match prompts/{type}.txt)
             
         Returns:
-            ComponentSpec object with lengths from config and prompt template file
+            ComponentSpec object with lengths from centralized text field config and prompt template file
             
         Raises:
             KeyError: If component type not found in prompts/ or config
@@ -375,7 +294,7 @@ class ComponentRegistry:
             available = ', '.join(spec_defs.keys())
             raise KeyError(
                 f"Component type '{component_type}' not found. "
-                f"Create prompts/{component_type}.txt to define it. "
+                f"Add it to prompt catalog domain entries to define it. "
                 f"Available: {available}"
             )
         
@@ -385,12 +304,10 @@ class ComponentRegistry:
             schema_word_count = spec_def.get('wordCount', 100)
             lengths = {
                 'default': schema_word_count,
-                'min': max(int(schema_word_count * 0.8), schema_word_count - 20),
-                'max': min(int(schema_word_count * 1.2), schema_word_count + 20),
                 'extraction_strategy': 'raw'  # Default for schema components
             }
         else:
-            # Regular components use config.yaml
+            # Regular components use centralized text field config
             lengths = cls._get_component_lengths(canonical_component_type)
         
         # Get extraction strategy from config (default to 'raw')
@@ -402,8 +319,6 @@ class ComponentRegistry:
         return ComponentSpec(
             name=canonical_component_type,
             default_length=lengths['default'],
-            min_length=lengths['min'],
-            max_length=lengths['max'],
             end_punctuation=spec_def['end_punctuation'],
             prompt_template_file=spec_def.get('prompt_template_file'),
             extraction_strategy=extraction_strategy
@@ -413,7 +328,7 @@ class ComponentRegistry:
     def register(cls, spec: ComponentSpec):
         """Register new component type dynamically.
         
-        Note: Lengths still come from config.yaml. This only registers
+        Note: Lengths still come from generation/text_field_config.yaml. This only registers
         the component definition for runtime discovery.
         
         Args:
@@ -429,20 +344,26 @@ class ComponentRegistry:
     
     @classmethod
     def list_types(cls) -> list:
-        """Get list of all available component types (discovered from prompts/)."""
+        """Get list of all available component types (discovered from prompt catalog)."""
         return list(cls._get_spec_definitions().keys())
     
     @classmethod
     def get_default_length(cls, component_type: str) -> int:
-        """Get default length for component type from config"""
+        """Get default length for component type from centralized text field config."""
         lengths = cls._get_component_lengths(component_type)
         return lengths['default']
     
     @classmethod
     def set_config_path(cls, path: str):
-        """Set custom config path (useful for testing)"""
-        cls._config_path = Path(path)
-        cls._config = None  # Force reload
+        """Set custom text field config path (useful for testing)."""
+        cls._text_field_config = None  # Force reload
+        custom_path = Path(path)
+        if not custom_path.exists():
+            raise FileNotFoundError(f"Custom text field config not found: {path}")
+        with open(custom_path, 'r', encoding='utf-8') as file_handle:
+            cls._text_field_config = yaml.safe_load(file_handle)
+        if not isinstance(cls._text_field_config, dict):
+            raise ValueError("Custom text field config must contain a YAML dictionary")
 
 
 @dataclass

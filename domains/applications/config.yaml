@@ -6,23 +6,17 @@ data_path: "data/applications/Applications.yaml"
 data_root_key: "applications"
 frontmatter_pattern: "{slug}.yaml"
 
-# Component lengths (word count targets)
-component_lengths:
-  pageDescription:
-    default: 80
-    min: 50
-    max: 130
-    extraction_strategy: raw
-  micro:
-    default: 60
-    min: 30
-    max: 120
-    extraction_strategy: raw
-  faq:
-    default: 100
-    min: 80
-    max: 150
-    extraction_strategy: json_list
+frontmatter:
+  directory: "../z-beam/frontmatter/applications"
+  filename_pattern: "{slug}.yaml"
+
+# DomainAdapter contract (required for generation/core/adapters/domain_adapter.py)
+data_adapter:
+  data_path: "data/applications/Applications.yaml"
+  data_root_key: "applications"
+  author_key: "author.id"
+  context_keys:
+    - "category"
 
 # Validation rules (inherits shared defaults)
 validation:

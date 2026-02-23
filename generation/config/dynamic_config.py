@@ -23,7 +23,10 @@ Usage:
 """
 
 import math
+from pathlib import Path
 from typing import Any, Dict, Optional
+
+import yaml
 
 from generation.config.config_loader import get_config
 
@@ -47,8 +50,46 @@ class DynamicConfig:
             base_config: Optional ProcessingConfig to use (for author-specific configs)
         """
         self.base_config = base_config if base_config is not None else get_config()
-        self.use_modular = self.base_config.config.get('use_modular_parameters', False)
+        if 'use_modular_parameters' not in self.base_config.config:
+            raise KeyError("Missing required config key: use_modular_parameters")
+        use_modular = self.base_config.config['use_modular_parameters']
+        if not isinstance(use_modular, bool):
+            raise TypeError(
+                f"Invalid config type for use_modular_parameters: expected bool, got {type(use_modular).__name__}"
+            )
+        self.use_modular = use_modular
         self._parameter_instances: Optional[Dict[str, Any]] = None  # Changed from BaseParameter to Any
+
+    def _get_randomization_factors(self) -> tuple[float, float]:
+        """Load centralized randomization factors from generation/text_field_config.yaml."""
+        config_path = Path(__file__).parent.parent / "text_field_config.yaml"
+        if not config_path.exists():
+            raise FileNotFoundError(
+                f"Text field config not found: {config_path}. "
+                "Cannot resolve randomization_range without centralized config."
+            )
+
+        with open(config_path, 'r', encoding='utf-8') as file_handle:
+            text_cfg = yaml.safe_load(file_handle)
+        if not isinstance(text_cfg, dict):
+            raise ValueError("generation/text_field_config.yaml must contain a YAML dictionary")
+
+        randomization_cfg = text_cfg.get('randomization_range')
+        if not isinstance(randomization_cfg, dict):
+            raise ValueError(
+                "Missing required config block: randomization_range in generation/text_field_config.yaml"
+            )
+
+        min_factor = randomization_cfg.get('min_factor')
+        max_factor = randomization_cfg.get('max_factor')
+        if not isinstance(min_factor, (int, float)) or not isinstance(max_factor, (int, float)):
+            raise TypeError("randomization_range.min_factor and max_factor must be numeric")
+        if min_factor <= 0 or max_factor <= 0 or min_factor > max_factor:
+            raise ValueError(
+                f"Invalid randomization_range: min_factor={min_factor}, max_factor={max_factor}"
+            )
+
+        return float(min_factor), float(max_factor)
     
     # =========================================================================
     # API GENERATION PARAMETERS (Dynamic)
@@ -75,9 +116,9 @@ class DynamicConfig:
         Returns:
             Temperature between 0.1 and 1.1 depending on component type
         """
-        # Research operations need low temperature for factual accuracy
-        if component_type == 'research':
-            return 0.3  # Low temp for scientific precision
+        override = self._get_component_temperature_override(component_type)
+        if override is not None:
+            return override
         
         imperfection = self.base_config.get_imperfection_tolerance()  # 0-100
         rhythm = self.base_config.get_sentence_rhythm_variation()  # 0-100
@@ -99,6 +140,31 @@ class DynamicConfig:
         
         # Ensure minimum of 0.7 for human-like content, max of 1.1
         return max(0.7, min(1.1, calculated_temp))
+
+    def _get_component_temperature_override(self, component_type: str) -> Optional[float]:
+        dynamic_calculations = self.base_config.config.get('dynamic_calculations')
+        if not isinstance(dynamic_calculations, dict):
+            raise KeyError("Missing required config section: dynamic_calculations")
+
+        overrides = dynamic_calculations.get('component_temperature_overrides')
+        if overrides is None:
+            raise KeyError(
+                "Missing required config section: dynamic_calculations.component_temperature_overrides"
+            )
+        if not isinstance(overrides, dict):
+            raise TypeError(
+                "dynamic_calculations.component_temperature_overrides must be a dictionary"
+            )
+
+        if component_type not in overrides:
+            return None
+
+        value = overrides[component_type]
+        if not isinstance(value, (int, float)):
+            raise TypeError(
+                f"Temperature override for '{component_type}' must be numeric"
+            )
+        return float(value)
     
     def calculate_penalties(self, component_type: str = 'default') -> Dict[str, float]:
         """
@@ -398,24 +464,23 @@ class DynamicConfig:
     
     def calculate_target_length_range(self, component_type: str) -> Dict[str, int]:
         """
-        Calculate acceptable length range based on length_variation slider.
+        Calculate acceptable length range based on centralized randomization multipliers.
         
         Returns:
             Dict with min, target, max word counts
         """
-        length_variation = self.base_config.get_length_variation_range()  # 0-100
         target = self.base_config.get_component_length(component_type)
-        
-        # Calculate variation percentage (10% to 60%)
-        variation_pct = 0.10 + (length_variation / 100.0 * 0.50)
-        
-        variation_words = int(target * variation_pct)
+        min_factor, max_factor = self._get_randomization_factors()
+
+        min_words = max(1, int(target * min_factor))
+        max_words = max(min_words, int(target * max_factor))
+        variation_pct = max(abs(min_factor - 1.0), abs(max_factor - 1.0)) * 100.0
         
         return {
-            'min': target - variation_words,
+            'min': min_words,
             'target': target,
-            'max': target + variation_words,
-            'variation_pct': round(variation_pct * 100, 1)
+            'max': max_words,
+            'variation_pct': round(variation_pct, 1)
         }
     
     # =========================================================================

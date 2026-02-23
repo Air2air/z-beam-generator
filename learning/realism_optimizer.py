@@ -101,6 +101,18 @@ class RealismOptimizer:
             return []
         
         logger.info(f"Analyzing {len(tendencies)} AI tendencies: {', '.join(tendencies)}")
+
+        required_params = {
+            param
+            for tendency in tendencies
+            if tendency in self.TENDENCY_MAPPINGS
+            for param, _, _, _ in self.TENDENCY_MAPPINGS[tendency]
+        }
+        missing_params = sorted([param for param in required_params if param not in current_params])
+        if missing_params:
+            raise KeyError(
+                f"Current parameters missing required keys for AI tendency analysis: {', '.join(missing_params)}"
+            )
         
         # Aggregate adjustments (may have multiple tendencies affecting same parameter)
         param_adjustments: Dict[str, Dict] = {}
@@ -133,7 +145,7 @@ class RealismOptimizer:
         # Convert to RealismAdjustment objects
         adjustments = []
         for param, adjustment_info in param_adjustments.items():
-            current_value = current_params.get(param, 0.5)  # Default to 0.5 if not found
+            current_value = current_params[param]
             
             # Calculate suggested value
             if adjustment_info['direction'] == 'increase':
@@ -230,7 +242,7 @@ class RealismOptimizer:
     def should_retry(
         self,
         winston_score: float,
-        realism_score: Optional[float],
+        realism_score: float,
         combined_threshold: float = 70.0
     ) -> Tuple[bool, str]:
         """
@@ -238,17 +250,14 @@ class RealismOptimizer:
         
         Args:
             winston_score: Winston AI detection score
-            realism_score: Realism score (None if not available)
+            realism_score: Realism score (required)
             combined_threshold: Minimum acceptable combined score
             
         Returns:
             (should_retry, reason)
         """
         if realism_score is None:
-            # Fallback to Winston-only evaluation
-            if winston_score < combined_threshold:
-                return True, f"Winston score {winston_score:.1f} below threshold {combined_threshold:.1f}"
-            return False, "Winston score acceptable (no realism data)"
+            raise ValueError("realism_score is required for retry decision")
         
         combined = self.calculate_combined_score(winston_score, realism_score)
         
@@ -266,8 +275,14 @@ class RealismOptimizer:
             return "No adjustments made yet"
         
         latest = self.adjustment_history[-1]
+        latest_realism_score = latest['realism_score']
+        realism_display = (
+            f"{latest_realism_score:.1f}/10"
+            if latest_realism_score is not None
+            else "N/A"
+        )
         lines = [
-            f"Latest Adjustment (for realism score {latest['realism_score']:.1f}/10):",
+            f"Latest Adjustment (for realism score {realism_display}):",
             f"  AI Tendencies: {', '.join(latest['ai_tendencies'])}",
             "  Parameter Changes:"
         ]

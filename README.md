@@ -172,7 +172,7 @@ python3 run.py --batch-test
 - **Quick Checks**: ~20ms integrity validation with 5 critical areas
 - **Fail-Fast Validation**: Config mapping, parameter propagation, API health
 - **Auto-Enforcement**: Runs before every generation
-- **Docs**: [processing/integrity/README.md](processing/integrity/README.md)
+- **Docs**: [generation/integrity/README.md](generation/integrity/README.md)
 
 **📜 Full Changelog**: See [docs/archive/2025-11/](docs/archive/2025-11/) for detailed reports
 
@@ -349,7 +349,7 @@ See LICENSE file for details.
 - **🚀 CLI FLAGS**: `--integrity-check` for standalone, `--skip-integrity-check` to bypass
 - **📊 RESULTS**: 4 passed, 1 warning (penalties not in bundle - expected with legacy system)
 - **🧪 TESTING**: 15+ unit tests + 3 integration tests covering all functionality
-- **📚 DOCS**: Complete guide at `processing/integrity/README.md`
+- **📚 DOCS**: Complete guide at `generation/integrity/README.md`
 
 ### November 15, 2025: Winston AI Learning System ✅ **NEW**
 - **🤖 WINSTON PRIMARY**: Winston AI v2 as primary detector (60% weight in composite scoring, 69%+ human threshold)
@@ -369,7 +369,7 @@ See LICENSE file for details.
 - **🤖 AI DETECTION**: Ensemble detection (pattern + optional ML) with < 30% target
 - **📊 VALIDATION**: Automatic readability scoring (Flesch-Kincaid)
 - **✅ BENEFITS**: No code duplication, single-pass generation, extensible
-- **📚 DOCS**: Complete guides at `processing/QUICKSTART.md` and `docs/architecture/PROCESSING_PIPELINE.md`
+- **📚 DOCS**: Complete guides at `docs/01-getting-started/processing-quickstart.md` and `docs/02-architecture/processing-pipeline.md`
 
 ### November 4, 2025: Subcategory Reconciliation & Bug Fix ✅
 - **🔧 RECONCILED**: 7 specialty metals updated (Cobalt, Gallium, Hastelloy, Inconel, Indium, Magnesium, Nickel)

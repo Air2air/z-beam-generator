@@ -63,11 +63,11 @@ Note: This flow describes component template discovery (`ComponentRegistry`) for
    ↓
 2. ComponentRegistry._discover_components()
    ↓
-3. Scans prompts/{domain}/*.txt files
+3. Reads prompt catalog `catalog.byPath` entries for `prompts/{domain}/*.txt`
    ↓
-4. For each .txt file (excluding system prompts):
-   - Component type = filename without .txt
-    - Prompt file = prompts/{domain}/{filename}.txt
+4. For each catalog entry (excluding system prompts):
+    - Component type = filename without .txt
+     - Prompt key = prompts/{domain}/{filename}.txt
    ↓
 5. Loads lengths from domains/{domain}/config.yaml
    ↓
@@ -78,16 +78,15 @@ Note: This flow describes component template discovery (`ComponentRegistry`) for
    - punctuation: from config or default
 ```
 
-### File Structure
+### File Structure (Catalog Keys)
 
 ```
-z-beam-generator/
-├── prompts/
-│   ├── materials/
-│   │   ├── micro.txt          # Defines 'micro' component
-│   │   ├── description.txt    # Defines 'description' component
-│   │   ├── faq.txt            # Defines 'faq' component
-│   │   └── {custom}.txt       # Add any new component here
+prompts/registry/prompt_catalog.yaml
+└── catalog.byPath:
+    ├── prompts/materials/micro.txt          # Defines 'micro' component
+    ├── prompts/materials/description.txt    # Defines 'description' component
+    ├── prompts/materials/faq.txt            # Defines 'faq' component
+    └── prompts/materials/{custom}.txt       # Add any new component here
 │   └── contaminants/
 │       └── description.txt    # Contaminant-specific
 │
@@ -182,7 +181,7 @@ class ComponentGenerator:
 
 ### Step 1: Create Prompt File
 
-Create `prompts/{domain}/{component_name}.txt`:
+Create a prompt catalog entry `prompts/{domain}/{component_name}.txt` in `prompts/registry/prompt_catalog.yaml`:
 
 ```txt
 You are generating a {component_name} for laser cleaning materials.
@@ -272,7 +271,7 @@ component_lengths:
 ```
 Material Name + Component Type → QualityEvaluatedGenerator
                                         ↓
-                        Load prompt: prompts/{domain}/{component}.txt
+                        Load prompt (prompt catalog entry: prompts/{domain}/{component}.txt)
                                         ↓
                         Load persona: shared/voice/profiles/{author}.yaml
                                         ↓

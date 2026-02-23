@@ -1,7 +1,7 @@
 """
 Processing Pipeline Tests
 
-Run with: pytest processing/tests/ -v
+Run with: pytest tests/ -k processing -v
 
 Tests cover:
 - ComponentRegistry

@@ -97,7 +97,7 @@ def handle_generation(
         print(f"🤖 Generating AI-powered {component_type}...")
         print(f"   Component: {component_type}")
         print(f"   Domain: {domain}")
-        print(f"   Target: {spec.default_length} words (range: {spec.min_length}-{spec.max_length})")
+        print(f"   Target Base: {spec.default_length} words (multiplier-driven variation)")
         print()
         
         generation_succeeded = True
@@ -356,8 +356,12 @@ def _run_winston_detection(content, identifier, component_type, api_client):
         from shared.text.validation.constants import ValidationConstants
         
         config = get_config()
-        db_path = config.config.get('winston_feedback_db_path')
-        feedback_db = WinstonFeedbackDatabase(db_path) if db_path else None
+        if 'winston_feedback_db_path' not in config.config:
+            raise KeyError("Missing required config key: winston_feedback_db_path")
+        db_path = config.config['winston_feedback_db_path']
+        if not db_path:
+            raise ValueError("winston_feedback_db_path must be configured and non-empty")
+        feedback_db = WinstonFeedbackDatabase(db_path)
         
         # Create Winston-specific API client (not DeepSeek)
         winston_client = APIClientFactory.create_client(provider="winston")
@@ -405,23 +409,11 @@ def _run_winston_detection(content, identifier, component_type, api_client):
         print()
         
     except Exception as e:
-        # Winston detection optional for short content (micros often <300 chars)
-        error_msg = str(e)
-        if 'Text too short' in error_msg or 'not configured' in error_msg:
-            print("\n⚠️  WARNING: Winston detection skipped")
-            print(f"   Reason: {e}")
-            print("\n   ℹ️  Content saved but not validated by Winston API.")
-            print("   Subjective evaluation (Grok) was completed successfully.")
-            print("\n   To enable Winston: Configure API in .env file")
-            print("   See: setup/API_CONFIGURATION.md")
-            print()
-        else:
-            # Other errors should still fail-fast
-            print("\n❌ CRITICAL ERROR: Winston detection failed")
-            print(f"   Error: {e}")
-            print("\n   Fix: Configure Winston API in .env file")
-            print("   See: setup/API_CONFIGURATION.md")
-            raise RuntimeError(f"Winston API detection required but failed: {e}")
+        print("\n❌ CRITICAL ERROR: Winston detection failed")
+        print(f"   Error: {e}")
+        print("\n   Fix: Configure Winston API in .env file")
+        print("   See: setup/API_CONFIGURATION.md")
+        raise RuntimeError(f"Winston API detection required but failed: {e}")
 
 
 def _update_sweet_spot_if_needed(identifier, component_type):
@@ -435,14 +427,28 @@ def _update_sweet_spot_if_needed(identifier, component_type):
     from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
     
     config = get_config()
-    db_path = config.config.get('winston_feedback_db_path')
-    feedback_db = WinstonFeedbackDatabase(db_path) if db_path else None
+    if 'winston_feedback_db_path' not in config.config:
+        raise KeyError("Missing required config key: winston_feedback_db_path")
+    db_path = config.config['winston_feedback_db_path']
+    if not db_path:
+        raise ValueError("winston_feedback_db_path must be configured and non-empty")
+    sweet_spot_min_samples = int(
+        config.get_required_config('constants.sweet_spot_analyzer.min_samples')
+    )
+    sweet_spot_success_threshold = float(
+        config.get_required_config('constants.sweet_spot_analyzer.success_threshold')
+    )
+    feedback_db = WinstonFeedbackDatabase(db_path)
     
-    if feedback_db and feedback_db.should_update_sweet_spot('*', '*', min_samples=3):
+    if feedback_db and feedback_db.should_update_sweet_spot('*', '*', min_samples=sweet_spot_min_samples):
         print("📊 Updating generic sweet spot recommendations...")
         try:
             from learning.sweet_spot_analyzer import SweetSpotAnalyzer
-            analyzer = SweetSpotAnalyzer(db_path, min_samples=3, success_threshold=0.80)
+            analyzer = SweetSpotAnalyzer(
+                db_path,
+                min_samples=sweet_spot_min_samples,
+                success_threshold=sweet_spot_success_threshold,
+            )
             results = analyzer.get_sweet_spot_table(save_to_db=True)
             
             if results['sweet_spots']:

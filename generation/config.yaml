@@ -1,6 +1,21 @@
 # Generation Configuration
 # Single-pass production generation
 
+# Core Intensity Sliders (1-10 scale)
+author_voice_intensity: 5
+personality_intensity: 5
+engagement_style: 5
+emotional_intensity: 5
+technical_language_intensity: 5
+context_specificity: 5
+sentence_rhythm_variation: 5
+imperfection_tolerance: 5
+structural_predictability: 5
+ai_avoidance_intensity: 5
+humanness_intensity: 5
+human_score_learning_target: 50
+use_modular_parameters: false
+
 # Quality Gate Settings (used for post-generation analysis)
 # Thresholds for logging and learning - generation always succeeds
 quality_gates:
@@ -12,11 +27,163 @@ quality_gates:
   require_zero_ai_tendencies: false      # Allow AI patterns
   adaptive_threshold: true               # Learn from 75th percentile of successful content
 
+# Postprocessing command thresholds and scoring
+postprocess:
+  max_regeneration_attempts: 3
+  quality_threshold: 60
+  min_content_length_chars: 150
+  readability:
+    max_avg_sentence_words: 24
+    max_avg_word_length: 7.5
+  requirements:
+    require_not_ai_like: true
+    require_zero_ai_issues: true
+    require_zero_forbidden_phrases: true
+    min_voice_authenticity_score: 60
+    require_pattern_found: true
+    min_structural_average_score: 50
+    require_readability_pass: true
+    require_cross_item_variation_pass: true
+    require_page_description_clean: true
+  selection_weights:
+    pattern_count_bonus: 20
+    pattern_found_bonus: 10
+    forbidden_phrase_penalty: 50
+    readability_pass_bonus: 8
+    readability_fail_penalty: 12
+    readability_violation_penalty: 5
+    cross_item_pass_bonus: 6
+    cross_item_fail_penalty: 20
+    cross_item_near_duplicate_penalty: 8
+
+# Centralized constants for generation/postprocessing/shared services
+constants:
+  structural_variation:
+    cross_item_opening_weight: 0.35
+    cross_item_starter_weight: 0.25
+    cross_item_trigram_weight: 0.25
+    cross_item_length_weight: 0.15
+    cross_item_near_duplicate_threshold: 0.80
+    author_voice_preservation_threshold: 0.6
+
+  image_prompt_optimizer:
+    imagen_4_char_limit: 4096
+    imagen_optimal_target: 2400
+    imagen_warning_threshold: 3000
+
+  api_helper:
+    max_tokens: 150
+    temperature: 0.7
+    frequency_penalty: 0.0
+    presence_penalty: 0.0
+    max_retries: 3
+
+  batch_generator:
+    tokens_per_material: 500
+
+  research:
+    faq_topic_max_tokens: 200
+    content_application_max_tokens: 2500
+    content_contaminant_max_tokens: 2000
+    content_thesaurus_max_tokens: 1500
+    ai_research_property_max_tokens: 1000
+    ai_research_verification_confidence_threshold: 0.7
+
+  voice_post_processor:
+    temperature: 0.4
+    batch_faq_max_tokens: 6000
+    subtitle_transform_max_tokens: 50
+
+  laser_properties_researcher:
+    high_confidence_threshold: 0.85
+    acceptable_confidence_threshold: 0.70
+    optical_max_tokens: 800
+    thermal_max_tokens: 900
+    removal_max_tokens: 1000
+    parameters_max_tokens: 900
+    safety_max_tokens: 1000
+    selectivity_max_tokens: 1200
+
+  materials_property_manager:
+    yaml_confidence_threshold: 0.85
+
+  sweet_spot_analyzer:
+    min_samples: 3
+    success_threshold: 0.80
+
+  subjective_evaluator:
+    quality_threshold: 7.0
+    evaluation_temperature: 0.2
+    request_max_tokens: 600
+
+  data_generators:
+    context:
+      temperature: 0.3
+      max_tokens: 100
+    power_intensity:
+      temperature: 0.3
+      max_tokens: 100
+
+  backfill_generators:
+    settings_description:
+      temperature: 0.7
+      max_tokens: 500
+      request_delay_seconds: 0.5
+    settings_recommendations:
+      temperature: 0.7
+      max_tokens: 800
+      request_delay_seconds: 0.5
+    contaminant_description:
+      temperature: 0.7
+      max_tokens: 500
+      request_delay_seconds: 0.5
+    contaminant_appearance:
+      temperature: 0.6
+      max_tokens: 400
+      request_delay_seconds: 0.5
+    contaminant_compounds:
+      temperature: 0.5
+      max_tokens: 600
+      request_delay_seconds: 0.5
+    contaminant_context:
+      temperature: 0.5
+      max_tokens: 400
+      request_delay_seconds: 0.5
+
+  pipeline_process_service:
+    environmental_impact_description_max_tokens: 150
+    quantified_benefits_max_tokens: 80
+    outcome_metric_description_max_tokens: 150
+
 # Evaluation Settings
 evaluation:
   temperature: 0.2                       # Low temperature for consistent evaluation
   model: "grok-beta"                     # Evaluation model (Grok for subjective)
   verbose: true                          # Print detailed evaluation output
+
+# Detection settings (required by ProcessingConfig)
+detection:
+  ai_threshold: 30
+  strict_mode_threshold: 25
+  high_confidence_threshold: 70
+  medium_confidence_threshold: 50
+  regenerate_threshold: 70
+  revise_threshold: 50
+  word_frequency_threshold: 3
+  word_frequency_critical: 5
+  structural_repetition_threshold: 2
+  use_ml_model: false
+
+# Readability settings (required by ProcessingConfig)
+readability:
+  min_flesch_score: 60.0
+  max_flesch_score: 100.0
+
+# API settings (required by ProcessingConfig)
+api:
+  base_temperature: 0.8
+  max_attempts: 5
+  retry_temperature_increase: 0.1
 
 # Base Voice Parameters (Before Learning/Adjustment)
 # These are the starting baseline - RealismOptimizer adjusts during retry
@@ -29,6 +196,227 @@ voice_parameters:
   trait_frequency: 0.5                   # Base: moderate personality (0.0-1.0)
   colloquialism_frequency: 0.3           # Base: low casual language (0.0-1.0)
   technical_intensity: 1                 # Base: minimal technical detail (1-3 scale) - reduced jargon
+
+# Centralized domain behavior (no domain-specific branching in code)
+domain_generation:
+  materials:
+    seo_components:
+      - "page_title"
+      - "meta_description"
+    length_control:
+      skip_components:
+        - "pageDescription"
+    normalize_components:
+      - "pageDescription"
+    field_mappings:
+      faq: "operational.expert_answers"
+      pageTitle: "page_title"
+    author_resolution:
+      strategy: "direct"
+  contaminants:
+    seo_components:
+      - "page_title"
+      - "meta_description"
+    length_control:
+      skip_components:
+        - "pageDescription"
+    normalize_components:
+      - "pageDescription"
+    field_mappings:
+      pageTitle: "page_title"
+    author_resolution:
+      strategy: "direct"
+  settings:
+    seo_components:
+      - "page_title"
+      - "meta_description"
+    length_control:
+      skip_components:
+        - "pageDescription"
+    normalize_components:
+      - "pageDescription"
+    field_mappings:
+      pageTitle: "page_title"
+    author_resolution:
+      strategy: "direct"
+  compounds:
+    seo_components:
+      - "page_title"
+      - "meta_description"
+    length_control:
+      skip_components:
+        - "pageDescription"
+    normalize_components:
+      - "pageDescription"
+    field_mappings:
+      pageTitle: "page_title"
+    author_resolution:
+      strategy: "direct"
+  applications:
+    seo_components:
+      - "page_title"
+      - "meta_description"
+    length_control:
+      skip_components:
+        - "pageDescription"
+    normalize_components:
+      - "pageDescription"
+    field_mappings:
+      pageTitle: "page_title"
+    author_resolution:
+      strategy: "direct"
+
+field_router:
+  field_types:
+    materials:
+      text:
+        - "pageDescription"
+        - "pageTitle"
+        - "micro"
+        - "faq"
+        - "contaminatedBy"
+        - "relatedMaterials"
+        - "industryApplications"
+        - "commonChallenges"
+        - "removalMethods"
+        - "preventionStrategies"
+        - "materialCharacteristics"
+        - "laserMaterialInteraction"
+        - "physicalProperties"
+        - "appearanceVariations"
+        - "environmentalImpact"
+      data:
+        - "power_intensity"
+        - "context"
+    contaminants:
+      text:
+        - "pageDescription"
+        - "pageTitle"
+        - "micro"
+        - "compounds"
+        - "appearance"
+        - "producedByMaterials"
+        - "relatedContaminants"
+        - "detectionMethods"
+        - "removalMethods"
+        - "preventionStrategies"
+        - "healthEffects"
+        - "exposureLimits"
+        - "ppeRequirements"
+        - "emergencyResponse"
+        - "continuousMonitoring"
+      data:
+        - "context"
+    settings:
+      text:
+        - "pageDescription"
+        - "pageTitle"
+        - "component_summary"
+        - "recommendations"
+        - "challenges"
+        - "industryApplications"
+        - "commonChallenges"
+        - "operationalConsiderations"
+      data: []
+    compounds:
+      text:
+        - "pageDescription"
+        - "pageTitle"
+        - "health_effects"
+        - "exposure_guidelines"
+        - "detection_methods"
+        - "first_aid"
+        - "ppe_requirements"
+        - "regulatory_standards"
+        - "producedFromContaminants"
+        - "relatedCompounds"
+        - "healthEffects"
+        - "exposureLimits"
+        - "ppeRequirements"
+        - "emergencyResponse"
+        - "storageRequirements"
+        - "regulatoryClassification"
+        - "reactivity"
+      data: []
+    applications:
+      text:
+        - "pageTitle"
+        - "pageDescription"
+      data: []
+  field_aliases:
+    materials:
+      page_description: "pageDescription"
+      description: "pageDescription"
+      page_title: "pageTitle"
+    contaminants:
+      page_description: "pageDescription"
+      description: "pageDescription"
+      page_title: "pageTitle"
+    settings:
+      page_description: "pageDescription"
+      description: "pageDescription"
+      page_title: "pageTitle"
+    compounds:
+      page_description: "pageDescription"
+      description: "pageDescription"
+      page_title: "pageTitle"
+    applications:
+      page_description: "pageDescription"
+      description: "pageDescription"
+      page_title: "pageTitle"
+  data_generators:
+    materials:
+      power_intensity: "generation.data.power_intensity_generator.PowerIntensityGenerator"
+      context: "generation.data.context_generator.ContextGenerator"
+    contaminants:
+      context: "generation.data.context_generator.ContextGenerator"
+    settings: {}
+    compounds: {}
+    applications: {}
+
+data_generators:
+  context:
+    prompt_templates:
+      materials: |
+        Research where {display_name} is typically used and cleaned with lasers.
+
+        Analyze:
+        1. Indoor vs outdoor usage patterns
+        2. Industrial settings and applications
+        3. Marine/coastal exposure likelihood
+
+        Provide ONLY a structured assessment in this format:
+        indoor: [high/medium/low]
+        outdoor: [high/medium/low]
+        industrial: [high/medium/low]
+        marine: [high/medium/low]
+
+        Respond with ONLY the four lines above, no additional text.
+      contaminants: |
+        Research where {display_name} typically forms and which environments it is most common in.
+
+        Analyze:
+        1. Indoor vs outdoor occurrence
+        2. Industrial settings prevalence
+        3. Marine/coastal exposure patterns
+
+        Provide ONLY a structured assessment:
+        indoor: [high/medium/low/none]
+        outdoor: [high/medium/low/none]
+        industrial: [high/medium/low/none]
+        marine: [high/medium/low/none]
+
+        Respond with ONLY the four lines above, no additional text.
+    allowed_values:
+      materials:
+        - "high"
+        - "medium"
+        - "low"
+      contaminants:
+        - "high"
+        - "medium"
+        - "low"
+        - "none"
 
 # (simple_mode section REMOVED - always production mode)
 
@@ -186,8 +574,16 @@ component_extraction:
   faq:
     extraction_strategy: json_list      # Parse as JSON array
 
-# Component Token Targets - DEPRECATED (Dec 29, 2025)
-# Word counts now in prompt files. See docs/08-development/WORD_COUNT_IN_PROMPTS_POLICY.md
+# Data sources (required by ProcessingConfig)
+data_sources:
+  materials_yaml: data/materials/Materials.yaml
+  categories_yaml: data/materials/Categories.yaml
+
+# Output settings (required by ProcessingConfig)
+output:
+  frontmatter_dir: ../z-beam/frontmatter
+  backup_dir: output/backups/frontmatter
+  create_backup: true
 
 # Domain Configuration (Consolidated from domains/*/config.yaml - Jan 7, 2026)
 # Defines data locations and frontmatter naming for each domain
@@ -215,6 +611,8 @@ domains:
 # Dynamic Calculation Parameters
 # Zero hardcoded values policy: All calculation factors configured here
 dynamic_calculations:
+  component_temperature_overrides:
+    research: 0.3
   # Completion detection (prevent truncation)
   completion:
     incomplete_patterns:

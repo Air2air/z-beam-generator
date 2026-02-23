@@ -110,6 +110,26 @@ class DomainAssociationsValidator:
         if settings_file.exists():
             with open(settings_file, 'r', encoding='utf-8') as f:
                 self.settings_data = yaml.safe_load(f)
+
+    @staticmethod
+    def _require_dict(container: Dict, key: str, context: str) -> Dict:
+        """Require a dictionary key and validate dictionary type."""
+        if key not in container:
+            raise ValueError(f"{context} missing required key '{key}'")
+        value = container[key]
+        if not isinstance(value, dict):
+            raise ValueError(f"{context}.{key} must be a dictionary")
+        return value
+
+    @staticmethod
+    def _require_list(container: Dict, key: str, context: str) -> List:
+        """Require a list key and validate list type."""
+        if key not in container:
+            raise ValueError(f"{context} missing required key '{key}'")
+        value = container[key]
+        if not isinstance(value, list):
+            raise ValueError(f"{context}.{key} must be a list")
+        return value
     
     def _get_valid_material_ids(self) -> Set[str]:
         """Get set of valid material IDs"""
@@ -117,7 +137,9 @@ class DomainAssociationsValidator:
             if not self.materials_data:
                 self._valid_material_ids = set()
             else:
-                materials = self.materials_data.get('materials', {})
+                if 'materials' not in self.materials_data or not isinstance(self.materials_data['materials'], dict):
+                    raise ValueError("Materials.yaml missing required 'materials' dictionary")
+                materials = self.materials_data['materials']
                 # IDs already include -laser-cleaning suffix
                 self._valid_material_ids = set(materials.keys())
         return self._valid_material_ids
@@ -128,7 +150,9 @@ class DomainAssociationsValidator:
             if not self.contaminants_data:
                 self._valid_contaminant_ids = set()
             else:
-                contaminants = self.contaminants_data.get('contaminants', {})
+                if 'contaminants' not in self.contaminants_data or not isinstance(self.contaminants_data['contaminants'], dict):
+                    raise ValueError("Contaminants.yaml missing required 'contaminants' dictionary")
+                contaminants = self.contaminants_data['contaminants']
                 # IDs already include -contamination suffix
                 self._valid_contaminant_ids = set(contaminants.keys())
         return self._valid_contaminant_ids
@@ -139,7 +163,9 @@ class DomainAssociationsValidator:
             if not self.compounds_data:
                 self._valid_compound_ids = set()
             else:
-                compounds = self.compounds_data.get('compounds', {})
+                if 'compounds' not in self.compounds_data or not isinstance(self.compounds_data['compounds'], dict):
+                    raise ValueError("Compounds.yaml missing required 'compounds' dictionary")
+                compounds = self.compounds_data['compounds']
                 # IDs already include -compound suffix
                 self._valid_compound_ids = set(compounds.keys())
         return self._valid_compound_ids
@@ -150,7 +176,9 @@ class DomainAssociationsValidator:
             if not self.settings_data:
                 self._valid_settings_ids = set()
             else:
-                settings = self.settings_data.get('settings', {})
+                if 'settings' not in self.settings_data or not isinstance(self.settings_data['settings'], dict):
+                    raise ValueError("Settings.yaml missing required 'settings' dictionary")
+                settings = self.settings_data['settings']
                 # IDs already include -settings suffix
                 self._valid_settings_ids = set(settings.keys())
         return self._valid_settings_ids
@@ -266,21 +294,34 @@ class DomainAssociationsValidator:
         """
         if not self.data:
             self.load()
+
+        if not isinstance(self.data, dict):
+            raise ValueError("Associations data must be a dictionary")
+        if not isinstance(self.contaminants_data, dict):
+            raise ValueError("Contaminants data must be a dictionary")
         
         # Strip -laser-cleaning suffix if present (lookup index uses base material ID)
         base_material_id = material_id.replace('-laser-cleaning', '')
         
         # Use lookup index for fast access
-        contaminant_ids = self.data.get('material_to_contaminant', {}).get(base_material_id, [])
+        material_to_contaminant = self._require_dict(self.data, 'material_to_contaminant', 'Associations data')
+        contaminant_ids = material_to_contaminant.get(base_material_id)
+        if contaminant_ids is None:
+            return []
+        if not isinstance(contaminant_ids, list):
+            raise ValueError("material_to_contaminant entries must be lists")
         if not contaminant_ids:
             return []
+
+        associations = self._require_list(self.data, 'associations', 'Associations data')
+        contamination_patterns = self._require_dict(self.contaminants_data, 'contamination_patterns', 'Contaminants data')
         
         results = []
         
         for contaminant_id in contaminant_ids:
             # Find full association data in associations list
             assoc = None
-            for a in self.data.get('associations', []):
+            for a in associations:
                 if (a.get('source_domain') == 'materials' and 
                     a.get('source_id') == base_material_id and
                     a.get('target_domain') == 'contaminants' and
@@ -291,7 +332,15 @@ class DomainAssociationsValidator:
             
             # Get contaminant details from Contaminants.yaml
             full_contaminant_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
-            contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
+            if full_contaminant_id not in contamination_patterns:
+                raise ValueError(
+                    f"Contaminant '{full_contaminant_id}' referenced in associations but missing from Contaminants.yaml"
+                )
+            contaminant_data = contamination_patterns[full_contaminant_id]
+            if not isinstance(contaminant_data, dict):
+                raise ValueError(f"Contaminant '{full_contaminant_id}' data must be a dictionary")
+            if 'name' not in contaminant_data or not isinstance(contaminant_data['name'], str) or not contaminant_data['name'].strip():
+                raise ValueError(f"Contaminant '{full_contaminant_id}' missing required non-empty 'name'")
             
             # Build linkage per FRONTMATTER_GENERATOR_LINKAGE_SPEC.md
             category, subcategory = normalize_taxonomy(contaminant_data)
@@ -302,7 +351,7 @@ class DomainAssociationsValidator:
             
             results.append({
                 'id': full_contaminant_id,
-                'title': contaminant_data.get('name', display_name),
+                'title': contaminant_data['name'],
                 'url': f"/contaminants/{category}/{subcategory}/{full_contaminant_id}",
                 'image': format_image_url('contaminants', slug),
                 'category': category,
@@ -327,14 +376,26 @@ class DomainAssociationsValidator:
         """
         if not self.data:
             self.load()
+
+        if not isinstance(self.data, dict):
+            raise ValueError("Associations data must be a dictionary")
+        if not isinstance(self.materials_data, dict):
+            raise ValueError("Materials data must be a dictionary")
         
         # Ensure full ID with -contamination suffix (lookup index uses full IDs)
         full_contaminant_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
         
         # Use lookup index for fast access (uses full ID with suffix)
-        material_ids = self.data.get('contaminant_to_material', {}).get(full_contaminant_id, [])
+        contaminant_to_material = self._require_dict(self.data, 'contaminant_to_material', 'Associations data')
+        material_ids = contaminant_to_material.get(full_contaminant_id)
+        if material_ids is None:
+            return []
+        if not isinstance(material_ids, list):
+            raise ValueError("contaminant_to_material entries must be lists")
         if not material_ids:
             return []
+
+        materials = self._require_dict(self.materials_data, 'materials', 'Materials data')
         
         results = []
         
@@ -343,7 +404,15 @@ class DomainAssociationsValidator:
             full_material_id = material_id if material_id.endswith('-laser-cleaning') else f"{material_id}-laser-cleaning"
             
             # Get material details from Materials.yaml
-            material_data = self.materials_data.get('materials', {}).get(full_material_id, {})
+            if full_material_id not in materials:
+                raise ValueError(
+                    f"Material '{full_material_id}' referenced in associations but missing from Materials.yaml"
+                )
+            material_data = materials[full_material_id]
+            if not isinstance(material_data, dict):
+                raise ValueError(f"Material '{full_material_id}' data must be a dictionary")
+            if 'name' not in material_data or not isinstance(material_data['name'], str) or not material_data['name'].strip():
+                raise ValueError(f"Material '{full_material_id}' missing required non-empty 'name'")
             
             # Get URL from full_path (single source of truth)
             url = material_data.get('full_path')
@@ -360,7 +429,7 @@ class DomainAssociationsValidator:
             
             results.append({
                 'id': full_material_id,
-                'title': material_data.get('name', display_name),
+                'title': material_data['name'],
                 'url': url,
                 'image': format_image_url('materials', full_material_id),
                 'category': category,
@@ -385,13 +454,19 @@ class DomainAssociationsValidator:
         """
         if not self.data:
             self.load()
+
+        if not isinstance(self.data, dict):
+            raise ValueError("Associations data must be a dictionary")
+        if not isinstance(self.compounds_data, dict):
+            raise ValueError("Compounds data must be a dictionary")
         
         # Strip -contamination suffix if present
         base_contaminant_id = contaminant_id.replace('-contamination', '')
         
         # Find compound associations in associations list
         compound_ids = []
-        for assoc in self.data.get('associations', []):
+        associations = self._require_list(self.data, 'associations', 'Associations data')
+        for assoc in associations:
             if (assoc.get('source_domain') == 'contaminants' and
                 assoc.get('source_id') == base_contaminant_id and
                 assoc.get('target_domain') == 'compounds' and
@@ -406,7 +481,14 @@ class DomainAssociationsValidator:
         for compound_id in compound_ids:
             # Get compound details from Compounds.yaml (uses slug without suffix as key)
             slug_without_suffix = extract_slug(compound_id, 'compound')
-            compound_data = self.compounds_data.get('compounds', {}).get(slug_without_suffix, {})
+            compounds = self._require_dict(self.compounds_data, 'compounds', 'Compounds data')
+            if slug_without_suffix not in compounds:
+                raise ValueError(
+                    f"Compound '{slug_without_suffix}' referenced in associations but missing from Compounds.yaml"
+                )
+            compound_data = compounds[slug_without_suffix]
+            if not isinstance(compound_data, dict):
+                raise ValueError(f"Compound '{slug_without_suffix}' data must be a dictionary")
             
             # Get URL from full_path in compound data (single source of truth)
             url = compound_data.get('full_path')
@@ -445,9 +527,16 @@ class DomainAssociationsValidator:
         """
         if not self.data:
             self.load()
+
+        if not isinstance(self.data, dict):
+            raise ValueError("Associations data must be a dictionary")
+        if not isinstance(self.contaminants_data, dict):
+            raise ValueError("Contaminants data must be a dictionary")
         
-        associations = self.data.get('contaminant_compound_associations', [])
+        associations = self._require_list(self.data, 'contaminant_compound_associations', 'Associations data')
         results = []
+
+        contamination_patterns = self._require_dict(self.contaminants_data, 'contamination_patterns', 'Contaminants data')
         
         for assoc in associations:
             if assoc.get('compound_id') == compound_id:
@@ -455,7 +544,15 @@ class DomainAssociationsValidator:
                 
                 # Get contaminant details (associations use shortened ID)
                 full_contaminant_id = contaminant_id if contaminant_id.endswith('-contamination') else f"{contaminant_id}-contamination"
-                contaminant_data = self.contaminants_data.get('contamination_patterns', {}).get(full_contaminant_id, {})
+                if full_contaminant_id not in contamination_patterns:
+                    raise ValueError(
+                        f"Contaminant '{full_contaminant_id}' referenced in compound associations but missing from Contaminants.yaml"
+                    )
+                contaminant_data = contamination_patterns[full_contaminant_id]
+                if not isinstance(contaminant_data, dict):
+                    raise ValueError(f"Contaminant '{full_contaminant_id}' data must be a dictionary")
+                if 'name' not in contaminant_data or not isinstance(contaminant_data['name'], str) or not contaminant_data['name'].strip():
+                    raise ValueError(f"Contaminant '{full_contaminant_id}' missing required non-empty 'name'")
                 
                 # Get URL from full_path (single source of truth)
                 url = contaminant_data.get('full_path')
@@ -474,14 +571,14 @@ class DomainAssociationsValidator:
                 
                 results.append({
                     'id': contaminant_id,
-                    'title': contaminant_data.get('name', display_name),
+                    'title': contaminant_data['name'],
                     'url': url,
                     'image': format_image_url('contaminants', slug),
                     'category': category,
                     'subcategory': subcategory,
                     'frequency': assoc['frequency'],
                     'severity': assoc['severity'],
-                    'typical_context': assoc.get('typical_context', '')
+                    'typical_context': assoc['typical_context']
                 })
         
         return results

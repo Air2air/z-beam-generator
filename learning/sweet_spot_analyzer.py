@@ -474,6 +474,86 @@ class SweetSpotAnalyzer:
                 logger.warning(f"[SWEET SPOT] Failed to save to database: {e}")
         
         return result
+
+    def get_learned_parameters(self, component_type: str = '*') -> Optional[Dict[str, Any]]:
+        """
+        Compatibility accessor for UnifiedParameterProvider.
+
+        Reads the latest learned sweet-spot medians from
+        sweet_spot_recommendations and returns a normalized parameter dict.
+
+        Args:
+            component_type: Component type preference. Falls back to global ('*').
+
+        Returns:
+            Dict with learned parameters and metadata, or None if unavailable.
+        """
+        if not self.db_path.exists():
+            logger.warning(f"[SWEET SPOT] Database not found: {self.db_path}")
+            return None
+
+        try:
+            conn = sqlite3.connect(self.db_path)
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+
+            cursor.execute(
+                """
+                SELECT
+                    component_type,
+                    sample_count,
+                    confidence_level,
+                    temperature_median,
+                    frequency_penalty_median,
+                    presence_penalty_median,
+                    avg_human_score,
+                    last_updated
+                FROM sweet_spot_recommendations
+                WHERE component_type IN (?, '*')
+                ORDER BY
+                    CASE WHEN component_type = ? THEN 0 ELSE 1 END,
+                    last_updated DESC
+                LIMIT 1
+                """,
+                (component_type, component_type)
+            )
+
+            row = cursor.fetchone()
+            conn.close()
+
+            if not row:
+                logger.info("[SWEET SPOT] No persisted recommendations found")
+                return None
+
+            confidence_map = {
+                'low': 0.33,
+                'medium': 0.66,
+                'high': 1.0
+            }
+
+            result: Dict[str, Any] = {
+                'sample_count': row['sample_count'],
+                'confidence': confidence_map.get(row['confidence_level'], 0.0),
+                'avg_human_score': row['avg_human_score'],
+                'last_updated': row['last_updated'],
+                'component_type': row['component_type']
+            }
+
+            if row['temperature_median'] is not None:
+                result['temperature'] = float(row['temperature_median'])
+            if row['frequency_penalty_median'] is not None:
+                result['frequency_penalty'] = float(row['frequency_penalty_median'])
+            if row['presence_penalty_median'] is not None:
+                result['presence_penalty'] = float(row['presence_penalty_median'])
+
+            if 'temperature' not in result:
+                return None
+
+            return result
+
+        except Exception as e:
+            logger.error(f"[SWEET SPOT] Failed to load learned parameters: {e}")
+            return None
     
     def _generate_recommendations(
         self,

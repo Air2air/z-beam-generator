@@ -192,7 +192,7 @@ class E2EEvaluator:
         print("-" * 80)
         
         try:
-            from processing.integrity.integrity_checker import IntegrityChecker
+            from generation.integrity.integrity_checker import IntegrityChecker
             import time
             
             checker = IntegrityChecker()
@@ -356,15 +356,15 @@ class E2EEvaluator:
             patterns_found.append("Factory Pattern")
         
         # Database abstraction
-        if (project_root / "processing/detection/winston_feedback_db.py").exists():
+        if (project_root / "generation/learning/winston_feedback_db.py").exists():
             patterns_found.append("Database Abstraction")
         
         # Configuration management
-        if (project_root / "processing/config/dynamic_config.py").exists():
+        if (project_root / "generation/config/dynamic_config.py").exists():
             patterns_found.append("Dynamic Configuration")
         
         # Integrity checking
-        if (project_root / "processing/integrity/integrity_checker.py").exists():
+        if (project_root / "generation/integrity/integrity_checker.py").exists():
             patterns_found.append("Integrity Validation")
         
         eval_result['architectural_patterns'] = patterns_found

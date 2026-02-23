@@ -10,6 +10,7 @@ Date: October 30, 2025
 
 from typing import Any, Dict, Optional
 
+from generation.config.config_loader import ProcessingConfig
 from shared.api.client_factory import APIClientFactory
 
 
@@ -32,6 +33,16 @@ class ContentResearcher:
             api_client: Optional API client. If None, creates Grok client.
         """
         self.api_client = api_client or APIClientFactory.create_client('grok')
+        self.config = ProcessingConfig()
+        self.application_max_tokens = int(
+            self.config.get_required_config('constants.research.content_application_max_tokens')
+        )
+        self.contaminant_max_tokens = int(
+            self.config.get_required_config('constants.research.content_contaminant_max_tokens')
+        )
+        self.thesaurus_max_tokens = int(
+            self.config.get_required_config('constants.research.content_thesaurus_max_tokens')
+        )
     
     @classmethod
     def create(cls, provider: str = 'grok'):
@@ -109,7 +120,7 @@ Format as clear sections. Be technical and specific."""
         try:
             from generation.config.dynamic_config import DynamicConfig
             dynamic_config = DynamicConfig()
-            api_response = self.api_client.generate_simple(prompt, max_tokens=2500, temperature=dynamic_config.calculate_temperature('research'))
+            api_response = self.api_client.generate_simple(prompt, max_tokens=self.application_max_tokens, temperature=dynamic_config.calculate_temperature('research'))
             response_text = api_response.content if hasattr(api_response, 'content') else str(api_response)
             return self._parse_application_response(response_text, name, industry, category)
         except Exception as e:
@@ -177,7 +188,7 @@ Be technical and specific. This is for laser cleaning professionals."""
         try:
             from generation.config.dynamic_config import DynamicConfig
             dynamic_config = DynamicConfig()
-            api_response = self.api_client.generate_simple(prompt, max_tokens=2000, temperature=dynamic_config.calculate_temperature('research'))
+            api_response = self.api_client.generate_simple(prompt, max_tokens=self.contaminant_max_tokens, temperature=dynamic_config.calculate_temperature('research'))
             response_text = api_response.content if hasattr(api_response, 'content') else str(api_response)
             return self._parse_contaminant_response(response_text, name, category)
         except Exception as e:
@@ -210,7 +221,7 @@ Category: {category}
 Provide comprehensive technical information for an engineering glossary:
 
 DEFINITION:
-- Clear, precise technical definition (2-3 sentences)
+- Clear, precise technical definition
 - Include key concepts and context
 
 RELATED TERMS:
@@ -240,7 +251,7 @@ Be precise, technical, and comprehensive. This is for engineers and technicians.
         try:
             from generation.config.dynamic_config import DynamicConfig
             dynamic_config = DynamicConfig()
-            api_response = self.api_client.generate_simple(prompt, max_tokens=1500, temperature=dynamic_config.calculate_temperature('research'))
+            api_response = self.api_client.generate_simple(prompt, max_tokens=self.thesaurus_max_tokens, temperature=dynamic_config.calculate_temperature('research'))
             response_text = api_response.content if hasattr(api_response, 'content') else str(api_response)
             return self._parse_thesaurus_response(response_text, term, category)
         except Exception as e:

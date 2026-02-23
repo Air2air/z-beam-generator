@@ -64,7 +64,7 @@ Step-by-step instructions for:
 
 Critical policies:
 - `HARDCODED_VALUE_POLICY.md` - Zero hardcoded values in production code
-- `CONTENT_INSTRUCTION_POLICY.md` - Content instructions ONLY in prompts/*.txt
+- `CONTENT_INSTRUCTION_POLICY.md` - Content instructions ONLY in prompt catalog entries
 - `TEMPLATE_ONLY_POLICY.md` - ONLY templates determine content (no component-specific code)
 - `PROMPT_PURITY_POLICY.md` - ALL prompts in template files (ZERO in code)
 - `PROMPT_CHAINING_POLICY.md` - Multi-stage orchestration for separation of concerns
@@ -311,23 +311,23 @@ python3 domains/materials/image/learning/analytics.py attempts
 ### Content Instructions Only in Templates
 **Document**: `docs/08-development/CONTENT_INSTRUCTION_POLICY.md`
 
-- ✅ `prompts/*.txt` - ALL content instructions
-- ❌ `processing/*.py` - ZERO content instructions
+- ✅ Prompt catalog entries (catalog.byPath keys like `prompts/{domain}/*.txt`) - ALL content instructions
+- ❌ `generation/*.py`, `postprocessing/*.py`, `learning/*.py` - ZERO content instructions
 - ❌ `ComponentSpec.format_rules` - Forbidden field
 - ✅ `ComponentSpec.prompt_template_file` - Reference template only
 
 ### Template-Only Policy
 **Document**: `docs/08-development/TEMPLATE_ONLY_POLICY.md`
 
-- ✅ `prompts/{domain}/*.txt` - ALL content and formatting
-- ❌ `processing/*.py` - ZERO component-specific methods
+- ✅ Prompt catalog entries (catalog.byPath keys like `prompts/{domain}/*.txt`) - ALL content and formatting
+- ❌ `generation/*.py`, `postprocessing/*.py`, `learning/*.py` - ZERO component-specific methods
 - ✅ Add new component = template file + config entry ONLY (zero code changes)
 
 ### Prompt Purity Policy
 **Document**: `docs/08-development/PROMPT_PURITY_POLICY.md`
 
-- ✅ `prompts/*.txt` - ALL prompt text
-- ❌ `processing/*.py` - ZERO prompt text (NO EXCEPTIONS)
+- ✅ Prompt catalog entries (catalog.byPath keys like `prompts/{domain}/*.txt`) - ALL prompt text
+- ❌ `generation/*.py`, `postprocessing/*.py`, `learning/*.py` - ZERO prompt text (NO EXCEPTIONS)
 - ❌ `system_prompt = "You are..."` - Forbidden
 - ✅ `prompt = self._load_prompt_template('micro.txt')` - Correct
 

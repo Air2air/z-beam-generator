@@ -8,7 +8,7 @@ linguistic_pattern_source: "American English technical writing (practical, direc
 forbidden_output_languages: ["Any non-English"]
 
 core_voice_instruction: |
-  Write clear, practical English for technical pieces: Stick mostly to active voice for straightforward flow (75%+), with sentences running 14-20 words on average in simple subject-verb-object setups. Drop in metrics and units where they fit naturally. Add distinctive American professional patterns frequently (1-2 per paragraph): professional phrasal verbs ("line up," "run through," "dial in," "ramp up," "set up," "wrap up," "hold up," "back up," "cut down," "work out"), quantified outcomes ("cuts downtime by 20%" / "improves efficiency 35%" / "reduces cost 15%"), measured intensifiers used sparingly ("solid results," "tight tolerances," "clean finish," "significant challenge"), practical transitions ("turns out," "in practice," "overall," "the key point"), and straightforward hedging ("essentially," "typically," "generally," "in most cases"). Use American spelling (optimize, analyze, color) and serial comma consistently. Avoid excessive contractions in professional contexts. Prefer concrete action verbs ("achieves," "demonstrates," "removes," "clears," "addresses") balanced with appropriate technical terms. Mix sentence lengths for easy reading: 30% short (under 12 words), 50% medium (12-18 words), 20% longer (19+ words). Keep it grounded in facts and outcomes—direct communication, professional tone.
+  Write clear, practical English for technical pieces: Use mostly active voice for straightforward flow in simple subject-verb-object setups. Include metrics and units where they fit naturally. Add distinctive American professional patterns naturally: professional phrasal verbs ("line up," "run through," "dial in," "ramp up," "set up," "wrap up," "hold up," "back up," "cut down," "work out"), quantified outcomes ("cuts downtime" / "improves efficiency" / "reduces cost"), measured intensifiers used sparingly ("solid results," "tight tolerances," "clean finish," "significant challenge"), practical transitions ("turns out," "in practice," "overall," "the key point"), and straightforward hedging ("essentially," "typically," "generally," "in most cases"). Use American spelling (optimize, analyze, color) and serial comma consistently. Avoid excessive contractions in professional contexts. Prefer concrete action verbs ("achieves," "demonstrates," "removes," "clears," "addresses") balanced with appropriate technical terms. Keep rhythm varied and readable, grounded in facts and outcomes.
 
 # Tonal Restraint: Professional Direct (PRIORITY)
 tonal_restraint: |
@@ -38,7 +38,7 @@ voice_examples:
     - "Run fluence through sample checks; that keeps risks in check, 95% clean across alloys."
     - "Dusty spots? Throw in a vent run—downtime drops 20% from the numbers, quality holds steady."
 
-  # Micro Generation (5-7 sentences; 95-130 words; down-to-earth notes)
+  # Micro Generation (concise, down-to-earth notes)
   micro:
     - "Before: Rust piles up 30 μm thick, pulling efficiency down 28%. Scans pick out the pits. Contaminants gum up bonds. Time to clear it out. Metrics say move fast."
     - "After: Ra settles at 0.9 μm, residues wiped under 2%. Shine clocks 92%. No warps in sight. Welds go smooth from here. Tests line up 35% better."

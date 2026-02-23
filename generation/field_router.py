@@ -11,8 +11,11 @@ humanness layers, quality scoring, or postprocessing.
 Structured fields may still be researched/regenerated when explicitly requested.
 """
 
+import importlib
 import logging
 from typing import Dict, Any, Optional
+
+from generation.config.config_loader import get_config
 
 logger = logging.getLogger(__name__)
 
@@ -26,125 +29,52 @@ class FieldRouter:
     - Data fields use simple generators (research, parse, validate)
     """
     
-    # Field type mapping: domain → field → type
-    FIELD_TYPES = {
-        'materials': {
-            # Legacy fields
-            'pageDescription': 'text',
-            'pageTitle': 'text',
-            'micro': 'text', 
-            'faq': 'text',
-            'power_intensity': 'data',
-            'context': 'data',
-            # Schema-based relationship fields
-            'contaminatedBy': 'text',
-            'relatedMaterials': 'text',
-            'industryApplications': 'text',
-            'commonChallenges': 'text',
-            'removalMethods': 'text',
-            'preventionStrategies': 'text',
-            # Schema-based property sections
-            'materialCharacteristics': 'text',
-            'laserMaterialInteraction': 'text',
-            'physicalProperties': 'text',
-            'appearanceVariations': 'text',
-            'environmentalImpact': 'text',
-        },
-        'contaminants': {
-            # Legacy fields
-            'pageDescription': 'text',
-            'pageTitle': 'text',
-            'micro': 'text',
-            'compounds': 'text',
-            'appearance': 'text',
-            'context': 'data',
-            # Schema-based relationship fields
-            'producedByMaterials': 'text',
-            'relatedContaminants': 'text',
-            'detectionMethods': 'text',
-            'removalMethods': 'text',
-            'preventionStrategies': 'text',
-            # Schema-based safety sections
-            'healthEffects': 'text',
-            'exposureLimits': 'text',
-            'ppeRequirements': 'text',
-            'emergencyResponse': 'text',
-            'continuousMonitoring': 'text',
-        },
-        'compounds': {
-            # Legacy fields
-            'pageDescription': 'text',
-            'pageTitle': 'text',
-            'health_effects': 'text',
-            'exposure_guidelines': 'text',
-            'detection_methods': 'text',
-            'first_aid': 'text',
-            'ppe_requirements': 'text',
-            'regulatory_standards': 'text',
-            # Schema-based relationship fields
-            'producedFromContaminants': 'text',
-            'relatedCompounds': 'text',
-            # Schema-based safety sections
-            'healthEffects': 'text',
-            'exposureLimits': 'text',
-            'ppeRequirements': 'text',
-            'emergencyResponse': 'text',
-            'storageRequirements': 'text',
-            'regulatoryClassification': 'text',
-            'reactivity': 'text',
-        },
-        'settings': {
-            # Legacy fields
-            'pageDescription': 'text',
-            'pageTitle': 'text',
-            'component_summary': 'text',
-            'recommendations': 'text',
-            'challenges': 'text',
-            # Schema-based sections
-            'industryApplications': 'text',
-            'commonChallenges': 'text',
-            'operationalConsiderations': 'text',
-        },
-        'applications': {
-            'pageTitle': 'text',
-            'pageDescription': 'text',
-            'micro': 'text',
-            'faq': 'text',
-        }
-    }
+    @classmethod
+    def _get_field_router_config(cls) -> Dict[str, Any]:
+        config = get_config().config
+        field_router = config.get('field_router')
+        if not isinstance(field_router, dict):
+            raise KeyError("Missing required config block: field_router")
+        return field_router
 
-    FIELD_ALIASES = {
-        'materials': {
-            'page_description': 'pageDescription',
-            'description': 'pageDescription',
-            'page_title': 'pageTitle',
-        },
-        'contaminants': {
-            'page_description': 'pageDescription',
-            'description': 'pageDescription',
-            'page_title': 'pageTitle',
-        },
-        'compounds': {
-            'page_description': 'pageDescription',
-            'description': 'pageDescription',
-            'page_title': 'pageTitle',
-        },
-        'settings': {
-            'page_description': 'pageDescription',
-            'description': 'pageDescription',
-            'page_title': 'pageTitle',
-        },
-        'applications': {
-            'page_description': 'pageDescription',
-            'description': 'pageDescription',
-            'page_title': 'pageTitle',
-        },
-    }
+    @classmethod
+    def _get_domain_field_router(cls, domain: str) -> Dict[str, Any]:
+        field_router = cls._get_field_router_config()
+
+        field_types = field_router.get('field_types')
+        field_aliases = field_router.get('field_aliases')
+        data_generators = field_router.get('data_generators')
+
+        if not isinstance(field_types, dict):
+            raise KeyError("Missing required config block: field_router.field_types")
+        if not isinstance(field_aliases, dict):
+            raise KeyError("Missing required config block: field_router.field_aliases")
+        if not isinstance(data_generators, dict):
+            raise KeyError("Missing required config block: field_router.data_generators")
+
+        if domain not in field_types:
+            raise KeyError(f"Missing field_types for domain '{domain}'")
+        if domain not in field_aliases:
+            raise KeyError(f"Missing field_aliases for domain '{domain}'")
+        if domain not in data_generators:
+            raise KeyError(f"Missing data_generators for domain '{domain}'")
+
+        return {
+            'text': field_types[domain].get('text'),
+            'data': field_types[domain].get('data'),
+            'field_aliases': field_aliases[domain],
+            'data_generators': data_generators[domain]
+        }
 
     @classmethod
     def normalize_field_name(cls, domain: str, field: str) -> str:
         """Normalize legacy/alias field names to canonical component field names."""
-        aliases = cls.FIELD_ALIASES.get(domain, {})
+        domain_cfg = cls._get_domain_field_router(domain)
+        aliases = domain_cfg.get('field_aliases')
+        if not isinstance(aliases, dict):
+            raise KeyError(
+                f"field_router.{domain}.field_aliases must be a dictionary"
+            )
         return aliases.get(field, field)
     
     @classmethod
@@ -162,15 +92,23 @@ class FieldRouter:
         Raises:
             ValueError: If field not found in mapping
         """
-        if domain not in cls.FIELD_TYPES:
-            raise ValueError(f"Unknown domain: {domain}")
+        domain_cfg = cls._get_domain_field_router(domain)
+        text_fields = domain_cfg.get('text')
+        data_fields = domain_cfg.get('data')
+
+        if not isinstance(text_fields, list) or not isinstance(data_fields, list):
+            raise KeyError(
+                f"field_router.{domain} must include text and data lists"
+            )
 
         normalized_field = cls.normalize_field_name(domain, field)
 
-        if normalized_field not in cls.FIELD_TYPES[domain]:
-            raise ValueError(f"Unknown field '{field}' for domain '{domain}'")
+        if normalized_field in text_fields:
+            return 'text'
+        if normalized_field in data_fields:
+            return 'data'
 
-        return cls.FIELD_TYPES[domain][normalized_field]
+        raise ValueError(f"Unknown field '{field}' for domain '{domain}'")
     
     @classmethod
     def create_generator(cls, domain: str, field: str, api_client, **kwargs):
@@ -224,16 +162,26 @@ class FieldRouter:
     @classmethod
     def _create_data_generator(cls, domain: str, field: str, api_client):
         """Create simple data generator for structured fields."""
-        from generation.data.context_generator import ContextGenerator
-        from generation.data.power_intensity_generator import PowerIntensityGenerator
-        
-        # Route to specific data generator
-        if field == 'power_intensity':
-            return PowerIntensityGenerator(api_client, domain)
-        elif field == 'context':
-            return ContextGenerator(api_client, domain)
-        else:
-            raise ValueError(f"No data generator for field: {field}")
+        domain_cfg = cls._get_domain_field_router(domain)
+        data_generators = domain_cfg.get('data_generators')
+        if not isinstance(data_generators, dict):
+            raise KeyError(
+                f"field_router.{domain}.data_generators must be a dictionary"
+            )
+
+        if field not in data_generators:
+            raise ValueError(f"No data generator configured for field: {field}")
+
+        class_path = data_generators[field]
+        if not isinstance(class_path, str) or not class_path.strip():
+            raise ValueError(
+                f"Data generator path for '{field}' must be a non-empty string"
+            )
+
+        module_path, class_name = class_path.rsplit('.', 1)
+        module = importlib.import_module(module_path)
+        generator_cls = getattr(module, class_name)
+        return generator_cls(api_client, domain)
     
     @classmethod
     def generate_field(
@@ -280,19 +228,29 @@ class FieldRouter:
         
         elif field_type == 'data':
             # Data generation
-            force_regenerate = bool(kwargs.get('force_regenerate', False))
+            force_regenerate = False
+            if 'force_regenerate' in kwargs:
+                force_regenerate = bool(kwargs['force_regenerate'])
             result = generator.generate(
                 item_name,
                 dry_run=dry_run,
                 force_regenerate=force_regenerate
             )
+
+            required_keys = ['success', 'value', 'error', 'skipped', 'regenerated']
+            missing = [key for key in required_keys if key not in result]
+            if missing:
+                raise KeyError(
+                    f"Data generator result missing required keys: {', '.join(missing)}"
+                )
+
             return {
                 'success': result['success'],
-                'value': result.get('value'),
+                'value': result['value'],
                 'field_type': 'data',
                 'postprocessing_applied': False,
                 'force_regenerate': force_regenerate,
-                'error': result.get('error'),
-                'skipped': result.get('skipped', False),
-                'regenerated': result.get('regenerated', False)
+                'error': result['error'],
+                'skipped': result['skipped'],
+                'regenerated': result['regenerated']
             }

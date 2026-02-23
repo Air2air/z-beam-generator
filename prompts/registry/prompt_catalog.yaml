@@ -1,0 +1,324 @@
+schemaVersion: 1.0.0
+generatedAt: '2026-02-21T23:55:20.629352+00:00'
+sourceRoot: prompts
+catalog:
+  shared:
+    textPromptCore: |-
+      GLOBAL TEXT GENERATION CORE (REUSABLE)
+      - Keep output concise, concrete, and directly useful for practitioners.
+      - Use the injected voice instructions exactly as provided for author authenticity.
+      - Avoid generic filler, vague claims, and repetitive transition clichés.
+      - Prefer clear sentence flow with varied rhythm and natural phrasing.
+      - Keep scope aligned to the requested field intent only.
+      - Output plain prose unless an explicit output format section requires labels.
+    components:
+      appearanceVariations: Describe the visible appearance variations of THIS ITEM relevant to identification.
+      applications: Describe the key operational applications of THIS ITEM and why it is selected.
+      challenges: Describe the most common operational challenges encountered with THIS ITEM.
+      chemicalProperties: Describe the defining chemical properties and reactivity behavior of THIS ITEM.
+      healthEffects: Describe the primary health effects and exposure risks associated with THIS ITEM.
+      identifiers: Describe the canonical identifiers, aliases, and lookup names for THIS ITEM.
+      pageDescription: Describe what THIS ITEM is, why it matters, and what users should expect on this page.
+      physicalProperties: Describe the key physical properties of THIS ITEM that affect practical handling or cleaning.
+      prevention: Describe practical prevention and risk-reduction strategies for THIS ITEM.
+  core:
+    humanness:
+      full: "=== HUMANNESS OPTIMIZATION LAYER ===\n(Dynamically generated from learned patterns)\n\n\U0001F3B2 **STRUCTURAL\
+        \ VARIATION REQUIRED** \U0001F3B2\n• **LENGTH**: {selected_length} words\n• **STRUCTURE**: {selected_structure}\n\
+        • **RHYTHM**: {selected_rhythm}\n• **APPROACH**: {selected_property_strategy}\n• **WARNING STYLE**: {selected_warning}\n\
+        \n❌ **AVOID THESE AI PATTERNS**:\n• Starting with \"[Material]'s...\" or \"[Material] is...\" (100% AI detection)\n\
+        • Academic transitions: \"Furthermore\", \"Moreover\", \"Additionally\"\n• Passive voice: \"can be seen\", \"is observed\"\
+        , \"presents challenges\"\n• Perfect parallel structures or uniform sentence lengths\n• **REPEATING THE SAME OPENING**\
+        \ across multiple fields (low variation detected)\n\n\U0001F6AB **OVERUSED PATTERNS - DO NOT USE**:\n{overused_opening_patterns}\n\
+        \n**CRITICAL REQUIREMENT**: Each field in this generation session MUST use a DIFFERENT opening structure.\nIf you\
+        \ just wrote \"When laser cleaning [material]...\", you CANNOT start the next field with the same pattern.\nVARY YOUR\
+        \ STRUCTURE across all fields generated in this batch.\n\n**NOTE**: Voice and tone come from VOICE INSTRUCTIONS above.\n\
+        This section provides structural variation ONLY.\n\n**LEARNED PATTERNS** ({passing_sample_count} verified samples):\n\
+        {winston_success_patterns}\n\n**AVOID THESE PHRASES** ({total_evaluations} evaluations):\n{theatrical_phrases_list}\n\
+        \n**CONVERSATIONAL MARKERS**:\n{conversational_markers}\n\n**STRUCTURAL DIVERSITY** ({structural_sample_count} verified\
+        \ patterns):\n{successful_structural_patterns}\n\n\U0001F3AF **STRUCTURAL VARIATION ENFORCEMENT**:\nIf generating\
+        \ multiple fields in one session:\n• Field 1: Use opening structure A\n• Field 2: Use DIFFERENT opening structure\
+        \ B  \n• Field 3: Use DIFFERENT opening structure C\nNEVER repeat the same opening pattern across fields in the same\
+        \ generation session.\n\n**THEATRICAL PHRASES - NEVER USE** (MANDATORY EXCLUSION):\n{theatrical_phrases_list}\n\n\
+        ❌ **YOU WILL BE REJECTED IF YOU USE ANY OF THESE PHRASES** ❌\nThese patterns trigger AI detection and automatic rejection.\n\
+        Rewrite any sentence that contains these phrases.\n\n**AI PATTERNS TO ACTIVELY AVOID** (from {total_evaluations} subjective\
+        \ evaluations):\n{subjective_ai_tendencies}\n\n=== END HUMANNESS LAYER ==="
+      compact: |-
+        === HUMANNESS COMPACT LAYER ===
+        (Structural variation only; voice comes from persona instructions)
+
+        Apply these targets for this generation:
+        - LENGTH GUIDELINE: {selected_length}
+        - STRUCTURAL APPROACH: {selected_structure}
+        - SENTENCE RHYTHM: {selected_rhythm}
+
+        Requirements:
+        - Vary sentence openings naturally.
+        - Avoid formulaic transitions and repeated templates.
+        - Keep phrasing practical and specific to the item context.
+        - Do not output headings, labels, or wrapper text.
+
+        === END HUMANNESS COMPACT LAYER ===
+  quality:
+    evaluation: "You are an UNCOMPROMISING content evaluator with expert-level detection of AI-generated text. Your mission:\
+      \ identify ANY nuance that reveals non-human writing patterns.\n\n**CRITICAL MINDSET**: Assume synthetic generation\
+      \ until proven otherwise. Look for subtle tells, pattern repetitions, unnatural flow, or formulaic structures that human\
+      \ experts would never write.\n\nEvaluate this {component_type} for {material_name}: Could a human technical expert with\
+      \ 10+ years experience have written this?\n\nCONTENT:\n{content}\n\n---\n\n**HYPER-CRITICAL ASSESSMENT CRITERIA**:\n\
+      \n**REQUIRED - Authentic Materials Scientist Documentation**:\n- Expert documenting real-world observations (NO promotional\
+      \ language)\n- Varied sentence structure reflecting natural thought (NO formulaic patterns)\n- Technical precision with\
+      \ natural imperfections (NO robotic perfection)\n- Confident assertions without hedging (NO \"can provide\", \"offers\
+      \ benefits\")\n- Direct statements of fact (NO introductory clauses like \"When it comes to...\")\n\n**INSTANT REJECTION\
+      \ - Any Presence of These**:\n{theatrical_phrases}\n\n**AI DETECTION - Scrutinize for These Patterns**:\n{ai_tendencies}\n\
+      \n**SUBTLE AI TELLS TO CATCH**:\n- **Perfect parallel structures**: Three items listed in identical format\n- **Balanced\
+      \ sentence lengths**: Suspiciously even distribution\n- **Transitional overuse**: \"Additionally\", \"Furthermore\"\
+      , \"Moreover\" patterns\n- **Abstract noun stacking**: \"Optimization of precision enhancement capabilities\"\n- **Hedge\
+      \ words**: \"various\", \"numerous\", \"range of\", \"variety of\"\n- **Generic intensifiers**: \"highly\", \"extremely\"\
+      , \"significantly\" without specifics\n- **Listitis**: Bullet points or comma lists instead of flowing prose\n- **Opening\
+      \ pattern repetition**: Multiple sentences starting the same way\n- **Corporate passive voice**: \"is achieved\", \"\
+      can be obtained\", \"is facilitated\"\n- **Unnatural precision**: Suspiciously exact technical claims without context\n\
+      - **Symmetry obsession**: Perfectly balanced paragraph structures\n\n**TECHNICAL JARGON OVERLOAD** (INSTANT REJECTION):\n\
+      - **Excessive precise measurements**: Multiple decimal places (0.95, 0.06, 933.47) in one sentence\n- **Wavelength citations**:\
+      \ \"at 1064 nm\", \"532 nm laser\" without context\n- **Scientific paper language**: \"presents a primary challenge\"\
+      , \"requires precise control\"\n- **Physics textbook tone**: Reading like academic literature, not practical guidance\n\
+      - **Property bombardment**: Listing multiple technical specs without practical application\n- **Temperature in Kelvin**:\
+      \ Using K instead of °C/°F (too academic)\n- **Abstract technical phrases**: \"energy density control\", \"absorption\
+      \ coefficient optimization\"\n- **Missing practical context**: Technical facts without \"what to DO about it\"\n\n**HUMAN\
+      \ AUTHENTICITY MARKERS** (rare - demand strong evidence):\n- Genuine stylistic quirks and natural imperfections\n- Unpredictable\
+      \ sentence rhythm (NOT formulaic variation)\n- Expert confidence with casual precision (NOT formal hedging)\n- Natural\
+      \ flow between ideas (NOT mechanical transitions)\n- Real human thinking patterns (NOT algorithmic organization)\n-\
+      \ **Practical guidance dominates**: More \"do this\" than \"this is\"\n- **Conversational technical**: Expert explaining,\
+      \ not academic documenting\n\n---\n\n**EVALUATE SIX DIMENSIONS (0-10 scale - BE HARSH):**\n\n1. **Voice Authenticity**:\
+      \ Could a real human expert have this exact voice?\n   - 9-10: Convincingly human quirks | 7-8: Subtle authenticity\
+      \ | 5-6: Generic competence | 3-4: Template-like | 0-2: Algorithmic\n\n2. **Tonal Consistency**: Natural expert voice\
+      \ OR artificial consistency?\n   - 9-10: Genuine human variation | 7-8: Believable steadiness | 5-6: Too perfect | 3-4:\
+      \ Mechanical | 0-2: Robotic\n\n3. **Technical Accessibility**: Practical guidance vs academic documentation?\n   - 9-10:\
+      \ Expert explaining naturally | 7-8: Mostly practical | 5-6: Some jargon overload | 3-4: Textbook-like | 0-2: Physics\
+      \ paper\n\n4. **Natural Imperfection**: Human quirks vs algorithmic perfection?\n   - 9-10: Genuine human variability\
+      \ | 7-8: Some natural flow | 5-6: Suspiciously polished | 3-4: Too symmetric | 0-2: Machine perfect\n\n5. **Conversational\
+      \ Flow**: Natural thinking vs template structure?\n   - 9-10: Unpredictable human flow | 7-8: Mostly natural | 5-6:\
+      \ Some formulaic patterns | 3-4: Template-driven | 0-2: Algorithmic structure\n\n6. **Overall Realism**: Would you bet\
+      \ $1000 this was written by a human?\n   - 9-10: Absolutely human | 7-8: Probably human | 5-6: Uncertain | 3-4: Likely\
+      \ AI | 0-2: Obviously synthetic\n\n**GRADING PHILOSOPHY**: \n- Score 9-10 ONLY if you'd stake your reputation it's human\n\
+      - Score 7-8 ONLY if you see genuine human nuance\n- Score 5-6 for competent but suspicious content\n- Score 0-4 if ANY\
+      \ strong AI patterns detected\n\n**PASS THRESHOLD: {realism_threshold}/10 Overall Realism** - Anything below is REJECTED\n\
+      \n---\n\n**RESPONSE FORMAT (EXACT):**\n\n**Overall Realism (0-10)**: X\n**Voice Authenticity (0-10)**: X\n**Tonal Consistency\
+      \ (0-10)**: X\n**Technical Accessibility (0-10)**: X\n**Natural Imperfection (0-10)**: X\n**Conversational Flow (0-10)**:\
+      \ X\n\n**Reasoning** (briefly cover all dimensions):\n\n**Technical Jargon Issues**: [list specific examples or \"none\"\
+      ]\n**AI Patterns Found**: [list or \"none\"]\n**Theatrical Phrases Found**: [quotes or \"none\"]\n**Formulaic Structures**:\
+      \ [describe or \"none\"]\n\n**Pass/Fail**: [PASS if ≥{realism_threshold}, FAIL if <{realism_threshold}]"
+  domains:
+    materials:
+      appearanceVariations: Describe the visible appearance variations of THIS ITEM relevant to identification.
+      applications: Describe the key operational applications of THIS ITEM and why it is selected.
+      challenges: Describe the most common operational challenges encountered with THIS ITEM.
+      chemicalProperties: Describe the defining chemical properties and reactivity behavior of THIS ITEM.
+      healthEffects: Describe the primary health effects and exposure risks associated with THIS ITEM.
+      identifiers: Describe the canonical identifiers, aliases, and lookup names for THIS ITEM.
+      pageDescription: Describe what THIS ITEM is, why it matters, and what users should expect on this page.
+      physicalProperties: Describe the key physical properties of THIS ITEM that affect practical handling or cleaning.
+      prevention: Describe practical prevention and risk-reduction strategies for THIS ITEM.
+    settings:
+      appearanceVariations: Describe the visible appearance variations of THIS ITEM relevant to identification.
+      applications: Describe the key operational applications of THIS ITEM and why it is selected.
+      challenges: Describe the most common operational challenges encountered with THIS ITEM.
+      chemicalProperties: Describe the defining chemical properties and reactivity behavior of THIS ITEM.
+      healthEffects: Describe the primary health effects and exposure risks associated with THIS ITEM.
+      identifiers: Describe the canonical identifiers, aliases, and lookup names for THIS ITEM.
+      pageDescription: Describe what THIS ITEM is, why it matters, and what users should expect on this page.
+      physicalProperties: Describe the key physical properties of THIS ITEM that affect practical handling or cleaning.
+      prevention: Describe practical prevention and risk-reduction strategies for THIS ITEM.
+    contaminants:
+      appearanceVariations: Describe the visible appearance variations of THIS ITEM relevant to identification.
+      applications: Describe the key operational applications of THIS ITEM and why it is selected.
+      challenges: Describe the most common operational challenges encountered with THIS ITEM.
+      chemicalProperties: Describe the defining chemical properties and reactivity behavior of THIS ITEM.
+      healthEffects: Describe the primary health effects and exposure risks associated with THIS ITEM.
+      identifiers: Describe the canonical identifiers, aliases, and lookup names for THIS ITEM.
+      pageDescription: Describe what THIS ITEM is, why it matters, and what users should expect on this page.
+      physicalProperties: Describe the key physical properties of THIS ITEM that affect practical handling or cleaning.
+      prevention: Describe practical prevention and risk-reduction strategies for THIS ITEM.
+    compounds:
+      appearanceVariations: Describe the visible appearance variations of THIS ITEM relevant to identification.
+      applications: Describe the key operational applications of THIS ITEM and why it is selected.
+      challenges: Describe the most common operational challenges encountered with THIS ITEM.
+      chemicalProperties: Describe the defining chemical properties and reactivity behavior of THIS ITEM.
+      healthEffects: Describe the primary health effects and exposure risks associated with THIS ITEM.
+      identifiers: Describe the canonical identifiers, aliases, and lookup names for THIS ITEM.
+      pageDescription: Describe what THIS ITEM is, why it matters, and what users should expect on this page.
+      physicalProperties: Describe the key physical properties of THIS ITEM that affect practical handling or cleaning.
+      prevention: Describe practical prevention and risk-reduction strategies for THIS ITEM.
+    applications:
+      appearanceVariations: Describe the visible appearance variations of THIS ITEM relevant to identification.
+      applications: Describe the key operational applications of THIS ITEM and why it is selected.
+      challenges: Describe the most common operational challenges encountered with THIS ITEM.
+      chemicalProperties: Describe the defining chemical properties and reactivity behavior of THIS ITEM.
+      healthEffects: Describe the primary health effects and exposure risks associated with THIS ITEM.
+      identifiers: Describe the canonical identifiers, aliases, and lookup names for THIS ITEM.
+      pageDescription: Describe what THIS ITEM is, why it matters, and what users should expect on this page.
+      physicalProperties: Describe the key physical properties of THIS ITEM that affect practical handling or cleaning.
+      prevention: Describe practical prevention and risk-reduction strategies for THIS ITEM.
+  extras: {}
+  byPath:
+    prompts/applications/appearanceVariations.txt: Describe the visible appearance variations of THIS ITEM relevant to identification.
+    prompts/applications/applications.txt: Describe the key operational applications of THIS ITEM and why it is selected.
+    prompts/applications/challenges.txt: Describe the most common operational challenges encountered with THIS ITEM.
+    prompts/applications/chemicalProperties.txt: Describe the defining chemical properties and reactivity behavior of THIS
+      ITEM.
+    prompts/applications/healthEffects.txt: Describe the primary health effects and exposure risks associated with THIS ITEM.
+    prompts/applications/identifiers.txt: Describe the canonical identifiers, aliases, and lookup names for THIS ITEM.
+    prompts/applications/pageDescription.txt: Describe what THIS ITEM is, why it matters, and what users should expect on
+      this page.
+    prompts/applications/physicalProperties.txt: Describe the key physical properties of THIS ITEM that affect practical handling
+      or cleaning.
+    prompts/applications/prevention.txt: Describe practical prevention and risk-reduction strategies for THIS ITEM.
+    prompts/compounds/appearanceVariations.txt: Describe the visible appearance variations of THIS ITEM relevant to identification.
+    prompts/compounds/applications.txt: Describe the key operational applications of THIS ITEM and why it is selected.
+    prompts/compounds/challenges.txt: Describe the most common operational challenges encountered with THIS ITEM.
+    prompts/compounds/chemicalProperties.txt: Describe the defining chemical properties and reactivity behavior of THIS ITEM.
+    prompts/compounds/healthEffects.txt: Describe the primary health effects and exposure risks associated with THIS ITEM.
+    prompts/compounds/identifiers.txt: Describe the canonical identifiers, aliases, and lookup names for THIS ITEM.
+    prompts/compounds/pageDescription.txt: Describe what THIS ITEM is, why it matters, and what users should expect on this
+      page.
+    prompts/compounds/physicalProperties.txt: Describe the key physical properties of THIS ITEM that affect practical handling
+      or cleaning.
+    prompts/compounds/prevention.txt: Describe practical prevention and risk-reduction strategies for THIS ITEM.
+    prompts/contaminants/appearanceVariations.txt: Describe the visible appearance variations of THIS ITEM relevant to identification.
+    prompts/contaminants/applications.txt: Describe the key operational applications of THIS ITEM and why it is selected.
+    prompts/contaminants/challenges.txt: Describe the most common operational challenges encountered with THIS ITEM.
+    prompts/contaminants/chemicalProperties.txt: Describe the defining chemical properties and reactivity behavior of THIS
+      ITEM.
+    prompts/contaminants/healthEffects.txt: Describe the primary health effects and exposure risks associated with THIS ITEM.
+    prompts/contaminants/identifiers.txt: Describe the canonical identifiers, aliases, and lookup names for THIS ITEM.
+    prompts/contaminants/pageDescription.txt: Describe what THIS ITEM is, why it matters, and what users should expect on
+      this page.
+    prompts/contaminants/physicalProperties.txt: Describe the key physical properties of THIS ITEM that affect practical handling
+      or cleaning.
+    prompts/contaminants/prevention.txt: Describe practical prevention and risk-reduction strategies for THIS ITEM.
+    prompts/core/humanness_layer.txt: "=== HUMANNESS OPTIMIZATION LAYER ===\n(Dynamically generated from learned patterns)\n\
+      \n\U0001F3B2 **STRUCTURAL VARIATION REQUIRED** \U0001F3B2\n• **LENGTH**: {selected_length} words\n• **STRUCTURE**: {selected_structure}\n\
+      • **RHYTHM**: {selected_rhythm}\n• **APPROACH**: {selected_property_strategy}\n• **WARNING STYLE**: {selected_warning}\n\
+      \n❌ **AVOID THESE AI PATTERNS**:\n• Starting with \"[Material]'s...\" or \"[Material] is...\" (100% AI detection)\n\
+      • Academic transitions: \"Furthermore\", \"Moreover\", \"Additionally\"\n• Passive voice: \"can be seen\", \"is observed\"\
+      , \"presents challenges\"\n• Perfect parallel structures or uniform sentence lengths\n• **REPEATING THE SAME OPENING**\
+      \ across multiple fields (low variation detected)\n\n\U0001F6AB **OVERUSED PATTERNS - DO NOT USE**:\n{overused_opening_patterns}\n\
+      \n**CRITICAL REQUIREMENT**: Each field in this generation session MUST use a DIFFERENT opening structure.\nIf you just\
+      \ wrote \"When laser cleaning [material]...\", you CANNOT start the next field with the same pattern.\nVARY YOUR STRUCTURE\
+      \ across all fields generated in this batch.\n\n**NOTE**: Voice and tone come from VOICE INSTRUCTIONS above.\nThis section\
+      \ provides structural variation ONLY.\n\n**LEARNED PATTERNS** ({passing_sample_count} verified samples):\n{winston_success_patterns}\n\
+      \n**AVOID THESE PHRASES** ({total_evaluations} evaluations):\n{theatrical_phrases_list}\n\n**CONVERSATIONAL MARKERS**:\n\
+      {conversational_markers}\n\n**STRUCTURAL DIVERSITY** ({structural_sample_count} verified patterns):\n{successful_structural_patterns}\n\
+      \n\U0001F3AF **STRUCTURAL VARIATION ENFORCEMENT**:\nIf generating multiple fields in one session:\n• Field 1: Use opening\
+      \ structure A\n• Field 2: Use DIFFERENT opening structure B  \n• Field 3: Use DIFFERENT opening structure C\nNEVER repeat\
+      \ the same opening pattern across fields in the same generation session.\n\n**THEATRICAL PHRASES - NEVER USE** (MANDATORY\
+      \ EXCLUSION):\n{theatrical_phrases_list}\n\n❌ **YOU WILL BE REJECTED IF YOU USE ANY OF THESE PHRASES** ❌\nThese patterns\
+      \ trigger AI detection and automatic rejection.\nRewrite any sentence that contains these phrases.\n\n**AI PATTERNS\
+      \ TO ACTIVELY AVOID** (from {total_evaluations} subjective evaluations):\n{subjective_ai_tendencies}\n\n=== END HUMANNESS\
+      \ LAYER ==="
+    prompts/core/humanness_layer_compact.txt: |-
+      === HUMANNESS COMPACT LAYER ===
+      (Structural variation only; voice comes from persona instructions)
+
+      Apply these targets for this generation:
+      - LENGTH GUIDELINE: {selected_length}
+      - STRUCTURAL APPROACH: {selected_structure}
+      - SENTENCE RHYTHM: {selected_rhythm}
+
+      Requirements:
+      - Vary sentence openings naturally.
+      - Avoid formulaic transitions and repeated templates.
+      - Keep phrasing practical and specific to the item context.
+      - Do not output headings, labels, or wrapper text.
+
+      === END HUMANNESS COMPACT LAYER ===
+    prompts/materials/appearanceVariations.txt: Describe the visible appearance variations of THIS ITEM relevant to identification.
+    prompts/materials/applications.txt: Describe the key operational applications of THIS ITEM and why it is selected.
+    prompts/materials/challenges.txt: Describe the most common operational challenges encountered with THIS ITEM.
+    prompts/materials/chemicalProperties.txt: Describe the defining chemical properties and reactivity behavior of THIS ITEM.
+    prompts/materials/healthEffects.txt: Describe the primary health effects and exposure risks associated with THIS ITEM.
+    prompts/materials/identifiers.txt: Describe the canonical identifiers, aliases, and lookup names for THIS ITEM.
+    prompts/materials/pageDescription.txt: Describe what THIS ITEM is, why it matters, and what users should expect on this
+      page.
+    prompts/materials/physicalProperties.txt: Describe the key physical properties of THIS ITEM that affect practical handling
+      or cleaning.
+    prompts/materials/prevention.txt: Describe practical prevention and risk-reduction strategies for THIS ITEM.
+    prompts/quality/evaluation.txt: "You are an UNCOMPROMISING content evaluator with expert-level detection of AI-generated\
+      \ text. Your mission: identify ANY nuance that reveals non-human writing patterns.\n\n**CRITICAL MINDSET**: Assume synthetic\
+      \ generation until proven otherwise. Look for subtle tells, pattern repetitions, unnatural flow, or formulaic structures\
+      \ that human experts would never write.\n\nEvaluate this {component_type} for {material_name}: Could a human technical\
+      \ expert with 10+ years experience have written this?\n\nCONTENT:\n{content}\n\n---\n\n**HYPER-CRITICAL ASSESSMENT CRITERIA**:\n\
+      \n**REQUIRED - Authentic Materials Scientist Documentation**:\n- Expert documenting real-world observations (NO promotional\
+      \ language)\n- Varied sentence structure reflecting natural thought (NO formulaic patterns)\n- Technical precision with\
+      \ natural imperfections (NO robotic perfection)\n- Confident assertions without hedging (NO \"can provide\", \"offers\
+      \ benefits\")\n- Direct statements of fact (NO introductory clauses like \"When it comes to...\")\n\n**INSTANT REJECTION\
+      \ - Any Presence of These**:\n{theatrical_phrases}\n\n**AI DETECTION - Scrutinize for These Patterns**:\n{ai_tendencies}\n\
+      \n**SUBTLE AI TELLS TO CATCH**:\n- **Perfect parallel structures**: Three items listed in identical format\n- **Balanced\
+      \ sentence lengths**: Suspiciously even distribution\n- **Transitional overuse**: \"Additionally\", \"Furthermore\"\
+      , \"Moreover\" patterns\n- **Abstract noun stacking**: \"Optimization of precision enhancement capabilities\"\n- **Hedge\
+      \ words**: \"various\", \"numerous\", \"range of\", \"variety of\"\n- **Generic intensifiers**: \"highly\", \"extremely\"\
+      , \"significantly\" without specifics\n- **Listitis**: Bullet points or comma lists instead of flowing prose\n- **Opening\
+      \ pattern repetition**: Multiple sentences starting the same way\n- **Corporate passive voice**: \"is achieved\", \"\
+      can be obtained\", \"is facilitated\"\n- **Unnatural precision**: Suspiciously exact technical claims without context\n\
+      - **Symmetry obsession**: Perfectly balanced paragraph structures\n\n**TECHNICAL JARGON OVERLOAD** (INSTANT REJECTION):\n\
+      - **Excessive precise measurements**: Multiple decimal places (0.95, 0.06, 933.47) in one sentence\n- **Wavelength citations**:\
+      \ \"at 1064 nm\", \"532 nm laser\" without context\n- **Scientific paper language**: \"presents a primary challenge\"\
+      , \"requires precise control\"\n- **Physics textbook tone**: Reading like academic literature, not practical guidance\n\
+      - **Property bombardment**: Listing multiple technical specs without practical application\n- **Temperature in Kelvin**:\
+      \ Using K instead of °C/°F (too academic)\n- **Abstract technical phrases**: \"energy density control\", \"absorption\
+      \ coefficient optimization\"\n- **Missing practical context**: Technical facts without \"what to DO about it\"\n\n**HUMAN\
+      \ AUTHENTICITY MARKERS** (rare - demand strong evidence):\n- Genuine stylistic quirks and natural imperfections\n- Unpredictable\
+      \ sentence rhythm (NOT formulaic variation)\n- Expert confidence with casual precision (NOT formal hedging)\n- Natural\
+      \ flow between ideas (NOT mechanical transitions)\n- Real human thinking patterns (NOT algorithmic organization)\n-\
+      \ **Practical guidance dominates**: More \"do this\" than \"this is\"\n- **Conversational technical**: Expert explaining,\
+      \ not academic documenting\n\n---\n\n**EVALUATE SIX DIMENSIONS (0-10 scale - BE HARSH):**\n\n1. **Voice Authenticity**:\
+      \ Could a real human expert have this exact voice?\n   - 9-10: Convincingly human quirks | 7-8: Subtle authenticity\
+      \ | 5-6: Generic competence | 3-4: Template-like | 0-2: Algorithmic\n\n2. **Tonal Consistency**: Natural expert voice\
+      \ OR artificial consistency?\n   - 9-10: Genuine human variation | 7-8: Believable steadiness | 5-6: Too perfect | 3-4:\
+      \ Mechanical | 0-2: Robotic\n\n3. **Technical Accessibility**: Practical guidance vs academic documentation?\n   - 9-10:\
+      \ Expert explaining naturally | 7-8: Mostly practical | 5-6: Some jargon overload | 3-4: Textbook-like | 0-2: Physics\
+      \ paper\n\n4. **Natural Imperfection**: Human quirks vs algorithmic perfection?\n   - 9-10: Genuine human variability\
+      \ | 7-8: Some natural flow | 5-6: Suspiciously polished | 3-4: Too symmetric | 0-2: Machine perfect\n\n5. **Conversational\
+      \ Flow**: Natural thinking vs template structure?\n   - 9-10: Unpredictable human flow | 7-8: Mostly natural | 5-6:\
+      \ Some formulaic patterns | 3-4: Template-driven | 0-2: Algorithmic structure\n\n6. **Overall Realism**: Would you bet\
+      \ $1000 this was written by a human?\n   - 9-10: Absolutely human | 7-8: Probably human | 5-6: Uncertain | 3-4: Likely\
+      \ AI | 0-2: Obviously synthetic\n\n**GRADING PHILOSOPHY**: \n- Score 9-10 ONLY if you'd stake your reputation it's human\n\
+      - Score 7-8 ONLY if you see genuine human nuance\n- Score 5-6 for competent but suspicious content\n- Score 0-4 if ANY\
+      \ strong AI patterns detected\n\n**PASS THRESHOLD: {realism_threshold}/10 Overall Realism** - Anything below is REJECTED\n\
+      \n---\n\n**RESPONSE FORMAT (EXACT):**\n\n**Overall Realism (0-10)**: X\n**Voice Authenticity (0-10)**: X\n**Tonal Consistency\
+      \ (0-10)**: X\n**Technical Accessibility (0-10)**: X\n**Natural Imperfection (0-10)**: X\n**Conversational Flow (0-10)**:\
+      \ X\n\n**Reasoning** (briefly cover all dimensions):\n\n**Technical Jargon Issues**: [list specific examples or \"none\"\
+      ]\n**AI Patterns Found**: [list or \"none\"]\n**Theatrical Phrases Found**: [quotes or \"none\"]\n**Formulaic Structures**:\
+      \ [describe or \"none\"]\n\n**Pass/Fail**: [PASS if ≥{realism_threshold}, FAIL if <{realism_threshold}]"
+    prompts/settings/appearanceVariations.txt: Describe the visible appearance variations of THIS ITEM relevant to identification.
+    prompts/settings/applications.txt: Describe the key operational applications of THIS ITEM and why it is selected.
+    prompts/settings/challenges.txt: Describe the most common operational challenges encountered with THIS ITEM.
+    prompts/settings/chemicalProperties.txt: Describe the defining chemical properties and reactivity behavior of THIS ITEM.
+    prompts/settings/healthEffects.txt: Describe the primary health effects and exposure risks associated with THIS ITEM.
+    prompts/settings/identifiers.txt: Describe the canonical identifiers, aliases, and lookup names for THIS ITEM.
+    prompts/settings/pageDescription.txt: Describe what THIS ITEM is, why it matters, and what users should expect on this
+      page.
+    prompts/settings/physicalProperties.txt: Describe the key physical properties of THIS ITEM that affect practical handling
+      or cleaning.
+    prompts/settings/prevention.txt: Describe practical prevention and risk-reduction strategies for THIS ITEM.
+    prompts/shared/components/appearanceVariations.txt: Describe the visible appearance variations of THIS ITEM relevant to
+      identification.
+    prompts/shared/components/applications.txt: Describe the key operational applications of THIS ITEM and why it is selected.
+    prompts/shared/components/challenges.txt: Describe the most common operational challenges encountered with THIS ITEM.
+    prompts/shared/components/chemicalProperties.txt: Describe the defining chemical properties and reactivity behavior of
+      THIS ITEM.
+    prompts/shared/components/healthEffects.txt: Describe the primary health effects and exposure risks associated with THIS
+      ITEM.
+    prompts/shared/components/identifiers.txt: Describe the canonical identifiers, aliases, and lookup names for THIS ITEM.
+    prompts/shared/components/pageDescription.txt: Describe what THIS ITEM is, why it matters, and what users should expect
+      on this page.
+    prompts/shared/components/physicalProperties.txt: Describe the key physical properties of THIS ITEM that affect practical
+      handling or cleaning.
+    prompts/shared/components/prevention.txt: Describe practical prevention and risk-reduction strategies for THIS ITEM.
+    prompts/shared/text_prompt_core.txt: |-
+      GLOBAL TEXT GENERATION CORE (REUSABLE)
+      - Keep output concise, concrete, and directly useful for practitioners.
+      - Use the injected voice instructions exactly as provided for author authenticity.
+      - Avoid generic filler, vague claims, and repetitive transition clichés.
+      - Prefer clear sentence flow with varied rhythm and natural phrasing.
+      - Keep scope aligned to the requested field intent only.
+      - Output plain prose unless an explicit output format section requires labels.

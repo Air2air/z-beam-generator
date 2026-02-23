@@ -35,7 +35,7 @@ Section metadata in `section_display_schema.yaml` defines three distinct fields 
 - **Export As**: `_section.sectionDescription`
 - **Purpose**: Contextual description explaining what the section contains
 - **Validation**: Must be present and non-empty, minimum 5 words
-- **Example**: "This section details the most frequently encountered contaminants found on aluminum surfaces during industrial processing."
+- **Example**: "This section details the most frequently encountered contaminants found on aluminum surfaces during industrial operations."
 
 ### 3. sectionMetadata (REQUIRED)
 - **Source**: `sections.{section_key}.metadata` field from section_display_schema.yaml

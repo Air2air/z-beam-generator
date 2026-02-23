@@ -43,7 +43,7 @@ This guide consolidates all system architecture principles, patterns, and best p
 |-------|---------------|----------|
 | **Voice** | Author characteristics | `shared/voice/profiles/*.yaml` |
 | **Humanness** | Structural variation | `learning/humanness_optimizer.py` |
-| **Domain** | Content requirements | `prompts/{domain}/*.txt` |
+| **Domain** | Content requirements | `prompts/registry/prompt_catalog.yaml` (`catalog.byPath` entries like `prompts/{domain}/*.txt`) |
 | **Generation** | API orchestration | `generation/core/` |
 | **Quality** | Evaluation and learning | `learning/` + `shared/text/quality/` |
 
@@ -54,7 +54,7 @@ This guide consolidates all system architecture principles, patterns, and best p
 Each piece of information exists in EXACTLY ONE authoritative location:
 
 - **Author voice** → `shared/voice/profiles/*.yaml` ONLY
-- **Component specs** → `prompts/{domain}/*.txt` + `domains/*/config.yaml`
+- **Component specs** → prompt catalog `catalog.byPath` entries + `domains/*/config.yaml`
 - **Data** → `data/{domain}/Data.yaml` (Materials, Contaminants, Settings, etc.)
 - **Configuration** → `generation/config.yaml` + `domains/*/config.yaml`
 
@@ -66,7 +66,7 @@ Each piece of information exists in EXACTLY ONE authoritative location:
 
 **Example**: Adding new domain requires:
 - ✅ Create `domains/new_domain/config.yaml` (data paths, context keys)
-- ✅ Create `prompts/new_domain/*.txt` (component templates)
+- ✅ Add prompt catalog entries (catalog.byPath: `prompts/new_domain/*.txt`) in `prompts/registry/prompt_catalog.yaml`
 - ❌ NO code changes in `generation/core/`
 - ❌ NO modifications to generator classes
 
@@ -176,7 +176,7 @@ NOTE: Voice style comes from assigned author persona (specified above).
 
 ### Layer 3: Domain Prompts (Content Requirements)
 
-**Location**: `prompts/{domain}/*.txt`
+**Location**: prompt catalog `catalog.byPath` entries like `prompts/{domain}/*.txt`
 
 **Purpose**: Component-specific content requirements
 
@@ -195,7 +195,7 @@ NOTE: Voice style comes from assigned author persona (specified above).
 
 **Example Template**:
 ```
-# prompts/materials/description.txt
+# prompt catalog entry: prompts/materials/description.txt
 
 TASK: Write a focused technical description of {material_name}.
 
@@ -286,7 +286,7 @@ Output
 | **Prompt Builder** | `shared/text/utils/prompt_builder.py` | Assembles prompts | ❌ NO (template-driven) |
 | **Voice Profiles** | `shared/voice/profiles/*.yaml` | Author personas | ❌ NO (shared) |
 | **Domain Config** | `domains/{domain}/config.yaml` | Data paths, context keys | ✅ YES |
-| **Prompt Templates** | `prompts/{domain}/*.txt` | Content structure | ✅ YES |
+| **Prompt Templates** | Prompt catalog `catalog.byPath` entries like `prompts/{domain}/*.txt` | Content structure | ✅ YES |
 
 **2 domain-specific files, 4 shared components. All processing code reusable.**
 
@@ -478,7 +478,7 @@ done
 | Component | Pattern | Example |
 |-----------|---------|---------|
 | **Config** | `domains/{domain}/config.yaml` | `domains/materials/config.yaml` |
-| **Prompts** | `prompts/{domain}/*.txt` | `prompts/materials/description.txt` |
+| **Prompts** | Prompt catalog `catalog.byPath` entries like `prompts/{domain}/*.txt` | `prompts/materials/description.txt` |
 | **Data** | `data/{domain}/Data.yaml` | `data/materials/Materials.yaml` |
 
 ### Dependency Pattern
@@ -556,7 +556,7 @@ prompts:
 
 #### Step 2: Create Prompt Templates
 
-**File**: `prompts/{new_domain}/description.txt`
+**Prompt catalog entry**: `prompts/{new_domain}/description.txt`
 
 ```
 TASK: Write a focused description of {topic}.
@@ -814,13 +814,13 @@ Now write similar content for: {material_name}
 
 **WRONG**:
 ```
-# prompts/materials/description.txt
+# prompt catalog entry: prompts/materials/description.txt
 Write with paratactic chains...  ← Hardcoded voice
 ```
 
 **Correct**:
 ```
-# prompts/materials/description.txt
+# prompt catalog entry: prompts/materials/description.txt
 {voice_instruction}  ← Placeholder filled from persona
 ```
 
@@ -869,7 +869,7 @@ if not author_id:
 
 **Checklist for New Domains**:
 - [ ] Configuration file created (`domains/{domain}/config.yaml`)
-- [ ] Prompt templates created (`prompts/{domain}/*.txt`)
+- [ ] Prompt catalog entries created (`prompts/{domain}/*.txt`)
 - [ ] Data file created (`data/{domain}/Data.yaml`)
 - [ ] NO code changes in `generation/core/`
 - [ ] NO domain-specific methods added
@@ -907,9 +907,10 @@ project/
 ├── generation/core/                 # Generation orchestration
 │   ├── generator.py                 # Domain-agnostic generator
 │   └── adapters/domain_adapter.py  # Config-driven data loading
+├── prompts/registry/                # Prompt catalog
+│   └── prompt_catalog.yaml          # Component templates (Layer 3)
 ├── domains/{domain}/                # Domain-specific config
 │   ├── config.yaml                  # Data paths, context keys
-│   └── prompts/*.txt                # Component templates (Layer 3)
 └── data/{domain}/                   # Data files
     └── Data.yaml                    # Domain data
 ```

@@ -18,13 +18,17 @@ Date: November 25, 2025
 import logging
 from typing import Dict, Optional
 
+from generation.config.config_loader import ProcessingConfig
+
 logger = logging.getLogger(__name__)
 
-# Imagen API Limits
-IMAGEN_4_CHAR_LIMIT = 4096  # Hard limit for Imagen 4
-IMAGEN_OPTIMAL_TARGET = 2400  # Aggressive target - leaves room for corrections
-IMAGEN_WARNING_THRESHOLD = 3000  # Warn earlier
-
+_prompt_optimizer_config = ProcessingConfig()
+IMAGEN_4_CHAR_LIMIT = int(
+    _prompt_optimizer_config.get_required_config('constants.image_prompt_optimizer.imagen_4_char_limit')
+)
+IMAGEN_OPTIMAL_TARGET = int(
+    _prompt_optimizer_config.get_required_config('constants.image_prompt_optimizer.imagen_optimal_target')
+)
 
 class PromptOptimizer:
     """
@@ -49,8 +53,8 @@ class PromptOptimizer:
     
     def __init__(
         self,
-        target_length: int = IMAGEN_OPTIMAL_TARGET,
-        hard_limit: int = IMAGEN_4_CHAR_LIMIT
+        target_length: Optional[int] = None,
+        hard_limit: Optional[int] = None
     ):
         """
         Initialize optimizer with target length.
@@ -59,9 +63,14 @@ class PromptOptimizer:
             target_length: Optimal target length (default: 3500 chars)
             hard_limit: Hard API limit (default: 4096 chars)
         """
-        self.target_length = target_length
-        self.hard_limit = hard_limit
-        self.warning_threshold = IMAGEN_WARNING_THRESHOLD
+        config = ProcessingConfig()
+        configured_target = int(config.get_required_config('constants.image_prompt_optimizer.imagen_optimal_target'))
+        configured_hard_limit = int(config.get_required_config('constants.image_prompt_optimizer.imagen_4_char_limit'))
+        configured_warning_threshold = int(config.get_required_config('constants.image_prompt_optimizer.imagen_warning_threshold'))
+
+        self.target_length = target_length if target_length is not None else configured_target
+        self.hard_limit = hard_limit if hard_limit is not None else configured_hard_limit
+        self.warning_threshold = configured_warning_threshold
     
     def optimize_prompt(
         self,
@@ -575,4 +584,4 @@ def create_optimizer(
     target_length: Optional[int] = None
 ) -> PromptOptimizer:
     """Factory function to create prompt optimizer."""
-    return PromptOptimizer(target_length=target_length or IMAGEN_OPTIMAL_TARGET)
+    return PromptOptimizer(target_length=target_length)

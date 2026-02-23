@@ -18,6 +18,8 @@ import yaml
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
 from enum import Enum
+from generation.config.config_loader import ProcessingConfig
+from shared.text.utils.prompt_registry_service import PromptRegistryService
 from shared.validation.score_validator import validate_scores, ScoreValidationError
 
 
@@ -80,9 +82,9 @@ class SubjectiveEvaluator:
     def __init__(
         self,
         api_client,
-        quality_threshold: float = 7.0,
+        quality_threshold: Optional[float] = None,
         verbose: bool = False,
-        evaluation_temperature: float = 0.2
+        evaluation_temperature: Optional[float] = None
     ):
         """
         Initialize Subjective evaluator
@@ -104,13 +106,24 @@ class SubjectiveEvaluator:
                 "Ensure Claude API is properly configured before initializing."
             )
         
+        config = ProcessingConfig()
+
         self.api_client = api_client
-        self.quality_threshold = quality_threshold
+        self.quality_threshold = quality_threshold if quality_threshold is not None else float(
+            config.get_required_config('constants.subjective_evaluator.quality_threshold')
+        )
         self.verbose = verbose
-        self.evaluation_temperature = evaluation_temperature
+        self.evaluation_temperature = (
+            evaluation_temperature
+            if evaluation_temperature is not None
+            else float(config.get_required_config('constants.subjective_evaluator.evaluation_temperature'))
+        )
+        self.request_max_tokens = int(config.get_required_config('constants.subjective_evaluator.request_max_tokens'))
         
-        # Template and pattern file paths
-        self.template_file = Path('prompts/quality/evaluation.txt')
+        # Validate evaluation template in consolidated prompt catalog (fail-fast)
+        PromptRegistryService.get_quality_evaluation_prompt()
+
+        # Learned patterns file path
         self.patterns_file = Path('prompts/quality/learned_patterns.yaml')
         self._pattern_learner = None
     
@@ -207,9 +220,7 @@ class SubjectiveEvaluator:
     def _load_template(self) -> str:
         """Load evaluation prompt template from file"""
         try:
-            if not self.template_file.exists():
-                raise FileNotFoundError(f"Template file not found: {self.template_file}")
-            return self.template_file.read_text(encoding='utf-8')
+            return PromptRegistryService.get_quality_evaluation_prompt()
         except Exception as e:
             raise Exception(f"Failed to load evaluation template: {e}") from e
     
@@ -257,7 +268,7 @@ class SubjectiveEvaluator:
             request = GenerationRequest(
                 prompt=prompt,
                 system_prompt=None,  # Let template's first line set the critical evaluator tone
-                max_tokens=600,
+                max_tokens=self.request_max_tokens,
                 temperature=self.evaluation_temperature
             )
             
@@ -287,7 +298,7 @@ class SubjectiveEvaluator:
         **Technical Accessibility (0-10)**: X
         **Natural Imperfection (0-10)**: X
         **Conversational Flow (0-10)**: X
-        **Reasoning** (2-3 sentences covering all dimensions):
+        **Reasoning** (briefly cover all dimensions):
         **Technical Jargon Issues**: [list specific examples or "none"]
         **AI Patterns Found**: [list or "none"]
         **Theatrical Phrases Found**: [quotes or "none"]
@@ -528,7 +539,7 @@ def evaluate_content(
     
     evaluator = SubjectiveEvaluator(
         api_client=api_client,  # Will raise ValueError if None
-        quality_threshold=7.0,
+        quality_threshold=float(ProcessingConfig().get_required_config('constants.subjective_evaluator.quality_threshold')),
         verbose=verbose
     )
     

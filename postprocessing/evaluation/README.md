@@ -26,7 +26,7 @@ The Claude Subjective Evaluation Module provides **final quality assessment** of
 ### Core Components
 
 ```
-processing/evaluation/
+postprocessing/evaluation/
 ├── claude_evaluator.py         # Core evaluation engine
 ├── demo_claude_evaluation.py   # Demo script
 └── __init__.py                 # Package exports
@@ -54,7 +54,7 @@ tests/
 ### Basic Evaluation
 
 ```python
-from processing.evaluation.claude_evaluator import evaluate_content
+from postprocessing.evaluation.claude_evaluator import evaluate_content
 
 # Evaluate generated content
 result = evaluate_content(
@@ -120,7 +120,7 @@ Run the demo to see the module in action:
 
 ```bash
 cd /Users/todddunning/Desktop/Z-Beam/z-beam-generator
-PYTHONPATH=$PWD:$PYTHONPATH python3 processing/evaluation/demo_claude_evaluation.py
+PYTHONPATH=$PWD:$PYTHONPATH python3 postprocessing/evaluation/demo_claude_evaluation.py
 ```
 
 **Demo Outputs**:
@@ -207,7 +207,7 @@ Add to `run.py` generation handlers:
 ```python
 # After generation completes
 if args.enable_claude_eval:
-    from processing.evaluation import evaluate_content
+    from postprocessing.evaluation import evaluate_content
     
     evaluation = evaluate_content(
         content=generated_content,
@@ -365,12 +365,12 @@ Dimension Scores:
 ## Files Modified/Created
 
 **New Files**:
-- `processing/evaluation/claude_evaluator.py` (500+ lines)
-- `processing/evaluation/__init__.py`
-- `processing/evaluation/demo_claude_evaluation.py` (180 lines)
+- `postprocessing/evaluation/claude_evaluator.py` (500+ lines)
+- `postprocessing/evaluation/__init__.py`
+- `postprocessing/evaluation/demo_claude_evaluation.py` (180 lines)
 - `shared/commands/claude_evaluation_helper.py` (200+ lines)
 - `tests/test_claude_evaluation.py` (350+ lines, 16 tests)
-- `processing/evaluation/README.md` (this file)
+- `postprocessing/evaluation/README.md` (this file)
 
 **Tests**: 16/16 passing ✅  
 **Performance**: <1ms (fallback mode)  

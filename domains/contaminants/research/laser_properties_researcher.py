@@ -12,6 +12,7 @@ import logging
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
+from generation.config.config_loader import ProcessingConfig
 from shared.api.client import GenerationRequest
 from shared.exceptions import GenerationError
 
@@ -82,10 +83,6 @@ class LaserPropertiesResearcher:
     # Common laser wavelengths (nm)
     COMMON_WAVELENGTHS = [1064, 532, 355, 266, 1550]  # Nd:YAG, doubled, tripled, quadrupled, fiber
     
-    # Confidence thresholds
-    HIGH_CONFIDENCE = 0.85
-    ACCEPTABLE_CONFIDENCE = 0.70
-    
     def __init__(self, api_client: Any):
         """
         Initialize laser properties researcher.
@@ -102,6 +99,31 @@ class LaserPropertiesResearcher:
         from domains.contaminants.data_loader_v2 import PatternDataLoader
         self.loader = PatternDataLoader()
         self.logger = logging.getLogger(__name__)
+        self.config = ProcessingConfig()
+        self.high_confidence_threshold = float(
+            self.config.get_required_config('constants.laser_properties_researcher.high_confidence_threshold')
+        )
+        self.acceptable_confidence_threshold = float(
+            self.config.get_required_config('constants.laser_properties_researcher.acceptable_confidence_threshold')
+        )
+        self.optical_max_tokens = int(
+            self.config.get_required_config('constants.laser_properties_researcher.optical_max_tokens')
+        )
+        self.thermal_max_tokens = int(
+            self.config.get_required_config('constants.laser_properties_researcher.thermal_max_tokens')
+        )
+        self.removal_max_tokens = int(
+            self.config.get_required_config('constants.laser_properties_researcher.removal_max_tokens')
+        )
+        self.parameters_max_tokens = int(
+            self.config.get_required_config('constants.laser_properties_researcher.parameters_max_tokens')
+        )
+        self.safety_max_tokens = int(
+            self.config.get_required_config('constants.laser_properties_researcher.safety_max_tokens')
+        )
+        self.selectivity_max_tokens = int(
+            self.config.get_required_config('constants.laser_properties_researcher.selectivity_max_tokens')
+        )
     
     def research(
         self,
@@ -218,7 +240,7 @@ Provide ONLY the YAML structure with realistic numerical values and a 2-sentence
             request = GenerationRequest(
                 prompt=prompt,
                 temperature=dynamic_config.calculate_temperature('research'),
-                max_tokens=800
+                max_tokens=self.optical_max_tokens
             )
             response = self.api_client.generate(request)
             
@@ -306,7 +328,7 @@ Provide ONLY the YAML with realistic values."""
             request = GenerationRequest(
                 prompt=prompt,
                 temperature=dynamic_config.calculate_temperature('research'),
-                max_tokens=900
+                max_tokens=self.thermal_max_tokens
             )
             response = self.api_client.generate(request)
             
@@ -395,7 +417,7 @@ Provide ONLY the YAML with realistic values."""
             request = GenerationRequest(
                 prompt=prompt,
                 temperature=dynamic_config.calculate_temperature('research'),
-                max_tokens=1000
+                max_tokens=self.removal_max_tokens
             )
             response = self.api_client.generate(request)
             
@@ -484,7 +506,7 @@ YAML only, with 1-sentence rationale."""
             request = GenerationRequest(
                 prompt=prompt,
                 temperature=dynamic_config.calculate_temperature('research'),
-                max_tokens=900
+                max_tokens=self.parameters_max_tokens
             )
             response = self.api_client.generate(request)
             
@@ -572,7 +594,7 @@ YAML only."""
             request = GenerationRequest(
                 prompt=prompt,
                 temperature=dynamic_config.calculate_temperature('research'),
-                max_tokens=1000
+                max_tokens=self.safety_max_tokens
             )
             response = self.api_client.generate(request)
             
@@ -655,7 +677,7 @@ YAML only, with brief risk summary."""
             request = GenerationRequest(
                 prompt=prompt,
                 temperature=dynamic_config.calculate_temperature('research'),
-                max_tokens=1200
+                max_tokens=self.selectivity_max_tokens
             )
             response = self.api_client.generate(request)
             

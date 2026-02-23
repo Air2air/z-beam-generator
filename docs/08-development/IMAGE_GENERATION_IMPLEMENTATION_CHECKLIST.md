@@ -313,7 +313,7 @@ def populate_all_appearances():
 
 **3.1 Material-Specific Prompt Templates**
 
-**File**: `prompts/shared/generation/material_specific_layer.txt` (NEW)
+**Prompt catalog entry**: `prompts/shared/generation/material_specific_layer.txt` (in `prompts/registry/prompt_catalog.yaml`)
 
 Create template that uses material-specific appearance data:
 

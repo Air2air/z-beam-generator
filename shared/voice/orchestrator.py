@@ -488,7 +488,7 @@ VOICE & STYLE - MANDATORY ({author_country.upper()}):
 
 LENGTH REQUIREMENTS:
 - Target: {target_words} words (20-60 word range)
-- Write 1-3 sentences maximum
+- Write a concise response
 - Natural length variation across different questions
 
 WRITING STYLE:
@@ -503,7 +503,7 @@ CONTENT REQUIREMENTS:
 - Focus on actionable, practical information
 - Connect recommendations to material behavior or characteristics
 
-Write a technical answer using your natural voice patterns (1-3 sentences, 20-60 words):"""
+Write a technical answer using your natural voice patterns:"""
         
         return prompt
     
