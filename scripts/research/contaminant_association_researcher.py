@@ -17,6 +17,7 @@ import sys
 from pathlib import Path
 from typing import List, Dict, Any, Set
 import time
+from datetime import datetime, timezone
 
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -202,7 +203,68 @@ IMPORTANT:
             materials: List of material slugs to associate
         """
         associations_data = self.load_associations()
-        material_to_contaminants = associations_data.get('material_to_contaminants', {})
+
+        associations_list = associations_data.get('associations')
+        if associations_list is None:
+            associations_list = []
+        if not isinstance(associations_list, list):
+            raise ValueError("DomainAssociations.yaml key 'associations' must be a list")
+
+        verification_source = (
+            f"grok:contaminant_association_researcher:{datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.000Z')}"
+        )
+
+        def association_exists(source_domain: str, source_id: str, target_domain: str, target_id: str, relationship_type: str) -> bool:
+            for assoc in associations_list:
+                if not isinstance(assoc, dict):
+                    continue
+                if (
+                    assoc.get('source_domain') == source_domain
+                    and assoc.get('source_id') == source_id
+                    and assoc.get('target_domain') == target_domain
+                    and assoc.get('target_id') == target_id
+                    and assoc.get('relationship_type') == relationship_type
+                ):
+                    return True
+            return False
+
+        def append_verified(source_domain: str, source_id: str, target_domain: str, target_id: str, relationship_type: str):
+            if association_exists(source_domain, source_id, target_domain, target_id, relationship_type):
+                return
+            associations_list.append({
+                'source_domain': source_domain,
+                'source_id': source_id,
+                'target_domain': target_domain,
+                'target_id': target_id,
+                'relationship_type': relationship_type,
+                'verified': True,
+                'verification_source': verification_source,
+            })
+
+        for material in materials:
+            append_verified(
+                source_domain='materials',
+                source_id=material,
+                target_domain='contaminants',
+                target_id=contaminant_id,
+                relationship_type='can_have_contamination'
+            )
+            append_verified(
+                source_domain='contaminants',
+                source_id=contaminant_id,
+                target_domain='materials',
+                target_id=material,
+                relationship_type='can_contaminate'
+            )
+
+        associations_data['associations'] = associations_list
+
+        map_key = 'material_to_contaminant' if 'material_to_contaminant' in associations_data else 'material_to_contaminants'
+        material_to_contaminants = associations_data.get(map_key, {})
+        if material_to_contaminants is None:
+            material_to_contaminants = {}
+        if not isinstance(material_to_contaminants, dict):
+            raise ValueError(f"DomainAssociations.yaml key '{map_key}' must be a mapping when present")
         
         # Add contaminant to each material's list
         for material in materials:
@@ -212,7 +274,14 @@ IMPORTANT:
             if contaminant_id not in material_to_contaminants[material]:
                 material_to_contaminants[material].append(contaminant_id)
         
-        associations_data['material_to_contaminants'] = material_to_contaminants
+        associations_data[map_key] = material_to_contaminants
+
+        metadata = associations_data.get('metadata', {})
+        if not isinstance(metadata, dict):
+            metadata = {}
+        metadata['total_associations'] = len(associations_list)
+        associations_data['metadata'] = metadata
+
         self.save_associations(associations_data)
     
     def research_all_unmapped_contaminants(self, skip_existing: bool = True):

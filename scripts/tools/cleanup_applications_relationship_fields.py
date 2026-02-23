@@ -1,0 +1,151 @@
+#!/usr/bin/env python3
+"""Clean application relationship fields in source data.
+
+Actions:
+1) Remove item-level `description` from `relationships.interactions.contaminatedBy.items`
+2) Replace generic `_section.sectionDescription` placeholders with application-specific text:
+   - `relationships.discovery.relatedMaterials._section.sectionDescription`
+   - `relationships.interactions.contaminatedBy._section.sectionDescription`
+
+This updates source-of-truth only (`data/applications/Applications.yaml`).
+Frontmatter should be regenerated via export after running.
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+import sys
+from typing import Any, Dict
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from shared.utils.yaml_loader import load_yaml_fast as load_yaml
+from shared.utils.yaml_loader import dump_yaml_fast as save_yaml
+
+APPLICATIONS_PATH = PROJECT_ROOT / "data" / "applications" / "Applications.yaml"
+
+
+def _application_label(app_id: str, app_data: Dict[str, Any]) -> str:
+    for key in ("name", "displayName", "pageTitle"):
+        value = app_data.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return app_id.replace("-laser-cleaning", "").replace("-", " ").title()
+
+
+def _sanitize_section_description(text: Any) -> str:
+    if not isinstance(text, str):
+        return ''
+
+    cleaned = text.strip()
+    if not cleaned:
+        return ''
+
+    lower = cleaned.lower()
+    marker = 'description:'
+
+    if marker in lower:
+        marker_index = lower.find(marker)
+        return cleaned[marker_index + len(marker):].strip()
+
+    if lower.startswith('title:'):
+        return cleaned[len('title:'):].strip()
+
+    return cleaned
+
+
+def main() -> int:
+    data = load_yaml(APPLICATIONS_PATH)
+    if not isinstance(data, dict):
+        raise ValueError("Applications.yaml must parse to a dictionary")
+
+    applications = data.get("applications")
+    if not isinstance(applications, dict):
+        raise ValueError("Applications.yaml key 'applications' must be a mapping")
+
+    removed_item_descriptions = 0
+    updated_section_descriptions = 0
+
+    for app_id, app_data in applications.items():
+        if not isinstance(app_data, dict):
+            continue
+
+        label = _application_label(app_id, app_data)
+
+        relationships = app_data.get("relationships")
+        if not isinstance(relationships, dict):
+            continue
+
+        discovery = relationships.get("discovery")
+        if isinstance(discovery, dict):
+            related_materials = discovery.get("relatedMaterials")
+            if isinstance(related_materials, dict):
+                section = related_materials.get("_section")
+                if isinstance(section, dict):
+                    current_text = _sanitize_section_description(
+                        section.get("sectionDescription")
+                    )
+                    new_text = (
+                        f"Materials most frequently cleaned in {label} laser cleaning workflows."
+                    )
+                    if current_text != new_text:
+                        section["sectionDescription"] = new_text
+                        updated_section_descriptions += 1
+
+        interactions = relationships.get("interactions")
+        if isinstance(interactions, dict):
+            contaminated_by = interactions.get("contaminatedBy")
+            if isinstance(contaminated_by, dict):
+                section = contaminated_by.get("_section")
+                if isinstance(section, dict):
+                    current_text = _sanitize_section_description(
+                        section.get("sectionDescription")
+                    )
+                    new_text = (
+                        f"Contaminants most commonly removed in {label} laser cleaning workflows."
+                    )
+                    if current_text != new_text:
+                        section["sectionDescription"] = new_text
+                        updated_section_descriptions += 1
+
+                items = contaminated_by.get("items")
+                if isinstance(items, list):
+                    for item in items:
+                        if isinstance(item, dict) and "description" in item:
+                            del item["description"]
+                            removed_item_descriptions += 1
+
+        legacy_related = app_data.get("relatedMaterials")
+        if isinstance(legacy_related, dict):
+            legacy_text = _sanitize_section_description(
+                legacy_related.get("description")
+            )
+            if legacy_text and legacy_text != legacy_related.get("description"):
+                legacy_related["description"] = legacy_text
+                updated_section_descriptions += 1
+
+        legacy_contaminated = app_data.get("contaminatedBy")
+        if isinstance(legacy_contaminated, dict):
+            legacy_text = _sanitize_section_description(
+                legacy_contaminated.get("description")
+            )
+            if legacy_text and legacy_text != legacy_contaminated.get("description"):
+                legacy_contaminated["description"] = legacy_text
+                updated_section_descriptions += 1
+
+    save_yaml(data, APPLICATIONS_PATH)
+
+    print(
+        {
+            "file": str(APPLICATIONS_PATH),
+            "removed_item_descriptions": removed_item_descriptions,
+            "updated_section_descriptions": updated_section_descriptions,
+            "applications_count": len(applications),
+        }
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -11,6 +11,10 @@ generators:
     fields:
       - field: pageDescription
         component_type: pageDescription
+      - field: relationships.discovery.relatedMaterials._section.sectionDescription
+        component_type: relatedMaterials
+      - field: relationships.interactions.contaminatedBy._section.sectionDescription
+        component_type: contaminatedBy
       - field: micro
         component_type: micro
       - field: faq

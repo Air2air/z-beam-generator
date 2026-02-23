@@ -126,6 +126,8 @@ class SubjectiveEvaluator:
         # Learned patterns file path
         self.patterns_file = Path('prompts/quality/learned_patterns.yaml')
         self._pattern_learner = None
+        self._cached_patterns: Optional[Dict[str, Any]] = None
+        self._cached_patterns_mtime: Optional[float] = None
     
     @validate_scores
     def evaluate(
@@ -232,9 +234,27 @@ class SubjectiveEvaluator:
                 from learning.subjective_pattern_learner import SubjectivePatternLearner
                 learner = SubjectivePatternLearner(self.patterns_file)
                 # Will create default file
-            
+
+            patterns_mtime = (
+                self.patterns_file.stat().st_mtime
+                if self.patterns_file.exists()
+                else None
+            )
+
+            if (
+                self._cached_patterns is not None
+                and patterns_mtime == self._cached_patterns_mtime
+            ):
+                return self._cached_patterns
+
             with open(self.patterns_file, 'r', encoding='utf-8') as f:
-                return yaml.safe_load(f)
+                patterns = yaml.safe_load(f)
+
+            if isinstance(patterns, dict):
+                self._cached_patterns = patterns
+                self._cached_patterns_mtime = patterns_mtime
+
+            return patterns
         except Exception as e:
             # Fallback to minimal patterns if file can't be loaded
             return {

@@ -4,6 +4,7 @@ shared_section_prompt: &shared_section_prompt |-
   Discuss the effects of the section topic (practical impacts, failure modes, or operational consequences).
   Include special considerations that are specific to THIS ITEM in the context of this section topic.
   Keep it concise and concrete.
+  Return plain sentences only. Do not use labels like "Title:" or "Description:".
 
 section_prompts:
   synonymsIdentifiers: *shared_section_prompt

@@ -73,6 +73,27 @@ def _get_description_text(content_data) -> str:
     return ''
 
 
+def _sanitize_section_description(text: str) -> str:
+    if not isinstance(text, str):
+        return ''
+
+    cleaned = text.strip()
+    if not cleaned:
+        return ''
+
+    lower = cleaned.lower()
+    marker = 'description:'
+
+    if marker in lower:
+        marker_index = lower.find(marker)
+        return cleaned[marker_index + len(marker):].strip()
+
+    if lower.startswith('title:'):
+        return cleaned[len('title:'):].strip()
+
+    return cleaned
+
+
 def _save_section_description(section_data: dict, description_text: str) -> None:
     if '_section' not in section_data or not isinstance(section_data['_section'], dict):
         section_data['_section'] = {}
@@ -193,7 +214,9 @@ def main() -> int:
                     overall_stats['errors'] += 1
                     continue
 
-                description_text = _get_description_text(result.content)
+                description_text = _sanitize_section_description(
+                    _get_description_text(result.content)
+                )
                 if not description_text:
                     print(f"  ❌ {group_key}.{section_key}: no description extracted")
                     overall_stats['errors'] += 1

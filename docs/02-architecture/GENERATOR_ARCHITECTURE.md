@@ -76,7 +76,7 @@ Core text generation primitive without quality gates. Used internally by Quality
 
 ### Features
 - ✅ Direct API calls to LLM (Grok)
-- ✅ Prompt template loading from `prompts/{domain}/`
+- ✅ Prompt template loading from prompt catalog entries (catalog.byPath keys like `prompts/{domain}/*.txt`)
 - ✅ Voice instruction injection
 - ✅ Parameter passing (temperature, penalties, max_tokens)
 - ❌ NO quality evaluation (delegated to caller)

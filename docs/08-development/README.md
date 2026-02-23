@@ -20,7 +20,7 @@ Developer guides for contributing to and extending the Z-Beam Generator.
 
 - **[new_component_guide.md](new_component_guide.md)** - Guide for creating new components
 
-## � Reference Documentation
+## Reference Documentation
 
 - **[GENERATION_VS_DISPLAY_TERMINOLOGY.md](../09-reference/GENERATION_VS_DISPLAY_TERMINOLOGY.md)** - ✅ **NEW (Jan 7, 2026)**: Clarifies terminology
   - `component_type` (generation layer) vs `presentation` (display layer)
@@ -28,7 +28,7 @@ Developer guides for contributing to and extending the Z-Beam Generator.
   - Quick reference table and common patterns
   - Essential for understanding generation vs export systems
 
-## �🔥 Critical Policies (December 2025)
+## Critical Policies (December 2025)
 
 ### Voice & Enforcement Architecture
 - **[VOICE_ENFORCEMENT_CENTRALIZATION_DEC12_2025.md](VOICE_ENFORCEMENT_CENTRALIZATION_DEC12_2025.md)** - ✅ **NEW**: Complete architecture for centralized voice enforcement

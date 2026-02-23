@@ -12,6 +12,17 @@
 
 **NEVER edit frontmatter files directly. ALL changes MUST be made in source data or export configurations.**
 
+## ✅ **MANDATORY RULE: SOURCE + GENERATOR ONLY (Feb 23, 2026)**
+
+**All updates must be made in source data and generators, NOT exporters.**
+
+- ✅ **Update content and structure in source data** (`data/*.yaml`)
+- ✅ **Update generation logic in generators** (`generation/`, `domains/*`, `export/generation/*` tasks)
+- ❌ **Do NOT update exporter logic to fix data issues** (`export/core/*`, `export/config/*`)
+- ❌ **Do NOT add missing fields at export time** (exporters are transform-only)
+
+**Rationale**: Exporters must remain presentation-only. Any data corrections belong in source data or generation logic, or they will be overwritten and violate Core Principle 0.6 (No Build-Time Data Enhancement).
+
 ## ⚠️ **POSTPROCESSING MANDATORY POLICY (December 24, 2025)**
 
 **Postprocessing MUST work on source data ONLY:**

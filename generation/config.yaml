@@ -259,6 +259,8 @@ domain_generation:
     length_control:
       skip_components:
         - "pageDescription"
+        - "relatedMaterials"
+        - "contaminatedBy"
     normalize_components:
       - "pageDescription"
     field_mappings:
