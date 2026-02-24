@@ -125,7 +125,7 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
     def _init_schema_validator(self):
         """Initialize unified schema validation system"""
         try:
-            from shared.validation.schema_validator import SchemaValidator
+            from shared.validation.core.schema import SchemaValidator
             self.schema_validator = SchemaValidator()
             self.logger.info("Schema validator initialized")
         except Exception as e:

@@ -6,6 +6,10 @@ data_path: "data/contaminants/Contaminants.yaml"
 data_root_key: "contamination_patterns"
 frontmatter_pattern: "{slug}-contamination.yaml"
 
+frontmatter:
+  directory: "../z-beam/frontmatter/contaminants"
+  filename_pattern: "{slug}-contamination.yaml"
+
 data_adapter:
   data_path: "data/contaminants/Contaminants.yaml"
   data_root_key: "contamination_patterns"

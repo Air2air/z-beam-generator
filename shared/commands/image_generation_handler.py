@@ -30,7 +30,7 @@ from domains.materials.image.material_config import MaterialImageConfig
 # Local imports
 from domains.materials.image.material_generator import MaterialImageGenerator
 from shared.api.gemini_image_client import GeminiImageClient
-from shared.validation.validator import Validator, ValidationStatus
+from shared.validation.unified_validator import Validator, ValidationStatus
 
 
 @dataclass

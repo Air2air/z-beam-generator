@@ -44,7 +44,7 @@ class ApplicationsCoordinator(DomainCoordinator):
         return None
 
     def _load_applications_data(self) -> Dict:
-        """Load applications data - wrapper for _load_domain_data for backwards compatibility"""
+        """Backwards-compatible wrapper — prefer _load_domain_data() directly."""
         return self._load_domain_data()
 
     def _get_item_data(self, item_id: str) -> Dict:
@@ -68,8 +68,27 @@ class ApplicationsCoordinator(DomainCoordinator):
     ) -> Dict[str, Any]:
         """
         Generate content for a specific application and component type.
+        Alias for generate_content() with applications-specific naming.
         """
         return self.generate_content(application_id, component_type, force_regenerate)
+
+    def generate_all_components_for_application(
+        self,
+        application_id: str,
+        force_regenerate: bool = False
+    ) -> Dict[str, Any]:
+        """
+        Generate all component types for an application.
+        Delegates to base generate_all_components() using prompt-directory discovery.
+        """
+        return self.generate_all_components(application_id, force_regenerate)
+
+    def get_application_data(self, application_id: str) -> Optional[Dict[str, Any]]:
+        """Get application data for context."""
+        try:
+            return self._get_item_data(application_id)
+        except ValueError:
+            return None
 
     def list_applications(self) -> list:
         """Get list of all application IDs."""

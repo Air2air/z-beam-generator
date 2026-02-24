@@ -26,6 +26,11 @@ generators:
     description: Convert snake_case → camelCase for software metadata fields
   # NOTE (Jan 7, 2026): section_metadata task removed - _section metadata now exists in source data
   # Per Core Principle 0.6: ✅ COMPLETE - Export adds ONLY export-time fields
+  - type: field_cleanup
+    description: Remove deprecated and stale fields from compounds frontmatter
+    deprecated_fields:
+      - title               # legacy duplicate of pageTitle; overrides pageTitle in SchemaFactory
+      - page_title          # snake_case residual; canonical field is pageTitle (via camelcase_normalization)
   - type: field_ordering
     domain: compounds
     description: Organize output structure

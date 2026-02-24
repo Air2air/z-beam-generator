@@ -28,6 +28,14 @@ generators:
     description: Convert snake_case → camelCase for software metadata fields
   # NOTE (Jan 5, 2026): section_metadata task removed - _section metadata now exists in source data
   # Per Core Principle 0.6: No Build-Time Data Enhancement
+  - type: field_cleanup
+    description: Remove deprecated and stale fields from contaminants frontmatter
+    deprecated_fields:
+      - page_description    # snake_case residual; canonical field is pageDescription
+      - title               # legacy duplicate of pageTitle
+      - authorId            # deprecated (Feb 2026)
+      - contextNotes        # draft-era field not consumed by frontend
+      - realismNotes        # draft-era field not consumed by frontend
   - type: field_ordering
     domain: contaminants
     description: Organize output structure

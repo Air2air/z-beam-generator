@@ -7,9 +7,7 @@ Extends DomainCoordinator base class to provide unified generation architecture.
 """
 
 import logging
-from pathlib import Path
 from typing import Any, Dict, Optional
-import yaml
 
 from shared.domain.base_coordinator import DomainCoordinator
 
@@ -67,63 +65,20 @@ class ContaminantCoordinator(DomainCoordinator):
     ) -> Dict[str, Any]:
         """
         Generate content for a specific contaminant and component type.
-        
-        Wrapper for universal generate_content method with contaminants-specific naming.
-        
-        Args:
-            contaminant_id: Contaminant identifier (e.g., "rust", "oil-spill")
-            component_type: Type of content to generate (e.g., "description")
-            force_regenerate: Whether to regenerate even if content exists
-            
-        Returns:
-            Dict with generation results (see DomainCoordinator.generate_content)
+        Alias for generate_content() with contaminants-specific naming.
         """
         return self.generate_content(contaminant_id, component_type, force_regenerate)
-    
+
     def generate_all_components_for_contaminant(
         self,
         contaminant_id: str,
         force_regenerate: bool = False
     ) -> Dict[str, Any]:
         """
-        Generate all enabled component types for a contaminant.
-        
-        Args:
-            contaminant_id: Contaminant identifier
-            force_regenerate: Whether to regenerate existing content
-            
-        Returns:
-            Dict with results for each component type
+        Generate all component types for a contaminant.
+        Delegates to base generate_all_components() using prompt-directory discovery.
         """
-        results = {}
-        enabled_types = [
-            comp_type for comp_type, config in self.domain_config['component_types'].items()
-            if config.get('enabled', True)
-        ]
-        
-        logger.info(
-            f"Generating {len(enabled_types)} component types for {contaminant_id}: "
-            f"{enabled_types}"
-        )
-        
-        for component_type in enabled_types:
-            try:
-                result = self.generate_contaminant_content(
-                    contaminant_id=contaminant_id,
-                    component_type=component_type,
-                    force_regenerate=force_regenerate
-                )
-                results[component_type] = result
-            except Exception as e:
-                logger.error(
-                    f"Failed to generate {component_type} for {contaminant_id}: {e}"
-                )
-                results[component_type] = {
-                    'success': False,
-                    'error': str(e)
-                }
-        
-        return results
+        return self.generate_all_components(contaminant_id, force_regenerate)
     
     def get_contaminant_data(self, contaminant_id: str) -> Optional[Dict[str, Any]]:
         """Get contaminant data for context."""

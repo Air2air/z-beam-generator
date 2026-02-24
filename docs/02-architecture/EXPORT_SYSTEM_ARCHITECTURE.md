@@ -337,8 +337,8 @@ python3 export/core/orchestrator.py --all
 # Audit associations
 python3 scripts/analysis/audit_domain_associations.py
 
-# Auto-populate relationships
-python3 scripts/population/auto_populate_relationships.py
+# Auto-populate relationships (archived — ran once, 2025)
+# python3 scripts/archive/completed-populations/auto_populate_relationships.py
 
 # Re-export to apply
 python3 export/core/orchestrator.py --all

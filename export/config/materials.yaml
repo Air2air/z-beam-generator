@@ -72,11 +72,11 @@ generators:
     fields:
       - page_description
       - pageDescription
-  # Hydrate authorId -> full author object from Authors.yaml
+  # Hydrate authorId -> full author object, then remove authorId from frontmatter (deprecated Feb 2026)
   - type: author_linkage
     description: Expand authorId to full author object for frontend compatibility
     author_id_field: authorId
-    remove_author_id: false
+    remove_author_id: true
   # Flatten nested properties to root level (preserves _section metadata)
   - type: flatten_properties
     description: Move properties.materialCharacteristics → materialCharacteristics (with _section)

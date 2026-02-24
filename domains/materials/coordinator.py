@@ -24,17 +24,13 @@ Usage:
 
 import logging
 import random
+import tempfile
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Any, Dict, Optional
 
 from shared.domain.base_coordinator import DomainCoordinator
-from shared.research.faq_topic_researcher import FAQTopicResearcher
 
 logger = logging.getLogger(__name__)
-
-# Paths
-MATERIALS_DATA_PATH = Path("data/materials/Materials.yaml")
-PROMPTS_DIR = Path("prompts")
 
 
 class MaterialsCoordinator(DomainCoordinator):
@@ -59,14 +55,13 @@ class MaterialsCoordinator(DomainCoordinator):
         return "materials"
     
     def _create_data_loader(self):
-        """Create materials data loader (lazy - not actually used)"""
-        # Materials coordinator loads data directly, no need for complex data loader
+        """Materials load data via _load_domain_data() in the base class."""
         return None
-    
+
     def _load_materials_data(self) -> Dict:
-        """Load materials data - wrapper for _load_domain_data for backwards compatibility"""
+        """Backwards-compatible wrapper — prefer _load_domain_data() directly."""
         return self._load_domain_data()
-    
+
     def _get_item_data(self, item_id: str) -> Dict:
         """Get material data from Materials.yaml"""
         materials_data = self._load_domain_data()
@@ -79,7 +74,30 @@ class MaterialsCoordinator(DomainCoordinator):
         # Note: QualityEvaluatedGenerator already saves to Materials.yaml
         # This method exists to satisfy abstract base class
         pass
-    
+
+    def generate_material_content(
+        self,
+        material_id: str,
+        component_type: str,
+        force_regenerate: bool = False
+    ) -> Dict[str, Any]:
+        """
+        Generate content for a specific material and component type.
+        Alias for generate_content() with materials-specific naming.
+        """
+        return self.generate_content(material_id, component_type, force_regenerate)
+
+    def generate_all_components_for_material(
+        self,
+        material_id: str,
+        force_regenerate: bool = False
+    ) -> Dict[str, Any]:
+        """
+        Generate all component types for a material.
+        Delegates to base generate_all_components() using prompt-directory discovery.
+        """
+        return self.generate_all_components(material_id, force_regenerate)
+
     def generate_eeat(self, material_name: str, material_data: Dict) -> Optional[Dict]:
         """
         Generate EEAT section from regulatory_standards (pure Python, no AI).
@@ -96,11 +114,12 @@ class MaterialsCoordinator(DomainCoordinator):
         Returns:
             EEAT dict or None if no regulatory_standards available
         """
-        import tempfile
-
         import yaml
-        
-        self.logger.info(f"📊 Generating EEAT section for {material_name}")
+
+        project_root = Path(__file__).parent.parent.parent
+        data_file = project_root / self.domain_config['data_adapter']['data_path']
+
+        logger.info(f"📊 Generating EEAT section for {material_name}")
         
         # Get regulatory_standards
         regulatory_standards = material_data.get('regulatoryStandards', [])
@@ -112,7 +131,7 @@ class MaterialsCoordinator(DomainCoordinator):
         ]
         
         if not dict_standards:
-            self.logger.warning(f"No valid regulatory_standards found for {material_name}")
+            logger.warning(f"No valid regulatory_standards found for {material_name}")
             return None
         
         # Select 1-3 random standards for citations
@@ -135,26 +154,26 @@ class MaterialsCoordinator(DomainCoordinator):
             'isBasedOn': is_based_on
         }
         
-        self.logger.info(f"   reviewedBy: {eeat_data['reviewedBy']}")
-        self.logger.info(f"   citations: {num_citations} selected from {len(dict_standards)} standards")
-        self.logger.info(f"   isBasedOn: {is_based_on['name'][:60]}...")
-        
+        logger.info(f"   reviewedBy: {eeat_data['reviewedBy']}")
+        logger.info(f"   citations: {num_citations} selected from {len(dict_standards)} standards")
+        logger.info(f"   isBasedOn: {is_based_on['name'][:60]}...")
+
         # Write to Materials.yaml (EEAT doesn't use DynamicGenerator)
-        materials_data = self._load_materials_data()
+        materials_data = self._load_domain_data()
         materials_data['materials'][material_name]['eeat'] = eeat_data
-        
+
         with tempfile.NamedTemporaryFile(
             mode='w',
             encoding='utf-8',
-            dir=MATERIALS_DATA_PATH.parent,
+            dir=data_file.parent,
             delete=False,
             suffix='.yaml'
         ) as temp_f:
             yaml.dump(materials_data, temp_f, default_flow_style=False, allow_unicode=True, sort_keys=False)
             temp_path = temp_f.name
-        
-        Path(temp_path).replace(MATERIALS_DATA_PATH)
-        self.logger.info(f"✅ eeat written to Materials.yaml → materials.{material_name}.eeat")
+
+        Path(temp_path).replace(data_file)
+        logger.info(f"✅ eeat written to Materials.yaml → materials.{material_name}.eeat")
         
         return eeat_data
     
@@ -178,7 +197,7 @@ class MaterialsCoordinator(DomainCoordinator):
         """
         # Handle EEAT separately (pure Python, no AI)
         if content_type == 'eeat':
-            materials_data = self._load_materials_data()
+            materials_data = self._load_domain_data()
             if material_name not in materials_data['materials']:
                 raise ValueError(f"Material '{material_name}' not found in Materials.yaml")
             return self.generate_eeat(material_name, materials_data['materials'][material_name])
@@ -191,8 +210,7 @@ class MaterialsCoordinator(DomainCoordinator):
     
     def list_materials(self) -> list:
         """Get list of all material IDs."""
-        materials_data = self._load_materials_data()
-        return list(materials_data['materials'].keys())
+        return list(self._load_domain_data()['materials'].keys())
     
     def get_material_data(self, material_id: str):
         """Get material data for context."""

@@ -270,8 +270,9 @@ python3 scripts/tools/validate_frontmatter_structure.py --domain all
 # Expected: All validation checks pass
 
 # 3. Run enrichment scripts
-python3 scripts/enrichment/backfill_software_metadata.py --domain materials --dry-run
+python3 scripts/archive/completed-enrichments/backfill_software_metadata.py --domain materials --dry-run
 # Expected: Shows what would be added (run with --no-dry-run to apply)
+# NOTE: This script is archived. For new enrichment work, add scripts to scripts/enrichment/
 
 # 4. Test export speed
 time python3 run.py --export --domain materials --limit 10

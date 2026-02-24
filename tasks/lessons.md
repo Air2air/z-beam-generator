@@ -11,3 +11,40 @@
 
 - 2026-02-24: Generator field name mismatch (`breadcrumbs` written, `breadcrumb` read) caused silent export failures — field was absent from all generated output. Rule: always grep the consuming TypeScript type for the exact field name before naming a new generator output field.
 - 2026-02-24: Grepping thin Next.js route-delegate files ([slug]/page.tsx) for schema injection returns false negatives — those files only re-export from a shared factory. Always trace through to the rendering layer (ItemPage.tsx, createContentPage.tsx) before concluding schema coverage is missing.
+- 2026-02-23: TypeScript discriminated union on `any`-typed property fails to narrow sibling fields → Always use a concretely-typed property (not `any`) as the discriminant, or destructure with an explicit cast after checking the absent-data side
+
+## 2026-02-23 — Backend Consolidation
+
+- 2026-02-23: "0 callers" grep can miss callers via __init__.py re-exports — always grep the symbol name directly AND check package __init__ re-exports before deleting → Rule: `grep -rn "symbol_name" .` is not sufficient; also check `grep -rn "from package import" .` to find indirect callers
+- 2026-02-23: shared.generation yaml_helper/author_helper appeared dead but were exposed via shared/generation/__init__.py and used by component_summaries_handler → Rule: Before deleting any module, grep the full symbol name across all .py files, not just the import path
+- 2026-02-23: Validation shims (contamination_validator, schema_validator, prompt_validator, prompt_coherence_validator) — confirmed pattern: when a shim's deprecation message says "use X instead", X is the correct redirect target
+- 2026-02-23: author_manager inversion (shared importing from export) — fix by cop- 2026-02-23: author_manager inversion (shared importing from export) — fix by cop- 2026-0eed- 2026-02-23: author_manager inverection should always flow export→shared, never shared→export
+
+## 2026-02-23 — YAML + Validator Consolidation
+
+- 2026-02-23: yaml_io.py and yaml_utils.py had near-identical functions (load_yaml, save_yaml, validate_yaml_structure) — canonical is the one with most callers (17 vs 2); fix by redirecting minority callers → Rule: when two files have same function names, count callers to identify canonical
+- 2026-02-23: yaml_loader.py had genuinely different implementation (C-based LibYAML loader, 10x faster) — merge the functions into yaml_utils, shim the old path → Rule: before aliasing a "fast" variant away, verify it's actually the same implementation
+- 2026-02-23: validator.py was named generically but contained the "Unified Prompt Validator" — rename to match actual purpose (unified_validator.py); shim old path for backward compat → Rule: file names should describe what they are; if docs/deprecation notices call it by a different name, rename the file
+- 2026-02-23: Docs- 2026-02-23: Docs- 2026-02-23: Docs- 2026-02-23: Docs- 2026-02-23: Docs- 2026-02-23:  as- 2026-02-23: Docs- 2026-02-23: Docs- 2026-02-2ide a triple-quoted string before acting on it
+
+## 2026-02-23 — Prompt Validator Collapse
+
+- 2026-02-23: DeprecationWarning on import in prompt_validator.py fired on every generator.py run — caused by a premature deprecation notice (no equivalent replacement actually existed yet); fix by moving implementation to canonical and making shim warning-free → Rule: only emit DeprecationWarning when a true equivalent replacement exists at the suggested import path
+- 2026-02-23: content_validator.py already existed for a completely different purpose (wraps shared.validation.core.content.ContentValidator) — always check target filename before creating → Rule: list directory before choosing a filename for any new file
+- 2026-02-23: Two files serving related but distinct purposes (text/image validation vs coherence validation) can be combined into one canonical when they live in the same package and have no circular dependence — shim the old paths for zero caller disrupti- 2026-02-23: Two files serving related but distinct purposes (text/image validatiout - 2026-02-23: Two files serving related btion
+
+## 2026-02-23 — Validation Shim Cleanup + Namespace Collapse
+
+- 2026-02-23: 5 validation shims had warnings.warn() firing on every import — suppressed by callers using -W ignore, creating silent noise; found by running -W error::DeprecationWarning → Rule: always verify shim cleanup with -W error::DeprecationWarning, not just -W ignore
+- 2026-02-23: quality_validator.py and post_generation_service.py had DeprecationWarning at top but were actual 225/556-line implementations, not shims — the warning was premature and incorrect → Rule: never add DeprecationWarning to a file unless a true equivalent replacement path exists AND has been verified
+- 2026-02-23: shared/services/validation/ was a stray namespace with 1 external caller — collapsed by copying files to shared/validation/services/, updating the caller, replacing old __init__ with absolute-import shim; old relative imports in shim would have broken silently → Rule: when shimming a package, use absolute imports (from shared.x.y import Z) not r- 2026-02-23: shared/services/validation/ was a stray namespas no longer exist at the relative path
+
+## 2026-02-23 — Leftover Cleanup + Dead Code Removal
+
+- 2026-02-23: Archiving source files from a shimmed package breaks any __init__.py that used relative imports to those same files — shared/services/__init__.py had `.validation.orchestrator` relative import alongside the shim → Rule: when archiving source files, grep for relative imports (from .module import) not just absolute (from package.module import)
+- 2026-02-23: shared/commands/common.py had get_research_service() importing a module that does not exist (property_research_service.py) — dormant crash, 0 callers; git diff confirmed pre-existing → Rule: a function in __all__ with 0 callers is a dead-code candidate; confirm with grep before leaving it
+
+## 2026-02-23 — Production Bug Fix + Dead Code Archive (session 7)
+
+- 2026-02-23: domains/materials/utils/property_enhancer.py had same function name as shared/utils/core/property_enhancer.py but was a 21-line no-op stub (return content as-is) — component_generators.py used the stub, silently skipping enhancement in production → Rule: when two files share a function name, diff their implementations; a file that returns its input unchanged is a stub, not an implementation
+- 2026-02-23: domains/contaminants/contamination_levels.py was a 171-line near-copy of shared/types/contamination_levels.py with 0 callers — diverged on 2 "dirt" vs "dust" string differences, making it a data drift risk → Rule: domain-level copies of shared type data files are drift risks; grep callers before concluding which is live

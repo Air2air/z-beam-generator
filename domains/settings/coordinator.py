@@ -7,9 +7,7 @@ Extends DomainCoordinator base class to provide unified generation architecture.
 """
 
 import logging
-from pathlib import Path
 from typing import Any, Dict, Optional
-import yaml
 
 from shared.domain.base_coordinator import DomainCoordinator
 
@@ -39,17 +37,14 @@ class SettingCoordinator(DomainCoordinator):
     
     def _create_data_loader(self):
         """
-        Create settings data loader.
-        
-        Note: Settings use load_settings_data() function, not class-based loader.
-        Returns None since data loading is handled via _load_domain_data() (base class).
+        Settings load data via _load_domain_data() in the base class.
         """
         return None
-    
+
     def _load_settings_data(self) -> Dict:
-        """Load settings data - wrapper for _load_domain_data for backwards compatibility"""
+        """Backwards-compatible wrapper — prefer _load_domain_data() directly."""
         return self._load_domain_data()
-    
+
     def _get_item_data(self, item_id: str) -> Dict:
         """Get setting data from Settings.yaml"""
         settings_data = self._load_domain_data()
@@ -71,63 +66,20 @@ class SettingCoordinator(DomainCoordinator):
     ) -> Dict[str, Any]:
         """
         Generate content for a specific setting and component type.
-        
-        Wrapper for universal generate_content method with settings-specific naming.
-        
-        Args:
-            setting_id: Setting identifier (e.g., "power", "speed", "frequency")
-            component_type: Type of content to generate (e.g., "description")
-            force_regenerate: Whether to regenerate even if content exists
-            
-        Returns:
-            Dict with generation results (see DomainCoordinator.generate_content)
+        Alias for generate_content() with settings-specific naming.
         """
         return self.generate_content(setting_id, component_type, force_regenerate)
-    
+
     def generate_all_components_for_setting(
         self,
         setting_id: str,
         force_regenerate: bool = False
     ) -> Dict[str, Any]:
         """
-        Generate all enabled component types for a setting.
-        
-        Args:
-            setting_id: Setting identifier
-            force_regenerate: Whether to regenerate existing content
-            
-        Returns:
-            Dict with results for each component type
+        Generate all component types for a setting.
+        Delegates to base generate_all_components() using prompt-directory discovery.
         """
-        results = {}
-        enabled_types = [
-            comp_type for comp_type, config in self.domain_config['component_types'].items()
-            if config.get('enabled', True)
-        ]
-        
-        logger.info(
-            f"Generating {len(enabled_types)} component types for {setting_id}: "
-            f"{enabled_types}"
-        )
-        
-        for component_type in enabled_types:
-            try:
-                result = self.generate_setting_content(
-                    setting_id=setting_id,
-                    component_type=component_type,
-                    force_regenerate=force_regenerate
-                )
-                results[component_type] = result
-            except Exception as e:
-                logger.error(
-                    f"Failed to generate {component_type} for {setting_id}: {e}"
-                )
-                results[component_type] = {
-                    'success': False,
-                    'error': str(e)
-                }
-        
-        return results
+        return self.generate_all_components(setting_id, force_regenerate)
     
     def get_setting_data(self, setting_id: str) -> Optional[Dict[str, Any]]:
         """Get setting data for context."""

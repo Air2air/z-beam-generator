@@ -392,7 +392,7 @@ Mandatory overwrite ensures:
 
 ### Distinctive Properties
 
-**File**: `scripts/backfill/populate_distinctive_properties.py`
+**File**: `scripts/archive/completed-backfills/populate_distinctive_properties.py` *(archived — ran once)*
 
 ```python
 # Backfills _distinctive_materialCharacteristics_description with specific values
@@ -465,7 +465,7 @@ Before merging ANY backfill generator changes:
 - **Implementation**: `generation/backfill/universal_text_generator.py`
 - **Tests**: `tests/test_mandatory_overwrite.py`
 - **Structural Patterns**: `data/schemas/section_display_schema.yaml`
-- **Distinctive Properties**: `scripts/backfill/populate_distinctive_properties.py`
+- **Distinctive Properties**: `scripts/archive/completed-backfills/populate_distinctive_properties.py` *(archived)*
 - **Related Policy**: `.github/copilot-instructions.md` Core Principle 0.6
 
 ---

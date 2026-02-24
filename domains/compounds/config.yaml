@@ -6,6 +6,10 @@ data_path: "data/compounds/Compounds.yaml"
 data_root_key: "compounds"
 frontmatter_pattern: "{slug}-compound.yaml"
 
+frontmatter:
+  directory: "../z-beam/frontmatter/compounds"
+  filename_pattern: "{slug}-compound.yaml"
+
 data_adapter:
   data_path: "data/compounds/Compounds.yaml"
   data_root_key: "compounds"

@@ -7,11 +7,9 @@ Now extends DomainCoordinator to eliminate duplication.
 """
 
 import logging
-from pathlib import Path
 from typing import Any, Dict, Optional
 
 from shared.domain.base_coordinator import DomainCoordinator
-from domains.compounds.data_loader_v2 import CompoundsDataLoader
 
 logger = logging.getLogger(__name__)
 
@@ -38,15 +36,15 @@ class CompoundCoordinator(DomainCoordinator):
         return "compounds"
     
     def _create_data_loader(self):
-        """Create compounds data loader"""
-        return CompoundsDataLoader()
-    
+        """Compounds load data via _load_domain_data() in the base class."""
+        return None
+
     def _get_item_data(self, item_id: str) -> Dict:
-        """Get compound data from Compounds.yaml"""
-        compound = self.data_loader.get_compound(item_id)
-        if not compound:
+        """Get compound data from Compounds.yaml."""
+        compounds_data = self._load_domain_data()
+        if item_id not in compounds_data['compounds']:
             raise ValueError(f"Compound not found: {item_id}")
-        return compound
+        return compounds_data['compounds'][item_id]
     
     def _save_content(self, item_id: str, component_type: str, content: str, author_id: Optional[int] = None) -> None:
         """Save content to Compounds.yaml - handled by QualityEvaluatedGenerator"""
@@ -62,68 +60,28 @@ class CompoundCoordinator(DomainCoordinator):
     ) -> Dict[str, Any]:
         """
         Generate content for a specific compound and component type.
-        
-        Wrapper for universal generate_content method with compounds-specific naming.
-        
-        Args:
-            compound_id: Compound identifier (e.g., "formaldehyde")
-            component_type: Type of content to generate (e.g., "description")
-            force_regenerate: Whether to regenerate even if content exists
-            
-        Returns:
-            Dict with generation results (see UniversalDomainCoordinator.generate_content)
+        Alias for generate_content() with compounds-specific naming.
         """
         return self.generate_content(compound_id, component_type, force_regenerate)
-    
+
     def generate_all_components_for_compound(
         self,
         compound_id: str,
         force_regenerate: bool = False
     ) -> Dict[str, Any]:
         """
-        Generate all enabled component types for a compound.
-        
-        Args:
-            compound_id: Compound identifier
-            force_regenerate: Whether to regenerate existing content
-            
-        Returns:
-            Dict with results for each component type
+        Generate all component types for a compound.
+        Delegates to base generate_all_components() using prompt-directory discovery.
         """
-        results = {}
-        enabled_types = [
-            comp_type for comp_type, config in self.domain_config['component_types'].items()
-            if config.get('enabled', True)
-        ]
-        
-        logger.info(
-            f"Generating {len(enabled_types)} component types for {compound_id}: "
-            f"{enabled_types}"
-        )
-        
-        for component_type in enabled_types:
-            try:
-                result = self.generate_compound_content(
-                    compound_id=compound_id,
-                    component_type=component_type,
-                    force_regenerate=force_regenerate
-                )
-                results[component_type] = result
-            except Exception as e:
-                logger.error(
-                    f"Failed to generate {component_type} for {compound_id}: {e}"
-                )
-                results[component_type] = {
-                    'success': False,
-                    'error': str(e)
-                }
-        
-        return results
-    
+        return self.generate_all_components(compound_id, force_regenerate)
+
     def get_compound_data(self, compound_id: str) -> Optional[Dict[str, Any]]:
         """Get compound data for context."""
-        return self.data_loader.get_compound(compound_id)
-    
+        try:
+            return self._get_item_data(compound_id)
+        except ValueError:
+            return None
+
     def list_compounds(self) -> list:
         """Get list of all compound IDs."""
-        return self.data_loader.list_compound_ids()
+        return list(self._load_domain_data()['compounds'].keys())

@@ -29,7 +29,7 @@ from shared.image.utils.prompt_builder import SharedPromptBuilder
 
 # Centralized metal classification for accurate rust prevention
 from shared.utils.metal_classifier import get_classifier
-from shared.validation.contamination_validator import ContaminationValidator
+from shared.validation.domain.contamination_validator import ContaminationValidator
 
 logger = logging.getLogger(__name__)
 

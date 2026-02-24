@@ -268,7 +268,7 @@ _section:
 - `tests/unit/test_section_metadata.py` - Unit tests for schema structure (if exists)
 
 ### Scripts (Maintenance)
-- `scripts/enrichment/enrich_section_metadata.py` - Enriches source data from schema
+- `scripts/archive/completed-enrichments/enrich_section_metadata.py` - Enriches source data from schema *(archived — ran once)*
 - `scripts/data/test_section_metadata_generation.py` - Tests schema loading
 
 ---

@@ -15,7 +15,7 @@ def run_data_validation(report_file = None) -> bool:
 
         import yaml
 
-        from shared.validation.schema_validator import SchemaValidator
+        from shared.validation.core.schema import SchemaValidator
         
         print("🔍 Running Comprehensive Data Validation")
         print("=" * 60)

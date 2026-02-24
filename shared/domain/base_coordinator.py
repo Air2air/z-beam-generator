@@ -18,7 +18,7 @@ Purpose: Consolidate ~400 lines of duplicated coordinator code
 import logging
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 import yaml
 
@@ -53,6 +53,9 @@ class DomainCoordinator(ABC):
         Args:
             api_client: API client for content generation (optional for testing/inspection mode)
         """
+        # Module-level logger accessible as self.logger for subclasses
+        self.logger = logging.getLogger(self.__class__.__module__ + '.' + self.__class__.__name__)
+
         # Data loader (domain-specific, created by subclass)
         self.data_loader = self._create_data_loader()
         
@@ -310,3 +313,52 @@ class DomainCoordinator(ABC):
         prompt_dir = project_root / "prompts" / self.domain_name
         prompt_file = prompt_dir / f"{component_type}.txt"
         return prompt_file.exists()
+
+    def list_component_types(self) -> List[str]:
+        """
+        Discover all component types available for this domain from prompts directory.
+
+        Returns:
+            Sorted list of component type names derived from prompts/{domain}/*.txt filenames.
+        """
+        project_root = Path(__file__).parent.parent.parent
+        prompt_dir = project_root / "prompts" / self.domain_name
+        if not prompt_dir.exists():
+            return []
+        return sorted(f.stem for f in prompt_dir.glob("*.txt"))
+
+    def generate_all_components(
+        self,
+        item_id: str,
+        force_regenerate: bool = False
+    ) -> Dict[str, Any]:
+        """
+        Generate all component types for an item using prompt-directory discovery.
+
+        Domain-agnostic: discovers types from prompts/{domain}/*.txt at runtime.
+        All domains inherit this; no per-domain override needed.
+
+        Args:
+            item_id: Item identifier (material name, compound id, etc.)
+            force_regenerate: Whether to regenerate existing content
+
+        Returns:
+            Dict mapping component_type -> generation result dict
+        """
+        component_types = self.list_component_types()
+        logger.info(
+            f"Generating {len(component_types)} component types for {item_id}: "
+            f"{component_types}"
+        )
+        results = {}
+        for component_type in component_types:
+            try:
+                results[component_type] = self.generate_content(
+                    item_id, component_type, force_regenerate
+                )
+            except Exception as e:
+                logger.error(
+                    f"Failed to generate {component_type} for {item_id}: {e}"
+                )
+                results[component_type] = {"success": False, "error": str(e)}
+        return results
