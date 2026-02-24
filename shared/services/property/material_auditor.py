@@ -52,7 +52,7 @@ from shared.utils.requirements_loader import (
     is_prohibited_field_in_materials,
     is_prohibited_source,
 )
-from shared.validation.schema_validator import SchemaValidator
+from shared.validation.core.schema import SchemaValidator
 
 
 class AuditSeverity(Enum):

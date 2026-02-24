@@ -29,7 +29,7 @@ from export.qualitative_properties import (
 )
 
 # Validation utilities for confidence normalization
-from shared.services.validation import ValidationOrchestrator
+from shared.validation.services import ValidationOrchestrator
 from shared.exceptions import ConfigurationError
 from shared.validation.errors import PropertyDiscoveryError
 

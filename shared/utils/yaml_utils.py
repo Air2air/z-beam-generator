@@ -13,10 +13,21 @@ Purpose: Code consolidation and DRY compliance
 
 import tempfile
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import yaml
 
+# Try to import C-based loaders (10x faster for large files)
+try:
+    from yaml import CDumper as _CDumper
+    from yaml import CLoader as _CLoader
+    _FAST_LOADER_AVAILABLE = True
+    YAML_LOADER_TYPE = "C-based (LibYAML)"
+except ImportError:
+    from yaml import Dumper as _CDumper  # type: ignore[assignment]
+    from yaml import Loader as _CLoader  # type: ignore[assignment]
+    _FAST_LOADER_AVAILABLE = False
+    YAML_LOADER_TYPE = "Python (slower)"
 
 def load_yaml(file_path: Path) -> Dict[str, Any]:
     """
@@ -254,4 +265,63 @@ def get_yaml_size_stats(file_path: Path) -> Dict[str, Any]:
         'top_level_keys': len(data),
         'max_depth': get_depth(data),
         'is_empty': not data
+    }
+
+
+# ---------------------------------------------------------------------------
+# Fast C-loader variants (10x faster for large files when LibYAML is installed)
+# Migrated from shared/utils/yaml_loader.py
+# ---------------------------------------------------------------------------
+
+def load_yaml_fast(file_path: Union[str, Path]) -> Any:
+    """
+    Load YAML with fastest available loader (C-based LibYAML when available).
+
+    Args:
+        file_path: Path to YAML file
+
+    Returns:
+        Parsed YAML data
+
+    Raises:
+        FileNotFoundError: If file doesn't exist
+        yaml.YAMLError: If YAML is invalid
+
+    Performance:
+        ~0.5s for 3 MB file with C loader vs ~5s with Python loader.
+    """
+    file_path = Path(file_path)
+    if not file_path.exists():
+        raise FileNotFoundError(f"YAML file not found: {file_path}")
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return yaml.load(f, Loader=_CLoader)
+
+
+def dump_yaml_fast(data: Any, file_path: Union[str, Path], **kwargs) -> None:
+    """
+    Dump YAML with fastest available dumper.
+
+    Args:
+        data: Data to dump
+        file_path: Output file path
+        **kwargs: Passed to yaml.dump() (default_flow_style, allow_unicode, etc.)
+    """
+    file_path = Path(file_path)
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+    dump_kwargs: Dict[str, Any] = {
+        'allow_unicode': True,
+        'default_flow_style': False,
+        'sort_keys': False,
+    }
+    dump_kwargs.update(kwargs)
+    with open(file_path, 'w', encoding='utf-8') as f:
+        yaml.dump(data, f, Dumper=_CDumper, **dump_kwargs)
+
+
+def get_loader_info() -> Dict[str, Any]:
+    """Return information about the active YAML loader."""
+    return {
+        'loader_type': YAML_LOADER_TYPE,
+        'fast_loader_available': _FAST_LOADER_AVAILABLE,
+        'estimated_speedup': '10x' if _FAST_LOADER_AVAILABLE else '1x',
     }

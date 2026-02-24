@@ -20,18 +20,8 @@ resilient quality assurance.
 """
 
 import time
-import warnings
 from dataclasses import dataclass
 from typing import Dict, List, Optional
-
-# Issue deprecation warning on import
-warnings.warn(
-    "utils.validation.quality_validator is deprecated. "
-    "Use validation.content_validator.ContentValidationService instead. "
-    "See docs/CONTENT_VALIDATION_SYSTEM.md for migration guide.",
-    DeprecationWarning,
-    stacklevel=2
-)
 
 
 @dataclass

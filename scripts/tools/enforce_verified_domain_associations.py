@@ -19,8 +19,8 @@ from typing import Any, Dict, List
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from shared.utils.yaml_loader import load_yaml_fast as load_yaml
-from shared.utils.yaml_loader import dump_yaml_fast as save_yaml
+from shared.utils.yaml_utils import load_yaml_fast as load_yaml
+from shared.utils.yaml_utils import dump_yaml_fast as save_yaml
 
 DOMAIN_ASSOCIATIONS_PATH = PROJECT_ROOT / "data" / "associations" / "DomainAssociations.yaml"
 

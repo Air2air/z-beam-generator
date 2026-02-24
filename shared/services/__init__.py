@@ -19,9 +19,8 @@ from shared.services.template_service import TemplateService
 # PropertyManager moved to components/frontmatter/services/property_manager.py
 from .property.material_auditor import MaterialAuditor
 
-# Validation Services
-from .validation.orchestrator import ValidationOrchestrator
-from .validation.schema_validator import SchemaValidator
+# Validation Services (canonical: shared/validation/services/)
+from shared.validation.services import ValidationOrchestrator, SchemaValidator
 
 __all__ = [
     # Validation Services

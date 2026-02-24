@@ -21,26 +21,6 @@ Provides multi-dimensional quality scoring for generated content
 """
 
 import logging
-import warnings
-from dataclasses import dataclass, field
-from datetime import datetime
-from typing import Any, Dict, List, Optional
-
-# Issue deprecation warning on import
-warnings.warn(
-    "validation.services.post_generation_service is deprecated. "
-    "Use validation.content_validator.ContentValidationService instead. "
-    "See docs/CONTENT_VALIDATION_SYSTEM.md for migration guide.",
-    DeprecationWarning,
-    stacklevel=2
-)
-
-logger = logging.getLogger(__name__)
-
-
-import logging
-
-# Import existing validators
 import sys
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -52,11 +32,9 @@ import yaml
 project_root = Path(__file__).parent.parent.parent
 sys.path.append(str(project_root))
 
-from shared.validation.micro_integration_validator import MicroIntegrationValidator
-from shared.validation.schema_validator import SchemaValidator
-from shared.validation.schema_validator import (
-    ValidationResult as SchemaValidationResult,
-)
+from shared.validation.core.content import MicroIntegrationValidator
+from shared.validation.core.schema import SchemaValidator
+from shared.validation.errors import ValidationResult as SchemaValidationResult
 
 logger = logging.getLogger(__name__)
 

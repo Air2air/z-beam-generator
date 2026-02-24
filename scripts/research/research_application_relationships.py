@@ -25,8 +25,8 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from shared.api.client_factory import create_api_client
 from shared.api.client import GenerationRequest
-from shared.utils.yaml_loader import load_yaml_fast as load_yaml
-from shared.utils.yaml_loader import dump_yaml_fast as save_yaml
+from shared.utils.yaml_utils import load_yaml_fast as load_yaml
+from shared.utils.yaml_utils import dump_yaml_fast as save_yaml
 from run import API_PROVIDERS
 APPLICATIONS_PATH = PROJECT_ROOT / "data" / "applications" / "Applications.yaml"
 MATERIALS_PATH = PROJECT_ROOT / "data" / "materials" / "Materials.yaml"

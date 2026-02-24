@@ -29,7 +29,7 @@ from typing import Dict, List, Optional
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from shared.utils.yaml_loader import load_yaml_fast as load_yaml, dump_yaml_fast as save_yaml
+from shared.utils.yaml_utils import load_yaml_fast as load_yaml, dump_yaml_fast as save_yaml
 from shared.api.client_factory import create_api_client
 from domains.materials.coordinator import MaterialsCoordinator
 

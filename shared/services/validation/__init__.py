@@ -1,25 +1,14 @@
 #!/usr/bin/env python3
 """
-Validation Services Module
+Backward-compat shim - implementation moved to shared.validation.services
 
-Consolidated validation services with unified interfaces.
-Part of system consolidation to organize validation functionality.
-
-Services:
-- ValidationOrchestrator: Unified validation coordination
-- SchemaValidator: Single schema validation system
-
-Last Updated: October 22, 2025
+Date: February 23, 2026
 """
-
-# Convenience functions
-from .orchestrator import (
+from shared.validation.services import (
     ComprehensiveValidationResult,
     ValidationOrchestrator,
     validate_material,
     validate_material_lifecycle,
-)
-from .schema_validator import (
     SchemaType,
     SchemaValidator,
     ValidationResult,
@@ -30,22 +19,15 @@ from .schema_validator import (
 )
 
 __all__ = [
-    # Primary Services
-    'ValidationOrchestrator',
-    'SchemaValidator',
-    
-    # Result Types
-    'ComprehensiveValidationResult',
-    'ValidationResult',
-    
-    # Enums
-    'ValidationMode',
-    'SchemaType',
-    
-    # Convenience Functions
-    'validate_material_lifecycle',
-    'validate_material',
-    'validate_frontmatter',
-    'validate_materials_yaml',
-    'validate_categories_yaml',
+    "ValidationOrchestrator",
+    "SchemaValidator",
+    "ComprehensiveValidationResult",
+    "ValidationResult",
+    "ValidationMode",
+    "SchemaType",
+    "validate_material_lifecycle",
+    "validate_material",
+    "validate_frontmatter",
+    "validate_materials_yaml",
+    "validate_categories_yaml",
 ]

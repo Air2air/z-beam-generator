@@ -50,13 +50,6 @@ def get_pre_generation_service():
     from shared.validation.services.pre_generation_service import PreGenerationService
     return PreGenerationService()
 
-def get_research_service():
-    """Get the research service"""
-    from shared.services.property.property_research_service import (
-        PropertyResearchService,
-    )
-    return PropertyResearchService()
-
 def get_quality_service():
     """Get the quality service"""
     from shared.validation.services.post_generation_service import PostGenerationService
@@ -108,7 +101,6 @@ __all__ = [
     'validate_and_improve_frontmatter',
     'validate_batch_generation',
     'get_pre_generation_service',
-    'get_research_service',
     'get_quality_service',
     'PIPELINE_AVAILABLE',
 ]

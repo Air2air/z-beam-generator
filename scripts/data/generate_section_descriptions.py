@@ -21,7 +21,7 @@ from typing import Dict, Tuple
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from shared.utils.yaml_io import load_yaml, save_yaml
+from shared.utils.yaml_utils import load_yaml, save_yaml
 from shared.text.utils.prompt_registry_service import PromptRegistryService
 
 
