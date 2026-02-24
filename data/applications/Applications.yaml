@@ -1,26 +1,5 @@
-schemaVersion: 5.0.0
-lastUpdated: '2026-02-21'
-industryIndex:
-- id: aerospace
-  displayName: Aerospace
-- id: automotive
-  displayName: Automotive
-- id: electronics
-  displayName: Electronics
-- id: medical-devices
-  displayName: Medical Devices
-- id: energy-power
-  displayName: Energy and Power
-- id: rail-transport
-  displayName: Rail Transport
-- id: shipbuilding-marine
-  displayName: Shipbuilding and Marine
-- id: construction-equipment
-  displayName: Construction Equipment
-- id: food-processing
-  displayName: Food Processing
-- id: defense
-  displayName: Defense
+schemaVersion: 1.0.0
+lastUpdated: '2026-02-23'
 applications:
   aerospace-laser-cleaning-applications:
     id: aerospace-laser-cleaning-applications
@@ -29,38 +8,25 @@ applications:
     category: applications
     subcategory: aerospace
     datePublished: '2026-02-21'
-    dateModified: '2026-02-22T19:57:42.000Z'
+    dateModified: '2026-02-23T22:40:27.174066+00:00'
     contentType: application
     schemaVersion: 5.0.0
-    slug: aerospace-laser-cleaning-applications
     fullPath: /applications/aerospace-laser-cleaning-applications
-    pageTitle: Aerospace Laser Cleaning
-    pageDescription: Laser cleaning in aerospace applications removes contaminants
-      from aircraft surfaces and components, and it achieves this without harsh chemicals
-      or abrasive methods. Technicians typically dial in the process for delicate
-      parts like turbine blades or fuselage panels, ensuring a clean finish that maintains
-      structural integrity. Deployment often lines up with routine maintenance schedules,
-      but operators must address challenges such as precise control to avoid surface
-      damage on sensitive alloys. Overall, this method improves efficiency in paint
-      stripping and rust removal, while compliance with aviation safety standards
-      requires thorough training and protective gear to handle laser emissions effectively.
-    authorId: 4
     breadcrumb:
     - label: Home
       href: /
     - label: Applications
       href: /applications
-    metaDescription: Laser cleaning in aerospace applications removes contaminants
-      from aircraft surfaces and components, and it achieves this without harsh chemicals
-      or abrasive...
-    keywords:
-    - Aerospace Laser Cleaning
-    - Aerospace
-    card:
-      title: Aerospace Laser Cleaning
-      description: Laser cleaning in aerospace applications removes contaminants from
-        aircraft surfaces and components, and it achieves this without harsh chemicals
-        or abrasive...
+    pageTitle: Aerospace Laser Cleaning
+    pageDescription: Laser cleaning in aerospace applications removes contaminants from aircraft surfaces and components,
+      and it achieves this without harsh chemicals or abrasive methods. Technicians typically dial in the process for delicate
+      parts like turbine blades or fuselage panels, ensuring a clean finish that maintains structural integrity. Deployment
+      often lines up with routine maintenance schedules, but operators must address challenges such as precise control to
+      avoid surface damage on sensitive alloys. Overall, this method improves efficiency in paint stripping and rust removal,
+      while compliance with aviation safety standards requires thorough training and protective gear to handle laser emissions
+      effectively.
+    metaDescription: Laser cleaning in aerospace applications removes contaminants from aircraft surfaces and components,
+      and it achieves this without harsh chemicals or abrasive...
     relationships:
       discovery:
         relatedMaterials:
@@ -98,8 +64,6 @@ applications:
             image: /images/material/cobalt-laser-cleaning-hero.jpg
           _section:
             sectionTitle: Common Materials
-            sectionDescription: Materials most frequently cleaned in this application
-              context.
             icon: layers
             order: 30
             variant: default
@@ -113,112 +77,72 @@ applications:
             subcategory: paint
             url: /contaminants/inorganic-coating/paint/paint-residue-contamination
             image: /images/contaminant/paint-residue-contamination-hero.jpg
-            description: "Paint-residue contamination arises from degraded coatings\
-              \ on surfaces. This contamination, it forms unique irregular patterns,\
-              \ like patchy layers from uneven paint application and environmental\
-              \ weathering. Formation occurs through adhesion of pigments and binders,\
-              \ creating thick, non-uniform deposits that resist initial breakdown.\n\
-              \nRemoval challenges emerge in laser cleaning. Residue exhibits strong\
-              \ bonding to substrates, thus demands precise energy pulses to avoid\
-              \ substrate damage. On metallic materials, it shows thermal stability\
-              \ and charring tendency, complicating clean detachment. For polymeric\
-              \ surfaces, behavior differs; residue peels in flakes but leaves adhesive\
-              \ traces. Treatment applies laser ablation, and surface already exhibits\
-              \ reduced roughness, though traces still persist in crevices. Analysis\
-              \ confirms these patterns, so adjustment of parameters enhances efficiency.\
-              \ \n\nYi-Chun Lin, Ph.D., Taiwan"
           - id: carbon-soot-contamination
             name: Carbon Soot Deposits
             category: organic-residue
             subcategory: other
             url: /contaminants/organic-residue/other/carbon-soot-contamination
             image: /images/contaminant/carbon-soot-contamination-hero.jpg
-            description: 'Carbon-soot contamination, it emerges from incomplete combustion
-              processes and deposits as irregular, porous layers on material surfaces.
-              Formation patterns reveal unique regional variations, where soot clusters
-              in dense patches on metallic substrates and spreads thinly on polymers,
-              thus creating uneven adhesion profiles. This contamination, it absorbs
-              laser energy efficiently yet resists complete removal due to its volatile
-              organic composition. Removal challenges arise from thermal gradients
-              during ablation; soot vaporizes rapidly, and residues scatter, so secondary
-              contamination risks increase on nearby areas. Material-specific behaviors
-              differ markedly—on steels, soot bonds tenaciously and demands pulsed
-              laser sequences for dislodgement, while on ceramics, it flakes off more
-              readily following initial irradiation. After treatment, surfaces exhibit
-              reduced roughness, yet traces persist in crevices, thus requiring multi-pass
-              cleaning for uniformity.
-
-
-              Yi-Chun Lin, Ph.D., Taiwan'
           - id: adhesive-residue-contamination
             name: Adhesive Residue / Tape Marks
             category: organic-residue
             subcategory: adhesive
             url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
             image: /images/contaminant/adhesive-residue-contamination-hero.jpg
-            description: 'Adhesive residue contamination forms during shipping or
-              labeling processes on manufactured items. Tape or stickers leave sticky
-              layers after removal, so surfaces exhibit uneven organic buildup. Before
-              cleaning, residue adheres tightly to substrates like metals and woods,
-              causing discoloration and reduced functionality.
-
-
-              This contamination shows patchy patterns, with thicker spots near edges.
-              On aluminum or glass, it penetrates slightly into pores, so removal
-              demands careful approach. During laser exposure, heat vaporizes organics
-              effectively, but residue''s tackiness leads to re-deposition if pulses
-              are not spaced properly.
-
-
-              Challenges arise because incomplete ablation leaves films that attract
-              dust, and on polymers like nylon, overheating risks substrate damage.
-              Laser cleaning achieves clean surfaces on stainless steel or wood, as
-              residue breaks down without mechanical force. After treatment, uniformity
-              is observed across materials such as copper and oak.
-
-
-              Ikmanda Roswati, Ph.D.'
           - id: rubber-residue-contamination
             name: Rubber Compound Residue
             category: organic-residue
             subcategory: polymer
             url: /contaminants/organic-residue/polymer/rubber-residue-contamination
             image: /images/contaminant/rubber-residue-contamination-hero.jpg
-            description: Rubber residue contamination forms sticky layers on surfaces
-              during processing. Before cleaning, buildup adheres tightly because
-              rubber compounds polymerize under heat and pressure. This creates uneven
-              patterns, like patchy films that embed into metal pores. So, laser cleaning
-              faces challenges in removal, as residue resists vaporization without
-              damaging substrate. Material behaviors vary; on steel, residue softens
-              gradually during exposure, but on aluminum, it scatters fragments so
-              multiple passes are needed. After treatment, surfaces exhibit cleaner
-              uniformity. Process removes organic residue effectively, yet careful
-              control prevents re-deposition from airborne particles. Results indicate
-              that optimized pulses achieve better detachment.
           - id: insect-residue-contamination
             name: Insect Impact Residue
             category: biological
             subcategory: deposit
             url: /contaminants/biological/deposit/insect-residue-contamination
             image: /images/contaminant/insect-residue-contamination-hero.jpg
-            description: Insect-residue contamination, it arises from biological impacts
-              on surfaces. Collisions cause splattering, and residue adheres irregularly.
-              Organic matter like chitin and proteins forms patchy layers, thus creating
-              unique patterns of uneven thickness. This contamination, it resists
-              laser cleaning due to sticky nature. Ablation attempts lead to charring,
-              so removal challenges intensify. On metallic materials, residue bonds
-              tightly and demands higher energy pulses. Polymers show embedding, where
-              residue penetrates and complicates detachment. After treatment, surfaces
-              exhibit residues still persisting in crevices. Tailored laser adjustments
-              follow, thus enhancing efficiency without substrate damage. Evidence
-              from observations confirms these behaviors, so precise control establishes
-              clean results.
           _section:
             sectionTitle: Common Contaminants
-            sectionDescription: Contaminants typically removed in these applications.
             icon: droplet
             order: 31
             variant: default
+    author:
+      id: 4
+      name: Todd Dunning
+      country: United States
+      countryDisplay: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      personaFile: usa_persona.yaml
+      formattingFile: usa_formatting.yaml
+    card:
+      title: Aerospace Laser Cleaning
+      description: Laser cleaning in aerospace applications removes contaminants from aircraft surfaces and components, and
+        it achieves this without harsh chemicals or abrasive...
+    keywords:
+    - Aerospace Laser Cleaning
+    - Aerospace
+    slug: aerospace-laser-cleaning-applications
+    authorId: 4
   automotive-laser-cleaning-applications:
     id: automotive-laser-cleaning-applications
     name: Automotive
@@ -226,40 +150,25 @@ applications:
     category: applications
     subcategory: automotive
     datePublished: '2026-02-21'
-    dateModified: '2026-02-22T21:00:49.000Z'
+    dateModified: '2026-02-23T22:40:27.245141+00:00'
     contentType: application
     schemaVersion: 5.0.0
-    slug: automotive-laser-cleaning-applications
     fullPath: /applications/automotive-laser-cleaning-applications
-    pageTitle: Automotive Laser Cleaning
-    pageDescription: Automotive laser cleaning, it serves key applications in the
-      industry for removing contaminants from vehicle parts, and treatment achieves
-      effective surface preparation without damaging underlying materials. Before
-      process is initiated, surfaces often show buildup of rust or paint, so laser
-      ablation is applied to restore them cleanly. During exposure, precision control
-      is maintained to avoid overheating, because excessive heat could lead to material
-      distortion in components like engine blocks or frames. After this, results indicate
-      improved adhesion for coatings, with deployment typically constrained to controlled
-      environments to ensure operator safety. Contamination is already eliminated
-      from intricate areas, still compliance with emission standards remains essential,
-      as vapors are generated at the site.
-    authorId: 3
     breadcrumb:
     - label: Home
       href: /
     - label: Applications
       href: /applications
-    metaDescription: In automotive applications, laser cleaning removes contaminants
-      from vehicle surfaces effectively, so it prepares parts for painting or welding
-      without chemi...
-    keywords:
-    - Automotive Laser Cleaning
-    - Automotive
-    card:
-      title: Automotive Laser Cleaning
-      description: In automotive applications, laser cleaning removes contaminants
-        from vehicle surfaces effectively, so it prepares parts for painting or welding
-        without chemi...
+    pageTitle: Automotive Laser Cleaning
+    pageDescription: Automotive laser cleaning, it serves key applications in the industry for removing contaminants from
+      vehicle parts, and treatment achieves effective surface preparation without damaging underlying materials. Before process
+      is initiated, surfaces often show buildup of rust or paint, so laser ablation is applied to restore them cleanly. During
+      exposure, precision control is maintained to avoid overheating, because excessive heat could lead to material distortion
+      in components like engine blocks or frames. After this, results indicate improved adhesion for coatings, with deployment
+      typically constrained to controlled environments to ensure operator safety. Contamination is already eliminated from
+      intricate areas, still compliance with emission standards remains essential, as vapors are generated at the site.
+    metaDescription: In automotive applications, laser cleaning removes contaminants from vehicle surfaces effectively, so
+      it prepares parts for painting or welding without chemi...
     relationships:
       discovery:
         relatedMaterials:
@@ -297,8 +206,6 @@ applications:
             image: /images/material/copper-laser-cleaning-hero.jpg
           _section:
             sectionTitle: Common Materials
-            sectionDescription: Materials most frequently cleaned in this application
-              context.
             icon: layers
             order: 30
             variant: default
@@ -312,1087 +219,74 @@ applications:
             subcategory: adhesive
             url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
             image: /images/contaminant/adhesive-residue-contamination-hero.jpg
-            description: 'Adhesive residue contamination forms during shipping or
-              labeling processes on manufactured items. Tape or stickers leave sticky
-              layers after removal, so surfaces exhibit uneven organic buildup. Before
-              cleaning, residue adheres tightly to substrates like metals and woods,
-              causing discoloration and reduced functionality.
-
-
-              This contamination shows patchy patterns, with thicker spots near edges.
-              On aluminum or glass, it penetrates slightly into pores, so removal
-              demands careful approach. During laser exposure, heat vaporizes organics
-              effectively, but residue''s tackiness leads to re-deposition if pulses
-              are not spaced properly.
-
-
-              Challenges arise because incomplete ablation leaves films that attract
-              dust, and on polymers like nylon, overheating risks substrate damage.
-              Laser cleaning achieves clean surfaces on stainless steel or wood, as
-              residue breaks down without mechanical force. After treatment, uniformity
-              is observed across materials such as copper and oak.
-
-
-              Ikmanda Roswati, Ph.D.'
           - id: carbon-soot-contamination
             name: Carbon Soot Deposits
             category: organic-residue
             subcategory: other
             url: /contaminants/organic-residue/other/carbon-soot-contamination
             image: /images/contaminant/carbon-soot-contamination-hero.jpg
-            description: 'Carbon-soot contamination, it emerges from incomplete combustion
-              processes and deposits as irregular, porous layers on material surfaces.
-              Formation patterns reveal unique regional variations, where soot clusters
-              in dense patches on metallic substrates and spreads thinly on polymers,
-              thus creating uneven adhesion profiles. This contamination, it absorbs
-              laser energy efficiently yet resists complete removal due to its volatile
-              organic composition. Removal challenges arise from thermal gradients
-              during ablation; soot vaporizes rapidly, and residues scatter, so secondary
-              contamination risks increase on nearby areas. Material-specific behaviors
-              differ markedly—on steels, soot bonds tenaciously and demands pulsed
-              laser sequences for dislodgement, while on ceramics, it flakes off more
-              readily following initial irradiation. After treatment, surfaces exhibit
-              reduced roughness, yet traces persist in crevices, thus requiring multi-pass
-              cleaning for uniformity.
-
-
-              Yi-Chun Lin, Ph.D., Taiwan'
           - id: paint-residue-contamination
             name: Paint Residue / Coating Failure
             category: inorganic-coating
             subcategory: paint
             url: /contaminants/inorganic-coating/paint/paint-residue-contamination
             image: /images/contaminant/paint-residue-contamination-hero.jpg
-            description: "Paint-residue contamination arises from degraded coatings\
-              \ on surfaces. This contamination, it forms unique irregular patterns,\
-              \ like patchy layers from uneven paint application and environmental\
-              \ weathering. Formation occurs through adhesion of pigments and binders,\
-              \ creating thick, non-uniform deposits that resist initial breakdown.\n\
-              \nRemoval challenges emerge in laser cleaning. Residue exhibits strong\
-              \ bonding to substrates, thus demands precise energy pulses to avoid\
-              \ substrate damage. On metallic materials, it shows thermal stability\
-              \ and charring tendency, complicating clean detachment. For polymeric\
-              \ surfaces, behavior differs; residue peels in flakes but leaves adhesive\
-              \ traces. Treatment applies laser ablation, and surface already exhibits\
-              \ reduced roughness, though traces still persist in crevices. Analysis\
-              \ confirms these patterns, so adjustment of parameters enhances efficiency.\
-              \ \n\nYi-Chun Lin, Ph.D., Taiwan"
           - id: rubber-residue-contamination
             name: Rubber Compound Residue
             category: organic-residue
             subcategory: polymer
             url: /contaminants/organic-residue/polymer/rubber-residue-contamination
             image: /images/contaminant/rubber-residue-contamination-hero.jpg
-            description: Rubber residue contamination forms sticky layers on surfaces
-              during processing. Before cleaning, buildup adheres tightly because
-              rubber compounds polymerize under heat and pressure. This creates uneven
-              patterns, like patchy films that embed into metal pores. So, laser cleaning
-              faces challenges in removal, as residue resists vaporization without
-              damaging substrate. Material behaviors vary; on steel, residue softens
-              gradually during exposure, but on aluminum, it scatters fragments so
-              multiple passes are needed. After treatment, surfaces exhibit cleaner
-              uniformity. Process removes organic residue effectively, yet careful
-              control prevents re-deposition from airborne particles. Results indicate
-              that optimized pulses achieve better detachment.
           - id: scale-buildup-contamination
             name: Mineral Scale / Hard Water Deposits
             category: thermal-damage
             subcategory: scale
             url: /contaminants/thermal-damage/scale/scale-buildup-contamination
             image: /images/contaminant/scale-buildup-contamination-hero.jpg
-            description: "Scale buildup contamination forms differently on metals\
-              \ compared to ceramics, so removal challenges vary. On steel surfaces,\
-              \ layer adheres tightly from heat exposure, creating uneven patterns\
-              \ that resist laser pulses. Aluminum shows looser buildup, yet cracks\
-              \ during cleaning because thermal damage spreads fast. Treatment applies\
-              \ short bursts, and surface uniformity improves after this. Contamination\
-              \ exhibits thermal origins, so laser adjusts for material behavior.\
-              \ Buildup is detected in oxide forms, and process removes it effectively\
-              \ without substrate harm. Results indicate cleaner finishes on treated\
-              \ areas. \n\nIkmanda Roswati, Ph.D. from Indonesia"
           _section:
             sectionTitle: Common Contaminants
-            sectionDescription: Contaminants typically removed in these applications.
             icon: droplet
             order: 31
             variant: default
-  electronics-laser-cleaning-applications:
-    id: electronics-laser-cleaning-applications
-    name: Electronics
-    displayName: Electronics Laser Cleaning
-    category: applications
-    subcategory: electronics
-    datePublished: '2026-02-21'
-    dateModified: '2026-02-22T19:57:42.000Z'
-    contentType: application
-    schemaVersion: 5.0.0
-    slug: electronics-laser-cleaning-applications
-    fullPath: /applications/electronics-laser-cleaning-applications
-    pageTitle: Electronics Laser Cleaning
-    pageDescription: Laser cleaning in electronics, it manifests as a precise method
-      for removing contaminants from circuit boards and components, which leads to
-      enhanced reliability without abrasive damage. The process yields clean surfaces
-      that improve electrical conductivity and prevent failures, yet deployment requires
-      controlled environments to avoid thermal effects on sensitive parts. Safety
-      implications include reduced chemical exposure for operators, while compliance
-      demands adherence to industry standards that ensure no residue persists. These
-      applications, they exhibit versatility in manufacturing and maintenance, dependent
-      from material compatibility. It appears that effectiveness varies with surface
-      types, showing operational benefits in high-precision tasks.
-    authorId: 2
-    breadcrumb:
-    - label: Home
-      href: /
-    - label: Applications
-      href: /applications
-    metaDescription: Laser cleaning in electronics, it manifests as a precise method
-      for removing contaminants from circuit boards and components, which leads to
-      enhanced reliabi...
-    keywords:
-    - Electronics Laser Cleaning
-    - Electronics
+    author:
+      id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      countryDisplay: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork
+        optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      personaFile: indonesia_persona.yaml
+      formattingFile: indonesia_formatting.yaml
     card:
-      title: Electronics Laser Cleaning
-      description: Laser cleaning in electronics, it manifests as a precise method
-        for removing contaminants from circuit boards and components, which leads
-        to enhanced reliabi...
-    relationships:
-      discovery:
-        relatedMaterials:
-          presentation: card
-          items:
-          - id: copper-laser-cleaning
-            name: Copper
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/copper-laser-cleaning
-            image: /images/material/copper-laser-cleaning-hero.jpg
-          - id: gold-laser-cleaning
-            name: Gold
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/gold-laser-cleaning
-            image: /images/material/gold-laser-cleaning-hero.jpg
-          - id: silver-laser-cleaning
-            name: Silver
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/silver-laser-cleaning
-            image: /images/material/silver-laser-cleaning-hero.jpg
-          - id: nickel-laser-cleaning
-            name: Nickel
-            category: metal
-            subcategory: specialty
-            url: /materials/metal/specialty/nickel-laser-cleaning
-            image: /images/material/nickel-laser-cleaning-hero.jpg
-          - id: tin-laser-cleaning
-            name: Tin
-            category: metal
-            subcategory: alloy
-            url: /materials/metal/alloy/tin-laser-cleaning
-            image: /images/material/tin-laser-cleaning-hero.jpg
-          _section:
-            sectionTitle: Common Materials
-            sectionDescription: Materials most frequently cleaned in this application
-              context.
-            icon: layers
-            order: 30
-            variant: default
-      interactions:
-        contaminatedBy:
-          presentation: card
-          items:
-          - id: adhesive-residue-contamination
-            name: Adhesive Residue / Tape Marks
-            category: organic-residue
-            subcategory: adhesive
-            url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
-            image: /images/contaminant/adhesive-residue-contamination-hero.jpg
-            description: 'Adhesive residue contamination forms during shipping or
-              labeling processes on manufactured items. Tape or stickers leave sticky
-              layers after removal, so surfaces exhibit uneven organic buildup. Before
-              cleaning, residue adheres tightly to substrates like metals and woods,
-              causing discoloration and reduced functionality.
-
-
-              This contamination shows patchy patterns, with thicker spots near edges.
-              On aluminum or glass, it penetrates slightly into pores, so removal
-              demands careful approach. During laser exposure, heat vaporizes organics
-              effectively, but residue''s tackiness leads to re-deposition if pulses
-              are not spaced properly.
-
-
-              Challenges arise because incomplete ablation leaves films that attract
-              dust, and on polymers like nylon, overheating risks substrate damage.
-              Laser cleaning achieves clean surfaces on stainless steel or wood, as
-              residue breaks down without mechanical force. After treatment, uniformity
-              is observed across materials such as copper and oak.
-
-
-              Ikmanda Roswati, Ph.D.'
-          - id: epoxy-residue-contamination
-            name: Epoxy Resin Deposits
-            category: organic-residue
-            subcategory: adhesive
-            url: /contaminants/organic-residue/adhesive/epoxy-residue-contamination
-            image: /images/contaminant/epoxy-residue-contamination-hero.jpg
-            description: Epoxy residue differs from inorganic contaminants so laser
-              cleaning faces unique challenges. Formation occurs during adhesive curing
-              and leaves sticky layers on metal surfaces. These layers bond tightly
-              because of polymer chains. Removal demands precise pulses to avoid substrate
-              damage. After exposure, residue hardens unevenly on composites and resists
-              ablation. So, multi-pass treatments apply for complete elimination.
-              Surface exhibits residue patches during inspections. Buildup forms irregularly
-              on polymers because heat alters epoxy flow. Cleaning achieves better
-              results on metals yet struggles with flexible materials. Process removes
-              organic films effectively in observations.
-          - id: paint-residue-contamination
-            name: Paint Residue / Coating Failure
-            category: inorganic-coating
-            subcategory: paint
-            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
-            image: /images/contaminant/paint-residue-contamination-hero.jpg
-            description: "Paint-residue contamination arises from degraded coatings\
-              \ on surfaces. This contamination, it forms unique irregular patterns,\
-              \ like patchy layers from uneven paint application and environmental\
-              \ weathering. Formation occurs through adhesion of pigments and binders,\
-              \ creating thick, non-uniform deposits that resist initial breakdown.\n\
-              \nRemoval challenges emerge in laser cleaning. Residue exhibits strong\
-              \ bonding to substrates, thus demands precise energy pulses to avoid\
-              \ substrate damage. On metallic materials, it shows thermal stability\
-              \ and charring tendency, complicating clean detachment. For polymeric\
-              \ surfaces, behavior differs; residue peels in flakes but leaves adhesive\
-              \ traces. Treatment applies laser ablation, and surface already exhibits\
-              \ reduced roughness, though traces still persist in crevices. Analysis\
-              \ confirms these patterns, so adjustment of parameters enhances efficiency.\
-              \ \n\nYi-Chun Lin, Ph.D., Taiwan"
-          - id: ink-stains-contamination
-            name: Printing Ink Residue
-            category: organic-residue
-            subcategory: marking
-            url: /contaminants/organic-residue/marking/ink-stains-contamination
-            image: /images/contaminant/ink-stains-contamination-hero.jpg
-            description: 'Ink stains contamination, it forms through droplet spreading
-              and penetration on surfaces. Unique patterns emerge as blotchy clusters
-              and irregular halos, especially on porous substrates like paper or stone.
-              This contamination, organic residue type, it adheres strongly via pigment
-              binding and solvent evaporation. Formation reveals color-specific diffusion,
-              thus creates layered deposits that vary by ink composition.
-
-
-              Removal challenges arise in laser cleaning applications. Ink resists
-              ablation due to thermal decomposition, so carbonization occurs and complicates
-              full erasure. On metals, stains bond tightly and demand precise pulse
-              control to avoid substrate damage. For plastics, surface melting happens
-              easily, thus requires lower energy to prevent deformation. Material
-              behaviors differ: metals show rebound effects after partial removal,
-              while organics like wood exhibit charring persistence. Treatment applies,
-              contamination reduces gradually and leaves faint traces still. Process
-              confirms efficiency through pattern analysis, yet demands adjustment
-              for complete clearance.'
-          - id: silicone-buildup-contamination
-            name: Silicone Sealant Buildup
-            category: organic-residue
-            subcategory: adhesive
-            url: /contaminants/organic-residue/adhesive/silicone-buildup-contamination
-            image: /images/contaminant/silicone-buildup-contamination-hero.jpg
-            description: Silicone buildup contamination, it forms uneven films on
-              surfaces through repeated exposure to vapors and residues. This organic
-              layer, it adheres strongly and creates patchy patterns, especially on
-              metals and polymers. Formation patterns reveal unique clustering around
-              edges and crevices, thus trapping air pockets that hinder uniform coverage.
-              In laser cleaning applications, removal challenges arise from its thermal
-              resistance; pulses scatter energy and leave residues behind. Material-specific
-              behaviors show that on aluminum, buildup softens slowly under irradiation,
-              while on plastics, it vaporizes unevenly and risks substrate damage.
-              After treatment, surface still exhibits faint traces in shadowed areas.
-              Process demands precise beam control, and thus enhances cleaning efficiency
-              without overablation. Evidence from observations confirms these patterns,
-              so adjustments follow for optimal results.
-          _section:
-            sectionTitle: Common Contaminants
-            sectionDescription: Contaminants typically removed in these applications.
-            icon: droplet
-            order: 31
-            variant: default
-  medical-devices-laser-cleaning-applications:
-    id: medical-devices-laser-cleaning-applications
-    name: Medical Devices
-    displayName: Medical Devices Laser Cleaning
-    category: applications
-    subcategory: medical-devices
-    datePublished: '2026-02-21'
-    dateModified: '2026-02-22T19:57:42.000Z'
-    contentType: application
-    schemaVersion: 5.0.0
-    slug: medical-devices-laser-cleaning-applications
-    fullPath: /applications/medical-devices-laser-cleaning-applications
-    pageTitle: Medical Devices Laser Cleaning
-    pageDescription: Laser cleaning applies to medical devices and removes contaminants
-      from surfaces such as surgical instruments or implants. Process ensures sterility,
-      thus maintains device integrity without harsh chemicals. After treatment, surface
-      exhibits smoothness and cleanliness, so operational outcomes include enhanced
-      reliability in clinical settings. Deployment constraints involve controlled
-      environments to avoid cross-contamination, and safety implications demand compliance
-      with medical regulations. This method, it supports precise decontamination,
-      already demonstrates effectiveness in preserving material properties.
-    authorId: 1
-    breadcrumb:
-    - label: Home
-      href: /
-    - label: Applications
-      href: /applications
-    metaDescription: Laser cleaning applies to medical devices and removes contaminants
-      from surfaces such as surgical instruments or implants. Process ensures sterility,
-      thus ma...
+      title: Automotive Laser Cleaning
+      description: In automotive applications, laser cleaning removes contaminants from vehicle surfaces effectively, so it
+        prepares parts for painting or welding without chemi...
     keywords:
-    - Medical Devices Laser Cleaning
-    - Medical Devices
-    card:
-      title: Medical Devices Laser Cleaning
-      description: Laser cleaning applies to medical devices and removes contaminants
-        from surfaces such as surgical instruments or implants. Process ensures sterility,
-        thus ma...
-    relationships:
-      discovery:
-        relatedMaterials:
-          presentation: card
-          items:
-          - id: titanium-laser-cleaning
-            name: Titanium
-            category: metal
-            subcategory: specialty
-            url: /materials/metal/specialty/titanium-laser-cleaning
-            image: /images/material/titanium-laser-cleaning-hero.jpg
-          - id: stainless-steel-laser-cleaning
-            name: Stainless Steel
-            category: metal
-            subcategory: ferrous
-            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
-            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
-          - id: cobalt-laser-cleaning
-            name: Cobalt
-            category: metal
-            subcategory: specialty
-            url: /materials/metal/specialty/cobalt-laser-cleaning
-            image: /images/material/cobalt-laser-cleaning-hero.jpg
-          - id: chromium-laser-cleaning
-            name: Chromium
-            category: metal
-            subcategory: specialty
-            url: /materials/metal/specialty/chromium-laser-cleaning
-            image: /images/material/chromium-laser-cleaning-hero.jpg
-          - id: nickel-laser-cleaning
-            name: Nickel
-            category: metal
-            subcategory: specialty
-            url: /materials/metal/specialty/nickel-laser-cleaning
-            image: /images/material/nickel-laser-cleaning-hero.jpg
-          _section:
-            sectionTitle: Common Materials
-            sectionDescription: Materials most frequently cleaned in this application
-              context.
-            icon: layers
-            order: 30
-            variant: default
-      interactions:
-        contaminatedBy:
-          presentation: card
-          items:
-          - id: adhesive-residue-contamination
-            name: Adhesive Residue / Tape Marks
-            category: organic-residue
-            subcategory: adhesive
-            url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
-            image: /images/contaminant/adhesive-residue-contamination-hero.jpg
-            description: 'Adhesive residue contamination forms during shipping or
-              labeling processes on manufactured items. Tape or stickers leave sticky
-              layers after removal, so surfaces exhibit uneven organic buildup. Before
-              cleaning, residue adheres tightly to substrates like metals and woods,
-              causing discoloration and reduced functionality.
-
-
-              This contamination shows patchy patterns, with thicker spots near edges.
-              On aluminum or glass, it penetrates slightly into pores, so removal
-              demands careful approach. During laser exposure, heat vaporizes organics
-              effectively, but residue''s tackiness leads to re-deposition if pulses
-              are not spaced properly.
-
-
-              Challenges arise because incomplete ablation leaves films that attract
-              dust, and on polymers like nylon, overheating risks substrate damage.
-              Laser cleaning achieves clean surfaces on stainless steel or wood, as
-              residue breaks down without mechanical force. After treatment, uniformity
-              is observed across materials such as copper and oak.
-
-
-              Ikmanda Roswati, Ph.D.'
-          - id: biological-stains-contamination
-            name: Organic Biofilm Deposits
-            category: biological
-            subcategory: deposit
-            url: /contaminants/biological/deposit/biological-stains-contamination
-            image: /images/contaminant/biological-stains-contamination-hero.jpg
-            description: 'Biological stains contamination, it arises from organic
-              residues like algae and mold in humid environments. Formation patterns
-              show irregular clusters, thus creating uneven layers on surfaces. These
-              patterns follow natural regional variations, such as denser growth in
-              tropical areas and sparser in arid zones. On metal substrates, contamination
-              adheres tightly and penetrates pores, while on stone, it forms porous
-              films that trap moisture.
-
-
-              Removal challenges emerge during laser cleaning. Process applies pulses,
-              and biological matter absorbs energy unevenly, so charring occurs before
-              detachment. This contamination, it resists ablation due to volatile
-              components that evaporate and leave residues. Material-specific behaviors
-              differ: metals heat rapidly and risk substrate damage, thus requiring
-              low fluence; stone surfaces exhibit cracking from thermal stress. After
-              treatment, some areas still show remnants, so multiple passes become
-              necessary. Efficiency of cleaning, it improves with adjusted wavelengths
-              targeting organic bonds.'
-          - id: epoxy-residue-contamination
-            name: Epoxy Resin Deposits
-            category: organic-residue
-            subcategory: adhesive
-            url: /contaminants/organic-residue/adhesive/epoxy-residue-contamination
-            image: /images/contaminant/epoxy-residue-contamination-hero.jpg
-            description: Epoxy residue differs from inorganic contaminants so laser
-              cleaning faces unique challenges. Formation occurs during adhesive curing
-              and leaves sticky layers on metal surfaces. These layers bond tightly
-              because of polymer chains. Removal demands precise pulses to avoid substrate
-              damage. After exposure, residue hardens unevenly on composites and resists
-              ablation. So, multi-pass treatments apply for complete elimination.
-              Surface exhibits residue patches during inspections. Buildup forms irregularly
-              on polymers because heat alters epoxy flow. Cleaning achieves better
-              results on metals yet struggles with flexible materials. Process removes
-              organic films effectively in observations.
-          - id: plastic-residue-contamination
-            name: Degraded Polymer Deposits
-            category: organic-residue
-            subcategory: polymer
-            url: /contaminants/organic-residue/polymer/plastic-residue-contamination
-            image: /images/contaminant/plastic-residue-contamination-hero.jpg
-            description: 'Plastic residue contamination, it manifests uniquely in
-              laser cleaning applications, forming thin, irregular films that adhere
-              tenaciously to substrates. This contamination, derived from organic
-              residues, exhibits patterns influenced from environmental exposure,
-              such as uneven layering on metals, which leads to differential removal
-              challenges. On ferrous materials, the residue persists stubbornly, resisting
-              ablation due to its cohesive structure, that demonstrates material-specific
-              behaviors. It appears that on non-metallics, like ceramics, the contamination
-              varies in tenacity, showing easier detachment yet prone to re-deposition.
-              The process yields effective cleaning, where the laser disrupts bonds
-              selectively, although challenges arise from residue volatility, dependent
-              from intensity thresholds. These patterns, they highlight the need for
-              tailored parameters, ensuring surface restoration without substrate
-              damage.
-
-
-              Alessandro Moretti, Ph.D.'
-          - id: silicone-buildup-contamination
-            name: Silicone Sealant Buildup
-            category: organic-residue
-            subcategory: adhesive
-            url: /contaminants/organic-residue/adhesive/silicone-buildup-contamination
-            image: /images/contaminant/silicone-buildup-contamination-hero.jpg
-            description: Silicone buildup contamination, it forms uneven films on
-              surfaces through repeated exposure to vapors and residues. This organic
-              layer, it adheres strongly and creates patchy patterns, especially on
-              metals and polymers. Formation patterns reveal unique clustering around
-              edges and crevices, thus trapping air pockets that hinder uniform coverage.
-              In laser cleaning applications, removal challenges arise from its thermal
-              resistance; pulses scatter energy and leave residues behind. Material-specific
-              behaviors show that on aluminum, buildup softens slowly under irradiation,
-              while on plastics, it vaporizes unevenly and risks substrate damage.
-              After treatment, surface still exhibits faint traces in shadowed areas.
-              Process demands precise beam control, and thus enhances cleaning efficiency
-              without overablation. Evidence from observations confirms these patterns,
-              so adjustments follow for optimal results.
-          _section:
-            sectionTitle: Common Contaminants
-            sectionDescription: Contaminants typically removed in these applications.
-            icon: droplet
-            order: 31
-            variant: default
-  energy-power-laser-cleaning-applications:
-    id: energy-power-laser-cleaning-applications
-    name: Energy and Power
-    displayName: Energy and Power Laser Cleaning
-    category: applications
-    subcategory: energy-power
-    datePublished: '2026-02-21'
-    dateModified: '2026-02-22T19:57:42.000Z'
-    contentType: application
-    schemaVersion: 5.0.0
-    slug: energy-power-laser-cleaning-applications
-    fullPath: /applications/energy-power-laser-cleaning-applications
-    pageTitle: Energy and Power Laser Cleaning
-    pageDescription: Laser cleaning applications in the energy and power sector effectively
-      remove contaminants from critical components like turbine blades and electrical
-      insulators, ensuring reliable performance without abrasive damage. Operators
-      typically dial in precise settings to clear rust, coatings, or debris from surfaces
-      in power plants and renewable energy setups, which maintains equipment integrity
-      and supports uninterrupted operations. Deployment often requires controlled
-      environments to manage laser emissions safely, addressing potential hazards
-      through proper shielding and ventilation while complying with workplace safety
-      standards. Overall, this approach achieves cleaner results on conductive materials,
-      reduces maintenance needs, and enhances system durability in demanding conditions.
-    authorId: 4
-    breadcrumb:
-    - label: Home
-      href: /
-    - label: Applications
-      href: /applications
-    metaDescription: Laser cleaning applications in the energy and power sector effectively
-      remove contaminants from critical components like turbine blades and electrical
-      insula...
-    keywords:
-    - Energy and Power Laser Cleaning
-    - Energy and Power
-    - Energy Power
-    - energy power laser cleaning
-    card:
-      title: Energy and Power Laser Cleaning
-      description: Laser cleaning applications in the energy and power sector effectively
-        remove contaminants from critical components like turbine blades and electrical
-        insula...
-    relationships:
-      discovery:
-        relatedMaterials:
-          presentation: card
-          items:
-          - id: steel-laser-cleaning
-            name: Steel
-            category: metal
-            subcategory: ferrous
-            url: /materials/metal/ferrous/steel-laser-cleaning
-            image: /images/material/steel-laser-cleaning-hero.jpg
-          - id: aluminum-laser-cleaning
-            name: Aluminum
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
-            image: /images/material/aluminum-laser-cleaning-hero.jpg
-          - id: copper-laser-cleaning
-            name: Copper
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/copper-laser-cleaning
-            image: /images/material/copper-laser-cleaning-hero.jpg
-          - id: brass-laser-cleaning
-            name: Brass
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/brass-laser-cleaning
-            image: /images/material/brass-laser-cleaning-hero.jpg
-          - id: stainless-steel-laser-cleaning
-            name: Stainless Steel
-            category: metal
-            subcategory: ferrous
-            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
-            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
-          _section:
-            sectionTitle: Common Materials
-            sectionDescription: Materials most frequently cleaned in this application
-              context.
-            icon: layers
-            order: 30
-            variant: default
-      interactions:
-        contaminatedBy:
-          presentation: card
-          items:
-          - id: carbon-soot-contamination
-            name: Carbon Soot Deposits
-            category: organic-residue
-            subcategory: other
-            url: /contaminants/organic-residue/other/carbon-soot-contamination
-            image: /images/contaminant/carbon-soot-contamination-hero.jpg
-            description: 'Carbon-soot contamination, it emerges from incomplete combustion
-              processes and deposits as irregular, porous layers on material surfaces.
-              Formation patterns reveal unique regional variations, where soot clusters
-              in dense patches on metallic substrates and spreads thinly on polymers,
-              thus creating uneven adhesion profiles. This contamination, it absorbs
-              laser energy efficiently yet resists complete removal due to its volatile
-              organic composition. Removal challenges arise from thermal gradients
-              during ablation; soot vaporizes rapidly, and residues scatter, so secondary
-              contamination risks increase on nearby areas. Material-specific behaviors
-              differ markedly—on steels, soot bonds tenaciously and demands pulsed
-              laser sequences for dislodgement, while on ceramics, it flakes off more
-              readily following initial irradiation. After treatment, surfaces exhibit
-              reduced roughness, yet traces persist in crevices, thus requiring multi-pass
-              cleaning for uniformity.
-
-
-              Yi-Chun Lin, Ph.D., Taiwan'
-          - id: paint-residue-contamination
-            name: Paint Residue / Coating Failure
-            category: inorganic-coating
-            subcategory: paint
-            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
-            image: /images/contaminant/paint-residue-contamination-hero.jpg
-            description: "Paint-residue contamination arises from degraded coatings\
-              \ on surfaces. This contamination, it forms unique irregular patterns,\
-              \ like patchy layers from uneven paint application and environmental\
-              \ weathering. Formation occurs through adhesion of pigments and binders,\
-              \ creating thick, non-uniform deposits that resist initial breakdown.\n\
-              \nRemoval challenges emerge in laser cleaning. Residue exhibits strong\
-              \ bonding to substrates, thus demands precise energy pulses to avoid\
-              \ substrate damage. On metallic materials, it shows thermal stability\
-              \ and charring tendency, complicating clean detachment. For polymeric\
-              \ surfaces, behavior differs; residue peels in flakes but leaves adhesive\
-              \ traces. Treatment applies laser ablation, and surface already exhibits\
-              \ reduced roughness, though traces still persist in crevices. Analysis\
-              \ confirms these patterns, so adjustment of parameters enhances efficiency.\
-              \ \n\nYi-Chun Lin, Ph.D., Taiwan"
-          - id: scale-buildup-contamination
-            name: Mineral Scale / Hard Water Deposits
-            category: thermal-damage
-            subcategory: scale
-            url: /contaminants/thermal-damage/scale/scale-buildup-contamination
-            image: /images/contaminant/scale-buildup-contamination-hero.jpg
-            description: "Scale buildup contamination forms differently on metals\
-              \ compared to ceramics, so removal challenges vary. On steel surfaces,\
-              \ layer adheres tightly from heat exposure, creating uneven patterns\
-              \ that resist laser pulses. Aluminum shows looser buildup, yet cracks\
-              \ during cleaning because thermal damage spreads fast. Treatment applies\
-              \ short bursts, and surface uniformity improves after this. Contamination\
-              \ exhibits thermal origins, so laser adjusts for material behavior.\
-              \ Buildup is detected in oxide forms, and process removes it effectively\
-              \ without substrate harm. Results indicate cleaner finishes on treated\
-              \ areas. \n\nIkmanda Roswati, Ph.D. from Indonesia"
-          - id: salt-residue-contamination
-            name: Salt and Chloride Deposits
-            category: inorganic-coating
-            subcategory: mineral
-            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
-            image: /images/contaminant/salt-residue-contamination-hero.jpg
-            description: 'Salt residues form tricky patterns on surfaces exposed to
-              harsh environments, like coastal machinery or salted roads. They build
-              up in crystalline layers that cling tight to metals and stone, often
-              cracking unevenly under humidity shifts. In laser cleaning setups, these
-              contaminants demand precise beam control—dial in the right pulse to
-              avoid scattering particles that etch deeper into the substrate.
-
-
-              Workers run into distinct removal challenges here. The residues vaporize
-              unevenly, sometimes leaving behind stubborn films that hold up against
-              standard passes. On aluminum, they behave worse, embedding salts that
-              ramp up corrosion risks if not cleared fully. Turns out, tweaking laser
-              wavelengths addresses this effectively, achieving a clean finish without
-              damaging the base material. Overall, targeting these patterns cuts down
-              rework and maintains solid results in practice.'
-          - id: biological-stains-contamination
-            name: Organic Biofilm Deposits
-            category: biological
-            subcategory: deposit
-            url: /contaminants/biological/deposit/biological-stains-contamination
-            image: /images/contaminant/biological-stains-contamination-hero.jpg
-            description: 'Biological stains contamination, it arises from organic
-              residues like algae and mold in humid environments. Formation patterns
-              show irregular clusters, thus creating uneven layers on surfaces. These
-              patterns follow natural regional variations, such as denser growth in
-              tropical areas and sparser in arid zones. On metal substrates, contamination
-              adheres tightly and penetrates pores, while on stone, it forms porous
-              films that trap moisture.
-
-
-              Removal challenges emerge during laser cleaning. Process applies pulses,
-              and biological matter absorbs energy unevenly, so charring occurs before
-              detachment. This contamination, it resists ablation due to volatile
-              components that evaporate and leave residues. Material-specific behaviors
-              differ: metals heat rapidly and risk substrate damage, thus requiring
-              low fluence; stone surfaces exhibit cracking from thermal stress. After
-              treatment, some areas still show remnants, so multiple passes become
-              necessary. Efficiency of cleaning, it improves with adjusted wavelengths
-              targeting organic bonds.'
-          _section:
-            sectionTitle: Common Contaminants
-            sectionDescription: Contaminants typically removed in these applications.
-            icon: droplet
-            order: 31
-            variant: default
-  rail-transport-laser-cleaning-applications:
-    id: rail-transport-laser-cleaning-applications
-    name: Rail Transport
-    displayName: Rail Transport Laser Cleaning
-    category: applications
-    subcategory: rail-transport
-    datePublished: '2026-02-21'
-    dateModified: '2026-02-22T23:59:46.000Z'
-    contentType: application
-    schemaVersion: 5.0.0
-    slug: rail-transport-laser-cleaning-applications
-    fullPath: /applications/rail-transport-laser-cleaning-applications
-    pageTitle: Rail Transport Laser Cleaning
-    pageDescription: In rail transport, laser cleaning applies to surfaces like tracks
-      and train components, where contamination builds up from environmental exposure,
-      so treatment removes layers effectively without causing damage to the underlying
-      material. This method, it achieves uniform results and preserves structural
-      integrity, because pulses target unwanted buildup precisely during operations.
-      After deployment is considered, mobility constraints arise in field settings,
-      with equipment needing portable designs for on-site use along extensive rail
-      networks. During application, safety measures focus on protective gear to prevent
-      eye hazards, and compliance follows industry standards to ensure minimal environmental
-      impact from the process. From observations, operational outcomes include extended
-      component lifespan and reduced maintenance downtime, as cleaning integrates
-      seamlessly into routine schedules.
+    - Automotive Laser Cleaning
+    - Automotive
+    slug: automotive-laser-cleaning-applications
     authorId: 3
-    breadcrumb:
-    - label: Home
-      href: /
-    - label: Applications
-      href: /applications
-    metaDescription: Overview of laser cleaning in rail transport applications and
-      common surface challenges.
-    keywords:
-    - Rail Transport Laser Cleaning
-    - Rail Transport
-    card:
-      title: Rail Transport Laser Cleaning
-      description: Overview of laser cleaning in rail transport applications and common
-        surface challenges.
-    relationships:
-      discovery:
-        relatedMaterials:
-          presentation: card
-          items:
-          - id: steel-laser-cleaning
-            name: Steel
-            category: metal
-            subcategory: ferrous
-            url: /materials/metal/ferrous/steel-laser-cleaning
-            image: /images/material/steel-laser-cleaning-hero.jpg
-          - id: aluminum-laser-cleaning
-            name: Aluminum
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
-            image: /images/material/aluminum-laser-cleaning-hero.jpg
-          - id: brass-laser-cleaning
-            name: Brass
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/brass-laser-cleaning
-            image: /images/material/brass-laser-cleaning-hero.jpg
-          - id: bronze-laser-cleaning
-            name: Bronze
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/bronze-laser-cleaning
-            image: /images/material/bronze-laser-cleaning-hero.jpg
-          - id: copper-laser-cleaning
-            name: Copper
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/copper-laser-cleaning
-            image: /images/material/copper-laser-cleaning-hero.jpg
-          _section:
-            sectionTitle: Common Materials
-            sectionDescription: Materials most frequently cleaned in this application
-              context.
-            icon: layers
-            order: 30
-            variant: default
-      interactions:
-        contaminatedBy:
-          presentation: card
-          items:
-          - id: carbon-soot-contamination
-            name: Carbon Soot Deposits
-            category: organic-residue
-            subcategory: other
-            url: /contaminants/organic-residue/other/carbon-soot-contamination
-            image: /images/contaminant/carbon-soot-contamination-hero.jpg
-            description: 'Carbon-soot contamination, it emerges from incomplete combustion
-              processes and deposits as irregular, porous layers on material surfaces.
-              Formation patterns reveal unique regional variations, where soot clusters
-              in dense patches on metallic substrates and spreads thinly on polymers,
-              thus creating uneven adhesion profiles. This contamination, it absorbs
-              laser energy efficiently yet resists complete removal due to its volatile
-              organic composition. Removal challenges arise from thermal gradients
-              during ablation; soot vaporizes rapidly, and residues scatter, so secondary
-              contamination risks increase on nearby areas. Material-specific behaviors
-              differ markedly—on steels, soot bonds tenaciously and demands pulsed
-              laser sequences for dislodgement, while on ceramics, it flakes off more
-              readily following initial irradiation. After treatment, surfaces exhibit
-              reduced roughness, yet traces persist in crevices, thus requiring multi-pass
-              cleaning for uniformity.
-
-
-              Yi-Chun Lin, Ph.D., Taiwan'
-          - id: graffiti-paint-contamination
-            name: Graffiti and Spray Paint
-            category: inorganic-coating
-            subcategory: paint
-            url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
-            image: /images/contaminant/graffiti-paint-contamination-hero.jpg
-            description: 'Graffiti paint contamination poses a tough challenge in
-              urban settings, where artists spray quick layers that build up unevenly
-              on surfaces like concrete walls or metal signs. This inorganic coating
-              forms irregular patterns—thick globs in some spots, thin films in others—adhering
-              tightly through chemical bonding and surface penetration. Turns out,
-              the paint''s pigments and binders create a layered structure that resists
-              initial breakdown.
-
-
-              Laser cleaning tackles this head-on, but removal demands precise control
-              to avoid substrate damage. On porous materials such as brick, the contamination
-              soaks in deep, requiring multiple passes to clear it out completely.
-              Metal surfaces fare better; the paint flakes off more readily under
-              focused beams, yielding a clean finish without pitting. In practice,
-              operators dial in pulse durations to strip layers selectively, cutting
-              down on rework. Overall, understanding these patterns helps set up effective
-              protocols that maintain surface integrity.'
-          - id: salt-residue-contamination
-            name: Salt and Chloride Deposits
-            category: inorganic-coating
-            subcategory: mineral
-            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
-            image: /images/contaminant/salt-residue-contamination-hero.jpg
-            description: 'Salt residues form tricky patterns on surfaces exposed to
-              harsh environments, like coastal machinery or salted roads. They build
-              up in crystalline layers that cling tight to metals and stone, often
-              cracking unevenly under humidity shifts. In laser cleaning setups, these
-              contaminants demand precise beam control—dial in the right pulse to
-              avoid scattering particles that etch deeper into the substrate.
-
-
-              Workers run into distinct removal challenges here. The residues vaporize
-              unevenly, sometimes leaving behind stubborn films that hold up against
-              standard passes. On aluminum, they behave worse, embedding salts that
-              ramp up corrosion risks if not cleared fully. Turns out, tweaking laser
-              wavelengths addresses this effectively, achieving a clean finish without
-              damaging the base material. Overall, targeting these patterns cuts down
-              rework and maintains solid results in practice.'
-          - id: rubber-residue-contamination
-            name: Rubber Compound Residue
-            category: organic-residue
-            subcategory: polymer
-            url: /contaminants/organic-residue/polymer/rubber-residue-contamination
-            image: /images/contaminant/rubber-residue-contamination-hero.jpg
-            description: Rubber residue contamination forms sticky layers on surfaces
-              during processing. Before cleaning, buildup adheres tightly because
-              rubber compounds polymerize under heat and pressure. This creates uneven
-              patterns, like patchy films that embed into metal pores. So, laser cleaning
-              faces challenges in removal, as residue resists vaporization without
-              damaging substrate. Material behaviors vary; on steel, residue softens
-              gradually during exposure, but on aluminum, it scatters fragments so
-              multiple passes are needed. After treatment, surfaces exhibit cleaner
-              uniformity. Process removes organic residue effectively, yet careful
-              control prevents re-deposition from airborne particles. Results indicate
-              that optimized pulses achieve better detachment.
-          - id: paint-residue-contamination
-            name: Paint Residue / Coating Failure
-            category: inorganic-coating
-            subcategory: paint
-            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
-            image: /images/contaminant/paint-residue-contamination-hero.jpg
-            description: "Paint-residue contamination arises from degraded coatings\
-              \ on surfaces. This contamination, it forms unique irregular patterns,\
-              \ like patchy layers from uneven paint application and environmental\
-              \ weathering. Formation occurs through adhesion of pigments and binders,\
-              \ creating thick, non-uniform deposits that resist initial breakdown.\n\
-              \nRemoval challenges emerge in laser cleaning. Residue exhibits strong\
-              \ bonding to substrates, thus demands precise energy pulses to avoid\
-              \ substrate damage. On metallic materials, it shows thermal stability\
-              \ and charring tendency, complicating clean detachment. For polymeric\
-              \ surfaces, behavior differs; residue peels in flakes but leaves adhesive\
-              \ traces. Treatment applies laser ablation, and surface already exhibits\
-              \ reduced roughness, though traces still persist in crevices. Analysis\
-              \ confirms these patterns, so adjustment of parameters enhances efficiency.\
-              \ \n\nYi-Chun Lin, Ph.D., Taiwan"
-          _section:
-            sectionTitle: Common Contaminants
-            sectionDescription: Contaminants typically removed in these applications.
-            icon: droplet
-            order: 31
-            variant: default
-  shipbuilding-marine-laser-cleaning-applications:
-    id: shipbuilding-marine-laser-cleaning-applications
-    name: Shipbuilding and Marine
-    displayName: Shipbuilding and Marine Laser Cleaning
-    category: applications
-    subcategory: shipbuilding-marine
-    datePublished: '2026-02-21'
-    dateModified: '2026-02-22T19:57:42.000Z'
-    contentType: application
-    schemaVersion: 5.0.0
-    slug: shipbuilding-marine-laser-cleaning-applications
-    fullPath: /applications/shipbuilding-marine-laser-cleaning-applications
-    pageTitle: Shipbuilding and Marine Laser Cleaning
-    pageDescription: Overview of laser cleaning in shipbuilding and marine applications
-      and common surface challenges.
-    authorId: 2
-    breadcrumb:
-    - label: Home
-      href: /
-    - label: Applications
-      href: /applications
-    metaDescription: Overview of laser cleaning in shipbuilding and marine applications
-      and common surface challenges.
-    keywords:
-    - Shipbuilding and Marine Laser Cleaning
-    - Shipbuilding and Marine
-    - Shipbuilding Marine
-    - shipbuilding marine laser cleaning
-    card:
-      title: Shipbuilding and Marine Laser Cleaning
-      description: Overview of laser cleaning in shipbuilding and marine applications
-        and common surface challenges.
-    relationships:
-      discovery:
-        relatedMaterials:
-          presentation: card
-          items:
-          - id: aluminum-laser-cleaning
-            name: Aluminum
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
-            image: /images/material/aluminum-laser-cleaning-hero.jpg
-          - id: bronze-laser-cleaning
-            name: Bronze
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/bronze-laser-cleaning
-            image: /images/material/bronze-laser-cleaning-hero.jpg
-          - id: stainless-steel-laser-cleaning
-            name: Stainless Steel
-            category: metal
-            subcategory: ferrous
-            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
-            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
-          - id: copper-laser-cleaning
-            name: Copper
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/copper-laser-cleaning
-            image: /images/material/copper-laser-cleaning-hero.jpg
-          - id: nickel-laser-cleaning
-            name: Nickel
-            category: metal
-            subcategory: specialty
-            url: /materials/metal/specialty/nickel-laser-cleaning
-            image: /images/material/nickel-laser-cleaning-hero.jpg
-          _section:
-            sectionTitle: Common Materials
-            sectionDescription: Materials most frequently cleaned in this application
-              context.
-            icon: layers
-            order: 30
-            variant: default
-      interactions:
-        contaminatedBy:
-          presentation: card
-          items:
-          - id: salt-residue-contamination
-            name: Salt and Chloride Deposits
-            category: inorganic-coating
-            subcategory: mineral
-            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
-            image: /images/contaminant/salt-residue-contamination-hero.jpg
-            description: 'Salt residues form tricky patterns on surfaces exposed to
-              harsh environments, like coastal machinery or salted roads. They build
-              up in crystalline layers that cling tight to metals and stone, often
-              cracking unevenly under humidity shifts. In laser cleaning setups, these
-              contaminants demand precise beam control—dial in the right pulse to
-              avoid scattering particles that etch deeper into the substrate.
-
-
-              Workers run into distinct removal challenges here. The residues vaporize
-              unevenly, sometimes leaving behind stubborn films that hold up against
-              standard passes. On aluminum, they behave worse, embedding salts that
-              ramp up corrosion risks if not cleared fully. Turns out, tweaking laser
-              wavelengths addresses this effectively, achieving a clean finish without
-              damaging the base material. Overall, targeting these patterns cuts down
-              rework and maintains solid results in practice.'
-          - id: algae-growth-contamination
-            name: Algae and Lichen Growth
-            category: biological
-            subcategory: growth
-            url: /contaminants/biological/growth/algae-growth-contamination
-            image: /images/contaminant/algae-growth-contamination-hero.jpg
-            description: Algae-growth contamination, it manifests uniquely in humid
-              environments, where biological layers adhere tenaciously to surfaces
-              exposed to moisture. This contamination, dependent from regional patterns
-              like Mediterranean climates, forms irregular patches that penetrate
-              porous materials, such as stone facades, leading to discoloration and
-              structural weakening over time. On metals, the growth exhibits a slimy
-              matrix, which resists initial laser pulses by scattering energy. Removal
-              challenges arise from its regenerative nature; partial ablation often
-              prompts regrowth, demanding multiple passes with adjusted wavelengths.
-              It seems that adhesion varies across substrates, persisting more stubbornly
-              on organics than on synthetics, as confirmed by surface scans post-treatment.
-              The process yields cleaner results when humidity is controlled beforehand.
-              Shows effectiveness in preserving underlying textures without residue.
-          - id: biological-stains-contamination
-            name: Organic Biofilm Deposits
-            category: biological
-            subcategory: deposit
-            url: /contaminants/biological/deposit/biological-stains-contamination
-            image: /images/contaminant/biological-stains-contamination-hero.jpg
-            description: 'Biological stains contamination, it arises from organic
-              residues like algae and mold in humid environments. Formation patterns
-              show irregular clusters, thus creating uneven layers on surfaces. These
-              patterns follow natural regional variations, such as denser growth in
-              tropical areas and sparser in arid zones. On metal substrates, contamination
-              adheres tightly and penetrates pores, while on stone, it forms porous
-              films that trap moisture.
-
-
-              Removal challenges emerge during laser cleaning. Process applies pulses,
-              and biological matter absorbs energy unevenly, so charring occurs before
-              detachment. This contamination, it resists ablation due to volatile
-              components that evaporate and leave residues. Material-specific behaviors
-              differ: metals heat rapidly and risk substrate damage, thus requiring
-              low fluence; stone surfaces exhibit cracking from thermal stress. After
-              treatment, some areas still show remnants, so multiple passes become
-              necessary. Efficiency of cleaning, it improves with adjusted wavelengths
-              targeting organic bonds.'
-          - id: paint-residue-contamination
-            name: Paint Residue / Coating Failure
-            category: inorganic-coating
-            subcategory: paint
-            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
-            image: /images/contaminant/paint-residue-contamination-hero.jpg
-            description: "Paint-residue contamination arises from degraded coatings\
-              \ on surfaces. This contamination, it forms unique irregular patterns,\
-              \ like patchy layers from uneven paint application and environmental\
-              \ weathering. Formation occurs through adhesion of pigments and binders,\
-              \ creating thick, non-uniform deposits that resist initial breakdown.\n\
-              \nRemoval challenges emerge in laser cleaning. Residue exhibits strong\
-              \ bonding to substrates, thus demands precise energy pulses to avoid\
-              \ substrate damage. On metallic materials, it shows thermal stability\
-              \ and charring tendency, complicating clean detachment. For polymeric\
-              \ surfaces, behavior differs; residue peels in flakes but leaves adhesive\
-              \ traces. Treatment applies laser ablation, and surface already exhibits\
-              \ reduced roughness, though traces still persist in crevices. Analysis\
-              \ confirms these patterns, so adjustment of parameters enhances efficiency.\
-              \ \n\nYi-Chun Lin, Ph.D., Taiwan"
-          - id: scale-buildup-contamination
-            name: Mineral Scale / Hard Water Deposits
-            category: thermal-damage
-            subcategory: scale
-            url: /contaminants/thermal-damage/scale/scale-buildup-contamination
-            image: /images/contaminant/scale-buildup-contamination-hero.jpg
-            description: "Scale buildup contamination forms differently on metals\
-              \ compared to ceramics, so removal challenges vary. On steel surfaces,\
-              \ layer adheres tightly from heat exposure, creating uneven patterns\
-              \ that resist laser pulses. Aluminum shows looser buildup, yet cracks\
-              \ during cleaning because thermal damage spreads fast. Treatment applies\
-              \ short bursts, and surface uniformity improves after this. Contamination\
-              \ exhibits thermal origins, so laser adjusts for material behavior.\
-              \ Buildup is detected in oxide forms, and process removes it effectively\
-              \ without substrate harm. Results indicate cleaner finishes on treated\
-              \ areas. \n\nIkmanda Roswati, Ph.D. from Indonesia"
-          _section:
-            sectionTitle: Common Contaminants
-            sectionDescription: Contaminants typically removed in these applications.
-            icon: droplet
-            order: 31
-            variant: default
   construction-equipment-laser-cleaning-applications:
     id: construction-equipment-laser-cleaning-applications
     name: Construction Equipment
@@ -1400,29 +294,18 @@ applications:
     category: applications
     subcategory: construction-equipment
     datePublished: '2026-02-21'
-    dateModified: '2026-02-22T19:57:42.000Z'
+    dateModified: '2026-02-23T22:40:27.467123+00:00'
     contentType: application
     schemaVersion: 5.0.0
-    slug: construction-equipment-laser-cleaning-applications
     fullPath: /applications/construction-equipment-laser-cleaning-applications
-    pageTitle: Construction Equipment Laser Cleaning
-    pageDescription: Overview of laser cleaning in construction equipment applications
-      and common surface challenges.
-    authorId: 1
     breadcrumb:
     - label: Home
       href: /
     - label: Applications
       href: /applications
-    metaDescription: Overview of laser cleaning in construction equipment applications
-      and common surface challenges.
-    keywords:
-    - Construction Equipment Laser Cleaning
-    - Construction Equipment
-    card:
-      title: Construction Equipment Laser Cleaning
-      description: Overview of laser cleaning in construction equipment applications
-        and common surface challenges.
+    pageTitle: Construction Equipment Laser Cleaning
+    pageDescription: Overview of laser cleaning in construction equipment applications and common surface challenges.
+    metaDescription: Overview of laser cleaning in construction equipment applications and common surface challenges.
     relationships:
       discovery:
         relatedMaterials:
@@ -1460,8 +343,6 @@ applications:
             image: /images/material/concrete-laser-cleaning-hero.jpg
           _section:
             sectionTitle: Common Materials
-            sectionDescription: Materials most frequently cleaned in this application
-              context.
             icon: layers
             order: 30
             variant: default
@@ -1475,306 +356,71 @@ applications:
             subcategory: paint
             url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
             image: /images/contaminant/graffiti-paint-contamination-hero.jpg
-            description: 'Graffiti paint contamination poses a tough challenge in
-              urban settings, where artists spray quick layers that build up unevenly
-              on surfaces like concrete walls or metal signs. This inorganic coating
-              forms irregular patterns—thick globs in some spots, thin films in others—adhering
-              tightly through chemical bonding and surface penetration. Turns out,
-              the paint''s pigments and binders create a layered structure that resists
-              initial breakdown.
-
-
-              Laser cleaning tackles this head-on, but removal demands precise control
-              to avoid substrate damage. On porous materials such as brick, the contamination
-              soaks in deep, requiring multiple passes to clear it out completely.
-              Metal surfaces fare better; the paint flakes off more readily under
-              focused beams, yielding a clean finish without pitting. In practice,
-              operators dial in pulse durations to strip layers selectively, cutting
-              down on rework. Overall, understanding these patterns helps set up effective
-              protocols that maintain surface integrity.'
           - id: algae-growth-contamination
             name: Algae and Lichen Growth
             category: biological
             subcategory: growth
             url: /contaminants/biological/growth/algae-growth-contamination
             image: /images/contaminant/algae-growth-contamination-hero.jpg
-            description: Algae-growth contamination, it manifests uniquely in humid
-              environments, where biological layers adhere tenaciously to surfaces
-              exposed to moisture. This contamination, dependent from regional patterns
-              like Mediterranean climates, forms irregular patches that penetrate
-              porous materials, such as stone facades, leading to discoloration and
-              structural weakening over time. On metals, the growth exhibits a slimy
-              matrix, which resists initial laser pulses by scattering energy. Removal
-              challenges arise from its regenerative nature; partial ablation often
-              prompts regrowth, demanding multiple passes with adjusted wavelengths.
-              It seems that adhesion varies across substrates, persisting more stubbornly
-              on organics than on synthetics, as confirmed by surface scans post-treatment.
-              The process yields cleaner results when humidity is controlled beforehand.
-              Shows effectiveness in preserving underlying textures without residue.
           - id: salt-residue-contamination
             name: Salt and Chloride Deposits
             category: inorganic-coating
             subcategory: mineral
             url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
             image: /images/contaminant/salt-residue-contamination-hero.jpg
-            description: 'Salt residues form tricky patterns on surfaces exposed to
-              harsh environments, like coastal machinery or salted roads. They build
-              up in crystalline layers that cling tight to metals and stone, often
-              cracking unevenly under humidity shifts. In laser cleaning setups, these
-              contaminants demand precise beam control—dial in the right pulse to
-              avoid scattering particles that etch deeper into the substrate.
-
-
-              Workers run into distinct removal challenges here. The residues vaporize
-              unevenly, sometimes leaving behind stubborn films that hold up against
-              standard passes. On aluminum, they behave worse, embedding salts that
-              ramp up corrosion risks if not cleared fully. Turns out, tweaking laser
-              wavelengths addresses this effectively, achieving a clean finish without
-              damaging the base material. Overall, targeting these patterns cuts down
-              rework and maintains solid results in practice.'
           - id: concrete-dust-contamination
             name: Concrete Dust Deposits
             category: inorganic-coating
             subcategory: mineral
             url: /contaminants/inorganic-coating/mineral/concrete-dust-contamination
             image: /images/contaminant/concrete-dust-contamination-hero.jpg
-            description: Adhesiveness of concrete dust contamination, it embeds deeply
-              into surfaces during construction exposure. This inorganic coating forms
-              uneven layers and thus clings to substrates like metal or stone, creating
-              porous patterns from airborne particles settling over time. Formation
-              occurs through mechanical abrasion and environmental settling, so contamination
-              builds gradually and resists dislodgement. In laser cleaning applications,
-              removal challenges arise from its dense structure, which absorbs energy
-              unevenly and leads to incomplete ablation on rough areas. Material-specific
-              behaviors vary; on metals, it scatters laser beams thus prolonging treatment,
-              while on concrete bases, it merges with the host material and demands
-              precise pulse adjustments. After irradiation, residues still persist
-              in crevices, so post-process verification confirms surface recovery.
-              This contamination, it demands tailored parameters for effective clearance.
           - id: carbon-soot-contamination
             name: Carbon Soot Deposits
             category: organic-residue
             subcategory: other
             url: /contaminants/organic-residue/other/carbon-soot-contamination
             image: /images/contaminant/carbon-soot-contamination-hero.jpg
-            description: 'Carbon-soot contamination, it emerges from incomplete combustion
-              processes and deposits as irregular, porous layers on material surfaces.
-              Formation patterns reveal unique regional variations, where soot clusters
-              in dense patches on metallic substrates and spreads thinly on polymers,
-              thus creating uneven adhesion profiles. This contamination, it absorbs
-              laser energy efficiently yet resists complete removal due to its volatile
-              organic composition. Removal challenges arise from thermal gradients
-              during ablation; soot vaporizes rapidly, and residues scatter, so secondary
-              contamination risks increase on nearby areas. Material-specific behaviors
-              differ markedly—on steels, soot bonds tenaciously and demands pulsed
-              laser sequences for dislodgement, while on ceramics, it flakes off more
-              readily following initial irradiation. After treatment, surfaces exhibit
-              reduced roughness, yet traces persist in crevices, thus requiring multi-pass
-              cleaning for uniformity.
-
-
-              Yi-Chun Lin, Ph.D., Taiwan'
           _section:
             sectionTitle: Common Contaminants
-            sectionDescription: Contaminants typically removed in these applications.
             icon: droplet
             order: 31
             variant: default
-  food-processing-laser-cleaning-applications:
-    id: food-processing-laser-cleaning-applications
-    name: Food Processing
-    displayName: Food Processing Laser Cleaning
-    category: applications
-    subcategory: food-processing
-    datePublished: '2026-02-21'
-    dateModified: '2026-02-22T19:57:42.000Z'
-    contentType: application
-    schemaVersion: 5.0.0
-    slug: food-processing-laser-cleaning-applications
-    fullPath: /applications/food-processing-laser-cleaning-applications
-    pageTitle: Food Processing Laser Cleaning
-    pageDescription: Overview of laser cleaning in food processing applications and
-      common surface challenges.
-    authorId: 4
-    breadcrumb:
-    - label: Home
-      href: /
-    - label: Applications
-      href: /applications
-    metaDescription: Overview of laser cleaning in food processing applications and
-      common surface challenges.
-    keywords:
-    - Food Processing Laser Cleaning
-    - Food Processing
+    author:
+      id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      countryDisplay: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      personaFile: taiwan_persona.yaml
+      formattingFile: taiwan_formatting.yaml
     card:
-      title: Food Processing Laser Cleaning
-      description: Overview of laser cleaning in food processing applications and
-        common surface challenges.
-    relationships:
-      discovery:
-        relatedMaterials:
-          presentation: card
-          items:
-          - id: steel-laser-cleaning
-            name: Steel
-            category: metal
-            subcategory: ferrous
-            url: /materials/metal/ferrous/steel-laser-cleaning
-            image: /images/material/steel-laser-cleaning-hero.jpg
-          - id: aluminum-laser-cleaning
-            name: Aluminum
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
-            image: /images/material/aluminum-laser-cleaning-hero.jpg
-          - id: copper-laser-cleaning
-            name: Copper
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/copper-laser-cleaning
-            image: /images/material/copper-laser-cleaning-hero.jpg
-          - id: brass-laser-cleaning
-            name: Brass
-            category: metal
-            subcategory: non-ferrous
-            url: /materials/metal/non-ferrous/brass-laser-cleaning
-            image: /images/material/brass-laser-cleaning-hero.jpg
-          - id: stainless-steel-laser-cleaning
-            name: Stainless Steel
-            category: metal
-            subcategory: ferrous
-            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
-            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
-          _section:
-            sectionTitle: Common Materials
-            sectionDescription: Materials most frequently cleaned in this application
-              context.
-            icon: layers
-            order: 30
-            variant: default
-      interactions:
-        contaminatedBy:
-          presentation: card
-          items:
-          - id: biological-stains-contamination
-            name: Organic Biofilm Deposits
-            category: biological
-            subcategory: deposit
-            url: /contaminants/biological/deposit/biological-stains-contamination
-            image: /images/contaminant/biological-stains-contamination-hero.jpg
-            description: 'Biological stains contamination, it arises from organic
-              residues like algae and mold in humid environments. Formation patterns
-              show irregular clusters, thus creating uneven layers on surfaces. These
-              patterns follow natural regional variations, such as denser growth in
-              tropical areas and sparser in arid zones. On metal substrates, contamination
-              adheres tightly and penetrates pores, while on stone, it forms porous
-              films that trap moisture.
-
-
-              Removal challenges emerge during laser cleaning. Process applies pulses,
-              and biological matter absorbs energy unevenly, so charring occurs before
-              detachment. This contamination, it resists ablation due to volatile
-              components that evaporate and leave residues. Material-specific behaviors
-              differ: metals heat rapidly and risk substrate damage, thus requiring
-              low fluence; stone surfaces exhibit cracking from thermal stress. After
-              treatment, some areas still show remnants, so multiple passes become
-              necessary. Efficiency of cleaning, it improves with adjusted wavelengths
-              targeting organic bonds.'
-          - id: lime-scale-contamination
-            name: Limescale Deposits
-            category: thermal-damage
-            subcategory: scale
-            url: /contaminants/thermal-damage/scale/lime-scale-contamination
-            image: /images/contaminant/lime-scale-contamination-hero.jpg
-            description: Lime scale contamination builds up as hard, chalky deposits
-              from mineral-rich water, forming irregular layers on metal and stone
-              surfaces in humid environments. These patterns often show flaky, uneven
-              crusts that cling tightly, especially around joints or heat-exposed
-              areas, creating a significant challenge for laser cleaning. Lasers effectively
-              vaporize the scale, but the process demands precise control to avoid
-              thermal damage underneath. On stainless steel, it removes cleanly with
-              minimal residue, while on porous stone, it risks cracking if energy
-              ramps up too quickly. In practice, operators dial in lower intensities
-              first, which clears the buildup without harming the base material. Overall,
-              this contamination responds well to pulsed lasers, achieving a clean
-              finish while preserving surface integrity.
-          - id: adhesive-residue-contamination
-            name: Adhesive Residue / Tape Marks
-            category: organic-residue
-            subcategory: adhesive
-            url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
-            image: /images/contaminant/adhesive-residue-contamination-hero.jpg
-            description: 'Adhesive residue contamination forms during shipping or
-              labeling processes on manufactured items. Tape or stickers leave sticky
-              layers after removal, so surfaces exhibit uneven organic buildup. Before
-              cleaning, residue adheres tightly to substrates like metals and woods,
-              causing discoloration and reduced functionality.
-
-
-              This contamination shows patchy patterns, with thicker spots near edges.
-              On aluminum or glass, it penetrates slightly into pores, so removal
-              demands careful approach. During laser exposure, heat vaporizes organics
-              effectively, but residue''s tackiness leads to re-deposition if pulses
-              are not spaced properly.
-
-
-              Challenges arise because incomplete ablation leaves films that attract
-              dust, and on polymers like nylon, overheating risks substrate damage.
-              Laser cleaning achieves clean surfaces on stainless steel or wood, as
-              residue breaks down without mechanical force. After treatment, uniformity
-              is observed across materials such as copper and oak.
-
-
-              Ikmanda Roswati, Ph.D.'
-          - id: paint-residue-contamination
-            name: Paint Residue / Coating Failure
-            category: inorganic-coating
-            subcategory: paint
-            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
-            image: /images/contaminant/paint-residue-contamination-hero.jpg
-            description: "Paint-residue contamination arises from degraded coatings\
-              \ on surfaces. This contamination, it forms unique irregular patterns,\
-              \ like patchy layers from uneven paint application and environmental\
-              \ weathering. Formation occurs through adhesion of pigments and binders,\
-              \ creating thick, non-uniform deposits that resist initial breakdown.\n\
-              \nRemoval challenges emerge in laser cleaning. Residue exhibits strong\
-              \ bonding to substrates, thus demands precise energy pulses to avoid\
-              \ substrate damage. On metallic materials, it shows thermal stability\
-              \ and charring tendency, complicating clean detachment. For polymeric\
-              \ surfaces, behavior differs; residue peels in flakes but leaves adhesive\
-              \ traces. Treatment applies laser ablation, and surface already exhibits\
-              \ reduced roughness, though traces still persist in crevices. Analysis\
-              \ confirms these patterns, so adjustment of parameters enhances efficiency.\
-              \ \n\nYi-Chun Lin, Ph.D., Taiwan"
-          - id: carbon-soot-contamination
-            name: Carbon Soot Deposits
-            category: organic-residue
-            subcategory: other
-            url: /contaminants/organic-residue/other/carbon-soot-contamination
-            image: /images/contaminant/carbon-soot-contamination-hero.jpg
-            description: 'Carbon-soot contamination, it emerges from incomplete combustion
-              processes and deposits as irregular, porous layers on material surfaces.
-              Formation patterns reveal unique regional variations, where soot clusters
-              in dense patches on metallic substrates and spreads thinly on polymers,
-              thus creating uneven adhesion profiles. This contamination, it absorbs
-              laser energy efficiently yet resists complete removal due to its volatile
-              organic composition. Removal challenges arise from thermal gradients
-              during ablation; soot vaporizes rapidly, and residues scatter, so secondary
-              contamination risks increase on nearby areas. Material-specific behaviors
-              differ markedly—on steels, soot bonds tenaciously and demands pulsed
-              laser sequences for dislodgement, while on ceramics, it flakes off more
-              readily following initial irradiation. After treatment, surfaces exhibit
-              reduced roughness, yet traces persist in crevices, thus requiring multi-pass
-              cleaning for uniformity.
-
-
-              Yi-Chun Lin, Ph.D., Taiwan'
-          _section:
-            sectionTitle: Common Contaminants
-            sectionDescription: Contaminants typically removed in these applications.
-            icon: droplet
-            order: 31
-            variant: default
+      title: Construction Equipment Laser Cleaning
+      description: Overview of laser cleaning in construction equipment applications and common surface challenges.
+    keywords:
+    - Construction Equipment Laser Cleaning
+    - Construction Equipment
+    slug: construction-equipment-laser-cleaning-applications
+    authorId: 1
   defense-laser-cleaning-applications:
     id: defense-laser-cleaning-applications
     name: Defense
@@ -1782,29 +428,18 @@ applications:
     category: applications
     subcategory: defense
     datePublished: '2026-02-21'
-    dateModified: '2026-02-22T19:57:42.000Z'
+    dateModified: '2026-02-23T22:40:27.531179+00:00'
     contentType: application
     schemaVersion: 5.0.0
-    slug: defense-laser-cleaning-applications
     fullPath: /applications/defense-laser-cleaning-applications
-    pageTitle: Defense Laser Cleaning
-    pageDescription: Overview of laser cleaning in defense applications and common
-      surface challenges.
-    authorId: 3
     breadcrumb:
     - label: Home
       href: /
     - label: Applications
       href: /applications
-    metaDescription: Overview of laser cleaning in defense applications and common
-      surface challenges.
-    keywords:
-    - Defense Laser Cleaning
-    - Defense
-    card:
-      title: Defense Laser Cleaning
-      description: Overview of laser cleaning in defense applications and common surface
-        challenges.
+    pageTitle: Defense Laser Cleaning
+    pageDescription: Overview of laser cleaning in defense applications and common surface challenges.
+    metaDescription: Overview of laser cleaning in defense applications and common surface challenges.
     relationships:
       discovery:
         relatedMaterials:
@@ -1842,8 +477,6 @@ applications:
             image: /images/material/inconel-laser-cleaning-hero.jpg
           _section:
             sectionTitle: Common Materials
-            sectionDescription: Materials most frequently cleaned in this application
-              context.
             icon: layers
             order: 30
             variant: default
@@ -1857,105 +490,912 @@ applications:
             subcategory: other
             url: /contaminants/organic-residue/other/carbon-soot-contamination
             image: /images/contaminant/carbon-soot-contamination-hero.jpg
-            description: 'Carbon-soot contamination, it emerges from incomplete combustion
-              processes and deposits as irregular, porous layers on material surfaces.
-              Formation patterns reveal unique regional variations, where soot clusters
-              in dense patches on metallic substrates and spreads thinly on polymers,
-              thus creating uneven adhesion profiles. This contamination, it absorbs
-              laser energy efficiently yet resists complete removal due to its volatile
-              organic composition. Removal challenges arise from thermal gradients
-              during ablation; soot vaporizes rapidly, and residues scatter, so secondary
-              contamination risks increase on nearby areas. Material-specific behaviors
-              differ markedly—on steels, soot bonds tenaciously and demands pulsed
-              laser sequences for dislodgement, while on ceramics, it flakes off more
-              readily following initial irradiation. After treatment, surfaces exhibit
-              reduced roughness, yet traces persist in crevices, thus requiring multi-pass
-              cleaning for uniformity.
-
-
-              Yi-Chun Lin, Ph.D., Taiwan'
           - id: paint-residue-contamination
             name: Paint Residue / Coating Failure
             category: inorganic-coating
             subcategory: paint
             url: /contaminants/inorganic-coating/paint/paint-residue-contamination
             image: /images/contaminant/paint-residue-contamination-hero.jpg
-            description: "Paint-residue contamination arises from degraded coatings\
-              \ on surfaces. This contamination, it forms unique irregular patterns,\
-              \ like patchy layers from uneven paint application and environmental\
-              \ weathering. Formation occurs through adhesion of pigments and binders,\
-              \ creating thick, non-uniform deposits that resist initial breakdown.\n\
-              \nRemoval challenges emerge in laser cleaning. Residue exhibits strong\
-              \ bonding to substrates, thus demands precise energy pulses to avoid\
-              \ substrate damage. On metallic materials, it shows thermal stability\
-              \ and charring tendency, complicating clean detachment. For polymeric\
-              \ surfaces, behavior differs; residue peels in flakes but leaves adhesive\
-              \ traces. Treatment applies laser ablation, and surface already exhibits\
-              \ reduced roughness, though traces still persist in crevices. Analysis\
-              \ confirms these patterns, so adjustment of parameters enhances efficiency.\
-              \ \n\nYi-Chun Lin, Ph.D., Taiwan"
           - id: salt-residue-contamination
             name: Salt and Chloride Deposits
             category: inorganic-coating
             subcategory: mineral
             url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
             image: /images/contaminant/salt-residue-contamination-hero.jpg
-            description: 'Salt residues form tricky patterns on surfaces exposed to
-              harsh environments, like coastal machinery or salted roads. They build
-              up in crystalline layers that cling tight to metals and stone, often
-              cracking unevenly under humidity shifts. In laser cleaning setups, these
-              contaminants demand precise beam control—dial in the right pulse to
-              avoid scattering particles that etch deeper into the substrate.
-
-
-              Workers run into distinct removal challenges here. The residues vaporize
-              unevenly, sometimes leaving behind stubborn films that hold up against
-              standard passes. On aluminum, they behave worse, embedding salts that
-              ramp up corrosion risks if not cleared fully. Turns out, tweaking laser
-              wavelengths addresses this effectively, achieving a clean finish without
-              damaging the base material. Overall, targeting these patterns cuts down
-              rework and maintains solid results in practice.'
           - id: radioactive-contamination
             name: Surface Radioactive Contamination
             category: chemical-residue
             subcategory: hazardous
             url: /contaminants/chemical-residue/hazardous/radioactive-contamination
             image: /images/contaminant/radioactive-contamination-hero.jpg
-            description: 'Radioactive contamination manifests as adherent layers of
-              radionuclides, which form unevenly on surfaces during exposure to fallout
-              or spills. This contamination, it persists tenaciously on metals, embedding
-              into micro-pores that resist initial cleaning efforts. On porous substrates
-              like concrete, it penetrates deeply, leading to diffuse patterns dependent
-              from humidity and airflow.
-
-
-              Laser cleaning targets these formations, yet distinct challenges emerge.
-              The process yields partial removal on smooth metals, where ablation
-              disperses particles riskily. It seems that on oxides, adhesion strengthens
-              under heat, complicating full eradication without secondary containment.
-              These behaviors, they vary markedly by material, demanding tailored
-              pulse durations for efficacy. Surface smoothness exhibits post-treatment,
-              though residual traces linger in crevices.'
           - id: cutting-fluid-contamination
             name: Machining Coolant Residue
             category: organic-residue
             subcategory: lubricant
             url: /contaminants/organic-residue/lubricant/cutting-fluid-contamination
             image: /images/contaminant/cutting-fluid-contamination-hero.jpg
-            description: Cutting fluid contamination builds up during machining operations,
-              creating sticky organic residues that cling to metal surfaces. These
-              contaminants form unique patterns, like thin films mixed with metal
-              shavings, which ramp up adhesion in high-heat zones. In laser cleaning
-              applications, removal turns out tricky; the fluid's oily nature resists
-              vaporization, often leaving charred spots that demand multiple passes.
-              On steel, it penetrates pores tightly, while aluminum shows looser buildup
-              that clears more readily. Overall, addressing this holds up production
-              flow—lasers break it down effectively, yet material-specific behaviors
-              call for dialing in pulse settings to achieve a clean finish without
-              surface damage.
           _section:
             sectionTitle: Common Contaminants
-            sectionDescription: Contaminants typically removed in these applications.
             icon: droplet
             order: 31
             variant: default
+    author:
+      id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      countryDisplay: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork
+        optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      personaFile: indonesia_persona.yaml
+      formattingFile: indonesia_formatting.yaml
+    card:
+      title: Defense Laser Cleaning
+      description: Overview of laser cleaning in defense applications and common surface challenges.
+    keywords:
+    - Defense Laser Cleaning
+    - Defense
+    slug: defense-laser-cleaning-applications
+    authorId: 3
+  electronics-laser-cleaning-applications:
+    id: electronics-laser-cleaning-applications
+    name: Electronics
+    displayName: Electronics Laser Cleaning
+    category: applications
+    subcategory: electronics
+    datePublished: '2026-02-21'
+    dateModified: '2026-02-23T22:40:27.286092+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/electronics-laser-cleaning-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    pageTitle: Electronics Laser Cleaning
+    pageDescription: Laser cleaning in electronics, it manifests as a precise method for removing contaminants from circuit
+      boards and components, which leads to enhanced reliability without abrasive damage. The process yields clean surfaces
+      that improve electrical conductivity and prevent failures, yet deployment requires controlled environments to avoid
+      thermal effects on sensitive parts. Safety implications include reduced chemical exposure for operators, while compliance
+      demands adherence to industry standards that ensure no residue persists. These applications, they exhibit versatility
+      in manufacturing and maintenance, dependent from material compatibility. It appears that effectiveness varies with surface
+      types, showing operational benefits in high-precision tasks.
+    metaDescription: Laser cleaning in electronics, it manifests as a precise method for removing contaminants from circuit
+      boards and components, which leads to enhanced reliabi...
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          - id: gold-laser-cleaning
+            name: Gold
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/gold-laser-cleaning
+            image: /images/material/gold-laser-cleaning-hero.jpg
+          - id: silver-laser-cleaning
+            name: Silver
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/silver-laser-cleaning
+            image: /images/material/silver-laser-cleaning-hero.jpg
+          - id: nickel-laser-cleaning
+            name: Nickel
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/nickel-laser-cleaning
+            image: /images/material/nickel-laser-cleaning-hero.jpg
+          - id: tin-laser-cleaning
+            name: Tin
+            category: metal
+            subcategory: alloy
+            url: /materials/metal/alloy/tin-laser-cleaning
+            image: /images/material/tin-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: adhesive-residue-contamination
+            name: Adhesive Residue / Tape Marks
+            category: organic-residue
+            subcategory: adhesive
+            url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
+            image: /images/contaminant/adhesive-residue-contamination-hero.jpg
+          - id: epoxy-residue-contamination
+            name: Epoxy Resin Deposits
+            category: organic-residue
+            subcategory: adhesive
+            url: /contaminants/organic-residue/adhesive/epoxy-residue-contamination
+            image: /images/contaminant/epoxy-residue-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          - id: ink-stains-contamination
+            name: Printing Ink Residue
+            category: organic-residue
+            subcategory: marking
+            url: /contaminants/organic-residue/marking/ink-stains-contamination
+            image: /images/contaminant/ink-stains-contamination-hero.jpg
+          - id: silicone-buildup-contamination
+            name: Silicone Sealant Buildup
+            category: organic-residue
+            subcategory: adhesive
+            url: /contaminants/organic-residue/adhesive/silicone-buildup-contamination
+            image: /images/contaminant/silicone-buildup-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+    author:
+      id: 2
+      name: Alessandro Moretti
+      country: Italy
+      countryDisplay: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise:
+      - Laser-Based Additive Manufacturing
+      affiliation:
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf:
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs:
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      personaFile: italy_persona.yaml
+      formattingFile: italy_formatting.yaml
+    card:
+      title: Electronics Laser Cleaning
+      description: Laser cleaning in electronics, it manifests as a precise method for removing contaminants from circuit
+        boards and components, which leads to enhanced reliabi...
+    keywords:
+    - Electronics Laser Cleaning
+    - Electronics
+    slug: electronics-laser-cleaning-applications
+    authorId: 2
+  energy-power-laser-cleaning-applications:
+    id: energy-power-laser-cleaning-applications
+    name: Energy and Power
+    displayName: Energy and Power Laser Cleaning
+    category: applications
+    subcategory: energy-power
+    datePublished: '2026-02-21'
+    dateModified: '2026-02-23T22:40:27.359792+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/energy-power-laser-cleaning-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    pageTitle: Energy and Power Laser Cleaning
+    pageDescription: Laser cleaning applications in the energy and power sector effectively remove contaminants from critical
+      components like turbine blades and electrical insulators, ensuring reliable performance without abrasive damage. Operators
+      typically dial in precise settings to clear rust, coatings, or debris from surfaces in power plants and renewable energy
+      setups, which maintains equipment integrity and supports uninterrupted operations. Deployment often requires controlled
+      environments to manage laser emissions safely, addressing potential hazards through proper shielding and ventilation
+      while complying with workplace safety standards. Overall, this approach achieves cleaner results on conductive materials,
+      reduces maintenance needs, and enhances system durability in demanding conditions.
+    metaDescription: Laser cleaning applications in the energy and power sector effectively remove contaminants from critical
+      components like turbine blades and electrical insula...
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: steel-laser-cleaning
+            name: Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/steel-laser-cleaning
+            image: /images/material/steel-laser-cleaning-hero.jpg
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          - id: brass-laser-cleaning
+            name: Brass
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/brass-laser-cleaning
+            image: /images/material/brass-laser-cleaning-hero.jpg
+          - id: stainless-steel-laser-cleaning
+            name: Stainless Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          - id: scale-buildup-contamination
+            name: Mineral Scale / Hard Water Deposits
+            category: thermal-damage
+            subcategory: scale
+            url: /contaminants/thermal-damage/scale/scale-buildup-contamination
+            image: /images/contaminant/scale-buildup-contamination-hero.jpg
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: biological-stains-contamination
+            name: Organic Biofilm Deposits
+            category: biological
+            subcategory: deposit
+            url: /contaminants/biological/deposit/biological-stains-contamination
+            image: /images/contaminant/biological-stains-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+    author:
+      id: 4
+      name: Todd Dunning
+      country: United States
+      countryDisplay: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      personaFile: usa_persona.yaml
+      formattingFile: usa_formatting.yaml
+    card:
+      title: Energy and Power Laser Cleaning
+      description: Laser cleaning applications in the energy and power sector effectively remove contaminants from critical
+        components like turbine blades and electrical insula...
+    keywords:
+    - Energy and Power Laser Cleaning
+    - Energy and Power
+    - Energy Power
+    - energy power laser cleaning
+    slug: energy-power-laser-cleaning-applications
+    authorId: 4
+  food-processing-laser-cleaning-applications:
+    id: food-processing-laser-cleaning-applications
+    name: Food Processing
+    displayName: Food Processing Laser Cleaning
+    category: applications
+    subcategory: food-processing
+    datePublished: '2026-02-21'
+    dateModified: '2026-02-23T22:40:27.499151+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/food-processing-laser-cleaning-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    pageTitle: Food Processing Laser Cleaning
+    pageDescription: Overview of laser cleaning in food processing applications and common surface challenges.
+    metaDescription: Overview of laser cleaning in food processing applications and common surface challenges.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: steel-laser-cleaning
+            name: Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/steel-laser-cleaning
+            image: /images/material/steel-laser-cleaning-hero.jpg
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          - id: brass-laser-cleaning
+            name: Brass
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/brass-laser-cleaning
+            image: /images/material/brass-laser-cleaning-hero.jpg
+          - id: stainless-steel-laser-cleaning
+            name: Stainless Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: biological-stains-contamination
+            name: Organic Biofilm Deposits
+            category: biological
+            subcategory: deposit
+            url: /contaminants/biological/deposit/biological-stains-contamination
+            image: /images/contaminant/biological-stains-contamination-hero.jpg
+          - id: lime-scale-contamination
+            name: Limescale Deposits
+            category: thermal-damage
+            subcategory: scale
+            url: /contaminants/thermal-damage/scale/lime-scale-contamination
+            image: /images/contaminant/lime-scale-contamination-hero.jpg
+          - id: adhesive-residue-contamination
+            name: Adhesive Residue / Tape Marks
+            category: organic-residue
+            subcategory: adhesive
+            url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
+            image: /images/contaminant/adhesive-residue-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+    author:
+      id: 4
+      name: Todd Dunning
+      country: United States
+      countryDisplay: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      personaFile: usa_persona.yaml
+      formattingFile: usa_formatting.yaml
+    card:
+      title: Food Processing Laser Cleaning
+      description: Overview of laser cleaning in food processing applications and common surface challenges.
+    keywords:
+    - Food Processing Laser Cleaning
+    - Food Processing
+    slug: food-processing-laser-cleaning-applications
+    authorId: 4
+  medical-devices-laser-cleaning-applications:
+    id: medical-devices-laser-cleaning-applications
+    name: Medical Devices
+    displayName: Medical Devices Laser Cleaning
+    category: applications
+    subcategory: medical-devices
+    datePublished: '2026-02-21'
+    dateModified: '2026-02-23T22:40:27.324409+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/medical-devices-laser-cleaning-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    pageTitle: Medical Devices Laser Cleaning
+    pageDescription: Laser cleaning applies to medical devices and removes contaminants from surfaces such as surgical instruments
+      or implants. Process ensures sterility, thus maintains device integrity without harsh chemicals. After treatment, surface
+      exhibits smoothness and cleanliness, so operational outcomes include enhanced reliability in clinical settings. Deployment
+      constraints involve controlled environments to avoid cross-contamination, and safety implications demand compliance
+      with medical regulations. This method, it supports precise decontamination, already demonstrates effectiveness in preserving
+      material properties.
+    metaDescription: Laser cleaning applies to medical devices and removes contaminants from surfaces such as surgical instruments
+      or implants. Process ensures sterility, thus ma...
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: titanium-laser-cleaning
+            name: Titanium
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/titanium-laser-cleaning
+            image: /images/material/titanium-laser-cleaning-hero.jpg
+          - id: stainless-steel-laser-cleaning
+            name: Stainless Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+          - id: cobalt-laser-cleaning
+            name: Cobalt
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/cobalt-laser-cleaning
+            image: /images/material/cobalt-laser-cleaning-hero.jpg
+          - id: chromium-laser-cleaning
+            name: Chromium
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/chromium-laser-cleaning
+            image: /images/material/chromium-laser-cleaning-hero.jpg
+          - id: nickel-laser-cleaning
+            name: Nickel
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/nickel-laser-cleaning
+            image: /images/material/nickel-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: adhesive-residue-contamination
+            name: Adhesive Residue / Tape Marks
+            category: organic-residue
+            subcategory: adhesive
+            url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
+            image: /images/contaminant/adhesive-residue-contamination-hero.jpg
+          - id: biological-stains-contamination
+            name: Organic Biofilm Deposits
+            category: biological
+            subcategory: deposit
+            url: /contaminants/biological/deposit/biological-stains-contamination
+            image: /images/contaminant/biological-stains-contamination-hero.jpg
+          - id: epoxy-residue-contamination
+            name: Epoxy Resin Deposits
+            category: organic-residue
+            subcategory: adhesive
+            url: /contaminants/organic-residue/adhesive/epoxy-residue-contamination
+            image: /images/contaminant/epoxy-residue-contamination-hero.jpg
+          - id: plastic-residue-contamination
+            name: Degraded Polymer Deposits
+            category: organic-residue
+            subcategory: polymer
+            url: /contaminants/organic-residue/polymer/plastic-residue-contamination
+            image: /images/contaminant/plastic-residue-contamination-hero.jpg
+          - id: silicone-buildup-contamination
+            name: Silicone Sealant Buildup
+            category: organic-residue
+            subcategory: adhesive
+            url: /contaminants/organic-residue/adhesive/silicone-buildup-contamination
+            image: /images/contaminant/silicone-buildup-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+    author:
+      id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      countryDisplay: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      personaFile: taiwan_persona.yaml
+      formattingFile: taiwan_formatting.yaml
+    card:
+      title: Medical Devices Laser Cleaning
+      description: Laser cleaning applies to medical devices and removes contaminants from surfaces such as surgical instruments
+        or implants. Process ensures sterility, thus ma...
+    keywords:
+    - Medical Devices Laser Cleaning
+    - Medical Devices
+    slug: medical-devices-laser-cleaning-applications
+    authorId: 1
+  rail-transport-laser-cleaning-applications:
+    id: rail-transport-laser-cleaning-applications
+    name: Rail Transport
+    displayName: Rail Transport Laser Cleaning
+    category: applications
+    subcategory: rail-transport
+    datePublished: '2026-02-21'
+    dateModified: '2026-02-23T22:40:27.398228+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/rail-transport-laser-cleaning-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    pageTitle: Rail Transport Laser Cleaning
+    pageDescription: In rail transport, laser cleaning applies to surfaces like tracks and train components, where contamination
+      builds up from environmental exposure, so treatment removes layers effectively without causing damage to the underlying
+      material. This method, it achieves uniform results and preserves structural integrity, because pulses target unwanted
+      buildup precisely during operations. After deployment is considered, mobility constraints arise in field settings, with
+      equipment needing portable designs for on-site use along extensive rail networks. During application, safety measures
+      focus on protective gear to prevent eye hazards, and compliance follows industry standards to ensure minimal environmental
+      impact from the process. From observations, operational outcomes include extended component lifespan and reduced maintenance
+      downtime, as cleaning integrates seamlessly into routine schedules.
+    metaDescription: Overview of laser cleaning in rail transport applications and common surface challenges.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: steel-laser-cleaning
+            name: Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/steel-laser-cleaning
+            image: /images/material/steel-laser-cleaning-hero.jpg
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: brass-laser-cleaning
+            name: Brass
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/brass-laser-cleaning
+            image: /images/material/brass-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          - id: graffiti-paint-contamination
+            name: Graffiti and Spray Paint
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+            image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: rubber-residue-contamination
+            name: Rubber Compound Residue
+            category: organic-residue
+            subcategory: polymer
+            url: /contaminants/organic-residue/polymer/rubber-residue-contamination
+            image: /images/contaminant/rubber-residue-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+    author:
+      id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      countryDisplay: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork
+        optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      personaFile: indonesia_persona.yaml
+      formattingFile: indonesia_formatting.yaml
+    card:
+      title: Rail Transport Laser Cleaning
+      description: Overview of laser cleaning in rail transport applications and common surface challenges.
+    keywords:
+    - Rail Transport Laser Cleaning
+    - Rail Transport
+    slug: rail-transport-laser-cleaning-applications
+    authorId: 3
+  shipbuilding-marine-laser-cleaning-applications:
+    id: shipbuilding-marine-laser-cleaning-applications
+    name: Shipbuilding and Marine
+    displayName: Shipbuilding and Marine Laser Cleaning
+    category: applications
+    subcategory: shipbuilding-marine
+    datePublished: '2026-02-21'
+    dateModified: '2026-02-23T22:40:27.433297+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/shipbuilding-marine-laser-cleaning-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    pageTitle: Shipbuilding and Marine Laser Cleaning
+    pageDescription: Overview of laser cleaning in shipbuilding and marine applications and common surface challenges.
+    metaDescription: Overview of laser cleaning in shipbuilding and marine applications and common surface challenges.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: stainless-steel-laser-cleaning
+            name: Stainless Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          - id: nickel-laser-cleaning
+            name: Nickel
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/nickel-laser-cleaning
+            image: /images/material/nickel-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: algae-growth-contamination
+            name: Algae and Lichen Growth
+            category: biological
+            subcategory: growth
+            url: /contaminants/biological/growth/algae-growth-contamination
+            image: /images/contaminant/algae-growth-contamination-hero.jpg
+          - id: biological-stains-contamination
+            name: Organic Biofilm Deposits
+            category: biological
+            subcategory: deposit
+            url: /contaminants/biological/deposit/biological-stains-contamination
+            image: /images/contaminant/biological-stains-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          - id: scale-buildup-contamination
+            name: Mineral Scale / Hard Water Deposits
+            category: thermal-damage
+            subcategory: scale
+            url: /contaminants/thermal-damage/scale/scale-buildup-contamination
+            image: /images/contaminant/scale-buildup-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+    author:
+      id: 2
+      name: Alessandro Moretti
+      country: Italy
+      countryDisplay: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise:
+      - Laser-Based Additive Manufacturing
+      affiliation:
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf:
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs:
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      personaFile: italy_persona.yaml
+      formattingFile: italy_formatting.yaml
+    card:
+      title: Shipbuilding and Marine Laser Cleaning
+      description: Overview of laser cleaning in shipbuilding and marine applications and common surface challenges.
+    keywords:
+    - Shipbuilding and Marine Laser Cleaning
+    - Shipbuilding and Marine
+    - Shipbuilding Marine
+    - shipbuilding marine laser cleaning
+    slug: shipbuilding-marine-laser-cleaning-applications
+    authorId: 2

@@ -1,4 +1,43 @@
-# Task Plan — copilot-instructions.md Refactor (current)
+# Task Plan — Test Suite Fixes (current)
+
+## Findings
+**17 unit test failures, 3 collection errors across 3 categories:**
+
+### Group A — Constructor signature drift (8 tests, test_evaluated_generator.py)
+`winston_client` changed from optional → required in production. Tests don't pass mock.
+Fix: add `winston_client=MagicMock()` to 8 failing constructor calls.
+
+### Group B — Attribute removed (2 tests, test_humanness_optimizer.py)
+- `test_init_requires_template_file`: patches `Path.exists` to False; optimizer now raises on `generation/config.yaml` first, not `humanness_layer.txt`. Fix: update assertion string.
+- `test_init_success_with_all_files`: asserts `optimizer.template_file.exists()` but `template_file` attribute removed. Fix: assert `optimizer.config_path.exists()`.
+
+### Group C — Stale prompt string assertions (5 tests)
+Prompts were rewritten. Old strings no longer present.
+- `test_domain_prompt_registry_hybrid.py` (2): `"FIELD:"` → `"Describe THIS ITEM'S chemical behavior only"`, `"Generate title and description"` → `"Write a context-specific section description"`
+- `test_prompt_registry_service.py` (3): `"DO NOT:"` → `"Describe THIS ITEM'S chemical behavior only"`, `"single page description paragraph"` → `"Describe THIS MATERIAL at page level"`, `"FIELD: Chemical behavior for THIS ITEM."` → `"Describe THIS ITEM'S chemical behavior only"`
+
+### Group D — Missing return key (1 test, test_structured_regeneration_policy.py)
+`CaptureGenerator.generate()` returns dict missing `'error'` key. `FieldRouter.generate_field` now requires it.
+Fix: add `'error': None` to CaptureGenerator return dict.
+
+### Group E — Dead module imports (3 files — collection errors)
+- `test_contaminants_nested_structure.py`, `test_phase1_implementation.py`: import chain reaches `shared.cache` which no longer exists
+- `test_postprocessing_retry_policy.py`: imports `MAX_REGENERATION_ATTEMPTS` from `postprocess.py` — only a comment, never exported
+Move all 3 to `tests/obsolete/`.
+
+## Plan
+- [ ] Fix Group A: test_evaluated_generator.py — add winston mock to 8 calls
+- [ ] Fix Group B: test_humanness_optimizer.py — update 2 assertions
+- [ ] Fix Group C: test_domain_prompt_registry_hybrid.py + test_prompt_registry_service.py — update 5 assertions
+- [ ] Fix Group D: test_structured_regeneration_policy.py — add 'error': None
+- [ ] Fix Group E: move 3 dead-import test files to tests/obsolete/
+- [ ] Run full unit suite, confirm 0 failures
+
+## Review
+
+---
+
+
 
 ## Goal
 Replace the 3,362-line sprawl with a ~150-line control surface that is reliably read and followed every turn. All detailed policy content stays in `docs/08-development/` — the instructions doc becomes a navigation and enforcement layer only.
