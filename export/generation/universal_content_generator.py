@@ -703,32 +703,41 @@ class ContentGenerator(BaseGenerator):
     def _task_breadcrumbs(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
         """
         Generate breadcrumb navigation array.
-        Replaces: BreadcrumbGenerator
-        
-        Creates 'breadcrumbs' (plural) array for frontend navigation.
+
+        Writes to 'breadcrumb' (singular) — the canonical frontend field name.
+        Pattern: Home → {domain} → {category} → {name} (href: null for current page).
         """
         domain = config.get('domain')
-        
+
         breadcrumbs = [
             {'label': 'Home', 'href': '/'}
         ]
-        
+
         if domain:
             breadcrumbs.append({
                 'label': domain.capitalize(),
                 'href': f'/{domain}'
             })
-        
-        # Add current page (if name or title available)
+
+        # Add category level if present (e.g., /materials/metal → "Metal")
+        category = frontmatter.get('category', '')
+        if category and domain:
+            breadcrumbs.append({
+                'label': category.capitalize(),
+                'href': f'/{domain}/{category}'
+            })
+
+        # Add current page label; href=null marks it as the active/current crumb
         page_name = frontmatter.get('name') or frontmatter.get('page_title', '')
         if page_name:
             breadcrumbs.append({
                 'label': page_name,
-                'href': ''  # Current page
+                'href': None  # null in YAML — current page has no link
             })
-        
-        # Use plural 'breadcrumbs' for consistency with frontend
-        frontmatter['breadcrumbs'] = breadcrumbs
+
+        # 'breadcrumb' (singular) matches frontend ArticleMetadata type and
+        # generateBreadcrumbs() in app/utils/breadcrumbs.ts
+        frontmatter['breadcrumb'] = breadcrumbs
         return frontmatter
     
     def _task_field_mapping(self, frontmatter: Dict[str, Any], config: Dict) -> Dict[str, Any]:
