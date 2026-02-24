@@ -313,7 +313,7 @@ class APIComponentGenerator(BaseComponentGenerator):
         # Special handling for frontmatter enhancement
         if self.component_type == "frontmatter":
             try:
-                from domains.materials.utils.property_enhancer import (
+                from shared.utils.core.property_enhancer import (
                     enhance_generated_frontmatter,
                 )
 
