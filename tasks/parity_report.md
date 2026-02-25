@@ -8,7 +8,7 @@
 | Metric | Value |
 |--------|-------|
 | Total domain Python files | 46 |
-| Total domain lines | 16,502 |
+| Total domain lines | 16,498 |
 | HIGH priority findings | 0 |
 | MEDIUM priority findings | 0 |
 | LOW priority findings | 8 |
@@ -16,7 +16,7 @@
 
 ## Per-domain file counts
 
-- **applications**: 1 files, 75 lines
+- **applications**: 1 files, 71 lines
 - **compounds**: 2 files, 302 lines
 - **contaminants**: 14 files, 4,827 lines
 - **materials**: 26 files, 10,720 lines

@@ -35,10 +35,6 @@ class ApplicationsCoordinator(DomainCoordinator):
         """Return domain name for config loading"""
         return "applications"
 
-    def _load_applications_data(self) -> Dict:
-        """Backwards-compatible wrapper — prefer _load_domain_data() directly."""
-        return self._load_domain_data()
-
     def generate_application_content(
         self,
         application_id: str,
