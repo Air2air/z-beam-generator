@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-02-24: Standalone maintenance scripts that read/write source YAML outside the generator pipeline (even with --dry-run/--apply guards) ARE enrichers and violate Core Principle 0.6. The correct pattern is always `BaseBackfillGenerator`. Always check `scripts/maintenance/` for orphan enrichers during architectural audits.
+- 2026-02-24: Before converting a standalone enricher to a backfill generator, grep the actual source YAML for the field it transforms. A standalone enricher script operating on data that does not exist in the source files is speculative dead code — delete it, replace it with the clean backfill pattern, and document why no domain config entry is needed yet.
 - 2026-02-24: COMPLEX tasks must write plan to tasks/todo.md FIRST before any tool calls — using the in-memory todo tool only violates the instruction. Both must be kept in sync.
 - 2026-02-24: Validator source key (`contamination_patterns`) can silently diverge from actual data key (`contaminants`) when data schema evolves — always grep the actual YAML top-level key before writing validator code that accesses it.
 - 2026-02-24: When tests reference bare material IDs (e.g., `source_id == 'steel'`) but data uses suffixed form (`steel-laser-cleaning`), run a normalization script to strip the suffix from the flat associations list — not a test bug, a data model consistency gap. Fix at source (the YAML).

@@ -36,13 +36,7 @@ generators:
     description: Organize output structure
   # normalize_expert_answers removed (Jan 5, 2026) - FAQ → expert_answers conversion
   # must happen during source data generation, not at export time (Core Principle 0.6)
-- type: excerpt
-  module: shared.generation.excerpt_generator
-  class: ExcerptGenerator
-  source_field: description
-  output_field: micro
-  mode: sentences
-  length: 2
+# excerpt→micro generator REMOVED (Feb 2026): micro is materials-only domain field
 - type: field_order
   module: export.generation.field_order_generator
   class: FieldOrderGenerator

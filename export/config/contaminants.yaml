@@ -39,13 +39,7 @@ generators:
   - type: field_ordering
     domain: contaminants
     description: Organize output structure
-- type: excerpt
-  module: shared.generation.excerpt_generator
-  class: ExcerptGenerator
-  source_field: contaminant_description
-  output_field: micro
-  mode: sentences
-  length: 2
+# excerpt→micro generator REMOVED (Feb 2026): micro is materials-only domain field
 - type: field_order
   module: export.generation.field_order_generator
   class: FieldOrderGenerator

@@ -85,9 +85,9 @@ base_fields:
   
   # ─────────────────────────────────────────────────────
   # TIER 6: CONTENT STANDARDIZATION (Lines 26-30)
+  # micro is materials-only — NOT in base schema (Feb 2026)
   # ─────────────────────────────────────────────────────
-  content_common:
-    - micro
+  content_common: []
   
   # ─────────────────────────────────────────────────────
   # TIER 7: MEDIA ASSETS (After content)
@@ -131,10 +131,11 @@ materials:
       - formula          # Chemical formula (if applicable)
       - melting_point    # Physical property
     
-    # Adds after content_common (micro)
+    # materials-only fields added to content tier
     content_additions:
+      - micro            # Before/after visual summary (materials-only)
       - description      # Long-form content
-      - properties       # Technical properties  
+      - properties       # Technical properties
       - faq             # Frequently asked questions
 
     # Optional removals from unified base ordering (required by validator contract)
@@ -158,7 +159,12 @@ contaminants:
   extensions:
     identity_additions:
       - category
-    
+
+    content_additions: []
+
+    content_removals:
+      - micro  # micro is materials-only
+
     domain_sections:
       - contamination_type
       - removal_difficulty
@@ -186,8 +192,9 @@ compounds:
       - detection_methods
       - first_aid
 
-    content_removals: []
-    
+    content_removals:
+      - micro  # micro is materials-only
+
     domain_sections:
       # Chemical Identifiers
       - chemical_formula
@@ -224,7 +231,7 @@ settings:
       - subcategory
     
     content_additions:
-      - faq  # Settings has FAQ in addition to micro
+      - faq  # Settings domain content
     
     domain_sections:
       # Machine Settings
@@ -350,7 +357,6 @@ field_types:
     - displayName
     - category
     - description
-    - micro
     - type
     - domain
     - chemical_formula
@@ -381,6 +387,7 @@ field_types:
   
   # Object fields
   object_fields:
+    - micro           # materials-only; dict with before/after keys
     - exposure_limits
     - relationships
     - author
