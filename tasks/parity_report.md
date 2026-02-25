@@ -7,19 +7,19 @@
 
 | Metric | Value |
 |--------|-------|
-| Total domain Python files | 48 |
-| Total domain lines | 17,428 |
+| Total domain Python files | 46 |
+| Total domain lines | 16,502 |
 | HIGH priority findings | 0 |
-| MEDIUM priority findings | 6 |
-| LOW priority findings | 10 |
-| Estimated lines removable | ~242 |
+| MEDIUM priority findings | 0 |
+| LOW priority findings | 8 |
+| Estimated lines removable | ~18 |
 
 ## Per-domain file counts
 
 - **applications**: 1 files, 75 lines
 - **compounds**: 2 files, 302 lines
-- **contaminants**: 15 files, 5,397 lines
-- **materials**: 27 files, 11,076 lines
+- **contaminants**: 14 files, 4,827 lines
+- **materials**: 26 files, 10,720 lines
 - **settings**: 3 files, 578 lines
 
 ---
@@ -34,31 +34,9 @@ _None found._
 
 ### 🟡 MEDIUM PRIORITY
 
-**🟡 MEDIUM** — `to_dict()` — appears in 2 domains (~103 lines saved)
-  - Domains: `contaminants`, `materials`
-
-**🟡 MEDIUM** — `get_pattern()` — appears in 2 domains (~41 lines saved)
-  - Domains: `contaminants`, `materials`
-
-**🟡 MEDIUM** — `get_material()` — appears in 3 domains (~22 lines saved)
-  - Domains: `compounds`, `contaminants`, `materials`
-
-**🟡 MEDIUM** — `clear_cache()` — appears in 3 domains (~20 lines saved)
-  - Domains: `compounds`, `contaminants`, `materials`
-
-**🟡 MEDIUM** — `_load_yaml_file()` — appears in 2 domains (~20 lines saved)
-  - Domains: `contaminants`, `materials`
-
-**🟡 MEDIUM** — `shared.exceptions.GenerationError` — used by 2 domains, absent in 2
-  - Domains: `contaminants`, `settings`
+_None found._
 
 ### 🟢 LOW PRIORITY
-
-**🟢 LOW** — `_find_project_root()` — appears in 2 domains (~11 lines saved)
-  - Domains: `contaminants`, `materials`
-
-**🟢 LOW** — `_get_key()` — appears in 2 domains (~7 lines saved)
-  - Domains: `contaminants`, `materials`
 
 **🟢 LOW** — `get_category_ranges()` module-level — 2 domains (~4 lines saved)
   - Domains: `compounds`, `materials`

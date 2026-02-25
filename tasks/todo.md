@@ -506,3 +506,19 @@ Remaining "HIGH" audit findings are by-design architectural patterns:
 - [ ] Run tests (200 must pass)
 - [ ] Run audit (HIGH should drop to 0 or 1)
 - [ ] Commit
+
+---
+
+## Session 9 — Phase 6: Clear MEDIUM findings (noise suppression)
+
+**Date:** 2026-02-24
+
+### Analysis of 6 MEDIUM items
+
+1. **`to_dict()`** — 9× in contaminants/schema.py (each dataclass), 2× in materials/image/. Genuinely different per-class implementations (SerializeMixin pattern). Not consolidatable.
+2. **`get_pattern()`** — in contaminants/library.py (returns ContaminantPattern), data_loader_v2.py (returns Dict), materials/image/tools/ (returns Dict). Different return types + sources. Not consolidatable. _Also polluted by legacy/pattern_loader.py._
+3. **`get_material()`** — compounds, contaminants, materials — each loads from a different YAML file/index. Not consolidatable.
+4. **`clear_cache()`** — Base class uses `self._cache.clear()` (file-level dict). Domain overrides use `cache_manager.invalidate('domain_name')` — genuinely different system. Not reachable via super(). By-design override.
+5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. egacy/. 5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_loadr` 5. **`_load5. **`_ln-n5. **`_load5. **`_load5. **`igur5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. egacy/. 5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_loadr` 5. **`_load5. **`_ca5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. egacy/. 5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_loadr` 5. **`_load5. **`_ln-n5. **`_load5. **`_load5. *SYMBOLS`
+- [ ] Run tests + audit → expect 0 HIGH, 0 MEDIUM, ~6-8 LOW
+- [ ] Commit

@@ -57,6 +57,7 @@ IMPORT_DRIFT_EXEMPT_DOMAINS: Set[str] = {"applications"}
 # flagging their absence in other domains would encourage dead imports.
 IMPORT_DRIFT_EXEMPT_SYMBOLS: Set[str] = {
     "shared.exceptions.ConfigurationError",  # error type — import only where raised
+    "shared.exceptions.GenerationError",      # error type — import only where raised
 }
 
 # Module-level functions that are intentionally identical across domains.
@@ -66,6 +67,19 @@ IMPORT_DRIFT_EXEMPT_SYMBOLS: Set[str] = {
 BY_DESIGN_MODULE_FUNCS: Set[str] = {
     "get_loader",
     "clear_cache",   # module-level wrapper: delegates to get_loader().clear_cache()
+}
+
+# Class methods intentionally repeated per domain — not consolidatable:
+# - clear_cache: base uses self._cache.clear() (file dict); domains use
+#   cache_manager.invalidate('domain') — different caching systems.
+# - to_dict: dataclass serializer on each schema class; different fields per class.
+# - get_pattern: different return types (ContaminantPattern vs Dict) different sources.
+# - get_material: each domain loads from a different YAML file/index.
+BY_DESIGN_METHODS: Set[str] = {
+    "clear_cache",
+    "to_dict",
+    "get_pattern",
+    "get_material",
 }
 
 # Standard dunder methods always skip in overlap analysis
@@ -242,6 +256,9 @@ def collect_domain_files() -> Dict[str, List[DomainFile]]:
         for py_file in sorted(domain_dir.rglob("*.py")):
             if "__pycache__" in py_file.parts:
                 continue
+            # Skip archived legacy code — moved there because it has no live callers
+            if "legacy" in py_file.parts:
+                continue
             df = parse_file(py_file, domain)
             if df:
                 domain_files[domain].append(df)
@@ -274,6 +291,9 @@ def find_method_overlaps(domain_files: Dict[str, List[DomainFile]]) -> List[Pair
             continue
         # Skip abstract method implementations — these are REQUIRED per domain
         if method_name in abstract_methods():
+            continue
+        # Skip by-design methods — intentionally different implementations per domain
+        if method_name in BY_DESIGN_METHODS:
             continue
 
         domains_with = sorted(domain_map.keys())
