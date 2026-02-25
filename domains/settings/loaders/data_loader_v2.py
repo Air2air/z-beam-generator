@@ -34,6 +34,7 @@ from typing import Any, Dict, List, Optional
 
 from shared.cache.manager import cache_manager
 from shared.data.legacy.base_loader import BaseDataLoader
+from shared.exceptions import ConfigurationError
 
 logger = logging.getLogger(__name__)
 
@@ -141,7 +142,6 @@ class SettingsDataLoader(BaseDataLoader):
         settings = self.load_settings(extract_machine_settings=True)
         
         if material_name not in settings:
-            from shared.exceptions import ConfigurationError
             available = list(settings.keys())[:10]  # Show first 10
             raise ConfigurationError(
                 f"Material '{material_name}' not found in Settings.yaml. "
@@ -167,7 +167,6 @@ class SettingsDataLoader(BaseDataLoader):
         material_settings = self.get_material_settings(material_name)
         
         if parameter_name not in material_settings:
-            from shared.exceptions import ConfigurationError
             available = list(material_settings.keys())
             raise ConfigurationError(
                 f"Parameter '{parameter_name}' not found for material '{material_name}'. "

@@ -487,3 +487,22 @@ Remaining "HIGH" audit findings are by-design architectural patterns:
 - - - -un test- - - -un test- - - -un test- - - -un test- - - cript - - - -un test- - - -un test] Commit
 
 ## Review
+
+---
+
+## Session 9 — Phase 5: Final HIGH findings
+
+**Date:** 2026-02-24
+
+### Finding 1: `get_loader()` module-level singleton (4 domains)
+**Analysis:** Not consolidatable. The singleton pattern requires `global _loader_instance` scoped to its module — moving to shared would break the singleton scope and lose typed return values. ~15 lines at 4×~5, pure boilerplate.
+**Action:** Add `get_loader` to `BY_DESIGN_MODULE_FUNCS` in structural_parity.py to suppress the HIGH finding.
+
+### Finding 2: `ConfigurationError` inline imports in contaminants (7 sites)
+**Analysis:** Real antipattern. Contaminants imports `from shared.exceptions import ConfigurationError` inside method bodies 7 times instead of once at module level. Materials/compounds/settings only mention it in docstrings — no actual raises, no fix needed there.
+**Action:** Add module-level import to contaminants/loaders/data_loader_v2.py, remove all 7 inline imports.
+
+###################################################################################ly ## `f############################################rom###################imp############################################################### Remove 7 inline `from shared.exceptions import ConfigurationError` lines from contaminants
+- [ ] Run tests (200 must pass)
+- [ ] Run audit (HIGH should drop to 0 or 1)
+- [ ] Commit

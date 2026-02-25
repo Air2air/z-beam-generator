@@ -52,6 +52,22 @@ BY_DESIGN_FILENAMES: Set[str] = {
 # "applications" has no data loader, so it correctly lacks cache_manager etc.
 IMPORT_DRIFT_EXEMPT_DOMAINS: Set[str] = {"applications"}
 
+# Shared symbols excluded from import drift analysis.
+# These should be imported only where they are actually used (raise-on-need);
+# flagging their absence in other domains would encourage dead imports.
+IMPORT_DRIFT_EXEMPT_SYMBOLS: Set[str] = {
+    "shared.exceptions.ConfigurationError",  # error type — import only where raised
+}
+
+# Module-level functions that are intentionally identical across domains.
+# These follow a required per-module pattern that cannot be shared:
+# - get_loader(): module-scoped lazy singleton (`global _loader_instance`); moving to
+#   shared would collapse all domains onto one instance and lose typed return values.
+BY_DESIGN_MODULE_FUNCS: Set[str] = {
+    "get_loader",
+    "clear_cache",   # module-level wrapper: delegates to get_loader().clear_cache()
+}
+
 # Standard dunder methods always skip in overlap analysis
 SKIP_DUNDER = frozenset([
     "__init__", "__repr__", "__str__", "__post_init__", "__eq__",
@@ -356,6 +372,9 @@ def find_import_drift(domain_files: Dict[str, List[DomainFile]]) -> List[Pairity
     findings: List[PairityFinding] = []
 
     for symbol, domains_using in shared_imports.items():
+        # Skip symbols exempt from drift analysis (raise-on-need imports)
+        if symbol in IMPORT_DRIFT_EXEMPT_SYMBOLS:
+            continue
         # Exempt domains that intentionally lack shared loader imports
         effective_missing = sorted((all_domains - domains_using) - IMPORT_DRIFT_EXEMPT_DOMAINS)
         using = sorted(domains_using)
@@ -393,6 +412,9 @@ def find_module_function_patterns(domain_files: Dict[str, List[DomainFile]]) -> 
 
     for func_name, domain_map in func_index.items():
         if len(domain_map) < 2:
+            continue
+        # Skip module-level functions that are intentionally identical (per-module singletons)
+        if func_name in BY_DESIGN_MODULE_FUNCS:
             continue
         domains_with = sorted(domain_map.keys())
         n = len(domains_with)

@@ -8,19 +8,19 @@
 | Metric | Value |
 |--------|-------|
 | Total domain Python files | 48 |
-| Total domain lines | 17,435 |
-| HIGH priority findings | 2 |
+| Total domain lines | 17,428 |
+| HIGH priority findings | 0 |
 | MEDIUM priority findings | 6 |
-| LOW priority findings | 11 |
-| Estimated lines removable | ~259 |
+| LOW priority findings | 10 |
+| Estimated lines removable | ~242 |
 
 ## Per-domain file counts
 
 - **applications**: 1 files, 75 lines
 - **compounds**: 2 files, 302 lines
-- **contaminants**: 15 files, 5,403 lines
+- **contaminants**: 15 files, 5,397 lines
 - **materials**: 27 files, 11,076 lines
-- **settings**: 3 files, 579 lines
+- **settings**: 3 files, 578 lines
 
 ---
 
@@ -30,17 +30,7 @@
 
 ### 🔴 HIGH PRIORITY
 
-#### `[module_func]` `get_loader()` module-level — 4 domains (~15 lines saved)
-- Domains: `compounds`, `contaminants`, `materials`, `settings`
-  compounds: `get_loader() → CompoundsDataLoader` (L176, ~5 lines)
-  contaminants: `get_loader() → ContaminantsDataLoader` (L363, ~5 lines)
-  materials: `get_loader() → MaterialsDataLoader` (L414, ~5 lines)
-  settings: `get_loader() → SettingsDataLoader` (L239, ~5 lines)
-
-#### `[import_drift]` `shared.exceptions.ConfigurationError` — used by 3 domains, absent in 1
-- Domains: `contaminants`, `materials`, `settings`
-  Uses: contaminants, materials, settings
-  Missing: compounds
+_None found._
 
 ### 🟡 MEDIUM PRIORITY
 
@@ -92,9 +82,6 @@
   - Domains: `compounds`, `materials`
 
 **🟢 LOW** — `load_parameter_definitions_yaml()` module-level — 2 domains (~2 lines saved)
-  - Domains: `compounds`, `materials`
-
-**🟢 LOW** — `clear_cache()` module-level — 2 domains (~2 lines saved)
   - Domains: `compounds`, `materials`
 
 ---
