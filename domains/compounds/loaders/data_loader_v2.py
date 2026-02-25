@@ -31,7 +31,6 @@ import logging
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from shared.cache.manager import cache_manager
 from shared.data.base_loader import BaseDataLoader
 
 logger = logging.getLogger(__name__)
@@ -70,7 +69,11 @@ class CompoundsDataLoader(BaseDataLoader):
         """
         # Compounds.yaml should have 'compounds' or 'categories' key
         return 'compounds' in data or 'categories' in data
-    
+
+    def _get_cache_domain(self) -> str:
+        """Return the cache_manager domain string for the compounds loader."""
+        return 'compounds'
+
     def load_compounds(self) -> Dict[str, Any]:
         """
         Load Compounds.yaml (core metadata only).
@@ -81,17 +84,15 @@ class CompoundsDataLoader(BaseDataLoader):
         Raises:
             ConfigurationError: If file cannot be loaded
         """
-        # Check cache first
-        cached = cache_manager.get('compounds', 'compounds_yaml')
+        # Load using base class method (validates against _validate_loaded_data)
+        # then cache via _load_with_cache-equivalent inline to preserve validation.
+        from shared.cache.manager import cache_manager
+        cached = cache_manager.get(self._get_cache_domain(), 'compounds_yaml')
         if cached:
             return cached
-        
-        # Load using base class method
+
         data = self._load_yaml_file(self.compounds_file)
-        
-        # Cache for 1 hour
-        cache_manager.set('compounds', 'compounds_yaml', data, ttl=3600)
-        
+        cache_manager.set(self._get_cache_domain(), 'compounds_yaml', data, ttl=3600)
         return data
     
     def get_material(self, material_name: str) -> Optional[Dict[str, Any]]:
@@ -164,11 +165,6 @@ class CompoundsDataLoader(BaseDataLoader):
             if cdata.get('category') == category
         }
     
-    def clear_cache(self):
-        """Clear all compounds cache"""
-        cache_manager.invalidate('compounds')
-        logger.info("Cleared compounds cache")
-
 
 # Singleton instance for convenience
 _loader_instance = None

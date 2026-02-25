@@ -85,7 +85,11 @@ class MaterialsDataLoader(BaseDataLoader):
         """
         # Materials.yaml should have 'materials' or 'categories' key
         return 'materials' in data or 'categories' in data
-    
+
+    def _get_cache_domain(self) -> str:
+        """Return the cache_manager domain string for the materials loader."""
+        return 'materials'
+
     def load_materials(self, include_machine_settings: bool = False) -> Dict[str, Any]:
         """
         Load Materials.yaml with optional machine settings merge.
@@ -109,21 +113,21 @@ class MaterialsDataLoader(BaseDataLoader):
         cache_key = 'materials_yaml_with_settings' if include_machine_settings else 'materials_yaml'
         
         # Check cache first
-        cached = cache_manager.get('materials', cache_key)
+        cached = cache_manager.get(self._get_cache_domain(), cache_key)
         if cached:
             return cached
-        
+
         # Load materials data
         data = self._load_yaml_file(self.materials_file)
-        
+
         # Optionally merge settings for dataset generation
         if include_machine_settings:
             settings_data = read_yaml_file(self.settings_file)
             data = self._merge_machine_settings(data, settings_data)
-        
+
         # Cache and return (1 hour TTL)
-        cache_manager.set('materials', cache_key, data, ttl=3600)
-        
+        cache_manager.set(self._get_cache_domain(), cache_key, data, ttl=3600)
+
         return data
     
     def _merge_machine_settings(self, materials_data: Dict[str, Any], settings_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -168,19 +172,8 @@ class MaterialsDataLoader(BaseDataLoader):
         Raises:
             ConfigurationError: If file cannot be loaded
         """
-        # Check cache
-        cached = cache_manager.get('materials', 'properties_yaml')
-        if cached:
-            return cached
-        
-        # Load file
-        data = read_yaml_file(self.properties_file)
-        properties = data.get('properties', {})
-        
-        # Cache for 1 hour
-        cache_manager.set('materials', 'properties_yaml', properties, ttl=3600)
-        
-        return properties
+        return self._load_with_cache('properties_yaml', self.properties_file,
+                                      lambda d: d.get('properties', {}))
     
     def load_industry_applications(self) -> Dict[str, Any]:
         """
@@ -191,19 +184,7 @@ class MaterialsDataLoader(BaseDataLoader):
         """
         if not self.industry_file.exists():
             return {}
-        
-        # Check cache
-        cached = cache_manager.get('materials', 'industry_yaml')
-        if cached:
-            return cached
-        
-        # Load file
-        data = read_yaml_file(self.industry_file)
-        
-        # Cache for 1 hour
-        cache_manager.set('materials', 'industry_yaml', data, ttl=3600)
-        
-        return data
+        return self._load_with_cache('industry_yaml', self.industry_file)
     
     def load_categories(self) -> Dict[str, Any]:
         """
@@ -215,18 +196,7 @@ class MaterialsDataLoader(BaseDataLoader):
         Raises:
             ConfigurationError: If file cannot be loaded
         """
-        # Check cache
-        cached = cache_manager.get('materials', 'categories_yaml')
-        if cached:
-            return cached
-        
-        # Load file
-        data = read_yaml_file(self.categories_file)
-        
-        # Cache for 1 hour
-        cache_manager.set('materials', 'categories_yaml', data, ttl=3600)
-        
-        return data
+        return self._load_with_cache('categories_yaml', self.categories_file)
     
     def load_property_definitions(self) -> Dict[str, Any]:
         """
@@ -237,19 +207,7 @@ class MaterialsDataLoader(BaseDataLoader):
         """
         if not self.property_defs_file.exists():
             return {}
-        
-        # Check cache
-        cached = cache_manager.get('materials', 'property_defs_yaml')
-        if cached:
-            return cached
-        
-        # Load file
-        data = read_yaml_file(self.property_defs_file)
-        
-        # Cache for 1 hour
-        cache_manager.set('materials', 'property_defs_yaml', data, ttl=3600)
-        
-        return data
+        return self._load_with_cache('property_defs_yaml', self.property_defs_file)
     
     def load_parameter_definitions(self) -> Dict[str, Any]:
         """
@@ -260,19 +218,7 @@ class MaterialsDataLoader(BaseDataLoader):
         """
         if not self.parameter_defs_file.exists():
             return {}
-        
-        # Check cache
-        cached = cache_manager.get('materials', 'parameter_defs_yaml')
-        if cached:
-            return cached
-        
-        # Load file
-        data = read_yaml_file(self.parameter_defs_file)
-        
-        # Cache for 1 hour
-        cache_manager.set('materials', 'parameter_defs_yaml', data, ttl=3600)
-        
-        return data
+        return self._load_with_cache('parameter_defs_yaml', self.parameter_defs_file)
     
     def load_regulatory_standards(self) -> Dict[str, Any]:
         """
@@ -283,19 +229,7 @@ class MaterialsDataLoader(BaseDataLoader):
         """
         if not self.regulatory_file.exists():
             return {}
-        
-        # Check cache
-        cached = cache_manager.get('materials', 'regulatory_yaml')
-        if cached:
-            return cached
-        
-        # Load file
-        data = read_yaml_file(self.regulatory_file)
-        
-        # Cache for 1 hour
-        cache_manager.set('materials', 'regulatory_yaml', data, ttl=3600)
-        
-        return data
+        return self._load_with_cache('regulatory_yaml', self.regulatory_file)
     
     def load_micros(self) -> Dict[str, Any]:
         """
@@ -308,23 +242,10 @@ class MaterialsDataLoader(BaseDataLoader):
         micros_file = content_dir / 'Micros.yaml'
         
         if not micros_file.exists():
-            # Legacy file - content now stored in Materials.yaml
             logger.debug(f"Legacy Micros.yaml not found (expected - content in Materials.yaml)")
             return {}
-        
-        # Check cache
-        cached = cache_manager.get('materials', 'micros_yaml')
-        if cached:
-            return cached
-        
-        # Load file
-        data = read_yaml_file(micros_file)
-        micros = data.get('micros', {})
-        
-        # Cache for 1 hour
-        cache_manager.set('materials', 'micros_yaml', micros, ttl=3600)
-        
-        return micros
+        return self._load_with_cache('micros_yaml', micros_file,
+                                      lambda d: d.get('micros', {}))
     
     def load_faqs(self) -> Dict[str, Any]:
         """
@@ -337,23 +258,10 @@ class MaterialsDataLoader(BaseDataLoader):
         faqs_file = content_dir / 'FAQs.yaml'
         
         if not faqs_file.exists():
-            # Legacy file - content now stored in Materials.yaml
             logger.debug(f"Legacy FAQs.yaml not found (expected - content in Materials.yaml)")
             return {}
-        
-        # Check cache
-        cached = cache_manager.get('materials', 'faqs_yaml')
-        if cached:
-            return cached
-        
-        # Load file
-        data = read_yaml_file(faqs_file)
-        faqs = data.get('faqs', {})
-        
-        # Cache for 1 hour
-        cache_manager.set('materials', 'faqs_yaml', faqs, ttl=3600)
-        
-        return faqs
+        return self._load_with_cache('faqs_yaml', faqs_file,
+                                      lambda d: d.get('faqs', {}))
     
     def load_regulatory_standards_content(self) -> Dict[str, Any]:
         """
@@ -370,23 +278,10 @@ class MaterialsDataLoader(BaseDataLoader):
         regulatory_file = content_dir / 'RegulatoryStandards.yaml'
         
         if not regulatory_file.exists():
-            # Legacy file - content now stored in Materials.yaml
             logger.debug(f"Legacy RegulatoryStandards.yaml not found (expected - content in Materials.yaml)")
             return {}
-        
-        # Check cache
-        cached = cache_manager.get('materials', 'regulatory_content_yaml')
-        if cached:
-            return cached
-        
-        # Load file
-        data = read_yaml_file(regulatory_file)
-        standards = data.get('regulatoryStandards', {})
-        
-        # Cache for 1 hour
-        cache_manager.set('materials', 'regulatory_content_yaml', standards, ttl=3600)
-        
-        return standards
+        return self._load_with_cache('regulatory_content_yaml', regulatory_file,
+                                      lambda d: d.get('regulatoryStandards', {}))
     
     def get_material(self, material_name: str) -> Optional[Dict[str, Any]]:
         """
@@ -402,11 +297,6 @@ class MaterialsDataLoader(BaseDataLoader):
         materials = materials_data.get('materials', {})
         return materials.get(material_name)
     
-    def clear_cache(self):
-        """Clear all materials cache"""
-        cache_manager.invalidate('materials')
-        logger.info("Cleared materials cache")
-
 
 # Singleton instance for convenience
 _loader_instance = None

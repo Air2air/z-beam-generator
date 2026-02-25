@@ -110,7 +110,57 @@ class BaseDataLoader(ABC):
             return 'materials' in data or 'categories' in data
         """
         pass
-    
+
+    @abstractmethod
+    def _get_cache_domain(self) -> str:
+        """
+        Return the cache_manager domain string for this loader.
+
+        Must be implemented by subclasses.
+
+        Returns:
+            Domain name used as cache_manager namespace (e.g., 'materials')
+
+        Example:
+            return 'materials'
+        """
+        pass
+
+    def _load_with_cache(
+        self,
+        cache_key: str,
+        filepath: Path,
+        extractor=None,
+        ttl: int = 3600,
+    ):
+        """
+        Load YAML file with cache_manager caching (no schema validation).
+
+        Use for secondary data files where domain validation is not required.
+        For primary domain files that need schema validation, call
+        _load_yaml_file() directly then cache_manager manually.
+
+        Args:
+            cache_key: Key for cache_manager storage
+            filepath: Path to YAML file
+            extractor: Optional callable(data) -> result. If None, returns raw data.
+            ttl: Cache time-to-live in seconds (default 1 hour)
+
+        Returns:
+            Cached or freshly loaded data
+        """
+        from shared.cache.manager import cache_manager
+        from shared.utils.file_io import read_yaml_file
+
+        cached = cache_manager.get(self._get_cache_domain(), cache_key)
+        if cached:
+            return cached
+
+        data = read_yaml_file(filepath)
+        result = extractor(data) if extractor is not None else data
+        cache_manager.set(self._get_cache_domain(), cache_key, result, ttl=ttl)
+        return result
+
     def _validate_project_structure(self):
         """
         Validate project structure on initialization.
@@ -195,19 +245,25 @@ class BaseDataLoader(ABC):
     
     def clear_cache(self, filepath: Optional[Path] = None):
         """
-        Clear cached data.
-        
+        Clear cached data from both internal _cache and cache_manager.
+
         Args:
-            filepath: Specific file to clear. If None, clears all cache.
+            filepath: Specific file to clear from _cache. If None, clears all
+                      _cache entries and the full cache_manager domain.
         """
+        from shared.cache.manager import cache_manager
+
         with self._cache_lock:
             if filepath is None:
-                # Clear entire cache
+                # Clear entire _cache
                 count = len(self._cache)
                 self._cache.clear()
                 logger.info(f"Cleared {count} cached files")
+                # Also clear the domain's cache_manager entries
+                cache_manager.invalidate(self._get_cache_domain())
+                logger.info(f"Cleared cache_manager domain: {self._get_cache_domain()}")
             else:
-                # Clear specific file
+                # Clear specific file from _cache only
                 cache_key = str(filepath)
                 if cache_key in self._cache:
                     del self._cache[cache_key]

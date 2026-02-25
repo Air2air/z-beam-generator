@@ -58,6 +58,10 @@ class GenericDataLoader(BaseDataLoader):
             
         return self.project_root / file_mapping[self.domain]
     
+    def _get_cache_domain(self) -> str:
+        """Return the cache_manager domain string for this generic loader."""
+        return self.domain
+
     def _validate_loaded_data(self, data: Dict[str, Any]) -> bool:
         """Validate loaded data structure for this domain."""
         root_key_mapping = {

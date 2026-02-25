@@ -76,7 +76,11 @@ class SettingsDataLoader(BaseDataLoader):
         """
         # Settings.yaml should have 'settings' key
         return 'settings' in data
-    
+
+    def _get_cache_domain(self) -> str:
+        """Return the cache_manager domain string for the settings loader."""
+        return 'settings'
+
     def load_settings(self, extract_machine_settings: bool = True) -> Dict[str, Any]:
         """
         Load Settings.yaml.
@@ -99,13 +103,13 @@ class SettingsDataLoader(BaseDataLoader):
         """
         # Check cache first
         cache_key = f'settings_extract_{extract_machine_settings}'
-        cached = cache_manager.get('settings', cache_key)
+        cached = cache_manager.get(self._get_cache_domain(), cache_key)
         if cached:
             return cached
-        
-        # Load using base class method
+
+        # Load using base class method (validates against _validate_loaded_data)
         data = self._load_yaml_file(self.settings_file)
-        
+
         if extract_machine_settings:
             # Extract machine_settings from nested structure
             # Settings.yaml has: settings.MaterialName.machine_settings.{params}
@@ -115,15 +119,15 @@ class SettingsDataLoader(BaseDataLoader):
             for material_name, material_settings in settings.items():
                 if 'machine_settings' in material_settings:
                     extracted[material_name] = material_settings['machine_settings']
-            
+
             result = extracted
         else:
             # Return raw structure
             result = data
-        
+
         # Cache for 1 hour
-        cache_manager.set('settings', cache_key, result, ttl=3600)
-        
+        cache_manager.set(self._get_cache_domain(), cache_key, result, ttl=3600)
+
         return result
     
     def get_material_settings(self, material_name: str) -> Dict[str, Any]:

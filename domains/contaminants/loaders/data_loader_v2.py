@@ -85,7 +85,11 @@ class ContaminantsDataLoader(BaseDataLoader):
         """
         # Accept both old (contamination_patterns) and new (contaminants) structure
         return 'contamination_patterns' in data or 'contaminants' in data
-    
+
+    def _get_cache_domain(self) -> str:
+        """Return the cache_manager domain string for the contaminants loader."""
+        return 'contaminants'
+
     def load_patterns(self) -> Dict[str, Any]:
         """
         Load all contamination patterns from Contaminants.yaml.
@@ -98,19 +102,19 @@ class ContaminantsDataLoader(BaseDataLoader):
             ConfigurationError: If file cannot be loaded
         """
         # Check cache first
-        cached = cache_manager.get('contaminants', 'patterns')
+        cached = cache_manager.get(self._get_cache_domain(), 'patterns')
         if cached:
             return cached
-        
-        # Load using base class method
+
+        # Load using base class method (validates against _validate_loaded_data)
         data = self._load_yaml_file(self.contaminants_file)
-        
+
         # Handle both old (contamination_patterns) and new (contaminants) structure
         patterns = data.get('contaminants', data.get('contamination_patterns', {}))
-        
+
         # Cache for 1 hour
-        cache_manager.set('contaminants', 'patterns', patterns, ttl=3600)
-        
+        cache_manager.set(self._get_cache_domain(), 'patterns', patterns, ttl=3600)
+
         return patterns
     
     def get_pattern(self, pattern_id: str, resolve_author: bool = True) -> Dict[str, Any]:
