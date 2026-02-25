@@ -1,6 +1,12 @@
 # Lessons Learned
 
-- 2026-02-23: When the user specifies a workflow doc as the first step each turn, surface it at the top of primary AI guides and remove legacy instruction files to avoid conflicting guidance.
+- 2026-02-24: COMPLEX tasks must write plan to tasks/todo.md FIRST before any tool calls — using the in-memory todo tool only violates the instruction. Both must be kept in sync.
+- 2026-02-24: Validator source key (`contamination_patterns`) can silently diverge from actual data key (`contaminants`) when data schema evolves — always grep the actual YAML top-level key before writing validator code that accesses it.
+- 2026-02-24: When tests reference bare material IDs (e.g., `source_id == 'steel'`) but data uses suffixed form (`steel-laser-cleaning`), run a normalization script to strip the suffix from the flat associations list — not a test bug, a data model consistency gap. Fix at source (the YAML).
+- 2026-02-24: Stale metadata `breakdown` values in association files cause count mismatch test failures — always update `breakdown` and `total_associations` in metadata after any bulk data change or normalization pass.
+- 2026-02-24: Compound byproduct associations (`generates_byproduct`/`byproduct_of`) are a distinct data gap from material-contaminant associations. If tests require them, they must be explicitly generated from chemistry knowledge and added to the YAML. Cannot be deduced from the existing material↔contaminant data alone.
+- 2026-02-24: `FrontmatterFieldOrder.yaml` domain extension validation requires ALL four groups (`identity_additions`, `content_additions`, `domain_sections`, `content_removals`) even if empty. Adding a domain section without `content_removals: []` causes a `RuntimeError` in the validator.
+
 - 2026-02-23: When the workflow is updated, replace prior workflow text and rebase plans to follow the new session ritual and plan verification steps.
 - 2026-02-23: Never trust a conversation summary's claim that source data is "already normalized." Always run a direct check (grep or python) on the actual file before planning. The summary said Applications.yaml was correct; it was not.
 - 2026-02-23: Do not patch the export pipeline to compensate for incorrect source data. Fix the source data first, then re-export. Patching exporters mid-investigation before understanding the full picture caused an incorrect fix that had to be reverted.

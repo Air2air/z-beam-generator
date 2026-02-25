@@ -114,7 +114,18 @@ Full list: `.github/PROTECTED_FILES.md`
 | Material name conventions | `docs/08-development/MATERIAL_NAME_CONSISTENCY_POLICY.md` |
 | Terminal logging | `docs/08-development/TERMINAL_LOGGING_POLICY.md` |
 | Voice centralization | `docs/08-development/AUTHOR_ASSIGNMENT_POLICY.md` |
-| Frontmatter export path | `/Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/` |
+| Frontmatter export path | `frontmatter/materials/`, `frontmatter/contaminants/`, etc. → `/Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/` |
+
+---
+
+## 🔒 Author Assignment Immutability
+
+Once `author.id` is written to a data YAML, it **NEVER changes**.
+
+- Author assignment happens **once** at content creation time
+- All regenerations for that item use the same author's voice
+- Voice is controlled by `shared/voice/profiles/*.yaml` — do not override in prompts
+- See `docs/08-development/AUTHOR_ASSIGNMENT_POLICY.md` for full policy
 
 ---
 

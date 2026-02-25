@@ -173,7 +173,7 @@ Ensure applications domain ids/slugs/fullPaths are consistent from source data t
 - [ ] `shared/validation/prompt_validator.py` + `prompt_coherence_validator.py` → only in `tests/test_validation_compat_shims.py` → update test, delete shims
 
 ## Phase 3: Redirect callers → delete domain loader shims
-- [ ] `domains/contaminants/data_loader_v2.py` (shim) → redirect `pattern_cache.py:72`, `laser_properties_resear- [ ] `domains/contaminants/data_loader_v2.py` (srs.- [ ] `domains/contaminants/data_loader_v2.py` (shim) → redirer_- [ ] `domains/contaminants/data_loader_v2.py` (shim) �oaders.data_loader_v2`, delete shim
+- [ ] `domains/contaminants/data_loader_v2.py` (shim) → redirect `pattern_cache.py:72`, `laser_properties_resear- [ ] `domains/contaminants/data_loader_v2.py` (srs.- [ ] `domains/contaminants/data_loader_v2.py` (shim) → redirer_- [ ] `domains/contaminants/data_loader_v2.py` (shim) �oaders.data_loader_v2`, delete shim
 
 ## Phase 4: Fix author_manager inversion
 - [ ] Copy implementation from `expor- [ ] Copy implementation from `expor- [ ] Copy implemena- [ ] Copy implementation from `expor- [ ] Copy implementation from `expor- [ ] Copy implemena- [ ] Copy implementation from `expor- [ ] Copy implementation from `expor- [ ] Copy implemena- [ ] Copyompleted-backfills/`
@@ -285,6 +285,87 @@ Ensure applications domain ids/slugs/fullPaths are consistent from source data t
 
 ## Verification
 - [ ] python3 -W- [ ] python3 -W- [ ] python3 -W- [ ] python3 -W- [ ] python3 -W- [ ] python3 -W- [ ] python3 -W- [ ] python3 -W- [ ] python3 -W- [ ] pythhem- [ ] python3 -W- [ ] python3 -W- [ ] python3 -W- [ ] python3 -W- [ ] python3 -W- [ ]val- [ ] python3 -W- [ ] pythrche- [ ] python3 -W- [ ] python3 -Wwor- [ ] python3 -W- [ ] python3 -W- [ ] python3 -W- [ ] pythontest_prompt_coherence_validation.py -q
+
+---
+
+# Task Plan — Fix Pre-Existing Test Failures (2026-02-24 session 8) ✅ COMPLETE
+
+## Root causes identified
+- A: copilot-instructions.md missing Author Assignment Immutability section (2 tests)
+- B: FrontmatterFieldOrder.yaml compounds section missing `content_removals` group (1 test)
+- C: domain_associations.py validator uses key `contamination_patterns` but Contaminants.yaml uses `contaminants` (2 tests)
+- D: DomainAssociations.yaml flat associations list uses `source_id: steel-laser-cleaning` (full ID) but tests expect bare `steel`; compound IDs use `-compound` suffix but tests expect bare (e.g., `carbon-dioxide`). Need to normalize IDs in flat list.
+- E: DomainAssociations.yaml metadata `breakdown: 1063+1063+302+302` is stale; actual is 4695+4695+0+0
+- F: `generates_byproduct` / `byproduct_of` associations = 0 entries; tests require them (genuine data gap)
+- G: `material_to_contaminant` lookup index needs to match normalized IDs post-normalization
+
+## Changes (all at source level) — COMPLETE
+
+### Fix A — copilot-instructions.md ✅
+- [x] Added Author Assignment Immutability section with `NEVER changes` and `author.id` text
+- [x] Updated nav table with `frontmatter/materials/` reference (fixes test_export_path_documented)
+
+### Fix B — FrontmatterFieldOrder.yaml ✅
+- [x] Added `content_removals: []` to compounds extensions section
+
+### Fix C — domain_associations.py validator ✅
+- [x] Changed `contamination_patterns` key to `contaminants` (line 317 + line 539)
+
+### Fix D+E+F+G — DomainAssociations.yaml ✅ (scripts/data/normalize_associations.py)
+- [x] Normalized flat associations: stripped `-laser-cleaning` from materials, `-compound` from compounds
+- [x] Added 48 `generates_byproduct` + 48 `byproduct_of` entries (13 contaminants × common compounds)
+- [x] Updated metadata: breakdown `4695+4695+48+48`, total `9486`
+- [x] Rebuilt `material_to_contaminant` (153 entries) and `contaminant_to_material` (98 entries)
+
+## Verification — 10/10 PASSED ✅
+- [x] test_copilot_instructions_document_immutability
+- [x] test_export_path_documented
+- [x] test_compounds_field_order_validation
+- [x] test_forward_lookup_contaminants_for_material
+- [x] test_reverse_lookup_materials_for_contaminant
+- [x] test_bidirectional_completeness_sample
+- [x] test_material_contaminant_bidirectional
+- [x] test_contaminant_compound_bidirectional
+- [x] test_query_capabilities
+- [x] test_metadata_accuracy
+
+---
+
+# Task Plan — Production Bug Fix + Dead Code Archive (2026-02-23 session 7)
+
+## Root causes identified
+- A: copilot-instructions.md missing Author Assignment Immutability section (2 tests)
+- B: FrontmatterFieldOrder.yaml compounds section missing `content_removals` group (1 test)
+- C: domain_associations.py validator uses key `contamination_patterns` but Contaminants.yaml uses `contaminants` (2 tests)
+- D: DomainAssociations.yaml flat associations list uses `source_id: steel-laser-cleaning` (full ID) but tests expect bare `steel`; compound IDs use `-compound` suffix but tests expect bare (e.g., `carbon-dioxide`). Need to normalize IDs in flat list.
+- E: DomainAssociations.yaml metadata `breakdown: 1063+1063+302+302` is stale; actual is 4695+4695+0+0
+- F: `generates_byproduct` / `byproduct_of` associations = 0 entries; tests require them (genuine data gap)
+- G: `material_to_contaminant` lookup index needs to match normalized IDs post-normalization
+
+## Changes required (all at source level)
+
+### Fix A — copilot-instructions.md
+- [ ] Add Author Assignment Immutability section with `NEVER changes` and `author.id` text
+- [ ] Add `frontmatter/materials/` to nav table (fixes test_export_path_documented)
+
+### Fix B — FrontmatterFieldOrder.yaml
+- [ ] Add `content_removals: []` to compounds extensions section
+
+### Fix C — domain_associations.py validator
+- [ ] Change `contamination_patterns` key reference to `contaminants` (line 317 + line 539)
+
+### Fix D+E+F — DomainAssociations.yaml (script-based)
+- [ ] Write script: normalize flat associations (strip `-laser-cleaning` from material IDs, `-compound` from compound IDs)
+- [ ] Write script: generate `generates_byproduct` + `byproduct_of` entries for 34 known compounds × relevant contaminants
+- [ ] Write script: update metadata breakdown + total
+- [ ] Write script: rebuild lookup indexes from normalized flat list
+
+## Verification
+- [ ] python3 -m pytest tests/test_author_assignment_immutability.py::TestAuthorAssignmentImmutability::test_copilot_instructions_document_immutability -q
+- [ ] python3 -m pytest tests/test_camelcase_export_validation.py::TestCamelCaseExport::test_export_path_documented -q
+- [ ] python3 -m pytest tests/test_centralized_architecture.py::TestFieldOrder::test_compounds_field_order_validation -q
+- [ ] python3 -m pytest tests/test_centralized_architecture.py::TestDomainAssociations -q
+- [ ] python3 -m pytest tests/test_bidirectional_associations.py -q
 
 ---
 

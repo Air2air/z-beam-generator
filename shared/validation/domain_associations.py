@@ -314,7 +314,7 @@ class DomainAssociationsValidator:
             return []
 
         associations = self._require_list(self.data, 'associations', 'Associations data')
-        contamination_patterns = self._require_dict(self.contaminants_data, 'contamination_patterns', 'Contaminants data')
+        contamination_patterns = self._require_dict(self.contaminants_data, 'contaminants', 'Contaminants data')
         
         results = []
         
@@ -536,7 +536,7 @@ class DomainAssociationsValidator:
         associations = self._require_list(self.data, 'contaminant_compound_associations', 'Associations data')
         results = []
 
-        contamination_patterns = self._require_dict(self.contaminants_data, 'contamination_patterns', 'Contaminants data')
+        contamination_patterns = self._require_dict(self.contaminants_data, 'contaminants', 'Contaminants data')
         
         for assoc in associations:
             if assoc.get('compound_id') == compound_id:
