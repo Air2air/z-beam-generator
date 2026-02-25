@@ -34,7 +34,7 @@ KNOWN_DOMAINS = ["materials", "contaminants", "compounds", "settings", "applicat
 
 # Base class files to scan for @abstractmethod declarations
 BASE_CLASS_FILES = [
-    SHARED_DIR / "data" / "legacy" / "base_loader.py",
+    SHARED_DIR / "data" / "base_loader.py",
     SHARED_DIR / "domain" / "base_coordinator.py",
     PROJECT_ROOT / "export" / "core" / "base_generator.py",
 ]
@@ -529,8 +529,8 @@ def find_loader_base_gaps(domain_files: Dict[str, List[DomainFile]]) -> List[Pai
                     for m in methods:
                         loader_methods[m.name][domain] = m
 
-    # Check what BaseDataLoader already provides (including legacy path)
-    base_loader = SHARED_DIR / "data" / "legacy" / "base_loader.py"
+    # Check what BaseDataLoader already provides
+    base_loader = SHARED_DIR / "data" / "base_loader.py"
     base_methods: Set[str] = set()
     if base_loader.exists():
         base_df = parse_file(base_loader, "_base")
