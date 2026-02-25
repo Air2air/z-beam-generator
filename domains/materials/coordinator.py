@@ -53,10 +53,6 @@ class MaterialsCoordinator(DomainCoordinator):
     def domain_name(self) -> str:
         """Return domain name for config loading"""
         return "materials"
-    
-    def _load_materials_data(self) -> Dict:
-        """Backwards-compatible wrapper — prefer _load_domain_data() directly."""
-        return self._load_domain_data()
 
     def generate_material_content(
         self,
