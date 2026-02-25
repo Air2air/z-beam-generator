@@ -602,3 +602,72 @@ Remaining "HIGH" audit findings are by-design architectural patterns:
 - [ ] Remove both from shared/validation/__init__.py exports
 - [ ] Run tests — gate: 200 passed
 - [ ] Commit
+
+---
+
+## Phase 10 — Archive dead scripts/cleanup + scripts/tools one-offs (2026-02-24)
+
+### Confirmed dead (zero external callers, already-executed migrations or superseded manual tests):
+- `scripts/cleanup/remove_presentation_type.py` (Jan 9) — one-off field removal; migration
+  already executed; test `test_presentation_type_removal.py` verifies the DATA, not this script
+- `scripts/tools/test_generation_pipeline.py` (Jan 20) — manual integration test;
+  superseded by tests/ suite; zero callers
+- `scripts/tools/quick_text_test.py` (Jan 20) — manual dev-time test; zero callers
+- `scripts/tools/test_section_description.py` (Jan 20) — manual section description test; zero callers
+
+### Confirmed live (keep):
+- `scripts/export/generate_datasets.py` — 3 callers (tests + exporters)
+- `scripts/tools/research_contamination_patterns.py` — data-population tool (see test skip msg)
+- `scripts/tools/research_contaminants.py` —- `scripts/tools/research_contaminants.py` —- `scripts/tools/research_contamint toolin- `scripts/tools/research_contaminants.py` —- `scripts/tools/research_contamina [ - `scripts/tools/research_contaminants.py` —- `scripts/tools/research_contaminants.py` —- `scr ] Commit
+
+---
+
+## Phase 11 — Maximum cleanup: delete archives + dead code + disk junk (2026-02-24)
+
+### Policy change: hard-delete dead files, do not archive
+### Targets:
+- scripts/archive/2026-02/ (41 tracked files — all confirmed dead one-offs)
+- docs/archive/2026-02/ (all tracked files)
+- scripts/cleanup/remove_presentation_type.py (Jan 9, staged rename)
+- scripts/tools/quick_text_test.py (staged rename)
+- scripts/tools/test_generation_pipeline.py (untracked, moved to archive)
+- scripts/tools/test_section_description.py (untracked, moved to archive)
+- disk: rm -rf all __pycache__, *.pyc (885 dirs, 6457 files — untracked)
+- validation_results.txt (root junk output file)
+
+### Steps:
+- [ ] Write plan here (done)
+- [ ] git rm -r scripts/archive/ docs/archive/
+- [ ] git rm remaining dead scripts at original paths
+- [ ] rm -rf all __pycache__ dirs from disk
+- [ ] Check .gitignore is comprehensive  
+- [ ] Run tests — gate: 200 passed
+- [ ] Commit
+
+---
+
+## Phase 10 — Maximum cleanup: DELETE not archive (2026-02-24)
+
+### Policy change: no more archiving — DELETE via git rm
+
+### Delete list:
+- scripts/archive/ (34 tracked files) — all our archive work, now just delete
+- docs/archive/ (7 tracked files) — same
+- validation_results.txt — Dec 23 stale output
+- tasks/parity_report.md — auto-generated, can be regenerated
+- rm -rf __pycache__ dirs (885 dirs, 6457 .pyc, gitignored/untracked)
+- rm -rf .pytest_cache (gitignored)
+- Unstage the 2 pending archive renames and redirect to git rm
+
+### NOT touching:
+- .venv (544MB, gitignored, needed to run code)
+- data/ source YAML files
+- public/ images/datasets (766 tracked files)
+- tasks/todo.md, tasks/lessons.md (working docs)
+- data/new_contaminants_list.txt (planning doc for future contaminants)
+
+### Steps:
+- [ ] git reset HEAD — unstage pending renames
+- [ ] git rm -r scripts/archive/ docs/archive/
+- [ ] git rm the 2 f- [ ] git rm the 2 f- [ ] git rm the 2 f- [ ] git rm the 2 f- [ ] git rm the 2 fparity_r- [ ] git rm the 2 f- [ ] git rm the 2 f- [ ] git rm the 2 f- Run tests (200 gate)
+- [ ] Commit
