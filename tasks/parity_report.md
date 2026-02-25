@@ -8,19 +8,19 @@
 | Metric | Value |
 |--------|-------|
 | Total domain Python files | 46 |
-| Total domain lines | 16,498 |
+| Total domain lines | 16,458 |
 | HIGH priority findings | 0 |
 | MEDIUM priority findings | 0 |
-| LOW priority findings | 8 |
-| Estimated lines removable | ~18 |
+| LOW priority findings | 2 |
+| Estimated lines removable | ~4 |
 
 ## Per-domain file counts
 
 - **applications**: 1 files, 71 lines
-- **compounds**: 2 files, 302 lines
+- **compounds**: 2 files, 270 lines
 - **contaminants**: 14 files, 4,827 lines
-- **materials**: 26 files, 10,720 lines
-- **settings**: 3 files, 578 lines
+- **materials**: 26 files, 10,716 lines
+- **settings**: 3 files, 574 lines
 
 ---
 
@@ -38,29 +38,11 @@ _None found._
 
 ### 🟢 LOW PRIORITY
 
-**🟢 LOW** — `get_category_ranges()` module-level — 2 domains (~4 lines saved)
-  - Domains: `compounds`, `materials`
-
 **🟢 LOW** — `list_materials()` — appears in 2 domains (~2 lines saved)
   - Domains: `contaminants`, `materials`
 
 **🟢 LOW** — `list_patterns()` — appears in 2 domains (~2 lines saved)
   - Domains: `contaminants`, `materials`
-
-**🟢 LOW** — `load_material()` module-level — 2 domains (~2 lines saved)
-  - Domains: `compounds`, `materials`
-
-**🟢 LOW** — `get_material_names()` module-level — 2 domains (~2 lines saved)
-  - Domains: `compounds`, `materials`
-
-**🟢 LOW** — `load_properties_yaml()` module-level — 2 domains (~2 lines saved)
-  - Domains: `compounds`, `materials`
-
-**🟢 LOW** — `get_property_definitions()` module-level — 2 domains (~2 lines saved)
-  - Domains: `compounds`, `materials`
-
-**🟢 LOW** — `load_parameter_definitions_yaml()` module-level — 2 domains (~2 lines saved)
-  - Domains: `compounds`, `materials`
 
 ---
 

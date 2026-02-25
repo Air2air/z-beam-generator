@@ -190,41 +190,9 @@ def load_compounds_data() -> Dict[str, Any]:
     return get_loader().load_compounds()
 
 
-def load_material(material_name: str) -> Optional[Dict[str, Any]]:
-    """Load single material by name (backward compat)."""
-    return get_loader().get_material(material_name)
-
-
-def get_material_names() -> list:
-    """Get list of all material names (backward compat)."""
-    return list(load_compounds_data().keys())
-
-
 def load_compounds_yaml() -> Dict[str, Any]:
     """Load Compounds.yaml (backward compat)."""
     return get_loader().load_compounds()
-
-
-def load_properties_yaml() -> Dict[str, Any]:
-    """Load Compounds.yaml (backward compat)."""
-    return get_loader().load_compounds()
-
-
-def get_property_definitions() -> Dict[str, Any]:
-    """Get property definitions (backward compat)."""
-    return get_loader().load_compounds().get('compounds', {})
-
-
-def load_parameter_definitions_yaml() -> Dict[str, Any]:
-    """Load parameter definitions (backward compat)."""
-    return get_loader().load_compounds()
-
-
-def get_category_ranges(category: str) -> Optional[Dict[str, Any]]:
-    """Get ranges for a category (backward compat)."""
-    loader = get_loader()
-    categories = loader.load_item_data().get('categories', {})
-    return categories.get(category)
 
 
 def clear_cache():
