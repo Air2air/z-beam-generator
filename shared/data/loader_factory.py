@@ -17,7 +17,7 @@ Usage:
 from pathlib import Path
 from typing import Optional, Dict, Any, Type
 
-from shared.data.legacy.base_loader import BaseDataLoader
+from shared.data.base_loader import BaseDataLoader
 
 
 class GenericDataLoader(BaseDataLoader):

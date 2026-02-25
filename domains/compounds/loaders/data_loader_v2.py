@@ -32,7 +32,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 from shared.cache.manager import cache_manager
-from shared.data.legacy.base_loader import BaseDataLoader
+from shared.data.base_loader import BaseDataLoader
 
 logger = logging.getLogger(__name__)
 

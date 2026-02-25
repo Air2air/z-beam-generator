@@ -33,7 +33,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 from shared.cache.manager import cache_manager
-from shared.data.legacy.base_loader import BaseDataLoader
+from shared.data.base_loader import BaseDataLoader
 from shared.utils.file_io import read_yaml_file
 
 logger = logging.getLogger(__name__)
