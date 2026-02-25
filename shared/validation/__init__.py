@@ -25,8 +25,6 @@ from .validator import (
     validate_and_fix,
     validate_prompt_quick,
 )
-from .validator_mixin import ReferenceValidatorMixin
-
 __all__ = [
     "QualityScoreValidator",
     "FrontmatterDependencyValidator",
@@ -46,6 +44,5 @@ __all__ = [
     # Reference validation
     "ReferenceRegistry",
     "ReferenceInfo",
-    "ReferenceValidatorMixin",
     "ValidationSchema",
 ]

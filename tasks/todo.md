@@ -551,7 +551,7 @@ Remaining "HIGH" audit findings are by-design architectural patterns:
 - scripts/test_enrichment.py (test file in wrong dir)
 - verify_enrichment_architecture.py (root)
 - scripts/cleanup_source_data_slugs.py (one-off cleanup)
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -un- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - d/ �- - - - - - - - - - - - - - - - - - - - - - - - - - - -�� scripts/archive/YYYY-MM/ structure
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -un- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - d/ �- - - - - - - - - - - - - - - - - - - - - - - - - - - -�� scripts/archive/YYYY-MM/ structure
 
 ### St### St### St### St### St### St### St### St### St#les
 - [ ] Run tests (200 must pass)
@@ -579,6 +579,26 @@ Remaining "HIGH" audit findings are by-design architectural patterns:
 ### NOT touched (keep):
 - shared/api cache layer — live chain (cache_adapter → persistent_cache/client_cache)
 - scripts/check_field_order.py (Feb 17) — recent tooling
-- scripts/check_field_order.py (Feb 17) — recent tooling
-persistent_cache/clieeps
-- [ ]- [ ]- [ ]- [ ]- [ ]- [ ]- [ ]- [ ]- [ ]- ests (- [ ]- [ ]- [ ]- [ ] Commit
+
+---
+
+## Phase 9 — Archive dead shared/validation files (2026-02-XX)
+
+### Confirmed dead (zero live callers outside __init__.py/archives):
+- `shared/validation/unified_validator.py` (1,294 lines) — "Unified Prompt Validator" Nov 28 2025;
+  zero callers; superseded by the real pipeline in validator.py + integration.py
+- `shared/validation/validator_mixin.py` (230 lines) — "ReferenceValidatorMixin";
+  re-exported from __init__.py but zero classes ever subclass or import it in live code
+
+### Confirmed live (keep):
+- `shared/validation/validation_schema.py` — imported by reference_registry.py (live)
+- `shared/validation/duplication_detector.py` — imported by core/__init__.py and core/schema.py
+- `shared/validation/validator.py` (182 callers) — very live
+- `shared/validation/integration.py` (161 callers) — very live
+
+### Steps:
+- [ ] git mv unified_validator.py → scripts/archive/2026-02/unified_validator.py
+- [ ] git mv validator_mixin.py → scripts/archive/2026-02/validator_mixin.py
+- [ ] Remove both from shared/validation/__init__.py exports
+- [ ] Run tests — gate: 200 passed
+- [ ] Commit
