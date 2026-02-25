@@ -556,3 +556,29 @@ Remaining "HIGH" audit findings are by-design architectural patterns:
 ### St### St### St### St### St### St### St### St### St#les
 - [ ] Run tests (200 must pass)
 - [ ] Commit
+
+---
+
+## Session 9 — Phase 8: Second cleanup sweep
+
+**Date:** 2026-02-24
+
+### Archive targets (all zero live callers confirmed)
+
+**Dead shared/ code:**
+- shared/data/legacy/loader.py (199 lines — "UnifiedDataLoader" but zero callers anywhere;
+  loader_factory.py is the live path; only a comment in postprocess.py referenced "legacy loaders")
+- shared/data/universal_loader.py (249 lines — "UniversalDataLoader" zero callers;
+  superseded by loader_factory.py)
+
+**One-off Jan 9 root scripts:**
+- scripts/normalize_author_data.py — "Author Data Normalization", one-off, Jan 9
+- scripts/phase1_phase2_rename.py — "Fix camelCase keys AND remove redundant prefixes", Jan 9
+- scripts/restore_challenges_data.py — "Restore from Settings_backup_20251221", Jan 9
+
+### NOT touched (keep):
+- shared/api cache layer — live chain (cache_adapter → persistent_cache/client_cache)
+- scripts/check_field_order.py (Feb 17) — recent tooling
+- scripts/check_field_order.py (Feb 17) — recent tooling
+persistent_cache/clieeps
+- [ ]- [ ]- [ ]- [ ]- [ ]- [ ]- [ ]- [ ]- [ ]- ests (- [ ]- [ ]- [ ]- [ ] Commit
