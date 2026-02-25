@@ -522,3 +522,37 @@ Remaining "HIGH" audit findings are by-design architectural patterns:
 5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. egacy/. 5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_loadr` 5. **`_load5. **`_ln-n5. **`_load5. **`_load5. **`igur5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. egacy/. 5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_loadr` 5. **`_load5. **`_ca5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. egacy/. 5. **`_load5. **`_load5. **`_load5. **`_load5. **`_load5. **`_loadr` 5. **`_load5. **`_ln-n5. **`_load5. **`_load5. *SYMBOLS`
 - [ ] Run tests + audit â†’ expect 0 HIGH, 0 MEDIUM, ~6-8 LOW
 - [ ] Commit
+
+---
+
+## Session 9 â€” Phase 7: Maximum cleanup sweep
+
+**Date:** 2026-02-24
+
+### Archive targets (100% confirmed zero live callers)
+
+**Dead shared/ code:**
+- shared/data/legacy/loader.py (199 lines â€” only legacy/loader.py itself self-references loader_factory; no external callers)
+- shared/validation/integration_example.py (example file, zero callers, not in __init__)
+- shared/validation/resolver_example.py (example file, zero callers)
+
+**One-off migration scripts (all executed, no re-run value):**
+- All scripts/migrate_*.py (7 files)
+- scripts/fix_all_contaminant_urls_in_compounds.py
+- scripts/fix_relationships_slugs.py
+- scripts/fix_displayname_source.py
+- scripts/fixes/ (all 4 files)
+
+**Stale Jan 9â€“13 analysis (not part of live tooling):**
+- scripts/analysis/test_length_control_approaches.py
+- scripts/analysis/test_smart_truncation_integration.py
+- scripts/analysis/audit_processing_modules.py
+- scripts/analysis/compare_d- scripts/analysis/compare_d- scripts/analysis/compare_d- scripts/analysis/compar_fr- tma- scripts/analysis/compare_d- scripts/analysiscti- scripts/analysis/*Mi- scripts/analysis/compare_d- scripts/analysis/com
+- scripts/test_enrichment.py (test file in wrong dir)
+- verify_enrichment_architecture.py (root)
+- scripts/cleanup_source_data_slugs.py (one-off cleanup)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -un- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - d/ â- - - - - - - - - - - - - - - - - - - - - - - - - - - -†’ scripts/archive/YYYY-MM/ structure
+
+### St### St### St### St### St### St### St### St### St#les
+- [ ] Run tests (200 must pass)
+- [ ] Commit
