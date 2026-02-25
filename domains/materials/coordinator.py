@@ -54,26 +54,9 @@ class MaterialsCoordinator(DomainCoordinator):
         """Return domain name for config loading"""
         return "materials"
     
-    def _create_data_loader(self):
-        """Materials load data via _load_domain_data() in the base class."""
-        return None
-
     def _load_materials_data(self) -> Dict:
         """Backwards-compatible wrapper — prefer _load_domain_data() directly."""
         return self._load_domain_data()
-
-    def _get_item_data(self, item_id: str) -> Dict:
-        """Get material data from Materials.yaml"""
-        materials_data = self._load_domain_data()
-        if item_id not in materials_data['materials']:
-            raise ValueError(f"Material '{item_id}' not found in Materials.yaml")
-        return materials_data['materials'][item_id]
-    
-    def _save_content(self, item_id: str, component_type: str, content: str, author_id: Optional[int] = None) -> None:
-        """Save content to Materials.yaml - handled by QualityEvaluatedGenerator"""
-        # Note: QualityEvaluatedGenerator already saves to Materials.yaml
-        # This method exists to satisfy abstract base class
-        pass
 
     def generate_material_content(
         self,

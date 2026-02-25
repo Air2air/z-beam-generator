@@ -97,43 +97,54 @@ class DomainCoordinator(ABC):
         """Return domain name (e.g., 'materials', 'compounds', 'contaminants', 'settings')"""
         pass
     
-    @abstractmethod
     def _create_data_loader(self):
         """
         Create and return domain-specific data loader.
-        
+
+        Default: returns None (data loading handled by _load_domain_data in base).
+        Override if the domain uses a class-based loader.
+
         Returns:
-            Domain-specific data loader instance
+            Domain-specific data loader instance, or None
         """
-        pass
+        return None
     
-    @abstractmethod
     def _get_item_data(self, item_id: str) -> Dict:
         """
         Get data for specific item from domain.
-        
+
+        Default implementation: loads domain data and looks up item_id under
+        the top-level key that matches self.domain_name.  Override if the
+        domain uses a different key or lookup strategy.
+
         Args:
             item_id: Item identifier (material name, compound id, etc.)
-            
+
         Returns:
             Dict containing item data
-            
+
         Raises:
             ValueError: If item not found
         """
-        pass
+        data = self._load_domain_data()
+        key = self.domain_name
+        if item_id not in data.get(key, {}):
+            raise ValueError(f"'{item_id}' not found in {key} data")
+        return data[key][item_id]
     
-    @abstractmethod
     def _save_content(self, item_id: str, component_type: str, content: str, author_id: Optional[int] = None) -> None:
         """
         Save generated content to domain data file.
-        
+
+        Default: no-op — QualityEvaluatedGenerator already persists content.
+        Override if the domain needs explicit save logic.
+
         Args:
             item_id: Item identifier
             component_type: Type of content (description, micro, faq, etc.)
             content: Generated text content
             author_id: Optional author ID to save
-            
+
         Raises:
             IOError: If save fails
         """

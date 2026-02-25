@@ -35,30 +35,9 @@ class ApplicationsCoordinator(DomainCoordinator):
         """Return domain name for config loading"""
         return "applications"
 
-    def _create_data_loader(self):
-        """
-        Create applications data loader.
-
-        Note: Applications use load via _load_domain_data() from base class.
-        """
-        return None
-
     def _load_applications_data(self) -> Dict:
         """Backwards-compatible wrapper — prefer _load_domain_data() directly."""
         return self._load_domain_data()
-
-    def _get_item_data(self, item_id: str) -> Dict:
-        """Get application data from Applications.yaml"""
-        applications_data = self._load_domain_data()
-        if item_id not in applications_data['applications']:
-            raise ValueError(f"Application '{item_id}' not found in Applications.yaml")
-        return applications_data['applications'][item_id]
-
-    def _save_content(self, item_id: str, component_type: str, content: str, author_id: Optional[int] = None) -> None:
-        """Save content to Applications.yaml - handled by QualityEvaluatedGenerator"""
-        # Note: QualityEvaluatedGenerator already saves via DomainAdapter
-        # This method exists to satisfy abstract base class
-        pass
 
     def generate_application_content(
         self,

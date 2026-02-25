@@ -37,6 +37,50 @@ Move all 3 to `tests/obsolete/`.
 
 ---
 
+# Task Plan — Coordinator Base Consolidation (Session 9)
+
+## Analysis
+
+All 5 domain coordinators (materials, contaminants, compounds, settings, applications) implement
+3 methods identically:
+
+| Method | All 5 implementations |
+|--------|----------------------|
+| `_create_data_loader` | `return None` — **identical** |
+| `_save_content` | `pass` — **identical** |
+| `_get_item_data` | `data = self._load_domain_data(); if item_id not in data[domain_name]: raise ValueError(...); return data[domain_name][item_id]` — **same pattern, parameterized by `self.domain_name`** |
+
+These are currently **abstract** in `DomainCoordinator` — forcing each domain to re-implement
+the same body. Converting to defaults eliminates 15 duplicate method definitions.
+
+## Minimal change
+
+File: `shared/domain/base_coordinator.py`
+- `_create_data_loader`: change `@abstractmethod + pass` → concrete `return None`
+- `_save_content`: change `@abstractmethod + pass` → concrete `pass` (no-op default)
+- `_get_item_data`: change `@abstractmethod + pass` → concrete default using `self.domain_name`
+
+Files: `domains/*/coordinator.py` (5 files)
+- Delete the 3 methods from each (or keep overrides only where behavior diverges)
+
+## Verification plan
+
+```bash
+python3 -m pytest tests/unit/ tests/domains/ -q > /tmp/pytest_consolidation.txt 2>&1
+python3 scripts/audit/structural_parity.py
+```
+
+## Plan
+- [ ] Add default `_create_data_loader → return None` in base_coordinator.py
+- [ ] Add default `_save_content → pass` in base_coordinator.py
+- [ ] Add default `_get_item_data(item_id)` using `self.domain_name` in base_coordinator.py
+- [ ] Remove identical implementations from all 5 coordinator.py files
+- [ ] Run test suite — confirm 0 regressions
+- [ ] Re-run structural_parity.py — confirm line savings
+- [ ] Commit
+
+## Review
+
 
 
 ## Goal

@@ -35,28 +35,6 @@ class ContaminantCoordinator(DomainCoordinator):
         """Return domain name for config loading"""
         return "contaminants"
     
-    def _create_data_loader(self):
-        """
-        Create contaminants data loader.
-        
-        Note: Contaminants use load_contaminants_data() function, not class-based loader.
-        Returns None since data loading is handled via _load_contaminants_data().
-        """
-        return None
-    
-    def _get_item_data(self, item_id: str) -> Dict:
-        """Get contaminant data from Contaminants.yaml"""
-        contaminants_data = self._load_domain_data()
-        if item_id not in contaminants_data['contaminants']:
-            raise ValueError(f"Contaminant '{item_id}' not found in Contaminants.yaml")
-        return contaminants_data['contaminants'][item_id]
-    
-    def _save_content(self, item_id: str, component_type: str, content: str, author_id: Optional[int] = None) -> None:
-        """Save content to Contaminants.yaml - handled by QualityEvaluatedGenerator"""
-        # Note: QualityEvaluatedGenerator already saves to Contaminants.yaml
-        # This method exists to satisfy abstract base class
-        pass
-    
     def generate_contaminant_content(
         self,
         contaminant_id: str,

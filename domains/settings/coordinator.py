@@ -35,29 +35,10 @@ class SettingCoordinator(DomainCoordinator):
         """Return domain name for config loading"""
         return "settings"
     
-    def _create_data_loader(self):
-        """
-        Settings load data via _load_domain_data() in the base class.
-        """
-        return None
-
     def _load_settings_data(self) -> Dict:
         """Backwards-compatible wrapper — prefer _load_domain_data() directly."""
         return self._load_domain_data()
 
-    def _get_item_data(self, item_id: str) -> Dict:
-        """Get setting data from Settings.yaml"""
-        settings_data = self._load_domain_data()
-        if item_id not in settings_data['settings']:
-            raise ValueError(f"Setting '{item_id}' not found in Settings.yaml")
-        return settings_data['settings'][item_id]
-    
-    def _save_content(self, item_id: str, component_type: str, content: str, author_id: Optional[int] = None) -> None:
-        """Save content to Settings.yaml - handled by QualityEvaluatedGenerator"""
-        # Note: QualityEvaluatedGenerator already saves to Settings.yaml
-        # This method exists to satisfy abstract base class
-        pass
-    
     def generate_setting_content(
         self,
         setting_id: str,

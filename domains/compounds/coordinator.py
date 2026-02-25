@@ -35,23 +35,6 @@ class CompoundCoordinator(DomainCoordinator):
         """Return domain name for config loading"""
         return "compounds"
     
-    def _create_data_loader(self):
-        """Compounds load data via _load_domain_data() in the base class."""
-        return None
-
-    def _get_item_data(self, item_id: str) -> Dict:
-        """Get compound data from Compounds.yaml."""
-        compounds_data = self._load_domain_data()
-        if item_id not in compounds_data['compounds']:
-            raise ValueError(f"Compound not found: {item_id}")
-        return compounds_data['compounds'][item_id]
-    
-    def _save_content(self, item_id: str, component_type: str, content: str, author_id: Optional[int] = None) -> None:
-        """Save content to Compounds.yaml - handled by QualityEvaluatedGenerator"""
-        # Note: QualityEvaluatedGenerator already saves to Compounds.yaml
-        # This method exists to satisfy abstract base class
-        pass
-    
     def generate_compound_content(
         self,
         compound_id: str,

@@ -8,19 +8,19 @@
 | Metric | Value |
 |--------|-------|
 | Total domain Python files | 48 |
-| Total domain lines | 17,762 |
-| HIGH priority findings | 15 |
+| Total domain lines | 17,666 |
+| HIGH priority findings | 12 |
 | MEDIUM priority findings | 20 |
 | LOW priority findings | 14 |
-| Estimated lines removable | ~837 |
+| Estimated lines removable | ~785 |
 
 ## Per-domain file counts
 
-- **applications**: 1 files, 96 lines
-- **compounds**: 2 files, 550 lines
-- **contaminants**: 15 files, 5,425 lines
-- **materials**: 27 files, 11,093 lines
-- **settings**: 3 files, 598 lines
+- **applications**: 1 files, 75 lines
+- **compounds**: 2 files, 533 lines
+- **contaminants**: 15 files, 5,403 lines
+- **materials**: 27 files, 11,076 lines
+- **settings**: 3 files, 579 lines
 
 ---
 
@@ -50,30 +50,6 @@
   contaminants/loaders/data_loader_v2: `__init__(self, project_root)` (~6 lines)
   materials/loaders/data_loader_v2: `__init__(self, project_root)` (~14 lines)
   settings/loaders/data_loader_v2: `__init__(self, project_root)` (~6 lines)
-
-#### `[method_overlap]` `_get_item_data()` — appears in 5 domains (~20 lines saved)
-- Domains: `applications`, `compounds`, `contaminants`, `materials`, `settings`
-  applications: `ApplicationsCoordinator._get_item_data(self, item_id) → Dict` (L50, ~5 lines)
-  compounds: `CompoundCoordinator._get_item_data(self, item_id) → Dict` (L42, ~5 lines)
-  contaminants: `ContaminantCoordinator._get_item_data(self, item_id) → Dict` (L47, ~5 lines)
-  materials: `MaterialsCoordinator._get_item_data(self, item_id) → Dict` (L65, ~5 lines)
-  settings: `SettingCoordinator._get_item_data(self, item_id) → Dict` (L48, ~5 lines)
-
-#### `[method_overlap]` `_create_data_loader()` — appears in 5 domains (~16 lines saved)
-- Domains: `applications`, `compounds`, `contaminants`, `materials`, `settings`
-  applications: `ApplicationsCoordinator._create_data_loader(self)` (L38, ~6 lines)
-  compounds: `CompoundCoordinator._create_data_loader(self)` (L38, ~2 lines)
-  contaminants: `ContaminantCoordinator._create_data_loader(self)` (L38, ~7 lines)
-  materials: `MaterialsCoordinator._create_data_loader(self)` (L57, ~2 lines)
-  settings: `SettingCoordinator._create_data_loader(self)` (L38, ~4 lines)
-
-#### `[method_overlap]` `_save_content()` — appears in 5 domains (~16 lines saved)
-- Domains: `applications`, `compounds`, `contaminants`, `materials`, `settings`
-  applications: `ApplicationsCoordinator._save_content(self, item_id, component_type, content, author_id) → None` (L57, ~4 lines)
-  compounds: `CompoundCoordinator._save_content(self, item_id, component_type, content, author_id) → None` (L49, ~4 lines)
-  contaminants: `ContaminantCoordinator._save_content(self, item_id, component_type, content, author_id) → None` (L54, ~4 lines)
-  materials: `MaterialsCoordinator._save_content(self, item_id, component_type, content, author_id) → None` (L72, ~4 lines)
-  settings: `SettingCoordinator._save_content(self, item_id, component_type, content, author_id) → None` (L55, ~4 lines)
 
 #### `[module_func]` `get_loader()` module-level — 4 domains (~15 lines saved)
 - Domains: `compounds`, `contaminants`, `materials`, `settings`
