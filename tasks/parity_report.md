@@ -9,10 +9,10 @@
 |--------|-------|
 | Total domain Python files | 48 |
 | Total domain lines | 17,435 |
-| HIGH priority findings | 12 |
-| MEDIUM priority findings | 10 |
-| LOW priority findings | 14 |
-| Estimated lines removable | ~573 |
+| HIGH priority findings | 6 |
+| MEDIUM priority findings | 6 |
+| LOW priority findings | 12 |
+| Estimated lines removable | ~259 |
 
 ## Per-domain file counts
 
@@ -30,55 +30,12 @@
 
 ### 🔴 HIGH PRIORITY
 
-#### `[method_overlap]` `_validate_loaded_data()` — appears in 4 domains (~33 lines saved)
-- Domains: `compounds`, `contaminants`, `materials`, `settings`
-  compounds: `CompoundsDataLoader._validate_loaded_data(self, data) → bool` (L61, ~11 lines)
-  contaminants: `ContaminantsDataLoader._validate_loaded_data(self, data) → bool` (L75, ~11 lines)
-  materials: `MaterialsDataLoader._validate_loaded_data(self, data) → bool` (L76, ~11 lines)
-  settings: `SettingsDataLoader._validate_loaded_data(self, data) → bool` (L66, ~11 lines)
-
-#### `[loader_gap]` `_validate_loaded_data()` in 4 loaders but not in BaseDataLoader (~33 lines saved)
-- Domains: `compounds`, `contaminants`, `materials`, `settings`
-  compounds/loaders/data_loader_v2: `_validate_loaded_data(self, data) → bool` (~11 lines)
-  contaminants/loaders/data_loader_v2: `_validate_loaded_data(self, data) → bool` (~11 lines)
-  materials/loaders/data_loader_v2: `_validate_loaded_data(self, data) → bool` (~11 lines)
-  settings/loaders/data_loader_v2: `_validate_loaded_data(self, data) → bool` (~11 lines)
-
-#### `[loader_gap]` `__init__()` in 4 loaders but not in BaseDataLoader (~24 lines saved)
-- Domains: `compounds`, `contaminants`, `materials`, `settings`
-  compounds/loaders/data_loader_v2: `__init__(self, project_root)` (~7 lines)
-  contaminants/loaders/data_loader_v2: `__init__(self, project_root)` (~6 lines)
-  materials/loaders/data_loader_v2: `__init__(self, project_root)` (~14 lines)
-  settings/loaders/data_loader_v2: `__init__(self, project_root)` (~6 lines)
-
 #### `[module_func]` `get_loader()` module-level — 4 domains (~15 lines saved)
 - Domains: `compounds`, `contaminants`, `materials`, `settings`
   compounds: `get_loader() → CompoundsDataLoader` (L176, ~5 lines)
   contaminants: `get_loader() → ContaminantsDataLoader` (L363, ~5 lines)
   materials: `get_loader() → MaterialsDataLoader` (L414, ~5 lines)
   settings: `get_loader() → SettingsDataLoader` (L239, ~5 lines)
-
-#### `[method_overlap]` `domain_name()` — appears in 5 domains (~8 lines saved)
-- Domains: `applications`, `compounds`, `contaminants`, `materials`, `settings`
-  applications: `ApplicationsCoordinator.domain_name(self) → str` (L34, ~2 lines)
-  compounds: `CompoundCoordinator.domain_name(self) → str` (L34, ~2 lines)
-  contaminants: `ContaminantCoordinator.domain_name(self) → str` (L34, ~2 lines)
-  materials: `MaterialsCoordinator.domain_name(self) → str` (L53, ~2 lines)
-  settings: `SettingCoordinator.domain_name(self) → str` (L34, ~2 lines)
-
-#### `[method_overlap]` `_get_data_file_path()` — appears in 4 domains (~6 lines saved)
-- Domains: `compounds`, `contaminants`, `materials`, `settings`
-  compounds: `CompoundsDataLoader._get_data_file_path(self) → Path` (L57, ~2 lines)
-  contaminants: `ContaminantsDataLoader._get_data_file_path(self) → Path` (L71, ~2 lines)
-  materials: `MaterialsDataLoader._get_data_file_path(self) → Path` (L72, ~2 lines)
-  settings: `SettingsDataLoader._get_data_file_path(self) → Path` (L62, ~2 lines)
-
-#### `[loader_gap]` `_get_data_file_path()` in 4 loaders but not in BaseDataLoader (~6 lines saved)
-- Domains: `compounds`, `contaminants`, `materials`, `settings`
-  compounds/loaders/data_loader_v2: `_get_data_file_path(self) → Path` (~2 lines)
-  contaminants/loaders/data_loader_v2: `_get_data_file_path(self) → Path` (~2 lines)
-  materials/loaders/data_loader_v2: `_get_data_file_path(self) → Path` (~2 lines)
-  settings/loaders/data_loader_v2: `_get_data_file_path(self) → Path` (~2 lines)
 
 #### `[file_name]` `coordinator.py` — identical path in 5 domains
 - Domains: `applications`, `compounds`, `contaminants`, `materials`, `settings`
@@ -112,17 +69,11 @@
 
 ### 🟡 MEDIUM PRIORITY
 
-**🟡 MEDIUM** — `_build_frontmatter_data()` — appears in 2 domains (~121 lines saved)
-  - Domains: `contaminants`, `settings`
-
 **🟡 MEDIUM** — `to_dict()` — appears in 2 domains (~103 lines saved)
   - Domains: `contaminants`, `materials`
 
 **🟡 MEDIUM** — `get_pattern()` — appears in 2 domains (~41 lines saved)
   - Domains: `contaminants`, `materials`
-
-**🟡 MEDIUM** — `_load_type_data()` — appears in 2 domains (~24 lines saved)
-  - Domains: `contaminants`, `settings`
 
 **🟡 MEDIUM** — `get_material()` — appears in 3 domains (~22 lines saved)
   - Domains: `compounds`, `contaminants`, `materials`
@@ -133,28 +84,16 @@
 **🟡 MEDIUM** — `_load_yaml_file()` — appears in 2 domains (~20 lines saved)
   - Domains: `contaminants`, `materials`
 
-**🟡 MEDIUM** — `__post_init__()` — appears in 2 domains (~20 lines saved)
-  - Domains: `contaminants`, `materials`
-
-**🟡 MEDIUM** — `_validate_identifier()` — appears in 2 domains (~20 lines saved)
-  - Domains: `contaminants`, `settings`
-
 **🟡 MEDIUM** — `shared.exceptions.GenerationError` — used by 2 domains, absent in 3
   - Domains: `contaminants`, `settings`
 
 ### 🟢 LOW PRIORITY
-
-**🟢 LOW** — `_get_output_filename()` — appears in 2 domains (~12 lines saved)
-  - Domains: `contaminants`, `settings`
 
 **🟢 LOW** — `_find_project_root()` — appears in 2 domains (~11 lines saved)
   - Domains: `contaminants`, `materials`
 
 **🟢 LOW** — `_get_key()` — appears in 2 domains (~7 lines saved)
   - Domains: `contaminants`, `materials`
-
-**🟢 LOW** — `_get_schema_name()` — appears in 2 domains (~7 lines saved)
-  - Domains: `contaminants`, `settings`
 
 **🟢 LOW** — `get_category_ranges()` module-level — 2 domains (~4 lines saved)
   - Domains: `compounds`, `materials`

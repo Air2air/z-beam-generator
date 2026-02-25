@@ -32,7 +32,54 @@ REPORT_PATH = PROJECT_ROOT / "tasks" / "parity_report.md"
 
 KNOWN_DOMAINS = ["materials", "contaminants", "compounds", "settings", "applications"]
 
+# Base class files to scan for @abstractmethod declarations
+BASE_CLASS_FILES = [
+    SHARED_DIR / "data" / "legacy" / "base_loader.py",
+    SHARED_DIR / "domain" / "base_coordinator.py",
+    PROJECT_ROOT / "export" / "core" / "base_generator.py",
+]
+
+# Standard dunder methods always skip in overlap analysis
+SKIP_DUNDER = frozenset([
+    "__init__", "__repr__", "__str__", "__post_init__", "__eq__",
+    "__hash__", "__iter__", "__len__", "__getitem__", "__setitem__",
+    "__delitem__", "__contains__", "__call__",
+])
+
 VERBOSE = "--verbose" in sys.argv
+
+
+def get_abstract_method_names() -> Set[str]:
+    """Return method names marked @abstractmethod in any known base class file."""
+    abstract_names: Set[str] = set()
+    for base_file in BASE_CLASS_FILES:
+        if not base_file.exists():
+            continue
+        try:
+            source = base_file.read_text(encoding="utf-8")
+            tree = ast.parse(source)
+        except Exception:
+            continue
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                for decorator in node.decorator_list:
+                    if (isinstance(decorator, ast.Name) and decorator.id == "abstractmethod") or (
+                        isinstance(decorator, ast.Attribute) and decorator.attr == "abstractmethod"
+                    ):
+                        abstract_names.add(node.name)
+    return abstract_names
+
+
+# Lazy-loaded at first use
+_ABSTRACT_METHODS: Optional[Set[str]] = None
+
+
+def abstract_methods() -> Set[str]:
+    """Cached set of abstract method names from all base classes."""
+    global _ABSTRACT_METHODS
+    if _ABSTRACT_METHODS is None:
+        _ABSTRACT_METHODS = get_abstract_method_names()
+    return _ABSTRACT_METHODS
 
 
 # ---------------------------------------------------------------------------
@@ -193,7 +240,11 @@ def find_method_overlaps(domain_files: Dict[str, List[DomainFile]]) -> List[Pair
     for method_name, domain_map in method_index.items():
         if len(domain_map) < 2:
             continue
-        if method_name.startswith("_") and method_name in ("__init__", "__repr__", "__str__"):
+        # Skip standard dunder methods
+        if method_name in SKIP_DUNDER:
+            continue
+        # Skip abstract method implementations — these are REQUIRED per domain
+        if method_name in abstract_methods():
             continue
 
         domains_with = sorted(domain_map.keys())
@@ -375,7 +426,8 @@ def find_base_class_gaps(domain_files: Dict[str, List[DomainFile]]) -> List[Pair
             if "coordinator" in df.rel_path:
                 for class_name, methods in df.classes.items():
                     for m in methods:
-                        if m.name not in base_methods:
+                        # Skip methods already in base AND abstract method implementations
+                        if m.name not in base_methods and m.name not in abstract_methods():
                             coordinator_methods[m.name][domain] = m
 
     findings: List[PairityFinding] = []
@@ -416,8 +468,8 @@ def find_loader_base_gaps(domain_files: Dict[str, List[DomainFile]]) -> List[Pai
                     for m in methods:
                         loader_methods[m.name][domain] = m
 
-    # Check what BaseDataLoader already provides
-    base_loader = SHARED_DIR / "data" / "base_loader.py"
+    # Check what BaseDataLoader already provides (including legacy path)
+    base_loader = SHARED_DIR / "data" / "legacy" / "base_loader.py"
     base_methods: Set[str] = set()
     if base_loader.exists():
         base_df = parse_file(base_loader, "_base")
@@ -425,6 +477,8 @@ def find_loader_base_gaps(domain_files: Dict[str, List[DomainFile]]) -> List[Pai
             for _, methods in base_df.classes.items():
                 for m in methods:
                     base_methods.add(m.name)
+    # Also skip known abstract methods — domain implementations ARE correct
+    base_methods |= abstract_methods()
 
     findings: List[PairityFinding] = []
     for method_name, domain_map in loader_methods.items():
