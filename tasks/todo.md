@@ -428,3 +428,33 @@ Ensure applications domain ids/slugs/fullPaths are consistent from source data t
 - Zero callers anywhere (grep confirmed 0 results)
 - Canonical is shared/types/contamination_leve- Canonical is shared/types/contamination_leve- Canonical is shared/types/contaminat[ ] Arch- Canonical is shared/types/contamination_leve- Canonical is shared/types/chon3 -c "from shared.utils.core.property_enhancer import enhance_generated_frontmatter" — confirm real impl imports
 - [ ] python3 -c "from shared.generators.component_generators import ComponentGeneratorFactory" - [ ] python3 -c "from shared.generators.component_generators import ComponentGeneratorFactory" - [ ] rence_validation.py -q
+
+---
+
+# Task Plan — Remove Dead Code from CompoundsDataLoader (Session 9)
+
+## Finding
+
+MEDIUM parity audit flags `load_properties`, `load_micros`, `load_faqs`, etc. as appearing
+in both compounds and materials loaders. On inspection, the compounds copies are BROKEN:
+- 6 methods reference `self.properties_file`, `self.industry_file`, `self.categories_file`,
+  `self.property_defs_file`, `self.parameter_defs_file`, `self.regulatory_file` — all
+  NEVER initialized in `__init__` (would raise AttributeError on first call)
+- 3 methods (`load_micros`, `load_faqs`, `load_regulatory_standards_content`) reference
+  non-existent directories / empty filename; would return {} or crash
+- 3 backward-compat module functions call `get_loader().load_properties()` → same crash
+- Zero callers anywhere (confirmed by grep across entire codebase)
+
+## Root cause
+Methods were copy-pasted from materials loader when compounds loader was created.
+The The The The The The The The The The The The The The The The The The The The The ereThot The The The The The The The The The The The The The The The Thibutes.
+
+
+he The  Remhe The  Remhe The  Remhe The  Remhe The  Remhe The  Remhe The  Remhe The  Remhe Thcompat functions that call `load_properties()` → redirect to `load_compounds()`
+- Fix `load_material` backward-compat → `get_material()` (method name mismatch)
+- Fix `load_compounds_yaml- Fix `load_compounds_yaml- Fix `load_compounds_yaml- Fix `load_compounds_yaml- Fix `lorking methods: `load_compounds`, `get_material`, `get_all_compounds`,
+  `get_c  `get_c  `get_c  `get_c  `get_c  `get_c  `get_c  `get_c  `get_c  `get_c  `get_c che`
+
+#####################################################################load_properties,
+  load_industry_applications, load_categories, load_property_definitions,
+                                                            d_micros,            ,                                                             d_micros,           ri                                                            d_micros,            ,                                                             d_micros,        ## Review

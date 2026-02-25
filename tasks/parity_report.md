@@ -8,16 +8,16 @@
 | Metric | Value |
 |--------|-------|
 | Total domain Python files | 48 |
-| Total domain lines | 17,666 |
+| Total domain lines | 17,435 |
 | HIGH priority findings | 12 |
-| MEDIUM priority findings | 20 |
+| MEDIUM priority findings | 10 |
 | LOW priority findings | 14 |
-| Estimated lines removable | ~785 |
+| Estimated lines removable | ~573 |
 
 ## Per-domain file counts
 
 - **applications**: 1 files, 75 lines
-- **compounds**: 2 files, 533 lines
+- **compounds**: 2 files, 302 lines
 - **contaminants**: 15 files, 5,403 lines
 - **materials**: 27 files, 11,076 lines
 - **settings**: 3 files, 579 lines
@@ -32,7 +32,7 @@
 
 #### `[method_overlap]` `_validate_loaded_data()` — appears in 4 domains (~33 lines saved)
 - Domains: `compounds`, `contaminants`, `materials`, `settings`
-  compounds: `CompoundsDataLoader._validate_loaded_data(self, data) → bool` (L62, ~11 lines)
+  compounds: `CompoundsDataLoader._validate_loaded_data(self, data) → bool` (L61, ~11 lines)
   contaminants: `ContaminantsDataLoader._validate_loaded_data(self, data) → bool` (L75, ~11 lines)
   materials: `MaterialsDataLoader._validate_loaded_data(self, data) → bool` (L76, ~11 lines)
   settings: `SettingsDataLoader._validate_loaded_data(self, data) → bool` (L66, ~11 lines)
@@ -53,7 +53,7 @@
 
 #### `[module_func]` `get_loader()` module-level — 4 domains (~15 lines saved)
 - Domains: `compounds`, `contaminants`, `materials`, `settings`
-  compounds: `get_loader() → CompoundsDataLoader` (L407, ~5 lines)
+  compounds: `get_loader() → CompoundsDataLoader` (L176, ~5 lines)
   contaminants: `get_loader() → ContaminantsDataLoader` (L363, ~5 lines)
   materials: `get_loader() → MaterialsDataLoader` (L414, ~5 lines)
   settings: `get_loader() → SettingsDataLoader` (L239, ~5 lines)
@@ -68,7 +68,7 @@
 
 #### `[method_overlap]` `_get_data_file_path()` — appears in 4 domains (~6 lines saved)
 - Domains: `compounds`, `contaminants`, `materials`, `settings`
-  compounds: `CompoundsDataLoader._get_data_file_path(self) → Path` (L58, ~2 lines)
+  compounds: `CompoundsDataLoader._get_data_file_path(self) → Path` (L57, ~2 lines)
   contaminants: `ContaminantsDataLoader._get_data_file_path(self) → Path` (L71, ~2 lines)
   materials: `MaterialsDataLoader._get_data_file_path(self) → Path` (L72, ~2 lines)
   settings: `SettingsDataLoader._get_data_file_path(self) → Path` (L62, ~2 lines)
@@ -121,38 +121,11 @@
 **🟡 MEDIUM** — `get_pattern()` — appears in 2 domains (~41 lines saved)
   - Domains: `contaminants`, `materials`
 
-**🟡 MEDIUM** — `load_regulatory_standards_content()` — appears in 2 domains (~31 lines saved)
-  - Domains: `compounds`, `materials`
-
-**🟡 MEDIUM** — `load_micros()` — appears in 2 domains (~27 lines saved)
-  - Domains: `compounds`, `materials`
-
-**🟡 MEDIUM** — `load_faqs()` — appears in 2 domains (~27 lines saved)
-  - Domains: `compounds`, `materials`
-
 **🟡 MEDIUM** — `_load_type_data()` — appears in 2 domains (~24 lines saved)
   - Domains: `contaminants`, `settings`
 
 **🟡 MEDIUM** — `get_material()` — appears in 3 domains (~22 lines saved)
   - Domains: `compounds`, `contaminants`, `materials`
-
-**🟡 MEDIUM** — `load_properties()` — appears in 2 domains (~22 lines saved)
-  - Domains: `compounds`, `materials`
-
-**🟡 MEDIUM** — `load_industry_applications()` — appears in 2 domains (~21 lines saved)
-  - Domains: `compounds`, `materials`
-
-**🟡 MEDIUM** — `load_categories()` — appears in 2 domains (~21 lines saved)
-  - Domains: `compounds`, `materials`
-
-**🟡 MEDIUM** — `load_property_definitions()` — appears in 2 domains (~21 lines saved)
-  - Domains: `compounds`, `materials`
-
-**🟡 MEDIUM** — `load_parameter_definitions()` — appears in 2 domains (~21 lines saved)
-  - Domains: `compounds`, `materials`
-
-**🟡 MEDIUM** — `load_regulatory_standards()` — appears in 2 domains (~21 lines saved)
-  - Domains: `compounds`, `materials`
 
 **🟡 MEDIUM** — `clear_cache()` — appears in 3 domains (~20 lines saved)
   - Domains: `compounds`, `contaminants`, `materials`
@@ -168,9 +141,6 @@
 
 **🟡 MEDIUM** — `shared.exceptions.GenerationError` — used by 2 domains, absent in 3
   - Domains: `contaminants`, `settings`
-
-**🟡 MEDIUM** — `shared.utils.file_io.read_yaml_file` — used by 2 domains, absent in 3
-  - Domains: `compounds`, `materials`
 
 ### 🟢 LOW PRIORITY
 
