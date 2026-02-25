@@ -458,3 +458,32 @@ he The  Remhe The  Remhe The  Remhe The  Remhe The  Remhe The  Remhe The  Remhe 
 #####################################################################load_properties,
   load_industry_applications, load_categories, load_property_definitions,
                                                             d_micros,            ,                                                             d_micros,           ri                                                            d_micros,            ,                                                             d_micros,        ## Review
+
+---
+
+# Task Plan — Archive Dead Legacy Loader Classes + Improve Audit Accuracy (Session 9)
+
+## Finding
+
+Two large legacy loader files are completely unused:
+
+| File | Lines | Only callers |
+|------|-------|--------------|
+| `domains/contaminants/pattern_loader.py` | 570 | `tests/obsolete/` (dead tests) |
+| `domains/materials/category_loader.py` | 356 | None |
+
+Production code imports `PatternDataLoader` from `domains.contaminants.loaders.data_loader_v2`
+where it's aliased to `ContaminantsDataLoader`. The legacy class in pattern_loader.py is dead.
+
+## Audit false positives to suppress
+
+Remaining "HIGH" audit findings are by-design architectural patterns:
+- `coordinator.py` and `loaders/data_loader_v2.py` same filename across domains — EXPECTED
+- Applications import drift for cache_manager/BaseDataLoader — applications has no loader BY DESIGN
+
+## Plan
+- [ ] Move pattern_loader.py → domains/contaminants/legacy/pattern_load- [ ] Move pattern_loader.py → domains/contaminants/legacy/pattern_load- [ader.py
+- [ - [ - [ - [ - [ - [ - [ - [ - [ - [ - [ - [ - [ - [ - [ - [ - [ - [ - [ - [ - [ - [ns)
+- - - -un test- - - -un test- - - -un test- - - -un test- - - cript - - - -un test- - - -un test] Commit
+
+## Review

@@ -9,9 +9,9 @@
 |--------|-------|
 | Total domain Python files | 48 |
 | Total domain lines | 17,435 |
-| HIGH priority findings | 6 |
+| HIGH priority findings | 2 |
 | MEDIUM priority findings | 6 |
-| LOW priority findings | 12 |
+| LOW priority findings | 11 |
 | Estimated lines removable | ~259 |
 
 ## Per-domain file counts
@@ -37,35 +37,10 @@
   materials: `get_loader() → MaterialsDataLoader` (L414, ~5 lines)
   settings: `get_loader() → SettingsDataLoader` (L239, ~5 lines)
 
-#### `[file_name]` `coordinator.py` — identical path in 5 domains
-- Domains: `applications`, `compounds`, `contaminants`, `materials`, `settings`
-  applications: domains/applications/coordinator.py
-  compounds: domains/compounds/coordinator.py
-  contaminants: domains/contaminants/coordinator.py
-  materials: domains/materials/coordinator.py
-  settings: domains/settings/coordinator.py
-
-#### `[file_name]` `loaders/data_loader_v2.py` — identical path in 4 domains
-- Domains: `compounds`, `contaminants`, `materials`, `settings`
-  compounds: domains/compounds/loaders/data_loader_v2.py
-  contaminants: domains/contaminants/loaders/data_loader_v2.py
-  materials: domains/materials/loaders/data_loader_v2.py
-  settings: domains/settings/loaders/data_loader_v2.py
-
-#### `[import_drift]` `shared.cache.manager.cache_manager` — used by 4 domains, absent in 1
-- Domains: `compounds`, `contaminants`, `materials`, `settings`
-  Uses: compounds, contaminants, materials, settings
-  Missing: applications
-
-#### `[import_drift]` `shared.data.legacy.base_loader.BaseDataLoader` — used by 4 domains, absent in 1
-- Domains: `compounds`, `contaminants`, `materials`, `settings`
-  Uses: compounds, contaminants, materials, settings
-  Missing: applications
-
-#### `[import_drift]` `shared.exceptions.ConfigurationError` — used by 3 domains, absent in 2
+#### `[import_drift]` `shared.exceptions.ConfigurationError` — used by 3 domains, absent in 1
 - Domains: `contaminants`, `materials`, `settings`
   Uses: contaminants, materials, settings
-  Missing: applications, compounds
+  Missing: compounds
 
 ### 🟡 MEDIUM PRIORITY
 
@@ -84,7 +59,7 @@
 **🟡 MEDIUM** — `_load_yaml_file()` — appears in 2 domains (~20 lines saved)
   - Domains: `contaminants`, `materials`
 
-**🟡 MEDIUM** — `shared.exceptions.GenerationError` — used by 2 domains, absent in 3
+**🟡 MEDIUM** — `shared.exceptions.GenerationError` — used by 2 domains, absent in 2
   - Domains: `contaminants`, `settings`
 
 ### 🟢 LOW PRIORITY
@@ -121,9 +96,6 @@
 
 **🟢 LOW** — `clear_cache()` module-level — 2 domains (~2 lines saved)
   - Domains: `compounds`, `materials`
-
-**🟢 LOW** — `generator.py` — identical path in 2 domains
-  - Domains: `contaminants`, `settings`
 
 ---
 

@@ -39,6 +39,19 @@ BASE_CLASS_FILES = [
     PROJECT_ROOT / "export" / "core" / "base_generator.py",
 ]
 
+# Filenames that are *intentionally* identical across domains — part of the architecture.
+# Flagging these as parity findings is noise.
+BY_DESIGN_FILENAMES: Set[str] = {
+    "coordinator.py",
+    "loaders/data_loader_v2.py",
+    "generator.py",
+    "__init__.py",
+}
+
+# Domains known to intentionally omit certain shared imports.
+# "applications" has no data loader, so it correctly lacks cache_manager etc.
+IMPORT_DRIFT_EXEMPT_DOMAINS: Set[str] = {"applications"}
+
 # Standard dunder methods always skip in overlap analysis
 SKIP_DUNDER = frozenset([
     "__init__", "__repr__", "__str__", "__post_init__", "__eq__",
@@ -305,6 +318,10 @@ def find_file_name_parity(domain_files: Dict[str, List[DomainFile]]) -> List[Pai
     for rel_path, domain_map in filename_index.items():
         if len(domain_map) < 2:
             continue
+        # Skip filenames that are intentionally identical across domains (by-design pattern)
+        basename = Path(rel_path).name
+        if basename in BY_DESIGN_FILENAMES or rel_path in BY_DESIGN_FILENAMES:
+            continue
         domains_with = sorted(domain_map.keys())
         n = len(domains_with)
         details = [f"  {d}: {domain_map[d].relative_to(PROJECT_ROOT)}" for d in domains_with]
@@ -339,8 +356,10 @@ def find_import_drift(domain_files: Dict[str, List[DomainFile]]) -> List[Pairity
     findings: List[PairityFinding] = []
 
     for symbol, domains_using in shared_imports.items():
-        missing = sorted(all_domains - domains_using)
+        # Exempt domains that intentionally lack shared loader imports
+        effective_missing = sorted((all_domains - domains_using) - IMPORT_DRIFT_EXEMPT_DOMAINS)
         using = sorted(domains_using)
+        missing = effective_missing
         if not missing or len(using) < 2:
             continue
 
