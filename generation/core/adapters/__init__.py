@@ -6,6 +6,5 @@ to enable orchestrator reuse across different content types.
 """
 
 from .base import DataSourceAdapter
-from .materials_adapter import MaterialsAdapter
 
-__all__ = ['DataSourceAdapter', 'MaterialsAdapter']
+__all__ = ['DataSourceAdapter']

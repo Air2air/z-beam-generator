@@ -7,7 +7,6 @@ Extends DomainCoordinator base class to provide unified generation architecture.
 """
 
 import logging
-from typing import Any, Dict, Optional
 
 from shared.domain.base_coordinator import DomainCoordinator
 
@@ -34,48 +33,3 @@ class ContaminantCoordinator(DomainCoordinator):
     def domain_name(self) -> str:
         """Return domain name for config loading"""
         return "contaminants"
-    
-    def generate_contaminant_content(
-        self,
-        contaminant_id: str,
-        component_type: str,
-        force_regenerate: bool = False
-    ) -> Dict[str, Any]:
-        """
-        Generate content for a specific contaminant and component type.
-        Alias for generate_content() with contaminants-specific naming.
-        """
-        return self.generate_content(contaminant_id, component_type, force_regenerate)
-
-    def generate_all_components_for_contaminant(
-        self,
-        contaminant_id: str,
-        force_regenerate: bool = False
-    ) -> Dict[str, Any]:
-        """
-        Generate all component types for a contaminant.
-        Delegates to base generate_all_components() using prompt-directory discovery.
-        """
-        return self.generate_all_components(contaminant_id, force_regenerate)
-    
-    def get_contaminant_data(self, contaminant_id: str) -> Optional[Dict[str, Any]]:
-        """Get contaminant data for context."""
-        try:
-            return self._get_item_data(contaminant_id)
-        except ValueError:
-            return None
-    
-    def _load_contaminants_data(self) -> Dict:
-        """Load contaminants data - wrapper for _load_domain_data for backwards compatibility"""
-        data = self._load_domain_data()
-
-        # Backward compatibility: legacy callers/tests expect contamination_patterns
-        if 'contamination_patterns' not in data and 'contaminants' in data:
-            data['contamination_patterns'] = data['contaminants']
-
-        return data
-    
-    def list_contaminants(self) -> list:
-        """Get list of all contaminant IDs."""
-        contaminants_data = self._load_contaminants_data()
-        return list(contaminants_data['contaminants'].keys())

@@ -26,7 +26,7 @@ import logging
 import random
 import tempfile
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 from shared.domain.base_coordinator import DomainCoordinator
 
@@ -53,29 +53,6 @@ class MaterialsCoordinator(DomainCoordinator):
     def domain_name(self) -> str:
         """Return domain name for config loading"""
         return "materials"
-
-    def generate_material_content(
-        self,
-        material_id: str,
-        component_type: str,
-        force_regenerate: bool = False
-    ) -> Dict[str, Any]:
-        """
-        Generate content for a specific material and component type.
-        Alias for generate_content() with materials-specific naming.
-        """
-        return self.generate_content(material_id, component_type, force_regenerate)
-
-    def generate_all_components_for_material(
-        self,
-        material_id: str,
-        force_regenerate: bool = False
-    ) -> Dict[str, Any]:
-        """
-        Generate all component types for a material.
-        Delegates to base generate_all_components() using prompt-directory discovery.
-        """
-        return self.generate_all_components(material_id, force_regenerate)
 
     def generate_eeat(self, material_name: str, material_data: Dict) -> Optional[Dict]:
         """
@@ -190,10 +167,3 @@ class MaterialsCoordinator(DomainCoordinator):
     def list_materials(self) -> list:
         """Get list of all material IDs."""
         return list(self._load_domain_data()['materials'].keys())
-    
-    def get_material_data(self, material_id: str):
-        """Get material data for context."""
-        try:
-            return self._get_item_data(material_id)
-        except ValueError:
-            return None

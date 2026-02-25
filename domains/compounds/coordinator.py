@@ -35,29 +35,6 @@ class CompoundCoordinator(DomainCoordinator):
         """Return domain name for config loading"""
         return "compounds"
     
-    def generate_compound_content(
-        self,
-        compound_id: str,
-        component_type: str,
-        force_regenerate: bool = False
-    ) -> Dict[str, Any]:
-        """
-        Generate content for a specific compound and component type.
-        Alias for generate_content() with compounds-specific naming.
-        """
-        return self.generate_content(compound_id, component_type, force_regenerate)
-
-    def generate_all_components_for_compound(
-        self,
-        compound_id: str,
-        force_regenerate: bool = False
-    ) -> Dict[str, Any]:
-        """
-        Generate all component types for a compound.
-        Delegates to base generate_all_components() using prompt-directory discovery.
-        """
-        return self.generate_all_components(compound_id, force_regenerate)
-
     def get_compound_data(self, compound_id: str) -> Optional[Dict[str, Any]]:
         """Get compound data for context."""
         try:
