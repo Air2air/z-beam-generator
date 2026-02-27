@@ -5,14 +5,30 @@ on:
     branches: [ main, develop ]
     paths:
       - 'frontmatter/**/*.yaml'
-      - 'data/Categories.yaml'
-      - 'data/Materials.yaml'
+      - 'data/**/*.yaml'
+      - 'data/schemas/**/*.yaml'
+      - 'data/schemas/**/*.json'
+      - 'export/**/*.py'
+      - 'generation/**/*.py'
+      - 'scripts/check_field_order.py'
+      - 'scripts/validation/**/*.py'
+      - 'shared/validation/**/*.py'
+      - 'run.py'
+      - '.github/workflows/data-validation.yml'
   pull_request:
     branches: [ main, develop ]
     paths:
       - 'frontmatter/**/*.yaml'
-      - 'data/Categories.yaml'
-      - 'data/Materials.yaml'
+      - 'data/**/*.yaml'
+      - 'data/schemas/**/*.yaml'
+      - 'data/schemas/**/*.json'
+      - 'export/**/*.py'
+      - 'generation/**/*.py'
+      - 'scripts/check_field_order.py'
+      - 'scripts/validation/**/*.py'
+      - 'shared/validation/**/*.py'
+      - 'run.py'
+      - '.github/workflows/data-validation.yml'
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
@@ -32,6 +48,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
+    - name: Validate machine settings contract
+      run: |
+        python3 scripts/validation/validate_machine_settings_contract.py
     
     - name: Run comprehensive validation
       id: validation
@@ -102,3 +122,56 @@ jobs:
             repo: context.repo.repo,
             body: comment
           });
+
+  validate-frontmatter-parity:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Export all domains (generator source of truth)
+      run: |
+        python3 run.py --export-all --no-parallel
+
+    - name: Validate frontmatter field order
+      run: |
+        python3 scripts/check_field_order.py
+
+    - name: Validate frontmatter schema (strict)
+      run: |
+        python3 scripts/validation/validate_frontmatter_schema.py --strict
+
+    - name: Validate data completeness thresholds
+      run: |
+        python3 scripts/validation/validate_data_completeness.py --max-critical 0 --max-high 0
+
+    - name: Upload data completeness artifacts
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: data-completeness-report
+        path: |
+          tasks/data_completeness_report.json
+          tasks/data_completeness_report.md
+        retention-days: 30
+
+    - name: Post parity summary
+      if: always()
+      run: |
+        echo "## ✅ Frontmatter Parity Validation" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "- Export all domains from source generators" >> $GITHUB_STEP_SUMMARY
+        echo "- Validate field order across domains" >> $GITHUB_STEP_SUMMARY
+        echo "- Validate strict schema compliance" >> $GITHUB_STEP_SUMMARY
+        echo "- Enforce completeness thresholds (critical/high = 0)" >> $GITHUB_STEP_SUMMARY
