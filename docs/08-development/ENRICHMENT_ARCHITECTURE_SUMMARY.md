@@ -39,7 +39,7 @@ All enrichment scripts operate on source YAML files BEFORE export:
    - Result: Complete metadata in source
 
 3. **add_section_metadata_to_source.py** ✅
-   - Adds _section metadata (title, description, icon)
+    - Adds _section metadata (`sectionTitle`, `sectionDescription`, developer-purpose `sectionMetadata`, icon)
    - Operates on: data/*/*.yaml files
    - Result: Section structure in source
 

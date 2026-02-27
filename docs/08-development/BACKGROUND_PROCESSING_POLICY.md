@@ -105,7 +105,7 @@ grep "POSTPROCESSING:" output/postprocess_materials_all.txt | wc -l
 **Requirements:**
 - ✅ **Use pipeline's QualityAnalyzer** - Same validation as generation (overall score 0-100, AI patterns, voice authenticity)
 - ✅ **Use generator.generate()** - Reuse existing pipeline for regeneration
-- ✅ **Include ALL quality checks** - Humanness, voice, Winston, realism, diversity
+- ✅ **Include ALL quality checks** - Humanness, voice, Grok, realism, diversity
 - ✅ **Learning database logging** - All quality metrics logged for sweet spot analysis
 - ✅ **Dual-write** - Data YAML + frontmatter sync (automatic via generator)
 - ❌ **NO direct API calls** - No `api_client.generate_simple()` or bypassing pipeline

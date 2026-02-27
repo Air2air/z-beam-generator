@@ -63,8 +63,8 @@ from shared.exceptions import ConfigurationError, config_file_not_found
 
 # Raise with actionable guidance
 raise ConfigurationError(
-    "Missing API key: WINSTON_API_KEY",
-    fix="Add WINSTON_API_KEY to .env file",
+    "Missing API key: GROK_API_KEY",
+    fix="Add GROK_API_KEY to .env file",
     doc_link="docs/setup/API_CONFIGURATION.md"
 )
 

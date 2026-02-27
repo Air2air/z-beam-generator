@@ -5,7 +5,8 @@ items_key: compounds
 id_field: id
 # title_field removed - SEOMetadataGenerator creates page_title instead
 filename_suffix: ''
-sluggify_filenames: true
+slugify_filenames: true
+prune_stale_files: true
 
 generators:
 # Core Principle 0.6 Compliance (Jan 5, 2026):
@@ -17,6 +18,10 @@ generators:
   tasks:
   - type: export_metadata
     description: Add ONLY export-time fields (dateModified, pageTitle if missing)
+  - type: author_linkage
+    author_file: data/authors/Authors.yaml
+    remove_author_id: true
+    description: Hydrate authorId to full author object and remove deprecated field
   - type: text_field_normalization
     description: Normalize text wrapper artifacts in description fields
     fields:

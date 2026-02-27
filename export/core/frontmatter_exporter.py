@@ -71,10 +71,11 @@ class FrontmatterExporter:
         self.domain = config['domain']
         self.source_file = Path(config['source_file'])
         self.output_path = Path(config['output_path'])
-        self.items_key = config.get('items_key', self.domain)
-        self.id_field = config.get('id_field', 'id')
+        self.items_key = config['items_key']
+        self.id_field = config['id_field']
         self.filename_suffix = config.get('filename_suffix', '')
         self.slugify_filenames = config.get('slugify_filenames', False)
+        self.prune_stale_files = config.get('prune_stale_files', False)
         
         # Enrichment and generation configs
         self.enrichment_configs = config.get('enrichments', [])
@@ -89,6 +90,40 @@ class FrontmatterExporter:
         self._field_validator = None
         
         logger.info(f"Initialized FrontmatterExporter for domain: {self.domain}")
+
+    def _expected_output_filenames(self, items: Dict[str, Any]) -> set[str]:
+        """Return expected YAML filenames for current source items."""
+        return {
+            format_filename(
+                item_id=item_id,
+                suffix=self.filename_suffix,
+                slugify_id=self.slugify_filenames,
+            )
+            for item_id in items.keys()
+        }
+
+    def _prune_stale_output_files(self, items: Dict[str, Any], dry_run: bool = False) -> int:
+        """Remove stale YAML output files that are no longer backed by source data."""
+        if not self.output_path.exists():
+            return 0
+
+        expected = self._expected_output_filenames(items)
+        stale_files = [
+            file_path
+            for file_path in self.output_path.glob('*.yaml')
+            if file_path.name not in expected
+        ]
+
+        if dry_run:
+            return len(stale_files)
+
+        removed = 0
+        for stale_file in stale_files:
+            stale_file.unlink()
+            removed += 1
+            logger.info(f"🧹 Pruned stale frontmatter file: {stale_file.name}")
+
+        return removed
     
     def _validate_config(self, config: Dict) -> None:
         """
@@ -97,7 +132,7 @@ class FrontmatterExporter:
         Raises:
             ValueError: If required keys missing
         """
-        required_keys = ['domain', 'source_file', 'output_path']
+        required_keys = ['domain', 'source_file', 'output_path', 'items_key', 'id_field']
         missing_keys = [key for key in required_keys if key not in config]
         
         if missing_keys:
@@ -284,6 +319,12 @@ class FrontmatterExporter:
         results = {}
         data = self._load_domain_data()
         items = data[self.items_key]
+
+        if self.prune_stale_files:
+            pruned = self._prune_stale_output_files(items, dry_run=dry_run)
+            if show_progress:
+                action = "Would prune" if dry_run else "Pruned"
+                print(f"  🧹 {action}: {pruned} stale files")
         
         total = len(items)
         logger.info(f"Found {total} items to {mode.lower()}")

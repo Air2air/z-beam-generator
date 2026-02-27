@@ -57,7 +57,7 @@ class APIClientFactory:
         Create an API client with standardized behavior.
 
         Args:
-            provider: API provider name (grok, deepseek, winston)
+            provider: API provider name (grok, deepseek, openai)
             use_mock: Force mock usage (auto-detected in test mode)
             **kwargs: Additional client configuration
 
@@ -130,20 +130,8 @@ class APIClientFactory:
             print(f"⚠️  [CLIENT FACTORY] Error loading cache config: {e}")
             cache_config = None
         
-        # WINSTON SPECIAL CASE: Always use regular API client (not cached)
-        # Winston requires direct API access for check_text() method
-        if provider.lower() == 'winston':
-            print(f"🚀 [CLIENT FACTORY] Initializing {provider_config['name']} API client (WINSTON - NO CACHE)...")
-            client = APIClient(**client_kwargs)
-            print("✅ [CLIENT FACTORY] Winston API client created successfully")
-        # WINSTON SPECIAL CASE: Always use regular API client (not cached)
-        # Winston requires direct API access for check_text() method
-        if provider.lower() == 'winston':
-            print(f"🚀 [CLIENT FACTORY] Initializing {provider_config['name']} API client (WINSTON - NO CACHE)...")
-            client = APIClient(**client_kwargs)
-            print("✅ [CLIENT FACTORY] Winston API client created successfully")
         # Create cached client if cache config exists, otherwise regular client
-        elif cache_config is not None:
+        if cache_config is not None:
             client_kwargs["cache_config"] = cache_config
             print(f"🚀 [CLIENT FACTORY] Initializing CACHED {provider_config['name']} API client...")
             client = CachedAPIClient(**client_kwargs)

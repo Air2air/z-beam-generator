@@ -101,7 +101,7 @@ def _task_generate_section_metadata(self, frontmatter, config):
     """Generates sectionMetadata blocks for relationship sections.
     
     Creates complete metadata including:
-    - title, description, icon, order, variant
+    - sectionTitle, sectionDescription, developer-purpose sectionMetadata text, icon, order, variant
     
     Action: generate (creating new content)
     Target: section_metadata

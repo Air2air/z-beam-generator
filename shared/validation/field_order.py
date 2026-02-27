@@ -42,7 +42,12 @@ class FrontmatterFieldOrderValidator:
         'molecular_weight': {'molecularWeight'},
     }
     
-    def __init__(self, schema_file: Optional[Path] = None, allow_unexpected_fields: bool = True):
+    def __init__(
+        self,
+        schema_file: Optional[Path] = None,
+        allow_unexpected_fields: bool = True,
+        enforce_required_fields: bool = False,
+    ):
         """
         Initialize validator
         
@@ -55,6 +60,7 @@ class FrontmatterFieldOrderValidator:
         self.schema_file = Path(schema_file)
         self.schema: Optional[Dict] = None
         self.allow_unexpected_fields = allow_unexpected_fields
+        self.enforce_required_fields = enforce_required_fields
         project_root = Path(__file__).parent.parent.parent
         local_frontmatter = project_root / 'frontmatter'
         sibling_frontmatter = project_root.parent / 'z-beam' / 'frontmatter'
@@ -230,17 +236,19 @@ class FrontmatterFieldOrderValidator:
         
         issues = []
         
-        # Check for missing required fields
-        required_fields = self.get_required_fields(domain)
-        def _has_required_field(field_name: str) -> bool:
-            if field_name in actual_fields:
-                return True
-            aliases = self.REQUIRED_FIELD_ALIASES[field_name] if field_name in self.REQUIRED_FIELD_ALIASES else set()
-            return any(alias in actual_fields for alias in aliases)
+        # Optional completeness check (separate concern from pure order validation)
+        if self.enforce_required_fields:
+            required_fields = self.get_required_fields(domain)
 
-        missing_required = {field for field in required_fields if not _has_required_field(field)}
-        if missing_required:
-            issues.append(f"Missing required fields: {', '.join(sorted(missing_required))}")
+            def _has_required_field(field_name: str) -> bool:
+                if field_name in actual_fields:
+                    return True
+                aliases = self.REQUIRED_FIELD_ALIASES[field_name] if field_name in self.REQUIRED_FIELD_ALIASES else set()
+                return any(alias in actual_fields for alias in aliases)
+
+            missing_required = {field for field in required_fields if not _has_required_field(field)}
+            if missing_required:
+                issues.append(f"Missing required fields: {', '.join(sorted(missing_required))}")
         
         # Check field order
         # Get positions of fields that are in the spec
@@ -468,10 +476,14 @@ def main():
                        help='Reorder files to match specification')
     parser.add_argument('--dry-run', action='store_true',
                        help='Show what would be changed without modifying files')
+    parser.add_argument('--enforce-required-fields', action='store_true',
+                       help='Also fail validation when required fields are missing (completeness check)')
     
     args = parser.parse_args()
     
-    validator = FrontmatterFieldOrderValidator()
+    validator = FrontmatterFieldOrderValidator(
+        enforce_required_fields=args.enforce_required_fields
+    )
     
     if args.reorder:
         # Reorder mode

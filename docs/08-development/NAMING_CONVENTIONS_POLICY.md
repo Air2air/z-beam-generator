@@ -361,7 +361,7 @@ grep -r "SimpleGenerator" docs/
 | `QualityGatedGenerator` | "QualityGated" adds meaning | ✅ Yes |
 | `BatchGenerator` | "Batch" distinguishes behavior | ✅ Yes |
 | `ImagePromptOrchestrator` | "Orchestrator" describes role | ✅ Yes |
-| `WinstonFeedbackDatabase` | "Winston" is specific service | ✅ Yes |
+| `WinstonFeedbackDatabase` | "Grok" is specific service | ✅ Yes |
 
 ---
 

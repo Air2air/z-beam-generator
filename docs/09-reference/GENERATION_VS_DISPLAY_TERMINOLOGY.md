@@ -108,8 +108,8 @@ relationships:
 ### presentation_type (REMOVED January 7, 2026)
 ```yaml
 # ❌ WRONG - presentation_type was redundant
-sectionMetadata:
-  notes: "Internal notes"
+_section:
+  sectionMetadata: "Developer purpose: defines section function for maintainers."
   presentation_type: card  # ← REMOVED (redundant with presentation)
 
 # ✅ CORRECT - Use presentation at relationship level
@@ -117,8 +117,7 @@ some_relationship:
   presentation: card  # ← Authoritative
   items: [...]
   _section:
-    sectionMetadata:
-      notes: "Internal notes"
+    sectionMetadata: "Developer purpose: defines section function for maintainers."
       # No presentation_type here
 ```
 
@@ -177,17 +176,16 @@ regulatory_standards:
   presentation: card
   items: [...]
   _section:
-    sectionMetadata:
-      presentation_type: card  # ← Redundant!
+    sectionMetadata: "Developer purpose: defines section function for maintainers."
+    presentation_type: card  # ← Redundant!
 
 # AFTER (correct)
 regulatory_standards:
   presentation: card  # ← Single source of truth
   items: [...]
   _section:
-    sectionMetadata:
-      notes: "Compliance requirements"
-      # No presentation_type
+    sectionMetadata: "Developer purpose: defines section function for maintainers."
+    # No presentation_type
 ```
 
 ---

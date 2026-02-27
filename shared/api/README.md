@@ -330,7 +330,7 @@ def test_key_validation():
 ```python
 # Preload cache for batch operations
 from api import APIClientCache
-APIClientCache.preload_clients(['deepseek', 'grok', 'winston'])
+APIClientCache.preload_clients(['deepseek', 'grok'])
 
 # Monitor performance
 stats = APIClientCache.get_cache_stats()

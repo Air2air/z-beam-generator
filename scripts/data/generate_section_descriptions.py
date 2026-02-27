@@ -40,13 +40,11 @@ def _build_generator(domain: str):
     from shared.api.client_factory import APIClientFactory
 
     api_client = APIClientFactory.create_client(provider='grok')
-    winston_client = APIClientFactory.create_client(provider='winston')
     subjective_evaluator = SubjectiveEvaluator(api_client)
 
     return QualityEvaluatedGenerator(
         api_client=api_client,
         subjective_evaluator=subjective_evaluator,
-        winston_client=winston_client,
         domain=domain,
     )
 

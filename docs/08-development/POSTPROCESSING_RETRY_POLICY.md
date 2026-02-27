@@ -238,7 +238,7 @@ With retry tracking, the system can now:
 
 - **Core Principle #0**: Universal Text Processing Pipeline
 - **Data Storage Policy**: Dual-write requirement (save to data + frontmatter)
-- **Quality Gates**: Winston 69%+, Realism 7.0+, Readability pass
+- **Quality Gates**: Grok 69%+, Realism 7.0+, Readability pass
 - **Voice Pattern Compliance**: Author-specific linguistic patterns
 - **Learning Integration**: Retry session tracking for analysis (Dec 14, 2025)
 

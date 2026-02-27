@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-Winston AI Content Audit
+Grok Humanness Content Audit
 
-Validates existing Materials.yaml content against Winston API.
+Validates existing Materials.yaml content against Grok humanness evaluator.
 Reports human scores and identifies content that needs regeneration.
 
 Usage:
-    python3 scripts/validation/winston_audit.py              # Audit all materials
-    python3 scripts/validation/winston_audit.py --material "Aluminum"  # Specific material
-    python3 scripts/validation/winston_audit.py --component caption   # Specific component
-    python3 scripts/validation/winston_audit.py --threshold 50        # Custom threshold
+    python3 scripts/validation/grok_audit.py              # Audit all materials
+    python3 scripts/validation/grok_audit.py --material "Aluminum"  # Specific material
+    python3 scripts/validation/grok_audit.py --component caption   # Specific component
+    python3 scripts/validation/grok_audit.py --threshold 50        # Custom threshold
 """
 
 import argparse
@@ -22,11 +22,11 @@ import time
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from shared.api.client_factory import create_api_client
+from learning.grok_humanness_runtime import GrokHumannessRuntimeEvaluator
 
 
-class WinstonAuditor:
-    """Audit Materials.yaml content against Winston AI detection"""
+class GrokAuditor:
+    """Audit Materials.yaml content against Grok humanness scoring."""
     
     def __init__(self, threshold: float = 70.0):
         """
@@ -36,7 +36,7 @@ class WinstonAuditor:
             threshold: Minimum human score threshold (0-100)
         """
         self.threshold = threshold
-        self.winston = create_api_client('winston')
+        self.evaluator = GrokHumannessRuntimeEvaluator()
         self.materials_file = Path(__file__).parent.parent.parent / 'data' / 'materials' / 'Materials.yaml'
         
     def load_materials(self) -> Dict:
@@ -103,7 +103,7 @@ class WinstonAuditor:
                         results['skipped'] += 1
                         continue
                     
-                    if len(answer) >= 300:  # Winston minimum
+                    if len(answer) >= 300:  # Minimum evaluation length
                         result = self._check_content(answer, f"{component_type}_{i+1}")
                         results['components'][f'faq_{i+1}'] = result
                         results['total_checked'] += 1
@@ -118,7 +118,7 @@ class WinstonAuditor:
             
             # Handle text content - ONLY strings
             if isinstance(content, str):
-                if len(content) >= 300:  # Winston minimum
+                if len(content) >= 300:  # Minimum evaluation length
                     result = self._check_content(content, component_type)
                     results['components'][component_type] = result
                     results['total_checked'] += 1
@@ -149,29 +149,32 @@ class WinstonAuditor:
         print(f"  🔍 Checking {component_name} ({len(text)} chars)...")
         
         try:
-            result = self.winston.detect_ai_content(text)
-            
-            if result['success']:
-                human_score = result['human_score']
-                passed = human_score >= self.threshold
-                
-                status = "✅ PASS" if passed else "❌ FAIL"
-                print(f"    {status} - Human: {human_score:.1f}%, AI: {result['ai_score']:.3f}")
-                
-                return {
-                    'passed': passed,
-                    'human_score': human_score,
-                    'ai_score': result['ai_score'],
-                    'credits_used': result.get('credits_used', 0),
-                    'text_preview': text[:100] + '...' if len(text) > 100 else text
-                }
-            else:
-                print(f"    ⚠️ SKIP - {result['error']}")
-                return {
-                    'passed': None,
-                    'error': result['error'],
-                    'text_preview': text[:100] + '...' if len(text) > 100 else text
-                }
+            payload = self.evaluator.evaluate(
+                candidate_text=text,
+                domain='materials',
+                item_id='audit',
+                component_type=component_name,
+                author_id=0,
+                generation_id=None,
+                retry_session_id=None,
+                attempt=1,
+            )
+
+            weighted_score = float(payload['aggregation']['weightedScore'])
+            human_score = weighted_score
+            ai_score = max(0.0, 100.0 - human_score)
+            passed = human_score >= self.threshold
+
+            status = "✅ PASS" if passed else "❌ FAIL"
+            print(f"    {status} - Human: {human_score:.1f}%, AI-like: {ai_score:.1f}%")
+
+            return {
+                'passed': passed,
+                'human_score': human_score,
+                'ai_score': ai_score,
+                'credits_used': 0,
+                'text_preview': text[:100] + '...' if len(text) > 100 else text
+            }
         except Exception as e:
             print(f"    💥 ERROR - {str(e)}")
             return {
@@ -241,7 +244,7 @@ class WinstonAuditor:
     def print_report(self, results: Dict):
         """Print formatted audit report"""
         print("\n" + "="*60)
-        print("📊 WINSTON AI AUDIT REPORT")
+        print("📊 GROK HUMANNESS AUDIT REPORT")
         print("="*60)
         print(f"\n📈 Summary:")
         print(f"  Materials Checked: {results['materials_checked']}")
@@ -265,11 +268,11 @@ class WinstonAuditor:
                 print(f"  Preview: {failure['text_preview']}")
                 print(f"  → Recommend: python3 run.py --{failure['component']} \"{failure['material']}\"")
         else:
-            print("\n✅ All content passed Winston AI detection!")
+            print("\n✅ All content passed Grok humanness detection!")
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Audit Materials.yaml content with Winston AI')
+    parser = argparse.ArgumentParser(description='Audit Materials.yaml content with Grok humanness evaluator')
     parser.add_argument('--material', help='Specific material to audit')
     parser.add_argument('--component', choices=['subtitle', 'micro', 'faq'], 
                        help='Specific component type to audit')
@@ -277,14 +280,14 @@ def main():
                        help='Minimum human score threshold (0-100, default: 70)')
     args = parser.parse_args()
     
-    print("🚀 Winston AI Content Auditor")
+    print("🚀 Grok Humanness Content Auditor")
     print(f"Threshold: {args.threshold}% human score")
     if args.material:
         print(f"Filter: Material = {args.material}")
     if args.component:
         print(f"Filter: Component = {args.component}")
     
-    auditor = WinstonAuditor(threshold=args.threshold)
+    auditor = GrokAuditor(threshold=args.threshold)
     
     component_filter = [args.component] if args.component else None
     results = auditor.audit_all(material_filter=args.material, component_filter=component_filter)

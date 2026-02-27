@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Winston Pattern Analyzer
+Grok Pattern Analyzer
 
 Analyzes detection_results table to understand parameter effectiveness,
 failure patterns, sweet spot validation, and author performance.
@@ -9,9 +9,9 @@ UNIFIED LEARNING ARCHITECTURE - Phase 2 Analysis Tool
 Per docs/architecture/UNIFIED_LEARNING_ARCHITECTURE.md
 
 Usage:
-    python3 scripts/analyze_winston_patterns.py --days 7
-    python3 scripts/analyze_winston_patterns.py --since 2025-11-17
-    python3 scripts/analyze_winston_patterns.py --material Aluminum
+    python3 scripts/analysis/analyze_grok_patterns.py --days 7
+    python3 scripts/analysis/analyze_grok_patterns.py --since 2025-11-17
+    python3 scripts/analysis/analyze_grok_patterns.py --material Aluminum
 
 Created: November 17, 2025
 """
@@ -28,18 +28,18 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 
-class WinstonPatternAnalyzer:
+class GrokPatternAnalyzer:
     """
-    Analyzes Winston AI detection patterns for learning insights
+    Analyzes Grok humanness patterns for learning insights
     
     Analysis Focus:
     1. Parameter effectiveness (which temps/penalties work?)
     2. Failure patterns (why do some generations fail?)
     3. Sweet spot validation (are recommendations accurate?)
-    4. Author performance (which authors pass Winston most?)
+    4. Author performance (which authors score best on humanness)
     """
     
-    def __init__(self, db_path: str = "data/winston_feedback.db"):
+    def __init__(self, db_path: str = "z-beam.db"):
         self.db_path = db_path
         self.conn = None
     
@@ -73,7 +73,7 @@ class WinstonPatternAnalyzer:
         days: Optional[int] = None
     ) -> Dict:
         """
-        Analyze which temperature values produce best Winston scores
+        Analyze which temperature values produce best humanness scores
         
         Returns:
             dict: {
@@ -399,7 +399,7 @@ class WinstonPatternAnalyzer:
         days: Optional[int] = None
     ) -> Dict:
         """
-        Compare Winston performance across different authors
+        Compare humanness performance across different authors
         
         Note: Requires author tracking in database (may not be available)
         
@@ -517,11 +517,11 @@ class WinstonPatternAnalyzer:
         }
 
 
-def print_analysis_report(analyzer: WinstonPatternAnalyzer, args):
+def print_analysis_report(analyzer: GrokPatternAnalyzer, args):
     """Print comprehensive analysis report"""
     
     print("=" * 80)
-    print("WINSTON PATTERN ANALYSIS")
+    print("GROK PATTERN ANALYSIS")
     print("=" * 80)
     print()
     
@@ -653,7 +653,7 @@ def print_analysis_report(analyzer: WinstonPatternAnalyzer, args):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Analyze Winston AI detection patterns for learning insights"
+        description="Analyze Grok humanness patterns for learning insights"
     )
     parser.add_argument(
         '--days',
@@ -673,14 +673,14 @@ def main():
     parser.add_argument(
         '--db',
         type=str,
-        default='data/winston_feedback.db',
+        default='z-beam.db',
         help='Path to feedback database'
     )
     
     args = parser.parse_args()
     
     try:
-        with WinstonPatternAnalyzer(db_path=args.db) as analyzer:
+        with GrokPatternAnalyzer(db_path=args.db) as analyzer:
             print_analysis_report(analyzer, args)
     
     except FileNotFoundError as e:

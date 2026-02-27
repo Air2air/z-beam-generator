@@ -18,7 +18,7 @@ The report system provides standardized templates for documenting generation res
 
 **Key Metrics**:
 - **Subjective quality evaluation** (overall score + dimensions) - Primary quality signal
-- Winston AI detection (human/AI scores, sentence analysis)
+- Grok humanness detection (human/AI scores, sentence analysis)
 - Composite quality score (weighted combination)
 - Generation parameters used
 - Performance metrics (tokens, time, retries)
@@ -160,7 +160,7 @@ class WinstonMetrics:
     ai_score: float                 # 0-100%
     sentence_count: int             # Number of sentences analyzed
     readability_score: float        # 0-100
-    credits_used: int               # Winston credits consumed
+    credits_used: int               # Grok credits consumed
     detection_id: Optional[int]     # Database detection result ID
     sentence_analysis: List[Dict]   # Per-sentence breakdown
 ```
@@ -191,7 +191,7 @@ class GenerationParameters:
 @dataclass
 class CompositeScoring:
     composite_score: float          # 0-100 (weighted combination)
-    winston_weight: float           # Default: 0.6
+    winston_weight: float           # Default: 0.6 (Grok humanness)
     subjective_weight: float        # Default: 0.3
     readability_weight: float       # Default: 0.1
     interpretation: str             # Human-readable quality tier
@@ -212,11 +212,11 @@ def generate_post_report(material: str, result: dict):
         status=GenerationStatus.SUCCESS if result['success'] else GenerationStatus.FAILED,
         timestamp=datetime.now(),
         winston_metrics=WinstonMetrics(
-            human_score=result['winston']['human_score'],
-            ai_score=result['winston']['ai_score'],
-            sentence_count=len(result['winston']['sentences']),
+            human_score=result['grok']['human_score'],
+            ai_score=result['grok']['ai_score'],
+            sentence_count=len(result['grok']['sentences']),
             readability_score=result['readability'],
-            credits_used=result['winston']['credits_used'],
+            credits_used=result['grok']['credits_used'],
             detection_id=result['detection_id']
         ),
         parameters=GenerationParameters(**result['parameters']),

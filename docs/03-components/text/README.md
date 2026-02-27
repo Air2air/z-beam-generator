@@ -19,14 +19,14 @@ The Text Component is the most complex component in the Z-Beam system, responsib
 
 ### **Dependencies**
 - **APIs**: DeepSeek API for content generation
-- **AI Detection**: Winston.ai for quality scoring
+- **AI Detection**: Grok for quality scoring
 - **Configuration**: Three-layer prompt system (YAML files)
 - **Data**: Material data from frontmatter
 - **Performance**: Real-time status updates every 10 seconds
 
 ### **Prerequisites**
 - Valid DeepSeek API key in environment
-- Winston.ai API key configured
+- Grok API key configured
 - Complete three-layer prompt files
 - Material frontmatter data available
 

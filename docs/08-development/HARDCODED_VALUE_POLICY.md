@@ -237,13 +237,13 @@ pytest tests/test_hardcoded_value_detection.py
 
 ### Dynamic Threshold Learning (November 20, 2025) 🔥 **MAJOR UPDATE**
 
-**Issue**: All quality thresholds were static - Winston (0.33), Realism (7.0), etc.
+**Issue**: All quality thresholds were static - Grok (0.33), Realism (7.0), etc.
 Sweet spot analyzer collected learning data but it was **never used**.
 
 **Fix Applied** (Commit: 50244080):
 
 1. **Created ThresholdManager** (`learning/threshold_manager.py`):
-   - Learns Winston threshold from 75th percentile of successful content
+   - Learns Grok threshold from 75th percentile of successful content
    - Learns realism threshold from 75th percentile of quality scores
    - Falls back to defaults only when <10 samples
    - Saves learned values to `learned_thresholds` table

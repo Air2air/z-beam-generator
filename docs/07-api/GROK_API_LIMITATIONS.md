@@ -29,7 +29,7 @@ The X.AI Grok API has specific parameter limitations that affect how the z-beam-
 
 Even though Grok doesn't accept penalty parameters, the system **still calculates them**. This design serves multiple purposes:
 
-1. **Research & Learning**: Parameters are logged to `winston_feedback.db` for correlation analysis
+1. **Research & Learning**: Parameters are logged to `z-beam.db` for correlation analysis
 2. **Future Provider Switching**: OpenAI, Anthropic, and other providers DO support penalties
 3. **ML Training Data**: Builds dataset for understanding parameter effects across providers
 4. **Architecture Consistency**: Maintains uniform parameter flow regardless of provider

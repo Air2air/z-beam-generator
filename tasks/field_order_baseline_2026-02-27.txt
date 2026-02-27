@@ -1,0 +1,48 @@
+================================================================================
+FRONTMATTER FIELD ORDER VALIDATION
+================================================================================
+
+Checking: /Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter
+
+Checking materials...
+  ❌ materials: 0/153 valid
+     Files with issues (153):
+       - porcelain-laser-cleaning.yaml: 1 issues
+       - platinum-laser-cleaning.yaml: 1 issues
+       - terbium-laser-cleaning.yaml: 1 issues
+       - mahogany-laser-cleaning.yaml: 1 issues
+       - stainless-steel-laser-cleaning.yaml: 1 issues
+       ... and 148 more
+
+Checking contaminants...
+  ❌ contaminants: 98/99 valid
+     Files with issues (1):
+       - adhesive-residue-contamination-contamination.yaml: 1 issues
+
+Checking compounds...
+  ❌ compounds: 34/35 valid
+     Files with issues (1):
+       - carbon-monoxide-compound-compound.yaml: 1 issues
+
+Checking settings...
+  ❌ settings: 0/153 valid
+     Files with issues (153):
+       - nylon-settings.yaml: 1 issues
+       - limestone-settings.yaml: 1 issues
+       - neodymium-settings.yaml: 1 issues
+       - redwood-settings.yaml: 1 issues
+       - silver-settings.yaml: 1 issues
+       ... and 148 more
+
+Checking applications...
+  ❌ applications: 10/11 valid
+     Files with issues (1):
+       - aerospace-laser-cleaning-applications-laser-cleaning-applications.yaml: 2 issues
+
+================================================================================
+TOTAL: 142/451 files valid
+================================================================================
+⚠️  Some files have incorrect field order.
+
+To fix, run:
+  python3 scripts/reorder_field_order.py

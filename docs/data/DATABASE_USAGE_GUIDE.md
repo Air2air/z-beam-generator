@@ -13,9 +13,9 @@ The Z-Beam system uses **SQLite databases** for learning, analytics, and quality
 
 ## Current Database Architecture
 
-### 1. Winston Feedback Database (PRIMARY)
+### 1. Grok Feedback Database (PRIMARY)
 
-**Location**: `data/winston_feedback.db`  
+**Location**: `data/z-beam.db`  
 **Size**: ~5.0 MB  
 **Status**: ✅ **ACTIVE** (Primary learning database)  
 **Last Modified**: November 22, 2025
@@ -26,7 +26,7 @@ The Z-Beam system uses **SQLite databases** for learning, analytics, and quality
 
 | Table | Rows | Purpose |
 |-------|------|---------|
-| `detection_results` | 1,633 | Winston AI detection scores per generation |
+| `detection_results` | 1,633 | Grok humanness detection scores per generation |
 | `sentence_analysis` | 5,339 | Per-sentence AI tendency analysis |
 | `ai_patterns` | 103 | Learned AI-like phrase patterns |
 | `generation_parameters` | 1,603 | Parameters used (temp, penalties, etc.) |
@@ -46,7 +46,7 @@ The Z-Beam system uses **SQLite databases** for learning, analytics, and quality
 ```python
 import sqlite3
 
-conn = sqlite3.connect('data/winston_feedback.db')
+conn = sqlite3.connect('data/z-beam.db')
 cursor = conn.cursor()
 
 # Query detection results
@@ -104,9 +104,9 @@ conn.close()
 ### 3. Deprecated Databases (REMOVED)
 
 **z-beam.db** (3.5 MB) - Deprecated December 15, 2025  
-- **Status**: ⚠️ **DUPLICATE** of winston_feedback.db
+- **Status**: ⚠️ **DUPLICATE** of z-beam.db
 - **Schema**: 83% identical (10/12 tables)
-- **Data**: Older/less complete than winston_feedback.db
+- **Data**: Older/less complete than z-beam.db
 - **Action**: **Keep for historical reference, but DO NOT write to**
 - **Recommendation**: Archive and remove from active codebase
 
@@ -114,7 +114,7 @@ conn.close()
 - **Status**: Empty (0 bytes)
 - **Reason**: Never used, no data
 
-**postprocessing/detection/winston_feedback.db** - ✅ **DELETED** (Dec 15, 2025)  
+**postprocessing/detection/z-beam.db** - ✅ **DELETED** (Dec 15, 2025)  
 - **Status**: Empty (0 bytes)
 - **Reason**: Never populated
 
@@ -135,7 +135,7 @@ conn.close()
 ```python
 from shared.text.validation.structural_variation_checker import StructuralVariationChecker
 
-checker = StructuralVariationChecker(db_path="data/winston_feedback.db")
+checker = StructuralVariationChecker(db_path="data/z-beam.db")
 diversity_score = checker.check_structural_diversity(text)
 ```
 
@@ -156,7 +156,7 @@ diversity_score = checker.check_structural_diversity(text)
 ```python
 from learning.feedback_logger import FeedbackLogger
 
-logger = FeedbackLogger(db_path="data/winston_feedback.db")
+logger = FeedbackLogger(db_path="data/z-beam.db")
 logger.log_detection_result(
     detection_id=123,
     human_score=0.95,
@@ -176,7 +176,7 @@ logger.log_detection_result(
 
 ## Schema Documentation
 
-### winston_feedback.db Schema
+### z-beam.db Schema
 
 **detection_results** table:
 ```sql
@@ -263,29 +263,29 @@ CREATE TABLE learned_defaults (
 
 ```bash
 # Backup before major operations
-cp data/winston_feedback.db data/winston_feedback.db.backup
+cp data/z-beam.db data/z-beam.db.backup
 cp shared/image/learning/generation_history.db shared/image/learning/generation_history.db.backup
 
 # Add timestamp
 DATE=$(date +%Y%m%d)
-cp data/winston_feedback.db backups/winston_feedback_${DATE}.db
+cp data/z-beam.db backups/winston_feedback_${DATE}.db
 ```
 
 ### Vacuum (Reclaim Space)
 
 ```bash
 # Reclaim space from deleted rows
-sqlite3 data/winston_feedback.db "VACUUM;"
+sqlite3 data/z-beam.db "VACUUM;"
 
 # Check size reduction
-ls -lh data/winston_feedback.db
+ls -lh data/z-beam.db
 ```
 
 ### Export Schema
 
 ```bash
 # Export schema for documentation
-sqlite3 data/winston_feedback.db ".schema" > docs/schema/winston_feedback_schema.sql
+sqlite3 data/z-beam.db ".schema" > docs/schema/winston_feedback_schema.sql
 ```
 
 ### Query Statistics
@@ -293,7 +293,7 @@ sqlite3 data/winston_feedback.db ".schema" > docs/schema/winston_feedback_schema
 ```python
 import sqlite3
 
-conn = sqlite3.connect('data/winston_feedback.db')
+conn = sqlite3.connect('data/z-beam.db')
 cursor = conn.cursor()
 
 # Get table row counts
@@ -318,7 +318,7 @@ conn.close()
 
 1. **Use connection context managers**:
 ```python
-with sqlite3.connect('data/winston_feedback.db') as conn:
+with sqlite3.connect('data/z-beam.db') as conn:
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM detection_results;")
     results = cursor.fetchall()
@@ -335,7 +335,7 @@ cursor.execute(
 
 3. **Close connections** when done:
 ```python
-conn = sqlite3.connect('data/winston_feedback.db')
+conn = sqlite3.connect('data/z-beam.db')
 # ... operations
 conn.close()
 ```
@@ -353,7 +353,7 @@ CREATE INDEX idx_detection_author ON detection_results(author_id);
 1. **Don't hold connections open across requests**:
 ```python
 # ❌ WRONG
-conn = sqlite3.connect('data/winston_feedback.db')  # Opened once
+conn = sqlite3.connect('data/z-beam.db')  # Opened once
 for material in materials:
     generate(material)  # Long-running operation
 conn.close()  # Connection held open too long
@@ -361,8 +361,8 @@ conn.close()  # Connection held open too long
 
 2. **Don't write to multiple databases for same purpose**:
 ```python
-# ❌ WRONG - Use winston_feedback.db only
-log_to_database('data/winston_feedback.db', data)
+# ❌ WRONG - Use z-beam.db only
+log_to_database('data/z-beam.db', data)
 log_to_database('z-beam.db', data)  # Duplicate!
 ```
 
@@ -374,7 +374,7 @@ query = f"SELECT * FROM detection_results WHERE material_name = '{material}'"
 
 4. **Don't forget to commit writes**:
 ```python
-conn = sqlite3.connect('data/winston_feedback.db')
+conn = sqlite3.connect('data/z-beam.db')
 cursor.execute("INSERT INTO detection_results ...")
 # ❌ Missing: conn.commit()
 conn.close()  # Data NOT saved!
@@ -393,7 +393,7 @@ conn.close()  # Data NOT saved!
 **Solution**:
 ```bash
 # Check for processes using database
-lsof | grep winston_feedback.db
+lsof | grep z-beam.db
 
 # If stuck, kill process or close connection
 # Then retry operation
@@ -410,12 +410,12 @@ lsof | grep winston_feedback.db
 **Solution**:
 ```bash
 # Try to recover with .dump and reimport
-sqlite3 data/winston_feedback.db ".dump" > winston_backup.sql
+sqlite3 data/z-beam.db ".dump" > winston_backup.sql
 sqlite3 data/winston_feedback_new.db < winston_backup.sql
 
 # If successful, replace
-mv data/winston_feedback.db data/winston_feedback.db.corrupt
-mv data/winston_feedback_new.db data/winston_feedback.db
+mv data/z-beam.db data/z-beam.db.corrupt
+mv data/winston_feedback_new.db data/z-beam.db
 ```
 
 ---
@@ -440,16 +440,16 @@ ANALYZE;
 
 ## Migration Guide
 
-### Consolidating z-beam.db → winston_feedback.db
+### Consolidating z-beam.db → z-beam.db
 
-**IF you need to preserve z-beam.db data** (only if it has newer data than winston_feedback.db):
+**IF you need to preserve z-beam.db data** (only if it has newer data than z-beam.db):
 
 ```python
 import sqlite3
 
 # Connect to both databases
 src = sqlite3.connect('z-beam.db')
-dst = sqlite3.connect('data/winston_feedback.db')
+dst = sqlite3.connect('data/z-beam.db')
 
 # Attach source database
 dst.execute("ATTACH DATABASE 'z-beam.db' AS source;")
@@ -468,7 +468,7 @@ src.close()
 print("✅ Migration complete")
 ```
 
-**Recommended**: Archive z-beam.db and move forward with winston_feedback.db only.
+**Recommended**: Archive z-beam.db and move forward with z-beam.db only.
 
 ---
 
@@ -476,7 +476,7 @@ print("✅ Migration complete")
 
 ### Database Connections in Codebase
 
-**Winston Feedback Database**:
+**Grok Feedback Database**:
 - `generation/core/evaluated_generator.py` - Logs quality metrics
 - `shared/text/validation/structural_variation_checker.py` - Queries patterns
 - `shared/text/validation/forbidden_phrase_validator.py` - Queries AI patterns
@@ -487,13 +487,13 @@ print("✅ Migration complete")
 - `shared/image/learning/image_logger.py` - Logs attempts
 - `shared/image/orchestrator.py` - Queries learned defaults
 
-**Deprecated References** (should be updated to winston_feedback.db):
+**Deprecated References** (should be updated to z-beam.db):
 ```bash
 # Find any remaining z-beam.db references
 grep -r "z-beam\.db" generation/ shared/ postprocessing/ --include="*.py"
 
-# Update to winston_feedback.db
-sed -i '' 's/z-beam\.db/data\/winston_feedback.db/g' {file}
+# Update to z-beam.db
+sed -i '' 's/z-beam\.db/data\/z-beam.db/g' {file}
 ```
 
 ---
@@ -530,7 +530,7 @@ For high-volume querying, create read-only replicas:
 
 ```bash
 # Create read replica
-cp data/winston_feedback.db data/winston_feedback_readonly.db
+cp data/z-beam.db data/winston_feedback_readonly.db
 chmod 444 data/winston_feedback_readonly.db  # Read-only
 ```
 

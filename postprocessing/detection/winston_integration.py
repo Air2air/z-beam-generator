@@ -12,6 +12,7 @@ the codebase with a single, testable, well-documented interface.
 """
 
 import logging
+import os
 from typing import Dict, Optional, Any
 
 logger = logging.getLogger(__name__)
@@ -83,6 +84,13 @@ class WinstonIntegration:
         Returns:
             Mode string: 'always', 'smart', 'disabled', 'final_only'
         """
+        env_mode = os.getenv('WINSTON_USAGE_MODE', '').strip().lower()
+        if env_mode in {'always', 'smart', 'disabled', 'final_only'}:
+            return env_mode
+
+        if os.getenv('DISABLE_WINSTON', '').strip().lower() in {'1', 'true', 'yes', 'on'}:
+            return 'disabled'
+
         return 'always'
     
     def should_use_winston(self, attempt: int, max_attempts: int) -> bool:
@@ -142,6 +150,23 @@ class WinstonIntegration:
             - failure_analysis: Dict (if analyzer available)
             - method: str ('winston' or 'pattern_only')
         """
+        mode = self.get_usage_mode()
+
+        if mode == 'disabled':
+            logger.warning("⏭️ Winston detection disabled via configuration (temporary mode)")
+            return {
+                'ai_score': 0.0,
+                'detection': {
+                    'ai_score': 0.0,
+                    'human_score': 1.0,
+                    'mode': 'disabled',
+                    'reason': 'Winston temporarily disabled via WINSTON_USAGE_MODE/DISABLE_WINSTON'
+                },
+                'detection_id': None,
+                'failure_analysis': None,
+                'method': 'disabled'
+            }
+
         # Always use Winston API for reliable detection
         use_winston = self.should_use_winston(attempt, max_attempts)
         

@@ -26,7 +26,6 @@ CRITICAL: Regeneration = Fresh generation from original prompt, NOT refinement o
 """
 
 import logging
-import os
 import re
 import random
 import tempfile
@@ -57,7 +56,7 @@ class PostprocessCommand:
     - This enforces FRONTMATTER_SOURCE_OF_TRUTH_POLICY
     
     Quality validation checks:
-    - AI detection score (Winston)
+    - AI detection score (Grok humanness)
     - Voice authenticity (author compliance)
     - Structural quality (sentence variation, rhythm)
     - Composite threshold: 60/100 minimum
@@ -89,7 +88,7 @@ class PostprocessCommand:
         from generation.field_router import FieldRouter
 
         self.field = FieldRouter.normalize_field_name(domain, field)
-        aliases = FieldRouter.FIELD_ALIASES.get(domain, {})
+        aliases = FieldRouter._get_domain_field_router(domain).get('field_aliases', {})
         self.field_aliases = [alias for alias, canonical in aliases.items() if canonical == self.field]
         if self.requested_field not in self.field_aliases and self.requested_field != self.field:
             self.field_aliases.append(self.requested_field)
@@ -99,13 +98,11 @@ class PostprocessCommand:
         if self.field_type == 'text':
             # Text field - use full quality pipeline
             self.evaluator = SubjectiveEvaluator(self.api_client)
-            self.winston_client = create_api_client('winston')
             domain_generator = Generator(api_client=self.api_client, domain=domain)
             
             self.generator = QualityEvaluatedGenerator(
                 api_client=self.api_client,
-                subjective_evaluator=self.evaluator,
-                winston_client=self.winston_client
+                subjective_evaluator=self.evaluator
             )
             self.generator.generator = domain_generator
             self.structural_variation_checker = StructuralVariationChecker()
@@ -410,13 +407,16 @@ class PostprocessCommand:
             dynamic_min_length = int(default_words * 2.5)
             return max(40, dynamic_min_length)
         except Exception as error:
-            logger.warning(f"Could not derive dynamic min length for field '{self.field}': {error}")
-            return self.min_content_length_chars
+            raise RuntimeError(
+                f"Failed to derive dynamic min length for field '{self.field}': {error}"
+            ) from error
     
-    def _check_winston(self, text: str) -> float:
-        """Check Winston AI detection score (stub - uses generator's method)"""
-        # This will be integrated with actual Winston API
-        return 0.95  # Placeholder
+    def _check_grok_humanness(self, text: str) -> float:
+        """Fail-fast guard: placeholder humanness scoring is forbidden in production."""
+        raise RuntimeError(
+            "Placeholder Grok humanness scoring path was called unexpectedly. "
+            "Use full QualityAnalyzer/Grok evaluator pipeline instead."
+        )
     
     def postprocess_item(self, item_id: str, dry_run: bool = False) -> Dict[str, Any]:
         """
@@ -443,30 +443,14 @@ class PostprocessCommand:
         try:
             item_data = self._load_source_data(item_id)
         except FileNotFoundError as e:
-            # Backward-compatible fallback path for tests/mocks that patch legacy loaders
-            item_data = None
-            if hasattr(self, 'data_loader') and hasattr(self.data_loader, 'get_item_data'):
-                try:
-                    item_data = self.data_loader.get_item_data(item_id)
-                except Exception:
-                    item_data = None
-
-            if item_data is None and hasattr(self, '_load_frontmatter'):
-                try:
-                    legacy_data, _ = self._load_frontmatter(item_id)
-                    item_data = legacy_data
-                except Exception:
-                    item_data = None
-
-            if item_data is None:
-                print(f"❌ Error: {e}")
-                return {
-                    'item': item_id,
-                    'field': self.field,
-                    'action': 'LOAD_FAILED',
-                    'improved': False,
-                    'error': str(e)
-                }
+            print(f"❌ Error: {e}")
+            return {
+                'item': item_id,
+                'field': self.field,
+                'action': 'LOAD_FAILED',
+                'improved': False,
+                'error': str(e)
+            }
         
         # Get existing content
         existing_content = self._get_field_content(item_data)
@@ -480,10 +464,16 @@ class PostprocessCommand:
             if self.field_type == 'text':
                 # Text field - use quality pipeline
                 print(f"   • Using QualityEvaluatedGenerator (voice + quality validation)")
+                author_data = item_data.get('author')
+                if not isinstance(author_data, dict) or 'id' not in author_data:
+                    raise RuntimeError(
+                        f"Item '{item_id}' missing required author.id for postprocess generation"
+                    )
+
                 result = self.generator.generate(
                     material_name=item_id,
                     component_type=self._get_generation_component_type(),
-                    author_id=item_data.get('author', {}).get('id')
+                    author_id=author_data['id']
                 )
                 
                 if result.success:
@@ -556,7 +546,7 @@ class PostprocessCommand:
         
         # Use same quality analyzer as generation pipeline
         from shared.voice.quality_analyzer import QualityAnalyzer
-        analyzer = QualityAnalyzer(self.generator.api_client, strict_mode=False)
+        analyzer = QualityAnalyzer(self.api_client, strict_mode=False)
         
         # Get author data for voice validation (use item_id, not display name)
         author_data = self.generator._get_author_data(item_id)
@@ -677,7 +667,7 @@ class PostprocessCommand:
                 # Use existing generator.generate() which includes ALL quality checks:
                 # - Humanness layer (structural variation)
                 # - Voice validation (author compliance)
-                # - Quality evaluation (Winston, realism, diversity)
+                # - Quality evaluation (Grok humanness, realism, diversity)
                 # - Learning database logging
                 # - Dual-write (data YAML + frontmatter sync)
                 
@@ -694,7 +684,6 @@ class PostprocessCommand:
                         faq_count=None,
                         retry_session_id=retry_session_id,
                         is_retry=(attempt > 1),
-                        skip_learning_evaluation=True,
                         target_words=attempt_target_words
                     )
                 
@@ -1109,24 +1098,37 @@ class PostprocessCommand:
         data_path = self._get_data_path()
         
         if not data_path.exists():
-            print(f"⚠️  Source data file not found: {data_path}")
-            return []
+            raise FileNotFoundError(f"Source data file not found: {data_path}")
         
         # Load source data
         with open(data_path, 'r', encoding='utf-8') as f:
             all_data = yaml.safe_load(f)
+        if not isinstance(all_data, dict):
+            raise TypeError(f"Source data file must parse to mapping: {data_path}")
         
         # Get root key from config
         config = self._load_domain_config()
-        data_root_key = config.get('data_root_key', self.domain)
+        if 'data_root_key' not in config or not str(config['data_root_key']).strip():
+            raise RuntimeError(
+                f"Domain config for '{self.domain}' missing required non-empty key: data_root_key"
+            )
+        data_root_key = config['data_root_key']
         
         # Get items dict
-        items_dict = all_data.get(data_root_key, {})
+        if data_root_key not in all_data:
+            raise KeyError(
+                f"Source data missing required root key '{data_root_key}' in {data_path}"
+            )
+        items_dict = all_data[data_root_key]
+        if not isinstance(items_dict, dict):
+            raise TypeError(
+                f"Source data root '{data_root_key}' must be a dictionary in {data_path}"
+            )
         
         if not items_dict:
-            print(f"⚠️  No items found under key '{data_root_key}' in {data_path}")
-            print(f"   Available keys: {list(all_data.keys())}")
-            return []
+            raise ValueError(
+                f"No items found under required root key '{data_root_key}' in {data_path}"
+            )
         
         # Return all item IDs (keys from the dict)
         return sorted(items_dict.keys())

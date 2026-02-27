@@ -13,7 +13,7 @@
 # - variant: Visual styling (enum: default|warning|danger, required)
 # - wordCount: Target word count for generated descriptions (integer, required)
 # - description: Human-readable section title (string, required)
-# - metadata: Generation guidance for context-specific content (string, required)
+# - metadata: Developer-facing section-function guidance for maintainers/generators (string, required)
 # - prompt: Detailed AI generation instructions (string, required)
 # 
 # Architecture Notes:
@@ -176,6 +176,8 @@ sections:
     order: 10
     variant: default
     wordCount: 150
+    sectionTitle: "Alternative Names"
+    sectionDescription: "Synonyms and chemical identifiers"
     prompt_ref: synonymsIdentifiers
   
   chemicalProperties:
@@ -183,6 +185,8 @@ sections:
     order: 11
     variant: default
     wordCount: 200
+    sectionTitle: "Chemical Properties"
+    sectionDescription: "Chemical reactivity and stability"
     prompt_ref: chemicalProperties
   
   physicalProperties:
@@ -192,6 +196,8 @@ sections:
     wordCount: 175
     title: "Physical Properties"
     description: "Essential physical characteristics and behavior"
+    sectionTitle: "Physical Properties"
+    sectionDescription: "Essential physical characteristics and behavior"
     prompt_ref: physicalProperties
   
   page:
@@ -213,6 +219,8 @@ sections:
     wordCount: 125
     title: "Visual Appearance"
     description: "Physical appearance and visual characteristics"
+    sectionTitle: "Visual Appearance"
+    sectionDescription: "Physical appearance and visual characteristics"
     prompt_ref: appearanceVariations
   
   # SAFETY GROUP (30-39): Health, regulatory, and emergency information
@@ -223,6 +231,8 @@ sections:
     wordCount: 250
     title: "Health Effects"
     description: "Health impacts and biological effects"
+    sectionTitle: "Health Effects"
+    sectionDescription: "Health impacts and biological effects"
     prompt_ref: healthEffects
   
   exposureLimits:
@@ -232,6 +242,8 @@ sections:
     wordCount: 200
     title: "Exposure Limits"
     description: "Regulatory exposure thresholds and monitoring"
+    sectionTitle: "Exposure Limits"
+    sectionDescription: "Regulatory exposure thresholds and monitoring"
     prompt_ref: exposureLimits
   
   ppeRequirements:
@@ -241,6 +253,8 @@ sections:
     wordCount: 200
     title: "PPE Requirements"
     description: "Personal protective equipment and safety measures"
+    sectionTitle: "PPE Requirements"
+    sectionDescription: "Personal protective equipment and safety measures"
     prompt_ref: ppeRequirements
   
   emergencyResponse:
@@ -250,6 +264,8 @@ sections:
     wordCount: 225
     title: "Emergency Response"
     description: "Emergency procedures and first aid"
+    sectionTitle: "Emergency Response"
+    sectionDescription: "Emergency procedures and first aid"
     prompt_ref: emergencyResponse
   
   storageRequirements:
@@ -259,6 +275,8 @@ sections:
     wordCount: 200
     title: "Storage Requirements"
     description: "Storage conditions and container compatibility"
+    sectionTitle: "Storage Requirements"
+    sectionDescription: "Storage conditions and container compatibility"
     prompt_ref: storageRequirements
   
   regulatoryStandards:
@@ -268,6 +286,19 @@ sections:
     wordCount: 225
     title: "Regulatory Standards"
     description: "Compliance requirements and regulatory framework"
+    sectionTitle: "Regulatory Standards"
+    sectionDescription: "Compliance requirements and regulatory framework"
+    prompt_ref: regulatoryStandards
+
+  relationships.safety.regulatoryStandards:
+    icon: shield-check
+    order: 35
+    variant: default
+    wordCount: 225
+    title: "Regulatory Standards"
+    description: "Compliance requirements and regulatory framework"
+    sectionTitle: "Regulatory Standards"
+    sectionDescription: "Compliance requirements and regulatory framework"
     prompt_ref: regulatoryStandards
   
   regulatoryClassification:
@@ -277,6 +308,8 @@ sections:
     wordCount: 225
     title: "Regulatory Classification"
     description: "GHS classification and hazard codes"
+    sectionTitle: "Regulatory Classification"
+    sectionDescription: "GHS classification and hazard codes"
     prompt_ref: regulatoryClassification
   
   # OPERATIONAL GROUP (40-49): Practical usage and handling information
@@ -287,6 +320,19 @@ sections:
     wordCount: 175
     title: "Industry Applications"
     description: "Industrial uses and application contexts"
+    sectionTitle: "Industry Applications"
+    sectionDescription: "Industrial uses and application contexts"
+    prompt_ref: industryApplications
+
+  relationships.operational.industryApplications:
+    icon: briefcase
+    order: 40
+    variant: default
+    wordCount: 175
+    title: "Industry Applications"
+    description: "Industrial uses and application contexts"
+    sectionTitle: "Industry Applications"
+    sectionDescription: "Industrial uses and application contexts"
     prompt_ref: industryApplications
   
   commonChallenges:
@@ -296,6 +342,8 @@ sections:
     wordCount: 175
     title: "Common Challenges"
     description: "Handling difficulties and operational issues"
+    sectionTitle: "Common Challenges"
+    sectionDescription: "Handling difficulties and operational issues"
     prompt_ref: commonChallenges
   
   detectionMethods:
@@ -305,6 +353,8 @@ sections:
     wordCount: 175
     title: "Detection Methods"
     description: "Identification and measurement techniques"
+    sectionTitle: "Detection Methods"
+    sectionDescription: "Identification and measurement techniques"
     prompt_ref: detectionMethods
   
   preventionStrategies:
@@ -314,6 +364,8 @@ sections:
     wordCount: 175
     title: "Prevention Strategies"
     description: "Prevention methods and control measures"
+    sectionTitle: "Prevention Strategies"
+    sectionDescription: "Prevention methods and control measures"
     prompt_ref: preventionStrategies
   
   removalMethods:
@@ -323,6 +375,8 @@ sections:
     wordCount: 200
     title: "Removal Methods"
     description: "Cleaning and remediation techniques"
+    sectionTitle: "Removal Methods"
+    sectionDescription: "Cleaning and remediation techniques"
     prompt_ref: removalMethods
   
   environmentalImpact:
@@ -332,6 +386,8 @@ sections:
     wordCount: 200
     title: "Environmental Impact"
     description: "Environmental effects and disposal considerations"
+    sectionTitle: "Environmental Impact"
+    sectionDescription: "Environmental effects and disposal considerations"
     prompt_ref: environmentalImpact
   
   faq:
@@ -353,6 +409,20 @@ sections:
     wordCount: 200
     title: "Continuous Monitoring"
     description: "Real-time detection and monitoring systems"
+    sectionTitle: "Continuous Monitoring"
+    sectionDescription: "Real-time detection and monitoring systems"
+    prompt_ref: continuousMonitoring
+
+  # COMPOUNDS CANONICAL KEY (mirrors live compounds relationship key)
+  detectionMonitoring:
+    icon: activity
+    order: 50
+    variant: default
+    wordCount: 200
+    title: "Detection and Monitoring"
+    description: "Real-time detection and monitoring systems"
+    sectionTitle: "Detection and Monitoring"
+    sectionDescription: "Real-time detection and monitoring systems"
     prompt_ref: continuousMonitoring
   
   # INTERACTIONS GROUP (60-69): Chemical reactions and material relationships
@@ -363,6 +433,8 @@ sections:
     wordCount: 200
     title: "Chemical Reactivity"
     description: "Chemical reactions and reactivity patterns"
+    sectionTitle: "Chemical Reactivity"
+    sectionDescription: "Chemical reactions and reactivity patterns"
     prompt_ref: reactivity
   
   contaminatedBy:
@@ -372,6 +444,19 @@ sections:
     wordCount: 175
     title: "Contaminated By"
     description: "Common contaminants affecting this material"
+    sectionTitle: "Contaminated By"
+    sectionDescription: "Common contaminants affecting this material"
+    prompt_ref: contaminatedBy
+
+  relationships.interactions.contaminatedBy:
+    icon: droplet
+    order: 61
+    variant: default
+    wordCount: 175
+    title: "Contaminated By"
+    description: "Common contaminants affecting this material"
+    sectionTitle: "Contaminated By"
+    sectionDescription: "Common contaminants affecting this material"
     prompt_ref: contaminatedBy
   
   producedByMaterials:
@@ -381,6 +466,20 @@ sections:
     wordCount: 175
     title: "Produced By Materials"
     description: "Materials that create this contaminant"
+    sectionTitle: "Produced By Materials"
+    sectionDescription: "Materials that create this contaminant"
+    prompt_ref: producedByMaterials
+
+  # COMPOUNDS CANONICAL KEY (mirrors live compounds relationship key)
+  producedFromMaterials:
+    icon: layers
+    order: 62
+    variant: default
+    wordCount: 175
+    title: "Produced From Materials"
+    description: "Materials that can produce this compound"
+    sectionTitle: "Produced From Materials"
+    sectionDescription: "Materials that can produce this compound"
     prompt_ref: producedByMaterials
   
   producedFromContaminants:
@@ -390,6 +489,8 @@ sections:
     wordCount: 175
     title: "Produced From Contaminants"
     description: "Contaminants that form this compound"
+    sectionTitle: "Produced From Contaminants"
+    sectionDescription: "Contaminants that form this compound"
     prompt_ref: producedFromContaminants
   
   relatedContaminants:
@@ -399,6 +500,8 @@ sections:
     wordCount: 150
     title: "Related Contaminants"
     description: "Similar or associated contaminants"
+    sectionTitle: "Related Contaminants"
+    sectionDescription: "Similar or associated contaminants"
     prompt_ref: relatedContaminants
   
   relatedCompounds:
@@ -408,6 +511,8 @@ sections:
     wordCount: 150
     title: "Related Compounds"
     description: "Similar or associated chemical compounds"
+    sectionTitle: "Related Compounds"
+    sectionDescription: "Similar or associated chemical compounds"
     prompt_ref: relatedCompounds
 
   # MATERIALS-SPECIFIC SECTIONS
@@ -418,6 +523,8 @@ sections:
     wordCount: 175
     title: "Material Characteristics" 
     description: "Physical and mechanical properties"
+    sectionTitle: "Material Characteristics"
+    sectionDescription: "Physical and mechanical properties"
     prompt_ref: materialCharacteristics
     
   laserMaterialInteraction:
@@ -427,6 +534,8 @@ sections:
     wordCount: 200
     title: "Laser Material Interaction"
     description: "Material-specific laser energy interaction properties and cleaning behavior"
+    sectionTitle: "Laser Material Interaction"
+    sectionDescription: "Material-specific laser energy interaction properties and cleaning behavior"
     prompt_ref: laserMaterialInteraction
     
   relatedMaterials:
@@ -436,6 +545,8 @@ sections:
     wordCount: 150
     title: "Related Materials"  
     description: "Similar materials and alloy variants"
+    sectionTitle: "Related Materials"
+    sectionDescription: "Similar materials and alloy variants"
     prompt_ref: relatedMaterials
     item_fields:
       - id
@@ -452,6 +563,8 @@ sections:
     wordCount: 50
     title: "Micro Description"
     description: "Brief before/after cleaning description"  
+    sectionTitle: "Micro Description"
+    sectionDescription: "Brief before/after cleaning description"
     prompt_ref: micro
     
   pageDescription:
@@ -461,6 +574,8 @@ sections:
     wordCount: 100
     title: "Page Description"
     description: "Overall page summary"
+    sectionTitle: "Page Description"
+    sectionDescription: "Overall page summary"
     prompt_ref: pageDescription
   
   # Relationship sections under operational category
@@ -471,6 +586,8 @@ sections:
     wordCount: 120
     title: "Machine Settings"
     description: "Optimal laser parameters and equipment specifications"
+    sectionTitle: "Machine Settings"
+    sectionDescription: "Optimal laser parameters and equipment specifications"
     prompt_ref: machineSettings
   
   # Relationship sections that appear in both properties and relationships
@@ -482,6 +599,8 @@ sections:
     wordCount: 200
     title: "Laser-Material Interaction"
     description: "Dynamics of laser energy absorption and thermal response specific to this material"
+    sectionTitle: "Laser-Material Interaction"
+    sectionDescription: "Dynamics of laser energy absorption and thermal response specific to this material"
     prompt_ref: operational.laserMaterialInteraction
   
   # COMPONENT SECTIONS: Presentational components with before/after content

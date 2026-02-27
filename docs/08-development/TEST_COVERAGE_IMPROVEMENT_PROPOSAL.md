@@ -85,14 +85,14 @@ def test_domain_config_loading():
 
 
 def test_winston_graceful_degradation():
-    """Test coordinator continues without Winston if unavailable"""
+    """Test coordinator continues without Grok if unavailable"""
     mock_api = Mock()
     
     with patch('shared.domain.base_coordinator.SubjectiveEvaluator'):
-        with patch('shared.domain.base_coordinator.WinstonClient', side_effect=Exception("Winston not configured")):
+        with patch('shared.domain.base_coordinator.WinstonClient', side_effect=Exception("Grok not configured")):
             coordinator = MockCoordinator(api_client=mock_api)
             
-            # Should initialize without Winston
+            # Should initialize without Grok
             assert coordinator.winston_client is None
             # But should still have other components
             assert coordinator.api_client is mock_api
@@ -472,10 +472,10 @@ def mock_api_client():
 
 @pytest.fixture
 def mock_winston():
-    """Mock Winston client"""
-    winston = Mock()
-    winston.check.return_value = {'score': 0.95, 'is_human': True}
-    return winston
+    """Mock Grok client"""
+    grok = Mock()
+    grok.check.return_value = {'score': 0.95, 'is_human': True}
+    return grok
 
 
 @pytest.fixture

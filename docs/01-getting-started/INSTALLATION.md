@@ -191,7 +191,7 @@ python3 run.py --test-api
 🔧 Testing API connectivity...
 ✅ [CLIENT MANAGER] deepseek: Connected successfully
 ✅ [CLIENT MANAGER] grok: Connected successfully  
-✅ [CLIENT MANAGER] winston: Connected successfully
+✅ [CLIENT MANAGER] grok: Connected successfully
 🎯 All API providers operational
 ```
 
@@ -245,7 +245,7 @@ python3 run.py --list-components
 python3 run.py --provider deepseek --material "Copper"
 
 # Use specific AI detector
-python3 run.py --ai-detector winston --material "Aluminum"
+python3 run.py --ai-detector grok --material "Aluminum"
 ```
 
 #### Output Configuration
@@ -333,7 +333,7 @@ python3 run.py --test-api --verbose
 python3 scripts/tools/system_diagnostic.py
 
 # API-specific diagnostics
-python3 scripts/tools/api_terminal_diagnostics.py winston
+python3 scripts/tools/api_terminal_diagnostics.py grok
 
 # Environment validation
 python3 scripts/tools/validate_environment.py

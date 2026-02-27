@@ -161,13 +161,30 @@ class DomainAdapter(DataSourceAdapter):
                 self._data_cache = yaml.safe_load(f)
 
             items = self._get_items_root(self._data_cache)
+            self._normalize_author_identity(items)
             item_count = len(items)
             logger.debug(f"Loaded {item_count} items from {self.data_path}")
         
         return self._data_cache
 
+    def _normalize_author_identity(self, items: Dict[str, Any]) -> None:
+        """Normalize legacy authorId into canonical in-memory author shape."""
+        if not isinstance(items, dict):
+            return
+
+        for item_data in items.values():
+            if not isinstance(item_data, dict):
+                continue
+
+            if 'author' in item_data:
+                continue
+
+            legacy_author_id = item_data.get('authorId')
+            if isinstance(legacy_author_id, int):
+                item_data['author'] = {'id': legacy_author_id}
+
     def _get_items_root(self, all_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Resolve configured root key with backward-compatible aliases."""
+        """Resolve configured root key with strict fail-fast contract."""
         if not isinstance(all_data, dict):
             raise ValueError(f"Expected domain data to be dict, got: {type(all_data)}")
 
@@ -179,25 +196,9 @@ class DomainAdapter(DataSourceAdapter):
                 )
             return items
 
-        root_key_aliases = {
-            'contamination_patterns': ['contaminants'],
-            'contaminants': ['contamination_patterns'],
-        }
-
-        alias_keys = root_key_aliases[self.data_root_key] if self.data_root_key in root_key_aliases else []
-        for alias in alias_keys:
-            if alias in all_data:
-                items = all_data[alias]
-                if not isinstance(items, dict):
-                    raise ValueError(
-                        f"Alias root key '{alias}' in {self.data_path} must map to dict, got: {type(items)}"
-                    )
-                return items
-
-        searched_keys = [self.data_root_key, *alias_keys]
         raise KeyError(
-            f"Could not resolve items root in {self.data_path}. "
-            f"Expected one of keys: {searched_keys}"
+            f"Missing required root key '{self.data_root_key}' in {self.data_path}. "
+            "Configure domains/<domain>/config.yaml data_adapter.data_root_key to match source data exactly."
         )
     
     def invalidate_cache(self):
@@ -289,6 +290,12 @@ class DomainAdapter(DataSourceAdapter):
             legacy_author_id = item_data.get('authorId')
             if legacy_author_id is not None:
                 value = legacy_author_id
+
+        # Source-data compatibility: support scalar top-level author reference
+        if value is None:
+            scalar_author_id = item_data.get('author')
+            if isinstance(scalar_author_id, int):
+                value = scalar_author_id
 
         if value is None:
             strategy = self.author_resolution['strategy']

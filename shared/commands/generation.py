@@ -338,129 +338,29 @@ def _run_subjective_evaluation(content, identifier, component_type):
     print()
 
 
-def _run_winston_detection(content, identifier, component_type, api_client):
-    """Run Winston API detection (domain-agnostic).
-    
-    Args:
-        content: Generated content to analyze
-        identifier: Domain-agnostic item identifier
-        component_type: Type of component generated
-        api_client: API client for generation (not used for Winston)
-    """
-    print("🤖 Running Winston AI detection...")
-    try:
-        from generation.config.config_loader import get_config
-        from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
-        from postprocessing.detection.winston_integration import WinstonIntegration
-        from shared.api.client_factory import APIClientFactory
-        from shared.text.validation.constants import ValidationConstants
-        
-        config = get_config()
-        if 'winston_feedback_db_path' not in config.config:
-            raise KeyError("Missing required config key: winston_feedback_db_path")
-        db_path = config.config['winston_feedback_db_path']
-        if not db_path:
-            raise ValueError("winston_feedback_db_path must be configured and non-empty")
-        feedback_db = WinstonFeedbackDatabase(db_path)
-        
-        # Create Winston-specific API client (not DeepSeek)
-        winston_client = APIClientFactory.create_client(provider="winston")
-        
-        # Initialize Winston integration
-        winston = WinstonIntegration(
-            winston_client=winston_client,
-            feedback_db=feedback_db,
-            config=config.config
-        )
-        
-        # Use dynamic threshold from database learning
-        ai_threshold = ValidationConstants.get_winston_threshold(use_learned=True)
-        print(f"   Using learned Winston threshold: {ai_threshold:.3f}")
-        
-        # Calculate temperature dynamically from voice configuration
-        # Note: This temperature is for database logging/analysis only.
-        # Winston API analyzes text content, not generation parameters.
-        # Using DynamicConfig ensures consistency with generation settings.
-        from generation.config.dynamic_config import DynamicConfig
-        dynamic_config = DynamicConfig()
-        generation_temp = dynamic_config.calculate_temperature(component_type)
-        
-        # Detect and log
-        winston_result = winston.detect_and_log(
-            text=content,
-            material=identifier,
-            component_type=component_type,
-            temperature=generation_temp,
-            attempt=1,
-            max_attempts=1,
-            ai_threshold=ai_threshold
-        )
-        
-        ai_score = winston_result['ai_score']
-        human_score = 1.0 - ai_score
-        
-        print(f"   🎯 AI Score: {ai_score*100:.1f}% (threshold: {ai_threshold*100:.1f}%)")
-        print(f"   👤 Human Score: {human_score*100:.1f}%")
-        
-        if ai_score <= ai_threshold:
-            print("   ✅ Winston check PASSED")
-        else:
-            print("   ⚠️  Winston check FAILED - consider regenerating")
-        print()
-        
-    except Exception as e:
-        print("\n❌ CRITICAL ERROR: Winston detection failed")
-        print(f"   Error: {e}")
-        print("\n   Fix: Configure Winston API in .env file")
-        print("   See: setup/API_CONFIGURATION.md")
-        raise RuntimeError(f"Winston API detection required but failed: {e}")
-
-
 def _update_sweet_spot_if_needed(identifier, component_type):
-    """Update sweet spot recommendations if threshold met (domain-agnostic).
+    """Update consolidated learning weights when enough Grok-linked samples exist.
     
     Args:
         identifier: Domain-agnostic item identifier
         component_type: Type of component generated
     """
-    from generation.config.config_loader import get_config
-    from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
-    
-    config = get_config()
-    if 'winston_feedback_db_path' not in config.config:
-        raise KeyError("Missing required config key: winston_feedback_db_path")
-    db_path = config.config['winston_feedback_db_path']
-    if not db_path:
-        raise ValueError("winston_feedback_db_path must be configured and non-empty")
-    sweet_spot_min_samples = int(
-        config.get_required_config('constants.sweet_spot_analyzer.min_samples')
-    )
-    sweet_spot_success_threshold = float(
-        config.get_required_config('constants.sweet_spot_analyzer.success_threshold')
-    )
-    feedback_db = WinstonFeedbackDatabase(db_path)
-    
-    if feedback_db and feedback_db.should_update_sweet_spot('*', '*', min_samples=sweet_spot_min_samples):
-        print("📊 Updating generic sweet spot recommendations...")
-        try:
-            from learning.sweet_spot_analyzer import SweetSpotAnalyzer
-            analyzer = SweetSpotAnalyzer(
-                db_path,
-                min_samples=sweet_spot_min_samples,
-                success_threshold=sweet_spot_success_threshold,
-            )
-            results = analyzer.get_sweet_spot_table(save_to_db=True)
-            
-            if results['sweet_spots']:
-                print("   ✅ Sweet spot recommendations updated")
-                print(f"   📈 Based on {results['metadata']['sample_count']} samples")
-                print(f"   🎯 Confidence: {results['metadata']['confidence_level']}")
-            else:
-                print("   ⚠️  Not enough data for sweet spot calculation")
-            print()
-        except Exception as e:
-            print(f"   ⚠️  Could not update sweet spot: {e}")
-            print()
+    del identifier  # Domain-agnostic placeholder; learning currently global per component.
+
+    try:
+        from learning.consolidated_learning_system import ConsolidatedLearningSystem
+
+        learning = ConsolidatedLearningSystem(db_path='z-beam.db')
+        weights = learning.get_quality_weights(component_type)
+        print("📊 Consolidated quality learning active")
+        print(
+            f"   • Weights loaded for {component_type}: "
+            f"realism={weights['realism']:.2f}, voice={weights['voice_authenticity']:.2f}, ai_patterns={weights['ai_patterns']:.2f}"
+        )
+        print()
+    except Exception as e:
+        print(f"   ℹ️  Learning weights not available yet for {component_type}: {e}")
+        print()
 
 
 def _run_post_generation_integrity(identifier, component_type):

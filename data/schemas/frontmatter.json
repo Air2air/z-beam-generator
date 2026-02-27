@@ -151,7 +151,10 @@
       "description": "Material-specific properties with title/description structure"
     },
     "faq": {
-      "type": "string",
+      "oneOf": [
+        {"type": "string"},
+        {"type": "object"}
+      ],
       "description": "FAQ content"
     },
     "relationships": {
@@ -170,7 +173,12 @@
         "required": ["label", "href"],
         "properties": {
           "label": {"type": "string"},
-          "href": {"type": "string"}
+          "href": {
+            "oneOf": [
+              {"type": "string"},
+              {"type": "null"}
+            ]
+          }
         }
       }
     },

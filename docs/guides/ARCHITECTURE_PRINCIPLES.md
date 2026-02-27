@@ -622,7 +622,7 @@ if not author_id:
 
 **ALL content must pass quality evaluation**:
 
-1. **Winston AI Detection**: 69%+ human score (threshold varies by humanness intensity)
+1. **Grok humanness Detection**: 69%+ human score (threshold varies by humanness intensity)
 2. **Readability Check**: Pass status
 3. **Subjective Language**: No violations
 4. **Realism Score**: 7.0/10 minimum
@@ -641,7 +641,7 @@ self._log_to_learning_db(
     component_type=component_type,
     content=content,
     quality_scores={
-        'winston': winston_score,
+        'grok': winston_score,
         'realism': realism_score,
         'voice_authenticity': voice_score
     },

@@ -45,19 +45,25 @@ def _export_single_domain(domain: DomainType, skip_existing: bool = False) -> Ge
     """
     try:
         # Import inside function to avoid pickle issues
-        from export.core.orchestrator import UniversalExporter
-        
-        config_path = f'export/config/{domain}.yaml'
-        exporter = UniversalExporter(config_path)
-        result = exporter.export(skip_existing=skip_existing)
+        from export.config.loader import load_domain_config
+        from export.core.frontmatter_exporter import FrontmatterExporter
+
+        started = time.time()
+        config = load_domain_config(domain)
+        exporter = FrontmatterExporter(config)
+        result = exporter.export_all(force=not skip_existing)
+        elapsed = time.time() - started
+
+        exported = sum(1 for success in result.values() if success)
+        skipped = len(result) - exported
         
         return {
             'success': True,
             'domain': domain,
-            'exported': result.get('exported', 0),
-            'skipped': result.get('skipped', 0),
-            'errors': result.get('errors', []),
-            'elapsed': result.get('elapsed', 0)
+            'exported': exported,
+            'skipped': skipped,
+            'errors': [],
+            'elapsed': elapsed
         }
     except Exception as e:
         logger.error(f"Failed to export {domain}: {e}")

@@ -7,7 +7,7 @@
 ## 📋 Prerequisites
 
 - Python 3.12+
-- API keys for DeepSeek, Grok, and Winston.ai
+- API keys for DeepSeek and Grok
 - Basic command line knowledge
 
 ## ⚠️ Execution Requirement (No venv)
@@ -37,7 +37,6 @@ cp .env.example .env
 # Edit .env with your API keys (required):
 #   DEEPSEEK_API_KEY=your_key_here
 #   GROK_API_KEY=your_key_here  
-#   WINSTON_API_KEY=your_key_here
 ```
 
 ### 3. Validate Setup
@@ -94,8 +93,8 @@ python3 run.py --deploy
 # View completeness report
 python3 run.py --data-completeness-report
 
-# Check recent Winston scores
-sqlite3 data/winston_feedback.db "SELECT material, component_type, human_score, timestamp FROM detection_results ORDER BY timestamp DESC LIMIT 10"
+# Check recent Grok humanness scores
+sqlite3 z-beam.db "SELECT item_key, component_type, weighted_score, created_at FROM grok_humanness_evaluations ORDER BY created_at DESC LIMIT 10"
 ```
 
 ---

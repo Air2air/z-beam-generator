@@ -146,6 +146,16 @@ materials:
       - components       # Material components
       - contamination    # Legacy contamination data
       - eeat            # Expertise signals
+
+    # Canonical section metadata contract paths (must resolve _section metadata)
+    section_contract_paths:
+      - properties.materialCharacteristics
+      - properties.laserMaterialInteraction
+      - faq
+      - relationships.interactions.contaminatedBy
+      - relationships.operational.industryApplications
+      - relationships.safety.regulatoryStandards
+      - laserMaterialInteraction
   
   required_fields:
     - category
@@ -232,6 +242,8 @@ settings:
     
     content_additions:
       - faq  # Settings domain content
+
+    content_removals: []
     
     domain_sections:
       # Machine Settings
@@ -273,6 +285,27 @@ applications:
 # =============================================================================
 # COMMON NESTED STRUCTURES
 # =============================================================================
+
+# Section Object Subfield Order (All Domains)
+# Enforce section metadata fields FIRST under each section key.
+# Applies to objects that include `_section` blocks (e.g., properties.*,
+# relationships.*.*, faq, and root-level mirrored section keys).
+section_subfield_order:
+  section_container:
+    - _section
+    - presentation
+    - items
+    - content
+    - description
+
+  section_metadata:
+    - sectionTitle
+    - sectionDescription
+    - sectionMetadata
+    - icon
+    - order
+    - variant
+    - _open
 
 # Exposure Limits Structure (Compounds)
 exposure_limits_structure:

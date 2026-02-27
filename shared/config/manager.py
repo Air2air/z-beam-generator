@@ -87,8 +87,7 @@ class ConfigManager:
         required_keys = [
             "DEEPSEEK_API_KEY",
             "GROK_API_KEY", 
-            "OPENAI_API_KEY",
-            "WINSTON_API_KEY"
+            "OPENAI_API_KEY"
         ]
         
         missing_keys = []
@@ -110,7 +109,6 @@ class ConfigManager:
                 "DEEPSEEK_API_KEY",
                 "DEEPSEEK_TEMPERATURE",
                 "OPENAI_API_KEY",
-                "WINSTON_API_KEY",
                 "GEMINI_API_KEY"
             ]
             if os.getenv(key)

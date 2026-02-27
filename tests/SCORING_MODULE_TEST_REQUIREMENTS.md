@@ -104,7 +104,7 @@ The scoring module tests should be included in CI/CD:
 ## Known Issues
 
 1. **Import errors**: Ensure numpy and scipy are installed before running tests
-2. **Database not found**: GranularParameterCorrelator tests require `data/winston_feedback.db`
+2. **Database not found**: GranularParameterCorrelator tests require `data/z-beam.db`
 3. **Insufficient data**: Correlation tests may be skipped if <30 samples available
 4. **Floating point precision**: Some tests use `round()` for comparison (±0.001 tolerance)
 
@@ -117,7 +117,7 @@ To generate test data for correlation analysis:
 import sqlite3
 import numpy as np
 
-db_path = 'data/winston_feedback.db'
+db_path = 'data/z-beam.db'
 conn = sqlite3.connect(db_path)
 
 # Generate 100 samples with realistic parameter distributions

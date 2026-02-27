@@ -14,6 +14,7 @@ class PromptRegistryService:
     _schema_cache: Optional[Dict[str, Any]] = None
     _domain_registry_cache: Dict[str, Dict[str, Any]] = {}
     _shared_inline_prompts_cache: Optional[Dict[str, str]] = None
+    _shared_inline_metadata_cache: Optional[Dict[str, Dict[str, Any]]] = None
     _prompt_catalog_cache: Optional[Dict[str, Any]] = None
 
     @classmethod
@@ -119,8 +120,59 @@ class PromptRegistryService:
             base_registry = cls._load_yaml_file(base_path)
             registry = cls._deep_merge(base_registry, registry)
 
+        cls._validate_prompt_metadata_contract(registry, registry_path)
+
         cls._domain_registry_cache[domain] = registry
         return registry
+
+    @classmethod
+    def _validate_prompt_metadata_contract(cls, registry: Dict[str, Any], source_path: Path) -> None:
+        section_prompts = registry.get("section_prompts")
+        section_metadata = registry.get("section_prompt_metadata")
+
+        if section_prompts is None:
+            return
+
+        if not isinstance(section_prompts, dict):
+            raise ValueError(
+                f"Invalid section_prompts in {source_path}: expected mapping"
+            )
+
+        if not isinstance(section_metadata, dict):
+            raise ValueError(
+                f"Missing required section_prompt_metadata mapping in {source_path}"
+            )
+
+        for key, metadata in section_metadata.items():
+            if not isinstance(metadata, dict):
+                raise ValueError(
+                    f"section_prompt_metadata.{key} must be a mapping in {source_path}"
+                )
+
+            for required_field in ("sectionTitle", "sectionDescription", "sectionMetadata"):
+                if required_field not in metadata:
+                    raise ValueError(
+                        f"section_prompt_metadata.{key} missing required field '{required_field}' in {source_path}"
+                    )
+
+            for text_field in ("sectionTitle", "sectionDescription", "sectionMetadata"):
+                value = metadata.get(text_field)
+                if not isinstance(value, str) or not value.strip():
+                    raise ValueError(
+                        f"section_prompt_metadata.{key}.{text_field} must be a non-empty string in {source_path}"
+                    )
+
+        for key, prompt_value in section_prompts.items():
+            if not isinstance(prompt_value, str) or not prompt_value.strip():
+                raise ValueError(
+                    f"section_prompts.{key} must be a non-empty string in {source_path}"
+                )
+
+            metadata = section_metadata.get(key)
+            if not isinstance(metadata, dict):
+                raise ValueError(
+                    f"Missing section_prompt_metadata.{key} in {source_path}"
+                )
 
     @classmethod
     def _load_shared_inline_prompts(cls) -> Dict[str, str]:
@@ -134,13 +186,39 @@ class PromptRegistryService:
 
         shared = cls._load_yaml_file(shared_path)
         prompts = shared.get("section_prompts", {})
+        prompt_metadata = shared.get("section_prompt_metadata", {})
         if not isinstance(prompts, dict):
             raise ValueError(
                 f"Invalid section_prompt map in {shared_path}: expected mapping at section_prompts"
             )
+        if not isinstance(prompt_metadata, dict):
+            raise ValueError(
+                f"Invalid section_prompt metadata in {shared_path}: expected mapping at section_prompt_metadata"
+            )
+
+        cls._validate_prompt_metadata_contract(
+            {
+                "section_prompts": prompts,
+                "section_prompt_metadata": prompt_metadata,
+            },
+            shared_path,
+        )
 
         cls._shared_inline_prompts_cache = {k: str(v) for k, v in prompts.items()}
+        cls._shared_inline_metadata_cache = {
+            key: dict(value)
+            for key, value in prompt_metadata.items()
+            if isinstance(value, dict)
+        }
         return cls._shared_inline_prompts_cache
+
+    @classmethod
+    def get_shared_section_metadata(cls, prompt_ref: str) -> Optional[Dict[str, Any]]:
+        cls._load_shared_inline_prompts()
+        if cls._shared_inline_metadata_cache is None:
+            return None
+        metadata = cls._shared_inline_metadata_cache.get(prompt_ref)
+        return dict(metadata) if isinstance(metadata, dict) else None
 
     @classmethod
     def resolve_descriptor_prompt(

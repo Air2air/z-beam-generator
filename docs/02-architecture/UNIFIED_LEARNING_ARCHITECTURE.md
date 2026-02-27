@@ -8,11 +8,11 @@
 
 ## 🎯 Core Principle
 
-**Winston and Subjective are SEPARATE modules that feed into a UNIFIED learning library.**
+**Grok and Subjective are SEPARATE modules that feed into a UNIFIED learning library.**
 
 ```
 ┌─────────────────────┐         ┌─────────────────────┐
-│   Winston Module    │         │ Subjective Module   │
+│   Grok Module    │         │ Subjective Module   │
 │   (AI Detection)    │         │ (Quality Assessment)│
 └──────────┬──────────┘         └──────────┬──────────┘
            │                               │
@@ -46,8 +46,8 @@
 
 ## 📊 Current Status (Nov 17, 2025)
 
-### Winston Module ✅ **OPERATIONAL**
-- **Status**: 100% operational with winston-only mode
+### Grok Module ✅ **OPERATIONAL**
+- **Status**: 100% operational with grok-only mode
 - **Integration**: UnifiedOrchestrator
 - **Detection**: 512 attempts (24 hours), 28.1% success, 92.2% avg human
 - **Learning**: Active (parameter reuse, sweet spots, prompt optimization)
@@ -62,7 +62,7 @@
 
 ### Unified Learning Library ⏳ **DESIGN PHASE**
 - **Status**: Conceptual, not yet implemented
-- **Purpose**: Combine Winston + Subjective insights
+- **Purpose**: Combine Grok + Subjective insights
 - **Benefits**: Holistic quality optimization
 - **Timeline**: Phase 2 (after analysis tools built)
 
@@ -73,13 +73,13 @@
 ### Module Independence
 
 **Each module can be:**
-1. ✅ **Fixed independently** - Winston bug doesn't break Subjective
+1. ✅ **Fixed independently** - Grok bug doesn't break Subjective
 2. ✅ **Tested independently** - Each has own test suite
 3. ✅ **Deployed independently** - Can disable one without affecting other
 4. ✅ **Scaled independently** - Different API costs/quotas
 
 **They share:**
-1. ✅ **Learning database** - Same `winston_feedback.db`
+1. ✅ **Learning database** - Same `z-beam.db`
 2. ✅ **Parameter system** - Same temperature/penalty parameters
 3. ✅ **Generation pipeline** - Both run after content generation
 4. ⏳ **Unified insights** - Combined analysis (Phase 2)
@@ -91,8 +91,8 @@
 # 1. Generate content
 text = api_client.generate(prompt, temperature=T, penalties=P)
 
-# 2. Winston detection (ALWAYS)
-winston_result = winston.detect(text)
+# 2. Grok detection (ALWAYS)
+winston_result = grok.detect(text)
 # → Returns: human_score (0-100), ai_score (0-1.0)
 # → Logs to: detection_results table
 # → Updates: sweet_spot_recommendations
@@ -104,7 +104,7 @@ if enable_subjective:
     # → Logs to: subjective_evaluations table
     # → Does NOT yet affect parameters
 
-# 4. Decision (currently Winston-only)
+# 4. Decision (currently Grok-only)
 if winston_result.passes_threshold:
     accept()
 else:
@@ -125,13 +125,13 @@ insights = learning_lib.analyze(
 
 # Example insights:
 {
-    'optimal_temperature': 0.95,  # From Winston success rate
+    'optimal_temperature': 0.95,  # From Grok success rate
     'quality_concerns': [
         'Low engagement scores (4.2/10 avg)',  # From Subjective
         'Overuse of hedging language'           # From Subjective
     ],
     'recommended_actions': [
-        'Increase temperature by +0.05',        # Winston-driven
+        'Increase temperature by +0.05',        # Grok-driven
         'Reduce presence_penalty by -0.1'       # Subjective-driven
     ],
     'confidence': 'high'  # Based on sample size
@@ -144,8 +144,8 @@ insights = learning_lib.analyze(
 
 ### Phase 1: Separate Fixes ✅ **IN PROGRESS**
 
-**Winston Module (Nov 17, 2025):**
-- ✅ Winston-only mode enabled
+**Grok Module (Nov 17, 2025):**
+- ✅ Grok-only mode enabled
 - ✅ Score validation decorator
 - ✅ Database cleanup (3 false positives excluded)
 - ✅ Documentation complete
@@ -162,7 +162,7 @@ insights = learning_lib.analyze(
 
 **Build tools to understand the data:**
 
-1. **Winston Analyzer**
+1. **Grok Analyzer**
    - Parameter effectiveness (which temps/penalties work best?)
    - Failure pattern detection (what causes 0% human scores?)
    - Sweet spot validation (are recommendations accurate?)
@@ -175,15 +175,15 @@ insights = learning_lib.analyze(
    - Author voice quality comparison
 
 3. **Cross-Module Analyzer**
-   - Correlation: Winston score vs Subjective score
+   - Correlation: Grok score vs Subjective score
    - Hypothesis: Does 95% human → 8.5/10 quality?
    - Identify: Parameters that optimize BOTH metrics
    - Discover: Trade-offs (high human but low engagement?)
 
 **Scripts to create:**
 ```bash
-# Winston analysis
-python3 scripts/analyze_winston_patterns.py --days 7
+# Grok analysis
+python3 scripts/analysis/analyze_grok_patterns.py --days 7
 
 # Subjective analysis  
 python3 scripts/analyze_subjective_patterns.py --days 7
@@ -207,7 +207,7 @@ python3 scripts/analyze_unified_learning.py --days 7
            self.correlation_engine = CorrelationEngine(feedback_db)
        
        def get_optimal_parameters(self, material, component_type):
-           """Get parameters optimized for BOTH Winston and Subjective"""
+           """Get parameters optimized for BOTH Grok and Subjective"""
            winston_optimal = self.winston_analyzer.get_sweet_spot(...)
            subjective_optimal = self.subjective_analyzer.get_recommendations(...)
            
@@ -215,7 +215,7 @@ python3 scripts/analyze_unified_learning.py --days 7
            return self.correlation_engine.merge(
                winston_optimal,
                subjective_optimal,
-               priority='balanced'  # or 'winston', 'subjective'
+               priority='balanced'  # or 'grok', 'subjective'
            )
    ```
 
@@ -233,7 +233,7 @@ python3 scripts/analyze_unified_learning.py --days 7
    text = self._call_api(prompt, **params)
    
    # Evaluate with both modules
-   winston_result = self.winston.detect_and_log(text, ...)
+   winston_result = self.grok.detect_and_log(text, ...)
    subjective_result = self.subjective.evaluate(text, ...)
    
    # Combined decision
@@ -279,7 +279,7 @@ python3 scripts/analyze_unified_learning.py --days 7
 
 **Existing Tables:**
 ```sql
--- Winston detection results
+-- Grok detection results
 CREATE TABLE detection_results (
     id INTEGER PRIMARY KEY,
     timestamp TEXT,
@@ -331,7 +331,7 @@ CREATE TABLE unified_insights (
     subjective_evaluation_id INTEGER REFERENCES subjective_evaluations(id),
     
     -- Combined metrics
-    composite_quality_score REAL,  -- Weighted: Winston 60% + Subjective 30% + Readability 10%
+    composite_quality_score REAL,  -- Weighted: Grok 60% + Subjective 30% + Readability 10%
     
     -- Parameters used
     temperature REAL,
@@ -355,9 +355,9 @@ CREATE TABLE unified_insights (
 
 ### Phase 1 Metrics ✅ **CURRENT**
 
-**Winston Module:**
-- ✅ Winston-only mode: 100% active
-- ✅ False positives: 0 (3 excluded from pre-winston-only era)
+**Grok Module:**
+- ✅ Grok-only mode: 100% active
+- ✅ False positives: 0 (3 excluded from pre-grok-only era)
 - ✅ Success rate: 28.1% (realistic, not inflated)
 - ✅ Avg human score: 92.2% (when successful)
 
@@ -370,14 +370,14 @@ CREATE TABLE unified_insights (
 ### Phase 2 Metrics 🎯 **TARGET**
 
 **Analysis Tools:**
-- 🎯 Winston pattern analysis: Identify top 3 failure patterns
+- 🎯 Grok pattern analysis: Identify top 3 failure patterns
 - 🎯 Subjective pattern analysis: Identify top 3 quality issues
-- 🎯 Correlation analysis: Prove/disprove Winston ↔ Subjective relationship
-- 🎯 Sample size: 500+ Winston + 500+ Subjective (2-3 weeks of data)
+- 🎯 Correlation analysis: Prove/disprove Grok ↔ Subjective relationship
+- 🎯 Sample size: 500+ Grok + 500+ Subjective (2-3 weeks of data)
 
 **Insights Discovery:**
 - 🎯 Find: Optimal temperature range for both modules
-- 🎯 Find: Penalty settings that balance Winston + Subjective
+- 🎯 Find: Penalty settings that balance Grok + Subjective
 - 🎯 Find: Author-specific patterns (which authors need tuning?)
 - 🎯 Find: Trade-offs (if any) between modules
 
@@ -385,7 +385,7 @@ CREATE TABLE unified_insights (
 
 **Unified Learning:**
 - 🎯 Composite quality score: 80+ (out of 100)
-- 🎯 Winston + Subjective pass rate: 90%+
+- 🎯 Grok + Subjective pass rate: 90%+
 - 🎯 Parameter optimization: Automated recommendations
 - 🎯 Continuous improvement: Score increases over time
 
@@ -401,7 +401,7 @@ CREATE TABLE unified_insights (
 
 ### Immediate (This Week)
 
-1. ✅ **DONE**: Winston module fixes (winston-only, score validation, docs, tests)
+1. ✅ **DONE**: Grok module fixes (grok-only, score validation, docs, tests)
 2. ⏳ **TODO**: Subjective module audit
    - Check for score inversions
    - Add @validate_scores decorator
@@ -411,7 +411,7 @@ CREATE TABLE unified_insights (
 ### Short-term (Next 2 Weeks)
 
 3. ⏳ **TODO**: Build Phase 2 analysis tools
-   - Winston pattern analyzer
+   - Grok pattern analyzer
    - Subjective pattern analyzer
    - Cross-module correlation analyzer
    
@@ -449,9 +449,9 @@ CREATE TABLE unified_insights (
 - ✅ Scalability (different API costs/quotas)
 
 **Current Focus:**
-1. Fix both modules independently (Winston done, Subjective next)
+1. Fix both modules independently (Grok done, Subjective next)
 2. Build analysis tools to understand the data
-3. Prove correlation between Winston and Subjective
+3. Prove correlation between Grok and Subjective
 4. Only then build unified learning library
 
 **Key Insight**: Don't integrate until we understand the relationship. Phase 2 analysis will reveal if/how to combine insights.

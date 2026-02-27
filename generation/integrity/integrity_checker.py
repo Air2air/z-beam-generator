@@ -857,34 +857,34 @@ class IntegrityChecker:
         """Check external API connectivity and health"""
         results = []
         
-        # Check 3.1: Winston API health
+        # Check 3.1: DeepSeek API health
         start = time.time()
         try:
             import os
 
-            # Check if Winston API key exists
-            api_key = os.getenv('WINSTON_API_KEY')
+            # Check if DeepSeek API key exists
+            api_key = os.getenv('DEEPSEEK_API_KEY')
             if api_key:
                 results.append(IntegrityResult(
-                    check_name="API: Winston Connectivity",
+                    check_name="API: DeepSeek Connectivity",
                     status=IntegrityStatus.PASS,
-                    message="Winston API key configured",
+                    message="DeepSeek API key configured",
                     details={'has_api_key': True},
                     duration_ms=(time.time() - start) * 1000
                 ))
             else:
                 results.append(IntegrityResult(
-                    check_name="API: Winston Connectivity",
+                    check_name="API: DeepSeek Connectivity",
                     status=IntegrityStatus.WARN,
-                    message="Winston API key not configured",
+                    message="DeepSeek API key not configured",
                     details={'has_api_key': False},
                     duration_ms=(time.time() - start) * 1000
                 ))
         except Exception as e:
             results.append(IntegrityResult(
-                check_name="API: Winston Connectivity",
+                check_name="API: DeepSeek Connectivity",
                 status=IntegrityStatus.FAIL,
-                message=f"Winston connectivity check failed: {str(e)}",
+                message=f"DeepSeek connectivity check failed: {str(e)}",
                 details={'error': str(e)},
                 duration_ms=(time.time() - start) * 1000
             ))

@@ -3,11 +3,12 @@
 # Schema: export/config/schema.yaml
 
 domain: contaminants
-source_file: data/contaminants/Contaminants.yaml
+source_file: data/contaminants/contaminants.yaml
 output_path: ../z-beam/frontmatter/contaminants
 items_key: contaminants
 id_field: id
 filename_suffix: ''
+prune_stale_files: true
 
 generators:
 # Core Principle 0.6 Compliance (Jan 7, 2026): ✅ COMPLETE
@@ -19,6 +20,10 @@ generators:
   tasks:
   - type: export_metadata
     description: Add ONLY export-time fields (dateModified, pageTitle if missing)
+  - type: author_linkage
+    author_file: data/authors/Authors.yaml
+    remove_author_id: true
+    description: Hydrate authorId to full author object and remove deprecated field
   - type: text_field_normalization
     description: Normalize text wrapper artifacts in description fields
     fields:
@@ -31,6 +36,7 @@ generators:
   - type: field_cleanup
     description: Remove deprecated and stale fields from contaminants frontmatter
     deprecated_fields:
+      - description         # forbidden root field; canonical is pageDescription
       - page_description    # snake_case residual; canonical field is pageDescription
       - title               # legacy duplicate of pageTitle
       - authorId            # deprecated (Feb 2026)

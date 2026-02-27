@@ -9,6 +9,7 @@ items_key: applications
 filename_suffix: ''
 slugify_filenames: true
 id_field: id
+prune_stale_files: true
 
 generators:
 - type: universal_content
@@ -28,6 +29,9 @@ generators:
       - pageDescription
   - type: camelcase_normalization
     description: Convert snake_case → camelCase for software metadata fields
+  - type: section_metadata
+    config_file: data/schemas/section_display_schema.yaml
+    description: Ensure all _section blocks include required sectionTitle and sectionDescription
   - type: field_cleanup
     description: Remove deprecated and stale fields from applications frontmatter
     deprecated_fields:

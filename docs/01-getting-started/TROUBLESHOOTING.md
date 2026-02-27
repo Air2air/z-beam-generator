@@ -28,7 +28,7 @@ python3 run.py --test-api
 # Expected healthy output:
 # ✅ [CLIENT MANAGER] deepseek: Connected successfully
 # ✅ [CLIENT MANAGER] grok: Connected successfully  
-# ✅ [CLIENT MANAGER] winston: Connected successfully
+# ✅ [CLIENT MANAGER] grok: Connected successfully
 ```
 
 ### Quick Fix Commands
@@ -241,7 +241,7 @@ cat .env
 # Expected format:
 # DEEPSEEK_API_KEY=sk-your_key_here
 # GROK_API_KEY=gsk_your_key_here
-# WINSTON_API_KEY=winston-your_key_here
+# GROK_API_KEY=grok-your_key_here
 
 # Verify no extra spaces or quotes
 # CORRECT: DEEPSEEK_API_KEY=sk-abc123
@@ -267,8 +267,8 @@ DEEPSEEK_API_KEY=sk-1234567890abcdef1234567890abcdef
 # Grok: starts with 'gsk_'
 GROK_API_KEY=gsk_1234567890abcdef1234567890abcdef1234567890abcdef
 
-# Winston.ai: starts with 'winston-'
-WINSTON_API_KEY=winston-1234567890abcdef1234567890abcdef
+# Grok: starts with 'grok-'
+GROK_API_KEY=grok-1234567890abcdef1234567890abcdef
 ```
 
 **Validation**:
@@ -276,7 +276,7 @@ WINSTON_API_KEY=winston-1234567890abcdef1234567890abcdef
 # Check key format
 echo $DEEPSEEK_API_KEY | grep "^sk-"  # Should match
 echo $GROK_API_KEY | grep "^gsk_"     # Should match
-echo $WINSTON_API_KEY | grep "^winston-"  # Should match
+echo $GROK_API_KEY | grep "^grok-"  # Should match
 ```
 
 ### API Provider Issues
@@ -309,18 +309,18 @@ curl -H "Authorization: Bearer $DEEPSEEK_API_KEY" \
 python3 run.py --provider grok --material "Steel"
 ```
 
-#### Symptom: Winston.ai SSL errors
+#### Symptom: Grok SSL errors
 **Error**: `[SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name`
 
 **Status**: ✅ FIXED in current version  
-**Solution**: Configuration automatically updated to `https://api.gowinston.ai`
+**Solution**: Configuration automatically updated to `https://api.x.ai`
 
 **Verification**:
 ```bash
 # Should work without SSL errors
 python3 -c "
 from api.client_manager import test_api_connectivity
-test_api_connectivity('winston')
+test_api_connectivity('grok')
 "
 ```
 
@@ -337,7 +337,7 @@ test_api_connectivity('winston')
 ```bash
 # Check basic connectivity
 curl -I https://api.deepseek.com
-curl -I https://api.gowinston.ai
+curl -I https://api.x.ai
 
 # Test with proxy (if required)
 export https_proxy=http://proxy.company.com:8080
@@ -380,7 +380,7 @@ export PYTHONHTTPSVERIFY=0
 # Allow these domains in firewall:
 api.deepseek.com          # Port 443 (HTTPS)
 console.groq.com          # Port 443 (HTTPS)  
-api.gowinston.ai          # Port 443 (HTTPS)
+api.x.ai          # Port 443 (HTTPS)
 ```
 
 **Testing Connectivity**:
@@ -388,7 +388,7 @@ api.gowinston.ai          # Port 443 (HTTPS)
 # Test each endpoint
 telnet api.deepseek.com 443
 telnet console.groq.com 443
-telnet api.gowinston.ai 443
+telnet api.x.ai 443
 
 # Should connect successfully
 ```
@@ -555,7 +555,7 @@ print(f'Python path: {sys.executable}')
 pip3 list | grep -E "(requests|pyyaml|click)"
 
 # Environment variables
-env | grep -E "(DEEPSEEK|GROK|WINSTON)"
+env | grep -E "(DEEPSEEK|GROK|XAI)"
 ```
 
 ### Log Analysis
@@ -580,7 +580,7 @@ htop            # If available
 
 # Check network latency
 ping -c 5 api.deepseek.com
-ping -c 5 api.gowinston.ai
+ping -c 5 api.x.ai
 
 # Test API response times
 time python3 run.py --test-api

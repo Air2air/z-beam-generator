@@ -7,7 +7,7 @@
 ### 1. Self-Learning Must Be Iterative
 **Requirement**: PromptOptimizer must run on EVERY generation attempt, not just the first.
 
-**Why**: The system learns from Winston feedback. If it only runs once, subsequent attempts can't benefit from what was just learned.
+**Why**: The system learns from Grok feedback. If it only runs once, subsequent attempts can't benefit from what was just learned.
 
 **Validation**:
 ```python
@@ -59,7 +59,7 @@ optimizer = PromptOptimizer()
 ---
 
 ### 4. Learning Data Must Persist Immediately
-**Requirement**: Every Winston detection result must be logged to database before continuing.
+**Requirement**: Every Grok detection result must be logged to database before continuing.
 
 **Why**: System learns from historical data. Lost data = lost learning.
 
@@ -171,7 +171,7 @@ Every major architectural pattern must have documentation explaining:
 
 **What**: PromptOptimizer runs on every generation attempt.
 
-**Why**: System learns from Winston feedback between attempts. If it only runs once, it can't adapt to failures.
+**Why**: System learns from Grok feedback between attempts. If it only runs once, it can't adapt to failures.
 
 **How**: 
 ```python

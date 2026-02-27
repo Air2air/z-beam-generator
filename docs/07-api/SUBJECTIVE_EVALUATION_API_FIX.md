@@ -269,8 +269,8 @@ python3 run.py --material "Aluminum" --micro
 
 ### Before Fix (November 16, 2025 - Morning)
 ```
-🔍 Running Winston.ai and subjective evaluation...
-   ✅ Winston.ai Detection: 98.0% human, 2.0% AI (SUCCESS)
+🔍 Running Grok and subjective evaluation...
+   ✅ Grok Detection: 98.0% human, 2.0% AI (SUCCESS)
    Error in subjective evaluation: CachedAPIClient.generate() got an unexpected keyword argument 'prompt'
    Falling back to rule-based evaluation
    ⚠️  Subjective Evaluation: 7.4/10 (PASS) (rule-based fallback)
@@ -284,8 +284,8 @@ python3 run.py --material "Aluminum" --micro
 
 ### After Fix (November 16, 2025 - Afternoon)
 ```
-🔍 Running Winston.ai and subjective evaluation...
-   ✅ Winston.ai Detection: 98.0% human, 2.0% AI (SUCCESS)
+🔍 Running Grok and subjective evaluation...
+   ✅ Grok Detection: 98.0% human, 2.0% AI (SUCCESS)
    ✅ Subjective Evaluation: 7.4/10 (PASS)
 ```
 
@@ -355,7 +355,7 @@ if result:
 **Solution**: Check `has_claude_api` field in database:
 
 ```bash
-sqlite3 data/winston_feedback.db "SELECT has_claude_api, COUNT(*) FROM subjective_evaluations GROUP BY has_claude_api"
+sqlite3 data/z-beam.db "SELECT has_claude_api, COUNT(*) FROM subjective_evaluations GROUP BY has_claude_api"
 ```
 
 **Expected after fix**:

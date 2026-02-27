@@ -14,15 +14,15 @@ This document defines the 7 critical requirements that the Z-Beam processing sys
 ## 1. 🎯 Human-Readable Output & AI Detection
 
 ### Requirements
-- **Winston AI Human Score**: ≥20% (learning target), ≥30% (acceptance threshold)
+- **Grok humanness Human Score**: ≥20% (learning target), ≥30% (acceptance threshold)
 - **AI Detection Score**: ≤0.409 (based on humanness_intensity)
 - **Content Quality**: Natural language, varied sentence structure, authentic voice
 - **Readability**: Appropriate for technical audience
 
 ### Implementation
-- **File**: `generation/core/generator.py` - Winston API integration
+- **File**: `generation/core/generator.py` - Grok API integration
 - **File**: `postprocessing/detection/winston_analyzer.py` - Sentence-level analysis
-- **File**: `data/winston_feedback.db` - Result storage
+- **File**: `data/z-beam.db` - Result storage
 
 ### Validation
 ```bash
@@ -31,11 +31,11 @@ python3 run.py --micro "Aluminum"
 # Expected: Human score ≥20%, AI score ≤0.409
 
 # Check recent results
-sqlite3 data/winston_feedback.db "SELECT material, AVG(human_score), AVG(ai_score) FROM detection_results GROUP BY material"
+sqlite3 data/z-beam.db "SELECT material, AVG(human_score), AVG(ai_score) FROM detection_results GROUP BY material"
 ```
 
 ### Tests
-- `tests/test_winston_integration.py` - Winston API integration
+- `tests/test_winston_integration.py` - Grok API integration
 - `tests/test_content_quality.py` - Content quality validation
 - E2E micro generation tests
 
@@ -45,8 +45,8 @@ sqlite3 data/winston_feedback.db "SELECT material, AVG(human_score), AVG(ai_scor
 - **Current**: 6.9% pass rate (173 generations)
 
 ### Documentation
-- `docs/api/WINSTON_AI_INTEGRATION.md` - Complete Winston integration guide
-- `docs/winston/WINSTON_LEARNING_SYSTEM.md` - Learning system architecture
+- `docs/api/WINSTON_AI_INTEGRATION.md` - Complete Grok integration guide
+- `docs/08-development/GROK_HUMANNESS_EVALUATOR_INTEGRATION.md` - Learning system architecture
 - `docs/QUICK_REFERENCE.md` - Quick problem resolution
 - `docs/prompts/OPENING_VARIATION_SYSTEM.md` - **NEW**: Opening variation enforcement
 - `docs/api/SUBJECTIVE_EVALUATION_API_FIX.md` - **NEW**: Subjective evaluation API signature
@@ -89,10 +89,10 @@ sqlite3 data/winston_feedback.db "SELECT material, AVG(human_score), AVG(ai_scor
 ### Validation
 ```bash
 # Check learning system status
-sqlite3 data/winston_feedback.db "SELECT COUNT(*) as total, COUNT(DISTINCT material) as materials FROM detection_results"
+sqlite3 data/z-beam.db "SELECT COUNT(*) as total, COUNT(DISTINCT material) as materials FROM detection_results"
 
 # Verify pattern learning table activity
-sqlite3 data/winston_feedback.db "SELECT COUNT(*) FROM subjective_evaluations"
+sqlite3 data/z-beam.db "SELECT COUNT(*) FROM subjective_evaluations"
 ```
 
 ### Tests
@@ -113,7 +113,7 @@ sqlite3 data/winston_feedback.db "SELECT COUNT(*) FROM subjective_evaluations"
 - **Integration**: All generation commands (micro, subtitle, FAQ)
 - **Checks**:
   1. Database exists and is accessible
-  2. Detection result logged (Winston.ai scores)
+  2. Detection result logged (Grok scores)
   3. Generation parameters logged (25+ fields)
   4. Sweet spot recommendations updated
   5. Subjective evaluation logged
@@ -124,7 +124,7 @@ sqlite3 data/winston_feedback.db "SELECT COUNT(*) FROM subjective_evaluations"
 ```
 🔍 Running post-generation integrity check...
    5 passed, 0 warnings, 0 failed
-   ✅ Post-Gen: Database Exists: Database found at data/winston_feedback.db
+   ✅ Post-Gen: Database Exists: Database found at data/z-beam.db
    ✅ Post-Gen: Detection Logged: Detection result #410 logged (human: 98.0%, AI: 2.0%)
    ✅ Post-Gen: Parameters Logged: Generation parameters #331 logged (temp: 0.640, freq: 0.150, pres: 0.100)
    ✅ Post-Gen: Sweet Spot Updated: Sweet spot exists: 12 samples, high confidence, avg score 85.3%
@@ -133,7 +133,7 @@ sqlite3 data/winston_feedback.db "SELECT COUNT(*) FROM subjective_evaluations"
 
 ### Documentation
 - `docs/development/DATABASE_PARAMETER_PRIORITY.md` - Parameter priority policy
-- `docs/winston/WINSTON_LEARNING_SYSTEM.md` - Complete learning architecture
+- `docs/08-development/GROK_HUMANNESS_EVALUATOR_INTEGRATION.md` - Complete learning architecture
 - `docs/development/PARAMETER_LOGGING_QUICK_START.md` - Logging guide
 - `docs/system/POST_GENERATION_INTEGRITY.md` - **NEW**: Post-generation check documentation
 
@@ -144,7 +144,7 @@ sqlite3 data/winston_feedback.db "SELECT COUNT(*) FROM subjective_evaluations"
 - **Configuration Validation**: All config values in valid ranges
 - **Parameter Propagation**: Values stable across pipeline
 - **Hardcoded Detection**: No hardcoded values in production code
-- **API Health**: Winston/DeepSeek APIs reachable
+- **API Health**: Grok/DeepSeek APIs reachable
 - **Module Integration**: All learning modules properly integrated
 
 ### Implementation
@@ -173,7 +173,7 @@ sqlite3 data/winston_feedback.db "SELECT COUNT(*) FROM subjective_evaluations"
    - Sufficient training data
 
 5. **API Health** (2 checks, skip in quick mode)
-   - Winston API connectivity
+   - Grok API connectivity
    - DeepSeek API connectivity
 
 6. **Documentation Alignment** (1 check, skip in quick mode)
@@ -373,17 +373,17 @@ DataCompletenessError: Material 'Aluminum' missing required property 'hardness'
 ## 6. 📊 Feedback Collection Best Practices
 
 ### Requirements
-- **Winston Feedback**: Every generation logged with full context
+- **Grok Feedback**: Every generation logged with full context
 - **Claude Evaluation**: Subjective quality scoring
 - **Parameter Logging**: Complete parameter snapshot saved
 - **User Feedback**: Manual corrections supported
 - **Historical Analysis**: Trend analysis and pattern detection
 
 ### Implementation
-#### Winston Feedback Database
-- **File**: `data/winston_feedback.db`
+#### Grok Feedback Database
+- **File**: `data/z-beam.db`
 - **Tables**: 
-  - `detection_results` - Winston scores and content
+  - `detection_results` - Grok scores and content
   - `generation_parameters` - Full parameter snapshot
   - `subjective_evaluations` - Claude quality scores
   - `user_corrections` - Manual feedback
@@ -391,16 +391,16 @@ DataCompletenessError: Material 'Aluminum' missing required property 'hardness'
 #### Automatic Logging
 ```python
 # Every generation logs:
-1. Winston detection result (human_score, ai_score, sentences)
+1. Grok detection result (human_score, ai_score, sentences)
 2. Generation parameters (temperature, penalties, voice, enrichment)
 3. Content generated (before/after text)
 4. Metadata (material, component_type, attempt, timestamp)
 5. Claude evaluation (quality score, feedback)
 ```
 
-#### Winston Feedback Flow
+#### Grok Feedback Flow
 ```
-Generation → Winston API → Database Log → Parameter Storage → Learning
+Generation → Grok API → Database Log → Parameter Storage → Learning
      ↓                                          ↓
 Content Quality ← Claude Evaluation ← Subjective Analysis
 ```
@@ -408,14 +408,14 @@ Content Quality ← Claude Evaluation ← Subjective Analysis
 ### Data Collection Points
 1. **Pre-generation**: Configuration state
 2. **During generation**: API parameters sent
-3. **Post-generation**: Winston scores received
+3. **Post-generation**: Grok scores received
 4. **Post-evaluation**: Claude quality scores
 5. **User feedback**: Manual corrections
 
 ### Validation
 ```bash
 # Check logging completeness
-sqlite3 data/winston_feedback.db "
+sqlite3 data/z-beam.db "
 SELECT 
   COUNT(*) as total,
   COUNT(CASE WHEN human_score IS NOT NULL THEN 1 END) as with_winston,
@@ -425,7 +425,7 @@ LEFT JOIN generation_parameters gp ON dr.id = gp.detection_result_id
 "
 
 # Verify Claude evaluations logged
-sqlite3 data/winston_feedback.db "
+sqlite3 data/z-beam.db "
 SELECT COUNT(*) FROM subjective_evaluations
 WHERE timestamp >= datetime('now', '-7 days')
 "
@@ -433,7 +433,7 @@ WHERE timestamp >= datetime('now', '-7 days')
 # Check feedback completeness
 python3 -c "
 from postprocessing.detection.winston_feedback_db import WinstonFeedbackDB
-db = WinstonFeedbackDB('data/winston_feedback.db')
+db = WinstonFeedbackDB('data/z-beam.db')
 stats = db.get_statistics()
 print(f'Total generations: {stats[\"total_generations\"]}')
 print(f'With full params: {stats[\"with_parameters\"]}')
@@ -442,7 +442,7 @@ print(f'With Claude eval: {stats[\"with_evaluations\"]}')
 ```
 
 ### Tests
-- `tests/test_winston_logging.py` - Winston feedback logging
+- `tests/test_winston_logging.py` - Grok feedback logging
 - `tests/test_parameter_storage.py` - Parameter completeness
 - `tests/test_claude_evaluation.py` - Subjective evaluation
 - `tests/test_feedback_integrity.py` - End-to-end feedback flow
@@ -455,7 +455,7 @@ print(f'With Claude eval: {stats[\"with_evaluations\"]}')
 - **Claude evaluations** - Quality scoring integrated
 
 ### Documentation
-- `docs/winston/WINSTON_FEEDBACK_DATABASE.md` - Database schema
+- `docs/data/DATABASE_USAGE_GUIDE.md` - Database schema
 - `docs/development/PARAMETER_LOGGING_QUICK_START.md` - Logging guide
 - `docs/development/DATABASE_PARAMETER_STORAGE.md` - Storage architecture
 - `docs/api/CLAUDE_EVALUATION_INTEGRATION.md` - Claude integration
@@ -514,7 +514,7 @@ docs/
 ├── system/                  # System architecture
 ├── development/             # Development guides
 ├── api/                     # API integration guides
-├── winston/                 # Winston learning system
+├── grok/                 # Grok learning system
 ├── data/                    # Data management
 └── troubleshooting/         # Problem resolution
 
@@ -591,7 +591,7 @@ grep -r "TODO\|FIXME" generation/ postprocessing/ learning/ --include="*.py" | w
 python3 run.py --integrity-check
 
 # 2. Check learning system health
-sqlite3 data/winston_feedback.db "SELECT COUNT(*) FROM detection_results WHERE timestamp >= date('now')"
+sqlite3 data/z-beam.db "SELECT COUNT(*) FROM detection_results WHERE timestamp >= date('now')"
 
 # 3. Verify no prohibited patterns
 make lint

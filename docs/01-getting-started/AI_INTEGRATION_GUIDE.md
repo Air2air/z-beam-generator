@@ -190,7 +190,7 @@ Complete workflow:
 **Example**: AI reported "✅ Description generated" when realism score was 5.0/10 (threshold: 5.5/10)
 
 **Correct Behavior**:
-- ❌ REJECT if any gate fails (Realism < 5.5, Winston fail, Readability fail)
+- ❌ REJECT if any gate fails (Realism < 5.5, Grok fail, Readability fail)
 - ✅ Only report success when ALL gates pass
 - ✅ Report failures honestly: "Quality gate failed, regenerating..."
 

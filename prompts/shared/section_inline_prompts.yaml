@@ -46,3 +46,141 @@ section_prompts:
   "operational.laserMaterialInteraction": *shared_section_prompt
   "components.micro": |
     Describe the microscopic before-and-after cleaning transformation.
+
+section_prompt_metadata:
+  synonymsIdentifiers:
+    sectionTitle: "Alternative Names"
+    sectionDescription: "Synonyms and identifiers"
+    sectionMetadata: "Developer purpose: defines how to generate canonical naming and identifier coverage for this section."
+  chemicalProperties:
+    sectionTitle: "Chemical Properties"
+    sectionDescription: "Chemical behavior and reactivity"
+    sectionMetadata: "Developer purpose: defines how to generate chemical behavior and reactivity content."
+  physicalProperties:
+    sectionTitle: "Physical Properties"
+    sectionDescription: "Physical characteristics and behavior"
+    sectionMetadata: "Developer purpose: defines how to generate physical characteristics and handling-relevant behavior."
+  page:
+    sectionTitle: "Page Title"
+    sectionDescription: "Page-level summary"
+    sectionMetadata: "Developer purpose: defines how to generate the page-level summary section for implementers."
+  appearanceVariations:
+    sectionTitle: "Visual Appearance"
+    sectionDescription: "Appearance variations for identification"
+    sectionMetadata: "Developer purpose: defines how to generate appearance-based identification coverage."
+  healthEffects:
+    sectionTitle: "Health Effects"
+    sectionDescription: "Health impacts and exposure effects"
+    sectionMetadata: "Developer purpose: defines how to generate health-impact and exposure-effect guidance."
+  industryApplications:
+    sectionTitle: "Industry Applications"
+    sectionDescription: "Operational and industry use-cases"
+    sectionMetadata: "Developer purpose: defines how to generate practical industry use-case coverage."
+  commonChallenges:
+    sectionTitle: "Common Challenges"
+    sectionDescription: "Typical operational issues"
+    sectionMetadata: "Developer purpose: defines how to generate common operational challenge patterns."
+  preventionStrategies:
+    sectionTitle: "Prevention Strategies"
+    sectionDescription: "Risk-reduction methods"
+    sectionMetadata: "Developer purpose: defines how to generate prevention and risk-reduction strategy guidance."
+  exposureLimits:
+    sectionTitle: "Exposure Limits"
+    sectionDescription: "Regulatory limits and thresholds"
+    sectionMetadata: "Developer purpose: defines how to generate exposure-limit and threshold guidance."
+  ppeRequirements:
+    sectionTitle: "PPE Requirements"
+    sectionDescription: "Required protective equipment"
+    sectionMetadata: "Developer purpose: defines how to generate required PPE and safety-control guidance."
+  emergencyResponse:
+    sectionTitle: "Emergency Response"
+    sectionDescription: "Immediate response procedures"
+    sectionMetadata: "Developer purpose: defines how to generate immediate emergency response procedures."
+  storageRequirements:
+    sectionTitle: "Storage Requirements"
+    sectionDescription: "Storage and containment needs"
+    sectionMetadata: "Developer purpose: defines how to generate storage, containment, and handling requirements."
+  regulatoryStandards:
+    sectionTitle: "Regulatory Standards"
+    sectionDescription: "Standards and compliance references"
+    sectionMetadata: "Developer purpose: defines how to generate standards and compliance-reference content."
+  regulatoryClassification:
+    sectionTitle: "Regulatory Classification"
+    sectionDescription: "Hazard classes and labels"
+    sectionMetadata: "Developer purpose: defines how to generate hazard-classification and labeling content."
+  detectionMethods:
+    sectionTitle: "Detection Methods"
+    sectionDescription: "Detection and verification techniques"
+    sectionMetadata: "Developer purpose: defines how to generate detection and verification methodology guidance."
+  removalMethods:
+    sectionTitle: "Removal Methods"
+    sectionDescription: "Removal and remediation techniques"
+    sectionMetadata: "Developer purpose: defines how to generate removal and remediation technique guidance."
+  environmentalImpact:
+    sectionTitle: "Environmental Impact"
+    sectionDescription: "Environmental considerations"
+    sectionMetadata: "Developer purpose: defines how to generate environmental impact and disposal considerations."
+  faq:
+    sectionTitle: "FAQ"
+    sectionDescription: "Common questions and answers"
+    sectionMetadata: "Developer purpose: defines how to generate concise FAQ coverage for recurring user questions."
+  continuousMonitoring:
+    sectionTitle: "Continuous Monitoring"
+    sectionDescription: "Real-time monitoring systems"
+    sectionMetadata: "Developer purpose: defines how to generate continuous monitoring and alerting guidance."
+  reactivity:
+    sectionTitle: "Chemical Reactivity"
+    sectionDescription: "Reactive behavior and interactions"
+    sectionMetadata: "Developer purpose: defines how to generate reactive behavior and interaction-risk guidance."
+  contaminatedBy:
+    sectionTitle: "Contaminated By"
+    sectionDescription: "Related contaminant sources"
+    sectionMetadata: "Developer purpose: defines how to generate contaminant-source relationship coverage."
+  producedByMaterials:
+    sectionTitle: "Produced By Materials"
+    sectionDescription: "Materials that produce this output"
+    sectionMetadata: "Developer purpose: defines how to generate material-to-output production relationships."
+  producedFromContaminants:
+    sectionTitle: "Produced From Contaminants"
+    sectionDescription: "Contaminants that transform into this output"
+    sectionMetadata: "Developer purpose: defines how to generate contaminant-to-output transformation relationships."
+  relatedContaminants:
+    sectionTitle: "Related Contaminants"
+    sectionDescription: "Associated contaminant entries"
+    sectionMetadata: "Developer purpose: defines how to generate related-contaminant linkage coverage."
+  relatedCompounds:
+    sectionTitle: "Related Compounds"
+    sectionDescription: "Associated compound entries"
+    sectionMetadata: "Developer purpose: defines how to generate related-compound linkage coverage."
+  materialCharacteristics:
+    sectionTitle: "Material Characteristics"
+    sectionDescription: "Physical and mechanical profile"
+    sectionMetadata: "Developer purpose: defines how to generate physical and mechanical material profile coverage."
+  laserMaterialInteraction:
+    sectionTitle: "Laser Material Interaction"
+    sectionDescription: "Laser interaction behavior"
+    sectionMetadata: "Developer purpose: defines how to generate laser-material interaction behavior guidance."
+  relatedMaterials:
+    sectionTitle: "Related Materials"
+    sectionDescription: "Related material references"
+    sectionMetadata: "Developer purpose: defines how to generate related-material reference and comparison coverage."
+  micro:
+    sectionTitle: "Micro Description"
+    sectionDescription: "Before/after micro-level summary"
+    sectionMetadata: "Developer purpose: defines how to generate micro-level before-and-after transformation summaries."
+  pageDescription:
+    sectionTitle: "Page Description"
+    sectionDescription: "Overall page summary"
+    sectionMetadata: "Developer purpose: defines how to generate the overall page description summary."
+  machineSettings:
+    sectionTitle: "Machine Settings"
+    sectionDescription: "Operational machine parameters"
+    sectionMetadata: "Developer purpose: defines how to generate machine-setting guidance and expected operating outcomes."
+  operational.laserMaterialInteraction:
+    sectionTitle: "Laser-Material Interaction"
+    sectionDescription: "Operational laser interaction behavior"
+    sectionMetadata: "Developer purpose: defines how to generate operational laser-material interaction guidance."
+  components.micro:
+    sectionTitle: "Before & After Laser Cleaning"
+    sectionDescription: "Microscopic transformation view"
+    sectionMetadata: "Developer purpose: defines how to generate component-level microscopic transformation coverage."

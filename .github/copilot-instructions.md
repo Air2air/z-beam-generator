@@ -46,6 +46,8 @@
 - Auto-regenerating images without explicit user instruction
 - Using `max_tokens` to enforce word count (causes truncation)
 - Bypassing dual-write: every save to data YAML must also sync frontmatter
+- Using heredoc or multi-line echo in the terminal to create files (always use `create_file` tool, then run with one terminal call)
+- Re-running a terminal command that previously exited with code 130 (Ctrl+C / hang) without changing strategy (see decision tree below)
 
 ---
 
@@ -80,7 +82,16 @@ Broken, needs rewrite → ASK PERMISSION first
 
 **Should I fix frontmatter directly?**
 Never → Fix Layer 1 (source YAML) or Layer 2 (export config), re-export
+**How do I create a file?**
+Always → `create_file` tool to write the file, then one terminal call to run it
+NEVER → heredoc, multi-line echo, or any terminal-based file creation
 
+**A terminal command exited with code 130 or never returned — what now?**
+1. STOP — do not re-run the same command
+2. Diagnose: is it a long-running process (pytest full suite, npm run build)?
+3. If yes → switch to `isBackground: true` with a `timeout`, OR narrow scope (single test file, `--co` collect-only, specific `--keyword`), OR use `head -n` to limit output
+4. For pytest specifically: `python3 -m pytest tests/specific_test.py --tb=short -q` — never run the full suite blocking without a timeout
+5. If it hangs again → run it as background (`isBackground: true`) and use `get_terminal_output` to check progress
 ---
 
 ## 🔒 PROTECTED FILES — Ask before touching
@@ -110,6 +121,7 @@ Full list: `.github/PROTECTED_FILES.md`
 | Policy lookup (hardcoded values, prompts, naming, etc.) | `docs/08-development/` |
 | Fix bugs / understand side effects | `docs/SYSTEM_INTERACTIONS.md` |
 | Quick answers | `docs/QUICK_REFERENCE.md` |
+| **All field names (camelCase ↔ snake_case, all domains)** | `docs/08-development/FIELD_NAMING_REFERENCE.md` |
 | Frontmatter source-of-truth policy | `docs/08-development/FRONTMATTER_SOURCE_OF_TRUTH_POLICY.md` |
 | Material name conventions | `docs/08-development/MATERIAL_NAME_CONSISTENCY_POLICY.md` |
 | Terminal logging | `docs/08-development/TERMINAL_LOGGING_POLICY.md` |

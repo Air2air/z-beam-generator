@@ -11,11 +11,11 @@ Last Updated: November 16, 2025
 The scoring system captures comprehensive quality metrics throughout the generation pipeline, stores them in a linked database, and uses them for continuous learning and parameter optimization.
 
 **Three Quality Dimensions**:
-1. **Winston AI Score** (0-100) - AI detection avoidance
+1. **Grok humanness Score** (0-100) - AI detection avoidance
 2. **Subjective Score** (0-10) - Human-like quality assessment  
 3. **Readability Score** (0-100) - Text clarity and flow
 
-**Composite Quality Score** = Winston (60%) + Subjective (30%) + Readability (10%)
+**Composite Quality Score** = Grok (60%) + Subjective (30%) + Readability (10%)
 
 ---
 
@@ -63,19 +63,19 @@ Generated text returned
     ↓
 
 ┌─────────────────────────────────────────────────────────────────────┐
-│                    3. WINSTON EVALUATION                            │
+│                    3. GROK EVALUATION                               │
 └─────────────────────────────────────────────────────────────────────┘
 
-WinstonIntegration.detect_and_log()
+GrokHumannessRuntimeEvaluator.evaluate()
     ↓
 ┌──────────────────────────────────────┐
-│ Winston API Call                     │
+│ Grok API Call                     │
 │                                      │
 │ POST /api/detect                     │
 │ Body: { text: generated_text }      │
 └──────────────────────────────────────┘
     ↓
-Winston Response:
+Grok Response:
   {
     "ai_score": 0.15,        # 0-1 scale
     "human_score": 0.85,     # 0-1 scale (inverted)
@@ -239,7 +239,7 @@ composite_score = 82.8 (0-100 scale)
     ↓
 WEIGHT REDISTRIBUTION (if dimensions missing):
   If subjective_score is None:
-    # Redistribute 30% weight to Winston (60% → 75%)
+    # Redistribute 30% weight to Grok (60% → 75%)
     composite_score = (
         winston_score * 0.75 +
         readability_score * 0.25
@@ -566,7 +566,7 @@ Apply recommendations in next generation cycle
 ```python
 {
     'ai_score': 0.15,              # 0-1 scale
-    'detection': {                 # Full Winston response
+    'detection': {                 # Full Grok response
         'ai_score': 0.15,
         'human_score': 0.85,
         'readability_score': 72,
@@ -574,7 +574,7 @@ Apply recommendations in next generation cycle
     },
     'detection_id': 42,            # Database ID
     'failure_analysis': {...},     # If failed
-    'method': 'winston'            # Or 'pattern_only'
+    'method': 'grok'            # Or 'pattern_only'
 }
 ```
 
@@ -583,7 +583,7 @@ Apply recommendations in next generation cycle
 - `material`: Material name
 - `component_type`: Component type
 - `generated_text`: Full text
-- `winston_result`: Winston API response
+- `winston_result`: Grok API response
 - `temperature`: Temperature used
 - `attempt`: Attempt number
 - `success`: Boolean
@@ -704,7 +704,7 @@ SubjectiveEvaluationResult(
 ## 🔄 Current Integration Status
 
 ### ✅ **IMPLEMENTED**
-1. **Winston Detection** - Full integration with database logging
+1. **Grok Detection** - Full integration with database logging
 2. **Parameter Logging** - All 20+ parameters stored per generation
 3. **Sweet Spot Analysis** - Global parameter optimization
 4. **Subjective Evaluation** - Human-like quality assessment
@@ -728,7 +728,7 @@ SubjectiveEvaluationResult(
 **File**: `generation/core/evaluated_generator.py`
 
 ```python
-# After Winston detection (line ~360)
+# After Grok detection (line ~360)
 if readability['is_readable']:
     # Calculate composite score if subjective eval available
     from postprocessing.evaluation import CompositeScorer
@@ -748,7 +748,7 @@ if readability['is_readable']:
         )
         
         # Log subjective evaluation
-        subjective_eval_id = self.winston.feedback_db.log_subjective_evaluation(
+        subjective_eval_id = self.grok.feedback_db.log_subjective_evaluation(
             topic=identifier,
             component_type=component_type,
             generated_text=text,
@@ -768,7 +768,7 @@ if readability['is_readable']:
     )
     
     # Update detection result with composite score and subjective link
-    self.winston.feedback_db.update_detection_composite(
+    self.grok.feedback_db.update_detection_composite(
         detection_id=detection_result['detection_id'],
         composite_quality_score=composite_score,
         subjective_evaluation_id=subjective_eval_id
@@ -815,7 +815,7 @@ def analyze_and_optimize_parameters(self):
     from learning.validation_winston_correlator import ValidationWinstonCorrelator
     
     correlator = GranularParameterCorrelator(
-        db_path='data/winston_feedback.db',
+        db_path='data/z-beam.db',
         min_samples=30,
         significance_level=0.05
     )
@@ -852,9 +852,9 @@ def analyze_and_optimize_parameters(self):
 
 | Metric | Scale | Source | Usage |
 |--------|-------|--------|-------|
-| **Winston AI Score** | 0-100 | Winston API (ai_score * 100) | AI detection avoidance |
-| **Winston Human Score** | 0-100 | Winston API (human_score * 100) | Human-like quality |
-| **Readability Score** | 0-100 | Winston API | Text clarity |
+| **Grok humanness Score** | 0-100 | Grok API (ai_score * 100) | AI detection avoidance |
+| **Grok Human Score** | 0-100 | Grok API (human_score * 100) | Human-like quality |
+| **Readability Score** | 0-100 | Grok API | Text clarity |
 | **Subjective Overall** | 0-10 | SubjectiveEvaluator | Comprehensive quality |
 | **Composite Score** | 0-100 | CompositeScorer | Unified optimization target |
 | **Parameter Correlations** | -1 to +1 | GranularParameterCorrelator | Parameter tuning |

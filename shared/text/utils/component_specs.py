@@ -414,6 +414,17 @@ class DomainContext:
         )
 
     @classmethod
+    def compounds(cls) -> 'DomainContext':
+        """Context for compounds domain"""
+        return cls(
+            domain='compounds',
+            focus_template='Chemical identity, exposure risk, process formation routes, and handling controls',
+            enrichment_strategy='Extract from Compounds.yaml: chemical formula, hazard/exposure fields, related materials/contaminants',
+            example_facts='Formula: CO; CAS: 630-08-0; Typical source: incomplete combustion in processing',
+            terminology_style='Chemically precise and safety-focused; state thresholds, health implications, and operational controls'
+        )
+
+    @classmethod
     def applications(cls) -> 'DomainContext':
         """Context for applications domain"""
         return cls(
@@ -439,6 +450,7 @@ class DomainContext:
             'materials': cls.materials,
             'settings': cls.settings,
             'contaminants': cls.contaminants,
+            'compounds': cls.compounds,
             'applications': cls.applications
         }
         

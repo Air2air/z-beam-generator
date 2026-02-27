@@ -27,8 +27,7 @@ def load_api_keys():
     required_keys = [
         "DEEPSEEK_API_KEY",
         "GROK_API_KEY", 
-        "OPENAI_API_KEY",
-        "WINSTON_API_KEY"
+        "OPENAI_API_KEY"
     ]
     
     # Validate that all required keys are present
@@ -57,7 +56,6 @@ API_KEYS = {
         "DEEPSEEK_API_KEY",
         "DEEPSEEK_TEMPERATURE",
         "OPENAI_API_KEY",
-        "WINSTON_API_KEY",
         "GEMINI_API_KEY"  # Added from your .env file
     ]
     if os.getenv(key)  # Only include keys that are actually set

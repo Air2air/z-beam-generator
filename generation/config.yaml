@@ -23,7 +23,7 @@ quality_gates:
   max_retry_attempts: 5                  # Maximum generation attempts
   voice_authenticity_threshold: 3.0      # Voice authenticity minimum
   tonal_consistency_threshold: 3.0       # Tonal consistency minimum
-  winston_threshold: 0.70                # Winston AI detection threshold (70% AI allowed)
+  winston_threshold: 0.70                # Grok humanness threshold alias (legacy key name)
   require_zero_ai_tendencies: false      # Allow AI patterns
   adaptive_threshold: true               # Learn from 75th percentile of successful content
 
@@ -550,8 +550,8 @@ randomization_targets:
     - 9
     - 10
   
-# Winston Feedback Database
-winston_feedback_db_path: "z-beam.db"    # SQLite database for Winston feedback
+# Grok Humanness Database
+winston_feedback_db_path: "z-beam.db"    # SQLite database path for humanness evaluations (legacy key name)
 
 # Component Extraction Strategies
 # DEFAULT: raw (return text as-is) for most components
@@ -596,8 +596,8 @@ domains:
     frontmatter_pattern: "{slug}-laser-cleaning.yaml"
   
   contaminants:
-    data_path: "data/contaminants/Contaminants.yaml"
-    data_root_key: "contamination_patterns"
+    data_path: "data/contaminants/contaminants.yaml"
+    data_root_key: "contaminants"
     frontmatter_pattern: "{slug}-contamination.yaml"
   
   compounds:

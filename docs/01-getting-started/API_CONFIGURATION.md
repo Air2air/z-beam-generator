@@ -18,14 +18,14 @@ The Z-Beam system uses a **centralized API configuration architecture** with all
 - Response objects often only contain `success: false` and `error: None`
 - Terminal output shows the real failure details (SSL errors, connection timeouts, DNS issues)
 
-**Example API Failure Pattern (Winston API)**:
+**Example API Failure Pattern (Grok API)**:
 ```
 🔌 [API CLIENT] Establishing connection...
 🔌 [API CLIENT] Connection failed on attempt 1, retrying in 1.0s...
 🔄 [API CLIENT] Retry attempt 1/3 after 1.0s delay
 🔌 [API CLIENT] Connection failed on attempt 2, retrying in 2.0s...
 🔌 [API CLIENT] Connection error after 4 attempts
-❌ [CLIENT MANAGER] winston: Failed - None
+❌ [CLIENT MANAGER] grok: Failed - None
 ```
 
 **Implementation Requirements**:
@@ -37,7 +37,7 @@ The Z-Beam system uses a **centralized API configuration architecture** with all
 **Updated Testing Procedure**:
 ```python
 # 1. Run API test and capture terminal ID
-terminal_id = run_in_terminal("python3 -c 'from api.client_manager import test_api_connectivity; test_api_connectivity(\"winston\")'")
+terminal_id = run_in_terminal("python3 -c 'from api.client_manager import test_api_connectivity; test_api_connectivity(\"grok\")'")
 
 # 2. Read detailed terminal output
 terminal_output = get_terminal_output(terminal_id)
@@ -67,7 +67,7 @@ if "timeout" in terminal_output:
 
 - **DeepSeek**: Primary provider for most components (optimized parameters)
 - **Grok (X.AI)**: Used for content component with reliable grok-3 model
-- **Winston AI**: Detection and analysis provider
+- **Grok humanness**: Detection and analysis provider
 - **Table Component**: Static/deterministic generation (no API required)
 
 ## Environment Setup
@@ -89,8 +89,8 @@ DEEPSEEK_API_KEY=your_deepseek_api_key_here
 # Grok (X.AI) API Configuration
 GROK_API_KEY=your_grok_api_key_here
 
-# Winston AI Configuration
-WINSTON_API_KEY=your_winston_api_key_here
+# Grok humanness Configuration
+GROK_API_KEY=your_grok_api_key_here
 ```
 
 ### 3. Verify Configuration
@@ -132,11 +132,11 @@ API_PROVIDERS = {
         "max_retries": 5,      # Updated for consistency
         "retry_delay": 2.0,    # Updated for consistency
     },
-    "winston": {
-        "name": "Winston AI Detection",
-        "env_var": "WINSTON_API_KEY",
-        "base_url": "https://api.gowinston.ai",  # FIXED: Removed /v1 to prevent double-pathing
-        "model": "winston-ai-detector",
+    "grok": {
+        "name": "Grok humanness Detection",
+        "env_var": "GROK_API_KEY",
+        "base_url": "https://api.x.ai",  # FIXED: Removed /v1 to prevent double-pathing
+        "model": "grok-ai-detector",
         "max_tokens": 1000,
         "temperature": 0.1,
         "timeout_connect": 30,  # Updated for consistency
@@ -252,7 +252,7 @@ The system now uses strict fail-fast architecture:
 - Enhanced error reporting with comprehensive failure categories
 
 #### **Verified Functionality**
-- ✅ API connectivity test: All 3 providers (DeepSeek, Grok, Winston) connect successfully
+- ✅ API connectivity test: All 3 providers (DeepSeek, Grok, Grok) connect successfully
 - ✅ Content generation: Frontmatter generation working for Steel material
 - ✅ Data integration: Materials loaded from `data/Materials.yaml` (109 materials across 8 categories)
 - ✅ Import dependencies: All files correctly import from centralized location
@@ -288,11 +288,11 @@ These changes ensure reliable, sequential API request processing without hanging
 
 **Root Cause**: 
 - Grok: `"base_url": "https://api.x.ai/v1"` → `https://api.x.ai/v1/v1/chat/completions` ❌
-- Winston: `"base_url": "https://api.gowinston.ai/v1"` → `https://api.gowinston.ai/v1/v1/chat/completions` ❌
+- Grok: `"base_url": "https://api.x.ai/v1"` → `https://api.x.ai/v1/v1/chat/completions` ❌
 
 **Fix Applied**:
 - Grok: `"base_url": "https://api.x.ai"` → `https://api.x.ai/v1/chat/completions` ✅
-- Winston: `"base_url": "https://api.gowinston.ai"` → `https://api.gowinston.ai/v1/chat/completions` ✅
+- Grok: `"base_url": "https://api.x.ai"` → `https://api.x.ai/v1/chat/completions` ✅
 
 ### **🚨 CRITICAL: Model Deprecation Prevention**
 **Issue**: Grok model `grok-beta` was deprecated on 2025-09-15, causing 404 errors
@@ -330,8 +330,8 @@ python3 run.py --test-api
 # REQUIRED: Comprehensive API diagnosis with terminal output analysis
 python3 scripts/tools/api_terminal_diagnostics.py <provider_name> [content_file]
 
-# Example: Diagnose Winston API with content impact analysis
-python3 scripts/tools/api_terminal_diagnostics.py winston content/components/text/alumina-laser-cleaning.md
+# Example: Diagnose Grok API with content impact analysis
+python3 scripts/tools/api_terminal_diagnostics.py grok content/components/text/alumina-laser-cleaning.md
 
 # Show component configuration
 python3 run.py --show-config
@@ -353,13 +353,13 @@ python3 test_api_providers.py
 ### Example Workflow:
 ```python
 # 1. Run API test
-terminal_id = run_in_terminal("python3 -c 'from api.client_manager import test_api_connectivity; test_api_connectivity(\"winston\")'")
+terminal_id = run_in_terminal("python3 -c 'from api.client_manager import test_api_connectivity; test_api_connectivity(\"grok\")'")
 
 # 2. MANDATORY: Read terminal output
 terminal_output = get_terminal_output(terminal_id)
 
 # 3. Use diagnostic tool for analysis
-run_in_terminal(f"python3 scripts/tools/api_terminal_diagnostics.py winston")
+run_in_terminal(f"python3 scripts/tools/api_terminal_diagnostics.py grok")
 ```
 
 ## Troubleshooting

@@ -5,7 +5,7 @@ Provides common initialization and generation orchestration for all domains.
 Eliminates duplication across materials, compounds, contaminants, settings coordinators.
 
 Architecture:
-- Handles API client, Winston, and evaluator initialization
+- Handles API client and evaluator initialization
 - Loads domain configs (domains/{domain}/config.yaml)
 - Orchestrates QualityEvaluatedGenerator pipeline
 - Manages data loading through subclass-defined data loaders
@@ -33,7 +33,6 @@ class DomainCoordinator(ABC):
     Base class for all domain coordinators (materials, compounds, contaminants, settings).
     
     Provides:
-    - Winston client initialization (with graceful degradation)
     - QualityEvaluatedGenerator setup
     - SubjectiveEvaluator setup
     - Domain config loading from domains/{domain}/config.yaml
@@ -66,16 +65,10 @@ class DomainCoordinator(ABC):
             # Initialize SubjectiveEvaluator
             self.subjective_evaluator = SubjectiveEvaluator(api_client)
             
-            # Initialize Winston client (fail-fast)
-            from shared.api.client_factory import APIClientFactory
-            self.winston_client = APIClientFactory.create_client(provider="winston")
-            logger.info("✅ Winston client initialized")
-            
             # Initialize QualityEvaluatedGenerator with domain
             self.generator = QualityEvaluatedGenerator(
                 api_client=api_client,
                 subjective_evaluator=self.subjective_evaluator,
-                winston_client=self.winston_client,
                 domain=self.domain_name
             )
             
@@ -85,7 +78,6 @@ class DomainCoordinator(ABC):
             self.api_client = None
             self.generator = None
             self.subjective_evaluator = None
-            self.winston_client = None
             logger.info(f"{self.__class__.__name__} initialized in inspection mode (no generation)")
         
         # Load domain config

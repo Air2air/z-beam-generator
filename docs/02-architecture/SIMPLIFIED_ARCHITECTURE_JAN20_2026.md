@@ -342,7 +342,7 @@ prompt = builder.build(context)
 ### Before Simplification
 - **Parameter sources**: 5 (DynamicConfig, SweetSpotAnalyzer, WeightLearner, ValidationWinstonCorrelator, component config)
 - **Learning databases**: 3 (separate systems with overlapping data)
-- **Database writes per generation**: 3 (winston, parameters, subjective)
+- **Database writes per generation**: 3 (grok, parameters, subjective)
 - **Prompt parameters**: 15+ individual parameters
 - **Parameter merging code**: ~100 lines across multiple methods
 

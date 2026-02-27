@@ -71,11 +71,24 @@ class FieldRouter:
         """Normalize legacy/alias field names to canonical component field names."""
         domain_cfg = cls._get_domain_field_router(domain)
         aliases = domain_cfg.get('field_aliases')
+        text_fields = domain_cfg.get('text')
+        data_fields = domain_cfg.get('data')
         if not isinstance(aliases, dict):
             raise KeyError(
                 f"field_router.{domain}.field_aliases must be a dictionary"
             )
-        return aliases.get(field, field)
+        if not isinstance(text_fields, list) or not isinstance(data_fields, list):
+            raise KeyError(
+                f"field_router.{domain} must include text and data lists"
+            )
+
+        if field in aliases:
+            return aliases[field]
+
+        if field in text_fields or field in data_fields:
+            return field
+
+        raise ValueError(f"Unknown field '{field}' for domain '{domain}'")
     
     @classmethod
     def get_field_type(cls, domain: str, field: str) -> str:

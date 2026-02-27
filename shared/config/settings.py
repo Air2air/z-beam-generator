@@ -174,26 +174,6 @@ API_PROVIDERS = {
         },
         "fallback_provider": None,  # FAIL-FAST: No fallbacks allowed
     },
-    "winston": {
-        "name": "Winston AI Detection",
-        "type": "winston", 
-        "env_var": "WINSTON_API_KEY",
-        "base_url": "https://api.gowinston.ai",
-        "model": "winston-ai-detector",
-        "max_tokens": 1000,
-        "temperature": 0.1,
-        "timeout_connect": 30,  # Updated for consistency
-        "timeout_read": 120,    # Updated for consistency
-        "max_retries": 5,       # Updated for consistency
-        "retry_delay": 2.0,     # Updated for consistency
-        "enabled": True,
-        "timeout": 30,
-        "rate_limit": {
-            "requests_per_minute": 100,
-            "tokens_per_minute": 10000,
-        },
-        "fallback_provider": None,  # FAIL-FAST: No fallbacks allowed
-    },
     "grok": {
         "name": "Grok",
         "type": "grok",
@@ -296,7 +276,7 @@ COMPONENT_CONFIG = {
 # Configure AI detection behavior - FAIL-FAST: No fallbacks allowed
 AI_DETECTION_CONFIG = {
     "enabled": True,
-    "provider": "winston",  # FAIL-FAST: Must be explicitly provided, no fallbacks
+    "provider": "grok",  # FAIL-FAST: Must be explicitly provided, no fallbacks
     "target_score": 70.0,
     "max_iterations": 3,
     "improvement_threshold": 5.0,
@@ -313,8 +293,8 @@ OPTIMIZER_CONFIG = {
         "version": "1.0.0",
         "config": {
             "providers": {
-                "winston": {
-                    "type": "winston",
+                "grok": {
+                    "type": "grok",
                     "enabled": True,
                     "target_score": 70.0,
                     "max_iterations": 5,

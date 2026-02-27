@@ -161,10 +161,13 @@ class SchemaValidator:
         """
         self.logger = logging.getLogger(__name__)
         self.validation_mode = validation_mode
-        
-        # Schema directory setup
+
         if schema_directory is None:
-            schema_directory = Path("schemas")
+            raise ValueError(
+                "SchemaValidator requires explicit schema_directory; implicit defaults are not allowed"
+            )
+
+        # Schema directory setup
         self.schema_directory = Path(schema_directory)
         
         # Initialize component adapters
@@ -196,34 +199,34 @@ class SchemaValidator:
         self.logger.info(f"✅ Initialized {len(self.adapters)} schema adapters")
     
     def _load_schemas(self) -> None:
-        """Load all schema definitions"""
+        """Initialize schema store and validate schema directory."""
         self.schemas = {}
-        
-        try:
-            # Load schema files from schema directory
-            schema_files = {
-                SchemaType.FRONTMATTER: "frontmatter_schema.json",
-                SchemaType.MATERIALS_YAML: "materials_schema.json",
-                SchemaType.CATEGORIES_YAML: "categories_schema.json",
-                SchemaType.COMPONENT_OUTPUT: "component_schema.json",
-                SchemaType.CONFIGURATION: "config_schema.json"
-            }
-            
-            for schema_type, schema_file in schema_files.items():
-                schema_path = self.schema_directory / schema_file
-                
-                if schema_path.exists():
-                    with open(schema_path, 'r') as f:
-                        self.schemas[schema_type] = json.load(f)
-                    self.logger.debug(f"✅ Loaded schema: {schema_file}")
-                else:
-                    raise FileNotFoundError(f"Required schema file not found: {schema_path}")
-            
-            self.logger.info(f"✅ Loaded {len(self.schemas)} schemas")
-            
-        except Exception as e:
-            self.logger.error(f"❌ Failed to load schemas: {e}")
-            raise RuntimeError(f"Failed to load schema definitions: {e}") from e
+
+        if not self.schema_directory.exists() or not self.schema_directory.is_dir():
+            raise RuntimeError(
+                f"Schema directory not found or invalid: {self.schema_directory}"
+            )
+
+        self.logger.info(f"✅ Schema directory ready: {self.schema_directory}")
+
+    def _resolve_schema_file(self, schema_type: SchemaType) -> Path:
+        """Resolve schema file path for a schema type using explicit mapping."""
+        schema_files = {
+            SchemaType.FRONTMATTER: "frontmatter.json",
+            SchemaType.MATERIALS_YAML: "dataset-material.json",
+            SchemaType.CATEGORIES_YAML: "categories_schema.json",
+            SchemaType.COMPONENT_OUTPUT: "component_schema.json",
+            SchemaType.CONFIGURATION: "config_schema.json",
+        }
+
+        if schema_type not in schema_files:
+            raise KeyError(f"No schema file mapping registered for schema type: {schema_type.value}")
+
+        schema_path = self.schema_directory / schema_files[schema_type]
+        if not schema_path.exists():
+            raise FileNotFoundError(f"Required schema file not found: {schema_path}")
+
+        return schema_path
     
     def validate(
         self,
@@ -313,7 +316,10 @@ class SchemaValidator:
         """Basic schema validation using jsonschema"""
         try:
             if schema_type not in self.schemas:
-                raise KeyError(f"Schema definition not loaded for schema type: {schema_type.value}")
+                schema_path = self._resolve_schema_file(schema_type)
+                with open(schema_path, 'r', encoding='utf-8') as f:
+                    self.schemas[schema_type] = json.load(f)
+
             schema = self.schemas[schema_type]
             
             # Validate against schema
@@ -652,17 +658,17 @@ class ConfigurationAdapter(SchemaAdapter):
 
 def validate_frontmatter(data: Dict, material_name: str = None) -> ValidationResult:
     """Convenience function for frontmatter validation"""
-    validator = SchemaValidator()
+    validator = SchemaValidator(schema_directory=Path("data/schemas"))
     return validator.validate_frontmatter(data, material_name)
 
 
 def validate_materials_yaml(data: Dict) -> ValidationResult:
     """Convenience function for Materials.yaml validation"""
-    validator = SchemaValidator()
+    validator = SchemaValidator(schema_directory=Path("data/schemas"))
     return validator.validate_materials_yaml(data)
 
 
 def validate_categories_yaml(data: Dict) -> ValidationResult:
     """Convenience function for Categories.yaml validation"""
-    validator = SchemaValidator()
+    validator = SchemaValidator(schema_directory=Path("data/schemas"))
     return validator.validate_categories_yaml(data)

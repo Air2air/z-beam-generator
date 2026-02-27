@@ -22,7 +22,7 @@ For advanced operations, use run_unified.py with the unified pipeline.
   
   # Step 2: Validate & Improve (post-processing with learning systems)
   python3 run.py --validate-content Aluminum description  # Run all quality checks + learning (up to 5 attempts)
-  python3 run.py --validate-content Aluminum caption   # Winston, Realism, Readability, Subjective + DB logging
+    python3 run.py --validate-content Aluminum caption   # Grok, Realism, Readability, Subjective + DB logging
   
   # Step 3: Voice enhancement (optional)
   python3 scripts/voice/enhance_materials_voice.py --material "Aluminum"  # Apply voice → Materials.yaml
@@ -34,13 +34,13 @@ For advanced operations, use run_unified.py with the unified pipeline.
   python3 run.py --micro "Aluminum" --skip-integrity-check
   # WARNING: Never use --skip flags in production - violates fail-fast architecture
 
-🔄 BATCH GENERATION (Meet Winston Minimums Efficiently):
+🔄 BATCH GENERATION (Meet Humanness Minimums Efficiently):
   python3 run.py --batch-material-description "Aluminum,Steel,Copper"  # Batch generate material descriptions (2-5 materials)
   python3 run.py --batch-material-description --all                     # Batch ALL material descriptions (132 materials → ~33 batches)
   python3 run.py --batch-caption "Aluminum,Steel,Copper"   # Batch generate micros (fallback to individual)
   
-  # Cost savings: 75% reduction vs individual Winston calls
-  # Winston minimum: 300 chars (material descriptions ~180 chars each, need batching)
+    # Cost savings: 75% reduction vs individual detection calls
+    # Minimum length: 300 chars (material descriptions ~180 chars each, need batching)
 
 🚀 DEPLOYMENT:
   python3 run.py --deploy                  # Deploy to Next.js production site
@@ -115,7 +115,7 @@ All user-configurable settings are in: config/settings.py
 
 To modify system behavior, edit config/settings.py:
   • GLOBAL_OPERATIONAL_CONFIG - Timeouts, retries, operational parameters
-  • API_PROVIDERS - API provider settings (DeepSeek, Winston, Grok)
+    • API_PROVIDERS - API provider settings (DeepSeek, Grok)
   • COMPONENT_CONFIG - Component enable/disable and priorities
   • AI_DETECTION_CONFIG - AI detection behavior
   • OPTIMIZER_CONFIG - Optimizer and text generation settings
@@ -220,10 +220,10 @@ def main():
                        help="Validate and improve generated content with learning systems (e.g., --validate-content Aluminum description)")
     parser.add_argument("--validate-report", help="Generate validation report")
     parser.add_argument("--content-validation-report", help="Content quality validation report")
-    parser.add_argument("--validate-ai-detection", action="store_true", help="Audit content with Winston AI")
-    parser.add_argument("--winston-threshold", type=float, default=70.0, help="Winston human score threshold (0-100)")
-    parser.add_argument("--winston-component", choices=['description', 'micro', 'faq'], 
-                       help="Specific component type to audit with Winston")
+    parser.add_argument("--validate-ai-detection", action="store_true", help="Audit content with Grok humanness evaluator")
+    parser.add_argument("--grok-threshold", "--winston-threshold", dest="grok_threshold", type=float, default=70.0, help="Grok human score threshold (0-100)")
+    parser.add_argument("--grok-component", "--winston-component", dest="grok_component", choices=['description', 'micro', 'faq'], 
+                       help="Specific component type to audit with Grok")
     
     # Data Research & Completeness Commands
     parser.add_argument("--data", nargs='?', const='--all', help="Systematically verify data")
@@ -365,25 +365,25 @@ def main():
     if args.deploy:
         return deploy_to_production()
     
-    # Winston AI audit command
+    # Grok humanness audit command
     if args.validate_ai_detection:
         try:
             import subprocess
             import os
             cmd = [
                 'python3',
-                'scripts/validation/winston_audit.py',
-                f'--threshold={args.winston_threshold}'
+                'scripts/validation/grok_audit.py',
+                f'--threshold={args.grok_threshold}'
             ]
             if args.material:
                 cmd.extend(['--material', args.material])
-            if args.winston_component:
-                cmd.extend(['--component', args.winston_component])
+            if args.grok_component:
+                cmd.extend(['--component', args.grok_component])
             
             result = subprocess.run(cmd, cwd=os.path.dirname(os.path.abspath(__file__)))
             return result.returncode
         except Exception as e:
-            print(f"❌ Winston audit failed: {e}")
+            print(f"❌ Grok audit failed: {e}")
             return 1
     
     # Batch test command
@@ -436,7 +436,7 @@ def main():
         print("  • python3 run.py --faq \"Material\"")
         print()
         print("These commands include:")
-        print("  ✓ Winston AI detection")
+        print("  ✓ Grok humanness detection")
         print("  ✓ Realism evaluation")
         print("  ✓ All 5 quality gates")
         print("  ✓ Sweet spot learning")

@@ -86,11 +86,11 @@ python3 run.py --batch-test
 ## ✨ Core Features
 
 ### 🤖 AI-Powered Generation
-- **Universal Humanness Layer**: Dual-feedback learning (Winston DB + Subjective patterns) with strictness progression
-- **Composite Quality Scoring**: Winston (60%) + Subjective (30%) + Readability (10%)
+- **Universal Humanness Layer**: Dual-feedback learning (Grok DB + Subjective patterns) with strictness progression
+- **Composite Quality Scoring**: Grok (60%) + Subjective (30%) + Readability (10%)
 - **Adaptive Learning**: Thresholds learned from 75th percentile of successful content
 - **Sweet Spot Optimization**: Statistical parameter optimization from historical success
-- **Multi-Provider AI**: Grok (generation), DeepSeek (research), Winston (detection)
+- **Multi-Provider AI**: Grok (generation + humanness detection), DeepSeek (research)
 
 ### 🏗️ Architecture
 - **Fail-Fast Design**: Explicit validation, no fallbacks or mocks in production
@@ -135,19 +135,19 @@ python3 run.py --batch-test
 - **Documentation**: [FRONTMATTER_LINK_VALIDATION.md](docs/08-development/FRONTMATTER_LINK_VALIDATION.md)
 
 ### ✅ November 20: Mock/Fallback Violations Eliminated 🔥
-- **Discovery**: Batch test revealed Winston API unconfigured but system logging fake scores (100% human, 0% AI)
+- **Discovery**: Batch test revealed Grok humanness API unconfigured but system logging fake scores (100% human, 0% AI)
 - **Fixed**: 26 violations across 9 files (generation.py, constants.py, batch_generator.py, run.py, integrity_helper.py, subtitle_generator.py, quality_gated_generator.py, threshold_manager.py)
 - **Removed**: All DEFAULT fallback score constants (DEFAULT_AI_SCORE, DEFAULT_HUMAN_SCORE, DEFAULT_FALLBACK_AI_SCORE)
-- **Removed**: All hardcoded temperatures and penalties (subtitle 0.6, winston 0.7, batch penalties 0.0)
+- **Removed**: All hardcoded temperatures and penalties (subtitle 0.6, humanness threshold 0.7, batch penalties 0.0)
 - **Removed**: All TODOs - documented design rationales and future work
 - **Fixed**: Silent failure patterns in integrity checker exception handlers
-- **Enforcement**: System now raises RuntimeError on Winston failure (true fail-fast)
+- **Enforcement**: System now raises RuntimeError on Grok humanness failure (true fail-fast)
 - **Grade**: F → A+ (100/100) - Complete policy compliance
 - **Tests**: 24/24 passing with fail-fast architecture
 - **Documentation**: [VIOLATION_FIXES_NOV20_2025.md](VIOLATION_FIXES_NOV20_2025.md)
 
 ### ✅ November 19: Ultra-Modular Validation Architecture
-- **Simplified Detection**: Winston API only (removed pattern/ML fallbacks)
+- **Simplified Detection**: Grok API only (removed pattern/ML fallbacks)
 - **Ultra-Modular Design**: 19 discrete steps (30-60 lines each) across 6 passes
 - **Legacy Cleanup**: Archived 474-line monolithic pipeline
 - **Architecture Benefits**: Independent testing, per-step timing, clear debugging
@@ -163,7 +163,7 @@ python3 run.py --batch-test
 - **Docs**: [docs/archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md](docs/archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md)
 
 ### ✅ November 16: Composite Quality Scoring
-- **Architecture**: Winston (60%) + Subjective (30%) + Readability (10%)
+- **Architecture**: Grok (60%) + Subjective (30%) + Readability (10%)
 - **Adaptive Learning**: Thresholds from 75th percentile of successful content  
 - **Sweet Spot Integration**: Uses composite scores for parameter optimization
 - **Docs**: [docs/proposals/GENERIC_LEARNING_ARCHITECTURE.md](docs/proposals/GENERIC_LEARNING_ARCHITECTURE.md)
@@ -214,14 +214,14 @@ Z-Beam Generator
 │
 ├── Validation Pipeline (Ultra-Modular, 6 Passes)
 │   ├── Pass 1: Load → Load content from Materials.yaml
-│   ├── Pass 2: Quality → Winston + Realism + Readability + Subjective
-│   ├── Pass 3: Gates → Enforce thresholds (Winston <33%, Realism ≥7.0)
+│   ├── Pass 2: Quality → Grok + Realism + Readability + Subjective
+│   ├── Pass 3: Gates → Enforce thresholds (Grok <33%, Realism ≥7.0)
 │   ├── Pass 4: Learning → Sweet spot + temperature + pattern adjustments
 │   ├── Pass 5: Recording → Update learned patterns + database
 │   └── Pass 6: Regeneration → Retry with adjusted parameters if needed
 │
 ├── Learning Systems
-│   ├── Composite Scoring: 60% Winston + 40% Realism
+│   ├── Composite Scoring: 60% Grok + 40% Realism
 │   ├── Adaptive Thresholds: Learn from successful content (75th percentile)
 │   ├── Sweet Spot Analyzer: Statistical parameter optimization
 │   └── Pattern Learner: Learns rejection patterns from failed content
@@ -234,7 +234,7 @@ Z-Beam Generator
 └── Quality Assurance
     ├── Integrity Checker: Pre-generation validation
     ├── Fail-Fast Design: No fallbacks or degraded operation
-    ├── Winston API Only: No pattern/ML fallbacks (simplified Nov 19)
+   ├── Grok API Only: No pattern/ML fallbacks (simplified Nov 19)
     └── Test Suite: 19 step-level unit tests + integration tests
 ```
 
@@ -333,8 +333,8 @@ See LICENSE file for details.
 - **🔧 Fail-Fast Architecture**: Explicit dependency validation with no fallbacks
 - **💾 132 Materials Ready**: Complete material database with YAML frontmatter
 - **🏷️ Categories.yaml v2.5.0**: AI-researched ranges with materials science validation
-- **🤖 Winston AI Learning**: Dynamic ML system learning from feedback (+35% improvement)
-- **📊 AI Detection**: Composite 80/20 Winston/pattern scoring with adaptive retry
+- **🤖 Grok Humanness Learning**: Dynamic ML system learning from feedback (+35% improvement)
+- **📊 AI Detection**: Composite 80/20 Grok/pattern scoring with adaptive retry
 - **💾 Feedback Database**: SQLite-based learning system with 5-table schema
 
 **📖 Complete Feature Catalog**: See [docs/COMPLETE_FEATURE_INVENTORY.md](docs/COMPLETE_FEATURE_INVENTORY.md) for exhaustive feature list
@@ -351,11 +351,11 @@ See LICENSE file for details.
 - **🧪 TESTING**: 15+ unit tests + 3 integration tests covering all functionality
 - **📚 DOCS**: Complete guide at `generation/integrity/README.md`
 
-### November 15, 2025: Winston AI Learning System ✅ **NEW**
-- **🤖 WINSTON PRIMARY**: Winston AI v2 as primary detector (60% weight in composite scoring, 69%+ human threshold)
+### November 15, 2025: Grok Humanness Learning System ✅ **NEW**
+- **🤖 GROK PRIMARY**: Grok as primary detector (60% weight in composite scoring, 69%+ human threshold)
 - **📊 SENTENCE ANALYSIS**: Top 3 worst sentences, readability scores, attack detection
 - **🔄 ADAPTIVE RETRY**: Dynamic retry extension based on failure pattern analysis
-- **💾 SQLITE DATABASE**: Feedback database logging all Winston results (5 tables)
+- **💾 SQLITE DATABASE**: Feedback database logging all Grok results (5 tables)
 - **🧠 ML LEARNING**: 4 learning modules (PatternLearner, TemperatureAdvisor, PromptOptimizer, SuccessPredictor)
 - **📈 IMPROVEMENT**: +35% success rate expected after 100 samples
 - **🛠️ CLI TOOLS**: learn.py for patterns/temperature/prompts/prediction + dashboard
@@ -630,7 +630,7 @@ Major architecture improvement with comprehensive API configuration centralizati
 #### 🔧 **Optimized Parameters**
 - **DeepSeek**: max_tokens=800, temperature=0.7 (conservative for large prompts)
 - **Grok**: max_tokens=800, temperature=0.7 (reliable for content generation)
-- **Winston**: max_tokens=1000, temperature=0.1 (optimized for detection tasks)
+- **Grok (humanness)**: max_tokens=1000, temperature=0.1 (optimized for detection tasks)
 - **Timeout Settings**: connect=10s, read=45s (sufficient for 39s response times)
 
 #### 📁 **Files Updated**
@@ -657,7 +657,7 @@ pip install -r requirements.txt
 Create a `.env` file with your API keys:
 ```
 DEEPSEEK_API_KEY=your_deepseek_key_here
-WINSTON_API_KEY=your_winston_key_here
+GROK_API_KEY=your_grok_key_here
 ```
 
 ### Basic Usage
@@ -944,7 +944,7 @@ python3 tests/test_frontmatter_validation.py
 
 - **Text Component Special Features**:
   - **Real-time status updates** every 10 seconds
-  - **Iterative AI detection** with Winston.ai scoring
+   - **Iterative AI detection** with Grok scoring
   - **Configuration optimization** using DeepSeek
   - **Three-layer prompt system**: Base + Persona + Formatting
 
@@ -955,7 +955,7 @@ python3 tests/test_frontmatter_validation.py
 - **ComponentGenerator**: Uses prompts + DeepSeek API
 - **SchemaValidator**: Validates against JSON schemas
 - **ContentWriter**: Saves to `content/` folder
-- **AIDetectionService**: Winston.ai integration for content quality
+- **AIDetectionService**: Grok integration for content quality
 - **StatusTracker**: Real-time progress monitoring
 - **LayerValidator**: Three-layer architecture integrity protection
 - **FrontmatterDependencyValidator**: Cascading failure prevention
@@ -984,7 +984,7 @@ z-beam-generator/
 │   │       ├── personas/
 │   │       └── formatting/
 │   └── [other components]/
-├── ai_detection/               # Winston.ai integration
+├── ai_detection/               # Grok integration
 ├── api/                        # API client management
 ├── data/Materials.yaml         # Materials database
 ├── schemas/                    # JSON validation schemas

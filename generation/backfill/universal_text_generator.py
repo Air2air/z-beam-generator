@@ -72,10 +72,6 @@ class UniversalTextGenerator(BaseBackfillGenerator):
         # Initialize SubjectiveEvaluator
         subjective_evaluator = SubjectiveEvaluator(api_client)
         
-        # Initialize Winston client (fail-fast)
-        winston_client = APIClientFactory.create_client(provider="winston")
-        logger.info("✅ Winston client initialized")
-        
         # Extract domain from items_key
         # materials → materials, contaminants → contaminants (keep plural)
         domain = config['items_key']
@@ -84,7 +80,6 @@ class UniversalTextGenerator(BaseBackfillGenerator):
         self.generator = QualityEvaluatedGenerator(
             api_client=api_client,
             subjective_evaluator=subjective_evaluator,
-            winston_client=winston_client,
             domain=domain
         )
     

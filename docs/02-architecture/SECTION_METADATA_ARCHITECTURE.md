@@ -52,6 +52,7 @@ sectionName:
   _section:
     sectionTitle: Human-Readable Title
     sectionDescription: Brief description of what this section contains
+    sectionMetadata: Developer-facing text describing the function of this section
     icon: lucide-icon-name
     order: 50
     variant: default
@@ -103,6 +104,13 @@ sectionName:
 - **Purpose**: Brief explanation of section content
 - **Format**: 1-2 sentences, plain text
 - **Example**: `"Physical properties that define aluminum's behavior during laser cleaning processes"`
+
+### sectionMetadata
+- **Type**: String
+- **Required**: Yes
+- **Purpose**: Developer-facing text that explains the function of the whole section
+- **Format**: 1 sentence, implementation-focused
+- **Example**: `"Developer purpose: defines how to generate material-characteristics coverage for this section."`
 
 ### icon
 - **Type**: String

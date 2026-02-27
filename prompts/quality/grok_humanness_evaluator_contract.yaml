@@ -1,0 +1,108 @@
+schemaVersion: "1.0.0"
+contractId: "grok-humanness-evaluator"
+promptVersion: "2026-02-26"
+provider: "grok"
+mode: "strict"
+
+outputSchemaRef: "data/schemas/grok_humanness_evaluation.schema.json"
+
+criteria:
+  lexicalVariety:
+    description: "Lexical diversity without thesaurus stuffing or repetitive token loops."
+    weight: 0.14
+    minScore: 55
+  syntacticRhythm:
+    description: "Natural sentence cadence and clause variation; avoids repetitive sentence starts and mirrored structures."
+    weight: 0.14
+    minScore: 55
+  discourseCoherence:
+    description: "Logical flow and progression with non-template transitions."
+    weight: 0.18
+    minScore: 60
+  specificityEvidence:
+    description: "Concrete, operationally useful details anchored in supplied facts."
+    weight: 0.18
+    minScore: 60
+  personaFidelity:
+    description: "Matches assigned author voice and regional stylistic profile without caricature."
+    weight: 0.18
+    minScore: 60
+  aiPatternSuppression:
+    description: "Low formulaic AI patterns (hedging stacks, abstract noun chains, over-balanced structure)."
+    weight: 0.18
+    minScore: 65
+
+gating:
+  overallMin: 62
+  confidenceMin: 0.55
+  hardFailIfAnyCriterionBelowMin: true
+
+responseRules:
+  - "Return strict JSON only. No markdown, no prose outside JSON."
+  - "Populate all required schema fields."
+  - "Use evidence snippets from the candidate text, each <= 280 chars."
+  - "Provide 1-12 actionable rewrites prioritized by impact."
+
+systemPrompt: |
+  You are a strict humanness evaluator for production content quality.
+  Evaluate ONLY the supplied candidate text and context.
+  Do not invent missing facts.
+  Your response MUST be valid JSON matching schemaVersion 1.0.0 and the referenced JSON schema.
+
+  Scoring protocol:
+  - Score each criterion 0-100 with concrete evidence and issues.
+  - Compute weightedScore from configured weights.
+  - Assign scoreBand: excellent (>=80), good (>=70), borderline (>=62), poor (<62).
+  - Set gates.pass=true only when weightedScore >= overallMin, confidence >= confidenceMin,
+    and each criterion meets its minScore.
+  - Add concise failReasons when gate fails.
+  - Generate prioritized actions with specific rewrites, not generic advice.
+
+userPromptTemplate: |
+  Evaluate this candidate output for humanness quality.
+
+  Context:
+  {
+    "domain": "{{domain}}",
+    "itemId": "{{item_id}}",
+    "componentType": "{{component_type}}",
+    "authorId": "{{author_id}}",
+    "generationId": {{generation_id_or_null}},
+    "retrySessionId": {{retry_session_id_or_null}},
+    "attempt": {{attempt_number}}
+  }
+
+  Candidate text:
+  """
+  {{candidate_text}}
+  """
+
+  Evaluator config:
+  {
+    "promptVersion": "2026-02-26",
+    "mode": "strict",
+    "weights": {
+      "lexicalVariety": 0.14,
+      "syntacticRhythm": 0.14,
+      "discourseCoherence": 0.18,
+      "specificityEvidence": 0.18,
+      "personaFidelity": 0.18,
+      "aiPatternSuppression": 0.18
+    },
+    "thresholds": {
+      "overallMin": 62,
+      "confidenceMin": 0.55,
+      "criterionMins": {
+        "lexicalVariety": 55,
+        "syntacticRhythm": 55,
+        "discourseCoherence": 60,
+        "specificityEvidence": 60,
+        "personaFidelity": 60,
+        "aiPatternSuppression": 65
+      }
+    }
+  }
+
+  Output:
+  - Return JSON only, validated against the schema.
+  - Fill evaluator.timestamp with UTC ISO-8601.

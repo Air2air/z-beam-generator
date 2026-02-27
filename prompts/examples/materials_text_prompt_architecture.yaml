@@ -1,0 +1,34 @@
+schemaVersion: 1.0.0
+domain: materials
+extends: prompts/shared/content_prompts.yaml
+descriptor_prompts: {}
+section_prompts:
+  _metadata: Provide concise metadata context for THIS ITEM used by downstream systems.
+  contaminatedBy: Describe contaminants commonly associated with THIS ITEM in real-world
+    conditions.
+  industryApplications: Describe the most relevant industry applications of THIS ITEM.
+  laserMaterialInteraction: Describe how THIS ITEM interacts with laser energy under
+    operational conditions.
+  regulatoryStandards: Describe key regulatory standards applicable to THIS ITEM.
+section_prompt_metadata:
+  _metadata:
+    sectionTitle: ' Metadata'
+    sectionDescription: Section metadata for  metadata
+    sectionMetadata: "Developer purpose: defines the section-level metadata contract for maintainers and downstream generators."
+  contaminatedBy:
+    sectionTitle: Contaminated By
+    sectionDescription: Common contaminants affecting this material
+    sectionMetadata: "Developer purpose: defines how to generate contaminant relationship coverage for this material section."
+  industryApplications:
+    sectionTitle: Industry Applications
+    sectionDescription: Industrial uses and application contexts
+    sectionMetadata: "Developer purpose: defines how to generate use-case and industry-application content for implementers."
+  laserMaterialInteraction:
+    sectionTitle: Laser Material Interaction
+    sectionDescription: Material-specific laser energy interaction properties and
+      cleaning behavior
+    sectionMetadata: "Developer purpose: defines how to generate laser-material interaction behavior guidance."
+  regulatoryStandards:
+    sectionTitle: Regulatory Standards
+    sectionDescription: Compliance requirements and regulatory framework
+    sectionMetadata: "Developer purpose: defines how to generate regulatory and compliance coverage for this section."

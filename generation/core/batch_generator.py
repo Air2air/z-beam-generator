@@ -612,7 +612,7 @@ BASE PROMPT:
         materials: List[str]
     ) -> Dict[str, Any]:
         """
-        Validate concatenated batch text with Winston API.
+        Validate concatenated batch text with Grok humanness evaluator.
         
         Args:
             concatenated_text: All components concatenated
@@ -620,26 +620,36 @@ BASE PROMPT:
             materials: List of material names
             
         Returns:
-            Winston validation result
+            Dict with ai_score/human_score compatible fields
         """
-        self.logger.info("\n🔍 Winston validation:")
+        self.logger.info("\n🔍 Grok humanness validation:")
         self.logger.info(f"   • Concatenated length: {len(concatenated_text)} chars")
         self.logger.info(f"   • Materials in batch: {len(materials)}")
-        
-        if len(concatenated_text) < 300:
-            self.logger.error(f"❌ Text below Winston minimum: {len(concatenated_text)}/300 chars")
-            raise RuntimeError(f"Text too short for Winston validation: {len(concatenated_text)}/300 chars required")
-        
-        # Create Winston detector for validation
-        from postprocessing.detection.ensemble import AIDetectorEnsemble
-        from shared.api.client_factory import create_api_client
-        
-        winston_client = create_api_client('winston')
-        detector = AIDetectorEnsemble(winston_client=winston_client)
-        
-        winston_result = detector.detect(text=concatenated_text)
-        
-        return winston_result
+
+        from learning.grok_humanness_runtime import GrokHumannessRuntimeEvaluator
+
+        evaluator = GrokHumannessRuntimeEvaluator()
+        payload = evaluator.evaluate(
+            candidate_text=concatenated_text,
+            domain='materials',
+            item_id='batch-validation',
+            component_type=component_type,
+            author_id=0,
+            generation_id=None,
+            retry_session_id=None,
+            attempt=1,
+        )
+
+        weighted_score = float(payload['aggregation']['weightedScore'])
+        human_score = max(0.0, min(1.0, weighted_score / 100.0))
+        ai_score = 1.0 - human_score
+
+        return {
+            'ai_score': ai_score,
+            'human_score': human_score,
+            'passed': bool(payload['gates']['pass']),
+            'provider': 'grok',
+        }
     
     def _save_component_to_yaml(
         self,

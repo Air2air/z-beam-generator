@@ -98,7 +98,7 @@ cat GENERATION_REPORT.md
 - Material name
 
 ### Quality Metrics (when available)
-- Winston AI detection score
+- Grok humanness detection score
 - Realism score
 - Subjective evaluation results
 - Generation attempts

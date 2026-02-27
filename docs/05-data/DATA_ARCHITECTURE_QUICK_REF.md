@@ -119,7 +119,7 @@ Research Script → API Call → Validate → Materials.yaml (SAVE)
 ## 🎯 Priority Improvements (This Week)
 
 ### 1. Consolidate Learning Databases (2-3 hours)
-**Current**: 3 databases (z-beam.db, winston_feedback.db, generation_history.db)  
+**Current**: 3 databases (z-beam.db, learning.db, generation_history.db)  
 **Proposed**: 1 database (data/learning.db with organized schema)  
 **Benefit**: Simpler management, easier backups, cross-learning analysis
 
@@ -160,7 +160,7 @@ python3 scripts/validation/verify_associations.py
 find data -name "tmp*.yaml" -o -name "*.backup" -o -name "*.old"
 
 # Count learning records
-sqlite3 data/winston_feedback.db "SELECT COUNT(*) FROM detection_results;"
+sqlite3 data/z-beam.db "SELECT COUNT(*) FROM detection_results;"
 
 # Verify dual-write compliance
 python3 tests/test_frontmatter_sync.py

@@ -37,19 +37,6 @@ API_PROVIDERS = {
         'max_retries': 3,
         'retry_delay': 1.0
     },
-    'winston': {
-        'name': 'Winston AI Detection',
-        'model': 'winston-ai-detector',
-        'default_model': 'winston-ai-detector',
-        'env_var': 'WINSTON_API_KEY',
-        'base_url': 'https://api.gowinston.ai',
-        'max_tokens': 1000,
-        'temperature': 0.1,
-        'timeout_connect': 30.0,
-        'timeout_read': 120.0,
-        'max_retries': 5,
-        'retry_delay': 2.0
-    },
     'deepseek': {
         'name': 'DeepSeek',
         'model': 'deepseek-chat',
@@ -284,23 +271,21 @@ def export_all_command(args):
         return total
 
     if use_parallel:
-        # Use parallel export for 3-4x speedup (fallback to sequential on failure)
+        # Use parallel export for 3-4x speedup (fail-fast on failure)
         try:
             parallel_exporter = ParallelExporter(max_workers=4)
             results = parallel_exporter.export_all(skip_existing=args.skip_existing)
 
             total_exported = sum(r.get('exported', 0) for r in results.values())
-            if total_exported > 0:
-                print(parallel_exporter.get_performance_summary(results))
-            else:
-                print("⚠️  Parallel export produced 0 files; falling back to sequential mode.")
-                total_exported = _run_sequential_export()
-                use_parallel = False
+            failed_domains = [domain for domain, result in results.items() if not result.get('success')]
+
+            if failed_domains:
+                raise RuntimeError(f"Parallel export failed for domains: {', '.join(failed_domains)}")
+
+            print(parallel_exporter.get_performance_summary(results))
         except Exception as e:
-            print(f"⚠️  Parallel export failed: {e}")
-            print("↪️  Falling back to sequential export mode...")
-            total_exported = _run_sequential_export()
-            use_parallel = False
+            print(f"❌ Parallel export failed: {e}")
+            raise
     else:
         # Use sequential export (original behavior)
         total_exported = _run_sequential_export()
@@ -502,11 +487,7 @@ def batch_generate_command(args):
 
     api_client = create_api_client('grok')
 
-    # Try router classification first; fallback to text path for domain prompt components.
-    try:
-        field_type = FieldRouter.get_field_type(args.domain, args.field)
-    except ValueError:
-        field_type = 'text'
+    field_type = FieldRouter.get_field_type(args.domain, args.field)
 
     print("=" * 80)
     print("🚀 BATCH GENERATE")

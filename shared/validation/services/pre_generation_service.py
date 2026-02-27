@@ -102,22 +102,22 @@ class PreGenerationValidationService:
         self.data_dir = data_dir or Path(".")
         
         self.frontmatter_dir = self.data_dir / "content" / "frontmatter"
-        self.categories_file = self.data_dir / "data" / "Categories.yaml"
-        self.materials_file = self.data_dir / "data" / "Materials.yaml"
+        self.categories_file = self.data_dir / "data" / "materials" / "Categories.yaml"
+        self.materials_file = self.data_dir / "data" / "materials" / "Materials.yaml"
         
         # Validate required files exist (fail-fast)
         if not self.categories_file.exists():
             raise ConfigurationError(
                 f"Categories.yaml not found at {self.categories_file}. "
                 "This file is required for validation. "
-                "Ensure data/Categories.yaml exists."
+                "Ensure data/materials/Categories.yaml exists."
             )
         
         if not self.materials_file.exists():
             raise ConfigurationError(
                 f"Materials.yaml not found at {self.materials_file}. "
                 "This file is required for validation. "
-                "Ensure data/Materials.yaml exists."
+                "Ensure data/materials/Materials.yaml exists."
             )
         
         # Load validation rules from comprehensive_validation_agent
@@ -130,6 +130,82 @@ class PreGenerationValidationService:
     # ========================================================================
     # HIERARCHICAL VALIDATION (Categories → Materials → Frontmatter)
     # ========================================================================
+
+    def _get_materials_section(self, materials_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Resolve canonical materials section with strict type checks."""
+        materials_section = materials_data.get('materials')
+        if not isinstance(materials_section, dict):
+            raise MaterialsValidationError("Materials.yaml missing required 'materials' mapping")
+        return materials_section
+
+    def _get_material_entry(self, materials_data: Dict[str, Any], material_name: str) -> Dict[str, Any]:
+        """Resolve a material entry by canonical slug key."""
+        if not isinstance(material_name, str) or not material_name.strip():
+            raise MaterialsValidationError("material_name must be a non-empty string")
+
+        materials_section = self._get_materials_section(materials_data)
+        if material_name not in materials_section:
+            raise MaterialsValidationError(
+                f"Material '{material_name}' not found in materials"
+            )
+
+        material_entry = materials_section[material_name]
+        if not isinstance(material_entry, dict):
+            raise MaterialsValidationError(
+                f"Material '{material_name}' entry must be a mapping"
+            )
+
+        return material_entry
+
+    def _get_material_category(self, materials_data: Dict[str, Any], material_name: str) -> str:
+        """Get canonical category from material entry."""
+        material_entry = self._get_material_entry(materials_data, material_name)
+        category = material_entry.get('category')
+        if not isinstance(category, str) or not category.strip():
+            raise MaterialsValidationError(
+                f"Material '{material_name}' missing required non-empty category"
+            )
+        return category
+
+    def validate_material_data_quality(self, material_name: str) -> ValidationResult:
+        """Validate a single material across core pre-generation quality checks."""
+        if not isinstance(material_name, str) or not material_name.strip():
+            raise MaterialsValidationError("material_name must be a non-empty string")
+
+        property_result = self.validate_property_rules(material_name)
+        relationship_result = self.validate_relationships(material_name)
+        completeness_result = self.validate_completeness(material_name)
+
+        aggregated_issues = [
+            *property_result.issues,
+            *relationship_result.issues,
+            *completeness_result.issues,
+        ]
+        aggregated_warnings = [
+            *property_result.warnings,
+            *relationship_result.warnings,
+            *completeness_result.warnings,
+        ]
+        aggregated_errors = [
+            *property_result.errors,
+            *relationship_result.errors,
+            *completeness_result.errors,
+        ]
+
+        success = (
+            property_result.success
+            and relationship_result.success
+            and completeness_result.success
+            and len(aggregated_errors) == 0
+        )
+
+        return ValidationResult(
+            success=success,
+            validation_type="material_data_quality",
+            issues=aggregated_issues,
+            warnings=aggregated_warnings,
+            errors=aggregated_errors,
+        )
     
     def validate_hierarchical(self, verbose: bool = False) -> ValidationResult:
         """
@@ -267,12 +343,12 @@ class PreGenerationValidationService:
                     "message": "Missing 'materials' key"
                 })
             else:
-                # Validate material index
-                material_index = materials_data.get('material_index', {})
-                if not material_index:
+                material_index = materials_data.get('materialIndex')
+                legacy_material_index = materials_data.get('material_index')
+                if material_index is None and legacy_material_index is None:
                     warnings.append({
                         "type": "missing_index",
-                        "message": "Materials.yaml missing material_index"
+                        "message": "Materials.yaml missing optional materialIndex/material_index"
                         })
             
             success = len(errors) == 0
@@ -338,7 +414,15 @@ class PreGenerationValidationService:
                     ))
                 
                 # Two-category system validation
-                material_name = frontmatter_data.get('name', file_path.stem)
+                material_name = frontmatter_data.get('name')
+                if not isinstance(material_name, str) or not material_name.strip():
+                    result.add_error(VError(
+                        severity=ErrorSeverity.ERROR,
+                        error_type=ErrorType.MISSING_FIELD,
+                        message="Missing or empty required field: name",
+                        file_path=file_path.name
+                    ))
+                    continue
                 
                 # Extract property categories (ONLY laser_material_interaction, material_characteristics per template)
                 property_categories = {}
@@ -385,30 +469,24 @@ class PreGenerationValidationService:
             
             # Get category if not provided
             if not category:
-                material_index = materials_data.get('material_index', {})
-                category = material_index.get(material_name)
-                
-                if not category:
-                    # Fail-fast: Material not found is a critical error
-                    raise MaterialsValidationError(
-                        f"Material '{material_name}' not found in material_index"
-                    )
+                category = self._get_material_category(materials_data, material_name)
             
             # Find material properties
             material_properties = {}
-            materials_section = materials_data.get('materials', {})
-            
-            for material_name_key, material_data in materials_section.items():
-                if material_name_key == material_name:
-                    # Extract properties from properties (flat structure)
-                    mat_props = material_data.get('properties', {})
-                    metadata_keys = {'label', 'description', 'percentage'}
-                    for cat in ['material_characteristics', 'laser_material_interaction']:
-                        cat_data = mat_props.get(cat, {})
-                        if isinstance(cat_data, dict):
-                            material_properties.update({k: v for k, v in cat_data.items() 
-                                                       if k not in metadata_keys})
-                    break
+            material_data = self._get_material_entry(materials_data, material_name)
+            mat_props = material_data.get('properties', {})
+            if not isinstance(mat_props, dict):
+                raise MaterialsValidationError(
+                    f"Material '{material_name}' properties must be a mapping"
+                )
+
+            metadata_keys = {'label', 'description', 'percentage'}
+            for cat in ['material_characteristics', 'laser_material_interaction']:
+                cat_data = mat_props.get(cat, {})
+                if isinstance(cat_data, dict):
+                    material_properties.update({
+                        k: v for k, v in cat_data.items() if k not in metadata_keys
+                    })
             
             # Check for missing required properties based on category
             if category in self.category_rules:
@@ -624,32 +702,25 @@ class PreGenerationValidationService:
             # Load material data
             with open(self.materials_file) as f:
                 materials_data = yaml.safe_load(f)
-            
-            material_index = materials_data.get('material_index', {})
-            category = material_index.get(material_name)
-            
-            if not category:
-                # Fail-fast: Material not found is a critical error
-                raise MaterialsValidationError(
-                    f"Material '{material_name}' not found in material_index"
-                )
+
+            category = self._get_material_category(materials_data, material_name)
             
             # Find material properties
             material_properties = {}
-            materials_section = materials_data.get('materials', {})
-            
-            if category in materials_section:
-                for item in materials_section[category].get('items', []):
-                    if item.get('name') == material_name:
-                        # Extract from properties (flat structure)
-                        mat_props = item.get('properties', {})
-                        metadata_keys = {'label', 'description', 'percentage'}
-                        for cat in ['material_characteristics', 'laser_material_interaction']:
-                            cat_data = mat_props.get(cat, {})
-                            if isinstance(cat_data, dict):
-                                material_properties.update({k: v for k, v in cat_data.items() 
-                                                           if k not in metadata_keys})
-                        break
+            material_data = self._get_material_entry(materials_data, material_name)
+            mat_props = material_data.get('properties', {})
+            if not isinstance(mat_props, dict):
+                raise MaterialsValidationError(
+                    f"Material '{material_name}' properties must be a mapping"
+                )
+
+            metadata_keys = {'label', 'description', 'percentage'}
+            for cat in ['material_characteristics', 'laser_material_interaction']:
+                cat_data = mat_props.get(cat, {})
+                if isinstance(cat_data, dict):
+                    material_properties.update({
+                        k: v for k, v in cat_data.items() if k not in metadata_keys
+                    })
             
             # Validate each relationship rule
             for rule in self.relationship_rules:
@@ -704,30 +775,31 @@ class PreGenerationValidationService:
         """Validate Young's modulus / tensile strength ratio - delegates to RelationshipValidators"""
         return RelationshipValidators.validate_youngs_tensile_ratio(material, category, props)
     
-    def _validate_two_category_system(self, frontmatter_path: Path) -> List[VError]:
+    def _validate_two_category_system(self, material_name: str, property_categories: Dict[str, Any]) -> List[VError]:
         """Validate two-category system - delegates to RelationshipValidators"""
-        # Read frontmatter to get categories
-        try:
-            with open(frontmatter_path) as f:
-                frontmatter_data = yaml.safe_load(f)
-            
-            material_name = frontmatter_data.get('material', 'unknown')
-            categories = frontmatter_data.get('categories', [])
-            
-            # Convert list to dict format expected by validator
-            material_properties = {}
-            for cat in categories:
-                cat_id = cat.get('id', '')
-                if cat_id:
-                    # Properties are directly in the category dict, not under 'properties' key
-                    # Extract all keys that are not metadata (label, description, etc.)
-                    cat_props = {k: v for k, v in cat.items() if k not in ['id', 'label', 'description', 'percentage']}
-                    material_properties[cat_id] = list(cat_props.keys())
-            
-            return RelationshipValidators.validate_two_category_system(material_name, material_properties)
-        except Exception as e:
-            logger.error(f"Error validating two-category system for {frontmatter_path}: {e}")
-            return []
+        if not isinstance(material_name, str) or not material_name.strip():
+            raise MaterialsValidationError("Two-category validation requires non-empty material name")
+
+        if not isinstance(property_categories, dict):
+            raise MaterialsValidationError(
+                f"Two-category validation requires dict property categories, got {type(property_categories)}"
+            )
+
+        metadata_keys = {'id', 'label', 'description', 'percentage'}
+        material_properties: Dict[str, List[str]] = {}
+
+        for category_id, category_data in property_categories.items():
+            if not isinstance(category_id, str) or not category_id.strip():
+                raise MaterialsValidationError("Two-category validation encountered empty category key")
+            if not isinstance(category_data, dict):
+                raise MaterialsValidationError(
+                    f"Category '{category_id}' must be a mapping, got {type(category_data)}"
+                )
+
+            property_names = [key for key in category_data.keys() if key not in metadata_keys]
+            material_properties[category_id] = property_names
+
+        return RelationshipValidators.validate_two_category_system(material_name, material_properties)
     
     # ========================================================================
     # GAP ANALYSIS
@@ -853,15 +925,8 @@ class PreGenerationValidationService:
         try:
             with open(self.materials_file) as f:
                 materials_data = yaml.safe_load(f)
-            
-            material_index = materials_data.get('material_index', {})
-            category = material_index.get(material_name)
-            
-            if not category:
-                # Fail-fast: Material not found is a critical error
-                raise MaterialsValidationError(
-                    f"Material '{material_name}' not found in material_index"
-                )
+
+            category = self._get_material_category(materials_data, material_name)
             
             if category not in self.category_rules:
                 warnings.append({
@@ -875,20 +940,18 @@ class PreGenerationValidationService:
             
             # Find material properties
             material_properties = set()
-            materials_section = materials_data.get('materials', {})
-            
-            if category in materials_section:
-                for item in materials_section[category].get('items', []):
-                    if item.get('name') == material_name:
-                        # Extract from properties (flat structure)
-                        mat_props = item.get('properties', {})
-                        metadata_keys = {'label', 'description', 'percentage'}
-                        for cat in ['material_characteristics', 'laser_material_interaction']:
-                            cat_data = mat_props.get(cat, {})
-                            if isinstance(cat_data, dict):
-                                material_properties.update(k for k in cat_data.keys() 
-                                                         if k not in metadata_keys)
-                        break
+            material_data = self._get_material_entry(materials_data, material_name)
+            mat_props = material_data.get('properties', {})
+            if not isinstance(mat_props, dict):
+                raise MaterialsValidationError(
+                    f"Material '{material_name}' properties must be a mapping"
+                )
+
+            metadata_keys = {'label', 'description', 'percentage'}
+            for cat in ['material_characteristics', 'laser_material_interaction']:
+                cat_data = mat_props.get(cat, {})
+                if isinstance(cat_data, dict):
+                    material_properties.update(k for k in cat_data.keys() if k not in metadata_keys)
             
             # Check required properties
             missing_required = set(rule.required_properties) - material_properties
@@ -966,10 +1029,20 @@ class PreGenerationValidationService:
         try:
             with open(self.materials_file) as f:
                 materials_data = yaml.safe_load(f)
-            
-            material_index = materials_data.get('material_index', {})
-            
-            for material_name, category in material_index.items():
+
+            materials_section = self._get_materials_section(materials_data)
+
+            for material_name, material_data in materials_section.items():
+                if not isinstance(material_data, dict):
+                    raise MaterialsValidationError(
+                        f"Material '{material_name}' entry must be a mapping"
+                    )
+                category = material_data.get('category')
+                if not isinstance(category, str) or not category.strip():
+                    raise MaterialsValidationError(
+                        f"Material '{material_name}' missing required non-empty category"
+                    )
+
                 if verbose:
                     logger.info(f"Validating {material_name}...")
                 

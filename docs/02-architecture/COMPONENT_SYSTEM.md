@@ -281,7 +281,7 @@ Material Name + Component Type → QualityEvaluatedGenerator
                                         ↓
                         DUAL-WRITE: Materials.yaml (full field) + Frontmatter (field sync)
                                         ↓
-                        Quality Gates: Winston (69%+), Realism (5.5+), Readability
+                        Quality Gates: Grok (69%+), Realism (5.5+), Readability
                                         ↓
                         Learning: Log attempt to database (all attempts, pass/fail)
                                         ↓

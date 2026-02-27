@@ -36,6 +36,14 @@ from shared.validation.errors import ErrorSeverity, ValidationResult
 logger = logging.getLogger(__name__)
 
 
+DEFAULT_LIFECYCLE_PHASES = [
+    'pre_generation',
+    'material_audit',
+    'post_generation',
+    'schema_validation',
+]
+
+
 @dataclass
 class ComprehensiveValidationResult:
     """Result of complete validation lifecycle"""
@@ -117,10 +125,8 @@ class ValidationOrchestrator:
         """Initialize all validation services with lazy imports to avoid circular dependencies"""
         try:
             # Lazy imports to avoid circular dependencies
-            from materials.services.validation_service import ValidationService
-
             from shared.services.property.material_auditor import MaterialAuditor
-            from shared.validation.content_validator import ContentValidationService
+            from shared.validation.content.content_validator import ContentValidationService
             from shared.validation.services.pre_generation_service import (
                 PreGenerationValidationService,
             )
@@ -129,7 +135,6 @@ class ValidationOrchestrator:
             self.pre_generation_service = PreGenerationValidationService()
             self.content_validation_service = ContentValidationService()  # Replaced PostGenerationQualityService
             self.material_auditor = MaterialAuditor()
-            self.validation_service = ValidationService()
             
             # Service initialization successful
             self.logger.info("✅ All validation services initialized successfully")
@@ -150,7 +155,7 @@ class ValidationOrchestrator:
         
         Args:
             material_name: Name of material to validate
-            phases: Specific phases to run (None = all phases)
+            phases: Specific phases to run (required explicit list)
             auto_fix: Whether to apply automatic fixes where possible
             generate_reports: Whether to generate detailed reports
             
@@ -172,9 +177,22 @@ class ValidationOrchestrator:
                 overall_status="PASS"
             )
             
-            # Default to all phases if none specified
             if phases is None:
-                phases = ['pre_generation', 'material_audit', 'post_generation', 'schema_validation']
+                raise ValidationError(
+                    "Validation phases must be provided explicitly; no implicit defaults are allowed"
+                )
+            if not isinstance(phases, list) or not phases:
+                raise ValidationError(
+                    "Validation phases must be a non-empty list"
+                )
+
+            allowed_phases = set(DEFAULT_LIFECYCLE_PHASES)
+            invalid_phases = [phase for phase in phases if phase not in allowed_phases]
+            if invalid_phases:
+                raise ValidationError(
+                    f"Unknown validation phases: {', '.join(invalid_phases)}. "
+                    f"Allowed phases: {', '.join(DEFAULT_LIFECYCLE_PHASES)}"
+                )
             
             # === PHASE 1: PRE-GENERATION VALIDATION ===
             if 'pre_generation' in phases:
@@ -532,7 +550,10 @@ class ValidationOrchestrator:
     
     def validate_material(self, material_name: str) -> ComprehensiveValidationResult:
         """Legacy compatibility method - delegates to validate_material_lifecycle"""
-        return self.validate_material_lifecycle(material_name)
+        return self.validate_material_lifecycle(
+            material_name,
+            phases=list(DEFAULT_LIFECYCLE_PHASES),
+        )
     
     def validate_pre_generation(self, material_name: str) -> Any:
         """Legacy compatibility - run only pre-generation validation"""
@@ -567,13 +588,23 @@ class ValidationOrchestrator:
         return self.validation_stats.copy()
     
     def normalize_confidence(self, confidence: Union[int, float]) -> int:
-        """Legacy utility method - delegates to ValidationService"""
-        return self.validation_service.normalize_confidence(confidence)
+        """Legacy utility method - normalize confidence to integer 0-100 range."""
+        try:
+            normalized = int(round(float(confidence)))
+        except (TypeError, ValueError) as exc:
+            raise ValidationError(f"Invalid confidence value: {confidence}") from exc
+
+        return max(0, min(100, normalized))
 
 
 # Convenience functions for backward compatibility
 def validate_material_lifecycle(material_name: str, **kwargs) -> ComprehensiveValidationResult:
     """Convenience function for material lifecycle validation"""
+    if 'phases' not in kwargs:
+        raise ValidationError(
+            "validate_material_lifecycle requires explicit 'phases' in kwargs"
+        )
+
     orchestrator = ValidationOrchestrator()
     return orchestrator.validate_material_lifecycle(material_name, **kwargs)
 

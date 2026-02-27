@@ -15,6 +15,7 @@ relationship_groups:
   operational:
   - industry_applications
 id_field: id
+prune_stale_files: true
 generators:
 # Core Principle 0.6 Compliance (Jan 7, 2026): ✅ COMPLETE
 # ALL data complete in source - export adds ONLY export-time fields
@@ -77,14 +78,6 @@ generators:
     description: Expand authorId to full author object for frontend compatibility
     author_id_field: authorId
     remove_author_id: true
-  # Flatten nested properties to root level (preserves _section metadata)
-  - type: flatten_properties
-    description: Move properties.materialCharacteristics → materialCharacteristics (with _section)
-    source_sections:
-    - source: properties.materialCharacteristics
-      target: materialCharacteristics
-    - source: properties.laserMaterialInteraction
-      target: laserMaterialInteraction
   # Add _section metadata to all sections that need it
   - type: section_metadata
     description: Add _section metadata with sectionTitle and sectionDescription to all sections

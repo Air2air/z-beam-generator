@@ -2,8 +2,8 @@
 # Minimal config for coordinator initialization
 
 domain_name: "contaminants"
-data_path: "data/contaminants/Contaminants.yaml"
-data_root_key: "contamination_patterns"
+data_path: "data/contaminants/contaminants.yaml"
+data_root_key: "contaminants"
 frontmatter_pattern: "{slug}-contamination.yaml"
 
 frontmatter:
@@ -11,8 +11,8 @@ frontmatter:
   filename_pattern: "{slug}-contamination.yaml"
 
 data_adapter:
-  data_path: "data/contaminants/Contaminants.yaml"
-  data_root_key: "contamination_patterns"
+  data_path: "data/contaminants/contaminants.yaml"
+  data_root_key: "contaminants"
   author_key: "author.id"
   context_keys:
     - "category"

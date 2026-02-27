@@ -349,6 +349,12 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
             frontmatter_data['_metadata'] = {}
         
         # Extract country - FAIL-FAST if missing
+        if 'name' not in author_data or not str(author_data['name']).strip():
+            raise ValueError(
+                "Author data missing required non-empty 'name' field. "
+                "All authors must have name defined."
+            )
+
         if 'country' not in author_data:
             raise ValueError(
                 "Author data missing 'country' field. "
@@ -358,7 +364,7 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
         author_country = author_data['country']
         
         frontmatter_data['_metadata']['voice'] = {
-            'author_name': author_data.get('name', 'Unknown'),
+            'author_name': author_data['name'],
             'author_country': author_country,
             'voice_applied': True,
             'content_type': self.content_type
@@ -467,7 +473,11 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
             try:
                 from shared.voice.orchestrator import VoiceOrchestrator
                 
-                country = author_data.get('country', 'Unknown')
+                if 'country' not in author_data or not str(author_data['country']).strip():
+                    raise ValueError(
+                        "Author data missing required non-empty 'country' field for voice validation"
+                    )
+                country = author_data['country']
                 voice = VoiceOrchestrator(country=country)
                 voice_indicators = voice.get_signature_phrases()
                 

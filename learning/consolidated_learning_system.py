@@ -20,11 +20,12 @@ Purpose: Reduce learning complexity from 3 systems to 1 unified interface
 """
 
 import logging
+import json
 import sqlite3
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -154,6 +155,53 @@ class ConsolidatedLearningSystem:
             # Create indexes separately for quality_insights
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_impact ON quality_insights (impact_on_winston)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_last_seen ON quality_insights (last_seen)")
+
+            # Grok evaluator feedback table (additive; linked to generations.id)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS grok_evaluations (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    generation_id INTEGER NOT NULL,
+                    schema_version TEXT NOT NULL,
+                    prompt_version TEXT NOT NULL,
+                    mode TEXT NOT NULL,
+                    model TEXT NOT NULL,
+
+                    weighted_score REAL NOT NULL,
+                    confidence REAL NOT NULL,
+                    score_band TEXT NOT NULL,
+                    pass_gate INTEGER NOT NULL,
+
+                    overall_min REAL NOT NULL,
+                    confidence_min REAL NOT NULL,
+
+                    fail_reasons_json TEXT,
+                    actions_json TEXT,
+                    raw_payload_json TEXT NOT NULL,
+
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+                    FOREIGN KEY (generation_id) REFERENCES generations(id)
+                )
+            """)
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_grok_eval_generation ON grok_evaluations(generation_id)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_grok_eval_score ON grok_evaluations(weighted_score)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_grok_eval_pass ON grok_evaluations(pass_gate)")
+
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS grok_evaluation_criteria (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    grok_evaluation_id INTEGER NOT NULL,
+                    criterion_key TEXT NOT NULL,
+                    score REAL NOT NULL,
+                    weight REAL NOT NULL,
+                    min_score REAL NOT NULL,
+                    evidence_json TEXT,
+                    issues_json TEXT,
+
+                    FOREIGN KEY (grok_evaluation_id) REFERENCES grok_evaluations(id)
+                )
+            """)
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_grok_eval_criterion ON grok_evaluation_criteria(criterion_key, score)")
             
             conn.commit()
     
@@ -408,3 +456,104 @@ class ConsolidatedLearningSystem:
             """, (issue_type, description, impact_on_winston))
             
             conn.commit()
+
+    def log_grok_evaluation(self, generation_id: int, evaluation_payload: Dict[str, Any]) -> int:
+        """
+        Persist Grok humanness evaluation payload linked to a generation.
+
+        Args:
+            generation_id: Foreign key to generations.id
+            evaluation_payload: Schema-validated Grok evaluation JSON payload
+
+        Returns:
+            Inserted grok_evaluations.id
+        """
+        if not isinstance(generation_id, int):
+            raise TypeError("generation_id must be an integer")
+
+        required_top_keys = [
+            'schemaVersion',
+            'evaluator',
+            'scores',
+            'aggregation',
+            'gates',
+            'actions',
+        ]
+        missing_top_keys = [key for key in required_top_keys if key not in evaluation_payload]
+        if missing_top_keys:
+            raise KeyError(f"evaluation_payload missing required keys: {', '.join(missing_top_keys)}")
+
+        evaluator = evaluation_payload['evaluator']
+        aggregation = evaluation_payload['aggregation']
+        gates = evaluation_payload['gates']
+        thresholds = gates['thresholds']
+        scores = evaluation_payload['scores']
+        weights = aggregation['weights']
+        criterion_mins = thresholds['criterionMins']
+
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+
+            cursor.execute("""
+                INSERT INTO grok_evaluations (
+                    generation_id,
+                    schema_version,
+                    prompt_version,
+                    mode,
+                    model,
+                    weighted_score,
+                    confidence,
+                    score_band,
+                    pass_gate,
+                    overall_min,
+                    confidence_min,
+                    fail_reasons_json,
+                    actions_json,
+                    raw_payload_json
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                generation_id,
+                evaluation_payload['schemaVersion'],
+                evaluator['promptVersion'],
+                evaluator['mode'],
+                evaluator['model'],
+                aggregation['weightedScore'],
+                aggregation['confidence'],
+                aggregation['scoreBand'],
+                int(bool(gates['pass'])),
+                thresholds['overallMin'],
+                thresholds['confidenceMin'],
+                json.dumps(gates['failReasons']),
+                json.dumps(evaluation_payload['actions']),
+                json.dumps(evaluation_payload),
+            ))
+
+            grok_evaluation_id = cursor.lastrowid
+
+            for criterion_key, score_obj in scores.items():
+                cursor.execute("""
+                    INSERT INTO grok_evaluation_criteria (
+                        grok_evaluation_id,
+                        criterion_key,
+                        score,
+                        weight,
+                        min_score,
+                        evidence_json,
+                        issues_json
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    grok_evaluation_id,
+                    criterion_key,
+                    score_obj['score'],
+                    weights[criterion_key],
+                    criterion_mins[criterion_key],
+                    json.dumps(score_obj['evidence']),
+                    json.dumps(score_obj['issues']),
+                ))
+
+            conn.commit()
+
+        logger.debug(
+            f"Logged Grok evaluation {grok_evaluation_id} for generation_id={generation_id}"
+        )
+        return grok_evaluation_id

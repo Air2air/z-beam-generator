@@ -104,7 +104,7 @@ This document proposes standardized naming conventions across the Z-Beam Generat
 ```python
 ✅ _task_normalize_compounds         # Moves content to relationships
 ✅ _task_enrich_relationships         # Adds frequency/severity metadata
-✅ _task_generate_section_metadata   # Creates sectionMetadata blocks
+✅ _task_generate_section_metadata   # Creates _section blocks including developer-purpose sectionMetadata text
 ✅ _task_group_relationships          # Categorizes by type
 ✅ _task_transform_faq                # Converts array → collapsible
 ```

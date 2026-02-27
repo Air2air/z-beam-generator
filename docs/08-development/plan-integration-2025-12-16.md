@@ -138,7 +138,7 @@ class QualityEvaluatedGenerator:
             api_client: LLM API client
             dynamic_config: DynamicConfig instance
             humanness_optimizer: HumannessOptimizer instance
-            winston_client: Optional Winston AI detection client
+            winston_client: Optional Grok humanness detection client
             subjective_evaluator: Optional subjective quality evaluator
             structural_checker: Optional structural variation checker
             learning_db_path: Path to learning database
@@ -153,7 +153,7 @@ class QualityEvaluatedGenerator:
         
         # Register quality evaluators
         if winston_client:
-            self.quality_orchestrator.register_evaluator('winston', winston_client, weight=0.4)
+            self.quality_orchestrator.register_evaluator('grok', winston_client, weight=0.4)
         if subjective_evaluator:
             self.quality_orchestrator.register_evaluator('subjective', subjective_evaluator, weight=0.6)
         if structural_checker:

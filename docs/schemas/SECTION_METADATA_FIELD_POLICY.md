@@ -7,7 +7,7 @@
 **🚨 MANDATORY REQUIREMENT**: Every section in exported frontmatter MUST have:
 - `sectionTitle` - Section heading/title displayed in UI
 - `sectionDescription` - Generated contextual content about the section
-- `sectionMetadata` - Technical metadata for the section
+- `sectionMetadata` - Developer-facing text describing the function of the whole section
 
 **Note**: `data/schemas/section_display_schema.yaml` is the authoritative schema source used by generation and export pipelines.
 
@@ -40,9 +40,15 @@ Section metadata in `section_display_schema.yaml` defines three distinct fields 
 ### 3. sectionMetadata (REQUIRED)
 - **Source**: `sections.{section_key}.metadata` field from section_display_schema.yaml
 - **Export As**: `_section.sectionMetadata`
-- **Purpose**: Technical metadata for export processing and UI behavior
+- **Purpose**: Developer-facing section-function guidance for maintainers and generators
 - **Validation**: Must be present and non-empty
-- **Example**: "contaminatedBy:relationships:safety"
+- **Example**: "Defines how this section should cover contaminant relationships and operational implications."
+
+### 4. Field Order Under Section Key (REQUIRED)
+- **Section container order** (when present): `_section`, then content fields such as `presentation`, `items`, `content`, `description`
+- **_section metadata order** (first-in-block): `sectionTitle`, `sectionDescription`, `sectionMetadata`, then related display fields (`icon`, `order`, `variant`, `_open`)
+- **Purpose**: Keep section metadata stable, scannable, and deterministic for tooling
+- **Validation target**: `data/schemas/FrontmatterFieldOrder.yaml -> section_subfield_order`
 
 ### Enforcement
 
@@ -130,6 +136,7 @@ relationships:
       _section:
         sectionTitle: "Common Contaminants"  # From description field
         sectionDescription: "..."            # Generated content (NOT from metadata!)
+        sectionMetadata: "Developer purpose: defines how to generate contaminant relationship coverage for this section."
         icon: droplet
         order: 10
         variant: default

@@ -1,0 +1,18 @@
+schemaVersion: 1.0.0
+domain: applications
+extends: prompts/shared/content_prompts.yaml
+descriptor_prompts: {}
+section_prompts:
+  contaminatedBy: Describe contaminants commonly associated with THIS ITEM in real-world
+    conditions.
+  relatedMaterials: Describe closely related materials and how they compare to THIS
+    ITEM.
+section_prompt_metadata:
+  contaminatedBy:
+    sectionTitle: Contaminated By
+    sectionDescription: Common contaminants affecting this material
+    sectionMetadata: "Developer purpose: defines how to generate contaminant relationship context for this section."
+  relatedMaterials:
+    sectionTitle: Related Materials
+    sectionDescription: Similar materials and alloy variants
+    sectionMetadata: "Developer purpose: defines how to generate related-material comparison coverage for developers."

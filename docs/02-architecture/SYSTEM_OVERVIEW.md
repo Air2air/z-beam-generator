@@ -222,7 +222,7 @@ API call: DeepSeek/Grok generates content
    ↓
 DUAL-WRITE: Materials.yaml (full field) + Frontmatter (field sync)
    ↓
-Quality Gates: Winston (69%+), Realism (5.5+), Readability
+Quality Gates: Grok (69%+), Realism (5.5+), Readability
    ↓
 Learning: Log attempt to database (all attempts, pass/fail)
    ↓
@@ -302,7 +302,7 @@ Reduced from 11 components to 6 for maintainability:
 
 1. **DeepSeek** - Primary text generation (low cost, high quality)
 2. **Grok (xAI)** - Backup text generation, evaluation prompts
-3. **Winston AI** - Human believability scoring (69%+ threshold)
+3. **Grok humanness** - Human believability scoring (69%+ threshold)
 4. **Perplexity** - Research and property discovery
 5. **Imagen (Google)** - Hero image generation
 6. **Gemini Vision** - Image validation
@@ -314,8 +314,8 @@ All API keys in `config/config.yaml`:
 apis:
   deepseek:
     api_key: ${DEEPSEEK_API_KEY}
-  winston:
-    api_key: ${WINSTON_API_KEY}
+  grok:
+    api_key: ${GROK_API_KEY}
   imagen:
     project_id: ${GCP_PROJECT_ID}
 ```
@@ -328,7 +328,7 @@ apis:
 
 ### Quality Gates (All Must Pass)
 
-1. **Winston AI Detection**: 69%+ human score (configurable via humanness_intensity, currently level 7)
+1. **Grok humanness Detection**: 69%+ human score (configurable via humanness_intensity, currently level 7)
 2. **Readability Check**: Pass status
 3. **Subjective Language**: No violations
 4. **Realism Score**: 5.5/10 minimum (adaptive threshold with relaxation)
@@ -341,7 +341,7 @@ apis:
 - **Logs ALL attempts** (not just successes) to SQLite database
 - **Adaptive thresholds**: Relaxes from 5.5/10 → 4.5/10 over 5 attempts
 - **Sweet spot analysis**: Identifies optimal parameters from 75th percentile
-- **Composite scoring**: Winston (40%) + Realism (60%) weighting
+- **Composite scoring**: Grok (40%) + Realism (60%) weighting
 - **Pattern learning**: Tracks structural diversity, opening patterns
 
 ---
@@ -365,7 +365,7 @@ apis:
 
 ### Quality Metrics
 
-- **AI detection**: 69%+ human (Winston threshold)
+- **AI detection**: 69%+ human (Grok threshold)
 - **Realism**: 5.5/10 minimum (adaptive)
 - **Voice authenticity**: 85/100 (pattern compliance)
 - **Learning data**: 50x increase (logs all attempts, not just successes)

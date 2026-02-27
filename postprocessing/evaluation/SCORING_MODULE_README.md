@@ -12,7 +12,7 @@ The Scoring Module provides highly granular quality assessment and parameter cor
 **File**: `postprocessing/evaluation/composite_scorer.py`
 
 Calculates unified quality metric combining multiple dimensions:
-- **Winston AI Score** (60% weight) - AI detection avoidance
+- **Grok Humanness Score** (60% weight) - AI detection avoidance
 - **Subjective Score** (30% weight) - Human quality assessment
 - **Readability Score** (10% weight) - Text clarity and flow
 
@@ -97,7 +97,7 @@ Performs fine-grained correlation analysis between parameters and quality metric
 from learning import GranularParameterCorrelator
 
 correlator = GranularParameterCorrelator(
-    db_path='data/winston_feedback.db',
+    db_path='data/z-beam.db',
     min_samples=30,
     significance_level=0.05
 )
@@ -155,7 +155,7 @@ Generation Parameters
 Content Generation
         ↓
 Quality Evaluation
-    ├── Winston AI Score (0-100)
+    ├── Grok Humanness Score (0-100)
     ├── Subjective Score (0-10)
     └── Readability Score (0-100)
         ↓
@@ -333,7 +333,7 @@ quality_level = scorer.interpret_score(composite_score)
 Default weights (can be customized):
 ```python
 CompositeScorer(
-    winston_weight=0.6,      # AI detection most important
+    winston_weight=0.6,      # Grok humanness most important
     subjective_weight=0.3,   # Human quality second
     readability_weight=0.1   # Clarity third
 )
@@ -342,7 +342,7 @@ CompositeScorer(
 ### Correlator Parameters
 ```python
 GranularParameterCorrelator(
-    db_path='data/winston_feedback.db',
+    db_path='data/z-beam.db',
     min_samples=30,           # Minimum for reliable correlation
     significance_level=0.05   # P-value threshold
 )
@@ -379,8 +379,8 @@ The scoring module integrates into the generation pipeline:
 # 1. Generate content
 result = await self._generate_content(...)
 
-# 2. Evaluate with Winston AI
-winston_result = await winston_detector.detect(result.content)
+# 2. Evaluate with Grok humanness
+grok_result = await grok_detector.detect(result.content)
 
 # 3. Evaluate subjectively
 subjective_result = subjective_evaluator.evaluate(
@@ -390,7 +390,7 @@ subjective_result = subjective_evaluator.evaluate(
 
 # 4. Calculate composite score
 composite_score = composite_scorer.calculate(
-    winston_score=winston_result['score'],
+    winston_score=grok_result['score'],
     subjective_score=subjective_result.overall_score,
     readability_score=readability_result['score']
 )

@@ -12,7 +12,7 @@ Quality Evaluation (for learning, NOT blocking):
     2. Voice Authenticity: Logged for pattern analysis
     3. Tonal Consistency: Logged for quality trends
     4. AI Tendencies: Logged to identify problematic patterns
-    5. Winston AI Detection: Logged for human-score trends
+    5. Grok Humanness Detection: Logged for human-score trends
     6. Structural Variation: Logged for diversity analysis
 
 Design: Single-pass approach - generate once, save immediately, then evaluate.
@@ -40,7 +40,7 @@ class QualityEvaluatedResult:
     """Result from quality-evaluated generation (single-pass)"""
     success: bool  # Always True unless generation error
     content: Any
-    quality_scores: Dict  # Winston, Realism, Structural scores for reference
+    quality_scores: Dict  # Grok humanness, realism, structural scores for reference
     evaluation_logged: bool  # Whether learning data was logged
     error_message: Optional[str] = None
 
@@ -53,7 +53,7 @@ class QualityEvaluatedGenerator:
     - Generate content using Generator (single-pass)
     - Save immediately to domain data file
     - Evaluate with SubjectiveEvaluator AFTER save
-    - Log learning data (Winston, Realism, Structural)
+    - Log learning data (Grok humanness, Realism, Structural)
     - Return success with quality scores
     
     NO retry logic, NO gating - evaluation is purely for learning.
@@ -73,7 +73,7 @@ class QualityEvaluatedGenerator:
         Args:
             api_client: API client for content generation (required)
             subjective_evaluator: SubjectiveEvaluator instance (required)
-            winston_client: Winston API client for AI detection (required)
+            winston_client: Deprecated and ignored (backward compatibility only)
             structural_variation_checker: StructuralVariationChecker instance (optional)
             domain: Domain name (e.g., 'materials', 'compounds', 'settings')
         
@@ -84,8 +84,6 @@ class QualityEvaluatedGenerator:
             raise ValueError("API client required for quality-evaluated generation")
         if not subjective_evaluator:
             raise ValueError("SubjectiveEvaluator required for quality-evaluated generation")
-        if not winston_client:
-            raise ValueError("Winston client required for quality-evaluated generation")
         
         self.api_client = api_client
         self.subjective_evaluator = subjective_evaluator
@@ -108,6 +106,7 @@ class QualityEvaluatedGenerator:
         # ✅ SIMPLIFIED: Consolidated learning system (replaces 3 separate systems)
         from learning.consolidated_learning_system import ConsolidatedLearningSystem
         self.learning_system = ConsolidatedLearningSystem(db_path='z-beam.db')
+        self.grok_humanness_evaluator = None
         
         logger.info(f"QualityEvaluatedGenerator initialized (SIMPLIFIED ARCHITECTURE)")
         logger.info(f"   ✅ Unified parameter provider (1 interface)")
@@ -377,8 +376,8 @@ class QualityEvaluatedGenerator:
             'voice_authenticity': None,
             'tonal_consistency': None,
             'ai_tendencies': [],
-            'winston_human_score': None,
-            'winston_ai_score': None,
+            'grok_human_score': None,
+            'grok_ai_score': None,
             'diversity_score': None,
             'voice_compliance': voice_compliance,  # Voice compliance data
             'ai_pattern_detection': ai_pattern_detection  # Legacy AI detection with pattern variation
@@ -427,18 +426,10 @@ class QualityEvaluatedGenerator:
             except Exception as e:
                 logger.warning(f"   ⚠️  Subjective evaluation failed: {e}")
         
-        # Winston detection (also run in background for consistency)
-        winston_result = self._check_winston_detection(content, material_name, component_type)
-        quality_scores['winston_human_score'] = winston_result.get('human_score')
-        quality_scores['winston_ai_score'] = winston_result.get('ai_score')
-        
-        # Log Winston client type for debugging
-        if self.winston_client:
-            client_type = type(self.winston_client).__name__
-            if 'Cached' in client_type:
-                logger.warning(f"Winston using {client_type} - may not have proper check_text support")
-            else:
-                logger.info(f"Winston using {client_type} - full API support available")
+        # Grok humanness detection
+        grok_result = self._check_grok_detection(content, material_name, component_type)
+        quality_scores['grok_human_score'] = grok_result.get('human_score')
+        quality_scores['grok_ai_score'] = grok_result.get('ai_score')
         
         # Structural variation
         structural_analysis = None
@@ -465,7 +456,7 @@ class QualityEvaluatedGenerator:
                     content=eval_text,
                     current_params=params,
                     evaluation=evaluation,
-                    winston_result=winston_result,
+                    grok_result=grok_result,
                     structural_analysis=structural_analysis,
                     attempt=1,
                     passed_all_gates=True,  # Always "passed" - no gating
@@ -642,66 +633,13 @@ class QualityEvaluatedGenerator:
     
     def _load_sweet_spot_parameters(self) -> Dict[str, float]:
         """
-        Load learned parameter ranges from sweet spot analyzer with correlation filtering.
-        
-        Priority 4 Enhancement: Filters out parameters with negative correlation to quality.
-        Only learns from parameters that actually help (positive correlation).
-        
-        Returns dictionary with median values from top performers,
-        or empty dict if insufficient learning data.
+        Legacy compatibility shim.
+
+        Winston feedback DB has been removed from active runtime. Parameter
+        learning now flows through unified providers and consolidated learning.
+        Keep this method returning an empty dict to avoid stale call-sites.
         """
-        try:
-            from postprocessing.detection.winston_feedback_db import (
-                WinstonFeedbackDatabase,
-            )
-            
-            db = WinstonFeedbackDatabase('z-beam.db')
-            sweet_spot = db.get_sweet_spot('*', '*')  # Global scope
-            
-            if not sweet_spot or not sweet_spot.get('parameters'):
-                logger.info("   No learned parameters available - using config defaults")
-                return {}
-            
-            params = sweet_spot['parameters']
-            learned = {}
-            filtered_count = 0
-            
-            # Priority 4: Calculate correlations and filter negative ones
-            correlations = self._calculate_parameter_correlations()
-            
-            # Extract median values from sweet spot ranges with correlation filtering
-            for param_name, ranges in params.items():
-                if ranges and 'median' in ranges:
-                    correlation = correlations.get(param_name)
-                    
-                    # Priority 4: Skip parameters with strong negative correlation
-                    if correlation is not None and correlation < -0.3:
-                        logger.warning(f"   ❌ {param_name}: Negative correlation {correlation:.3f} - EXCLUDED from learning")
-                        filtered_count += 1
-                        continue
-                    
-                    # Include parameter
-                    learned[param_name] = ranges['median']
-                    if correlation is not None:
-                        logger.info(f"   ✅ {param_name}: {ranges['median']:.3f} (correlation: {correlation:.3f})")
-                    else:
-                        logger.info(f"   Using learned {param_name}: {ranges['median']:.3f}")
-            
-            # Override sentence_rhythm_variation to respect config target (Option A+C implementation)
-            # This allows manual config changes to take precedence over learned values
-            # for specific parameters we want to control directly
-            if 'sentence_rhythm_variation' in learned:
-                del learned['sentence_rhythm_variation']
-                logger.info("   ⚡ sentence_rhythm_variation override: using config value (not learned)")
-            
-            if learned:
-                logger.info(f"   ✅ Loaded {len(learned)} learned parameters from sweet spot ({filtered_count} filtered)")
-            
-            return learned
-            
-        except Exception as e:
-            logger.debug(f"   Could not load sweet spot parameters: {e}")
-            return {}
+        return {}
     
     def _calculate_parameter_correlations(self) -> Dict[str, float]:
         """
@@ -770,9 +708,9 @@ class QualityEvaluatedGenerator:
             logger.debug(f"   Could not calculate correlations: {e}")
             return {}
     
-    def _check_winston_detection(self, content: str, material_name: str, component_type: str) -> Dict[str, Any]:
+    def _check_grok_detection(self, content: str, material_name: str, component_type: str) -> Dict[str, Any]:
         """
-        Run Winston AI detection (for learning data collection).
+        Run Grok-only humanness detection.
         
         Returns:
             dict: {
@@ -782,78 +720,49 @@ class QualityEvaluatedGenerator:
                 'message': str
             }
         """
-        # Winston is required - fail-fast if not configured
-        if not self.winston_client:
-            raise RuntimeError("Winston client is required for AI detection")
-        
         try:
-            from generation.config.config_loader import get_config
-            from postprocessing.detection.winston_feedback_db import (
-                WinstonFeedbackDatabase,
-            )
-            from postprocessing.detection.winston_integration import WinstonIntegration
-            
-            config = get_config()
-            if 'winston_feedback_db_path' not in config.config:
-                raise KeyError("Missing required config key: winston_feedback_db_path")
-            db_path = config.config['winston_feedback_db_path']
-            if not db_path:
-                raise ValueError("winston_feedback_db_path must be configured and non-empty")
-            feedback_db = WinstonFeedbackDatabase(db_path)
-            
-            # Initialize Winston integration
-            winston = WinstonIntegration(
-                winston_client=self.winston_client,
-                feedback_db=feedback_db,
-                config=config.config
-            )
-            
-            # Use fully dynamic threshold from database learning (no fallback)
-            from learning.threshold_manager import ThresholdManager
-            threshold_manager = ThresholdManager(db_path='z-beam.db')
-            ai_threshold = threshold_manager.get_winston_threshold(use_learned=True)
-            logger.info(f"\n🤖 Running Winston AI detection...")
-            logger.info(f"   Using learned Winston threshold: {ai_threshold:.3f} (dynamic from DB)")
-            
-            # Calculate temperature for logging (metadata only)
-            from generation.config.dynamic_config import DynamicConfig
-            dynamic_config = DynamicConfig()
-            generation_temp = dynamic_config.calculate_temperature(component_type)
-            
-            # Detect (don't log yet - that happens post-save if passed)
-            winston_result = winston.detect_and_log(
-                text=content,
-                material=material_name,
+            logger.info("\n🧠 Running Grok-only humanness detection...")
+
+            if self.grok_humanness_evaluator is None:
+                from learning.grok_humanness_runtime import GrokHumannessRuntimeEvaluator
+                self.grok_humanness_evaluator = GrokHumannessRuntimeEvaluator()
+
+            author_id = self._get_author_id(material_name)
+            grok_payload = self.grok_humanness_evaluator.evaluate(
+                candidate_text=content,
+                domain=self.domain,
+                item_id=material_name,
                 component_type=component_type,
-                temperature=generation_temp,
+                author_id=author_id,
+                generation_id=None,
+                retry_session_id=None,
                 attempt=1,
-                max_attempts=1,
-                ai_threshold=ai_threshold
             )
-            
-            ai_score = winston_result['ai_score']
-            human_score = 1.0 - ai_score
-            
-            logger.info(f"   🎯 AI Score: {ai_score*100:.1f}% (threshold: {ai_threshold*100:.1f}%)")
-            logger.info(f"   👤 Human Score: {human_score*100:.1f}%")
-            
-            passed = ai_score <= ai_threshold
-            
+
+            aggregation = grok_payload['aggregation']
+            weighted_score = float(aggregation['weightedScore'])
+            human_score = weighted_score / 100.0
+            ai_score = 1.0 - human_score
+            passed = bool(grok_payload['gates']['pass'])
+
+            logger.info(f"   👤 Grok Human Score: {human_score*100:.1f}%")
+            logger.info(f"   🤖 Grok AI-Likeness Score: {ai_score*100:.1f}%")
+
             if passed:
-                logger.info("   ✅ Winston check PASSED")
+                logger.info("   ✅ Grok humanness check PASSED")
             else:
-                logger.warning("   ❌ Winston check FAILED - will retry with adjusted parameters")
-            
+                logger.warning("   ❌ Grok humanness check FAILED - will retry with adjusted parameters")
+
             return {
                 'passed': passed,
                 'human_score': human_score,
                 'ai_score': ai_score,
-                'threshold': ai_threshold,
-                'message': f"{'Passed' if passed else 'Failed'} Winston detection"
+                'threshold': None,
+                'message': f"{'Passed' if passed else 'Failed'} Grok humanness detection"
             }
                 
         except Exception as e:
-            raise RuntimeError(f"Winston detection failed: {e}") from e
+            raise RuntimeError(f"Grok humanness detection failed: {e}") from e
     
     def _log_attempt_for_learning(
         self,
@@ -862,7 +771,7 @@ class QualityEvaluatedGenerator:
         content: str,
         current_params: Dict[str, Any],
         evaluation: Any,
-        winston_result: Dict[str, Any],
+        grok_result: Dict[str, Any],
         structural_analysis: Any,
         attempt: int,
         passed_all_gates: bool,
@@ -885,7 +794,7 @@ class QualityEvaluatedGenerator:
             content: Generated content (string)
             current_params: Generation parameters used
             evaluation: SubjectiveEvaluation result
-            winston_result: Winston detection result
+            grok_result: Grok humanness detection result
             structural_analysis: StructuralAnalysis result
             attempt: Attempt number (1-5)
             passed_all_gates: Whether all quality gates passed
@@ -903,14 +812,14 @@ class QualityEvaluatedGenerator:
             if realism_score is None:
                 raise ValueError("Learning log missing both realism_score and overall_score")
             realism_normalized = realism_score / 10.0  # 0-10 scale → 0-1.0
-            if 'human_score' not in winston_result:
-                raise KeyError("Winston result missing required key: 'human_score'")
-            winston_human_score = winston_result['human_score']
-            if winston_human_score is None:
-                raise ValueError("Winston human_score must not be None")
+            if 'human_score' not in grok_result:
+                raise KeyError("Grok result missing required key: 'human_score'")
+            grok_human_score = grok_result['human_score']
+            if grok_human_score is None:
+                raise ValueError("Grok human_score must not be None")
             
-            # Composite score: Winston 40% + Realism 60%
-            overall_quality_score = (winston_human_score * 0.4) + (realism_normalized * 0.6)
+            # Composite score: Grok 40% + Realism 60%
+            overall_quality_score = (grok_human_score * 0.4) + (realism_normalized * 0.6)
 
             # Normalize structural score to 0-100 scale expected by learning system
             structural_score = 50.0
@@ -933,7 +842,7 @@ class QualityEvaluatedGenerator:
                 material_name=material_name,
                 component_type=component_type,
                 content=content,
-                winston_score=winston_human_score,
+                winston_score=grok_human_score,
                 realism_score=realism_score,
                 voice_authenticity_score=evaluation.voice_authenticity or 0.0,
                 structural_quality_score=structural_score,
@@ -949,6 +858,23 @@ class QualityEvaluatedGenerator:
             
             # Single unified logging call (replaces 3 separate database writes)
             generation_id = self.learning_system.log_generation(result)
+
+            # Criterion-level Grok humanness evaluation (additive learning signal)
+            if self.grok_humanness_evaluator is None:
+                from learning.grok_humanness_runtime import GrokHumannessRuntimeEvaluator
+                self.grok_humanness_evaluator = GrokHumannessRuntimeEvaluator()
+
+            grok_payload = self.grok_humanness_evaluator.evaluate(
+                candidate_text=content,
+                domain=self.domain,
+                item_id=material_name,
+                component_type=component_type,
+                author_id=author_id,
+                generation_id=generation_id,
+                retry_session_id=retry_session_id,
+                attempt=attempt,
+            )
+            grok_evaluation_id = self.learning_system.log_grok_evaluation(generation_id, grok_payload)
             
             logger.info(
                 f"   📊 Logged attempt {attempt} to learning system "
@@ -957,6 +883,14 @@ class QualityEvaluatedGenerator:
             print(
                 f"   📊 Logged attempt {attempt} to learning system "
                 f"(generation_id={generation_id}, quality={overall_quality_score:.2f})"
+            )
+            logger.info(
+                f"   🧠 Logged Grok humanness evaluation "
+                f"(grok_evaluation_id={grok_evaluation_id}, generation_id={generation_id})"
+            )
+            print(
+                f"   🧠 Logged Grok humanness evaluation "
+                f"(grok_evaluation_id={grok_evaluation_id}, generation_id={generation_id})"
             )
             
         except Exception as e:
@@ -992,20 +926,20 @@ class QualityEvaluatedGenerator:
         if not item_data:
             raise ValueError(f"Item '{material_name}' not found in {domain} data")
         
-        # FAIL-FAST: Support canonical author.id and legacy authorId; reject anything else.
+        # FAIL-FAST: author key is canonical — integer reference (source data) or nested object (frontmatter).
         author_id = None
-        author_field = item_data['author'] if 'author' in item_data else None
+        author_field = item_data.get('author')
         if isinstance(author_field, dict):
             if 'id' not in author_field:
                 raise KeyError(f"Item '{material_name}' author object missing required key: 'id'")
             author_id = author_field['id']
-        elif 'authorId' in item_data:
-            author_id = item_data['authorId']
+        elif isinstance(author_field, int):
+            author_id = author_field  # source data format: author: 4
 
         if author_id is None:
             raise ValueError(
                 f"Item '{material_name}' missing author identity. "
-                f"Expected author.id or authorId in {domain} data."
+                f"Expected 'author' integer or 'author.id' nested object in {domain} data."
             )
 
         if not isinstance(author_id, int):

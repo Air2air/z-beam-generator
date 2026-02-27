@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://z-beam.dev/schemas/grok-humanness-evaluation.schema.json",
+  "title": "Grok Humanness Evaluation",
+  "description": "Structured evaluator output for Grok-based humanness scoring and actionable feedback.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "evaluator",
+    "context",
+    "scores",
+    "aggregation",
+    "gates",
+    "actions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "evaluator": {
+      "type": "object",
+      "required": ["provider", "model", "mode", "promptVersion", "timestamp"],
+      "additionalProperties": false,
+      "properties": {
+        "provider": { "type": "string", "const": "grok" },
+        "model": { "type": "string", "minLength": 1 },
+        "mode": { "type": "string", "enum": ["strict", "advisory"] },
+        "promptVersion": { "type": "string", "minLength": 1 },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    },
+    "context": {
+      "type": "object",
+      "required": [
+        "domain",
+        "itemId",
+        "componentType",
+        "authorId",
+        "generationId",
+        "retrySessionId",
+        "attempt"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "domain": {
+          "type": "string",
+          "enum": ["materials", "contaminants", "compounds", "settings", "applications"]
+        },
+        "itemId": { "type": "string", "minLength": 1 },
+        "componentType": { "type": "string", "minLength": 1 },
+        "authorId": { "type": ["integer", "string"] },
+        "generationId": { "type": ["integer", "null"] },
+        "retrySessionId": { "type": ["string", "null"] },
+        "attempt": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "scores": {
+      "type": "object",
+      "required": [
+        "lexicalVariety",
+        "syntacticRhythm",
+        "discourseCoherence",
+        "specificityEvidence",
+        "personaFidelity",
+        "aiPatternSuppression"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "lexicalVariety": { "$ref": "#/$defs/criterionScore" },
+        "syntacticRhythm": { "$ref": "#/$defs/criterionScore" },
+        "discourseCoherence": { "$ref": "#/$defs/criterionScore" },
+        "specificityEvidence": { "$ref": "#/$defs/criterionScore" },
+        "personaFidelity": { "$ref": "#/$defs/criterionScore" },
+        "aiPatternSuppression": { "$ref": "#/$defs/criterionScore" }
+      }
+    },
+    "aggregation": {
+      "type": "object",
+      "required": ["weights", "weightedScore", "confidence", "scoreBand"],
+      "additionalProperties": false,
+      "properties": {
+        "weights": {
+          "type": "object",
+          "required": [
+            "lexicalVariety",
+            "syntacticRhythm",
+            "discourseCoherence",
+            "specificityEvidence",
+            "personaFidelity",
+            "aiPatternSuppression"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "lexicalVariety": { "type": "number", "minimum": 0, "maximum": 1 },
+            "syntacticRhythm": { "type": "number", "minimum": 0, "maximum": 1 },
+            "discourseCoherence": { "type": "number", "minimum": 0, "maximum": 1 },
+            "specificityEvidence": { "type": "number", "minimum": 0, "maximum": 1 },
+            "personaFidelity": { "type": "number", "minimum": 0, "maximum": 1 },
+            "aiPatternSuppression": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        },
+        "weightedScore": { "type": "number", "minimum": 0, "maximum": 100 },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "scoreBand": { "type": "string", "enum": ["excellent", "good", "borderline", "poor"] }
+      }
+    },
+    "gates": {
+      "type": "object",
+      "required": ["pass", "failReasons", "thresholds"],
+      "additionalProperties": false,
+      "properties": {
+        "pass": { "type": "boolean" },
+        "failReasons": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "maxItems": 20
+        },
+        "thresholds": {
+          "type": "object",
+          "required": ["overallMin", "confidenceMin", "criterionMins"],
+          "additionalProperties": false,
+          "properties": {
+            "overallMin": { "type": "number", "minimum": 0, "maximum": 100 },
+            "confidenceMin": { "type": "number", "minimum": 0, "maximum": 1 },
+            "criterionMins": {
+              "type": "object",
+              "required": [
+                "lexicalVariety",
+                "syntacticRhythm",
+                "discourseCoherence",
+                "specificityEvidence",
+                "personaFidelity",
+                "aiPatternSuppression"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "lexicalVariety": { "type": "number", "minimum": 0, "maximum": 100 },
+                "syntacticRhythm": { "type": "number", "minimum": 0, "maximum": 100 },
+                "discourseCoherence": { "type": "number", "minimum": 0, "maximum": 100 },
+                "specificityEvidence": { "type": "number", "minimum": 0, "maximum": 100 },
+                "personaFidelity": { "type": "number", "minimum": 0, "maximum": 100 },
+                "aiPatternSuppression": { "type": "number", "minimum": 0, "maximum": 100 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["priority", "criterion", "issue", "recommendation", "exampleRewrite"],
+        "additionalProperties": false,
+        "properties": {
+          "priority": { "type": "integer", "minimum": 1, "maximum": 5 },
+          "criterion": {
+            "type": "string",
+            "enum": [
+              "lexicalVariety",
+              "syntacticRhythm",
+              "discourseCoherence",
+              "specificityEvidence",
+              "personaFidelity",
+              "aiPatternSuppression"
+            ]
+          },
+          "issue": { "type": "string", "minLength": 1, "maxLength": 500 },
+          "recommendation": { "type": "string", "minLength": 1, "maxLength": 500 },
+          "exampleRewrite": { "type": "string", "minLength": 1, "maxLength": 1200 }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "criterionScore": {
+      "type": "object",
+      "required": ["score", "evidence", "issues"],
+      "additionalProperties": false,
+      "properties": {
+        "score": { "type": "number", "minimum": 0, "maximum": 100 },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": { "type": "string", "minLength": 1, "maxLength": 280 }
+        },
+        "issues": {
+          "type": "array",
+          "maxItems": 8,
+          "items": { "type": "string", "minLength": 1, "maxLength": 280 }
+        }
+      }
+    }
+  }
+}

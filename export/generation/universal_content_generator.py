@@ -343,12 +343,26 @@ class ContentGenerator(BaseGenerator):
         - Keeps `authorId` by default for backward compatibility.
         - If `remove_author_id: true` is passed in task config, removes `authorId`.
         """
-        # If already hydrated, preserve existing data.
-        if isinstance(frontmatter.get('author'), dict) and frontmatter['author'].get('id'):
+        author_id_field = config.get('author_id_field', 'authorId')
+        author_ref = None
+
+        existing_author = frontmatter.get('author')
+
+        # Already hydrated to minimum frontend contract.
+        if isinstance(existing_author, dict) and existing_author.get('id') and existing_author.get('name'):
             return frontmatter
 
-        author_id_field = config.get('author_id_field', 'authorId')
-        author_ref = frontmatter.get(author_id_field)
+        # Legacy/partial author object (e.g., {id: 3}) -> hydrate from id.
+        if isinstance(existing_author, dict) and existing_author.get('id') and not existing_author.get('name'):
+            author_ref = existing_author.get('id')
+
+        # Legacy scalar author (e.g., author: 3) -> hydrate from scalar.
+        elif existing_author is not None and not isinstance(existing_author, dict):
+            author_ref = existing_author
+
+        # Canonical source reference (authorId).
+        else:
+            author_ref = frontmatter.get(author_id_field)
 
         # No author reference available: no-op.
         if author_ref is None:
@@ -410,7 +424,9 @@ class ContentGenerator(BaseGenerator):
         Process and enhance relationships.
         Replaces: RelationshipResolutionEnricher, RelationshipRenamingEnricher
         """
-        domain = config.get('domain')
+        if 'domain' not in config or not str(config['domain']).strip():
+            raise ValueError("Breadcrumb generation requires non-empty 'domain' in task config")
+        domain = config['domain']
         
         if 'relationships' not in frontmatter:
             return frontmatter
@@ -473,9 +489,133 @@ class ContentGenerator(BaseGenerator):
                 del section_meta['pageDescription']
             if 'sectionDescription' not in section_meta:
                 section_meta['sectionDescription'] = ''
+
+        def _default_title_from_key(section_key: str) -> str:
+            return section_key.replace('_', ' ').replace('.', ' ').title()
+
+        def _default_metadata_from_key(section_key: str) -> str:
+            return section_key
+
+        def _order_section_meta_fields(section_meta: Dict[str, Any]) -> Dict[str, Any]:
+            preferred_order = [
+                'sectionTitle',
+                'sectionDescription',
+                'sectionMetadata',
+                'icon',
+                'order',
+                'variant',
+                '_open',
+            ]
+
+            ordered: Dict[str, Any] = {}
+            for field_name in preferred_order:
+                if field_name in section_meta:
+                    ordered[field_name] = section_meta[field_name]
+
+            for field_name, field_value in section_meta.items():
+                if field_name not in ordered:
+                    ordered[field_name] = field_value
+
+            return ordered
+
+        def _order_section_container_fields(section_data: Dict[str, Any]) -> None:
+            if '_section' not in section_data:
+                return
+
+            reordered = {'_section': section_data['_section']}
+            for field_name, field_value in section_data.items():
+                if field_name == '_section':
+                    continue
+                reordered[field_name] = field_value
+
+            section_data.clear()
+            section_data.update(reordered)
+
+        def _finalize_section_ordering(section_data: Dict[str, Any]) -> None:
+            section_meta = section_data.get('_section')
+            if not isinstance(section_meta, dict):
+                return
+
+            section_data['_section'] = _order_section_meta_fields(section_meta)
+            _order_section_container_fields(section_data)
+
+        def _populate_section_metadata_fields(
+            section_meta: Dict[str, Any],
+            metadata: Dict[str, Any],
+            section_key: str,
+            section_data: Dict[str, Any],
+        ) -> None:
+            if 'sectionTitle' not in section_meta:
+                section_meta['sectionTitle'] = (
+                    metadata.get('sectionTitle')
+                    or metadata.get('title')
+                    or _default_title_from_key(section_key)
+                )
+            if 'sectionDescription' not in section_meta:
+                section_meta['sectionDescription'] = (
+                    metadata.get('sectionDescription')
+                    or section_data.get('description')
+                    or metadata.get('description', '')
+                )
+            if 'sectionMetadata' not in section_meta:
+                section_meta['sectionMetadata'] = (
+                    metadata.get('sectionMetadata')
+                    or metadata.get('metadata')
+                    or _default_metadata_from_key(section_key)
+                )
+            if 'icon' not in section_meta:
+                section_meta['icon'] = metadata.get('icon', 'info')
+            if 'order' not in section_meta:
+                section_meta['order'] = metadata.get('order', 100)
+            if 'variant' not in section_meta:
+                section_meta['variant'] = metadata.get('variant', 'default')
+
+            _normalize_section_description(section_meta)
+            _finalize_section_ordering(section_data)
+
+        def _enforce_required_section_fields(
+            section_meta: Dict[str, Any],
+            section_key: str,
+            section_data: Dict[str, Any]
+        ) -> bool:
+            updated = False
+
+            if 'sectionTitle' not in section_meta or not str(section_meta.get('sectionTitle', '')).strip():
+                section_meta['sectionTitle'] = _default_title_from_key(section_key)
+                updated = True
+
+            if 'sectionDescription' not in section_meta or section_meta.get('sectionDescription') is None:
+                section_meta['sectionDescription'] = section_data.get('description', '')
+                updated = True
+
+            if 'sectionMetadata' not in section_meta or not str(section_meta.get('sectionMetadata', '')).strip():
+                section_meta['sectionMetadata'] = _default_metadata_from_key(section_key)
+                updated = True
+
+            _normalize_section_description(section_meta)
+            section_data['_section'] = _order_section_meta_fields(section_meta)
+            _order_section_container_fields(section_data)
+            return updated
+
+        def _enforce_all_sections(node: Any, parent_key: str = '', parent_node: Dict[str, Any] = None) -> int:
+            updates = 0
+
+            if isinstance(node, dict):
+                for key, value in list(node.items()):
+                    if key == '_section' and isinstance(value, dict):
+                        section_data = parent_node if isinstance(parent_node, dict) else {}
+                        if _enforce_required_section_fields(value, parent_key or 'section', section_data):
+                            updates += 1
+                    else:
+                        updates += _enforce_all_sections(value, key, node)
+            elif isinstance(node, list):
+                for item in node:
+                    updates += _enforce_all_sections(item, parent_key, parent_node)
+
+            return updates
         
-        # ROOT-LEVEL SECTIONS: Handle materialCharacteristics, laserMaterialInteraction, components, etc.
-        root_level_sections = ['materialCharacteristics', 'laserMaterialInteraction', 'components']
+        # ROOT-LEVEL SECTIONS: Handle materialCharacteristics, laserMaterialInteraction, faq, components, etc.
+        root_level_sections = ['materialCharacteristics', 'laserMaterialInteraction', 'faq', 'components']
         
         for section_key in root_level_sections:
             if section_key in frontmatter and isinstance(frontmatter[section_key], dict):
@@ -493,19 +633,8 @@ class ContentGenerator(BaseGenerator):
                     
                     # Get existing _section or empty dict
                     section_meta = section_data['_section']
-                    
-                    # Add missing required fields (don't overwrite existing)
-                    if 'sectionTitle' not in section_meta:
-                        section_meta['sectionTitle'] = metadata.get('title', section_key.replace('_', ' ').title())
-                    if 'sectionDescription' not in section_meta:
-                        section_meta['sectionDescription'] = section_data.get('description', metadata.get('description', ''))
-                    if 'icon' not in section_meta:
-                        section_meta['icon'] = metadata.get('icon', 'info')
-                    if 'order' not in section_meta:
-                        section_meta['order'] = metadata.get('order', 100)
-                    if 'variant' not in section_meta:
-                        section_meta['variant'] = metadata.get('variant', 'default')
-                    _normalize_section_description(section_meta)
+
+                    _populate_section_metadata_fields(section_meta, metadata, section_key, section_data)
         
         # PROPERTIES SECTIONS: Handle properties.materialCharacteristics, properties.laserMaterialInteraction
         if 'properties' in frontmatter and isinstance(frontmatter['properties'], dict):
@@ -524,19 +653,8 @@ class ContentGenerator(BaseGenerator):
                         
                         # Get existing _section or empty dict
                         section_meta = prop_data['_section']
-                        
-                        # Add missing required fields
-                        if 'sectionTitle' not in section_meta:
-                            section_meta['sectionTitle'] = metadata.get('sectionTitle', prop_key.replace('_', ' ').title())
-                        if 'sectionDescription' not in section_meta:
-                            section_meta['sectionDescription'] = metadata.get('sectionDescription', '')
-                        if 'icon' not in section_meta:
-                            section_meta['icon'] = metadata.get('icon', 'info')
-                        if 'order' not in section_meta:
-                            section_meta['order'] = metadata.get('order', 100)
-                        if 'variant' not in section_meta:
-                            section_meta['variant'] = metadata.get('variant', 'default')
-                        _normalize_section_description(section_meta)
+
+                        _populate_section_metadata_fields(section_meta, metadata, metadata_key, prop_data)
         
         # COMPONENT SECTIONS: Handle components.micro, components.subtitle, etc.
         if 'components' in frontmatter and isinstance(frontmatter['components'], dict):
@@ -548,19 +666,8 @@ class ContentGenerator(BaseGenerator):
                     
                     if metadata:
                         section_meta = component_data['_section']
-                        
-                        # Add missing required fields
-                        if 'sectionTitle' not in section_meta:
-                            section_meta['sectionTitle'] = metadata.get('sectionTitle', component_key.replace('_', ' ').title())
-                        if 'sectionDescription' not in section_meta:
-                            section_meta['sectionDescription'] = metadata.get('sectionDescription', '')
-                        if 'icon' not in section_meta:
-                            section_meta['icon'] = metadata.get('icon', 'info')
-                        if 'order' not in section_meta:
-                            section_meta['order'] = metadata.get('order', 100)
-                        if 'variant' not in section_meta:
-                            section_meta['variant'] = metadata.get('variant', 'default')
-                        _normalize_section_description(section_meta)
+
+                        _populate_section_metadata_fields(section_meta, metadata, metadata_key, component_data)
                         
                         sections_added += 1
         
@@ -600,11 +707,17 @@ class ContentGenerator(BaseGenerator):
                     if not isinstance(section_data, dict):
                         continue
                     
-                    # Build metadata key (category.section_key)
-                    metadata_key = f"{category}.{section_key}"
-                    
-                    # Lookup metadata from config (try full key first, then just section_key)
-                    metadata = configured_metadata.get(metadata_key) or configured_metadata.get(section_key)
+                    metadata_keys = [
+                        f"relationships.{category}.{section_key}",
+                        f"{category}.{section_key}",
+                        section_key,
+                    ]
+
+                    metadata = None
+                    for metadata_key in metadata_keys:
+                        if metadata_key in configured_metadata:
+                            metadata = configured_metadata[metadata_key]
+                            break
                     
                     # Fall back to default if not in config
                     if not metadata:
@@ -620,22 +733,18 @@ class ContentGenerator(BaseGenerator):
                         
                         # Get existing _section or empty dict
                         section_meta = section_data['_section']
-                        
-                        # Add missing required fields (don't overwrite existing)
-                        if 'sectionTitle' not in section_meta:
-                            section_meta['sectionTitle'] = metadata.get('title', section_key.replace('_', ' ').title())
-                        if 'sectionDescription' not in section_meta:
-                            section_meta['sectionDescription'] = section_data.get('description', metadata.get('description', ''))
-                        if 'icon' not in section_meta:
-                            section_meta['icon'] = metadata.get('icon', 'info')
-                        if 'order' not in section_meta:
-                            section_meta['order'] = metadata.get('order', 100)
-                        if 'variant' not in section_meta:
-                            section_meta['variant'] = metadata.get('variant', 'default')
-                        _normalize_section_description(section_meta)
-                        
-                        # Note: sectionMetadata field is deprecated as of Jan 2026
-                        # All metadata should be directly in _section, not nested in sectionMetadata
+
+                        _populate_section_metadata_fields(
+                            section_meta,
+                            metadata,
+                            f"relationships.{category}.{section_key}",
+                            section_data,
+                        )
+
+        # UNIVERSAL ENFORCEMENT: Every _section must have both required text fields.
+        universal_updates = _enforce_all_sections(frontmatter)
+        if universal_updates:
+            sections_added += universal_updates
         
         print(f"✅ section_metadata: Added to {sections_added} sections")
         return frontmatter
@@ -645,9 +754,16 @@ class ContentGenerator(BaseGenerator):
         Generate SEO description from source field.
         Replaces: SEODescriptionGenerator
         """
-        source_field = config.get('source_field', 'description')
-        output_field = config.get('output_field', 'meta_description')
-        max_length = config.get('max_length', 160)
+        required_keys = ['source_field', 'output_field', 'max_length']
+        missing_keys = [key for key in required_keys if key not in config]
+        if missing_keys:
+            raise ValueError(
+                f"seo_description task missing required config keys: {', '.join(missing_keys)}"
+            )
+
+        source_field = config['source_field']
+        output_field = config['output_field']
+        max_length = config['max_length']
         
         source_text = frontmatter.get(source_field, '')
         
@@ -676,9 +792,16 @@ class ContentGenerator(BaseGenerator):
         Generate SEO excerpt (longer than description).
         Replaces: SEOExcerptGenerator
         """
-        source_field = config.get('source_field', 'description')
-        output_field = config.get('output_field', 'seo_excerpt')
-        max_length = config.get('max_length', 300)
+        required_keys = ['source_field', 'output_field', 'max_length']
+        missing_keys = [key for key in required_keys if key not in config]
+        if missing_keys:
+            raise ValueError(
+                f"seo_excerpt task missing required config keys: {', '.join(missing_keys)}"
+            )
+
+        source_field = config['source_field']
+        output_field = config['output_field']
+        max_length = config['max_length']
         
         source_text = frontmatter.get(source_field, '')
         
@@ -728,12 +851,13 @@ class ContentGenerator(BaseGenerator):
             })
 
         # Add current page label; href=null marks it as the active/current crumb
-        page_name = frontmatter.get('name') or frontmatter.get('page_title', '')
-        if page_name:
-            breadcrumbs.append({
-                'label': page_name,
-                'href': None  # null in YAML — current page has no link
-            })
+        if 'name' not in frontmatter or not str(frontmatter['name']).strip():
+            raise ValueError("Breadcrumb generation requires non-empty frontmatter 'name'")
+        page_name = frontmatter['name']
+        breadcrumbs.append({
+            'label': page_name,
+            'href': None  # null in YAML — current page has no link
+        })
 
         # 'breadcrumb' (singular) matches frontend ArticleMetadata type and
         # generateBreadcrumbs() in app/utils/breadcrumbs.ts
@@ -933,6 +1057,113 @@ class ContentGenerator(BaseGenerator):
         Replaces: FieldOrderEnricher
         """
         domain = config.get('domain')
+
+        def _load_machine_settings_section_metadata() -> Dict[str, Any]:
+            schema_path = Path(__file__).parent.parent.parent / 'data' / 'schemas' / 'section_display_schema.yaml'
+            if not schema_path.exists():
+                raise FileNotFoundError(f"Missing required section schema file: {schema_path}")
+
+            with open(schema_path, 'r') as schema_file:
+                schema_data = yaml.safe_load(schema_file)
+
+            if not isinstance(schema_data, dict):
+                raise TypeError("section_display_schema.yaml must contain a dictionary")
+
+            sections = schema_data.get('sections')
+            if not isinstance(sections, dict):
+                raise TypeError("section_display_schema.yaml missing required dictionary key: sections")
+
+            machine_metadata = sections.get('machineSettings')
+            if not isinstance(machine_metadata, dict):
+                raise KeyError("section_display_schema.yaml missing required sections.machineSettings metadata")
+
+            return machine_metadata
+
+        def _enforce_settings_machine_settings_contract(payload: Dict[str, Any]) -> None:
+            if domain != 'settings':
+                return
+
+            machine_settings = payload.get('machineSettings')
+            if not isinstance(machine_settings, dict):
+                return
+
+            for leaf_key, leaf_value in machine_settings.items():
+                if leaf_key == '_section' or not isinstance(leaf_value, dict):
+                    continue
+                if 'description' in leaf_value:
+                    del leaf_value['description']
+
+            section_meta = machine_settings.get('_section')
+            if not isinstance(section_meta, dict):
+                section_meta = {}
+                machine_settings['_section'] = section_meta
+
+            metadata = _load_machine_settings_section_metadata()
+
+            if 'sectionTitle' not in section_meta or not str(section_meta.get('sectionTitle', '')).strip():
+                section_meta['sectionTitle'] = metadata.get('sectionTitle') or metadata.get('title') or 'Machine Settings'
+            if 'sectionDescription' not in section_meta or section_meta.get('sectionDescription') is None:
+                section_meta['sectionDescription'] = metadata.get('sectionDescription') or metadata.get('description') or ''
+            if 'sectionMetadata' not in section_meta or not str(section_meta.get('sectionMetadata', '')).strip():
+                section_meta['sectionMetadata'] = metadata.get('sectionMetadata') or metadata.get('metadata') or 'machineSettings'
+            if 'icon' not in section_meta:
+                section_meta['icon'] = metadata.get('icon', 'settings')
+            if 'order' not in section_meta:
+                section_meta['order'] = metadata.get('order', 75)
+            if 'variant' not in section_meta:
+                section_meta['variant'] = metadata.get('variant', 'default')
+
+        def _slugify_section_key(path_parts: List[str]) -> str:
+            return '.'.join(path_parts) if path_parts else 'section'
+
+        def _enforce_section_contract(node: Any, path_parts: Optional[List[str]] = None) -> None:
+            if path_parts is None:
+                path_parts = []
+
+            if isinstance(node, dict):
+                section_meta = node.get('_section')
+                if isinstance(section_meta, dict):
+                    if 'sectionMetadata' not in section_meta or not str(section_meta.get('sectionMetadata', '')).strip():
+                        section_meta['sectionMetadata'] = _slugify_section_key(path_parts)
+
+                    ordered_meta: Dict[str, Any] = {}
+                    preferred_meta_order = [
+                        'sectionTitle',
+                        'sectionDescription',
+                        'sectionMetadata',
+                        'icon',
+                        'order',
+                        'variant',
+                        '_open',
+                    ]
+                    for field_name in preferred_meta_order:
+                        if field_name in section_meta:
+                            ordered_meta[field_name] = section_meta[field_name]
+                    for field_name, field_value in section_meta.items():
+                        if field_name not in ordered_meta:
+                            ordered_meta[field_name] = field_value
+
+                    node['_section'] = ordered_meta
+
+                    reordered_node: Dict[str, Any] = {'_section': node['_section']}
+                    for field_name, field_value in node.items():
+                        if field_name == '_section':
+                            continue
+                        reordered_node[field_name] = field_value
+                    node.clear()
+                    node.update(reordered_node)
+
+                for key, value in list(node.items()):
+                    if key == '_section':
+                        continue
+                    _enforce_section_contract(value, [*path_parts, key])
+
+            elif isinstance(node, list):
+                for item in node:
+                    _enforce_section_contract(item, path_parts)
+
+        _enforce_settings_machine_settings_contract(frontmatter)
+        _enforce_section_contract(frontmatter)
         
         # Import field validator
         from shared.validation.field_order import FrontmatterFieldOrderValidator
@@ -947,9 +1178,17 @@ class ContentGenerator(BaseGenerator):
         Expand library relationships with full data.
         Replaces: LibraryEnrichmentProcessor
         """
-        library_config = config.get('library_config', {})
-        
-        if not library_config.get('enabled', False):
+        if 'library_config' not in config or not isinstance(config['library_config'], dict):
+            raise ValueError("library_enrichment task requires 'library_config' mapping")
+
+        library_config = config['library_config']
+        if 'enabled' not in library_config:
+            raise ValueError("library_enrichment.library_config missing required key: enabled")
+
+        if not isinstance(library_config['enabled'], bool):
+            raise TypeError("library_enrichment.library_config.enabled must be boolean")
+
+        if not library_config['enabled']:
             return frontmatter
         
         # This would integrate with library system
@@ -1073,7 +1312,9 @@ class ContentGenerator(BaseGenerator):
             'options': {'autoOpenFirst': True, 'sortBy': 'severity'}
         }
         """
-        target_field = task_config.get('target_field', 'operational.expert_answers')
+        if 'target_field' not in task_config or not str(task_config['target_field']).strip():
+            raise ValueError("normalize_expert_answers task requires non-empty 'target_field'")
+        target_field = task_config['target_field']
         
         # Get FAQ data from frontmatter
         faq_items = frontmatter.get('faq', [])
@@ -1085,10 +1326,15 @@ class ContentGenerator(BaseGenerator):
         author_info = frontmatter.get('author', {})
         expert_info = None
         if author_info and isinstance(author_info, dict):
+            for required_author_key in ['name', 'title', 'expertise']:
+                if required_author_key not in author_info:
+                    raise ValueError(
+                        f"normalize_expert_answers requires author.{required_author_key} when author block exists"
+                    )
             expert_info = {
-                'name': author_info.get('name', ''),
-                'title': author_info.get('title', ''),
-                'expertise': author_info.get('expertise', [])
+                'name': author_info['name'],
+                'title': author_info['title'],
+                'expertise': author_info['expertise']
             }
         
         # Severity keywords for classification
@@ -1105,12 +1351,19 @@ class ContentGenerator(BaseGenerator):
             if not isinstance(faq, dict):
                 continue
             
-            question = faq.get('question', '')
-            answer = faq.get('answer', '')
+            if 'question' not in faq or 'answer' not in faq:
+                raise ValueError(
+                    f"normalize_expert_answers faq item at index {idx} missing required 'question' or 'answer'"
+                )
+
+            question = faq['question']
+            answer = faq['answer']
             topic_keyword = faq.get('topic_keyword', '')
-            
+
             if not question or not answer:
-                continue
+                raise ValueError(
+                    f"normalize_expert_answers faq item at index {idx} has empty question/answer"
+                )
             
             # Generate ID from topic_keyword or question
             id_source = topic_keyword if topic_keyword else question

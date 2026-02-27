@@ -36,7 +36,7 @@ This document consolidates all API error handling procedures, emphasizing the **
 **API Response Objects are Insufficient:**
 ```json
 {
-  "winston": {
+  "grok": {
     "success": false,
     "response_time": 14.275,
     "token_count": null,
@@ -59,7 +59,7 @@ SSLError: [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name
 
 1. **Run API Test**
 ```bash
-terminal_id = run_in_terminal("python3 -c 'from api.client_manager import test_api_connectivity; test_api_connectivity(\"winston\")'")
+terminal_id = run_in_terminal("python3 -c 'from api.client_manager import test_api_connectivity; test_api_connectivity(\"grok\")'")
 ```
 
 2. **CRITICAL: Read Terminal Output**
@@ -69,24 +69,24 @@ terminal_output = get_terminal_output(terminal_id)
 
 3. **Use Diagnostic Tool**
 ```bash
-python3 scripts/tools/api_terminal_diagnostics.py winston content/components/text/alumina-laser-cleaning.md
+python3 scripts/tools/api_terminal_diagnostics.py grok content/components/text/alumina-laser-cleaning.md
 ```
 
 ## Common Error Patterns
 
-### 1. Winston API SSL/TLS Errors
+### 1. Grok API SSL/TLS Errors
 
 **Terminal Pattern:**
 ```
 🔌 [API CLIENT] Establishing connection...
 🔌 [API CLIENT] Connection failed on attempt 1, retrying in 1.0s...
-HTTPSConnectionPool(host='api.winston.ai', port=443): Max retries exceeded
+HTTPSConnectionPool(host='api.x.ai', port=443): Max retries exceeded
 (Caused by SSLError(SSLError(1, '[SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name')))
 ```
 
 **Root Cause:** SSL certificate/hostname verification failure  
 **Impact:** Complete API failure, content generation truncated  
-**Solution:** Updated endpoint to `https://api.gowinston.ai`
+**Solution:** Updated endpoint to `https://api.x.ai`
 
 ### 2. Connection Timeout Errors
 
@@ -177,7 +177,7 @@ When API failures occur, check content files for:
 
 ### Example Impact Correlation
 
-**Winston SSL Error + Content Truncation:**
+**Grok SSL Error + Content Truncation:**
 ```
 Terminal: 🔌 [API CLIENT] Connection error after 4 attempts
 Content:  "This mechanism, known as 'cold ablation,' vaporizes the contaminant layer before significant" [ENDS ABRUPTLY]
@@ -191,13 +191,13 @@ Result:   Direct correlation between SSL failure and content truncation
 python3 scripts/tools/api_terminal_diagnostics.py <provider> [content_file]
 
 # Example with content impact analysis
-python3 scripts/tools/api_terminal_diagnostics.py winston content/components/text/alumina-laser-cleaning.md
+python3 scripts/tools/api_terminal_diagnostics.py grok content/components/text/alumina-laser-cleaning.md
 ```
 
 ### 2. Provider-Specific Testing
 ```bash
 # Test individual providers
-python3 -c "from api.client_manager import test_api_connectivity; test_api_connectivity('winston')"
+python3 -c "from api.client_manager import test_api_connectivity; test_api_connectivity('grok')"
 python3 -c "from api.client_manager import test_api_connectivity; test_api_connectivity('deepseek')"
 python3 -c "from api.client_manager import test_api_connectivity; test_api_connectivity('grok')"
 ```
@@ -216,7 +216,7 @@ python3 -c "from api.client_manager import validate_api_environment; print(valid
 # Test endpoints directly
 python3 -c "
 import requests
-endpoints = ['https://api.winston.ai', 'https://api.gowinston.ai', 'https://api.deepseek.com']
+endpoints = ['https://api.x.ai', 'https://api.deepseek.com']
 for endpoint in endpoints:
     try:
         response = requests.get(endpoint, timeout=5)
@@ -228,13 +228,13 @@ for endpoint in endpoints:
 
 ## Provider-Specific Error Handling
 
-### Winston AI Detection Service
+### Grok humanness Detection Service
 
 **Current Configuration:**
 ```python
-"winston": {
-    "name": "Winston.ai",
-    "base_url": "https://api.gowinston.ai",  # FIXED: Updated from api.winston.ai
+"grok": {
+    "name": "Grok",
+    "base_url": "https://api.x.ai",  # FIXED: Updated from api.x.ai
     "model": "ai-detection",
     "service_type": "ai_detection",
 }
@@ -246,7 +246,7 @@ for endpoint in endpoints:
 - Rate limiting on free tier
 
 **Solutions:**
-- Use corrected endpoint: `https://api.gowinston.ai`
+- Use corrected endpoint: `https://api.x.ai`
 - Implement proper timeout handling
 - Monitor usage against rate limits
 
@@ -301,7 +301,7 @@ for endpoint in endpoints:
 ### 1. Critical API Failure (Production)
 ```bash
 # Immediate diagnosis
-python3 scripts/tools/api_terminal_diagnostics.py winston
+python3 scripts/tools/api_terminal_diagnostics.py grok
 
 # Check all providers
 python3 run.py --test-api
@@ -310,7 +310,7 @@ python3 run.py --test-api
 python3 run.py --check-env
 
 # Test network connectivity
-ping api.winston.ai
+ping api.x.ai
 ping api.deepseek.com
 ping api.x.ai
 ```
@@ -343,7 +343,7 @@ python3 run.py --material "Alumina" --components "text"
 python3 -c "
 import ssl
 import socket
-hostname = 'api.winston.ai'
+hostname = 'api.x.ai'
 context = ssl.create_default_context()
 with socket.create_connection((hostname, 443)) as sock:
     with context.wrap_socket(sock, server_hostname=hostname) as ssock:
@@ -351,7 +351,7 @@ with socket.create_connection((hostname, 443)) as sock:
 "
 
 # Check certificate details
-openssl s_client -connect api.winston.ai:443 -servername api.winston.ai
+openssl s_client -connect api.x.ai:443 -servername api.x.ai
 ```
 
 ## Prevention & Monitoring
@@ -362,7 +362,7 @@ openssl s_client -connect api.winston.ai:443 -servername api.winston.ai
 #!/bin/bash
 echo "=== API Health Check $(date) ==="
 python3 run.py --test-api
-python3 scripts/tools/api_terminal_diagnostics.py winston
+python3 scripts/tools/api_terminal_diagnostics.py grok
 python3 scripts/tools/api_terminal_diagnostics.py deepseek
 python3 scripts/tools/api_terminal_diagnostics.py grok
 ```
@@ -385,7 +385,7 @@ with open(sys.argv[1], 'r') as f:
 python3 -c "
 from api.client_manager import test_api_connectivity
 import time
-providers = ['winston', 'deepseek', 'grok']
+providers = ['grok', 'deepseek']
 for provider in providers:
     start = time.time()
     result = test_api_connectivity(provider)

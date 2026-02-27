@@ -170,7 +170,7 @@ Focus on qualitative descriptions only.
 **In Generator Code** (`generation/core/`):
 - ✅ API calls (`api_client.generate()`)
 - ✅ Parameter application (`temperature=0.7`)
-- ✅ Quality validation (Winston, realism gates)
+- ✅ Quality validation (Grok, realism gates)
 - ✅ Retry logic (adaptive thresholds)
 - ✅ Template loading (`_load_prompt_template()`)
 - ✅ Data flow (reading config, writing results)
@@ -543,7 +543,7 @@ class QualityEvaluatedGenerator:
         self.data_manager.save_content(material_name, component_type, content)
         
         # Stage 5: Evaluate quality for learning
-        quality = self._evaluate_quality(content)  # Winston, Realism, Structural
+        quality = self._evaluate_quality(content)  # Grok, Realism, Structural
         
         # Stage 6: Log to learning database
         self._log_to_learning_db(material_name, component_type, content, quality)

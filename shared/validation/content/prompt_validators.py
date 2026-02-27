@@ -781,6 +781,7 @@ class PromptCoherenceValidator:
     3. Requirements clear and non-contradictory
     4. No duplicate/conflicting instructions between sections
     5. Proper separation: Context → Voice → Humanness → Requirements → Output
+    6. Content/component sections remain content-only (no voice/humanness directives)
     
     Example:
         validator = PromptCoherenceValidator()
@@ -939,6 +940,54 @@ class PromptCoherenceValidator:
                         section1="VOICE",
                         evidence1=voice_text[:200],
                         suggestion="Move content instructions to component template"
+                    ))
+
+        # Component/content section should remain content-only; no voice/humanness directives
+        if 'component' in sections:
+            comp_start, comp_end = sections['component']
+            comp_text = '\n'.join(lines[comp_start:comp_end+1])
+            comp_text_lower = comp_text.lower()
+
+            voice_markers = [
+                'voice:',
+                'tone',
+                'regional patterns',
+                'core style',
+                'forbidden phrases',
+                'esl traits',
+                'persona',
+            ]
+
+            humanness_markers = [
+                'humanness',
+                'anti-ai',
+                'vary sentence',
+                'mix lengths',
+                'structural variation',
+            ]
+
+            for marker in voice_markers:
+                if marker in comp_text_lower:
+                    result.add_issue(CoherenceIssue(
+                        issue_type=CoherenceIssueType.SEPARATION_VIOLATION,
+                        severity="ERROR",
+                        message=f"Voice directive '{marker}' found in component/content section",
+                        section1="COMPONENT",
+                        section2="VOICE",
+                        evidence1=comp_text[:200],
+                        suggestion="Keep domain content prompts content-only; keep voice directives centralized in VOICE section"
+                    ))
+
+            for marker in humanness_markers:
+                if marker in comp_text_lower:
+                    result.add_issue(CoherenceIssue(
+                        issue_type=CoherenceIssueType.SEPARATION_VIOLATION,
+                        severity="ERROR",
+                        message=f"Humanness directive '{marker}' found in component/content section",
+                        section1="COMPONENT",
+                        section2="HUMANNESS",
+                        evidence1=comp_text[:200],
+                        suggestion="Keep domain content prompts content-only; keep humanness directives centralized in HUMANNESS layer"
                     ))
     
     def _check_contradictions(

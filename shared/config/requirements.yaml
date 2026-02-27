@@ -789,7 +789,7 @@ fail_fast:
       
       required_env_vars:
         - "DEEPSEEK_API_KEY"
-        - "WINSTON_API_KEY"
+        - "GROK_API_KEY"
       
       configuration_integrity:
         - "Materials.yaml schema compliance"
@@ -995,7 +995,7 @@ system_integration:
     
     rate_limiting:
       deepseek: "Respect API rate limits"
-      winston: "Batch processing optimization"
+      grok: "Batch processing optimization"
       error_handling: "Queue management + retry"
     
     response_caching:

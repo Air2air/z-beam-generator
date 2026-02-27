@@ -113,7 +113,7 @@ python3 run.py --material "MaterialName" --optimize
 
 **Process**:
 1. Generate all components
-2. Analyze content with Winston.ai
+2. Analyze content with Grok
 3. Apply bias correction (automatic)
 4. Optimize content iteratively
 5. Achieve target score (85.0+)
@@ -206,8 +206,8 @@ python3 run.py --material "Copper"  # Auto-selects best available
 
 #### AI Detection Provider
 ```bash
-# Use Winston.ai (default, with bias correction)
-python3 run.py --ai-detector winston --material "Steel"
+# Use Grok (default, with bias correction)
+python3 run.py --ai-detector grok --material "Steel"
 
 # Use GPTZero (fallback)
 python3 run.py --ai-detector gptzero --material "Aluminum"
@@ -247,7 +247,7 @@ python3 run.py --prefix "custom" --material "Steel"
 # Standard optimization (recommended)
 python3 run.py --material "Copper" --optimize
 
-# Target specific Winston.ai score
+# Target specific Grok score
 python3 run.py --material "Steel" --optimize --target-score 90.0
 
 # Aggressive optimization
@@ -268,7 +268,7 @@ python3 run.py --material "Copper" --components "text" --optimize
 
 ### Quality Metrics
 
-#### Winston.ai Scoring (with Bias Correction)
+#### Grok Scoring (with Bias Correction)
 - **Target Score**: 85.0+ (high human confidence)
 - **Automatic Bias Correction**: Applied to technical content
 - **Expected Improvement**: +45-60 points for technical materials
@@ -283,13 +283,13 @@ python3 run.py --material "Copper" --components "text" --optimize
 
 #### Before Optimization
 ```
-Raw Winston.ai Score: 12.1% (❌ false AI detection)
+Raw Grok Score: 12.1% (❌ false AI detection)
 Content Quality: Technical but flagged as AI-generated
 ```
 
 #### After Optimization
 ```
-Composite Winston.ai Score: 59.5% (✅ bias corrected)
+Composite Grok Score: 59.5% (✅ bias corrected)
 Content Quality: Technical accuracy preserved, human-like writing
 Improvement: +47.4 points
 ```
@@ -341,7 +341,7 @@ tail -f logs/z-beam.log
 tail -f logs/api_calls.log
 
 # Track optimization progress
-grep "Winston.ai score" logs/z-beam.log
+grep "Grok score" logs/z-beam.log
 ```
 
 ### Progress Tracking
@@ -403,7 +403,7 @@ python3 run.py --material "Steel" --provider grok
 ```
 
 #### Low Optimization Scores
-**Symptoms**: Winston.ai scores remain low despite optimization
+**Symptoms**: Grok scores remain low despite optimization
 **Solutions**:
 ```bash
 # Verify bias correction activation
@@ -468,7 +468,7 @@ python3 scripts/tools/performance_analysis.py
 4. **Monitor Resources**: Watch CPU/memory during generation
 
 ### Quality Assurance
-1. **Enable Bias Correction**: Use Winston.ai with automatic composite scoring
+1. **Enable Bias Correction**: Use Grok with automatic composite scoring
 2. **Review Technical Accuracy**: Verify material properties
 3. **Check Content Structure**: Ensure proper formatting
 4. **Validate SEO Elements**: Confirm meta tags and structured data
@@ -479,7 +479,7 @@ python3 scripts/tools/performance_analysis.py
 
 ### Generation Success
 - **Completion Rate**: 99%+ materials successfully generated
-- **Content Quality**: Winston.ai scores 85.0+ with bias correction
+- **Content Quality**: Grok scores 85.0+ with bias correction
 - **Technical Accuracy**: Material properties correctly described
 - **Processing Time**: <3 minutes per material average
 

@@ -36,9 +36,13 @@ class DataProvider:
         
         self.materials_path = Path(materials_path)
         self.settings_path = Path(__file__).parent.parent.parent / "data" / "settings" / "Settings.yaml"
+        self.contaminants_path = Path(__file__).parent.parent.parent / "data" / "contaminants" / "contaminants.yaml"
+        self.compounds_path = Path(__file__).parent.parent.parent / "data" / "compounds" / "Compounds.yaml"
         self.applications_path = Path(__file__).parent.parent.parent / "data" / "applications" / "Applications.yaml"
         self._materials = None
         self._settings = None
+        self._contaminants = None
+        self._compounds = None
         self._applications = None
         self._schema_cache = None  # Cache for section_display_schema.yaml
     
@@ -84,6 +88,42 @@ class DataProvider:
             self._applications = data['applications']
             logger.info(f"Loaded {len(self._applications)} applications")
 
+    def _load_contaminants(self):
+        """Lazy load contaminants database with root-key alias compatibility."""
+        if self._contaminants is None:
+            data = read_yaml_file(self.contaminants_path)
+            if not isinstance(data, dict):
+                raise TypeError("contaminants.yaml must parse to a dictionary")
+
+            if 'contamination_patterns' in data:
+                root = data['contamination_patterns']
+            elif 'contaminants' in data:
+                root = data['contaminants']
+            else:
+                raise KeyError(
+                    "contaminants.yaml missing required top-level key: 'contamination_patterns' or 'contaminants'"
+                )
+
+            if not isinstance(root, dict):
+                raise TypeError("Contaminants root key must be a dictionary")
+
+            self._contaminants = root
+            logger.info(f"Loaded {len(self._contaminants)} contaminants entries")
+
+    def _load_compounds(self):
+        """Lazy load compounds database."""
+        if self._compounds is None:
+            data = read_yaml_file(self.compounds_path)
+            if not isinstance(data, dict):
+                raise TypeError("Compounds.yaml must parse to a dictionary")
+            if 'compounds' not in data:
+                raise KeyError("Compounds.yaml missing required top-level key: 'compounds'")
+            if not isinstance(data['compounds'], dict):
+                raise TypeError("Compounds.yaml key 'compounds' must be a dictionary")
+
+            self._compounds = data['compounds']
+            logger.info(f"Loaded {len(self._compounds)} compounds entries")
+
     def _extract_applications(self, material: str, material_data: Dict[str, Any]) -> str:
         """Extract applications text from current or legacy material schema."""
         if 'applications' in material_data:
@@ -122,17 +162,31 @@ class DataProvider:
                 application_names.append(item)
 
         if not application_names:
-            raise ValueError(f"Material '{material}' has no valid industry application names")
+            raise ValueError(
+                f"Material '{material}' has no valid industry application names in relationships.operational.industryApplications.items"
+            )
 
         return ', '.join(application_names)
 
     def _extract_machine_settings_data(self, material: str, material_data: Dict[str, Any]) -> Dict[str, Any]:
         """Extract machine settings payload from material data or linked settings record."""
+        def _strip_leaf_descriptions(node: Any) -> Any:
+            if isinstance(node, dict):
+                cleaned: Dict[str, Any] = {}
+                for key, value in node.items():
+                    if key == 'description':
+                        continue
+                    cleaned[key] = _strip_leaf_descriptions(value)
+                return cleaned
+            if isinstance(node, list):
+                return [_strip_leaf_descriptions(item) for item in node]
+            return node
+
         if 'machine_settings' in material_data:
             machine_settings = material_data['machine_settings']
             if not isinstance(machine_settings, dict):
                 raise TypeError(f"Material '{material}' key 'machine_settings' must be a dictionary")
-            return machine_settings
+            return _strip_leaf_descriptions(machine_settings)
 
         self._load_settings()
 
@@ -155,7 +209,7 @@ class DataProvider:
         if not isinstance(machine_settings, dict):
             raise TypeError(f"Settings entry '{settings_key}' key 'machineSettings' must be a dictionary")
 
-        return machine_settings
+        return _strip_leaf_descriptions(machine_settings)
     
     def _load_schema(self):
         """Lazy load section display schema"""
@@ -266,31 +320,51 @@ class DataProvider:
                 'structural_pattern': None  # Structural variety instruction
             }
         else:
+            self._load_settings()
+            self._load_contaminants()
+            self._load_compounds()
             self._load_applications()
-            if material not in self._applications:
+
+            if material in self._applications:
+                source_data = self._applications[material]
+                source_label = 'application'
+            elif material in self._settings:
+                source_data = self._settings[material]
+                source_label = 'setting'
+            elif material in self._contaminants:
+                source_data = self._contaminants[material]
+                source_label = 'contaminant'
+            elif material in self._compounds:
+                source_data = self._compounds[material]
+                source_label = 'compound'
+            else:
                 raise KeyError(f"No data found for identifier: {material}")
 
-            application_data = self._applications[material]
-            if not isinstance(application_data, dict):
-                raise TypeError(f"Application data for '{material}' must be a dictionary")
+            if not isinstance(source_data, dict):
+                raise TypeError(f"{source_label.title()} data for '{material}' must be a dictionary")
 
             required_application_keys = ['category', 'subcategory']
-            missing_application_keys = [key for key in required_application_keys if key not in application_data]
+            missing_application_keys = [key for key in required_application_keys if key not in source_data]
             if missing_application_keys:
                 raise KeyError(
-                    f"Application '{material}' missing required keys: {', '.join(missing_application_keys)}"
+                    f"{source_label.title()} '{material}' missing required keys: {', '.join(missing_application_keys)}"
                 )
 
             facts = {
-                'category': application_data['category'],
-                'subcategory': application_data['subcategory'],
+                'category': source_data['category'],
+                'subcategory': source_data['subcategory'],
                 'properties': {},
                 'distinctive_properties': [],
-                'applications': application_data.get('name', ''),
+                'applications': source_data['name'],
                 'machine_settings': {},
                 'key_challenges': '',
                 'structural_pattern': None
             }
+
+            if not isinstance(facts['applications'], str) or not facts['applications'].strip():
+                raise ValueError(
+                    f"{source_label.title()} '{material}' missing required non-empty key: 'name'"
+                )
         
         is_material = material in self._materials
 

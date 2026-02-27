@@ -139,12 +139,12 @@ OR
    • AI Tendencies: None detected
 ```
 
-### Winston Detection
+### Grok Detection
 ```
-🤖 Running Winston AI detection...
+🤖 Running Grok humanness detection...
    🎯 AI Score: 24.5% (threshold: 30.3%)
    👤 Human Score: 75.5%
-   ✅ Winston check PASSED
+   ✅ Grok check PASSED
 ```
 
 ### Adaptive Threshold (If Applied)
@@ -333,7 +333,7 @@ See `tests/test_terminal_logging_policy.py`:
 - **Generation Report Policy**: `docs/08-development/GENERATION_REPORT_POLICY.md`
 - **Quality Gate Policy**: `docs/06-ai-systems/QUALITY_GATE_POLICY.md`
 - **Learning System**: `docs/06-ai-systems/LEARNING_SYSTEM.md`
-- **Winston Integration**: `docs/07-api/WINSTON_INTEGRATION.md`
+- **Grok Integration**: `docs/07-api/WINSTON_INTEGRATION.md`
 
 ---
 
@@ -358,7 +358,7 @@ python3 run.py --description "Aluminum" --skip-integrity-check
 # Should see:
 # - Attempt headers (📝 ATTEMPT 1/5)
 # - Quality scores (📊 QUALITY SCORES)
-# - Winston results (🤖 Running Winston)
+# - Grok results (🤖 Running Grok)
 # - Parameter changes (🔄 Parameter changes)
 # - Database logging (📊 Logged attempt)
 # - Final result (✅ SUCCESS or ❌ FAILED)

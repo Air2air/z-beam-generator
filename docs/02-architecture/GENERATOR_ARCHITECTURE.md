@@ -22,7 +22,7 @@ Single-pass content generation with comprehensive quality evaluation and learnin
 
 ### Features
 - ✅ Unified API for all domains (no domain-specific code)
-- ✅ Winston AI detection integration
+- ✅ Grok humanness detection integration
 - ✅ Subjective quality evaluation (Realism, Voice Authenticity)
 - ✅ Learning integration (logs ALL attempts for continuous improvement)
 - ✅ Author voice consistency (persona-based generation)
@@ -37,7 +37,7 @@ from generation.core.evaluated_generator import QualityEvaluatedGenerator
 generator = QualityEvaluatedGenerator(
     api_client=api_client,
     subjective_evaluator=evaluator,
-    winston_client=winston,
+    winston_client=grok,
     domain="materials"  # materials, compounds, contaminants, settings
 )
 
@@ -55,7 +55,7 @@ result = generator.generate(
 3. **Humanness Layer** - Apply structural diversity (rhythm, opening, transitions)
 4. **Generation** - Single API call with optimized parameters
 5. **Save to Data** - Write to Materials.yaml/Compounds.yaml immediately
-6. **Quality Evaluation** - Winston + Realism + Voice scoring
+6. **Quality Evaluation** - Grok + Realism + Voice scoring
 7. **Learning** - Log ALL attempts (not just successes) for improvement
 
 ### When to Use
@@ -158,7 +158,7 @@ DomainCoordinator (shared/domain/base_coordinator.py)
 
 ### Purpose
 - ✅ Initialize QualityEvaluatedGenerator with domain config
-- ✅ Manage Winston client and SubjectiveEvaluator
+- ✅ Manage Grok client and SubjectiveEvaluator
 - ✅ Handle domain-specific data loading
 - ✅ Provide convenient wrappers (e.g., `generate_compound_content()`)
 
@@ -210,7 +210,7 @@ All generators work across ALL domains without domain-specific code. Domain logi
 Generators validate inputs and fail immediately on missing dependencies. No silent degradation or fallback values.
 
 ### 3. **Quality-First**
-Text content always goes through quality evaluation pipeline (Winston, Realism, Voice). Only SEO generation skips quality gates (different requirements).
+Text content always goes through quality evaluation pipeline (Grok, Realism, Voice). Only SEO generation skips quality gates (different requirements).
 
 ### 4. **Learning Integration**
 ALL generation attempts (not just successes) are logged to learning database for continuous parameter optimization.
@@ -278,7 +278,7 @@ generator = Generator(api_client)
 
 # NEW (with quality evaluation):
 from generation.core.evaluated_generator import QualityEvaluatedGenerator
-generator = QualityEvaluatedGenerator(api_client, evaluator, winston, domain='materials')
+generator = QualityEvaluatedGenerator(api_client, evaluator, grok, domain='materials')
 ```
 
 ---
