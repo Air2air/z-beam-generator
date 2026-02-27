@@ -34,6 +34,21 @@
 
 **Grade**: F violation if postprocessing touches frontmatter files directly.
 
+## ✅ **MANDATORY PARITY VERIFICATION (Feb 27, 2026)**
+
+After any generator/export/config change that affects frontmatter output, run all three steps:
+
+1. `python3 run.py --export-all --no-parallel`
+2. `python3 scripts/check_field_order.py`
+3. `python3 scripts/validation/validate_frontmatter_schema.py --strict`
+
+Validator role split:
+- `check_field_order.py` verifies ordering parity across domains.
+- `validate_frontmatter_schema.py --strict` verifies schema shape/completeness.
+
+CI enforcement:
+- `.github/workflows/data-validation.yml` includes `validate-frontmatter-parity` job to run this gate on push/PR.
+
 ---
 
 ## 📐 **Three-Layer Architecture**
@@ -106,6 +121,7 @@ produces_compounds:
   presentation: card
   title: "Hazardous Compounds"
   description: "Compounds released during removal"
+  sectionMetadata: "Developer purpose: defines how this section should cover compound-generation risks and context."
   icon: "flame"
   order: 16
   variant: "danger"
