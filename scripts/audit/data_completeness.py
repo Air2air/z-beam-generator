@@ -7,7 +7,7 @@ Checks:
   2. Empty / null / blank values on required fields (HIGH)
   3. Sub-structure completeness: faq, eeat, micro, machineSettings,
      images, relationships, components, card (MEDIUM)
-  4. Cross-domain referential integrity: authorId → authors.yaml,
+  4. Cross-domain referential integrity: author → authors.yaml,
      validMaterials → Materials.yaml (HIGH)
   5. Duplicate ids within a domain (CRITICAL)
   6. datePublished / dateModified ISO-8601 format (LOW)
@@ -56,7 +56,7 @@ COLLECTION_KEY = {
 REQUIRED_FIELDS = {
     "materials": [
         "id", "name", "displayName", "category", "subcategory",
-        "pageDescription", "authorId", "fullPath", "slug",
+        "pageDescription", "author", "fullPath", "slug",
         "datePublished", "dateModified",
         "properties", "micro", "faq", "eeat", "contamination",
         "components", "card", "breadcrumb", "images", "relationships",
@@ -191,6 +191,12 @@ def audit_required_fields(domain, items):
     for item_key, item in items.items():
         item_id = item.get("id", item_key)
         for field in req:
+            if (
+                domain == "compounds"
+                and field == "molecularWeight"
+                and _is_variable_compound_without_deterministic_molecular_weight(item)
+            ):
+                continue
             if field not in item:
                 findings.append(Finding("CRITICAL", domain, item_id, field,
                     "Field missing entirely"))
@@ -198,6 +204,28 @@ def audit_required_fields(domain, items):
                 findings.append(Finding("HIGH", domain, item_id, field,
                     "Field present but empty/null"))
     return findings
+
+
+def _is_variable_compound_without_deterministic_molecular_weight(item):
+    """Return True when a compound is intentionally mixed/variable composition.
+
+    For mixed/variable compounds, molecular weight can be legitimately undefined.
+    """
+    if not isinstance(item, dict):
+        return False
+
+    chemical_formula = item.get("chemicalFormula")
+    identifier = str(item.get("id", "")).lower()
+    name = str(item.get("name", "")).lower()
+
+    variable_formula_values = {"various", "cxhyoz"}
+    if isinstance(chemical_formula, str) and chemical_formula.strip().lower() in variable_formula_values:
+        return True
+
+    if "mixed" in identifier or "mixed" in name:
+        return True
+
+    return False
 
 
 def audit_substructures(domain, items):
@@ -270,7 +298,7 @@ def audit_date_format(domain, items):
 def audit_referential_integrity(materials_items, contaminants_items, settings_items):
     """
     Check:
-    - materials.authorId → authors.id
+    - materials.author → authors.id
     - contaminants.validMaterials[] → materials.id
     - settings items reference nothing external (nothing to check cross-domain here)
     """
@@ -288,10 +316,13 @@ def audit_referential_integrity(materials_items, contaminants_items, settings_it
     # materials → authors
     for item in materials_items.values():
         item_id = item.get("id", "?")
-        author_id = item.get("authorId")
+        author_field = item.get("author")
+        author_id = author_field if isinstance(author_field, int) else (
+            author_field.get("id") if isinstance(author_field, dict) else None
+        )
         if author_id and author_id not in author_ids:
-            findings.append(Finding("HIGH", "materials", item_id, "authorId",
-                "authorId '" + str(author_id) + "' not in Authors.yaml"))
+            findings.append(Finding("HIGH", "materials", item_id, "author",
+                "author '" + str(author_id) + "' not in Authors.yaml"))
 
     # contaminants → materials (validMaterials list)
     for item in contaminants_items.values():
