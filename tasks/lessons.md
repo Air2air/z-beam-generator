@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-02-27: Regex-based FAQ validation (`question:`/`name:` patterns) can falsely fail pages that store FAQ content in canonical `faq.items` arrays with rich markdown content. Rule: validate FAQ completeness using schema-aware YAML parsing and count `faq.items` directly.
+
 - 2026-02-27: Materials source can drift between `authorId` and canonical `author` object, leaving isolated CRITICAL gaps even when most records are normalized. Rule: backfill missing `author` from `Authors.yaml` using `authorId` and keep export hydration active for legacy compatibility.
 
 - 2026-02-27: Some material entries can miss `components` despite having stable category/subcategory peers with canonical component structure. Rule: repair isolated missing section objects using same category/subcategory donor structures to preserve contract shape without inventing new fields.
