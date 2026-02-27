@@ -12,8 +12,17 @@ compounds:
     category: toxic_gas
     subcategory: asphyxiant
     hazardClass: toxic
-    pageDescription: Carbon Monoxide Compound safety information for laser cleaning.
-      Health hazards, exposure limits, and protective equipment requirements.
+    pageDescription: Carbon monoxide, a colorless and odorless gas, forms primarily
+      through incomplete combustion of carbon-based fuels in processes like engine
+      operation or heating systems, and it poses serious exposure risks by binding
+      tightly to blood hemoglobin, which blocks oxygen delivery and leads to asphyxiation
+      symptoms. Practitioners typically address these hazards by setting up proper
+      ventilation systems, installing reliable detection alarms, and running through
+      regular safety checks to maintain safe environments, while the key point remains
+      avoiding enclosed spaces where buildup can occur easily. Overall, handling this
+      compound demands careful monitoring and quick response protocols to prevent
+      incidents, ensuring teams line up effective controls that hold up under daily
+      use.
     chemicalFormula: CO
     casNumber: 630-08-0
     molecularWeight: 28.01
@@ -601,36 +610,6 @@ compounds:
             sectionDescription: Chemical reactivity and incompatibilities
             order: 55
             variant: default
-    author:
-      id: 4
-      name: Todd Dunning
-      country: United States
-      countryDisplay: United States
-      title: MA
-      sex: m
-      jobTitle: Junior Optical Materials Specialist
-      expertise:
-      - Optical Materials for Laser Systems
-      affiliation:
-        name: Coherent Inc.
-        type: Organization
-      credentials:
-      - BA Physics, UC Irvine, 2017
-      - Hands-on at JPL optics internship, 2018
-      - MA Optics and Photonics, UC Irvine, 2019
-      - 3+ years in laser systems development
-      - Hands-on experience with optical fabrication
-      email: info@z-beam.com
-      image: /images/author/todd-dunning.jpg
-      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
-        Inc., with precision optics tools
-      url: https://z-beam.com/authors/todd-dunning
-      sameAs:
-      - https://linkedin.com/in/todd-dunning-optics
-      - https://spie.org/profile/Todd.Dunning
-      personaFile: usa_persona.yaml
-      formattingFile: usa_formatting.yaml
-      slug: todd-dunning
     card:
       default:
         heading: Carbon Monoxide
@@ -657,7 +636,7 @@ compounds:
         severity: low
         icon: alert-triangle
     datePublished: '2026-01-06T00:00:00.000Z'
-    dateModified: '2026-02-05T05:08:16.000Z'
+    dateModified: '2026-02-26T20:38:07.000Z'
     contentType: compound
     schemaVersion: 5.0.0
     typicalConcentrationRange: 10-50 mg/m³
@@ -707,6 +686,8 @@ compounds:
     title: Carbon Monoxide
     page_title: Carbon Monoxide Compound
     slug: carbon-monoxide-compound
+    pageTitle: Carbon Monoxide Compound
+    authorId: 4
   formaldehyde-compound:
     id: formaldehyde-compound
     name: Formaldehyde
