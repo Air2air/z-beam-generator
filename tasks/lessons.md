@@ -1,5 +1,9 @@
 # Lessons Learned
 
+- 2026-02-27: Search pipeline tests can collapse when `enrichArticle` is reduced to pass-through, because href/tag/name derivation is a required contract for downstream badge/display logic. Rule: keep explicit enrichment contracts (`href`, `tags`, `name`) in `app/utils/articleEnrichment.ts` and validate with focused integration suites before broad build runs.
+
+- 2026-02-27: Tight render-time assertions in UI tests can become flaky across CI/local hardware (e.g., 151ms vs 150ms for 100-card render) without indicating functional regressions. Rule: keep performance guards with realistic CI headroom and pair them with functional assertions (rendered count/structure).
+
 - 2026-02-27: Regex-based FAQ validation (`question:`/`name:` patterns) can falsely fail pages that store FAQ content in canonical `faq.items` arrays with rich markdown content. Rule: validate FAQ completeness using schema-aware YAML parsing and count `faq.items` directly.
 
 - 2026-02-27: Materials source can drift between `authorId` and canonical `author` object, leaving isolated CRITICAL gaps even when most records are normalized. Rule: backfill missing `author` from `Authors.yaml` using `authorId` and keep export hydration active for legacy compatibility.

@@ -5,6 +5,20 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 35: z-beam Failing Test Suites Triage + Fix
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Address currently failing test/build suites in `z-beam` with minimal, root-cause fixes and verify targeted pass.
+
+### Steps
+- [x] Reproduce failure and capture exact failing suite(s)/assertions
+- [x] Isolate root cause in test or implementation (no unrelated refactors)
+- [x] Apply minimal fix in source/test code
+- [x] Re-run affected suite(s) and adjacent gate command(s)
+- [x] Record lesson in `tasks/lessons.md`
+
 ## Batch 30: Data Completeness Gate + CI Enforcement
 Date: 2026-02-27
 Status: COMPLETE
