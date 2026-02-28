@@ -18,6 +18,17 @@ Generation → Complete Data → Source YAML → Export (format only) → Frontm
 Generation → Incomplete Data → Source YAML → Export (add data) → Frontmatter
 ```
 
+## 🚫 Generation-Time Enhancer Prohibition (Required Content)
+
+This prohibition is **global** (all domains, all required fields), not field-specific.
+Generation-time utilities are not allowed to invent missing required content. Required fields must be present in source YAML and validated there.
+
+- ✅ Allowed: preserve/copy canonical source fields and perform format routing
+- ✅ Allowed: fail-fast when required source fields are missing
+- ✅ Allowed: add system metadata fields (timestamps/id/breadcrumb/authorId) where architecturally defined
+- ❌ Forbidden: create required `sectionTitle`/`sectionDescription` during generation-time sync
+- ❌ Forbidden: accept deprecated root-level fallback keys as a substitute for canonical source paths
+
 ---
 
 ## 📋 Current Implementation Status

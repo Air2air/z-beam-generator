@@ -5,6 +5,38 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 79: Enforce Source-Complete Data Policy (No Generation-Time Enhancers)
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Enforce mandatory policy that source data is fully accurate/populated and generation-time flows do not rely on enhancer behavior for required content, with explicit documentation and automated tests.
+
+### Steps
+- [x] Add strict validator checks for source records to reject enhancer-style deprecated root relationship title/description keys and require canonical nested section metadata
+- [x] Add/adjust tests to assert policy enforcement fails for enhancer-style source patterns and passes for canonical source data
+- [x] Update policy documentation to explicitly ban generation-time enhancement for missing required content and define expected source shape
+- [x] Run targeted tests/validation to verify enforcement
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 78: Applications Root-Level Relationship Key Recurrence Fix
+Date: 2026-02-28
+Status: IN PROGRESS
+
+### Goal
+Eliminate recurrent root-level `relatedMaterials` and `contaminatedBy` fields from applications frontmatter by fixing generation-time sync mapping and cleaning the source record.
+
+### Steps
+- [ ] Patch generation-time frontmatter sync to write applications relationship components to canonical nested paths
+- [ ] Add regression test covering applications relationship component sync behavior
+- [ ] Remove legacy root-level relationship fields from defense source YAML record
+- [ ] Re-export defense applications item and verify frontmatter no longer has root-level relationship keys
+- [ ] Record lesson in `tasks/lessons.md`
+
+---
+
 ## Batch 77: Word-Count-Only Length Guidance Consolidation
 Date: 2026-02-28
 Status: COMPLETE

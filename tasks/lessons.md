@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-02-28: Enforcing source-populated-only policy on one field/path leaves silent gaps in other domains and section nodes. Rule: make the policy global in docs and tests, validate canonical source files for required-content `_section` values, and block deprecated enhancer-style root keys in source records.
+
 - 2026-02-28: Length-policy unification is incomplete until regenerated output shows measurable spread gains and active prompt paths contain no numeric sentence/character directives. Rule: standardize active guidance to word-count targets, rerun targeted generation from the correct repo cwd, and confirm improvement with explicit CV audit (defense long-prose CV improved from 2.68% to 7.84%).
 
 - 2026-02-28: Generating FAQ into frontmatter does not make it visible unless the route layout explicitly renders the FAQ block. Rule: for each domain page route, verify `faq` is mapped to a UI component (for example `FAQPanel`) with section metadata wiring.

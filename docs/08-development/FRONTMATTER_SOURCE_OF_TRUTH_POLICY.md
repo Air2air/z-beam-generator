@@ -23,6 +23,24 @@
 
 **Rationale**: Exporters must remain presentation-only. Any data corrections belong in source data or generation logic, or they will be overwritten and violate Core Principle 0.6 (No Build-Time Data Enhancement).
 
+## ✅ **MANDATORY RULE: SOURCE DATA MUST BE FULLY POPULATED (Feb 28, 2026)**
+
+This is a **global policy across all domains and all required fields**.
+
+Required content must already exist in source YAML before generation/export operations. Generation-time paths may route or format fields, but must not synthesize missing required content.
+
+- ✅ Source records must carry canonical required fields for their schema paths
+- ✅ Validation/tests must fail fast when required source fields are missing or placed in legacy keys
+- ✅ If a source record includes `_section`, both `sectionTitle` and `sectionDescription` must be non-empty in source data
+- ❌ Do NOT rely on generation-time enhancers to create required `sectionTitle` / `sectionDescription`
+- ❌ Do NOT place required semantic content in deprecated convenience keys when canonical nested paths exist
+
+**Applications relationship canonical example**:
+- `relationships.discovery.relatedMaterials._section.sectionTitle`
+- `relationships.discovery.relatedMaterials._section.sectionDescription`
+- `relationships.interactions.contaminatedBy._section.sectionTitle`
+- `relationships.interactions.contaminatedBy._section.sectionDescription`
+
 ## ⚠️ **POSTPROCESSING MANDATORY POLICY (December 24, 2025)**
 
 **Postprocessing MUST work on source data ONLY:**

@@ -31,6 +31,28 @@ from shared.utils.yaml_utils import load_yaml, save_yaml
 logger = logging.getLogger(__name__)
 
 
+def _set_nested_value(payload: dict, dotted_path: str, value: Any) -> None:
+    """Set nested dictionary value via dot-notation path."""
+    keys = dotted_path.split('.')
+    current = payload
+    for key in keys[:-1]:
+        if key not in current or not isinstance(current[key], dict):
+            current[key] = {}
+        current = current[key]
+    current[keys[-1]] = value
+
+
+def _get_nested_value(payload: dict, dotted_path: str) -> Any:
+    """Get nested dictionary value via dot-notation path."""
+    keys = dotted_path.split('.')
+    current = payload
+    for key in keys:
+        if not isinstance(current, dict) or key not in current:
+            return None
+        current = current[key]
+    return current
+
+
 def _load_domain_config(domain: str) -> dict:
     """Load and validate domain config for frontmatter routing."""
     domain_config_path = Path("domains") / domain / "config.yaml"
@@ -149,7 +171,31 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
             else field_name
         )
 
-        frontmatter_data[persisted_field] = field_value
+        # Applications relationship components must persist at canonical nested
+        # relationship paths (never as root-level legacy keys).
+        canonical_nested_fields = {}
+        if domain == 'applications':
+            canonical_nested_fields = {
+                'relatedMaterials': 'relationships.discovery.relatedMaterials._section.sectionDescription',
+                'relatedMaterialsTitle': 'relationships.discovery.relatedMaterials._section.sectionTitle',
+                'contaminatedBy': 'relationships.interactions.contaminatedBy._section.sectionDescription',
+                'contaminatedByTitle': 'relationships.interactions.contaminatedBy._section.sectionTitle',
+            }
+
+        verification_path = persisted_field
+        if persisted_field in canonical_nested_fields:
+            _set_nested_value(frontmatter_data, canonical_nested_fields[persisted_field], field_value)
+            verification_path = canonical_nested_fields[persisted_field]
+
+            if 'relatedMaterials' in frontmatter_data and isinstance(frontmatter_data['relatedMaterials'], dict):
+                del frontmatter_data['relatedMaterials']
+                logger.info("   🧹 Removed legacy root relatedMaterials field")
+            if 'contaminatedBy' in frontmatter_data and isinstance(frontmatter_data['contaminatedBy'], dict):
+                del frontmatter_data['contaminatedBy']
+                logger.info("   🧹 Removed legacy root contaminatedBy field")
+        else:
+            frontmatter_data[persisted_field] = field_value
+
         if persisted_field == 'pageDescription':
             logger.info(f"   ✨ Saved description component to pageDescription field")
 
@@ -167,9 +213,11 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
 
         # Verify persistence (fail-fast)
         persisted = load_yaml(frontmatter_path)
-        if persisted is None or persisted.get(persisted_field) != frontmatter_data.get(persisted_field):
+        persisted_value = _get_nested_value(persisted, verification_path) if persisted is not None else None
+        expected_value = _get_nested_value(frontmatter_data, verification_path)
+        if persisted is None or persisted_value != expected_value:
             raise RuntimeError(
-                f"Frontmatter persistence verification failed for {frontmatter_path} ({persisted_field})"
+                f"Frontmatter persistence verification failed for {frontmatter_path} ({verification_path})"
             )
         
         print(f"   💾 Frontmatter synced: {frontmatter_path}")
