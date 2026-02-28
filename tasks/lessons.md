@@ -1,5 +1,89 @@
 # Lessons Learned
 
+- 2026-02-28: Length-policy unification is incomplete until regenerated output shows measurable spread gains and active prompt paths contain no numeric sentence/character directives. Rule: standardize active guidance to word-count targets, rerun targeted generation from the correct repo cwd, and confirm improvement with explicit CV audit (defense long-prose CV improved from 2.68% to 7.84%).
+
+- 2026-02-28: Generating FAQ into frontmatter does not make it visible unless the route layout explicitly renders the FAQ block. Rule: for each domain page route, verify `faq` is mapped to a UI component (for example `FAQPanel`) with section metadata wiring.
+
+- 2026-02-28: Frontmatter can retain legacy root fields after generator/config fixes until a fresh export runs on the target item. Rule: after cleanup policy changes, always re-export the affected item(s) from source and verify the concrete frontmatter file no longer contains deprecated root keys.
+
+- 2026-02-28: Section-title generation can fail even when fields are correctly bundled if new `component_type` values are missing from centralized sentence-structure policy. Rule: whenever adding bundled text components (e.g., `*Title` fields), add explicit entries in `shared/config/sentence_structure.yaml` before running generation.
+
+- 2026-02-28: FAQ can appear discrete even when schema/backfill include it if `run.py --batch-generate` executes only one requested text field per pass. Rule: in batch text generation, treat FAQ as part of the same text-field bundle and run it in the same execution flow as other text fields.
+
+- 2026-02-28: Lowering text length “overall” by editing dozens of per-field values is brittle and easy to drift. Rule: apply global length shifts through one centralized multiplier in `generation/text_field_config.yaml` and enforce it in `ProcessingConfig` so all text fields move together.
+
+- 2026-02-28: Centralization remains incomplete if only variation factors are unified while some text fields still rely on implicit defaults or scattered legacy names. Rule: define explicit base-length entries (and alias resolution) for every configured text field in `generation/text_field_config.yaml` and validate coverage against `field_router` text fields.
+
+- 2026-02-28: Text-length variation can drift when multiple runtime modules parse `text_field_config.yaml` independently. Rule: keep one canonical accessor in `ProcessingConfig` for `randomization_range` and route all callers through it.
+
+- 2026-02-28: Structured FAQ output can bypass centralized length controls if guidance is applied only at top-level component scope. Rule: define leaf-level targets (`faqQuestion`, `faqAnswer`) in `generation/text_field_config.yaml` and apply the same centralized randomized multiplier to per-question/per-answer guidance.
+
+- 2026-02-28: FAQ containers can pass schema checks but still drift in key ordering across domains, causing structural inconsistency in frontmatter outputs. Rule: build FAQ containers with canonical key order (`_section` first, then `presentation`, `items`, `options`) at adapter normalization time and regenerate from source.
+
+- 2026-02-27: FAQ pipeline complexity can grow when extraction tries to handle many ad-hoc wrapper formats. Rule: keep FAQ on the same raw text pipeline as other fields and limit FAQ-specific logic to one adapter boundary that normalizes final question/answer leaf items.
+
+- 2026-02-27: Applications FAQ can drift to scalar string while other domains use collapsible object structure, causing cross-domain frontmatter inconsistency. Rule: normalize FAQ at source to canonical `faq.presentation + faq.items` object shape and enforce export cleanup for stray root `_section` artifacts.
+
+- 2026-02-27: FAQ drifted into a component-specific extraction/write path (`json_list` override + adapter string coercion), creating behavior unlike other text fields. Rule: keep FAQ on the same default raw extraction and write path as standard text fields, and reserve list-to-collapsible conversion only for legacy list payload compatibility.
+
+- 2026-02-27: FAQ generation can fail even when routing is correct if extraction assumes strict JSON-array output only. Rule: treat `faq` as a first-class reusable text component in `field_router` and use staged extraction (JSON/YAML wrappers + Q/A fallbacks) in the shared adapter pipeline rather than domain-specific parsing hacks.
+
+- 2026-02-27: Redundant relationship container `_section` metadata should be corrected in shared export generator logic, not patched per-domain in cleanup config. Rule: enforce leaf-only `_section` contract in `universal_content_generator` and keep domain export configs free of structural workaround deletions.
+
+- 2026-02-27: Applications exports can emit redundant container-level relationship `_section` blocks (`relationships.discovery._section`, `relationships.interactions._section`) even though canonical metadata belongs on leaf sections. Rule: enforce canonical leaf-only metadata during export cleanup by removing category-level `_section` paths while preserving `relationships.discovery.relatedMaterials._section` and `relationships.interactions.contaminatedBy._section`.
+
+- 2026-02-27: Generation-time frontmatter sync can leave a minimal file shape after destructive frontmatter resets, causing required identity/author metadata gaps. Rule: for incomplete frontmatter, repair by single-item source export (`run.py --export --domain <domain> --item <id>`) and validate with strict schema checks, never patch frontmatter directly.
+
+- 2026-02-27: After destructive frontmatter resets, recover with targeted domain generation using router-supported fields first, then verify exact file count in destination folder before proceeding to broader exports. Rule: reset → generate one known catalog slug (`pageTitle` + `pageDescription` for applications) → assert resulting frontmatter file count/path explicitly.
+
+- 2026-02-27: Applications batch-generation field support is narrower than schema prompt coverage (`micro`/`faq` prompt contracts may exist while FieldRouter still rejects those fields for applications). Rule: before multi-field generation runs, validate domain field routing via `run.py --batch-generate` against actual `FieldRouter` support and generate only routed fields (currently verified: `pageTitle`, `pageDescription`).
+
+- 2026-02-27: Prompt centralization confidence cannot rely on contract-file existence alone. Rule: enforce a static prompt-source audit gate in CI that blocks disallowed direct accesses and writes a canonical source map artifact each run.
+
+- 2026-02-27: Domain research helper modules can linger after workflow logic inlines their behavior, creating stale maintenance surface. Rule: when workflow code references a capability only in comments/docs and no imports remain, remove the orphan module and immediately re-run contract validation.
+
+- 2026-02-27: Removing unreferenced files from domain-required folders can leave required directories empty and vulnerable to disappearing from version control. Rule: when deleting files from `domain_folder_contract.required_directories`, preserve directory shape with `.gitkeep` (or an intentional placeholder) in the same batch.
+
+- 2026-02-27: Domain subfolder cleanup can accidentally remove operational tooling if unreferenced code and docs are treated the same. Rule: classify unreferenced `domains/*/*` files into doc-only, likely-dead code, and manual-ops utilities, and auto-delete only doc-only candidates in the first pass.
+
+- 2026-02-27: Domain prompt contracts can drift when new key families (for example `pageTitle` or section title companions) are added in one domain but not mirrored in peers. Rule: when introducing a new key pattern, run a cross-domain parity pass and add missing prompt keys in all applicable `domains/*/prompt.yaml` files before validation.
+
+- 2026-02-27: Small docs subtrees can become orphaned when no files outside the subtree reference them. Rule: for docs cleanup, verify cross-repo references first, then remove orphan files and collapse empty parent directories in the same batch.
+
+- 2026-02-27: Documentation cleanup can remove useful internal context if usage is inferred from folder location alone. Rule: require explicit cross-repo reference checks (including external-to-subtree verification) before deleting docs files, and only prune files with zero external references.
+
+- 2026-02-27: Legacy domain modules should be removed only after dual verification of symbol and module-path usage, then contract catalogs must be updated in the same batch. Rule: grep symbol references and import paths separately, delete only verified-unused files, and immediately sync `domains/<domain>/catalog.yaml` before validation.
+
+- 2026-02-27: Cross-repo transient cleanup can disrupt active dev runtime if build artifacts are removed while servers are running. Rule: stop active dev processes first, clean only transient artifacts, validate critical contracts, then explicitly restore server state.
+
+- 2026-02-27: Domain folders accumulate transient artifacts (`__pycache__`, `.pyc`, `.DS_Store`) that create noise and false cleanup signals. Rule: run a targeted transient-artifact sweep before structural cleanup decisions, then re-run domain contract validation to confirm no runtime drift.
+
+- 2026-02-28: Domain prompt contracts can appear complete while only one domain is truly enforced, leaving silent drift in others. Rule: whenever a governance contract is introduced for one domain, immediately generalize validator enforcement and parity checks across all core domains in the same batch.
+
+- 2026-02-27: Moving `prompts/` directly is high-risk when path literals are spread across runtime code, tests, docs, and CI. Rule: enforce governance location first (`domains/<domain>/prompt.yaml` + `catalog.yaml`), add layout validation in CI, then only migrate physical prompt paths after introducing a shared path resolver and updating all references.
+
+- 2026-02-27: Domain code folders can become hard to govern without explicit prompt linkage and file inventories. Rule: each core `domains/<domain>` folder should include `prompt.yaml` (pointing to canonical prompts source) and `catalog.yaml` (required files/directories + cleanup evaluation), and cleanup candidates must be review-only unless runtime usage is proven absent.
+
+- 2026-02-27: Domain prompt folders can drift without a local inventory file, making cleanup and ownership checks harder. Rule: each core domain prompt folder must contain exactly `content_prompts.yaml` plus `catalog.yaml`, and no additional domain-specific files.
+
+- 2026-02-27: Domain prompt sprawl can reappear when example/research YAMLs carry domain-scoped prompt definitions outside canonical domain registries. Rule: keep exactly one domain prompt YAML per core domain (`prompts/<domain>/content_prompts.yaml`) and remove all other domain-specific prompt files.
+
+- 2026-02-27: Legacy `prompts/**/*.txt` files can persist after prompt catalog migration and cause maintenance drift. Rule: treat YAML prompt registries as the runtime source of truth, remove orphaned text templates only after whole-project usage audit, and keep verification scripts aligned to catalog keys instead of file existence.
+
+- 2026-02-27: Single-line component prompts can drift when prompt text lives in scattered files without variable contracts. Rule: keep one schema registry (`data/schemas/component_single_line_prompts.yaml`) with one single-line template per component and explicit variables, and enforce it in shared validation.
+
+- 2026-02-27: Domain backfill configs can drift when generated fields are maintained per-file without a shared authority. Rule: define required generated field-to-component mappings once in schema policy (`data/schemas/content_generation_policy.yaml`) and enforce domain config parity with a single validator.
+
+- 2026-02-27: Batch export loops for new application IDs can stop before all requested frontmatter files are created, leaving partial catalog sync. Rule: always run an explicit post-export presence check against the requested slug list and backfill-export any missing files before completion.
+
+- 2026-02-27: Application seeds can inherit deprecated root `relatedMaterials`/`contaminatedBy` maps from template records, causing section prose to bypass canonical `relationships.*.*._section` paths. Rule: strip legacy root relationship containers during seed cloning, migrate existing records to nested `_section` metadata, and enforce with a source-data test.
+
+- 2026-02-27: Keyword-seeded items can inherit donor prose and wrong filenames when generation-owned fields are not cleared and applications frontmatter pattern appends a second suffix. Rule: clear generator-owned text fields at seed time, validate post-generation required fields, and keep applications `frontmatter_pattern` as `{slug}.yaml`.
+
+- 2026-02-27: Adding new pages from ad-hoc domain scripts causes drift and misses dual-write sync. Rule: use one centralized keyword seeding service plus a single CLI flow that performs source seed → domain generation → frontmatter export.
+
+- 2026-02-27: Pricing updates can drift when UI/schema/feed layers reference a legacy single-rate field while business config moves to package-based rates. Rule: treat pricing changes as cross-layer config migrations and update app config, JSON-LD generators, feed scripts, and pricing tests in one pass.
+
 - 2026-02-27: Search pipeline tests can collapse when `enrichArticle` is reduced to pass-through, because href/tag/name derivation is a required contract for downstream badge/display logic. Rule: keep explicit enrichment contracts (`href`, `tags`, `name`) in `app/utils/articleEnrichment.ts` and validate with focused integration suites before broad build runs.
 
 - 2026-02-27: Tight render-time assertions in UI tests can become flaky across CI/local hardware (e.g., 151ms vs 150ms for 100-card render) without indicating functional regressions. Rule: keep performance guards with realistic CI headroom and pair them with functional assertions (rendered count/structure).
@@ -156,6 +240,7 @@
 - 2026-02-24: Standalone maintenance scripts that read/write source YAML outside the generator pipeline (even with --dry-run/--apply guards) ARE enrichers and violate Core Principle 0.6. The correct pattern is always `BaseBackfillGenerator`. Always check `scripts/maintenance/` for orphan enrichers during architectural audits.
 - 2026-02-24: Before converting a standalone enricher to a backfill generator, grep the actual source YAML for the field it transforms. A standalone enricher script operating on data that does not exist in the source files is speculative dead code — delete it, replace it with the clean backfill pattern, and document why no domain config entry is needed yet.
 - 2026-02-24: COMPLEX tasks must write plan to tasks/todo.md FIRST before any tool calls — using the in-memory todo tool only violates the instruction. Both must be kept in sync.
+- 2026-02-27: Backfill text generation (including FAQ) can diverge from standard text-field client wiring when provider selection is hardcoded inside generator classes. Rule: inject `api_provider` at orchestration level (`run.py`) and construct API clients via shared `create_api_client(provider)` so FAQ uses the same connection path as other text fields.
 - 2026-02-24: Validator source key (`contamination_patterns`) can silently diverge from actual data key (`contaminants`) when data schema evolves — always grep the actual YAML top-level key before writing validator code that accesses it.
 - 2026-02-24: When tests reference bare material IDs (e.g., `source_id == 'steel'`) but data uses suffixed form (`steel-laser-cleaning`), run a normalization script to strip the suffix from the flat associations list — not a test bug, a data model consistency gap. Fix at source (the YAML).
 - 2026-02-24: Stale metadata `breakdown` values in association files cause count mismatch test failures — always update `breakdown` and `total_associations` in metadata after any bulk data change or normalization pass.

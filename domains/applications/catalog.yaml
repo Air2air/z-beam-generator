@@ -1,0 +1,81 @@
+schemaVersion: 1.0.0
+domain: applications
+domain_folder_contract:
+  required_files:
+    - config.yaml
+    - coordinator.py
+    - prompt.yaml
+    - catalog.yaml
+  required_directories: []
+  ignore_entries:
+    - __pycache__
+cleanup_evaluation:
+  remove_now: []
+  review_later: []
+
+article_pages:
+  frontmatter_directory: ../z-beam/frontmatter/applications
+  file_names:
+    - aerospace-laser-cleaning-applications.yaml
+    - automotive-laser-cleaning-applications.yaml
+    - automotive-aluminum-applications.yaml
+    - automotive-steel-applications.yaml
+    - automotive-paint-coating-removal-applications.yaml
+    - automotive-rust-oxide-removal-applications.yaml
+    - automotive-weld-prep-applications.yaml
+    - automotive-ndt-surface-prep-applications.yaml
+    - construction-equipment-laser-cleaning-applications.yaml
+    - construction-heavy-equipment-applications.yaml
+    - construction-rust-removal-applications.yaml
+    - construction-paint-stripping-applications.yaml
+    - construction-corrosion-removal-applications.yaml
+    - construction-grease-oil-removal-applications.yaml
+    - construction-surface-prep-applications.yaml
+    - defense-laser-cleaning-applications.yaml
+    - defense-weapons-applications.yaml
+    - defense-military-vehicle-applications.yaml
+    - defense-aircraft-applications.yaml
+    - defense-corrosion-removal-applications.yaml
+    - defense-paint-removal-applications.yaml
+    - defense-ndt-prep-applications.yaml
+    - electronics-laser-cleaning-applications.yaml
+    - electronics-circuit-boards-applications.yaml
+    - electronics-precision-applications.yaml
+    - electronics-residue-removal-applications.yaml
+    - electronics-oxide-removal-applications.yaml
+    - electronics-semiconductors-applications.yaml
+    - energy-power-laser-cleaning-applications.yaml
+    - energy-power-plant-applications.yaml
+    - energy-turbine-applications.yaml
+    - energy-insulator-applications.yaml
+    - energy-rust-oxide-removal-applications.yaml
+    - energy-corrosion-removal-applications.yaml
+    - energy-ndt-surface-prep-applications.yaml
+    - food-processing-laser-cleaning-applications.yaml
+    - food-processing-equipment-applications.yaml
+    - food-processing-conveyor-applications.yaml
+    - food-processing-mold-removal-applications.yaml
+    - food-processing-grease-removal-applications.yaml
+    - food-processing-sanitary-applications.yaml
+    - medical-devices-laser-cleaning-applications.yaml
+    - medical-device-applications.yaml
+    - medical-precision-instruments-applications.yaml
+    - medical-residue-removal-applications.yaml
+    - medical-oxide-removal-applications.yaml
+    - medical-surgical-tools-applications.yaml
+    - rail-transport-corrosion-removal-applications.yaml
+    - rail-transport-grease-oil-removal-applications.yaml
+    - rail-transport-laser-cleaning-applications.yaml
+    - rail-transport-locomotive-applications.yaml
+    - rail-transport-ndt-prep-applications.yaml
+    - rail-transport-paint-stripping-applications.yaml
+    - rail-transport-railcar-applications.yaml
+    - rail-transport-rust-removal-applications.yaml
+    - rail-transport-surface-prep-applications.yaml
+    - rail-transport-track-applications.yaml
+    - marine-ship-hulls-applications.yaml
+    - marine-corrosion-removal-applications.yaml
+    - marine-paint-stripping-applications.yaml
+    - marine-rust-removal-applications.yaml
+    - marine-barnacle-removal-applications.yaml
+    - marine-ndt-prep-applications.yaml

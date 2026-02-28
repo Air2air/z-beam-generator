@@ -261,6 +261,7 @@ domain_generation:
         - "pageDescription"
         - "relatedMaterials"
         - "contaminatedBy"
+        - "faq"
     normalize_components:
       - "pageDescription"
     field_mappings:
@@ -344,6 +345,7 @@ field_router:
       text:
         - "pageTitle"
         - "pageDescription"
+        - "faq"
       data: []
   field_aliases:
     materials:
@@ -573,8 +575,6 @@ component_extraction:
     extraction_strategy: before_after   # Extract before/after paragraphs
   micro_before_after:
     extraction_strategy: before_after   # Extract before/after paragraphs
-  faq:
-    extraction_strategy: json_list      # Parse as JSON array
 
 # Data sources (required by ProcessingConfig)
 data_sources:

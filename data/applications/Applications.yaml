@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastUpdated: '2026-02-23'
+lastUpdated: '2026-02-28'
 applications:
   aerospace-laser-cleaning-applications:
     id: aerospace-laser-cleaning-applications
@@ -72,6 +72,8 @@ applications:
             icon: layers
             order: 30
             variant: default
+            sectionDescription: Materials most frequently cleaned in Aerospace laser
+              cleaning workflows.
       interactions:
         contaminatedBy:
           presentation: card
@@ -111,6 +113,8 @@ applications:
             icon: droplet
             order: 31
             variant: default
+            sectionDescription: Contaminants most commonly removed in Aerospace laser
+              cleaning workflows.
     card:
       title: Aerospace Laser Cleaning
       description: Laser cleaning in aerospace applications removes contaminants from
@@ -121,6 +125,8 @@ applications:
     - Aerospace
     slug: aerospace-laser-cleaning-applications
     authorId: 4
+    author:
+      id: 4
   automotive-laser-cleaning-applications:
     id: automotive-laser-cleaning-applications
     name: Automotive
@@ -192,6 +198,8 @@ applications:
             icon: layers
             order: 30
             variant: default
+            sectionDescription: Materials most frequently cleaned in Automotive laser
+              cleaning workflows.
       interactions:
         contaminatedBy:
           presentation: card
@@ -231,6 +239,8 @@ applications:
             icon: droplet
             order: 31
             variant: default
+            sectionDescription: Contaminants most commonly removed in Automotive laser
+              cleaning workflows.
     author:
       id: 3
       name: Ikmanda Roswati
@@ -331,6 +341,8 @@ applications:
             icon: layers
             order: 30
             variant: default
+            sectionDescription: Materials most frequently cleaned in Construction
+              Equipment laser cleaning workflows.
       interactions:
         contaminatedBy:
           presentation: card
@@ -370,6 +382,8 @@ applications:
             icon: droplet
             order: 31
             variant: default
+            sectionDescription: Contaminants most commonly removed in Construction
+              Equipment laser cleaning workflows.
     author:
       id: 1
       name: Yi-Chun Lin
@@ -414,7 +428,7 @@ applications:
     category: applications
     subcategory: defense
     datePublished: '2026-02-21'
-    dateModified: '2026-02-23T22:40:27.531179+00:00'
+    dateModified: '2026-02-28T19:50:58.000Z'
     contentType: application
     schemaVersion: 5.0.0
     fullPath: /applications/defense-laser-cleaning-applications
@@ -423,9 +437,18 @@ applications:
       href: /
     - label: Applications
       href: /applications
-    pageTitle: Defense Laser Cleaning
-    pageDescription: Overview of laser cleaning in defense applications and common
-      surface challenges.
+    pageTitle: 'Laser Cleaning Applications in Defense: Efficient Contamination Removal
+      for Military Equipment'
+    pageDescription: Defense laser cleaning applications, they focus on removing contaminants
+      from military equipment such as vehicles and weapons. This process, it achieves
+      effective decontamination without damaging surfaces, so operational readiness
+      improves quickly. During deployment, portability of laser systems allows use
+      in field conditions, but constraints include need for trained operators to avoid
+      mishandling. After treatment is applied, surfaces exhibit cleanliness that supports
+      maintenance cycles. In observations, safety implications involve eye protection
+      measures because intense beams pose risks, and compliance with regulations ensures
+      no environmental harm from ablated materials. From the data, outcomes indicate
+      enhanced durability of assets in harsh environments.
     metaDescription: Overview of laser cleaning in defense applications and common
       surface challenges.
     relationships:
@@ -468,6 +491,19 @@ applications:
             icon: layers
             order: 30
             variant: default
+            sectionDescription: Defense applications, they involve laser cleaning
+              for military equipment, and this process faces challenges from harsh
+              operational environments so durability becomes essential. Contamination
+              builds up quickly on surfaces during field use, so treatment must remove
+              layers effectively without causing damage to sensitive components. After
+              cleaning is performed, equipment readiness improves, but failure modes
+              occur if heat accumulates, leading to material weakening or operational
+              delays in critical missions. Special considerations for defense include
+              deployment in remote areas, where portability and quick setup are necessary,
+              and compliance with strict safety protocols prevents risks during active
+              operations. From observations, incomplete removal still leaves residues
+              that affect performance, so precise control achieves better outcomes
+              in maintaining stealth features or weapon functionality.
       interactions:
         contaminatedBy:
           presentation: card
@@ -507,36 +543,19 @@ applications:
             icon: droplet
             order: 31
             variant: default
-    author:
-      id: 3
-      name: Ikmanda Roswati
-      country: Indonesia
-      countryDisplay: Indonesia
-      title: Ph.D.
-      sex: m
-      jobTitle: Junior Research Scientist in Laser Physics
-      expertise:
-      - Ultrafast Laser Physics and Material Interactions
-      affiliation:
-        name: Bandung Institute of Technology
-        type: EducationalOrganization
-      credentials:
-      - Ph.D. Physics, ITB, 2020
-      - 2+ years in ultrafast laser research including ASEAN optics workshops
-      - Assisted in international optics projects
-      languages:
-      - English
-      - Bahasa Indonesia
-      email: info@z-beam.com
-      image: /images/author/ikmanda-roswati.jpg
-      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
-        at Bandung Institute of Technology, fieldwork optics setup
-      url: https://z-beam.com/authors/ikmanda-roswati
-      sameAs:
-      - https://linkedin.com/in/ikmanda-roswati-physicist
-      - https://www.academia.edu/profile/IkmandaRoswati
-      personaFile: indonesia_persona.yaml
-      formattingFile: indonesia_formatting.yaml
+            sectionDescription: This defense application, it involves sensitive equipment
+              so warnings come first about potential damage to critical components.
+              During deployment in field conditions, laser cleaning faces challenges
+              from harsh environments because dust and vibrations still present after
+              setup. Contamination is detected on the surfaces of military hardware,
+              and treatment removes layers effectively, but failure modes include
+              incomplete removal so operational readiness decreases. After treatment
+              is applied, equipment exhibits improved functionality yet special considerations
+              apply for classified materials where compliance with strict regulations
+              is required. In observations, heat buildup causes issues so intervals
+              prevent overheating in high-stakes scenarios. From the data, practical
+              impacts show reduced maintenance time, but deployment constraints like
+              portability and safety implications remain key for defense contexts.
     card:
       title: Defense Laser Cleaning
       description: Overview of laser cleaning in defense applications and common surface
@@ -545,6 +564,114 @@ applications:
     - Defense Laser Cleaning
     - Defense
     slug: defense-laser-cleaning-applications
+    page_title: 'Defense Laser Cleaning Applications: Military Uses and Benefits'
+    authorId: 3
+    relatedMaterials:
+      title: Defense Laser Cleaning Challenges
+      description: This laser cleaning in defense applications, it presents challenges
+        like harsh environments that cause rapid contamination buildup. During operations,
+        surfaces accumulate dirt and residues, so failure to clean properly leads
+        to equipment malfunctions or reduced performance. After treatment is applied,
+        incomplete removal still leaves vulnerabilities, affecting operational readiness.
+        Special considerations include compliance with strict military safety protocols
+        to avoid damage to sensitive components. In observations, deployment constraints
+        arise from portable systems needing quick setup in field conditions. Contamination
+        is detected on critical parts, so careful handling prevents unintended consequences
+        like material weakening. From the data, these factors emphasize reliable methods
+        for effective maintenance.
+      _metadata:
+        icon: layers
+        order: 72
+        variant: default
+        generatedAt: '2026-02-28T19:50:22.000Z'
+    contaminatedBy:
+      title: Defense Laser Cleaning Challenges
+      description: In defense applications, laser cleaning faces challenges from harsh
+        environments, so surfaces often show heavy contamination that resists removal.
+        This contamination, it builds up on military equipment during operations,
+        and treatment must address it without damaging sensitive components. After
+        deployment is considered, operational constraints arise because portable systems
+        need to function in remote areas, leading to potential failure modes like
+        incomplete cleaning or equipment overheating.
+      _metadata:
+        icon: droplet
+        order: 61
+        variant: default
+        generatedAt: '2026-02-28T18:54:44.000Z'
+    faq:
+      _section:
+        sectionTitle: FAQ
+        sectionDescription: Frequently Asked Questions
+        sectionMetadata: faq
+        icon: help-circle
+        order: 46
+        variant: default
+      presentation: collapsible
+      items:
+      - id: what-defense-applications
+        title: What defense applications?
+        content: Laser cleaning removes contaminants from military equipment, so surfaces
+          stay intact and ready for use. This process, it achieves effective decontamination
+          on vehicles and weapons.
+        metadata:
+          topic: defense applications
+          severity: medium
+          acceptedAnswer: true
+        _display:
+          _open: true
+          order: 1
+      - id: main-operational-outcomes
+        title: Main operational outcomes?
+        content: Treatment ensures precise removal of rust and paint, so durability
+          improves without damage. In observations, equipment shows enhanced readiness
+          after cleaning is applied.
+        metadata:
+          topic: main operational outcomes
+          severity: critical
+          acceptedAnswer: true
+        _display:
+          _open: false
+          order: 2
+      - id: deployment-constraints
+        title: Deployment constraints?
+        content: Portable systems face mobility limits in field conditions, so careful
+          setup is needed. Before use, environment checks prevent issues during exposure.
+        metadata:
+          topic: deployment constraints
+          severity: critical
+          acceptedAnswer: true
+        _display:
+          _open: false
+          order: 3
+      - id: safety-implications
+        title: Safety implications?
+        content: Operators require protective gear against beams, so risks decrease.
+          Contamination is handled safely, and compliance follows strict guidelines
+          in defense settings.
+        metadata:
+          topic: safety implications
+          severity: critical
+          acceptedAnswer: true
+        _display:
+          _open: false
+          order: 4
+      - id: compliance-requirements
+        title: Compliance requirements?
+        content: Regulations demand eco-friendly methods, so laser cleaning meets
+          standards without chemicals. Results indicate safe practices for military
+          protocols.
+        metadata:
+          topic: compliance requirements
+          severity: medium
+          acceptedAnswer: true
+        _display:
+          _open: false
+          order: 5
+      options:
+        autoOpenFirst: true
+        sortBy: severity
+    relatedMaterialsTitle: Materials Associated with Defense Laser Cleaning Applications
+    contaminatedByTitle: Common Contaminants Affecting Defense Laser Cleaning Applications
   electronics-laser-cleaning-applications:
     id: electronics-laser-cleaning-applications
     name: Electronics
@@ -615,6 +742,8 @@ applications:
             icon: layers
             order: 30
             variant: default
+            sectionDescription: Materials most frequently cleaned in Electronics laser
+              cleaning workflows.
       interactions:
         contaminatedBy:
           presentation: card
@@ -654,6 +783,8 @@ applications:
             icon: droplet
             order: 31
             variant: default
+            sectionDescription: Contaminants most commonly removed in Electronics
+              laser cleaning workflows.
     author:
       id: 2
       name: Alessandro Moretti
@@ -763,6 +894,8 @@ applications:
             icon: layers
             order: 30
             variant: default
+            sectionDescription: Materials most frequently cleaned in Energy and Power
+              laser cleaning workflows.
       interactions:
         contaminatedBy:
           presentation: card
@@ -802,6 +935,8 @@ applications:
             icon: droplet
             order: 31
             variant: default
+            sectionDescription: Contaminants most commonly removed in Energy and Power
+              laser cleaning workflows.
     author:
       id: 4
       name: Todd Dunning
@@ -903,6 +1038,8 @@ applications:
             icon: layers
             order: 30
             variant: default
+            sectionDescription: Materials most frequently cleaned in Food Processing
+              laser cleaning workflows.
       interactions:
         contaminatedBy:
           presentation: card
@@ -942,6 +1079,8 @@ applications:
             icon: droplet
             order: 31
             variant: default
+            sectionDescription: Contaminants most commonly removed in Food Processing
+              laser cleaning workflows.
     author:
       id: 4
       name: Todd Dunning
@@ -1047,6 +1186,8 @@ applications:
             icon: layers
             order: 30
             variant: default
+            sectionDescription: Materials most frequently cleaned in Medical Devices
+              laser cleaning workflows.
       interactions:
         contaminatedBy:
           presentation: card
@@ -1086,6 +1227,8 @@ applications:
             icon: droplet
             order: 31
             variant: default
+            sectionDescription: Contaminants most commonly removed in Medical Devices
+              laser cleaning workflows.
     author:
       id: 1
       name: Yi-Chun Lin
@@ -1195,6 +1338,8 @@ applications:
             icon: layers
             order: 30
             variant: default
+            sectionDescription: Materials most frequently cleaned in Rail Transport
+              laser cleaning workflows.
       interactions:
         contaminatedBy:
           presentation: card
@@ -1234,6 +1379,8 @@ applications:
             icon: droplet
             order: 31
             variant: default
+            sectionDescription: Contaminants most commonly removed in Rail Transport
+              laser cleaning workflows.
     author:
       id: 3
       name: Ikmanda Roswati
@@ -1333,6 +1480,8 @@ applications:
             icon: layers
             order: 30
             variant: default
+            sectionDescription: Materials most frequently cleaned in Shipbuilding
+              and Marine laser cleaning workflows.
       interactions:
         contaminatedBy:
           presentation: card
@@ -1372,6 +1521,8 @@ applications:
             icon: droplet
             order: 31
             variant: default
+            sectionDescription: Contaminants most commonly removed in Shipbuilding
+              and Marine laser cleaning workflows.
     author:
       id: 2
       name: Alessandro Moretti
@@ -1412,3 +1563,2245 @@ applications:
     - Shipbuilding Marine
     - shipbuilding marine laser cleaning
     slug: shipbuilding-marine-laser-cleaning-applications
+  marine-laser-cleaning-ship-hulls-applications:
+    id: marine-laser-cleaning-ship-hulls-applications
+    name: Marine Laser Cleaning Ship Hulls
+    displayName: Marine Laser Cleaning Ship Hulls
+    category: applications
+    subcategory: marine
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T00:07:13.086953+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/marine-laser-cleaning-ship-hulls-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    pageTitle: Marine Laser Cleaning Ship Hulls
+    pageDescription: Laser cleaning ship hulls in marine environments removes biofouling,
+      rust, and coatings efficiently, maintaining vessel performance and fuel efficiency
+      during routine dry-dock operations or in-water sessions. This method achieves
+      a clean surface without abrasive damage, and it works out well for large-scale
+      applications where traditional blasting proves too disruptive or environmentally
+      harmful. Deployment often requires portable systems that operators set up on
+      scaffolds or remotely, but tight spaces and hull curvatures can complicate access.
+      Safety protocols emphasize eye protection and controlled laser paths to prevent
+      accidental exposure, while compliance with maritime regulations ensures minimal
+      ecological impact on surrounding waters.
+    metaDescription: Marine Laser Cleaning Ship Hulls applications and operational
+      guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: titanium-laser-cleaning
+            name: Titanium
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/titanium-laser-cleaning
+            image: /images/material/titanium-laser-cleaning-hero.jpg
+          - id: inconel-laser-cleaning
+            name: Inconel
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/inconel-laser-cleaning
+            image: /images/material/inconel-laser-cleaning-hero.jpg
+          - id: stainless-steel-laser-cleaning
+            name: Stainless Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+          - id: cobalt-laser-cleaning
+            name: Cobalt
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/cobalt-laser-cleaning
+            image: /images/material/cobalt-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: Materials most frequently cleaned in Marine Laser
+              Cleaning Ship Hulls laser cleaning workflows.
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          - id: adhesive-residue-contamination
+            name: Adhesive Residue / Tape Marks
+            category: organic-residue
+            subcategory: adhesive
+            url: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
+            image: /images/contaminant/adhesive-residue-contamination-hero.jpg
+          - id: rubber-residue-contamination
+            name: Rubber Compound Residue
+            category: organic-residue
+            subcategory: polymer
+            url: /contaminants/organic-residue/polymer/rubber-residue-contamination
+            image: /images/contaminant/rubber-residue-contamination-hero.jpg
+          - id: insect-residue-contamination
+            name: Insect Impact Residue
+            category: biological
+            subcategory: deposit
+            url: /contaminants/biological/deposit/insect-residue-contamination
+            image: /images/contaminant/insect-residue-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: Contaminants most commonly removed in Marine Laser
+              Cleaning Ship Hulls laser cleaning workflows.
+    card:
+      title: Marine Laser Cleaning Ship Hulls
+      description: Marine Laser Cleaning Ship Hulls applications and operational guidance
+        for laser cleaning workflows.
+    keywords:
+    - Marine Laser Cleaning Ship Hulls
+    - Marine Ship Hull Cleaning
+    slug: marine-laser-cleaning-ship-hulls-applications
+    authorId: 4
+    author:
+      id: 4
+  shipbuilding-marine-laser-cleaning-ship-hulls-applications:
+    id: shipbuilding-marine-laser-cleaning-ship-hulls-applications
+    name: Shipbuilding Marine Laser Cleaning Ship Hulls
+    displayName: Shipbuilding Marine Laser Cleaning Ship Hulls
+    category: applications
+    subcategory: shipbuilding-marine
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T04:39:13.000Z'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/shipbuilding-marine-laser-cleaning-ship-hulls-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Shipbuilding Marine
+      href: /applications/shipbuilding-marine-laser-cleaning-applications
+    - label: Shipbuilding Marine Laser Cleaning Ship Hulls
+      href: /applications/shipbuilding-marine-laser-cleaning-ship-hulls-applications
+    pageTitle: Shipbuilding Marine Laser Cleaning Ship Hulls
+    pageDescription: Laser cleaning in shipbuilding marine applications targets ship
+      hulls for removal of contaminants such as rust and marine growth, process applies
+      high-energy beams that vaporize unwanted layers without damaging underlying
+      structures. Efficiency of the method, it enhances through precise control, thus
+      leads to improved surface preparation for painting or coating, and operational
+      outcomes demonstrate extended hull lifespan alongside reduced maintenance downtime
+      in marine environments. Deployment constraints arise from need for portable
+      equipment in dockyard settings, where environmental factors like humidity still
+      influence beam effectiveness, so adjustments follow to ensure consistent results.
+      Safety implications establish requirement for protective measures against beam
+      exposure, compliance with maritime regulations confirms minimal ecological impact
+      by avoiding chemical residues, and this approach already reveals advantages
+      in sustainable ship maintenance practices.
+    metaDescription: Shipbuilding Marine Laser Cleaning Ship Hulls applications and
+      operational guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: stainless-steel-laser-cleaning
+            name: Stainless Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          - id: nickel-laser-cleaning
+            name: Nickel
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/nickel-laser-cleaning
+            image: /images/material/nickel-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Ship Hull Cleaning Challenges
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: 'Laser cleaning in shipbuilding marine applications,
+              it faces challenges from hull materials that vary in composition and
+              thus resist uniform treatment, leading to inconsistent removal of contaminants
+              like barnacles or rust. Process applies to large surfaces, so operational
+              consequences include potential thermal damage if energy distribution
+              uneven, which causes weakening of structural integrity over time. After
+              treatment, hull exhibits improved hydrodynamics, but failure modes emerge
+              when moisture persists and promotes re-corrosion, thus efficiency drops
+              in saline environments. Special considerations for ship hulls involve
+              deployment constraints in dockyard settings where safety regulations
+              demand minimal dust generation, and compliance implications require
+              avoidance of hazardous emissions during cleaning. Contamination still
+              persists on curved areas, so method adjusts accordingly yet confirms
+              risks of incomplete ablation. Heat accumulates and leads to substrate
+              deformation, following which inspection establishes necessary repairs.
+              These warnings consolidate at end: improper handling results in safety
+              hazards from laser reflections in wet conditions, and environmental
+              compliance fails if waste management overlooks marine pollution standards.'
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: algae-growth-contamination
+            name: Algae and Lichen Growth
+            category: biological
+            subcategory: growth
+            url: /contaminants/biological/growth/algae-growth-contamination
+            image: /images/contaminant/algae-growth-contamination-hero.jpg
+          - id: biological-stains-contamination
+            name: Organic Biofilm Deposits
+            category: biological
+            subcategory: deposit
+            url: /contaminants/biological/deposit/biological-stains-contamination
+            image: /images/contaminant/biological-stains-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          - id: scale-buildup-contamination
+            name: Mineral Scale / Hard Water Deposits
+            category: thermal-damage
+            subcategory: scale
+            url: /contaminants/thermal-damage/scale/scale-buildup-contamination
+            image: /images/contaminant/scale-buildup-contamination-hero.jpg
+          _section:
+            sectionTitle: Ship Hull Cleaning Challenges
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: Laser cleaning for ship hulls in marine applications,
+              it faces challenges from saltwater exposure and biofouling buildup.
+              This contamination, it resists removal more than on land-based structures,
+              thus efficiency drops during operations. Process applies to curved surfaces
+              and thus requires precise adjustments, or failure modes like incomplete
+              cleaning emerge. Compared to abrasive methods, laser approach offers
+              less environmental harm yet demands careful power control to avoid hull
+              damage. After treatment, hull exhibits smoother profile, but operational
+              consequences include downtime if weather interrupts sessions. Special
+              considerations for ship hulls involve corrosion risks from moisture,
+              so protective measures follow immediately. Heat accumulates and causes
+              potential warping, especially on thinner materials versus thicker industrial
+              standards. Safety implications stress operator training, as marine settings
+              heighten accident risks from unstable platforms. Contamination still
+              persists in hard-to-reach areas, confirming need for combined techniques.
+    card:
+      title: Shipbuilding Marine Laser Cleaning Ship Hulls
+      description: Shipbuilding Marine Laser Cleaning Ship Hulls applications and
+        operational guidance for laser cleaning workflows.
+    keywords:
+    - Shipbuilding Marine Laser Cleaning Ship Hulls
+    slug: shipbuilding-marine-laser-cleaning-ship-hulls-applications
+    authorId: 1
+    faq: ''
+    page_title: Laser Cleaning Applications for Ship Hulls in Marine Shipbuilding
+    author:
+      id: 1
+  shipbuilding-marine-laser-cleaning-corrosion-removal-applications:
+    id: shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+    name: Shipbuilding Marine Laser Cleaning Corrosion Removal
+    displayName: Shipbuilding Marine Laser Cleaning Corrosion Removal
+    category: applications
+    subcategory: shipbuilding-marine
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T00:40:19.000Z'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Shipbuilding Marine
+      href: /applications/shipbuilding-marine-laser-cleaning-applications
+    - label: Shipbuilding Marine Laser Cleaning Corrosion Removal
+      href: /applications/shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+    pageTitle: Shipbuilding Marine Laser Cleaning Corrosion Removal
+    pageDescription: In shipbuilding and marine contexts, laser cleaning removes corrosion
+      from hulls and components, so surfaces become smooth and ready for coating.
+      This method, it applies precisely without damaging underlying materials, and
+      treatment achieves effective removal of rust layers. During operation, environmental
+      factors like humidity still influence outcomes, so protective measures are taken
+      on site. After application is performed, integrity of structures improves, with
+      compliance to safety standards observed in maritime regulations. From observations,
+      deployment in confined spaces presents constraints, but portable systems address
+      this flexibility.
+    metaDescription: Shipbuilding Marine Laser Cleaning Corrosion Removal applications
+      and operational guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: stainless-steel-laser-cleaning
+            name: Stainless Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          - id: nickel-laser-cleaning
+            name: Nickel
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/nickel-laser-cleaning
+            image: /images/material/nickel-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: Materials most frequently cleaned in Shipbuilding
+              Marine Laser Cleaning Corrosion Removal laser cleaning workflows.
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: algae-growth-contamination
+            name: Algae and Lichen Growth
+            category: biological
+            subcategory: growth
+            url: /contaminants/biological/growth/algae-growth-contamination
+            image: /images/contaminant/algae-growth-contamination-hero.jpg
+          - id: biological-stains-contamination
+            name: Organic Biofilm Deposits
+            category: biological
+            subcategory: deposit
+            url: /contaminants/biological/deposit/biological-stains-contamination
+            image: /images/contaminant/biological-stains-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          - id: scale-buildup-contamination
+            name: Mineral Scale / Hard Water Deposits
+            category: thermal-damage
+            subcategory: scale
+            url: /contaminants/thermal-damage/scale/scale-buildup-contamination
+            image: /images/contaminant/scale-buildup-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: Contaminants most commonly removed in Shipbuilding
+              Marine Laser Cleaning Corrosion Removal laser cleaning workflows.
+    card:
+      title: Shipbuilding Marine Laser Cleaning Corrosion Removal
+      description: Shipbuilding Marine Laser Cleaning Corrosion Removal applications
+        and operational guidance for laser cleaning workflows.
+    keywords:
+    - Shipbuilding Marine Laser Cleaning Corrosion Removal
+    slug: shipbuilding-marine-laser-cleaning-corrosion-removal-applications
+    authorId: 3
+    faq: ''
+    author:
+      id: 3
+  shipbuilding-marine-laser-cleaning-paint-stripping-applications:
+    id: shipbuilding-marine-laser-cleaning-paint-stripping-applications
+    name: Shipbuilding Marine Laser Cleaning Paint Stripping
+    displayName: Shipbuilding Marine Laser Cleaning Paint Stripping
+    category: applications
+    subcategory: shipbuilding-marine
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:02:18.633795+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/shipbuilding-marine-laser-cleaning-paint-stripping-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Shipbuilding Marine
+      href: /applications/shipbuilding-marine-laser-cleaning-applications
+    - label: Shipbuilding Marine Laser Cleaning Paint Stripping
+      href: /applications/shipbuilding-marine-laser-cleaning-paint-stripping-applications
+    pageTitle: Shipbuilding Marine Laser Cleaning Paint Stripping
+    pageDescription: Laser cleaning for paint stripping in shipbuilding marine applications
+      removes coatings from hulls and decks, and this process enhances surface preparation
+      for maintenance or repairs. Efficiency of the method, it increases with controlled
+      energy delivery, thus surface already exhibits cleanliness without residue.
+      Deployment occurs in dry docks or controlled environments, so constraints arise
+      from equipment portability and atmospheric conditions that affect beam stability.
+      Operational outcomes demonstrate improved adhesion for new coatings, and safety
+      implications require protective measures against reflections, while compliance
+      follows maritime regulations on waste disposal.
+    metaDescription: Shipbuilding Marine Laser Cleaning Paint Stripping applications
+      and operational guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: stainless-steel-laser-cleaning
+            name: Stainless Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          - id: nickel-laser-cleaning
+            name: Nickel
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/nickel-laser-cleaning
+            image: /images/material/nickel-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: algae-growth-contamination
+            name: Algae and Lichen Growth
+            category: biological
+            subcategory: growth
+            url: /contaminants/biological/growth/algae-growth-contamination
+            image: /images/contaminant/algae-growth-contamination-hero.jpg
+          - id: biological-stains-contamination
+            name: Organic Biofilm Deposits
+            category: biological
+            subcategory: deposit
+            url: /contaminants/biological/deposit/biological-stains-contamination
+            image: /images/contaminant/biological-stains-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          - id: scale-buildup-contamination
+            name: Mineral Scale / Hard Water Deposits
+            category: thermal-damage
+            subcategory: scale
+            url: /contaminants/thermal-damage/scale/scale-buildup-contamination
+            image: /images/contaminant/scale-buildup-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      countryDisplay: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      personaFile: taiwan_persona.yaml
+      formattingFile: taiwan_formatting.yaml
+    card:
+      title: Shipbuilding Marine Laser Cleaning Paint Stripping
+      description: Shipbuilding Marine Laser Cleaning Paint Stripping applications
+        and operational guidance for laser cleaning workflows.
+    keywords:
+    - Shipbuilding Marine Laser Cleaning Paint Stripping
+    slug: shipbuilding-marine-laser-cleaning-paint-stripping-applications
+    authorId: 1
+    faq: ''
+  shipbuilding-marine-laser-cleaning-rust-removal-applications:
+    id: shipbuilding-marine-laser-cleaning-rust-removal-applications
+    name: Shipbuilding Marine Laser Cleaning Rust Removal
+    displayName: Shipbuilding Marine Laser Cleaning Rust Removal
+    category: applications
+    subcategory: shipbuilding-marine
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:07:45.028365+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/shipbuilding-marine-laser-cleaning-rust-removal-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Shipbuilding Marine
+      href: /applications/shipbuilding-marine-laser-cleaning-applications
+    - label: Shipbuilding Marine Laser Cleaning Rust Removal
+      href: /applications/shipbuilding-marine-laser-cleaning-rust-removal-applications
+    pageTitle: Shipbuilding Marine Laser Cleaning Rust Removal
+    pageDescription: ''
+    metaDescription: Shipbuilding Marine Laser Cleaning Rust Removal applications
+      and operational guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: stainless-steel-laser-cleaning
+            name: Stainless Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          - id: nickel-laser-cleaning
+            name: Nickel
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/nickel-laser-cleaning
+            image: /images/material/nickel-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: algae-growth-contamination
+            name: Algae and Lichen Growth
+            category: biological
+            subcategory: growth
+            url: /contaminants/biological/growth/algae-growth-contamination
+            image: /images/contaminant/algae-growth-contamination-hero.jpg
+          - id: biological-stains-contamination
+            name: Organic Biofilm Deposits
+            category: biological
+            subcategory: deposit
+            url: /contaminants/biological/deposit/biological-stains-contamination
+            image: /images/contaminant/biological-stains-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          - id: scale-buildup-contamination
+            name: Mineral Scale / Hard Water Deposits
+            category: thermal-damage
+            subcategory: scale
+            url: /contaminants/thermal-damage/scale/scale-buildup-contamination
+            image: /images/contaminant/scale-buildup-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      countryDisplay: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      personaFile: indonesia_persona.yaml
+      formattingFile: indonesia_formatting.yaml
+    card:
+      title: Shipbuilding Marine Laser Cleaning Rust Removal
+      description: Shipbuilding Marine Laser Cleaning Rust Removal applications and
+        operational guidance for laser cleaning workflows.
+    keywords:
+    - Shipbuilding Marine Laser Cleaning Rust Removal
+    slug: shipbuilding-marine-laser-cleaning-rust-removal-applications
+    authorId: 3
+    faq: ''
+  shipbuilding-marine-laser-cleaning-barnacle-removal-applications:
+    id: shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+    name: Shipbuilding Marine Laser Cleaning Barnacle Removal
+    displayName: Shipbuilding Marine Laser Cleaning Barnacle Removal
+    category: applications
+    subcategory: shipbuilding-marine
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:07:51.806395+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Shipbuilding Marine
+      href: /applications/shipbuilding-marine-laser-cleaning-applications
+    - label: Shipbuilding Marine Laser Cleaning Barnacle Removal
+      href: /applications/shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+    pageTitle: Shipbuilding Marine Laser Cleaning Barnacle Removal
+    pageDescription: ''
+    metaDescription: Shipbuilding Marine Laser Cleaning Barnacle Removal applications
+      and operational guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: stainless-steel-laser-cleaning
+            name: Stainless Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          - id: nickel-laser-cleaning
+            name: Nickel
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/nickel-laser-cleaning
+            image: /images/material/nickel-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: algae-growth-contamination
+            name: Algae and Lichen Growth
+            category: biological
+            subcategory: growth
+            url: /contaminants/biological/growth/algae-growth-contamination
+            image: /images/contaminant/algae-growth-contamination-hero.jpg
+          - id: biological-stains-contamination
+            name: Organic Biofilm Deposits
+            category: biological
+            subcategory: deposit
+            url: /contaminants/biological/deposit/biological-stains-contamination
+            image: /images/contaminant/biological-stains-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          - id: scale-buildup-contamination
+            name: Mineral Scale / Hard Water Deposits
+            category: thermal-damage
+            subcategory: scale
+            url: /contaminants/thermal-damage/scale/scale-buildup-contamination
+            image: /images/contaminant/scale-buildup-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 4
+      name: Todd Dunning
+      country: United States
+      countryDisplay: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      personaFile: usa_persona.yaml
+      formattingFile: usa_formatting.yaml
+    card:
+      title: Shipbuilding Marine Laser Cleaning Barnacle Removal
+      description: Shipbuilding Marine Laser Cleaning Barnacle Removal applications
+        and operational guidance for laser cleaning workflows.
+    keywords:
+    - Shipbuilding Marine Laser Cleaning Barnacle Removal
+    slug: shipbuilding-marine-laser-cleaning-barnacle-removal-applications
+    authorId: 4
+    faq: ''
+  shipbuilding-marine-laser-cleaning-ndt-prep-applications:
+    id: shipbuilding-marine-laser-cleaning-ndt-prep-applications
+    name: Shipbuilding Marine Laser Cleaning Ndt Prep
+    displayName: Shipbuilding Marine Laser Cleaning Ndt Prep
+    category: applications
+    subcategory: shipbuilding-marine
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:07:58.554211+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/shipbuilding-marine-laser-cleaning-ndt-prep-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Shipbuilding Marine
+      href: /applications/shipbuilding-marine-laser-cleaning-applications
+    - label: Shipbuilding Marine Laser Cleaning Ndt Prep
+      href: /applications/shipbuilding-marine-laser-cleaning-ndt-prep-applications
+    pageTitle: Shipbuilding Marine Laser Cleaning Ndt Prep
+    pageDescription: ''
+    metaDescription: Shipbuilding Marine Laser Cleaning Ndt Prep applications and
+      operational guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: stainless-steel-laser-cleaning
+            name: Stainless Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/stainless-steel-laser-cleaning
+            image: /images/material/stainless-steel-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          - id: nickel-laser-cleaning
+            name: Nickel
+            category: metal
+            subcategory: specialty
+            url: /materials/metal/specialty/nickel-laser-cleaning
+            image: /images/material/nickel-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: algae-growth-contamination
+            name: Algae and Lichen Growth
+            category: biological
+            subcategory: growth
+            url: /contaminants/biological/growth/algae-growth-contamination
+            image: /images/contaminant/algae-growth-contamination-hero.jpg
+          - id: biological-stains-contamination
+            name: Organic Biofilm Deposits
+            category: biological
+            subcategory: deposit
+            url: /contaminants/biological/deposit/biological-stains-contamination
+            image: /images/contaminant/biological-stains-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          - id: scale-buildup-contamination
+            name: Mineral Scale / Hard Water Deposits
+            category: thermal-damage
+            subcategory: scale
+            url: /contaminants/thermal-damage/scale/scale-buildup-contamination
+            image: /images/contaminant/scale-buildup-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 2
+      name: Alessandro Moretti
+      country: Italy
+      countryDisplay: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise:
+      - Laser-Based Additive Manufacturing
+      affiliation:
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf:
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs:
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      personaFile: italy_persona.yaml
+      formattingFile: italy_formatting.yaml
+    card:
+      title: Shipbuilding Marine Laser Cleaning Ndt Prep
+      description: Shipbuilding Marine Laser Cleaning Ndt Prep applications and operational
+        guidance for laser cleaning workflows.
+    keywords:
+    - Shipbuilding Marine Laser Cleaning Ndt Prep
+    slug: shipbuilding-marine-laser-cleaning-ndt-prep-applications
+    authorId: 2
+    faq: ''
+  rail-transport-locomotive-applications:
+    id: rail-transport-locomotive-applications
+    name: Rail Transport Locomotive
+    displayName: Rail Transport Locomotive Laser Cleaning
+    category: applications
+    subcategory: rail-transport
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:19:39.842021+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/rail-transport-locomotive-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Rail Transport
+      href: /applications/rail-transport-laser-cleaning-applications
+    - label: Rail Transport Locomotive
+      href: /applications/rail-transport-locomotive-applications
+    pageTitle: Rail Transport Locomotive Laser Cleaning
+    pageDescription: ''
+    metaDescription: Rail Transport Locomotive Laser Cleaning applications and operational
+      guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: steel-laser-cleaning
+            name: Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/steel-laser-cleaning
+            image: /images/material/steel-laser-cleaning-hero.jpg
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: brass-laser-cleaning
+            name: Brass
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/brass-laser-cleaning
+            image: /images/material/brass-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          - id: graffiti-paint-contamination
+            name: Graffiti and Spray Paint
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+            image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: rubber-residue-contamination
+            name: Rubber Compound Residue
+            category: organic-residue
+            subcategory: polymer
+            url: /contaminants/organic-residue/polymer/rubber-residue-contamination
+            image: /images/contaminant/rubber-residue-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 2
+      name: Alessandro Moretti
+      country: Italy
+      countryDisplay: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise: &id001
+      - Laser-Based Additive Manufacturing
+      affiliation: &id002
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf: &id003
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials: &id004
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs: &id005
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      personaFile: italy_persona.yaml
+      formattingFile: italy_formatting.yaml
+    card:
+      title: Rail Transport Locomotive Laser Cleaning
+      description: Rail Transport Locomotive Laser Cleaning applications and operational
+        guidance for laser cleaning workflows.
+    keywords:
+    - Rail Transport Locomotive Laser Cleaning
+    - Rail Transport Locomotive
+    slug: rail-transport-locomotive-applications
+    authorId: 2
+    faq: ''
+  rail-transport-railcar-applications:
+    id: rail-transport-railcar-applications
+    name: Rail Transport Railcar
+    displayName: Rail Transport Railcar Laser Cleaning
+    category: applications
+    subcategory: rail-transport
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:19:39.844977+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/rail-transport-railcar-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Rail Transport
+      href: /applications/rail-transport-laser-cleaning-applications
+    - label: Rail Transport Railcar
+      href: /applications/rail-transport-railcar-applications
+    pageTitle: Rail Transport Railcar Laser Cleaning
+    pageDescription: ''
+    metaDescription: Rail Transport Railcar Laser Cleaning applications and operational
+      guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: steel-laser-cleaning
+            name: Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/steel-laser-cleaning
+            image: /images/material/steel-laser-cleaning-hero.jpg
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: brass-laser-cleaning
+            name: Brass
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/brass-laser-cleaning
+            image: /images/material/brass-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          - id: graffiti-paint-contamination
+            name: Graffiti and Spray Paint
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+            image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: rubber-residue-contamination
+            name: Rubber Compound Residue
+            category: organic-residue
+            subcategory: polymer
+            url: /contaminants/organic-residue/polymer/rubber-residue-contamination
+            image: /images/contaminant/rubber-residue-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 2
+      name: Alessandro Moretti
+      country: Italy
+      countryDisplay: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise: *id001
+      affiliation: *id002
+      alumniOf: *id003
+      credentials: *id004
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs: *id005
+      personaFile: italy_persona.yaml
+      formattingFile: italy_formatting.yaml
+    card:
+      title: Rail Transport Railcar Laser Cleaning
+      description: Rail Transport Railcar Laser Cleaning applications and operational
+        guidance for laser cleaning workflows.
+    keywords:
+    - Rail Transport Railcar Laser Cleaning
+    - Rail Transport Railcar
+    slug: rail-transport-railcar-applications
+    authorId: 2
+    faq: ''
+  rail-transport-track-applications:
+    id: rail-transport-track-applications
+    name: Rail Transport Track
+    displayName: Rail Transport Track Laser Cleaning
+    category: applications
+    subcategory: rail-transport
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:19:39.846824+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/rail-transport-track-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Rail Transport
+      href: /applications/rail-transport-laser-cleaning-applications
+    - label: Rail Transport Track
+      href: /applications/rail-transport-track-applications
+    pageTitle: Rail Transport Track Laser Cleaning
+    pageDescription: ''
+    metaDescription: Rail Transport Track Laser Cleaning applications and operational
+      guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: steel-laser-cleaning
+            name: Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/steel-laser-cleaning
+            image: /images/material/steel-laser-cleaning-hero.jpg
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: brass-laser-cleaning
+            name: Brass
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/brass-laser-cleaning
+            image: /images/material/brass-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          - id: graffiti-paint-contamination
+            name: Graffiti and Spray Paint
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+            image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: rubber-residue-contamination
+            name: Rubber Compound Residue
+            category: organic-residue
+            subcategory: polymer
+            url: /contaminants/organic-residue/polymer/rubber-residue-contamination
+            image: /images/contaminant/rubber-residue-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      countryDisplay: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise: &id006
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation: &id007
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials: &id008
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages: &id009
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs: &id010
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      personaFile: indonesia_persona.yaml
+      formattingFile: indonesia_formatting.yaml
+    card:
+      title: Rail Transport Track Laser Cleaning
+      description: Rail Transport Track Laser Cleaning applications and operational
+        guidance for laser cleaning workflows.
+    keywords:
+    - Rail Transport Track Laser Cleaning
+    - Rail Transport Track
+    slug: rail-transport-track-applications
+    authorId: 3
+    faq: ''
+  rail-transport-rust-removal-applications:
+    id: rail-transport-rust-removal-applications
+    name: Rail Transport Rust Removal
+    displayName: Rail Transport Rust Removal Laser Cleaning
+    category: applications
+    subcategory: rail-transport
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:19:39.848608+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/rail-transport-rust-removal-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Rail Transport
+      href: /applications/rail-transport-laser-cleaning-applications
+    - label: Rail Transport Rust Removal
+      href: /applications/rail-transport-rust-removal-applications
+    pageTitle: Rail Transport Rust Removal Laser Cleaning
+    pageDescription: ''
+    metaDescription: Rail Transport Rust Removal Laser Cleaning applications and operational
+      guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: steel-laser-cleaning
+            name: Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/steel-laser-cleaning
+            image: /images/material/steel-laser-cleaning-hero.jpg
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: brass-laser-cleaning
+            name: Brass
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/brass-laser-cleaning
+            image: /images/material/brass-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          - id: graffiti-paint-contamination
+            name: Graffiti and Spray Paint
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+            image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: rubber-residue-contamination
+            name: Rubber Compound Residue
+            category: organic-residue
+            subcategory: polymer
+            url: /contaminants/organic-residue/polymer/rubber-residue-contamination
+            image: /images/contaminant/rubber-residue-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 4
+      name: Todd Dunning
+      country: United States
+      countryDisplay: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise: &id015
+      - Optical Materials for Laser Systems
+      affiliation: &id016
+        name: Coherent Inc.
+        type: Organization
+      credentials: &id017
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs: &id018
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      personaFile: usa_persona.yaml
+      formattingFile: usa_formatting.yaml
+    card:
+      title: Rail Transport Rust Removal Laser Cleaning
+      description: Rail Transport Rust Removal Laser Cleaning applications and operational
+        guidance for laser cleaning workflows.
+    keywords:
+    - Rail Transport Rust Removal Laser Cleaning
+    - Rail Transport Rust Removal
+    slug: rail-transport-rust-removal-applications
+    authorId: 4
+    faq: ''
+  rail-transport-paint-stripping-applications:
+    id: rail-transport-paint-stripping-applications
+    name: Rail Transport Paint Stripping
+    displayName: Rail Transport Paint Stripping Laser Cleaning
+    category: applications
+    subcategory: rail-transport
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:19:39.850391+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/rail-transport-paint-stripping-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Rail Transport
+      href: /applications/rail-transport-laser-cleaning-applications
+    - label: Rail Transport Paint Stripping
+      href: /applications/rail-transport-paint-stripping-applications
+    pageTitle: Rail Transport Paint Stripping Laser Cleaning
+    pageDescription: ''
+    metaDescription: Rail Transport Paint Stripping Laser Cleaning applications and
+      operational guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: steel-laser-cleaning
+            name: Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/steel-laser-cleaning
+            image: /images/material/steel-laser-cleaning-hero.jpg
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: brass-laser-cleaning
+            name: Brass
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/brass-laser-cleaning
+            image: /images/material/brass-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          - id: graffiti-paint-contamination
+            name: Graffiti and Spray Paint
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+            image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: rubber-residue-contamination
+            name: Rubber Compound Residue
+            category: organic-residue
+            subcategory: polymer
+            url: /contaminants/organic-residue/polymer/rubber-residue-contamination
+            image: /images/contaminant/rubber-residue-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      countryDisplay: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise: &id011
+      - Laser Materials Processing
+      affiliation: &id012
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials: &id013
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs: &id014
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      personaFile: taiwan_persona.yaml
+      formattingFile: taiwan_formatting.yaml
+    card:
+      title: Rail Transport Paint Stripping Laser Cleaning
+      description: Rail Transport Paint Stripping Laser Cleaning applications and
+        operational guidance for laser cleaning workflows.
+    keywords:
+    - Rail Transport Paint Stripping Laser Cleaning
+    - Rail Transport Paint Stripping
+    slug: rail-transport-paint-stripping-applications
+    authorId: 1
+    faq: ''
+  rail-transport-corrosion-removal-applications:
+    id: rail-transport-corrosion-removal-applications
+    name: Rail Transport Corrosion Removal
+    displayName: Rail Transport Corrosion Removal Laser Cleaning
+    category: applications
+    subcategory: rail-transport
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:19:39.852154+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/rail-transport-corrosion-removal-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Rail Transport
+      href: /applications/rail-transport-laser-cleaning-applications
+    - label: Rail Transport Corrosion Removal
+      href: /applications/rail-transport-corrosion-removal-applications
+    pageTitle: Rail Transport Corrosion Removal Laser Cleaning
+    pageDescription: ''
+    metaDescription: Rail Transport Corrosion Removal Laser Cleaning applications
+      and operational guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: steel-laser-cleaning
+            name: Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/steel-laser-cleaning
+            image: /images/material/steel-laser-cleaning-hero.jpg
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: brass-laser-cleaning
+            name: Brass
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/brass-laser-cleaning
+            image: /images/material/brass-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          - id: graffiti-paint-contamination
+            name: Graffiti and Spray Paint
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+            image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: rubber-residue-contamination
+            name: Rubber Compound Residue
+            category: organic-residue
+            subcategory: polymer
+            url: /contaminants/organic-residue/polymer/rubber-residue-contamination
+            image: /images/contaminant/rubber-residue-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      countryDisplay: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise: *id006
+      affiliation: *id007
+      credentials: *id008
+      languages: *id009
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs: *id010
+      personaFile: indonesia_persona.yaml
+      formattingFile: indonesia_formatting.yaml
+    card:
+      title: Rail Transport Corrosion Removal Laser Cleaning
+      description: Rail Transport Corrosion Removal Laser Cleaning applications and
+        operational guidance for laser cleaning workflows.
+    keywords:
+    - Rail Transport Corrosion Removal Laser Cleaning
+    - Rail Transport Corrosion Removal
+    slug: rail-transport-corrosion-removal-applications
+    authorId: 3
+    faq: ''
+  rail-transport-grease-oil-removal-applications:
+    id: rail-transport-grease-oil-removal-applications
+    name: Rail Transport Grease Oil Removal
+    displayName: Rail Transport Grease Oil Removal Laser Cleaning
+    category: applications
+    subcategory: rail-transport
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:19:39.853934+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/rail-transport-grease-oil-removal-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Rail Transport
+      href: /applications/rail-transport-laser-cleaning-applications
+    - label: Rail Transport Grease Oil Removal
+      href: /applications/rail-transport-grease-oil-removal-applications
+    pageTitle: Rail Transport Grease Oil Removal Laser Cleaning
+    pageDescription: ''
+    metaDescription: Rail Transport Grease Oil Removal Laser Cleaning applications
+      and operational guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: steel-laser-cleaning
+            name: Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/steel-laser-cleaning
+            image: /images/material/steel-laser-cleaning-hero.jpg
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: brass-laser-cleaning
+            name: Brass
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/brass-laser-cleaning
+            image: /images/material/brass-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          - id: graffiti-paint-contamination
+            name: Graffiti and Spray Paint
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+            image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: rubber-residue-contamination
+            name: Rubber Compound Residue
+            category: organic-residue
+            subcategory: polymer
+            url: /contaminants/organic-residue/polymer/rubber-residue-contamination
+            image: /images/contaminant/rubber-residue-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      countryDisplay: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise: *id011
+      affiliation: *id012
+      credentials: *id013
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs: *id014
+      personaFile: taiwan_persona.yaml
+      formattingFile: taiwan_formatting.yaml
+    card:
+      title: Rail Transport Grease Oil Removal Laser Cleaning
+      description: Rail Transport Grease Oil Removal Laser Cleaning applications and
+        operational guidance for laser cleaning workflows.
+    keywords:
+    - Rail Transport Grease Oil Removal Laser Cleaning
+    - Rail Transport Grease Oil Removal
+    slug: rail-transport-grease-oil-removal-applications
+    authorId: 1
+    faq: ''
+  rail-transport-surface-prep-applications:
+    id: rail-transport-surface-prep-applications
+    name: Rail Transport Surface Prep
+    displayName: Rail Transport Surface Prep Laser Cleaning
+    category: applications
+    subcategory: rail-transport
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:19:39.855751+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/rail-transport-surface-prep-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Rail Transport
+      href: /applications/rail-transport-laser-cleaning-applications
+    - label: Rail Transport Surface Prep
+      href: /applications/rail-transport-surface-prep-applications
+    pageTitle: Rail Transport Surface Prep Laser Cleaning
+    pageDescription: ''
+    metaDescription: Rail Transport Surface Prep Laser Cleaning applications and operational
+      guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: steel-laser-cleaning
+            name: Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/steel-laser-cleaning
+            image: /images/material/steel-laser-cleaning-hero.jpg
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: brass-laser-cleaning
+            name: Brass
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/brass-laser-cleaning
+            image: /images/material/brass-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          - id: graffiti-paint-contamination
+            name: Graffiti and Spray Paint
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+            image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: rubber-residue-contamination
+            name: Rubber Compound Residue
+            category: organic-residue
+            subcategory: polymer
+            url: /contaminants/organic-residue/polymer/rubber-residue-contamination
+            image: /images/contaminant/rubber-residue-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 2
+      name: Alessandro Moretti
+      country: Italy
+      countryDisplay: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise: *id001
+      affiliation: *id002
+      alumniOf: *id003
+      credentials: *id004
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs: *id005
+      personaFile: italy_persona.yaml
+      formattingFile: italy_formatting.yaml
+    card:
+      title: Rail Transport Surface Prep Laser Cleaning
+      description: Rail Transport Surface Prep Laser Cleaning applications and operational
+        guidance for laser cleaning workflows.
+    keywords:
+    - Rail Transport Surface Prep Laser Cleaning
+    - Rail Transport Surface Prep
+    slug: rail-transport-surface-prep-applications
+    authorId: 2
+    faq: ''
+  rail-transport-ndt-prep-applications:
+    id: rail-transport-ndt-prep-applications
+    name: Rail Transport Ndt Prep
+    displayName: Rail Transport Ndt Prep Laser Cleaning
+    category: applications
+    subcategory: rail-transport
+    datePublished: '2026-02-28'
+    dateModified: '2026-02-28T02:19:39.857532+00:00'
+    contentType: application
+    schemaVersion: 5.0.0
+    fullPath: /applications/rail-transport-ndt-prep-applications
+    breadcrumb:
+    - label: Home
+      href: /
+    - label: Applications
+      href: /applications
+    - label: Rail Transport
+      href: /applications/rail-transport-laser-cleaning-applications
+    - label: Rail Transport Ndt Prep
+      href: /applications/rail-transport-ndt-prep-applications
+    pageTitle: Rail Transport Ndt Prep Laser Cleaning
+    pageDescription: ''
+    metaDescription: Rail Transport Ndt Prep Laser Cleaning applications and operational
+      guidance for laser cleaning workflows.
+    relationships:
+      discovery:
+        relatedMaterials:
+          presentation: card
+          items:
+          - id: steel-laser-cleaning
+            name: Steel
+            category: metal
+            subcategory: ferrous
+            url: /materials/metal/ferrous/steel-laser-cleaning
+            image: /images/material/steel-laser-cleaning-hero.jpg
+          - id: aluminum-laser-cleaning
+            name: Aluminum
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/aluminum-laser-cleaning
+            image: /images/material/aluminum-laser-cleaning-hero.jpg
+          - id: brass-laser-cleaning
+            name: Brass
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/brass-laser-cleaning
+            image: /images/material/brass-laser-cleaning-hero.jpg
+          - id: bronze-laser-cleaning
+            name: Bronze
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/bronze-laser-cleaning
+            image: /images/material/bronze-laser-cleaning-hero.jpg
+          - id: copper-laser-cleaning
+            name: Copper
+            category: metal
+            subcategory: non-ferrous
+            url: /materials/metal/non-ferrous/copper-laser-cleaning
+            image: /images/material/copper-laser-cleaning-hero.jpg
+          _section:
+            sectionTitle: Common Materials
+            icon: layers
+            order: 30
+            variant: default
+            sectionDescription: ''
+      interactions:
+        contaminatedBy:
+          presentation: card
+          items:
+          - id: carbon-soot-contamination
+            name: Carbon Soot Deposits
+            category: organic-residue
+            subcategory: other
+            url: /contaminants/organic-residue/other/carbon-soot-contamination
+            image: /images/contaminant/carbon-soot-contamination-hero.jpg
+          - id: graffiti-paint-contamination
+            name: Graffiti and Spray Paint
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+            image: /images/contaminant/graffiti-paint-contamination-hero.jpg
+          - id: salt-residue-contamination
+            name: Salt and Chloride Deposits
+            category: inorganic-coating
+            subcategory: mineral
+            url: /contaminants/inorganic-coating/mineral/salt-residue-contamination
+            image: /images/contaminant/salt-residue-contamination-hero.jpg
+          - id: rubber-residue-contamination
+            name: Rubber Compound Residue
+            category: organic-residue
+            subcategory: polymer
+            url: /contaminants/organic-residue/polymer/rubber-residue-contamination
+            image: /images/contaminant/rubber-residue-contamination-hero.jpg
+          - id: paint-residue-contamination
+            name: Paint Residue / Coating Failure
+            category: inorganic-coating
+            subcategory: paint
+            url: /contaminants/inorganic-coating/paint/paint-residue-contamination
+            image: /images/contaminant/paint-residue-contamination-hero.jpg
+          _section:
+            sectionTitle: Common Contaminants
+            icon: droplet
+            order: 31
+            variant: default
+            sectionDescription: ''
+    author:
+      id: 4
+      name: Todd Dunning
+      country: United States
+      countryDisplay: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise: *id015
+      affiliation: *id016
+      credentials: *id017
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs: *id018
+      personaFile: usa_persona.yaml
+      formattingFile: usa_formatting.yaml
+    card:
+      title: Rail Transport Ndt Prep Laser Cleaning
+      description: Rail Transport Ndt Prep Laser Cleaning applications and operational
+        guidance for laser cleaning workflows.
+    keywords:
+    - Rail Transport Ndt Prep Laser Cleaning
+    - Rail Transport Ndt Prep
+    slug: rail-transport-ndt-prep-applications
+    authorId: 4
+    faq: ''

@@ -11,6 +11,7 @@ Last Updated: October 22, 2025
 # Research Services (canonical location: shared/research/services/)
 from shared.research.services.ai_research_service import AIResearchEnrichmentService
 from shared.services.pipeline_process_service import PipelineProcessService
+from shared.services.keyword_seed_service import KeywordSeedService
 
 # Generic Services (extracted from materials domain)
 from shared.services.template_service import TemplateService
@@ -36,6 +37,7 @@ __all__ = [
     # Generic Services
     'TemplateService',
     'PipelineProcessService',
+    'KeywordSeedService',
 ]
 
 # Service registry for dynamic discovery

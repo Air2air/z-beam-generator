@@ -307,9 +307,19 @@ class GrokHumannessRuntimeEvaluator:
 
         prompt = template
         for token, value in replacements.items():
-            prompt = prompt.replace(token, value)
+            prompt = prompt.replace(token, self._stringify_prompt_value(value))
 
         return prompt
+
+    @staticmethod
+    def _stringify_prompt_value(value: Any) -> str:
+        if isinstance(value, str):
+            return value
+        if value is None:
+            return ""
+        if isinstance(value, (dict, list)):
+            return json.dumps(value, ensure_ascii=False)
+        return str(value)
 
     def _required_client_config(self, key: str) -> Any:
         if hasattr(self.api_client, "config") and isinstance(self.api_client.config, dict):

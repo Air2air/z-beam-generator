@@ -5,33 +5,88 @@ version: 1
 
 defaults:
   base_length: 50
+  base_length_multiplier: 0.65
   extraction_strategy: raw
 
 randomization_range:
-  min_factor: 0.1
-  max_factor: 2.6
+  min_factor: 0.05
+  max_factor: 1.6
 
 # Field-name keyed configuration shared across ALL domains.
 # Same field name => same base length/range/extraction everywhere.
 fields:
-  appearanceVariations: {}
-  applications: {}
-  challenges: {}
-  chemicalProperties: {}
-  contaminatedBy: {}
+  appearance:                { base_length: 80 }
+  appearanceVariations:      { base_length: 80 }
+  applications:              { base_length: 90 }
+  challenges:                { base_length: 90 }
+  chemicalProperties:        { base_length: 90 }
+  commonChallenges:          { base_length: 90 }
+  component_summary:         { base_length: 70 }
+  component_summaries:       { base_length: 70 }
+  compounds:                 { base_length: 75 }
+  contaminatedBy:            { base_length: 92 }
+  contaminatedByTitle:       { base_length: 6 }
+  continuousMonitoring:      { base_length: 80 }
+  context:                   { base_length: 70 }
+  detectionMethods:          { base_length: 80 }
+  detection_methods:         { base_length: 80 }
+  emergencyResponse:         { base_length: 80 }
+  emergency_response:        { base_length: 80 }
+  environmentalImpact:       { base_length: 90 }
+  exposureLimits:            { base_length: 75 }
+  exposure_guidelines:       { base_length: 75 }
   faq:
     base_length: 300
-  healthEffects: {}
-  identifiers: {}
+  faqQuestion:
+    base_length: 14
+  faqAnswer:
+    base_length: 75
+  first_aid:                 { base_length: 70 }
+  healthEffects:             { base_length: 85 }
+  health_effects:            { base_length: 85 }
+  identifiers:               { base_length: 40 }
+  industryApplications:      { base_length: 90 }
+  laserMaterialInteraction:  { base_length: 95 }
+  materialCharacteristics:   { base_length: 95 }
   micro:
     base_length: 50
+  operationalConsiderations: { base_length: 85 }
   pageDescription:
-    base_length: 100
+    base_length: 88
+  page_description:          { base_length: 100 }
   pageTitle:
     base_length: 12
-  physicalProperties: {}
-  prevention: {}
-  relatedMaterials: {}
+  page_title:                { base_length: 12 }
+  ppeRequirements:           { base_length: 65 }
+  ppe_requirements:          { base_length: 65 }
+  physicalProperties:        { base_length: 90 }
+  prevention:                { base_length: 85 }
+  preventionStrategies:      { base_length: 85 }
+  producedByMaterials:       { base_length: 75 }
+  producedFromContaminants:  { base_length: 75 }
+  reactivity:                { base_length: 85 }
+  recommendations:           { base_length: 90 }
+  regulatoryClassification:  { base_length: 90 }
+  regulatoryStandards:       { base_length: 90 }
+  regulatory_standards:      { base_length: 90 }
+  relatedCompounds:          { base_length: 75 }
+  relatedContaminants:       { base_length: 75 }
+  relatedMaterials:          { base_length: 74 }
+  relatedMaterialsTitle:     { base_length: 6 }
+  removalMethods:            { base_length: 80 }
+  settings_description:      { base_length: 100 }
+  storageRequirements:       { base_length: 90 }
 
 aliases:
   description: pageDescription
+  page_description: pageDescription
+  page_title: pageTitle
+  appearance: appearanceVariations
+  compounds: relatedCompounds
+  health_effects: healthEffects
+  exposure_guidelines: exposureLimits
+  detection_methods: detectionMethods
+  emergency_response: emergencyResponse
+  ppe_requirements: ppeRequirements
+  regulatory_standards: regulatoryStandards
+  settings_description: pageDescription

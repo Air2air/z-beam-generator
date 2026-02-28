@@ -1,0 +1,82 @@
+schemaVersion: 1.0.0
+
+# Canonical single-line content prompts by domain and component prompt_ref.
+# All downstream prompt layers remain shared/centralized; only this one-line
+# layer varies by domain.
+component_single_line_prompts:
+  required_variables:
+    - subject
+    - context
+
+  by_domain:
+    applications:
+      pageTitle:
+        prompt: "Write a concise applications page title for {subject} in {context}."
+        variables: [subject, context]
+      pageDescription:
+        prompt: "Describe what {subject} is, why it matters, and what users should expect in {context}."
+        variables: [subject, context]
+      relatedMaterialsTitle:
+        prompt: "Write a concise heading for materials related to {subject} in {context}."
+        variables: [subject, context]
+      relatedMaterials:
+        prompt: "Describe materials commonly related to {subject} and comparison context in {context}."
+        variables: [subject, context]
+      contaminatedByTitle:
+        prompt: "Write a concise heading for contaminants associated with {subject} in {context}."
+        variables: [subject, context]
+      contaminatedBy:
+        prompt: "Describe contaminants most commonly associated with {subject} in {context}."
+        variables: [subject, context]
+    materials:
+      pageDescription:
+        prompt: "Describe what {subject} is and operationally why it matters in {context}."
+        variables: [subject, context]
+      contaminatedBy:
+        prompt: "Describe contaminants most commonly associated with {subject} in {context}."
+        variables: [subject, context]
+      relatedMaterials:
+        prompt: "Describe materials commonly related to {subject} and comparison context in {context}."
+        variables: [subject, context]
+      materialCharacteristics:
+        prompt: "Describe material characteristics of {subject} that influence operations in {context}."
+        variables: [subject, context]
+      laserMaterialInteraction:
+        prompt: "Describe how laser energy interacts with {subject} during workflows in {context}."
+        variables: [subject, context]
+      micro:
+        prompt: "Describe the before-and-after surface transformation of {subject} in {context}."
+        variables: [subject, context]
+    contaminants:
+      pageDescription:
+        prompt: "Describe what {subject} is and practical relevance in {context}."
+        variables: [subject, context]
+      appearanceVariations:
+        prompt: "Describe appearance variations used to identify {subject} in {context}."
+        variables: [subject, context]
+      relatedCompounds:
+        prompt: "Describe compounds related to {subject} and why they are linked in {context}."
+        variables: [subject, context]
+    compounds:
+      pageDescription:
+        prompt: "Describe what {subject} is and safety relevance in {context}."
+        variables: [subject, context]
+      healthEffects:
+        prompt: "Describe the main health effects and exposure risks of {subject} in {context}."
+        variables: [subject, context]
+      detectionMethods:
+        prompt: "Describe practical detection and verification methods for {subject} in {context}."
+        variables: [subject, context]
+      emergencyResponse:
+        prompt: "Provide immediate emergency response guidance for {subject} in {context}."
+        variables: [subject, context]
+      exposureLimits:
+        prompt: "Summarize practical exposure limits and thresholds for {subject} in {context}."
+        variables: [subject, context]
+    settings:
+      pageDescription:
+        prompt: "Describe operational setting guidance for {subject} in {context}."
+        variables: [subject, context]
+      commonChallenges:
+        prompt: "Describe common operational challenges encountered with {subject} in {context}."
+        variables: [subject, context]

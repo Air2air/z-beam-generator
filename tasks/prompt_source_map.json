@@ -1,0 +1,154 @@
+{
+  "summary": {
+    "reference_count": 25,
+    "violation_count": 0,
+    "kinds": {
+      "prompt_catalog": 3,
+      "quality_patterns": 8,
+      "seo_prompts": 5,
+      "shared_section_inline": 4,
+      "system_prompts": 1,
+      "voice_profiles": 4
+    }
+  },
+  "references": {
+    "quality_patterns": [
+      {
+        "file": "learning/humanness_optimizer.py",
+        "line": 72,
+        "value": "prompts/quality/learned_patterns.yaml"
+      },
+      {
+        "file": "learning/humanness_optimizer.py",
+        "line": 92,
+        "value": "prompts/quality/learned_patterns.yaml"
+      },
+      {
+        "file": "learning/humanness_optimizer.py",
+        "line": 105,
+        "value": "prompts/quality/learned_patterns.yaml"
+      },
+      {
+        "file": "learning/subjective_pattern_learner.py",
+        "line": 33,
+        "value": "prompts/quality/learned_patterns.yaml"
+      },
+      {
+        "file": "learning/subjective_pattern_learner.py",
+        "line": 38,
+        "value": "prompts/quality/learned_patterns.yaml"
+      },
+      {
+        "file": "postprocessing/evaluation/subjective_evaluator.py",
+        "line": 127,
+        "value": "prompts/quality/learned_patterns.yaml"
+      },
+      {
+        "file": "scripts/testing/verify_pipeline_stages.py",
+        "line": 225,
+        "value": "prompts/quality/learned_patterns.yaml"
+      },
+      {
+        "file": "shared/text/validation/forbidden_phrase_validator.py",
+        "line": 42,
+        "value": "prompts/quality/learned_patterns.yaml"
+      }
+    ],
+    "system_prompts": [
+      {
+        "file": "learning/humanness_optimizer.py",
+        "line": 570,
+        "value": "prompts/system/humanness_layer.txt"
+      }
+    ],
+    "seo_prompts": [
+      {
+        "file": "shared/prompts/seo_prompt_loader.py",
+        "line": 4,
+        "value": "prompts/seo/*.txt"
+      },
+      {
+        "file": "shared/prompts/seo_prompt_loader.py",
+        "line": 8,
+        "value": "prompts/seo/material_page.txt"
+      },
+      {
+        "file": "shared/prompts/seo_prompt_loader.py",
+        "line": 9,
+        "value": "prompts/seo/settings_page.txt"
+      },
+      {
+        "file": "shared/prompts/seo_prompt_loader.py",
+        "line": 10,
+        "value": "prompts/seo/contaminant_page.txt"
+      },
+      {
+        "file": "shared/prompts/seo_prompt_loader.py",
+        "line": 11,
+        "value": "prompts/seo/compound_page.txt"
+      }
+    ],
+    "prompt_catalog": [
+      {
+        "file": "scripts/testing/verify_pipeline_stages.py",
+        "line": 209,
+        "value": "prompts/registry/prompt_catalog.yaml"
+      },
+      {
+        "file": "scripts/testing/verify_pipeline_stages.py",
+        "line": 220,
+        "value": "prompts/registry/prompt_catalog.yaml"
+      },
+      {
+        "file": "shared/text/utils/prompt_builder.py",
+        "line": 107,
+        "value": "prompts/registry/prompt_catalog.yaml"
+      }
+    ],
+    "voice_profiles": [
+      {
+        "file": "shared/text/utils/prompt_builder.py",
+        "line": 156,
+        "value": "prompts/profiles/technical.yaml"
+      },
+      {
+        "file": "shared/text/utils/prompt_builder.py",
+        "line": 187,
+        "value": "prompts/profiles/technical.yaml"
+      },
+      {
+        "file": "shared/text/utils/prompt_builder.py",
+        "line": 213,
+        "value": "prompts/profiles/rhythm.yaml"
+      },
+      {
+        "file": "shared/text/utils/prompt_builder.py",
+        "line": 237,
+        "value": "prompts/profiles/rhythm.yaml"
+      }
+    ],
+    "shared_section_inline": [
+      {
+        "file": "scripts/validation/validate_machine_settings_contract.py",
+        "line": 78,
+        "value": "prompts/shared/section_inline_prompts.yaml"
+      },
+      {
+        "file": "scripts/validation/validate_prompt_section_contract.py",
+        "line": 73,
+        "value": "prompts/shared/section_inline_prompts.yaml"
+      },
+      {
+        "file": "scripts/validation/validate_prompt_section_contract.py",
+        "line": 425,
+        "value": "prompts/shared/section_inline_prompts.yaml"
+      },
+      {
+        "file": "scripts/validation/validate_prompt_section_contract.py",
+        "line": 428,
+        "value": "prompts/shared/section_inline_prompts.yaml"
+      }
+    ]
+  },
+  "violations": []
+}

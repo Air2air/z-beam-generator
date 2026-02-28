@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
 
+from generation.config.config_loader import ProcessingConfig
 from shared.text.utils.prompt_registry_service import PromptRegistryService
 
 
@@ -122,6 +123,11 @@ class HumannessOptimizer:
             'micro', 
             'settings_description', 
             'component_summaries', 
+            'faq',
+            'relatedMaterials',
+            'contaminatedBy',
+            'relatedMaterialsTitle',
+            'contaminatedByTitle',
             'description',
             'pageDescription',
             'frontmatter_description',  # Frontmatter-specific descriptions
@@ -149,17 +155,8 @@ class HumannessOptimizer:
         with open(self.config_path, 'r', encoding='utf-8') as f:
             self.config = yaml.safe_load(f)
 
-        # Load centralized text length randomization config (single source of truth)
-        self.text_field_config_path = Path('generation/text_field_config.yaml')
-        if not self.text_field_config_path.exists():
-            raise FileNotFoundError(
-                f"Text field config not found: {self.text_field_config_path}. "
-                "Cannot resolve randomization_range without centralized config."
-            )
-        with open(self.text_field_config_path, 'r', encoding='utf-8') as f:
-            self.text_field_config = yaml.safe_load(f)
-        if not isinstance(self.text_field_config, dict):
-            raise ValueError("generation/text_field_config.yaml must contain a YAML dictionary")
+        # Centralized accessor for text-length randomization factors
+        self.processing_config = ProcessingConfig(str(self.config_path))
         
         # Merge domain-specific configs (randomization_targets moved to domain configs)
         # Load materials domain config for structures, property_strategies, length, etc.
@@ -199,23 +196,8 @@ class HumannessOptimizer:
         logger.info(f"✅ HumannessOptimizer initialized (Winston DB: {winston_db_path}, Config: {config_path})")
 
     def _get_randomization_factors(self) -> tuple[float, float]:
-        """Get centralized length randomization factors from text_field_config.yaml."""
-        randomization_cfg = self.text_field_config.get('randomization_range')
-        if not isinstance(randomization_cfg, dict):
-            raise ValueError(
-                "Missing required config block: randomization_range in generation/text_field_config.yaml"
-            )
-
-        min_factor = randomization_cfg.get('min_factor')
-        max_factor = randomization_cfg.get('max_factor')
-        if not isinstance(min_factor, (int, float)) or not isinstance(max_factor, (int, float)):
-            raise TypeError("randomization_range.min_factor and max_factor must be numeric")
-        if min_factor <= 0 or max_factor <= 0 or min_factor > max_factor:
-            raise ValueError(
-                f"Invalid randomization_range: min_factor={min_factor}, max_factor={max_factor}"
-            )
-
-        return float(min_factor), float(max_factor)
+        """Get centralized length randomization factors from ProcessingConfig."""
+        return self.processing_config.get_text_length_randomization_factors()
     
     def generate_humanness_instructions(
         self,
@@ -277,7 +259,7 @@ class HumannessOptimizer:
             length_target=length_target
         )
         
-        logger.info(f"   ✅ Generated {len(instructions)} character instruction block")
+        logger.info(f"   ✅ Generated {len(instructions.split())} word instruction block")
         logger.info(f"{'='*70}\n")
         
         return instructions
@@ -588,7 +570,7 @@ class HumannessOptimizer:
         Returns:
             Formatted humanness instructions with randomization
         """
-        # Select template: compact for micro (8000 char API limit), full for others
+        # Select template: compact for micro (API size limit), full for others
         use_compact = component_type in self.compact_components
         
         if use_compact:
@@ -613,12 +595,6 @@ class HumannessOptimizer:
             selected_length_key = "RANDOMIZED"
             selected_length = f"x{randomized_multiplier:.2f} multiplier (≈±{variation_pct}% from base)"
 
-        # pageDescription uses sentence-count constraints from schema prompt.
-        # Avoid introducing extra word-count targets in humanness layer.
-        if component_type == 'pageDescription':
-            selected_length_key = "SENTENCE_BASED"
-            selected_length = "single focused paragraph (no explicit word target)"
-        
         # Store normalized variation magnitude for reporting/legacy access
         self._current_variation = abs(randomized_multiplier - 1.0)
         
@@ -699,9 +675,23 @@ class HumannessOptimizer:
                 selected_structure=selected_structure,
                 selected_rhythm=selected_rhythm
             )
+
+            if component_type == 'faq':
+                question_base = self.processing_config.get_text_field_length('faqQuestion')
+                answer_base = self.processing_config.get_text_field_length('faqAnswer')
+                question_target = max(1, int(question_base * randomized_multiplier))
+                answer_target = max(1, int(answer_base * randomized_multiplier))
+                instructions += (
+                    "\nFAQ LEAF GUIDANCE:\n"
+                    f"- FAQ QUESTION TARGET: ~{question_target} words per question\n"
+                    f"- FAQ ANSWER TARGET: ~{answer_target} words per answer\n"
+                    "- Apply this per Q/A pair, not as one combined FAQ block.\n"
+                )
+
             # Log size for visibility
-            logger.info(f"✅ Generated {len(instructions)} character COMPACT instruction block")
-            print(f"   ✅ Generated {len(instructions)} character COMPACT instruction block")
+            instruction_word_count = len(instructions.split())
+            logger.info(f"✅ Generated {instruction_word_count} word COMPACT instruction block")
+            print(f"   ✅ Generated {instruction_word_count} word COMPACT instruction block")
             return instructions
         
         # Full template with all placeholders
@@ -728,9 +718,17 @@ class HumannessOptimizer:
         # Append randomization selections to instructions (template placeholder approach)
         length_guideline_line = f"📏 **LENGTH GUIDELINE**: ~{selected_length} words (approximate target)"
         length_guideline_note = "    Note: This is a guideline, not a strict requirement\n    Write naturally until the content is complete"
-        if component_type == 'pageDescription':
-            length_guideline_line = f"📏 **LENGTH GUIDELINE**: {selected_length}"
-            length_guideline_note = "    Follow sentence-count guidance only; keep full, natural sentences"
+        faq_leaf_guidance = ""
+        if component_type == 'faq':
+            question_base = self.processing_config.get_text_field_length('faqQuestion')
+            answer_base = self.processing_config.get_text_field_length('faqAnswer')
+            question_target = max(1, int(question_base * randomized_multiplier))
+            answer_target = max(1, int(answer_base * randomized_multiplier))
+            faq_leaf_guidance = (
+                f"\n❓ **FAQ QUESTION TARGET**: ~{question_target} words per question\n"
+                f"💬 **FAQ ANSWER TARGET**: ~{answer_target} words per answer\n"
+                "    Apply this per Q/A pair, not as one combined FAQ block."
+            )
 
         randomization_addendum = f"""
 
@@ -739,6 +737,7 @@ class HumannessOptimizer:
 
 {length_guideline_line}
 {length_guideline_note}
+{faq_leaf_guidance}
 
 🏗️ **STRUCTURAL APPROACH**: {selected_structure}
 
@@ -793,8 +792,9 @@ NOTE: Voice style comes from assigned author persona (specified in VOICE INSTRUC
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
         
-        logger.info(f"✅ Generated {len(instructions + randomization_addendum)} character instruction block")
-        print(f"   ✅ Generated {len(instructions + randomization_addendum)} character instruction block")
+        full_instruction_word_count = len((instructions + randomization_addendum).split())
+        logger.info(f"✅ Generated {full_instruction_word_count} word instruction block")
+        print(f"   ✅ Generated {full_instruction_word_count} word instruction block")
         return instructions + randomization_addendum
     
     def _format_winston_patterns(self, patterns: WinstonPatterns) -> str:

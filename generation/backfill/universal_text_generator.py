@@ -65,9 +65,10 @@ class UniversalTextGenerator(BaseBackfillGenerator):
         
         logger.info(f"  📝 {self.mode.title()}-field mode: {len(self.field_mappings)} fields: {[f['field'] for f in self.field_mappings]}")
         
-        # Initialize API client using factory (loads config properly)
-        from shared.api.client_factory import APIClientFactory
-        api_client = APIClientFactory.create_client(provider="grok")
+        # Initialize API client using the same path as other text field generation flows
+        from shared.api.client_factory import create_api_client
+        provider = config.get('api_provider') or 'grok'
+        api_client = create_api_client(provider)
         
         # Initialize SubjectiveEvaluator
         subjective_evaluator = SubjectiveEvaluator(api_client)
@@ -156,6 +157,15 @@ class UniversalTextGenerator(BaseBackfillGenerator):
 
     def _set_nested_field(self, data: dict, path: str, value: str):
         """Set a field value in nested dict using dot-notation path."""
+        # Schema-based components may return structured payloads
+        # ({title, description, _metadata}). When target field is a scalar
+        # section text leaf, persist only the matching scalar value.
+        if isinstance(value, dict):
+            if path.endswith('.sectionDescription') and isinstance(value.get('description'), str):
+                value = value['description']
+            elif path.endswith('.sectionTitle') and isinstance(value.get('title'), str):
+                value = value['title']
+
         parts = path.split('.')
         current = data
         

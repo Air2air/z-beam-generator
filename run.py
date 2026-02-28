@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import List
 from shared.utils.material_resolver import material_resolver
 from shared.utils.quality_analyzer import quality_analyzer
+from shared.services.keyword_seed_service import KeywordSeedService
 
 # Configuration required by ConfigManager
 API_PROVIDERS = {
@@ -334,6 +335,8 @@ def backfill_command(args):
     
     # Import registry and load generator
     from generation.backfill.registry import BackfillRegistry
+
+    provider = args.api_provider or 'grok'
     
     # Load backfill configuration
     config_file = Path(f'generation/backfill/config/{args.domain}.yaml')
@@ -359,6 +362,7 @@ def backfill_command(args):
         
         # Add dry-run flag and item filter
         generator_config['dry_run'] = args.dry_run
+        generator_config['api_provider'] = provider
         if args.item:
             generator_config['item_filter'] = args.item
         
@@ -368,6 +372,7 @@ def backfill_command(args):
         if args.item:
             print(f"🎯 Item filter: {args.item}")
         print(f"🧪 Dry run: {args.dry_run}")
+        print(f"🤖 Provider: {provider}")
         print("="*80)
 
         generator = BackfillRegistry.create(generator_config)
@@ -394,6 +399,7 @@ def backfill_command(args):
             generator_name = gen_config.get('type', 'unknown')
             print(f"\n[{idx}/{total_generators}] 🔄 Running generator: {generator_name}")
             gen_config['dry_run'] = args.dry_run
+            gen_config['api_provider'] = provider
             if args.item:
                 gen_config['item_filter'] = args.item
             generator = BackfillRegistry.create(gen_config)
@@ -460,6 +466,150 @@ def _create_domain_coordinator(domain: str, api_client):
     raise ValueError(f"Unsupported domain: {domain}")
 
 
+def _run_domain_multifield_generation(domain: str, item_id: str, dry_run: bool) -> None:
+    """Run the configured multi-field text generator for one domain item."""
+    from generation.backfill.registry import BackfillRegistry
+
+    config_file = Path(f'generation/backfill/config/{domain}.yaml')
+    if not config_file.exists():
+        raise FileNotFoundError(f"Backfill config missing for domain '{domain}': {config_file}")
+
+    with open(config_file, 'r', encoding='utf-8') as handle:
+        config = yaml.safe_load(handle)
+
+    generators = config.get('generators')
+    if not isinstance(generators, list) or not generators:
+        raise ValueError(f"No generators configured in {config_file}")
+
+    multi_field = next((entry for entry in generators if entry.get('type') == 'multi_field_text'), None)
+    selected = multi_field or generators[0]
+
+    if not isinstance(selected, dict):
+        raise ValueError(f"Invalid generator configuration in {config_file}")
+
+    selected_config = dict(selected)
+    selected_config['dry_run'] = dry_run
+    selected_config['item_filter'] = item_id
+
+    print(f"\n🚀 Running generator: {selected_config.get('type', 'unknown')} for {item_id}")
+    generator = BackfillRegistry.create(selected_config)
+    stats = generator.backfill_all()
+
+    if stats.get('errors', 0) > 0:
+        raise RuntimeError(f"Generation completed with errors for {item_id}: {stats}")
+
+    if dry_run:
+        return
+
+    with open(selected_config['source_file'], 'r', encoding='utf-8') as handle:
+        source_data = yaml.safe_load(handle)
+
+    items = source_data.get(selected_config['items_key'], {})
+    item_data = items.get(item_id)
+    if not isinstance(item_data, dict):
+        raise RuntimeError(f"Generated item '{item_id}' missing from source after generation")
+
+    required_fields = []
+    if isinstance(selected_config.get('field'), str):
+        required_fields.append(selected_config['field'])
+
+    mapped_fields = selected_config.get('fields', [])
+    if isinstance(mapped_fields, list):
+        for mapping in mapped_fields:
+            if isinstance(mapping, dict) and isinstance(mapping.get('field'), str):
+                required_fields.append(mapping['field'])
+
+    missing_fields = []
+    for field_path in required_fields:
+        field_value = _get_nested_value(item_data, field_path)
+        if not isinstance(field_value, str) or not field_value.strip():
+            missing_fields.append(field_path)
+
+    if missing_fields:
+        raise RuntimeError(
+            f"Generation incomplete for {item_id}; missing/empty fields: {', '.join(missing_fields)}"
+        )
+
+
+def _get_nested_value(data: dict, path: str):
+    current = data
+    for part in path.split('.'):
+        if not isinstance(current, dict) or part not in current:
+            return None
+        current = current[part]
+    return current
+
+
+def _export_single_item(domain: str, item_id: str, dry_run: bool) -> None:
+    """Export one item to frontmatter to maintain source/frontmatter dual-write."""
+    if dry_run:
+        print("\n🔍 Dry run: skipping frontmatter export")
+        return
+
+    config = load_domain_config(domain)
+    exporter = FrontmatterExporter(config)
+
+    with open(exporter.source_file, 'r', encoding='utf-8') as handle:
+        source_data = yaml.safe_load(handle)
+
+    items = source_data.get(exporter.items_key, {})
+    if item_id not in items:
+        raise KeyError(f"Cannot export missing item '{item_id}' from {exporter.source_file}")
+
+    print(f"\n📤 Exporting frontmatter for {item_id}")
+    success = exporter.export_single(item_id, items[item_id], force=True)
+    if not success:
+        raise RuntimeError(f"Frontmatter export failed for {item_id}")
+
+
+def seed_from_keyword_command(args):
+    """Create new item from keyword and optionally generate full text + export frontmatter."""
+    if not args.domain:
+        print("❌ Error: --domain is required with --seed-from-keyword")
+        sys.exit(1)
+
+    keyword = args.seed_from_keyword.strip() if args.seed_from_keyword else ''
+    if not keyword:
+        print("❌ Error: --seed-from-keyword requires a non-empty keyword")
+        sys.exit(1)
+
+    print("=" * 80)
+    print("🌱 KEYWORD PAGE SEED")
+    print("=" * 80)
+    print(f"Domain: {args.domain}")
+    print(f"Keyword: {keyword}")
+    print(f"Template item: {args.template_item or 'auto'}")
+    print(f"Generate text fields: {not args.skip_generate}")
+    print(f"Dry run: {args.dry_run}")
+
+    service = KeywordSeedService(args.domain)
+    result = service.seed_from_keyword(
+        keyword=keyword,
+        template_item=args.template_item,
+        category=args.category,
+        subcategory=args.subcategory,
+        dry_run=args.dry_run,
+    )
+
+    print(f"\n✅ Seeded item: {result.item_id}")
+    print(f"   Source file: {result.data_path}")
+    print(f"   Template: {result.used_template_item}")
+
+    if args.dry_run and not args.skip_generate:
+        print("\n🔍 Dry run: skipping text generation (seed item is not persisted)")
+    elif not args.skip_generate:
+        _run_domain_multifield_generation(args.domain, result.item_id, args.dry_run)
+    else:
+        print("\n⏭️  Skipping text generation by request")
+
+    _export_single_item(args.domain, result.item_id, args.dry_run)
+
+    if not args.dry_run:
+        print("\n✅ Complete: source item created, text generated, and frontmatter synced")
+    else:
+        print("\n✅ Dry run complete: no files were changed")
+
+
 def batch_generate_command(args):
     """Batch generate a single field for any domain."""
     if not args.domain:
@@ -485,15 +635,73 @@ def batch_generate_command(args):
     from generation.field_router import FieldRouter
     from shared.api.client_factory import create_api_client
 
-    api_client = create_api_client('grok')
+    provider = args.api_provider or 'grok'
+    api_client = create_api_client(provider)
 
-    field_type = FieldRouter.get_field_type(args.domain, args.field)
+    def _load_text_component_bundle(domain: str) -> list[str]:
+        """Load configured multi-field text component bundle for a domain."""
+        config_file = Path(f'generation/backfill/config/{domain}.yaml')
+        if not config_file.exists():
+            return []
+
+        with open(config_file, 'r', encoding='utf-8') as handle:
+            config = yaml.safe_load(handle) or {}
+
+        generators = config.get('generators')
+        if not isinstance(generators, list):
+            return []
+
+        for generator in generators:
+            if not isinstance(generator, dict):
+                continue
+            if generator.get('type') != 'multi_field_text':
+                continue
+            fields = generator.get('fields')
+            if not isinstance(fields, list):
+                return []
+
+            component_types: list[str] = []
+            for mapping in fields:
+                if not isinstance(mapping, dict):
+                    continue
+                component_type = mapping.get('component_type')
+                if isinstance(component_type, str) and component_type.strip():
+                    component_types.append(component_type.strip())
+
+            ordered_unique: list[str] = []
+            for component_type in component_types:
+                if component_type not in ordered_unique:
+                    ordered_unique.append(component_type)
+            return ordered_unique
+
+        return []
+
+    normalized_field = FieldRouter.normalize_field_name(args.domain, args.field)
+    field_type = FieldRouter.get_field_type(args.domain, normalized_field)
+
+    # Integrated text generation: use configured multi-field text bundle so
+    # FAQ and section-title components generate in the same execution flow.
+    text_fields_to_generate = [normalized_field]
+    if field_type == 'text':
+        configured_bundle = _load_text_component_bundle(args.domain)
+        if configured_bundle and normalized_field in configured_bundle:
+            text_fields_to_generate = configured_bundle
+        elif normalized_field != 'faq':
+            try:
+                faq_field_type = FieldRouter.get_field_type(args.domain, 'faq')
+                if faq_field_type == 'text':
+                    text_fields_to_generate.append('faq')
+            except Exception:
+                pass
 
     print("=" * 80)
     print("🚀 BATCH GENERATE")
     print("=" * 80)
     print(f"Domain: {args.domain}")
-    print(f"Field: {args.field}")
+    print(f"Requested field: {args.field}")
+    if field_type == 'text':
+        print(f"Text field bundle: {', '.join(text_fields_to_generate)}")
+    print(f"Provider: {provider}")
     print(f"Field type: {field_type}")
     print(f"Items: {len(target_items)}")
     print(f"Dry run: {args.dry_run}")
@@ -509,21 +717,33 @@ def batch_generate_command(args):
         print(f"\n[{index}/{len(target_items)}] {item_id}")
         try:
             if field_type == 'text':
-                result = coordinator.generate_content(
-                    item_id=item_id,
-                    component_type=args.field,
-                    force_regenerate=args.force_regenerate
-                )
-                if result.get('success'):
-                    success_count += 1
-                    print("   ✅ Generated")
-                else:
+                item_failed = False
+                for text_field in text_fields_to_generate:
+                    try:
+                        result = coordinator.generate_content(
+                            item_id=item_id,
+                            component_type=text_field,
+                            force_regenerate=args.force_regenerate
+                        )
+                    except Exception as exc:
+                        item_failed = True
+                        print(f"   ❌ Failed {text_field}: {exc}")
+                        continue
+
+                    if result.get('success'):
+                        print(f"   ✅ Generated {text_field}")
+                    else:
+                        item_failed = True
+                        print(f"   ❌ Failed {text_field}: {result.get('error', 'unknown error')}")
+
+                if item_failed:
                     failed_count += 1
-                    print(f"   ❌ Failed: {result.get('error', 'unknown error')}")
+                else:
+                    success_count += 1
             else:
                 result = FieldRouter.generate_field(
                     domain=args.domain,
-                    field=args.field,
+                    field=normalized_field,
                     item_name=item_id,
                     api_client=api_client,
                     dry_run=args.dry_run,
@@ -586,6 +806,10 @@ Examples:
     python3 run.py --batch-generate --domain materials --field pageDescription --all
     python3 run.py --batch-generate --domain materials --field context --items "aluminum-laser-cleaning,steel-laser-cleaning" --force-regenerate
 
+    # Seed a new page from one keyword, then generate and export
+    python3 run.py --seed-from-keyword "Aerospace Coatings" --domain applications
+    python3 run.py --seed-from-keyword "Nickel Slag" --domain contaminants --category inorganic-coating --subcategory residue
+
   # Postprocess all fields for one item
   python3 run.py --postprocess --domain materials --item "Steel" --field pageDescription
   python3 run.py --postprocess --domain materials --item "Steel" --field micro
@@ -606,6 +830,8 @@ Examples:
                         help='Backfill all domains (future implementation)')
     parser.add_argument('--batch-generate', action='store_true',
                         help='Batch generate one field across items for any domain')
+    parser.add_argument('--seed-from-keyword', type=str, metavar='KEYWORD',
+                        help='Create a new domain item from keyword, then optionally generate text and export')
     
     # Export arguments
     parser.add_argument('--skip-existing', action='store_true',
@@ -637,6 +863,17 @@ Examples:
                         help='Compare versions without saving (preview mode)')
     parser.add_argument('--force-regenerate', action='store_true',
                         help='Regenerate even if field already populated (structured fields require this)')
+    parser.add_argument('--api-provider', type=str,
+                        choices=['grok', 'deepseek', 'openai'],
+                        help='API provider override for compatible commands (default: grok)')
+    parser.add_argument('--template-item', type=str,
+                        help='Template item ID to clone when seeding from keyword')
+    parser.add_argument('--category', type=str,
+                        help='Category override for seed-from-keyword (required for non-applications if template lacks category)')
+    parser.add_argument('--subcategory', type=str,
+                        help='Subcategory override for seed-from-keyword (required for non-applications if template lacks subcategory)')
+    parser.add_argument('--skip-generate', action='store_true',
+                        help='With --seed-from-keyword, only create source record and skip text generation')
     
     # Simplified interface (NEW - Jan 13, 2026)
     parser.add_argument('--generate', type=str, metavar='MATERIAL',
@@ -665,6 +902,9 @@ Examples:
     # Handle simplified commands first (NEW - Jan 13, 2026)
     if args.list_materials:
         list_materials_command(args)
+        return
+    elif args.seed_from_keyword:
+        seed_from_keyword_command(args)
         return
     elif args.generate:
         generate_command(args)

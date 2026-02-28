@@ -6,8 +6,11 @@ on:
     paths:
       - 'frontmatter/**/*.yaml'
       - 'data/**/*.yaml'
+      - 'prompts/**/*.yaml'
       - 'data/schemas/**/*.yaml'
       - 'data/schemas/**/*.json'
+      - 'domains/**/prompt.yaml'
+      - 'domains/**/catalog.yaml'
       - 'export/**/*.py'
       - 'generation/**/*.py'
       - 'scripts/check_field_order.py'
@@ -20,8 +23,11 @@ on:
     paths:
       - 'frontmatter/**/*.yaml'
       - 'data/**/*.yaml'
+      - 'prompts/**/*.yaml'
       - 'data/schemas/**/*.yaml'
       - 'data/schemas/**/*.json'
+      - 'domains/**/prompt.yaml'
+      - 'domains/**/catalog.yaml'
       - 'export/**/*.py'
       - 'generation/**/*.py'
       - 'scripts/check_field_order.py'
@@ -52,6 +58,14 @@ jobs:
     - name: Validate machine settings contract
       run: |
         python3 scripts/validation/validate_machine_settings_contract.py
+
+    - name: Validate prompt governance contract
+      run: |
+        python3 scripts/validation/validate_prompt_section_contract.py
+
+    - name: Validate prompt source centralization
+      run: |
+        python3 scripts/validation/validate_prompt_source_centralization.py
     
     - name: Run comprehensive validation
       id: validation

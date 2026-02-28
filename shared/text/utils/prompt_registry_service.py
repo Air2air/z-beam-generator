@@ -16,6 +16,44 @@ class PromptRegistryService:
     _shared_inline_prompts_cache: Optional[Dict[str, str]] = None
     _shared_inline_metadata_cache: Optional[Dict[str, Dict[str, Any]]] = None
     _prompt_catalog_cache: Optional[Dict[str, Any]] = None
+    _single_line_component_prompts_cache: Optional[Dict[str, Dict[str, Any]]] = None
+    _faq_prompt_cache: Optional[Dict[str, Any]] = None
+
+    @classmethod
+    def _get_domain_prompt_contract(cls, domain: str) -> Dict[str, Any]:
+        contract_path = cls._project_root() / "domains" / domain / "prompt.yaml"
+        contract = cls._load_yaml_file(contract_path)
+
+        declared_domain = contract.get("domain")
+        if not isinstance(declared_domain, str) or declared_domain.strip() != domain:
+            raise ValueError(
+                f"Invalid prompt contract domain in {contract_path}: expected '{domain}'"
+            )
+
+        prompt_contract = contract.get("prompt_contract")
+        if not isinstance(prompt_contract, dict):
+            raise ValueError(
+                f"Invalid prompt contract in {contract_path}: expected mapping at prompt_contract"
+            )
+
+        return prompt_contract
+
+    @classmethod
+    def _get_domain_registry_path(cls, domain: str) -> Path:
+        prompt_contract = cls._get_domain_prompt_contract(domain)
+        relative_path = prompt_contract.get("content_prompts_file")
+        if not isinstance(relative_path, str) or not relative_path.strip():
+            raise ValueError(
+                f"domains/{domain}/prompt.yaml: prompt_contract.content_prompts_file must be a non-empty string"
+            )
+
+        registry_path = cls._project_root() / relative_path.strip()
+        if not registry_path.exists():
+            raise FileNotFoundError(
+                f"Configured domain registry does not exist for '{domain}': {registry_path}"
+            )
+
+        return registry_path
 
     @classmethod
     def _project_root(cls) -> Path:
@@ -63,6 +101,85 @@ class PromptRegistryService:
         return cls._prompt_catalog_cache
 
     @classmethod
+    def get_faq_prompt_registry(cls) -> Dict[str, Any]:
+        """Load canonical FAQ prompt definitions (single source of truth)."""
+        if cls._faq_prompt_cache is None:
+            faq_path = cls._project_root() / "prompts" / "shared" / "faq_prompt.yaml"
+            payload = cls._load_yaml_file(faq_path)
+            faq_prompt = payload.get("faq_prompt")
+            if not isinstance(faq_prompt, dict):
+                raise ValueError(
+                    f"Invalid FAQ prompt registry in {faq_path}: expected mapping at faq_prompt"
+                )
+            cls._faq_prompt_cache = faq_prompt
+        return cls._faq_prompt_cache
+
+    @classmethod
+    def get_single_line_component_prompts(cls) -> Dict[str, Dict[str, Any]]:
+        """Load centralized single-line component prompt registry (fail-fast)."""
+        if cls._single_line_component_prompts_cache is None:
+            prompts_path = cls._project_root() / "data" / "schemas" / "component_single_line_prompts.yaml"
+            payload = cls._load_yaml_file(prompts_path)
+            policy = payload.get("component_single_line_prompts")
+            if not isinstance(policy, dict):
+                raise ValueError(
+                    f"Invalid single-line prompt registry in {prompts_path}: expected mapping at component_single_line_prompts"
+                )
+
+            by_domain = policy.get("by_domain")
+            if not isinstance(by_domain, dict):
+                raise ValueError(
+                    f"Invalid single-line prompt registry in {prompts_path}: expected mapping at component_single_line_prompts.by_domain"
+                )
+
+            faq_registry = cls.get_faq_prompt_registry()
+            faq_single_line = faq_registry.get("single_line") if isinstance(faq_registry, dict) else None
+            faq_by_domain = faq_single_line.get("by_domain") if isinstance(faq_single_line, dict) else None
+
+            merged_by_domain: Dict[str, Dict[str, Any]] = {}
+            for domain_key, domain_prompts in by_domain.items():
+                if not isinstance(domain_key, str) or not isinstance(domain_prompts, dict):
+                    continue
+                merged_prompts = {
+                    str(key): dict(value)
+                    for key, value in domain_prompts.items()
+                    if isinstance(key, str) and isinstance(value, dict)
+                }
+
+                if isinstance(faq_by_domain, dict):
+                    faq_entry = faq_by_domain.get(domain_key)
+                    if isinstance(faq_entry, dict):
+                        merged_prompts["faq"] = dict(faq_entry)
+
+                merged_by_domain[domain_key] = merged_prompts
+
+            cls._single_line_component_prompts_cache = merged_by_domain
+        return cls._single_line_component_prompts_cache
+
+    @classmethod
+    def get_single_line_component_prompt(cls, domain: str, component_type: str) -> Optional[Dict[str, Any]]:
+        """Get single-line prompt template + variables for a schema component type."""
+        section = cls.get_section(component_type)
+        if not isinstance(section, dict):
+            return None
+        prompt_ref = section.get("prompt_ref")
+        if not isinstance(prompt_ref, str) or not prompt_ref.strip():
+            return None
+
+        registry = cls.get_single_line_component_prompts().get(domain)
+        if not isinstance(registry, dict):
+            return None
+
+        entry = registry.get(prompt_ref)
+        if not isinstance(entry, dict):
+            return None
+
+        resolved = dict(entry)
+        resolved["prompt_ref"] = prompt_ref
+        resolved["component_type"] = component_type
+        return resolved
+
+    @classmethod
     def _get_catalog_value(cls, keys: tuple[str, ...]) -> str:
         """Read required string value from prompt catalog by nested path."""
         value: Any = cls.get_prompt_catalog()
@@ -107,10 +224,7 @@ class PromptRegistryService:
         if domain in cls._domain_registry_cache:
             return cls._domain_registry_cache[domain]
 
-        registry_path = cls._project_root() / "prompts" / domain / "content_prompts.yaml"
-        if not registry_path.exists():
-            cls._domain_registry_cache[domain] = {}
-            return cls._domain_registry_cache[domain]
+        registry_path = cls._get_domain_registry_path(domain)
 
         registry = cls._load_yaml_file(registry_path)
         extends_path = registry.get("extends")
@@ -195,6 +309,15 @@ class PromptRegistryService:
             raise ValueError(
                 f"Invalid section_prompt metadata in {shared_path}: expected mapping at section_prompt_metadata"
             )
+
+        faq_registry = cls.get_faq_prompt_registry()
+        shared_faq_prompt = faq_registry.get("shared_section_prompt") if isinstance(faq_registry, dict) else None
+        if isinstance(shared_faq_prompt, str) and shared_faq_prompt.strip():
+            prompts["faq"] = shared_faq_prompt.strip()
+
+        shared_faq_metadata = faq_registry.get("shared_section_metadata") if isinstance(faq_registry, dict) else None
+        if isinstance(shared_faq_metadata, dict):
+            prompt_metadata["faq"] = dict(shared_faq_metadata)
 
         cls._validate_prompt_metadata_contract(
             {

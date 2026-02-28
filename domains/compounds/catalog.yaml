@@ -1,0 +1,52 @@
+schemaVersion: 1.0.0
+domain: compounds
+domain_folder_contract:
+  required_files:
+  - config.yaml
+  - coordinator.py
+  - prompt.yaml
+  - catalog.yaml
+  required_directories:
+  - loaders
+  ignore_entries:
+  - __pycache__
+cleanup_evaluation:
+  remove_now: []
+  review_later: []
+article_pages:
+  frontmatter_directory: ../z-beam/frontmatter/compounds
+  file_names:
+  - acetaldehyde-compound.yaml
+  - acrolein-compound.yaml
+  - aluminum-oxide-compound.yaml
+  - ammonia-compound.yaml
+  - benzene-compound.yaml
+  - benzoapyrene-compound.yaml
+  - cadmium-oxide-compound.yaml
+  - calcium-oxide-compound.yaml
+  - carbon-ash-compound.yaml
+  - carbon-dioxide-compound.yaml
+  - carbon-monoxide-compound.yaml
+  - carbon-particulates-compound.yaml
+  - chromium-vi-compound.yaml
+  - copper-oxide-compound.yaml
+  - formaldehyde-compound.yaml
+  - hydrogen-chloride-compound.yaml
+  - hydrogen-cyanide-compound.yaml
+  - iron-oxide-compound.yaml
+  - lead-oxide-compound.yaml
+  - metal-oxides-mixed-compound.yaml
+  - metal-vapors-mixed-compound.yaml
+  - nanoparticulates-compound.yaml
+  - nitrogen-oxides-compound.yaml
+  - organic-residues-compound.yaml
+  - pahs-compound.yaml
+  - phosgene-compound.yaml
+  - silicon-dioxide-compound.yaml
+  - styrene-compound.yaml
+  - sulfur-dioxide-compound.yaml
+  - tin-oxide-compound.yaml
+  - toluene-compound.yaml
+  - vocs-compound.yaml
+  - water-vapor-compound.yaml
+  - zinc-oxide-compound.yaml

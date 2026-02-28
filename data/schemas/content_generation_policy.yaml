@@ -1,0 +1,79 @@
+schemaVersion: 1.0.0
+
+# Central policy for content-generation field coverage across domains.
+# This is the canonical reference used by validation tooling.
+content_generation_policy:
+  backfill:
+    required_fields_by_domain:
+      applications:
+        - field: pageTitle
+          componentType: pageTitle
+        - field: pageDescription
+          componentType: pageDescription
+        - field: relationships.discovery.relatedMaterials._section.sectionTitle
+          componentType: relatedMaterialsTitle
+        - field: relationships.discovery.relatedMaterials._section.sectionDescription
+          componentType: relatedMaterials
+        - field: relationships.interactions.contaminatedBy._section.sectionTitle
+          componentType: contaminatedByTitle
+        - field: relationships.interactions.contaminatedBy._section.sectionDescription
+          componentType: contaminatedBy
+        - field: faq
+          componentType: faq
+      materials:
+        - field: pageDescription
+          componentType: pageDescription
+        - field: faq
+          componentType: faq
+        - field: relationships.contaminatedBy
+          componentType: contaminatedBy
+        - field: relationships.relatedMaterials
+          componentType: relatedMaterials
+        - field: properties.materialCharacteristics
+          componentType: materialCharacteristics
+        - field: properties.laserMaterialInteraction
+          componentType: laserMaterialInteraction
+        - field: components.micro
+          componentType: micro
+      contaminants:
+        - field: pageDescription
+          componentType: pageDescription
+        - field: faq
+          componentType: faq
+        - field: appearance
+          componentType: appearanceVariations
+        - field: compounds
+          componentType: relatedCompounds
+      compounds:
+        - field: pageDescription
+          componentType: pageDescription
+        - field: faq
+          componentType: faq
+        - field: health_effects
+          componentType: healthEffects
+        - field: detection_methods
+          componentType: detectionMethods
+        - field: emergency_response
+          componentType: emergencyResponse
+        - field: exposure_guidelines
+          componentType: exposureLimits
+      settings:
+        - field: pageDescription
+          componentType: pageDescription
+        - field: faq
+          componentType: faq
+        - field: challenges
+          componentType: commonChallenges
+
+  aliases:
+    # Allowed legacy aliases for component_type in backfill config.
+    # Validators normalize these to canonical componentType values.
+    componentType:
+      health_effects: healthEffects
+      detection_methods: detectionMethods
+      emergency_response: emergencyResponse
+      exposure_guidelines: exposureLimits
+      appearance: appearanceVariations
+      compounds: relatedCompounds
+      settings_description: pageDescription
+      challenges: commonChallenges

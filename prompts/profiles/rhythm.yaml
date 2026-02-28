@@ -1,8 +1,8 @@
-# Rhythm Profiles - Sentence Structure Guidance by Component Type
+# Rhythm Profiles - Writing Rhythm Guidance by Component Type
 # Created: November 20, 2025
 #
-# PURPOSE: Define sentence structure, length variation, and rhythm patterns
-# RESPONSIBILITY: Sentence composition, length targets, structural variety
+# PURPOSE: Define writing rhythm, length variation, and structural patterns
+# RESPONSIBILITY: Phrasing rhythm, word targets, structural variety
 #
 # USED BY: PromptBuilder to inject {sentence_guidance} into component templates  
 # CALCULATED FROM: voice_params (rhythm_variation slider), component target length
@@ -11,44 +11,44 @@ profiles:
   # CAPTION: Two-paragraph visual comparison
   micro:
     name: "Two-Paragraph Narrative"
-    structure: "Two distinct paragraphs with natural sentence rhythm"
+    structure: "Two distinct paragraphs with natural writing rhythm"
     
     rhythm_patterns:
       consistent: |
         PARAGRAPH 1 (Before): concise, direct sequence
         PARAGRAPH 2 (After): concise, direct sequence
         
-        Keep sentence lengths consistent within each paragraph.
+        Keep phrasing length consistent within each paragraph.
         Use parallel structure between paragraphs for comparison.
       
       varied: |
         PARAGRAPH 1 (Before): mix short and medium phrasing
         PARAGRAPH 2 (After): mix short and medium phrasing
         
-        Vary sentence lengths naturally within each paragraph.
+        Vary phrasing length naturally within each paragraph.
         Create rhythm through length variation.
     
     length_targets:
       total_words: 40-60
-      total_characters: 250-400
+      total_words_extended: 40-70
       paragraph_balance: "Similar length paragraphs (balanced comparison)"
     
     structural_guidance:
-      - "Start sentences differently (vary openings)"
+      - "Start clauses differently (vary openings)"
       - "Use active voice for action descriptions"
       - "Ground observations in specific visual details"
-      - "Avoid repetitive sentence patterns between paragraphs"
+      - "Avoid repetitive phrasing patterns between paragraphs"
 
-  # SUBTITLE: Single impactful sentence
+  # SUBTITLE: Single impactful line
   subtitle:
-    name: "Hook Sentence"
+    name: "Hook Line"
     structure: "One declarative statement with punch"
     
     rhythm_patterns:
       consistent: |
         Single concise statement
         
-        Maintain moderate sentence length for clarity and impact.
+        Maintain moderate phrasing length for clarity and impact.
         Use declarative structure for authority.
       
       varied: |
@@ -59,7 +59,7 @@ profiles:
     
     length_targets:
       total_words: 10-20
-      total_characters: 60-130
+      total_words_extended: 10-24
       structure: "Subject-verb-object with optional modifier"
     
     structural_guidance:
@@ -71,33 +71,33 @@ profiles:
   # FAQ: Question + Answer format
   faq:
     name: "Q&A Technical Exchange"
-    structure: "Question sentence + multi-sentence answer"
+    structure: "Question line + direct answer with practical detail"
     
     rhythm_patterns:
       consistent: |
         QUESTION: natural user question
         ANSWER: concise, structured response
         
-        Keep answer sentences consistent length for readability.
-        Use clear, parallel structure across sentences.
+        Keep answer phrasing length consistent for readability.
+        Use clear, parallel structure across answer lines.
       
       varied: |
         QUESTION: natural user question
-        ANSWER: concise response with mixed sentence lengths
+        ANSWER: concise response with mixed phrasing lengths
         
-        Vary sentence lengths in answer for natural rhythm.
+        Vary phrasing lengths in answer for natural rhythm.
         Lead with short answer, expand with details.
     
     length_targets:
       question_words: 8-15
       answer_words: 40-80
-      total_characters: 250-500
+      total_words: 50-95
     
     structural_guidance:
       - "Question: Direct, user-focused phrasing"
       - "Answer: Lead with direct answer, then explain"
       - "Use numbered steps or bullets if listing"
-      - "Vary sentence openings within answer"
+      - "Vary openings within answer"
 
   # DESCRIPTION: Multi-paragraph comprehensive text
   description:
@@ -107,28 +107,28 @@ profiles:
     rhythm_patterns:
       consistent: |
         Multiple paragraphs with steady pacing
-        Sentence length: consistent and readable
+        Phrasing length: consistent and readable
         
         Maintain steady rhythm across paragraphs.
-        Use consistent sentence structure for clarity.
+        Use consistent structure for clarity.
       
       varied: |
         Multiple paragraphs with varied pacing
-        Sentence mix: short, medium, and longer forms
+        Phrasing mix: short, medium, and longer forms
         
-        Vary sentence lengths within and across paragraphs.
+        Vary phrasing lengths within and across paragraphs.
         Create natural reading rhythm through variety.
-        Lead with shorter opening sentences per paragraph.
+        Lead with shorter opening lines per paragraph.
     
     length_targets:
       total_words: 150-250
-      total_characters: 900-1500
+      total_words_extended: 150-280
       paragraph_balance: "Roughly balanced paragraph lengths"
     
     structural_guidance:
-      - "Topic sentence to open each paragraph"
-      - "Vary sentence openings within paragraphs"
-      - "Mix simple, compound, and complex sentences"
+      - "Topic line to open each paragraph"
+      - "Vary openings within paragraphs"
+      - "Mix simple, compound, and complex structures"
       - "Use transitions between paragraphs naturally"
       - "Avoid repetitive patterns across paragraphs"
 
@@ -144,7 +144,7 @@ profiles:
 
 # INTEGRATION WITH VOICE PERSONAS:
 # Voice personas (author_profiles.yaml) define WHO is writing
-# Rhythm profiles define HOW they structure sentences
+# Rhythm profiles define HOW they structure prose
 # Combined: Author voice + Rhythm pattern = Complete writing style
 
 # AUTHOR-SPECIFIC OVERRIDES:

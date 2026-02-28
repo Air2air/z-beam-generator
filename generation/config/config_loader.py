@@ -101,6 +101,14 @@ class ProcessingConfig:
         if not isinstance(target, int) or target <= 0:
             raise ValueError(f"Invalid base_length for '{field_name}': {target}")
 
+        multiplier = defaults.get('base_length_multiplier', 1.0)
+        if not isinstance(multiplier, (int, float)) or multiplier <= 0:
+            raise ValueError(
+                f"Invalid defaults.base_length_multiplier in generation/text_field_config.yaml: {multiplier}"
+            )
+
+        target = max(1, int(round(target * float(multiplier))))
+
         return {
             'target': target,
         }
@@ -223,6 +231,14 @@ class ProcessingConfig:
         Compatibility shim: derives value from centralized
         generation/text_field_config.yaml randomization_range.
         """
+        min_factor, max_factor = self.get_text_length_randomization_factors()
+
+        max_deviation = max(abs(float(min_factor) - 1.0), abs(float(max_factor) - 1.0))
+        derived_slider = int(round(max_deviation * 10))
+        return max(1, min(10, derived_slider))
+
+    def get_text_length_randomization_factors(self) -> tuple[float, float]:
+        """Get centralized text-length randomization factors from text_field_config."""
         text_cfg = self._load_text_field_config()
         randomization_cfg = text_cfg.get('randomization_range')
         if not isinstance(randomization_cfg, dict):
@@ -234,10 +250,12 @@ class ProcessingConfig:
         max_factor = randomization_cfg.get('max_factor')
         if not isinstance(min_factor, (int, float)) or not isinstance(max_factor, (int, float)):
             raise ValueError("randomization_range.min_factor and max_factor must be numeric")
+        if min_factor <= 0 or max_factor <= 0 or min_factor > max_factor:
+            raise ValueError(
+                f"Invalid randomization_range: min_factor={min_factor}, max_factor={max_factor}"
+            )
 
-        max_deviation = max(abs(float(min_factor) - 1.0), abs(float(max_factor) - 1.0))
-        derived_slider = int(round(max_deviation * 10))
-        return max(1, min(10, derived_slider))
+        return float(min_factor), float(max_factor)
     
     def get_learning_target(self) -> float:
         """
@@ -447,7 +465,11 @@ class ProcessingConfig:
     
     def get_component_length(self, component_type: str) -> int:
         """Get target word count for component type from centralized text field config."""
-        length_spec = self._get_text_field_length_spec(component_type)
+        return self.get_text_field_length(component_type)
+
+    def get_text_field_length(self, field_name: str) -> int:
+        """Get centralized base length target for any configured text field name."""
+        length_spec = self._get_text_field_length_spec(field_name)
         return length_spec['target']
     
     # =========================================================================

@@ -4,11 +4,11 @@
 domain_name: "applications"
 data_path: "data/applications/Applications.yaml"
 data_root_key: "applications"
-frontmatter_pattern: "{slug}-laser-cleaning-applications.yaml"
+frontmatter_pattern: "{slug}.yaml"
 
 frontmatter:
   directory: "../z-beam/frontmatter/applications"
-  filename_pattern: "{slug}-laser-cleaning-applications.yaml"
+  filename_pattern: "{slug}.yaml"
 
 # DomainAdapter contract (required for generation/core/adapters/domain_adapter.py)
 data_adapter:

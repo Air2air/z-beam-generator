@@ -16,6 +16,8 @@ from pathlib import Path
 from datetime import datetime
 import sys
 
+import yaml
+
 def main():
     print("=" * 80)
     print("🔍 PIPELINE STAGE VERIFICATION")
@@ -204,12 +206,20 @@ def main():
     winston_patterns = cursor.fetchone()[0]
     print(f"   ✅ Winston patterns: {winston_patterns} stored")
     
-    # Check if humanness_layer.txt exists
-    humanness_template = Path('prompts/core/humanness_layer.txt')
-    if humanness_template.exists():
-        print(f"   ✅ Humanness template: {humanness_template}")
+    prompt_catalog_path = Path('prompts/registry/prompt_catalog.yaml')
+    humanness_ok = False
+    if prompt_catalog_path.exists():
+        with open(prompt_catalog_path, 'r', encoding='utf-8') as handle:
+            catalog_data = yaml.safe_load(handle) or {}
+        humanness = catalog_data.get('catalog', {}).get('core', {}).get('humanness', {})
+        full_template = humanness.get('full')
+        compact_template = humanness.get('compact')
+        humanness_ok = isinstance(full_template, str) and full_template.strip() and isinstance(compact_template, str) and compact_template.strip()
+
+    if humanness_ok:
+        print("   ✅ Humanness templates: prompts/registry/prompt_catalog.yaml (catalog.core.humanness.full/compact)")
     else:
-        print(f"   ⚠️  Humanness template: NOT FOUND")
+        print("   ⚠️  Humanness templates: NOT FOUND in prompt catalog")
     
     # Check subjective patterns YAML
     subjective_patterns = Path('prompts/quality/learned_patterns.yaml')

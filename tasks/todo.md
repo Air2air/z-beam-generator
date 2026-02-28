@@ -5,6 +5,615 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 77: Word-Count-Only Length Guidance Consolidation
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Remove or replace sentence-count and character-count guidance in active generation instruction paths so length guidance is word-count-only.
+
+### Steps
+- [x] Audit active generation instruction sources for sentence/character count guidance
+- [x] Replace instruction-level sentence/character count guidance with word-count-only guidance
+- [x] Regenerate `defense-laser-cleaning-applications` through source pipeline
+- [x] Re-audit target frontmatter length variation and confirm no sentence/character count guidance remains in active paths
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 76: Applications Length Variation Hardening
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Improve poor within-item length variation in applications long prose fields while keeping outputs shorter overall through centralized generation config (no frontmatter patching).
+
+### Steps
+- [x] Remove pageDescription sentence-based length override in humanness layer
+- [x] Differentiate centralized base lengths for applications long prose fields
+- [x] Regenerate defense applications text bundle from source pipeline
+- [x] Re-audit frontmatter word-count variation and confirm improvement
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 75: Applications Frontmatter Legacy Field Cleanup Verification
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Remove stale root-level `relatedMaterials` and `contaminatedBy` from applications frontmatter via source export flow and verify FAQ layout presence in applications page rendering.
+
+### Steps
+- [x] Re-export `defense-laser-cleaning-applications` from source pipeline
+- [x] Verify root-level legacy relationship fields are removed in frontmatter output
+- [x] Verify FAQ component rendering in applications page layout
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 74: Text Length + SectionTitle + Paragraph Integration
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Shorten overall generated text, ensure section title fields are AI-generated in the same run flow, and add paragraph-break guidance to text generation prompts.
+
+### Steps
+- [x] Reduce centralized global text-length baseline and long-tail variation
+- [x] Integrate section-title text components into same batch text run flow
+- [x] Add paragraph-break generation guidance in shared text prompts
+- [x] Run focused defense applications verification run
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 73: Integrate FAQ Into Batch Text Runs
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Eliminate FAQ as a discrete batch-generation path by ensuring text-field batch runs include FAQ in the same execution flow.
+
+### Steps
+- [x] Identify batch-generation path causing FAQ to run separately
+- [x] Patch batch text generation flow to include FAQ alongside requested text fields
+- [x] Run focused defense applications generation test proving same-run FAQ execution
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 72: Global Text Length Downshift + Wider Variation
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Reduce centralized base text lengths across all text fields and widen centralized random length variation, then run a focused defense applications generation test.
+
+### Steps
+- [x] Add global base-length multiplier in centralized text field config path
+- [x] Widen centralized text randomization factor range
+- [x] Run focused defense applications generation test
+- [x] Verify generated defense field is updated successfully
+- [x] Record lesson in `tasks/lessons.md`
+
+---
+
+## Batch 68: FAQ Pipeline Parity Simplification
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Make FAQ generation/extraction follow the exact same text pipeline as other text fields, with only one exception: normalize final FAQ content into multi-question/answer leaf items.
+
+### Steps
+- [x] Audit remaining FAQ-specific branches in generation/extraction pipeline
+- [x] Remove non-essential FAQ-special-case parsing paths to match standard text flow
+- [x] Keep only leaf-level FAQ normalization (question/answer items) at adapter boundary
+- [x] Run targeted FAQ generation smoke test and schema/contract validation
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 69: FAQ Cross-Domain Structure Parity (Applications)
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Align applications FAQ container structure to the existing canonical cross-domain shape used by other domains (including stable key ordering and section metadata placement) through source pipeline logic, then regenerate/export the target item.
+
+### Steps
+- [x] Confirm canonical FAQ container shape from existing frontmatter domains
+- [x] Apply minimal adapter normalization change for FAQ container ordering/parity
+- [x] Regenerate/export `defense-laser-cleaning-applications` from source pipeline
+- [x] Verify frontmatter FAQ structure and record lesson in `tasks/lessons.md`
+
+## Batch 70: Consolidate Text Length Variation Control
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Centralize text-length variation factor loading and validation into a single configuration access path, then update all runtime callers to use it.
+
+### Steps
+- [x] Add one canonical `ProcessingConfig` accessor for text-length randomization factors
+- [x] Refactor runtime callers (`HumannessOptimizer`, `DynamicConfig`) to use canonical accessor
+- [x] Run targeted validation/import checks and verify no duplicate config loading paths remain
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 71: Centralize Text Lengths + FAQ Leaf Parity
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Ensure centralized base-length coverage for all configured text fields and apply the same centralized variation flow to FAQ leaves (question/answer) as other text fields.
+
+### Steps
+- [x] Expand centralized text field config with explicit base lengths for all configured text fields
+- [x] Add centralized FAQ leaf length specs (`faqQuestion`, `faqAnswer`) in text field config
+- [x] Add canonical config accessors for text-field length and randomization factors
+- [x] Inject FAQ per-question/per-answer randomized guidance in humanness layer using canonical accessors in compact and full template paths
+- [x] Validate all `field_router` text fields resolve through centralized length config
+- [x] Run targeted runtime validation and record lesson in `tasks/lessons.md`
+
+## Batch 60: Complete Defense Application Text Field Generation
+Date: 2026-02-27
+Status: IN PROGRESS
+
+### Goal
+Generate all configured applications text fields for `defense-laser-cleaning-applications` via source backfill and re-export to frontmatter.
+
+### Steps
+- [ ] Run item-filtered applications backfill (all configured fields)
+- [ ] Export the repaired single item to frontmatter
+- [ ] Verify expected generated fields exist in source/frontmatter
+- [ ] Record lesson in `tasks/lessons.md`
+
+## Batch 64: FAQ Prompt Parity + Downstream Normalization
+Date: 2026-02-27
+Status: IN PROGRESS
+
+### Goal
+Refactor FAQ prompts for parity across domain prompt contracts and ensure downstream prompting resolves FAQ like other text fields through the shared normalized path.
+
+### Steps
+- [ ] Audit current FAQ prompt contract coverage across all domain prompt files
+- [ ] Align FAQ one-line sectionDescription prompts for parity across domains
+- [ ] Verify runtime prompt resolution path uses normalized shared/domain contract flow for FAQ
+- [ ] Run prompt/domain contract validation and targeted FAQ regeneration/export smoke check
+- [ ] Record lesson in `tasks/lessons.md`
+
+## Batch 67: FAQ Client Wiring Parity With Text Fields
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Ensure FAQ generation in backfill flow connects to API clients through the same provider selection path used by other text-field generation commands.
+
+### Steps
+- [x] Trace FAQ/backfill client creation path against batch text generation path
+- [x] Pass CLI-selected provider into backfill generator config
+- [x] Refactor universal text generator to use shared `create_api_client(provider)`
+- [x] Run focused applications dry-run smoke check with provider output verification
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 66: Applications FAQ Domain-Wide Research + Regeneration
+Date: 2026-02-27
+Status: IN PROGRESS
+
+### Goal
+Research all applications FAQ records for structure/content drift, regenerate FAQ content domain-wide through the pipeline, and re-export/validate frontmatter consistency.
+
+### Steps
+- [ ] Baseline all applications FAQ structure types in source + frontmatter
+- [ ] Run domain-wide applications FAQ regeneration via pipeline
+- [ ] Normalize and re-export applications frontmatter from source of truth
+- [ ] Run strict applications frontmatter schema validation
+- [ ] Record lesson in `tasks/lessons.md`
+
+## Batch 65: Simplify FAQ Pipeline for Text-Field Parity
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Simplify FAQ generation/extraction/write flow to match standard text-field behavior while preserving backward compatibility for legacy FAQ list payloads.
+
+### Steps
+- [x] Remove FAQ-only extraction override so FAQ uses normalized text-field extraction defaults
+- [x] Remove FAQ string-specific normalization branch from adapter write path
+- [x] Keep legacy list-to-collapsible conversion compatibility for existing list payloads
+- [x] Run targeted validation checks for config + adapter modules
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 63: Audit All Applications Relationship Section Structure
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Verify all applications frontmatter files follow the relationship section contract (leaf `_section` only, no redundant container-level `_section`) and remediate via generator/export flow if any drift exists.
+
+### Steps
+- [x] Scan all `../z-beam/frontmatter/applications/*.yaml` for redundant relationship container `_section`
+- [x] If violations exist, run generator/export path to correct outputs at source (no violations found)
+- [x] Re-run strict applications schema validation
+- [x] Record lesson in `tasks/lessons.md` if a correction was needed (not needed)
+
+## Batch 62: Move Relationship _section Fix Into Generator
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Fix redundant container-level relationship `_section` metadata in generator logic so export output is correct without domain-specific cleanup workarounds.
+
+### Steps
+- [x] Patch universal export generator to strip relationship container-level `_section` blocks when leaf sections exist
+- [x] Remove temporary applications-specific cleanup workaround entries
+- [x] Re-export defense applications item and verify structure
+- [x] Run strict applications frontmatter schema validation and record lesson
+
+## Batch 61: Remove Redundant Outer Relationship Section Metadata
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Align applications frontmatter structure with domain section contract by preventing duplicated outer `_section` blocks under `relationships.discovery` and `relationships.interactions`.
+
+### Steps
+- [x] Compare `domains/applications/prompt.yaml` contract against generated applications frontmatter structure
+- [x] Patch export section-metadata generation to keep `_section` only on leaf relationship sections
+- [x] Regenerate/export target applications item and verify redundant outer `_section` blocks are gone
+- [x] Run relevant validation checks and record lesson in `tasks/lessons.md`
+
+## Batch 59: Repair Incomplete Defense Applications Frontmatter
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Fix incomplete `frontmatter/applications/defense-laser-cleaning-applications.yaml` by re-exporting the single item from canonical source data.
+
+### Steps
+- [x] Diagnose schema-required field failures on the target frontmatter file
+- [x] Re-export the single applications item from `data/applications/Applications.yaml`
+- [x] Re-run strict frontmatter schema validation for applications
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 58: Applications Frontmatter Reset + Defense Regeneration
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Delete all `frontmatter/applications` files and regenerate one defense catalog item via the generation pipeline.
+
+### Steps
+- [x] Remove all files from `../z-beam/frontmatter/applications`
+- [x] Generate one defense applications item from catalog
+- [x] Verify only regenerated defense file exists in frontmatter folder
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 57: Generate One New Applications Catalog Item
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Generate one newly added applications catalog item through the existing generation pipeline and verify output artifacts.
+
+### Steps
+- [x] Select one new applications catalog slug
+- [x] Run focused generation for that item
+- [x] Verify generated source/frontmatter output
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 56: Prompt Source Centralization Gate + Source Map
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Enforce a strict prompt-source audit gate so downstream prompt access uses approved centralized services, and generate a canonical prompt-source map artifact.
+
+### Steps
+- [x] Define approved prompt-source access policy in validator logic
+- [x] Implement validator to detect non-centralized prompt access in Python runtime code
+- [x] Generate canonical prompt-source map artifact from repo scan
+- [x] Run validator locally and remediate immediate violations
+- [x] Wire validator into CI data-validation workflow
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 55: Remove Unreferenced Payload Monitor Module
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Remove the unreferenced `materials/image/research/payload_monitor.py` module while preserving manual-ops utilities and validating domain contracts.
+
+### Steps
+- [x] Confirm `payload_monitor.py` has no runtime references
+- [x] Delete only `payload_monitor.py`
+- [x] Validate prompt/domain contracts
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 54: Domains Likely-Dead Code Cleanup
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Remove verified-unreferenced domain code files in `materials` while preserving required directory contract shape.
+
+### Steps
+- [x] Re-verify runtime references for likely-dead code candidates
+- [x] Delete only verified-unreferenced code files
+- [x] Preserve required empty directories with `.gitkeep`
+- [x] Run prompt/domain contract validation
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 53: Domains Subfolder Usage Audit + Candidate Classification
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Determine whether all contents under `domains/*/*` are in active use, then classify unreferenced items into safe documentation cleanup, likely-dead code, and manual-ops keep candidates.
+
+### Steps
+- [x] Recompute usage evidence for every file under `domains/*/*`
+- [x] Classify unreferenced files by risk and operational intent
+- [x] Produce delete-candidate report with rationale
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 52: Domains Prompt Coverage Alignment
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Align non-application domain prompt contracts to include missing `pageTitle` prompts and missing section title companions for existing section-description keys.
+
+### Steps
+- [x] Audit `/domains` for remaining transient/empty subfolder cleanup candidates
+- [x] Add `pageTitle` prompt entries to non-application `domains/*/prompt.yaml`
+- [x] Add missing section title companion prompts where section-description keys already existed
+- [x] Run prompt/domain contract validation
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 51: Contaminants Docs Orphan Cleanup
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Prune unreferenced contaminants domain documentation files under `docs/domains/`.
+
+### Steps
+- [x] Inventory `docs/domains/contaminants` contents
+- [x] Verify cross-repo references for contaminants docs files
+- [x] Remove verified-unreferenced docs files
+- [x] Remove empty docs directories after deletion
+- [x] Run prompt/domain contract validation
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 50: Materials Image Docs Structural Cleanup
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Prune unreferenced `domains/materials/image/docs` files using verified cross-repo usage checks.
+
+### Steps
+- [x] Inventory `domains/materials/image/docs` files and collect reference counts
+- [x] Verify candidate files have zero references outside docs subtree
+- [x] Delete only verified-unused docs files
+- [x] Confirm no stale references remain
+- [x] Run prompt/domain contract validation
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 49: Domains Structural Cleanup (Legacy Prune)
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Perform a structural cleanup inside `domains/` by removing verified-unused legacy files and keeping domain catalogs aligned.
+
+### Steps
+- [x] Audit structural cleanup candidates in `domains/`
+- [x] Verify runtime usage before deleting legacy candidates
+- [x] Remove verified-unused legacy artifacts and non-source clutter
+- [x] Update domain catalog contract for removed legacy entries
+- [x] Run prompt/domain contract validation
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 48: Cross-Repo Transient Artifact Cleanup
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Perform safe transient cleanup across `z-beam` and `z-beam-generator` without changing source/runtime logic.
+
+### Steps
+- [x] Stop running dev processes before removing build artifacts
+- [x] Remove transient artifacts from `z-beam` (`.next`, `coverage`, `reports`, temp files)
+- [x] Remove transient artifacts from `z-beam-generator` (`__pycache__`, `.pytest_cache`, `.mypy_cache`, compiled/temp files)
+- [x] Re-run prompt/domain contract validation
+- [x] Restore dev server runtime state
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 47: Domains Tree Hygiene Cleanup
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Clean `domains/` and its subfolders by removing transient filesystem artifacts without changing runtime contracts.
+
+### Steps
+- [x] Audit `domains/` recursively for safe-to-remove transient artifacts (`__pycache__`, `.pyc`, `.DS_Store`, temp/editor files)
+- [x] Remove identified transient artifacts across domain folders
+- [x] Re-run prompt/domain contract validation after cleanup
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 46: Cross-Domain Prompt Contract Rollout
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Apply the functional applications prompt/catalog contract pattern to materials, contaminants, compounds, and settings so each domain has enforceable one-line prompt mappings and frontmatter article catalogs.
+
+### Steps
+- [x] Populate `domains/<domain>/prompt.yaml` one-line prompt mappings for materials/contaminants/compounds/settings
+- [x] Populate `domains/<domain>/catalog.yaml` article frontmatter file-name catalogs for materials/contaminants/compounds/settings
+- [x] Generalize `validate_prompt_section_contract.py` domain contract checks from applications-only to all core domains
+- [x] Run prompt contract validation and resolve any domain parity drift
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 64: FAQ Research Pipeline Alignment (Applications)
+Date: 2026-02-27
+Status: IN PROGRESS
+
+### Goal
+Ensure `faq` is generated through the same web-researched text pipeline as other applications text fields, then verify output parity and schema validity for `defense-laser-cleaning-applications`.
+
+### Steps
+- [ ] Audit current FAQ routing + research mode for applications generation
+- [ ] Enable/configure FAQ for web-research-backed text generation path (without frontmatter patching)
+- [ ] Regenerate target item FAQ at source
+- [ ] Export target item and validate schema/structure
+- [ ] Record lesson in `tasks/lessons.md`
+
+## Batch 45: Prompt Governance Enforcement + Location Investigation
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Complete prompt governance consolidation by keeping ownership files in `domains/*`, enforcing layout in validation/CI, and investigating whether `prompts/` should move under `shared/` or `generation/`.
+
+### Steps
+- [x] Remove `prompts/<domain>/catalog.yaml` files to keep governance in `domains/<domain>/catalog.yaml`
+- [x] Enforce layout contract in `validate_prompt_section_contract.py`
+- [x] Add explicit CI step for prompt governance validation in `.github/workflows/data-validation.yml`
+- [x] Investigate `prompts/` relocation impact and document recommendation
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 44: Domains Folder Prompt + Catalog Standardization
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Within each core domain code folder (`domains/<domain>`), store a domain prompt YAML reference and a domain catalog, then evaluate folder contents for cleanup safety.
+
+### Steps
+- [x] Add `prompt.yaml` to `domains/applications`, `domains/materials`, `domains/contaminants`, `domains/compounds`, `domains/settings`
+- [x] Add `catalog.yaml` to each core domain folder with required files/directories inventory
+- [x] Evaluate each folder for cleanup candidates and mark safe review-only candidates without deleting runtime files
+- [x] Run prompt/section contract validation
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 43: Domain Prompt Folder Catalog Standardization
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Within each core prompt domain folder, keep one domain-specific prompt YAML and one domain-local catalog file; remove any extra domain-folder files.
+
+### Steps
+- [x] Add `catalog.yaml` in each core domain folder (`applications`, `materials`, `contaminants`, `compounds`, `settings`)
+- [x] Ensure each domain folder contains only `content_prompts.yaml` and `catalog.yaml`
+- [x] Run prompt contract validation
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 42: Legacy Prompt File Deletion
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Delete unused legacy `prompts/**/*.txt` files after confirming runtime prompt resolution is registry-driven.
+
+### Steps
+- [x] Audit whole-project `.txt` prompt usage and confirm no runtime reads depend on deleted files
+- [x] Delete legacy `prompts/**/*.txt` files
+- [x] Update any residual verification logic that assumed physical template files
+- [x] Run prompt/section contract validation
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 41: Applications Title Generation Expansion
+Date: 2026-02-27
+Status: IN PROGRESS
+
+### Goal
+Add explicit content-generation coverage for applications `pageTitle` and relationship `_section.sectionTitle` fields via schema-backed component types.
+
+### Steps
+- [ ] Add schema component definitions for title generation
+- [ ] Add shared prompt + metadata entries for title components
+- [ ] Wire applications backfill config to generate `pageTitle` and relationship section titles
+- [ ] Validate schema prompt resolution for new component types
+- [ ] Record lesson in `tasks/lessons.md`
+
+## Batch 40: Rail Transport Applications Catalog Expansion
+Date: 2026-02-27
+Status: IN PROGRESS
+
+### Goal
+Add the requested Rail Transport application slugs to canonical source data and sync frontmatter exports without schema contract drift.
+
+### Steps
+- [ ] Verify requested rail IDs against existing applications source
+- [ ] Seed any missing Rail Transport application records in source data
+- [ ] Export all requested Rail Transport records to frontmatter
+- [ ] Validate source/frontmatter presence and relationship section contract
+- [ ] Record lesson in `tasks/lessons.md`
+
+## Batch 39: Seeded Page Author Rotation + Breadcrumb Contract
+Date: 2026-02-27
+Status: IN PROGRESS
+
+### Goal
+Ensure keyword-seeded pages assign authors via canonical rotation logic and generate domain-specific breadcrumbs that match sibling frontmatter contracts.
+
+### Steps
+- [ ] Restart and verify dev server health
+- [ ] Route keyword seed author assignment through canonical author manager/rotation path
+- [ ] Verify and enforce domain-specific breadcrumb shape in seeded output
+- [ ] Run focused tests/validation and re-export target applications page if needed
+- [ ] Record lesson in `tasks/lessons.md`
+
+## Batch 38: Applications Sibling Output Parity Hardening (Marine)
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Compare newly seeded `marine-laser-cleaning-ship-hulls-applications` output against sibling applications frontmatter, then adjust generator/source flow to remove template carryover and enforce reusable parity.
+
+### Steps
+- [x] Diff marine output vs sibling applications pages and identify contract/content drift
+- [x] Fix generator/source pipeline to prevent template pageDescription carryover on new seeded items
+- [x] Regenerate marine item fields and re-export single frontmatter page
+- [x] Remove duplicate erroneous frontmatter artifact generated during earlier seed attempts
+- [x] Run focused verification (frontmatter comparison + targeted validation/test)
+- [x] Record lesson in `tasks/lessons.md`
+
+## Batch 37: Centralized Keyword-to-Page Seeding Pipeline
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Enable creation of a new domain item from a single topic keyword, then auto-populate researched text fields through the existing generation pipeline, with centralized reusable architecture across domains.
+
+### Steps
+- [x] Add shared reusable keyword seeding service (domain-agnostic core + per-domain rules)
+- [x] Add CLI command in `run.py` to seed from keyword and trigger domain multi-field generation
+- [x] Implement applications-first defaults while keeping reusable mappings for other domains
+- [x] Add focused tests for slug/id generation and seed record creation behavior
+- [x] Document usage in quick reference and record lesson in `tasks/lessons.md`
+- [x] Run targeted verification (new tests + one dry-run command path)
+
+## Batch 36: Dual Package Pricing Rollout (Residential + Industrial)
+Date: 2026-02-27
+Status: COMPLETE
+
+### Goal
+Replace single hourly rental price with two packages (Residential $190/hr, Industrial $270/hr) and propagate consistently across UI, config, and SEO infrastructure outputs.
+
+### Steps
+- [x] Inventory all active pricing references in app and SEO scripts/schemas
+- [x] Update canonical pricing config to package-based structure with safe backward compatibility where required
+- [x] Update pricing UI components to render both packages and minimum-hour messaging
+- [x] Update JSON-LD/Offer/PriceSpecification generation to expose both package offers
+- [x] Update SEO merchant/feed scripts and any pricing constants to match package rates
+- [x] Run targeted tests/validation/build checks for touched pricing and schema paths
+- [x] Record lesson in `tasks/lessons.md`
+
 ## Batch 35: z-beam Failing Test Suites Triage + Fix
 Date: 2026-02-27
 Status: COMPLETE
@@ -1075,4 +1684,19 @@ cross-domain referential integrity. Produce a ranked findings report.
 - [x] 4. Fix `experience_years` snake_case in `useMicroParsing.ts` local type → `experienceYears`
 - [x] 5. Remove dead `frontmatter?.lastModified` branches in `Card.tsx` + `ContaminantCard.tsx` (frontmatter never has `lastModified`)
 - [x] 6. Simplify `lastModified` fallback chains in `JsonLD.tsx`, `SettingsJsonLD.tsx`, `jsonld-helper.ts`, `jsonld-schema.ts` → use `dateModified` only
+
+---
+
+## Batch 64: Defense Frontmatter FAQ Quality + Timestamp Consistency Check
+Date: 2026-02-27
+Status: IN PROGRESS
+
+### Goal
+Resolve known quality issues in `defense-laser-cleaning-applications` frontmatter by fixing FAQ content at source, re-exporting, and validating structure/schema; evaluate `dateModified` behavior against export-time UTC policy.
+
+### Steps
+- [ ] Patch source FAQ content for `defense-laser-cleaning-applications` to remove punctuation artifacts
+- [ ] Re-export the single applications item to frontmatter
+- [ ] Validate strict applications schema and verify no root relationship drift fields
+- [ ] Record lesson in `tasks/lessons.md`
 

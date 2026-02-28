@@ -427,7 +427,7 @@ class QualityEvaluatedGenerator:
                 logger.warning(f"   ⚠️  Subjective evaluation failed: {e}")
         
         # Grok humanness detection
-        grok_result = self._check_grok_detection(content, material_name, component_type)
+        grok_result = self._check_grok_detection(eval_text, material_name, component_type)
         quality_scores['grok_human_score'] = grok_result.get('human_score')
         quality_scores['grok_ai_score'] = grok_result.get('ai_score')
         

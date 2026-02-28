@@ -1,0 +1,33 @@
+schemaVersion: 1.0.0
+
+faq_prompt:
+  shared_section_prompt: |
+    Provide practical FAQ content for THIS ITEM in laser cleaning workflows using thorough current web research synthesis, practical evidence, and domain-specific details.
+    Generate 3-5 distinct question-and-answer pairs.
+    Return FAQ content as clear Q/A entries suitable for leaf-level parsing.
+
+  shared_section_metadata:
+    sectionTitle: "FAQ"
+    sectionDescription: "Common questions and answers"
+    sectionMetadata: "Developer purpose: defines how to generate concise FAQ coverage for recurring user questions."
+
+  single_line:
+    required_variables:
+      - subject
+      - context
+    by_domain:
+      applications:
+        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
+        variables: [subject, context]
+      materials:
+        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
+        variables: [subject, context]
+      contaminants:
+        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
+        variables: [subject, context]
+      compounds:
+        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
+        variables: [subject, context]
+      settings:
+        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
+        variables: [subject, context]

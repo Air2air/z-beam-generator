@@ -588,11 +588,14 @@ class DomainAdapter(DataSourceAdapter):
         Returns:
             Content in appropriate format (collapsible or original)
         """
+        if component_type == 'faq':
+            return self._normalize_faq_content(content_data, item_data)
+
         # Check if data already has presentation format (already structured)
         if isinstance(content_data, dict) and 'presentation' in content_data:
             logger.debug(f"✅ {component_type} already in structured format (presentation: {content_data.get('presentation')})")
             return content_data
-        
+
         # If data is already structured but missing presentation field, infer it
         if isinstance(content_data, dict) and 'items' in content_data:
             logger.debug(f"✅ {component_type} has items structure, returning as-is")
@@ -601,17 +604,46 @@ class DomainAdapter(DataSourceAdapter):
         # Data is raw (list/simple format) - needs conversion
         # Infer conversion type from data structure
         if isinstance(content_data, list):
-            # Check if it's FAQ format (list of Q&A dicts)
-            if content_data and isinstance(content_data[0], dict) and 'question' in content_data[0]:
-                logger.info(f"🔄 Converting FAQ data to collapsible format for {identifier}")
-                return self._convert_faq_to_collapsible(content_data, item_data)
-            # Simple string list - could be applications or other
-            else:
-                logger.debug(f"Raw list data for {component_type}, returning as-is")
-                return content_data
+            logger.debug(f"Raw list data for {component_type}, returning as-is")
+            return content_data
         
         # Unknown format, return as-is
         return content_data
+
+    def _build_faq_section_metadata(self) -> Optional[Dict[str, Any]]:
+        """Build FAQ _section metadata from canonical schema metadata."""
+        section_metadata = self.get_section_metadata('faq')
+        if not section_metadata:
+            return None
+
+        return {
+            'sectionTitle': section_metadata['title'],
+            'sectionDescription': section_metadata['description'],
+            'sectionMetadata': 'faq',
+            'icon': section_metadata['icon'],
+            'order': section_metadata['order'],
+            'variant': section_metadata['variant']
+        }
+
+    def _normalize_faq_content(self, content_data: Any, item_data: Optional[Dict] = None) -> Dict[str, Any]:
+        """Normalize FAQ content using the standard text pipeline with leaf-level Q/A shaping only."""
+        if isinstance(content_data, dict) and content_data.get('presentation') == 'collapsible':
+            items = content_data.get('items')
+            if not isinstance(items, list):
+                raise ValueError("FAQ collapsible payload missing required list at 'items'")
+            return self._convert_faq_to_collapsible(items, item_data)
+
+        if isinstance(content_data, dict) and isinstance(content_data.get('items'), list):
+            return self._convert_faq_to_collapsible(content_data['items'], item_data)
+
+        if isinstance(content_data, list):
+            return self._convert_faq_to_collapsible(content_data, item_data)
+
+        if isinstance(content_data, str):
+            faq_items = self._extract_json_list(content_data)
+            return self._convert_faq_to_collapsible(faq_items, item_data)
+
+        raise ValueError(f"Unsupported FAQ content type: {type(content_data).__name__}")
 
     def _normalize_page_description_output(self, content: Any) -> Any:
         """
@@ -712,16 +744,12 @@ class DomainAdapter(DataSourceAdapter):
             author_data = item_data.get('author')
             if author_data and isinstance(author_data, dict):
                 required_author_fields = ['name', 'title', 'expertise']
-                missing_author_fields = [field for field in required_author_fields if field not in author_data]
-                if missing_author_fields:
-                    raise KeyError(
-                        f"Author data missing required fields for FAQ conversion: {', '.join(missing_author_fields)}"
-                    )
-                expert_info = {
-                    'name': author_data['name'],
-                    'title': author_data['title'],
-                    'expertise': author_data['expertise']
-                }
+                if all(field in author_data for field in required_author_fields):
+                    expert_info = {
+                        'name': author_data['name'],
+                        'title': author_data['title'],
+                        'expertise': author_data['expertise']
+                    }
         
         # Severity keywords for classification
         severity_keywords = {
@@ -788,15 +816,22 @@ class DomainAdapter(DataSourceAdapter):
             items.append(item)
         
         logger.info(f"✅ Converted {len(items)} FAQ items to collapsible format with full metadata")
-        
-        return {
+
+        section = self._build_faq_section_metadata()
+        normalized_faq = {}
+        if section:
+            normalized_faq['_section'] = section
+
+        normalized_faq.update({
             'presentation': 'collapsible',
             'items': items,
             'options': {
                 'autoOpenFirst': True,
                 'sortBy': 'severity'
             }
-        }
+        })
+
+        return normalized_faq
     
     def _convert_applications_to_card(self, apps_data: list) -> Dict[str, Any]:
         """
@@ -1006,17 +1041,118 @@ class DomainAdapter(DataSourceAdapter):
             return {'before': text, 'after': text}
     
     def _extract_json_list(self, text: str) -> list:
-        """Extract JSON list (for FAQ)"""
+        """Extract FAQ list from strict JSON payload or plain Q/A text."""
         import json
         import re
 
-        # Try to find JSON array in response
+        def _normalize_faq_list(items: list) -> list | None:
+            normalized: list = []
+            for entry in items:
+                if not isinstance(entry, dict):
+                    return None
+
+                question = entry.get("question") or entry.get("q") or entry.get("title")
+                answer = entry.get("answer") or entry.get("a") or entry.get("description") or entry.get("content")
+
+                if not isinstance(question, str) or not question.strip():
+                    return None
+                if not isinstance(answer, str) or not answer.strip():
+                    return None
+
+                normalized.append({"question": question.strip(), "answer": answer.strip()})
+
+            return normalized if normalized else None
+
+        def _extract_list_from_object(payload: dict) -> list | None:
+            for key in ("faq", "faqs", "items", "questions", "faqItems", "entries"):
+                value = payload.get(key)
+                if isinstance(value, list):
+                    normalized = _normalize_faq_list(value)
+                    if normalized is not None:
+                        return normalized
+            if isinstance(payload.get("question"), str) and isinstance(payload.get("answer"), str):
+                return [{"question": payload["question"], "answer": payload["answer"]}]
+            return None
+
+        def _parse_json(candidate_text: str):
+            try:
+                return json.loads(candidate_text)
+            except json.JSONDecodeError:
+                return None
+
+        # 1) Parse full response as strict JSON (array or wrapped object)
+        payload = _parse_json(text.strip())
+        if isinstance(payload, list):
+            normalized = _normalize_faq_list(payload)
+            if normalized is not None:
+                return normalized
+        if isinstance(payload, dict):
+            extracted = _extract_list_from_object(payload)
+            if extracted is not None:
+                return extracted
+
+        # 2) Parse fenced JSON block if present
+        fenced_match = re.search(r'```json\s*([\s\S]*?)\s*```', text, re.IGNORECASE)
+        if fenced_match:
+            payload = _parse_json(fenced_match.group(1).strip())
+            if isinstance(payload, list):
+                normalized = _normalize_faq_list(payload)
+                if normalized is not None:
+                    return normalized
+            if isinstance(payload, dict):
+                extracted = _extract_list_from_object(payload)
+                if extracted is not None:
+                    return extracted
+
+        # 3) Parse first JSON array found in response
         json_match = re.search(r'\[[\s\S]*\]', text)
         if json_match:
-            try:
-                return json.loads(json_match.group())
-            except json.JSONDecodeError:
-                raise ValueError("Invalid JSON array format in response")
+            payload = _parse_json(json_match.group())
+            if isinstance(payload, list):
+                normalized = _normalize_faq_list(payload)
+                if normalized is not None:
+                    return normalized
+
+        # 4) Parse first JSON object found in response and extract wrapped list
+        object_match = re.search(r'\{[\s\S]*\}', text)
+        if object_match:
+            payload = _parse_json(object_match.group())
+            if isinstance(payload, dict):
+                extracted = _extract_list_from_object(payload)
+                if extracted is not None:
+                    return extracted
+
+        # 5) Minimal fallback: plain-text Q/A pairs
+        qa_pattern = re.compile(
+            r'(?:^|\n)\s*(?:[-*]\s*)?(?:Q(?:uestion)?\s*[:\-])\s*(.+?)\s*(?:\n|$)\s*(?:[-*]\s*)?(?:A(?:nswer)?\s*[:\-])\s*(.+?)(?=(?:\n\s*(?:[-*]\s*)?(?:Q(?:uestion)?\s*[:\-]))|\Z)',
+            re.IGNORECASE | re.DOTALL,
+        )
+        qa_matches = qa_pattern.findall(text)
+        if qa_matches:
+            normalized = []
+            for question, answer in qa_matches:
+                q = question.strip()
+                a = answer.strip()
+                if q and a:
+                    normalized.append({"question": q, "answer": a})
+            if normalized:
+                return normalized
+
+        # 6) Minimal fallback: first line as question, remaining lines as answer
+        lines = [line.strip() for line in text.splitlines() if line.strip()]
+        if len(lines) >= 2 and lines[0].endswith('?'):
+            answer = " ".join(lines[1:]).strip()
+            if answer:
+                return [{"question": lines[0], "answer": answer}]
+
+        # 7) Minimal fallback: single-line "Question? Answer..." format
+        compact_text = text.strip()
+        question_mark_index = compact_text.find('?')
+        if question_mark_index > 0:
+            question = compact_text[:question_mark_index + 1].strip()
+            answer = compact_text[question_mark_index + 1:].strip()
+            if question and answer:
+                return [{"question": question, "answer": answer}]
 
         raise ValueError("Could not find JSON array in response")
     

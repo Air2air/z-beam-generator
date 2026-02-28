@@ -3,8 +3,8 @@ shared_section_prompt: &shared_section_prompt |-
   Write a context-specific section description focused on THIS ITEM'S challenges as they relate to the section topic.
   Discuss the effects of the section topic (practical impacts, failure modes, or operational consequences).
   Include special considerations that are specific to THIS ITEM in the context of this section topic.
-  Keep it concise and concrete.
-  Return plain sentences only. Do not use labels like "Title:" or "Description:".
+  Keep it concise and concrete at approximately 70-110 words.
+  Return plain text only. Do not use labels like "Title:" or "Description:".
 
 section_prompts:
   synonymsIdentifiers: *shared_section_prompt
@@ -12,6 +12,9 @@ section_prompts:
   physicalProperties: *shared_section_prompt
   page: |
     Summarize what THIS ITEM is and why it matters operationally.
+  pageTitle: |
+    Write a concise SEO-ready page title for THIS ITEM.
+    Return title text only.
   appearanceVariations: *shared_section_prompt
   healthEffects: *shared_section_prompt
   industryApplications: *shared_section_prompt
@@ -26,11 +29,12 @@ section_prompts:
   detectionMethods: *shared_section_prompt
   removalMethods: *shared_section_prompt
   environmentalImpact: *shared_section_prompt
-  faq: |
-    Provide practical FAQ content for THIS ITEM in laser cleaning workflows.
   continuousMonitoring: *shared_section_prompt
   reactivity: *shared_section_prompt
   contaminatedBy: *shared_section_prompt
+  contaminatedByTitle: |
+    Write a concise section heading for contaminants commonly affecting THIS ITEM.
+    Return heading text only.
   producedByMaterials: *shared_section_prompt
   producedFromContaminants: *shared_section_prompt
   relatedContaminants: *shared_section_prompt
@@ -38,10 +42,14 @@ section_prompts:
   materialCharacteristics: *shared_section_prompt
   laserMaterialInteraction: *shared_section_prompt
   relatedMaterials: *shared_section_prompt
+  relatedMaterialsTitle: |
+    Write a concise section heading for materials commonly associated with THIS ITEM.
+    Return heading text only.
   micro: |
     Describe the before-and-after surface transformation for THIS MATERIAL.
   pageDescription: |
-    Describe THIS MATERIAL at page level in one concise operationally useful paragraph.
+    Describe THIS MATERIAL at page level in concise operationally useful prose.
+    Target approximately 80-110 words.
   machineSettings: *shared_section_prompt
   "operational.laserMaterialInteraction": *shared_section_prompt
   "components.micro": |
@@ -64,6 +72,10 @@ section_prompt_metadata:
     sectionTitle: "Page Title"
     sectionDescription: "Page-level summary"
     sectionMetadata: "Developer purpose: defines how to generate the page-level summary section for implementers."
+  pageTitle:
+    sectionTitle: "Page Title"
+    sectionDescription: "SEO page title text"
+    sectionMetadata: "Developer purpose: defines how to generate a standalone SEO-ready page title field."
   appearanceVariations:
     sectionTitle: "Visual Appearance"
     sectionDescription: "Appearance variations for identification"
@@ -120,10 +132,6 @@ section_prompt_metadata:
     sectionTitle: "Environmental Impact"
     sectionDescription: "Environmental considerations"
     sectionMetadata: "Developer purpose: defines how to generate environmental impact and disposal considerations."
-  faq:
-    sectionTitle: "FAQ"
-    sectionDescription: "Common questions and answers"
-    sectionMetadata: "Developer purpose: defines how to generate concise FAQ coverage for recurring user questions."
   continuousMonitoring:
     sectionTitle: "Continuous Monitoring"
     sectionDescription: "Real-time monitoring systems"
@@ -136,6 +144,10 @@ section_prompt_metadata:
     sectionTitle: "Contaminated By"
     sectionDescription: "Related contaminant sources"
     sectionMetadata: "Developer purpose: defines how to generate contaminant-source relationship coverage."
+  contaminatedByTitle:
+    sectionTitle: "Contaminated By"
+    sectionDescription: "Contaminated-by section heading"
+    sectionMetadata: "Developer purpose: defines how to generate a concise heading for the contaminated-by relationship section."
   producedByMaterials:
     sectionTitle: "Produced By Materials"
     sectionDescription: "Materials that produce this output"
@@ -164,6 +176,10 @@ section_prompt_metadata:
     sectionTitle: "Related Materials"
     sectionDescription: "Related material references"
     sectionMetadata: "Developer purpose: defines how to generate related-material reference and comparison coverage."
+  relatedMaterialsTitle:
+    sectionTitle: "Related Materials"
+    sectionDescription: "Related-materials section heading"
+    sectionMetadata: "Developer purpose: defines how to generate a concise heading for the related-materials relationship section."
   micro:
     sectionTitle: "Micro Description"
     sectionDescription: "Before/after micro-level summary"

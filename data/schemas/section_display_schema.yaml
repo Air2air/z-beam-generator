@@ -210,6 +210,17 @@ sections:
     sectionTitle: "Page Title"
     sectionDescription: "Page Description"
     prompt_ref: page
+
+  pageTitle:
+    icon: heading
+    order: 14
+    variant: default
+    wordCount: 12
+    title: "Page Title"
+    description: "SEO-optimized page title"
+    sectionTitle: "Page Title"
+    sectionDescription: "SEO-optimized page title"
+    prompt_ref: pageTitle
   
   # VISUAL GROUP (20-29): Appearance and identification characteristics
   appearanceVariations:
@@ -448,6 +459,17 @@ sections:
     sectionDescription: "Common contaminants affecting this material"
     prompt_ref: contaminatedBy
 
+  contaminatedByTitle:
+    icon: droplet
+    order: 61
+    variant: default
+    wordCount: 6
+    title: "Contaminated By Title"
+    description: "Title for contaminated-by relationship section"
+    sectionTitle: "Contaminated By"
+    sectionDescription: "Title for contaminated-by relationship section"
+    prompt_ref: contaminatedByTitle
+
   relationships.interactions.contaminatedBy:
     icon: droplet
     order: 61
@@ -555,6 +577,17 @@ sections:
       - subcategory
       - url
       - image
+
+  relatedMaterialsTitle:
+    icon: layers
+    order: 72
+    variant: default
+    wordCount: 6
+    title: "Related Materials Title"
+    description: "Title for related materials relationship section"
+    sectionTitle: "Related Materials"
+    sectionDescription: "Title for related materials relationship section"
+    prompt_ref: relatedMaterialsTitle
     
   micro:
     icon: images

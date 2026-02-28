@@ -66,6 +66,7 @@ def main() -> int:
 
     removed_item_descriptions = 0
     updated_section_descriptions = 0
+    removed_legacy_root_fields = 0
 
     for app_id, app_data in applications.items():
         if not isinstance(app_data, dict):
@@ -78,11 +79,15 @@ def main() -> int:
             continue
 
         discovery = relationships.get("discovery")
+        related_section = None
+        contaminated_section = None
+
         if isinstance(discovery, dict):
             related_materials = discovery.get("relatedMaterials")
             if isinstance(related_materials, dict):
                 section = related_materials.get("_section")
                 if isinstance(section, dict):
+                    related_section = section
                     current_text = _sanitize_section_description(
                         section.get("sectionDescription")
                     )
@@ -99,6 +104,7 @@ def main() -> int:
             if isinstance(contaminated_by, dict):
                 section = contaminated_by.get("_section")
                 if isinstance(section, dict):
+                    contaminated_section = section
                     current_text = _sanitize_section_description(
                         section.get("sectionDescription")
                     )
@@ -118,21 +124,37 @@ def main() -> int:
 
         legacy_related = app_data.get("relatedMaterials")
         if isinstance(legacy_related, dict):
-            legacy_text = _sanitize_section_description(
-                legacy_related.get("description")
-            )
-            if legacy_text and legacy_text != legacy_related.get("description"):
-                legacy_related["description"] = legacy_text
-                updated_section_descriptions += 1
+            if isinstance(related_section, dict):
+                legacy_title = legacy_related.get("title")
+                if isinstance(legacy_title, str) and legacy_title.strip():
+                    related_section["sectionTitle"] = legacy_title.strip()
+
+                legacy_text = _sanitize_section_description(
+                    legacy_related.get("description")
+                )
+                if legacy_text:
+                    related_section["sectionDescription"] = legacy_text
+                    updated_section_descriptions += 1
+
+            del app_data["relatedMaterials"]
+            removed_legacy_root_fields += 1
 
         legacy_contaminated = app_data.get("contaminatedBy")
         if isinstance(legacy_contaminated, dict):
-            legacy_text = _sanitize_section_description(
-                legacy_contaminated.get("description")
-            )
-            if legacy_text and legacy_text != legacy_contaminated.get("description"):
-                legacy_contaminated["description"] = legacy_text
-                updated_section_descriptions += 1
+            if isinstance(contaminated_section, dict):
+                legacy_title = legacy_contaminated.get("title")
+                if isinstance(legacy_title, str) and legacy_title.strip():
+                    contaminated_section["sectionTitle"] = legacy_title.strip()
+
+                legacy_text = _sanitize_section_description(
+                    legacy_contaminated.get("description")
+                )
+                if legacy_text:
+                    contaminated_section["sectionDescription"] = legacy_text
+                    updated_section_descriptions += 1
+
+            del app_data["contaminatedBy"]
+            removed_legacy_root_fields += 1
 
     save_yaml(data, APPLICATIONS_PATH)
 
@@ -141,6 +163,7 @@ def main() -> int:
             "file": str(APPLICATIONS_PATH),
             "removed_item_descriptions": removed_item_descriptions,
             "updated_section_descriptions": updated_section_descriptions,
+            "removed_legacy_root_fields": removed_legacy_root_fields,
             "applications_count": len(applications),
         }
     )

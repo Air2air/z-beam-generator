@@ -23,10 +23,7 @@ Usage:
 """
 
 import math
-from pathlib import Path
 from typing import Any, Dict, Optional
-
-import yaml
 
 from generation.config.config_loader import get_config
 
@@ -61,35 +58,8 @@ class DynamicConfig:
         self._parameter_instances: Optional[Dict[str, Any]] = None  # Changed from BaseParameter to Any
 
     def _get_randomization_factors(self) -> tuple[float, float]:
-        """Load centralized randomization factors from generation/text_field_config.yaml."""
-        config_path = Path(__file__).parent.parent / "text_field_config.yaml"
-        if not config_path.exists():
-            raise FileNotFoundError(
-                f"Text field config not found: {config_path}. "
-                "Cannot resolve randomization_range without centralized config."
-            )
-
-        with open(config_path, 'r', encoding='utf-8') as file_handle:
-            text_cfg = yaml.safe_load(file_handle)
-        if not isinstance(text_cfg, dict):
-            raise ValueError("generation/text_field_config.yaml must contain a YAML dictionary")
-
-        randomization_cfg = text_cfg.get('randomization_range')
-        if not isinstance(randomization_cfg, dict):
-            raise ValueError(
-                "Missing required config block: randomization_range in generation/text_field_config.yaml"
-            )
-
-        min_factor = randomization_cfg.get('min_factor')
-        max_factor = randomization_cfg.get('max_factor')
-        if not isinstance(min_factor, (int, float)) or not isinstance(max_factor, (int, float)):
-            raise TypeError("randomization_range.min_factor and max_factor must be numeric")
-        if min_factor <= 0 or max_factor <= 0 or min_factor > max_factor:
-            raise ValueError(
-                f"Invalid randomization_range: min_factor={min_factor}, max_factor={max_factor}"
-            )
-
-        return float(min_factor), float(max_factor)
+        """Load centralized randomization factors from ProcessingConfig."""
+        return self.base_config.get_text_length_randomization_factors()
     
     # =========================================================================
     # API GENERATION PARAMETERS (Dynamic)

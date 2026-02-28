@@ -13,6 +13,16 @@ The workflow orchestration guide is the first step for every AI task.
 - Architecture overview: docs/02-architecture/
 - Policies: docs/08-development/
 
+## Keyword → Full Page (Centralized)
+- Create a new page from one topic keyword (seed source item, run multi-field generation, sync frontmatter):
+  - `python3 run.py --seed-from-keyword "Aerospace Coatings" --domain applications`
+- Reuse for other domains (override taxonomy when needed):
+  - `python3 run.py --seed-from-keyword "Nickel Slag" --domain contaminants --category inorganic-coating --subcategory residue`
+- Use a specific donor template item:
+  - `python3 run.py --seed-from-keyword "Marine Hull" --domain applications --template-item aerospace-laser-cleaning-applications`
+- Preview only (no writes):
+  - `python3 run.py --seed-from-keyword "Composite Bondline" --domain applications --dry-run`
+
 ## Terminal Usage Rules
 
 ### File Creation
@@ -31,6 +41,8 @@ The workflow orchestration guide is the first step for every AI task.
 ## Field Naming Reference (Single Source of Truth)
 - All field names, every domain, camelCase ↔ snake_case mapping: **docs/08-development/FIELD_NAMING_REFERENCE.md**
 - Field order canonical spec: data/schemas/FrontmatterFieldOrder.yaml
+- Content-generation field policy (all domains): data/schemas/content_generation_policy.yaml
+- Single-line component prompts + variable contracts: data/schemas/component_single_line_prompts.yaml
 
 ## Frontmatter Parity Gates (CI + Local)
 - CI workflow: `.github/workflows/data-validation.yml` job `validate-frontmatter-parity`

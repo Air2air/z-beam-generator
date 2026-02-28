@@ -37,6 +37,9 @@ generators:
     deprecated_fields:
       - metaDescription     # redundant; canonical field is pageDescription (mandatory Feb 2026)
       - authorId            # deprecated (Feb 2026)
+      - _section            # legacy root-level section artifact; section metadata belongs under component blocks
+      - relatedMaterials    # legacy root relationship block; canonical path is relationships.discovery.relatedMaterials
+      - contaminatedBy      # legacy root relationship block; canonical path is relationships.interactions.contaminatedBy
   - type: field_ordering
     domain: applications
     description: Organize output structure

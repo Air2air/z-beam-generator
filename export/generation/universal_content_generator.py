@@ -613,6 +613,27 @@ class ContentGenerator(BaseGenerator):
                     updates += _enforce_all_sections(item, parent_key, parent_node)
 
             return updates
+
+        def _strip_relationship_container_section_metadata(payload: Dict[str, Any]) -> int:
+            """Remove container-level relationship _section metadata when leaf relationship sections exist."""
+            removed = 0
+            relationships = payload.get('relationships')
+            if not isinstance(relationships, dict):
+                return removed
+
+            for _, sections in relationships.items():
+                if not isinstance(sections, dict):
+                    continue
+
+                has_leaf_sections = any(
+                    key != '_section' and isinstance(value, dict)
+                    for key, value in sections.items()
+                )
+                if has_leaf_sections and isinstance(sections.get('_section'), dict):
+                    del sections['_section']
+                    removed += 1
+
+            return removed
         
         # ROOT-LEVEL SECTIONS: Handle materialCharacteristics, laserMaterialInteraction, faq, components, etc.
         root_level_sections = ['materialCharacteristics', 'laserMaterialInteraction', 'faq', 'components']
@@ -745,6 +766,12 @@ class ContentGenerator(BaseGenerator):
         universal_updates = _enforce_all_sections(frontmatter)
         if universal_updates:
             sections_added += universal_updates
+
+        removed_container_sections = _strip_relationship_container_section_metadata(frontmatter)
+        if removed_container_sections:
+            logger.debug(
+                f"Removed {removed_container_sections} relationship container-level _section blocks"
+            )
         
         print(f"✅ section_metadata: Added to {sections_added} sections")
         return frontmatter
