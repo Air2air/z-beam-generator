@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-02-28: Empty per-domain prompt registry files can create architectural noise when all domains already resolve to shared prompt content. Rule: keep `domains/*/prompt.yaml` pointed to one shared registry path unless a domain has real override content, and treat per-domain prompt registry files as optional artifacts rather than required scaffolding.
+
 - 2026-02-28: Legacy prompt registry files can remain in-tree after ownership migration and blur source-of-truth boundaries even when runtime no longer references them. Rule: remove deprecated `prompts/shared/*` prompt registry artifacts and enforce a validator guard that fails if those files are reintroduced.
 
 - 2026-02-28: FAQ single-line prompts can silently drift when sourced from both `shared_prompt_registry.yaml` and `component_single_line_prompts.yaml`, requiring runtime merge logic and split validation paths. Rule: keep all single-line prompt templates (including FAQ) canonical in `data/schemas/component_single_line_prompts.yaml` and keep shared registry limited to shared section prompt text/metadata only.

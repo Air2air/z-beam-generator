@@ -5,6 +5,22 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 98: Simplify Prompt Contract Layer to Shared Registry
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Remove low-value empty per-domain prompt registry files and simplify prompt contract wiring to one canonical shared registry while preserving runtime behavior and validation coverage.
+
+### Steps
+- [x] Point all `domains/*/prompt.yaml` contracts to `prompts/registry/content_prompts_shared.yaml`
+- [x] Update bootstrap + section-contract validators to enforce shared registry contract path
+- [x] Remove redundant empty `prompts/registry/content_prompts_<domain>.yaml` files
+- [x] Update focused registry unit tests for shared-backed registry loading expectations
+- [x] Run focused validators/tests and summarize known residual failures
+
+---
+
 ## Batch 97: Remove Legacy Shared Prompt Artifacts and Enforce Guard
 Date: 2026-02-28
 Status: COMPLETE

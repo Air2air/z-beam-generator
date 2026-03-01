@@ -342,7 +342,20 @@ def validate_single_line_component_prompts(repo_root: Path) -> list[str]:
 
 
 def _load_domain_prompt_map(repo_root: Path, domain: str) -> dict[str, str]:
-    domain_file = repo_root / "prompts" / "registry" / f"content_prompts_{domain}.yaml"
+    prompt_contract_path = repo_root / "domains" / domain / "prompt.yaml"
+    if not prompt_contract_path.exists():
+        return {}
+
+    prompt_contract_payload = load_yaml(prompt_contract_path)
+    prompt_contract = prompt_contract_payload.get("prompt_contract")
+    if not isinstance(prompt_contract, dict):
+        return {}
+
+    content_prompts_file = prompt_contract.get("content_prompts_file")
+    if not isinstance(content_prompts_file, str) or not content_prompts_file.strip():
+        return {}
+
+    domain_file = repo_root / content_prompts_file.strip()
     if not domain_file.exists():
         return {}
 
@@ -636,11 +649,11 @@ def validate_domain_prompt_contracts(repo_root: Path) -> list[str]:
             )
             continue
 
-        expected_prompt_path = repo_root / "prompts" / "registry" / f"content_prompts_{domain}.yaml"
+        expected_prompt_path = repo_root / "prompts" / "registry" / "content_prompts_shared.yaml"
         configured_prompt_path = repo_root / content_prompts_file.strip()
         if configured_prompt_path != expected_prompt_path:
             errors.append(
-                f"{prompt_contract_path}: content_prompts_file must point to prompts/registry/content_prompts_{domain}.yaml"
+                f"{prompt_contract_path}: content_prompts_file must point to prompts/registry/content_prompts_shared.yaml"
             )
         if not configured_prompt_path.exists():
             errors.append(f"{prompt_contract_path}: configured file not found: {configured_prompt_path}")
