@@ -1,12 +1,12 @@
 {
   "summary": {
-    "reference_count": 26,
+    "reference_count": 27,
     "violation_count": 0,
     "kinds": {
       "prompt_catalog": 1,
       "quality_patterns": 8,
       "seo_prompts": 5,
-      "shared_prompt_registry": 5,
+      "shared_prompt_registry": 6,
       "system_prompts": 1,
       "voice_profiles": 6
     }
@@ -150,7 +150,12 @@
       },
       {
         "file": "scripts/validation/validate_prompt_section_contract.py",
-        "line": 516,
+        "line": 484,
+        "value": "prompts/registry/shared_prompt_registry.yaml"
+      },
+      {
+        "file": "scripts/validation/validate_prompt_section_contract.py",
+        "line": 776,
         "value": "prompts/registry/shared_prompt_registry.yaml"
       }
     ]

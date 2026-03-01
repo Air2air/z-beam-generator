@@ -1,5 +1,9 @@
 # Lessons Learned
 
+- 2026-02-28: Legacy prompt registry files can remain in-tree after ownership migration and blur source-of-truth boundaries even when runtime no longer references them. Rule: remove deprecated `prompts/shared/*` prompt registry artifacts and enforce a validator guard that fails if those files are reintroduced.
+
+- 2026-02-28: FAQ single-line prompts can silently drift when sourced from both `shared_prompt_registry.yaml` and `component_single_line_prompts.yaml`, requiring runtime merge logic and split validation paths. Rule: keep all single-line prompt templates (including FAQ) canonical in `data/schemas/component_single_line_prompts.yaml` and keep shared registry limited to shared section prompt text/metadata only.
+
 - 2026-02-28: Sitemap maintenance drift increased when legacy docs/config implied `seo/config/sitemap-config.json` was runtime authority while runtime sitemap behavior came from route/scripts/robots code paths. Rule: mark legacy sitemap config as documentation-only, and document canonical runtime sources (`app/sitemap.xml/route.ts`, `seo/scripts/generate-image-sitemap.js`, `seo/scripts/generate-sitemap-index.js`, `app/robots.ts`) in primary SEO docs.
 
 - 2026-02-28: Prompt-chain ownership drifted when one-line prompt templates were duplicated in both `domains/*/prompt.yaml` and `data/schemas/component_single_line_prompts.yaml`. Rule: keep single-line templates canonical in `data/schemas/component_single_line_prompts.yaml` only, and fail validation if domain contracts define `one_line_content_prompts`.

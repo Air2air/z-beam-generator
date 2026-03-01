@@ -72,31 +72,6 @@ def _load_shared_prompt_registry(repo_root: Path) -> dict[str, Any]:
     return payload
 
 
-def _load_faq_single_line_registry(repo_root: Path) -> dict[str, dict[str, Any]]:
-    registry_path = _shared_prompt_registry_path(repo_root)
-    shared_registry = _load_shared_prompt_registry(repo_root)
-
-    single_line = shared_registry.get("single_line")
-    if not isinstance(single_line, dict):
-        raise ValueError(
-            f"{registry_path}: single_line must be a mapping"
-        )
-
-    by_domain = single_line.get("by_domain")
-    if not isinstance(by_domain, dict):
-        raise ValueError(
-            f"{registry_path}: single_line.by_domain must be a mapping"
-        )
-
-    result: dict[str, dict[str, Any]] = {}
-    for domain, entry in by_domain.items():
-        if isinstance(domain, str) and isinstance(entry, dict):
-            faq_entry = entry.get("faq")
-            if isinstance(faq_entry, dict):
-                result[domain] = dict(faq_entry)
-    return result
-
-
 def _load_faq_shared_registry(repo_root: Path) -> tuple[str | None, dict[str, Any] | None]:
     shared_registry = _load_shared_prompt_registry(repo_root)
     section_prompts = shared_registry.get("section_prompts")
@@ -236,8 +211,6 @@ def validate_single_line_component_prompts(repo_root: Path) -> list[str]:
             f"{single_line_path}: component_single_line_prompts.by_domain must be a mapping"
         ]
 
-    faq_by_domain = _load_faq_single_line_registry(repo_root)
-
     placeholder_pattern = re.compile(r"\{([a-zA-Z_][a-zA-Z0-9_]*)\}")
 
     component_aliases = _load_component_aliases(repo_root)
@@ -265,14 +238,11 @@ def validate_single_line_component_prompts(repo_root: Path) -> list[str]:
             )
             continue
 
-        merged_domain_prompts = {
+        domain_prompt_entries = {
             str(key): value
             for key, value in domain_prompts.items()
             if isinstance(key, str)
         }
-        faq_entry = faq_by_domain.get(domain)
-        if isinstance(faq_entry, dict):
-            merged_domain_prompts["faq"] = dict(faq_entry)
 
         required_prompt_refs: set[str] = set()
         for idx, entry in enumerate(domain_required_entries):
@@ -300,7 +270,7 @@ def validate_single_line_component_prompts(repo_root: Path) -> list[str]:
             required_prompt_refs.add(prompt_ref.strip())
 
         for prompt_ref in sorted(required_prompt_refs):
-            entry = merged_domain_prompts.get(prompt_ref)
+            entry = domain_prompt_entries.get(prompt_ref)
             if not isinstance(entry, dict):
                 errors.append(
                     f"{single_line_path}: missing component_single_line_prompts.by_domain.{domain}.{prompt_ref}"
@@ -362,10 +332,8 @@ def validate_single_line_component_prompts(repo_root: Path) -> list[str]:
                     f"{single_line_path}: component_single_line_prompts.by_domain.{domain}.{prompt_ref}.prompt must include required placeholders: {', '.join('{' + name + '}' for name in missing_placeholders)}"
                 )
 
-        extra_refs = sorted(set(merged_domain_prompts.keys()) - required_prompt_refs)
+        extra_refs = sorted(set(domain_prompt_entries.keys()) - required_prompt_refs)
         for prompt_ref in extra_refs:
-            if prompt_ref == "faq":
-                continue
             errors.append(
                 f"{single_line_path}: component_single_line_prompts.by_domain.{domain}.{prompt_ref} is not required by content generation policy"
             )
@@ -793,6 +761,24 @@ def validate_domain_prompt_contracts(repo_root: Path) -> list[str]:
     return errors
 
 
+def validate_legacy_prompt_registry_absence(repo_root: Path) -> list[str]:
+    """Fail if deprecated shared prompt registry files are reintroduced."""
+    errors: list[str] = []
+    legacy_paths = (
+        "prompts/shared/faq_prompt.yaml",
+        "prompts/shared/section_inline_prompts.yaml",
+    )
+
+    for relative_path in legacy_paths:
+        legacy_path = repo_root / relative_path
+        if legacy_path.exists():
+            errors.append(
+                f"{legacy_path}: deprecated legacy shared prompt file must not exist; use prompts/registry/shared_prompt_registry.yaml and data/schemas/component_single_line_prompts.yaml"
+            )
+
+    return errors
+
+
 def main() -> int:
     repo_root = Path(__file__).resolve().parents[2]
 
@@ -802,6 +788,7 @@ def main() -> int:
     errors.extend(validate_backfill_policy_alignment(repo_root))
     errors.extend(validate_backfill_prompt_wiring(repo_root))
     errors.extend(validate_domain_prompt_contracts(repo_root))
+    errors.extend(validate_legacy_prompt_registry_absence(repo_root))
     errors.extend(validate_naming_parity(repo_root))
 
     if errors:

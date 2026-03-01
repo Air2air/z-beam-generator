@@ -130,7 +130,6 @@ class PromptRegistryService:
             registry = cls._get_shared_prompt_registry()
             section_prompts = registry.get("section_prompts")
             section_prompt_metadata = registry.get("section_prompt_metadata")
-            single_line = registry.get("single_line")
 
             if not isinstance(section_prompts, dict):
                 raise ValueError("Shared prompt registry missing section_prompts mapping")
@@ -144,17 +143,23 @@ class PromptRegistryService:
             if not isinstance(faq_metadata, dict):
                 raise ValueError("Shared prompt registry missing required section_prompt_metadata.faq")
 
-            if not isinstance(single_line, dict):
-                raise ValueError("Shared prompt registry missing required single_line mapping")
+            single_line_by_domain: Dict[str, Dict[str, Any]] = {}
+            for domain, domain_prompts in cls.get_single_line_component_prompts().items():
+                if not isinstance(domain, str) or not isinstance(domain_prompts, dict):
+                    continue
+                faq_entry = domain_prompts.get("faq")
+                if isinstance(faq_entry, dict):
+                    single_line_by_domain[domain] = dict(faq_entry)
 
-            by_domain = single_line.get("by_domain")
-            if not isinstance(by_domain, dict):
-                raise ValueError("Shared prompt registry missing required single_line.by_domain mapping")
+            if not single_line_by_domain:
+                raise ValueError(
+                    "component_single_line_prompts registry missing FAQ single-line entries by domain"
+                )
 
             cls._faq_prompt_cache = {
                 "shared_section_prompt": faq_prompt.strip(),
                 "shared_section_metadata": dict(faq_metadata),
-                "single_line": {"by_domain": dict(by_domain)},
+                "single_line": {"by_domain": single_line_by_domain},
             }
         return cls._faq_prompt_cache
 
@@ -176,34 +181,19 @@ class PromptRegistryService:
                     f"Invalid single-line prompt registry in {prompts_path}: expected mapping at component_single_line_prompts.by_domain"
                 )
 
-            shared_registry = cls._get_shared_prompt_registry()
-            shared_single_line = shared_registry.get("single_line")
-            if not isinstance(shared_single_line, dict):
-                raise ValueError("Shared prompt registry missing required single_line mapping")
-            faq_by_domain = shared_single_line.get("by_domain")
-            if not isinstance(faq_by_domain, dict):
-                raise ValueError("Shared prompt registry missing required single_line.by_domain mapping")
-
-            merged_by_domain: Dict[str, Dict[str, Any]] = {}
+            normalized_by_domain: Dict[str, Dict[str, Any]] = {}
             for domain_key, domain_prompts in by_domain.items():
                 if not isinstance(domain_key, str) or not isinstance(domain_prompts, dict):
                     continue
-                merged_prompts = {
+                normalized_prompts = {
                     str(key): dict(value)
                     for key, value in domain_prompts.items()
                     if isinstance(key, str) and isinstance(value, dict)
                 }
 
-                if isinstance(faq_by_domain, dict):
-                    faq_entry = faq_by_domain.get(domain_key)
-                    if isinstance(faq_entry, dict):
-                        faq_prompt_entry = faq_entry.get("faq")
-                        if isinstance(faq_prompt_entry, dict):
-                            merged_prompts["faq"] = dict(faq_prompt_entry)
+                normalized_by_domain[domain_key] = normalized_prompts
 
-                merged_by_domain[domain_key] = merged_prompts
-
-            cls._single_line_component_prompts_cache = merged_by_domain
+            cls._single_line_component_prompts_cache = normalized_by_domain
         return cls._single_line_component_prompts_cache
 
     @classmethod

@@ -13,6 +13,9 @@ component_single_line_prompts:
       pageTitle:
         prompt: "Write a concise applications page title for {subject} in {context}."
         variables: [subject, context]
+      faq:
+        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
+        variables: [subject, context]
       pageDescription:
         prompt: "Describe what {subject} is, why it matters, and what users should expect in {context}."
         variables: [subject, context]
@@ -29,6 +32,9 @@ component_single_line_prompts:
         prompt: "Describe contaminants most commonly associated with {subject} in {context}."
         variables: [subject, context]
     materials:
+      faq:
+        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
+        variables: [subject, context]
       pageDescription:
         prompt: "Describe what {subject} is and operationally why it matters in {context}."
         variables: [subject, context]
@@ -48,6 +54,9 @@ component_single_line_prompts:
         prompt: "Describe the before-and-after surface transformation of {subject} in {context}."
         variables: [subject, context]
     contaminants:
+      faq:
+        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
+        variables: [subject, context]
       pageDescription:
         prompt: "Describe what {subject} is and practical relevance in {context}."
         variables: [subject, context]
@@ -58,6 +67,9 @@ component_single_line_prompts:
         prompt: "Describe compounds related to {subject} and why they are linked in {context}."
         variables: [subject, context]
     compounds:
+      faq:
+        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
+        variables: [subject, context]
       pageDescription:
         prompt: "Describe what {subject} is and safety relevance in {context}."
         variables: [subject, context]
@@ -74,6 +86,9 @@ component_single_line_prompts:
         prompt: "Summarize practical exposure limits and thresholds for {subject} in {context}."
         variables: [subject, context]
     settings:
+      faq:
+        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
+        variables: [subject, context]
       pageDescription:
         prompt: "Describe operational setting guidance for {subject} in {context}."
         variables: [subject, context]

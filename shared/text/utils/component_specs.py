@@ -145,10 +145,6 @@ class ComponentRegistry:
         by_path = prompt_catalog.get('catalog', {}).get('byPath')
         if not isinstance(by_path, dict):
             raise ValueError("Prompt catalog is missing required 'catalog.byPath' mapping")
-
-        shared_components = prompt_catalog.get('catalog', {}).get('shared', {}).get('components')
-        if not isinstance(shared_components, dict):
-            raise ValueError("Prompt catalog is missing required 'catalog.shared.components' mapping")
         
         component_sources: Dict[str, list] = {}
 
@@ -195,11 +191,19 @@ class ComponentRegistry:
             unique_contents = {source['content'] for source in sources}
             if len(unique_contents) == 1:
                 shared_relative_path = f'prompts/shared/components/{component_type}.txt'
-                shared_content = shared_components.get(component_type)
+                shared_content = by_path.get(shared_relative_path)
                 if not isinstance(shared_content, str) or not shared_content.strip():
                     raise FileNotFoundError(
                         f"Centralized shared prompt not found for '{component_type}' in prompt catalog. "
-                        "Populate catalog.shared.components.<component> for identical multi-domain templates."
+                        f"Expected catalog.byPath['{shared_relative_path}'] for identical multi-domain templates."
+                    )
+
+                canonical_shared_content = shared_content.strip()
+                canonical_domain_content = next(iter(unique_contents)).strip()
+                if canonical_shared_content != canonical_domain_content:
+                    raise ValueError(
+                        f"Shared prompt content mismatch for '{component_type}'. "
+                        f"Expected {shared_relative_path} to match canonical domain template content."
                     )
 
                 specs[component_type] = {

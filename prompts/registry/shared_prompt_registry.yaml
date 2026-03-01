@@ -403,29 +403,3 @@ section_prompt_metadata:
     sectionTitle: "FAQ"
     sectionDescription: "Common questions and answers"
     sectionMetadata: "Developer purpose: defines how to generate concise FAQ coverage for recurring user questions."
-
-single_line:
-  required_variables:
-    - subject
-    - context
-  by_domain:
-    applications:
-      faq:
-        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
-        variables: [subject, context]
-    materials:
-      faq:
-        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
-        variables: [subject, context]
-    contaminants:
-      faq:
-        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
-        variables: [subject, context]
-    compounds:
-      faq:
-        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
-        variables: [subject, context]
-    settings:
-      faq:
-        prompt: "Provide concise FAQ content for {subject} relevant to {context} using thorough current web research synthesis, practical evidence, and domain-specific details."
-        variables: [subject, context]

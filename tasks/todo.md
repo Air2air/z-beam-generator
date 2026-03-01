@@ -5,6 +5,37 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 97: Remove Legacy Shared Prompt Artifacts and Enforce Guard
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Finalize prompt-chain separation of concerns by removing legacy `prompts/shared/*` prompt registries and adding validation guards so those files cannot re-enter the active runtime chain.
+
+### Steps
+- [x] Remove unused legacy shared prompt files from `prompts/shared/`
+- [x] Add validation guard that fails if legacy shared prompt files are reintroduced
+- [x] Run focused prompt source and section contract validations
+- [x] Record lesson in `tasks/lessons.md` and mark batch complete
+
+---
+
+## Batch 96: Consolidate Single-Line Prompt Ownership and FAQ Source
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Apply the recommended registry consolidation moves by removing dual-source FAQ single-line ownership and enforcing one canonical single-line source in `data/schemas/component_single_line_prompts.yaml`.
+
+### Steps
+- [x] Add FAQ single-line entries to canonical `component_single_line_prompts.yaml` for all required domains
+- [x] Remove FAQ single-line duplication from shared prompt registry and stop runtime merge behavior
+- [x] Update prompt-contract validation to validate FAQ single-line entries only from canonical schema source
+- [x] Run focused prompt contract/source centralization validations
+- [x] Record lesson in `tasks/lessons.md`, mark batch complete, and summarize residuals
+
+---
+
 ## Batch 95: Deprecate Legacy Sitemap Config References
 Date: 2026-02-28
 Status: COMPLETE
