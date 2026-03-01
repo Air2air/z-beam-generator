@@ -1,5 +1,7 @@
 # Lessons Learned
 
+- 2026-02-28: Sitemap maintenance drift increased when legacy docs/config implied `seo/config/sitemap-config.json` was runtime authority while runtime sitemap behavior came from route/scripts/robots code paths. Rule: mark legacy sitemap config as documentation-only, and document canonical runtime sources (`app/sitemap.xml/route.ts`, `seo/scripts/generate-image-sitemap.js`, `seo/scripts/generate-sitemap-index.js`, `app/robots.ts`) in primary SEO docs.
+
 - 2026-02-28: Prompt-chain ownership drifted when one-line prompt templates were duplicated in both `domains/*/prompt.yaml` and `data/schemas/component_single_line_prompts.yaml`. Rule: keep single-line templates canonical in `data/schemas/component_single_line_prompts.yaml` only, and fail validation if domain contracts define `one_line_content_prompts`.
 
 - 2026-02-28: Prompt-folder cleanup can break runtime if file moves are done without simultaneously rewiring domain prompt contracts, `extends` chains, and prompt profile loaders. Rule: when consolidating prompt files, execute as one atomic migration (move files + update contract paths + update loaders/validators + run centralization and registry tests in the same batch).

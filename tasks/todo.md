@@ -5,6 +5,22 @@ See `tasks/lessons.md` for lessons learned.
 
 ---
 
+## Batch 95: Deprecate Legacy Sitemap Config References
+Date: 2026-02-28
+Status: COMPLETE
+
+### Goal
+Reduce sitemap implementation fragmentation by clearly labeling legacy sitemap config/docs references (especially `seo/config/sitemap-config.json`) as documentation-only and non-runtime.
+
+### Steps
+- [x] Audit active runtime sitemap sources versus legacy sitemap config/docs references
+- [x] Add explicit deprecation labeling to `seo/config/sitemap-config.json`
+- [x] Update key sitemap docs to indicate canonical runtime sources and legacy status
+- [x] Run focused sitemap validation checks
+- [x] Commit and push the sitemap deprecation-labeling pass
+
+---
+
 ## Batch 94: Canonicalize Single-Line Prompt Source and Tighten Descriptor Boundaries
 Date: 2026-02-28
 Status: COMPLETE
